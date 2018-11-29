@@ -57,7 +57,7 @@ class AwsResourceBase < Inspec.resource(1)
     @aws = AwsConnection.new(opts)
     # here we might want to inject stub data for testing, let's use an option for that
     return if !defined?(@opts.keys) || !opts.include?(:stub_data)
-    raise ArgumentError, 'Expect stub_data to have :method and :data keys' if !opts[:stub_data].keys.all? { |a| %i(method data client).include?(a) }
+    raise ArgumentError, 'Expect stub_data to have :client, :method and :data keys' if !opts[:stub_data].keys.all? { |a| %i(method data client).include?(a) }
     @aws.aws_client(opts[:stub_data][:client]).stub_responses(opts[:stub_data][:method], opts[:stub_data][:data])
   end
 
