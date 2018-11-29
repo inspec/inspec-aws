@@ -2,7 +2,7 @@
 
 This is incubation for the new InSpec AWS standalone resource pack.  Below is not intended as an end-user README, it contains notes and discussion points for the implementation. 
 
-## Enviroment Setup Notes
+## Enviroment and Setup Notes
 
 ### Train and InSpec Dependencies
 
@@ -26,6 +26,74 @@ export INSPEC_AWS_INSPEC_PATH='/Users/spaterson/Documents/workspace/aws/inspec
 ```
 
 The local InSpec version has all AWS components removed.  The local train version is upgraded to SDK version 3 to avoid the above conflict.  
+
+### Running the unit and integration tests
+
+Run the linting and unit tests via the below:
+```
+$ bundle exec rake
+Running RuboCop...
+Inspecting 2 files
+..
+
+2 files inspected, no offenses detected
+/Users/spaterson/.rubies/ruby-2.4.3/bin/ruby -I"lib:libraries:test/unit" -I"/Users/spaterson/.rubies/ruby-2.4.3/lib/ruby/gems/2.4.0/gems/rake-12.3.1/lib" "/Users/spaterson/.rubies/ruby-2.4.3/lib/ruby/gems/2.4.0/gems/rake-12.3.1/lib/rake/rake_test_loader.rb" "test/unit/resources/aws_vpc_test.rb"
+Run options: --seed 64195
+
+# Running:
+
+.................
+
+Fabulous run in 0.253300s, 67.1141 runs/s, 51.3225 assertions/s.
+
+17 runs, 13 assertions, 0 failures, 0 errors, 0 skips
+bundle exec inspec check /Users/spaterson/Documents/workspace/aws/inspec-aws
+Location:    /Users/spaterson/Documents/workspace/aws/inspec-aws
+Profile:     inspec-aws
+Controls:    0
+Timestamp:   2018-11-29T15:02:33+00:00
+Valid:       true
+
+  !  No controls or tests were defined.
+
+Summary:     0 errors, 1 warnings
+```
+
+Running the integration tests (after `init_workspace` and `setup_integration_tests`):
+```
+$ bundle exec rake test:run_integration_tests
+----> Run
+bundle exec inspec exec test/integration/verify --attrs test/integration/build/aws-inspec-attributes.yaml; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi
+
+Profile: Amazon Web Services  Resource Pack (inspec-aws)
+Version: 0.1.0
+Target:  local://
+
+  ✔  aws-vpc-1.0: Ensure AWS VPC has the correct properties.
+     ✔  VPC vpc-0373aeb7284407ffd should exist
+     ✔  VPC vpc-0373aeb7284407ffd should not be default
+     ✔  VPC vpc-0373aeb7284407ffd cidr_block should eq "10.0.0.0/27"
+     ✔  VPC vpc-0373aeb7284407ffd instance_tenancy should eq "dedicated"
+     ✔  VPC vpc-0373aeb7284407ffd vpc_id should eq "vpc-0373aeb7284407ffd"
+     ✔  VPC vpc-0373aeb7284407ffd state should eq "available"
+     ✔  VPC vpc-0373aeb7284407ffd dhcp_options_id should eq "dopt-f557819d"
+     ✔  VPC default should exist
+     ✔  VPC default should be default
+     ✔  VPC default vpc_id should eq "vpc-1ea06476"
+     ✔  VPC vpc-0373aeb7284407ffd should exist
+     ✔  VPC vpc-0373aeb7284407ffd should not be default
+     ✔  VPC vpc-0373aeb7284407ffd vpc_id should eq "vpc-0373aeb7284407ffd"
+
+
+Profile: Amazon Web Services  Resource Pack (inspec-aws)
+Version: 0.1.0
+Target:  local://
+
+     No tests executed.
+
+Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
+Test Summary: 13 successful, 0 failures, 0 skipped
+```
 
 ## Discussion Points
 
