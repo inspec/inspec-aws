@@ -47,7 +47,6 @@ class AwsVpcHappyPathTest < Minitest::Test
     mock_vpc[:cidr_block] = '10.0.0.0/27'
     mock_vpc[:state] = 'available'
     mock_vpc[:instance_tenancy] = 'default'
-    mock_vpc[:state] = 'available'
     mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
     mock_vpc[:is_default] = true
     data[:data] = {:vpcs => [mock_vpc]}
