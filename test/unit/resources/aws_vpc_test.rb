@@ -12,10 +12,6 @@ class AwsVpcConstructorTest < Minitest::Test
     assert_raises(ArgumentError) {AwsVpc.new('rubbish')}
   end
 
-  def test_accepts_unnamed_parameter
-    AwsVpc.new('vpc-12345678987654321')
-  end
-
   def test_accepts_vpc_id_as_hash_eight_sign
     AwsVpc.new(vpc_id: 'vpc-1234abcd', client_args: {stub_responses: true})
   end

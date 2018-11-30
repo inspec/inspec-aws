@@ -27,7 +27,8 @@ class AwsConnection
     @cache[klass.to_s.to_sym] ||= klass.new
   end
 
-  def aws_resource(klass)
+  def aws_resource(klass, args)
+    return klass.new(args, @client_args) if @client_args
     klass.new(args)
   end
 
@@ -57,14 +58,14 @@ class AwsResourceBase < Inspec.resource(1)
     @aws = AwsConnection.new(opts)
     # here we might want to inject stub data for testing, let's use an option for that
     return if !defined?(@opts.keys) || !opts.include?(:stub_data)
-    raise ArgumentError, 'Expect stub_data to have :client, :method and :data keys' if !opts[:stub_data].keys.all? { |a| %i(method data client).include?(a) }
+    raise ArgumentError, 'Expect stub_data to have :client, :method and :data keys' if !opts[:stub_data].keys.all? {|a| %i(method data client).include?(a)}
     @aws.aws_client(opts[:stub_data][:client]).stub_responses(opts[:stub_data][:method], opts[:stub_data][:data])
   end
 
   def validate_parameters(allowed_list)
     allowed_list += %i(client_args stub_data)
     raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
-    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
+    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? {|a| allowed_list.include?(a)}
     true
   end
 
