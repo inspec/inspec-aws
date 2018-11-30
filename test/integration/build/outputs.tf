@@ -10,6 +10,11 @@ output "aws_instance_id" {
   value = "${aws_instance.linux_ubuntu_vm.*.id}"
 }
 
+
+output "aws_ec2_ami_id" {
+  value = "${data.aws_ami.linux_ubuntu.id}"
+}
+
 output "aws_vpc_dhcp_options_id" {
   value = "${aws_vpc.inspec_vpc.*.dhcp_options_id}"
 }

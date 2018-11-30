@@ -31,7 +31,7 @@ class AwsVpcsHappyPathTest < Minitest::Test
     mock_vpc[:is_default] = true
     data[:data] = {:vpcs => [mock_vpc]}
     data[:client] = Aws::EC2::Client
-    @vpcs = AwsVpcs.new(client_args: {stub_responses: true}, stub_data: data)
+    @vpcs = AwsVpcs.new(client_args: {stub_responses: true}, stub_data: [data])
   end
 
   def test_vpcs_exists

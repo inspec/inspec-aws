@@ -2,6 +2,13 @@
 
 This is incubation for the new InSpec AWS standalone resource pack.  Below is not intended as an end-user README, it contains notes and discussion points for the implementation. 
 
+## Resources WIP
+
+- [aws_subnet](docs/resources/aws_subnet.md)
+- [aws_subnets](docs/resources/aws_subnets.md)
+- [aws_vpc](docs/resources/aws_vpc.md)
+- [aws_vpcs](docs/resources/aws_vpcs.md)
+
 ## Enviroment and Setup Notes
 
 ### Train and InSpec Dependencies

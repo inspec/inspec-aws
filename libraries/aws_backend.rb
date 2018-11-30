@@ -40,6 +40,10 @@ class AwsConnection
     aws_client(Aws::S3::Client)
   end
 
+  def iam_client
+    aws_client(Aws::IAM::Client)
+  end
+
   def unique_identifier
     # use aws account id
     client = aws_client(::Aws::STS::Client)
@@ -56,16 +60,24 @@ class AwsResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
     @aws = AwsConnection.new(opts)
+    # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
+    # inspec.backend.aws_client(Aws::EC2::Resource,opts)
+    # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
+    # However, for the unit testing case, would potentially have to instantiate the client ourselves...
+
     # here we might want to inject stub data for testing, let's use an option for that
     return if !defined?(@opts.keys) || !opts.include?(:stub_data)
-    raise ArgumentError, 'Expect stub_data to have :client, :method and :data keys' if !opts[:stub_data].keys.all? {|a| %i(method data client).include?(a)}
-    @aws.aws_client(opts[:stub_data][:client]).stub_responses(opts[:stub_data][:method], opts[:stub_data][:data])
+    raise ArgumentError, 'Expected stub data to be an array' if !opts[:stub_data].is_a?(Array)
+    opts[:stub_data].each do |stub|
+      raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
+      @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
+    end
   end
 
   def validate_parameters(allowed_list)
     allowed_list += %i(client_args stub_data)
     raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
-    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? {|a| allowed_list.include?(a)}
+    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
     true
   end
 
@@ -76,6 +88,9 @@ class AwsResourceBase < Inspec.resource(1)
   # Intercept AWS exceptions
   def catch_aws_errors
     yield # Catch and create custom messages as needed
+  rescue Aws::Errors::MissingCredentialsError
+    Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
+    fail_resource('No AWS credentials available')
   rescue Aws::Errors::ServiceError => e
     fail_resource e.message
     @failed_resource = true
@@ -136,8 +151,8 @@ class AwsResourceDynamicMethods
       object.define_singleton_method name do
         return_value
       end
-      # there are nested Google API classes throughout
-    when /Google::Apis::.*/
+      # there are nested AWS API classes throughout
+    when /Aws::.*/
       object.define_singleton_method name do
         value = value.to_h if value.respond_to? :to_h
         AwsResourceProbe.new(value)

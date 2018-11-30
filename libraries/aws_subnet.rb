@@ -15,15 +15,15 @@ class AwsSubnet < AwsResourceBase
 
   def initialize(opts = {})
     # Call the parent class constructor
-    opts = {subnet_id: opts} if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { subnet_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
     super(opts)
     validate_parameters([:subnet_id])
     raise ArgumentError, 'You must provide a subnet_id to aws_subnet.' if opts[:subnet_id].nil? || opts[:subnet_id].empty?
     raise ArgumentError, 'aws_subnet Subnet ID must be in the format "subnet-" followed by 8 hexadecimal characters.' if opts[:subnet_id] !~ /^subnet\-[0-9a-f]{8}/
     @display_name = opts[:subnet_id]
-    filter = {name: 'subnet-id', values: [opts[:subnet_id]]}
+    filter = { name: 'subnet-id', values: [opts[:subnet_id]] }
     catch_aws_errors do
-      @resp = @aws.compute_client.describe_subnets({filters: [filter]})
+      @resp = @aws.compute_client.describe_subnets({ filters: [filter] })
       @subnet = @resp.subnets[0].to_h
       create_resource_methods(@subnet)
     end

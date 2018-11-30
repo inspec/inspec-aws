@@ -35,7 +35,7 @@ class AwsSubnetsHappyPathTest < Minitest::Test
     mock_subnet[:state] = 'available'
     data[:data] = {:subnets => [mock_subnet]}
     data[:client] = Aws::EC2::Client
-    @subnets = AwsSubnets.new(client_args: {stub_responses: true}, stub_data: data)
+    @subnets = AwsSubnets.new(client_args: {stub_responses: true}, stub_data: [data])
   end
 
   def test_subnets_exists
