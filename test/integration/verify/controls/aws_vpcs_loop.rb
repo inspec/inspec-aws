@@ -1,14 +1,14 @@
-title 'Test single AWS VPC'
+title 'Test AWS VPCs in bulk using plural and singular resources'
 
 aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
 aws_vpc_cidr_block = attribute(:aws_vpc_cidr_block, default: '', description: 'The AWS VPC CIDR block.')
 aws_vpc_instance_tenancy = attribute(:aws_vpc_instance_tenancy, default: '', description: 'The AWS VPC instance tenancy option.')
 aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default:'', description: 'The AWS VPC DHCP options ID.')
 
-control 'aws-vpcs-1.0' do
+control 'aws-vpcs-loop-1.0' do
 
   impact 1.0
-  title 'Ensure AWS VPC plural resource has the correct properties.'
+  title 'Loop across AWS VPCs plural resource using singular resource for detail.'
 
 
   aws_vpcs.vpc_ids.each do |vpc|
