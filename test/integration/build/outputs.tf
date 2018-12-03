@@ -25,3 +25,11 @@ output "aws_subnet_id" {
 output "aws_subnet_cidr_block" {
   value = "${aws_subnet.inspec_subnet.*.cidr_block}"
 }
+
+output "aws_ebs_volume_arn" {
+  value = "${aws_ebs_volume.inspec_ebs_volume.*.arn}"
+}
+
+output "aws_ebs_volume_id" {
+  value = "${aws_ebs_volume.inspec_ebs_volume.*.id}"
+}

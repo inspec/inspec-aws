@@ -40,7 +40,7 @@ class AwsEc2Instances < AwsResourceBase
               instance_id: instance.instance_id,
               vpc_id: instance.vpc_id,
               subnet_id: instance.subnet_id,
-              instance_type: instance.instance_type
+              instance_type: instance.instance_type,
           }
         end
       end
@@ -50,5 +50,3 @@ class AwsEc2Instances < AwsResourceBase
     @table = instance_rows
   end
 end
-
-

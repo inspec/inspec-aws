@@ -20,7 +20,7 @@ class AwsEc2Instance < AwsResourceBase
 
   def initialize(opts = {})
     # Call the parent class constructor
-    raise ArgumentError, 'EC2 `instance_id` or `name` must be provided' if opts.nil?
+    raise ArgumentError, 'aws_ec2_instance `instance_id` or `name` must be provided' if opts.nil?
     opts = { instance_id: opts } if opts.is_a?(String) # this preserves the original scalar interface - note that the original implementation offered scalar 'id' or tag property :name
     super(opts)
     validate_parameters(%i(instance_id name))

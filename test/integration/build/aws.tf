@@ -16,6 +16,7 @@ variable "aws_vm_name" {}
 variable "aws_vm_size" {}
 variable "aws_vm_image_filter" {}
 variable "aws_enable_creation" {}
+variable "aws_ebs_volume_name" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -73,5 +74,14 @@ resource "aws_instance" "linux_ubuntu_vm" {
 
   tags {
     Name = "${var.aws_vm_name}"
+  }
+}
+
+resource "aws_ebs_volume" "inspec_ebs_volume" {
+  availability_zone = "${var.aws_availability_zone}"
+  size              = 1
+
+  tags {
+    Name = "${var.aws_ebs_volume_name}"
   }
 }

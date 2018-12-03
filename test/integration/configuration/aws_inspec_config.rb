@@ -29,6 +29,7 @@ module AWSInspecConfig
     aws_vm_size: 't2.micro',
     aws_vm_image_filter: 'ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*',
     aws_project_iam_custom_role_id: "aws_inspec_custom_role_id_#{add_random_string}",
+    aws_ebs_volume_name: 'inspec-ebs-volume-name',
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
