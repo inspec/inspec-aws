@@ -3,6 +3,7 @@
 require 'aws-sdk-core'
 require 'aws-sdk-s3'
 require 'aws-sdk-ec2'
+require 'aws-sdk-iam'
 require 'aws-sdk-cloudtrail'
 
 # AWS Inspec Backend Classes
@@ -23,6 +24,8 @@ class AwsConnection
   end
 
   def aws_client(klass)
+    # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different ars per client in cases
+    #       such as EC2 instance that use multiple different clients
     return @cache[klass.to_s.to_sym] ||= klass.new(@client_args) if @client_args
     @cache[klass.to_s.to_sym] ||= klass.new
   end
@@ -78,6 +81,7 @@ class AwsResourceBase < Inspec.resource(1)
     allowed_list += %i(client_args stub_data)
     raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
+    raise ArgumentError, 'Provided parameter should not be empty' if !@opts.values.all? { |a| !a.empty? }
     true
   end
 
