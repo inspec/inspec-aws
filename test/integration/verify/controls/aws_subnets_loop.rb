@@ -18,13 +18,13 @@ control 'aws-subnets-loop-1.0' do
     end
   end
 
-  aws_subnets.where{ vpc_id == aws_vpc_id }.subnet_ids.each do |subnet|
+  aws_subnets.where { vpc_id == aws_vpc_id }.subnet_ids.each do |subnet|
     describe aws_subnet(subnet_id: subnet) do
       it { should exist }
       its('vpc_id') { should eq aws_vpc_id }
       its('subnet_id') { should eq aws_subnet_id }
       its('cidr_block') { should eq aws_subnet_cidr_block }
-      its('available_ip_address_count') { should eq aws_subnet_ip_address_count-5 } # AWS Reserve 5
+      its('available_ip_address_count') { should eq aws_subnet_ip_address_count - 5 } # AWS Reserve 5
       its('availability_zone') { should eq aws_availability_zone }
       its('ipv_6_cidr_block_association_set') { should eq [] }
       it { should be_available }
