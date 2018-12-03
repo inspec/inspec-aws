@@ -14,10 +14,10 @@ end
 # Minitest
 Rake::TestTask.new do |t|
   t.libs << 'libraries'
-  t.libs << 'test/unit'
+  t.libs << File.join('test','unit')
   t.warning = false
   t.verbose = true
-  t.pattern = "test/unit/**/*_test.rb"
+  t.pattern = File.join('test','unit','**','*_test.rb')
 end
 
 # lint the project
@@ -29,7 +29,7 @@ task default: [:lint, :test, 'test:check']
 
 namespace :test do
   # Specify the directory for the integration tests
-  integration_dir = 'test/integration'
+  integration_dir = File.join('test','integration')
 
   # Specify the terraform plan name
   plan_name = 'inspec-aws.plan'
@@ -51,7 +51,7 @@ namespace :test do
 
   task :init_workspace do
     # Initialize terraform workspace
-    cmd = format('cd %s/build/ && terraform init', integration_dir)
+    cmd = format('cd %s && terraform init', File.join(integration_dir,'build'))
     sh(cmd)
   end
 
@@ -61,29 +61,33 @@ namespace :test do
     AWSInspecConfig.store_yaml(profile_attributes)
     puts '----> Generating the plan'
     # Create the plan that can be applied to AWS
-    cmd = format('cd %s/build/ && terraform plan  -var-file=%s -out %s', integration_dir, variable_file_name, plan_name)
+    cmd = format('cd %s && terraform plan  -var-file=%s -out %s', File.join(integration_dir,'build'), variable_file_name, plan_name)
     sh(cmd)
   end
 
   task :setup_integration_tests do
     puts '----> Applying the plan'
     # Apply the plan on AWS
-    cmd = format('cd %s/build/ && terraform apply %s', integration_dir, plan_name)
+    cmd = format('cd %s && terraform apply %s', File.join(integration_dir,'build'), plan_name)
     sh(cmd)
     puts '----> Adding terraform outputs to InSpec variable file'
     AWSInspecConfig.update_yaml(profile_attributes)
   end
 
   task :run_integration_tests do
-    puts '----> Run'
+    puts '----> Running InSpec tests'
+    target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else File.join(integration_dir,'verify') end
+    reporter_name = if ENV['INSPEC_REPORT_NAME'] then ENV['INSPEC_REPORT_NAME'] else 'inspec-output' end
     # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
-    cmd = format('bundle exec inspec exec %s/verify --attrs %s/build/%s; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi', integration_dir, integration_dir, profile_attributes)
+    cmd = 'bundle exec inspec exec %s --attrs %s -t gcp:// --reporter cli json:%s.json html:%s.html'
+    if ENV['INSPEC_TRAP_NON_ZERO_EXIT'] then cmd += ' || true' else  cmd += '; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi' end
+    cmd = format(cmd, target, File.join(integration_dir,'build', profile_attributes), reporter_name, reporter_name)
     sh(cmd)
   end
 
   task :cleanup_integration_tests do
     puts '----> Cleanup'
-    cmd = format('cd %s/build/ && terraform destroy -force -var-file=%s || true', integration_dir, variable_file_name)
+    cmd = format('cd %s && terraform destroy -force -var-file=%s || true', File.join(integration_dir,'build'), variable_file_name)
     sh(cmd)
   end
 

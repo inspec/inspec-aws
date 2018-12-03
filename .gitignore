@@ -13,3 +13,4 @@ local
 *.env
 *inspec-*.tfvars
 *-inspec-attributes.yaml
+*inspec-output*
