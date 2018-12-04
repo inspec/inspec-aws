@@ -33,3 +33,19 @@ output "aws_ebs_volume_arn" {
 output "aws_ebs_volume_id" {
   value = "${aws_ebs_volume.inspec_ebs_volume.*.id}"
 }
+
+output "aws_kms_key_enabled_id" {
+  value = "${aws_kms_key.kms_key_enabled_rotating.*.key_id}"
+}
+
+output "aws_kms_key_disabled_id" {
+  value = "${aws_kms_key.kms_key_disabled_non_rotating.*.key_id}"
+}
+
+output "aws_kms_key_enabled_arn" {
+  value = "${aws_kms_key.kms_key_enabled_rotating.*.arn}"
+}
+
+output "aws_kms_key_disabled_arn" {
+  value = "${aws_kms_key.kms_key_disabled_non_rotating.*.arn}"
+}

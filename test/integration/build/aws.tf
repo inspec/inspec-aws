@@ -17,6 +17,8 @@ variable "aws_vm_size" {}
 variable "aws_vm_image_filter" {}
 variable "aws_enable_creation" {}
 variable "aws_ebs_volume_name" {}
+variable "aws_key_description_enabled" {}
+variable "aws_key_description_disabled" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -78,10 +80,29 @@ resource "aws_instance" "linux_ubuntu_vm" {
 }
 
 resource "aws_ebs_volume" "inspec_ebs_volume" {
+  count             = "${var.aws_enable_creation}"
   availability_zone = "${var.aws_availability_zone}"
   size              = 1
 
   tags {
     Name = "${var.aws_ebs_volume_name}"
   }
+}
+
+resource "aws_kms_key" "kms_key_enabled_rotating" {
+  count                   = "${var.aws_enable_creation}"
+  description             = "${var.aws_key_description_enabled}"
+  deletion_window_in_days = 10
+  key_usage               = "ENCRYPT_DECRYPT"
+  is_enabled              = true
+  enable_key_rotation     = true
+}
+
+resource "aws_kms_key" "kms_key_disabled_non_rotating" {
+  count                   = "${var.aws_enable_creation}"
+  description             = "${var.aws_key_description_disabled}"
+  deletion_window_in_days = 10
+  key_usage               = "ENCRYPT_DECRYPT"
+  is_enabled              = false
+  enable_key_rotation     = false
 }

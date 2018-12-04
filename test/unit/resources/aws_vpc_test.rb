@@ -21,11 +21,11 @@ class AwsVpcConstructorTest < Minitest::Test
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AwsVpc.new(shoe_size: 9) }
+    assert_raises(ArgumentError) { AwsVpc.new(rubbish: 9) }
   end
 
   def test_rejects_invalid_vpc_id
-    assert_raises(ArgumentError) { AwsVpc.new(vpc_id: 'vpc-rofl') }
+    assert_raises(ArgumentError) { AwsVpc.new(vpc_id: 'vpc-rubbish') }
   end
 
   def test_vpc_non_existing

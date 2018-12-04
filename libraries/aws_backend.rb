@@ -4,6 +4,7 @@ require 'aws-sdk-core'
 require 'aws-sdk-s3'
 require 'aws-sdk-ec2'
 require 'aws-sdk-iam'
+require 'aws-sdk-kms'
 require 'aws-sdk-cloudtrail'
 
 # AWS Inspec Backend Classes
@@ -45,6 +46,10 @@ class AwsConnection
 
   def iam_client
     aws_client(Aws::IAM::Client)
+  end
+
+  def kms_client
+    aws_client(Aws::KMS::Client)
   end
 
   def unique_identifier
