@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AwsSubnetsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsSubnets.new(client_args: {stub_responses: true})
+    AwsSubnets.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) {AwsSubnets.new('rubbish')}
+    assert_raises(ArgumentError) { AwsSubnets.new('rubbish') }
   end
 
   def test_subnets_non_existing_for_empty_response
-    refute AwsSubnets.new(client_args: {stub_responses: true}).exist?
+    refute AwsSubnets.new(client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -33,9 +33,9 @@ class AwsSubnetsHappyPathTest < Minitest::Test
     mock_subnet[:ipv_6_cidr_block_association_set] = []
     mock_subnet[:assign_ipv_6_address_on_creation] = true
     mock_subnet[:state] = 'available'
-    data[:data] = {:subnets => [mock_subnet]}
+    data[:data] = { :subnets => [mock_subnet] }
     data[:client] = Aws::EC2::Client
-    @subnets = AwsSubnets.new(client_args: {stub_responses: true}, stub_data: [data])
+    @subnets = AwsSubnets.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_subnets_exists

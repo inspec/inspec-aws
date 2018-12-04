@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AwsVpcsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsVpcs.new(client_args: {stub_responses: true})
+    AwsVpcs.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) {AwsVpcs.new('rubbish')}
+    assert_raises(ArgumentError) { AwsVpcs.new('rubbish') }
   end
 
   def test_vpcs_non_existing_for_empty_response
-    refute AwsVpcs.new(client_args: {stub_responses: true}).exist?
+    refute AwsVpcs.new(client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -29,9 +29,9 @@ class AwsVpcsHappyPathTest < Minitest::Test
     mock_vpc[:instance_tenancy] = 'default'
     mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
     mock_vpc[:is_default] = true
-    data[:data] = {:vpcs => [mock_vpc]}
+    data[:data] = { :vpcs => [mock_vpc] }
     data[:client] = Aws::EC2::Client
-    @vpcs = AwsVpcs.new(client_args: {stub_responses: true}, stub_data: [data])
+    @vpcs = AwsVpcs.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_vpcs_exists

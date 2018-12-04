@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AwsEc2InstancesConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsEc2Instances.new(client_args: {stub_responses: true})
+    AwsEc2Instances.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) {AwsEc2Instances.new('rubbish')}
+    assert_raises(ArgumentError) { AwsEc2Instances.new('rubbish') }
   end
 
   def test_instances_non_existing_for_empty_response
-    refute AwsEc2Instances.new(client_args: {stub_responses: true}).exist?
+    refute AwsEc2Instances.new(client_args: { stub_responses: true }).exist?
   end
 end
 

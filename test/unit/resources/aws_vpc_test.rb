@@ -5,31 +5,31 @@ require 'aws-sdk-core'
 class AwsVpcConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsVpc.new(client_args: {stub_responses: true})
+    AwsVpc.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_scalar_invalid_args
-    assert_raises(ArgumentError) {AwsVpc.new('rubbish')}
+    assert_raises(ArgumentError) { AwsVpc.new('rubbish') }
   end
 
   def test_accepts_vpc_id_as_hash_eight_sign
-    AwsVpc.new(vpc_id: 'vpc-1234abcd', client_args: {stub_responses: true})
+    AwsVpc.new(vpc_id: 'vpc-1234abcd', client_args: { stub_responses: true })
   end
 
   def test_accepts_vpc_id_as_hash
-    AwsVpc.new(vpc_id: 'vpc-abcd123454321dcba', client_args: {stub_responses: true})
+    AwsVpc.new(vpc_id: 'vpc-abcd123454321dcba', client_args: { stub_responses: true })
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) {AwsVpc.new(shoe_size: 9)}
+    assert_raises(ArgumentError) { AwsVpc.new(shoe_size: 9) }
   end
 
   def test_rejects_invalid_vpc_id
-    assert_raises(ArgumentError) {AwsVpc.new(vpc_id: 'vpc-rofl')}
+    assert_raises(ArgumentError) { AwsVpc.new(vpc_id: 'vpc-rofl') }
   end
 
   def test_vpc_non_existing
-    refute AwsVpc.new(vpc_id: 'vpc-1234abcd', client_args: {stub_responses: true}).exists?
+    refute AwsVpc.new(vpc_id: 'vpc-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end
 
@@ -45,9 +45,9 @@ class AwsVpcHappyPathTest < Minitest::Test
     mock_vpc[:instance_tenancy] = 'default'
     mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
     mock_vpc[:is_default] = true
-    data[:data] = {:vpcs => [mock_vpc]}
+    data[:data] = { :vpcs => [mock_vpc] }
     data[:client] = Aws::EC2::Client
-    @vpc = AwsVpc.new(client_args: {stub_responses: true}, stub_data: [data])
+    @vpc = AwsVpc.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_vpc_exists
@@ -86,9 +86,9 @@ class AwsNonDefaultTest < Minitest::Test
     mock_vpc = {}
     mock_vpc[:vpc_id] = 'vpc-12345678'
     mock_vpc[:is_default] = false
-    data[:data] = {:vpcs => [mock_vpc]}
+    data[:data] = { :vpcs => [mock_vpc] }
     data[:client] = Aws::EC2::Client
-    @vpc = AwsVpc.new(vpc_id: 'vpc-12345678', client_args: {stub_responses: true}, stub_data: [data])
+    @vpc = AwsVpc.new(vpc_id: 'vpc-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_vpc_id

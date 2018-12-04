@@ -5,31 +5,31 @@ require 'aws-sdk-core'
 class AwsSubnetConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) {AwsSubnet.new(client_args: {stub_responses: true})}
+    assert_raises(ArgumentError) { AwsSubnet.new(client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) {AwsSubnet.new(subnet_id: '', client_args: {stub_responses: true})}
+    assert_raises(ArgumentError) { AwsSubnet.new(subnet_id: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_scalar_invalid_args
-    assert_raises(ArgumentError) {AwsSubnet.new('rubbish')}
+    assert_raises(ArgumentError) { AwsSubnet.new('rubbish') }
   end
 
   def test_constructor_expected_well_formed_args
-    AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: {stub_responses: true})
+    AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: { stub_responses: true })
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) {AwsSubnet.new(unexpected: 9)}
+    assert_raises(ArgumentError) { AwsSubnet.new(unexpected: 9) }
   end
 
   def test_rejects_invalid_subnet_id
-    assert_raises(ArgumentError) {AwsSubnet.new(subnet_id: 'subnet-fail')}
+    assert_raises(ArgumentError) { AwsSubnet.new(subnet_id: 'subnet-fail') }
   end
 
   def test_subnet_non_existing
-    refute AwsSubnet.new(subnet_id: 'subnet-1234abcd', client_args: {stub_responses: true}).exists?
+    refute AwsSubnet.new(subnet_id: 'subnet-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end
 
@@ -49,9 +49,9 @@ class AwsSubnetHappyPathTest < Minitest::Test
     mock_subnet[:ipv_6_cidr_block_association_set] = []
     mock_subnet[:assign_ipv_6_address_on_creation] = true
     mock_subnet[:state] = 'available'
-    data[:data] = {:subnets => [mock_subnet]}
+    data[:data] = { :subnets => [mock_subnet] }
     data[:client] = Aws::EC2::Client
-    @subnet = AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: {stub_responses: true}, stub_data: [data])
+    @subnet = AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_subnet_exists
@@ -114,9 +114,9 @@ class AwsSubnetFalsePropertiesTest < Minitest::Test
     mock_subnet[:map_public_ip_on_launch] = false
     mock_subnet[:assign_ipv_6_address_on_creation] = false
     mock_subnet[:state] = 'unavailable'
-    data[:data] = {:subnets => [mock_subnet]}
+    data[:data] = { :subnets => [mock_subnet] }
     data[:client] = Aws::EC2::Client
-    @subnet = AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: {stub_responses: true}, stub_data: [data])
+    @subnet = AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_subnet_exists
