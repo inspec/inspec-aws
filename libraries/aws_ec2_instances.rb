@@ -37,10 +37,10 @@ class AwsEc2Instances < AwsResourceBase
       @api_response.reservations.each do |res|
         instance_rows += res.instances.map do |instance|
           {
-              instance_id: instance.instance_id,
-              vpc_id: instance.vpc_id,
-              subnet_id: instance.subnet_id,
-              instance_type: instance.instance_type,
+            instance_id: instance.instance_id,
+            vpc_id: instance.vpc_id,
+            subnet_id: instance.subnet_id,
+            instance_type: instance.instance_type,
           }
         end
       end

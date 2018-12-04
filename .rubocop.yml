@@ -20,6 +20,8 @@ ClassLength:
   Max: 200
 LineLength:
   Enabled: false
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
 EmptyLinesAroundBlockBody:
   Enabled: false
 MethodLength:

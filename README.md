@@ -4,6 +4,8 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 
 ## Resources WIP
 
+- [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
+- [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
