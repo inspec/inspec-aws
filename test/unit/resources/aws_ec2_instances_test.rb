@@ -60,3 +60,36 @@ class AwsEc2InstancesHappyPathTest < Minitest::Test
     assert @instances.where(:instance_id => 'i-00b5186ddefdb50bf').exist?
   end
 end
+
+class AwsEc2InstancesMultipleTest < Minitest::Test
+
+  def setup
+    data = {}
+    data[:method] = :describe_instances
+    mock_ec2 = {}
+    mock_ec2[:instance_type] = 't2.micro'
+    mock_ec2[:instance_id] = 'i-00b5186ddefdb50bf'
+    mock_ec2[:subnet_id] = 'subnet-9fe303e5'
+    mock_ec2[:vpc_id] = 'vpc-1ea06476'
+    another_ec2 = {}
+    another_ec2[:instance_type] = 't2.micro'
+    another_ec2[:instance_id] = 'i-00b5186ddefdb50bg'
+    another_ec2[:subnet_id] = 'subnet-9fe303e5'
+    another_ec2[:vpc_id] = 'vpc-1ea06476'
+    data[:data] = { :reservations => [{ :instances => [mock_ec2, another_ec2] }] }
+    data[:client] = Aws::EC2::Client
+    @instances = AwsEc2Instances.new(client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_instances_exists
+    assert @instances.exist?
+  end
+
+  def test_instances_ids
+    assert_equal(@instances.instance_ids, ['i-00b5186ddefdb50bf', 'i-00b5186ddefdb50bg'])
+  end
+
+  def test_instances_count
+    assert_equal(@instances.count, 2)
+  end
+end
