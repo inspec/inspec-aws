@@ -76,6 +76,7 @@ class AwsEbsVolumeHappyPathTest < Minitest::Test
     mock_volume[:state] = 'in-use'
     mock_volume[:volume_id] = 'vol-012b75749d0b5ceb5'
     mock_volume[:volume_type] = 'standard'
+    mock_volume[:iops] = 100
     data[:data] = { :volumes => [mock_volume] }
     data[:client] = Aws::EC2::Client
     @volume = AwsEbsVolume.new(volume_id: 'vol-012b75749d0b5ceb5', client_args: { stub_responses: true }, stub_data: [data])
@@ -96,6 +97,11 @@ class AwsEbsVolumeHappyPathTest < Minitest::Test
   def test_volume_size
     assert_equal(@volume.size, 8)
   end
+
+  def test_volume_iops
+    assert_equal(@volume.iops, 100)
+  end
+
 
   def test_volume_snapshot_id
     assert_equal(@volume.snapshot_id, 'snap-66e1ee8b')
