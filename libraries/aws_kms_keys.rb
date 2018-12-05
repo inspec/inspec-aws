@@ -28,7 +28,7 @@ class AwsKmsKeys < AwsResourceBase
     pagination_options = { limit: 1000 }
     loop do
       catch_aws_errors do
-        @api_response =  @aws.kms_client.list_keys(pagination_options)
+        @api_response = @aws.kms_client.list_keys(pagination_options)
       end
       return [] if !@api_response || @api_response.empty?
 
