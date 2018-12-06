@@ -49,3 +49,11 @@ output "aws_kms_key_enabled_arn" {
 output "aws_kms_key_disabled_arn" {
   value = "${aws_kms_key.kms_key_disabled_non_rotating.*.arn}"
 }
+
+output "aws_route_table_first_id" {
+  value = "${aws_route_table.route_table_first.id}"
+}
+
+output "aws_route_table_second_id" {
+  value = "${aws_route_table.route_table_second.id}"
+}

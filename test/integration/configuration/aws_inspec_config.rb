@@ -32,6 +32,7 @@ module AWSInspecConfig
     aws_ebs_volume_name: 'inspec-ebs-volume-name',
     aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
     aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
+    aws_internet_gateway_name: 'inspec-aws-internet-gateway',
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to

@@ -8,6 +8,8 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
+- [aws_kms_key](docs/resources/aws_kms_key.md)
+- [aws_kms_keys](docs/resources/aws_kms_keys.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_vpc](docs/resources/aws_vpc.md)

@@ -19,6 +19,7 @@ variable "aws_enable_creation" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_key_description_enabled" {}
 variable "aws_key_description_disabled" {}
+variable "aws_internet_gateway_name" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -105,4 +106,33 @@ resource "aws_kms_key" "kms_key_disabled_non_rotating" {
   key_usage               = "ENCRYPT_DECRYPT"
   is_enabled              = false
   enable_key_rotation     = false
+}
+
+resource "aws_internet_gateway" "inspec_internet_gateway" {
+  count  = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.inspec_vpc.id}"
+
+  tags {
+    Name = "${var.aws_internet_gateway_name}"
+  }
+}
+
+resource "aws_route_table" "route_table_first" {
+  count  = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.inspec_vpc.id}"
+
+  route {
+    cidr_block = "10.0.0.0/25"
+    gateway_id = "${aws_internet_gateway.inspec_internet_gateway.id}"
+  }
+}
+
+resource "aws_route_table" "route_table_second" {
+  count  = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.inspec_vpc.id}"
+
+  route {
+    cidr_block = "10.0.0.0/25"
+    gateway_id = "${aws_internet_gateway.inspec_internet_gateway.id}"
+  }
 }
