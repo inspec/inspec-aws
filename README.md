@@ -12,6 +12,8 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_kms_keys](docs/resources/aws_kms_keys.md)
 - [aws_route_table](docs/resources/aws_route_table.md)
 - [aws_route_tables](docs/resources/aws_route_tables.md)
+- [aws_s3_bucket](docs/resources/aws_s3_bucket.md)
+- [aws_s3_buckets](docs/resources/aws_s3_buckets.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
