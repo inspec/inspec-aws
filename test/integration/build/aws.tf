@@ -20,6 +20,16 @@ variable "aws_ebs_volume_name" {}
 variable "aws_key_description_enabled" {}
 variable "aws_key_description_disabled" {}
 variable "aws_internet_gateway_name" {}
+variable "aws_bucket_public_name" {}
+variable "aws_bucket_private_name" {}
+variable "aws_bucket_public_objects_name" {}
+variable "aws_bucket_auth_name" {}
+variable "aws_bucket_acl_policy_name" {}
+variable "aws_bucket_log_delivery_name" {}
+variable "aws_bucket_log_sender_name" {}
+variable "aws_bucket_logging_disabled" {}
+variable "aws_bucket_encryption_enabled" {}
+variable "aws_bucket_encryption_disabled" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -135,4 +145,153 @@ resource "aws_route_table" "route_table_second" {
     cidr_block = "10.0.0.0/25"
     gateway_id = "${aws_internet_gateway.inspec_internet_gateway.id}"
   }
+}
+
+resource "aws_s3_bucket" "bucket_public" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_public_name}"
+  acl           = "public-read"
+}
+
+resource "aws_s3_bucket" "bucket_private" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_private_name}"
+  acl           = "private"
+}
+
+resource "aws_s3_bucket" "bucket_public_for_objects" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_public_objects_name}"
+  acl           = "public-read"
+}
+
+resource "aws_s3_bucket" "bucket_auth" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_auth_name}"
+  acl           = "authenticated-read"
+}
+
+resource "aws_s3_bucket" "bucket_private_acl_public_policy" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_acl_policy_name}"
+  acl           = "private"
+}
+
+resource "aws_s3_bucket" "bucket_log_delivery" {
+  count         = "${var.aws_enable_creation}"
+  bucket        = "${var.aws_bucket_log_delivery_name}"
+  force_destroy = true
+  acl           = "log-delivery-write"
+}
+
+resource "aws_s3_bucket" "bucket_access_logging_enabled" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${var.aws_bucket_log_sender_name}"
+  acl    = "private"
+
+  logging {
+    target_bucket = "${aws_s3_bucket.bucket_log_delivery.id}"
+    target_prefix = "log/"
+  }
+}
+
+resource "aws_s3_bucket" "bucket_access_logging_not_enabled" {
+  count         = "${var.aws_enable_creation}"
+  bucket = "${var.aws_bucket_logging_disabled}"
+  acl    = "private"
+}
+
+
+resource "aws_s3_bucket" "bucket_default_encryption_enabled" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${var.aws_bucket_encryption_enabled}"
+  acl    = "private"
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+}
+
+resource "aws_s3_bucket" "bucket_default_encryption_disabled" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${var.aws_bucket_encryption_disabled}"
+  acl    = "private"
+}
+
+
+resource "aws_s3_bucket_policy" "allow_public" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${aws_s3_bucket.bucket_public.id}"
+  policy =<<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.bucket_public.id}/*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_s3_bucket_policy" "deny_private" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${aws_s3_bucket.bucket_private.id}"
+  policy =<<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyGetObject",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.bucket_private.id}/*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_s3_bucket_policy" "allow-private-acl-public-policy" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${aws_s3_bucket.bucket_private_acl_public_policy.id}"
+  policy =<<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.bucket_private_acl_public_policy.id}/*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_s3_bucket_object" "inspec_logo_public" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${aws_s3_bucket.bucket_public_for_objects.id}"
+  key    = "inspec-logo-public"
+  source = "inspec-logo.png"
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_object" "inspec_logo_private" {
+  count  = "${var.aws_enable_creation}"
+  bucket = "${aws_s3_bucket.bucket_public_for_objects.id}"
+  key    = "inspec-logo-private"
+  source = "inspec-logo.png"
+  acl    = "private"
 }

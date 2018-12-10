@@ -51,9 +51,21 @@ output "aws_kms_key_disabled_arn" {
 }
 
 output "aws_route_table_first_id" {
-  value = "${aws_route_table.route_table_first.id}"
+  value = "${aws_route_table.route_table_first.*.id}"
 }
 
 output "aws_route_table_second_id" {
-  value = "${aws_route_table.route_table_second.id}"
+  value = "${aws_route_table.route_table_second.*.id}"
+}
+
+output "aws_s3_bucket_public_region" {
+  value = "${aws_s3_bucket.bucket_public.*.region}"
+}
+
+output "aws_s3_bucket_object_public" {
+  value = "${aws_s3_bucket_object.inspec_logo_public.*.id}"
+}
+
+output "aws_s3_bucket_object_private" {
+  value = "${aws_s3_bucket_object.inspec_logo_private.*.id}"
 }

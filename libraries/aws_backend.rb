@@ -25,8 +25,7 @@ class AwsConnection
   end
 
   def aws_client(klass)
-    # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different ars per client in cases
-    #       such as EC2 instance that use multiple different clients
+    # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different args per client in cases such as EC2 instance that use multiple different clients
     return @cache[klass.to_s.to_sym] ||= klass.new(@client_args) if @client_args
     @cache[klass.to_s.to_sym] ||= klass.new
   end
@@ -101,6 +100,7 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
   rescue Aws::Errors::ServiceError => e
+    p e.message
     fail_resource e.message
     @failed_resource = true
     nil
