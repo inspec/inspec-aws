@@ -83,7 +83,7 @@ class AwsS3Bucket < AwsResourceBase
       begin
         # AWS SDK returns a StringIO, we have to read()
         raw_policy = @aws.storage_client.get_bucket_policy(bucket: @bucket_name).to_h
-        return [] if !raw_policy.has_key?(:policy)
+        return [] if !raw_policy.key?(:policy)
         JSON.parse(raw_policy[:policy].read)['Statement'].map do |statement|
           lowercase_hash = {}
           statement.each_key { |k| lowercase_hash[k.downcase] = statement[k] }

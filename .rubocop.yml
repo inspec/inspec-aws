@@ -28,6 +28,8 @@ MethodLength:
   Max: 40
 NumericLiterals:
   MinDigits: 10
+Metrics/BlockLength:
+  Max: 100
 Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/PerceivedComplexity:

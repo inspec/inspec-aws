@@ -25,9 +25,9 @@ class AwsS3Buckets < AwsResourceBase
   def fetch_data
     bucket_rows = []
     catch_aws_errors do
-      @api_response = @aws.storage_client.list_buckets().each do |resp|
+      @api_response = @aws.storage_client.list_buckets.each do |resp|
         resp.buckets.each do |bucket|
-          bucket_rows += [{ bucket_name: bucket[:name]}]
+          bucket_rows += [{ bucket_name: bucket[:name] }]
         end
       end
     end
