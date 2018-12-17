@@ -1,3 +1,7 @@
+output "aws_account_id" {
+  value = "${data.aws_caller_identity.creds.account_id}"
+}
+
 output "aws_vpc_id" {
   value = "${aws_vpc.inspec_vpc.*.id}"
 }
@@ -68,4 +72,20 @@ output "aws_s3_bucket_object_public" {
 
 output "aws_s3_bucket_object_private" {
   value = "${aws_s3_bucket_object.inspec_logo_private.*.id}"
+}
+
+output "aws_sns_subscription_arn" {
+  value = "${aws_sns_topic_subscription.sqs_test_queue_subscription.*.arn}"
+}
+
+output "aws_sns_topic_with_subscription_arn" {
+  value = "${aws_sns_topic.sns_topic_subscription.*.arn}"
+}
+
+output "aws_sns_topic_no_subscription_arn" {
+  value = "${aws_sns_topic.sns_topic_no_subscription.*.arn}"
+}
+
+output "sns_sqs_queue_arn" {
+value = "${aws_sqs_queue.sns_sqs_queue.*.arn}"
 }

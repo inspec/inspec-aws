@@ -42,6 +42,9 @@ module AWSInspecConfig
     aws_bucket_logging_disabled: "aws-bucket-logging-disabled-name-#{add_random_string}",
     aws_bucket_encryption_enabled: "aws-bucket-encryption-enabled-name-#{add_random_string}",
     aws_bucket_encryption_disabled: "aws-bucket-encryption-enabled-name-#{add_random_string}",
+    aws_sns_topic_with_subscription: "aws-sns-topic-subscription-#{add_random_string}",
+    aws_sns_topic_no_subscription: "aws-sns-topic-no-subscription-#{add_random_string}",
+    aws_sns_topic_subscription_sqs: "aws-sns-topic-subscription-sqs-#{add_random_string}",
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to

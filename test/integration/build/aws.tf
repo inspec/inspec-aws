@@ -30,11 +30,16 @@ variable "aws_bucket_log_sender_name" {}
 variable "aws_bucket_logging_disabled" {}
 variable "aws_bucket_encryption_enabled" {}
 variable "aws_bucket_encryption_disabled" {}
+variable "aws_sns_topic_with_subscription" {}
+variable "aws_sns_topic_no_subscription" {}
+variable "aws_sns_topic_subscription_sqs" {}
 
 provider "aws" {
   version = "= 1.48.0"
   region     = "${var.aws_region}"
 }
+
+data "aws_caller_identity" "creds" {}
 
 # default VPC always exists for every AWS region
 data "aws_vpc" "default" {
@@ -294,4 +299,26 @@ resource "aws_s3_bucket_object" "inspec_logo_private" {
   key    = "inspec-logo-private"
   source = "inspec-logo.png"
   acl    = "private"
+}
+
+resource "aws_sns_topic" "sns_topic_subscription" {
+  //  count = "${var.aws_enable_creation}"
+  name  = "${var.aws_sns_topic_with_subscription}"
+}
+
+resource "aws_sqs_queue" "sns_sqs_queue" {
+  //  count = "${var.aws_enable_creation}"
+  name = "${var.aws_sns_topic_subscription_sqs}"
+}
+
+resource "aws_sns_topic_subscription" "sqs_test_queue_subscription" {
+  //  count = "${var.aws_enable_creation}"
+  topic_arn = "${aws_sns_topic.sns_topic_subscription.arn}"
+  protocol  = "sqs"
+  endpoint  = "${aws_sqs_queue.sns_sqs_queue.arn}"
+}
+
+resource "aws_sns_topic" "sns_topic_no_subscription" {
+  //  count = "${var.aws_enable_creation}"
+  name = "${var.aws_sns_topic_no_subscription}"
 }
