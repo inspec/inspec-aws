@@ -29,7 +29,7 @@ class AwsSnsSubscriptionSQSPositiveTest < Minitest::Test
     sns_subscription["TopicArn"] = 'arn:aws:sns:us-west-2:0123456789012:aws-sns-topic-arn-yqcaaklkcomfhhpegznykagjk'
     sns_subscription["Endpoint"] = 'arn:aws:sns:us-west-2:0123456789012:aws-sns-topic-endpoint-sqs-auzoitotenajpdiftuiorkmrf'
     sns_subscription["Protocol"] = 'sqs'
-    data[:data] = OpenStruct.new({ :attributes => (sns_subscription) })
+    data[:data] = OpenStruct.new({ :attributes => sns_subscription })
     data[:client] = Aws::SNS::Client
     @sns_subscription = AwsSnsSubscription.new(subscription_arn: 'arn:aws:sns:us-west-2:0123456789012:aws-sns-subscription-auzoitotenajpdiftuiorkmrf', client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -75,7 +75,7 @@ class AwsSnsSubscriptionEmailNegativeTest < Minitest::Test
     sns_subscription["TopicArn"] = 'arn:aws:sns:us-west-2:0123456789012:aws-sns-topic-arn-yqcaaklkcomfhhpegznykagjk'
     sns_subscription["Endpoint"] = 'snsmail@notreal.com'
     sns_subscription["Protocol"] = 'email'
-    data[:data] = OpenStruct.new({ :attributes => (sns_subscription) })
+    data[:data] = OpenStruct.new({ :attributes => sns_subscription })
     data[:client] = Aws::SNS::Client
     @sns_subscription = AwsSnsSubscription.new(subscription_arn: 'arn:aws:sns:us-west-2:0123456789012:aws-sns-subscription-auzoitotenajpdiftuiorkmrf', client_args: { stub_responses: true }, stub_data: [data])
   end
