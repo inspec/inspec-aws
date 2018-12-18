@@ -302,23 +302,23 @@ resource "aws_s3_bucket_object" "inspec_logo_private" {
 }
 
 resource "aws_sns_topic" "sns_topic_subscription" {
-  //  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name  = "${var.aws_sns_topic_with_subscription}"
 }
 
 resource "aws_sqs_queue" "sns_sqs_queue" {
-  //  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_sns_topic_subscription_sqs}"
 }
 
 resource "aws_sns_topic_subscription" "sqs_test_queue_subscription" {
-  //  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   topic_arn = "${aws_sns_topic.sns_topic_subscription.arn}"
   protocol  = "sqs"
   endpoint  = "${aws_sqs_queue.sns_sqs_queue.arn}"
 }
 
 resource "aws_sns_topic" "sns_topic_no_subscription" {
-  //  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_sns_topic_no_subscription}"
 }
