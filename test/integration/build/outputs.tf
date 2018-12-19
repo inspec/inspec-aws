@@ -87,5 +87,30 @@ output "aws_sns_topic_no_subscription_arn" {
 }
 
 output "sns_sqs_queue_arn" {
-value = "${aws_sqs_queue.sns_sqs_queue.*.arn}"
+  value = "${aws_sqs_queue.sns_sqs_queue.*.arn}"
 }
+
+output "aws_security_group_default_vpc_id" {
+  value = "${data.aws_vpc.default.id}"
+}
+
+output "aws_security_group_default_id" {
+  value = "${data.aws_security_group.default.id}"
+}
+
+output "aws_security_group_alpha_id" {
+  value = "${aws_security_group.alpha.*.id}"
+}
+
+output "aws_security_group_beta_id" {
+  value = "${aws_security_group.beta.*.id}"
+}
+
+output "aws_security_group_gamma_id" {
+  value = "${aws_security_group.gamma.*.id}"
+}
+
+output "aws_security_group_omega_id" {
+  value = "${aws_security_group.omega.*.id}"
+}
+

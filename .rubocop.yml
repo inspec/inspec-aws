@@ -17,7 +17,7 @@ Encoding:
 HashSyntax:
   Enabled: true
 ClassLength:
-  Max: 200
+  Max: 300
 LineLength:
   Enabled: false
 Lint/ParenthesesAsGroupedExpression:
@@ -37,9 +37,9 @@ Metrics/PerceivedComplexity:
 Metrics/AbcSize:
   Max: 75
 Metrics/CyclomaticComplexity:
-  Max: 15
+  Max: 25
 Metrics/PerceivedComplexity:
-  Max: 15
+  Max: 25
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'

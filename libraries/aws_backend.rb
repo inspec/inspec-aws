@@ -7,6 +7,7 @@ require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-sns'
 require 'aws-sdk-cloudtrail'
+require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
 #
@@ -106,7 +107,6 @@ class AwsResourceBase < Inspec.resource(1)
     fail_resource('No AWS credentials available')
   rescue Aws::Errors::ServiceError => e
     p e.message
-    fail_resource e.message
     @failed_resource = true
     nil
   end
