@@ -51,7 +51,7 @@ data "aws_vpc" "default" {
 }
 
 resource "aws_vpc" "inspec_vpc" {
-  //  count            = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   cidr_block = "${var.aws_vpc_cidr_block}"
   instance_tenancy = "${var.aws_vpc_instance_tenancy}"
 
@@ -345,18 +345,21 @@ data "aws_security_group" "default" {
 }
 
 resource "aws_security_group" "alpha" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_security_group_alpha}"
   description = "SG alpha"
   vpc_id = "${data.aws_vpc.default.id}"
 }
 
 resource "aws_security_group" "beta" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_security_group_beta}"
   description = "SG beta"
   vpc_id = "${data.aws_vpc.default.id}"
 }
 
 resource "aws_security_group" "gamma" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_security_group_gamma}"
   description = "SG gamma"
   vpc_id = "${data.aws_vpc.default.id}"
@@ -364,13 +367,14 @@ resource "aws_security_group" "gamma" {
 
 // Note this gets created in a new VPC and with no rules defined
 resource "aws_security_group" "omega" {
-  //  count            = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_security_group_omega}"
   description = "SG omega"
   vpc_id = "${aws_vpc.inspec_vpc.id}"
 }
 
 resource "aws_security_group_rule" "alpha_http_world" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "80"
   to_port = "80"
@@ -381,6 +385,7 @@ resource "aws_security_group_rule" "alpha_http_world" {
 }
 
 resource "aws_security_group_rule" "alpha_ssh_in" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "22"
   to_port = "22"
@@ -391,6 +396,7 @@ resource "aws_security_group_rule" "alpha_ssh_in" {
 }
 
 resource "aws_security_group_rule" "alpha_x11" {
+  count = "${var.aws_enable_creation}"
   description = "Only allow X11 out for some reason"
   type = "egress"
   from_port = "6000"
@@ -405,6 +411,7 @@ resource "aws_security_group_rule" "alpha_x11" {
 }
 
 resource "aws_security_group_rule" "alpha_all_ports" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "0"
   to_port = "65535"
@@ -415,6 +422,7 @@ resource "aws_security_group_rule" "alpha_all_ports" {
 }
 
 resource "aws_security_group_rule" "alpha_piv6_all_ports" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "0"
   to_port = "65535"
@@ -425,6 +433,7 @@ resource "aws_security_group_rule" "alpha_piv6_all_ports" {
 }
 
 resource "aws_security_group_rule" "beta_http_world" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "80"
   to_port = "80"
@@ -435,6 +444,7 @@ resource "aws_security_group_rule" "beta_http_world" {
 }
 
 resource "aws_security_group_rule" "beta_ssh_in_alfa" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "22"
   to_port = "22"
@@ -444,6 +454,7 @@ resource "aws_security_group_rule" "beta_ssh_in_alfa" {
 }
 
 resource "aws_security_group_rule" "beta_all_ports_in_gamma" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "0"
   to_port = "65535"
@@ -453,6 +464,7 @@ resource "aws_security_group_rule" "beta_all_ports_in_gamma" {
 }
 
 resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
+  count = "${var.aws_enable_creation}"
   type = "ingress"
   from_port = "22"
   to_port = "22"
