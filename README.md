@@ -15,6 +15,8 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_s3_bucket](docs/resources/aws_s3_bucket.md)
 - [aws_s3_bucket_object](docs/resources/aws_s3_bucket_object.md)
 - [aws_s3_buckets](docs/resources/aws_s3_buckets.md)
+- [aws_security_group](docs/resources/aws_security_group.md)
+- [aws_security_groups](docs/resources/aws_security_groups.md)
 - [aws_sns_subscription](docs/resources/aws_sns_subscription.md)
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
