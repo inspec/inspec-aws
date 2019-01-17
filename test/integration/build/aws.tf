@@ -479,7 +479,8 @@ resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
   security_group_id = "${aws_security_group.gamma.id}"
 }
 
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "db_rds" {
+  count = "${var.aws_enable_creation}"
   allocated_storage = 10
   storage_type = "${var.aws_rds_db_storage_type}"
   engine ="${var.aws_rds_db_engine}"

@@ -10,6 +10,7 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
 - [aws_kms_key](docs/resources/aws_kms_key.md)
 - [aws_kms_keys](docs/resources/aws_kms_keys.md)
+- [aws_rds_instance](docs/resources/aws_rds_instance.md)
 - [aws_route_table](docs/resources/aws_route_table.md)
 - [aws_route_tables](docs/resources/aws_route_tables.md)
 - [aws_s3_bucket](docs/resources/aws_s3_bucket.md)
