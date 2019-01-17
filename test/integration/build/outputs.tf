@@ -114,3 +114,6 @@ output "aws_security_group_omega_id" {
   value = "${aws_security_group.omega.*.id}"
 }
 
+output "aws_rds_instance_id" {
+  value = "${aws_db_instance.default.*.id}"
+}

@@ -37,6 +37,12 @@ variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
 variable "aws_security_group_omega" {}
+variable "aws_rds_db_identifier" {}
+variable "aws_rds_db_name" {}
+variable "aws_rds_db_engine" {}
+variable "aws_rds_db_engine_version" {}
+variable "aws_rds_db_storage_type" {}
+variable "aws_rds_db_master_user" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -471,4 +477,18 @@ resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
   protocol = "tcp"
   source_security_group_id = "${aws_security_group.alpha.id}"
   security_group_id = "${aws_security_group.gamma.id}"
+}
+
+resource "aws_db_instance" "default" {
+  allocated_storage = 10
+  storage_type = "${var.aws_rds_db_storage_type}"
+  engine ="${var.aws_rds_db_engine}"
+  engine_version = "${var.aws_rds_db_engine_version}"
+  instance_class = "db.t2.micro"
+  identifier = "${var.aws_rds_db_identifier}"
+  name = "${var.aws_rds_db_name}"
+  username = "${var.aws_rds_db_master_user}"
+  password = "testpassword"
+  parameter_group_name = "default.mysql5.6"
+  skip_final_snapshot = true
 }

@@ -7,6 +7,7 @@ require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-sns'
 require 'aws-sdk-cloudtrail'
+require 'aws-sdk-rds'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -55,6 +56,10 @@ class AwsConnection
 
   def sns_client
     aws_client(Aws::SNS::Client)
+  end
+
+  def rds_client
+    aws_client(Aws::RDS::Client)
   end
 
   def unique_identifier

@@ -49,6 +49,12 @@ module AWSInspecConfig
     aws_security_group_beta: "aws-security-group-beta-#{add_random_string}",
     aws_security_group_gamma: "aws-security-group-gamma-#{add_random_string}",
     aws_security_group_omega: "aws-security-group-omega-#{add_random_string}",
+    aws_rds_db_identifier: "awsrds#{add_random_string}",
+    aws_rds_db_name: "awsrdsname#{add_random_string}",
+    aws_rds_db_engine: 'mysql',
+    aws_rds_db_engine_version: '5.6.37',
+    aws_rds_db_storage_type: 'gp2',
+    aws_rds_db_master_user: 'awsinspecuser',
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
