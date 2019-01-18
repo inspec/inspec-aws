@@ -43,6 +43,13 @@ variable "aws_rds_db_engine" {}
 variable "aws_rds_db_engine_version" {}
 variable "aws_rds_db_storage_type" {}
 variable "aws_rds_db_master_user" {}
+variable "aws_cloud_trail_name" {}
+variable "aws_cloud_trail_bucket_name" {}
+variable "aws_cloud_trail_log_group" {}
+variable "aws_cloud_trail_key_description" {}
+variable "aws_cloud_watch_logs_role_name" {}
+variable "aws_cloud_watch_logs_role_policy_name" {}
+variable "aws_cloud_trail_open_name" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -50,6 +57,7 @@ provider "aws" {
 }
 
 data "aws_caller_identity" "creds" {}
+data "aws_region" "current" {}
 
 # default VPC always exists for every AWS region
 data "aws_vpc" "default" {
@@ -492,4 +500,201 @@ resource "aws_db_instance" "db_rds" {
   password = "testpassword"
   parameter_group_name = "default.mysql5.6"
   skip_final_snapshot = true
+}
+
+# Cloudtrail
+
+resource "aws_s3_bucket" "trail_1_bucket" {
+  bucket        = "${var.aws_cloud_trail_bucket_name}"
+  force_destroy = true
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AWSCloudTrailAclCheck",
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "cloudtrail.amazonaws.com"
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::${var.aws_cloud_trail_bucket_name}"
+        },
+        {
+            "Sid": "AWSCloudTrailWrite",
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "cloudtrail.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::${var.aws_cloud_trail_bucket_name}/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_iam_role" "cloud_watch_logs_role" {
+  name = "${var.aws_cloud_watch_logs_role_name}"
+
+  assume_role_policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+          "Sid": "",
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "cloudtrail.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_iam_role_policy" "cloud_watch_logs_role_policy" {
+  depends_on = ["aws_iam_role.cloud_watch_logs_role"]
+
+  name = "${var.aws_cloud_watch_logs_role_policy_name}"
+  role = "${var.aws_cloud_watch_logs_role_name}"
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AWSCloudTrailCreateLogStream",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream"
+            ],
+            "Resource": [
+                "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.creds.account_id}:log-group:${aws_cloudwatch_log_group.trail_1_log_group.name}:log-stream:${data.aws_caller_identity.creds.account_id}_CloudTrail_${data.aws_region.current.name}*"
+            ]
+        },
+        {
+            "Sid": "AWSCloudTrailPutLogEvents",
+            "Effect": "Allow",
+            "Action": [
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.creds.account_id}:log-group:${aws_cloudwatch_log_group.trail_1_log_group.name}:log-stream:${data.aws_caller_identity.creds.account_id}_CloudTrail_${data.aws_region.current.name}*"
+            ]
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_cloudwatch_log_group" "trail_1_log_group" {
+  name = "${var.aws_cloud_trail_log_group}"
+}
+
+resource "aws_kms_key" "trail_1_key" {
+  description             = "${var.aws_cloud_trail_key_description}"
+  deletion_window_in_days = 10
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "Key policy created by CloudTrail",
+  "Statement": [
+    {
+      "Sid": "Enable IAM User Permissions",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${data.aws_caller_identity.creds.account_id}:root"
+      },
+      "Action": "kms:*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Allow CloudTrail to encrypt logs",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+      },
+      "Action": "kms:GenerateDataKey*",
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "kms:EncryptionContext:aws:cloudtrail:arn": "arn:aws:cloudtrail:*:${data.aws_caller_identity.creds.account_id}:trail/*"
+        }
+      }
+    },
+    {
+      "Sid": "Allow CloudTrail to describe key",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+      },
+      "Action": "kms:DescribeKey",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Allow principals in the account to decrypt log files",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "kms:Decrypt",
+        "kms:ReEncryptFrom"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "kms:CallerAccount": "${data.aws_caller_identity.creds.account_id}"
+        },
+        "StringLike": {
+          "kms:EncryptionContext:aws:cloudtrail:arn": "arn:aws:cloudtrail:*:${data.aws_caller_identity.creds.account_id}:trail/*"
+        }
+      }
+    },
+    {
+      "Sid": "Allow alias creation during setup",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "kms:CreateAlias",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "kms:ViaService": "ec2.${data.aws_region.current.name}.amazonaws.com",
+          "kms:CallerAccount": "${data.aws_caller_identity.creds.account_id}"
+        }
+      }
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_cloudtrail" "trail_1" {
+  depends_on                    = ["aws_iam_role_policy.cloud_watch_logs_role_policy"]
+  name                          = "${var.aws_cloud_trail_name}"
+  s3_bucket_name                = "${aws_s3_bucket.trail_1_bucket.id}"
+  include_global_service_events = true
+  enable_logging                = true
+  is_multi_region_trail         = true
+  enable_log_file_validation    = true
+
+  cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.trail_1_log_group.arn}"
+  cloud_watch_logs_role_arn  = "${aws_iam_role.cloud_watch_logs_role.arn}"
+  kms_key_id                 = "${aws_kms_key.trail_1_key.arn}"
+}
+
+resource "aws_cloudtrail" "trail_2" {
+  name           = "${var.aws_cloud_trail_open_name}"
+  s3_bucket_name = "${aws_s3_bucket.trail_1_bucket.id}"
 }

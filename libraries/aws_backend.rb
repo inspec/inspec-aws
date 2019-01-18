@@ -62,6 +62,10 @@ class AwsConnection
     aws_client(Aws::RDS::Client)
   end
 
+  def cloudtrail_client
+    aws_client(Aws::CloudTrail::Client)
+  end
+
   def unique_identifier
     # use aws account id
     client = aws_client(::Aws::STS::Client)

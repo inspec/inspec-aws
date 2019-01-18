@@ -55,6 +55,13 @@ module AWSInspecConfig
     aws_rds_db_engine_version: '5.6.37',
     aws_rds_db_storage_type: 'gp2',
     aws_rds_db_master_user: 'awsinspecuser',
+    aws_cloud_trail_name: "aws-cloud-trail-#{add_random_string}",
+    aws_cloud_trail_bucket_name: "aws-cloud-trail-bucket-#{add_random_string}",
+    aws_cloud_trail_log_group: "aws-cloud-trail-log-group-#{add_random_string}",
+    aws_cloud_trail_key_description: "aws-cloud-trail-key-description-#{add_random_string}",
+    aws_cloud_watch_logs_role_name: "aws-iam-role-cloud-watch-logs-#{add_random_string}",
+    aws_cloud_watch_logs_role_policy_name: "aws-iam-role-cloud-watch-logs-policy-#{add_random_string}",
+    aws_cloud_trail_open_name: "aws-cloud-trail-open-#{add_random_string}",
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
