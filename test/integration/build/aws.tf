@@ -50,6 +50,19 @@ variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_watch_logs_role_name" {}
 variable "aws_cloud_watch_logs_role_policy_name" {}
 variable "aws_cloud_trail_open_name" {}
+variable "aws_cloud_watch_log_metric_filter_name" {}
+variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_pattern" {}
+variable "aws_cloud_watch_log_metric_filter_namespace" {}
+variable "aws_cloud_watch_log_metric_filter_two_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
+variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
+variable "aws_cloud_watch_alarm_name" {}
+variable "aws_cloud_watch_alarm_metric_name" {}
+
 
 provider "aws" {
   version = "= 1.48.0"
@@ -706,4 +719,51 @@ resource "aws_cloudtrail" "trail_2" {
   count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_trail_open_name}"
   s3_bucket_name = "${aws_s3_bucket.trail_1_bucket.id}"
+}
+
+# Cloudwatch
+
+resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
+  name = "${var.aws_cloud_watch_log_metric_filter_name}"
+  pattern = "${var.aws_cloud_watch_log_metric_filter_pattern}"
+  log_group_name = "${aws_cloudwatch_log_group.log_metric_filter_log_group.name}"
+
+  metric_transformation {
+    name = "${var.aws_cloud_watch_log_metric_filter_metric_name}"
+    namespace = "${var.aws_cloud_watch_log_metric_filter_namespace}"
+    value = "1"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "log_metric_filter_log_group" {
+  name = "${var.aws_cloud_watch_log_metric_filter_log_group_name}"
+}
+
+resource "aws_cloudwatch_log_metric_filter" "log_metric_filter_pattern" {
+  name = "${var.aws_cloud_watch_log_metric_filter_two_name}"
+  pattern = "${var.aws_cloud_watch_log_metric_filter_two_pattern}"
+  log_group_name = "${aws_cloudwatch_log_group.log_metric_filter_pattern_log_group.name}"
+
+  metric_transformation {
+    name = "${var.aws_cloud_watch_log_metric_filter_two_metric_name}"
+    namespace = "${var.aws_cloud_watch_log_metric_filter_two_namespace}"
+    value = "1"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "log_metric_filter_pattern_log_group" {
+  name = "${var.aws_cloud_watch_log_metric_filter_two_log_group_name}"
+}
+
+resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
+  alarm_name = "${var.aws_cloud_watch_alarm_name}"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods = "2"
+  metric_name = "${var.aws_cloud_watch_alarm_metric_name}"
+  namespace = "${var.aws_cloud_watch_log_metric_filter_namespace}"
+  period = "120"
+  statistic = "Average"
+  threshold = "80"
+  alarm_description = "This metric is a test metric"
+  insufficient_data_actions = []
 }

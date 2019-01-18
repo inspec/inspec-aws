@@ -7,6 +7,7 @@ require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-sns'
 require 'aws-sdk-cloudtrail'
+require 'aws-sdk-cloudwatch'
 require 'aws-sdk-rds'
 require 'rspec/expectations'
 
@@ -64,6 +65,10 @@ class AwsConnection
 
   def cloudtrail_client
     aws_client(Aws::CloudTrail::Client)
+  end
+
+  def cloudwatch_client
+    aws_client(Aws::CloudWatch::Client)
   end
 
   def unique_identifier

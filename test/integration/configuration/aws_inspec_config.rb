@@ -62,6 +62,18 @@ module AWSInspecConfig
     aws_cloud_watch_logs_role_name: "aws-iam-role-cloud-watch-logs-#{add_random_string}",
     aws_cloud_watch_logs_role_policy_name: "aws-iam-role-cloud-watch-logs-policy-#{add_random_string}",
     aws_cloud_trail_open_name: "aws-cloud-trail-open-#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_name: "aws_cloudwatch_lmf_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_log_group_name: "aws_lmf_log_group_name_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_metric_name: "aws_lmf_metric_name_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_pattern: "awslmfpattern1#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_namespace: "aws_lmf_namespace_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_two_name: "aws_cloudwatch_lmf_pattern_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_two_log_group_name: "aws_lmf_pattern_log_group_name_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_two_metric_name: "aws_lmf_pattern_metric_name_#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_two_pattern: "awslmfpattern1#{add_random_string}",
+    aws_cloud_watch_log_metric_filter_two_namespace: "aws_lmf_namespace_#{add_random_string}",
+    aws_cloud_watch_alarm_name: "aws-cloudwatch-alarm-#{add_random_string}",
+    aws_cloud_watch_alarm_metric_name: "aws_cloudwatch_alarm_metric_1",
     # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
     aws_enable_creation: 1,
     # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
