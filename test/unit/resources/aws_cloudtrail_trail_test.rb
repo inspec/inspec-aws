@@ -88,6 +88,10 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
   def test_log_file_validation_enabled_positive
     assert @cloudtrail_trail.log_file_validation_enabled?
   end
+
+  def test_delivered_logs_days_ago
+    assert_equal(30, @cloudtrail_trail.delivered_logs_days_ago)
+  end
 end
 
 class AwsCloudTrailTrailNegativeTest < Minitest::Test
@@ -103,7 +107,11 @@ class AwsCloudTrailTrailNegativeTest < Minitest::Test
     mock_cloudtrail_trail[:log_file_validation_enabled] = false
     data[:data] = { :trail_list => [mock_cloudtrail_trail] }
     data[:client] = Aws::CloudTrail::Client
-    @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail-negative', client_args: { stub_responses: true }, stub_data: [data])
+    status = {}
+    status[:method] = :get_trail_status
+    status[:data] = { :latest_cloud_watch_logs_delivery_time => nil }
+    status[:client] = Aws::CloudTrail::Client
+    @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail-negative', client_args: { stub_responses: true }, stub_data: [data, status])
   end
 
   def test_cloudtrail_trail_name
@@ -140,5 +148,9 @@ class AwsCloudTrailTrailNegativeTest < Minitest::Test
 
   def test_log_file_validation_enabled_negative
     refute @cloudtrail_trail.log_file_validation_enabled?
+  end
+
+  def test_delivered_logs_days_ago
+    assert_nil(@cloudtrail_trail.delivered_logs_days_ago)
   end
 end
