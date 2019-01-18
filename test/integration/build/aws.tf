@@ -491,7 +491,7 @@ resource "aws_db_instance" "db_rds" {
   count = "${var.aws_enable_creation}"
   allocated_storage = 10
   storage_type = "${var.aws_rds_db_storage_type}"
-  engine ="${var.aws_rds_db_engine}"
+  engine = "${var.aws_rds_db_engine}"
   engine_version = "${var.aws_rds_db_engine_version}"
   instance_class = "db.t2.micro"
   identifier = "${var.aws_rds_db_identifier}"
@@ -505,7 +505,8 @@ resource "aws_db_instance" "db_rds" {
 # Cloudtrail
 
 resource "aws_s3_bucket" "trail_1_bucket" {
-  bucket        = "${var.aws_cloud_trail_bucket_name}"
+  count = "${var.aws_enable_creation}"
+  bucket = "${var.aws_cloud_trail_bucket_name}"
   force_destroy = true
 
   policy = <<POLICY
@@ -541,6 +542,7 @@ POLICY
 }
 
 resource "aws_iam_role" "cloud_watch_logs_role" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_watch_logs_role_name}"
 
   assume_role_policy = <<POLICY
@@ -561,7 +563,9 @@ POLICY
 }
 
 resource "aws_iam_role_policy" "cloud_watch_logs_role_policy" {
-  depends_on = ["aws_iam_role.cloud_watch_logs_role"]
+  count = "${var.aws_enable_creation}"
+  depends_on = [
+    "aws_iam_role.cloud_watch_logs_role"]
 
   name = "${var.aws_cloud_watch_logs_role_policy_name}"
   role = "${var.aws_cloud_watch_logs_role_name}"
@@ -596,11 +600,13 @@ POLICY
 }
 
 resource "aws_cloudwatch_log_group" "trail_1_log_group" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_trail_log_group}"
 }
 
 resource "aws_kms_key" "trail_1_key" {
-  description             = "${var.aws_cloud_trail_key_description}"
+  count = "${var.aws_enable_creation}"
+  description = "${var.aws_cloud_trail_key_description}"
   deletion_window_in_days = 10
 
   policy = <<POLICY
@@ -681,20 +687,23 @@ POLICY
 }
 
 resource "aws_cloudtrail" "trail_1" {
-  depends_on                    = ["aws_iam_role_policy.cloud_watch_logs_role_policy"]
-  name                          = "${var.aws_cloud_trail_name}"
-  s3_bucket_name                = "${aws_s3_bucket.trail_1_bucket.id}"
+  count = "${var.aws_enable_creation}"
+  depends_on = [
+    "aws_iam_role_policy.cloud_watch_logs_role_policy"]
+  name = "${var.aws_cloud_trail_name}"
+  s3_bucket_name = "${aws_s3_bucket.trail_1_bucket.id}"
   include_global_service_events = true
-  enable_logging                = true
-  is_multi_region_trail         = true
-  enable_log_file_validation    = true
+  enable_logging = true
+  is_multi_region_trail = true
+  enable_log_file_validation = true
 
   cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.trail_1_log_group.arn}"
-  cloud_watch_logs_role_arn  = "${aws_iam_role.cloud_watch_logs_role.arn}"
-  kms_key_id                 = "${aws_kms_key.trail_1_key.arn}"
+  cloud_watch_logs_role_arn = "${aws_iam_role.cloud_watch_logs_role.arn}"
+  kms_key_id = "${aws_kms_key.trail_1_key.arn}"
 }
 
 resource "aws_cloudtrail" "trail_2" {
-  name           = "${var.aws_cloud_trail_open_name}"
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_cloud_trail_open_name}"
   s3_bucket_name = "${aws_s3_bucket.trail_1_bucket.id}"
 }

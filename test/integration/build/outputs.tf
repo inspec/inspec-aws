@@ -119,29 +119,29 @@ output "aws_rds_instance_id" {
 }
 
 output "aws_cloud_trail_arn" {
-  value = "${aws_cloudtrail.trail_1.arn}"
+  value = "${aws_cloudtrail.trail_1.*.arn}"
 }
 
 output "aws_cloud_trail_bucket_id" {
-  value = "${aws_s3_bucket.trail_1_bucket.id}"
+  value = "${aws_s3_bucket.trail_1_bucket.*.id}"
 }
 
 output "aws_cloud_trail_key_arn" {
-  value = "${aws_kms_key.trail_1_key.arn}"
+  value = "${aws_kms_key.trail_1_key.*.arn}"
 }
 
 output "aws_cloud_trail_cloud_watch_logs_group_arn" {
-  value = "${aws_cloudwatch_log_group.trail_1_log_group.arn}"
+  value = "${aws_cloudwatch_log_group.trail_1_log_group.*.arn}"
 }
 
 output "aws_cloud_trail_cloud_watch_logs_role_arn" {
-  value = "${aws_iam_role.cloud_watch_logs_role.arn}"
+  value = "${aws_iam_role.cloud_watch_logs_role.*.arn}"
 }
 
 output "aws_cloud_trail_open_s3_bucket_id" {
-  value = "${aws_s3_bucket.trail_1_bucket.id}"
+  value = "${aws_s3_bucket.trail_1_bucket.*.id}"
 }
 
 output "aws_cloud_trail_open_arn" {
-  value = "${aws_cloudtrail.trail_2.arn}"
+  value = "${aws_cloudtrail.trail_2.*.arn}"
 }
