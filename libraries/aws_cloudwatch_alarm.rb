@@ -22,8 +22,8 @@ class AwsCloudwatchAlarm < AwsResourceBase
     # Call the parent class constructor
     raise ArgumentError, 'aws_cloudwatch_alarm requires metric_name and metric_namespace parameters to be specified' if opts.is_a?(String)
     super(opts)
-    validate_parameters([:metric_name, :metric_namespace])
-    raise ArgumentError, 'aws_cloudwatch_alarm requires metric_name and metric_namespace parameters to be specified' unless [:metric_name, :metric_namespace].all? { |k| opts.key? k }
+    validate_parameters(%i(metric_name metric_namespace))
+    raise ArgumentError, 'aws_cloudwatch_alarm requires metric_name and metric_namespace parameters to be specified' unless %i(metric_name metric_namespace).all? { |k| opts.key? k }
     @metric_name = opts[:metric_name]
     @metric_namespace = opts[:metric_namespace]
     catch_aws_errors do

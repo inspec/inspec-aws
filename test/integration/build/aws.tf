@@ -724,6 +724,7 @@ resource "aws_cloudtrail" "trail_2" {
 # Cloudwatch
 
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_watch_log_metric_filter_name}"
   pattern = "${var.aws_cloud_watch_log_metric_filter_pattern}"
   log_group_name = "${aws_cloudwatch_log_group.log_metric_filter_log_group.name}"
@@ -736,10 +737,12 @@ resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_log_group" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_watch_log_metric_filter_log_group_name}"
 }
 
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter_pattern" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_watch_log_metric_filter_two_name}"
   pattern = "${var.aws_cloud_watch_log_metric_filter_two_pattern}"
   log_group_name = "${aws_cloudwatch_log_group.log_metric_filter_pattern_log_group.name}"
@@ -752,10 +755,12 @@ resource "aws_cloudwatch_log_metric_filter" "log_metric_filter_pattern" {
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_pattern_log_group" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_cloud_watch_log_metric_filter_two_log_group_name}"
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
+  count = "${var.aws_enable_creation}"
   alarm_name = "${var.aws_cloud_watch_alarm_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods = "2"

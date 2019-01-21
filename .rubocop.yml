@@ -22,6 +22,8 @@ LineLength:
   Enabled: false
 Lint/ParenthesesAsGroupedExpression:
   Enabled: false
+Lint/ReturnInVoidContext:
+  Enabled: false
 EmptyLinesAroundBlockBody:
   Enabled: false
 MethodLength:
