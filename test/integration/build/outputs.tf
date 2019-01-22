@@ -145,3 +145,11 @@ output "aws_cloud_trail_open_s3_bucket_id" {
 output "aws_cloud_trail_open_arn" {
   value = "${aws_cloudtrail.trail_2.*.arn}"
 }
+
+output "aws_config_recorder_role_arn" {
+  value = "${aws_iam_role.role_for_config_recorder.*.arn}"
+}
+
+output "aws_delivery_channel_sns_topic_arn" {
+  value = "${aws_sns_topic.sns_topic_for_delivery_channel.*.arn}"
+}

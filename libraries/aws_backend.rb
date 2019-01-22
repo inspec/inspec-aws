@@ -10,6 +10,7 @@ require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
 require 'aws-sdk-rds'
+require 'aws-sdk-configservice'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -74,6 +75,10 @@ class AwsConnection
 
   def cloudwatchlogs_client
     aws_client(Aws::CloudWatchLogs::Client)
+  end
+
+  def config_client
+    aws_client(Aws::ConfigService::Client)
   end
 
   def unique_identifier

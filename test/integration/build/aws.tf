@@ -62,6 +62,12 @@ variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
 variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
 variable "aws_cloud_watch_alarm_name" {}
 variable "aws_cloud_watch_alarm_metric_name" {}
+variable "aws_configuration_recorder_name" {}
+variable "aws_configuration_recorder_role" {}
+variable "aws_delivery_channel_name" {}
+variable "aws_delivery_channel_frequency" {}
+variable "aws_delivery_channel_bucket_name" {}
+variable "aws_delivery_channel_sns_topic_name" {}
 
 
 provider "aws" {
@@ -771,4 +777,76 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
   threshold = "80"
   alarm_description = "This metric is a test metric"
   insufficient_data_actions = []
+}
+
+# AWS Config - note can only have one config recorder per region
+
+resource "aws_config_configuration_recorder" "config_recorder" {
+  name = "${var.aws_configuration_recorder_name}"
+  role_arn = "${aws_iam_role.role_for_config_recorder.arn}"
+}
+
+resource "aws_iam_role" "role_for_config_recorder" {
+  name = "${var.aws_configuration_recorder_role}"
+
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "config.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_s3_bucket" "bucket_for_delivery_channel" {
+  bucket = "${var.aws_delivery_channel_bucket_name}"
+  acl = "public-read"
+  force_destroy = true
+}
+
+resource "aws_iam_role_policy" "policy_for_delivery_channel" {
+  name = "policy_for_delivery_channel"
+  role = "${aws_iam_role.role_for_config_recorder.id}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "${aws_s3_bucket.bucket_for_delivery_channel.arn}",
+        "${aws_s3_bucket.bucket_for_delivery_channel.arn}/*"
+      ]
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_sns_topic" "sns_topic_for_delivery_channel" {
+  name = "${var.aws_delivery_channel_sns_topic_name}"
+}
+
+resource "aws_config_delivery_channel" "delivery_channel" {
+  name = "${var.aws_delivery_channel_name}"
+  s3_bucket_name = "${aws_s3_bucket.bucket_for_delivery_channel.bucket}"
+  depends_on = [
+    "aws_config_configuration_recorder.config_recorder"]
+  sns_topic_arn = "${aws_sns_topic.sns_topic_for_delivery_channel.arn}"
+
+  snapshot_delivery_properties = {
+    delivery_frequency = "${var.aws_delivery_channel_frequency}"
+  }
 }
