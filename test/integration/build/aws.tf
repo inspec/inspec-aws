@@ -782,11 +782,13 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
 # AWS Config - note can only have one config recorder per region
 
 resource "aws_config_configuration_recorder" "config_recorder" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_configuration_recorder_name}"
   role_arn = "${aws_iam_role.role_for_config_recorder.arn}"
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_configuration_recorder_role}"
 
   assume_role_policy = <<POLICY
@@ -807,12 +809,14 @@ POLICY
 }
 
 resource "aws_s3_bucket" "bucket_for_delivery_channel" {
+  count = "${var.aws_enable_creation}"
   bucket = "${var.aws_delivery_channel_bucket_name}"
   acl = "public-read"
   force_destroy = true
 }
 
 resource "aws_iam_role_policy" "policy_for_delivery_channel" {
+  count = "${var.aws_enable_creation}"
   name = "policy_for_delivery_channel"
   role = "${aws_iam_role.role_for_config_recorder.id}"
 
@@ -836,10 +840,12 @@ POLICY
 }
 
 resource "aws_sns_topic" "sns_topic_for_delivery_channel" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_delivery_channel_sns_topic_name}"
 }
 
 resource "aws_config_delivery_channel" "delivery_channel" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_delivery_channel_name}"
   s3_bucket_name = "${aws_s3_bucket.bucket_for_delivery_channel.bucket}"
   depends_on = [

@@ -8,6 +8,8 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
 - [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md)
 - [aws_cloudwatch_log_metric_filter](docs/resources/aws_cloudwatch_log_metric_filter.md)
+- [aws_config_delivery_channel](docs/resources/aws_config_delivery_channel.md)
+- [aws_config_recorder](docs/resources/aws_config_recorder.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)

@@ -37,7 +37,7 @@ class AwsConfigDeliveryChannel < AwsResourceBase
       @sns_topic_arn = channel[:sns_topic_arn]
       @delivery_frequency_in_hours = channel.dig(:config_snapshot_delivery_properties, :delivery_frequency)
       frequencies = {
-          'One_Hour' => 1,
+        'One_Hour' => 1,
           'TwentyFour_Hours' => 24,
           'Three_Hours' => 3,
           'Six_Hours' => 6,
