@@ -1,72 +1,47 @@
 require 'helper'
-require 'aws_vpcs'
+require 'aws_regions'
 require 'aws-sdk-core'
 
-class AwsVpcsConstructorTest < Minitest::Test
+class AwsRegionsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsVpcs.new(client_args: { stub_responses: true })
+    AwsRegions.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AwsVpcs.new('rubbish') }
+    assert_raises(ArgumentError) { AwsRegions.new('rubbish') }
   end
 
-  def test_vpcs_non_existing_for_empty_response
-    refute AwsVpcs.new(client_args: { stub_responses: true }).exist?
+  def test_regions_non_existing_for_empty_response
+    refute AwsRegions.new(client_args: { stub_responses: true }).exist?
   end
 end
 
-class AwsVpcsHappyPathTest < Minitest::Test
+class AwsRegionsTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :describe_vpcs
-    mock_vpc = {}
-    mock_vpc[:vpc_id] = 'vpc-12345678'
-    mock_vpc[:cidr_block] = '10.0.0.0/27'
-    mock_vpc[:state] = 'available'
-    mock_vpc[:instance_tenancy] = 'default'
-    mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
-    mock_vpc[:is_default] = true
-    data[:data] = { :vpcs => [mock_vpc] }
+    data[:method] = :describe_regions
+    region = {}
+    region[:endpoint] = 'ec2.eu-west-2.amazonaws.com'
+    region[:region_name] = 'eu-west-2'
+    another_region = {}
+    another_region[:endpoint] = 'blog.chef.io'
+    another_region[:region_name] = 'you-should-really-read-this'
+    data[:data] = { :regions => [region, another_region] }
     data[:client] = Aws::EC2::Client
-    @vpcs = AwsVpcs.new(client_args: { stub_responses: true }, stub_data: [data])
+    @regions = AwsRegions.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_vpcs_exists
-    assert @vpcs.exist?
+  def test_region_exists
+    assert @regions.exist?
   end
 
-  def test_vpcs_ids
-    assert_equal(@vpcs.vpc_ids, ['vpc-12345678'])
+  def test_region_names
+    assert_equal(@regions.region_names, ['eu-west-2', 'you-should-really-read-this'])
   end
 
-  def test_vpcs_cidr_blocks
-    assert_equal(@vpcs.cidr_blocks, ['10.0.0.0/27'])
-  end
-
-  def test_vpcs_states
-    assert_equal(@vpcs.states, ['available'])
-  end
-
-  def test_vpcs_instance_tenancys
-    assert_equal(@vpcs.instance_tenancys, ['default'])
-  end
-
-  def test_vpcs_dhcp_options_ids
-    assert_equal(@vpcs.dhcp_options_ids, ['dopt-f557819d'])
-  end
-
-  def test_vpcs_is_defaults
-    assert_equal(@vpcs.is_defaults, [true])
-  end
-
-  def test_vpcs_filtering_not_there
-    refute @vpcs.where(:vpc_id => 'bad').exist?
-  end
-
-  def test_vpcs_filtering_there
-    assert @vpcs.where(:vpc_id => 'vpc-12345678').exist?
+  def test_region_endpoints
+    assert_equal(@regions.endpoints, ['ec2.eu-west-2.amazonaws.com', 'blog.chef.io'])
   end
 end

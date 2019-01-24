@@ -54,7 +54,7 @@ class AwsSecurityGroup < AwsResourceBase
   end
 
   def to_s
-    opts.has_key?(:aws_region) ? "EC2 Security Group #{@group_id} in #{opts[:aws_region]}" : "EC2 Security Group #{@group_id}"
+    opts.key?(:aws_region) ? "EC2 Security Group #{@group_id} in #{opts[:aws_region]}" : "EC2 Security Group #{@group_id}"
   end
 
   def allow_in?(criteria = {})
@@ -117,15 +117,15 @@ class AwsSecurityGroup < AwsResourceBase
 
   def allow__check_criteria(raw_criteria)
     allowed_criteria = [
-        :from_port,
-        :ipv4_range,
-        :ipv6_range,
-        :security_group,
-        :port,
-        :position,
-        :protocol,
-        :to_port,
-        :exact, # Internal
+      :from_port,
+      :ipv4_range,
+      :ipv6_range,
+      :security_group,
+      :port,
+      :position,
+      :protocol,
+      :to_port,
+      :exact, # Internal
     ]
     recognized_criteria = {}
     allowed_criteria.each do |expected_criterion|
