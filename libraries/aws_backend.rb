@@ -41,6 +41,10 @@ class AwsConnection
     klass.new(args)
   end
 
+  def update_region(aws_region)
+    Aws.config.update({ region: aws_region })
+  end
+
   def compute_client
     aws_client(Aws::EC2::Client)
   end
@@ -109,10 +113,11 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
+    @aws.update_region(opts[:aws_region]) if opts[:aws_region]
   end
 
   def validate_parameters(allowed_list)
-    allowed_list += %i(client_args stub_data)
+    allowed_list += %i(client_args stub_data aws_region)
     raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' if !@opts.values.all? { |a| !a.empty? }

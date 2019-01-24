@@ -57,6 +57,6 @@ class AwsConfigurationRecorder < AwsResourceBase
   end
 
   def to_s
-    "Configuration Recorder #{@recorder_name}"
+    opts.has_key?(:aws_region) ? "Configuration Recorder #{@recorder_name} in #{opts[:aws_region]}" : "Configuration Recorder #{@recorder_name}"
   end
 end

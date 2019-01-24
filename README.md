@@ -32,6 +32,147 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_vpc](docs/resources/aws_vpc.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 
+## Multi-region support
+
+With CIS certification firmly in mind, the following two controls are good examples of providing multi-region support for operations within InSpec AWS:
+
+- [aws_multi_region_security_group](test/integration/verify/controls/aws_multi_region_security_group.rb)
+- [aws_multi_region_config_recorder](test/integration/verify/controls/aws_multi_region_config_recorder.rb)
+
+Sample output:
+
+```
+
+Profile: Amazon Web Services  Resource Pack (inspec-aws)
+Version: 0.1.0
+Target:  local://
+
+  ✔  aws-multi-region-security-group-1.0: Ensure AWS Security Groups across all regions have the correct properties.
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-south-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-south-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-south-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-south-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-south-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-south-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-3 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-3 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-3 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-3 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-3 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-3 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-north-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-north-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-north-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-north-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-north-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-north-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-2 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-2 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-2 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-northeast-2 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-northeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-northeast-2 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-northeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-northeast-2 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-northeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-northeast-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-northeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-northeast-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-northeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-northeast-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-northeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in sa-east-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in sa-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in sa-east-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in sa-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in sa-east-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in sa-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ca-central-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ca-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ca-central-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ca-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ca-central-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ca-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-southeast-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-southeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-southeast-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-southeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-southeast-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-southeast-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-southeast-2 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-southeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-southeast-2 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-southeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-southeast-2 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in ap-southeast-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-central-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in eu-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-central-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in eu-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-central-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in eu-central-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-east-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-east-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-east-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-east-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-east-2 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-east-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-east-2 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-east-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-east-2 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-east-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-west-1 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-west-1 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-west-1 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-west-1 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-west-2 should exist
+     ✔  EC2 Security Group sg-00d511ce91a97f40f in us-west-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-west-2 should exist
+     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in us-west-2 should not allow in only {:port=>12345}
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-west-2 should exist
+     ✔  EC2 Security Group sg-9bb3b9f3 in us-west-2 should not allow in only {:port=>12345}
+  ✔  aws-multi-region-config-recorder-1.0: Ensure at least one AWS Configuration Recorder exists across all regions.
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-south-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-west-3 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-north-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-west-2 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-west-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-northeast-2 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-northeast-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in sa-east-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ca-central-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-southeast-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-southeast-2 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-central-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in us-east-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in us-east-2 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in us-west-1 should exist
+     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in us-west-2 should exist
+
+
+Profile: Amazon Web Services  Resource Pack (inspec-aws)
+Version: 0.1.0
+Target:  local://
+
+     No tests executed.
+
+Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 112 successful, 0 failures, 0 skipped
+``` 
+
 ## Enviroment and Setup Notes
 
 ### Train and InSpec Dependencies
@@ -135,6 +276,7 @@ At the time of writing the proposal would be to do the following:
 3. TBD - instead of relying on train, use connection logic within the resource pack for AWS client instantiation.
 
 The thinking behind 3. is to decouples the resource pack from the train release cycle.  This also simplifies testing and makes it easier to supply additional options at client instantiation e.g. for switching endpoints.
+
 
 ## Resource Unit tests
 
