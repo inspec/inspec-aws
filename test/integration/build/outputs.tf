@@ -153,3 +153,7 @@ output "aws_config_recorder_role_arn" {
 output "aws_delivery_channel_sns_topic_arn" {
   value = "${aws_sns_topic.sns_topic_for_delivery_channel.*.arn}"
 }
+
+output "aws_ecs_cluster_name" {
+  value = "${aws_ecs_cluster.ecs_cluster_1.name}"
+}

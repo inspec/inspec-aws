@@ -5,6 +5,14 @@ require 'rake/testtask'
 require 'rubocop/rake_task'
 require_relative 'test/integration/configuration/aws_inspec_config'
 
+INTEGRATION_DIR    = File.join('test','integration')
+CONTROLS_DIR       = File.join(INTEGRATION_DIR,'verify')
+TERRAFORM_DIR      = File.join(INTEGRATION_DIR,'build')
+TF_VAR_FILE_NAME   = 'inspec-aws.tfvars'
+TF_VAR_FILE        = File.join(TERRAFORM_DIR, TF_VAR_FILE_NAME)
+TF_PLAN_FILE       = 'inspec-aws.plan'
+PROFILE_ATTRIBUTES = 'aws-inspec-attributes.yaml'
+
 # Rubocop
 desc 'Run Rubocop lint checks'
 task :rubocop do
@@ -28,80 +36,77 @@ task lint: [:rubocop]
 task default: [:lint, :test, 'test:check']
 
 namespace :test do
-  # Specify the directory for the integration tests
-  integration_dir = File.join('test','integration')
 
-  # Specify the terraform plan name
-  plan_name = 'inspec-aws.plan'
-
-  # Specify the file_name for terraform variables to be stored
-  variable_file_name = 'inspec-aws.tfvars'
-
-  # The below file allows to inject parameters as profile attributes to inspec
-  profile_attributes = 'aws-inspec-attributes.yaml'
-
-  # run inspec check to verify that the profile is properly configured
   task :check do
+    # Run inspec check to verify that the profile is properly configured
     dir = File.join(File.dirname(__FILE__))
     sh("bundle exec inspec check #{dir}")
+
     # run inspec check on the sample profile to ensure all resources are loaded okay
     # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571
     # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
 
-  task :init_workspace do
-    # Initialize terraform workspace
-    cmd = format('cd %s && terraform init', File.join(integration_dir,'build'))
-    sh(cmd)
-  end
-
-  task :plan_integration_tests do
-    puts '----> Generating terraform and InSpec variable files'
-    AWSInspecConfig.store_json(variable_file_name)
-    AWSInspecConfig.store_yaml(profile_attributes)
-    puts '----> Generating the plan'
-    # Create the plan that can be applied to AWS
-    cmd = format('cd %s && terraform plan  -var-file=%s -out %s', File.join(integration_dir,'build'), variable_file_name, plan_name)
-    sh(cmd)
-  end
-
-  task :setup_integration_tests do
-    puts '----> Applying the plan'
-    # Apply the plan on AWS
-    cmd = format('cd %s && terraform apply %s', File.join(integration_dir,'build'), plan_name)
-    sh(cmd)
-    puts '----> Adding terraform outputs to InSpec variable file'
-    AWSInspecConfig.update_yaml(profile_attributes)
-  end
-
   task :run_integration_tests do
     puts '----> Running InSpec tests'
-    target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else File.join(integration_dir,'verify') end
+    target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else CONTROLS_DIR end
     reporter_name = if ENV['INSPEC_REPORT_NAME'] then ENV['INSPEC_REPORT_NAME'] else 'inspec-output' end
     # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
     cmd = 'bundle exec inspec exec %s --attrs %s --reporter cli json:%s.json html:%s.html'
     if ENV['INSPEC_TRAP_NON_ZERO_EXIT'] then cmd += ' || true' else  cmd += '; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi' end
-    cmd = format(cmd, target, File.join(integration_dir,'build', profile_attributes), reporter_name, reporter_name)
-    sh(cmd)
-  end
-
-  task :cleanup_integration_tests do
-    puts '----> Cleanup'
-    cmd = format('cd %s && terraform destroy -force -var-file=%s || true', File.join(integration_dir,'build'), variable_file_name)
+    cmd = format(cmd, target, File.join(TERRAFORM_DIR.to_s, PROFILE_ATTRIBUTES), reporter_name, reporter_name)
     sh(cmd)
   end
 
   desc 'Perform Integration Tests'
-  task :integration do
-    Rake::Task['test:init_workspace'].execute
-    if File.exist?(File.join(integration_dir, 'build', variable_file_name))
-      Rake::Task['test:cleanup_integration_tests'].execute
-    end
-    Rake::Task['test:plan_integration_tests'].execute
-    Rake::Task['test:setup_integration_tests'].execute
+  task integration: ['tf:apply'] do
     Rake::Task['test:run_integration_tests'].execute
-    Rake::Task['test:cleanup_integration_tests'].execute
+    Rake::Task['tf:destroy'].execute
   end
+end
+
+namespace :tf do
+
+  task :tf_dir do
+    Dir.chdir(TERRAFORM_DIR)
+  end
+
+  task init: [:tf_dir] do
+    puts '----> Initializing Terraform'
+    # Initialize terraform workspace
+    cmd = format('terraform init')
+    sh(cmd)
+  end
+
+  task plan: [:tf_dir, :init] do
+    if File.exist?(TF_VAR_FILE)
+      puts '----> Previous run not cleaned up - running cleanup...'
+      Rake::Task['tf:destroy'].execute
+    end
+    puts '----> Generating Terraform and InSpec variable files'
+    AWSInspecConfig.store_json(TF_VAR_FILE_NAME)
+    AWSInspecConfig.store_yaml(PROFILE_ATTRIBUTES)
+    puts '----> Generating the Plan'
+    # Create the plan that can be applied to AWS
+    cmd = format('terraform plan -var-file=%s -out %s', TF_VAR_FILE_NAME, TF_PLAN_FILE)
+    sh(cmd)
+  end
+
+  task apply: [:tf_dir, :plan] do
+    puts '----> Applying the plan'
+    # Apply the plan on AWS
+    cmd = format('terraform apply %s', TF_PLAN_FILE)
+    sh(cmd)
+    puts '----> Adding terraform outputs to InSpec variable file'
+    AWSInspecConfig.update_yaml(PROFILE_ATTRIBUTES)
+  end
+
+  task destroy: [:tf_dir] do
+    puts '----> Cleanup'
+    cmd = format('terraform destroy -force -var-file=%s || true', TF_VAR_FILE_NAME)
+    sh(cmd)
+  end
+
 end
 
 # Automatically generate a changelog for this project. Only loaded if

@@ -16,6 +16,7 @@ variable "aws_vm_name" {}
 variable "aws_vm_size" {}
 variable "aws_vm_image_filter" {}
 variable "aws_enable_creation" {}
+variable "aws_ecs_cluster_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_key_description_enabled" {}
 variable "aws_key_description_disabled" {}
@@ -855,4 +856,8 @@ resource "aws_config_delivery_channel" "delivery_channel" {
   snapshot_delivery_properties = {
     delivery_frequency = "${var.aws_delivery_channel_frequency}"
   }
+}
+
+resource "aws_ecs_cluster" "ecs_cluster_1" {
+  name = "${var.aws_ecs_cluster_name}"
 }
