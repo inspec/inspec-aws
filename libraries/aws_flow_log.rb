@@ -37,8 +37,8 @@ class AwsFlowLog < AwsResourceBase
 
   def id
     return @flow_log_id if @flow_log_id
-    return @subnet_id if @subnet_id
-    return @vpc_id if @vpc_id
+    return "for Subnet #{opts[:subnet_id]}" if opts[:subnet_id]
+    return "for VPC #{opts[:vpc_id]}" if opts[:vpc_id]
   end
 
   def resource_type
@@ -65,6 +65,6 @@ class AwsFlowLog < AwsResourceBase
   end
 
   def to_s
-    "AWS Flow Log #{id}"
+    opts.key?(:aws_region) ? "AWS Flow Log #{id} in #{opts[:aws_region]}" : "AWS Flow Log #{id}"
   end
 end

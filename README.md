@@ -75,7 +75,7 @@ Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
 Test Summary: 112 successful, 0 failures, 0 skipped
 ``` 
 
-## Enviroment and Setup Notes
+## Environment and Setup Notes
 
 ### Train and InSpec Dependencies
 

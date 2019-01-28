@@ -67,6 +67,6 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def to_s
-    "KMS Key #{@display_name}"
+    opts.key?(:aws_region) ? "KMS Key #{@display_name} in #{opts[:aws_region]}" : "KMS Key #{@display_name}"
   end
 end
