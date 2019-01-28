@@ -42,15 +42,36 @@ class AwsCloudTrailTrail < AwsResourceBase
     catch_aws_errors do
       begin
         trail_status = @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h
-        ((Time.now - trail_status[:latest_cloud_watch_logs_delivery_time])/(24*60*60)).to_i unless trail_status[:latest_cloud_watch_logs_delivery_time].nil?
+        ((Time.now - trail_status[:latest_cloud_watch_logs_delivery_time]) / (24 * 60 * 60)).to_i unless trail_status[:latest_cloud_watch_logs_delivery_time].nil?
       rescue Aws::CloudTrail::Errors::TrailNotFoundException
         nil
       end
     end
   end
 
+  def logging?
+    begin
+      @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h[:is_logging]
+    rescue Aws::CloudTrail::Errors::TrailNotFoundException
+      nil
+    end
+  end
+
   def encrypted?
     !@kms_key_id.nil?
+  end
+
+  def has_event_selector_mgmt_events_rw_type_all?
+    event_selector_found = false
+    begin
+      event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
+      event_selectors.event_selectors.each do |es|
+        event_selector_found = true if es.read_write_type == 'All' && es.include_management_events == true
+      end
+    rescue Aws::CloudTrail::Errors::TrailNotFoundException
+      event_selector_found
+    end
+    event_selector_found
   end
 
   def to_s
