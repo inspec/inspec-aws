@@ -861,13 +861,13 @@ resource "aws_config_delivery_channel" "delivery_channel" {
 # AWS Flow Log
 
 resource "aws_vpc" "inspec_vpc_flow_log" {
-  #  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   cidr_block = "${var.aws_vpc_cidr_block}"
   instance_tenancy = "${var.aws_vpc_instance_tenancy}"
 }
 
 resource "aws_flow_log" "flow_log_vpc" {
-  #  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   log_destination = "${aws_s3_bucket.flow_log_bucket.arn}"
   log_destination_type = "s3"
   traffic_type = "ALL"
@@ -875,7 +875,7 @@ resource "aws_flow_log" "flow_log_vpc" {
 }
 
 resource "aws_s3_bucket" "flow_log_bucket" {
-  #  count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   bucket = "${var.aws_flow_log_bucket_name}"
   force_destroy = true
 }
