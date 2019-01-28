@@ -41,10 +41,6 @@ class AwsConnection
     klass.new(args)
   end
 
-  def update_region(aws_region)
-    Aws.config.update({ region: aws_region })
-  end
-
   def compute_client
     aws_client(Aws::EC2::Client)
   end
@@ -100,7 +96,8 @@ class AwsResourceBase < Inspec.resource(1)
   def initialize(opts)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
-    @aws = AwsConnection.new(opts)
+    client_args = { client_args: { region: opts[:aws_region] } } if opts[:aws_region]
+    @aws = AwsConnection.new(params = client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
@@ -113,7 +110,6 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
-    @aws.update_region(opts[:aws_region]) if opts[:aws_region]
   end
 
   def validate_parameters(allowed_list)
