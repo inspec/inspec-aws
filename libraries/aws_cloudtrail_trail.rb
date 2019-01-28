@@ -15,6 +15,7 @@ class AwsCloudTrailTrail < AwsResourceBase
               :kms_key_id, :s3_bucket_name, :trail_arn, :is_multi_region_trail, :log_file_validation_enabled
   alias multi_region_trail? is_multi_region_trail
   alias log_file_validation_enabled? log_file_validation_enabled
+  alias has_log_file_validation_enabled? log_file_validation_enabled
   alias exists? exists
 
   def initialize(opts = {})
