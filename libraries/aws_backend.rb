@@ -54,10 +54,6 @@ class AwsConnection
 
   # SDK Client convenience methods
 
-  def ecs_client
-    aws_client(Aws::ECS::Client)
-  end
-
   def cloudtrail_client
     aws_client(Aws::CloudTrail::Client)
   end
@@ -76,6 +72,10 @@ class AwsConnection
 
   def config_client
     aws_client(Aws::ConfigService::Client)
+  end
+
+  def ecs_client
+    aws_client(Aws::ECS::Client)
   end
 
   def iam_client
@@ -107,7 +107,8 @@ class AwsResourceBase < Inspec.resource(1)
   def initialize(opts)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
-    @aws = AwsConnection.new(opts)
+    client_args = { client_args: { region: opts[:aws_region] } } if opts[:aws_region]
+    @aws = AwsConnection.new(params = client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
@@ -120,7 +121,6 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
-    @aws.update_region(opts[:aws_region]) if opts[:aws_region]
   end
 
   def validate_parameters(allowed_list)

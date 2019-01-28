@@ -154,6 +154,14 @@ output "aws_delivery_channel_sns_topic_arn" {
   value = "${aws_sns_topic.sns_topic_for_delivery_channel.*.arn}"
 }
 
+output "aws_vpc_flow_log_id" {
+  value = "${aws_vpc.inspec_vpc_flow_log.*.id}"
+}
+
+output "aws_flow_log_id" {
+  value = "${aws_flow_log.flow_log_vpc.*.id}"
+}
+
 output "aws_ecs_cluster_name" {
   value = "${aws_ecs_cluster.ecs_cluster_1.name}"
 }

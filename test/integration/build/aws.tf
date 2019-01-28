@@ -7,69 +7,70 @@ terraform {
 # Configure variables
 
 variable "aws_region" {}
-variable "aws_vpc_name" {}
-variable "aws_vpc_instance_tenancy" {}
-variable "aws_vpc_cidr_block" {}
-variable "aws_subnet_name" {}
 variable "aws_availability_zone" {}
-variable "aws_vm_name" {}
-variable "aws_vm_size" {}
-variable "aws_vm_image_filter" {}
-variable "aws_enable_creation" {}
-variable "aws_ecs_cluster_name" {}
-variable "aws_ebs_volume_name" {}
-variable "aws_key_description_enabled" {}
-variable "aws_key_description_disabled" {}
-variable "aws_internet_gateway_name" {}
-variable "aws_bucket_public_name" {}
-variable "aws_bucket_private_name" {}
-variable "aws_bucket_public_objects_name" {}
-variable "aws_bucket_auth_name" {}
+
 variable "aws_bucket_acl_policy_name" {}
+variable "aws_bucket_auth_name" {}
+variable "aws_bucket_encryption_disabled" {}
+variable "aws_bucket_encryption_enabled" {}
 variable "aws_bucket_log_delivery_name" {}
 variable "aws_bucket_log_sender_name" {}
 variable "aws_bucket_logging_disabled" {}
-variable "aws_bucket_encryption_enabled" {}
-variable "aws_bucket_encryption_disabled" {}
-variable "aws_sns_topic_with_subscription" {}
-variable "aws_sns_topic_no_subscription" {}
-variable "aws_sns_topic_subscription_sqs" {}
+variable "aws_bucket_private_name" {}
+variable "aws_bucket_public_name" {}
+variable "aws_bucket_public_objects_name" {}
+variable "aws_cloud_trail_bucket_name" {}
+variable "aws_cloud_trail_key_description" {}
+variable "aws_cloud_trail_log_group" {}
+variable "aws_cloud_trail_name" {}
+variable "aws_cloud_trail_open_name" {}
+variable "aws_cloud_watch_alarm_metric_name" {}
+variable "aws_cloud_watch_alarm_name" {}
+variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_name" {}
+variable "aws_cloud_watch_log_metric_filter_namespace" {}
+variable "aws_cloud_watch_log_metric_filter_pattern" {}
+variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
+variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
+variable "aws_cloud_watch_logs_role_name" {}
+variable "aws_cloud_watch_logs_role_policy_name" {}
+variable "aws_configuration_recorder_name" {}
+variable "aws_configuration_recorder_role" {}
+variable "aws_delivery_channel_bucket_name" {}
+variable "aws_delivery_channel_frequency" {}
+variable "aws_delivery_channel_name" {}
+variable "aws_delivery_channel_sns_topic_name" {}
+variable "aws_ebs_volume_name" {}
+variable "aws_ecs_cluster_name" {}
+variable "aws_enable_creation" {}
+variable "aws_flow_log_bucket_name" {}
+variable "aws_internet_gateway_name" {}
+variable "aws_key_description_disabled" {}
+variable "aws_key_description_enabled" {}
+variable "aws_rds_db_engine" {}
+variable "aws_rds_db_engine_version" {}
+variable "aws_rds_db_identifier" {}
+variable "aws_rds_db_master_user" {}
+variable "aws_rds_db_name" {}
+variable "aws_rds_db_storage_type" {}
 variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
 variable "aws_security_group_omega" {}
-variable "aws_rds_db_identifier" {}
-variable "aws_rds_db_name" {}
-variable "aws_rds_db_engine" {}
-variable "aws_rds_db_engine_version" {}
-variable "aws_rds_db_storage_type" {}
-variable "aws_rds_db_master_user" {}
-variable "aws_cloud_trail_name" {}
-variable "aws_cloud_trail_bucket_name" {}
-variable "aws_cloud_trail_log_group" {}
-variable "aws_cloud_trail_key_description" {}
-variable "aws_cloud_watch_logs_role_name" {}
-variable "aws_cloud_watch_logs_role_policy_name" {}
-variable "aws_cloud_trail_open_name" {}
-variable "aws_cloud_watch_log_metric_filter_name" {}
-variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
-variable "aws_cloud_watch_log_metric_filter_metric_name" {}
-variable "aws_cloud_watch_log_metric_filter_pattern" {}
-variable "aws_cloud_watch_log_metric_filter_namespace" {}
-variable "aws_cloud_watch_log_metric_filter_two_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
-variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
-variable "aws_cloud_watch_alarm_name" {}
-variable "aws_cloud_watch_alarm_metric_name" {}
-variable "aws_configuration_recorder_name" {}
-variable "aws_configuration_recorder_role" {}
-variable "aws_delivery_channel_name" {}
-variable "aws_delivery_channel_frequency" {}
-variable "aws_delivery_channel_bucket_name" {}
-variable "aws_delivery_channel_sns_topic_name" {}
-
+variable "aws_sns_topic_no_subscription" {}
+variable "aws_sns_topic_subscription_sqs" {}
+variable "aws_sns_topic_with_subscription" {}
+variable "aws_subnet_name" {}
+variable "aws_vm_image_filter" {}
+variable "aws_vm_name" {}
+variable "aws_vm_size" {}
+variable "aws_vpc_cidr_block" {}
+variable "aws_vpc_instance_tenancy" {}
+variable "aws_vpc_name" {}
 
 provider "aws" {
   version = "= 1.48.0"
@@ -856,6 +857,28 @@ resource "aws_config_delivery_channel" "delivery_channel" {
   snapshot_delivery_properties = {
     delivery_frequency = "${var.aws_delivery_channel_frequency}"
   }
+}
+
+# AWS Flow Log
+
+resource "aws_vpc" "inspec_vpc_flow_log" {
+  count = "${var.aws_enable_creation}"
+  cidr_block = "${var.aws_vpc_cidr_block}"
+  instance_tenancy = "${var.aws_vpc_instance_tenancy}"
+}
+
+resource "aws_flow_log" "flow_log_vpc" {
+  count = "${var.aws_enable_creation}"
+  log_destination = "${aws_s3_bucket.flow_log_bucket.arn}"
+  log_destination_type = "s3"
+  traffic_type = "ALL"
+  vpc_id = "${aws_vpc.inspec_vpc_flow_log.id}"
+}
+
+resource "aws_s3_bucket" "flow_log_bucket" {
+  count = "${var.aws_enable_creation}"
+  bucket = "${var.aws_flow_log_bucket_name}"
+  force_destroy = true
 }
 
 resource "aws_ecs_cluster" "ecs_cluster_1" {

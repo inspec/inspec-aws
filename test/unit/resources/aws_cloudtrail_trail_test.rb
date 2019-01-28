@@ -36,9 +36,13 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
     data[:client] = Aws::CloudTrail::Client
     status = {}
     status[:method] = :get_trail_status
-    status[:data] = { :latest_cloud_watch_logs_delivery_time => Time.now - 30 * 24 * 60 * 60 }
+    status[:data] = { :latest_cloud_watch_logs_delivery_time => Time.now - 30 * 24 * 60 * 60, :is_logging => true }
     status[:client] = Aws::CloudTrail::Client
-    @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail', client_args: { stub_responses: true }, stub_data: [data, status])
+    es_status = {}
+    es_status[:method] = :get_event_selectors
+    es_status[:data] = { :event_selectors => [{ :read_write_type => 'All', :include_management_events => true }] }
+    es_status[:client] = Aws::CloudTrail::Client
+    @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail', client_args: { stub_responses: true }, stub_data: [data, status, es_status])
   end
 
   def test_cloudtrail_trail_name
@@ -92,6 +96,14 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
   def test_delivered_logs_days_ago
     assert_equal(30, @cloudtrail_trail.delivered_logs_days_ago)
   end
+
+  def test_is_logging
+    assert @cloudtrail_trail.logging?
+  end
+
+  def test_has_es_mgmt_events_rw_all
+    assert @cloudtrail_trail.has_event_selector_mgmt_events_rw_type_all?
+  end
 end
 
 class AwsCloudTrailTrailNegativeTest < Minitest::Test
@@ -109,7 +121,7 @@ class AwsCloudTrailTrailNegativeTest < Minitest::Test
     data[:client] = Aws::CloudTrail::Client
     status = {}
     status[:method] = :get_trail_status
-    status[:data] = { :latest_cloud_watch_logs_delivery_time => nil }
+    status[:data] = { :latest_cloud_watch_logs_delivery_time => nil, :is_logging => false }
     status[:client] = Aws::CloudTrail::Client
     @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail-negative', client_args: { stub_responses: true }, stub_data: [data, status])
   end
@@ -152,5 +164,13 @@ class AwsCloudTrailTrailNegativeTest < Minitest::Test
 
   def test_delivered_logs_days_ago
     assert_nil(@cloudtrail_trail.delivered_logs_days_ago)
+  end
+
+  def test_is_logging
+    refute @cloudtrail_trail.logging?
+  end
+
+  def test_has_es_mgmt_events_rw_all
+    refute @cloudtrail_trail.has_event_selector_mgmt_events_rw_type_all?
   end
 end
