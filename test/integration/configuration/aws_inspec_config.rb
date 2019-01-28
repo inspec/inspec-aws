@@ -80,6 +80,7 @@ module AWSInspecConfig
       aws_delivery_channel_frequency: 'TwentyFour_Hours',
       aws_delivery_channel_bucket_name: "aws-delivery-channel-bucket-#{add_random_string}",
       aws_delivery_channel_sns_topic_name: "aws-delivery-channel-sns-topic-#{add_random_string}",
+      aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
       aws_enable_creation: 1,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to

@@ -153,3 +153,11 @@ output "aws_config_recorder_role_arn" {
 output "aws_delivery_channel_sns_topic_arn" {
   value = "${aws_sns_topic.sns_topic_for_delivery_channel.*.arn}"
 }
+
+output "aws_vpc_flow_log_id" {
+  value = "${aws_vpc.inspec_vpc_flow_log.*.id}"
+}
+
+output "aws_flow_log_id" {
+  value = "${aws_flow_log.flow_log_vpc.*.id}"
+}

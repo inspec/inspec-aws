@@ -68,6 +68,7 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_bucket_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
+variable "aws_flow_log_bucket_name" {}
 
 
 provider "aws" {
@@ -855,4 +856,26 @@ resource "aws_config_delivery_channel" "delivery_channel" {
   snapshot_delivery_properties = {
     delivery_frequency = "${var.aws_delivery_channel_frequency}"
   }
+}
+
+# AWS Flow Log
+
+resource "aws_vpc" "inspec_vpc_flow_log" {
+  #  count = "${var.aws_enable_creation}"
+  cidr_block = "${var.aws_vpc_cidr_block}"
+  instance_tenancy = "${var.aws_vpc_instance_tenancy}"
+}
+
+resource "aws_flow_log" "flow_log_vpc" {
+  #  count = "${var.aws_enable_creation}"
+  log_destination = "${aws_s3_bucket.flow_log_bucket.arn}"
+  log_destination_type = "s3"
+  traffic_type = "ALL"
+  vpc_id = "${aws_vpc.inspec_vpc_flow_log.id}"
+}
+
+resource "aws_s3_bucket" "flow_log_bucket" {
+  #  count = "${var.aws_enable_creation}"
+  bucket = "${var.aws_flow_log_bucket_name}"
+  force_destroy = true
 }
