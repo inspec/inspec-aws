@@ -34,6 +34,7 @@ class AwsEcsClusters < AwsResourceBase
     cluster_rows = []
     cluster_ids = {}
     pagination_options = {}
+    cluster_details = {}
 
     loop do
       catch_aws_errors do
@@ -41,7 +42,10 @@ class AwsEcsClusters < AwsResourceBase
       end
       return [] if !cluster_ids || cluster_ids.empty?
 
-      cluster_details = @aws.ecs_client.describe_clusters(clusters: cluster_ids[:cluster_arns])
+      catch_aws_errors do
+        cluster_details = @aws.ecs_client.describe_clusters(clusters: cluster_ids[:cluster_arns])
+      end
+
       cluster_details.clusters.map do |c|
         cluster_rows += [{ cluster_arn:             c.cluster_arn,
                            cluster_name:            c.cluster_name,

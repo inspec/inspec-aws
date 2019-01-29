@@ -47,7 +47,7 @@ namespace :test do
     # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
 
-  task run_integration_tests: [:lint] do
+  task :run_integration_tests do
     puts '----> Running InSpec tests'
     target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else CONTROLS_DIR end
     reporter_name = if ENV['INSPEC_REPORT_NAME'] then ENV['INSPEC_REPORT_NAME'] else 'inspec-output' end
@@ -71,14 +71,14 @@ namespace :tf do
     Dir.chdir(TERRAFORM_DIR)
   end
 
-  task init: [:tf_dir] do
+  task init_workspace: [:tf_dir] do
     puts '----> Initializing Terraform'
     # Initialize terraform workspace
     cmd = format('terraform init')
     sh(cmd)
   end
 
-  task plan: [:tf_dir, :init] do
+  task plan_integration_tests: [:tf_dir, :init_workspace] do
     if File.exist?(TF_VAR_FILE)
       puts '----> Previous run not cleaned up - running cleanup...'
       Rake::Task['tf:destroy'].execute
@@ -92,7 +92,7 @@ namespace :tf do
     sh(cmd)
   end
 
-  task apply: [:tf_dir, :plan] do
+  task setup_integration_tests: [:tf_dir, :plan_integration_tests] do
     puts '----> Applying the plan'
     # Apply the plan on AWS
     cmd = format('terraform apply %s', TF_PLAN_FILE)
@@ -101,7 +101,7 @@ namespace :tf do
     AWSInspecConfig.update_yaml(PROFILE_ATTRIBUTES)
   end
 
-  task destroy: [:tf_dir] do
+  task cleanup_integration_tests: [:tf_dir] do
     puts '----> Cleanup'
     cmd = format('terraform destroy -force -var-file=%s || true', TF_VAR_FILE_NAME)
     sh(cmd)

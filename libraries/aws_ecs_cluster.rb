@@ -24,16 +24,16 @@ class AwsEcsCluster < AwsResourceBase
     catch_aws_errors do
       # If no params are passed we attempt to get the 'default' cluster.
       cluster = opts.nil? ? {} : { clusters: [opts[:cluster_name]] }
-      resp = @aws.ecs_client.describe_clusters(cluster).clusters[0]
+      @resp = @aws.ecs_client.describe_clusters(cluster).clusters[0]
 
-      @status       = resp.status
-      @statistics   = resp.statistics
-      @cluster_arn  = resp.cluster_arn
-      @cluster_name = resp.cluster_name
-      @running_tasks_count    = resp.running_tasks_count
-      @pending_tasks_count    = resp.pending_tasks_count
-      @active_services_count  = resp.active_services_count
-      @registered_container_instances_count = resp.registered_container_instances_count
+      @status       = @resp.status
+      @statistics   = @resp.statistics
+      @cluster_arn  = @resp.cluster_arn
+      @cluster_name = @resp.cluster_name
+      @running_tasks_count    = @resp.running_tasks_count
+      @pending_tasks_count    = @resp.pending_tasks_count
+      @active_services_count  = @resp.active_services_count
+      @registered_container_instances_count = @resp.registered_container_instances_count
     end
   end
 
