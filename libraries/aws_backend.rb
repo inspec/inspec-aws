@@ -19,7 +19,7 @@ require 'rspec/expectations'
 # Class to manage the AWS connection, instantiates all required clients for inspec resources
 #
 class AwsConnection
-  def initialize(params = {})
+  def initialize(params)
     params = {} if params.nil?
     # Special case for AWS, let's allow all resources to specify parameters that propagate to the client init
     # This can be useful for e.g.
@@ -107,15 +107,21 @@ class AwsResourceBase < Inspec.resource(1)
   def initialize(opts)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
-    client_args = { client_args: { region: opts[:aws_region] } } if opts[:aws_region]
-    @aws = AwsConnection.new(params = client_args)
+    client_args = { client_args: {} }
+    if opts.is_a?(Hash)
+      # below allows each resource to optionally and conveniently set a region
+      client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
+      # this catches the stub_data true option for unit testing - and others that could be useful for consumers
+      client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
+    end
+    @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
     # However, for the unit testing case, would potentially have to instantiate the client ourselves...
 
     # here we might want to inject stub data for testing, let's use an option for that
-    return if !defined?(@opts.keys) || !opts.include?(:stub_data)
+    return if !defined?(@opts.keys) || !@opts.include?(:stub_data)
     raise ArgumentError, 'Expected stub data to be an array' if !opts[:stub_data].is_a?(Array)
     opts[:stub_data].each do |stub|
       raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
