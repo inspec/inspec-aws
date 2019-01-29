@@ -97,7 +97,7 @@ class AwsResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
     client_args = { client_args: { region: opts[:aws_region] } } if opts[:aws_region]
-    @aws = AwsConnection.new(params = client_args)
+    @aws = AwsConnection.new(params: client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
