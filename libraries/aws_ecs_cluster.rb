@@ -17,13 +17,14 @@ class AwsEcsCluster < AwsResourceBase
               :pending_tasks_count, :active_services_count, :statistics
 
   def initialize(opts = {})
-    raise ArgumentError '1 Cluster Name should be provided' if opts.size != 1
+    raise ArgumentError 'Max 1 Cluster may be defined.' if opts.size > 1
     opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters([:cluster_name])
 
     catch_aws_errors do
-      cluster = {clusters: [opts[:cluster_name]]}
+      # If no params are passed we attempt to get the 'default' cluster.
+      cluster = opts.nil? ? {} : { clusters: [opts[:cluster_name]] }
       resp = @aws.ecs_client.describe_clusters(cluster).clusters[0]
 
       @status       = resp.status

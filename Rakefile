@@ -47,7 +47,7 @@ namespace :test do
     # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
 
-  task :run_integration_tests do
+  task run_integration_tests: [:lint] do
     puts '----> Running InSpec tests'
     target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else CONTROLS_DIR end
     reporter_name = if ENV['INSPEC_REPORT_NAME'] then ENV['INSPEC_REPORT_NAME'] else 'inspec-output' end
