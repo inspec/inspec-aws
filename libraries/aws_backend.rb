@@ -42,10 +42,6 @@ class AwsConnection
     klass.new(args)
   end
 
-  def update_region(aws_region)
-    Aws.config.update({ region: aws_region })
-  end
-
   def unique_identifier
     # use aws account id
     client = aws_client(::Aws::STS::Client)
