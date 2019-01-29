@@ -17,7 +17,6 @@ class AwsEcsCluster < AwsResourceBase
               :pending_tasks_count, :active_services_count, :statistics
 
   def initialize(opts = {})
-    raise ArgumentError 'Max 1 Cluster may be defined.' if opts.size > 1
     opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters([:cluster_name])

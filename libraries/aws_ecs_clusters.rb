@@ -43,14 +43,14 @@ class AwsEcsClusters < AwsResourceBase
 
       cluster_details = @aws.ecs_client.describe_clusters(clusters: cluster_ids[:cluster_arns])
       cluster_details.clusters.map do |c|
-      cluster_rows += [{ cluster_arn:             c.cluster_arn,
-                         cluster_name:            c.cluster_name,
-                         status:                  c.status,
-                         running_tasks_count_id:  c.running_tasks_count,
-                         pending_tasks_count:     c.pending_tasks_count,
-                         active_services_count:   c.active_services_count,
-                         statistics:              c.statistics,
-                         registered_container_instances_counts: c.registered_container_instances_count }]
+        cluster_rows += [{ cluster_arn:             c.cluster_arn,
+                           cluster_name:            c.cluster_name,
+                           status:                  c.status,
+                           running_tasks_count_id:  c.running_tasks_count,
+                           pending_tasks_count:     c.pending_tasks_count,
+                           active_services_count:   c.active_services_count,
+                           statistics:              c.statistics,
+                           registered_container_instances_counts: c.registered_container_instances_count }]
       end
       break unless cluster_ids.next_token
       pagination_options = { next_token: cluster_ids.next_token }
