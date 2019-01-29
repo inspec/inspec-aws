@@ -8,7 +8,7 @@ class AwsEcsClusterConstructorTest < Minitest::Test
     @mock_cluster = {}
     @mock_cluster[:status] = 'ACTIVE'
     @mock_cluster[:statistics] = []
-    @mock_cluster[:cluster_arn] = 'some-arn'
+    @mock_cluster[:cluster_arn] = 'an-arn'
     @mock_cluster[:cluster_name] = 'rooty-tooty-pointy-shooty'
     @mock_cluster[:running_tasks_count] = 0
     @mock_cluster[:pending_tasks_count] = 0
