@@ -882,5 +882,6 @@ resource "aws_s3_bucket" "flow_log_bucket" {
 }
 
 resource "aws_ecs_cluster" "ecs_cluster_1" {
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_ecs_cluster_name}"
 }
