@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
-require 'aws-sdk-core'
-require 'aws-sdk-s3'
-require 'aws-sdk-ec2'
-require 'aws-sdk-iam'
-require 'aws-sdk-kms'
-require 'aws-sdk-sns'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
-require 'aws-sdk-rds'
 require 'aws-sdk-configservice'
+require 'aws-sdk-core'
+require 'aws-sdk-ec2'
+require 'aws-sdk-ecs'
+require 'aws-sdk-iam'
+require 'aws-sdk-kms'
+require 'aws-sdk-rds'
+require 'aws-sdk-s3'
+require 'aws-sdk-sns'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -41,29 +42,13 @@ class AwsConnection
     klass.new(args)
   end
 
-  def compute_client
-    aws_client(Aws::EC2::Client)
+  def unique_identifier
+    # use aws account id
+    client = aws_client(::Aws::STS::Client)
+    client.get_caller_identity.account
   end
 
-  def storage_client
-    aws_client(Aws::S3::Client)
-  end
-
-  def iam_client
-    aws_client(Aws::IAM::Client)
-  end
-
-  def kms_client
-    aws_client(Aws::KMS::Client)
-  end
-
-  def sns_client
-    aws_client(Aws::SNS::Client)
-  end
-
-  def rds_client
-    aws_client(Aws::RDS::Client)
-  end
+  # SDK Client convenience methods
 
   def cloudtrail_client
     aws_client(Aws::CloudTrail::Client)
@@ -77,14 +62,36 @@ class AwsConnection
     aws_client(Aws::CloudWatchLogs::Client)
   end
 
+  def compute_client
+    aws_client(Aws::EC2::Client)
+  end
+
   def config_client
     aws_client(Aws::ConfigService::Client)
   end
 
-  def unique_identifier
-    # use aws account id
-    client = aws_client(::Aws::STS::Client)
-    client.get_caller_identity.account
+  def ecs_client
+    aws_client(Aws::ECS::Client)
+  end
+
+  def iam_client
+    aws_client(Aws::IAM::Client)
+  end
+
+  def kms_client
+    aws_client(Aws::KMS::Client)
+  end
+
+  def rds_client
+    aws_client(Aws::RDS::Client)
+  end
+
+  def sns_client
+    aws_client(Aws::SNS::Client)
+  end
+
+  def storage_client
+    aws_client(Aws::S3::Client)
   end
 end
 

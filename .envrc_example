@@ -1,0 +1,7 @@
+# export AWS_ACCESS_KEY_ID="YOUR_KEY_ID"
+# export AWS_SECRET_ACCESS_KEY="SECRET"
+# export AWS_REGION="ca-central-1"
+
+### TODO For local development only; remove before release cut.
+# export INSPEC_AWS_TRAIN_PATH='/Users/your/local/repo/train'
+# export INSPEC_AWS_INSPEC_PATH='/Users/your/local/repo/inspec'

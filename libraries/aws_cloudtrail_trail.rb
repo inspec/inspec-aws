@@ -51,10 +51,12 @@ class AwsCloudTrailTrail < AwsResourceBase
   end
 
   def logging?
-    begin
-      @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h[:is_logging]
-    rescue Aws::CloudTrail::Errors::TrailNotFoundException
-      nil
+    catch_aws_errors do
+      begin
+        @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h[:is_logging]
+      rescue Aws::CloudTrail::Errors::TrailNotFoundException
+        nil
+      end
     end
   end
 

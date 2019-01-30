@@ -18,7 +18,7 @@ class AwsFlowLog < AwsResourceBase
     # Call the parent class constructor
     opts = { flow_log_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
     super(opts)
-    validate_parameters([:flow_log_id, :subnet_id, :vpc_id])
+    validate_parameters(%i(flow_log_id subnet_id vpc_id))
     query = { filter: [{ name: 'flow-log-id', values: [opts[:flow_log_id]] }] } if opts[:flow_log_id]
     query = { filter: [{ name: 'resource-id', values: [opts[:subnet_id]] }] } if opts[:subnet_id]
     query = { filter: [{ name: 'resource-id', values: [opts[:vpc_id]] }] } if opts[:vpc_id]
