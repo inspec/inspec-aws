@@ -59,7 +59,7 @@ namespace :test do
   end
 
   desc 'Perform Integration Tests'
-  task integration: ['tf:apply'] do
+  task integration: ['tf:setup_integration_tests'] do
     Rake::Task['test:run_integration_tests'].execute
     Rake::Task['tf:destroy'].execute
   end
