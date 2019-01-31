@@ -26,6 +26,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
     raise ArgumentError, 'aws_cloudwatch_alarm requires metric_name and metric_namespace parameters to be specified' unless %i(metric_name metric_namespace).all? { |k| opts.key? k }
     @metric_name = opts[:metric_name]
     @metric_namespace = opts[:metric_namespace]
+    @alarm_actions = []
     catch_aws_errors do
       @resp = @aws.cloudwatch_client.describe_alarms_for_metric(metric_name: @metric_name, namespace: @metric_namespace)
       @metric_alarms = @resp.metric_alarms
@@ -34,7 +35,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
     raise "Found multiple Cloudwatch Alarms. The following matched: #{@metric_alarms.join(', ')}.  Try to restrict your resource criteria." if @metric_alarms.count > 1
     @alarm_actions = @metric_alarms.first.alarm_actions
     @alarm_name = @metric_alarms.first.alarm_name
-    @exists=true
+    @exists = true
   end
 
   def to_s

@@ -17,6 +17,7 @@ gem 'aws-sdk-iam', '~> 1'
 gem 'aws-sdk-elasticloadbalancing', '~> 1'
 gem 'aws-sdk-sns', '~> 1'
 gem 'aws-sdk-rds', '~> 1'
+gem 'aws-sdk-ecs', '~> 1'
 
 group :development do
   gem 'github_changelog_generator'

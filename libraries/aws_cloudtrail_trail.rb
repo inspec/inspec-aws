@@ -64,6 +64,12 @@ class AwsCloudTrailTrail < AwsResourceBase
     !@kms_key_id.nil?
   end
 
+  def get_log_group_for_multi_region_active_mgmt_rw_all
+    return nil if !exists?
+    return nil if @cloud_watch_logs_log_group_arn.split(':').count < 6
+    return @cloud_watch_logs_log_group_arn.split(':')[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
+  end
+
   def has_event_selector_mgmt_events_rw_type_all?
     event_selector_found = false
     begin
