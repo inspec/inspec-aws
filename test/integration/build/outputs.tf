@@ -161,7 +161,3 @@ output "aws_vpc_flow_log_id" {
 output "aws_flow_log_id" {
   value = "${aws_flow_log.flow_log_vpc.*.id}"
 }
-
-output "aws_ecs_cluster_name" {
-  value = "${aws_ecs_cluster.ecs_cluster_1.name}"
-}

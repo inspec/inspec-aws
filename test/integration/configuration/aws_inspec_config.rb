@@ -58,6 +58,8 @@ module AWSInspecConfig
       aws_ebs_volume_name: 'inspec-ebs-volume-name',
       aws_ecs_cluster_name: "ecs-cluster-#{add_random_string}",
       aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
+      aws_iam_user_name: "iam-user-#{add_random_string}",
+      aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",
       aws_internet_gateway_name: 'inspec-aws-internet-gateway',
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
@@ -83,7 +85,7 @@ module AWSInspecConfig
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
-      aws_enable_creation: 1,
+      aws_enable_creation: 0,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
       # control both the terraform resource creation and the inspec test execution for those resources.
       # Default behaviour is for this to be disabled meaning a user needs no special AWS privileges to run the
