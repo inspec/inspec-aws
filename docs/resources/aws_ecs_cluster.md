@@ -19,8 +19,8 @@ Use the `aws_ecs_cluster` InSpec audit resource to test properties of a single A
 An `aws_ecs_cluster` resource block declares the tests for a single AWS ECS Cluster by cluster name.
 
     describe aws_ecs_cluser(cluster_name: 'cluster-8') do
-      it                { should exist }
-      its ('status')    { should eq 'ACTIVE' }
+      it             { should exist }
+      its ('status') { should eq 'ACTIVE' }
     end
 
 <br>
@@ -38,7 +38,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test that an ECS Cluster is active
 
     describe aws_cs_cluster('cluster-8') do
-      its ('status')    { should eq 'ACTIVE' }
+      its ('status') { should eq 'ACTIVE' }
     end
 
 <br>
