@@ -85,7 +85,7 @@ module AWSInspecConfig
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
-      aws_enable_creation: 0,
+      aws_enable_creation: 1,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
       # control both the terraform resource creation and the inspec test execution for those resources.
       # Default behaviour is for this to be disabled meaning a user needs no special AWS privileges to run the

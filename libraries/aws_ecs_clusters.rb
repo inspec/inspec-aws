@@ -54,7 +54,7 @@ class AwsEcsClusters < AwsResourceBase
                            pending_tasks_count:     c.pending_tasks_count,
                            active_services_count:   c.active_services_count,
                            statistics:              c.statistics,
-                           registered_container_instances_counts: c.registered_container_instances_count }]
+                           registered_container_instances_count: c.registered_container_instances_count }]
       end
       break unless cluster_ids.next_token
       pagination_options = { next_token: cluster_ids.next_token }
