@@ -46,6 +46,9 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecs_cluster_name" {}
+variable "aws_elb_access_log_name" {}
+variable "aws_elb_access_log_prefix" {}
+variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_iam_user_name" {}
@@ -886,6 +889,27 @@ resource "aws_s3_bucket" "flow_log_bucket" {
 resource "aws_ecs_cluster" "ecs_cluster" {
   count = "${var.aws_enable_creation}"
   name = "${var.aws_ecs_cluster_name}"
+}
+
+# Create a new load balancer
+resource "aws_elb" "aws_elb_1" {
+  count = "${var.aws_enable_creation}"
+  name               = "${var.aws_elb_name}"
+  availability_zones = ["${var.aws_availability_zone}"]
+
+
+  listener {
+    instance_port     = 8000
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
+  }
+
+  instances                   = ["${aws_instance.linux_ubuntu_vm.id}"]
+  cross_zone_load_balancing   = true
+  idle_timeout                = 400
+  connection_draining         = true
+  connection_draining_timeout = 400
 }
 
 resource "aws_iam_user" "iam_user" {
