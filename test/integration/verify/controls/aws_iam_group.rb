@@ -1,4 +1,4 @@
-title 'Test single AWS ELB'
+title 'Test single AWS Group'
 
 aws_iam_group_name = attribute(:aws_iam_group_name, default: '', description: 'The AWS Iam Group name.')
 
