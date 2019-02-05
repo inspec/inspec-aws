@@ -81,7 +81,7 @@ class AwsIamUsers < AwsResourceBase
     false
   end
 
-  # Todo : This method will paginate for > 1000 keys,
+  # TODO: This method will paginate for > 1000 keys,
   # We should handle that.
   def user_access_keys(username)
     # Return empty array instead if no keys.
