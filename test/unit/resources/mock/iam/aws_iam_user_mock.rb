@@ -16,7 +16,7 @@ class AwsIamUserMock < AwsBaseResourceMock
     # Additional enrichment from subsequent calls
     @user = Hash[@user_required]
     @user[:has_console_password] = { user_name: @user[:user_name], create_date: @aws.any_date }
-    @user[:access_keys] = nil
+    @user[:access_keys] = []
     @user[:attached_policy_names] = []
     @user[:attached_policy_arns] = []
     @user[:inline_policy_names] = [""]
@@ -49,11 +49,16 @@ class AwsIamUserMock < AwsBaseResourceMock
                         :method => :list_attached_user_policies,
                         :data => @user[:attached_policy_names] }
 
+    keys = { :client => Aws::IAM::Client,
+                    :method => :list_access_keys,
+                    :data => @user[:access_keys] }
+
     stub_data += [user]
     stub_data += [password]
     stub_data += [mfa]
     stub_data += [inline_policy]
     stub_data += [attached_policy]
+    stub_data += [keys]
   end
 
   def user

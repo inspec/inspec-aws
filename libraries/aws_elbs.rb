@@ -46,9 +46,9 @@ class AwsElbs < AwsResourceBase
         elb_rows += [{ availability_zones:   l.availability_zones,
                        dns_name:             l.dns_name,
                        load_balancer_name:   l.load_balancer_name,
-                       external_ports:       l.listener_descriptions.map { |l| l.listener.load_balancer_port },
+                       external_ports:       l.listener_descriptions.map { |p| p.listener.load_balancer_port },
                        instance_ids:         l.instances.map(&:instance_id),
-                       internal_ports:       l.listener_descriptions.map { |l| l.listener.instance_port },
+                       internal_ports:       l.listener_descriptions.map { |p| p.listener.instance_port },
                        security_group_ids:   l.security_groups,
                        subnet_ids:           l.subnets,
                        vpc_id:               l.vpc_id }]

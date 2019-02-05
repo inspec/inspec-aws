@@ -36,7 +36,7 @@ class AwsIamUser < AwsResourceBase
 
         # Additional attributes
         @has_console_password = has_password?(username)
-        @access_keys          = @aws.iam_client.list_access_keys(username)
+        @access_keys          = user_access_keys(username)
         @has_mfa_enabled      = !iam_client.list_mfa_devices(username).mfa_devices.empty?
         @inline_policy_names  = iam_client.list_user_policies(username).policy_names
 
@@ -71,5 +71,13 @@ class AwsIamUser < AwsResourceBase
     true
   rescue Aws::IAM::Errors::NoSuchEntity
     false
+  end
+
+  # Todo : This method will paginate for > 1000 keys,
+  # We should handle that.
+  def user_access_keys(username)
+    # Return empty array instead if no keys.
+    keys = @aws.iam_client.list_access_keys(username).access_key_metadata
+    [] if keys.empty?
   end
 end
