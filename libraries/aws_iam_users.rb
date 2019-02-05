@@ -58,7 +58,7 @@ class AwsIamUsers < AwsResourceBase
           user_rows += [{ username:     username[:user_name],
                           user_arn:     u.arn,
                           user_id:      u.user_id,
-                          access_keys:  user_access_keys(username),
+                          access_keys:  @aws.iam_client.list_access_keys(username),
                           has_mfa_enabled:       !iam_client.list_mfa_devices(username).mfa_devices.empty?,
                           inline_policy_names:   iam_client.list_user_policies(username).policy_names,
                           attached_policy_names: policies.map { |p| p[:policy_name] },
@@ -79,11 +79,5 @@ class AwsIamUsers < AwsResourceBase
     true
   rescue Aws::IAM::Errors::NoSuchEntity
     false
-  end
-
-  def user_access_keys(username)
-    # Return empty array instead if no keys.
-    keys = @aws.iam_client.list_access_keys(username)
-    [] if keys.empty?
   end
 end

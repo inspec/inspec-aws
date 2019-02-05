@@ -2,15 +2,7 @@ require_relative '../aws_base_resource_mock'
 
 class AwsIamUserMock < AwsBaseResourceMock
 
-  # Build method allows consumer to overwrite default values.
-  # These will be respected by the stub_data config.
-  def self.build
-    builder = new
-    yield(builder)
-    builder.user
-  end
-
-  # Default attributes, can be overridden with builder methods.
+  # Default attributes.
   def initialize
     super
     # get_user required fields
@@ -62,18 +54,6 @@ class AwsIamUserMock < AwsBaseResourceMock
     stub_data += [mfa]
     stub_data += [inline_policy]
     stub_data += [attached_policy]
-  end
-
-  def with_username(username)
-    @user[:user_name] = username
-  end
-
-  def with_mfa_enabled(enabled = true)
-    @user[:has_mfa_enabled] = enabled
-  end
-
-  def with_access_keys(access_keys)
-    @user[:access_keys] = access_keys
   end
 
   def user

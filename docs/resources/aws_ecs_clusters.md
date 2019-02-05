@@ -31,24 +31,8 @@ An `aws_ecs_clusters` resource block returns all ECS Clusters and allows the tes
 
 The following examples show how to use this InSpec audit resource.
 
-<br>
 
-## Filter Criteria
-
-* cluster_name 
-* cluster_arn 
-* status 
-* registered_container_instances_count 
-* running_tasks_count
-* pending_tasks_count
-* active_services_count
-* statistics
-
-## Filter Examples
-
-### has\_mfa\_enabled
-
-Ensure there are no Clusters in an undesired state.
+    Ensure there are no Clusters in an undesired state.
 
       describe aws_ecs_clusters do
         it                   { should exist }

@@ -30,7 +30,7 @@ class AwsElb < AwsResourceBase
       @dns_name               = @resp.dns_name
       @load_balancer_name     = @resp.load_balancer_name
       @external_ports         = @resp.listener_descriptions.map { |l| l.listener.load_balancer_port }
-      @instance_ids           = @resp.instances.map { |i| i.instance_id }
+      @instance_ids           = @resp.instances.map(&:instance_id)
       @internal_ports         = @resp.listener_descriptions.map { |l| l.listener.instance_port }
       @security_group_ids     = @resp.security_groups
       @subnet_ids             = @resp.subnets

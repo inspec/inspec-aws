@@ -31,21 +31,6 @@ An `aws_iam_users` resource block returns all IAM Users and allows the testing o
 
 The following examples show how to use this InSpec audit resource.
 
-<br>
-
-## Filter Criteria
-
-* usernames 
-* user_ids
-* user_arns
-* has_mfa_enabled
-* access_keys
-* has_console_password
-* inline_policy_names
-* attached_policy_names
-* attached_policy_arns
-
-## Filter Examples
 
 ### has\_mfa\_enabled
 
