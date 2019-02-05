@@ -52,6 +52,8 @@ variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
+variable "aws_iam_user_name" {}
+variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
@@ -885,7 +887,7 @@ resource "aws_s3_bucket" "flow_log_bucket" {
   force_destroy = true
 }
 
-resource "aws_ecs_cluster" "ecs_cluster_1" {
+resource "aws_ecs_cluster" "ecs_cluster" {
   count = "${var.aws_enable_creation}"
   name = "${var.aws_ecs_cluster_name}"
 }
@@ -910,3 +912,35 @@ resource "aws_elb" "aws_elb_1" {
   connection_draining         = true
   connection_draining_timeout = 400
 }
+
+resource "aws_iam_user" "iam_user" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_user_name}"
+}
+
+resource "aws_iam_access_key" "iam_user_access_key" {
+  count = "${var.aws_enable_creation}"
+  user = "${aws_iam_user.iam_user.name}"
+}
+
+resource "aws_iam_user_policy" "iam_user_policy" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_user_policy_name}"
+  user = "${aws_iam_user.iam_user.name}"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
