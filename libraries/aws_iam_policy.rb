@@ -17,7 +17,7 @@ class AwsIamPolicy < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([:policy_arn, :policy_name])
+    validate_parameters(%i(policy_arn policy_name))
 
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])
@@ -39,29 +39,23 @@ class AwsIamPolicy < AwsResourceBase
     catch_aws_errors do
       pagination_opts = { max_items: 1000 }
       loop do
-        policies = @aws.iam_client.list_policies(pagination_opts)
-        policy = policies.policies.detect do |p|
-          p.policy_name == policy_name
-        end
-        break if policy
-        break unless policies.is_truncated
-        pagination_opts[:marker] = policies.marker
+        response = @aws.iam_client.list_policies(pagination_opts)
+        policy = response.policies.detect { |p| p.policy_name == policy_name }
       end
+      break if policy
+      break unless response.is_truncated
+      pagination_opts[:marker] = response.marker
     end
     policy
   end
 
   def get_policy_by_arn(arn)
-    resp = nil
-    catch_aws_errors do
-      policy_arn = { policy_arn: arn }
-      resp = @aws.iam_client.get_policy(policy_arn).policy
-    end
-    resp
+    catch_aws_errors
+    @aws.iam_client.get_policy({ policy_arn: arn }).policy
   end
 
   def get_attached_entities(arn)
-    criteria = {policy_arn: arn}
+    criteria = { policy_arn: arn }
     resp = nil
     catch_aws_errors do
       resp = @aws.iam_client.list_entities_for_policy(criteria)

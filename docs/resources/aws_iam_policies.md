@@ -17,15 +17,15 @@ Each IAM Policy is uniquely identified by either its `policy_name` or `arn`.
 
 ### Installation
 
-This resource is distributed along with InSpec itself. You can use it automatically.
+...
 
 ### Version
 
-This resource first became available in v2.0.16 of InSpec.
+...
 
 ## Syntax
 
-An `aws_iam_policies` resource block collects a group of IAM Policies and then tests that group.
+`aws_iam_policies` Resource returns a collection of IAM Policies and allows testing of that collection.
 
     # Verify the policy specified by the policy name is included in IAM Policies in the AWS account.
     describe aws_iam_policies do
@@ -38,13 +38,15 @@ An `aws_iam_policies` resource block collects a group of IAM Policies and then t
 
 The following examples show how to use this InSpec audit resource.
 
-As this is the initial release of `aws_iam_policies`, its limited functionality precludes examples.
+...
 
 <br>
 
 ## Properties
 
-* `arns`, `entries`, `policy_names`
+* `arns`
+* `entries`
+* `policy_names`
 
 <br>
 

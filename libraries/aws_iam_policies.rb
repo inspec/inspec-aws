@@ -37,24 +37,24 @@ class AwsIamPolicies < AwsResourceBase
 
     loop do
       catch_aws_errors do
-        policies = @aws.iam_client.list_policies(pagination_options)
+        response = @aws.iam_client.list_policies(pagination_options)
 
-      return [] if !policies || policies.empty?
+        return [] if !policies || policies.empty?
 
-      policies.policies.each do |p|
-        criteria = {policy_arn: p.arn}
-        policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
-        iam_policy_rows += [{ arn:                  p.arn,
-                              attachment_count:     p.attachment_count,
-                              default_version_id:   p.default_version_id,
-                              policy_name:          p.policy_name,
-                              policy_id:            p.policy_id,
-                              attached_groups:      policy_entity.policy_groups.map(&:group_name),
-                              attached_roles:       policy_entity.policy_roles.map(&:role_name),
-                              attached_users:       policy_entity.policy_users.map(&:user_name)}]
-      end
-      break unless policies.marker
-      pagination_options = { marker: policies.marker }
+        response.policies.each do |p|
+          criteria = { policy_arn: p.arn }
+          policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
+          iam_policy_rows += [{ arn:                  p.arn,
+                                attachment_count:     p.attachment_count,
+                                default_version_id:   p.default_version_id,
+                                policy_name:          p.policy_name,
+                                policy_id:            p.policy_id,
+                                attached_groups:      policy_entity.policy_groups.map(&:group_name),
+                                attached_roles:       policy_entity.policy_roles.map(&:role_name),
+                                attached_users:       policy_entity.policy_users.map(&:user_name) }]
+        end
+        break unless response.marker
+        pagination_options = { marker: response.marker }
       end
     end
     @table = iam_policy_rows

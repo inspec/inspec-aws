@@ -17,15 +17,15 @@ Each IAM Policy is uniquely identified by either its policy\_name or arn.
 
 ### Installation
 
-This resource is distributed along with InSpec itself. You can use it automatically.
+...
 
 ### Version
 
-This resource first became available in v2.0.16 of InSpec.
+...
 
 ## Syntax
 
-An `aws_iam_policy` resource block identifies a policy by policy name.
+An `aws_iam_policy` resource block identifies a policy by policy name or arn
 
     # Find a policy by name
     describe aws_iam_policy('AWSSupportAccess') do
@@ -75,7 +75,14 @@ The following examples show how to use this InSpec audit resource.
 
 ## Properties
 
-* `arn`, `attachment_count`, `attached_groups`, `attached_roles`,`attached_users`, `default_version_id`, `policy`, `statement_count`
+* `arn`
+* `attachment_count`
+* `attached_groups` 
+* `attached_roles`
+* `attached_users`
+* `default_version_id`
+* `policy`
+* `statement_count`
 
 ## Property Examples
 

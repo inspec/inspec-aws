@@ -929,8 +929,6 @@ resource "aws_iam_user_policy" "iam_user_policy" {
   count = "${var.aws_enable_creation}"
   name = "${var.aws_iam_user_policy_name}"
   user = "${aws_iam_user.iam_user.name}"
-
-
   policy = <<EOF
 {
   "Version": "2012-10-17",
