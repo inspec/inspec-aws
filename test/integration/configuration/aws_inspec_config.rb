@@ -64,6 +64,7 @@ module AWSInspecConfig
       aws_iam_user_name: "iam-user-#{add_random_string}",
       aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",
       aws_internet_gateway_name: 'inspec-aws-internet-gateway',
+      aws_iam_group_name: "iam_group-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
       aws_rds_db_engine: 'mysql',
