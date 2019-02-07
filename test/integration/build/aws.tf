@@ -52,9 +52,11 @@ variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
+variable "aws_iam_group_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
+variable "aws_iam_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
 variable "aws_rds_db_engine" {}
@@ -942,5 +944,19 @@ resource "aws_iam_user_policy" "iam_user_policy" {
   ]
 }
 EOF
+}
+
+resource "aws_iam_group" "aws_iam_group_1" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_group_name}"
+}
+
+resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
+  count = "${var.aws_enable_creation}"
+  user = "${aws_iam_user.iam_user.name}"
+
+  groups = [
+    "${var.aws_iam_group_name}"
+  ]
 }
 
