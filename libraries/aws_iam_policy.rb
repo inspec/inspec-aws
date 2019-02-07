@@ -26,11 +26,11 @@ class AwsIamPolicy < AwsResourceBase
     end
     get_attached_entities(@resp.arn)
 
-      @arn                = @resp.arn
-      @policy_name        = @resp.policy_name
-      @policy_id          = @resp.policy_id
-      @attachment_count   = @resp.attachment_count
-      @default_version_id = @resp.default_version_id
+    @arn                = @resp.arn
+    @policy_name        = @resp.policy_name
+    @policy_id          = @resp.policy_id
+    @attachment_count   = @resp.attachment_count
+    @default_version_id = @resp.default_version_id
   end
 
   # Required to maintain compatibility with previous implementation
