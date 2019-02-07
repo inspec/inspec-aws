@@ -46,8 +46,8 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
         return
       end
     end
+    @metric_filters = [] if @metric_filters.nil?
     @metric_filters.select! { |lmf| lmf.filter_pattern == opts[:pattern] } if opts[:pattern]
-    return false && @exists = false if @metric_filters.nil?
     return false && @exists = false if @metric_filters.empty?
     raise 'More than one result was returned, but aws_cloudwatch_log_metric_filter can only handle a single AWS resource.  Consider passing more resource parameters to narrow down the search.' if @metric_filters.count > 1
     @exists = true

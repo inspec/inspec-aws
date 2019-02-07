@@ -2,9 +2,12 @@ title 'Test single AWS Config Recorder'
 
 aws_config_recorder_role_arn = attribute(:aws_config_recorder_role_arn, default: '', description: 'The AWS Config Recorder ARN.')
 aws_configuration_recorder_name = attribute(:aws_configuration_recorder_name, default: '', description: 'The AWS Config Recorder name.')
+aws_create_configuration_recorder = attribute(:aws_create_configuration_recorder,default:0,description:'Flag to enable configuration recorder controls since there can only be one per region of these.')
+
 
 control 'aws-config-recorder-1.0' do
 
+  only_if { aws_create_configuration_recorder.to_i == 1 }
   impact 1.0
   title 'Ensure AWS Config Recorder has the correct properties.'
 

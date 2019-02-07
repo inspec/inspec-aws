@@ -38,6 +38,10 @@ class AwsEc2Instance < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.compute_client.describe_instances(instance_arguments)
       @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
+      # TODO: review whether filtering by name is useful
+      if !@instance.nil?
+        raise Inspec::Exceptions::ResourceFailed, 'Expected only one instance to be returned when filtering by name!' if @resp.reservations.first.instances.count > 1
+      end
       create_resource_methods(@instance)
       # below is because the original implementation exposed several clashing method
       # names and we want to ensure backwards compatibility
