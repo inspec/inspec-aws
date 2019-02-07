@@ -56,6 +56,7 @@ variable "aws_iam_group_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
+variable "aws_iam_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
 variable "aws_rds_db_engine" {}
