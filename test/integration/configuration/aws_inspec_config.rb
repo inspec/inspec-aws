@@ -62,6 +62,8 @@ module AWSInspecConfig
       aws_elb_name: "elb-#{add_random_string}",
       aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
       aws_internet_gateway_name: 'inspec-aws-internet-gateway',
+      aws_iam_policy_arn: "aws-iam-policy-arn-#{add_random_string}",
+      aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
       aws_rds_db_engine: 'mysql',

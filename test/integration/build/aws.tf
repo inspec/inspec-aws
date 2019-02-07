@@ -52,6 +52,7 @@ variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_internet_gateway_name" {}
+variable "aws_iam_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
 variable "aws_rds_db_engine" {}
@@ -908,4 +909,26 @@ resource "aws_elb" "aws_elb_1" {
   idle_timeout                = 400
   connection_draining         = true
   connection_draining_timeout = 400
+}
+
+resource "aws_iam_policy" "aws_policy_1" {
+  count = "${var.aws_enable_creation}"
+  name        = "${var.aws_iam_policy_name}"
+  path        = "/"
+  description = "My test policy"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
