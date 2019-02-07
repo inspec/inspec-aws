@@ -34,13 +34,13 @@ class AwsIamGroups < AwsResourceBase
     loop do
       catch_aws_errors do
         groups = @aws.iam_client.list_groups(pagination_options)
-      return [] if !groups || groups.empty?
+        return [] if !groups || groups.empty?
 
-      groups.groups.each do |g|
-        group_rows += [{ group_name: g.group_name,
-                         group_id:   g.group_id,
-                         arn:        g.arn,
-                         users:       @aws.iam_client.get_group({'group_name': g.group_name}).users.map{ |u| u.user_name}}]
+        groups.groups.each do |g|
+          group_rows += [{ group_name: g.group_name,
+                           group_id:   g.group_id,
+                           arn:        g.arn,
+                           users:      @aws.iam_client.get_group({ 'group_name': g.group_name }).users.map(&:user_name) }]
         end
       end
       break unless groups.marker

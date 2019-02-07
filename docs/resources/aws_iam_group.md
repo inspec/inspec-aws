@@ -15,11 +15,11 @@ To test properties of multiple or all groups, use the `aws_iam_groups` resource.
 
 ### Installation
 
-This resource is distributed along with InSpec itself. You can use it automatically.
+...
 
 ### Version
 
-This resource first became available in v2.0.16 of InSpec.
+...
 
 ## Syntax
 
@@ -49,7 +49,7 @@ As this is the initial release of `aws_iam_group`, its limited functionality pre
 
 ### users
 
-Provides a list of the users that are attached to the group
+Check a specific User is included in a group
 
     describe aws_iam_group('mygroup')
       its('users') { should include 'iam_user_name' }

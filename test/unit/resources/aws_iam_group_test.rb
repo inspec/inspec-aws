@@ -1,37 +1,38 @@
 require 'helper'
 require 'aws-sdk-core'
 require 'aws_iam_group'
+require_relative 'mock/iam/aws_iam_group_mock'
 
 class AwsIamGroupConstructorTest < Minitest::Test
 
-  def setup
-    @mock_iam_group = {}
-    @mock_iam_group[:group] = {group_name: 'rooty-tooty-pointy-shooty',
-                               group_id: "AGPAJNTWBNRUUY4MZC7P2",
-                               arn: "arn:aws:iam::510367013858:group/compliance-scans",
-                               create_date: Time.now.utc,
-                               path: "/"}
-    @mock_iam_group[:users] = [{path: "/",
-                                user_name: "rooty-tooty",
-                                user_id: "AAAAAAAABBBBBBBBBBBB1",
-                                arn: "arn:aws:iam::111111111111:user/arnold",
-                                password_last_used: nil,
-                                permissions_boundary: nil,
-                                create_date: Time.now.utc,
-                                tags: []}]
-
-    stub_data = {}
-    stub_data[:method] = :get_group
-    stub_data[:data]   = @mock_iam_group
-    stub_data[:client] = Aws::IAM::Client
-
-    @iam_group = AwsIamGroup.new(group_name: @mock_iam_group[:group][:group_name],
-                                 client_args: { stub_responses: true },
-                                 stub_data: [stub_data])
-  end
-
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsIamGroup.new(client_args: { stub_responses: true }) }
+  end
+
+  def test_accepts_group_name
+    AwsIamGroup.new(group_name: 'group-name', client_args: { stub_responses: true })
+  end
+
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AwsIamGroup.new(rubbish: 9) }
+  end
+
+  def test_group_not_existing
+    refute AwsIamGroup.new(group_name: 'group-not-there', client_args: { stub_responses: true }).exists?
+  end
+end
+
+class AwsIamGroupTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock = AwsIamGroupMock.new
+    @mock_iam_group = @mock.group
+
+    # When
+    @iam_group = AwsIamGroup.new(group_name: @mock_iam_group[:group][:group_name],
+                                 client_args: { stub_responses: true },
+                                 stub_data: @mock.stub_data)
   end
 
   def test_iam_group_name
