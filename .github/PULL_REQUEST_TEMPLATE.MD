@@ -9,7 +9,8 @@ List any existing issues this PR resolves, or any Discourse or StackOverflow dis
 ### Check List
 Please fill box or appropriate ([x]) or mark N/A.
 - [ ] New functionality includes integration tests/controls
-- [ ] New Terraform resources 
+- [ ] New Terraform resources
+- [ ] New Documentation for resources 
 - [ ] All Integration Tests pass
 - [ ] All Unit Tests pass
 - [ ] `rake lint` passes
