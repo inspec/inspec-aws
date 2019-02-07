@@ -915,7 +915,7 @@ resource "aws_elb" "aws_elb_1" {
 }
 
 resource "aws_iam_user" "iam_user" {
- # count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_iam_user_name}"
 }
 
