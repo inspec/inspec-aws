@@ -61,6 +61,8 @@ module AWSInspecConfig
       aws_elb_access_log_prefix: "elb-log-prefix-#{add_random_string}",
       aws_elb_name: "elb-#{add_random_string}",
       aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
+      aws_iam_user_name: "iam-user-#{add_random_string}",
+      aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",
       aws_internet_gateway_name: 'inspec-aws-internet-gateway',
       aws_iam_policy_arn: "aws-iam-policy-arn-#{add_random_string}",
       aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
@@ -82,13 +84,15 @@ module AWSInspecConfig
       aws_subnet_ip_address_count: 16,
       aws_subnet_name: 'inspec-aws-subnet',
       aws_vm_image_filter: 'ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*',
-      aws_vm_name: 'aws-inspec-linux-ubuntu-vm',
+      aws_vm_name: "aws-inspec-linux-ubuntu-#{add_random_string}",
       aws_vm_size: 't2.micro',
       aws_vpc_cidr_block: '10.0.0.0/27', # i.e. 32 IP addresses
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
       aws_enable_creation: 1,
+      # Flag to optionally disable creation/controls for configuration recorder (only 1 per AWS region allowed)
+      aws_create_configuration_recorder: 0,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to
       # control both the terraform resource creation and the inspec test execution for those resources.
       # Default behaviour is for this to be disabled meaning a user needs no special AWS privileges to run the

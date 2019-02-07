@@ -3,9 +3,11 @@ title 'Test single AWS Config Delivery Channel'
 aws_delivery_channel_name = attribute(:aws_delivery_channel_name, default: '', description: 'The AWS Config Delivery Channel name.')
 aws_delivery_channel_bucket_name = attribute(:aws_delivery_channel_bucket_name, default: '', description: 'The AWS Config Delivery Channel bucket name.')
 aws_delivery_channel_sns_topic_arn = attribute(:aws_delivery_channel_sns_topic_arn, default: '', description: 'The AWS Config Delivery Channel topic name.')
+aws_create_configuration_recorder = attribute(:aws_create_configuration_recorder,default:0,description:'Flag to enable configuration recorder controls since there can only be one per region of these.')
 
-control 'aws-vpc-1.0' do
+control 'aws-config-delivery-channel-1.0' do
 
+  only_if { aws_create_configuration_recorder.to_i == 1 }
   impact 1.0
   title 'Ensure AWS Config Delivery Channel has the correct properties.'
 
