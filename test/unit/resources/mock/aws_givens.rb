@@ -17,8 +17,10 @@ class AwsGivens
     SecureRandom.hex[0..max]
   end
 
+  # Any positive integer
   def any_int(max = 12)
-    SecureRandom.random_number(max)
+    r = SecureRandom.random_number(max)
+    any_int(max) if r == 0
   end
 
   def any_string(max = 12)
