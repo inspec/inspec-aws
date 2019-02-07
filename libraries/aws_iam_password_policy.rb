@@ -16,8 +16,8 @@ class AwsIamPasswordPolicy < AwsResourceBase
     end
   "
 
-  def initialize
-    super({})
+  def initialize(opts = {})
+    super(opts)
     validate_parameters([])
 
     catch_aws_errors do
@@ -46,7 +46,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
   RSpec::Matchers.alias_matcher :prevent_password_reuse, :be_prevent_password_reuse
 
   def expire_passwords?
-    @policy.expire_passwords
+    @policy.hard_expiry
   end
   RSpec::Matchers.alias_matcher :expire_passwords, :be_expire_passwords
 
