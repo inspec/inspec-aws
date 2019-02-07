@@ -89,7 +89,7 @@ module AWSInspecConfig
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
-      aws_enable_creation: 0,
+      aws_enable_creation: 1,
       # Flag to optionally disable creation/controls for configuration recorder (only 1 per AWS region allowed)
       aws_create_configuration_recorder: 0,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to

@@ -920,12 +920,12 @@ resource "aws_iam_user" "iam_user" {
 }
 
 resource "aws_iam_access_key" "iam_user_access_key" {
- # count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   user = "${aws_iam_user.iam_user.name}"
 }
 
 resource "aws_iam_user_policy" "iam_user_policy" {
-  #count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_iam_user_policy_name}"
   user = "${aws_iam_user.iam_user.name}"
 
@@ -946,12 +946,12 @@ EOF
 }
 
 resource "aws_iam_group" "aws_iam_group_1" {
-  #count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   name = "${var.aws_iam_group_name}"
 }
 
 resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
-  #count = "${var.aws_enable_creation}"
+  count = "${var.aws_enable_creation}"
   user = "${aws_iam_user.iam_user.name}"
 
   groups = [
