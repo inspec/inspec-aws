@@ -42,6 +42,8 @@ Metrics/CyclomaticComplexity:
   Max: 25
 Metrics/PerceivedComplexity:
   Max: 25
+Naming/AccessorMethodName:
+  Enabled: false
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'

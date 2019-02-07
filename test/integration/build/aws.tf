@@ -40,6 +40,7 @@ variable "aws_cloud_watch_logs_role_name" {}
 variable "aws_cloud_watch_logs_role_policy_name" {}
 variable "aws_configuration_recorder_name" {}
 variable "aws_configuration_recorder_role" {}
+variable "aws_create_configuration_recorder" {}
 variable "aws_delivery_channel_bucket_name" {}
 variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
@@ -51,6 +52,8 @@ variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
+variable "aws_iam_user_name" {}
+variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
@@ -787,13 +790,13 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
 # AWS Config - note can only have one config recorder per region
 
 resource "aws_config_configuration_recorder" "config_recorder" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   name = "${var.aws_configuration_recorder_name}"
   role_arn = "${aws_iam_role.role_for_config_recorder.arn}"
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   name = "${var.aws_configuration_recorder_role}"
 
   assume_role_policy = <<POLICY
@@ -814,14 +817,14 @@ POLICY
 }
 
 resource "aws_s3_bucket" "bucket_for_delivery_channel" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   bucket = "${var.aws_delivery_channel_bucket_name}"
   acl = "public-read"
   force_destroy = true
 }
 
 resource "aws_iam_role_policy" "policy_for_delivery_channel" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   name = "policy_for_delivery_channel"
   role = "${aws_iam_role.role_for_config_recorder.id}"
 
@@ -845,12 +848,12 @@ POLICY
 }
 
 resource "aws_sns_topic" "sns_topic_for_delivery_channel" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   name = "${var.aws_delivery_channel_sns_topic_name}"
 }
 
 resource "aws_config_delivery_channel" "delivery_channel" {
-  count = "${var.aws_enable_creation}"
+  count = "${var.aws_create_configuration_recorder}"
   name = "${var.aws_delivery_channel_name}"
   s3_bucket_name = "${aws_s3_bucket.bucket_for_delivery_channel.bucket}"
   depends_on = [
@@ -884,7 +887,7 @@ resource "aws_s3_bucket" "flow_log_bucket" {
   force_destroy = true
 }
 
-resource "aws_ecs_cluster" "ecs_cluster_1" {
+resource "aws_ecs_cluster" "ecs_cluster" {
   count = "${var.aws_enable_creation}"
   name = "${var.aws_ecs_cluster_name}"
 }
@@ -909,3 +912,35 @@ resource "aws_elb" "aws_elb_1" {
   connection_draining         = true
   connection_draining_timeout = 400
 }
+
+resource "aws_iam_user" "iam_user" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_user_name}"
+}
+
+resource "aws_iam_access_key" "iam_user_access_key" {
+  count = "${var.aws_enable_creation}"
+  user = "${aws_iam_user.iam_user.name}"
+}
+
+resource "aws_iam_user_policy" "iam_user_policy" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_user_policy_name}"
+  user = "${aws_iam_user.iam_user.name}"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
