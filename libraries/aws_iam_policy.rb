@@ -37,7 +37,7 @@ class AwsIamPolicy < AwsResourceBase
   def get_policy_by_name(policy_name)
     policy = nil
     catch_aws_errors do
-      pagination_opts = { max_items: 1000 }
+      pagination_opts = {}
       loop do
         response = @aws.iam_client.list_policies(pagination_opts)
         policy = response.policies.detect { |p| p.policy_name == policy_name }
