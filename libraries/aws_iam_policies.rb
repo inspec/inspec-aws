@@ -33,8 +33,8 @@ class AwsIamPolicies < AwsResourceBase
   def fetch_data
     iam_policy_rows = []
     pagination_options = {}
-    loop do
-      catch_aws_errors do
+    catch_aws_errors do
+      loop do
         response = @aws.iam_client.list_policies(pagination_options)
         return [] if !response || response.empty?
         response.policies.each do |p|
