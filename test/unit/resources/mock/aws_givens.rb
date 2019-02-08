@@ -19,8 +19,8 @@ class AwsGivens
 
   # Any positive integer
   def any_int(max = 12)
-    r = SecureRandom.random_number(max)
-    any_int(max) if r == 0
+    max = max - 1 if max > 1
+    SecureRandom.random_number(max) + 1
   end
 
   def any_string(max = 12)

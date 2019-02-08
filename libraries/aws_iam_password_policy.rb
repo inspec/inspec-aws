@@ -41,7 +41,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def prevent_password_reuse?
-    @policy.password_reuse_prevention > 0
+    @policy.password_reuse_prevention.positive?
   end
   RSpec::Matchers.alias_matcher :prevent_password_reuse, :be_prevent_password_reuse
 

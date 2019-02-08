@@ -960,3 +960,24 @@ resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
   ]
 }
 
+resource "aws_iam_policy" "aws_policy_1" {
+  count = "${var.aws_enable_creation}"
+  name        = "${var.aws_iam_policy_name}"
+  path        = "/"
+  description = "Test policy"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
