@@ -49,6 +49,7 @@ class AwsIamPolicies < AwsResourceBase
                                 attached_roles:       policy_entity.policy_roles.map(&:role_name),
                                 attached_users:       policy_entity.policy_users.map(&:user_name) }]
         end
+        break unless response.is_truncated
         break unless response.marker
         pagination_options = { marker: response.marker }
       end
