@@ -18,7 +18,7 @@ class AwsIamPolicy < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(%i(policy_arn policy_name))
-
+    raise ArgumentError, 'aws_iam_policy `policy_arn` or `policy_name` must be provided' if !opts.key?(:policy_arn) && !opts.key?(policy_name)
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])
     elsif opts.key?(:policy_name)
@@ -26,10 +26,10 @@ class AwsIamPolicy < AwsResourceBase
     end
     get_attached_entities(@resp.arn)
 
-    @arn                = @resp.arn
-    @policy_name        = @resp.policy_name
-    @policy_id          = @resp.policy_id
-    @attachment_count   = @resp.attachment_count
+    @arn = @resp.arn
+    @policy_name = @resp.policy_name
+    @policy_id = @resp.policy_id
+    @attachment_count = @resp.attachment_count
     @default_version_id = @resp.default_version_id
   end
 
@@ -50,8 +50,9 @@ class AwsIamPolicy < AwsResourceBase
   end
 
   def get_policy_by_arn(arn)
-    catch_aws_errors
-    @aws.iam_client.get_policy({ policy_arn: arn }).policy
+    catch_aws_errors do
+      @aws.iam_client.get_policy({ policy_arn: arn }).policy
+    end
   end
 
   def get_attached_entities(arn)
@@ -61,8 +62,8 @@ class AwsIamPolicy < AwsResourceBase
       resp = @aws.iam_client.list_entities_for_policy(criteria)
     end
     @attached_groups = resp.policy_groups.map(&:group_name)
-    @attached_users  = resp.policy_users.map(&:user_name)
-    @attached_roles  = resp.policy_roles.map(&:role_name)
+    @attached_users = resp.policy_users.map(&:user_name)
+    @attached_roles = resp.policy_roles.map(&:role_name)
   end
 
   def exists?

@@ -3,6 +3,8 @@ require 'aws_iam_policy'
 require 'helper'
 require_relative 'mock/iam/aws_iam_policy_mock'
 
+
+
 class AwsIamPolicyConstructorTest < Minitest::Test
 
   def setup
@@ -17,7 +19,7 @@ class AwsIamPolicyConstructorTest < Minitest::Test
   end
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AwsIamPolicyMock.new(client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AwsIamPolicy.new(client_args: { stub_responses: true }) }
   end
 
   def test_arn
