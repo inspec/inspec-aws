@@ -1,6 +1,6 @@
 title 'Test an IAM Password Policy'
 
-control 'aws_iam_passowrd_policy-1.0' do
+control 'aws_iam_password_policy-1.0' do
 
   impact 1.0
   title 'Ensure AWS IAM Password Policy has the correct properties.'
@@ -8,7 +8,6 @@ control 'aws_iam_passowrd_policy-1.0' do
   describe aws_iam_password_policy do
     it { should exist }
     it { should prevent_password_reuse }
-    it { should expire_passwords }
     it { should require_numbers }
     it { should require_symbols }
     it { should require_lowercase_characters }
@@ -16,7 +15,6 @@ control 'aws_iam_passowrd_policy-1.0' do
     it { should allow_users_to_change_password }
 
     its('minimum_password_length')         { should be > 6 }
-    its('max_password_age_in_days')        { should be > 30 }
     its('number_of_passwords_to_remember') { should be > 3 }
   end
 end
