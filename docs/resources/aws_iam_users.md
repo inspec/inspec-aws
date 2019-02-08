@@ -34,10 +34,26 @@ The following examples show how to use this InSpec audit resource.
 
 ### has\_mfa\_enabled
 
-Ensure there are no Users who do not have MFA enabled.
-
+      # Ensure there are no Users who do not have MFA enabled.
+      
       describe aws_iam_users.where( has_mfa_enabled: false) do
         it { should_not exist }
+      end
+      
+### has\_inline\_policies
+
+    # Ensure there are no Users with inline policies
+    
+      describe aws_iam_users.where(has_inline_policies: true) do
+        its('usernames') { should be_empty }
+      end
+      
+### has\_attached\_policies
+
+    # Ensure there are no Users with attached policies
+    
+      describe aws_iam_users.where(has_attached_policies: true) do
+        its('usernames') { should be_empty }
       end
 <br>
 
@@ -49,7 +65,9 @@ Ensure there are no Users who do not have MFA enabled.
 * has_mfa_enabled
 * access_keys
 * has_console_password
+* has_inline_policies
 * inline_policy_names
+* has_attached_policies 
 * attached_policy_names
 * attached_policy_arns
 
