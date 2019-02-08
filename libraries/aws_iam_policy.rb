@@ -18,7 +18,7 @@ class AwsIamPolicy < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(%i(policy_arn policy_name))
-    raise ArgumentError, 'aws_iam_policy `policy_arn` or `policy_name` must be provided' if !opts.key?(:policy_arn) && !opts.key?(policy_name)
+    raise ArgumentError, 'aws_iam_policy `policy_arn` or `policy_name` must be provided' if !opts.key?(:policy_arn) && !opts.key?(:policy_name)
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])
     elsif opts.key?(:policy_name)
@@ -41,10 +41,10 @@ class AwsIamPolicy < AwsResourceBase
       loop do
         response = @aws.iam_client.list_policies(pagination_opts)
         policy = response.policies.detect { |p| p.policy_name == policy_name }
+        break if policy
+        break unless response.is_truncated
+        pagination_opts[:marker] = response.marker
       end
-      break if policy
-      break unless response.is_truncated
-      pagination_opts[:marker] = response.marker
     end
     policy
   end
@@ -62,8 +62,8 @@ class AwsIamPolicy < AwsResourceBase
       resp = @aws.iam_client.list_entities_for_policy(criteria)
     end
     @attached_groups = resp.policy_groups.map(&:group_name)
-    @attached_users = resp.policy_users.map(&:user_name)
-    @attached_roles = resp.policy_roles.map(&:role_name)
+    @attached_users  = resp.policy_users.map(&:user_name)
+    @attached_roles  = resp.policy_roles.map(&:role_name)
   end
 
   def exists?

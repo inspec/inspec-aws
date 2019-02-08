@@ -32,15 +32,11 @@ class AwsIamPolicies < AwsResourceBase
 
   def fetch_data
     iam_policy_rows = []
-    policies = {}
     pagination_options = {}
-
     loop do
       catch_aws_errors do
         response = @aws.iam_client.list_policies(pagination_options)
-
-        return [] if !policies || policies.empty?
-
+        return [] if !response || response.empty?
         response.policies.each do |p|
           criteria = { policy_arn: p.arn }
           policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
