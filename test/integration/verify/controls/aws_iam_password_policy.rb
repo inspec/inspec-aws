@@ -1,6 +1,6 @@
 title 'Test an IAM Password Policy'
 
-control 'aws_iam_password_policy-1.0' do
+control 'aws-iam-password-policy-1.0' do
 
   impact 1.0
   title 'Ensure AWS IAM Password Policy has the correct properties.'
