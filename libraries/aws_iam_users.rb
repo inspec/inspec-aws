@@ -63,10 +63,10 @@ class AwsIamUsers < AwsResourceBase
                           user_id:      u.user_id,
                           access_keys:  user_access_keys(username),
                           has_mfa_enabled:       !iam_client.list_mfa_devices(username).mfa_devices.empty?,
-                          has_attached_policies: attached_policies.empty?,
+                          has_attached_policies: !attached_policies.empty?,
                           attached_policy_names: attached_policies.map { |p| p[:policy_name] },
                           attached_policy_arns:  attached_policies.map { |p| p[:policy_arn] },
-                          has_inline_policies:   inline_policies.empty?,
+                          has_inline_policies:   !inline_policies.empty?,
                           inline_policy_names:   iam_client.list_user_policies(username).policy_names,
                           has_console_password:  has_password?(username) }]
         end
