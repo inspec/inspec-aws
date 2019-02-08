@@ -46,7 +46,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
   RSpec::Matchers.alias_matcher :prevent_password_reuse, :be_prevent_password_reuse
 
   def expire_passwords?
-    @policy.hard_expiry
+    @policy.max_password_age != 0
   end
   RSpec::Matchers.alias_matcher :expire_passwords, :be_expire_passwords
 
