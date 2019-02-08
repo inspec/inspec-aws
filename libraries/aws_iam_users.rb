@@ -25,9 +25,11 @@ class AwsIamUsers < AwsResourceBase
              .register_column(:user_arns,   field: :user_arn)
              .register_column(:user_ids,    field: :user_id)
              .register_column(:access_keys, field: :access_keys)
+             .register_column(:has_attached_policies, field: :has_attached_policies)
              .register_column(:attached_policy_names, field: :attached_policy_names)
              .register_column(:attached_policy_arns,  field: :attached_policy_arns)
              .register_column(:has_console_password,  field: :has_console_password)
+             .register_column(:has_inline_policies,   field: :has_inline_policies)
              .register_column(:inline_policy_names,   field: :inline_policy_names)
              .register_column(:has_mfa_enabled,       field: :has_mfa_enabled)
              .install_filter_methods_on_resource(self, :table)
@@ -53,16 +55,19 @@ class AwsIamUsers < AwsResourceBase
 
         users.each do |u|
           username = { user_name: u.arn.split('/').last }
-          policies = iam_client.list_attached_user_policies(username).attached_policies
+          attached_policies = iam_client.list_attached_user_policies(username).attached_policies
+          inline_policies   = iam_client.list_user_policies(username).policy_names
 
           user_rows += [{ username:     username[:user_name],
                           user_arn:     u.arn,
                           user_id:      u.user_id,
                           access_keys:  user_access_keys(username),
                           has_mfa_enabled:       !iam_client.list_mfa_devices(username).mfa_devices.empty?,
+                          has_attached_policies: attached_policies.empty?,
+                          attached_policy_names: attached_policies.map { |p| p[:policy_name] },
+                          attached_policy_arns:  attached_policies.map { |p| p[:policy_arn] },
+                          has_inline_policies:   inline_policies.empty?,
                           inline_policy_names:   iam_client.list_user_policies(username).policy_names,
-                          attached_policy_names: policies.map { |p| p[:policy_name] },
-                          attached_policy_arns:  policies.map { |p| p[:policy_arn] },
                           has_console_password:  has_password?(username) }]
         end
       end
