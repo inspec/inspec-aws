@@ -22,7 +22,7 @@ class AwsKmsKey < AwsResourceBase
         @resp = @aws.kms_client.describe_key({ key_id: opts[:key_id] })
         @key = @resp.key_metadata.to_h
         create_resource_methods(@key)
-        @key_rotation_response = @aws.kms_client.get_key_rotation_status({ key_id: opts[:key_id] })
+        @key_rotation_response = @aws.kms_client.get_key_rotation_status({ key_id: opts[:key_id] }) unless @key[:key_manager] == 'AWS'
       rescue Aws::KMS::Errors::NotFoundException
         @key = {}
         return
