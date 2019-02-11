@@ -165,3 +165,7 @@ output "aws_flow_log_id" {
 output "aws_iam_policy_arn" {
   value = "${aws_iam_policy.aws_policy_1.*.arn}"
 }
+
+output "aws_iam_access_key_id" {
+  value = "${aws_iam_access_key.iam_user_access_key.id}"
+}

@@ -30,4 +30,8 @@ class AwsGivens
     Time.at(rand * Time.now.to_i)
   end
 
+  def any_region
+    %W(us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1).sample
+  end
+
 end
