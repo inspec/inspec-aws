@@ -36,7 +36,7 @@ class AwsIamRootUser < AwsResourceBase
   # Virtual MFA devices have suffix 'root-account-mfa-device'
   def has_virtual_mfa_enabled?
     virtual_mfa_suffix = 'root-account-mfa-device'
-    @virtual_devices.any? { |device| device['serial_number'].end_with?(virtual_mfa_suffix) }
+    @virtual_devices.any? { |device| device[:serial_number].end_with?(virtual_mfa_suffix) }
   end
 
   def exists?

@@ -25,7 +25,7 @@ class AwsIamRootUserTest < Minitest::Test
 
   def test_has_hardware_mfa_enabled
     virtual_mfa_suffix = 'root-account-mfa-device'
-    virtual_mfa_enabled = @mock_virtual_devices.any? { |device| device['serial_number'].end_with?(virtual_mfa_suffix)}
+    virtual_mfa_enabled = @mock_virtual_devices.any? { |device| device[:serial_number].end_with?(virtual_mfa_suffix)}
     assert_equal(@root_user.has_hardware_mfa_enabled?, (@mock_summary['AccountMFAEnabled'] == 1 && !virtual_mfa_enabled))
   end
 
