@@ -17,5 +17,7 @@ control 'aws-iam-policy-1.0' do
   describe aws_iam_policy(policy_name: aws_iam_policy_name) do
     it           { should exist }
     its ('arn')  { should eq aws_iam_policy_arn }
+    it { should_not have_statement('Effect' => 'Allow', 'Resource' => '*', 'Action' => '*') }
+    it { should have_statement('Effect' => 'Allow', 'Resource' => '*', 'Action' => 'ec2:Describe*') }
   end
 end

@@ -13,7 +13,7 @@ class AwsIamPolicy < AwsResourceBase
   "
 
   attr_reader :arn, :attachment_count, :default_version_id, :policy_name, :policy_id, :attached_groups,
-              :attached_roles, :attached_users
+              :attached_roles, :attached_users, :policy_document
 
   def initialize(opts = {})
     super(opts)
@@ -25,6 +25,7 @@ class AwsIamPolicy < AwsResourceBase
       @resp = get_policy_by_name(opts[:policy_name])
     end
     get_attached_entities(@resp.arn)
+    get_policy_document(@resp.arn, @resp.default_version_id)
 
     @arn = @resp.arn
     @policy_name = @resp.policy_name
@@ -69,6 +70,26 @@ class AwsIamPolicy < AwsResourceBase
   def exists?
     !@arn.nil?
   end
+
+  def has_statement?(criteria = {})
+    return false unless @policy_document
+    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document))
+    statements = document['Statement'].is_a?(Hash) ? [document['Statement']] : document['Statement']
+    statement_match = false
+    statements.each do |s|
+      actions = s['Action']
+      effect = s['Effect']
+      resource = s['Resource']
+      statement_match = true if actions.include?(criteria['Action']) && effect.eql?(criteria['Effect']) && resource.eql?(criteria['Resource'])
+    end
+    statement_match
+  end
+
+  def get_policy_document(arn, default_version_id)
+    catch_aws_errors do
+      @policy_document = @aws.iam_client.get_policy_version(policy_arn: arn, version_id: default_version_id)
+      end
+    end
 
   def to_s
     "AWS Iam Policy #{@policy_name}"
