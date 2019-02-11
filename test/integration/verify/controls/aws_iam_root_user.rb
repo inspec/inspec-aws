@@ -1,7 +1,7 @@
 control 'aws-iam-root-password-1.0' do
 
   impact 1.0
-  title 'Ensure AWS VPC has the correct properties.'
+  title 'Test the AWS IAM Root User'
 
   describe aws_iam_root_user do
     it { should have_mfa_enabled }
