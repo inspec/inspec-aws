@@ -63,7 +63,7 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def has_rotation_enabled?
-    @key_rotation_response.key_rotation_enabled unless @key_rotation_response.empty?
+    @key_rotation_response.key_rotation_enabled unless @key_rotation_response.nil? || @key_rotation_response.empty?
   end
 
   def to_s
