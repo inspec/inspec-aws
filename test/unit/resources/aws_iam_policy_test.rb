@@ -4,8 +4,22 @@ require 'helper'
 require_relative 'mock/iam/aws_iam_policy_mock'
 
 
-
 class AwsIamPolicyConstructorTest < Minitest::Test
+
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) { AwsIamPolicy.new(client_args: { stub_responses: true }) }
+  end
+
+  def test_accepts_policy_arn
+    AwsIamPolicy.new(policy_arn: 'policy-arn', client_args: { stub_responses: true })
+  end
+
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AwsIamPolicy.new(rubbish: 9) }
+  end
+end
+
+class AwsIamPolicyTest < Minitest::Test
 
   def setup
     # Given
@@ -16,10 +30,6 @@ class AwsIamPolicyConstructorTest < Minitest::Test
     @policy= AwsIamPolicy.new(policy_arn: @mock_policy[:arn],
                            client_args: { stub_responses: true },
                            stub_data: @mock.stub_data)
-  end
-
-  def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AwsIamPolicy.new(client_args: { stub_responses: true }) }
   end
 
   def test_arn
