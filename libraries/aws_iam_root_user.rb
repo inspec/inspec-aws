@@ -40,7 +40,7 @@ class AwsIamRootUser < AwsResourceBase
   end
 
   def exists?
-    !@user_arn.nil?
+    !@summary_account.empty?
   end
 
   def to_s
