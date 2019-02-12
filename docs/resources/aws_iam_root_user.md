@@ -3,7 +3,7 @@ title: About the aws_iam_root_user Resource
 platform: aws
 ---
 
-# aws\_iam\_user
+# aws\_iam\_root\_user
 
 Use the `aws_iam_root_user` InSpec audit resource to test properties of an AWS IAM Root User.
 
@@ -17,7 +17,7 @@ Use the `aws_iam_root_user` InSpec audit resource to test properties of an AWS I
     
 ## Syntax
 
-An `aws_iam_root_user` resource block declares the tests for a single AWS IAM User by user name.
+An `aws_iam_root_user` resource block declares the tests for a single AWS IAM Root User by user name.
 
     describe aws_iam_root_user do
         it { should     have_mfa_enabled }
