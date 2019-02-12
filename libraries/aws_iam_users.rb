@@ -62,8 +62,11 @@ class AwsIamUsers < AwsResourceBase
           inline_policies   = iam_client.list_user_policies(username).policy_names
 
           password_last_used = u.password_last_used
-          password_last_used_days_ago = ((Time.now - password_last_used) / (24*60*60)).to_i
-          password_last_used_days_ago ||= 0
+          if password_last_used
+            password_last_used_days_ago = ((Time.now - password_last_used) / (24*60*60)).to_i
+          else
+            password_last_used_days_ago = -1 # Never used
+          end
 
           user_rows += [{ username:     username[:user_name],
                           user_arn:     u.arn,
