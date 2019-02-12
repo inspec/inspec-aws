@@ -20,7 +20,7 @@ class AwsIamAccessKey < AwsResourceBase
   def initialize(opts = {})
     if opts.is_a?(String)
       # If String passed, determine if username or ID.
-      if opts !~ /^AKIA[0-9A-Z]{16}$/
+      if !/^AKIA[0-9A-Z]{16}$/.match?(opts)
         opts = { username: opts }
       else
         opts = { access_key_id: opts }
@@ -33,7 +33,7 @@ class AwsIamAccessKey < AwsResourceBase
     super(opts)
     validate_parameters(%i(access_key_id username))
 
-    if opts[:access_key_id] !~ /^AKIA[0-9A-Z]{16}$/
+    if !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
       raise ArgumentError, 'Incorrect format for provided Access Key ID'
     end
 

@@ -19,11 +19,12 @@ gem 'aws-sdk-sns', '~> 1'
 gem 'aws-sdk-rds', '~> 1'
 gem 'aws-sdk-ecs', '~> 1'
 
+gem 'rubocop', '~> 0.64.0', require: false
+
 group :development do
   gem 'github_changelog_generator'
   gem 'passgen'
   gem 'rake'
-  gem 'rubocop'
   gem 'minitest'
 end
 
