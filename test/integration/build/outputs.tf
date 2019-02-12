@@ -167,5 +167,5 @@ output "aws_iam_policy_arn" {
 }
 
 output "aws_iam_access_key_id" {
-  value = "${aws_iam_access_key.iam_user_access_key.id}"
+  value = "${aws_iam_access_key.iam_user_access_key.*.id}"
 }
