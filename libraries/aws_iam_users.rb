@@ -32,7 +32,8 @@ class AwsIamUsers < AwsResourceBase
              .register_column(:has_inline_policies,   field: :has_inline_policies)
              .register_column(:inline_policy_names,   field: :inline_policy_names)
              .register_column(:has_mfa_enabled,       field: :has_mfa_enabled)
-             .register_column(:password_ever_used?, field: :password_ever_used?)
+             .register_column(:password_ever_used?,   field: :password_ever_used?)
+             .register_column(:password_last_used_days_ago, field: :password_last_used_days_ago)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -73,7 +74,7 @@ class AwsIamUsers < AwsResourceBase
                           attached_policy_arns:  attached_policies.map { |p| p[:policy_arn] },
                           has_inline_policies:   !inline_policies.empty?,
                           inline_policy_names:   iam_client.list_user_policies(username).policy_names,
-                          password_ever_used:    !password_last_used.nil?,
+                          password_ever_used?:   !password_last_used.nil?,
                           password_last_used_days_ago: password_last_used_days_ago,
                           has_console_password:  has_password?(username) }]
         end
