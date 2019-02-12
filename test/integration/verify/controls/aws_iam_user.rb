@@ -2,7 +2,7 @@ title 'Test single AWS IAM User'
 
 aws_iam_user_name = attribute(:aws_iam_user_name, default: '', description: 'The AWS IAM Username.')
 
-control 'aws_iam_user-1.0' do
+control 'aws-iam-user-1.0' do
 
   impact 1.0
   title 'Ensure AWS IAM User has the correct properties.'
