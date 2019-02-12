@@ -24,6 +24,9 @@ Lint/ParenthesesAsGroupedExpression:
   Enabled: false
 Lint/ReturnInVoidContext:
   Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+  - "test/integration/verify/controls/*"
 EmptyLinesAroundBlockBody:
   Enabled: false
 MethodLength:
