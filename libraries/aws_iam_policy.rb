@@ -88,8 +88,8 @@ class AwsIamPolicy < AwsResourceBase
   def get_policy_document(arn, default_version_id)
     catch_aws_errors do
       @policy_document = @aws.iam_client.get_policy_version(policy_arn: arn, version_id: default_version_id)
-      end
     end
+  end
 
   def to_s
     "AWS Iam Policy #{@policy_name}"
