@@ -23,6 +23,10 @@ class AwsS3Bucket < AwsResourceBase
     catch_aws_errors do
       begin
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
+        # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
+        # redirects and signing attempts.
+        opts[:aws_region] = @region
+        super(opts)
       rescue Aws::S3::Errors::NoSuchBucket
         @region = nil
       end
@@ -74,7 +78,7 @@ class AwsS3Bucket < AwsResourceBase
 
   # below is to preserve the original 'unsupported' function but isn't used in the above
   def bucket_policy
-    @bucket_policy ||=fetch_bucket_policy
+    @bucket_policy ||= fetch_bucket_policy
   end
 
   def fetch_bucket_policy
