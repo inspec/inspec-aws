@@ -35,5 +35,5 @@ end
 #end
 
 # Below required to overcome AWS SDK v2/3 incompatibility
-gem 'train', path: ENV['INSPEC_AWS_TRAIN_PATH']
-gem 'inspec', path: ENV['INSPEC_AWS_INSPEC_PATH']
+gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
+gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'

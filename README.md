@@ -1,8 +1,27 @@
-# inspec-aws 
+# InSpec for AWS
 
-This is incubation for the new InSpec AWS standalone resource pack.  Below is not intended as an end-user README, it contains notes and discussion points for the implementation. 
+This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required resources to write tests for resources in AWS.
 
-## Resources WIP
+## Prerequisites
+
+* Ruby
+* Bundler
+* AWS Service Principal (see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))  
+    * Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
+    
+    ```bash
+    # Example configuration
+    export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
+    export AWS_SECRET_ACCESS_KEY="vD2lfoNvPdwsofqyuO9jRuWUkZIMqisdfeFmkHTy7ON+w"
+    export AWS_REGION="eu-west-3"
+    export AWS_AVAILABILITY_ZONE="eu-west-3a"  
+
+##### Permissions
+Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
+
+
+## Resources 
+This resouce pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/chef-partners/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/chef-partners/inspec-aws/pulls).
 
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
@@ -14,7 +33,20 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
+- [aws_ecs_cluster](docs/resources/aws_ecs_cluster.md)
+- [aws_ecs_clusters](docs/resources/aws_ecs_clusters.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
+- [aws_iam_access_key](docs/resources/aws_iam_access_key.md)
+- [aws_iam_access_keys](docs/resources/aws_iam_access_keys.md)
+- [aws_iam_group](docs/resources/aws_iam_group.md)
+- [aws_iam_password_policy](docs/resources/aws_iam_password_policy.md)
+- [aws_iam_policies](docs/resources/aws_iam_policies.md)
+- [aws_iam_policy](docs/resources/aws_iam_policy.md)
+- [aws_iam_role](docs/resources/aws_iam_role.md)
+- [aws_iam_roles](docs/resources/aws_iam_roles.md)
+- [aws_iam_root_user](docs/resources/aws_iam_root_user.md)
+- [aws_iam_user](docs/resources/aws_iam_user.md)
+- [aws_iam_users](docs/resources/aws_iam_users.md)
 - [aws_kms_key](docs/resources/aws_kms_key.md)
 - [aws_kms_keys](docs/resources/aws_kms_keys.md)
 - [aws_rds_instance](docs/resources/aws_rds_instance.md)
@@ -30,75 +62,43 @@ This is incubation for the new InSpec AWS standalone resource pack.  Below is no
 - [aws_sns_subscription](docs/resources/aws_sns_subscription.md)
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
+- [aws_sqs_queue](docs/resources/aws_sqs_queue.md)
+- [aws_sqs_queues](docs/resources/aws_sqs_queues.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 
-## Multi-region support
+## Examples
 
-With CIS certification firmly in mind, the following two controls are good examples of providing multi-region support for operations within InSpec AWS:
+##### Test that an EC2 instance is running & using the correct AMI
 
-- [aws_multi_region_security_group](test/integration/verify/controls/aws_multi_region_security_group.rb)
-- [aws_multi_region_config_recorder](test/integration/verify/controls/aws_multi_region_config_recorder.rb)
-
-Sample output:
-
-```
-
-Profile: Amazon Web Services  Resource Pack (inspec-aws)
-Version: 0.1.0
-Target:  local://
-
-  ✔  aws-multi-region-security-group-1.0: Ensure AWS Security Groups across all regions have the correct properties.
-     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-south-1 should exist
-     ✔  EC2 Security Group sg-00d511ce91a97f40f in ap-south-1 should not allow in only {:port=>12345}
-     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-south-1 should exist
-     ✔  EC2 Security Group sg-067cd21e928c3a2f1 in ap-south-1 should not allow in only {:port=>12345}
-     ✔  EC2 Security Group sg-9bb3b9f3 in ap-south-1 should exist
-     ✔  EC2 Security Group sg-9bb3b9f3 in ap-south-1 should not allow in only {:port=>12345}
-...
-  ✔  aws-multi-region-config-recorder-1.0: Ensure at least one AWS Configuration Recorder exists across all regions.
-     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in ap-south-1 should exist
-     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-west-3 should exist
-     ✔  Configuration Recorder aws-config-recorder-fhzyvtwpeyddhxqflmmsmrvnk in eu-north-1 should exist
-...
-
-
-Profile: Amazon Web Services  Resource Pack (inspec-aws)
-Version: 0.1.0
-Target:  local://
-
-     No tests executed.
-
-Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
-Test Summary: 112 successful, 0 failures, 0 skipped
-``` 
+    describe aws_ec2_instance(name: 'ProdWebApp') do
+      it              { should be_running }
+      its('image_id') { should eq 'ami-27a58d5c' }
+    end
+    
+##### Ensure all AWS Users have MFA enabled
+      
+      describe aws_iam_users.where( has_mfa_enabled: false) do
+        it { should_not exist }
+      end
 
 ## Environment and Setup Notes
 
-### Train and InSpec Dependencies
+#### Train and InSpec Dependencies
 
-In order to use the latest SDK the `aws-sdk` version in train must be updated to avoid conflicts e.g.
+At the time of writing, this Resource Pack's [Inspec](https://github.com/inspec/inspec) and [Train](https://github.com/inspec/train) dependencies are ahead of the latest releases. This is the case until these dependencies target v3 of the AWS SDK for Ruby.
 
-```
-Bundler could not find compatible versions for gem "aws-sdk":
-  In Gemfile:
-    aws-sdk (~> 3)
-
-    inspec (>= 3.0.25, ~> 3.0) was resolved to 3.0.52, which depends on
-      train (>= 1.5.6, ~> 1.5) was resolved to 1.5.6, which depends on
-        aws-sdk (~> 2)
-```
-
-For this initial prototype, an explicit dependency on train and inspec is required in the Gemfile.  To make this simpler, add the equivalent of the following to your envrc:
+In order to use the latest SDK the `aws-sdk` version, we pin to a Github Branch on each of these repositories in our Gemfile.
 
 ```
-export INSPEC_AWS_TRAIN_PATH='/Users/spaterson/Documents/workspace/aws/train'
-export INSPEC_AWS_INSPEC_PATH='/Users/spaterson/Documents/workspace/aws/inspec
+gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
+gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
 ```
 
-The local InSpec version has all AWS components removed.  The local train version is upgraded to SDK version 3 to avoid the above conflict.  
+The branched InSpec version has all AWS components removed.  
+The branched Train version is upgraded to SDK version 3 to avoid the above conflict.  
 
 ### Running the unit and integration tests
 
@@ -167,6 +167,13 @@ Target:  local://
 Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
 Test Summary: 13 successful, 0 failures, 0 skipped
 ```
+
+
+
+<RF Reviewed to here. Below unreviewed.>
+
+
+
 
 ## Discussion Points
 
