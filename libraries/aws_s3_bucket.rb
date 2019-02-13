@@ -25,7 +25,7 @@ class AwsS3Bucket < AwsResourceBase
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
         # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
         # redirects and signing attempts.
-        opts[:aws_region] = @region
+        opts[:aws_region] = @region if @region != ''
         super(opts)
       rescue Aws::S3::Errors::NoSuchBucket
         @region = nil
