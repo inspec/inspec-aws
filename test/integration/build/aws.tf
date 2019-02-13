@@ -69,6 +69,7 @@ variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
 variable "aws_security_group_omega" {}
+variable "aws_sqs_queue_name" {}
 variable "aws_sns_topic_no_subscription" {}
 variable "aws_sns_topic_subscription_sqs" {}
 variable "aws_sns_topic_with_subscription" {}
@@ -980,4 +981,14 @@ resource "aws_iam_policy" "aws_policy_1" {
   ]
 }
 EOF
+}
+
+
+resource "aws_sqs_queue" "aws_sqs_queue_1" {
+  count = "${var.aws_enable_creation}"
+  name                      = "${var.aws_sqs_queue_name}"
+  delay_seconds             = 90
+  max_message_size          = 2048
+  message_retention_seconds = 86400
+  receive_wait_time_seconds = 10
 }

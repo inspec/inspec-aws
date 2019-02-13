@@ -12,6 +12,7 @@ require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-rds'
 require 'aws-sdk-s3'
+require 'aws-sdk-sqs'
 require 'aws-sdk-sns'
 require 'rspec/expectations'
 
@@ -89,6 +90,10 @@ class AwsConnection
 
   def rds_client
     aws_client(Aws::RDS::Client)
+  end
+
+  def sqs_client
+    aws_client(Aws::SQS::Client)
   end
 
   def sns_client
