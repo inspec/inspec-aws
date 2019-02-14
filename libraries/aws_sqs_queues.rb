@@ -36,7 +36,7 @@ class AwsSqsQueues < AwsResourceBase
       response = @aws.sqs_client.list_queues
       return [] if !response || response.empty?
       response.queue_urls.each do |url|
-        queue_attributes = @aws.iam_client.get_queue_attributes(queue_url: url, attribute_names: ['All']).attributes
+        queue_attributes = @aws.sqs_client.get_queue_attributes(queue_url: url, attribute_names: ['All']).attributes
         queue_rows += [{ arn:                  queue_attributes['QueueArn'],
                          attachment_count:     queue_attributes['VisibilityTimeout'].to_i,
                          default_version_id:   queue_attributes['MaximumMessageSize'].to_i,
