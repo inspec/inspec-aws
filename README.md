@@ -4,10 +4,11 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 ## Prerequisites
 
-* Ruby
-* Bundler
-* AWS Service Principal (see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))  
-    * Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
+### AWS Credentials
+
+Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))  
+
+Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
     
     ```bash
     # Example configuration
@@ -16,11 +17,39 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
     export AWS_REGION="eu-west-3"
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
 
-##### Permissions
+### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
 
+## Use the Resources
 
-## Resources 
+Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the AWS resources in your tests do the following:
+
+```
+$ inspec init profile my-profile
+```
+
+Example inspec.yml:
+
+```
+name: my-profile
+title: My own AWS profile
+version: 0.1.0
+inspec_version: '>= 2.2.7'
+depends:
+  - name: inspec-aws
+    url: https://github.com/inspec/inspec-aws/archive/master.tar.gz
+supports:
+  - platform: aws
+```
+
+Add some tests and run the profile via:
+
+```
+$ inspec exec my-profile -t aws://
+```
+
+
+## Resource documentation
 This resouce pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/chef-partners/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/chef-partners/inspec-aws/pulls).
 
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
@@ -140,7 +169,7 @@ bundle exec inspec exec test/integration/verify --attrs test/integration/build/a
 
 Profile: Amazon Web Services  Resource Pack (inspec-aws)
 Version: 0.1.0
-Target:  local://
+Target:  aws://eu-west-2
 
   ✔  aws-vpc-1.0: Ensure AWS VPC has the correct properties.
      ✔  VPC vpc-0373aeb7284407ffd should exist
@@ -156,75 +185,32 @@ Target:  local://
      ✔  VPC vpc-0373aeb7284407ffd should exist
      ✔  VPC vpc-0373aeb7284407ffd should not be default
      ✔  VPC vpc-0373aeb7284407ffd vpc_id should eq "vpc-0373aeb7284407ffd"
-
+...
 
 Profile: Amazon Web Services  Resource Pack (inspec-aws)
 Version: 0.1.0
-Target:  local://
+Target:  aws://eu-west-2
 
      No tests executed.
 
-Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
-Test Summary: 13 successful, 0 failures, 0 skipped
+Profile Summary: 50 successful controls, 0 control failures, 3 controls skipped
+Test Summary: 602 successful, 0 failures, 18 skipped
 ```
 
+## FAQ
 
+### Failure running "inspec exec" on my AWS profile
 
-<RF Reviewed to here. Below unreviewed.>
-
-
-
-
-## Discussion Points
-
-### Train and InSpec Update Options
-
-At the time of writing the proposal would be to do the following:
-1. Update train AWS transport to SDK3 (TBD whether or not to upgrade existing AWS components in InSpec initially)
-2. Remove AWS components from InSpec, use classes within `inspec-aws` as a replacement
-3. TBD - instead of relying on train, use connection logic within the resource pack for AWS client instantiation.
-
-The thinking behind 3. is to decouples the resource pack from the train release cycle.  This also simplifies testing and makes it easier to supply additional options at client instantiation e.g. for switching endpoints.
-
-
-## Resource Unit tests
-
-Neither `inspec-gcp` or `inspec-azure` have resource unit tests and have instead opted for integration tests only.  However, unit tests can be useful for parameter validation and exception checking/handling.  For example:
+If an error such occurs when running "inspec exec" on a newly created AWS profile, check that the GCP transport is being specified as below:
 
 ```
-describe aws_vpc( vpc_id: 'vpc-not-formatted-correctly-123') do
-   it { should_not exist }
-end
+$ inspec exec . -t aws://
 ```
 
-By design the original implementation of the above throws a source code error (ArgumentError) but this cannot be easily triggered as part of integration tests. 
+## Support
 
-Therefore, pursuing minimal unit tests for the gaps not covered by integration seems prudent as a starting point.  Simple stubbing can be achieved via the AWS SDK e.g.
-[https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/stubbing.html]
-This will allow more rapid development of new resources.
+The InSpec AWS resources are community supported. For bugs and features, please open a github issue and label it appropriately.
 
-##  Plural singular resource woes 
+## Kudos
 
-VPCs have a function to describe 'all'.  This fine but we have to artificially restrict results for singular resources.  The plural resource could cache everything from one API interaction as an improvement.  Same thing often happens in GCP / AWS.
-
-For background, I was trying to expose filtering by tags for the singular resource.  When only one VPC applies this isn't an issue, however, should several apply, we end up in a mess.
-```
-    filter = opts[:filter] if opts[:filter]
-    
-    # can't offer the filter for singular resource here in case >1 results are returned
-    
-    describe aws_vpc( filter: { name: 'tag:Name', values: [aws_vpc_name] } ) do
-    ...
-```
-
-## Accepting scalar arguments
-
-Originally it was possible to supply single string args as a default.  For example:
-
-```
-describe aws_vpc('vpc-id') do
-# instead of forcing the more explicit
-describe aws_vpc( vpc_id: 'vpc-id') do
-```
-
-This is supported for simplicity but perhaps it would be worth removing the option altogether? 
+This work builds on the InSpec 2 AWS resources that were previously shipped as part of InSpec. 
