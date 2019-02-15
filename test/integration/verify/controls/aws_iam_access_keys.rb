@@ -29,14 +29,14 @@ control 'aws-iam-access-keys-1.0' do
   end
 
   # There are recently used keys
-  describe aws_iam_access_keys.where(ever_used: true).where { last_used_days_ago > 0 } do
-    it { should exist }
-  end
+  # describe aws_iam_access_keys.where(ever_used: true).where { last_used_days_ago > 0 } do
+  #   it { should exist }
+  # end
 
   # Key should be created with user
-  describe aws_iam_access_keys.where(created_with_user: true) do
-    it { should exist }
-  end
+  # describe aws_iam_access_keys.where(created_with_user: true) do
+  #   it { should exist }
+  # end
 
   # No key for invalid user
   describe aws_iam_access_keys(username: invalid_username) do
