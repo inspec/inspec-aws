@@ -18,7 +18,7 @@ class AwsEksCluster < AwsResourceBase
               :active, :failed, :deleting
 
   def initialize(opts = {})
-    opts = {cluster_name: opts } if opts.is_a?(String)
+    opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters([:cluster_name])
 

@@ -47,6 +47,10 @@ namespace :test do
     # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
 
+  task :setup_integration_tests => ['tf:tf_dir', 'tf:plan_integration_tests']
+
+  task :plan_integration_tests => ['tf:tf_dir', 'tf:init_workspace', 'tf:plan_integration_tests']
+
   task :run_integration_tests do
     puts '----> Running InSpec tests'
     target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else CONTROLS_DIR end
@@ -81,7 +85,7 @@ namespace :tf do
   task plan_integration_tests: [:tf_dir, :init_workspace] do
     if File.exist?(TF_VAR_FILE)
       puts '----> Previous run not cleaned up - running cleanup...'
-      Rake::Task['tf:destroy'].execute
+      Rake::Task['tf:cleanup_integration_tests'].execute
     end
     puts '----> Generating Terraform and InSpec variable files'
     AWSInspecConfig.store_json(TF_VAR_FILE_NAME)
