@@ -47,8 +47,6 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecs_cluster_name" {}
-variable "aws_eks_availability_zone_eu_central_a" {}
-variable "aws_eks_availability_zone_eu_central_b" {}
 variable "aws_eks_cluster_name" {}
 variable "aws_eks_role_name" {}
 variable "aws_eks_subnet_name_1" {}
@@ -1045,7 +1043,7 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
 resource "aws_subnet" "eks_subnet" {
   count = "${var.aws_enable_creation}"
   vpc_id = "${aws_vpc.eks_vpc.id}"
-  availability_zone = "${var.aws_eks_availability_zone_eu_central_a}"
+  availability_zone = "${var.aws_availability_zone}"
   cidr_block = "10.0.16.0/20"
   tags {
     Name = "${var.aws_eks_subnet_name_1}"
@@ -1055,7 +1053,7 @@ resource "aws_subnet" "eks_subnet" {
 resource "aws_subnet" "eks_subnet-2" {
   count = "${var.aws_enable_creation}"
   vpc_id = "${aws_vpc.eks_vpc.id}"
-  availability_zone = "${var.aws_eks_availability_zone_eu_central_b}"
+  availability_zone = "${var.aws_region}b"
   cidr_block = "10.0.32.0/20"
   tags {
     Name = "${var.aws_eks_subnet_name_1}"
