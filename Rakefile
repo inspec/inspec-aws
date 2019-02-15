@@ -47,7 +47,7 @@ namespace :test do
     # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
 
-  task :setup_integration_tests => ['tf:tf_dir', 'tf:plan_integration_tests']
+  task :setup_integration_tests => ['tf:tf_dir', 'tf:plan_integration_tests', 'tf:setup_integration_tests']
 
   task :plan_integration_tests => ['tf:tf_dir', 'tf:init_workspace', 'tf:plan_integration_tests']
 
