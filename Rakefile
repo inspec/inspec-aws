@@ -62,6 +62,8 @@ namespace :test do
     sh(cmd)
   end
 
+  task :cleanup_integration_tests => ['tf:tf_dir', 'tf:cleanup_integration_tests']
+
   desc 'Perform Integration Tests'
   task integration: ['tf:setup_integration_tests'] do
     Rake::Task['test:run_integration_tests'].execute
