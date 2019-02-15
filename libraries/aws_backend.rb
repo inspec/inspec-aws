@@ -7,6 +7,7 @@ require 'aws-sdk-configservice'
 require 'aws-sdk-core'
 require 'aws-sdk-ec2'
 require 'aws-sdk-ecs'
+require 'aws-sdk-eks'
 require 'aws-sdk-elasticloadbalancing'
 require 'aws-sdk-iam'
 require 'aws-sdk-kms'
@@ -74,6 +75,10 @@ class AwsConnection
 
   def ecs_client
     aws_client(Aws::ECS::Client)
+  end
+
+  def eks_client
+    aws_client(Aws::EKS::Client)
   end
 
   def elb_client

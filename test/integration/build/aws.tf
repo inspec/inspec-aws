@@ -47,6 +47,13 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecs_cluster_name" {}
+variable "aws_eks_availability_zone_eu_central_a" {}
+variable "aws_eks_availability_zone_eu_central_b" {}
+variable "aws_eks_cluster_name" {}
+variable "aws_eks_role_name" {}
+variable "aws_eks_subnet_name_1" {}
+variable "aws_eks_subnet_name_2" {}
+variable "aws_eks_vpc_name" {}
 variable "aws_elb_access_log_name" {}
 variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
@@ -991,4 +998,76 @@ resource "aws_sqs_queue" "aws_sqs_queue_1" {
   max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
+}
+
+resource "aws_vpc" "eks_vpc" {
+  count = "${var.aws_enable_creation}"
+  cidr_block = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags {
+    Name = "${var.aws_eks_vpc_name}"
+  }
+}
+
+resource "aws_iam_role" "aws_eks_role" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_eks_role_name}"
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "eks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
+  count = "${var.aws_enable_creation}"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = "${aws_iam_role.aws_eks_role.name}"
+}
+
+resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
+  count = "${var.aws_enable_creation}"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  role       = "${aws_iam_role.aws_eks_role.name}"
+}
+
+
+resource "aws_subnet" "eks_subnet" {
+  count = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.eks_vpc.id}"
+  availability_zone = "${var.aws_eks_availability_zone_eu_central_a}"
+  cidr_block = "10.0.16.0/20"
+  tags {
+    Name = "${var.aws_eks_subnet_name_1}"
+  }
+}
+
+resource "aws_subnet" "eks_subnet-2" {
+  count = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.eks_vpc.id}"
+  availability_zone = "${var.aws_eks_availability_zone_eu_central_b}"
+  cidr_block = "10.0.32.0/20"
+  tags {
+    Name = "${var.aws_eks_subnet_name_1}"
+  }
+}
+
+resource "aws_eks_cluster" "aws_eks_cluster" {
+  count = "${var.aws_enable_creation}"
+  name     = "${var.aws_eks_cluster_name}"
+  role_arn = "${aws_iam_role.aws_eks_role.arn}"
+
+  vpc_config {
+    subnet_ids = ["${aws_subnet.eks_subnet-2.*.id}", "${aws_subnet.eks_subnet.*.id}"]
+  }
 }
