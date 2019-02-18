@@ -1,0 +1,16 @@
+.envrc
+.ruby-version
+.direnv
+Gemfile.lock
+inspec.lock
+.kitchen
+*.plan
+*.tfstate*
+local
+.vscode
+.terraform
+*.idea*
+*.env
+*inspec-*.tfvars
+*-inspec-attributes.yaml
+*inspec-output*
