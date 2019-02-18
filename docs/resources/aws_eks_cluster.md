@@ -8,16 +8,6 @@ Use the `aws_eks_cluster` InSpec audit resource to test properties of a single A
 
 <br>
 
-## Availability
-
-### Installation
-
-...
-
-### Version
-
-...
-
 ## Syntax
 
 An `aws_eks_cluster` resource block declares the tests for a single EKS Cluster by Cluster name.

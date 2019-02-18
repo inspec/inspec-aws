@@ -16,16 +16,6 @@ While this resource provides facilities for searching inbound and outbound rules
 
 <br>
 
-## Availability
-
-### Installation
-
-This resource is distributed along with InSpec itself. You can use it automatically.
-
-### Version
-
-This resource first became available in v2.0.16 of InSpec.
-
 ## Syntax
 
 Resource parameters: group_id, group_name, id, vpc_id

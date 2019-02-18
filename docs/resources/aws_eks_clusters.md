@@ -9,16 +9,6 @@ Use the `aws_eks_clusters` InSpec audit resource to test properties of some or a
 
 <br>
 
-## Availability
-
-### Installation
-
-This resource is distributed along with InSpec itself. You can use it automatically.
-
-### Version
-
-...
-
 ## Syntax
 
 An `aws_eks_clusters` resource block collects a group of EKS Clusters and then tests that group.

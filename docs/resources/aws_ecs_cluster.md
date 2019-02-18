@@ -9,11 +9,6 @@ Use the `aws_ecs_cluster` InSpec audit resource to test properties of a single A
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
 ## Syntax
 
 An `aws_ecs_cluster` resource block declares the tests for a single AWS ECS Cluster by cluster name.

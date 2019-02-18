@@ -8,12 +8,6 @@ platform: aws
 Use the `aws_iam_access_key` InSpec audit resource to test properties of a single AWS IAM Access Key.
 
 <br>
-
-## Availability
-
-### Installation
-
-    ...
     
 ## Syntax
 

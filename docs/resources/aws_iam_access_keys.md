@@ -10,13 +10,6 @@ Use the `aws_iam_access_keys` InSpec audit resource to test properties of some o
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-
-
 ## Syntax
 
 An `aws_iam_access_keys` resource block returns all IAM Access Keys and allows the testing of that group of Access Keys.

@@ -13,16 +13,6 @@ Each IAM Policy is uniquely identified by either its policy\_name or arn.
 
 <br>
 
-## Availability
-
-### Installation
-
-...
-
-### Version
-
-...
-
 ## Syntax
 
 An `aws_iam_policy` resource block identifies a policy by policy name or arn
