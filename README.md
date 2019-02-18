@@ -213,5 +213,4 @@ The InSpec AWS resources are community supported. For bugs and features, please 
 
 ## Kudos
 
-This work builds on the InSpec 2 AWS resources that were previously shipped as part of InSpec. 
->>>>>>> existing/master
+This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec. 
