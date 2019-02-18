@@ -10,12 +10,13 @@ Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.ama
 
 Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
     
-    ```bash
+```bash
     # Example configuration
     export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
     export AWS_SECRET_ACCESS_KEY="vD2lfoNvPdwsofqyuO9jRuWUkZIMqisdfeFmkHTy7ON+w"
     export AWS_REGION="eu-west-3"
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
+```
 
 ### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
@@ -64,6 +65,9 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
 - [aws_ecs_cluster](docs/resources/aws_ecs_cluster.md)
 - [aws_ecs_clusters](docs/resources/aws_ecs_clusters.md)
+- [aws_eks_cluster](docs/resources/aws_eks_cluster.md)
+- [aws_eks_clusters](docs/resources/aws_eks_clusters.md)
+- [aws_elb](docs/resources/aws_elb.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
 - [aws_iam_access_key](docs/resources/aws_iam_access_key.md)
 - [aws_iam_access_keys](docs/resources/aws_iam_access_keys.md)
@@ -71,8 +75,6 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_iam_password_policy](docs/resources/aws_iam_password_policy.md)
 - [aws_iam_policies](docs/resources/aws_iam_policies.md)
 - [aws_iam_policy](docs/resources/aws_iam_policy.md)
-- [aws_iam_role](docs/resources/aws_iam_role.md)
-- [aws_iam_roles](docs/resources/aws_iam_roles.md)
 - [aws_iam_root_user](docs/resources/aws_iam_root_user.md)
 - [aws_iam_user](docs/resources/aws_iam_user.md)
 - [aws_iam_users](docs/resources/aws_iam_users.md)
@@ -92,7 +94,6 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
 - [aws_sqs_queue](docs/resources/aws_sqs_queue.md)
-- [aws_sqs_queues](docs/resources/aws_sqs_queues.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
