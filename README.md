@@ -51,7 +51,7 @@ $ inspec exec my-profile -t aws://
 
 
 ## Resource documentation
-This resouce pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/chef-partners/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/chef-partners/inspec-aws/pulls).
+This resouce pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/inspec/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/inspec/inspec-aws/pulls).
 
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
