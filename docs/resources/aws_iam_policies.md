@@ -13,16 +13,6 @@ Each IAM Policy is uniquely identified by either its `policy_name` or `arn`.
 
 <br>
 
-## Availability
-
-### Installation
-
-...
-
-### Version
-
-...
-
 ## Syntax
 
 `aws_iam_policies` Resource returns a collection of IAM Policies and allows testing of that collection.

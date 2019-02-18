@@ -8,16 +8,6 @@ Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS
 
 <br>
 
-## Availability
-
-### Installation
-
-...
-
-### Version
-
-...
-
 ## Syntax
 
     # Ensure that a queue exists and has a visibility timeout of 300 seconds

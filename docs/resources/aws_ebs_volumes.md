@@ -13,12 +13,6 @@ Each EBS volume is uniquely identified by its ID.
 
 <br>
 
-## Availability
-
-### Installation
-
-This resource is distributed along with InSpec itself. You can use it automatically.
-
 ## Syntax
 
 An `aws_ebs_volumes` resource block collects a group of EBS volumes and then tests that group.

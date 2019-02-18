@@ -9,19 +9,10 @@ to an S3 Bucket, an SNS or both.
 
 Use the `aws_config_delivery_channel` InSpec audit resource to examine how the AWS Config service delivers those change notifications.
 
-As of April 2018, each AWS region may have only one Delivery Channel.
+One delivery channel is allowed per region per AWS account, and the delivery channel is required to use AWS Config.  For more details, see [the documentation](https://docs.aws.amazon.com/config/latest/developerguide/manage-delivery-channel.html).
 
 <br>
 
-## Availability
-
-### Installation
-
-This resource is distributed along with InSpec itself. You can use it automatically.
-
-### Version
-
-This resource first became available in v2.1.21 of InSpec.
 
 ## Resource Parameters
 

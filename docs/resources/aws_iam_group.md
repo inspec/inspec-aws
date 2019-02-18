@@ -11,16 +11,6 @@ To test properties of multiple or all groups, use the `aws_iam_groups` resource.
 
 <br>
 
-## Availability
-
-### Installation
-
-...
-
-### Version
-
-...
-
 ## Syntax
 
 An `aws_iam_group` resource block identifies a group by group name.

@@ -8,12 +8,6 @@ platform: aws
 Use the `aws_iam_user` InSpec audit resource to test properties of a single AWS IAM User.
 
 <br>
-
-## Availability
-
-### Installation
-
-    ...
     
 ## Syntax
 
