@@ -98,6 +98,8 @@ The state of the VPC (`pending` | `available`).
 
     describe aws_vpc do
       its ('state') { should eq 'available' }
+      # or equivalently
+      it { should be_available }
     end
 
 ### vpc\_id

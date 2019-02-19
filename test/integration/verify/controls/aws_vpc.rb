@@ -24,6 +24,7 @@ control 'aws-vpc-1.0' do
   describe aws_vpc do
     it { should exist }
     it { should be_default }
+    it { should be_available }
     its ('vpc_id') { should eq aws_default_vpc_id }
   end
 

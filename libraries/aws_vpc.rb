@@ -14,7 +14,7 @@ class AwsVpc < AwsResourceBase
 
   def initialize(opts = {})
     # Call the parent class constructor
-    opts={ vpc_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { vpc_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
     super(opts)
     validate_parameters([:vpc_id])
     @display_name = opts[:vpc_id]
@@ -41,7 +41,12 @@ class AwsVpc < AwsResourceBase
     !@vpc.empty?
   end
 
+  def available?
+    return false unless exists?
+    @vpc[:state] == 'available'
+  end
+
   def to_s
-    "VPC #{@display_name}"
+    opts.key?(:aws_region) ? "VPC #{@display_name} in #{opts[:aws_region]}" : "VPC #{@display_name}"
   end
 end

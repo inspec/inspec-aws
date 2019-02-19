@@ -64,6 +64,7 @@ class AwsVpcHappyPathTest < Minitest::Test
 
   def test_vpc_state
     assert_equal(@vpc.state, 'available')
+    assert @vpc.available?
   end
 
   def test_vpc_instance_tenancy
