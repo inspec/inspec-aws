@@ -9,12 +9,6 @@ Use the `aws_iam_role` InSpec audit resource to test properties of an AWS IAM Ro
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-    
 ## Syntax
 
 An `aws_iam_role` resource block declares the tests for a single AWS IAM Role by Role Name.
