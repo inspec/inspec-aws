@@ -10,13 +10,6 @@ Use the `aws_iam_roles` InSpec audit resource to test properties of some or all 
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-
-
 ## Syntax
 
 An `aws_iam_roles` resource block returns all IAM Roles and allows the testing of that group of Roles.
