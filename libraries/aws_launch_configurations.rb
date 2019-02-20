@@ -40,7 +40,7 @@ class AwsLaunchConfigurations < AwsResourceBase
       response = @aws.service_client.describe_launch_configurations
       return [] if !response || response.empty?
       response.launch_configurations.each do |config|
-        config_rows += [{name:                        config[:launch_configuration_name],
+        config_rows += [{ name:                        config[:launch_configuration_name],
                          arn:                         config[:launch_configuration_arn],
                          image_id:                    config[:image_id],
                          instance_type:               config[:instance_type],
@@ -51,7 +51,7 @@ class AwsLaunchConfigurations < AwsResourceBase
                          ebs_optimized:               config[:ebs_optimized],
                          spot_price:                  config[:spot_price].to_f,
                          instance_monitoring:         config[:instance_monitoring][:enabled] ? 'detailed': 'basic',
-                         user_data:                   config[:user_data] ? Base64.decode64(config[:user_data]) : nil}]
+                         user_data:                   config[:user_data] ? Base64.decode64(config[:user_data]) : nil }]
       end
     end
     @table = config_rows
