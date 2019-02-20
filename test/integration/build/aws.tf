@@ -64,6 +64,7 @@ variable "aws_internet_gateway_name" {}
 variable "aws_iam_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
+variable "aws_launch_configuration_name" {}
 variable "aws_rds_db_engine" {}
 variable "aws_rds_db_engine_version" {}
 variable "aws_rds_db_identifier" {}
@@ -1068,4 +1069,28 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
   vpc_config {
     subnet_ids = ["${aws_subnet.eks_subnet-2.*.id}", "${aws_subnet.eks_subnet.*.id}"]
   }
+}
+
+data "aws_ami" "aws_vm_config" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_launch_configuration" "as_conf" {
+  name          = "${var.aws_launch_configuration_name}"
+  image_id      = "${data.aws_ami.aws_vm_config.id}"
+  instance_type = "t2.micro"
+  spot_price    = "0.1"
+  user_data     = "#!/bin/bash"
 }
