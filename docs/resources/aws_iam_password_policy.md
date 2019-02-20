@@ -9,12 +9,6 @@ Use the `aws_iam_password_policy` InSpec audit resource to test properties of an
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-    
 ## Syntax
 
 An `aws_iam_password_policy` resource block declares the tests for an AWS IAM Password Policy.

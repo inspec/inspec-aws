@@ -8,12 +8,6 @@ platform: aws
 Use the `aws_iam_root_user` InSpec audit resource to test properties of an AWS IAM Root User.
 
 <br>
-
-## Availability
-
-### Installation
-
-    ...
     
 ## Syntax
 

@@ -58,6 +58,7 @@ variable "aws_elb_name" {}
 variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_iam_group_name" {}
+variable "aws_iam_role_generic_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
@@ -1069,6 +1070,26 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
   vpc_config {
     subnet_ids = ["${aws_subnet.eks_subnet-2.*.id}", "${aws_subnet.eks_subnet.*.id}"]
   }
+}
+
+resource "aws_iam_role" "aws_role_generic" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_iam_role_generic_name}"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
 }
 
 data "aws_ami" "aws_vm_config" {

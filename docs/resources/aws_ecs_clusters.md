@@ -10,13 +10,6 @@ Use the `aws_ecs_clusters` InSpec audit resource to test properties of some or a
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-
-
 ## Syntax
 
 An `aws_ecs_clusters` resource block returns all ECS Clusters and allows the testing of that group of Clusters.

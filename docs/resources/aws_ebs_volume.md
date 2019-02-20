@@ -9,12 +9,6 @@ Use the `aws_ebs_volume` InSpec audit resource to test properties of a single AW
 
 <br>
 
-## Availability
-
-### Installation
-
-This resource is distributed along with InSpec itself. You can use it automatically.
-
 ## Syntax
 
 An `aws_ebs_volume` resource block declares the tests for a single AWS EBS volume by either name or id.

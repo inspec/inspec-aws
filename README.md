@@ -101,18 +101,45 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 
 ## Examples
 
-##### Test that an EC2 instance is running & using the correct AMI
+### Ensure Security Groups Disallow FTP
 
+For disallowing FTP we check that there is no ingress from 0.0.0.0/0 on port 21.  The below sample control loops across all regions, checking all security groups for the account:
+
+```
+title 'Test AWS Security Groups Across All Regions For an Account Disallow FTP'
+
+control 'aws-multi-region-security-group-ftp-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS Security Groups disallow FTP ingress from 0.0.0.0/0.'
+
+  aws_regions.region_names.each do |region|
+    aws_security_groups(aws_region: region).group_ids.each do |security_group_id|
+      describe aws_security_group(aws_region: region, group_id: security_group_id) do
+        it { should exist }
+        it { should_not allow_in(ipv4_range: '0.0.0.0/0', port: 21) }
+      end
+    end
+  end
+end
+```
+
+### Test that an EC2 instance is running & using the correct AMI
+
+```
     describe aws_ec2_instance(name: 'ProdWebApp') do
       it              { should be_running }
       its('image_id') { should eq 'ami-27a58d5c' }
     end
+```
     
-##### Ensure all AWS Users have MFA enabled
-      
-      describe aws_iam_users.where( has_mfa_enabled: false) do
-        it { should_not exist }
-      end
+### Ensure all AWS Users have MFA enabled
+
+```   
+    describe aws_iam_users.where( has_mfa_enabled: false) do
+      it { should_not exist }
+    end
+```
 
 ## Environment and Setup Notes
 

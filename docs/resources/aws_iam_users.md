@@ -10,13 +10,6 @@ Use the `aws_iam_users` InSpec audit resource to test properties of some or all 
 
 <br>
 
-## Availability
-
-### Installation
-
-    ...
-
-
 ## Syntax
 
 An `aws_iam_users` resource block returns all IAM Users and allows the testing of that group of Users.
