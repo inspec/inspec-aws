@@ -1109,6 +1109,7 @@ data "aws_ami" "aws_vm_config" {
 }
 
 resource "aws_launch_configuration" "as_conf" {
+  count         = "${var.aws_enable_creation}"
   name          = "${var.aws_launch_configuration_name}"
   image_id      = "${data.aws_ami.aws_vm_config.id}"
   instance_type = "t2.micro"
