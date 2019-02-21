@@ -85,6 +85,14 @@ class AwsIamPolicy < AwsResourceBase
     statement_match
   end
 
+  def statement_count
+    return false unless @policy_document
+    puts "DEBUG policy doc: #{@policy_document.inspect}"
+    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document))
+    statements = document['Statement'].is_a?(Hash) ? [document['Statement']] : document['Statement']
+    statements.length
+  end
+
   def get_policy_document(arn, default_version_id)
     catch_aws_errors do
       @policy_document = @aws.iam_client.get_policy_version(policy_arn: arn, version_id: default_version_id)
