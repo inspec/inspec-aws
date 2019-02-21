@@ -7,25 +7,17 @@ title: About the aws_launch_configuration Resource
 Use the `aws_launch_configuration` InSpec audit resource to test properties of a single AWS Launch Configuration. 
 
 <br>
-
-## Availability
-
-### Installation
-
-### Version
-
-
 ## Syntax
 
-    # Ensure that a queue exists and has a visibility timeout of 300 seconds
+    # Ensure that a launch configuration exists and has the correct key name
     describe aws_launch_configuration('my-config') do
-      it { should exist }
+      it              { should exist }
       its('key_name') { should be 'my-key-name' }
     end
 
     # You may also use hash syntax to pass the launch configuration name
     describe aws_launch_configuration(launch_configuration_name: 'my-config') do
-      it { should exist }
+      it              { should exist }
     end
 
 ## Resource Parameters
