@@ -11,10 +11,11 @@ require 'aws-sdk-eks'
 require 'aws-sdk-elasticloadbalancing'
 require 'aws-sdk-iam'
 require 'aws-sdk-kms'
+require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-s3'
-require 'aws-sdk-sqs'
 require 'aws-sdk-sns'
+require 'aws-sdk-sqs'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -93,6 +94,10 @@ class AwsConnection
     aws_client(Aws::KMS::Client)
   end
 
+  def org_client
+    aws_client(Aws::Organizations::Client)
+  end
+
   def rds_client
     aws_client(Aws::RDS::Client)
   end
@@ -107,6 +112,10 @@ class AwsConnection
 
   def storage_client
     aws_client(Aws::S3::Client)
+  end
+
+  def sts_client
+    aws_client(Aws::STS::Client)
   end
 end
 

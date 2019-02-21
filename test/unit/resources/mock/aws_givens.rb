@@ -35,4 +35,7 @@ class AwsGivens
     %W(us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1).sample
   end
 
+  def any_email
+    "#{any_string}@#{any_string}.com"
+  end
 end
