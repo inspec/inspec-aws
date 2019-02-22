@@ -87,7 +87,6 @@ class AwsIamPolicy < AwsResourceBase
 
   def statement_count
     return false unless @policy_document
-    puts "DEBUG policy doc: #{@policy_document.inspect}"
     document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document))
     statements = document['Statement'].is_a?(Hash) ? [document['Statement']] : document['Statement']
     statements.length
