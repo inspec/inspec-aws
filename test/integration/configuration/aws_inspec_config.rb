@@ -75,6 +75,7 @@ module AWSInspecConfig
       aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
+      aws_launch_configuration_name: "aws-launch-configuration-name-#{add_random_string}",
       aws_rds_db_engine: 'mysql',
       aws_rds_db_engine_version: '5.6.37',
       aws_rds_db_identifier: "awsrds#{add_random_string}",
