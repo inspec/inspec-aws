@@ -31,14 +31,13 @@ class AwsAutoScalingGroup < AwsResourceBase
       @launch_configuration_name = auto_scaling_group[:launch_configuration_name]
       @health_check_type         = auto_scaling_group[:health_check_type]
       @tags = []
+
       auto_scaling_group[:tags].map { |tag|
-        @tags.push({
-                     'resource_id': tag.resource_id,
-                       'resource_type': tag.resource_type,
-                       'key': tag.key,
-                       'value': tag.value,
-                       'propagate_at_launch': tag.propagate_at_launch,
-                   })
+        @tags.push({'resource_id':         tag.resource_id,
+                        'resource_type':       tag.resource_type,
+                        'key':                 tag.key,
+                        'value':               tag.value,
+                        'propagate_at_launch': tag.propagate_at_launch })
       }
     end
   end

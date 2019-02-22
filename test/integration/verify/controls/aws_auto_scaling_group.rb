@@ -8,6 +8,6 @@ control 'aws-auto-scaling-group-1.0' do
 
   describe aws_auto_scaling_group(auto_scaling_group_name: group_name) do
     it           { should exist }
-    its ('name') { should eq name}
+    its ('name') { should eq group_name}
   end
 end
