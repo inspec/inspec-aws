@@ -73,8 +73,8 @@ class AwsIamPolicy < AwsResourceBase
 
   def has_statement?(criteria = {})
     return false unless @policy_document
-    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document))
-    statements = document['Statement'].is_a?(Hash) ? [document['Statement']] : document['Statement']
+    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document), { symbolize_names: true })
+    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statement_match = false
     statements.each do |s|
       actions = s['Action']
@@ -87,8 +87,8 @@ class AwsIamPolicy < AwsResourceBase
 
   def statement_count
     return false unless @policy_document
-    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document))
-    statements = document['Statement'].is_a?(Hash) ? [document['Statement']] : document['Statement']
+    document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document), { symbolize_names: true })
+    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statements.length
   end
 
