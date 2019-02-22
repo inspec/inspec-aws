@@ -9,6 +9,7 @@ terraform {
 variable "aws_region" {}
 variable "aws_availability_zone" {}
 
+variable "aws_auto_scaling_group" {}
 variable "aws_bucket_acl_policy_name" {}
 variable "aws_bucket_auth_name" {}
 variable "aws_bucket_encryption_disabled" {}
@@ -65,6 +66,7 @@ variable "aws_internet_gateway_name" {}
 variable "aws_iam_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
+variable "aws_launch_configuration_name" {}
 variable "aws_rds_db_engine" {}
 variable "aws_rds_db_engine_version" {}
 variable "aws_rds_db_identifier" {}
@@ -1089,4 +1091,39 @@ resource "aws_iam_role" "aws_role_generic" {
   ]
 }
 EOF
+}
+
+data "aws_ami" "aws_vm_config" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_launch_configuration" "as_conf" {
+  count = "${var.aws_enable_creation}"
+  name          = "${var.aws_launch_configuration_name}"
+  image_id      = "${data.aws_ami.aws_vm_config.id}"
+  instance_type = "t2.micro"
+  spot_price    = "0.1"
+  user_data     = "#!/bin/bash"
+}
+
+resource "aws_autoscaling_group" "aws_auto_scaling_group" {
+  count = "${var.aws_enable_creation}"
+  name                 = "${var.aws_auto_scaling_group}"
+  min_size             = 1
+  max_size             = 2
+  desired_capacity     = 1
+  launch_configuration = "${aws_launch_configuration.as_conf.name}"
+  vpc_zone_identifier  = ["${aws_subnet.inspec_subnet.id}"]
 }

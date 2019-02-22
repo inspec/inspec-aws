@@ -20,6 +20,7 @@ module AWSInspecConfig
       # Generic AWS resource parameters
       aws_region: 'us-east-1',
       aws_availability_zone: 'us-east-1a',
+      aws_auto_scaling_group: "aws-auto-scaling-group-#{add_random_string}",
       aws_bucket_acl_policy_name: "aws-bucket-acl-policy-name-#{add_random_string}",
       aws_bucket_auth_name: "aws-bucket-auth-#{add_random_string}",
       aws_bucket_encryption_disabled: "aws-bucket-encryption-enabled-name-#{add_random_string}",
@@ -75,6 +76,7 @@ module AWSInspecConfig
       aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
+      aws_launch_configuration_name: "aws-launch-configuration-name-#{add_random_string}",
       aws_rds_db_engine: 'mysql',
       aws_rds_db_engine_version: '5.6.37',
       aws_rds_db_identifier: "awsrds#{add_random_string}",
