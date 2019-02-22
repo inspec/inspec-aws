@@ -1121,9 +1121,9 @@ resource "aws_launch_configuration" "as_conf" {
 resource "aws_autoscaling_group" "aws_auto_scaling_group" {
   count                = "${var.aws_enable_creation}"
   name                 = "${var.aws_auto_scaling_group}"
-  min_size             = 1
+  min_size             = 0
   max_size             = 2
-  desired_capacity     = 1
+  desired_capacity     = 0
   launch_configuration = "${aws_launch_configuration.as_conf.name}"
   vpc_zone_identifier  = ["${aws_subnet.inspec_subnet.id}"]
 }
