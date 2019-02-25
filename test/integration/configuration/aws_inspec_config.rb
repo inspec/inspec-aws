@@ -20,6 +20,7 @@ module AWSInspecConfig
       # Generic AWS resource parameters
       aws_region: 'us-east-1',
       aws_availability_zone: 'us-east-1a',
+      aws_auto_scaling_group: "aws-auto-scaling-group-#{add_random_string}",
       aws_bucket_acl_policy_name: "aws-bucket-acl-policy-name-#{add_random_string}",
       aws_bucket_auth_name: "aws-bucket-auth-#{add_random_string}",
       aws_bucket_encryption_disabled: "aws-bucket-encryption-enabled-name-#{add_random_string}",

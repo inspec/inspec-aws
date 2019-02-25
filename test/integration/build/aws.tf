@@ -9,6 +9,7 @@ terraform {
 variable "aws_region" {}
 variable "aws_availability_zone" {}
 
+variable "aws_auto_scaling_group" {}
 variable "aws_bucket_acl_policy_name" {}
 variable "aws_bucket_auth_name" {}
 variable "aws_bucket_encryption_disabled" {}
@@ -1115,4 +1116,14 @@ resource "aws_launch_configuration" "as_conf" {
   instance_type = "t2.micro"
   spot_price    = "0.1"
   user_data     = "#!/bin/bash"
+}
+
+resource "aws_autoscaling_group" "aws_auto_scaling_group" {
+  count                = "${var.aws_enable_creation}"
+  name                 = "${var.aws_auto_scaling_group}"
+  min_size             = 0
+  max_size             = 2
+  desired_capacity     = 0
+  launch_configuration = "${aws_launch_configuration.as_conf.name}"
+  vpc_zone_identifier  = ["${aws_subnet.inspec_subnet.id}"]
 }
