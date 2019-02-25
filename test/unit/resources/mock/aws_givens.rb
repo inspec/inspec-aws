@@ -3,8 +3,17 @@ require 'securerandom'
 class AwsGivens
 
   # Standardised AWS "arn" field.
-  def any_arn
-    "arn:aws:mocked::#{any_int}:#{any_string}/#{any_string}"
+  def any_arn(components = {})
+    "arn:aws:mocked::#{any_int}:#{any_string}/#{any_string}" if components.empty?
+
+    arn = ''
+    components.key?(:arn)        ? arn << "#{components[:arn]}:"        : arn << 'arn:'
+    components.key?(:partition)  ? arn << "#{components[:partition]}:"  : arn << 'aws:'
+    components.key?(:service)    ? arn << "#{components[:service]}:"    : arn << 'mocked:'
+    components.key?(:region)     ? arn << "#{components[:region]}:"     : arn << "#{any_region}:"
+    components.key?(:account_id) ? arn << "#{components[:account_id]}:" : arn << "#{any_int}:"
+    components.key?(:resource)   ? arn << "#{components[:resource]}:"   : arn << "#{any_string}:"
+    arn
   end
 
   # Any standardised AWS "id" field.
