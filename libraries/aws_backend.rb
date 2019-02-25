@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'aws-sdk-autoscaling'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -100,6 +101,10 @@ class AwsConnection
 
   def rds_client
     aws_client(Aws::RDS::Client)
+  end
+
+  def service_client
+    aws_client(Aws::AutoScaling::Client)
   end
 
   def sqs_client

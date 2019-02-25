@@ -33,18 +33,16 @@ desc 'Run robocop linter'
 task lint: [:rubocop]
 
 # run tests
-task default: [:lint, :test, 'test:check']
+#  Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571 - 'test:check'
+task default: [:lint, :test ]
+
 
 namespace :test do
 
   task :check do
     # Run inspec check to verify that the profile is properly configured
     dir = File.join(File.dirname(__FILE__))
-    sh("bundle exec inspec check #{dir}")
-
-    # run inspec check on the sample profile to ensure all resources are loaded okay
-    # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571
-    # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
+    sh("bundle exec inspec check #{CONTROLS_DIR}")
   end
 
   task :setup_integration_tests => ['tf:tf_dir', 'tf:plan_integration_tests', 'tf:setup_integration_tests']
