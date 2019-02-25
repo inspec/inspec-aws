@@ -6,7 +6,7 @@ class AwsOrganizationMemberMock < AwsBaseResourceMock
     super
 
     account_id  = @aws.any_string
-    account_arn = @aws.any_string
+    account_arn = @aws.any_arn
 
     @current_account = {
         account: {
