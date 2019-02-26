@@ -14,7 +14,7 @@ Use the `aws_sts_caller_identity` InSpec audit resource to test properties of AW
 An `aws_sts_caller_identity` resource block may be used to perform tests on details of the AWS credentials being used in the current Inspec scan. You can also test if the credentials belong to a GocCloud account or not.
    
     describe aws_sts_caller_identity do
-        ...
+      it { should exist }
     end
 
 <br>
