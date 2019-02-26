@@ -1,6 +1,6 @@
 require_relative 'aws_base_resource_mock'
 
-class AwsOrganizationMemberMock < AwsBaseResourceMock
+class AwsOrganizationsMemberMock < AwsBaseResourceMock
 
   def initialize
     super

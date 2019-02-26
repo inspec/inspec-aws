@@ -1,21 +1,21 @@
 ---
-title: About the aws_organization_member Resource
+title: About the aws_organizations_member Resource
 ---
 
-# aws\_organization\_member
+# aws\_organizations\_member
 
-Use the `aws_organization_member` InSpec audit resource to test the current AWS Account being used within organization.
+Use the `aws_organizations_member` InSpec audit resource to test the current AWS Account being used within organization.
 
 ## Syntax
 
-An `aws_organization_member` resource block tests if the current AWS Account is the Master Account.
+An `aws_organizations_member` resource block tests if the current AWS Account is the Master Account.
  
 The `master` matcher will return `true` or `false` accordingly. 
 You may also verify that the `master_account_id` and `master_account_arn` properties match known values.
 
 If the current AWS Account _**is**_ the Master Account, you may also access properties of that account.
   
-        describe aws_organization_member do
+        describe aws_organizations_member do
             ...
         end
 <br>
@@ -26,14 +26,14 @@ The following examples show how to use this InSpec audit resource.
 
     # Ensure you are a child account with a certain ID for the top level account.
     
-        describe aws_organization_member do
+        describe aws_organizations_member do
           it                       { should_not be_master }
           its('master_account_id') { should cmp '56845218745' }
         end
     
     # Ensure you are the top level account, with the right name and email associated.
         
-        describe aws_organization_member do
+        describe aws_organizations_member do
           it                   { should be_master }
           its('account_name')  { should eq 'MyAWSMasterAccount' }
           its('account_email') { should eq 'aws.admin@org.com' }
@@ -43,8 +43,8 @@ The following examples show how to use this InSpec audit resource.
 
 ## Properties
 
-* `master_account_id` - The ID of the AWS Organization's Master Account
-* `master_account_arn` - The ARN of the AWS Organization's Master Account
+* `master_account_id` - The ID of the AWS Organizations Master Account
+* `master_account_arn` - The ARN of the AWS Organizations Master Account
 
 _**If the current Account is the Master Account, the following properties are also available:**_
 * `account_id`      - The ID of the current Account.
