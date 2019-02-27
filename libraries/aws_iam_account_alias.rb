@@ -3,8 +3,8 @@ class AwsIamAccountAlias < AwsResourceBase
   desc 'Verifies settings for an AWS IAM Account Alias.'
   example '
     describe aws_iam_account_alias do
-      it  { should exist }
-      its ("alias") { should match /^fancy-/ }
+      it { should exist }
+      its("alias") { should match /^fancy-/ }
     end
   '
   supports platform: 'aws'
@@ -27,6 +27,6 @@ class AwsIamAccountAlias < AwsResourceBase
   end
 
   def to_s
-    'AWS IAM Account Alias'
+    "AWS IAM Account Alias #{@alias}"
   end
 end

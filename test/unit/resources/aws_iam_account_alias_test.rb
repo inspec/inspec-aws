@@ -7,7 +7,7 @@ class AwsIamAccountAliasTest < Minitest::Test
 
   def setup
     # Given
-    @mock      = AwsIamAccountAliasMock.new
+    @mock = AwsIamAccountAliasMock.new
     @mock_alias = @mock.alias
 
     # When

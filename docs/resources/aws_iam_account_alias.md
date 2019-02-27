@@ -25,16 +25,16 @@ The following examples show how to use this InSpec audit resource.
 
     # Check that the account alias has not be set
     
-        describe aws_iam_account_alias do
-          it { should_not exist }
-        end
+      describe aws_iam_account_alias do
+        it { should_not exist }
+      end
 
     # Test if the account alias starts with expected prefix
     
-        describe aws_iam_account_alias do
-          it { should exist }
-          its('alias') { should match /^fancy-/ }
-        end
+      describe aws_iam_account_alias do
+        it { should exist }
+        its('alias') { should match /^fancy-/ }
+      end
 
 <br>
 
