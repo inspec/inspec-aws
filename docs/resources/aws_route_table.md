@@ -11,15 +11,6 @@ Use the `aws_route_table` InSpec audit resource to test properties of a single R
 
 ## Syntax
 
-    # Ensure that a certain route table exists by name
-    describe aws_route_table('rtb-123abcde') do
-      it { should exist }
-    end
-
-## Resource Parameters
-
-### route\_table\_id
-
 This resource expects a single parameter that uniquely identifies the Route Table. You may pass it as a string, or as the value in a hash:
 
     describe aws_route_table('rtb-123abcde') do
@@ -29,6 +20,58 @@ This resource expects a single parameter that uniquely identifies the Route Tabl
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       it { should exist }
     end
+
+
+<br>
+
+## Examples
+
+The following examples show how to use this InSpec audit resource.
+
+### Confirm that the route table has expected VPC identifier
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('vpc_id') { should eq 'vpc-01625e36123456789' }
+    end
+
+### Confirm that the route table has expected owner identifier
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('owner_id') { should eq '123456789012' }
+    end
+
+### Ensure the expected number of routes is present
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('routes.count') { should eq 2 }
+    end
+
+### Ensure the expected number of associations is present
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('associations.count') { should eq 1 }
+    end
+
+### Ensure there are no virtual private gateway (VGW) propagating routes
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('propagating_vgws') { should be_empty }
+    end
+
+<br>
+
+## Properties
+
+* associations
+* owner_id
+* propagating_vgws
+* route_table_id
+* routes
+* tags
+* vpc_id
+
+<br>
+
 
 ## Matchers
 
