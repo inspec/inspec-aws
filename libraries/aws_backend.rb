@@ -173,14 +173,34 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
   rescue Aws::Errors::ServiceError => e
-    p e.message
-    @failed_resource = true
-    nil
+    if is_permissions_error(e)
+      advice = ''
+      error_type = e.class.to_s.split('::').last
+      if error_type == 'InvalidAccessKeyId'
+        advice = 'Please ensure your AWS Access Key ID is set correctly.'
+      elsif error_type == 'AccessDenied'
+        advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
+                 'and ensure your Service Principal has these permissions set.'
+      end
+      fail_resource("Unable to execute control: #{e.message}\n#{advice}")
+    else
+      Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " +
+                       "Error message: #{e.message}. You should address this error to ensure your controls are " +
+                       "behaving as expected."
+      @failed_resource = true
+      nil
+    end
   end
 
   def create_resource_methods(object)
     dm = AwsResourceDynamicMethods.new
     dm.create_methods(self, object)
+  end
+
+  # Each client has its own variation of Aws::*::Errors::AccessDenied, making the checking cumbersome and flaky.
+  # Checking the status code is more reliable.
+  def is_permissions_error(e)
+    true if e.context.http_response.status_code == 403
   end
 end
 
