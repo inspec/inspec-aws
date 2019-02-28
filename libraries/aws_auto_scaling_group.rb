@@ -12,7 +12,8 @@ class AwsAutoScalingGroup < AwsResourceBase
     end
   "
 
-  attr_reader :name, :min_size, :max_size, :desired_capacity, :vpc_zone_identifier, :launch_configuration_name, :tags, :health_check_type
+  attr_reader :name, :min_size, :max_size, :desired_capacity, :vpc_zone_identifier,
+              :launch_configuration_name, :tags, :health_check_type
 
   def initialize(opts = {})
     opts = { auto_scaling_group_name: opts } if opts.is_a?(String)

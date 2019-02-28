@@ -20,8 +20,8 @@ class AwsAutoScalingGroups < AwsResourceBase
              .register_column(:desired_capacities,         field: :desired_capacity)
              .register_column(:vpc_zone_identifiers,       field: :vpc_zone_identifier)
              .register_column(:launch_configuration_names, field: :launch_configuration_name)
-             .register_column(:tags,                       field: :tags)
              .register_column(:health_check_types,         field: :health_check_type)
+             .register_column(:tags,                       field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
