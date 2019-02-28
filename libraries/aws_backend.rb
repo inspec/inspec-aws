@@ -184,9 +184,9 @@ class AwsResourceBase < Inspec.resource(1)
       end
       fail_resource("Unable to execute control: #{e.message}\n#{advice}")
     else
-      Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " +
-                       "Error message: #{e.message}. You should address this error to ensure your controls are " +
-                       "behaving as expected."
+      Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
+                       "Error message: #{e.message}. You should address this error to ensure your controls are " \
+                       'behaving as expected.'
       @failed_resource = true
       nil
     end
@@ -199,8 +199,8 @@ class AwsResourceBase < Inspec.resource(1)
 
   # Each client has its own variation of Aws::*::Errors::AccessDenied, making the checking cumbersome and flaky.
   # Checking the status code is more reliable.
-  def is_permissions_error(e)
-    true if e.context.http_response.status_code == 403
+  def is_permissions_error(error)
+    true if error.context.http_response.status_code == 403
   end
 end
 
