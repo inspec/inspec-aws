@@ -103,12 +103,12 @@ class AwsS3Bucket < AwsResourceBase
   end
 
   def tags
-    tags = {}
-    tag_list = @aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set
-    tag_list.each do |tag|
-      tags[tag[:key].to_sym] = tag[:value]
+    begin
+      tag_list =@aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set
+    rescue
+      return {}
     end
-    tags
+    map_tags(tag_list)
   end
 
   def to_s

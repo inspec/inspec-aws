@@ -19,20 +19,20 @@ control 'aws-security-groups-1.0' do
 
   describe aws_security_groups do
     it { should exist }
-    its('count') { should be >= 4 }
-    its('vpc_ids') { should include aws_vpc_id }
-    its('vpc_ids') { should include aws_default_vpc_id }
-    its('group_ids') { should include aws_security_group_default_id }
-    its('group_ids') { should include aws_security_group_alpha_id }
-    its('group_ids') { should include aws_security_group_beta_id }
-    its('group_ids') { should include aws_security_group_gamma_id }
-    its('group_ids') { should include aws_security_group_omega_id }
+    its('count')       { should be >= 4 }
+    its('vpc_ids')     { should include aws_vpc_id }
+    its('vpc_ids')     { should include aws_default_vpc_id }
+    its('group_ids')   { should include aws_security_group_default_id }
+    its('group_ids')   { should include aws_security_group_alpha_id }
+    its('group_ids')   { should include aws_security_group_beta_id }
+    its('group_ids')   { should include aws_security_group_gamma_id }
+    its('group_ids')   { should include aws_security_group_omega_id }
     its('group_names') { should include aws_security_group_alpha }
     its('group_names') { should include aws_security_group_beta }
     its('group_names') { should include aws_security_group_gamma }
     its('group_names') { should include aws_security_group_omega }
-    its('tags') { should include(:Environment => 'Dev',
-                                 :Name => aws_security_group_alpha)}
+    its('tags')        { should include('Environment' => 'Dev',
+                                        'Name' => aws_security_group_alpha)}
   end
 
 end

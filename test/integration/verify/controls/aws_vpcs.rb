@@ -12,14 +12,14 @@ control 'aws-vpcs-1.0' do
 
   describe aws_vpcs do
     it { should exist }
-    its('count') { should be <= 100 }
-    its('cidr_blocks') { should include aws_vpc_cidr_block }
-    its('vpc_ids') { should include aws_vpc_id }
-    its('states') { should include 'available' }
-    its('dhcp_options_ids') { should include aws_vpc_dhcp_options_id }
+    its('count')             { should be <= 100 }
+    its('cidr_blocks')       { should include aws_vpc_cidr_block }
+    its('vpc_ids')           { should include aws_vpc_id }
+    its('states')            { should include 'available' }
+    its('dhcp_options_ids')  { should include aws_vpc_dhcp_options_id }
     its('instance_tenancys') { should include aws_vpc_instance_tenancy }
-    its('is_defaults') { should be_in [true, false] }
-    its ('tags') { should include(:Name => 'inspec-aws-vpc')}
+    its('is_defaults')       { should be_in [true, false] }
+    its('tags')              { should include 'inspec-aws-vpc' }
   end
 
 end

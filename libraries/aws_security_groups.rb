@@ -45,20 +45,12 @@ class AwsSecurityGroups < AwsResourceBase
           group_id: security_group.group_id,
                                     vpc_id: security_group.vpc_id,
                                     group_name: security_group.group_name,
-                                    tags: fetch_tags(security_group.tags),
+                                    tags: map_tags(security_group.tags),
         }]
       end
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
     @table = security_group_rows
-  end
-
-  def fetch_tags(tag_list)
-    tags = {}
-    tag_list.each do |tag|
-      tags[tag[:key].to_sym] = tag[:value]
-    end
-    tags
   end
 end

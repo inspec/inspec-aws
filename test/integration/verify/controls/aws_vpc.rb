@@ -19,7 +19,7 @@ control 'aws-vpc-1.0' do
     its ('vpc_id') { should eq aws_vpc_id }
     its ('state') { should eq 'available' }
     its ('dhcp_options_id') { should eq aws_vpc_dhcp_options_id }
-    its ('tags') { should include(:Name => aws_vpc_name)}
+    its ('tags') { should include('Name' => aws_vpc_name)}
     it { should_not be_default }
   end
 
