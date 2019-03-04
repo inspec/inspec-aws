@@ -19,8 +19,7 @@ control 'aws-vpcs-1.0' do
     its('dhcp_options_ids')  { should include aws_vpc_dhcp_options_id }
     its('instance_tenancys') { should include aws_vpc_instance_tenancy }
     its('is_defaults')       { should be_in [true, false] }
-    its('tags')              { should include('Name' => 'inspec-aws-vpc',
-                                              'Environment' => 'Dev') }
+    its('tags')              { should include('Name' => 'inspec-aws-vpc') }
   end
 
 end
