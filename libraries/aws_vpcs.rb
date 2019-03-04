@@ -11,23 +11,25 @@ class AwsVpcs < AwsResourceBase
       it { should exist }
     end
   '
+  attr_reader :table
+
+  # FilterTable setup
+  FilterTable.create
+             .register_column(:cidr_blocks,        field: :cidr_block)
+             .register_column(:vpc_ids,            field: :vpc_id)
+             .register_column(:states,             field: :state)
+             .register_column(:dhcp_options_ids,   field: :dhcp_options_id)
+             .register_column(:instance_tenancys,  field: :instance_tenancy)
+             .register_column(:is_defaults,        field: :is_default)
+             .register_column(:tags,               field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     # Call the parent class constructor
     super(opts)
     validate_parameters([])
+    @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:cidr_blocks, field: :cidr_block)
-  filter_table_config.add(:vpc_ids, field: :vpc_id)
-  filter_table_config.add(:states, field: :state)
-  filter_table_config.add(:dhcp_options_ids, field: :dhcp_options_id)
-  filter_table_config.add(:instance_tenancys, field: :instance_tenancy)
-  filter_table_config.add(:is_defaults, field: :is_default)
-  filter_table_config.add(:tags, field: :tags)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     vpc_rows = []

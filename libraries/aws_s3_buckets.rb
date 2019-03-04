@@ -15,6 +15,7 @@ class AwsS3Buckets < AwsResourceBase
 
   FilterTable.create
              .register_column(:bucket_names, field: :bucket_name)
+             .register_column(:tags,         field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -23,12 +24,6 @@ class AwsS3Buckets < AwsResourceBase
     validate_parameters([])
     @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:bucket_names, field: :bucket_name)
-  filter_table_config.add(:tags, field: :tags)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     bucket_rows = []

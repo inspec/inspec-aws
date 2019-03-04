@@ -17,19 +17,22 @@ class AwsSecurityGroups < AwsResourceBase
     end
   "
 
+  attr_reader :table
+
+  # FilterTable setup
+  FilterTable.create
+             .register_column(:tags,        field: :tags)
+             .register_column(:group_names, field: :group_name)
+             .register_column(:vpc_ids,     field: :vpc_id)
+             .register_column(:group_ids,   field: :group_id)
+             .install_filter_methods_on_resource(self, :table)
+
   def initialize(opts = {})
     # Call the parent class constructor
     super(opts)
     validate_parameters([])
+    @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:group_ids, field: :group_id)
-  filter_table_config.add(:vpc_ids, field: :vpc_id)
-  filter_table_config.add(:group_names, field: :group_name)
-  filter_table_config.add(:tags, field: :tags)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     security_group_rows = []
