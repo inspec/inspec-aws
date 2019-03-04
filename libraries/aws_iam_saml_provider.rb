@@ -14,7 +14,7 @@ class AwsIamSamlProvider < AwsResourceBase
   '
   supports platform: 'aws'
 
-  attr_reader :arn, :create_date, :valid_until
+  attr_reader :provider, :arn, :create_date, :valid_until
 
   def initialize(opts = {})
     opts = { saml_provider_arn: opts } if opts.is_a?(String)
