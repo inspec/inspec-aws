@@ -11,10 +11,17 @@ class AwsS3Buckets < AwsResourceBase
     end
   "
 
+  attr_reader :table
+
+  FilterTable.create
+             .register_column(:bucket_names, field: :bucket_name)
+             .install_filter_methods_on_resource(self, :table)
+
   def initialize(opts = {})
     # Call the parent class constructor
     super(opts)
     validate_parameters([])
+    @table = fetch_data
   end
 
   # FilterTable setup
