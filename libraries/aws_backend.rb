@@ -211,7 +211,6 @@ class AwsResourceBase < Inspec.resource(1)
     end
     tags
   end
-
 end
 
 # Class to create methods on the calling object at run time.  Heavily based on the Azure Inspec resources.
