@@ -22,6 +22,7 @@ control 'aws-rds-instance-1.0' do
     its ('master_username') { should eq aws_rds_db_master_user }
     its ('allocated_storage') { should eq 10 }
     its ('db_instance_class') { should eq 'db.t2.micro' }
+    its ('tags') { should include(:Name => aws_rds_db_name)}
   end
 
   describe aws_rds_instance(aws_rds_db_identifier) do

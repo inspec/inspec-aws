@@ -12,7 +12,7 @@ class AwsSecurityGroup < AwsResourceBase
     it { should exist }
   end
   "
-  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :exists
+  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :exists, :tags
   alias exists? exists
 
   def initialize(opts = {})
@@ -50,6 +50,10 @@ class AwsSecurityGroup < AwsResourceBase
       @inbound_rules_count = count_sg_rules(@security_group.ip_permissions.map(&:to_h))
       @outbound_rules = @security_group.ip_permissions_egress.map(&:to_h)
       @outbound_rules_count = count_sg_rules(@security_group.ip_permissions_egress.map(&:to_h))
+      @tags = {}
+      unless @security_group.tags.nil?
+        @security_group.tags.each { |tag| @tags[tag[:key].to_sym] = tag[:value] }
+      end
     end
   end
 

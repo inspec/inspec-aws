@@ -61,7 +61,7 @@ class AwsRouteTableHappyPathTest < Minitest::Test
   end
 
   def test_route_table_tags
-    assert_equal(@route_table.tags, [])
+    assert_equal(@route_table.tags, {})
   end
 
   def test_route_table_vpc_id

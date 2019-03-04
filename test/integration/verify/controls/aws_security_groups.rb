@@ -31,6 +31,8 @@ control 'aws-security-groups-1.0' do
     its('group_names') { should include aws_security_group_beta }
     its('group_names') { should include aws_security_group_gamma }
     its('group_names') { should include aws_security_group_omega }
+    its('tags') { should include(:Environment => 'Dev',
+                                 :Name => aws_security_group_alpha)}
   end
 
 end

@@ -28,6 +28,7 @@ class AwsSecurityGroups < AwsResourceBase
   filter_table_config.add(:group_ids, field: :group_id)
   filter_table_config.add(:vpc_ids, field: :vpc_id)
   filter_table_config.add(:group_names, field: :group_name)
+  filter_table_config.add(:tags, field: :tags)
   filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
@@ -44,11 +45,20 @@ class AwsSecurityGroups < AwsResourceBase
           group_id: security_group.group_id,
                                     vpc_id: security_group.vpc_id,
                                     group_name: security_group.group_name,
+                                    tags: fetch_tags(security_group.tags),
         }]
       end
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
     @table = security_group_rows
+  end
+
+  def fetch_tags(tag_list)
+    tags = {}
+    tag_list.each do |tag|
+      tags[tag[:key].to_sym] = tag[:value]
+    end
+    tags
   end
 end

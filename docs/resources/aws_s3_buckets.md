@@ -52,6 +52,15 @@ Provides an array of strings containing the names of the buckets.
       its('bucket_names') { should include 'my_bucket' }
     end
 
+### tags
+
+Provides a list of hashes containing the tags of the buckets.
+        
+    describe aws_s3_buckets do
+        its('tags') { should include(:Environment => 'env-name',
+                                     :Name => 'bucket-name')}
+    end
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `s3:ListAllMyBuckets` action with Effect set to Allow.

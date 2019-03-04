@@ -26,6 +26,7 @@ class AwsVpcs < AwsResourceBase
   filter_table_config.add(:dhcp_options_ids, field: :dhcp_options_id)
   filter_table_config.add(:instance_tenancys, field: :instance_tenancy)
   filter_table_config.add(:is_defaults, field: :is_default)
+  filter_table_config.add(:tags, field: :tags)
   filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
@@ -40,8 +41,19 @@ class AwsVpcs < AwsResourceBase
                    dhcp_options_id: vpc[:dhcp_options_id],
                    state: vpc[:state],
                    is_default: vpc[:is_default],
-                   instance_tenancy: vpc[:instance_tenancy] }]
+                   instance_tenancy: vpc[:instance_tenancy],
+                   tags: map_tags(vpc[:tags]) }]
     end
     @table = vpc_rows
+  end
+
+  def map_tags(tag_list)
+    tags = {}
+    unless tag_list.nil? || tag_list.empty?
+    tag_list.each do |tag|
+      tags[tag[:key].to_sym] = tag[:value]
+    end
+    tags
+    end
   end
 end
