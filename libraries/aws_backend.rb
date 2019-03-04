@@ -255,11 +255,11 @@ class AwsResourceDynamicMethods
             probes[tag[:key].to_sym] = tag[:value]
           end
         else
-        probes = []
-        value.each do |value_item|
-          # p value_item
-          value_item = value_item.to_h if value_item.respond_to? :to_h
-          probes << AwsResourceProbe.new(value_item)
+          probes = []
+          value.each do |value_item|
+            # p value_item
+            value_item = value_item.to_h if value_item.respond_to? :to_h
+            probes << AwsResourceProbe.new(value_item)
           end
         end
       end

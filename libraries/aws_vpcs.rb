@@ -50,10 +50,10 @@ class AwsVpcs < AwsResourceBase
   def map_tags(tag_list)
     tags = {}
     unless tag_list.nil? || tag_list.empty?
-    tag_list.each do |tag|
-      tags[tag[:key].to_sym] = tag[:value]
-    end
-    tags
+      tag_list.each do |tag|
+        tags[tag[:key].to_sym] = tag[:value]
+      end
+      tags
     end
   end
 end

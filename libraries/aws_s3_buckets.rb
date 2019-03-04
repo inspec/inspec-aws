@@ -29,11 +29,11 @@ class AwsS3Buckets < AwsResourceBase
       @api_response = @aws.storage_client.list_buckets
     end
     @api_response.each do |resp|
-        resp.buckets.each do |bucket|
-          bucket_rows += [{ bucket_name: bucket[:name],
-                            tags: fetch_tags(bucket[:name])}]
-        end
+      resp.buckets.each do |bucket|
+        bucket_rows += [{ bucket_name: bucket[:name],
+                          tags: fetch_tags(bucket[:name]) }]
       end
+    end
     @table = bucket_rows
   end
 
@@ -43,7 +43,7 @@ class AwsS3Buckets < AwsResourceBase
       tag_list = @aws.storage_client.get_bucket_tagging(bucket: bucket_name)
       unless tag_list.nil? || tag_list.empty?
         tag_list.tag_set.each do |tag|
-        tags[tag[:key].to_sym] = tag[:value]
+          tags[tag[:key].to_sym] = tag[:value]
         end
       end
     rescue
