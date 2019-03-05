@@ -45,6 +45,6 @@ class AwsS3Buckets < AwsResourceBase
     rescue
       return {}
     end
-    map_tags(tag_list)
+    map_tags(tag_list.tag_set)
   end
 end
