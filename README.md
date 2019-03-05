@@ -229,7 +229,7 @@ Test Summary: 602 successful, 0 failures, 18 skipped
 
 ### Failure running "inspec exec" on my AWS profile
 
-If an error such occurs when running "inspec exec" on a newly created AWS profile, check that the GCP transport is being specified as below:
+If an error such occurs when running "inspec exec" on a newly created AWS profile, check that the AWS transport is being specified as below:
 
 ```
 $ inspec exec . -t aws://

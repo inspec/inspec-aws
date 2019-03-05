@@ -5,85 +5,60 @@ platform: aws
 
 # aws\_cloudwatch\_alarm
 
-Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a single Cloudwatch Alarm.
+Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a single CloudWatch Alarm.
 
-Cloudwatch Alarms are currently identified using the metric name and metric namespace. Future work may allow other approaches to identifying alarms.
-
-<br>
+**If more than one Alarm matches, an error will be raised.**
 
 ## Syntax
 
-An `aws_cloudwatch_alarm` resource block searches for a Cloudwatch Alarm, specified by several search options. If more than one Alarm matches, an error occurs.
+##### Ensure an Alarm exists.
+      aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
+        it { should exist }
+      end
+      
+#### Parameters
+##### metric_name _(required)_
 
-    # Look for a specific alarm
-    aws_cloudwatch_alarm(
-      metric_name: 'my-metric-name',
-      metric_namespace: 'my-metric-namespace',
-    ) do
-      it { should exist }
-    end
+The metric name used by this alarm. This must be passed as a `metric_name: 'value'` hash.
 
-<br>
+##### metric_namespace _(required)_
 
-## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-### Ensure an Alarm has at least one alarm action
-
-    describe aws_cloudwatch_alarm(
-      metric_name: 'my-metric-name',
-      metric_namespace: 'my-metric-namespace',
-    ) do
-      its('alarm_actions') { should_not be_empty }
-    end
-
-<br>
+The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` hash.
 
 ## Properties
 
-* `alarm_actions`
+|Property         | Description|
+| ---             | --- |
+|alarm_actions    | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).  |
+|alarm_name       | The name of the alarm. |
+|metric_name      | The name of the metric. |
+|metric_namespace | The namespace of the metric. |
 
-## Property Examples
+## Examples
 
-### alarm\_actions
-
-`alarm_actions` returns a list of strings. Each string is the ARN of an action that will be taken should the alarm be triggered.
-
-    # Ensure that the alarm has at least one action
-    describe aws_cloudwatch_alarm(
-      metric_name: 'bed-metric',
-      metric_namespace: 'my-metric-namespace',
-    ) do
+### Ensure an Alarm has at least one alarm action
+    describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
       its('alarm_actions') { should_not be_empty }
     end
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+### exist
 
-The control will pass if a Cloudwatch Alarm could be found. Use `should_not` if you expect zero matches.
+The control will pass if the describe returns at least one result.
 
-    # Expect good metric
-    describe aws_cloudwatch_alarm(
-      metric_name: 'good-metric',
-      metric_namespace: 'my-metric-namespace',
-    ) do
+Use `should_not` to test the entity should not exist.
+
+    describe aws_cloudwatch_alarm(metric_name: 'good-metric', metric_namespace: 'my-metric-namespace') do
       it { should exist }
     end
 
-    # Disallow alarms based on bad-metric
-    describe aws_cloudwatch_alarm(
-      metric_name: 'bed-metric',
-      metric_namespace: 'my-metric-namespace',
-    ) do
+    describe aws_cloudwatch_alarm(metric_name: 'bed-metric', metric_namespace: 'my-metric-namespace') do
       it { should_not exist }
     end
-
+    
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudwatch:DescribeAlarmsForMetric` action with Effect set to Allow.

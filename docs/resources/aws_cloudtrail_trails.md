@@ -5,78 +5,57 @@ platform: aws
 
 # aws\_cloudtrail\_trails
 
-Use the `aws_cloudtrail_trails` InSpec audit resource to test properties of some or all AWS CloudTrail Trails.
-
-AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account. With CloudTrail, you can log, continuously monitor, and retain account activity related to actions across your AWS infrastructure. CloudTrail provides event history of your AWS account activity, including actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. This event history simplifies security analysis, resource change tracking, and troubleshooting.
-
-Each AWS CloudTrail Trails is uniquely identified by its trail name or trail arn.
-
-<br>
+Use the `aws_cloudtrail_trails` InSpec audit resource to test properties of a collection of AWS CloudTrail Trails.
 
 ## Syntax
 
-An `aws_cloudtrail_trails` resource block collects a group of CloudTrail Trails and then tests that group.
+An `aws_cloudtrail_trails` resource block returns all CloudTrail Trails and allows the testing of those trails.
 
-    # Verify the number of CloudTrail Trails in the AWS account
     describe aws_cloudtrail_trails do
-      its('entries.count') { should cmp 10 }
+      it { should exist }
     end
+    
+#### Parameters
 
-<br>
+This resource does not expect any parameters.
+
+See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
+
+## Properties
+
+|Property   | Description|
+| ---       | --- |
+|trail_arns | Specifies the ARNs of the trails. |
+|names      | The names of the trails. |
 
 ## Examples
 
-The following examples show how to use this InSpec audit resource.
-
-As this is the initial release of `aws_cloudtrail_trails`, its limited functionality precludes examples.
-
-<br>
-
-## Properties
-* `entries`, `names`, `trail_arns`
-
-<br>
-
-## Property Examples
-
-### entries
-
-Provides access to the raw results of the query. This can be useful for checking counts and other advanced operations.
-
-    # Allow at most 100 CloudTrail Trails on the account
-    describe aws_cloudtrail_trails do
-      its('entries.count') { should be <= 100}
-    end
-
-### names
-
-Provides a list of trail names for all CloudTrail Trails in the AWS account.
-
+##### Ensure a CloudTrail with a specific name exists
     describe aws_cloudtrail_trails do
       its('names') { should include('trail-1') }
     end
 
-### trail\_arns
-
-Provides a list of trail arns for all CloudTrail Trails in the AWS account.
-
+##### Ensure a CloudTrail with a specific arn exists
     describe aws_cloudtrail_trails do
       its('trail_arns') { should include('arn:aws:cloudtrail:us-east-1::trail/trail-1') }
     end
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+##### exist
 
-The control will pass if the filter returns at least one result. Use `should_not` if you expect zero matches.
+The control will pass if the describe returns at least one result.
 
-    # Verify that at least one CloudTrail Trail exists.
-    describe aws_cloudtrail_trails
+Use `should_not` to test the entity should not exist.
+
+    describe aws_cloudtrail_trails do
       it { should exist }
+    end
+
+    describe aws_cloudtrail_trails do
+      it { should_not exist }
     end
 
 ## AWS Permissions

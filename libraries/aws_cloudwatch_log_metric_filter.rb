@@ -7,57 +7,55 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
   desc 'Verifies individual Cloudwatch Log Metric Filters'
 
   example "
-  # Look for a LMF by its filter name and log group name.  This combination
-  # will always either find at most one LMF - no duplicates.
-  describe aws_cloudwatch_log_metric_filter(
-    filter_name: 'my-filter',
-    log_group_name: 'my-log-group'
-  ) do
-    it { should exist }
-  end
-
-  # Search for an LMF by pattern and log group.
-  # This could result in an error if the results are not unique.
-  describe aws_cloudwatch_log_metric_filter(
-    log_group_name:  'my-log-group',
-    pattern: 'my-filter'
-  ) do
+  # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
+  # If more than one Filter is returned, an error will be raised.
+  describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
     it { should exist }
   end
   "
-  attr_reader :filter_name, :log_group_name, :metric_name, :metric_namespace, :pattern, :exists
-  alias exists? exists
+
+  attr_reader :filter_name, :log_group_name, :metric_name, :metric_namespace, :pattern
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    raise ArgumentError, 'aws_cloudwatch_log_metric_filter - filter_name, patterbn or log_group arguments must be provided' if opts.is_a?(String)
+    if opts.is_a?(String) || !%i(filter_name log_group_name pattern).any? { |k| opts.key? k }
+      raise ArgumentError, 'aws_cloudwatch_log_metric_filter expects a hash containing at least one of [filter_name, log_group_name, pattern] to be provided'
+    end
+
     super(opts)
     validate_parameters(%i(filter_name log_group_name pattern))
-    @search_criteria = {}
-    @search_criteria[:filter_name_prefix] = opts[:filter_name] if opts[:filter_name]
-    @search_criteria[:log_group_name] = opts[:log_group_name] if opts[:log_group_name]
-    raise ArgumentError, 'aws_cloudwatch_log_metric_filter - filter_name, pattern or log_group_name arguments must be provided' if @search_criteria.empty? and !opts[:pattern]
+
+    search_criteria = {}
+    search_criteria[:filter_name_prefix] = opts[:filter_name] if opts[:filter_name]
+    search_criteria[:log_group_name] = opts[:log_group_name] if opts[:log_group_name]
+
     catch_aws_errors do
       begin
-        @resp = @aws.cloudwatchlogs_client.describe_metric_filters(@search_criteria)
-        @metric_filters = @resp.metric_filters
+        resp = @aws.cloudwatchlogs_client.describe_metric_filters(search_criteria)
+        @metric_filters = resp.metric_filters
       rescue Aws::CloudWatchLogs::Errors::ResourceNotFoundException
-        @exists = false
         return
       end
     end
-    @metric_filters = [] if @metric_filters.nil?
+
+    # Narrow results if a pattern has been given.
     @metric_filters.select! { |lmf| lmf.filter_pattern == opts[:pattern] } if opts[:pattern]
-    return false && @exists = false if @metric_filters.empty?
-    raise 'More than one result was returned, but aws_cloudwatch_log_metric_filter can only handle a single AWS resource.  Consider passing more resource parameters to narrow down the search.' if @metric_filters.count > 1
-    @exists = true
-    @filter_name = @metric_filters.first.filter_name
+
+    return false if @metric_filters.empty?
+
+    if @metric_filters.count > 1
+      raise 'More than one result was returned. Consider passing more parameters or a more specific pattern to narrow down results.'
+    end
+
+    @filter_name    = @metric_filters.first.filter_name
+    @pattern        = @metric_filters.first.filter_pattern
     @log_group_name = @metric_filters.first.log_group_name
-    @pattern = @metric_filters.first.filter_pattern
-    # AWS SDK returns an array of metric transformations
-    # but only allows one (mandatory) entry, let's flatten that
-    @metric_name = @metric_filters.first.metric_transformations.first.metric_name
+
+    @metric_name      = @metric_filters.first.metric_transformations.first.metric_name
     @metric_namespace = @metric_filters.first.metric_transformations.first.metric_namespace
+  end
+
+  def exists?
+    !@metric_name.nil?
   end
 
   def to_s
