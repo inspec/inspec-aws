@@ -104,7 +104,7 @@ class AwsS3Bucket < AwsResourceBase
 
   def tags
     begin
-      tag_list =@aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set
+      tag_list = @aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set
     rescue
       return {}
     end
