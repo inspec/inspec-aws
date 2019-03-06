@@ -29,6 +29,8 @@ control 'aws-s3-bucket-1.0' do
 
   describe aws_s3_bucket(bucket_name: 'non-existing-bucket-inspec-testing-aws-12345') do
     it { should_not exist }
+    its('bucket_policy') { should be_empty }
+    its('bucket_acl') { should be_empty }
   end
 
   describe aws_s3_bucket(bucket_name: aws_bucket_private_name) do
