@@ -35,6 +35,15 @@ class AwsRdsInstance < AwsResourceBase
     end
   end
 
+  def tags
+    begin
+      tag_list = @aws.rds_client.list_tags_for_resource(resource_name: @rds_instance[:db_instance_arn]).tag_list
+    rescue
+      return {}
+    end
+    map_tags(tag_list)
+  end
+
   def to_s
     "RDS Instance #{@display_name}"
   end

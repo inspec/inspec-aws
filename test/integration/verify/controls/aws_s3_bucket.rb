@@ -18,6 +18,8 @@ control 'aws-s3-bucket-1.0' do
   describe aws_s3_bucket(bucket_name: aws_bucket_public_name) do
     it { should exist }
     its('region') { should eq aws_bucket_public_region }
+    its('tags')   { should include('Environment' => 'Dev',
+                                   'Name' => aws_bucket_public_name)}
     it { should be_public }
   end
 

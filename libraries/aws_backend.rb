@@ -202,6 +202,15 @@ class AwsResourceBase < Inspec.resource(1)
   def is_permissions_error(error)
     true if error.context.http_response.status_code == 403
   end
+
+  def map_tags(tag_list)
+    return {} if tag_list.nil? || tag_list.empty?
+    tags = {}
+    tag_list.each do |tag|
+      tags[tag[:key]] = tag[:value]
+    end
+    tags
+  end
 end
 
 # Class to create methods on the calling object at run time.  Heavily based on the Azure Inspec resources.
@@ -269,11 +278,17 @@ class AwsResourceDynamicMethods
       when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum'
         probes = value
       else
-        probes = []
-        value.each do |value_item|
-          # p value_item
-          value_item = value_item.to_h if value_item.respond_to? :to_h
-          probes << AwsResourceProbe.new(value_item)
+        if name.eql?(:tags)
+          probes = {}
+          value.each do |tag|
+            probes[tag[:key]] = tag[:value]
+          end
+        else
+          probes = []
+          value.each do |value_item|
+            value_item = value_item.to_h if value_item.respond_to? :to_h
+            probes << AwsResourceProbe.new(value_item)
+          end
         end
       end
       object.define_singleton_method name do

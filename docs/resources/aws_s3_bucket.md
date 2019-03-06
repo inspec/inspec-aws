@@ -70,6 +70,15 @@ The `region` property identifies the AWS Region in which the S3 bucket is locate
       # Check if the correct region is set
       its('region') { should eq 'us-east-1' }
     end
+    
+### tags
+
+The tags of the S3 bucket.
+        
+    describe aws_s3_bucket do
+        its('tags') { should include(:Environment => 'env-name',
+                                     :Name => 'bucket-name')}
+    end
 
 ## Unsupported Properties
 

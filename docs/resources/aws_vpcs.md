@@ -105,6 +105,15 @@ The vpc_ids property provides a list of the IDs of the matched VPCs.
       # Do something with vpc_id
     end
 
+### tags
+    
+Provides a list of hashes containing the tags of the VPCs.
+    
+    describe aws_vpc do
+      its('tags') { should include(:Environment => 'env-name',
+                                   :Name => 'vpc-name')}
+    end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).

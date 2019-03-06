@@ -109,6 +109,15 @@ The ID of the VPC.
     describe aws_vpc do
       its('vpc_id') { should eq 'vpc-87654321' }
     end
+    
+### tags
+    
+The tags of the VPC.
+    
+    describe aws_vpc do
+      its('tags') { should include(:Environment => 'env-name',
+                                   :Name => 'vpc-name')}
+    end
 
 <br>
 
