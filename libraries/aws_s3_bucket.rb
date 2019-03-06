@@ -102,6 +102,15 @@ class AwsS3Bucket < AwsResourceBase
     policy_list
   end
 
+  def tags
+    begin
+      tag_list = @aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set
+    rescue
+      return {}
+    end
+    map_tags(tag_list)
+  end
+
   def to_s
     "S3 Bucket #{@bucket_name}"
   end

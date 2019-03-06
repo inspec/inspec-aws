@@ -54,7 +54,7 @@ A string identifying a group. Since groups are contained in VPCs, group names ar
 
 ## Properties
 
-* `entries`, `group_ids`
+* `entries`, `group_ids`, `tags`
 
 <br>
 
@@ -76,6 +76,15 @@ Provides a list of all security group IDs matched.
     describe aws_security_groups do
       its('group_ids') { should include('sg-12345678') }
     end
+    
+### tags
+        
+Provides a list of hashes containing the tags of the groups.
+        
+        describe aws_security_group do
+          its('tags') { should include(:Environment => 'env-name',
+                                       :Name => 'group-name')}
+        end
 
 ## Matchers
 

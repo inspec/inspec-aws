@@ -239,6 +239,15 @@ A String in the format 'vpc-' followed by 8 hexadecimal characters reflecting VP
     describe aws_security_group('sg-12345678') do
       its('vpc_id') { should cmp 'vpc-12345678' }
     end
+    
+### tags
+        
+    The tags of the security group.
+        
+        describe aws_security_group do
+          its('tags') { should include(:Environment => 'env-name',
+                                       :Name => 'group-name')}
+        end
 
 <br>
 
