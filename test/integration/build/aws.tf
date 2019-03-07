@@ -221,6 +221,10 @@ resource "aws_s3_bucket" "bucket_public" {
   count = "${var.aws_enable_creation}"
   bucket = "${var.aws_bucket_public_name}"
   acl = "public-read"
+  tags = {
+    Name = "${var.aws_bucket_public_name}"
+    Environment = "Dev"
+  }
 }
 
 resource "aws_s3_bucket" "bucket_private" {
@@ -233,6 +237,10 @@ resource "aws_s3_bucket" "bucket_public_for_objects" {
   count = "${var.aws_enable_creation}"
   bucket = "${var.aws_bucket_public_objects_name}"
   acl = "public-read"
+  tags = {
+    Name = "${var.aws_bucket_public_objects_name}"
+    Environment = "Dev"
+  }
 }
 
 resource "aws_s3_bucket" "bucket_auth" {
@@ -401,6 +409,10 @@ resource "aws_security_group" "alpha" {
   name = "${var.aws_security_group_alpha}"
   description = "SG alpha"
   vpc_id = "${data.aws_vpc.default.id}"
+  tags = {
+    Name = "${var.aws_security_group_alpha}"
+    Environment = "Dev"
+  }
 }
 
 resource "aws_security_group" "beta" {
@@ -538,6 +550,10 @@ resource "aws_db_instance" "db_rds" {
   password = "testpassword"
   parameter_group_name = "default.mysql5.6"
   skip_final_snapshot = true
+  tags = {
+    Name = "${var.aws_rds_db_name}"
+    Environment = "Dev"
+  }
 }
 
 # Cloudtrail

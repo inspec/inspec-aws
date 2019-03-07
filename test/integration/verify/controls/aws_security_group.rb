@@ -62,6 +62,8 @@ control 'aws-security-group-1.0' do
     its('outbound_rules.first') { should be_a_kind_of(Hash) }
     its('outbound_rules.count') { should cmp 1 } # 1 explicit
     its('outbound_rules_count') { should cmp 3 } # 3 CIDR blocks specified
+    its('tags') { should include('Environment' => 'Dev',
+                                 'Name' => aws_security_group_alpha)}
     it { should allow_in(port: 22) }
     it { should_not allow_in(port: 631, ipv4_range: "0.0.0.0/0") }
     it { should allow_in(ipv4_range: "0.0.0.0/0", port: 80) }

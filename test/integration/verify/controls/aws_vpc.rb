@@ -5,6 +5,7 @@ aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
 aws_vpc_cidr_block = attribute(:aws_vpc_cidr_block, default: '', description: 'The AWS VPC CIDR block.')
 aws_vpc_instance_tenancy = attribute(:aws_vpc_instance_tenancy, default: '', description: 'The AWS VPC instance tenancy option.')
 aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default: '', description: 'The AWS VPC DHCP options ID.')
+aws_vpc_name = attribute(:aws_vpc_name, default: '', description: 'The AWS VPC name.')
 
 control 'aws-vpc-1.0' do
 
@@ -18,6 +19,7 @@ control 'aws-vpc-1.0' do
     its ('vpc_id') { should eq aws_vpc_id }
     its ('state') { should eq 'available' }
     its ('dhcp_options_id') { should eq aws_vpc_dhcp_options_id }
+    its ('tags') { should include('Name' => aws_vpc_name)}
     it { should_not be_default }
   end
 
