@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AwsIamAccountAlias < AwsResourceBase
   name 'aws_iam_account_alias'
   desc 'Verifies settings for an AWS IAM Account Alias.'
