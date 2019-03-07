@@ -36,7 +36,7 @@ The metric namespace used by this alarm. This must be passed as a `metric_namesp
 
 ## Examples
 
-### Ensure an Alarm has at least one alarm action
+##### Ensure an Alarm has at least one alarm action
     describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
       its('alarm_actions') { should_not be_empty }
     end
@@ -45,7 +45,7 @@ The metric namespace used by this alarm. This must be passed as a `metric_namesp
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exist
+#### exist
 
 The control will pass if the describe returns at least one result.
 

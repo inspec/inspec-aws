@@ -50,7 +50,7 @@ See also the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/l
       it { should exist }
     end
 
-### Ensure a Filter exists for a specific pattern
+##### Ensure a Filter exists for a specific pattern
     describe aws_cloudwatch_log_metric_filter(pattern: '"ERROR" - "Exiting"') do
       it { should exist }
     end
@@ -75,7 +75,7 @@ See also the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/l
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exist
+#### exist
 
 The control will pass if the describe returns at least one result.
 

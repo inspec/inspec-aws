@@ -156,9 +156,9 @@ class AwsResourceBase < Inspec.resource(1)
 
   def validate_parameters(allowed_list)
     allowed_list += %i(client_args stub_data aws_region)
-    raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
-    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
-    raise ArgumentError, 'Provided parameter should not be empty' if !@opts.values.all? { |a| !a.empty? }
+    raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
+    raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allowed_list.include?(a) }
+    raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? { |a| !a.empty? }
     true
   end
 

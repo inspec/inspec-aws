@@ -71,7 +71,7 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-##### exist
+#### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -82,7 +82,7 @@ Use `should_not` to test the entity should not exist.
       it { should exist }
     end
 
-##### be\_multi\_region\_trail
+#### be\_multi\_region\_trail
 
 The test will pass if the identified trail is a multi-region trail.
 
@@ -90,7 +90,7 @@ The test will pass if the identified trail is a multi-region trail.
       it { should be_multi_region_trail }
     end
 
-##### be\_encrypted
+#### be\_encrypted
 
 The test will pass if the logs delivered by the identified trail are encrypted.
 
@@ -98,7 +98,7 @@ The test will pass if the logs delivered by the identified trail are encrypted.
       it { should be_encrypted }
     end
 
-##### be\_log\_file\_validation\_enabled
+#### be\_log\_file\_validation\_enabled
 
 The test will pass if the identified trail has log file integrity validation is enabled.
 
