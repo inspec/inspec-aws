@@ -28,14 +28,14 @@ class AwsIamSamlProviders < AwsResourceBase
   def fetch_data
     provider_rows = []
     catch_aws_errors do
-      @providers = @aws.iam_client.list_saml_providers
-    end
-    return [] if !@providers || @providers.empty?
+      providers = @aws.iam_client.list_saml_providers
+      return [] if !providers || providers.empty?
 
-    @providers.saml_provider_list.each do |p|
-      provider_rows += [{ arn:      p.arn,
-                       valid_until: p.valid_until,
-                       create_date: p.create_date }]
+      providers.saml_provider_list.each do |p|
+        provider_rows += [{ arn:      p.arn,
+                         valid_until: p.valid_until,
+                         create_date: p.create_date }]
+      end
     end
 
     @table = provider_rows
