@@ -14,7 +14,7 @@ class AwsIamSamlProvider < AwsResourceBase
   '
   supports platform: 'aws'
 
-  attr_reader :provider, :arn, :create_date, :valid_until
+  attr_reader :provider, :arn, :saml_metadata_document, :create_date, :valid_until
 
   def initialize(opts = {})
     opts = { saml_provider_arn: opts } if opts.is_a?(String)
@@ -26,8 +26,7 @@ class AwsIamSamlProvider < AwsResourceBase
       @arn = opts[:saml_provider_arn]
       @create_date = @provider.create_date
       @valid_until = @provider.valid_until
-      # Not currently doing anything with metadata doc, future improvement?
-      # @saml_metadata_document = @provider.saml_metadata_document
+      @saml_metadata_document = @provider.saml_metadata_document
     end
   end
 
