@@ -16,21 +16,23 @@ control 'aws-s3-bucket-1.0' do
   title 'Ensure AWS S3 bucket has the correct properties.'
 
   describe aws_s3_bucket(bucket_name: aws_bucket_public_name) do
-    it { should exist }
+    it            { should exist }
     its('region') { should eq aws_bucket_public_region }
     its('tags')   { should include('Environment' => 'Dev',
                                    'Name' => aws_bucket_public_name)}
-    it { should be_public }
+    it            { should be_public }
   end
 
   describe aws_s3_bucket(aws_bucket_public_name) do
-    it { should exist }
+    it            { should exist }
     its('region') { should eq aws_bucket_public_region }
-    it { should be_public }
+    it            { should be_public }
   end
 
   describe aws_s3_bucket(bucket_name: 'non-existing-bucket-inspec-testing-aws-12345') do
-    it { should_not exist }
+    it                   { should_not exist }
+    its('bucket_policy') { should be_empty }
+    its('bucket_acl')    { should be_empty }
   end
 
   describe aws_s3_bucket(bucket_name: aws_bucket_private_name) do
