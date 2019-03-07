@@ -157,6 +157,44 @@ gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/rem
 The branched InSpec version has all AWS components removed.  
 The branched Train version is upgraded to SDK version 3 to avoid the above conflict.  
 
+### Running a Sample Profile Using Docker
+
+A `Dockerfile` is provided in the root of this resource pack repository.  
+
+```
+cd inspec-aws
+docker build -t inspec-aws -f Dockerfile .
+docker run -it inspec-aws /bin/bash
+export AWS_ACCESS_KEY_ID=<your creds here>
+export AWS_SECRET_ACCESS_KEY=<your creds here>
+bundle exec inspec exec sample_profile -t aws://
+```
+
+If successful, output similar to this should be seen:
+
+```
+# bundle exec inspec exec sample_profile -t aws://
+
+Profile: AWS InSpec Profile (InSpec AWS Sample Profile)
+Version: 0.1.0
+Target:  aws://us-east-1
+
+  ✔  aws-vpcs-multi-region-status-check: Check AWS VPCs in all regions have status "available"
+     ✔  VPC vpc-1234abcd in eu-north-1 should exist
+     ✔  VPC vpc-1234abcd in eu-north-1 should be available
+<curtailing> ...
+
+
+Profile: Amazon Web Services  Resource Pack (inspec-aws)
+Version: 0.1.0
+Target:  aws://us-east-1
+
+     No tests executed.
+
+Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
+Test Summary: 50 successful, 0 failures, 0 skipped
+```
+
 ### Running the unit and integration tests
 
 Run the linting and unit tests via the below:
