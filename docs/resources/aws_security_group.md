@@ -244,7 +244,7 @@ A String in the format 'vpc-' followed by 8 hexadecimal characters reflecting VP
         
     The tags of the security group.
         
-        describe aws_security_group do
+        describe aws_security_group('sg-12345678') do
           its('tags') { should include(:Environment => 'env-name',
                                        :Name => 'group-name')}
         end
