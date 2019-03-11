@@ -136,6 +136,8 @@ class AwsResourceBase < Inspec.resource(1)
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
+      # below allows each resource to optionally and conveniently set an endpoint
+      client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
@@ -155,7 +157,7 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   def validate_parameters(allowed_list)
-    allowed_list += %i(client_args stub_data aws_region)
+    allowed_list += %i(client_args stub_data aws_region aws_endpoint)
     raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' if !@opts.values.all? { |a| !a.empty? }

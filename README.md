@@ -53,6 +53,8 @@ $ inspec exec my-profile -t aws://
 ## Resource documentation
 This resouce pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/inspec/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/inspec/inspec-aws/pulls).
 
+- [aws_auto_scaling_group](docs/resources/aws_auto_scaling_group.md)
+- [aws_auto_scaling_groups](docs/resources/aws_auto_scaling_groups.md)
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
 - [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md)
@@ -68,18 +70,24 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_eks_cluster](docs/resources/aws_eks_cluster.md)
 - [aws_eks_clusters](docs/resources/aws_eks_clusters.md)
 - [aws_elb](docs/resources/aws_elb.md)
+- [aws_elbs](docs/resources/aws_elbs.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
 - [aws_iam_access_key](docs/resources/aws_iam_access_key.md)
 - [aws_iam_access_keys](docs/resources/aws_iam_access_keys.md)
+- [aws_iam_account_alias](docs/resources/aws_iam_account_alias.md)
 - [aws_iam_group](docs/resources/aws_iam_group.md)
 - [aws_iam_password_policy](docs/resources/aws_iam_password_policy.md)
 - [aws_iam_policies](docs/resources/aws_iam_policies.md)
 - [aws_iam_policy](docs/resources/aws_iam_policy.md)
+- [aws_iam_role](docs/resources/aws_iam_role.md)
+- [aws_iam_roles](docs/resources/aws_iam_roles.md)
 - [aws_iam_root_user](docs/resources/aws_iam_root_user.md)
 - [aws_iam_user](docs/resources/aws_iam_user.md)
 - [aws_iam_users](docs/resources/aws_iam_users.md)
 - [aws_kms_key](docs/resources/aws_kms_key.md)
 - [aws_kms_keys](docs/resources/aws_kms_keys.md)
+- [aws_launch_configuration](docs/resources/aws_launch_configuration.md)
+- [aws_organizations_member](docs/resources/aws_organizations_member.md)
 - [aws_rds_instance](docs/resources/aws_rds_instance.md)
 - [aws_region](docs/resources/aws_region.md)
 - [aws_regions](docs/resources/aws_regions.md)
@@ -94,6 +102,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
 - [aws_sqs_queue](docs/resources/aws_sqs_queue.md)
+- [aws_sts_caller_identity](docs/resources/aws_sts_caller_identity.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
@@ -140,6 +149,46 @@ end
       it { should_not exist }
     end
 ```
+
+## Properties Applying to All InSpec AWS Resources
+
+### `aws_region`
+
+In order to provide multi-region support, the `aws_region` property may be specified to a resource.  This will only have an effect on AWS resources that have a region dependency e.g. security groups.  One special-case worth mentioning is the `aws_s3_bucket` resource that updates its region based on the location returned from S3.
+
+The `aws_regions` resource can be used to loop across all regions e.g.
+
+```
+  aws_regions.region_names.each do |region|
+    <use region in other resources here>
+  end
+```
+
+### `aws_endpoint`
+
+A custom endpoint URL can optionally be specified to resources for testing other compatible providers.  This propagates to the AWS client configuration.  An example is provided below for [Minio](https://github.com/minio/minio) S3 compatible buckets e.g.
+
+```
+title 'Test For  Minio Buckets Existing at a Custom Endpoint'
+
+endpoint = attribute(:minio_server, default: 'http://127.0.0.1:9000', description: 'The Minio server custom endpoint.')
+
+control 'minio-buckets-1.0' do
+  impact 1.0
+  title 'Ensure Minio buckets exist.'
+
+  describe aws_s3_bucket(aws_endpoint: endpoint, bucket_name: 'miniobucket') do
+    it { should exist }
+  end
+
+  describe aws_s3_bucket(aws_endpoint: endpoint, bucket_name: 'notthere') do
+    it { should_not exist }
+  end
+end
+```
+
+Note that InSpec AWS assumes full compatibility with the underlying AWS SDK and unsupported operations will cause failures.  Therefore, depending on the external provider implementation your mileage may vary!
+
 
 ## Environment and Setup Notes
 
