@@ -32,6 +32,7 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 |vpc_zone_identifiers       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
 |health_check_types         | The service to use for the health checks. The valid values are EC2 and ELB. |
 |tags                       | A hash of key-value pairs corresponding to the tags associated with the entity. |
+|entries                    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 

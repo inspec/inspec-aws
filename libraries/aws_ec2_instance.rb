@@ -19,35 +19,44 @@ class AwsEc2Instance < AwsResourceBase
   "
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    raise ArgumentError, 'aws_ec2_instance `instance_id` or `name` must be provided' if opts.nil?
-    opts = { instance_id: opts } if opts.is_a?(String) # this preserves the original scalar interface - note that the original implementation offered scalar 'id' or tag property :name
+    raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided" if opts.nil?
+
+    opts = { instance_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(%i(instance_id name))
-    @display_name = opts[:name] || opts[:instance_id]
-    if opts[:instance_id] && !opts[:instance_id].empty? # we either use the instance_id
-      raise ArgumentError, 'aws_ec2_instance `instance_id` must be a string' if !opts[:instance_id].is_a?(String)
-      raise ArgumentError, 'aws_ec2_instance `instance_id`  must be in the format "i-" followed by 8 or 17 hexadecimal characters.' if opts[:instance_id] !~ /^i\-([0-9a-f]{8})|(^i\-[0-9a-f]{17})$/
+
+    if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
+      if !opts[:instance_id].is_a?(String) || opts[:instance_id] !~ /^i\-([0-9a-f]{8})|(^i\-[0-9a-f]{17})$/
+        raise ArgumentError, "#{@__resource_name__}: `instance_id` must be a string in the format of 'i-' followed by 8 or 17 hexadecimal characters."
+      end
+      @display_name = opts[:instance_id]
       instance_arguments = { instance_ids: [opts[:instance_id]] }
-    else # or use the tag naming convention
+    elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
       raise ArgumentError, 'aws_ec2_instance `name` must be provided' if opts[:name].nil? || opts[:name].empty?
-      filter = { name: 'tag:Name', values: [opts[:name]] }
+    @display_name = opts[:name] || opts[:instance_id]
+    filter = { name: 'tag:Name', values: [opts[:name]] }
       instance_arguments = { filters: [filter] }
+    else
+      raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided"
     end
 
     catch_aws_errors do
       @resp = @aws.compute_client.describe_instances(instance_arguments)
-      @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
-      # TODO: review whether filtering by name is useful
-      if !@instance.nil?
-        raise Inspec::Exceptions::ResourceFailed, 'Expected only one instance to be returned when filtering by name!' if @resp.reservations.first.instances.count > 1
+
+      if @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
+        return
+      elsif @resp.reservations.first.instances.count > 1
+        fail_resource('Multiple EC2 instances were returned for the provided criteria. If you wish to test multiple entities, please use the aws_ec2_instances resource.')
+      else
+        @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
       end
+
       create_resource_methods(@instance)
-      # below is because the original implementation exposed several clashing method
-      # names and we want to ensure backwards compatibility
+
+      # The original implementation exposed several clashing method names, this ensures backwards compatibility
       class << self
         def state
-          return nil if !@instance[:state]
+          return nil unless @instance[:state]
           @instance[:state][:name]
         end
 
@@ -65,50 +74,45 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def exists?
-    return false if !@instance
-    !@instance.empty?
+    false if !@instance || @instance.empty?
   end
 
   def security_group_ids
-    return nil if !@instance[:security_groups]
+    return nil unless @instance[:security_groups]
     @instance[:security_groups].map { |sg| sg[:group_id] }
   end
 
   def availability_zone
-    return nil if !@instance[:placement]
-    return nil if !@instance[:placement].include?(:availability_zone)
+    return nil unless @instance[:placement]
+    return nil unless @instance[:placement].include?(:availability_zone)
     @instance[:placement][:availability_zone]
   end
 
   def ebs_volumes
-    return nil if !@instance[:block_device_mappings]
+    return nil unless @instance[:block_device_mappings]
     return nil if @instance[:block_device_mappings].count.zero?
     @instance[:block_device_mappings].map { |vol| { id: vol[:ebs][:volume_id], name: vol[:device_name] } }
   end
 
   def network_interface_ids
-    return nil if !@instance[:network_interfaces]
+    return nil unless @instance[:network_interfaces]
     return nil if @instance[:network_interfaces].count.zero?
     @instance[:network_interfaces].map { |nic| nic[:network_interface_id] }
   end
 
   def has_roles?
-    return false if !@instance[:iam_instance_profile]
-    return false if !@instance[:iam_instance_profile][:arn]
+    return false unless @instance[:iam_instance_profile] && @instance[:iam_instance_profile][:arn]
     instance_profile = @instance[:iam_instance_profile][:arn].split('/').last
     returned_roles = nil
     catch_aws_errors do
-      @resp = @aws.iam_client.get_instance_profile({ instance_profile_name: instance_profile })
-      returned_roles = @resp.instance_profile.roles
+      resp = @aws.iam_client.get_instance_profile({ instance_profile_name: instance_profile })
+      returned_roles = resp.instance_profile.roles
     end
     returned_roles && !returned_roles.empty?
   end
 
-  # additional helper methods for each state
-  %w{
-    pending running shutting-down
-    terminated stopping stopped unknown
-  }.each do |state_name|
+  # Generate a matcher for each state
+  %w{pending running shutting-down terminated stopping stopped unknown}.each do |state_name|
     define_method state_name.tr('-', '_') + '?' do
       state == state_name
     end
