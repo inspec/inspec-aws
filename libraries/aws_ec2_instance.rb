@@ -32,10 +32,9 @@ class AwsEc2Instance < AwsResourceBase
       @display_name = opts[:instance_id]
       instance_arguments = { instance_ids: [opts[:instance_id]] }
     elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
-      raise ArgumentError, 'aws_ec2_instance `name` must be provided' if opts[:name].nil? || opts[:name].empty?
-    @display_name = opts[:name] || opts[:instance_id]
-    filter = { name: 'tag:Name', values: [opts[:name]] }
-      instance_arguments = { filters: [filter] }
+      raise ArgumentError, "#{@__resource_name__}: `name` must be provided" if opts[:name].nil? || opts[:name].empty?
+      @display_name = opts[:name] || opts[:instance_id]
+      instance_arguments = { filters: [{ name: 'tag:Name', values: [opts[:name]] }] }
     else
       raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided"
     end
@@ -43,6 +42,7 @@ class AwsEc2Instance < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.compute_client.describe_instances(instance_arguments)
 
+      # rubocop:disable Style/GuardClause
       if @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
         return
       elsif @resp.reservations.first.instances.count > 1
@@ -50,10 +50,11 @@ class AwsEc2Instance < AwsResourceBase
       else
         @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
       end
+      # rubocop:enable Style/GuardClause
 
       create_resource_methods(@instance)
 
-      # The original implementation exposed several clashing method names, this ensures backwards compatibility
+      # Methods required to ensure backwards compatibility
       class << self
         def state
           return nil unless @instance[:state]
@@ -61,9 +62,7 @@ class AwsEc2Instance < AwsResourceBase
         end
 
         def security_groups
-          @instance[:security_groups].map { |sg|
-            { id: sg[:group_id], name: sg[:group_name] }
-          }
+          @instance[:security_groups].map { |sg| { id: sg[:group_id], name: sg[:group_name] } }
         end
 
         def tags
@@ -74,7 +73,7 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def exists?
-    false if !@instance || @instance.empty?
+    !@instance.nil? && !@instance.empty?
   end
 
   def security_group_ids

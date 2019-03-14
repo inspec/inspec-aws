@@ -16,8 +16,8 @@ class AwsCloudwatchAlarm < AwsResourceBase
 
   def initialize(opts = {})
     required_params = %i(metric_name metric_namespace)
-    if opts.is_a?(String) || required_params.all? { |k| opts.key? k }
-      raise ArgumentError, 'aws_cloudwatch_alarm requires metric_name and metric_namespace parameters to be specified'
+    if opts.is_a?(String) || !required_params.all? { |k| opts.key? k }
+      raise ArgumentError, "#{@__resource_name__}: requires metric_name and metric_namespace parameters to be specified"
     end
 
     super(opts)
@@ -41,7 +41,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
   end
 
   def exists?
-    !@metric_alarms.nil?
+    !@metric_alarms.empty?
   end
 
   def to_s

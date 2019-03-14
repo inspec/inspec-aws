@@ -16,8 +16,7 @@ class AwsSecurityGroup < AwsResourceBase
   alias exists? exists
 
   def initialize(opts = {})
-    raise ArgumentError, 'aws_security_group, arguments must be supplied' if opts.nil?
-    raise ArgumentError, 'aws_security_group, arguments must be supplied' if opts.empty?
+    raise ArgumentError, "#{@__resource_name__}: arguments must be supplied" if opts.nil? || opts.empty?
     opts = { group_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
     opts[:group_id] = opts.delete(:id) if opts.key?(:id) # id is an alias for group_id
     super(opts)
@@ -25,12 +24,12 @@ class AwsSecurityGroup < AwsResourceBase
 
     filter = []
     if opts.key?(:vpc_id)
-      raise ArgumentError, 'aws_security_group VPC ID must be in the format "vpc-" followed by 8 or 17 hexadecimal characters.' if opts[:vpc_id] !~ /^vpc\-[0-9a-f]{8}|(^vpc\-[0-9a-f]{17})$/
+      raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-[0-9a-f]{8}|(^vpc\-[0-9a-f]{17})$/
       filter += [{ name: 'vpc-id', values: [opts[:vpc_id]] }]
     end
 
     if opts.key?(:group_id)
-      raise ArgumentError, 'aws_security_group security group ID must be in the format "sg-" followed by 8 or 17 hexadecimal characters.' if opts[:group_id] !~ /^sg\-[0-9a-f]{8}|(^sg\-[0-9a-f]{17})$/
+      raise ArgumentError, "#{@__resource_name__}: security group ID must be in the format 'sg-' followed by 8 or 17 hexadecimal characters." if opts[:group_id] !~ /^sg\-[0-9a-f]{8}|(^sg\-[0-9a-f]{17})$/
       filter += [{ name: 'group-id', values: [opts[:group_id]] }]
     end
 
@@ -159,11 +158,11 @@ class AwsSecurityGroup < AwsResourceBase
     when idx.is_a?(Numeric)
       idx -= 1 # We document this as 1-based, so adjust to be zero-based.
     else
-      raise ArgumentError, "aws_security_group 'allow' 'position' criteria must be an integer or the symbols :first or :last"
+      raise ArgumentError, "#{@__resource_name__}: 'allow' 'position' criteria must be an integer or the symbols :first or :last"
     end
 
     unless idx < rules.count
-      raise ArgumentError, "aws_security_group 'allow' 'position' criteria #{idx + 1} is out of range - there are only #{rules.count} rules for security group #{group_id}."
+      raise ArgumentError, "#{@__resource_name__}: 'allow' 'position' criteria #{idx + 1} is out of range - there are only #{rules.count} rules for security group #{group_id}."
     end
 
     [rules[idx]]

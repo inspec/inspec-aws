@@ -20,7 +20,7 @@ class AwsRdsInstance < AwsResourceBase
     super(opts)
     validate_parameters([:db_instance_identifier])
     @display_name = opts[:db_instance_identifier]
-    raise ArgumentError, 'aws_rds_instance Database Instance ID must be in the format: start with a letter followed by up to 62 letters/numbers/hyphens.' if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
+    raise ArgumentError, "#{@__resource_name__}: Database Instance ID must be in the format: start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
     catch_aws_errors do
       @exists = false
       begin

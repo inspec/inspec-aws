@@ -22,19 +22,18 @@ class AwsElb < AwsResourceBase
     validate_parameters([:load_balancer_name])
 
     catch_aws_errors do
-      # SDK requires hash value as array
       load_balancer_name = { load_balancer_names: [opts[:load_balancer_name]] }
-      @resp = @aws.elb_client.describe_load_balancers(load_balancer_name).load_balancer_descriptions.first
+      resp = @aws.elb_client.describe_load_balancers(load_balancer_name).load_balancer_descriptions.first
 
-      @availability_zones     = @resp.availability_zones
-      @dns_name               = @resp.dns_name
-      @load_balancer_name     = @resp.load_balancer_name
-      @external_ports         = @resp.listener_descriptions.map { |l| l.listener.load_balancer_port }
-      @instance_ids           = @resp.instances.map(&:instance_id)
-      @internal_ports         = @resp.listener_descriptions.map { |l| l.listener.instance_port }
-      @security_group_ids     = @resp.security_groups
-      @subnet_ids             = @resp.subnets
-      @vpc_id                 = @resp.vpc_id
+      @availability_zones = resp.availability_zones
+      @dns_name           = resp.dns_name
+      @load_balancer_name = resp.load_balancer_name
+      @external_ports     = resp.listener_descriptions.map { |l| l.listener.load_balancer_port }
+      @instance_ids       = resp.instances.map(&:instance_id)
+      @internal_ports     = resp.listener_descriptions.map { |l| l.listener.instance_port }
+      @security_group_ids = resp.security_groups
+      @subnet_ids         = resp.subnets
+      @vpc_id             = resp.vpc_id
     end
   end
 

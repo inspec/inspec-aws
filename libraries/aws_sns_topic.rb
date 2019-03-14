@@ -20,7 +20,7 @@ class AwsSnsTopic < AwsResourceBase
     super(opts)
     validate_parameters([:arn])
     @arn = opts[:arn]
-    raise ArgumentError, 'aws_sns_topic expected an ARN of the form arn:aws:sns:REGION:ACCOUNT-ID:TOPIC-NAME' if opts[:arn] !~ /^arn:aws:sns:[\w\-]+:\d{12}:[\S]+$/
+    raise ArgumentError, "#{@__resource_name__}: expected an ARN of the form arn:aws:sns:REGION:ACCOUNT-ID:TOPIC-NAME" if opts[:arn] !~ /^arn:aws:sns:[\w\-]+:\d{12}:[\S]+$/
     catch_aws_errors do
       begin
         @resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h

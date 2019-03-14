@@ -33,12 +33,14 @@ class AwsIamAccessKey < AwsResourceBase
     super(opts)
     validate_parameters(%i(access_key_id username))
 
-    if !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
-      raise ArgumentError, 'Incorrect format for provided Access Key ID'
+    if opts[:username].nil? && opts[:access_key_id].nil?
+      raise ArgumentError, "#{@__resource_name__}: Must provide at least one of: access_key_id, username"
     end
 
-    if opts[:username].nil? && opts[:access_key_id].nil?
-      raise ArgumentError, 'Must provide at least one of: access_key_id, username'
+    if opts[:access_key_id]
+      if !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
+        raise ArgumentError, "#{@__resource_name__}: Incorrect format for provided Access Key ID"
+      end
     end
 
     @username = opts[:username]

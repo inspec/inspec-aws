@@ -16,8 +16,8 @@ class AwsRouteTable < AwsResourceBase
     opts = { route_table_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
     super(opts)
     validate_parameters([:route_table_id])
-    raise ArgumentError, 'aws_route_table ID must be provided' if opts[:route_table_id].nil?
-    raise ArgumentError, 'aws_route_table ID must be in the format "rtb-" followed by 8 or 17 hexadecimal characters.' if opts[:route_table_id] !~ /^rtb\-([0-9a-f]{8})|(^rtb\-[0-9a-f]{17})$/
+    raise ArgumentError, "#{@__resource_name__}: ID must be provided" if opts[:route_table_id].nil?
+    raise ArgumentError, "#{@__resource_name__}: ID must be in the format 'rtb-' followed by 8 or 17 hexadecimal characters." if opts[:route_table_id] !~ /^rtb\-([0-9a-f]{8})|(^rtb\-[0-9a-f]{17})$/
     @display_name = opts[:route_table_id]
     filter = { name: 'route-table-id', values: [opts[:route_table_id]] }
     catch_aws_errors do

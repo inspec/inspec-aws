@@ -22,7 +22,7 @@ class AwsFlowLog < AwsResourceBase
     query = { filter: [{ name: 'flow-log-id', values: [opts[:flow_log_id]] }] } if opts[:flow_log_id]
     query = { filter: [{ name: 'resource-id', values: [opts[:subnet_id]] }] } if opts[:subnet_id]
     query = { filter: [{ name: 'resource-id', values: [opts[:vpc_id]] }] } if opts[:vpc_id]
-    raise ArgumentError, 'Must specify flow_log_id, subnet_id or vpc_id' if query.nil?
+    raise ArgumentError, "#{@__resource_name__}: Must specify flow_log_id, subnet_id or vpc_id" if query.nil?
     catch_aws_errors do
       @resp = @aws.compute_client.describe_flow_logs(query)
       flow_log = @resp.to_h[:flow_logs].first

@@ -17,7 +17,7 @@ class AwsS3BucketObject < AwsResourceBase
     # Call the parent class constructor
     super(opts)
     validate_parameters(%i(bucket_name key))
-    raise ArgumentError, 'aws_s3_bucket_object - Both bucket_name and key are required' if opts.empty? or !opts.key?(:bucket_name) or !opts.key?(:key)
+    raise ArgumentError, "#{@__resource_name__}: Both bucket_name and key are required" if opts.empty? or !opts.key?(:bucket_name) or !opts.key?(:key)
     @bucket_name = opts[:bucket_name]
     @key = opts[:key]
     catch_aws_errors do

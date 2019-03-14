@@ -15,13 +15,12 @@ class AwsConfigDeliveryChannel < AwsResourceBase
   attr_reader :channel_name, :s3_bucket_name, :s3_key_prefix, :sns_topic_arn, :delivery_frequency_in_hours
 
   def initialize(opts = {})
-    # Call the parent class constructor
     opts = { channel_name: opts } if opts.is_a?(String)
 
     super(opts)
     validate_parameters([:channel_name]) unless opts.nil?
 
-    query = !opts.nil? && opts.key?(:channel_name) ? { delivery_channel_names: opts[:channel_name] } : {}
+    query = !opts.nil? && opts.key?(:channel_name) ? { delivery_channel_names: [opts[:channel_name]] } : {}
 
     catch_aws_errors do
       begin
@@ -47,7 +46,7 @@ class AwsConfigDeliveryChannel < AwsResourceBase
   end
 
   def exists?
-    !@s3_bucket_name.nil
+    !@s3_bucket_name.nil?
   end
 
   def to_s

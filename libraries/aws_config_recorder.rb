@@ -23,15 +23,18 @@ class AwsConfigurationRecorder < AwsResourceBase
     super(opts)
     validate_parameters([:recorder_name]) unless opts.nil?
 
-    query = !opts.nil? && opts.key?(:recorder_name) ? { configuration_recorder_names: opts[:recorder_name] } : {}
+    query = !opts.nil? && opts.key?(:recorder_name) ? { configuration_recorder_names: [opts[:recorder_name]] } : {}
 
     catch_aws_errors do
       begin
         resp = @aws.config_client.describe_configuration_recorders(query)
-        raise ArgumentError, 'Error: unexpectedly received multiple AWS Config Recorder objects from API; expected to be singleton per-region. ' if @resp.configuration_recorders.count > 1
+        raise ArgumentError, "#{@__resource_name__}: unexpectedly received multiple AWS Config Recorder objects from API; expected to be singleton per-region." if resp.configuration_recorders.count > 1
       rescue Aws::ConfigService::Errors::NoSuchConfigurationRecorderException
         return
       end
+
+      return if resp.configuration_recorders.empty?
+
       recorder        = resp.configuration_recorders.first.to_h
       @role_arn       = recorder[:role_arn]
       @recorder_name  = recorder[:name]

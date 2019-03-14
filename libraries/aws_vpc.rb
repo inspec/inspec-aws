@@ -22,7 +22,7 @@ class AwsVpc < AwsResourceBase
       filter = { name: 'isDefault', values: ['true'] }
       @display_name = 'default'
     else
-      raise ArgumentError, 'aws_vpc VPC ID must be in the format "vpc-" followed by 8 or 17 hexadecimal characters.' if opts[:vpc_id] !~ /^vpc\-([0-9a-f]{8})|(^vpc\-[0-9a-f]{17})$/
+      raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-([0-9a-f]{8})|(^vpc\-[0-9a-f]{17})$/
       filter = { name: 'vpc-id', values: [opts[:vpc_id]] }
     end
 

@@ -18,7 +18,7 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
 
   def initialize(opts = {})
     if opts.is_a?(String) || %i(filter_name log_group_name pattern).none? { |k| opts.key? k }
-      raise ArgumentError, 'aws_cloudwatch_log_metric_filter expects a hash containing at least one of [filter_name, log_group_name, pattern] to be provided'
+      raise ArgumentError, "#{@__resource_name__}: expects a hash containing at least one of [filter_name, log_group_name, pattern] to be provided"
     end
 
     super(opts)
