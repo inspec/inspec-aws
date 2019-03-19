@@ -24,7 +24,7 @@ An `aws_elb` resource block declares the tests for a single AWS ELB by ELB name.
 ##### load_balancer_name _(required)_
 
 This resource accepts a single parameter, the ELB Name which uniquely identifies the ELB. 
-This can be passed either as a string or as a `load_balancer_name: 'value'` hash.
+This can be passed either as a string or as a `load_balancer_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 

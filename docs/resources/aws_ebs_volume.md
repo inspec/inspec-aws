@@ -26,12 +26,12 @@ This resource accepts a single parameter, either the EBS Volume name or id. At l
 ##### volume_id _(required if `name` not provided)_
 
 The EBS Volume ID which uniquely identifies the volume.
-This can be passed as either a string or an `volume_id: 'value'` hash.
+This can be passed as either a string or an `volume_id: 'value'` key-value entry in a hash.
 
 ##### name _(required if `volume_id` not provided)_
 
 The EBS Volume Name which uniquely identifies the volume.
-This must be passed as a `name: 'value'` hash.
+This must be passed as a `name: 'value'` key-value entry in a hash.
 
 
 See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).

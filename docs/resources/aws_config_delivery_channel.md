@@ -33,7 +33,7 @@ Since you may only have one Delivery Channel per region, and InSpec connections 
 ##### channel_name _(optional)_
 
 This resource can be passed a single parameter, the Channel Name. 
-This can be passed either as a string or as a `channel_name: 'value'` hash.
+This can be passed either as a string or as a `channel_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Delivery Channels](https://docs.aws.amazon.com/config/latest/developerguide/manage-delivery-channel.html).
 

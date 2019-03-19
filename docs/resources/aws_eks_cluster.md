@@ -24,7 +24,7 @@ An `aws_eks_cluster` resource block declares the tests for a single EKS Cluster 
 ##### cluster_name _(required)_
 
 This resource requires a single parameter, the EKS Cluster Name.
-This can be passed either as a string or as a `cluster_name: 'value'` hash.
+This can be passed either as a string or as a `cluster_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 

@@ -36,7 +36,7 @@ Since you may only have one recorder per region, and InSpec connections are per-
 ##### recorder_name _(optional)_
 
 This resource accepts a single parameter, the Configuration Recorder Name. 
-This can be passed either as a string or as a `recorder_name: 'value'` hash.
+This can be passed either as a string or as a `recorder_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Configuration](https://docs.aws.amazon.com/config/latest/developerguide/aws-config-landing-page.html).
 

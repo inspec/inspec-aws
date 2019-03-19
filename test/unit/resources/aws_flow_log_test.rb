@@ -66,6 +66,6 @@ class AwsFlowLogTest < Minitest::Test
   end
 
   def test_id_method
-    assert_equal(@flow_log.id, 'flow_log-12345678')
+    assert_equal(@flow_log.send(:id), 'flow_log-12345678')
   end
 end

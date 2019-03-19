@@ -46,7 +46,9 @@ class AwsEc2Instance < AwsResourceBase
       if @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
         return
       elsif @resp.reservations.first.instances.count > 1
-        fail_resource('Multiple EC2 instances were returned for the provided criteria. If you wish to test multiple entities, please use the aws_ec2_instances resource.')
+        fail_resource('Multiple EC2 instances were returned for the provided criteria.
+                       If you wish to test multiple entities, please use the aws_ec2_instances resource.
+                       Otherwise, please provide more specific criteria to lookup your EC2 Instance.')
       else
         @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
       end

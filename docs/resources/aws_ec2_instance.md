@@ -26,12 +26,12 @@ One of either the EC2 instance's ID or name must be be provided.
 ##### instance_id _(required if `name` not provided)_
 
 The ID of the EC2 instance. This is in the format of `i-` followed by 8 or 17 hexadecimal characters.
-This can be passed either as a string or as an `instance_id: 'value'` hash.
+This can be passed either as a string or as an `instance_id: 'value'` key-value entry in a hash.
 
 ##### name _(required if `instance_id` not provided)_
 
 If you have a `name` tag applied to the EC2 instance, this can be used to lookup the instance.
-This must be passed as a `name: 'value'` hash.
+This must be passed as a `name: 'value'` key-value entry in a hash.
 
 ## Properties
 

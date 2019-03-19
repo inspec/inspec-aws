@@ -28,7 +28,7 @@ You may also use hash syntax to pass the auto scaling group name
 ##### name _(required)_
 
 This resource accepts a single parameter, the Auto Scaling Group Name which uniquely identifies the auto scaling group. 
-This can be passed either as a string or as a `name: 'value'` hash.
+This can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 

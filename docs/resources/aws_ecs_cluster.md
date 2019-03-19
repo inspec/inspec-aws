@@ -22,7 +22,7 @@ If no parameters are passed, the resource will attempt to retrieve the `default`
 ##### cluster_name _(optional)_
 
 This resource accepts a single parameter, the Cluster Name. 
-This can be passed either as a string or as a `cluster_name: 'value'` hash.
+This can be passed either as a string or as a `cluster_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_clusters.html).
 

@@ -30,7 +30,7 @@ Lint/AmbiguousBlockAssociation:
 EmptyLinesAroundBlockBody:
   Enabled: false
 MethodLength:
-  Max: 40
+  Max: 45
 NumericLiterals:
   MinDigits: 10
 Metrics/BlockLength:

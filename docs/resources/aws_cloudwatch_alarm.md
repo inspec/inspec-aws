@@ -19,11 +19,11 @@ Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a sin
 #### Parameters
 ##### metric_name _(required)_
 
-The metric name used by this alarm. This must be passed as a `metric_name: 'value'` hash.
+The metric name used by this alarm. This must be passed as a `metric_name: 'value'` key-value entry in a hash.
 
 ##### metric_namespace _(required)_
 
-The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` hash.
+The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` key-value entry in a hash.
 
 ## Properties
 

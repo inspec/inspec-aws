@@ -16,14 +16,17 @@ class AwsIamPolicy < AwsResourceBase
               :attached_roles, :attached_users, :policy_document
 
   def initialize(opts = {})
+    raise ArgumentError, "#{@__resource_name__}: `policy_arn` or `policy_name` must be provided" if !opts.key?(:policy_arn) && !opts.key?(:policy_name)
+
     super(opts)
     validate_parameters(%i(policy_arn policy_name))
-    raise ArgumentError, "#{@__resource_name__}: `policy_arn` or `policy_name` must be provided" if !opts.key?(:policy_arn) && !opts.key?(:policy_name)
+
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])
     elsif opts.key?(:policy_name)
       @resp = get_policy_by_name(opts[:policy_name])
     end
+
     get_attached_entities(@resp.arn)
     get_policy_document(@resp.arn, @resp.default_version_id)
 

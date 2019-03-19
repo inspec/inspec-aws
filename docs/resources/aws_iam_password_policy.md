@@ -7,77 +7,71 @@ platform: aws
 
 Use the `aws_iam_password_policy` InSpec audit resource to test properties of an AWS IAM Password Policy.
 
-<br>
-
 ## Syntax
 
 An `aws_iam_password_policy` resource block declares the tests for an AWS IAM Password Policy.
 
     describe aws_iam_password_policy do
       it { should exist }
-      it { should have_mfa_enabled }
     end
+    
+#### Parameters
 
-<br>
+This resource does not expect any parameters.
+
+See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
+
+## Properties
+
+|Property                        | Description|
+| ---                            | --- |
+|minimum_password_length         | The minimum character count of the password policy. |
+|max_password_age_in_days        | Integer representing in days how long a password may last before expiring.|
+|number_of_passwords_to_remember | Number of previous passwords to remember. |
 
 ## Examples
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a Password Policy meets your company's requirements.
-
+##### Test that a Password Policy meets your company's requirements.
     describe aws_iam_password_policy do
-      its('minimum_password_length') { should be > 8 }
       it                             { should require_uppercase_characters }
       it                             { should require_lowercase_characters }
       it                             { should require_numbers }
+      its('minimum_password_length') { should be > 8 }
     end
 
-### Test that users can change their own passwords 
+##### Test that users can change their own passwords 
 
     describe aws_iam_password_policy do
       it { should allow_users_to_change_password }
     end
     
-<br>
-
-## Properties
-
-* `minimum_password_length`
-* `max_password_age_in_days`
-* `number_of_passwords_to_remember`
-
-Properties are exposed via the matchers described below.
-
-<br>
-
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### prevent_password_reuse
+#### exist
+    it { should exist }
+        
+#### prevent_password_reuse
     it { should prevent_password_reuse }
     
-### expire_passwords 
+#### expire_passwords 
     it { should expire_passwords }
 
-### require_numbers   
+#### require_numbers   
     it { should require_numbers }
 
-### require_symbols
+#### require_symbols
     it { should require_symbols }
 
-### require_lowercase_characters
+#### require_lowercase_characters
     it { should require_lowercase_characters }
 
-### require_uppercase_characters
+#### require_uppercase_characters
     it { should require_uppercase_characters}
 
-### allow_users_to_change_passwords
+#### allow_users_to_change_passwords
     it { should allow_users_to_change_password }
-
-### exists
-    it { should exist }
     
 All matchers can use the inverse `should_not` predicate.
 

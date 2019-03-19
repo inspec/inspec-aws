@@ -7,15 +7,10 @@ platform: aws
 
 Use the `aws_iam_group` InSpec audit resource to test properties of a single IAM group.
 
-To test properties of multiple or all groups, use the `aws_iam_groups` resource.
-
-<br>
-
 ## Syntax
 
 An `aws_iam_group` resource block identifies a group by group name.
 
-    # Find a group by group name
     describe aws_iam_group('mygroup') do
       it { should exist }
     end
@@ -24,37 +19,46 @@ An `aws_iam_group` resource block identifies a group by group name.
     describe aws_iam_group(group_name: 'mygroup') do
       it { should exist }
     end
+    
+#### Parameters
 
-<br>
+##### group_name _(required)_
 
-## Examples
+This resource accepts a single parameter, the Group Name which uniquely identifies the IAM Group. 
+This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
 
-The following examples show how to use this InSpec audit resource.
-
-As this is the initial release of `aws_iam_group`, its limited functionality precludes examples.
-
-<br>
+See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html).
 
 ## Properties
 
-### users
+|Property   | Description|
+| ---       | --- |
+|group_name | The group name. |
+|group_id   | The group ID. |
+|arn        | The Amazon Resource Name of the group. |
+|users      | Array of users associated with the group.  |
 
-Check a specific User is included in a group
+## Examples
 
-    describe aws_iam_group('mygroup')
-      its('users') { should include 'iam_user_name' }
+##### Ensure group contains a certain user
+    describe aws_iam_group('admin-group') do
+      its('users') { should include 'deployment-service-account')}
     end
-
-<br>
 
 ## Matchers
 
-### exists
+#### exist
 
-The control will pass if a group with the given group name exists.
+The control will pass if the describe returns at least one result.
 
-    describe aws_iam_group('mygroup')
+Use `should_not` to test the entity should not exist.
+
+    describe aws_iam_group('AnExistingGroup') do
       it { should exist }
+    end
+
+    describe aws_iam_group('ANonExistentGroup') do
+      it { should_not exist }
     end
 
 ## AWS Permissions

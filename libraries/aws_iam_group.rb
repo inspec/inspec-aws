@@ -16,11 +16,12 @@ class AwsIamGroup < AwsResourceBase
 
   def initialize(opts = {})
     opts = { group_name: opts } if opts.is_a?(String)
+    raise ArgumentError, "#{@__resource_name__}: group_name required" if opts.nil? || !opts.key?(:group_name)
+
     super(opts)
     validate_parameters([:group_name])
 
     catch_aws_errors do
-      # SDK requires hash value as array
       @resp = @aws.iam_client.get_group(group_name: opts[:group_name])
 
       group       = @resp[:group]

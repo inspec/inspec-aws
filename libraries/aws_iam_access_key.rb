@@ -6,7 +6,7 @@ class AwsIamAccessKey < AwsResourceBase
   name 'aws_iam_access_key'
   desc 'Verifies settings for an AWS IAM Access Key'
   example "
-    describe aws_iam_access_key(username: 'username', id: 'access-key id') do
+    describe aws_iam_access_key(username: 'username', access_key_id: 'access-key id') do
       it                    { should exist }
       it                    { should_not be_active }
       its('create_date')    { should be > Time.now - 365 * 86400 }
@@ -20,28 +20,26 @@ class AwsIamAccessKey < AwsResourceBase
   def initialize(opts = {})
     if opts.is_a?(String)
       # If String passed, determine if username or ID.
-      if !/^AKIA[0-9A-Z]{16}$/.match?(opts)
-        opts = { username: opts }
-      else
+      if opts.start_with?('AKIA')
         opts = { access_key_id: opts }
+      else
+        opts = { username: opts }
       end
     elsif opts.key?(:id)
       # Otherwise if `id` is provided, use `access_key_id` instead.
       opts[:access_key_id] = opts.delete(:id)
     end
 
-    super(opts)
-    validate_parameters(%i(access_key_id username))
-
     if opts[:username].nil? && opts[:access_key_id].nil?
       raise ArgumentError, "#{@__resource_name__}: Must provide at least one of: access_key_id, username"
     end
 
-    if opts[:access_key_id]
-      if !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
-        raise ArgumentError, "#{@__resource_name__}: Incorrect format for provided Access Key ID"
-      end
+    if opts[:access_key_id] && !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
+      raise ArgumentError, "#{@__resource_name__}: Incorrect format for provided Access Key ID"
     end
+
+    super(opts)
+    validate_parameters(%i(access_key_id username))
 
     @username = opts[:username]
     @access_key_id = opts[:access_key_id]

@@ -5,13 +5,7 @@ platform: aws
 
 # aws\_iam\_policy
 
-Use the `aws_iam_policy` InSpec audit resource to test properties of a single managed AWS IAM Policy. Use `aws_iam_policies` to audit IAM policies in bulk.
-
-A policy defines the permissions of an identity or resource within AWS. AWS evaluates these policies when a principal, such as a user, makes a request. Policy permissions, also called "policy statements" in AWS, determine if a request is authorized -- and allow or deny it accordingly.
-
-Each IAM Policy is uniquely identified by either its policy\_name or arn.
-
-<br>
+Use the `aws_iam_policy` InSpec audit resource to test properties of a single managed AWS IAM Policy.
 
 ## Syntax
 
@@ -22,36 +16,53 @@ An `aws_iam_policy` resource block identifies a policy by policy name or arn
       it { should exist }
     end
 
-    # Find a customer-managed by name
-    describe aws_iam_policy('customer-managed-policy') do
-      it { should exist }
-    end
-
     # Hash syntax for policy name
     describe aws_iam_policy(policy_name: 'AWSSupportAccess') do
       it { should exist }
     end
 
-<br>
+#### Parameters
+
+This resource requires either the `policy_name` or the `policy_arn` to be provided.
+
+##### policy_name _(required if `policy_arn` not provided)_
+
+The Policy Name which uniquely identifies the Policy. 
+This must be passed as a `policy_name: 'value'` key-value entry in a hash.
+
+##### policy_arn _(required if `policy_name` not provided)_
+
+The Policy ARN which uniquely identifies the Policy. 
+This must be passed as a `policy_arn: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
+
+## Properties
+
+|Property           | Description|
+| ---               | --- |
+|arn                | The ARN identifier of the specified policy. |
+|attachment_count   | The count of attached entities for the specified policy. |
+|attached_groups    | The list of group names of the groups attached to the policy. |
+|attached_roles     | The list of role names of the roles attached to the policy. |
+|attached_users     | The list of usernames of the users attached to the policy. |
+|default_version_id | The 'default_version_id' value of the specified policy. |
+|policy             | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
+|statement_count    | Returns the number of statements present in the `policy`. |
 
 ## Examples
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a policy does exist
-
+##### Test that a policy does exist
     describe aws_iam_policy('AWSSupportAccess') do
       it { should exist }
     end
 
-### Test that a policy is attached to at least one entity
-
+##### Test that a policy is attached to at least one entity
     describe aws_iam_policy('AWSSupportAccess') do
       it { should be_attached }
     end
 
-### Examine the policy statements
-
+##### Examine the policy statements
     describe aws_iam_policy('my-policy') do
       # Verify that there is at least one statement allowing access to S3
       it { should have_statement(Action: 's3:PutObject', Effect: 'allow') }
@@ -61,103 +72,21 @@ The following examples show how to use this InSpec audit resource.
       it { should_not have_statement(Action: 's3:*') }
     end
 
-<br>
-
-## Properties
-
-* `arn`
-* `attachment_count`
-* `attached_groups` 
-* `attached_roles`
-* `attached_users`
-* `default_version_id`
-* `policy`
-* `statement_count`
-
-## Property Examples
-
-### arn
-
-"The ARN identifier of the specified policy. An ARN uniquely identifies the policy within AWS."
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('arn') { should cmp "arn:aws:iam::aws:policy/AWSSupportAccess" }
-    end
-
-### attachment\_count
-
-The count of attached entities for the specified policy.
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('attachment_count') { should cmp 1 }
-    end
-
-### attached\_groups
-
-The list of groupnames of the groups attached to the policy.
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('attached_groups') { should include "test-group" }
-    end
-
-### attached\_roles
-
-The list of rolenames of the roles attached to the policy.
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('attached_roles') { should include "test-role" }
-    end
-
-### attached\_users
-
-The list of usernames of the users attached to the policy.
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('attached_users') { should include "test-user" }
-    end
-
-### default\_version\_id
-
-The 'default_version_id' value of the specified policy.
-
-    describe aws_iam_policy('AWSSupportAccess') do
-      its('default_version_id') { should cmp "v1" }
-    end
-
-### policy
-
-This is a low-level, unsupported property.
-
-Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`.
-
-For details regarding the contents of this structure, refer to the [AWS IAM Policy JSON Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html).  A set of examples is [also available](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html).
-
-Example:
-
-    # Fetch the policy structure as a Ruby object
-    policy_struct = aws_iam_policy('my-policy').policy
-    # Write a manually-constructed test to check that the policy
-    # has an IP constraint on the first statement
-    # ( Based on https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_deny-ip.html )
-    describe 'Check that we are restricting IP access' do
-      subject { policy_struct['Statement'].first['Condition'] }
-      it { should include 'NotIpAddress' }
-    end
-
-### statement\_count
-
-Returns the number of statements present in the `policy`.
-
-    # Make sure there are exactly two statements.
-    describe aws_iam_policy('my-policy') do
-      its('statement_count') { should cmp 2 }
-    end
-
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### be\_attached
+#### exist
+
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
+
+      it { should exist }
+
+      it { should_not exist }
+
+#### be_attached
 
 The test will pass if the identified policy is attached to at least one IAM user, group, or role.
 
@@ -165,7 +94,7 @@ The test will pass if the identified policy is attached to at least one IAM user
       it { should be_attached }
     end
 
-### be\_attached\_to\_group(GROUPNAME)
+#### be_attached_to_group(GROUPNAME)
 
 The test will pass if the identified policy attached the specified group.
 
@@ -173,7 +102,7 @@ The test will pass if the identified policy attached the specified group.
       it { should be_attached_to_group(GROUPNAME) }
     end
 
-### be\_attached\_to\_user(USERNAME)
+#### be_attached_to_user(USERNAME)
 
 The test will pass if the identified policy attached the specified user.
 
@@ -181,7 +110,7 @@ The test will pass if the identified policy attached the specified user.
       it { should be_attached_to_user(USERNAME) }
     end
 
-### be\_attached\_to\_role(ROLENAME)
+#### be_attached_to_role(ROLENAME)
 
 The test will pass if the identified policy attached the specified role.
 
@@ -189,7 +118,7 @@ The test will pass if the identified policy attached the specified role.
       it { should be_attached_to_role(ROLENAME) }
     end
 
-### have\_statement
+#### have_statement
 
 Examines the list of statements contained in the policy and passes if at least one of the statements matches. This matcher does _not_ interpret the policy in a request authorization context, as AWS does when a request processed. Rather, `have_statement` examines the literal contents of the IAM policy, and reports on what is present (or absent, when used with `should_not`).
 
