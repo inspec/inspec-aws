@@ -8,54 +8,69 @@ Use the `aws_rds_instance` InSpec audit resource to test detailed properties of 
 
 RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database server.
 
-<br>
-
 ## Syntax
 
 An `aws_rds_instance` resource block uses resource parameters to search for an RDS instance, and then tests that RDS instance.  If no RDS instances match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.  If more than one RDS instance matches (due to vague search parameters), an error is raised.
 
-    # Ensure you have a RDS instance with a certain ID
-    # This is "safe" - RDS IDs are unique within an account
     describe aws_rds_instance('test-instance-id') do
       it { should exist }
     end
 
-    # Ensure you have a RDS instance with a certain ID
-    # This uses hash syntax
+    # Can also use hash syntax
     describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do
       it { should exist }
     end
+    
+#### Parameters
 
-<br>
+##### db_instance_identifier _(required)_
+
+This resource accepts a single parameter, the user-supplied instance identifier. This parameter isn't case-sensitive.
+This can be passed either as a string or as a `db_instance_identifier: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
+
+## Properties
+
+For a comprehensive list of properties available to test on an RDS Instance see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/Types/DBInstance.html)
 
 ## Examples
 
-The following examples show how to use this InSpec audit resource.
+##### Test the engine used with an RDS instance
 
-As this is the initial release of `aws_rds_instance`, its limited functionality precludes examples.
+    describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
+      its ('engine')         { should eq 'mysql' }
+      its ('engine_version') { should eq '5.6.37' }
+    end
+    
+##### Test the storage allocated to an RDS instance
+    
+    describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
+      its ('storage_type')      { should eq 'gp2' }
+      its ('allocated_storage') { should eq 10 }
+    end
 
-<br>
+##### Test the instance type and master username
+    describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
+      its ('master_username')   { should eq 'db-maintain' }
+      its ('db_instance_class') { should eq 'db.t2.micro' }
+    end
 
-## Resource Parameters
+## Matchers
 
-This InSpec resource accepts the following parameters, which are used to search for the RDS instance.
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+#### exist
 
-The control will pass if the specified RDS instance was found.  Use should_not if you want to verify that the specified RDS instance does not exist.
+The control will pass if the describe returns at least one result.
 
-    # Using Hash syntax
-    describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do
+Use `should_not` to test the entity should not exist.
+
+    describe aws_rds_instance(db_instance_identifier: 'AnExistingRDS') do
       it { should exist }
     end
 
-    # Using the instance id directly from the terraform file
-    describe aws_rds_instance(fixtures['rds_db_instance_id']) do
-      it { should exist }
-    end
-
-    # Make sure we don't have any RDS instances with the name 'nogood'
-    describe aws_rds_instance('nogood') do
+    describe aws_rds_instance(db_instance_identifier: 'ANonExistentRDS') do
       it { should_not exist }
     end
 

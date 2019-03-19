@@ -11,23 +11,22 @@ class AwsRdsInstance < AwsResourceBase
       it { should exist }
     end
   "
-  attr_reader :exists
-  alias exists? exists
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { db_instance_identifier: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { db_instance_identifier: opts } if opts.is_a?(String)
+    raise ArgumentError, "#{@__resource_name__}: db_instance_identifer must be provided." unless opts.key?(:db_instance_identifier)
+    raise ArgumentError, "#{@__resource_name__}: db_instance_identifer must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
+
     super(opts)
     validate_parameters([:db_instance_identifier])
-    @display_name = opts[:db_instance_identifier]
-    raise ArgumentError, "#{@__resource_name__}: Database Instance ID must be in the format: start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
+
     catch_aws_errors do
-      @exists = false
+      @display_name = opts[:db_instance_identifier]
+
       begin
-        @resp = @aws.rds_client.describe_db_instances(db_instance_identifier: opts[:db_instance_identifier])
-        return if @resp.db_instances.empty?
-        @rds_instance = @resp.db_instances[0].to_h
-        @exists = true
+        resp = @aws.rds_client.describe_db_instances(db_instance_identifier: opts[:db_instance_identifier])
+        return if resp.db_instances.empty?
+        @rds_instance = resp.db_instances[0].to_h
       rescue Aws::RDS::Errors::DBInstanceNotFound
         return
       end
@@ -42,6 +41,10 @@ class AwsRdsInstance < AwsResourceBase
       return {}
     end
     map_tags(tag_list)
+  end
+
+  def exists?
+    !@rds_instance.nil? && !@rds_instance.empty?
   end
 
   def to_s

@@ -26,7 +26,7 @@ class AwsEksClusters < AwsResourceBase
              .register_column(:security_group_ids,      field: :security_group_ids)
              .register_column(:role_arns,               field: :role_arn)
              .register_column(:vpc_ids,                 field: :vpc_id)
-             .register_column(:created_ats,             field: :created_at)
+             .register_column(:created_at,             field: :created_at)
              .register_column(:creating,               field: :creating)
              .register_column(:active,                 field: :active)
              .register_column(:failed,                 field: :failed)

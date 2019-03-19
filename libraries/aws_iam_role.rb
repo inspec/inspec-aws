@@ -15,8 +15,11 @@ class AwsIamRole < AwsResourceBase
 
   def initialize(opts = {})
     opts = { role_name: opts } if opts.is_a?(String)
+    raise ArgumentError, "#{@__resource_name__}: role_name required" if opts.nil? || !opts.key?(:role_name)
+
     super(opts)
     validate_parameters([:role_name])
+
     catch_aws_errors do
       resp = @aws.iam_client.get_role(role_name: opts[:role_name]).role
 
