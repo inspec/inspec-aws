@@ -6,21 +6,24 @@ class AwsKmsKey < AwsResourceBase
   name 'aws_kms_key'
   desc 'Verifies settings for an individual AWS KMS Key'
   example "
-    describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
+    describe aws_kms_key(key_id: 'arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { key_id: opts } if opts.is_a?(String) # this preserves the original scalar interface, note the 'id' can be either the ID or the ARN
+    # SDK permits key_id to hold either an ID or an ARN
+    opts = { key_id: opts } if opts.is_a?(String)
+
     super(opts)
     validate_parameters([:key_id])
+
     @display_name = opts[:key_id]
+
     catch_aws_errors do
       begin
-        @resp = @aws.kms_client.describe_key({ key_id: opts[:key_id] })
-        @key = @resp.key_metadata.to_h
+        resp = @aws.kms_client.describe_key({ key_id: opts[:key_id] })
+        @key = resp.key_metadata.to_h
         create_resource_methods(@key)
         @key_rotation_response = @aws.kms_client.get_key_rotation_status({ key_id: opts[:key_id] }) unless @key[:key_manager] == 'AWS'
       rescue Aws::KMS::Errors::NotFoundException

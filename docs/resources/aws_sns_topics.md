@@ -7,48 +7,50 @@ Use the `aws_sns_topics` InSpec audit resource to test all or a group of the SNS
 
 User the 'aws_sns_topic' InSpec audit resource to test a single SNS Topic in an account.
 
-<br>
-
 ## Syntax
-
-An `aws_sns_topics` resource block takes no filter conditions.
 
     # Get all SNS Topic arns
     describe aws_sns_topics do
       its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
     end
+    
+#### Parameters
 
-<br>
+This resource does not expect any parameters.
+
+See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html).
+
+## Properties
+
+|Property   | Description|
+| ---       | --- |
+|topic_arns | The ARNs of the SNS Topics. |
+|entries    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-As this is the initial release of `aws_sns_topics`, its limited functionality precludes examples.
-
-<br>
+##### Ensure a Topic exists
+    describe aws_sns_topics do
+      its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
+    end
 
 ## Matchers
 
-### exists
+#### exist
 
-The control will pass if the filter returns at least one result. Use should_not if you expect zero matches.
+The control will pass if the describe returns at least one result.
 
-    # Test if there is any SNS Topics
-    describe aws_sns_topics
+Use `should_not` to test the entity should not exist.
+
+    describe aws_sns_topics do
       it { should exist }
     end
-
-
-## Properties
-
-### topic\_arns
-
-Provides an array of all SNS Topic arns.
-
-    # Test that a specific SNS Topic exists
+      
     describe aws_sns_topics do
-      its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
+      it { should_not exist }
     end
 
 ## AWS Permissions

@@ -1,12 +1,12 @@
 ---
 title: About the aws_launch_configuration Resource
+platform: aws
 ---
 
 # aws\_launch\_configuration
 
 Use the `aws_launch_configuration` InSpec audit resource to test properties of a single AWS Launch Configuration. 
 
-<br>
 ## Syntax
 
     # Ensure that a launch configuration exists and has the correct key name
@@ -20,128 +20,73 @@ Use the `aws_launch_configuration` InSpec audit resource to test properties of a
       it              { should exist }
     end
 
-## Resource Parameters
+#### Parameters
 
-### name
+##### launch_configuration_name _(required)_
 
-This resource expects a single parameter, the name that uniquely identifies the of a Launch Configuration.
+
+This resource expects a single parameter, the `launch_configuration_name` which uniquely identifies the of a Launch Configuration.
 
 See also the [AWS documentation on Launch Configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html).
 
-<br>
-
 ## Properties
 
-### arn
+|Property                    | Description|
+| ---                        | --- |
+|arn                         | An string indicating the ARN of the launch configuration |
+|image_id                    | An string indicating the AMI of the launch configuration |
+|instance_type               | A string indicating the instance type of the launch configuration |
+|iam_instance_profile        | A string indicating the IAM profile for the launch configuration |
+|key_name                    | A string indicating the AWS key pair for the launch configuration |
+|security_groups             | An array of strings of the security group IDs associated with the launch configuration |
+|associate_public_ip_address | A boolean indicating if the launch configuration is configured to set a public IP address |
+|user_data                   | A string containing the user data configured for the launch configuration |
+|ebs_optimized               | A boolean indicating if the launch configuration is optimized for Amazon EBS |
+|instance_monitoring         | A string indicating if instance monitoring is set to `detailed` or `basic` |
+|spot_price                  | A floating point number indicating the spot price configured |
 
-An string indicating the ARN of the launch configuration
-    
-    describe aws_launch_configuration('my-config') do
-      its('arn') { should eq 'arn:aws:autoscaling:us-east-1:0123456'}
-    end
+## Examples
 
-### image\_id
-
-An string indicating the AMI of the launch configuration
-    
+##### Ensure a Launch Config is using the correct AMI 
     describe aws_launch_configuration('my-config') do
       its('image_id') { should eq 'ami-012345'}
     end
 
-### instance\_type
-
-A string indicating the instance type of the launch configuration
-    
+##### Test the instance type used in a Launch Config
     describe aws_launch_configuration('my-config') do
       its('instance_type') { should eq 't2.micro'}
     end
 
-### iam\_instance\_profile
-
-A string indicating the IAM profile for the launch configuration
-
+##### Ensure a Launch Config is associated with the right IAM Profile
     describe aws_launch_configuration('my-config') do
       its('iam_instance_profile') { should eq 'iam-profile' }
     end
 
-### key\_name
-
-A string indicating the AWS key pair for the launch configuration
-
+##### Ensure the Launch Config does not set a public IP
     describe aws_launch_configuration('my-config') do
-      its('key_name') { should eq 'key-name' }
+      its('associate_public_ip_address') { should be false }
     end
 
-### security\_groups
-
-An array of strings of the security group IDs associated with the launch configuration
-
-    describe aws_launch_configuration('my-config') do
-      its('security_groups') { should include 'security-group'}
-    end
-
-### associate\_public\_ip\_address
-
-A boolean indicating if the launch configuration is configured to set a public IP address
-
-    describe aws_launch_configuration('my-config') do
-      its('associate_public_ip_address') { should be true }
-    end
-
-### user\_data
-
-A string containing the user data configured for the launch configuration
-
+##### Ensure the correct UserData is set on launched instances.
     describe aws_launch_configuration('my-config') do
       its('user_data') { should include 'user-data' }
     end
 
-### ebs\_optimized
-
-A boolean indicating if the launch configuration is optimized for Amazon EBS
-
-    describe aws_launch_configuration('my-config') do
-      its('ebs_optimized') { should be true }
-    end
-
-### instance\_monitoring
-
-A string indicating if instance monitoring is set to `detailed` or `basic`
-
-    describe aws_launch_configuration('my-config') do
-      its('instance_monitoring') { should eq 'detailed' }
-    end
-
-    describe aws_launch_configuration('my-config') do
-        its('instance_monitoring') { should eq 'basic' }
-    end
-
-### spot\_price
-
-A floating point number indicating the spot price configured
-
-    describe aws_launch_configuration('my-config') do
-      its('spot_price') { should be 0.1 }
-    end
-    
-<br>
-    
-    
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exist
+#### exist
 
-Indicates that the Launch Configuration name provided was found.  Use `should_not` to test for Launch Configurations that should not exist.
+The control will pass if the describe returns at least one result.
 
-    # Expect good news
-    describe aws_launch_configuration('existing-launch-configuration') do
+Use `should_not` to test the entity should not exist.
+
+    describe aws_launch_configuration('AnExistingLC') do
       it { should exist }
     end
 
-    # No bad news allowed
-    describe aws_launch_configuration('non-existing-launch-configuration') do
+    describe aws_launch_configuration('ANonExistentLC') do
       it { should_not exist }
     end
 

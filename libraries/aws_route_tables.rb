@@ -12,16 +12,18 @@ class AwsRouteTables < AwsResourceBase
     end
   '
 
+  attr_reader :table
+
+  FilterTable.create
+             .register_column(:route_table_ids, field: :route_table_id)
+             .register_column(:vpc_ids,         field: :vpc_id)
+             .install_filter_methods_on_resource(self, :table)
+
   def initialize(opts = {})
     super(opts)
     validate_parameters([])
+    @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:route_table_ids, field: :route_table_id)
-  filter_table_config.add(:vpc_ids, field: :vpc_id)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     route_table_rows = []

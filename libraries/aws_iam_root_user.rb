@@ -11,6 +11,8 @@ class AwsIamRootUser < AwsResourceBase
     end
   "
 
+  attr_reader :summary_account, :virtual_devices
+
   def initialize(opts = {})
     super(opts)
     validate_parameters([])

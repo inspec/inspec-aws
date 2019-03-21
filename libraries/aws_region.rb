@@ -11,25 +11,24 @@ class AwsRegion < AwsResourceBase
       it { should exist }
     end
   "
-  attr_reader :region_name, :endpoint, :exists
-  alias exists? exists
+  attr_reader :region_name, :endpoint
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { region_name: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { region_name: opts } if opts.is_a?(String)
+
     super(opts)
-    validate_parameters([:region_name])
+    validate_parameters(allowed: [:region_name])
+
     @region_name = opts[:region_name]
     catch_aws_errors do
-      begin
-        @resp = @aws.compute_client.describe_regions(region_names: [@region_name])
-        @exists = !@resp.regions.empty?
-      rescue Aws::EC2::Errors::InvalidParameterValue
-        @exists = false
-      end
-      return unless @exists
-      @endpoint = @resp.regions[0].endpoint
+      resp = @aws.compute_client.describe_regions(region_names: [@region_name])
+      return if resp.regions.empty?
+      @endpoint = resp.regions[0].endpoint
     end
+  end
+
+  def exists?
+    !@endpoint.nil?
   end
 
   def to_s

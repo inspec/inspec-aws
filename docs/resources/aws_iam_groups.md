@@ -34,6 +34,8 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 |group_ids   | The group ID. |
 |arns        | The Amazon Resource Name of the group. |
 |users       | Array of users associated with the group.  |
+|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 
 ## Examples
 

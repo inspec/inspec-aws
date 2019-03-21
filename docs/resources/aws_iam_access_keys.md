@@ -46,6 +46,8 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 | last_used_hours_ago | How many hours ago the Key was last used.
 | last_used_days_ago  | How many days ago the Key was last used.
 | user_created_date   | The date on which the associated User was created.
+| entries             | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 
 ## Examples
 

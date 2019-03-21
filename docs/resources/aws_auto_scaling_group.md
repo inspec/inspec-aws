@@ -43,7 +43,6 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 |vpc_zone_identifier       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
 |tags                      | An hash with each key-value pair corresponding to a tag associated with the entity |
 
-
 ## Examples
 
 ##### Ensure that an auto scaling group has the correct desired capacity

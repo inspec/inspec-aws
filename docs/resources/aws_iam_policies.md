@@ -33,6 +33,8 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 |attached_roles      | The list of role names of the roles attached to each policy. |
 |attached_users      | The list of usernames of the users attached to each policy. |
 |default_version_ids | The 'default_version_id' value of each policy. |
+|entries             | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 
 ## Examples
 

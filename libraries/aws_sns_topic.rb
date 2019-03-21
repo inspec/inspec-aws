@@ -11,26 +11,28 @@ class AwsSnsTopic < AwsResourceBase
       its('confirmed_subscription_count') { should_not be_zero }
     end
   "
-  attr_reader :arn, :confirmed_subscription_count, :exists
-  alias exists? exists
+  attr_reader :arn, :confirmed_subscription_count
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { arn: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { arn: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:arn])
-    @arn = opts[:arn]
+    validate_parameters(require: [:arn])
     raise ArgumentError, "#{@__resource_name__}: expected an ARN of the form arn:aws:sns:REGION:ACCOUNT-ID:TOPIC-NAME" if opts[:arn] !~ /^arn:aws:sns:[\w\-]+:\d{12}:[\S]+$/
+
+    @arn = opts[:arn]
     catch_aws_errors do
       begin
-        @resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
-        @exists = true
-        @confirmed_subscription_count = @resp['SubscriptionsConfirmed'].to_i
-        create_resource_methods(@resp)
+        resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
+        @confirmed_subscription_count = resp['SubscriptionsConfirmed'].to_i
+        create_resource_methods(resp)
       rescue Aws::SNS::Errors::NotFound
-        @exists = false
+        return
       end
     end
+  end
+
+  def exists?
+    !@confirmed_subscription_count.nil?
   end
 
   def to_s

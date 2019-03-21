@@ -11,17 +11,18 @@ class AwsKmsKeys < AwsResourceBase
     end
   '
 
+  attr_reader :table
+
+  FilterTable.create
+             .register_column(:key_ids,  field: :key_id)
+             .register_column(:key_arns, field: :key_arn)
+             .install_filter_methods_on_resource(self, :table)
+
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters([])
+    @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:key_ids, field: :key_id)
-  filter_table_config.add(:key_arns, field: :key_arn)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     key_rows = []
