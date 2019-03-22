@@ -136,6 +136,8 @@ class AwsResourceBase < Inspec.resource(1)
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
+      # below allows each resource to optionally and conveniently set an endpoint
+      client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
