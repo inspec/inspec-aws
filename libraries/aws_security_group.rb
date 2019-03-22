@@ -85,7 +85,11 @@ class AwsSecurityGroup < AwsResourceBase
   end
 
   def to_s
-    opts.key?(:aws_region) ? "EC2 Security Group #{@group_id} in #{opts[:aws_region]}" : "EC2 Security Group #{@group_id}"
+    sg = ''
+    sg += "ID: #{@group_id} " if @group_id
+    sg += "Name: #{@group_name} " if @group_name
+    sg += "VPC ID: #{@vpc_id} " if @vpc_id
+    opts.key?(:aws_region) ? "EC2 Security Group: #{sg} in #{opts[:aws_region]}" : "EC2 Security Group #{sg}"
   end
 
   private
