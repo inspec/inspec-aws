@@ -34,7 +34,7 @@ class AwsIamAccessKeys < AwsResourceBase
   def initialize(opts = {})
     opts = { username: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:username])
+    validate_parameters(allow: [:username])
 
     @table = fetch_data(opts[:username])
   end

@@ -15,13 +15,8 @@ class AwsCloudwatchAlarm < AwsResourceBase
   attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace
 
   def initialize(opts = {})
-    required_params = %i(metric_name metric_namespace)
-    if opts.is_a?(String) || !required_params.all? { |k| opts.key? k }
-      raise ArgumentError, "#{@__resource_name__}: requires metric_name and metric_namespace parameters to be specified"
-    end
-
     super(opts)
-    validate_parameters(required_params)
+    validate_parameters(require: %i(metric_name metric_namespace))
 
     @metric_name      = opts[:metric_name]
     @metric_namespace = opts[:metric_namespace]

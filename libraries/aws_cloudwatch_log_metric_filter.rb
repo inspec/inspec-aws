@@ -17,12 +17,8 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
   attr_reader :filter_name, :log_group_name, :metric_name, :metric_namespace, :pattern
 
   def initialize(opts = {})
-    if opts.is_a?(String) || %i(filter_name log_group_name pattern).none? { |k| opts.key? k }
-      raise ArgumentError, "#{@__resource_name__}: expects a hash containing at least one of [filter_name, log_group_name, pattern] to be provided"
-    end
-
     super(opts)
-    validate_parameters(%i(filter_name log_group_name pattern))
+    validate_parameters(require_any_of: %i(filter_name log_group_name pattern))
 
     search_criteria = {}
     search_criteria[:filter_name_prefix] = opts[:filter_name] if opts[:filter_name]

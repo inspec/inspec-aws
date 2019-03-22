@@ -15,7 +15,7 @@ class AwsStsCallerIdentity < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
 
     catch_aws_errors do
       @arn = @aws.sts_client.get_caller_identity.arn

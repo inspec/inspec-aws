@@ -13,7 +13,7 @@ class AwsIamAccountAlias < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
 
     catch_aws_errors do
       # Note, although this is an array, you can only have one account alias

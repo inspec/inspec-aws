@@ -14,19 +14,20 @@ class AwsSubnets < AwsResourceBase
     end
   "
 
-  def initialize(opts = {})
-    # Call the parent class constructor
-    super(opts)
-    validate_parameters([])
-  end
+  attr_reader :table
 
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:cidr_blocks, field: :cidr_block)
-  filter_table_config.add(:vpc_ids, field: :vpc_id)
-  filter_table_config.add(:subnet_ids, field: :subnet_id)
-  filter_table_config.add(:states, field: :state)
-  filter_table_config.connect(self, :fetch_data)
+  FilterTable.create
+             .register_column(:cidr_blocks, field: :cidr_block)
+             .register_column(:vpc_ids,     field: :vpc_id)
+             .register_column(:subnet_ids,  field: :subnet_id)
+             .register_column(:states,      field: :state)
+             .install_filter_methods_on_resource(self, :table)
+
+  def initialize(opts = {})
+    super(opts)
+    validate_parameters
+    @table = fetch_data
+  end
 
   def fetch_data
     subnet_rows = []

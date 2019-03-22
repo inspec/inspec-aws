@@ -13,9 +13,8 @@ class AwsRouteTable < AwsResourceBase
 
   def initialize(opts = {})
     opts = { route_table_id: opts } if opts.is_a?(String)
-
     super(opts)
-    validate_parameters(require_all_of: [:route_table_id])
+    validate_parameters(require: [:route_table_id])
 
     raise ArgumentError, "#{@__resource_name__}: ID must be in the format 'rtb-' followed by 8 or 17 hexadecimal characters." if opts[:route_table_id] !~ /^rtb\-([0-9a-f]{8})|(^rtb\-[0-9a-f]{17})$/
 

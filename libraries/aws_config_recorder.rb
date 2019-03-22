@@ -21,7 +21,7 @@ class AwsConfigurationRecorder < AwsResourceBase
     opts = { recorder_name: opts } if opts.is_a?(String)
 
     super(opts)
-    validate_parameters([:recorder_name]) unless opts.nil?
+    validate_parameters(allow: [:recorder_name])
 
     query = !opts.nil? && opts.key?(:recorder_name) ? { configuration_recorder_names: [opts[:recorder_name]] } : {}
 

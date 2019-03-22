@@ -35,7 +35,7 @@ class AwsEksClusters < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
     @table = fetch_data
   end
 

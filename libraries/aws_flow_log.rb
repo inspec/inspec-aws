@@ -15,13 +15,8 @@ class AwsFlowLog < AwsResourceBase
 
   def initialize(opts = {})
     opts = { flow_log_id: opts } if opts.is_a?(String)
-
-    if !opts[:flow_log_id] && !opts[:subnet_id] && !opts[:vpc_id]
-      raise ArgumentError, "#{@__resource_name__}: Must specify flow_log_id, subnet_id or vpc_id"
-    end
-
     super(opts)
-    validate_parameters(%i(flow_log_id subnet_id vpc_id))
+    validate_parameters(require_any_of: %i(flow_log_id subnet_id vpc_id))
 
     query = { filter: [{ name: 'flow-log-id', values: [opts[:flow_log_id]] }] } if opts[:flow_log_id]
     query = { filter: [{ name: 'resource-id', values: [opts[:subnet_id]] }] } if opts[:subnet_id]

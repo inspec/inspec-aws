@@ -12,15 +12,14 @@ class AwsSecurityGroup < AwsResourceBase
     it { should exist }
   end
   "
-  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :exists, :tags
-  alias exists? exists
+  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :tags
 
   def initialize(opts = {})
-    raise ArgumentError, "#{@__resource_name__}: arguments must be supplied" if opts.nil? || opts.empty?
-    opts = { group_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { group_id: opts } if opts.is_a?(String)
     opts[:group_id] = opts.delete(:id) if opts.key?(:id) # id is an alias for group_id
+
     super(opts)
-    validate_parameters(%i(group_id group_name vpc_id))
+    validate_parameters(require_any_of: %i(group_id group_name vpc_id))
 
     filter = []
     if opts.key?(:vpc_id)
@@ -36,25 +35,25 @@ class AwsSecurityGroup < AwsResourceBase
     filter += [{ name: 'group-name', values: [opts[:group_name]] }] if opts.key?(:group_name)
 
     catch_aws_errors do
-      @resp = @aws.compute_client.describe_security_groups({ filters: filter })
-      @exists = true
-      @exists = false && @inbound_rules = [] && @outbound_rules = [] && @group_id = 'empty response' if @resp.security_groups.empty?
-      return unless @exists
-      @security_group = @resp.security_groups[0]
-      @description = @security_group.description
+      resp = @aws.compute_client.describe_security_groups({ filters: filter })
+      if resp.security_groups.empty?
+        @inbound_rules = []
+        @outbound_rules = []
+        @group_id = 'empty response'
+        return
+      end
+      @security_group = resp.security_groups[0]
       @group_id = @security_group.group_id
-      @group_name = @security_group.group_name
-      @vpc_id = @security_group.vpc_id
-      @inbound_rules = @security_group.ip_permissions.map(&:to_h)
-      @inbound_rules_count = count_sg_rules(@security_group.ip_permissions.map(&:to_h))
+      @vpc_id   = @security_group.vpc_id
+      @description    = @security_group.description
+      @group_name     = @security_group.group_name
+      @inbound_rules  = @security_group.ip_permissions.map(&:to_h)
       @outbound_rules = @security_group.ip_permissions_egress.map(&:to_h)
+
+      @inbound_rules_count = count_sg_rules(@security_group.ip_permissions.map(&:to_h))
       @outbound_rules_count = count_sg_rules(@security_group.ip_permissions_egress.map(&:to_h))
       @tags = map_tags(@security_group.tags)
     end
-  end
-
-  def to_s
-    opts.key?(:aws_region) ? "EC2 Security Group #{@group_id} in #{opts[:aws_region]}" : "EC2 Security Group #{@group_id}"
   end
 
   def allow_in?(criteria = {})
@@ -80,6 +79,14 @@ class AwsSecurityGroup < AwsResourceBase
   end
 
   RSpec::Matchers.alias_matcher :allow_out_only, :be_allow_out_only
+
+  def exists?
+    !@security_group.nil?
+  end
+
+  def to_s
+    opts.key?(:aws_region) ? "EC2 Security Group #{@group_id} in #{opts[:aws_region]}" : "EC2 Security Group #{@group_id}"
+  end
 
   private
 

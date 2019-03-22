@@ -19,11 +19,9 @@ class AwsEc2Instance < AwsResourceBase
   "
 
   def initialize(opts = {})
-    raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided" if opts.nil?
-
     opts = { instance_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(%i(instance_id name))
+    validate_parameters(require_any_of: %i(instance_id name))
 
     if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
       if !opts[:instance_id].is_a?(String) || opts[:instance_id] !~ /^i\-([0-9a-f]{8})|(^i\-[0-9a-f]{17})$/

@@ -17,7 +17,7 @@ class AwsRegion < AwsResourceBase
     opts = { region_name: opts } if opts.is_a?(String)
 
     super(opts)
-    validate_parameters(allowed: [:region_name])
+    validate_parameters(allow: [:region_name])
 
     @region_name = opts[:region_name]
     catch_aws_errors do

@@ -11,35 +11,34 @@ class AwsCloudTrailTrail < AwsResourceBase
       it { should exist }
     end
   "
-  attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :exists, :trail_name,
+  attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :trail_name,
               :kms_key_id, :s3_bucket_name, :trail_arn, :is_multi_region_trail, :log_file_validation_enabled
   alias multi_region_trail? is_multi_region_trail
   alias log_file_validation_enabled? log_file_validation_enabled
   alias has_log_file_validation_enabled? log_file_validation_enabled
-  alias exists? exists
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { trail_name: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { trail_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:trail_name])
+    validate_parameters(require: [:trail_name])
+
     @trail_name = opts[:trail_name]
     catch_aws_errors do
-      @resp = @aws.cloudtrail_client.describe_trails({ trail_name_list: [@trail_name] })
-      @trail = @resp.trail_list[0].to_h
-      @exists = !@trail.empty?
-      @s3_bucket_name = @trail[:s3_bucket_name]
-      @is_multi_region_trail = @trail[:is_multi_region_trail]
+      resp = @aws.cloudtrail_client.describe_trails({ trail_name_list: [@trail_name] })
+      @trail = resp.trail_list[0].to_h
       @trail_arn = @trail[:trail_arn]
-      @log_file_validation_enabled = @trail[:log_file_validation_enabled]
-      @cloud_watch_logs_role_arn = @trail[:cloud_watch_logs_role_arn]
-      @cloud_watch_logs_log_group_arn = @trail[:cloud_watch_logs_log_group_arn]
       @kms_key_id = @trail[:kms_key_id]
       @home_region = @trail[:home_region]
+      @s3_bucket_name = @trail[:s3_bucket_name]
+      @is_multi_region_trail = @trail[:is_multi_region_trail]
+      @cloud_watch_logs_role_arn = @trail[:cloud_watch_logs_role_arn]
+      @log_file_validation_enabled = @trail[:log_file_validation_enabled]
+      @cloud_watch_logs_log_group_arn = @trail[:cloud_watch_logs_log_group_arn]
     end
   end
 
   def delivered_logs_days_ago
+    return nil unless exists?
     catch_aws_errors do
       begin
         trail_status = @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h
@@ -65,13 +64,14 @@ class AwsCloudTrailTrail < AwsResourceBase
   end
 
   def get_log_group_for_multi_region_active_mgmt_rw_all
-    return nil if !exists?
-    return nil if !@cloud_watch_logs_log_group_arn
+    return nil unless exists?
+    return nil unless @cloud_watch_logs_log_group_arn
     return nil if @cloud_watch_logs_log_group_arn.split(':').count < 6
     return @cloud_watch_logs_log_group_arn.split(':')[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
   end
 
   def has_event_selector_mgmt_events_rw_type_all?
+    return nil unless exists?
     event_selector_found = false
     begin
       event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
@@ -82,6 +82,10 @@ class AwsCloudTrailTrail < AwsResourceBase
       event_selector_found
     end
     event_selector_found
+  end
+
+  def exists?
+    !@trail.nil? && !@trail.empty?
   end
 
   def to_s

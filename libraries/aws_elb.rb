@@ -19,7 +19,7 @@ class AwsElb < AwsResourceBase
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:load_balancer_name])
+    validate_parameters(require: [:load_balancer_name])
 
     catch_aws_errors do
       load_balancer_name = { load_balancer_names: [opts[:load_balancer_name]] }

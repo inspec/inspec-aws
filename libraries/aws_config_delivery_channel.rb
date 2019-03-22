@@ -18,7 +18,7 @@ class AwsConfigDeliveryChannel < AwsResourceBase
     opts = { channel_name: opts } if opts.is_a?(String)
 
     super(opts)
-    validate_parameters([:channel_name]) unless opts.nil?
+    validate_parameters(allow: [:channel_name])
 
     query = !opts.nil? && opts.key?(:channel_name) ? { delivery_channel_names: [opts[:channel_name]] } : {}
 

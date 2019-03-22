@@ -21,7 +21,7 @@ class AwsEbsVolume < AwsResourceBase
   def initialize(opts = {})
     opts = { volume_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(%i(volume_id name))
+    validate_parameters(require_any_of: %i(volume_id name))
 
     if opts[:volume_id] && !opts[:volume_id].empty?
       raise ArgumentError, "#{@__resource_name__}:  must be in the format 'vol- followed by 8 or 17 hexadecimal characters." if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/

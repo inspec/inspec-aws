@@ -20,10 +20,8 @@ class AwsIamUser < AwsResourceBase
 
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
-    raise ArgumentError, "#{@__resource_name__}: `user_name` must be provided" unless opts.key?(:user_name) && !opts[:user_name].empty?
-
     super(opts)
-    validate_parameters([:user_name])
+    validate_parameters(require: [:user_name])
 
     catch_aws_errors do
       username   = { user_name: opts[:user_name] }

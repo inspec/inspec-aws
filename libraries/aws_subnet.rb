@@ -14,12 +14,14 @@ class AwsSubnet < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { subnet_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { subnet_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:subnet_id])
-    if opts[:subnet_id].nil? || opts[:subnet_id].empty? || opts[:subnet_id] !~ /^subnet\-[0-9a-f]{8}/
-      raise ArgumentError, "#{@__resource_name__}: 'subnet_id' required. Must be in the format 'subnet-' followed by 8 hexadecimal characters."
+    validate_parameters(require: [:subnet_id])
+
+    if opts[:subnet_id] !~ /^subnet\-[0-9a-f]{8}/
+      raise ArgumentError, "#{@__resource_name__}: 'subnet_id' must be in the format 'subnet-' followed by 8 hexadecimal characters."
     end
+
     @display_name = opts[:subnet_id]
     filter = { name: 'subnet-id', values: [opts[:subnet_id]] }
     catch_aws_errors do
@@ -34,7 +36,7 @@ class AwsSubnet < AwsResourceBase
   end
 
   def exists?
-    !@subnet.empty?
+    !@subnet.nil? && !@subnet.empty?
   end
 
   def default_for_az?

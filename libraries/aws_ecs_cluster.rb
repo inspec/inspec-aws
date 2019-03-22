@@ -19,7 +19,7 @@ class AwsEcsCluster < AwsResourceBase
   def initialize(opts = {})
     opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:cluster_name])
+    validate_parameters(allow: [:cluster_name])
 
     catch_aws_errors do
       # If no params are passed we attempt to get the 'default' cluster.

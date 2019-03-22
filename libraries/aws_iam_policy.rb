@@ -16,10 +16,8 @@ class AwsIamPolicy < AwsResourceBase
               :attached_roles, :attached_users, :policy_document
 
   def initialize(opts = {})
-    raise ArgumentError, "#{@__resource_name__}: `policy_arn` or `policy_name` must be provided" if !opts.key?(:policy_arn) && !opts.key?(:policy_name)
-
     super(opts)
-    validate_parameters(%i(policy_arn policy_name))
+    validate_parameters(require_any_of: %i(policy_arn policy_name))
 
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])

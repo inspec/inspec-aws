@@ -30,16 +30,12 @@ class AwsIamAccessKey < AwsResourceBase
       opts[:access_key_id] = opts.delete(:id)
     end
 
-    if opts[:username].nil? && opts[:access_key_id].nil?
-      raise ArgumentError, "#{@__resource_name__}: Must provide at least one of: access_key_id, username"
-    end
-
     if opts[:access_key_id] && !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
       raise ArgumentError, "#{@__resource_name__}: Incorrect format for provided Access Key ID"
     end
 
     super(opts)
-    validate_parameters(%i(access_key_id username))
+    validate_parameters(require_any_of: %i(access_key_id username))
 
     @username = opts[:username]
     @access_key_id = opts[:access_key_id]

@@ -18,7 +18,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
 
     catch_aws_errors do
       @policy = @aws.iam_client.get_account_password_policy.password_policy

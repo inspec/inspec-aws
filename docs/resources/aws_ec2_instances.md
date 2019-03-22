@@ -19,6 +19,16 @@ An `aws_ec2_instances` resource block collects a group of EC2 Instances and then
 
 This resource does not expect any parameters.
 
+## Properties
+
+|Property       | Description|
+| ---           | --- |
+|instance_ids   | The ID of the EC2 instance. |
+|vpc_ids        | The VPC with which the EC2 instance is associated. |
+|subnet_ids     | The subnet with which the EC2 instance is associated. |
+|instance_types | The type of instance, for example m5.large. |
+|entries        | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 ## Examples
 
 ##### Ensure you have exactly 3 instances
@@ -34,16 +44,6 @@ This resource does not expect any parameters.
         its('image_id') { should eq 'ami-27a58d5c' }
       end 
     end
-
-## Properties
-
-|Property       | Description|
-| ---           | --- |
-|instance_ids   | The ID of the EC2 instance. |
-|vpc_ids        | The VPC with which the EC2 instance is associated. |
-|subnet_ids     | The subnet with which the EC2 instance is associated. |
-|instance_types | The type of instance, for example m5.large. |
-|entries        | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Matchers
 

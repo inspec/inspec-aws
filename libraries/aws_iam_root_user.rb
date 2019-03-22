@@ -15,7 +15,7 @@ class AwsIamRootUser < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
 
     catch_aws_errors do
       @summary_account = @aws.iam_client.get_account_summary.summary_map

@@ -21,16 +21,15 @@ class AwsSecurityGroups < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-             .register_column(:tags,        field: :tags)
+             .register_column(:group_ids,   field: :group_id)
              .register_column(:group_names, field: :group_name)
              .register_column(:vpc_ids,     field: :vpc_id)
-             .register_column(:group_ids,   field: :group_id)
+             .register_column(:tags,        field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
-    validate_parameters([])
+    validate_parameters
     @table = fetch_data
   end
 

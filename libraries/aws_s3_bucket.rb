@@ -14,10 +14,10 @@ class AwsS3Bucket < AwsResourceBase
   attr_reader :region, :bucket_name
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { bucket_name: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { bucket_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:bucket_name])
+    validate_parameters(require: [:bucket_name])
+
     @bucket_name = opts[:bucket_name]
 
     catch_aws_errors do

@@ -22,7 +22,7 @@ class AwsOrganizationsMember < AwsResourceBase
     # https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
     opts[:aws_region] = 'us-east-1'
     super(opts)
-    validate_parameters([])
+    validate_parameters
 
     catch_aws_errors do
       # Get Master Account details

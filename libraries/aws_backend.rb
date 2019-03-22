@@ -154,20 +154,20 @@ class AwsResourceBase < Inspec.resource(1)
     end
   end
 
-  # Ensure require parameters have been set both at a resource level and backend level.
-  # Some resources may require 1 or several parameters to be set, in which case use `require`
+  # Ensure required parameters have been set to perform backend operations.
+  # Some resources may require several parameters to be set, in which case use `require`
   # Some resources may require at least 1 of n parameters to be set, in which case use `require_any_of`
   # If a parameter is entirely optional, use `allow`
   def validate_parameters(allow: [], require: nil, require_any_of: nil)
     if require
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require}" unless require.is_a?(Array) && require.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: `#{req}` must be provided" unless require.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      raise ArgumentError, "#{@__resource_name__}: `#{require}` must be provided" unless @opts.is_a?(Hash) && require.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
       allow += require
     end
 
     if require_any_of
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require_any_of}" unless require_any_of.is_a?(Array) && require_any_of.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
       allow += require_any_of
     end
 
