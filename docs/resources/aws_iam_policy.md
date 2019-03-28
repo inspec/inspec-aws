@@ -59,6 +59,9 @@ The following examples show how to use this InSpec audit resource.
       # have_statement does not expand wildcards. If you want to verify
       # they are absent, an explicit check is required.
       it { should_not have_statement(Action: 's3:*') }
+
+      # You can also check NotAction
+      it { should_not have_statement(NotAction: 'iam:*') }
     end
 
 <br>
