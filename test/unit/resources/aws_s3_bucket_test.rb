@@ -58,6 +58,11 @@ class AwsS3BucketPublicTest < Minitest::Test
     logging[:data] = OpenStruct.new(logging_enabled: OpenStruct.new(target_bucket: 'targetbucket'))
     logging[:client] = Aws::S3::Client
     bucket_stub_data += [logging]
+    versioning = {}
+    versioning[:method] = :get_bucket_versioning
+    versioning[:data] = OpenStruct.new(status: 'Enabled', mfa_delete: 'Disabled')
+    versioning[:client] = Aws::S3::Client
+    bucket_stub_data += [versioning]
     policy = {}
     policy[:method] = :get_bucket_policy
     policy[:data] = OpenStruct.new(policy: StringIO.new(<<'EOP')
@@ -102,6 +107,10 @@ EOP
 
   def test_has_default_encryption_enabled_positive
     assert(@bucket.has_default_encryption_enabled?)
+  end
+
+  def test_has_versioning_enabled_positive
+    assert(@bucket.has_versioning_enabled?)
   end
 
   def test_property_bucket_acl_structure
