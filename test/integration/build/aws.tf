@@ -1001,12 +1001,16 @@ resource "aws_iam_policy" "aws_policy_1" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "NotAction": "s3:DeleteBucket",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::*"
     }
   ]
 }
 EOF
 }
-
 
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
   count = "${var.aws_enable_creation}"

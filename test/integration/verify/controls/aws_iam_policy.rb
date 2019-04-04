@@ -19,5 +19,6 @@ control 'aws-iam-policy-1.0' do
     its ('arn')  { should eq aws_iam_policy_arn }
     it { should_not have_statement('Effect' => 'Allow', 'Resource' => '*', 'Action' => '*') }
     it { should have_statement('Effect' => 'Allow', 'Resource' => '*', 'Action' => 'ec2:Describe*') }
+    it { should have_statement('Effect' => 'Allow', 'Resource' => 'arn:aws:s3:::*', 'NotAction' => 's3:DeleteBucket') }
   end
 end
