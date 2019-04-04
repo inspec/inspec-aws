@@ -12,7 +12,7 @@ control 'aws-iam-password-policy-1.0' do
     it { should require_symbols }
     it { should require_lowercase_characters }
     it { should require_uppercase_characters}
-    it { should allow_users_to_change_password }
+    it { should allow_users_to_change_passwords }
 
     its('minimum_password_length')         { should be > 6 }
     its('number_of_passwords_to_remember') { should be > 3 }
