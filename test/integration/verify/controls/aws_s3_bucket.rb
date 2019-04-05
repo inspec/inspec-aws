@@ -9,6 +9,8 @@ aws_bucket_logging_disabled = attribute(:aws_bucket_logging_disabled, default: '
 aws_bucket_log_sender_name = attribute(:aws_bucket_log_sender_name, default: '', description: 'The AWS bucket name.')
 aws_bucket_encryption_enabled = attribute(:aws_bucket_encryption_enabled, default: '', description: 'The AWS bucket name.')
 aws_bucket_encryption_disabled = attribute(:aws_bucket_encryption_disabled, default: '', description: 'The AWS bucket name.')
+aws_bucket_versioning_enabled = attribute(:aws_bucket_versioning_enabled, default: '', description: 'The AWS bucket name.')
+aws_bucket_versioning_disabled = attribute(:aws_bucket_versionning_disabled, default: '', description: 'The AWS bucket name.')
 
 control 'aws-s3-bucket-1.0' do
 
@@ -59,6 +61,17 @@ control 'aws-s3-bucket-1.0' do
     it { should exist }
     it { should_not have_default_encryption_enabled }
   end
+
+  describe aws_s3_bucket(bucket_name: aws_bucket_versioning_enabled) do
+    it { should exist }
+    it { should have_versioning_enabled }
+  end
+
+  describe aws_s3_bucket(bucket_name: aws_bucket_versioning_disabled) do
+    it { should exist }
+    it { should_not have_versioning_enabled }
+  end
+
 
   describe aws_s3_bucket(bucket_name: aws_bucket_log_sender_name) do
     it { should exist }

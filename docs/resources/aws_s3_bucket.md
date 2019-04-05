@@ -148,6 +148,12 @@ The `have_default_encryption_enabled` matcher tests if default encryption is ena
 
     it { should have_default_encryption_enabled }
 
+### have_versioning_enabled
+
+The `have_versioning_enabled` matcher tests if versioning is enabled for the s3 bucket.
+
+   it { should have_versioning_enabled }
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `s3:GetBucketAcl`, `s3:GetBucketLocation`, `s3:GetBucketLogging`, `s3:GetBucketPolicy`, and `s3:GetEncryptionConfiguration` actions set to allow.
