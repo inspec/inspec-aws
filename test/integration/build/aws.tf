@@ -1058,6 +1058,11 @@ resource "aws_iam_policy" "aws_policy_1" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "NotAction": "s3:DeleteBucket",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::*"
     }
   ]
 }
