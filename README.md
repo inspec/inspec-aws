@@ -1,21 +1,27 @@
 # InSpec for AWS
 
+* **Project State: Active**
+* **Issues Response SLA: 3 business days**
+* **Pull Request Response SLA: 3 business days**
+
+For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
+
 This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required resources to write tests for resources in AWS.
 
 ## Prerequisites
 
 ### AWS Credentials
 
-Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))  
+Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))
 
 Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
-    
+
 ```bash
     # Example configuration
     export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
     export AWS_SECRET_ACCESS_KEY="vD2lfoNvPdwsofqyuO9jRuWUkZIMqisdfeFmkHTy7ON+w"
     export AWS_REGION="eu-west-3"
-    export AWS_AVAILABILITY_ZONE="eu-west-3a"  
+    export AWS_AVAILABILITY_ZONE="eu-west-3a"
 ```
 
 ### Permissions
@@ -141,10 +147,10 @@ end
       its('image_id') { should eq 'ami-27a58d5c' }
     end
 ```
-    
+
 ### Ensure all AWS Users have MFA enabled
 
-```   
+```
     describe aws_iam_users.where( has_mfa_enabled: false) do
       it { should_not exist }
     end
@@ -203,12 +209,12 @@ gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/updat
 gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
 ```
 
-The branched InSpec version has all AWS components removed.  
-The branched Train version is upgraded to SDK version 3 to avoid the above conflict.  
+The branched InSpec version has all AWS components removed.
+The branched Train version is upgraded to SDK version 3 to avoid the above conflict.
 
 ### Running a Sample Profile Using Docker
 
-A `Dockerfile` is provided in the root of this resource pack repository.  
+A `Dockerfile` is provided in the root of this resource pack repository.
 
 ```
 cd inspec-aws
@@ -328,4 +334,4 @@ The InSpec AWS resources are community supported. For bugs and features, please 
 
 ## Kudos
 
-This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec. 
+This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec.
