@@ -152,7 +152,7 @@ The `have_default_encryption_enabled` matcher tests if default encryption is ena
 
 The `have_versioning_enabled` matcher tests if versioning is enabled for the s3 bucket.
 
-   it { should have_versioning_enabled }
+    it { should have_versioning_enabled }
 
 ## AWS Permissions
 
