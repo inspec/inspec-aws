@@ -284,6 +284,7 @@ The matchers accept a key-value list of search criteria.  For a rule to match, i
   * to_port - Determines if a rule exists whose port range ends at the specified number. The word 'to_' does *not* relate to inbound/outbound directionality; it relates to the port range ("counting _to_"). `to_port` is an exact criterion; so if the rule allows 1000-2000 and you specify a `to_port` of 1999, it does not match.
   * security_group - Specifies a security-group id, to be checked as permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS Security Group rule may have multiple allowed source or destination security groups.
 
+```
     describe aws_security_group(group_name: 'mixed-functionality-group') do
       # Allow RDP from defined range
       it { should allow_in(port: 3389, ipv4_range: '10.5.0.0/16') }
@@ -327,7 +328,7 @@ The matchers accept a key-value list of search criteria.  For a rule to match, i
       # use exact IP matching.
       it { should allow_in_only(port: 3389, ipv4_range: '10.5.1.34/32', position: 1) }
     end
-
+```
 ### exists
 
 The control passes if the specified Security Group was found.  Use `should_not` if you want to verify that the specified SG does not exist.
