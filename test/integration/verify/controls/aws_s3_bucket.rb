@@ -10,7 +10,7 @@ aws_bucket_log_sender_name = attribute(:aws_bucket_log_sender_name, default: '',
 aws_bucket_encryption_enabled = attribute(:aws_bucket_encryption_enabled, default: '', description: 'The AWS bucket name.')
 aws_bucket_encryption_disabled = attribute(:aws_bucket_encryption_disabled, default: '', description: 'The AWS bucket name.')
 aws_bucket_versioning_enabled = attribute(:aws_bucket_versioning_enabled, default: '', description: 'The AWS bucket name.')
-aws_bucket_versioning_disabled = attribute(:aws_bucket_versionning_disabled, default: '', description: 'The AWS bucket name.')
+aws_bucket_versioning_disabled = attribute(:aws_bucket_versioning_disabled, default: '', description: 'The AWS bucket name.')
 
 control 'aws-s3-bucket-1.0' do
 
