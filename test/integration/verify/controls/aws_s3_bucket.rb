@@ -2,15 +2,15 @@ title 'Test single AWS S3 Bucket'
 
 aws_bucket_public_name = attribute(:aws_bucket_public_name, default: '', description: 'The AWS bucket name.')
 aws_bucket_public_region = attribute(:aws_s3_bucket_public_region, default: '', description: 'The AWS bucket region.')
-aws_bucket_private_name = attribute(:aws_bucket_private_name, default: '', description: 'The AWS bucket name.')
-aws_bucket_auth_name = attribute(:aws_bucket_auth_name, default: '', description: 'The AWS bucket name.')
-aws_bucket_acl_policy_name = attribute(:aws_bucket_acl_policy_name, default: '', description: 'The AWS bucket name.')
-aws_bucket_logging_disabled = attribute(:aws_bucket_logging_disabled, default: '', description: 'The AWS bucket name.')
-aws_bucket_log_sender_name = attribute(:aws_bucket_log_sender_name, default: '', description: 'The AWS bucket name.')
-aws_bucket_encryption_enabled = attribute(:aws_bucket_encryption_enabled, default: '', description: 'The AWS bucket name.')
-aws_bucket_encryption_disabled = attribute(:aws_bucket_encryption_disabled, default: '', description: 'The AWS bucket name.')
-aws_bucket_versioning_enabled = attribute(:aws_bucket_versioning_enabled, default: '', description: 'The AWS bucket name.')
-aws_bucket_versioning_disabled = attribute(:aws_bucket_versionning_disabled, default: '', description: 'The AWS bucket name.')
+aws_bucket_private_name = attribute(:aws_bucket_private_name, default: '', description: 'The AWS bucket private name.')
+aws_bucket_auth_name = attribute(:aws_bucket_auth_name, default: '', description: 'The AWS bucket auth name.')
+aws_bucket_acl_policy_name = attribute(:aws_bucket_acl_policy_name, default: '', description: 'The AWS bucket policy name.')
+aws_bucket_logging_disabled = attribute(:aws_bucket_logging_disabled, default: '', description: 'The AWS bucket logging value.')
+aws_bucket_log_sender_name = attribute(:aws_bucket_log_sender_name, default: '', description: 'The AWS bucket log sender name.')
+aws_bucket_encryption_enabled = attribute(:aws_bucket_encryption_enabled, default: '', description: 'The AWS bucket encryption enabled value.')
+aws_bucket_encryption_disabled = attribute(:aws_bucket_encryption_disabled, default: '', description: 'The AWS bucket decryption enabled value.')
+aws_bucket_versioning_enabled = attribute(:aws_bucket_versioning_enabled, default: '', description: 'The AWS bucket versioning enabled value.')
+aws_bucket_versioning_disabled = attribute(:aws_bucket_versioning_disabled, default: '', description: 'The AWS bucket versioning enabled value.')
 
 control 'aws-s3-bucket-1.0' do
 
