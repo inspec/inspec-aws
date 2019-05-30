@@ -14,24 +14,19 @@ class AwsS3BucketObject < AwsResourceBase
   attr_reader :bucket_name, :key
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
-    validate_parameters(%i(bucket_name key))
-    raise ArgumentError, 'aws_s3_bucket_object - Both bucket_name and key are required' if opts.empty? or !opts.key?(:bucket_name) or !opts.key?(:key)
+    validate_parameters(required: %i(bucket_name key))
+
     @bucket_name = opts[:bucket_name]
     @key = opts[:key]
+
     catch_aws_errors do
       begin
         @bucket_object = @aws.storage_client.get_object(bucket: @bucket_name, key: @key)
-      rescue Aws::S3::Errors::NoSuchBucket
-        @exists = false
-        return
-      rescue Aws::S3::Errors::NoSuchKey
-        @exists = false
+      rescue Aws::S3::Errors::NoSuchBucket, Aws::S3::Errors::NoSuchKey
         return
       end
     end
-    @exists = true
   end
 
   def object_acl
@@ -51,7 +46,7 @@ class AwsS3BucketObject < AwsResourceBase
   end
 
   def exists?
-    @exists
+    !@bucket_object.nil?
   end
 
   def to_s

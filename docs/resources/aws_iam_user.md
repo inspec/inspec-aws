@@ -6,8 +6,6 @@ platform: aws
 # aws\_iam\_user
 
 Use the `aws_iam_user` InSpec audit resource to test properties of a single AWS IAM User.
-
-<br>
     
 ## Syntax
 
@@ -15,53 +13,79 @@ An `aws_iam_user` resource block declares the tests for a single AWS IAM User by
 
     describe aws_iam_user(user_name: 'psmith') do
       it { should exist }
-      it { should have_mfa_enabled }
     end
 
-<br>
+#### Parameters
+
+##### user_name _(required)_
+
+This resource accepts a single parameter, the User's username which uniquely identifies the User. 
+This can be passed either as a string or as a `user_name: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html).
+
+## Properties
+
+|Property              | Description|
+| ---                  | --- |
+|username              | The user's username. |
+|user_id               | The user's ID. |
+|user_arn              | The Amazon Resource Name of the user. |
+|access_keys           | An array of hashes each containing metadata about the user's Access Keys.|
+|inline_policy_names   | The names of policies directly attached to the user. |
+|attached_policy_names | The name of standalone IAM policies which are attached to the user. |
+|attached_policy_arns  | The arns of the standalone IAM policies which are attached to the user. |
+
+
+* has_mfa_enabled
+* has_console_password
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that an IAM user does not exist
-
+##### Test that an IAM user does not exist
     describe aws_iam_user(user_name: 'invalid-user') do
       it { should_not exist }
     end
 
-### Test that an IAM user has MFA enabled
-
+##### Test that an IAM user has MFA enabled
     describe aws_iam_user('psmith') do
       it { should exist }
       it { should have_mfa_enabled }
     end
 
-<br>
-
-## Properties
-
-* username 
-* user_id
-* user_arn 
-* has_mfa_enabled
-* access_keys
-* has_console_password
-* inline_policy_names
-* attached_policy_names
-* attached_policy_arns
-
-<br>
+##### Ensure a User has no Access Keys or Inline Policies
+    describe aws_iam_user('psmith') do
+      it                         { should exist }
+      its('access_keys')         { should be_empty }
+      its('inline_policy_names') { should be_empty }
+    end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+#### exist
 
-The `exists` matcher tests if the described IAM User exists.
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
 
     it { should exist }
+    
+#### has_mfa_enabled
+
+This will check if the requested User has Multi Factor Authentication enabled.
+
+    it { should have_mfa_enabled }
+
+
+#### has_console_password
+
+This will ensure the User has a console password set.
+
+    it { should have_console_password }
 
 ## AWS Permissions
 

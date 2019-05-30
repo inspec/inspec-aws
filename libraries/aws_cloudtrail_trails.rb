@@ -11,17 +11,19 @@ class AwsCloudTrailTrails < AwsResourceBase
     end
   '
 
+  attr_reader :table
+
   def initialize(opts = {})
     # Call the parent class constructor
     super(opts)
-    validate_parameters([])
+    validate_parameters
+    @table = fetch_data
   end
 
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:trail_arns, field: :trail_arn)
-  filter_table_config.add(:names, field: :name)
-  filter_table_config.connect(self, :fetch_data)
+  FilterTable.create
+             .register_column(:trail_arns, field: :trail_arn)
+             .register_column(:names,      field: :name)
+             .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     cloudtrail_rows = []

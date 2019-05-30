@@ -7,144 +7,86 @@ platform: aws
 
 Use the `aws_cloudwatch_log_metric_filter` InSpec audit resource to search for and test properties of individual AWS Cloudwatch Log Metric Filters.
 
-A Log Metric Filter (LMF) is an AWS resource that observes log traffic, looks for a specified pattern, and then updates a metric about the number times the match occurs.  The metric can also be connected to AWS Cloudwatch Alarms, so that actions can be taken when a match occurs.
-
-<br>
-
 ## Syntax
 
-An `aws_cloudwatch_log_metric_filter` resource block searches for an LMF, specified by several search options.  If more than one log metric filter matches, an error occurs.
-
-    # Look for an LMF by its filter name and log group name.  This combination
-    # will always either find at most one LMF - no duplicates.
-    describe aws_cloudwatch_log_metric_filter(
-      filter_name: 'my-filter',
-      log_group_name: 'my-log-group'
-    ) do
+    describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
       it { should exist }
     end
 
-    # Search for an LMF by pattern and log group.
-    # This could result in an error if the results are not unique.
-    describe aws_cloudwatch_log_metric_filter(
-      log_group_name:  'my-log-group',
-      pattern: 'my-filter'
-    ) do
+    describe aws_cloudwatch_log_metric_filter(log_group_name:  'my-log-group', pattern: 'my-filter') do
       it { should exist }
     end
 
-<br>
+#### Parameters
 
-## Filter Attributes
+**Note**: _While all parameters are optional, at least one must be provided. In practice, the more parameters you provide the narrower a result you will return._
 
-* `filter_name`, `log_group_name`, `pattern`
+##### filter_name _(optional)_
+The name of the Log Metric Filter. Expected in a hash as `filter_name: 'value'`.
 
-<br>
+##### log_group_name _(optional)_
+The log group of the filter. Expected in a hash as `log_group_name: 'value'`.
 
-## Filter Examples
+##### pattern _(optional)_
+A pattern by which to narrow down the result-set, if you expect multiple results. Expected in a hash as `pattern: 'value'`.
 
-### filter\_name
+See also the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html).
 
-This is the identifier of the log metric filter within its log group.  To ensure you have a unique result, you must also provide the `log_group_name`.
-
-    describe aws_cloudwatch_log_metric_filter(
-      filter_name: 'my-filter'
-    ) do
-      it { should exist }
-    end
-
-### log\_group\_name
-
-The name of the Cloudwatch Log Group that the LMF is watching.  Together with `filter_name`, this uniquely identifies an LMF.
-
-    describe aws_cloudwatch_log_metric_filter(
-      log_group_name: 'my-log-group',
-    ) do
-      it { should exist }
-    end
-
-### pattern
-
-The filter pattern used to match entries from the logs in the log group.
-
-    describe aws_cloudwatch_log_metric_filter(
-      pattern: '"ERROR" - "Exiting"',
-    ) do
-      it { should exist }
-    end
-
-<br>
 
 ## Properties
 
-* `filter_name`, `log_group_name`,` metric_name`, `metric_namespace`, `pattern`
+|Property         | Description|
+| ---             | --- |
+|filter_name      | The name of the metric filter. |
+|log_group_name   | The name of the log group. |
+|metric_name      | The name of the metric. |
+|metric_namespace | The namespace of the metric. |
+|pattern          | A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.  |
 
-<br>
+## Examples
 
-## Property Examples
-
-### filter\_name
-
-The name of the LMF within the `log_group`.
-
-    # Check the name of the LMF that has a certain pattern
-    describe aws_cloudwatch_log_metric_filter(
-      log_group_name: 'app-log-group',
-      pattern: 'KERBLEWIE',
-    ) do
-      its('filter_name') { should cmp 'kaboom_lmf' }
+##### Ensure a Filter exists
+    describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
+      it { should exist }
     end
 
-### log\_group\_name
-
-The name of the log group that the LMF is watching.
-
-    # Check which log group the LMF 'error-watcher' is watching
-    describe aws_cloudwatch_log_metric_filter(
-      filter_name: 'error-watcher',
-    ) do
-      its('log_group_name') { should cmp 'app-log-group' }
+##### Ensure a Filter exists for a specific pattern
+    describe aws_cloudwatch_log_metric_filter(pattern: '"ERROR" - "Exiting"') do
+      it { should exist }
     end
 
-### metric\_name, metric\_namespace
-
-The name and namespace of the Cloudwatch Metric that will be updated when the LMF matches.  You also need the `metric_namespace` to uniquely identify the metric.
-
-    # Ensure that the LMF has the right metric name
-    describe aws_cloudwatch_log_metric_filter(
-      filter_name: 'my-filter',
-      log_group_name: 'my-log-group',
-    ) do
-      its('metric_name') { should cmp 'MyMetric' }
-      its('metric_namespace') { should cmp 'MyFantasticMetrics' }
+##### Check the name of a Filter
+    describe aws_cloudwatch_log_metric_filter(log_group_name: 'app-log-group', pattern: 'KERBLEWIE') do
+      its('filter_name') { should eq 'kaboom_lmf' }
     end
 
-### pattern
 
-The pattern used to match entries from the logs in the log group.
+##### Check the Log Group name of a Filter
+    describe aws_cloudwatch_log_metric_filter(filter_name: 'error-watcher') do
+      its('log_group_name') { should eq 'app-log-group' }
+    end
 
-    # Ensure that the LMF is watching for errors
-    describe aws_cloudwatch_log_metric_filter(
-      filter_name: 'error-watcher',
-      log_group_name: 'app-log-group',
-    ) do
+##### Check a filter has the correct pattern
+    describe aws_cloudwatch_log_metric_filter(filter_name: 'error-watcher', log_group_name: 'app-log-group') do
       its('pattern') { should cmp 'ERROR' }
     end
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exist
+#### exist
 
-Matches (i.e., passes the test) if the resource parameters (search criteria) were able to locate exactly one LMF.
+The control will pass if the describe returns at least one result.
 
-    describe aws_cloudwatch_log_metric_filter(
-      log_group_name: 'my-log-group',
-    ) do
+Use `should_not` to test the entity should not exist.
+
+    describe aws_cloudwatch_log_metric_filter(log_group_name: 'my-log-group') do
       it { should exist }
+    end
+    
+    describe aws_cloudwatch_log_metric_filter(log_group_name: 'i-dont-exist') do
+      it { should_not exist }
     end
 
 ## AWS Permissions

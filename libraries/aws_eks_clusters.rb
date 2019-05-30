@@ -14,28 +14,28 @@ class AwsEksClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:versions,                field: :version)
              .register_column(:arns,                    field: :arn)
-             .register_column(:certificate_authorities, field: :certificate_authority)
              .register_column(:names,                   field: :name)
-             .register_column(:statuses,                field: :status)
              .register_column(:endpoints,               field: :endpoint)
+             .register_column(:statuses,                field: :status)
+             .register_column(:versions,                field: :version)
+             .register_column(:certificate_authorities, field: :certificate_authority)
              .register_column(:subnets_counts,          field: :subnets_count)
              .register_column(:subnet_ids,              field: :subnet_ids)
+             .register_column(:security_groups_counts,  field: :security_groups_count)
              .register_column(:security_group_ids,      field: :security_group_ids)
-             .register_column(:created_ats,             field: :created_at)
              .register_column(:role_arns,               field: :role_arn)
              .register_column(:vpc_ids,                 field: :vpc_id)
-             .register_column(:security_groups_counts,  field: :security_groups_count)
-             .register_column(:creating,               field: :creating)
-             .register_column(:active,                 field: :active)
-             .register_column(:failed,                 field: :failed)
-             .register_column(:deleting,               field: :deleting)
+             .register_column(:created_at,              field: :created_at)
+             .register_column(:creating,                field: :creating)
+             .register_column(:active,                  field: :active)
+             .register_column(:failed,                  field: :failed)
+             .register_column(:deleting,                field: :deleting)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
     @table = fetch_data
   end
 

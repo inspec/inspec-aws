@@ -10,17 +10,17 @@ class AwsSnsTopics < AwsResourceBase
       its('topic_arns') { should include 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf' }
     end
   "
+  attr_reader :table
+
+  FilterTable.create
+             .register_column(:topic_arns, field: :topic_arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
-    validate_parameters([])
+    validate_parameters
+    @table = fetch_data
   end
-
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:topic_arns, field: :topic_arn)
-  filter_table_config.connect(self, :fetch_data)
 
   def fetch_data
     topic_rows = []

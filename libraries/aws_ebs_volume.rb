@@ -8,38 +8,40 @@ class AwsEbsVolume < AwsResourceBase
 
   example "
     describe aws_ebs_volume('vol-12345678') do
-      it { should be_encrypted }
+      it          { should be_encrypted }
       its('size') { should cmp 8 }
     end
 
     describe aws_ebs_volume(name: 'my-volume') do
       its('encrypted') { should eq true }
-      its('iops') { should cmp 100 }
+      its('iops')      { should cmp 100 }
     end
   "
 
   def initialize(opts = {})
-    raise ArgumentError, 'aws_ebs_volume `id` or `name` must be provided' if opts.nil?
-    opts = { volume_id: opts } if opts.is_a?(String) # this preserves the original scalar interface - note that the original implementation offered scalar 'id' or tag property :name
-    # Call the parent class constructor
+    opts = { volume_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(%i(volume_id name))
-    @display_name = opts[:volume_id] || opts[:name]
+    validate_parameters(require_any_of: %i(volume_id name))
+
     if opts[:volume_id] && !opts[:volume_id].empty?
-      raise ArgumentError, 'aws_ebs_volume must be in the format "vol-" followed by 8 or 17 hexadecimal characters.' if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/
+      raise ArgumentError, "#{@__resource_name__}:  must be in the format 'vol- followed by 8 or 17 hexadecimal characters." if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/
+      @display_name = opts[:volume_id]
       volume_arguments = { volume_ids: [opts[:volume_id]] }
-    else
-      raise ArgumentError, 'aws_ebs_volume `name` must be provided' if opts[:name].nil? || opts[:name].empty?
+    elsif opts[:name] && !opts[:name].empty?
+      @display_name = opts[:name]
       filter = { name: 'tag:Name', values: [opts[:name]] }
       volume_arguments = { filters: [filter] }
+    else
+      raise ArgumentError, "#{@__resource_name__}:  `volume_id` or `name` must be provided"
     end
 
     catch_aws_errors do
-      @resp = @aws.compute_client.describe_volumes(volume_arguments)
-      @volume = @resp.volumes[0].to_h
+      resp = @aws.compute_client.describe_volumes(volume_arguments)
+      @volume = resp.volumes[0].to_h
+
       create_resource_methods(@volume)
-      # below is because the original implementation exposed several clashing method
-      # names and we want to ensure backwards compatibility
+
+      # Methods required to ensure backwards compatibility
       class << self
         def tags
           @volume[:tags].map { |tag| { key: tag[:key], value: tag[:value] } }
@@ -49,13 +51,12 @@ class AwsEbsVolume < AwsResourceBase
   end
 
   def id
-    return nil if !exists?
+    return nil unless exists?
     @volume[:volume_id]
   end
 
   def exists?
-    return false if @volume.nil?
-    !@volume.empty?
+    !@volume.nil? && !@volume.empty?
   end
 
   def encrypted?

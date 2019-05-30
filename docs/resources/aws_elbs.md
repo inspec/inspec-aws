@@ -5,60 +5,69 @@ platform: aws
 
 # aws\_elbs
 
-Use the `aws_elbs` InSpec audit resource to test properties of some or all AWS Elastic Load Balancers.
-
-
-<br>
+Use the `aws_elbs` InSpec audit resource to test the configuration of a collection of AWS Elastic Load Balancers.
 
 ## Syntax
-
-An `aws_elbs` resource block returns all Elastic Load Balancers and allows the testing of that group of Load Balancers.
 
     describe aws_elbs do
       its('load_balancer_names') { should include 'elb-name' }
     end
+    
+#### Parameters
 
-<br>
+This resource does not expect any parameters.
 
-## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-
-    Ensure there are no Load Balancers with an undesired zone.
-
-      describe aws_elbs do
-        it                             { should exist }
-        its('availability_zones')      { should_not include 'UNDESIRED-ZONE'}
-      end
-<br>
+See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 
 ## Properties
 
-* availability_zones 
-* dns_names 
-* load_balancer_names 
-* external_ports 
-* instance_ids
-* internal_ports
-* security_group_ids
-* subnet_ids
-* vpc_ids
+|Property            | Description|
+| ---                | --- |
+|load_balancer_names | The name of the load balancer. |
+|dns_names           | The DNS name of the load balancer. |
+|availability_zones  | The Availability Zones for the load balancer. |
+|instance_ids        | An array containing all instance ids associated with the ELB. |
+|external_ports      | An array of the external ports exposed on the ELB. |
+|internal_ports      | An array of the internal ports exposed on the ELB. |
+|security_group_ids  | The security groups for the load balancer. Valid only for load balancers in a VPC. |
+|vpc_ids             | The ID of the VPC for the load balancer. |
+|subnet_ids          | The IDs of the subnets for the load balancer. |
 
-<br>
+## Examples
+
+##### Ensure there are no Load Balancers with an undesired zone.
+    describe aws_elbs do
+      it                             { should exist }
+      its('availability_zones')      { should_not include 'us-east-1a'}
+    end
+
+##### Ensure all ELBs expose only port 80
+    aws_elbs.each do |elb|
+      describe elb do
+        its('external_ports.count') { should cmp 1 }
+        its('external_ports')       { should include 80 }
+        its('internal_ports.count') { should cmp 1 }
+        its('internal_ports')       { should include 80 }
+      end
+    end
 
 ## Matchers
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+#### exist
 
-The `exists` matcher tests if the described ELB exists.
+The control will pass if the describe returns at least one result.
 
-      describe aws_elbs.where( <property>: <value>) do
-        it { should exist }
-      end
-You may also use `it { should_not exist }`.
+Use `should_not` to test the entity should not exist.
+
+    describe aws_elbs.where( <property>: <value>) do
+      it { should exist }
+    end
+      
+    describe aws_elbs.where( <property>: <value>) do
+      it { should_not exist }
+    end
     
 ## AWS Permissions
 

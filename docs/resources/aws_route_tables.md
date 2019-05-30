@@ -6,47 +6,51 @@ title: About the aws_route_tables Resource
 
 Use the `aws_route_tables` InSpec audit resource to test properties of all or a group of Route Tables. A Route Table contains a set of rules, called routes, that are used to determine where network traffic is directed.
 
-<br>
-
 ## Syntax
 
-  # Ensure that there is at least one route table
-  describe aws_route_tables do
-    it { should exist }
-  end
+      # Ensure that there is at least one route table
+      describe aws_route_tables do
+        it { should exist }
+      end
+          
+#### Parameters
 
-## Matchers
+This resource does not expect any parameters.
 
-### exist
-
-Indicates that at least one Route Table was found.  Use should_not to test that no Route Tables should exist.
-
-    describe aws_route_tables do
-      it { should exist }
-    end
-
-    describe aws_route_tables do
-      it { should_not exist }
-    end
+See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
 
 ## Properties
 
-### vpc\_ids
+|Property        | Description|
+| ---            | --- |
+|route_table_ids | The route table IDs |
+|vpc_ids         | The VPC IDs |
+|entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
-Lists all VPCs that are in the Route Tables.
+## Examples
 
+##### Confirm that a route table exists
     describe aws_route_tables do
-      its('vpc_ids') { should include 'vpc_12345678' }
+      its('vpc_ids') { should include 'vpc-01625e36123456789' }
     end
 
-
-### route\_table\_ids
-
-Lists all of the Route Table IDs.
-
+##### Confirm a Route Table exists.
     describe aws_route_tables do
       its('route_table_ids') { should include 'rtb-12345678' }
     end
+
+## Matchers
+
+#### exist
+
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
+
+      it { should exist }
+ 
+      it { should_not exist }
+
 
 ## AWS Permissions
 

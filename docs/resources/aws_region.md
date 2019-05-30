@@ -7,13 +7,10 @@ platform: aws
 
 Use the `aws_region` InSpec audit resource to test properties of a single AWS region.
 
-<br>
-
 ## Syntax
 
-An `aws_region` resource block identifies an AWS region by id. If no region is provided, the current default is used.
+An `aws_region` resource block identifies an AWS region by ID. If no region is provided, the current default is used.
 
-    # Check a region exists
     describe aws_region('eu-west-2') do
       it { should exist }
     end
@@ -22,31 +19,43 @@ An `aws_region` resource block identifies an AWS region by id. If no region is p
       it { should exist }
     end
 
-<br>
+#### Parameters
+
+##### region_name _(optional)_
+
+This resource accepts a single parameter, the region_name. 
+This can be passed either as a string or as a `region_name: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
+
+## Properties
+
+|Property    | Description|
+| ---        | --- |
+|region_name | The Name of the region. |
+|endpoint    | The resolved endpoint of the region. |
 
 ## Examples
 
-The following examples show how to use this InSpec audit resource.
-
-### Test whether a region exists
-
+##### Test whether a region exists
     describe aws_region('region-not-real') do
       it { should_not exist }
     end
 
-### Test the Region Endpoint
-
+##### Test the Region Endpoint
     describe aws_region(region_name: 'eu-west-2') do
       its('endpoint') { should eq 'ec2.eu-west-2.amazonaws.com' }
     end
+    
+## Matchers
 
-<br>
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-## Properties
+#### exist
 
-* `region_name`, `endpoint`
+The control will pass if the describe returns at least one result.
 
-<br>
+      it { should exist }
 
 ## AWS Permissions
 

@@ -7,15 +7,9 @@ platform: aws
 
 Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC).
 
-To test properties of all or multiple VPCs, use the `aws_vpcs` resource.
-
-A VPC is a networking construct that provides an isolated environment. A VPC is contained in a geographic region, but spans availability zones in that region. A VPC may have multiple subnets, internet gateways, and other networking resources. Computing resources--such as EC2 instances--reside on subnets within the VPC.
-
 Each VPC is uniquely identified by its VPC ID. In addition, each VPC has a non-unique CIDR IP Address range (such as 10.0.0.0/16) which it manages.
 
 Every AWS account has at least one VPC, the "default" VPC, in every region.
-
-<br>
 
 ## Syntax
 
@@ -36,90 +30,54 @@ An `aws_vpc` resource block identifies a VPC by id. If no VPC ID is provided, th
       it { should exist }
     end
 
-<br>
+#### Parameters
+
+If no parameter is provided, the subscription's default VPC will be returned.
+
+##### vpc_id _(optional)_
+
+This resource accepts a single parameter, the VPC ID. 
+This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+
+## Properties
+
+|Property         | Description|
+| ---             | --- |
+|cidr_block       | The IPv4 address range that is managed by the VPC. |
+|dhcp_options_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
+|instance_tenancy | The allowed tenancy of instances launched into the VPC. |
+|state            | The state of the VPC (`pending` | `available`). |
+|vpc_id           | The ID of the VPC. |
+|tags             | The tags of the VPC. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that a VPC does not exist
-
-    describe aws_vpc('vpc-87654321') do
-      it { should_not exist }
-    end
-
-    describe aws_vpc('vpc-abcd123454321dcba') do
-      it { should_not exist }
-    end
-
-### Test the CIDR of a named VPC
-
+##### Test the CIDR of a named VPC
     describe aws_vpc('vpc-87654321') do
       its('cidr_block') { should cmp '10.0.0.0/16' }
     end
 
-<br>
-
-## Properties
-
-* `cidr_block`, `dhcp_options_id`, `state`, `vpc_id`, `instance_tenancy`
-
-<br>
-
-## Property Examples
-
-### cidr\_block
-
-The IPv4 address range that is managed by the VPC.
-
-    describe aws_vpc('vpc-87654321') do
-      its('cidr_block') { should cmp '10.0.0.0/16' }
-    end
-
-### dhcp\_options\_id
-
-The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC).
-
-    describe aws_vpc do
-      its ('dhcp_options_id') { should eq 'dopt-a94671d0' }
-    end
-
-### instance\_tenancy
-
-The allowed tenancy of instances launched into the VPC.
-
-    describe aws_vpc do
-      its ('instance_tenancy') { should eq 'default' }
-    end
-
-### state
-
-The state of the VPC (`pending` | `available`).
-
+### Test the state of the VPC
     describe aws_vpc do
       its ('state') { should eq 'available' }
       # or equivalently
       it { should be_available }
     end
 
-### vpc\_id
-
-The ID of the VPC.
-
+##### Test the allowed tenancy of instances launched into the VPC.
     describe aws_vpc do
-      its('vpc_id') { should eq 'vpc-87654321' }
+      its ('instance_tenancy') { should eq 'default' }
     end
-    
-### tags
-    
-The tags of the VPC.
-    
+
+##### Test tags on the VPC
     describe aws_vpc do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'vpc-name')}
     end
-
-<br>
 
 ## Matchers
 

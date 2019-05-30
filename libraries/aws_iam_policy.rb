@@ -17,13 +17,14 @@ class AwsIamPolicy < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(%i(policy_arn policy_name))
-    raise ArgumentError, 'aws_iam_policy `policy_arn` or `policy_name` must be provided' if !opts.key?(:policy_arn) && !opts.key?(:policy_name)
+    validate_parameters(require_any_of: %i(policy_arn policy_name))
+
     if opts.key?(:policy_arn)
       @resp = get_policy_by_arn(opts[:policy_arn])
     elsif opts.key?(:policy_name)
       @resp = get_policy_by_name(opts[:policy_name])
     end
+
     get_attached_entities(@resp.arn)
     get_policy_document(@resp.arn, @resp.default_version_id)
 

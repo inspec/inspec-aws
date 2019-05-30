@@ -4,26 +4,27 @@ require 'aws_backend'
 
 class AwsEc2Instances < AwsResourceBase
   name 'aws_ec2_instances'
-  desc 'Verifies settings for AWS EC2 Instances in bulk'
+  desc 'Verifies settings for a collection of AWS EC2 Instances'
   example '
     describe aws_ec2_instances do
       it { should exist }
     end
   '
 
-  def initialize(opts = {})
-    # Call the parent class constructor
-    super(opts)
-    validate_parameters([])
-  end
+  attr_reader :table
 
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:instance_ids, field: :instance_id)
-  filter_table_config.add(:vpc_ids, field: :vpc_id)
-  filter_table_config.add(:subnet_ids, field: :subnet_id)
-  filter_table_config.add(:instance_types, field: :instance_type)
-  filter_table_config.connect(self, :fetch_data)
+  FilterTable.create
+             .register_column(:instance_ids,   field: :instance_id)
+             .register_column(:vpc_ids,        field: :vpc_id)
+             .register_column(:subnet_ids,     field: :subnet_id)
+             .register_column(:instance_types, field: :instance_type)
+             .install_filter_methods_on_resource(self, :table)
+
+  def initialize(opts = {})
+    super(opts)
+    validate_parameters
+    @table = fetch_data
+  end
 
   def fetch_data
     instance_rows = []

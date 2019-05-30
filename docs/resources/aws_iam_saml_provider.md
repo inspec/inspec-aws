@@ -7,7 +7,23 @@ platform: aws
 
 Use the `aws_iam_saml_provider` InSpec audit resource to test properties of an AWS IAM SAML Provider.
 
-<br>
+
+#### Parameters
+
+##### saml_provider_arn _(required)_
+
+This resource accepts a single parameter, the ARN of the SAML Provider.
+This can be passed either as a string or as a `saml_provider_arn: 'value'` key-value entry in a hash.
+
+## Properties
+
+|Property               | Description|
+| ---                   | --- |
+|provider               | The provider. |
+|arn                    | The arn of the provider. |
+|saml_metadata_document | Metadata document associated with the saml provider. |
+|valid_until            | The expiration date and time for the SAML provider.  |
+|create_date            | The date and time, in ISO 8601 date-time format , when the role was created. |
 
 ## Syntax
 
@@ -17,26 +33,14 @@ An `aws_iam_saml_provider` resource block declares the tests for a single AWS IA
         it { should exist }
     end
 
-<br>
-
 ## Examples
 
-The following examples show how to use this Inspec audit resource.
-
-    # Ensure we have at least one provider currently valid
+#### Ensure we have at least one provider currently valid
       describe aws_iam_saml_provider("arn:aws:iam::123456789012:saml-provider/FANCY") do
         it { should exist }
         its("arn") { should match("arn:aws:iam::.*:saml-provider\/FANCY") }
         its("valid_until") { should be > Time.now + 90 * 86400 }
     end
-
-<br>
-
-## Properties
-
-* arn
-* valid_until
-* create_date
 
 <br>
 

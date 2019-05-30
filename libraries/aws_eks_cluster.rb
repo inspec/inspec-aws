@@ -20,7 +20,7 @@ class AwsEksCluster < AwsResourceBase
   def initialize(opts = {})
     opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:cluster_name])
+    validate_parameters(required: [:cluster_name])
 
     catch_aws_errors do
       resp = @aws.eks_client.describe_cluster(name: opts[:cluster_name]).cluster

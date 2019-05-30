@@ -21,7 +21,7 @@ class AwsIamUser < AwsResourceBase
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:user_name])
+    validate_parameters(required: [:user_name])
 
     catch_aws_errors do
       username   = { user_name: opts[:user_name] }
@@ -73,8 +73,6 @@ class AwsIamUser < AwsResourceBase
     false
   end
 
-  # TODO: This method will paginate for > 1000 keys,
-  # We should handle that.
   def user_access_keys(username)
     # Return empty array instead if no keys.
     keys = @aws.iam_client.list_access_keys(username).access_key_metadata

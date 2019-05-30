@@ -30,7 +30,7 @@ class AwsLaunchConfigurations < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
     @table = fetch_data
   end
 
@@ -40,7 +40,7 @@ class AwsLaunchConfigurations < AwsResourceBase
       response = @aws.service_client.describe_launch_configurations
       return [] if !response || response.empty?
       response.launch_configurations.each do |config|
-        config_rows += [{ name:                        config[:launch_configuration_name],
+        config_rows += [{ name:                       config[:launch_configuration_name],
                          arn:                         config[:launch_configuration_arn],
                          image_id:                    config[:image_id],
                          instance_type:               config[:instance_type],

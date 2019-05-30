@@ -13,22 +13,22 @@ class AwsVpc < AwsResourceBase
   "
 
   def initialize(opts = {})
-    # Call the parent class constructor
-    opts = { vpc_id: opts } if opts.is_a?(String) # this preserves the original scalar interface
+    opts = { vpc_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters([:vpc_id])
-    @display_name = opts[:vpc_id]
+    validate_parameters(allow: [:vpc_id])
+
     if opts[:vpc_id].nil?
-      filter = { name: 'isDefault', values: ['true'] }
       @display_name = 'default'
+      filter = { name: 'isDefault', values: ['true'] }
     else
-      raise ArgumentError, 'aws_vpc VPC ID must be in the format "vpc-" followed by 8 or 17 hexadecimal characters.' if opts[:vpc_id] !~ /^vpc\-([0-9a-f]{8})|(^vpc\-[0-9a-f]{17})$/
+      @display_name = opts[:vpc_id]
+      raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-([0-9a-f]{8})|(^vpc\-[0-9a-f]{17})$/
       filter = { name: 'vpc-id', values: [opts[:vpc_id]] }
     end
 
     catch_aws_errors do
-      @resp = @aws.compute_client.describe_vpcs({ filters: [filter] })
-      @vpc = @resp.vpcs[0].to_h
+      resp = @aws.compute_client.describe_vpcs({ filters: [filter] })
+      @vpc = resp.vpcs[0].to_h
       create_resource_methods(@vpc)
     end
   end

@@ -4,16 +4,12 @@ title: About the aws_sns_topic Resource
 
 # aws\_sns\_topic
 
-Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS Simple Notification Service Topic.  SNS topics are channels for related events. AWS resources place events in the SNS topic, while other AWS resources _subscribe_ to receive notifications when new events have appeared.
-
-<br>
+Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS Simple Notification Service Topic.  SNS topics are channels for related events. AWS resources place events in the SNS topic, while other AWS resources subscribe to receive notifications when new events occur.
 
 ## Syntax
 
-    # Ensure that a topic exists and has at least one subscription
     describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do
       it { should exist }
-      its('confirmed_subscription_count') { should_not be_zero }
     end
 
     # You may also use has syntax to pass the ARN
@@ -21,43 +17,42 @@ Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS
       it { should exist }
     end
 
-## Resource Parameters
+#### Parameters
 
-### ARN
+##### arn _(required)_
 
-This resource expects a single parameter that uniquely identifies the SNS Topic, an ARN. Amazon Resource Names for SNS topics have the format `arn:aws:sns:region:account-id:topicname`.  AWS requires a fully-specified ARN for looking up an SNS topic.  The account ID and region are required.  Wildcards are not permitted.
+This resource accepts a single parameter, the ARN of the SNS Topic. 
+This can be passed either as a string or as a `arn: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on ARNs](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
-
-<br>
+See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html).
 
 ## Properties
 
-### confirmed\_subscription\_count
+|Property                     | Description|
+| ---                         | --- |
+|confirmed_subscription_count | An integer indicating the number of currently active subscriptions. |
 
-An integer indicating the number of currently active subscriptions.
+## Examples
 
-    # Make sure someone is listening
+##### Make sure something is subscribed to the topic
     describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do
       its('confirmed_subscription_count') { should_not be_zero}
     end
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exist
+#### exist
 
-Indicates that the ARN provided was found.  Use `should_not` to test for SNS topics that should not exist.
+The control will pass if the describe returns at least one result.
 
-    # Expect good news
+Use `should_not` to test the entity should not exist.
+
     describe aws_sns_topic('arn:aws:sns:*::good-news') do
       it { should exist }
     end
 
-    # No bad news allowed
     describe aws_sns_topic('arn:aws:sns:*::bad-news') do
       it { should_not exist }
     end

@@ -5,137 +5,93 @@ platform: aws
 
 # aws\_elb
 
-Use the `aws_elb` InSpec audit resource to test properties of a single AWS Elastic Load Balancer (ELB, also known as a Classic Load Balancer).
+Use the `aws_elb` InSpec audit resource to test properties of a single AWS Elastic Load Balancer (ELB).
 
-To audit ELBs in bulk or to search, use `aws_elbs` (plural).
+## Syntax
 
-<br>
-
-## Resource Parameters
-
-An `aws_elb` resource block declares the tests for a single AWS ELB by ELB name.
+An `aws_elb` resource block declares the tests for a single AWS ELB by ELB name. AWS ELB Names are unique per region.
 
     describe aws_elb('my-elb') do
       it { should exist }
     end
 
     describe aws_elb(load_balancer_name: 'my-elb') do
-      its('instance_ids.count') { should cmp 2 }
+      it { should exist }
     end
+    
+#### Parameters
 
-<br>
+##### load_balancer_name _(required)_
 
-## Examples
+This resource accepts a single parameter, the ELB Name which uniquely identifies the ELB. 
+This can be passed either as a string or as a `load_balancer_name: 'value'` key-value entry in a hash.
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that an ELB does not exist
-
-    describe aws_elb('bad-elb') do
-      it { should_not exist }
-    end
-
-### Test that an ELB has a presence in at least two availability zones
-
-    describe aws_elb('web') do
-      its('availability_zones.count') { should be > 1 }
-    end
-
-<br>
+See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 
 ## Properties
 
-### availability\_zones
+|Property           | Description|
+| ---               | --- |
+|load_balancer_name | The name of the load balancer. |
+|dns_name           | The DNS name of the load balancer. |
+|availability_zones | The Availability Zones for the load balancer. |
+|instance_ids       | An array containing all instance ids associated with the ELB. |
+|external_ports     | An array of the external ports exposed on the ELB. |
+|internal_ports     | An array of the internal ports exposed on the ELB. |
+|security_group_ids | The security groups for the load balancer. Valid only for load balancers in a VPC. |
+|vpc_id             | The ID of the VPC for the load balancer. |
+|subnet_ids         | The IDs of the subnets for the load balancer. |
 
-Returns an array of strings identifying which availability zones in which the load balancer is located.
 
-    # Verify we are in both us-east-2a and us-east-2b
-    describe aws_elb('web-elb') do
-      its('availability_zones') { should include 'us-east-2a' }
-      its('availability_zones') { should include 'us-east-2b' }
+## Examples
+
+##### Test that an ELB has its availability zones configured correctly
+    describe aws_elb('prod_web_app_elb') do
+      its('availability_zones.count') { should be > 1 }
+      its('availability_zones')       { should include 'us-east-2a' }
+      its('availability_zones')       { should include 'us-east-2b' }
     end
 
-### dns\_name
-
-Returns the FQDN of the load balancer.  This is the hostname which is exposed to the world.
-
-    # Ensure that the ELB has a DNS name
-    describe aws_elb('web-elb') do
-      its('dns_name') { should match /\.com/ }
+##### Ensure an ELB has the correct number of EC2 Instances associated with it
+    describe aws_elb('prod_web_app_elb') do
+      its('instance_ids.count') { should cmp 3 }
+    end
+    
+##### Ensure the correct DNS is set 
+    describe aws_elb('prod_web_app_elb') do
+      its('dns_name') { should cmp 'your-fqdn.com' }
     end
 
-### load\_balancer\_name
-
-The name of the ELB within AWS. The load balancer name is unique within the region.
-
-    # Ensure that the ELB's name is what we said it was
-    describe aws_elb('web-elb') do
-      its('load_balancer_name') { should match /web-elb/ }
-    end
-
-### external\_ports
-
-Returns an array of integers reflecting the public-facing ports on which the load balancer will be listening for traffic.
-
-    # Ensure that we are listening on port 80 and nothing else
-    describe aws_elb('web-elb') do
-      its('external_ports') { should include 80 }
+##### Ensure we only expose port 80, both to the public and internal
+    describe aws_elb('prod_web_app_elb') do
       its('external_ports.count') { should cmp 1 }
+      its('external_ports')       { should include 80 }
+      its('internal_ports.count') { should cmp 1 }
+      its('internal_ports')       { should include 80 }
     end
 
-### instance\_ids
-
-Returns an array of strings reflecting the instance IDs of the EC2 instances attached to the ELB.
-
-    # Ensure that a specific instance is attached
-    describe aws_elb('web-elb') do
+##### Ensure the correct EC2 Instances are associated
+    describe aws_elb('prod_web_app_elb') do
       its('instance_ids') { should include 'i-12345678' }
     end
-
-
-### internal\_ports
-
-Returns an array of integers reflecting the EC2-facing ports on which the load balancer will be sending traffic to.
-
-    # Ensure that we are sending traffic to port 80 on the instances and nothing else
-    describe aws_elb('web-elb') do
-      its('internal_ports') { should include 80 }
-      its('internal_ports.count') { should cmp 1 }
-    end
-
-### security\_group\_ids
-
-Returns an array of strings reflecting the security group IDs (firewall rule sets) assigned to the ELB.
-
-    # Ensure that a specific SG ID is assigned
-    describe aws_elb('web-elb') do
-      its('security_group_ids') { should include 'sg-12345678' }
-    end
-
-### subnet\_ids
-
-Returns an array of strings reflecting the subnet IDs on which the ELB is located.
-
-    # Ensure that the ELB is on a specific subnet
-    describe aws_elb('web-elb') do
-      its('subnet_ids') { should include 'subnet-12345678' }
-    end
-
-### vpc\_id
-
-Returns a String reflecting the ID of the VPC in which the ELB is located.
-
-    # Ensure that the ELB is on a specific VPC
-    describe aws_elb('web-elb') do
-      its('vpc_id') { should cmp 'vpc-12345678' }
-    end
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
+#### exist
+
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
+
+    describe aws_elb('AnExistingELB') do
+      it { should exist }
+    end
+
+    describe aws_elb('ANonExistentELB') do
+      it { should_not exist }
+    end
 
 ## AWS Permissions
 

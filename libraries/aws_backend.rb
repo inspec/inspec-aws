@@ -156,11 +156,27 @@ class AwsResourceBase < Inspec.resource(1)
     end
   end
 
-  def validate_parameters(allowed_list)
-    allowed_list += %i(client_args stub_data aws_region aws_endpoint)
-    raise ArgumentError, 'Scalar arguments not supported' if !defined?(@opts.keys)
-    raise ArgumentError, 'Unexpected arguments found' if !@opts.keys.all? { |a| allowed_list.include?(a) }
-    raise ArgumentError, 'Provided parameter should not be empty' if !@opts.values.all? { |a| !a.empty? }
+  # Ensure required parameters have been set to perform backend operations.
+  # Some resources may require several parameters to be set, in which case use `required`
+  # Some resources may require at least 1 of n parameters to be set, in which case use `require_any_of`
+  # If a parameter is entirely optional, use `allow`
+  def validate_parameters(allow: [], required: nil, require_any_of: nil)
+    if required
+      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
+      raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      allow += required
+    end
+
+    if require_any_of
+      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require_any_of}" unless require_any_of.is_a?(Array) && require_any_of.all? { |r| r.is_a?(Symbol) }
+      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      allow += require_any_of
+    end
+
+    allow += %i(client_args stub_data aws_region aws_endpoint)
+    raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
+    raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
+    raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? { |a| !a.empty? }
     true
   end
 
@@ -235,7 +251,7 @@ class AwsResourceDynamicMethods
         create_method(object, var.to_s.delete('@'), data.instance_variable_get(var))
       end
       # When the data is a Hash object iterate around each of the key value pairs and
-      # craete a method for each one.
+      # create a method for each one.
     when 'Hash'
       data.each do |key, value|
         create_method(object, key, value)
@@ -300,18 +316,18 @@ class AwsResourceDynamicMethods
   end
 end
 
-# Class object that is created for each element that is returned by GCP.
+# Class object that is created for each element that is returned by AWS.
 # This is what is interrogated by InSpec. If they are nested hashes, then this results
 # in nested AwsResourceProbe objects.
 #
 # The methods for each of the classes are dynamically defined at run time and will
-# match the items that are retrieved from GCP. See the 'test/integration/verify/controls' for
+# match the items that are retrieved from AWS. See the 'test/integration/verify/controls' for
 # examples
 #
 class AwsResourceProbe
   attr_reader :name, :type, :location, :item, :count
 
-  # Initialize method for the class. Accepts an item, be it a scalar value, hash or GCP object
+  # Initialize method for the class. Accepts an item, be it a scalar value, hash or AWS object
   # It will then create the necessary dynamic methods so that they can be called in the tests
   # This is accomplished by call the AwsResourceDynamicMethods
   #

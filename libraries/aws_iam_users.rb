@@ -38,7 +38,7 @@ class AwsIamUsers < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters([])
+    validate_parameters
     @table = fetch_data
   end
 
@@ -98,8 +98,6 @@ class AwsIamUsers < AwsResourceBase
     false
   end
 
-  # TODO: This method will paginate for > 1000 keys,
-  # We should handle that.
   def user_access_keys(username)
     # Return empty array instead if no keys.
     keys = @aws.iam_client.list_access_keys(username).access_key_metadata

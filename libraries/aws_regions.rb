@@ -12,17 +12,18 @@ class AwsRegions < AwsResourceBase
     end
   '
 
-  def initialize(opts = {})
-    # Call the parent class constructor
-    super(opts)
-    validate_parameters([])
-  end
+  attr_reader :table
 
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:region_names, field: :region_name)
-  filter_table_config.add(:endpoints, field: :endpoint)
-  filter_table_config.connect(self, :fetch_data)
+  FilterTable.create
+             .register_column(:region_names, field: :region_name)
+             .register_column(:endpoints,    field: :endpoint)
+             .install_filter_methods_on_resource(self, :table)
+
+  def initialize(opts = {})
+    super(opts)
+    validate_parameters
+    @table = fetch_data
+  end
 
   def fetch_data
     region_rows = []

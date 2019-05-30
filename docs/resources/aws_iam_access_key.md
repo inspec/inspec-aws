@@ -7,56 +7,73 @@ platform: aws
 
 Use the `aws_iam_access_key` InSpec audit resource to test properties of a single AWS IAM Access Key.
 
-<br>
-    
 ## Syntax
 
-An `aws_iam_access_key` resource allows the testing of a single AWS IAM Access Key. The Access key can be retrieved by ID, or by Username.
+An `aws_iam_access_key` resource allows the testing of a single AWS IAM Access Key.
 
     describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
       it { should exist }
     end
+    
+#### Parameters
 
-<br>
+This resources requires either an `access_key_id` or the IAM `username` associated with the Access Key.
+
+##### access_key_id _(required if `username` not provided.)_
+
+The Access Key ID which uniquely identifies the Key. Begins with the characters "AKIA". 
+This can be passed either as a string or as a `access_key_id: 'value'` key-value entry in a hash.
+
+##### username _(required if `access_key_id` not provided.)_
+
+The IAM Username which is associated with the Access Key.
+This can be passed either as a string or as a `username: 'value'` key-value entry in a hash.
+
+See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+
+## Properties
+
+|Property      | Description|
+| ---          | --- |
+|access_key_id | The ID of the Access Key. |
+|username      | The IAM Username which is associated with the Access Key. |
+|status        | The status of the Access Key, e.g. "Active". |
+|create_date   | The creation date of the Access Key. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that an IAM Access Key has been used
-
+##### Test that an IAM Access Key has been used in the last 90 days
     describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
-      it { should exist }
-      it('last_used_date')  { should_not be_nil }
+      it                    { should exist }
+      its('last_used_date') { should be > Time.now - 90 * 86400 }
     end
 
-### Test that an IAM Access Key for a specific user exists
-
+##### Test that an IAM Access Key for a specific user exists
       describe aws_iam_access_key(username: 'psmith', id: 'AKIA1111111111111111') do
         it { should exist }
       end
-
-<br>
-
-## Properties
-
-* access_key_id 
-* create_date
-* status
-* username
-* last_used_date
-
-<br>
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+#### exist
 
-The `exists` matcher tests if the described IAM Access Key exists.
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
 
     it { should exist }
+ 
+    it { should_not exist }
+    
+#### active
+
+The `active` matcher tests if the described IAM Access Key has a status of Active.
+
+    it { should be_active }
 
 ## AWS Permissions
 

@@ -4,23 +4,24 @@ require 'aws_backend'
 
 class AwsEbsVolumes < AwsResourceBase
   name 'aws_ebs_volumes'
-  desc 'Verifies settings for AWS EBS Volumes in bulk'
+  desc 'Verifies settings for a collection of AWS EBS Volumes'
   example '
     describe aws_ebs_volumes do
       it { should exist }
     end
   '
 
-  def initialize(opts = {})
-    # Call the parent class constructor
-    super(opts)
-    validate_parameters([])
-  end
+  attr_reader :table
 
-  # FilterTable setup
-  filter_table_config = FilterTable.create
-  filter_table_config.add(:volume_ids, field: :volume_id)
-  filter_table_config.connect(self, :fetch_data)
+  FilterTable.create
+             .register_column(:volume_ids, field: :volume_id)
+             .install_filter_methods_on_resource(self, :table)
+
+  def initialize(opts = {})
+    super(opts)
+    validate_parameters
+    @table = fetch_data
+  end
 
   def fetch_data
     volume_rows = []
