@@ -157,14 +157,14 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   # Ensure required parameters have been set to perform backend operations.
-  # Some resources may require several parameters to be set, in which case use `require`
+  # Some resources may require several parameters to be set, in which case use `required`
   # Some resources may require at least 1 of n parameters to be set, in which case use `require_any_of`
   # If a parameter is entirely optional, use `allow`
-  def validate_parameters(allow: [], require: nil, require_any_of: nil)
-    if require
-      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require}" unless require.is_a?(Array) && require.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: `#{require}` must be provided" unless @opts.is_a?(Hash) && require.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
-      allow += require
+  def validate_parameters(allow: [], required: nil, require_any_of: nil)
+    if required
+      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
+      raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      allow += required
     end
 
     if require_any_of
@@ -173,7 +173,7 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region)
+    allow += %i(client_args stub_data aws_region aws_endpoint)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? { |a| !a.empty? }

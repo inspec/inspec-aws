@@ -16,7 +16,7 @@ class AwsSnsTopic < AwsResourceBase
   def initialize(opts = {})
     opts = { arn: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:arn])
+    validate_parameters(required: [:arn])
 
     raise ArgumentError, "#{@__resource_name__}: expected an ARN of the form arn:aws:sns:REGION:ACCOUNT-ID:TOPIC-NAME" if opts[:arn] !~ /^arn:aws:sns:[\w\-]+:\d{12}:[\S]+$/
 

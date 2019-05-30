@@ -15,7 +15,7 @@ class AwsKmsKey < AwsResourceBase
     # SDK permits key_id to hold either an ID or an ARN
     opts = { key_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:key_id])
+    validate_parameters(required: [:key_id])
 
     @display_name = opts[:key_id]
 

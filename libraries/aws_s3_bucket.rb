@@ -16,7 +16,7 @@ class AwsS3Bucket < AwsResourceBase
   def initialize(opts = {})
     opts = { bucket_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:bucket_name])
+    validate_parameters(required: [:bucket_name])
 
     @bucket_name = opts[:bucket_name]
 

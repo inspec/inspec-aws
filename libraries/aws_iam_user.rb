@@ -21,7 +21,7 @@ class AwsIamUser < AwsResourceBase
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:user_name])
+    validate_parameters(required: [:user_name])
 
     catch_aws_errors do
       username   = { user_name: opts[:user_name] }

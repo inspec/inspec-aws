@@ -15,7 +15,7 @@ class AwsS3BucketObject < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(require: %i(bucket_name key))
+    validate_parameters(required: %i(bucket_name key))
 
     @bucket_name = opts[:bucket_name]
     @key = opts[:key]

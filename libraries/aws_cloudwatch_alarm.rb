@@ -16,7 +16,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(require: %i(metric_name metric_namespace))
+    validate_parameters(required: %i(metric_name metric_namespace))
 
     @metric_name      = opts[:metric_name]
     @metric_namespace = opts[:metric_namespace]

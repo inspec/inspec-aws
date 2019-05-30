@@ -15,7 +15,7 @@ class AwsRdsInstance < AwsResourceBase
   def initialize(opts = {})
     opts = { db_instance_identifier: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:db_instance_identifier])
+    validate_parameters(required: [:db_instance_identifier])
 
     raise ArgumentError, "#{@__resource_name__}: db_instance_identifer must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
 

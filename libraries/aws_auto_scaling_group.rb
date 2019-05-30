@@ -18,7 +18,7 @@ class AwsAutoScalingGroup < AwsResourceBase
   def initialize(opts = {})
     opts = { auto_scaling_group_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:auto_scaling_group_name])
+    validate_parameters(required: [:auto_scaling_group_name])
 
     catch_aws_errors do
       resp = @aws.service_client.describe_auto_scaling_groups(auto_scaling_group_names: [opts[:auto_scaling_group_name]])

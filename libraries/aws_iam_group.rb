@@ -17,7 +17,7 @@ class AwsIamGroup < AwsResourceBase
   def initialize(opts = {})
     opts = { group_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:group_name])
+    validate_parameters(required: [:group_name])
 
     catch_aws_errors do
       @resp = @aws.iam_client.get_group(group_name: opts[:group_name])

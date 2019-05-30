@@ -18,7 +18,7 @@ class AwsSqsQueue < AwsResourceBase
   def initialize(opts = {})
     opts = { queue_url: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:queue_url])
+    validate_parameters(required: [:queue_url])
 
     catch_aws_errors do
       resp = @aws.sqs_client.get_queue_attributes(queue_url: opts[:queue_url], attribute_names: ['All']).attributes

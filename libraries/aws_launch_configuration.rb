@@ -18,7 +18,7 @@ class AwsLaunchConfiguration < AwsResourceBase
   def initialize(opts = {})
     opts = { launch_configuration_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:launch_configuration_name])
+    validate_parameters(required: [:launch_configuration_name])
 
     catch_aws_errors do
       resp = @aws.service_client.describe_launch_configurations(launch_configuration_names: [opts[:launch_configuration_name]])

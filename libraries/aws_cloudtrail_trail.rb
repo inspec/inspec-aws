@@ -20,7 +20,7 @@ class AwsCloudTrailTrail < AwsResourceBase
   def initialize(opts = {})
     opts = { trail_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:trail_name])
+    validate_parameters(required: [:trail_name])
 
     @trail_name = opts[:trail_name]
     catch_aws_errors do

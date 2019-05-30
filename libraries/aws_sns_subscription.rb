@@ -26,7 +26,7 @@ class AwsSnsSubscription < AwsResourceBase
   def initialize(opts = {})
     opts = { subscription_arn: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:subscription_arn])
+    validate_parameters(required: [:subscription_arn])
 
     @display_name = opts[:subscription_arn]
     catch_aws_errors do

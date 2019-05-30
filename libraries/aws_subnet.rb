@@ -16,7 +16,7 @@ class AwsSubnet < AwsResourceBase
   def initialize(opts = {})
     opts = { subnet_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require: [:subnet_id])
+    validate_parameters(required: [:subnet_id])
 
     if opts[:subnet_id] !~ /^subnet\-[0-9a-f]{8}/
       raise ArgumentError, "#{@__resource_name__}: 'subnet_id' must be in the format 'subnet-' followed by 8 hexadecimal characters."
