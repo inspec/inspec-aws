@@ -251,7 +251,7 @@ class AwsResourceDynamicMethods
         create_method(object, var.to_s.delete('@'), data.instance_variable_get(var))
       end
       # When the data is a Hash object iterate around each of the key value pairs and
-      # craete a method for each one.
+      # create a method for each one.
     when 'Hash'
       data.each do |key, value|
         create_method(object, key, value)
