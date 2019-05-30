@@ -316,18 +316,18 @@ class AwsResourceDynamicMethods
   end
 end
 
-# Class object that is created for each element that is returned by GCP.
+# Class object that is created for each element that is returned by AWS.
 # This is what is interrogated by InSpec. If they are nested hashes, then this results
 # in nested AwsResourceProbe objects.
 #
 # The methods for each of the classes are dynamically defined at run time and will
-# match the items that are retrieved from GCP. See the 'test/integration/verify/controls' for
+# match the items that are retrieved from AWS. See the 'test/integration/verify/controls' for
 # examples
 #
 class AwsResourceProbe
   attr_reader :name, :type, :location, :item, :count
 
-  # Initialize method for the class. Accepts an item, be it a scalar value, hash or GCP object
+  # Initialize method for the class. Accepts an item, be it a scalar value, hash or AWS object
   # It will then create the necessary dynamic methods so that they can be called in the tests
   # This is accomplished by call the AwsResourceDynamicMethods
   #
