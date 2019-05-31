@@ -119,3 +119,44 @@ class AwsCloudwatchAlarmMultipleFailsTest < Minitest::Test
     assert_raises(RuntimeError) { AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [@data]) }
   end
 end
+
+class AwsCloudwatchAlarmWithDimensionsTest < Minitest::Test
+  def setup
+    dimensions = [{name:'Server', value:'Prod'},{name:'Domain', value:'Frankfurt'}]
+    data = {}
+    data[:method] = :describe_alarms_for_metric
+    mock_alarm = {}
+    mock_alarm[:alarm_name] = 'alarm-12345678'
+    mock_alarm[:metric_name] = 'metric'
+    mock_alarm[:namespace] = 'space'
+    mock_alarm[:dimensions] = dimensions
+    mock_alarm[:alarm_actions] = []
+    data[:data] = { :metric_alarms => [mock_alarm] }
+    data[:client] = Aws::CloudWatch::Client
+    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', dimensions: dimensions, client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_alarm_exists
+    assert @alarm.exists?
+  end
+
+  def test_alarm_name
+    assert_equal(@alarm.alarm_name, 'alarm-12345678')
+  end
+
+  def test_alarm_metric_name
+    assert_equal(@alarm.metric_name, 'metric')
+  end
+
+  def test_alarm_metric_namespace
+    assert_equal(@alarm.metric_namespace, 'space')
+  end
+
+  def test_alarm_dimensions
+    assert_equal(@alarm.dimensions, [{name:'Server', value:'Prod'},{name:'Domain', value:'Frankfurt'}])
+  end
+
+  def test_alarm_actions
+    assert_equal(@alarm.alarm_actions, [])
+  end
+end

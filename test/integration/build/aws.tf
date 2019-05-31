@@ -856,7 +856,7 @@ resource "aws_cloudwatch_log_group" "log_metric_filter_pattern_log_group" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
-  count                     = "${var.aws_enable_creation}"
+  count                     = "1"
   alarm_name                = "${var.aws_cloud_watch_alarm_name}"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
@@ -864,6 +864,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
   namespace                 = "${var.aws_cloud_watch_log_metric_filter_namespace}"
   period                    = "120"
   statistic                 = "Average"
+  dimensions                = [{name = "test", value = "test"}]
   threshold                 = "80"
   alarm_description         = "This metric is a test metric"
   insufficient_data_actions = []
