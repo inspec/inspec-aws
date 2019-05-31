@@ -12,18 +12,22 @@ class AwsCloudwatchAlarm < AwsResourceBase
     it { should exist }
   end
   "
-  attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace
+  attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace, :dimensions
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(metric_name metric_namespace))
-
+    validate_parameters(allow: %i(dimensions), required: %i(metric_name metric_namespace))
     @metric_name      = opts[:metric_name]
     @metric_namespace = opts[:metric_namespace]
+    @dimensions       = opts[:dimensions]
     @alarm_actions    = []
+    alarm_parameters = {}
+    alarm_parameters[:metric_name] = @metric_name
+    alarm_parameters[:namespace] =   @metric_namespace
+    alarm_parameters[:dimensions] =  @dimensions if @dimensions
 
     catch_aws_errors do
-      resp = @aws.cloudwatch_client.describe_alarms_for_metric(metric_name: @metric_name, namespace: @metric_namespace)
+      resp = @aws.cloudwatch_client.describe_alarms_for_metric(alarm_parameters)
       @metric_alarms = resp.metric_alarms
     end
 
