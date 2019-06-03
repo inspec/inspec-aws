@@ -24,7 +24,15 @@ class AwsCloudwatchAlarm < AwsResourceBase
     alarm_parameters = {}
     alarm_parameters[:metric_name] = @metric_name
     alarm_parameters[:namespace] =   @metric_namespace
-    alarm_parameters[:dimensions] =  @dimensions if @dimensions
+    if @dimensions
+      # This will re-format the array of hashes to the required API format [{key => 'value'}] will become [{name => 'key' value => 'value'}]
+      alarm_parameters[:dimensions] = []
+      @dimensions.each do |dimension|
+        dimension.each do |k,v|
+          alarm_parameters[:dimensions] << {:name => k, :value => v}
+        end
+      end
+    end
 
     catch_aws_errors do
       resp = @aws.cloudwatch_client.describe_alarms_for_metric(alarm_parameters)
