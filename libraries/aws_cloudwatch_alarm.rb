@@ -25,7 +25,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
     alarm_parameters[:metric_name] = @metric_name
     alarm_parameters[:namespace] =   @metric_namespace
     if @dimensions
-      # This will re-format the array of hashes to the required API format [{key => 'value'}] will become [{name => 'key' value => 'value'}]
+      # re-format the array of hashes to the required API format [{key => 'value'}] will become [{name => 'key' value => 'value'}]
       alarm_parameters[:dimensions] = []
       @dimensions.each do |dimension|
         dimension.each do |k,v|

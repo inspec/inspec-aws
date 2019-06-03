@@ -122,18 +122,17 @@ end
 
 class AwsCloudwatchAlarmWithDimensionsTest < Minitest::Test
   def setup
-    dimensions = [{name:'Server', value:'Prod'},{name:'Domain', value:'Frankfurt'}]
     data = {}
     data[:method] = :describe_alarms_for_metric
     mock_alarm = {}
     mock_alarm[:alarm_name] = 'alarm-12345678'
     mock_alarm[:metric_name] = 'metric'
     mock_alarm[:namespace] = 'space'
-    mock_alarm[:dimensions] = dimensions
+    mock_alarm[:dimensions] = [{:name=>'Server', :value=>'Prod'},{:name=>'Domain', :value=>'Frankfurt'}]
     mock_alarm[:alarm_actions] = []
     data[:data] = { :metric_alarms => [mock_alarm] }
     data[:client] = Aws::CloudWatch::Client
-    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', dimensions: dimensions, client_args: { stub_responses: true }, stub_data: [data])
+    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', dimensions: [{:name=>'Server', :value=>'Prod'},{:name=>'Domain', :value=>'Frankfurt'}], client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_alarm_exists
