@@ -28,8 +28,8 @@ class AwsCloudwatchAlarm < AwsResourceBase
       # re-format the array of hashes to the required API format [{key => 'value'}] will become [{name => 'key' value => 'value'}]
       alarm_parameters[:dimensions] = []
       @dimensions.each do |dimension|
-        dimension.each do |k,v|
-          alarm_parameters[:dimensions] << {:name => k, :value => v}
+        dimension.each do |k, v|
+          alarm_parameters[:dimensions] << { name: k, value: v }
         end
       end
     end
