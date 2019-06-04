@@ -29,6 +29,9 @@ variable "aws_cloud_trail_name" {}
 variable "aws_cloud_trail_open_name" {}
 variable "aws_cloud_watch_alarm_metric_name" {}
 variable "aws_cloud_watch_alarm_name" {}
+variable "aws_cloud_watch_alarm_name_with_dimensions" {}
+variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
+variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
 variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
 variable "aws_cloud_watch_log_metric_filter_metric_name" {}
 variable "aws_cloud_watch_log_metric_filter_name" {}
@@ -864,6 +867,21 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
   namespace                 = "${var.aws_cloud_watch_log_metric_filter_namespace}"
   period                    = "120"
   statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric is a test metric"
+  insufficient_data_actions = []
+}
+
+resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm_with_dimensions" {
+  count                     = "${var.aws_enable_creation}"
+  alarm_name                = "${var.aws_cloud_watch_alarm_name_with_dimensions}"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "${var.aws_cloud_watch_alarm_metric_name_with_dimensions}"
+  namespace                 = "${var.aws_cloud_watch_log_metric_filter_namespace_with_dimensions}"
+  period                    = "120"
+  statistic                 = "Average"
+  dimensions                = [{aws_dimension_name1 = "aws_dimension_value1", aws_dimension_name2 = "aws_dimension_value2"}]
   threshold                 = "80"
   alarm_description         = "This metric is a test metric"
   insufficient_data_actions = []

@@ -25,6 +25,10 @@ The metric name used by this alarm. This must be passed as a `metric_name: 'valu
 
 The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` key-value entry in a hash.
 
+##### dimensions _(optional)_
+
+The dimensions associated with this alarm. This must be passed as an array of hashes `dimensions: [{key:'value'}]` .
+
 ## Properties
 
 |Property         | Description|
@@ -39,6 +43,11 @@ The metric namespace used by this alarm. This must be passed as a `metric_namesp
 ##### Ensure an Alarm has at least one alarm action
     describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
       its('alarm_actions') { should_not be_empty }
+    end
+    
+##### Ensure an Alarm with Dimensions exists
+    describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace', dimensions: [{key: 'value'}]) do
+      it { should exist }
     end
 
 ## Matchers
