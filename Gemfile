@@ -24,6 +24,8 @@ gem 'aws-sdk-rds', '~> 1'
 gem 'aws-sdk-s3', '~> 1'
 gem 'aws-sdk-sns', '~> 1'
 gem 'aws-sdk-sqs', '~> 1'
+# Use Latest Inspec
+gem 'inspec-bin'
 
 gem 'rubocop', '~> 0.64.0', require: false
 
@@ -38,6 +40,3 @@ end
 #  gem 'inspec', '~> 3.0', '>= 3.0.25'
 #end
 
-# Below required to overcome AWS SDK v2/3 incompatibility
-gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
-gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
