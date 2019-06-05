@@ -78,6 +78,11 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
       its('outbound_rules.last') { should_not include(ip_ranges:['0.0.0.0/0']) }
     end
     
+##### Test a rule that allows All Traffic
+    describe aws_security_group(group_name: my_group) do
+      it { should allow_in(ipv4_range: ["10.1.2.0/24", "10.3.2.0/24"], protocol: 'all') }
+    end
+
 ##### Ensure a SG only allows SSH from a specific range
     describe aws_security_group(group_name: linux_servers) do
       it { should allow_in(port: 22, ipv4_range: '10.5.0.0/16') }

@@ -110,6 +110,10 @@ output "aws_security_group_gamma_id" {
   value = "${aws_security_group.gamma.*.id}"
 }
 
+output "aws_security_group_zeta_id" {
+  value = "${aws_security_group.zeta.*.id}"
+}
+
 output "aws_security_group_omega_id" {
   value = "${aws_security_group.omega.*.id}"
 }
