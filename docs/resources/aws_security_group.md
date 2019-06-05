@@ -74,22 +74,26 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 ## Examples
 
 ##### Test outbound rules
+
     describe aws_security_group(group_name: isolated_servers) do
       its('outbound_rules.last') { should_not include(ip_ranges:['0.0.0.0/0']) }
     end
     
 ##### Test a rule that allows All Traffic
+
     describe aws_security_group(group_name: my_group) do
       it { should allow_in(ipv4_range: ["10.1.2.0/24", "10.3.2.0/24"], protocol: 'all') }
     end
 
 ##### Ensure a SG only allows SSH from a specific range
+
     describe aws_security_group(group_name: linux_servers) do
       it { should allow_in(port: 22, ipv4_range: '10.5.0.0/16') }
       it { should_not allow_in(port: 22, ipv4_range: '0.0.0.0/0') }
     end
 
 ##### Ensure that the careful_updates Security Group may only initiate contact with specific IPs.
+
     describe aws_security_group(group_name: 'careful_updates') do
 
       # If you have two rules, with one CIDR each:
@@ -106,6 +110,7 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
     end
 
 ##### Ensure that the canary_deployments Security Group only allows access from one specific security group id on port 443.
+
     describe aws_security_group(group_name: 'canary_deployments') do
       it { should allow_in_only(port: 443, security_group: "sg-33334444") }
     end
