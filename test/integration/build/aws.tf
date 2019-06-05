@@ -81,6 +81,7 @@ variable "aws_rds_db_storage_type" {}
 variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
+variable "aws_security_group_zeta" {}
 variable "aws_security_group_omega" {}
 variable "aws_sqs_queue_name" {}
 variable "aws_sns_topic_no_subscription" {}
@@ -461,6 +462,13 @@ resource "aws_security_group" "gamma" {
   vpc_id      = "${data.aws_vpc.default.id}"
 }
 
+resource "aws_security_group" "zeta" {
+  count       = "${var.aws_enable_creation}"
+  name        = "${var.aws_security_group_zeta}"
+  description = "SG zeta"
+  vpc_id      = "${data.aws_vpc.default.id}"
+}
+
 // Note this gets created in a new VPC and with no rules defined
 resource "aws_security_group" "omega" {
   count       = "${var.aws_enable_creation}"
@@ -587,6 +595,32 @@ resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
   protocol                 = "tcp"
   source_security_group_id = "${aws_security_group.alpha.id}"
   security_group_id        = "${aws_security_group.gamma.id}"
+}
+
+resource "aws_security_group_rule" "zeta_all_ports_in" {
+  count                    = "${var.aws_enable_creation}"
+  type                     = "ingress"
+  from_port                = "0"
+  to_port                  = "65535"
+  protocol                 = "all"
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
+
+  security_group_id        = "${aws_security_group.zeta.id}"
+}
+
+resource "aws_security_group_rule" "zeta_all_ports_out" {
+  count                    = "${var.aws_enable_creation}"
+  type                     = "egress"
+  from_port                = "0"
+  to_port                  = "65535"
+  protocol                 = "all"
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
+
+  security_group_id        = "${aws_security_group.zeta.id}"
 }
 
 resource "aws_db_instance" "db_rds" {

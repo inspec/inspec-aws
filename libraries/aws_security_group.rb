@@ -211,7 +211,7 @@ class AwsSecurityGroup < AwsResourceBase
     return true unless criteria.key?(:protocol)
     prot = criteria[:protocol]
     # We provide a "fluency alias" for -1 (any).
-    prot = '-1' if prot == 'any'
+    prot = '-1' if prot == 'any' or prot.casecmp?('all')
 
     rule[:ip_protocol] == prot
   end

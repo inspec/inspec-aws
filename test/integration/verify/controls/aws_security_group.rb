@@ -9,9 +9,10 @@ aws_security_group_beta_id = attribute(:aws_security_group_beta_id, default: '',
 aws_security_group_beta = attribute(:aws_security_group_beta, default: '', description: 'AWS Security Group name.')
 aws_security_group_gamma_id = attribute(:aws_security_group_gamma_id, default: '', description: 'AWS Security Group ID.')
 aws_security_group_gamma = attribute(:aws_security_group_gamma, default: '', description: 'AWS Security Group name.')
+aws_security_group_zeta_id = attribute(:aws_security_group_zeta_id, default: '', description: 'AWS Security Group ID.')
+aws_security_group_zeta = attribute(:aws_security_group_zeta, default: '', description: 'AWS Security Group name.')
 aws_security_group_omega_id = attribute(:aws_security_group_omega_id, default: '', description: 'AWS Security Group ID.')
 aws_security_group_omega = attribute(:aws_security_group_omega, default: '', description: 'AWS Security Group name.')
-
 
 control 'aws-security-group-1.0' do
 
@@ -94,6 +95,14 @@ control 'aws-security-group-1.0' do
   describe aws_security_group(aws_security_group_gamma_id) do
     it { should allow_in_only(port: 22, security_group: aws_security_group_alpha_id) }
     its('group_name') { should eq aws_security_group_gamma }
+  end
+
+  describe aws_security_group(aws_security_group_zeta_id) do
+    its('group_name') { should eq aws_security_group_zeta }
+    it { should allow_in(ipv4_range: "0.0.0.0/0", protocol: 'any') }
+    it { should allow_in(ipv4_range: "0.0.0.0/0", protocol: 'all') }
+    it { should allow_out(ipv4_range: "0.0.0.0/0", protocol: 'any') }
+    it { should allow_out(ipv4_range: "0.0.0.0/0", protocol: 'all') }
   end
 
 end
