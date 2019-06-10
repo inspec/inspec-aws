@@ -7,7 +7,7 @@ class AwsDynamodbTable < AwsResourceBase
   desc 'Verifies the settings for a DynamoDB table'
 
   example "
-    describe aws_dynamo_db_table('table-name') do
+    describe aws_dynamo_db_table(table_name: 'table-name') do
       it { should exist }
     end
   "
@@ -33,7 +33,7 @@ class AwsDynamodbTable < AwsResourceBase
       @table_name                = @dynamodb_table[:table_name]
       @table_status              = @dynamodb_table[:table_status]
       @table_arn                 = @dynamodb_table[:table_arn]
-      @creation_date             = @dynamodb_table[:creation_date_time].strftime("%m/%d/%Y")
+      @creation_date             = @dynamodb_table[:creation_date_time].strftime('%m/%d/%Y')
       @number_of_decreases_today = @dynamodb_table[:provisioned_throughput][:number_of_decreases_today]
       @write_capacity_units      = @dynamodb_table[:provisioned_throughput][:write_capacity_units]
       @read_capacity_units       = @dynamodb_table[:provisioned_throughput][:read_capacity_units]
@@ -57,13 +57,13 @@ class AwsDynamodbTable < AwsResourceBase
       end
 
       if @dynamodb_table['global_secondary_indexes']
-        @secondary_global_table = flatten_hash(@dynamodb_table['global_secondary_indexes'][0].to_h, "global_sec_indexes")
+        @secondary_global_table = flatten_hash(@dynamodb_table['global_secondary_indexes'][0].to_h, 'global_sec_indexes')
         create_resource_methods(@secondary_global_table)
       end
     end
   end
 
-  def flatten_hash(param, prefix=nil)
+  def flatten_hash(param, prefix = nil)
     param.each_pair.reduce({}) do |a, (k, v)|
       v.is_a?(Hash) ? a.merge(flatten_hash(v, prefix)) : a.merge("#{prefix}_#{k}".to_sym => v)
     end
@@ -77,6 +77,4 @@ class AwsDynamodbTable < AwsResourceBase
   def to_s
     "AWS Dynamodb table #{@table_name}"
   end
-
 end
-
