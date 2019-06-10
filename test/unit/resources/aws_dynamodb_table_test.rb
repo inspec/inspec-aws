@@ -45,7 +45,7 @@ class AwsDynamodbTableTest < Minitest::Test
     stub_data[:data] = {table: mock_table}
     stub_data[:client] = Aws::DynamoDB::Client
 
-    @dynamodb_table = AwsDynamodbTable.new(table_name: mock_table[:table_name], client_args: { stub_responses: true }, stub_data: [stub_data])
+    @dynamodb_table = AwsDynamodbTable.new(table_name: mock_table[:table_name], client_args: { stub_responses: true, region: 'us-west-2' }, stub_data: [stub_data])
   end
 
   def test_table_exists

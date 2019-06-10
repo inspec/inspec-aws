@@ -48,7 +48,6 @@ variable "aws_configuration_recorder_name" {}
 variable "aws_configuration_recorder_role" {}
 variable "aws_create_configuration_recorder" {}
 variable "aws_dynamodb_table_name" {}
-variable "aws_dynamodb_global_table_name" {}
 variable "aws_delivery_channel_bucket_name" {}
 variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
