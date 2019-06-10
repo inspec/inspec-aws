@@ -13,7 +13,7 @@ control 'aws-dynamodb-table-1.0' do
     its('table_name')                    { should eq aws_dynamodb_table_name }
     its('table_arn')                     { should eq aws_dynamodb_table_arn }
     its('table_status')                  { should eq 'ACTIVE' }
-    its('creation_date')                 { should eq '06/06/2019' }
+    its('creation_date')                 { should be > '01/01/2019' }
     its('number_of_decreases_today')     { should cmp 0 }
     its('write_capacity_units')          { should cmp 20 }
     its('read_capacity_units')           { should cmp 20 }

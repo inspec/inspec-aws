@@ -1228,7 +1228,7 @@ resource "aws_autoscaling_group" "aws_auto_scaling_group" {
 }
 
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
-  count            = "${var.aws_enable_creation}"
+  count            = 1
   name             = "${var.aws_dynamodb_table_name}"
   read_capacity    = 20
   write_capacity   = 20
@@ -1263,10 +1263,5 @@ resource "aws_dynamodb_table" "aws-dynamodb-table" {
     read_capacity      = 10
     projection_type    = "INCLUDE"
     non_key_attributes = ["UserId"]
-  }
-
-  tags = {
-    Name        = "${var.aws_dynamodb_table_name}-tag"
-    Environment = "production"
   }
 }

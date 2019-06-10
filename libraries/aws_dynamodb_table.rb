@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsDynamodbTable < AwsResourceBase
+class AwsDynamoDbTable < AwsResourceBase
   name 'aws_dynamodb_table'
   desc 'Verifies the settings for a DynamoDB table'
 
@@ -56,25 +56,25 @@ class AwsDynamodbTable < AwsResourceBase
         }
       end
 
-      if @dynamodb_table['global_secondary_indexes']
-        @secondary_global_table = flatten_hash(@dynamodb_table['global_secondary_indexes'][0].to_h, 'global_sec_indexes')
+      if @dynamodb_table[:global_secondary_indexes]
+        @secondary_global_table = flatten_hash(@dynamodb_table[:global_secondary_indexes][0].to_h)
         create_resource_methods(@secondary_global_table)
       end
     end
   end
 
-  def flatten_hash(param, prefix = nil)
-    param.each_pair.reduce({}) do |a, (k, v)|
-      v.is_a?(Hash) ? a.merge(flatten_hash(v, prefix)) : a.merge("#{prefix}_#{k}".to_sym => v)
-    end
-  end
-
-  def exist?
+  def exists?
     !@dynamodb_table.nil?
   end
-  alias exists? exist?
 
   def to_s
     "AWS Dynamodb table #{@table_name}"
+  end
+
+  private
+  def flatten_hash(param)
+    param.each_pair.reduce({}) do |a, (k, v)|
+      v.is_a?(Hash) ? a.merge(flatten_hash(v)) : a.merge("global_sec_indexes_#{k}".to_sym => v)
+    end
   end
 end
