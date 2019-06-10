@@ -57,6 +57,7 @@ module AWSInspecConfig
       aws_cloud_watch_logs_role_policy_name: "aws-iam-role-cloud-watch-logs-policy-#{add_random_string}",
       aws_configuration_recorder_name: "aws-config-recorder-#{add_random_string}",
       aws_configuration_recorder_role: "aws-config-recorder-role-#{add_random_string}",
+      aws_dynamodb_table_name: "aws-dynamodb-table-#{add_random_string}",
       aws_delivery_channel_bucket_name: "aws-delivery-channel-bucket-#{add_random_string}",
       aws_delivery_channel_frequency: 'TwentyFour_Hours',
       aws_delivery_channel_name: "aws-delivery-channel-#{add_random_string}",

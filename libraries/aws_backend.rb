@@ -6,6 +6,7 @@ require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
 require 'aws-sdk-configservice'
 require 'aws-sdk-core'
+require 'aws-sdk-dynamodb'
 require 'aws-sdk-ec2'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
@@ -73,6 +74,10 @@ class AwsConnection
 
   def config_client
     aws_client(Aws::ConfigService::Client)
+  end
+
+  def dynamodb_client
+    aws_client(Aws::DynamoDB::Client)
   end
 
   def ecs_client

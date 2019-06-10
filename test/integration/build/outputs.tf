@@ -173,3 +173,7 @@ output "aws_sqs_queue_arn" {
 output "aws_iam_access_key_id" {
   value = "${aws_iam_access_key.iam_user_access_key.*.id}"
 }
+
+output "aws_dynamodb_table_arn" {
+  value = "${aws_dynamodb_table.aws-dynamodb-table.*.arn}"
+}
