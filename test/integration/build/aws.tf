@@ -47,6 +47,7 @@ variable "aws_cloud_watch_logs_role_policy_name" {}
 variable "aws_configuration_recorder_name" {}
 variable "aws_configuration_recorder_role" {}
 variable "aws_create_configuration_recorder" {}
+variable "aws_dynamodb_table_name" {}
 variable "aws_delivery_channel_bucket_name" {}
 variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
@@ -1258,4 +1259,43 @@ resource "aws_autoscaling_group" "aws_auto_scaling_group" {
   desired_capacity     = 0
   launch_configuration = "${aws_launch_configuration.as_conf.name}"
   vpc_zone_identifier  = ["${aws_subnet.inspec_subnet.id}"]
+}
+
+resource "aws_dynamodb_table" "aws-dynamodb-table" {
+  count            = 1
+  name             = "${var.aws_dynamodb_table_name}"
+  read_capacity    = 20
+  write_capacity   = 20
+  hash_key         = "UserId"
+  range_key        = "Title"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "Title"
+    type = "S"
+  }
+
+  attribute {
+    name = "Score"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = false
+  }
+
+  global_secondary_index {
+    name               = "TitleIndex"
+    hash_key           = "Title"
+    range_key          = "Score"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
 }
