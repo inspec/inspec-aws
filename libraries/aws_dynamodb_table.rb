@@ -45,14 +45,14 @@ class AwsDynamoDbTable < AwsResourceBase
       if @dynamodb_table[:attribute_definitions]
         @dynamodb_table[:attribute_definitions].map { |attr|
           @attributes.push({ 'attribute_name': attr.attribute_name,
-                                 'attribute_type': attr.attribute_type })
+                             'attribute_type': attr.attribute_type })
         }
       end
 
       if @dynamodb_table[:key_schema]
         @dynamodb_table[:key_schema].map { |key|
           @key_schema.push({ 'attribute_name': key.attribute_name,
-                                 'key_type':       key.key_type })
+                             'key_type':       key.key_type })
         }
       end
 
