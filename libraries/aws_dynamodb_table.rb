@@ -70,7 +70,7 @@ class AwsDynamodbTable < AwsResourceBase
   end
 
   def exist?
-    !@table_name.nil?
+    !@dynamodb_table.nil?
   end
   alias exists? exist?
 
