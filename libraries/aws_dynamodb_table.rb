@@ -72,7 +72,7 @@ class AwsDynamoDbTable < AwsResourceBase
   end
 
   private
-  
+
   def flatten_hash(param)
     param.each_pair.reduce({}) do |a, (k, v)|
       v.is_a?(Hash) ? a.merge(flatten_hash(v)) : a.merge("global_sec_indexes_#{k}".to_sym => v)
