@@ -31,8 +31,11 @@ The table name used by this Dynamodb Table. This must be passed as a `table_name
 |write_capacity_units      | The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException. |
 |read_capacity_units       | The maximum number of strongly consistent reads consumed per second before DynamoDB returns a ThrottlingException. |
 |item_count                | The number of entries in the  Dynamdob Table. |
-|attributes                | An array of attributes that describe the key schema for the table and indexes. This is returned as a hash. Each entry is composed of: attribute_name - The name of this key attribute. attribute_type - The datatype of the attribute : B - Boolean, N - Number, S - string|
-|key_schema                | Specifies the attributes that make up the primary key for a table or an index. The attributes in KeySchema must also be defined in the AttributeDefinitions array. Each KeySchemaElement in the array is composed of: attribute_name - The name of this key attribute. key_type - The role that the key attribute will assume: HASH - partition key, RANGE - sort key|
+|attributes                | An array of attributes that describe the key schema for the table and indexes. This is returned as a hash. Each entry is composed of: attribute_name - The name of this key attribute. attribute_type - The datatype of the attribute : `B` - Boolean, `N` - Number, `S` - string|
+|key_schema                | Specifies the attributes that make up the primary key for a table or an index. The attributes in KeySchema must also be defined in the AttributeDefinitions array. Each KeySchemaElement in the array is composed of: attribute_name - The name of this key attribute. key_type - The role that the key attribute will assume: `HASH` - partition key, `RANGE` - sort key|
+|secondary_global_table    | This will only be populated if a global secondary table has been referenced on the selected table. This will return a hash of values with a prefix of `global_sec_indexes` for each key. eg. `global_sec_indexes_table_name`  |
+
+global_secondary_indexes
 
 ## Examples
 
