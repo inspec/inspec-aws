@@ -79,7 +79,8 @@ class AwsConnection
 
   def ecr_client
     aws_client(Aws::ECR::Client)
-    
+  end
+
   def dynamodb_client
     aws_client(Aws::DynamoDB::Client)
   end
