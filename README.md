@@ -6,7 +6,9 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 ### AWS Credentials
 
-Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))  
+Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))
+
+InSpec for AWS, uses the AWS SDK credential loading. There are multiple ways to set AWS credentials as shown below:
 
 Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
     
@@ -17,6 +19,39 @@ Set your AWS credentials in an `.envrc` file or export them in your shell. (See 
     export AWS_REGION="eu-west-3"
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
 ```
+
+Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See example [aws configure credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))
+
+Example `~/.aws/credentials` :
+   ```
+      [default]
+      aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+      aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      
+      [engineering]
+      aws_access_key_id=AKIAIOSFODNN7EXAMPLF
+      aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY1
+   ```
+   
+Example `~/.aws/config` :
+ ```
+    [default]
+    region=us-west-2
+    
+    [engineering]
+    region=us-east-2
+ ```
+ 
+ AWS SDK will select the default credentials unless `aws_profile` is set in an `.envrc`
+ ```bash
+     # Example configuration
+     export AWS_PROFILE="engineering"
+ ```
+ 
+ The credentials precedence is:
+   1. Credentials set in `.envrc`.
+   2. Credentials set in `~/.aws/credentials` and `~/.aws/config` with `AWS_PROFILE` set in `.envrc`.
+   3. Credentials set in `~/.aws/credentials` and `~/.aws/config` with ***NO*** `AWS_PROFILE` variable set in `.envrc`. Default credentials will be used.
 
 ### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
@@ -61,6 +96,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_cloudwatch_log_metric_filter](docs/resources/aws_cloudwatch_log_metric_filter.md)
 - [aws_config_delivery_channel](docs/resources/aws_config_delivery_channel.md)
 - [aws_config_recorder](docs/resources/aws_config_recorder.md)
+- [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
