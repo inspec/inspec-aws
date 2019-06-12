@@ -1,7 +1,6 @@
 title 'Test single AWS ECR'
 
-aws_ecr_name = "aws-ecr-name-fhxglcpleahkwukwlzdyywblu"
-#aws_ecr_name = attribute(:aws_ecr_name, default: '', description: 'The AWS ECR name.')
+aws_ecr_name = attribute(:aws_ecr_name, default: '', description: 'The AWS ECR name.')
 
 control 'aws-ecr-1.0' do
 
