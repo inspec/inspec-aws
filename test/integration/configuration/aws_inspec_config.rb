@@ -62,6 +62,7 @@ module AWSInspecConfig
       aws_delivery_channel_name: "aws-delivery-channel-#{add_random_string}",
       aws_delivery_channel_sns_topic_name: "aws-delivery-channel-sns-topic-#{add_random_string}",
       aws_ebs_volume_name: 'inspec-ebs-volume-name',
+      aws_ecr_name: "aws-ecr-name-#{add_random_string}",
       aws_ecs_cluster_name: "ecs-cluster-#{add_random_string}",
       aws_eks_cluster_name: "eks-cluster-#{add_random_string}",
       aws_eks_role_name: "eks-role-#{add_random_string}",
