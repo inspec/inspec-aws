@@ -16,45 +16,41 @@ module AWSInspecConfig
   end
 
   def self.region_parser(raw)
-    current_profile = nil
-    current_prefix = nil
-    raw.lines.inject({}) do |acc, line|
-      line = line.split(/^|\s;/).first # remove comments
-      profile = line.match(/^\[([^\[\]]+)\]\s*(#.+)?$/) unless line.nil?
+    profile_name = nil
+    raw.lines.inject({}) do |profile_region, line|
+      line.delete!("\n") # remove newline characters
+      line = line.split(/^|\s#|;/).first # remove comments
+      # checks if line contains the profile name in [] eg. [default]
+      profile = line.strip.match(/^\[([^\[\]]+)\]\s*$/) unless line.nil?
       if profile
-        current_profile = profile[1]
-        named_profile = current_profile.match(/^profile\s+(.+?)$/)
-        current_profile = named_profile[1] if named_profile
-      elsif current_profile
+        profile_name = profile[1]
+        # catches instances where "profile" is appended to the profile name eg. [profile partner-eng-tester]
+        named_profile = profile_name.match(/^profile\s+(.+?)$/)
+        # sets profile_name to the profile name found in the match data
+        profile_name = named_profile[1] if named_profile
+      elsif profile_name
         unless line.nil?
-          item = line.match(/^(.+?)\s*=\s*(.+?)\s*$/)
-          prefix = line.match(/^(.+?)\s*=\s*$/)
+          # checks if the line contains a region eg. "region = us-west-1"
+          region = line.match(/^*region*\s=\s*(.+?)\s*$/i)
         end
-        if item && item[1].match(/^\s+/)
-          # Need to add lines to a nested configuration.
-          inner_item = line.match(/^\s*(.+?)\s*=\s*(.+?)\s*$/)
-          acc[current_profile] ||= {}
-          acc[current_profile][current_prefix] ||= {}
-          acc[current_profile][current_prefix][inner_item[1]] = inner_item[2]
-        elsif item
-          current_prefix = nil
-          acc[current_profile] ||= {}
-          acc[current_profile][item[1]] = item[2]
-        elsif prefix
-          current_prefix = prefix[1]
+        if region
+          profile_region[profile_name] ||= {}
+          profile_region[profile_name]['region'] = region[1]
         end
       end
-      acc
+      profile_region
     end
   end
 
-  @aws_region = 'us-east-1'
-  if File.exist?(ENV["HOME"] + "/.aws/config")
+  if ENV['aws_region']
+    @aws_region = ENV['aws_region']
+  elsif File.exist?(ENV["HOME"] + "/.aws/config")
     config_regions = region_parser(File.read("#{ENV["HOME"]}/.aws/config"))
-    @aws_region = config_regions['default']['region']
-    @aws_region = config_regions[ENV['aws_profile']]['region'] if ENV['aws_profile']
+    @aws_region = config_regions['default']['region'] if config_regions['default']['region']
+    @aws_region = config_regions[ENV['aws_profile']]['region'] if ENV['aws_profile'] && config_regions[ENV['aws_profile']]['region']
+  else
+    @aws_region = 'us-east-1'
   end
-  @aws_region = ENV['aws_region'] if ENV['aws_region']
 
   # Config for terraform / inspec in the below hash
   @config = {

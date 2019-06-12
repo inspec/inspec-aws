@@ -8,7 +8,9 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))
 
-InSpec for AWS, uses the AWS SDK credential loading. There are multiple ways to set AWS credentials as shown below:
+There are multiple ways to set AWS credentials as shown below:
+
+#### 1) Environment Variables
 
 Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
     
@@ -20,7 +22,9 @@ Set your AWS credentials in an `.envrc` file or export them in your shell. (See 
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
 ```
 
+#### 2) Configuration File
 Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See example [aws configure credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))
+
 
 Example `~/.aws/credentials` :
    ```
@@ -48,10 +52,10 @@ Example `~/.aws/config` :
      export AWS_PROFILE="engineering"
  ```
  
- The credentials precedence is:
-   1. Credentials set in `.envrc`.
-   2. Credentials set in `~/.aws/credentials` and `~/.aws/config` with `AWS_PROFILE` set in `.envrc`.
-   3. Credentials set in `~/.aws/credentials` and `~/.aws/config` with ***NO*** `AWS_PROFILE` variable set in `.envrc`. Default credentials will be used.
+ #####The credentials precedence is:
+   1. Credentials set in `.envrc` ***OR*** as an Environment variable.
+   2. Credentials set in `~/.aws/credentials` ***AND*** `~/.aws/config` ***AND*** `AWS_PROFILE` set in as an Environment variable.
+   3. Credentials set in `~/.aws/credentials` ***AND*** `~/.aws/config` ***AND*** ***NO*** `AWS_PROFILE` variable set in `.envrc`. Default credentials will be used.
 
 ### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
