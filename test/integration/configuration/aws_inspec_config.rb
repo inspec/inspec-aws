@@ -15,11 +15,48 @@ module AWSInspecConfig
     (0...length).map { rand(65..90).chr }.join.downcase.to_s
   end
 
+  def self.region_parser(raw)
+    profile_name = nil
+    raw.lines.inject({}) do |profile_region, line|
+      line.delete!("\n") # remove newline characters
+      line = line.split(/^|\s#|;/).first # remove comments
+      # checks if line contains the profile name in [] eg. [default]
+      profile = line.strip.match(/^\[([^\[\]]+)\]\s*$/) unless line.nil?
+      if profile
+        profile_name = profile[1]
+        # catches instances where "profile" is appended to the profile name eg. [profile partner-eng-tester]
+        named_profile = profile_name.match(/^profile\s+(.+?)$/)
+        # sets profile_name to the profile name found in the match data
+        profile_name = named_profile[1] if named_profile
+      elsif profile_name
+        unless line.nil?
+          # checks if the line contains a region eg. "region = us-west-1"
+          region = line.match(/^*region*\s=\s*(.+?)\s*$/i)
+        end
+        if region
+          profile_region[profile_name] ||= {}
+          profile_region[profile_name]['region'] = region[1]
+        end
+      end
+      profile_region
+    end
+  end
+
+  if ENV['aws_region']
+    @aws_region = ENV['aws_region']
+  elsif File.exist?(ENV["HOME"] + "/.aws/config")
+    config_regions = region_parser(File.read("#{ENV["HOME"]}/.aws/config"))
+    @aws_region = config_regions['default']['region'] if config_regions['default']['region']
+    @aws_region = config_regions[ENV['aws_profile']]['region'] if ENV['aws_profile'] && config_regions[ENV['aws_profile']]['region']
+  else
+    @aws_region = 'us-east-1'
+  end
+
   # Config for terraform / inspec in the below hash
   @config = {
       # Generic AWS resource parameters
-      aws_region: 'us-east-1',
-      aws_availability_zone: 'us-east-1a',
+      aws_region: @aws_region,
+      aws_availability_zone: "#{@aws_region}a",
       aws_auto_scaling_group: "aws-auto-scaling-group-#{add_random_string}",
       aws_bucket_acl_policy_name: "aws-bucket-acl-policy-name-#{add_random_string}",
       aws_bucket_auth_name: "aws-bucket-auth-#{add_random_string}",
