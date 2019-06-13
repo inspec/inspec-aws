@@ -53,9 +53,9 @@ Example `~/.aws/config` :
  ```
  
  #####The credentials precedence is:
-   1. Credentials set in `.envrc` ***OR*** as an Environment variable.
-   2. Credentials set in `~/.aws/credentials` ***AND*** `~/.aws/config` ***AND*** `AWS_PROFILE` set in as an Environment variable.
-   3. Credentials set in `~/.aws/credentials` ***AND*** `~/.aws/config` ***AND*** ***NO*** `AWS_PROFILE` variable set in `.envrc`. Default credentials will be used.
+   1. Credentials set in `.envrc` OR as an Environment variable.
+   2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set in as an Environment variable.
+   3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` variable is NOT set in `.envrc`. Default credentials will be used.
 
 ### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
