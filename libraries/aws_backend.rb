@@ -8,6 +8,7 @@ require 'aws-sdk-configservice'
 require 'aws-sdk-core'
 require 'aws-sdk-dynamodb'
 require 'aws-sdk-ec2'
+require 'aws-sdk-ecr'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
 require 'aws-sdk-elasticloadbalancing'
@@ -74,6 +75,10 @@ class AwsConnection
 
   def config_client
     aws_client(Aws::ConfigService::Client)
+  end
+
+  def ecr_client
+    aws_client(Aws::ECR::Client)
   end
 
   def dynamodb_client

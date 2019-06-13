@@ -53,6 +53,7 @@ variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
+variable "aws_ecr_name" {}
 variable "aws_ecs_cluster_name" {}
 variable "aws_eks_cluster_name" {}
 variable "aws_eks_role_name" {}
@@ -1259,6 +1260,11 @@ resource "aws_autoscaling_group" "aws_auto_scaling_group" {
   desired_capacity     = 0
   launch_configuration = "${aws_launch_configuration.as_conf.name}"
   vpc_zone_identifier  = ["${aws_subnet.inspec_subnet.id}"]
+}
+
+resource "aws_ecr_repository" "aws_ecr" {
+  count = "${var.aws_enable_creation}"
+  name  = "${var.aws_ecr_name}"
 }
 
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
