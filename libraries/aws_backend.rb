@@ -148,6 +148,19 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
       # below allows each resource to optionally and conveniently set an endpoint
       client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
+      # below allows each resource to optionally and conveniently set max_retries
+      if opts[:retry_limit]
+        client_args[:client_args][:retry_limit] = opts[:aws_retry_limit].to_i
+      elsif ENV['AWS_RETRY_LIMIT'] || ENV['aws_retry_limit']
+        client_args[:client_args][:retry_limit] = ENV['AWS_RETRY_LIMIT'].to_i  || ENV['aws_retry_limit'].to_i
+      end
+      # below allows each resource to optionally and conveniently set retry_backoff
+      if opts[:retry_backoff]
+        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }"
+      elsif ENV['AWS_RETRY_BACKOFF'] || ENV['aws_retry_backoff']
+        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{ENV['AWS_RETRY_BACKOFF']}) }" if ENV['AWS_RETRY_BACKOFF']
+        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{ENV['aws_retry_backoff']}) }" if ENV['aws_retry_backoff']
+      end
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
