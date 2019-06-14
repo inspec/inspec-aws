@@ -152,7 +152,7 @@ class AwsResourceBase < Inspec.resource(1)
       if opts[:retry_limit]
         client_args[:client_args][:retry_limit] = opts[:aws_retry_limit].to_i
       elsif ENV['AWS_RETRY_LIMIT'] || ENV['aws_retry_limit']
-        client_args[:client_args][:retry_limit] = ENV['AWS_RETRY_LIMIT'].to_i  || ENV['aws_retry_limit'].to_i
+        client_args[:client_args][:retry_limit] = ENV['AWS_RETRY_LIMIT'].to_i || ENV['aws_retry_limit'].to_i
       end
       # below allows each resource to optionally and conveniently set retry_backoff
       if opts[:retry_backoff]
