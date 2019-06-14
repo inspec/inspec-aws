@@ -148,19 +148,12 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
       # below allows each resource to optionally and conveniently set an endpoint
       client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
-      # below allows each resource to optionally and conveniently set max_retries
-      if opts[:retry_limit]
-        client_args[:client_args][:retry_limit] = opts[:aws_retry_limit].to_i
-      elsif ENV['AWS_RETRY_LIMIT'] || ENV['aws_retry_limit']
-        client_args[:client_args][:retry_limit] = ENV['AWS_RETRY_LIMIT'].to_i || ENV['aws_retry_limit'].to_i
-      end
-      # below allows each resource to optionally and conveniently set retry_backoff
-      if opts[:retry_backoff]
-        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }"
-      elsif ENV['AWS_RETRY_BACKOFF'] || ENV['aws_retry_backoff']
-        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{ENV['AWS_RETRY_BACKOFF']}) }" if ENV['AWS_RETRY_BACKOFF']
-        client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{ENV['aws_retry_backoff']}) }" if ENV['aws_retry_backoff']
-      end
+      # below allows each resource to optionally and conveniently set max_retries and retry_backoff
+      env_hash=ENV.to_h.transform_keys(&:downcase)
+      opts[:aws_retry_limit]=   env_hash['aws_retry_limit'].to_i if !opts[:aws_retry_limit] && env_hash['aws_retry_limit']
+      opts[:aws_retry_backoff]= env_hash['aws_retry_backoff'].to_i if !opts[:aws_retry_backoff] && env_hash['aws_retry_backoff']
+      client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
+      client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
@@ -196,10 +189,13 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
-    raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? { |a| !a.empty? }
+    raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
+      return true if a.class == Integer
+      !a.empty?
+    end
     true
   end
 
