@@ -15,7 +15,7 @@ class AwsKmsKeyMock < AwsBaseResourceMock
                              origin: "AWS_KMS",
                              key_manager: "CUSTOMER"}
 
-    disabled_aws_key_id  = @aws.any_id
+    disabled_aws_key_id  =     @aws.any_id
     disabled_aws_account_arn = @aws.any_arn
 
     @mock_kms_key_disabled = {aws_account_id: @aws.any_id,
@@ -32,26 +32,25 @@ class AwsKmsKeyMock < AwsBaseResourceMock
     }
 
     @mock_alias_kms_key_disabled = {aliases:
-                                   [{
-                                       alias_name:    "alias/#{disabled_aws_key_id}",
-                                       alias_arn:     disabled_aws_account_arn,
-                                       target_key_id: disabled_aws_key_id},
-                                       {alias_name:   "alias/aws/acm",
-                                       alias_arn:     "arn:aws:kms:us-west-2:510367013858:alias/aws/acm",
-                                       target_key_id: "5e6c2d39-8d66-4df6-942b-25013360a538"}]}
+                                        [{alias_name:    "alias/#{disabled_aws_key_id}",
+                                          alias_arn:     disabled_aws_account_arn,
+                                          target_key_id: disabled_aws_key_id},
+                                         {alias_name:   "alias/aws/acm",
+                                          alias_arn:     "arn:aws:kms:us-west-2:510367013858:alias/aws/acm",
+                                          target_key_id: "5e6c2d39-8d66-4df6-942b-25013360a538"}]}
   end
 
   def stub_data_enabled
     stub_data = []
 
-    kms_key_enabled =        {:client => Aws::KMS::Client,
-                              :method => :describe_key,
-                              :data => {key_metadata: @mock_kms_key_enabled}
+    kms_key_enabled = {:client => Aws::KMS::Client,
+                       :method => :describe_key,
+                       :data => {key_metadata: @mock_kms_key_enabled}
     }
 
-    key_rotn = {:client => Aws::KMS::Client,
-                :method => :get_key_rotation_status,
-                :data => { :key_rotation_enabled => true }
+    key_rotn =        {:client => Aws::KMS::Client,
+                       :method => :get_key_rotation_status,
+                       :data => { :key_rotation_enabled => true }
     }
 
     stub_data += [kms_key_enabled]
