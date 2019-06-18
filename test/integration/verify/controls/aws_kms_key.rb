@@ -71,6 +71,19 @@ control 'aws-kms-key-1.0' do
     it { should_not have_rotation_enabled }
   end
 
+  describe aws_kms_key(alias: "alias/#{aws_kms_key_disabled_id}") do
+    it { should exist }
+    its('key_id') { should eq aws_kms_key_disabled_id }
+    its('arn') { should eq aws_kms_key_disabled_arn }
+    its('description') { should eq aws_key_description_disabled }
+    its('created_days_ago') { should be >= 0 }
+    its('key_usage') { should eq 'ENCRYPT_DECRYPT' }
+    it { should_not be_external }
+    it { should_not be_managed_by_aws }
+    it { should_not have_key_expiration }
+    it { should_not have_rotation_enabled }
+  end
+
   describe aws_kms_key(key_id: '8f9df97b-cb3d-4b3a-8fcb-aa892a9345e3') do
     it { should_not exist }
   end

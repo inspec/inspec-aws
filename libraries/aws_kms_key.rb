@@ -15,8 +15,11 @@ class AwsKmsKey < AwsResourceBase
     # SDK permits key_id to hold either an ID or an ARN
     opts = { key_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:key_id])
-
+    if opts[:alias]
+      @alias = opts[:alias]
+      opts[:key_id] = fetch_key_id
+    end
+    validate_parameters(require_any_of: %i(key_id alias))
     @display_name = opts[:key_id]
 
     catch_aws_errors do
@@ -70,5 +73,20 @@ class AwsKmsKey < AwsResourceBase
 
   def to_s
     opts.key?(:aws_region) ? "KMS Key #{@display_name} in #{opts[:aws_region]}" : "KMS Key #{@display_name}"
+  end
+
+  def fetch_key_id
+    catch_aws_errors do
+      key_id = ''
+      response = @aws.kms_client.list_aliases
+      return [] if !response || response.empty?
+      response.aliases.each do |alias_entry|
+        if alias_entry['alias_name'] == @alias
+          key_id = alias_entry['target_key_id'] if alias_entry['target_key_id']
+        end
+      end
+      raise 'the provided alias, does not have an associated kms key-id' if key_id.empty? || key_id.nil?
+      key_id
+    end
   end
 end

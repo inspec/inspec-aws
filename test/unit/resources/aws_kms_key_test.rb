@@ -1,6 +1,7 @@
 require 'helper'
 require 'aws_kms_key'
 require 'aws-sdk-core'
+require_relative 'mock/aws_kms_key_mock'
 
 class AwsKmsKeyConstructorTest < Minitest::Test
 
@@ -28,26 +29,14 @@ end
 class AwsKmsKeyHappyPathTest < Minitest::Test
 
   def setup
-    data = {}
-    data[:method] = :describe_key
-    mock_key = {}
-    mock_key[:aws_account_id] = '468368903678'
-    mock_key[:key_id] = '6f9df98b-cb3d-4b3a-8fcb-aa892a9345e3'
-    mock_key[:arn] = 'arn:aws:kms:eu-west-2:510367013858:key/6f9df98b-cb3d-4b3a-8fcb-aa892a9345e3'
-    mock_key[:creation_date] = Time.now - 10 * 24 * 3600
-    mock_key[:enabled] = true
-    mock_key[:description] = 'InSpec'
-    mock_key[:key_usage] = 'ENCRYPT_DECRYPT'
-    mock_key[:key_state] = 'Enabled'
-    mock_key[:origin] = 'AWS_KMS'
-    mock_key[:key_manager] = 'CUSTOMER'
-    data[:data] = { :key_metadata => mock_key }
-    data[:client] = Aws::KMS::Client
-    key_rotn = {}
-    key_rotn[:method] = :get_key_rotation_status
-    key_rotn[:data] = { :key_rotation_enabled => true }
-    key_rotn[:client] = Aws::KMS::Client
-    @kms_key = AwsKmsKey.new(key_id: '6f9df98b-cb3d-4b3a-8fcb-aa892a9345e3', client_args: { stub_responses: true }, stub_data: [data, key_rotn])
+    # Given
+    @mock = AwsKmsKeyMock.new
+    @mock_kms_key = @mock.enabled_kms
+
+    # When
+    @kms_key = AwsKmsKey.new(key_id: @mock_kms_key[:key_id],
+                            client_args: { stub_responses: true },
+                            stub_data: @mock.stub_data_enabled)
   end
 
   def test_key_exists
@@ -67,43 +56,43 @@ class AwsKmsKeyHappyPathTest < Minitest::Test
   end
 
   def test_kms_key_aws_account_id
-    assert_equal(@kms_key.aws_account_id, '468368903678')
+    assert_equal(@kms_key.aws_account_id, @mock_kms_key[:aws_account_id])
   end
 
   def test_kms_key_key_id
-    assert_equal(@kms_key.key_id, '6f9df98b-cb3d-4b3a-8fcb-aa892a9345e3')
+    assert_equal(@kms_key.key_id, @mock_kms_key[:key_id])
   end
 
   def test_kms_key_arn
-    assert_equal(@kms_key.arn, 'arn:aws:kms:eu-west-2:510367013858:key/6f9df98b-cb3d-4b3a-8fcb-aa892a9345e3')
+    assert_equal(@kms_key.arn, @mock_kms_key[:arn])
   end
 
   def test_kms_key_creation_date
-    assert_equal(@kms_key.created_days_ago, 10)
+    assert_equal(@kms_key.created_days_ago, ((Time.now - @mock_kms_key[:creation_date]) / (24 * 60 * 60)).to_i)
   end
 
   def test_kms_key_enabled
-    assert_equal(@kms_key.enabled, true)
+    assert_equal(@kms_key.enabled, @mock_kms_key[:enabled])
   end
 
   def test_kms_key_description
-    assert_equal(@kms_key.description, 'InSpec')
+    assert_equal(@kms_key.description, @mock_kms_key[:description])
   end
 
   def test_kms_key_key_usage
-    assert_equal(@kms_key.key_usage, 'ENCRYPT_DECRYPT')
+    assert_equal(@kms_key.key_usage, @mock_kms_key[:key_usage])
   end
 
   def test_kms_key_key_state
-    assert_equal(@kms_key.key_state, 'Enabled')
+    assert_equal(@kms_key.key_state, @mock_kms_key[:key_state])
   end
 
   def test_kms_key_origin
-    assert_equal(@kms_key.origin, 'AWS_KMS')
+    assert_equal(@kms_key.origin, @mock_kms_key[:origin])
   end
 
   def test_kms_key_key_manager
-    assert_equal(@kms_key.key_manager, 'CUSTOMER')
+    assert_equal(@kms_key.key_manager, @mock_kms_key[:key_manager])
   end
 
 end
@@ -112,26 +101,14 @@ end
 class AwsKmsKeyOtherPathTest < Minitest::Test
 
   def setup
-    data = {}
-    data[:method] = :describe_key
-    mock_key = {}
-    mock_key[:key_id] = '9f9df98b-cb3d-4b3a-8fcb-aa892a9345e3'
-    mock_key[:arn] = 'arn:aws:kms:eu-west-2:510367013858:key/6f9df98b-cb3d-4b3a-8fcb-aa892a9345e9'
-    mock_key[:creation_date] = Time.now - 10 * 24 * 3600
-    mock_key[:enabled] = false
-    mock_key[:description] = 'InSpec'
-    mock_key[:key_usage] = 'ENCRYPT_DECRYPT'
-    mock_key[:key_state] = 'Enabled'
-    mock_key[:origin] = 'EXTERNAL'
-    mock_key[:key_manager] = 'AWS'
-    mock_key[:expiration_model] = 'KEY_MATERIAL_EXPIRES'
-    data[:data] = { :key_metadata => mock_key }
-    data[:client] = Aws::KMS::Client
-    key_rotn = {}
-    key_rotn[:method] = :get_key_rotation_status
-    key_rotn[:data] = { :key_rotation_enabled => false }
-    key_rotn[:client] = Aws::KMS::Client
-    @kms_key = AwsKmsKey.new(key_id: '9f9df98b-cb3d-4b3a-8fcb-aa892a9345e3', client_args: { stub_responses: true }, stub_data: [data, key_rotn])
+    # Given
+    @mock = AwsKmsKeyMock.new
+    @mock_kms_key = @mock.disabled_kms
+
+    # When
+    @kms_key = AwsKmsKey.new(key_id: @mock_kms_key[:key_id],
+                                   client_args: { stub_responses: true },
+                                   stub_data: @mock.stub_data_disabled)
   end
 
   def test_key_exists
@@ -161,5 +138,29 @@ class AwsKmsKeyOtherPathTest < Minitest::Test
   def test_expiration
     assert @kms_key.has_key_expiration?
   end
+
+end
+
+class AwsKmsKeyAliasPathTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock = AwsKmsKeyMock.new
+    @mock_kms_key = @mock.disabled_kms
+
+    # When
+    @kms_key = AwsKmsKey.new(alias: "alias/#{@mock_kms_key[:key_id]}",
+                             client_args: { stub_responses: true },
+                             stub_data: @mock.stub_data_disabled)
+  end
+
+  def test_key_exists
+    assert @kms_key.exists?
+  end
+
+  def test_key_enabled
+    refute @kms_key.enabled?
+  end
+
 
 end
