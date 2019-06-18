@@ -32,9 +32,14 @@ An aws_kms_key resource block identifies a key by key_arn or the key id.
     
 #### Parameters
 
-##### key_id _(required)_
+##### alias _(required if `key_id` not specified)_
 
-This resource accepts a single parameter, the KMS Key ID which can represent both the actual Key ID or the ARN of the Key.
+This resource accepts searching for a KMS Key by it's Alias.
+This can be passed as a `alias: 'alias/value'` key-value entry in a hash. This will then use the `target_key_id` from the Alias to search for the KMS Key.
+
+##### key_id _(required if `alias` not specified)_
+
+This resource accepts searching for a KMS Key by the KMS Key ID which can represent both the actual Key ID or the ARN of the Key.
 This can be passed either as a string or as a `key_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html).
