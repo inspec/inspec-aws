@@ -234,12 +234,13 @@ Note that InSpec AWS assumes full compatibility with the underlying AWS SDK and 
 In certain cases AWS may implement rate limiting. In order to mitigate this issue the `Retry Limit` and `Retry Backoff` can be set in two ways:
 
 #### 1) Environment Variables
-Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level
+Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level.
 
 ```bash
-export AWS_RETRY_LIMIT=5
-export AWS_RETRY_BACKOFF=5
+   export AWS_RETRY_LMIIT=5
+   export aws_retry_limit=5
 ```
+_Note environment variables are case insensitive._
 
 #### 2) Inspec Control
 Inspec AWS resources now support setting the Retry Limit and Retry Backoff at control level as shown below.
@@ -253,7 +254,7 @@ Inspec AWS resources now support setting the Retry Limit and Retry Backoff at co
 
  #####The `aws_retry_limit` and `aws_retry_backoff` precedence:
    1. Set at Inspec control level.
-   2. Set at `.envrc`/ Environment variable level.
+   2. Set at Environment level.
 
 [Retry Limit and Retry Backoff documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/timeout-duration.html)
 
