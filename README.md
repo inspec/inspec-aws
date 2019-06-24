@@ -229,6 +229,35 @@ end
 
 Note that InSpec AWS assumes full compatibility with the underlying AWS SDK and unsupported operations will cause failures.  Therefore, depending on the external provider implementation your mileage may vary!
 
+### `aws_retry_limit` and `aws_retry_backoff`
+
+In certain cases AWS may implement rate limiting. In order to mitigate this issue the `Retry Limit` and `Retry Backoff` can be set in two ways:
+
+#### 1) Environment Variables
+Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level.
+
+```bash
+   export AWS_RETRY_LMIIT=5
+   export aws_retry_limit=5
+```
+_Note environment variables are case insensitive._
+
+#### 2) Inspec Control
+Inspec AWS resources now support setting the Retry Limit and Retry Backoff at control level as shown below.
+
+```
+  describe aws_config_recorder(recorder_name: aws_config_recorder_name, aws_retry_limit=5, aws_retry_backoff=5) do
+    it { should exist }
+    its('recorder_name') { should eq aws_config_recorder_name }
+  end
+```
+
+ #####The `aws_retry_limit` and `aws_retry_backoff` precedence:
+   1. Set at Inspec control level.
+   2. Set at Environment level.
+
+[Retry Limit and Retry Backoff documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/timeout-duration.html)
+
 
 ## Environment and Setup Notes
 
@@ -244,7 +273,7 @@ gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/rem
 ```
 
 The branched InSpec version has all AWS components removed.  
-The branched Train version is upgraded to SDK version 3 to avoid the above conflict.  
+The branched Train version is upgraded to SDK version 3 to avoid the above conflict.
 
 ### Running a Sample Profile Using Docker
 
