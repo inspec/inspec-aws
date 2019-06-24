@@ -57,6 +57,7 @@ module AWSInspecConfig
       # Generic AWS resource parameters
       aws_region: @aws_region,
       aws_availability_zone: "#{@aws_region}a",
+      aws_alb_name: "alb-#{add_random_string}",
       aws_auto_scaling_group: "aws-auto-scaling-group-#{add_random_string}",
       aws_bucket_acl_policy_name: "aws-bucket-acl-policy-name-#{add_random_string}",
       aws_bucket_auth_name: "aws-bucket-auth-#{add_random_string}",
@@ -132,6 +133,7 @@ module AWSInspecConfig
       aws_security_group_gamma: "aws-security-group-gamma-#{add_random_string}",
       aws_security_group_zeta: "aws-security-group-zeta-#{add_random_string}",
       aws_security_group_omega: "aws-security-group-omega-#{add_random_string}",
+      aws_security_group_lb: "aws-security-group-lb-#{add_random_string}",
       aws_sqs_queue_name: "aws-sqs-queue-#{add_random_string}",
       aws_sns_topic_no_subscription: "aws-sns-topic-no-subscription-#{add_random_string}",
       aws_sns_topic_subscription_sqs: "aws-sns-topic-subscription-sqs-#{add_random_string}",

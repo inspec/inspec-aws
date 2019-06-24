@@ -12,6 +12,7 @@ require 'aws-sdk-ecr'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
 require 'aws-sdk-elasticloadbalancing'
+require 'aws-sdk-elasticloadbalancingv2'
 require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-organizations'
@@ -95,6 +96,10 @@ class AwsConnection
 
   def elb_client
     aws_client(Aws::ElasticLoadBalancing::Client)
+  end
+
+  def elb_client_v2
+    aws_client(Aws::ElasticLoadBalancingV2::Client)
   end
 
   def iam_client
