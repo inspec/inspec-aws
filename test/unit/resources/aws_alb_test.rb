@@ -13,10 +13,6 @@ class AwsAlbConstructorTest < Minitest::Test
     AwsAlb.new(load_balancer_arn: 'alb-arn', client_args: { stub_responses: true })
   end
 
-  def test_accepts_string_name
-    assert_raises(NameError) { AwsAlb.new('alb-arn') }
-  end
-
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsAlb.new(rubbish: 9) }
   end
