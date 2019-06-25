@@ -6,7 +6,7 @@ class AwsAlbMock < AwsBaseResourceMock
     super
     @alb = {load_balancers: [{load_balancer_arn: @aws.any_arn,
                             load_balancer_name: @aws.any_string,
-                            availability_zones: [{:zone_name=>"eu-central-1b", :subnet_id=>"subnet-05fa0af06ffd2e2e4", :load_balancer_addresses=>[]}],
+                            availability_zones: [{:zone_name=>"eu-central-1b", :subnet_id=>"subnet-05fa0af06ffd2e2e4", :load_balancer_addresses=>[{:ip_address=> 'test', :allocation_id=> 'testid'}]}],
                             canonical_hosted_zone_id: @aws.any_string,
                             dns_name: @aws.any_string,
                             scheme: @aws.any_string,

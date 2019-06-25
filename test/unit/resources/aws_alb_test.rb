@@ -48,7 +48,7 @@ class AwsAlbTest < Minitest::Test
   end
 
   def test_lb_load_balancer_addresses
-    assert_equal(@alb.load_balancer_addresses.first, @mock_alb[:availability_zones].first[:load_balancer_address])
+    assert_equal(@alb.load_balancer_addresses.first.ip_address, @mock_alb[:availability_zones].first[:load_balancer_addresses].first[:ip_address])
   end
 
   def test_lb_canonical_hosted_zone_id
