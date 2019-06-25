@@ -52,7 +52,7 @@ Example `~/.aws/config` :
      export AWS_PROFILE="engineering"
  ```
  
- #####The credentials precedence is:
+ ##### The credentials precedence is:
    1. Credentials set in `.envrc` OR as an Environment variable.
    2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set in as an Environment variable.
    3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` variable is NOT set in `.envrc`. Default credentials will be used.
