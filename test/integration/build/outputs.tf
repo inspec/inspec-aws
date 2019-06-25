@@ -181,3 +181,7 @@ output "aws_iam_access_key_id" {
 output "aws_dynamodb_table_arn" {
   value = "${aws_dynamodb_table.aws-dynamodb-table.*.arn}"
 }
+
+output "aws_alb_arn" {
+  value = "${aws_lb.aws-alb.*.arn}"
+}

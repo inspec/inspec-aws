@@ -9,6 +9,7 @@ terraform {
 variable "aws_region" {}
 variable "aws_availability_zone" {}
 
+variable "aws_alb_name" {}
 variable "aws_auto_scaling_group" {}
 variable "aws_bucket_acl_policy_name" {}
 variable "aws_bucket_auth_name" {}
@@ -85,6 +86,7 @@ variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
 variable "aws_security_group_zeta" {}
 variable "aws_security_group_omega" {}
+variable "aws_security_group_lb" {}
 variable "aws_sqs_queue_name" {}
 variable "aws_sns_topic_no_subscription" {}
 variable "aws_sns_topic_subscription_sqs" {}
@@ -1181,11 +1183,23 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
   role       = "${aws_iam_role.aws_eks_role.name}"
 }
 
+resource "aws_internet_gateway" "igw" {
+  count             = "${var.aws_enable_creation}"
+  vpc_id = "${aws_vpc.eks_vpc.id}"
+  tags {
+    Name = "igw"
+  }
+}
+
 resource "aws_subnet" "eks_subnet" {
   count             = "${var.aws_enable_creation}"
   vpc_id            = "${aws_vpc.eks_vpc.id}"
   availability_zone = "${var.aws_availability_zone}"
   cidr_block        = "10.0.16.0/20"
+
+  depends_on = [
+    "aws_internet_gateway.igw"
+  ]
 
   tags {
     Name = "${var.aws_eks_subnet_name_1}"
@@ -1197,6 +1211,10 @@ resource "aws_subnet" "eks_subnet-2" {
   vpc_id            = "${aws_vpc.eks_vpc.id}"
   availability_zone = "${var.aws_region}b"
   cidr_block        = "10.0.32.0/20"
+
+  depends_on = [
+    "aws_internet_gateway.igw"
+  ]
 
   tags {
     Name = "${var.aws_eks_subnet_name_1}"
@@ -1310,5 +1328,30 @@ resource "aws_dynamodb_table" "aws-dynamodb-table" {
     read_capacity      = 10
     projection_type    = "INCLUDE"
     non_key_attributes = ["UserId"]
+  }
+}
+
+# Aws_lb
+resource "aws_security_group" "lb_sg" {
+  count       = "${var.aws_enable_creation}"
+  name        = "${var.aws_security_group_lb}"
+  description = "SG lb"
+  vpc_id      = "${aws_vpc.eks_vpc.id}"
+
+  tags = {
+    Name        = "${var.aws_security_group_lb}"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_lb" "aws-alb" {
+  count = "${var.aws_enable_creation}"
+  name               = "${var.aws_alb_name}"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = ["${aws_security_group.lb_sg.id}"]
+  subnets            = ["${aws_subnet.eks_subnet.id}", "${aws_subnet.eks_subnet-2.id}"]
+  tags = {
+    Environment = "inspec-aws"
   }
 }
