@@ -198,6 +198,13 @@ resource "aws_kms_key" "kms_key_disabled_non_rotating" {
   enable_key_rotation     = false
 }
 
+# KMS Alias
+resource "aws_kms_alias" "kms_key_disabled_non_rotating_alias" {
+  count         = "${var.aws_enable_creation}"
+  name          = "alias/${aws_kms_key.kms_key_disabled_non_rotating.key_id}"
+  target_key_id = "${aws_kms_key.kms_key_disabled_non_rotating.key_id}"
+}
+
 # Route tables
 resource "aws_internet_gateway" "inspec_internet_gateway" {
   count  = "${var.aws_enable_creation}"
@@ -1268,7 +1275,7 @@ resource "aws_ecr_repository" "aws_ecr" {
 }
 
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
-  count            = 1
+  count            = "${var.aws_enable_creation}"
   name             = "${var.aws_dynamodb_table_name}"
   read_capacity    = 20
   write_capacity   = 20
