@@ -16,7 +16,7 @@ class AwsAlb < AwsResourceBase
               :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id, :zone_names
 
   def initialize(opts = {})
-    opts = { load_balancer_arns: opts } if opts.is_a?(String)
+    opts = { load_balancer_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:load_balancer_arn])
 
@@ -47,6 +47,6 @@ class AwsAlb < AwsResourceBase
   end
 
   def to_s
-    "AWS ALB #{load_balancer_name}"
+    "AWS ALB #{@load_balancer_name}"
   end
 end

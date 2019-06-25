@@ -13,6 +13,10 @@ class AwsAlbConstructorTest < Minitest::Test
     AwsAlb.new(load_balancer_arn: 'alb-arn', client_args: { stub_responses: true })
   end
 
+  def test_accepts_string_name
+    assert_raises(NameError) { AwsAlb.new('alb-arn') }
+  end
+
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsAlb.new(rubbish: 9) }
   end
@@ -44,7 +48,7 @@ class AwsAlbTest < Minitest::Test
   end
 
   def test_lb_load_balancer_addresses
-    assert_equal(@alb.load_balancer_addresses.first, @mock_alb[:availability_zones].first[:load_balancer_addresses])
+    assert_equal(@alb.load_balancer_addresses.first, @mock_alb[:availability_zones].first[:load_balancer_address])
   end
 
   def test_lb_canonical_hosted_zone_id
@@ -81,7 +85,7 @@ class AwsAlbTest < Minitest::Test
   end
 
   def test_lb_zone_names
-    assert_equal(@alb.zone_name.first, @mock_alb[:availability_zones].first[:zone_name])
+    assert_equal(@alb.zone_names.first, @mock_alb[:availability_zones].first[:zone_name])
   end
 
   def test_exists
