@@ -47,4 +47,8 @@ class AwsGivens
   def any_email
     "#{any_string}@#{any_string}.com"
   end
+
+  def any_array_of_string(max = 6)
+    (0..max).collect { any_string }
+  end
 end

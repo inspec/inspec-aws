@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'aws-sdk-autoscaling'
+require 'aws-sdk-cloudformation'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -57,6 +58,10 @@ class AwsConnection
   end
 
   # SDK Client convenience methods
+
+  def cloudformation_client
+    aws_client(Aws::CloudFormation::Client)
+  end
 
   def cloudtrail_client
     aws_client(Aws::CloudTrail::Client)
