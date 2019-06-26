@@ -54,8 +54,18 @@ Example `~/.aws/config` :
  
  ##### The credentials precedence is:
    1. Credentials set in `.envrc` OR as an Environment variable.
-   2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set in as an Environment variable.
-   3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` variable is NOT set in `.envrc`. Default credentials will be used.
+   2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set as an Environment variable.
+   3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` is NOT set as an Environment variable. Default credentials will be used.
+   
+### Assuming an IAM role
+Assuming an IAM role allows an IAM user to gain additional/different permissions to perform actions in a different AWS account. (See example [aws configure IAM role](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html))
+
+Example:
+```bash
+   [profile example_profile]
+   role_arn = arn:aws:iam::123456789012:role/example_profile
+   source_profile = user1
+```
 
 ### Permissions
 Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
