@@ -4,7 +4,7 @@ arn = attribute(:aws_sqs_queue_arn, default: '', description: 'The AWS SQS Queue
 modified_arn = arn.dup
 modified_arn.slice!("arn:aws:sqs:")
 url = modified_arn.split(':', 2)
-aws_sqs_queue_url = "https://sqs.#{url[0]}.amazonaws.com/#{url[1].sub(':','/')}"
+aws_sqs_queue_url = "" ? !url : "https://sqs.#{url[0]}.amazonaws.com/#{url[1].sub(':','/')}"
 
 control 'aws-sqs-queue-1.0' do
   impact 1.0

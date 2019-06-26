@@ -23,6 +23,7 @@ variable "aws_bucket_logging_disabled" {}
 variable "aws_bucket_private_name" {}
 variable "aws_bucket_public_name" {}
 variable "aws_bucket_public_objects_name" {}
+variable "aws_cloudformation_stack_name" {}
 variable "aws_cloud_trail_bucket_name" {}
 variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_trail_log_group" {}
@@ -1354,4 +1355,36 @@ resource "aws_lb" "aws-alb" {
   tags = {
     Environment = "inspec-aws"
   }
+}
+
+resource "aws_cloudformation_stack" "network" {
+  count = "${var.aws_enable_creation}"
+  name = "${var.aws_cloudformation_stack_name}"
+
+  parameters = {
+    VPCCidr = "10.0.0.0/16"
+  }
+
+  template_body = <<STACK
+{
+  "Parameters" : {
+    "VPCCidr" : {
+      "Type" : "String",
+      "Default" : "10.0.0.0/16",
+      "Description" : "CIDR block for the VPC"
+    }
+  },
+  "Resources" : {
+    "myVpc": {
+      "Type" : "AWS::EC2::VPC",
+      "Properties" : {
+        "CidrBlock" : { "Ref" : "VPCCidr" },
+        "Tags" : [
+          {"Key": "Name", "Value": "Primary_CF_VPC"}
+        ]
+      }
+    }
+  }
+}
+STACK
 }
