@@ -1,6 +1,7 @@
 title 'Test a collection of AWS Iam Policies'
 
 aws_iam_policy_arn = attribute(:aws_iam_policy_arn, default: '', description: 'The AWS Iam Policy arn.')
+aws_iam_attached_policy_arn = attribute(:aws_iam_attached_policy_arn, default: '', description: 'The AWS Iam Policy arn.')
 
 control 'aws-iam-policies-1.0' do
 
@@ -10,5 +11,15 @@ control 'aws-iam-policies-1.0' do
   describe aws_iam_policies do
     it            { should exist }
     its ('arns')  { should include aws_iam_policy_arn }
+  end
+
+  describe aws_iam_policies(scope: 'Local') do
+    it            { should exist }
+    its ('arns')  { should include aws_iam_policy_arn }
+  end
+
+  describe aws_iam_policies(only_attached: 'true') do
+    it            { should exist }
+    its ('arns')  { should include aws_iam_attached_policy_arn }
   end
 end

@@ -26,7 +26,14 @@ class AwsIamPolicies < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(allow: %i(only_attached scope))
+    @only_attached = opts[:only_attached]
+    @scope         = opts[:scope]
+    @path_prefix   = opts[:path_prefix]
+    @parameters = {}
+    @parameters[:only_attached] = @only_attached if @only_attached
+    @parameters[:scope]         = @scope         if @scope
+    @parameters[:path_prefix]   = @path_prefix   if @path_prefix
     @table = fetch_data
   end
 
@@ -35,19 +42,20 @@ class AwsIamPolicies < AwsResourceBase
     pagination_options = {}
     catch_aws_errors do
       loop do
-        response = @aws.iam_client.list_policies(pagination_options)
+        response = @aws.iam_client.list_policies(@parameters, pagination_options) unless @parameters.empty?
+        response = @aws.iam_client.list_policies(pagination_options) if @parameters.empty?
         return [] if !response || response.empty?
         response.policies.each do |p|
           criteria = { policy_arn: p.arn }
           policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
-          iam_policy_rows += [{ arn:                  p.arn,
-                                attachment_count:     p.attachment_count,
-                                default_version_id:   p.default_version_id,
-                                policy_name:          p.policy_name,
-                                policy_id:            p.policy_id,
-                                attached_groups:      policy_entity.policy_groups.map(&:group_name),
-                                attached_roles:       policy_entity.policy_roles.map(&:role_name),
-                                attached_users:       policy_entity.policy_users.map(&:user_name) }]
+          iam_policy_rows += [{ arn:                p.arn,
+                                attachment_count:   p.attachment_count,
+                                default_version_id: p.default_version_id,
+                                policy_name:        p.policy_name,
+                                policy_id:          p.policy_id,
+                                attached_groups:    policy_entity.policy_groups.map(&:group_name),
+                                attached_roles:     policy_entity.policy_roles.map(&:role_name),
+                                attached_users:     policy_entity.policy_users.map(&:user_name) }]
         end
         break unless response.is_truncated
         break unless response.marker

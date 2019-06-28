@@ -72,6 +72,7 @@ variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
 variable "aws_iam_policy_name" {}
+variable "aws_iam_attached_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
 variable "aws_launch_configuration_name" {}
@@ -1106,7 +1107,7 @@ resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
 }
 
 resource "aws_iam_policy" "aws_policy_1" {
-  count       = "${var.aws_enable_creation}"
+  count       = 1
   name        = "${var.aws_iam_policy_name}"
   path        = "/"
   description = "Test policy"
@@ -1130,6 +1131,39 @@ resource "aws_iam_policy" "aws_policy_1" {
   ]
 }
 EOF
+}
+
+resource "aws_iam_policy" "aws_attached_policy_1" {
+  count       = 1
+  name        = "${var.aws_iam_attached_policy_name}"
+  path        = "/"
+  description = "Test policy"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "NotAction": "s3:DeleteBucket",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "test-attach" {
+  count      = 1
+  role       = "${aws_iam_role.aws_role_generic.name}"
+  policy_arn = "${aws_iam_policy.aws_attached_policy_1.arn}"
 }
 
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
@@ -1172,13 +1206,13 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
-  count      = "${var.aws_enable_creation}"
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = "${aws_iam_role.aws_eks_role.name}"
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
-  count      = "${var.aws_enable_creation}"
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = "${aws_iam_role.aws_eks_role.name}"
 }
