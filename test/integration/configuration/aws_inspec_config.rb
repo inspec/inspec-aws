@@ -119,6 +119,7 @@ module AWSInspecConfig
       aws_iam_role_generic_name: "aws-iam-role-#{add_random_string}",
       aws_iam_policy_arn: "aws-iam-policy-arn-#{add_random_string}",
       aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
+      aws_iam_attached_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',
       aws_key_description_enabled: 'InSpec KMS Key Test Enabled',
       aws_launch_configuration_name: "aws-launch-configuration-name-#{add_random_string}",

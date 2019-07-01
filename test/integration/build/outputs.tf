@@ -170,6 +170,10 @@ output "aws_iam_policy_arn" {
   value = "${aws_iam_policy.aws_policy_1.*.arn}"
 }
 
+output "aws_iam_attached_policy_arn" {
+  value = "${aws_iam_policy.aws_attached_policy_1.*.arn}"
+}
+
 output "aws_sqs_queue_arn" {
   value = "${aws_sqs_queue.aws_sqs_queue_1.*.arn}"
 }

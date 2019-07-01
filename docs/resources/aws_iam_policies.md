@@ -17,7 +17,16 @@ Use the `aws_iam_policies` InSpec audit resource to test properties of a collect
     
 #### Parameters
 
-This resource does not expect any parameters.
+##### only_attached _(optional)_
+
+This resource allows filtering by only_attached.
+When `OnlyAttached` is `true`, the returned list contains only the policies that are attached to an IAM user, group, or role. When `OnlyAttached` is `false`, or when the parameter is not included, all policies are returned.
+
+
+##### scope _(optional)_
+
+This resource allows filtering by scope.
+To list only AWS managed policies, set `Scope` to `AWS`. To list only the customer managed policies in your AWS account, set `Scope` to `Local`. If scope is not supplied `ALL` policies are returned.
 
 See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 

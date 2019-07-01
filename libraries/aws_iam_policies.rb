@@ -26,33 +26,36 @@ class AwsIamPolicies < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
-    @table = fetch_data
+    validate_parameters(allow: %i(only_attached scope))
+    parameters = {}
+    parameters[:only_attached] = opts[:only_attached] if opts[:only_attached]
+    parameters[:scope]         = opts[:scope]         if opts[:scope]
+    parameters[:path_prefix]   = opts[:path_prefix]   if opts[:path_prefix]
+    @table = fetch_data(parameters)
   end
 
-  def fetch_data
+  def fetch_data(parameters = {})
     iam_policy_rows = []
-    pagination_options = {}
-    catch_aws_errors do
-      loop do
-        response = @aws.iam_client.list_policies(pagination_options)
-        return [] if !response || response.empty?
-        response.policies.each do |p|
-          criteria = { policy_arn: p.arn }
-          policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
-          iam_policy_rows += [{ arn:                  p.arn,
-                                attachment_count:     p.attachment_count,
-                                default_version_id:   p.default_version_id,
-                                policy_name:          p.policy_name,
-                                policy_id:            p.policy_id,
-                                attached_groups:      policy_entity.policy_groups.map(&:group_name),
-                                attached_roles:       policy_entity.policy_roles.map(&:role_name),
-                                attached_users:       policy_entity.policy_users.map(&:user_name) }]
-        end
-        break unless response.is_truncated
-        break unless response.marker
-        pagination_options = { marker: response.marker }
+    loop do
+      catch_aws_errors do
+        @response = @aws.iam_client.list_policies(parameters)
       end
+      return [] if !@response || @response.empty?
+      @response.policies.each do |p|
+        criteria = { policy_arn: p.arn }
+        policy_entity = @aws.iam_client.list_entities_for_policy(criteria)
+        iam_policy_rows += [{ arn:                p.arn,
+                              attachment_count:   p.attachment_count,
+                              default_version_id: p.default_version_id,
+                              policy_name:        p.policy_name,
+                              policy_id:          p.policy_id,
+                              attached_groups:    policy_entity.policy_groups.map(&:group_name),
+                              attached_roles:     policy_entity.policy_roles.map(&:role_name),
+                              attached_users:     policy_entity.policy_users.map(&:user_name) }]
+      end
+      break unless @response.is_truncated
+      break unless @response.marker
+      parameters[:marker] = @response.marker
     end
     @table = iam_policy_rows
   end
