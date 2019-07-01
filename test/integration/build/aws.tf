@@ -1107,7 +1107,7 @@ resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
 }
 
 resource "aws_iam_policy" "aws_policy_1" {
-  count       = 1
+  count       = "${var.aws_enable_creation}"
   name        = "${var.aws_iam_policy_name}"
   path        = "/"
   description = "Test policy"
@@ -1134,7 +1134,7 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count       = 1
+  count       = "${var.aws_enable_creation}"
   name        = "${var.aws_iam_attached_policy_name}"
   path        = "/"
   description = "Test policy"
@@ -1161,7 +1161,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
-  count      = 1
+  count      = "${var.aws_enable_creation}"
   role       = "${aws_iam_role.aws_role_generic.name}"
   policy_arn = "${aws_iam_policy.aws_attached_policy_1.arn}"
 }
@@ -1206,13 +1206,13 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
-  count      = 1
+  count      = "${var.aws_enable_creation}"
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = "${aws_iam_role.aws_eks_role.name}"
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
-  count      = 1
+  count      = "${var.aws_enable_creation}"
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = "${aws_iam_role.aws_eks_role.name}"
 }

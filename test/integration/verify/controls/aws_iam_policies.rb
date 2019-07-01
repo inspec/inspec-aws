@@ -18,6 +18,11 @@ control 'aws-iam-policies-1.0' do
     its ('arns')  { should include aws_iam_policy_arn }
   end
 
+  describe aws_iam_policies(scope: 'AWS') do
+    it            { should exist }
+    its ('arns')  { should_not include aws_iam_attached_policy_arn }
+  end
+
   describe aws_iam_policies(only_attached: 'true') do
     it            { should exist }
     its ('arns')  { should include aws_iam_attached_policy_arn }
