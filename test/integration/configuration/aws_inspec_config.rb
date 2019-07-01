@@ -174,7 +174,7 @@ module AWSInspecConfig
   end
 
   # Create JSON for terraform
-  def self.store_json(file_name = 'aws-inspec.tfvars')
+  def self.store_json(file_name = 'aws-inspec.tfvars.json')
     update_from_environment
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), 'w') do |f|
       f.write(@config.to_json)
