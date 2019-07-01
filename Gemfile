@@ -29,7 +29,6 @@ gem 'rubocop', '~> 0.64.0', require: false
 
 group :development do
   gem 'github_changelog_generator'
-  gem 'passgen'
   gem 'rake'
   gem 'minitest'
 end

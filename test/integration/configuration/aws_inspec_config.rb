@@ -7,7 +7,6 @@
 # If any of the @config keys are exported as environment variables in uppercase, these take precedence.
 require 'json'
 require 'yaml'
-require 'passgen'
 
 module AWSInspecConfig
   # helper method for adding random strings
