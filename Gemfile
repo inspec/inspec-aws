@@ -27,7 +27,7 @@ gem 'aws-sdk-sqs', '~> 1'
 
 gem 'rubocop', '~> 0.64.0', require: false
 
-group :development
+group :development do
   gem 'github_changelog_generator'
   gem 'rake'
   gem 'minitest'
