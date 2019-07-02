@@ -8,7 +8,7 @@ require_relative 'test/integration/configuration/aws_inspec_config'
 INTEGRATION_DIR = File.join('test', 'integration')
 CONTROLS_DIR = File.join(INTEGRATION_DIR, 'verify')
 TERRAFORM_DIR = File.join(INTEGRATION_DIR, 'build')
-TF_VAR_FILE_NAME = 'inspec-aws.tfvars'
+TF_VAR_FILE_NAME = 'inspec-aws.tfvars.json'
 TF_VAR_FILE = File.join(TERRAFORM_DIR, TF_VAR_FILE_NAME)
 TF_PLAN_FILE = 'inspec-aws.plan'
 PROFILE_ATTRIBUTES = 'aws-inspec-attributes.yaml'
