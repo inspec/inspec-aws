@@ -1,7 +1,7 @@
 FROM ruby:2.5
 MAINTAINER Chef Software, Inc. <docker@chef.io>
 
-ARG TF_VERSION=0.11.10
+ARG TF_VERSION=0.12.3
 
 COPY Gemfile .
 RUN bundle install

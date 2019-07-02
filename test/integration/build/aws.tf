@@ -1143,8 +1143,8 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count       = "${var.aws_enable_creation}"
-  name        = "${var.aws_iam_attached_policy_name}"
+  count       = var.aws_enable_creation
+  name        = var.aws_iam_attached_policy_name
   path        = "/"
   description = "Test policy"
 
@@ -1170,9 +1170,9 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
-  count      = "${var.aws_enable_creation}"
-  role       = "${aws_iam_role.aws_role_generic.name}"
-  policy_arn = "${aws_iam_policy.aws_attached_policy_1.arn}"
+  count      = var.aws_enable_creation
+  role       = aws_iam_role.aws_role_generic[0].name
+  policy_arn = aws_iam_policy.aws_attached_policy_1[0].arn
 }
 
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
