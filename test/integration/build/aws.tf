@@ -69,6 +69,7 @@ variable "aws_enable_creation" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_iam_group_name" {}
 variable "aws_iam_role_generic_name" {}
+variable "aws_iam_role_generic_policy_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
@@ -387,10 +388,10 @@ POLICY
 }
 
 resource "aws_s3_bucket_policy" "allow-private-acl-public-policy" {
-count  = var.aws_enable_creation
-bucket = aws_s3_bucket.bucket_private_acl_public_policy[0].id
+  count  = var.aws_enable_creation
+  bucket = aws_s3_bucket.bucket_private_acl_public_policy[0].id
 
-policy = <<POLICY
+  policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -408,265 +409,265 @@ POLICY
 }
 
 resource "aws_s3_bucket_object" "inspec_logo_public" {
-count = var.aws_enable_creation
-bucket = aws_s3_bucket.bucket_public_for_objects[0].id
-key = "inspec-logo-public"
-source = "inspec-logo.png"
-acl = "public-read"
+  count = var.aws_enable_creation
+  bucket = aws_s3_bucket.bucket_public_for_objects[0].id
+  key = "inspec-logo-public"
+  source = "inspec-logo.png"
+  acl = "public-read"
 }
 
 resource "aws_s3_bucket_object" "inspec_logo_private" {
-count = var.aws_enable_creation
-bucket = aws_s3_bucket.bucket_public_for_objects[0].id
-key = "inspec-logo-private"
-source = "inspec-logo.png"
-acl = "private"
+  count = var.aws_enable_creation
+  bucket = aws_s3_bucket.bucket_public_for_objects[0].id
+  key = "inspec-logo-private"
+  source = "inspec-logo.png"
+  acl = "private"
 }
 
 # SNS resources
 resource "aws_sns_topic" "sns_topic_subscription" {
-count = var.aws_enable_creation
-name = var.aws_sns_topic_with_subscription
+  count = var.aws_enable_creation
+  name = var.aws_sns_topic_with_subscription
 }
 
 resource "aws_sqs_queue" "sns_sqs_queue" {
-count = var.aws_enable_creation
-name = var.aws_sns_topic_subscription_sqs
+  count = var.aws_enable_creation
+  name = var.aws_sns_topic_subscription_sqs
 }
 
 resource "aws_sns_topic_subscription" "sqs_test_queue_subscription" {
-count = var.aws_enable_creation
-topic_arn = aws_sns_topic.sns_topic_subscription[0].arn
-protocol = "sqs"
-endpoint = aws_sqs_queue.sns_sqs_queue[0].arn
+  count = var.aws_enable_creation
+  topic_arn = aws_sns_topic.sns_topic_subscription[0].arn
+  protocol = "sqs"
+  endpoint = aws_sqs_queue.sns_sqs_queue[0].arn
 }
 
 resource "aws_sns_topic" "sns_topic_no_subscription" {
-count = var.aws_enable_creation
-name = var.aws_sns_topic_no_subscription
+  count = var.aws_enable_creation
+  name = var.aws_sns_topic_no_subscription
 }
 
 # Security Groups and Rules
 data "aws_security_group" "default" {
-vpc_id = data.aws_vpc.default.id
-name = "default"
+  vpc_id = data.aws_vpc.default.id
+  name = "default"
 }
 
 resource "aws_security_group" "alpha" {
-count = var.aws_enable_creation
-name = var.aws_security_group_alpha
-description = "SG alpha"
-vpc_id = data.aws_vpc.default.id
+  count = var.aws_enable_creation
+  name = var.aws_security_group_alpha
+  description = "SG alpha"
+  vpc_id = data.aws_vpc.default.id
 
-tags = {
-Name = var.aws_security_group_alpha
-Environment = "Dev"
-}
+  tags = {
+    Name = var.aws_security_group_alpha
+    Environment = "Dev"
+  }
 }
 
 resource "aws_security_group" "beta" {
-count = var.aws_enable_creation
-name = var.aws_security_group_beta
-description = "SG beta"
-vpc_id = data.aws_vpc.default.id
+  count = var.aws_enable_creation
+  name = var.aws_security_group_beta
+  description = "SG beta"
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group" "gamma" {
-count = var.aws_enable_creation
-name = var.aws_security_group_gamma
-description = "SG gamma"
-vpc_id = data.aws_vpc.default.id
+  count = var.aws_enable_creation
+  name = var.aws_security_group_gamma
+  description = "SG gamma"
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group" "zeta" {
-count = var.aws_enable_creation
-name = var.aws_security_group_zeta
-description = "SG zeta"
-vpc_id = data.aws_vpc.default.id
+  count = var.aws_enable_creation
+  name = var.aws_security_group_zeta
+  description = "SG zeta"
+  vpc_id = data.aws_vpc.default.id
 }
 
 // Note this gets created in a new VPC and with no rules defined
 resource "aws_security_group" "omega" {
-count = var.aws_enable_creation
-name = var.aws_security_group_omega
-description = "SG omega"
-vpc_id = aws_vpc.inspec_vpc[0].id
+  count = var.aws_enable_creation
+  name = var.aws_security_group_omega
+  description = "SG omega"
+  vpc_id = aws_vpc.inspec_vpc[0].id
 }
 
 resource "aws_security_group_rule" "alpha_http_world" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "80"
-to_port = "80"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "80"
+  to_port = "80"
+  protocol = "tcp"
 
-cidr_blocks = [
-"0.0.0.0/0",
-]
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
 
-security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.alpha[0].id
 }
 
 resource "aws_security_group_rule" "alpha_ssh_in" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "22"
-to_port = "22"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "22"
+  to_port = "22"
+  protocol = "tcp"
 
-cidr_blocks = [
-"10.1.2.0/24",
-]
+  cidr_blocks = [
+    "10.1.2.0/24",
+  ]
 
-security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.alpha[0].id
 }
 
 resource "aws_security_group_rule" "alpha_x11" {
-count = var.aws_enable_creation
-description = "Only allow X11 out for some reason"
-type = "egress"
-from_port = "6000"
-to_port = "6007"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  description = "Only allow X11 out for some reason"
+  type = "egress"
+  from_port = "6000"
+  to_port = "6007"
+  protocol = "tcp"
 
-cidr_blocks = [
-"10.1.2.0/24",
-"10.3.2.0/24",
-]
+  cidr_blocks = [
+    "10.1.2.0/24",
+    "10.3.2.0/24",
+  ]
 
-ipv6_cidr_blocks = [
-"2001:db8::/122",
-]
+  ipv6_cidr_blocks = [
+    "2001:db8::/122",
+  ]
 
-security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.alpha[0].id
 }
 
 resource "aws_security_group_rule" "alpha_all_ports" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "0"
-to_port = "65535"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "0"
+  to_port = "65535"
+  protocol = "tcp"
 
-cidr_blocks = [
-"10.1.2.0/24",
-]
+  cidr_blocks = [
+    "10.1.2.0/24",
+  ]
 
-security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.alpha[0].id
 }
 
 resource "aws_security_group_rule" "alpha_piv6_all_ports" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "0"
-to_port = "65535"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "0"
+  to_port = "65535"
+  protocol = "tcp"
 
-ipv6_cidr_blocks = [
-"2001:db8::/122",
-]
+  ipv6_cidr_blocks = [
+    "2001:db8::/122",
+  ]
 
-security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.alpha[0].id
 }
 
 resource "aws_security_group_rule" "beta_http_world" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "80"
-to_port = "80"
-protocol = "tcp"
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "80"
+  to_port = "80"
+  protocol = "tcp"
 
-cidr_blocks = [
-"0.0.0.0/0",
-]
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
 
-security_group_id = aws_security_group.beta[0].id
+  security_group_id = aws_security_group.beta[0].id
 }
 
 resource "aws_security_group_rule" "beta_ssh_in_alfa" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "22"
-to_port = "22"
-protocol = "tcp"
-source_security_group_id = aws_security_group.alpha[0].id
-security_group_id = aws_security_group.beta[0].id
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "22"
+  to_port = "22"
+  protocol = "tcp"
+  source_security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.beta[0].id
 }
 
 resource "aws_security_group_rule" "beta_all_ports_in_gamma" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "0"
-to_port = "65535"
-protocol = "tcp"
-source_security_group_id = aws_security_group.gamma[0].id
-security_group_id = aws_security_group.beta[0].id
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "0"
+  to_port = "65535"
+  protocol = "tcp"
+  source_security_group_id = aws_security_group.gamma[0].id
+  security_group_id = aws_security_group.beta[0].id
 }
 
 resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "22"
-to_port = "22"
-protocol = "tcp"
-source_security_group_id = aws_security_group.alpha[0].id
-security_group_id = aws_security_group.gamma[0].id
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "22"
+  to_port = "22"
+  protocol = "tcp"
+  source_security_group_id = aws_security_group.alpha[0].id
+  security_group_id = aws_security_group.gamma[0].id
 }
 
 resource "aws_security_group_rule" "zeta_all_ports_in" {
-count = var.aws_enable_creation
-type = "ingress"
-from_port = "0"
-to_port = "65535"
-protocol = "all"
-cidr_blocks = [
-"0.0.0.0/0",
-]
+  count = var.aws_enable_creation
+  type = "ingress"
+  from_port = "0"
+  to_port = "65535"
+  protocol = "all"
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
 
-security_group_id = aws_security_group.zeta[0].id
+  security_group_id = aws_security_group.zeta[0].id
 }
 
 resource "aws_security_group_rule" "zeta_all_ports_out" {
-count = var.aws_enable_creation
-type = "egress"
-from_port = "0"
-to_port = "65535"
-protocol = "all"
-cidr_blocks = [
-"0.0.0.0/0",
-]
+  count = var.aws_enable_creation
+  type = "egress"
+  from_port = "0"
+  to_port = "65535"
+  protocol = "all"
+  cidr_blocks = [
+    "0.0.0.0/0",
+  ]
 
-security_group_id = aws_security_group.zeta[0].id
+  security_group_id = aws_security_group.zeta[0].id
 }
 
 resource "aws_db_instance" "db_rds" {
-count = var.aws_enable_creation
-allocated_storage = 10
-storage_type = var.aws_rds_db_storage_type
-engine = var.aws_rds_db_engine
-engine_version = var.aws_rds_db_engine_version
-instance_class = "db.t2.micro"
-identifier = var.aws_rds_db_identifier
-name = var.aws_rds_db_name
-username = var.aws_rds_db_master_user
-password = "testpassword"
-parameter_group_name = "default.mysql5.6"
-skip_final_snapshot = true
+  count = var.aws_enable_creation
+  allocated_storage = 10
+  storage_type = var.aws_rds_db_storage_type
+  engine = var.aws_rds_db_engine
+  engine_version = var.aws_rds_db_engine_version
+  instance_class = "db.t2.micro"
+  identifier = var.aws_rds_db_identifier
+  name = var.aws_rds_db_name
+  username = var.aws_rds_db_master_user
+  password = "testpassword"
+  parameter_group_name = "default.mysql5.6"
+  skip_final_snapshot = true
 
-tags = {
-Name = var.aws_rds_db_name
-Environment = "Dev"
-}
+  tags = {
+    Name = var.aws_rds_db_name
+    Environment = "Dev"
+  }
 }
 
 # Cloudtrail
 
 resource "aws_s3_bucket" "trail_1_bucket" {
-count = var.aws_enable_creation
-bucket = var.aws_cloud_trail_bucket_name
-force_destroy = true
+  count = var.aws_enable_creation
+  bucket = var.aws_cloud_trail_bucket_name
+  force_destroy = true
 
-policy = <<POLICY
+  policy = <<POLICY
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -760,16 +761,16 @@ POLICY
 }
 
 resource "aws_cloudwatch_log_group" "trail_1_log_group" {
-count = var.aws_enable_creation
-name  = var.aws_cloud_trail_log_group
+  count = var.aws_enable_creation
+  name  = var.aws_cloud_trail_log_group
 }
 
 resource "aws_kms_key" "trail_1_key" {
-count                   = var.aws_enable_creation
-description             = var.aws_cloud_trail_key_description
-deletion_window_in_days = 10
+  count                   = var.aws_enable_creation
+  description             = var.aws_cloud_trail_key_description
+  deletion_window_in_days = 10
 
-policy = <<POLICY
+  policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Id": "Key policy created by CloudTrail",
@@ -848,111 +849,111 @@ POLICY
 }
 
 resource "aws_cloudtrail" "trail_1" {
-count = var.aws_enable_creation
+  count = var.aws_enable_creation
 
-depends_on = [aws_iam_role_policy.cloud_watch_logs_role_policy]
+  depends_on = [aws_iam_role_policy.cloud_watch_logs_role_policy]
 
-name = var.aws_cloud_trail_name
-s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
-include_global_service_events = true
-enable_logging = true
-is_multi_region_trail = true
-enable_log_file_validation = true
+  name = var.aws_cloud_trail_name
+  s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
+  include_global_service_events = true
+  enable_logging = true
+  is_multi_region_trail = true
+  enable_log_file_validation = true
 
-cloud_watch_logs_group_arn = aws_cloudwatch_log_group.trail_1_log_group[0].arn
-cloud_watch_logs_role_arn = aws_iam_role.cloud_watch_logs_role[0].arn
-kms_key_id = aws_kms_key.trail_1_key[0].arn
+  cloud_watch_logs_group_arn = aws_cloudwatch_log_group.trail_1_log_group[0].arn
+  cloud_watch_logs_role_arn = aws_iam_role.cloud_watch_logs_role[0].arn
+  kms_key_id = aws_kms_key.trail_1_key[0].arn
 }
 
 resource "aws_cloudtrail" "trail_2" {
-count = var.aws_enable_creation
-name = var.aws_cloud_trail_open_name
-s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
+  count = var.aws_enable_creation
+  name = var.aws_cloud_trail_open_name
+  s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
 }
 
 # Cloudwatch
 
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
-count = var.aws_enable_creation
-name = var.aws_cloud_watch_log_metric_filter_name
-pattern = var.aws_cloud_watch_log_metric_filter_pattern
-log_group_name = aws_cloudwatch_log_group.log_metric_filter_log_group[0].name
+  count = var.aws_enable_creation
+  name = var.aws_cloud_watch_log_metric_filter_name
+  pattern = var.aws_cloud_watch_log_metric_filter_pattern
+  log_group_name = aws_cloudwatch_log_group.log_metric_filter_log_group[0].name
 
-metric_transformation {
-name = var.aws_cloud_watch_log_metric_filter_metric_name
-namespace = var.aws_cloud_watch_log_metric_filter_namespace
-value = "1"
-}
+  metric_transformation {
+    name = var.aws_cloud_watch_log_metric_filter_metric_name
+    namespace = var.aws_cloud_watch_log_metric_filter_namespace
+    value = "1"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_log_group" {
-count = var.aws_enable_creation
-name = var.aws_cloud_watch_log_metric_filter_log_group_name
+  count = var.aws_enable_creation
+  name = var.aws_cloud_watch_log_metric_filter_log_group_name
 }
 
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter_pattern" {
-count = var.aws_enable_creation
-name = var.aws_cloud_watch_log_metric_filter_two_name
-pattern = var.aws_cloud_watch_log_metric_filter_two_pattern
-log_group_name = aws_cloudwatch_log_group.log_metric_filter_pattern_log_group[0].name
+  count = var.aws_enable_creation
+  name = var.aws_cloud_watch_log_metric_filter_two_name
+  pattern = var.aws_cloud_watch_log_metric_filter_two_pattern
+  log_group_name = aws_cloudwatch_log_group.log_metric_filter_pattern_log_group[0].name
 
-metric_transformation {
-name = var.aws_cloud_watch_log_metric_filter_two_metric_name
-namespace = var.aws_cloud_watch_log_metric_filter_two_namespace
-value = "1"
-}
+  metric_transformation {
+    name = var.aws_cloud_watch_log_metric_filter_two_metric_name
+    namespace = var.aws_cloud_watch_log_metric_filter_two_namespace
+    value = "1"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_pattern_log_group" {
-count = var.aws_enable_creation
-name = var.aws_cloud_watch_log_metric_filter_two_log_group_name
+  count = var.aws_enable_creation
+  name = var.aws_cloud_watch_log_metric_filter_two_log_group_name
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
-count = var.aws_enable_creation
-alarm_name = var.aws_cloud_watch_alarm_name
-comparison_operator = "GreaterThanOrEqualToThreshold"
-evaluation_periods = "2"
-metric_name = var.aws_cloud_watch_alarm_metric_name
-namespace = var.aws_cloud_watch_log_metric_filter_namespace
-period = "120"
-statistic = "Average"
-threshold = "80"
-alarm_description = "This metric is a test metric"
-insufficient_data_actions = []
+  count = var.aws_enable_creation
+  alarm_name = var.aws_cloud_watch_alarm_name
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods = "2"
+  metric_name = var.aws_cloud_watch_alarm_metric_name
+  namespace = var.aws_cloud_watch_log_metric_filter_namespace
+  period = "120"
+  statistic = "Average"
+  threshold = "80"
+  alarm_description = "This metric is a test metric"
+  insufficient_data_actions = []
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm_with_dimensions" {
-count = var.aws_enable_creation
-alarm_name = var.aws_cloud_watch_alarm_name_with_dimensions
-comparison_operator = "GreaterThanOrEqualToThreshold"
-evaluation_periods = "2"
-metric_name = var.aws_cloud_watch_alarm_metric_name_with_dimensions
-namespace = var.aws_cloud_watch_log_metric_filter_namespace_with_dimensions
-period = "120"
-statistic = "Average"
-dimensions = {
-aws_dimension_name1 = "aws_dimension_value1"
-aws_dimension_name2 = "aws_dimension_value2"
-}
-threshold = "80"
-alarm_description = "This metric is a test metric"
-insufficient_data_actions = []
+  count = var.aws_enable_creation
+  alarm_name = var.aws_cloud_watch_alarm_name_with_dimensions
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods = "2"
+  metric_name = var.aws_cloud_watch_alarm_metric_name_with_dimensions
+  namespace = var.aws_cloud_watch_log_metric_filter_namespace_with_dimensions
+  period = "120"
+  statistic = "Average"
+  dimensions = {
+    aws_dimension_name1 = "aws_dimension_value1"
+    aws_dimension_name2 = "aws_dimension_value2"
+  }
+  threshold = "80"
+  alarm_description = "This metric is a test metric"
+  insufficient_data_actions = []
 }
 
 # AWS Config - note can only have one config recorder per region
 
 resource "aws_config_configuration_recorder" "config_recorder" {
-count = var.aws_create_configuration_recorder
-name = var.aws_configuration_recorder_name
-role_arn = aws_iam_role.role_for_config_recorder[0].arn
+  count = var.aws_create_configuration_recorder
+  name = var.aws_configuration_recorder_name
+  role_arn = aws_iam_role.role_for_config_recorder[0].arn
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {
-count = var.aws_create_configuration_recorder
-name = var.aws_configuration_recorder_role
+  count = var.aws_create_configuration_recorder
+  name = var.aws_configuration_recorder_role
 
-assume_role_policy = <<POLICY
+  assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1101,26 +1102,26 @@ EOF
 }
 
 resource "aws_iam_group" "aws_iam_group_1" {
-count = var.aws_enable_creation
-name  = var.aws_iam_group_name
+  count = var.aws_enable_creation
+  name  = var.aws_iam_group_name
 }
 
 resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
-count = var.aws_enable_creation
-user  = aws_iam_user.iam_user[0].name
+  count = var.aws_enable_creation
+  user  = aws_iam_user.iam_user[0].name
 
-groups = [
-var.aws_iam_group_name,
-]
+  groups = [
+    var.aws_iam_group_name,
+  ]
 }
 
 resource "aws_iam_policy" "aws_policy_1" {
-count       = var.aws_enable_creation
-name        = var.aws_iam_policy_name
-path        = "/"
-description = "Test policy"
+  count       = var.aws_enable_creation
+  name        = var.aws_iam_policy_name
+  path        = "/"
+  description = "Test policy"
 
-policy = <<EOF
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1143,7 +1144,7 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count       = var.aws_enable_creation
+  count       = 1
   name        = var.aws_iam_attached_policy_name
   path        = "/"
   description = "Test policy"
@@ -1169,36 +1170,36 @@ resource "aws_iam_policy" "aws_attached_policy_1" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "test-attach" {
-  count      = var.aws_enable_creation
+resource "aws_iam_role_policy_attachment" "attach_generic_policy_to_role_1" {
+  count      = 1
   role       = aws_iam_role.aws_role_generic[0].name
   policy_arn = aws_iam_policy.aws_attached_policy_1[0].arn
 }
 
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
-count = var.aws_enable_creation
-name = var.aws_sqs_queue_name
-delay_seconds = 90
-max_message_size = 2048
-message_retention_seconds = 86400
-receive_wait_time_seconds = 10
+  count = var.aws_enable_creation
+  name = var.aws_sqs_queue_name
+  delay_seconds = 90
+  max_message_size = 2048
+  message_retention_seconds = 86400
+  receive_wait_time_seconds = 10
 }
 
 resource "aws_vpc" "eks_vpc" {
-count = var.aws_enable_creation
-cidr_block = "10.0.0.0/16"
-instance_tenancy = "default"
+  count = var.aws_enable_creation
+  cidr_block = "10.0.0.0/16"
+  instance_tenancy = "default"
 
-tags = {
-Name = var.aws_eks_vpc_name
-}
+  tags = {
+    Name = var.aws_eks_vpc_name
+  }
 }
 
 resource "aws_iam_role" "aws_eks_role" {
-count = var.aws_enable_creation
-name = var.aws_eks_role_name
+  count = var.aws_enable_creation
+  name = var.aws_eks_role_name
 
-assume_role_policy = <<POLICY
+  assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1272,7 +1273,7 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
 }
 
 resource "aws_iam_role" "aws_role_generic" {
-  count = var.aws_enable_creation
+  count = 1
   name  = var.aws_iam_role_generic_name
 
   assume_role_policy = <<EOF
@@ -1291,6 +1292,27 @@ resource "aws_iam_role" "aws_role_generic" {
 }
 EOF
 
+}
+
+resource "aws_iam_role_policy" "generic_policy" {
+  count = 1
+  name = var.aws_iam_role_generic_policy_name
+  role = aws_iam_role.aws_role_generic[0].id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
 
 data "aws_ami" "aws_vm_config" {
