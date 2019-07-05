@@ -30,7 +30,6 @@ class AwsIamPolicies < AwsResourceBase
     parameters = {}
     parameters[:only_attached] = opts[:only_attached] if opts[:only_attached]
     parameters[:scope]         = opts[:scope]         if opts[:scope]
-    parameters[:path_prefix]   = opts[:path_prefix]   if opts[:path_prefix]
     @table = fetch_data(parameters)
   end
 
