@@ -1,5 +1,9 @@
 # InSpec for AWS
 
+* **Project State: Maintained**
+
+For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
+
 This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required resources to write tests for resources in AWS.
 
 ## Prerequisites
