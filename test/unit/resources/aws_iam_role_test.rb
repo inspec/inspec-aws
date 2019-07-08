@@ -69,11 +69,11 @@ class AwsIamRoleAttachedPolicyTest < Minitest::Test
   end
 
   def test_attached_policy_name_exists
-    assert_equal(@role.attached_policies_name[0], @mock.attached_policy_name)
+    assert_equal(@role.attached_policies_names[0], @mock.attached_policy_name)
   end
 
   def test_attached_policy_arn_exists
-    assert_equal(@role.attached_policies_arn[0], @mock.attached_policy_arn)
+    assert_equal(@role.attached_policies_arns[0], @mock.attached_policy_arn)
   end
 
 end
