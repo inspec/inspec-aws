@@ -1144,7 +1144,7 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count       = 1
+  count       = var.aws_enable_creation
   name        = var.aws_iam_attached_policy_name
   path        = "/"
   description = "Test policy"
@@ -1171,7 +1171,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "attach_generic_policy_to_role_1" {
-  count      = 1
+  count      = var.aws_enable_creation
   role       = aws_iam_role.aws_role_generic[0].name
   policy_arn = aws_iam_policy.aws_attached_policy_1[0].arn
 }
@@ -1273,7 +1273,7 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
 }
 
 resource "aws_iam_role" "aws_role_generic" {
-  count = 1
+  count = var.aws_enable_creation
   name  = var.aws_iam_role_generic_name
 
   assume_role_policy = <<EOF
@@ -1295,7 +1295,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "generic_policy" {
-  count = 1
+  count = var.aws_enable_creation
   name = var.aws_iam_role_generic_policy_name
   role = aws_iam_role.aws_role_generic[0].id
 

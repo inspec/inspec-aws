@@ -11,7 +11,7 @@ class AwsIamRoleTest < Minitest::Test
     @mock_role = @mock.role[:role]
 
     # When
-    @role = AwsIamRole.new(role_name: @mock_role[:role_name],
+    @role = AwsIamRole.new(role_name: @mock.role_name,
                            client_args: { stub_responses: true },
                            stub_data: @mock.stub_data)
   end
@@ -47,6 +47,56 @@ class AwsIamRoleTest < Minitest::Test
   def test_permission_boundaries
     assert_nil(@role.permissions_boundary_type)
     assert_nil(@role.permissions_boundary_arn)
+  end
+
+end
+
+class AwsIamRoleAttachedPolicyTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock      = AwsIamRoleMock.new
+    @mock_attached_policies = @mock.attached_policy_name
+
+    # When
+    @role = AwsIamRole.new(role_name: @mock.role_name,
+                           client_args: { stub_responses: true },
+                           stub_data: @mock.stub_data)
+  end
+
+  def test_exists
+    assert(@role.exists?)
+  end
+
+  def test_attached_policy_name_exists
+    assert_equal(@role.attached_policies_name[0], @mock.attached_policy_name)
+  end
+
+  def test_attached_policy_arn_exists
+    assert_equal(@role.attached_policies_arn[0], @mock.attached_policy_arn)
+  end
+
+end
+
+class AwsIamRoleInlinePolicyTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock      = AwsIamRoleMock.new
+    @mock_inline_policies = @mock.inline_policies[:policy_names]
+
+    # When
+    @role = AwsIamRole.new(role_name: @mock.role_name,
+                           client_args: { stub_responses: true },
+                           stub_data: @mock.stub_data)
+  end
+
+  def test_exists
+    assert(@role.exists?)
+  end
+
+  def test_inline_policy_name_exists
+    assert_equal(@role.inline_policies[0], @mock.inline_policy_name)
   end
 
 end
