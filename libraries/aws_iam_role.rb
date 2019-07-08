@@ -41,17 +41,16 @@ class AwsIamRole < AwsResourceBase
     fetch_attached_role_policies(opts[:role_name])
   end
 
-  def fetch_role_policies(role_name = "")
-
+  def fetch_role_policies(role_name = '')
     catch_aws_errors do
-      resp = @aws.iam_client.list_role_policies({role_name: role_name})
+      resp = @aws.iam_client.list_role_policies({ role_name: role_name })
       @inline_policies = resp.policy_names
     end
   end
 
-  def fetch_attached_role_policies(role_name = "")
+  def fetch_attached_role_policies(role_name = '')
     catch_aws_errors do
-      resp = @aws.iam_client.list_attached_role_policies({role_name: role_name}).attached_policies
+      resp = @aws.iam_client.list_attached_role_policies({ role_name: role_name }).attached_policies
       @attached_policies_name = []
       @attached_policies_arn  = []
       unless resp.empty?
