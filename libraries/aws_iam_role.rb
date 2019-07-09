@@ -36,7 +36,7 @@ class AwsIamRole < AwsResourceBase
         @permissions_boundary_type = resp.permissions_boundary.permissions_boundary_type
         @permissions_boundary_arn  = resp.permissions_boundary.permissions_boundary_arn
       end
-      fetch_attached_role_policies(role_name)
+      fetch_attached_role_policies!
     end
   end
 
@@ -58,9 +58,9 @@ class AwsIamRole < AwsResourceBase
 
   private
 
-  def fetch_attached_role_policies(role_name)
+  def fetch_attached_role_policies!
     catch_aws_errors do
-      resp = @aws.iam_client.list_attached_role_policies({ role_name: role_name }).attached_policies
+      resp = @aws.iam_client.list_attached_role_policies({ role_name: @role_name }).attached_policies
       @attached_policies_names = []
       @attached_policies_arns  = []
       unless resp.empty?
@@ -69,7 +69,6 @@ class AwsIamRole < AwsResourceBase
           @attached_policies_arns  << r.policy_arn
         end
       end
-      return @attached_policies_names && @attached_policies_arns
     end
   end
 end
