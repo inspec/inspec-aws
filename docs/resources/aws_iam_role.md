@@ -38,6 +38,10 @@ See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/la
 |max_session_duration        | The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter. |
 |permissions_boundary_type   | The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy . |
 |permissions_boundary_arn    | The ARN of the policy used to set the permissions boundary for the user or role. |
+|inline_policies             | A list of inline policy names associated with the described role. |
+|attached_policies_name      | A list of attached policy names associated with the described role. |
+|attached_policies_arn       | A list of attached policy ARNs associated with the described role. |
+
 
 ## Examples
 
