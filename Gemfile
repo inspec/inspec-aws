@@ -41,3 +41,6 @@ end
 # Below required to overcome AWS SDK v2/3 incompatibility
 gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
 gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
+
+# add these additional dependencies into Gemfile.local
+eval_gemfile(__FILE__ + ".local") if File.exist?(__FILE__ + ".local")

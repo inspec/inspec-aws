@@ -14,3 +14,4 @@ local
 *inspec-*.tfvars
 *-inspec-attributes.yaml
 *inspec-output*
+/Gemfile.local
