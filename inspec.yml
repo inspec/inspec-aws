@@ -6,4 +6,4 @@ copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 version: 0.1.0
 license: Apache-2.0
-inspec_version: '>= 3.0.25'
+inspec_version: 0.1.0
