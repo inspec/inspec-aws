@@ -91,12 +91,12 @@ version: 0.1.0
 inspec_version: '>= 4.6.9'
 depends:
   - name: inspec-aws
-    url: https://github.com/inspec/inspec-aws/archive/x.y.z
+    url: https://github.com/inspec/inspec-aws/archive/x.tar.gz
 supports:
   - platform: aws
 ```
 
-(For available inspec-aws versions, see a list of [available versions](https://github.com/inspec/inspec-aws/releases).)
+(For available inspec-aws versions, see this list of [inspec-aws versions](https://github.com/inspec/inspec-aws/releases).)
 
 Add some tests and run the profile via:
 
