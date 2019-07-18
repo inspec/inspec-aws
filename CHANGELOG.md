@@ -1,7 +1,8 @@
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 1.0.0 -->
+## [v1.0.0](https://github.com/inspec/inspec-aws/tree/v1.0.0) (2019-07-18)
 
 #### Merged Pull Requests
+- Set versions for pinned version release [#116](https://github.com/inspec/inspec-aws/pull/116) ([clintoncwolfe](https://github.com/clintoncwolfe))
 - Update inspec version [#105](https://github.com/inspec/inspec-aws/pull/105) ([rmoles](https://github.com/rmoles))
 <!-- latest_release -->
 
