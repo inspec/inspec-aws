@@ -12,6 +12,7 @@ gem 'aws-sdk-cloudtrail', '~> 1'
 gem 'aws-sdk-cloudwatch', '~> 1'
 gem 'aws-sdk-cloudwatchlogs', '~> 1'
 gem 'aws-sdk-configservice', '~> 1'
+gem 'aws-sdk-dynamodb', '~> 1'
 gem 'aws-sdk-ec2', '~> 1'
 gem 'aws-sdk-ecr', '~> 1'
 gem 'aws-sdk-ecs', '~> 1'
@@ -19,11 +20,14 @@ gem 'aws-sdk-eks', '~> 1'
 gem 'aws-sdk-elasticloadbalancing', '~> 1'
 gem 'aws-sdk-elasticloadbalancingv2', '~> 1'
 gem 'aws-sdk-iam', '~> 1'
+gem 'aws-sdk-kms', '~> 1'
 gem 'aws-sdk-organizations', '~> 1'
 gem 'aws-sdk-rds', '~> 1'
 gem 'aws-sdk-s3', '~> 1'
 gem 'aws-sdk-sns', '~> 1'
 gem 'aws-sdk-sqs', '~> 1'
+# Use Latest Inspec
+gem 'inspec-bin'
 
 gem 'rubocop', '~> 0.64.0', require: false
 
@@ -31,16 +35,5 @@ group :development do
   gem 'github_changelog_generator'
   gem 'rake'
   gem 'minitest'
+  gem 'pry-byebug'
 end
-
-# To uncomment when backwards incompatible releases of InSpec / Train are available.
-#group :inspec do
-#  gem 'inspec', '~> 3.0', '>= 3.0.25'
-#end
-
-# Below required to overcome AWS SDK v2/3 incompatibility
-gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
-gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
-
-# add these additional dependencies into Gemfile.local
-eval_gemfile(__FILE__ + ".local") if File.exist?(__FILE__ + ".local")
