@@ -1,5 +1,9 @@
 # InSpec for AWS
 
+* **Project State: Maintained**
+
+For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
+
 This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required resources to write tests for resources in AWS.
 
 ## Prerequisites
@@ -84,13 +88,15 @@ Example inspec.yml:
 name: my-profile
 title: My own AWS profile
 version: 0.1.0
-inspec_version: '>= 2.2.7'
+inspec_version: '>= 4.6.9'
 depends:
   - name: inspec-aws
-    url: https://github.com/inspec/inspec-aws/archive/master.tar.gz
+    url: https://github.com/inspec/inspec-aws/archive/x.tar.gz
 supports:
   - platform: aws
 ```
+
+(For available inspec-aws versions, see this list of [inspec-aws versions](https://github.com/inspec/inspec-aws/releases).)
 
 Add some tests and run the profile via:
 
