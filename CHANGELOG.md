@@ -1,9 +1,14 @@
-<!-- latest_release 1.0.1 -->
+<!-- latest_release 1.0.2 -->
+## [v1.0.2](https://github.com/inspec/inspec-aws/tree/v1.0.2) (2019-07-26)
+
+#### Merged Pull Requests
+- Fix greedy match [#115](https://github.com/inspec/inspec-aws/pull/115) ([miah](https://github.com/miah))
+<!-- latest_release -->
+
 ## [v1.0.1](https://github.com/inspec/inspec-aws/tree/v1.0.1) (2019-07-18)
 
 #### Merged Pull Requests
 - Fix quoting on inspec.yml [#117](https://github.com/inspec/inspec-aws/pull/117) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.0.0](https://github.com/inspec/inspec-aws/tree/v1.0.0) (2019-07-18)
 
