@@ -15,8 +15,6 @@ Use the `aws_sqs_queues` InSpec audit resource to test properties of some or  al
 
 #### Parameters
 
-##### queue_url _(required)_
-
 This resource does not expect any parameters.
 
 See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
