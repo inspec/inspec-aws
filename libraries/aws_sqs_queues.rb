@@ -15,7 +15,7 @@ class AwsSqsQueues < AwsResourceBase
 
   FilterTable.create
              .register_column(:arns,                                  field: :arn)
-             .register_column(:queue_url,                             field: :queue_url)
+             .register_column(:queue_urls,                            field: :queue_url)
              .register_column(:is_fifo_queues,                        field: :is_fifo_queue)
              .register_column(:visibility_timeouts,                   field: :visibility_timeout)
              .register_column(:maximum_message_sizes,                 field: :maximum_message_size)
