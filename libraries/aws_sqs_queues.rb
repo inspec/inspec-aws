@@ -15,6 +15,7 @@ class AwsSqsQueues < AwsResourceBase
 
   FilterTable.create
              .register_column(:arns,                                  field: :arn)
+             .register_column(:queue_url,                             field: :queue_url)
              .register_column(:is_fifo_queues,                        field: :is_fifo_queue)
              .register_column(:visibility_timeouts,                   field: :visibility_timeout)
              .register_column(:maximum_message_sizes,                 field: :maximum_message_size)
@@ -38,6 +39,7 @@ class AwsSqsQueues < AwsResourceBase
       response.queue_urls.each do |url|
         queue_attributes = @aws.sqs_client.get_queue_attributes(queue_url: url, attribute_names: ['All']).attributes
         queue_rows += [{ arn:                  queue_attributes['QueueArn'],
+                         queue_url:            url,
                          attachment_count:     queue_attributes['VisibilityTimeout'].to_i,
                          default_version_id:   queue_attributes['MaximumMessageSize'].to_i,
                          policy_name:          queue_attributes['MessageRetentionPeriod'].to_i,
