@@ -32,7 +32,6 @@ gem 'inspec-bin'
 gem 'rubocop', '~> 0.64.0', require: false
 
 group :development do
-  gem 'github_changelog_generator'
   gem 'rake'
   gem 'minitest'
   gem 'pry-byebug'
