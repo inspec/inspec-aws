@@ -1,9 +1,14 @@
-<!-- latest_release 1.0.4 -->
+<!-- latest_release 1.0.5 -->
+## [v1.0.5](https://github.com/inspec/inspec-aws/tree/v1.0.5) (2019-08-28)
+
+#### Merged Pull Requests
+- Correct documentation of aws_dynamodb_table [#125](https://github.com/inspec/inspec-aws/pull/125) ([rgevaert](https://github.com/rgevaert))
+<!-- latest_release -->
+
 ## [v1.0.4](https://github.com/inspec/inspec-aws/tree/v1.0.4) (2019-08-28)
 
 #### Merged Pull Requests
 - Removed github_changelog_generator in order to get buildkite green. [#123](https://github.com/inspec/inspec-aws/pull/123) ([zenspider](https://github.com/zenspider))
-<!-- latest_release -->
 
 ## [v1.0.3](https://github.com/inspec/inspec-aws/tree/v1.0.3) (2019-08-23)
 
