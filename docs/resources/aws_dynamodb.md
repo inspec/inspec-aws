@@ -5,12 +5,12 @@ platform: aws
 
 # aws\_dynamodb\_table
 
-Use the `aws_dynamo_db_table` InSpec audit resource to test properties of a single DynamoDb Table.
+Use the `aws_dynamodb_table` InSpec audit resource to test properties of a single DynamoDb Table.
 
 ## Syntax
 
 ##### Ensure an DynamoDb Table exists.
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       it { should exist }
     end
       
@@ -40,12 +40,12 @@ global_secondary_indexes
 ## Examples
 
 ##### Ensure DynamoDb Table status is active
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       its('table_status') { should eq 'ACTIVE' }
     end
 
 ##### Ensure DynamoDb Table has an attribute
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       its('attributes') { should_not be_empty }
       its('attributes') { should include({:attribute_name =>'table_field', :attribute_type =>'N'}) }
     end
@@ -60,11 +60,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       it { should exist }
     end
 
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       it { should_not exist }
     end
     

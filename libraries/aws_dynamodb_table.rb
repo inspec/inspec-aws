@@ -7,7 +7,7 @@ class AwsDynamoDbTable < AwsResourceBase
   desc 'Verifies the settings for a DynamoDB table'
 
   example "
-    describe aws_dynamo_db_table(table_name: 'table-name') do
+    describe aws_dynamodb_table(table_name: 'table-name') do
       it { should exist }
     end
   "
