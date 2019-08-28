@@ -1,9 +1,14 @@
-<!-- latest_release 1.0.3 -->
+<!-- latest_release 1.0.4 -->
+## [v1.0.4](https://github.com/inspec/inspec-aws/tree/v1.0.4) (2019-08-28)
+
+#### Merged Pull Requests
+- Removed github_changelog_generator in order to get buildkite green. [#123](https://github.com/inspec/inspec-aws/pull/123) ([zenspider](https://github.com/zenspider))
+<!-- latest_release -->
+
 ## [v1.0.3](https://github.com/inspec/inspec-aws/tree/v1.0.3) (2019-08-23)
 
 #### Merged Pull Requests
 - aws_sqs_queues urls attribute [#122](https://github.com/inspec/inspec-aws/pull/122) ([patelarpan06](https://github.com/patelarpan06))
-<!-- latest_release -->
 
 ## [v1.0.2](https://github.com/inspec/inspec-aws/tree/v1.0.2) (2019-07-26)
 
