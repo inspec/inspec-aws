@@ -646,13 +646,14 @@ resource "aws_db_instance" "db_rds" {
   storage_type = var.aws_rds_db_storage_type
   engine = var.aws_rds_db_engine
   engine_version = var.aws_rds_db_engine_version
-  instance_class = "db.t2.micro"
+  instance_class = "db.t2.small"
   identifier = var.aws_rds_db_identifier
   name = var.aws_rds_db_name
   username = var.aws_rds_db_master_user
   password = "testpassword"
   parameter_group_name = "default.mysql5.6"
   skip_final_snapshot = true
+  storage_encrypted    = true
 
   tags = {
     Name = var.aws_rds_db_name
