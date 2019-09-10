@@ -33,6 +33,12 @@ class AwsRdsInstance < AwsResourceBase
     end
   end
 
+  def has_encrypted_storage?
+    @rds_instance[:storage_encrypted]
+  end
+  # add this alias for consistency with ebs volumes
+  alias encrypted? has_encrypted_storage?
+
   def tags
     begin
       tag_list = @aws.rds_client.list_tags_for_resource(resource_name: @rds_instance[:db_instance_arn]).tag_list

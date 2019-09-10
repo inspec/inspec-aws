@@ -15,13 +15,15 @@ control 'aws-rds-instance-1.0' do
 
   describe aws_rds_instance(db_instance_identifier: aws_rds_db_identifier) do
     it { should exist }
+    it { should have_encrypted_storage }
+    its ('storage_encrypted') { should eq true }
     its ('db_name') { should eq aws_rds_db_name }
     its ('engine') { should eq aws_rds_db_engine }
     its ('engine_version') { should eq aws_rds_db_engine_version }
     its ('storage_type') { should eq aws_rds_db_storage_type }
     its ('master_username') { should eq aws_rds_db_master_user }
     its ('allocated_storage') { should eq 10 }
-    its ('db_instance_class') { should eq 'db.t2.micro' }
+    its ('db_instance_class') { should eq 'db.t2.small' }
     its ('tags') { should include('Name' => aws_rds_db_name)}
   end
 
