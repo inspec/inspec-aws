@@ -1,9 +1,14 @@
-<!-- latest_release 1.0.5 -->
+<!-- latest_release 1.1.0 -->
+## [v1.1.0](https://github.com/inspec/inspec-aws/tree/v1.1.0) (2019-09-10)
+
+#### Merged Pull Requests
+- Add bulk RDS instances checks [#130](https://github.com/inspec/inspec-aws/pull/130) ([adriankierman](https://github.com/adriankierman))
+<!-- latest_release -->
+
 ## [v1.0.5](https://github.com/inspec/inspec-aws/tree/v1.0.5) (2019-08-28)
 
 #### Merged Pull Requests
 - Correct documentation of aws_dynamodb_table [#125](https://github.com/inspec/inspec-aws/pull/125) ([rgevaert](https://github.com/rgevaert))
-<!-- latest_release -->
 
 ## [v1.0.4](https://github.com/inspec/inspec-aws/tree/v1.0.4) (2019-08-28)
 
