@@ -13,24 +13,23 @@ class AwsHostedZones < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-              .register_column(:name, field: :name)
-              .register_column(:id, field: :id) 
-              .install_filter_methods_on_resource(self, :table)
+             .register_column(:name, field: :name)
+             .register_column(:id, field: :id)
+             .install_filter_methods_on_resource(self, :table)
 
-              
   def initialize(opts = {})
     super(opts)
 
     zones = []
     catch_aws_errors do
-      resp =@aws.route53_client.list_hosted_zones()
+      resp =@aws.route53_client.list_hosted_zones
 
-      resp.hosted_zones.each do | zone | 
+      resp.hosted_zones.each do |zone|
         zones += [{
           name: zone.name,
-          id: zone.id
+          id: zone.id,
         }]
-      end      
+      end
     end
 
     @table = zones

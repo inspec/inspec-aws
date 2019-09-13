@@ -1,0 +1,10 @@
+version: '3.2'
+
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: dockerfile
+    working_dir: /app
+    volumes:
+    - .:/app
