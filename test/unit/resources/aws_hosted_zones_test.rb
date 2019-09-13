@@ -8,14 +8,14 @@ class AwsHostedZonesTests < Minitest::Test
   end
   
   def setup
-    data = {}
-    data[:method] = :list_hosted_zones
-    data[:data] = { hosted_zones: 
+    zones_call = {}
+    zones_call[:method] = :list_hosted_zones
+    zones_call[:data]   = { hosted_zones: 
                     [{name: "carry-on.films.com", id: "some_random_id", caller_reference: "reference"}], 
                     marker: "nil", is_truncated: false, next_marker: "nil", max_items: 100}
-    data[:client] = Aws::Route53::Client
+    zones_call[:client] = Aws::Route53::Client
 
-    @zones = AwsHostedZones.new(client_args: { stub_responses: true }, stub_data: [data])
+    @zones = AwsHostedZones.new(client_args: { stub_responses: true }, stub_data: [zones_call])
   end
 
   def test_exists_works
