@@ -128,6 +128,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_elb](docs/resources/aws_elb.md)
 - [aws_elbs](docs/resources/aws_elbs.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
+- [aws_hosted_zones](docs/resources/aws_hosted_zones.md)
 - [aws_iam_access_key](docs/resources/aws_iam_access_key.md)
 - [aws_iam_access_keys](docs/resources/aws_iam_access_keys.md)
 - [aws_iam_account_alias](docs/resources/aws_iam_account_alias.md)
@@ -360,6 +361,32 @@ Valid:       true
 
 Summary:     0 errors, 1 warnings
 ```
+
+Conversly run using within a docker container
+
+````
+make build_test
+
+docker-compose run --rm builder 
+Running RuboCop...
+Inspecting 68 files
+....................................................................
+
+68 files inspected, no offenses detected
+/usr/local/bin/ruby -I"lib:libraries:test/unit" -I"/usr/local/bundle/gems/rake-12.3.3/lib" "/usr/local/bundle/gems/rake-12.3.3/lib/rake/rake_test_loader.rb" "test/unit/resources/aws_alb_test.rb" "test/unit/resources/aws_auto_scaling_group_test.rb" "test/unit/resources/aws_cloudformation_stack_test.rb" "test/unit/resources/aws_cloudtrail_trail_test.rb" "test/unit/resources/aws_cloudtrail_trails_test.rb" "test/unit/resources/aws_cloudwatch_alarm_test.rb" "test/unit/resources/aws_cloudwatch_log_metric_filter_test.rb" "test/unit/resources/aws_config_delivery_channel_test.rb" "test/unit/resources/aws_config_recorder_test.rb" "test/unit/resources/aws_dynamodb_table_test.rb" "test/unit/resources/aws_ebs_volume_test.rb" "test/unit/resources/aws_ebs_volumes_test.rb" "test/unit/resources/aws_ec2_instance_test.rb" "test/unit/resources/aws_ec2_instances_test.rb" "test/unit/resources/aws_ecr_test.rb" "test/unit/resources/aws_ecs_cluster_test.rb" "test/unit/resources/aws_eks_cluster_test.rb" "test/unit/resources/aws_eks_clusters_test.rb" "test/unit/resources/aws_elb_test.rb" "test/unit/resources/aws_flow_log_test.rb" "test/unit/resources/aws_hosted_zones_test.rb" "test/unit/resources/aws_iam_account_alias_test.rb" "test/unit/resources/aws_iam_group_test.rb" "test/unit/resources/aws_iam_password_policy_test.rb" "test/unit/resources/aws_iam_policy_test.rb" "test/unit/resources/aws_iam_role_test.rb" "test/unit/resources/aws_iam_root_user_test.rb" "test/unit/resources/aws_iam_saml_provider_test.rb" "test/unit/resources/aws_iam_user_test.rb" "test/unit/resources/aws_kms_key_test.rb" "test/unit/resources/aws_kms_keys_test.rb" "test/unit/resources/aws_launch_configuration_test.rb" "test/unit/resources/aws_organizations_member_test.rb" "test/unit/resources/aws_rds_instance_test.rb" "test/unit/resources/aws_rds_instances_test.rb" "test/unit/resources/aws_region_test.rb" "test/unit/resources/aws_regions_test.rb" "test/unit/resources/aws_route_table_test.rb" "test/unit/resources/aws_route_tables_test.rb" "test/unit/resources/aws_s3_bucket_object_test.rb" "test/unit/resources/aws_s3_bucket_test.rb" "test/unit/resources/aws_s3_buckets_test.rb" "test/unit/resources/aws_security_group_test.rb" "test/unit/resources/aws_security_groups_test.rb" "test/unit/resources/aws_sns_subscription_test.rb" "test/unit/resources/aws_sns_topic_test.rb" "test/unit/resources/aws_sns_topics_test.rb" "test/unit/resources/aws_sqs_queue_test.rb" "test/unit/resources/aws_sts_caller_identity_test.rb" "test/unit/resources/aws_subnet_test.rb" "test/unit/resources/aws_subnets_test.rb" "test/unit/resources/aws_vpc_test.rb" "test/unit/resources/aws_vpcs_test.rb" 
+Run options: --seed 22010
+
+# Running:
+
+..............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+Fabulous run in 4.613042s, 155.6457 runs/s, 172.3375 assertions/s.
+
+718 runs, 795 assertions, 0 failures, 0 errors, 0 skips
+
+````
+
+This just requires docker, docker-compose and make, see [Three Musketeers Pattern](https://3musketeers.io/docs/make.html) for details
 
 Running the integration tests (after `init_workspace` and `setup_integration_tests`):
 ```
