@@ -8,14 +8,14 @@ platform: aws
 Use the `aws_hosted_zone` resource to test a specific hosted zone configuration.
 
 ## Syntax
-
+````
     describe aws_hosted_zone('zone-name') do
       it { should exist }
       its ('name_servers.count') { should eq 4 }
       its ('private_zone') { should be false }
       its ('record_names') { should include 'sid-james.carry-on.films.com' }
     end
-    
+````    
 #### Parameters
 
 This resource takes one parameter, the name of the hosted zone to validate.
@@ -36,13 +36,11 @@ This resource takes one parameter, the name of the hosted zone to validate.
 
 
 ##### Ensure a specific hosted zone exists
+````
     describe aws_hosted_zone('zone-name') do
       it { should exist }
-      its ('name_servers.count') { should eq 4 }
-      its ('private_zone') { should be false }
-      its ('record_names') { should include 'sid-james.carry-on.films.com' }
     end
-
+````
 
 ## Matchers
 
@@ -50,18 +48,36 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 #### exist
 
-The control will pass if the describe returns at least one result.
+The control will pass if the describe passes all tests.
 
-Use `should_not` to test the entity should not exist.
-
-    describe aws_eks_clusters.where( <property>: <value>) do
+Use `exist` to validate the hosted zone exists
+````
+    describe aws_hosted_zone('zone-name') do
       it { should exist }
     end
-      
-    describe aws_eks_clusters.where( <property>: <value>) do
+````
+Use `should_not` to test the entity should not exist.
+````
+    describe aws_hosted_zone('zone-name') do
       it { should_not exist }
     end
-    
+````
+#### should
+
+The control will pass if the describe passes all tests.
+
+Use `should` to validate the hosted zone if public or private, the number of name servers is correct or that a specific record exists e.g.
+
+````
+    describe aws_hosted_zone('zone-name') do
+      it { should exist }
+      its ('name_servers.count') { should eq 4 }
+      its ('private_zone') { should be false }
+      its ('record_names') { should include 'sid-james.carry-on.films.com' }
+    end
+
+````
+
 
 ## AWS Permissions
 

@@ -8,11 +8,11 @@ platform: aws
 Use the `aws_hosted_zones` resource to test the hosted zones configuration.
 
 ## Syntax
-
+````
     describe aws_hosted_zones do
       its('names') { should include ("carry-on.films.com") }
     end
-    
+````    
 #### Parameters
 
 This resource does not expect any parameters.
@@ -29,29 +29,28 @@ This resource does not expect any parameters.
 
 
 ##### Ensure a specific hosted zone exists
+````
     describe aws_hosted_zones do
       its('names') { should include ("carry-on.films.com") }
     end
-
+````
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+#### should
 
-The control will pass if the describe returns at least one result.
+The control will pass if the describe passes all tests.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to validate if a specific hosted zone exists
 
-    describe aws_eks_clusters.where( <property>: <value>) do
-      it { should exist }
-    end
-      
-    describe aws_eks_clusters.where( <property>: <value>) do
-      it { should_not exist }
+````
+    describe aws_hosted_zones do
+      its('names') { should include ("carry-on.films.com") }
     end
     
+````
 
 ## AWS Permissions
 
