@@ -78,7 +78,6 @@ Use `should` to validate the hosted zone if public or private, the number of nam
 
 ````
 
-
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `route53:ListHostedZones` action with Effect set to Allow.
