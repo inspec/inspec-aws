@@ -7,18 +7,21 @@ class AwsHostedZone < AwsResourceBase
   example "
     describe aws_hosted_zone('zone-name') do
       it { should exist }
-
+      its ('name_servers.count') { should eq 4 }
+      its ('private_zone') { should be false }
+      its ('record_names') { should include 'sid-james.carry-on.films.com' }
     end
   "
+
   attr_reader :name_servers, :private_zone, :record_count, :records
 
   FilterTable.create
              .register_column(:record_names,      field: :record_name)
-             .register_column(:id,                field: :id)
+             .register_column(:ids,               field: :id)
              .register_column(:private,           field: :private)
-             .register_column(:ttl,               field: :ttl)
-             .register_column(:type,              field: :type)
-             .register_column(:value,             field: :value)
+             .register_column(:ttls,              field: :ttl)
+             .register_column(:types,             field: :type)
+             .register_column(:values,            field: :value)
              .install_filter_methods_on_resource(self, :records)
 
   def initialize(opts = {})
