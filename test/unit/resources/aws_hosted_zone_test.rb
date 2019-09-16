@@ -41,7 +41,7 @@ class AwsHostedZoneTests < Minitest::Test
                               comment: "created by TF", 
                               private_zone: false
                             }, 
-                            resource_record_set_count: 4, 
+                            resource_record_set_count: 2, 
                             linked_service: {}
                           }, 
                           delegation_set: {
@@ -94,19 +94,24 @@ class AwsHostedZoneTests < Minitest::Test
   end
 
   def test_private_zone
-    refute @zone.private
+    refute @zone.private_zone
   end
 
   def test_it_exists
     assert @zone.exist?
   end
 
+  def test_record_count
+    assert_equal(@zone.record_count, 2)
+
+  end
+
   def test_record_exists
-    assert @zone.records.include?("sid-james.carry-on.films.com")
+    assert @zone.record_names.include?("sid-james.carry-on.films.com")
   end
 
   def test_record_does_not_exists
-    refute @zone.records.include?("roy-castle.carry-on.films.com")
+    refute @zone.record_names.include?("roy-castle.carry-on.films.com")
   end
 
 end

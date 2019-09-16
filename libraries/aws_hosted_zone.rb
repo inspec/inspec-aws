@@ -10,15 +10,15 @@ class AwsHostedZone < AwsResourceBase
 
     end
   "
-  attr_reader :records, :name_servers, :private, :record_count
+  attr_reader :name_servers, :private_zone, :record_count, :records
 
   FilterTable.create
-             .register_column(:name,        field: :name)
-             .register_column(:id,          field: :id)
-             .register_column(:private,     field: :private)
-             .register_column(:ttl,         field: :ttl)
-             .register_column(:type,        field: :type)
-             .register_column(:value,       field: :value)
+             .register_column(:record_names,      field: :record_name)
+             .register_column(:id,                field: :id)
+             .register_column(:private,           field: :private)
+             .register_column(:ttl,               field: :ttl)
+             .register_column(:type,              field: :type)
+             .register_column(:value,             field: :value)
              .install_filter_methods_on_resource(self, :records)
 
   def initialize(opts = {})
@@ -31,24 +31,14 @@ class AwsHostedZone < AwsResourceBase
 
     get_zone_details(@id)
 
-    record_list = get_records_for_zone(@id)
-
-    @record_count = record_list.length
-
-    records_rows = []
-    record_list.each do |item|
-      item.resource_records.each do |record|
-        records_rows += [{
-          name:    item.name,
-          id:      @id,
-          type:    item.type,
-          value:   record.value,
-          ttl:     item.ttl,
-        }]
-      end
-    end
-    @records = records_rows
+    get_zone_record(@id)
   end
+
+  def exist?
+    !@id.nil?
+  end
+
+  private
 
   def get_zone_id(zone_name)
     catch_aws_errors do
@@ -65,18 +55,29 @@ class AwsHostedZone < AwsResourceBase
 
       resp = @aws.route53_client.get_hosted_zone(id: zone_id)
       @name_servers = resp[:delegation_set][:name_servers]
-      @private = resp[:hosted_zone][:config][:private_zone]
+      @private_zone = resp[:hosted_zone][:config][:private_zone]
+      @record_count = resp[:hosted_zone][:resource_record_set_count]
 
     end
   end
 
-  def get_records_for_zone(zone_id)
+  def get_zone_record(zone_id)
     resp = nil
     catch_aws_errors do
 
       resp = @aws.route53_client.list_resource_record_sets(hosted_zone_id: zone_id)
     end
 
-    resp[:resource_record_sets]
+    records_rows = []
+    resp[:resource_record_sets].each do |item|
+      item.resource_records.each do |record|
+        records_rows +=[{ record_name:  item.name,
+            id:  @id,
+            type:  item.type,
+            value:  record.value,
+            ttl:  item.ttl }]
+      end
+    end
+    @records = records_rows
   end
 end

@@ -1,5 +1,5 @@
 
-build_test:
+sure:
 	docker-compose run --rm builder 
 
 
