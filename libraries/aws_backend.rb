@@ -299,7 +299,7 @@ class AwsResourceDynamicMethods
     # Create the necessary method based on the var that has been passed
     # Test the value for its type so that the method can be setup correctly
     case value.class.to_s
-    when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum'
+    when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum', 'Time'
       object.define_singleton_method name do
         value
       end
@@ -322,7 +322,7 @@ class AwsResourceDynamicMethods
       # the quickest test
       # p value[0].class.to_s
       case value[0].class.to_s
-      when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum'
+      when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum', 'Time'
         probes = value
       else
         if name.eql?(:tags)
