@@ -1,7 +1,7 @@
 title 'Test AWS EBS Volumes in bulk using plural and singular resources'
 
-aws_ebs_volume_id = attribute(:aws_ebs_volume_id, default: '', description: 'The AWS EBS Volume ID.')
-aws_ebs_volume_name = attribute(:aws_ebs_volume_name, default: '', description: 'The AWS EBS Volume name.')
+aws_ebs_volume_id = input(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
+aws_ebs_volume_name = input(:aws_ebs_volume_name, value: '', description: 'The AWS EBS Volume name.')
 
 control 'aws-ebs-volumes-loop-1.0' do
 

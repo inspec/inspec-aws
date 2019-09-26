@@ -1,6 +1,6 @@
 title 'Test a collection of AWS Queues'
 
-arn = attribute(:aws_sqs_queue_arn, default: '', description: 'The AWS SQS Queue arn.')
+arn = input(:aws_sqs_queue_arn, value: '', description: 'The AWS SQS Queue arn.')
 
 control 'aws-sqs-queues-1.0' do
   impact 1.0

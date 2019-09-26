@@ -1,8 +1,8 @@
 title 'Test AWS Route Tables in bulk'
 
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
-aws_route_table_first_id = attribute(:aws_route_table_first_id, default: '', description: 'The AWS route table ID.')
-aws_route_table_second_id = attribute(:aws_route_table_second_id, default: '', description: 'The AWS route table ID.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_route_table_first_id = input(:aws_route_table_first_id, value: '', description: 'The AWS route table ID.')
+aws_route_table_second_id = input(:aws_route_table_second_id, value: '', description: 'The AWS route table ID.')
 
 control 'aws-route-tables-1.0' do
 

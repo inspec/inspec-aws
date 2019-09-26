@@ -1,5 +1,5 @@
-aws_iam_user_name  = attribute(:aws_iam_user_name, default: '', description: 'The AWS IAM Username.')
-aws_iam_access_key = attribute(:aws_iam_access_key_id, default: '', description: 'The AWS IAM Access Key ID.')
+aws_iam_user_name  = input(:aws_iam_user_name, value: '', description: 'The AWS IAM Username.')
+aws_iam_access_key = input(:aws_iam_access_key_id, value: '', description: 'The AWS IAM Access Key ID.')
 invalid_username   = 'i-do-not-exist'
 invalid_key_id     = 'AKIA1111111111111111'
 

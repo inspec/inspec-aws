@@ -1,9 +1,9 @@
 title 'Test single AWS SNS Subscription'
 
-aws_account_id = attribute(:aws_account_id, default: '', description: 'The AWS account identifier.')
-aws_sns_subscription_arn = attribute(:aws_sns_subscription_arn, default: '', description: 'The AWS SNS subscription ARN.')
-aws_sns_topic_with_subscription_arn = attribute(:aws_sns_topic_with_subscription_arn, default: '', description: 'The AWS SNS topic ARN.')
-sns_sqs_queue_arn = attribute(:sns_sqs_queue_arn, default: '', description: 'The SNS SQS Queue ARN.')
+aws_account_id = input(:aws_account_id, value: '', description: 'The AWS account identifier.')
+aws_sns_subscription_arn = input(:aws_sns_subscription_arn, value: '', description: 'The AWS SNS subscription ARN.')
+aws_sns_topic_with_subscription_arn = input(:aws_sns_topic_with_subscription_arn, value: '', description: 'The AWS SNS topic ARN.')
+sns_sqs_queue_arn = input(:sns_sqs_queue_arn, value: '', description: 'The SNS SQS Queue ARN.')
 
 control 'aws-sns-subscription-1.0' do
 

@@ -32,9 +32,9 @@ class AwsHostedZone < AwsResourceBase
 
     get_zone_id(opts[:zone_name])
 
-    get_zone_details(@id)
+    get_zone_details(@id) if !@id.nil?
 
-    get_zone_record(@id)
+    get_zone_record(@id) if !@id.nil?
   end
 
   def exist?
@@ -45,9 +45,13 @@ class AwsHostedZone < AwsResourceBase
 
   def get_zone_id(zone_name)
     catch_aws_errors do
-      resp =@aws.route53_client.list_hosted_zones
+      resp = @aws.route53_client.list_hosted_zones
 
       zone = resp.hosted_zones.find { |item| item.name==zone_name }
+
+      if zone.nil?
+        return @id = nil
+      end
 
       @id = zone.id
     end
@@ -57,7 +61,13 @@ class AwsHostedZone < AwsResourceBase
     catch_aws_errors do
 
       resp = @aws.route53_client.get_hosted_zone(id: zone_id)
-      @name_servers = resp[:delegation_set][:name_servers]
+
+      if !resp[:delegation_set].nil? && !resp[:delegation_set][:name_servers].nil?
+        @name_servers = resp[:delegation_set][:name_servers]
+      else
+        @name_servers = []
+      end
+
       @private_zone = resp[:hosted_zone][:config][:private_zone]
       @record_count = resp[:hosted_zone][:resource_record_set_count]
 

@@ -1,13 +1,13 @@
 title 'Test single AWS Cloudwatch Log Metric Filter'
 
-aws_cloud_watch_log_metric_filter_name = attribute(:aws_cloud_watch_log_metric_filter_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter name.')
-aws_cloud_watch_log_metric_filter_two_name = attribute(:aws_cloud_watch_log_metric_filter_two_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter name.')
-aws_cloud_watch_log_metric_filter_log_group_name = attribute(:aws_cloud_watch_log_metric_filter_log_group_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter log group name.')
-aws_cloud_watch_log_metric_filter_two_log_group_name = attribute(:aws_cloud_watch_log_metric_filter_two_log_group_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter log group name.')
-aws_cloud_watch_log_metric_filter_metric_name = attribute(:aws_cloud_watch_log_metric_filter_metric_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter metric name.')
-aws_cloud_watch_log_metric_filter_two_metric_name = attribute(:aws_cloud_watch_log_metric_filter_two_metric_name, default: '', description: 'The AWS Cloudwatch Log Metric Filter metric name.')
-aws_cloud_watch_log_metric_filter_pattern = attribute(:aws_cloud_watch_log_metric_filter_pattern, default: '', description: 'The AWS Cloudwatch Log Metric Filter metric pattern.')
-aws_cloud_watch_log_metric_filter_two_pattern = attribute(:aws_cloud_watch_log_metric_filter_two_pattern, default: '', description: 'The AWS Cloudwatch Log Metric Filter metric pattern.')
+aws_cloud_watch_log_metric_filter_name = input(:aws_cloud_watch_log_metric_filter_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter name.')
+aws_cloud_watch_log_metric_filter_two_name = input(:aws_cloud_watch_log_metric_filter_two_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter name.')
+aws_cloud_watch_log_metric_filter_log_group_name = input(:aws_cloud_watch_log_metric_filter_log_group_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter log group name.')
+aws_cloud_watch_log_metric_filter_two_log_group_name = input(:aws_cloud_watch_log_metric_filter_two_log_group_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter log group name.')
+aws_cloud_watch_log_metric_filter_metric_name = input(:aws_cloud_watch_log_metric_filter_metric_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter metric name.')
+aws_cloud_watch_log_metric_filter_two_metric_name = input(:aws_cloud_watch_log_metric_filter_two_metric_name, value: '', description: 'The AWS Cloudwatch Log Metric Filter metric name.')
+aws_cloud_watch_log_metric_filter_pattern = input(:aws_cloud_watch_log_metric_filter_pattern, value: '', description: 'The AWS Cloudwatch Log Metric Filter metric pattern.')
+aws_cloud_watch_log_metric_filter_two_pattern = input(:aws_cloud_watch_log_metric_filter_two_pattern, value: '', description: 'The AWS Cloudwatch Log Metric Filter metric pattern.')
 
 
 control 'aws-cloudwatch-log-metric-filter-1.0' do

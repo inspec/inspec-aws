@@ -19,7 +19,7 @@ class AwsHostedZones < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-
+    validate_parameters
     zones = []
     catch_aws_errors do
       resp =@aws.route53_client.list_hosted_zones

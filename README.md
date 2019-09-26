@@ -228,7 +228,7 @@ A custom endpoint URL can optionally be specified to resources for testing other
 ```
 title 'Test For  Minio Buckets Existing at a Custom Endpoint'
 
-endpoint = attribute(:minio_server, default: 'http://127.0.0.1:9000', description: 'The Minio server custom endpoint.')
+endpoint = input(:minio_server, value: 'http://127.0.0.1:9000', description: 'The Minio server custom endpoint.')
 
 control 'minio-buckets-1.0' do
   impact 1.0

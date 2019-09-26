@@ -1,9 +1,9 @@
 title 'Test AWS VPC EC2 Instances in bulk using plural and singular resources'
 
-aws_instance_id = attribute(:aws_instance_id, default: '', description: 'The AWS EC2 Instance ID.')
-aws_vm_name = attribute(:aws_vm_name, default: '', description: 'The AWS EC2 Instance name.')
-aws_vm_size = attribute(:aws_vm_size, default: '', description: 'The AWS EC2 Instance type.')
-aws_ec2_ami_id = attribute(:aws_ec2_ami_id, default: '', description: 'The AWS EC2 image id.')
+aws_instance_id = input(:aws_instance_id, value: '', description: 'The AWS EC2 Instance ID.')
+aws_vm_name = input(:aws_vm_name, value: '', description: 'The AWS EC2 Instance name.')
+aws_vm_size = input(:aws_vm_size, value: '', description: 'The AWS EC2 Instance type.')
+aws_ec2_ami_id = input(:aws_ec2_ami_id, value: '', description: 'The AWS EC2 image id.')
 
 control 'aws-ec2-instances-loop-1.0' do
 

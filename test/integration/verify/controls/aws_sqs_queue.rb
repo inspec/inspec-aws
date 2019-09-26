@@ -1,6 +1,6 @@
 title 'Test single AWS Queue'
 
-arn = attribute(:aws_sqs_queue_arn, default: '', description: 'The AWS SQS Queue arn.')
+arn = input(:aws_sqs_queue_arn, value: '', description: 'The AWS SQS Queue arn.')
 modified_arn = arn.dup
 modified_arn.slice!("arn:aws:sqs:")
 url = modified_arn.split(':', 2)

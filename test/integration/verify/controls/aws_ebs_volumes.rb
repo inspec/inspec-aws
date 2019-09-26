@@ -1,6 +1,6 @@
 title 'Test AWS EBS Volumes in bulk'
 
-aws_ebs_volume_id = attribute(:aws_ebs_volume_id, default: '', description: 'The AWS EBS Volume ID.')
+aws_ebs_volume_id = input(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
 
 control 'aws-ebs-volumes-1.0' do
 

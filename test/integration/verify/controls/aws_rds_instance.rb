@@ -1,11 +1,11 @@
 title 'Test single AWS VPC'
 
-aws_rds_db_identifier = attribute(:aws_rds_db_identifier, default: '', description: 'The AWS RDS DB identifier.')
-aws_rds_db_name = attribute(:aws_rds_db_name, default: '', description: 'The AWS RDS DB name.')
-aws_rds_db_engine = attribute(:aws_rds_db_engine, default: '', description: 'The AWS RDS DB engine.')
-aws_rds_db_engine_version = attribute(:aws_rds_db_engine_version, default: '', description: 'The AWS RDS DB engine version.')
-aws_rds_db_storage_type = attribute(:aws_rds_db_storage_type, default: '', description: 'The AWS RDS DB storage type.')
-aws_rds_db_master_user = attribute(:aws_rds_db_master_user, default: '', description: 'The AWS RDS DB username.')
+aws_rds_db_identifier = input(:aws_rds_db_identifier, value: '', description: 'The AWS RDS DB identifier.')
+aws_rds_db_name = input(:aws_rds_db_name, value: '', description: 'The AWS RDS DB name.')
+aws_rds_db_engine = input(:aws_rds_db_engine, value: '', description: 'The AWS RDS DB engine.')
+aws_rds_db_engine_version = input(:aws_rds_db_engine_version, value: '', description: 'The AWS RDS DB engine version.')
+aws_rds_db_storage_type = input(:aws_rds_db_storage_type, value: '', description: 'The AWS RDS DB storage type.')
+aws_rds_db_master_user = input(:aws_rds_db_master_user, value: '', description: 'The AWS RDS DB username.')
 
 
 control 'aws-rds-instance-1.0' do

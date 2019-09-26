@@ -1,10 +1,20 @@
 version: '3.2'
 
 services:
-  builder:
+  tester:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     working_dir: /app
     volumes:
-    - .:/app
+    - .:/app    
+    - ./.aws:/root/.aws    
+
+  aws:
+    build:
+      context: .
+      dockerfile: Dockerfile-aws
+    working_dir: /app
+    volumes:
+    - .:/app    
+    - ./.aws:/root/.aws     
