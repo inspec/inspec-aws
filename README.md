@@ -365,7 +365,7 @@ Summary:     0 errors, 1 warnings
 Conversly run using within a docker container
 
 ````
-make build_test
+make sure
 
 docker-compose run --rm builder 
 Running RuboCop...
@@ -385,6 +385,22 @@ Fabulous run in 4.613042s, 155.6457 runs/s, 172.3375 assertions/s.
 718 runs, 795 assertions, 0 failures, 0 errors, 0 skips
 
 ````
+
+To run the full suite of tests run
+
+```` bash
+
+make doubly_sure
+
+````
+
+This will run the unit tests, create the target infrastructure and run the intergration tests.  If successful, will automatically destroy everything.  If it fails it will keep the environment up, testing then can be achieved by running:
+
+```` bash
+make int_test
+````
+
+To keep things simple the aws credentials can either be supplied via environmental variables or files located on ./aws in this folder.
 
 This just requires docker, docker-compose and make, see [Three Musketeers Pattern](https://3musketeers.io/docs/make.html) for details
 
