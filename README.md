@@ -362,7 +362,15 @@ Valid:       true
 Summary:     0 errors, 1 warnings
 ```
 
-Conversly run using within a docker container
+Conversly run using within a docker container, using the make file:
+
+To run unit tests and linting:
+
+````bash
+make sure
+
+````
+Will result in...
 
 ````
 make sure
