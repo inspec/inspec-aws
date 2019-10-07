@@ -1,4 +1,4 @@
-hosted_zone_name = input(:aws_route_53_zone)
+hosted_zone_name = attribute(:aws_route_53_zone)
 
 control "Hosted zones tests" do
   impact  1.0

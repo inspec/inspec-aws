@@ -1,9 +1,9 @@
 title 'Test AWS VPCs in bulk using plural and singular resources'
 
-aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
-aws_vpc_cidr_block = input(:aws_vpc_cidr_block, value: '', description: 'The AWS VPC CIDR block.')
-aws_vpc_instance_tenancy = input(:aws_vpc_instance_tenancy, value: '', description: 'The AWS VPC instance tenancy option.')
-aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
+aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
+aws_vpc_cidr_block = attribute(:aws_vpc_cidr_block, default: '', description: 'The AWS VPC CIDR block.')
+aws_vpc_instance_tenancy = attribute(:aws_vpc_instance_tenancy, default: '', description: 'The AWS VPC instance tenancy option.')
+aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default: '', description: 'The AWS VPC DHCP options ID.')
 
 control 'aws-vpcs-loop-1.0' do
 

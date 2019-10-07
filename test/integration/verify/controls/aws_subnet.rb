@@ -1,10 +1,10 @@
 title 'Test single AWS VPC Subnet'
 
-aws_subnet_id = input(:aws_subnet_id, value: '', description: 'The AWS VPC Subnet ID.')
-aws_subnet_cidr_block = input(:aws_subnet_cidr_block, value: '', description: 'The AWS VPC Subnet CIDR block.')
-aws_subnet_ip_address_count = input(:aws_subnet_ip_address_count, value: '', description: 'The AWS VPC Subnet IP address count.')
-aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
-aws_availability_zone = input(:aws_availability_zone, value: '', description: 'The AWS AZ.')
+aws_subnet_id = attribute(:aws_subnet_id, default: '', description: 'The AWS VPC Subnet ID.')
+aws_subnet_cidr_block = attribute(:aws_subnet_cidr_block, default: '', description: 'The AWS VPC Subnet CIDR block.')
+aws_subnet_ip_address_count = attribute(:aws_subnet_ip_address_count, default: '', description: 'The AWS VPC Subnet IP address count.')
+aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
+aws_availability_zone = attribute(:aws_availability_zone, default: '', description: 'The AWS AZ.')
 
 control 'aws-subnet-1.0' do
 

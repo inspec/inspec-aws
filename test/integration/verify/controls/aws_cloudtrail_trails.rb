@@ -1,9 +1,9 @@
 title 'Test AWS VPCs in bulk'
 
-aws_cloud_trail_arn = input(:aws_cloud_trail_arn, value: '', description: 'Cloud trail ARN.')
-aws_cloud_trail_open_arn = input(:aws_cloud_trail_open_arn, value: '', description: 'Cloud trail ARN.')
-aws_cloud_trail_name = input(:aws_cloud_trail_name, value: '', description: 'Cloud trail with encryption, key and logs.')
-aws_cloud_trail_open_name = input(:aws_cloud_trail_open_name, value: '', description: 'Cloud trail only with bucket.')
+aws_cloud_trail_arn = attribute(:aws_cloud_trail_arn, default: '', description: 'Cloud trail ARN.')
+aws_cloud_trail_open_arn = attribute(:aws_cloud_trail_open_arn, default: '', description: 'Cloud trail ARN.')
+aws_cloud_trail_name = attribute(:aws_cloud_trail_name, default: '', description: 'Cloud trail with encryption, key and logs.')
+aws_cloud_trail_open_name = attribute(:aws_cloud_trail_open_name, default: '', description: 'Cloud trail only with bucket.')
 
 control 'aws-cloudtrails-1.0' do
 

@@ -1,9 +1,9 @@
 title 'Test AWS SNS Topics in bulk'
 
-aws_region = input(:aws_region, value: '', description: 'The AWS region identifier.')
-aws_account_id = input(:aws_account_id, value: '', description: 'The AWS account identifier.')
-aws_sns_topic_with_subscription_arn = input(:aws_sns_topic_with_subscription_arn, value: '', description: 'The AWS SNS topic ARN.')
-aws_sns_topic_no_subscription_arn = input(:aws_sns_topic_no_subscription_arn, value: '', description: 'The SNS topic ARN.')
+aws_region = attribute(:aws_region, default: '', description: 'The AWS region identifier.')
+aws_account_id = attribute(:aws_account_id, default: '', description: 'The AWS account identifier.')
+aws_sns_topic_with_subscription_arn = attribute(:aws_sns_topic_with_subscription_arn, default: '', description: 'The AWS SNS topic ARN.')
+aws_sns_topic_no_subscription_arn = attribute(:aws_sns_topic_no_subscription_arn, default: '', description: 'The SNS topic ARN.')
 
 control 'aws-sns-topics-1.0' do
 

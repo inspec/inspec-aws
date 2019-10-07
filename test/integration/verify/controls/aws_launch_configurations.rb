@@ -1,6 +1,6 @@
 title 'Test collection of AWS Launch Configurations'
 
-config_name = input(:aws_launch_configuration_name, value: '', description: 'The AWS launch configuration name.')
+config_name = attribute(:aws_launch_configuration_name, default: '', description: 'The AWS launch configuration name.')
 
 control 'aws-launch-configurations-1.0' do
   impact 1.0

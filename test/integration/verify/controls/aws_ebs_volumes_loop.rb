@@ -1,7 +1,7 @@
 title 'Test AWS EBS Volumes in bulk using plural and singular resources'
 
-aws_ebs_volume_id = input(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
-aws_ebs_volume_name = input(:aws_ebs_volume_name, value: '', description: 'The AWS EBS Volume name.')
+aws_ebs_volume_id = attribute(:aws_ebs_volume_id, default: '', description: 'The AWS EBS Volume ID.')
+aws_ebs_volume_name = attribute(:aws_ebs_volume_name, default: '', description: 'The AWS EBS Volume name.')
 
 control 'aws-ebs-volumes-loop-1.0' do
 
@@ -12,7 +12,7 @@ control 'aws-ebs-volumes-loop-1.0' do
     describe aws_ebs_volume(volume_id: volume) do
       it { should exist }
       its ('volume_id') { should eq aws_ebs_volume_id }
-      its('tags') { should include(key: 'Name', value: aws_ebs_volume_name) }
+      its('tags') { should include(key: 'Name', default: aws_ebs_volume_name) }
       it { should_not be_encrypted }
     end
   end

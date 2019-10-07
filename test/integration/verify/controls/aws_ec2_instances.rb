@@ -1,8 +1,8 @@
 title 'Test AWS EC2 Instances in bulk'
 
-aws_default_vpc_id = input(:aws_default_vpc_id, value: '', description: 'The AWS region default VPC ID.')
-aws_vm_size = input(:aws_vm_size, value: '', description: 'The AWS EC2 Instance type.')
-aws_instance_id = input(:aws_instance_id, value: '', description: 'The AWS EC2 Instance ID.')
+aws_default_vpc_id = attribute(:aws_default_vpc_id, default: '', description: 'The AWS region default VPC ID.')
+aws_vm_size = attribute(:aws_vm_size, default: '', description: 'The AWS EC2 Instance type.')
+aws_instance_id = attribute(:aws_instance_id, default: '', description: 'The AWS EC2 Instance ID.')
 
 control 'aws-ec2-instances-1.0' do
 
