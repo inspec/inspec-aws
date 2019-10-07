@@ -1,6 +1,5 @@
 
 sure: unit_test
-	docker-compose run --rm --entrypoint rake tester 
 
 doubly_sure: unit_test set_up int_test tear_down
 
