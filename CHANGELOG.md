@@ -1,9 +1,14 @@
-<!-- latest_release 1.1.0 -->
+<!-- latest_release 1.2.0 -->
+## [v1.2.0](https://github.com/inspec/inspec-aws/tree/v1.2.0) (2019-10-07)
+
+#### Merged Pull Requests
+- &quot;Time&quot; class support for AwsResourceDynamicMethod [#133](https://github.com/inspec/inspec-aws/pull/133) ([Eeko](https://github.com/Eeko))
+<!-- latest_release -->
+
 ## [v1.1.0](https://github.com/inspec/inspec-aws/tree/v1.1.0) (2019-09-10)
 
 #### Merged Pull Requests
 - Add bulk RDS instances checks [#130](https://github.com/inspec/inspec-aws/pull/130) ([adriankierman](https://github.com/adriankierman))
-<!-- latest_release -->
 
 ## [v1.0.5](https://github.com/inspec/inspec-aws/tree/v1.0.5) (2019-08-28)
 
