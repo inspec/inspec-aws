@@ -1,9 +1,14 @@
-<!-- latest_release 1.2.0 -->
+<!-- latest_release 1.2.1 -->
+## [v1.2.1](https://github.com/inspec/inspec-aws/tree/v1.2.1) (2019-10-09)
+
+#### Merged Pull Requests
+- Fix Markdown markup for the aws_security_group resource [#140](https://github.com/inspec/inspec-aws/pull/140) ([multani](https://github.com/multani))
+<!-- latest_release -->
+
 ## [v1.2.0](https://github.com/inspec/inspec-aws/tree/v1.2.0) (2019-10-07)
 
 #### Merged Pull Requests
 - &quot;Time&quot; class support for AwsResourceDynamicMethod [#133](https://github.com/inspec/inspec-aws/pull/133) ([Eeko](https://github.com/Eeko))
-<!-- latest_release -->
 
 ## [v1.1.0](https://github.com/inspec/inspec-aws/tree/v1.1.0) (2019-09-10)
 
