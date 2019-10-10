@@ -1,0 +1,12 @@
+FROM alpine:3.8
+
+RUN apk add --no-cache \
+    bash \
+    curl \
+    jq \
+    && pip3 install --upgrade pip \
+    && pip3 install awscli  
+
+WORKDIR /app
+
+ENTRYPOINT ["aws"]

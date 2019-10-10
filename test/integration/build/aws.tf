@@ -101,6 +101,7 @@ variable "aws_vm_size" {}
 variable "aws_vpc_cidr_block" {}
 variable "aws_vpc_instance_tenancy" {}
 variable "aws_vpc_name" {}
+variable "aws_route_53_zone" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1453,3 +1454,22 @@ STACK
 
 }
 
+
+resource "aws_route53_zone" "test_zone" {
+  count   = var.aws_enable_creation
+  name    = var.aws_route_53_zone
+
+  vpc {
+    vpc_id = "${aws_vpc.inspec_vpc[0].id}"
+  }
+}
+
+resource "aws_route53_record" "test_record" {
+
+  count   = var.aws_enable_creation
+  zone_id = "${aws_route53_zone.test_zone[0].id}"
+  name    = "www.carry-on-films.com"
+  type    = "A"
+  ttl     = "300"
+  records = [ "127.0.0.1"]
+}

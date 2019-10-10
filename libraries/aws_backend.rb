@@ -18,6 +18,7 @@ require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
+require 'aws-sdk-route53'
 require 'aws-sdk-s3'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
@@ -121,6 +122,10 @@ class AwsConnection
 
   def rds_client
     aws_client(Aws::RDS::Client)
+  end
+
+  def route53_client
+    aws_client(Aws::Route53::Client)
   end
 
   def service_client

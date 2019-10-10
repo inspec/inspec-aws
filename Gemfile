@@ -23,9 +23,11 @@ gem 'aws-sdk-iam', '~> 1'
 gem 'aws-sdk-kms', '~> 1'
 gem 'aws-sdk-organizations', '~> 1'
 gem 'aws-sdk-rds', '~> 1'
+gem 'aws-sdk-route53', '~> 1'
 gem 'aws-sdk-s3', '~> 1'
 gem 'aws-sdk-sns', '~> 1'
 gem 'aws-sdk-sqs', '~> 1'
+
 # Use Latest Inspec
 gem 'inspec-bin'
 
