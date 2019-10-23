@@ -82,7 +82,7 @@ class AwsIamPolicy < AwsResourceBase
       notactions = s[:NotAction] || []
       effect     = s[:Effect]
       resource   = s[:Resource]
-      statement_match = true if (criteria['NotAction'].nil? ? actions.include?(criteria['Action']) : notactions.include?(criteria['NotAction'])) && effect.eql?(criteria['Effect']) && resource.eql?(criteria['Resource'])
+      statement_match = true if (criteria[:NotAction].nil? ? actions.include?(criteria[:Action]) : notactions.include?(criteria[:NotAction])) && effect.eql?(criteria[:Effect]) && resource.eql?(criteria[:Resource])
     end
     statement_match
   end
