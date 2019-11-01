@@ -19,6 +19,7 @@ class AwsSubnets < AwsResourceBase
   FilterTable.create
              .register_column(:availability_zone,       field: :availability_zone)
              .register_column(:cidr_blocks,             field: :cidr_block)
+             .register_column(:map_public_ip_on_launch, field: :map_public_ip_on_launch)
              .register_column(:states,                  field: :state)
              .register_column(:subnet_ids,              field: :subnet_id)
              .register_column(:vpc_ids,                 field: :vpc_id)
@@ -40,6 +41,7 @@ class AwsSubnets < AwsResourceBase
       subnet_rows += [{
         availability_zone:       subnet[:availability_zone],
         cidr_block:              subnet[:cidr_block],
+        map_public_ip_on_launch: subnet[:map_public_ip_on_launch],
         state:                   subnet[:state],
         subnet_id:               subnet[:subnet_id],
         vpc_id:                  subnet[:vpc_id],
