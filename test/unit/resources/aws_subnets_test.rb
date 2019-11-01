@@ -58,11 +58,23 @@ class AwsSubnetsHappyPathTest < Minitest::Test
     assert_equal(@subnets.states, ['available'])
   end
 
+  def test_subnets_availability_zone
+    assert_equal(@subnets.availability_zone, ['us-east-1a'])
+  end
+
   def test_subnets_filtering_not_there
     refute @subnets.where(:subnet_id => 'bad').exist?
   end
 
   def test_subnets_filtering_there
     assert @subnets.where(:subnet_id => 'subnet-12345678').exist?
+  end
+
+  def test_subnets_filtering_availability_zone_not_there
+    refute @subnets.where(:availability_zone => 'eu-central-1a').exist?
+  end
+
+  def test_subnets_filtering_availability_zone_there
+    assert @subnets.where(:availability_zone => 'us-east-1a').exist?
   end
 end
