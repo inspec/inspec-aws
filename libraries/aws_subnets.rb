@@ -17,10 +17,11 @@ class AwsSubnets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:cidr_blocks, field: :cidr_block)
-             .register_column(:vpc_ids,     field: :vpc_id)
-             .register_column(:subnet_ids,  field: :subnet_id)
-             .register_column(:states,      field: :state)
+             .register_column(:availability_zone,       field: :availability_zone)
+             .register_column(:cidr_blocks,             field: :cidr_block)
+             .register_column(:states,                  field: :state)
+             .register_column(:subnet_ids,              field: :subnet_id)
+             .register_column(:vpc_ids,                 field: :vpc_id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -36,10 +37,13 @@ class AwsSubnets < AwsResourceBase
     end
     return [] if !@subnets || @subnets.empty?
     @subnets.each do |subnet|
-      subnet_rows+=[{ subnet_id: subnet[:subnet_id],
-                      vpc_id: subnet[:vpc_id],
-                      cidr_block: subnet[:cidr_block],
-                      state: subnet[:state] }]
+      subnet_rows += [{
+        availability_zone:       subnet[:availability_zone],
+        cidr_block:              subnet[:cidr_block],
+        state:                   subnet[:state],
+        subnet_id:               subnet[:subnet_id],
+        vpc_id:                  subnet[:vpc_id],
+      }]
     end
     @table = subnet_rows
   end
