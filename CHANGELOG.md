@@ -1,9 +1,14 @@
-<!-- latest_release 1.2.2 -->
+<!-- latest_release 1.2.3 -->
+## [v1.2.3](https://github.com/inspec/inspec-aws/tree/v1.2.3) (2019-11-05)
+
+#### Merged Pull Requests
+- Fix Pull Request template link [#147](https://github.com/inspec/inspec-aws/pull/147) ([multani](https://github.com/multani))
+<!-- latest_release -->
+
 ## [v1.2.2](https://github.com/inspec/inspec-aws/tree/v1.2.2) (2019-10-10)
 
 #### Merged Pull Requests
 - Support for AWS Hosted Zones [#132](https://github.com/inspec/inspec-aws/pull/132) ([akacodemonkey](https://github.com/akacodemonkey))
-<!-- latest_release -->
 
 ## [v1.2.1](https://github.com/inspec/inspec-aws/tree/v1.2.1) (2019-10-09)
 
