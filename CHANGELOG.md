@@ -1,9 +1,14 @@
-<!-- latest_release 1.2.3 -->
+<!-- latest_release 1.3.0 -->
+## [v1.3.0](https://github.com/inspec/inspec-aws/tree/v1.3.0) (2019-11-07)
+
+#### Merged Pull Requests
+- Extend aws_subnets [#148](https://github.com/inspec/inspec-aws/pull/148) ([multani](https://github.com/multani))
+<!-- latest_release -->
+
 ## [v1.2.3](https://github.com/inspec/inspec-aws/tree/v1.2.3) (2019-11-05)
 
 #### Merged Pull Requests
 - Fix Pull Request template link [#147](https://github.com/inspec/inspec-aws/pull/147) ([multani](https://github.com/multani))
-<!-- latest_release -->
 
 ## [v1.2.2](https://github.com/inspec/inspec-aws/tree/v1.2.2) (2019-10-10)
 
