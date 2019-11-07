@@ -1,9 +1,14 @@
-<!-- latest_release 1.3.0 -->
+<!-- latest_release 1.3.1 -->
+## [v1.3.1](https://github.com/inspec/inspec-aws/tree/v1.3.1) (2019-11-07)
+
+#### Merged Pull Requests
+- criteria hash keys are atoms instead of strings. [#144](https://github.com/inspec/inspec-aws/pull/144) ([djgoku](https://github.com/djgoku))
+<!-- latest_release -->
+
 ## [v1.3.0](https://github.com/inspec/inspec-aws/tree/v1.3.0) (2019-11-07)
 
 #### Merged Pull Requests
 - Extend aws_subnets [#148](https://github.com/inspec/inspec-aws/pull/148) ([multani](https://github.com/multani))
-<!-- latest_release -->
 
 ## [v1.2.3](https://github.com/inspec/inspec-aws/tree/v1.2.3) (2019-11-05)
 
