@@ -1,9 +1,14 @@
-<!-- latest_release 1.3.1 -->
+<!-- latest_release 1.3.2 -->
+## [v1.3.2](https://github.com/inspec/inspec-aws/tree/v1.3.2) (2019-11-08)
+
+#### Merged Pull Requests
+- Fix AWS IAM policy resource has_statement. [#150](https://github.com/inspec/inspec-aws/pull/150) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v1.3.1](https://github.com/inspec/inspec-aws/tree/v1.3.1) (2019-11-07)
 
 #### Merged Pull Requests
 - criteria hash keys are atoms instead of strings. [#144](https://github.com/inspec/inspec-aws/pull/144) ([djgoku](https://github.com/djgoku))
-<!-- latest_release -->
 
 ## [v1.3.0](https://github.com/inspec/inspec-aws/tree/v1.3.0) (2019-11-07)
 
