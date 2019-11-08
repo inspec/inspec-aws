@@ -77,6 +77,7 @@ class AwsIamPolicy < AwsResourceBase
     document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document), { symbolize_names: true })
     statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statement_match = false
+    criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     statements.each do |s|
       actions    = s[:Action] || []
       notactions = s[:NotAction] || []
