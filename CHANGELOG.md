@@ -1,9 +1,14 @@
-<!-- latest_release 1.3.2 -->
+<!-- latest_release 1.3.3 -->
+## [v1.3.3](https://github.com/inspec/inspec-aws/tree/v1.3.3) (2019-11-12)
+
+#### Merged Pull Requests
+- Update FAQ section of README [#152](https://github.com/inspec/inspec-aws/pull/152) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.3.2](https://github.com/inspec/inspec-aws/tree/v1.3.2) (2019-11-08)
 
 #### Merged Pull Requests
 - Fix AWS IAM policy resource has_statement. [#150](https://github.com/inspec/inspec-aws/pull/150) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v1.3.1](https://github.com/inspec/inspec-aws/tree/v1.3.1) (2019-11-07)
 
