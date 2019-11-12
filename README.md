@@ -458,6 +458,11 @@ If an error such occurs when running "inspec exec" on a newly created AWS profil
 $ inspec exec . -t aws://
 ```
 
+If a method missing error occurs and all the steps documented above have been followed try running the following command within the profile directory:
+```bash
+inspec vendor --overwrite
+```
+
 ## Support
 
 The InSpec AWS resources are community supported. For bugs and features, please open a github issue and label it appropriately.
