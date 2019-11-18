@@ -1,9 +1,14 @@
-<!-- latest_release 1.3.3 -->
+<!-- latest_release 1.4.0 -->
+## [v1.4.0](https://github.com/inspec/inspec-aws/tree/v1.4.0) (2019-11-18)
+
+#### Merged Pull Requests
+- fix s3 encryption false positives [#153](https://github.com/inspec/inspec-aws/pull/153) ([dmurray-chef](https://github.com/dmurray-chef))
+<!-- latest_release -->
+
 ## [v1.3.3](https://github.com/inspec/inspec-aws/tree/v1.3.3) (2019-11-12)
 
 #### Merged Pull Requests
 - Update FAQ section of README [#152](https://github.com/inspec/inspec-aws/pull/152) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.3.2](https://github.com/inspec/inspec-aws/tree/v1.3.2) (2019-11-08)
 
