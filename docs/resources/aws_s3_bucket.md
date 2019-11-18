@@ -33,7 +33,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 |Property      | Description|
 | ---          | --- |
-|region        | The region of the bucket. |
+|region        | The region of the bucket. Region is overridden based on the location returned from S3 |
 |bucket_acl    | An array of AWS Grants detailing permission grants on the bucket. |
 |bucket_policy | The IAM policy document controlling access to the bucket.  |
 |tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
@@ -73,6 +73,14 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
     auth_grants = bucket_acl.select do |g|
       g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/
     end
+    
+##### Test  buckets in a specific region    
+      aws_s3_buckets.bucket_names.each do |bucket_name|
+        if aws_s3_bucket(bucket_name: bucket_name).region == region
+          describe aws_s3_bucket(bucket_name) do
+            it { should have_default_encryption_enabled }
+          end
+        end
 
 ## Matchers
 
