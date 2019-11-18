@@ -74,12 +74,20 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
       g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/
     end
     
-##### Test  buckets in a specific region    
+##### Test all buckets region    
+      aws_s3_buckets.bucket_names.each do |bucket_name|
+          describe aws_s3_bucket(bucket_name) do
+            it { should have_default_encryption_enabled }
+            end
+        end
+    
+##### Test buckets in a specific region    
       aws_s3_buckets.bucket_names.each do |bucket_name|
         if aws_s3_bucket(bucket_name: bucket_name).region == region
           describe aws_s3_bucket(bucket_name) do
             it { should have_default_encryption_enabled }
-          end
+                end
+            end
         end
 
 ## Matchers
