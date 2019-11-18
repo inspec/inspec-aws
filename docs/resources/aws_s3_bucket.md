@@ -74,7 +74,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
       g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/
     end
     
-##### Test all buckets region    
+##### Test all buckets    
       aws_s3_buckets.bucket_names.each do |bucket_name|
           describe aws_s3_bucket(bucket_name) do
             it { should have_default_encryption_enabled }
