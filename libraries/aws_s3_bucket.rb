@@ -72,6 +72,8 @@ class AwsS3Bucket < AwsResourceBase
         @has_default_encryption_enabled = !@aws.storage_client.get_bucket_encryption(bucket: @bucket_name).server_side_encryption_configuration.nil?
       rescue Aws::S3::Errors::ServerSideEncryptionConfigurationNotFoundError, Aws::S3::Errors::PermanentRedirect
         false
+      rescue Exception => e
+        fail_resource("Unexpected error thrown: #{e}")
       end
     end
   end
