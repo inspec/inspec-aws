@@ -1,9 +1,14 @@
-<!-- latest_release 1.4.0 -->
+<!-- latest_release 1.4.1 -->
+## [v1.4.1](https://github.com/inspec/inspec-aws/tree/v1.4.1) (2019-11-19)
+
+#### Merged Pull Requests
+- Ensure aws_iam_policy reports correctly when non-existing. Fixes #154. [#155](https://github.com/inspec/inspec-aws/pull/155) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v1.4.0](https://github.com/inspec/inspec-aws/tree/v1.4.0) (2019-11-18)
 
 #### Merged Pull Requests
 - fix s3 encryption false positives [#153](https://github.com/inspec/inspec-aws/pull/153) ([dmurray-chef](https://github.com/dmurray-chef))
-<!-- latest_release -->
 
 ## [v1.3.3](https://github.com/inspec/inspec-aws/tree/v1.3.3) (2019-11-12)
 
