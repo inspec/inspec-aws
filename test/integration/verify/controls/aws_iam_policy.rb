@@ -13,6 +13,10 @@ control 'aws-iam-policy-1.0' do
     its ('arn')  { should eq aws_iam_policy_arn }
   end
 
+  describe aws_iam_policy(policy_name: 'DoesNotExist') do
+    it           { should_not exist }
+  end
+
   # policy_name param used to maintain consistency with old implementation
   describe aws_iam_policy(policy_name: aws_iam_policy_name) do
     it           { should exist }
