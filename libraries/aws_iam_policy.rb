@@ -20,11 +20,14 @@ class AwsIamPolicy < AwsResourceBase
     validate_parameters(require_any_of: %i(policy_arn policy_name))
 
     if opts.key?(:policy_arn)
+      @policy_name = opts[:policy_arn]
       @resp = get_policy_by_arn(opts[:policy_arn])
     elsif opts.key?(:policy_name)
+      @policy_name = opts[:policy_name]
       @resp = get_policy_by_name(opts[:policy_name])
     end
 
+    return if @resp.nil?
     get_attached_entities(@resp.arn)
     get_policy_document(@resp.arn, @resp.default_version_id)
 
