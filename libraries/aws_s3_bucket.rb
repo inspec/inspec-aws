@@ -25,7 +25,7 @@ class AwsS3Bucket < AwsResourceBase
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
         # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
         # redirects and signing attempts.
-        opts[:aws_region] = @region if @region != ''
+        opts[:aws_region] = @region.empty? ? 'us-east-1' : @region
         super(opts)
       rescue Aws::S3::Errors::NoSuchBucket
         @region = nil
@@ -70,7 +70,7 @@ class AwsS3Bucket < AwsResourceBase
     @has_default_encryption_enabled ||= catch_aws_errors do
       begin
         @has_default_encryption_enabled = !@aws.storage_client.get_bucket_encryption(bucket: @bucket_name).server_side_encryption_configuration.nil?
-      rescue Aws::S3::Errors::ServerSideEncryptionConfigurationNotFoundError, Aws::S3::Errors::PermanentRedirect
+      rescue Aws::S3::Errors::ServerSideEncryptionConfigurationNotFoundError
         false
       rescue StandardError => e
         fail_resource("Unexpected error thrown: #{e}")
