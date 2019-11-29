@@ -1,9 +1,14 @@
-<!-- latest_release 1.4.1 -->
+<!-- latest_release 1.4.2 -->
+## [v1.4.2](https://github.com/inspec/inspec-aws/tree/v1.4.2) (2019-11-29)
+
+#### Merged Pull Requests
+- Set us-east region for empty location [#156](https://github.com/inspec/inspec-aws/pull/156) ([dmurray-chef](https://github.com/dmurray-chef))
+<!-- latest_release -->
+
 ## [v1.4.1](https://github.com/inspec/inspec-aws/tree/v1.4.1) (2019-11-19)
 
 #### Merged Pull Requests
 - Ensure aws_iam_policy reports correctly when non-existing. Fixes #154. [#155](https://github.com/inspec/inspec-aws/pull/155) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v1.4.0](https://github.com/inspec/inspec-aws/tree/v1.4.0) (2019-11-18)
 
