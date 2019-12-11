@@ -81,11 +81,12 @@ class AwsIamPolicy < AwsResourceBase
     statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statement_match = false
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+    criteria[:Resource] = criteria[:Resource].is_a?(Array) ? criteria[:Resource].sort : criteria[:Resource]
     statements.each do |s|
       actions    = s[:Action] || []
       notactions = s[:NotAction] || []
       effect     = s[:Effect]
-      resource   = s[:Resource]
+      resource   = s[:Resource].is_a?(Array) ? s[:Resource].sort : s[:Resource]
       statement_match = true if (criteria[:NotAction].nil? ? actions.include?(criteria[:Action]) : notactions.include?(criteria[:NotAction])) && effect.eql?(criteria[:Effect]) && resource.eql?(criteria[:Resource])
     end
     statement_match
