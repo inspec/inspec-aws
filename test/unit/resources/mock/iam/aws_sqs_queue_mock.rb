@@ -10,7 +10,8 @@ class AwsSqsQueueMock < AwsBaseResourceMock
                    "MaximumMessageSize"=> @aws.any_int.to_s,
                    "MessageRetentionPeriod"=> @aws.any_int.to_s,
                    "DelaySeconds"=> @aws.any_int.to_s,
-                   "ReceiveMessageWaitTimeoutSeconds"=> @aws.any_int.to_s}
+                   "ReceiveMessageWaitTimeoutSeconds"=> @aws.any_int.to_s,
+                   "RedrivePolicy"=> "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-1:123:my_arn\",\"maxReceiveCount\":4}"}
     @queue[:attributes] = @attributes
   end
 

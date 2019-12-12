@@ -34,6 +34,7 @@ See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQue
 |delay_seconds                        | An integer indicating the delay in seconds for the queue |
 |receive_message_wait_timeout_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
 |content_based_deduplication          | A boolean value indicate if content based dedcuplication is enabled or not |
+|redrive_policy                       | A string indicating the redrive policy |
 
 ## Examples
 

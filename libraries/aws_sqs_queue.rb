@@ -13,7 +13,7 @@ class AwsSqsQueue < AwsResourceBase
   "
 
   attr_reader :arn, :is_fifo_queue, :visibility_timeout, :maximum_message_size, :message_retention_period, :delay_seconds,
-              :receive_message_wait_timeout_seconds, :content_based_deduplication
+              :receive_message_wait_timeout_seconds, :content_based_deduplication, :redrive_policy
 
   def initialize(opts = {})
     opts = { queue_url: opts } if opts.is_a?(String)
@@ -30,6 +30,7 @@ class AwsSqsQueue < AwsResourceBase
       @receive_message_wait_timeout_seconds = resp['ReceiveMessageWaitTimeoutSeconds'].to_i
       @content_based_deduplication          = resp['ContentBasedDeduplication'].nil? ? false: true
       @is_fifo_queue                        = resp['FifoQueue'].nil? ? false: true
+      @redrive_policy                       = resp['RedrivePolicy']
     end
   end
 
