@@ -71,4 +71,8 @@ class AwsSqsQueueTest < Minitest::Test
     assert_equal(@queue.is_fifo_queue, false)
   end
 
+  def test_sqs_queue_redrive_policy
+    assert_equal(@queue.redrive_policy, @mock_queue[:attributes]['RedrivePolicy'])
+  end
+
 end
