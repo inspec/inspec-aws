@@ -1,9 +1,14 @@
-<!-- latest_release 1.4.2 -->
+<!-- latest_release 1.4.3 -->
+## [v1.4.3](https://github.com/inspec/inspec-aws/tree/v1.4.3) (2019-12-12)
+
+#### Merged Pull Requests
+- Make matching order insensitive [#160](https://github.com/inspec/inspec-aws/pull/160) ([rgevaert](https://github.com/rgevaert))
+<!-- latest_release -->
+
 ## [v1.4.2](https://github.com/inspec/inspec-aws/tree/v1.4.2) (2019-11-29)
 
 #### Merged Pull Requests
 - Set us-east region for empty location [#156](https://github.com/inspec/inspec-aws/pull/156) ([dmurray-chef](https://github.com/dmurray-chef))
-<!-- latest_release -->
 
 ## [v1.4.1](https://github.com/inspec/inspec-aws/tree/v1.4.1) (2019-11-19)
 
