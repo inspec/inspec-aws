@@ -30,7 +30,7 @@ This can be passed either as a string or as an `instance_id: 'value'` key-value 
 
 ##### name _(required if `instance_id` not provided)_
 
-If you have a `name` tag applied to the EC2 instance, this can be used to lookup the instance.
+If you have a `Name` tag applied to the EC2 instance, this can be used to lookup the instance.
 This must be passed as a `name: 'value'` key-value entry in a hash.
 
 ## Properties
