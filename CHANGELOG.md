@@ -1,9 +1,14 @@
-<!-- latest_release 1.5.0 -->
+<!-- latest_release 1.5.1 -->
+## [v1.5.1](https://github.com/inspec/inspec-aws/tree/v1.5.1) (2019-12-13)
+
+#### Merged Pull Requests
+- Fix documentation wrt Name tag of ec2 instances [#163](https://github.com/inspec/inspec-aws/pull/163) ([rgevaert](https://github.com/rgevaert))
+<!-- latest_release -->
+
 ## [v1.5.0](https://github.com/inspec/inspec-aws/tree/v1.5.0) (2019-12-12)
 
 #### Merged Pull Requests
 - Add redrive policy to aws_sqs_queue resource [#161](https://github.com/inspec/inspec-aws/pull/161) ([rgevaert](https://github.com/rgevaert))
-<!-- latest_release -->
 
 ## [v1.4.3](https://github.com/inspec/inspec-aws/tree/v1.4.3) (2019-12-12)
 
