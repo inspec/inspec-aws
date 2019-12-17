@@ -36,6 +36,14 @@ class AwsIamPolicyTest < Minitest::Test
     assert_equal(@policy.arn, @mock_policy[:arn])
   end
 
+  def test_attached_username
+    assert @policy.attached_to_user?((@mock_policy[:username]))
+  end
+
+  def test_attached_role
+    assert @policy.attached_to_role?((@mock_policy[:rolename]))
+  end
+
   def test_attachment_count
     assert_equal(@policy.attachment_count, @mock_policy[:attachment_count])
   end
@@ -57,14 +65,19 @@ class AwsIamPolicyTest < Minitest::Test
   end
 
   def test_policy_attached_roles
-    assert_equal(@policy.attached_roles, @mock_policy[:attached_roles])
+    assert_equal(@policy.attached_roles.first, @mock_policy[:attached_roles].first[:role_name])
   end
 
-  def test_policy_attached_users
-    assert_equal(@policy.attached_users, @mock_policy[:attached_users])
+  def test_policy_attached_user
+    assert_equal(@policy.attached_users.first, @mock_policy[:attached_users].first[:user_name])
+  end
+
+  def test_statement_count
+    assert_equal(@policy.statement_count, 2)
   end
 
   def test_exists
     assert @policy.exists?
   end
+
 end

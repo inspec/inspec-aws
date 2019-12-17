@@ -1178,6 +1178,12 @@ resource "aws_iam_role_policy_attachment" "attach_generic_policy_to_role_1" {
   policy_arn = aws_iam_policy.aws_attached_policy_1[0].arn
 }
 
+resource "aws_iam_user_policy_attachment" "attach_generic_policy_to_user_1" {
+  count      = var.aws_enable_creation
+  user       = aws_iam_user.iam_user[0].name
+  policy_arn = aws_iam_policy.aws_attached_policy_1[0].arn
+}
+
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
   count = var.aws_enable_creation
   name = var.aws_sqs_queue_name

@@ -10,15 +10,21 @@ class AwsIamPolicyMock < AwsBaseResourceMock
     @policy_required[:policy_name] = @aws.any_string
     @policy_required[:policy_id] = @aws.any_id
 
-    @policy_document = {}
-    @policy_document[:document] = @aws.any_string
-    @policy_document[:version_id] = "v5"
-    @policy_document[:is_default_version] = true
+    @policy_version = {}
+    @policy_version[:document] = "%7B%0A%20%20%22Version%22%3A%20%222012-10-17%22%2C%0A%20%20%22Statement%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22Action%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22ec2%3ADescribe%2A%22%0A%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%22Effect%22%3A%20%22Allow%22%2C%0A%20%20%20%20%20%20%22Resource%22%3A%20%22%2A%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22NotAction%22%3A%20%22s3%3ADeleteBucket%22%2C%0A%20%20%20%20%20%20%22Effect%22%3A%20%22Allow%22%2C%0A%20%20%20%20%20%20%22Resource%22%3A%20%22arn%3Aaws%3As3%3A%3A%3A%2A%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D%0A"
+    @policy_version[:version_id] = "v5"
+    @policy_version[:is_default_version] = true
+
+    @policy_document = Hash[@policy_version]
 
     @policy = Hash[@policy_required]
     @policy[:attached_groups] = []
-    @policy[:attached_roles] = []
-    @policy[:attached_users] = []
+    @policy[:attached_roles] = [{:role_name=>"test-role"}]
+    @policy[:attached_users] = [{:user_name=>"test-user"}]
+
+    @policy[:username] = "test-user"
+    @policy[:rolename] = "test-role"
+    @policy[:policy_document] = [@policy_document]
 
   end
 
