@@ -33,6 +33,8 @@ title 'Test single AWS Iam Policy'
     describe aws_iam_policy(policy_name: aws_iam_attached_policy_name) do
       it { should be_attached_to_user(aws_iam_user_name) }
       it { should be_attached_to_role(aws_iam_role_generic_name) }
+      it { should_not be_attached_to_user("fake-user") }
+      it { should_not be_attached_to_role("fake-role") }
     end
 
   end
