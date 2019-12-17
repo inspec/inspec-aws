@@ -72,13 +72,11 @@ class AwsIamPolicy < AwsResourceBase
   end
 
   def attached_to_user?(username)
-    !!@attached_users.nil?
-    @attached_users.include?(username)
+    !@attached_users.nil? && @attached_users.include?(username)
   end
 
   def attached_to_role?(rolename)
-    !!@attached_roles.nil?
-    @attached_roles.include?(rolename)
+    !@attached_roles.nil? && @attached_roles.include?(rolename)
   end
 
   def exists?
