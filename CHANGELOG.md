@@ -1,9 +1,14 @@
-<!-- latest_release 1.5.1 -->
+<!-- latest_release 1.5.2 -->
+## [v1.5.2](https://github.com/inspec/inspec-aws/tree/v1.5.2) (2020-01-06)
+
+#### Merged Pull Requests
+- fix section - Obvious fix. [#167](https://github.com/inspec/inspec-aws/pull/167) ([tbugfinder](https://github.com/tbugfinder))
+<!-- latest_release -->
+
 ## [v1.5.1](https://github.com/inspec/inspec-aws/tree/v1.5.1) (2019-12-13)
 
 #### Merged Pull Requests
 - Fix documentation wrt Name tag of ec2 instances [#163](https://github.com/inspec/inspec-aws/pull/163) ([rgevaert](https://github.com/rgevaert))
-<!-- latest_release -->
 
 ## [v1.5.0](https://github.com/inspec/inspec-aws/tree/v1.5.0) (2019-12-12)
 
