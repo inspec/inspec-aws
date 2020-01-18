@@ -21,13 +21,13 @@ This resource does not expect any parameters.
 
 ## Properties
 
-|Property       | Description|
-| ---           | --- |
-|instance_ids   | The ID of the EC2 instance. |
-|vpc_ids        | The VPC with which the EC2 instance is associated. |
-|subnet_ids     | The subnet with which the EC2 instance is associated. |
-|instance_types | The type of instance, for example m5.large. |
-|entries        | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property        | Description|
+| ---            | --- |
+|instance\_ids   | The ID of the EC2 instance. |
+|vpc\_ids        | The VPC with which the EC2 instance is associated. |
+|subnet\_ids     | The subnet with which the EC2 instance is associated. |
+|instance\_types | The type of instance, for example m5.large. |
+|entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
