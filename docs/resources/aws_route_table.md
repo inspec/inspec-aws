@@ -21,24 +21,24 @@ This resource expects a single parameter that uniquely identifies the Route Tabl
     
 #### Parameters
 
-##### route_table_id _(required)_
+##### route\_table\_id _(required)_
 
-This resource accepts a single parameter, the route_table_id.
+This resource accepts a single parameter, the route\_table\_id.
 This can be passed either as a string or as a `route_table_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
 
 ## Properties
 
-|Property         | Description|
-| ---             | --- |
-|route_table_id   | The ID of the route table.  |
-|owner_id         | The ID of the AWS account that owns the route table.  |
-|vpc_id           | The ID of the VPC.  |
-|routes           | The routes in the route table.  |
-|associations     | The associations between the route table and one or more subnets.  |
-|propagating_vgws | Any virtual private gateway (VGW) propagating routes.  |
-|tags             | Any tags assigned to the route table.  |
+|Property           | Description|
+| ---               | --- |
+|route\_table\_id   | The ID of the route table.  |
+|owner\_id          | The ID of the AWS account that owns the route table.  |
+|vpc\_id            | The ID of the VPC.  |
+|routes             | The routes in the route table.  |
+|associations       | The associations between the route table and one or more subnets.  |
+|propagating\_vgws  | Any virtual private gateway (VGW) propagating routes.  |
+|tags               | Any tags assigned to the route table.  |
 
 ## Examples
 
