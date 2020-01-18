@@ -22,7 +22,7 @@ An `aws_s3_bucket` resource block declares a bucket by name, and then lists test
     
 #### Parameters
 
-##### bucket_name _(required)_
+##### bucket\_name _(required)_
 
 This resource accepts a single parameter, the S3 Bucket Name which uniquely identifies the bucket. 
 This can be passed either as a string or as a `bucket_name: 'value'` key-value entry in a hash.
@@ -34,8 +34,8 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 |Property      | Description|
 | ---          | --- |
 |region        | The region of the bucket. Region is overridden based on the location returned from S3 |
-|bucket_acl    | An array of AWS Grants detailing permission grants on the bucket. |
-|bucket_policy | The IAM policy document controlling access to the bucket.  |
+|bucket\_acl    | An array of AWS Grants detailing permission grants on the bucket. |
+|bucket\_policy | The IAM policy document controlling access to the bucket.  |
 |tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
@@ -94,7 +94,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### be_public
+#### be\_public
 
 The `be_public` matcher tests if the bucket has potentially insecure access controls. This high-level matcher detects several insecure conditions, which may be enhanced in the future. Currently, the matcher reports an insecure bucket if any of the following conditions are met:
 
@@ -106,19 +106,19 @@ Note: This resource does not detect insecure object ACLs.
 
     it { should_not be_public }
 
-#### have_access_logging_enabled
+#### have\_access\_logging\_enabled
 
 The `have_access_logging_enabled` matcher tests if access logging is enabled for the s3 bucket.
 
     it { should have_access_logging_enabled }
 
-#### have_default_encryption_enabled
+#### have\_default\_encryption\_enabled
 
 The `have_default_encryption_enabled` matcher tests if default encryption is enabled for the s3 bucket.
 
     it { should have_default_encryption_enabled }
 
-#### have_versioning_enabled
+#### have\_versioning\_enabled
 
 The `have_versioning_enabled` matcher tests if versioning is enabled for the s3 bucket.
 
