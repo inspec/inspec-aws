@@ -23,7 +23,7 @@ An `aws_ec2_instance` resource block declares the tests for a single AWS EC2 ins
 
 One of either the EC2 instance's ID or name must be be provided.
 
-##### instance_id _(required if `name` not provided)_
+##### instance\_id _(required if `name` not provided)_
 
 The ID of the EC2 instance. This is in the format of `i-` followed by 8 or 17 hexadecimal characters.
 This can be passed either as a string or as an `instance_id: 'value'` key-value entry in a hash.
@@ -35,16 +35,16 @@ This must be passed as a `name: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
-|state              | The current state of the EC2 Instance, for example 'running'.|
-|image_id           | The id of the AMI used to launch the instance. |
-|launch_time        | The time the instance was launched. |
-|availability_zone  | The availability zone of the instance. |
-|security_groups    | A hash containing the security group ids and names associated with the instance. |
-|security_group_ids | The security group ids associated with the instance. |
-|ebs_volumes        | An hash containing the names and ids of any EBS volumes associated with the instance. |
-|tags               | An hash with each key-value pair corresponding to a tag associated with the entity. |
+|Property             | Description|
+| ---                 | --- |
+|state                | The current state of the EC2 Instance, for example 'running'.|
+|image\_id            | The id of the AMI used to launch the instance. |
+|launch\_time         | The time the instance was launched. |
+|availability\_zone   | The availability zone of the instance. |
+|security\_groups     | A hash containing the security group ids and names associated with the instance. |
+|security\_group\_ids | The security group ids associated with the instance. |
+|ebs\_volumes         | An hash containing the names and ids of any EBS volumes associated with the instance. |
+|tags                 | An hash with each key-value pair corresponding to a tag associated with the entity. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 
@@ -84,7 +84,7 @@ Use `should_not` to test the entity should not exist.
 
       it { should_not exist }
       
-##### has_roles
+##### has\_roles
 Test if the EC2 instance has any roles associated with it.
 
 Use `should_not` to test the entity does not have roles.
@@ -93,43 +93,43 @@ Use `should_not` to test the entity does not have roles.
     
     it { should_not have_roles }
 
-#### be_pending
+#### be\_pending
 
 The `be_pending` matcher tests if the described EC2 instance state is `pending`. This indicates that an instance is provisioning. This state should be temporary.
 
     it { should be_pending }
 
-#### be_running
+#### be\_running
 
 The `be_running` matcher tests if the described EC2 instance state is `running`. This indicates the instance is fully operational from AWS's perspective.
 
     it { should be_running }
 
-#### be_shutting_down
+#### be\_shutting\_down
 
 The `be_shutting_down` matcher tests if the described EC2 instance state is `shutting-down`. This indicates the instance has received a termination command and is in the process of being permanently halted and de-provisioned. This state should be temporary.
 
     it { should be_shutting_down }
 
-#### be_stopped
+#### be\_stopped
 
 The `be_stopped` matcher tests if the described EC2 instance state is `stopped`. This indicates that the instance is suspended and may be started again.
 
     it { should be_stopped }
 
-#### be_stopping
+#### be\_stopping
 
 The `be_stopping` matcher tests if the described EC2 instance state is `stopping`. This indicates that an AWS stop command has been issued, which will suspend the instance in an OS-unaware manner. This state should be temporary.
 
     it { should be_stopping }
 
-#### be_terminated
+#### be\_terminated
 
 The `be_terminated` matcher tests if the described EC2 instance state is `terminated`. This indicates the instance is permanently halted and will be removed from the instance listing in a short period. This state should be temporary.
 
     it { should be_terminated }
 
-#### be_unknown
+#### be\_unknown
 
 The `be_unknown` matcher tests if the described EC2 instance state is `unknown`. This indicates an error condition in the AWS management system. This state should be temporary.
 
