@@ -28,13 +28,13 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 
 ## Properties
 
-|Property         | Description|
-| ---             | --- |
-|cidr_blocks      | The cidr_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. |
-|dhcp_options_ids | The dhcp_option_set_ids property provides a de-duplicated list of the DHCP Option Set IDs that the matched VPCs use when assigning IPs to resources. |
-|vpc_ids          | The vpc_ids property provides a list of the IDs of the matched VPCs. |
-|tags             | A hash of key-value pairs corresponding to the tags associated with the entity. |
-|entries          | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property           | Description|
+| ---               | --- |
+|cidr\_blocks       | The cidr\_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. |
+|dhcp\_options\_ids | The dhcp\_option\_set\_ids property provides a de-duplicated list of the DHCP Option Set IDs that the matched VPCs use when assigning IPs to resources. |
+|vpc\_ids           | The vpc\_ids property provides a list of the IDs of the matched VPCs. |
+|tags               | A hash of key-value pairs corresponding to the tags associated with the entity. |
+|entries            | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
