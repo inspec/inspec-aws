@@ -23,14 +23,14 @@ This resource takes one parameter, the name of the hosted zone to validate.
 
 ## Properties
 
-|Property              | Description|
-| ---                  | --- |
-|name                  | The name of the hosted zone. |
-|id                    | It's id. |
-|name_servers          | List of the associated name servers |
-|private_zone          | If the hosted zone if private or public |
-|record_count          | Number of associated records |
-|records               | The associated records, flattens the list, so each rule will have multiple records for each type |
+|Property               | Description|
+| ---                   | --- |
+|name                   | The name of the hosted zone. |
+|id                     | It's id. |
+|name\_servers          | List of the associated name servers |
+|private\_zone          | If the hosted zone if private or public |
+|record\_count          | Number of associated records |
+|records                | The associated records, flattens the list, so each rule will have multiple records for each type |
 
 ## Examples
 
