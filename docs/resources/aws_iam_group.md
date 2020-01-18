@@ -22,7 +22,7 @@ An `aws_iam_group` resource block identifies a group by group name.
     
 #### Parameters
 
-##### group_name _(required)_
+##### group\_name _(required)_
 
 This resource accepts a single parameter, the Group Name which uniquely identifies the IAM Group. 
 This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
@@ -31,12 +31,12 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property   | Description|
-| ---       | --- |
-|group_name | The group name. |
-|group_id   | The group ID. |
-|arn        | The Amazon Resource Name of the group. |
-|users      | Array of users associated with the group.  |
+|Property    | Description|
+| ---        | --- |
+|group\_name | The group name. |
+|group\_id   | The group ID. |
+|arn         | The Amazon Resource Name of the group. |
+|users       | Array of users associated with the group.  |
 
 ## Examples
 
