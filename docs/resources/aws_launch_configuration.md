@@ -22,7 +22,7 @@ Use the `aws_launch_configuration` InSpec audit resource to test properties of a
 
 #### Parameters
 
-##### launch_configuration_name _(required)_
+##### launch\_configuration\_name _(required)_
 
 
 This resource expects a single parameter, the `launch_configuration_name` which uniquely identifies the of a Launch Configuration.
@@ -31,19 +31,19 @@ See also the [AWS documentation on Launch Configurations](https://docs.aws.amazo
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
-|arn                         | An string indicating the ARN of the launch configuration |
-|image_id                    | An string indicating the AMI of the launch configuration |
-|instance_type               | A string indicating the instance type of the launch configuration |
-|iam_instance_profile        | A string indicating the IAM profile for the launch configuration |
-|key_name                    | A string indicating the AWS key pair for the launch configuration |
-|security_groups             | An array of strings of the security group IDs associated with the launch configuration |
-|associate_public_ip_address | A boolean indicating if the launch configuration is configured to set a public IP address |
-|user_data                   | A string containing the user data configured for the launch configuration |
-|ebs_optimized               | A boolean indicating if the launch configuration is optimized for Amazon EBS |
-|instance_monitoring         | A string indicating if instance monitoring is set to `detailed` or `basic` |
-|spot_price                  | A floating point number indicating the spot price configured |
+|Property                       | Description|
+| ---                           | --- |
+|arn                            | An string indicating the ARN of the launch configuration |
+|image\_id                      | An string indicating the AMI of the launch configuration |
+|instance\_type                 | A string indicating the instance type of the launch configuration |
+|iam\_instance\_profile         | A string indicating the IAM profile for the launch configuration |
+|key\_name                      | A string indicating the AWS key pair for the launch configuration |
+|security\_groups               | An array of strings of the security group IDs associated with the launch configuration |
+|associate\_public\_ip\_address | A boolean indicating if the launch configuration is configured to set a public IP address |
+|user\_data                     | A string containing the user data configured for the launch configuration |
+|ebs\_optimized                 | A boolean indicating if the launch configuration is optimized for Amazon EBS |
+|instance\_monitoring           | A string indicating if instance monitoring is set to `detailed` or `basic` |
+|spot\_price                    | A floating point number indicating the spot price configured |
 
 ## Examples
 
