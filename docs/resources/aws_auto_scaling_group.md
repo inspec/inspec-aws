@@ -36,11 +36,11 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 |Property                  | Description|
 | ---                      | --- |
-|min_size                  | An integer indicating the minimum number of instances in the auto scaling group |
-|maximum_size              | An integer indicating the maximum number of instances in the auto scaling group |
-|desired_capacity          | An integer indicating the desired  number of instances in the auto scaling group |
-|launch_configuration_name | The name of the auto scaling launch configuration associated with the auto scaling group |
-|vpc_zone_identifier       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
+|min\_size                  | An integer indicating the minimum number of instances in the auto scaling group |
+|maximum\_size              | An integer indicating the maximum number of instances in the auto scaling group |
+|desired\_capacity          | An integer indicating the desired  number of instances in the auto scaling group |
+|launch\_configuration\_name | The name of the auto scaling launch configuration associated with the auto scaling group |
+|vpc\_zone\_identifier       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
 |tags                      | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
