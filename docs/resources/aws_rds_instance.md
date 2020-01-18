@@ -23,7 +23,7 @@ An `aws_rds_instance` resource block uses resource parameters to search for an R
     
 #### Parameters
 
-##### db_instance_identifier _(required)_
+##### db\_instance\_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied instance identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_instance_identifier: 'value'` key-value entry in a hash.
