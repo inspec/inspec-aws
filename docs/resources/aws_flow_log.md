@@ -17,17 +17,17 @@ Use the `aws_flow_log` InSpec audit resource to test properties of a single Flow
 
 This resource requires at least one of the following parameters to be provided: `flow_log_id`, `subnet_id`, `vpc_id`.
 
-##### flow_log_id _(required if no other parameters provided)_
+##### flow\_log\_id _(required if no other parameters provided)_
 
 The Flow Log ID which uniquely identifies the Flow Log. 
 This can be passed either as a string or as a `flow_log_id: 'value'` key-value entry in a hash.
 
-##### subnet_id _(required if no other parameters provided)_
+##### subnet\_id _(required if no other parameters provided)_
 
 The subnet associated with the Flow Log, if applicable. 
 This must be passed as a `subnet_id: 'value'` key-value entry in a hash.
 
-##### vpc_id _(required if no other parameters provided)_
+##### vpc\_id _(required if no other parameters provided)_
 
 The VPC associated with the Flow Log, if applicable. 
 This must be passed as a `vpc_id: 'value'` key-value entry in a hash.
@@ -36,11 +36,11 @@ See also the [AWS documentation on Flow Logs](https://docs.aws.amazon.com/vpc/la
 
 ## Properties
 
-|Property       | Description|
-| ---           | --- |
-|flow_log_id    | The ID of the Flow Log. |
-|log_group_name | The name of the associated log group. |
-|resource_id    | The ID of the assosiated resource, e.g. VPC, Subnet or Network Interface. |
+|Property         | Description|
+| ---             | --- |
+|flow\_log\_id    | The ID of the Flow Log. |
+|log\_group\_name | The name of the associated log group. |
+|resource\_id     | The ID of the assosiated resource, e.g. VPC, Subnet or Network Interface. |
 
 ## Examples
 
@@ -83,7 +83,7 @@ Use `should_not` to test the entity should not exist.
     end
 
 
-#### be_attached_to_eni
+#### be\_attached\_to\_eni
 
 Indicates that the Flow Log is attached to a ENI resource.
 
@@ -91,7 +91,7 @@ Indicates that the Flow Log is attached to a ENI resource.
       it { should be_attached_to_eni }
     end
 
-#### be_attached_to_subnet
+#### be\_attached\_to\_subnet
 
 Indicates that the Flow Log is attached to a subnet resource.
 
@@ -99,7 +99,7 @@ Indicates that the Flow Log is attached to a subnet resource.
       it { should be_attached_to_subnet }
     end
 
-#### be_attached_to_vpc
+#### be\_attached\_to\_vpc
 
 Indicates that the Flow Log is attached to a vpc resource.
 
