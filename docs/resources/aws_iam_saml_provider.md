@@ -10,20 +10,20 @@ Use the `aws_iam_saml_provider` InSpec audit resource to test properties of an A
 
 #### Parameters
 
-##### saml_provider_arn _(required)_
+##### saml\_provider\_arn _(required)_
 
 This resource accepts a single parameter, the ARN of the SAML Provider.
 This can be passed either as a string or as a `saml_provider_arn: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property               | Description|
-| ---                   | --- |
-|provider               | The provider. |
-|arn                    | The arn of the provider. |
-|saml_metadata_document | Metadata document associated with the saml provider. |
-|valid_until            | The expiration date and time for the SAML provider.  |
-|create_date            | The date and time, in ISO 8601 date-time format , when the role was created. |
+|Property                 | Description|
+| ---                     | --- |
+|provider                 | The provider. |
+|arn                      | The arn of the provider. |
+|saml\_metadata\_document | Metadata document associated with the saml provider. |
+|valid\_until             | The expiration date and time for the SAML provider.  |
+|create\_date             | The date and time, in ISO 8601 date-time format , when the role was created. |
 
 ## Syntax
 
