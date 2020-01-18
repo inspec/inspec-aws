@@ -5,7 +5,7 @@ title: About the aws_sns_topics Resource
 # aws\_sns\_topics
 Use the `aws_sns_topics` InSpec audit resource to test all or a group of the SNS Topic ARNs in an account.
 
-User the 'aws_sns_topic' InSpec audit resource to test a single SNS Topic in an account.
+User the 'aws\_sns\_topic' InSpec audit resource to test a single SNS Topic in an account.
 
 ## Syntax
 
@@ -22,10 +22,10 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Properties
 
-|Property   | Description|
-| ---       | --- |
-|topic_arns | The ARNs of the SNS Topics. |
-|entries    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property    | Description|
+| ---        | --- |
+|topic\_arns | The ARNs of the SNS Topics. |
+|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
 ## Examples
