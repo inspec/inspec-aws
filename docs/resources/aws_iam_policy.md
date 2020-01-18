@@ -25,12 +25,12 @@ An `aws_iam_policy` resource block identifies a policy by policy name or arn
 
 This resource requires either the `policy_name` or the `policy_arn` to be provided.
 
-##### policy_name _(required if `policy_arn` not provided)_
+##### policy\_name _(required if `policy_arn` not provided)_
 
 The Policy Name which uniquely identifies the Policy. 
 This must be passed as a `policy_name: 'value'` key-value entry in a hash.
 
-##### policy_arn _(required if `policy_name` not provided)_
+##### policy\_arn _(required if `policy_name` not provided)_
 
 The Policy ARN which uniquely identifies the Policy. 
 This must be passed as a `policy_arn: 'value'` key-value entry in a hash.
@@ -39,16 +39,16 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
-|arn                | The ARN identifier of the specified policy. |
-|attachment_count   | The count of attached entities for the specified policy. |
-|attached_groups    | The list of group names of the groups attached to the policy. |
-|attached_roles     | The list of role names of the roles attached to the policy. |
-|attached_users     | The list of usernames of the users attached to the policy. |
-|default_version_id | The 'default_version_id' value of the specified policy. |
-|policy             | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
-|statement_count    | Returns the number of statements present in the `policy`. |
+|Property             | Description|
+| ---                 | --- |
+|arn                  | The ARN identifier of the specified policy. |
+|attachment\_count    | The count of attached entities for the specified policy. |
+|attached\_groups     | The list of group names of the groups attached to the policy. |
+|attached\_roles      | The list of role names of the roles attached to the policy. |
+|attached\_users      | The list of usernames of the users attached to the policy. |
+|default\_version\_id | The 'default\_version\_id' value of the specified policy. |
+|policy               | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
+|statement\_count     | Returns the number of statements present in the `policy`. |
 
 ## Examples
 
@@ -89,7 +89,7 @@ Use `should_not` to test the entity should not exist.
 
       it { should_not exist }
 
-#### be_attached
+#### be\_attached
 
 The test will pass if the identified policy is attached to at least one IAM user, group, or role.
 
@@ -97,7 +97,7 @@ The test will pass if the identified policy is attached to at least one IAM user
       it { should be_attached }
     end
 
-#### be_attached_to_group(GROUPNAME)
+#### be\_attached\_to\_group(GROUPNAME)
 
 The test will pass if the identified policy attached the specified group.
 
@@ -105,7 +105,7 @@ The test will pass if the identified policy attached the specified group.
       it { should be_attached_to_group(GROUPNAME) }
     end
 
-#### be_attached_to_user(USERNAME)
+#### be\_attached\_to\_user(USERNAME)
 
 The test will pass if the identified policy attached the specified user.
 
@@ -113,7 +113,7 @@ The test will pass if the identified policy attached the specified user.
       it { should be_attached_to_user(USERNAME) }
     end
 
-#### be_attached_to_role(ROLENAME)
+#### be\_attached\_to\_role(ROLENAME)
 
 The test will pass if the identified policy attached the specified role.
 
@@ -121,7 +121,7 @@ The test will pass if the identified policy attached the specified role.
       it { should be_attached_to_role(ROLENAME) }
     end
 
-#### have_statement
+#### have\_statement
 
 Examines the list of statements contained in the policy and passes if at least one of the statements matches. This matcher does _not_ interpret the policy in a request authorization context, as AWS does when a request processed. Rather, `have_statement` examines the literal contents of the IAM policy, and reports on what is present (or absent, when used with `should_not`).
 
@@ -191,4 +191,4 @@ Examples:
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetPolicy`, `iam:ListPolicy`, and `iam:ListEntitiesForPolicy` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
-aws_iam_policy.md
+aws\_iam\_policy.md
