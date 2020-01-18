@@ -23,7 +23,7 @@ You may also use hash syntax to pass the EBS volume name
 #### Parameters
 This resource accepts a single parameter, either the EBS Volume name or id. At least one must be provided.
 
-##### volume_id _(required if `name` not provided)_
+##### volume\_id _(required if `name` not provided)_
 
 The EBS Volume ID which uniquely identifies the volume.
 This can be passed as either a string or an `volume_id: 'value'` key-value entry in a hash.
@@ -38,16 +38,16 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-|Property          | Description|
-| ---              | --- |
-|availability_zone | The Availability Zone for the volume. |
-|encrypted         | Indicates whether the volume will be encrypted. |
-|iops              | The number of I/O operations per second (IOPS) that the volume supports. |
-|kms_key_id        | The full ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the volume encryption key for the volume.  |
-|size              | The size of the volume, in GiBs. |
-|snapshot_id       | The snapshot from which the volume was created, if applicable. |
-|status            | The volume state. |
-|volume_type       | The volume type. |
+|Property            | Description|
+| ---                | --- |
+|availability\_zone  | The Availability Zone for the volume. |
+|encrypted           | Indicates whether the volume will be encrypted. |
+|iops                | The number of I/O operations per second (IOPS) that the volume supports. |
+|kms\_key\_id        | The full ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the volume encryption key for the volume.  |
+|size                | The size of the volume, in GiBs. |
+|snapshot\_id        | The snapshot from which the volume was created, if applicable. |
+|status              | The volume state. |
+|volume\_type        | The volume type. |
 
 ## Examples
 
