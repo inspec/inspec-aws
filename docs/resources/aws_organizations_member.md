@@ -30,19 +30,19 @@ This resource does not expect any parameters.
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
-|master_account_id  | The ID of the AWS Organizations Master Account |
-|master_account_arn | The ARN of the AWS Organizations Master Account |
+|Property             | Description|
+| ---                 | --- |
+|master\_account\_id  | The ID of the AWS Organizations Master Account |
+|master\_account\_arn | The ARN of the AWS Organizations Master Account |
 
 _**If the current Account is the Master Account, the following properties are also available:**_ 
 
-|Property                  | Description|
-| ---                      | --- |
-|account_id         | The ID of the current Account. |
-|account_arn        | The ARN of the current Account.  |
-|account_name       | The Name of the current Acccount. |
-|account_email      | The Email address associated with the current Account.  |
+|Property             | Description|
+| ---                 | --- |
+|account\_id          | The ID of the current Account. |
+|account\_arn         | The ARN of the current Account.  |
+|account\_name        | The Name of the current Acccount. |
+|account\_email       | The Email address associated with the current Account.  |
 
 ## Examples
 
