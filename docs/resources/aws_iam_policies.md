@@ -17,9 +17,9 @@ Use the `aws_iam_policies` InSpec audit resource to test properties of a collect
     
 #### Parameters
 
-##### only_attached _(optional)_
+##### only\_attached _(optional)_
 
-This resource allows filtering by only_attached.
+This resource allows filtering by only\_attached.
 When `OnlyAttached` is `true`, the returned list contains only the policies that are attached to an IAM user, group, or role. When `OnlyAttached` is `false`, or when the parameter is not included, all policies are returned.
 
 
@@ -32,17 +32,17 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property            | Description|
-| ---                | --- |
-|arns                | The ARN identifier of the specified policy. |
-|policy_ids          | The policy ids. |
-|policy_names        | The policy names. |
-|attachment_counts   | The count of attached entities for each policy. |
-|attached_groups     | The list of group names of the groups attached to each policy. |
-|attached_roles      | The list of role names of the roles attached to each policy. |
-|attached_users      | The list of usernames of the users attached to each policy. |
-|default_version_ids | The 'default_version_id' value of each policy. |
-|entries             | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property              | Description|
+| ---                  | --- |
+|arns                  | The ARN identifier of the specified policy. |
+|policy\_ids           | The policy ids. |
+|policy\_names         | The policy names. |
+|attachment\_counts    | The count of attached entities for each policy. |
+|attached\_groups      | The list of group names of the groups attached to each policy. |
+|attached\_roles       | The list of role names of the roles attached to each policy. |
+|attached\_users       | The list of usernames of the users attached to each policy. |
+|default\_version\_ids | The 'default\_version\_id' value of each policy. |
+|entries               | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
 ## Examples
