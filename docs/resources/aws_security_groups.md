@@ -25,13 +25,13 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|group_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
-|group_names | An integer indicating the maximum number of instances in the auto scaling group |
-|vpc_ids     | An integer indicating the desired  number of instances in the auto scaling group |
-|tags        | An integer indicating the minimum number of instances in the auto scaling group |
-|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property     | Description|
+| ---         | --- |
+|group\_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
+|group\_names | An integer indicating the maximum number of instances in the auto scaling group |
+|vpc\_ids     | An integer indicating the desired  number of instances in the auto scaling group |
+|tags         | An integer indicating the minimum number of instances in the auto scaling group |
+|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
