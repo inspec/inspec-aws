@@ -30,23 +30,23 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 
 ## Properties
 
-| Property            | Description|
-| ---                 | --- |
-| access_key_id       | The ID of the Access Key. |
-| username            | The IAM Username which is associated with the Access Key. |
-| active              | Indicates if the status of the Key is Active.
-| inactive            | Indicates if the status of the Key is Inactive.
-| ever_used           | Indicates if the Key has ever been used.
-| never_used          | Indicates if the Key has never been used.
-| create_date         | The creation date of the Access Key. |
-| created_days_ago    | How many days ago the Access Key was created.
-| created_hours_ago   | How many hours ago the Access Key was created.
-| created_with_user   | Boolean indicating if the Access Key was created with a User.
-| last_used_date      | The date the Access Key was last used.
-| last_used_hours_ago | How many hours ago the Key was last used.
-| last_used_days_ago  | How many days ago the Key was last used.
-| user_created_date   | The date on which the associated User was created.
-| entries             | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property               | Description|
+| ---                    | --- |
+| access\_key\_id        | The ID of the Access Key. |
+| username               | The IAM Username which is associated with the Access Key. |
+| active                 | Indicates if the status of the Key is Active.
+| inactive               | Indicates if the status of the Key is Inactive.
+| ever\_used             | Indicates if the Key has ever been used.
+| never\_used            | Indicates if the Key has never been used.
+| create\_date           | The creation date of the Access Key. |
+| created\_days\_ago     | How many days ago the Access Key was created.
+| created\_hours\_ago    | How many hours ago the Access Key was created.
+| created\_with\_user    | Boolean indicating if the Access Key was created with a User.
+| last\_used\_date       | The date the Access Key was last used.
+| last\_used\_hours\_ago | How many hours ago the Key was last used.
+| last\_used\_days\_ago  | How many days ago the Key was last used.
+| user\_created\_date    | The date on which the associated User was created.
+| entries                | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
 ## Examples
