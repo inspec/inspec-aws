@@ -33,7 +33,7 @@ Since you may only have one recorder per region, and InSpec connections are per-
     
 #### Parameters
 
-##### recorder_name _(optional)_
+##### recorder\_name _(optional)_
 
 This resource accepts a single parameter, the Configuration Recorder Name. 
 This can be passed either as a string or as a `recorder_name: 'value'` key-value entry in a hash.
@@ -43,11 +43,11 @@ See also the [AWS documentation on Configuration](https://docs.aws.amazon.com/co
 
 ## Properties
 
-|Property       | Description|
-| ---           | --- |
-|recorder_name  | The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.  |
-|role_arn       | Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.  |
-|resource_types | A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (i.e. AWS::EC2::Instance)  |
+|Property        | Description|
+| ---            | --- |
+|recorder\_name  | The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.  |
+|role\_arn       | Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.  |
+|resource\_types | A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (i.e. AWS::EC2::Instance)  |
 
 ## Examples
 
@@ -56,7 +56,7 @@ See also the [AWS documentation on Configuration](https://docs.aws.amazon.com/co
       it { should be_recording }
     end
 
-##### Ensure the role_arn is correct for the recorder
+##### Ensure the role\_arn is correct for the recorder
 The role is used to grant permissions to S3 Buckets, SNS topics and to get configuration details for supported AWS resources.
     describe aws_config_recorder do
       its('role_arn') { should eq 'arn:aws:iam::721741954427:role/My_Recorder' }
@@ -76,7 +76,7 @@ Ensure the recorder is active
       it { should be_recording }
 
 #### be\_recording\_all\_resource\_types
-Indicates if the ConfigurationRecorder will record changes for all resources, regardless of type. If this is true, resource_types is ignored.
+Indicates if the ConfigurationRecorder will record changes for all resources, regardless of type. If this is true, resource\_types is ignored.
 
       it { should be_recording_all_resource_types }
 
