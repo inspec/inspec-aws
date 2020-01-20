@@ -21,11 +21,11 @@ See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc
 
 ## Properties
 
-|Property        | Description|
-| ---            | --- |
-|route_table_ids | The route table IDs |
-|vpc_ids         | The VPC IDs |
-|entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property          | Description|
+| ---              | --- |
+|route\_table\_ids | The route table IDs |
+|vpc\_ids          | The VPC IDs |
+|entries           | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 

@@ -28,9 +28,9 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|confirmed_subscription_count | An integer indicating the number of currently active subscriptions. |
+|Property                       | Description|
+| ---                           | --- |
+|confirmed\_subscription\_count | An integer indicating the number of currently active subscriptions. |
 
 ## Examples
 

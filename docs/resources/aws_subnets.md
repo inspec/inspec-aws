@@ -29,15 +29,15 @@ See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/late
 
 ## Properties
 
-|Property                | Description|
-| ---                    | --- |
-|subnet_ids              | The name of the auto scaling launch configuration associated with the auto scaling group |
-|vpc_ids                 | An integer indicating the maximum number of instances in the auto scaling group |
-|cidr_blocks             | An integer indicating the minimum number of instances in the auto scaling group |
-|availability_zone       | The availability zone this subnet is part of. |
-|map_public_ip_on_launch | A boolean indicating if a public IP is automatically mapped to instances launched in this subnet. |
-|states                  | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
-|entries                 | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property                    | Description|
+| ---                        | --- |
+|subnet\_ids                 | The name of the auto scaling launch configuration associated with the auto scaling group |
+|vpc\_ids                    | An integer indicating the maximum number of instances in the auto scaling group |
+|cidr\_blocks                | An integer indicating the minimum number of instances in the auto scaling group |
+|availability\_zone          | The availability zone this subnet is part of. |
+|map\_public\_ip\_on\_launch | A boolean indicating if a public IP is automatically mapped to instances launched in this subnet. |
+|states                      | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
+|entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 

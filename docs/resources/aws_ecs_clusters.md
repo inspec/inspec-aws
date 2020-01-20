@@ -23,17 +23,17 @@ See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/Ama
 
 ## Properties
 
-|Property                              | Description|
-| ---                                  | --- |
-|cluster_arn                          | The Amazon Resource Name (ARN) that identifies the cluster. |
-|cluster_name                         | A user-generated string that you use to identify your cluster. |
-|status                               | The status of the cluster. |
-|running_tasks_count                  | The number of tasks in the cluster that are in the RUNNING state. |
-|pending_tasks_count                  | The number of tasks in the cluster that are in the PENDING state.  |
-|active_services_count                | The number of services that are running on the cluster in an ACTIVE state. |
-|registered_container_instances_count | The number of container instances registered into the cluster. This includes container instances in both ACTIVE and DRAINING status. |
-|statistics                           | Additional information about your clusters that are separated by launch type. |
-|entries                               | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property                                | Description|
+| ---                                    | --- |
+|cluster\_arn                            | The Amazon Resource Name (ARN) that identifies the cluster. |
+|cluster\_name                           | A user-generated string that you use to identify your cluster. |
+|status                                  | The status of the cluster. |
+|running\_tasks\_count                   | The number of tasks in the cluster that are in the RUNNING state. |
+|pending\_tasks\_count                   | The number of tasks in the cluster that are in the PENDING state.  |
+|active\_services\_count                 | The number of services that are running on the cluster in an ACTIVE state. |
+|registered\_container\_instances\_count | The number of container instances registered into the cluster. This includes container instances in both ACTIVE and DRAINING status. |
+|statistics                              | Additional information about your clusters that are separated by launch type. |
+|entries                                 | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 

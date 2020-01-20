@@ -21,19 +21,19 @@ An `aws_region` resource block identifies an AWS region by ID. If no region is p
 
 #### Parameters
 
-##### region_name _(optional)_
+##### region\_name _(optional)_
 
-This resource accepts a single parameter, the region_name. 
+This resource accepts a single parameter, the region\_name. 
 This can be passed either as a string or as a `region_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|region_name | The Name of the region. |
-|endpoint    | The resolved endpoint of the region. |
+|Property     | Description|
+| ---         | --- |
+|region\_name | The Name of the region. |
+|endpoint     | The resolved endpoint of the region. |
 
 ## Examples
 

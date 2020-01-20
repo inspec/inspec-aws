@@ -25,10 +25,10 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-|Property                   | Description|
-| ---                       | --- |
-|volume_ids                 | The unique IDs of the EBS Volumes returned. |
-|entries                    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property                    | Description|
+| ---                        | --- |
+|volume\_ids                 | The unique IDs of the EBS Volumes returned. |
+|entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
    
 ## Examples
 

@@ -19,12 +19,12 @@ An `aws_iam_access_key` resource allows the testing of a single AWS IAM Access K
 
 This resources requires either an `access_key_id` or the IAM `username` associated with the Access Key.
 
-##### access_key_id _(required if `username` not provided.)_
+##### access\_key\_id _(required if `username` not provided.)_
 
 The Access Key ID which uniquely identifies the Key. Begins with the characters "AKIA". 
 This can be passed either as a string or as a `access_key_id: 'value'` key-value entry in a hash.
 
-##### username _(required if `access_key_id` not provided.)_
+##### username _(required if `access_key\_id` not provided.)_
 
 The IAM Username which is associated with the Access Key.
 This can be passed either as a string or as a `username: 'value'` key-value entry in a hash.
@@ -33,12 +33,12 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
-|access_key_id | The ID of the Access Key. |
-|username      | The IAM Username which is associated with the Access Key. |
-|status        | The status of the Access Key, e.g. "Active". |
-|create_date   | The creation date of the Access Key. |
+|Property        | Description|
+| ---            | --- |
+|access\_key\_id | The ID of the Access Key. |
+|username        | The IAM Username which is associated with the Access Key. |
+|status          | The status of the Access Key, e.g. "Active". |
+|create\_date    | The creation date of the Access Key. |
 
 ## Examples
 

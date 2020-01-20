@@ -27,10 +27,10 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-|Property                   | Description|
-| ---                       | --- |
-|db_instance_identifiers    | The unique IDs of the RDS Instances returned. |
-|entries                    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property                     | Description|
+| ---                         | --- |
+|db\_instance\_identifiers    | The unique IDs of the RDS Instances returned. |
+|entries                      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
    
 ## Examples
 

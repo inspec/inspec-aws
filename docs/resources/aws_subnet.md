@@ -17,7 +17,7 @@ An `aws_subnet` resource block uses the parameter to select a VPC and a subnet i
 
 #### Parameters
 
-##### subnet_id _(required)_
+##### subnet\_id _(required)_
 
 This resource accepts a single parameter, the Subnet ID.
 This can be passed either as a string or as a `subnet_id: 'value'` key-value entry in a hash.
@@ -26,13 +26,13 @@ See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/late
 
 ## Properties
 
-|Property                   | Description|
-| ---                       | --- |
-|subnet_id                  | Provides the ID of the Subnet. |
-|vpc_id                     | Provides the ID of the VPC the subnet is in. |
-|availability_zone          | Provides the Availability Zone of the subnet. |
-|cidr_block                 | Provides the block of ip addresses specified to the subnet. |
-|available_ip_address_count | Provides the number of available IPv4 addresses on the subnet. |
+|Property                      | Description|
+| ---                          | --- |
+|subnet\_id                    | Provides the ID of the Subnet. |
+|vpc\_id                       | Provides the ID of the VPC the subnet is in. |
+|availability\_zone            | Provides the Availability Zone of the subnet. |
+|cidr\_block                   | Provides the block of ip addresses specified to the subnet. |
+|available\_ip\_address\_count | Provides the number of available IPv4 addresses on the subnet. |
 
 ## Examples
 
@@ -60,7 +60,7 @@ See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/late
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### assigning_ipv_6_address_on_creation
+#### assigning\_ipv\_6\_address\_on\_creation
 
 Detects if the network interface on the subnet accepts IPv6 addresses.
 
@@ -76,7 +76,7 @@ Provides the current state of the subnet.
       it { should be_available }
     end
 
-#### default_for_az
+#### default\_for\_az
 
 Detects if the subnet is the default subnet for the Availability Zone.
 
@@ -84,7 +84,7 @@ Detects if the subnet is the default subnet for the Availability Zone.
       it { should be_default_for_az }
     end
 
-#### mapping_public_ip_on_launch
+#### mapping\_public\_ip\_on\_launch
 
 Provides the VPC ID for the subnet.
 

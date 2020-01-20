@@ -28,13 +28,13 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|group_names | The group name. |
-|group_ids   | The group ID. |
-|arns        | The Amazon Resource Name of the group. |
-|users       | Array of users associated with the group.  |
-|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property     | Description|
+| ---         | --- |
+|group\_names | The group name. |
+|group\_ids   | The group ID. |
+|arns         | The Amazon Resource Name of the group. |
+|users        | Array of users associated with the group.  |
+|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
 ## Examples

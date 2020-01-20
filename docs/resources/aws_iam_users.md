@@ -24,22 +24,22 @@ See also the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/la
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-| usernames                   | The usernames of the returned Users. |
-| user_arns                   | The Amazon Resource Names of the returned Users. |
-| user_ids                    | The IDs of the returned Users. |
-| access_keys                 | Array of Access Keys belonging to each User.|
-| has_attached_policies       | Whether or not the User has IAM Policies attached. |
-| attached_policy_names       | The names (if any) of the IAM Policies attached to the User.|
-| attached_policy_arns        | The Amazon Resource Names (if any) of the IAM Policies attached to the User. |
-| has_console_password        | Whether or not the User has a console password set. |
-| has_inline_policies         | Boolean indicating whether or not the User has policies set directly on them. |
-| inline_policy_names         | The names of the policies (if any) which are directly on the User. |
-| has_mfa_enabled             | Boolean indicating whether the User has MFA enabled or not. |
-| password_ever_used?         | Whether the user has even used their console password. |
-| password_last_used_days_ago | How long ago, in days, since the user last used their console password. Returns `-1` if the password has never been used.|
-|entries                      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property                         | Description|
+| ---                             | --- |
+| usernames                       | The usernames of the returned Users. |
+| user\_arns                      | The Amazon Resource Names of the returned Users. |
+| user\_ids                       | The IDs of the returned Users. |
+| access\_keys                    | Array of Access Keys belonging to each User.|
+| has\_attached\_policies         | Whether or not the User has IAM Policies attached. |
+| attached\_policy\_names         | The names (if any) of the IAM Policies attached to the User.|
+| attached\_policy\_arns          | The Amazon Resource Names (if any) of the IAM Policies attached to the User. |
+| has\_console\_password          | Whether or not the User has a console password set. |
+| has\_inline\_policies           | Boolean indicating whether or not the User has policies set directly on them. |
+| inline\_policy\_names           | The names of the policies (if any) which are directly on the User. |
+| has\_mfa\_enabled               | Boolean indicating whether the User has MFA enabled or not. |
+| password\_ever\_used?           | Whether the user has even used their console password. |
+| password\_last\_used\_days\_ago | How long ago, in days, since the user last used their console password. Returns `-1` if the password has never been used.|
+|entries                          | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
 ## Examples

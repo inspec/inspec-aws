@@ -21,16 +21,16 @@ See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQue
 
 ## Properties
 
-|Property                             | Description|
-| ---                                 | --- |
-|arns                                 | The ARNs of the SQS Queues. |
-|is_fifo_queues                       | A boolean value indicate if queues are a FIFO queues |
-|visibility_timeouts                  | An integer indicating the visibility timeout of the message in seconds |
-|maximum_message_sizes                | An integer indicating the maximum message size in bytes |
-|message_retention_periods            | An integer indicating the maximum retention period for a message in seconds |
-|delay_seconds                        | An integer indicating the delay in seconds for the queues |
-|receive_message_wait_timeout_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
-|content_based_deduplications         | A boolean value indicate if content based dedcuplication is enabled or not |
+|Property                                 | Description|
+| ---                                     | --- |
+|arns                                     | The ARNs of the SQS Queues. |
+|is\_fifo\_queues                         | A boolean value indicate if queues are a FIFO queues |
+|visibility\_timeouts                     | An integer indicating the visibility timeout of the message in seconds |
+|maximum\_message\_sizes                  | An integer indicating the maximum message size in bytes |
+|message\_retention\_periods              | An integer indicating the maximum retention period for a message in seconds |
+|delay\_seconds                           | An integer indicating the delay in seconds for the queues |
+|receive\_message\_wait\_timeout\_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
+|content\_based\_deduplications           | A boolean value indicate if content based dedcuplication is enabled or not |
 
 ## Examples
 

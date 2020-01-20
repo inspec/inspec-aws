@@ -22,11 +22,11 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|bucket_names | An Array of bucket names. |
-|tags         | An hash with each key-value pair corresponding to a tag associated with the entity |
-|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property      | Description|
+| ---          | --- |
+|bucket\_names | An Array of bucket names. |
+|tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
+|entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 

@@ -27,10 +27,10 @@ See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/l
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|region_names | The Names of the regions. |
-|endpoints    | The resolved endpoints of the regions. |
+|Property      | Description|
+| ---          | --- |
+|region\_names | The Names of the regions. |
+|endpoints     | The resolved endpoints of the regions. |
 
 ## Examples
 

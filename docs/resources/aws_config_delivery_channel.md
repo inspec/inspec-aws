@@ -3,7 +3,7 @@ title: About the aws_config_delivery_channel Resource
 platform: aws
 ---
 
-# aws_config_delivery_channel
+# aws\_config\_delivery\_channel
 
 The AWS Config service can monitor and record changes to your AWS resource configurations. A Delivery Channel can record the changes
 to an S3 Bucket, an SNS or both.
@@ -30,7 +30,7 @@ Since you may only have one Delivery Channel per region, and InSpec connections 
 
 #### Parameters
 
-##### channel_name _(optional)_
+##### channel\_name _(optional)_
 
 This resource can be passed a single parameter, the Channel Name. 
 This can be passed either as a string or as a `channel_name: 'value'` key-value entry in a hash.
@@ -40,13 +40,13 @@ See also the [AWS documentation on Delivery Channels](https://docs.aws.amazon.co
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
-|channel_name                | The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. |
-|s3_bucket_name              | The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.  |
-|s3_key_prefix               | The prefix for the specified Amazon S3 bucket. |
-|sns_topic_arn               | The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.  |
-|delivery_frequency_in_hours | Specifies how often the AWS Config sends configuration changes to the s3 bucket in the delivery channel. |
+|Property                       | Description|
+| ---                           | --- |
+|channel\_name                  | The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. |
+|s3\_bucket\_name               | The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.  |
+|s3\_key\_prefix                | The prefix for the specified Amazon S3 bucket. |
+|sns\_topic\_arn                | The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.  |
+|delivery\_frequency\_in\_hours | Specifies how often the AWS Config sends configuration changes to the s3 bucket in the delivery channel. |
 
 ## Examples
 

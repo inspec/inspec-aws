@@ -18,7 +18,7 @@ An `aws_ecr` resource block declares the tests for a single AWS ECR by repositor
 
 #### Parameters
 
-The ECR repository_name must be provided.
+The ECR repository\_name must be provided.
 
 ##### repository_name _(required)_
 
@@ -28,17 +28,17 @@ This can be passed either as a string or as an `repository_name: 'value'` key-va
 
 ## Properties
 
-|Property            | Description|
-| ---                |--- |
-|registry_id         | The AWS account ID associated with the registry |
-|repository_arn      | The Amazon Resource Name of the repository |
-|repository_name     | The name of the repository |
-|repository_uri      | The uri of the repository |
-|image_tags          | The tags associated with the image |
-|image_digest        | A sha256 hash of the image |
-|image_size_in_bytes | The size of the image in bytes. |
-|image_pushed_at     | The datetime as a string when the image was uploaded. 'yyyy-mm-dd hh:mm:ss tz' |
-|image_uploaded_date | The date as a string when the image was uploaded. 'yyyy-mm-dd' |
+|Property               | Description|
+| ---                   |--- |
+|registry\_id           | The AWS account ID associated with the registry |
+|repository\_arn        | The Amazon Resource Name of the repository |
+|repository\_name       | The name of the repository |
+|repository\_uri        | The uri of the repository |
+|image\_tags            | The tags associated with the image |
+|image\_digest          | A sha256 hash of the image |
+|image\_size\_in\_bytes | The size of the image in bytes. |
+|image\_pushed\_at      | The datetime as a string when the image was uploaded. 'yyyy-mm-dd hh:mm:ss tz' |
+|image\_uploaded\_date  | The date as a string when the image was uploaded. 'yyyy-mm-dd' |
 
 ## Examples
 

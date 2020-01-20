@@ -34,7 +34,7 @@ An `aws_vpc` resource block identifies a VPC by id. If no VPC ID is provided, th
 
 If no parameter is provided, the subscription's default VPC will be returned.
 
-##### vpc_id _(optional)_
+##### vpc\_id _(optional)_
 
 This resource accepts a single parameter, the VPC ID. 
 This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
@@ -45,11 +45,11 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 
 |Property         | Description|
 | ---             | --- |
-|cidr_block       | The IPv4 address range that is managed by the VPC. |
-|dhcp_options_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
-|instance_tenancy | The allowed tenancy of instances launched into the VPC. |
+|cidr\_block       | The IPv4 address range that is managed by the VPC. |
+|dhcp\_options\_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
+|instance\_tenancy | The allowed tenancy of instances launched into the VPC. |
 |state            | The state of the VPC (`pending` | `available`). |
-|vpc_id           | The ID of the VPC. |
+|vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
 
 ## Examples

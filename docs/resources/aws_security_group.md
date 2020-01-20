@@ -41,17 +41,17 @@ While this resource provides facilities for searching inbound and outbound rules
 
 You must provide at least one parameter; `group_id`, `group_name` or `vpc_id`
 
-##### group_id _(required if no other parameter provided)_
+##### group\_id _(required if no other parameter provided)_
 
 The Security Group ID which uniquely identifies the SG.
 This can be passed either as a string or as a `group_id: 'value'` key-value entry in a hash.
 
-##### group_name _(required if no other parameter provided)_
+##### group\_name _(required if no other parameter provided)_
 
 The Security Group name.
 This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
 
-##### vpc_id _(required if no other parameter provided)_
+##### vpc\_id _(required if no other parameter provided)_
 
 The ID of the VPC associated with the SG.
 This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
@@ -60,17 +60,17 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property             | Description|
-| ---                 | --- |
-|description          | A String reflecting the human-meaningful description that was given to the SG at creation time. |
-|group_id             | Provides the Security Group ID. |
-|group_name           | A String reflecting the name that was given to the SG at creation time. |
-|inbound_rules        | A list of the rules that the Security Group applies to incoming network traffic. |
-|inbound_rules_count  | A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules. |
-|outbound_rules       | A list of the rules that the Security Group applies to outgoing network traffic initiated by the AWS resource in the Security Group. |
-|outbound_rules_count | A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules. |
-|vpc_id               | A String in the format `vpc-` followed by 8 hexadecimal characters reflecting VPC that contains the Security Group. |
-|tags                 | The tags of the security group. |
+|Property               | Description|
+| ---                   | --- |
+|description            | A String reflecting the human-meaningful description that was given to the SG at creation time. |
+|group\_id              | Provides the Security Group ID. |
+|group\_name            | A String reflecting the name that was given to the SG at creation time. |
+|inbound\_rules         | A list of the rules that the Security Group applies to incoming network traffic. |
+|inbound\_rules\_count  | A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules. |
+|outbound\_rules        | A list of the rules that the Security Group applies to outgoing network traffic initiated by the AWS resource in the Security Group. |
+|outbound\_rules\_count | A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules. |
+|vpc\_id                | A String in the format `vpc-` followed by 8 hexadecimal characters reflecting VPC that contains the Security Group. |
+|tags                   | The tags of the security group. |
 
 ## Examples
 
@@ -93,7 +93,7 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
       it { should_not allow_in(port: 22, ipv4_range: '0.0.0.0/0') }
     end
 
-##### Ensure that the careful_updates Security Group may only initiate contact with specific IPs.
+##### Ensure that the careful\_updates Security Group may only initiate contact with specific IPs.
 
     describe aws_security_group(group_name: 'careful_updates') do
 
@@ -110,7 +110,7 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
       its('outbound_rules.count') { should cmp 3 }
     end
 
-##### Ensure that the canary_deployments Security Group only allows access from one specific security group id on port 443.
+##### Ensure that the canary\_deployments Security Group only allows access from one specific security group id on port 443.
 
     describe aws_security_group(group_name: 'canary_deployments') do
       it { should allow_in_only(port: 443, security_group: "sg-33334444") }
@@ -121,13 +121,13 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 This InSpec audit resource has the following special matchers. For a full list of additional available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 
-#### allow_in
+#### allow\_in
 
-#### allow_out
+#### allow\_out
 
-#### allow_in_only
+#### allow\_in\_only
 
-#### allow_out_only
+#### allow\_out\_only
 
 The `allow` series of matchers enable you to perform queries about what network traffic would be permitted through the Security Group rule set.
 
@@ -143,7 +143,7 @@ The matchers accept a key-value list of search criteria.  For a rule to match, i
 
   * `from_port` - Determines if a rule exists whose port range begins at the specified number. The word `from_` does *not* relate to inbound/outbound directionality; it relates to the port range ("counting _from_"). `from_port` is an exact criterion; so if the rule allows 1000-2000 and you specify a `from_port` of 1001, it does not match.
   * `ipv4_range` - Specifies an IPv4 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic.  Each AWS Security Group rule may have multiple allowed source IP ranges.
-  * ipv6_range - Specifies an IPv6 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic.  Each AWS Security Group rule may have multiple allowed source IP ranges.
+  * ipv6\_range - Specifies an IPv6 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic.  Each AWS Security Group rule may have multiple allowed source IP ranges.
   * `port` - Determines if a particular TCP/IP port is reachable. `allow_in` and `allow_out` examine whether the specified port is included in the port range of a rule, while `allow_in`. You may specify the port as a string (`'22'`) or as a number.
   * `position` - A one-based index into the list of rules. If provided, this restricts the evaluation to the rule at that position. You may also use the special values `:first` and `:last`. `position` may also be used to enable `allow_in_only` and `allow_out_only` to work with multi-rule Security Groups.
   * `protocol` - Specifies the IP protocol. `tcp`, `udp`, and `icmp` are some typical values. The string `"-1"` or `any` is used to indicate any protocol.

@@ -3,7 +3,7 @@ title: About the aws_iam_password_policy Resource
 platform: aws
 ---
 
-# aws\_iam\_password_policy
+# aws\_iam\_password\_policy
 
 Use the `aws_iam_password_policy` InSpec audit resource to test properties of an AWS IAM Password Policy.
 
@@ -23,11 +23,11 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property                        | Description|
-| ---                            | --- |
-|minimum_password_length         | The minimum character count of the password policy. |
-|max_password_age_in_days        | Integer representing in days how long a password may last before expiring.|
-|number_of_passwords_to_remember | Number of previous passwords to remember. |
+|Property                            | Description|
+| ---                                | --- |
+|minimum\_password\_length           | The minimum character count of the password policy. |
+|max\_password\_age\_in\_days        | Integer representing in days how long a password may last before expiring.|
+|number\_of\_passwords\_to\_remember | Number of previous passwords to remember. |
 
 ## Examples
 
@@ -52,25 +52,25 @@ This InSpec audit resource has the following special matchers. For a full list o
 #### exist
     it { should exist }
         
-#### prevent_password_reuse
+#### prevent\_password\_reuse
     it { should prevent_password_reuse }
     
-#### expire_passwords 
+#### expire\_passwords 
     it { should expire_passwords }
 
-#### require_numbers   
+#### require\_numbers   
     it { should require_numbers }
 
-#### require_symbols
+#### require\_symbols
     it { should require_symbols }
 
-#### require_lowercase_characters
+#### require\_lowercase\_characters
     it { should require_lowercase_characters }
 
-#### require_uppercase_characters
+#### require\_uppercase\_characters
     it { should require_uppercase_characters}
 
-#### allow_users_to_change_passwords
+#### allow\_users\_to\_change\_passwords
     it { should allow_users_to_change_password }
     
 All matchers can use the inverse `should_not` predicate.

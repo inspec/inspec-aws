@@ -17,7 +17,7 @@ An `aws_iam_role` resource block declares the tests for a single AWS IAM Role by
 
 #### Parameters
 
-##### role_name _(required)_
+##### role\_name _(required)_
 
 This resource accepts a single parameter, the Role Name which uniquely identifies the Role.
 This can be passed either as a string or as a `role_name: 'value'` key-value entry in a hash.
@@ -26,21 +26,21 @@ See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/la
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
-|path                        | The path to the role. |
-|role_name                   | The name of the role. |
-|role_id                     | The id of the role. |
-|arn                         | The Amazon Resource Name (ARN) specifying the role. |
-|create_date                 | The date and time, in ISO 8601 date-time format , when the role was created. |
-|assume_role_policy_document | The policy that grants an entity permission to assume the role. |
-|description                 | The description of the role. |
-|max_session_duration        | The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter. |
-|permissions_boundary_type   | The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy . |
-|permissions_boundary_arn    | The ARN of the policy used to set the permissions boundary for the user or role. |
-|inline_policies             | A list of inline policy names associated with the described role. |
-|attached_policies_name      | A list of attached policy names associated with the described role. |
-|attached_policies_arn       | A list of attached policy ARNs associated with the described role. |
+|Property                       | Description|
+| ---                           | --- |
+|path                           | The path to the role. |
+|role\_name                     | The name of the role. |
+|role\_id                       | The id of the role. |
+|arn                            | The Amazon Resource Name (ARN) specifying the role. |
+|create\_date                   | The date and time, in ISO 8601 date-time format , when the role was created. |
+|assume\_role\_policy\_document | The policy that grants an entity permission to assume the role. |
+|description                    | The description of the role. |
+|max\_session\_duration         | The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter. |
+|permissions\_boundary\_type    | The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy . |
+|permissions\_boundary\_arn     | The ARN of the policy used to set the permissions boundary for the user or role. |
+|inline\_policies               | A list of inline policy names associated with the described role. |
+|attached\_policies\_name       | A list of attached policy names associated with the described role. |
+|attached\_policies\_arn        | A list of attached policy ARNs associated with the described role. |
 
 
 ## Examples

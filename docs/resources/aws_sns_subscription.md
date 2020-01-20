@@ -17,7 +17,7 @@ An `aws_sns_subscription` resource block uses resource parameters to search for 
 
 #### Parameters
 
-##### subscription_arn _(required)_
+##### subscription\_arn _(required)_
 
 This resource accepts a single parameter, the subscription_arn. 
 This can be passed either as a string or as a `subscription_arn: 'value'` key-value entry in a hash.
@@ -30,10 +30,10 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 | ---                           | --- |
 |arn                            | An integer indicating the minimum number of instances in the auto scaling group |
 |owner                          | An integer indicating the maximum number of instances in the auto scaling group |
-|raw_message_delivery           | An integer indicating the desired  number of instances in the auto scaling group |
-|topic_arn                      | The name of the auto scaling launch configuration associated with the auto scaling group |
+|raw\_message\_delivery           | An integer indicating the desired  number of instances in the auto scaling group |
+|topic\_arn                      | The name of the auto scaling launch configuration associated with the auto scaling group |
 |protocol                       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
-|confirmation_was_authenticated | An hash with each key-value pair corresponding to a tag associated with the entity |
+|confirmation\_was\_authenticated | An hash with each key-value pair corresponding to a tag associated with the entity |
 
               
 ## Examples
@@ -72,7 +72,7 @@ Use `should_not` to test the entity should not exist.
 
       it { should_not exist }
 
-#### be_confirmation_authenticated
+#### be\_confirmation\_authenticated
 
 Provides whether or not the subscription confirmation request was authenticated.
 
@@ -80,7 +80,7 @@ Provides whether or not the subscription confirmation request was authenticated.
       it { should be_confirmation_authenticated }
     end
 
-#### have_raw_message_delivery
+#### have\_raw\_message\_delivery
 
 Provides whether or not the original message is passed as is, not formatted as a json or yaml.
 

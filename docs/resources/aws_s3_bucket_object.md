@@ -20,7 +20,7 @@ An `aws_s3_bucket_object` resource block declares a bucket and an object key by 
 
 #### Parameters
 
-##### bucket_name _(required)_
+##### bucket\_name _(required)_
 
 The S3 Bucket Name which uniquely identifies the bucket. 
 This must be passed as a `bucket_name: 'value'` key-value entry in a hash.
@@ -34,11 +34,11 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|bucket_name | The name of the bucket. |
-|key         | The key within the bucket. |
-|object_acl  | An array of AWS Grants detailing permission grants on the bucket object.  |
+|Property     | Description|
+| ---         | --- |
+|bucket\_name | The name of the bucket. |
+|key          | The key within the bucket. |
+|object\_acl  | An array of AWS Grants detailing permission grants on the bucket object.  |
 
 ## Examples
 
