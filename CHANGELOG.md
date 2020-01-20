@@ -1,9 +1,14 @@
-<!-- latest_release 1.5.2 -->
+<!-- latest_release 1.6.0 -->
+## [v1.6.0](https://github.com/inspec/inspec-aws/tree/v1.6.0) (2020-01-20)
+
+#### Merged Pull Requests
+- Fix for Issue #157 and #10 [#164](https://github.com/inspec/inspec-aws/pull/164) ([dyleroo](https://github.com/dyleroo))
+<!-- latest_release -->
+
 ## [v1.5.2](https://github.com/inspec/inspec-aws/tree/v1.5.2) (2020-01-06)
 
 #### Merged Pull Requests
 - fix section - Obvious fix. [#167](https://github.com/inspec/inspec-aws/pull/167) ([tbugfinder](https://github.com/tbugfinder))
-<!-- latest_release -->
 
 ## [v1.5.1](https://github.com/inspec/inspec-aws/tree/v1.5.1) (2019-12-13)
 
