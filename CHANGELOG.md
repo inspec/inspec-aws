@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.0 -->
+<!-- latest_release 1.6.1 -->
+## [v1.6.1](https://github.com/inspec/inspec-aws/tree/v1.6.1) (2020-01-20)
+
+#### Merged Pull Requests
+- Escape underscores [#171](https://github.com/inspec/inspec-aws/pull/171) ([bobchaos](https://github.com/bobchaos))
+<!-- latest_release -->
+
 ## [v1.6.0](https://github.com/inspec/inspec-aws/tree/v1.6.0) (2020-01-20)
 
 #### Merged Pull Requests
 - Fix for Issue #157 and #10 [#164](https://github.com/inspec/inspec-aws/pull/164) ([dyleroo](https://github.com/dyleroo))
-<!-- latest_release -->
 
 ## [v1.5.2](https://github.com/inspec/inspec-aws/tree/v1.5.2) (2020-01-06)
 
