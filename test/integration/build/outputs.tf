@@ -190,3 +190,7 @@ output "aws_alb_arn" {
   value = aws_lb.aws-alb.0.arn
 }
 
+//output "aws_rds_cluster_engine_version" {
+//  value = aws_rds_cluster.rb.rds_cluster.0.engine_version
+//}
+

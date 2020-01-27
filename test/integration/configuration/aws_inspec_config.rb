@@ -130,6 +130,13 @@ module AWSInspecConfig
       aws_rds_db_master_user: 'awsinspecuser',
       aws_rds_db_name: "awsrdsname#{add_random_string}",
       aws_rds_db_storage_type: 'gp2',
+
+      # Aurora - REMOVE THIS
+      aws_rds_cluster_database_name: "awsclusterdbname#{add_random_string}" ,
+      aws_rds_cluster_engine: "aurora-mysql",
+      aws_rds_cluster_identifier: "awscluster-#{add_random_string}" ,
+      aws_rds_cluster_master_user: 'awsinspecuser',
+
       aws_security_group_alpha: "aws-security-group-alpha-#{add_random_string}",
       aws_security_group_beta: "aws-security-group-beta-#{add_random_string}",
       aws_security_group_gamma: "aws-security-group-gamma-#{add_random_string}",
@@ -149,7 +156,7 @@ module AWSInspecConfig
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
-      aws_enable_creation: 1,
+      aws_enable_creation: 0,
       # Flag to optionally disable creation/controls for configuration recorder (only 1 per AWS region allowed)
       aws_create_configuration_recorder: 0,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to

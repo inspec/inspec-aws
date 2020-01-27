@@ -84,6 +84,13 @@ variable "aws_rds_db_identifier" {}
 variable "aws_rds_db_master_user" {}
 variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
+
+# Aurora - REMOVE THIS
+variable "aws_rds_cluster_identifier" {}
+variable "aws_rds_cluster_database_name" {}
+variable "aws_rds_cluster_engine" {}
+variable "aws_rds_cluster_master_user" {}
+
 variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
@@ -1478,4 +1485,24 @@ resource "aws_route53_record" "test_record" {
   type    = "A"
   ttl     = "300"
   records = [ "127.0.0.1"]
+}
+
+# Aurora Cluster
+
+resource "aws_rds_cluster" "rds_cluster" {
+  count                   = 1
+  cluster_identifier      = var.aws_rds_cluster_identifier
+  engine                  = var.aws_rds_cluster_engine
+  # engine_version          = var.aws_rds_cluster_engine_version
+  availability_zones      = ["us-west-2a", "us-west-2b"]
+  database_name           = var.aws_rds_cluster_database_name
+  master_username         = var.aws_rds_cluster_master_user
+  master_password         = "testpassword"
+  storage_encrypted       = true
+  skip_final_snapshot     = true
+
+  tags = {
+      Name = var.aws_rds_cluster_database_name
+      Environment = "Dev"
+    }
 }
