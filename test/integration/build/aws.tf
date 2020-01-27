@@ -65,9 +65,12 @@ variable "aws_eks_vpc_name" {}
 variable "aws_elb_access_log_name" {}
 variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
+variable "aws_enable_cli_calls" {}
 variable "aws_enable_creation" {}
+variable "aws_enable_privileged_resources" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_iam_group_name" {}
+variable "aws_iam_policy_arn" {}
 variable "aws_iam_role_generic_name" {}
 variable "aws_iam_role_generic_policy_name" {}
 variable "aws_iam_user_name" {}
@@ -98,6 +101,7 @@ variable "aws_security_group_zeta" {}
 variable "aws_security_group_omega" {}
 variable "aws_security_group_lb" {}
 variable "aws_sqs_queue_name" {}
+variable "aws_subnet_ip_address_count" {}
 variable "aws_sns_topic_no_subscription" {}
 variable "aws_sns_topic_subscription_sqs" {}
 variable "aws_sns_topic_with_subscription" {}
@@ -1473,14 +1477,14 @@ resource "aws_route53_zone" "test_zone" {
   name    = var.aws_route_53_zone
 
   vpc {
-    vpc_id = "${aws_vpc.inspec_vpc[0].id}"
+    vpc_id = aws_vpc.inspec_vpc.0.id
   }
 }
 
 resource "aws_route53_record" "test_record" {
 
   count   = var.aws_enable_creation
-  zone_id = "${aws_route53_zone.test_zone[0].id}"
+  zone_id = aws_route53_zone.test_zone.0.id
   name    = "www.carry-on-films.com"
   type    = "A"
   ttl     = "300"
