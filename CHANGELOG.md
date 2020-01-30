@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.1 -->
+<!-- latest_release 1.6.2 -->
+## [v1.6.2](https://github.com/inspec/inspec-aws/tree/v1.6.2) (2020-01-30)
+
+#### Merged Pull Requests
+- Update README to reflect AWS SDK 3 Train AWS dependency. [#174](https://github.com/inspec/inspec-aws/pull/174) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v1.6.1](https://github.com/inspec/inspec-aws/tree/v1.6.1) (2020-01-20)
 
 #### Merged Pull Requests
 - Escape underscores [#171](https://github.com/inspec/inspec-aws/pull/171) ([bobchaos](https://github.com/bobchaos))
-<!-- latest_release -->
 
 ## [v1.6.0](https://github.com/inspec/inspec-aws/tree/v1.6.0) (2020-01-20)
 
