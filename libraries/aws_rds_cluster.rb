@@ -1,7 +1,7 @@
 require 'aws_backend'
 
 class AwsRdsCluster < AwsResourceBase
-  name 'aws_rds_cluster.rb'
+  name 'aws_rds_cluster'
   desc 'Verifies settings for an RDS Cluster'
 
   example "
@@ -25,6 +25,11 @@ class AwsRdsCluster < AwsResourceBase
         @rds_cluster = resp.db_clusters[0].to_h
       rescue Aws::RDS::Errors::DBClusterNotFound
         return
+      end
+      unless @rds_cluster[:db_cluster_members].to_s.empty?
+        cluster_members = @rds_cluster[:db_cluster_members]
+        instances = cluster_members.map {|x| x.values[0]}
+        @rds_cluster[:db_cluster_members] = instances
       end
       create_resource_methods(@rds_cluster)
     end

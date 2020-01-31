@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_rds_cluster.rb'
+require 'aws_rds_cluster'
 require 'aws-sdk-core'
 
 class AwsRdsClusterConstructorTest < Minitest::Test
@@ -37,13 +37,16 @@ class AwsRdsClusterTest < Minitest::Test
     mock_cluster = {}
     mock_cluster[:db_cluster_identifier] = 'cluster-12345678'
     mock_cluster[:allocated_storage] = 100
-    mock_cluster[:availability_zones] = ["us-west-2a", "us-west-2b"]
-    mock_cluster[:multi_az] = 'true'
+    mock_cluster[:availability_zones] = ["us-west-2a", "us-west-2b", "us-west-2c"]
+    mock_cluster[:multi_az] = true
     mock_cluster[:engine] = 'aurora-mysql'
     mock_cluster[:engine_version] = '1.2.3'
     mock_cluster[:master_username] = 'starlord'
     mock_cluster[:database_name] = 'clusterdb'
-    mock_cluster[:cluster_members] = 'cluster-12345678-member-1'
+    mock_cluster[:db_cluster_members] = [{db_instance_identifier: "cluster-12345678-member-1",
+                                          is_cluster_writer: false,
+                                          db_cluster_parameter_group_status: "pending-reboot",
+                                          promotion_tier: 1}]
     mock_cluster[:status] = 'available'
     data[:data] = { :db_clusters => [mock_cluster] }
     data[:client] = Aws::RDS::Client
@@ -63,7 +66,7 @@ class AwsRdsClusterTest < Minitest::Test
   end
 
   def test_cluster_class
-    assert_equal(@cluster.availability_zones, ["us-west-2a", "us-west-2b"])
+    assert_equal(@cluster.availability_zones, ["us-west-2a", "us-west-2b", "us-west-2c"])
   end
 
   def test_cluster_engine
@@ -83,10 +86,10 @@ class AwsRdsClusterTest < Minitest::Test
   end
 
   def test_cluster_members
-    assert_equal(@cluster.cluster_members, 'cluster-12345678-member-1')
+    assert_equal(@cluster.db_cluster_members, ['cluster-12345678-member-1'])
   end
 
   def test_cluster_status
-    assert_equal(@cluster.status, 'availablez')
+    assert_equal(@cluster.status, 'available')
   end
 end

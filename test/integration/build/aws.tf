@@ -1494,11 +1494,10 @@ resource "aws_route53_record" "test_record" {
 # Aurora Cluster
 
 resource "aws_rds_cluster" "rds_cluster" {
-  count                   = 1
+  count                   = var.aws_enable_creation
   cluster_identifier      = var.aws_rds_cluster_identifier
   engine                  = var.aws_rds_cluster_engine
-  # engine_version          = var.aws_rds_cluster_engine_version
-  availability_zones      = ["us-west-2a", "us-west-2b"]
+  availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
   database_name           = var.aws_rds_cluster_database_name
   master_username         = var.aws_rds_cluster_master_user
   master_password         = "testpassword"
@@ -1509,4 +1508,18 @@ resource "aws_rds_cluster" "rds_cluster" {
       Name = var.aws_rds_cluster_database_name
       Environment = "Dev"
     }
+}
+
+resource "aws_rds_cluster_instance" "instance1" {
+  apply_immediately  = true
+  cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
+  identifier         = "instance1"
+  instance_class     = "db.t2.small"
+}
+
+resource "aws_rds_cluster_instance" "instance2" {
+  apply_immediately  = true
+  cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
+  identifier         = "instance2"
+  instance_class     = "db.t2.small"
 }
