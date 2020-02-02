@@ -15,7 +15,7 @@ class AwsEksCluster < AwsResourceBase
   attr_reader :version, :arn, :certificate_authority, :name,
               :status, :endpoint, :subnets_count, :subnet_ids, :security_group_ids,
               :created_at, :role_arn, :vpc_id, :security_groups_count, :creating,
-              :active, :failed, :deleting
+              :active, :failed, :deleting, :tags
 
   def initialize(opts = {})
     opts = { cluster_name: opts } if opts.is_a?(String)
@@ -42,6 +42,7 @@ class AwsEksCluster < AwsResourceBase
       @failed                = resp[:status] == 'FAILED'
       @creating              = resp[:status] == 'CREATING'
       @deleting              = resp[:status] == 'DELETING'
+      @tags                  = resp[:tags]
     end
   end
 

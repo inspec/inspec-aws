@@ -86,4 +86,8 @@ class AwsEksClusterTest < Minitest::Test
   def test_eks_deleting
     assert !@eks.deleting
   end
+
+  def test_eks_tags
+    assert_equal(@eks.tags, @mock_eks[:cluster][:tags])
+  end
 end
