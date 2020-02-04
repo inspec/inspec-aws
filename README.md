@@ -280,17 +280,7 @@ Inspec AWS resources now support setting the Retry Limit and Retry Backoff at co
 
 #### Train and InSpec Dependencies
 
-At the time of writing, this Resource Pack's [Inspec](https://github.com/inspec/inspec) and [Train](https://github.com/inspec/train) dependencies are ahead of the latest releases. This is the case until these dependencies target v3 of the AWS SDK for Ruby.
-
-In order to use the latest SDK the `aws-sdk` version, we pin to a Github Branch on each of these repositories in our Gemfile.
-
-```
-gem 'train', :git => 'https://github.com/inspec/train.git', :branch => 'sp/update-aws-sdk-3'
-gem 'inspec', :git => 'https://github.com/inspec/inspec.git', :branch => 'sp/remove-aws-resources'
-```
-
-The branched InSpec version has all AWS components removed.  
-The branched Train version is upgraded to SDK version 3 to avoid the above conflict.
+InSpec AWS depends on version 3 of the AWS SDK that is provided via [Train AWS](https://github.com/inspec/train-aws).  InSpec depends on Train AWS so this is not explicitly listed in the Gemfile here.
 
 ### Running a Sample Profile Using Docker
 

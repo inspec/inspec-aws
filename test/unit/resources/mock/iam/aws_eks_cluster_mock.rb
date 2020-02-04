@@ -14,6 +14,7 @@ class AwsEksClusterMock < AwsBaseResourceMock
                    certificate_authority: {},
                    name: "mock-cluster",
                    status: 'CREATING',
+                   tags: {},
                    endpoint: @aws.any_string,
                    created_at: @aws.any_date,
                    role_arn: @aws.any_arn,
