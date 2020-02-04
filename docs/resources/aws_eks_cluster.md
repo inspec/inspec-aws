@@ -49,6 +49,7 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
 |active                  | Boolean indicating whether or not the state of the cluster is ACTIVE. |
 |failed                  | Boolean indicating whether or not the state of the cluster is FAILED. |
 |deleting                | Boolean indicating whether or not the state of the cluster is DELETING. |
+|tags                    | Cluster tags |
            
 ## Examples
 

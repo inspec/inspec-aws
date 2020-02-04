@@ -1,9 +1,19 @@
-<!-- latest_release 1.6.1 -->
+<!-- latest_release 1.6.3 -->
+## [v1.6.3](https://github.com/inspec/inspec-aws/tree/v1.6.3) (2020-02-04)
+
+#### Merged Pull Requests
+- Support for tags checks in aws_eks_cluster resource [#177](https://github.com/inspec/inspec-aws/pull/177) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
+<!-- latest_release -->
+
+## [v1.6.2](https://github.com/inspec/inspec-aws/tree/v1.6.2) (2020-01-30)
+
+#### Merged Pull Requests
+- Update README to reflect AWS SDK 3 Train AWS dependency. [#174](https://github.com/inspec/inspec-aws/pull/174) ([skpaterson](https://github.com/skpaterson))
+
 ## [v1.6.1](https://github.com/inspec/inspec-aws/tree/v1.6.1) (2020-01-20)
 
 #### Merged Pull Requests
 - Escape underscores [#171](https://github.com/inspec/inspec-aws/pull/171) ([bobchaos](https://github.com/bobchaos))
-<!-- latest_release -->
 
 ## [v1.6.0](https://github.com/inspec/inspec-aws/tree/v1.6.0) (2020-01-20)
 
