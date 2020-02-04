@@ -34,6 +34,7 @@ task lint: [:rubocop]
 
 # run tests
 #  Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571 - 'test:check'
+desc 'Run robocop linter + unit tests'
 task default: [:lint, :test ]
 
 

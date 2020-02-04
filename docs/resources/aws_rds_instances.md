@@ -23,7 +23,7 @@ RDS instances are compute instances used by the RDS service.
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonRDS.html).
+See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs_gateway).
 
 ## Properties
 
