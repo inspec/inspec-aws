@@ -3,7 +3,6 @@ require 'aws_rds_cluster'
 require 'aws-sdk-core'
 
 class AwsRdsClusterConstructorTest < Minitest::Test
-
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsRdsCluster.new(client_args: { stub_responses: true }) }
   end
@@ -30,14 +29,13 @@ class AwsRdsClusterConstructorTest < Minitest::Test
 end
 
 class AwsRdsClusterTest < Minitest::Test
-
   def setup
     data = {}
     data[:method] = :describe_db_clusters
     mock_cluster = {}
     mock_cluster[:db_cluster_identifier] = 'cluster-12345678'
     mock_cluster[:allocated_storage] = 100
-    mock_cluster[:availability_zones] = ["us-west-2a", "us-west-2b", "us-west-2c"]
+    mock_cluster[:availability_zones] = ['us-west-2a', 'us-west-2b', 'us-west-2c']
     mock_cluster[:multi_az] = true
     mock_cluster[:engine] = 'aurora-mysql'
     mock_cluster[:engine_version] = '1.2.3'
@@ -48,7 +46,7 @@ class AwsRdsClusterTest < Minitest::Test
                                           db_cluster_parameter_group_status: "pending-reboot",
                                           promotion_tier: 1}]
     mock_cluster[:status] = 'available'
-    data[:data] = { :db_clusters => [mock_cluster] }
+    data[:data] = { db_clusters: [mock_cluster] }
     data[:client] = Aws::RDS::Client
     @cluster = AwsRdsCluster.new(db_cluster_identifier: 'cluster-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -58,38 +56,38 @@ class AwsRdsClusterTest < Minitest::Test
   end
 
   def test_cluster_identifier
-    assert_equal(@cluster.db_cluster_identifier,  'cluster-12345678')
+    assert_equal(@cluster.db_cluster_identifier,'cluster-12345678')
   end
 
   def test_cluster_storage
-    assert_equal(@cluster.allocated_storage, 100)
+    assert_equal(@cluster.allocated_storage,100)
   end
 
   def test_cluster_class
-    assert_equal(@cluster.availability_zones, ["us-west-2a", "us-west-2b", "us-west-2c"])
+    assert_equal(@cluster.availability_zones,['us-west-2a', 'us-west-2b', 'us-west-2c'])
   end
 
   def test_cluster_engine
-    assert_equal(@cluster.engine, 'aurora-mysql')
+    assert_equal(@cluster.engine,'aurora-mysql')
   end
 
   def test_cluster_engine_version
-    assert_equal(@cluster.engine_version, '1.2.3')
+    assert_equal(@cluster.engine_version,'1.2.3')
   end
 
   def test_cluster_master_username
-    assert_equal(@cluster.master_username, 'starlord')
+    assert_equal(@cluster.master_username,'starlord')
   end
 
   def test_cluster_database_name
-    assert_equal(@cluster.database_name, 'clusterdb')
+    assert_equal(@cluster.database_name,'clusterdb')
   end
 
   def test_cluster_members
-    assert_equal(@cluster.db_cluster_members, ['cluster-12345678-member-1'])
+    assert_equal(@cluster.db_cluster_members,['cluster-12345678-member-1'])
   end
 
   def test_cluster_status
-    assert_equal(@cluster.status, 'available')
+    assert_equal(@cluster.status,'available')
   end
 end

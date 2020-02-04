@@ -28,7 +28,7 @@ class AwsRdsCluster < AwsResourceBase
       end
       unless @rds_cluster[:db_cluster_members].to_s.empty?
         cluster_members = @rds_cluster[:db_cluster_members]
-        instances = cluster_members.map {|x| x.values[0]}
+        instances = cluster_members.map { |x| x.values[0] }
         @rds_cluster[:db_cluster_members] = instances
       end
       create_resource_methods(@rds_cluster)
