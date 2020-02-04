@@ -31,12 +31,12 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
   
 ## Examples
 
-#####Ensure a specific instance exists
+#####Ensure a specific cluster exists
     describe aws_rds_clusters do
       its('db_cluster_identifier') { should include 'cluster-12345678' }
     end
 
-##### Use the InSpec resource to request the IDs of all RDS clusters, then test in-depth using `aws_rds_instance` to ensure all clusters are encrypted and have a sensible size.
+##### Use the InSpec resource to request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size.
     aws_rds_clusters.cluster_identifier.each do |cluster_identifier|
         describe aws_rds_cluster(cluster_identifier) do
           it { should have_encrypted_storage }
