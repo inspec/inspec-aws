@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.3 -->
+<!-- latest_release 1.6.4 -->
+## [v1.6.4](https://github.com/inspec/inspec-aws/tree/v1.6.4) (2020-02-04)
+
+#### Merged Pull Requests
+- Adds Aurora Cluster(s) Resources [#179](https://github.com/inspec/inspec-aws/pull/179) ([dyleroo](https://github.com/dyleroo))
+<!-- latest_release -->
+
 ## [v1.6.3](https://github.com/inspec/inspec-aws/tree/v1.6.3) (2020-02-04)
 
 #### Merged Pull Requests
 - Support for tags checks in aws_eks_cluster resource [#177](https://github.com/inspec/inspec-aws/pull/177) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.6.2](https://github.com/inspec/inspec-aws/tree/v1.6.2) (2020-01-30)
 
