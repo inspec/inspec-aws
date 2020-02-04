@@ -28,7 +28,16 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 |Property                     | Description|
 | ---                         | --- |
 |cluster\_identifier    | The unique IDs of the RDS clusters returned. |
-  
+|database\_name    | The name of the database associated with each RDS cluster. | 
+|cluster_\members    | The RDS instances attached to each RDS cluster. |
+|engine    | The name of the database engine used by each cluster. | 
+|engine\_version    | The version of the database engine used by each cluster. |
+|status   | The current status of each cluster. | 
+|allocated\_storage    | The storage allocated to each cluster. |
+|storage\_encrypted    | Returns T/F whether the cluster is encrypted or not. | 
+|availability\_zones    | A list of availability zones of the RDS clusters returned.  |
+|multi\_az   | Returns T/F depending on whether multiple availability zones are used in the cluster. | 
+|arn   | The unique Amazon resource name of the RDS clusters. |     
 ## Examples
 
 #####Ensure a specific cluster exists

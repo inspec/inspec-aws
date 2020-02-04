@@ -53,7 +53,7 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 ##### Test the cluster status and master username
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its ('master_username')   { should eq 'db-maintain' }
-      its ('status') {should eq 'available'}
+      its ('status') { should eq 'available' }
     end
 
 ## Matchers

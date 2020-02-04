@@ -5,7 +5,7 @@ class AwsRdsCluster < AwsResourceBase
   desc 'Verifies settings for an RDS Cluster'
 
   example "
-    describe aws_rds_cluster.rb(db_cluster_identifier: 'test-cluster-id') do
+    describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do
       it { should exist }
     end
   "
@@ -28,8 +28,7 @@ class AwsRdsCluster < AwsResourceBase
       end
       unless @rds_cluster[:db_cluster_members].to_s.empty?
         cluster_members = @rds_cluster[:db_cluster_members]
-        instances = cluster_members.map { |x| x.values[0] }
-        @rds_cluster[:db_cluster_members] = instances
+        @rds_cluster[:db_cluster_members] = cluster_members.map { |x| x.values[0] }
       end
       create_resource_methods(@rds_cluster)
     end
@@ -51,7 +50,7 @@ class AwsRdsCluster < AwsResourceBase
   end
 
   def exists?
-    !@rds_cluster.nil? && !@rds_cluster.empty?
+    !@rds_cluster.to_s.empty?
   end
 
   def to_s

@@ -15,17 +15,17 @@ control 'aws-rds-cluster-1.0' do
   describe aws_rds_cluster(db_cluster_identifier: aws_rds_cluster_identifier) do
     it { should exist }
     it { should have_encrypted_storage }
-    its ('storage_encrypted') { should eq true }
-    its ('database_name') { should eq aws_rds_cluster_database_name }
-    its ('engine') { should eq aws_rds_cluster_engine }
-    its ('engine_version') { should eq aws_rds_cluster_engine_version }
-    its ('master_username') { should eq aws_rds_cluster_master_user }
-    its ('allocated_storage') { should eq 1 }
-    its ('tags') { should include('Name' => aws_rds_cluster_database_name)}
-    its ('db_cluster_members') {should include 'instance1'}
-    its ('db_cluster_members') {should include 'instance2' }
-    its ('status') {should eq 'available'}
-    its ('multi_az') {should eq true}
+    its('storage_encrypted') { should eq true }
+    its('database_name') { should eq aws_rds_cluster_database_name }
+    its('engine') { should eq aws_rds_cluster_engine }
+    its('engine_version') { should eq aws_rds_cluster_engine_version }
+    its('master_username') { should eq aws_rds_cluster_master_user }
+    its('allocated_storage') { should eq 1 }
+    its('tags') { should include('Name' => aws_rds_cluster_database_name) }
+    its('db_cluster_members') { should include 'instance1' }
+    its('db_cluster_members') { should include 'instance2' }
+    its('status') { should eq 'available' }
+    its('multi_az') { should eq true }
   end
 
   describe aws_rds_cluster(aws_rds_cluster_identifier) do

@@ -33,7 +33,7 @@ class AwsRdsClustersHappyPathTest < Minitest::Test
     another_rds[:allocated_storage] = 100
     another_rds[:database_name] = 'clusterdb2'
     another_rds[:db_cluster_members] = [{db_instance_identifier: "cluster-12345678-member-2"}]
-    data[:data] = { :db_clusters => [mock_rds, another_rds] }
+    data[:data] = { db_clusters: [mock_rds, another_rds] }
     data[:client] = Aws::RDS::Client
     @rds_clusters = AwsRdsClusters.new(client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -47,11 +47,11 @@ class AwsRdsClustersHappyPathTest < Minitest::Test
   end
 
   def test_clusters_filtering_not_there
-    refute @rds_clusters.where(:cluster_identifier => 'bad').exist?
+    refute @rds_clusters.where(cluster_identifier: 'bad').exist?
   end
 
   def test_clusters_filtering_there
-    assert @rds_clusters.where(:cluster_identifier => 'cluster-12345678').exist?
+    assert @rds_clusters.where(cluster_identifier: 'cluster-12345678').exist?
   end
 end
 

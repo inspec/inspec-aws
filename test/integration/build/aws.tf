@@ -87,13 +87,10 @@ variable "aws_rds_db_identifier" {}
 variable "aws_rds_db_master_user" {}
 variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
-
-# Aurora - REMOVE THIS
 variable "aws_rds_cluster_identifier" {}
 variable "aws_rds_cluster_database_name" {}
 variable "aws_rds_cluster_engine" {}
 variable "aws_rds_cluster_master_user" {}
-
 variable "aws_security_group_alpha" {}
 variable "aws_security_group_beta" {}
 variable "aws_security_group_gamma" {}
@@ -665,7 +662,7 @@ resource "aws_db_instance" "db_rds" {
   password = "testpassword"
   parameter_group_name = "default.mysql5.6"
   skip_final_snapshot = true
-  storage_encrypted    = true
+  storage_encrypted = true
 
   tags = {
     Name = var.aws_rds_db_name
@@ -1157,9 +1154,9 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count       = var.aws_enable_creation
-  name        = var.aws_iam_attached_policy_name
-  path        = "/"
+  count = var.aws_enable_creation
+  name = var.aws_iam_attached_policy_name
+  path = "/"
   description = "Test policy"
 
   policy = <<EOF
@@ -1196,17 +1193,17 @@ resource "aws_iam_user_policy_attachment" "attach_generic_policy_to_user_1" {
 }
 
 resource "aws_sqs_queue" "aws_sqs_queue_1" {
-  count = var.aws_enable_creation
-  name = var.aws_sqs_queue_name
-  delay_seconds = 90
-  max_message_size = 2048
+  count                     = var.aws_enable_creation
+  name                      = var.aws_sqs_queue_name
+  delay_seconds             = 90
+  max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
 }
 
 resource "aws_vpc" "eks_vpc" {
-  count = var.aws_enable_creation
-  cidr_block = "10.0.0.0/16"
+  count            = var.aws_enable_creation
+  cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -1216,7 +1213,7 @@ resource "aws_vpc" "eks_vpc" {
 
 resource "aws_iam_role" "aws_eks_role" {
   count = var.aws_enable_creation
-  name = var.aws_eks_role_name
+  name  = var.aws_eks_role_name
 
   assume_role_policy = <<POLICY
 {
@@ -1236,19 +1233,19 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
-  count      = var.aws_enable_creation
+  count = var.aws_enable_creation
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.aws_eks_role[0].name
+  role = aws_iam_role.aws_eks_role[0].name
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
-  count      = var.aws_enable_creation
+  count = var.aws_enable_creation
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = aws_iam_role.aws_eks_role[0].name
+  role = aws_iam_role.aws_eks_role[0].name
 }
 
 resource "aws_internet_gateway" "igw" {
-  count  = var.aws_enable_creation
+  count = var.aws_enable_creation
   vpc_id = aws_vpc.eks_vpc[0].id
   tags = {
     Name = "igw"
@@ -1256,10 +1253,10 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "eks_subnet" {
-  count             = var.aws_enable_creation
-  vpc_id            = aws_vpc.eks_vpc[0].id
+  count = var.aws_enable_creation
+  vpc_id = aws_vpc.eks_vpc[0].id
   availability_zone = var.aws_availability_zone
-  cidr_block        = "10.0.16.0/20"
+  cidr_block = "10.0.16.0/20"
 
   depends_on = [aws_internet_gateway.igw]
 
@@ -1269,10 +1266,10 @@ resource "aws_subnet" "eks_subnet" {
 }
 
 resource "aws_subnet" "eks_subnet-2" {
-  count             = var.aws_enable_creation
-  vpc_id            = aws_vpc.eks_vpc[0].id
+  count = var.aws_enable_creation
+  vpc_id = aws_vpc.eks_vpc[0].id
   availability_zone = "${var.aws_region}b"
-  cidr_block        = "10.0.32.0/20"
+  cidr_block = "10.0.32.0/20"
 
   depends_on = [aws_internet_gateway.igw]
 
@@ -1282,8 +1279,8 @@ resource "aws_subnet" "eks_subnet-2" {
 }
 
 resource "aws_eks_cluster" "aws_eks_cluster" {
-  count    = var.aws_enable_creation
-  name     = var.aws_eks_cluster_name
+  count = var.aws_enable_creation
+  name = var.aws_eks_cluster_name
   role_arn = aws_iam_role.aws_eks_role[0].arn
 
   vpc_config {
@@ -1293,7 +1290,7 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
 
 resource "aws_iam_role" "aws_role_generic" {
   count = var.aws_enable_creation
-  name  = var.aws_iam_role_generic_name
+  name = var.aws_iam_role_generic_name
 
   assume_role_policy = <<EOF
 {
@@ -1315,8 +1312,8 @@ EOF
 
 resource "aws_iam_role_policy" "generic_policy" {
   count = var.aws_enable_creation
-  name = var.aws_iam_role_generic_policy_name
-  role = aws_iam_role.aws_role_generic[0].id
+  name  = var.aws_iam_role_generic_policy_name
+  role  = aws_iam_role.aws_role_generic[0].id
 
   policy = <<EOF
 {
@@ -1473,8 +1470,8 @@ STACK
 
 
 resource "aws_route53_zone" "test_zone" {
-  count   = var.aws_enable_creation
-  name    = var.aws_route_53_zone
+  count = var.aws_enable_creation
+  name  = var.aws_route_53_zone
 
   vpc {
     vpc_id = aws_vpc.inspec_vpc.0.id
@@ -1488,26 +1485,24 @@ resource "aws_route53_record" "test_record" {
   name    = "www.carry-on-films.com"
   type    = "A"
   ttl     = "300"
-  records = [ "127.0.0.1"]
+  records = ["127.0.0.1"]
 }
 
-# Aurora Cluster
-
 resource "aws_rds_cluster" "rds_cluster" {
-  count                   = var.aws_enable_creation
-  cluster_identifier      = var.aws_rds_cluster_identifier
-  engine                  = var.aws_rds_cluster_engine
-  availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
-  database_name           = var.aws_rds_cluster_database_name
-  master_username         = var.aws_rds_cluster_master_user
-  master_password         = "testpassword"
-  storage_encrypted       = true
-  skip_final_snapshot     = true
+  count               = 1
+  cluster_identifier  = var.aws_rds_cluster_identifier
+  engine              = var.aws_rds_cluster_engine
+  availability_zones  = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  database_name       = var.aws_rds_cluster_database_name
+  master_username     = var.aws_rds_cluster_master_user
+  master_password     = "testpassword"
+  storage_encrypted   = true
+  skip_final_snapshot = true
 
   tags = {
-      Name = var.aws_rds_cluster_database_name
-      Environment = "Dev"
-    }
+    Name        = var.aws_rds_cluster_database_name
+    Environment = "Dev"
+  }
 }
 
 resource "aws_rds_cluster_instance" "instance1" {
