@@ -1489,7 +1489,7 @@ resource "aws_route53_record" "test_record" {
 }
 
 resource "aws_rds_cluster" "rds_cluster" {
-  count               = 1
+  count               = var.aws_enable_creation
   cluster_identifier  = var.aws_rds_cluster_identifier
   engine              = var.aws_rds_cluster_engine
   availability_zones  = ["us-west-2a", "us-west-2b", "us-west-2c"]

@@ -39,21 +39,21 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 ##### Test the engine used with an RDS cluster
 
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
-      its ('engine')         { should eq 'mysql' }
-      its ('engine_version') { should eq '5.6.37' }
+      its('engine')         { should eq 'mysql' }
+      its('engine_version') { should eq '5.6.37' }
     end
     
 ##### Test the storage allocated to an RDS cluster
     
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
-      its ('storage_encrypted') { should eq true }
-      its ('allocated_storage') { should eq 10 }
+      its('storage_encrypted') { should eq true }
+      its('allocated_storage') { should eq 10 }
     end
 
 ##### Test the cluster status and master username
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
-      its ('master_username')   { should eq 'db-maintain' }
-      its ('status') { should eq 'available' }
+      its('master_username') { should eq 'db-maintain' }
+      its('status') { should eq 'available' }
     end
 
 ## Matchers
