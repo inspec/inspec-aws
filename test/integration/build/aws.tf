@@ -5,7 +5,6 @@ terraform {
 }
 
 # Configure variables
-
 variable "aws_region" {}
 variable "aws_availability_zone" {}
 
@@ -671,7 +670,6 @@ resource "aws_db_instance" "db_rds" {
 }
 
 # Cloudtrail
-
 resource "aws_s3_bucket" "trail_1_bucket" {
   count         = var.aws_enable_creation
   bucket        = var.aws_cloud_trail_bucket_name
@@ -882,7 +880,6 @@ resource "aws_cloudtrail" "trail_2" {
 }
 
 # Cloudwatch
-
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
   count          = var.aws_enable_creation
   name           = var.aws_cloud_watch_log_metric_filter_name
@@ -952,7 +949,6 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm_with_dimensions" {
 }
 
 # AWS Config - note can only have one config recorder per region
-
 resource "aws_config_configuration_recorder" "config_recorder" {
   count    = var.aws_create_configuration_recorder
   name     = var.aws_configuration_recorder_name
@@ -1033,7 +1029,6 @@ resource "aws_config_delivery_channel" "delivery_channel" {
 }
 
 # AWS Flow Log
-
 resource "aws_vpc" "inspec_vpc_flow_log" {
   count            = var.aws_enable_creation
   cidr_block       = var.aws_vpc_cidr_block
@@ -1059,7 +1054,6 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   name  = var.aws_ecs_cluster_name
 }
 
-# Create a new load balancer
 resource "aws_elb" "aws_elb_1" {
   count              = var.aws_enable_creation
   name               = var.aws_elb_name
@@ -1329,6 +1323,7 @@ resource "aws_iam_role_policy" "generic_policy" {
   ]
 }
 EOF
+
 }
 
 data "aws_ami" "aws_vm_config" {
@@ -1430,6 +1425,7 @@ resource "aws_lb" "aws-alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb_sg[0].id]
   subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
+
   tags = {
     Environment = "inspec-aws"
   }
@@ -1479,7 +1475,6 @@ resource "aws_route53_zone" "test_zone" {
 }
 
 resource "aws_route53_record" "test_record" {
-
   count   = var.aws_enable_creation
   zone_id = aws_route53_zone.test_zone.0.id
   name    = "www.carry-on-films.com"
