@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsFlowLog < AwsResourceBase
   name 'aws_flow_log'
-  desc 'Verifies settings for an AWS VPC'
+  desc 'Verifies settings for an AWS VPC flow logs'
 
   example "
     describe aws_flow_log('fl-9c718cf5') do
