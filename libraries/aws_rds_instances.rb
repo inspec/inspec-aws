@@ -4,14 +4,12 @@ require 'aws_backend'
 
 class AwsRdsInstances < AwsResourceBase
   name 'aws_rds_instances'
-  desc 'Verifies settings for AWS Security Groups in bulk'
+  desc 'Verifies settings for AWS RDS instances in bulk'
   example "
-    # Verify that you have security groups defined
     describe aws_rds_instances do
       it { should exist }
     end
 
-    # Verify you have more than the default security group
     describe aws_rds_instances do
       its('entries.count') { should be > 1 }
     end
@@ -27,7 +25,6 @@ class AwsRdsInstances < AwsResourceBase
 
   attr_reader :table
 
-  # FilterTable setup
   FilterTable.create
              .register_column(:tags, field: :tags)
              .register_column(:db_instance_identifiers, field: :db_instance_identifier)
@@ -35,7 +32,6 @@ class AwsRdsInstances < AwsResourceBase
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters
     @table = fetch_data
