@@ -5,7 +5,6 @@ terraform {
 }
 
 # Configure variables
-
 variable "aws_region" {}
 variable "aws_availability_zone" {}
 
@@ -376,7 +375,7 @@ POLICY
 }
 
 resource "aws_s3_bucket_policy" "deny_private" {
-  count = var.aws_enable_creation
+  count  = var.aws_enable_creation
   bucket = aws_s3_bucket.bucket_private[0].id
 
   policy = <<POLICY
@@ -418,97 +417,97 @@ POLICY
 }
 
 resource "aws_s3_bucket_object" "inspec_logo_public" {
-  count = var.aws_enable_creation
+  count  = var.aws_enable_creation
   bucket = aws_s3_bucket.bucket_public_for_objects[0].id
-  key = "inspec-logo-public"
+  key    = "inspec-logo-public"
   source = "inspec-logo.png"
-  acl = "public-read"
+  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_object" "inspec_logo_private" {
-  count = var.aws_enable_creation
+  count  = var.aws_enable_creation
   bucket = aws_s3_bucket.bucket_public_for_objects[0].id
-  key = "inspec-logo-private"
+  key    = "inspec-logo-private"
   source = "inspec-logo.png"
-  acl = "private"
+  acl    = "private"
 }
 
 # SNS resources
 resource "aws_sns_topic" "sns_topic_subscription" {
   count = var.aws_enable_creation
-  name = var.aws_sns_topic_with_subscription
+  name  = var.aws_sns_topic_with_subscription
 }
 
 resource "aws_sqs_queue" "sns_sqs_queue" {
   count = var.aws_enable_creation
-  name = var.aws_sns_topic_subscription_sqs
+  name  = var.aws_sns_topic_subscription_sqs
 }
 
 resource "aws_sns_topic_subscription" "sqs_test_queue_subscription" {
-  count = var.aws_enable_creation
+  count     = var.aws_enable_creation
   topic_arn = aws_sns_topic.sns_topic_subscription[0].arn
-  protocol = "sqs"
-  endpoint = aws_sqs_queue.sns_sqs_queue[0].arn
+  protocol  = "sqs"
+  endpoint  = aws_sqs_queue.sns_sqs_queue[0].arn
 }
 
 resource "aws_sns_topic" "sns_topic_no_subscription" {
   count = var.aws_enable_creation
-  name = var.aws_sns_topic_no_subscription
+  name  = var.aws_sns_topic_no_subscription
 }
 
 # Security Groups and Rules
 data "aws_security_group" "default" {
   vpc_id = data.aws_vpc.default.id
-  name = "default"
+  name   = "default"
 }
 
 resource "aws_security_group" "alpha" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_alpha
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_alpha
   description = "SG alpha"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id      = data.aws_vpc.default.id
 
   tags = {
-    Name = var.aws_security_group_alpha
+    Name        = var.aws_security_group_alpha
     Environment = "Dev"
   }
 }
 
 resource "aws_security_group" "beta" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_beta
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_beta
   description = "SG beta"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id      = data.aws_vpc.default.id
 }
 
 resource "aws_security_group" "gamma" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_gamma
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_gamma
   description = "SG gamma"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id      = data.aws_vpc.default.id
 }
 
 resource "aws_security_group" "zeta" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_zeta
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_zeta
   description = "SG zeta"
-  vpc_id = data.aws_vpc.default.id
+  vpc_id      = data.aws_vpc.default.id
 }
 
 // Note this gets created in a new VPC and with no rules defined
 resource "aws_security_group" "omega" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_omega
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_omega
   description = "SG omega"
-  vpc_id = aws_vpc.inspec_vpc[0].id
+  vpc_id      = aws_vpc.inspec_vpc[0].id
 }
 
 resource "aws_security_group_rule" "alpha_http_world" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "80"
-  to_port = "80"
-  protocol = "tcp"
+  to_port   = "80"
+  protocol  = "tcp"
 
   cidr_blocks = [
     "0.0.0.0/0",
@@ -518,11 +517,11 @@ resource "aws_security_group_rule" "alpha_http_world" {
 }
 
 resource "aws_security_group_rule" "alpha_ssh_in" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "22"
-  to_port = "22"
-  protocol = "tcp"
+  to_port   = "22"
+  protocol  = "tcp"
 
   cidr_blocks = [
     "10.1.2.0/24",
@@ -532,12 +531,12 @@ resource "aws_security_group_rule" "alpha_ssh_in" {
 }
 
 resource "aws_security_group_rule" "alpha_x11" {
-  count = var.aws_enable_creation
+  count       = var.aws_enable_creation
   description = "Only allow X11 out for some reason"
-  type = "egress"
-  from_port = "6000"
-  to_port = "6007"
-  protocol = "tcp"
+  type        = "egress"
+  from_port   = "6000"
+  to_port     = "6007"
+  protocol    = "tcp"
 
   cidr_blocks = [
     "10.1.2.0/24",
@@ -552,11 +551,11 @@ resource "aws_security_group_rule" "alpha_x11" {
 }
 
 resource "aws_security_group_rule" "alpha_all_ports" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "0"
-  to_port = "65535"
-  protocol = "tcp"
+  to_port   = "65535"
+  protocol  = "tcp"
 
   cidr_blocks = [
     "10.1.2.0/24",
@@ -566,11 +565,11 @@ resource "aws_security_group_rule" "alpha_all_ports" {
 }
 
 resource "aws_security_group_rule" "alpha_piv6_all_ports" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "0"
-  to_port = "65535"
-  protocol = "tcp"
+  to_port   = "65535"
+  protocol  = "tcp"
 
   ipv6_cidr_blocks = [
     "2001:db8::/122",
@@ -580,11 +579,11 @@ resource "aws_security_group_rule" "alpha_piv6_all_ports" {
 }
 
 resource "aws_security_group_rule" "beta_http_world" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "80"
-  to_port = "80"
-  protocol = "tcp"
+  to_port   = "80"
+  protocol  = "tcp"
 
   cidr_blocks = [
     "0.0.0.0/0",
@@ -594,41 +593,41 @@ resource "aws_security_group_rule" "beta_http_world" {
 }
 
 resource "aws_security_group_rule" "beta_ssh_in_alfa" {
-  count = var.aws_enable_creation
-  type = "ingress"
-  from_port = "22"
-  to_port = "22"
-  protocol = "tcp"
+  count                    = var.aws_enable_creation
+  type                     = "ingress"
+  from_port                = "22"
+  to_port                  = "22"
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.alpha[0].id
-  security_group_id = aws_security_group.beta[0].id
+  security_group_id        = aws_security_group.beta[0].id
 }
 
 resource "aws_security_group_rule" "beta_all_ports_in_gamma" {
-  count = var.aws_enable_creation
-  type = "ingress"
-  from_port = "0"
-  to_port = "65535"
-  protocol = "tcp"
+  count                    = var.aws_enable_creation
+  type                     = "ingress"
+  from_port                = "0"
+  to_port                  = "65535"
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.gamma[0].id
-  security_group_id = aws_security_group.beta[0].id
+  security_group_id        = aws_security_group.beta[0].id
 }
 
 resource "aws_security_group_rule" "gamma_ssh_in_alfa" {
-  count = var.aws_enable_creation
-  type = "ingress"
-  from_port = "22"
-  to_port = "22"
-  protocol = "tcp"
+  count                    = var.aws_enable_creation
+  type                     = "ingress"
+  from_port                = "22"
+  to_port                  = "22"
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.alpha[0].id
-  security_group_id = aws_security_group.gamma[0].id
+  security_group_id        = aws_security_group.gamma[0].id
 }
 
 resource "aws_security_group_rule" "zeta_all_ports_in" {
-  count = var.aws_enable_creation
-  type = "ingress"
+  count     = var.aws_enable_creation
+  type      = "ingress"
   from_port = "0"
-  to_port = "65535"
-  protocol = "all"
+  to_port   = "65535"
+  protocol  = "all"
   cidr_blocks = [
     "0.0.0.0/0",
   ]
@@ -637,11 +636,11 @@ resource "aws_security_group_rule" "zeta_all_ports_in" {
 }
 
 resource "aws_security_group_rule" "zeta_all_ports_out" {
-  count = var.aws_enable_creation
-  type = "egress"
+  count     = var.aws_enable_creation
+  type      = "egress"
   from_port = "0"
-  to_port = "65535"
-  protocol = "all"
+  to_port   = "65535"
+  protocol  = "all"
   cidr_blocks = [
     "0.0.0.0/0",
   ]
@@ -650,31 +649,30 @@ resource "aws_security_group_rule" "zeta_all_ports_out" {
 }
 
 resource "aws_db_instance" "db_rds" {
-  count = var.aws_enable_creation
-  allocated_storage = 10
-  storage_type = var.aws_rds_db_storage_type
-  engine = var.aws_rds_db_engine
-  engine_version = var.aws_rds_db_engine_version
-  instance_class = "db.t2.small"
-  identifier = var.aws_rds_db_identifier
-  name = var.aws_rds_db_name
-  username = var.aws_rds_db_master_user
-  password = "testpassword"
+  count                = var.aws_enable_creation
+  allocated_storage    = 10
+  storage_type         = var.aws_rds_db_storage_type
+  engine               = var.aws_rds_db_engine
+  engine_version       = var.aws_rds_db_engine_version
+  instance_class       = "db.t2.small"
+  identifier           = var.aws_rds_db_identifier
+  name                 = var.aws_rds_db_name
+  username             = var.aws_rds_db_master_user
+  password             = "testpassword"
   parameter_group_name = "default.mysql5.6"
-  skip_final_snapshot = true
-  storage_encrypted = true
+  skip_final_snapshot  = true
+  storage_encrypted    = true
 
   tags = {
-    Name = var.aws_rds_db_name
+    Name        = var.aws_rds_db_name
     Environment = "Dev"
   }
 }
 
 # Cloudtrail
-
 resource "aws_s3_bucket" "trail_1_bucket" {
-  count = var.aws_enable_creation
-  bucket = var.aws_cloud_trail_bucket_name
+  count         = var.aws_enable_creation
+  bucket        = var.aws_cloud_trail_bucket_name
   force_destroy = true
 
   policy = <<POLICY
@@ -863,105 +861,103 @@ resource "aws_cloudtrail" "trail_1" {
 
   depends_on = [aws_iam_role_policy.cloud_watch_logs_role_policy]
 
-  name = var.aws_cloud_trail_name
-  s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
+  name                          = var.aws_cloud_trail_name
+  s3_bucket_name                = aws_s3_bucket.trail_1_bucket[0].id
   include_global_service_events = true
-  enable_logging = true
-  is_multi_region_trail = true
-  enable_log_file_validation = true
+  enable_logging                = true
+  is_multi_region_trail         = true
+  enable_log_file_validation    = true
 
   cloud_watch_logs_group_arn = aws_cloudwatch_log_group.trail_1_log_group[0].arn
-  cloud_watch_logs_role_arn = aws_iam_role.cloud_watch_logs_role[0].arn
-  kms_key_id = aws_kms_key.trail_1_key[0].arn
+  cloud_watch_logs_role_arn  = aws_iam_role.cloud_watch_logs_role[0].arn
+  kms_key_id                 = aws_kms_key.trail_1_key[0].arn
 }
 
 resource "aws_cloudtrail" "trail_2" {
-  count = var.aws_enable_creation
-  name = var.aws_cloud_trail_open_name
+  count          = var.aws_enable_creation
+  name           = var.aws_cloud_trail_open_name
   s3_bucket_name = aws_s3_bucket.trail_1_bucket[0].id
 }
 
 # Cloudwatch
-
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
-  count = var.aws_enable_creation
-  name = var.aws_cloud_watch_log_metric_filter_name
-  pattern = var.aws_cloud_watch_log_metric_filter_pattern
+  count          = var.aws_enable_creation
+  name           = var.aws_cloud_watch_log_metric_filter_name
+  pattern        = var.aws_cloud_watch_log_metric_filter_pattern
   log_group_name = aws_cloudwatch_log_group.log_metric_filter_log_group[0].name
 
   metric_transformation {
-    name = var.aws_cloud_watch_log_metric_filter_metric_name
+    name      = var.aws_cloud_watch_log_metric_filter_metric_name
     namespace = var.aws_cloud_watch_log_metric_filter_namespace
-    value = "1"
+    value     = "1"
   }
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_log_group" {
   count = var.aws_enable_creation
-  name = var.aws_cloud_watch_log_metric_filter_log_group_name
+  name  = var.aws_cloud_watch_log_metric_filter_log_group_name
 }
 
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter_pattern" {
-  count = var.aws_enable_creation
-  name = var.aws_cloud_watch_log_metric_filter_two_name
-  pattern = var.aws_cloud_watch_log_metric_filter_two_pattern
+  count          = var.aws_enable_creation
+  name           = var.aws_cloud_watch_log_metric_filter_two_name
+  pattern        = var.aws_cloud_watch_log_metric_filter_two_pattern
   log_group_name = aws_cloudwatch_log_group.log_metric_filter_pattern_log_group[0].name
 
   metric_transformation {
-    name = var.aws_cloud_watch_log_metric_filter_two_metric_name
+    name      = var.aws_cloud_watch_log_metric_filter_two_metric_name
     namespace = var.aws_cloud_watch_log_metric_filter_two_namespace
-    value = "1"
+    value     = "1"
   }
 }
 
 resource "aws_cloudwatch_log_group" "log_metric_filter_pattern_log_group" {
   count = var.aws_enable_creation
-  name = var.aws_cloud_watch_log_metric_filter_two_log_group_name
+  name  = var.aws_cloud_watch_log_metric_filter_two_log_group_name
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
-  count = var.aws_enable_creation
-  alarm_name = var.aws_cloud_watch_alarm_name
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods = "2"
-  metric_name = var.aws_cloud_watch_alarm_metric_name
-  namespace = var.aws_cloud_watch_log_metric_filter_namespace
-  period = "120"
-  statistic = "Average"
-  threshold = "80"
-  alarm_description = "This metric is a test metric"
+  count                     = var.aws_enable_creation
+  alarm_name                = var.aws_cloud_watch_alarm_name
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = var.aws_cloud_watch_alarm_metric_name
+  namespace                 = var.aws_cloud_watch_log_metric_filter_namespace
+  period                    = "120"
+  statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric is a test metric"
   insufficient_data_actions = []
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm_with_dimensions" {
-  count = var.aws_enable_creation
-  alarm_name = var.aws_cloud_watch_alarm_name_with_dimensions
+  count               = var.aws_enable_creation
+  alarm_name          = var.aws_cloud_watch_alarm_name_with_dimensions
   comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods = "2"
-  metric_name = var.aws_cloud_watch_alarm_metric_name_with_dimensions
-  namespace = var.aws_cloud_watch_log_metric_filter_namespace_with_dimensions
-  period = "120"
-  statistic = "Average"
+  evaluation_periods  = "2"
+  metric_name         = var.aws_cloud_watch_alarm_metric_name_with_dimensions
+  namespace           = var.aws_cloud_watch_log_metric_filter_namespace_with_dimensions
+  period              = "120"
+  statistic           = "Average"
   dimensions = {
     aws_dimension_name1 = "aws_dimension_value1"
     aws_dimension_name2 = "aws_dimension_value2"
   }
-  threshold = "80"
-  alarm_description = "This metric is a test metric"
+  threshold                 = "80"
+  alarm_description         = "This metric is a test metric"
   insufficient_data_actions = []
 }
 
 # AWS Config - note can only have one config recorder per region
-
 resource "aws_config_configuration_recorder" "config_recorder" {
-  count = var.aws_create_configuration_recorder
-  name = var.aws_configuration_recorder_name
+  count    = var.aws_create_configuration_recorder
+  name     = var.aws_configuration_recorder_name
   role_arn = aws_iam_role.role_for_config_recorder[0].arn
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {
   count = var.aws_create_configuration_recorder
-  name = var.aws_configuration_recorder_role
+  name  = var.aws_configuration_recorder_role
 
   assume_role_policy = <<POLICY
 {
@@ -1015,12 +1011,12 @@ POLICY
 
 resource "aws_sns_topic" "sns_topic_for_delivery_channel" {
   count = var.aws_create_configuration_recorder
-  name = var.aws_delivery_channel_sns_topic_name
+  name  = var.aws_delivery_channel_sns_topic_name
 }
 
 resource "aws_config_delivery_channel" "delivery_channel" {
-  count = var.aws_create_configuration_recorder
-  name = var.aws_delivery_channel_name
+  count          = var.aws_create_configuration_recorder
+  name           = var.aws_delivery_channel_name
   s3_bucket_name = aws_s3_bucket.bucket_for_delivery_channel[0].bucket
 
   depends_on = [aws_config_configuration_recorder.config_recorder]
@@ -1033,66 +1029,64 @@ resource "aws_config_delivery_channel" "delivery_channel" {
 }
 
 # AWS Flow Log
-
 resource "aws_vpc" "inspec_vpc_flow_log" {
-  count = var.aws_enable_creation
-  cidr_block = var.aws_vpc_cidr_block
+  count            = var.aws_enable_creation
+  cidr_block       = var.aws_vpc_cidr_block
   instance_tenancy = var.aws_vpc_instance_tenancy
 }
 
 resource "aws_flow_log" "flow_log_vpc" {
-  count = var.aws_enable_creation
-  log_destination = aws_s3_bucket.flow_log_bucket[0].arn
+  count                = var.aws_enable_creation
+  log_destination      = aws_s3_bucket.flow_log_bucket[0].arn
   log_destination_type = "s3"
-  traffic_type = "ALL"
-  vpc_id = aws_vpc.inspec_vpc_flow_log[0].id
+  traffic_type         = "ALL"
+  vpc_id               = aws_vpc.inspec_vpc_flow_log[0].id
 }
 
 resource "aws_s3_bucket" "flow_log_bucket" {
-  count = var.aws_enable_creation
-  bucket = var.aws_flow_log_bucket_name
+  count         = var.aws_enable_creation
+  bucket        = var.aws_flow_log_bucket_name
   force_destroy = true
 }
 
 resource "aws_ecs_cluster" "ecs_cluster" {
   count = var.aws_enable_creation
-  name = var.aws_ecs_cluster_name
+  name  = var.aws_ecs_cluster_name
 }
 
-# Create a new load balancer
 resource "aws_elb" "aws_elb_1" {
-  count = var.aws_enable_creation
-  name = var.aws_elb_name
+  count              = var.aws_enable_creation
+  name               = var.aws_elb_name
   availability_zones = [var.aws_availability_zone]
 
   listener {
-    instance_port = 8000
+    instance_port     = 8000
     instance_protocol = "http"
-    lb_port = 80
-    lb_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
   }
 
-  instances = [aws_instance.linux_ubuntu_vm[0].id]
-  cross_zone_load_balancing = true
-  idle_timeout = 400
-  connection_draining = true
+  instances                   = [aws_instance.linux_ubuntu_vm[0].id]
+  cross_zone_load_balancing   = true
+  idle_timeout                = 400
+  connection_draining         = true
   connection_draining_timeout = 400
 }
 
 resource "aws_iam_user" "iam_user" {
   count = var.aws_enable_creation
-  name = var.aws_iam_user_name
+  name  = var.aws_iam_user_name
 }
 
 resource "aws_iam_access_key" "iam_user_access_key" {
   count = var.aws_enable_creation
-  user = aws_iam_user.iam_user[0].name
+  user  = aws_iam_user.iam_user[0].name
 }
 
 resource "aws_iam_user_policy" "iam_user_policy" {
   count = var.aws_enable_creation
-  name = var.aws_iam_user_policy_name
-  user = aws_iam_user.iam_user[0].name
+  name  = var.aws_iam_user_policy_name
+  user  = aws_iam_user.iam_user[0].name
 
   policy = <<EOF
 {
@@ -1154,9 +1148,9 @@ EOF
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
-  count = var.aws_enable_creation
-  name = var.aws_iam_attached_policy_name
-  path = "/"
+  count       = var.aws_enable_creation
+  name        = var.aws_iam_attached_policy_name
+  path        = "/"
   description = "Test policy"
 
   policy = <<EOF
@@ -1233,19 +1227,19 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSClusterPolicy" {
-  count = var.aws_enable_creation
+  count      = var.aws_enable_creation
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role = aws_iam_role.aws_eks_role[0].name
+  role       = aws_iam_role.aws_eks_role[0].name
 }
 
 resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" {
-  count = var.aws_enable_creation
+  count      = var.aws_enable_creation
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role = aws_iam_role.aws_eks_role[0].name
+  role       = aws_iam_role.aws_eks_role[0].name
 }
 
 resource "aws_internet_gateway" "igw" {
-  count = var.aws_enable_creation
+  count  = var.aws_enable_creation
   vpc_id = aws_vpc.eks_vpc[0].id
   tags = {
     Name = "igw"
@@ -1253,10 +1247,10 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "eks_subnet" {
-  count = var.aws_enable_creation
-  vpc_id = aws_vpc.eks_vpc[0].id
+  count             = var.aws_enable_creation
+  vpc_id            = aws_vpc.eks_vpc[0].id
   availability_zone = var.aws_availability_zone
-  cidr_block = "10.0.16.0/20"
+  cidr_block        = "10.0.16.0/20"
 
   depends_on = [aws_internet_gateway.igw]
 
@@ -1266,10 +1260,10 @@ resource "aws_subnet" "eks_subnet" {
 }
 
 resource "aws_subnet" "eks_subnet-2" {
-  count = var.aws_enable_creation
-  vpc_id = aws_vpc.eks_vpc[0].id
+  count             = var.aws_enable_creation
+  vpc_id            = aws_vpc.eks_vpc[0].id
   availability_zone = "${var.aws_region}b"
-  cidr_block = "10.0.32.0/20"
+  cidr_block        = "10.0.32.0/20"
 
   depends_on = [aws_internet_gateway.igw]
 
@@ -1279,8 +1273,8 @@ resource "aws_subnet" "eks_subnet-2" {
 }
 
 resource "aws_eks_cluster" "aws_eks_cluster" {
-  count = var.aws_enable_creation
-  name = var.aws_eks_cluster_name
+  count    = var.aws_enable_creation
+  name     = var.aws_eks_cluster_name
   role_arn = aws_iam_role.aws_eks_role[0].arn
 
   vpc_config {
@@ -1290,7 +1284,7 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
 
 resource "aws_iam_role" "aws_role_generic" {
   count = var.aws_enable_creation
-  name = var.aws_iam_role_generic_name
+  name  = var.aws_iam_role_generic_name
 
   assume_role_policy = <<EOF
 {
@@ -1329,18 +1323,19 @@ resource "aws_iam_role_policy" "generic_policy" {
   ]
 }
 EOF
+
 }
 
 data "aws_ami" "aws_vm_config" {
   most_recent = true
 
   filter {
-    name = "name"
+    name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
   }
 
   filter {
-    name = "virtualization-type"
+    name   = "virtualization-type"
     values = ["hvm"]
   }
 
@@ -1348,36 +1343,36 @@ data "aws_ami" "aws_vm_config" {
 }
 
 resource "aws_launch_configuration" "as_conf" {
-  count = var.aws_enable_creation
-  name = var.aws_launch_configuration_name
-  image_id = data.aws_ami.aws_vm_config.id
+  count         = var.aws_enable_creation
+  name          = var.aws_launch_configuration_name
+  image_id      = data.aws_ami.aws_vm_config.id
   instance_type = "t2.micro"
-  spot_price = "0.1"
-  user_data = "#!/bin/bash"
+  spot_price    = "0.1"
+  user_data     = "#!/bin/bash"
 }
 
 resource "aws_autoscaling_group" "aws_auto_scaling_group" {
-  count = var.aws_enable_creation
-  name = var.aws_auto_scaling_group
-  min_size = 0
-  max_size = 2
-  desired_capacity = 0
+  count                = var.aws_enable_creation
+  name                 = var.aws_auto_scaling_group
+  min_size             = 0
+  max_size             = 2
+  desired_capacity     = 0
   launch_configuration = aws_launch_configuration.as_conf[0].name
-  vpc_zone_identifier = [aws_subnet.inspec_subnet[0].id]
+  vpc_zone_identifier  = [aws_subnet.inspec_subnet[0].id]
 }
 
 resource "aws_ecr_repository" "aws_ecr" {
   count = var.aws_enable_creation
-  name = var.aws_ecr_name
+  name  = var.aws_ecr_name
 }
 
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
-  count = var.aws_enable_creation
-  name = var.aws_dynamodb_table_name
-  read_capacity = 20
+  count          = var.aws_enable_creation
+  name           = var.aws_dynamodb_table_name
+  read_capacity  = 20
   write_capacity = 20
-  hash_key = "UserId"
-  range_key = "Title"
+  hash_key       = "UserId"
+  range_key      = "Title"
 
   attribute {
     name = "UserId"
@@ -1396,40 +1391,41 @@ resource "aws_dynamodb_table" "aws-dynamodb-table" {
 
   ttl {
     attribute_name = "TimeToExist"
-    enabled = false
+    enabled        = false
   }
 
   global_secondary_index {
-    name = "TitleIndex"
-    hash_key = "Title"
-    range_key = "Score"
-    write_capacity = 10
-    read_capacity = 10
-    projection_type = "INCLUDE"
+    name               = "TitleIndex"
+    hash_key           = "Title"
+    range_key          = "Score"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
     non_key_attributes = ["UserId"]
   }
 }
 
 # Aws_lb
 resource "aws_security_group" "lb_sg" {
-  count = var.aws_enable_creation
-  name = var.aws_security_group_lb
+  count       = var.aws_enable_creation
+  name        = var.aws_security_group_lb
   description = "SG lb"
-  vpc_id = aws_vpc.eks_vpc[0].id
+  vpc_id      = aws_vpc.eks_vpc[0].id
 
   tags = {
-    Name = var.aws_security_group_lb
+    Name        = var.aws_security_group_lb
     Environment = "Dev"
   }
 }
 
 resource "aws_lb" "aws-alb" {
-  count = var.aws_enable_creation
-  name = var.aws_alb_name
-  internal = false
+  count              = var.aws_enable_creation
+  name               = var.aws_alb_name
+  internal           = false
   load_balancer_type = "application"
-  security_groups = [aws_security_group.lb_sg[0].id]
-  subnets = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
+  security_groups    = [aws_security_group.lb_sg[0].id]
+  subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
+
   tags = {
     Environment = "inspec-aws"
   }
@@ -1437,7 +1433,7 @@ resource "aws_lb" "aws-alb" {
 
 resource "aws_cloudformation_stack" "network" {
   count = var.aws_enable_creation
-  name = var.aws_cloudformation_stack_name
+  name  = var.aws_cloudformation_stack_name
 
   parameters = {
     VPCCidr = "10.0.0.0/16"
@@ -1479,7 +1475,6 @@ resource "aws_route53_zone" "test_zone" {
 }
 
 resource "aws_route53_record" "test_record" {
-
   count   = var.aws_enable_creation
   zone_id = aws_route53_zone.test_zone.0.id
   name    = "www.carry-on-films.com"
