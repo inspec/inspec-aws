@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.5 -->
+<!-- latest_release 1.6.6 -->
+## [v1.6.6](https://github.com/inspec/inspec-aws/tree/v1.6.6) (2020-02-11)
+
+#### Merged Pull Requests
+- Terraform fmt [#182](https://github.com/inspec/inspec-aws/pull/182) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
+<!-- latest_release -->
+
 ## [v1.6.5](https://github.com/inspec/inspec-aws/tree/v1.6.5) (2020-02-10)
 
 #### Merged Pull Requests
 -  aws_eks_cluster: fix typo in resource description [#180](https://github.com/inspec/inspec-aws/pull/180) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.6.4](https://github.com/inspec/inspec-aws/tree/v1.6.4) (2020-02-04)
 
