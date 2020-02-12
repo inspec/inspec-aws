@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.6 -->
+<!-- latest_release 1.6.7 -->
+## [v1.6.7](https://github.com/inspec/inspec-aws/tree/v1.6.7) (2020-02-12)
+
+#### Merged Pull Requests
+- Fix typo, remove redundant dots, remove redundant comments [#183](https://github.com/inspec/inspec-aws/pull/183) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
+<!-- latest_release -->
+
 ## [v1.6.6](https://github.com/inspec/inspec-aws/tree/v1.6.6) (2020-02-11)
 
 #### Merged Pull Requests
 - Terraform fmt [#182](https://github.com/inspec/inspec-aws/pull/182) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.6.5](https://github.com/inspec/inspec-aws/tree/v1.6.5) (2020-02-10)
 
