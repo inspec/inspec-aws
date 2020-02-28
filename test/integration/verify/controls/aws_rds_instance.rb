@@ -23,7 +23,7 @@ control 'aws-rds-instance-1.0' do
     its ('storage_type') { should eq aws_rds_db_storage_type }
     its ('master_username') { should eq aws_rds_db_master_user }
     its ('allocated_storage') { should eq 10 }
-    its ('db_instance_class') { should eq 'db.t2.small' }
+    its ('db_instance_class') { should eq 'db.t3.small' }
     its ('tags') { should include('Name' => aws_rds_db_name)}
   end
 

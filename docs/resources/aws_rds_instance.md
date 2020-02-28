@@ -53,7 +53,7 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 ##### Test the instance type and master username
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
       its ('master_username')   { should eq 'db-maintain' }
-      its ('db_instance_class') { should eq 'db.t2.micro' }
+      its ('db_instance_class') { should eq 'db.t3.micro' }
     end
 
 ## Matchers

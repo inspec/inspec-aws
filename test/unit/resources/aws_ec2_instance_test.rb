@@ -80,7 +80,7 @@ class AwsEc2InstanceHappyPathTest < Minitest::Test
     mock_ec2[:ami_launch_index] = 0
     mock_ec2[:image_id] = 'ami-024279d2324df257e'
     mock_ec2[:instance_id] = 'i-00b5186ddefdb50bf'
-    mock_ec2[:instance_type] = 't2.micro'
+    mock_ec2[:instance_type] = 't3.micro'
     mock_ec2[:private_dns_name] = 'ip-172-31-22-166.eu-west-2.compute.internal'
     mock_ec2[:private_ip_address] = '172.31.22.166'
     mock_ec2[:public_dns_name] = 'ec2-18-130-227-47.eu-west-2.compute.amazonaws.com'
@@ -171,7 +171,7 @@ class AwsEc2InstanceHappyPathTest < Minitest::Test
   end
 
   def test_ec2_instance_type
-    assert_equal(@ec2.instance_type, 't2.micro')
+    assert_equal(@ec2.instance_type, 't3.micro')
   end
 
   def test_ec2_private_dns_name

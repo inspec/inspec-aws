@@ -54,7 +54,7 @@ See also the [AWS documentation on Launch Configurations](https://docs.aws.amazo
 
 ##### Test the instance type used in a Launch Config
     describe aws_launch_configuration('my-config') do
-      its('instance_type') { should eq 't2.micro'}
+      its('instance_type') { should eq 't3.micro'}
     end
 
 ##### Ensure a Launch Config is associated with the right IAM Profile
