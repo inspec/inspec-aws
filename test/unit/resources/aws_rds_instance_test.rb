@@ -37,7 +37,7 @@ class AwsRdsInstanceTest < Minitest::Test
     mock_rds = {}
     mock_rds[:db_instance_identifier] = 'rds-12345678'
     mock_rds[:allocated_storage] = 100
-    mock_rds[:db_instance_class] = 'db.t2.micro'
+    mock_rds[:db_instance_class] = 'db.t3.micro'
     mock_rds[:engine] = 'mysql'
     mock_rds[:engine_version] = '1.2.3'
     mock_rds[:master_username] = 'starlord'
@@ -60,7 +60,7 @@ class AwsRdsInstanceTest < Minitest::Test
   end
 
   def test_rds_class
-    assert_equal(@rds.db_instance_class, 'db.t2.micro')
+    assert_equal(@rds.db_instance_class, 'db.t3.micro')
   end
 
   def test_rds_engine

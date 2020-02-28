@@ -654,7 +654,7 @@ resource "aws_db_instance" "db_rds" {
   storage_type         = var.aws_rds_db_storage_type
   engine               = var.aws_rds_db_engine
   engine_version       = var.aws_rds_db_engine_version
-  instance_class       = "db.t2.small"
+  instance_class       = "db.t3.small"
   identifier           = var.aws_rds_db_identifier
   name                 = var.aws_rds_db_name
   username             = var.aws_rds_db_master_user
@@ -1346,7 +1346,7 @@ resource "aws_launch_configuration" "as_conf" {
   count         = var.aws_enable_creation
   name          = var.aws_launch_configuration_name
   image_id      = data.aws_ami.aws_vm_config.id
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   spot_price    = "0.1"
   user_data     = "#!/bin/bash"
 }
@@ -1504,12 +1504,12 @@ resource "aws_rds_cluster_instance" "instance1" {
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance1"
-  instance_class     = "db.t2.small"
+  instance_class     = "db.t3.small"
 }
 
 resource "aws_rds_cluster_instance" "instance2" {
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance2"
-  instance_class     = "db.t2.small"
+  instance_class     = "db.t3.small"
 }

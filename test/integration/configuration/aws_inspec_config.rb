@@ -148,7 +148,7 @@ module AWSInspecConfig
       aws_subnet_name: 'inspec-aws-subnet',
       aws_vm_image_filter: 'ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*',
       aws_vm_name: "aws-inspec-linux-ubuntu-#{add_random_string}",
-      aws_vm_size: 't2.micro',
+      aws_vm_size: 't3.micro',
       aws_vpc_cidr_block: '10.0.0.0/27', # i.e. 32 IP addresses
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',

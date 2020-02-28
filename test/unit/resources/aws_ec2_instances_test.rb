@@ -23,7 +23,7 @@ class AwsEc2InstancesHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :describe_instances
     mock_ec2 = {}
-    mock_ec2[:instance_type] = 't2.micro'
+    mock_ec2[:instance_type] = 't3.micro'
     mock_ec2[:instance_id] = 'i-00b5186ddefdb50bf'
     mock_ec2[:subnet_id] = 'subnet-9fe303e5'
     mock_ec2[:vpc_id] = 'vpc-1ea06476'
@@ -49,7 +49,7 @@ class AwsEc2InstancesHappyPathTest < Minitest::Test
   end
 
   def test_instances_types
-    assert_equal(@instances.instance_types, ['t2.micro'])
+    assert_equal(@instances.instance_types, ['t3.micro'])
   end
 
   def test_instances_filtering_not_there
@@ -67,12 +67,12 @@ class AwsEc2InstancesMultipleTest < Minitest::Test
     data = {}
     data[:method] = :describe_instances
     mock_ec2 = {}
-    mock_ec2[:instance_type] = 't2.micro'
+    mock_ec2[:instance_type] = 't3.micro'
     mock_ec2[:instance_id] = 'i-00b5186ddefdb50bf'
     mock_ec2[:subnet_id] = 'subnet-9fe303e5'
     mock_ec2[:vpc_id] = 'vpc-1ea06476'
     another_ec2 = {}
-    another_ec2[:instance_type] = 't2.micro'
+    another_ec2[:instance_type] = 't3.micro'
     another_ec2[:instance_id] = 'i-00b5186ddefdb50bg'
     another_ec2[:subnet_id] = 'subnet-9fe303e5'
     another_ec2[:vpc_id] = 'vpc-1ea06476'
