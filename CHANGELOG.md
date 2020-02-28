@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.7 -->
+<!-- latest_release 1.6.8 -->
+## [v1.6.8](https://github.com/inspec/inspec-aws/tree/v1.6.8) (2020-02-28)
+
+#### Merged Pull Requests
+- Use AWS t3 EC2 instances instead of t2 [#185](https://github.com/inspec/inspec-aws/pull/185) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.6.7](https://github.com/inspec/inspec-aws/tree/v1.6.7) (2020-02-12)
 
 #### Merged Pull Requests
 - Fix typo, remove redundant dots, remove redundant comments [#183](https://github.com/inspec/inspec-aws/pull/183) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.6.6](https://github.com/inspec/inspec-aws/tree/v1.6.6) (2020-02-11)
 
