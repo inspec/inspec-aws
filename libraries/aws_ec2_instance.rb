@@ -118,4 +118,33 @@ class AwsEc2Instance < AwsResourceBase
   def to_s
     "EC2 Instance #{@display_name}"
   end
+
+  #
+  # => Simple Systems Manager
+  #
+  def managed_by_ssm?
+    return true if ssm_status
+    false
+  end
+
+  def online_in_ssm?
+    return true if ssm_status && ssm_status.ping_status == 'Online'
+    false
+  end
+
+  private
+
+  def ssm_status
+    catch_aws_errors do
+      @ssm_status ||= @aws.ssm_client.describe_instance_information(
+        instance_information_filter_list: [
+          {
+            key: 'InstanceIds',
+            value_set: [@instance[:instance_id]],
+          },
+        ],
+      )
+      @ssm_status[:instance_information_list].find { |x| x.instance_id == @instance[:instance_id] }
+    end
+  end
 end
