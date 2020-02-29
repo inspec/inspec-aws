@@ -22,6 +22,7 @@ require 'aws-sdk-route53'
 require 'aws-sdk-s3'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
+require 'aws-sdk-ssm'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -138,6 +139,10 @@ class AwsConnection
 
   def sns_client
     aws_client(Aws::SNS::Client)
+  end
+
+  def ssm_client
+    aws_client(Aws::SSM::Client)
   end
 
   def storage_client
