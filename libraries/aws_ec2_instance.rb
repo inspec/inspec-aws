@@ -132,6 +132,18 @@ class AwsEc2Instance < AwsResourceBase
     false
   end
 
+  def ssm_compliant?
+    ssm_compliance_summary.any? && ssm_compliance_summary.all? { |x| x.status == 'COMPLIANT' }
+  end
+
+  def ssm_association_compliant?
+    ssm_compliance_summary.any? { |c| c.compliance_type == 'Association' && c.status == 'COMPLIANT' }
+  end
+
+  def ssm_patch_compliant?
+    ssm_compliance_summary.any? { |c| c.compliance_type == 'Patch' && c.status == 'COMPLIANT' }
+  end
+
   private
 
   def ssm_status
@@ -145,6 +157,30 @@ class AwsEc2Instance < AwsResourceBase
         ],
       )
       @ssm_status[:instance_information_list].find { |x| x.instance_id == @instance[:instance_id] }
+    end
+  end
+
+  def ssm_compliance_summary
+    @ssm_compliance_summary || begin
+      catch_aws_errors do
+        request = {
+          filters: [
+            {
+              key: 'InstanceId',
+              values: [@instance[:instance_id]],
+              type: 'EQUAL',
+            },
+          ],
+        }
+        @ssm_compliance_summary = []
+        while (resp = @aws.ssm_client.list_resource_compliance_summaries(request))
+          @ssm_compliance_summary.concat(resp.resource_compliance_summary_items)
+          break unless resp.next_token
+
+          request[:next_token] = resp.next_token
+        end
+      end
+      @ssm_compliance_summary
     end
   end
 end
