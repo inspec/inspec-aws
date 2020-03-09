@@ -1487,7 +1487,6 @@ resource "aws_rds_cluster" "rds_cluster" {
   count               = var.aws_enable_creation
   cluster_identifier  = var.aws_rds_cluster_identifier
   engine              = var.aws_rds_cluster_engine
-  availability_zones  = ["us-west-2a", "us-west-2b", "us-west-2c"]
   database_name       = var.aws_rds_cluster_database_name
   master_username     = var.aws_rds_cluster_master_user
   master_password     = "testpassword"
