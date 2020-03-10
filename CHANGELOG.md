@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.8 -->
+<!-- latest_release 1.6.9 -->
+## [v1.6.9](https://github.com/inspec/inspec-aws/tree/v1.6.9) (2020-03-10)
+
+#### Merged Pull Requests
+- remove RDS availabilityzones [#188](https://github.com/inspec/inspec-aws/pull/188) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.6.8](https://github.com/inspec/inspec-aws/tree/v1.6.8) (2020-02-28)
 
 #### Merged Pull Requests
 - Use AWS t3 EC2 instances instead of t2 [#185](https://github.com/inspec/inspec-aws/pull/185) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.6.7](https://github.com/inspec/inspec-aws/tree/v1.6.7) (2020-02-12)
 
