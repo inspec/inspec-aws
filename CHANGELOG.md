@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.9 -->
+<!-- latest_release 1.6.10 -->
+## [v1.6.10](https://github.com/inspec/inspec-aws/tree/v1.6.10) (2020-03-10)
+
+#### Merged Pull Requests
+- Wildcard optional outputs [#189](https://github.com/inspec/inspec-aws/pull/189) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.6.9](https://github.com/inspec/inspec-aws/tree/v1.6.9) (2020-03-10)
 
 #### Merged Pull Requests
 - remove RDS availabilityzones [#188](https://github.com/inspec/inspec-aws/pull/188) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.6.8](https://github.com/inspec/inspec-aws/tree/v1.6.8) (2020-02-28)
 
