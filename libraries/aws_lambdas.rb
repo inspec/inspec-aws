@@ -5,7 +5,7 @@ class AwsLambdas < AwsResourceBase
   desc 'Verifies generic settings for a set of lambdas'
   example '
     describe aws_lambdas() do
-      .....
+      its ("count") { should eq 6}
     end
   '
   attr_reader :table
@@ -22,6 +22,15 @@ class AwsLambdas < AwsResourceBase
     fetch_data
   end
 
+  def sort_tags(tag_list)
+    return {} if tag_list.nil? || tag_list.empty?
+    tags = {}
+    tag_list.each { |k, v|
+      tags[k] = v
+    }
+    tags
+  end
+
   def fetch_data
     lambdas = []
 
@@ -30,14 +39,12 @@ class AwsLambdas < AwsResourceBase
       return [] if !returned_lambdas || returned_lambdas.empty?
 
       returned_lambdas.functions.each { |lambda|
-        puts "getting func #{lambda.function_name}"
         func = @aws.lambda_client.get_function({ function_name: lambda.function_name })
 
-        puts "funcc #{func.tags}"
         lambdas += [{
           name: lambda.function_name,
           arn: lambda.function_arn,
-          tags: func.tags,
+          tags: sort_tags(func.tags),
           handler: lambda.handler,
         }]
       }
