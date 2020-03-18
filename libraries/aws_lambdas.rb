@@ -22,15 +22,6 @@ class AwsLambdas < AwsResourceBase
     fetch_data
   end
 
-  def sort_tags(tag_list)
-    return {} if tag_list.nil? || tag_list.empty?
-    tags = {}
-    tag_list.each { |k, v|
-      tags[k] = v
-    }
-    tags
-  end
-
   def fetch_data
     lambdas = []
 
@@ -51,5 +42,16 @@ class AwsLambdas < AwsResourceBase
     end
 
     @table = lambdas
+  end
+
+  private
+
+  def sort_tags(tag_list)
+    return {} if tag_list.nil? || tag_list.empty?
+    tags = {}
+    tag_list.each { |k, v|
+      tags[k] = v
+    }
+    tags
   end
 end
