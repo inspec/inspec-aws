@@ -1512,3 +1512,87 @@ resource "aws_rds_cluster_instance" "instance2" {
   identifier         = "instance2"
   instance_class     = "db.t3.small"
 }
+
+
+data "aws_iam_policy_document" "lambda_test_policy_document" {
+
+  statement {
+    effect    = "Allow"
+    actions   = [
+      "cloudwatch:PutMetricData"
+    ]
+    resources = ["*"]  
+  }
+}
+
+resource "aws_iam_policy" "lambda_test_policy" {
+  name        = "lambda_test_policy"
+  path        = "/"
+  description = "Policy that allows access to cloudwatch metrics"
+  policy      = data.aws_iam_policy_document.lambda_test_policy_document.json
+}
+
+resource "aws_iam_role" "lambda_test_role" {
+  name               = "lambda_test_validation"
+  description        = "Used by the test lambda"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+
+}
+
+data "aws_iam_policy" "lambda_execute" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_test_policy_attach" {
+  role       = aws_iam_role.lambda_test_role.name
+  policy_arn = aws_iam_policy.lambda_test_policy.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_test_execute_attached" {
+  role       = aws_iam_role.lambda_test_role.name
+  policy_arn = data.aws_iam_policy.lambda_execute.arn
+}
+
+
+
+resource "aws_cloudwatch_log_group" "lambda_test_logs" {
+  name              = "/aws/lambda/test_lambda"
+  retention_in_days = 14
+}
+
+locals {
+  test_lambda_zip_file_name = TODO
+}
+resource "aws_lambda_function" "lambda_test" {
+  filename         = local.test_lambda_zip_file_name
+  description      = "Test Lambda"
+  function_name    = "Test.Lambda"
+  role             = aws_iam_role.lambda_test_role.arn
+  handler          = "main.on_event"
+  source_code_hash = filebase64sha256(local.test_lambda_zip_file_name)
+  runtime          = "python3.7"
+  publish          = true
+  timeout          = 10
+}
+
+
+
+
+
+
+
+

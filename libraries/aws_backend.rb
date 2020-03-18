@@ -16,6 +16,7 @@ require 'aws-sdk-elasticloadbalancing'
 require 'aws-sdk-elasticloadbalancingv2'
 require 'aws-sdk-iam'
 require 'aws-sdk-kms'
+require 'aws-sdk-lambda'
 require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-route53'
@@ -114,6 +115,10 @@ class AwsConnection
 
   def kms_client
     aws_client(Aws::KMS::Client)
+  end
+
+  def lambda_client
+    aws_client(Aws::Lambda::Client)
   end
 
   def org_client
