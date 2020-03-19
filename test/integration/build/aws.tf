@@ -1575,12 +1575,12 @@ resource "aws_cloudwatch_log_group" "lambda_test_logs" {
 }
 
 locals {
-  test_lambda_zip_file_name = TODO
+  test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
 resource "aws_lambda_function" "lambda_test" {
   filename         = local.test_lambda_zip_file_name
   description      = "Test Lambda"
-  function_name    = "Test.Lambda"
+  function_name    = "test_Lambda"
   role             = aws_iam_role.lambda_test_role.arn
   handler          = "main.on_event"
   source_code_hash = filebase64sha256(local.test_lambda_zip_file_name)

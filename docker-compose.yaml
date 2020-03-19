@@ -6,15 +6,25 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
+    environment:
+      AWS_DEFAULT_REGION:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_ACCESS_KEY_ID:        
+      AWS_SESSION_TOKEN:
+      AWS_SHARED_CREDENTIALS_FILE: /app/.aws/credentials        
     volumes:
     - .:/app    
-    - ./.aws:/root/.aws    
 
   aws:
     build:
       context: .
       dockerfile: Dockerfile-aws
     working_dir: /app
+    environment:
+      AWS_DEFAULT_REGION:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_ACCESS_KEY_ID:        
+      AWS_SESSION_TOKEN:
+      AWS_SHARED_CREDENTIALS_FILE: /app/.aws/credentials        
     volumes:
     - .:/app    
-    - ./.aws:/root/.aws     
