@@ -1512,3 +1512,7 @@ resource "aws_rds_cluster_instance" "instance2" {
   identifier         = "instance2"
   instance_class     = "db.t3.small"
 }
+
+resource "aws_ec2_transit_gateway" "gateway" {
+  description = "transitgateway1"
+}

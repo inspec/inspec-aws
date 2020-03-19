@@ -193,3 +193,7 @@ output "aws_alb_arn" {
 output "aws_rds_cluster_engine_version" {
   value = aws_rds_cluster.rds_cluster.0.engine_version
 }
+
+output "aws_transit_gateway_id" {
+  value = aws_ec2_transit_gateway.gateway.id
+}
