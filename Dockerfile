@@ -16,6 +16,7 @@ RUN bundle install \
     && unzip terraform_${TF_VERSION}_linux_amd64.zip && mv terraform /usr/local/bin/ \
     && rm terraform_${TF_VERSION}_linux_amd64.zip \
     && apt-get clean \
+    && bundle update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 WORKDIR /inspec
