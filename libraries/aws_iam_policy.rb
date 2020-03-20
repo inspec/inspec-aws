@@ -87,7 +87,8 @@ class AwsIamPolicy < AwsResourceBase
     return false unless @policy_document
     document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document), { symbolize_names: true })
     statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
-    statement_match = false
+    statement_match = []
+
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Resource] = criteria[:Resource].is_a?(Array) ? criteria[:Resource].sort : criteria[:Resource]
     statements.each do |s|
@@ -95,9 +96,18 @@ class AwsIamPolicy < AwsResourceBase
       notactions = s[:NotAction] || []
       effect     = s[:Effect]
       resource   = s[:Resource].is_a?(Array) ? s[:Resource].sort : s[:Resource]
-      statement_match = true if (criteria[:NotAction].nil? ? actions.include?(criteria[:Action]) : notactions.include?(criteria[:NotAction])) && effect.eql?(criteria[:Effect]) && resource.eql?(criteria[:Resource])
+
+      action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
+
+      no_action_match = criteria[:NotAction].nil? ? true : notactions.include?(criteria[:NotAction])
+
+      effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
+
+      resource_match = criteria[:Resource].nil? ? true : resource.eql?(criteria[:Resource])
+
+      statement_match.push(action_match && no_action_match && effect_match && resource_match)
     end
-    statement_match
+    statement_match.include?(true)
   end
 
   def statement_count
