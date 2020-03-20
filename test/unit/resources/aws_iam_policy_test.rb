@@ -123,5 +123,4 @@ class AwsIamPolicyTest < Minitest::Test
   def test_statment_wrong_resource
     refute @policy.has_statement?(Resource: "arn:aws:ec2:::*")
   end
-
 end
