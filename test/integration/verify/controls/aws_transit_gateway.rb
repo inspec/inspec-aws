@@ -5,7 +5,7 @@ aws_kms_key_enabled_id = attribute(:aws_transit_gateway_id, default: '', descrip
 control 'aws-transit-gateway-1.0' do
 
   impact 1.0
-  title 'Ensure AWS VPC Subnets plural resource has the correct properties.'
+  title 'Ensure AWS Transit gateway is configured correctly.'
 
   describe aws_transit_gateway(transit_gateway_id: aws_kms_key_enabled_id) do
     it { should exist }
