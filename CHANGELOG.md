@@ -1,9 +1,14 @@
-<!-- latest_release 1.6.10 -->
+<!-- latest_release 1.7.0 -->
+## [v1.7.0](https://github.com/inspec/inspec-aws/tree/v1.7.0) (2020-03-23)
+
+#### Merged Pull Requests
+- Additional resources for testing lambda functions. [#191](https://github.com/inspec/inspec-aws/pull/191) ([akacodemonkey](https://github.com/akacodemonkey))
+<!-- latest_release -->
+
 ## [v1.6.10](https://github.com/inspec/inspec-aws/tree/v1.6.10) (2020-03-10)
 
 #### Merged Pull Requests
 - Wildcard optional outputs [#189](https://github.com/inspec/inspec-aws/pull/189) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.6.9](https://github.com/inspec/inspec-aws/tree/v1.6.9) (2020-03-10)
 
