@@ -1,9 +1,14 @@
-<!-- latest_release 1.7.0 -->
+<!-- latest_release 1.7.1 -->
+## [v1.7.1](https://github.com/inspec/inspec-aws/tree/v1.7.1) (2020-03-25)
+
+#### Merged Pull Requests
+- added transit gateway resource, documentation and tests [#193](https://github.com/inspec/inspec-aws/pull/193) ([krystan](https://github.com/krystan))
+<!-- latest_release -->
+
 ## [v1.7.0](https://github.com/inspec/inspec-aws/tree/v1.7.0) (2020-03-23)
 
 #### Merged Pull Requests
 - Additional resources for testing lambda functions. [#191](https://github.com/inspec/inspec-aws/pull/191) ([akacodemonkey](https://github.com/akacodemonkey))
-<!-- latest_release -->
 
 ## [v1.6.10](https://github.com/inspec/inspec-aws/tree/v1.6.10) (2020-03-10)
 
