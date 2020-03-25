@@ -143,6 +143,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_iam_users](docs/resources/aws_iam_users.md)
 - [aws_kms_key](docs/resources/aws_kms_key.md)
 - [aws_kms_keys](docs/resources/aws_kms_keys.md)
+- [aws_lambda](docs/resources/aws_lambda.md)
+- [aws_lambdas](docs/resources/aws_lambdas.md)
 - [aws_launch_configuration](docs/resources/aws_launch_configuration.md)
 - [aws_organizations_member](docs/resources/aws_organizations_member.md)
 - [aws_rds_instance](docs/resources/aws_rds_instance.md)
