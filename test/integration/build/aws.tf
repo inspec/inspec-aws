@@ -1513,6 +1513,9 @@ resource "aws_rds_cluster_instance" "instance2" {
   instance_class     = "db.t3.small"
 }
 
+resource "aws_ec2_transit_gateway" "gateway" {
+  description = "transitgateway1"
+}
 
 data "aws_iam_policy_document" "lambda_test_policy_document" {
 
@@ -1588,11 +1591,3 @@ resource "aws_lambda_function" "lambda_test" {
   publish          = true
   timeout          = 10
 }
-
-
-
-
-
-
-
-
