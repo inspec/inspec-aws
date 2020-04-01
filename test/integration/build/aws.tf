@@ -108,6 +108,7 @@ variable "aws_vm_size" {}
 variable "aws_vpc_cidr_block" {}
 variable "aws_vpc_instance_tenancy" {}
 variable "aws_vpc_name" {}
+variable "aws_vpc_dhcp_options_name" {}
 variable "aws_route_53_zone" {}
 
 provider "aws" {
@@ -132,6 +133,22 @@ resource "aws_vpc" "inspec_vpc" {
   tags = {
     Name = var.aws_vpc_name
   }
+}
+
+resource "aws_vpc_dhcp_options" "inspec_dopt" {
+  count               = var.aws_enable_creation
+  domain_name_servers = ["AmazonProvidedDNS"]
+  ntp_servers         = ["127.0.0.1"]
+
+  tags = {
+    Name = var.aws_vpc_dhcp_options_name
+  }
+}
+
+resource "aws_vpc_dhcp_options_association" "inspec_vpc_dopt_assoc" {
+  count           = var.aws_enable_creation
+  vpc_id          = aws_vpc.inspec_vpc.id
+  dhcp_options_id = aws_vpc_dhcp_options.inspec_dopt.id
 }
 
 resource "aws_subnet" "inspec_subnet" {
