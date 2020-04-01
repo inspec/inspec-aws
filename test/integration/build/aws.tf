@@ -147,8 +147,8 @@ resource "aws_vpc_dhcp_options" "inspec_dopt" {
 
 resource "aws_vpc_dhcp_options_association" "inspec_vpc_dopt_assoc" {
   count           = var.aws_enable_creation
-  vpc_id          = aws_vpc.inspec_vpc.id
-  dhcp_options_id = aws_vpc_dhcp_options.inspec_dopt.id
+  vpc_id          = aws_vpc.inspec_vpc[0].id
+  dhcp_options_id = aws_vpc_dhcp_options.inspec_dopt[0].id
 }
 
 resource "aws_subnet" "inspec_subnet" {
