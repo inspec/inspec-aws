@@ -26,7 +26,7 @@ class AwsDhcpOptions < AwsResourceBase
   end
 
   def exists?
-    !@dhcp_options.nil? && !@dhcp_options.empty?
+    !@dhcp_options.empty?
   end
 
   def domain_name_servers
@@ -45,7 +45,7 @@ class AwsDhcpOptions < AwsResourceBase
 
   def _dhcp_config(key)
     config = @dhcp_options[:dhcp_configurations].select { |c| c[:key] == key }
-    return [] unless !config.empty?
+    return [] if config.empty?
     config[0][:values].map { |v| v[:value] }
   end
 end

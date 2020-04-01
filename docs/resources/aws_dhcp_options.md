@@ -11,11 +11,11 @@ Use the `aws_dhcp_options` InSpec audit resource to test properties of a single 
 
 Ensure that an `aws_dhcp_options` exists
 
-    describe aws_alb('dopt-0123456789abcdefg') do
+    describe aws_dhcp_options('dopt-0123456789abcdefg') do
       it { should exist }
     end
 
-    describe aws_alb(dhcp_options_id: 'dopt-0123456789abcdefg') do
+    describe aws_dhcp_options(dhcp_options_id: 'dopt-0123456789abcdefg') do
       it { should exist }
     end
 
@@ -33,11 +33,13 @@ See also the [AWS documentation on EC2](https://docs.aws.amazon.com/AWSEC2/lates
 | Property | Description |
 | --- | --- |
 | dhcp_configurations | The list of dhcp configurations |
+| domain_name_servers | The list of domain name servers in the dhcp configuration |
+| ntp_servers | The list of ntp servers in the dhcp configuration |
 | tags | The tags of the DHCP Options. |
 
 
 ##### Test tags on the DHCP Options
-    describe aws_alb('dopt-0123456789abcdefg') do
+    describe aws_dhcp_options('dopt-0123456789abcdefg') do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'dhcp-options-name')}
     end
