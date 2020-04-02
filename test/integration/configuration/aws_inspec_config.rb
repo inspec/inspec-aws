@@ -152,6 +152,7 @@ module AWSInspecConfig
       aws_vpc_cidr_block: '10.0.0.0/27', # i.e. 32 IP addresses
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
+      aws_vpc_dhcp_options_name: 'inspec-aws-dopt',
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
       aws_enable_creation: 1,
       # Flag to optionally disable creation/controls for configuration recorder (only 1 per AWS region allowed)
@@ -167,7 +168,7 @@ module AWSInspecConfig
       # Some controls make use of the gcloud command and grep to discover live data to then test against.
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
-      aws_enable_cli_calls: 0, 
+      aws_enable_cli_calls: 0,
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
   }
 
