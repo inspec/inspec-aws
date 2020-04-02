@@ -1,9 +1,14 @@
-<!-- latest_release 1.7.1 -->
+<!-- latest_release 1.8.0 -->
+## [v1.8.0](https://github.com/inspec/inspec-aws/tree/v1.8.0) (2020-04-02)
+
+#### Merged Pull Requests
+- Add aws_dhcp_options resource [#194](https://github.com/inspec/inspec-aws/pull/194) ([robbruce](https://github.com/robbruce))
+<!-- latest_release -->
+
 ## [v1.7.1](https://github.com/inspec/inspec-aws/tree/v1.7.1) (2020-03-25)
 
 #### Merged Pull Requests
 - added transit gateway resource, documentation and tests [#193](https://github.com/inspec/inspec-aws/pull/193) ([krystan](https://github.com/krystan))
-<!-- latest_release -->
 
 ## [v1.7.0](https://github.com/inspec/inspec-aws/tree/v1.7.0) (2020-03-23)
 
