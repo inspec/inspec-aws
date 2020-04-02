@@ -6,10 +6,6 @@ output "aws_vpc_id" {
   value = aws_vpc.inspec_vpc.0.id
 }
 
-output "aws_vpc_dhcp_inspec_dopt_options_id" {
-  value = aws_vpc_dhcp_options.inspec_dopt.0.id
-}
-
 output "aws_default_vpc_id" {
   value = data.aws_vpc.default.id
 }
@@ -23,7 +19,7 @@ output "aws_ec2_ami_id" {
 }
 
 output "aws_vpc_dhcp_options_id" {
-  value = aws_vpc.inspec_vpc.0.dhcp_options_id
+  value = aws_vpc_dhcp_options.inspec_dopt.0.id
 }
 
 output "aws_subnet_id" {
