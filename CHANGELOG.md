@@ -1,9 +1,14 @@
-<!-- latest_release 1.8.1 -->
+<!-- latest_release 1.8.2 -->
+## [v1.8.2](https://github.com/inspec/inspec-aws/tree/v1.8.2) (2020-04-07)
+
+#### Merged Pull Requests
+- Fixes #158 [#197](https://github.com/inspec/inspec-aws/pull/197) ([omer-chefio](https://github.com/omer-chefio))
+<!-- latest_release -->
+
 ## [v1.8.1](https://github.com/inspec/inspec-aws/tree/v1.8.1) (2020-04-02)
 
 #### Merged Pull Requests
 - Add missing documentation links [#195](https://github.com/inspec/inspec-aws/pull/195) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.8.0](https://github.com/inspec/inspec-aws/tree/v1.8.0) (2020-04-02)
 
