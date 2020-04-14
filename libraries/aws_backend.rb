@@ -23,6 +23,7 @@ require 'aws-sdk-route53'
 require 'aws-sdk-s3'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
+require 'aws-sdk-efs'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -85,16 +86,20 @@ class AwsConnection
     aws_client(Aws::ConfigService::Client)
   end
 
-  def ecr_client
-    aws_client(Aws::ECR::Client)
-  end
-
   def dynamodb_client
     aws_client(Aws::DynamoDB::Client)
   end
 
+  def ecr_client
+    aws_client(Aws::ECR::Client)
+  end
+
   def ecs_client
     aws_client(Aws::ECS::Client)
+  end
+
+  def efs_client
+    aws_client(Aws::EFS::Client)
   end
 
   def eks_client
@@ -156,13 +161,14 @@ end
 
 # Base class for AWS resources
 #
+# no inspection ALL
 class AwsResourceBase < Inspec.resource(1)
   attr_reader :opts, :aws
 
   def initialize(opts)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
-    client_args = { client_args: {} }
+    client_args = {client_args: {}}
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
