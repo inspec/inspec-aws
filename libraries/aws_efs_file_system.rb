@@ -20,7 +20,7 @@ class AwsEfsFileSystem < AwsResourceBase
 
   def initialize(opts = {})
     # Assume the argument is a file_system_id when it is a string type object and reject any other type.
-    opts = opts.is_a?(String) ? {file_system_id: opts} : {}
+    opts = {file_system_id: opts} if opts.is_a?(String)
 
     # File system identifier can be either the file_system_id or the creation_token.
     if opts[:file_system_id] && !opts[:file_system_id].empty?
