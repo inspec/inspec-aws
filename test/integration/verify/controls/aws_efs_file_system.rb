@@ -13,9 +13,7 @@ control "aws-efs-file-system-1.0" do
 
   describe aws_efs_file_system(creation_token: aws_efs_creation_token) do
     it { should exist }
-    if aws_efs_encrypted
-      it { should be_encrypted }
-    end
+    it { should be_encrypted } if aws_efs_encrypted
     its("size_in_bytes.value") { should be > 1 }
     its("throughput_mode") { should eq aws_efs_throughput_mode }
     its("tags") { should include("Name" => aws_efs_name) }
