@@ -55,7 +55,7 @@ namespace :test do
     target = if ENV['INSPEC_PROFILE_TARGET'] then ENV['INSPEC_PROFILE_TARGET'] else CONTROLS_DIR end
     reporter_name = if ENV['INSPEC_REPORT_NAME'] then ENV['INSPEC_REPORT_NAME'] else 'inspec-output' end
     # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
-    cmd = 'bundle exec inspec exec %s -t aws:// --attrs %s --reporter cli json:%s.json html:%s.html --chef-license=accept-silent'
+    cmd = 'bundle exec inspec exec %s -t aws:// --input-file %s --reporter cli json:%s.json html:%s.html --chef-license=accept-silent'
     if ENV['INSPEC_TRAP_NON_ZERO_EXIT'] then cmd += ' || true' else cmd += '; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi' end
     cmd = format(cmd, target, File.join(TERRAFORM_DIR.to_s, PROFILE_ATTRIBUTES), reporter_name, reporter_name)
     sh(cmd)
