@@ -56,6 +56,13 @@ variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecr_name" {}
 variable "aws_ecs_cluster_name" {}
+variable "aws_efs_creation_token" {}
+variable "aws_efs_encrypted" {}
+variable "aws_efs_performance_mode" {}
+variable "aws_efs_throughput_mode" {}
+variable "aws_efs_name" {}
+variable "aws_efs_company_name" {}
+variable "aws_efs_count" {}
 variable "aws_eks_cluster_name" {}
 variable "aws_eks_role_name" {}
 variable "aws_eks_subnet_name_1" {}
@@ -206,6 +213,30 @@ resource "aws_ebs_volume" "inspec_ebs_volume" {
 
   tags = {
     Name = var.aws_ebs_volume_name
+  }
+}
+
+resource "aws_efs_file_system" "inspec_efs_file_system" {
+  count             = var.aws_enable_creation
+  creation_token    = var.aws_efs_creation_token
+  encrypted         = var.aws_efs_encrypted
+  throughput_mode   = var.aws_efs_throughput_mode
+  performance_mode  = var.aws_efs_performance_mode
+
+  tags = {
+    Name = var.aws_efs_name
+    companyName = var.aws_efs_company_name
+  }
+}
+
+resource "aws_efs_file_system" "inspec_efs_file_systems" {
+  count             = var.aws_enable_creation * var.aws_efs_count
+  encrypted         = var.aws_efs_encrypted
+  throughput_mode   = var.aws_efs_throughput_mode
+  performance_mode  = var.aws_efs_performance_mode
+
+  tags = {
+    companyName = var.aws_efs_company_name
   }
 }
 
@@ -1517,6 +1548,7 @@ resource "aws_rds_cluster" "rds_cluster" {
 }
 
 resource "aws_rds_cluster_instance" "instance1" {
+  count               = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance1"
@@ -1524,6 +1556,7 @@ resource "aws_rds_cluster_instance" "instance1" {
 }
 
 resource "aws_rds_cluster_instance" "instance2" {
+  count               = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance2"
@@ -1535,7 +1568,6 @@ resource "aws_ec2_transit_gateway" "gateway" {
 }
 
 data "aws_iam_policy_document" "lambda_test_policy_document" {
-
   statement {
     effect    = "Allow"
     actions   = [
