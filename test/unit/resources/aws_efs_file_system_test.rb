@@ -1,6 +1,7 @@
 require 'helper'
 require 'aws_efs_file_system'
 require "aws-sdk-core"
+require_relative 'mock/aws_efs_file_system_mock'
 
 class AwsEfsFileSystemConstructorTest < Minitest::Test
   def test_empty_params_not_ok
@@ -42,19 +43,8 @@ end
 
 class AwsEfsFileSystemTest < Minitest::Test
   def setup
-    # Define required properties of a mock file system.
-    @mock_fs = {}
-    @mock_fs[:tags] = [{ :key => 'Name', :value => 'My EFS File System' }]
-    @mock_fs[:file_system_id] = 'fs-12345678'
-    @mock_fs[:creation_token] = 'my_token'
-    @mock_fs[:owner_id] = '012345678912'
-    @mock_fs[:creation_time] = Time.at(628232400)
-    @mock_fs[:life_cycle_state] = 'available'
-    @mock_fs[:number_of_mount_targets] = 1
-    @mock_fs[:size_in_bytes] = { :value => 6144 }
-    @mock_fs[:performance_mode] = 'generalPurpose'
-    @mock_fs[:encrypted] = true
-    @mock_fs[:throughput_mode] = 'bursting'
+    # Create a mock file system
+    @mock_fs = AwsEfsFileSystemMock.new.mock
 
     # Create stub data in expected format.
     data = {}
@@ -62,7 +52,7 @@ class AwsEfsFileSystemTest < Minitest::Test
     data[:client] = Aws::EFS::Client
     data[:method] = :describe_file_systems
 
-    # Create a mock file system with stub data.
+    # Create a stub file system description with mock file system.
     @file_system = AwsEfsFileSystem.new(file_system_id: @mock_fs[:file_system_id], client_args: { stub_responses: true }, stub_data: [data])
   end
 
@@ -71,7 +61,7 @@ class AwsEfsFileSystemTest < Minitest::Test
   end
 
   def test_file_system_name
-    assert_equal(@file_system.tags['Name'], @mock_fs[:tags][0][:value])
+    assert_equal(@file_system.tags[@mock_fs[:tags][0][:key]], @mock_fs[:tags][0][:value])
   end
 
   def test_file_system_id
