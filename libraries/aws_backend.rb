@@ -168,7 +168,7 @@ class AwsResourceBase < Inspec.resource(1)
   def initialize(opts)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
-    client_args = {client_args: {}}
+    client_args = { client_args: {} }
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
