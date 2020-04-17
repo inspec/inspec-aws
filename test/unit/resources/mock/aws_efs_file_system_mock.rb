@@ -1,10 +1,10 @@
 require_relative 'aws_base_resource_mock'
 
 class AwsEfsFileSystemMock < AwsBaseResourceMock
-  @@life_cycle = %w(creating available updating deleting deleted)
-  @@performance_mode = %w(generalPurpose maxIO)
-  @@encrypted = [true, false]
-  @@throughput_mode = %w(bursting provisioned)
+  LIFE_CYCLE = %w(creating available updating deleting deleted).freeze
+  PERFORMANCE_MODE = %w(generalPurpose maxIO).freeze
+  ENCRYPTED = [true, false].freeze
+  THROUGHPUT_MODE = %w(bursting provisioned).freeze
 
   attr_reader :mock
 
@@ -18,12 +18,12 @@ class AwsEfsFileSystemMock < AwsBaseResourceMock
         creation_token: @aws.any_string,
         owner_id: @aws.any_int.to_s,
         creation_time: Time.parse(@aws.any_date.to_s),
-        life_cycle_state: @@life_cycle.sample,
+        life_cycle_state: LIFE_CYCLE.sample,
         number_of_mount_targets: @aws.any_int(1),
         size_in_bytes: { :value => @aws.any_int(4) },
-        performance_mode: @@performance_mode.sample,
-        encrypted: @@encrypted.sample,
-        throughput_mode: @@throughput_mode.sample,
+        performance_mode: PERFORMANCE_MODE.sample,
+        encrypted: ENCRYPTED.sample,
+        throughput_mode: THROUGHPUT_MODE.sample,
     }
   end
 end
