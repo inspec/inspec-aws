@@ -32,7 +32,8 @@ class AwsEfsFileSystems < AwsResourceBase
              .register_column(:encryption_status, field: :encrypted)
              .register_column(:throughput_modes, field: :throughput_mode)
              .register_column(:kms_key_ids, field: :kms_key_id)
-             .register_column(:sizes_in_bytes, field: :size_in_bytes)
+             .register_column(:size_in_bytes, field: :size_in_bytes)
+             .register_column(:life_cycle_states, field: :life_cycle_state)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -62,6 +63,7 @@ class AwsEfsFileSystems < AwsResourceBase
           throughput_mode: file_system.throughput_mode,
           kms_key_id: file_system.kms_key_id,
           size_in_bytes: file_system.size_in_bytes,
+          life_cycle_state: file_system.life_cycle_state,
         }]
       end
       break unless @api_response.next_marker
