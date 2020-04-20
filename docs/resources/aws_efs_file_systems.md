@@ -23,6 +23,7 @@ This resource does not expect any parameters.
 |Property             | Description|
 | ---                 | --- |
 |tags                 | The list of tags that the EFS file system has. |
+|names                | The value of the `Name` (case sensitive) tag if it is defined. |
 |file\_system\_ids    | The ID of the EFS file system. |
 |creation\_tokens     | The creation token that the EFS file system is associated. |
 |owner\_ids           | The owner id of the EFS file system. |
