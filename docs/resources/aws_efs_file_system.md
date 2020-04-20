@@ -10,7 +10,7 @@ Use the `aws_efs_file_system` InSpec audit resource to test the properties of a 
 
 An `aws_efs_file_system` resource block declares the tests for a single AWS EFS file system by either file system id or creation token.
 
-    describe aws_efs_file_system('fs-12345678') do
+    describe aws_efs_file_system(file_system_id: 'fs-12345678') do
       it                         { should be_encrypted }
       its('size_in_bytes.value') { should cmp 6144 }
     end
@@ -18,6 +18,12 @@ An `aws_efs_file_system` resource block declares the tests for a single AWS EFS 
     describe aws_efs_file_system(creation_token: 'my-token') do
       its('encrypted')       { should cmp true }
       its('throughput_mode') { should eq 'bursting' }
+    end
+
+The value of the `file_system_id` can be provided as a string.  
+
+    describe aws_efs_file_system('fs-12345678') do
+      it { should exist }
     end
 
 #### Parameters
