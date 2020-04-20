@@ -32,14 +32,14 @@ This resource does not expect any parameters.
 |encryption\_status   | This indicates whether the EFS file system is encrypted or not.|
 |throughput\_modes    | The throughput mode of the EFS file system.|
 |kms\_key\_ids        | The ID of an AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the encrypted EFS file system. |
-|size\_in\_bytes      | The latest known metered size (in bytes) of data stored in the file system, in its Value field, and the time at which that size was determined in its Timestamp field. |
-|life\_cycle\_states  | The life cycle phase if the EFS file system, e.g. 'deleting'. |
+|size\_in\_bytes      | The latest known metered size (in bytes) of data stored in the file system, in its `value` field. |
+|life\_cycle\_states  | The life cycle phase of the EFS file system, e.g. 'deleting'. |
 
 ## Examples
 
 ##### Ensure you have exactly 3 file systems
     describe aws_efs_file_systems do
-      its("count") { should cmp 3 }
+      its("entries.count") { should cmp 3 }
     end
 
 ##### Use this InSpec resource to request the IDs of all EFS file systems, then test in-depth using `aws_efs_file_system`.
