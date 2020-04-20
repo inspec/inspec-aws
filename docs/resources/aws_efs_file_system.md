@@ -22,7 +22,7 @@ An `aws_efs_file_system` resource block declares the tests for a single AWS EFS 
 
 #### Parameters
 
-One of either the EFS file system id or creation token must be provided.
+Either the EFS file system id or creation token must be provided.
 
 ##### file\_system\_id _(required if `creation_token` not provided)_
 
@@ -40,7 +40,7 @@ This must be passed as a `creation_token: 'value'` key-value entry in a hash.
 |Property             | Description |
 | ---                 | --- |
 |creation_token       | The value of the creation token.|
-|file\_system\_id     | The id of the file system. |
+|file\_system\_id     | The id of the file system which is auto-assigned by the AWS. |
 |encrypted            | Indicates whether the file system is encrypted or not. |
 |life\_cycle\_state   | The lifecycle phase of the file system, e.g. 'creating'. |
 |owner\_id            | The AWS account that created the file system. |
