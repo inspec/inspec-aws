@@ -28,11 +28,11 @@ An `aws_rds_cluster` resource block uses resource parameters to search for an RD
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_cluster_identifier: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
+See also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html).
 
 ## Properties
 
-For a comprehensive list of properties available to test on an RDS cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/DBCluster.html)
+For a comprehensive list of properties available to test on an RDS cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/DBCluster.html).
 
 ## Examples
 
@@ -54,6 +54,12 @@ For a comprehensive list of properties available to test on an RDS cluster see t
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('master_username') { should eq 'db-maintain' }
       its('status') { should eq 'available' }
+    end
+
+##### Test the maximum and minumum capacity of a serverless RDS cluster 
+    describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
+      its('scaling_configuration_info.min_capacity') { should eq 2 }
+      its('scaling_configuration_info.max_capacity') { should eq 64 }
     end
 
 ## Matchers
