@@ -12,7 +12,7 @@ class AwsElasticacheCluster < AwsResourceBase
     end
 
     describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-001') do
-      it { should exists }
+      it { should exist }
       its('engine') { should cmp 'redis' }
     end
   "
