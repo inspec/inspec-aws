@@ -41,7 +41,7 @@ class AwsElasticacheCluster < AwsResourceBase
     @display_name = query_arguments.values.first
 
     # Ensure the response will have the detailed information about the cache nodes associated with the cluster.
-    # query_arguments[:show_cache_node_info] = true
+    query_arguments[:show_cache_node_info] = true
 
     catch_aws_errors do
       begin
@@ -60,6 +60,11 @@ class AwsElasticacheCluster < AwsResourceBase
 
   def id
     @cache_cluster[:cache_cluster_id] || nil
+  end
+
+  def node_ids
+    # puts @cache_cluster
+    @cache_cluster[:cache_nodes].map { |node| node[:cache_node_id] }
   end
 
   def exists?
