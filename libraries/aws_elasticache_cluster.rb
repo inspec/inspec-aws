@@ -63,8 +63,26 @@ class AwsElasticacheCluster < AwsResourceBase
   end
 
   def node_ids
-    # puts @cache_cluster
     @cache_cluster[:cache_nodes].map { |node| node[:cache_node_id] }
+  end
+
+  def port
+    # This will return value when:
+    # 1-It is defined at cluster level (memcached)
+    # 2-All ports are identical across the nodes (redis + memcached)
+    # Otherwise it is nil.
+    # Individual port values can be accessed through aws_elasticache_cluster_node resource.
+    if status == 'available'
+      return @cache_cluster[:configuration_end_point][:port] if @cache_cluster[:configuration_end_point]
+      port_list_uniq = @cache_cluster[:cache_nodes].map { |node| node[:endpoint][:port] }.uniq
+      port_list_uniq.length == 1 ? port_list_uniq.first : nil
+    else
+      nil
+    end
+  end
+
+  def status
+    @cache_cluster[:cache_cluster_status]
   end
 
   def exists?
