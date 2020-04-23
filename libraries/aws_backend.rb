@@ -102,7 +102,7 @@ class AwsConnection
     aws_client(Aws::EKS::Client)
   end
 
-  def elasticache_client
+  def elasti_cache_client
     aws_client(Aws::ElastiCache::Client)
   end
 
