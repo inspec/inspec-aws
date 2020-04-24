@@ -1,5 +1,5 @@
 ---
-title: About the aws\_elasti\_cache\_cluster Resource
+title: About the aws_elasti_cache_cluster Resource
 ---
 
 # aws_elasti_cache_cluster
