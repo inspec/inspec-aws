@@ -47,7 +47,6 @@ class AwsElastiCacheClusterNode < AwsResourceBase
         return
       end
     end
-
   end
 
   def id
