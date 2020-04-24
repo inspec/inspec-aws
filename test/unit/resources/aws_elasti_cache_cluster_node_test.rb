@@ -3,33 +3,33 @@ require 'aws_elasti_cache_cluster_node'
 require "aws-sdk-core"
 require_relative 'mock/aws_elasti_cache_cluster_mock'
 
-# class AwsElastiCacheClusterNodeConstructorTest < Minitest::Test
-#
-#   def test_empty_params_not_ok
-#     assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new() }
-#   end
-#
-#   def test_integer_params_not_ok
-#     assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(1234) }
-#   end
-#
-#   def test_rejects_invalid_cluster_id
-#     assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new('a'*60) }
-#   end
-#
-#   def test_rejects_unrecognized_identifiers
-#     assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(rubbish_id: 'fs-12345678') }
-#   end
-#
-#   def test_accepts_cache_cluster_id_as_identifier
-#     assert AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345678', client_args: { stub_responses: true })
-#   end
-#
-#   def test_cache_cluster_non_existing_creation_token
-#     refute AwsElastiCacheClusterNode.new(cache_cluster_id: 'my-id', client_args: { stub_responses: true }).exists?
-#   end
-#
-# end
+class AwsElastiCacheClusterNodeConstructorTest < Minitest::Test
+
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new() }
+  end
+
+  def test_integer_params_not_ok
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(1234) }
+  end
+
+  def test_rejects_invalid_cluster_id
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new('a'*60) }
+  end
+
+  def test_rejects_unrecognized_identifiers
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(rubbish_id: 'fs-12345678') }
+  end
+
+  def test_accepts_cache_cluster_id_and_node_id_as_identifier
+    assert AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345678', node_id: '0001', client_args: { stub_responses: true })
+  end
+
+  def test_cache_cluster_non_existing_node
+    refute AwsElastiCacheClusterNode.new(cache_cluster_id: 'my-id', node_id: '0001', client_args: { stub_responses: true }).exists?
+  end
+
+end
 
 class AwsElastiCacheClusterNodeTest < Minitest::Test
 
