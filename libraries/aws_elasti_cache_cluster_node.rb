@@ -40,18 +40,18 @@ class AwsElastiCacheClusterNode < AwsResourceBase
         resp = @aws.elasti_cache_client.describe_cache_clusters(query_arguments)
         @cache_cluster = resp.cache_clusters.first.to_h
         # Empty response should be considered as resource not found.
-        if @cache_cluster.empty?
-          raise Aws::ElastiCache::Errors::CacheClusterNotFoundFault.new(resp, "#{@__resource_name__} not found.")
-        end
+        raise Aws::ElastiCache::Errors::CacheClusterNotFoundFault.new(resp, "#{@__resource_name__} not found.") if @cache_cluster.empty?
+        @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
+        raise Aws::ElastiCache::Errors::CacheClusterNotFoundFault.new(resp, "#{@__resource_name__} not found.") if @cluster_node.nil?
       rescue Aws::ElastiCache::Errors::CacheClusterNotFoundFault
         return
       end
     end
-    @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
+
   end
 
   def id
-    @cluster_node[:cache_node_id] || nil
+    @cluster_node[:cache_node_id]
   end
 
   def status
