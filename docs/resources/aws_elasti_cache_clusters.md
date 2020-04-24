@@ -1,8 +1,8 @@
 ---
-title: About the aws\_elasti\_cache\_clusters Resource
+title: About the aws_elasti_cache_clusters Resource
 ---
 
-# aws\_elasti\_cache_\clusters
+# aws\_elasti\_cache\_clusters
 
 Use the `aws_elasti_cache_clusters` InSpec audit resource to test the properties of all AWS ElastiCache clusters. To audit a single ElastiCache cluster, use `aws_elasti_cache_cluster` (singular).
 
@@ -23,10 +23,10 @@ This resource does not expect any parameters.
 |Property                  | Description|
 | ---                      | --- |
 |ids                       | The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster. |
-|node\_types               | The name of the compute and memory capacity node type for the cluster, e.g. 'cache.m5.large'. |
-|engines                   | The name of the cache engine, e.g. 'redis'. |
-|status                    | The current state of the cluster, e.g. 'creating', 'available'. |
-|zones                     | The name of the Availability Zone in which the cluster is located or "Multiple" if the cache nodes are located in different Availability Zones.|
+|node\_types               | The name of the compute and memory capacity node type for the cluster, e.g. `cache.m5.large`. |
+|engines                   | The name of the cache engine, e.g. `redis`. |
+|status                    | The current state of the cluster, e.g. `creating`, `available`. |
+|zones                     | The name of the availability zone in which the cluster is located or "Multiple" if the cache nodes are located in different availability zones.|
 |subnet\_group\_names      | The name of the cache subnet group.|
 |encrypted\_at\_rest       | Indicates whether the content is encrypted at rest or not. |
 |encrypted\_at\_transit    | Indicates whether the content is encrypted at transit or not. |

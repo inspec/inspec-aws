@@ -1,5 +1,5 @@
 ---
-title: About the aws\_elasti\_cache\_cluster\_node Resource
+title: About the aws_elasti_cache_cluster_node Resource
 ---
 
 # aws\_elasti\_cache\_cluster\_node
@@ -8,7 +8,7 @@ Use the `aws_elasti_cache_cluster_node` InSpec audit resource to test the proper
 
 ## Syntax
 
-An `aws_elasti_cache_cluster_node` resource block declares the tests for a single AWS ElastiCache cluster node by `cache_cluster_id` and `node_id`.
+An `aws_elasti_cache_cluster_node` resource block declares the tests for a single AWS ElastiCache cluster node by `cache_cluster_id`  and `node_id`.
 
     describe aws_elasti_cache_cluster_node(cache_cluster_id: 'my-cluster-123', node_id: '0001') do
       it { should exist }
@@ -20,8 +20,12 @@ The ElastiCache cluster ID and node ID must be provided.
 
 ##### cache\_cluster\_id _(required)_
 
-The ID of the ElastiCache cluster contains between 1 and 50 alphanumeric characters or hyphens, should start with a letter, and cannot end with a hyphen or contain two consecutive hyphens.
-It can be passed as a `cache_cluster_id: 'value'` key-value entry in a hash.
+The ID of the ElastiCache cluster:
+ - contains between 1 and 50 alphanumeric characters or hyphens, 
+ - should start with a letter, 
+ - cannot end with a hyphen or contain two consecutive hyphens.
+ 
+It can be passed either as a string or as a `cache_cluster_id: 'value'` key-value entry in a hash.
 
 ##### node\_id _(required)_
 
@@ -34,10 +38,10 @@ The ID of the node must be a string containing 4 digits. It can be passed as a `
 |id                     | The cache node identifier, e.g. `0001`.|
 |port                   | The port number that the cache engine is listening on. |
 |address                | The DNS hostname of the cache node. |
-|status                 | The current state of the cache node, one of the following values: `available`, `creating`, `rebooting`, or `deleting`. |
+|status                 | The current state of the cache node. One of the following values: `available`, `creating`, `rebooting`, or `deleting`. |
 |create\_time           | The date and time when the cache node was created. |
 
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheNode.html)
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheNode.html).
 
 ## Examples
 
