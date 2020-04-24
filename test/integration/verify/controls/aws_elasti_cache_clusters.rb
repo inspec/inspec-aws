@@ -1,3 +1,6 @@
+aws_elasticache_cluster_id = attribute(:aws_elasticache_cluster_id, value: '', description: 'The AWS ElastiCache Cluster ID.')
+aws_elasticache_cluster_engine = attribute(:aws_elasticache_cluster_engine, value: '', description: 'The AWS ElastiCache Custer engine.')
+
 title 'Test multiple AWS ElastiCache Clusters'
 
 control 'aws-elasti-cache-clusters-1.0' do
@@ -8,5 +11,7 @@ control 'aws-elasti-cache-clusters-1.0' do
   describe aws_elasti_cache_clusters do
     it { should exist }
     its('count') { should be >= 1 }
+    its('engines') { should include aws_elasticache_cluster_engine }
+    its('ids') { should include aws_elasticache_cluster_id }
   end
 end

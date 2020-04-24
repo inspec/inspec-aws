@@ -43,31 +43,31 @@ class AwsElastiCacheClustersTest < Minitest::Test
   end
 
   def test_id
-    @cache_cluster_list.cache_cluster_ids.zip(@m_c).each do |c_id, m_c|
+    @cache_cluster_list.ids.zip(@m_c).each do |c_id, m_c|
       assert_equal(c_id, m_c[:cache_cluster_id])
     end
   end
 
   def test_node_type
-    @cache_cluster_list.cache_node_types.zip(@m_c).each do |c_n, m_c|
+    @cache_cluster_list.node_types.zip(@m_c).each do |c_n, m_c|
       assert_equal(c_n, m_c[:cache_node_type])
     end
   end
 
   def test_status
-    @cache_cluster_list.cache_cluster_statuses.zip(@m_c).each do |c_s, m_c|
+    @cache_cluster_list.status.zip(@m_c).each do |c_s, m_c|
       assert_equal(c_s, m_c[:cache_cluster_status])
     end
   end
 
   def test_encrypted_at_rest
-    @cache_cluster_list.encryption_status_at_rest.zip(@m_c).each do |c_e, m_c|
+    @cache_cluster_list.encrypted_at_rest.zip(@m_c).each do |c_e, m_c|
       assert_equal(c_e, m_c[:at_rest_encryption_enabled])
     end
   end
 
   def test_encrypted_at_transit
-    @cache_cluster_list.encryption_status_at_rest.zip(@m_c).each do |c_t, m_c|
+    @cache_cluster_list.encrypted_at_transit.zip(@m_c).each do |c_t, m_c|
       assert_equal(c_t, m_c[:transit_encryption_enabled])
     end
   end
