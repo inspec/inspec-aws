@@ -43,46 +43,46 @@ class AwsElastiCacheClusterNode < AwsResourceBase
         return
       end
     end
-
-    return if @cache_cluster.nil? || @cache_cluster.empty?
+    # If AWS API can not find a cluster we should return.
+    return if @cache_cluster.nil?
     @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
-    raise Inspec::Exceptions::ResourceFailed, "#{@__resource_name__} not found for  #{query_arguments}." if @cluster_node.nil?
+    raise Inspec::Exceptions::ResourceFailed, "#{@__resource_name__} #{opts[:node_id]} not found for  #{query_arguments[:cache_cluster_id]}." if @cluster_node.nil?
   end
 
   def id
-    @cluster_node[:cache_node_id]
+    @cluster_node[:cache_node_id] unless @cluster_node.nil?
   end
 
   def status
-    @cluster_node[:cache_node_status]
+    @cluster_node[:cache_node_status] unless @cluster_node.nil?
   end
 
   def address
-    @cluster_node[:endpoint][:address]
+    @cluster_node[:endpoint][:address] unless @cluster_node.nil?
   end
 
   def parameter_group_status
-    @cluster_node[:parameter_group_status]
+    @cluster_node[:parameter_group_status] unless @cluster_node.nil?
   end
 
   def customer_availability_zone
-    @cluster_node[:customer_availability_zone]
+    @cluster_node[:customer_availability_zone] unless @cluster_node.nil?
   end
 
   def create_time
-    @cluster_node[:cache_node_create_time]
+    @cluster_node[:cache_node_create_time] unless @cluster_node.nil?
   end
 
   def source_cache_node_id
-    @cluster_node[:source_cache_node_id]
+    @cluster_node[:source_cache_node_id] unless @cluster_node.nil?
   end
 
   def port
-    @cluster_node[:endpoint][:port]
+    @cluster_node[:endpoint][:port] unless @cluster_node.nil?
   end
 
   def exists?
-    !@cluster_node.nil? && !@cluster_node.empty?
+    !id.nil?
   end
 
   def to_s
