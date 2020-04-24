@@ -22,14 +22,14 @@ class AwsElastiCacheClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:cache_cluster_ids, field: :cache_cluster_id)
-             .register_column(:cache_node_types, field: :cache_node_type)
+             .register_column(:ids, field: :id)
+             .register_column(:node_types, field: :node_type)
              .register_column(:engines, field: :engine)
-             .register_column(:cache_cluster_statuses, field: :cache_cluster_status)
-             .register_column(:preferred_availability_zones, field: :preferred_availability_zone)
-             .register_column(:cache_subnet_group_names, field: :cache_subnet_group_name)
-             .register_column(:encryption_status_at_rest, field: :at_rest_encryption_enabled)
-             .register_column(:encryption_status_at_transit, field: :transit_encryption_enabled)
+             .register_column(:status, field: :status)
+             .register_column(:zones, field: :zone)
+             .register_column(:subnet_group_names, field: :subnet_group_name)
+             .register_column(:encrypted_at_rest, field: :encrypted_at_rest)
+             .register_column(:encrypted_at_transit, field: :encrypted_at_transit)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -49,14 +49,14 @@ class AwsElastiCacheClusters < AwsResourceBase
 
       @api_response.cache_clusters.each do |cache_cluster|
         elasticache_cluster_rows += [{
-          cache_cluster_id: cache_cluster.cache_cluster_id,
-          cache_node_type: cache_cluster.cache_node_type,
+          id: cache_cluster.cache_cluster_id,
+          node_type: cache_cluster.cache_node_type,
           engine: cache_cluster.engine,
-          cache_cluster_status: cache_cluster.cache_cluster_status,
-          preferred_availability_zone: cache_cluster.preferred_availability_zone,
-          cache_subnet_group_name: cache_cluster.cache_subnet_group_name,
-          at_rest_encryption_enabled: cache_cluster.at_rest_encryption_enabled,
-          transit_encryption_enabled: cache_cluster.transit_encryption_enabled,
+          status: cache_cluster.cache_cluster_status,
+          zone: cache_cluster.preferred_availability_zone,
+          subnet_group_name: cache_cluster.cache_subnet_group_name,
+          encrypted_at_rest: cache_cluster.at_rest_encryption_enabled,
+          encrypted_at_transit: cache_cluster.transit_encryption_enabled,
         }]
       end
       break unless @api_response.marker
