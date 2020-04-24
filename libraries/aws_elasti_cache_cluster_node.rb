@@ -24,9 +24,10 @@ class AwsElastiCacheClusterNode < AwsResourceBase
       raise ArgumentError, "#{@__resource_name__}: cache_cluster_id must contain between 1 and 50 alphanumeric characters or hyphens, should start with a letter, and cannot end with a hyphen or contain two consecutive hyphens."
     end
     # node_id constraints: https://docs.aws.amazon.com/cli/latest/reference/elasticache/describe-cache-clusters.html
-    raise ArgumentError, "#{@__resource_name__}: node_id must be a string containing 4 digits." unless opts[:node_id].is_a?(String)
+    error_message = "node_id must be a string containing 4 digits."
+    raise ArgumentError, "#{@__resource_name__}: #{error_message}" unless opts[:node_id].is_a?(String)
         unless /^[\d]{4}$/.match?(opts[:node_id])
-      raise ArgumentError, "#{@__resource_name__}: node_id must be a string containing 4 digits."
+      raise ArgumentError, "#{@__resource_name__}: #{error_message}"
     end
     @display_name = "Node #{opts[:node_id]} of ElastiCache Cluster #{opts[:cache_cluster_id]}"
 
