@@ -1,7 +1,7 @@
 require 'helper'
-require 'aws_elasti_cache_cluster_node'
+require 'aws_elasticache_cluster_node'
 require "aws-sdk-core"
-require_relative 'mock/aws_elasti_cache_cluster_mock'
+require_relative 'mock/aws_elasticache_cluster_mock'
 
 class AwsElastiCacheClusterNodeConstructorTest < Minitest::Test
 
@@ -22,7 +22,7 @@ class AwsElastiCacheClusterNodeConstructorTest < Minitest::Test
   end
 
   def test_accepts_cache_cluster_id_and_node_id_as_identifier
-    assert AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345678', node_id: '0001', client_args: { stub_responses: true })
+    assert AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345678', node_id: '0001')
   end
 
   def test_cache_cluster_non_existing_node

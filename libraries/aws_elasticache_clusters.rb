@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AwsElastiCacheClusters < AwsResourceBase
-  name 'aws_elasti_cache_clusters'
+  name 'aws_elasticache_clusters'
   desc 'Verifies settings for a collection of AWS Elasticache Clusters'
   example "
     describe aws_elasticache_clusters do
@@ -11,8 +11,8 @@ class AwsElastiCacheClusters < AwsResourceBase
     end
 
     # Iterate through all clusters
-    aws_elasti_cache_clusters.cache_cluster_ids.each do |cache_cluster_id|
-      describe aws_elasti_cache_cluster(cache_cluster_id) do
+    aws_elasticache_clusters.cache_cluster_ids.each do |cache_cluster_id|
+      describe aws_elasticache_cluster(cache_cluster_id) do
         it { should be_encrypted_at_rest }
         its('engine') { should cmp 'redis' }
       end

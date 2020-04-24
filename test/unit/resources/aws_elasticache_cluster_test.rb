@@ -1,7 +1,7 @@
 require 'helper'
-require 'aws_elasti_cache_cluster'
+require 'aws_elasticache_cluster'
 require "aws-sdk-core"
-require_relative 'mock/aws_elasti_cache_cluster_mock'
+require_relative 'mock/aws_elasticache_cluster_mock'
 
 class AwsElastiCacheClusterConstructorTest < Minitest::Test
 

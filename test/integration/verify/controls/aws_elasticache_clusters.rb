@@ -3,12 +3,12 @@ aws_elasticache_cluster_engine = attribute(:aws_elasticache_cluster_engine, valu
 
 title 'Test multiple AWS ElastiCache Clusters'
 
-control 'aws-elasti-cache-clusters-1.0' do
+control 'aws-elasticache-clusters-1.0' do
 
   impact 1.0
   title 'Ensure AWS ElastiCache Clusters have the correct properties.'
 
-  describe aws_elasti_cache_clusters do
+  describe aws_elasticache_clusters do
     it { should exist }
     its('count') { should be >= 1 }
     its('engines') { should include aws_elasticache_cluster_engine }

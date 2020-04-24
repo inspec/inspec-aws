@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AwsElastiCacheClusterNode < AwsResourceBase
-  name 'aws_elasti_cache_cluster_node'
+  name 'aws_elasticache_cluster_node'
   desc 'Verifies settings for an AWS Elasticache Cluster Node'
 
   example "
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: 'my-elasticache-cluster', node_id: '0001') do
+    describe aws_elasticache_cluster_node(cache_cluster_id: 'my-elasticache-cluster', node_id: '0001') do
       it { should exist }
       its{'port' } { should cmp 11211 }
       its('status') { should eq 'available' }
@@ -39,11 +39,14 @@ class AwsElastiCacheClusterNode < AwsResourceBase
       begin
         resp = @aws.elasti_cache_client.describe_cache_clusters(query_arguments)
         @cache_cluster = resp.cache_clusters.first.to_h
-        @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
-        raise Aws::ElastiCache::Errors::CacheClusterNotFoundFault.new(resp, "#{@__resource_name__} not found.") if @cluster_node.nil?
       rescue Aws::ElastiCache::Errors::CacheClusterNotFoundFault
         return
       end
+    end
+
+    unless @cache_cluster.nil? || @cache_cluster.empty?
+      @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
+      raise Inspec::Exceptions::ResourceFailed, "#{@__resource_name__} not found for  #{query_arguments}." if @cluster_node.nil?
     end
   end
 

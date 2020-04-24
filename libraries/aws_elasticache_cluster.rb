@@ -3,15 +3,15 @@
 require 'aws_backend'
 
 class AwsElastiCacheCluster < AwsResourceBase
-  name 'aws_elasti_cache_cluster'
+  name 'aws_elasticache_cluster'
   desc 'Verifies settings for an AWS Elasticache Cluster'
 
   example "
-    describe aws_elasti_cache_cluster('my-cluster-001') do
+    describe aws_elasticache_cluster('my-cluster-001') do
       it { should be_encrypted_at_transit }
     end
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: 'my-cluster-001') do
+    describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-001') do
       it { should exist }
       its('engine') { should cmp 'redis' }
     end
