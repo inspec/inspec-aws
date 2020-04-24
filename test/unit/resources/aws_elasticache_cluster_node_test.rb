@@ -10,25 +10,45 @@ class AwsElastiCacheClusterNodeConstructorTest < Minitest::Test
   end
 
   def test_integer_params_not_ok
-    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(1234) }
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345670', node_id: 1234) }
   end
 
-  def test_rejects_invalid_cluster_id
-    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new('a'*60) }
+  def test_rejects_invalid_node_id
+    assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345671', node_id: 'a001') }
   end
 
   def test_rejects_unrecognized_identifiers
     assert_raises(ArgumentError) { AwsElastiCacheClusterNode.new(rubbish_id: 'fs-12345678') }
   end
 
-  def test_accepts_cache_cluster_id_and_node_id_as_identifier
-    assert AwsElastiCacheClusterNode.new(cache_cluster_id: 'id-12345678', node_id: '0001')
-  end
-
   def test_cache_cluster_non_existing_node
-    refute AwsElastiCacheClusterNode.new(cache_cluster_id: 'my-id', node_id: '0001', client_args: { stub_responses: true }).exists?
-  end
+    # A full scale stub cluster has to be created to be able to query a node inside in it.
+    # Create a mock cluster.
+    number_of_fs = 1
+    mock_cluster_list = AwsElastiCacheClusterMock.new.multiple(number_of_fs)
 
+    # Create the stub data.
+    data = {}
+    data[:data] = { :cache_clusters => mock_cluster_list }
+    data[:client] = Aws::ElastiCache::Client
+    data[:method] = :describe_cache_clusters
+
+    # There is only one mock cluster, take the first from the list.
+    mock_cluster = mock_cluster_list.first
+    # Choose the first node from the mock cluster as a mock node.
+    mock_node = mock_cluster[:cache_nodes].first
+
+    # Create a stub cluster with mock cluster data.
+    # Expect to raise Inspec Resource error on failed node query (9999).
+    assert_raises(Inspec::Exceptions::ResourceFailed) do
+      AwsElastiCacheClusterNode.new(
+          cache_cluster_id: mock_cluster[:cache_cluster_id],
+          node_id: '9999',
+          client_args: { stub_responses: true },
+          stub_data: [data]
+      )
+    end
+  end
 end
 
 class AwsElastiCacheClusterNodeTest < Minitest::Test
