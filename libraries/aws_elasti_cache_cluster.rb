@@ -44,10 +44,6 @@ class AwsElastiCacheCluster < AwsResourceBase
       begin
         resp = @aws.elasti_cache_client.describe_cache_clusters(query_arguments)
         @cache_cluster = resp.cache_clusters.first.to_h
-        # Empty response should be considered as resource not found.
-        if @cache_cluster.empty?
-          raise Aws::ElastiCache::Errors::CacheClusterNotFoundFault.new(resp, "#{@__resource_name__} not found.")
-        end
       rescue Aws::ElastiCache::Errors::CacheClusterNotFoundFault
         return
       end
