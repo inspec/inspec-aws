@@ -1,16 +1,16 @@
 ---
-title: About the aws_elasti_cache_clusters Resource
+title: About the aws_elasticache_clusters Resource
 ---
 
-# aws\_elasti\_cache\_clusters
+# aws\_elasticache\_clusters
 
-Use the `aws_elasti_cache_clusters` InSpec audit resource to test the properties of all AWS ElastiCache clusters. To audit a single ElastiCache cluster, use `aws_elasti_cache_cluster` (singular).
+Use the `aws_elasticache_clusters` InSpec audit resource to test the properties of all AWS ElastiCache clusters. To audit a single ElastiCache cluster, use `aws_elasticache_cluster` (singular).
 
 ## Syntax
 
-An `aws_elasti_cache_clusters` resource block collects a group of ElastiCache cluster descriptions and then tests that group.
+An `aws_elasticache_clusters` resource block collects a group of ElastiCache cluster descriptions and then tests that group.
 
-    describe aws_elasti_cache_clusters
+    describe aws_elasticache_clusters
       it { should exist }
     end   
     
@@ -34,14 +34,14 @@ This resource does not expect any parameters.
 ## Examples
 
 ##### Ensure that exactly 3 ElastiCache clusters exist
-    describe aws_elasti_cache_clusters do
+    describe aws_elasticache_clusters do
       its("entries.count") { should cmp 3 }
     end
 
-##### Use this InSpec resource to request the IDs of all ElastiCache clusters, then test in-depth using `aws_elasti_cache_cluster` and `aws_elasti_cache_cluster_node`.
-    aws_elasti_cache_clusters.ids.each do |id|
-      aws_elasti_cache_cluster(id).node_ids.each do |node_id|
-        describe aws_elasti_cache_cluster_node(cache_cluster_id: id, node_id: node_id) do
+##### Use this InSpec resource to request the IDs of all ElastiCache clusters, then test in-depth using `aws_elasticache_cluster` and `aws_elasticache_cluster_node`.
+    aws_elasticache_clusters.ids.each do |id|
+      aws_elasticache_cluster(id).node_ids.each do |node_id|
+        describe aws_elasticache_cluster_node(cache_cluster_id: id, node_id: node_id) do
           it { should exist }
         end
       end
@@ -57,11 +57,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_elasti_cache_clusters.where( <property>: <value>) do
+    describe aws_elasticache_clusters.where( <property>: <value>) do
       it { should exist }
     end
       
-    describe aws_elasti_cache_clusters.where( <property>: <value>) do
+    describe aws_elasticache_clusters.where( <property>: <value>) do
       it { should_not exist }
     end
     

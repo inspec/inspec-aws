@@ -1,22 +1,22 @@
 ---
-title: About the aws_elasti_cache_cluster Resource
+title: About the aws_elasticache_cluster Resource
 ---
 
-# aws_elasti_cache_cluster
+# aws_elasticache_cluster
 
-Use the `aws_elasti_cache_cluster` InSpec audit resource to test the properties of a single AWS ElastiCache cluster.
+Use the `aws_elasticache_cluster` InSpec audit resource to test the properties of a single AWS ElastiCache cluster.
 
 ## Syntax
 
-An `aws_elasti_cache_cluster` resource block declares the tests for a single AWS ElastiCache cluster by `cache_cluster_id`.
+An `aws_elasticache_cluster` resource block declares the tests for a single AWS ElastiCache cluster by `cache_cluster_id`.
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: 'my-cluster-123') do
+    describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-123') do
       it { should exist }
     end
 
 The value of the `cache_cluster_id` can be provided as a string.  
 
-    describe aws_elasti_cache_cluster('my-cluster-123') do
+    describe aws_elasticache_cluster('my-cluster-123') do
       its('engine') { should cmp 'redis' }
     end
 
@@ -52,19 +52,19 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ##### Test that an ElastiCache cluster is available
 
-    describe aws_elasti_cache_cluster("my-cluster-123") do
+    describe aws_elasticache_cluster("my-cluster-123") do
         its("status") { should eq 'available' }
     end
 
 ##### Test that an Elasticache cluster engine is listening on port `11211`
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: "my-cluster-123") do
+    describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
         its("port") { should cmp 11211 }
     end
     
 ##### Test that an Elasticache cluster's engine version is `1.5.16`
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: "my-cluster-123") do
+    describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
         its("engine_version") { should cmp 1.5.16 }
     end
     
@@ -75,13 +75,13 @@ This InSpec audit resource has the following special matchers. For a full list o
    
 #### exist
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: "my-cluster-123") do
+    describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
         it { should exist }
     end
     
 ##### be_encrypted_at_rest
 
-    describe aws_elasti_cache_cluster(cache_cluster_id: "my-cluster-123") do
+    describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
         it { should be_encrypted_at_rest }
     end
     

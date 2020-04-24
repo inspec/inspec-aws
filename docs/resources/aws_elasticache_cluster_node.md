@@ -1,16 +1,16 @@
 ---
-title: About the aws_elasti_cache_cluster_node Resource
+title: About the aws_elasticache_cluster_node Resource
 ---
 
-# aws\_elasti\_cache\_cluster\_node
+# aws\_elasticache\_cluster\_node
 
-Use the `aws_elasti_cache_cluster_node` InSpec audit resource to test the properties of a single AWS ElastiCache cluster node.
+Use the `aws_elasticache_cluster_node` InSpec audit resource to test the properties of a single AWS ElastiCache cluster node.
 
 ## Syntax
 
-An `aws_elasti_cache_cluster_node` resource block declares the tests for a single AWS ElastiCache cluster node by `cache_cluster_id`  and `node_id`.
+An `aws_elasticache_cluster_node` resource block declares the tests for a single AWS ElastiCache cluster node by `cache_cluster_id`  and `node_id`.
 
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: 'my-cluster-123', node_id: '0001') do
+    describe aws_elasticache_cluster_node(cache_cluster_id: 'my-cluster-123', node_id: '0001') do
       it { should exist }
     end
 
@@ -47,19 +47,19 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ##### Test that an ElastiCache cluster node is available
 
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
+    describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
         its("status") { should eq 'available' }
     end
 
 ##### Test that an Elasticache cluster engine is listening on port `11211`
 
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
+    describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
         its("port") { should cmp 11211 }
     end
     
 ##### Test that an Elasticache cluster node's customer availability zone is `us-east-2b`
 
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
+    describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
         its("customer_availability_zone") { should cmp "us-east-2b" }
     end
     
@@ -70,7 +70,7 @@ This InSpec audit resource has the following special matchers. For a full list o
    
 #### exist
 
-    describe aws_elasti_cache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
+    describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
         it { should exist }
     end
     
