@@ -44,10 +44,9 @@ class AwsElastiCacheClusterNode < AwsResourceBase
       end
     end
 
-    unless @cache_cluster.nil? || @cache_cluster.empty?
-      @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
-      raise Inspec::Exceptions::ResourceFailed, "#{@__resource_name__} not found for  #{query_arguments}." if @cluster_node.nil?
-    end
+    return if @cache_cluster.nil? || @cache_cluster.empty?
+    @cluster_node = @cache_cluster[:cache_nodes].select { |node| opts[:node_id] == node[:cache_node_id] }.first
+    raise Inspec::Exceptions::ResourceFailed, "#{@__resource_name__} not found for  #{query_arguments}." if @cluster_node.nil?
   end
 
   def id
