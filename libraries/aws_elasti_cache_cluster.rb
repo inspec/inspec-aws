@@ -100,4 +100,11 @@ class AwsElastiCacheCluster < AwsResourceBase
   def to_s
     "ElastiCache Cluster #{@display_name}"
   end
+
+  # ElastiCache clusters can have cost tags: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html
+  # Tags can be queried with `list-tags-for-resource`, which requires ARN of the resource:
+  # arn:aws:elasticache:<region>:<customer-id>:<resource-type>:<resource-name>
+  # The `<customer-id>` can be queried with `organizations list-accounts`.
+  # However, this requires a privileged AWS account.
+  # We don't include `tags` method here assuming that users with programmatic access should not run with high privileges.
 end
