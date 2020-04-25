@@ -62,7 +62,7 @@ class AwsElastiCacheCluster < AwsResourceBase
   def ports
     return unless status == 'available'
     # This will return a hash with `node_id : port` pairs.
-   @cache_cluster[:cache_nodes].map { |node| [node[:cache_node_id], node[:endpoint][:port]] }.to_h
+    @cache_cluster[:cache_nodes].map { |node| [node[:cache_node_id], node[:endpoint][:port]] }.to_h
   end
 
   def status
