@@ -68,7 +68,7 @@ class AwsElastiCacheClusterTest < Minitest::Test
   end
 
   def test_port
-    assert_equal(@cache_cluster.port, @m_c[:configuration_endpoint][:port])
+    assert_equal(@cache_cluster.ports[@m_c[:cache_nodes][0][:cache_node_id]], @m_c[:configuration_endpoint][:port])
   end
 
   def test_status

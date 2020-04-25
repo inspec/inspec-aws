@@ -40,7 +40,7 @@ It can be passed either as a string or as a `cache_cluster_id: 'value'` key-valu
 |cache\_cluster\_id     | The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster.|
 |engine                 | The name of the cache engine, e.g. `redis`. |
 |node_ids               | The id list of all cluster nodes. |
-|port                   | The port number that the cache engine is listening on. |
+|ports                  | A hash of the node ID and port number pairs. |
 |status                 | The current state of the cluster, e.g. `creating`, `available`. |
 |encrypted\_at\_rest    | Indicates whether the content is encrypted at rest or not. |
 |encrypted\_at\_transit | Indicates whether the content is encrypted at transit or not. |
