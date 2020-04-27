@@ -68,6 +68,13 @@ variable "aws_eks_role_name" {}
 variable "aws_eks_subnet_name_1" {}
 variable "aws_eks_subnet_name_2" {}
 variable "aws_eks_vpc_name" {}
+variable "aws_elasticache_cluster_id" {}
+variable "aws_elasticache_cluster_engine" {}
+variable "aws_elasticache_cluster_node_type" {}
+variable "aws_elasticache_cluster_num_cache_nodes" {}
+variable "aws_elasticache_cluster_parameter_group_name" {}
+variable "aws_elasticache_cluster_engine_version" {}
+variable "aws_elasticache_cluster_port" {}
 variable "aws_elb_access_log_name" {}
 variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
@@ -1639,4 +1646,14 @@ resource "aws_lambda_function" "lambda_test" {
   runtime          = "python3.7"
   publish          = true
   timeout          = 10
+}
+resource "aws_elasticache_cluster" "inspec_test_elasticache" {
+  count                = var.aws_enable_creation
+  cluster_id           = var.aws_elasticache_cluster_id
+  engine               = var.aws_elasticache_cluster_engine
+  node_type            = var.aws_elasticache_cluster_node_type
+  num_cache_nodes      = var.aws_elasticache_cluster_num_cache_nodes
+  parameter_group_name = var.aws_elasticache_cluster_parameter_group_name
+  engine_version       = var.aws_elasticache_cluster_engine_version
+  port                 = var.aws_elasticache_cluster_port
 }
