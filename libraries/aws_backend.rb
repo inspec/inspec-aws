@@ -12,6 +12,7 @@ require 'aws-sdk-ec2'
 require 'aws-sdk-ecr'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
+require 'aws-sdk-elasticache'
 require 'aws-sdk-elasticloadbalancing'
 require 'aws-sdk-elasticloadbalancingv2'
 require 'aws-sdk-iam'
@@ -104,6 +105,10 @@ class AwsConnection
 
   def eks_client
     aws_client(Aws::EKS::Client)
+  end
+
+  def elasti_cache_client
+    aws_client(Aws::ElastiCache::Client)
   end
 
   def elb_client
