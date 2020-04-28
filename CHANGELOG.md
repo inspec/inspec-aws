@@ -1,9 +1,14 @@
-<!-- latest_release 1.9.0 -->
+<!-- latest_release 1.10.0 -->
+## [v1.10.0](https://github.com/inspec/inspec-aws/tree/v1.10.0) (2020-04-28)
+
+#### Merged Pull Requests
+- Fixes #184: Add EFS Resource(s) [#198](https://github.com/inspec/inspec-aws/pull/198) ([omer-chefio](https://github.com/omer-chefio))
+<!-- latest_release -->
+
 ## [v1.9.0](https://github.com/inspec/inspec-aws/tree/v1.9.0) (2020-04-27)
 
 #### Merged Pull Requests
 - Fixes #141 - Add AWS ElastiCache cluster resources [#201](https://github.com/inspec/inspec-aws/pull/201) ([omer-chefio](https://github.com/omer-chefio))
-<!-- latest_release -->
 
 ## [v1.8.2](https://github.com/inspec/inspec-aws/tree/v1.8.2) (2020-04-07)
 
