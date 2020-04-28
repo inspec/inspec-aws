@@ -166,7 +166,6 @@ end
 
 # Base class for AWS resources
 #
-# no inspection ALL
 class AwsResourceBase < Inspec.resource(1)
   attr_reader :opts, :aws
 
