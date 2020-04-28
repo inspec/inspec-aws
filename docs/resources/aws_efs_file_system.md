@@ -5,7 +5,7 @@ title: About the aws_efs_file_system Resource
 # aws\_efs\_file_system
 
 Use the `aws_efs_file_system` InSpec audit resource to test the properties of a single AWS EFS file system.
-This resource is available with InSpec version **4.18.108** and later. 
+This resource is added to InSpec AWS resource pack in version **[1.10.0](https://github.com/inspec/inspec-aws/releases/tag/v1.10.0)** and it is available with InSpec **[4.18.108](https://github.com/inspec/inspec/releases/tag/v4.18.108)** and later versions. 
 
 ## Syntax
 
