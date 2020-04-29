@@ -55,11 +55,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ec2_instance.where( <property>: <value>) do
+    describe aws_ec2_instances.where( <property>: <value>) do
       it { should exist }
     end
       
-    describe aws_ec2_instance.where( <property>: <value>) do
+    describe aws_ec2_instances.where( <property>: <value>) do
       it { should_not exist }
     end
     
