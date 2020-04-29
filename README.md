@@ -367,7 +367,7 @@ Valid:       true
 Summary:     0 errors, 1 warnings
 ```
 
-Conversly run using within a docker container, using the make file:
+Conversely run using within a docker container, using the make file:
 
 To run unit tests and linting:
 
@@ -417,7 +417,7 @@ To keep things simple the aws credentials can either be supplied via environment
 
 This just requires docker, docker-compose and make, see [Three Musketeers Pattern](https://3musketeers.io/docs/make.html) for details
 
-Running the integration tests (after `init_workspace` and `setup_integration_tests`):
+Running the integration tests (after `setup_integration_tests`):
 ```
 $ bundle exec rake test:run_integration_tests
 ----> Run

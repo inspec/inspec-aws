@@ -24,6 +24,7 @@ require 'aws-sdk-route53'
 require 'aws-sdk-s3'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
+require 'aws-sdk-efs'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -86,16 +87,20 @@ class AwsConnection
     aws_client(Aws::ConfigService::Client)
   end
 
-  def ecr_client
-    aws_client(Aws::ECR::Client)
-  end
-
   def dynamodb_client
     aws_client(Aws::DynamoDB::Client)
   end
 
+  def ecr_client
+    aws_client(Aws::ECR::Client)
+  end
+
   def ecs_client
     aws_client(Aws::ECS::Client)
+  end
+
+  def efs_client
+    aws_client(Aws::EFS::Client)
   end
 
   def eks_client
