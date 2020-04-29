@@ -52,13 +52,13 @@ class AwsEcrImage < AwsResourceBase
     @scan_findings = []
     loop do
       catch_aws_errors do
-        @resp = @aws.ecr_client.describe_image_scan_findings(query_params)
-        @scan_findings += @resp.image_scan_findings.findings
+        @resp_scan = @aws.ecr_client.describe_image_scan_findings(query_params)
+        @scan_findings += @resp_scan.image_scan_findings.findings
       end
       # Return if AWS returned an error.
-      return if @resp.nil?
-      break unless @resp.next_token
-      query_params[:next_token] = @resp[:next_token]
+      return if @resp_scan.nil?
+      break unless @resp_scan.next_token
+      query_params[:next_token] = @resp_scan[:next_token]
     end
     # Convert AWS struct format to hash.
     @vulns = []
