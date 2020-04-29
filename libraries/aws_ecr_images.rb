@@ -23,7 +23,6 @@ class AwsEcrImages < AwsResourceBase
              .register_column(:vulnerability_severity_counts, field: :vulnerability_severity_counts)
              .install_filter_methods_on_resource(self, :table)
 
-
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(repository_name))

@@ -27,7 +27,6 @@ class AwsEcrRepositories < AwsResourceBase
              .register_column(:image_scanning_on_push_status, field: :image_scanning_on_push_status)
              .install_filter_methods_on_resource(self, :table)
 
-
   def initialize(opts = {})
     super(opts)
     validate_parameters

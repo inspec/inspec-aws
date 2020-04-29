@@ -23,7 +23,7 @@ class AwsEcrImage < AwsResourceBase
     query_params = {
       repository_name: opts[:repository_name],
       image_ids: [
-        opts.select { |k, v| k.to_s.start_with?('image') },
+        opts.select { |k, _v| k.to_s.start_with?('image') },
       ],
     }
     catch_aws_errors do
@@ -46,7 +46,7 @@ class AwsEcrImage < AwsResourceBase
     # https://docs.aws.amazon.com/cli/latest/reference/ecr/describe-image-scan-findings.html
     query_params = {
       repository_name: @opts[:repository_name],
-      image_id: @opts.select { |k, v| k.to_s.start_with?('image') },
+      image_id: @opts.select { |k, _v| k.to_s.start_with?('image') },
       max_results: 1000,
     }
     @scan_findings = []
