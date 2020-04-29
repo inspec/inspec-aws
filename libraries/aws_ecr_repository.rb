@@ -39,4 +39,12 @@ class AwsEcrRepository < AwsResourceBase
   def to_s
     "ECR Repository #{@display_name}"
   end
+
+  def tags
+    return unless exists?
+    catch_aws_errors do
+      @resp_tags = @aws.ecr_client.list_tags_for_resource(resource_arn: @ecr_repo[:repository_arn])
+    end
+    map_tags(@resp_tags.tags)
+  end
 end
