@@ -55,6 +55,8 @@ class AwsEcrImage < AwsResourceBase
         @resp = @aws.ecr_client.describe_image_scan_findings(query_params)
         @scan_findings += @resp.image_scan_findings.findings
       end
+      # Return if AWS returned an error.
+      return if @resp.nil?
       break unless @resp.next_token
       query_params[:next_token] = @resp[:next_token]
     end
@@ -82,6 +84,10 @@ class AwsEcrImage < AwsResourceBase
       vuln.delete(:attributes)
     end
     @vulns
+  end
+
+  def vulnerability_severity_counts
+    image_scan_findings_summary.finding_severity_counts.item if @image.key?(:image_scan_findings_summary)
   end
 
   def to_s
