@@ -109,7 +109,13 @@ class AwsEcrImage < AwsResourceBase
   end
 
   def vulnerability_severity_counts
-    image_scan_findings_summary.finding_severity_counts.item if @image.key?(:image_scan_findings_summary)
+    return unless @image.key?(:image_scan_findings_summary)
+    counts = image_scan_findings_summary.finding_severity_counts.item
+    counts.transform_keys(&:downcase).transform_keys(&:to_sym)
+  end
+
+  def tags
+    image_tags
   end
 
   def to_s
