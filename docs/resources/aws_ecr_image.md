@@ -55,12 +55,23 @@ There are also additional properties available. For a comprehensive list, see [t
       its('image_scan_status.status') { should eq 'COMPLETE' }
     end
     
-    
 ##### Test that an image has a certain tag
 
     describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:687fba9b76554c8dea4c40fed4144011f29b8e1d5db5f2fc976c64ed31894967') do
       its('tags') { should include('latest') }
     end
+
+##### Test that an image does not contain the [Heartbleed](https://heartbleed.com/) vulnerability
+
+    describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
+      its('cve_ids') { should_not include('CVE-2014-0160') }
+    end
+    
+##### Test that an image does not contain a vulnerability more severe than CVSS2 score 8
+
+    describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
+      its('highest_vulnerability_severity') { should be <= 8 }
+    end    
     
 ## Matchers
 
