@@ -26,6 +26,14 @@ class AwsEcrImages < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(repository_name))
+    # Validate repository_name.
+    pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
+    matched_str = opts[:repository_name].match(pattern)
+    unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
+      raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
+                           'Please check the docs for more info '\
+                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+    end
     @table = fetch_data
   end
 

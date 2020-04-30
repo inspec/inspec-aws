@@ -20,6 +20,28 @@ class AwsEcrImage < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(repository_name), require_any_of: %i(image_tag image_digest))
     @display_name = opts.values.join(' ')
+
+    # Validate repository_name.
+    pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
+    matched_str = opts[:repository_name].match(pattern)
+    unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
+      raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
+                           'Please check the docs for more info '\
+                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+    end
+
+    # Validate image identifiers:
+    # https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageIdentifier.html
+    if opts[:image_tag]
+      raise ArgumentError, "#{@__resource_name__}: `image_tag` must be maximum 300 characters long." \
+      unless opts[:image_tag].length.between?(1, 300)
+    end
+
+    if opts[:image_digest]
+      raise ArgumentError, "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'"\
+      unless /[a-zA-Z0-9-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
+    end
+
     query_params = {
       repository_name: opts[:repository_name],
       image_ids: [
@@ -34,7 +56,7 @@ class AwsEcrImage < AwsResourceBase
   end
 
   def exists?
-    !@image.nil?
+    !@image.nil? && !@image.empty?
   end
 
   def vulnerabilities

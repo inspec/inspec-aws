@@ -18,11 +18,18 @@ class AwsEcrRepository < AwsResourceBase
     # Ignore arguments if they are not hash type at this point.
     opts = {} unless opts.is_a?(Hash)
 
-    # Validation of the repository_name value will be done by AWS service.
-    # https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html
-
     super(opts)
     validate_parameters(required: %i(repository_name))
+
+    # Validate repository_name.
+    pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
+    matched_str = opts[:repository_name].match(pattern)
+    unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
+      raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
+                           'Please check the docs for more info '\
+                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+    end
+
     @display_name = opts[:repository_name]
 
     catch_aws_errors do
@@ -33,7 +40,7 @@ class AwsEcrRepository < AwsResourceBase
   end
 
   def exists?
-    !@ecr_repo.nil?
+    !@ecr_repo.nil? && !@ecr_repo.empty?
   end
 
   def to_s
