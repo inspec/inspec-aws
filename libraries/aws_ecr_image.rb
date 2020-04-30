@@ -114,6 +114,14 @@ class AwsEcrImage < AwsResourceBase
     counts.transform_keys(&:downcase).transform_keys(&:to_sym)
   end
 
+  def cve_ids
+    vulnerabilities.map { |v| v[:name] }
+  end
+
+  def highest_vulnerability_severity
+    vulnerabilities.map { |v| v[:CVSS2_SCORE] }.max.to_i
+  end
+
   def tags
     image_tags
   end
