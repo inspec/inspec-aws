@@ -39,7 +39,7 @@ class AwsEcrImage < AwsResourceBase
 
     if opts[:image_digest]
       raise ArgumentError, "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'"\
-      unless /[a-zA-Z0-9-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
+      unless /[a-zA-Z0-9\-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
     end
 
     query_params = {
