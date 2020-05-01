@@ -23,7 +23,7 @@ The value of the `repository_name` can be provided as a string.
 
 #### Parameters
 
-The repository name must be provided.
+The repository name must be provided. The registry id is optional.
 
 ##### repository\_name _(required)_
 
@@ -32,6 +32,10 @@ The name of the ECR repository must satisfy the following constraints:
 - Minimum 2 and maximum of 256 characters long.
 
 This can be passed either as a string or as a `repository_name: 'value'` key-value entry in a hash.
+
+##### registry\_id _(optional)_
+
+The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
 
 
 ## Properties
