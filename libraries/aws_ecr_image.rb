@@ -18,7 +18,7 @@ class AwsEcrImage < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(repository_name), require_any_of: %i(image_tag image_digest))
+    validate_parameters(required: %i(repository_name), require_any_of: %i(image_tag image_digest), allow: %i(registry_id))
     @display_name = opts.values.join(' ')
 
     # Validate repository_name.
@@ -48,6 +48,13 @@ class AwsEcrImage < AwsResourceBase
         opts.select { |k, _v| k.to_s.start_with?('image') },
       ],
     }
+
+    # Validate registry_id. (Optional. If not provided, AWS account ID will be used by the AWS API.)
+    if opts.key?(:registry_id)
+      raise ArgumentError, "#{@__resource_name__}: `registry_id` should be a string of 12 digits." unless /^[0-9]{12}$/.match?(opts[:registry_id])
+      query_params[:registry_id] = opts[:registry_id]
+    end
+
     catch_aws_errors do
       resp = @aws.ecr_client.describe_images(query_params)
       @image = resp.image_details.first.to_h

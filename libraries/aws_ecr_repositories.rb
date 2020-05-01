@@ -29,16 +29,22 @@ class AwsEcrRepositories < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(allow: %i(registry_id))
+    @query_params = {}
+    # Validate registry_id. (Optional. If not provided, AWS account ID will be used by the AWS API.)
+    if opts.key?(:registry_id)
+      raise ArgumentError, "#{@__resource_name__}: `registry_id` should be a string of 12 digits." unless /^[0-9]{12}$/.match?(opts[:registry_id])
+      @query_params[:registry_id] = opts[:registry_id]
+    end
     @table = fetch_data
   end
 
   def fetch_data
     ecr_repositories_rows = []
-    query_params = { max_results: 1000 }
+    @query_params[:max_results] = 1000
     loop do
       catch_aws_errors do
-        @api_response = @aws.ecr_client.describe_repositories(query_params)
+        @api_response = @aws.ecr_client.describe_repositories(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
 

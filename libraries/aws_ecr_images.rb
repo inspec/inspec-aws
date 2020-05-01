@@ -25,7 +25,8 @@ class AwsEcrImages < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(repository_name))
+    validate_parameters(required: %i(repository_name), allow: %i(registry_id))
+    @query_params = {}
     # Validate repository_name.
     pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
     matched_str = opts[:repository_name].match(pattern)
@@ -34,15 +35,21 @@ class AwsEcrImages < AwsResourceBase
                            'Please check the docs for more info '\
                            'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
     end
+    @query_params[:repository_name] = opts[:repository_name]
+    # Validate registry_id. (Optional. If not provided, AWS account ID will be used by the AWS API.)
+    if opts.key?(:registry_id)
+      raise ArgumentError, "#{@__resource_name__}: `registry_id` should be a string of 12 digits." unless /^[0-9]{12}$/.match?(opts[:registry_id])
+      @query_params[:registry_id] = opts[:registry_id]
+    end
     @table = fetch_data
   end
 
   def fetch_data
     ecr_images_rows = []
-    query_params = { repository_name: opts[:repository_name], max_results: 1000 }
+    @query_params[:max_results] = 1000
     loop do
       catch_aws_errors do
-        @api_response = @aws.ecr_client.describe_images(query_params)
+        @api_response = @aws.ecr_client.describe_images(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
 
