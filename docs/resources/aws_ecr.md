@@ -3,8 +3,9 @@ title: About the aws_ecr Resource
 platform: aws
 ---
 
-| WARNING **This resource is deprecated. Please use following resources instead.** |
-|---|
+<aside class="warning">
+  **This resource is deprecated. Please use following resources instead.** 
+</aside>
 
 - `aws_ecr_image`
 - `aws_ecr_images`
