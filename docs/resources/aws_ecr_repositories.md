@@ -15,7 +15,7 @@ An `aws_ecr_repositories` resource block declares the tests for all AWS ECR repo
       it { should exist }
     end
 
-Repositories in a non-default registry can be tested by supplying the registry ID. The AWS user should have access permission to it.  
+Repositories in a non-default registry can be tested by supplying the registry ID if the AWS user has necessary permissions on it.  
 
     describe aws_ecr_repositories(registry_id: '123456789012') do
       it { should exist }
