@@ -5,10 +5,6 @@ require_relative 'mock/aws_ecr_repository_mock'
 
 class AwsEcrRepositoriesConstructorTest < Minitest::Test
 
-  def setup
-    ENV['AWS_REGION'] = 'us-east-1'
-  end
-
   # def test_empty_params_ok
   #   assert AwsEcrRepositories.new()
   # end
