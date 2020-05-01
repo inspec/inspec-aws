@@ -73,7 +73,7 @@ class AwsEcrImageTest < Minitest::Test
   end
 
   def test_image_scan_findings_summary
-    assert_equal(@ecr_image.vulnerability_severity_counts, @m_i[:image_scan_findings_summary][:finding_severity_counts])
+    assert_equal(@ecr_image.image_scan_findings_summary.finding_severity_counts.item, @m_i[:image_scan_findings_summary][:finding_severity_counts])
   end
 
   def test_registry_id

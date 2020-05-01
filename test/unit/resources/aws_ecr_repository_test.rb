@@ -13,6 +13,10 @@ class AwsEcrRepositoryConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEcrRepository.new(repository_name: '-a') }
   end
 
+  def test_invalid_registry_id
+    assert_raises(ArgumentError) { AwsEcrRepository.new(registry_id: 'a234',repository_name: 'my-repo') }
+  end
+
   def test_too_long_repository_name
     assert_raises(ArgumentError) { AwsEcrRepository.new('a'*257) }
   end
