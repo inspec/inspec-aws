@@ -17,7 +17,7 @@ An `aws_ecr_image` resource block declares the tests for a single image in an AW
 
 #### Parameters
 
-The repository name and the image identifier must be provided.
+The repository name and the image identifier must be provided. The ID of the registry is optional.
 
 ##### repository\_name _(required)_
 
@@ -33,16 +33,21 @@ The tag used for the image. It can not be longer than 300 characters.
 
 The `sha256` digest of the image manifest. It must satisfy this regex pattern: `[a-zA-Z0-9-_+.]+:[a-fA-F0-9]+`.
 
+##### registry\_id _(optional)_
+
+The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
 
 ## Properties
 
-|Property                     | Description |
-| ---                         | --- |
-|repository\_name             | The name of the repository.|
-|registry\_id                 | The AWS account ID associated with the registry that contains the repository. |
-|tags                         | The list of tags associated with this image. |
-|vulnerability_severity_counts| The image vulnerability counts, sorted by severity, e.g. `{:high=>1}`.|
-|vulnerabilities              | A list of hashes with each key-value pair corresponding to an image [scan findings](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageScanFinding.html). E.g. `{:name=>"CVE-2019-14697", :uri=>"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14697", :severity=>"HIGH", :package_version=>"1.1.18-r3", :package_name=>"musl", :CVSS2_VECTOR=>"AV:N/AC:L/Au:N/C:P/I:P/A:P", :CVSS2_SCORE=>"7.5"}`|
+|Property                       | Description |
+| ---                           | --- |
+|repository\_name               | The name of the repository.|
+|registry\_id                   | The AWS account ID associated with the registry that contains the repository. |
+|tags                           | The list of tags associated with this image. |
+|vulnerability_severity_counts  | The image vulnerability counts, sorted by severity, e.g. `{:high=>1}`.|
+|vulnerabilities                | A list of hashes with each key-value pair corresponding to an image [scan findings](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageScanFinding.html). E.g. `{:name=>"CVE-2019-14697", :uri=>"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14697", :severity=>"HIGH", :package_version=>"1.1.18-r3", :package_name=>"musl", :CVSS2_VECTOR=>"AV:N/AC:L/Au:N/C:P/I:P/A:P", :CVSS2_SCORE=>"7.5"}`|
+|cve_ids                        | The list of [CVE IDs](https://cve.mitre.org/cve/identifiers/) of the vulnerabilities in the image.|
+|highest_vulnerability_severity | The [CVSS v2](https://www.first.org/cvss/v2/guide) score of the most severe vulnerability in the image.|
 
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageDetail.html)
@@ -67,7 +72,7 @@ There are also additional properties available. For a comprehensive list, see [t
       its('cve_ids') { should_not include('CVE-2014-0160') }
     end
     
-##### Test that an image does not contain a vulnerability more severe than CVSS2 score 8
+##### Test that an image does not contain a vulnerability more severe than CVSS v2 score 8
 
     describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
       its('highest_vulnerability_severity') { should be <= 8 }
