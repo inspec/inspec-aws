@@ -5,10 +5,6 @@ require_relative 'mock/aws_ecr_repository_mock'
 
 class AwsEcrRepositoriesConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    assert AwsEcrRepositories.new()
-  end
-
   def test_params_not_ok
     assert_raises(ArgumentError) { AwsEcrRepositories.new(repository_name: 'my-repo') }
   end
@@ -16,10 +12,6 @@ class AwsEcrRepositoriesConstructorTest < Minitest::Test
   def test_valid_repository_name
     assert AwsEcrRepositories.new(client_args: { stub_responses: true })
   end
-
-  # def test_valid_registry_id
-  #   assert AwsEcrRepository.new(registry_id: '123456789012', repository_name: 'my-repo')
-  # end
 
   def test_non_existing_repository
     refute AwsEcrRepositories.new(client_args: { stub_responses: true }).exist?
