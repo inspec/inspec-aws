@@ -11,7 +11,7 @@ class AwsEcrImage < AwsResourceBase
       it { should exist }
     end
 
-    describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:abc123...xyz') do
+    describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:abc123...edf') do
       it { should exist }
     end
   "
