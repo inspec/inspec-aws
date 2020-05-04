@@ -5,9 +5,9 @@ require_relative 'mock/aws_ecr_repository_mock'
 
 class AwsEcrRepositoriesConstructorTest < Minitest::Test
 
-  # def test_empty_params_ok
-  #   assert AwsEcrRepositories.new()
-  # end
+  def test_empty_params_ok
+    assert AwsEcrRepositories.new()
+  end
 
   def test_params_not_ok
     assert_raises(ArgumentError) { AwsEcrRepositories.new(repository_name: 'my-repo') }
