@@ -65,7 +65,7 @@ class AwsEcrImages < AwsResourceBase
         }]
       end
       break unless @api_response.next_token
-      query_params[:next_token] = @api_response.next_token
+      @query_params[:next_token] = @api_response.next_token
     end
     ecr_images_rows
   end
