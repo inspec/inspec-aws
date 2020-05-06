@@ -6,7 +6,7 @@ require_relative 'mock/aws_internet_gateway_mock'
 class AwsInternetGatewaysConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    assert AwsInternetGateways.new()
+    assert AwsInternetGateways.new(client_args: { stub_responses: true })
   end
 
   def test_params_not_ok
