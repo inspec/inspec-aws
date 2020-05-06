@@ -1,4 +1,4 @@
-title 'Test single AWS VPC'
+title 'Test multiple AWS RDS instances'
 
 aws_rds_db_identifier = attribute(:aws_rds_db_identifier, default: '', description: 'The AWS RDS DB identifier.')
 aws_rds_db_name = attribute(:aws_rds_db_name, default: '', description: 'The AWS RDS DB name.')
