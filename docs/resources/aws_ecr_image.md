@@ -17,7 +17,7 @@ An `aws_ecr_image` resource block declares the tests for a single image in an AW
 
 #### Parameters
 
-The repository name and the image identifier must be provided. The ID of the registry is optional.
+The repository name and the image identifier (either `image_tag` or `image_digest`) must be provided. The ID of the registry is optional.
 
 ##### repository\_name _(required)_
 
