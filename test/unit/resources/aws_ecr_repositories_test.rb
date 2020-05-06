@@ -9,11 +9,11 @@ class AwsEcrRepositoriesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEcrRepositories.new(repository_name: 'my-repo') }
   end
 
-  def test_valid_repository_name
+  def test_empty_params_ok
     assert AwsEcrRepositories.new(client_args: { stub_responses: true })
   end
 
-  def test_non_existing_repository
+  def test_non_existing_repositories
     refute AwsEcrRepositories.new(client_args: { stub_responses: true }).exist?
   end
 
