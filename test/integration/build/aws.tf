@@ -92,6 +92,7 @@ variable "aws_iam_role_generic_policy_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
 variable "aws_internet_gateway_name" {}
+variable "aws_internet_gateway_name_tag" {}
 variable "aws_iam_policy_name" {}
 variable "aws_iam_attached_policy_name" {}
 variable "aws_key_description_disabled" {}
@@ -1670,5 +1671,19 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
   }
   tags = {
     Name        = var.aws_ecr_repository_name
+  }
+}
+
+resource "aws_vpc" "for_igw" {
+  count = var.aws_enable_creation
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_internet_gateway" "inspec_test" {
+  count = var.aws_enable_creation
+  vpc_id = aws_vpc.for_igw[0].id
+
+  tags = {
+    Name = var.aws_internet_gateway_name_tag
   }
 }

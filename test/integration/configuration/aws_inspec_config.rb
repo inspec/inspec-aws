@@ -132,6 +132,7 @@ module AWSInspecConfig
       aws_iam_user_name: "iam-user-#{add_random_string}",
       aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",
       aws_internet_gateway_name: 'inspec-aws-internet-gateway',
+      aws_internet_gateway_name_tag: "inspec-aws-igw-#{add_random_string}",
       aws_iam_group_name: "iam_group-#{add_random_string}",
       aws_iam_role_generic_name: "aws-iam-role-#{add_random_string}",
       aws_iam_role_generic_policy_name: "aws-iam-role-policy-#{add_random_string}",
