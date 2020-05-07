@@ -69,7 +69,7 @@ There are also additional properties available. For a comprehensive list, see [t
 ##### Test that an EC2 instance has the correct tag (using the `tags_hash` property)
     describe aws_ec2_instance('i-090c29e4f4c165b74') do
       its('tags_hash') { should include('Contact' => 'Gilfoyle') }
-      its('tags_hash') { should include('Contact') }                  # Regardsless of the value
+      its('tags_hash') { should include('Contact') }                  # Regardless of the value
     end    
     
 ##### Test that an EC2 instance has no roles
