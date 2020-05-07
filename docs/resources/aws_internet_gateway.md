@@ -5,7 +5,7 @@ title: About the aws_internet_gateway Resource
 # aws\_internet\_gateway
 
 Use the `aws_internet_gateway` InSpec audit resource to test the properties of a single AWS internet gateway.
-This resource is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards.
+This resource is available in InSpec AWS resource pack version **[1.13.0](https://github.com/inspec/inspec-aws/releases/tag/v1.13.0)** onwards.
 
 ## Syntax
 
@@ -41,7 +41,7 @@ If there are multiple internet gateways with the same name, this resource will r
 |id                  | The ID of the internet gateway. |
 |name                | The value of the `Name` tag. It is `nil` if not defined. |
 |vpc\_id             | The ID of the attached VPC. It is `nil` if the resource is in a `detached` state. |
-|tags                | An hash with each key-value pair corresponding to a tag associated with the entity. |
+|tags                | A hash, with each key-value pair corresponding to an internet gateway tag. |
 |attached?           | Indicates whether the internet gateway is **attached** to a VPC or not (`true` or `false`). |
 |detached?           | Indicates whether the internet gateway is in a **detached** state or not (`true` or `false`). |
 |owner_id            | The ID of the AWS account that owns the internet gateway.|
