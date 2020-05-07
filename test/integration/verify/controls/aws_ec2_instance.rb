@@ -16,6 +16,7 @@ control 'aws-ec2-instance-1.0' do
     its('image_id'){ should eq aws_ec2_ami_id }
     its('state') {should be_in ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']}
     its('tags') { should include(key: 'Name', value: aws_vm_name) }
+    its('tags_hash') { should include("Name") }
     it { should_not have_roles }
   end
 
