@@ -3,6 +3,13 @@ title: About the aws_ecr Resource
 platform: aws
 ---
 
+> WARNING: **This resource is deprecated. Please use one of the following resources instead.** 
+
+- `aws_ecr_image`
+- `aws_ecr_images`
+- `aws_ecr_repository`
+- `aws_ecr_repositories`
+
 # aws\_ecr
 
 Use the `aws_ecr` InSpec audit resource to test properties of a single AWS Elastic Container Registry.

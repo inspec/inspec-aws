@@ -18,6 +18,7 @@ class AwsEcr < AwsResourceBase
     opts = { repository_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:repository_name])
+    Inspec::Log.warn "#{@__resource_name__} has been DEPRECATED. Please use `aws_ecr_repository`, `aws_ecr_repositories`, `aws_ecr_image` or `aws_ecr_images` instead." \
 
     catch_aws_errors do
       resp = @aws.ecr_client.describe_repositories(repository_names: [opts[:repository_name]])
