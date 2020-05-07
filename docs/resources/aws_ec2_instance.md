@@ -43,8 +43,9 @@ This must be passed as a `name: 'value'` key-value entry in a hash.
 |availability\_zone   | The availability zone of the instance. |
 |security\_groups     | A hash containing the security group ids and names associated with the instance. |
 |security\_group\_ids | The security group ids associated with the instance. |
-|ebs\_volumes         | An hash containing the names and ids of any EBS volumes associated with the instance. |
-|tags                 | An hash with each key-value pair corresponding to a tag associated with the entity. |
+|ebs\_volumes         | A hash containing the names and ids of any EBS volumes associated with the instance. |
+|tags                 | A list of hashes with each key-value pair corresponding to an EC2 instance tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+|tags_hash            | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards.|
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 
@@ -64,6 +65,12 @@ There are also additional properties available. For a comprehensive list, see [t
     describe aws_ec2_instance('i-090c29e4f4c165b74') do
       its('tags') { should include(key: 'Contact', value: 'Gilfoyle') }
     end
+    
+##### Test that an EC2 instance has the correct tag (using the `tags_hash` property)
+    describe aws_ec2_instance('i-090c29e4f4c165b74') do
+      its('tags_hash') { should include('Contact' => 'Gilfoyle') }
+      its('tags_hash') { should include('Contact') }                  # Regardless of the value
+    end    
     
 ##### Test that an EC2 instance has no roles
     describe aws_ec2_instance('i-090c29e4f4c165b74') do

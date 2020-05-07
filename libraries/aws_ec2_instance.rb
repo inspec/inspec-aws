@@ -118,4 +118,9 @@ class AwsEc2Instance < AwsResourceBase
   def to_s
     "EC2 Instance #{@display_name}"
   end
+
+  def tags_hash
+    return unless exists?
+    map_tags(tags)
+  end
 end
