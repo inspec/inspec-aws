@@ -28,6 +28,7 @@ This resource does not expect any parameters.
 |subnet\_ids     | The subnet with which the EC2 instance is associated. |
 |instance\_types | The type of instance, for example m5.large. |
 |entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|tags            | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards.|
 
 ## Examples
 
@@ -44,6 +45,21 @@ This resource does not expect any parameters.
         its('image_id') { should eq 'ami-27a58d5c' }
       end 
     end
+    
+##### Filter EC2 instances with their `Environment` tags<superscript>*</superscript> equal to `Dev`, then test in-depth using `aws_ec2_instance`.
+    aws_ec2_instances.where(tags: {"Environment" => "Dev"}).instance_ids.each do |id|
+      describe aws_ec2_instance(id) do
+        it { should be_stopped }
+      end
+    end
+<superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/{"Environment"=>"Dev"}/`    
+   
+##### Filter EC2 instances with a `stop-at-10-pm` tag regardless of its value, then test in-depth using `aws_ec2_instance`.  
+    aws_ec2_instances.where(tags: /"stop-at-10-pm"=>/).instance_ids.each do |id|
+      describe aws_ec2_instance(id) do
+        it { should be_stopped }
+      end
+    end   
 
 ## Matchers
 
@@ -55,11 +71,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ec2_instance.where( <property>: <value>) do
+    describe aws_ec2_instances.where( <property>: <value>) do
       it { should exist }
     end
       
-    describe aws_ec2_instance.where( <property>: <value>) do
+    describe aws_ec2_instances.where( <property>: <value>) do
       it { should_not exist }
     end
     
