@@ -18,6 +18,7 @@ class AwsEc2Instances < AwsResourceBase
              .register_column(:vpc_ids,        field: :vpc_id)
              .register_column(:subnet_ids,     field: :subnet_id)
              .register_column(:instance_types, field: :instance_type)
+             .register_column(:tags,           field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -42,6 +43,7 @@ class AwsEc2Instances < AwsResourceBase
             vpc_id: instance.vpc_id,
             subnet_id: instance.subnet_id,
             instance_type: instance.instance_type,
+            tags: map_tags(instance.tags),
           }
         end
       end
