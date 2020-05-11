@@ -42,7 +42,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 |content\_type   | A standard MIME type describing the format of the object data. |
 |object\_acl    | An array of AWS Grants detailing permission grants on the bucket object.  |
 
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html).
 
 ## Examples
 
