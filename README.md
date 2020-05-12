@@ -10,7 +10,7 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 ### AWS Credentials
 
-Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal))
+Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)
 
 There are multiple ways to set AWS credentials as shown below:
 
@@ -61,6 +61,16 @@ Example `~/.aws/config` :
    2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set as an Environment variable.
    3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` is NOT set as an Environment variable. Default credentials will be used.
    
+### AWS Region
+The `aws_region` parameter can be provided to query resources in a specific region. If not provided, the AWS region set in environment variables or configuration files will be used. 
+
+Example:
+```ruby
+describe aws_ec2_instances(aws_region: 'us-west-2') do
+  its('count') { should eq 10 }
+end
+```
+
 ### Assuming an IAM role
 Assuming an IAM role allows an IAM user to gain additional/different permissions to perform actions in a different AWS account. (See example [aws configure IAM role](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html))
 
