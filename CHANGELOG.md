@@ -1,9 +1,14 @@
-<!-- latest_release 1.12.0 -->
+<!-- latest_release 1.12.1 -->
+## [v1.12.1](https://github.com/inspec/inspec-aws/tree/v1.12.1) (2020-05-12)
+
+#### Merged Pull Requests
+- Update README for the aws_region parameter [#210](https://github.com/inspec/inspec-aws/pull/210) ([omer-chefio](https://github.com/omer-chefio))
+<!-- latest_release -->
+
 ## [v1.12.0](https://github.com/inspec/inspec-aws/tree/v1.12.0) (2020-05-07)
 
 #### Merged Pull Requests
 - Resolves #206 : Filter EC2 instances by tags [#208](https://github.com/inspec/inspec-aws/pull/208) ([omer-chefio](https://github.com/omer-chefio))
-<!-- latest_release -->
 
 ## [v1.11.0](https://github.com/inspec/inspec-aws/tree/v1.11.0) (2020-05-06)
 
