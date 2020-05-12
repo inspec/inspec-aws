@@ -26,6 +26,7 @@ class AwsS3BucketObject < AwsResourceBase
       rescue Aws::S3::Errors::NoSuchBucket, Aws::S3::Errors::NoSuchKey
         return
       end
+      create_resource_methods(@bucket_object.first.to_h)
     end
   end
 
