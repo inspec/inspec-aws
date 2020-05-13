@@ -5,36 +5,17 @@ source 'https://rubygems.org'
 gem 'bundle'
 # Note that 'aws-sdk' pulls in a large number of libraries, choose explicitly those to include instead
 # gem 'aws-sdk', '~> 3'
+#
 # See service list here: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/index.html
-gem 'aws-sdk-autoscaling', '~> 1'
-gem 'aws-sdk-cloudformation', '~> 1'
-gem 'aws-sdk-cloudtrail', '~> 1'
-gem 'aws-sdk-cloudwatch', '~> 1'
-gem 'aws-sdk-cloudwatchlogs', '~> 1'
-gem 'aws-sdk-configservice', '~> 1'
-gem 'aws-sdk-dynamodb', '~> 1'
-gem 'aws-sdk-ec2', '~> 1'
-gem 'aws-sdk-ecr', '~> 1'
-gem 'aws-sdk-ecs', '~> 1'
-gem 'aws-sdk-eks', '~> 1'
-gem 'aws-sdk-elasticache', '~> 1'
-gem 'aws-sdk-elasticloadbalancing', '~> 1'
-gem 'aws-sdk-elasticloadbalancingv2', '~> 1'
-gem 'aws-sdk-iam', '~> 1'
-gem 'aws-sdk-kms', '~> 1'
-gem 'aws-sdk-lambda', '~> 1'
-gem 'aws-sdk-organizations', '~> 1'
-gem 'aws-sdk-rds', '~> 1'
-gem 'aws-sdk-route53', '~> 1'
-gem 'aws-sdk-s3', '~> 1'
-gem 'aws-sdk-sns', '~> 1'
-gem 'aws-sdk-sqs', '~> 1'
-gem 'aws-sdk-efs', '~> 1'
+#
+# See train-aws for a list of dependencies already available: https://github.com/inspec/train-aws/blob/master/train-aws.gemspec
+# Note if the gem required is commented out, please raise a PR against the train-aws repo first
+# In the mean time the gem can be added here for local development
 
 # Use Latest Inspec
 gem 'inspec-bin'
 
-gem 'rubocop', '~> 0.64.0', require: false
+gem 'rubocop', require: false
 
 group :development do
   gem 'rake'

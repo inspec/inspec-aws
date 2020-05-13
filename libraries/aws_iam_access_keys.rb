@@ -59,7 +59,7 @@ class AwsIamAccessKeys < AwsResourceBase
       if username
         begin
           users[username] = @aws.iam_client.get_user(user_name: username).user
-        rescue Aws::IAM::Errors::NoSuchEntity # rubocop:disable Lint/HandleExceptions
+        rescue Aws::IAM::Errors::NoSuchEntity
           # Swallow - a miss on search results should return an empty table
         end
       else
@@ -98,7 +98,7 @@ class AwsIamAccessKeys < AwsResourceBase
             merge(key_info, users[username])
           end
           access_key_data.concat(user_keys)
-        rescue Aws::IAM::Errors::NoSuchEntity # rubocop:disable Lint/HandleExceptions
+        rescue Aws::IAM::Errors::NoSuchEntity
           # Swallow - a miss on search results should return an empty table
         end
       end

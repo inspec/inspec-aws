@@ -14,6 +14,7 @@ class AwsConfigurationRecorder < AwsResourceBase
     end
   "
   attr_reader :role_arn, :resource_types, :recorder_name, :recording_all_resource_types, :recording_all_global_types
+
   alias recording_all_resource_types? recording_all_resource_types
   alias recording_all_global_types? recording_all_global_types
 
