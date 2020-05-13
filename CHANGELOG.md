@@ -1,9 +1,14 @@
-<!-- latest_release 1.13.0 -->
+<!-- latest_release 1.13.1 -->
+## [v1.13.1](https://github.com/inspec/inspec-aws/tree/v1.13.1) (2020-05-13)
+
+#### Merged Pull Requests
+- Update Travis to use ruby 2.6.3 &amp; rubcop updates [#209](https://github.com/inspec/inspec-aws/pull/209) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.13.0](https://github.com/inspec/inspec-aws/tree/v1.13.0) (2020-05-12)
 
 #### Merged Pull Requests
 - Resolves #142 Expose S3 bucket object properties [#211](https://github.com/inspec/inspec-aws/pull/211) ([omer-chefio](https://github.com/omer-chefio))
-<!-- latest_release -->
 
 ## [v1.12.1](https://github.com/inspec/inspec-aws/tree/v1.12.1) (2020-05-12)
 
