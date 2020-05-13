@@ -13,6 +13,7 @@ control 'aws-s3-bucket-object-1.0' do
     it { should exist }
     it { should be_public }
     its('object_acl.count') { should eq 2 }
+    its('content_length') { should be > 10 }
   end
 
   describe aws_s3_bucket_object(bucket_name: aws_bucket_public_objects_name, key: aws_s3_bucket_object_private) do

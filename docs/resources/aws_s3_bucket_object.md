@@ -34,17 +34,31 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|bucket\_name | The name of the bucket. |
-|key          | The key within the bucket. |
-|object\_acl  | An array of AWS Grants detailing permission grants on the bucket object.  |
+|Property       | Description|
+| ---           | --- |
+|bucket\_name   | The name of the bucket. |
+|key            | The key within the bucket. |
+|content\_length | Size of the body in bytes. |
+|content\_type   | A standard MIME type describing the format of the object data. |
+|object\_acl    | An array of AWS Grants detailing permission grants on the bucket object.  |
+
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html).
 
 ## Examples
 
-##### Test a object's object-level ACL
+##### Test an object's object-level ACL
     describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
       its('object_acl.count') { should eq 1 }
+    end
+    
+##### Test an object's size in bytes is less than `100000`
+    describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
+      its('content_length') { should be < 1_000_000 }
+    end
+
+##### Test an object's type is "image/jpeg"
+    describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
+      its('content_type') { should eq "image/jpeg" }
     end
 
 ##### Check to see if a object appears to be exposed to the public
