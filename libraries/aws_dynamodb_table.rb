@@ -42,19 +42,15 @@ class AwsDynamoDbTable < AwsResourceBase
       @key_schema                = []
       @secondary_global_table    = {}
 
-      if @dynamodb_table[:attribute_definitions]
-        @dynamodb_table[:attribute_definitions].map { |attr|
-          @attributes.push({ 'attribute_name': attr.attribute_name,
-                             'attribute_type': attr.attribute_type })
-        }
-      end
+      @dynamodb_table[:attribute_definitions]&.map { |attr|
+        @attributes.push({ 'attribute_name': attr.attribute_name,
+                           'attribute_type': attr.attribute_type })
+      }
 
-      if @dynamodb_table[:key_schema]
-        @dynamodb_table[:key_schema].map { |key|
-          @key_schema.push({ 'attribute_name': key.attribute_name,
-                             'key_type':       key.key_type })
-        }
-      end
+      @dynamodb_table[:key_schema]&.map { |key|
+        @key_schema.push({ 'attribute_name': key.attribute_name,
+                           'key_type':       key.key_type })
+      }
 
       if @dynamodb_table[:global_secondary_indexes]
         @secondary_global_table = flatten_hash(@dynamodb_table[:global_secondary_indexes][0].to_h)

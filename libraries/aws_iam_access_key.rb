@@ -15,6 +15,7 @@ class AwsIamAccessKey < AwsResourceBase
   "
 
   attr_reader :access_key_id, :create_date, :status, :username
+
   alias id access_key_id
 
   def initialize(opts = {})

@@ -13,6 +13,7 @@ class AwsOrganizationsMember < AwsResourceBase
   '
 
   attr_reader :account_arn, :account_id, :account_email, :account_name, :master_account_id, :master_account_arn, :master
+
   alias master? master
 
   def initialize(opts = {})

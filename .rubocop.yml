@@ -8,18 +8,27 @@ AllCops:
   - 'vendor/**/*'
   - 'lib/bundles/inspec-init/templates/**/*'
   - .direnv/**/*
-Documentation:
+  TargetRubyVersion: 2.6.3
+
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
-AlignParameters:
-  Enabled: true
-Encoding:
-  Enabled: true
-HashSyntax:
-  Enabled: true
-ClassLength:
-  Max: 300
-LineLength:
+Layout/HashAlignment:
   Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/MultilineBlockLayout:
+  Enabled: false
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/SpaceAroundOperators:
+  Enabled: false
+Layout/ParameterAlignment:
+  Enabled: true
+Layout/LineLength:
+  Enabled: false
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Lint/ParenthesesAsGroupedExpression:
   Enabled: false
 Lint/ReturnInVoidContext:
@@ -27,26 +36,41 @@ Lint/ReturnInVoidContext:
 Lint/AmbiguousBlockAssociation:
   Exclude:
   - "test/integration/verify/controls/*"
-EmptyLinesAroundBlockBody:
-  Enabled: false
-MethodLength:
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+
+Metrics/ClassLength:
+  Max: 300
+Metrics/MethodLength:
   Max: 45
-NumericLiterals:
-  MinDigits: 10
 Metrics/BlockLength:
   Max: 100
-Metrics/CyclomaticComplexity:
-  Max: 10
-Metrics/PerceivedComplexity:
-  Max: 11
 Metrics/AbcSize:
   Max: 75
+Metrics/BlockNesting:
+  Enabled: false
 Metrics/CyclomaticComplexity:
   Max: 25
 Metrics/PerceivedComplexity:
   Max: 25
+
 Naming/AccessorMethodName:
   Enabled: false
+Naming/FileName:
+  Enabled: false
+Naming/PredicateName:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/Encoding:
+  Enabled: true
+Style/NumericLiterals:
+  MinDigits: 10
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'
@@ -58,23 +82,13 @@ Style/PercentLiteralDelimiters:
     '%w': '{}'
     '%W': ()
     '%x': ()
-Layout/AlignHash:
-  Enabled: false
-Layout/EmptyLineAfterGuardClause:
-  Enabled: false
-Naming/PredicateName:
-  Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/ConditionalAssignment:
   Enabled: false
-Style/BracesAroundHashParameters:
-  Enabled: false
 Style/AndOr:
   Enabled: false
 Style/Not:
-  Enabled: false
-Naming/FileName:
   Enabled: false
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
@@ -86,13 +100,21 @@ Style/NegatedIf:
   Enabled: false
 Style/UnlessElse:
   Enabled: false
-BlockDelimiters:
-  Enabled: false
-Layout/SpaceAroundOperators:
+Style/RedundantBegin:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
 Style/RescueStandardError:
   Enabled: false
-Metrics/BlockNesting:
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
   Enabled: false
+Style/HashTransformValues:
+  Enabled: true
+Style/HashSyntax:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true
