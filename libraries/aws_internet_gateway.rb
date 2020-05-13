@@ -42,13 +42,13 @@ class AwsInternetGateway < AwsResourceBase
     end
     @display_name = opts.values.join(' ')
 
-    @failed_resource = false
     catch_aws_errors do
       resp = @aws.compute_client.describe_internet_gateways(query_params)
       gateways = resp.internet_gateways
       # API will return an empty list if there is no resource with the provided name tag.
       if gateways.empty?
         Inspec::Log.warn "#{@__resource_name__}: #{@display_name} not found. "
+        # This parameter exists in the base class and the value is returned by `failed_resource?` method.
         @failed_resource = true
         return
       end
