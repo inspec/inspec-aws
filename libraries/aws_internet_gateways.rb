@@ -43,13 +43,9 @@ class AwsInternetGateways < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
 
       @api_response.internet_gateways.each do |igw|
-        unless igw[:tags].empty?
-          name_tag = igw[:tags].select { |tag| tag[:key] == 'Name' }
-          name = name_tag.first[:value]
-        end
         igw_rows += [{
           id: igw.internet_gateway_id,
-          name: name || nil,
+          name: igw[:tags].select { |tag| tag[:key] == 'Name' }.first&.dig(:value),
           tags: igw.tags,
           owner_id: igw.owner_id,
           vpc_id: igw.attachments.empty? ? nil : igw.attachments.first[:vpc_id],
