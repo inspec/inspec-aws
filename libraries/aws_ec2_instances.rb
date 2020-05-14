@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'aws_backend'
+require 'aws_ec2_instance'
 
 class AwsEc2Instances < AwsResourceBase
   name 'aws_ec2_instances'
@@ -15,10 +16,12 @@ class AwsEc2Instances < AwsResourceBase
 
   FilterTable.create
              .register_column(:instance_ids,   field: :instance_id)
+             .register_column(:names,          field: :name)
              .register_column(:vpc_ids,        field: :vpc_id)
              .register_column(:subnet_ids,     field: :subnet_id)
              .register_column(:instance_types, field: :instance_type)
              .register_column(:tags,           field: :tags)
+             .register_column(:iam_profiles,   field: :iam_profile)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -35,16 +38,18 @@ class AwsEc2Instances < AwsResourceBase
         @api_response = @aws.compute_client.describe_instances(pagination_options)
       end
       return [] if !@api_response || @api_response.empty?
-
       @api_response.reservations.each do |res|
-        instance_rows += res.instances.map do |instance|
-          {
+        res.instances.each do |instance|
+          tags = map_tags(instance.tags)
+          instance_rows += [{
             instance_id: instance.instance_id,
             vpc_id: instance.vpc_id,
             subnet_id: instance.subnet_id,
             instance_type: instance.instance_type,
-            tags: map_tags(instance.tags),
-          }
+            tags: tags,
+            name: tags['Name'],
+            iam_profile: instance.iam_instance_profile&.arn&.split('/')&.last,
+          }]
         end
       end
       break unless @api_response.next_token
