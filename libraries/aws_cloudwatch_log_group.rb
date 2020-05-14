@@ -20,7 +20,7 @@ class AwsCloudWatchLogGroup < AwsResourceBase
     @log_group_name = opts[:log_group_name]
 
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.describe_log_groups({log_group_name_prefix: @log_group_name})
+      resp = @aws.cloudwatchlogs_client.describe_log_groups({ log_group_name_prefix: @log_group_name })
       @log_groups = resp.log_groups
     end
 
@@ -32,7 +32,7 @@ class AwsCloudWatchLogGroup < AwsResourceBase
     @kms_key_id = @log_groups.first.kms_key_id
 
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.list_tags_log_group({log_group_name: @log_group_name})
+      resp = @aws.cloudwatchlogs_client.list_tags_log_group({ log_group_name: @log_group_name })
       @tags = resp.tags
     end
   end
