@@ -230,7 +230,21 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   def failed_resource?
-    @failed_resource
+    @failed_resource ||= false
+  end
+
+  def tags
+    return if failed_resource?
+    # Prevent `NoMethod` error if AWS API does not return `tags` property when it is not applied to the resource.
+    # E.g., subnets.
+    {}
+  end
+
+  def name
+    return unless tags
+    return tags['Name'] if tags.is_a?(Hash)
+    # tags might be in the original format: [{:key=>"Name", :value=>"aws-linux-ubuntu-vm"}], e.g in EC2
+    tags.select { |tag| tag[:key] == 'Name' }.first&.dig(:value)
   end
 
   # Intercept AWS exceptions
@@ -277,6 +291,28 @@ class AwsResourceBase < Inspec.resource(1)
       tags[tag[:key]] = tag[:value]
     end
     tags
+  end
+
+  private
+
+  # This method should be used when AWS API returns multiple resources for the provided criteria.
+  def resource_fail(message = nil)
+    message ||= "#{@__resource_name__}: #{@display_name}. Multiple AWS resources were returned for the provided criteria. "\
+    'If you wish to test multiple entities, please use the plural resource. '\
+    'Otherwise, please provide more specific criteria to lookup the resource.'
+    # Fail resource in resource pack. `exists?` method will return `false`.
+    @failed_resource = true
+    # Fail resource in InSpec core. Tests in InSpec profile will return the message.
+    fail_resource(message)
+  end
+
+  # This method should be used when AWS API returns an empty response, e.g. `[]`.
+  def empty_response_warn(message = nil)
+    message ||= "#{@__resource_name__}: #{@display_name} not found."
+    # Fail resource in resource pack. `exists?` method will return `false`.
+    @failed_resource = true
+    # Do not fail in InSpec core. The test `it { should_not exist }` will pass.
+    Inspec::Log.warn message
   end
 end
 
