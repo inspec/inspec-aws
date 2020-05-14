@@ -6,7 +6,7 @@ class AwsCloudWatchLogGroup < AwsResourceBase
   name 'aws_cloudwatch_log_group'
   desc 'Verifies settings for an AWS CloudWatch Log Group'
 
-  attr_reader :log_group_name, :retention_in_days, :kms_key_id
+  attr_reader :log_group_name, :retention_in_days, :kms_key_id, :tags
 
   def initialize(opts = {})
     super(opts)
@@ -25,6 +25,11 @@ class AwsCloudWatchLogGroup < AwsResourceBase
 
     @retention_in_days = @log_groups.first.retention_in_days
     @kms_key_id = @log_groups.first.kms_key_id
+
+    catch_aws_errors do
+      resp = @aws.cloudwatch_client.list_tags_log_group({log_group_name: @log_group_name})
+      @tags = resp.tags
+    end
   end
 
   def exists?
