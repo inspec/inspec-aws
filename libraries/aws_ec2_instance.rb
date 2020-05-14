@@ -7,7 +7,7 @@ class AwsEc2Instance < AwsResourceBase
   desc 'Verifies settings for an AWS EC2 instance'
 
   example "
-    describe aws_ec2_instance('i-123456') do
+    describe aws_ec2_instance('i-12345678') do
       it { should be_running }
       it { should have_roles }
     end
@@ -24,30 +24,29 @@ class AwsEc2Instance < AwsResourceBase
     validate_parameters(require_any_of: %i(instance_id name))
 
     if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
-      if !opts[:instance_id].is_a?(String) || opts[:instance_id] !~ /^i\-([0-9a-f]{8})|(^i\-[0-9a-f]{17})$/
+      if !opts[:instance_id].is_a?(String) || opts[:instance_id] !~ /(^i-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
         raise ArgumentError, "#{@__resource_name__}: `instance_id` must be a string in the format of 'i-' followed by 8 or 17 hexadecimal characters."
       end
       @display_name = opts[:instance_id]
       instance_arguments = { instance_ids: [opts[:instance_id]] }
     elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
-      raise ArgumentError, "#{@__resource_name__}: `name` must be provided" if opts[:name].nil? || opts[:name].empty?
-      @display_name = opts[:name] || opts[:instance_id]
+      @display_name = opts[:name]
       instance_arguments = { filters: [{ name: 'tag:Name', values: [opts[:name]] }] }
     else
-      raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided"
+      raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided."
     end
 
     catch_aws_errors do
-      @resp = @aws.compute_client.describe_instances(instance_arguments)
-      if @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
+      resp = @aws.compute_client.describe_instances(instance_arguments)
+      if resp.reservations.first.nil? || resp.reservations.first.instances.first.nil?
+        empty_response_warn
         return
       end
-      if @resp.reservations.first.instances.count > 1
-        fail_resource('Multiple EC2 instances were returned for the provided criteria.
-                       If you wish to test multiple entities, please use the aws_ec2_instances resource.
-                       Otherwise, please provide more specific criteria to lookup your EC2 Instance.')
+      if resp.reservations.count > 1 || resp.reservations.first.instances.count > 1
+        resource_fail
+        return
       else
-        @instance = @resp.reservations.first.instances.first.to_h unless @resp.reservations.first.nil? || @resp.reservations.first.instances.first.nil?
+        @instance = resp.reservations.first.instances.first.to_h
       end
 
       create_resource_methods(@instance)
@@ -64,6 +63,7 @@ class AwsEc2Instance < AwsResourceBase
         end
 
         def tags
+          return [] unless @instance[:tags]
           @instance[:tags].map { |tag| { key: tag[:key], value: tag[:value] } }
         end
       end
@@ -71,7 +71,7 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def exists?
-    !@instance.nil? && !@instance.empty?
+    failed_resource? ? false : true
   end
 
   def security_group_ids
@@ -100,12 +100,22 @@ class AwsEc2Instance < AwsResourceBase
   def has_roles?
     return false unless @instance[:iam_instance_profile] && @instance[:iam_instance_profile][:arn]
     instance_profile = @instance[:iam_instance_profile][:arn].split('/').last
-    returned_roles = nil
+    @returned_roles = nil
+    # Check if there is a role created at the attached profile
     catch_aws_errors do
       resp = @aws.iam_client.get_instance_profile({ instance_profile_name: instance_profile })
-      returned_roles = resp.instance_profile.roles
+      @returned_roles = resp.instance_profile.roles
     end
-    returned_roles && !returned_roles.empty?
+    @returned_roles && !@returned_roles.empty?
+  end
+
+  def role
+    return unless has_roles?
+    # You cannot attach multiple IAM roles to a single instance.
+    # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
+    # An instance profile can contain only one role, and this limit cannot be increased.
+    # https://docs.aws.amazon.com/cli/latest/reference/iam/add-role-to-instance-profile.html
+    @returned_roles.first.role_name
   end
 
   # Generate a matcher for each state
