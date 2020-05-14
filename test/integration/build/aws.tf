@@ -32,6 +32,7 @@ variable "aws_cloud_watch_alarm_metric_name" {}
 variable "aws_cloud_watch_alarm_name" {}
 variable "aws_cloud_watch_alarm_name_with_dimensions" {}
 variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
+variable "aws_cloud_watch_log_group_name" {}
 variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
 variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
 variable "aws_cloud_watch_log_metric_filter_metric_name" {}
@@ -938,6 +939,16 @@ resource "aws_cloudtrail" "trail_2" {
 }
 
 # Cloudwatch
+resource "aws_cloudwatch_log_group" "log_group" {
+  count             = var.aws_enable_creation
+  name              = var.aws_cloudwatch_log_group_name
+  retention_in_days = 7
+
+  tags = {
+    Name = var.aws_cloudwatch_log_group_name
+  }
+}
+
 resource "aws_cloudwatch_log_metric_filter" "log_metric_filter" {
   count          = var.aws_enable_creation
   name           = var.aws_cloud_watch_log_metric_filter_name

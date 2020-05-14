@@ -9,8 +9,13 @@ class AwsCloudWatchLogGroup < AwsResourceBase
   attr_reader :log_group_name, :retention_in_days, :kms_key_id, :tags
 
   def initialize(opts = {})
+    opts = { log_group_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:log_group_name])
+
+    if !opts[:log_group_name].is_a?(String)
+      raise ArgumentError, "#{@__resource_name__}: `log_group_name` #{opts[:log_group_name]} is invalid, must be a string."
+    end
 
     @log_group_name = opts[:log_group_name]
 
