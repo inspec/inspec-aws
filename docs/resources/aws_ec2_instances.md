@@ -23,12 +23,14 @@ This resource does not expect any parameters.
 
 |Property        | Description|
 | ---            | --- |
-|instance\_ids   | The ID of the EC2 instance. |
-|vpc\_ids        | The VPC with which the EC2 instance is associated. |
-|subnet\_ids     | The subnet with which the EC2 instance is associated. |
-|instance\_types | The type of instance, for example m5.large. |
+|instance\_ids   | The ID of the EC2 instance. The field name is `instance_id`. |
+|names           | The value of the `Name` tag if applied to the instance. The filed name is `name`. |
+|vpc\_ids        | The VPC with which the EC2 instance is associated. The field name is `vpc_id`. |
+|subnet\_ids     | The subnet with which the EC2 instance is associated. The field name is `subnet_id`. |
+|instance\_types | The type of instance, for example m5.large. The field name is `instance_type`. |
 |entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-|tags            | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards.|
+|tags            | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards. The field name is `tags`. |
+|iam_profiles    | The IAM instance profile associated with the instance. The `role` property of the `aws_ec2_instance` singular resource can be used to check the attached IAM role on the profile. The field name is `iam_profile`. |
 
 ## Examples
 
@@ -61,6 +63,13 @@ This resource does not expect any parameters.
       end
     end   
 
+##### Filter EC2 instances with their `name` equal to `Test Box`, then check their role using `aws_ec2_instance`.  
+    aws_ec2_instances.where(name: "Test Box").instance_ids.each do |id|
+      describe aws_ec2_instance(id) do
+        its('role) { should eq "test-role" }
+      end
+    end   
+
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
@@ -68,6 +77,7 @@ For a full list of available matchers, please visit our [Universal Matchers page
 #### exist
 
 The control will pass if the describe returns at least one result.
+The field names described in the [properties table](##-properties) should be used for the `<property>` in the `where` clause.
 
 Use `should_not` to test the entity should not exist.
 

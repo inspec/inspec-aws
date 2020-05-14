@@ -39,6 +39,7 @@ This must be passed as a `name: 'value'` key-value entry in a hash.
 | ---                 | --- |
 |state                | The current state of the EC2 Instance, for example 'running'.|
 |image\_id            | The id of the AMI used to launch the instance. |
+|role                 | The IAM role attached to the instance. |
 |launch\_time         | The time the instance was launched. |
 |availability\_zone   | The availability zone of the instance. |
 |security\_groups     | A hash containing the security group ids and names associated with the instance. |
