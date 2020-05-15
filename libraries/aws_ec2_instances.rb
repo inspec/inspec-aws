@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'aws_backend'
-require 'aws_ec2_instance'
 
 class AwsEc2Instances < AwsResourceBase
   name 'aws_ec2_instances'
@@ -40,14 +39,14 @@ class AwsEc2Instances < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.reservations.each do |res|
         res.instances.each do |instance|
-          tags = map_tags(instance.tags)
+          instance_tags = map_tags(instance.tags)
           instance_rows += [{
             instance_id: instance.instance_id,
             vpc_id: instance.vpc_id,
             subnet_id: instance.subnet_id,
             instance_type: instance.instance_type,
-            tags: tags,
-            name: tags['Name'],
+            tags: instance_tags,
+            name: instance_tags['Name'],
             iam_profile: instance.iam_instance_profile&.arn&.split('/')&.last,
           }]
         end
