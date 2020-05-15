@@ -125,6 +125,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
 - [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md)
+- [aws_cloudwatch_log_group](docs/resources/aws_cloudwatch_log_group.md)
 - [aws_cloudwatch_log_metric_filter](docs/resources/aws_cloudwatch_log_metric_filter.md)
 - [aws_config_delivery_channel](docs/resources/aws_config_delivery_channel.md)
 - [aws_config_recorder](docs/resources/aws_config_recorder.md)
