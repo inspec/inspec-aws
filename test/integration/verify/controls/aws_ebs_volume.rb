@@ -31,5 +31,4 @@ control 'aws-ebs-volume-1.0' do
   describe aws_ebs_volume(name: 'not_existing_volume_name') do
     it { should_not exist }
   end
-
 end
