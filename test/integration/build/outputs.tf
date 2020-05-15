@@ -134,6 +134,10 @@ output "aws_cloud_trail_key_arn" {
   value = aws_kms_key.trail_1_key.0.arn
 }
 
+output "aws_cloudwatch_log_group_name" {
+  value = aws_cloudwatch_log_group.log_group.name
+}
+
 output "aws_cloud_trail_cloud_watch_logs_group_arn" {
   value = aws_cloudwatch_log_group.trail_1_log_group.0.arn
 }
