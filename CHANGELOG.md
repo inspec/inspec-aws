@@ -1,9 +1,14 @@
-<!-- latest_release 1.13.1 -->
+<!-- latest_release 1.14.0 -->
+## [v1.14.0](https://github.com/inspec/inspec-aws/tree/v1.14.0) (2020-05-15)
+
+#### Merged Pull Requests
+- Add aws_cloudwatch_log_group resource [#212](https://github.com/inspec/inspec-aws/pull/212) ([robbruce](https://github.com/robbruce))
+<!-- latest_release -->
+
 ## [v1.13.1](https://github.com/inspec/inspec-aws/tree/v1.13.1) (2020-05-13)
 
 #### Merged Pull Requests
 - Update Travis to use ruby 2.6.3 &amp; rubcop updates [#209](https://github.com/inspec/inspec-aws/pull/209) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.13.0](https://github.com/inspec/inspec-aws/tree/v1.13.0) (2020-05-12)
 
