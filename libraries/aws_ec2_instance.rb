@@ -71,7 +71,7 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def exists?
-    failed_resource? ? false : true
+    !failed_resource?
   end
 
   def security_group_ids
