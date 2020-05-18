@@ -1,9 +1,14 @@
-<!-- latest_release 1.16.1 -->
+<!-- latest_release 1.17.0 -->
+## [v1.17.0](https://github.com/inspec/inspec-aws/tree/v1.17.0) (2020-05-18)
+
+#### Merged Pull Requests
+- Expose IAM role af an AWS EC2 instance [#213](https://github.com/inspec/inspec-aws/pull/213) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.16.1](https://github.com/inspec/inspec-aws/tree/v1.16.1) (2020-05-18)
 
 #### Merged Pull Requests
 - Fixes #214 Update RDS control and build files [#215](https://github.com/inspec/inspec-aws/pull/215) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.16.0](https://github.com/inspec/inspec-aws/tree/v1.16.0) (2020-05-18)
 
