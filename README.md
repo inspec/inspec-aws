@@ -150,6 +150,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_iam_account_alias](docs/resources/aws_iam_account_alias.md)
 - [aws_iam_group](docs/resources/aws_iam_group.md)
 - [aws_iam_groups](docs/resources/aws_iam_groups.md)
+- [aws_iam_inline_policy](docs/resources/aws_iam_inline_policy.md)
 - [aws_iam_password_policy](docs/resources/aws_iam_password_policy.md)
 - [aws_iam_policies](docs/resources/aws_iam_policies.md)
 - [aws_iam_policy](docs/resources/aws_iam_policy.md)

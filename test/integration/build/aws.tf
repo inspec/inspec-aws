@@ -87,6 +87,7 @@ variable "aws_enable_creation" {}
 variable "aws_enable_privileged_resources" {}
 variable "aws_flow_log_bucket_name" {}
 variable "aws_iam_group_name" {}
+variable "aws_iam_group_policy_name" {}
 variable "aws_iam_policy_arn" {}
 variable "aws_iam_role_generic_name" {}
 variable "aws_iam_role_generic_policy_name" {}
@@ -261,23 +262,23 @@ resource "aws_ebs_volume" "inspec_ebs_volume" {
 }
 
 resource "aws_efs_file_system" "inspec_efs_file_system" {
-  count             = var.aws_enable_creation
-  creation_token    = var.aws_efs_creation_token
-  encrypted         = var.aws_efs_encrypted
-  throughput_mode   = var.aws_efs_throughput_mode
-  performance_mode  = var.aws_efs_performance_mode
+  count            = var.aws_enable_creation
+  creation_token   = var.aws_efs_creation_token
+  encrypted        = var.aws_efs_encrypted
+  throughput_mode  = var.aws_efs_throughput_mode
+  performance_mode = var.aws_efs_performance_mode
 
   tags = {
-    Name = var.aws_efs_name
+    Name        = var.aws_efs_name
     companyName = var.aws_efs_company_name
   }
 }
 
 resource "aws_efs_file_system" "inspec_efs_file_systems" {
-  count             = var.aws_enable_creation * var.aws_efs_count
-  encrypted         = var.aws_efs_encrypted
-  throughput_mode   = var.aws_efs_throughput_mode
-  performance_mode  = var.aws_efs_performance_mode
+  count            = var.aws_enable_creation * var.aws_efs_count
+  encrypted        = var.aws_efs_encrypted
+  throughput_mode  = var.aws_efs_throughput_mode
+  performance_mode = var.aws_efs_performance_mode
 
   tags = {
     companyName = var.aws_efs_company_name
@@ -1207,6 +1208,7 @@ EOF
 
 }
 
+
 resource "aws_iam_group" "aws_iam_group_1" {
   count = var.aws_enable_creation
   name  = var.aws_iam_group_name
@@ -1219,6 +1221,28 @@ resource "aws_iam_user_group_membership" "aws_iam_user_group_membership_1" {
   groups = [
     var.aws_iam_group_name,
   ]
+}
+
+resource "aws_iam_group_policy" "iam_group_policy" {
+  count = var.aws_enable_creation
+  name  = var.aws_iam_group_policy_name
+  group = aws_iam_group.aws_iam_group_1[0].name
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
 }
 
 resource "aws_iam_policy" "aws_policy_1" {
@@ -1602,7 +1626,7 @@ resource "aws_rds_cluster" "rds_cluster" {
 }
 
 resource "aws_rds_cluster_instance" "instance1" {
-  count               = var.aws_enable_creation
+  count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance1"
@@ -1610,7 +1634,7 @@ resource "aws_rds_cluster_instance" "instance1" {
 }
 
 resource "aws_rds_cluster_instance" "instance2" {
-  count               = var.aws_enable_creation
+  count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
   identifier         = "instance2"
@@ -1623,8 +1647,8 @@ resource "aws_ec2_transit_gateway" "gateway" {
 
 data "aws_iam_policy_document" "lambda_test_policy_document" {
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "cloudwatch:PutMetricData"
     ]
     resources = ["*"]
@@ -1711,14 +1735,14 @@ resource "aws_elasticache_cluster" "inspec_test_elasticache" {
 }
 
 resource "aws_ecr_repository" "inspec_test_ecr_repository" {
-  count = var.aws_enable_creation
-  name = var.aws_ecr_repository_name
+  count                = var.aws_enable_creation
+  name                 = var.aws_ecr_repository_name
   image_tag_mutability = var.aws_ecr_repository_image_tag_mutability
 
   image_scanning_configuration {
     scan_on_push = var.aws_ecr_repository_scan_on_push_enabled
   }
   tags = {
-    Name        = var.aws_ecr_repository_name
+    Name = var.aws_ecr_repository_name
   }
 }
