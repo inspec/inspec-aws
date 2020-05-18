@@ -141,6 +141,8 @@ module AWSInspecConfig
       aws_iam_policy_arn: "aws-iam-policy-arn-#{add_random_string}",
       aws_iam_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_iam_policy_name_for_lambda: "aws-iam-policy-name-#{add_random_string}",
+      aws_iam_role_name_for_ec2: "aws-iam-role-#{add_random_string}",
+      aws_iam_profile_name_for_ec2: "aws-iam-policy-name-#{add_random_string}",
       aws_iam_role_name_for_lambda: "aws-iam-role-#{add_random_string}",
       aws_iam_attached_policy_name: "aws-iam-policy-name-#{add_random_string}",
       aws_key_description_disabled: 'InSpec KMS Key Test Disabled',

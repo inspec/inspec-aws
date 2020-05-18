@@ -237,6 +237,10 @@ class AwsEc2InstanceHappyPathTest < Minitest::Test
   def test_ec2_virtualization_type
     assert_equal(@ec2.virtualization_type, 'hvm')
   end
+
+  def test_name
+    assert_equal(@ec2.name, "aws-inspec-linux-ubuntu-vm")
+  end
 end
 
 class AwsEc2InstanceStatusTest < Minitest::Test
@@ -313,6 +317,22 @@ class AwsEc2InstanceEmptyRolesTest < Minitest::Test
   def test_has_no_roles
     refute @ec2.has_roles?
   end
+
+  def test_no_role
+    assert_nil(@ec2.role)
+  end
+
+  def test_no_name
+    assert_nil(@ec2.name)
+  end
+
+  def test_no_tags
+    assert_equal(@ec2.tags, [])
+  end
+
+  def test_no_tags_hash
+    assert_equal(@ec2.tags_hash, {})
+  end
 end
 
 class AwsEc2InstanceHasRolesTest < Minitest::Test
@@ -354,5 +374,9 @@ class AwsEc2InstanceHasRolesTest < Minitest::Test
 
   def test_has_roles
     assert @ec2.has_roles?
+  end
+
+  def test_role
+    assert_equal(@ec2.role, "Test-Role")
   end
 end

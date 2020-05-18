@@ -93,6 +93,8 @@ variable "aws_iam_role_generic_name" {}
 variable "aws_iam_role_generic_policy_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
+variable "aws_iam_profile_name_for_ec2" {}
+variable "aws_iam_role_name_for_ec2" {}
 variable "aws_iam_policy_name_for_lambda" {}
 variable "aws_iam_role_name_for_lambda" {}
 variable "aws_internet_gateway_name" {}
@@ -188,6 +190,34 @@ resource "aws_subnet" "inspec_subnet" {
   }
 }
 
+
+resource "aws_iam_role" "for_ec2" {
+  count         = var.aws_enable_creation
+  name          = var.aws_iam_role_name_for_ec2
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_instance_profile" "for_ec2" {
+  count         = var.aws_enable_creation
+  name          = var.aws_iam_profile_name_for_ec2
+  role = aws_iam_role.for_ec2[0].name
+}
+
 data "aws_ami" "linux_ubuntu" {
   most_recent = true
 
@@ -217,6 +247,7 @@ resource "aws_instance" "linux_ubuntu_vm" {
   count         = var.aws_enable_creation
   ami           = data.aws_ami.linux_ubuntu.id
   instance_type = var.aws_vm_size
+  iam_instance_profile = aws_iam_instance_profile.for_ec2[0].name
 
   tags = {
     Name = var.aws_vm_name
