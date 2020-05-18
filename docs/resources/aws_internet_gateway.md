@@ -5,7 +5,6 @@ title: About the aws_internet_gateway Resource
 # aws\_internet\_gateway
 
 Use the `aws_internet_gateway` InSpec audit resource to test the properties of a single AWS internet gateway.
-This resource is available in InSpec AWS resource pack version **[1.14.0](https://github.com/inspec/inspec-aws/releases/tag/v1.14.0)** onwards.
 
 ## Syntax
 
