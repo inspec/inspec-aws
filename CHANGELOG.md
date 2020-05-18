@@ -1,9 +1,14 @@
-<!-- latest_release 1.15.0 -->
+<!-- latest_release 1.16.0 -->
+## [v1.16.0](https://github.com/inspec/inspec-aws/tree/v1.16.0) (2020-05-18)
+
+#### Merged Pull Requests
+- Resolves #109 : AWS Internet Gateway Resources [#207](https://github.com/inspec/inspec-aws/pull/207) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.15.0](https://github.com/inspec/inspec-aws/tree/v1.15.0) (2020-05-18)
 
 #### Merged Pull Requests
 - Fetch inline policies associated with a role, group or user [#217](https://github.com/inspec/inspec-aws/pull/217) ([mkmurali](https://github.com/mkmurali))
-<!-- latest_release -->
 
 ## [v1.14.0](https://github.com/inspec/inspec-aws/tree/v1.14.0) (2020-05-15)
 
