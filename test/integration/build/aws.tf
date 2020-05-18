@@ -93,6 +93,8 @@ variable "aws_iam_role_generic_name" {}
 variable "aws_iam_role_generic_policy_name" {}
 variable "aws_iam_user_name" {}
 variable "aws_iam_user_policy_name" {}
+variable "aws_iam_policy_name_for_lambda" {}
+variable "aws_iam_role_name_for_lambda" {}
 variable "aws_internet_gateway_name" {}
 variable "aws_internet_gateway_name_tag" {}
 variable "aws_iam_policy_name" {}
@@ -107,6 +109,8 @@ variable "aws_rds_db_master_user" {}
 variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
 variable "aws_rds_cluster_identifier" {}
+variable "aws_rds_cluster_instance_1_identifier" {}
+variable "aws_rds_cluster_instance_2_identifier" {}
 variable "aws_rds_cluster_database_name" {}
 variable "aws_rds_cluster_engine" {}
 variable "aws_rds_cluster_master_user" {}
@@ -1597,7 +1601,7 @@ resource "aws_rds_cluster_instance" "instance1" {
   count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
-  identifier         = "instance1"
+  identifier         = var.aws_rds_cluster_instance_1_identifier
   instance_class     = "db.t3.small"
 }
 
@@ -1605,11 +1609,12 @@ resource "aws_rds_cluster_instance" "instance2" {
   count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
-  identifier         = "instance2"
+  identifier         = var.aws_rds_cluster_instance_2_identifier
   instance_class     = "db.t3.small"
 }
 
 resource "aws_ec2_transit_gateway" "gateway" {
+  count               = var.aws_enable_creation
   description = "transitgateway1"
 }
 
@@ -1624,14 +1629,16 @@ data "aws_iam_policy_document" "lambda_test_policy_document" {
 }
 
 resource "aws_iam_policy" "lambda_test_policy" {
-  name        = "lambda_test_policy"
+  count       = var.aws_enable_creation
+  name        = var.aws_iam_policy_name_for_lambda
   path        = "/"
   description = "Policy that allows access to cloudwatch metrics"
   policy      = data.aws_iam_policy_document.lambda_test_policy_document.json
 }
 
 resource "aws_iam_role" "lambda_test_role" {
-  name               = "lambda_test_validation"
+  count              = var.aws_enable_creation
+  name               = var.aws_iam_role_name_for_lambda
   description        = "Used by the test lambda"
   assume_role_policy = <<EOF
 {
@@ -1656,16 +1663,19 @@ data "aws_iam_policy" "lambda_execute" {
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_test_policy_attach" {
-  role       = aws_iam_role.lambda_test_role.name
-  policy_arn = aws_iam_policy.lambda_test_policy.arn
+  count      = var.aws_enable_creation
+  role       = aws_iam_role.lambda_test_role[0].name
+  policy_arn = aws_iam_policy.lambda_test_policy[0].arn
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_test_execute_attached" {
-  role       = aws_iam_role.lambda_test_role.name
+  count      = var.aws_enable_creation
+  role       = aws_iam_role.lambda_test_role[0].name
   policy_arn = data.aws_iam_policy.lambda_execute.arn
 }
 
 resource "aws_cloudwatch_log_group" "lambda_test_logs" {
+  count             = var.aws_enable_creation
   name              = "/aws/lambda/test_lambda"
   retention_in_days = 14
 }
@@ -1674,10 +1684,11 @@ locals {
   test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
 resource "aws_lambda_function" "lambda_test" {
+  count             = var.aws_enable_creation
   filename         = local.test_lambda_zip_file_name
   description      = "Test Lambda"
   function_name    = "test_Lambda"
-  role             = aws_iam_role.lambda_test_role.arn
+  role             = aws_iam_role.lambda_test_role[0].arn
   handler          = "main.on_event"
   source_code_hash = filebase64sha256(local.test_lambda_zip_file_name)
   runtime          = "python3.7"

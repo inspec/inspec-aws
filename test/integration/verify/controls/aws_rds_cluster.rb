@@ -1,10 +1,12 @@
 title 'Test single AWS Aurora Cluster'
 
-aws_rds_cluster_identifier = attribute(:aws_rds_cluster_identifier, default: '', description: 'The AWS RDS Cluster identifier.')
-aws_rds_cluster_database_name = attribute(:aws_rds_cluster_database_name, default: '', description: 'The AWS RDS Cluster name.')
-aws_rds_cluster_engine = attribute(:aws_rds_cluster_engine, default: '', description: 'The AWS RDS Cluster engine.')
-aws_rds_cluster_engine_version = attribute(:aws_rds_cluster_engine_version, default: '', description: 'The AWS RDS Cluster engine version.')
-aws_rds_cluster_master_user = attribute(:aws_rds_cluster_master_user, default: '', description: 'The AWS RDS Cluster username.')
+aws_rds_cluster_identifier = attribute(:aws_rds_cluster_identifier, value: '', description: 'The AWS RDS Cluster identifier.')
+aws_rds_cluster_instance_1_identifier = attribute(:aws_rds_cluster_instance_1_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
+aws_rds_cluster_instance_2_identifier = attribute(:aws_rds_cluster_instance_2_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
+aws_rds_cluster_database_name = attribute(:aws_rds_cluster_database_name, value: '', description: 'The AWS RDS Cluster name.')
+aws_rds_cluster_engine = attribute(:aws_rds_cluster_engine, value: '', description: 'The AWS RDS Cluster engine.')
+aws_rds_cluster_engine_version = attribute(:aws_rds_cluster_engine_version, value: '', description: 'The AWS RDS Cluster engine version.')
+aws_rds_cluster_master_user = attribute(:aws_rds_cluster_master_user, value: '', description: 'The AWS RDS Cluster username.')
 
 
 control 'aws-rds-cluster-1.0' do
@@ -22,8 +24,8 @@ control 'aws-rds-cluster-1.0' do
     its('master_username') { should eq aws_rds_cluster_master_user }
     its('allocated_storage') { should eq 1 }
     its('tags') { should include('Name' => aws_rds_cluster_database_name) }
-    its('db_cluster_members') { should include 'instance1' }
-    its('db_cluster_members') { should include 'instance2' }
+    its('db_cluster_members') { should include aws_rds_cluster_instance_1_identifier }
+    its('db_cluster_members') { should include aws_rds_cluster_instance_2_identifier }
     its('status') { should eq 'available' }
     its('multi_az') { should eq true }
   end
