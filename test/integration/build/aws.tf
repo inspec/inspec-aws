@@ -111,6 +111,8 @@ variable "aws_rds_db_master_user" {}
 variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
 variable "aws_rds_cluster_identifier" {}
+variable "aws_rds_cluster_instance_1_identifier" {}
+variable "aws_rds_cluster_instance_2_identifier" {}
 variable "aws_rds_cluster_database_name" {}
 variable "aws_rds_cluster_engine" {}
 variable "aws_rds_cluster_master_user" {}
@@ -1630,7 +1632,7 @@ resource "aws_rds_cluster_instance" "instance1" {
   count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
-  identifier         = "instance1"
+  identifier         = var.aws_rds_cluster_instance_1_identifier
   instance_class     = "db.t3.small"
 }
 
@@ -1638,11 +1640,12 @@ resource "aws_rds_cluster_instance" "instance2" {
   count              = var.aws_enable_creation
   apply_immediately  = true
   cluster_identifier = aws_rds_cluster.rds_cluster.0.cluster_identifier
-  identifier         = "instance2"
+  identifier         = var.aws_rds_cluster_instance_2_identifier
   instance_class     = "db.t3.small"
 }
 
 resource "aws_ec2_transit_gateway" "gateway" {
+  count               = var.aws_enable_creation
   description = "transitgateway1"
 }
 
