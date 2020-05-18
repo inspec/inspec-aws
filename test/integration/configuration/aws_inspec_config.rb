@@ -80,6 +80,7 @@ module AWSInspecConfig
       aws_cloud_watch_alarm_name: "aws-cloudwatch-alarm-#{add_random_string}",
       aws_cloud_watch_alarm_metric_name_with_dimensions: 'aws_cloudwatch_alarm_metric_1',
       aws_cloud_watch_alarm_name_with_dimensions: "aws-cloudwatch-alarm-#{add_random_string}",
+      aws_cloud_watch_log_group_name: "aws_cloudwatch_log_#{add_random_string}",
       aws_cloud_watch_log_metric_filter_namespace_with_dimensions: "aws_lmf_namespace_#{add_random_string}",
       aws_cloud_watch_log_metric_filter_log_group_name: "aws_lmf_log_group_name_#{add_random_string}",
       aws_cloud_watch_log_metric_filter_metric_name: "aws_lmf_metric_name_#{add_random_string}",
