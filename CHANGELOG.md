@@ -1,9 +1,14 @@
-<!-- latest_release 1.16.0 -->
+<!-- latest_release 1.16.1 -->
+## [v1.16.1](https://github.com/inspec/inspec-aws/tree/v1.16.1) (2020-05-18)
+
+#### Merged Pull Requests
+- Fixes #214 Update RDS control and build files [#215](https://github.com/inspec/inspec-aws/pull/215) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.16.0](https://github.com/inspec/inspec-aws/tree/v1.16.0) (2020-05-18)
 
 #### Merged Pull Requests
 - Resolves #109 : AWS Internet Gateway Resources [#207](https://github.com/inspec/inspec-aws/pull/207) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.15.0](https://github.com/inspec/inspec-aws/tree/v1.15.0) (2020-05-18)
 
