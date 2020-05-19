@@ -13,7 +13,7 @@ class AwsDynamoDbTable < AwsResourceBase
   "
 
   attr_reader :table_name, :table_status, :creation_date, :number_of_decreases_today,
-              :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema
+              :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema, :global_secondary_indexes
 
   def initialize(opts = {})
     opts = { table_name: opts } if opts.is_a?(String)
@@ -21,14 +21,12 @@ class AwsDynamoDbTable < AwsResourceBase
     validate_parameters(required: [:table_name])
 
     catch_aws_errors do
-
       begin
         resp = @aws.dynamodb_client.describe_table(table_name: opts[:table_name])
         return nil if resp[0].nil? || resp[0].empty?
       rescue Aws::DynamoDB::Errors::ResourceNotFoundException
         return
       end
-
       @dynamodb_table = resp[0]
       @table_name                = @dynamodb_table[:table_name]
       @table_status              = @dynamodb_table[:table_status]
@@ -40,21 +38,28 @@ class AwsDynamoDbTable < AwsResourceBase
       @item_count                = @dynamodb_table[:item_count]
       @attributes                = []
       @key_schema                = []
-      @secondary_global_table    = {}
+      @global_secondary_indexes  = []
 
       @dynamodb_table[:attribute_definitions]&.map { |attr|
         @attributes.push({ 'attribute_name': attr.attribute_name,
                            'attribute_type': attr.attribute_type })
       }
-
       @dynamodb_table[:key_schema]&.map { |key|
         @key_schema.push({ 'attribute_name': key.attribute_name,
                            'key_type':       key.key_type })
       }
 
       if @dynamodb_table[:global_secondary_indexes]
-        @secondary_global_table = flatten_hash(@dynamodb_table[:global_secondary_indexes][0].to_h)
-        create_resource_methods(@secondary_global_table)
+        gsi = { global_secondary_indexes: @dynamodb_table[:global_secondary_indexes] }
+        create_resource_methods(gsi)
+        global_secondary_indexes.each do |idx|
+          idx.define_singleton_method(:to_s) do
+            "AWS Dynamodb Global Secondary Index #{idx.item[:index_name]}"
+          end
+          idx.define_singleton_method(:key_schema) do
+            idx.item[:key_schema].map { |attr| { 'attribute_name': attr[:attribute_name], 'key_type': attr[:key_type] } }
+          end
+        end
       end
     end
   end
@@ -65,13 +70,5 @@ class AwsDynamoDbTable < AwsResourceBase
 
   def to_s
     "AWS Dynamodb table #{@table_name}"
-  end
-
-  private
-
-  def flatten_hash(param)
-    param.each_pair.reduce({}) do |a, (k, v)|
-      v.is_a?(Hash) ? a.merge(flatten_hash(v)) : a.merge("global_sec_indexes_#{k}".to_sym => v)
-    end
   end
 end

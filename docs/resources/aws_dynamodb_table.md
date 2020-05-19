@@ -33,7 +33,7 @@ The table name used by this DynamoDb Table. This must be passed as a `table_name
 |item\_count                  | The number of entries in the  DynamoDb Table. |
 |attributes                   | An array of attributes that describe the key schema for the table and indexes. This is returned as a hash. Each entry is composed of: `attribute_name` - The name of this key attribute. `attribute_type` - The datatype of the attribute : `B` - Boolean, `N` - Number, `S` - string|
 |key\_schema                  | Specifies the attributes that make up the primary key for a table or an index. This is returned as a hash. The attributes in KeySchema must also be defined in the Attributes array. Each element in the KeySchemaElement array is composed of: `attribute_name` - The name of this key attribute. `key_type` - The role that the key attribute will assume: `HASH` - partition key, `RANGE` - sort key|
-|secondary\_global\_table     | This will only be populated if a global secondary table has been referenced on the selected table. This will return a hash of values with a prefix of `global_sec_indexes` for each key. eg. `global_sec_indexes_table_name`  |
+|global\_secondary\_indexes   | A list of global secondary indexes if there is any referenced on the selected table. |
 
 ## Examples
 
@@ -54,6 +54,17 @@ The table name used by this DynamoDb Table. This must be passed as a `table_name
       its('key_schema') { should include({:attribute_name =>'table_field', :key_type =>'HASH'}) }
     end
 
+##### Ensure DynamoDb Table has the correct global secondary indexes set
+    aws_dynamodb_table(table_name: 'table-name').global_secondary_indexes.each do |global_sec_idx|
+      describe global_sec_idx do
+        its('index_name') { should eq 'TitleIndex' }
+        its('index_status') { should eq 'ACTIVE' }
+        its('key_schema') { should include({:attribute_name =>'Title', :key_type =>'HASH'}) }
+        its('provisioned_throughput.write_capacity_units') { should cmp 10 }
+        its('provisioned_throughput.read_capacity_units') { should cmp 10 }
+        its('projection.projection_type') { should eq 'INCLUDE' }
+      end
+    end
 
 ## Matchers
 
