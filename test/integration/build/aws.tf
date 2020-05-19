@@ -978,11 +978,11 @@ resource "aws_cloudtrail" "trail_2" {
 # Cloudwatch
 resource "aws_cloudwatch_log_group" "log_group" {
   count             = var.aws_enable_creation
-  name              = var.aws_cloudwatch_log_group_name
+  name              = var.aws_cloud_watch_log_group_name
   retention_in_days = 7
 
   tags = {
-    Name = var.aws_cloudwatch_log_group_name
+    Name = var.aws_cloud_watch_log_group_name
   }
 }
 
