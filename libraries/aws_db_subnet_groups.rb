@@ -12,6 +12,7 @@ class AwsDbSubnetGroups < AwsResourceBase
   '
 
   attr_reader :table, :subnet_rows
+
   FilterTable.create
              .register_column(:db_subnet_group_names,                field: :db_subnet_group_name)
              .register_column(:db_subnet_group_descriptions,         field: :db_subnet_group_description)
