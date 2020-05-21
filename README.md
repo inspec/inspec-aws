@@ -173,6 +173,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_lambda](docs/resources/aws_lambda.md)
 - [aws_lambdas](docs/resources/aws_lambdas.md)
 - [aws_launch_configuration](docs/resources/aws_launch_configuration.md)
+- [aws_nat_gateway](docs/resources/aws_nat_gateway.md)
+- [aws_nat_gateways](docs/resources/aws_nat_gateways.md)
 - [aws_organizations_member](docs/resources/aws_organizations_member.md)
 - [aws_rds_cluster](docs/resources/aws_rds_cluster.md)
 - [aws_rds_clusters](docs/resources/aws_rds_clusters.md)
