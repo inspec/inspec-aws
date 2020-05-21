@@ -58,15 +58,13 @@ class AwsNatGateway < AwsResourceBase
       if resp.nat_gateways.empty?
         empty_response_warn
         return
-      end
-      if resp.nat_gateways.count > 1
+      elsif resp.nat_gateways.count > 1
         resource_fail
-        return
       else
         @nat_gateway = resp.nat_gateways.first.to_h
+        create_resource_methods(@nat_gateway)
       end
     end
-    create_resource_methods(@nat_gateway)
   end
 
   def nat_gateway_address_set

@@ -33,27 +33,26 @@ At least one of the following parameters must be provided.
 - subnet_id
 - vpc_id
 
-##### id _(required if none of the others provided)_
+##### id
 
 The value of the `nat_gateway_id` assigned by the AWS after the resource has been created.
 This should be in the format of `nat-` followed by 8 or 17 hexadecimal characters and passed as an `id: 'value'` key-value entry in a hash.
 
-##### name _(required if none of the others provided)_
+##### name
 
 If a `Name` tag is applied to the NAT gateway, this can be used to lookup the resource.
 This must be passed as a `name: 'value'` key-value entry in a hash.
 If there are multiple NAT gateways with the same name, this resource will raise an error.
 
-##### subnet_id _(required if none of the others provided)_
+##### subnet_id
 
 The ID of the subnet in which the NAT gateway is placed.
 This should be in the format of `subnet-` followed by 8 or 17 hexadecimal characters and passed as an `subnet_id: 'value'` key-value entry in a hash.
 
-##### vpc_id _(required if none of the others provided)_
+##### vpc_id
 
 The ID of the VPC in which the NAT gateway is located.
 This should be in the format of `vpc-` followed by 8 or 17 hexadecimal characters and passed as an `vpc_id: 'value'` key-value entry in a hash.
-
 
 
 ## Properties
