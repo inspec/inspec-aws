@@ -203,11 +203,11 @@ output "aws_transit_gateway_id" {
 }
 
 output "aws_rds_db_subnet_group_name" {
-  value = aws_db_subnet_group.aws_db_subnet_group_1.0.name
+  value = aws_db_subnet_group.rds_subnet_group_1.0.name
 }
 
 output "aws_rds_db_subnet_group_arn" {
-  value = aws_db_subnet_group.aws_db_subnet_group_1.0.arn
+  value = aws_db_subnet_group.rds_subnet_group_1.0.arn
 }
 
 output "aws_rds_db_subnet_group_vpc_id" {

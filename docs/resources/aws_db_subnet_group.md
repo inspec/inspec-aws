@@ -32,10 +32,12 @@ See also the [AWS documentation on DB Subnet Groups](https://docs.aws.amazon.com
 | ---                         | --- |
 |db\_subnet\_group\_name    | The name of the DB subnet group. |
 |db\_subnet\_group\_description    | Provides the description of the DB subnet group. |
-|vpc\_id    | Provides the VpcId of the DB subnet group. |
+|vpc\_id    | Provides the VPC ID of the DB subnet group. |
 |subnet\_group\_status    | Provides the status of the DB subnet group. |
 |subnets    | Contains a list of Subnet elements. |
 |db\_subnet\_group\_arn    | The Amazon Resource Name for the DB subnet group. |
+
+For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBSubnetGroup.html)
 
 ## Examples
 

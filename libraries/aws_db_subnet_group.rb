@@ -19,14 +19,19 @@ class AwsDbSubnetGroup < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_subnet_groups({ db_subnet_group_name: opts[:db_subnet_group_name] })
-      @subnet_group = resp.db_subnet_groups[0].to_h
+      if resp.db_subnet_groups.first.nil?
+        empty_response_warn
+        return
+      else
+        @subnet_group = resp.db_subnet_groups[0].to_h
+      end
 
       create_resource_methods(@subnet_group)
     end
   end
 
   def exists?
-    !@subnet_group.nil? && !@subnet_group.empty?
+    !failed_resource?
   end
 
   def to_s

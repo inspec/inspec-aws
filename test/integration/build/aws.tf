@@ -1413,7 +1413,7 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
   }
 }
 
-resource "aws_subnet" "eks_subnet-3" {
+resource "aws_subnet" "rds_subnet_1" {
   count             = var.aws_enable_creation
   vpc_id            = aws_vpc.eks_vpc[0].id
   availability_zone = "${var.aws_region}b"
@@ -1426,14 +1426,14 @@ resource "aws_subnet" "eks_subnet-3" {
   }
 }
 
-resource "aws_db_subnet_group" "aws_db_subnet_group_1" {
+resource "aws_db_subnet_group" "rds_subnet_group_1" {
   count       = var.aws_enable_creation
   name        = var.aws_rds_db_subnet_group_name
   description = var.aws_rds_db_subnet_group_description
 
-  subnet_ids = [aws_subnet.eks_subnet-3[0].id, aws_subnet.eks_subnet[0].id]
+  subnet_ids = [aws_subnet.rds_subnet_1[0].id, aws_subnet.eks_subnet[0].id]
 
-  depends_on = [aws_subnet.eks_subnet-3, aws_subnet.eks_subnet]
+  depends_on = [aws_subnet.rds_subnet_1, aws_subnet.eks_subnet]
 
   tags = {
     Name = "My DB subnet group"
