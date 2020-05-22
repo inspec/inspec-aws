@@ -43,10 +43,9 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ##### Check DB Subnet Group Name of a subnet group
 
-    describe aws_rds_cluster(db_subnet_group_name: 'subnet-group-name-12345') do
+    describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
       its('db_subnet_group_name')  { should eq 'subnet-group-name-12345' }
     end
-
 
 ## Matchers
 
@@ -68,6 +67,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `rds:DescribeDbSubnetGroups` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `rds:DescribeDBSubnetGroup` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

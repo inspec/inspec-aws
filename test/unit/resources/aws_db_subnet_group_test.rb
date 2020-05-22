@@ -4,7 +4,7 @@ require 'aws-sdk-core'
 
 class AwsDbSubnetGroupConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
+  def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsDbSubnetGroup.new(client_args: { stub_responses: true }) }
   end
 

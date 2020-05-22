@@ -112,6 +112,7 @@ variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
 variable "aws_rds_db_subnet_group_name" {}
 variable "aws_rds_db_subnet_group_description" {}
+variable "rds_subnet_name_1" {}
 variable "aws_rds_cluster_identifier" {}
 variable "aws_rds_cluster_instance_1_identifier" {}
 variable "aws_rds_cluster_instance_2_identifier" {}
@@ -1422,7 +1423,7 @@ resource "aws_subnet" "rds_subnet_1" {
   depends_on = [aws_internet_gateway.igw]
 
   tags = {
-    Name = var.aws_eks_subnet_name_1
+    Name = var.rds_subnet_name_1
   }
 }
 
@@ -1436,7 +1437,7 @@ resource "aws_db_subnet_group" "rds_subnet_group_1" {
   depends_on = [aws_subnet.rds_subnet_1, aws_subnet.eks_subnet]
 
   tags = {
-    Name = "My DB subnet group"
+    Name = var.aws_rds_db_subnet_group_name
   }
 }
 

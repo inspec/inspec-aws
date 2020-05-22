@@ -1,4 +1,4 @@
-title 'Test AWS VPC Subnet Groups in bulk'
+title 'Test AWS RDS Subnet Groups in bulk'
 
 aws_rds_db_subnet_group_vpc_id = attribute(:aws_rds_db_subnet_group_vpc_id, default: '', description: 'The VPC id for DB Subnet Group.')
 aws_rds_db_subnet_group_arn = attribute(:aws_rds_db_subnet_group_arn, default: '', description: 'The ARN for DB Subnet Group.')

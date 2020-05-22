@@ -1,4 +1,4 @@
-title 'Test AWS VPC Subnet Groups in bulk'
+title 'Test AWS RDS Subnet Groups in bulk'
 
 control 'aws-db-subnet-groups-1.0' do
 

@@ -156,6 +156,7 @@ module AWSInspecConfig
       aws_rds_db_storage_type: 'gp2',
       aws_rds_db_subnet_group_name: "subnet-group-name-#{add_random_string}",
       aws_rds_db_subnet_group_description: "subnet-group-description-#{add_random_string}",
+      rds_subnet_name_1: "rds-subnet-name-#{add_random_string}",
       aws_rds_cluster_database_name: "awsclusterdbname#{add_random_string}" ,
       aws_rds_cluster_engine: "aurora",
       aws_rds_cluster_identifier: "awscluster-#{add_random_string}",
