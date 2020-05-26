@@ -28,7 +28,7 @@ This resource does not expect any parameters.
 |subnet\_ids         | The ID of the subnet in which the NAT gateway is placed. The field name is `subnet_id`.|
 |tags                | A hash, with each key-value pair corresponding to a NAT gateway tag. The field name is `tags`.|
 |states              | The sate of the NAT gateway. Valid values are: `pending`, `failed`, `available`, `deleting` and `deleted`. The field name is `state`.|
-|nat\_gateways       | An `aws_nat_gateway` object with all the properties as documented [here](aws_nat_gateway.md). This can be used to test individual NAT gateways in-depth. The field name is `nat_gateway`. |
+|nat\_gateways       | A NAT gateway object with all the properties as documented [here](aws_nat_gateway.md). This can be used to test individual NAT gateways in-depth. The field name is `nat_gateway`. |
 
 
 ## Examples

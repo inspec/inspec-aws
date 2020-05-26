@@ -34,6 +34,10 @@ class AwsNatGateways < AwsResourceBase
     @table = fetch_data
   end
 
+  def to_s
+    "NAT Gateway #{@display_name}"
+  end
+
   def fetch_data
     ngw_rows = []
     query_params = {}
@@ -44,24 +48,19 @@ class AwsNatGateways < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
 
       @api_response.nat_gateways.each do |ngw|
-        ngw = ngw.to_h
-        data = {}
-        data[:data] = { nat_gateways: [ngw] }
-        data[:client] = Aws::EC2::Client
-        data[:method] = :describe_nat_gateways
-        nat_gateway_s = AwsNatGateway.new(
-          id: ngw[:nat_gateway_id],
-          client_args: { stub_responses: true },
-          stub_data: [data],
-        )
+        # Create additional methods defined in the singular resource for consistency.
+        ngw.define_singleton_method(:to_s) { "Nat Gateway #{ngw.nat_gateway_id}" }
+        ngw.define_singleton_method(:nat_gateway_address_set) { ngw.nat_gateway_addresses&.first&.to_h }
+        ngw.define_singleton_method(:id) { ngw.nat_gateway_id }
+        ngw_tags = map_tags(ngw.tags)
         ngw_rows += [{
-          id: nat_gateway_s.id,
-          tags: nat_gateway_s.tags,
-          name: nat_gateway_s.name,
-          subnet_id: nat_gateway_s.subnet_id,
-          vpc_id: nat_gateway_s.vpc_id,
-          state: nat_gateway_s.state,
-          nat_gateway: nat_gateway_s,
+          id: ngw.nat_gateway_id,
+          tags: ngw_tags,
+          name: ngw_tags['Name'],
+          subnet_id: ngw.subnet_id,
+          vpc_id: ngw.vpc_id,
+          state: ngw.state,
+          nat_gateway: ngw,
         }]
       end
       break unless @api_response.next_token
