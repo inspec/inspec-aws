@@ -57,7 +57,6 @@ class AwsNatGateway < AwsResourceBase
       resp = @aws.compute_client.describe_nat_gateways(query_params)
       if resp.nat_gateways.empty?
         empty_response_warn
-        return
       elsif resp.nat_gateways.count > 1
         resource_fail
       else
