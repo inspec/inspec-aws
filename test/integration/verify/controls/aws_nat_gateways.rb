@@ -21,16 +21,6 @@ control "aws-nat-gateways-1.0" do
     its('subnet_ids') { should include(aws_nat_gateway_subnet_id) }
   end
 
-  aws_nat_gateways.where(name: aws_nat_gateway_name).nat_gateways.each do |nat_gateway|
-    describe nat_gateway do
-      its('id') { should eq aws_nat_gateway_id }
-      its('vpc_id') { should eq aws_nat_gateway_vpc_id }
-      its('subnet_id') { should eq aws_nat_gateway_subnet_id }
-      its('nat_gateway_address_set') { should include(:allocation_id => aws_nat_gateway_allocation_id) }
-      its('nat_gateway_address_set') { should include(:private_ip => aws_nat_gateway_private_ip) }
-      its('nat_gateway_address_set') { should include(:public_ip => aws_nat_gateway_public_ip) }
-    end
-  end
 
   # Same test with using the singular resource
   aws_nat_gateways.where(name: aws_nat_gateway_name).ids.each do |id|

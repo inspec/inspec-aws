@@ -48,10 +48,6 @@ class AwsNatGateways < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
 
       @api_response.nat_gateways.each do |ngw|
-        # Create additional methods defined in the singular resource for consistency.
-        ngw.define_singleton_method(:to_s) { "Nat Gateway #{ngw.nat_gateway_id}" }
-        ngw.define_singleton_method(:nat_gateway_address_set) { ngw.nat_gateway_addresses&.first&.to_h }
-        ngw.define_singleton_method(:id) { ngw.nat_gateway_id }
         ngw_tags = map_tags(ngw.tags)
         ngw_rows += [{
           id: ngw.nat_gateway_id,
@@ -60,7 +56,6 @@ class AwsNatGateways < AwsResourceBase
           subnet_id: ngw.subnet_id,
           vpc_id: ngw.vpc_id,
           state: ngw.state,
-          nat_gateway: ngw,
         }]
       end
       break unless @api_response.next_token

@@ -28,7 +28,6 @@ This resource does not expect any parameters.
 |subnet\_ids         | The ID of the subnet in which the NAT gateway is placed. The field name is `subnet_id`.|
 |tags                | A hash, with each key-value pair corresponding to a NAT gateway tag. The field name is `tags`.|
 |states              | The sate of the NAT gateway. Valid values are: `pending`, `failed`, `available`, `deleting` and `deleted`. The field name is `state`.|
-|nat\_gateways       | A NAT gateway object with all the properties as documented [here](aws_nat_gateway.md). This can be used to test individual NAT gateways in-depth. The field name is `nat_gateway`. |
 
 
 ## Examples
@@ -39,17 +38,8 @@ This resource does not expect any parameters.
       its('count') { should cmp 3 }
     end
     
-##### Use this InSpec resource to filter NAT gateways with their name equal to `dev-nat-gateway`, then test in-depth using `nat_gateways`.
-
-    aws_nat_gateways.where(name: 'dev-nat-gateway').nat_gateways.each do |nat_gateway|
-      describe nat_gateway do
-        its('nat_gateway_address_set') { should include(:private_ip => '10.0.1.68') }
-        its('vpc_id') { should eq 'vpc-12345678' }
-      end
-    end
     
 ##### Use this InSpec resource to request the ids of all NAT gateways, then test in-depth using `aws_nat_gateway` InSpec singular AWS resource.
-It should be noted that this will make additional API calls for every singular resource usage and increase the cost of the test in terms of time and internet traffic.
 
     aws_nat_gateways.ids.each do |id|
       describe aws_nat_gateway(id: id) do
