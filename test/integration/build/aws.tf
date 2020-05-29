@@ -99,11 +99,15 @@ variable "aws_iam_policy_name_for_lambda" {}
 variable "aws_iam_role_name_for_lambda" {}
 variable "aws_internet_gateway_name" {}
 variable "aws_internet_gateway_name_tag" {}
+variable "aws_internet_gateway_vpc_name" {}
 variable "aws_iam_policy_name" {}
 variable "aws_iam_attached_policy_name" {}
 variable "aws_key_description_disabled" {}
 variable "aws_key_description_enabled" {}
 variable "aws_launch_configuration_name" {}
+variable "aws_nat_gateway_name" {}
+variable "aws_nat_gateway_eip_name" {}
+variable "aws_nat_gateway_subnet_name" {}
 variable "aws_rds_db_engine" {}
 variable "aws_rds_db_engine_version" {}
 variable "aws_rds_db_identifier" {}
@@ -1784,6 +1788,10 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 resource "aws_vpc" "for_igw" {
   count = var.aws_enable_creation
   cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = var.aws_internet_gateway_vpc_name
+  }
 }
 
 resource "aws_internet_gateway" "inspec_test" {
@@ -1792,5 +1800,36 @@ resource "aws_internet_gateway" "inspec_test" {
 
   tags = {
     Name = var.aws_internet_gateway_name_tag
+  }
+}
+
+resource "aws_subnet" "for_nat_gateway" {
+  count = var.aws_enable_creation
+  vpc_id = aws_vpc.for_igw[0].id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = var.aws_nat_gateway_subnet_name
+  }
+}
+
+resource "aws_eip" "for_nat_gateway" {
+  count = var.aws_enable_creation
+  vpc = true
+  public_ipv4_pool = "amazon"
+
+  tags = {
+    Name = var.aws_nat_gateway_eip_name
+  }
+}
+
+resource "aws_nat_gateway" "inspec_test" {
+  count = var.aws_enable_creation
+  allocation_id = aws_eip.for_nat_gateway[0].id
+  subnet_id = aws_subnet.for_nat_gateway[0].id
+  depends_on = ["aws_internet_gateway.inspec_test[0]"]
+
+  tags = {
+    Name = var.aws_nat_gateway_name
   }
 }

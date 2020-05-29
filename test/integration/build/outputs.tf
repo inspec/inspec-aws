@@ -213,3 +213,27 @@ output "aws_rds_db_subnet_group_arn" {
 output "aws_rds_db_subnet_group_vpc_id" {
   value = aws_subnet.eks_subnet.0.vpc_id
 }
+
+output "aws_nat_gateway_id" {
+  value = aws_nat_gateway.inspec_test.0.id
+}
+
+output "aws_nat_gateway_subnet_id" {
+  value = aws_nat_gateway.inspec_test.0.subnet_id
+}
+
+output "aws_nat_gateway_allocation_id" {
+  value = aws_nat_gateway.inspec_test.0.allocation_id
+}
+
+output "aws_nat_gateway_vpc_id" {
+  value = aws_subnet.for_nat_gateway.0.vpc_id
+}
+
+output "aws_nat_gateway_private_ip" {
+  value = aws_nat_gateway.inspec_test.0.private_ip
+}
+
+output "aws_nat_gateway_public_ip" {
+  value = aws_nat_gateway.inspec_test.0.public_ip
+}

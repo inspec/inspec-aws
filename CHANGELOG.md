@@ -1,9 +1,19 @@
-<!-- latest_release 1.18.0 -->
+<!-- latest_release 1.19.0 -->
+## [v1.19.0](https://github.com/inspec/inspec-aws/tree/v1.19.0) (2020-05-27)
+
+#### Merged Pull Requests
+- Resolves #31 : Add aws_nat_gateway(s) resources [#223](https://github.com/inspec/inspec-aws/pull/223) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
+## [v1.18.1](https://github.com/inspec/inspec-aws/tree/v1.18.1) (2020-05-20)
+
+#### Merged Pull Requests
+- Fix a typo in cloudwatch_log_group control [#222](https://github.com/inspec/inspec-aws/pull/222) ([omerdemirok](https://github.com/omerdemirok))
+
 ## [v1.18.0](https://github.com/inspec/inspec-aws/tree/v1.18.0) (2020-05-19)
 
 #### Merged Pull Requests
 - Resolves #126 Expose global secondary indexes on aws_dynamodb_table [#220](https://github.com/inspec/inspec-aws/pull/220) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.17.1](https://github.com/inspec/inspec-aws/tree/v1.17.1) (2020-05-19)
 

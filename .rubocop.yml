@@ -28,7 +28,8 @@ Layout/LineLength:
   Enabled: false
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
-
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
 Lint/ParenthesesAsGroupedExpression:
   Enabled: false
 Lint/ReturnInVoidContext:

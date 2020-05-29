@@ -29,7 +29,6 @@ This resource does not expect any parameters.
 |attachment\_states  | Indicates whether the internet gateway is attached to a VPC (`attached` or `detached`). The field name is `attachment_state`.|
 |owner_ids           | The ID of the AWS account that owns the internet gateway. The field name is `owner_id`. |
 
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InternetGateway.html)
 
 ## Examples
 
