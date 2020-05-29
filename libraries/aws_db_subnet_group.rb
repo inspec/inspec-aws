@@ -32,7 +32,11 @@ class AwsDbSubnetGroup < AwsResourceBase
     !failed_resource?
   end
 
+  def to_s
+    "Subnet Group Name #{@display_name}"
+  end
+
   def name
-    db_subnet_group_name
+    db_subnet_group_name if exists?
   end
 end
