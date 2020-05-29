@@ -11,7 +11,7 @@ class AwsDbSubnetGroups < AwsResourceBase
     end
   '
 
-  attr_reader :table, :subnet_rows
+  attr_reader :table, :subnet_rows, :api_response
 
   FilterTable.create
              .register_column(:db_subnet_group_names,                field: :db_subnet_group_name)
@@ -31,10 +31,13 @@ class AwsDbSubnetGroups < AwsResourceBase
   def fetch_data
     subnet_group_rows = []
     pagination_options = {}
-    catch_aws_errors do
-      resp = @aws.rds_client.describe_db_subnet_groups(pagination_options)
-      return [] if !resp || resp.empty?
-      resp.db_subnet_groups.each do |subnet_group|
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.rds_client.describe_db_subnet_groups(pagination_options)
+      end
+      return [] if !api_response || api_response.empty?
+
+      api_response.db_subnet_groups.each do |subnet_group|
         subnet_group_rows += [{ db_subnet_group_name:           subnet_group.db_subnet_group_name,
                                 db_subnet_group_description:    subnet_group.db_subnet_group_description,
                                 vpc_id:                         subnet_group.vpc_id,
@@ -42,6 +45,8 @@ class AwsDbSubnetGroups < AwsResourceBase
                                 subnets:                        return_subnets(subnets: subnet_group.subnets),
                                 db_subnet_group_arn:            subnet_group.db_subnet_group_arn }]
       end
+      break unless api_response.marker
+      pagination_options = { marker: api_response[:marker] }
     end
     @table = subnet_group_rows
   end

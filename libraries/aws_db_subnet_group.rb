@@ -21,12 +21,10 @@ class AwsDbSubnetGroup < AwsResourceBase
       resp = @aws.rds_client.describe_db_subnet_groups({ db_subnet_group_name: opts[:db_subnet_group_name] })
       if resp.db_subnet_groups.first.nil?
         empty_response_warn
-        return
       else
         @subnet_group = resp.db_subnet_groups[0].to_h
+        create_resource_methods(@subnet_group)
       end
-
-      create_resource_methods(@subnet_group)
     end
   end
 
@@ -34,7 +32,7 @@ class AwsDbSubnetGroup < AwsResourceBase
     !failed_resource?
   end
 
-  def to_s
-    "Subnet Group Name #{@display_name}"
+  def name
+    db_subnet_group_name
   end
 end
