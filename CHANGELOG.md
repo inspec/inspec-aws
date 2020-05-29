@@ -1,9 +1,14 @@
-<!-- latest_release 1.19.0 -->
+<!-- latest_release 1.20.0 -->
+## [v1.20.0](https://github.com/inspec/inspec-aws/tree/v1.20.0) (2020-05-29)
+
+#### Merged Pull Requests
+- aws db subnet group [#221](https://github.com/inspec/inspec-aws/pull/221) ([samscottchef](https://github.com/samscottchef))
+<!-- latest_release -->
+
 ## [v1.19.0](https://github.com/inspec/inspec-aws/tree/v1.19.0) (2020-05-27)
 
 #### Merged Pull Requests
 - Resolves #31 : Add aws_nat_gateway(s) resources [#223](https://github.com/inspec/inspec-aws/pull/223) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.18.1](https://github.com/inspec/inspec-aws/tree/v1.18.1) (2020-05-20)
 
