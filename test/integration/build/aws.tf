@@ -114,6 +114,9 @@ variable "aws_rds_db_identifier" {}
 variable "aws_rds_db_master_user" {}
 variable "aws_rds_db_name" {}
 variable "aws_rds_db_storage_type" {}
+variable "aws_rds_db_subnet_group_name" {}
+variable "aws_rds_db_subnet_group_description" {}
+variable "rds_subnet_name_1" {}
 variable "aws_rds_cluster_identifier" {}
 variable "aws_rds_cluster_instance_1_identifier" {}
 variable "aws_rds_cluster_instance_2_identifier" {}
@@ -1412,6 +1415,33 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
 
   vpc_config {
     subnet_ids = [aws_subnet.eks_subnet-2[0].id, aws_subnet.eks_subnet[0].id]
+  }
+}
+
+resource "aws_subnet" "rds_subnet_1" {
+  count             = var.aws_enable_creation
+  vpc_id            = aws_vpc.eks_vpc[0].id
+  availability_zone = "${var.aws_region}b"
+  cidr_block        = "10.0.50.0/20"
+
+  depends_on = [aws_internet_gateway.igw]
+
+  tags = {
+    Name = var.rds_subnet_name_1
+  }
+}
+
+resource "aws_db_subnet_group" "rds_subnet_group_1" {
+  count       = var.aws_enable_creation
+  name        = var.aws_rds_db_subnet_group_name
+  description = var.aws_rds_db_subnet_group_description
+
+  subnet_ids = [aws_subnet.rds_subnet_1[0].id, aws_subnet.eks_subnet[0].id]
+
+  depends_on = [aws_subnet.rds_subnet_1, aws_subnet.eks_subnet]
+
+  tags = {
+    Name = var.aws_rds_db_subnet_group_name
   }
 }
 

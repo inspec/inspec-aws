@@ -202,6 +202,18 @@ output "aws_transit_gateway_id" {
   value = aws_ec2_transit_gateway.gateway.0.id
 }
 
+output "aws_rds_db_subnet_group_name" {
+  value = aws_db_subnet_group.rds_subnet_group_1.0.name
+}
+
+output "aws_rds_db_subnet_group_arn" {
+  value = aws_db_subnet_group.rds_subnet_group_1.0.arn
+}
+
+output "aws_rds_db_subnet_group_vpc_id" {
+  value = aws_subnet.eks_subnet.0.vpc_id
+}
+
 output "aws_nat_gateway_id" {
   value = aws_nat_gateway.inspec_test.0.id
 }

@@ -128,6 +128,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_cloudwatch_log_metric_filter](docs/resources/aws_cloudwatch_log_metric_filter.md)
 - [aws_config_delivery_channel](docs/resources/aws_config_delivery_channel.md)
 - [aws_config_recorder](docs/resources/aws_config_recorder.md)
+- [aws_db_subnet_group](docs/resources/aws_db_subnet_group.md)
+- [aws_db_subnet_groups](docs/resources/aws_db_subnet_groups.md)
 - [aws_dhcp_options](docs/resources/aws_dhcp_options.md)
 - [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
