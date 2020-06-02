@@ -470,6 +470,17 @@ resource "aws_s3_bucket_policy" "allow_public" {
       "Principal": "*",
       "Action": "s3:GetObject",
       "Resource": "arn:aws:s3:::${aws_s3_bucket.bucket_public[0].id}/*"
+    },
+    {
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": "arn:aws:s3:::${aws_s3_bucket.bucket_public[0].id}/*",
+        "Condition": {
+            "Bool": {
+                "aws:SecureTransport": "false"
+            }
+        }
     }
   ]
 }

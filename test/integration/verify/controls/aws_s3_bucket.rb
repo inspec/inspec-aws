@@ -23,6 +23,7 @@ control 'aws-s3-bucket-1.0' do
     its('tags')   { should include('Environment' => 'Dev',
                                    'Name' => aws_bucket_public_name)}
     it            { should be_public }
+    it            { should have_secure_transport_enabled }
   end
 
   describe aws_s3_bucket(aws_bucket_public_name) do
@@ -40,6 +41,7 @@ control 'aws-s3-bucket-1.0' do
   describe aws_s3_bucket(bucket_name: aws_bucket_private_name) do
     it { should exist }
     it { should_not be_public }
+    it { should_not have_secure_transport_enabled }
   end
 
   describe aws_s3_bucket(bucket_name: aws_bucket_auth_name) do
