@@ -85,6 +85,10 @@ class AwsS3Bucket < AwsResourceBase
     end
   end
 
+  def has_secure_transport_enabled?
+    bucket_policy.any? { |s| s.effect == 'Deny' && s.condition == { 'Bool' => { 'aws:SecureTransport'=>'false' } } }
+  end
+
   # below is to preserve the original 'unsupported' function but isn't used in the above
   def bucket_policy
     @bucket_policy ||= fetch_bucket_policy

@@ -90,6 +90,11 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
             end
         end
 
+##### Check if a bucket has a bucket policy that requires requests to use HTTPS
+      describe aws_s3_bucket('test_bucket') do
+        it { should have_secure_transport_enabled }
+      end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -123,6 +128,12 @@ The `have_default_encryption_enabled` matcher tests if default encryption is ena
 The `have_versioning_enabled` matcher tests if versioning is enabled for the s3 bucket.
 
    it { should have_versioning_enabled }
+
+#### have\_secure\_transport\_enabled
+
+The `have_secure_transport_enabled` matcher tests if a bucket policy that explicitly denies requests via HTTP is enabled for the s3 bucket.
+
+   it { should have_secure_transport_enabled }
 
 ## AWS Permissions
 

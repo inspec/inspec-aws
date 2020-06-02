@@ -75,6 +75,17 @@ class AwsS3BucketPublicTest < Minitest::Test
       "Principal": "*",
       "Action": "s3:GetObject",
       "Resource": "arn:aws:s3:::bucket-12345/*"
+    },
+    {
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": "arn:aws:s3:::bucket-12345/*",
+        "Condition": {
+            "Bool": {
+                "aws:SecureTransport": "false"
+            }
+        }
     }
   ]
 }
@@ -139,6 +150,10 @@ EOP
   def test_property_bucket_policy_public
     allow_all = @bucket.bucket_policy.select { |s| s.effect == 'Allow' && s.principal == '*' }
     assert_equal(1, allow_all.count)
+  end
+
+  def test_has_default_encryption_enabled_positive
+    assert(@bucket.has_secure_transport_enabled?)
   end
 end
 
@@ -246,6 +261,9 @@ EOP
     assert_equal(0, allow_all.count)
   end
 
+  def test_has_default_encryption_enabled_positive
+    refute(@bucket.has_secure_transport_enabled?)
+  end
 end
 
 class AwsS3BucketAuthUsersTest < Minitest::Test
