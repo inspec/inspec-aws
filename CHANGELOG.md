@@ -1,9 +1,14 @@
-<!-- latest_release 1.20.0 -->
+<!-- latest_release 1.21.0 -->
+## [v1.21.0](https://github.com/inspec/inspec-aws/tree/v1.21.0) (2020-06-03)
+
+#### Merged Pull Requests
+- Add has_secure_transport_enabled? method for aws_s3_bucket [#224](https://github.com/inspec/inspec-aws/pull/224) ([gsreynolds](https://github.com/gsreynolds))
+<!-- latest_release -->
+
 ## [v1.20.0](https://github.com/inspec/inspec-aws/tree/v1.20.0) (2020-05-29)
 
 #### Merged Pull Requests
 - aws db subnet group [#221](https://github.com/inspec/inspec-aws/pull/221) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.19.0](https://github.com/inspec/inspec-aws/tree/v1.19.0) (2020-05-27)
 
