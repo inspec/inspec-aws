@@ -13,7 +13,8 @@ class AwsAlb < AwsResourceBase
   "
 
   attr_reader :availability_zones, :canonical_hosted_zone_id, :created_time, :dns_name, :load_balancer_arn,
-              :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id, :zone_names
+              :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id, :zone_names,
+              :listeners, :ssl_policies, :external_ports, :protocols
 
   def initialize(opts = {})
     opts = { load_balancer_arn: opts } if opts.is_a?(String)
@@ -39,6 +40,11 @@ class AwsAlb < AwsResourceBase
       @state                    = alb.state
       @type                     = alb.type
       @vpc_id                   = alb.vpc_id
+
+      @listeners      = @aws.elb_client_v2.describe_listeners(load_balancer_arn: opts[:load_balancer_arn]).listeners
+      @ssl_policies   = @listeners.select { |l| l.protocol == 'HTTPS' }.map(&:ssl_policy).uniq
+      @external_ports = @listeners.map(&:port)
+      @protocols      = @listeners.map(&:protocol).uniq
     end
   end
 
