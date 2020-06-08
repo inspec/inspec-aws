@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id
+              :subnet_ids, :vpc_id, :listeners, :policies, :protocols
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
@@ -28,12 +28,15 @@ class AwsElb < AwsResourceBase
       @availability_zones = resp.availability_zones
       @dns_name           = resp.dns_name
       @load_balancer_name = resp.load_balancer_name
+      @listeners          = resp.listener_descriptions
       @external_ports     = resp.listener_descriptions.map { |l| l.listener.load_balancer_port }
       @instance_ids       = resp.instances.map(&:instance_id)
       @internal_ports     = resp.listener_descriptions.map { |l| l.listener.instance_port }
       @security_group_ids = resp.security_groups
       @subnet_ids         = resp.subnets
       @vpc_id             = resp.vpc_id
+      @policies           = resp.policies
+      @protocols          = resp.listener_descriptions.map { |l| l.listener.protocol }.uniq
     end
   end
 

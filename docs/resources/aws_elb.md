@@ -41,7 +41,9 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |security\_group\_ids | The security groups for the load balancer. Valid only for load balancers in a VPC. |
 |vpc\_id              | The ID of the VPC for the load balancer. |
 |subnet\_ids          | The IDs of the subnets for the load balancer. |
-
+|listeners            | A collection of the listeners for the load balancer. |
+|policies             | A list of the SSL Policies configured for the load balancer. |
+|protocols            | A list of the protocols configured for the listeners of the load balancer. |
 
 ## Examples
 
