@@ -1,10 +1,10 @@
 title 'Test single AWS Iam Policy'
 
-aws_iam_policy_arn = attribute(:aws_iam_policy_arn, default: '', description: 'The AWS Iam Policy arn.')
-aws_iam_policy_name = attribute(:aws_iam_policy_name, default: '', description: 'The AWS Iam Policy name.')
-aws_iam_attached_policy_name = attribute(:aws_iam_attached_policy_name, default: '', description: 'The AWS Iam Attached Policy name.')
-aws_iam_user_name = attribute(:aws_iam_user_name, default: '', description: 'The Attached AWS Iam Username.')
-aws_iam_role_generic_name = attribute(:aws_iam_role_generic_name, default: '', description: 'The AWS Iam Role.')
+aws_iam_policy_arn = attribute(:aws_iam_policy_arn, value: '', description: 'The AWS Iam Policy arn.')
+aws_iam_policy_name = attribute(:aws_iam_policy_name, value: '', description: 'The AWS Iam Policy name.')
+aws_iam_attached_policy_name = attribute(:aws_iam_attached_policy_name, value: '', description: 'The AWS Iam Attached Policy name.')
+aws_iam_user_name = attribute(:aws_iam_user_name, value: '', description: 'The Attached AWS Iam Username.')
+aws_iam_role_generic_name = attribute(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
 
 control 'aws-iam-policy-1.0' do
 
@@ -35,6 +35,8 @@ control 'aws-iam-policy-1.0' do
     it { should be_attached_to_role(aws_iam_role_generic_name) }
     it { should_not be_attached_to_user("fake-user") }
     it { should_not be_attached_to_role("fake-role") }
+    # Test Action in an array
+    it { should have_statement(Action: ["ec2:Describe*"]) }
   end
 
 end

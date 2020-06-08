@@ -88,23 +88,31 @@ class AwsIamPolicyTest < Minitest::Test
     assert @policy.has_statement?(Action: "ec2:Describe*")
   end
 
-  def test_statment_contains_action_existing_with_effect
+  def test_statement_contains_action_array
+    assert @policy.has_statement?(Action: ["ec2:Describe*"])
+  end
+
+  def test_statement_contains_not_allowed_item
+    assert_raises(ArgumentError) { @policy.has_statement?(Condition: 'Some condition') }
+  end
+
+  def test_statement_contains_action_existing_with_effect
     assert @policy.has_statement?(Action: "ec2:Describe*", Effect: "Allow")
   end
 
-  def test_statment_contains_action_existing_with_effect_and_resource
+  def test_statement_contains_action_existing_with_effect_and_resource
     assert @policy.has_statement?(Action: "ec2:Describe*", Effect: "Allow", Resource: "*")
   end
 
-  def test_statment_contains_not_action
+  def test_statement_contains_not_action
     assert @policy.has_statement?(NotAction: "s3:DeleteBucket")
   end
 
-  def test_statment_contains_not_action_existing_with_effect
+  def test_statement_contains_not_action_existing_with_effect
     assert @policy.has_statement?(NotAction: "s3:DeleteBucket", Effect: "Allow")
   end
 
-  def test_statment_contains_without_not_action
+  def test_statement_contains_without_not_action
     assert @policy.has_statement?(Effect: "Allow", Resource: "arn:aws:s3:::*")
   end
 
@@ -116,7 +124,7 @@ class AwsIamPolicyTest < Minitest::Test
     refute @policy.has_statement?(Action: "s3:DeleteBucket", Effect: "Allow", Resource: "arn:aws:s3:::*")
   end
 
-  def test_statment_contains_all_resources
+  def test_statement_contains_all_resources
     assert @policy.has_statement?(Resource: "*")
   end
 

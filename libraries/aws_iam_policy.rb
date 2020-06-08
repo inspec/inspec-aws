@@ -86,28 +86,36 @@ class AwsIamPolicy < AwsResourceBase
   def has_statement?(criteria = {})
     return false unless @policy_document
     document = JSON.parse(URI.decode_www_form_component(@policy_document.policy_version.document), { symbolize_names: true })
-    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
-    statement_match = []
-
-    criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
-    criteria[:Resource] = criteria[:Resource].is_a?(Array) ? criteria[:Resource].sort : criteria[:Resource]
-    statements.each do |s|
-      actions    = s[:Action] || []
-      notactions = s[:NotAction] || []
-      effect     = s[:Effect]
-      resource   = s[:Resource].is_a?(Array) ? s[:Resource].sort : s[:Resource]
-
-      action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
-
-      no_action_match = criteria[:NotAction].nil? ? true : notactions.include?(criteria[:NotAction])
-
-      effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
-
-      resource_match = criteria[:Resource].nil? ? true : resource.eql?(criteria[:Resource])
-
-      statement_match.push(action_match && no_action_match && effect_match && resource_match)
+    statements = document[:Statement].is_a?(Array) ? document[:Statement] : [document[:Statement]].compact
+    # downcase keys to eliminate formatting issue
+    # put values in an array for standard match checking
+    criteria = criteria.each_with_object({}) { |(k, v), h| h[k.downcase.to_sym] = v.is_a?(Array) ? v : [v] }
+    return false if criteria.empty? || statements.empty?
+    # Principal and Conditional are not supported.
+    # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html
+    allowed_statement_elements = %i(Action Effect Sid Resource NotAction NotResource)
+    # downcase keys to eliminate formatting issue
+    unless criteria.keys.all? { |k| allowed_statement_elements.map(&:downcase).include?(k) }
+      raise ArgumentError, "Valid statement elements are #{allowed_statement_elements}, provided elements are: #{criteria.keys}"
     end
-    statement_match.include?(true)
+    # puts "Criteria #{criteria}"
+    statements.each do |statement|
+      # This is to comply with the document that allowing keys in lowercase format.
+      statement = statement.each_with_object({}) { |(k, v), acc| acc[k.downcase] = v }
+      @statement_match = false
+      criteria_match = []
+      criteria.each do |k_c, v_c|
+        criteria_match << v_c.all? do |v|
+          statement_item_in_array = statement[k_c].is_a?(Array) ? statement[k_c] : [statement[k_c]].compact
+          statement_item_in_array.include?(v)
+        end
+      end
+      if criteria_match.all?(true)
+        @statement_match = true
+      end
+      break if criteria_match.all?(true)
+    end
+    @statement_match
   end
 
   def statement_count
