@@ -15,6 +15,26 @@ class AwsAlbMock < AwsBaseResourceMock
                             type: @aws.any_string,
                             vpc_id: @aws.any_string,
                             created_time: Time.now }]}
+    @alb_listeners = {listeners: [{
+                                    listener_arn: @aws.any_arn,
+                                    load_balancer_arn: @aws.any_arn,
+                                    port: 80,
+                                    protocol: 'HTTP',
+                                    certificates: [],
+                                    ssl_policy: nil,
+                                    default_actions: [],
+                                    alpn_policy: [],
+                                  },
+                                  {
+                                    listener_arn: @aws.any_arn,
+                                    load_balancer_arn: @aws.any_arn,
+                                    port: 443,
+                                    protocol: 'HTTPS',
+                                    certificates: [{ certificate_arn: @aws.any_arn, is_default: nil }],
+                                    ssl_policy: 'ELBSecurityPolicy-TLS-1-2-Ext-2018-06',
+                                    default_actions: [],
+                                    alpn_policy: [] },
+                                  ]}
   end
 
   def stub_data
@@ -24,6 +44,13 @@ class AwsAlbMock < AwsBaseResourceMock
               :data => @alb}
 
     stub_data += [alb]
+
+      ## Need to stub the AWS ALB class with listeners seperately (it's a second client method call to describe_listeners)
+    alb_listeners = {:client => Aws::ElasticLoadBalancingV2::Client,
+              :method => :describe_listeners,
+              :data => @alb_listeners}
+
+    stub_data += [alb_listeners]
   end
 
   def alb
