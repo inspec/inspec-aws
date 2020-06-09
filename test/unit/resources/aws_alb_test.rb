@@ -28,6 +28,7 @@ class AwsAlbTest < Minitest::Test
     # Given
     @mock = AwsAlbMock.new
     @mock_alb = @mock.alb[:load_balancers].first
+    @mock_alb_listeners = @mock.alb_listeners[:listeners]
 
     # When
     @alb = AwsAlb.new(load_balancer_arn: @mock_alb[:load_balancer_arn],
@@ -82,6 +83,18 @@ class AwsAlbTest < Minitest::Test
 
   def test_lb_zone_names
     assert_equal(@alb.zone_names.first, @mock_alb[:availability_zones].first[:zone_name])
+  end
+
+  def test_lb_ssl_policies
+    assert_equal(@alb.ssl_policies, [@mock_alb_listeners.last[:ssl_policy]])
+  end
+
+  def test_lb_external_ports
+    assert_equal(@alb.external_ports, [@mock_alb_listeners.first[:port], @mock_alb_listeners.last[:port]])
+  end
+
+  def test_lb_protocols
+    assert_equal(@alb.protocols, [@mock_alb_listeners.first[:protocol], @mock_alb_listeners.last[:protocol]])
   end
 
   def test_exists
