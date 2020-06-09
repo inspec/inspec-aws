@@ -1,9 +1,14 @@
-<!-- latest_release 1.22.0 -->
+<!-- latest_release 1.23.0 -->
+## [v1.23.0](https://github.com/inspec/inspec-aws/tree/v1.23.0) (2020-06-09)
+
+#### Merged Pull Requests
+- Add listener SSL policy properties for aws_alb and aws_elb, also add aws_albs resource [#229](https://github.com/inspec/inspec-aws/pull/229) ([gsreynolds](https://github.com/gsreynolds))
+<!-- latest_release -->
+
 ## [v1.22.0](https://github.com/inspec/inspec-aws/tree/v1.22.0) (2020-06-08)
 
 #### Merged Pull Requests
 - Improve has_statement? method [#228](https://github.com/inspec/inspec-aws/pull/228) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.21.0](https://github.com/inspec/inspec-aws/tree/v1.21.0) (2020-06-03)
 
