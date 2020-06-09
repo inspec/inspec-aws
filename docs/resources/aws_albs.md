@@ -23,19 +23,19 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
-|load\_balancer\_name        | The name of the load balancer. |
-|load\_balancer\_addresses   | A collectionm of the load balancer addresses. |
-|canonical\_hosted\_zone\_id | The ID of the Amazon Route 53 hosted zone for the load balancer. |
-|dns\_name                   | The DNS name of the load balancer. |
-|availability\_zones         | The Availability Zones for the load balancer. |
-|security\_groups            | The security groups for the load balancer. Valid only for load balancers in a VPC. |
-|scheme                      | The type of load balancer. Valid only for load balancers in a VPC. |
-|state                       | The state of the load balancer. |
-|subnets                     | A collection of the subnet ids. |
-|type                        | The type of the load balancer. |
-|vpc\_id                     | The ID of the VPC for the load balancer. |
+|Property                     | Description|
+| ---                         | --- |
+|load\_balancer\_names        | The names of the load balancers. |
+|load\_balancer\_addresses    | A collection of the load balancers addresses. |
+|canonical\_hosted\_zone\_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. |
+|dns\_names                   | The DNS names of the load balancers. |
+|availability\_zones          | The Availability Zones for the load balancers. |
+|security\_groups             | The security groups for the load balancers. Valid only for load balancers in a VPC. |
+|schemes                      | The types of load balancers. Valid only for load balancers in a VPC. |
+|states                       | The states of the load balancers. |
+|subnets                      | A collection of the subnet ids. |
+|types                        | The types of the load balancers. |
+|vpc\_ids                     | The IDs of the VPCs for the load balancers. |
 |zone\_names                 | A collection of the names of the availability zones. |
 
 ## Examples
