@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id, :listeners, :policies, :protocols
+              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
@@ -35,8 +35,14 @@ class AwsElb < AwsResourceBase
       @security_group_ids = resp.security_groups
       @subnet_ids         = resp.subnets
       @vpc_id             = resp.vpc_id
-      @policies           = resp.policies
       @protocols          = resp.listener_descriptions.map { |l| l.listener.protocol }.uniq
+
+      # The ELB will list multiple custom policies, including previously configured policies
+      # Even if a pre-defined policy is selected, a custom policy is created from that template
+      # So, we need to get a list of all policies currently in use and filter the list of policies that exist
+      policies_in_use     = resp.listener_descriptions.map(&:policy_names).flatten.uniq
+      @ssl_policies       = @aws.elb_client.describe_load_balancer_policies(load_balancer_name: opts[:load_balancer_name])
+                                .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
     end
   end
 
