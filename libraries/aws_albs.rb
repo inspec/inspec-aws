@@ -24,6 +24,7 @@ class AwsAlbs < AwsResourceBase
              .register_column(:security_groups,           field: :security_groups)
              .register_column(:states,                    field: :state)
              .register_column(:subnets,                   field: :subnets)
+             .register_column(:types,                     field: :type)
              .register_column(:vpc_ids,                   field: :vpc_id)
              .register_column(:zone_names,                field: :zone_names)
              .install_filter_methods_on_resource(self, :table)
