@@ -56,4 +56,8 @@ class AwsAlbMock < AwsBaseResourceMock
   def alb
     @alb
   end
+
+  def alb_listeners
+    @alb_listeners
+  end
 end
