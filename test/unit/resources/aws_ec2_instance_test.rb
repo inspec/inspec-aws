@@ -241,6 +241,25 @@ class AwsEc2InstanceHappyPathTest < Minitest::Test
   def test_name
     assert_equal(@ec2.name, "aws-inspec-linux-ubuntu-vm")
   end
+
+  # Testing NullResponse when calling undefined methods
+  #
+  # Calling a static undefined method on resource should return nil
+  def test_undefined_method
+    assert_nil(@ec2.fake_method.fake_child)
+  end
+
+  # Calling undefined method on AWSResourceProbe should return nil
+  # `placement` is a dynamically created AWSResourceProbe type method
+  def test_undefined_method_on_aws_resource_probe
+    assert_nil(@ec2.placement.fake_method.and_another.and_goes_on)
+  end
+
+  # Calling undefined method on an existing property should raise NoMethodError
+  # `availability_zone` is a valid property of `placement` method
+  def test_undefined_method_on_existing_property
+    assert_raises(NoMethodError) { @ec2.placement.availability_zone.fake_method}
+  end
 end
 
 class AwsEc2InstanceStatusTest < Minitest::Test

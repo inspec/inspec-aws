@@ -18,3 +18,5 @@ local
 .aws
 
 inspec-aws.tfvars.*
+vendor
+.bundle
