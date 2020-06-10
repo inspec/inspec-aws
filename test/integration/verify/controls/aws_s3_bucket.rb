@@ -24,6 +24,7 @@ control 'aws-s3-bucket-1.0' do
                                    'Name' => aws_bucket_public_name)}
     it            { should be_public }
     it            { should have_secure_transport_enabled }
+    its('bucket_lifecycle_rules') { should be_empty }
   end
 
   describe aws_s3_bucket(aws_bucket_public_name) do
@@ -42,6 +43,14 @@ control 'aws-s3-bucket-1.0' do
     it { should exist }
     it { should_not be_public }
     it { should_not have_secure_transport_enabled }
+    its('bucket_lifecycle_rules') { should_not be_empty }
+  end
+
+  aws_s3_bucket(bucket_name: aws_bucket_private_name).bucket_lifecycle_rules.each do |rule|
+    describe rule do
+      its('expiration.days') { should be >= 180 }
+      its('status') { should eq 'Enabled' }
+    end
   end
 
   describe aws_s3_bucket(bucket_name: aws_bucket_auth_name) do

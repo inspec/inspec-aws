@@ -367,6 +367,17 @@ resource "aws_s3_bucket" "bucket_private" {
   count  = var.aws_enable_creation
   bucket = var.aws_bucket_private_name
   acl    = "private"
+
+  lifecycle_rule {
+    id      = "expiration"
+    enabled = true
+
+    prefix = ""
+
+    expiration {
+      days = 365
+    }
+  }
 }
 
 resource "aws_s3_bucket" "bucket_public_for_objects" {
