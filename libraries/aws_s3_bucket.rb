@@ -115,6 +115,18 @@ class AwsS3Bucket < AwsResourceBase
     policy_list
   end
 
+  def bucket_lifecycle_rules
+    rules_list = []
+    catch_aws_errors do
+      begin
+        rules_list = @aws.storage_client.get_bucket_lifecycle_configuration(bucket: @bucket_name).rules
+      rescue Aws::S3::Errors::NoSuchLifecycleConfiguration
+        return []
+      end
+    end
+    rules_list
+  end
+
   def tags
     begin
       tag_list = @aws.storage_client.get_bucket_tagging(bucket: @bucket_name).tag_set

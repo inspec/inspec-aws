@@ -36,6 +36,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 |region        | The region of the bucket. Region is overridden based on the location returned from S3 |
 |bucket\_acl    | An array of AWS Grants detailing permission grants on the bucket. |
 |bucket\_policy | The IAM policy document controlling access to the bucket.  |
+|bucket\_lifecycle\_rules | The lifecycle policy rules that define actions S3 will take for all objects (or a subset of objects) in their lifetime. |
 |tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
