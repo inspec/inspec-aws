@@ -1,9 +1,14 @@
-<!-- latest_release 1.23.0 -->
+<!-- latest_release 1.24.0 -->
+## [v1.24.0](https://github.com/inspec/inspec-aws/tree/v1.24.0) (2020-06-12)
+
+#### Merged Pull Requests
+- SSM Parameter [#232](https://github.com/inspec/inspec-aws/pull/232) ([samscottchef](https://github.com/samscottchef))
+<!-- latest_release -->
+
 ## [v1.23.0](https://github.com/inspec/inspec-aws/tree/v1.23.0) (2020-06-09)
 
 #### Merged Pull Requests
 - Add listener SSL policy properties for aws_alb and aws_elb, also add aws_albs resource [#229](https://github.com/inspec/inspec-aws/pull/229) ([gsreynolds](https://github.com/gsreynolds))
-<!-- latest_release -->
 
 ## [v1.22.0](https://github.com/inspec/inspec-aws/tree/v1.22.0) (2020-06-08)
 
