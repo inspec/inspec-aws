@@ -1,9 +1,14 @@
-<!-- latest_release 1.25.0 -->
+<!-- latest_release 1.26.0 -->
+## [v1.26.0](https://github.com/inspec/inspec-aws/tree/v1.26.0) (2020-06-12)
+
+#### Merged Pull Requests
+- Add NullResponse class [#231](https://github.com/inspec/inspec-aws/pull/231) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.25.0](https://github.com/inspec/inspec-aws/tree/v1.25.0) (2020-06-12)
 
 #### Merged Pull Requests
 - Add bucket_lifecycle_rules to aws_s3_bucket [#230](https://github.com/inspec/inspec-aws/pull/230) ([gsreynolds](https://github.com/gsreynolds))
-<!-- latest_release -->
 
 ## [v1.24.0](https://github.com/inspec/inspec-aws/tree/v1.24.0) (2020-06-12)
 
