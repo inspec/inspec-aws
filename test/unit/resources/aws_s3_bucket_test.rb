@@ -155,8 +155,11 @@ EOP
   def test_has_default_encryption_enabled_positive
     assert(@bucket.has_secure_transport_enabled?)
   end
-end
 
+  def test_bucket_lifecycle_rules
+    assert_equal([], @bucket.bucket_lifecycle_rules)
+  end
+end
 
 class AwsS3BucketPrivateTest < Minitest::Test
 
@@ -209,6 +212,23 @@ EOP
     )
     policy[:client] = Aws::S3::Client
     bucket_stub_data += [policy]
+    lifecycle_configuration = {}
+    lifecycle_configuration[:method] = :get_bucket_lifecycle_configuration
+    lifecycle_configuration[:data] = OpenStruct.new(rules: [
+                                                      OpenStruct.new(
+                                                        expiration: OpenStruct.new(date: nil, days: 365, expired_object_delete_marker: nil),
+                                                        id: 'expire rule',
+                                                        prefix: nil,
+                                                        filter: OpenStruct.new(prefix: '', tag: nil, and: nil),
+                                                        status: 'Enabled',
+                                                        transition: [],
+                                                        noncurrent_version_transitions: [],
+                                                        noncurrent_version_expiration: OpenStruct.new(noncurrent_days: 365),
+                                                        abort_incomplete_multipart_upload: nil,
+                                                      ),
+                                                    ])
+    lifecycle_configuration[:client] = Aws::S3::Client
+    bucket_stub_data += [lifecycle_configuration]
     @bucket = AwsS3Bucket.new(bucket_name: 'private', client_args: { stub_responses: true }, stub_data: bucket_stub_data)
   end
 
@@ -263,6 +283,10 @@ EOP
 
   def test_has_default_encryption_enabled_positive
     refute(@bucket.has_secure_transport_enabled?)
+  end
+
+  def test_bucket_lifecycle_rules
+    assert_equal(365, @bucket.bucket_lifecycle_rules.first.expiration.days)
   end
 end
 
