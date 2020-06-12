@@ -237,3 +237,19 @@ output "aws_nat_gateway_private_ip" {
 output "aws_nat_gateway_public_ip" {
   value = aws_nat_gateway.inspec_test.0.public_ip
 }
+
+output "aws_ssm_parameter_name" {
+  value = aws_ssm_parameter.ssm_param_secret.0.name
+}
+
+output "aws_ssm_parameter_type" {
+  value = aws_ssm_parameter.ssm_param_secret.0.type
+}
+
+output "aws_ssm_parameter_value" {
+  value = aws_ssm_parameter.ssm_param_secret.0.value
+}
+
+output "aws_ssm_parameter_arn" {
+  value = aws_ssm_parameter.ssm_param_secret.0.arn
+}

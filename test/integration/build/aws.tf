@@ -129,6 +129,7 @@ variable "aws_security_group_gamma" {}
 variable "aws_security_group_zeta" {}
 variable "aws_security_group_omega" {}
 variable "aws_security_group_lb" {}
+variable "aws_ssm_parameter_name" {}
 variable "aws_sqs_queue_name" {}
 variable "aws_subnet_ip_address_count" {}
 variable "aws_sns_topic_no_subscription" {}
@@ -1842,5 +1843,17 @@ resource "aws_nat_gateway" "inspec_test" {
 
   tags = {
     Name = var.aws_nat_gateway_name
+  }
+}
+
+resource "aws_ssm_parameter" "ssm_param_secret" {
+  count       = 1
+  name        = var.aws_ssm_parameter_name
+  description = "The parameter description"
+  type        = "SecureString"
+  value       = "testpassword"
+
+  tags = {
+    Environment = "Dev"
   }
 }

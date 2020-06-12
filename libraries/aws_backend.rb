@@ -25,6 +25,7 @@ require 'aws-sdk-s3'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
+require 'aws-sdk-ssm'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -161,6 +162,10 @@ class AwsConnection
 
   def sts_client
     aws_client(Aws::STS::Client)
+  end
+
+  def ssm_client
+    aws_client(Aws::SSM::Client)
   end
 end
 
