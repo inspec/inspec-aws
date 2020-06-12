@@ -298,8 +298,8 @@ Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be 
 ```
 _Note environment variables are case insensitive._
 
-#### 2) Inspec Control
-Inspec AWS resources now support setting the Retry Limit and Retry Backoff at control level as shown below.
+#### 2) InSpec Control
+InSpec AWS resources now support setting the Retry Limit and Retry Backoff at control level as shown below.
 
 ```
   describe aws_config_recorder(recorder_name: aws_config_recorder_name, aws_retry_limit=5, aws_retry_backoff=5) do
@@ -313,6 +313,41 @@ Inspec AWS resources now support setting the Retry Limit and Retry Backoff at co
    2. Set at Environment level.
 
 [Retry Limit and Retry Backoff documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/timeout-duration.html)
+
+
+### `NullResponse` 
+
+InSpec AWS resources will return `NullResponse` when an undefined property is tested from version **1.24** onwards instead of raising a `NoMethodError`.
+```ruby
+describe aws_ec2_instance(instance_id: 'i-12345678') do
+  its('fake_property') { should be_nil }
+end
+# =>   EC2 Instance i-12345678
+#          ✔  fake_property is expected to be nil
+
+describe aws_ec2_instance(instance_id: 'i-12345678') do
+  its('instance_ID') { should eq 'i-12345678' }
+end
+# =>  ×  instance_ID is expected to eq "i-12345678"    
+#     expected: "i-12345678"
+#          got: #<#<Class:0x00007ffc4aa24c68>::NullResponse:0x00007ffc39f16070>    
+#     (compared using ==)
+```
+
+Prior to version **1.24**.
+```ruby
+describe aws_ec2_instance(instance_id: 'i-12345678') do
+  its('fake_property') { should be_nil }
+end
+# => EC2 Instance i-12345678
+#          ×  fake_property 
+#          undefined method `fake_property' for EC2 Instance i-12345678
+
+describe aws_ec2_instance(instance_id: 'i-12345678') do
+  its('instance_ID') { should eq 'i-12345678' }
+end
+# => undefined method `instance_ID' for EC2 Instance i-12345678
+```
 
 
 ## Environment and Setup Notes
