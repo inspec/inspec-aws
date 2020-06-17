@@ -1858,7 +1858,7 @@ resource "aws_nat_gateway" "inspec_test" {
 }
 
 resource "aws_ssm_parameter" "ssm_param_secret" {
-  count       = 1
+  count       = var.aws_enable_creation
   name        = var.aws_ssm_parameter_name
   description = "The parameter description"
   type        = "SecureString"

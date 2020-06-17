@@ -173,6 +173,7 @@ module AWSInspecConfig
       aws_security_group_zeta: "aws-security-group-zeta-#{add_random_string}",
       aws_security_group_omega: "aws-security-group-omega-#{add_random_string}",
       aws_security_group_lb: "aws-security-group-lb-#{add_random_string}",
+      aws_ssm_parameter_name: "parameter-name-#{add_random_string}",
       aws_sqs_queue_name: "aws-sqs-queue-#{add_random_string}",
       aws_sns_topic_no_subscription: "aws-sns-topic-no-subscription-#{add_random_string}",
       aws_sns_topic_subscription_sqs: "aws-sns-topic-subscription-sqs-#{add_random_string}",
