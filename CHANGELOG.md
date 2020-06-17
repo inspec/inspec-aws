@@ -1,9 +1,14 @@
-<!-- latest_release 1.26.0 -->
+<!-- latest_release 1.26.1 -->
+## [v1.26.1](https://github.com/inspec/inspec-aws/tree/v1.26.1) (2020-06-17)
+
+#### Merged Pull Requests
+- Missing name var in aws inspec config [#233](https://github.com/inspec/inspec-aws/pull/233) ([samscottchef](https://github.com/samscottchef))
+<!-- latest_release -->
+
 ## [v1.26.0](https://github.com/inspec/inspec-aws/tree/v1.26.0) (2020-06-12)
 
 #### Merged Pull Requests
 - Add NullResponse class [#231](https://github.com/inspec/inspec-aws/pull/231) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.25.0](https://github.com/inspec/inspec-aws/tree/v1.25.0) (2020-06-12)
 
