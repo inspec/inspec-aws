@@ -1,11 +1,20 @@
----
-title: About the aws_sns_topics Resource
----
++++
+title = "aws_sns_topics resource"
+draft = false
+platform = "aws"
 
-# aws\_sns\_topics
+[menu]
+  [menu.inspec]
+    title = "aws_sns_topics"
+    identifier = "inspec/resources/aws/aws_sns_topics.md aws_sns_topics"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_sns_topics.md)
+
 Use the `aws_sns_topics` InSpec audit resource to test all or a group of the SNS Topic ARNs in an account.
 
-User the 'aws\_sns\_topic' InSpec audit resource to test a single SNS Topic in an account.
+User the 'aws_sns_topic' InSpec audit resource to test a single SNS Topic in an account.
 
 ## Syntax
 
@@ -13,8 +22,8 @@ User the 'aws\_sns\_topic' InSpec audit resource to test a single SNS Topic in a
     describe aws_sns_topics do
       its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -22,24 +31,24 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|topic\_arns | The ARNs of the SNS Topics. |
-|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-
+| Property   | Description                                                                                  |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| topic_arns | The ARNs of the SNS Topics.                                                                  |
+| entries    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-##### Ensure a Topic exists
+### Ensure a Topic exists
+
     describe aws_sns_topics do
       its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
     end
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -48,7 +57,7 @@ Use `should_not` to test the entity should not exist.
     describe aws_sns_topics do
       it { should exist }
     end
-      
+
     describe aws_sns_topics do
       it { should_not exist }
     end

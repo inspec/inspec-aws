@@ -1,8 +1,16 @@
----
-title: About the aws_rds_instance Resource
----
++++
+title = "aws_rds_instance resource"
+draft = false
+platform = "aws"
 
-# aws\_rds\_instance
+[menu]
+  [menu.inspec]
+    title = "aws_rds_instance"
+    identifier = "inspec/resources/aws/aws_rds_instance.md aws_rds_instance"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_rds_instance.md)
 
 Use the `aws_rds_instance` InSpec audit resource to test detailed properties of an individual RDS instance.
 
@@ -10,7 +18,7 @@ RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Micros
 
 ## Syntax
 
-An `aws_rds_instance` resource block uses resource parameters to search for an RDS instance, and then tests that RDS instance.  If no RDS instances match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.  If more than one RDS instance matches (due to vague search parameters), an error is raised.
+An `aws_rds_instance` resource block uses resource parameters to search for an RDS instance, and then tests that RDS instance. If no RDS instances match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`. If more than one RDS instance matches (due to vague search parameters), an error is raised.
 
     describe aws_rds_instance('test-instance-id') do
       it { should exist }
@@ -20,10 +28,10 @@ An `aws_rds_instance` resource block uses resource parameters to search for an R
     describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### db\_instance\_identifier _(required)_
+## Parameters
+
+### db_instance_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied instance identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_instance_identifier: 'value'` key-value entry in a hash.
@@ -36,21 +44,22 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 
 ## Examples
 
-##### Test the engine used with an RDS instance
+### Test the engine used with an RDS instance
 
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
       its ('engine')         { should eq 'mysql' }
       its ('engine_version') { should eq '5.6.37' }
     end
-    
-##### Test the storage allocated to an RDS instance
-    
+
+### Test the storage allocated to an RDS instance
+
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
       its ('storage_type')      { should eq 'gp2' }
       its ('allocated_storage') { should eq 10 }
     end
 
-##### Test the instance type and master username
+### Test the instance type and master username
+
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
       its ('master_username')   { should eq 'db-maintain' }
       its ('db_instance_class') { should eq 'db.t3.micro' }
@@ -58,9 +67,9 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

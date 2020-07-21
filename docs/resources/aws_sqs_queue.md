@@ -1,10 +1,18 @@
----
-title: About the aws_sqs_queue Resource
----
++++
+title = "aws_sqs_queue resource"
+draft = false
+platform = "aws"
 
-# aws\_sqs\_queue
+[menu]
+  [menu.inspec]
+    title = "aws_sqs_queue"
+    identifier = "inspec/resources/aws/aws_sqs_queue.md aws_sqs_queue"
+    parent = "inspec/resources/aws"
++++
 
-Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS Simple Queue Service queue. 
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_sqs_queue.md)
+
+Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS Simple Queue Service queue.
 
 ## Syntax
 
@@ -12,61 +20,65 @@ Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS
       it { should exist }
     end
 
+## Parameters
 
-#### Parameters
+### queue_url _(required)_
 
-##### queue\_url _(required)_
-
-This resource accepts a single parameter, the SQS Queue URL. 
+This resource accepts a single parameter, the SQS Queue URL.
 This can be passed either as a string or as a `queue_url: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 
 ## Properties
 
-|Property                                 | Description|
-| ---                                     | --- |
-|arn                                      | The ARN of the SQS Queue. |
-|is\_fifo\_queue                          | A boolean value indicate if this queue is a FIFO queue |
-|visibility\_timeout                      | An integer indicating the visibility timeout of the message in seconds |
-|maximum\_message\_size                   | An integer indicating the maximum message size in bytes |
-|message\_retention\_period               | An integer indicating the maximum retention period for a message in seconds |
-|delay\_seconds                           | An integer indicating the delay in seconds for the queue |
-|receive\_message\_wait\_timeout\_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
-|content\_based\_deduplication            | A boolean value indicate if content based dedcuplication is enabled or not |
-|redrive\_policy                          | A string indicating the redrive policy |
+| Property                             | Description                                                                                            |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| arn                                  | The ARN of the SQS Queue.                                                                              |
+| is_fifo_queue                        | A boolean value indicate if this queue is a FIFO queue                                                 |
+| visibility_timeout                   | An integer indicating the visibility timeout of the message in seconds                                 |
+| maximum_message_size                 | An integer indicating the maximum message size in bytes                                                |
+| message_retention_period             | An integer indicating the maximum retention period for a message in seconds                            |
+| delay_seconds                        | An integer indicating the delay in seconds for the queue                                               |
+| receive_message_wait_timeout_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
+| content_based_deduplication          | A boolean value indicate if content based dedcuplication is enabled or not                             |
+| redrive_policy                       | A string indicating the redrive policy                                                                 |
 
 ## Examples
 
-##### Ensure that a queue exists and has a visibility timeout of 300 seconds
+### Ensure that a queue exists and has a visibility timeout of 300 seconds
+
     describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
       it { should exist }
       its('visibility_timeout') { should be 300 }
     end
 
-#### Ensure maximum message size is set
+### Ensure maximum message size is set
+
     describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
-        its('maximum_message_size') { should be 262144 } # 256 KB      
+        its('maximum_message_size') { should be 262144 } # 256 KB
     end
 
-##### Test the delay time 
+### Test the delay time
+
     describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
         its('delay_seconds') { should be 0 }
     end
 
-##### Ensure messages are retained for 4 days
+### Ensure messages are retained for 4 days
+
     describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
         its('message_retention_period') { should be 345600 } # 4 days
     end
 
-##### Check if queue is fifo
+### Check if queue is fifo
+
     describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
         its('is_fifo_queue') { should be false }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
 ### exist
 

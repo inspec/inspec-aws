@@ -1,8 +1,16 @@
----
-title: About the aws_rds_cluster Resource
----
++++
+title = "aws_rds_cluster resource"
+draft = false
+platform = "aws"
 
-# aws\_rds\_cluster
+[menu]
+  [menu.inspec]
+    title = "aws_rds_cluster"
+    identifier = "inspec/resources/aws/aws_rds_cluster.md aws_rds_cluster"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_rds_cluster.md)
 
 Use the `aws_rds_cluster` InSpec audit resource to test detailed properties of an individual RDS cluster.
 
@@ -10,7 +18,11 @@ RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Micros
 
 ## Syntax
 
-An `aws_rds_cluster` resource block uses resource parameters to search for an RDS cluster, and then tests that RDS cluster.  If no RDS clusters match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.  If more than one RDS cluster matches (due to vague search parameters), an error is raised.
+An `aws_rds_cluster` resource block uses resource parameters to search for an RDS
+cluster, and then tests that RDS cluster. If no RDS clusters match, no error is
+raised, but the `exists` matcher will return `false` and all properties will be
+`nil`. If more than one RDS cluster matches (due to vague search parameters),
+an error is raised.
 
     describe aws_rds_cluster('test-cluster-id') do
       it { should exist }
@@ -20,10 +32,10 @@ An `aws_rds_cluster` resource block uses resource parameters to search for an RD
     describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### db\_cluster\_identifier _(required)_
+## Parameters
+
+### db_cluster_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_cluster_identifier: 'value'` key-value entry in a hash.
@@ -36,27 +48,29 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 
 ## Examples
 
-##### Test the engine used with an RDS cluster
+### Test the engine used with an RDS cluster
 
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('engine')         { should eq 'mysql' }
       its('engine_version') { should eq '5.6.37' }
     end
-    
-##### Test the storage allocated to an RDS cluster
-    
+
+### Test the storage allocated to an RDS cluster
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('storage_encrypted') { should eq true }
       its('allocated_storage') { should eq 10 }
     end
 
-##### Test the cluster status and master username
+### Test the cluster status and master username
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('master_username') { should eq 'db-maintain' }
       its('status') { should eq 'available' }
     end
 
-##### Test the maximum and minumum capacity of a serverless RDS cluster 
+### Test the maximum and minumum capacity of a serverless RDS cluster
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('scaling_configuration_info.min_capacity') { should eq 2 }
       its('scaling_configuration_info.max_capacity') { should eq 64 }
@@ -64,9 +78,9 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

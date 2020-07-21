@@ -1,9 +1,16 @@
----
-title: About the aws_security_groups Resource
-platform: aws
----
++++
+title = "aws_security_groups resource"
+draft = false
+platform = "aws"
 
-# aws\_security\_groups
+[menu]
+  [menu.inspec]
+    title = "aws_security_groups"
+    identifier = "inspec/resources/aws/aws_security_groups.md aws_security_groups resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_security_groups.md)
 
 Use the `aws_security_groups` InSpec audit resource to test properties of some or all security groups.
 
@@ -16,8 +23,8 @@ An `aws_security_groups` resource block uses an optional filter to select a grou
     describe aws_security_groups do
       its('entries.count') { should be > 1 }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -25,41 +32,43 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|group\_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
-|group\_names | An integer indicating the maximum number of instances in the auto scaling group |
-|vpc\_ids     | An integer indicating the desired  number of instances in the auto scaling group |
-|tags         | An integer indicating the minimum number of instances in the auto scaling group |
-|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property    | Description                                                                                  |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| group_ids   | The name of the auto scaling launch configuration associated with the auto scaling group     |
+| group_names | An integer indicating the maximum number of instances in the auto scaling group              |
+| vpc_ids     | An integer indicating the desired number of instances in the auto scaling group              |
+| tags        | An integer indicating the minimum number of instances in the auto scaling group              |
+| entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-##### Look for a particular security group in just one VPC
+### Look for a particular security group in just one VPC
+
     describe aws_security_groups.where( vpc_id: 'vpc-12345678') do
       its('group_ids') { should include('sg-abcdef12')}
     end
 
-##### Examine the default security group in all VPCs
+### Examine the default security group in all VPCs
+
     describe aws_security_groups.where( group_name: 'default') do
       it { should exist }
     end
 
-##### Allow at most 100 security groups on the account
+### Allow at most 100 security groups on the account
+
     describe aws_security_groups do
       its('entries.count') { should be <= 100}
     end
 
-
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
 ### exist
 
-The control will pass if the filter returns at least one result. 
+The control will pass if the filter returns at least one result.
 
 Use `should_not` if you expect zero matches.
 

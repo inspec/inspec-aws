@@ -1,21 +1,28 @@
----
-title: About the aws_ssm_parameters Resource
-platform: aws
----
++++
+title = "aws_ssm_parameters resource"
+draft = false
+platform = "aws"
 
-# aws\_ssm\_parameters
+[menu]
+  [menu.inspec]
+    title = "aws_ssm_parameters"
+    identifier = "inspec/resources/aws/aws_ssm_parameters.md aws_ssm_parameters resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_ssm_parameters.md)
 
 Use the `aws_ssm_parameters` InSpec audit resource to test properties of a collection of AWS SSM parameters.
 
 ## Syntax
 
- Ensure you have exactly 3 SSM Parameters
+Ensure you have exactly 3 SSM Parameters
 
     describe aws_ssm_parameters do
       its('names.count') { should cmp 3 }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -23,31 +30,32 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|names    | Provides the name of the parameter. |
-|types    | Provides the type of the parameter. |
-|key_ids    | Provides the key id of the parameter. |
-|last\_modified\_dates    | Provides the date the parameter was last changed or updated and the parameter version was created. |
-|last\_modified\_users    | Provides the user that last changed or updated the parameter. |
-|descriptions    | Provides the description of the parameter. |
-|versions    | Provides the version of the parameter. |
-|tiers    | Provides the tier of the parameter. |
+| Property            | Description                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| names               | Provides the name of the parameter.                                                                |
+| types               | Provides the type of the parameter.                                                                |
+| key_ids             | Provides the key id of the parameter.                                                              |
+| last_modified_dates | Provides the date the parameter was last changed or updated and the parameter version was created. |
+| last_modified_users | Provides the user that last changed or updated the parameter.                                      |
+| descriptions        | Provides the description of the parameter.                                                         |
+| versions            | Provides the version of the parameter.                                                             |
+| tiers               | Provides the tier of the parameter.                                                                |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_Parameter.html)
 
 ## Examples
 
-##### Ensure Name of a SSM Parameter exists
+### Ensure Name of a SSM Parameter exists
+
     describe aws_ssm_parameters do
       its('names') { should include 'ssm-parameter-name' }
     end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

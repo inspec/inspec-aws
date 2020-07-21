@@ -1,11 +1,18 @@
----
-title: About the aws_regions Resource
-platform: aws
----
++++
+title = "aws_regions resource"
+draft = false
+platform = "aws"
 
-# aws\_regions
+[menu]
+  [menu.inspec]
+    title = "aws_regions"
+    identifier = "inspec/resources/aws/aws_regions.md aws_regions resource"
+    parent = "inspec/resources/aws"
++++
 
-Use the `aws_regions` InSpec audit resource to test properties of some or all AWS regions in bulk.  
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_regions.md)
+
+Use the `aws_regions` InSpec audit resource to test properties of some or all AWS regions in bulk.
 
 Note that this resource lists all AWS regions that are currently available to the caller.
 
@@ -17,9 +24,9 @@ An `aws_regions` resource block uses an optional filter to select a group of reg
       it { should_not exist }
     end
 
-#### Parameters
+## Parameters
 
-##### name _(required)_
+### name _(required)_
 
 This resource does not expect any parameters.
 
@@ -27,44 +34,44 @@ See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/l
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
-|region\_names | The Names of the regions. |
-|endpoints     | The resolved endpoints of the regions. |
+| Property     | Description                            |
+| ------------ | -------------------------------------- |
+| region_names | The Names of the regions.              |
+| endpoints    | The resolved endpoints of the regions. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-##### Check for a Particular Region
+### Check for a Particular Region
+
     describe aws_regions do
       its('region_names') { should include 'eu-west-2' }
     end
-    
-    
-##### Check an endpoint exists
+
+### Check an endpoint exists
+
     describe aws_regions do
       its('endpoints') { should include 'ec2.eu-west-2.amazonaws.com' }
     end
 
-##### Use the regions resource to check single regions in more detail
+### Use the regions resource to check single regions in more detail
+
     aws_regions.region_names.each do |aws_region_name|
       describe aws_region(region_name: aws_region_name) do
         it { should exist }
       end
     end
-    
+
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
     it { should exist }
-    
-
 
 ## AWS Permissions
 

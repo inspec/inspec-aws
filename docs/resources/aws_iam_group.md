@@ -1,9 +1,16 @@
----
-title: About the aws_iam_group Resource
-platform: aws
----
++++
+title = "aws_iam_group resource"
+draft = false
+platform = "aws"
 
-# aws\_iam\_group
+[menu]
+  [menu.inspec]
+    title = "aws_iam_group"
+    identifier = "inspec/resources/aws/aws_iam_group.md aws_iam_group resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_iam_group.md)
 
 Use the `aws_iam_group` InSpec audit resource to test properties of a single IAM group.
 
@@ -19,35 +26,36 @@ An `aws_iam_group` resource block identifies a group by group name.
     describe aws_iam_group(group_name: 'mygroup') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### group\_name _(required)_
+## Parameters
 
-This resource accepts a single parameter, the Group Name which uniquely identifies the IAM Group. 
+### group_name _(required)_
+
+This resource accepts a single parameter, the Group Name which uniquely identifies the IAM Group.
 This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html).
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|group\_name | The group name. |
-|group\_id   | The group ID. |
-|arn         | The Amazon Resource Name of the group. |
-|users       | Array of users associated with the group.  |
+| Property   | Description                               |
+| ---------- | ----------------------------------------- |
+| group_name | The group name.                           |
+| group_id   | The group ID.                             |
+| arn        | The Amazon Resource Name of the group.    |
+| users      | Array of users associated with the group. |
 
 ## Examples
 
-##### Ensure group contains a certain user
+### Ensure group contains a certain user
+
     describe aws_iam_group('admin-group') do
       its('users') { should include 'deployment-service-account')}
     end
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

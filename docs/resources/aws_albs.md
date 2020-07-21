@@ -1,9 +1,16 @@
----
-title: About the aws_albs Resource
-platform: aws
----
++++
+title = "aws_albs resource"
+draft = false
+platform = "aws"
 
-# aws\_albs
+[menu]
+  [menu.inspec]
+    title = "aws_albs"
+    identifier = "inspec/resources/aws/aws_albs.md aws_albs resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_albs.md)
 
 Use the `aws_albs` InSpec audit resource to test the configuration of a collection of Application Load Balancers.
 
@@ -15,7 +22,7 @@ Ensure that an `aws_albs` exists
       its('load_balancer_arns') { should include 'arn:aws:elasticloadbalancing' }
     end
 
-#### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -23,24 +30,25 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|load\_balancer\_names        | The names of the load balancers. |
-|load\_balancer\_addresses    | A collection of the load balancers addresses. |
-|canonical\_hosted\_zone\_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. |
-|dns\_names                   | The DNS names of the load balancers. |
-|availability\_zones          | The Availability Zones for the load balancers. |
-|security\_groups             | The security groups for the load balancers. Valid only for load balancers in a VPC. |
-|schemes                      | The types of load balancers. Valid only for load balancers in a VPC. |
-|states                       | The states of the load balancers. |
-|subnets                      | A collection of the subnet ids. |
-|types                        | The types of the load balancers. |
-|vpc\_ids                     | The IDs of the VPCs for the load balancers. |
-|zone\_names                 | A collection of the names of the availability zones. |
+| Property                  | Description                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| load_balancer_names       | The names of the load balancers.                                                    |
+| load_balancer_addresses   | A collection of the load balancers addresses.                                       |
+| canonical_hosted_zone_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers.                  |
+| dns_names                 | The DNS names of the load balancers.                                                |
+| availability_zones        | The Availability Zones for the load balancers.                                      |
+| security_groups           | The security groups for the load balancers. Valid only for load balancers in a VPC. |
+| schemes                   | The types of load balancers. Valid only for load balancers in a VPC.                |
+| states                    | The states of the load balancers.                                                   |
+| subnets                   | A collection of the subnet ids.                                                     |
+| types                     | The types of the load balancers.                                                    |
+| vpc_ids                   | The IDs of the VPCs for the load balancers.                                         |
+| zone_names                | A collection of the names of the availability zones.                                |
 
 ## Examples
 
-##### Test that an ALB has its availability zones configured correctly
+### Test that an ALB has its availability zones configured correctly
+
     describe aws_alb('arn::alb') do
       its('zone_names.count')  { should be > 1 }
       its('zone_names')        { should include 'us-east-2a' }
@@ -49,9 +57,9 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Matchers
 
-This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

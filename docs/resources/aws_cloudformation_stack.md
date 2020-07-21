@@ -1,11 +1,18 @@
----
-title: About the aws_cloudformation_stack Resource
-platform: aws
----
++++
+title = "aws_cloudformation_stack resource"
+draft = false
+platform = "aws"
 
-# aws\_cloudformation\_stack
+[menu]
+  [menu.inspec]
+    title = "aws_cloudformation_stack"
+    identifier = "inspec/resources/aws/aws_cloudformation_stack.md aws_cloudformation_stack resource"
+    parent = "inspec/resources/aws"
++++
 
-Use the `aws_cloudformation_stack ` InSpec audit resource to test properties of a single AWS Cloud Formation Stack.
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_cloudformation_stack.md)
+
+Use the `aws_cloudformation_stack` InSpec audit resource to test properties of a single AWS Cloud Formation Stack.
 
 ## Syntax
 
@@ -18,12 +25,12 @@ Ensure that an `aws_cloudformation_stack` exists
     describe aws_cloudformation_stack(stack_name: 'stack-name') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### stack\_name _(required)_
+## Parameters
 
-This resource accepts a single parameter, the CloudFormation Stack name which uniquely identifies the stack. 
+### stack_name _(required)_
+
+This resource accepts a single parameter, the CloudFormation Stack name which uniquely identifies the stack.
 This can be passed either as a string or as a `stack_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html).
@@ -55,18 +62,20 @@ See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/
 |parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
 |root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
 
+
 ## Examples
 
-##### Test that a CloudFormation Stack has its stack_status configured correctly
+### Test that a CloudFormation Stack has its stack_status configured correctly
+
     describe aws_cloudformation_stack('stack_name') do
     its ('stack_status')  { should eq 'CREATE_COMPLETE' }
     end
 
 ## Matchers
 
-This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

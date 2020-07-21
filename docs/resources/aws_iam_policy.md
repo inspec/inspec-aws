@@ -1,9 +1,16 @@
----
-title: About the aws_iam_policy Resource
-platform: aws
----
++++
+title = "aws_iam_policy resource"
+draft = false
+platform = "aws"
 
-# aws\_iam\_policy
+[menu]
+  [menu.inspec]
+    title = "aws_iam_policy"
+    identifier = "inspec/resources/aws/aws_iam_policy.md aws_iam_policy resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_iam_policy.md)
 
 Use the `aws_iam_policy` InSpec audit resource to test properties of a single managed AWS IAM Policy.
 
@@ -21,48 +28,51 @@ An `aws_iam_policy` resource block identifies a policy by policy name or arn
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 This resource requires either the `policy_name` or the `policy_arn` to be provided.
 
-##### policy\_name _(required if `policy_arn` not provided)_
+### policy_name _(required if `policy_arn` not provided)_
 
-The Policy Name which uniquely identifies the Policy. 
+The Policy Name which uniquely identifies the Policy.
 This must be passed as a `policy_name: 'value'` key-value entry in a hash.
 
-##### policy\_arn _(required if `policy_name` not provided)_
+### policy_arn _(required if `policy_name` not provided)_
 
-The Policy ARN which uniquely identifies the Policy. 
+The Policy ARN which uniquely identifies the Policy.
 This must be passed as a `policy_arn: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 
 ## Properties
 
-|Property             | Description|
-| ---                 | --- |
-|arn                  | The ARN identifier of the specified policy. |
-|attachment\_count    | The count of attached entities for the specified policy. |
-|attached\_groups     | The list of group names of the groups attached to the policy. |
-|attached\_roles      | The list of role names of the roles attached to the policy. |
-|attached\_users      | The list of usernames of the users attached to the policy. |
-|default\_version\_id | The 'default\_version\_id' value of the specified policy. |
-|policy               | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
-|statement\_count     | Returns the number of statements present in the `policy`. |
+| Property           | Description                                                                                                                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| arn                | The ARN identifier of the specified policy.                                                                                                                                                                                                |
+| attachment_count   | The count of attached entities for the specified policy.                                                                                                                                                                                   |
+| attached_groups    | The list of group names of the groups attached to the policy.                                                                                                                                                                              |
+| attached_roles     | The list of role names of the roles attached to the policy.                                                                                                                                                                                |
+| attached_users     | The list of usernames of the users attached to the policy.                                                                                                                                                                                 |
+| default_version_id | The 'default_version_id' value of the specified policy.                                                                                                                                                                                    |
+| policy             | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
+| statement_count    | Returns the number of statements present in the `policy`.                                                                                                                                                                                  |
 
 ## Examples
 
-##### Test that a policy does exist
+### Test that a policy does exist
+
     describe aws_iam_policy('AWSSupportAccess') do
       it { should exist }
     end
 
-##### Test that a policy is attached to at least one entity
+### Test that a policy is attached to at least one entity
+
     describe aws_iam_policy('AWSSupportAccess') do
       it { should be_attached }
     end
 
-##### Examine the policy statements
+### Examine the policy statements
+
     describe aws_iam_policy('my-policy') do
       # Verify that there is at least one statement allowing access to S3
       it { should have_statement(Action: 's3:PutObject', Effect: 'allow') }
@@ -77,9 +87,9 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -89,7 +99,7 @@ Use `should_not` to test the entity should not exist.
 
       it { should_not exist }
 
-#### be\_attached
+### be_attached
 
 The test will pass if the identified policy is attached to at least one IAM user, group, or role.
 
@@ -97,7 +107,7 @@ The test will pass if the identified policy is attached to at least one IAM user
       it { should be_attached }
     end
 
-#### be\_attached\_to\_group(GROUPNAME)
+### be_attached_to_group(GROUPNAME)
 
 The test will pass if the identified policy attached the specified group.
 
@@ -105,7 +115,7 @@ The test will pass if the identified policy attached the specified group.
       it { should be_attached_to_group(GROUPNAME) }
     end
 
-#### be\_attached\_to\_user(USERNAME)
+### be_attached_to_user(USERNAME)
 
 The test will pass if the identified policy attached the specified user.
 
@@ -113,7 +123,7 @@ The test will pass if the identified policy attached the specified user.
       it { should be_attached_to_user(USERNAME) }
     end
 
-#### be\_attached\_to\_role(ROLENAME)
+### be_attached_to_role(ROLENAME)
 
 The test will pass if the identified policy attached the specified role.
 
@@ -121,23 +131,24 @@ The test will pass if the identified policy attached the specified role.
       it { should be_attached_to_role(ROLENAME) }
     end
 
-#### have\_statement
+### have_statement
 
 Examines the list of statements contained in the policy and passes if at least one of the statements matches. This matcher does _not_ interpret the policy in a request authorization context, as AWS does when a request processed. Rather, `have_statement` examines the literal contents of the IAM policy, and reports on what is present (or absent, when used with `should_not`).
 
-`have_statement` accepts the following criteria to search for matching statements. If any statement matches all the criteria, the test is successful.  All criteria may be used as Titlecase (as in the AWS examples) or lowercase, string or symbol.
+`have_statement` accepts the following criteria to search for matching statements. If any statement matches all the criteria, the test is successful. All criteria may be used as Titlecase (as in the AWS examples) or lowercase, string or symbol.
 
-* `Action` - Expresses the requested operation. Acceptable literal values are any AWS operation name, including the '*' wildcard character. `Action` may also use a list of AWS operation names.
-* `Effect` - Expresses if the operation is permitted. Acceptable values are 'Deny' and 'Allow'.
-* `Sid` - A user-provided string identifier for the statement.
-* `Resource` - Expresses the operation's target. Acceptable values are ARNs, including the '*' wildcard. `Resource` may also use a list of ARN values.
+- `Action` - Expresses the requested operation. Acceptable literal values are any AWS operation name, including the '\*' wildcard character. `Action` may also use a list of AWS operation names.
+- `Effect` - Expresses if the operation is permitted. Acceptable values are 'Deny' and 'Allow'.
+- `Sid` - A user-provided string identifier for the statement.
+- `Resource` - Expresses the operation's target. Acceptable values are ARNs, including the '\*' wildcard. `Resource` may also use a list of ARN values.
 
 Please note the following about the behavior of `have_statement`:
-* `Action`, `Sid`, and `Resource` allow using a regular expression as the search critera instead of a string literal.
-* It does not support wildcard expansion; to check for a wildcard value, check for it explicitly. For example, if the policy includes a statement with `"Action": "s3:*"` and the test checks for `Action: "s3:PutObject"`, the test _will not match_. You must write an additional test checking for the wildcard case.
-* It supports searching list values. For example, if a statement contains a list of 3 resources, and a `have_statement` test specifes _one_ of those resources, it will match.
-* `Action` and `Resource` allow using a list of string literals or regular expressions in a test, in which case _all_ must match on the _same_ statement for the test to match. Order is ignored.
-* It does not support the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html), [NotPrincipal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_notprincipal.html) or [Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html).
+
+- `Action`, `Sid`, and `Resource` allow using a regular expression as the search critera instead of a string literal.
+- It does not support wildcard expansion; to check for a wildcard value, check for it explicitly. For example, if the policy includes a statement with `"Action": "s3:*"` and the test checks for `Action: "s3:PutObject"`, the test _will not match_. You must write an additional test checking for the wildcard case.
+- It supports searching list values. For example, if a statement contains a list of 3 resources, and a `have_statement` test specifes _one_ of those resources, it will match.
+- `Action` and `Resource` allow using a list of string literals or regular expressions in a test, in which case _all_ must match on the _same_ statement for the test to match. Order is ignored.
+- It does not support the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html), [NotPrincipal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_notprincipal.html) or [Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html).
 
 Examples:
 
@@ -191,4 +202,3 @@ Examples:
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetPolicy`, `iam:ListPolicy`, and `iam:ListEntitiesForPolicy` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
-aws\_iam\_policy.md

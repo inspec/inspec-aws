@@ -1,9 +1,16 @@
----
-title: About the aws_cloudtrail_trail Resource
-platform: aws
----
++++
+title = "aws_cloudtrail_trail resource"
+draft = false
+platform = "aws"
 
-# aws\_cloudtrail\_trail
+[menu]
+  [menu.inspec]
+    title = "aws_cloudtrail_trail"
+    identifier = "inspec/resources/aws/aws_cloudtrail_trail.md aws_cloudtrail_trail resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_cloudtrail_trail.md)
 
 Use the `aws_cloudtrail_trail` InSpec audit resource to test properties of a single AWS CloudTrail.
 
@@ -21,10 +28,11 @@ An `aws_cloudtrail_trail` resource block identifies a trail by `trail_name`.
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### trail\_name _(required)_
-This resource expects a single parameter, the CloudTrail Name which uniquely identifies it. 
+### trail_name _(required)_
+
+This resource expects a single parameter, the CloudTrail Name which uniquely identifies it.
 This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail/index.html#lang/en_us).
@@ -43,35 +51,39 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 
 ## Examples
 
-##### Test that the specified trail does exist
+### Test that the specified trail does exist
+
     describe aws_cloudtrail_trail('my-cloudtrail') do
       it { should exist }
     end
-    
+
     describe aws_cloudtrail_trail(trail_name: 'my-cloudtrail') do
       it { should exist }
     end
-    
-##### Check the KMS key used to encrypt
+
+### Check the KMS key used to encrypt
+
     describe aws_cloudtrail_trail('my-cloudtrail') do
       its('kms_key_id') { should eq "my-kms-key" }
     end
 
-##### Check the Home Region is correct
+### Check the Home Region is correct
+
     describe aws_cloudtrail_trail('my-cloudtrail') do
       its('home_region') { should eq 'us-east-1' }
     end
 
-##### Test that the specified trail is a multi-region trail
+### Test that the specified trail is a multi-region trail
+
     describe aws_cloudtrail_trail('my-cloudtrail') do
       it { should be_multi_region_trail }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -82,7 +94,7 @@ Use `should_not` to test the entity should not exist.
       it { should exist }
     end
 
-#### be\_multi\_region\_trail
+### be_multi_region_trail
 
 The test will pass if the identified trail is a multi-region trail.
 
@@ -90,7 +102,7 @@ The test will pass if the identified trail is a multi-region trail.
       it { should be_multi_region_trail }
     end
 
-#### be\_encrypted
+### be_encrypted
 
 The test will pass if the logs delivered by the identified trail are encrypted.
 
@@ -98,7 +110,7 @@ The test will pass if the logs delivered by the identified trail are encrypted.
       it { should be_encrypted }
     end
 
-#### be\_log\_file\_validation\_enabled
+### be_log_file_validation_enabled
 
 The test will pass if the identified trail has log file integrity validation is enabled.
 

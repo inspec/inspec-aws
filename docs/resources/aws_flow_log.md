@@ -1,9 +1,16 @@
----
-title: About the aws_flow_log Resource
-platform: aws
----
++++
+title = "aws_flow_log resource"
+draft = false
+platform = "aws"
 
-# aws\_flow\_log
+[menu]
+  [menu.inspec]
+    title = "aws_flow_log"
+    identifier = "inspec/resources/aws/aws_flow_log.md aws_flow_log resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_flow_log.md)
 
 Use the `aws_flow_log` InSpec audit resource to test properties of a single Flow Log.
 
@@ -12,64 +19,68 @@ Use the `aws_flow_log` InSpec audit resource to test properties of a single Flow
     describe aws_flow_log(flow_log_id: 'fl-9c718cf5') do
       it { should exist }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource requires at least one of the following parameters to be provided: `flow_log_id`, `subnet_id`, `vpc_id`.
 
-##### flow\_log\_id _(required if no other parameters provided)_
+### flow_log_id _(required if no other parameters provided)_
 
-The Flow Log ID which uniquely identifies the Flow Log. 
+The Flow Log ID which uniquely identifies the Flow Log.
 This can be passed either as a string or as a `flow_log_id: 'value'` key-value entry in a hash.
 
-##### subnet\_id _(required if no other parameters provided)_
+### subnet_id _(required if no other parameters provided)_
 
-The subnet associated with the Flow Log, if applicable. 
+The subnet associated with the Flow Log, if applicable.
 This must be passed as a `subnet_id: 'value'` key-value entry in a hash.
 
-##### vpc\_id _(required if no other parameters provided)_
+### vpc_id _(required if no other parameters provided)_
 
-The VPC associated with the Flow Log, if applicable. 
+The VPC associated with the Flow Log, if applicable.
 This must be passed as a `vpc_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html).
 
 ## Properties
 
-|Property         | Description|
-| ---             | --- |
-|flow\_log\_id    | The ID of the Flow Log. |
-|log\_group\_name | The name of the associated log group. |
-|resource\_id     | The ID of the assosiated resource, e.g. VPC, Subnet or Network Interface. |
+| Property       | Description                                                               |
+| -------------- | ------------------------------------------------------------------------- |
+| flow_log_id    | The ID of the Flow Log.                                                   |
+| log_group_name | The name of the associated log group.                                     |
+| resource_id    | The ID of the assosiated resource, e.g. VPC, Subnet or Network Interface. |
 
 ## Examples
 
-##### Search for a flow log by the associated subnet id
+### Search for a flow log by the associated subnet id
+
     describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
       it { should exist }
     end
 
-##### Search for a flow log by the associated VPC id
+### Search for a flow log by the associated VPC id
+
     describe aws_flow_log(vpc_id: 'vpc-96cabaef') do
       it { should exist }
     end
 
-##### Ensure the correct Flow Log is associated with a Subnet
+### Ensure the correct Flow Log is associated with a Subnet
+
     describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
       its('flow_log_id') { should cmp 'fl-9c718cf5' }
     end
 
-
 ### Ensure the Flow Log is associated with the correct resource type
+
     describe aws_flow_log('fl-9c718cf5') do
       its('resource_type') { should cmp 'subnet' }
     end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
+
 The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
@@ -82,8 +93,7 @@ Use `should_not` to test the entity should not exist.
       it { should_not exist }
     end
 
-
-#### be\_attached\_to\_eni
+### be_attached_to_eni
 
 Indicates that the Flow Log is attached to a ENI resource.
 
@@ -91,7 +101,7 @@ Indicates that the Flow Log is attached to a ENI resource.
       it { should be_attached_to_eni }
     end
 
-#### be\_attached\_to\_subnet
+### be_attached_to_subnet
 
 Indicates that the Flow Log is attached to a subnet resource.
 
@@ -99,7 +109,7 @@ Indicates that the Flow Log is attached to a subnet resource.
       it { should be_attached_to_subnet }
     end
 
-#### be\_attached\_to\_vpc
+### be_attached_to_vpc
 
 Indicates that the Flow Log is attached to a vpc resource.
 
@@ -109,4 +119,5 @@ Indicates that the Flow Log is attached to a vpc resource.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeFlowLogs` actions with Effect set to Allow.  
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)
+will need the `ec2:DescribeFlowLogs` actions with Effect set to Allow.

@@ -1,9 +1,16 @@
----
-title: About the aws_transit_gateway Resource
-platform: aws
----
++++
+title = "aws_transit_gateway resource"
+draft = false
+platform = "aws"
 
-# aws\_transit\_gateway
+[menu]
+  [menu.inspec]
+    title = "aws_transit_gateway"
+    identifier = "inspec/resources/aws/aws_transit_gateway.md aws_transit_gateway resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_transit_gateway.md)
 
 Use the `aws_transit_gateway` InSpec audit resource to test properties of a transit gateway.
 
@@ -15,9 +22,9 @@ An `aws_transit_gateway` resource block uses the parameter to select a transit g
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### transit_gateway_id _(required)_
+### transit*gateway_id *(required)\_
 
 This resource accepts a single parameter, the Transit Gateway ID.
 This can be passed either as a string or as a `transit_gateway_id: 'value'` key-value entry in a hash.
@@ -26,28 +33,29 @@ See also the [AWS documentation on Transit Gateways](https://docs.aws.amazon.com
 
 ## Properties
 
-| Property                               | Description                                                             |
-| -------------------------------------- | ----------------------------------------------------------------------- |
-| transit\_gateway\_id                   | Provides the ID of the Transit Gateway.                                 |
-| transit\_gateway\_arn                  | Provides the ARN of the Transit Gateway.                                |
-| transit\_gateway\_owner\_id            | Provides the id of the owner of the Transit Gateway.                    |
-| default_route_table_id                 | Provides the id of the default route table of the Transit Gateway.      |
-| propagation\_default\_route\_table\_id | Provides the propagation default route table id for the Transit gateway |
-| dns\_support                           | Provides the status of dns support for the Transit Gateway              |
-| vpn\_ecmp\_support                     | Provides the status of vpn ecmp support for the Transit Gateway         |
+| Property                           | Description                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| transit_gateway_id                 | Provides the ID of the Transit Gateway.                                 |
+| transit_gateway_arn                | Provides the ARN of the Transit Gateway.                                |
+| transit_gateway_owner_id           | Provides the id of the owner of the Transit Gateway.                    |
+| default_route_table_id             | Provides the id of the default route table of the Transit Gateway.      |
+| propagation_default_route_table_id | Provides the propagation default route table id for the Transit gateway |
+| dns_support                        | Provides the status of dns support for the Transit Gateway              |
+| vpn_ecmp_support                   | Provides the status of vpn ecmp support for the Transit Gateway         |
 
 ## Examples
 
-##### Check the owner id zone of the Transit Gateway
+### Check the owner id zone of the Transit Gateway
+
     describe aws_transit_gateway(transit_gateway_id: 'tgw-0e231ae7f5e5e7bd5') do
       its('transit_gateway_owner_id') { should eq 'owner_id' }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
-    
-#### exist
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
+
+### exist
 
 The `exist` matcher indicates that a transit gateway exists.
 

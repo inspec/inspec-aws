@@ -1,9 +1,16 @@
----
-title: About the aws_iam_inline_policy Resource
-platform: aws
----
++++
+title = "aws_iam_inline_policy resource"
+draft = false
+platform = "aws"
 
-# aws_iam_inline_policy
+[menu]
+  [menu.inspec]
+    title = "aws_iam_inline_policy"
+    identifier = "inspec/resources/aws/aws_iam_inline_policy.md aws_iam_inline_policy resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_iam_inline_policy.md)
 
 Use the `aws_iam_inline_policy` InSpec audit resource to test properties of a single inline AWS IAM Policy embedded with IAM User, IAM Group or IAM Role. For managed policies, use the `aws_iam_policy` resource.
 
@@ -26,7 +33,7 @@ An `aws_iam_inline_policy` resource block identifies an inline policy by policy 
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 This resource requires `policy_name` and one of the `role_name`, `group_name` or `user_name` to be provided.
 
@@ -45,13 +52,13 @@ See AWS Documentation on inline policies for more details
 
 ## Examples
 
-##### Test that a policy does exist
+### Test that a policy does exist
 
     describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
       it { should exist }
     end
 
-##### Examine the policy statements
+### Examine the policy statements
 
     describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
       # Verify that there is at least one statement allowing access to S3
@@ -67,9 +74,9 @@ See AWS Documentation on inline policies for more details
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -79,11 +86,17 @@ Use `should_not` to test the entity should not exist.
 
       it { should_not exist }
 
-#### have_statement
+### have_statement
 
-Examines the list of statements contained in the policy and passes if at least one of the statements matches. This matcher does _not_ interpret the policy in a request authorization context, as AWS does when a request processed. Rather, `have_statement` examines the literal contents of the IAM policy, and reports on what is present (or absent, when used with `should_not`).
+Examines the list of statements contained in the policy and passes if at least
+one of the statements matches. This matcher does _not_ interpret the policy in a
+request authorization context, as AWS does when a request processed. Rather,
+`have_statement` examines the literal contents of the IAM policy, and reports on
+what is present (or absent, when used with `should_not`).
 
-`have_statement` accepts the following criteria to search for matching statements. If any statement matches all the criteria, the test is successful. All criteria may be used as Titlecase (as in the AWS examples) or lowercase, string or symbol.
+`have_statement` accepts the following criteria to search for matching statements.
+If any statement matches all the criteria, the test is successful. All criteria
+may be used as Titlecase (as in the AWS examples) or lowercase, string or symbol.
 
 - `Action` - Expresses the requested operation. Acceptable literal values are any AWS operation name, including the '\*' wildcard character. `Action` may also use a list of AWS operation names.
 - `Effect` - Expresses if the operation is permitted. Acceptable values are 'Deny' and 'Allow'.
@@ -150,5 +163,3 @@ Examples:
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetUserPolicy`, `iam:GetRolePolicy`, and `iam:GetGroupPolicy` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
-
-aws_iam_inline_policy.md

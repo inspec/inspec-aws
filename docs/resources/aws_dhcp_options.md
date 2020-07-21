@@ -1,9 +1,16 @@
----
-title: About the aws_dhcp_options Resource
-platform: aws
----
++++
+title = "aws_dhcp_options resource"
+draft = false
+platform = "aws"
 
-# aws\_dhcp\_options
+[menu]
+  [menu.inspec]
+    title = "aws_dhcp_options"
+    identifier = "inspec/resources/aws/aws_dhcp_options.md aws_dhcp_options resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_dhcp_options.md)
 
 Use the `aws_dhcp_options` InSpec audit resource to test properties of a single AWS DHCP Options.
 
@@ -19,9 +26,9 @@ Ensure that an `aws_dhcp_options` exists
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### dhcp\_options\_id _(required)_
+### dhcp_options_id _(required)_
 
 This resource accepts a single parameter, the DHCP Options ID which uniquely identifies the DHCP Options.
 This can be passed either as a string or as a `dhcp_options_id: 'value'` key-value entry in a hash.
@@ -30,15 +37,15 @@ See also the [AWS documentation on EC2](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| dhcp_configurations | The list of dhcp configurations |
+| Property            | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| dhcp_configurations | The list of dhcp configurations                           |
 | domain_name_servers | The list of domain name servers in the dhcp configuration |
-| ntp_servers | The list of ntp servers in the dhcp configuration |
-| tags | The tags of the DHCP Options. |
+| ntp_servers         | The list of ntp servers in the dhcp configuration         |
+| tags                | The tags of the DHCP Options.                             |
 
+### Test tags on the DHCP Options
 
-##### Test tags on the DHCP Options
     describe aws_dhcp_options('dopt-0123456789abcdefg') do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'dhcp-options-name')}

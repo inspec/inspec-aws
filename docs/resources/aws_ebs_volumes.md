@@ -1,9 +1,16 @@
----
-title: About the aws_ebs_volumes Resource
-platform: aws
----
++++
+title = "aws_ebs_volumes resource"
+draft = false
+platform = "aws"
 
-# aws\_ebs\_volumes
+[menu]
+  [menu.inspec]
+    title = "aws_ebs_volumes"
+    identifier = "inspec/resources/aws/aws_ebs_volumes.md aws_ebs_volumes resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_ebs_volumes.md)
 
 Use the `aws_ebs_volumes` InSpec audit resource to test properties of a collection of AWS EBS volumes.
 
@@ -11,13 +18,13 @@ EBS volumes are persistent block storage volumes for use with Amazon EC2 instanc
 
 ## Syntax
 
- Ensure you have exactly 3 volumes
+Ensure you have exactly 3 volumes
 
     describe aws_ebs_volumes do
       its('volume_ids.count') { should cmp 3 }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -25,17 +32,17 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
-|volume\_ids                 | The unique IDs of the EBS Volumes returned. |
-|entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-   
+| Property   | Description                                                                                  |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| volume_ids | The unique IDs of the EBS Volumes returned.                                                  |
+| entries    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
 ## Examples
 
 #####Ensure a specific volume exists
-    describe aws_ebs_volumes do
-      its('volume_ids') { should include 'vol-12345678' }
-    end
+describe aws_ebs_volumes do
+its('volume_ids') { should include 'vol-12345678' }
+end
 
 ##### Use the InSpec resource to request the IDs of all EBS volumes, then test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
 
@@ -47,12 +54,11 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
       end
     end
 
-
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -61,7 +67,7 @@ Use `should_not` to test the entity should not exist.
     describe aws_ebs_volumes do
       it { should exist }
     end
-      
+
     describe aws_ebs_volumes do
       it { should_not exist }
     end

@@ -1,9 +1,16 @@
----
-title: About the aws_iam_password_policy Resource
-platform: aws
----
++++
+title = "aws_iam_password_policy resource"
+draft = false
+platform = "aws"
 
-# aws\_iam\_password\_policy
+[menu]
+  [menu.inspec]
+    title = "aws_iam_password_policy"
+    identifier = "inspec/resources/aws/aws_iam_password_policy.md aws_iam_password_policy resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_iam_password_policy.md)
 
 Use the `aws_iam_password_policy` InSpec audit resource to test properties of an AWS IAM Password Policy.
 
@@ -14,8 +21,8 @@ An `aws_iam_password_policy` resource block declares the tests for an AWS IAM Pa
     describe aws_iam_password_policy do
       it { should exist }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -23,15 +30,16 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property                            | Description|
-| ---                                | --- |
-|minimum\_password\_length           | The minimum character count of the password policy. |
-|max\_password\_age\_in\_days        | Integer representing in days how long a password may last before expiring.|
-|number\_of\_passwords\_to\_remember | Number of previous passwords to remember. |
+| Property                        | Description                                                                |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| minimum_password_length         | The minimum character count of the password policy.                        |
+| max_password_age_in_days        | Integer representing in days how long a password may last before expiring. |
+| number_of_passwords_to_remember | Number of previous passwords to remember.                                  |
 
 ## Examples
 
-##### Test that a Password Policy meets your company's requirements.
+### Test that a Password Policy meets your company's requirements.
+
     describe aws_iam_password_policy do
       it                             { should require_uppercase_characters }
       it                             { should require_lowercase_characters }
@@ -39,40 +47,48 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
       its('minimum_password_length') { should be > 8 }
     end
 
-##### Test that users can change their own passwords 
+### Test that users can change their own passwords
 
     describe aws_iam_password_policy do
       it { should allow_users_to_change_password }
     end
-    
+
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
+
     it { should exist }
-        
-#### prevent\_password\_reuse
+
+### prevent_password_reuse
+
     it { should prevent_password_reuse }
-    
-#### expire\_passwords 
+
+### expire_passwords
+
     it { should expire_passwords }
 
-#### require\_numbers   
+### require_numbers
+
     it { should require_numbers }
 
-#### require\_symbols
+### require_symbols
+
     it { should require_symbols }
 
-#### require\_lowercase\_characters
+### require_lowercase_characters
+
     it { should require_lowercase_characters }
 
-#### require\_uppercase\_characters
+### require_uppercase_characters
+
     it { should require_uppercase_characters}
 
-#### allow\_users\_to\_change\_passwords
+### allow_users_to_change_passwords
+
     it { should allow_users_to_change_password }
-    
+
 All matchers can use the inverse `should_not` predicate.
 
 ## AWS Permissions

@@ -1,9 +1,16 @@
----
-title: About the aws_iam_groups Resource
-platform: aws
----
++++
+title = "aws_iam_groups resource"
+draft = false
+platform = "aws"
 
-# aws\_iam\_groups
+[menu]
+  [menu.inspec]
+    title = "aws_iam_groups"
+    identifier = "inspec/resources/aws/aws_iam_groups.md aws_iam_groups resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_iam_groups.md)
 
 Use the `aws_iam_groups` InSpec audit resource to test properties of a collection of IAM groups.
 
@@ -19,8 +26,8 @@ An `aws_iam_groups` resource block identifies a group by group name.
     describe aws_iam_groups(group_name: 'mygroup') do
       it { should exist }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -28,18 +35,18 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|group\_names | The group name. |
-|group\_ids   | The group ID. |
-|arns         | The Amazon Resource Name of the group. |
-|users        | Array of users associated with the group.  |
-|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-
+| Property    | Description                                                                                  |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| group_names | The group name.                                                                              |
+| group_ids   | The group ID.                                                                                |
+| arns        | The Amazon Resource Name of the group.                                                       |
+| users       | Array of users associated with the group.                                                    |
+| entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
-##### Ensure group contains a certain user
+### Ensure group contains a certain user
+
     describe aws_iam_groups do
       it                 { should exist }
       its('group_names') { should include 'prod-access-group' }
@@ -47,7 +54,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if a group with the given group name exists.
 

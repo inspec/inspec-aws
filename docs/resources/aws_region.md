@@ -1,9 +1,16 @@
----
-title: About the aws_region Resource
-platform: aws
----
++++
+title = "aws_region resource"
+draft = false
+platform = "aws"
 
-# aws\_region
+[menu]
+  [menu.inspec]
+    title = "aws_region"
+    identifier = "inspec/resources/aws/aws_region.md aws_region resource"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_region.md)
 
 Use the `aws_region` InSpec audit resource to test properties of a single AWS region.
 
@@ -19,39 +26,41 @@ An `aws_region` resource block identifies an AWS region by ID. If no region is p
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### region\_name _(optional)_
+### region_name _(optional)_
 
-This resource accepts a single parameter, the region\_name. 
+This resource accepts a single parameter, the region_name.
 This can be passed either as a string or as a `region_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|region\_name | The Name of the region. |
-|endpoint     | The resolved endpoint of the region. |
+| Property    | Description                          |
+| ----------- | ------------------------------------ |
+| region_name | The Name of the region.              |
+| endpoint    | The resolved endpoint of the region. |
 
 ## Examples
 
-##### Test whether a region exists
+### Test whether a region exists
+
     describe aws_region('region-not-real') do
       it { should_not exist }
     end
 
-##### Test the Region Endpoint
+### Test the Region Endpoint
+
     describe aws_region(region_name: 'eu-west-2') do
       its('endpoint') { should eq 'ec2.eu-west-2.amazonaws.com' }
     end
-    
+
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](/inspec/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

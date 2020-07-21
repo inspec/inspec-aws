@@ -1,8 +1,16 @@
----
-title: About the aws_s3_buckets Resource
----
++++
+title = "aws_s3_buckets resource"
+draft = false
+platform = "aws"
 
-# aws\_s3\_buckets
+[menu]
+  [menu.inspec]
+    title = "aws_s3_buckets"
+    identifier = "inspec/resources/aws/aws_s3_buckets.md aws_s3_buckets"
+    parent = "inspec/resources/aws"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-aws/blob/master/docs/resources/aws_s3_buckets.md)
 
 Use the `aws_s3_buckets` InSpec audit resource to list all buckets in a single account.
 
@@ -14,7 +22,7 @@ An `aws_s3_buckets` resource block takes no arguments
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -22,30 +30,32 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
-|bucket\_names | An Array of bucket names. |
-|tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
-|entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property     | Description                                                                                  |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| bucket_names | An Array of bucket names.                                                                    |
+| tags         | An hash with each key-value pair corresponding to a tag associated with the entity           |
+| entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
-##### Examine what buckets have been created.
+### Examine what buckets have been created.
+
     describe aws_s3_buckets do
       its('bucket_names') { should eq ['my_bucket'] }
       # OR
       its('bucket_names') { should include 'my_bucket' }
     end
-    
-##### Check the tags on buckets                
-        describe aws_s3_buckets.where( bucket_names: 'my-bucket' ) do
-            its('tags') { should include(:Environment => 'env-name',
-                                         :Name => 'bucket-name')}
-        end
-    
+
+### Check the tags on buckets
+
+    describe aws_s3_buckets.where( bucket_names: 'my-bucket' ) do
+        its('tags') { should include(:Environment => 'env-name',
+                                      :Name => 'bucket-name')}
+    end
+
 ## Matchers
 
-#### exists
+### exists
 
 The control will pass if the resource contains at least one bucket.
 
