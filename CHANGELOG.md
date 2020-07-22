@@ -1,9 +1,14 @@
-<!-- latest_release 1.26.1 -->
+<!-- latest_release 1.26.2 -->
+## [v1.26.2](https://github.com/inspec/inspec-aws/tree/v1.26.2) (2020-07-22)
+
+#### Merged Pull Requests
+- Update build to use more recent ruby versions: 2.5-2.7. [#237](https://github.com/inspec/inspec-aws/pull/237) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v1.26.1](https://github.com/inspec/inspec-aws/tree/v1.26.1) (2020-06-17)
 
 #### Merged Pull Requests
 - Missing name var in aws inspec config [#233](https://github.com/inspec/inspec-aws/pull/233) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.26.0](https://github.com/inspec/inspec-aws/tree/v1.26.0) (2020-06-12)
 
