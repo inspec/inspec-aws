@@ -1,9 +1,14 @@
-<!-- latest_release 1.26.2 -->
+<!-- latest_release 1.26.3 -->
+## [v1.26.3](https://github.com/inspec/inspec-aws/tree/v1.26.3) (2020-07-22)
+
+#### Merged Pull Requests
+- Remove travis CI [#238](https://github.com/inspec/inspec-aws/pull/238) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.26.2](https://github.com/inspec/inspec-aws/tree/v1.26.2) (2020-07-22)
 
 #### Merged Pull Requests
 - Update build to use more recent ruby versions: 2.5-2.7. [#237](https://github.com/inspec/inspec-aws/pull/237) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v1.26.1](https://github.com/inspec/inspec-aws/tree/v1.26.1) (2020-06-17)
 
