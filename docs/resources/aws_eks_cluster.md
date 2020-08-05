@@ -50,6 +50,8 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
 |failed                  | Boolean indicating whether or not the state of the cluster is FAILED. |
 |deleting                | Boolean indicating whether or not the state of the cluster is DELETING. |
 |tags                    | Cluster tags |
+|enabled\_logging\_types | Return list of enabled logging types. |
+|disabled\_logging\_types | Return list of disabled logging types. |
            
 ## Examples
 

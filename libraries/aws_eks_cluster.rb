@@ -15,7 +15,7 @@ class AwsEksCluster < AwsResourceBase
   attr_reader :version, :arn, :certificate_authority, :name,
               :status, :endpoint, :subnets_count, :subnet_ids, :security_group_ids,
               :created_at, :role_arn, :vpc_id, :security_groups_count, :creating,
-              :active, :failed, :deleting, :tags
+              :active, :failed, :deleting, :tags, :enabled_logging_types, :disabled_logging_types
 
   def initialize(opts = {})
     opts = { cluster_name: opts } if opts.is_a?(String)
@@ -43,6 +43,8 @@ class AwsEksCluster < AwsResourceBase
       @creating              = resp[:status] == 'CREATING'
       @deleting              = resp[:status] == 'DELETING'
       @tags                  = resp[:tags]
+      @enabled_logging_types = resp[:logging][:cluster_logging].select{|logging| logging.enabled}.map{|type| type[:types]}
+      @disabled_logging_types= resp[:logging][:cluster_logging].reject{|logging| logging.enabled}.map{|type| type[:types]}
     end
   end
 
