@@ -43,8 +43,8 @@ class AwsEksCluster < AwsResourceBase
       @creating              = resp[:status] == 'CREATING'
       @deleting              = resp[:status] == 'DELETING'
       @tags                  = resp[:tags]
-      @enabled_logging_types = resp[:logging][:cluster_logging].select(&:enabled).map { |type| type[:types] }
-      @disabled_logging_types= resp[:logging][:cluster_logging].reject(&:enabled).map { |type| type[:types] }
+      @enabled_logging_types = resp.dig(:logging, :cluster_logging)&.select(&:enabled)&.map { |type| type[:types] }
+      @disabled_logging_types= resp.dig(:logging, :cluster_logging)&.reject(&:enabled)&.map { |type| type[:types] }
     end
   end
 
