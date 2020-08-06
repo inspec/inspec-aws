@@ -1,9 +1,14 @@
-<!-- latest_release 1.26.4 -->
+<!-- latest_release 1.27.0 -->
+## [v1.27.0](https://github.com/inspec/inspec-aws/tree/v1.27.0) (2020-08-06)
+
+#### Merged Pull Requests
+- Adding logging types to aws_eks_cluster [#241](https://github.com/inspec/inspec-aws/pull/241) ([voojoe](https://github.com/voojoe))
+<!-- latest_release -->
+
 ## [v1.26.4](https://github.com/inspec/inspec-aws/tree/v1.26.4) (2020-08-06)
 
 #### Merged Pull Requests
 - Fix failing alb unit test - update stub data [#242](https://github.com/inspec/inspec-aws/pull/242) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.26.3](https://github.com/inspec/inspec-aws/tree/v1.26.3) (2020-07-22)
 
