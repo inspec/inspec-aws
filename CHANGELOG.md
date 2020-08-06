@@ -1,9 +1,14 @@
-<!-- latest_release 1.26.3 -->
+<!-- latest_release 1.26.4 -->
+## [v1.26.4](https://github.com/inspec/inspec-aws/tree/v1.26.4) (2020-08-06)
+
+#### Merged Pull Requests
+- Fix failing alb unit test - update stub data [#242](https://github.com/inspec/inspec-aws/pull/242) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.26.3](https://github.com/inspec/inspec-aws/tree/v1.26.3) (2020-07-22)
 
 #### Merged Pull Requests
 - Remove travis CI [#238](https://github.com/inspec/inspec-aws/pull/238) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.26.2](https://github.com/inspec/inspec-aws/tree/v1.26.2) (2020-07-22)
 
