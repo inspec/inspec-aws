@@ -92,10 +92,10 @@ class AwsEksClusterTest < Minitest::Test
   end
 
   def test_eks_enabled_logging_types
-    assert_equal(@eks.enabled_logging_types, @mock_eks[:logging][:cluster_logging].select(&:enabled).map { |type| type[:types] })
+    assert_equal(@eks.enabled_logging_types, @mock_eks[:cluster].dig(:logging, :cluster_logging).select{|z| z[:enabled] == true }.map {|x| x[:types] })
   end
 
   def test_eks_disabled_logging_types
-    assert_equal(@eks.disabled_logging_types, @mock_eks[:logging][:cluster_logging].reject(&:enabled).map { |type| type[:types] })
+    assert_equal(@eks.disabled_logging_types, @mock_eks[:cluster].dig(:logging, :cluster_logging).select{|z| z[:enabled] == false }.map {|x| x[:types] })
   end
 end
