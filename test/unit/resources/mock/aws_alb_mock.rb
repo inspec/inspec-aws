@@ -23,7 +23,6 @@ class AwsAlbMock < AwsBaseResourceMock
                                     certificates: [],
                                     ssl_policy: nil,
                                     default_actions: [],
-                                    alpn_policy: [],
                                   },
                                   {
                                     listener_arn: @aws.any_arn,
@@ -32,8 +31,7 @@ class AwsAlbMock < AwsBaseResourceMock
                                     protocol: 'HTTPS',
                                     certificates: [{ certificate_arn: @aws.any_arn, is_default: nil }],
                                     ssl_policy: 'ELBSecurityPolicy-TLS-1-2-Ext-2018-06',
-                                    default_actions: [],
-                                    alpn_policy: [] },
+                                    default_actions: [] },
                                   ]}
   end
 

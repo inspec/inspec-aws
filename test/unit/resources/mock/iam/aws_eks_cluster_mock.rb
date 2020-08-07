@@ -18,7 +18,9 @@ class AwsEksClusterMock < AwsBaseResourceMock
                    endpoint: @aws.any_string,
                    created_at: @aws.any_date,
                    role_arn: @aws.any_arn,
-                   resources_vpc_config: resources_vpc_config }
+                   resources_vpc_config: resources_vpc_config,
+                   logging: {:cluster_logging => [{:types => ["api", "audit", "authenticator", "controllerManager"], :enabled => false}, {:types => ["scheduler"], :enabled => true}]}
+                  }
     @eks[:cluster] = attributes
   end
 

@@ -1,9 +1,29 @@
-<!-- latest_release 1.26.1 -->
+<!-- latest_release 1.27.0 -->
+## [v1.27.0](https://github.com/inspec/inspec-aws/tree/v1.27.0) (2020-08-06)
+
+#### Merged Pull Requests
+- Adding logging types to aws_eks_cluster [#241](https://github.com/inspec/inspec-aws/pull/241) ([voojoe](https://github.com/voojoe))
+<!-- latest_release -->
+
+## [v1.26.4](https://github.com/inspec/inspec-aws/tree/v1.26.4) (2020-08-06)
+
+#### Merged Pull Requests
+- Fix failing alb unit test - update stub data [#242](https://github.com/inspec/inspec-aws/pull/242) ([rmoles](https://github.com/rmoles))
+
+## [v1.26.3](https://github.com/inspec/inspec-aws/tree/v1.26.3) (2020-07-22)
+
+#### Merged Pull Requests
+- Remove travis CI [#238](https://github.com/inspec/inspec-aws/pull/238) ([rmoles](https://github.com/rmoles))
+
+## [v1.26.2](https://github.com/inspec/inspec-aws/tree/v1.26.2) (2020-07-22)
+
+#### Merged Pull Requests
+- Update build to use more recent ruby versions: 2.5-2.7. [#237](https://github.com/inspec/inspec-aws/pull/237) ([skpaterson](https://github.com/skpaterson))
+
 ## [v1.26.1](https://github.com/inspec/inspec-aws/tree/v1.26.1) (2020-06-17)
 
 #### Merged Pull Requests
 - Missing name var in aws inspec config [#233](https://github.com/inspec/inspec-aws/pull/233) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.26.0](https://github.com/inspec/inspec-aws/tree/v1.26.0) (2020-06-12)
 
