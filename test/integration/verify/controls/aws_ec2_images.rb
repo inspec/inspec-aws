@@ -8,8 +8,4 @@ control 'aws-ec2-images-1.0' do
   describe aws_ec2_images do
     it { should exist }
   end
-
-  describe aws_ec2_images do
-    its('image_ids') { should include 'aki-806d67e4' }
-  end
 end
