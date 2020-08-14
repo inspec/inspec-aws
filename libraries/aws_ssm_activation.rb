@@ -37,8 +37,4 @@ class AwsSsmActivation < AwsResourceBase
   def to_s
     "SSM Activation ID #{@display_name}"
   end
-
-  def name
-    name if exists?
-  end
 end

@@ -12,7 +12,7 @@ Use the `aws_ssm_activations` InSpec audit resource to test properties of a coll
  Ensure you have exactly 3 activations
 
     describe aws_ssm_activations do
-      its('names.count') { should cmp 3 }
+      its('activation_ids.count') { should cmp 3 }
     end
     
 #### Parameters

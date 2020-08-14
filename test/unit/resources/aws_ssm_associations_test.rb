@@ -23,15 +23,19 @@ class AwsSsmAssociationsSuccessPathTest < Minitest::Test
     data = {}
     data[:method] = :list_associations
     mock_ssm_association = {}
-    mock_ssm_association[:name] = "document-name"
     mock_ssm_association[:association_id] = "association-id-14325423"
+    mock_ssm_association[:association_name] = "association-name-14325423"
     mock_ssm_association[:association_version] = "1"
-    mock_ssm_association[:targets] = [{ key: "instanceids",
-                                        values: ["i-52543f43ew234"] }]
+    mock_ssm_association[:document_version] = "1"
+    mock_ssm_association[:instance_id] = "instance-id-532542"
     mock_ssm_association[:last_execution_date] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
+    mock_ssm_association[:name] = "document-name"
     mock_ssm_association[:overview] = { status: "Success",
                                         detailed_status: "Success",
                                         association_status_aggregated_count: {} }
+    mock_ssm_association[:schedule_expression] = ""
+    mock_ssm_association[:targets] = [{ key: "instanceids",
+                                        values: ["i-52543f43ew234"] }]
     data[:data] = { associations: [mock_ssm_association] }
     data[:client] = Aws::SSM::Client
     @ssm_association = AwsSsmAssociations.new(client_args: { stub_responses: true }, stub_data: [data])

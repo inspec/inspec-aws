@@ -15,6 +15,7 @@ class AwsSsmActivations < AwsResourceBase
 
   FilterTable.create
              .register_column(:activation_ids,         field: :activation_id)
+             .register_column(:descriptions,           field: :description)
              .register_column(:default_instance_names, field: :default_instance_name)
              .register_column(:iam_roles,              field: :iam_role)
              .register_column(:registration_limits,    field: :registration_limit)
@@ -22,6 +23,7 @@ class AwsSsmActivations < AwsResourceBase
              .register_column(:expiration_dates,       field: :expiration_date)
              .register_column(:expired,                field: :expired)
              .register_column(:created_dates,          field: :created_date)
+             .register_column(:tags,                   field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -41,13 +43,15 @@ class AwsSsmActivations < AwsResourceBase
 
       api_response.activation_list.each do |ssm_activation|
         ssm_activation_rows += [{ activation_id:         ssm_activation.activation_id,
+                                  description:           ssm_activation.description,
                                   default_instance_name: ssm_activation.default_instance_name,
                                   iam_role:              ssm_activation.iam_role,
                                   registration_limit:    ssm_activation.registration_limit,
                                   registrations_count:   ssm_activation.registrations_count,
                                   expiration_date:       ssm_activation.expiration_date,
                                   expired:               ssm_activation.expired,
-                                  created_date:          ssm_activation.created_date }]
+                                  created_date:          ssm_activation.created_date,
+                                  tags:                  ssm_activation.tags }]
       end
       break unless api_response.next_token
       pagination_options = { next_token: api_response.next_token }

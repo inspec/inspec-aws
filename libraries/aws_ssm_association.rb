@@ -13,12 +13,11 @@ class AwsSsmAssociation < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { association_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:association_id])
+    validate_parameters(require_any_of: %i(association_id name instance_id))
     @display_name = opts[:association_id]
     catch_aws_errors do
-      resp = @aws.ssm_client.describe_association({ association_id: opts[:association_id] })
+      resp = @aws.ssm_client.describe_association(request_params)
       if resp.association_description.nil?
         empty_response_warn
       else
@@ -28,15 +27,15 @@ class AwsSsmAssociation < AwsResourceBase
     end
   end
 
+  def request_params
+    opts[:association_id] ? { association_id: opts[:association_id] } : { name: opts[:name], instance_id: opts[:instance_id] }
+  end
+
   def exists?
     !failed_resource?
   end
 
   def to_s
     "SSM Association ID #{@display_name}"
-  end
-
-  def name
-    name if exists?
   end
 end

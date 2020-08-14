@@ -11,17 +11,17 @@ Use the `aws_ssm_activation` InSpec audit resource to test properties of a ssm a
 
  An `aws_ssm_activation` resource block uses the parameter to select a ssm activation.
 
-    describe aws_ssm_activation(name: 'ssm-activation-name-1234') do
+    describe aws_ssm_activation(activation_id: 'ssm-activation-id-1234') do
       it { should exist }
     end
 
 
 #### Parameters
 
-##### name _(required)_
+##### activation_id _(required)_
 
-This resource accepts a single parameter, the SSM Activation Name.
-This can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
+This resource accepts a single parameter, the SSM Activation ID.
+This can be passed either as a string or as a `activation_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on SSM Activations](https://docs.aws.amazon.com/systems-manager/latest/userguide/activations.html).
 
@@ -45,10 +45,10 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-##### Check the Name of a SSM Activation
+##### Check the Activation ID of a SSM Activation
 
-    describe aws_ssm_activation(name: 'ssm-activation-name-1234') do
-      its('name')  { should eq 'ssm-activation-name-1234' }
+    describe aws_ssm_activation(activation_id: 'ssm-activation-id-1234') do
+      its('activation_id')  { should eq 'ssm-activation-id-1234' }
     end
 
 ## Matchers
@@ -61,11 +61,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ssm_activation(name: 'ssm-activation-name-1234') do
+    describe aws_ssm_activation(activation_id: 'ssm-activation-id-1234') do
       it { should exist }
     end
 
-    describe aws_ssm_activation(name: 'ssm-activation-name-6789') do
+    describe aws_ssm_activation(activation_id: 'ssm-activation-id-6789') do
       it { should_not exist }
     end
 

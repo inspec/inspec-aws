@@ -24,12 +24,14 @@ class AwsSsmActivationsSuccessPathTest < Minitest::Test
     data[:method] = :describe_activations
     mock_ssm_activation = {}
     mock_ssm_activation[:activation_id] = "activation-id-123465434"
+    mock_ssm_activation[:description] = "activation-description"
     mock_ssm_activation[:default_instance_name] = "instance-name"
     mock_ssm_activation[:iam_role] = "iam-role-432"
     mock_ssm_activation[:registration_limit] = 5
     mock_ssm_activation[:expiration_date] = Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_ssm_activation[:expired] = false
     mock_ssm_activation[:created_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
+    mock_ssm_activation[:tags] = []
     data[:data] = { activation_list: [mock_ssm_activation] }
     data[:client] = Aws::SSM::Client
     @ssm_activation = AwsSsmActivations.new(client_args: { stub_responses: true }, stub_data: [data])
@@ -41,6 +43,10 @@ class AwsSsmActivationsSuccessPathTest < Minitest::Test
 
   def test_ssm_activation_id
     assert_equal(@ssm_activation.activation_ids, ['activation-id-123465434'])
+  end
+
+  def test_ssm_activation_description
+    assert_equal(@ssm_activation.descriptions, ['activation-description'])
   end
 
   def test_ssm_activation_default_instance_name
