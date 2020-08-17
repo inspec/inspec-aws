@@ -40,7 +40,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ##### Ensure Compliance Type of a SSM Resource Compliance Summary exists
     describe aws_ssm_resource_compliance_summaries do
-      its('compliance_type') { should include 'ssm-compliance-type' }
+      its('compliance_types') { should include 'ssm-compliance-type' }
     end
 
 ## Matchers
