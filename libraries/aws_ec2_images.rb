@@ -20,7 +20,7 @@ class AwsEc2Images < AwsResourceBase
              .register_column(:image_locations,       field: :image_location)
              .register_column(:image_types,           field: :image_type)
              .register_column(:public,                field: :public)
-             .register_column(:kernal_ids,            field: :kernal_id)
+             .register_column(:kernel_ids,            field: :kernel_id)
              .register_column(:owner_ids,             field: :owner_id)
              .register_column(:platforms,             field: :platform)
              .register_column(:platform_details,      field: :platform_details)

@@ -9,7 +9,7 @@ Use the `aws_ec2_images` InSpec audit resource to test properties of some or all
 
 ## Syntax
 
- Ensure you have exactly 3 EC2 Images
+ Ensure you have exactly 3 EC2 Images available to you.
 
     describe aws_ec2_images do
       its('image_ids.count') { should cmp 3 }
@@ -29,7 +29,7 @@ This resource does not expect any parameters.
 |image\_locations         | The location of the AMI. |
 |image\_types             | The type of image. |
 |public                   | Indicates whether the image has public launch permissions. |
-|kernal\_ids              | The kernel associated with the image, if any. Only applicable for machine images. |
+|kernel\_ids              | The kernel associated with the image, if any. Only applicable for machine images. |
 |owner\_ids               | The AWS account ID of the image owner. |
 |platforms                | This value is set to windows for Windows AMIs; otherwise, it is blank. |
 |platform\_details        | The platform details associated with the billing code of the AMI. |
@@ -40,7 +40,7 @@ This resource does not expect any parameters.
 |block\_device\_mappings  | Any block device mapping entries. |
 |descriptions             | The description of the AMI that was provided during image creation. |
 |ena\_support             | Specifies whether enhanced networking with ENA is enabled. |
-|hypervisor               | The hypervisor type of the image. |
+|hypervisors               | The hypervisor type of the image. |
 |image\_owner\_alias      | The AWS account alias or the AWS account ID of the AMI owner. |
 |names                    | The name of the AMI that was provided during image creation. |
 |root\_device\_names      | The device name of the root device volume. |
@@ -52,7 +52,7 @@ This resource does not expect any parameters.
 
 ## Examples
 
-##### Ensure Name of a SSM Parameter exists
+##### Ensure ID of an EC2 Image exists
     describe aws_ec2_images do
       its('image_ids') { should include 'image-id-43542' }
     end
