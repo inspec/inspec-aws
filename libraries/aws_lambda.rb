@@ -22,6 +22,7 @@ class AwsLambda < AwsResourceBase
     @display_name = target
     details = @aws.lambda_client.get_function({ function_name: target })
     @lambda = details.configuration.to_h
+    @tags = details.tags
     create_resource_methods(@lambda)
   rescue Aws::Errors::ServiceError
     @lambda = nil
@@ -33,6 +34,10 @@ class AwsLambda < AwsResourceBase
 
   def name
     @display_name
+  end
+
+  def tags
+    @tags
   end
 
   def to_s
