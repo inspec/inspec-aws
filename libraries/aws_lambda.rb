@@ -11,6 +11,8 @@ class AwsLambda < AwsResourceBase
     end
   '
 
+  attr_reader :tags
+
   def initialize(opts = {})
     opts = { lambda_name: opts } if opts.is_a?(String)
     super(opts)
@@ -34,10 +36,6 @@ class AwsLambda < AwsResourceBase
 
   def name
     @display_name
-  end
-
-  def tags
-    @tags
   end
 
   def to_s
