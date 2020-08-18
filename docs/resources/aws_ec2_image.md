@@ -35,7 +35,7 @@ See also the [AWS documentation on EC2 Amazon Machine Images](https://docs.aws.a
 |image\_location          | The location of the AMI. |
 |image\_type              | The type of image. |
 |public                   | Indicates whether the image has public launch permissions. |
-|kernal\_id               | The kernel associated with the image, if any. Only applicable for machine images. |
+|kernel\_id               | The kernel associated with the image, if any. Only applicable for machine images. |
 |owner\_id                | The AWS account ID of the image owner. |
 |platform                 | This value is set to windows for Windows AMIs; otherwise, it is blank. |
 |platform\_details        | The platform details associated with the billing code of the AMI. |
