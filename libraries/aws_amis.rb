@@ -2,14 +2,14 @@
 
 require 'aws_backend'
 
-class AwsEc2Images < AwsResourceBase
-  name 'aws_ec2_images'
-  desc 'Verifies settings for a collection of AWS EC2 Images'
-  example '
-    describe aws_ec2_images do
+class AwsAmis < AwsResourceBase
+  name 'aws_amis'
+  desc 'Verifies settings for a collection of AWS AMIs'
+  example "
+    describe aws_amis(all_amis: 'true') do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 
@@ -44,15 +44,28 @@ class AwsEc2Images < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(require_any_of: %i(all_amis architecture creation_date image_id image_type is_public kernel_id owner_id owner_alias
+                                           platform product_code platform_details usage_operation ramdisk_id state state_reason_code state_reason_message
+                                           description ena_support hypervisor name root_device_name root_device_type sriov_net_support virtualization_type))
+
     @table = fetch_data
   end
 
   def fetch_data
     image_rows = []
+
+    if opts[:all_amis] == 'true'
+      filter = []
+    elsif opts
+      filter = []
+      opts.each { |k, v| filter << { name: k.to_s.tr('_', '-'), values: [v] } }
+    else
+      raise ArgumentError, 'Either all_amis or filter option must be provided.'
+    end
+
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_images
+        @api_response = filter.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images({ filters: filter })
       end
       return [] if !api_response || api_response.empty?
       api_response.images.each do |image|
