@@ -1,23 +1,60 @@
 ---
-title: About the aws_ec2_images Resource
+title: About the aws_amis Resource
 platform: aws
 ---
 
-# aws\_ec2\_images
+# aws\_amis
 
-Use the `aws_ec2_images` InSpec audit resource to test properties of some or all AWS EC2 images.
+Use the `aws_amis` InSpec audit resource to test properties of some or all AWS AMIs.
 
 ## Syntax
 
- Ensure you have exactly 3 EC2 Images available to you.
+ Ensure you have exactly 3 AMIs available to you.
 
-    describe aws_ec2_images do
+    describe aws_amis(all_amis: 'true') do
       its('image_ids.count') { should cmp 3 }
+    end
+    
+ Check if you have a public AMI for the Linux/UNIX platform available to you.
+
+    describe aws_amis(is_public: 'true', platform_details: 'Linux/UNIX') do
+      it { should exist }
     end
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource must be provided with the parameter 'all_amis' (returns ALL AMIs available to you) OR a combination of the following.
+
+##### all_amis _(optional)_
+
+_OR_
+
+##### architecture _(optional)_
+##### creation\_date _(optional)_
+##### image\_id _(optional)_
+##### image\_type _(optional)_
+##### is\_public _(optional)_
+##### kernel\_id _(optional)_
+##### owner\_id _(optional)_
+##### owner\_alias _(optional)_
+##### platform _(optional)_
+##### product\_code _(optional)_
+##### platform\_details _(optional)_
+##### usage\_operation _(optional)_
+##### ramdisk\_id _(optional)_
+##### state _(optional)_
+##### state\_reason\_code _(optional)_
+##### state\_reason\_message _(optional)_
+##### description _(optional)_
+##### ena\_support _(optional)_
+##### hypervisor _(optional)_
+##### name _(optional)_
+##### root\_device\_name _(optional)_
+##### root\_device\_type _(optional)_
+##### sriov\_net\_support _(optional)_
+##### virtualization\_type _(optional)_
+
+This can be passed either as a string or as a `all_amis: 'value'` key-value entry in a hash.
 
 ## Properties
 
@@ -52,8 +89,8 @@ This resource does not expect any parameters.
 
 ## Examples
 
-##### Ensure ID of an EC2 Image exists
-    describe aws_ec2_images do
+##### Ensure ID of an AMI exists
+    describe aws_amis(all_amis: 'true') do
       its('image_ids') { should include 'image-id-43542' }
     end
 
@@ -67,11 +104,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ec2_images.where( <property>: <value>) do
+    describe aws_amis(all_amis: 'true').where( <property>: <value>) do
       it { should exist }
     end
       
-    describe aws_ec2_images.where( <property>: <value>) do
+    describe aws_amis(all_amis: 'true').where( <property>: <value>) do
       it { should_not exist }
     end
     

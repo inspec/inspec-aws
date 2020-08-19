@@ -1,23 +1,14 @@
 require 'helper'
-require 'aws_ec2_image'
+require 'aws_amis'
 require 'aws-sdk-core'
 
-class AwsEc2ImageGroupConstructorTest < Minitest::Test
-
-  def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AwsEc2Image.new(client_args: { stub_responses: true }) }
-  end
-
-  def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AwsEc2Image.new(image_id: '', client_args: { stub_responses: true }) }
-  end
-
-  def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AwsEc2Image.new(unexpected: 9) }
+class AwsAmisConstructorTest < Minitest::Test
+  def test_rejects_other_args
+    assert_raises(ArgumentError) { AwsAmis.new('rubbish') }
   end
 end
 
-class AwsEc2ImageSuccessPathTest < Minitest::Test
+class AwsAmisSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
@@ -51,7 +42,7 @@ class AwsEc2ImageSuccessPathTest < Minitest::Test
     mock_image[:virtualization_type] = "paravirtual"
     data[:data] = { images: [mock_image] }
     data[:client] = Aws::EC2::Client
-    @ami = AwsEc2Image.new(image_id: 'aki-12345678', client_args: { stub_responses: true }, stub_data: [data])
+    @ami = AwsAmis.new(all_amis: 'true', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_image_exists
@@ -59,30 +50,30 @@ class AwsEc2ImageSuccessPathTest < Minitest::Test
   end
 
   def test_image_architecture
-    assert_equal(@ami.architecture, 'x86_64')
+    assert_equal(@ami.architectures, ['x86_64'])
   end
 
   def test_image_location
-    assert_equal(@ami.image_location, 'ami/manifest.xml')
+    assert_equal(@ami.image_locations, ['ami/manifest.xml'])
   end
 
   def test_image_type
-    assert_equal(@ami.image_type, 'kernel')
+    assert_equal(@ami.image_types, ['kernel'])
   end
 
   def test_image_public
-    assert_equal(@ami.public, true)
+    assert_equal(@ami.public, [true])
   end
 
   def test_image_owner_id
-    assert_equal(@ami.owner_id, '547327432')
+    assert_equal(@ami.owner_ids, ['547327432'])
   end
 
   def test_image_state
-    assert_equal(@ami.state, 'available')
+    assert_equal(@ami.states, ['available'])
   end
 
   def test_image_name
-    assert_equal(@ami.name, 'default_name.gz')
+    assert_equal(@ami.names, ['default_name.gz'])
   end
 end

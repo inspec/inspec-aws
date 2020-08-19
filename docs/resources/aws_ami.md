@@ -1,17 +1,17 @@
 ---
-title: About the aws_ec2_image Resource
+title: About the aws_ami Resource
 platform: aws
 ---
 
-# aws\_ec2\_image
+# aws\_ami
 
-Use the `aws_ec2_image` InSpec audit resource to test properties of a single AWS EC2 image.
+Use the `aws_ami` InSpec audit resource to test properties of a single AWS AMI.
 
 ## Syntax
 
-An `aws_ec2_image` resource block declares the tests for a single AWS EC2 image by image id.
+An `aws_ami` resource block declares the tests for a single AWS AMI by image id.
 
-    describe aws_ec2_image(image_id: 'aki-2349e94458a507') do
+    describe aws_ami(image_id: 'aki-2349e94458a507') do
       it { should exist }
     end
 
@@ -19,7 +19,7 @@ An `aws_ec2_image` resource block declares the tests for a single AWS EC2 image 
 
 ##### image\_id _(required)_
 
-This resource accepts a single parameter, the EC2 Image ID.
+This resource accepts a single parameter, the AMI Image ID.
 This can be passed either as a string or as a `image_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on EC2 Amazon Machine Images](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
@@ -61,7 +61,7 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Examples
 
 ##### Check if an AMI is public
-    describe aws_ec2_image(image_id: 'aki-25348fd4323') do
+    describe aws_ami(image_id: 'aki-25348fd4323') do
       its('public')  { should eq true }
     end
 
@@ -75,11 +75,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ec2_image(image_id: 'aki-1234') do
+    describe aws_ami(image_id: 'aki-1234') do
       it { should exist }
     end
 
-    describe aws_ec2_image(image_id: 'aki-6789') do
+    describe aws_ami(image_id: 'aki-6789') do
       it { should_not exist }
     end
 

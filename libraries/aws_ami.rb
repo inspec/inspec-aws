@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AwsEc2Image < AwsResourceBase
-  name 'aws_ec2_image'
-  desc 'Verifies settings for an AWS EC2 image'
+class AwsAmi < AwsResourceBase
+  name 'aws_ami'
+  desc 'Verifies settings for an AWS AMI'
 
   example "
-    describe aws_ec2_image(image_id: 'ami-12345678') do
+    describe aws_ami(image_id: 'ami-12345678') do
       it { should exist }
     end
   "
@@ -23,8 +23,8 @@ class AwsEc2Image < AwsResourceBase
       if resp.images.first.nil?
         empty_response_warn
       else
-        @ami = resp.images[0].to_h
-        create_resource_methods(@ami)
+        ami = resp.images.first.to_h
+        create_resource_methods(ami)
       end
     end
   end
@@ -34,6 +34,6 @@ class AwsEc2Image < AwsResourceBase
   end
 
   def to_s
-    "EC2 Image ID #{@display_name}"
+    "AMI ID #{@display_name}"
   end
 end

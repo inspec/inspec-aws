@@ -1,23 +1,23 @@
 require 'helper'
-require 'aws_ec2_images'
+require 'aws_ami'
 require 'aws-sdk-core'
 
-class AwsEc2ImagesConstructorTest < Minitest::Test
+class AwsAmiGroupConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AwsEc2Images.new(client_args: { stub_responses: true })
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) { AwsAmi.new(client_args: { stub_responses: true }) }
   end
 
-  def test_rejects_other_args
-    assert_raises(ArgumentError) { AwsEc2Images.new('rubbish') }
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AwsAmi.new(image_id: '', client_args: { stub_responses: true }) }
   end
 
-  def test_images_non_existing_for_empty_response
-    refute AwsEc2Images.new(client_args: { stub_responses: true }).exist?
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AwsAmi.new(unexpected: 9) }
   end
 end
 
-class AwsAwsEc2ImagesSuccessPathTest < Minitest::Test
+class AwsAmiSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
@@ -51,7 +51,7 @@ class AwsAwsEc2ImagesSuccessPathTest < Minitest::Test
     mock_image[:virtualization_type] = "paravirtual"
     data[:data] = { images: [mock_image] }
     data[:client] = Aws::EC2::Client
-    @ami = AwsEc2Images.new(client_args: { stub_responses: true }, stub_data: [data])
+    @ami = AwsAmi.new(image_id: 'aki-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_image_exists
@@ -59,30 +59,30 @@ class AwsAwsEc2ImagesSuccessPathTest < Minitest::Test
   end
 
   def test_image_architecture
-    assert_equal(@ami.architectures, ['x86_64'])
+    assert_equal(@ami.architecture, 'x86_64')
   end
 
   def test_image_location
-    assert_equal(@ami.image_locations, ['ami/manifest.xml'])
+    assert_equal(@ami.image_location, 'ami/manifest.xml')
   end
 
   def test_image_type
-    assert_equal(@ami.image_types, ['kernel'])
+    assert_equal(@ami.image_type, 'kernel')
   end
 
   def test_image_public
-    assert_equal(@ami.public, [true])
+    assert_equal(@ami.public, true)
   end
 
   def test_image_owner_id
-    assert_equal(@ami.owner_ids, ['547327432'])
+    assert_equal(@ami.owner_id, '547327432')
   end
 
   def test_image_state
-    assert_equal(@ami.states, ['available'])
+    assert_equal(@ami.state, 'available')
   end
 
   def test_image_name
-    assert_equal(@ami.names, ['default_name.gz'])
+    assert_equal(@ami.name, 'default_name.gz')
   end
 end
