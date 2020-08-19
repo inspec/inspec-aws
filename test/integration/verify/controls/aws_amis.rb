@@ -5,24 +5,21 @@ control 'aws-amis-1.0' do
   impact 1.0
   title 'Ensure AWS AMI has current properties'
 
-  describe aws_amis(image_id: 'ami-0a13d44dccf1f5cf6', architecture: 'x86_64') do
-    it { should exist }
-    its('architectures')      { should include 'x86_64' }
-    its('image_ids')          { should include 'ami-0a13d44dccf1f5cf6' }
-    its('image_types')        { should include 'machine' }
-    its('public')             { should include true }
-    its('platform_details')   { should include 'Linux/UNIX' }
-    its('image_owner_alias')  { should include 'amazon' }
-    its('usage_operations')   { should include 'RunInstances' }
-    its('states')             { should include 'available' }
+  aws_amis(architecture: 'i386').where { state == 'available' }.image_ids.each do |image|
+    describe aws_ami(image_id: image) do
+      it { should exist }
+      its('architecture') { should eq 'i386' }
+      its('state')        { should eq 'available' }
+    end
   end
 
-  describe aws_amis(is_public: 'true', platform_details: 'Linux/UNIX') do
+  describe aws_amis(is_public: 'true') do
     it { should exist }
-    its('image_ids') { should include 'ami-0a13d44dccf1f5cf6' }
+    its('image_owner_alias') { should include 'amazon' }
   end
 
   describe aws_amis(all_amis: 'true') do
-    its('image_ids') { should include 'ami-0a13d44dccf1f5cf6' }
+    its('image_owner_alias') { should include 'amazon' }
+    its('states')            { should include 'available' }
   end
 end
