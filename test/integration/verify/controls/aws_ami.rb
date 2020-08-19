@@ -7,10 +7,10 @@ control 'aws-ami-1.0' do
 
   describe aws_ami(image_id: 'ami-0a13d44dccf1f5cf6') do
     it { should exist }
+    it { should be_public }
     its('architecture')      { should eq 'x86_64' }
     its('image_id')          { should eq 'ami-0a13d44dccf1f5cf6' }
     its('image_type')        { should eq 'machine' }
-    its('public')            { should eq true }
     its('platform_details')  { should eq 'Linux/UNIX' }
     its('image_owner_alias') { should eq 'amazon' }
     its('usage_operation')   { should eq 'RunInstances' }

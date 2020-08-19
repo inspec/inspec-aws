@@ -33,6 +33,11 @@ class AwsAmi < AwsResourceBase
     !failed_resource?
   end
 
+  # RSpec will alias this to be_public
+  def public?
+    public
+  end
+
   def to_s
     "AMI ID #{@display_name}"
   end

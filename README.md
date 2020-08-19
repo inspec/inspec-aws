@@ -120,6 +120,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 
 - [aws_alb](docs/resources/aws_alb.md)
 - [aws_albs](docs/resources/aws_albs.md)
+- [aws_ami](docs/resources/aws_ami.md)
+- [aws_amis](docs/resources/aws_amis.md)
 - [aws_auto_scaling_group](docs/resources/aws_auto_scaling_group.md)
 - [aws_auto_scaling_groups](docs/resources/aws_auto_scaling_groups.md)
 - [aws_cloudformation_stack](docs/resources/aws_cloudformation_stack.md)

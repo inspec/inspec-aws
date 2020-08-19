@@ -62,12 +62,24 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ##### Check if an AMI is public
     describe aws_ami(image_id: 'aki-25348fd4323') do
-      its('public')  { should eq true }
+      it { should be_public }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+#### be_public
+
+The `be_public` matcher tests if the AMI has public launch permissons.
+
+    describe aws_ami(image_id: 'aki-1234') do
+      it { should be_public }
+    end
+
+    describe aws_ami(image_id: 'aki-6789') do
+      it { should_not be_public }
+    end
    
 #### exist
 
