@@ -24,7 +24,7 @@ class AwsSsmActivation < AwsResourceBase
       if resp.activation_list.first.nil?
         empty_response_warn
       else
-        @activation = resp.activation_list[0].to_h
+        @activation = resp.activation_list.first.to_h
         create_resource_methods(@activation)
       end
     end
