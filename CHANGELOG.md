@@ -1,9 +1,14 @@
-<!-- latest_release 1.28.0 -->
+<!-- latest_release 1.29.0 -->
+## [v1.29.0](https://github.com/inspec/inspec-aws/tree/v1.29.0) (2020-08-21)
+
+#### Merged Pull Requests
+- SSM Compliance Summary [#243](https://github.com/inspec/inspec-aws/pull/243) ([samscottchef](https://github.com/samscottchef))
+<!-- latest_release -->
+
 ## [v1.28.0](https://github.com/inspec/inspec-aws/tree/v1.28.0) (2020-08-19)
 
 #### Merged Pull Requests
 - Ami resource [#245](https://github.com/inspec/inspec-aws/pull/245) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.27.1](https://github.com/inspec/inspec-aws/tree/v1.27.1) (2020-08-18)
 
