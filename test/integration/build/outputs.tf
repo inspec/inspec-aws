@@ -253,3 +253,12 @@ output "aws_ssm_parameter_value" {
 output "aws_ssm_parameter_arn" {
   value = aws_ssm_parameter.ssm_param_secret.0.arn
 }
+
+output "aws_ssm_document_name" {
+  value = aws_ssm_document.ssm_document_1.0.name
+}
+
+output "aws_ssm_document_document_type" {
+  value = aws_ssm_document.ssm_document_1.0.document_type
+}
+

@@ -130,6 +130,7 @@ variable "aws_security_group_zeta" {}
 variable "aws_security_group_omega" {}
 variable "aws_security_group_lb" {}
 variable "aws_ssm_parameter_name" {}
+variable "aws_ssm_document_name" {}
 variable "aws_sqs_queue_name" {}
 variable "aws_subnet_ip_address_count" {}
 variable "aws_sns_topic_no_subscription" {}
@@ -1867,4 +1868,30 @@ resource "aws_ssm_parameter" "ssm_param_secret" {
   tags = {
     Environment = "Dev"
   }
+}
+
+resource "aws_ssm_document" "ssm_document_1" {
+  count         = var.aws_enable_creation
+  name          = var.aws_ssm_document_name
+  document_type = "Command"
+
+  content = <<DOC
+  {
+    "schemaVersion": "1.2",
+    "description": "Check ip configuration of a Linux instance.",
+    "parameters": {
+
+    },
+    "runtimeConfig": {
+      "aws:runShellScript": {
+        "properties": [
+          {
+            "id": "0.aws:runShellScript",
+            "runCommand": ["ifconfig"]
+          }
+        ]
+      }
+    }
+  }
+DOC
 }
