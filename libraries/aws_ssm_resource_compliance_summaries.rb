@@ -26,16 +26,25 @@ class AwsSsmResourceComplianceSummaries < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(allow: %i(compliance_type overall_severity))
     @table = fetch_data
   end
 
   def fetch_data
     ssm_resource_compliance_summary_rows = []
     pagination_options = {}
+
+    if opts[:compliance_type] || opts[:overall_severity]
+      filter_array = []
+      filter_array << { key: 'ComplianceType', values: [opts[:compliance_type]] } if opts[:compliance_type]
+      filter_array << { key: 'OverallSeverity', values: [opts[:overall_severity]] } if opts[:overall_severity]
+      filter_options = { filters: filter_array }
+    end
+
     loop do
       catch_aws_errors do
-        @api_response = @aws.ssm_client.list_resource_compliance_summaries(pagination_options)
+        params = filter_options.nil? ? pagination_options : filter_options
+        @api_response = @aws.ssm_client.list_resource_compliance_summaries(params)
       end
       return [] if !api_response || api_response.empty?
 

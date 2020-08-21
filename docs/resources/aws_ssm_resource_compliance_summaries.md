@@ -17,7 +17,13 @@ Use the `aws_ssm_resource_compliance_summaries` InSpec audit resource to test pr
     
 #### Parameters
 
-This resource does not expect any parameters.
+##### compliance_type _(optional)_
+
+This optional parameter allows you to filter based on compliance type. This must be passed as a string `compliance_type: 'value'`.
+
+##### overall_severity _(optional)_
+
+This optional parameter allows you to filter based on overall severity. This must be passed as a string `overall_severity: 'value'`.
 
 See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 

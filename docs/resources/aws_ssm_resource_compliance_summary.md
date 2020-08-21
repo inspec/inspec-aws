@@ -20,8 +20,20 @@ Use the `aws_ssm_resource_compliance_summary` InSpec audit resource to test prop
 
 ##### resource_id _(required)_
 
-This resource accepts a single parameter, the SSM Resource ID.
+This resource requires the SSM Resource ID parameter.
 This can be passed either as a string or as a `resource_id: 'value'` key-value entry in a hash.
+
+##### compliance_type _(optional)_
+
+This optional parameter allows you to filter based on resource_id and compliance type together. This must be passed as a string `compliance_type: 'value'`.
+
+##### overall_severity _(optional)_
+
+This optional parameter allows you to filter based on resource_id and overall severity together. This must be passed as a string `overall_severity: 'value'`.
+
+##### status _(optional)_
+
+This optional parameter allows you to filter based on resource_id and status together. This must be passed as a string `status: 'value'`.
 
 See also the [AWS documentation on SSM Resource Compliance Summary](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#compliance-view-results).
 
@@ -38,16 +50,6 @@ See also the [AWS documentation on SSM Resource Compliance Summary](https://docs
 |resource_id                  | Provides the resource id. |
 |resource_type                | Provides the resource type. |
 |status                       | Provides the compliance status for the resource. |
-|compliance\_item             | |
-|compliance\_type             | Provides the compliance type of the compliance item. |
-|details                      | Provides details of the compliance item. |
-|execution\_summary           | Provides an execution summary for the compliance item. |
-|id                           | Provides the ID of the compliance item. |
-|resource\_id                 | Provides an ID for the resource. For a managed instance, this is the instance ID. |
-|resource\_type               | Provides the type of resource. Currently only ManagedInstance is supported. |
-|severity                     | Provides the severity of the compliance item. |
-|status                       | Provides the status of the compliance item. |
-|title                        | Provides the title for the compliance item. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_ResourceComplianceSummaryItem.html)
 

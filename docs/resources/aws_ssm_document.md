@@ -41,7 +41,7 @@ See also the [AWS documentation on SSM Documents](https://docs.aws.amazon.com/sy
 |status\_information          | Provides a message returned by AWS Systems Manager that explains the Status value. |
 |document\_version            | Provides the document version. |
 |description                  | Provides a description of the document. |
-|parameters                   | Provides a description of the parameters for a document. |
+|parameters                   | Provides a description of the parameters for a document. These parameters include DefaultValue, Description, Name and Type. |
 |platform\_types              | Provides the list of OS platforms compatible with this Systems Manager document. |
 |document\_type               | Provides the type of the document. |
 |schema\_version              | Provides the schema version. |
