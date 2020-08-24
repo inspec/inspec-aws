@@ -482,7 +482,7 @@ class AwsResourceProbe
   end
 
   def to_s
-    "Missing property extension. Followings can be tested via dot notation: #{item.keys.map(&:to_s)}"
+    "Property is missing! The following are available: #{item.keys.map(&:to_s)}"
   end
 end
 
