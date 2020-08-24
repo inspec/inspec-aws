@@ -1,5 +1,6 @@
 .envrc
 .ruby-version
+.ruby-gemset
 .direnv
 Gemfile.lock
 inspec.lock
