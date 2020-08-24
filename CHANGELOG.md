@@ -1,9 +1,14 @@
-<!-- latest_release 1.29.0 -->
+<!-- latest_release 1.29.1 -->
+## [v1.29.1](https://github.com/inspec/inspec-aws/tree/v1.29.1) (2020-08-24)
+
+#### Merged Pull Requests
+- Return child property names when they are missing [#251](https://github.com/inspec/inspec-aws/pull/251) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.29.0](https://github.com/inspec/inspec-aws/tree/v1.29.0) (2020-08-21)
 
 #### Merged Pull Requests
 - SSM Compliance Summary [#243](https://github.com/inspec/inspec-aws/pull/243) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.28.0](https://github.com/inspec/inspec-aws/tree/v1.28.0) (2020-08-19)
 
