@@ -480,6 +480,10 @@ class AwsResourceProbe
   def respond_to_missing?(*several_variants)
     super
   end
+
+  def to_s
+    "Missing property extension. Followings can be tested via dot notation: #{item.keys.map(&:to_s)}"
+  end
 end
 
 # Ensure to return nil recursively.
