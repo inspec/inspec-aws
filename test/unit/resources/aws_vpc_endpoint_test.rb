@@ -47,7 +47,7 @@ class AwsVpcEndpointHappyPathTest < Minitest::Test
     mock_vpc_endpoint[:private_dns_enabled] = true
     data[:data] = { :vpc_endpoints => [mock_vpc_endpoint] }
     data[:client] = Aws::EC2::Client
-    @vpce = AwsVpce.new(client_args: { stub_responses: true }, stub_data: [data])
+    @vpce = AwsVpce.new(vpc_endpoint_id: 'vpce-1234567812345678a',client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_vpce_exists
