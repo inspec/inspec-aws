@@ -1898,9 +1898,10 @@ DOC
 }
 
 resource "aws_vpc_endpoint" "vpc_endpoint_1" {
+  count           = var.aws_enable_creation
   vpc_id          = aws_vpc.inspec_vpc[0].id
   service_name    = "com.amazonaws.${var.aws_region}.s3"
-  route_table_ids = [aws_route_table.route_table_first]
+  route_table_ids = [aws_route_table.route_table_first[0].id]
   tags = {
     Name = var.aws_vpc_endpoint_name
   }

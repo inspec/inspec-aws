@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_transit_gateway'
+require 'aws_vpc_endpoint'
 require 'aws-sdk-core'
 
 class AwsVPCEndpointConstructorTest < Minitest::Test
