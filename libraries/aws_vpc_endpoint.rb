@@ -36,7 +36,7 @@ class AwsVpce < AwsResourceBase
 
   def available?
     return false unless exists?
-    @vpce[:state] == 'Available'
+    @vpce[:state] == 'available'
   end
 
   def private_dns_enabled?

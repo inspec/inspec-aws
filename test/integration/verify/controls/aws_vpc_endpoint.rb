@@ -17,7 +17,7 @@ control 'aws-vpcendpoint-1.0' do
     its('vpc_endpoint_type')     { should be_in ["Interface", "Gateway"] }
     its('vpc_id')               { should cmp aws_vpc_id }
     its('service_name')  { should cmp aws_vpce_service_name }
-    its('state') { should be_in ["PendingAcceptance", "Pending", "Available", "Deleting", "Deleted", "Rejected", "Failed", "Expired"] }
+    its('state') { should be_in ["pendingpcceptance", "pending", "available", "deleting", "deleted", "rejected", "failed", "expired"] }
     its('route_table_ids')       { should include aws_route_table_first_id }
     its('private_dns_enabled')       { should be_in [true, false] }
     its('tags')              { should include('Name' => aws_vpce_name) }
@@ -29,7 +29,7 @@ control 'aws-vpcendpoint-1.0' do
     its('vpc_endpoint_type')     { should be_in ["Interface", "Gateway"] }
     its('vpc_id')               { should cmp aws_vpc_id }
     its('service_name')  { should cmp aws_vpce_service_name }
-    its('state') { should be_in ["PendingAcceptance", "Pending", "Available", "Deleting", "Deleted", "Rejected", "Failed", "Expired"] }
+    its('state') { should be_in ["pendingpcceptance", "pending", "available", "deleting", "deleted", "rejected", "failed", "expired"] }
     its('route_table_ids')       { should include aws_route_table_first_id }
     its('private_dns_enabled')       { should be_in [true, false] }
     its('tags')              { should include('Name' => aws_vpce_name) }

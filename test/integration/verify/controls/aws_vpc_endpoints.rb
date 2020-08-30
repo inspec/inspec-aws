@@ -18,9 +18,9 @@ control 'aws-vpcendpoints-1.0' do
     its('vpc_endpoint_types')           { should include "Gateway" }
     its('vpc_ids')            { should include aws_vpc_id }
     its('service_names')  { should include aws_vpce_service_name }
-    its('states') { should include "Available" }
+    its('states') { should include "available" }
     its('route_table_ids')       { should include [aws_route_table_first_id] }
-    its('private_dns_enabled')       { should include true }
+    its('private_dns_enabled')       { should include false }
     its('tags')              { should include('Name' => aws_vpce_name) }
   end
 

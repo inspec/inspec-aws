@@ -23,6 +23,23 @@ Ensure that a VPC Endpoint exists.
       it { should exist }
     end
 
+Ensure that a VPC Endpoint is available.
+
+    describe aws_vpc_endpoint('vpce-12345678987654321') do
+      its('state') { should be 'available' }
+    end
+
+Confirm that the route table configured to a VPC Endpoint is as expected.
+
+    describe aws_vpc_endpoint('vpce-12345678987654321') do
+      its('route_table_ids') { should include 'rtb-1234456123456abcde' }
+    end
+
+Confirm that the type of a VPC Endpoint is as expected.
+
+    describe aws_vpc_endpoint('vpce-12345678987654321') do
+      its('vpc_endpoint_type') { should be 'Gateway' }
+    end
 
 ## Parameters
 
@@ -37,7 +54,7 @@ See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vp
 |vpc_endpoint_id       | The ID of the endpoint |
 |vpc_endpoint_type | One of "Interface", "Gateway" |
 |vpc_id           | The ID of the VPC in which the endpoint resides. |
-|state | State of the VPC Endpoint. One of "PendingAcceptance", "Pending", "Available", "Deleting", "Deleted", "Rejected", "Failed", "Expired" |
+|state | State of the VPC Endpoint. One of "pendingacceptance", "pending", "available", "deleting", "deleted", "rejected", "failed", "expired" |
 |route_table_ids | The route table IDs for the Gateway type endpoint. |
 |subnet_ids | The subnet IDs for the Interface type endpoint. |
 |groups | The Security Groups for the Interface type endpoint. |
@@ -50,7 +67,7 @@ See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vp
 
 ##### Ensure a VPC Endpoint is available.
     describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
-      its('state') { should eq 'Available' }
+      its('state') { should eq 'available' }
     end
 
 ##### Ensure that the endpoint is of Gateway type.

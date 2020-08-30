@@ -42,7 +42,7 @@ class AwsVpcEndpointHappyPathTest < Minitest::Test
     mock_vpc_endpoint[:vpc_endpoint_type] = 'Gateway'
     mock_vpc_endpoint[:vpc_id] = 'vpc-abcdef123456abcde'
     mock_vpc_endpoint[:service_name] = 'com.amazonaws.us-west-2.s3'
-    mock_vpc_endpoint[:state] = 'Available'
+    mock_vpc_endpoint[:state] = 'available'
     mock_vpc_endpoint[:route_table_ids] = ['rtb-1234456123456']
     mock_vpc_endpoint[:private_dns_enabled] = true
     data[:data] = { :vpc_endpoints => [mock_vpc_endpoint] }
@@ -52,6 +52,10 @@ class AwsVpcEndpointHappyPathTest < Minitest::Test
 
   def test_vpce_exists
     assert @vpce.exists?
+  end
+
+  def test_vpce_available
+    assert @vpce.available?
   end
 
   def test_vpc_endpoint_id
@@ -71,7 +75,7 @@ class AwsVpcEndpointHappyPathTest < Minitest::Test
   end
 
   def test_vpce_state
-    assert_equal(@vpce.state, 'Available')
+    assert_equal(@vpce.state, 'available')
     assert @vpce.available?
   end
 
