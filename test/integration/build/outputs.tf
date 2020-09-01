@@ -261,4 +261,3 @@ output "aws_ssm_document_name" {
 output "aws_ssm_document_document_type" {
   value = aws_ssm_document.ssm_document_1.0.document_type
 }
-
