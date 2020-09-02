@@ -29,6 +29,11 @@ Ensure that a VPC Endpoint is available.
       its('state') { should be 'available' }
     end
 
+    # Alternative using a matcher
+    describe aws_vpc_endpoint('vpce-12345678987654321') do
+      its('state') { should be_available }
+    end
+
 Confirm that the route table configured to a VPC Endpoint is as expected.
 
     describe aws_vpc_endpoint('vpce-12345678987654321') do
@@ -39,6 +44,11 @@ Confirm that the type of a VPC Endpoint is as expected.
 
     describe aws_vpc_endpoint('vpce-12345678987654321') do
       its('vpc_endpoint_type') { should be 'Gateway' }
+    end
+
+    # Alternative using a matcher
+    describe aws_vpc_endpoint('vpce-12345678987654321') do
+      its('vpc_endpoint_type') { should be_gateway }
     end
 
 ## Parameters
@@ -85,9 +95,9 @@ See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vp
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+The controls will pass if the describe returns at least one result.
 
-The control will pass if the describe returns at least one result.
+#### exist
 
 Use `should_not` to test the entity should not exist.
 
@@ -97,6 +107,45 @@ Use `should_not` to test the entity should not exist.
       
     describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
       it { should_not exist }
+    end
+
+#### available
+
+Checks if the VPC Endpoint is in available state.
+Use `should_not` to test the entity should not exist.
+
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should be_available }
+    end
+      
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should_not be_available }
+    end
+
+#### interface
+
+Checks if the VPC Endpoint type is Interface.
+Use `should_not` to test the entity should not exist.
+
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should be_interface }
+    end
+      
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should_not be_interface }
+    end
+
+#### gateway
+
+Checks if the VPC Endpoint type is Gateway.
+Use `should_not` to test the entity should not exist.
+
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should be_gateway }
+    end
+      
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
+      it { should_not be_gateway }
     end
 
 ## AWS Permissions

@@ -23,7 +23,7 @@ class AwsVpces < AwsResourceBase
              .register_column(:route_table_ids,      field: :route_table_ids)
              .register_column(:subnet_ids,           field: :subnet_ids)
              .register_column(:private_dns_enabled,  field: :private_dns_enabled)
-             .register_column(:tags,                field: :tags)
+             .register_column(:tags,                 field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})

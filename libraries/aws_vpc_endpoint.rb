@@ -24,7 +24,7 @@ class AwsVpce < AwsResourceBase
     @display_name = opts[:vpc_endpoint_id]
     filter = { name: 'vpc-endpoint-id', values: [opts[:vpc_endpoint_id]] }
     catch_aws_errors do
-      resp    = @aws.compute_client.describe_vpc_endpoints({ filters: [filter] })
+      resp = @aws.compute_client.describe_vpc_endpoints({ filters: [filter] })
       @vpce = resp.vpc_endpoints[0].to_h
       create_resource_methods(@vpce)
     end
@@ -43,12 +43,12 @@ class AwsVpce < AwsResourceBase
     @vpce[:private_dns_enabled]
   end
 
-  def type_interface?
+  def interface?
     return false unless exists?
     @vpce[:vpc_endpoint_type] == 'Interface'
   end
 
-  def type_gateway?
+  def gateway?
     return false unless exists?
     @vpce[:vpc_endpoint_type] == 'Gateway'
   end
