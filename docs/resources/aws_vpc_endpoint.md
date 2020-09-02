@@ -109,7 +109,7 @@ Use `should_not` to test the entity should not exist.
       it { should_not exist }
     end
 
-#### available
+#### be_available
 
 Checks if the VPC Endpoint is in available state.
 Use `should_not` to test the entity should not exist.
@@ -122,7 +122,7 @@ Use `should_not` to test the entity should not exist.
       it { should_not be_available }
     end
 
-#### interface
+#### be_interface
 
 Checks if the VPC Endpoint type is Interface.
 Use `should_not` to test the entity should not exist.
@@ -135,7 +135,7 @@ Use `should_not` to test the entity should not exist.
       it { should_not be_interface }
     end
 
-#### gateway
+#### be_gateway
 
 Checks if the VPC Endpoint type is Gateway.
 Use `should_not` to test the entity should not exist.
