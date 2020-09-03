@@ -1,9 +1,14 @@
-<!-- latest_release 1.29.2 -->
+<!-- latest_release 1.29.3 -->
+## [v1.29.3](https://github.com/inspec/inspec-aws/tree/v1.29.3) (2020-09-03)
+
+#### Merged Pull Requests
+- Add resource for AWS VPC Endpoints [#252](https://github.com/inspec/inspec-aws/pull/252) ([anupammajhi](https://github.com/anupammajhi))
+<!-- latest_release -->
+
 ## [v1.29.2](https://github.com/inspec/inspec-aws/tree/v1.29.2) (2020-09-03)
 
 #### Merged Pull Requests
 - Use `--platform aws` in resource pack usage instructions.. [#256](https://github.com/inspec/inspec-aws/pull/256) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v1.29.1](https://github.com/inspec/inspec-aws/tree/v1.29.1) (2020-08-24)
 
