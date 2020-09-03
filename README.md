@@ -89,10 +89,10 @@ Each resource will require specific permissions to perform the operations requir
 Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the AWS resources in your tests do the following:
 
 ```
-$ inspec init profile my-profile
+$ inspec init profile --platform aws my-profile
 ```
 
-Example inspec.yml:
+The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows:
 
 ```
 name: my-profile
