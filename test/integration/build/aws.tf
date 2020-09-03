@@ -23,6 +23,7 @@ variable "aws_bucket_private_name" {}
 variable "aws_bucket_public_name" {}
 variable "aws_bucket_public_objects_name" {}
 variable "aws_cloudformation_stack_name" {}
+variable "aws_cloudformation_stack_ecr_name" {}
 variable "aws_cloud_trail_bucket_name" {}
 variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_trail_log_group" {}
@@ -1628,7 +1629,7 @@ resource "aws_cloudformation_stack" "ecr" {
   "Parameters" : {
     "ECRrepo" : {
       "Type" : "String",
-      "Default" : "aws-inspec-cloudformation_stack_ecr_name_fuevqbvfns",
+      "Default" : "${var.aws_cloudformation_stack_ecr_name}",
       "Description" : "ECR repo created by cloud formation."
     }
   },
