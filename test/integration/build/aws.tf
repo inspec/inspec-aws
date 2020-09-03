@@ -23,6 +23,7 @@ variable "aws_bucket_private_name" {}
 variable "aws_bucket_public_name" {}
 variable "aws_bucket_public_objects_name" {}
 variable "aws_cloudformation_stack_name" {}
+variable "aws_cloudformation_stack_ecr_name" {}
 variable "aws_cloud_trail_bucket_name" {}
 variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_trail_log_group" {}
@@ -996,7 +997,7 @@ resource "aws_cloudtrail" "trail_1" {
   is_multi_region_trail         = true
   enable_log_file_validation    = true
 
-  cloud_watch_logs_group_arn = aws_cloudwatch_log_group.trail_1_log_group[0].arn
+  cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.trail_1_log_group[0].arn}:*" # CloudTrail requires the Log Stream wildcard
   cloud_watch_logs_role_arn  = aws_iam_role.cloud_watch_logs_role[0].arn
   kms_key_id                 = aws_kms_key.trail_1_key[0].arn
 }
@@ -1447,7 +1448,7 @@ resource "aws_subnet" "rds_subnet_1" {
   count             = var.aws_enable_creation
   vpc_id            = aws_vpc.eks_vpc[0].id
   availability_zone = "${var.aws_region}b"
-  cidr_block        = "10.0.50.0/20"
+  cidr_block        = "10.0.48.0/20"
 
   depends_on = [aws_internet_gateway.igw]
 
@@ -1619,31 +1620,24 @@ resource "aws_lb" "aws-alb" {
   }
 }
 
-resource "aws_cloudformation_stack" "network" {
+resource "aws_cloudformation_stack" "ecr" {
   count = var.aws_enable_creation
   name  = var.aws_cloudformation_stack_name
-
-  parameters = {
-    VPCCidr = "10.0.0.0/16"
-  }
 
   template_body = <<STACK
 {
   "Parameters" : {
-    "VPCCidr" : {
+    "ECRrepo" : {
       "Type" : "String",
-      "Default" : "10.0.0.0/16",
-      "Description" : "CIDR block for the VPC"
+      "Default" : "${var.aws_cloudformation_stack_ecr_name}",
+      "Description" : "ECR repo created by cloud formation."
     }
   },
   "Resources" : {
-    "myVpc": {
-      "Type" : "AWS::EC2::VPC",
+    "myEcrRepo": {
+      "Type" : "AWS::ECR::Repository",
       "Properties" : {
-        "CidrBlock" : { "Ref" : "VPCCidr" },
-        "Tags" : [
-          {"Key": "Name", "Value": "Primary_CF_VPC"}
-        ]
+        "RepositoryName" : { "Ref" : "ECRrepo" }
       }
     }
   }

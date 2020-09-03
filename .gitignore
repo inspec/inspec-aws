@@ -21,3 +21,4 @@ local
 inspec-aws.tfvars.*
 vendor
 .bundle
+.rakeTasks
