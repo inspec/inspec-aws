@@ -89,10 +89,10 @@ Each resource will require specific permissions to perform the operations requir
 Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the AWS resources in your tests do the following:
 
 ```
-$ inspec init profile my-profile
+$ inspec init profile --platform aws my-profile
 ```
 
-Example inspec.yml:
+The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows:
 
 ```
 name: my-profile
@@ -214,6 +214,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_transit_gateway](docs/resources/aws_transit_gateway.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
+- [aws_vpc_endpoint](docs/resources/aws_vpc_endpoint.md)
+- [aws_vpc_endpoints](docs/resources/aws_vpc_endpoints.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 
 ## Examples

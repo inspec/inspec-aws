@@ -261,3 +261,11 @@ output "aws_ssm_document_name" {
 output "aws_ssm_document_document_type" {
   value = aws_ssm_document.ssm_document_1.0.document_type
 }
+
+output "aws_vpce_id" {
+  value = aws_vpc_endpoint.vpc_endpoint_1.0.id
+}
+
+output "aws_vpce_service_name" {
+  value = "com.amazonaws.${var.aws_region}.s3"
+}
