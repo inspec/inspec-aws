@@ -188,6 +188,7 @@ module AWSInspecConfig
       aws_vpc_instance_tenancy: 'dedicated',
       aws_vpc_name: 'inspec-aws-vpc',
       aws_vpc_dhcp_options_name: 'inspec-aws-dopt',
+      aws_vpc_endpoint_name: "aws-vpc-endpoint-#{add_random_string}",
       # Simple flag to disable creation of resources (useful when prototyping new ones in isolation)
       aws_enable_creation: 1,
       # Flag to optionally disable creation/controls for configuration recorder (only 1 per AWS region allowed)

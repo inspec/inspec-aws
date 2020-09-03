@@ -144,6 +144,7 @@ variable "aws_vpc_cidr_block" {}
 variable "aws_vpc_instance_tenancy" {}
 variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
+variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 
 provider "aws" {
@@ -201,8 +202,8 @@ resource "aws_subnet" "inspec_subnet" {
 
 
 resource "aws_iam_role" "for_ec2" {
-  count         = var.aws_enable_creation
-  name          = var.aws_iam_role_name_for_ec2
+  count = var.aws_enable_creation
+  name  = var.aws_iam_role_name_for_ec2
 
   assume_role_policy = <<EOF
 {
@@ -222,9 +223,9 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "for_ec2" {
-  count         = var.aws_enable_creation
-  name          = var.aws_iam_profile_name_for_ec2
-  role = aws_iam_role.for_ec2[0].name
+  count = var.aws_enable_creation
+  name  = var.aws_iam_profile_name_for_ec2
+  role  = aws_iam_role.for_ec2[0].name
 }
 
 data "aws_ami" "linux_ubuntu" {
@@ -253,9 +254,9 @@ data "aws_ami" "linux_ubuntu" {
 }
 
 resource "aws_instance" "linux_ubuntu_vm" {
-  count         = var.aws_enable_creation
-  ami           = data.aws_ami.linux_ubuntu.id
-  instance_type = var.aws_vm_size
+  count                = var.aws_enable_creation
+  ami                  = data.aws_ami.linux_ubuntu.id
+  instance_type        = var.aws_vm_size
   iam_instance_profile = aws_iam_instance_profile.for_ec2[0].name
 
   tags = {
@@ -1703,7 +1704,7 @@ resource "aws_rds_cluster_instance" "instance2" {
 }
 
 resource "aws_ec2_transit_gateway" "gateway" {
-  count               = var.aws_enable_creation
+  count       = var.aws_enable_creation
   description = "transitgateway1"
 }
 
@@ -1773,7 +1774,7 @@ locals {
   test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
 resource "aws_lambda_function" "lambda_test" {
-  count             = var.aws_enable_creation
+  count            = var.aws_enable_creation
   filename         = local.test_lambda_zip_file_name
   description      = "Test Lambda"
   function_name    = "test_Lambda"
@@ -1810,7 +1811,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 }
 
 resource "aws_vpc" "for_igw" {
-  count = var.aws_enable_creation
+  count      = var.aws_enable_creation
   cidr_block = "10.0.0.0/16"
 
   tags = {
@@ -1819,7 +1820,7 @@ resource "aws_vpc" "for_igw" {
 }
 
 resource "aws_internet_gateway" "inspec_test" {
-  count = var.aws_enable_creation
+  count  = var.aws_enable_creation
   vpc_id = aws_vpc.for_igw[0].id
 
   tags = {
@@ -1828,8 +1829,8 @@ resource "aws_internet_gateway" "inspec_test" {
 }
 
 resource "aws_subnet" "for_nat_gateway" {
-  count = var.aws_enable_creation
-  vpc_id = aws_vpc.for_igw[0].id
+  count      = var.aws_enable_creation
+  vpc_id     = aws_vpc.for_igw[0].id
   cidr_block = "10.0.1.0/24"
 
   tags = {
@@ -1838,8 +1839,8 @@ resource "aws_subnet" "for_nat_gateway" {
 }
 
 resource "aws_eip" "for_nat_gateway" {
-  count = var.aws_enable_creation
-  vpc = true
+  count            = var.aws_enable_creation
+  vpc              = true
   public_ipv4_pool = "amazon"
 
   tags = {
@@ -1848,10 +1849,10 @@ resource "aws_eip" "for_nat_gateway" {
 }
 
 resource "aws_nat_gateway" "inspec_test" {
-  count = var.aws_enable_creation
+  count         = var.aws_enable_creation
   allocation_id = aws_eip.for_nat_gateway[0].id
-  subnet_id = aws_subnet.for_nat_gateway[0].id
-  depends_on = ["aws_internet_gateway.inspec_test[0]"]
+  subnet_id     = aws_subnet.for_nat_gateway[0].id
+  depends_on    = ["aws_internet_gateway.inspec_test[0]"]
 
   tags = {
     Name = var.aws_nat_gateway_name
@@ -1894,4 +1895,14 @@ resource "aws_ssm_document" "ssm_document_1" {
     }
   }
 DOC
+}
+
+resource "aws_vpc_endpoint" "vpc_endpoint_1" {
+  count           = var.aws_enable_creation
+  vpc_id          = aws_vpc.inspec_vpc[0].id
+  service_name    = "com.amazonaws.${var.aws_region}.s3"
+  route_table_ids = [aws_route_table.route_table_first[0].id]
+  tags = {
+    Name = var.aws_vpc_endpoint_name
+  }
 }
