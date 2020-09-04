@@ -139,7 +139,7 @@ output "aws_cloud_watch_log_group_name" {
 }
 
 output "aws_cloud_trail_cloud_watch_logs_group_arn" {
-  value = aws_cloudwatch_log_group.trail_1_log_group.0.arn
+  value = aws_cloudtrail.trail_1.0.cloud_watch_logs_group_arn
 }
 
 output "aws_cloud_trail_cloud_watch_logs_role_arn" {
