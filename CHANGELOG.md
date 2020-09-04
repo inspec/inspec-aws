@@ -1,9 +1,14 @@
-<!-- latest_release 1.29.4 -->
+<!-- latest_release 1.29.5 -->
+## [v1.29.5](https://github.com/inspec/inspec-aws/tree/v1.29.5) (2020-09-04)
+
+#### Merged Pull Requests
+- Update cloudtrail cloud watch logs group arn [#257](https://github.com/inspec/inspec-aws/pull/257) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.29.4](https://github.com/inspec/inspec-aws/tree/v1.29.4) (2020-09-03)
 
 #### Merged Pull Requests
 - Fix issues failing integration tests [#254](https://github.com/inspec/inspec-aws/pull/254) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.29.3](https://github.com/inspec/inspec-aws/tree/v1.29.3) (2020-09-03)
 
