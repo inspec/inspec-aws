@@ -1900,3 +1900,8 @@ resource "aws_vpc_endpoint" "vpc_endpoint_1" {
     Name = var.aws_vpc_endpoint_name
   }
 }
+
+resource "aws_guardduty_detector" "detector_1" {
+  count  = 1
+  enable = true
+}

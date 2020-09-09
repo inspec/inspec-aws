@@ -156,6 +156,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_elasticache_cluster_node](docs/resources/aws_elasticache_cluster_node.md)
 - [aws_elasticache_clusters](docs/resources/aws_elasticache_clusters.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
+- [aws_guardduty_detector](docs/resources/aws_guardduty_detector.md)
+- [aws_guardduty_detectors](docs/resources/aws_guardduty_detectors.md)
 - [aws_hosted_zone](docs/resources/aws_hosted_zone.md)
 - [aws_hosted_zones](docs/resources/aws_hosted_zones.md)
 - [aws_iam_access_key](docs/resources/aws_iam_access_key.md)
