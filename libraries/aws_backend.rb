@@ -456,12 +456,20 @@ class AwsResourceProbe
     @count = item.length if item.respond_to? :length
   end
 
-  # Allows resources to respond to the include test
-  # This means that things like tags can be checked for and then their value tested
+  # Allows resources to respond to the `include` test
   #
-  # @param [String] key Name of the item to look for in the @item property
-  def include?(key)
-    @item.key?(key)
+  # @param [String, Hash, Symbol] opt => the item to look for in the @item property
+  #   String, Symbol: Key name
+  #   Hash: Key=>Value pair to look for in the @item property
+  def include?(opt)
+    unless opt.is_a?(Symbol) || opt.is_a?(Hash) || opt.is_a?(String)
+      raise ArgumentError, 'Key or Key:Value pair should be provided.'
+    end
+    if opt.is_a?(Hash)
+      raise ArgumentError, 'Only one item can be provided' if opt.keys.size > 1
+      return @item[opt.keys.first] == opt.values.first
+    end
+    @item.key?(opt.to_sym)
   end
 
   # Prevent undefined method error by returning nil.
