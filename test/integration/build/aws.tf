@@ -1902,6 +1902,7 @@ resource "aws_vpc_endpoint" "vpc_endpoint_1" {
 }
 
 resource "aws_guardduty_detector" "detector_1" {
-  count  = 1
+  count  = var.aws_enable_creation
   enable = true
+  finding_publishing_frequency = "SIX_HOURS"
 }

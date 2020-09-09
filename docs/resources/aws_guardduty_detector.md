@@ -13,7 +13,7 @@ Use the `aws_guardduty_detector` InSpec audit resource to test properties of a s
 
 ## Syntax
 
-An `aws_guardduty_detector` resource block declares the tests for a single AWS AMI by image id.
+An `aws_guardduty_detector` resource block declares the tests for a single AWS GuardDuty Detector by detector id.
 
     describe aws_guardduty_detector(detector_id: '12abc34d567e8fa901bc2d34e56789f0') do
       it { should exist }

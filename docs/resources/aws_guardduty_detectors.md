@@ -36,7 +36,7 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 ##### Ensure ID of an AMI GuardDuty Detector
     describe aws_guardduty_detectors do
-      its('detector_ids') { should include ['image-id-43542'] }
+      its('detector_ids') { should include ['detector-id-43542'] }
     end
 
 ## Matchers
@@ -49,11 +49,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_guardduty_detectors.where( <property>: <value>) do
+    describe aws_guardduty_detectors do
       it { should exist }
     end
       
-    describe aws_guardduty_detectors.where( <property>: <value>) do
+    describe aws_guardduty_detectors do
       it { should_not exist }
     end
     

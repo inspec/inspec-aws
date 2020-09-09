@@ -273,3 +273,7 @@ output "aws_vpce_service_name" {
 output "aws_guardduty_detector_id" {
   value = aws_guardduty_detector.detector_1.0.id
 }
+
+output "aws_guardduty_detector_publishing_frequency" {
+  value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
+}

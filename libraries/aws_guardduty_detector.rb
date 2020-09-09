@@ -22,8 +22,7 @@ class AwsGuardDutyDetector < AwsResourceBase
       if resp.first.nil?
         empty_response_warn
       else
-        detector = resp.first.to_h
-        create_resource_methods(detector)
+        create_resource_methods(resp.first.to_h)
       end
     end
   end
