@@ -38,6 +38,15 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
     describe aws_guardduty_detectors do
       its('detector_ids') { should include ['detector-id-43542'] }
     end
+    
+##### Use the InSpec resource to request the IDs of all Detectors, then test in-depth using `aws_guardduty_detector` to ensure all detectors have a six hour publishing frequency.
+
+    aws_guardduty_detectors.detector_ids.first.each do |detector_id|
+      describe aws_guardduty_detector(detector_id: detector_id) do
+        it { should exist }
+        its('finding_publishing_frequency') { should eq "SIX_HOURS" }
+      end
+    end
 
 ## Matchers
 
