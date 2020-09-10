@@ -15,6 +15,10 @@ class AwsGuardDutyDetector < AwsResourceBase
     opts = { detector_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:detector_id])
+
+    unless opts[:detector_id].length.between?(1, 300)
+      raise ArgumentError, "#{@__resource_name__}: 'detector_id' has a minimum character length of 1 and a maximum of 300"
+    end
     @display_name = opts[:detector_id]
 
     catch_aws_errors do
@@ -29,6 +33,14 @@ class AwsGuardDutyDetector < AwsResourceBase
 
   def exists?
     !failed_resource?
+  end
+
+  def enabled?
+    status.upcase == "ENABLED"
+  end
+
+  def disabled?
+    status.upcase == "DISABLED"
   end
 
 end

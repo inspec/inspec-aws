@@ -7,7 +7,7 @@ platform: aws
 
 Train AWS version 0.1.18 or newer is required for this resource.
 
-# aws\_ami
+# aws\_guardduty\_detector
 
 Use the `aws_guardduty_detector` InSpec audit resource to test properties of a single AWS GuardDuty Detector.
 
@@ -33,28 +33,51 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 |Property                       | Description|
 | ---                           | --- |
-|detector\_id                   | The unique ID of the detector that you want to get. |
 |created\_at                    | The timestamp of when the detector was created. |
 |data\_sources                  | An object that describes which data sources are enabled for the detector. |
 |finding\_publishing\_frequency | The publishing frequency of the finding. |
 |service\_role                  | The GuardDuty service role. |
-|status                         | The detector status. |
+|status                         | The detector status. Status should be either ENABLED or DISABLED. |
 |tags                           | The tags of the detector resource. |
 |updated\_at                    | The last-updated timestamp for the detector. |
 
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Image.html)
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetDetector.html)
 
 ## Examples
 
-##### Check if a Dectector exists
+##### Check the publishing frequency of a Detector
     describe aws_guardduty_detector(detector_id: '12abc34d567e8fa901bc2d34e56789f0') do
-      it { should exist }
+      its('finding_publishing_frequency') { should eq "SIX_HOURS" }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
-   
+
+#### be_enabled
+
+The `be_enabled` matcher tests if the status of the detector is enabled.
+
+    describe aws_guardduty_detector(detector_id: 'detector-id-1234') do
+      it { should be_enabled }
+    end
+
+    describe aws_guardduty_detector(detector_id: 'detector-id-6789') do
+      it { should_not be_enabled }
+    end
+    
+#### be_disabled
+
+The `be_disabled` matcher tests if the status of the detector is disabled.
+
+    describe aws_guardduty_detector(detector_id: 'detector-id-6789') do
+      it { should be_disabled }
+    end
+
+    describe aws_guardduty_detector(detector_id: 'detector-id-1234') do
+      it { should_not be_disabled }
+    end
+    
 #### exist
 
 The control will pass if the describe returns at least one result.

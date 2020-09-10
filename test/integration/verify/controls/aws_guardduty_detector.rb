@@ -12,6 +12,8 @@ control 'aws-guardduty-detector-1.0' do
 
   describe aws_guardduty_detector(detector_id: aws_guardduty_detector_id) do
     it { should exist }
+    it { should be_enabled }
+    it { should_not be_disabled }
     its('finding_publishing_frequency') { should eq aws_guardduty_detector_publishing_frequency }
   end
 

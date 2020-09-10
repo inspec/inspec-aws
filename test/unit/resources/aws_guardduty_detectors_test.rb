@@ -11,6 +11,10 @@ class AwsGuardDutyDetectorsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsGuardDutyDetectors.new('rubbish') }
   end
 
+  def test_detectors_non_existing_for_empty_response
+    refute AwsGuardDutyDetectors.new(client_args: { stub_responses: true }).exist?
+  end
+
 end
 
 class AwsGuardDutyDetectorsSuccessPathTest < Minitest::Test

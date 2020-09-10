@@ -30,7 +30,7 @@ class AwsGuardDutyDetectors < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.guardduty_client.list_detectors(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
+      return [] if !api_response || api_response.empty? || api_response.detector_ids.empty?
       detector_rows += [{ detector_ids: api_response.detector_ids }]
       break unless api_response.next_token
       pagination_options = { next_token: api_response.next_token }

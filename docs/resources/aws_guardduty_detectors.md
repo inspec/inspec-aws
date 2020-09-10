@@ -30,11 +30,11 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 |Property                 | Description|
 | ---                     | --- |
-|detector_ids             | The architecture of the image. |
+|detector_ids             | A list of detector IDs. |
 
 ## Examples
 
-##### Ensure ID of an AMI GuardDuty Detector
+##### Ensure ID of a GuardDuty Detector
     describe aws_guardduty_detectors do
       its('detector_ids') { should include ['detector-id-43542'] }
     end
