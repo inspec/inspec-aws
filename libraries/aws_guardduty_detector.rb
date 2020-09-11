@@ -36,11 +36,10 @@ class AwsGuardDutyDetector < AwsResourceBase
   end
 
   def enabled?
-    status.upcase == "ENABLED"
+    status.upcase == 'ENABLED'
   end
 
   def disabled?
-    status.upcase == "DISABLED"
+    status.upcase == 'DISABLED'
   end
-
 end
