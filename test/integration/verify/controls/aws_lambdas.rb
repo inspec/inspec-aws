@@ -7,6 +7,6 @@ control "Check that any lambdas are correctly configured" do
   desc    "Ensure that our lambdas are correctly deployed"
 
   describe aws_lambdas() do
-    its ('count') { should > 1}
+    its('count') { should >= 1}
   end
 end
