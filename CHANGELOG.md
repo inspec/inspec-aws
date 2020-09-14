@@ -1,9 +1,14 @@
-<!-- latest_release 1.29.7 -->
+<!-- latest_release 1.29.8 -->
+## [v1.29.8](https://github.com/inspec/inspec-aws/tree/v1.29.8) (2020-09-14)
+
+#### Merged Pull Requests
+- Update aws_lambdas.count in integration test [#262](https://github.com/inspec/inspec-aws/pull/262) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.29.7](https://github.com/inspec/inspec-aws/tree/v1.29.7) (2020-09-09)
 
 #### Merged Pull Requests
 - Fix markdown heading in ebs_volumes doc [#261](https://github.com/inspec/inspec-aws/pull/261) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.29.6](https://github.com/inspec/inspec-aws/tree/v1.29.6) (2020-09-09)
 
