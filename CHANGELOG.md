@@ -1,9 +1,24 @@
-<!-- latest_release 1.29.6 -->
+<!-- latest_release 1.29.9 -->
+## [v1.29.9](https://github.com/inspec/inspec-aws/tree/v1.29.9) (2020-09-15)
+
+#### Merged Pull Requests
+- Remove duplicate terraform plan creation at setup_integration_tests [#263](https://github.com/inspec/inspec-aws/pull/263) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
+## [v1.29.8](https://github.com/inspec/inspec-aws/tree/v1.29.8) (2020-09-14)
+
+#### Merged Pull Requests
+- Update aws_lambdas.count in integration test [#262](https://github.com/inspec/inspec-aws/pull/262) ([omerdemirok](https://github.com/omerdemirok))
+
+## [v1.29.7](https://github.com/inspec/inspec-aws/tree/v1.29.7) (2020-09-09)
+
+#### Merged Pull Requests
+- Fix markdown heading in ebs_volumes doc [#261](https://github.com/inspec/inspec-aws/pull/261) ([rmoles](https://github.com/rmoles))
+
 ## [v1.29.6](https://github.com/inspec/inspec-aws/tree/v1.29.6) (2020-09-09)
 
 #### Merged Pull Requests
 - Improve `include?` method in AwsResourceProbe to enable key:pair lookups [#259](https://github.com/inspec/inspec-aws/pull/259) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.29.5](https://github.com/inspec/inspec-aws/tree/v1.29.5) (2020-09-04)
 

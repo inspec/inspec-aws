@@ -46,9 +46,9 @@ namespace :test do
     sh("bundle exec inspec check #{CONTROLS_DIR}")
   end
 
-  task :setup_integration_tests => ['tf:tf_dir', 'tf:plan_integration_tests', 'tf:setup_integration_tests']
+  task :setup_integration_tests => ['tf:setup_integration_tests']
 
-  task :plan_integration_tests => ['tf:tf_dir', 'tf:init_workspace', 'tf:plan_integration_tests']
+  task :plan_integration_tests => ['tf:plan_integration_tests']
 
   task :run_integration_tests do
     puts '----> Running InSpec tests'
@@ -61,7 +61,7 @@ namespace :test do
     sh(cmd)
   end
 
-  task :cleanup_integration_tests => ['tf:tf_dir', 'tf:cleanup_integration_tests']
+  task :cleanup_integration_tests => ['tf:cleanup_integration_tests']
 
   desc 'Perform Integration Tests'
   task integration: ['tf:setup_integration_tests'] do
@@ -97,7 +97,10 @@ namespace :tf do
     sh(cmd)
   end
 
-  task setup_integration_tests: [:tf_dir, :plan_integration_tests] do
+  task setup_integration_tests: [:tf_dir] do
+    unless File.exist?(TF_PLAN_FILE)
+      Rake::Task['test:plan_integration_tests'].execute
+    end
     puts '----> Applying the plan'
     # Apply the plan on AWS
     cmd = format('terraform apply %s', TF_PLAN_FILE)
