@@ -22,6 +22,7 @@ require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-route53'
 require 'aws-sdk-s3'
+require 'aws-sdk-shield'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
@@ -146,6 +147,10 @@ class AwsConnection
 
   def service_client
     aws_client(Aws::AutoScaling::Client)
+  end
+
+  def shield_client
+    aws_client(Aws::Shield::Client)
   end
 
   def sqs_client
