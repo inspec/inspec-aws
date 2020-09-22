@@ -65,19 +65,7 @@ The `be_enabled` matcher tests if the status of the detector is enabled.
     describe aws_guardduty_detector(detector_id: 'detector-id-6789') do
       it { should_not be_enabled }
     end
-    
-#### be_disabled
 
-The `be_disabled` matcher tests if the status of the detector is disabled.
-
-    describe aws_guardduty_detector(detector_id: 'detector-id-6789') do
-      it { should be_disabled }
-    end
-
-    describe aws_guardduty_detector(detector_id: 'detector-id-1234') do
-      it { should_not be_disabled }
-    end
-    
 #### exist
 
 The control will pass if the describe returns at least one result.

@@ -34,7 +34,7 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 ## Examples
 
-##### Ensure ID of a GuardDuty Detector
+##### Ensure GuardDuty Detector ID exists
     describe aws_guardduty_detectors do
       its('detector_ids') { should include ['detector-id-43542'] }
     end
