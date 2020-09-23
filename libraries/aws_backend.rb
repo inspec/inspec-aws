@@ -15,6 +15,7 @@ require 'aws-sdk-eks'
 require 'aws-sdk-elasticache'
 require 'aws-sdk-elasticloadbalancing'
 require 'aws-sdk-elasticloadbalancingv2'
+require 'aws-sdk-guardduty'
 require 'aws-sdk-iam'
 require 'aws-sdk-kms'
 require 'aws-sdk-lambda'
@@ -118,6 +119,10 @@ class AwsConnection
 
   def elb_client_v2
     aws_client(Aws::ElasticLoadBalancingV2::Client)
+  end
+
+  def guardduty_client
+    aws_client(Aws::GuardDuty::Client)
   end
 
   def iam_client
