@@ -1,7 +1,6 @@
 require 'helper'
 require 'aws_dynamodb_table'
 require 'aws-sdk-core'
-require_relative 'mock/aws_dynamodb_table_mock'
 
 class AwsDynamodbTableConstructorTest < Minitest::Test
 
@@ -13,6 +12,10 @@ class AwsDynamodbTableConstructorTest < Minitest::Test
     AwsDynamoDbTable.new(table_name: 'valid_table_name', client_args: { stub_responses: true })
   end
 
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AwsDynamoDbTable.new(table_name: '', client_args: { stub_responses: true }) }
+  end
+
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsDynamoDbTable.new(rubbish: 9) }
   end
@@ -22,11 +25,7 @@ class AwsDynamodbTableConstructorTest < Minitest::Test
   end
 
   def test_table_non_existing
-    not_existing = {}
-    not_existing[:method] = :describe_table
-    not_existing[:data] = Aws::DynamoDB::Errors::ResourceNotFoundException.new(nil, nil)
-    not_existing[:client] = Aws::DynamoDB::Client
-    refute AwsDynamoDbTable.new(table_name: 'table_that_doesnt_exist', client_args: { stub_responses: true }, stub_data: [not_existing]).exists?
+    refute AwsDynamoDbTable.new(table_name: 'table-1234abcd', client_args: { stub_responses: true }).exists?
   end
 
 end
@@ -34,57 +33,64 @@ end
 class AwsDynamodbTableTest < Minitest::Test
 
   def setup
-    # Given
-    @mock = AwsDynamoDbTableMock.new
-    @mock_config = @mock.configuration
-
-    # When
-    @config = AwsDynamoDbTable.new(table_name: @mock_config[:table_name],
-                                   client_args: { stub_responses: true },
-                                   stub_data: @mock.stub_data)
+    data = {}
+    data[:method] = :describe_table
+    mock_table = {}
+    mock_table[:attribute_definitions] = [{ attribute_name: 'Artist',
+                                            attribute_type: 'S' }]
+    mock_table[:table_name] = 'default'
+    mock_table[:key_schema] = [{ attribute_name: 'Artist',
+                                 key_type: 'HASH' }]
+    mock_table[:table_status] = 'Complete'
+    mock_table[:creation_date_time] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
+    mock_table[:provisioned_throughput] = { number_of_decreases_today: 1,
+                                            read_capacity_units: 2,
+                                            write_capacity_units: 3 }
+    mock_table[:table_size_bytes] = 10
+    mock_table[:item_count] = 1
+    mock_table[:table_arn] = '1234'
+    mock_table[:table_id] = '1442323'
+    mock_table[:sse_description] = { status: 'ENABLED',
+                                     sse_type: 'KMS',
+                                     kms_master_key_arn: "arn:kms:us-west-2:243254392u3-32r324" }
+    data[:data] = { table: mock_table }
+    data[:client] = Aws::DynamoDB::Client
+    @table = AwsDynamoDbTable.new(table_name: 'default', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_table_exists
-    assert @config.exists?
+    assert @table.exists?
   end
 
   def test_table_name
-    assert_equal(@config.table_name, @mock_config[:table_name])
+    assert_equal(@table.table_name, 'default')
   end
 
   def test_table_status
-    assert_equal(@config.table_status, @mock_config[:table_status])
+    assert_equal(@table.table_status, 'Complete')
   end
 
   def test_table_creation_date
-    assert_equal(@config.creation_date, @mock_config[:creation_date_time].strftime('%m/%d/%Y'))
+    assert_equal(@table.creation_date_time, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 
   def test_table_number_of_decreases_today
-    assert_equal(@config.number_of_decreases_today, @mock_config[:provisioned_throughput][:number_of_decreases_today])
+    assert_equal(@table.provisioned_throughput.number_of_decreases_today, 1)
   end
 
   def test_table_write_capacity_units
-    assert_equal(@config.write_capacity_units, @mock_config[:provisioned_throughput][:write_capacity_units])
+    assert_equal(@table.provisioned_throughput.write_capacity_units, 3)
   end
 
   def test_table_read_capacity_units
-    assert_equal(@config.read_capacity_units, @mock_config[:provisioned_throughput][:read_capacity_units])
+    assert_equal(@table.provisioned_throughput.read_capacity_units, 2)
   end
 
   def test_table_item_count
-    assert_equal(@config.item_count, @mock_config[:item_count])
+    assert_equal(@table.item_count, 1)
   end
 
   def test_table_table_arn
-    assert_equal(@config.table_arn, @mock_config[:table_arn])
-  end
-
-  def test_table_attributes
-    assert_equal(@config.attributes, @mock_config[:attribute_definitions])
-  end
-
-  def test_table_key_schema
-    assert_equal(@config.key_schema, @mock_config[:key_schema])
+    assert_equal(@table.table_arn, '1234')
   end
 end

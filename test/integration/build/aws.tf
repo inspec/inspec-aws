@@ -1563,6 +1563,10 @@ resource "aws_dynamodb_table" "aws-dynamodb-table" {
   hash_key       = "UserId"
   range_key      = "Title"
 
+  server_side_encryption {
+    enabled = true
+  }
+
   attribute {
     name = "UserId"
     type = "S"

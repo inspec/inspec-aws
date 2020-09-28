@@ -190,6 +190,10 @@ output "aws_dynamodb_table_arn" {
   value = aws_dynamodb_table.aws-dynamodb-table.0.arn
 }
 
+output "aws_dynamodb_table_name" {
+  value = aws_dynamodb_table.aws-dynamodb-table.0.name
+}
+
 output "aws_alb_arn" {
   value = aws_lb.aws-alb.0.arn
 }
