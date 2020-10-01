@@ -13,7 +13,8 @@ class AwsDynamoDbTable < AwsResourceBase
   "
 
   attr_reader :table_name, :table_status, :creation_date, :number_of_decreases_today,
-              :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema, :global_secondary_indexes
+              :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema, :global_secondary_indexes,
+              :sse_description
 
   def initialize(opts = {})
     opts = { table_name: opts } if opts.is_a?(String)
@@ -36,6 +37,7 @@ class AwsDynamoDbTable < AwsResourceBase
       @write_capacity_units      = @dynamodb_table[:provisioned_throughput][:write_capacity_units]
       @read_capacity_units       = @dynamodb_table[:provisioned_throughput][:read_capacity_units]
       @item_count                = @dynamodb_table[:item_count]
+      @sse_description           = @dynamodb_table[:sse_description]
       @attributes                = []
       @key_schema                = []
       @global_secondary_indexes  = []
@@ -62,6 +64,10 @@ class AwsDynamoDbTable < AwsResourceBase
         end
       end
     end
+  end
+
+  def encrypted?
+    @dynamodb_table.dig(:sse_description, :status)&.upcase == 'ENABLED' || false
   end
 
   def exists?

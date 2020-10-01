@@ -16,7 +16,10 @@ class AwsDynamoDbTableMock < AwsBaseResourceMock
                                             {attribute_name: @aws.any_string, attribute_type:'S'},
                                             {attribute_name: @aws.any_string, attribute_type:'B'}],
                    key_schema:             [{attribute_name:@aws.any_string, :key_type =>'HASH'},
-                                            {attribute_name:@aws.any_string, :key_type =>'RANGE'}]
+                                            {attribute_name:@aws.any_string, :key_type =>'RANGE'}],
+                   sse_description: { status: 'ENABLED',
+                                      sse_type: 'KMS',
+                                      kms_master_key_arn: "arn:kms:us-west-2:243254392u3-32r324" }
     }
   end
 

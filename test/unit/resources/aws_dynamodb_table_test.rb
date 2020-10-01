@@ -13,6 +13,10 @@ class AwsDynamodbTableConstructorTest < Minitest::Test
     AwsDynamoDbTable.new(table_name: 'valid_table_name', client_args: { stub_responses: true })
   end
 
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AwsDynamoDbTable.new(table_name: '', client_args: { stub_responses: true }) }
+  end
+
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsDynamoDbTable.new(rubbish: 9) }
   end
@@ -86,5 +90,9 @@ class AwsDynamodbTableTest < Minitest::Test
 
   def test_table_key_schema
     assert_equal(@config.key_schema, @mock_config[:key_schema])
+  end
+
+  def test_table_encryption
+    assert_equal(@config.encrypted?, true)
   end
 end

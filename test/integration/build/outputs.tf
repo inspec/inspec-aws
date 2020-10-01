@@ -190,6 +190,10 @@ output "aws_dynamodb_table_arn" {
   value = aws_dynamodb_table.aws-dynamodb-table.0.arn
 }
 
+output "aws_dynamodb_table_name" {
+  value = aws_dynamodb_table.aws-dynamodb-table.0.name
+}
+
 output "aws_alb_arn" {
   value = aws_lb.aws-alb.0.arn
 }
@@ -268,4 +272,12 @@ output "aws_vpce_id" {
 
 output "aws_vpce_service_name" {
   value = "com.amazonaws.${var.aws_region}.s3"
+}
+
+output "aws_guardduty_detector_id" {
+  value = aws_guardduty_detector.detector_1.0.id
+}
+
+output "aws_guardduty_detector_publishing_frequency" {
+  value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
 }

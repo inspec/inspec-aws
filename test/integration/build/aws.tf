@@ -1563,6 +1563,10 @@ resource "aws_dynamodb_table" "aws-dynamodb-table" {
   hash_key       = "UserId"
   range_key      = "Title"
 
+  server_side_encryption {
+    enabled = true
+  }
+
   attribute {
     name = "UserId"
     type = "S"
@@ -1899,4 +1903,10 @@ resource "aws_vpc_endpoint" "vpc_endpoint_1" {
   tags = {
     Name = var.aws_vpc_endpoint_name
   }
+}
+
+resource "aws_guardduty_detector" "detector_1" {
+  count  = var.aws_enable_creation
+  enable = true
+  finding_publishing_frequency = "SIX_HOURS"
 }
