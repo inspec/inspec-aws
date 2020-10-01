@@ -66,9 +66,20 @@ The table name used by this DynamoDb Table. This must be passed as a `table_name
       end
     end
 
+##### Ensure DynamoDb Table is encrypted
+    describe aws_dynamodb_table(table_name: 'table-name') do
+       it { should be_encrypted}
+    end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+#### be\_encrypted
+
+The `be_encrypted` matcher tests if the DynamoDB Table is encrypted.
+
+    it { should be_encrypted }
 
 #### exist
 
