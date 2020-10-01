@@ -5,7 +5,8 @@ platform: aws
 
 # aws\_shield\_subscription
 
-Use the `aws_shield_subscription` InSpec audit resource to test properties of a shield subscription.
+Use the `aws_shield_subscription` InSpec audit resource to test properties of a shield subscription. 
+This resource is to be used for testing the AWS Shield Advanced subscription for an account.
 
 ## Syntax
 
@@ -29,7 +30,7 @@ See also the [AWS documentation on Shield Subscriptions](https://docs.aws.amazon
 | ---                          | --- |
 |auto\_renew                   | If ENABLED, the subscription will be automatically renewed at the end of the existing subscription period. AutoRenew can be either ENABLED or DISABLED. |
 |end\_time                     | The date and time your subscription will end. |
-|limits                        | Specifies how many protections of a given type you can create. |
+|limits                        | Specifies how many protections of a given type you can create. This is an array containing the Type of protection and the maximum number of protections that can be created for the specified Type. |
 |proactive\_engagement\_status | If ENABLED, the DDoS Response Team (DRT) will use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support. <br/> If PENDING, you have requested proactive engagement and the request is pending. The status changes to ENABLED when your request is fully processed. <br/> If DISABLED, the DRT will not proactively notify contacts about escalations or to initiate proactive customer support. |
 |start\_time                   | The start time of the subscription, in Unix time in seconds. |
 |time\_commitment\_in\_seconds | The length, in seconds, of the AWS Shield Advanced subscription for the account. |
@@ -52,4 +53,4 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `shield:DescribeSubscription` action with Effect set to Allow.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Shield](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsshield.html).
