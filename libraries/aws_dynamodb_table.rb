@@ -51,7 +51,7 @@ class AwsDynamoDbTable < AwsResourceBase
                            'key_type':       key.key_type })
       }
 
-      if c[:global_secondary_indexes]
+      if @dynamodb_table[:global_secondary_indexes]
         gsi = { global_secondary_indexes: @dynamodb_table[:global_secondary_indexes] }
         create_resource_methods(gsi)
         global_secondary_indexes.each do |idx|
@@ -67,8 +67,7 @@ class AwsDynamoDbTable < AwsResourceBase
   end
 
   def encrypted?
-    return false unless @dynamodb_table[:sse_description]
-    @dynamodb_table[:sse_description][:status].upcase == 'ENABLED'
+    @dynamodb_table.dig(:sse_description, :status)&.upcase == 'ENABLED' || false
   end
 
   def exists?
