@@ -36,12 +36,11 @@ class AwsVpnConnections < AwsResourceBase
     end
     return [] if !@vpn_connections || @vpn_connections.empty?
     @vpn_connections.each do |vpn_connection|
-      vpn_connection_rows+=[{ 
-                   vpn_connection_id: vpn_connection[:vpn_connection_id],
-                   vpn_gateway_id: vpn_connection[:vpn_gateway_id],
-                   tunnel_options: vpn_connection[:options][:tunnel_options],
-                   state: vpn_connection[:state],
-                   tags: map_tags(vpn_connection[:tags]) }]
+      vpn_connection_rows+=[{ vpn_connection_id: vpn_connection[:vpn_connection_id],
+                    vpn_gateway_id: vpn_connection[:vpn_gateway_id],
+                    tunnel_options: vpn_connection[:options][:tunnel_options],
+                    state: vpn_connection[:state],
+                    tags: map_tags(vpn_connection[:tags]) }]
     end
     @table = vpn_connection_rows
   end
