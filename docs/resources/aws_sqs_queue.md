@@ -33,8 +33,10 @@ See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQue
 |message\_retention\_period               | An integer indicating the maximum retention period for a message in seconds |
 |delay\_seconds                           | An integer indicating the delay in seconds for the queue |
 |receive\_message\_wait\_timeout\_seconds | An integer indicating the number of seconds an attempt to recieve a message will wait before returning |
-|content\_based\_deduplication            | A boolean value indicate if content based dedcuplication is enabled or not |
+|content\_based\_deduplication            | A boolean value indicate if content based deduplication is enabled or not |
 |redrive\_policy                          | A string indicating the redrive policy |
+|kms\_master\_id                          | Provides the ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. |
+|kms\_data\_key\_reuse\_period\_seconds   | Returns the length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. |
 
 ## Examples
 

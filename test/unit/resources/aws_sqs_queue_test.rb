@@ -75,4 +75,12 @@ class AwsSqsQueueTest < Minitest::Test
     assert_equal(@queue.redrive_policy, @mock_queue[:attributes]['RedrivePolicy'])
   end
 
+  def test_sqs_queue_kms_id
+    assert_equal(@queue.kms_master_key_id, @mock_queue[:attributes]['KmsMasterKeyId'])
+  end
+
+  def test_sqs_queue_kms_key_reuse_period
+    assert_equal(@queue.kms_data_key_reuse_period_seconds, @mock_queue[:attributes]['KmsDataKeyReusePeriodSeconds'])
+  end
+
 end
