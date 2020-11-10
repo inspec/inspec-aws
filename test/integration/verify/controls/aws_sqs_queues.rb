@@ -19,4 +19,20 @@ control 'aws-sqs-queues-1.0' do
     it           { should exist }
     its ('arns') { should include arn}
   end
+
+  aws_regions.region_names.each do |region|
+    aws_sqs_queues(aws_region: region).queue_urls.each do |queue_url|
+      describe.one do
+        describe aws_sqs_queue(aws_region: region, queue_url: queue_url) do
+          it { should exist }
+          its('kms_master_key_id') { should_not be_nil }
+        end
+
+        describe aws_sqs_queue(aws_region: region, queue_url: queue_url) do
+          it { should exist }
+          its('kms_master_key_id') { should be_nil }
+        end
+      end
+    end
+  end
 end

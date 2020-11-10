@@ -11,7 +11,9 @@ class AwsSqsQueueMock < AwsBaseResourceMock
                    "MessageRetentionPeriod"=> @aws.any_int.to_s,
                    "DelaySeconds"=> @aws.any_int.to_s,
                    "ReceiveMessageWaitTimeoutSeconds"=> @aws.any_int.to_s,
-                   "RedrivePolicy"=> "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-1:123:my_arn\",\"maxReceiveCount\":4}"}
+                   "RedrivePolicy"=> "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-1:123:my_arn\",\"maxReceiveCount\":4}",
+                   "KmsMasterKeyId"=> "alias/aws/sqs",
+                   "KmsDataKeyReusePeriodSeconds"=> @aws.any_int.to_s}
     @queue[:attributes] = @attributes
   end
 
