@@ -106,9 +106,7 @@ class AwsS3Bucket < AwsResourceBase
           statement.each_key { |k| lowercase_hash[k.downcase] = statement[k] }
           policy_list += [OpenStruct.new(lowercase_hash)]
         end
-      rescue Aws::S3::Errors::NoSuchBucketPolicy
-        return []
-      rescue Aws::S3::Errors::NoSuchBucket
+      rescue Aws::S3::Errors::NoSuchBucketPolicy, Aws::S3::Errors::NoSuchBucket
         return []
       end
     end
