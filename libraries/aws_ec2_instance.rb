@@ -120,7 +120,7 @@ class AwsEc2Instance < AwsResourceBase
 
   # Generate a matcher for each state
   %w{pending running shutting-down terminated stopping stopped unknown}.each do |state_name|
-    define_method state_name.tr('-', '_') + '?' do
+    define_method "#{state_name.tr('-', '_')}?" do
       state == state_name
     end
   end

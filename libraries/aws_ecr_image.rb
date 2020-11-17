@@ -32,15 +32,9 @@ class AwsEcrImage < AwsResourceBase
 
     # Validate image identifiers:
     # https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageIdentifier.html
-    if opts[:image_tag]
-      raise ArgumentError, "#{@__resource_name__}: `image_tag` must be maximum 300 characters long." \
-      unless opts[:image_tag].length.between?(1, 300)
-    end
+    raise ArgumentError, "#{@__resource_name__}: `image_tag` must be maximum 300 characters long." if opts[:image_tag] && !opts[:image_tag].length.between?(1, 300)
 
-    if opts[:image_digest]
-      raise ArgumentError, "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'"\
-      unless /[a-zA-Z0-9\-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
-    end
+    raise ArgumentError, "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'" if opts[:image_digest] && !/[a-zA-Z0-9\-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
 
     query_params = {
       repository_name: opts[:repository_name],

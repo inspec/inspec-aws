@@ -180,6 +180,7 @@ class AwsResourceBase < Inspec.resource(1)
   attr_reader :opts, :aws
 
   def initialize(opts)
+    super
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
     client_args = { client_args: {} }
@@ -233,7 +234,7 @@ class AwsResourceBase < Inspec.resource(1)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
-      return true if a.class == Integer
+      return true if a.instance_of?(Integer)
       !a.empty?
     end
     true
@@ -267,9 +268,10 @@ class AwsResourceBase < Inspec.resource(1)
     if is_permissions_error(e)
       advice = ''
       error_type = e.class.to_s.split('::').last
-      if error_type == 'InvalidAccessKeyId'
+      case error_type
+      when 'InvalidAccessKeyId'
         advice = 'Please ensure your AWS Access Key ID is set correctly.'
-      elsif error_type == 'AccessDenied'
+      when 'AccessDenied'
         advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
                  'and ensure your Service Principal has these permissions set.'
       end
@@ -316,9 +318,12 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   # This is to make RuboCop happy.
+  # Disbling Useless method definition detection as there is an issue with rubocop
+  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
+  # rubocop:enable Lint/UselessMethodDefinition
 
   private
 
@@ -490,9 +495,12 @@ class AwsResourceProbe
   end
 
   # This is to make RuboCop happy.
+  # Disbling Useless method definition detection as there is an issue with rubocop
+  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
+  # rubocop:enable Lint/UselessMethodDefinition
 
   def to_s
     "Property is missing! The following are available: #{item.keys.map(&:to_s)}"
@@ -527,9 +535,12 @@ class NullResponse
   end
 
   # This is to make RuboCop happy.
+  # Disbling Useless method definition detection as there is an issue with rubocop
+  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
+  # rubocop:enable Lint/UselessMethodDefinition
 
   def to_s
     nil
