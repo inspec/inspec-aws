@@ -1,9 +1,14 @@
-<!-- latest_release 1.31.1 -->
+<!-- latest_release 1.31.2 -->
+## [v1.31.2](https://github.com/inspec/inspec-aws/tree/v1.31.2) (2020-11-17)
+
+#### Merged Pull Requests
+- Fix rubocop failures [#284](https://github.com/inspec/inspec-aws/pull/284) ([rmoles](https://github.com/rmoles))
+<!-- latest_release -->
+
 ## [v1.31.1](https://github.com/inspec/inspec-aws/tree/v1.31.1) (2020-11-10)
 
 #### Merged Pull Requests
 - AWS SQS Queue [#274](https://github.com/inspec/inspec-aws/pull/274) ([samscottchef](https://github.com/samscottchef))
-<!-- latest_release -->
 
 ## [v1.31.0](https://github.com/inspec/inspec-aws/tree/v1.31.0) (2020-10-01)
 
