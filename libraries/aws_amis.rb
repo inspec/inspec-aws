@@ -63,40 +63,37 @@ class AwsAmis < AwsResourceBase
       raise ArgumentError, 'Either all_amis or filter option must be provided.'
     end
 
-    loop do
-      catch_aws_errors do
-        @api_response = filter.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images({ filters: filter })
-      end
-      return [] if !api_response || api_response.empty?
-      api_response.images.each do |image|
-        image_rows += [{ architecture:          image.architecture,
-                         creation_date:         image.creation_date,
-                         image_id:              image.image_id,
-                         image_location:        image.image_location,
-                         image_type:            image.image_type,
-                         public:                image.public,
-                         kernel_id:             image.kernel_id,
-                         owner_id:              image.owner_id,
-                         platform:              image.platform,
-                         platform_details:      image.platform_details,
-                         usage_operation:       image.usage_operation,
-                         product_codes:         image.product_codes,
-                         ramdisk_id:            image.ramdisk_id,
-                         state:                 image.state,
-                         block_device_mappings: image.block_device_mappings,
-                         description:           image.description,
-                         ena_support:           image.ena_support,
-                         hypervisor:            image.hypervisor,
-                         image_owner_alias:     image.image_owner_alias,
-                         name:                  image.name,
-                         root_device_name:      image.root_device_name,
-                         root_device_type:      image.root_device_type,
-                         sriov_net_support:     image.sriov_net_support,
-                         state_reason:          image.state_reason,
-                         tags:                  image.tags,
-                         virtualization_type:   image.virtualization_type }]
-      end
-      break
+    catch_aws_errors do
+      @api_response = filter.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images({ filters: filter })
+    end
+    return [] if !api_response || api_response.empty?
+    api_response.images.each do |image|
+      image_rows += [{ architecture:          image.architecture,
+                       creation_date:         image.creation_date,
+                       image_id:              image.image_id,
+                       image_location:        image.image_location,
+                       image_type:            image.image_type,
+                       public:                image.public,
+                       kernel_id:             image.kernel_id,
+                       owner_id:              image.owner_id,
+                       platform:              image.platform,
+                       platform_details:      image.platform_details,
+                       usage_operation:       image.usage_operation,
+                       product_codes:         image.product_codes,
+                       ramdisk_id:            image.ramdisk_id,
+                       state:                 image.state,
+                       block_device_mappings: image.block_device_mappings,
+                       description:           image.description,
+                       ena_support:           image.ena_support,
+                       hypervisor:            image.hypervisor,
+                       image_owner_alias:     image.image_owner_alias,
+                       name:                  image.name,
+                       root_device_name:      image.root_device_name,
+                       root_device_type:      image.root_device_type,
+                       sriov_net_support:     image.sriov_net_support,
+                       state_reason:          image.state_reason,
+                       tags:                  image.tags,
+                       virtualization_type:   image.virtualization_type }]
     end
     @table = image_rows
   end
