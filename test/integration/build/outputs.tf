@@ -182,6 +182,10 @@ output "aws_sqs_queue_arn" {
   value = aws_sqs_queue.aws_sqs_queue_1.0.arn
 }
 
+output "aws_sqs_queue_kms_master_key_id" {
+  value = aws_sqs_queue.aws_sqs_queue_1.0.kms_master_key_id
+}
+
 output "aws_iam_access_key_id" {
   value = aws_iam_access_key.iam_user_access_key.0.id
 }

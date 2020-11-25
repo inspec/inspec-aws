@@ -1,6 +1,8 @@
 title 'Test single AWS Queue'
 
 arn = attribute(:aws_sqs_queue_arn, default: '', description: 'The AWS SQS Queue arn.')
+kms_master_key_id = attribute(:aws_sqs_queue_kms_master_key_id, default: '', description: 'The AWS SQS Queue kms master key id.')
+
 if arn.empty?
   aws_sqs_queue_url = ""
 else
@@ -16,7 +18,8 @@ control 'aws-sqs-queue-1.0' do
   title 'Ensure AWS SQS Queue has the correct properties.'
 
   describe aws_sqs_queue(queue_url: aws_sqs_queue_url) do
-    it          { should exist }
-    its ('arn') { should eq arn}
+    it         { should exist }
+    its('arn') { should eq arn }
+    its('kms_master_key_id') { should eq kms_master_key_id }
   end
 end

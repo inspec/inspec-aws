@@ -80,8 +80,8 @@ class AwsKmsKey < AwsResourceBase
       response = @aws.kms_client.list_aliases
       if response || !response.empty?
         response.aliases.each do |alias_entry|
-          if alias_entry['alias_name'] == @alias
-            return alias_entry['target_key_id'] if alias_entry['target_key_id']
+          if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
+            return alias_entry['target_key_id']
           end
         end
       end
