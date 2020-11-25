@@ -23,23 +23,26 @@ See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
-|vpn\_connection\_id    | This property provides all the IDs of the VPN Connections |
-|vpn\_gateway\_id       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections |
-|tunnel\_options        | This property provides the tunnel options of the VPN Connections. |
-|state                  | This property provides the current state of the VPN Connections |
+|Property                | Description|
+| ---                    | --- |
+|vpn\_connection\_ids    | This property provides all the IDs of the VPN Connections. |
+|vpn\_gateway\_ids       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. |
+|tunnel\_options         | This property provides the tunnel options of the VPN Connections. |
+|states                  | This property provides the current state of the VPN Connections. |
+|types                   | This property provides the current types of the VPN Connections. |
+|tags                    | This property provids the current tags of the VPN Connections. |
 
 ## Examples
 
 ##### Ensure that VPN connections are available.
     describe aws_vpn_connections do
-      its('state') { should eq 'available' }
+      its('state.uniq') { should eq 'available' }
     end
 
 ##### Check tags    
-    describe aws_vpn_connections do
-      its('tags') { should include(:Name => 'vpn-connection-example-123')}
+    describe aws_vpn_connections.where { tags["Name"] == "vpn-connection-example-123" } do
+      it { should exist }
+      its('count') { should be 3 }
     end
 
 ## Matchers
