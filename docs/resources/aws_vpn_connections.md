@@ -27,7 +27,8 @@ See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/
 | ---                    | --- |
 |vpn\_connection\_ids    | This property provides all the IDs of the VPN Connections. |
 |vpn\_gateway\_ids       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. |
-|tunnel\_options         | This property provides the tunnel options of the VPN Connections. |
+|outside\_ip\_addresses  | This property provides the outside IP addresses of the VPN Connections. |
+|tunnel\_inside\_cidrs   | This property provides the tunnel inside cidrs of the VPN Connections. |
 |states                  | This property provides the current state of the VPN Connections. |
 |types                   | This property provides the current types of the VPN Connections. |
 |tags                    | This property provids the current tags of the VPN Connections. |
