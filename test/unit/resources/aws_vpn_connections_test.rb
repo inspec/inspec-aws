@@ -25,8 +25,7 @@ class AwsVpnConnectionsHappyPathTest < Minitest::Test
     mock_vpnconnections = {}
     mock_vpnconnections[:vpn_connection_id] = "vpn-12345678"
     mock_vpnconnections[:vpn_gateway_id] = "vgw-12345678"
-    #mock_vpnconnections[:options] = { tunnel_options: [{outside_ip_address: "0.0.0.0"}, {tunnel_inside_cidr: "0.0.0.0/8"}] }
-    mock_vpnconnections[:options] = {"tunnel_options" => [{outside_ip_address: "0.0.0.0"}, {tunnel_inside_cidr: "0.0.0.0/8"}]}
+    mock_vpnconnections[:options] = {"tunnel_options" => [{"outside_ip_address" => "0.0.0.0", "tunnel_inside_cidr" => "0.0.0.0/8"}]}
     mock_vpnconnections[:type] = "type.1"
     mock_vpnconnections[:tags] = []
     mock_vpnconnections[:state] = "available"
@@ -48,11 +47,11 @@ class AwsVpnConnectionsHappyPathTest < Minitest::Test
   end
 
   def test_vpnconnections_outside_ip_addresses
-    assert_equal(@vpnconnections.outside_ip_addresses, [[]])
+    assert_equal(@vpnconnections.outside_ip_addresses, ["0.0.0.0"])
   end
 
   def test_vpnconnections_inside_cidr_blocks
-    assert_equal(@vpnconnections.tunnel_inside_cidrs, [[]])
+    assert_equal(@vpnconnections.tunnel_inside_cidrs, ["0.0.0.0/8"])
   end
 
   def test_vpnconnections_states
