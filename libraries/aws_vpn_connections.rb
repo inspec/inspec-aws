@@ -39,8 +39,8 @@ class AwsVpnConnections < AwsResourceBase
     @api_response.vpn_connections.each do |vpn_connection|
       vpn_connection_rows+=[{ vpn_connection_id: vpn_connection.vpn_connection_id,
         vpn_gateway_id: vpn_connection.vpn_gateway_id,
-        outside_ip_address: vpn_connection.options.tunnel_options.flatten.map{ |options| options.outside_ip_address },
-        tunnel_inside_cidr: vpn_connection.options.tunnel_options.flatten.map{ |options| options.tunnel_inside_cidr },
+        outside_ip_address: vpn_connection.options.tunnel_options.map{ |options| options.outside_ip_address },
+        tunnel_inside_cidr: vpn_connection.options.tunnel_options.map{ |options| options.tunnel_inside_cidr },
         state: vpn_connection.state,
         type: vpn_connection.type,
         tags: map_tags(vpn_connection.tags) }]
