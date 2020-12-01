@@ -37,7 +37,7 @@ See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/
 
 ##### Ensure that VPN connections are available.
     describe aws_vpn_connections do
-      its('state.uniq') { should eq 'available' }
+      its('state.uniq') { should eq ['available'] }
     end
 
 ##### Check tags    
