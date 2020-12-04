@@ -1,9 +1,14 @@
-<!-- latest_release 1.31.2 -->
+<!-- latest_release 1.32.0 -->
+## [v1.32.0](https://github.com/inspec/inspec-aws/tree/v1.32.0) (2020-12-01)
+
+#### Merged Pull Requests
+- Add vpn connections resource [#282](https://github.com/inspec/inspec-aws/pull/282) ([voojoe](https://github.com/voojoe))
+<!-- latest_release -->
+
 ## [v1.31.2](https://github.com/inspec/inspec-aws/tree/v1.31.2) (2020-11-17)
 
 #### Merged Pull Requests
 - Fix rubocop failures [#284](https://github.com/inspec/inspec-aws/pull/284) ([rmoles](https://github.com/rmoles))
-<!-- latest_release -->
 
 ## [v1.31.1](https://github.com/inspec/inspec-aws/tree/v1.31.1) (2020-11-10)
 
