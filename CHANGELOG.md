@@ -1,9 +1,14 @@
-<!-- latest_release 1.32.0 -->
+<!-- latest_release 1.32.1 -->
+## [v1.32.1](https://github.com/inspec/inspec-aws/tree/v1.32.1) (2020-12-04)
+
+#### Merged Pull Requests
+- Expose all properties of aws_sts_caller_identity [#287](https://github.com/inspec/inspec-aws/pull/287) ([omerdemirok](https://github.com/omerdemirok))
+<!-- latest_release -->
+
 ## [v1.32.0](https://github.com/inspec/inspec-aws/tree/v1.32.0) (2020-12-01)
 
 #### Merged Pull Requests
 - Add vpn connections resource [#282](https://github.com/inspec/inspec-aws/pull/282) ([voojoe](https://github.com/voojoe))
-<!-- latest_release -->
 
 ## [v1.31.2](https://github.com/inspec/inspec-aws/tree/v1.31.2) (2020-11-17)
 
