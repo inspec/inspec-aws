@@ -13,7 +13,7 @@ class AwsStsCallerIdentityTest < Minitest::Test
   end
 
   def test_params_not_ok
-    assert_raises(ArgumentError) { AwsIamUser.new(this_param: 'not-ok') }
+    assert_raises(ArgumentError) { AwsStsCallerIdentity.new(this_param: 'not-ok') }
   end
 
   def test_arn
@@ -24,6 +24,22 @@ class AwsStsCallerIdentityTest < Minitest::Test
     assert_equal(@identity.arn, @mock_identity[:arn])
   end
 
+  def test_user_id
+    # When
+    @identity = AwsStsCallerIdentity.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data(false))
+
+    # Then
+    assert_equal(@identity.user_id, @mock_identity[:user_id])
+  end
+
+  def test_account
+    # When
+    @identity = AwsStsCallerIdentity.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data(false))
+
+    # Then
+    assert_equal(@identity.account, @mock_identity[:account])
+  end
+
   def test_is_gov_cloud
     # When
     @identity = AwsStsCallerIdentity.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data(true))
@@ -32,12 +48,11 @@ class AwsStsCallerIdentityTest < Minitest::Test
     assert(@identity.govcloud?)
   end
 
-  def test_arn
+  def test_is_not_gov_cloud
     # When
     @identity = AwsStsCallerIdentity.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data(false))
 
     # Then
     assert(!@identity.govcloud?)
   end
-
 end

@@ -219,7 +219,7 @@ class AwsResourceBase < Inspec.resource(1)
   # Some resources may require several parameters to be set, in which case use `required`
   # Some resources may require at least 1 of n parameters to be set, in which case use `require_any_of`
   # If a parameter is entirely optional, use `allow`
-  def validate_parameters(allow: [], required: nil, require_any_of: nil)
+  def validate_parameters(allow: [], required: nil, require_any_of: nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     if required
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
       raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
@@ -237,6 +237,7 @@ class AwsResourceBase < Inspec.resource(1)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
       return true if a.instance_of?(Integer)
+      return true if [TrueClass, FalseClass].include?(a.class)
       !a.empty?
     end
     true
