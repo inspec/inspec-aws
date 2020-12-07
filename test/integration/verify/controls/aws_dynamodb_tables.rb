@@ -1,4 +1,5 @@
 title 'Test AWS DynamoDB Tables in bulk'
+aws_dynamodb_table_name = attribute(:aws_dynamodb_table_name, value: '', description: 'The AWS Dynamodb Table name.')
 
 control 'aws-dynamodb-tables-1.0' do
 
@@ -9,7 +10,7 @@ control 'aws-dynamodb-tables-1.0' do
     it { should exist }
   end
 
-  aws_dynamodb_tables.table_names.each do |table|
+  aws_dynamodb_tables.where(table_names: aws_dynamodb_table_name).table_names.each do |table|
     describe aws_dynamodb_table(table_name: table) do
       it { should exist }
       it { should be_encrypted }

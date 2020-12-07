@@ -54,7 +54,7 @@ This resource does not expect any parameters.
         it { should be_stopped }
       end
     end
-<superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/{"Environment"=>"Dev"}/`    
+<superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/"Environment"=>"Dev"/`    
    
 ##### Filter EC2 instances with a `stop-at-10-pm` tag regardless of its value, then test in-depth using `aws_ec2_instance`.  
     aws_ec2_instances.where(tags: /"stop-at-10-pm"=>/).instance_ids.each do |id|
