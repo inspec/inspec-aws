@@ -13,15 +13,14 @@ class AwsStsCallerIdentity < AwsResourceBase
     end
   '
 
-  attr_reader :arn
-
   def initialize(opts = {})
     super(opts)
     validate_parameters
 
     catch_aws_errors do
-      @arn = @aws.sts_client.get_caller_identity.arn
+      @resp = @aws.sts_client.get_caller_identity
     end
+    create_resource_methods(@resp.to_h)
   end
 
   def govcloud?
@@ -29,7 +28,7 @@ class AwsStsCallerIdentity < AwsResourceBase
   end
 
   def exists?
-    !@arn.nil?
+    !@resp.nil?
   end
 
   def to_s
@@ -39,6 +38,6 @@ class AwsStsCallerIdentity < AwsResourceBase
   private
 
   def fetch_arn_components
-    Hash[%i(arn partition service region account_id resource).zip(@arn.split(':'))]
+    Hash[%i(arn partition service region account_id resource).zip(arn.split(':'))]
   end
 end
