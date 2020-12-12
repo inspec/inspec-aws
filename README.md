@@ -550,4 +550,4 @@ The InSpec AWS resources are community supported. For bugs and features, please 
 
 ## Kudos
 
-This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec. 
+This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec.  
