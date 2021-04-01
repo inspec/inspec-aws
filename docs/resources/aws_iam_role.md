@@ -39,8 +39,8 @@ See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/la
 |permissions\_boundary\_type    | The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy . |
 |permissions\_boundary\_arn     | The ARN of the policy used to set the permissions boundary for the user or role. |
 |inline\_policies               | A list of inline policy names associated with the described role. |
-|attached\_policies\_name       | A list of attached policy names associated with the described role. |
-|attached\_policies\_arn        | A list of attached policy ARNs associated with the described role. |
+|attached\_policy\_names       | A list of attached policy names associated with the described role. |
+|attached\_policy\_arns        | A list of attached policy ARNs associated with the described role. |
 
 
 ## Examples
