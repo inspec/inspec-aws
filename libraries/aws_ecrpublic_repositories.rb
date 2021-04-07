@@ -54,8 +54,6 @@ class AwsEcrPublicRepositories < AwsResourceBase
           name: repo.repository_name,
           uri: repo.repository_uri,
           created_at: repo.created_at,
-          image_tag_mutability: repo.image_tag_mutability,
-          image_scanning_on_push_status: repo.image_scanning_configuration.scan_on_push,
         }]
       end
       break unless @api_response.next_token
