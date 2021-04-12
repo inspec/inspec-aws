@@ -7,10 +7,6 @@ class AwsEIPConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2Eip.new(client_args: { stub_responses: true }) }
   end
 
-  def test_rejects_scalar_invalid_args
-    assert_raises(ArgumentError) { AwsEc2Eip.new('dummy') }
-  end
-
   def test_accepts_vpc_endpoint_id_as_hash_eight_sign
     AwsEc2Eip.new(public_ip: '18.191.108.8', client_args: { stub_responses: true })
   end
@@ -21,10 +17,6 @@ class AwsEIPConstructorTest < Minitest::Test
 
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsEc2Eip.new(rubbish: 9) }
-  end
-
-  def test_rejects_invalid_vpc_endpoint_id
-    assert_raises(ArgumentError) { AwsEc2Eip.new(public_ip: 'dummy') }
   end
 end
 
