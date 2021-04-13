@@ -1,6 +1,7 @@
 require 'helper'
 require 'aws_sns_topic'
 require 'aws-sdk-core'
+require_relative 'mock/iam/aws_sns_topic_mock'
 
 class AwsSnsTopicConstructorTest < Minitest::Test
 
@@ -77,5 +78,27 @@ class AwsSnsTopicTopicNoSubscriptionTest < Minitest::Test
 
   def test_sns_topic_confirmed_subscription_count
     assert_equal(0, @sns_topic.confirmed_subscription_count)
+  end
+end
+
+class AwsSnsTopicTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock = AwsSnsTopicMock.new
+    @mock_topic = @mock.topic
+
+    # When
+    @topic = AwsSnsTopic.new(arn: 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf',
+                            client_args: { stub_responses: true },
+                            stub_data: @mock.stub_data)
+  end
+
+  def test_exists
+    assert @topic.exists?
+  end
+
+  def test_sns_topic_kms_id
+    assert_equal(@topic.kms_master_key_id, @mock_topic[:attributes]['KmsMasterKeyId'])
   end
 end

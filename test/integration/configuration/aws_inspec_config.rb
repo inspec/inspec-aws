@@ -177,6 +177,7 @@ module AWSInspecConfig
       aws_ssm_parameter_name: "parameter-name-#{add_random_string}",
       aws_ssm_document_name: "aws_ssm_document_name_#{add_random_string}",
       aws_sqs_queue_name: "aws-sqs-queue-#{add_random_string}",
+      aws_sns_topic_with_encryption: "aws-sns-topic-encryption-#{add_random_string}",
       aws_sns_topic_no_subscription: "aws-sns-topic-no-subscription-#{add_random_string}",
       aws_sns_topic_subscription_sqs: "aws-sns-topic-subscription-sqs-#{add_random_string}",
       aws_sns_topic_with_subscription: "aws-sns-topic-subscription-#{add_random_string}",
