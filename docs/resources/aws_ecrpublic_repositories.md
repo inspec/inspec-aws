@@ -42,9 +42,9 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [def
 
 ## Examples
 
-##### Ensure that there are exactly 3 public repositories in the default registry
+##### Ensure that there are exactly 4 public repositories in the default registry
     describe aws_ecrpublic_repositories do
-      its("count") { should cmp 3 }
+      its("count") { should cmp 4 }
     end
     
 
