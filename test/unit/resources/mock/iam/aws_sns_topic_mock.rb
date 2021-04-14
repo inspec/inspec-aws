@@ -11,13 +11,14 @@ class AwsSnsTopicMock < AwsBaseResourceMock
   end
 
   def stub_data
-    stub_data = []
 
-    topic = {:client => Aws::SNS::Client,
-             :method => :get_topic_attributes,
-             :data => @topic}
+    topic = {
+      client: Aws::SNS::Client,
+      method: :get_topic_attributes,
+      data: @topic
+    }
 
-    stub_data += [topic]
+    [topic]
   end
 
   def topic
