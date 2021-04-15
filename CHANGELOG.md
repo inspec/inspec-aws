@@ -1,9 +1,14 @@
-<!-- latest_release 1.33.0 -->
+<!-- latest_release 1.34.0 -->
+## [v1.34.0](https://github.com/inspec/inspec-aws/tree/v1.34.0) (2021-04-15)
+
+#### Merged Pull Requests
+- Adding KMS key attribute to SNS topic resource [#323](https://github.com/inspec/inspec-aws/pull/323) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.33.0](https://github.com/inspec/inspec-aws/tree/v1.33.0) (2020-12-07)
 
 #### Merged Pull Requests
 - - Add &#39;owners&#39; parameter to the aws_amis resource [#288](https://github.com/inspec/inspec-aws/pull/288) ([omerdemirok](https://github.com/omerdemirok))
-<!-- latest_release -->
 
 ## [v1.32.2](https://github.com/inspec/inspec-aws/tree/v1.32.2) (2020-12-07)
 
