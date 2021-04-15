@@ -17,7 +17,6 @@ gem 'inspec-bin'
 
 gem 'rubocop', '~> 1.3'
 
-
 group :development do
   gem 'rake'
   gem 'minitest'
