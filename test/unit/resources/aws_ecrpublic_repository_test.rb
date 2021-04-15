@@ -75,14 +75,6 @@ class AwsEcrPublicRepositoryTest < Minitest::Test
     assert_equal(@ecr_repo.repository_name, @m_r[:repository_name])
   end
 
-  #def test_image_tag_mutability
-    #assert_equal(@ecr_repo.image_tag_mutability, @m_r[:image_tag_mutability])
-  #end
-
-  #def test_scan_on_push
-    #assert_equal(@ecr_repo.image_scanning_configuration.scan_on_push, @m_r[:image_scanning_configuration][:scan_on_push])
-  #end
-
   def test_created_at
     assert_equal(@ecr_repo.created_at, @m_r[:created_at])
   end
