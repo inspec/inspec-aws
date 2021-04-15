@@ -1,8 +1,6 @@
 require_relative 'aws_base_resource_mock'
 
 class AwsEcrPublicRepositoryMock < AwsBaseResourceMock
-  SCAN_ON_PUSH = [true, false].freeze
-  IMAGE_TAG_MUTABILITY = %w(MUTABLE IMMUTABLE).freeze
 
   def multiple(n)
     # Create multiple ECR repositories
