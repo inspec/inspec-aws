@@ -48,7 +48,7 @@ See also the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com
 
 ##### Match count of Elastic IP(EIP).
     describe aws_ec2_eips do
-        its('count') { should eq 10 }
+        its('count') { should eq 5 }
     end
 
 ##### Check Allocation ID whether it is correct or not
