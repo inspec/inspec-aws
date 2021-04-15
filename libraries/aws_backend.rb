@@ -168,6 +168,10 @@ class AwsConnection
   def sts_client
     aws_client(Aws::STS::Client)
   end
+
+  def ssm_client
+    aws_client(Aws::SSM::Client)
+  end
 end
 
 # Base class for AWS resources
