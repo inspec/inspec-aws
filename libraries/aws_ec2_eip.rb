@@ -5,11 +5,16 @@ require 'aws_backend'
 class AwsEc2Eip < AwsResourceBase
   name 'aws_ec2_eip'
   desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
-  example `
-    describe aws_ec2_eip(public_ip: dummy) do
-      it { should exist }
+
+  example "
+    describe aws_ec2_eip(public_ip: '10.1.1.10') do
+      it { should eq '10.1.1.10' }
     end
-  `
+
+    describe aws_ec2_eip(public_ip: '10.1.1.10') do
+      it { should exits }
+    end
+  "
 
   def initialize(opts = {})
     opts = { public_ip: opts } if opts.is_a?(String)
