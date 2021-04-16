@@ -1,3 +1,4 @@
 # Order is important. The last matching pattern has the most precedence.
 
 *             @inspec/inspec-cloud-devs
+docs/**       @inspec/inspec-cloud-devs @inspec/docs-team

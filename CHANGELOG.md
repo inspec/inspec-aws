@@ -1,9 +1,14 @@
-<!-- latest_release 1.34.0 -->
+<!-- latest_release 1.34.1 -->
+## [v1.34.1](https://github.com/inspec/inspec-aws/tree/v1.34.1) (2021-04-16)
+
+#### Merged Pull Requests
+- Add docs team to codeowners [#324](https://github.com/inspec/inspec-aws/pull/324) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.34.0](https://github.com/inspec/inspec-aws/tree/v1.34.0) (2021-04-15)
 
 #### Merged Pull Requests
 - Adding KMS key attribute to SNS topic resource [#323](https://github.com/inspec/inspec-aws/pull/323) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.33.0](https://github.com/inspec/inspec-aws/tree/v1.33.0) (2020-12-07)
 
