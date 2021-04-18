@@ -24,7 +24,7 @@ class AwsEc2DHCPOptionConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2DHCPOption.new(random: 99) }
   end
 
-  def test_raises_invalid_ec2_id
+  def test_raises_invalid_dhcp_id
     assert_raises(ArgumentError) { AwsEc2DHCPOption.new(dhcp_options_id: 'dopt-not-allowed') }
   end
 
@@ -59,5 +59,17 @@ class AwsEc2DHCPOptionConstructorIdTest < Minitest::Test
 
   def test_dhcp_ntp_servers
     assert_equal(@dhcp.ntp_servers, [@dhcp_mock.ntp_server])
+  end
+
+  def test_netbios_name_servers
+    assert_equal(@dhcp.netbios_name_servers, [@dhcp_mock.netbios_name_server])
+  end
+
+  def test_netbios_node_type
+    assert_equal(@dhcp.netbios_node_type, @dhcp_mock.netbios_node_type.to_i)
+  end
+
+  def test_domain_name
+    assert_equal(@dhcp.domain_name, @dhcp_mock.domain_name)
   end
 end
