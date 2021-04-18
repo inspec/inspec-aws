@@ -1,6 +1,7 @@
 require 'helper'
 require 'aws_ec2_dhcp_option'
 require 'aws-sdk-core'
+require_relative 'mock/aws_ec2_dhcp_option_mock'
 
 class AwsEc2DHCPOptionConstructorTest < Minitest::Test
   def test_empty_params_not_ok
@@ -33,5 +34,30 @@ class AwsEc2DHCPOptionConstructorTest < Minitest::Test
 
   def test_dopt_non_existing
     refute AwsEc2DHCPOption.new(dhcp_options_id: 'dopt-1234abcd', client_args: { stub_responses: true }).exists?
+  end
+end
+
+class AwsEc2DHCPOptionConstructorIdTest < Minitest::Test
+  def setup
+    @dhcp_mock = AwsEc2DHCPOptionMock.new
+    @dhcp = AwsEc2DHCPOption.new(dhcp_options_id: @dhcp_mock.dhcp_options_id,
+                                 client_args: { stub_responses: true },
+                                 stub_data: [@dhcp_mock.stub_data])
+  end
+
+  def test_dhcp_options_id
+    assert_equal(@dhcp.dhcp_options_id, @dhcp_mock.dhcp_options_id)
+  end
+
+  def test_ec2_exists
+    assert @dhcp.exists?
+  end
+
+  def test_dhcp_domain_name_servers
+    assert_equal(@dhcp.domain_name_servers, [@dhcp_mock.domain_name_server])
+  end
+
+  def test_dhcp_ntp_servers
+    assert_equal(@dhcp.ntp_servers, [@dhcp_mock.ntp_server])
   end
 end
