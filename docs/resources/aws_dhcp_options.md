@@ -3,6 +3,9 @@ title: About the aws_dhcp_options Resource
 platform: aws
 ---
 
+#DEPRECATION NOTICE
+this resource pack is being replaced by `aws_ec2_dhcp_option` and `aws_ec2_dhcp_options`
+
 # aws\_dhcp\_options
 
 Use the `aws_dhcp_options` InSpec audit resource to test properties of a single AWS DHCP Options.
