@@ -8,7 +8,7 @@ control 'AWS IAM Role search for default AWS role' do
     it                            { should exist }
     its('role_name')              { should eq aws_iam_role_name }
     its('inline_policies')        { should include aws_iam_inline_policy_name }
-    its('attached_policies_names') { should include aws_iam_role_attached_policy_name }
-    its('attached_policies_arns')  { should include aws_iam_role_attached_policy_arn }
+    its('attached_policy_names') { should include aws_iam_role_attached_policy_name }
+    its('attached_policy_arns')  { should include aws_iam_role_attached_policy_arn }
   end
 end
