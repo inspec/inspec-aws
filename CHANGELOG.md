@@ -1,9 +1,14 @@
-<!-- latest_release 1.34.1 -->
+<!-- latest_release 1.35.0 -->
+## [v1.35.0](https://github.com/inspec/inspec-aws/tree/v1.35.0) (2021-04-19)
+
+#### Merged Pull Requests
+- Standardize aws_iam_role attributes to match with aws_iam_user [#298](https://github.com/inspec/inspec-aws/pull/298) ([Vboivin](https://github.com/Vboivin))
+<!-- latest_release -->
+
 ## [v1.34.1](https://github.com/inspec/inspec-aws/tree/v1.34.1) (2021-04-16)
 
 #### Merged Pull Requests
 - Add docs team to codeowners [#324](https://github.com/inspec/inspec-aws/pull/324) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.34.0](https://github.com/inspec/inspec-aws/tree/v1.34.0) (2021-04-15)
 
