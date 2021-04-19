@@ -136,6 +136,7 @@ variable "aws_ssm_parameter_name" {}
 variable "aws_ssm_document_name" {}
 variable "aws_sqs_queue_name" {}
 variable "aws_subnet_ip_address_count" {}
+variable "aws_sns_topic_with_encryption" {}
 variable "aws_sns_topic_no_subscription" {}
 variable "aws_sns_topic_subscription_sqs" {}
 variable "aws_sns_topic_with_subscription" {}
@@ -584,6 +585,12 @@ resource "aws_sns_topic_subscription" "sqs_test_queue_subscription" {
 resource "aws_sns_topic" "sns_topic_no_subscription" {
   count = var.aws_enable_creation
   name  = var.aws_sns_topic_no_subscription
+}
+
+resource "aws_sns_topic" "sns_topic_encryption" {
+  count             = var.aws_enable_creation
+  name              = var.aws_sns_topic_with_encryption
+  kms_master_key_id = "alias/aws/sns"
 }
 
 # Security Groups and Rules

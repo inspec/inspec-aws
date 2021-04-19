@@ -30,6 +30,7 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 |Property                       | Description|
 | ---                           | --- |
+|kms\_master\_key\_id           | Provides the ID of an AWS-managed customer master key (CMK) for Amazon SNS topic or a custom CMK. |
 |confirmed\_subscription\_count | An integer indicating the number of currently active subscriptions. |
 
 ## Examples

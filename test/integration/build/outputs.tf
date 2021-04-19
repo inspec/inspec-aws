@@ -86,6 +86,14 @@ output "aws_sns_topic_no_subscription_arn" {
   value = aws_sns_topic.sns_topic_no_subscription.0.arn
 }
 
+output "aws_sns_topic_with_encryption_arn" {
+  value = aws_sns_topic.sns_topic_encryption.0.arn
+}
+
+output "aws_sns_topic_kms_master_key_id" {
+  value = aws_sns_topic.sns_topic_encryption.0.kms_master_key_id
+}
+
 output "sns_sqs_queue_arn" {
   value = aws_sqs_queue.sns_sqs_queue.0.arn
 }
