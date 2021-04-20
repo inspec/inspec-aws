@@ -285,3 +285,44 @@ output "aws_guardduty_detector_id" {
 output "aws_guardduty_detector_publishing_frequency" {
   value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
 }
+
+output "aws_public_ip" {
+  value = aws_eip.aws_eip_1.public_ip
+}
+
+//noinspection HILUnresolvedReference
+output "aws_instance_id1" {
+  value = aws_eip.aws_eip_1.instance_id
+}
+
+output "aws_allocation_id" {
+  value = aws_eip.aws_eip_1.allocation_id
+}
+
+output "aws_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
+
+output "aws_domain" {
+  value = aws_eip.aws_eip_1.domain
+}
+
+//noinspection HILUnresolvedReference
+output "aws_network_interface_id" {
+  value = aws_eip.aws_eip_1.interface_id
+}
+
+//noinspection HILUnresolvedReference
+output "aws_network_interface_owner_id" {
+  value = aws_eip.aws_eip_1.network_interface_owner_id
+}
+
+//noinspection HILUnresolvedReference
+output "aws_private_ip_address" {
+  value = aws_eip.aws_eip_1.private_ip_address
+}
+
+//noinspection HILUnresolvedReference
+output "aws_network_border_group" {
+  value = aws_eip.aws_eip_1.network_border_group
+}

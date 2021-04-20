@@ -1914,6 +1914,5 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_eip" "aws_eip_1" {
-  instance = aws_instance.web.id
   vpc      = true
 }
