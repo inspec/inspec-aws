@@ -1,5 +1,5 @@
 aws_public_ip = attribute("aws_public_ip", default: "", description: "The Elastic IP address, or the carrier IP address.")
-aws_instance_id = attribute("aws_instance_id", default: "", description: "The ID of the instance the address is associated with, if any.")
+aws_instance_id1 = attribute("aws_instance_id", default: "", description: "The ID of the instance the address is associated with, if any.")
 aws_allocation_id = attribute("aws_allocation_id", default: "", description: "The allocation ID for the address.")
 aws_association_id = attribute("aws_association_id", default: "", description: "The association ID for the address.")
 aws_domain = attribute("aws_domain", default: "vpc", description: "Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).")
@@ -19,7 +19,7 @@ control 'aws-ec2-elasticip' do
 
   describe aws_ec2_eip(public_ip: aws_public_ip) do
     it { should exist }
-    its('instance_id') { should eq aws_instance_id }
+    its('instance_id') { should eq aws_instance_id1 }
     its('public_ip') { should eq aws_public_ip }
     its('allocation_id') { should eq aws_allocation_id }
     its('association_id') { should eq aws_association_id }
