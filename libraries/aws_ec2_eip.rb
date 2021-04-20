@@ -7,11 +7,11 @@ class AwsEc2Eip < AwsResourceBase
   desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
 
   example "
-    describe aws_ec2_eip(public_ip: '10.1.1.10') do
-      it { should eq '10.1.1.10' }
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
+      it { should eq '192.0.2.0' }
     end
 
-    describe aws_ec2_eip(public_ip: '10.1.1.10') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exits }
     end
   "
@@ -32,7 +32,7 @@ class AwsEc2Eip < AwsResourceBase
 
   def id
     return nil unless exists?
-    @volume[:public_ip]
+    @addresses[:public_ip]
   end
 
   def exists?

@@ -5,24 +5,23 @@ platform: aws
 
 # aws\_eips
 
-Use the `aws_eips` InSpec audit resource to test properties of some or all AWS Elastic IPs.
+Use the `aws_eips` InSpec audit resource to test properties of some or all AWS Elastic IP addresses.
 
 ## Syntax
 
-Ensure that a Public IP exists.
+Verify that a public IP address exists.
 
-    # Find a Public IP by public_ip
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exist }
     end
 
-An `aws_eips` resource block uses an optional filter to select a group of Elastic IPs and then tests that group.
+An `aws_eips` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
 
 ## Parameters
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html).
+See the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html) for additional information.
 
 ## Properties
 

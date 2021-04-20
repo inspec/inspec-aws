@@ -7,27 +7,25 @@ platform: aws
 
 Use the `aws_eip` InSpec audit resource to test properties of a single specific Elastic IP (EIP). 
 
-A Elastic IP (EIP) is uniquely identified by the Public IP (e.g. 18.192.107.8)
+An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `192.0.2.0`.
 
 ## Syntax
 
 Ensure that a Public IP exists.
 
-    # Find a Public IP by public_ip
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exist }
     end
     
-    # Hash syntax for public_ip
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exist }
     end
 
 ## Parameters
 
-This resource expects the Public IP as a parameter.
+`public_ip` _(required)_
 
-See also the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html).
+For additional information, see the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html).
 
 ## Properties
 
@@ -46,13 +44,13 @@ See also the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com
 
 ## Examples
 
-##### Ensure a Public IP is available.
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
-      its('public_ip') { should eq '18.192.107.8' }
+### Ensure a Public IP is available.
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
+      its('public_ip') { should eq '192.0.2.0' }
     end
 
-##### Ensure that the domain is vpc or standard.
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+### Ensure that the domain is `vpc` or `standard`.
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
         its('domain') { should eq 'vpc' }
     end
 
@@ -60,35 +58,38 @@ See also the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the describe returns at least one result.
+The controls will pass if the `describe` method returns at least one result.
 
-#### exist
+### exist
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exist }
     end
+
+Use `should_not` to test the entity does not exist.
       
-    describe aws_vpc_endpoint(public_ip: '18.192.101.8') do
+    describe aws_vpc_endpoint(public_ip: '192.0.2.0') do
       it { should_not exist }
     end
 
-#### be_available
+### be_available
 
-Checks if the Addresses is in available state.
-Use `should_not` to test the entity should not exist.
+Check if the IP address is available.
 
-    describe aws_ec2_eip(public_ip: '18.192.107.8') do
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should be_available }
     end
-      
-    describe aws_ec2_eip(public_ip: '18.192.101.8') do
+
+Use `should_not` to test an IP address that should not exist.
+
+    describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should_not be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeAddresses` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeAddresses` action with `Effect` set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
