@@ -293,3 +293,7 @@ output "aws_guardduty_detector_id" {
 output "aws_guardduty_detector_publishing_frequency" {
   value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
 }
+
+output "launch_template_name" {
+  value = aws_launch_template.launch-template-test.name
+}
