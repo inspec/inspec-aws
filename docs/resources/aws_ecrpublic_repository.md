@@ -14,28 +14,28 @@ An `aws_ecrpublic_repository` resource block declares the tests for a single AWS
       it { should exist }
     end
 
-The value of the `repository_name` can be provided as a string.  
+The value of the `repository_name` can be provided as a string.
 
     describe aws_ecrpublic_repository('my-repo') do
       it { should exist }
     end
 
-#### Parameters
+### Parameters
 
 The repository name must be provided. The registry id is optional.
 
-##### repository\_name _(required)_
+#### repository\_name _(required)_
 
 The name of the ECR repository must satisfy the following constraints:
-- Regex pattern `(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*`.
-- Minimum 2 and maximum of 256 characters long.
 
-This can be passed either as a string or as a `repository_name: 'value'` key-value entry in a hash.
+- It must match the following regular expression: `(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*`.
+- It must be between 2 and 256 characters long.
 
-##### registry\_id _(optional)_
+The `repository\_name` can be passed as a string or as a `repository_name: 'value'` key-value entry in a hash.
 
-The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
+#### registry\_id _(optional)_
 
+The 12-digit ID of the AWS Elastic Container Registry. If not provided, this resource will use the [default public registry](https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_DescribeRepositories.html).
 
 ## Properties
 
@@ -49,18 +49,16 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-##### Test that ecr public repository 'public-repo' exists
+### Test that ecr public repository 'public-repo' exists
 
     describe aws_ecrpublic_repository('public-repo') do
       it { should exist }
     end
-    
-    
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-    
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecrpublic:DescribeRepositories` action set to allow.
