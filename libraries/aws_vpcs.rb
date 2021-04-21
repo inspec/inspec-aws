@@ -22,6 +22,9 @@ class AwsVpcs < AwsResourceBase
              .register_column(:instance_tenancys,  field: :instance_tenancy)
              .register_column(:is_defaults,        field: :is_default)
              .register_column(:tags,               field: :tags)
+             .register_column(:ipv_6_cidr_block_association_sets,               field: :ipv_6_cidr_block_association_set)
+             .register_column(:cidr_block_association_sets,                     field: :cidr_block_association_set)
+             # .register_column(:ipv_6_cidr_block_association_set_association_ids,               field: :ipv_6_cidr_block_association_set[0].association_id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -43,7 +46,11 @@ class AwsVpcs < AwsResourceBase
                    state: vpc[:state],
                    is_default: vpc[:is_default],
                    instance_tenancy: vpc[:instance_tenancy],
-                   tags: map_tags(vpc[:tags]) }]
+                   tags: map_tags(vpc[:tags]),
+                   #ipv_6_cidr_block_association_sets: vpc[:ipv_6_cidr_block_association_set],
+                   cidr_block_association_sets: vpc[:cidr_block_association_set],
+                   ipv_6_cidr_block_association_sets: map_ipv_6_cidr_block_association_set(vpc[:ipv_6_cidr_block_association_sets])
+      }]
     end
     @table = vpc_rows
   end
