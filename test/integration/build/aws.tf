@@ -57,7 +57,9 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecr_name" {}
+variable "aws_ecrpublic_name" {}
 variable "aws_ecr_repository_name" {}
+variable "aws_ecrpublic_repository_name" {}
 variable "aws_ecr_repository_image_tag_mutability" {}
 variable "aws_ecr_repository_scan_on_push_enabled" {}
 variable "aws_ecs_cluster_name" {}
@@ -1564,6 +1566,11 @@ resource "aws_ecr_repository" "aws_ecr" {
   name  = var.aws_ecr_name
 }
 
+resource "aws_ecrpublic_repository" "aws_ecrpublic" {
+  repository_name = var.aws_ecrpublic_name
+  count = var.aws_enable_creation
+}
+
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
   count          = var.aws_enable_creation
   name           = var.aws_dynamodb_table_name
@@ -1815,6 +1822,11 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
   tags = {
     Name = var.aws_ecr_repository_name
   }
+}
+
+resource "aws_ecrpublic_repository" "inspec_test_ecrpublic_repository" {
+  repository_name      = var.aws_ecrpublic_repository_name
+  count                = var.aws_enable_creation
 }
 
 resource "aws_vpc" "for_igw" {
