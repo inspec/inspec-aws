@@ -37,18 +37,23 @@ class AwsElastiCacheReplicationGroups < AwsResourceBase
 
   def fetch_data
     elasticache_replication_group_rows = []
-    catch_aws_errors do
-      api_response = @aws.elasti_cache_client.describe_replication_groups
-      return [] if !api_response || api_response.empty?
-
-      api_response.replication_groups.each do |replication_group|
-        elasticache_replication_group_rows += [{ id: replication_group[:replication_group_id],
-                                               node_type: replication_group[:cache_node_type],
-                                               status: replication_group[:status],
-                                               encrypted_at_rest: replication_group[:at_rest_encryption_enabled],
-                                               encrypted_at_transit: replication_group[:transit_encryption_enabled] }]
+    pagination_options = {}
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.elasti_cache_client.describe_replication_groups(**pagination_options)
       end
+      return [] if !@api_response || @api_response.empty?
+
+      @api_response.replication_groups.each do |replication_group|
+        elasticache_replication_group_rows += [{ id: replication_group.replication_group_id,
+                                               node_type: replication_group.cache_node_type,
+                                               status: replication_group.status,
+                                               encrypted_at_rest: replication_group.at_rest_encryption_enabled,
+                                               encrypted_at_transit: replication_group.transit_encryption_enabled }]
+      end
+      break unless @api_response.marker
+      pagination_options = { marker: @api_response[:marker] }
     end
-    @table = elasticache_replication_group_rows
+    elasticache_replication_group_rows
   end
 end

@@ -34,8 +34,8 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
 
     super(opts)
     # replication_group_id is the only query argument here.
-    validate_parameters(required: [query_arguments.keys.first])
-    @display_name = query_arguments.values.first
+    validate_parameters(required: query_arguments.keys)
+    @display_name = query_arguments[:replication_group_id]
 
     catch_aws_errors do
       begin
@@ -49,7 +49,7 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
   end
 
   def id
-    @replication_group[:replication_group_id] || nil
+    @replication_group[:replication_group_id]
   end
 
   def status
