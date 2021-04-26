@@ -4,7 +4,7 @@ title: About the aws_elasticache_replication_groups Resource
 
 # aws\_elasticache\_replication\_groups
 
-Use the `aws_elasticache_replication_groups` InSpec audit resource to test the properties of all AWS ElastiCache replication groups. To audit a single ElastiCache replication group, use `aws_elasticache_replication_group` (singular).
+Use the `aws_elasticache_replication_groups` InSpec audit resource to test the properties of all Amazon ElastiCache replication groups. To audit a single ElastiCache replication group, use `aws_elasticache_replication_group` (singular).
 
 ## Syntax
 
@@ -14,7 +14,7 @@ An `aws_elasticache_replication_groups` resource block collects a group of Elast
       it { should exist }
     end   
     
-#### Parameters
+### Parameters
 
 This resource does not expect any parameters.
 
@@ -31,12 +31,12 @@ This resource does not expect any parameters.
 
 ## Examples
 
-##### Ensure that exactly 3 ElastiCache replication groups exist
+### Ensure that exactly three ElastiCache replication groups exist
     describe aws_elasticache_replication_groups do
       its('count') { should eq 3 }
     end
 
-##### Use this InSpec resource to request the IDs of all ElastiCache replication groups, then test in-depth using `aws_elasticache_replication_group`.
+### Request the IDs of all ElastiCache replication groups, then test in-depth using `aws_elasticache_replication_group`.
     aws_elasticache_replication_groups.ids.each do |replication_group_id|
       describe aws_elasticache_replication_group(replication_group_id) do
         it { should be_encrypted_at_rest }
@@ -47,16 +47,16 @@ This resource does not expect any parameters.
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
 
-#### exist
+### exist
 
-The control will pass if the describe returns at least one result.
-
-Use `should_not` to test the entity should not exist.
+The control will pass if the 'describe' method returns at least one result.
 
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should exist }
     end
       
+Use `should_not` to test an entity that should not exist.
+
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should_not exist }
     end
