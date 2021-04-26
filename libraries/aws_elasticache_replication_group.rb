@@ -38,14 +38,10 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
     @display_name = query_arguments[:replication_group_id]
 
     catch_aws_errors do
-      begin
-        resp = @aws.elasti_cache_client.describe_replication_groups(query_arguments)
-        @replication_group = resp.replication_groups.first.to_h
-      rescue Aws::ElastiCache::Errors::ReplicationGroupNotFoundFault
-        return
-      end
-      create_resource_methods(@replication_group)
+      resp = @aws.elasti_cache_client.describe_replication_groups(query_arguments)
+      @replication_group = resp.replication_groups.first.to_h
     end
+    create_resource_methods(@replication_group)
   end
 
   def id
