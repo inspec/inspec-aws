@@ -20,11 +20,11 @@ The value of the `replication_group_id` can be provided as a string.
       it { should exist }
     end
 
-#### Parameters
+### Parameters
 
 The ElastiCache replication group ID is required.
 
-##### replication\_group\_id _(required)_
+#### replication\_group\_id _(required)_
 
 The ID of the ElastiCache replication group:
 
