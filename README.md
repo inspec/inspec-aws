@@ -155,6 +155,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_elasticache_cluster](docs/resources/aws_elasticache_cluster.md)
 - [aws_elasticache_cluster_node](docs/resources/aws_elasticache_cluster_node.md)
 - [aws_elasticache_clusters](docs/resources/aws_elasticache_clusters.md)
+- [aws_elasticache_replication_group](docs/resources/aws_elasticache_replication_group.md)
+- [aws_elasticache_replication_groups](docs/resources/aws_elasticache_replication_groups.md)
 - [aws_flow_log](docs/resources/aws_flow_log.md)
 - [aws_guardduty_detector](docs/resources/aws_guardduty_detector.md)
 - [aws_guardduty_detectors](docs/resources/aws_guardduty_detectors.md)

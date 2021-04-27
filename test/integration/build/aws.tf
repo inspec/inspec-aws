@@ -82,6 +82,8 @@ variable "aws_elasticache_cluster_num_cache_nodes" {}
 variable "aws_elasticache_cluster_parameter_group_name" {}
 variable "aws_elasticache_cluster_engine_version" {}
 variable "aws_elasticache_cluster_port" {}
+variable "aws_elasticache_replication_group_node_type" {}
+variable "aws_elasticache_replication_group_id" {}
 variable "aws_elb_access_log_name" {}
 variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
@@ -1930,4 +1932,13 @@ resource "aws_guardduty_detector" "detector_1" {
   count  = var.aws_enable_creation
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
+}
+
+resource "aws_elasticache_replication_group" "replication_group" {
+  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_description = "replication group"
+  number_cache_clusters         = 1
+  node_type                     = var.aws_elasticache_replication_group_node_type
+  at_rest_encryption_enabled    = true
+  transit_encryption_enabled    = false
 }
