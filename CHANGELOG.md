@@ -1,9 +1,14 @@
-<!-- latest_release 1.36.0 -->
+<!-- latest_release 1.37.0 -->
+## [v1.37.0](https://github.com/inspec/inspec-aws/tree/v1.37.0) (2021-04-27)
+
+#### Merged Pull Requests
+- Adding new AWS Elasticache replication group resource [#326](https://github.com/inspec/inspec-aws/pull/326) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.36.0](https://github.com/inspec/inspec-aws/tree/v1.36.0) (2021-04-22)
 
 #### Merged Pull Requests
 - Adding aws ecrpublic repositories resource [#321](https://github.com/inspec/inspec-aws/pull/321) ([Jentul-Gift](https://github.com/Jentul-Gift))
-<!-- latest_release -->
 
 ## [v1.35.0](https://github.com/inspec/inspec-aws/tree/v1.35.0) (2021-04-19)
 
