@@ -57,7 +57,9 @@ variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
 variable "aws_ecr_name" {}
+variable "aws_ecrpublic_name" {}
 variable "aws_ecr_repository_name" {}
+variable "aws_ecrpublic_repository_name" {}
 variable "aws_ecr_repository_image_tag_mutability" {}
 variable "aws_ecr_repository_scan_on_push_enabled" {}
 variable "aws_ecs_cluster_name" {}
@@ -80,6 +82,8 @@ variable "aws_elasticache_cluster_num_cache_nodes" {}
 variable "aws_elasticache_cluster_parameter_group_name" {}
 variable "aws_elasticache_cluster_engine_version" {}
 variable "aws_elasticache_cluster_port" {}
+variable "aws_elasticache_replication_group_node_type" {}
+variable "aws_elasticache_replication_group_id" {}
 variable "aws_elb_access_log_name" {}
 variable "aws_elb_access_log_prefix" {}
 variable "aws_elb_name" {}
@@ -1564,6 +1568,11 @@ resource "aws_ecr_repository" "aws_ecr" {
   name  = var.aws_ecr_name
 }
 
+resource "aws_ecrpublic_repository" "aws_ecrpublic" {
+  repository_name = var.aws_ecrpublic_name
+  count = var.aws_enable_creation
+}
+
 resource "aws_dynamodb_table" "aws-dynamodb-table" {
   count          = var.aws_enable_creation
   name           = var.aws_dynamodb_table_name
@@ -1817,6 +1826,11 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
   }
 }
 
+resource "aws_ecrpublic_repository" "inspec_test_ecrpublic_repository" {
+  repository_name      = var.aws_ecrpublic_repository_name
+  count                = var.aws_enable_creation
+}
+
 resource "aws_vpc" "for_igw" {
   count      = var.aws_enable_creation
   cidr_block = "10.0.0.0/16"
@@ -1920,6 +1934,14 @@ resource "aws_guardduty_detector" "detector_1" {
   finding_publishing_frequency = "SIX_HOURS"
 }
 
+resource "aws_elasticache_replication_group" "replication_group" {
+  replication_group_id          = var.aws_elasticache_replication_group_id
+  replication_group_description = "replication group"
+  number_cache_clusters         = 1
+  node_type                     = var.aws_elasticache_replication_group_node_type
+  at_rest_encryption_enabled    = true
+  transit_encryption_enabled    = false
+}
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
   vpc_id = aws_vpc.inspec_vpc[0].id

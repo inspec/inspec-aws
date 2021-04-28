@@ -294,6 +294,14 @@ output "aws_guardduty_detector_publishing_frequency" {
   value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
 }
 
+output "aws_elasticache_replication_group_id" {
+  value = aws_elasticache_replication_group.replication_group.id
+}
+
+output "aws_elasticache_replication_group_node_type" {
+  value = aws_elasticache_replication_group.replication_group.node_type
+}
+
 output "aws_vpn_gateway_id" {
   value = aws_vpn_gateway.inspec_vpn_gw.id
 }

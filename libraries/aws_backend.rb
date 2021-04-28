@@ -10,6 +10,7 @@ require 'aws-sdk-core'
 require 'aws-sdk-dynamodb'
 require 'aws-sdk-ec2'
 require 'aws-sdk-ecr'
+require 'aws-sdk-ecrpublic'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
 require 'aws-sdk-elasticache'
@@ -95,6 +96,10 @@ class AwsConnection
 
   def ecr_client
     aws_client(Aws::ECR::Client)
+  end
+
+  def ecrpublic_client
+    aws_client(Aws::ECRPublic::Client)
   end
 
   def ecs_client
