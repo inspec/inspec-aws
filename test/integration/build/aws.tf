@@ -1919,3 +1919,12 @@ resource "aws_guardduty_detector" "detector_1" {
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
 }
+
+
+resource "aws_vpn_gateway" "inspec_vpn_gw" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+
+  tags = {
+    Name = "inspec_vpn_gw"
+  }
+}
