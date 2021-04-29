@@ -46,13 +46,13 @@ class AwsNetworkACL < AwsResourceBase
     params = { network_acl_ids: [@opts[:network_acl_id]] }
     @response = query_with(params)
     return empty_response_warn unless @response
-    
+
     network_acl_hash = network_acl.to_h
     network_acl_hash[:associations] = associations.map do |association|
-      {network_acl_association_id: association.network_acl_association_id, subnet_id: association.subnet_id}
+      { network_acl_association_id: association.network_acl_association_id, subnet_id: association.subnet_id }
     end
-    network_acl_hash[:ingress] = entries.select{|entry| !entry.egress }.map(&:to_h)
-    network_acl_hash[:egress] = entries.select{|entry| entry.egress }.map(&:to_h)
+    network_acl_hash[:ingress] = entries.select { |entry| !entry.egress }.map(&:to_h)
+    network_acl_hash[:egress] = entries.select { |entry| entry.egress }.map(&:to_h)
     network_acl_hash.delete(:entries)
     create_resource_methods(network_acl_hash)
   end

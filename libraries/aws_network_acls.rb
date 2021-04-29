@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'aws_backend'
@@ -48,7 +47,7 @@ class AwsNetworkACLs < AwsResourceBase
   private
 
   def paginate_request
-    pagination_options = {max_results: 1000}
+    pagination_options = { max_results: 1000 }
     loop do
       api_response = catch_aws_errors do
         @aws.compute_client.describe_network_acls(pagination_options)
@@ -65,7 +64,7 @@ class AwsNetworkACLs < AwsResourceBase
     network_acl_hash = network_acl.to_h
     network_acl_hash[:defaults] = network_acl_hash.delete(:is_default) ? network_acl.network_acl_id : nil
     network_acl_hash[:tags] = network_acl.tags.blank? ? nil : map_tags(network_acl.tags)
-    network_acl_hash[:entries] = network_acl_hash[:entries].map{|entry| entry[:network_acl_id] = network_acl.network_acl_id; entry}
+    network_acl_hash[:entries] = network_acl_hash[:entries].map { |entry| entry[:network_acl_id] = network_acl.network_acl_id; entry }
     network_acl_hash
   end
 end
