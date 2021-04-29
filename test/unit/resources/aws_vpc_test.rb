@@ -35,21 +35,6 @@ end
 
 class AwsVpcHappyPathTest < Minitest::Test
 
-  def setup
-    data = {}
-    data[:method] = :describe_vpcs
-    mock_vpc = {}
-    mock_vpc[:vpc_id] = 'vpc-12345678'
-    mock_vpc[:cidr_block] = '10.0.0.0/27'
-    mock_vpc[:state] = 'available'
-    mock_vpc[:instance_tenancy] = 'default'
-    mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
-    mock_vpc[:is_default] = true
-    data[:data] = { :vpcs => [mock_vpc] }
-    data[:client] = Aws::EC2::Client
-    @vpc = AwsVpc.new(client_args: { stub_responses: true }, stub_data: [data])
-  end
-
   def test_vpc_exists
     assert @vpc.exists?
   end
