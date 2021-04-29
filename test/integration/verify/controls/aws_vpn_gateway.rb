@@ -15,7 +15,7 @@ control 'aws-vpn-gateway-1.0' do
     its('vpn_gateway_id') { should eq aws_vpn_gateway_id }
     its('amazon_side_asn') { should eq aws_amazon_side_asn }
     its('tags') { should eq('Name' => aws_vpn_gw_name) }
-    its('attached?') { should be_truthy }
+    it { should be_attached }
     its('vpc_id') { should eq aws_vpc_id }
   end
 
