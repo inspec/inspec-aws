@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_vpn_gw_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1947,6 +1948,6 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
   vpc_id = aws_vpc.inspec_vpc[0].id
 
   tags = {
-    Name = "inspec_vpn_gw"
+    Name = var.aws_vpn_gw_name
   }
 }
