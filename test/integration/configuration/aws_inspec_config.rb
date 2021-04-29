@@ -209,7 +209,9 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_network_acl_cidr_block: '10.3.0.0/18',
+      aws_network_acl_name: 'inspec-nw-acl'
   }
 
   def self.config
