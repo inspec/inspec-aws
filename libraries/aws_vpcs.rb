@@ -50,7 +50,8 @@ class AwsVpcs < AwsResourceBase
                      cidr_block_association_set_association_ids: vpc[:cidr_block_association_set].first[:association_id],
                      cidr_block_association_set_statuses: vpc[:cidr_block_association_set].first[:cidr_block_state][:state],
                      cidr_block_association_set_status_messages: vpc[:cidr_block_association_set].first[:cidr_block_state][:status_message] },
-                   ipv_6_cidr_block_association_set: {} }]
+                   ipv_6_cidr_block_association_set: {}
+                 }]
     end
     @table = vpc_rows
   end
