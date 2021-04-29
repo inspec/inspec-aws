@@ -41,7 +41,7 @@ aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block = attribute("aws_ipv_6_cid
 aws_ipv_6_cidr_block_association_set_network_border_group = attribute("aws_ipv_6_cidr_block_association_set_network_border_group", default: '', description: 'The name of the location from which we advertise the IPV6 CIDR block. Use this parameter to limit the CIDR block to this location.')
 aws_ipv_6_cidr_block_association_set_ipv_6_pool = attribute("aws_ipv_6_cidr_block_association_set_ipv_6_pool", default: '', description: 'The ID of the IPv6 address pool from which the IPv6 CIDR block is allocated.')
 aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state = attribute("aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state", default: '', description: 'The state of an IPv6 CIDR block associated with the VPC.')
-aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state_status_message = attribute("aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state_status_message", default: '', description: 'The status message of an IPv6 CIDR block associated with the VPC')
+aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state_status_message = attribute("aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state_status_message", default: '', description: 'The status message of an IPv6 CIDR block associated with the VPC.')
 
 aws_cidr_block_association_set_association_id = attribute("aws_cidr_block_association_set_association_id", default: '', description: 'The association ID for a CIDR block associated with the VPC.')
 aws_cidr_block_association_set_cidr_block = attribute("aws_cidr_block_association_set_cidr_block", default: '', description: 'A CIDR block associated with the VPC.')

@@ -1,13 +1,13 @@
 ---
-title: About the aws_vpc Resource
-platform: aws
+title: About the `aws_vpc` 
+Resource platform: `aws`
 ---
 
 # aws\_vpc
 
-Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC).
+Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC). It also tests the CIDR Block that is used within the VPC.
 
-Each VPC is uniquely identified by its VPC ID. In addition, each VPC has a non-unique CIDR IP Address range (such as 10.0.0.0/16) which it manages.
+Each VPC is uniquely identified by its `VPC ID`. In addition, each VPC has a non-unique CIDR IP Address range (such as 10.0.0.0/16) which it manages.
 
 Every AWS account has at least one VPC, the "default" VPC, in every region.
 
@@ -51,12 +51,21 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |state            | The state of the VPC (`pending` | `available`). |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
+|ipv\_6\_cidr\_block\_association\_set (association\_id) | The association ID for an IPv6 CIDR block associated with the VPC. |
+|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_cidr_block) | An IPv4 CIDR block associated with the VPC. |
+|ipv\_6\_cidr\_block\_association\_set (network\_border\_group) | The name of the location from which we advertise the IPV6 CIDR block. Use this parameter to limit the CIDR block to this location. |
+|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_pool) | The ID of the IPv6 address pool from which the IPv6 CIDR block is allocated. |
+|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_cidr\_block\_state (state)) | The state of an IPv6 CIDR block associated with the VPC. |
+|ipv\_6\_cidr\_block\_association\_set (ipv_6\_cidr\_block\_state (status\_message)) | The status message of an IPv6 CIDR block associated with the VPC |
+|cidr\_block\_association\_set (association\_id) | The association ID for a CIDR block associated with the VPC. |
+|cidr\_block\_association\_set (cidr\_block\_state (state)) | The state of a CIDR block associated with the VPC. |
+|cidr\_block\_association\_set (cidr\_block\_state (status\_message)) | The status message of a CIDR block associated with the VPC. |
 
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
 
-##### Test the CIDR of a named VPC
+### Test the CIDR Block of a named VPC
     describe aws_vpc('vpc-87654321') do
       its('cidr_block') { should cmp '10.0.0.0/16' }
     end
@@ -68,15 +77,26 @@ The following examples show how to use this InSpec audit resource.
       it { should be_available }
     end
 
-##### Test the allowed tenancy of instances launched into the VPC.
+### Test the allowed tenancy of instances launched into the VPC.
     describe aws_vpc do
       its ('instance_tenancy') { should eq 'default' }
     end
 
-##### Test tags on the VPC
+### Test tags on the VPC
     describe aws_vpc do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'vpc-name')}
+    end
+
+### Test the IPV6 CIDR Block association set State of a named VPC
+    describe aws_vpc do
+      its ('ipv_6_cidr_block_association_set.first.ipv_6_cidr_block_state.state') 
+                { should eq aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state }
+    end
+
+### Test the CIDR Block association set association_id of a named VPC
+    describe aws_vpc do
+      its ('cidr_block_association_set.first.association_id') { should eq aws_cidr_block_association_set_association_id }
     end
 
 ## Matchers
