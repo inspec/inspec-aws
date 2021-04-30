@@ -12,9 +12,6 @@ class AwsVPCEndpointConnectionNotificationConstructorTest < Minitest::Test
       assert_raises(ArgumentError) { AwsVpcEndpointConnectionNotifications.new('rubbish') }
     end
 
-    def test_vpcn_non_existing
-      refute AwsVpcEndpointConnectionNotifications.new( client_args: { stub_responses: true }).exists?
-    end
 
 end
 
@@ -41,19 +38,16 @@ class AwsVpcEndpointConnectionNotificationsHappyPathTest < Minitest::Test
   end
 
   def test_vpcen_endpoint_notification_id
-    assert_equal(@vpcen.connection_notification_id, ['vpce-nfn-03ad3532a5c71f8af'])
+    assert_equal(@vpcen.connection_notification_ids, ['vpce-nfn-03ad3532a5c71f8af'])
   end
 
   def test_vpcn_endpoint_type
-    assert_equal(@vpcen.service_id, ['vpce-svc-04deb776dc2b8e67f'])
+    assert_equal(@vpcen.service_ids, ['vpce-svc-04deb776dc2b8e67f'])
   end
 
-  def test_vpcen_id
-    assert_equal(@vpcen.vpc_endpoint_id, ['vpce-abcdef123456abcde'])
-  end
 
   def test_service_name
-    assert_equal(@vpcen.connection_notification_arn, ['arn:aws:sns:us-east-2:112758395563:aws-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju'])
+    assert_equal(@vpcen.connection_notification_arns, ['arn:aws:sns:us-east-2:112758395563:aws-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju'])
   end
 
   def test_vpcen_state
