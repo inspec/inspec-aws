@@ -16,19 +16,19 @@ class AwsVPCEndpointConnectionNotificationConstructorTest < Minitest::Test
   end
 
   def test_accepts_vpc_endpoint_notification_id_as_hash
-    AwsVpcen.new(connection_notification_id: 'vpce-nfn-03ad3532a5c71f8af', client_args: { stub_responses: true })
+    AwsVpcEndpointConnectionNotification.new(connection_notification_id: 'vpce-nfn-03ad3532a5c71f8af', client_args: { stub_responses: true })
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AwsVpcen.new(rubbish: 9) }
+    assert_raises(ArgumentError) { AwsVpcEndpointConnectionNotification.new(rubbish: 9) }
   end
 
   def test_rejects_invalid_vpc_endpoint_notification_id
-    assert_raises(ArgumentError) { AwsVpcen.new(connection_notification_id: 'vpce-rubbish') }
+    assert_raises(ArgumentError) { AwsVpcEndpointConnectionNotification.new(connection_notification_id: 'vpce-rubbish') }
   end
 
   def test_vpcn_non_existing
-    refute AwsVpcen.new(connection_notification_id: 'vpce-nfn-1234abcd', client_args: { stub_responses: true }).exists?
+    refute AwsVpcEndpointConnectionNotification.new(connection_notification_id: 'vpce-nfn-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end
 
@@ -62,7 +62,7 @@ class AwsVpcEndpointConnectionNotificationHappyPathTest < Minitest::Test
     assert_equal(@vpcen.service_id, 'vpce-svc-04deb776dc2b8e67f')
   end
 
-  def test_vpce_id
+  def test_vpcen_id
     assert_equal(@vpcen.vpc_endpoint_id, 'vpce-abcdef123456abcde')
   end
 
