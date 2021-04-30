@@ -12,7 +12,7 @@ class AwsVPCEndpointConnectionNotificationConstructorTest < Minitest::Test
   end
 
   def test_accepts_vpc_endpoint_notification_id_as_hash_eight_sign
-    AwsVpcEndpointConnectionNotification.new(vpc_endpoint_id: 'vpce-1234abcd', client_args: { stub_responses: true })
+    AwsVpcEndpointConnectionNotification.new(connection_notification_id: 'vpce-nfn-03ad3532', client_args: { stub_responses: true })
   end
 
   def test_accepts_vpc_endpoint_notification_id_as_hash
