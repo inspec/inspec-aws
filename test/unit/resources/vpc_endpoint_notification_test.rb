@@ -55,7 +55,7 @@ class AwsVpcEndpointConnectionNotificationHappyPathTest < Minitest::Test
 
 
   def test_vpcen_endpoint_notification_id
-    assert_equal(@vpcen.connection_notification_id, 'vpce-1234567812345678a')
+    assert_equal(@vpcen.connection_notification_id, 'vpce-nfn-03ad3532a5c71f8af')
   end
 
   def test_vpc_endpoint_type
@@ -71,7 +71,7 @@ class AwsVpcEndpointConnectionNotificationHappyPathTest < Minitest::Test
   end
 
   def test_vpcen_state
-    assert_equal(@vpcen.state, 'Enabled')
+    assert_equal(@vpcen.connection_notification_state, 'Enabled')
 
   end
 
