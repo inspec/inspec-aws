@@ -1,7 +1,7 @@
 require 'aws_backend'
 
 class AwsEc2TransitGatewayAttachment < AwsResourceBase
-  name 'aws_ec2_transit_gateway_attachement'
+  name 'aws_ec2_transit_gateway_attachment'
   desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
 
   example "
