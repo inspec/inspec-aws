@@ -12,7 +12,7 @@ aws_association_state = attribute(:aws_association_, default: '', description: '
 control 'aws-transit-gateway-attachments-v1.0.0' do
   impact 1.0
   title 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
-  describe aws_ec2_transit_gateway_attachements do
+  describe aws_ec2_transit_gateway_attachments do
     it { should exist }
     its('count')             { should be <= 100 }
     its('count')             { should eq 1 }
