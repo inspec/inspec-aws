@@ -9,7 +9,10 @@ aws_creation_time = attribute(:aws_creation_time, default: '', description: 'The
 aws_association_transit_gateway_route_table_id = attribute(:aws_association_, default: '', description: 'The ID of the route table for the transit gateway.')
 aws_association_state = attribute(:aws_association_, default: '', description: 'The state of the attachment. Valid values are | associating | associated | disassociating | disassociated |')
 
-describe aws_ec2_transit_gateway_attachements do
+control 'aws-transit-gateway-attachments-v1.0.0' do
+  impact 1.0
+  title 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
+  describe aws_ec2_transit_gateway_attachements do
     it { should exist }
     its('count')             { should be <= 100 }
     its('count')             { should eq 1 }
@@ -21,3 +24,4 @@ describe aws_ec2_transit_gateway_attachements do
     its('resource_ids') { should include aws_resource_id }
     its('states') { should include aws_state }
   end
+end

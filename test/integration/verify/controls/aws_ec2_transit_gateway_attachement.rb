@@ -9,16 +9,20 @@ aws_creation_time = attribute(:aws_creation_time, default: '', description: 'The
 aws_association_transit_gateway_route_table_id = attribute(:aws_association_, default: '', description: 'The ID of the route table for the transit gateway.')
 aws_association_state = attribute(:aws_association_, default: '', description: 'The state of the attachment. Valid values are | associating | associated | disassociating | disassociated |')
 
-describe aws_ec2_transit_gateway_attachement(transit_gateway_attachment_id: aws_transit_gateway_attachment_id) do
-  it { should exist }
-  its('transit_gateway_attachment_id')              { should eq aws_transit_gateway_attachment_id }
-  its('transit_gateway_id')                         { should eq aws_transit_gateway_id }
-  its('transit_gateway_owner_id')                   { should eq aws_transit_gateway_owner_id }
-  its('resource_owner_id')                          { should eq aws_resource_owner_id }
-  its('resource_type')                              { should eq aws_resource_type }
-  its('resource_id')                                { should eq aws_resource_id }
-  its('state')                                      { should eq aws_state }
-  its('tags')                                       { should be_empty }
-  its('association.transit_gateway_route_table_id') { should eq aws_association_transit_gateway_route_table_id }
-  its('association.state')                          { should eq aws_association_state }
+control 'aws-transit-gateway-attachment-v1.0.0' do
+  impact 1.0
+  title 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
+  describe aws_ec2_transit_gateway_attachement(transit_gateway_attachment_id: aws_transit_gateway_attachment_id) do
+    it { should exist }
+    its('transit_gateway_attachment_id')              { should eq aws_transit_gateway_attachment_id }
+    its('transit_gateway_id')                         { should eq aws_transit_gateway_id }
+    its('transit_gateway_owner_id')                   { should eq aws_transit_gateway_owner_id }
+    its('resource_owner_id')                          { should eq aws_resource_owner_id }
+    its('resource_type')                              { should eq aws_resource_type }
+    its('resource_id')                                { should eq aws_resource_id }
+    its('state')                                      { should eq aws_state }
+    its('tags')                                       { should be_empty }
+    its('association.transit_gateway_route_table_id') { should eq aws_association_transit_gateway_route_table_id }
+    its('association.state')                          { should eq aws_association_state }
+  end
 end
