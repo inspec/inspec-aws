@@ -4,6 +4,13 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
   name 'aws_ec2_transit_gateway_attachement'
   desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
 
+  example "
+    describe aws_ec2_transit_gateway_attachement(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
+      it { should be_running }
+      it { should have_roles }
+    end
+  "
+
   def initialize(opts = {})
     opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
     super(opts)

@@ -5,7 +5,11 @@ require 'aws_backend'
 class AwsEc2TransitGatewayAttachments < AwsResourceBase
   name 'aws_ec2_transit_gateway_attachements'
   desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
-  example ""
+  example `
+    describe aws_ec2_transit_gateway_attachements do
+      it { should exist }
+    end
+  `
 
   attr_reader :table
 
