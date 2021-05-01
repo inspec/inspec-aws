@@ -177,6 +177,26 @@ class AwsConnection
   def ssm_client
     aws_client(Aws::SSM::Client)
   end
+
+  def apigateway_client
+    aws_client(Aws::APIGateway::Client)
+  end
+
+  def applicationautoscaling_client
+    aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def athena_client
+    aws_client(Aws::Athena::Client)
+  end
+
+  def autoscaling_client
+    aws_client(Aws::AutoScaling::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
+  end
 end
 
 # Base class for AWS resources

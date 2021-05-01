@@ -1,0 +1,48 @@
+# frozen_string_literal: true
+
+require 'aws_backend'
+
+class AwsEc2Eip < AwsResourceBase
+  name 'aws_ec2_eip'
+  desc "Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance."
+  example "
+    describe aws_ec2_eip(public_ip: 'dummy') do
+      it { should exist }
+    end
+  "
+
+  def initialize(opts = {})
+    opts = { public_ip: opts } if opts.is_a?(String)
+    super(opts)
+    validate_parameters(required: [:public_ip])
+
+    if opts[:public_ip] && !opts[:public_ip].empty?
+      @display_name = opts[:public_ip]
+      #filter = [{name: 'public_ip', values: [opts[:public_ip]]}]
+    else
+      raise ArgumentError, "#{@__resource_name__}:  `public_ip` must be provided"
+    end
+    catch_aws_errors do
+      resp = @aws.compute_client.describe_addresses({public_ips: [opts[:public_ip]]})
+      @addresses = resp.addresses[0].to_h
+      create_resource_methods(@addresses)
+    end
+  end
+
+  def id
+    return nil unless exists?
+    @volume[:public_ip]
+  end
+
+  def exists?
+    !@addresses.nil? && !@addresses.empty?
+  end
+
+  def encrypted?
+    @addresses[:encrypted]
+  end
+
+  def to_s
+    "EIP #{@display_name}"
+  end
+end
