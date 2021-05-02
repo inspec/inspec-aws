@@ -38,42 +38,8 @@ class AWSEc2LaunchTemplate < AwsResourceBase
     end
   end
 
-  def launch_template_id
-    return nil unless exists?
-    @launch_templates[:launch_template_id]
-  end
-
-  def launch_template_name
-    return nil unless exists?
-    @launch_templates[:launch_template_name]
-  end
-
-  def created_by
-    return nil unless exists?
-    @launch_templates[:created_by]
-  end
-
-  def create_time
-    return nil unless exists?
-    @launch_templates[:create_time]
-  end
-
-  def latest_version_number
-    return nil unless exists?
-    @launch_templates[:latest_version_number]
-  end
-
-  def default_version_number
-    return nil unless exists?
-    @launch_templates[:default_version_number]
-  end
-
   def exists?
     !@launch_templates.nil? && !@launch_templates.empty?
-  end
-
-  def encrypted?
-    @launch_templates[:encrypted]
   end
 
   def to_s
