@@ -25,14 +25,13 @@ class AwsLaunchTemplatePathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_launch_templates
-    mock_eip = {}
-    mock_eip[:launch_template_name] = 'test'
-    mock_eip[:launch_template_id] = 'lt-01a6e9ac9f962f154'
-    mock_eip[:created_by] = 'test-account'
-    # mock_eip[:create_time] = 2017-10-31
-    mock_eip[:latest_version_number] = 1
-    mock_eip[:default_version_number] = 1
-    data[:data] = { :launch_templates => [mock_eip] }
+    mock_lt = {}
+    mock_lt[:launch_template_name] = 'test'
+    mock_lt[:launch_template_id] = 'lt-01a6e9ac9f962f154'
+    mock_lt[:created_by] = 'test-account'
+    mock_lt[:latest_version_number] = 1
+    mock_lt[:default_version_number] = 1
+    data[:data] = { :launch_templates => [mock_lt] }
     data[:client] = Aws::EC2::Client
     @addr = AWSEc2LaunchTemplate.new(launch_template_name: 'test',client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -40,8 +39,6 @@ class AwsLaunchTemplatePathTest < Minitest::Test
   def test_launch_template_exists
     assert @addr.exists?
   end
-
-
 
   def test_launch_template_name
     assert_equal(@addr.launch_template_name, "test")
@@ -55,7 +52,7 @@ class AwsLaunchTemplatePathTest < Minitest::Test
     assert_equal(@addr.latest_version_number, 1)
   end
 
-  def test_latest_version_number
+  def test_default_version_number
     assert_equal(@addr.default_version_number, 1)
   end
 end

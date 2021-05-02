@@ -24,7 +24,6 @@ class AWSEc2LaunchTemplate < AwsResourceBase
     elsif opts[:launch_template_name] && !opts[:launch_template_name].empty? # Otherwise use name, if provided
       @display_name = opts[:launch_template_name]
       launch_template_arguments = { launch_template_names: [opts[:launch_template_name]] }
-      # launch_template_arguments = { filters: [{ name: 'tag:Name', values: [opts[:launch_template_name]] }] }
     else
       raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided."
     end
@@ -34,7 +33,7 @@ class AWSEc2LaunchTemplate < AwsResourceBase
       resp = @aws.compute_client.describe_launch_templates(launch_template_arguments)
       @launch_templates = resp.launch_templates[0].to_h
 
-      create_resource_methods(@addresses)
+      create_resource_methods(@launch_templates)
     end
   end
 
