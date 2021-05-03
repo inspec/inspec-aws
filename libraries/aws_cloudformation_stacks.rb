@@ -37,7 +37,7 @@ class AwsCloudformationStacks < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.cloudformation_client.describe_stacks(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return cloudformation_stacks_rows if !@api_response || @api_response.empty?
       @api_response.stacks.each do |res|
         cloudformation_stacks_rows+=[{
           name: res.stack_name,
