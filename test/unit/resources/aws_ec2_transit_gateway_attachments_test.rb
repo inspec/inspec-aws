@@ -17,7 +17,7 @@ class AwsEc2TransitGatewayAttachmentsConstructorTest < Minitest::Test
   end
 end
 
-class AwsEc2TransitGatewayAttachmentsHappyPathTest < Minitest::Test
+class AwsEc2TransitGatewayAttachmentsPathTest < Minitest::Test
 
   def setup
     data = {}
@@ -30,51 +30,40 @@ class AwsEc2TransitGatewayAttachmentsHappyPathTest < Minitest::Test
     mock_transitGatewayAttachments[:resource_type] = 'vpc'
     mock_transitGatewayAttachments[:resource_id] = 'vpc-08b86815ee2c22d53'
     mock_transitGatewayAttachments[:state] = 'available'
-    mock_transitGatewayAttachments[:association] = 'default'
-    mock_transitGatewayAttachments[:creation_time] = 'default'
-    mock_transitGatewayAttachments[:tags] = 'default'
-    data[:data] = { :Ec2TransitGatewayAttachments => [mock_transitGatewayAttachments] }
+    data[:data] = { :transit_gateway_attachments => [mock_transitGatewayAttachments] }
     data[:client] = Aws::EC2::Client
-    @transitGatewayAttachments = AwsEc2TransitGatewayAttachments.new(client_args: { stub_responses: true }, stub_data: [data])
+    @transit_gateway_attachments = AwsEc2TransitGatewayAttachments.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_Ec2TransitGatewayAttachments_exists
-    assert @transitGatewayAttachments.exist?
+  def test_transit_gateway_attachment_id_exists
+    assert @transit_gateway_attachments.exist?
   end
 
-  def test_Ec2TransitGatewayAttachments_transit_gateway_attachment_ids
-    assert_equal(@transitGatewayAttachments.transit_gateway_attachment_ids, ['tgw-attach-006f2fd0a03d51323'])
+  def test_transit_gateway_attachment_ids
+    assert_equal(@transit_gateway_attachments.transit_gateway_attachment_ids, ['tgw-attach-006f2fd0a03d51323'])
   end
 
-  def test_Ec2TransitGatewayAttachments_transit_gateway_ids
-    assert_equal(@transitGatewayAttachments.transit_gateway_ids, ['tgw-02850dffe1c3b222c'])
+  def test_transit_gateway_ids
+    assert_equal(@transit_gateway_attachments.transit_gateway_ids, ['tgw-02850dffe1c3b222c'])
   end
 
-  def test_Ec2TransitGatewayAttachments_transit_gateway_owner_ids
-    assert_equal(@transitGatewayAttachments.transit_gateway_owner_ids, ['112758395563'])
+  def test_transit_gateway_owner_ids
+    assert_equal(@transit_gateway_attachments.transit_gateway_owner_ids, ['112758395563'])
   end
 
-  def test_Ec2TransitGatewayAttachments_resource_owner_ids
-    assert_equal(@transitGatewayAttachments.resource_owner_ids, ['112758395563'])
+  def test_resource_owner_ids
+    assert_equal(@transit_gateway_attachments.resource_owner_ids, ['112758395563'])
   end
 
-  def test_Ec2TransitGatewayAttachments_resource_types
-    assert_equal(@transitGatewayAttachments.resource_types, ['vpc'])
+  def test_resource_types
+    assert_equal(@transit_gateway_attachments.resource_types, ['vpc'])
   end
 
-  def test_Ec2TransitGatewayAttachments_resource_ids
-    assert_equal(@transitGatewayAttachments.resource_ids, ['vpc-08b86815ee2c22d53'])
+  def test_resource_ids
+    assert_equal(@transit_gateway_attachments.resource_ids, ['vpc-08b86815ee2c22d53'])
   end
 
-  def test_Ec2TransitGatewayAttachments_states
-    assert_equal(@transitGatewayAttachments.states, ['available'])
-  end
-
-  def test_Ec2TransitGatewayAttachments_associations
-    assert_equal(@transitGatewayAttachments.associations, ['default'])
-  end
-
-  def test_Ec2TransitGatewayAttachments_creation_times
-    assert_equal(@transitGatewayAttachments.creation_times, ['default'])
+  def test_states
+    assert_equal(@transit_gateway_attachments.states, ['available'])
   end
 end

@@ -25,42 +25,42 @@ class AwsEc2TransitGatewayRouteTablePathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_transit_gateway_route_tables
-    mock_Ec2TransitGatewayRouteTable = {}
-    mock_Ec2TransitGatewayRouteTable[:transit_gateway_route_table_id] = 'tgw-rtb-052d947d91b6bb69f'
-    mock_Ec2TransitGatewayRouteTable[:transit_gateway_id] = 'tgw-06479f73c993542ec'
-    mock_Ec2TransitGatewayRouteTable[:state] = 'available'
-    mock_Ec2TransitGatewayRouteTable[:default_association_route_table] = true
-    mock_Ec2TransitGatewayRouteTable[:default_propagation_route_table] = true
-    data[:data] = { :transit_gateway_route_tables => [mock_Ec2TransitGatewayRouteTable] }
+    mock_transit_gateway_route_tables = {}
+    mock_transit_gateway_route_tables[:transit_gateway_route_table_id] = 'tgw-rtb-052d947d91b6bb69f'
+    mock_transit_gateway_route_tables[:transit_gateway_id] = 'tgw-06479f73c993542ec'
+    mock_transit_gateway_route_tables[:state] = 'available'
+    mock_transit_gateway_route_tables[:default_association_route_table] = true
+    mock_transit_gateway_route_tables[:default_propagation_route_table] = true
+    data[:data] = { :transit_gateway_route_tables => [mock_transit_gateway_route_tables] }
     data[:client] = Aws::EC2::Client
-    @addr = AwsEc2TransitGatewayRouteTable.new(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f',client_args: { stub_responses: true }, stub_data: [data])
+    @transit_gateway_route_tables = AwsEc2TransitGatewayRouteTable.new(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f',client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_transit_gateway_route_table_id_exists
-    assert @addr.exists?
+    assert @transit_gateway_route_tables.exists?
   end
 
   def test_transit_gateway_route_table_id_available
-    assert @addr.available?
+    assert @transit_gateway_route_tables.available?
   end
 
   def test_transit_gateway_route_table_id
-    assert_equal(@addr.transit_gateway_route_table_id, 'tgw-rtb-052d947d91b6bb69f')
+    assert_equal(@transit_gateway_route_tables.transit_gateway_route_table_id, 'tgw-rtb-052d947d91b6bb69f')
   end
 
   def test_transit_gateway_id
-    assert_equal(@addr.transit_gateway_id, 'tgw-06479f73c993542ec')
+    assert_equal(@transit_gateway_route_tables.transit_gateway_id, 'tgw-06479f73c993542ec')
   end
 
   def test_state
-    assert_equal(@addr.state, 'available')
+    assert_equal(@transit_gateway_route_tables.state, 'available')
   end
 
   def test_default_association_route_table
-    assert_equal(@addr.default_association_route_table, true)
+    assert_equal(@transit_gateway_route_tables.default_association_route_table, true)
   end
 
   def test_default_propagation_route_table
-    assert_equal(@addr.domain, true)
+    assert_equal(@transit_gateway_route_tables.default_propagation_route_table, true)
   end
 end
