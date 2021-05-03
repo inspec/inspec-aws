@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_cloudformation\_stacks
 
-Use the `aws_cloudformation_stacks ` InSpec audit resource to test properties of AWS Cloud Formation Stack in bulk.
+Use the `aws_cloudformation_stacks` InSpec audit resource to test properties of an AWS CloudFormation stack in bulk.
 
 ## Syntax
 
@@ -15,9 +15,7 @@ Ensure that `aws_cloudformation_stacks` exists
       it { should exist }
     end
 
-
-
-See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html).
+See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html) for additional information.
 
 ## Properties
 
@@ -31,11 +29,9 @@ See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/
 parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
 |root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
 
-
-
 ## Examples
 
-##### Use this InSpec resource to request the names of all cloudformation stacks, then test in-depth using aws_cloudformation_stack
+### Request the names of all CloudFormation stacks, then test in-depth using the aws_cloudformation_stack resource
 
     aws_cloudformation_stacks.names.each do |stack|
       describe aws_cloudformation_stack(stack_name: stack) do
@@ -45,7 +41,7 @@ parent\_id                      | For nested stacks--stacks created as resources
       end
     end
 
-##### Use this InSpec resource to request the names of all cloudformation stacks created at a certain time, then test in-depth using aws_cloudformation_stack
+### Request the names of all CloudFormation stacks created at a certain time, then test in-depth using the aws_cloudformation_stack resource
 
     aws_cloudformation_stacks.where(creation_time: 'creation time') do |stack|
       describe aws_cloudformation_stack(stack) do
@@ -58,15 +54,15 @@ parent\_id                      | For nested stacks--stacks created as resources
 
 This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
-
-Use `should_not` to test that an entity should not exist.
 
     describe aws_cloudformation_stacks do
       it { should exist }
     end
+
+Use `should_not` to test that an entity should not exist.
 
     describe aws_cloudformation_stacks do
       it { should_not exist }
