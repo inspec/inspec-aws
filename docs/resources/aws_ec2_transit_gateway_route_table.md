@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_ec2\_transit\_gateway\_route\_table
 
-Use the `aws_ec2_transit_gateway_route_table` InSpec audit resource to test properties of a single specific Transit Gateway Route Table.
+Use the `aws_ec2_transit_gateway_route_table` InSpec audit resource to test properties of a single specific Transit Gateway Route Table Association.
 
-A Transit Gateway Route Table specifies a route table for a transit gateway.
+A Transit Gateway Route Table Association associates the specified attachment with the specified transit gateway route table.
 
 ## Syntax
 
 Ensure that a Transit Gateway Route Table ID exists.
 
-    describe aws_ec2_transit_gateway_route_table(public_ip: 'tgw-rtb-052d947d91b6bb69f') do
+    describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       it { should exist }
     end
 
@@ -42,7 +42,7 @@ For additional information, see the [AWS documentation on Transit Gateway Route 
       its('transit_gateway_route_table_id') { should eq 'tgw-rtb-052d947d91b6bb69f' }
     end
 
-### Ensure that the domain is `vpc` or `standard`.
+### Ensure that the state is `available` or `deleted`.
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
         its('state') { should eq 'available' }
     end
