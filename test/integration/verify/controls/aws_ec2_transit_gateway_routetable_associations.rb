@@ -17,10 +17,11 @@ control 'aws-rc2-transit-gateway-routetable-associations-v1.0.0' do
   end
   describe aws_ec2_transit_gateway_attachments do
     it { should exist }
-    its('transit_gateway_attachment_id')        { should eq aws_transit_gateway_attachment_id }
-    its('resource_type')                        { should eq aws_resource_type }
-    its('resource_id')                          { should eq aws_resource_id }
-    its('state')                                { should eq aws_state }
-    its('tags')                                 { should be_empty }
+    its('count')             { should be <= 100 }
+    its('transit_gateway_attachment_ids') { should include aws_transit_gateway_attachment_id }
+    its('resource_types') { should include aws_resource_type }
+    its('resource_ids') { should include aws_resource_id }
+    its('states') { should include aws_state }
+    its('tags') { should_not be_empty }
   end
 end
