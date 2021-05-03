@@ -15,7 +15,7 @@ Verify that a Transit Gateway Attachment ID exists.
       it { should exist }
     end
 
-An `aws_eips` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
+An `aws_ec2_transit_gateway_attachments` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
 
 ## Parameters
 
