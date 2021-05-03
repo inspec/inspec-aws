@@ -12,12 +12,11 @@ control 'aws-transit-gateway-route-tables-1.0' do
     describe aws_ec2_transit_gateway_route_tables do
         it { should exist }
         its('count') { should be <= 100 }
-        its('transit_gateway_route_table_id') {should include aws_transit_gateway_route_table_id }
-        its('transit_gateway_id') {should include aws_transit_gateway_id }
-        its('state') {should include aws_state }
-        its('default_association_route_table') {should include aws_default_association_route_table }
-        its('default_propagation_route_table') {should include aws_default_propagation_route_table }
-        its('creation_time') {should include aws_creation_time }
-        its('tags') { should be_empty }
+        its('transit_gateway_route_table_ids') {should include aws_transit_gateway_route_table_id }
+        its('transit_gateway_ids') {should include aws_transit_gateway_id }
+        its('states') {should include aws_state }
+        its('default_association_route_tables') {should include aws_default_association_route_table }
+        its('default_propagation_route_tables') {should include aws_default_propagation_route_table }
+        its('tags') { should_not be_empty }
     end
 end
