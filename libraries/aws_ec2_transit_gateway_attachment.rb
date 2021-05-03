@@ -6,8 +6,7 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
 
   example "
     describe aws_ec2_transit_gateway_attachement(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
-      it { should be_running }
-      it { should have_roles }
+      it { should exist }
     end
   "
 

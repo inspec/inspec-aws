@@ -4,12 +4,13 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
   name 'aws_ec2_transit_gateway_routetable_association'
   desc 'Gets information about the associations for the specified transit gateway route table.'
 
-  example "
+  example `
     describe aws_ec2_transit_gateway_routetable_association(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
-      it { should be_running }
-      it { should have_roles }
+      it { should exist }
     end
-  "
+  `
+
+  attr_reader :table
 
   def initialize(opts = {})
     opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
