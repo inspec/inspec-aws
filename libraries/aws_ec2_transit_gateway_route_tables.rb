@@ -12,14 +12,16 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
     end
   `
 
+  attr_reader :table
+
   FilterTable.create
-             .register_column(:transit_gateway_route_table_ids,         field: :transit_gateway_route_table_id)
-             .register_column(:transit_gateway_ids,                     field: :transit_gateway_id)
-             .register_column(:states,                                  field: :state)
-             .register_column(:default_association_route_tables,        field: :default_association_route_table)
-             .register_column(:default_propagation_route_tables,        field: :default_propagation_route_table)
-             .register_column(:creation_times,                          field: :creation_time)
-             .register_column(:tags,                                    field: :tags)
+             .register_column(:transit_gateway_route_table_ids,                  field: :transit_gateway_route_table_id)
+             .register_column(:transit_gateway_ids,                              field: :transit_gateway_id)
+             .register_column(:states,                                           field: :state)
+             .register_column(:default_association_route_tables,                 field: :default_association_route_table)
+             .register_column(:default_propagation_route_tables,                 field: :default_propagation_route_table)
+             .register_column(:creation_times,                                   field: :creation_time)
+             .register_column(:tags,                                             field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -27,7 +29,7 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
     validate_parameters
     @table = fetch_data
   end
-                    
+
   def fetch_data
     transit_gateway_route_table_rows = []
     pagination_options = {}
@@ -38,20 +40,18 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.transit_gateway_route_tables.each do |res|
         transit_gateway_route_table_rows += [{
-                      transit_gateway_route_table_id: res.transit_gateway_route_table_id,
-                      transit_gateway_id: res.transit_gateway_id,
-                      state: res.state,
-                      default_association_route_table: res.default_association_route_table,
-                      default_propagation_route_table: res.default_propagation_route_table,
-                      creation_time: res.creation_time
-      }]
+          transit_gateway_route_table_id: res.transit_gateway_route_table_id,
+          transit_gateway_id: res.transit_gateway_id,
+          state: res.state,
+          default_association_route_table: res.default_association_route_table,
+          default_propagation_route_table: res.default_propagation_route_table,
+          creation_time: res.creation_time,
+          tags: map_tags(res[:tags]),
+        }]
+        end
+        break unless @api_response.next_token
+        pagination_options = { next_token: @api_response.next_token }
       end
-      break unless @api_response.next_token
-      pagination_options = { next_token: @api_response.next_token }
-    end
     @table = transit_gateway_route_table_rows
-    require 'pry'; binding.pry
   end
 end
-          
-          
