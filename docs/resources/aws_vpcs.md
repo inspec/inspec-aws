@@ -36,7 +36,9 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |tags               | A hash of key-value pairs corresponding to the tags associated with the entity. |
 |entries            | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 |ipv\_6\_cidr\_block\_association\_sets | The IPv6 CIDR block associated with the VPC. |
-|cidr\_block\_association\_sets | The CIDR block associated with the VPC. |
+|cidr\_block\_association\_set (association\_id) | The association ID for a CIDR block associated with the VPC. |
+|cidr\_block\_association\_set (cidr\_block\_state (state)) | The state of a CIDR block associated with the VPC. |
+|cidr\_block\_association\_set (cidr\_block\_state (status\_message)) | The status message of a CIDR block associated with the VPC. |
 
 ## Examples
 
