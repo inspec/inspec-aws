@@ -301,3 +301,6 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+output "aws_vpc_endpoint_notification_id" {
+  value = aws_vpc_endpoint_connection_notification.foo.id
+}
