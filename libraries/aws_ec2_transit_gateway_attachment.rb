@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws_backend'
 
 class AwsEc2TransitGatewayAttachment < AwsResourceBase

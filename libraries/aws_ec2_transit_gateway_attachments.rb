@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws_backend'
 
 class AwsEc2TransitGatewayAttachments < AwsResourceBase
@@ -29,7 +31,7 @@ class AwsEc2TransitGatewayAttachments < AwsResourceBase
     validate_parameters
     @table = fetch_data
   end
-          
+
   def fetch_data
     transit_gateway_attachment_rows = []
     pagination_options = {}
@@ -40,22 +42,21 @@ class AwsEc2TransitGatewayAttachments < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.transit_gateway_attachments.each do |res|
         transit_gateway_attachment_rows += [{
-            transit_gateway_attachment_id: res.transit_gateway_attachment_id,
-            transit_gateway_id: res.transit_gateway_id,
-            transit_gateway_owner_id: res.transit_gateway_owner_id,
-            resource_owner_id: res.resource_owner_id,
-            resource_type: res.resource_type,
-            resource_id: res.resource_id,
-            state: res.state,
-            association: res.association,
-            creation_time: res.creation_time,
-            tags: map_tags(res[:tags]),
+          transit_gateway_attachment_id: res.transit_gateway_attachment_id,
+          transit_gateway_id: res.transit_gateway_id,
+          transit_gateway_owner_id: res.transit_gateway_owner_id,
+          resource_owner_id: res.resource_owner_id,
+          resource_type: res.resource_type,
+          resource_id: res.resource_id,
+          state: res.state,
+          association: res.association,
+          creation_time: res.creation_time,
+          tags: map_tags(res[:tags]),
         }]
-        end
-        break unless @api_response.next_token
-        pagination_options = { next_token: @api_response.next_token }
       end
+      break unless @api_response.next_token
+      pagination_options = { next_token: @api_response.next_token }
+    end
     @table = transit_gateway_attachment_rows
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws_backend'
 
 class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
@@ -35,10 +37,10 @@ class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
           transit_gateway_route_table_id: res.transit_gateway_route_table_id,
           state: res.state,
         }]
-        end
-        break unless @api_response.next_token
-        pagination_options = { next_token: @api_response.next_token }
       end
+      break unless @api_response.next_token
+      pagination_options = { next_token: @api_response.next_token }
+    end
     @table = transit_gateway_route_table_association_rows
   end
 end

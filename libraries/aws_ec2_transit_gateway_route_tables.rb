@@ -48,10 +48,10 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
           creation_time: res.creation_time,
           tags: map_tags(res[:tags]),
         }]
-        end
-        break unless @api_response.next_token
-        pagination_options = { next_token: @api_response.next_token }
       end
+      break unless @api_response.next_token
+      pagination_options = { next_token: @api_response.next_token }
+    end
     @table = transit_gateway_route_table_rows
   end
 end

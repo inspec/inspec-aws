@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws_backend'
 
 class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
@@ -20,7 +22,7 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_id].empty?
     @display_name = opts[:aws_transit_gateway_attachment_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_transit_gateway_attachments({transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_id]] })
+      resp = @aws.compute_client.describe_transit_gateway_attachments({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_id]] })
       @transit_gateway_attachment = resp.transit_gateway_attachments[0].association.to_h
       create_resource_methods(@transit_gateway_attachment)
     end
