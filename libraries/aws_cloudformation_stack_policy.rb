@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsCloudformationStack < AwsResourceBase
+class AwsCloudformationStackPolicy < AwsResourceBase
   name 'aws_cloudformation_stack_policy'
   desc 'Verifies policy settings for an aws CloudFormation Stack'
 
@@ -18,10 +18,12 @@ class AwsCloudformationStack < AwsResourceBase
     opts = { stack_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:stack_name])
+
     catch_aws_errors do
-      @resp = @aws.cloudformation_client.get_stack_policy(stack_name)
-      @stack_policy_body = @resp
+      name = { stack_name: opts[:stack_name] }
+      @resp = @aws.cloudformation_client.get_stack_policy(name)
     end
+    @stack_policy_body = @resp
   end
 
   def exists?
@@ -30,8 +32,8 @@ class AwsCloudformationStack < AwsResourceBase
 
   def has_statement?(criteria = {})
     return false unless @stack_policy_body
-    document = JSON.parse(URI.decode_www_form_component(@stack_policy_body.stack_policy_body), { symbolize_names: true })
-    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document{:Statement}
+    document = @stack_policy_body.stack_policy_body
+    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statement_match = []
 
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
@@ -57,12 +59,10 @@ class AwsCloudformationStack < AwsResourceBase
 
   def statement_count
     return false unless @stack_policy_body
-    document = JSON.parse(URI.decode_www_form_component(@stack_policy_body.stack_policy_body), { symbolize_names: true })
+    document = @stack_policy_body.stack_policy_body
     statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
     statements.length
   end
-    end
-
 
   def to_s
     "AWS CloudFormation Stack Policy  for #{@stack_name}"
