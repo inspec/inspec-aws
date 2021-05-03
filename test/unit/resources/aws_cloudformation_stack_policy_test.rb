@@ -27,13 +27,13 @@ class AwsCloudformationStackPolicyTest < Minitest::Test
     @mock_stack = @mock.stack
 
     # When
-    @stack= AwsCloudformationStackPolicy.new(stack_name:  @mock_stack[:stack_name],
-                           client_args: { stub_responses: true },
-                           stub_data: @mock.stub_data)
+    @stack = AwsCloudformationStackPolicy.new(stack_name:  @mock_stack[:stack_name],
+                                         client_args: { stub_responses: true },
+                                         stub_data: @mock.stub_data)
   end
 
   def test_stack_name
-    assert_equal(@stack.stack_name, @mock_policy[:stack_name])
+    assert_equal(@stack.stack_name, @mock_stack[:stack_name])
   end
 
   def test_statement_count

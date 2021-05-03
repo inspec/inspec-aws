@@ -18,7 +18,7 @@ class AwsCloudformationStackPolicy < AwsResourceBase
     opts = { stack_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:stack_name])
-
+    
     catch_aws_errors do
       name = { stack_name: opts[:stack_name] }
       @resp = @aws.cloudformation_client.get_stack_policy(name)
