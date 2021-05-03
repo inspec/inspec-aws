@@ -16,7 +16,6 @@ class AwsVpcsConstructorTest < Minitest::Test
     refute AwsVpcs.new(client_args: { stub_responses: true }).exist?
   end
 end
-
 class AwsVpcsHappyPathTest < Minitest::Test
 
   def setup
@@ -29,6 +28,13 @@ class AwsVpcsHappyPathTest < Minitest::Test
     mock_vpc[:instance_tenancy] = 'default'
     mock_vpc[:dhcp_options_id] = 'dopt-f557819d'
     mock_vpc[:is_default] = true
+    mock_vpc[:cidr_block_association_set] = [{
+			association_id: "vpc-cidr-assoc-0d015d4056e31540d",
+			cidr_block_state: {
+				state: "associated",
+        status_message: "default",
+			}
+		}]
     data[:data] = { :vpcs => [mock_vpc] }
     data[:client] = Aws::EC2::Client
     @vpcs = AwsVpcs.new(client_args: { stub_responses: true }, stub_data: [data])
