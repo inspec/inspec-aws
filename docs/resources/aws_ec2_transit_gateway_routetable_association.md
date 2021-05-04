@@ -1,5 +1,5 @@
 ---
-title: About the aws_ec2_transit_gateway_route_table Resource
+title: About the aws_ec2_transit_gateway_routetable_association Resource
 platform: aws
 ---
 
