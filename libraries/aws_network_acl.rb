@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsNetworkACL < AwsResourceBase
   name 'aws_network_acl'
   desc 'Verifies settings for a single AWS Network ACL'
-
   example "
    describe aws_network_acl(network_acl_id: '014aef8a0689b8f43') do
      it { should exist }
@@ -24,16 +23,63 @@ class AwsNetworkACL < AwsResourceBase
     fetch
   end
 
+  def associated_subnet_ids
+    return [] unless associations
+    return @associated_subnets if @associated_subnets
+
+    @associated_subnets = associations.map { |association| association.subnet_id }
+  end
+
+  # MATCHERS
   def exists?
     !failed_resource? || !@response.blank?
   end
 
-  def attached?
+  def associated?
     !associations.blank?
   end
 
-  def detached?
-    !attached?
+  def default?
+    return false unless exists?
+
+    is_default
+  end
+
+  def has_associations?(subnet_id: nil)
+    return false unless associations
+    return !associations.blank? unless subnet_id
+
+    associated_subnet_ids.any? { |associated_subnet_id| associated_subnet_id == subnet_id }
+  end
+
+  def has_acl_entry_value?(cidr_block:, egress:, rule_action:)
+    invalid_args = method(__method__).parameters.select { |param| param.blank? }
+    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(',')} cannot be blank" if cidr_block.blank?
+    return false unless acl_entries
+
+    acl_entries.any? { |entry| entry.egress == egress && entry.cidr_block == cidr_block && entry.rule_action == rule_action }
+  end
+
+  def has_egress?(cidr_block: nil, rule_action: nil)
+    cidr_block_and_rule_action_exists_for?(egress, cidr_block, rule_action)
+  end
+
+  def has_ingress?(cidr_block: nil, rule_action: nil)
+    cidr_block_and_rule_action_exists_for?(ingress, cidr_block, rule_action)
+  end
+
+  def egress
+    return [] unless acl_entries
+    return @egress if @egress
+
+    @egress = acl_entries.select { |entry| entry.egress }
+  end
+
+  def ingress
+    return [] unless acl_entries
+    return @ingress if @ingress
+
+    @ingress = acl_entries.select { |entry| !entry.egress }
   end
 
   def to_s
@@ -51,10 +97,8 @@ class AwsNetworkACL < AwsResourceBase
     network_acl_hash[:associations] = associations.map do |association|
       { network_acl_association_id: association.network_acl_association_id, subnet_id: association.subnet_id }
     end
-    network_acl_hash[:ingress] = entries.select { |entry| !entry.egress }.map(&:to_h)
-    network_acl_hash[:egress] = entries.select { |entry| entry.egress }.map(&:to_h)
-    network_acl_hash.delete(:entries)
     create_resource_methods(network_acl_hash)
+    create_rule_number_methods
   end
 
   def network_acl
@@ -75,14 +119,34 @@ class AwsNetworkACL < AwsResourceBase
     network_acl.associations
   end
 
-  def entries
+  def acl_entries
     return [] unless network_acl
 
     network_acl.entries
   end
 
+  # creates entry_rule_number_* methods
+  def create_rule_number_methods
+    entries.each do |entry|
+      method_name = "entry_rule_number_#{entry.rule_number}"
+      define_singleton_method method_name do
+        entry
+      end
+    end
+  end
+
   def validate_identifier
     raise ArgumentError, 'parameter `network_acl_id` cannot be blank' if @opts[:network_acl_id].blank?
     raise ArgumentError, 'parameter `network_acl_id` should start with `vgw-` followed by alpha numeric characters' if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
+  end
+
+  def cidr_block_and_rule_action_exists_for?(collection, cidr_block, rule_action)
+    return !collection.blank? if cidr_block.blank? && rule_action.blank?
+
+    if cidr_block && rule_action
+      return collection.any? { |entry| entry.cidr_block == cidr_block && entry.rule_action == rule_action }
+    end
+
+    collection.any? { |entry| entry.cidr_block == cidr_block || entry.rule_action == rule_action }
   end
 end
