@@ -4,7 +4,7 @@ title: About the aws_vpn_gateways Resource
 
 # aws\_vpn\_gateways
 
-Use the `aws_vpn_gateways` InSpec audit resource to test the properties of all Amazon VPN Gateways. To audit a single AWS VPN Gateway, use `aws_vpn_gateway` (singular).
+Use the `aws_vpn_gateways` InSpec audit resource to test the properties of all Amazon VPN gateways. To audit a single AWS VPN gateway, use the `aws_vpn_gateway` (singular) resource.
 
 ## Syntax
 
@@ -12,7 +12,7 @@ An `aws_vpn_gateways` resource block collects a group of AWS VPN descriptions an
 
     describe aws_vpn_gateways
       it { should exist }
-    end   
+    end
 
 ### Parameters
 
@@ -20,24 +20,26 @@ This resource does not expect any parameters.
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
-|vpn\_gateway\_ids     | List of unique identifiers that identifies a AWS VPN Gateway.|
-|states                | Lits of the current state of the VPN Gateway. It's values are one of `pending`, `available`, `deleting`, `deleted`
-|types                 | List of the types of VPN connection the VPN gateway supports.
-|availability_zones    | List of Availability Zone where the virtual private gateway was created. If not applicable, this field will be be empty.
-|vpc_attachments       | List of VPCs attached to the virtual private gateway. It has a collection of key-pairs of `state` and `vpc_id` |
-|amazon\_side\_asns    | List of all the private Autonomous System Number (ASN) for the Amazon side of a BGP session.|
-|tags                  | List of all tags that are associated to the VPN Gateway |
+|Property                   | Description|
+| ---                       | --- |
+|vpn\_gateway\_ids          | List of unique identifiers that identifies a AWS VPN gateway.|
+|states                     | List of the current state of the VPN gateway. Possible values are: `pending`, `available`, `deleting`, `deleted`. |
+|types                      | List of the types of VPN connection the VPN gateway supports. |
+|availability_zones         | List of Availability Zone where the virtual private gateway was created. If not applicable, this field will be be empty. |
+|vpc_attachments            | List of VPCs attached to the virtual private gateway. It has a collection of key-pairs of `state` and `vpc_id`. |
+|amazon\_side\_asns         | List of all the private Autonomous System Number (ASN) for the Amazon side of a BGP session. |
+|tags                       | List of all tags that are associated with the VPN gateway. |
 
 ## Examples
 
-### Ensure that exactly three AWS VPN Gateways exist
+### Ensure that exactly three AWS VPN gateways exist
+
     describe aws_vpn_gateways do
       its('count') { should eq 3 }
     end
 
-### Request the IDs of all AWS VPN Gateways, then test in-depth using `aws_vpn_gateway`.
+### Request the IDs of all AWS VPN gateways, then test in-depth using `aws_vpn_gateway`.
+
     aws_vpn_gateways.vpn_gateway_ids.each do |vpn_gateway_id|
       describe aws_vpn_gateway(vpn_gateway_id) do
         it { should exists }

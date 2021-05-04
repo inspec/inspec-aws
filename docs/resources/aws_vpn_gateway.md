@@ -4,11 +4,11 @@ title: About the aws_vpn_gateway Resource
 
 # aws_vpn_gateway
 
-Use the `aws_vpn_gateway` InSpec audit resource to test the properties of a single AWS VPN Gateway.
+Use the `aws_vpn_gateway` InSpec audit resource to test the properties of a single AWS VPN gateway.
 
 ## Syntax
 
-An `aws_vpn_gateway` resource block declares the tests for a single AWS VPN Gateway by `vpn_gateway_id`.
+An `aws_vpn_gateway` resource block declares the tests for a single AWS VPN gateway by `vpn_gateway_id`.
 
     describe aws_vpn_gateway(vpn_gateway_id: 'vgw-014aef8a0689b8f43') do
       it { should exist }
@@ -22,11 +22,11 @@ The value of the `vpn_gateway_id` can be provided as a string.
 
 ### Parameters
 
-The AWS VPN Gateway ID is required.
+The AWS VPN gateway ID is required.
 
 #### vpn\_group\_id _(required)_
 
-The ID of the VPN Gateway ID:
+The ID of the VPN gateway:
 
 - must contain between 1 and 50 alphanumeric characters or hyphens
 - should start with `vgw-`
@@ -38,20 +38,19 @@ It can be passed either as a string or as a `vpn_gateway_id: 'value'` key-value 
 
 |Property               | Description |
 | ---                   | --- |
-|vpn\_gateway\_id | The user-supplied identifier of the AWS VPN Gateway. This identifier is a unique key that identifies a AWS VPN Gateway.|
-|state                 | The current state of the VPN Gateway. It's values are one of `pending`, `available`, `deleting`, `deleted`
-|type                  | The type of VPN connection the VPN gateway supports.
-|availability_zone     | The Availability Zone where the virtual private gateway was created. If not applicable, this field will be be empty.
-|vpc_id                | The ID of the associated VPC
-|amazon\_side\_asn     | The private Autonomous System Number (ASN) for the Amazon side of a BGP session.|
-|tags                  | All tags that are associated to the VPN Gateway|
-
+|vpn\_gateway\_id       | The identifier of the AWS VPN gateway. |
+|state                  | The current state of the VPN gateway. Possible values are: `pending`, `available`, `deleting`, `deleted`. |
+|type                   | The type of VPN connection that the VPN gateway supports. |
+|availability_zone      | The Availability Zone where the virtual private gateway was created. If not applicable, this field will be be empty. |
+|vpc_id                 | The ID of the associated VPC. |
+|amazon\_side\_asn      | The private Autonomous System Number (ASN) for the Amazon side of a BGP session. |
+|tags                   | All tags that are associated to the VPN gateway. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/EC2/Types/VpnGateway.html).
 
 ## Examples
 
-### Test that an VPN Gateway is available and attached
+### Test that a VPN Gateway is available and attached
 
     describe aws_vpn_gateway('vgw-014aef8a0689b8f43') do
         its('status') { should eq 'available' }
