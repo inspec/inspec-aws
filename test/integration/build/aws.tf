@@ -1942,3 +1942,9 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids         = ["subnet-09c1854d7a4e85728", "subnet-0e24f62a817862246"]
+  transit_gateway_id = "tgw-02850dffe1c3b222c"
+  vpc_id             = "vpc-08b86815ee2c22d53"
+}
