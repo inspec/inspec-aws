@@ -27,12 +27,14 @@ class AwsNetworkACL < AwsResourceBase
     return [] unless associations
     return @associated_subnets if @associated_subnets
 
-    @associated_subnets = associations.map { |association| association.subnet_id }
+    @associated_subnets = associations.map(&:subnet_id)
   end
 
   # MATCHERS
   def exists?
-    !failed_resource? || !@response.blank?
+    return false if failed_resource?
+
+    !@response.blank?
   end
 
   def associated?
@@ -53,7 +55,7 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def has_acl_entry_value?(cidr_block:, egress:, rule_action:)
-    invalid_args = method(__method__).parameters.select { |param| param.blank? }
+    invalid_args = method(__method__).parameters.select(&:blank?)
     raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(',')} cannot be blank" if cidr_block.blank?
     return false unless acl_entries
 
@@ -72,14 +74,14 @@ class AwsNetworkACL < AwsResourceBase
     return [] unless acl_entries
     return @egress if @egress
 
-    @egress = acl_entries.select { |entry| entry.egress }
+    @egress = acl_entries.select(&:egress)
   end
 
   def ingress
     return [] unless acl_entries
     return @ingress if @ingress
 
-    @ingress = acl_entries.select { |entry| !entry.egress }
+    @ingress = acl_entries.reject(&:egress)
   end
 
   def to_s
