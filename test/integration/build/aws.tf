@@ -154,6 +154,8 @@ variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "aws_network_acl_cidr_block" {}
 variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1950,7 +1952,7 @@ resource "aws_network_acl" "inspec-nw-acl" {
 
   egress {
     protocol   = "tcp"
-    rule_no    = 200
+    rule_no    = var.acl_egress_rule_number
     action     = "allow"
     cidr_block = var.aws_network_acl_cidr_block
     from_port  = 443
@@ -1959,7 +1961,7 @@ resource "aws_network_acl" "inspec-nw-acl" {
 
   ingress {
     protocol   = "tcp"
-    rule_no    = 100
+    rule_no    = var.acl_ingress_rule_number
     action     = "allow"
     cidr_block = var.aws_network_acl_cidr_block
     from_port  = 80

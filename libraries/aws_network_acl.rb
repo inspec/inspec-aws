@@ -3,6 +3,8 @@
 require 'aws_backend'
 
 class AwsNetworkACL < AwsResourceBase
+  EGRESS = 'egress'
+  INGRESS = 'ingress'
   name 'aws_network_acl'
   desc 'Verifies settings for a single AWS Network ACL'
   example "
@@ -130,7 +132,8 @@ class AwsNetworkACL < AwsResourceBase
   # creates entry_rule_number_* methods
   def create_rule_number_methods
     entries.each do |entry|
-      method_name = "entry_rule_number_#{entry.rule_number}"
+      egress_name = entry.egress ? EGRESS : INGRESS
+      method_name = "#{egress_name}_rule_number_#{entry.rule_number}"
       define_singleton_method method_name do
         entry
       end
@@ -139,7 +142,7 @@ class AwsNetworkACL < AwsResourceBase
 
   def validate_identifier
     raise ArgumentError, 'parameter `network_acl_id` cannot be blank' if @opts[:network_acl_id].blank?
-    raise ArgumentError, 'parameter `network_acl_id` should start with `vgw-` followed by alpha numeric characters' if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
+    raise ArgumentError, 'parameter `network_acl_id` should start with `acl-` followed by alpha numeric characters' if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
   end
 
   def cidr_block_and_rule_action_exists_for?(collection, cidr_block, rule_action)

@@ -211,7 +211,9 @@ module AWSInspecConfig
       aws_enable_cli_calls: 0,
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_network_acl_cidr_block: '10.3.0.0/18',
-      aws_network_acl_name: 'inspec-nw-acl'
+      aws_network_acl_name: 'inspec-nw-acl',
+      acl_egress_rule_number: 100,
+      acl_ingress_rule_number: 100,
   }
 
   def self.config

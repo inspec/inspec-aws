@@ -26,8 +26,8 @@ class AwsNetworkACLs < AwsResourceBase
                                    .register_column(:tags, field: :tags)
   # fields that needs to be customized as flattened Arrays
   %i(default_network_acl_ids associated_subnet_ids network_acl_association_ids entries_cidr_blocks entries_cidr_egress entries_icmp_type_codes
-     entries_icmp_type_code_types entries_ipv_6_cidr_blocks entries_port_ranges entries_protocols
-     entries_rule_actions entries_rule_numbers).each do |column|
+     entries_icmp_type_code_types entries_ipv_6_cidr_blocks entries_port_ranges entries_protocols entries_rule_actions
+     entries_rule_numbers egress_rule_numbers ingress_rule_numbers).each do |column|
     filter_table_config.send(:register_column, column, field: column, style: :simple)
   end
 
@@ -82,6 +82,8 @@ class AwsNetworkACLs < AwsResourceBase
     network_acl_hash[:entries_protocols] = mappable_attribute_from(network_acl.entries, 'protocol')
     network_acl_hash[:entries_rule_actions] = mappable_attribute_from(network_acl.entries, 'rule_action')
     network_acl_hash[:entries_rule_numbers] = mappable_attribute_from(network_acl.entries, 'rule_number')
+    network_acl_hash[:egress_rule_numbers] = mappable_attribute_from(network_acl.entries.select(&:egress), 'rule_number')
+    network_acl_hash[:ingress_rule_numbers] = mappable_attribute_from(network_acl.entries.reject(&:egress), 'rule_number')
     # Tags
     network_acl_hash[:tags] = network_acl.tags.blank? ? nil : map_tags(network_acl.tags)
     network_acl_hash.delete(:associations)
