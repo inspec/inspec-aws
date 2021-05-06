@@ -1946,6 +1946,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
 
   egress {
     protocol   = "tcp"
