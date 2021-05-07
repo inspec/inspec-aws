@@ -28,10 +28,10 @@ class AwsRedshiftClusterParameterGroupPathTest < Minitest::Test
     mock_parameter_groups = {}
     mock_parameter_groups[:parameter_group_name] = 'test1'
     mock_parameter_groups[:parameter_group_family] = 'test1'
-    mock_parameter_groups[:description] = 'test'
+    mock_parameter_groups[:description] = 'test1'
     mock_parameter_groups[:tags] = []
     data[:data] = { :parameter_groups => [mock_parameter_groups] }
-    data[:client] = Aws::EC2::Client
+    data[:client] = Aws::Redshift::Client
     @parameter_groups = AwsRedshiftClusterParameterGroup.new(parameter_group_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
