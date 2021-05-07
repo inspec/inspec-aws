@@ -46,7 +46,7 @@ See the [AWS documentation on Redshift Cluster Parameter Group](https://docs.aws
 
 ##### Check family whether it is correct or not
     describe aws_redshift_cluster_parameter_groups do
-       its('families') { should include "family_name" }
+       its('parameter_group_families') { should include "family_name" }
     end
 
 ## Matchers

@@ -20,7 +20,7 @@ Ensure that a parameter_group_name exists.
 Ensure that a parameter_group_name not exists.
 
     describe aws_redshift_cluster_parameter_group(parameter_group_name: 'dummy') do
-      it { should exist }
+      it { should_not exist }
     end
 
 ## Parameters
@@ -47,7 +47,7 @@ For additional information, see the [AWS documentation on Redshift Cluster Param
 
 ### Check the family name in the Cluster Parameter group.
     describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
-        its('family') { should eq 'family_name' }
+        its('parameter_group_family') { should eq 'family_name' }
     end
 
 ## Matchers
