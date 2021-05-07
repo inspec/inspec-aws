@@ -11,8 +11,8 @@ class AwsIamRole < AwsResourceBase
 
   attr_reader :path, :role_name, :role_id, :arn, :create_date,
               :assume_role_policy_document, :description, :max_session_duration,
-              :permissions_boundary_type, :permissions_boundary_arn, :attached_policies_names,
-              :attached_policies_arns
+              :permissions_boundary_type, :permissions_boundary_arn, :attached_policy_names,
+              :attached_policy_arns
 
   def initialize(opts = {})
     opts = { role_name: opts } if opts.is_a?(String)
@@ -61,12 +61,12 @@ class AwsIamRole < AwsResourceBase
   def fetch_attached_role_policies!
     catch_aws_errors do
       resp = @aws.iam_client.list_attached_role_policies({ role_name: @role_name }).attached_policies
-      @attached_policies_names = []
-      @attached_policies_arns  = []
+      @attached_policy_names = []
+      @attached_policy_arns  = []
       unless resp.empty?
         resp.each do |r|
-          @attached_policies_names << r.policy_name
-          @attached_policies_arns  << r.policy_arn
+          @attached_policy_names << r.policy_name
+          @attached_policy_arns  << r.policy_arn
         end
       end
     end

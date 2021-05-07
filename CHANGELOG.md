@@ -1,9 +1,29 @@
-<!-- latest_release 1.34.1 -->
+<!-- latest_release 1.38.0 -->
+## [v1.38.0](https://github.com/inspec/inspec-aws/tree/v1.38.0) (2021-05-04)
+
+#### Merged Pull Requests
+- Adding aws cloudformation stacks resource [#335](https://github.com/inspec/inspec-aws/pull/335) ([Jentul-Gift](https://github.com/Jentul-Gift))
+<!-- latest_release -->
+
+## [v1.37.0](https://github.com/inspec/inspec-aws/tree/v1.37.0) (2021-04-27)
+
+#### Merged Pull Requests
+- Adding new AWS Elasticache replication group resource [#326](https://github.com/inspec/inspec-aws/pull/326) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.36.0](https://github.com/inspec/inspec-aws/tree/v1.36.0) (2021-04-22)
+
+#### Merged Pull Requests
+- Adding aws ecrpublic repositories resource [#321](https://github.com/inspec/inspec-aws/pull/321) ([Jentul-Gift](https://github.com/Jentul-Gift))
+
+## [v1.35.0](https://github.com/inspec/inspec-aws/tree/v1.35.0) (2021-04-19)
+
+#### Merged Pull Requests
+- Standardize aws_iam_role attributes to match with aws_iam_user [#298](https://github.com/inspec/inspec-aws/pull/298) ([Vboivin](https://github.com/Vboivin))
+
 ## [v1.34.1](https://github.com/inspec/inspec-aws/tree/v1.34.1) (2021-04-16)
 
 #### Merged Pull Requests
 - Add docs team to codeowners [#324](https://github.com/inspec/inspec-aws/pull/324) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.34.0](https://github.com/inspec/inspec-aws/tree/v1.34.0) (2021-04-15)
 
