@@ -4,9 +4,9 @@ require 'aws_backend'
 
 class AwsRedshiftClusterParameterGroups < AwsResourceBase
   name 'aws_redshift_cluster_parameter_groups'
-  desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
+  desc 'Describes a parameter group.'
   example `
-    describe aws_ec2_eips do
+    describe aws_redshift_cluster_parameter_group(parameter_group_name: aws_parameter_group_name) do
       it { should exist }
     end
   `

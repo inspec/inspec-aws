@@ -4,9 +4,12 @@ require 'aws_backend'
 
 class AwsRedshiftClusterParameterGroup < AwsResourceBase
   name 'aws_redshift_cluster_parameter_group'
-  desc ''
-
-  example ""
+  desc 'Describes a parameter group.'
+  example '
+    describe aws_redshift_cluster_parameter_group(parameter_group_name: aws_parameter_group_name) do
+      it { should exist }
+    end
+  '
 
   def initialize(opts = {})
     opts = { public_ip: opts } if opts.is_a?(String)
