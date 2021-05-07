@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'object'
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-cloudtrail'
