@@ -2057,7 +2057,7 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id
+  replication_group_id          = var.aws_elasticache_replication_group_id 
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -2125,4 +2125,9 @@ resource "aws_db_parameter_group" "inspec_db_parameter_group" {
     name  = "character_set_client"
     value = "utf8"
   }
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = "test1"
+  family = "redshift-1.0"
 }
