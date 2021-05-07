@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
-  name 'aws_ec2_transit_gateway_routetable_associations'
+  name 'aws_ec2_transit_gateway_route_table_associations'
   desc 'Gets information about the associations for the specified transit gateway route table.'
   example `
     describe aws_ec2_transit_gateway_routetable_associations do
