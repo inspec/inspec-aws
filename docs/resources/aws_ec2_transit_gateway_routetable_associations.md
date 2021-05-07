@@ -28,8 +28,8 @@ See the [AWS documentation on Transit Gateway Route Table](https://docs.aws.amaz
 | Property | Description|
 | --- | --- |
 | transit_gateway_route_table_ids | The ID of the transit gateway route table. |
-| resource_type | The resource type. Valid values are vpc | vpn | direct-connect-gateway | peering | connect. |
-| resource_id | The ID of the resource. |
+| resource_types | The resource type. Valid values are vpc | vpn | direct-connect-gateway | peering | connect. |
+| resource_ids | The ID of the resource. |
 | states | The state of the route table are available, deleting, deleted, pending. |
 
 ## Examples
