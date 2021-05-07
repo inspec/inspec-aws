@@ -7,7 +7,7 @@ aws_transit_gateway_route_table_id = attribute(:aws_transit_gateway_route_table_
 control 'aws-rc2-transit-gateway-routetable-associations-v1.0.0' do
   impact 1.0
   title 'Gets information about the associations for the specified transit gateway route table.'
-  describe aws_ec2_transit_gateway_routetable_associations(transit_gateway_route_table_id: aws_transit_gateway_route_table_id) do
+  describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: aws_transit_gateway_route_table_id) do
     it { should exist }
     its('count') { should be <= 100 }
     its('transit_gateway_attachment_ids') { should include aws_transit_gateway_attachment_id }
