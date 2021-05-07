@@ -3,13 +3,13 @@ title: About the aws_ec2_dhcp_options Resource
 platform: aws
 ---
 
-# aws\_ec2\_dhcp\_options
+# aws_ec2_dhcp_options
 
-Use the `aws_ec2_dhcp_options` InSpec audit resource to test properties of multiple AWS DHCP Options.
+Use the `aws_ec2_dhcp_options` InSpec audit resource to test properties of multiple AWS DHCP options sets.
 
 ## Syntax
 
-Ensure that an `aws_ec2_dhcp_options` exists
+Ensure that an `aws_ec2_dhcp_options` exists.
 
     describe aws_ec2_dhcp_options do
       it { should exist }
@@ -24,16 +24,16 @@ Ensure that an `aws_ec2_dhcp_options` exists
 
 | Property | Description |
 | --- | --- |
-| domain_names | The list of dhcp configurations domain names|
-| domain_name_servers | The list of domain name servers in the dhcp configuration |
-| ntp_servers | The list of ntp servers in the dhcp configuration |
-| netbios_name_servers | The list of netbios name servers in the dhcp configuration |
-| netbios_node_types | The list of netbios node types in the dhcp configuration |
-| tags | The tags of the DHCP Options. |
+| domain_names          | The list of DHCP configurations domain names. |
+| domain_name_servers   | The list of domain name servers in the DHCP configuration. |
+| ntp_servers           | The list of ntp servers in the DHCP configuration. |
+| netbios_name_servers  | The list of NetBIOS name servers in the DHCP configuration. |
+| netbios_node_types    | The list of NetBIOS node types in the DHCP configuration. |
+| tags                  | The tags of the DHCP options. |
 
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeDhcpOptions` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeDhcpOptions` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
