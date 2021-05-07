@@ -1,14 +1,15 @@
 ---
-title: About the AWS Network ACL Resource
+title: About the AWS network ACL Resource
+platform: aws
 ---
 
 # aws_network_acl
 
-Use the `aws_network_acl` InSpec audit resource to test the properties of a single Amazon Network ACL.
+Use the `aws_network_acl` InSpec audit resource to test the properties of a single Amazon network ACL.
 
 ## Syntax
 
-An `aws_network_acl` resource block declares the tests for a single Amazon Network ACL by `network_acl_id`.
+An `aws_network_acl` resource block declares the tests for a single Amazon network ACL by `network_acl_id`.
 
     describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
       it { should exist }
@@ -22,11 +23,11 @@ The value of the `network_acl_id` can be provided as a string.
 
 ### Parameters
 
-The Network ACL ID is required.
+The network ACL ID is required.
 
 #### network\_acl\_id _(required)_
 
-The ID of the Network ACL:
+The ID of the network ACL:
 
 - must contain between 1 and 50 alphanumeric characters or hyphens
 - should start with `acl-`
@@ -42,22 +43,22 @@ It can be passed either as a string or as a `network_acl_id: 'value'` key-value 
 |is_default       | Indicates whether this is the default network ACL for the VPC. |
 |vpc_id           | The ID of the VPC for the network ACL.                         |
 |owner_id         | The ID of the AWS account that owns the network ACL.           |
-|associated_subnet_ids | The ID of the associated Subnets to the network ACL.      |
+|associated_subnet_ids | The ID of the associated subnets to the network ACL.      |
 |egress           | All rules that are applied to traffic leaving the subnet.      |
 |ingress          | All rules that are applied to traffic incoming to the subnet.  |
 |associations     | All subnet associations on the network ACL.                    |
-|tags             | A hash, with each key-value pair corresponding to a network ACL. |
-|egress_rule_number_<ACL_RULE_NUMBER> | This is a dynamically formed property of the Egress ACL rule specific to ACL_RULE_NUMBER. Please find below for nested details and examples |
-|ingress_rule_number_<ACL_RULE_NUMBER> | This is a dynamically formed property of the Ingress ACL rule specific to ACL_RULE_NUMBER. Please find below for nested details and examples |
+|tags             | A hash with each key-value pair corresponding to a network ACL. |
+|egress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the egress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
+|ingress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the ingress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
 
-## Nested Properties of dynamic Egress and Ingress rule number properties
+## Nested Properties of dynamic egress and ingress rule number properties
 
 |Nested Property     | Description                                                                          |
 | ---                | ---                                                                                  |
 |cidr_block          | The IPv4 network range to allow or deny, in CIDR notation.                           |
 |ipv_6_cidr_block    | The IPv6 network range to allow or deny, in CIDR notation.                           |
-|protocol            | The protocol specified in the entry (`tcp` | `udp` | `icmp` or a protocol number).   |
-|rule_action         | Allows or denies the matching traffic (`allow` | `deny`).                            |
+|protocol            | The protocol specified in the entry. Accepted values are: `tcp`, `udp`, `icmp`, or a protocol number. |
+|rule_action         | Allows or denies the matching traffic. Accepted values are: `allow` or `deny`.       |
 |rule_number         | The number of an entry (in other words, rule) in the set of ACL entries.             |
 |port_range.from     | The start of the port range specified in the entry.                                  |
 |port_range.to       | The end of the port range specified in the entry.                                    |
@@ -68,19 +69,19 @@ You can find detailed documentation at [NetworkAclEntry](https://docs.aws.amazon
 
 ## Examples
 
-### Test that if a Network ACL is default for the VPC
+### Test that if a network ACL is default for the VPC
 
     describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
         it { should be_default }
     end
 
-### Test that the ID of the VPC is `vpc-00727fc4213acee4a` 
-    
+### Test that the ID of the VPC is `vpc-00727fc4213acee4a`
+
     describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
         its('vpc_id') { should eq 'vpc-00727fc4213acee4a' }
     end
 
-### Test that the Associated Subnet IDs include `subnet-07a323891825bc312`
+### Test that the Associated subnet IDs include `subnet-07a323891825bc312`
 
     describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
         its('associated_subnet_ids') { should include 'subnet-07a323891825bc312' }
@@ -103,7 +104,6 @@ You can find detailed documentation at [NetworkAclEntry](https://docs.aws.amazon
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
-
 
 ### exist
 
@@ -156,6 +156,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeNetworkAcls` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeNetworkAcls` action set to `allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Network ACL](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for network ACL](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
