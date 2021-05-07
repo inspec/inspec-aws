@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_route\_table
 
-Use the `aws_route_table` InSpec audit resource to test properties of a single Route Table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
+Use the `aws_route_table` InSpec audit resource to test properties of a single Route Table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed. This particular resource also test properties of a Route.
 
 ## Syntax
 
@@ -28,6 +28,8 @@ This can be passed either as a string or as a `route_table_id: 'value'` key-valu
 
 See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
 
+See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html).
+
 ## Properties
 
 |Property           | Description|
@@ -35,10 +37,25 @@ See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc
 |route\_table\_id   | The ID of the route table.  |
 |owner\_id          | The ID of the AWS account that owns the route table.  |
 |vpc\_id            | The ID of the VPC.  |
-|routes             | The routes in the route table.  |
+|routes             | The routes in the route table. |
 |associations       | The associations between the route table and one or more subnets.  |
 |propagating\_vgws  | Any virtual private gateway (VGW) propagating routes.  |
 |tags               | Any tags assigned to the route table.  |
+| routes(carrier\_gateway\_id) | The ID of the carrier gateway. |
+| routes(destination\_cidr\_block) | The IPv4 CIDR block used for the destination match. |
+| routes(destination\_ipv\_6\_cidr\_block) | The IPv6 CIDR block used for the destination match. |
+| routes(destination\_prefix\_list\_id) | The prefix of the AWS service. |
+| routes(egress\_only\_internet\_gateway\_id) | The ID of the egress-only internet gateway. |
+| routes(gateway\_id) | The ID of a gateway attached to your VPC. |
+| routes(instance\_id) | The ID of a NAT instance in your VPC. |
+| routes(local\_gateway\_id) | The ID of the local gateway. |
+| routes(nat\_gateway\_id) | The ID of a NAT gateway. |
+| routes(network\_interface\_id) | The ID of the network interface. |
+| routes(transit\_gateway\_id) | The ID of a transit gateway. |
+| routes(vpc\_peering\_connection\_id) | The ID of a VPC peering connection. |
+| routes(instance\_owner\_id) | The owner ID of a NAT instance in your VPC. |
+| routes(origin) | Describes how the route was created. |
+| routes(state) | The state of the route. |
 
 ## Examples
 
@@ -65,6 +82,11 @@ See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc
 ##### Ensure there are no virtual private gateway (VGW) propagating routes
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('propagating_vgws') { should be_empty }
+    end
+
+##### Confirm that the route table has expected destination_cidr_block of the route
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('routes.first.destination_cidr_block') { should eq '10.0.0.0/16' }
     end
 
 ## Matchers
