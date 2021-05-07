@@ -19,7 +19,7 @@ An `aws_ec2_transit_gateway_routetable_associations` resource block uses an opti
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does expect transit_gateway_route_table_id as a required parameter.
 
 See the [AWS documentation on Transit Gateway Route Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetableassociation.html) for additional information.
 
