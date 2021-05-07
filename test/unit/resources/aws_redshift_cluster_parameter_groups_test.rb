@@ -20,7 +20,7 @@ class AwsRedshiftClusterParameterGroupsPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :describe_addresses
+    data[:method] = :describe_cluster_parameter_groups
     mock_parameter_groups = {}
     mock_parameter_groups[:parameter_group_name] = 'test1'
     mock_parameter_groups[:parameter_group_family] = 'test1'
@@ -40,18 +40,14 @@ class AwsRedshiftClusterParameterGroupsPathTest < Minitest::Test
   end
 
   def test_parameter_group_names
-    assert_equal(@parameter_groups.parameter_group_names, 'test1')
+    assert_equal(@parameter_groups.parameter_group_names, ['test1'])
   end
 
   def test_parameter_group_families
-    assert_equal(@parameter_groups.parameter_group_families, 'test1')
+    assert_equal(@parameter_groups.parameter_group_families, ['test1'])
   end
 
   def test_descriptions
-    assert_equal(@parameter_groups.descriptions, 'test1')
-  end
-
-  def test_tags
-    assert_equal(@parameter_groups.tags, [])
+    assert_equal(@parameter_groups.descriptions, ['test1'])
   end
 end
