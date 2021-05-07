@@ -15,34 +15,40 @@ class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
 
   FilterTable.create
              .register_column(:transit_gateway_attachment_ids,                   field: :transit_gateway_attachment_id)
+             .register_column(:resource_ids,                                     field: :resource_id)
+             .register_column(:resource_types,                                   field: :resource_type)
              .register_column(:states,                                           field: :state)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(transit_gateway_route_table_id))
+    @query_params = {}
+    @query_params[:transit_gateway_route_table_id] = opts[:transit_gateway_route_table_id]
+    raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
+    @query_params[:transit_gateway_route_table_id] = opts[:transit_gateway_route_table_id]
     @table = fetch_data
   end
 
   def fetch_data
-    association_rows = []
-    pagination_options = {}
+    rows = []
+    @query_params[:max_results] = 1000
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.get_transit_gateway_route_table_associations(pagination_options)
+        @api_response = @aws.compute_client.get_transit_gateway_route_table_associations(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
-
-      require 'pry'; binding.pry
-      @api_response.associations.each do |res|
-        association_rows += [{
-          transit_gateway_attachment_id: res.transit_gateway_attachment_id,
-          state: res.state,
+      @api_response.associations.each do |association|
+        rows += [{
+          transit_gateway_attachment_id: association.transit_gateway_attachment_id,
+          resource_id: association.resource_id,
+          resource_type: association.resource_type,
+          state: association.state,
         }]
       end
       break unless @api_response.next_token
-      pagination_options = { next_token: @api_response.next_token }
+      @query_params[:next_token] = @api_response.next_token
     end
-    @table = association_rows
+    rows
   end
 end
