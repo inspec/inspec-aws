@@ -225,7 +225,6 @@ module AWSInspecConfig
       aws_db_parameter_group_name: 'inspec-mysql-db-group-param',
       aws_db_parameter_group_family_name: 'mysql5.6',
       aws_db_parameter_group_description: 'Inspec Managed parameter group for mysql5.6',
-      aws_vpn_gw_name: 'inspec_vpn_gw',
       aws_db_option_group_name: 'option-group-test-terraform2',
       aws_db_option_group_description: 'Terraform Option Group',
       aws_db_option_group_engine_name: 'sqlserver-ee',
