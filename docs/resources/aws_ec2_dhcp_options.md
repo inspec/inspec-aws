@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_dhcp\_options
 
-Use the `aws_ec2_dhcp_options` InSpec audit resource to test properties of a single AWS DHCP Options.
+Use the `aws_ec2_dhcp_options` InSpec audit resource to test properties of multiple AWS DHCP Options.
 
 ## Syntax
 

@@ -24,7 +24,7 @@ Ensure that an `aws_ec2_dhcp_option` exists
     end
 
 #### Parameters
-This resource accepts a one of the below mentioned parameters
+One of either the DHCP options' ID or name must be be provided.
 
 ##### dhcp\_options\_id 
 
