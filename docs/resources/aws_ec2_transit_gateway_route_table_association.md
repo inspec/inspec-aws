@@ -39,7 +39,7 @@ For additional information, see the [AWS documentation on Transit Gateway Route 
       its('transit_gateway_attachment_id') { should eq 'tgw-attach-04e7d012fb9c478a6' }
     end
 
-### Ensure that the state is `available` or `deleted`.
+### Ensure that the state is available or deleted.
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
         its('state') { should eq 'available' }
     end
