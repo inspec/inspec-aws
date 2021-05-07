@@ -1942,3 +1942,8 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = "test1"
+  family = "redshift-1.0"
+}
