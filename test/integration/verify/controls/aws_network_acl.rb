@@ -1,7 +1,7 @@
 network_acl_id = attribute(:network_acl_id, value: '', description: 'The ID of the network ACL.')
-subnet_id = attribute(:subnet_id, value: '', description: 'The ID of the subnet involved in the association.')
+subnet_id = attribute(:aws_subnet_id, value: '', description: 'The ID of the subnet involved in the association.')
 acl_cidr_block = attribute(:aws_network_acl_cidr_block, value: '', description: 'The IPv4 CIDR range specified in the entry.')
-vpc_id = attribute(:vpc_id, value: '', description: 'The ID of the VPC for the network ACL.')
+vpc_id = attribute(:aws_vpc_id, value: '', description: 'The ID of the VPC for the network ACL.')
 
 title 'Test single AWS Network ACL'
 control 'aws-network-acl-1.0' do
