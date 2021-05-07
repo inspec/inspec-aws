@@ -155,7 +155,7 @@ variable "aws_route_53_zone" {}
 
 provider "aws" {
   version = ">= 2.0.0"
-  region  = var.aws_region
+  region  = "eu-west-1"
 }
 
 data "aws_caller_identity" "creds" {}
@@ -1824,6 +1824,39 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
   tags = {
     Name = var.aws_ecr_repository_name
   }
+}
+
+resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
+  repository = aws_ecr_repository.inspec_test_ecr_repository.name
+
+  policy = <<EOF
+  {
+      "Version": "2008-10-17",
+      "Statement": [
+          {
+              "Sid": "new policy",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:BatchGetImage",
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:PutImage",
+                  "ecr:InitiateLayerUpload",
+                  "ecr:UploadLayerPart",
+                  "ecr:CompleteLayerUpload",
+                  "ecr:DescribeRepositories",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:ListImages",
+                  "ecr:DeleteRepository",
+                  "ecr:BatchDeleteImage",
+                  "ecr:SetRepositoryPolicy",
+                  "ecr:DeleteRepositoryPolicy"
+              ]
+          }
+      ]
+  }
+  EOF
 }
 
 resource "aws_ecrpublic_repository" "inspec_test_ecrpublic_repository" {

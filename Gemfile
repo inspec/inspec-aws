@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'bundle'
 # Note that 'aws-sdk' pulls in a large number of libraries, choose explicitly those to include instead
-# gem 'aws-sdk', '~> 3'
+gem 'aws-sdk', '~> 3'
 #
 # See service list here: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/index.html
 #
