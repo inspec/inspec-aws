@@ -8,15 +8,13 @@ aws_compute_environment_order = attribute("aws_compute_environment_order", defau
 aws_compute_environment_compute_environment = attribute("aws_compute_environment_compute_environment", default: "arn:aws:batch:us-east-2:112758395563:compute-environment/test1", description: "")
 aws_tags = attribute("aws_tags", default: "", description: "")
 
-describe aws_batch_job_queue(job_queue_name: aws_job_queue_name) do
+describe aws_batch_job_queues do
   it { should exist }
-  its('job_queue_name') { should eq aws_job_queue_name }
-  its('job_queue_arn') { should eq aws_job_queue_arn }
-  its('state') { should eq aws_state }
-  its('status') { should eq aws_status }
-  its('status_reason') { should eq aws_status_reason }
-  its('priority') { should eq aws_priority }
-  its('compute_environment_order.first.order') { should eq aws_compute_environment_order }
-  its('compute_environment_order.first.compute_environment') { should eq aws_compute_environment_compute_environment }
-  its('tags') { should be_empty }
+  its('job_queue_names') { should include aws_job_queue_name }
+  its('job_queue_arns') { should include aws_job_queue_arn }
+  its('states') { should include aws_state }
+  its('statuses') { should include aws_status }
+  its('status_reasons') { should include aws_status_reason }
+  its('priorities') { should include aws_priority }
+  its('tags') { should_not be_empty }
 end
