@@ -2,27 +2,30 @@
 
 require 'aws_backend'
 
-class AwsEc2Eips < AwsResourceBase
-  name 'aws_ec2_eips'
-  desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
+class AWSAutoScalingScalingPolicies < AwsResourceBase
+  name 'aws_autoscaling_scaling_policies'
+  desc 'Describes the policies for the specified Auto Scaling group.'
   example `
-    describe aws_ec2_eips do
+    describe aws_autoscaling_scaling_policies do
       it { should exist }
     end
   `
   attr_reader :table
 
   FilterTable.create
-             .register_column(:instance_ids,                   field: :instance_id)
-             .register_column(:public_ips,                     field: :public_ip)
-             .register_column(:allocation_ids,                 field: :allocation_id)
-             .register_column(:domains,                        field: :domain)
-             .register_column(:association_ids,                field: :association_id)
-             .register_column(:network_interface_ids,          field: :network_interface_id)
-             .register_column(:network_interface_owner_ids,    field: :network_interface_owner_id)
-             .register_column(:private_ip_addresss,            field: :private_ip_address)
-             .register_column(:public_ipv_4_pools,             field: :public_ipv_4_pool)
-             .register_column(:network_border_groups,          field: :network_border_group)
+             .register_column(:auto_scaling_group_names,        field: :auto_scaling_group_name)
+             .register_column(:policy_names,                    field: :policy_name)
+             .register_column(:policy_arns,                     field: :policy_arn)
+             .register_column(:policy_types,                    ield: :policy_type)
+             .register_column(:adjustment_types,                field: :adjustment_type)
+             .register_column(:min_adjustment_steps,            field: :min_adjustment_step)
+             .register_column(:min_adjustment_magnitudes,       field: :min_adjustment_magnitude)
+             .register_column(:scaling_adjustments,             field: :scaling_adjustment)
+             .register_column(:cooldowns,                       field: :cooldown)
+             .register_column(:step_adjustments,                field: :step_adjustments)
+             .register_column(:metric_aggregation_types,        field: :metric_aggregation_type)
+             .register_column(:estimated_instance_warmups,      field: :estimated_instance_warmup)
+             .register_column(:target_tracking_configurations,  field: :target_tracking_configuration)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -33,9 +36,9 @@ class AwsEc2Eips < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @addrs = @aws.compute_client.describe_addresses
+      @scaling_policies = @aws.autoscaling_client.describe_policies
     end
-    return [] if !@addrs || @addrs.empty?
-    @table = @addrs.addresses.map(&:to_h)
+    return [] if !@scaling_policies || @scaling_policies.empty?
+    @table = @scaling_policies.scaling_policies.map(&:to_h)
   end
 end
