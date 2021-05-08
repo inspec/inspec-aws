@@ -30,6 +30,7 @@ require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
 require 'aws-sdk-athena'
+require 'aws-sdk-applicationautoscaling'
 
 # AWS Inspec Backend Classes
 #

@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
-  name 'aws_application_autoscaling_scalable_target'
-  desc 'Gets information about the scalable targets in the specified namespace.'
+class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
+  name 'aws_application_autocaling_scaling_policy'
+  desc 'Describes the scaling policies'
 
   example "
-    describe aws_application_autoscaling_scalable_target(service_namespace: 'ec2') do
+    describe aws_application_autocaling_scaling_policy(service_namespace: 'ec2') do
       it { should exist }
     end
   "
@@ -20,23 +20,23 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: service_namespace must be provided" unless opts[:service_namespace] && !opts[:service_namespace].empty?
     @display_name = opts[:service_namespace]
     catch_aws_errors do
-      resp = @aws.applicationautoscaling_client.describe_scalable_targets({ service_namespace: opts[:service_namespace] })
-      @scalable_targets = resp.scalable_targets[0].to_h
-      create_resource_methods(@scalable_targets)
+      resp = @aws.applicationautoscaling_client.describe_scaling_policies({ service_namespace: opts[:service_namespace] })
+      @scaling_policies = resp.scaling_policies[0].to_h
+      create_resource_methods(@scaling_policies)
     end
   end
 
   def id
     return nil unless exists?
-    @scalable_targets[:service_namespace]
+    @scaling_policies[:service_namespace]
   end
 
   def exists?
-    !@scalable_targets.nil? && !@scalable_targets.empty?
+    !@scaling_policies.nil? && !@scaling_policies.empty?
   end
 
   def encrypted?
-    @scalable_targets[:encrypted]
+    @scaling_policies[:encrypted]
   end
 
   def to_s
