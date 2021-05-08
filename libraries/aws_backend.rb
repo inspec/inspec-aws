@@ -29,6 +29,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-athena'
 
 # AWS Inspec Backend Classes
 #

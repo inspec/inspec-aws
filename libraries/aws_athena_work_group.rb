@@ -6,44 +6,40 @@ class AWSAthenaWorkGroup < AwsResourceBase
   name 'aws_athena_work_group'
   desc 'Returns information about the workgroup with the specified name.'
 
-  example "
-    describe aws_athena_work_group(public_ip: '192.0.2.0') do
-      it { should eq '192.0.2.0' }
+  example `
+    describe aws_athena_work_group(work_group: 'test1') do
+      it { should exist }
     end
-
-    describe aws_athena_work_group(public_ip: '192.0.2.0') do
-      it { should exits }
-    end
-  "
+  `
 
   def initialize(opts = {})
-    opts = { public_ip: opts } if opts.is_a?(String)
+    opts = { work_group: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:public_ip])
+    validate_parameters(required: [:work_group])
 
-    raise ArgumentError, "#{@__resource_name__}: public_ip must be provided" unless opts[:public_ip] && !opts[:public_ip].empty?
-    @display_name = opts[:public_ip]
+    raise ArgumentError, "#{@__resource_name__}: work_group must be provided" unless opts[:work_group] && !opts[:work_group].empty?
+    @display_name = opts[:work_group]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_addresses({ public_ips: [opts[:public_ip]] })
-      @addresses = resp.addresses[0].to_h
-      create_resource_methods(@addresses)
+      resp = @aws.athena_client.get_work_group({ work_group: opts[:work_group] })
+      @work_group = resp.work_group.to_h
+      create_resource_methods(@work_group)
     end
   end
 
   def id
     return nil unless exists?
-    @addresses[:public_ip]
+    @work_group[:work_group]
   end
 
   def exists?
-    !@addresses.nil? && !@addresses.empty?
+    !@work_group.nil? && !@work_group.empty?
   end
 
   def encrypted?
-    @addresses[:encrypted]
+    @work_group[:encrypted]
   end
 
   def to_s
-    "EIP #{@display_name}"
+    "WorkGroup Name: #{@display_name}"
   end
 end

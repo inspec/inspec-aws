@@ -2,27 +2,23 @@
 
 require 'aws_backend'
 
-class AwsEc2Eips < AwsResourceBase
-  name 'aws_ec2_eips'
-  desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
+class AWSAthenaWorkGroups < AwsResourceBase
+  name 'aws_athena_work_groups'
+  desc 'Lists available workgroups for the account.'
+
   example `
-    describe aws_ec2_eips do
+    describe aws_athena_work_groups do
       it { should exist }
     end
   `
+
   attr_reader :table
 
   FilterTable.create
-             .register_column(:instance_ids,                   field: :instance_id)
-             .register_column(:public_ips,                     field: :public_ip)
-             .register_column(:allocation_ids,                 field: :allocation_id)
-             .register_column(:domains,                        field: :domain)
-             .register_column(:association_ids,                field: :association_id)
-             .register_column(:network_interface_ids,          field: :network_interface_id)
-             .register_column(:network_interface_owner_ids,    field: :network_interface_owner_id)
-             .register_column(:private_ip_addresss,            field: :private_ip_address)
-             .register_column(:public_ipv_4_pools,             field: :public_ipv_4_pool)
-             .register_column(:network_border_groups,          field: :network_border_group)
+             .register_column(:names,                         field: :name)
+             .register_column(:states,                        field: :state)
+             .register_column(:descriptions,                  field: :description)
+             .register_column(:creation_times,                field: :creation_time)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -32,10 +28,24 @@ class AwsEc2Eips < AwsResourceBase
   end
 
   def fetch_data
-    catch_aws_errors do
-      @addrs = @aws.compute_client.describe_addresses
+    work_groups_rows = []
+    pagination_options = {}
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.athena_client.list_work_groups(pagination_options)
+      end
+      return [] if !@api_response || @api_response.empty?
+      @api_response.work_groups.each do |work_group|
+        work_groups_rows += [{
+          name: work_group.name,
+          state: work_group.state,
+          description: work_group.description,
+          creation_time: work_group.creation_time,
+        }]
+      end
+      break unless @api_response.next_token
+      pagination_options = { next_token: @api_response.next_token }
     end
-    return [] if !@addrs || @addrs.empty?
-    @table = @addrs.addresses.map(&:to_h)
+    @table = work_groups_rows
   end
 end
