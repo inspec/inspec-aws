@@ -40,13 +40,13 @@ class AWSBatchJobQueues < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.job_queues.each do |job_queue|
         job_queue_rows += [{
-            job_queue_name: job_queue.job_queue_name,
-            job_queue_arn: job_queue.job_queue_arn,
-            state: job_queue.state,
-            status: job_queue.status,
-            status_reason: job_queue.status_reason,
-            priority: job_queue.priority,
-            tags: map_tags(job_queue[:tags]),
+          job_queue_name: job_queue.job_queue_name,
+          job_queue_arn: job_queue.job_queue_arn,
+          state: job_queue.state,
+          status: job_queue.status,
+          status_reason: job_queue.status_reason,
+          priority: job_queue.priority,
+          tags: map_tags(job_queue[:tags]),
         }]
       end
       break unless @api_response.next_token

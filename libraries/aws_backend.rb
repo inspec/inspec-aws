@@ -32,6 +32,7 @@ require 'rspec/expectations'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-batch'
+require 'aws-sdk-cognitoidentity'
 
 # AWS Inspec Backend Classes
 #
@@ -199,6 +200,10 @@ class AwsConnection
 
   def batch_client
     aws_client(Aws::Batch::Client)
+  end
+
+  def cognitoidentity_client
+    aws_client(Aws::CognitoIdentity::Client)
   end
 end
 

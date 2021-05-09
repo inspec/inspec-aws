@@ -42,15 +42,15 @@ class AWSBatchComputeEnvironments < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.compute_environments.each do |compute_environment|
         compute_environment_rows += [{
-            compute_environment_name: compute_environment.compute_environment_name,
-            compute_environment_arn: compute_environment.compute_environment_arn,
-            ecs_cluster_arn: compute_environment.ecs_cluster_arn,
-            tags: map_tags(compute_environment[:tags]),
-            type: compute_environment.type,
-            state: compute_environment.state,
-            status: compute_environment.status,
-            status_reason: compute_environment.status_reason,
-            service_role: compute_environment.service_role,
+          compute_environment_name: compute_environment.compute_environment_name,
+          compute_environment_arn: compute_environment.compute_environment_arn,
+          ecs_cluster_arn: compute_environment.ecs_cluster_arn,
+          tags: map_tags(compute_environment[:tags]),
+          type: compute_environment.type,
+          state: compute_environment.state,
+          status: compute_environment.status,
+          status_reason: compute_environment.status_reason,
+          service_role: compute_environment.service_role,
         }]
       end
       break unless @api_response.next_token

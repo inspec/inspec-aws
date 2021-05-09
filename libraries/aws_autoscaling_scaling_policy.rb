@@ -25,7 +25,6 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.autoscaling_client.describe_policies({ auto_scaling_group_name: opts[:auto_scaling_group_name] })
       @scaling_policies = resp.scaling_policies[0].to_h
-    #   require "pry"; binding.pry
       create_resource_methods(@scaling_policies)
     end
   end

@@ -42,15 +42,15 @@ class AWSBatchJobDefinitions < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.job_definitions.each do |job_definition|
         job_definition_rows += [{
-            job_definition_name: job_definition.job_definition_name,
-            job_definition_arn: job_definition.job_definition_arn,
-            revision: job_definition.revision,
-            status: job_definition.status,
-            type: job_definition.type,
-            parameters: job_definition.parameters,
-            tags: job_definition.tags,
-            propagate_tags: job_definition.propagate_tags,
-            platform_capabilities: job_definition.platform_capabilities,
+          job_definition_name: job_definition.job_definition_name,
+          job_definition_arn: job_definition.job_definition_arn,
+          revision: job_definition.revision,
+          status: job_definition.status,
+          type: job_definition.type,
+          parameters: job_definition.parameters,
+          tags: job_definition.tags,
+          propagate_tags: job_definition.propagate_tags,
+          platform_capabilities: job_definition.platform_capabilities,
         }]
       end
       break unless @api_response.next_token
