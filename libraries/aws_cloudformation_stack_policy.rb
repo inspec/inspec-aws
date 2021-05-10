@@ -35,11 +35,11 @@ class AwsCloudformationStackPolicy < AwsResourceBase
 
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Resource] = criteria[:Resource].is_a?(Array) ? criteria[:Resource].sort : criteria[:Resource]
-    statements.each do |s|
-      actions    = s[:Action] || []
-      notactions = s[:NotAction] || []
-      effect     = s[:Effect]
-      resource   = s[:Resource].is_a?(Array) ? s[:Resource].sort : s[:Resource]
+    statements.any? do |statement|
+      actions    = statement[:Action] || []
+      notactions = statement[:NotAction] || []
+      effect     = statement[:Effect]
+      resource   = statement[:Resource].is_a?(Array) ? statement[:Resource].sort : statement[:Resource]
 
       action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
 
@@ -49,9 +49,8 @@ class AwsCloudformationStackPolicy < AwsResourceBase
 
       resource_match = criteria[:Resource].nil? ? true : resource.eql?(criteria[:Resource])
 
-      statement_match.push(action_match && no_action_match && effect_match && resource_match)
+      (action_match && no_action_match && effect_match && resource_match)
     end
-    statement_match.include?(true)
   end
 
   def statement_count
