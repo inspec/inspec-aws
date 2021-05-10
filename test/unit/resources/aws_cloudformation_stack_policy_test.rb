@@ -1,6 +1,6 @@
+require 'helper'
 require 'aws-sdk-core'
 require 'aws_cloudformation_stack_policy'
-require 'helper'
 require_relative 'mock/aws_cloudformation_stack_policy_mock'
 
 
