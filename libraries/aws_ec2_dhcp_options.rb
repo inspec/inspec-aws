@@ -35,9 +35,7 @@ class AwsEc2DHCPOptions< AwsResourceBase
   def fetch_data
     dhcp_options = []
     paginate_request do |api_response|
-      dhcp_options += api_response.dhcp_options.map do |dhcp_option|
-        flat_hash_from(dhcp_option)
-      end
+      dhcp_options += api_response.dhcp_options.map { |dhcp_option| flat_hash_from(dhcp_option) }
     end
     dhcp_options
   end
@@ -50,7 +48,7 @@ class AwsEc2DHCPOptions< AwsResourceBase
       api_response = catch_aws_errors do
         @aws.compute_client.describe_dhcp_options(pagination_options)
       end
-      return dhcp_options if api_response.blank?
+      return if api_response.blank?
 
       yield api_response
       break unless api_response.next_token
