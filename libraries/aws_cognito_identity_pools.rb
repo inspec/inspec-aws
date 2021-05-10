@@ -20,8 +20,10 @@ class AWSCognitoIdentityPools < AwsResourceBase
 
   def initialize(opts = {})
     # opts = { max_results: opts } if opts.is_a?(String)
+    # require "pry";binding.pry
+
     super(opts)
-    validate_parameters(required: %i(max_results))
+    validate_parameters(required: [:max_results])
     # validate_parameters(required: %i(max_results))
     @query_params = {}
     @query_params[:max_results] = opts[:max_results]
@@ -31,8 +33,11 @@ class AWSCognitoIdentityPools < AwsResourceBase
   end
 
   def fetch_data
+    require "pry";binding.pry
+
     rows = []
-    # @query_params[:max_results] = 1000
+    @query_params[:max_results] = 1000
+    require "pry";binding.pry
     loop do
         # require "pry";binding.pry
       catch_aws_errors do
