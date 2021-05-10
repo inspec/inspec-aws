@@ -67,4 +67,18 @@ class AwsCloudformationStackPolicy < AwsResourceBase
   def to_s
     "AWS CloudFormation Stack Policy  for #{@stack_name}"
   end
+
+  private
+
+  def statements
+    @statements ||= calculate_statements || []
+  end
+
+  def calculate_statements
+    return unless @stack_policy_body
+
+    document_string = @stack_policy_body.stack_policy_body
+    document = JSON.parse(document_string, symbolize_names: true)
+    document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
+  end
 end
