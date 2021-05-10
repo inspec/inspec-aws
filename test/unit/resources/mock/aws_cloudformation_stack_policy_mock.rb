@@ -25,19 +25,15 @@ class AwsCloudformationStackPolicyMock < AwsBaseResourceMock
   end
 
   def stub_data
-    stub_data = []
-
-    statements = { :client => Aws::CloudFormation::Client,
-                   :method => :get_stack_policy,
-                   :data => { :stack_policy_body => @stack[:stack_policy_body],
-                   :stack_name => @stack[:stack_name]
-                  }}
-
-    stub_data += [statements]
-
+    statements = {
+      client: Aws::CloudFormation::Client,
+      method: :get_stack_policy,
+      data: {
+        stack_policy_body: @stack[:stack_policy_body],
+      },
+    }
+    [statements]
   end
 
-  def stack
-    @stack
-  end
+  attr_reader :stack
 end
