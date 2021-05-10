@@ -18,12 +18,12 @@ class AwsCloudformationStackPolicy < AwsResourceBase
     opts = { stack_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:stack_name])
-    
+    raise ArgumentError, "Params 'stack_name' failed to satisfy constraint: Member must satisfy regular expression pattern: ^[a-zA-Z][-a-zA-Z0-9]*$|^arn:[-a-zA-Z0-9:._+]*$" if opts[:stack_name] !~ /^[a-zA-Z][-a-zA-Z0-9]*$|^arn:[-a-zA-Z0-9:._+]*$/
+
     catch_aws_errors do
       name = { stack_name: opts[:stack_name] }
-      @resp = @aws.cloudformation_client.get_stack_policy(name)
+      @stack_policy_body = @aws.cloudformation_client.get_stack_policy(name)
     end
-    @stack_policy_body = @resp
   end
 
   def exists?
