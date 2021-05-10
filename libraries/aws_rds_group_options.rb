@@ -42,4 +42,3 @@ class AwsRdsGroupOptions < AwsResourceBase
     @table = option_group_rows
   end
 end
-

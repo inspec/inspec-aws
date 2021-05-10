@@ -14,12 +14,9 @@ class AwsRdsGroupOption < AwsResourceBase
   def initialize(opts = {})
     opts = { engine_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require_any_of: %i(engine_name option_group_name ))
+    validate_parameters(require_any_of: %i(engine_name option_group_name))
 
-    #raise ArgumentError, "#{@__resource_name__}: db_cluster_identifier must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_cluster_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
-
-
-
+    # raise ArgumentError, "#{@__resource_name__}: db_cluster_identifier must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_cluster_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
 
     if opts.key?(:engine_name)
       param = { engine_name: opts[:engine_name] }
@@ -28,7 +25,6 @@ class AwsRdsGroupOption < AwsResourceBase
     else
       raise ArgumentError, "#{@__resource_name__}: db_cluster_identifier must start with a letter followed by up to 62 letters/numbers/hyphens."
     end
-
 
     catch_aws_errors do
       @display_name = opts[:engine_name]
@@ -52,4 +48,3 @@ class AwsRdsGroupOption < AwsResourceBase
     "RDS Cluster #{@display_name}"
   end
 end
-
