@@ -11,7 +11,7 @@ Use the `aws_eips` InSpec audit resource to test properties of some or all AWS E
 
 Verify that a public IP address exists.
 
-    describe aws_ec2_eip(public_ip: '192.0.2.0') do
+    describe aws_ec2_eips do
       it { should exist }
     end
 
@@ -65,10 +65,6 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ec2_eips do
-      it { should exist }
-    end
-      
     describe aws_ec2_eips do
       it { should_not exist }
     end

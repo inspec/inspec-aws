@@ -16,10 +16,6 @@ Ensure that a Public IP exists.
     describe aws_ec2_eip(public_ip: '192.0.2.0') do
       it { should exist }
     end
-    
-    describe aws_ec2_eip(public_ip: '192.0.2.0') do
-      it { should exist }
-    end
 
 ## Parameters
 
