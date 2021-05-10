@@ -3,15 +3,13 @@ require 'aws-sdk-core'
 require 'aws_cloudformation_stack_policy'
 require_relative 'mock/aws_cloudformation_stack_policy_mock'
 
-
 class AwsCloudformationStackPolicyConstructorTest < Minitest::Test
-
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsCloudformationStackPolicy.new(client_args: { stub_responses: true }) }
   end
 
   def test_required_any_params_not_ok
-    assert_raises(ArgumentError) { AwsCloudformationStackPolicy.new(stack_name: 'stack-name', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AwsCloudformationStackPolicy.new(stack_name: 'stack_name', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -20,7 +18,6 @@ class AwsCloudformationStackPolicyConstructorTest < Minitest::Test
 end
 
 class AwsCloudformationStackPolicyTest < Minitest::Test
-
   def setup
     # Given
     @mock = AwsCloudformationStackPolicyMock.new
@@ -32,10 +29,6 @@ class AwsCloudformationStackPolicyTest < Minitest::Test
                                          stub_data: @mock.stub_data)
   end
 
-  def test_stack_name
-    assert_equal(@stack.stack_name, @mock_stack[:stack_name])
-  end
-
   def test_statement_count
     assert_equal(@stack.statement_count, 2)
   end
@@ -45,18 +38,18 @@ class AwsCloudformationStackPolicyTest < Minitest::Test
   end
 
   def test_statement_contains_action
-    assert @stack.has_statement?(Action: "Update:*")
+    assert @stack.has_statement?(Action: 'Update:*')
   end
 
   def test_statment_contains_action_existing_with_effect
-    assert @stack.has_statement?(Action: "Update:*", Effect: "Allow")
+    assert @stack.has_statement?(Action: 'Update:*', Effect: 'Allow')
   end
 
   def test_statment_contains_action_existing_with_effect_and_resource
-    assert @stack.has_statement?(Action: "Update:*", Effect: "Allow", Resource: "*")
+    assert @stack.has_statement?(Action: 'Update:*', Effect: 'Allow', Resource: '*')
   end
 
   def test_statement_wrong_action
-    refute @stack.has_statement?(NotAction: "Update:*", Effect: "Allow", Resource: "*")
+    refute @stack.has_statement?(NotAction: 'Update:*', Effect: 'Allow', Resource: '*')
   end
 end
