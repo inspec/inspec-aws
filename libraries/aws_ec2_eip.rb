@@ -8,7 +8,7 @@ class AwsEc2Eip < AwsResourceBase
 
   example "
     describe aws_ec2_eip(public_ip: '192.0.2.0') do
-      it { should eq '192.0.2.0' }
+      its('public_ip') { should eq '192.0.2.0' }
     end
 
     describe aws_ec2_eip(public_ip: '192.0.2.0') do
