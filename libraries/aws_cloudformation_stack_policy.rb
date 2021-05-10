@@ -32,9 +32,6 @@ class AwsCloudformationStackPolicy < AwsResourceBase
 
   def has_statement?(criteria = {})
     return false unless @stack_policy_body
-    document = @stack_policy_body.stack_policy_body
-    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
-    statement_match = []
 
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Resource] = criteria[:Resource].is_a?(Array) ? criteria[:Resource].sort : criteria[:Resource]
@@ -58,9 +55,8 @@ class AwsCloudformationStackPolicy < AwsResourceBase
   end
 
   def statement_count
-    return false unless @stack_policy_body
-    document = @stack_policy_body.stack_policy_body
-    statements = document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
+    return false unless statements
+
     statements.length
   end
 
