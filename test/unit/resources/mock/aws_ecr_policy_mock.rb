@@ -9,7 +9,7 @@ class AwsEcrPolicyMock < AwsBaseResourceMock
     @policy = Hash[@policy_required]
     @policy[:repository_name] =  "testrepopolicy"  # string
     @policy[:policy_text] = '{
-      "policyText": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : {\n    \"Sid\" : \"AllowPull\",\n    \"Effect\" : \"Allow\",\n    \"Principal\" : \"*\",\n    \"Action\" : [ \"ecr:BatchGetImage\", \"ecr:GetDownloadUrlForLayer\" ]\n  }\n}",
+      "policyText": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [{\n    \"Sid\" : \"AllowPull\",\n    \"Effect\" : \"Allow\",\n    \"Principal\" : \"*\",\n    \"Action\" : [ \"ecr:BatchGetImage\", \"ecr:GetDownloadUrlForLayer\" ]\n  }\n ]\n}",
       "registryId": "012345678910",
       "repositoryName": "testrepopolicy"
     }'

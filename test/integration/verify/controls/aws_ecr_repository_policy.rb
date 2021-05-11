@@ -1,23 +1,17 @@
-aws_ecr_repository_name = attribute(:aws_ecr_repository_name, value: "", description: "The ECR repository identifier.")
-aws_ecr_repository_image_tag_mutability = attribute(:aws_ecr_repository_image_tag_mutability, value: "", description: \
-"The ECR repository image tag mutability status. (MUTABLE/IMMUTABLE)")
-aws_ecr_repository_scan_on_push_enabled = attribute(:aws_ecr_repository_scan_on_push_enabled, value: "", description: \
-"The ECR repository scan on push status. (true/false)")
+title 'Test ECR repository Policy'
+ 
+aws_ecr_repo_name = input(:aws_ecr_repo_name, default: 'test', description: 'The ECR repositiory name.')
+aws_iam_user_policy_name = attribute(:aws_iam_user_policy_name, default: '', description: 'The AWS Iam User Inline Policy.')
 
-title "Test single AWS ECR Repository"
-control "aws-ecr-repository-1.0" do
+
+control 'aws-ecr-repo-policy-1.0' do
 
   impact 1.0
-  title "Check AWS ECR repository has the correct properties."
-
-  describe aws_ecr_repository(repository_name: aws_ecr_repository_name) do
-    it { should exist }
-    its("image_tag_mutability") { should eq aws_ecr_repository_image_tag_mutability }
-    its("image_scanning_configuration.scan_on_push") { should eq aws_ecr_repository_scan_on_push_enabled }
-    its("tags") { should include("Name" => aws_ecr_repository_name) }
-  end
-
-  describe aws_ecr_repository('not-there') do
-    it { should_not exist }
-  end
+  title 'Ensure ECR repo Policy has the correct properties.'
+ 
+  describe aws_ecr_policy(repository_name: aws_ecr_repo_name) do
+    it           { should exist }
+    its("Principal") {should eq "*"} 
+    it { should have_statement(Action: "ecr:BatchGetImage", Effect: "Allow", Principal: "*")}
+  end  
 end

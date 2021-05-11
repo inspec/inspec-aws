@@ -155,7 +155,7 @@ variable "aws_route_53_zone" {}
 
 provider "aws" {
   version = ">= 2.0.0"
-  region  = "eu-west-1"
+  region  = var.aws_region
 }
 
 data "aws_caller_identity" "creds" {}
@@ -1826,8 +1826,12 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
   }
 }
 
+resource "aws_ecr_repository" "inspec_test" {
+  name = "test"
+} 
+
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
-  repository = aws_ecr_repository.inspec_test_ecr_repository.name
+  repository = aws_ecr_repository.inspec_test.name
 
   policy = <<EOF
   {

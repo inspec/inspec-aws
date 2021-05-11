@@ -11,6 +11,7 @@ class AwsEcrPolicy < AwsResourceBase
       it { should exist }
     end
   "
+  attr_reader :repository_name
 
   def initialize(opts = {})
     # Create a repository_name:<value> pair if the argument is a string object.
@@ -21,6 +22,7 @@ class AwsEcrPolicy < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(repository_name))
     @repo_name = { "repository_name": opts[:repository_name] }
+    @display_name = opts[:repository_name]
     catch_aws_errors do
       resp = @aws.ecr_client.get_repository_policy(@repo_name)
       @repo_policy = resp.policy_text
@@ -43,17 +45,23 @@ class AwsEcrPolicy < AwsResourceBase
     criteria[:Principal] = criteria[:Principal].is_a?(Array) ? criteria[:Principal].sort : criteria[:Principal]
     statements.each do |s|
       actions = s[:Action] || []
+      puts actions
       effect = s[:Effect]
+      puts effect
       principal = s[:Principal].is_a?(Array) ? s[:Principal].sort : s[:Principal]
+      puts principal
       action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
+      # puts action_match
       effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
+      # puts effect_match
       principal_match = criteria[:Principal].nil? ? true : principal.eql?(criteria[:Principal])
+      statement_match.nil? ? true: statement_match = statement_match.compact
       statement_match.push(action_match && effect_match && principal_match)
     end
     statement_match.include?(true)
   end
 
   def to_s
-    "ECR Policy for #{@display_name}"
+    "ECR Policy: #{@display_name} for #{@title_str} "
   end
 end
