@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AwsTransitGatewayRoute < AwsResourceBase
-  STATES = %w{pending active blackhole deleting deleted}.freeze
+  STATES = %w{active blackhole}.freeze
   TYPES = %w{static propagated}.freeze
   ATTACHMENT_RESOURCE_TYPES = %w{vpc vpn direct-connect-gateway connect peering tgw-peering}.freeze
   name 'aws_transit_gateway_route'
