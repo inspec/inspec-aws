@@ -48,6 +48,10 @@ class AwsTransitGatewayRoutes < AwsResourceBase
     !failed_resource? && !!routes && !routes.empty?
   end
 
+  def to_s
+    "Transit Gateway Routes for Route Table #{@opts[:transit_gateway_route_table_id]}"
+  end
+
   private
 
   attr_reader :routes

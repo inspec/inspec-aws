@@ -41,12 +41,18 @@ class AwsTransitGatewayRoute < AwsResourceBase
     super
     validate_parameters(required: %i(transit_gateway_route_table_id cidr_block))
     raise ArgumentError, "#{@__resource_name__}:ID must be in the format 'tgw-rtb-' followed by hexadecimal characters." if @opts[:transit_gateway_route_table_id] !~ /^tgw\-rtb\-([0-9a-z]*)$/
+
+    @display_name = @opts[:transit_gateway_route_table_id]
     fetch_response
     create_instance_methods
   end
 
   def exists?
     !failed_resource? && !!route && !route.empty?
+  end
+
+  def to_s
+    "Transit Gateway Route for Route Table #{@opts[:transit_gateway_route_table_id]} and matching CIDR #{@opts[:cidr_block]}"
   end
 
   private
