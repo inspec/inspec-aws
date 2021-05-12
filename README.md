@@ -220,6 +220,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
 - [aws_transit_gateway](docs/resources/aws_transit_gateway.md)
+- [aws_transit_gateway_route](docs/resources/aws_transit_gateway_route.md)
+- [aws_transit_gateway_routes](docs/resources/aws_transit_gateway_routes.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
 - [aws_vpc_endpoint](docs/resources/aws_vpc_endpoint.md)
 - [aws_vpc_endpoints](docs/resources/aws_vpc_endpoints.md)
