@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AwsEcrPolicy < AwsResourceBase
-  name 'aws_ecr_policy'
+  name 'aws_ecr_repository_policy'
   desc 'Verifies policy settings for an AWS ECR Repository'
 
   example "
-    describe aws_ecr_policy('my-repository') do
+    describe aws_ecr_repository_policy(repository_name: 'my-repository') do
       it { should exist }
     end
   "
@@ -35,33 +35,37 @@ class AwsEcrPolicy < AwsResourceBase
 
   def has_statement?(criteria = {})
     return false unless @repo_policy
-    @repo_policy = JSON.parse(@repo_policy, { symbolize_names: true })
-    @repo_policy = @repo_policy[:policyText]
-    @repo_policy = JSON.parse(@repo_policy, { symbolize_names: true })
-    statements = @repo_policy[:Statement].is_a?(Hash) ? [@repo_policy[:Statement]] : @repo_policy[:Statement]
-    statement_match = []
 
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Principal] = criteria[:Principal].is_a?(Array) ? criteria[:Principal].sort : criteria[:Principal]
-    statements.each do |s|
+    statements.any? do |s|
       actions = s[:Action] || []
-      puts actions
       effect = s[:Effect]
-      puts effect
+      sid = s[:Sid]
       principal = s[:Principal].is_a?(Array) ? s[:Principal].sort : s[:Principal]
-      puts principal
       action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
-      # puts action_match
       effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
-      # puts effect_match
+      sid_match = criteria[:Sid].nil? ? true : sid.eql?(criteria[:Sid])
       principal_match = criteria[:Principal].nil? ? true : principal.eql?(criteria[:Principal])
-      statement_match.nil? ? true: statement_match = statement_match.compact
-      statement_match.push(action_match && effect_match && principal_match)
+      (action_match && effect_match && sid_match && principal_match)
     end
-    statement_match.include?(true)
   end
 
   def to_s
-    "ECR Policy: #{@display_name} for #{@title_str} "
+    "ECR Policy for #{@repo_name}"
+  end
+
+  private
+
+  def statements
+    @statements ||= calculate_statements || []
+  end
+
+  def calculate_statements
+    return unless @repo_policy
+
+    document_string = @repo_policy
+    document = JSON.parse(document_string, symbolize_names: true)
+    document[:Statement].is_a?(Hash) ? [document[:Statement]] : document[:Statement]
   end
 end

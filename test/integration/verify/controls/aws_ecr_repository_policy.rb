@@ -9,9 +9,8 @@ control 'aws-ecr-repo-policy-1.0' do
   impact 1.0
   title 'Ensure ECR repo Policy has the correct properties.'
  
-  describe aws_ecr_policy(repository_name: aws_ecr_repo_name) do
+  describe aws_ecr_repository_policy(aws_ecr_repo_name) do
     it           { should exist }
-    its("Principal") {should eq "*"} 
-    it { should have_statement(Action: "ecr:BatchGetImage", Effect: "Allow", Principal: "*")}
+    it { should have_statement(Action: "ecr:GetDownloadUrlForLayer", Effect: "Allow", Principal: "*", Sid: "new policy")}
   end  
 end

@@ -1827,7 +1827,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 }
 
 resource "aws_ecr_repository" "inspec_test" {
-  name = "test"
+  name = var.aws_ecr_repository_name
 } 
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {

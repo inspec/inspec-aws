@@ -1,7 +1,7 @@
 require 'helper'
 require 'aws-sdk-core'
-require 'aws_ecr_policy'
-require_relative 'mock/aws_ecr_policy_mock'
+require 'aws_ecr_repository_policy'
+require_relative 'mock/aws_ecr_repository_policy_mock'
 
 class AwsEcrPolicyConstructorTest < Minitest::Test
 
