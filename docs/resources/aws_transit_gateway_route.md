@@ -5,11 +5,11 @@ platform: aws
 
 # aws_transit_gateway_route
 
-Use the `aws_transit_gateway_route` InSpec audit resource to test the properties of a single AWS Transit Gateway Route.
+Use the `aws_transit_gateway_route` InSpec audit resource to test the properties of a single AWS transit gateway route.
 
 ## Syntax
 
-An `aws_transit_gateway_route` resource block declares the tests for a single AWS Transit Gateway Route by `transit_gateway_route_table_id`.
+An `aws_transit_gateway_route` resource block declares the tests for a single AWS transit gateway route by `transit_gateway_route_table_id`.
 
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
       it { should exist }
@@ -17,11 +17,11 @@ An `aws_transit_gateway_route` resource block declares the tests for a single AW
 
 ### Parameters
 
-The AWS Transit Gateway Route Table ID and CIDR block is required.
+The AWS transit gateway route table ID and CIDR block is required.
 
 #### transit\_gateway\_route\_table\_id _(required)_
 
-The ID of the AWS Transit Gateway Route Table:
+The ID of the AWS transit gateway route table:
 
 - must contain between 1 and 50 alphanumeric characters or hyphens
 - should start with `tgw-rtb-`
@@ -31,7 +31,7 @@ It should be passed as a `transit_gateway_route_table_id: 'value'` key-value ent
 
 #### cidr\_block _(required)_
 
-The CIDR Block Range of the route associated to AWS Transit Gateway Route Table
+The CIDR Block Range of the route associated to AWS transit gateway route table
 
 It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
@@ -41,16 +41,15 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 | ---                   | ---                                                     |
 |cidr_block             | The CIDR block used for destination matches.            |
 |prefix_list_id         | The ID of the prefix list used for destination matches. |
-|type                   | The type of route (`propagated` | `static`).                                         |
-|state                  | The state of the route (`active` | `blackhole`).                                 |
-|attachment_resource_id | The resource id of the transit gateway attachment. Identifiers of relevant resource type.                  |
-|attachment_id          | The id of the transit gateway attachment.                                      |
+|type                   | The type of route. Valid values: `propagated` or `static`. |
+|state                  | The state of the route. Valid values: `active` or `blackhole`. |
+|attachment_resource_id | The resource ID of the transit gateway attachment. Identifiers of relevant resource type.                  |
+|attachment_id          | The ID of the transit gateway attachment.                                      |
 |attachment_resource_type| The attachment resource type. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `peering`, `connect`. |
-
 
 ## Examples
 
-### Test that if a Transit Gateway Route exists for a Transit Gateway Route table and CIDR block range
+### Test if a transit gateway route exists for a transit gateway route table and CIDR block range
 
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
         it { should exist }
@@ -75,7 +74,7 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
     end
 
 
-### Test that the prefix list id is `pl-4ca54025`
+### Test that the prefix list ID is `pl-4ca54025`
 
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
         its('prefix_list_id') { should eq 'pl-4ca54025' }
@@ -131,4 +130,4 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`. 
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Transit Gateway Route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
