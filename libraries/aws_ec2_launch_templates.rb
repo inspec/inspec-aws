@@ -48,7 +48,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
                             create_time: launch_template.create_time,
                             created_by: launch_template.created_by,
                             tags: launch_template_tags,
-                            launch_template_tagsname: launch_template_tags['Name'],
+                            launch_template_tags_name: launch_template_tags['Name'],
 
         }]
       end
