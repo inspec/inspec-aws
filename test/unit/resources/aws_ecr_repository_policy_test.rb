@@ -36,18 +36,18 @@ class AwsEcrPolicyTest < Minitest::Test
   end
 
   def test_statment_contains_action
-    assert @policy.has_statement?(Action: "ecr:BatchGetImage")
+    assert @policy.policy_text.has_statement?(Effect: "Allow")
   end
 
   def test_statment_contains_action_existing_with_effect
-    assert @policy.has_statement?(Action: "ecr:BatchGetImage", Effect: "Allow")
+    assert @policy.policy_text.has_statement?(Action: "ecr:BatchGetImage", Effect: "Allow")
   end
 
   def test_statment_contains_action_existing_with_effect_and_principal
-    assert @policy.has_statement?(Action: "ecr:BatchGetImage", Effect: "Allow", Principal: "*")
+    assert @policy.policy_text.has_statement?(Action: "ecr:BatchGetImage", Effect: "Allow", Principal: "*")
   end
 
   def test_statment_contains_all_principals
-    assert @policy.has_statement?(Principal: "*")
+    assert @policy.policy_text.has_statement?(Principal: "*")
   end
 end
