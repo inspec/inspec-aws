@@ -17,7 +17,7 @@ class AwsTransitGatewayRouteConstructorTest < Minitest::Test
   end
 
   def test_constructor_expected_well_formed_args
-    AwsTransitGatewayRoute.new(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/0')
+    AwsTransitGatewayRoute.new(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/0', client_args: { stub_responses: true })
   end
 
   def test_rejects_unrecognized_params
