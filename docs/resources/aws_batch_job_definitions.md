@@ -1,44 +1,49 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_batch_job_definitions Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_batch\_job\_definitions
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_batch_job_definitions` InSpec audit resource to test properties of a plural Batch Job Definition.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a job_definition exists.
+    describe aws_batch_job_definitions do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Batch Job Definition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| job_definition_names | The name of the job definition. |
+| job_definition_arns | The arn of the job definition. |
+| revisions | The revision of the job definition. |
+| statuses | The status of the job definition. |
+| types | The type of the job definition. |
+| parameters | The parameter of the job definition. |
+| tags | The tags of the job definition. |
+| propagate_tags | The propagate_tags of the job definition. |
+| platform_capabilities | The platform_capabilities of the job definition. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+### Ensure a job_definition name is available.
+    describe aws_batch_job_definitions do
+      its('job_definition_names') { should include 'test1' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+    describe aws_batch_job_definitions do
+        its('statuses') { should include 'ACTIVE' }
     end
 
 ## Matchers
@@ -51,24 +56,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_batch_job_definitions do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_batch_job_definitions do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the job_definition name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_batch_job_definitions do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_definitions` action with `Effect` set to `Allow`.

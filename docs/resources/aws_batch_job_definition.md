@@ -1,55 +1,79 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_batch_job_definition Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_batch\_job\_definition
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_batch_job_definition` InSpec audit resource to test properties of a single specific Batch Job Definition.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a job definition name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_definition(job_definition_name: 'test1') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`job_definition_name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+For additional information, see the [AWS documentation on Batch Job Definition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| job_definition_name | The name of the job definition. |
+| job_definition_arn | The arn of the job definition. |
+| revision | The revision of the job definition. |
+| status | The status of the job definition. |
+| type | The type of the job definition. |
+| parameters | The parameters of the job definition. |
+| container_properties (image) | The image of the container properties of the job definition. |
+| container_properties (vcpus) | The vcpus of the container properties of the job definition. |
+| container_properties (memory) | The memory of the container properties of the job definition. |
+| container_properties (command) | The command of the container properties of the job definition. |
+| container_properties (job_role_arn) | The job role arn of the container properties of the job definition. |
+| container_properties (execution_role_arn) | The execution role arn of the container properties of the job definition. |
+| container_properties (volumes) | The volumes of the container properties of the job definition. |
+| container_properties (environment) | The environment of the container properties of the job definition. |
+| container_properties (mount_points) | The mount points of the container properties of the job definition. |
+| container_properties (readonly_root_filesystem) | The image of the container properties of the job definition. |
+| container_properties (image) | The readonly root filesystem of the container properties of the job definition. |
+| container_properties (privileged) | The privileged of the container properties of the job definition. |
+| container_properties (ulimits) | The ulimits of the container properties of the job definition. |
+| container_properties (user) | The user of the container properties of the job definition. |
+| container_properties (instance_type) | The instance type of the container properties of the job definition. |
+| container_properties (resource_requirements) | The resource requirements of the container properties of the job definition. |
+| container_properties (linux_parameters (shared_memory_size)) | The shared_memory_size of the linux parameters of the container properties of the job definition. |
+| container_properties (linux_parameters (tmpfs)) | The tmpfs of the linux parameters of the container properties of the job definition. |
+| container_properties (linux_parameters (max_swap)) | The max_swap of the linux parameters of the container properties of the job definition. |
+| container_properties (linux_parameters (swappiness)) | The swappiness of the linux parameters of the container properties of the job definition. |
+| container_properties (log_configuration (options)) | The options of the log configuration of the container properties of the job definition. |
+| container_properties (log_configuration (shared_memory_size)) | The shared_memory_size of the log configuration of the container properties of the job definition. |
+| container_properties (secrets) | The secrets of the container properties of the job definition. |
+| timeout (attempt_duration_seconds) | The attempt_duration_seconds of the timeout of the job definition. |
+| node_properties (num_nodes) | The num_nodes of the node_properties of the job definition. |
+| node_properties (main_node) | The main_node of the node_properties of the job definition. |
+| node_properties (node_range_properties) | The node_range_properties of the node_properties of the job definition. |
+| tags | The tags of the job definition. |
+| propagate_tags | The propagate_tags of the job definition. |
+| platform_capabilities | The platform_capabilities of the job definition. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a job definition name is available.
+    describe aws_batch_job_definition(job_definition_name: 'test1') do
+      its('job_definition_name') { should eq 'test1' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure that the state is `Active` or `not`.
+    describe aws_batch_job_definition(job_definition_name: 'test1') do
+        its('status') { should eq 'ACTIVE' }
     end
 
 ## Matchers
@@ -62,24 +86,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_definition(job_definition_name: 'test1') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_batch_job_definition(job_definition_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the job definition name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_definition(job_definition_name: 'test1') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_definitions` action with `Effect` set to `Allow`.

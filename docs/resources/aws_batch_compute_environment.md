@@ -1,54 +1,68 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_batch_compute_environment Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_batch\_compute\_environment
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_batch_compute_environment` InSpec audit resource to test properties of a single specific Batch Compute Environment.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Batch::ComputeEnvironment resource defines your AWS Batch compute environment. You can define MANAGED or UNMANAGED compute environments. MANAGED compute environments can use Amazon EC2 or resources. UNMANAGED compute environments can only use EC2 resources.
 
 ## Syntax
 
-Ensure that a work_group name exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+Ensure that a compute_environment name exists.
+    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`compute_environment_name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
+For additional information, see the [AWS documentation on Batch Compute Environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| compute_environment_name | The name of the compute environment. |
+| compute_environment_arn | The arn of the compute environment. |
+| ecs_cluster_arn | The ecs cluster arn of the compute environment. |
+| tags | The tags of the compute environment. |
+| type | The type of the compute environment. |
+| state | The state of the compute environment. |
+| status | The status of the compute environment. |
+| status_reason | The status reason of the compute environment. |
+| compute_resources (type) | The type of the compute resources of the compute environment. |
+| compute_resources (allocation_strategy) | The allocation strategy of the compute resources of the compute environment. |
+| compute_resources (minv_cpus) | The minv cpus of the compute resources of the compute environment. |
+| compute_resources (maxv_cpus) | The maxv cpus of the compute resources of the compute environment. |
+| compute_resources (desiredv_cpus) | The desiredv cpus of the compute resources of the compute environment. |
+| compute_resources (instance_types) | The instance types of the compute resources of the compute environment. |
+| compute_resources (image_id) | The image id of the compute resources of the compute environment. |
+| compute_resources (subnets) | The subnets of the compute resources of the compute environment. |
+| compute_resources (security_group_ids) | The security group ids of the compute resources of the compute environment. |
+| compute_resources (ec2_key_pair) | The ec2 key pair of the compute resources of the compute environment. |
+| compute_resources (instance_role) | The instance role of the compute resources of the compute environment. |
+| compute_resources (tags) | The tags of the compute resources of the compute environment. |
+| compute_resources (placement_group) | The placement group of the compute resources of the compute environment. |
+| compute_resources (bid_percentage) | The bid percentage of the compute resources of the compute environment. |
+| compute_resources (spot_iam_fleet_role) | The spot iam fleet role of the compute resources of the compute environment. |
+| compute_resources (launch_template (launch_template_id)) | The id of the launch template of the compute resources of the compute environment. |
+| compute_resources (launch_template (launch_template_name)) | The name of the launch template of the compute resources of the compute environment. |
+| compute_resources (launch_template (version)) | The version of the launch template of the compute resources of the compute environment. |
+| service_role | The service role of the compute environment. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a compute environment name is available.
+    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
+      its('compute_environment_name') { should eq 'test1' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
         its('state') { should eq 'ENABLED' }
     end
 
@@ -62,24 +76,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_batch_compute_environment(compute_environment_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the compute environment name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_compute_environments` action with `Effect` set to `Allow`.

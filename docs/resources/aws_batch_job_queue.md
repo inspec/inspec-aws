@@ -1,25 +1,25 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_batch_job_queue Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_batch\_job\_queue
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_batch_job_queue` InSpec audit resource to test properties of a single specific Athena Work Group.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Batch::JobQueue resource specifies the parameters for an AWS Batch Job Queue.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a job_queue name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'test1') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`job_queue_name` _(required)_
 
 For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-policy.html).
 
@@ -27,28 +27,25 @@ For additional information, see the [AWS documentation on Athena Work Group](htt
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| job_definition_name | The name of the job queue. |
+| job_definition_arn | The arn of the job queue. |
+| state | The state of the job queue. |
+| status | The status of the job queue. |
+| status_reason | The status_reason of the job queue. |
+| priority | The priority of the job queue. |
+| compute_environment_order (order) | The order of compute_environment_order of the job queue. |
+| compute_environment_order (compute_environment) | The compute_environment of compute_environment_order of the job queue. |
+| tags | The tags of the job queue. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a job_queue name is available.
+    describe aws_batch_job_queue(job_queue_name: 'test1') do
+      its('job_definition_name') { should eq 'test1' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'test1') do
         its('state') { should eq 'ENABLED' }
     end
 
@@ -62,24 +59,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'test1') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_batch_job_queue(job_queue_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the job_queue name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'test1') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_queues` action with `Effect` set to `Allow`.

@@ -1,43 +1,49 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_batch_compute_environments Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_batch\_compute\_environments
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_batch_compute_environments` InSpec audit resource to test properties of a plural Batch Compute Environment.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Batch::ComputeEnvironment resource defines your AWS Batch compute environment. You can define MANAGED or UNMANAGED compute environments. MANAGED compute environments can use Amazon EC2 or resources. UNMANAGED compute environments can only use EC2 resources.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a compute environment exists.
+    describe aws_batch_compute_environments do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
+For additional information, see the [AWS documentation on Batch Compute Environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| compute_environment_names | The name of the compute environment. |
+| compute_environment_arns | The arn of the compute environment. |
+| ecs_cluster_arns | The ecs cluster arn of the compute environment. |
+| tags | The tags of the compute environment. |
+| types | The type of the compute environment. |
+| states | The state of the compute environment. |
+| statuses | The status of the compute environment. |
+| status_reasons | The status reason of the compute environment. |
+| service_roles | The service role of the compute environment. |
+
 
 ## Examples
 
 ### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+    describe aws_batch_compute_environments do
+      its('compute_environment_names') { should include 'test1' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
+    describe aws_batch_compute_environments do
         its('states') { should include 'ENABLED' }
     end
 
@@ -51,24 +57,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_batch_compute_environments do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_batch_compute_environments do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the compute environments are available.
 
-    describe aws_athena_work_groups do
+    describe aws_batch_compute_environments do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_compute_environments` action with `Effect` set to `Allow`.
