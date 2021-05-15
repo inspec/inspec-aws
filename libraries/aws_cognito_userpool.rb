@@ -21,7 +21,6 @@ class AWSCognitoUserPool < AwsResourceBase
     @display_name = opts[:user_pool_id]
     catch_aws_errors do
       resp = @aws.cognitoidentityprovider_client.describe_user_pool({ user_pool_id: opts[:user_pool_id] })
-      require "pry"; binding.pry
       @user_pool = resp.user_pool.to_h
       create_resource_methods(@user_pool)
     end

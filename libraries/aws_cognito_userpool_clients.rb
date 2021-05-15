@@ -15,10 +15,10 @@ class AWSCognitoUserPoolClients < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-              .register_column(:client_ids,                      field: :client_id)
-              .register_column(:user_pool_ids,                   field: :user_pool_id)
-              .register_column(:client_names,                    field: :client_name)
-              .install_filter_methods_on_resource(self, :table)
+             .register_column(:client_ids,                      field: :client_id)
+             .register_column(:user_pool_ids,                   field: :user_pool_id)
+             .register_column(:client_names,                    field: :client_name)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -26,8 +26,8 @@ class AWSCognitoUserPoolClients < AwsResourceBase
     @query_params = {}
     @query_params[:user_pool_id] = opts[:user_pool_id]
     if opts.key?(:user_pool_id)
-        raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
-        @query_params[:user_pool_id] = opts[:user_pool_id]
+      raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
+      @query_params[:user_pool_id] = opts[:user_pool_id]
     end
     @table = fetch_data
   end
@@ -42,9 +42,9 @@ class AWSCognitoUserPoolClients < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
       @api_response.user_pool_clients.each do |res|
         table_rows += [{
-            client_id: res.client_id,
-            user_pool_id: res.user_pool_id,
-            client_name: res.client_name,
+          client_id: res.client_id,
+          user_pool_id: res.user_pool_id,
+          client_name: res.client_name,
         }]
       end
       break unless @api_response.next_token

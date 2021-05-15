@@ -19,30 +19,20 @@ class AWSCognitoIdentityPools < AwsResourceBase
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
-    # opts = { max_results: opts } if opts.is_a?(String)
-    # require "pry";binding.pry
-
     super(opts)
     validate_parameters(required: [:max_results])
-    # validate_parameters(required: %i(max_results))
     @query_params = {}
     @query_params[:max_results] = opts[:max_results]
     raise ArgumentError, "#{@__resource_name__}: max_results must be provided" unless opts[:max_results] && !opts[:max_results].empty?
-    # @query_params[:max_results] = opts[:max_results]
     @table = fetch_data
   end
 
   def fetch_data
-    require "pry";binding.pry
-
     rows = []
     @query_params[:max_results] = 1000
-    require "pry";binding.pry
     loop do
-        # require "pry";binding.pry
       catch_aws_errors do
-        # @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
-        @api_response = @aws.cognitoidentity_client.list_identity_pools(max_results: 1000)
+        @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
       @api_response.identity_pools.each do |identity_pool|
