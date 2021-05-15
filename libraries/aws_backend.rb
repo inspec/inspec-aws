@@ -34,6 +34,7 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-cognitoidentityprovider'
+require 'aws-sdk-databasemigrationservice'
 
 # AWS Inspec Backend Classes
 #
@@ -209,6 +210,10 @@ class AwsConnection
 
   def cognitoidentityprovider_client
     aws_client(Aws::CognitoIdentityProvider::Client)
+  end
+
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
   end
 end
 
