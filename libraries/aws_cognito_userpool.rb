@@ -7,36 +7,37 @@ class AWSCognitoUserPool < AwsResourceBase
   desc 'Returns the configuration information and metadata of the specified user pool.'
 
   example `
-    describe aws_cognito_userpoolclient(job_queue_name: 'test1') do
+    describe aws_cognito_userpool(user_pool_id: 'test1') do
       it { should exist }
     end
   `
 
   def initialize(opts = {})
-    opts = { job_queue_name: opts } if opts.is_a?(String)
+    opts = { user_pool_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:job_queue_name])
+    validate_parameters(required: [:user_pool_id])
 
-    raise ArgumentError, "#{@__resource_name__}: job_queue_name must be provided" unless opts[:job_queue_name] && !opts[:job_queue_name].empty?
-    @display_name = opts[:job_queue_name]
+    raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
+    @display_name = opts[:user_pool_id]
     catch_aws_errors do
-      resp = @aws.cognitoidentityprovider_client.describe_user_pool({ job_queues: [opts[:job_queue_name]] })
-      @job_queues = resp.job_queues[0].to_h
-      create_resource_methods(@job_queues)
+      resp = @aws.cognitoidentityprovider_client.describe_user_pool({ user_pool_id: opts[:user_pool_id] })
+      require "pry"; binding.pry
+      @user_pool = resp.user_pool.to_h
+      create_resource_methods(@user_pool)
     end
   end
 
   def id
     return nil unless exists?
-    @job_queues[:job_queue_name]
+    @user_pool[:job_queue_name]
   end
 
   def exists?
-    !@job_queues.nil? && !@job_queues.empty?
+    !@user_pool.nil? && !@user_pool.empty?
   end
 
   def encrypted?
-    @job_queues[:encrypted]
+    @user_pool[:encrypted]
   end
 
   def to_s

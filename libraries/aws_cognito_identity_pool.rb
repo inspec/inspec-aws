@@ -39,6 +39,6 @@ class AWSCognitoIdentityPool < AwsResourceBase
   end
 
   def to_s
-    "Job Queue ID: #{@display_name}"
+    "Identity Pool ID: #{@display_name}"
   end
 end

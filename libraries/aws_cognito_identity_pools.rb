@@ -41,7 +41,8 @@ class AWSCognitoIdentityPools < AwsResourceBase
     loop do
         # require "pry";binding.pry
       catch_aws_errors do
-        @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
+        # @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
+        @api_response = @aws.cognitoidentity_client.list_identity_pools(max_results: 1000)
       end
       return [] if !@api_response || @api_response.empty?
       @api_response.identity_pools.each do |identity_pool|
