@@ -1,0 +1,44 @@
+# frozen_string_literal: true
+
+require 'aws_backend'
+
+class AWSECSService < AwsResourceBase
+  name 'aws_ecs_service'
+  desc 'Returns information about the endpoints for your account in the current region.'
+
+  example "
+    describe aws_ecs_service(services: 'test1') do
+      it { should exist }
+    end
+  "
+  def initialize(opts = {})
+    opts = { services: opts } if opts.is_a?(String)
+    super(opts)
+    validate_parameters(required: [:services])
+
+    raise ArgumentError, "#{@__resource_name__}: services must be provided" unless opts[:services] && !opts[:services].empty?
+    @display_name = opts[:services]
+    catch_aws_errors do
+      resp = @aws.ecs_client.describe_services({ services: opts[:services] })
+      @services = resp.services[0].to_h
+      create_resource_methods(@services)
+    end
+  end
+
+  def id
+    return nil unless exists?
+    @services[:service_name]
+  end
+
+  def exists?
+    !@services.nil? && !@services.empty?
+  end
+
+  def encrypted?
+    @services[:encrypted]
+  end
+
+  def to_s
+    "Service: #{@display_name}"
+  end
+end
