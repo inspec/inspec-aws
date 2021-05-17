@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_redshift\_cluster\_parameter\_group
 
-Use the `aws_redshift_cluster_parameter_group` InSpec audit resource to test properties of a single specific Redshift Cluster Parameter Group. 
+Use the `aws_redshift_cluster_parameter_group` InSpec audit resource to test properties of a single specific Redshift cluster parameter group.
 
-A Redshift Cluster Parameter Group is uniquely identified by the parameter group name.
+A Redshift cluster parameter group is uniquely identified by the parameter group name.
 
 ## Syntax
 
@@ -17,17 +17,11 @@ Ensure that a parameter_group_name exists.
       it { should exist }
     end
 
-Ensure that a parameter_group_name not exists.
-
-    describe aws_redshift_cluster_parameter_group(parameter_group_name: 'dummy') do
-      it { should_not exist }
-    end
-
 ## Parameters
 
 `parameter_group_name` _(required)_
 
-For additional information, see the [AWS documentation on Redshift Cluster Parameter Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html).
+For additional information, see the [AWS documentation on Redshift cluster parameter group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html).
 
 ## Properties
 
@@ -40,12 +34,14 @@ For additional information, see the [AWS documentation on Redshift Cluster Param
 
 ## Examples
 
-### Ensure a Parameter group name is available.
+### Ensure a parameter group name is available.
+
     describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
       its('parameter_group_name') { should eq 'test' }
     end
 
-### Check the family name in the Cluster Parameter group.
+### Check the family name in the cluster parameter group.
+
     describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
         its('parameter_group_family') { should eq 'family_name' }
     end
@@ -65,7 +61,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
       it { should_not exist }
     end
