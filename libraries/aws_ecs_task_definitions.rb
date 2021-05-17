@@ -25,9 +25,22 @@ class AWSECSTaskDefinitions < AwsResourceBase
   def fetch_data
     table_rows = []
     pagination_options = {}
-    loop do
+
+    catch_aws_errors do
+      @resp = @aws.ecs_client.describe_services
+    end
+    return [] if !@resp || @resp.empty?
+    @table = @resp.services.map(&:to_h)
+
+
+    catch_aws_errors do
+      resp = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: opts[:services] })
+      @services = resp.services[0].to_h
+      create_resource_methods(@services)
+    end
+    # loop do
       catch_aws_errors do
-        @api_response = @aws.ecs_client.list_task_definitions(pagination_options)
+        @api_response = @aws.ecs_client.list_services(pagination_options)
       end
       return [] if !@api_response || @api_response.empty?
       @api_response.each do |compute_environment|
@@ -37,7 +50,7 @@ class AWSECSTaskDefinitions < AwsResourceBase
       end
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
-    end
+    # end
     @table = table_rows
   end
 end

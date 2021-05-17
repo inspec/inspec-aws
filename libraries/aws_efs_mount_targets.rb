@@ -27,13 +27,19 @@ class AWSEFSMountTargets < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(file_system_id))
+    @query_params = {}
+    @query_params[:file_system_id] = opts[:file_system_id]
+    if opts.key?(:file_system_id)
+      raise ArgumentError, "#{@__resource_name__}: file_system_id must be provided" unless opts[:file_system_id] && !opts[:file_system_id].empty?
+      @query_params[:file_system_id] = opts[:file_system_id]
+    end
     @table = fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.efs_client.describe_mount_targets
+      @resp = @aws.efs_client.describe_mount_targets(@query_params)
     end
     return [] if !@resp || @resp.empty?
     @table = @resp.mount_targets.map(&:to_h)
