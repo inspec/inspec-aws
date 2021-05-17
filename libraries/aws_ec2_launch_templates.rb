@@ -34,21 +34,21 @@ class AWSEc2LaunchTemplates < AwsResourceBase
     pagination_options = {}
     loop do
       catch_aws_errors do
-        # require 'byebug'
-        # byebug
         @api_response = @aws.compute_client.describe_launch_templates(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return launch_template_row if !@api_response || @api_response.empty?
 
       @api_response.launch_templates.each do |launch_template|
         launch_template_tags = map_tags(launch_template.tags)
         launch_template_rows += [{
           launch_template_ids: launch_template.launch_template_id,
-                            launch_template_names: launch_template.launch_template_name,
-                            create_time: launch_template.create_time,
-                            created_by: launch_template.created_by,
-                            tags: launch_template_tags,
-                            launch_template_tagsname: launch_template_tags['Name'],
+          launch_template_names: launch_template.launch_template_name,
+          create_time: launch_template.create_time,
+          created_by: launch_template.created_by,
+          tags: launch_template_tags,
+          launch_template_tags_name: launch_template_tags['Name'],
+          default_version_number: launch_template.default_version_number,
+          latest_version_number: launch_template.latest_version_number,
 
         }]
       end

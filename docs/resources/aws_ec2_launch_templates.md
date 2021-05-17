@@ -14,9 +14,6 @@ describe aws_ec2_launch_templates do
 it { should exist }
 end
 
-#### Parameters
-
-One of either the launch_templates_name or launch_templates_id must be be provided.
 
 ##### launch\_templates\_id
 
@@ -30,7 +27,7 @@ This can be passed either as a string or as an `launch_templates_id: 'value'` ke
 |Property                 | Description|
 | ---                     | --- |
 |launch_template_name     | The name of launch template.|
-|launch\_template\_id     | The id of the launch template. |
+|launch_template_id       | The id of the launch template. |
 |create_time              | The create time of the launch template. |
 |created_by               | The name by whom the launch template is created  |
 |default_version_number   | The default_version_number of the launch template |
@@ -60,4 +57,3 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
-

@@ -26,7 +26,6 @@ class AwsLaunchTemplatesPathTest < Minitest::Test
     mock_eip[:launch_template_name] = 'test'
     mock_eip[:launch_template_id] = 'lt-01a6e9ac9f962f154'
     mock_eip[:created_by] = 'test-account'
-    # mock_eip[:create_time] = 2017-10-31
     mock_eip[:latest_version_number] = 1
     mock_eip[:default_version_number] = 1
     data[:data] = { :launch_templates => [mock_eip] }
@@ -41,8 +40,4 @@ class AwsLaunchTemplatesPathTest < Minitest::Test
   def test_launch_template_available
     assert @addr.available?
   end
-
-
-
 end
-
