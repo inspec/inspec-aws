@@ -11,7 +11,6 @@ control 'aws-db-parameter-group-1.0' do
   title 'Ensure AWS RDS Parameter Group has current properties'
 
   describe aws_db_parameter_group(db_parameter_group_name: aws_rds_db_parameter_group_name) do
-     
     it { should exist }
   end
 
@@ -25,5 +24,4 @@ control 'aws-db-parameter-group-1.0' do
   describe aws_db_parameter_group(db_parameter_group_name: "wrongvalue") do
     it { should_not exist }
   end
-
 end

@@ -33,14 +33,14 @@ class AwsDbParameterGroups < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.rds_client.describe_db_parameter_groups(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
-
-      api_response.db_parameter_groups.each do |parameter_group|
-        parameter_group_rows += [{ db_parameter_group_name:        parameter_group.db_parameter_group_name,
-                                db_parameter_group_family:         parameter_group.db_parameter_group_family,
-                                description:                       parameter_group.description,
-                                db_parameter_group_arn:            parameter_group.db_parameter_group_arn }]
-      end
+      return parameter_group_rows if !api_response || api_response.empty?
+      parameter_group_rows += api_response.db_parameter_groups.map(&:to_h)
+      # api_response.db_parameter_groups.each do |parameter_group|
+      #   parameter_group_rows += [{ db_parameter_group_name:        parameter_group.db_parameter_group_name,
+      #                           db_parameter_group_family:         parameter_group.db_parameter_group_family,
+      #                           description:                       parameter_group.description,
+      #                           db_parameter_group_arn:            parameter_group.db_parameter_group_arn }]
+      # end
       break unless api_response.marker
       pagination_options = { marker: api_response[:marker] }
     end

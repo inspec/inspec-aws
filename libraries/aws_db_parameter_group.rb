@@ -9,6 +9,10 @@ class AwsDbParameterGroup < AwsResourceBase
     describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group') do
       it { should exist }
     end
+
+    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group') do
+      its('db_parameter_group_name') { should eq 'parameter-group' }
+    end
   "
 
   def initialize(opts = {})

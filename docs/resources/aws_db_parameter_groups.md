@@ -27,10 +27,10 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 |Property                     | Description|
 | ---                         | --- |
-|db\_parameter\_group\_name    | The name of the DB parameter group. |
-|db\_parameter\_group\_family   | The name of the DB parameter group family that this DB parameter group is compatible with. |
-|description    | Provides the customer-specified description for this DB parameter group. |
-|db\_parameter\_group\_arn    | The Amazon Resource Name (ARN) for the DB parameter group. |
+|db\_parameter\_group\_names    | The name of the DB parameter group. |
+|db\_parameter\_group\_families   | The name of the DB parameter group family that this DB parameter group is compatible with. |
+|descriptions    | Provides the customer-specified description for this DB parameter group. |
+|db\_parameter\_group\_arns    | The Amazon Resource Name (ARN) for the DB parameter group. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBParameterGroup.html)
 

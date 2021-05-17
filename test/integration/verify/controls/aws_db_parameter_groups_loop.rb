@@ -17,8 +17,8 @@ control 'aws-db-parameter-groups-loop-1.0' do
   aws_db_parameter_groups.where { db_parameter_group_family == aws_rds_db_parameter_group_family }.db_parameter_group_names.each do |parameter_group|
     describe aws_db_parameter_group(db_parameter_group_name: parameter_group) do
       it { should exist }
-      its('db_parameter_group_family')      { should include aws_rds_db_parameter_group_family }
-      its('db_parameter_group_arn')         { should eq aws_rds_db_parameter_group_arn }
+      its('db_parameter_group_families')      { should include aws_rds_db_parameter_group_family }
+      its('db_parameter_group_arns')         { should include aws_rds_db_parameter_group_arn }
     end
   end
 end
