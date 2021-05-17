@@ -25,12 +25,10 @@ class AWSECSServices < AwsResourceBase
     validate_parameters
     @table = fetch_data
   end
-  
+
   def fetch_data
-    catch_aws_errors do
-        @resp = @aws.ecs_client.list_services
-    end
+    @resp = @aws.ecs_client.list_services
     return [] if !@resp || @resp.empty?
     @table = @resp.endpoints.map(&:to_h)
-    end
+  end
 end
