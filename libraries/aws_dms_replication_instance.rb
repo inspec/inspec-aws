@@ -23,23 +23,23 @@ class AWSDMSReplicationInstance < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: auto_scaling_group_name must be provided" unless opts[:auto_scaling_group_name] && !opts[:auto_scaling_group_name].empty?
     @display_name = opts[:auto_scaling_group_name]
     catch_aws_errors do
-      resp = @aws.autoscaling_client.describe_policies({ auto_scaling_group_name: opts[:auto_scaling_group_name] })
-      @scaling_policies = resp.scaling_policies[0].to_h
-      create_resource_methods(@scaling_policies)
+      resp = @aws.dmsmigrationservice_client.describe_orderable_replication_instances({ auto_scaling_group_name: opts[:auto_scaling_group_name] })
+      @orderable_replication_instances = resp.orderable_replication_instances[0].to_h
+      create_resource_methods(@orderable_replication_instances)
     end
   end
 
   def id
     return nil unless exists?
-    @scaling_policies[:auto_scaling_group_name]
+    @orderable_replication_instances[:auto_scaling_group_name]
   end
 
   def exists?
-    !@scaling_policies.nil? && !@scaling_policies.empty?
+    !@orderable_replication_instances.nil? && !@orderable_replication_instances.empty?
   end
 
   def encrypted?
-    @scaling_policies[:encrypted]
+    @orderable_replication_instances[:encrypted]
   end
 
   def to_s

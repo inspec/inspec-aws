@@ -6,7 +6,7 @@ class AWSCognitoUserPools < AwsResourceBase
   name 'aws_cognito_userpools'
   desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
   example `
-    describe aws_cognito_userpools(max_results: "1000") do
+    describe aws_cognito_userpools do
       it { should exist }
     end
   `
@@ -23,16 +23,15 @@ class AWSCognitoUserPools < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: [:max_results])
+    validate_parameters
     @query_params = {}
     @query_params[:max_results] = opts[:max_results]
-    raise ArgumentError, "#{@__resource_name__}: max_results must be provided" unless opts[:max_results] && !opts[:max_results].empty?
     @table = fetch_data
   end
 
   def fetch_data
     rows = []
-    @query_params[:max_results] = 1000
+    @query_params[:max_results] = 60
     loop do
       catch_aws_errors do
         @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)

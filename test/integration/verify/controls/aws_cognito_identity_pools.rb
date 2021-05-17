@@ -8,6 +8,6 @@ aws_cognito_identity_providers = attribute("aws_cognito_identity_providers", def
 aws_saml_provider_arns = attribute("aws_saml_provider_arns", default: "", description: "")
 identity_pool_tags = attribute("aws_cognito_identity_providers", default: "", description: "")
 
-describe aws_cognito_identity_pools(max_results: 1000) do
+describe aws_cognito_identity_pools do
   it { should exist }
 end
