@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_redshift\_cluster\_parameter\_groups
 
-Use the `aws_redshift_cluster_parameter_groups` InSpec audit resource to test properties of some or all AWS Redshift Cluster Parameter Group.
+Use the `aws_redshift_cluster_parameter_groups` InSpec audit resource to test properties of some or all AWS Redshift cluster parameter groups.
 
 ## Syntax
 
@@ -15,13 +15,11 @@ Verify that a Parameter group name exists.
       it { should exist }
     end
 
-An `aws_redshift_cluster_parameter_groups` resource block uses an optional filter to select a group of Redshift Cluster Parameter Groups and then test that group.
-
 ## Parameters
 
 This resource does not expect any parameters.
 
-See the [AWS documentation on Redshift Cluster Parameter Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html) for additional information.
+See the [AWS documentation on Redshift cluster parameter group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html) for additional information.
 
 ## Properties
 
@@ -34,19 +32,22 @@ See the [AWS documentation on Redshift Cluster Parameter Group](https://docs.aws
 
 ## Examples
 
-##### Ensure a Redshift Cluster Parameter Group has parameter groups.
+### Ensure a Redshift cluster parameter group has parameter groups
+
     describe aws_redshift_cluster_parameter_groups do
       it { should exist }
     end
 
-##### Match count of Redshift Cluster Parameter Group.
+### Verify the number of Redshift cluster parameter groups
+
     describe aws_redshift_cluster_parameter_groups do
         its('count') { should eq 5 }
     end
 
-##### Check family whether it is correct or not
+### Verify the family name exists for at least one of the cluster parameter groups
+
     describe aws_redshift_cluster_parameter_groups do
-       its('parameter_group_families') { should include "family_name" }
+       its('parameter_group_families') { should include "FAMILY_NAME" }
     end
 
 ## Matchers
@@ -55,13 +56,14 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 #### exist
 
-The control will pass if the describe returns at least one result. Use `should` to test the entity exist.
+The control will pass if the describe returns at least one result.
+
     describe aws_redshift_cluster_parameter_groups do
       it { should exist }
     end
 
-
 Use `should_not` to test the entity should not exist.
+
     describe aws_redshift_cluster_parameter_groups do
       it { should_not exist }
     end
