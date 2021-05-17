@@ -7,23 +7,16 @@ class AWSDMSReplicationInstance < AwsResourceBase
   desc 'Returns information about the replication instance types that can be created in the specified region.'
 
   example "
-    describe aws_dms_replication_instance(auto_scaling_group_name: 'test') do
-      it { should eq 'test' }
-    end
-
-    describe aws_dms_replication_instance(auto_scaling_group_name: 'test') do
+    describe aws_dms_replication_instance do
       it { should exits }
     end
   "
   def initialize(opts = {})
     opts = { auto_scaling_group_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:auto_scaling_group_name])
-
-    raise ArgumentError, "#{@__resource_name__}: auto_scaling_group_name must be provided" unless opts[:auto_scaling_group_name] && !opts[:auto_scaling_group_name].empty?
-    @display_name = opts[:auto_scaling_group_name]
+    validate_parameters
     catch_aws_errors do
-      resp = @aws.dmsmigrationservice_client.describe_orderable_replication_instances({ auto_scaling_group_name: opts[:auto_scaling_group_name] })
+      resp = @aws.dmsmigrationservice_client.describe_orderable_replication_instances
       @orderable_replication_instances = resp.orderable_replication_instances[0].to_h
       create_resource_methods(@orderable_replication_instances)
     end
