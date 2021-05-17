@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSDMSEndpoint < AwsResourceBase
+class AWSEFSMountTarget < AwsResourceBase
   name 'aws_dms_endpoint'
   desc 'Returns information about the endpoints for your account in the current region.'
 
