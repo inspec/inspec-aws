@@ -55,10 +55,13 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 #### exist
 
-The control will pass if the describe returns at least one result.
+The control will pass if the describe returns at least one result. Use `should` to test the entity exist.
+    describe aws_redshift_cluster_parameter_groups do
+      it { should exist }
+    end
+
 
 Use `should_not` to test the entity should not exist.
-      
     describe aws_redshift_cluster_parameter_groups do
       it { should_not exist }
     end
