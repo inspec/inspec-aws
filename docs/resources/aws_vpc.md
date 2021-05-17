@@ -1,19 +1,19 @@
 ---
-title: About the `aws_vpc` 
-Resource platform: `aws`
+title: About the aws_vpc Resource
+platform: aws
 ---
 
 # aws\_vpc
 
-Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC). It also tests the CIDR Block that is used within the VPC.
+Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC) and the CIDR Block that is used within the VPC.
 
-Each VPC is uniquely identified by its `VPC ID`. In addition, each VPC has a non-unique CIDR IP Address range (such as 10.0.0.0/16) which it manages.
+Each VPC is uniquely identified by its ID. In addition, each VPC has a non-unique CIDR IP address range (such as 10.0.0.0/16), which it manages.
 
 Every AWS account has at least one VPC, the "default" VPC, in every region.
 
 ## Syntax
 
-An `aws_vpc` resource block identifies a VPC by id. If no VPC ID is provided, the default VPC is used.
+An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, the default VPC is used.
 
     # Find the default VPC
     describe aws_vpc do
@@ -36,7 +36,7 @@ If no parameter is provided, the subscription's default VPC will be returned.
 
 ##### vpc\_id _(optional)_
 
-This resource accepts a single parameter, the VPC ID. 
+This resource accepts a single parameter, the VPC ID.
 This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
@@ -66,11 +66,13 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 The following examples show how to use this InSpec audit resource.
 
 ### Test the CIDR Block of a named VPC
+
     describe aws_vpc('vpc-87654321') do
       its('cidr_block') { should cmp '10.0.0.0/16' }
     end
 
 ### Test the state of the VPC
+
     describe aws_vpc do
       its ('state') { should eq 'available' }
       # or equivalently
@@ -78,23 +80,27 @@ The following examples show how to use this InSpec audit resource.
     end
 
 ### Test the allowed tenancy of instances launched into the VPC.
+
     describe aws_vpc do
       its ('instance_tenancy') { should eq 'default' }
     end
 
 ### Test tags on the VPC
+
     describe aws_vpc do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'vpc-name')}
     end
 
-### Test the IPV6 CIDR Block association set State of a named VPC
+### Test the IPV6 CIDR Block association set state of a named VPC
+
     describe aws_vpc do
-      its ('ipv_6_cidr_block_association_set.first.ipv_6_cidr_block_state.state') 
+      its ('ipv_6_cidr_block_association_set.first.ipv_6_cidr_block_state.state')
                 { should eq aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state }
     end
 
 ### Test the CIDR Block association set association_id of a named VPC
+
     describe aws_vpc do
       its ('cidr_block_association_set.first.association_id') { should eq aws_cidr_block_association_set_association_id }
     end

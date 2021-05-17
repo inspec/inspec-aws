@@ -1,13 +1,13 @@
 ---
-title: About the `aws_vpcs` 
-Resource platform: `aws`
+title: About the aws_vpcs Resource
+platform: aws
 ---
 
 # aws\_vpcs
 
-Use the `aws_vpcs` InSpec audit resource to test properties of some or all AWS Virtual Private Clouds (VPCs). It also tests the CIDR Block that is used within the VPC.
+Use the `aws_vpcs` InSpec audit resource to test properties of some or all AWS Virtual Private Clouds (VPCs)and the CIDR Block that is used within the VPC.
 
-Each VPC is uniquely identified by its `VPC ID`. In addition, each VPC has a non-unique CIDR IP Address range (such as 10.0.0.0/16) which it manages.
+Each VPC is uniquely identified by its `VPC ID`. In addition, each VPC has a non-unique CIDR IP address range (such as 10.0.0.0/16), which it manages.
 
 Every AWS account has at least one VPC, the "default" VPC, in every region.
 
@@ -19,7 +19,7 @@ An `aws_vpcs` resource block uses an optional filter to select a group of VPCs a
     describe aws_vpcs do
       it { should exist }
     end
-    
+
 #### Parameters
 
 This resource does not expect any parameters.
@@ -65,7 +65,7 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
       it { should_not exist }
     end
 
-### Check tags    
+### Check tags
     describe aws_vpc do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'vpc-name')}
@@ -98,7 +98,7 @@ Use `should_not` to test the entity should not exist.
     describe aws_vpcs do
       it { should exist }
     end
-      
+
     describe aws_vpcs.where( <property>: <value>) do
       it { should_not exist }
     end
