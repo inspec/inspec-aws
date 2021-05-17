@@ -19,7 +19,7 @@ class AWSDMSEndpoint < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: endpoint_identifier must be provided" unless opts[:endpoint_identifier] && !opts[:endpoint_identifier].empty?
     @display_name = opts[:endpoint_identifier]
     catch_aws_errors do
-      resp = @aws.dmsmigrationservice_client.describe_endpoints({ endpoint_identifier: [opts[:endpoint_identifier]] })
+      resp = @aws.efs_client.describe_mount_targets({ endpoint_identifier: [opts[:endpoint_identifier]] })
       @endpoints = resp.endpoints[0].to_h
       create_resource_methods(@endpoints)
     end

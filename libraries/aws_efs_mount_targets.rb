@@ -35,7 +35,6 @@ class AWSEFSMountTargets < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.efs_client.describe_mount_targets
     end
-    require "pry"; binding.pry
     return [] if !@resp || @resp.empty?
     @table = @resp.mount_targets.map(&:to_h)
   end
