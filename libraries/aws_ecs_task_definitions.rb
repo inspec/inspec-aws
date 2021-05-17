@@ -45,8 +45,8 @@ class AWSECSTaskDefinitions < AwsResourceBase
         task_definition_arns: compute_environment.task_definition_arns,
       }]
     end
-    break unless @api_response.next_token
-    pagination_options = { next_token: @api_response.next_token }
+    # break unless @api_response.next_token
+    # pagination_options = { next_token: @api_response.next_token }
     @table = table_rows
   end
 end

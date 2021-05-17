@@ -17,7 +17,7 @@ class AWSEFSMountTarget < AwsResourceBase
     validate_parameters(required: [:mount_target_id])
 
     raise ArgumentError, "#{@__resource_name__}: mount_target_id must be provided" unless opts[:mount_target_id] && !opts[:mount_target_id].empty?
-    @display_name = opts[:endpoint_identifier]
+    @display_name = opts[:mount_target_id]
     catch_aws_errors do
       resp = @aws.efs_client.describe_mount_targets({ mount_target_id: opts[:mount_target_id] })
       @mount_targets = resp.mount_targets[0].to_h
