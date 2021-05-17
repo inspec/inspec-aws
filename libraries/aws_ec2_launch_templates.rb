@@ -36,7 +36,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_launch_templates(pagination_options)
       end
-      return launch_template_row if !@api_response || @api_response.empty?
+      return launch_template_rows if !@api_response || @api_response.empty?
 
       @api_response.launch_templates.each do |launch_template|
         launch_template_tags = map_tags(launch_template.tags)
@@ -49,6 +49,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
           launch_template_tags_name: launch_template_tags['Name'],
           default_version_number: launch_template.default_version_number,
           latest_version_number: launch_template.latest_version_number,
+
 
         }]
       end
