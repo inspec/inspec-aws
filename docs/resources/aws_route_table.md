@@ -84,7 +84,7 @@ See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/AWS
       its('propagating_vgws') { should be_empty }
     end
 
-##### Confirm that the route table has expected destination_cidr_block of the route
+##### Confirm that the route table has the expected destination_cidr_block of the route
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('routes.first.destination_cidr_block') { should eq '10.0.0.0/16' }
     end
