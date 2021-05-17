@@ -11,7 +11,7 @@ class AwsSnsTopic < AwsResourceBase
       its('confirmed_subscription_count') { should_not be_zero }
     end
   "
-  attr_reader :arn, :confirmed_subscription_count
+  attr_reader :arn, :kms_master_key_id, :confirmed_subscription_count
 
   def initialize(opts = {})
     opts = { arn: opts } if opts.is_a?(String)
@@ -25,6 +25,7 @@ class AwsSnsTopic < AwsResourceBase
       begin
         resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
         @confirmed_subscription_count = resp['SubscriptionsConfirmed'].to_i
+        @kms_master_key_id = resp['KmsMasterKeyId']
         create_resource_methods(resp)
       rescue Aws::SNS::Errors::NotFound
         return

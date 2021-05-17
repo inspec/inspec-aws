@@ -86,6 +86,14 @@ output "aws_sns_topic_no_subscription_arn" {
   value = aws_sns_topic.sns_topic_no_subscription.0.arn
 }
 
+output "aws_sns_topic_with_encryption_arn" {
+  value = aws_sns_topic.sns_topic_encryption.0.arn
+}
+
+output "aws_sns_topic_kms_master_key_id" {
+  value = aws_sns_topic.sns_topic_encryption.0.kms_master_key_id
+}
+
 output "sns_sqs_queue_arn" {
   value = aws_sqs_queue.sns_sqs_queue.0.arn
 }
@@ -325,4 +333,12 @@ output "aws_private_ip_address" {
 //noinspection HILUnresolvedReference
 output "aws_network_border_group" {
   value = aws_eip.aws_eip_1.network_border_group
+}
+
+output "aws_elasticache_replication_group_id" {
+  value = aws_elasticache_replication_group.replication_group.id
+}
+
+output "aws_elasticache_replication_group_node_type" {
+  value = aws_elasticache_replication_group.replication_group.node_type
 }
