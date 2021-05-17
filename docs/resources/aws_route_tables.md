@@ -4,7 +4,7 @@ title: About the aws_route_tables Resource
 
 # aws\_route\_tables
 
-Use the `aws_route_tables` InSpec audit resource to test properties of all or a group of Route Tables. A Route Table contains a set of rules, called routes, that are used to determine where network traffic is directed. This particular resource also test properties of all the Routes.
+Use the `aws_route_tables` InSpec audit resource to test properties of all or a group of route tables, or the properties of all routes. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
 
 ## Syntax
 
