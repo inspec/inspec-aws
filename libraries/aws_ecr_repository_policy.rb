@@ -11,6 +11,7 @@ class AwsEcrPolicy < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     # Create a repository_name:<value> pair if the argument is a string object.
     opts = { repository_name: opts } if opts.is_a?(String)
