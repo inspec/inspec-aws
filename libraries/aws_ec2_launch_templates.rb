@@ -50,7 +50,6 @@ class AWSEc2LaunchTemplates < AwsResourceBase
           default_version_number: launch_template.default_version_number,
           latest_version_number: launch_template.latest_version_number,
 
-
         }]
       end
 
