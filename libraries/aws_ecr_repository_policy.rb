@@ -16,8 +16,6 @@ class AwsEcrPolicy < AwsResourceBase
   def initialize(opts = {})
     # Create a repository_name:<value> pair if the argument is a string object.
     opts = { repository_name: opts } if opts.is_a?(String)
-    # Ignore arguments if they are not hash type at this point.
-    opts = {} unless opts.is_a?(Hash)
 
     super(opts)
     validate_parameters(required: %i(repository_name))
@@ -30,7 +28,7 @@ class AwsEcrPolicy < AwsResourceBase
   end
 
   def exists?
-    !@repo_policy.nil?
+    !@repo_policy.nil? && !@repo_policy.empty?
   end
 
   def has_statement?(criteria = {})
