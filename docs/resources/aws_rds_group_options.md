@@ -4,7 +4,7 @@ title: About aws_rds_group_options Resource
 
 # aws\_rds\_group\_options
 
-Use the `aws_rds_group_options` InSpec audit resource to test detailed properties of an individual aws_rds_group_options.
+Use the `aws_rds_group_options` InSpec audit resource to test detailed properties of a group of Amazon Relational Database Service (RDS) clusters.
 
 RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database server.
 
