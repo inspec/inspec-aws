@@ -32,7 +32,6 @@ class AwsEcrPolicy < AwsResourceBase
 
   def has_statement?(criteria = {})
     return false unless @repo_policy
-    statement_match = []
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Principal] = criteria[:Principal].is_a?(Array) ? criteria[:Principal].sort : criteria[:Principal]
     statements.any? do |s|
@@ -44,9 +43,8 @@ class AwsEcrPolicy < AwsResourceBase
       effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
       sid_match = criteria[:Sid].nil? ? true : sid.eql?(criteria[:Sid])
       principal_match = criteria[:Principal].nil? ? true : principal.eql?(criteria[:Principal])
-      statement_match.push(action_match && effect_match && sid_match && principal_match)
+      (action_match && effect_match && sid_match && principal_match)
     end
-    statement_match.include?(true)
   end
 
   def to_s
