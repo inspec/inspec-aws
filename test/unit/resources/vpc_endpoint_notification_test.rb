@@ -74,7 +74,4 @@ class AwsVpcEndpointConnectionNotificationHappyPathTest < Minitest::Test
     assert_equal(@vpcen.connection_notification_state, 'Enabled')
 
   end
-
-
-
 end

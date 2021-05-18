@@ -10,6 +10,10 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
     describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-12345678123456789') do
       it { should exist }
     end
+
+    describe aws_vpc_endpoint_connection_notification('vpce-12345678123456789') do
+      it { should exist }
+    end
   "
 
   def initialize(opts = {})
@@ -18,7 +22,7 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
     validate_parameters(required: [:connection_notification_id])
 
     if opts[:connection_notification_id] !~ /(^vpce-nfn-[0-9a-f]{17}$)|(^vpce-nfn\-[0-9a-f]{8}$)/
-      raise ArgumentError, "#{@__resource_name__}: 'connection_notification_id' must be in the format 'vpce-nfn-' followed by 8 hexadecimal characters."
+      raise ArgumentError, "#{@__resource_name__}: 'connection_notification_id' must be in the format 'vpce-nfn-' followed by 8  or 17 hexadecimal characters."
     end
 
     @display_name = opts[:connection_notification_id]
@@ -33,7 +37,7 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
   end
 
   def exists?
-    !@vpcen.empty?
+    !@vpcen.nil? && !@vpcen.empty?
   end
 
   def connection_notification_state_enabled?

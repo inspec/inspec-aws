@@ -1974,13 +1974,13 @@ resource "aws_sns_topic" "topic" {
 POLICY
 }
 
-resource "aws_vpc_endpoint_service" "foo" {
+resource "aws_vpc_endpoint_service" "test-endpoint_service" {
   acceptance_required        = false
   network_load_balancer_arns = [aws_lb.test-lb.arn]
 }
 
-resource "aws_vpc_endpoint_connection_notification" "foo" {
-  vpc_endpoint_service_id     = aws_vpc_endpoint_service.foo.id
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.test-endpoint_service.id
   connection_notification_arn = aws_sns_topic.topic.arn
   connection_events           = ["Accept", "Reject"]
 }

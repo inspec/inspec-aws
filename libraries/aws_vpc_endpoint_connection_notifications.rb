@@ -21,6 +21,7 @@ class AwsVpcEndpointConnectionNotifications < AwsResourceBase
              .register_column(:connection_notification_arns,       field: :connection_notification_arn)
              .register_column(:connection_events,                  field: :connection_events)
              .register_column(:connection_notification_state,      field: :connection_notification_state)
+             .register_column(:vpc_endpoint_id,                    field: :vpc_endpoint_id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -41,7 +42,8 @@ class AwsVpcEndpointConnectionNotifications < AwsResourceBase
                      connection_notification_type: vpcen[:connection_notification_type],
                      connection_notification_arn: vpcen[:connection_notification_arn],
                      connection_events: vpcen[:connection_events],
-                     connection_notification_state: vpcen[:connection_notification_state] }]
+                     connection_notification_state: vpcen[:connection_notification_state],
+                     vpc_endpoint_id: vpcen[:vpc_endpoint_id] }]
     end
     @table = vpcen_rows
   end
