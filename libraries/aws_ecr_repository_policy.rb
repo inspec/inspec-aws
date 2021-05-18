@@ -11,8 +11,6 @@ class AwsEcrPolicy < AwsResourceBase
       it { should exist }
     end
   "
-  attr_reader :repository_name
-
   def initialize(opts = {})
     # Create a repository_name:<value> pair if the argument is a string object.
     opts = { repository_name: opts } if opts.is_a?(String)
@@ -36,7 +34,7 @@ class AwsEcrPolicy < AwsResourceBase
     statement_match = []
     criteria = criteria.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
     criteria[:Principal] = criteria[:Principal].is_a?(Array) ? criteria[:Principal].sort : criteria[:Principal]
-    statements.each do |s|
+    statements.any? do |s|
       actions = s[:Action] || []
       effect = s[:Effect]
       sid = s[:Sid]
