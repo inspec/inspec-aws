@@ -117,6 +117,30 @@ The test will pass if the identified VPC is the default VPC for the region.
       it { should be_default }
     end
 
+### be\_available
+
+The test will pass if the identified VPC has a `available` state.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should be_available }
+    end
+
+### be\_cidr\_block\_associated
+
+The test will pass if the identified VPC has a cidr block associated set.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should be_cidr_block_associated }
+    end
+
+### be\_ipv\_6\_cidr\_block\_associated
+
+The test will pass if the identified VPC has a cidr block associated set.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should be_ipv_6_cidr_block_associated }
+    end
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeVpcs` action with Effect set to Allow.

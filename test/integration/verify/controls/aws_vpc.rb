@@ -79,3 +79,21 @@ control 'aws-cidr-block-cidr-block-association-set-1.0' do
     its ('cidr_block_association_set.first.cidr_block_state.status_message') { should be_empty }
   end
 end
+
+control 'aws-cidr-block-1.0' do
+  impact 1.0
+  title 'An CIDR block to associate with the VPC.'
+  describe aws_vpc(vpc_id: "vpc-00727fc4213acee4a") do
+    it { should be_associated }
+  end
+end
+
+control 'aws-cidr-block-1.0-associated-matcher' do
+  impact 1.0
+  title 'An CIDR block to associate with the VPC.'
+  describe aws_vpc(vpc_id: aws_default_vpc_id) do
+    it { should be_cidr_block_associated }
+    it { should_not be_ipv_6_cidr_block_associated }
+  end
+end
+

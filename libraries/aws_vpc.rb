@@ -49,4 +49,24 @@ class AwsVpc < AwsResourceBase
   def to_s
     opts.key?(:aws_region) ? "VPC #{@display_name} in #{opts[:aws_region]}" : "VPC #{@display_name}"
   end
+
+  def cidr_block_associated?
+    !cidr_block_association_set.blank?
+  end
+
+  def cidr_block_association_set
+    return [] unless vpc
+
+    vpc.cidr_block_association_set
+  end
+
+  def ipv_6_cidr_block_associated?
+    return true unless exists?
+    @vpc[:ipv_6_cidr_block_association_set] != nil
+  end
+
+  def vpc
+    return unless @display_name
+    @response.vpcs.first
+  end
 end
