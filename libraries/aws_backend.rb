@@ -35,6 +35,9 @@ require 'aws-sdk-batch'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-elasticsearchservice'
+require 'aws-sdk-eventbridge'
+require 'aws-sdk-glue'
 
 # AWS Inspec Backend Classes
 #
@@ -214,6 +217,18 @@ class AwsConnection
 
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
+  def elasticsearch_service_client
+    aws_client(Aws::ElasticsearchService::Client)
+  end
+
+  def eventbridge_client
+    aws_client(Aws::EventBridge::Client)
+  end
+
+  def glue_client
+    aws_client(Aws::Glue::Client)
   end
 end
 
