@@ -36,9 +36,6 @@ class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
     @table = fetch_data
   end
 
-  # require "pry"; binding.pry
-
-
   def fetch_data
     catch_aws_errors do
       @resp = @aws.elb_client_v2.describe_listeners(@query_params)
