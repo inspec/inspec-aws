@@ -19,7 +19,6 @@ class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
     @display_name = opts[:rule_arns]
     catch_aws_errors do
       resp = @aws.elb_client_v2.describe_rules({ rule_arns: [opts[:rule_arns]] })
-      require "pry"; binding.pry
       @listeners = resp.rules[0].to_h
       create_resource_methods(@listeners)
     end

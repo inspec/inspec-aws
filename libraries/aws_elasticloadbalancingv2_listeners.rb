@@ -7,49 +7,43 @@ class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
   desc 'Lists the clients that have been created for the specified user pool.'
 
   example "
-    describe aws_elasticloadbalancingv2_listeners(user_pool_id: 'test1') do
+    describe aws_elasticloadbalancingv2_listeners(listener_arn: 'test1') do
       its('count') { should eq 3 }
     end
   "
-
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_ids,                      field: :client_id)
-             .register_column(:user_pool_ids,                   field: :user_pool_id)
-             .register_column(:client_names,                    field: :client_name)
+             .register_column(:listener_arns,                         field: :listener_arn)
+             .register_column(:load_balancer_arns,                    field: :load_balancer_arn)
+             .register_column(:ports,                                 field: :port)
+             .register_column(:protocols,                             field: :protocol)
+             .register_column(:certificates,                          field: :certificates)
+             .register_column(:ssl_policies,                          field: :ssl_policy)
+             .register_column(:default_actions,                       field: :default_actions)
+             .register_column(:alpn_policies,                         field: :alpn_policy)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(user_pool_id))
+    validate_parameters(required: %i(listener_arn))
     @query_params = {}
-    @query_params[:user_pool_id] = opts[:user_pool_id]
-    if opts.key?(:user_pool_id)
-      raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
-      @query_params[:user_pool_id] = opts[:user_pool_id]
+    @query_params[:listener_arns] = [opts[:listener_arn]]
+    if opts.key?(:listener_arn)
+      raise ArgumentError, "#{@__resource_name__}: listener_arn must be provided" unless opts[:listener_arn] && !opts[:listener_arn].empty?
+      @query_params[:listener_arns] = [opts[:listener_arn]]
     end
     @table = fetch_data
   end
 
+  # require "pry"; binding.pry
+
+
   def fetch_data
-    table_rows = []
-    @query_params[:max_results] = 10
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.elb_client_v2.list_user_pool_clients(@query_params)
-      end
-      return [] if !@api_response || @api_response.empty?
-      @api_response.user_pool_clients.each do |res|
-        table_rows += [{
-          client_id: res.client_id,
-          user_pool_id: res.user_pool_id,
-          client_name: res.client_name,
-        }]
-      end
-      break unless @api_response.next_token
-      @query_params[:next_token] = @api_response.next_token
+    catch_aws_errors do
+      @resp = @aws.elb_client_v2.describe_listeners(@query_params)
     end
-    table_rows
+    return [] if !@resp || @resp.empty?
+    @table = @resp.listeners.map(&:to_h)
   end
 end

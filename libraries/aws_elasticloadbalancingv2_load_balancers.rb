@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
-  name '_aws_elasticloadbalancingv2_load_balancers'
+  name 'aws_elasticloadbalancingv2_load_balancers'
   desc 'Lists the clients that have been created for the specified user pool.'
 
   example "
@@ -11,45 +11,41 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
       its('count') { should eq 3 }
     end
   "
-
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_ids,                      field: :client_id)
-             .register_column(:user_pool_ids,                   field: :user_pool_id)
-             .register_column(:client_names,                    field: :client_name)
+             .register_column(:load_balancer_arns,                                field: :load_balancer_arn)
+             .register_column(:dns_names,                                         field: :dns_name)
+             .register_column(:canonical_hosted_zone_ids,                         field: :canonical_hosted_zone_id)
+             .register_column(:created_times,                                     field: :created_time)
+             .register_column(:load_balancer_names,                               field: :load_balancer_name)
+             .register_column(:schemes,                                           field: :scheme)
+             .register_column(:vpc_ids,                                           field: :vpc_id)
+             .register_column(:states,                                            field: :state)
+             .register_column(:types,                                             field: :type)
+             .register_column(:availability_zones,                                field: :availability_zones)
+             .register_column(:security_groups,                                   field: :security_groups)
+             .register_column(:ip_address_types,                                  field: :ip_address_type)
+             .register_column(:customer_owned_ipv_4_pools,                        field: :customer_owned_ipv_4_pool)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(user_pool_id))
+    validate_parameters(required: %i(load_balancer_arn))
     @query_params = {}
-    @query_params[:user_pool_id] = opts[:user_pool_id]
-    if opts.key?(:user_pool_id)
-      raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
-      @query_params[:user_pool_id] = opts[:user_pool_id]
+    @query_params[:load_balancer_arns] = [opts[:load_balancer_arn]]
+    if opts.key?(:file_system_id)
+      raise ArgumentError, "#{@__resource_name__}: load_balancer_arn must be provided" unless opts[:load_balancer_arn] && !opts[:load_balancer_arn].empty?
+      @query_params[:load_balancer_arns] = [opts[:load_balancer_arn]]
     end
     @table = fetch_data
   end
 
   def fetch_data
-    table_rows = []
-    @query_params[:max_results] = 10
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.elb_client_v2.list_user_pool_clients(@query_params)
-      end
-      return [] if !@api_response || @api_response.empty?
-      @api_response.user_pool_clients.each do |res|
-        table_rows += [{
-          client_id: res.client_id,
-          user_pool_id: res.user_pool_id,
-          client_name: res.client_name,
-        }]
-      end
-      break unless @api_response.next_token
-      @query_params[:next_token] = @api_response.next_token
+    catch_aws_errors do
+      @resp = @aws.elb_client_v2.describe_load_balancers(@query_params)
     end
-    table_rows
+    return [] if !@resp || @resp.empty?
+    @table = @resp.load_balancers.map(&:to_h)
   end
 end

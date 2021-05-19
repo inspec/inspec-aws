@@ -26,7 +26,7 @@ class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
 
   def id
     return nil unless exists?
-    @listeners[:listener_arns]
+    @listeners[:listener_arn]
   end
 
   def exists?
