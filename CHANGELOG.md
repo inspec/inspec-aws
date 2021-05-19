@@ -1,9 +1,14 @@
-<!-- latest_release 1.38.1 -->
+<!-- latest_release 1.39.0 -->
+## [v1.39.0](https://github.com/inspec/inspec-aws/tree/v1.39.0) (2021-05-19)
+
+#### Merged Pull Requests
+- Adding aws ecr policy resource [#354](https://github.com/inspec/inspec-aws/pull/354) ([Jentul-Gift](https://github.com/Jentul-Gift))
+<!-- latest_release -->
+
 ## [v1.38.1](https://github.com/inspec/inspec-aws/tree/v1.38.1) (2021-05-19)
 
 #### Merged Pull Requests
 - aws_auto_scaling_groups lint error fix [#358](https://github.com/inspec/inspec-aws/pull/358) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.38.0](https://github.com/inspec/inspec-aws/tree/v1.38.0) (2021-05-04)
 
