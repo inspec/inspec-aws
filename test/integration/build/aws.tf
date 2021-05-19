@@ -1942,3 +1942,31 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+resource "aws_db_option_group" "test-option-group" {
+  name                     = "option-group-test-terraform"
+  option_group_description = "Terraform Option Group"
+  engine_name              = "sqlserver-ee"
+  major_engine_version     = "11.00"
+
+  option {
+    option_name = "Timezone"
+
+    option_settings {
+      name  = "TIME_ZONE"
+      value = "UTC"
+    }
+  }
+
+  option {
+    option_name = "SQLSERVER_BACKUP_RESTORE"
+
+    option_settings {
+      name  = "IAM_ROLE_ARN"
+      value = "IAM_ROLE_ARN_Value"
+    }
+  }
+
+  option {
+    option_name = "TDE"
+  }
+}
