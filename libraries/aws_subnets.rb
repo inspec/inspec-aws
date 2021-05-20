@@ -45,6 +45,7 @@ class AwsSubnets < AwsResourceBase
         state:                   subnet[:state],
         subnet_id:               subnet[:subnet_id],
         vpc_id:                  subnet[:vpc_id],
+        tags:                    subnet[:tags],
       }]
     end
     @table = subnet_rows
