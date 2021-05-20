@@ -28,6 +28,8 @@ require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
+require 'aws-sdk-securityhub'
+require 'aws-sdk-states'
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -154,6 +156,10 @@ class AwsConnection
     aws_client(Aws::Route53::Client)
   end
 
+  def securityhub_client
+    aws_client(Aws::SecurityHub::Client)
+  end
+
   def service_client
     aws_client(Aws::AutoScaling::Client)
   end
@@ -176,6 +182,10 @@ class AwsConnection
 
   def ssm_client
     aws_client(Aws::SSM::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
