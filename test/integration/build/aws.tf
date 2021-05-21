@@ -1979,3 +1979,22 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy1" {
+  name                   = "test1"
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.bar.name
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group1" {
+  availability_zones        = ["us-east-1a"]
+  name                      = "test1"
+  max_size                  = 5
+  min_size                  = 2
+  health_check_grace_period = 300
+  health_check_type         = "ELB"
+  force_delete              = true
+  launch_configuration      = aws_launch_configuration.foo.name
+}
