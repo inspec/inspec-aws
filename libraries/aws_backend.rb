@@ -31,7 +31,6 @@ require 'aws-sdk-ssm'
 require 'rspec/expectations'
 require 'aws-sdk-redshift'
 
-
 # AWS Inspec Backend Classes
 #
 # Class to manage the AWS connection, instantiates all required clients for inspec resources
