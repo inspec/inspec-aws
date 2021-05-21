@@ -29,6 +29,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-batch'
 
 # AWS Inspec Backend Classes
 #
@@ -176,6 +177,10 @@ class AwsConnection
 
   def ssm_client
     aws_client(Aws::SSM::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
   end
 end
 
