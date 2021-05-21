@@ -36,6 +36,12 @@ class AwsRedshiftCluster < AwsResourceBase
     end
   end
 
+  def has_encrypted?
+    @rds_cluster[:encrypted]
+  end
+
+  alias encrypted? has_encrypted?
+
   def exists?
     !@rds_cluster.nil? && !@rds_cluster.empty?
   end

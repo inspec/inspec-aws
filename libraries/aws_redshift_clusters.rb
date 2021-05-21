@@ -18,6 +18,7 @@ class AwsRedshiftClusters < AwsResourceBase
              .register_column(:node_type, field: :node_type)
              .register_column(:cluster_status, field: :cluster_status)
              .register_column(:cluster_availability_status, field: :cluster_availability_status)
+             .register_column(:db_name, field: :db_name)
              .register_column(:modify_status, field: :modify_status)
              .register_column(:master_username, field: :master_username)
              .register_column(:cluster_create_time, field: :cluster_create_time)
@@ -26,6 +27,7 @@ class AwsRedshiftClusters < AwsResourceBase
              .register_column(:allow_version_upgrade, field: :allow_version_upgrade)
              .register_column(:encrypted, field: :encrypted)
              .register_column(:iam_roles, field: :iam_roles)
+             .register_column(:vpc_id, field: :vpc_id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -52,7 +54,9 @@ class AwsRedshiftClusters < AwsResourceBase
                            vpc_id:                           redshift_cluster.vpc_id,
                            allow_version_upgrade:            redshift_cluster.allow_version_upgrade,
                            encrypted:                        redshift_cluster.encrypted,
-                           iam_roles:                        redshift_cluster.iam_roles }]
+                           iam_roles:                        redshift_cluster.iam_roles,
+                           modify_status:                    redshift_cluster.modify_status,
+                           availability_zone:               redshift_cluster.availability_zone }]
       end
     end
     @table = cluster_rows
