@@ -1979,3 +1979,13 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_batch_job_queue" "aws_batch_job_queue1" {
+  name     = "test1"
+  state    = "ENABLED"
+  priority = 1
+  compute_environments = [
+    aws_batch_compute_environment.test_environment_1.arn,
+    aws_batch_compute_environment.test_environment_2.arn,
+  ]
+}
