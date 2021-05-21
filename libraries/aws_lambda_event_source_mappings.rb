@@ -45,7 +45,6 @@ class AWSLambdaEventSourceMappings < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.lambda_client.list_event_source_mappings
     end
-    require "pry"; binding.pry
     return [] if !@resp || @resp.empty?
     @table = @resp.event_source_mappings.map(&:to_h)
   end

@@ -11,7 +11,7 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
       it { should exist }
     end
   "
-  
+
   def initialize(opts = {})
     opts = { domain_name: opts } if opts.is_a?(String)
     super(opts)

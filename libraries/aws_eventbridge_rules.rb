@@ -38,7 +38,7 @@ class AWSEventBridgeRules < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.eventbridge_client.list_rules(@query_params)
       end
-      
+
       return [] if !@api_response || @api_response.empty?
       @api_response.rules.each do |res|
         rows += [{

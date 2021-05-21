@@ -11,7 +11,7 @@ class AWSGlueCrawler < AwsResourceBase
       it { should exist }
     end
   "
-  
+
   def initialize(opts = {})
     opts = { name: opts } if opts.is_a?(String)
     super(opts)

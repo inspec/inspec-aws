@@ -47,7 +47,7 @@ class AWSGlueCrawlers < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.glue_client.get_crawlers(@query_params)
       end
-      
+
       return [] if !@api_response || @api_response.empty?
       @api_response.crawlers.each do |res|
         rows += [{
