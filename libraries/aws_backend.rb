@@ -36,7 +36,7 @@ require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-elasticsearchservice'
-require 'aws-sdk-eventbridge'
+# require 'aws-sdk-eventbridge'
 require 'aws-sdk-glue'
 
 # AWS Inspec Backend Classes

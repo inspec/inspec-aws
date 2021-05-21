@@ -7,7 +7,7 @@ class AWSCognitoUserPoolClient < AwsResourceBase
   desc 'Client method for returning the configuration information and metadata of the specified user pool app client.'
 
   example `
-    describe aws_cognito_userpool_client(user_pool_id: 'test1', client_id: '') do
+    describe aws_cognito_userpool_client(user_pool_id: 'test1', client_id: 'test1') do
       it { should exist }
     end
   `
