@@ -53,6 +53,6 @@ class AWSDMSEndpoint < AwsResourceBase
   end
 
   def to_s
-    "endpoint_identifier: #{@display_name}"
+    "endpoint_arn: #{@display_name}"
   end
 end
