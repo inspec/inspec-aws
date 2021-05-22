@@ -1,44 +1,49 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_dms_replication_instances Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws_dms_replication_instances
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_dms_replication_instances` InSpec audit resource to test properties of a plural DMS Replication Instances.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::DMS::ReplicationInstance resource creates an AWS DMS replication instance.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a replication instance exists.
+    describe aws_dms_replication_instances do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| engine_versions | The engine versions of the replication instance. |
+| replication_instance_classes | The classes of the replication instance. |
+| storage_types | The storage type of the replication instance. |
+| min_allocated_storages | The min allocated storages of the replication instance. |
+| max_allocated_storages | The max allocated storages of the replication instance. |
+| default_allocated_storages | The default allocated storages of the replication instance. |
+| included_allocated_storages | The included allocated storages of the replication instance. |
+| availability_zones | The availability zones of the replication instance. |
+| release_statuses | The release statuses of the replication instance. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+### Ensure a engine version is available.
+    describe aws_dms_replication_instances do
+      its('engine_versions') { should include '3.4.4' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure that the classes is available
+    describe aws_dms_replication_instances do
+        its('replication_instance_classes') { should include 'dms.c4.2xlarge' }
     end
 
 ## Matchers
@@ -51,13 +56,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_dms_replication_instances do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_dms_replication_instances do
       it { should_not exist }
     end
 
@@ -65,10 +70,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_dms_replication_instances do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `dmsmigrationservice:client:describe_orderable_replication_instances` action with `Effect` set to `Allow`.

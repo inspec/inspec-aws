@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSDMSReplicationInstances < AwsResourceBase
   name 'aws_dms_replication_instances'
-  desc 'Returns information about the endpoints for your account in the current region.'
+  desc 'Returns information about the replication instance types that can be created in the specified region.'
   example `
     describe aws_dms_replication_instances do
       it { should exist }
     end
   `
+
   attr_reader :table
 
   FilterTable.create

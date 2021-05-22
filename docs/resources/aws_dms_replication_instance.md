@@ -1,55 +1,50 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_dms_replication_instance Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws_dms_replication_instance
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_dms_replication_instance` InSpec audit resource to test properties of a single specific DMS Replication Instance.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::DMS::ReplicationInstance resource creates an AWS DMS replication instance.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a deplication instance exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_instance do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
-
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| engine_version | The engine version of the replication instance. |
+| replication_instance_class | The class of the replication instance. |
+| storage_type | The storage type of the replication instance. |
+| min_allocated_storage | The min allocated storage of the replication instance. |
+| max_allocated_storage | The max allocated storage of the replication instance. |
+| default_allocated_storage | The default allocated storage of the replication instance. |
+| included_allocated_storage | The included allocated storage of the replication instance. |
+| availability_zones | The availability zones of the replication instance. |
+| release_status | The release status of the replication instance. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a engine version is available.
+    describe aws_dms_replication_instance do
+      its('engine_version') { should eq '3.4.4' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure that the replication instance class is `dms.c4.2xlarge`
+    describe aws_dms_replication_instance do
+        its('replication_instance_class') { should eq 'dms.c4.2xlarge' }
     end
 
 ## Matchers
@@ -62,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_instance do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_dms_replication_instance do
       it { should_not exist }
     end
 
@@ -76,10 +71,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_instance do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `dmsmigrationservice:client:get_work_group` action with `Effect` set to `Allow`.

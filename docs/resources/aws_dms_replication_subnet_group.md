@@ -1,55 +1,48 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_dms_replication_subnet_group Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws_dms_replication_subnet_group
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_dms_replication_subnet_group` InSpec audit resource to test properties of a single specific DMS Replication Instance Subnet Group.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::DMS::ReplicationSubnetGroup resource creates an AWS DMS replication subnet group. Subnet groups must contain at least two subnets in two different Availability Zones in the same region.
 
 ## Syntax
 
 Ensure that a work_group name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test1') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`replication_subnet_group_identifier` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on DMS Replication Subnet Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationsubnetgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| replication_subnet_group_identifier | The identifier of the replication subnet group. |
+| replication_subnet_group_description | The description of the replication subnet group. |
+| vpc_id | The vpc id of the replication subnet group. |
+| subnet_group_status | The status of the replication subnet group. |
+| subnets | The subnets of the replication subnet group. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a identifier is available.
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+      its('replication_subnet_group_identifier') { should eq 'test' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure that the vpc is availble.
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+        its('vpc_id') { should eq 'vpc-0123456789' }
     end
 
 ## Matchers
@@ -62,24 +55,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the identifier is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `dmsmigrationservice:client:describe_replication_subnet_groups` action with `Effect` set to `Allow`.

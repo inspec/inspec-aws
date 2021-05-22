@@ -5,14 +5,13 @@ require 'aws_backend'
 class AWSDMSReplicationInstance < AwsResourceBase
   name 'aws_dms_replication_instance'
   desc 'Returns information about the replication instance types that can be created in the specified region.'
-
   example "
     describe aws_dms_replication_instance do
       it { should exits }
     end
   "
+
   def initialize(opts = {})
-    opts = { auto_scaling_group_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters
     catch_aws_errors do
