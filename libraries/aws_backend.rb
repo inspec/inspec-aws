@@ -38,6 +38,8 @@ require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-elasticsearchservice'
 # require 'aws-sdk-eventbridge'
 require 'aws-sdk-glue'
+require 'aws-sdk-ram'
+require 'aws-sdk-route53resolver'
 
 # AWS Inspec Backend Classes
 #
@@ -229,6 +231,14 @@ class AwsConnection
 
   def glue_client
     aws_client(Aws::Glue::Client)
+  end
+
+  def ram_client
+    aws_client(Aws::RAM::Client)
+  end
+
+  def route53resolver_client
+    aws_client(Aws::Route53Resolver::Client)
   end
 end
 
