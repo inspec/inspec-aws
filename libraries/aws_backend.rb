@@ -40,6 +40,7 @@ require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-glue'
 require 'aws-sdk-ram'
 require 'aws-sdk-route53resolver'
+require 'aws-sdk-secretsmanager'
 
 # AWS Inspec Backend Classes
 #
@@ -239,6 +240,10 @@ class AwsConnection
 
   def route53resolver_client
     aws_client(Aws::Route53Resolver::Client)
+  end
+
+  def secretsmanager_client
+    aws_client(Aws::SecretsManager::Client)
   end
 end
 

@@ -3,13 +3,13 @@
 require 'aws_backend'
 
 class AWSRoute53RecordSet < AwsResourceBase
-    name 'aws_route53_record_set'
-    desc ''
-    example `
-      describe aws_route53_record_set(hosted_zone_id: "value") do
-        it { should exist }
-      end
-    `
+  name 'aws_route53_record_set'
+  desc ''
+  example `
+    describe aws_route53_record_set(hosted_zone_id: "value") do
+      it { should exist }
+    end
+  `
 
   def initialize(opts = {})
     opts = { hosted_zone_id: opts, start_record_name: opts } if opts.is_a?(String)

@@ -32,7 +32,6 @@ class AWSRoute53HostedZones < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.route53_client.list_hosted_zones
     end
-    # require "pry"; binding.pry
     return [] if !@resp || @resp.empty?
     @table = @resp.hosted_zones.map(&:to_h)
   end
