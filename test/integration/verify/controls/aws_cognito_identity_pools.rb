@@ -16,6 +16,6 @@ control 'aws-auto-identity-pools-1.0' do
 
   describe aws_cognito_identity_pools do
     its("identity_pool_ids") { should include aws_identity_pool_id }
-    its("dentity_pool_names") { should include aws_identity_pool_name }
+    its("identity_pool_names") { should include aws_identity_pool_name }
   end
 end
