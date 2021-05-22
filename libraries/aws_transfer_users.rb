@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSTransferUsers < AwsResourceBase
   name 'aws_transfer_users'
-  desc ''
+  desc 'Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId parameter.'
   example `
     describe aws_transfer_users do
       it { should exist }

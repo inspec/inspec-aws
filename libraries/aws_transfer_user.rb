@@ -4,10 +4,9 @@ require 'aws_backend'
 
 class AWSTransferUser < AwsResourceBase
   name 'aws_transfer_user'
-  desc ''
-
+  desc 'Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property.'
   example `
-    describe aws_transfer_user(server_id: "value", user_name: 'value') do
+    describe aws_transfer_user(server_id: "test", user_name: 'test') do
       it { should exist }
     end
   `

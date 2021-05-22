@@ -4,10 +4,9 @@ require 'aws_backend'
 
 class AWSStepFunctionsStateMachine < AwsResourceBase
   name 'aws_stepfunctions_state_machine'
-  desc ''
-
+  desc 'Describes a state machine.'
   example `
-    describe aws_stepfnctions_state_machine(state_machine_arn: "value") do
+    describe aws_stepfunctions_state_machine(state_machine_arn: "value") do
       it { should exist }
     end
   `
