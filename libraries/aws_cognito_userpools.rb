@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSCognitoUserPools < AwsResourceBase
   name 'aws_cognito_userpools'
-  desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
+  desc 'Lists all of the Cognito identity pools registered for your account.'
   example `
     describe aws_cognito_userpools do
       it { should exist }
@@ -14,11 +14,8 @@ class AWSCognitoUserPools < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids,                         field: :id)
-             .register_column(:names,                       field: :name)
-             .register_column(:statuses,                    field: :status)
-             .register_column(:last_modified_dates,         field: :last_modified_date)
-             .register_column(:creation_dates,              field: :creation_date)
+             .register_column(:identity_pool_ids,                         field: :identity_pool_id)
+             .register_column(:identity_pool_names,                       field: :identity_pool_name)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
