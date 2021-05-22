@@ -41,6 +41,8 @@ require 'aws-sdk-glue'
 require 'aws-sdk-ram'
 require 'aws-sdk-route53resolver'
 require 'aws-sdk-secretsmanager'
+require 'aws-sdk-transfer'
+require 'aws-sdk-states'
 
 # AWS Inspec Backend Classes
 #
@@ -244,6 +246,14 @@ class AwsConnection
 
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
+  end
+
+  def transfer_client
+    aws_client(Aws::Transfer::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
