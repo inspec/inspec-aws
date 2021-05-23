@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSCognitoUserPools < AwsResourceBase
   name 'aws_cognito_userpools'
-  desc 'Lists all of the Cognito identity pools registered for your account.'
+  desc 'Lists the user pools associated with an AWS account.'
   example `
     describe aws_cognito_userpools do
       it { should exist }
@@ -14,8 +14,12 @@ class AWSCognitoUserPools < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:identity_pool_ids,                         field: :identity_pool_id)
-             .register_column(:identity_pool_names,                       field: :identity_pool_name)
+             .register_column(:ids,                                 field: :id)
+             .register_column(:names,                               field: :name)
+             .register_column(:lambda_configs,                      field: :lambda_config)
+             .register_column(:statuses,                            field: :status)
+             .register_column(:last_modified_dates,                 field: :last_modified_date)
+             .register_column(:creation_dates,                      field: :creation_date)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -31,13 +35,17 @@ class AWSCognitoUserPools < AwsResourceBase
     @query_params[:max_results] = 60
     loop do
       catch_aws_errors do
-        @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
+        @api_response = @aws.cognitoidentityprovider_client.list_user_pools(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
-      @api_response.identity_pools.each do |identity_pool|
+      @api_response.user_pools.each do |res|
         rows += [{
-          identity_pool_id: identity_pool.identity_pool_id,
-          identity_pool_name: identity_pool.identity_pool_name,
+          id: res.id,
+          name: res.name,
+          lambda_config: res.lambda_config,
+          status: res.status,
+          last_modified_date: res.last_modified_date,
+          creation_date: res.creation_date,
         }]
       end
       break unless @api_response.next_token
