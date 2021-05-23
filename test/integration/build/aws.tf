@@ -1979,3 +1979,13 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_glue_crawler" "aws_glue_crawler1" {
+  database_name = aws_glue_catalog_database.example.name
+  name          = "example"
+  role          = aws_iam_role.example.arn
+
+  dynamodb_target {
+    path = "table-name"
+  }
+}
