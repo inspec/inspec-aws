@@ -17,7 +17,7 @@ class AWSECSService < AwsResourceBase
     validate_parameters(required: %i(services), require_any_of: %i(cluster))
     raise ArgumentError, "#{@__resource_name__}: services must be provided" unless opts[:services] && !opts[:services].empty?
     raise ArgumentError, "#{@__resource_name__}: cluster must be provided" unless opts[:cluster] && !opts[:cluster].empty?
-    @display_name = opts.values.join(' ')
+    @display_name = opts[:services]
     catch_aws_errors do
       resp = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: opts[:services] })
       @services = resp.services[0].to_h
@@ -27,7 +27,7 @@ class AWSECSService < AwsResourceBase
 
   def id
     return nil unless exists?
-    @services[:service_name]
+    @services[:services]
   end
 
   def exists?

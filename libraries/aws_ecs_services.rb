@@ -4,31 +4,37 @@ require 'aws_backend'
 
 class AWSECSServices < AwsResourceBase
   name 'aws_ecs_services'
-  desc 'Lists the clients that have been created for the specified user pool.'
+  desc 'Lists the services that are running in a specified cluster.'
 
   example "
-    describe aws_ecs_services(user_pool_id: 'test1') do
-      its('count') { should eq 3 }
+    describe aws_ecs_services(cluster: 'cluster_name') do
+      its('client_ids') { should include '' }
     end
   "
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_ids,                      field: :client_id)
-             .register_column(:user_pool_ids,                   field: :user_pool_id)
-             .register_column(:client_names,                    field: :client_name)
+             .register_column(:service_arns,          field: :service_arns)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(cluster))
+    @query_params = {}
+    @query_params[:cluster] = opts[:cluster]
+    if opts.key?(:server_id)
+      raise ArgumentError, "#{@__resource_name__}: cluster must be provided" unless opts[:cluster] && !opts[:cluster].empty?
+      @query_params[:cluster] = opts[:cluster]
+    end
     @table = fetch_data
   end
 
   def fetch_data
-    @resp = @aws.ecs_client.list_services
+    catch_aws_errors do
+      @resp = @aws.ecs_client.list_services(@query_params)
+    end
     return [] if !@resp || @resp.empty?
-    @table = @resp.endpoints.map(&:to_h)
+    @table = @resp.map(&:to_h)
   end
 end

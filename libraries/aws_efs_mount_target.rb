@@ -4,8 +4,7 @@ require 'aws_backend'
 
 class AWSEFSMountTarget < AwsResourceBase
   name 'aws_efs_mount_target'
-  desc 'Returns information about the endpoints for your account in the current region.'
-
+  desc 'Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.'
   example "
     describe aws_efs_mount_target(mount_target_id: 'test') do
       it { should exist }

@@ -7,7 +7,7 @@ class AWSECSTaskDefinition < AwsResourceBase
   desc 'Returns information about the endpoints for your account in the current region.'
 
   example "
-    describe aws_ecs_task_definition(task_definition: 'test1:1') do
+    describe aws_ecs_task_definition(task_definition: 'hello_world:8') do
       it { should exist }
     end
   "
