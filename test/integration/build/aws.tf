@@ -1979,3 +1979,9 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_lambda_event_source_mapping" "aws_lambda_event_source_mapping1" {
+  event_source_arn  = aws_dynamodb_table.example.stream_arn
+  function_name     = aws_lambda_function.example.arn
+  starting_position = "LATEST"
+}
