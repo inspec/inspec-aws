@@ -1979,3 +1979,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database1" {
+  name = "MyCatalogDatabase"
+}
