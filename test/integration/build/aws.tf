@@ -1979,3 +1979,20 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_elasticsearch_domain" "aws_elasticsearch_domain1" {
+  domain_name           = "example"
+  elasticsearch_version = "1.5"
+
+  cluster_config {
+    instance_type = "r4.large.elasticsearch"
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = 23
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
