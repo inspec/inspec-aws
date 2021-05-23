@@ -1979,3 +1979,24 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_lb" "aws_lb1" {
+  # ...
+}
+
+resource "aws_lb_target_group" "aws_lb_target_group1" {
+  # ...
+}
+
+resource "aws_lb_listener" "aws_lb_listener1" {
+  load_balancer_arn = aws_lb.aws_lb1.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.aws_lb_target_group1.arn
+  }
+}
