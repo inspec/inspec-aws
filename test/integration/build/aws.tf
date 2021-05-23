@@ -1979,3 +1979,45 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule1" {
+  name        = "capture-aws-sign-in"
+  description = "Capture each AWS Console Sign In"
+
+  event_pattern = <<EOF
+{
+  "detail-type": [
+    "AWS Console Sign In via CloudTrail"
+  ]
+}
+EOF
+}
+
+resource "aws_cloudwatch_event_target" "aws_cloudwatch_event_target1" {
+  rule      = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule1.name
+  target_id = "SendToSNS"
+  arn       = aws_sns_topic.aws_sns_topic1.arn
+}
+
+resource "aws_sns_topic" "aws_sns_topic1" {
+  name = "aws-console-logins"
+}
+
+resource "aws_sns_topic_policy" "default" {
+  arn    = aws_sns_topic.aws_sns_topic1.arn
+  policy = data.aws_iam_policy_document.sns_topic_policy.json
+}
+
+data "aws_iam_policy_document" "sns_topic_policy" {
+  statement {
+    effect  = "Allow"
+    actions = ["SNS:Publish"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    resources = [aws_sns_topic.aws_logins.arn]
+  }
+}
