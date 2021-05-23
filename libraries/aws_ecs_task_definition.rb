@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSECSTaskDefinition < AwsResourceBase
   name 'aws_ecs_task_definition'
-  desc 'Returns information about the endpoints for your account in the current region.'
+  desc 'Describes a task definition.'
 
   example "
     describe aws_ecs_task_definition(task_definition: 'hello_world:8') do

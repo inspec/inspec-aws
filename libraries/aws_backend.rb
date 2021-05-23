@@ -228,9 +228,9 @@ class AwsConnection
     aws_client(Aws::ElasticsearchService::Client)
   end
 
-  def eventbridge_client
-    aws_client(Aws::EventBridge::Client)
-  end
+  # def eventbridge_client
+  #   aws_client(Aws::EventBridge::Client)
+  # end
 
   def glue_client
     aws_client(Aws::Glue::Client)

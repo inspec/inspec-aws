@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSECSTaskDefinitions < AwsResourceBase
   name 'aws_ecs_task_definitions'
-  desc 'Returns a list of task definitions that are registered to your account. You can filter the results by family name with the familyPrefix parameter or by status with the status parameter.'
+  desc 'Returns a list of task definitions that are registered to your account.'
   example `
     describe aws_ecs_task_definitions do
       it { should exist }
