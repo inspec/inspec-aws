@@ -24,19 +24,23 @@ For additional information, see the [AWS documentation on Cognito User Pool](htt
 
 | Property | Description|
 | --- | --- |
-| identity_pool_ids | The identity pool ids of the User Pools. |
-| identity_pool_names | The identity pool names of the User Pools. |
+| ids | The ids of the User Pools. |
+| names | The names of the User Pools. |
+| lambda_configs | The lambda_configs of the User Pools. |
+| statuses | The statuses of the User Pools. |
+| last_modified_dates | The last_modified_dates of the User Pools. |
+| creation_dates | The creation_dates of the User Pools. |
 
 ## Examples
 
-### Ensure a identity pool ids is available.
+### Ensure an id is available.
     describe aws_cognito_userpools do
-      its('identity_pool_ids') { should include 'test' }
+      its('ids') { should include 'test' }
     end
 
-### Ensure a identity pool names is available.
+### Ensure a name is available.
     describe aws_cognito_userpools do
-        its('identity_pool_names') { should include 'test' }
+      its('names') { should include 'test' }
     end
 
 ## Matchers
@@ -59,11 +63,11 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the user pool is available.
     describe aws_cognito_userpools do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cognitoidentityprovider:client:list_identity_pools` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cognitoidentityprovider:client:list_user_pools` action with `Effect` set to `Allow`.
