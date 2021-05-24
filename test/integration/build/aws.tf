@@ -148,6 +148,18 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_launch_template_name" {}
+variable "aws_launch_template_core" {}
+variable "aws_launch_template_threads_per_core" {}
+variable "aws_launch_template_cpu_credits" {}
+variable "aws_launch_template_volume_size" {}
+variable "aws_launch_template_test_profile" {}
+variable "aws_launch_template_resource_type" {}
+variable "aws_launch_template_tag_name" {}
+variable "aws_launch_template_instance_type"  {}
+variable "aws_launch_template_kernel_id" {}
+variable "aws_launch_template_key_name" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1920,23 +1932,23 @@ resource "aws_guardduty_detector" "detector_1" {
   finding_publishing_frequency = "SIX_HOURS"
 }
 resource "aws_launch_template" "launch-template-test" {
-  name = "Integration-test"
+  name = var.aws_launch_template_name
 
   block_device_mappings {
     device_name = "/dev/sda1"
 
     ebs {
-      volume_size = 20
+      volume_size = var.aws_launch_template_volume_size
     }
   }
 
   cpu_options {
-    core_count       = 4
-    threads_per_core = 2
+    core_count       = var.aws_launch_template_core
+    threads_per_core = var.aws_launch_template_threads_per_core
   }
 
   credit_specification {
-    cpu_credits = "standard"
+    cpu_credits = var.aws_launch_template_cpu_credits
   }
 
   disable_api_termination = true
@@ -1945,7 +1957,7 @@ resource "aws_launch_template" "launch-template-test" {
 
 
   iam_instance_profile {
-    name = "test"
+    name = var.aws_launch_template_instance_type
   }
 
   image_id = "ami-0a83ebf1ac32a3fbe"
@@ -1956,11 +1968,11 @@ resource "aws_launch_template" "launch-template-test" {
     market_type = "spot"
   }
 
-  instance_type = "t2.micro"
+  instance_type = var.aws_launch_template_instance_type
 
-  kernel_id = "test"
+  kernel_id = var.aws_launch_template_kernel_id
 
-  key_name = "test"
+  key_name = var.aws_launch_template_key_name
 
 
   metadata_options {
@@ -1980,10 +1992,10 @@ resource "aws_launch_template" "launch-template-test" {
 
 
   tag_specifications {
-    resource_type = "instance"
+    resource_type = var.aws_launch_template_resource_type
 
     tags = {
-      Name = "test"
+      Name = var.aws_launch_template_tag_name
     }
   }
 

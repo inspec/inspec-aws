@@ -20,7 +20,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
              .register_column(:created_by,                    field: :created_by)
              .register_column(:default_version_number,        field: :default_version_number)
              .register_column(:tags,                          field: :tags)
-             .register_column(:latest_version_number,         field: :launch_template_tags)
+             .register_column(:latest_version_number,         field: :launch_template_number)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})

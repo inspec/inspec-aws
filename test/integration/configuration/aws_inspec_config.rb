@@ -207,7 +207,21 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_launch_template_name: "launch_template-#{add_random_string}",
+      aws_launch_template_core: 4,
+      aws_launch_template_threads_per_core: 2,
+      aws_launch_template_cpu_credits: "standard",
+      aws_launch_template_volume_size: 20,
+      aws_launch_template_instance_type: "test-profile",
+      aws_launch_template_resource_type: "instance",
+      aws_launch_template_tag_name: "test",
+      aws_launch_template_instance_type: "t2.micro",
+      aws_launch_template_kernel_id: "test_kernel_id",
+      aws_launch_template_key_name: "test_key_name"
+
+
+
   }
 
   def self.config
