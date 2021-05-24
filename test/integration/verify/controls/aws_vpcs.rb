@@ -23,22 +23,35 @@ control 'aws-vpcs-1.0' do
   end
 end
 
-aws_cidr_block_association_set_association_id = attribute("aws_cidr_block_association_set_association_id", default: '', description: 'The association ID for a CIDR block associated with the VPC.')
-aws_cidr_block_association_set_cidr_block_state_state = attribute("aws_cidr_block_association_set_cidr_block_state_state", default: '', description: 'The state of a CIDR block associated with the VPC.')
-aws_cidr_block_association_set_cidr_block_state_status_message = attribute("aws_cidr_block_association_set_cidr_block_state_status_message", default: '', description: 'The status message of a CIDR block associated with the VPC.')
+cidr_association_ids = attribute("cidr_association_ids", default: '', description: 'The association ID for a CIDR block associated with the VPC.')
+cidr_states = attribute("cidr_states", default: '', description: 'The state of a CIDR block associated with the VPC.')
+cidr_status_messages = attribute("cidr_status_messages", default: '', description: 'The status message of a CIDR block associated with the VPC.')
 
 control 'aws-vpcs-1.0' do
   impact 1.0
   title 'Ensure AWS VPC CIDR Block plural resource has the correct properties.'
   describe aws_vpcs do
-    it { should exist }
-    its('count')             { should be <= 100 }
-    its('cidr_blocks')       { should include aws_vpc_cidr_block }
-    its ('ipv_6_cidr_block_association_sets') { should_not be_empty }
-    its ('cidr_block_association_sets') { should_not be_empty }
-    its('cidr_block_association_sets')       { should include(cidr_block_association_set_association_ids: aws_cidr_block_association_set_association_id,
-                                                              cidr_block_association_set_status_messages: aws_cidr_block_association_set_cidr_block_state_state,
-                                                              cidr_block_association_set_statuses: aws_cidr_block_association_set_cidr_block_state_status_message) }
-    its ('ipv_6_cidr_block_association_set') { should be_empty }
+    its ('cidr_association_ids')        { should include cidr_association_ids }
+    its ('cidr_states')                 { should include cidr_states }
+    its ('cidr_status_messages')        { should be_empty }
+  end
+end
+
+ipv_6_cidr_association_ids = attribute("ipv_6_cidr_association_ids", default: '', description: 'The association ID for a ipv6 CIDR block associated with the VPC.')
+ipv_6_cidr_states = attribute("ipv_6_cidr_states", default: '', description: 'The state of a ipv6 CIDR block associated with the VPC.')
+ipv_6_cidr_status_messages = attribute("ipv_6_cidr_status_messages", default: '', description: 'The status message of a ipv6 CIDR block associated with the VPC.')
+ipv_6_cidr_network_border_groups = attribute("ipv_6_cidr_network_border_groups", default: '', description: 'The network border group of a ipv6 CIDR block associated with the VPC.')
+ipv_6_cidr_ipv_6_pools = attribute("ipv_6_cidr_ipv_6_pools", default: '', description: 'The pool of a ipv6 CIDR block associated with the VPC.')
+
+
+control 'aws-vpcs-1.0' do
+  impact 1.0
+  title 'Ensure AWS VPC CIDR Block plural resource has the correct properties.'
+  describe aws_vpcs do
+    its ('ipv_6_cidr_association_ids')  { should include ipv_6_cidr_association_ids }
+    its ('ipv_6_cidr_states')           { should include "associated" }
+    its ('ipv_6_cidr_status_messages')  { should be_empty }
+    its ('ipv_6_cidr_network_border_groups')    { should include ipv_6_cidr_network_border_groups }
+    its ('ipv_6_cidr_ipv_6_pools')  { should include ipv_6_cidr_ipv_6_pools }
   end
 end
