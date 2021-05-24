@@ -5,11 +5,11 @@ platform: aws
 
 # aws\_route\_table
 
-Use the `aws_route_table` InSpec audit resource to test the properties of a single route or route table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed. This particular resource also test properties of a Route.
+Use the `aws_route_table` InSpec audit resource to test the properties of a single route or route table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
 
 ## Syntax
 
-This resource expects a single parameter that uniquely identifies the Route Table. You may pass it as a string, or as the value in a hash:
+This resource expects a single parameter that uniquely identifies the route table. You may pass it as a string, or as the value in a hash:
 
     describe aws_route_table('rtb-123abcde') do
       it { should exist }
@@ -18,17 +18,17 @@ This resource expects a single parameter that uniquely identifies the Route Tabl
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### route\_table\_id _(required)_
+### Parameters
 
-This resource accepts a single parameter, the route\_table\_id.
+#### route\_table\_id _(required)_
+
+This resource accepts a single parameter, the `route\_table\_id`.
 This can be passed either as a string or as a `route_table_id: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
+See also the [AWS documentation on route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
 
-See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html).
+See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html).
 
 ## Properties
 
@@ -59,32 +59,38 @@ See also the [AWS documentation on Route Tables](https://docs.aws.amazon.com/AWS
 
 ## Examples
 
-##### Confirm that the route table has expected VPC identifier
+### Confirm that the route table has expected VPC identifier
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('vpc_id') { should eq 'vpc-01625e36123456789' }
     end
 
-##### Confirm that the route table has expected owner identifier
+### Confirm that the route table has expected owner identifier
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('owner_id') { should eq '123456789012' }
     end
 
-##### Ensure the expected number of routes is present
+### Ensure the expected number of routes is present
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('routes.count') { should eq 2 }
     end
 
-##### Ensure the expected number of associations is present
+### Ensure the expected number of associations is present
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('associations.count') { should eq 1 }
     end
 
-##### Ensure there are no virtual private gateway (VGW) propagating routes
+### Ensure there are no virtual private gateway (VGW) propagating routes
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('propagating_vgws') { should be_empty }
     end
 
-##### Confirm that the route table has the expected destination_cidr_block of the route
+### Confirm that the route table has the expected destination_cidr_block of the route
+
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('routes.first.destination_cidr_block') { should eq '10.0.0.0/16' }
     end
@@ -109,6 +115,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeRouteTables` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeRouteTables` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
