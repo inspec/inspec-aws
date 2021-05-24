@@ -23,10 +23,6 @@ class AwsNetworkACLConstructorTest < Minitest::Test
   def test_raises_empty_name
     assert_raises(ArgumentError) { AwsNetworkACL.new(network_acl_id: '') }
   end
-
-  def test_acl_non_existing
-    refute AwsNetworkACL.new(network_acl_id: 'acl-1234abcd').exists?
-  end
 end
 
 class AwsNetworkACLConstructorIdTest < Minitest::Test
