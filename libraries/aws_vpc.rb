@@ -51,7 +51,7 @@ class AwsVpc < AwsResourceBase
   end
 
   def cidr_block_associated?
-    !cidr_block_association_set.blank?
+    !cidr_block_association_set.empty?
   end
 
   def cidr_block_association_set
@@ -61,8 +61,8 @@ class AwsVpc < AwsResourceBase
   end
 
   def ipv_6_cidr_block_associated?
-    return true unless exists?
-    @vpc[:ipv_6_cidr_block_association_set] != nil
+    return false unless exists?
+    !@vpc[:ipv_6_cidr_block_association_set].nil?
   end
 
   def vpc
