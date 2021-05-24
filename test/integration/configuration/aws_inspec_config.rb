@@ -127,6 +127,8 @@ module AWSInspecConfig
       aws_elasticache_cluster_parameter_group_name: "default.memcached1.5",
       aws_elasticache_cluster_engine_version: "1.5.16",
       aws_elasticache_cluster_port: 11211,
+      aws_elasticache_replication_group_node_type: "cache.t2.micro",
+      aws_elasticache_replication_group_id: "elasticache-rg-#{add_random_string}",
       aws_elb_access_log_name: "elb-log-name-#{add_random_string}",
       aws_elb_access_log_prefix: "elb-log-prefix-#{add_random_string}",
       aws_elb_name: "elb-#{add_random_string}",
