@@ -33,8 +33,8 @@ class AwsNetworkACLConstructorIdTest < Minitest::Test
   def setup
     @network_acl_mock = AwsNetworkACLMock.new
     @network_acl = AwsNetworkACL.new(network_acl_id: @network_acl_mock.network_acl_id,
-                                 client_args: { stub_responses: true },
-                                 stub_data: [@network_acl_mock.stub_data])
+                                     client_args: { stub_responses: true },
+                                     stub_data: [@network_acl_mock.stub_data])
   end
 
   def test_network_acl_id
@@ -74,6 +74,6 @@ class AwsNetworkACLConstructorIdTest < Minitest::Test
   end
 
   def test_dynamic_entry_rule_number
-    assert_equal(@network_acl.entry_rule_number_32767.cidr_block, @network_acl_mock.cidr_block)
+    assert_equal(@network_acl.egress_rule_number_32767.cidr_block, @network_acl_mock.cidr_block)
   end
 end

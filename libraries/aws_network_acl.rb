@@ -34,13 +34,11 @@ class AwsNetworkACL < AwsResourceBase
 
   # MATCHERS
   def exists?
-    return false if failed_resource?
-
-    !@response.blank?
+    !failed_resource? && !!@response && !@response.empty?
   end
 
   def associated?
-    !associations.blank?
+    !!associations && !associations.empty?
   end
 
   def default?
@@ -50,15 +48,15 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def has_associations?(subnet_id: nil)
-    return false unless associations
-    return !associations.blank? unless subnet_id
+    return false unless associated?
+    return associated? unless subnet_id
 
     associated_subnet_ids.any? { |associated_subnet_id| associated_subnet_id == subnet_id }
   end
 
   def has_acl_entry_value?(cidr_block:, egress:, rule_action:)
-    invalid_args = method(__method__).parameters.select(&:blank?)
-    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(',')} cannot be blank" if cidr_block.blank?
+    invalid_args = method(__method__).parameters.select { |param| param.nil? || param.empty? }
+    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(',')} cannot be blank" if cidr_block.nil? || cidr_block.empty?
     return false unless acl_entries
 
     acl_entries.any? { |entry| entry.egress == egress && entry.cidr_block == cidr_block && entry.rule_action == rule_action }
@@ -141,12 +139,12 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, 'parameter `network_acl_id` cannot be blank' if @opts[:network_acl_id].blank?
+    raise ArgumentError, 'parameter `network_acl_id` cannot be blank' if @opts[:network_acl_id].nil? || @opts[:network_acl_id].empty?
     raise ArgumentError, 'parameter `network_acl_id` should start with `acl-` followed by alpha numeric characters' if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
   end
 
   def cidr_block_and_rule_action_exists_for?(collection, cidr_block, rule_action)
-    return !collection.blank? if cidr_block.blank? && rule_action.blank?
+    return !collection.empty? if (cidr_block.nil? || cidr_block.empty?) && (rule_action.nil? || rule_action.empty?)
 
     if cidr_block && rule_action
       return collection.any? { |entry| entry.cidr_block == cidr_block && entry.rule_action == rule_action }

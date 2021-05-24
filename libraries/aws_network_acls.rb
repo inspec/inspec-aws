@@ -57,7 +57,7 @@ class AwsNetworkACLs < AwsResourceBase
       api_response = catch_aws_errors do
         @aws.compute_client.describe_network_acls(pagination_options)
       end
-      return [] if api_response.blank?
+      return [] if api_response.nil? || api_response.empty?
 
       yield api_response
       break unless api_response.next_token
@@ -85,7 +85,7 @@ class AwsNetworkACLs < AwsResourceBase
     network_acl_hash[:egress_rule_numbers] = mappable_attribute_from(network_acl.entries.select(&:egress), 'rule_number')
     network_acl_hash[:ingress_rule_numbers] = mappable_attribute_from(network_acl.entries.reject(&:egress), 'rule_number')
     # Tags
-    network_acl_hash[:tags] = network_acl.tags.blank? ? nil : map_tags(network_acl.tags)
+    network_acl_hash[:tags] = network_acl.tags.empty? ? nil : map_tags(network_acl.tags)
     network_acl_hash.delete(:associations)
     network_acl_hash.delete(:entries)
     network_acl_hash
