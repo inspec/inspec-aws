@@ -48,7 +48,7 @@ class AwsEc2DHCPOptions< AwsResourceBase
       api_response = catch_aws_errors do
         @aws.compute_client.describe_dhcp_options(pagination_options)
       end
-      return if api_response.blank?
+      return [] if api_response.nil? || api_response.empty?
 
       yield api_response
       break unless api_response.next_token
@@ -60,7 +60,7 @@ class AwsEc2DHCPOptions< AwsResourceBase
     {}.tap do |hash|
       hash[:dhcp_options_id] = dhcp_option.dhcp_options_id
       hash[:owner_id] = dhcp_option.owner_id
-      hash[:tags] = dhcp_option.tags.blank? ? [] : map_tags(dhcp_option.tags)
+      hash[:tags] = dhcp_option.tags.empty? ? [] : map_tags(dhcp_option.tags)
       dhcp_configs = dhcp_option.dhcp_configurations
       hash[:domain_name] = domain_name_for(dhcp_configs)
       hash[:netbios_node_type] = netbios_node_type_for(dhcp_configs)

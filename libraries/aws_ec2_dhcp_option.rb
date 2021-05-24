@@ -26,7 +26,7 @@ class AwsEc2DHCPOption < AwsResourceBase
     response = catch_aws_errors do
       @aws.compute_client.describe_dhcp_options(instance_arguments)
     end
-    if response.blank? || response.dhcp_options.blank?
+    if !response&.dhcp_options || response.dhcp_options.empty?
       empty_response_warn
     else
       @dhcp_option = response.dhcp_options.first.to_h
@@ -98,12 +98,12 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def validate_and_assign_from(opts)
-    if !opts[:dhcp_options_id].blank?
+    if opts[:dhcp_options_id] && !opts[:dhcp_options_id].empty?
       if !opts[:dhcp_options_id].is_a?(String) || opts[:dhcp_options_id] !~ /^dopt-[a-z0-9]+$/
         raise ArgumentError, "#{@__resource_name__}: `dhcp_options_id` must be a string in the format of 'dopt-' followed by alphanumeric characters."
       end
       @dhcp_options_id = opts[:dhcp_options_id]
-    elsif !opts[:name].blank? # Otherwise use name, if provided
+    elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
       @name = opts[:name]
     else
       raise ArgumentError, "#{@__resource_name__}: either dhcp_options_id or name must be provided."
