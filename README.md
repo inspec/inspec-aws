@@ -145,6 +145,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_ecr_images](docs/resources/aws_ecr_images.md)
 - [aws_ecr_repository](docs/resources/aws_ecr_repository.md)
 - [aws_ecr_repositories](docs/resources/aws_ecr_repositories.md)
+- [aws_ecr_repository_policy](docs/resources/aws_ecr_repository_policy.md)
 - [aws_ecrpublic_repository](docs/resources/aws_ecrpublic_repository.md)
 - [aws_ecrpublic_repositories](docs/resources/aws_ecrpublic_repositories.md)
 - [aws_ecs_cluster](docs/resources/aws_ecs_cluster.md)
