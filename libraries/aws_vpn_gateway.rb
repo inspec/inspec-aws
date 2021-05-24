@@ -25,7 +25,7 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def exists?
-    !failed_resource? || !@response.blank?
+    !failed_resource? && !!@response || !@response.empty?
   end
 
   def to_s
@@ -33,13 +33,13 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def vpc_id
-    return NullResponse if attachments.blank?
+    return NullResponse unless attached?
 
     attachments.first.vpc_id
   end
 
   def attached?
-    return false if attachments.blank?
+    return false if attachments.nil? || attachments.empty?
 
     attachments.first.state == 'attached'
   end
@@ -71,7 +71,7 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, 'parameter `vpn_gateway_id` cannot be blank' if @opts[:vpn_gateway_id].blank?
+    raise ArgumentError, 'parameter `vpn_gateway_id` cannot be blank' if @opts[:vpn_gateway_id].nil? || @opts[:vpn_gateway_id].empty?
     raise ArgumentError, 'parameter `vpn_gateway_id` should start with `vgw-` followed by alpha numeric characters' if @opts[:vpn_gateway_id] !~ /^vgw-[a-z0-9]+$/
   end
 end

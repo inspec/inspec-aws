@@ -38,8 +38,8 @@ class AwsVPNGateways < AwsResourceBase
 
     vpn_gateways.map do |vpn_gateway|
       vpn_gateway_hashmap = vpn_gateway.to_h
-      vpn_gateway_hashmap[:tags] = vpn_gateway.tags.blank? ? [] : map_tags(vpn_gateway.tags)
-      vpn_gateway_hashmap[:vpc_attachments] = vpn_gateway.vpc_attachments.blank? ? [] : vpn_gateway.vpc_attachments.first.to_h
+      vpn_gateway_hashmap[:tags] = vpn_gateway.tags.empty? ? [] : map_tags(vpn_gateway.tags)
+      vpn_gateway_hashmap[:vpc_attachments] = vpn_gateway.vpc_attachments.empty? ? [] : vpn_gateway.vpc_attachments.first.to_h
       vpn_gateway_hashmap
     end
   end
