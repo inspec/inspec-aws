@@ -39,7 +39,7 @@ class AwsEc2TransitGatewayAttachments < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_transit_gateway_attachments(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return transit_gateway_attachment_rows if !@api_response || @api_response.empty?
       @api_response.transit_gateway_attachments.each do |res|
         transit_gateway_attachment_rows += [{
           transit_gateway_attachment_id: res.transit_gateway_attachment_id,

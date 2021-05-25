@@ -1944,7 +1944,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
-  subnet_ids         = ["subnet-09c1854d7a4e85728", "subnet-0e24f62a817862246"]
-  transit_gateway_id = "tgw-02850dffe1c3b222c"
-  vpc_id             = "vpc-08b86815ee2c22d53"
+  subnet_ids         = [aws_subnet.inspec_subnet.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.inspec_vpc.id
 }
