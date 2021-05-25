@@ -5,13 +5,13 @@ platform: aws
 
 # aws\_ec2\_transit\_gateway\_route\_table
 
-Use the `aws_ec2_transit_gateway_route_table` InSpec audit resource to test properties of a single specific Transit Gateway Route Table Association.
+Use the `aws_ec2_transit_gateway_route_table` InSpec audit resource to test properties of a single specific Transit Gateway route table association.
 
-A Transit Gateway Route Table Association associates the specified attachment with the specified transit gateway route table.
+A Transit Gateway route table association associates the specified attachment with the specified Transit Gateway route table.
 
 ## Syntax
 
-Ensure that a Transit Gateway Route Table ID exists.
+Ensure that a Transit Gateway route table ID exists.
 
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       it { should exist }
@@ -21,28 +21,32 @@ Ensure that a Transit Gateway Route Table ID exists.
 
 `transit_gateway_route_table_id` _(required)_
 
-For additional information, see the [AWS documentation on Transit Gateway Route Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetable.html).
+The ID of the Transit Gateway route table.
+
+For additional information, see the [AWS documentation on Transit Gateway route table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetable.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| transit_gateway_route_table_id | The ID of the transit gateway route table. |
-| transit_gateway_id | The ID of the transit gateway. |
-| state | The state of the route table are available, deleting, deleted, pending. |
-| default_association_route_table | Indicates whether this is the default association route table for the transit gateway. Default values are true and false. |
-| default_propagation_route_table | Indicates whether this is the default propagation route table for the transit gateway Default values are true and false. |
-| creation_time | The creation time of the transit gateway route table. |
-| tags | The tags of the transit gateway route table. |
+| transit_gateway_route_table_id | The ID of the Transit Gateway route table. |
+| transit_gateway_id | The ID of the Transit Gateway. |
+| state | The state of the route table. Relevant values are: `available`, `deleting`, `deleted`, and `pending`. |
+| default_association_route_table | Indicates whether this is the default association route table for the Transit Gateway. Default values are `true` and `false`. |
+| default_propagation_route_table | Indicates whether this is the default propagation route table for the Transit Gateway. Default values are `true` and `false`. |
+| creation_time | The creation time of the Transit Gateway route table. |
+| tags | The tags of the Transit Gateway route table. |
 
 ## Examples
 
-### Ensure a Transit Gateway Route Table ID is available.
+### Ensure a Transit Gateway route table ID is available
+
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       its('transit_gateway_route_table_id') { should eq 'tgw-rtb-052d947d91b6bb69f' }
     end
 
-### Ensure that the state is `available` or `deleted`.
+### Ensure that the state is `available` or `deleted`
+
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
         its('state') { should eq 'available' }
     end
@@ -62,20 +66,20 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       it { should_not exist }
     end
 
 ### be_available
 
-Check if the Transit Gateway Route Table ID is available.
+Check if the Transit Gateway route table ID is available.
 
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       it { should be_available }
     end
 
-Use `should_not` to test an Transit Gateway Route Table ID that should not exist.
+Use `should_not` to test an Transit Gateway route table ID that should not exist.
 
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
       it { should_not be_available }

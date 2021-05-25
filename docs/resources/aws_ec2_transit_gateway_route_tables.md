@@ -5,11 +5,11 @@ platform: aws
 
 # aws\_ec2\_transit\_gateway\_route\_tables
 
-Use the `aws_ec2_transit_gateway_route_tables` InSpec audit resource to test properties of some or all Transit Gateway Route Tables.
+Use the `aws_ec2_transit_gateway_route_tables` InSpec audit resource to test properties of some or all Transit Gateway route tables.
 
 ## Syntax
 
-Verify that a Transit Gateway Route Table ID exists.
+Verify that a Transit Gateway route table ID exists.
 
     describe aws_ec2_transit_gateway_route_tables do
       it { should exist }
@@ -17,37 +17,40 @@ Verify that a Transit Gateway Route Table ID exists.
 
 An `aws_ec2_transit_gateway_route_tables` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
 
-## Parameters
+### Parameters
 
 This resource does not expect any parameters.
 
-See the [AWS documentation on Transit Gateway Route Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetable.html)) for additional information.
+See the [AWS documentation on Transit Gateway route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetable.html) for additional information.
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| transit_gateway_route_table_ids | The ID of the transit gateway route table. |
-| transit_gateway_ids | The ID of the transit gateway. |
-| states | The state of the route table are available, deleting, deleted, pending. |
-| default_association_route_tables | Indicates whether this is the default association route table for the transit gateway. Default values are true and false. |
-| default_propagation_route_tables | Indicates whether this is the default propagation route table for the transit gateway Default values are true and false. |
-| creation_times | The creation time of the transit gateway route table. |
-| tags | The tags of the transit gateway route table. |
+| transit_gateway_route_table_ids | The ID of the Transit Gateway route table. |
+| transit_gateway_ids | The ID of the Transit Gateway. |
+| states | The state of the route table. Relevant values are: `available`, `deleting`, `deleted`, and `pending`. |
+| default_association_route_tables | Indicates whether this is the default association route table for the Transit Gateway. Default values are `true` and `false`. |
+| default_propagation_route_tables | Indicates whether this is the default propagation route table for the Transit Gateway. Default values are `true` and `false`. |
+| creation_times | The creation time of the Transit Gateway route table. |
+| tags | The tags of the Transit Gateway route table. |
 
 ## Examples
 
-##### Ensure a Transit Gateway Route Table has Route Table ID.
+### Ensure a Transit Gateway route table has route table ID
+
     describe aws_ec2_transit_gateway_route_tables do
       it { should exist }
     end
 
-##### Match count of Transit Gateway Route Table.
+### Match count of Transit Gateway route table
+
     describe aws_ec2_transit_gateway_route_tables do
         its('count') { should eq 5 }
     end
 
-##### Check State whether it is available or not
+### Check State whether it is available or not
+
     describe aws_ec2_transit_gateway_route_tables do
        its('states') { should include "available" }
     end
@@ -56,16 +59,16 @@ See the [AWS documentation on Transit Gateway Route Table](https://docs.aws.amaz
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
-
-Use `should_not` to test the entity should not exist.
 
     describe aws_ec2_transit_gateway_route_tables do
       it { should exist }
     end
-      
+
+Use `should_not` to test an entity that should not exist.
+
     describe aws_ec2_transit_gateway_route_tables do
       it { should_not exist }
     end
