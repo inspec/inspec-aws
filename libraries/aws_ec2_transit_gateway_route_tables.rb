@@ -37,7 +37,7 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_transit_gateway_route_tables(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return transit_gateway_route_table_rows if !@api_response || @api_response.empty?
       @api_response.transit_gateway_route_tables.each do |res|
         transit_gateway_route_table_rows += [{
           transit_gateway_route_table_id: res.transit_gateway_route_table_id,

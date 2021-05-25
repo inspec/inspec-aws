@@ -301,3 +301,11 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "transit_gateway_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.transit_gateway_id
+}
+
+output "transit_gateway_route_table_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.id
+}

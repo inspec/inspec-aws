@@ -1944,5 +1944,5 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
-  transit_gateway_id = "tgw-02850dffe1c3b222c"
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
 }

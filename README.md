@@ -140,6 +140,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
+- [aws_ec2_transit_gateway_route_table](docs/resources/aws_ec2_transit_gateway_route_table.md)
+- [aws_ec2_transit_gateway_route_tables](docs/resources/aws_ec2_transit_gateway_route_tables.md)
 - [aws_ecr](docs/resources/aws_ecr.md)
 - [aws_ecr_image](docs/resources/aws_ecr_image.md)
 - [aws_ecr_images](docs/resources/aws_ecr_images.md)
