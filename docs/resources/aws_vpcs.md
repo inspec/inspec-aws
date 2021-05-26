@@ -31,21 +31,25 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
-| cidr\_blocks | The cidr\_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. |
-| dhcp\_options\_ids | The dhcp\_option\_set\_ids property provides a de-duplicated list of the DHCP Option Set IDs that the matched VPCs use when assigning IPs to resources. |
-| vpc\_ids | The vpc\_ids property provides a list of the IDs of the matched VPCs. |
-| tags | A hash of key-value pairs corresponding to the tags associated with the entity. |
+|Property           | Description                           | Fields                        |
+| ---               | ---                                   | ---                           |
+| cidr\_blocks | The cidr\_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. | cidr_block |
+| dhcp\_options\_ids | The dhcp\_option\_set\_ids property provides a de-duplicated list of the DHCP Option Set IDs that the matched VPCs use when assigning IPs to resources. | dhcp_options_id |
+| vpc\_ids | The vpc\_ids property provides a list of the IDs of the matched VPCs. | vpc_id |
+| states   | The current state of the VPC. | state |
+| instance_tenancies | The allowed tenancy of instances launched into the VPC. | instance_tenancy |
+| is_default | Indicates whether the VPC is the default VPC. | is_default |
+| defaults | List of all the VPCs that are default. | defaults |
+| tags | A hash of key-value pairs corresponding to the tags associated with the entity. | tags |
+| cidr_block_association_ids | List of all the association ID of the IPv4 CIDR blocks. | cidr_block_association_ids |
+| associated_cidr_blocks | List of all the associated CIDR blocks | associated_cidr_blocks |
+| cidr_block_states | List of all the states of the CIDR blocks | cidr_block_states |
+| ipv6_cidr_block_association_ids | List of all the association ID of the IPv6 CIDR blocks. | ipv6_cidr_block_association_ids |
+| ipv6_cidr_blocks | List of all the associated IPV6 CIDR blocks | ipv6_cidr_blocks |
+| ipv6_cidr_block_states | List of all the states of the IPV6 CIDR blocks | ipv6_cidr_block_states |
+| ipv6_network_border_groups | List of all the network border group options | ipv6_network_border_groups |
+| ipv6_pools | List of all the ID of the IPv6 address pool from which the IPv6 CIDR block is allocated. | ipv6_pools |
 | entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-| ipv_6_cidr_association_ids | The association ID for a IPv6 CIDR block associated with the VPC. |
-| ipv_6_cidr_states | The state for a IPv6 CIDR block associated with the VPC. |
-| ipv_6_cidr_status_messages | The status message for a IPv6 CIDR block associated with the VPC. |
-| ipv_6_cidr_network_border_groups | The network border group for a IPv6 CIDR block associated with the VPC. |
-| ipv_6_cidr_ipv_6_pools | The pool for a IPv6 CIDR block associated with the VPC. |
-| cidr_association_ids | The association ID for a CIDR block associated with the VPC. |
-| cidr_states | The state of a CIDR block associated with the VPC. |
-| cidr_status_messages | The status message of a CIDR block associated with the VPC. |
 
 ## Examples
 
@@ -78,23 +82,31 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
                                    :Name => 'vpc-name')}
     end
 
-### Ensure AWS VPC CIDR Block plural resource has the correct properties.
-    describe aws_vpcs do
-      it { should exist }
-      its ('count')  { should be <= 100 }
-      its ('cidr_blocks')  { should include aws_vpc_cidr_block }
-      its ('ipv_6_cidr_states') { should include "associated" }
-      its ('cidr_states') { should include "associated" }
+### Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties.
+    describe aws_vpcs.where { ipv6_cidr_blocks.include?('2600:1f16:409:6700::/56') } do
+        it { should exist }
+    end
+
+### Ensure AWS VPC CIDR BLOCK failed associations are not fetched
+
+    describe aws_vpcs.where { cidr_block_states.reject?('failed') } do
+        it { should exist }
     end
 
 ### Ensure AWS VPC CIDR Block plural resource has the associated id.
     describe aws_vpcs do
-      its ('cidr_association_ids') { should include "vpc-cidr-assoc-0123456789" }
+        its ('cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
     end
 
 ### Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id.
     describe aws_vpcs do
-      its ('ipv_6_cidr_association_ids') { should include "vpc-cidr-assoc-0123456789" }
+        its ('ipv6_cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
+    end
+
+### Ensure AWS VPC CIDR BLOCK disassociated associations are fetched
+
+    describe aws_vpcs.where { ipv6_cidr_block_states.select?('disassociated') } do
+        it { should exist }
     end
 
 ## Matchers

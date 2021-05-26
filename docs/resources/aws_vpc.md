@@ -51,15 +51,13 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |state            | The state of the VPC (`pending` | `available`). |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
-|ipv\_6\_cidr\_block\_association\_set (association\_id) | The association ID for an IPv6 CIDR block associated with the VPC. |
-|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_cidr_block) | An IPv4 CIDR block associated with the VPC. |
-|ipv\_6\_cidr\_block\_association\_set (network\_border\_group) | The name of the location from which we advertise the IPV6 CIDR block. Use this parameter to limit the CIDR block to this location. |
-|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_pool) | The ID of the IPv6 address pool from which the IPv6 CIDR block is allocated. |
-|ipv\_6\_cidr\_block\_association\_set (ipv\_6\_cidr\_block\_state (state)) | The state of an IPv6 CIDR block associated with the VPC. |
-|ipv\_6\_cidr\_block\_association\_set (ipv_6\_cidr\_block\_state (status\_message)) | The status message of an IPv6 CIDR block associated with the VPC |
-|cidr\_block\_association\_set (association\_id) | The association ID for a CIDR block associated with the VPC. |
-|cidr\_block\_association\_set (cidr\_block\_state (state)) | The state of a CIDR block associated with the VPC. |
-|cidr\_block\_association\_set (cidr\_block\_state (status\_message)) | The status message of a CIDR block associated with the VPC. |
+|associated_cidr_blocks | The associated CIDR Blocks |
+|disassociated_cidr_blocks | The CIDR Blocks that are disassociated |
+|failed_cidr_blocks | The failed CIDR Block associations |
+|associating_cidr_blocks | The CIDR block associations that are yet in pending stage |
+|disassociating | The CIDR block associations that are yet in disassociating stage |
+|failing | The CIDR block associations that are yet in failing stage |
+
 
 ## Examples
 
@@ -83,6 +81,9 @@ The following examples show how to use this InSpec audit resource.
 
     describe aws_vpc do
       its ('instance_tenancy') { should eq 'default' }
+      it { should be_default_instance }
+      it { should_not be_dedicated_instance }
+      it { should_not be_host_instance }
     end
 
 ### Test tags on the VPC
@@ -92,17 +93,16 @@ The following examples show how to use this InSpec audit resource.
                                    :Name => 'vpc-name')}
     end
 
-### Test the IPV6 CIDR Block association set state of a named VPC
+### Test if the IPV6 CIDR Block is associated to a named VPC
 
     describe aws_vpc do
-      its ('ipv_6_cidr_block_association_set.first.ipv_6_cidr_block_state.state')
-                { should eq aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block_state_state }
+      it { should have_ipv6_cidr_block_associated?(aws_ipv_6_cidr_block_association_set_ipv_6_cidr_block) }
     end
 
-### Test the CIDR Block association set association_id of a named VPC
+### Test if the CIDR Block is associated to a named VPC
 
     describe aws_vpc do
-      its ('cidr_block_association_set.first.association_id') { should eq aws_cidr_block_association_set_association_id }
+      it { should have_cidr_block_associated?(aws_cidr_block) }
     end
 
 ## Matchers
@@ -125,20 +125,100 @@ The test will pass if the identified VPC has a `available` state.
       it { should be_available }
     end
 
-### be\_cidr\_block\_associated
+### be\_pending
 
-The test will pass if the identified VPC has a cidr block associated set.
+Check if the identified VPC has a `pending` state.
 
-    describe aws_vpc('vpc-87654321') do
-      it { should be_cidr_block_associated }
+    describe aws_vpc('vpc-123456') do
+        it { should be_pending }
     end
 
-### be\_ipv\_6\_cidr\_block\_associated
+### be\_default\_instance
 
-The test will pass if the identified VPC has a cidr block associated set.
+Check if the identified VPC has a `default` instance tendency.
 
     describe aws_vpc('vpc-87654321') do
-      it { should be_ipv_6_cidr_block_associated }
+        it { should be_default_instance }
+    end
+
+### be\_dedicated\_instance
+
+Check if the identified VPC has a `dedicated` instance tendency.
+
+    describe aws_vpc('vpc-87654321') do
+        it { should be_dedicated_instance }
+    end
+
+### be\_host\_instance
+
+Check if the identified VPC has a `host` instance tendency.
+
+    describe aws_vpc('vpc-87654321') do
+        it { should be_host_instance }
+    end
+
+### have\_cidr\_block\_associated
+
+Check if a cidr block is associated to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+        it { should have_cidr_block_associated('10.0.0.0/27') }
+    end
+
+### have\_cidr\_block\_association\_failed
+
+Check if a cidr block is has failed to associated to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+        it { should have_cidr_block_failed('10.0.0.0/27') }
+    end
+
+### have\_cidr\_block\_disassociated
+
+Check if a cidr block is has failed to associated to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+        it { should have_cidr_block_disassociated('10.0.0.0/27') }
+    end
+
+### have\_ipv6\_cidr\_block\_associated
+
+Check if the IPV6 cidr block is associated to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should have_ipv6_cidr_block_associated('2600:1f16:409:6700::/56') }
+    end
+
+### have\_ipv6\_cidr\_block\_disassociated
+
+Check if the IPV6 cidr block is disassociated to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should have_ipv6_cidr_block_disassociated('2600:1f16:409:6700::/56') }
+    end
+
+### have\_ipv6\_cidr\_block\_association_failed
+
+Check if the IPV6 cidr block failed to associate to the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should have_ipv6_cidr_block_association_failed('2600:1f16:409:6700::/56') }
+    end
+
+### have\_network\_border\_group\_value
+
+Check if the associated IPV6 cidr block has valid network border group value for the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should have_network_border_group_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', network_border_group: 'us-east-2a') }
+    end
+
+### have\_ipv6\_pool\_value
+
+Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identified VPC.
+
+    describe aws_vpc('vpc-87654321') do
+      it { should have_ipv6_pool_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', ipv6_pool: 'Amazon') }
     end
 
 ## AWS Permissions
