@@ -25,16 +25,16 @@ end
 This resource does not expect any parameters.
 
 ## Properties
-|Property                     | Description|
-| ---                         | --- |
-|option_group_names    | The name RDS option group. |
-|option_group_description   | The name of the database associated with each RDS cluster. | 
-|engine_names    | The name of the engine associated with each RDS cluster. |
-|major_engine_versions   | The major engine version of a option group. | 
-|option_group_arns    | The arn of a option group.|
-|vpc_ids  | The vpc id of  option group. | 
-|allows_vpc_and_non_vpc_instance_memberships    | The storage allocated to each cluster. |
-
+|Property                                       | Description|                                                       Field                                      |
+| ---                                           | --- |                                                               ---                                         | 
+|option_group_names                             | The name RDS option group. |                                       option_group_name                           | 
+|option_group_description                       | The name of the database associated with each RDS cluster. |       option_group_description                     | 
+|engine_names                                   | The name of the engine associated with each RDS cluster. |         engine_name                                 | 
+|major_engine_versions                          | The major engine version of a option group. |                      major_engine_version                        | 
+|option_group_arns                              | The arn of a option group.|                                        option_group_arn                            | 
+|vpc_ids                                        | The vpc id of  option group. |                                     vpc_id                                      | 
+|allows_vpc_and_non_vpc_instance_memberships    | The storage allocated to each cluster. |                           allows_vpc_and_non_vpc_instance_memberships  | 
+                                                                                                                                                                    
 ee also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
 
 
