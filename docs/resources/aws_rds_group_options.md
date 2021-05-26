@@ -22,6 +22,9 @@ end
 
 #### Parameters
 
+This resource does not expect any parameters.
+
+## Properties
 |Property                     | Description|
 | ---                         | --- |
 |option_group_names    | The name RDS option group. |
@@ -32,11 +35,8 @@ end
 |vpc_ids  | The vpc id of  option group. | 
 |allows_vpc_and_non_vpc_instance_memberships    | The storage allocated to each cluster. |
 
+ee also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
 
-
-See also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
-
-## Properties
 
 For a comprehensive list of properties available to test on an RDS cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/DBCluster.html).
 
