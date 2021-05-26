@@ -4,12 +4,12 @@ title: About the aws_redshift_cluster Resource
 
 # aws\_redshift\_cluster
 
-Use the `aws_redshift_cluster` InSpec audit resource to test detailed properties of an individual Redshift cluster.
+Use the `aws_redshift_cluster` InSpec audit resource to test detailed properties of an individual AWS Redshift cluster.
 
 
 ## Syntax
 
-An `aws_redshift_cluster` resource block uses resource parameters to search for an Redshift cluster, and then tests that Redshift cluster.  If no Redshift clusters match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.  If more than one Redshift cluster matches (due to vague search parameters), an error is raised.
+An `aws_redshift_cluster` resource block uses resource parameters to search for a Redshift cluster, and then tests that Redshift cluster.  If no Redshift clusters match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.  If more than one Redshift cluster matches (due to vague search parameters), an error is raised.
 
     describe aws_redshift_cluster('test-cluster-id') do
       it { should exist }
@@ -22,7 +22,7 @@ An `aws_redshift_cluster` resource block uses resource parameters to search for 
 
 #### Parameters
 
-##### cluster\_identifier _(required)_
+#### cluster\_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `cluster_identifier: 'value'` key-value entry in a hash.
@@ -32,27 +32,27 @@ Also see the [AWS Redshift cluster documentation](https://docs.aws.amazon.com/AW
 ## Properties
 |Property                     | Description|
 | ---                         | --- |
-|cluster\_identifier    | The unique IDs of the redshift clusters returned. |
-|db\_names   | The name of the database associated with each redshift cluster. | 
-|node\_type    | The redshift instance type. |
-|cluster\_create\_time    | The create time of redshift clusters. | 
-|cluster\_subnet\_group\_name    | The cluster name of redshift clusters. |
-|cluster\_status   | The current status of each cluster . | 
-|cluster\_availability\_status    | The current status of cluster. |
-|modify\_status    | The current status of cluster | 
-|availability\_zones    | A list of availability zones of the redshift clusters returned.  |
-|allow_version_upgrade  | Returns T/F depending on whether version upgrade is allowed or not. | 
-|encrypted   |  Returns T/F depending on whether Redshift clusters are encrypted or not. |
-|cluster_subnet_group_name   | Cluster subnet group name for redshift clusters returned.  |
-|iam\_roles  | iam_roles that are used in the cluster. | 
-|vpc\_id  | vpc_id of the redshift clusters. |     
+|cluster\_identifier          | The unique IDs of the redshift clusters returned. |
+|db\_names                    | The name of the database associated with each redshift cluster. | 
+|node\_type                   | The redshift instance type. |
+|cluster\_create\_time        | The create time of redshift clusters. | 
+|cluster\_subnet\_group\_name | The cluster name of redshift clusters. |
+|cluster\_status              | The current status of each cluster . | 
+|cluster\_availability\_status| The current status of cluster. |
+|modify\_status               | The current status of cluster | 
+|availability\_zones          | A list of availability zones of the redshift clusters returned.  |
+|allow_version_upgrade        | Returns T/F depending on whether version upgrade is allowed or not. | 
+|encrypted                    |  Returns T/F depending on whether Redshift clusters are encrypted or not. |
+|cluster_subnet_group_name    | Cluster subnet group name for redshift clusters returned.  |
+|iam\_roles                   | iam_roles that are used in the cluster. | 
+|vpc\_id                      | vpc_id of the redshift clusters. |     
 ## Examples
 
 For a comprehensive list of properties available to test on an Redshift cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Redshift/Client.html#describe_clusters-instance_method.html).
 
 ## Examples
 
-### Test the engine used with a Redshift cluster
+##### Test the engine used with a Redshift cluster
 
     describe aws_redshift_cluster(cluster_identifier: 'awsRedshift123') do
       its('engine')         { should eq 'mysql' }
@@ -78,7 +78,7 @@ For a comprehensive list of properties available to test on an Redshift cluster 
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
