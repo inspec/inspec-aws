@@ -13,4 +13,11 @@ control 'aws-db-parameter-groups-1.0' do
     its('db_parameter_group_families') { should include(aws_db_parameter_group_family_name) }
     its('db_parameter_group_arns') { should include(aws_db_parameter_group_arn) }
   end
+
+  describe aws_db_parameter_groups.where(db_parameter_group_family: aws_db_parameter_group_family_name) do
+    it { should exist }
+    its('db_parameter_group_names') { should include(aws_db_parameter_group_name) }
+    its('db_parameter_group_families') { should include(aws_db_parameter_group_family_name) }
+    its('db_parameter_group_arns') { should include(aws_db_parameter_group_arn) }
+  end
 end
