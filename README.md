@@ -138,6 +138,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
+- [aws_ec2_eip](docs/resources/aws_ec2_eip.md)
+- [aws_ec2_eips](docs/resources/aws_ec2_eips.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
 - [aws_ecr](docs/resources/aws_ecr.md)
