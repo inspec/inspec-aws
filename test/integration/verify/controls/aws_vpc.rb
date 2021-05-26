@@ -27,9 +27,9 @@ control 'aws-vpc-1.0' do
     it { should be_default_instance }
     it { should_not be_dedicated_instance }
     it { should_not be_host_instance }
-    it { should have_cidr_block_associated?(aws_vpc_cidr_block) }
-    it { should_not have_cidr_block_association_failed?(aws_vpc_cidr_block) }
-    it { should_not has_cidr_block_disassociated?(aws_vpc_cidr_block) }
+    it { should have_cidr_block_associated(aws_vpc_cidr_block) }
+    it { should_not have_cidr_block_association_failed(aws_vpc_cidr_block) }
+    it { should_not has_cidr_block_disassociated(aws_vpc_cidr_block) }
   end
 
   describe aws_vpc do
