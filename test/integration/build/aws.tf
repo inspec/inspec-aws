@@ -164,6 +164,9 @@ variable "aws_launch_template_instance_type"  {}
 variable "aws_launch_template_kernel_id" {}
 variable "aws_launch_template_key_name" {}
 variable "aws_vpn_gw_name" {}
+variable "aws_db_parameter_group_name" {}
+variable "aws_db_parameter_group_family_name" {}
+variable "aws_db_parameter_group_description" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2066,9 +2069,10 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
   }
 }
 
-resource "aws_db_parameter_group" "aws_db_parameter_group1" {
-  name   = "db-parameter-group2"
-  family = "mysql5.6"
+resource "aws_db_parameter_group" "inspec_db_parameter_group" {
+  name   = var.aws_db_parameter_group_name
+  family = var.aws_db_parameter_group_family_name
+  description = var.aws_db_parameter_group_description
 
   parameter {
     name  = "character_set_server"
