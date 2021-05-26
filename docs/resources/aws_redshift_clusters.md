@@ -27,24 +27,22 @@ See also the [AWS documentation on redshift](https://docs.aws.amazon.com/redshif
 
 |Property                     | Description|
 | ---                         | --- |
-|cluster\_identifiers    | The unique IDs of the redshift clusters returned. |
-|db\_names    | The name of the database associated with each redshift cluster. | 
-|node\_types    | The redshift instance type. |
-|cluster\_create\_time    | The create time of redshift clusters. | 
-|cluster\_subnet\_group\_names    | The cluster name of redshift clusters. |
-|cluster\_status   | The current status of each cluster . | 
-|cluster\_availability\_status    | The current status of cluster. |
-|modify\_status    | The current status of cluster | 
-|availability\_zones    | A list of availability zones of the redshift clusters returned.  |
-|allow_version_upgrade  | Returns T/F depending on whether version upgrade is allowed or not. | 
-|encrypted   |  Returns T/F depending on whether Redshift clusters are encrypted or not. |
-|cluster_subnet_group_names   | Cluster subnet group name for redshift clusters returned.  |
-|iam\_roles  | iam_roles that are used in the cluster. | 
-|vpc\_ids  | vpc_id of the redshift clusters. |     
+|cluster\_identifier          | The unique IDs of the Redshift clusters returned. |
+|db\_name                     | The name of the database associated with each Redshift cluster. |
+|node\_type                   | The Redshift instance type. |
+|cluster\_create\_time        | The create time of Redshift clusters. |
+|cluster\_subnet\_group\_name | The cluster name of Redshift clusters. |
+|cluster\_status              | The current status of each cluster. |
+|cluster\_availability\_status| The current status of cluster. |
+|modify\_status               | The current status of cluster. |
+|availability\_zones          | A list of availability zones of the Redshift clusters returned. |
+|allow_version_upgrade        | Returns `true` or `false` depending on whether version upgrade is allowed or not. |
+|encrypted                    | Returns `true` or `false` depending on whether Redshift clusters are encrypted or not. |
+|cluster_subnet_group_name    | Cluster subnet group name for Redshift clusters returned.  |
+|iam\_roles                   | The IAM roles that are used in the cluster. |
+|vpc\_id                      | The VPC ID of the Redshift clusters. |
 
 For a comprehensive list of properties available to test on an Redshift cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Redshift/Client.html#describe_clusters-instance_method.html).
-
-
 ## Examples
 
 #####Ensure a specific cluster exists
@@ -67,12 +65,14 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test entity exists.
 
     describe aws_redshift_clusters do
       it { should exist }
     end
-      
+
+Use `should_not` to test the entity should not exist.
+
     describe aws_redshift_clusters do
       it { should_not exist }
     end

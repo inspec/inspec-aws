@@ -27,7 +27,7 @@ An `aws_redshift_cluster` resource block uses resource parameters to search for 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `cluster_identifier: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Redshift cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html).
+Also see the [AWS Redshift cluster documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html).
 
 ## Properties
 |Property                     | Description|
@@ -52,7 +52,7 @@ For a comprehensive list of properties available to test on an Redshift cluster 
 
 ## Examples
 
-##### Test the engine used with a Redshift cluster
+### Test the engine used with a Redshift cluster
 
     describe aws_redshift_cluster(cluster_identifier: 'awsRedshift123') do
       its('engine')         { should eq 'mysql' }
