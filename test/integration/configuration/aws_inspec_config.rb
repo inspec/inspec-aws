@@ -221,7 +221,10 @@ module AWSInspecConfig
       aws_launch_template_instance_type: "t2.micro",
       aws_launch_template_kernel_id: "test_kernel_id",
       aws_launch_template_key_name: "test_key_name",
-      aws_vpn_gw_name: 'inspec_vpn_gw'
+      aws_vpn_gw_name: 'inspec_vpn_gw',
+      aws_db_parameter_group_name: 'inspec-mysql-db-group-param',
+      aws_db_parameter_group_family_name: 'mysql5.6',
+      aws_db_parameter_group_description: 'Inspec Managed parameter group for mysql5.6',
   }
 
   def self.config
