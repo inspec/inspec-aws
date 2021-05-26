@@ -15,21 +15,22 @@ class AwsVpcs < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-             .register_column(:cidr_blocks,                                     field: :cidr_block)
-             .register_column(:vpc_ids,                                         field: :vpc_id)
-             .register_column(:states,                                          field: :state)
-             .register_column(:dhcp_options_ids,                                field: :dhcp_options_id)
-             .register_column(:instance_tenancys,                               field: :instance_tenancy)
-             .register_column(:is_defaults,                                     field: :is_default)
-             .register_column(:tags,                                            field: :tags)
-             .register_column(:cidr_association_ids,                            field: :cidr_association_ids, style: :simple)
-             .register_column(:cidr_states,                                     field: :cidr_states, style: :simple)
-             .register_column(:cidr_status_messages,                            field: :cidr_status_messages, style: :simple)
-             .register_column(:ipv_6_cidr_association_ids,                      field: :ipv_6_cidr_association_ids, style: :simple)
-             .register_column(:ipv_6_cidr_states,                               field: :ipv_6_cidr_states, style: :simple)
-             .register_column(:ipv_6_cidr_status_messages,                      field: :ipv_6_cidr_status_messages, style: :simple)
-             .register_column(:ipv_6_cidr_network_border_groups,                field: :ipv_6_cidr_network_border_groups, style: :simple)
-             .register_column(:ipv_6_cidr_ipv_6_pools,                          field: :ipv_6_cidr_ipv_6_pools, style: :simple)
+             .register_column(:cidr_blocks, field: :cidr_block)
+             .register_column(:vpc_ids, field: :vpc_id)
+             .register_column(:states, field: :state)
+             .register_column(:dhcp_options_ids, field: :dhcp_options_id)
+             .register_column(:instance_tenancies, field: :instance_tenancy)
+             .register_column(:is_default, field: :is_default)
+             .register_column(:defaults, field: :defaults, style: :simple)
+             .register_column(:tags, field: :tags)
+             .register_column(:cidr_block_association_ids, field: :cidr_block_association_ids, style: :simple)
+             .register_column(:cidr_blocks, field: :cidr_blocks, style: :simple)
+             .register_column(:cidr_block_states, field: :cidr_block_states, style: :simple)
+             .register_column(:ipv6_cidr_block_association_ids, field: :ipv6_cidr_block_association_ids, style: :simple)
+             .register_column(:ipv6_cidr_blocks, field: :ipv6_cidr_blocks, style: :simple)
+             .register_column(:ipv6_cidr_block_states, field: :ipv6_cidr_block_states, style: :simple)
+             .register_column(:ipv6_network_border_groups, field: :ipv6_network_border_groups, style: :simple)
+             .register_column(:ipv6_pools, field: :ipv6_pools, style: :simple)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -38,33 +39,52 @@ class AwsVpcs < AwsResourceBase
     @table = fetch_data
   end
 
+  private
+
   def fetch_data
     vpc_rows = []
-    catch_aws_errors do
-      @vpcs = @aws.compute_client.describe_vpcs.to_h[:vpcs]
+    paginate_request do |api_response|
+      vpc_rows += api_response.vpcs.map do |vpc|
+        flat_hash_for(vpc)
+      end
     end
-    return [] if !@vpcs || @vpcs.empty?
-    @vpcs.each do |vpc|
-      vpc_rows+=[{
-        vpc_id: vpc[:vpc_id],
-        cidr_block: vpc[:cidr_block],
-        dhcp_options_id: vpc[:dhcp_options_id],
-        state: vpc[:state],
-        is_default: vpc[:is_default],
-        instance_tenancy: vpc[:instance_tenancy],
-        tags: map_tags(vpc[:tags]),
+    vpc_rows
+  end
 
-        cidr_association_ids: vpc[:cidr_block_association_set].map { |association_set| association_set[:association_id] },
-        cidr_states: vpc[:cidr_block_association_set].map { |association_set| association_set.dig(:cidr_block_state, :state) },
-        cidr_status_messages: vpc[:cidr_block_association_set].map { |association_set| association_set.dig(:cidr_block_state, :status_message) },
+  def paginate_request
+    pagination_options = { max_results: 100 }
+    loop do
+      api_response = catch_aws_errors do
+        @aws.compute_client.describe_vpcs(pagination_options)
+      end
+      return [] if api_response.nil? || api_response.empty?
 
-        ipv_6_cidr_association_ids: vpc[:ipv_6_cidr_block_association_set]&.map { |association_set| association_set[:association_id] },
-        ipv_6_cidr_states: vpc[:ipv_6_cidr_block_association_set]&.map { |association_set| association_set.dig(:ipv_6_cidr_block_state, :state) },
-        ipv_6_cidr_status_messages: vpc[:ipv_6_cidr_block_association_set]&.map { |association_set| association_set.dig(:ipv_6_cidr_block_state, :status_message) },
-        ipv_6_cidr_network_border_groups: vpc[:ipv_6_cidr_block_association_set]&.map { |association_set| association_set[:network_border_group] },
-        ipv_6_cidr_ipv_6_pools: vpc[:ipv_6_cidr_block_association_set]&.map { |association_set| association_set[:ipv_6_pool] },
-      }]
+      yield api_response
+      break unless api_response.next_token
+      pagination_options = { next_token: api_response.next_token }
     end
-    @table = vpc_rows
+  end
+
+  def flat_hash_for(vpc)
+    vpc.to_h.tap do |hash|
+      hash[:defaults] =  vpc.is_default ? vpc.vpc_id : nil
+      hash[:tags] = map_tags(vpc.tags)
+
+      cidr_block_associations = vpc.cidr_block_association_set
+      hash[:cidr_block_association_ids] = map_attributes_from(cidr_block_associations, 'association_id')
+      hash[:cidr_blocks] = map_attributes_from(cidr_block_associations, 'cidr_block')
+      hash[:cidr_block_states] = map_attributes_from(cidr_block_associations, 'cidr_block_state&.state')
+
+      ipv6_cidr_block_associations = vpc.ipv_6_cidr_block_association_set
+      hash[:ipv6_cidr_block_association_ids] = map_attributes_from(ipv6_cidr_block_associations, 'association_id')
+      hash[:ipv6_cidr_blocks] = map_attributes_from(ipv6_cidr_block_associations, 'ipv_6_cidr_block')
+      hash[:ipv6_cidr_block_states] = map_attributes_from(ipv6_cidr_block_associations, 'ipv_6_cidr_block_state&.state')
+      hash[:ipv6_network_border_groups] = map_attributes_from(ipv6_cidr_block_associations, 'network_border_group')
+      hash[:ipv6_pools] = map_attributes_from(ipv6_cidr_block_associations, 'ipv_6_pool')
+    end
+  end
+
+  def map_attributes_from(association, attribute)
+    association.map { |assoc| assoc.instance_eval(attribute) }
   end
 end
