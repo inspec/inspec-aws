@@ -228,6 +228,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_vpc_endpoints](docs/resources/aws_vpc_endpoints.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 - [aws_vpn_connections](docs/resources/aws_vpn_connections.md)
+- [aws_ec2_lauch_template](docs/resources/aws_ec2_launch_template.md)
+- [aws_ec2_lauch_templates](docs/resources/aws_ec2_launch_templates.md)
 
 ## Examples
 
