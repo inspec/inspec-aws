@@ -155,7 +155,7 @@ variable "aws_launch_template_core" {}
 variable "aws_launch_template_threads_per_core" {}
 variable "aws_launch_template_cpu_credits" {}
 variable "aws_launch_template_volume_size" {}
-variable "aws_launch_template_test_profile" {}
+variable "aws_launch_template_instance_profile" {}
 variable "aws_launch_template_resource_type" {}
 variable "aws_launch_template_tag_name" {}
 variable "aws_launch_template_instance_type"  {}
@@ -2001,7 +2001,7 @@ resource "aws_launch_template" "launch-template-test" {
 
 
   iam_instance_profile {
-    name = var.aws_launch_template_instance_type
+    name = var.aws_launch_template_instance_profile
   }
 
   image_id = "ami-0a83ebf1ac32a3fbe"
@@ -2013,9 +2013,6 @@ resource "aws_launch_template" "launch-template-test" {
   }
 
   instance_type = var.aws_launch_template_instance_type
-
-  kernel_id = var.aws_launch_template_kernel_id
-
   key_name = var.aws_launch_template_key_name
 
 

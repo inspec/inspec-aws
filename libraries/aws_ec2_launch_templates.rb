@@ -41,8 +41,8 @@ class AWSEc2LaunchTemplates < AwsResourceBase
       @api_response.launch_templates.each do |launch_template|
         launch_template_tags = map_tags(launch_template.tags)
         launch_template_rows += [{
-          launch_template_ids: launch_template.launch_template_id,
-          launch_template_names: launch_template.launch_template_name,
+          launch_template_id: launch_template.launch_template_id,
+          launch_template_name: launch_template.launch_template_name,
           create_time: launch_template.create_time,
           created_by: launch_template.created_by,
           tags: launch_template_tags,

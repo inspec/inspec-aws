@@ -215,7 +215,7 @@ module AWSInspecConfig
       aws_launch_template_threads_per_core: 2,
       aws_launch_template_cpu_credits: "standard",
       aws_launch_template_volume_size: 20,
-      aws_launch_template_instance_type: "test-profile",
+      aws_launch_template_instance_profile: "test-profile",
       aws_launch_template_resource_type: "instance",
       aws_launch_template_tag_name: "test",
       aws_launch_template_instance_type: "t2.micro",
