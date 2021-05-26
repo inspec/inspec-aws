@@ -209,7 +209,12 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_db_option_group_name: 'option-group-test-terraform2',
+      aws_db_option_group_description: 'Terraform Option Group',
+      aws_db_option_group_engine_name: 'sqlserver-ee',
+
+
   }
 
   def self.config

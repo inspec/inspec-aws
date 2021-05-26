@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AwsRdsOptionGroups < AwsResourceBase
-  name 'aws_rds_group_options'
+  name 'aws_rds_option_groups'
   desc 'Verifies settings for a collection AWS RDS Clusters'
   example '
     describe aws_rds_group_options do
