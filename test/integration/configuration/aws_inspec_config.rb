@@ -220,10 +220,8 @@ module AWSInspecConfig
       aws_launch_template_tag_name: "test",
       aws_launch_template_instance_type: "t2.micro",
       aws_launch_template_kernel_id: "test_kernel_id",
-      aws_launch_template_key_name: "test_key_name"
-
-
-
+      aws_launch_template_key_name: "test_key_name",
+      aws_vpn_gw_name: 'inspec_vpn_gw'
   }
 
   def self.config
