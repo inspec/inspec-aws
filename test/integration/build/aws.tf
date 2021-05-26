@@ -1829,7 +1829,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1973,7 +1973,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1985,7 +1985,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
 resource "aws_redshift_cluster" "redshift_test" {
   cluster_identifier = var.aws_redshift_cluster_identifier
   database_name      = "dev"
-  master_username    = "test-cluster"
+  master_username    = "testcluster"
   master_password    = "Mustbe8characters"
   node_type          = "dc2.large"
   cluster_type       = "single-node"

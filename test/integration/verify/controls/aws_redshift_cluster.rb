@@ -1,4 +1,4 @@
-aws_redshift_db_identifier = attribute(:aws_redshift_db_identifier, value: '', description: 'The AWS Reddhift DB identifier.')
+aws_redshift_db_identifier = attribute(:aws_redshift_cluster_identifier, value: '', description: 'The AWS Reddhift DB identifier.')
 control 'aws_redshift_cluster-1.0' do
 
   impact 1.0
@@ -10,7 +10,7 @@ control 'aws_redshift_cluster-1.0' do
     its ('node_type') { should eq 'dc2.large' }
     its ('cluster_status') { should eq 'available'  }
     its ('cluster_availability_status') { should eq 'Available' }
-    its ('master_username') { should eq 'test-cluster' }
+    its ('master_username') { should eq 'testcluster' }
     its ('db_name') { should eq 'dev' }
     its ('vpc_id') { should eq 'vpc-6d9d7505' }
     its ('cluster_availability_status') { should eq 'Available' }

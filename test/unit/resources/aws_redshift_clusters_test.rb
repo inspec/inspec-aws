@@ -42,16 +42,12 @@ class AwsRedshiftClustersHappyPathTest < Minitest::Test
     assert @rds_clusters.exist?
   end
 
-  def test_cluster_ids
-    assert_equal(@rds_clusters.cluster_identifier, ['cluster-12345678', 'cluster-87654321'])
-  end
-
   def test_clusters_filtering_not_there
-    refute @rds_clusters.where(cluster_identifier: 'bad').exist?
+    refute @rds_clusters.where(cluster_identifiers: 'bad').exist?
   end
 
   def test_clusters_filtering_there
-    assert @rds_clusters.where(cluster_identifier: 'cluster-12345678').exist?
+    assert @rds_clusters.where(cluster_identifiers: 'cluster-12345678').exist?
   end
 end
 

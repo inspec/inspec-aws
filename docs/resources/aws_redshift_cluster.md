@@ -27,22 +27,39 @@ An `aws_redshift_cluster` resource block uses resource parameters to search for 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `cluster_identifier: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Redshift cluster](https://docs.aws.amazon.com/AmazonRedshift/latest/AuroraUserGuide/Aurora.Overview.html).
+See also the [AWS documentation on Redshift cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html).
 
 ## Properties
+|Property                     | Description|
+| ---                         | --- |
+|cluster\_identifier    | The unique IDs of the redshift clusters returned. |
+|db\_names   | The name of the database associated with each redshift cluster. | 
+|node\_type    | The redshift instance type. |
+|cluster\_create\_time    | The create time of redshift clusters. | 
+|cluster\_subnet\_group\_name    | The cluster name of redshift clusters. |
+|cluster\_status   | The current status of each cluster . | 
+|cluster\_availability\_status    | The current status of cluster. |
+|modify\_status    | The current status of cluster | 
+|availability\_zones    | A list of availability zones of the redshift clusters returned.  |
+|allow_version_upgrade  | Returns T/F depending on whether version upgrade is allowed or not. | 
+|encrypted   |  Returns T/F depending on whether Redshift clusters are encrypted or not. |
+|cluster_subnet_group_name   | Cluster subnet group name for redshift clusters returned.  |
+|iam\_roles  | iam_roles that are used in the cluster. | 
+|vpc\_id  | vpc_id of the redshift clusters. |     
+## Examples
 
 For a comprehensive list of properties available to test on an Redshift cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Redshift/Client.html#describe_clusters-instance_method.html).
 
 ## Examples
 
-##### Test the engine used with an Redshift cluster
+##### Test the engine used with a Redshift cluster
 
     describe aws_redshift_cluster(cluster_identifier: 'awsRedshift123') do
       its('engine')         { should eq 'mysql' }
       its('engine_version') { should eq '5.6.37' }
     end
 
-##### Test the storage allocated to an Redshift cluster
+##### Test the encryption and version_upgrade attribute of the Redshift cluster
 
     describe aws_redshift_cluster(cluster_identifier: 'awsRedshift123') do
       its('encrypted') { should eq true }

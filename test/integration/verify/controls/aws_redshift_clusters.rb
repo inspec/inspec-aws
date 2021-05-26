@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 control 'aws_redshift_clusters-1.0' do
 
   impact 1.0
@@ -5,14 +6,14 @@ control 'aws_redshift_clusters-1.0' do
 
   describe aws_redshift_clusters do
     it { should exist }
-    its ('node_type') { should include 'dc2.large' }
+    its ('node_types') { should include 'dc2.large' }
     its ('cluster_status') { should include 'available'  }
     its ('cluster_availability_status') { should include 'Available' }
-    its ('master_username') { should include 'test-cluster' }
-    its ('db_name') { should include 'dev' }
-    its ('vpc_id') { should include 'vpc-6d9d7505' }
+    its ('master_usernames') { should include 'testcluster' }
+    its ('db_names') { should include 'dev' }
+    its ('vpc_ids') { should include 'vpc-6d9d7505' }
     its ('cluster_availability_status') { should include 'Available' }
-    its ('cluster_subnet_group_name') { should include 'default' }
+    its ('cluster_subnet_group_names') { should include 'default' }
     its ('allow_version_upgrade') { should include true }
     its ('encrypted') { should include false }
 
