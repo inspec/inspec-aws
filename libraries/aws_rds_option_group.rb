@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AwsRdsOptionGroup < AwsResourceBase
-  name
+  name "aws_rds_option_group"
   desc 'Verifies settings for an RDS Option Group'
 
   example "
