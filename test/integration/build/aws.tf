@@ -152,6 +152,18 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_launch_template_name" {}
+variable "aws_launch_template_core" {}
+variable "aws_launch_template_threads_per_core" {}
+variable "aws_launch_template_cpu_credits" {}
+variable "aws_launch_template_volume_size" {}
+variable "aws_launch_template_instance_profile" {}
+variable "aws_launch_template_resource_type" {}
+variable "aws_launch_template_tag_name" {}
+variable "aws_launch_template_instance_type"  {}
+variable "aws_launch_template_kernel_id" {}
+variable "aws_launch_template_key_name" {}
+variable "aws_vpn_gw_name" {}
 variable "aws_network_acl_cidr_block" {}
 variable "aws_network_acl_name" {}
 variable "acl_egress_rule_number" {}
@@ -1974,6 +1986,72 @@ resource "aws_guardduty_detector" "detector_1" {
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
 }
+resource "aws_launch_template" "launch-template-test" {
+  name = var.aws_launch_template_name
+
+  block_device_mappings {
+    device_name = "/dev/sda1"
+
+    ebs {
+      volume_size = var.aws_launch_template_volume_size
+    }
+  }
+
+  cpu_options {
+    core_count       = var.aws_launch_template_core
+    threads_per_core = var.aws_launch_template_threads_per_core
+  }
+
+  credit_specification {
+    cpu_credits = var.aws_launch_template_cpu_credits
+  }
+
+  disable_api_termination = true
+
+  ebs_optimized = true
+
+
+  iam_instance_profile {
+    name = var.aws_launch_template_instance_profile
+  }
+
+  image_id = "ami-0a83ebf1ac32a3fbe"
+
+  instance_initiated_shutdown_behavior = "terminate"
+
+  instance_market_options {
+    market_type = "spot"
+  }
+
+  instance_type = var.aws_launch_template_instance_type
+  key_name = var.aws_launch_template_key_name
+
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
+
+  monitoring {
+    enabled = true
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+  }
+
+
+
+  tag_specifications {
+    resource_type = var.aws_launch_template_resource_type
+
+    tags = {
+      Name = var.aws_launch_template_tag_name
+    }
+  }
+
+}
 
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id
@@ -1983,6 +2061,15 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_vpn_gateway" "inspec_vpn_gw" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+
+  tags = {
+    Name = var.aws_vpn_gw_name
+  }
+}
+
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
   subnet_ids = [aws_subnet.inspec_subnet[0].id]

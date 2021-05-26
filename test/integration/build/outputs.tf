@@ -302,6 +302,19 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "launch_template_name" {
+  value = aws_launch_template.launch-template-test.name
+}
+
+
+output "aws_vpn_gateway_id" {
+  value = aws_vpn_gateway.inspec_vpn_gw.id
+}
+
+output "aws_amazon_side_asn" {
+  value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
+}
+
 output "network_acl_id" {
   value = aws_network_acl.inspec-nw-acl.id
 }
