@@ -1,9 +1,34 @@
-<!-- latest_release 1.38.0 -->
+<!-- latest_release 1.42.0 -->
+## [v1.42.0](https://github.com/inspec/inspec-aws/tree/v1.42.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Support vpn gateway resource [#338](https://github.com/inspec/inspec-aws/pull/338) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
+## [v1.41.0](https://github.com/inspec/inspec-aws/tree/v1.41.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Added Support to Audit Launch Template resource [#327](https://github.com/inspec/inspec-aws/pull/327) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.40.0](https://github.com/inspec/inspec-aws/tree/v1.40.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Support ec2 dhcp options [#325](https://github.com/inspec/inspec-aws/pull/325) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.39.0](https://github.com/inspec/inspec-aws/tree/v1.39.0) (2021-05-19)
+
+#### Merged Pull Requests
+- Adding aws ecr policy resource [#354](https://github.com/inspec/inspec-aws/pull/354) ([Jentul-Gift](https://github.com/Jentul-Gift))
+
+## [v1.38.1](https://github.com/inspec/inspec-aws/tree/v1.38.1) (2021-05-19)
+
+#### Merged Pull Requests
+- aws_auto_scaling_groups lint error fix [#358](https://github.com/inspec/inspec-aws/pull/358) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.38.0](https://github.com/inspec/inspec-aws/tree/v1.38.0) (2021-05-04)
 
 #### Merged Pull Requests
 - Adding aws cloudformation stacks resource [#335](https://github.com/inspec/inspec-aws/pull/335) ([Jentul-Gift](https://github.com/Jentul-Gift))
-<!-- latest_release -->
 
 ## [v1.37.0](https://github.com/inspec/inspec-aws/tree/v1.37.0) (2021-04-27)
 

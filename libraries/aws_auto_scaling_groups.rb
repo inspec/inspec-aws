@@ -45,15 +45,11 @@ class AwsAutoScalingGroups < AwsResourceBase
                          health_check_type:         group[:health_check_type] }]
 
         group[:tags].map { |tag|
-          config_rows.push(
-            {
-              'resource_id':          tag.resource_id,
-              'resource_type':        tag.resource_type,
-              'key':                  tag.key,
-              'value':                tag.value,
-              'propagate_at_launch':  tag.propagate_at_launch,
-            },
-          )
+          config_rows.push({ 'resource_id':          tag.resource_id,
+                                  'resource_type':       tag.resource_type,
+                                  'key':                 tag.key,
+                                  'value':               tag.value,
+                                  'propagate_at_launch': tag.propagate_at_launch })
         }
       end
     end
