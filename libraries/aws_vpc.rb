@@ -63,21 +63,20 @@ class AwsVpc < AwsResourceBase
 
   def has_cidr_block_associated?(cidr_block)
     return false if associated_cidr_blocks.empty?
-    return !associated_cidr_blocks.empty? unless cidr_block
 
     associated_cidr_blocks.include?(cidr_block)
   end
 
+  # will return false if the given CIDR block is not present in failed associations and it does not mean the CIDR block is associated
   def has_cidr_block_association_failed?(cidr_block)
     return false if failed_cidr_blocks.empty?
-    return !failed_cidr_blocks.empty? unless cidr_block
 
     failed_cidr_blocks.include?(cidr_block)
   end
 
+  # will return false if the given CIDR block is not present in disassociation state and it does not mean the CIDR block is associated
   def has_cidr_block_disassociated?(cidr_block)
     return false if disassociated_cidr_blocks.empty?
-    return !disassociated_cidr_blocks.empty? unless cidr_block
 
     disassociated_cidr_blocks.include?(cidr_block)
   end
@@ -88,15 +87,16 @@ class AwsVpc < AwsResourceBase
     associated_ipv6_cidr_blocks.include?(ipv6_cidr_block)
   end
 
+  # will return false if the given CIDR block is not present in failed associations and it does not mean the CIDR block is associated
   def has_ipv6_cidr_block_association_failed?(ipv6_cidr_block)
     return false if failed_ipv6_cidr_blocks.empty?
 
     failed_ipv6_cidr_blocks.include?(ipv6_cidr_block)
   end
 
+  # will return false if the given CIDR block is not present in disassociation state and it does not mean the CIDR block is associated
   def has_ipv6_cidr_block_disassociated?(ipv6_cidr_block)
     return false if disassociated_ipv6_cidr_blocks.empty?
-    return !disassociated_ipv6_cidr_blocks.empty? unless ipv6_cidr_block
 
     disassociated_ipv6_cidr_blocks.include?(ipv6_cidr_block)
   end
@@ -119,7 +119,7 @@ class AwsVpc < AwsResourceBase
   # associated_ipv6_cidr_blocks and associated_cidr_blocks
   CIDR_BLOCK_STATES.each do |state|
     define_method "#{state}_ipv6_cidr_blocks" do
-      filter(ipv6_cidr_block_associations) { |association| association.cidr_block if association.ipv_6_cidr_block_state.state == state }
+      filter(ipv6_cidr_block_associations) { |association| association.ipv_6_cidr_block if association.ipv_6_cidr_block_state.state == state }
     end
 
     define_method "#{state}_cidr_blocks" do
