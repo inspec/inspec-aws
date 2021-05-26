@@ -10,7 +10,7 @@ class AwsDbParameterGroup < AwsResourceBase
       it { should exist }
     end
 
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group') do
+    describe aws_db_parameter_group('parameter-group') do
       its('db_parameter_group_name') { should eq 'parameter-group' }
     end
   "
