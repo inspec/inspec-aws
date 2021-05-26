@@ -5,32 +5,32 @@ platform: aws
 
 # aws\_ecs\_task\_definitions
 
-Use the `aws_ecs_task_definitions` InSpec audit resource to test properties of a plural ECS Task Definitions.
-
-The AWS::ECS::TaskDefinition resource describes the container and volume definitions of an Amazon Elastic Container Service (Amazon ECS) task. You can specify which Docker images to use, the required resources, and other configurations related to launching the task definition through an Amazon ECS service or task.
+Use the `aws_ecs_task_definitions` InSpec audit resource to test properties of multiple ECS task definitions.
 
 ## Syntax
 
-Ensure that a task definition arns exists.
+Ensure that a task definition ARNs exists.
+
     describe aws_ecs_task_definitions do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on ECS Task Definition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html).
+For additional information, see the [AWS ECS task definition documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| task_definition_arns | A list of arns to describe the task definition. |
+| task_definition_arns | A list of ARNs to describe the task definition. |
 
 ## Examples
 
 ### Ensure a task definition arns is available.
+
     describe aws_ecs_task_definitions do
-      its('task_definition_arns') { should include 'arn:aws:ecs:us-east-1:<aws_account_id>:task-definition/wordpress:1' }
+      its('task_definition_arns') { should include 'arn:aws:ecs:us-east-1:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION' }
     end
 
 ## Matchers
@@ -42,11 +42,13 @@ The controls will pass if the `list_task_definitions` method returns at least on
 ### exist
 
 Use `should` to test that the entity exists.
+
     describe aws_ecs_task_definitions do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
+
     describe aws_ecs_task_definitions do
       it { should_not exist }
     end
@@ -54,6 +56,7 @@ Use `should_not` to test the entity does not exist.
 ### be_available
 
 Use `should` to check if the task definition arns is available.
+
     describe aws_ecs_task_definitions do
       it { should be_available }
     end
