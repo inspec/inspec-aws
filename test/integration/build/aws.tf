@@ -164,6 +164,8 @@ variable "aws_launch_template_instance_type"  {}
 variable "aws_launch_template_kernel_id" {}
 variable "aws_launch_template_key_name" {}
 variable "aws_vpn_gw_name" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2067,6 +2069,6 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
 }
 
 resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
-  name   = "test1"
-  family = "redshift-1.0"
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }
