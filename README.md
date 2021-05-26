@@ -193,6 +193,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_rds_clusters](docs/resources/aws_rds_clusters.md)
 - [aws_rds_instance](docs/resources/aws_rds_instance.md)
 - [aws_rds_instances](docs/resources/aws_rds_instances.md)
+- [aws_redshift_cluster](docs/resources/aws_redshift_cluster.md)
+- [aws_redshift_clusters](docs/resources/aws_redshift_clusters.md)
 - [aws_region](docs/resources/aws_region.md)
 - [aws_regions](docs/resources/aws_regions.md)
 - [aws_route_table](docs/resources/aws_route_table.md)
