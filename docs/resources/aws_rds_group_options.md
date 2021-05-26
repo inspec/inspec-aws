@@ -24,17 +24,14 @@ end
 
 |Property                     | Description|
 | ---                         | --- |
-|cluster\_identifier    | The unique IDs of the RDS clusters returned. |
-|database\_name    | The name of the database associated with each RDS cluster. | 
-|cluster_\members    | The RDS instances attached to each RDS cluster. |
-|engine    | The name of the database engine used by each cluster. | 
-|engine\_version    | The version of the database engine used by each cluster. |
-|status   | The current status of each cluster. | 
-|allocated\_storage    | The storage allocated to each cluster. |
-|storage\_encrypted    | Returns T/F whether the cluster is encrypted or not. | 
-|availability\_zones    | A list of availability zones of the RDS clusters returned.  |
-|multi\_az   | Returns T/F depending on whether multiple availability zones are used in the cluster. | 
-|arn   | The unique Amazon resource name of the RDS clusters. |    
+|option_group_names    | The name RDS option group. |
+|option_group_description   | The name of the database associated with each RDS cluster. | 
+|engine_names    | The name of the engine associated with each RDS cluster. |
+|major_engine_versions   | The major engine version of a option group. | 
+|option_group_arns    | The arn of a option group.|
+|vpc_ids  | The vpc id of  option group. | 
+|allows_vpc_and_non_vpc_instance_memberships    | The storage allocated to each cluster. |
+
 
 
 See also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).

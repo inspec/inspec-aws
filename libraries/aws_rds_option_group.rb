@@ -11,7 +11,7 @@ class AwsRdsOptionGroup < AwsResourceBase
       it { should exist }
     end
 
-    describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
+    describe aws_rds_option_group('test-option_group_name') do
       it { should exist }
     end
   "
@@ -22,10 +22,9 @@ class AwsRdsOptionGroup < AwsResourceBase
 
     raise ArgumentError, "#{@__resource_name__}: .option_group_name must be a string" unless opts.key?(:option_group_name)
     param = { option_group_name: opts[:option_group_name] }
+    @display_name = opts[:option_group_name]
 
     catch_aws_errors do
-      @display_name = opts[:option_group_name]
-
       resp = @aws.rds_client.describe_option_groups(param)
       return if resp.option_groups_list.empty?
       @rds_cluster = resp.option_groups_list[0].to_h

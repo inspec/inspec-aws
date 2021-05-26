@@ -32,10 +32,12 @@ class AwsRdsOptionGroups < AwsResourceBase
   def fetch_data
     option_group_rows = []
     pagination_options = {}
-    catch_aws_errors do
-      response = @aws.rds_client.describe_option_groups(pagination_options)
-      return option_group_rows if !response || response.empty?
-      response.option_groups_list.each do |rds_option_group|
+    loop do
+      catch_aws_errors do
+        @response = @aws.rds_client.describe_option_groups(pagination_options)
+      end
+      return option_group_rows if !@response || @response.empty?
+      @response.option_groups_list.each do |rds_option_group|
         option_group_rows += [{ option_group_name:                                       rds_option_group.option_group_name,
                                 option_group_description:                                rds_option_group.option_group_description,
                                 engine_name:                                             rds_option_group.engine_name,
@@ -44,6 +46,7 @@ class AwsRdsOptionGroups < AwsResourceBase
                                 vpc_id:                                                  rds_option_group.vpc_id,
                                 allows_vpc_and_non_vpc_instance_memberships:             rds_option_group.allows_vpc_and_non_vpc_instance_memberships }]
       end
+      pagination_options = { marker: @response[:marker] }
     end
     @table = option_group_rows
   end

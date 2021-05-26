@@ -9,7 +9,7 @@ class AwsRdsOptionGroupConstructorTest < Minitest::Test
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AwsRdsOptionGroup.new('rubbish') }
+    assert_raises(ArgumentError) { AwsRdsOptionGroup.new(option_gpp:'rubbish') }
   end
 
   def test_rejects_unrecognized_params
