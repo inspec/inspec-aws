@@ -17,7 +17,6 @@ class AwsEIPsConstructorTest < Minitest::Test
 end
 
 class AwsEIPsPathTest < Minitest::Test
-
   def setup
     data = {}
     data[:method] = :describe_addresses
@@ -32,9 +31,9 @@ class AwsEIPsPathTest < Minitest::Test
     mock_eip[:private_ip_address] = '172.31.37.142'
     mock_eip[:public_ipv_4_pool] = 'amazon'
     mock_eip[:network_border_group] = 'us-east-2'
-    data[:data] = { :addresses => [mock_eip] }
+    data[:data] = { addresses: [mock_eip] }
     data[:client] = Aws::EC2::Client
-    @addr = AwsEc2Eip.new(public_ip: '18.191.108.8',client_args: { stub_responses: true }, stub_data: [data])
+    @addr = AwsEc2Eip.new(public_ip: '18.191.108.8', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_public_ip_exists
