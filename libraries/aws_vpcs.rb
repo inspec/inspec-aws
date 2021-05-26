@@ -15,16 +15,16 @@ class AwsVpcs < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-             .register_column(:cidr_blocks, field: :cidr_block)
+             .register_column(:cidr_blocks, field: :cidr_block, style: :simple)
              .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:states, field: :state)
+             .register_column(:states, field: :state, style: :simple)
              .register_column(:dhcp_options_ids, field: :dhcp_options_id)
-             .register_column(:instance_tenancies, field: :instance_tenancy)
-             .register_column(:is_default, field: :is_default)
+             .register_column(:instance_tenancies, field: :instance_tenancy, style: :simple)
+             .register_column(:is_default, field: :is_default, style: :simple)
              .register_column(:defaults, field: :defaults, style: :simple)
              .register_column(:tags, field: :tags)
              .register_column(:cidr_block_association_ids, field: :cidr_block_association_ids, style: :simple)
-             .register_column(:cidr_blocks, field: :cidr_blocks, style: :simple)
+             .register_column(:associated_cidr_blocks, field: :associated_cidr_blocks, style: :simple)
              .register_column(:cidr_block_states, field: :cidr_block_states, style: :simple)
              .register_column(:ipv6_cidr_block_association_ids, field: :ipv6_cidr_block_association_ids, style: :simple)
              .register_column(:ipv6_cidr_blocks, field: :ipv6_cidr_blocks, style: :simple)
@@ -72,7 +72,7 @@ class AwsVpcs < AwsResourceBase
 
       cidr_block_associations = vpc.cidr_block_association_set
       hash[:cidr_block_association_ids] = map_attributes_from(cidr_block_associations, 'association_id')
-      hash[:cidr_blocks] = map_attributes_from(cidr_block_associations, 'cidr_block')
+      hash[:associated_cidr_blocks] = map_attributes_from(cidr_block_associations, 'cidr_block')
       hash[:cidr_block_states] = map_attributes_from(cidr_block_associations, 'cidr_block_state&.state')
 
       ipv6_cidr_block_associations = vpc.ipv_6_cidr_block_association_set
