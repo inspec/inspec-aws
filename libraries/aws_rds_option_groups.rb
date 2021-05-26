@@ -46,6 +46,7 @@ class AwsRdsOptionGroups < AwsResourceBase
                                 vpc_id:                                                  rds_option_group.vpc_id,
                                 allows_vpc_and_non_vpc_instance_memberships:             rds_option_group.allows_vpc_and_non_vpc_instance_memberships }]
       end
+      break unless @response.marker
       pagination_options = { marker: @response[:marker] }
     end
     @table = option_group_rows
