@@ -3,10 +3,14 @@
 require 'aws_backend'
 
 class AwsRdsOptionGroup < AwsResourceBase
-  name 'aws_rds_option_group'
-  desc 'Verifies settings for an RDS Cluster'
+  name
+  desc 'Verifies settings for an RDS Option Group'
 
   example "
+    describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
+      it { should exist }
+    end
+
     describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
       it { should exist }
     end
@@ -22,22 +26,19 @@ class AwsRdsOptionGroup < AwsResourceBase
     catch_aws_errors do
       @display_name = opts[:option_group_name]
 
-      begin
-        resp = @aws.rds_client.describe_option_groups(param)
-        return if resp.option_groups_list.empty?
-        @rds_cluster = resp.option_groups_list[0].to_h
-      rescue Aws::RDS::Errors::OptionGroupNotFoundFault
-        return
-      end
+      resp = @aws.rds_client.describe_option_groups(param)
+      return if resp.option_groups_list.empty?
+      @rds_cluster = resp.option_groups_list[0].to_h
+
       create_resource_methods(@rds_cluster)
     end
   end
 
   def exists?
-    !@rds_cluster.to_s.empty?
+    !!@rds_cluster && !@rds_cluster.empty?
   end
 
   def to_s
-    "RDS option groups #{@display_name}"
+    "RDS option group: #{@display_name}"
   end
 end

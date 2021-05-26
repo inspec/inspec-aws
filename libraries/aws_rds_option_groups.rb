@@ -37,11 +37,11 @@ class AwsRdsOptionGroups < AwsResourceBase
       return option_group_rows if !response || response.empty?
       response.option_groups_list.each do |rds_option_group|
         option_group_rows += [{ option_group_name:                                       rds_option_group.option_group_name,
-                                option_group_description:                                           rds_option_group.option_group_description,
+                                option_group_description:                                rds_option_group.option_group_description,
                                 engine_name:                                             rds_option_group.engine_name,
                                 major_engine_version:                                    rds_option_group.major_engine_version,
                                 option_group_arn:                                        rds_option_group.option_group_arn,
-                                vpc_id:                                                 rds_option_group.vpc_id,
+                                vpc_id:                                                  rds_option_group.vpc_id,
                                 allows_vpc_and_non_vpc_instance_memberships:             rds_option_group.allows_vpc_and_non_vpc_instance_memberships }]
       end
     end

@@ -34,7 +34,7 @@ class AwsRdsOptionGroupHappyPathTest < Minitest::Test
     @option_group = AwsRdsOptionGroup.new(option_group_name: 'default:aurora-5-6',client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_instances_names
+  def test_option_group_names
     assert_equal(@option_group.option_group_name, 'default:aurora-5-6')
   end
 
@@ -50,7 +50,7 @@ class AwsRdsOptionGroupHappyPathTest < Minitest::Test
     assert_equal(@option_group.engine_name, 'aurora')
   end
 
-  def test_option_group_family
+  def test_option_group_arn
     assert_equal(@option_group.option_group_arn, 'arn:aws:rds:us-east-2:112758395563:og:default:aurora-5-6')
   end
   
