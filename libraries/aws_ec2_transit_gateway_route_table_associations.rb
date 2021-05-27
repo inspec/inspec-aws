@@ -37,7 +37,7 @@ class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.get_transit_gateway_route_table_associations(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.associations.each do |association|
         rows += [{
           transit_gateway_attachment_id: association.transit_gateway_attachment_id,
