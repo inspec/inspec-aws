@@ -30,6 +30,7 @@ See the [AWS documentation on Redshift cluster parameter group](https://docs.aws
 | descriptions             | The description of the parameter group.                                                                                                                            | description             |
 | tags                     | The tags of the parameter group.                                                                                                                                    | tags                     |
 
+
 ## Examples
 
 ### Ensure a Redshift cluster parameter group has parameter groups

@@ -2052,7 +2052,7 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -2061,9 +2061,11 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
-  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  subnet_ids = [
+    aws_subnet.inspec_subnet[0].id]
   transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
-  vpc_id             = aws_vpc.inspec_vpc[0].id
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
 
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
   transit_gateway_id = aws_ec2_transit_gateway.gateway.id
@@ -2083,6 +2085,11 @@ resource "aws_route" "aws_route1" {
   destination_cidr_block    = "172.31.0.0/16"
   gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
   depends_on                = [aws_route_table.route_table_first]
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }
 
 resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {

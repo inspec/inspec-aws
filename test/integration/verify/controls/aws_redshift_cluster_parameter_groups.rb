@@ -12,5 +12,4 @@ control 'aws-redshift-parameter-groups-1.0' do
     its('tags') { should_not be_empty }
   end
 end
-
   
