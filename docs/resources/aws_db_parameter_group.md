@@ -57,7 +57,7 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_rds_cluster(db_cluster_identifier: 'parameter-group-name-6789') do
+    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-6789') do
       it { should_not exist }
     end
 
