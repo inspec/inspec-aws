@@ -252,7 +252,7 @@ module AWSInspecConfig
     end
   end
 
-  def self.get_tf_output_vars(file_name = 'outputs.tf.tf')
+  def self.get_tf_output_vars(file_name = 'outputs.tf')
     # let's assume that all lines starting with 'output' contain the desired target name
     # (brittle but this way we don't need to preserve a list)
     outputs = []
