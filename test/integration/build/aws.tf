@@ -2058,6 +2058,10 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
   vpc_id = aws_vpc.inspec_vpc[0].id
 
