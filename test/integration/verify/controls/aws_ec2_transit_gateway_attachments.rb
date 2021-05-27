@@ -8,7 +8,7 @@ control 'aws-transit-gateway-attachments-v1.0.0' do
   describe aws_ec2_transit_gateway_attachments do
     it { should exist }
     its('count')             { should be <= 100 }
-    its('count')             { should eq 1 }
+    its('count')             { should be >= 1 }
     its('transit_gateway_attachment_ids') { should include aws_transit_gateway_attachment_id }
     its('transit_gateway_ids') { should include aws_transit_gateway_id }
     its('transit_gateway_owner_ids') { should include aws_transit_gateway_owner_id }

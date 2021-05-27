@@ -15,6 +15,6 @@ control 'aws-transit-gateway-attachment-v1.0.0' do
     its('resource_id')                                { should_not be_empty }
     its('state')                                      { should eq "available" }
     its('tags')                                       { should be_empty }
-    its('association.state')                          { should eq "associating" }
+    its('association.state')                          { should eq "associated" }
   end
 end
