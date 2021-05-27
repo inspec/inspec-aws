@@ -152,6 +152,9 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_db_option_group_name" {}
+variable "aws_db_option_group_description" {}
+variable "aws_db_option_group_engine_name"  {}
 variable "aws_launch_template_name" {}
 variable "aws_launch_template_core" {}
 variable "aws_launch_template_threads_per_core" {}
@@ -208,7 +211,7 @@ resource "aws_vpc_dhcp_options_association" "inspec_vpc_dopt_assoc" {
 resource "aws_subnet" "inspec_subnet" {
   count             = var.aws_enable_creation
   vpc_id            = aws_vpc.inspec_vpc[0].id
-  availability_zone = "us-east-2a"
+  availability_zone = var.aws_availability_zone
   cidr_block        = cidrsubnet(aws_vpc.inspec_vpc[0].cidr_block, 1, 1)
 
   # will result in /28 (or 16) IP addresses
@@ -1840,7 +1843,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-}
+} 
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -2050,23 +2053,32 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id
+  replication_group_id          = var.aws_elasticache_replication_group_id 
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+resource "aws_db_option_group" "test-option-group" {
+  name                     = var.aws_db_option_group_name
+  option_group_description = var.aws_db_option_group_description
+  engine_name              = var.aws_db_option_group_engine_name
+  major_engine_version     = "11.00"
 
-<<<<<<< HEAD
+  option {
+    option_name = "TDE"
+  }
+}
+
 resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
-  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
   transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
-  vpc_id             = aws_vpc.inspec_vpc[0].id
-=======
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
+
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
   transit_gateway_id = aws_ec2_transit_gateway.gateway.id
->>>>>>> 154059fceab3c00b693be81c9bb5dc174186c623
 }
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {

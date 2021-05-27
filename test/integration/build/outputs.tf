@@ -302,6 +302,10 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_option_group_name" {
+value = aws_db_option_group.test-option-group.name
+}
+
 output "transit_gateway_id" {
   value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.transit_gateway_id
 }
@@ -313,7 +317,6 @@ output "transit_gateway_route_table_id" {
 output "launch_template_name" {
   value = aws_launch_template.launch-template-test.name
 }
-
 
 output "aws_vpn_gateway_id" {
   value = aws_vpn_gateway.inspec_vpn_gw.id
