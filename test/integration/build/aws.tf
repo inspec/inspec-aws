@@ -2065,3 +2065,10 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
     Name = var.aws_vpn_gw_name
   }
 }
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
+}
