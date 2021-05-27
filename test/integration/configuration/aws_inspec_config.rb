@@ -225,7 +225,6 @@ module AWSInspecConfig
       aws_db_option_group_name: 'option-group-test-terraform2',
       aws_db_option_group_description: 'Terraform Option Group',
       aws_db_option_group_engine_name: 'sqlserver-ee',
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_redshift_cluster_identifier: "redshift-cluster-#{add_random_string}"
   }
 
