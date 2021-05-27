@@ -322,3 +322,15 @@ output "aws_vpn_gateway_id" {
 output "aws_amazon_side_asn" {
   value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
 }
+
+output "aws_transit_gateway_attachment_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.id
+}
+
+output "aws_transit_gateway_id1" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.transit_gateway_id
+}
+
+output "aws_transit_gateway_owner_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.vpc_owner_id
+}

@@ -146,6 +146,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_ec2_transit_gateway_route_tables](docs/resources/aws_ec2_transit_gateway_route_tables.md)
 - [aws_ec2_lauch_template](docs/resources/aws_ec2_launch_template.md)
 - [aws_ec2_lauch_templates](docs/resources/aws_ec2_launch_templates.md)
+- [aws_ec2_transit_gateway_attachment](docs/resources/aws_ec2_transit_gateway_attachment.md)
+- [aws_ec2_transit_gateway_attachments](docs/resources/aws_ec2_transit_gateway_attachments.md) 
 - [aws_ecr](docs/resources/aws_ecr.md)
 - [aws_ecr_image](docs/resources/aws_ecr_image.md)
 - [aws_ecr_images](docs/resources/aws_ecr_images.md)

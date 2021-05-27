@@ -208,7 +208,7 @@ resource "aws_vpc_dhcp_options_association" "inspec_vpc_dopt_assoc" {
 resource "aws_subnet" "inspec_subnet" {
   count             = var.aws_enable_creation
   vpc_id            = aws_vpc.inspec_vpc[0].id
-  availability_zone = var.aws_availability_zone
+  availability_zone = "us-east-2a"
   cidr_block        = cidrsubnet(aws_vpc.inspec_vpc[0].cidr_block, 1, 1)
 
   # will result in /28 (or 16) IP addresses
@@ -2058,8 +2058,15 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+<<<<<<< HEAD
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id             = aws_vpc.inspec_vpc[0].id
+=======
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
   transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+>>>>>>> 154059fceab3c00b693be81c9bb5dc174186c623
 }
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
