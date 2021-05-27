@@ -152,6 +152,9 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_db_option_group_name" {}
+variable "aws_db_option_group_description" {}
+variable "aws_db_option_group_engine_name"  {}
 variable "aws_launch_template_name" {}
 variable "aws_launch_template_core" {}
 variable "aws_launch_template_threads_per_core" {}
@@ -167,6 +170,7 @@ variable "aws_vpn_gw_name" {}
 variable "aws_db_parameter_group_name" {}
 variable "aws_db_parameter_group_family_name" {}
 variable "aws_db_parameter_group_description" {}
+variable "aws_redshift_cluster_identifier" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2061,12 +2065,50 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+
+resource "aws_redshift_cluster" "redshift_test" {
+  cluster_identifier = var.aws_redshift_cluster_identifier
+  database_name      = "dev"
+  master_username    = "testcluster"
+  master_password    = "Mustbe8characters"
+  node_type          = "dc2.large"
+  cluster_type       = "single-node"
+}
+
+resource "aws_db_option_group" "test-option-group" {
+  name                     = var.aws_db_option_group_name
+  option_group_description = var.aws_db_option_group_description
+  engine_name              = var.aws_db_option_group_engine_name
+  major_engine_version     = "11.00"
+
+  option {
+    option_name = "TDE"
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
   vpc_id = aws_vpc.inspec_vpc[0].id
 
   tags = {
     Name = var.aws_vpn_gw_name
   }
+}
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
 }
 
 resource "aws_db_parameter_group" "inspec_db_parameter_group" {

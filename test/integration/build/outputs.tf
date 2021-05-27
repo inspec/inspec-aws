@@ -302,6 +302,18 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_option_group_name" {
+value = aws_db_option_group.test-option-group.name
+}
+
+output "transit_gateway_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.transit_gateway_id
+}
+
+output "transit_gateway_route_table_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.id
+}
+
 output "launch_template_name" {
   value = aws_launch_template.launch-template-test.name
 }
@@ -317,4 +329,19 @@ output "aws_amazon_side_asn" {
 
 output "aws_db_parameter_group_arn" {
   value = aws_db_parameter_group.inspec_db_parameter_group.arn
+}
+
+output "aws_transit_gateway_attachment_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.id
+}
+
+output "aws_transit_gateway_id1" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.transit_gateway_id
+}
+
+output "aws_transit_gateway_owner_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.vpc_owner_id
+}
+output "aws_redshift_cluster_identifier" {
+  value = aws_redshift_cluster.redshift_test.cluster_identifier
 }
