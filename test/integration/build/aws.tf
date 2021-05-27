@@ -167,6 +167,7 @@ variable "aws_launch_template_instance_type"  {}
 variable "aws_launch_template_kernel_id" {}
 variable "aws_launch_template_key_name" {}
 variable "aws_vpn_gw_name" {}
+variable "aws_redshift_cluster_identifier" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2053,13 +2054,24 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+
+resource "aws_redshift_cluster" "redshift_test" {
+  cluster_identifier = var.aws_redshift_cluster_identifier
+  database_name      = "dev"
+  master_username    = "testcluster"
+  master_password    = "Mustbe8characters"
+  node_type          = "dc2.large"
+  cluster_type       = "single-node"
+}
+
 resource "aws_db_option_group" "test-option-group" {
   name                     = var.aws_db_option_group_name
   option_group_description = var.aws_db_option_group_description

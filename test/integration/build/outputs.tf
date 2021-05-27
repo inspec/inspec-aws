@@ -337,3 +337,6 @@ output "aws_transit_gateway_id1" {
 output "aws_transit_gateway_owner_id" {
   value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.vpc_owner_id
 }
+output "aws_redshift_cluster_identifier" {
+  value = aws_redshift_cluster.redshift_test.cluster_identifier
+}
