@@ -1,9 +1,14 @@
-<!-- latest_release 1.42.3 -->
+<!-- latest_release 1.43.0 -->
+## [v1.43.0](https://github.com/inspec/inspec-aws/tree/v1.43.0) (2021-05-27)
+
+#### Merged Pull Requests
+- added support for aws rds group option  [#353](https://github.com/inspec/inspec-aws/pull/353) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.42.3](https://github.com/inspec/inspec-aws/tree/v1.42.3) (2021-05-27)
 
 #### Merged Pull Requests
 - Soumyo/ec2 transit gateway attachment [#343](https://github.com/inspec/inspec-aws/pull/343) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.42.2](https://github.com/inspec/inspec-aws/tree/v1.42.2) (2021-05-27)
 
