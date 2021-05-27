@@ -1,9 +1,14 @@
-<!-- latest_release 1.44.0 -->
+<!-- latest_release 1.44.1 -->
+## [v1.44.1](https://github.com/inspec/inspec-aws/tree/v1.44.1) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/db parameter groups [#342](https://github.com/inspec/inspec-aws/pull/342) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.44.0](https://github.com/inspec/inspec-aws/tree/v1.44.0) (2021-05-27)
 
 #### Merged Pull Requests
 - added support for Redshift Clusters [#359](https://github.com/inspec/inspec-aws/pull/359) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.43.0](https://github.com/inspec/inspec-aws/tree/v1.43.0) (2021-05-27)
 
