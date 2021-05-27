@@ -210,11 +210,21 @@ module AWSInspecConfig
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_launch_template_name: "launch_template-#{add_random_string}",
+      aws_launch_template_core: 4,
+      aws_launch_template_threads_per_core: 2,
+      aws_launch_template_cpu_credits: "standard",
+      aws_launch_template_volume_size: 20,
+      aws_launch_template_instance_profile: "test-profile",
+      aws_launch_template_resource_type: "instance",
+      aws_launch_template_tag_name: "test",
+      aws_launch_template_instance_type: "t2.micro",
+      aws_launch_template_kernel_id: "test_kernel_id",
+      aws_launch_template_key_name: "test_key_name",
+      aws_vpn_gw_name: 'inspec_vpn_gw',
       aws_db_option_group_name: 'option-group-test-terraform2',
       aws_db_option_group_description: 'Terraform Option Group',
       aws_db_option_group_engine_name: 'sqlserver-ee',
-
-
   }
 
   def self.config
@@ -242,7 +252,7 @@ module AWSInspecConfig
     end
   end
 
-  def self.get_tf_output_vars(file_name = 'outputs.tf')
+  def self.get_tf_output_vars(file_name = 'outputs.tf.tf')
     # let's assume that all lines starting with 'output' contain the desired target name
     # (brittle but this way we don't need to preserve a list)
     outputs = []

@@ -1,9 +1,34 @@
-<!-- latest_release 1.40.0 -->
+<!-- latest_release 1.42.3 -->
+## [v1.42.3](https://github.com/inspec/inspec-aws/tree/v1.42.3) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 transit gateway attachment [#343](https://github.com/inspec/inspec-aws/pull/343) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.42.2](https://github.com/inspec/inspec-aws/tree/v1.42.2) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 transit gateway route table [#344](https://github.com/inspec/inspec-aws/pull/344) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.42.1](https://github.com/inspec/inspec-aws/tree/v1.42.1) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 routes [#350](https://github.com/inspec/inspec-aws/pull/350) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.42.0](https://github.com/inspec/inspec-aws/tree/v1.42.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Support vpn gateway resource [#338](https://github.com/inspec/inspec-aws/pull/338) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.41.0](https://github.com/inspec/inspec-aws/tree/v1.41.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Added Support to Audit Launch Template resource [#327](https://github.com/inspec/inspec-aws/pull/327) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.40.0](https://github.com/inspec/inspec-aws/tree/v1.40.0) (2021-05-26)
 
 #### Merged Pull Requests
 - Support ec2 dhcp options [#325](https://github.com/inspec/inspec-aws/pull/325) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.39.0](https://github.com/inspec/inspec-aws/tree/v1.39.0) (2021-05-19)
 
