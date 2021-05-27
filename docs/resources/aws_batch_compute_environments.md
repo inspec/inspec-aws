@@ -5,28 +5,29 @@ platform: aws
 
 # aws\_batch\_compute\_environments
 
-Use the `aws_batch_compute_environments` InSpec audit resource to test properties of a plural Batch Compute Environment.
-
-The AWS::Batch::ComputeEnvironment resource defines your AWS Batch compute environment. You can define MANAGED or UNMANAGED compute environments. MANAGED compute environments can use Amazon EC2 or resources. UNMANAGED compute environments can only use EC2 resources.
+Use the `aws_batch_compute_environments` InSpec audit resource to test properties of multiple AWS Batch compute environments.
 
 ## Syntax
 
 Ensure that a compute environment exists.
+
     describe aws_batch_compute_environments do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Batch Compute Environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
+The name of the Batch compute environment.
+
+For additional information, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
 | compute_environment_names | The name of the compute environment. |
-| compute_environment_arns | The arn of the compute environment. |
-| ecs_cluster_arns | The ecs cluster arn of the compute environment. |
+| compute_environment_arns | The ARN of the compute environment. |
+| ecs_cluster_arns | The ECS cluster ARN of the compute environment. |
 | tags | The tags of the compute environment. |
 | types | The type of the compute environment. |
 | states | The state of the compute environment. |
@@ -37,12 +38,14 @@ For additional information, see the [AWS documentation on Batch Compute Environm
 
 ## Examples
 
-### Ensure a work_group name is available.
+### Ensure a work group name is available.
+
     describe aws_batch_compute_environments do
-      its('compute_environment_names') { should include 'test1' }
+      its('compute_environment_names') { should include 'COMPUTE_ENVIRONMENT_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
+
     describe aws_batch_compute_environments do
         its('states') { should include 'ENABLED' }
     end
@@ -62,7 +65,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_batch_compute_environments do
       it { should_not exist }
     end
