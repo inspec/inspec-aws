@@ -152,6 +152,8 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1935,7 +1937,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1944,6 +1946,6 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
-  name   = "test1"
-  family = "redshift-1.0"
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }

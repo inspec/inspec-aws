@@ -23,12 +23,12 @@ See the [AWS documentation on Redshift cluster parameter group](https://docs.aws
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| parameter_group_names | The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned. |
-| parameter_group_families | The family of the parameter group. |
-| descriptions | The description of the parameter group. |
-| tags | The tags of the parameter group. |
+| Property                 | Description                                                                                                                                                        | Fields                 |
+| ---                      | ---                                                                                                                                                                | ---                      |
+| parameter_group_names    | The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.   | parameter_group_name    |
+| parameter_group_families | The family of the parameter group.                                                                                                                                 | parameter_group_family |
+| descriptions             | The description of the parameter group.                                                                                                                            | description             |
+| tags                     | The tags of the parameter group.                                                                                                                                    | tags                     |
 
 ## Examples
 
