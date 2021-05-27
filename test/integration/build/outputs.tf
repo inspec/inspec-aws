@@ -318,12 +318,17 @@ output "launch_template_name" {
   value = aws_launch_template.launch-template-test.name
 }
 
+
 output "aws_vpn_gateway_id" {
   value = aws_vpn_gateway.inspec_vpn_gw.id
 }
 
 output "aws_amazon_side_asn" {
   value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
+}
+
+output "aws_db_parameter_group_arn" {
+  value = aws_db_parameter_group.inspec_db_parameter_group.arn
 }
 
 output "aws_transit_gateway_attachment_id" {
