@@ -142,6 +142,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_ec2_dhcp_options](docs/resources/aws_ec2_dhcp_options.md)
 - [aws_ec2_instance](docs/resources/aws_ec2_instance.md)
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
+- [aws_ec2_transit_gateway_route_table](docs/resources/aws_ec2_transit_gateway_route_table.md)
+- [aws_ec2_transit_gateway_route_tables](docs/resources/aws_ec2_transit_gateway_route_tables.md)
 - [aws_ec2_lauch_template](docs/resources/aws_ec2_launch_template.md)
 - [aws_ec2_lauch_templates](docs/resources/aws_ec2_launch_templates.md)
 - [aws_ec2_transit_gateway_attachment](docs/resources/aws_ec2_transit_gateway_attachment.md)

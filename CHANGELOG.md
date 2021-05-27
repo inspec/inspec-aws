@@ -1,9 +1,19 @@
-<!-- latest_release 1.42.0 -->
+<!-- latest_release 1.42.2 -->
+## [v1.42.2](https://github.com/inspec/inspec-aws/tree/v1.42.2) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 transit gateway route table [#344](https://github.com/inspec/inspec-aws/pull/344) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.42.1](https://github.com/inspec/inspec-aws/tree/v1.42.1) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 routes [#350](https://github.com/inspec/inspec-aws/pull/350) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.42.0](https://github.com/inspec/inspec-aws/tree/v1.42.0) (2021-05-26)
 
 #### Merged Pull Requests
 - Support vpn gateway resource [#338](https://github.com/inspec/inspec-aws/pull/338) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.41.0](https://github.com/inspec/inspec-aws/tree/v1.41.0) (2021-05-26)
 

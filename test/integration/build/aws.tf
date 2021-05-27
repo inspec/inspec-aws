@@ -2058,10 +2058,15 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+<<<<<<< HEAD
 resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
   subnet_ids         = [aws_subnet.inspec_subnet[0].id]
   transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
   vpc_id             = aws_vpc.inspec_vpc[0].id
+=======
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+>>>>>>> 154059fceab3c00b693be81c9bb5dc174186c623
 }
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
@@ -2070,4 +2075,11 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
   tags = {
     Name = var.aws_vpn_gw_name
   }
+}
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
 }
