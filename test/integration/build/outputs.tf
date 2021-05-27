@@ -309,3 +309,16 @@ output "transit_gateway_id" {
 output "transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.id
 }
+
+output "launch_template_name" {
+  value = aws_launch_template.launch-template-test.name
+}
+
+
+output "aws_vpn_gateway_id" {
+  value = aws_vpn_gateway.inspec_vpn_gw.id
+}
+
+output "aws_amazon_side_asn" {
+  value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
+}
