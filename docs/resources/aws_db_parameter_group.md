@@ -19,8 +19,7 @@ An `aws_db_parameter_group` resource block uses the parameter to select a parame
 
 #### db\_parameter\_group\_name _(required)_
 
-This resource accepts a single parameter, the DB parameter group name.
-This can be passed either as a string or as a `aws_db_parameter_group: 'value'` key-value entry in a hash.
+This resource accepts a single parameter, the DB parameter group name. This can be passed either as a string or as a `aws_db_parameter_group: 'value'` key-value entry in a hash.
 
 See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html) for additional information.
 
