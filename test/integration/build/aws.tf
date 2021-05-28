@@ -2065,6 +2065,10 @@ resource "aws_launch_template" "launch-template-test" {
 
 }
 
+resource "aws_eip" "aws_eip_1" {
+  vpc      = true
+}
+
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
