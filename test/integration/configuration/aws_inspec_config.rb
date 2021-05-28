@@ -230,7 +230,7 @@ module AWSInspecConfig
       aws_db_option_group_engine_name: 'sqlserver-ee',
       aws_redshift_cluster_identifier: "redshift-cluster-#{add_random_string}",
       aws_redshift_parameter_group_name: "group#{add_random_string}",
-      aws_redshift_parameter_group_family: "redshift-1.0"
+      aws_redshift_parameter_group_family: "redshift-1.0",
       aws_vpn_gw_name: 'inspec_vpn_gw',
       aws_network_acl_cidr_block: '10.3.0.0/18',
       aws_network_acl_name: 'inspec-nw-acl',
