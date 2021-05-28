@@ -2065,3 +2065,40 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
     Name = var.aws_vpn_gw_name
   }
 }
+
+resource "aws_vpc" "aws_vpc1" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_subnet" "aws_subnet1" {
+  vpc_id     = aws_vpc.aws_vpc1.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_ec2_transit_gateway" "gateway" {
+  description = "example"
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment_association1" {
+  subnet_ids         = [aws_subnet.aws_subnet1.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.aws_vpc1.id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
