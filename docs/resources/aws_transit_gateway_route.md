@@ -17,23 +17,21 @@ An `aws_transit_gateway_route` resource block declares the tests for a single AW
 
 ### Parameters
 
-The AWS transit gateway route table ID and CIDR block is required.
+To set the parameters of the AWS transit gateway route table, **ID** and **CIDR** block is required.
 
 #### transit\_gateway\_route\_table\_id _(required)_
 
-The ID of the AWS transit gateway route table:
+The **ID** of the AWS transit gateway route table:
 
-- must contain between 1 and 50 alphanumeric characters or hyphens
+- must contain alphanumeric characters between 1 to 50, or hyphens
 - should start with `tgw-rtb-`
 - cannot end with a hyphen or contain two consecutive hyphens
 
-It should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
+The ID of the AWS transit gateway route table should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
 
 #### cidr\_block _(required)_
 
-The CIDR Block Range of the route associated to AWS transit gateway route table
-
-It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
+The **CIDR** block range of the route is associated to the AWS transit gateway route table. It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
 ## Properties
 
@@ -73,7 +71,6 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
         its('attachment_resource_type') { should eq 'vpc' }
     end
 
-
 ### Test that the prefix list ID is `pl-4ca54025`
 
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -82,7 +79,7 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a complete list of available matchers, visit [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -128,6 +125,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`. 
+To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
