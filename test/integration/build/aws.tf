@@ -167,6 +167,10 @@ variable "aws_launch_template_instance_type"  {}
 variable "aws_launch_template_kernel_id" {}
 variable "aws_launch_template_key_name" {}
 variable "aws_vpn_gw_name" {}
+variable "aws_network_acl_cidr_block" {}
+variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
 variable "aws_db_parameter_group_name" {}
 variable "aws_db_parameter_group_family_name" {}
 variable "aws_db_parameter_group_description" {}
@@ -2060,7 +2064,7 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -2104,6 +2108,34 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
 
   tags = {
     Name = var.aws_vpn_gw_name
+  }
+}
+
+resource "aws_network_acl" "inspec-nw-acl" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = var.acl_egress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = var.acl_ingress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 80
+    to_port    = 80
+  }
+
+
+  tags = {
+    Name = var.aws_network_acl_name
   }
 }
 

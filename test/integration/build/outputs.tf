@@ -327,6 +327,11 @@ output "aws_amazon_side_asn" {
   value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
 }
 
+output "network_acl_id" {
+  value = aws_network_acl.inspec-nw-acl.id
+}
+
+
 output "aws_db_parameter_group_arn" {
   value = aws_db_parameter_group.inspec_db_parameter_group.arn
 }
