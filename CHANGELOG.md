@@ -1,9 +1,14 @@
-<!-- latest_release 1.46.0 -->
+<!-- latest_release 1.47.0 -->
+## [v1.47.0](https://github.com/inspec/inspec-aws/tree/v1.47.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Ec2 vpc cidr block [#336](https://github.com/inspec/inspec-aws/pull/336) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.46.0](https://github.com/inspec/inspec-aws/tree/v1.46.0) (2021-05-28)
 
 #### Merged Pull Requests
 - Support aws transit gateway route [#355](https://github.com/inspec/inspec-aws/pull/355) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.45.0](https://github.com/inspec/inspec-aws/tree/v1.45.0) (2021-05-28)
 
