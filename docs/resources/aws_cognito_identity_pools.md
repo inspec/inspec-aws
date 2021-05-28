@@ -5,36 +5,37 @@ platform: aws
 
 # aws\_cognito\_identity\_pools
 
-Use the `aws_cognito_identity_pools` InSpec audit resource to test properties of a plural Cognito Identity Pool.
-
-The AWS::Cognito::IdentityPool resource creates an Amazon Cognito Identity Pool.
+Use the `aws_cognito_identity_pools` InSpec audit resource to test properties of multiple Cognito identity pools.
 
 ## Syntax
 
 Ensure that an identity pool exists.
+
     describe aws_cognito_identity_pools do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Cognito Identity Pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html).
+For additional information, see the [AWS documentation on Cognito identity pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| identity_pool_ids | The ids of the identity pool. |
+| identity_pool_ids | The IDs of the identity pool. |
 | identity_pool_names | The names of the identity pool. |
 
 ## Examples
 
 ### Ensure an identity pool is available.
+
     describe aws_cognito_identity_pools do
       its('identity_pool_ids') { should include 'test' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
+
     describe aws_cognito_identity_pools do
         its('identity_pool_names') { should include 'test' }
     end
