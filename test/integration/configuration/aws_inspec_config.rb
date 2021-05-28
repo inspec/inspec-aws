@@ -210,6 +210,9 @@ module AWSInspecConfig
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      tgw_route_cidr_block: '0.0.0.0/15',
+      tgw_route_cidr_block_blockhole: '0.0.0.0/16',
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_launch_template_name: "launch_template-#{add_random_string}",
       aws_launch_template_core: 4,
       aws_launch_template_threads_per_core: 2,

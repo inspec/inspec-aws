@@ -350,3 +350,8 @@ output "aws_transit_gateway_owner_id" {
 output "aws_redshift_cluster_identifier" {
   value = aws_redshift_cluster.redshift_test.cluster_identifier
 }
+
+output "aws_transit_gateway_route_table_id" {
+  value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
+}
+
