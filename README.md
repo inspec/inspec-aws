@@ -207,6 +207,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_rds_group_options](docs/resources/aws_rds_group_options.md)
 - [aws_redshift_cluster](docs/resources/aws_redshift_cluster.md)
 - [aws_redshift_clusters](docs/resources/aws_redshift_clusters.md)
+- [aws_redshift_cluster_parameter_group](docs/resources/aws_redshift_cluster_parameter_group.md)
+- [aws_redshift_cluster_parameter_groups](docs/resources/aws_redshift_cluster_parameter_groups.md)
 - [aws_region](docs/resources/aws_region.md)
 - [aws_regions](docs/resources/aws_regions.md)
 - [aws_route_table](docs/resources/aws_route_table.md)
