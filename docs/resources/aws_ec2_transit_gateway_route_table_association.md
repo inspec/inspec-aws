@@ -21,7 +21,7 @@ Ensure that a transit gateway route table ID exists.
 
 `transit_gateway_route_table_id` _(required)_
 
-For additional information, see the [AWS documentation on transit gateway route table association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetableassociation.html).
+For additional information, check out the [AWS documentation on transit gateway route table association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetableassociation.html).
 
 ## Properties
 
@@ -34,13 +34,13 @@ For additional information, see the [AWS documentation on transit gateway route 
 
 ## Examples
 
-### Ensure a transit gateway route table ID is available.
+### Ensure that the transit gateway route table ID is available
 
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       its('transit_gateway_attachment_id') { should eq ''TRANSIT_GATEWAY_ATTACHMENT_ID'' }
     end
 
-### Ensure that the state is available or deleted.
+### Ensure that the state is available or deleted
 
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
         its('state') { should eq 'available' }
@@ -48,13 +48,13 @@ For additional information, see the [AWS documentation on transit gateway route 
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For the complete list of available matchers, visit [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `describe` method returns at least one result.
 
 ### exist
 
-Use `should` to test that the entity exists.
+Use `should` to test whether the entity exists.
 
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
@@ -68,7 +68,7 @@ Use `should_not` to test an entity that should not exist.
 
 ### be_available
 
-Use `should` to check if the transit gateway route table ID is available.
+Use `should` to check whether the transit gateway route table ID is available.
 
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should be_available }
@@ -76,6 +76,6 @@ Use `should` to check if the transit gateway route table ID is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:client:get_transit_gateway_route_table_associations` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:client:get_transit_gateway_route_table_associations` action with **Effect** set to `Allow`.
 
-See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
+For addition information, check out the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation.
