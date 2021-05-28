@@ -23,7 +23,7 @@ The AWS VPC Endpoint Service table ID and CIDR block is required.
 
 The ID of the AWS VPC Endpoint Service table:
 
-- must contain between 1 and 50 alphanumeric characters or hyphens
+- must contain alphanumeric characters between 1 to 50 or hyphens
 - should start with `tgw-rtb-`
 - cannot end with a hyphen or contain two consecutive hyphens
 
@@ -31,7 +31,7 @@ It should be passed as a `service_name: 'value'` key-value entry in a hash.
 
 #### cidr\_block _(required)_
 
-The CIDR Block Range of the route associated to AWS VPC Endpoint Service table
+The **CIDR** Block Range of the route associated to AWS VPC Endpoint Service table
 
 It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
@@ -55,26 +55,25 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
         it { should exist }
     end
 
-### Test that the ID of the attached VPC is `vpc-00727fc4213acee4a`
+### Test whether the ID of the attached VPC is `vpc-00727fc4213acee4a`
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
         its('attachment_resource_id') { should eq 'vpc-00727fc4213acee4a' }
     end
 
-### Test that the ID of the Transit Gateway Attachment is `tgw-attach-0aab89f748131532e`
+### Test whether the ID of the Transit Gateway Attachment is `tgw-attach-0aab89f748131532e`
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
         its('attachment_id') { should eq 'tgw-attach-0aab89f748131532e' }
     end
 
-### Test that the attachment resource type is `vpc`
+### Test whether the attachment resource type is `vpc`
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
         its('attachment_resource_type') { should eq 'vpc' }
     end
 
-
-### Test that the prefix list ID is `pl-4ca54025`
+### Test whether the prefix list ID is `pl-4ca54025`
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
         its('prefix_list_id') { should eq 'pl-4ca54025' }
@@ -82,7 +81,7 @@ It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For the complete list of available matchers,visit [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -128,6 +127,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
+To get the AWS permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

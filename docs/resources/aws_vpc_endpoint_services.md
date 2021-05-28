@@ -10,7 +10,7 @@ To audit a single gateway route, use the `aws_vpc_endpoint_service` (singular) r
 
 ## Syntax
 
-An `aws_vpc_endpoint_services` resource block collects a group of transit gateway routes' descriptions and then tests that group.
+An `aws_vpc_endpoint_services` resource block collects a group of transit gateway routes' descriptions and tests the group.
 
     describe aws_transit_gateway_routes
       it { should exist }
@@ -20,12 +20,11 @@ An `aws_vpc_endpoint_services` resource block collects a group of transit gatewa
 
 The AWS VPC Endpoint Services ID is required.
 
-
 #### transit\_gateway\_route\_table\_id _(required)_
 
 The ID of the AWS VPC Endpoint Services:
 
-- must contain between 1 and 50 alphanumeric characters or hyphens
+- must contain alphanumeric characters between 1 to 50 or hyphens
 - should start with `tgw-rtb-`
 - cannot end with a hyphen or contain two consecutive hyphens
 
@@ -33,7 +32,7 @@ It should be passed as a `transit_gateway_route_table_id: 'value'` key-value ent
 
 #### exact\_match
 
-The exact match of the CIDR block used for destination matches. It could be passed as a `exact_match: 'value'` key-value entry in a hash.
+The exact match of the **CIDR** block used for destination matches. It could be passed as an `exact_match: 'value'` key-value entry in a hash.
 
 #### longest\_prefix\_match
 
@@ -45,7 +44,8 @@ The routes with a subnet that match the specified CIDR filter. It could be passe
 
 #### supernet\_of\_match
 
-The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify **supernet-of-match** as **10.0.1.0/30**, then the result returns **10.0.1.0/29**.
+
 It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
 
 ## Properties
@@ -112,7 +112,7 @@ It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+For the complete list of available matchers, visit [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -130,6 +130,6 @@ Use `should_not` to test an entity that should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
+The get the AWS permissions for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
