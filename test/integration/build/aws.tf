@@ -171,6 +171,9 @@ variable "aws_db_parameter_group_name" {}
 variable "aws_db_parameter_group_family_name" {}
 variable "aws_db_parameter_group_description" {}
 variable "aws_redshift_cluster_identifier" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2057,7 +2060,7 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id
+  replication_group_id          = var.aws_elasticache_replication_group_id 
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -2125,4 +2128,9 @@ resource "aws_db_parameter_group" "inspec_db_parameter_group" {
     name  = "character_set_client"
     value = "utf8"
   }
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }
