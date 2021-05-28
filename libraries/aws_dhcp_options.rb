@@ -7,6 +7,7 @@ class AwsDhcpOptions < AwsResourceBase
   desc 'Verifies settings for an AWS DHCP Options'
 
   def initialize(opts = {})
+    Inspec::Log.warn deprecation_notice
     opts = { dhcp_options_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:dhcp_options_id])
@@ -47,5 +48,10 @@ class AwsDhcpOptions < AwsResourceBase
     config = @dhcp_options[:dhcp_configurations].select { |c| c[:key] == key }
     return [] if config.empty?
     config[0][:values].map { |v| v[:value] }
+  end
+
+  def deprecation_notice
+    'DEPRECATION: `aws_dhcp_options` will be deprecated soon and it is advised to switch to the new resource `aws_ec2_dhcp_option`. '\
+    'Please see the documentation for the additional features available.'
   end
 end
