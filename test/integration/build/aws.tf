@@ -154,6 +154,33 @@ variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "tgw_route_cidr_block" {}
 variable "tgw_route_cidr_block_blockhole" {}
+variable "aws_db_option_group_name" {}
+variable "aws_db_option_group_description" {}
+variable "aws_db_option_group_engine_name"  {}
+variable "aws_launch_template_name" {}
+variable "aws_launch_template_core" {}
+variable "aws_launch_template_threads_per_core" {}
+variable "aws_launch_template_cpu_credits" {}
+variable "aws_launch_template_volume_size" {}
+variable "aws_launch_template_instance_profile" {}
+variable "aws_launch_template_resource_type" {}
+variable "aws_launch_template_tag_name" {}
+variable "aws_launch_template_instance_type"  {}
+variable "aws_launch_template_kernel_id" {}
+variable "aws_launch_template_key_name" {}
+variable "aws_vpn_gw_name" {}
+variable "aws_network_acl_cidr_block" {}
+variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
+variable "aws_db_parameter_group_name" {}
+variable "aws_db_parameter_group_family_name" {}
+variable "aws_db_parameter_group_description" {}
+variable "aws_redshift_cluster_identifier" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
+
+
 provider "aws" {
   version = ">= 2.0.0"
   region  = var.aws_region
@@ -1829,7 +1856,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1971,6 +1998,72 @@ resource "aws_guardduty_detector" "detector_1" {
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
 }
+resource "aws_launch_template" "launch-template-test" {
+  name = var.aws_launch_template_name
+
+  block_device_mappings {
+    device_name = "/dev/sda1"
+
+    ebs {
+      volume_size = var.aws_launch_template_volume_size
+    }
+  }
+
+  cpu_options {
+    core_count       = var.aws_launch_template_core
+    threads_per_core = var.aws_launch_template_threads_per_core
+  }
+
+  credit_specification {
+    cpu_credits = var.aws_launch_template_cpu_credits
+  }
+
+  disable_api_termination = true
+
+  ebs_optimized = true
+
+
+  iam_instance_profile {
+    name = var.aws_launch_template_instance_profile
+  }
+
+  image_id = "ami-0a83ebf1ac32a3fbe"
+
+  instance_initiated_shutdown_behavior = "terminate"
+
+  instance_market_options {
+    market_type = "spot"
+  }
+
+  instance_type = var.aws_launch_template_instance_type
+  key_name = var.aws_launch_template_key_name
+
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
+
+  monitoring {
+    enabled = true
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+  }
+
+
+
+  tag_specifications {
+    resource_type = var.aws_launch_template_resource_type
+
+    tags = {
+      Name = var.aws_launch_template_tag_name
+    }
+  }
+
+}
 
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id
@@ -1997,4 +2090,99 @@ resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
   destination_cidr_block         = var.tgw_route_cidr_block_blockhole
   blackhole                      = true
   transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+
+resource "aws_redshift_cluster" "redshift_test" {
+  cluster_identifier = var.aws_redshift_cluster_identifier
+  database_name      = "dev"
+  master_username    = "testcluster"
+  master_password    = "Mustbe8characters"
+  node_type          = "dc2.large"
+  cluster_type       = "single-node"
+}
+
+resource "aws_db_option_group" "test-option-group" {
+  name                     = var.aws_db_option_group_name
+  option_group_description = var.aws_db_option_group_description
+  engine_name              = var.aws_db_option_group_engine_name
+  major_engine_version     = "11.00"
+
+  option {
+    option_name = "TDE"
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_vpn_gateway" "inspec_vpn_gw" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+
+  tags = {
+    Name = var.aws_vpn_gw_name
+  }
+}
+
+resource "aws_network_acl" "inspec-nw-acl" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = var.acl_egress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = var.acl_ingress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 80
+    to_port    = 80
+  }
+
+
+  tags = {
+    Name = var.aws_network_acl_name
+  }
+}
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
+}
+
+resource "aws_db_parameter_group" "inspec_db_parameter_group" {
+  name   = var.aws_db_parameter_group_name
+  family = var.aws_db_parameter_group_family_name
+  description = var.aws_db_parameter_group_description
+
+  parameter {
+    name  = "character_set_server"
+    value = "utf8"
+  }
+
+  parameter {
+    name  = "character_set_client"
+    value = "utf8"
+  }
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }
