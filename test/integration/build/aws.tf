@@ -152,6 +152,8 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "tgw_route_cidr_block" {}
+variable "tgw_route_cidr_block_blockhole" {}
 variable "aws_db_option_group_name" {}
 variable "aws_db_option_group_description" {}
 variable "aws_db_option_group_engine_name"  {}
@@ -167,6 +169,10 @@ variable "aws_launch_template_instance_type"  {}
 variable "aws_launch_template_kernel_id" {}
 variable "aws_launch_template_key_name" {}
 variable "aws_vpn_gw_name" {}
+variable "aws_network_acl_cidr_block" {}
+variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
 variable "aws_db_parameter_group_name" {}
 variable "aws_db_parameter_group_family_name" {}
 variable "aws_db_parameter_group_description" {}
@@ -2060,12 +2066,30 @@ resource "aws_launch_template" "launch-template-test" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
+  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id             = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_static" {
+  destination_cidr_block         = var.tgw_route_cidr_block
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.inspec_tgw_attachment.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
+  destination_cidr_block         = var.tgw_route_cidr_block_blockhole
+  blackhole                      = true
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
 }
 
 
@@ -2104,6 +2128,34 @@ resource "aws_vpn_gateway" "inspec_vpn_gw" {
 
   tags = {
     Name = var.aws_vpn_gw_name
+  }
+}
+
+resource "aws_network_acl" "inspec-nw-acl" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = var.acl_egress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = var.acl_ingress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 80
+    to_port    = 80
+  }
+
+
+  tags = {
+    Name = var.aws_network_acl_name
   }
 }
 
