@@ -1,9 +1,14 @@
-<!-- latest_release 1.44.1 -->
+<!-- latest_release 1.44.2 -->
+## [v1.44.2](https://github.com/inspec/inspec-aws/tree/v1.44.2) (2021-05-28)
+
+#### Merged Pull Requests
+- Soumyo/redshift parameter new [#389](https://github.com/inspec/inspec-aws/pull/389) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.44.1](https://github.com/inspec/inspec-aws/tree/v1.44.1) (2021-05-27)
 
 #### Merged Pull Requests
 - Soumyo/db parameter groups [#342](https://github.com/inspec/inspec-aws/pull/342) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.44.0](https://github.com/inspec/inspec-aws/tree/v1.44.0) (2021-05-27)
 
