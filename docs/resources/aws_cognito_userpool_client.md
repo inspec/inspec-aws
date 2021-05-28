@@ -5,65 +5,73 @@ platform: aws
 
 # aws\_cognito\_userpool\_client
 
-Use the `aws_cognito_userpool_client` InSpec audit resource to test properties of a single specific Cognito User Pool Client.
-
-The AWS::Cognito::UserPoolClient resource specifies an Amazon Cognito user pool client.
+Use the `aws_cognito_userpool_client` InSpec audit resource to test properties of a single Cognito user pool client.
 
 ## Syntax
 
-Ensure that an user pool exists.
-    describe aws_cognito_userpool_client(user_pool_id: 'test', client_id: 'test') do
+Ensure that a user pool exists.
+
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`user_pool_id client_id` _(required)_
+`user_pool_id` _(required)_
 
-For additional information, see the [AWS documentation on Cognito User Pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html).
+The ID of the user pool.
+
+
+`client_id` _(required)_
+
+The client ID of the user pool.
+
+For additional information, see the [AWS documentation on Cognito user pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| user_pool_id | The user pool id of the User Pools. |
-| client_name | The client name of the User Pools. |
-| client_id | The client id of the User Pools. |
-| client_secret | The client secret of the User Pools. |
-| last_modified_date | The last modified date of the User Pools. |
-| creation_date | The creation date of the User Pools. |
-| refresh_token_validity | The refresh token validity of the User Pools. |
-| access_token_validity | The access token validity of the User Pools. |
-| id_token_validity | The id token validity of the User Pools. |
-| token_validity_units (access_token) | The access token in the token validity units of the User Pools. |
-| token_validity_units (id_token) | The id token in the token validity units of the User Pools. |
-| token_validity_units (refresh_token) | The refresh token in the token validity units of the User Pools. |
-| read_attributes | The read attributes of the User Pools. |
-| write_attributes | The write attributes of the User Pools. |
-| explicit_auth_flows | The explicit auth flows of the User Pools. |
-| supported_identity_providers | The supported identity providers of the User Pools. |
-| callback_urls | The callback urls of the User Pools. |
-| logout_urls | The logout urls of the User Pools. |
-| default_redirect_uri | The default redirect uri of the User Pools. |
-| allowed_o_auth_flows | The allowed_o_auth_flows of the User Pools. |
-| allowed_o_auth_scopes | The allowed_o_auth_scopes of the User Pools. |
-| allowed_o_auth_flows_user_pool_client | The allowed_o_auth_flows_user_pool_client of the User Pools. |
-| analytics_configuration (application_id) | The application id of the analytics configuration of the User Pools. |
-| analytics_configuration (application_arn) | The application arn of the analytics configuration of the User Pools. |
-| analytics_configuration (role_arn) | The role arn of the analytics configuration of the User Pools. |
-| analytics_configuration (external_id) | The external id of the analytics configuration of the User Pools. |
-| analytics_configuration (user_data_shared) | The user data shared of the analytics configuration of the User Pools. |
-| prevent_user_existence_errors | The prevent user existence errors of the User Pools. |
+| user_pool_id | The user pool ID. |
+| client_name | The app client name associated with the user pool. |
+| client_id | The app client ID associated with the user pool. |
+| client_secret | The app client secret of the user pool client. |
+| last_modified_date | The last modified date of the user pool client. |
+| creation_date | The creation date of the user pool client. |
+| refresh_token_validity | The time limit value that the refresh token is valid in token_validity_units. |
+| access_token_validity | The time limit value of the access token in token_validity_units. |
+| id_token_validity | The time limit value of the refresh token in token_validity_units. |
+| token_validity_units (access_token) | The time unit for the access_token_validity. |
+| token_validity_units (id_token) | The time unit for the id_token_validity. |
+| token_validity_units (refresh_token) | The time unit for the refresh_token_validity. |
+| read_attributes | A list of the read-only attributes of the user pool. |
+| write_attributes | A list of writeable attributes of the user pool. |
+| explicit_auth_flows | The authentication flows supported by the user pool client. |
+| supported_identity_providers | The list of provider names for the identity providers supported by the user pool client. |
+| callback_urls | The list of callback URLs for the identity providers. |
+| logout_urls | The list of logout URLs for the identity providers. |
+| default_redirect_uri | The default redirect URI. This must be in the callback_urls list. |
+| allowed_o_auth_flows | The allowed_o_auth_flows of the user pool. |
+| allowed_o_auth_scopes | The allowed_o_auth_scopes of the user pool. |
+| allowed_o_auth_flows_user_pool_client | Whether the client is allowed to follow the OAuth protocol when interacting with user pools. Valid values: `true`, `false`. |
+| analytics_configuration (application_id) | The Amazon Pinpoint analytics application ID. |
+| analytics_configuration (application_arn) | The Amazon Pinpoint ARN. |
+| analytics_configuration (role_arn) | The ARN of an IAM role that authorizes Cognito to publish events to Pinpoint. |
+| analytics_configuration (external_id) | The Amazon Pinpoint analytics external ID. |
+| analytics_configuration (user_data_shared) | Whether Cognito will include user data if it publishes to Pinpoint analytics. Valid values: `true`, `false`. |
+| prevent_user_existence_errors | Select which errors are returned by Cognito APIs. Valid values: `ENABLED`, `LEGACY`. |
 
 ## Examples
 
 ### Ensure an client name is available.
-    describe aws_cognito_userpool_client(user_pool_id: 'test', client_id: 'test') do
+
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       its('client_name') { should eq 'test' }
     end
 
 ### Ensure an client secret is available.
-    describe aws_cognito_userpool_client(user_pool_id: 'test', client_id: 'test') do
+
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
         its('client_secret') { should eq 'client_secret_name' }
     end
 
@@ -77,13 +85,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cognito_userpool_client(user_pool_id: 'test', client_id: 'test') do
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_cognito_userpool_client(user_pool_id: 'dummy', client_id: 'dummy') do
+
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should_not exist }
     end
 
@@ -91,7 +99,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the user pool is available.
 
-    describe aws_cognito_userpool_client(user_pool_id: 'test', client_id: 'test') do
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should be_available }
     end
 
