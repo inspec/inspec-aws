@@ -10,7 +10,7 @@ To audit a single gateway route, use the `aws_transit_gateway_route` (singular) 
 
 ## Syntax
 
-An `aws_transit_gateway_routes` resource block collects a group of transit gateway routes' descriptions and then tests that group.
+An `aws_transit_gateway_routes` resource block collects a group of transit gateway routes' descriptions and tests that group.
 
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589')
       it { should exist }
@@ -18,7 +18,7 @@ An `aws_transit_gateway_routes` resource block collects a group of transit gatew
 
 ### Parameters
 
-The AWS transit gateway route table ID is required.
+To set the parameters of the AWS transit gateway route table, **ID** is required.
 
 The following additional parameters are optional:
 
@@ -29,17 +29,17 @@ The following additional parameters are optional:
 
 #### transit\_gateway\_route\_table\_id _(required)_
 
-The ID of the AWS transit gateway route table:
+The **ID** of the AWS transit gateway route table:
 
-- must contain between 1 and 50 alphanumeric characters or hyphens
+- must contain alphanumeric characters between 1 to 50, or hyphens
 - should start with `tgw-rtb-`
 - cannot end with a hyphen or contain two consecutive hyphens
 
-It should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
+The ID of the AWS transit gateway route table should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
 
 #### exact\_match
 
-The exact match of the CIDR block used for destination matches. It could be passed as a `exact_match: 'value'` key-value entry in a hash.
+The exact match of the **CIDR** block is used for destination matches. It could be passed as a `exact_match: 'value'` key-value entry in a hash.
 
 #### longest\_prefix\_match
 
@@ -118,7 +118,7 @@ It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a complete list of available matchers, visit [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -136,6 +136,6 @@ Use `should_not` to test an entity that should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
+To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
