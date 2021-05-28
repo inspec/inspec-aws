@@ -171,6 +171,9 @@ variable "aws_db_parameter_group_name" {}
 variable "aws_db_parameter_group_family_name" {}
 variable "aws_db_parameter_group_description" {}
 variable "aws_redshift_cluster_identifier" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2128,6 +2131,6 @@ resource "aws_db_parameter_group" "inspec_db_parameter_group" {
 }
 
 resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
-  name   = "test1"
-  family = "redshift-1.0"
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
 }
