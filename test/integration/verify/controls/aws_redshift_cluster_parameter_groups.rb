@@ -3,7 +3,7 @@ aws_parameter_group_family = attribute("aws_redshift_parameter_group_family", de
 
 control 'aws-redshift-parameter-groups-1.0' do
   impact 1.0
-  title 'Ensure AWS Redshift Parameter Group plural resouce has the correct properties.'
+  title 'Ensure AWS Redshift Parameter Group plural resource has the correct properties.'
   describe aws_redshift_cluster_parameter_groups do
     it { should exist }
     its('parameter_group_names') { should include aws_parameter_group_name }
