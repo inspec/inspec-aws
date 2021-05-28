@@ -298,9 +298,8 @@ output "aws_public_ip" {
   value = aws_eip.aws_eip_1.public_ip
 }
 
-//noinspection HILUnresolvedReference
 output "aws_instance_id1" {
-  value = aws_eip.aws_eip_1.instance_id
+  value = aws_eip.aws_eip_1.instance
 }
 
 output "aws_allocation_id" {
@@ -315,24 +314,16 @@ output "aws_domain" {
   value = aws_eip.aws_eip_1.domain
 }
 
-//noinspection HILUnresolvedReference
 output "aws_network_interface_id" {
-  value = aws_eip.aws_eip_1.interface_id
+  value = aws_eip.aws_eip_1.network_interface
 }
 
-//noinspection HILUnresolvedReference
 output "aws_network_interface_owner_id" {
-  value = aws_eip.aws_eip_1.network_interface_owner_id
+  value = aws_eip.aws_eip_1.customer_owned_ip
 }
 
-//noinspection HILUnresolvedReference
 output "aws_private_ip_address" {
-  value = aws_eip.aws_eip_1.private_ip_address
-}
-
-//noinspection HILUnresolvedReference
-output "aws_network_border_group" {
-  value = aws_eip.aws_eip_1.network_border_group
+  value = aws_eip.aws_eip_1.private_ip
 }
 
 output "aws_elasticache_replication_group_id" {
