@@ -1,9 +1,14 @@
-<!-- latest_release 1.47.0 -->
+<!-- latest_release 1.48.0 -->
+## [v1.48.0](https://github.com/inspec/inspec-aws/tree/v1.48.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Soumyo/ec2 eip resource [#322](https://github.com/inspec/inspec-aws/pull/322) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.47.0](https://github.com/inspec/inspec-aws/tree/v1.47.0) (2021-05-28)
 
 #### Merged Pull Requests
 - Ec2 vpc cidr block [#336](https://github.com/inspec/inspec-aws/pull/336) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.46.0](https://github.com/inspec/inspec-aws/tree/v1.46.0) (2021-05-28)
 
