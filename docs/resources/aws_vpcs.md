@@ -53,18 +53,20 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ## Examples
 
-### Ensure all VPCs use the same DHCP option set.
+### Ensure all VPCs use the same DHCP option set
+
     describe aws_vpcs.where { dhcp_options_id != 'dopt-12345678' } do
       it { should_not exist }
     end
 
-
 ### Check for a Particular VPC ID
+
     describe aws_vpcs do
       its('vpc_ids') { should include 'vpc-12345678' }
     end
 
-### Use the VPC IDs to Get a List of Default Security Groups
+### Use the VPC IDs to get a list of Default Security Groups
+
     aws_vpcs.vpc_ids.each do |vpc_id|
       describe aws_security_group(vpc_id: vpc_id, group_name: 'default') do
         it { should_not allow_in(port: 22) }
@@ -72,17 +74,20 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
     end
 
 ### We shun the `10.0.0.0/8` space
+
     describe aws_vpcs.where { cidr_block.start_with?('10') } do
       it { should_not exist }
     end
 
 ### Check tags
+
     describe aws_vpc do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'vpc-name')}
     end
 
-### Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties.
+### Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties
+
     describe aws_vpcs.where { ipv6_cidr_blocks.include?('2600:1f16:409:6700::/56') } do
         it { should exist }
     end
@@ -93,12 +98,14 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
         it { should exist }
     end
 
-### Ensure AWS VPC CIDR Block plural resource has the associated id.
+### Ensure AWS VPC CIDR Block plural resource has the associated id
+
     describe aws_vpcs do
         its ('cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
     end
 
-### Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id.
+### Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id
+
     describe aws_vpcs do
         its ('ipv6_cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
     end
@@ -111,13 +118,14 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a complete list of available matchers, visit [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
-The control will pass if the describe returns at least one result.
+The control will pass if the `describe` returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should_not` to test the entity should not exist
+
     describe aws_vpcs do
       it { should exist }
     end
@@ -143,6 +151,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeVpcs` action with Effect set to Allow.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with effect set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

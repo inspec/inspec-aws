@@ -77,7 +77,7 @@ The following examples show how to use this InSpec audit resource.
       it { should be_available }
     end
 
-### Test the allowed tenancy of instances launched into the VPC.
+### Test the allowed tenancy of instances launched into the VPC
 
     describe aws_vpc do
       its ('instance_tenancy') { should eq 'default' }
@@ -107,7 +107,7 @@ The following examples show how to use this InSpec audit resource.
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a complete list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### be\_default
 
@@ -167,7 +167,7 @@ Check if a cidr block is associated to the identified VPC.
 
 ### have\_cidr\_block\_association\_failed
 
-Check if a cidr block is has failed to associated to the identified VPC.
+Check if a cidr block has failed to associated to the identified VPC.
 
     describe aws_vpc('vpc-87654321') do
         it { should have_cidr_block_failed('10.0.0.0/27') }
@@ -175,7 +175,7 @@ Check if a cidr block is has failed to associated to the identified VPC.
 
 ### have\_cidr\_block\_disassociated
 
-Check if a cidr block is has failed to associated to the identified VPC.
+Check if a cidr block has failed to associated to the identified VPC.
 
     describe aws_vpc('vpc-87654321') do
         it { should have_cidr_block_disassociated('10.0.0.0/27') }
@@ -223,6 +223,6 @@ Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identi
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeVpcs` action with Effect set to Allow.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with Effect set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
