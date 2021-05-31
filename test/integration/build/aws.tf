@@ -2065,6 +2065,10 @@ resource "aws_launch_template" "launch-template-test" {
 
 }
 
+resource "aws_eip" "aws_eip_1" {
+  vpc      = true
+}
+
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
@@ -2124,12 +2128,54 @@ resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_ta
 }
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
-  vpc_id = aws_vpc.inspec_vpc[0].id
+  vpc_id = aws_vpc.attachment.id
 
   tags = {
     Name = var.aws_vpn_gw_name
   }
 }
+
+resource "aws_vpc" "attachment" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_ec2_transit_gateway" "gateway" {
+  description = "example"
+  default_route_table_association = "disable"
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment_association1" {
+  subnet_ids         = [aws_subnet.for_attachment.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.attachment.id
+  transit_gateway_default_route_table_association = false
+  transit_gateway_default_route_table_propagation = false
+
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_subnet" "for_attachment" {
+  vpc_id     = aws_vpc.attachment.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
 
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
@@ -2185,4 +2231,125 @@ resource "aws_db_parameter_group" "inspec_db_parameter_group" {
 resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
   name   = var.aws_redshift_parameter_group_name
   family = var.aws_redshift_parameter_group_family
+}
+
+resource "aws_lb" "test-lb" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_sns_topic" "topic" {
+  name = "vpce-notification-topic"
+
+  policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "vpce.amazonaws.com"
+        },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
+    }]
+}
+POLICY
+}
+
+resource "aws_vpc_endpoint_service" "test-endpoint_service" {
+  acceptance_required        = false
+  network_load_balancer_arns = [aws_lb.test-lb.arn]
+}
+
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.test-endpoint_service.id
+  connection_notification_arn = aws_sns_topic.topic.arn
+  connection_events           = ["Accept", "Reject"]
+}
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = [aws_subnet.main.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "notification-test" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_sns_topic" "topic" {
+  name = "vpce-notification-topic"
+
+  policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "vpce.amazonaws.com"
+        },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
+    }]
+}
+POLICY
+}
+resource "aws_vpc_endpoint_service" "notification_service" {
+  acceptance_required        = false
+  network_load_balancer_arns = [aws_lb.test.arn]
+}
+
+resource "aws_vpc_endpoint" "for_notification" {
+  service_name      = "com.amazonaws.us-east-2.ec2"
+  vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
+  vpc_id            = aws_vpc.for_lb.id
+  security_group_ids = [aws_security_group.alpha[0].id]
+}
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.notification_service.id
+  connection_notification_arn = aws_sns_topic.topic.arn
+  connection_events           = ["Accept", "Reject"]
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.for_lb.id
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.ig_for_lb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "ig_for_lb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
 }

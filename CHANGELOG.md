@@ -1,9 +1,29 @@
-<!-- latest_release 1.46.0 -->
+<!-- latest_release 1.49.1 -->
+## [v1.49.1](https://github.com/inspec/inspec-aws/tree/v1.49.1) (2021-05-31)
+
+#### Merged Pull Requests
+- Soumyo/aws ec2 transit gateway route table association [#346](https://github.com/inspec/inspec-aws/pull/346) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.49.0](https://github.com/inspec/inspec-aws/tree/v1.49.0) (2021-05-31)
+
+#### Merged Pull Requests
+- Added support for VPC connection notification resource [#340](https://github.com/inspec/inspec-aws/pull/340) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.48.0](https://github.com/inspec/inspec-aws/tree/v1.48.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Soumyo/ec2 eip resource [#322](https://github.com/inspec/inspec-aws/pull/322) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.47.0](https://github.com/inspec/inspec-aws/tree/v1.47.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Ec2 vpc cidr block [#336](https://github.com/inspec/inspec-aws/pull/336) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.46.0](https://github.com/inspec/inspec-aws/tree/v1.46.0) (2021-05-28)
 
 #### Merged Pull Requests
 - Support aws transit gateway route [#355](https://github.com/inspec/inspec-aws/pull/355) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.45.0](https://github.com/inspec/inspec-aws/tree/v1.45.0) (2021-05-28)
 

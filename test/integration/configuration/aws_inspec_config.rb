@@ -209,7 +209,6 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       tgw_route_cidr_block: '0.0.0.0/15',
       tgw_route_cidr_block_blockhole: '0.0.0.0/16',
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
@@ -234,7 +233,6 @@ module AWSInspecConfig
       aws_redshift_cluster_identifier: "redshift-cluster-#{add_random_string}",
       aws_redshift_parameter_group_name: "group#{add_random_string}",
       aws_redshift_parameter_group_family: "redshift-1.0",
-      aws_vpn_gw_name: 'inspec_vpn_gw',
       aws_network_acl_cidr_block: '10.3.0.0/18',
       aws_network_acl_name: 'inspec-nw-acl',
       acl_egress_rule_number: 100,
