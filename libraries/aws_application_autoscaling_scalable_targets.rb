@@ -7,7 +7,7 @@ class AWSApplicationAutoScalingScalableTargets < AwsResourceBase
   desc 'Gets information about the scalable targets in the specified namespace.'
 
   example `
-    describe aws_application_autoscaling_scalable_targets(service_namespace: "service_namespace") do
+    describe aws_application_autoscaling_scalable_targets( service_namespace: "service_namespace" ) do
       it { should exist }
     end
   `
