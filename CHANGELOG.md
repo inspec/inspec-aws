@@ -1,9 +1,14 @@
-<!-- latest_release 1.48.0 -->
+<!-- latest_release 1.49.0 -->
+## [v1.49.0](https://github.com/inspec/inspec-aws/tree/v1.49.0) (2021-05-31)
+
+#### Merged Pull Requests
+- Added support for VPC connection notification resource [#340](https://github.com/inspec/inspec-aws/pull/340) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.48.0](https://github.com/inspec/inspec-aws/tree/v1.48.0) (2021-05-28)
 
 #### Merged Pull Requests
 - Soumyo/ec2 eip resource [#322](https://github.com/inspec/inspec-aws/pull/322) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.47.0](https://github.com/inspec/inspec-aws/tree/v1.47.0) (2021-05-28)
 
