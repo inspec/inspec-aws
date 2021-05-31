@@ -1856,7 +1856,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -2128,12 +2128,54 @@ resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_ta
 }
 
 resource "aws_vpn_gateway" "inspec_vpn_gw" {
-  vpc_id = aws_vpc.inspec_vpc[0].id
+  vpc_id = aws_vpc.attachment.id
 
   tags = {
     Name = var.aws_vpn_gw_name
   }
 }
+
+resource "aws_vpc" "attachment" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_ec2_transit_gateway" "gateway" {
+  description = "example"
+  default_route_table_association = "disable"
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment_association1" {
+  subnet_ids         = [aws_subnet.for_attachment.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.attachment.id
+  transit_gateway_default_route_table_association = false
+  transit_gateway_default_route_table_propagation = false
+
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_subnet" "for_attachment" {
+  vpc_id     = aws_vpc.attachment.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
 
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id

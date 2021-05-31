@@ -358,6 +358,19 @@ output "aws_amazon_side_asn" {
   value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
 }
 
+output "aws_transit_gateway_route_table_id_association" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+output "aws_transit_gateway_attachment_id_association" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+}
+
+output "aws_transit_gateway_attachment_vpc_id_association" {
+  value = aws_vpc.attachment.id
+}
+
+
 output "network_acl_id" {
   value = aws_network_acl.inspec-nw-acl.id
 }
