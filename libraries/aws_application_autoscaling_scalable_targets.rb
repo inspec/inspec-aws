@@ -2,40 +2,47 @@
 
 require 'aws_backend'
 
-class AwsEc2Eips < AwsResourceBase
-  name 'aws_ec2_eips'
-  desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
+class AWSApplicationAutoScalingScalableTargets < AwsResourceBase
+  name 'aws_application_autoscaling_scalable_targets'
+  desc 'Gets information about the scalable targets in the specified namespace.'
+
   example `
-    describe aws_ec2_eips do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: "service_namespace") do
       it { should exist }
     end
   `
+
   attr_reader :table
 
   FilterTable.create
-             .register_column(:instance_ids,                   field: :instance_id)
-             .register_column(:public_ips,                     field: :public_ip)
-             .register_column(:allocation_ids,                 field: :allocation_id)
-             .register_column(:domains,                        field: :domain)
-             .register_column(:association_ids,                field: :association_id)
-             .register_column(:network_interface_ids,          field: :network_interface_id)
-             .register_column(:network_interface_owner_ids,    field: :network_interface_owner_id)
-             .register_column(:private_ip_addresss,            field: :private_ip_address)
-             .register_column(:public_ipv_4_pools,             field: :public_ipv_4_pool)
-             .register_column(:network_border_groups,          field: :network_border_group)
+             .register_column(:service_namespaces,                                field: :service_namespace)
+             .register_column(:resource_ids,                                      field: :resource_id)
+             .register_column(:scalable_dimensions,                               field: :scalable_dimension)
+             .register_column(:min_capacities,                                    field: :min_capacity)
+             .register_column(:max_capacities,                                    field: :max_capacity)
+             .register_column(:geo_locations,                                     field: :geo_location)
+             .register_column(:role_arns,                                         field: :role_arn)
+             .register_column(:creation_times,                                    field: :creation_time)
+             .register_column(:suspended_states,                                  field: :suspended_state)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(service_namespace))
+    @query_params = {}
+    @query_params[:service_namespace] = opts[:service_namespace]
+    if opts.key?(:service_namespace)
+      raise ArgumentError, "#{@__resource_name__}: service_namespace must be provided" unless opts[:service_namespace] && !opts[:service_namespace].empty?
+      @query_params[:service_namespace] = opts[:service_namespace]
+    end
     @table = fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @addrs = @aws.compute_client.describe_addresses
+      @resp = @aws.applicationautoscaling_client.describe_scalable_targets(@query_params)
     end
-    return [] if !@addrs || @addrs.empty?
-    @table = @addrs.addresses.map(&:to_h)
+    return [] if !@resp || @resp.empty?
+    @table = @resp.scalable_targets.map(&:to_h)
   end
 end

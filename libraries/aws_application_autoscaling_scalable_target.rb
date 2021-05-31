@@ -16,7 +16,6 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
     opts = { service_namespace: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:service_namespace])
-
     raise ArgumentError, "#{@__resource_name__}: service_namespace must be provided" unless opts[:service_namespace] && !opts[:service_namespace].empty?
     @display_name = opts[:service_namespace]
     catch_aws_errors do
