@@ -1,6 +1,6 @@
-aws_transit_gateway_attachment_id = attribute(:aws_transit_gateway_attachment_id, default: '', description: 'The IDs of the attachments.')
-aws_resource_id = attribute(:aws_transit_gateway_attachment_vpc_id, default: '', description: 'The ID of the resource.')
-aws_transit_gateway_route_table_id = attribute(:aws_transit_gateway_route_table_id, default: '', description: 'The ID of the route table for the transit gateway.')
+aws_transit_gateway_attachment_id = attribute(:aws_transit_gateway_attachment_id_association, default: '', description: 'The IDs of the attachments.')
+aws_resource_id = attribute(:aws_transit_gateway_attachment_vpc_id_association, default: '', description: 'The ID of the resource.')
+aws_transit_gateway_route_table_id = attribute(:aws_transit_gateway_route_table_id_association, default: '', description: 'The ID of the route table for the transit gateway.')
 
 control 'aws-ec2-transit-gateway-route-table-association-v1.0.0' do
   impact 1.0
