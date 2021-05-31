@@ -10,6 +10,7 @@ require 'aws-sdk-core'
 require 'aws-sdk-dynamodb'
 require 'aws-sdk-ec2'
 require 'aws-sdk-ecr'
+require 'aws-sdk-ecrpublic'
 require 'aws-sdk-ecs'
 require 'aws-sdk-eks'
 require 'aws-sdk-elasticache'
@@ -29,6 +30,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-redshift'
 
 # AWS Inspec Backend Classes
 #
@@ -96,6 +98,10 @@ class AwsConnection
 
   def ecr_client
     aws_client(Aws::ECR::Client)
+  end
+
+  def ecrpublic_client
+    aws_client(Aws::ECRPublic::Client)
   end
 
   def ecs_client
@@ -177,6 +183,10 @@ class AwsConnection
   def ssm_client
     aws_client(Aws::SSM::Client)
   end
+
+  def redshift_client
+    aws_client(Aws::Redshift::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -224,7 +234,7 @@ class AwsResourceBase < Inspec.resource(1)
   # Some resources may require several parameters to be set, in which case use `required`
   # Some resources may require at least 1 of n parameters to be set, in which case use `require_any_of`
   # If a parameter is entirely optional, use `allow`
-  def validate_parameters(allow: [], required: nil, require_any_of: nil)
+  def validate_parameters(allow: [], required: nil, require_any_of: nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     if required
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
       raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
@@ -242,6 +252,7 @@ class AwsResourceBase < Inspec.resource(1)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
       return true if a.instance_of?(Integer)
+      return true if [TrueClass, FalseClass].include?(a.class)
       !a.empty?
     end
     true

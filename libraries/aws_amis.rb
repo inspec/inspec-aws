@@ -44,27 +44,49 @@ class AwsAmis < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(require_any_of: %i(all_amis architecture creation_date image_id image_type is_public kernel_id owner_id owner_alias
-                                           platform product_code platform_details usage_operation ramdisk_id state state_reason_code state_reason_message
-                                           description ena_support hypervisor name root_device_name root_device_type sriov_net_support virtualization_type))
+    validate_parameters(require_any_of: %i(all_amis architecture creation_date image_id image_type is_public
+                                           kernel_id owner_id owner_alias owners platform product_code platform platform_details usage_operation ramdisk_id
+                                           state state_reason_code state_reason_message description ena_support hypervisor name root_device_name
+                                           root_device_type sriov_net_support virtualization_type))
 
-    @table = fetch_data
-  end
-
-  def fetch_data
-    image_rows = []
-
-    if opts[:all_amis] == 'true'
+    query_params = {}
+    filter = []
+    owners = []
+    if @opts[:all_amis] == 'true'
       filter = []
-    elsif opts
-      filter = []
-      opts.each { |k, v| filter << { name: k.to_s.tr('_', '-'), values: [v] } }
+    elsif @opts
+      @opts.each do |k, v|
+        if [TrueClass, FalseClass].include?(v.class)
+          v = v.to_s
+        end
+        if k == :owners
+          case v
+          when String
+            owners = [v]
+          when Array
+            owners = v
+          else
+            raise ArgumentError, "The owners parameter should be a String or an Array of String. Found: #{v.class}"
+          end
+        else
+          filter << { name: k.to_s.tr('_', '-'), values: [v] }
+        end
+      end
     else
       raise ArgumentError, 'Either all_amis or filter option must be provided.'
     end
 
+    query_params = { filters: filter } unless filter.empty?
+    query_params.merge!({ owners: owners }) unless owners.empty?
+
+    @table = fetch_data(query_params)
+  end
+
+  def fetch_data(query_params)
+    image_rows = []
+
     catch_aws_errors do
-      @api_response = filter.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images({ filters: filter })
+      @api_response = query_params.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images(query_params)
     end
     return [] if !api_response || api_response.empty?
     api_response.images.each do |image|

@@ -99,7 +99,7 @@ namespace :tf do
 
   task setup_integration_tests: [:tf_dir] do
     unless File.exist?(TF_PLAN_FILE)
-      Rake::Task['test:plan_integration_tests'].execute
+      Rake::Task['test:plan_integration_tests'].invoke
     end
     puts '----> Applying the plan'
     # Apply the plan on AWS

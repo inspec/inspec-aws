@@ -1,9 +1,144 @@
-<!-- latest_release 1.32.0 -->
+<!-- latest_release 1.49.1 -->
+## [v1.49.1](https://github.com/inspec/inspec-aws/tree/v1.49.1) (2021-05-31)
+
+#### Merged Pull Requests
+- Soumyo/aws ec2 transit gateway route table association [#346](https://github.com/inspec/inspec-aws/pull/346) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.49.0](https://github.com/inspec/inspec-aws/tree/v1.49.0) (2021-05-31)
+
+#### Merged Pull Requests
+- Added support for VPC connection notification resource [#340](https://github.com/inspec/inspec-aws/pull/340) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.48.0](https://github.com/inspec/inspec-aws/tree/v1.48.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Soumyo/ec2 eip resource [#322](https://github.com/inspec/inspec-aws/pull/322) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.47.0](https://github.com/inspec/inspec-aws/tree/v1.47.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Ec2 vpc cidr block [#336](https://github.com/inspec/inspec-aws/pull/336) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.46.0](https://github.com/inspec/inspec-aws/tree/v1.46.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Support aws transit gateway route [#355](https://github.com/inspec/inspec-aws/pull/355) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.45.0](https://github.com/inspec/inspec-aws/tree/v1.45.0) (2021-05-28)
+
+#### Merged Pull Requests
+- Support network ACL(s) [#339](https://github.com/inspec/inspec-aws/pull/339) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.44.2](https://github.com/inspec/inspec-aws/tree/v1.44.2) (2021-05-28)
+
+#### Merged Pull Requests
+- Soumyo/redshift parameter new [#389](https://github.com/inspec/inspec-aws/pull/389) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.44.1](https://github.com/inspec/inspec-aws/tree/v1.44.1) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/db parameter groups [#342](https://github.com/inspec/inspec-aws/pull/342) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.44.0](https://github.com/inspec/inspec-aws/tree/v1.44.0) (2021-05-27)
+
+#### Merged Pull Requests
+- added support for Redshift Clusters [#359](https://github.com/inspec/inspec-aws/pull/359) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.43.0](https://github.com/inspec/inspec-aws/tree/v1.43.0) (2021-05-27)
+
+#### Merged Pull Requests
+- added support for aws rds group option  [#353](https://github.com/inspec/inspec-aws/pull/353) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.42.3](https://github.com/inspec/inspec-aws/tree/v1.42.3) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 transit gateway attachment [#343](https://github.com/inspec/inspec-aws/pull/343) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.42.2](https://github.com/inspec/inspec-aws/tree/v1.42.2) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 transit gateway route table [#344](https://github.com/inspec/inspec-aws/pull/344) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.42.1](https://github.com/inspec/inspec-aws/tree/v1.42.1) (2021-05-27)
+
+#### Merged Pull Requests
+- Soumyo/ec2 routes [#350](https://github.com/inspec/inspec-aws/pull/350) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.42.0](https://github.com/inspec/inspec-aws/tree/v1.42.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Support vpn gateway resource [#338](https://github.com/inspec/inspec-aws/pull/338) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.41.0](https://github.com/inspec/inspec-aws/tree/v1.41.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Added Support to Audit Launch Template resource [#327](https://github.com/inspec/inspec-aws/pull/327) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.40.0](https://github.com/inspec/inspec-aws/tree/v1.40.0) (2021-05-26)
+
+#### Merged Pull Requests
+- Support ec2 dhcp options [#325](https://github.com/inspec/inspec-aws/pull/325) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.39.0](https://github.com/inspec/inspec-aws/tree/v1.39.0) (2021-05-19)
+
+#### Merged Pull Requests
+- Adding aws ecr policy resource [#354](https://github.com/inspec/inspec-aws/pull/354) ([Jentul-Gift](https://github.com/Jentul-Gift))
+
+## [v1.38.1](https://github.com/inspec/inspec-aws/tree/v1.38.1) (2021-05-19)
+
+#### Merged Pull Requests
+- aws_auto_scaling_groups lint error fix [#358](https://github.com/inspec/inspec-aws/pull/358) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.38.0](https://github.com/inspec/inspec-aws/tree/v1.38.0) (2021-05-04)
+
+#### Merged Pull Requests
+- Adding aws cloudformation stacks resource [#335](https://github.com/inspec/inspec-aws/pull/335) ([Jentul-Gift](https://github.com/Jentul-Gift))
+
+## [v1.37.0](https://github.com/inspec/inspec-aws/tree/v1.37.0) (2021-04-27)
+
+#### Merged Pull Requests
+- Adding new AWS Elasticache replication group resource [#326](https://github.com/inspec/inspec-aws/pull/326) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.36.0](https://github.com/inspec/inspec-aws/tree/v1.36.0) (2021-04-22)
+
+#### Merged Pull Requests
+- Adding aws ecrpublic repositories resource [#321](https://github.com/inspec/inspec-aws/pull/321) ([Jentul-Gift](https://github.com/Jentul-Gift))
+
+## [v1.35.0](https://github.com/inspec/inspec-aws/tree/v1.35.0) (2021-04-19)
+
+#### Merged Pull Requests
+- Standardize aws_iam_role attributes to match with aws_iam_user [#298](https://github.com/inspec/inspec-aws/pull/298) ([Vboivin](https://github.com/Vboivin))
+
+## [v1.34.1](https://github.com/inspec/inspec-aws/tree/v1.34.1) (2021-04-16)
+
+#### Merged Pull Requests
+- Add docs team to codeowners [#324](https://github.com/inspec/inspec-aws/pull/324) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.34.0](https://github.com/inspec/inspec-aws/tree/v1.34.0) (2021-04-15)
+
+#### Merged Pull Requests
+- Adding KMS key attribute to SNS topic resource [#323](https://github.com/inspec/inspec-aws/pull/323) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.33.0](https://github.com/inspec/inspec-aws/tree/v1.33.0) (2020-12-07)
+
+#### Merged Pull Requests
+- - Add &#39;owners&#39; parameter to the aws_amis resource [#288](https://github.com/inspec/inspec-aws/pull/288) ([omerdemirok](https://github.com/omerdemirok))
+
+## [v1.32.2](https://github.com/inspec/inspec-aws/tree/v1.32.2) (2020-12-07)
+
+#### Merged Pull Requests
+- Updated aws_ec2_instances.md [#286](https://github.com/inspec/inspec-aws/pull/286) ([Venkatsai](https://github.com/Venkatsai))
+
+## [v1.32.1](https://github.com/inspec/inspec-aws/tree/v1.32.1) (2020-12-04)
+
+#### Merged Pull Requests
+- Expose all properties of aws_sts_caller_identity [#287](https://github.com/inspec/inspec-aws/pull/287) ([omerdemirok](https://github.com/omerdemirok))
+
 ## [v1.32.0](https://github.com/inspec/inspec-aws/tree/v1.32.0) (2020-12-01)
 
 #### Merged Pull Requests
 - Add vpn connections resource [#282](https://github.com/inspec/inspec-aws/pull/282) ([voojoe](https://github.com/voojoe))
-<!-- latest_release -->
 
 ## [v1.31.2](https://github.com/inspec/inspec-aws/tree/v1.31.2) (2020-11-17)
 

@@ -36,6 +36,9 @@ _OR_
 ##### is\_public _(optional)_
 ##### kernel\_id _(optional)_
 ##### owner\_id _(optional)_
+##### owners _(optional)_
+    - Scopes the results to images with the specified owners. You can specify a combination of AWS account IDs, `self`, `amazon`, and `aws-marketplace`. 
+    If you omit this parameter, the results include all images for which you have launch permissions, regardless of ownership.
 ##### owner\_alias _(optional)_
 ##### platform _(optional)_
 ##### product\_code _(optional)_
@@ -92,6 +95,17 @@ This can be passed either as a string or as a `all_amis: 'value'` key-value entr
 ##### Ensure ID of an AMI exists
     describe aws_amis(all_amis: 'true') do
       its('image_ids') { should include 'image-id-43542' }
+    end
+    
+##### Interrogate AMIs Belong to the Current User Only
+    describe aws_amis(owners: 'self') do
+      its('owner_ids.uniq.size') { should be 1 }
+      its('owner_ids.uniq.first') { should eq 12345678 }
+    end
+        
+##### Interrogate AMIs Belong to the Current User and the Amazon
+    describe aws_amis(owners: ['self', 'amazon']) do
+      it { should exist }
     end
 
 ## Matchers

@@ -20,10 +20,10 @@ An `aws_rds_cluster` resource block uses resource parameters to search for an RD
     describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do
       it { should exist }
     end
-    
-#### Parameters
 
-##### db\_cluster\_identifier _(required)_
+### Parameters
+
+#### db\_cluster\_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_cluster_identifier: 'value'` key-value entry in a hash.
@@ -36,27 +36,29 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 
 ## Examples
 
-##### Test the engine used with an RDS cluster
+### Test the engine used with an RDS cluster
 
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('engine')         { should eq 'mysql' }
       its('engine_version') { should eq '5.6.37' }
     end
-    
-##### Test the storage allocated to an RDS cluster
-    
+
+### Test the storage allocated to an RDS cluster
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('storage_encrypted') { should eq true }
       its('allocated_storage') { should eq 10 }
     end
 
-##### Test the cluster status and master username
+### Test the cluster status and master username
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('master_username') { should eq 'db-maintain' }
       its('status') { should eq 'available' }
     end
 
-##### Test the maximum and minumum capacity of a serverless RDS cluster 
+### Test the maximum and minimum capacity of a serverless RDS cluster
+
     describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
       its('scaling_configuration_info.min_capacity') { should eq 2 }
       its('scaling_configuration_info.max_capacity') { should eq 64 }

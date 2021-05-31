@@ -26,7 +26,11 @@ This resource does not expect any parameters.
 
 |Property                  | Description|
 | ---                      | --- |
-|arn                  | The ARN of the IAM Identity |
+|arn                       | The AWS ARN associated with the calling entity. |
+|account                   | The AWS account ID number of the account that owns or contains the calling entity. |
+|user_id                   | The unique identifier of the calling entity. |
+
+For more info, see [the API reference documentation](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html)
 
 ## Examples
 
