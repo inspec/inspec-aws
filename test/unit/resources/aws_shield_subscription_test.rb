@@ -14,6 +14,7 @@ class AwsShieldSubscriptionSuccessPathTest < Minitest::Test
     mock_subscription[:auto_renew] = 'ENABLED'
     mock_subscription[:limits] = [{ type: 'GLOBAL_ACCELERATOR',
                               max: 1000 }]
+    mock_subscription[:subscription_limits] = {:protection_limits => {:protected_resource_type_limits => [{:max => 8, :type => "eni"}]}, :protection_group_limits => {:max_protection_groups => 8, :pattern_type_limits => {:arbitrary_pattern_limits => {:max_members => 4}}}}
     data[:data] = { subscription: mock_subscription }
     data[:client] = Aws::Shield::Client
     @subscription = AwsShieldSubscription.new(client_args: { stub_responses: true }, stub_data: [data])
