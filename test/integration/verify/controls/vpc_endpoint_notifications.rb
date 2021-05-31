@@ -1,3 +1,6 @@
+aws_notification_id        = attribute(:aws_vpc_endpoint_notification_id, value: '', description: 'The AWS Subnet Group Name')
+aws_notification_arn       = attribute(:aws_vpc_notifications_arn, value: '', description: 'The AWS Subnet Group Name')
+
 title "Test multiple AWS VPC Notifications"
 control "aws-vpc-endpoint-connection-notifications-1.0" do
 
@@ -6,12 +9,11 @@ control "aws-vpc-endpoint-connection-notifications-1.0" do
 
   describe aws_vpc_endpoint_connection_notifications do
     it { should exist }
-    its('count') { should eq 1 }
-    its('connection_notification_arns') { should include 'arn:aws:sns:us-east-2:112758395563:aws-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju' }
-    its('connection_notification_ids') { should include 'vpce-nfn-03ad3532a5c71f8af' }
+    its('count') { should >= 1 }
+    its('connection_notification_arns') { should include aws_notification_arn }
+    its('connection_notification_ids') { should include aws_notification_id }
     its('connection_notification_state') { should include 'Enabled' }
     its('connection_notification_types') { should include 'Topic' }
-    its('connection_events') { should be_in [%w{Delete Reject Connect Accept}] }
     its('vpc_endpoint_ids') { should eq nil }
   end
 end

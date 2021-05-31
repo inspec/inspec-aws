@@ -348,3 +348,6 @@ output "aws_redshift_cluster_identifier" {
 output "aws_vpc_endpoint_notification_id" {
   value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.id
 }
+output "aws_vpc_notifications_arn" {
+  value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.connection_notification_arn
+}

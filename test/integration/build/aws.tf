@@ -2176,3 +2176,82 @@ resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification"
   connection_notification_arn = aws_sns_topic.topic.arn
   connection_events           = ["Accept", "Reject"]
 }
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = [aws_subnet.main.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "notification-test" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_sns_topic" "topic" {
+  name = "vpce-notification-topic"
+
+  policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "vpce.amazonaws.com"
+        },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
+    }]
+}
+POLICY
+}
+resource "aws_vpc_endpoint_service" "notification_service" {
+  acceptance_required        = false
+  network_load_balancer_arns = [aws_lb.test.arn]
+}
+
+resource "aws_vpc_endpoint" "for_notification" {
+  service_name      = "com.amazonaws.us-east-2.ec2"
+  vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
+  vpc_id            = aws_vpc.for_lb.id
+  security_group_ids = [aws_security_group.alpha[0].id]
+}
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.notification_service.id
+  connection_notification_arn = aws_sns_topic.topic.arn
+  connection_events           = ["Accept", "Reject"]
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.for_lb.id
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.ig_for_lb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "ig_for_lb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
+}
