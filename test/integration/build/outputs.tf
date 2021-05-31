@@ -350,7 +350,6 @@ output "launch_template_name" {
   value = aws_launch_template.launch-template-test.name
 }
 
-
 output "aws_vpn_gateway_id" {
   value = aws_vpn_gateway.inspec_vpn_gw.id
 }
@@ -379,8 +378,17 @@ output "aws_transit_gateway_id1" {
 output "aws_transit_gateway_owner_id" {
   value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.vpc_owner_id
 }
+
 output "aws_redshift_cluster_identifier" {
   value = aws_redshift_cluster.redshift_test.cluster_identifier
+}
+
+output "aws_vpc_endpoint_notification_id" {
+  value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.id
+}
+
+output "aws_vpc_notifications_arn" {
+  value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.connection_notification_arn
 }
 
 output "aws_transit_gateway_route_table_id" {
