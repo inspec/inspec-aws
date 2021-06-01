@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1980,6 +1981,6 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_cognito_user_pool" "aws_cognito_user_pool1" {
-  name = "mypool"
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
 }
