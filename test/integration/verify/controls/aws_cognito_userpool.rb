@@ -1,20 +1,22 @@
-aws_user_pool_id = attribute("aws_user_pool_id", default: "", description: "")
+aws_user_pool_id = attribute("aws_user_pool_id", value: "", description: "")
+aws_identity_pool_name = attribute("aws_identity_pool_name", value: "", description: "")
 
-control 'aws-auto-user-pool-1.0' do
+control 'aws-auto-user-pool1-1.0' do
   impact 1.0
   title 'Ensure AWS User Pool has the correct properties.'
 
   describe aws_cognito_userpool(user_pool_id: aws_user_pool_id) do
-  it { should exist }
+    it { should exist }
+  end
 end
 
-control 'aws-auto-user-pool-1.0' do
+control 'aws-auto-user-pool2-1.0' do
   impact 1.0
   title 'Ensure AWS User Pool has the correct properties.'
 
   describe aws_cognito_userpool(user_pool_id: aws_user_pool_id) do
     its('id') { should eq aws_user_pool_id }
-    its('name') { should eq "test1" }
+    its('name') { should eq aws_identity_pool_name }
     
     its('policies.password_policy.minimum_length') { should eq 8 }
     its('policies.password_policy.require_uppercase') { should eq true }
@@ -27,7 +29,6 @@ control 'aws-auto-user-pool-1.0' do
 
     its('status') { should be_empty }
 
-    its('auto_verified_attributes') { should include "email" }
     its('alias_attributes') { should be_empty }
     its('username_attributes') { should be_empty }
     its('sms_verification_message') { should be_empty }
