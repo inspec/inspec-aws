@@ -152,6 +152,8 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
+variable "aws_open_id_connect_provider_arns" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1830,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1974,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1985,10 +1987,8 @@ resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
   saml_metadata_document = file("saml-metadata.xml")
 }
 
-resource "aws_cognito_identity_pool" "aws_cognito_identity_pool1" {
-  identity_pool_name               = "identity pool"
-  allow_unauthenticated_identities = false
-  allow_classic_flow               = false
+resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
+  identity_pool_name               = var.aws_identity_pool_name
 
   cognito_identity_providers {
     client_id               = "6lhlkkfbfb4q5kpp90urffae"
@@ -2007,6 +2007,5 @@ resource "aws_cognito_identity_pool" "aws_cognito_identity_pool1" {
     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
   }
 
-  saml_provider_arns           = [aws_iam_saml_provider.default.arn]
-  openid_connect_provider_arns = ["arn:aws:iam::123456789012:oidc-provider/id.example.com"]
+  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
 }

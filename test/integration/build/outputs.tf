@@ -301,3 +301,11 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_identity_pool_id" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.id
+}
+
+output "aws_saml_provider_arns" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.arn
+}

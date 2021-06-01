@@ -1,7 +1,7 @@
-aws_identity_pool_id = attribute("aws_identity_pool_id", default: "", description: "")
-aws_identity_pool_name = attribute("aws_identity_pool_name", default: "", description: "")
+aws_identity_pool_id = attribute("aws_identity_pool_id", value: "", description: "")
+aws_identity_pool_name = attribute("aws_identity_pool_name", value: "", description: "")
 
-control 'aws-auto-identity-pools-1.0' do
+control 'aws-auto-identity-pools1-1.0' do
   impact 1.0
   title 'Ensure AWS Identity Pools has the correct properties.'
 
@@ -10,7 +10,7 @@ control 'aws-auto-identity-pools-1.0' do
   end
 end
 
-control 'aws-auto-identity-pools-1.0' do
+control 'aws-auto-identity-pools2-1.0' do
   impact 1.0
   title 'Ensure AWS Identity Pools has the correct properties.'
 
