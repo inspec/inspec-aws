@@ -35,11 +35,12 @@ class AWSCognitoUserPoolClients < AwsResourceBase
   def fetch_data
     table_rows = []
     @query_params[:max_results] = 10
+
     loop do
       catch_aws_errors do
         @api_response = @aws.cognitoidentityprovider_client.list_user_pool_clients(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return table_rows if !@api_response || @api_response.empty?
       @api_response.user_pool_clients.each do |res|
         table_rows += [{
           client_id: res.client_id,

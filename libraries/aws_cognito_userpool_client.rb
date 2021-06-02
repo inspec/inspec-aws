@@ -37,6 +37,6 @@ class AWSCognitoUserPoolClient < AwsResourceBase
   end
 
   def to_s
-    "Job Queue Name: #{@display_name}"
+    "userpool_client: #{@display_name}"
   end
 end
