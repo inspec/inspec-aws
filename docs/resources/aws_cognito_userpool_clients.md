@@ -33,14 +33,14 @@ For additional information, see the [AWS documentation on Cognito user pool](htt
 
 ### Ensure that the specific client ID is available.
 
-    describe aws_cognito_userpool_clients(user_pool_id: 'test') do
-      its('client_ids') { should include 'test_id' }
+    describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do
+      its('client_ids') { should include 'CLIENT_ID' }
     end
 
 ### Ensure that the specific client name is available.
 
-    describe aws_cognito_userpool_clients(user_pool_id: 'test') do
-        its('client_names') { should include 'test_name' }
+    describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do
+        its('client_names') { should include 'CLIENT_NAME' }
     end
 
 ## Matchers

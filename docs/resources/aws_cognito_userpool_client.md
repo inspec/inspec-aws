@@ -66,13 +66,13 @@ For additional information, see the [AWS documentation on Cognito user pool](htt
 ### Ensure an client name is available.
 
     describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
-      its('client_name') { should eq 'test' }
+      its('client_name') { should eq 'CLIENT_NAME' }
     end
 
 ### Ensure an client secret is available.
 
     describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
-        its('client_secret') { should eq 'client_secret_name' }
+        its('client_secret') { should eq 'CLIENT_SECRET' }
     end
 
 ## Matchers
