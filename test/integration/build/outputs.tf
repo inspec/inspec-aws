@@ -301,5 +301,3 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
-
-q
