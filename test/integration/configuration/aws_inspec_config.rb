@@ -209,7 +209,12 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_enforce_workgroup_configuration: true,
+      aws_publish_cloudwatch_metrics_enabled: true,
+      aws_athena_workgroup: "test-workgroup",
+      aws_athena_workgroup_description: "Test work group",
+      aws_athena_workgroup_state: "ENABLED"
   }
 
   def self.config

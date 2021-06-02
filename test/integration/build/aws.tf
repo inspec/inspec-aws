@@ -152,6 +152,12 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1834,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1978,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1980,20 +1986,14 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_athena_workgroup" "aws_athena_workgroup1" {
-  name = "example"
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
 
   configuration {
-    enforce_workgroup_configuration    = true
-    publish_cloudwatch_metrics_enabled = true
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
 
-    # result_configuration {
-    #   output_location = "s3://${aws_s3_bucket.example.bucket}/output/"
-
-    #   encryption_configuration {
-    #     encryption_option = "SSE_KMS"
-    #     kms_key_arn       = aws_kms_key.example.arn
-    #   }
-    # }
   }
 }
