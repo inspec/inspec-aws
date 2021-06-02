@@ -209,7 +209,21 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_launch_configuration_name:"web_config",
+      aws_image_id:"ami-09f56df189a29f532",
+      aws_instance_type: "t2.micro",
+      aws_auto_scaling_group_name: "test1",
+      aws_auto_scaling_max_size: 1,
+      aws_auto_scaling_min_size: 0,
+      aws_auto_scaling_health_check_grace_period: 300,
+      aws_auto_scaling_health_check_type: "ELB",
+      aws_auto_scaling_force_delete: true,
+      aws_auto_scaling_policy_name: "test_policy",
+      aws_auto_scaling_adjustment: 4,
+      aws_auto_scaling_adjustment_type:"ChangeInCapacity",
+      aws_auto_scaling_cooldown: 300
+
   }
 
   def self.config

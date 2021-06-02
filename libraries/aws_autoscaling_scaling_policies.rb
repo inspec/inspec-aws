@@ -16,7 +16,7 @@ class AWSAutoScalingScalingPolicies < AwsResourceBase
              .register_column(:auto_scaling_group_names,        field: :auto_scaling_group_name)
              .register_column(:policy_names,                    field: :policy_name)
              .register_column(:policy_arns,                     field: :policy_arn)
-             .register_column(:policy_types,                    ield: :policy_type)
+             .register_column(:policy_types,                    field: :policy_type)
              .register_column(:adjustment_types,                field: :adjustment_type)
              .register_column(:min_adjustment_steps,            field: :min_adjustment_step)
              .register_column(:min_adjustment_magnitudes,       field: :min_adjustment_magnitude)
