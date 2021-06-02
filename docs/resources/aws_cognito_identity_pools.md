@@ -31,13 +31,13 @@ For additional information, see the [AWS documentation on Cognito identity pool]
 ### Ensure an identity pool is available.
 
     describe aws_cognito_identity_pools do
-      its('identity_pool_ids') { should include 'test' }
+      its('identity_pool_ids') { should include 'IDENTITY_POOL_ID' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
 
     describe aws_cognito_identity_pools do
-        its('identity_pool_names') { should include 'test' }
+        its('identity_pool_names') { should include 'IDENTITY_POOL_NAME' }
     end
 
 ## Matchers
