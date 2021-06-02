@@ -9,7 +9,7 @@ Use the `aws_athena_work_group` InSpec audit resource to test properties of a si
 
 ## Syntax
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should exist }
     end
 
@@ -40,13 +40,13 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 
 ### Ensure a workgroup name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
+      its('name') { should eq 'WORK_GROUP_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
         its('state') { should eq 'ENABLED' }
     end
 
@@ -60,13 +60,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should_not exist }
     end
 
@@ -74,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should be_available }
     end
 
