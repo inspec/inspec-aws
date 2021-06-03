@@ -2144,11 +2144,6 @@ resource "aws_vpc" "attachment" {
   }
 }
 
-resource "aws_ec2_transit_gateway" "gateway" {
-  description = "example"
-  default_route_table_association = "disable"
-}
-
 resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
@@ -2264,16 +2259,6 @@ resource "aws_sns_topic" "topic" {
 POLICY
 }
 
-resource "aws_vpc_endpoint_service" "test-endpoint_service" {
-  acceptance_required        = false
-  network_load_balancer_arns = [aws_lb.test-lb.arn]
-}
-
-resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
-  vpc_endpoint_service_id     = aws_vpc_endpoint_service.test-endpoint_service.id
-  connection_notification_arn = aws_sns_topic.topic.arn
-  connection_events           = ["Accept", "Reject"]
-}
 resource "aws_lb" "test" {
   name               = "test-lb-tf"
   internal           = false
@@ -2294,23 +2279,6 @@ resource "aws_lb_target_group" "notification-test" {
   vpc_id   = aws_vpc.for_lb.id
 }
 
-resource "aws_sns_topic" "topic" {
-  name = "vpce-notification-topic"
-
-  policy = <<POLICY
-{
-    "Version":"2012-10-17",
-    "Statement":[{
-        "Effect": "Allow",
-        "Principal": {
-            "Service": "vpce.amazonaws.com"
-        },
-        "Action": "SNS:Publish",
-        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
-    }]
-}
-POLICY
-}
 resource "aws_vpc_endpoint_service" "notification_service" {
   acceptance_required        = false
   network_load_balancer_arns = [aws_lb.test.arn]
@@ -2322,6 +2290,7 @@ resource "aws_vpc_endpoint" "for_notification" {
   vpc_id            = aws_vpc.for_lb.id
   security_group_ids = [aws_security_group.alpha[0].id]
 }
+
 resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
   vpc_endpoint_service_id     = aws_vpc_endpoint_service.notification_service.id
   connection_notification_arn = aws_sns_topic.topic.arn
