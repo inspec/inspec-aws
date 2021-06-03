@@ -56,6 +56,8 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 | routes(instance\_owner\_id) | The owner ID of a NAT instance in your VPC. |
 | routes(origin) | Describes how the route was created. |
 | routes(state) | The state of the route. |
+| associated_subnet_ids | List of associated subnet IDs |
+| associated_gateway_ids | List of associated gateway IDs |
 
 ## Examples
 
@@ -81,6 +83,18 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('associations.count') { should eq 1 }
+    end
+
+### Ensure the subnet ID of interest is associated
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('associated_subnet_ids') { should include 'subnet-026a4cbe6c04c36c2' }
+    end
+
+### Ensure no Gateways are associated
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      its('associated_gateway_ids') { should be_empty }
     end
 
 ### Ensure there are no virtual private gateway (VGW) propagating routes
@@ -111,6 +125,41 @@ Use `should_not` to test the entity should not exist.
 
     describe aws_route_table('should-not-be-there') do
       it { should_not exist }
+    end
+
+### main
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should be_main }
+    end
+
+
+### have_subnet_associated
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should have_subnet_associated('subnet-026a4cbe6c04c36c2') }
+    end
+
+
+### have_gateway_associated
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should have_gateway_associated('tgw-026a4cbe6c04c36c2') }
+    end
+
+
+### have_failed_association_value
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should have_failed_association_value(gateway_id: 'tgw-026a4cbe6c04c36c2') }
+    end
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should have_failed_association_value(subnet_id: 'subnet-026a4cbe6c04c36c2') }
+    end
+
+    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+      it { should have_failed_association_value(route_table_association_id: 'rtbassoc-05dc3f4b81d9d500f') }
     end
 
 ## AWS Permissions
