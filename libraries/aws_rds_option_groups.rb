@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsRdsOptionGroups < AwsResourceBase
   name 'aws_rds_option_groups'
   desc 'Verifies settings for a collection AWS RDS Clusters'
-  example '
+  example "
     describe aws_rds_group_options do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

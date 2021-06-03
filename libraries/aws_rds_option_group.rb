@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRdsOptionGroup < AwsResourceBase
   name 'aws_rds_option_group'
-  desc 'Verifies settings for an RDS Option Group'
+  desc 'Verifies settings for an RDS Option Group.'
 
   example "
     describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
@@ -15,6 +15,7 @@ class AwsRdsOptionGroup < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { option_group_name: opts } if opts.is_a?(String)
     super(opts)
