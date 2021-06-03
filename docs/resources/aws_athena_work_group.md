@@ -26,7 +26,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 | name          | The workgroup name. |
 | state         | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. |
 | description   | The workgroup description. |
-| creation_time | The workgroup creation time. |
+| creation_time | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ |
 | tags          | An array of key-value pairs to apply to this resource. |
 | configuration (result_configuration) | The location and encryption of query results of the workgroup. |
 | configuration (enforce_work_group_configuration) | Whether workgroup settings override client-side settings. |

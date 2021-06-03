@@ -24,7 +24,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 | names           | The workgroup name. |
 | states          | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. |
 | descriptions    | The workgroup description. |
-| creation_times  | The workgroup creation time. |
+| creation_times  | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ |
 
 ## Examples
 

@@ -11,4 +11,5 @@ aws_configuration_publish_cloud_watch_metrics_enabled = attribute("aws_publish_c
     its('description') { should eq aws_description }
     its('configuration.enforce_work_group_configuration') { should eq aws_configuration_enforce_work_group_configuration }
     its('configuration.publish_cloud_watch_metrics_enabled') { should eq aws_configuration_publish_cloud_watch_metrics_enabled }
+    its('creation_time') { should be <= Time.now }
   end
