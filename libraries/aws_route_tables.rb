@@ -49,31 +49,63 @@ class AwsRouteTables < AwsResourceBase
 
   def fetch_data
     route_table_rows = []
-    catch_aws_errors do
-      @route_tables = @aws.compute_client.describe_route_tables({}).to_h[:route_tables]
+    paginate_request do |api_response|
+      route_table_rows += api_response.route_tables.map do |route_table|
+        flat_hash_from(route_table)
+      end
     end
-    return [] if !@route_tables || @route_tables.empty?
-    @route_tables.each do |route_table|
-      route_table_rows += [{
-        vpc_id: route_table[:vpc_id],
-        route_table_id: route_table[:route_table_id],
-        destination_cidr_block: route_table[:routes].collect { |hash_obj| hash_obj[:destination_cidr_block] }.flatten,
-        destination_ipv_6_cidr_block: route_table[:routes].collect { |hash_obj| hash_obj[:destination_ipv_6_cidr_block] }.flatten,
-        destination_prefix_list_id: route_table[:routes].collect { |hash_obj| hash_obj[:destination_prefix_list_id] }.flatten,
-        egress_only_internet_gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:egress_only_internet_gateway_id] }.flatten,
-        gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:gateway_id] }.flatten,
-        instance_id: route_table[:routes].collect { |hash_obj| hash_obj[:instance_id] }.flatten,
-        instance_owner_id: route_table[:routes].collect { |hash_obj| hash_obj[:instance_owner_id] }.flatten,
-        nat_gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:nat_gateway_id] }.flatten,
-        transit_gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:transit_gateway_id] }.flatten,
-        local_gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:local_gateway_id] }.flatten,
-        carrier_gateway_id: route_table[:routes].collect { |hash_obj| hash_obj[:carrier_gateway_id] }.flatten,
-        network_interface_id: route_table[:routes].collect { |hash_obj| hash_obj[:network_interface_id] }.flatten,
-        origin: route_table[:routes].collect { |hash_obj| hash_obj[:origin] }.flatten,
-        state: route_table[:routes].collect { |hash_obj| hash_obj[:state] }.flatten,
-        vpc_peering_connection_id: route_table[:routes].collect { |hash_obj| hash_obj[:vpc_peering_connection_id] }.flatten,
-      }]
+    route_table_rows
+  end
+
+  private
+
+  def paginate_request
+    pagination_options = { max_results: 100 }
+    loop do
+      api_response = catch_aws_errors do
+        @aws.compute_client.describe_route_tables(pagination_options)
+      end
+      return if api_response.nil? || api_response.empty?
+
+      yield api_response
+      break unless api_response.next_token
+      pagination_options = { next_token: api_response.next_token }
     end
-    @table = route_table_rows
+  end
+
+  def flat_hash_from(route_table)
+    routes = route_table.routes
+    associations = route_table.associations
+    associates = associations.select { |association| association.association_state.state == 'associated' }
+    {
+      vpc_id: route_table.vpc_id,
+      route_table_id: route_table.route_table_id,
+      destination_cidr_block: map(routes, 'destination_cidr_block'),
+      destination_ipv_6_cidr_block: map(routes, 'destination_ipv_6_cidr_block'),
+      destination_prefix_list_id: map(routes, 'destination_prefix_list_id'),
+      egress_only_internet_gateway_id: map(routes, 'egress_only_internet_gateway_id'),
+      gateway_id: map(routes, 'gateway_id'),
+      instance_id: map(routes, 'instance_id'),
+      instance_owner_id: map(routes, 'instance_owner_id'),
+      nat_gateway_id: map(routes, 'nat_gateway_id'),
+      transit_gateway_id: map(routes, 'transit_gateway_id'),
+      local_gateway_id: map(routes, 'local_gateway_id'),
+      carrier_gateway_id: map(routes, 'carrier_gateway_id'),
+      network_interface_id: map(routes, 'network_interface_id'),
+      origin: map(routes, 'origin'),
+      state: map(routes, 'state'),
+      vpc_peering_connection_id: map(routes, 'vpc_peering_connection_id'),
+      main: associations.any?(&:main),
+      route_table_association_ids: map(associations, 'route_table_association_id'),
+      association_subnet_ids: map(associations, 'subnet_id'),
+      associated_subnet_ids: map(associates, 'subnet_id'),
+      association_gateway_ids: map(associations, 'gateway_id'),
+      associated_gateway_ids: map(associates, 'gateway_id'),
+      association_states: map(associations, 'association_state.state'),
+    }
+  end
+
+  def map(collection, attr)
+    collection.map { |obj| obj.instance_eval(attr) }
   end
 end
