@@ -31,7 +31,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 ### Ensure a work_group name is available.
 
     describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+      its('names') { should include 'WORK_GROUP_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
