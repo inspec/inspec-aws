@@ -408,3 +408,10 @@ output "aws_transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
 }
 
+output "aws_route_table_association_id" {
+  value = aws_route_table_association.association_route_table_first.id
+}
+
+output "aws_route_table_associated_subnet" {
+  value = aws_route_table_association.association_route_table_first.subnet_id
+}
