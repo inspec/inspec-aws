@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.1 -->
+<!-- latest_release 1.49.2 -->
+## [v1.49.2](https://github.com/inspec/inspec-aws/tree/v1.49.2) (2021-06-03)
+
+#### Merged Pull Requests
+- changes done to remove the rake warning [#411](https://github.com/inspec/inspec-aws/pull/411) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.49.1](https://github.com/inspec/inspec-aws/tree/v1.49.1) (2021-05-31)
 
 #### Merged Pull Requests
 - Soumyo/aws ec2 transit gateway route table association [#346](https://github.com/inspec/inspec-aws/pull/346) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.0](https://github.com/inspec/inspec-aws/tree/v1.49.0) (2021-05-31)
 
