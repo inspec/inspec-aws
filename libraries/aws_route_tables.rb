@@ -32,6 +32,13 @@ class AwsRouteTables < AwsResourceBase
              .register_column(:origins,                                   field: :origin, style: :simple)
              .register_column(:states,                                    field: :state, style: :simple)
              .register_column(:vpc_peering_connection_ids,                field: :vpc_peering_connection_id, style: :simple)
+             .register_column(:route_table_association_ids,               field: :route_table_association_ids, style: :simple)
+             .register_column(:association_subnet_ids,                    field: :association_subnet_ids, style: :simple)
+             .register_column(:associated_subnet_ids,                     field: :associated_subnet_ids, style: :simple)
+             .register_column(:association_gateway_ids,                   field: :association_gateway_ids, style: :simple)
+             .register_column(:associated_gateway_ids,                    field: :associated_gateway_ids, style: :simple)
+             .register_column(:association_states,                        field: :association_states, style: :simple)
+             .register_column(:main,                                      field: :main, style: :simple)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
