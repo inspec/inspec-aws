@@ -16,10 +16,6 @@ class AwsVPCEndpointServiceConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsVPCEndpointService.new(random: 99) }
   end
 
-  def test_accept_valid_service_name
-    assert(AwsVPCEndpointService.new(service_name: 'aws.sagemaker.us-east-2.notebook'))
-  end
-
   def test_raises_empty_name
     assert_raises(ArgumentError) { AwsVPCEndpointService.new(service_name: '') }
   end
