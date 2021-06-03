@@ -17,66 +17,56 @@ An `aws_vpc_endpoint_service` resource block declares the tests for a single AWS
 
 ### Parameters
 
-The AWS VPC Endpoint Service table ID and CIDR block is required.
+The AWS VPC Endpoint Service Name is required.
 
-#### transit\_gateway\_route\_table\_id _(required)_
+#### service\_name _(required)_
 
-The ID of the AWS VPC Endpoint Service table:
-
-- must contain alphanumeric characters between 1 to 50 or hyphens
-- should start with `tgw-rtb-`
-- cannot end with a hyphen or contain two consecutive hyphens
+The Name of the AWS VPC Endpoint service
 
 It should be passed as a `service_name: 'value'` key-value entry in a hash.
 
-#### cidr\_block _(required)_
-
-The **CIDR** Block Range of the route associated to AWS VPC Endpoint Service table
-
-It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
-
 ## Properties
 
-|Property               | Description                                             |
-| ---                   | ---                                                     |
-|cidr_block             | The CIDR block used for destination matches.            |
-|prefix_list_id         | The ID of the prefix list used for destination matches. |
-|type                   | The type of route. Valid values: `propagated` or `static`. |
-|state                  | The state of the route. Valid values: `active` or `blackhole`. |
-|attachment_resource_id | The resource ID of the transit gateway attachment. Identifiers of relevant resource type.                  |
-|attachment_id          | The ID of the transit gateway attachment.                                      |
-|attachment_resource_type| The attachment resource type. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `peering`, `connect`. |
+|Property            | Description                                               |
+| ---                | ---                                                       |
+| service_name       | The Amazon Resource Name (ARN) of the service.            |
+| service_id         | The ID of the endpoint service.                           |
+| service_type       | The type of service.                                      |
+| availability_zones | The Availability Zones in which the service is available. |
+| owner              | The AWS account ID of the service owner.                  |
+| base_endpoint_dns_names| The DNS names for the service.                        |
+| private_dns_name   | The private DNS name for the service.                     |
 
 ## Examples
 
-### Test if a transit gateway route exists for a transit gateway route table and CIDR block range
+### Test whether VPC endpoint service exists
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
         it { should exist }
     end
 
-### Test whether the ID of the attached VPC is `vpc-00727fc4213acee4a`
+### Test whether the ID of the attached VPC is `vpce-svc-04deb776dc2b8e67f`
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        its('attachment_resource_id') { should eq 'vpc-00727fc4213acee4a' }
+        its('service_id') { should eq 'vpce-svc-04deb776dc2b8e67f' }
     end
 
-### Test whether the ID of the Transit Gateway Attachment is `tgw-attach-0aab89f748131532e`
+### Test whether the service_type of the endpoint service is 
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        its('attachment_id') { should eq 'tgw-attach-0aab89f748131532e' }
+        its('service_type') { should eq 'Interface' }
     end
 
-### Test whether the attachment resource type is `vpc`
+### Test whether the availability_zones include a zone of interest
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        its('attachment_resource_type') { should eq 'vpc' }
+        its('availability_zones') { should include 'us-east-2a' }
     end
 
-### Test whether the prefix list ID is `pl-4ca54025`
+### Test whether the base endpoint dns_names include a dns of interest
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        its('prefix_list_id') { should eq 'pl-4ca54025' }
+        its('base_endpoint_dns_names') { should eq 'vpce-svc-04deb776dc2b8e67f.us-east-2.vpce.amazonaws.com' }
     end
 
 ## Matchers
@@ -89,44 +79,38 @@ This InSpec audit resource has the following special matchers. For the complete 
         it { should exist }
     end
 
-### be_static
+### be_interface
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        it { should be_static }
+        it { should be_interface }
     end
 
-### be_propagated
+### be_vpc_endpoint_policy_supported
+
+    describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
+        it { should be_vpc_endpoint_policy_supported }
+    end
+
+### be_acceptance_required
 
     describe aws_vpc_endpoint_service(service_name: 'tgw-rtb-08acd74550c99e911', cidr_block: '0.0.0.0/16') do
-        it { should be_propagated }
+        it { should be_acceptance_required }
     end
 
-### be_active
+### be_manages_vpc_endpoints
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        it { should be_active }
+        it { should be_manages_vpc_endpoints }
     end
 
-### be_blackhole
+### be_private_dns_name_verified
 
     describe aws_vpc_endpoint_service(service_name: 'tgw-rtb-08acd74550c99e911', cidr_block: '0.0.0.0/17') do
-        it { should be_blackhole }
-    end
-
-### be_vpc_attachment
-
-    describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
-        it { should be_vpc_attachment }
-    end
-
-### be_vpn_attachment
-
-    describe aws_vpc_endpoint_service(service_name: 'tgw-rtb-08acd74550c99e711', cidr_block: '0.0.0.0/16') do
-        it { should be_vpn_attachment }
+        it { should be_private_dns_name_verified }
     end
 
 ## AWS Permissions
 
-To get the AWS permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action set to `allow`.
+To get the AWS permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `c2:DescribeVpcEndpointServices` action set to `allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for vpc endpoint service](https://docs.amazonaws.cn/en_us/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
