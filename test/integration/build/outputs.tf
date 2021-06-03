@@ -301,3 +301,11 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_batch_job_arn" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.arn
+}
+
+output "aws_batch_job_revision" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.revision
+}

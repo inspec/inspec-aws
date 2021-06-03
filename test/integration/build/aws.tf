@@ -152,6 +152,9 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1831,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1975,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1981,8 +1984,8 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 resource "aws_batch_job_definition" "aws_batch_job_definition1" {
-  name = "test1"
-  type = "container"
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
 
   container_properties = <<CONTAINER_PROPERTIES
 {
