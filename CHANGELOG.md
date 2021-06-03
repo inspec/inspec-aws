@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.2 -->
+<!-- latest_release 1.49.3 -->
+## [v1.49.3](https://github.com/inspec/inspec-aws/tree/v1.49.3) (2021-06-03)
+
+#### Merged Pull Requests
+- remove duplicates [#412](https://github.com/inspec/inspec-aws/pull/412) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.49.2](https://github.com/inspec/inspec-aws/tree/v1.49.2) (2021-06-03)
 
 #### Merged Pull Requests
 - changes done to remove the rake warning [#411](https://github.com/inspec/inspec-aws/pull/411) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.1](https://github.com/inspec/inspec-aws/tree/v1.49.1) (2021-05-31)
 
