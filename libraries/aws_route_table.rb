@@ -38,11 +38,11 @@ class AwsRouteTable < AwsResourceBase
   end
 
   def associated_subnet_ids
-    associates.map(&:subnet_id).compact
+    @associated_subnet_ids ||= compact(associates.map(&:subnet_id))
   end
 
   def associated_gateway_ids
-    associates.map(&:gateway_id).compact
+    compact(associates.map(&:gateway_id))
   end
 
   # matchers
@@ -88,5 +88,11 @@ class AwsRouteTable < AwsResourceBase
 
   def failed_associations
     associations.select { |association| association.association_state.state == ASSOCIATION_STATES[:failed] }
+  end
+
+  # this is to handle NullResponse objects in collection
+  def compact(collection)
+    # NullResponse returns `nil?` as true so the `||` is just a fallback
+    collection.reject { |obj| obj.nil? || obj.is_a?(NullResponse) }
   end
 end
