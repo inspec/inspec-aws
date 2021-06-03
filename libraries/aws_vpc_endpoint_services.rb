@@ -26,7 +26,7 @@ class AwsVPCEndpointServices < AwsResourceBase
              .register_column(:acceptance_required, field: :acceptance_required)
              .register_column(:manages_vpc_endpoints, field: :manages_vpc_endpoints)
              .register_column(:tags, field: :tags)
-             .register_column(:private_dns_name_verification_state, field: :private_dns_name_verification_state)
+             .register_column(:private_dns_name_verification_states, field: :private_dns_name_verification_state)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -53,7 +53,7 @@ class AwsVPCEndpointServices < AwsResourceBase
       api_response = catch_aws_errors do
         @aws.compute_client.describe_vpc_endpoint_services(pagination_options)
       end
-      return [] if api_response.nil? || api_response.empty?
+      return if api_response.nil? || api_response.empty?
 
       yield api_response
       break unless api_response.next_token
