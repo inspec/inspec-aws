@@ -18,7 +18,7 @@ Ensure that a file system exists.
 
 ## Parameters
 
-`file_system_id` _(required)_
+`file_system_ids` _(required)_
 
 For additional information, see the [AWS documentation on EFS Mount Target](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html).
 
