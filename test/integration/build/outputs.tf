@@ -301,3 +301,11 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_ecs_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
+output "aws_ecs_task_definition_revision" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.revision
+}

@@ -1980,12 +1980,12 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_ecs_task_definition" "aws_ecs_task_definition1" {
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
   family = "service"
   container_definitions = jsonencode([
     {
-      name      = "first"
-      image     = "service-first"
+      name      = "test1"
+      image     = "test1"
       cpu       = 10
       memory    = 512
       essential = true
@@ -1993,19 +1993,6 @@ resource "aws_ecs_task_definition" "aws_ecs_task_definition1" {
         {
           containerPort = 80
           hostPort      = 80
-        }
-      ]
-    },
-    {
-      name      = "second"
-      image     = "service-second"
-      cpu       = 10
-      memory    = 256
-      essential = true
-      portMappings = [
-        {
-          containerPort = 443
-          hostPort      = 443
         }
       ]
     }

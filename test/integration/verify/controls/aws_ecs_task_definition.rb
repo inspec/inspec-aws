@@ -1,17 +1,29 @@
-describe aws_ecs_task_definition(task_definition: 'test1:1') do
+aws_ecs_task_definition_arn = attribute(:aws_ecs_task_definition_arn, value: '', description: '')
+aws_ecs_task_definition_revision = attribute(:aws_ecs_task_definition_revision, value: '', description: '')
+
+control 'aws-ec2-task-definition1-1.0' do
+  impact 1.0
+  title 'Ensure EC2 Task Definition has the correct properties.'
+
+  describe aws_ecs_task_definition(task_definition: "service:"+aws_ecs_task_definition_revision) do
     it { should exist }
   end
+end
 
-describe aws_ecs_task_definition(task_definition: 'test1:1') do
-    its('task_definition_arn') { should eq 'arn:aws:ecs:us-east-2:112758395563:task-definition/test1:1' }
+control 'aws-ec2-task-definition2-1.0' do
+  impact 1.0
+  title 'Ensure EC2 Task Definition has the correct properties.'
+
+  describe aws_ecs_task_definition(task_definition: "service:"+aws_ecs_task_definition_revision) do
+    its('task_definition_arn') { should eq aws_ecs_task_definition_arn }
     its('container_definitions.first.name') { should eq 'test1' }
     its('container_definitions.first.image') { should eq 'test1' }
     its('container_definitions.first.repository_credentials.credentials_parameter') { should be_empty }
-    its('container_definitions.first.cpu') { should eq 0 }
-    its('container_definitions.first.memory') { should eq 11 }
+    its('container_definitions.first.cpu') { should eq 10 }
+    its('container_definitions.first.memory') { should eq 512 }
     its('container_definitions.first.memory_reservation') { should be_empty }
     its('container_definitions.first.links') { should be_empty }
-    its('container_definitions.first.port_mappings') { should be_empty }
+    its('container_definitions.first.port_mappings') { should_not be_empty }
     its('container_definitions.first.essential') { should eq true }
     its('container_definitions.first.entry_point') { should be_empty }
     its('container_definitions.first.command') { should be_empty }
@@ -79,21 +91,20 @@ describe aws_ecs_task_definition(task_definition: 'test1:1') do
     its('container_definitions.first.firelens_configuration.type') { should be_empty }
     its('container_definitions.first.firelens_configuration.options') { should be_empty }
 
-    its('family') { should eq 'test1' }
+    its('family') { should eq 'service' }
     its('task_role_arn') { should be_empty }
     its('execution_role_arn') { should be_empty }
     its('network_mode') { should be_empty }
-    its('revision') { should eq 1 }
-    its('volumes') { should be_empty }
+    its('revision') { should eq 8 }
+    its('volumes') { should_not be_empty }
     its('status') { should eq 'ACTIVE' }
     its('requires_attributes') { should be_empty } 
     its('requires_attributes.first.name') { should be_empty } 
     its('requires_attributes.first.value') { should be_empty }
     its('requires_attributes.first.target_type') { should be_empty }
     its('requires_attributes.first.target') { should be_empty }
-    its('placement_constraints') { should be_empty }
+    its('placement_constraints') { should_not be_empty }
     its('compatibilities') { should include "EC2" }
-    its('requires_compatibilities') { should include "EC2" }
 
     its('cpu') { should be_empty }
     its('memory') { should be_empty }
@@ -108,4 +119,14 @@ describe aws_ecs_task_definition(task_definition: 'test1:1') do
     its('proxy_configuration.properties.first.name') { should be_empty }
     its('proxy_configuration.properties.first.value') { should be_empty }
     its('tags') { should be_empty }
+  end
+end
+
+control 'aws-ec2-task-definition3-1.0' do
+  impact 1.0
+  title 'Ensure EC2 Task Definition has the correct properties.'
+
+  describe aws_ecs_task_definition(task_definition: "dummy") do
+    it { should_not exist }
+  end
 end
