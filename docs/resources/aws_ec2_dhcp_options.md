@@ -31,6 +31,9 @@ Ensure that an `aws_ec2_dhcp_options` exists.
 | netbios_node_types    | The list of NetBIOS node types in the DHCP configuration. |
 | tags                  | The tags of the DHCP options. |
 
+## Examples
+
+This resource does not have any examples.
 
 ## AWS Permissions
 
