@@ -6,11 +6,11 @@ class AWSBatchComputeEnvironment < AwsResourceBase
   name 'aws_batch_compute_environment'
   desc 'Describes one or more of your compute environments.'
 
-  example `
+  example "
     describe aws_batch_compute_environment(compute_environment_name: 'test1') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { compute_environment_name: opts } if opts.is_a?(String)

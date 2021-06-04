@@ -6,11 +6,11 @@ class AWSBatchComputeEnvironments < AwsResourceBase
   name 'aws_batch_compute_environments'
   desc 'Describes one or more of your compute environments.'
 
-  example `
+  example "
     describe aws_batch_compute_environments do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
