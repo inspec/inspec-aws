@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'aws-sdk-autoscaling'
+require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
@@ -28,6 +29,7 @@ require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
+
 require 'rspec/expectations'
 
 # AWS Inspec Backend Classes
@@ -84,6 +86,10 @@ class AwsConnection
 
   def compute_client
     aws_client(Aws::EC2::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
   end
 
   def config_client
