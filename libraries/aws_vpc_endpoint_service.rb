@@ -15,6 +15,10 @@ class AwsVPCEndpointService < AwsResourceBase
   BOOLEAN_FLAGS = %i(vpc_endpoint_policy_supported acceptance_required manages_vpc_endpoints).freeze
   PRIVATE_DNS_NAME_VERIFICATION_STATES = %w{pendingVerification verified failed}.freeze
 
+  def self.snakecase(str)
+    str.gsub(/([a-z\d])([A-Z])/, '\1_\2').downcase
+  end
+
   def initialize(opts = {})
     super
     validate_parameters(required: %i(service_name))
@@ -29,7 +33,7 @@ class AwsVPCEndpointService < AwsResourceBase
   end
 
   SERVICE_TYPES.each do |service_type|
-    method_name = "#{service_type.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').downcase}?"
+    method_name = "#{snakecase(service_type)}?"
     define_method method_name do
       self.service_type == service_type
     end
@@ -43,7 +47,7 @@ class AwsVPCEndpointService < AwsResourceBase
   end
 
   PRIVATE_DNS_NAME_VERIFICATION_STATES.each do |verification_state|
-    method_name = "private_dns_name_#{verification_state.gsub(/([a-z\d])([A-Z])/, '\1_\2').downcase}?"
+    method_name = "private_dns_name_#{snakecase(verification_state)}?"
     define_method method_name do
       service_detail.private_dns_name_verification_state == verification_state
     end
