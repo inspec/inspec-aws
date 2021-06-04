@@ -1,74 +1,60 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_elasticloadbalancingv2_listeners Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_elasticloadbalancingv2\_listeners
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
-
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+Use the `aws_elasticloadbalancingv2_listeners` InSpec audit resource to test the properties of a collection of AWS ElasticLoadBalancingV2 Listeners.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
-      it { should exist }
+An `aws_elasticloadbalancingv2_listeners` resource block returns all ElasticLoadBalancingV2 Listeners.
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+      its { should exist }
     end
+    
+#### Parameters
 
-## Parameters
+##### listener_arn _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html).
 
 ## Properties
 
-| Property | Description|
+|Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+|listener_arns | The Amazon Resource Name (ARN) of the listener. |
+|load_balancer_arns | The Amazon Resource Name (ARN) of the load balancer. |
+|ports | The port on which the load balancer is listening. |
+|protocols | The protocol for connections from clients to the load balancer. |
+|certificates | The certificates of the listener. |
+|ssl_policies | The ssl policies of the listener. |
+|default_actions | The default actions of the listener. |
+|alpn_policies | The alpn policies of the listener. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
-    end
+##### Ensure there are ports attached to the listener.
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+        its('ports') { should include 80}
+      end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+#### exist
 
-### exist
+The control will pass if the describe returns at least one result.
 
-Use `should` to test that the entity exists.
+Use `should_not` to test the entity should not exist.
 
-    describe aws_athena_work_groups do
-      it { should exist }
-    end
-
-Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_groups do
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "dummy") do
       it { should_not exist }
     end
-
-### be_available
-
-Use `should` to check if the work_group name is available.
-
-    describe aws_athena_work_groups do
-      it { should be_available }
-    end
-
+    
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `autoscaling:Describe*` actions with Effect set to Allow.  
+You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).

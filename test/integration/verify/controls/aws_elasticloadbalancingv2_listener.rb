@@ -1,10 +1,13 @@
-describe aws_elasticloadbalancingv2_listener(listener_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener/app/test-alb/26a69087e2cecd85/04af269ce8a29579') do
+aws_ebs2_lb_arn = attribute(:aws_ebs2_lb_arn, value: '', description: '')
+aws_ebs2_lb_listener_arn = attribute(:aws_ebs2_lb_listener_arn, value: '', description: '')
+
+describe aws_elasticloadbalancingv2_listener(listener_arn: aws_ebs2_lb_listener_arn) do
     it { should exist }
   end
   
-  describe aws_elasticloadbalancingv2_listener(listener_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener/app/test-alb/26a69087e2cecd85/04af269ce8a29579') do
-    its('listener_arn') { should eq "arn:aws:elasticloadbalancing:us-east-2:112758395563:listener/app/test-alb/26a69087e2cecd85/04af269ce8a29579" }
-    its('load_balancer_arn') { should eq "arn:aws:elasticloadbalancing:us-east-2:112758395563:loadbalancer/app/test-alb/26a69087e2cecd85" }
+  describe aws_elasticloadbalancingv2_listener(listener_arn: aws_ebs2_lb_listener_arn) do
+    its('listener_arn') { should eq aws_ebs2_lb_listener_arn }
+    its('load_balancer_arn') { should eq aws_ebs2_lb_arn }
     its('port') { should eq 80 }
     its('protocol') { should eq "HTTP" }
     its('certificates') { should be_empty }

@@ -1,85 +1,109 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_elasticloadbalancingv2_listener Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_elasticloadbalancingv2\_listener
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
-
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+Use the `aws_elasticloadbalancingv2_listener` InSpec audit resource to test properties of a single AWS ElasticLoadBalancingV2 Listener. 
 
 ## Syntax
 
-Ensure that a work_group name exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+Ensure that a listener arn exist.
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
       it { should exist }
     end
 
-## Parameters
+Ensure that the listener has a desired port.
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+      its ('port') { should eq 80 }
+    end
 
-`work_group` _(required)_
+#### Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+##### listener_arn _(required)_
+
+See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html).
 
 ## Properties
 
-| Property | Description|
+|Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+|listener_arn | The Amazon Resource Name (ARN) of the listener. |
+|load_balancer_arn | The Amazon Resource Name (ARN) of the load balancer. |
+|port | The port on which the load balancer is listening. |
+|protocol | The protocol for connections from clients to the load balancer. |
+|certificates (certificate_arn) | The Amazon Resource Name (ARN) of the certificate. |
+|ertificates (is_default) | Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates. |
+|ssl_policy | [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported. |
+|default_actions (type) | The type of action. |
+|default_actions (target_group_arn) | The Amazon Resource Name (ARN) of the target group. Specify only when Type is forward and you want to route to a single target group. To route to one or more target groups, use ForwardConfig instead. |
+|default_actions (authenticate_oidc_config (issuer)) | The OIDC issuer identifier of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path. |
+|default_actions (authenticate_oidc_config (authorization_endpoint)) | The authorization endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path. |
+|default_actions (authenticate_oidc_config (token_endpoint)) | The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path. |
+|default_actions (authenticate_oidc_config (user_info_endpoint)) | The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path. |
+|default_actions (authenticate_oidc_config (client_id)) | The OAuth 2.0 client identifier. |
+|default_actions (authenticate_oidc_config (client_secret)) | The OAuth 2.0 client secret. This parameter is required if you are creating a rule. If you are modifying a rule, you can omit this parameter if you set UseExistingClientSecret to true. |
+|default_actions (authenticate_oidc_config (session_cookie_name)) | The name of the cookie used to maintain session information. The default is AWSELBAuthSessionCookie. |
+|default_actions (authenticate_oidc_config (scope)) | The set of user claims to be requested from the IdP. The default is openid. To verify which scope values your IdP supports and how to separate multiple values, see the documentation for your IdP. |
+|default_actions (authenticate_oidc_config (session_timeout)) | The maximum duration of the authentication session, in seconds. The default is 604800 seconds (7 days). |
+|default_actions (authenticate_oidc_config (authentication_request_extra_params)) | The query parameters (up to 10) to include in the redirect request to the authorization endpoint. |
+|default_actions (authenticate_oidc_config (on_unauthenticated_request)) | The behavior if the user is not authenticated. The following are possible values are demy or allow or authenticate. |
+|default_actions (authenticate_oidc_config (use_existing_client_secret)) | Indicates whether to use the existing client secret when modifying a rule. If you are creating a rule, you can omit this parameter or set it to false. |
+|default_actions (authenticate_oidc_config (user_pool_arn)) | The Amazon Resource Name (ARN) of the Amazon Cognito user pool. |
+|default_actions (authenticate_oidc_config (user_pool_client_id)) | The ID of the Amazon Cognito user pool client. |
+|default_actions (authenticate_oidc_config (user_pool_domain)) | The domain prefix or fully-qualified domain name of the Amazon Cognito user pool. |
+|default_actions (authenticate_oidc_config (session_cookie_name)) | The name of the cookie used to maintain session information. The default is AWSELBAuthSessionCookie. |
+|default_actions (authenticate_oidc_config (scope)) | The set of user claims to be requested from the IdP. The default is openid . To verify which scope values your IdP supports and how to separate multiple values, see the documentation for your IdP. |
+|default_actions (authenticate_oidc_config (session_timeout)) | The maximum duration of the authentication session, in seconds. The default is 604800 seconds (7 days). |
+|default_actions (authenticate_oidc_config (authentication_request_extra_params)) | The query parameters (up to 10) to include in the redirect request to the authorization endpoint. |
+|default_actions (authenticate_oidc_config (authentication_request_extra_params)) | group |
+|default_actions (authenticate_oidc_config (on_unauthenticated_request)) | The behavior if the user is not authenticated. The following are possible values are demy or allow or authenticate. |
+|default_actions (order) | The order for the action. This value is required for rules with multiple actions. The action with the lowest value for order is performed first. |
+|default_actions (redirect_config (protocol)) | The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP, HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP. |
+|default_actions (redirect_config (port)) | The port. You can specify a value from 1 to 65535 or #{port}. |
+|default_actions (redirect_config (host)) | The hostname. This component is not percent-encoded. The hostname can contain #{host}. |
+|default_actions (redirect_config (path)) | The absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}. |
+|default_actions (redirect_config (query)) | The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?", as it is automatically added. You can specify any of the reserved keywords. |
+|default_actions (redirect_config (status_code)) | The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP 302). |
+|default_actions (fixed_response_config (message_body)) | The message. |
+|default_actions (fixed_response_config (status_code)) | The HTTP response code (2XX, 4XX, or 5XX). |
+|default_actions (fixed_response_config (content_type)) | The content type. Valid Values: text/plain, text/css, text/html, application/javascript, application/json |
+|default_actions (forward_config (target_groups)) | One or more target groups. For Network Load Balancers, you can specify a single target group. |
+|default_actions (forward_config (target_groups (target_group_arn))) | The Amazon Resource Name (ARN) of the target group. |
+|default_actions (forward_config (target_groups (weight))) | The weight. The range is 0 to 999. |
+|default_actions (forward_config (target_group_stickiness_config (enabled))) | Indicates whether target group stickiness is enabled. |
+|default_actions (forward_config (target_group_stickiness_config (duration_seconds))) | The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days). |
+|alpn_policy | [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
-    end
-
+##### Ensure that a listerner_arn exists
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+      its('listener_arn') { should eq "test_arn" }
+    end  
+    
+##### Ensure that listerner listens to a desired port
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+      its('port') { should eq 80}
+    end  
+   
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+#### exist
 
-### exist
+The control will pass if the describe returns at least one result.
 
-Use `should` to test that the entity exists.
+Use `should_not` to test the entity should not exist.
 
-    describe aws_athena_work_group(work_group: 'test1') do
-      it { should exist }
-    end
-
-Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "dummy") do
       it { should_not exist }
-    end
-
-### be_available
-
-Use `should` to check if the work_group name is available.
-
-    describe aws_athena_work_group(work_group: 'test1') do
-      it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `autoscaling:Describe*` actions with Effect set to Allow.  
+You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).
+
