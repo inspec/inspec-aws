@@ -6,11 +6,11 @@ class AWSBatchJobQueue < AwsResourceBase
   name 'aws_batch_job_queue'
   desc 'Describes one or more of your job queues.'
 
-  example `
+  example "
     describe aws_batch_job_queue(job_queue_name: 'test1') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { job_queue_name: opts } if opts.is_a?(String)
