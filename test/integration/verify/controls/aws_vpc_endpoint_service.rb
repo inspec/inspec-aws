@@ -16,6 +16,8 @@ control 'aws-vpc-endpoint-service-1.0' do
     its('owner') { should eq '112758395563' }
     its('base_endpoint_dns_names') { should include aws_vpc_base_endpoint_dns_names }
     its('private_dns_name') { should be_empty }
+    it { should be_interface }
+    it { should_not be_gateway_load_balancer }
     it { should_not be_vpc_endpoint_policy_supported }
     it { should be_acceptance_required }
     it { should_not be_manages_vpc_endpoints }

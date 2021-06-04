@@ -72,5 +72,21 @@ class AwsVPCEndpointServiceConstructorIdTest < Minitest::Test
   def test_private_dns_name_verified
     assert(@vpc_end_point_service.private_dns_name_verified?)
   end
+
+  def test_private_dns_name_pending_verification
+    refute(@vpc_end_point_service.private_dns_name_pending_verification?)
+  end
+
+  def test_interface
+    assert(@vpc_end_point_service.interface?)
+  end
+
+  def test_gateway
+    refute(@vpc_end_point_service.gateway?)
+  end
+
+  def test_gateway_load_balancer
+    refute(@vpc_end_point_service.gateway_load_balancer?)
+  end
 end
 
