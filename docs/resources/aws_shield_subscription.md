@@ -38,7 +38,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-##### Check Auto Renew of a Shield Subscription
+### Check the automatic renewal status of a Shield Subscription
 
     describe aws_shield_subscription do
       its('auto_renew')  { should eq 'ENABLED' }
