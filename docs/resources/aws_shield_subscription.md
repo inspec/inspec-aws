@@ -5,8 +5,7 @@ platform: aws
 
 # aws\_shield\_subscription
 
-Use the `aws_shield_subscription` InSpec audit resource to test properties of a shield subscription. 
-This resource is to be used for testing the AWS Shield Advanced subscription for an account.
+Use the `aws_shield_subscription` InSpec audit resource to test properties of an AWS Shield Advanced subscription.
 
 ## Syntax
 
