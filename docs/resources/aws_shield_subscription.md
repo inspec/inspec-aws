@@ -20,7 +20,7 @@ An `aws_shield_subscription` resource block returns a Shield Advanced subscripti
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on Shield Subscriptions](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html).
+Also, see the [AWS Shield Subscriptions documentation](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html).
 
 
 ## Properties
