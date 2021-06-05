@@ -9,7 +9,7 @@ Use the `aws_shield_subscription` InSpec audit resource to test properties of an
 
 ## Syntax
 
- An `aws_shield_subscription` resource block uses the parameter to return a shield subscription.
+An `aws_shield_subscription` resource block returns a Shield Advanced subscription.
 
     describe aws_shield_subscription do
       it { should exist }
