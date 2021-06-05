@@ -1,9 +1,24 @@
-<!-- latest_release 1.49.1 -->
+<!-- latest_release 1.49.4 -->
+## [v1.49.4](https://github.com/inspec/inspec-aws/tree/v1.49.4) (2021-06-04)
+
+#### Merged Pull Requests
+- remove unwanted backticks [#416](https://github.com/inspec/inspec-aws/pull/416) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
+## [v1.49.3](https://github.com/inspec/inspec-aws/tree/v1.49.3) (2021-06-03)
+
+#### Merged Pull Requests
+- remove duplicates [#412](https://github.com/inspec/inspec-aws/pull/412) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.49.2](https://github.com/inspec/inspec-aws/tree/v1.49.2) (2021-06-03)
+
+#### Merged Pull Requests
+- changes done to remove the rake warning [#411](https://github.com/inspec/inspec-aws/pull/411) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.49.1](https://github.com/inspec/inspec-aws/tree/v1.49.1) (2021-05-31)
 
 #### Merged Pull Requests
 - Soumyo/aws ec2 transit gateway route table association [#346](https://github.com/inspec/inspec-aws/pull/346) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.0](https://github.com/inspec/inspec-aws/tree/v1.49.0) (2021-05-31)
 

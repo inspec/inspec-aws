@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsRedshiftClusterParameterGroups < AwsResourceBase
   name 'aws_redshift_cluster_parameter_groups'
   desc 'Describes a parameter group.'
-  example `
-    describe aws_redshift_cluster_parameter_group(parameter_group_name: aws_parameter_group_name) do
+  example "
+    describe aws_redshift_cluster_parameter_groups do
       it { should exist }
     end
-  `
+  "
   attr_reader :table
 
   FilterTable.create

@@ -6,11 +6,11 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_tables'
   desc 'Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.'
 
-  example `
+  example "
     describe aws_ec2_transit_gateway_route_tables do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
