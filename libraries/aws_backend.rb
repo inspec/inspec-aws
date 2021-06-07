@@ -30,6 +30,9 @@ require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
 require 'aws-sdk-cognitoidentity'
+require 'aws-sdk-redshift'
+require 'aws-sdk-athena'
+require 'aws-sdk-applicationautoscaling'
 
 # AWS Inspec Backend Classes
 #
@@ -177,6 +180,18 @@ class AwsConnection
 
   def ssm_client
     aws_client(Aws::SSM::Client)
+  end
+
+  def athena_client
+    aws_client(Aws::Athena::Client)
+  end
+
+  def redshift_client
+    aws_client(Aws::Redshift::Client)
+  end
+
+  def autoscaling_client
+    aws_client(Aws::AutoScaling::Client)
   end
 
   def cognitoidentity_client
