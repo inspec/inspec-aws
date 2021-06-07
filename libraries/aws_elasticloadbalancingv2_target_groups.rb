@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2TargetGroups < AwsResourceBase
   name 'aws_elasticloadbalancingv2_target_groups'
-  desc 'Lists the clients that have been created for the specified user pool.'
+  desc 'Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.'
 
   example "
     describe aws_elasticloadbalancingv2_target_groups(user_pool_id: 'test1') do
