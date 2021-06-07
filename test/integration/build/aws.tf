@@ -199,7 +199,6 @@ variable "aws_publish_cloudwatch_metrics_enabled" {}
 variable "aws_athena_workgroup_description" {}
 variable "aws_athena_workgroup_state" {}
 
-
 provider "aws" {
   version = ">= 2.0.0"
   region  = var.aws_region
@@ -2096,6 +2095,10 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
 }
 
 resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {

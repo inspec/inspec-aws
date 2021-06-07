@@ -334,6 +334,10 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_user_pool_id" {
+  value = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+}
+
 output "aws_identity_pool_id" {
   value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.id
 }

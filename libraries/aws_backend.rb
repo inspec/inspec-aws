@@ -33,6 +33,7 @@ require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
+require 'aws-sdk-cognitoidentityprovider'
 
 # AWS Inspec Backend Classes
 #
@@ -196,6 +197,10 @@ class AwsConnection
 
   def cognitoidentity_client
     aws_client(Aws::CognitoIdentity::Client)
+  end
+
+  def cognitoidentityprovider_client
+    aws_client(Aws::CognitoIdentityProvider::Client)
   end
 end
 
