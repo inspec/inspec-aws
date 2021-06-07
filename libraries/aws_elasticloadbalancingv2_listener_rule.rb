@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener_rule'
-  desc 'Returns information about the endpoints for your account in the current region.'
+  desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
 
   example "
     describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'test') do

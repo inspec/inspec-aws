@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener_rules'
-  desc 'Lists the clients that have been created for the specified user pool.'
+  desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
 
   example "
-    describe aws_elasticloadbalancingv2_listener_rules(user_pool_id: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
       its('count') { should eq 3 }
     end
   "

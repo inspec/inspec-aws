@@ -1,9 +1,22 @@
-describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener-rule/app/test1/4d099ca3e6de545d/299700e6bf77345e/360958cfddddc00d') do
+aws_elbv2_rule_arn = attribute(:aws_elbv2_rule_arn, value: '', description: '')
+
+control 'aws-elbv2-listener-rule1-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS ELBv2 Listerner Rule has the correct properties.'
+
+  describe aws_elasticloadbalancingv2_listener_rule(rule_arns: aws_elbv2_rule_arn) do
     it { should exist }
   end
+end
   
-  describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener-rule/app/test1/4d099ca3e6de545d/299700e6bf77345e/360958cfddddc00d') do
-      its('rule_arn') { should eq "arn:aws:elasticloadbalancing:us-east-2:112758395563:listener-rule/app/test1/4d099ca3e6de545d/299700e6bf77345e/360958cfddddc00d" }
+control 'aws-elbv2-listener-rule2-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS ELBv2 Listerner Rule has the correct properties.'
+
+  describe aws_elasticloadbalancingv2_listener_rule(rule_arns: aws_elbv2_rule_arn) do
+      its('rule_arn') { should eq aws_elbv2_rule_arn }
       its('priority') { should eq "1" }
   
       its('conditions') { should_not be_empty }
@@ -64,3 +77,4 @@ describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'arn:aws:elasticloa
       
       its('is_default') { should eq false}
   end
+end
