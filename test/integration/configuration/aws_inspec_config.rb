@@ -237,6 +237,11 @@ module AWSInspecConfig
       aws_network_acl_name: 'inspec-nw-acl',
       acl_egress_rule_number: 100,
       acl_ingress_rule_number: 100,
+      aws_enforce_workgroup_configuration: true,
+      aws_publish_cloudwatch_metrics_enabled: true,
+      aws_athena_workgroup: "test-workgroup",
+      aws_athena_workgroup_description: "Test work group",
+      aws_athena_workgroup_state: "ENABLED",
   }
 
   def self.config

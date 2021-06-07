@@ -179,6 +179,11 @@ variable "aws_db_parameter_group_description" {}
 variable "aws_redshift_cluster_identifier" {}
 variable "aws_redshift_parameter_group_name" {}
 variable "aws_redshift_parameter_group_family" {}
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
 
 
 provider "aws" {
@@ -2076,6 +2081,18 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
+
+  configuration {
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
+
+  }
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
