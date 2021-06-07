@@ -152,6 +152,52 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
+variable "aws_open_id_connect_provider_arns" {}
+variable "aws_image_id" {}
+variable "aws_instance_type" {}
+variable "aws_auto_scaling_group_name" {}
+variable "aws_auto_scaling_max_size" {}
+variable "aws_auto_scaling_min_size" {}
+variable "aws_auto_scaling_health_check_grace_period" {}
+variable "aws_auto_scaling_health_check_type" {}
+variable "aws_auto_scaling_force_delete" {}
+variable "aws_auto_scaling_policy_name" {}
+variable "aws_auto_scaling_adjustment" {}
+variable "aws_auto_scaling_adjustment_type" {}
+variable "aws_auto_scaling_cooldown" {}
+variable "tgw_route_cidr_block" {}
+variable "tgw_route_cidr_block_blockhole" {}
+variable "aws_db_option_group_name" {}
+variable "aws_db_option_group_description" {}
+variable "aws_db_option_group_engine_name"  {}
+variable "aws_launch_template_name" {}
+variable "aws_launch_template_core" {}
+variable "aws_launch_template_threads_per_core" {}
+variable "aws_launch_template_cpu_credits" {}
+variable "aws_launch_template_volume_size" {}
+variable "aws_launch_template_instance_profile" {}
+variable "aws_launch_template_resource_type" {}
+variable "aws_launch_template_tag_name" {}
+variable "aws_launch_template_instance_type"  {}
+variable "aws_launch_template_kernel_id" {}
+variable "aws_launch_template_key_name" {}
+variable "aws_vpn_gw_name" {}
+variable "aws_network_acl_cidr_block" {}
+variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
+variable "aws_db_parameter_group_name" {}
+variable "aws_db_parameter_group_family_name" {}
+variable "aws_db_parameter_group_description" {}
+variable "aws_redshift_cluster_identifier" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
 
@@ -1974,6 +2020,77 @@ resource "aws_guardduty_detector" "detector_1" {
   finding_publishing_frequency = "SIX_HOURS"
 }
 
+resource "aws_launch_template" "launch-template-test" {
+  name = var.aws_launch_template_name
+
+  block_device_mappings {
+    device_name = "/dev/sda1"
+
+    ebs {
+      volume_size = var.aws_launch_template_volume_size
+    }
+  }
+
+  cpu_options {
+    core_count       = var.aws_launch_template_core
+    threads_per_core = var.aws_launch_template_threads_per_core
+  }
+
+  credit_specification {
+    cpu_credits = var.aws_launch_template_cpu_credits
+  }
+
+  disable_api_termination = true
+
+  ebs_optimized = true
+
+
+  iam_instance_profile {
+    name = var.aws_launch_template_instance_profile
+  }
+
+  image_id = "ami-0a83ebf1ac32a3fbe"
+
+  instance_initiated_shutdown_behavior = "terminate"
+
+  instance_market_options {
+    market_type = "spot"
+  }
+
+  instance_type = var.aws_launch_template_instance_type
+  key_name = var.aws_launch_template_key_name
+
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
+
+  monitoring {
+    enabled = true
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+  }
+
+
+
+  tag_specifications {
+    resource_type = var.aws_launch_template_resource_type
+
+    tags = {
+      Name = var.aws_launch_template_tag_name
+    }
+  }
+
+}
+
+resource "aws_eip" "aws_eip_1" {
+  vpc      = true
+}
+
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
@@ -2020,4 +2137,321 @@ resource "aws_batch_job_definition" "aws_batch_job_definition1" {
     ]
 }
 CONTAINER_PROPERTIES
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
+  name                   = "my-saml-provider"
+  saml_metadata_document = file("saml-metadata.xml")
+}
+
+resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
+  identity_pool_name               = var.aws_identity_pool_name
+
+  cognito_identity_providers {
+    client_id               = "6lhlkkfbfb4q5kpp90urffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
+    server_side_token_check = false
+  }
+
+  cognito_identity_providers {
+    client_id               = "7kodkvfqfb4qfkp39eurffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
+    server_side_token_check = false
+  }
+
+  supported_login_providers = {
+    "graph.facebook.com"  = "7346241598935552"
+    "accounts.google.com" = "123456789012.apps.googleusercontent.com"
+  }
+
+  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+}
+
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
+  name                   = var.aws_auto_scaling_policy_name
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
+
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
+  availability_zones        = ["us-east-2a"]
+  name                      = var.aws_auto_scaling_group_name
+  max_size                  = var.aws_auto_scaling_max_size
+  min_size                  = var.aws_auto_scaling_min_size
+  health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
+  health_check_type         = var.aws_auto_scaling_health_check_type
+  force_delete              = var.aws_auto_scaling_force_delete
+  launch_configuration      = aws_launch_configuration.as_conf.name
+}
+
+resource "aws_launch_configuration" "as_conf" {
+  name          = var.aws_launch_configuration_name
+  image_id      = var.aws_image_id
+  instance_type = var.aws_instance_type
+}
+
+
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
+
+  configuration {
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
+
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
+  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id             = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_static" {
+  destination_cidr_block         = var.tgw_route_cidr_block
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.inspec_tgw_attachment.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
+  destination_cidr_block         = var.tgw_route_cidr_block_blockhole
+  blackhole                      = true
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+
+resource "aws_redshift_cluster" "redshift_test" {
+  cluster_identifier = var.aws_redshift_cluster_identifier
+  database_name      = "dev"
+  master_username    = "testcluster"
+  master_password    = "Mustbe8characters"
+  node_type          = "dc2.large"
+  cluster_type       = "single-node"
+}
+
+resource "aws_db_option_group" "test-option-group" {
+  name                     = var.aws_db_option_group_name
+  option_group_description = var.aws_db_option_group_description
+  engine_name              = var.aws_db_option_group_engine_name
+  major_engine_version     = "11.00"
+
+  option {
+    option_name = "TDE"
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_vpn_gateway" "inspec_vpn_gw" {
+  vpc_id = aws_vpc.attachment.id
+
+  tags = {
+    Name = var.aws_vpn_gw_name
+  }
+}
+
+resource "aws_vpc" "attachment" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment_association1" {
+  subnet_ids         = [aws_subnet.for_attachment.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.attachment.id
+  transit_gateway_default_route_table_association = false
+  transit_gateway_default_route_table_propagation = false
+
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_subnet" "for_attachment" {
+  vpc_id     = aws_vpc.attachment.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+
+resource "aws_network_acl" "inspec-nw-acl" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = var.acl_egress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = var.acl_ingress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 80
+    to_port    = 80
+  }
+
+
+  tags = {
+    Name = var.aws_network_acl_name
+  }
+}
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
+}
+
+resource "aws_db_parameter_group" "inspec_db_parameter_group" {
+  name   = var.aws_db_parameter_group_name
+  family = var.aws_db_parameter_group_family_name
+  description = var.aws_db_parameter_group_description
+
+  parameter {
+    name  = "character_set_server"
+    value = "utf8"
+  }
+
+  parameter {
+    name  = "character_set_client"
+    value = "utf8"
+  }
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
+}
+
+resource "aws_lb" "test-lb" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_sns_topic" "topic" {
+  name = "vpce-notification-topic"
+
+  policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "vpce.amazonaws.com"
+        },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
+    }]
+}
+POLICY
+}
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = [aws_subnet.main.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "notification-test" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_vpc_endpoint_service" "notification_service" {
+  acceptance_required        = false
+  network_load_balancer_arns = [aws_lb.test.arn]
+}
+
+resource "aws_vpc_endpoint" "for_notification" {
+  service_name      = "com.amazonaws.us-east-2.ec2"
+  vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
+  vpc_id            = aws_vpc.for_lb.id
+  security_group_ids = [aws_security_group.alpha[0].id]
+}
+
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.notification_service.id
+  connection_notification_arn = aws_sns_topic.topic.arn
+  connection_events           = ["Accept", "Reject"]
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.for_lb.id
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.ig_for_lb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "ig_for_lb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
 }

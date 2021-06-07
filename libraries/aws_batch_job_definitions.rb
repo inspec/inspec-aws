@@ -6,11 +6,11 @@ class AWSBatchJobDefinitions < AwsResourceBase
   name 'aws_batch_job_definitions'
   desc 'Describes a list of job definitions.'
 
-  example `
+  example "
     describe aws_batch_job_definitions do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

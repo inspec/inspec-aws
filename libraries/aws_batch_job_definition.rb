@@ -6,11 +6,11 @@ class AWSBatchJobDefinition < AwsResourceBase
   name 'aws_batch_job_definition'
   desc 'Describes a list of job definitions.'
 
-  example `
+  example "
     describe aws_batch_job_definition(job_definition_name: 'test1') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { job_definition_name: opts } if opts.is_a?(String)
