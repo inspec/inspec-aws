@@ -255,7 +255,8 @@ module AWSInspecConfig
       aws_athena_workgroup_description: "Test work group",
       aws_athena_workgroup_state: "ENABLED",
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
-      aws_identity_pool_name: "mypool"
+      aws_client_name: "pool_client",
+      aws_identity_pool_name: "mypool",
   }
 
   def self.config

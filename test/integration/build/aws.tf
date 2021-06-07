@@ -198,6 +198,7 @@ variable "aws_enforce_workgroup_configuration" {}
 variable "aws_publish_cloudwatch_metrics_enabled" {}
 variable "aws_athena_workgroup_description" {}
 variable "aws_athena_workgroup_state" {}
+variable "aws_client_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2095,6 +2096,17 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
+  name = var.aws_client_name
+
+  user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+  generate_secret     = true
 }
 
 resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
