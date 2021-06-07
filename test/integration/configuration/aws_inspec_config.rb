@@ -209,6 +209,8 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
+      aws_identity_pool_name: "identity-pool",
+      aws_openid_connect_provider_arns: "arn:aws:iam::123456789012:oidc-provider/id.example.com",
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_image_id:"ami-09f56df189a29f532",
       aws_instance_type: "t2.micro",

@@ -29,6 +29,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
@@ -191,6 +192,10 @@ class AwsConnection
 
   def autoscaling_client
     aws_client(Aws::AutoScaling::Client)
+  end
+
+  def cognitoidentity_client
+    aws_client(Aws::CognitoIdentity::Client)
   end
 end
 

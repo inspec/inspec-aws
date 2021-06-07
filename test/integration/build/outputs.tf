@@ -334,6 +334,13 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_identity_pool_id" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.id
+}
+
+output "aws_saml_provider_arns" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.arn
+}
 
 output "aws_option_group_name" {
 value = aws_db_option_group.test-option-group.name
@@ -375,7 +382,6 @@ output "aws_transit_gateway_attachment_vpc_id_association" {
 output "network_acl_id" {
   value = aws_network_acl.inspec-nw-acl.id
 }
-
 
 output "aws_db_parameter_group_arn" {
   value = aws_db_parameter_group.inspec_db_parameter_group.arn
