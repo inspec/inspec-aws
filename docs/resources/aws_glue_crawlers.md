@@ -1,74 +1,84 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_glue_crawlers Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws_glue_crawlers
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_glue_crawlers` InSpec audit resource to test properties of a plural Glue Crawlers.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Glue::Crawler resource specifies an AWS Glue crawler.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+### Ensure that a crawler exists.
+    describe aws_glue_crawlers do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Glue Crawler](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-crawler.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
+| names | The name of the crawler. |
+| roles | The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data. |
+| targets | A collection of targets to crawl. |
+| database_names | The name of the database in which the crawler's output is stored. |
+| descriptions | A description of the crawler. |
+| classifiers | A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler. |
+| recrawl_policies | A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. |
+| schema_change_policies | The policy that specifies update and delete behaviors for the crawler. |
+| lineage_configurations | A configuration that specifies whether data lineage is enabled for the crawler. |
+| states | The state of the crawler. |
+| table_prefixes |The table prefix of the crawler. |
+| schedules | The schedule of the crawler. |
+| crawl_elapsed_times | If the crawler is running, contains the total time elapsed since the last crawl began. |
 | creation_times | The workgroup creation time. |
+| last_updated | The time that the crawler was last updated. |
+| last_crawls | The status of the last crawl, and potentially error information if an error occurred. |
+| versions | The version of the crawler. |
+| configurations | Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see Configuring a Crawler . |
+| crawler_security_configurations | The name of the SecurityConfiguration structure to be used by this crawler. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure a crawler name is available.
+    describe aws_glue_crawlers do
+      its('names') { should include 'crawler-name' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_glue_crawlers do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_glue_crawlers do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the crawler name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_glue_crawlers do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `glue_client.get_crawlers` action with `Effect` set to `Allow`.

@@ -1,85 +1,88 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_glue_crawler Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws_glue_crawler
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_glue_crawler` InSpec audit resource to test properties of a single specific AWS Glue Crawler.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Glue::Crawler resource specifies an AWS Glue crawler.
 
 ## Syntax
 
-Ensure that a work_group name exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+### Ensure that a crawler name exists.
+    describe aws_glue_crawler(name: 'crawler_name') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Glue Crawler](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-crawler.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
+| name | The name of the crawler. |
+| role | The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data. |
+| target | A collection of targets to crawl. |
+| database_name | The name of the database in which the crawler's output is stored. |
+| description | A description of the crawler. |
+| classifier | A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler. |
+| recrawl_policy | A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. |
+| schema_change_policy | The policy that specifies update and delete behaviors for the crawler. |
+| lineage_configuration | A configuration that specifies whether data lineage is enabled for the crawler. |
+| state | The state of the crawler. |
+| table_prefix |The table prefix of the crawler. |
+| schedule | The schedule of the crawler. |
+| crawl_elapsed_time | If the crawler is running, contains the total time elapsed since the last crawl began. |
 | creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| last_updated | The time that the crawler was last updated. |
+| last_crawl | The status of the last crawl, and potentially error information if an error occurred. |
+| version | The version of the crawler. |
+| configuration | Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see Configuring a Crawler . |
+| crawler_security_configuration | The name of the SecurityConfiguration structure to be used by this crawler. |
 
 ## Examples
 
 ### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+    describe aws_glue_crawler(name: 'crawler_name') do
+      its('name') { should eq 'crawler_name' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Verify the database name in the crawler.
+    describe aws_glue_crawler(name: 'crawler_name') do
+        its('database_name') { should eq 'sampledb' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_glue_crawler(name: 'crawler_name') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_glue_crawler(name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
 Use `should` to check if the work_group name is available.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_glue_crawler(name: 'crawler_name') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `glue_client.get_crawler` action with `Effect` set to `Allow`.

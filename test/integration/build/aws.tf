@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_crawler_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1829,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1973,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1980,12 +1981,16 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_glue_crawler" "aws_glue_crawler1" {
-  database_name = aws_glue_catalog_database.example.name
-  name          = "example"
-  role          = aws_iam_role.example.arn
+resource "aws_glue_crawler" "aws_glue_crawler_test" {
+  database_name = aws_glue_catalog_database.aws_glue_catalog_database_test.name
+  name          = var.aws_crawler_name
+  role          = aws_iam_role.cloud_watch_logs_role[0].arn
 
   dynamodb_target {
     path = "table-name"
   }
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb3"
 }

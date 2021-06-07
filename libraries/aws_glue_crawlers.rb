@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AWSGlueCrawlers < AwsResourceBase
   name 'aws_glue_crawlers'
-  desc ''
-  example `
+  desc 'Retrieves metadata for all crawlers defined in the customer account.'
+  example "
     describe aws_glue_crawlers do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
