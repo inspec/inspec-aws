@@ -6,11 +6,11 @@ class AWSAthenaWorkGroup < AwsResourceBase
   name 'aws_athena_work_group'
   desc 'Returns information about the workgroup with the specified name.'
 
-  example `
+  example "
     describe aws_athena_work_group(work_group: 'test1') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { work_group: opts } if opts.is_a?(String)
