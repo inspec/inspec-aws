@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.6 -->
+<!-- latest_release 1.49.7 -->
+## [v1.49.7](https://github.com/inspec/inspec-aws/tree/v1.49.7) (2021-06-07)
+
+#### Merged Pull Requests
+- aws athena work group [#362](https://github.com/inspec/inspec-aws/pull/362) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.49.6](https://github.com/inspec/inspec-aws/tree/v1.49.6) (2021-06-07)
 
 #### Merged Pull Requests
 - Upgrade to GitHub-native Dependabot [#337](https://github.com/inspec/inspec-aws/pull/337) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v1.49.5](https://github.com/inspec/inspec-aws/tree/v1.49.5) (2021-06-07)
 
