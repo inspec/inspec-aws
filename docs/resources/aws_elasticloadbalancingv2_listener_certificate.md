@@ -1,85 +1,64 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_elasticloadbalancingv2_listener_certificate Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_elasticloadbalancingv2\_listener\_certificate
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
-
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+Use the `aws_elasticloadbalancingv2_listener_certificate` InSpec audit resource to test properties of a single AWS ElasticLoadBalancingV2 Listener Certificate. 
 
 ## Syntax
 
-Ensure that a work_group name exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+Ensure that a listener arn exist.
+    describe aws_elasticloadbalancingv2_listener_certificate(listener_arn: 'test') do
       it { should exist }
     end
 
-## Parameters
+Ensure that the listener has a desired port.
+    describe aws_elasticloadbalancingv2_listener_certificate(listener_arn: 'test') do
+      its('certificate_arn') { should eq "test" }
+    end
 
-`work_group` _(required)_
+#### Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+##### listener_arn _(required)_
+
+See also the [AWS documentation on ElasticLoadBalancingV2 Listener Certificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
 
 ## Properties
 
-| Property | Description|
+|Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+|certificate_arn | The Amazon Resource Name (ARN) of the certificate. |
+| is_default | Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
-    end
-
-## Matchers
-
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
-
-The controls will pass if the `describe` method returns at least one result.
-
-### exist
-
-Use `should` to test that the entity exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+##### Ensure that a listerner_arn exists
+    describe aws_elasticloadbalancingv2_listener_certificate(listener_arn: 'test') do
       it { should exist }
     end
-
-Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
-      it { should_not exist }
+    
+##### Ensure that listerner has a desired certificate arn attached.
+    describe aws_elasticloadbalancingv2_listener_certificate(listener_arn: 'test') do
+      its('certificate_arn') { should eq "test" }
     end
+   
+## Matchers
 
-### be_available
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-Use `should` to check if the work_group name is available.
+#### exist
 
-    describe aws_athena_work_group(work_group: 'test1') do
-      it { should be_available }
-    end
+The control will pass if the describe returns at least one result.
+
+Use `should_not` to test the entity should not exist.
+
+    describe aws_elasticloadbalancingv2_listener(listener_arn: "dummy") do
+       it { should_not exist }
+    end  
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elb_client_v2.describe_listener_certificates` actions with Effect set to Allow.  
+

@@ -4,10 +4,14 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerCertificates < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener_certificates'
-  desc 'Lists the clients that have been created for the specified user pool.'
+  desc 'Describes the default certificate and the certificate list for the specified HTTPS or TLS listener'
 
   example "
-    describe aws_elasticloadbalancingv2_listener_certificates(user_pool_id: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
+      it { should exist }
+    end
+
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
       its('count') { should eq 3 }
     end
   "

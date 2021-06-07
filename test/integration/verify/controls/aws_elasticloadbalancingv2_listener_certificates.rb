@@ -1,8 +1,23 @@
-describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener/app/test-alb/26a69087e2cecd85/04af269ce8a29579') do
-  it { should_not exist }
-end
+aws_elb2_listener_arn = attribute(:aws_elb2_listener_arn, value: '', description: '')
+aws_elb2_certificate_arn = attribute(:aws_elb2_certificate_arn, value: '', description: '')
 
-describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:listener/app/test-alb/26a69087e2cecd85/04af269ce8a29579') do
-  its('certificate_arns') { should eq "test" }
-  its('is_defaults') { should eq true }
+control 'aws-_elb2_listener_certificates1-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS ELBV2 Listner Certificates has the correct properties.'
+
+  describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: aws_elb2_listener_arn) do
+    it { should exist }
+  end
+end
+  
+control 'aws-_elb2_listener_certificates2-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS ELBV2 Listner Certificates has the correct properties.'
+
+  describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: aws_elb2_listener_arn) do
+    its('certificate_arns') { should include aws_elb2_certificate_arn }
+    its('is_defaults') { should include true }
+  end
 end
