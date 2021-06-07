@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.7 -->
+<!-- latest_release 1.49.8 -->
+## [v1.49.8](https://github.com/inspec/inspec-aws/tree/v1.49.8) (2021-06-07)
+
+#### Merged Pull Requests
+- fix lint  [#419](https://github.com/inspec/inspec-aws/pull/419) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.49.7](https://github.com/inspec/inspec-aws/tree/v1.49.7) (2021-06-07)
 
 #### Merged Pull Requests
 - aws athena work group [#362](https://github.com/inspec/inspec-aws/pull/362) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.6](https://github.com/inspec/inspec-aws/tree/v1.49.6) (2021-06-07)
 
