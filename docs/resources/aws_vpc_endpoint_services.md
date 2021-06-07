@@ -5,12 +5,12 @@ platform: aws
 
 # aws\_vpc\_endpoint\_services
 
-Use the `aws_vpc_endpoint_services` InSpec audit resource to test the properties of all Route for a AWS VPC Endpoint Services.
+Use the `aws_vpc_endpoint_services` InSpec audit resource to test the properties of all AWS VPC Endpoint Services.
 To audit a single endpoint service, use the `aws_vpc_endpoint_service` (singular) resource.
 
 ## Syntax
 
-A `aws_vpc_endpoint_services` resource block collects a group of VPC endpoint services' descriptions and tests the group.
+An `aws_vpc_endpoint_services` resource block collects a group of VPC endpoint services' descriptions and tests the group.
 
     describe aws_vpc_endpoint_services
       it { should exist }
@@ -18,19 +18,19 @@ A `aws_vpc_endpoint_services` resource block collects a group of VPC endpoint se
 
 ## Properties
 
-|Property                           | Description                                                | Field Name     |
-| ---                               | ---                                                        | ---            |
-| service_names                     | The List Amazon Resource Names (ARN) of all the services.  | `service_name`     |
-| service_ids                       | The IDs of all the endpoint service.                       | `service_id` |
-| service_types                     | List of all the types of service.                          | `service_type`      |
-| availability_zones                | List of all the Availability Zones in which the services are available. | `availability_zones`     |
-| owners                            | The AWS account IDs of the service owners.                 | `owner`         |
-| base_endpoint_dns_names           | The DNS names for the service.                             | `base_endpoint_dns_names` |
-| private_dns_name                  | The private DNS name for the service.                      | `private_dns_name`        |
-| vpc_endpoint_policy_supported     | List of boolean flags to indicate whether the service supports endpoint policies. | `vpc_endpoint_policy_supported`  |
-| acceptance_required               | List of boolean flags to indicate whether VPC endpoint connection requests to the service must be accepted by the service owner.| `acceptance_required`  |
-| manages_vpc_endpoints             | List of boolean flags that indicates whether the service manages its VPC endpoints. | `manages_vpc_endpoints` |
-| tags                              | List of all tags assigned to the service.                  | `tags` |
+|Property                           | Description                                                   | Field Name     |
+| ---                               | ---                                                           | ---            |
+| service_names                     | The Amazon Resource Names (ARN) of the services.              | `service_name`     |
+| service_ids                       | The IDs of the endpoint services.                             | `service_id` |
+| service_types                     | The types of services.                                        | `service_type`      |
+| availability_zones                | The Availability Zones in which the services are available.   | `availability_zones`     |
+| owners                            | The AWS account IDs of the service owners.                    | `owner`         |
+| base_endpoint_dns_names           | The DNS names for the service.                                | `base_endpoint_dns_names` |
+| private_dns_name                  | The private DNS name for the service.                         | `private_dns_name`        |
+| vpc_endpoint_policy_supported     | Whether the service supports endpoint policies. Valid values: `true` or `false`. | `vpc_endpoint_policy_supported`  |
+| acceptance_required               | Whether VPC endpoint connection requests to the service must be accepted by the service owner. Valid values: `true` or `false`. | `acceptance_required`  |
+| manages_vpc_endpoints             | Whether the service manages its VPC endpoints. Valid values: `true` or `false`. | `manages_vpc_endpoints` |
+| tags                              | The tags assigned to the service.                  | `tags` |
 | private_dns_name_verification_states | The verification states of the VPC endpoint service.    | `private_dns_name_verification_states` |
 
 ## Examples
@@ -81,18 +81,18 @@ For the complete list of available matchers, visit [Universal Matchers page](htt
 
 The control will pass if the 'describe' method returns at least one result.
 
-    describe aws_vpc_endpoint_services.where( <property>: <value>) do
+    describe aws_vpc_endpoint_services.where( PROPERTY: VALUE) do
       it { should exist }
     end
 
 Use `should_not` to test an entity that should not exist.
 
-    describe aws_vpc_endpoint_services.where( <property>: <value>) do
+    describe aws_vpc_endpoint_services.where( PROPERTY: VALUE) do
       it { should_not exist }
     end
 
 ## AWS Permissions
 
-The get the AWS permissions for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcEndpointServices` action set to `allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), will need the `ec2:DescribeVpcEndpointServices` action with `Effect` set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for VPC endpoint services](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

@@ -5,11 +5,11 @@ platform: aws
 
 # aws_vpc_endpoint_service
 
-Use the `aws_vpc_endpoint_service` InSpec audit resource to test the properties of a single AWS VPC Endpoint Service.
+Use the `aws_vpc_endpoint_service` InSpec audit resource to test the properties of a single AWS VPC endpoint service.
 
 ## Syntax
 
-An `aws_vpc_endpoint_service` resource block declares the tests for a single AWS VPC Endpoint Service by `service_name`.
+An `aws_vpc_endpoint_service` resource block declares the tests for a single AWS VPC endpoint service by `service_name`.
 
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
       it { should exist }
@@ -17,12 +17,11 @@ An `aws_vpc_endpoint_service` resource block declares the tests for a single AWS
 
 ### Parameters
 
-The AWS VPC Endpoint Service Name is required.
-
 #### service\_name _(required)_
 
-The Name of the AWS VPC Endpoint service
+The name of the AWS VPC endpoint service.
 
+The AWS VPC endpoint service name is required.
 It should be passed as a `service_name: 'value'` key-value entry in a hash.
 
 ## Properties
@@ -111,6 +110,6 @@ This InSpec audit resource has the following special matchers. For the complete 
 
 ## AWS Permissions
 
-To get the AWS permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `c2:DescribeVpcEndpointServices` action set to `allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), will need the `ec2:DescribeVpcEndpointServices` action with `Effect` set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for vpc endpoint service](https://docs.amazonaws.cn/en_us/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation at [Actions, Resources, and Condition Keys for VPC endpoint services](https://docs.amazonaws.cn/en_us/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
