@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.4 -->
+<!-- latest_release 1.49.5 -->
+## [v1.49.5](https://github.com/inspec/inspec-aws/tree/v1.49.5) (2021-06-07)
+
+#### Merged Pull Requests
+- Minor docs fixes [#417](https://github.com/inspec/inspec-aws/pull/417) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.49.4](https://github.com/inspec/inspec-aws/tree/v1.49.4) (2021-06-04)
 
 #### Merged Pull Requests
 - remove unwanted backticks [#416](https://github.com/inspec/inspec-aws/pull/416) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.49.3](https://github.com/inspec/inspec-aws/tree/v1.49.3) (2021-06-03)
 
