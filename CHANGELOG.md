@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.11 -->
+<!-- latest_release 1.49.12 -->
+## [v1.49.12](https://github.com/inspec/inspec-aws/tree/v1.49.12) (2021-06-07)
+
+#### Merged Pull Requests
+- aws cognito userpool client [#368](https://github.com/inspec/inspec-aws/pull/368) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.49.11](https://github.com/inspec/inspec-aws/tree/v1.49.11) (2021-06-07)
 
 #### Merged Pull Requests
 - aws cognito userpool [#369](https://github.com/inspec/inspec-aws/pull/369) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.10](https://github.com/inspec/inspec-aws/tree/v1.49.10) (2021-06-07)
 
