@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSGlueDatabase < AwsResourceBase
   name 'aws_glue_database'
-  desc ''
+  desc 'Retrieves the definition of a specified database.'
 
   example "
     describe aws_glue_database(name: 'db_name') do
@@ -39,6 +39,6 @@ class AWSGlueDatabase < AwsResourceBase
   end
 
   def to_s
-    "db_name: #{@display_name}"
+    "name: #{@display_name}"
   end
 end
