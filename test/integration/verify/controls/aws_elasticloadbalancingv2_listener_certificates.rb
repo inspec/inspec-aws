@@ -4,7 +4,7 @@ aws_elb2_certificate_arn = attribute(:aws_elb2_certificate_arn, value: '', descr
 control 'aws-_elb2_listener_certificates1-1.0' do
 
   impact 1.0
-  title 'Ensure AWS ELBV2 Listner Certificates has the correct properties.'
+  title 'Ensure AWS ELBV2 Listener Certificates has the correct properties.'
 
   describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: aws_elb2_listener_arn) do
     it { should exist }
@@ -14,7 +14,7 @@ end
 control 'aws-_elb2_listener_certificates2-1.0' do
 
   impact 1.0
-  title 'Ensure AWS ELBV2 Listner Certificates has the correct properties.'
+  title 'Ensure AWS ELBV2 Listener Certificates has the correct properties.'
 
   describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: aws_elb2_listener_arn) do
     its('certificate_arns') { should include aws_elb2_certificate_arn }
