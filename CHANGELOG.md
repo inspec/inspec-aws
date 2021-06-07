@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.5 -->
+<!-- latest_release 1.49.6 -->
+## [v1.49.6](https://github.com/inspec/inspec-aws/tree/v1.49.6) (2021-06-07)
+
+#### Merged Pull Requests
+- Upgrade to GitHub-native Dependabot [#337](https://github.com/inspec/inspec-aws/pull/337) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v1.49.5](https://github.com/inspec/inspec-aws/tree/v1.49.5) (2021-06-07)
 
 #### Merged Pull Requests
 - Minor docs fixes [#417](https://github.com/inspec/inspec-aws/pull/417) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.49.4](https://github.com/inspec/inspec-aws/tree/v1.49.4) (2021-06-04)
 
