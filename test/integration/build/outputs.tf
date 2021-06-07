@@ -408,3 +408,11 @@ output "aws_transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
 }
 
+output "aws_vpc_endpoint_service_id" {
+  value = aws_vpc_endpoint_service.notification_service.id
+}
+
+output "aws_vpc_endpoint_service_allowed_principal_arn" {
+  value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
+}
+

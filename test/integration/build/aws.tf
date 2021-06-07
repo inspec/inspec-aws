@@ -2284,6 +2284,11 @@ resource "aws_vpc_endpoint_service" "notification_service" {
   network_load_balancer_arns = [aws_lb.test.arn]
 }
 
+resource "aws_vpc_endpoint_service_allowed_principal" "notification_service_principal" {
+  vpc_endpoint_service_id = aws_vpc_endpoint_service.notification_service.id
+  principal_arn = aws_iam_user.iam_user[0].arn
+}
+
 resource "aws_vpc_endpoint" "for_notification" {
   service_name      = "com.amazonaws.us-east-2.ec2"
   vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
