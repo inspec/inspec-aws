@@ -1,9 +1,16 @@
-describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:loadbalancer/app/test1/4d099ca3e6de545d') do
+aws_elbv2_load_balancer_arn = attribute(:aws_elbv2_load_balancer_arn, value: '', description: '')
+
+control 'aws-eelbv2-load-balancer-1.0' do
+
+  impact 1.0
+  title 'Ensure AWS ELBv2 Load Balancer has the correct properties.'
+
+  describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: aws_elbv2_load_balancer_arn) do
     it { should exist }
   end
   
-  describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-east-2:112758395563:loadbalancer/app/test1/4d099ca3e6de545d') do
-      its('load_balancer_arn') { should eq "arn:aws:elasticloadbalancing:us-east-2:112758395563:loadbalancer/app/test1/4d099ca3e6de545d" }
+  describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: aws_elbv2_load_balancer_arn) do
+      its('load_balancer_arn') { should eq aws_elbv2_load_balancer_arn }
       its('dns_name') { should eq "test1-1277654690.us-east-2.elb.amazonaws.com" }
       its('canonical_hosted_zone_id') { should eq "Z3AADJGX6KTTL2" }
       # its('created_time') { should eq "2021-05-17 18:01:12.78 UTC" }
@@ -20,12 +27,9 @@ describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:el
       its('availability_zones.first.outpost_id') { should be_empty }
   
       its('availability_zones.first.load_balancer_addresses') { should be_empty }
-    #   its('availability_zones.first.load_balancer_addresses.first.ip_address') { should be_empty }
-    #   its('availability_zones.first.load_balancer_addresses.first.allocation_id') { should be_empty }
-    #   its('availability_zones.first.load_balancer_addresses.first.private_i_pv_4_address') { should be_empty }
-    #   its('availability_zones.first.load_balancer_addresses.first.i_pv_6_address') { should be_empty }
   
       its('security_groups') { should include "sg-00dd73829ccf99146" }
       its('ip_address_type') { should eq "ipv4" }
       its('customer_owned_ipv_4_pool') { should be_empty }
   end
+end

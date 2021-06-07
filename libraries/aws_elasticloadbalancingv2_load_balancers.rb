@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
   name 'aws_elasticloadbalancingv2_load_balancers'
-  desc 'Lists the clients that have been created for the specified user pool.'
+  desc 'Describes the specified load balancers or all of your load balancers.'
 
   example "
     describe _aws_elasticloadbalancingv2_load_balancers(user_pool_id: 'test1') do

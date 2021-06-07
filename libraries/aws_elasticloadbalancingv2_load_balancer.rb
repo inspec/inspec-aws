@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSElasticLoadBalancingV2LoadBalancer < AwsResourceBase
   name 'aws_elasticloadbalancingv2_load_balancer'
-  desc 'Returns information about the endpoints for your account in the current region.'
+  desc 'Describes the specified load balancers or all of your load balancers.'
 
   example "
     describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'test') do

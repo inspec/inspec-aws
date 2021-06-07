@@ -1,55 +1,62 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_elasticloadbalancingv2_load_balancer Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_elasticloadbalancingv2\_load\_balancer
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_elasticloadbalancingv2_load_balancer` InSpec audit resource to test properties of a single specific ElasticLoadBalancingV2 LoadBalancer.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::ElasticLoadBalancingV2::LoadBalancer resource specifies an Application Load Balancer, a Network Load Balancer, or a Gateway Load Balancer.
 
 ## Syntax
 
-Ensure that a work_group name exists.
-
-    describe aws_athena_work_group(work_group: 'test1') do
+Ensure that a Load Balancer Arn exists.
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`load_balancer_arn` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on ElasticLoadBalancingV2 LoadBalancer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| load_balancer_arn | The Amazon Resource Name (ARN) of the load balancer. |
+| dns_name | The public DNS name of the load balancer. |
+| canonical_hosted_zone_id | The ID of the Amazon Route 53 hosted zone associated with the load balancer. |
+| created_time | The date and time the load balancer was created. |
+| load_balancer_name | The name of the load balancer. |
+| scheme | The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet. The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route requests only from clients with access to the VPC for the load balancer. |
+| vpc_id | The ID of the VPC for the load balancer. |
+| state (code) | The state code. The initial state of the load balancer is provisioning . After the load balancer is fully set up and ready to route traffic, its state is active . If load balancer is routing traffic but does not have the resources it needs to scale, its state is active_impaired. If the load balancer could not be set up, its state is failed. |
+| state (reason) | A description of the state. |
+| type | The type of load balancer. |
+| availability_zones (zone_name) | The name of the Availability Zone. |
+| availability_zones (subnet_id) | The ID of the subnet. You can specify one subnet per Availability Zone. |
+| availability_zones (outpost_id) | [Application Load Balancers on Outposts] The ID of the Outpost. |
+| availability_zones (load_balancer_addresses (ip_address)) | The static IP address. |
+| availability_zones (load_balancer_addresses (allocation_id)) | [Network Load Balancers] The allocation ID of the Elastic IP address for an internal-facing load balancer. |
+| availability_zones (load_balancer_addresses (private_i_pv_4_address)) | [Network Load Balancers] The private IPv4 address for an internal load balancer. |
+| availability_zones (load_balancer_addresses (i_pv_6_address)) | [Network Load Balancers] The IPv6 address. |
+| security_groups | The IDs of the security groups for the load balancer. |
+| ip_address_type | The type of IP addresses used by the subnets for your load balancer. The possible values are ipv4 (for IPv4 addresses) and dualstack (for IPv4 and IPv6 addresses). |
+| customer_owned_ipv_4_pool | [Application Load Balancers on Outposts] The ID of the customer-owned address pool. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a Load Balancer Arn is available.
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+      its('load_balancer_arn') { should eq 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Verify the load balancer name.
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+        its('load_balancer_name') { should eq 'my-load-balancer' }
     end
 
 ## Matchers
@@ -62,13 +69,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -76,10 +83,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_elasticloadbalancingv2_load_balancer(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elb_client_v2.describe_load_balancers` action with `Effect` set to `Allow`.
