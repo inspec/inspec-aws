@@ -1,44 +1,36 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_elasticsearchservice_domains Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_elasticsearchservice\_domains
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_elasticsearchservice_domains` InSpec audit resource to test properties of a plural Elasticsearch Domains.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Elasticsearch::Domain resource creates an Amazon Elasticsearch Service (Amazon ES) domain.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a domain name exists.
+    describe aws_elasticsearchservice_domains do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Elasticsearch Domain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| DomainName | Specifies the DomainName. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure a domain name is available.
+    describe aws_elasticsearchservice_domains do
+      its('domain_name') { should include 'DomainName' }
     end
 
 ## Matchers
@@ -51,13 +43,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_elasticsearchservice_domains do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_elasticsearchservice_domains do
       it { should_not exist }
     end
 
@@ -65,10 +57,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_elasticsearchservice_domains do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticsearch_service_client.list_domain_names` action with `Effect` set to `Allow`.

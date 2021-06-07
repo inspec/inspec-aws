@@ -209,7 +209,12 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}"
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_elasticsearch_domain_name: "domain1",
+      aws_elasticsearch_version: "7.10",
+      aws_elasticsearch_instance_type: "r6g.large.elasticsearch",
+      aws_elasticsearch_automated_snapshot_start_hour: 23,
+
   }
 
   def self.config

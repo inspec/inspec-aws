@@ -152,6 +152,10 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_elasticsearch_domain_name" {}
+variable "aws_elasticsearch_version" {}
+variable "aws_elasticsearch_instance_type" {}
+variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1832,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1976,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1980,16 +1984,22 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_elasticsearch_domain" "aws_elasticsearch_domain1" {
-  domain_name           = "example"
-  elasticsearch_version = "1.5"
+
+resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
+  domain_name           = var.aws_elasticsearch_domain_name
+  elasticsearch_version = var.aws_elasticsearch_version
 
   cluster_config {
-    instance_type = "r4.large.elasticsearch"
+    instance_type = var.aws_elasticsearch_instance_type
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10
   }
 
   snapshot_options {
-    automated_snapshot_start_hour = 23
+    automated_snapshot_start_hour = var.aws_elasticsearch_automated_snapshot_start_hour
   }
 
   tags = {
