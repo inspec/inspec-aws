@@ -1,9 +1,14 @@
-<!-- latest_release 1.49.9 -->
+<!-- latest_release 1.49.10 -->
+## [v1.49.10](https://github.com/inspec/inspec-aws/tree/v1.49.10) (2021-06-07)
+
+#### Merged Pull Requests
+- Soumyo/aws cognito identity pool [#367](https://github.com/inspec/inspec-aws/pull/367) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.49.9](https://github.com/inspec/inspec-aws/tree/v1.49.9) (2021-06-07)
 
 #### Merged Pull Requests
 - aws autoscaling scaling policy [#363](https://github.com/inspec/inspec-aws/pull/363) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.8](https://github.com/inspec/inspec-aws/tree/v1.49.8) (2021-06-07)
 
