@@ -334,6 +334,7 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+
 output "aws_option_group_name" {
 value = aws_db_option_group.test-option-group.name
 }
@@ -407,5 +408,3 @@ output "aws_vpc_notifications_arn" {
 output "aws_transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
 }
-
-

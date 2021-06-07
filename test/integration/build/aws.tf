@@ -152,6 +152,18 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_image_id" {}
+variable "aws_instance_type" {}
+variable "aws_auto_scaling_group_name" {}
+variable "aws_auto_scaling_max_size" {}
+variable "aws_auto_scaling_min_size" {}
+variable "aws_auto_scaling_health_check_grace_period" {}
+variable "aws_auto_scaling_health_check_type" {}
+variable "aws_auto_scaling_force_delete" {}
+variable "aws_auto_scaling_policy_name" {}
+variable "aws_auto_scaling_adjustment" {}
+variable "aws_auto_scaling_adjustment_type" {}
+variable "aws_auto_scaling_cooldown" {}
 variable "tgw_route_cidr_block" {}
 variable "tgw_route_cidr_block_blockhole" {}
 variable "aws_db_option_group_name" {}
@@ -2082,6 +2094,33 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
+  name                   = var.aws_auto_scaling_policy_name
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
+
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
+  availability_zones        = ["us-east-2a"]
+  name                      = var.aws_auto_scaling_group_name
+  max_size                  = var.aws_auto_scaling_max_size
+  min_size                  = var.aws_auto_scaling_min_size
+  health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
+  health_check_type         = var.aws_auto_scaling_health_check_type
+  force_delete              = var.aws_auto_scaling_force_delete
+  launch_configuration      = aws_launch_configuration.as_conf.name
+}
+
+resource "aws_launch_configuration" "as_conf" {
+  name          = var.aws_launch_configuration_name
+  image_id      = var.aws_image_id
+  instance_type = var.aws_instance_type
+}
+
 
 resource "aws_athena_workgroup" "aws_athena_workgroup_" {
   name = var.aws_athena_workgroup

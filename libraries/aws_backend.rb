@@ -31,6 +31,7 @@ require 'aws-sdk-ssm'
 require 'rspec/expectations'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
+require 'aws-sdk-applicationautoscaling'
 
 # AWS Inspec Backend Classes
 #
@@ -186,6 +187,10 @@ class AwsConnection
 
   def redshift_client
     aws_client(Aws::Redshift::Client)
+  end
+
+  def autoscaling_client
+    aws_client(Aws::AutoScaling::Client)
   end
 end
 
