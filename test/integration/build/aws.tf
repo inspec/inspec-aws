@@ -2021,3 +2021,15 @@ data "aws_iam_policy_document" "sns_topic_policy" {
     resources = [aws_sns_topic.aws_logins.arn]
   }
 }
+
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
+  name        = "test_rule"
+  description = "Description of the rule."
+  event_pattern = <<EOF
+  {
+    "detail-type": [
+      "AWS Console Sign In via CloudTrail"
+    ]
+  }
+  EOF
+}

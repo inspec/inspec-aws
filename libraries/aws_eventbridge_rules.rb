@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSEventBridgeRules < AwsResourceBase
   name 'aws_eventbridge_rules'
-  desc ''
-  example `
+  desc 'Lists your Amazon EventBridge rules.'
+
+  example "
     describe aws_eventbridge_rules do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
@@ -39,7 +40,7 @@ class AWSEventBridgeRules < AwsResourceBase
         @api_response = @aws.eventbridge_client.list_rules(@query_params)
       end
 
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.rules.each do |res|
         rows += [{
           name: res.name,

@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSEventBridgeRule < AwsResourceBase
   name 'aws_eventbridge_rule'
-  desc 'Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.'
+  desc 'Describes the specified rule.'
 
   example "
-    describe aws_elasticsearchservice_domain(name: 'rule_name') do
+    describe aws_eventbridge_rule(name: 'test_rule') do
       it { should exist }
     end
   "
@@ -39,6 +39,6 @@ class AWSEventBridgeRule < AwsResourceBase
   end
 
   def to_s
-    "domain_name: #{@display_name}"
+    "name: #{@display_name}"
   end
 end
