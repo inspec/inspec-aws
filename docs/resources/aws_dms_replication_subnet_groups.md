@@ -11,7 +11,8 @@ The AWS::DMS::ReplicationSubnetGroup resource creates an AWS DMS replication sub
 
 ## Syntax
 
-Ensure that a work_group exists.
+Ensure that a subnet group exists.
+
     describe aws_dms_replication_subnet_groups do
       it { should exist }
     end
@@ -34,12 +35,12 @@ For additional information, see the [AWS documentation on DMS Replication Subnet
 
 ### Ensure a identifier is available.
     describe aws_dms_replication_subnet_groups do
-      its('replication_subnet_group_identifiers') { should include 'test' }
+      its('replication_subnet_group_identifiers') { should include 'test1' }
     end
 
-### Ensure that the vpc is availble.
+### Ensure that the vpc is available.
     describe aws_dms_replication_subnet_groups do
-        its('vpc_ids') { should include 'ENABLED' }
+        its('vpc_ids') { should include 'vpc-0123456789' }
     end
 
 ## Matchers

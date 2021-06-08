@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSDMSReplicationSubnetGroup < AwsResourceBase
   name 'aws_dms_replication_subnet_group'
   desc 'Returns information about the replication subnet groups.'
+
   example "
     describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
       it { should eq 'test' }

@@ -5,11 +5,12 @@ require 'aws_backend'
 class AWSDMSReplicationSubnetGroups < AwsResourceBase
   name 'aws_dms_replication_subnet_groups'
   desc 'Returns information about the replication subnet groups.'
-  example `
+
+  example "
     describe aws_dms_replication_subnet_groups do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

@@ -11,7 +11,7 @@ The AWS::DMS::ReplicationSubnetGroup resource creates an AWS DMS replication sub
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a subnet group identifier exists.
 
     describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test1') do
       it { should exist }
@@ -40,7 +40,7 @@ For additional information, see the [AWS documentation on DMS Replication Subnet
       its('replication_subnet_group_identifier') { should eq 'test' }
     end
 
-### Ensure that the vpc is availble.
+### Ensure that the vpc is available.
     describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
         its('vpc_id') { should eq 'vpc-0123456789' }
     end
@@ -61,7 +61,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'dummy') do
       it { should_not exist }
     end
 
