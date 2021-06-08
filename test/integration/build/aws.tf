@@ -153,7 +153,8 @@ variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "aws_cluster_name" {}
-variable "aws_service_name" {}
+variable "aws_ecs_task_definition_family" {}
+variable "aws_ecs_service_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1830,7 +1831,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1974,88 +1975,12 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
-}
-
-resource "aws_ecs_service" "aws_ecs_service_test" {
-  name            = var.aws_service_name
-  cluster         = aws_ecs_cluster.aws_ecs_cluster_test.id
-  task_definition = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
-  desired_count   = 3
-  iam_role        = aws_iam_role.aws_iam_role_test.arn
-  depends_on      = [aws_iam_role_policy.aws_iam_role_policy_test]
-
-  ordered_placement_strategy {
-    type  = "binpack"
-    field = "cpu"
-  }
-
-  load_balancer {
-    target_group_arn = aws_lb_target_group.aws_lb_target_group_test.arn
-    container_name   = "mongo"
-    container_port   = 8080
-  }
-
-  placement_constraints {
-    type       = "memberOf"
-    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
-  }
-}
-
-resource "aws_iam_role_policy" "aws_iam_role_policy_test" {
-  name = "test_policy"
-  role = aws_iam_role.aws_iam_role_test.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "ec2:Describe*",
-        ]
-        Effect   = "Allow"
-        Resource = "*"
-      },
-    ]
-  })
-}
-
-resource "aws_iam_role" "aws_iam_role_test" {
-  name = "test_role1"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      },
-    ]
-  })
-}
-
-resource "aws_ecs_cluster" "aws_ecs_cluster_test" {
-  name = var.aws_cluster_name
-}
-
-resource "aws_lb_target_group" "aws_lb_target_group_test" {
-  name     = "tf-example-lb-tg1"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.main.id
-}
-
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
@@ -2097,5 +2022,20 @@ resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
   placement_constraints {
     type       = "memberOf"
     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_ecs_service" "bar" {
+  name                = var.aws_ecs_service_name
+  cluster             = aws_ecs_cluster.for_ecs_service.id
+  task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+  scheduling_strategy = "DAEMON"
+}
+resource "aws_ecs_cluster" "for_ecs_service" {
+  name = var.aws_cluster_name
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
   }
 }
