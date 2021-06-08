@@ -152,6 +152,8 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_iam_instance_profile_name1" {}
+variable "aws_iam_role_name1" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1980,28 +1982,28 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_iam_instance_profile" "aws_iam_instance_profile1" {
-  name = "test_profile"
-  role = aws_iam_role.role.name
+resource "aws_iam_instance_profile" "aws_iam_instance_profile_test" {
+  name = var.aws_iam_instance_profile_name1
+  role = aws_iam_role.aws_iam_role_test[0].name
 }
 
-resource "aws_iam_role" "role" {
-  name = "test_role"
-  path = "/"
+resource "aws_iam_role" "aws_iam_role_test" {
+  count = 1
+  name  = var.aws_iam_role_name1
 
   assume_role_policy = <<EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "sts:AssumeRole",
-            "Principal": {
-               "Service": "ec2.amazonaws.com"
-            },
-            "Effect": "Allow",
-            "Sid": ""
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
 }
 EOF
 }

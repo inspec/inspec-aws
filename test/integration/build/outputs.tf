@@ -301,3 +301,19 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_iam_instance_profile_id" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.id
+}
+
+output "aws_iam_instance_profile_arn" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.arn
+}
+
+output "aws_iam_role_id" {
+  value = aws_iam_role.aws_iam_role_test.id
+}
+
+output "aws_iam_role_arn" {
+  value = aws_iam_role.aws_iam_role_test.arn
+}
