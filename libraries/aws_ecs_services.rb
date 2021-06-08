@@ -30,8 +30,8 @@ class AWSECSServices < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(cluster))
-    if opts.key?(:cluster)
-      raise ArgumentError, "#{@__resource_name__}: cluster must be provided" unless opts[:cluster] && !opts[:cluster].empty?
+    if opts.key?(:cluster) && !(opts[:cluster] && !opts[:cluster].empty?)
+      raise ArgumentError, "#{@__resource_name__}: cluster must be provided"
     end
     @table = fetch_data
   end
@@ -49,7 +49,7 @@ class AWSECSServices < AwsResourceBase
       return [] if !service_ids.service_arns || service_ids.service_arns.empty?
 
       catch_aws_errors do
-        service_details = @aws.ecs_client.describe_services({cluster: opts[:cluster] , services: service_ids[:service_arns] })
+        service_details = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: service_ids[:service_arns] })
       end
 
       service_details.services.each do |c|
@@ -70,7 +70,5 @@ class AWSECSServices < AwsResourceBase
       pagination_options = { cluster: opts[:cluster], next_token: service_ids.next_token }
     end
     @table = service_rows
-
   end
-
 end
