@@ -5,13 +5,14 @@ platform: aws
 
 # aws\_batch\_job\_definitions
 
-Use the `aws_batch_job_definitions` InSpec audit resource to test properties of a plural Batch Job Definition.
+Use the `aws_batch_job_definitions` InSpec audit resource to test properties of multiple Batch job definitions.
 
 The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
 ## Syntax
 
-Ensure that a job_definition exists.
+Ensure that a job definition exists.
+
     describe aws_batch_job_definitions do
       it { should exist }
     end
@@ -25,23 +26,25 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 | Property | Description|
 | --- | --- |
 | job_definition_names | The name of the job definition. |
-| job_definition_arns | The arn of the job definition. |
+| job_definition_arns | The ARN of the job definition. |
 | revisions | The revision of the job definition. |
 | statuses | The status of the job definition. |
 | types | The type of the job definition. |
 | parameters | The parameter of the job definition. |
 | tags | The tags of the job definition. |
-| propagate_tags | The propagate_tags of the job definition. |
-| platform_capabilities | The platform_capabilities of the job definition. |
+| propagate_tags | Whether to propagate tags from the job definition to the ECS task. |
+| platform_capabilities | The platform capabilities required by the job definition. |
 
 ## Examples
 
-### Ensure a job_definition name is available.
+### Ensure a job definition name is available.
+
     describe aws_batch_job_definitions do
-      its('job_definition_names') { should include 'test1' }
+      its('job_definition_names') { should include 'JOB_DEFINITION_NAME' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
+### Ensure that the status is `ACTIVE`.
+
     describe aws_batch_job_definitions do
         its('statuses') { should include 'ACTIVE' }
     end
@@ -61,7 +64,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_batch_job_definitions do
       it { should_not exist }
     end
