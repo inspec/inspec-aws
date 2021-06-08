@@ -49,4 +49,8 @@ class AWSIAMInstanceProfileSuccessPathTest < Minitest::Test
   def test_instance_profile_id
     assert_equal(@instance_profile.instance_profile_id, 'test1')
   end
+
+  def test_instance_profile_arn
+    assert_equal(@instance_profile.arn, 'test1')
+  end
 end
