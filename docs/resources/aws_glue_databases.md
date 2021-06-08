@@ -1,74 +1,74 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_glue_databases Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_glue\_databases
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_glue_databases` InSpec audit resource to test properties of a plural Glue Database.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Glue::Database resource specifies a logical grouping of tables in AWS Glue.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a database name exists.
+
+    describe aws_glue_databases
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Glue Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| names | The name of the database. For Hive compatibility, this is folded to lowercase when it is stored. |
+| descriptions | A description of the database. |
+| location_uris | The location of the database (for example, an HDFS path). |
+| parameters | These key-value pairs define parameters and properties of the database. |
+| create_times | The time at which the metadata database was created in the catalog. |
+| create_table_default_permissions | Creates a set of default permissions on the table for principals.. |
+| target_databases | A DatabaseIdentifier structure that describes a target database for resource linking. |
+| catalog_ids | The ID of the Data Catalog in which the database resides. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
-    end
-
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure a database name is available.
+    describe aws_glue_databases
+      its('names') { should include 'db_name' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_glue_databases
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_groups do
+
+    describe aws_glue_databases
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the database name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_glue_databases
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `glue_client.get_databases` action with `Effect` set to `Allow`.

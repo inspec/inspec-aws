@@ -1,85 +1,83 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_glue_database Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_glue\_database
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_glue_database` InSpec audit resource to test properties of a single specific Glue Database.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Glue::Database resource specifies a logical grouping of tables in AWS Glue.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a database name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_glue_database(name: 'db_name')
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on Glue Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| name | The name of the database. For Hive compatibility, this is folded to lowercase when it is stored. |
+| description | A description of the database. |
+| location_uri | The location of the database (for example, an HDFS path). |
+| parameters | These key-value pairs define parameters and properties of the database. |
+| create_time | The time at which the metadata database was created in the catalog. |
+| create_table_default_permissions (principal (data_lake_principal_identifier)) | An identifier for the AWS Lake Formation principal. |
+| create_table_default_permissions (permissions) | The permissions that are granted to the principal. |
+| target_database (catalog_id) | The ID of the Data Catalog in which the database resides. |
+| target_database (database_name) | The name of the catalog database. |
+| catalog_id | The ID of the Data Catalog in which the database resides. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a database name is available.
+    describe aws_glue_database(name: 'db_name') do
+      its('name') { should eq 'db_name' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure a target database name is available.
+    describe aws_glue_database(name: 'db_name') do
+        its('target_database.database_name') { should eq 'target_db_name' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_glue_database(name: 'db_name') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
+
+    describe aws_glue_database(name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the database name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_glue_database(name: 'db_name') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `glue_client.get_database` action with `Effect` set to `Allow`.
