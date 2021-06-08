@@ -11,7 +11,8 @@ The AWS::Glue::Crawler resource specifies an AWS Glue crawler.
 
 ## Syntax
 
-### Ensure that a crawler exists.
+Ensure that a crawler exists.
+
     describe aws_glue_crawlers do
       it { should exist }
     end
@@ -49,6 +50,11 @@ For additional information, see the [AWS documentation on Glue Crawler](https://
 ### Ensure a crawler name is available.
     describe aws_glue_crawlers do
       its('names') { should include 'crawler-name' }
+    end
+
+### Ensure a database name is available.
+    describe aws_glue_crawlers do
+      its('database_names') { should include 'database-name' }
     end
 
 ## Matchers
