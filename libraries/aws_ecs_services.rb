@@ -44,7 +44,6 @@ class AWSECSServices < AwsResourceBase
 
     loop do
       catch_aws_errors do
-        require 'byebug'; byebug
         service_ids = @aws.ecs_client.list_services(pagination_options)
       end
       return [] if !service_ids.service_arns || service_ids.service_arns.empty?
