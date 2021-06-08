@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSIAMInstanceProfiles < AwsResourceBase
   name 'aws_iam_instance_profiles'
-  desc ''
-  example `
+  desc 'Lists the instance profiles that have the specified path prefix.'
+
+  example "
     describe aws_iam_instance_profiles do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
