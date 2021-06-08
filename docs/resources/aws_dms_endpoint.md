@@ -12,6 +12,7 @@ The AWS::DMS::Endpoint resource creates an AWS DMS endpoint.
 ## Syntax
 
 Ensure that an arn exists.
+
     describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
       it { should exist }
     end
@@ -67,9 +68,9 @@ For additional information, see the [AWS documentation on DMS Endpoint](https://
       its('engine_name') { should eq 'test-engine-name' }
     end
 
-### Ensure that the status is `ACTIVE` or not.
+### Ensure that the port listens to the specific endpoint arn.
     describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
-        its('state') { should eq 'ACTIVE' }
+        its('port') { should eq 3306 }
     end
 
 ## Matchers
@@ -81,11 +82,13 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
+
     describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
+
     describe aws_dms_endpoint(endpoint_arn: 'dummy') do
       it { should_not exist }
     end
@@ -93,6 +96,7 @@ Use `should_not` to test the entity does not exist.
 ### be_available
 
 Use `should` to check if the endpoint is available.
+
     describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
       it { should be_available }
     end
