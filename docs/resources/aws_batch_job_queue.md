@@ -19,14 +19,16 @@ Ensure that a job_queue name exists.
 
 `job_queue_name` _(required)_
 
+The name of the job queue.
+
 For additional information, see the [AWS Batch job queues documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| job_definition_name | The name of the job queue. |
-| job_definition_arn | The ARN of the job queue. |
+| job_queue_name | The name of the job queue. |
+| job_queue_arn | The ARN of the job queue. |
 | state | The state of the job queue. |
 | status | The status of the job queue. |
 | status_reason | The status_reason of the job queue. |
@@ -39,13 +41,13 @@ For additional information, see the [AWS Batch job queues documentation](https:/
 
 ### Ensure a job queue name is available.
 
-    describe aws_batch_job_queue(job_queue_name: 'test1') do
-      its('job_definition_name') { should eq 'test1' }
+    describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
+      its('job_queue_name') { should eq 'JOB_QUEUE_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
 
-    describe aws_batch_job_queue(job_queue_name: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
         its('state') { should eq 'ENABLED' }
     end
 
@@ -59,13 +61,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_batch_job_queue(job_queue_name: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_batch_job_queue(job_queue_name: 'dummy') do
+    describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should_not exist }
     end
 
@@ -73,7 +75,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the job_queue name is available.
 
-    describe aws_batch_job_queue(job_queue_name: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should be_available }
     end
 

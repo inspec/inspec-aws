@@ -33,10 +33,10 @@ For additional information, see the [AWS Batch job queues documentation](https:/
 
 ## Examples
 
-### Ensure a job_queue name is available.
+### Ensure a job queue name is available.
 
     describe aws_batch_job_queues do
-      its('job_queue_names') { should include 'test1' }
+      its('job_queue_names') { should include 'JOB_QUEUE_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
