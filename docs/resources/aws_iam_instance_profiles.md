@@ -1,63 +1,66 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_iam_instance_profiles Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_iam\_instance\_profiles
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_iam_instance_profiles` InSpec audit resource to test properties of a plural IAM Instance Profile.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+This resource lists the instance profiles that have the specified path prefix.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that an instance profile name exists.
+
+    describe aws_iam_instance_profiles do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on IAM Instance Profile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| paths | The path to the instance profile. |
+| instance_profile_names | The name identifying the instance profile. |
+| instance_profile_ids | The stable and unique string identifying the instance profile. |
+| arns | The Amazon Resource Name (ARN) specifying the instance profile. |
+| create_dates | The date when the instance profile was created. |
+| roles | The role associated with the instance profile. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+### Ensure an instance profile name is available.
+    describe aws_iam_instance_profiles do
+      its('instance_profile_names') { should include 'ExampleInstanceProfile' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure that an arn is available.
+    describe aws_iam_instance_profiles do
+        its('arns') { should include 'arn:aws:iam::336924118301:instance-profile/ExampleInstanceProfile' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_iam_instance_profiles do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_groups do
+
+    describe aws_iam_instance_profiles do
       it { should_not exist }
     end
 
@@ -65,10 +68,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_groups do
+    describe aws_iam_instance_profiles do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam_client.list_instance_profiles` action with `Effect` set to `Allow`.

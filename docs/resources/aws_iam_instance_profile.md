@@ -1,85 +1,92 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_iam_instance_profile Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_iam\_instance\_profile
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_iam_instance_profile` InSpec audit resource to test properties of a single specific IAM Instance Profile.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+This resource retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a instance profile name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`instance_profile_name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on IAM Instance Profile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| path | The path to the instance profile. |
+| instance_profile_name | The name identifying the instance profile. |
+| instance_profile_id | The stable and unique string identifying the instance profile. |
+| arn | The Amazon Resource Name (ARN) specifying the instance profile. |
+| create_date | The date when the instance profile was created. |
+| roles (path) | The path to the role. |
+| roles (role_name) | The friendly name that identifies the role. |
+| roles (role_id) | The stable and unique string identifying the role. |
+| roles (arn) | The Amazon Resource Name (ARN) specifying the role. |
+| roles (create_date) | The date and time, in ISO 8601 date-time format , when the role was created. |
+| roles (assume_role_policy_document) | The policy that grants an entity permission to assume the role. |
+| roles (description) | A description of the role that you provide. |
+| roles (max_session_duration) | The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter. |
+| roles (permissions_boundary (permissions_boundary_type)) | The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy . |
+| roles (permissions_boundary (permissions_boundary_arn)) | The ARN of the policy used to set the permissions boundary for the user or role. |
+| roles (tags (key)) | The key name that can be used to look up or retrieve the associated value. For example, Department or Cost Center are common choices. |
+| roles (tags (value)) | The value associated with this tag. For example, tags with a key name of Department could have values such as Human Resources , Accounting , and Support . Tags with a key name of Cost Center might have values that consist of the number associated with the different cost centers in your company. Typically, many resources have tags with the same key name but with different values. |
+| roles (role_last_used (last_used_date)) | The date and time, in ISO 8601 date-time format that the role was last used. |
+| roles (role_last_used (region)) | The name of the AWS Region in which the role was last used. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a instance profile name is available.
+    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
+      its('instance_profile_name') { should eq 'ExampleInstanceProfile' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure that an arn is available.
+    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
+        its('arn') { should eq 'arn:aws:iam::336924118301:instance-profile/ExampleInstanceProfile' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
+
+    describe aws_iam_instance_profile(instance_profile_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the instance profile name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam_client.get_instance_profile` action with `Effect` set to `Allow`.
