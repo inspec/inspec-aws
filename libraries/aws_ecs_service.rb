@@ -7,7 +7,7 @@ class AWSECSService < AwsResourceBase
   desc 'Describes the specified services running in your cluster.'
 
   example "
-    describe aws_ecs_service(services: 'test1') do
+    describe aws_ecs_service(cluster: 'test-cluster', services: 'test1') do
       it { should exist }
     end
   "
@@ -19,7 +19,7 @@ class AWSECSService < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: cluster must be provided" unless opts[:cluster] && !opts[:cluster].empty?
     @display_name = opts[:services]
     catch_aws_errors do
-      resp = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: opts[:services] })
+      resp = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: [opts[:services]] })
       @services = resp.services[0].to_h
       create_resource_methods(@services)
     end
