@@ -15,7 +15,7 @@ class AWSECSServices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:service_arns,      field: :service_arns)
+             .register_column(:service_arns,      field: :service_arn)
              .register_column(:service_names,     field: :service_name)
              .register_column(:cluster_arns,      field: :cluster_arn)
              .register_column(:status,            field: :status)
@@ -44,9 +44,10 @@ class AWSECSServices < AwsResourceBase
 
     loop do
       catch_aws_errors do
+        require 'byebug'; byebug
         service_ids = @aws.ecs_client.list_services(pagination_options)
       end
-      return [] if !service_ids || service_ids.empty?
+      return [] if !service_ids.service_arns || service_ids.service_arns.empty?
 
       catch_aws_errors do
         service_details = @aws.ecs_client.describe_services({cluster: opts[:cluster] , services: service_ids[:service_arns] })
