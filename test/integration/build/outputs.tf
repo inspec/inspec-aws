@@ -303,11 +303,11 @@ output "aws_elasticache_replication_group_node_type" {
 }
 
 output "aws_service_id" {
-  value = aws_ecs_service.aws_ecs_service_test.id
+  value = aws_ecs_service.bar.id
 }
 
 output "aws_cluster_arn" {
-  value = aws_ecs_cluster.aws_ecs_cluster_test.arn
+  value = aws_ecs_cluster.for_ecs_service.arn
 }
 
 output "aws_task_definition_arn" {
