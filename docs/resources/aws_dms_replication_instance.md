@@ -7,11 +7,11 @@ platform: aws
 
 Use the `aws_dms_replication_instance` InSpec audit resource to test properties of a single specific DMS Replication Instance.
 
-The AWS::DMS::ReplicationInstance resource creates an AWS DMS replication instance.
+The AWS::DMS::ReplicationInstance resource creates an AWS DMS Replication Instance.
 
 ## Syntax
 
-Ensure that a deplication instance exists.
+Ensure that a replication instance exists.
 
     describe aws_dms_replication_instance do
       it { should exist }
@@ -19,7 +19,7 @@ Ensure that a deplication instance exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationinstance.html).
 
 ## Properties
 
@@ -77,4 +77,4 @@ Use `should` to check if the work_group name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `dmsmigrationservice:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `dmsmigrationservice:client:describe_orderable_replication_instances` action with `Effect` set to `Allow`.

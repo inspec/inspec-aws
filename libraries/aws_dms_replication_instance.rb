@@ -7,7 +7,7 @@ class AWSDMSReplicationInstance < AwsResourceBase
   desc 'Returns information about the replication instance types that can be created in the specified region.'
   example "
     describe aws_dms_replication_instance do
-      it { should exits }
+      it { should exist }
     end
   "
 
@@ -23,7 +23,7 @@ class AWSDMSReplicationInstance < AwsResourceBase
 
   def id
     return nil unless exists?
-    @orderable_replication_instances[:auto_scaling_group_name]
+    @orderable_replication_instances[:replication_instance_class]
   end
 
   def exists?
@@ -35,6 +35,6 @@ class AWSDMSReplicationInstance < AwsResourceBase
   end
 
   def to_s
-    "auto_scaling_group_name: #{@display_name}"
+    "aws_dms_replication_instance: #{@display_name}"
   end
 end

@@ -26,7 +26,7 @@ class AWSDMSReplicationInstancesHappyPathTest < Minitest::Test
     mock_parameter[:engine_version] = 'test1'
     mock_parameter[:replication_instance_class] = 'test1'
     mock_parameter[:storage_type] = 'test1'
-    mock_parameter[:min_allocated_storage] = 1
+    mock_parameter[:min_allocated_storage] = 0
     mock_parameter[:max_allocated_storage] = 1
     mock_parameter[:default_allocated_storage] = 1
     mock_parameter[:included_allocated_storage] = 1
@@ -54,7 +54,7 @@ class AWSDMSReplicationInstancesHappyPathTest < Minitest::Test
   end
 
   def test_min_allocated_storages
-    assert_equal(@orderable_replication_instances.min_allocated_storages, [1])
+    assert_equal(@orderable_replication_instances.min_allocated_storages, [0])
   end
 
   def test_max_allocated_storages

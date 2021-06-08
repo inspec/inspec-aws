@@ -7,18 +7,18 @@ platform: aws
 
 Use the `aws_dms_replication_instances` InSpec audit resource to test properties of a plural DMS Replication Instances.
 
-The AWS::DMS::ReplicationInstance resource creates an AWS DMS replication instance.
+The AWS::DMS::ReplicationInstance resource creates an AWS DMS Replication Instance.
 
 ## Syntax
 
-Ensure that a replication instance exists.
+###### Ensure that a replication instance exists.
     describe aws_dms_replication_instances do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationinstance.html).
 
 ## Properties
 
@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on DMS Replication Instan
 | --- | --- |
 | engine_versions | The engine versions of the replication instance. |
 | replication_instance_classes | The classes of the replication instance. |
-| storage_types | The storage type of the replication instance. |
+| storage_types | The storage types of the replication instance. |
 | min_allocated_storages | The min allocated storages of the replication instance. |
 | max_allocated_storages | The max allocated storages of the replication instance. |
 | default_allocated_storages | The default allocated storages of the replication instance. |
@@ -36,12 +36,12 @@ For additional information, see the [AWS documentation on DMS Replication Instan
 
 ## Examples
 
-### Ensure a engine version is available.
+###### Ensure a engine version is available.
     describe aws_dms_replication_instances do
       its('engine_versions') { should include '3.4.4' }
     end
 
-### Ensure that the classes is available
+###### Ensure that the classes is available
     describe aws_dms_replication_instances do
         its('replication_instance_classes') { should include 'dms.c4.2xlarge' }
     end
@@ -54,22 +54,19 @@ The controls will pass if the `describe` method returns at least one result.
 
 ### exist
 
-Use `should` to test that the entity exists.
-
+###### Use `should` to test that the entity exists.
     describe aws_dms_replication_instances do
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
-      
+###### Use `should_not` to test the entity does not exist.
     describe aws_dms_replication_instances do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
-
+###### Use `should` to check if the work_group name is available.
     describe aws_dms_replication_instances do
       it { should be_available }
     end
