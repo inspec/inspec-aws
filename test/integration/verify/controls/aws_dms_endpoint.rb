@@ -4,7 +4,7 @@ control 'aws-endpoint-1.0' do
   impact 1.0
   title 'Ensure AWS DMS Endpoint has the correct properties.'
 
-  describe aws_dms_endpoint(endpoint_arn: 'endpoint_arn_value') do
+  describe aws_dms_endpoint(endpoint_arn: aws_endpoint_arn) do
     it { should exist }
   end
 end

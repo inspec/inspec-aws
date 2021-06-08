@@ -23,17 +23,9 @@ class AWSDMSEndpoint < AwsResourceBase
 
     raise ArgumentError, "#{@__resource_name__}: endpoint_arn must be provided" unless opts[:endpoint_arn] && !opts[:endpoint_arn].empty?
     @display_name = opts[:endpoint_arn]
+    filter = { name: 'endpoint-arn', values: [opts[:endpoint_arn]] }
     catch_aws_errors do
-      resp = @aws.dmsmigrationservice_client.describe_endpoints(
-        {
-          filters: [
-            {
-              name: 'endpoint-arn',
-              values: [opts[:endpoint_arn]],
-            },
-          ],
-        },
-      )
+      resp = @aws.dmsmigrationservice_client.describe_endpoints({ filters: [filter] })
       @endpoints = resp.endpoints[0].to_h
       create_resource_methods(@endpoints)
     end
