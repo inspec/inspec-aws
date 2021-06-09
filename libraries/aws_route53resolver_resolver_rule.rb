@@ -6,11 +6,11 @@ class AWSRoute53ResolverResolverRule < AwsResourceBase
   name 'aws_route53resolver_resolver_rule'
   desc ''
 
-  example `
+  example "
     describe aws_route53resolver_resolver_rule(resolver_rule_id: 'resolver_rule_id_test') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { resolver_rule_id: opts } if opts.is_a?(String)

@@ -6,11 +6,11 @@ class AWSRoute53HostedZone < AwsResourceBase
   name 'aws_route53_hosted_zone'
   desc ''
 
-  example `
-    describe aws_route53_hosted_zone(id: "value") do
+  example "
+    describe aws_route53_hosted_zone(id: 'value') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

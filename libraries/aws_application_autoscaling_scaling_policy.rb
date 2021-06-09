@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
-  name 'aws_application_autocaling_scaling_policy'
+  name 'aws_application_autoscaling_scaling_policy'
   desc 'Describes the Application AutoScaling scaling policies for the specified service namespace.'
 
   example "

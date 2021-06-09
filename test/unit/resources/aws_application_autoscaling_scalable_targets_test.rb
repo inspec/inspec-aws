@@ -30,7 +30,6 @@ class AWSApplicationAutoScalingScalableTargetsHappyPathTest < Minitest::Test
     mock_data[:max_capacity] = 1
     mock_data[:role_arn] = 'test'
     mock_data[:creation_time] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
-    # mock_data[:suspended_state] = 'test'
     data[:data] = { :scalable_targets => [mock_data] }
     data[:client] = Aws::ApplicationAutoScaling::Client
     @scalable_targets = AWSApplicationAutoScalingScalableTargets.new(service_namespace: "test", client_args: { stub_responses: true }, stub_data: [data])
@@ -67,10 +66,6 @@ class AWSApplicationAutoScalingScalableTargetsHappyPathTest < Minitest::Test
   def test_creation_times
     assert_equal(@scalable_targets.creation_times, [Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
   end
-
-  # def test_suspended_states
-  #   assert_equal(@scalable_targets.suspended_states, ['test'])
-  # end
 end
 
 

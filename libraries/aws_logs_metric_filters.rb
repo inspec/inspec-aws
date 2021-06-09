@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSLogsMetricFilters < AwsResourceBase
   name 'aws_logs_metric_filters'
   desc ''
-  example `
+  example "
     describe aws_logs_metric_filters do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

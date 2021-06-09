@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSSecretsManagerSecrets < AwsResourceBase
   name 'aws_secretsmanager_secrets'
   desc ''
-  example `
+  example "
     describe aws_secretsmanager_secrets do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

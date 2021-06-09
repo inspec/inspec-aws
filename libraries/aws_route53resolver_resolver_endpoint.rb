@@ -6,11 +6,11 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
   name 'aws_route53resolver_resolver_endpoint'
   desc ''
 
-  example `
+  example "
     describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'resolver_endpoint_id_test') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { resolver_endpoint_id: opts } if opts.is_a?(String)

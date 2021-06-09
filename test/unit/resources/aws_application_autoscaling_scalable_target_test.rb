@@ -3,60 +3,53 @@ require 'aws_application_autoscaling_scalable_target'
 require 'aws-sdk-core'
 
 class AWSApplicationAutoScalingScalableTargetConstructorTest < Minitest::Test
+
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AWSApplicationAutoScalingScalableTarget.new(client_args: { stub_responses: true }) }
   end
 
-  def test_accepts_service_namespace_as_hash_eight_sign
-    AWSApplicationAutoScalingScalableTarget.new(service_namespace: 'test', client_args: { stub_responses: true })
-  end
-
-  def test_accepts_service_namespace_as_hash
-    AWSApplicationAutoScalingScalableTarget.new(service_namespace: 'test', client_args: { stub_responses: true })
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AWSApplicationAutoScalingScalableTarget.new(service_namespace: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AWSApplicationAutoScalingScalableTarget.new(rubbish: 9) }
+    assert_raises(ArgumentError) { AWSApplicationAutoScalingScalableTarget.new(unexpected: 9) }
   end
 end
 
-class AWSApplicationAutoScalingScalableTargetPathTest < Minitest::Test
+class AWSApplicationAutoScalingScalableTargetSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
     data[:method] = :describe_scalable_targets
     mock_data = {}
-    mock_data[:service_namespace] = 'test'
-    mock_data[:resource_id] = 'test'
-    mock_data[:scalable_dimension] = 'test'
+    mock_data[:service_namespace] = 'test1'
+    mock_data[:resource_id] = 'test1'
+    mock_data[:scalable_dimension] = 'test1'
     mock_data[:min_capacity] = 1
     mock_data[:max_capacity] = 1
-    mock_data[:role_arn] = 'test'
-    mock_data[:creation_time] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
-    # mock_data[:suspended_state] = 'test'
-    data[:data] = { :scalable_targets => [mock_data] }
+    mock_data[:role_arn] = 'test1'
+    mock_data[:creation_time] = Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
+    mock_data[:suspended_state] = {}
+    data[:data] = { scalable_targets: [mock_data] }
     data[:client] = Aws::ApplicationAutoScaling::Client
-    @scalable_targets = AWSApplicationAutoScalingScalableTarget.new(service_namespace: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @scalable_targets = AWSApplicationAutoScalingScalableTarget.new(service_namespace: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_scalable_targets_exists
+  def test_scalable_targets_group_exists
     assert @scalable_targets.exists?
   end
 
-  def test_scalable_targets_available
-    assert @scalable_targets.available?
-  end
-
   def test_service_namespace
-    assert_equal(@scalable_targets.service_namespace, 'test')
+    assert_equal(@scalable_targets.service_namespace, 'test1')
   end
 
   def test_resource_id
-    assert_equal(@scalable_targets.resource_id, 'test')
+    assert_equal(@scalable_targets.resource_id, 'test1')
   end
 
   def test_scalable_dimension
-    assert_equal(@scalable_targets.scalable_dimension, 'test')
+    assert_equal(@scalable_targets.scalable_dimension, 'test1')
   end
 
   def test_min_capacity
@@ -68,14 +61,14 @@ class AWSApplicationAutoScalingScalableTargetPathTest < Minitest::Test
   end
 
   def test_role_arn
-    assert_equal(@scalable_targets.role_arn, 'test')
+    assert_equal(@scalable_targets.role_arn, 'test1')
   end
 
   def test_creation_time
-    assert_equal(@scalable_targets.creation_time, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
+    assert_equal(@scalable_targets.creation_time, Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 
-  # def test_suspended_state
-  #   assert_equal(@scalable_targets.suspended_state, 'test')
-  # end
+  def test_suspended_state
+    assert_equal(@scalable_targets.suspended_state, {})
+  end
 end

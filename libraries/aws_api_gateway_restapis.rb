@@ -5,11 +5,12 @@ require 'aws_backend'
 class AWSApiGatewayRestApis < AwsResourceBase
   name 'aws_api_gateway_restapis'
   desc 'Lists the RestApis resources for your collection.'
-  example `
+
+  example "
     describe aws_api_gateway_restapis do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
@@ -38,7 +39,7 @@ class AWSApiGatewayRestApis < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.autoscaling_client.get_rest_apis(@query_params)
+      @resp = @aws.apigateway_client.get_rest_apis(@query_params)
     end
     return [] if !@resp || @resp.empty?
     @table = @resp.items.map(&:to_h)

@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSLambdaFunctions < AwsResourceBase
   name 'aws_lambda_functions'
   desc ''
-  example `
+  example "
     describe aws_lambda_functions do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

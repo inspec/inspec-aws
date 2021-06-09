@@ -1,53 +1,79 @@
-describe aws_api_gateway_methods(rest_api_id: "rest_api_id", resource_id: 'resource_id', http_method: 'http_method', status_code: 'status_code') do
-	it { should exist }
+require 'helper'
+require 'aws_api_gateway_methods'
+require 'aws-sdk-core'
+
+class AWSApiGatewayMethodsConstructorTest < Minitest::Test
+
+  def test_empty_params_ok
+    AWSApiGatewayMethods.new(rest_api_id: 'test1', resource_id: 'test1', http_method: 'test1', client_args: { stub_responses: true })
+  end
+
+  def test_rejects_other_args
+    assert_raises(ArgumentError) { AWSApiGatewayMethods.new('rubbish') }
+  end
+
+  def test_items_non_existing_for_empty_response
+    refute AWSApiGatewayMethods.new(rest_api_id: 'test1', resource_id: 'test1', http_method: 'test1', client_args: { stub_responses: false }).exist?
+  end
 end
 
-describe aws_api_gateway_methods(rest_api_id: "rest_api_id", resource_id: 'resource_id', http_method: 'http_method', status_code: 'status_code') do
-	its('http_method') { should eq 'http_method' }
-	its('authorization_type') { should eq 'test' }
-	its('authorizer_id') { should eq 'test' }
-	its('api_key_required') { should eq true }
-	its('request_validator_id') { should eq 'test' }
-	its('operation_name') { should eq 'test' }
-	its('request_parameters') { should eq 'test' }
-	its('request_parameters["String"]') { should eq true }
-	its('request_models') { should eq 'test' }
-	its('request_models["String"]') { should eq 'test' }
-	its('method_responses') { should eq 'test' }
-	its('method_responses["String"].status_code') { should eq 'test' }
-	its('method_responses["String"].response_parameters') { should eq 'test' }
-	its('method_responses["String"].response_parameters["String"]') { should eq true }
-	its('method_responses["String"].response_models') { should eq 'test' }
-	its('method_responses["String"].response_models["String"]') { should eq 'test' }
-	its('method_integration.type') { should eq 'test' }
-	its('method_integration.http_method') { should eq 'test' }
-	its('method_integration.uri') { should eq 'test' }
-	its('method_integration.connection_type') { should eq 'test' }
-	its('method_integration.connection_id') { should eq 'test' }
-	its('method_integration.credentials') { should eq 'test' }
-	its('method_integration.request_parameters #=> Hash
-	its('method_integration.request_parameters["String"]') { should eq 'test' }
-	its('method_integration.request_templates #=> Hash
-	its('method_integration.request_templates["String"]') { should eq 'test' }
-	its('method_integration.passthrough_behavior') { should eq 'test' }
-	its('method_integration.content_handling') { should eq 'test' }
-	its('method_integration.timeout_in_millis') { should eq 1 }
-	its('method_integration.cache_namespace') { should eq 'test' }
-	its('method_integration.cache_key_parameters') { should eq 'test' }
-	its('method_integration.cache_key_parameters[0]') { should eq 'test' }
-	its('method_integration.integration_responses #=> Hash
-	its('method_integration.integration_responses["String"].status_code') { should eq 'test' }
-	its('method_integration.integration_responses["String"].selection_pattern') { should eq 'test' }
-	its('method_integration.integration_responses["String"].response_parameters') { should eq 'test' }
-	its('method_integration.integration_responses["String"].response_parameters["String"]') { should eq 'test' }
-	its('method_integration.integration_responses["String"].response_templates') { should eq 'test' }
-	its('method_integration.integration_responses["String"].response_templates["String"]') { should eq 'test' }
-	its('method_integration.integration_responses["String"].content_handling') { should eq 'test' }, one of "CONVERT_TO_BINARY", "CONVERT_TO_TEXT"
-	its('method_integration.tls_config.insecure_skip_verification') { should eq true }
-	its('authorization_scopes') { should eq 'test' }
-	its('authorization_scopes[0]') { should eq 'test' }
-end
+class AWSApiGatewayMethodsHappyPathTest < Minitest::Test
 
-describe aws_api_gateway_methods(rest_api_id: "dummy", resource_id: 'dummy', http_method: 'dummy', status_code: 'dummy') do
-	its { should_not exist }
+  def setup
+    data = {}
+    data[:method] = :get_method
+    mock_data = {}
+    mock_data[:http_method] = 'test1'
+    mock_data[:authorization_type] = 'test1'
+    mock_data[:authorizer_id] = 'test1'
+    mock_data[:api_key_required] = true
+    mock_data[:request_validator_id] = 'test1'
+    mock_data[:operation_name] = 'test1'
+    mock_data[:request_parameters] = {}
+    mock_data[:request_models] = {}
+    mock_data[:method_responses] = {}
+    data[:data] = [mock_data]
+    data[:client] = Aws::APIGateway::Client
+    @res = AWSApiGatewayMethods.new(rest_api_id: 'test1', resource_id: 'test1', http_method: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_items_exists
+    assert @res.exist?
+  end
+
+  def test_http_methods
+    assert_equal(@res.http_methods, ['test1'])
+  end
+
+  def test_authorization_types
+    assert_equal(@res.authorization_types, ['test1'])
+  end
+
+  def test_authorizer_ids
+    assert_equal(@res.authorizer_ids, ['test1'])
+  end
+
+  def test_api_key_required
+    assert_equal(@res.api_key_required, [true])
+  end
+
+  def test_request_validator_ids
+    assert_equal(@res.request_validator_ids, ['test1'])
+  end
+
+  def test_operation_names
+    assert_equal(@res.operation_names, ['test1'])
+  end
+
+  def test_request_parameters
+    assert_equal(@res.request_parameters, [{}])
+  end
+
+  def test_request_models
+    assert_equal(@res.request_models, [{}])
+  end
+
+  def test_method_responses
+    assert_equal(@res.method_responses, [{}])
+  end
 end

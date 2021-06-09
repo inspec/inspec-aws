@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSRoute53RecordSets < AwsResourceBase
   name 'aws_route53_record_sets'
   desc ''
-  example `
-    describe aws_route53_record_sets(hosted_zone_id: "value") do
+  example "
+    describe aws_route53_record_sets(hosted_zone_id: 'value') do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

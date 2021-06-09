@@ -6,11 +6,11 @@ class AWSSecretsManagerSecret < AwsResourceBase
   name 'aws_secretsmanager_secret'
   desc ''
 
-  example `
-    describe aws_secretsmanager_secret(secret_id: "value") do
+  example "
+    describe aws_secretsmanager_secret(secret_id: 'value') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { secret_id: opts } if opts.is_a?(String)

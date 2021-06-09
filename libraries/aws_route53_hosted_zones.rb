@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSRoute53HostedZones < AwsResourceBase
   name 'aws_route53_hosted_zones'
   desc ''
-  example `
+  example "
     describe aws_route53_hosted_zones do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

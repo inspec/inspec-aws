@@ -6,11 +6,11 @@ class AWSApiGatewayDeployment < AwsResourceBase
   name 'aws_api_gateway_deployment'
   desc 'Gets information about a Deployment resource.'
 
-  example `
-    describe aws_api_gateway_deployment(rest_api_id: "rest_api_id", deployment_id: 'deployment_id') do
+  example "
+    describe aws_api_gateway_deployment(rest_api_id: 'rest_api_id', deployment_id: 'deployment_id') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { rest_api_id: opts, deployment_id: opts } if opts.is_a?(String)
@@ -20,7 +20,7 @@ class AWSApiGatewayDeployment < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: deployment_id must be provided" unless opts[:deployment_id] && !opts[:deployment_id].empty?
     @display_name = opts[:rest_api_id]
     catch_aws_errors do
-      resp = @aws.autoscaling_client.get_deployment({ rest_api_id: opts[:rest_api_id], deployment_id: opts[:deployment_id] })
+      resp = @aws.apigateway_client.get_deployment({ rest_api_id: opts[:rest_api_id], deployment_id: opts[:deployment_id] })
       @res = resp.to_h
       create_resource_methods(@res)
     end

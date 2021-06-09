@@ -43,6 +43,7 @@ require 'aws-sdk-route53resolver'
 require 'aws-sdk-secretsmanager'
 require 'aws-sdk-transfer'
 require 'aws-sdk-states'
+require 'aws-sdk-apigateway'
 
 # AWS Inspec Backend Classes
 #

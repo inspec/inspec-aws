@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSRAMResourceShares < AwsResourceBase
   name 'aws_ram_resource_shares'
   desc ''
-  example `
-    describe aws_ram_resource_shares(resource_owner: "SELF") do
+  example "
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

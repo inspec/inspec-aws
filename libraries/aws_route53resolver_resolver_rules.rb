@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSRoute53ResolverResolverRules < AwsResourceBase
   name 'aws_route53resolver_resolver_rules'
   desc ''
-  example `
+  example "
     describe aws_route53resolver_resolver_rules do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

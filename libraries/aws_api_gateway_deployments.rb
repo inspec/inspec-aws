@@ -5,11 +5,12 @@ require 'aws_backend'
 class AWSApiGatewayDeployments < AwsResourceBase
   name 'aws_api_gateway_deployments'
   desc 'Gets information about a Deployments collection.'
-  example `
+
+  example "
     describe aws_api_gateway_deployments(rest_api_id: 'rest_api_id') do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
@@ -34,7 +35,7 @@ class AWSApiGatewayDeployments < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.autoscaling_client.get_deployments(@query_params)
+      @resp = @aws.apigateway_client.get_deployments(@query_params)
     end
     return [] if !@resp || @resp.empty?
     @table = @resp.items.map(&:to_h)

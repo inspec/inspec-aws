@@ -6,11 +6,11 @@ class AWSRAMResourceShare < AwsResourceBase
   name 'aws_ram_resource_share'
   desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
 
-  example `
-    describe aws_ram_resource_share(resource_owner: "SELF", resource_share_arn: 'resource_share_arn_test') do
+  example "
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
     opts = { resource_owner: opts, resource_share_arn: opts } if opts.is_a?(String)
