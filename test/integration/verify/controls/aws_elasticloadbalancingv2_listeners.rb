@@ -1,4 +1,8 @@
-describe aws_elasticloadbalancingv2_listeners(listener_arn: aws_ebs2_lb_listener_arn) do
+aws_ebs2_lb_arn = attribute(:aws_ebs2_lb_arn, value: '', description: '')
+aws_ebs2_lb_listener_arn = attribute(:aws_ebs2_lb_listener_arn, value: '', description: '')
+
+
+  describe aws_elasticloadbalancingv2_listeners(listener_arn: aws_ebs2_lb_listener_arn) do
     it { should exist }
   end
   
