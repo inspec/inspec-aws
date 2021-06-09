@@ -12,7 +12,8 @@ The AWS::EFS::MountTarget resource is an Amazon EFS resource that creates a moun
 ## Syntax
 
 Ensure that a file system exists.
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
+
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
       it { should exist }
     end
 
@@ -26,26 +27,28 @@ For additional information, see the [AWS documentation on EFS Mount Target](http
 
 | Property | Description|
 | --- | --- |
-| owner_ids | | The owner ids of the mount targets. | |
+| owner_ids | | The owner IDs of the mount targets. | |
 | mount_target_ids | IDs of the file system whose mount targets you want to list (String). |
 | file_system_ids | The IDs of the file system for which to create the mount target. |
 | life_cycle_states | The life cycle states of the mount targets. |
 | ip_addresses | Valid IPv4 addresses within the address range of the specified subnet. |
-| network_interface_ids | The network interface ids of the mount targets. |
-| availability_zone_ids | The availability zone ids of the mount targets. |
+| network_interface_ids | The network interface IDs of the mount targets. |
+| availability_zone_ids | The availability zone IDs of the mount targets. |
 | availability_zone_names | The availability zone names of the mount targets. |
-| vpc_ids | The vpc ids of the mount targets. |
+| vpc_ids | The vpc IDs of the mount targets. |
 
 ## Examples
 
-### Ensure a owner id is available.
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
-      its('owner_ids') { should include 'test1' }
+### Ensure a owner ID is available.
+
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
+      its('owner_ids') { should include 'OWNER_ID' }
     end
 
-### Ensure that the ip addresss is available.
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
-        its('ip_addresses') { should include 'ENABLED' }
+### Ensure that the IP address is available.
+
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
+        its('ip_addresses') { should include 'IP_ADDRESS' }
     end
 
 ## Matchers
@@ -57,19 +60,19 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.      
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
+Use `should_not` to test the entity does not exist.
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
       it { should_not exist }
     end
 
 ### be_available
 
 Use `should` to check if the file system is available.
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
+    describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
       it { should be_available }
     end
 
