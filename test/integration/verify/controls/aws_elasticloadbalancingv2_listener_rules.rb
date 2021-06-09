@@ -8,6 +8,7 @@ control 'aws-elbv2-listener-rules1-1.0' do
   describe aws_elasticloadbalancingv2_listener_rules(rule_arns: aws_elbv2_rule_arn) do
     it { should exist }
   end
+end
   
 control 'aws-elbv2-listener-rules2-1.0' do
   
@@ -16,7 +17,7 @@ control 'aws-elbv2-listener-rules2-1.0' do
   
     describe aws_elasticloadbalancingv2_listener_rules(rule_arns: aws_elbv2_rule_arn) do
       its('rule_arns') { should include aws_elbv2_rule_arn }
-      its('priorities') { should include "1" }
+      its('priorities') { should include "100" }
       its('conditions') { should_not be_empty }
       its('actions') { should_not be_empty }
       its('is_defaults') { should include false}
