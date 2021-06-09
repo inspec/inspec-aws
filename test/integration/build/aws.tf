@@ -1,172 +1,172 @@
-# AWS Terraform Templates for InSpec Testing
-
-terraform {
-  required_version = ">= 0.12"
-}
-
-# Configure variables
-variable "aws_region" {}
-variable "aws_availability_zone" {}
-
-variable "aws_alb_name" {}
-variable "aws_auto_scaling_group" {}
-variable "aws_bucket_acl_policy_name" {}
-variable "aws_bucket_auth_name" {}
-variable "aws_bucket_encryption_disabled" {}
-variable "aws_bucket_encryption_enabled" {}
-variable "aws_bucket_versioning_disabled" {}
-variable "aws_bucket_versioning_enabled" {}
-variable "aws_bucket_log_delivery_name" {}
-variable "aws_bucket_log_sender_name" {}
-variable "aws_bucket_logging_disabled" {}
-variable "aws_bucket_private_name" {}
-variable "aws_bucket_public_name" {}
-variable "aws_bucket_public_objects_name" {}
-variable "aws_cloudformation_stack_name" {}
-variable "aws_cloudformation_stack_ecr_name" {}
-variable "aws_cloud_trail_bucket_name" {}
-variable "aws_cloud_trail_key_description" {}
-variable "aws_cloud_trail_log_group" {}
-variable "aws_cloud_trail_name" {}
-variable "aws_cloud_trail_open_name" {}
-variable "aws_cloud_watch_alarm_metric_name" {}
-variable "aws_cloud_watch_alarm_name" {}
-variable "aws_cloud_watch_alarm_name_with_dimensions" {}
-variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
-variable "aws_cloud_watch_log_group_name" {}
-variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
-variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
-variable "aws_cloud_watch_log_metric_filter_metric_name" {}
-variable "aws_cloud_watch_log_metric_filter_name" {}
-variable "aws_cloud_watch_log_metric_filter_namespace" {}
-variable "aws_cloud_watch_log_metric_filter_pattern" {}
-variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_name" {}
-variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
-variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
-variable "aws_cloud_watch_logs_role_name" {}
-variable "aws_cloud_watch_logs_role_policy_name" {}
-variable "aws_configuration_recorder_name" {}
-variable "aws_configuration_recorder_role" {}
-variable "aws_create_configuration_recorder" {}
-variable "aws_dynamodb_table_name" {}
-variable "aws_delivery_channel_bucket_name" {}
-variable "aws_delivery_channel_frequency" {}
-variable "aws_delivery_channel_name" {}
-variable "aws_delivery_channel_sns_topic_name" {}
-variable "aws_ebs_volume_name" {}
-variable "aws_ecr_name" {}
-variable "aws_ecrpublic_name" {}
-variable "aws_ecr_repository_name" {}
-variable "aws_ecrpublic_repository_name" {}
-variable "aws_ecr_repository_image_tag_mutability" {}
-variable "aws_ecr_repository_scan_on_push_enabled" {}
-variable "aws_ecs_cluster_name" {}
-variable "aws_efs_creation_token" {}
-variable "aws_efs_encrypted" {}
-variable "aws_efs_performance_mode" {}
-variable "aws_efs_throughput_mode" {}
-variable "aws_efs_name" {}
-variable "aws_efs_company_name" {}
-variable "aws_efs_count" {}
-variable "aws_eks_cluster_name" {}
-variable "aws_eks_role_name" {}
-variable "aws_eks_subnet_name_1" {}
-variable "aws_eks_subnet_name_2" {}
-variable "aws_eks_vpc_name" {}
-variable "aws_elasticache_cluster_id" {}
-variable "aws_elasticache_cluster_engine" {}
-variable "aws_elasticache_cluster_node_type" {}
-variable "aws_elasticache_cluster_num_cache_nodes" {}
-variable "aws_elasticache_cluster_parameter_group_name" {}
-variable "aws_elasticache_cluster_engine_version" {}
-variable "aws_elasticache_cluster_port" {}
-variable "aws_elasticache_replication_group_node_type" {}
-variable "aws_elasticache_replication_group_id" {}
-variable "aws_elb_access_log_name" {}
-variable "aws_elb_access_log_prefix" {}
-variable "aws_elb_name" {}
-variable "aws_enable_cli_calls" {}
-variable "aws_enable_creation" {}
-variable "aws_enable_privileged_resources" {}
-variable "aws_flow_log_bucket_name" {}
-variable "aws_iam_group_name" {}
-variable "aws_iam_group_policy_name" {}
-variable "aws_iam_policy_arn" {}
-variable "aws_iam_role_generic_name" {}
-variable "aws_iam_role_generic_policy_name" {}
-variable "aws_iam_user_name" {}
-variable "aws_iam_user_policy_name" {}
-variable "aws_iam_profile_name_for_ec2" {}
-variable "aws_iam_role_name_for_ec2" {}
-variable "aws_iam_policy_name_for_lambda" {}
-variable "aws_iam_role_name_for_lambda" {}
-variable "aws_internet_gateway_name" {}
-variable "aws_internet_gateway_name_tag" {}
-variable "aws_internet_gateway_vpc_name" {}
-variable "aws_iam_policy_name" {}
-variable "aws_iam_attached_policy_name" {}
-variable "aws_key_description_disabled" {}
-variable "aws_key_description_enabled" {}
-variable "aws_launch_configuration_name" {}
-variable "aws_nat_gateway_name" {}
-variable "aws_nat_gateway_eip_name" {}
-variable "aws_nat_gateway_subnet_name" {}
-variable "aws_rds_db_engine" {}
-variable "aws_rds_db_engine_version" {}
-variable "aws_rds_db_identifier" {}
-variable "aws_rds_db_master_user" {}
-variable "aws_rds_db_name" {}
-variable "aws_rds_db_storage_type" {}
-variable "aws_rds_db_subnet_group_name" {}
-variable "aws_rds_db_subnet_group_description" {}
-variable "rds_subnet_name_1" {}
-variable "aws_rds_cluster_identifier" {}
-variable "aws_rds_cluster_instance_1_identifier" {}
-variable "aws_rds_cluster_instance_2_identifier" {}
-variable "aws_rds_cluster_database_name" {}
-variable "aws_rds_cluster_engine" {}
-variable "aws_rds_cluster_master_user" {}
-variable "aws_security_group_alpha" {}
-variable "aws_security_group_beta" {}
-variable "aws_security_group_gamma" {}
-variable "aws_security_group_zeta" {}
-variable "aws_security_group_omega" {}
-variable "aws_security_group_lb" {}
-variable "aws_ssm_parameter_name" {}
-variable "aws_ssm_document_name" {}
-variable "aws_sqs_queue_name" {}
-variable "aws_subnet_ip_address_count" {}
-variable "aws_sns_topic_with_encryption" {}
-variable "aws_sns_topic_no_subscription" {}
-variable "aws_sns_topic_subscription_sqs" {}
-variable "aws_sns_topic_with_subscription" {}
-variable "aws_subnet_name" {}
-variable "aws_vm_image_filter" {}
-variable "aws_vm_name" {}
-variable "aws_vm_size" {}
-variable "aws_vpc_cidr_block" {}
-variable "aws_vpc_instance_tenancy" {}
-variable "aws_vpc_name" {}
-variable "aws_vpc_dhcp_options_name" {}
-variable "aws_vpc_endpoint_name" {}
-variable "aws_route_53_zone" {}
-
-provider "aws" {
-  version = ">= 2.0.0"
-  region  = var.aws_region
-}
-
-data "aws_caller_identity" "creds" {}
-
-data "aws_region" "current" {}
-
-# default VPC always exists for every AWS region
-data "aws_vpc" "default" {
-  default = "true"
-}
-
+//# AWS Terraform Templates for InSpec Testing
+//
+//terraform {
+//  required_version = ">= 0.12"
+//}
+//
+//# Configure variables
+//variable "aws_region" {}
+//variable "aws_availability_zone" {}
+//
+//variable "aws_alb_name" {}
+//variable "aws_auto_scaling_group" {}
+//variable "aws_bucket_acl_policy_name" {}
+//variable "aws_bucket_auth_name" {}
+//variable "aws_bucket_encryption_disabled" {}
+//variable "aws_bucket_encryption_enabled" {}
+//variable "aws_bucket_versioning_disabled" {}
+//variable "aws_bucket_versioning_enabled" {}
+//variable "aws_bucket_log_delivery_name" {}
+//variable "aws_bucket_log_sender_name" {}
+//variable "aws_bucket_logging_disabled" {}
+//variable "aws_bucket_private_name" {}
+//variable "aws_bucket_public_name" {}
+//variable "aws_bucket_public_objects_name" {}
+//variable "aws_cloudformation_stack_name" {}
+//variable "aws_cloudformation_stack_ecr_name" {}
+//variable "aws_cloud_trail_bucket_name" {}
+//variable "aws_cloud_trail_key_description" {}
+//variable "aws_cloud_trail_log_group" {}
+//variable "aws_cloud_trail_name" {}
+//variable "aws_cloud_trail_open_name" {}
+//variable "aws_cloud_watch_alarm_metric_name" {}
+//variable "aws_cloud_watch_alarm_name" {}
+//variable "aws_cloud_watch_alarm_name_with_dimensions" {}
+//variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
+//variable "aws_cloud_watch_log_group_name" {}
+//variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
+//variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
+//variable "aws_cloud_watch_log_metric_filter_metric_name" {}
+//variable "aws_cloud_watch_log_metric_filter_name" {}
+//variable "aws_cloud_watch_log_metric_filter_namespace" {}
+//variable "aws_cloud_watch_log_metric_filter_pattern" {}
+//variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
+//variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
+//variable "aws_cloud_watch_log_metric_filter_two_name" {}
+//variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
+//variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
+//variable "aws_cloud_watch_logs_role_name" {}
+//variable "aws_cloud_watch_logs_role_policy_name" {}
+//variable "aws_configuration_recorder_name" {}
+//variable "aws_configuration_recorder_role" {}
+//variable "aws_create_configuration_recorder" {}
+//variable "aws_dynamodb_table_name" {}
+//variable "aws_delivery_channel_bucket_name" {}
+//variable "aws_delivery_channel_frequency" {}
+//variable "aws_delivery_channel_name" {}
+//variable "aws_delivery_channel_sns_topic_name" {}
+//variable "aws_ebs_volume_name" {}
+//variable "aws_ecr_name" {}
+//variable "aws_ecrpublic_name" {}
+//variable "aws_ecr_repository_name" {}
+//variable "aws_ecrpublic_repository_name" {}
+//variable "aws_ecr_repository_image_tag_mutability" {}
+//variable "aws_ecr_repository_scan_on_push_enabled" {}
+//variable "aws_ecs_cluster_name" {}
+//variable "aws_efs_creation_token" {}
+//variable "aws_efs_encrypted" {}
+//variable "aws_efs_performance_mode" {}
+//variable "aws_efs_throughput_mode" {}
+//variable "aws_efs_name" {}
+//variable "aws_efs_company_name" {}
+//variable "aws_efs_count" {}
+//variable "aws_eks_cluster_name" {}
+//variable "aws_eks_role_name" {}
+//variable "aws_eks_subnet_name_1" {}
+//variable "aws_eks_subnet_name_2" {}
+//variable "aws_eks_vpc_name" {}
+//variable "aws_elasticache_cluster_id" {}
+//variable "aws_elasticache_cluster_engine" {}
+//variable "aws_elasticache_cluster_node_type" {}
+//variable "aws_elasticache_cluster_num_cache_nodes" {}
+//variable "aws_elasticache_cluster_parameter_group_name" {}
+//variable "aws_elasticache_cluster_engine_version" {}
+//variable "aws_elasticache_cluster_port" {}
+//variable "aws_elasticache_replication_group_node_type" {}
+//variable "aws_elasticache_replication_group_id" {}
+//variable "aws_elb_access_log_name" {}
+//variable "aws_elb_access_log_prefix" {}
+//variable "aws_elb_name" {}
+//variable "aws_enable_cli_calls" {}
+//variable "aws_enable_creation" {}
+//variable "aws_enable_privileged_resources" {}
+//variable "aws_flow_log_bucket_name" {}
+//variable "aws_iam_group_name" {}
+//variable "aws_iam_group_policy_name" {}
+//variable "aws_iam_policy_arn" {}
+//variable "aws_iam_role_generic_name" {}
+//variable "aws_iam_role_generic_policy_name" {}
+//variable "aws_iam_user_name" {}
+//variable "aws_iam_user_policy_name" {}
+//variable "aws_iam_profile_name_for_ec2" {}
+//variable "aws_iam_role_name_for_ec2" {}
+//variable "aws_iam_policy_name_for_lambda" {}
+//variable "aws_iam_role_name_for_lambda" {}
+//variable "aws_internet_gateway_name" {}
+//variable "aws_internet_gateway_name_tag" {}
+//variable "aws_internet_gateway_vpc_name" {}
+//variable "aws_iam_policy_name" {}
+//variable "aws_iam_attached_policy_name" {}
+//variable "aws_key_description_disabled" {}
+//variable "aws_key_description_enabled" {}
+//variable "aws_launch_configuration_name" {}
+//variable "aws_nat_gateway_name" {}
+//variable "aws_nat_gateway_eip_name" {}
+//variable "aws_nat_gateway_subnet_name" {}
+//variable "aws_rds_db_engine" {}
+//variable "aws_rds_db_engine_version" {}
+//variable "aws_rds_db_identifier" {}
+//variable "aws_rds_db_master_user" {}
+//variable "aws_rds_db_name" {}
+//variable "aws_rds_db_storage_type" {}
+//variable "aws_rds_db_subnet_group_name" {}
+//variable "aws_rds_db_subnet_group_description" {}
+//variable "rds_subnet_name_1" {}
+//variable "aws_rds_cluster_identifier" {}
+//variable "aws_rds_cluster_instance_1_identifier" {}
+//variable "aws_rds_cluster_instance_2_identifier" {}
+//variable "aws_rds_cluster_database_name" {}
+//variable "aws_rds_cluster_engine" {}
+//variable "aws_rds_cluster_master_user" {}
+//variable "aws_security_group_alpha" {}
+//variable "aws_security_group_beta" {}
+//variable "aws_security_group_gamma" {}
+//variable "aws_security_group_zeta" {}
+//variable "aws_security_group_omega" {}
+//variable "aws_security_group_lb" {}
+//variable "aws_ssm_parameter_name" {}
+//variable "aws_ssm_document_name" {}
+//variable "aws_sqs_queue_name" {}
+//variable "aws_subnet_ip_address_count" {}
+//variable "aws_sns_topic_with_encryption" {}
+//variable "aws_sns_topic_no_subscription" {}
+//variable "aws_sns_topic_subscription_sqs" {}
+//variable "aws_sns_topic_with_subscription" {}
+//variable "aws_subnet_name" {}
+//variable "aws_vm_image_filter" {}
+//variable "aws_vm_name" {}
+//variable "aws_vm_size" {}
+//variable "aws_vpc_cidr_block" {}
+//variable "aws_vpc_instance_tenancy" {}
+//variable "aws_vpc_name" {}
+//variable "aws_vpc_dhcp_options_name" {}
+//variable "aws_vpc_endpoint_name" {}
+//variable "aws_route_53_zone" {}
+//
+//provider "aws" {
+//  version = ">= 2.0.0"
+//  region  = var.aws_region
+//}
+//
+//data "aws_caller_identity" "creds" {}
+//
+//data "aws_region" "current" {}
+//
+//# default VPC always exists for every AWS region
+//data "aws_vpc" "default" {
+//  default = "true"
+//}
+//
 # resource "aws_vpc" "inspec_vpc" {
 #   count            = var.aws_enable_creation
 #   cidr_block       = var.aws_vpc_cidr_block
@@ -1979,4 +1979,3 @@ data "aws_vpc" "default" {
 #   at_rest_encryption_enabled    = true
 #   transit_encryption_enabled    = false
 # }
-

@@ -302,14 +302,11 @@
 #   value = aws_elasticache_replication_group.replication_group.node_type
 # }
 
-output "aws_ebs2_lb_arn" {
-  value = aws_lb.aws_lb_test.arn
-}
-
 output "aws_ebs2_lb_listener_arn" {
-  value = aws_lb_listener.aws_lb_listener_test.arn
+  value = aws_lb_listener.front_end.arn
+}
+output "aws_ebs2_lb_arn" {
+  value = aws_lb.test.arn
 }
 
-output "aws_ebs2_lb_vpc_id" {
-  value = aws_vpc.aws_vpc_lb_test.id
-}
+
