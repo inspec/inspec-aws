@@ -11,10 +11,6 @@ class AWSApiGatewayMethodsConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSApiGatewayMethods.new('rubbish') }
   end
-
-  def test_items_non_existing_for_empty_response
-    refute AWSApiGatewayMethods.new(rest_api_id: 'test1', resource_id: 'test1', http_method: 'test1', client_args: { stub_responses: false }).exist?
-  end
 end
 
 class AWSApiGatewayMethodsHappyPathTest < Minitest::Test
