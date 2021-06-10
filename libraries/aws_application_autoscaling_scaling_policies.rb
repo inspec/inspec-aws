@@ -43,7 +43,7 @@ class AWSApplicationAutoScalingScalingPolicies < AwsResourceBase
         @api_response = @aws.applicationautoscaling_client.describe_scaling_policies(@query_params)
       end
       return [] if !@api_response || @api_response.empty?
-      @api_response.metric_filters.each do |res|
+      @api_response.scaling_policies.each do |res|
         rows += [{
           policy_arn: res.policy_arn,
           policy_name: res.policy_name,
