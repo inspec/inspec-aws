@@ -7,7 +7,7 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   desc 'Describes the Application AutoScaling scaling policies for the specified service namespace.'
 
   example "
-    describe aws_application_autocaling_scaling_policy(service_namespace: 'ec2') do
+    describe aws_application_autoscaling_scaling_policy(service_namespace: 'ec2') do
       it { should exist }
     end
   "
