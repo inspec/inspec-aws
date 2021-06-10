@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSECSTaskDefinitions < AwsResourceBase
   name 'aws_ecs_task_definitions'
   desc 'Returns a list of task definitions that are registered to your account.'
-  example `
+  example "
     describe aws_ecs_task_definitions do
       it { should exist }
     end
-  `
+  "
   attr_reader :table
 
   FilterTable.create
