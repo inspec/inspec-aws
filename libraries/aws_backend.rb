@@ -203,10 +203,6 @@ class AwsConnection
   def cognitoidentityprovider_client
     aws_client(Aws::CognitoIdentityProvider::Client)
   end
-
-  def autoscaling_client
-    aws_client(Aws::AutoScaling::Client)
-  end
 end
 
 # Base class for AWS resources
