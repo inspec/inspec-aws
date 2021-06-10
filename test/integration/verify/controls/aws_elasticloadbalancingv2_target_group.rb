@@ -11,10 +11,9 @@ control 'aws-elbv2-target-group-1.0' do
   
   describe aws_elasticloadbalancingv2_target_group(target_group_arns: aws_target_group_arn) do
       its('target_group_arn') { should eq aws_target_group_arn }
-      its('target_group_name') { should eq "test1" }
+      its('target_group_name') { should eq "tf-example-lb-tg" }
       its('protocol') { should eq "HTTP" }
       its('port') { should eq 80 }
-      its('vpc_id') { should eq "vpc-6d9d7505" }
       its('health_check_protocol') { should eq "HTTP" }
       its('health_check_port') { should eq "traffic-port" }
       its('health_check_enabled') { should eq true }
@@ -26,7 +25,6 @@ control 'aws-elbv2-target-group-1.0' do
       its('health_check_path') { should eq "/" }
       its('matcher.http_code') { should eq "200" }
       its('matcher.grpc_code') { should be_empty }
-      its('load_balancer_arns') { should include "arn:aws:elasticloadbalancing:us-east-2:112758395563:loadbalancer/app/test1/4d099ca3e6de545d" }
       its('target_type') { should eq "instance" }
       its('protocol_version') { should eq "HTTP1" }
   end
