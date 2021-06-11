@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch_\_job\_queues
 
-Use the `aws_batch_job_queues` InSpec audit resource to test properties of multiple AWS Batch job queues.
+Use the `aws_batch_job_queues` InSpec audit resource to test the properties of the multiple AWS batch job queues.
 
 ## Syntax
 
