@@ -5,21 +5,21 @@ platform: aws
 
 # aws_application_autoscaling_scaling_policy
 
-Use the `aws_application_autoscaling_scaling_policy` InSpec audit resource to test properties of a single specific AWS ApplicationAutoScaling ScalingPolicy.
-
-The AWS::ApplicationAutoScaling::ScalingPolicy resource defines a scaling policy that Application Auto Scaling uses to adjust your application resources.
+Use the `aws_application_autoscaling_scaling_policy` InSpec audit resource to test properties of a single AWS Application Auto Scaling scaling policy.
 
 ## Syntax
 
 Ensure a scaling policy exists.
 
-    describe aws_application_autoscaling_scaling_policy( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should exist }
     end
 
 ## Parameters
 
 `service_namespace` _(required)_
+
+The namespace of the AWS service that provides the resource, or a custom-resource.
 
 For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).
 
@@ -32,18 +32,18 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 | service_namespace | The namespace of the AWS service that provides the resource, or a custom-resource. |
 | resource_id | The identifier of the resource associated with the scaling policy. This string consists of the resource type and unique identifier. |
 | scalable_dimension | The scalable dimension. This string consists of the service namespace, resource type, and scaling property. |
-| policy_type | The scaling policy type. |
-| step_scaling_policy_configuration (adjustment_type) | Specifies how the ScalingAdjustment value in a StepAdjustment is interpreted (for example, an absolute number or a percentage). The valid values are ChangeInCapacity , ExactCapacity , and PercentChangeInCapacity. |
+| policy_type | The Application Auto Scaling policy type. |
+| step_scaling_policy_configuration (adjustment_type) | Specifies how the `ScalingAdjustment` value in a `StepAdjustment` is interpreted (for example, an absolute number or a percentage). The valid values are `ChangeInCapacity` , `ExactCapacity` , and `PercentChangeInCapacity`. |
 | step_scaling_policy_configuration (step_adjustments) | A set of adjustments that enable you to scale based on the size of the alarm breach. |
 | step_scaling_policy_configuration (step_adjustments (metric_interval_lower_bound)) | The lower bound for the difference between the alarm threshold and the CloudWatch metric. |
 | step_scaling_policy_configuration (step_adjustments (metric_interval_upper_bound)) | The upper bound for the difference between the alarm threshold and the CloudWatch metric. |
 | step_scaling_policy_configuration (step_adjustments (scaling_adjustment)) | The amount by which to scale, based on the specified adjustment type. |
-| step_scaling_policy_configuration (min_adjustment_magnitude) | The minimum value to scale by when the adjustment type is PercentChangeInCapacity. |
+| step_scaling_policy_configuration (min_adjustment_magnitude) | The minimum value to scale by when the adjustment type is `PercentChangeInCapacity`. |
 | step_scaling_policy_configuration (cooldown) | The amount of time, in seconds, to wait for a previous scaling activity to take effect. |
-| step_scaling_policy_configuration (metric_aggregation_type) | The aggregation type for the CloudWatch metrics. Valid values are Minimum , Maximum , and Average. |
+| step_scaling_policy_configuration (metric_aggregation_type) | The aggregation type for the CloudWatch metrics. Valid values are `Minimum`, `Maximum`, and `Average`. |
 | target_tracking_scaling_policy_configuration (target_value) | The target value for the metric. |
-| target_tracking_scaling_policy_configuration (predefined_metric_specification (predefined_metric_type)) | The metric type. The ALBRequestCountPerTarget metric type applies only to Spot Fleet requests and ECS services. |
-| target_tracking_scaling_policy_configuration (predefined_metric_specification (resource_label)) | Identifies the resource associated with the metric type. You can't specify a resource label unless the metric type is ALBRequestCountPerTarget and there is a target group attached to the Spot Fleet request or ECS service. |
+| target_tracking_scaling_policy_configuration (predefined_metric_specification (predefined_metric_type)) | The metric type. The `ALBRequestCountPerTarget` metric type applies only to Spot Fleet requests and ECS services. |
+| target_tracking_scaling_policy_configuration (predefined_metric_specification (resource_label)) | Identifies the resource associated with the metric type. You can't specify a resource label unless the metric type is `ALBRequestCountPerTarget` and there is a target group attached to the Spot Fleet request or ECS service. |
 | target_tracking_scaling_policy_configuration (customized_metric_specification (metric_name)) | The name of the metric. |
 | target_tracking_scaling_policy_configuration (customized_metric_specification (namespace)) | The namespace of the metric. |
 | target_tracking_scaling_policy_configuration (customized_metric_specification (dimensions (name))) | The name of the dimension. |
@@ -61,14 +61,14 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 
 ### Ensure a policy name is available.
 
-    describe aws_application_autoscaling_scaling_policy( service_namespace: 'ec2' ) do
-      its('policy_name') { should eq 'policy_name' }
+    describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
+      its('policy_name') { should eq 'POLICY_NAME' }
     end
 
 ### Ensure a policy type is available.
 
-    describe aws_application_autoscaling_scaling_policy( service_namespace: 'ec2' ) do
-        its('policy_type') { should eq "policy_type" }
+    describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
+        its('policy_type') { should eq "POLICY_TYPE" }
     end
 
 ## Matchers
@@ -81,7 +81,7 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_application_autoscaling_scaling_policy( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should exist }
     end
 
@@ -89,7 +89,7 @@ Use `should` to test that the entity exists.
 
 Use `should` to check if the scalable policy is available.
 
-    describe aws_application_autoscaling_scaling_policy( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should be_available }
     end
 

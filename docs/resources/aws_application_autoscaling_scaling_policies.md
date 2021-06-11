@@ -5,21 +5,21 @@ platform: aws
 
 # aws_application_autoscaling_scaling_policies
 
-Use the `aws_application_autoscaling_scaling_policies` InSpec audit resource to test properties of the plural AWS ApplicationAutoScaling ScalingPolicy.
-
-The AWS::ApplicationAutoScaling::ScalingPolicy resource defines a scaling policy that Application Auto Scaling uses to adjust your application resources.
+Use the `aws_application_autoscaling_scaling_policies` InSpec audit resource to test properties of multiple AWS Application Auto Scaling scaling policies.
 
 ## Syntax
 
 Ensure a scaling policy exists.
 
-    describe aws_application_autoscaling_scaling_policies( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should exist }
     end
 
 ## Parameters
 
 `service_namespace` _(required)_
+
+The namespace of the AWS service that provides the resource, or a custom-resource.
 
 For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).
 
@@ -42,14 +42,14 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 
 ### Ensure a policy name is available.
 
-    describe aws_application_autoscaling_scaling_policies( service_namespace: 'ec2' ) do
-      its('policy_names') { should include 'policy_name' }
+    describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
+      its('policy_names') { should include 'POLICY_NAME' }
     end
 
 ### Ensure a policy type is available.
 
-    describe aws_application_autoscaling_scaling_policies( service_namespace: 'ec2' ) do
-        its('policy_types') { should include "policy_type" }
+    describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
+        its('policy_types') { should include "POLICY_TYPE" }
     end
 
 ## Matchers
@@ -62,7 +62,7 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_application_autoscaling_scaling_policies( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should exist }
     end
 
@@ -70,7 +70,7 @@ Use `should` to test that the entity exists.
 
 Use `should` to check if the scalable policy is available.
 
-    describe aws_application_autoscaling_scaling_policies( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should be_available }
     end
 
