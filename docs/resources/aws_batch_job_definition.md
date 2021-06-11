@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch\_job\_definition
 
-Use the `aws_batch_job_definition` InSpec audit resource to test the properties of a single specific batch job definition.
+Use the `aws_batch_job_definition` InSpec audit resource to test the properties of a single specific Batch job definition.
 
 The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
@@ -47,8 +47,8 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 | container_properties (readonly_root_filesystem) | Whether the container is given read-only access to its root file system in the job definition. |
 | container_properties (privileged) | Whether the container is given elevated permissions on the host container instance. |
 | container_properties (ulimits) | The list of ulimits to set in the container in the job definition. |
-| container_properties (user) | The user name to utilize in the container in the job definition. |
-| container_properties (instance_type) | The instance type to utilize for a multi-node parallel job. |
+| container_properties (user) | The user name to use in the container in the job definition. |
+| container_properties (instance_type) | The instance type to use for a multi-node parallel job. |
 | container_properties (resource_requirements) | The type and amount of resources to assign to a container in the job definition. |
 | container_properties (linux_parameters (shared_memory_size)) | The value in MiB of the `/dev/shm` volume for the container in the job definition. |
 | container_properties (linux_parameters (tmpfs)) | The container path, mount options, and size (in MiB) of the tmpfs mount for the container in the job definition. |
