@@ -53,7 +53,7 @@ For additional information, see the [AWS ECS task definition documentation](http
 ### Ensure a task definition ARN is available.
 
     describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
-      its('task_definition_arn') { should eq 'arn:aws:ecs:us-east-1:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION' }
+      its('task_definition_arn') { should eq 'arn:aws:ecs:REGION:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION_ID' }
     end
 
 ### Verify the amount of memory for a task definition.

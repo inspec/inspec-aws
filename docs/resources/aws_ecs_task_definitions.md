@@ -27,10 +27,10 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Examples
 
-### Ensure a task definition arns is available.
+### Ensure a task definition ARN is available.
 
     describe aws_ecs_task_definitions do
-      its('task_definition_arns') { should include 'ARN:AWS:ECS:US-EAST-1:AWS_ACCOUNT_ID:TASK-DEFINITION/TASK_DEFINITION' }
+      its('task_definition_arns') { should include 'arn:aws:ecs:REGION:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION_ID' }
     end
 
 ## Matchers
