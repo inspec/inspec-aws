@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch\_job\_definition
 
-Use the `aws_batch_job_definition` InSpec audit resource to test properties of a single specific Batch Job Definition.
+Use the `aws_batch_job_definition` InSpec audit resource to test the properties of a single specific batch job definition.
 
 The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
@@ -37,19 +37,19 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 | parameters | The parameters of the job definition. |
 | container_properties (image) | The container image in the job definition. |
 | container_properties (vcpus) | The number of vCPUs reserved for the container in the job definition. |
-| container_properties (memory) | The memory hard limit of the container in the job definition. |
+| container_properties (memory) | The hard limit of the container's memory in the job definition. |
 | container_properties (command) | The command passed to the container in the job definition. |
 | container_properties (job_role_arn) | The ARN of the IAM role that the container can assume for AWS permissions in the job definition. |
 | container_properties (execution_role_arn) | The execution role ARN that the AWS Batch can assume in the job definition. |
-| container_properties (volumes) | The list of data volumes in the job definition. |
+| container_properties (volumes) | The list of the data volumes in the job definition. |
 | container_properties (environment) | The environment variables to pass to a container in the job definition. |
-| container_properties (mount_points) | The mount points for data volumes in the container in the job definition. |
+| container_properties (mount_points) | The mount points for the data volumes in the container in the job definition. |
 | container_properties (readonly_root_filesystem) | Whether the container is given read-only access to its root file system in the job definition. |
 | container_properties (privileged) | Whether the container is given elevated permissions on the host container instance. |
 | container_properties (ulimits) | The list of ulimits to set in the container in the job definition. |
-| container_properties (user) | The user name to use in the container in the job definition. |
-| container_properties (instance_type) | The instance type to use for a multi-node parallel job. |
-| container_properties (resource_requirements) | The type and amout of resources to assign to a container in the job definition. |
+| container_properties (user) | The user name to utilize in the container in the job definition. |
+| container_properties (instance_type) | The instance type to utilize for a multi-node parallel job. |
+| container_properties (resource_requirements) | The type and amount of resources to assign to a container in the job definition. |
 | container_properties (linux_parameters (shared_memory_size)) | The value in MiB of the `/dev/shm` volume for the container in the job definition. |
 | container_properties (linux_parameters (tmpfs)) | The container path, mount options, and size (in MiB) of the tmpfs mount for the container in the job definition. |
 | container_properties (linux_parameters (max_swap)) | The total amount of swap memory (in MiB) a container can use. |
@@ -59,7 +59,7 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 | container_properties (secrets) | The secrets for the job that are exposed as environment variables. |
 | timeout (attempt_duration_seconds) | The timeout duration in seconds of the job definition. |
 | node_properties (num_nodes) | The number of nodes that are associated with a multi-node parallel job in the job definition. |
-| node_properties (main_node) | The the node index for the main node of a multi-node parallel job. |
+| node_properties (main_node) | The node index for the main node of a multi-node parallel job. |
 | node_properties (node_range_properties) | A list of node ranges and their properties that are associated with a multi-node parallel job.  |
 | tags | The tags of the job definition. |
 | propagate_tags | Whether to propagate tags from the job definition to the ECS task. |

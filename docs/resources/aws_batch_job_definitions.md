@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch\_job\_definitions
 
-Use the `aws_batch_job_definitions` InSpec audit resource to test properties of multiple Batch job definitions.
+Use the `aws_batch_job_definitions` InSpec audit resource to test properties of the multiple batch job definitions.
 
 The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
 
@@ -51,7 +51,7 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
+This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 
 The controls will pass if the `describe` method returns at least one result.
 
