@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch\_compute\_environments
 
-Use the `aws_batch_compute_environments` InSpec audit resource to test properties of multiple AWS Batch compute environments.
+Use the `aws_batch_compute_environments` InSpec audit resource to test properties of the multiple AWS Batch compute environments.
 
 ## Syntax
 
@@ -35,7 +35,6 @@ For additional information, see the [AWS documentation on Batch compute environm
 | status_reasons | The status reason of the compute environment. |
 | service_roles | The service role of the compute environment. |
 
-
 ## Examples
 
 ### Ensure a work group name is available.
@@ -49,10 +48,9 @@ For additional information, see the [AWS documentation on Batch compute environm
     describe aws_batch_compute_environments do
         its('states') { should include 'ENABLED' }
     end
-
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `describe` method returns at least one result.
 
