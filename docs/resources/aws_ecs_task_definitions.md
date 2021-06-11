@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ecs\_task\_definitions
 
-Use the `aws_ecs_task_definitions` InSpec audit resource to test properties of multiple ECS task definitions.
+Use the `aws_ecs_task_definitions` InSpec audit resource to test the properties of multiple ECS task definitions.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ For additional information, see the [AWS ECS task definition documentation](http
 ### Ensure a task definition arns is available.
 
     describe aws_ecs_task_definitions do
-      its('task_definition_arns') { should include 'arn:aws:ecs:us-east-1:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION' }
+      its('task_definition_arns') { should include 'ARN:AWS:ECS:US-EAST-1:AWS_ACCOUNT_ID:TASK-DEFINITION/TASK_DEFINITION' }
     end
 
 ## Matchers

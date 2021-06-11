@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ecs\_task\_definition
 
-Use the `aws_ecs_task_definition` InSpec audit resource to test properties of a single ECS task definition.
+Use the `aws_ecs_task_definition` InSpec audit resource to test the properties of a single ECS task definition.
 
 ## Syntax
 
@@ -20,7 +20,7 @@ Ensure that a task definition exists.
 `task_definition` _(required)_
 
 The full task definition description.
-Specified as just the `family` which targets the latest active revision, or `family:revision` for a specific revision number of a family, or the full Amazon Resource Name (ARN) of the task definition.
+Specified as just the `family`, which targets the latest active revision, or `family:revision` for a specific revision number of a family, or the full Amazon Resource Name (ARN) of the task definition.
 
 For additional information, see the [AWS ECS task definition documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html).
 
@@ -42,7 +42,7 @@ For additional information, see the [AWS ECS task definition documentation](http
 | compatibilities         | The task launch types that the task definition was validated against. |
 | cpu                     | The number of CPU units used by the task. |
 | memory                  | The amount of memory used by the task in MiB. |
-| inference_accelerators  | The Elastic Interference accelerators used for a containers in a task. |
+| inference_accelerators  | The Elastic Interference accelerators used for a container in a task. |
 | pid_mode                | The process namespace use by containers in the task. Valid values are `host` or `task`. |
 | ipc_mode                | The IPC resource namespace used by containers in the task. Valid values are `host`, `task`, or `none`. |
 | proxy_configuration     | The configuration details for the App Mesh proxy. |
