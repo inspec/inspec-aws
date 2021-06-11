@@ -18,7 +18,7 @@ Ensure that a compute_environment name exists.
 
 `compute_environment_name` _(required)_
 
-The name of the Batch compute environment. Try.
+The name of the Batch compute environment.
 
 For additional information, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 

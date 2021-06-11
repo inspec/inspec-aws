@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_batch\_compute\_environments
 
-Use the `aws_batch_compute_environments` InSpec audit resource to test properties of the multiple AWS Batch compute environments.
+Use the `aws_batch_compute_environments` InSpec audit resource to test properties of multiple AWS Batch compute environments.
 
 ## Syntax
 
