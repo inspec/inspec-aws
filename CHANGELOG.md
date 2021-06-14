@@ -1,9 +1,14 @@
-<!-- latest_release 1.50.2 -->
+<!-- latest_release 1.50.3 -->
+## [v1.50.3](https://github.com/inspec/inspec-aws/tree/v1.50.3) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job definition [#365](https://github.com/inspec/inspec-aws/pull/365) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.50.2](https://github.com/inspec/inspec-aws/tree/v1.50.2) (2021-06-14)
 
 #### Merged Pull Requests
 - aws batch compute environments [#364](https://github.com/inspec/inspec-aws/pull/364) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.50.1](https://github.com/inspec/inspec-aws/tree/v1.50.1) (2021-06-14)
 
