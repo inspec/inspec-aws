@@ -341,6 +341,14 @@ output "batch_job_queue_compute_environments" {
 }
 
 
+output "aws_ecs_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
+output "aws_ecs_task_definition_revision" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.revision
+}
+
 output "aws_client_id" {
   value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.id
 }
