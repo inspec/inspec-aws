@@ -36,20 +36,13 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.elb_client_v2.describe_load_balancers
-    end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.load_balancers.map(&:to_h)
-
-
     elastic_load_balancer_rows = []
     pagination_options = {}
     loop do
       catch_aws_errors do
         @api_response  = @aws.elb_client_v2.describe_load_balancers(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return elastic_load_balancer_rows if !@api_response || @api_response.empty?
 
       @api_response.load_balancers.each do |load_balancers|
         elastic_load_balancer_rows += [{         load_balancer_arn: load_balancers.load_balancer_arn,
@@ -70,6 +63,5 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
       pagination_options = { next_marker: @api_response[:next_marker] }
     end
     @table = elastic_load_balancer_rows
-
   end
 end
