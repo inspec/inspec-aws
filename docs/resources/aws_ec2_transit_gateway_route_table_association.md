@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_transit\_gateway\_route\_table\_association
 
-Use the `aws_ec2_transit_gateway_route_table_association` InSpec audit resource to test properties of a single AWS transit gateway route table association.
+Use the `aws_ec2_transit_gateway_route_table_association` InSpec audit resource to test the properties of a single AWS transit gateway route table association.
 
 A transit gateway route table association associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 
@@ -43,7 +43,7 @@ For additional information, check out the [AWS documentation on transit gateway 
 ### Ensure that the state is available or deleted
 
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
-        its('state') { should eq 'available' }
+        its('STATE') { should eq 'AVAILABLE' }
     end
 
 ## Matchers
