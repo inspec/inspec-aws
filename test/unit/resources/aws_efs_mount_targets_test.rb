@@ -1,19 +1,12 @@
 require 'helper'
 require 'aws_efs_mount_targets'
 require 'aws-sdk-core'
+require_relative 'aws_efs_mount_target_test'
 
 class AWSEFSMountTargetsConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AWSEFSMountTargets.new(file_system_id: "test1", client_args: { stub_responses: false })
-  end
-
-  def test_rejects_other_args
+  def test_reject_other_args
     assert_raises(ArgumentError) { AWSEFSMountTargets.new('rubbish') }
-  end
-
-  def test_file_system_id_non_existing_for_empty_response
-    refute AWSEFSMountTargets.new(file_system_id: "test1", client_args: { stub_responses: false }).exist?
   end
 end
 
