@@ -30,7 +30,7 @@ An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, th
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 If no parameter is provided, the subscription's default VPC will be returned.
 
@@ -51,12 +51,12 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |state            | The state of the VPC (`pending` | `available`). |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
-|associated_cidr_blocks | The associated CIDR Blocks |
-|disassociated_cidr_blocks | The CIDR Blocks that are disassociated |
-|failed_cidr_blocks | The failed CIDR Block associations |
-|associating_cidr_blocks | The CIDR block associations that are yet in pending stage |
-|disassociating | The CIDR block associations that are yet in disassociating stage |
-|failing | The CIDR block associations that are yet in failing stage |
+|associated_cidr_blocks | The associated CIDR Blocks. |
+|disassociated_cidr_blocks | The CIDR Blocks that are disassociated. |
+|failed_cidr_blocks | The failed CIDR Block associations. |
+|associating_cidr_blocks | The CIDR block associations that are yet in pending stage. |
+|disassociating | The CIDR block associations that are yet in disassociating stage. |
+|failing | The CIDR block associations that are yet in failing stage. |
 
 
 ## Examples
@@ -65,14 +65,14 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test the CIDR Block of a named VPC
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       its('cidr_block') { should cmp '10.0.0.0/16' }
     end
 
 ### Test the state of the VPC
 
     describe aws_vpc do
-      its ('state') { should eq 'available' }
+      its ('state') { should eq 'AVAILABLE' }
       # or equivalently
       it { should be_available }
     end
@@ -80,7 +80,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test the allowed tenancy of instances launched into the VPC
 
     describe aws_vpc do
-      its ('instance_tenancy') { should eq 'default' }
+      its ('INSTANCE_TENANCY') { should eq 'DEFAULT' }
       it { should be_default_instance }
       it { should_not be_dedicated_instance }
       it { should_not be_host_instance }
@@ -89,8 +89,8 @@ The following examples show how to use this InSpec audit resource.
 ### Test tags on the VPC
 
     describe aws_vpc do
-      its('tags') { should include(:Environment => 'env-name',
-                                   :Name => 'vpc-name')}
+      its('TAGS') { should include(:Environment => 'ENV-NAME',
+                                   :Name => 'VPC-NAME')}
     end
 
 ### Test if the IPV6 CIDR Block is associated to a named VPC
@@ -113,7 +113,7 @@ This InSpec audit resource has the following special matchers. For a complete li
 
 The test will pass if the identified VPC is the default VPC for the region.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       it { should be_default }
     end
 
@@ -121,7 +121,7 @@ The test will pass if the identified VPC is the default VPC for the region.
 
 The test will pass if the identified VPC has a `available` state.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       it { should be_available }
     end
 
@@ -129,7 +129,7 @@ The test will pass if the identified VPC has a `available` state.
 
 Check if the identified VPC has a `pending` state.
 
-    describe aws_vpc('vpc-123456') do
+    describe aws_vpc('VPC-123456') do
         it { should be_pending }
     end
 
@@ -137,7 +137,7 @@ Check if the identified VPC has a `pending` state.
 
 Check if the identified VPC has a `default` instance tendency.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should be_default_instance }
     end
 
@@ -145,7 +145,7 @@ Check if the identified VPC has a `default` instance tendency.
 
 Check if the identified VPC has a `dedicated` instance tendency.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should be_dedicated_instance }
     end
 
@@ -161,7 +161,7 @@ Check if the identified VPC has a `host` instance tendency.
 
 Check if a cidr block is associated to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should have_cidr_block_associated('10.0.0.0/27') }
     end
 
@@ -169,7 +169,7 @@ Check if a cidr block is associated to the identified VPC.
 
 Check if a cidr block has failed to associated to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should have_cidr_block_failed('10.0.0.0/27') }
     end
 
@@ -177,7 +177,7 @@ Check if a cidr block has failed to associated to the identified VPC.
 
 Check if a cidr block has failed to associated to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should have_cidr_block_disassociated('10.0.0.0/27') }
     end
 
@@ -185,7 +185,7 @@ Check if a cidr block has failed to associated to the identified VPC.
 
 Check if the IPV6 cidr block is associated to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       it { should have_ipv6_cidr_block_associated('2600:1f16:409:6700::/56') }
     end
 
@@ -193,7 +193,7 @@ Check if the IPV6 cidr block is associated to the identified VPC.
 
 Check if the IPV6 cidr block is disassociated to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       it { should have_ipv6_cidr_block_disassociated('2600:1f16:409:6700::/56') }
     end
 
@@ -201,7 +201,7 @@ Check if the IPV6 cidr block is disassociated to the identified VPC.
 
 Check if the IPV6 cidr block failed to associate to the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
       it { should have_ipv6_cidr_block_association_failed('2600:1f16:409:6700::/56') }
     end
 
@@ -209,20 +209,20 @@ Check if the IPV6 cidr block failed to associate to the identified VPC.
 
 Check if the associated IPV6 cidr block has valid network border group value for the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
-      it { should have_network_border_group_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', network_border_group: 'us-east-2a') }
+    describe aws_vpc('VPC-87654321') do
+      it { should have_network_border_group_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', network_border_group: 'US-EAST-2A') }
     end
 
 ### have\_ipv6\_pool\_value
 
 Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identified VPC.
 
-    describe aws_vpc('vpc-87654321') do
-      it { should have_ipv6_pool_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', ipv6_pool: 'Amazon') }
+    describe aws_vpc('VPC-87654321') do
+      it { should have_ipv6_pool_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', ipv6_pool: 'AMAZON') }
     end
 
 ## AWS Permissions
 
-To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with effect set to `Allow`.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with **Effect** set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

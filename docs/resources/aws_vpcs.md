@@ -55,20 +55,20 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ### Ensure all VPCs use the same DHCP option set
 
-    describe aws_vpcs.where { dhcp_options_id != 'dopt-12345678' } do
+    describe aws_vpcs.where { dhcp_options_id != 'DOPT-12345678' } do
       it { should_not exist }
     end
 
 ### Check for a Particular VPC ID
 
     describe aws_vpcs do
-      its('vpc_ids') { should include 'vpc-12345678' }
+      its('vpc_ids') { should include 'VPC-12345678' }
     end
 
 ### Use the VPC IDs to get a list of Default Security Groups
 
     aws_vpcs.vpc_ids.each do |vpc_id|
-      describe aws_security_group(vpc_id: vpc_id, group_name: 'default') do
+      describe aws_security_group(vpc_id: vpc_id, group_name: 'DEFAULT') do
         it { should_not allow_in(port: 22) }
       end
     end
@@ -82,8 +82,8 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 ### Check tags
 
     describe aws_vpc do
-      its('tags') { should include(:Environment => 'env-name',
-                                   :Name => 'vpc-name')}
+      its('TAGS') { should include(:Environment => 'ENV-NAME',
+                                   :Name => 'VPC-NAME')}
     end
 
 ### Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties
@@ -94,25 +94,25 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ### Ensure AWS VPC CIDR BLOCK failed associations are not fetched
 
-    describe aws_vpcs.where { cidr_block_states.reject?('failed') } do
+    describe aws_vpcs.where { cidr_block_states.reject?('FAILED') } do
         it { should exist }
     end
 
 ### Ensure AWS VPC CIDR Block plural resource has the associated id
 
     describe aws_vpcs do
-        its ('cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
+        its ('CIDR_BLOCK_ASSOCIATION_IDS') { should include "vpc-cidr-assoc-0123456789" }
     end
 
 ### Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id
 
     describe aws_vpcs do
-        its ('ipv6_cidr_block_association_ids') { should include "vpc-cidr-assoc-0123456789" }
+        its ('IPV6_CIDR_BLOCK_ASSOCIATION_IDS') { should include "vpc-cidr-assoc-0123456789" }
     end
 
 ### Ensure AWS VPC CIDR BLOCK disassociated associations are fetched
 
-    describe aws_vpcs.where { ipv6_cidr_block_states.select?('disassociated') } do
+    describe aws_vpcs.where { ipv6_cidr_block_states.select?('DISASSOCIATED') } do
         it { should exist }
     end
 
@@ -146,11 +146,11 @@ Use `should_not` to test the entity should not exist
 ### be_empty
 
     describe aws_vpcs do
-      its ('ipv_6_cidr_status_messages')  { should be_empty }
+      its ('IPV_6_CIDR_STATUS_MESSAGES')  { should be_empty }
     end
 
 ## AWS Permissions
 
-To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with effect set to `Allow`.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with **Effect** set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
