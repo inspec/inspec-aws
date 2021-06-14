@@ -1,9 +1,14 @@
-<!-- latest_release 1.50.3 -->
+<!-- latest_release 1.50.4 -->
+## [v1.50.4](https://github.com/inspec/inspec-aws/tree/v1.50.4) (2021-06-14)
+
+#### Merged Pull Requests
+- ecs task definitions [#371](https://github.com/inspec/inspec-aws/pull/371) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.50.3](https://github.com/inspec/inspec-aws/tree/v1.50.3) (2021-06-14)
 
 #### Merged Pull Requests
 - aws batch job definition [#365](https://github.com/inspec/inspec-aws/pull/365) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.50.2](https://github.com/inspec/inspec-aws/tree/v1.50.2) (2021-06-14)
 
