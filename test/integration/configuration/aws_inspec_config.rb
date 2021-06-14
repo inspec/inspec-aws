@@ -257,6 +257,14 @@ module AWSInspecConfig
       aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_client_name: "pool_client",
       aws_identity_pool_name: "mypool",
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_batch_job_queue_name: "batch-queue-test-#{add_random_string}",
+      aws_batch_job_queue_status: "ENABLED",
+      aws_batch_job_queue_priority: 1,
+      aws_compute_environment_name: "test-#{add_random_string}",
+      aws_max_vcpus: 1,
+      aws_min_vcpus: 0,
+      aws_type: "EC2"
   }
 
   def self.config

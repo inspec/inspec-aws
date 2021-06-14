@@ -333,6 +333,13 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+output "batch_job_queue_arn" {
+  value = aws_batch_job_queue.test_queue.arn
+}
+output "batch_job_queue_compute_environments" {
+  value = aws_batch_job_queue.test_queue.compute_environments
+}
+
 
 output "aws_client_id" {
   value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.id
