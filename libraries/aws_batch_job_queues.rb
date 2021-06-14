@@ -37,7 +37,7 @@ class AWSBatchJobQueues < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.batch_client.describe_job_queues(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return job_queue_rows if !@api_response || @api_response.empty?
       @api_response.job_queues.each do |job_queue|
         job_queue_rows += [{
           job_queue_name: job_queue.job_queue_name,
