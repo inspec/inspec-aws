@@ -21,7 +21,7 @@ Ensure that an AWS VPC endpoint connection notification exists.
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
 `connection_notification_id` _(required)_
 
@@ -68,7 +68,7 @@ This InSpec audit resource has the following special matchers. For the complete 
 
 The controls will pass if the `describe` returns at least one result.
 
-#### exist
+### exist
 
 Use `should_not` to test the entity should not exist.
 

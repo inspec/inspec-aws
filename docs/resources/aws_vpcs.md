@@ -22,7 +22,7 @@ An `aws_vpcs` resource block uses an optional filter to select a group of VPCs a
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 

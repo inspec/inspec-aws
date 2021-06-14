@@ -30,11 +30,11 @@ An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, th
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 If no parameter is provided, the subscription's default VPC will be returned.
 
-##### vpc\_id _(optional)_
+### vpc\_id _(optional)_
 
 This resource accepts a single parameter, the VPC ID.
 This can be passed either as a string or as a `vpc_id: 'VALUE'` key-value entry in a hash.
