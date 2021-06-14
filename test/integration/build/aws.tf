@@ -206,6 +206,8 @@ variable "aws_compute_environment_name" {}
 variable "aws_max_vcpus" {}
 variable "aws_min_vcpus" {}
 variable "aws_type" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
 
 
 provider "aws" {
@@ -2248,6 +2250,45 @@ resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
 
   user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
   generate_secret     = true
+}
+
+resource "aws_batch_job_definition" "aws_batch_job_definition1" {
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
+
+  container_properties = <<CONTAINER_PROPERTIES
+{
+    "command": ["ls", "-la"],
+    "image": "busybox",
+    "memory": 1024,
+    "vcpus": 1,
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "/tmp"
+        },
+        "name": "tmp"
+      }
+    ],
+    "environment": [
+        {"name": "VARNAME", "value": "VARVAL"}
+    ],
+    "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp",
+          "readOnly": false
+        }
+    ],
+    "ulimits": [
+      {
+        "hardLimit": 1024,
+        "name": "nofile",
+        "softLimit": 1024
+      }
+    ]
+}
+CONTAINER_PROPERTIES
 }
 
 resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {

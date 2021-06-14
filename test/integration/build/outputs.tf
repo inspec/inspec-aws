@@ -349,6 +349,15 @@ output "aws_client_secret" {
   value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.client_secret
 }
 
+output "aws_batch_job_arn" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.arn
+}
+
+output "aws_batch_job_revision" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.revision
+}
+
+
 output "aws_user_pool_id" {
   value = aws_cognito_user_pool.aws_cognito_user_pool_test.id
 }
