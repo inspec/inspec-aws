@@ -5,11 +5,13 @@ require 'aws_backend'
 class AWSEFSMountTargets < AwsResourceBase
   name 'aws_efs_mount_targets'
   desc 'Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.'
-  example `
-    describe aws_efs_mount_targets(file_system_id: "fs-01234567") do
+
+  example "
+    describe aws_efs_mount_targets(file_system_id: 'fs-01234567') do
       it { should exist }
     end
-  `
+  "
+
   attr_reader :table
 
   FilterTable.create
@@ -38,10 +40,27 @@ class AWSEFSMountTargets < AwsResourceBase
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.efs_client.describe_mount_targets(@query_params)
+    table_rows = []
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.efs_client.describe_mount_targets(@query_params)
+      end
+      return rows if !@api_response || @api_response.empty?
+      @api_response.mount_targets.each do |res|
+        table_rows+=[{ owner_id: res.owner_id,
+                       mount_target_id: res.mount_target_id,
+                       file_system_id: res.file_system_id,
+                       subnet_id: res.subnet_id,
+                       life_cycle_state: res.life_cycle_state,
+                       ip_address: res.ip_address,
+                       network_interface_id: res.network_interface_id,
+                       availability_zone_id: res.availability_zone_id,
+                       availability_zone_name: res.availability_zone_name,
+                       vpc_id: res.vpc_id }]
+      end
+      break unless @api_response.next_marker
+      @query_params[:next_marker] = @api_response.next_marker
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.mount_targets.map(&:to_h)
+    table_rows
   end
 end

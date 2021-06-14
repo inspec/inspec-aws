@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AWSEFSMountTargetsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSEFSMountTargets.new(file_system_id: 'test1', client_args: { stub_responses: true })
+    AWSEFSMountTargets.new(file_system_id: "test1", client_args: { stub_responses: false })
   end
 
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSEFSMountTargets.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
-    refute AWSEFSMountTargets.new(file_system_id: 'test1', client_args: { stub_responses: true }).exist?
+  def test_file_system_id_non_existing_for_empty_response
+    refute AWSEFSMountTargets.new(file_system_id: "test1", client_args: { stub_responses: false }).exist?
   end
 end
 
