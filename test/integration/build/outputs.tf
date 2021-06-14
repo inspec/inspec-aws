@@ -333,6 +333,22 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_mount_target_mt_id" {
+  value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
+}
+
+output "aws_file_system_mt_id" {
+  value = aws_efs_file_system.aws_efs_file_system_mt_test.id
+}
+
+output "aws_subnet_mt_id" {
+  value = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+output "aws_vpc_mt_id" {
+  value = aws_vpc.aws_vpc_mount_mt_test.id
+}
 output "batch_job_queue_arn" {
   value = aws_batch_job_queue.test_queue.arn
 }
