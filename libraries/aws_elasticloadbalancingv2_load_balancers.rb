@@ -7,7 +7,7 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
   desc 'Describes the specified load balancers or all of your load balancers.'
 
   example "
-    describe _aws_elasticloadbalancingv2_load_balancers(user_pool_id: 'test1') do
+    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'test1') do
       its('count') { should eq 3 }
     end
   "
@@ -31,21 +31,45 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(load_balancer_arn))
-    @query_params = {}
-    @query_params[:load_balancer_arns] = [opts[:load_balancer_arn]]
-    if opts.key?(:file_system_id)
-      raise ArgumentError, "#{@__resource_name__}: load_balancer_arn must be provided" unless opts[:load_balancer_arn] && !opts[:load_balancer_arn].empty?
-      @query_params[:load_balancer_arns] = [opts[:load_balancer_arn]]
-    end
+    validate_parameters
     @table = fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.elb_client_v2.describe_load_balancers(@query_params)
+      @resp = @aws.elb_client_v2.describe_load_balancers
     end
     return [] if !@resp || @resp.empty?
     @table = @resp.load_balancers.map(&:to_h)
+
+
+    elastic_load_balancer_rows = []
+    pagination_options = {}
+    loop do
+      catch_aws_errors do
+        @api_response  = @aws.elb_client_v2.describe_load_balancers(pagination_options)
+      end
+      return [] if !@api_response || @api_response.empty?
+
+      @api_response.load_balancers.each do |load_balancers|
+        elastic_load_balancer_rows += [{         load_balancer_arn: load_balancers.load_balancer_arn,
+                                                 dns_name: load_balancers.dns_name,
+                                                 canonical_hosted_zone_id: load_balancers.canonical_hosted_zone_id,
+                                                 created_times: load_balancers.created_time,
+                                                 load_balancer_name: load_balancers.load_balancer_name,
+                                                 security_groups: load_balancers.security_groups,
+                                                 state: load_balancers.state,
+                                                 scheme: load_balancers.scheme,
+                                                 vpc_id: load_balancers.vpc_id,
+                                                 type: load_balancers.type,
+                                                 availability_zones: load_balancers.availability_zones,
+                                                 ip_address_types: load_balancers.ip_address_type,
+                                                 customer_owned_ipv_4_pool: load_balancers.customer_owned_ipv_4_pool }]
+      end
+      break unless @api_response.next_marker
+      pagination_options = { next_marker: @api_response[:next_marker] }
+    end
+    @table = elastic_load_balancer_rows
+
   end
 end
