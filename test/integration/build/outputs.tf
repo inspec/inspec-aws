@@ -426,3 +426,15 @@ output "aws_vpc_notifications_arn" {
 output "aws_transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
 }
+
+output "aws_vpc_endpoint_service_name" {
+  value = aws_vpc_endpoint_service.notification_service.service_name
+}
+
+output "aws_vpc_endpoint_service_id" {
+  value = aws_vpc_endpoint_service.notification_service.id
+}
+
+output "aws_vpc_base_endpoint_dns_names" {
+  value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
+}
