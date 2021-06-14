@@ -1,9 +1,24 @@
-<!-- latest_release 1.49.11 -->
+<!-- latest_release 1.50.1 -->
+## [v1.50.1](https://github.com/inspec/inspec-aws/tree/v1.50.1) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job queues [#366](https://github.com/inspec/inspec-aws/pull/366) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.50.0](https://github.com/inspec/inspec-aws/tree/v1.50.0) (2021-06-14)
+
+#### Merged Pull Requests
+- VPC endpoint services resource(s) [#384](https://github.com/inspec/inspec-aws/pull/384) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.49.12](https://github.com/inspec/inspec-aws/tree/v1.49.12) (2021-06-07)
+
+#### Merged Pull Requests
+- aws cognito userpool client [#368](https://github.com/inspec/inspec-aws/pull/368) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.49.11](https://github.com/inspec/inspec-aws/tree/v1.49.11) (2021-06-07)
 
 #### Merged Pull Requests
 - aws cognito userpool [#369](https://github.com/inspec/inspec-aws/pull/369) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.10](https://github.com/inspec/inspec-aws/tree/v1.49.10) (2021-06-07)
 

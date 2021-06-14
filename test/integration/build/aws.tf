@@ -198,6 +198,14 @@ variable "aws_enforce_workgroup_configuration" {}
 variable "aws_publish_cloudwatch_metrics_enabled" {}
 variable "aws_athena_workgroup_description" {}
 variable "aws_athena_workgroup_state" {}
+variable "aws_client_name" {}
+variable "aws_batch_job_queue_name" {}
+variable "aws_batch_job_queue_status" {}
+variable "aws_batch_job_queue_priority" {}
+variable "aws_compute_environment_name" {}
+variable "aws_max_vcpus" {}
+variable "aws_min_vcpus" {}
+variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
 
@@ -2098,6 +2106,128 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_iam_role" "ecs_instance_role" {
+  name = "ecs_instance_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+  role       = aws_iam_role.ecs_instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+}
+
+resource "aws_iam_instance_profile" "ecs_instance_role" {
+  name = "ecs_instance_role"
+  role = aws_iam_role.ecs_instance_role.name
+}
+
+resource "aws_iam_role" "aws_batch_service_role" {
+  name = "aws_batch_service_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+        "Service": "batch.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+  role       = aws_iam_role.aws_batch_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+}
+
+resource "aws_security_group" "to_test_batch" {
+  name = "aws_batch_compute_environment_security_group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_vpc" "to_test_batch" {
+  cidr_block = "10.1.0.0/16"
+
+}
+
+resource "aws_subnet" "to_test_batch" {
+  vpc_id     = aws_vpc.to_test_batch.id
+  cidr_block = "10.1.1.0/24"
+}
+
+resource "aws_batch_compute_environment" "to_test_batch" {
+  compute_environment_name = var.aws_compute_environment_name
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance_role.arn
+
+    instance_type = [
+      "c4.large",
+    ]
+
+    max_vcpus = var.aws_max_vcpus
+    min_vcpus = var.aws_min_vcpus
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id,
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id,
+    ]
+
+    type = var.aws_type
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+resource "aws_batch_job_queue" "test_queue" {
+  name     = var.aws_batch_job_queue_name
+  state    =  var.aws_batch_job_queue_status
+  priority = var.aws_batch_job_queue_priority
+  compute_environments = [
+    aws_batch_compute_environment.to_test_batch.arn,
+  ]
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
+  name = var.aws_client_name
+
+  user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+  generate_secret     = true
 }
 
 resource "aws_batch_job_definition" "aws_batch_job_definition1" {
