@@ -152,6 +152,20 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
+variable "aws_open_id_connect_provider_arns" {}
+variable "aws_image_id" {}
+variable "aws_instance_type" {}
+variable "aws_auto_scaling_group_name" {}
+variable "aws_auto_scaling_max_size" {}
+variable "aws_auto_scaling_min_size" {}
+variable "aws_auto_scaling_health_check_grace_period" {}
+variable "aws_auto_scaling_health_check_type" {}
+variable "aws_auto_scaling_force_delete" {}
+variable "aws_auto_scaling_policy_name" {}
+variable "aws_auto_scaling_adjustment" {}
+variable "aws_auto_scaling_adjustment_type" {}
+variable "aws_auto_scaling_cooldown" {}
 variable "tgw_route_cidr_block" {}
 variable "tgw_route_cidr_block_blockhole" {}
 variable "aws_db_option_group_name" {}
@@ -179,7 +193,12 @@ variable "aws_db_parameter_group_description" {}
 variable "aws_redshift_cluster_identifier" {}
 variable "aws_redshift_parameter_group_name" {}
 variable "aws_redshift_parameter_group_family" {}
-
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
+variable "aws_client_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1998,6 +2017,7 @@ resource "aws_guardduty_detector" "detector_1" {
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
 }
+
 resource "aws_launch_template" "launch-template-test" {
   name = var.aws_launch_template_name
 
@@ -2076,6 +2096,89 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
+  name = var.aws_client_name
+
+  user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+  generate_secret     = true
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
+  name                   = "my-saml-provider"
+  saml_metadata_document = file("saml-metadata.xml")
+}
+
+resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
+  identity_pool_name               = var.aws_identity_pool_name
+
+  cognito_identity_providers {
+    client_id               = "6lhlkkfbfb4q5kpp90urffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
+    server_side_token_check = false
+  }
+
+  cognito_identity_providers {
+    client_id               = "7kodkvfqfb4qfkp39eurffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
+    server_side_token_check = false
+  }
+
+  supported_login_providers = {
+    "graph.facebook.com"  = "7346241598935552"
+    "accounts.google.com" = "123456789012.apps.googleusercontent.com"
+  }
+
+  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+}
+
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
+  name                   = var.aws_auto_scaling_policy_name
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
+
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
+  availability_zones        = ["us-east-2a"]
+  name                      = var.aws_auto_scaling_group_name
+  max_size                  = var.aws_auto_scaling_max_size
+  min_size                  = var.aws_auto_scaling_min_size
+  health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
+  health_check_type         = var.aws_auto_scaling_health_check_type
+  force_delete              = var.aws_auto_scaling_force_delete
+  launch_configuration      = aws_launch_configuration.as_conf.name
+}
+
+resource "aws_launch_configuration" "as_conf" {
+  name          = var.aws_launch_configuration_name
+  image_id      = var.aws_image_id
+  instance_type = var.aws_instance_type
+}
+
+
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
+
+  configuration {
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
+
+  }
 }
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
