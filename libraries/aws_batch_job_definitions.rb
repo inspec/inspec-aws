@@ -39,7 +39,7 @@ class AWSBatchJobDefinitions < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.batch_client.describe_job_definitions(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return job_definition_rows if !@api_response || @api_response.empty?
       @api_response.job_definitions.each do |job_definition|
         job_definition_rows += [{
           job_definition_name: job_definition.job_definition_name,

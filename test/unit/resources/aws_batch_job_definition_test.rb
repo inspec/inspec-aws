@@ -56,26 +56,6 @@ class AWSBatchJobDefinitionSuccessPathTest < Minitest::Test
     assert_equal(@job_definitions.status, 'test1')
   end
 
-  # def test_parameters
-  #   assert_equal(@job_definitions.parameters, 'test1')
-  # end
-
-  # def test_container_properties
-  #   assert_equal(@job_definitions.container_properties, 'test1')
-  # end
-
-  # def test_timeout
-  #   assert_equal(@job_definitions.timeout, 'test1')
-  # end
-
-  # def test_node_properties
-  #   assert_equal(@job_definitions.node_properties, 'test1')
-  # end
-
-  # def tags
-  #   assert_equal(@job_definitions.tags, 'test1')
-  # end
-
   def test_propagate_tags
     assert_equal(@job_definitions.propagate_tags, true)
   end
