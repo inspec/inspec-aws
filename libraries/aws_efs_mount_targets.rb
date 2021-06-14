@@ -45,7 +45,7 @@ class AWSEFSMountTargets < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.efs_client.describe_mount_targets(@query_params)
       end
-      return rows if !@api_response || @api_response.empty?
+      return table_rows if !@api_response || @api_response.empty?
       @api_response.mount_targets.each do |res|
         table_rows+=[{ owner_id: res.owner_id,
                        mount_target_id: res.mount_target_id,
