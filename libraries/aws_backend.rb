@@ -29,7 +29,6 @@ require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
-
 require 'rspec/expectations'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
