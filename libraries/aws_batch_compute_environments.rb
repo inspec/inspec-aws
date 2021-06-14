@@ -39,7 +39,7 @@ class AWSBatchComputeEnvironments < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.batch_client.describe_compute_environments(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return compute_environment_rows if !@api_response || @api_response.empty?
       @api_response.compute_environments.each do |compute_environment|
         compute_environment_rows += [{
           compute_environment_name: compute_environment.compute_environment_name,
