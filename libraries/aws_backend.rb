@@ -207,10 +207,6 @@ class AwsConnection
   def cognitoidentityprovider_client
     aws_client(Aws::CognitoIdentityProvider::Client)
   end
-
-  def batch_client
-    aws_client(Aws::Batch::Client)
-  end
 end
 
 # Base class for AWS resources
