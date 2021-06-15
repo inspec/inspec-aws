@@ -12,13 +12,13 @@ The AWS::ElasticLoadBalancingV2::LoadBalancer resource specifies an Application 
 ## Syntax
 
 Ensure that a Load Balancer Arn exists.
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       it { should exist }
     end
 
 ## Parameters
 
-`load_balancer_arn` _(required)_
+No Required Parameters
 
 For additional information, see the [AWS documentation on ElasticLoadBalancingV2 LoadBalancer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html).
 
@@ -44,12 +44,12 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 ## Examples
 
 ### Ensure a Load Balancer Arn is available.
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       its('load_balancer_arn') { should include 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188' }
     end
 
 ### Verify the load balancer name exists.
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+    describe aws_elasticloadbalancingv2_load_balancers do
         its('load_balancer_name') { should include 'my-load-balancer' }
     end
 
@@ -63,13 +63,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'dummy') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       it { should_not exist }
     end
 
@@ -77,7 +77,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the Load Balancer Arn is available.
 
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       it { should be_available }
     end
 

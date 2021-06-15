@@ -7,7 +7,7 @@ class AWSElasticLoadBalancingV2LoadBalancers < AwsResourceBase
   desc 'Describes the specified load balancers or all of your load balancers.'
 
   example "
-    describe aws_elasticloadbalancingv2_load_balancers(load_balancer_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_load_balancers do
       its('count') { should eq 3 }
     end
   "
