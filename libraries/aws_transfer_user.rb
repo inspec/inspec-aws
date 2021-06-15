@@ -34,10 +34,6 @@ class AWSTransferUser < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def encrypted?
-    @res[:user_name]
-  end
-
   def to_s
     "user_name: #{@user_name}"
   end
