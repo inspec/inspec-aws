@@ -5,14 +5,13 @@ require 'aws_backend'
 class AWSTransferUser < AwsResourceBase
   name 'aws_transfer_user'
   desc 'Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property.'
-  example `
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
+  example "
+    describe aws_transfer_user(server_id: 'test', user_name: 'test') do
       it { should exist }
     end
-  `
+  "
 
   def initialize(opts = {})
-    opts = { server_id: opts, user_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(server_id user_name))
     raise ArgumentError, "#{@__resource_name__}: server_id must be provided" unless opts[:server_id] && !opts[:server_id].empty?
@@ -20,7 +19,8 @@ class AWSTransferUser < AwsResourceBase
     @user_name = opts[:user_name]
     catch_aws_errors do
       resp = @aws.transfer_client.describe_user({ server_id: opts[:server_id], user_name: opts[:user_name] })
-      @res = resp.to_h
+      @res = resp.user.to_h
+      @res[:server_id] = resp.server_id
       create_resource_methods(@res)
     end
   end

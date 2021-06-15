@@ -25,7 +25,7 @@ class AWSTransferUsersHappyPathTest < Minitest::Test
     mock_data = {}
     mock_data[:arn] = 'test1'
     mock_data[:home_directory] = 'test1'
-    data[:data] = { :users => [mock_data] }
+    data[:data] = { :users => [mock_data], server_id: "test1"  }
     data[:client] = Aws::Transfer::Client
     @users = AWSTransferUsers.new(server_id: "default", client_args: { stub_responses: true }, stub_data: [data])
   end

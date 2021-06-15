@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_transfer_user_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1829,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,14 +1973,15 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
-resource "aws_transfer_server" "foo" {
+
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
   identity_provider_type = "SERVICE_MANAGED"
 
   tags = {
@@ -1987,8 +1989,8 @@ resource "aws_transfer_server" "foo" {
   }
 }
 
-resource "aws_iam_role" "aws_iam_role1" {
-  name = "tf-test-transfer-user-iam-role"
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
 
   assume_role_policy = <<EOF
 {
@@ -2006,9 +2008,9 @@ resource "aws_iam_role" "aws_iam_role1" {
 EOF
 }
 
-resource "aws_iam_role_policy" "foo" {
-  name = "tf-test-transfer-user-iam-policy"
-  role = aws_iam_role.foo.id
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
 
   policy = <<POLICY
 {
@@ -2027,10 +2029,10 @@ resource "aws_iam_role_policy" "foo" {
 POLICY
 }
 
-resource "aws_transfer_user" "foo" {
-  server_id = aws_transfer_server.foo.id
-  user_name = "tftestuser"
-  role      = aws_iam_role.foo.arn
+resource "aws_transfer_user" "aws_transfer_user_tu_test" {
+  server_id = aws_transfer_server.aws_transfer_server_tu_test.id
+  user_name = var.aws_transfer_user_name
+  role      = aws_iam_role.aws_iam_role_tu_test.arn
 
   home_directory_type = "LOGICAL"
   home_directory_mappings {

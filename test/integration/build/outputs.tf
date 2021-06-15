@@ -301,3 +301,15 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_transfer_server_arn" {
+  value = aws_transfer_server.aws_transfer_server_tu_test.arn
+}
+
+output "aws_transfer_server_id" {
+  value = aws_transfer_server.aws_transfer_server_tu_test.id
+}
+
+output "aws_transfer_user_arn" {
+  value = aws_transfer_user.aws_transfer_user_tu_test.arn
+}
