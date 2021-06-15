@@ -11,8 +11,8 @@ The AWS::ElasticLoadBalancingV2::ListenerRule specifies a listener rule. The lis
 
 ## Syntax
 
-Ensure that a rule_arns exists.
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+Ensure that a listener_arn exists.
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
       it { should exist }
     end
 
@@ -23,22 +23,22 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 ## Properties
 
 | Property | Description|
-| --- | --- |
-| rule_arns | The Amazon Resource Names (ARN) of the rules. |
-| priorities | The priority. |
-| conditions | The conditions. Each rule can include zero or one of the following conditions: http-request-method , host-header , path-pattern , and source-ip , and zero or more of the following conditions: http-header and query-string. Information about a condition for a rule. Each rule can optionally include up to one of each of the following conditions: http-request-method , host-header , path-pattern , and source-ip . Each rule can also optionally include one or more of each of the following conditions: http-header and query-string . |
-| actions | The actions. Each rule must include exactly one of the following types of actions: forward , redirect , or fixed-response , and it must be the last action to be performed. Information about an action. Each rule must include exactly one of the following types of actions: forward , fixed-response , or redirect , and it must be the last action to be performed. |
-| is_defaults | Indicates whether this is the default rule. |
+| --- | ---    |
+| listener_arn | The Amazon Resource Names (ARN) of the listener. |
+| priorities   | The priority. |
+| conditions   | The conditions. Each rule can include zero or one of the following conditions: http-request-method , host-header , path-pattern , and source-ip , and zero or more of the following conditions: http-header and query-string. Information about a condition for a rule. Each rule can optionally include up to one of each of the following conditions: http-request-method , host-header , path-pattern , and source-ip . Each rule can also optionally include one or more of each of the following conditions: http-header and query-string . |
+| actions      | The actions. Each rule must include exactly one of the following types of actions: forward , redirect , or fixed-response , and it must be the last action to be performed. Information about an action. Each rule must include exactly one of the following types of actions: forward , fixed-response , or redirect , and it must be the last action to be performed. |
+| is_defaults  | Indicates whether this is the default rule. |
 
 ## Examples
 
-### Ensure a rule_arns is available.
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+### Ensure a listener_arn is available.
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
       its('names') { should include 'test1' }
     end
 
 ### Verify the priority of the desired rule arn
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
         its('priorities') { should include 1 }
     end
 
@@ -52,13 +52,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'dummy') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -66,7 +66,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
       it { should be_available }
     end
 
