@@ -12,6 +12,7 @@ The AWS::Transfer::User resource creates a user and associates them with an exis
 ## Syntax
 
 Ensure that an user exists.
+
     describe aws_transfer_users do
       it { should exist }
     end
@@ -52,11 +53,13 @@ The controls will pass if the `list` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
+
     describe aws_transfer_users do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
+
     describe aws_transfer_users do
       it { should_not exist }
     end
@@ -64,6 +67,7 @@ Use `should_not` to test the entity does not exist.
 ### be_available
 
 Use `should` to check if the user is available.
+
     describe aws_transfer_users do
       it { should be_available }
     end

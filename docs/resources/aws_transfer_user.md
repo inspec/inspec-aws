@@ -12,6 +12,7 @@ The AWS::Transfer::User resource creates a user and associates them with an exis
 ## Syntax
 
 Ensure that an identity pool exists.
+
     describe aws_transfer_user(server_id: "test", user_name: 'test') do
       it { should exist }
     end
@@ -44,7 +45,7 @@ For additional information, see the [AWS documentation on Transfer User](https:/
 
 ### Ensure an user is available.
     describe aws_transfer_user(server_id: "test", user_name: 'test') do
-      its('identity_pool_id') { should eq 'test' }
+      its('user_name') { should eq 'test' }
     end
 
 ### Ensure that the server id is available.
@@ -61,18 +62,21 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
+
     describe aws_transfer_user(server_id: "test", user_name: 'test') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
+
+    describe aws_transfer_user(server_id: "dummy", user_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
 Use `should` to check if the user is available.
+
     describe aws_transfer_user(server_id: "test", user_name: 'test') do
       it { should be_available }
     end
