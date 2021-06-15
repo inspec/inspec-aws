@@ -304,3 +304,6 @@ output "aws_elasticache_replication_group_node_type" {
 output "load_balancer_arn" {
   value = aws_lb.test.arn
 }
+output "listener_arn" {
+  value = aws_lb_listener.front_end.arn
+}
