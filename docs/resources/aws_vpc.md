@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_vpc
 
-Use the `aws_vpc` InSpec audit resource to test properties of a single AWS Virtual Private Cloud (VPC) and the CIDR Block that is used within the VPC.
+Use the `aws_vpc` InSpec audit resource to test the properties of a single AWS Virtual Private Cloud (VPC) and the CIDR block that is used within the VPC.
 
 Each VPC is uniquely identified by its ID. In addition, each VPC has a non-unique CIDR IP address range (such as 10.0.0.0/16), which it manages.
 
@@ -21,12 +21,12 @@ An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, th
     end
 
     # Find a VPC by ID
-    describe aws_vpc('vpc-12345678987654321') do
+    describe aws_vpc('VPC-12345678987654321') do
       it { should exist }
     end
 
     # Hash syntax for ID
-    describe aws_vpc(vpc_id: 'vpc-12345678') do
+    describe aws_vpc(vpc_id: 'VPC-12345678') do
       it { should exist }
     end
 
@@ -34,7 +34,7 @@ An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, th
 
 If no parameter is provided, the subscription's default VPC will be returned.
 
-##### vpc\_id _(optional)_
+### vpc\_id _(optional)_
 
 This resource accepts a single parameter, the VPC ID.
 This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
@@ -51,13 +51,12 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |state            | The state of the VPC (`pending` | `available`). |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
-|associated_cidr_blocks | The associated CIDR Blocks. |
-|disassociated_cidr_blocks | The CIDR Blocks that are disassociated. |
-|failed_cidr_blocks | The failed CIDR Block associations. |
-|associating_cidr_blocks | The CIDR block associations that are yet in pending stage. |
-|disassociating | The CIDR block associations that are yet in disassociating stage. |
-|failing | The CIDR block associations that are yet in failing stage. |
-
+|associated_cidr_blocks | The associated CIDR blocks. |
+|disassociated_cidr_blocks | The CIDR blocks that are disassociated. |
+|failed_cidr_blocks | The failed CIDR block associations. |
+|associating_cidr_blocks | The CIDR block associations that are yet in the pending stage. |
+|disassociating | The CIDR block associations that are yet in the disassociating stage. |
+|failing | The CIDR block associations that are yet in the failing stage. |
 
 ## Examples
 
@@ -66,13 +65,13 @@ The following examples show how to use this InSpec audit resource.
 ### Test the CIDR Block of a named VPC
 
     describe aws_vpc('VPC-87654321') do
-      its('cidr_block') { should cmp '10.0.0.0/16' }
+      its('CIDR_BLOCK') { should cmp '10.0.0.0/16' }
     end
 
 ### Test the state of the VPC
 
     describe aws_vpc do
-      its ('state') { should eq 'AVAILABLE' }
+      its ('STATE') { should eq 'AVAILABLE' }
       # or equivalently
       it { should be_available }
     end
@@ -153,7 +152,7 @@ Check if the identified VPC has a `dedicated` instance tendency.
 
 Check if the identified VPC has a `host` instance tendency.
 
-    describe aws_vpc('vpc-87654321') do
+    describe aws_vpc('VPC-87654321') do
         it { should be_host_instance }
     end
 
