@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSElasticLoadBalancingV2LoadBalancersConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSElasticLoadBalancingV2LoadBalancers.new(load_balancer_arn: 'test1', client_args: { stub_responses: true })
+    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2LoadBalancers.new(load_balancer_arn: 'test1', client_args: { stub_responses: true })}
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSElasticLoadBalancingV2LoadBalancersConstructorTest < Minitest::Test
   end
 
   def test_work_groups_non_existing_for_empty_response
-    refute AWSElasticLoadBalancingV2LoadBalancers.new(load_balancer_arn: 'test1', client_args: { stub_responses: true }).exist?
+    refute AWSElasticLoadBalancingV2LoadBalancers.new( client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -28,7 +28,7 @@ class AWSElasticLoadBalancingV2LoadBalancersHappyPathTest < Minitest::Test
     mock_data[:canonical_hosted_zone_id] = 'test1'
     data[:data] = { :load_balancers => [mock_data] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @load_balancers = AWSElasticLoadBalancingV2LoadBalancers.new(load_balancer_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @load_balancers = AWSElasticLoadBalancingV2LoadBalancers.new( client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_load_balancers_exists
