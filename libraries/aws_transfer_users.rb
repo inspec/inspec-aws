@@ -35,14 +35,6 @@ class AWSTransferUsers < AwsResourceBase
     @table = fetch_data
   end
 
-  def fetch_data1
-    catch_aws_errors do
-      @resp = @aws.transfer_client.list_users(@query_params)
-    end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.users.map(&:to_h)
-  end
-
   def fetch_data
     rows = []
     @query_params[:max_results] = 100

@@ -35,7 +35,7 @@ class AWSTransferUser < AwsResourceBase
   end
 
   def encrypted?
-    @res[:encrypted]
+    @res[:user_name]
   end
 
   def to_s
