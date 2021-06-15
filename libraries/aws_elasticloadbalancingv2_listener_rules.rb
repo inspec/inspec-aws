@@ -7,7 +7,7 @@ class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
   desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
 
   example "
-    describe aws_elasticloadbalancingv2_listener_rules(rule_arns: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
       its('count') { should eq 3 }
     end
   "
@@ -23,21 +23,37 @@ class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rule_arns))
+    validate_parameters(required: %i(listener_arn))
     @query_params = {}
-    @query_params[:rule_arns] = [opts[:rule_arns]]
-    if opts.key?(:rule_arns)
-      raise ArgumentError, "#{@__resource_name__}: rule_arns must be provided" unless opts[:rule_arns] && !opts[:rule_arns].empty?
-      @query_params[:rule_arns] = [opts[:rule_arns]]
+    @query_params[:listener_arn] = opts[:listener_arn]
+    if opts.key?(:listener_arn)
+      raise ArgumentError, "#{@__resource_name__}: rule_arns must be provided" unless opts[:listener_arn] && !opts[:listener_arn].empty?
+      @query_params[:listener_arn] = opts[:listener_arn]
     end
     @table = fetch_data
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.elb_client_v2.describe_rules(@query_params)
+    elastic_load_balancer_listener_rows = []
+    @query_params[:page_size] = 100
+    loop do
+      catch_aws_errors do
+        @api_response  = @aws.elb_client_v2.describe_rules(@query_params)
+      end
+      return elastic_load_balancer_listener_rows if !@api_response || @api_response.empty?
+
+      @api_response.rules.each do |rules|
+        elastic_load_balancer_listener_rows += [{
+          rule_arn: rules.rule_arn,
+          priority: rules.priority,
+          conditions: rules.conditions,
+          actions: rules.actions,
+          is_default: rules.is_default,
+        }]
+      end
+      break unless @api_response.next_marker
+      @query_params[:next_marker] = @api_response[:next_marker]
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.rules.map(&:to_h)
+    @table = elastic_load_balancer_listener_rows
   end
 end
