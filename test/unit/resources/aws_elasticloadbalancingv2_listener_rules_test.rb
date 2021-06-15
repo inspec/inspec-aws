@@ -12,9 +12,6 @@ class AWSElasticLoadBalancingV2ListenerRulesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSElasticLoadBalancingV2ListenerRules.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
-    refute AWSElasticLoadBalancingV2ListenerRules.new(listener_arn: 'test20', client_args: { stub_responses: false }).exist?
-  end
 end
 
 class AWSElasticLoadBalancingV2ListenerRulesHappyPathTest < Minitest::Test
@@ -26,7 +23,6 @@ class AWSElasticLoadBalancingV2ListenerRulesHappyPathTest < Minitest::Test
     mock_data[:rule_arn] = 'test1'
     mock_data[:priority] = 'test1'
     mock_data[:is_default] = true
-    mock_data[:next_marker]= nil
     data[:data] = { :rules => [mock_data] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
     @rules = AWSElasticLoadBalancingV2ListenerRules.new(listener_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
