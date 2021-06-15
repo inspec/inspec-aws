@@ -3,13 +3,14 @@
 require 'aws_backend'
 
 class AWSStepFunctionsStateMachines < AwsResourceBase
-  name 'aws_stepfnctions_state_machines'
+  name 'aws_stepfunctions_state_machines'
   desc 'Lists the existing state machines.'
-  example `
+
+  example "
     describe aws_stepfnctions_state_machines do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 

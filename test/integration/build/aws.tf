@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_sfn_state_machine_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1828,7 +1829,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1973,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1980,9 +1981,57 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_sfn_state_machine" "aws_sfn_state_machine1" {
-  name     = "my-state-machine"
-  role_arn = aws_iam_role.iam_for_sfn.arn
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_sfn_state_machine" "sfn_state_machine_sf_test" {
+  name     = var.aws_sfn_state_machine_name
+  role_arn = aws_iam_role.aws_iam_role_sf_test.arn
 
   definition = <<EOF
 {
@@ -1991,10 +2040,50 @@ resource "aws_sfn_state_machine" "aws_sfn_state_machine1" {
   "States": {
     "HelloWorld": {
       "Type": "Task",
-      "Resource": "${aws_lambda_function.lambda.arn}",
+      "Resource": "${aws_lambda_function.aws_lambda_function_sf_test.arn}",
       "End": true
     }
   }
 }
 EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_sf_test" {
+  name = "iam_for_lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_sf_test" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name"
+  role          = aws_iam_role.aws_iam_role_sf_test.arn
+  handler       = "exports.test"
+
+  # The filebase64sha256() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
+  source_code_hash = filebase64sha256("files/lambda.zip")
+
+
+  runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
 }
