@@ -38,6 +38,26 @@ class AWSECSTaskDefinition < AwsResourceBase
     @task_definition[:encrypted]
   end
 
+  def names
+    container_definitions.map{|x| x.name}
+  end
+
+  def images
+    container_definitions.map{|x| x.images}
+  end
+
+  def cpus
+    container_definitions.map{|x| x.cpu}
+  end
+
+  def memories
+    container_definitions.map{|x| x.memory}
+  end
+
+  def port_mappings
+    container_definitions.map{|x| x.port_mappings}
+  end
+
   def to_s
     "Task Definition Name: #{@display_name}"
   end
