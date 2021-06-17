@@ -12,13 +12,13 @@ The AWS::ElasticLoadBalancingV2::TargetGroup resource specifies a target group f
 ## Syntax
 
 Ensure that a target group arn exists.
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
       it { should exist }
     end
 
 ## Parameters
 
-`target_group_arns` _(required)_
+`   target_group_arn` _(required)_
 
 For additional information, see the [AWS documentation on ElasticLoadBalancingV2 TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html).
 
@@ -48,12 +48,12 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 ## Examples
 
 ### Ensure a target group arn is available.
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
       its('target_group_arn') { should eq 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067' }
     end
 
 ### Ensure that the target group name exists.
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
         its('target_group_name') { should eq 'my-targets' }
     end
 
@@ -67,13 +67,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'dummy') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -81,7 +81,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_elasticloadbalancingv2_target_group(target_group_arns: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
+    describe aws_elasticloadbalancingv2_target_group(   target_group_arn: 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067') do
       it { should be_available }
     end
 
