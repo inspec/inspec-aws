@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSLambdaFunction < AwsResourceBase
   name 'aws_lambda_function'
-  desc ''
+  desc 'Returns information about the function'
 
   example "
-    describe aws_lambda_function(instance_profile_name: 'test1') do
+    describe aws_lambda_function(function_name: 'test1') do
       it { should exist }
     end
   "
