@@ -1,4 +1,16 @@
-describe aws_lambda_function(function_name: "test_Lambda") do
+aws_lambda_function_name = attribute("aws_lambda_function_name", value: "", description: "")
+aws_lambda_function_arn = attribute("aws_lambda_function_name", value: "", description: "")
+aws_lambda_function_runtime = attribute("aws_lambda_function_runtime", value: "", description: "")
+aws_lambda_function_role = attribute("aws_lambda_function_role", value: "", description: "")
+aws_lambda_function_handler = attribute("aws_lambda_function_handler", value: "", description: "")
+aws_lambda_function_description = attribute("aws_lambda_function_description", value: "", description: "")
+
+
+control 'aws-lambda-function-1.0' do
+  impact 1.0
+  title 'Describes the function of the lambda function.'
+
+  describe aws_lambda_function(function_name: "test_Lambda") do
     it { should exist }
   end
   
@@ -35,3 +47,8 @@ describe aws_lambda_function(function_name: "test_Lambda") do
     its('signing_profile_version_arn') { should be_empty }
     its('signing_job_arn') { should be_empty }
   end
+
+  describe aws_lambda_function(function_name: "dummy") do
+    it { should_not exist }
+  end
+end
