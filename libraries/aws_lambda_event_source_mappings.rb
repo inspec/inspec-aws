@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSLambdaEventSourceMappings < AwsResourceBase
   name 'aws_lambda_event_source_mappings'
-  desc ''
-  example `
+  desc 'Lists event source mappings.'
+
+  example "
     describe aws_lambda_event_source_mappings do
       it { should exist }
     end
-  `
+  "
 
   attr_reader :table
 
@@ -41,11 +42,46 @@ class AWSLambdaEventSourceMappings < AwsResourceBase
     @table = fetch_data
   end
 
+  # def fetch_data1
+  #   catch_aws_errors do
+  #     @resp = @aws.lambda_client.list_event_source_mappings
+  #   end
+  #   return [] if !@resp || @resp.empty?
+  #   @table = @resp.event_source_mappings.map(&:to_h)
+  # end
+
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.lambda_client.list_event_source_mappings
+    rows = []
+    @query_params[:max_items] = 100
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.lambda_client.list_event_source_mappings(@query_params)
+      end
+      return rows if !@api_response || @api_response.empty?
+      @api_response.event_source_mappings.each do |resp|
+        rows += [{ uuid: resp.uuid,
+                   starting_position: resp.starting_position,
+                   starting_position_timestamp: resp.starting_position_timestamp,
+                   batch_size: resp.batch_size,
+                   maximum_batching_window_in_seconds: resp.maximum_batching_window_in_seconds,
+                   parallelization_factor: resp.parallelization_factor,
+                   event_source_arn: resp.event_source_arn,
+                   function_arn: resp.function_arn,
+                   last_modified: resp.last_modified,
+                   last_processing_result: resp.last_processing_result,
+                   state: resp.state,
+                   state_transition_reason: resp.state_transition_reason,
+                   destination_config: resp.destination_config,
+                   topics: resp.topics,
+                   queues: resp.queues,
+                   source_access_configurations: resp.source_access_configurations,
+                   maximum_record_age_in_seconds: resp.maximum_record_age_in_seconds,
+                   bisect_batch_on_function_error: resp.bisect_batch_on_function_error,
+                   maximum_retry_attempts: resp.maximum_retry_attempts }]
+      end
+      break unless @api_response.next_marker
+      @query_params[:next_marker] = @api_response.next_marker
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.event_source_mappings.map(&:to_h)
+    rows
   end
 end

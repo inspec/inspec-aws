@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSLambdaEventSourceMapping < AwsResourceBase
   name 'aws_lambda_event_source_mapping'
-  desc ''
+  desc 'Returns details about an event source mapping.'
 
   example "
     describe aws_lambda_event_source_mapping(uuid: 'test1') do
