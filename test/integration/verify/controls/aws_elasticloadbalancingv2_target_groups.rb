@@ -1,4 +1,4 @@
-aws_target_group_arn = attribute(:aws_target_group_arn, value: '', description: '')
+gitaws_target_group_arn = attribute(:aws_target_group_arn, value: '', description: '')
 
 control 'aws-elbv2-target-groups-1.0' do
 
