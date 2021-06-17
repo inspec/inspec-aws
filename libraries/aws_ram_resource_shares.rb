@@ -59,12 +59,4 @@ class AWSRAMResourceShares < AwsResourceBase
     end
     rows
   end
-
-  def fetch_data1
-    catch_aws_errors do
-      @resp = @aws.ram_client.list_resources(@query_params)
-    end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.resources.map(&:to_h)
-  end
 end

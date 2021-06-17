@@ -4,19 +4,19 @@ require 'aws_backend'
 
 class AWSRoute53RecordSet < AwsResourceBase
   name 'aws_route53_record_set'
-  desc ''
+  desc 'Lists the resource record sets in a specified hosted zone.'
+
   example "
-    describe aws_route53_record_set(hosted_zone_id: 'value') do
+    describe aws_route53_record_set(hosted_zone_id: 'value', start_record_name: 'record name') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { hosted_zone_id: opts, start_record_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(hosted_zone_id start_record_name))
     raise ArgumentError, "#{@__resource_name__}: hosted_zone_id must be provided" unless opts[:hosted_zone_id] && !opts[:hosted_zone_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:start_record_name] && !opts[:start_record_name].empty?
+    raise ArgumentError, "#{@__resource_name__}: start_record_name must be provided" unless opts[:start_record_name] && !opts[:start_record_name].empty?
     @hosted_zone_id = opts[:hosted_zone_id]
     @start_record_name = opts[:start_record_name]
     catch_aws_errors do
@@ -33,10 +33,6 @@ class AWSRoute53RecordSet < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s
