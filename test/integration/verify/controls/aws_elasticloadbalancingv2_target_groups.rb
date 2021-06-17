@@ -5,11 +5,11 @@ control 'aws-elbv2-target-groups-1.0' do
   impact 1.0
   title 'Ensure AWS ELBv2 Target Groups has the correct properties.'
 
-  describe aws_elasticloadbalancingv2_target_groups(target_group_arns: aws_target_group_arn) do
+  describe aws_elasticloadbalancingv2_target_groups do
     it { should exist }
   end
   
-  describe aws_elasticloadbalancingv2_target_groups(target_group_arns: aws_target_group_arn) do
+  describe aws_elasticloadbalancingv2_target_groups do
       its('target_group_arns') { should include aws_target_group_arn }
       its('target_group_names') { should include "tf-example-lb-tg" }
       its('protocols') { should include "HTTP" }

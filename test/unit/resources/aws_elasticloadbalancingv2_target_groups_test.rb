@@ -4,8 +4,8 @@ require 'aws-sdk-core'
 
 class AWSElasticLoadBalancingV2TargetGroupsConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AWSElasticLoadBalancingV2TargetGroups.new(target_group_arns: 'test1', client_args: { stub_responses: true })
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2TargetGroups.new(target_group_arns: 'test1', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSElasticLoadBalancingV2TargetGroupsConstructorTest < Minitest::Test
   end
 
   def test_work_groups_non_existing_for_empty_response
-    refute AWSElasticLoadBalancingV2TargetGroups.new(target_group_arns: 'test1', client_args: { stub_responses: true }).exist?
+    refute AWSElasticLoadBalancingV2TargetGroups.new( client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -28,7 +28,7 @@ class AWSElasticLoadBalancingV2TargetGroupsHappyPathTest < Minitest::Test
     mock_data[:protocol] = 'test1'
     data[:data] = { :target_groups => [mock_data] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @target_groups = AWSElasticLoadBalancingV2TargetGroups.new(target_group_arns: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @target_groups = AWSElasticLoadBalancingV2TargetGroups.new( client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_target_groups_exists
