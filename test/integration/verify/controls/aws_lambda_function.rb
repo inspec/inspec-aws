@@ -5,7 +5,6 @@ aws_lambda_function_role = attribute("aws_lambda_function_role", value: "", desc
 aws_lambda_function_handler = attribute("aws_lambda_function_handler", value: "", description: "")
 aws_lambda_function_description = attribute("aws_lambda_function_description", value: "", description: "")
 
-
 control 'aws-lambda-function-1.0' do
   impact 1.0
   title 'Describes the function of the lambda function.'

@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSLambdaFunctions < AwsResourceBase
   name 'aws_lambda_functions'
-  desc ''
+  desc 'List all the functions.'
+
   example "
     describe aws_lambda_functions do
       it { should exist }
@@ -24,7 +25,7 @@ class AWSLambdaFunctions < AwsResourceBase
              .register_column(:timeouts,                                        field: :timeout)
              .register_column(:memory_sizes,                                    field: :memory_size)
              .register_column(:last_modified,                                   field: :last_modified)
-             .register_column(:code_sha_256s,                                   field: :code_sha_256)
+             .register_column(:code_sha_256,                                    field: :code_sha_256)
              .register_column(:versions,                                        field: :version)
              .register_column(:vpc_configs,                                     field: :vpc_config)
              .register_column(:dead_letter_configs,                             field: :dead_letter_config)
@@ -50,10 +51,46 @@ class AWSLambdaFunctions < AwsResourceBase
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.lambda_client.list_functions
+    pagination_options = {}
+    rows = []
+    pagination_options[:max_items] = 10
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.lambda_client.list_functions(pagination_options)
+      end
+      return rows if !@api_response || @api_response.empty?
+      @api_response.functions.each do |resp|
+        rows += [{ function_name: resp.function_name,
+                   function_arn: resp.function_arn,
+                   runtime: resp.runtime,
+                   role: resp.role,
+                   handler: resp.handler,
+                   code_size: resp.code_size,
+                   description: resp.description,
+                   timeout: resp.timeout,
+                   memory_size: resp.memory_size,
+                   last_modified: resp.last_modified,
+                   code_sha_256: resp.code_sha_256,
+                   version: resp.version,
+                   vpc_config: resp.vpc_config,
+                   dead_letter_config: resp.dead_letter_config,
+                   environment: resp.environment,
+                   kms_key_arn: resp.kms_key_arn,
+                   tracing_config: resp.tracing_config,
+                   master_arn: resp.master_arn,
+                   revision_id: resp.revision_id,
+                   layers: resp.layers,
+                   state: resp.state,
+                   state_reason: resp.state_reason,
+                   state_reason_code: resp.state_reason_code,
+                   last_update_status: resp.last_update_status,
+                   last_update_status_reason: resp.last_update_status_reason,
+                   last_update_status_reason_code: resp.last_update_status_reason_code,
+                   file_system_configs: resp.file_system_configs  }]
+      end
+      break unless @api_response.next_marker
+      pagination_options[:marker] = @api_response.next_marker
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.functions.map(&:to_h)
+    rows
   end
 end
