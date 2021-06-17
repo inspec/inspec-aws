@@ -34,11 +34,7 @@ class AWSLambdaFunction < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def encrypted?
-    @res[:encrypted]
-  end
-
   def to_s
-    "function_name: #{@display_name}"
+    "Function Name: #{@display_name}"
   end
 end

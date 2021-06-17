@@ -86,7 +86,7 @@ class AWSLambdaFunctions < AwsResourceBase
                    last_update_status: resp.last_update_status,
                    last_update_status_reason: resp.last_update_status_reason,
                    last_update_status_reason_code: resp.last_update_status_reason_code,
-                   file_system_configs: resp.file_system_configs  }]
+                   file_system_configs: resp.file_system_configs }]
       end
       break unless @api_response.next_marker
       pagination_options[:marker] = @api_response.next_marker

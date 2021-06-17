@@ -60,10 +60,6 @@ For additional information, see the [AWS documentation on AWS Lambda Function](h
 | last_update_status_reason_code | The reason code for the last update that was performed on the function. |
 | file_system_configs (arn) | Connection settings for an Amazon EFS file system. The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system. |
 | file_system_configs (local_mount_path) | Connection settings for an Amazon EFS file system. The path where the function can access the file system, starting with /mnt/ . |
-| repository_type | The service that's hosting the file. |
-| location | A presigned URL that you can use to download the deployment package. |
-| tags | The function's tags. |
-| concurrency (reserved_concurrent_executions) | The function's reserved concurrency. The number of concurrent executions that are reserved for this function. For more information, see Managing Concurrency. |
 
 ## Examples
 
