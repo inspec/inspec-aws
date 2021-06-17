@@ -1,55 +1,51 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_logs_metric_filter Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_logs\_metric\_filter
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_logs_metric_filter` InSpec audit resource to test properties of a single specific AWS Logs Metric Filter.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Logs::MetricFilter resource specifies a metric filter that describes how CloudWatch Logs extracts information from logs and transforms it into Amazon CloudWatch metrics. If you have multiple metric filters that are associated with a log group, all the filters are applied to the log streams in that group.
 
 ## Syntax
 
 Ensure that a work_group name exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`filter_name` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on AWS Logs MetricFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| filter_name | The name of the metric filter. |
+| filter_pattern | A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message. |
+| metric_transformations (metric_name) | The metric transformations. The name of the CloudWatch metric. |
+| metric_transformations (metric_namespace) | The metric transformations. A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics that are similar. |
+| metric_transformations (metric_value) | The metric transformations. The value to publish to the CloudWatch metric when a filter pattern matches a log event. |
+| metric_transformations (default_value) | The metric transformations. The value to emit when a filter pattern does not match a log event. This value can be null. |
+| creation_time | The creation time of the metric filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
+| log_group_name | The name of the log group. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a filter name is available.
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+      its('filter_name') { should eq 'FilterName' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure a log group name is available.
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+        its('log_group_name') { should eq 'LogGroupName' }
     end
 
 ## Matchers
@@ -62,24 +58,24 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_group(work_group: 'dummy') do
+
+    describe aws_logs_metric_filter(filter_name: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the filter name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudwatchlogs:client:describe_metric_filters` action with `Effect` set to `Allow`.

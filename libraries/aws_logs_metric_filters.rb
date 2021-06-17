@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSLogsMetricFilters < AwsResourceBase
   name 'aws_logs_metric_filters'
-  desc ''
+  desc 'Lists the specified metric filters.'
+
   example "
     describe aws_logs_metric_filters do
       it { should exist }
@@ -34,7 +35,7 @@ class AWSLogsMetricFilters < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.cloudwatchlogs_client.describe_metric_filters(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.metric_filters.each do |res|
         rows += [{
           filter_name: res.filter_name,

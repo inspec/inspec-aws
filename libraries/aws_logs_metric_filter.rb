@@ -4,13 +4,14 @@ require 'aws_backend'
 
 class AWSLogsMetricFilter < AwsResourceBase
   name 'aws_logs_metric_filter'
-  desc ''
+  desc 'Lists the specified metric filters.'
 
   example "
-    describe aws_logs_metric_filter(filter_name: 'test') do
+    describe aws_logs_metric_filter(filter_name: 'FilterName') do
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { filter_name: opts } if opts.is_a?(String)
     super(opts)
