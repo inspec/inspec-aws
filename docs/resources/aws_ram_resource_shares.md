@@ -1,74 +1,86 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_ram_resource_shares Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_ram\_resource\_shares
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_ram_resource_shares` InSpec audit resource to test properties of a plural AWS RAM Resource Shares.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::RAM::ResourceShare resource specifies a resource share.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a resource exists.
+
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+`resource_owner` _(required)_
+
+For additional information, see the [AWS documentation on AWS RAM Resource Share](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| arns | The Amazon Resource Name (ARN) of the resource. |
+| types | The resource type. |
+| resource_share_arns | The Amazon Resource Name (ARN) of the resource share. |
+| resource_share_arns | The ARN of the resource group. This value is returned only if the resource is a resource group. |
+| statuses | The status of the resource. |
+| status_messages | A message about the status of the resource. |
+| creation_times | The time when the resource was associated with the resource share. |
+| last_updated_times | The time when the association was last updated. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+### Ensure a resource arn is available.
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
+      its('arns') { should include 'resource_arn_test' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure a resource group arn is available.
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
+      its('resource_group_arns') { should include 'resource_group_arn_test' }
+    end
+
+### Ensure that the status is `AVAILABLE` or `ZONAL_RESOURCE_INACCESSIBLE`.
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
+        its('states') { should include 'AVAILABLE' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_athena_work_groups do
+
+    describe aws_ram_resource_shares(resource_owner: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the resource is available.
 
-    describe aws_athena_work_groups do
+    describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ram:client:list_resources` action with `Effect` set to `Allow`.

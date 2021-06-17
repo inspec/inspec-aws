@@ -1,74 +1,72 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_ram_resource_share Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_ram\_resource\_share
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_ram_resource_share` InSpec audit resource to test properties of a single specific AWS RAM Resource Share.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::RAM::ResourceShare resource specifies a resource share.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a resource exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`resource_owner resource_share_arn` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on AWS RAM Resource Share](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| resource_share_arn | The Amazon Resource Name (ARN) of the resource share. |
+| name | The name of the resource share. |
+| owning_account_id | The ID of the AWS account that owns the resource share. |
+| allow_external_principals | Indicates whether principals outside your AWS organization can be associated with a resource share. |
+| status | The status of the resource share. |
+| status_message | A message about the status of the resource share. |
+| tags | The tags for the resource share. |
+| creation_time | The time when the resource share was created. |
+| last_updated_time | The time when the resource share was last updated. |
+| feature_set | Indicates how the resource share was created. Possible values include CREATED_FROM_POLICY, PROMOTING_TO_STANDARD and STANDARD. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a resource share arn is available.
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+      its('resource_share_arn') { should eq 'resource_share_arn_test' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure a resource name is available.
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+        its('name') { should eq 'resource_name' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -76,10 +74,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ram:client:get_resource_shares` action with `Effect` set to `Allow`.

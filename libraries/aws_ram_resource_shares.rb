@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSRAMResourceShares < AwsResourceBase
   name 'aws_ram_resource_shares'
-  desc ''
+  desc 'Describes the resource shares of the ram.'
+
   example "
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should exist }
@@ -37,6 +38,29 @@ class AWSRAMResourceShares < AwsResourceBase
   end
 
   def fetch_data
+    rows = []
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.ram_client.list_resources(@query_params)
+      end
+      return rows if !@api_response || @api_response.empty?
+      @api_response.resources.each do |res|
+        rows += [{ arn: res.arn,
+                   type: res.type,
+                   resource_share_arn: res.resource_share_arn,
+                   resource_group_arn: res.resource_group_arn,
+                   status: res.status,
+                   status_message: res.status_message,
+                   creation_time: res.creation_time,
+                   last_updated_time: res.last_updated_time }]
+      end
+      break unless @api_response.next_token
+      @query_params[:next_token] = @api_response.next_token
+    end
+    rows
+  end
+
+  def fetch_data1
     catch_aws_errors do
       @resp = @aws.ram_client.list_resources(@query_params)
     end
