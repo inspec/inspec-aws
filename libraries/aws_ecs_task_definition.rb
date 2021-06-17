@@ -39,23 +39,23 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def names
-    container_definitions.map{|x| x.name}
+    container_definitions.map(&:name)
   end
 
   def images
-    container_definitions.map{|x| x.images}
+    container_definitions.map(&:image)
   end
 
   def cpus
-    container_definitions.map{|x| x.cpu}
+    container_definitions.map(&:cpu)
   end
 
   def memories
-    container_definitions.map{|x| x.memory}
+    container_definitions.map(&:memory)
   end
 
   def port_mappings
-    container_definitions.map{|x| x.port_mappings}
+    container_definitions.map(&:port_mappings)
   end
 
   def to_s
