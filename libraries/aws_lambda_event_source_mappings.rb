@@ -42,14 +42,6 @@ class AWSLambdaEventSourceMappings < AwsResourceBase
     @table = fetch_data
   end
 
-  # def fetch_data1
-  #   catch_aws_errors do
-  #     @resp = @aws.lambda_client.list_event_source_mappings
-  #   end
-  #   return [] if !@resp || @resp.empty?
-  #   @table = @resp.event_source_mappings.map(&:to_h)
-  # end
-
   def fetch_data
     rows = []
     @query_params[:max_items] = 100
