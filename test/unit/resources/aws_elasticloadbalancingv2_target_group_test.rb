@@ -9,7 +9,7 @@ class AWSElasticLoadBalancingV2TargetGroupConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2TargetGroup.new(target_group_arns: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2TargetGroup.new(target_group_arn: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -28,7 +28,7 @@ class AWSElasticLoadBalancingV2TargetGroupSuccessPathTest < Minitest::Test
     mock_parameter[:protocol] = 'test1'
     data[:data] = { target_groups: [mock_parameter] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @target_groups = AWSElasticLoadBalancingV2TargetGroup.new(target_group_arns: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @target_groups = AWSElasticLoadBalancingV2TargetGroup.new(target_group_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_parameter_group_exists
