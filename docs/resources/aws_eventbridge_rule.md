@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_eventbridge\_rule
 
-Use the `aws_eventbridge_rule` InSpec audit resource to test properties of a single specific Events Rule.
+Use the `aws_eventbridge_rule` InSpec audit resource to test properties of a single Amazon EventBridge event rule.
 
 The AWS::Events::Rule resource creates a rule that matches incoming events and routes them to one or more targets for processing.
 
@@ -21,6 +21,9 @@ Ensure that a rule name exists.
 
 `name` _(required)_
 
+The name of the rule.
+Pass the name as a key-value entry in a hash.
+
 For additional information, see the [AWS documentation on Events Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-rule.html).
 
 ## Properties
@@ -29,7 +32,7 @@ For additional information, see the [AWS documentation on Events Rule](https://d
 | --- | --- |
 | name | The name of the rule. |
 | arn | The Amazon Resource Name (ARN) of the rule. |
-| event_pattern | The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge User Guide. |
+| event_pattern | The event pattern. |
 | schedule_expression | The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)". |
 | state | Specifies whether the rule is enabled or disabled. |
 | description | The description of the rule. |
@@ -40,12 +43,14 @@ For additional information, see the [AWS documentation on Events Rule](https://d
 ## Examples
 
 ### Ensure a rule name is available.
-    describe aws_eventbridge_rule(name: 'test_rule') do
-      its('name') { should eq 'test_rule' }
+
+    describe aws_eventbridge_rule(name: 'RULE_NAME') do
+      its('name') { should eq 'RULE_NAME' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_eventbridge_rule(name: 'test1') do
+
+    describe aws_eventbridge_rule(name: 'RULE_NAME') do
         its('state') { should eq 'ENABLED' }
     end
 

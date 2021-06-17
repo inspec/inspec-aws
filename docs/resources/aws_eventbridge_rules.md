@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_eventbridge\_rules
 
-Use the `aws_eventbridge_rules` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_eventbridge_rules` InSpec audit resource to test properties of multiple Amazon EventBridge event rules.
 
 The AWS::Events::Rule resource creates a rule that matches incoming events and routes them to one or more targets for processing.
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on Events Rule](https://d
 | --- | --- |
 | names | The name of the rule. |
 | arns | The Amazon Resource Name (ARN) of the rule. |
-| event_patterns | The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge User Guide. |
+| event_patterns | The event pattern. |
 | schedule_expressions | The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)". |
 | states | Specifies whether the rule is enabled or disabled. |
 | descriptions | The description of the rule. |
@@ -38,11 +38,13 @@ For additional information, see the [AWS documentation on Events Rule](https://d
 ## Examples
 
 ### Ensure a rule name is available.
+
     describe aws_eventbridge_rules do
       its('name') { should include 'test_rule' }
     end
 
 ### Ensure that the state is `ENABLED` or `DISABLED`.
+
     describe aws_eventbridge_rules do
         its('state') { should include 'ENABLED' }
     end
@@ -62,7 +64,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_eventbridge_rules do
       it { should_not exist }
     end
