@@ -7,7 +7,7 @@ class AWSElasticLoadBalancingV2TargetGroups < AwsResourceBase
   desc 'Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.'
 
   example "
-    describe aws_elasticloadbalancingv2_target_groups(user_pool_id: 'test1') do
+    describe aws_elasticloadbalancingv2_target_groups do
       its('count') { should eq 3 }
     end
   "
@@ -35,21 +35,45 @@ class AWSElasticLoadBalancingV2TargetGroups < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(target_group_arns))
-    @query_params = {}
-    @query_params[:target_group_arns] = [opts[:target_group_arns]]
-    if opts.key?(:target_group_arns)
-      raise ArgumentError, "#{@__resource_name__}: target_group_arns must be provided" unless opts[:target_group_arns] && !opts[:target_group_arns].empty?
-      @query_params[:target_group_arns] = [opts[:target_group_arns]]
-    end
+    validate_parameters
     @table = fetch_data
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.elb_client_v2.describe_target_groups(@query_params)
+    pagination_option= {}
+    elastic_load_balancer_target_group = []
+    pagination_option[:page_size] = 1
+
+    loop do
+      catch_aws_errors do
+        @api_response  = @aws.elb_client_v2.describe_target_groups(pagination_option)
+      end
+      return elastic_load_balancer_target_group if !@api_response || @api_response.empty?
+
+      @api_response.target_groups.each do |target_groups|
+        elastic_load_balancer_target_group += [{
+          target_group_arn:   target_groups.target_group_arn,
+                                                 target_group_name:   target_groups.target_group_name,
+                                                 protocol: target_groups.protocol,
+                                                 port:    target_groups.port,
+                                                 vpc_id: target_groups.vpc_id,
+                                                 health_check_protocol:   target_groups.health_check_protocol,
+                                                 health_check_port:   target_groups.health_check_port,
+                                                 health_check_enabled: target_groups.health_check_enabled,
+                                                 health_check_interval_seconds:    target_groups.health_check_interval_seconds,
+                                                 health_check_timeout_seconds: target_groups.health_check_timeout_seconds,
+                                                 healthy_threshold_count:   target_groups.healthy_threshold_count,
+                                                 unhealthy_threshold_count:   target_groups.unhealthy_threshold_count,
+                                                 health_check_path: target_groups.health_check_path,
+                                                 matcher:    target_groups.matcher,
+                                                 load_balancer_arns: target_groups.load_balancer_arns,
+                                                 target_type:    target_groups.target_type,
+                                                 protocol_version: target_groups.protocol_version,
+        }]
+      end
+      break unless @api_response.next_marker
+      pagination_option[:marker] = @api_response[:next_marker]
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.target_groups.map(&:to_h)
+    @table = elastic_load_balancer_target_group
   end
 end
