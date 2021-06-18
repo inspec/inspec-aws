@@ -34,7 +34,7 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
    
 ## Examples
 
-#####Ensure a specific instance exists
+##### Ensure a specific instance exists
     describe aws_rds_instances do
       its('db_instance_identifiers') { should include 'rds-12345678' }
     end

@@ -248,6 +248,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_vpc](docs/resources/aws_vpc.md)
 - [aws_vpc_endpoint](docs/resources/aws_vpc_endpoint.md)
 - [aws_vpc_endpoints](docs/resources/aws_vpc_endpoints.md)
+- [aws_vpc_endpoint_service](docs/resources/aws_vpc_endpoint_service.md)
+- [aws_vpc_endpoint_services](docs/resources/aws_vpc_endpoint_services.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 - [aws_vpn_connections](docs/resources/aws_vpn_connections.md)
 - [aws_vpn_gateway](docs/resources/aws_vpn_gateway.md)

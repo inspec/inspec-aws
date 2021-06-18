@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'aws-sdk-autoscaling'
+require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
@@ -90,6 +91,10 @@ class AwsConnection
 
   def compute_client
     aws_client(Aws::EC2::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
   end
 
   def config_client

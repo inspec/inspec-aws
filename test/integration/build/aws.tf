@@ -199,6 +199,16 @@ variable "aws_publish_cloudwatch_metrics_enabled" {}
 variable "aws_athena_workgroup_description" {}
 variable "aws_athena_workgroup_state" {}
 variable "aws_client_name" {}
+variable "aws_batch_job_queue_name" {}
+variable "aws_batch_job_queue_status" {}
+variable "aws_batch_job_queue_priority" {}
+variable "aws_compute_environment_name" {}
+variable "aws_max_vcpus" {}
+variable "aws_min_vcpus" {}
+variable "aws_type" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2098,6 +2108,139 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_batch_compute_environment" "aws_batch_compute_environment1" {
+  compute_environment_name = "test1"
+
+  compute_resources {
+    max_vcpus = 16
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id
+    ]
+
+    type = "FARGATE"
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+
+resource "aws_iam_role" "ecs_instance_role" {
+  name = "ecs_instance_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+  role       = aws_iam_role.ecs_instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+}
+
+resource "aws_iam_instance_profile" "ecs_instance_role" {
+  name = "ecs_instance_role"
+  role = aws_iam_role.ecs_instance_role.name
+}
+
+resource "aws_iam_role" "aws_batch_service_role" {
+  name = "aws_batch_service_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+        "Service": "batch.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+  role       = aws_iam_role.aws_batch_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+}
+
+resource "aws_security_group" "to_test_batch" {
+  name = "aws_batch_compute_environment_security_group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_vpc" "to_test_batch" {
+  cidr_block = "10.1.0.0/16"
+
+}
+
+resource "aws_subnet" "to_test_batch" {
+  vpc_id     = aws_vpc.to_test_batch.id
+  cidr_block = "10.1.1.0/24"
+}
+
+resource "aws_batch_compute_environment" "to_test_batch" {
+  compute_environment_name = var.aws_compute_environment_name
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance_role.arn
+
+    instance_type = [
+      "c4.large",
+    ]
+
+    max_vcpus = var.aws_max_vcpus
+    min_vcpus = var.aws_min_vcpus
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id,
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id,
+    ]
+
+    type = var.aws_type
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+resource "aws_batch_job_queue" "test_queue" {
+  name     = var.aws_batch_job_queue_name
+  state    =  var.aws_batch_job_queue_status
+  priority = var.aws_batch_job_queue_priority
+  compute_environments = [
+    aws_batch_compute_environment.to_test_batch.arn,
+  ]
+}
+
 resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
   name = var.aws_identity_pool_name
 }
@@ -2107,6 +2250,45 @@ resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
 
   user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
   generate_secret     = true
+}
+
+resource "aws_batch_job_definition" "aws_batch_job_definition1" {
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
+
+  container_properties = <<CONTAINER_PROPERTIES
+{
+    "command": ["ls", "-la"],
+    "image": "busybox",
+    "memory": 1024,
+    "vcpus": 1,
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "/tmp"
+        },
+        "name": "tmp"
+      }
+    ],
+    "environment": [
+        {"name": "VARNAME", "value": "VARVAL"}
+    ],
+    "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp",
+          "readOnly": false
+        }
+    ],
+    "ulimits": [
+      {
+        "hardLimit": 1024,
+        "name": "nofile",
+        "softLimit": 1024
+      }
+    ]
+}
+CONTAINER_PROPERTIES
 }
 
 resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
@@ -2482,4 +2664,57 @@ resource "aws_api_gateway_method" "aws_api_gateway_method_test" {
   resource_id   = aws_api_gateway_resource.aws_api_gateway_resource_test.id
   http_method   = "GET"
   authorization = "NONE"
+}
+
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "test1"
+      image     = "test1"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_efs_mount_target" "aws_efs_mount_target_mt_test" {
+  file_system_id = aws_efs_file_system.aws_efs_file_system_mt_test.id
+  subnet_id      = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+resource "aws_efs_file_system" "aws_efs_file_system_mt_test" {
+  creation_token = "my-product"
+
+  tags = {
+    Name = "MyProduct"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_mount_mt_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_mount_mt_test" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = var.aws_availability_zone
+
 }

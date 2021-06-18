@@ -334,6 +334,37 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_mount_target_mt_id" {
+  value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
+}
+
+output "aws_file_system_mt_id" {
+  value = aws_efs_file_system.aws_efs_file_system_mt_test.id
+}
+
+output "aws_subnet_mt_id" {
+  value = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+output "aws_vpc_mt_id" {
+  value = aws_vpc.aws_vpc_mount_mt_test.id
+}
+output "batch_job_queue_arn" {
+  value = aws_batch_job_queue.test_queue.arn
+}
+output "batch_job_queue_compute_environments" {
+  value = aws_batch_job_queue.test_queue.compute_environments
+}
+
+
+output "aws_ecs_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
+output "aws_ecs_task_definition_revision" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.revision
+}
+
 output "aws_client_id" {
   value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.id
 }
@@ -341,6 +372,15 @@ output "aws_client_id" {
 output "aws_client_secret" {
   value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.client_secret
 }
+
+output "aws_batch_job_arn" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.arn
+}
+
+output "aws_batch_job_revision" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.revision
+}
+
 
 output "aws_user_pool_id" {
   value = aws_cognito_user_pool.aws_cognito_user_pool_test.id
@@ -425,4 +465,16 @@ output "aws_vpc_notifications_arn" {
 
 output "aws_transit_gateway_route_table_id" {
   value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
+}
+
+output "aws_vpc_endpoint_service_name" {
+  value = aws_vpc_endpoint_service.notification_service.service_name
+}
+
+output "aws_vpc_endpoint_service_id" {
+  value = aws_vpc_endpoint_service.notification_service.id
+}
+
+output "aws_vpc_base_endpoint_dns_names" {
+  value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
