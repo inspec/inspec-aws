@@ -26,21 +26,39 @@ class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(listener_arn))
-    @query_params = {}
-    @query_params[:listener_arns] = [opts[:listener_arn]]
-    if opts.key?(:listener_arn)
-      raise ArgumentError, "#{@__resource_name__}: listener_arn must be provided" unless opts[:listener_arn] && !opts[:listener_arn].empty?
-      @query_params[:listener_arns] = [opts[:listener_arn]]
-    end
+    validate_parameters(required: %i(load_balancer_arn))
+
+    raise ArgumentError, "#{@__resource_name__}: listener_arn must be provided" unless opts[:load_balancer_arn] && !opts[:load_balancer_arn].empty?
+
     @table = fetch_data
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.elb_client_v2.describe_listeners(@query_params)
+    elastic_load_balancer_listener_row = []
+    query_params = {}
+    query_params[:load_balancer_arn] = opts[:load_balancer_arn]
+    query_params[:page_size] = 100
+    loop do
+      catch_aws_errors do
+        @resp = @aws.elb_client_v2.describe_listeners(query_params)
+      end
+      return elastic_load_balancer_listener_row if !@resp || @resp.empty?
+
+      @resp.listeners.each do |listeners|
+        elastic_load_balancer_listener_row += [{
+          listener_arn:   listeners.listener_arn,
+          load_balancer_arn:   listeners.load_balancer_arn,
+          port: listeners.port,
+          protocol:    listeners.protocol,
+          certificates: listeners.certificates,
+          ssl_policy:   listeners.ssl_policy,
+          default_actions:   listeners.default_actions,
+          alpn_policy: listeners.alpn_policy,
+        }]
+      end
+      break unless @resp.next_marker
+      query_params[:marker] = @resp.next_marker
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.listeners.map(&:to_h)
+    @table =elastic_load_balancer_listener_row
   end
 end
