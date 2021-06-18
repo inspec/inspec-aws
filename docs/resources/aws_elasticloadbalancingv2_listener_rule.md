@@ -12,13 +12,13 @@ The AWS::ElasticLoadBalancingV2::ListenerRule specifies a listener rule. The lis
 ## Syntax
 
 Ensure that a rule exists.
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'test_rule') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test_rule') do
       it { should exist }
     end
 
 ## Parameters
 
-`rule_arns` _(required)_
+`rule_arn` _(required)_
 
 For additional information, see the [AWS documentation on ELBv2 Listener Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
 
@@ -83,12 +83,12 @@ If you specify multiple addresses, the condition is satisfied if the source IP a
 ## Examples
 
 ### Ensure a rule_arn is available.
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'test_rule') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test_rule') do
       its('rule_arn') { should eq 'test_rule' }
     end
 
 ### Verify the priority of the desired rule arn
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'test_rule') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test_rule') do
         its('priority') { should eq 1 }
     end
 
@@ -102,13 +102,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'test_rule') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test_rule') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'dummy') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -116,7 +116,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'dummy') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'dummy') do
       it { should be_available }
     end
 

@@ -17,6 +17,7 @@ Ensure that a listener_arn exists.
     end
 
 ## Parameters
+  listener_arn  _(required)_
 
 For additional information, see the [AWS documentation on ELBv2 Listener Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
 
