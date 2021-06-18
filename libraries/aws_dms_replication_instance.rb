@@ -29,12 +29,4 @@ class AWSDMSReplicationInstance < AwsResourceBase
   def exists?
     !@orderable_replication_instances.nil? && !@orderable_replication_instances.empty?
   end
-
-  def encrypted?
-    @orderable_replication_instances[:encrypted]
-  end
-
-  def to_s
-    "aws_dms_replication_instance: #{@display_name}"
-  end
 end
