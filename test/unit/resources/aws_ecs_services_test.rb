@@ -17,10 +17,10 @@ class AWSECSServicesHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_services
+    data[:method] = :describe_services
     mock_data = {}
-    mock_data[:service_arns] = ['test1']
-    data[:data] = mock_data
+    mock_data[:service_arn] = 'test1'
+    data[:data] = {services: [ mock_data] }
     data[:client] = Aws::ECS::Client
     @res = AWSECSServices.new(cluster: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -30,6 +30,7 @@ class AWSECSServicesHappyPathTest < Minitest::Test
   end
 
   def test_names
-    assert_equal(@res.service_arns, [['test1']])
+
+    assert_equal(@res.service_arns, ['test1'])
   end
 end

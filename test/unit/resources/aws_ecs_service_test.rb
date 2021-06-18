@@ -9,7 +9,7 @@ class AWSECSServiceConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSECSService.new(cluster: '', services: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSECSService.new(cluster: '', service: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -28,7 +28,7 @@ class AWSECSServiceSuccessPathTest < Minitest::Test
     mock_parameter[:cluster_arn] = 'test1'
     data[:data] = { services: [mock_parameter] }
     data[:client] = Aws::ECS::Client
-    @work_group = AWSECSService.new(cluster: 'test1', services: ['test1'], client_args: { stub_responses: true }, stub_data: [data])
+    @work_group = AWSECSService.new(cluster: 'test1', service: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_parameter_group_exists
