@@ -35,10 +35,6 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
     !@scaling_policies.nil? && !@scaling_policies.empty?
   end
 
-  def encrypted?
-    @scaling_policies[:encrypted]
-  end
-
   def to_s
     "Service Namespace: #{@display_name}"
   end
