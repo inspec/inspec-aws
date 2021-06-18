@@ -10,7 +10,7 @@ Use the `aws_elasticloadbalancingv2_listeners` InSpec audit resource to test the
 ## Syntax
 
 An `aws_elasticloadbalancingv2_listeners` resource block returns all ElasticLoadBalancingV2 Listeners.
-    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+    describe aaws_elasticloadbalancingv2_listeners(load_balancer_arn: 'test_lb_arn') do
       its { should exist }
     end
     
@@ -36,7 +36,7 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs
 ## Examples
 
 ##### Ensure there are ports attached to the listener.
-    describe aws_elasticloadbalancingv2_listener(listener_arn: "test_arn") do
+    describe aaws_elasticloadbalancingv2_listeners(load_balancer_arn: 'test_lb_arn') do
         its('ports') { should include 80}
       end
 
@@ -50,7 +50,7 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_elasticloadbalancingv2_listener(listener_arn: "dummy") do
+    aws_elasticloadbalancingv2_listeners(load_balancer_arn: 'test_lb_arn') do
       it { should_not exist }
     end
     
