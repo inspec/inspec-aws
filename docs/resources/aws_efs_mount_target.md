@@ -48,12 +48,12 @@ For additional information, see the [AWS documentation on EFS Mount Target](http
 ### Ensure that the life cycle state is available.
 
     describe aws_efs_mount_target(mount_target_id: 'MOUNT_TARGET_ID') do
-        its('life_cycle_state') { should eq 'available' }
+        its('life_cycle_state') { should eq 'AVAILABLE' }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -81,4 +81,4 @@ Use `should` to check if the mount target id is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:describe_mount_targets` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:describe_mount_targets` action with **Effect** set to `Allow`.
