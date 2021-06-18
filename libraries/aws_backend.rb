@@ -212,6 +212,10 @@ class AwsConnection
   def apigateway_client
     aws_client(Aws::APIGateway::Client)
   end
+
+  def applicationautoscaling_client
+    aws_client(Aws::ApplicationAutoScaling::Client)
+  end
 end
 
 # Base class for AWS resources
