@@ -29,27 +29,35 @@ class AWSECSServices < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(cluster))
-    if opts.key?(:cluster) && !(opts[:cluster] && !opts[:cluster].empty?)
-      raise ArgumentError, "#{@__resource_name__}: cluster must be provided"
+    validate_parameters(allow: %i(cluster))
+    query_params = {}
+
+    if opts.key?(:cluster)
+      query_params[:cluster] = opts[:cluster]
     end
-    @table = fetch_data
+    @table = fetch_data(query_params)
   end
 
-  def fetch_data
+  def fetch_data(query_params)
     service_rows = []
     service_ids = {}
-    pagination_options ={ cluster: opts[:cluster] }
     service_details = {}
-
+    query_params[:max_results] = 10
+    params = {}
+    if opts.key?(:cluster)
+      params[:cluster] = opts[:cluster]
+    end
     loop do
       catch_aws_errors do
-        service_ids = @aws.ecs_client.list_services(pagination_options)
+
+        service_ids = @aws.ecs_client.list_services(query_params)
+
       end
-      return [] if !service_ids.service_arns || service_ids.service_arns.empty?
+      return service_rows if !service_ids || service_ids.empty?
 
       catch_aws_errors do
-        service_details = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: service_ids[:service_arns] })
+        params[:services]=service_ids[:service_arns]
+        service_details = @aws.ecs_client.describe_services(params)
       end
 
       service_details.services.each do |c|
@@ -67,7 +75,7 @@ class AWSECSServices < AwsResourceBase
         }]
       end
       break unless service_ids.next_token
-      pagination_options = { cluster: opts[:cluster], next_token: service_ids.next_token }
+      @query_params[:next_token] = service_ids.next_token
     end
     @table = service_rows
   end
