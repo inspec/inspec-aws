@@ -5,7 +5,7 @@ platform: AWS
 
 # AWS\_vpc\_endpoint\_connection\_notifications
 
-Use the `aws_vpc_endpoint_connection_notifications` InSpec audit resource to test properties of multiple AWS VPC endpoint connection notification.
+Use the `aws_vpc_endpoint_connection_notifications` InSpec audit resource to test the properties of multiple AWS VPC endpoint connection notification.
 
 ## Syntax
 
@@ -39,20 +39,20 @@ See also the [AWS VPC endpoint connection notification documentation](https://do
 
 ### Ensure a AWS VPC endpoint connection notification exists
 
-    describe aws_vpc_endpoint_connection_notifications.where( connection_notification_id: 'vpce-nfn-03ad3532a5c71f8af' ) do
+    describe aws_vpc_endpoint_connection_notifications.where( connection_notification_id: 'VPCE-NFN-03AD3532A5C71F8AF' ) do
       it { should exist }
     end
 
 ### Confirm that the AWS VPC endpoint connection notification ARN is as expected.
 
     describe aws_vpc_endpoint_connection_notifications do
-      its('connection_notification_arns') { should include 'arn:aws:sns:us-east-2:112758395563:aws-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju' }
+      its('CONNECTION_NOTIFICATION_ARNS') { should include 'ARN:AWS:SNS:US-EAST-2:112758395563:AWS-SNS-TOPIC-ENCRYPTION-BLOIXLVRSNFYBLZXNBGCBVHJU' }
     end
 
 ### Confirm that the type of AWS VPC endpoint connection notification is as expected.
 
     describe aws_vpc_endpoint_connection_notifications do
-      its('connection_notification_types') { should include 'Topic' }
+      its('CONNECTION_NOTIFICATION_TYPES') { should include 'TOPIC' }
     end
 
 ## Matchers
@@ -65,13 +65,13 @@ The controls will pass if the `describe` returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_vpc_endpoint_connection_notifications(connection-notification-id: 'vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notifications(connection-notification-id: 'VPCE-NFN-12345678987654321') do
       it { should exist }
     end
 
 Use `should` to test the entity should not exists.
 
-    describe aws_vpc_endpoint_connection_notifications(connection-notification-id: 'vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notifications(connection-notification-id: 'VPCE-NFN-12345678987654321') do
       it { should_not exist }
     end
 
@@ -79,4 +79,4 @@ Use `should` to test the entity should not exists.
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), will need the `ec2:VpcEndpointConnectionNotifications` action with `Effect` set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.AWS.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.AWS.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
