@@ -40,13 +40,13 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 ### Ensure a job definition name is available.
 
     describe aws_batch_job_definitions do
-      its('job_definition_names') { should include 'JOB_DEFINITION_NAME' }
+      its('JOB_DEFINITION_NAMES') { should include 'JOB_DEFINITION_NAME' }
     end
 
 ### Ensure that the status is `ACTIVE`.
 
     describe aws_batch_job_definitions do
-        its('statuses') { should include 'ACTIVE' }
+        its('STATUSES') { should include 'ACTIVE' }
     end
 
 ## Matchers
@@ -79,4 +79,4 @@ Use `should` to check if the job_definition name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_definitions` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_definitions` action with **Effect** set to `Allow`.
