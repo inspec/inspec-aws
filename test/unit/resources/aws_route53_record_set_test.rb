@@ -23,13 +23,13 @@ class AWSRoute53RecordSetSuccessPathTest < Minitest::Test
     data = {}
     data[:method] = :list_resource_record_sets
     mock_data = {}
-    mock_data[:is_truncated] = true
-    mock_data[:max_items] = 1
-    mock_data[:name] = 'test1'
-    mock_data[:type] = 'test1'
-    mock_data[:set_identifier] = 'test1'
-    mock_data[:weight] = 1
-    mock_data[:region] = 'test1'
+    # mock_data[:is_truncated] = true
+    # mock_data[:max_items] = 1
+    # mock_data[:name] = 'test1'
+    # mock_data[:type] = 'test1'
+    # mock_data[:set_identifier] = 'test1'
+    # mock_data[:weight] = 1
+    # mock_data[:region] = 'test1'
     # mock_data[:geo_location] = {}
     # mock_data[:failover] = {}
     # mock_data[:multi_value_answer] = true
@@ -38,7 +38,19 @@ class AWSRoute53RecordSetSuccessPathTest < Minitest::Test
     # mock_data[:alias_target] = {}
     # mock_data[:health_check_id] = 'test1'
     # mock_data[:traffic_policy_instance_id] = 'test1'
-    data[:data] = { resource_record_sets: [mock_data] }
+    # data[:data] = { resource_record_sets: [mock_data] }
+    #
+    mock_data[:data] = {
+      resource_record_sets: [
+        {
+          name: "test1",
+          type: "test1",
+          set_identifier: "test1",
+        }
+      ],
+      is_truncated: false,
+      max_items: 100
+    }
     data[:client] = Aws::Route53::Client
     @resource_record_sets = AWSRoute53RecordSet.new(hosted_zone_id: 'test1', start_record_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
