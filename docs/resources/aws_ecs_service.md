@@ -12,13 +12,13 @@ The AWS::ECS::Service resource creates an Amazon Elastic Container Service (Amaz
 ## Syntax
 
 Ensure that a services exists.
-    describe aws_ecs_service(cluster: "default", services: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
+    describe aws_ecs_service(cluster: "default", service: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
       it { should exist }
     end
 
 ## Parameters
 
-`cluster, services` _(required)_
+`cluster, service` _(required)_
 
 For additional information, see the [AWS documentation on ECS Service](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html).
 
@@ -27,19 +27,19 @@ For additional information, see the [AWS documentation on ECS Service](https://d
 | Property | Description|
 | --- | --- |
 | services | A list of services to describe. You may specify up to 10 services to describe in a single operation. |
-| failures | A list of faliures to describe. |
+
 
 For additional information, see the [AWS documentation on ECS describe services method](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/ECS/Client.html#describe_services-instance_method).
 
 ## Examples
 
 ### Ensure a work_group name is available.
-    describe aws_ecs_service(cluster: "default", services: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
+    describe aws_ecs_service(cluster: "default", service: "arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service") do
       its('service_name') { should eq 'service_name' }
     end
 
 ### Ensure that the status is `ACTIVE` or not.
-    describe aws_ecs_service(cluster: "default", services: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
+    describe aws_ecs_service(cluster: "default", service: q"arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service") do
         its('status') { should eq 'ACTIVE' }
     end
 
@@ -52,19 +52,19 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
-    describe aws_ecs_service(cluster: "default", services: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
+    describe aws_ecs_service(cluster: "default", service: "arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-    describe aws_ecs_service(cluster: "dummy", services: ["dummy"]) do
+    describe aws_ecs_service(cluster: "dummy", service: "dummy") do
       it { should_not exist }
     end
 
 ### be_available
 
 Use `should` to check if the services is available.
-    describe aws_ecs_service(cluster: "default", services: ["arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service"]) do
+    describe aws_ecs_service(cluster: "default", service: "arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service") do
       it { should be_available }
     end
 
