@@ -52,7 +52,7 @@ class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
         }]
       end
       break unless @api_response.next_marker
-      @query_params[:next_marker] = @api_response[:next_marker]
+      @query_params[:marker] = @api_response[:next_marker]
     end
     @table = elastic_load_balancer_listener_rows
   end
