@@ -16,7 +16,7 @@ An `aws_elasticloadbalancingv2_listeners` resource block returns all ElasticLoad
     
 #### Parameters
 
-##### listener_arn _(required)_
+##### load_balancer_arn _(required)_
 
 See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html).
 
