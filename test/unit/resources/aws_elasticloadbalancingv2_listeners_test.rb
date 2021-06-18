@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSElasticLoadBalancingV2ListenersConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSElasticLoadBalancingV2Listeners.new(listener_arn: 'test1', client_args: { stub_responses: true })
+    AWSElasticLoadBalancingV2Listeners.new(load_balancer_arn: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSElasticLoadBalancingV2ListenersConstructorTest < Minitest::Test
   end
 
   def test_work_groups_non_existing_for_empty_response
-    refute AWSElasticLoadBalancingV2Listeners.new(listener_arn: 'test1', client_args: { stub_responses: true }).exist?
+    refute AWSElasticLoadBalancingV2Listeners.new(load_balancer_arn: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -28,7 +28,7 @@ class AWSElasticLoadBalancingV2ListenersHappyPathTest < Minitest::Test
     mock_data[:port] = 1
     data[:data] = { :listeners => [mock_data] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @listeners = AWSElasticLoadBalancingV2Listeners.new(listener_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @listeners = AWSElasticLoadBalancingV2Listeners.new(load_balancer_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_listeners_exists

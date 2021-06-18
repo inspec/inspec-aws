@@ -302,11 +302,5 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
-output "aws_ebs2_lb_listener_arn" {
-  value = aws_lb_listener.front_end.arn
-}
-output "aws_ebs2_lb_arn" {
-  value = aws_lb.test.arn
-}
 
 
