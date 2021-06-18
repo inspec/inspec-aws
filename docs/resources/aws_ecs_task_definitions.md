@@ -30,12 +30,12 @@ For additional information, see the [AWS ECS task definition documentation](http
 ### Ensure a task definition ARN is available.
 
     describe aws_ecs_task_definitions do
-      its('task_definition_arns') { should include 'arn:aws:ecs:REGION:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION_ID' }
+      its('task_definition_arns') { should include 'ARN:AWS:ECS:REGION:AWS_ACCOUNT_ID:TASK-DEFINITION/TASK_DEFINITION_ID' }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `list_task_definitions` method returns at least one result.
 
@@ -63,4 +63,4 @@ Use `should` to check if the task definition arns is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:client:list_task_definitions` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:client:list_task_definitions` action with **Effect** set to `Allow`.

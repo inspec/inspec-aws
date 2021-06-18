@@ -20,7 +20,7 @@ Ensure that a task definition exists.
 `task_definition` _(required)_
 
 The full task definition description.
-Specified as just the `family`, which targets the latest active revision, or `family:revision` for a specific revision number of a family, or the full Amazon Resource Name (ARN) of the task definition.
+Specified as just the `family`that targets the latest active revision, or `family:revision` for a specific revision number of a family, or the full Amazon Resource Name (ARN) of the task definition.
 
 For additional information, see the [AWS ECS task definition documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html).
 
@@ -53,7 +53,7 @@ For additional information, see the [AWS ECS task definition documentation](http
 ### Ensure a task definition ARN is available.
 
     describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
-      its('task_definition_arn') { should eq 'arn:aws:ecs:REGION:AWS_ACCOUNT_ID:task-definition/TASK_DEFINITION_ID' }
+      its('task_definition_arn') { should eq 'ARN:AWS:ECS:REGION:AWS_ACCOUNT_ID:TASK-DEFINITION/TASK_DEFINITION_ID' }
     end
 
 ### Verify the amount of memory for a task definition.
@@ -64,7 +64,7 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -92,4 +92,4 @@ Use `should` to check if the task definition is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:client:describe_task_definition` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:client:describe_task_definition` action with **Effect** set to `Allow`.
