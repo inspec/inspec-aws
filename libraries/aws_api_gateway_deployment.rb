@@ -13,7 +13,6 @@ class AWSApiGatewayDeployment < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { rest_api_id: opts, deployment_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(rest_api_id deployment_id))
     raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
