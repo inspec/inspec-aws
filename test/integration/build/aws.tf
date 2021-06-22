@@ -2770,3 +2770,13 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+
+// SECRETS MANAGER
+resource "aws_secretsmanager_secret" "aws_secretsmanager_secret_sm_test" {
+  name = "secret-manager-test"
+  description  = "Test Description."
+
+  tags = {
+    Name = "main"
+  }
+}

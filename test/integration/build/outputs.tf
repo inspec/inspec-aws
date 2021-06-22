@@ -478,3 +478,11 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+
+output "aws_secretsmanager_secret_sm_id" {
+  value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.id
+}
+
+output "aws_secretsmanager_secret_sm_arn" {
+  value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
+}
