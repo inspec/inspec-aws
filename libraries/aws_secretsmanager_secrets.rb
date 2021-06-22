@@ -30,6 +30,7 @@ class AWSSecretsManagerSecrets < AwsResourceBase
              .register_column(:secret_versions_to_stages,               field: :secret_versions_to_stages)
              .register_column(:owning_services,                         field: :owning_service)
              .register_column(:created_dates,                           field: :created_date)
+             .register_column(:primary_regions,                         field: :primary_region)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -62,6 +63,7 @@ class AWSSecretsManagerSecrets < AwsResourceBase
           tags: res.tags,
           owning_service: res.owning_service,
           created_date: res.created_date,
+          primary_region: res.primary_region,
         }]
       end
       break unless @api_response.next_token
