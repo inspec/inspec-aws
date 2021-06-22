@@ -34,10 +34,6 @@ class AWSLogsMetricFilter < AwsResourceBase
     !@metric_filters.nil? && !@metric_filters.empty?
   end
 
-  def encrypted?
-    @metric_filters[:encrypted]
-  end
-
   def to_s
     "filter_name: #{@display_name}"
   end

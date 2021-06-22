@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSRoute53ResolverResolverRules < AwsResourceBase
   name 'aws_route53resolver_resolver_rules'
-  desc ''
+  desc 'Lists the Resolver rules that were created using the current AWS account.'
+
   example "
     describe aws_route53resolver_resolver_rules do
       it { should exist }

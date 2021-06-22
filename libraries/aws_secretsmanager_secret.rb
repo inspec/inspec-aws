@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSSecretsManagerSecret < AwsResourceBase
   name 'aws_secretsmanager_secret'
-  desc ''
+  desc 'Retrieves the details of a secret.'
 
   example "
     describe aws_secretsmanager_secret(secret_id: 'value') do
@@ -32,10 +32,6 @@ class AWSSecretsManagerSecret < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s

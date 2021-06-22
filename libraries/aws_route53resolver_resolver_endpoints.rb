@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSRoute53ResolverResolverEndpoints < AwsResourceBase
   name 'aws_route53resolver_resolver_endpoints'
-  desc ''
+  desc 'Lists all the Resolver endpoints that were created using the current AWS account.'
+
   example "
     describe aws_route53resolver_resolver_endpoints do
       it { should exist }

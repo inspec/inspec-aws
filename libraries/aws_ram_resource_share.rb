@@ -35,10 +35,6 @@ class AWSRAMResourceShare < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def encrypted?
-    @res[:encrypted]
-  end
-
   def to_s
     "resource_share: #{@display_name}"
   end

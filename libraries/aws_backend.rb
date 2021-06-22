@@ -256,6 +256,10 @@ class AwsConnection
   def states_client
     aws_client(Aws::States::Client)
   end
+
+  def servicecatalog_client
+    aws_client(Aws::ServiceCatalog::Client)
+  end
 end
 
 # Base class for AWS resources
