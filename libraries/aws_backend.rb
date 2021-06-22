@@ -44,6 +44,7 @@ require 'aws-sdk-secretsmanager'
 require 'aws-sdk-transfer'
 require 'aws-sdk-states'
 require 'aws-sdk-apigateway'
+require 'aws-sdk-servicecatalog'
 
 # AWS Inspec Backend Classes
 #

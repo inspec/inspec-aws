@@ -19,8 +19,8 @@ class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
     @display_name = opts[:name]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.describe_product({ name: opts[:name] })
-      @res = resp.product_view_summary.to_h
+      resp = @aws.servicecatalog_client.describe_product_as_admin({ name: opts[:name] })
+      @res = resp.to_h
       create_resource_methods(@res)
     end
   end

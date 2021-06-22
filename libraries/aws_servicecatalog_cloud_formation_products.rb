@@ -30,15 +30,19 @@ class AWSServiceCatalogCloudFormationProducts < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(require_any_of: %i(name id))
+    @query_params = {}
+    @query_params[:name] = opts[:name]
+    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    @query_params[:name] = opts[:name]
     @table = fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.servicecatalog_client.describe_product
+      @resp = @aws.servicecatalog_client.describe_product_as_admin(@query_params)
     end
     return [] if !@resp || @resp.empty?
-    @table = @resp.product_view_summary.map(&:to_h)
+    @table = @resp.product_view_detail.product_view_summary.map(&:to_h)
   end
 end
