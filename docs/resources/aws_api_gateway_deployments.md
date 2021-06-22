@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_api\_gateway\_deployments
 
-Use the `aws_api_gateway_deployments` InSpec audit resource to test properties of a single plural AWS ApiGateway Deployment.
+Use the `aws_api_gateway_deployments` InSpec audit resource to test properties of multiple AWS ApiGateway Deployments.
 
-The AWS::ApiGateway::Deployment resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
+The AWS::ApiGateway::Deployment resource deploys an API Gateway RestAPI resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
 
 ## Syntax
 
 Ensure that the deployment exists.
 
-    describe aws_api_gateway_deployments(rest_api_id: 'value') do
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
 
@@ -34,10 +34,10 @@ For additional information, see the [AWS ApiGateway Deployment documentation](ht
 
 ## Examples
 
-### Ensure that the deployment id exists.
+### Ensure that the deployment ID exists.
 
-    describe aws_api_gateway_deployments(rest_api_id: 'value') do
-      its('ids') { should include 'value' }
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
+      its('ids') { should include 'DEPLOYMENT_ID' }
     end
 
 ## Matchers
@@ -50,13 +50,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_api_gateway_deployments(rest_api_id: 'value') do
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_api_gateway_deployments(rest_api_id: 'dummy') do
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should_not exist }
     end
 
@@ -64,7 +64,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the deployment is available.
 
-    describe aws_api_gateway_deployments(rest_api_id: 'value') do
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should be_available }
     end
 
