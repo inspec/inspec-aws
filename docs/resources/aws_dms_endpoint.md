@@ -5,9 +5,7 @@ platform: aws
 
 # aws\_dms\_endpoint
 
-Use the `aws_dms_endpoint` InSpec audit resource to test properties of a single specific Athena Work Group.
-
-The AWS::DMS::Endpoint resource creates an AWS DMS endpoint.
+Use the `aws_dms_endpoint` InSpec audit resource to test properties of a single specific AWS Database Migration Service (DMS) endpoint.
 
 ## Syntax
 
@@ -21,55 +19,59 @@ Ensure that an arn exists.
 
 `endpoint_arn` _(required)_
 
-For additional information, see the [AWS documentation on DMS Endpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html).
+The ARN of the DMS endpoint.
+
+For additional information, see the [AWS documentation on DMS endpoints](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| endpoint_identifier | The endpoint_identifier of the endpoint. |
-| endpoint_type | The endpoint_type of the endpoint. |
-| engine_name | The engine name of the endpoint. |
-| engine_display_name | The engine display name of the endpoint. |
-| username | The username of the endpoint. |
-| server_name | The server names of the endpoint. |
-| port | The port of the endpoint. |
-| database_name | The database name of the endpoint. |
-| extra_connection_attributes | The extra connection attributes of the endpoint. |
+| endpoint_identifier | The database endpoint identifier. |
+| endpoint_type | The endpoint type. |
+| engine_name | The type of engine for the endpoint. Valid values: `mysql`, `oracle`, `postgres`, `mariadb`, `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`, `sybase`, `dynamodb`, `mongodb`, `kinesis`, `kafka`, `elasticsearch`, `docdb`, `sqlserver`, and `neptune`. |
+| engine_display_name | The expanded name for the engine name. |
+| username | The user name used to connect to the endpoint. |
+| server_name | The name of the server at the endpoint. |
+| port | The port value used to access the endpoint. |
+| database_name | The name of the database at the endpoint. |
+| extra_connection_attributes | Additional connection attributes used to connect to the endpoint. |
 | status | The status of the endpoint. |
-| kms_key_id | The kms key id of the endpoint. |
-| endpoint_arn | The endpoint arn of the endpoint. |
-| certificate_arn | The certificate arn of the endpoint. |
-| ssl_mode | The ssl mode of the endpoint. |
-| service_access_role_arns | The service access role arns of the endpoint. |
-| external_table_definition | The external table definition of the endpoint. |
-| external_id | The external id of the endpoint. |
-| dynamo_db_settings | The dynamo_db_settings of the endpoint. |
-| s3_settings | The s3_settings of the endpoint. |
-| dms_transfer_settings | The dms_transfer_settings of the endpoint. |
-| mongo_db_settings | The mongo_db_settings of the endpoint. |
-| kinesis_settings | The kinesis_settings of the endpoint. |
-| kafka_settings | The kafka_settings of the endpoint. |
-| elasticsearch_settings | The elasticsearch_settings of the endpoint. |
-| neptune_settings | The neptune_settings of the endpoint. |
-| redshift_settings | The redshift_settings of the endpoint. |
-| postgre_sql_settings | The postgre_sql_settings of the endpoint. |
-| my_sql_settings | The my_sql_settings of the endpoint. |
-| oracle_settings | The oracle_settings of the endpoint. |
-| sybase_settings | The sybase_settings of the endpoint. |
-| microsoft_sql_server_settings | The microsoft_sql_server_settings of the endpoint. |
-| ibm_db_2_settings | The ibm_db_2_settings of the endpoint. |
-| doc_db_settings | The doc_db_settings of the endpoint. |
+| kms_key_id | An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint. |
+| endpoint_arn | The ARN of the endpoint. |
+| certificate_arn | The ARN used for SSL connection to the endpoint. |
+| ssl_mode | The SSL mode used to connect to the endpoint. |
+| service_access_role_arns | The ARN used by the service access IAM role. |
+| external_table_definition | The external table definition. |
+| external_id | Value returned by a call to CreateEndpoint that can be used for cross-account validation. |
+| dynamo_db_settings | Settings in JSON format for the target Amazon DynamoDB endpoint. |
+| s3_settings | Settings in JSON format for the target Amazon S3 endpoint. |
+| dms_transfer_settings | The settings in JSON format for the DMS transfer type of source endpoint. |
+| mongo_db_settings | The settings for the MongoDB source endpoint. |
+| kinesis_settings | The settings for the Amazon Kinesis target endpoint. |
+| kafka_settings | The settings for the Apache Kafka endpoint. |
+| elasticsearch_settings | The settings for the Elasticsearch endpoint. |
+| neptune_settings | The settings for the Amazon Neptune target endpoint. |
+| redshift_settings | The settings for the Amazon Redshift endpoint. |
+| postgre_sql_settings | The settings for the PostgreSQL source and target endpoint.  |
+| my_sql_settings | The settings for the MySQL source and target endpoint. |
+| oracle_settings | The settings for the Oracle source and target endpoint. |
+| sybase_settings | The settings for the SAP ASE source and target endpoint. |
+| microsoft_sql_server_settings | The settings for the Microsoft SQL Server source and target endpoint. |
+| ibm_db_2_settings | The settings for the IBM Db2 LUW source endpoint. |
+| doc_db_settings | The settings for the DocumentDB endpoint. |
 
 ## Examples
 
-### Ensure a engine name is available.
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
-      its('engine_name') { should eq 'test-engine-name' }
+### Ensure an engine name is available.
+
+    describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
+      its('engine_name') { should eq 'ENDPOINT_ENGINE_NAME' }
     end
 
-### Ensure that the port listens to the specific endpoint arn.
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
+### Ensure that the endpoint listens to a specific port.
+
+    describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
         its('port') { should eq 3306 }
     end
 
@@ -83,13 +85,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
+    describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_dms_endpoint(endpoint_arn: 'dummy') do
+    describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
       it { should_not exist }
     end
 
@@ -97,7 +99,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the endpoint is available.
 
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
+    describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
       it { should be_available }
     end
 

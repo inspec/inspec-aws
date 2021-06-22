@@ -5,9 +5,7 @@ platform: aws
 
 # aws\_dms\_endpoints
 
-Use the `aws_dms_endpoints` InSpec audit resource to test properties of a single specific Athena Work Group.
-
-The AWS::DMS::Endpoint resource creates an AWS DMS endpoint.
+Use the `aws_dms_endpoints` InSpec audit resource to test properties of a single specific AWS Database Migration Service (DMS) endpoint.
 
 ## Syntax
 
@@ -19,54 +17,58 @@ Ensure that an endpoint exists.
 
 ## Parameters
 
+There are no required parameters.
+
 For additional information, see the [AWS documentation on DMS Endpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| endpoint_identifiers | The endpoint_identifiers of the endpoint. |
-| endpoint_types | The endpoint_types of the endpoint. |
-| engine_names | The engine name of the endpoint. |
-| engine_display_names | The engine display names of the endpoint. |
-| usernames | The usernames of the endpoint. |
-| server_names | The server names of the endpoint. |
-| ports | The ports of the endpoint. |
-| database_names | The database names of the endpoint. |
-| extra_connection_attributes | The extra connection attributes of the endpoint. |
-| statuses | The statuses of the endpoint. |
-| kms_key_ids | The kms key ids of the endpoint. |
-| endpoint_arns | The endpoint arns of the endpoint. |
-| certificate_arns | The certificate arns of the endpoint. |
-| ssl_modes | The ssl modes of the endpoint. |
-| service_access_role_arns | The service access role arns of the endpoint. |
-| external_table_definitions | The external table definitions of the endpoint. |
-| external_ids | The external ids of the endpoint. |
-| dynamo_db_settings | The dynamo_db_settings of the endpoint. |
-| s3_settings | The s3_settings of the endpoint. |
-| dms_transfer_settings | The dms_transfer_settings of the endpoint. |
-| mongo_db_settings | The mongo_db_settings of the endpoint. |
-| kinesis_settings | The kinesis_settings of the endpoint. |
-| kafka_settings | The kafka_settings of the endpoint. |
-| elasticsearch_settings | The elasticsearch_settings of the endpoint. |
-| neptune_settings | The neptune_settings of the endpoint. |
-| redshift_settings | The redshift_settings of the endpoint. |
-| postgre_sql_settings | The postgre_sql_settings of the endpoint. |
-| my_sql_settings | The my_sql_settings of the endpoint. |
-| oracle_settings | The oracle_settings of the endpoint. |
-| sybase_settings | The sybase_settings of the endpoint. |
-| microsoft_sql_server_settings | The microsoft_sql_server_settings of the endpoint. |
-| ibm_db_2_settings | The ibm_db_2_settings of the endpoint. |
-| doc_db_settings | The doc_db_settings of the endpoint. |
+| endpoint_identifiers | The database endpoint identifiers. |
+| endpoint_types | The endpoint types. |
+| engine_names | The type of engine for an endpoint. Valid values: `mysql`, `oracle`, `postgres`, `mariadb`, `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`, `sybase`, `dynamodb`, `mongodb`, `kinesis`, `kafka`, `elasticsearch`, `docdb`, `sqlserver`, and `neptune`. |
+| engine_display_names | An expanded name for an engine name. |
+| usernames | The user names used to connect to an endpoint. |
+| server_names | The name of the server at an endpoint. |
+| ports | The port value used to access an endpoint. |
+| database_names | The name of the database at an endpoint. |
+| extra_connection_attributes | Additional connection attributes used to connect to an endpoint. |
+| statuses | The status of an endpoint. |
+| kms_key_ids | An AWS KMS key identifier that is used to encrypt the connection parameters for an endpoint. |
+| endpoint_arns | The ARN of an endpoint. |
+| certificate_arns | The ARN used for SSL connection to an endpoint. |
+| ssl_modes | The SSL mode used to connect to an endpoint. |
+| service_access_role_arns | The ARN used by the service access IAM role. |
+| external_table_definitions | The external table definition. |
+| external_ids | Value returned by a call to CreateEndpoint that can be used for cross-account validation. |
+| dynamo_db_settings | Settings in JSON format for an Amazon DynamoDB endpoint. |
+| s3_settings | Settings in JSON format for an Amazon S3 endpoint. |
+| dms_transfer_settings | The settings in JSON format for a DMS transfer type of source endpoint. |
+| mongo_db_settings | The settings for a MongoDB source endpoint. |
+| kinesis_settings | The settings for a Amazon Kinesis target endpoint. |
+| kafka_settings | The settings for an Apache Kafka endpoint. |
+| elasticsearch_settings | The settings for an Elasticsearch endpoint. |
+| neptune_settings | The settings for an Amazon Neptune target endpoint. |
+| redshift_settings | The settings for an Amazon Redshift endpoint. |
+| postgre_sql_settings | The settings for a PostgreSQL source and target endpoint.  |
+| my_sql_settings | The settings for a MySQL source and target endpoint. |
+| oracle_settings | The settings for an Oracle source and target endpoint. |
+| sybase_settings | The settings for a SAP ASE source and target endpoint. |
+| microsoft_sql_server_settings | The settings for a Microsoft SQL Server source and target endpoint. |
+| ibm_db_2_settings | The settings for an IBM Db2 LUW source endpoint. |
+| doc_db_settings | The settings for a DocumentDB endpoint. |
 
 ## Examples
 
-### Ensure a engine name is available.
+### Ensure an engine name is available.
+
     describe aws_dms_endpoints do
-      its('engine_names') { should include 'engine-name' }
+      its('engine_names') { should include 'ENGINE_NAME' }
     end
 
-### Ensure that the port listens to the specific endpoint arn.
+### Ensure that an endpoint listens to a specific port.
+
     describe aws_dms_endpoints do
         its('ports') { should include 3306 }
     end
@@ -93,7 +95,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the endpoint is available.
+Use `should` to check if an endpoint is available.
 
     describe aws_dms_endpoints do
       it { should be_available }
