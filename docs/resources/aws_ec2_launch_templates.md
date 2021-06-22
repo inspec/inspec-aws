@@ -7,6 +7,7 @@ platform: aws
 
 Use the `aws_ec2_launch_templates` InSpec audit resource to test properties of a all the AWS Launch templates.
 
+## Syntax
 
 An `aws_ec2_launch_templates` resource block declares the tests for a all the  AWS Launch templates.
 

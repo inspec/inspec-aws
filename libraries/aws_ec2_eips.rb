@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsEc2Eips < AwsResourceBase
   name 'aws_ec2_eips'
   desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
-  example `
+  example "
     describe aws_ec2_eips do
       it { should exist }
     end
-  `
+  "
   attr_reader :table
 
   FilterTable.create
