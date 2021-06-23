@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_api\_gateway\_restapis
 
-Use the `aws_api_gateway_restapis` InSpec audit resource to test properties of a single specific AWS ApiGateway RestApi.
+Use the `aws_api_gateway_restapis` InSpec audit resource to test properties of multiple AWS API Gateway REST APIs.
 
 The AWS::ApiGateway::RestApi resource creates a REST API.
 
@@ -19,7 +19,7 @@ Ensure the rest api exists.
 
 ## Parameters
 
-For additional information, see the [AWS ApiGateway RestApi documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
+For additional information, see the [AWS API Gateway REST API documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
 
 ## Properties
 
@@ -30,24 +30,24 @@ For additional information, see the [AWS ApiGateway RestApi documentation](https
 | descriptions | The API's description. |
 | created_dates | The timestamp when the API was created. |
 | versions | A version identifier for the API. |
-| warnings | The warning messages reported when failonwarnings is turned on during API import. |
-| binary_media_types | The list of binary media types supported by the RestApi . By default, the RestApi supports only UTF-8-encoded text payloads. |
+| warnings | The warning messages reported when `failonwarnings` is turned on during API import. |
+| binary_media_types | The list of binary media types supported by the REST API. By default, the REST API supports only UTF-8-encoded text payloads. |
 | minimum_compression_sizes | A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size. |
-| api_key_sources | The source of the API key for metering requests according to a usage plan. Valid values are HEADER and AUTHORIZER. |
-| endpoint_configurations | The endpoint configuration of this RestApi showing the endpoint types of the API. |
-| policies | A stringified JSON policy document that applies to this RestApi regardless of the caller and Method configuration. |
+| api_key_sources | The source of the API key for metering requests according to a usage plan. Valid values are `HEADER` and `AUTHORIZER`. |
+| endpoint_configurations | The endpoint configuration of this REST API showing the endpoint types of the API. |
+| policies | A stringified JSON policy document that applies to this REST API regardless of the caller and method configuration. |
 | tags | The collection of tags. Each tag element is associated with a given resource. |
-| disable_execute_api_endpoints | Specifies whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https://{api_id}.execute-api.{region}.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint. |
+| disable_execute_api_endpoints | Specifies whether clients can invoke your API by using the default execute-api endpoint. |
 
 ## Examples
 
-### Ensure the rest api exists.
+### Ensure a specific REST API exists.
 
     describe aws_api_gateway_restapis do
-      its('names') { should include 'api_name' }
+      its('names') { should include 'API_NAME' }
     end
 
-### Ensure that the api_key_source has the HEADER.
+### Ensure that `HEADER` is a source for a REST API key.
 
     describe aws_api_gateway_restapis do
         its('api_key_source') { should include 'HEADER' }
