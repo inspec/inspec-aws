@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
   name 'aws_servicecatalog_launch_role_constraint'
-  desc 'Gets information about the specified portfolio.'
+  desc 'Gets information about the specified constraint.'
 
   example "
-    describe aws_servicecatalog_launch_role_constraint(id: 'test1') do
+    describe aws_servicecatalog_launch_role_constraint(id: 'Id') do
       it { should exist }
     end
   "
@@ -19,8 +19,8 @@ class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
     @display_name = opts[:id]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.describe_portfolio({ id: opts[:id] })
-      @res = resp.portfolio_detail.to_h
+      resp = @aws.servicecatalog_client.describe_constraint({ id: opts[:id] })
+      @res = resp.to_h
       create_resource_methods(@res)
     end
   end
@@ -35,6 +35,6 @@ class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
   end
 
   def to_s
-    "ID: #{@display_name}"
+    "Constraint ID: #{@display_name}"
   end
 end

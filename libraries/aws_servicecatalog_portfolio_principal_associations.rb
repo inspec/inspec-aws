@@ -31,7 +31,7 @@ class AWSServiceCatalogPortfolioPrincipalAssociations < AwsResourceBase
 
   def fetch_data
     rows = []
-    @query_params[:page_size] = 100
+    @query_params[:page_size] = 20
     loop do
       catch_aws_errors do
         @api_response = @aws.servicecatalog_client.list_principals_for_portfolio(@query_params)

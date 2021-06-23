@@ -19,7 +19,7 @@ class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: portfolio_id must be provided" unless opts[:portfolio_id] && !opts[:portfolio_id].empty?
     @display_name = opts[:portfolio_id]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.list_principals_for_portfolio({ id: opts[:id] })
+      resp = @aws.servicecatalog_client.list_principals_for_portfolio({ portfolio_id: opts[:portfolio_id] })
       @res = resp.principals[0].to_h
       create_resource_methods(@res)
     end
