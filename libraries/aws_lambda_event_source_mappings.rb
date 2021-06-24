@@ -44,10 +44,11 @@ class AWSLambdaEventSourceMappings < AwsResourceBase
 
   def fetch_data
     rows = []
-    @query_params[:max_items] = 20
+    query_params = {}
+    query_params[:max_items] = 20
     loop do
       catch_aws_errors do
-        @api_response = @aws.lambda_client.list_event_source_mappings(@query_params)
+        @api_response = @aws.lambda_client.list_event_source_mappings(query_params)
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.event_source_mappings.each do |resp|
@@ -72,7 +73,7 @@ class AWSLambdaEventSourceMappings < AwsResourceBase
                    maximum_retry_attempts: resp.maximum_retry_attempts }]
       end
       break unless @api_response.next_marker
-      @query_params[:marker] = @api_response.next_marker
+      query_params[:marker] = @api_response.next_marker
     end
     rows
   end

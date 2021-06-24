@@ -301,3 +301,27 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+output "aws_lambda_event_source_mapping_uuid" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.uuid
+}
+output "aws_lambda_event_source_mapping_function_arn" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.function_arn
+}
+output "aws_lambda_event_source_mapping_last_modified" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.last_modified
+}
+output "aws_lambda_event_source_mapping_last_processing_result" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.last_processing_result
+}
+output "aws_lambda_event_source_mapping_state" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.state
+}
+output "aws_lambda_event_source_mapping_state_transition_reason" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.state_transition_reason
+}
+output "aws_lambda_event_source_mapping_function_name" {
+  value = aws_lambda_function.test_lambda.function_name
+}
+output "aws_lambda_event_source_mapping_event_source_arn" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.event_source_arn
+}

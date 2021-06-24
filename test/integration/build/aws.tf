@@ -1828,7 +1828,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -1972,7 +1972,7 @@ resource "aws_guardduty_detector" "detector_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
@@ -1980,8 +1980,61 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_lambda_event_source_mapping" "aws_lambda_event_source_mapping1" {
-  event_source_arn  = aws_dynamodb_table.example.stream_arn
-  function_name     = aws_lambda_function.example.arn
-  starting_position = "LATEST"
+#lambda_event source mapping
+resource "aws_sqs_queue" "terraform_queue" {
+  name                      = "terraform-example-queue"
+  delay_seconds             = 90
+  max_message_size          = 2048
+  message_retention_seconds = 86400
+  receive_wait_time_seconds = 10
+
+}
+
+resource "aws_iam_role" "iam_for_lambda" {
+  name = "iam_for_lambda"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "test_lambda" {
+  filename         = local.test_lambda_zip_file_name
+  description      = "Test Lambda"
+  function_name    = "test_Lambda"
+  role             = aws_iam_role.iam_for_lambda.arn
+  handler          = "exports.test"
+  source_code_hash = filebase64sha256(local.test_lambda_zip_file_name)
+  runtime          = "python3.7"
+  publish          = true
+  timeout          = 10
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+# Event source from SQS
+resource "aws_lambda_event_source_mapping" "event_source_mapping" {
+  event_source_arn = aws_sqs_queue.terraform_queue.arn
+  enabled          = true
+  function_name    = aws_lambda_function.test_lambda.arn
+  batch_size       = 1
+}
+
+resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
+  role       = aws_iam_role.iam_for_lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
 }
