@@ -38,6 +38,10 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
+}
+
 output "aws_kms_key_enabled_id" {
   value = aws_kms_key.kms_key_enabled_rotating.0.key_id
 }

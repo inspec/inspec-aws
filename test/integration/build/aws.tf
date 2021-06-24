@@ -56,6 +56,7 @@ variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
+variable "aws_ebs_snapshot_name" {}
 variable "aws_ecr_name" {}
 variable "aws_ecrpublic_name" {}
 variable "aws_ecr_repository_name" {}
@@ -339,6 +340,15 @@ resource "aws_ebs_volume" "inspec_ebs_volume" {
 
   tags = {
     Name = var.aws_ebs_volume_name
+  }
+}
+
+resource "aws_ebs_snapshot" "inspec_ebs_snapshot" {
+  count             = var.aws_enable_creation
+  volume_id         = aws_ebs_volume.inspec_ebs_volume.0.id
+
+  tags = {
+    Name = var.aws_ebs_snapshot_name
   }
 }
 
