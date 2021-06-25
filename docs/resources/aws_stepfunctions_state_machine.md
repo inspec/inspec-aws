@@ -5,14 +5,15 @@ platform: aws
 
 # aws\_stepfunctions\_state\_machine
 
-Use the `aws_stepfunctions_state_machine` InSpec audit resource to test properties of a single specific Step Functions State Machine.
+Use the `aws_stepfunctions_state_machine` InSpec audit resource to test properties of a single specific Step Functions state machine.
 
-Provisions a state machine. A state machine consists of a collection of states that can do work (Task states), determine to which states to transition next (Choice states), stop an execution with an error (Fail states), and so on. State machines are specified using a JSON-based, structured language.
+Provisions a state machine. A state machine consists of a collection of states that can do work (Task states), determine which states to transition next (Choice states), stop an execution with an error (Fail states), and so on. State machines are specified using a JSON-based, structured language.
 
 ## Syntax
 
 Ensure that an identity pool exists.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
       it { should exist }
     end
 
@@ -20,33 +21,37 @@ Ensure that an identity pool exists.
 
 `state_machine_arn` _(required)_
 
-For additional information, see the [AWS documentation on Step Functions State Machine](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html).
+The ARN of the state machine.
+
+For additional information, see the [AWS documentation on Step Functions state machine](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| state_machine_arn | The arn of the state machine. |
+| state_machine_arn | The ARN of the state machine. |
 | name | The name of the state machine. |
-| status | The status of the state machine. |
-| definition | The definition of the state machine. |
-| role_arn | The role arn of the state machine. |
-| type | The type of the state machine. |
+| status | The current status of the state machine. |
+| definition | The Amazon States Language definition of the state machine. |
+| role_arn | The ARN of the IAM role used when creating this state machine. |
+| type | The type of the state machine. Valid values: `STANDARD` or `EXPRESS`. |
 | creation_date | The creation date of the state machine. |
-| logging_configuration (level) | The level of the logging configuration of the state machine. |
-| logging_configuration (include_execution_data) | The include execution data of the logging configuration of the state machine. |
-| logging_configuration (destinations) | The destinations of the logging configuration of the state machine. |
-| logging_configuration (enabled) | The enabled of the logging configuration of the state machine. |
+| logging_configuration (level) | The category of execution history in which events are logged. |
+| logging_configuration (include_execution_data) | Whether execution data is included in your log. Valid values, `true` or `false`. |
+| logging_configuration (destinations) | An array of objects that describes where your execution history events will be logged. |
+| logging_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. |
 
 ## Examples
 
-### Ensure a state machine arn is available.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
+### Ensure a state machine ARN is available.
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
       its('identity_pool_id') { should eq 'test' }
     end
 
 ### Ensure that the status is available.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'name') do
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
         its('status') { should eq 'ACTIVE' }
     end
 
@@ -59,19 +64,21 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test1') do
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'dummy') do
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
       it { should_not exist }
     end
 
 ### be_available
 
 Use `should` to check if the identity pool id is available.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
       it { should be_available }
     end
 
