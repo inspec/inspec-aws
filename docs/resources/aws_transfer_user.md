@@ -5,52 +5,58 @@ platform: aws
 
 # aws\_transfer\_user
 
-Use the `aws_transfer_user` InSpec audit resource to test properties of a single specific Transfer User.
-
-The AWS::Transfer::User resource creates a user and associates them with an existing server. You can only create and associate users with servers that have the IdentityProviderType set to SERVICE_MANAGED. Using parameters for CreateUser, you can specify the user name, set the home directory, store the user's public key, and assign the user's AWS Identity and Access Management (IAM) role. You can also optionally add a scope-down policy, and assign metadata with tags that can be used to group and search for users.
+Use the `aws_transfer_user` InSpec audit resource to test properties of a single Transfer user.
 
 ## Syntax
 
-Ensure that an identity pool exists.
+Ensure that a Transfer user exists.
 
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
       it { should exist }
     end
 
 ## Parameters
 
-`server_id user_name` _(required)_
+`server_id` _(required)_
 
-For additional information, see the [AWS documentation on Transfer User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html).
+The system-assigned unique identifier for a server that this user has been assigned to.
+
+`user_name` _(required)_
+
+The name of the user assigned to one or more servers.
+
+For additional information, see the [AWS documentation on Transfer user](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| server_id | The server id of the user. |
-| user (home_directory) | The home directory of the user. |
-| user (home_directory_mappings) | The home directory mappings of the user. |
-| user (home_directory_mappings (entry)) | The entry of the home directory mappings of the user. |
-| user (home_directory_mappings (target)) | The target of the home directory mappings of the user. |
-| user (home_directory_type) | The home directory type of the user. |
-| user (policy) | The policy of the user. |
-| user (role) | The role of the user. |
-| user (ssh_public_keys (date_imported)) | The date imported of the ssh public keys of the user. |
-| user (ssh_public_keys (ssh_public_key_body)) | The ssh public key body of the ssh public keys of the user. |
-| user (ssh_public_keys (ssh_public_key_id)) | The ssh public key id of the ssh public keys of the user. |
-| user (tags) | The tags of the user. |
-| user (user_name) | The user name of the user. |
+| server_id | The system-assigned unique identifier for a server that this user has been assigned to. |
+| user (home_directory) | The landing directory for a user when they log in to the server using the client.  |
+| user (home_directory_mappings) | Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. |
+| user (home_directory_mappings (entry)) | The entry for `HomeDirectoryMappings`. |
+| user (home_directory_mappings (target)) | The map target that is used in a `HomeDirectorymapEntry`.  |
+| user (home_directory_type) | The type of landing directory you want your users' home directory to be when they log into the server. |
+| user (policy) | A scope-down policy for your user so you can use the same IAM role across multiple users. |
+| user (role) | The ARN of the IAM role that controls your users' access to your Amazon S3 bucket or EFS file system. |
+| user (ssh_public_keys (date_imported)) | The date that the public key was added to the user account. |
+| user (ssh_public_keys (ssh_public_key_body)) | The content of the SSH public key as specified by the PublicKeyId. |
+| user (ssh_public_keys (ssh_public_key_id)) | The `SshPublicKeyId` parameter contains the identifier of the public key.  |
+| user (tags) | Key-value pairs that can be used to group and search for users.  |
+| user (user_name) | The user name associated with a server as specified by the `ServerId`. |
 
 ## Examples
 
 ### Ensure an user is available.
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
-      its('user_name') { should eq 'test' }
+
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
+      its('user_name') { should eq 'USER_NAME' }
     end
 
 ### Ensure that the server id is available.
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
-        its('server_id') { should eq 'test' }
+
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
+        its('server_id') { should eq 'SERVER_ID' }
     end
 
 ## Matchers
@@ -63,13 +69,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_transfer_user(server_id: "dummy", user_name: 'dummy') do
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
       it { should_not exist }
     end
 
@@ -77,7 +83,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the user is available.
 
-    describe aws_transfer_user(server_id: "test", user_name: 'test') do
+    describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
       it { should be_available }
     end
 
