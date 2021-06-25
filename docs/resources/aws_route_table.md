@@ -91,7 +91,7 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
       its('associated_subnet_ids') { should include 'subnet-026a4cbe6c04c36c2' }
     end
 
-### Ensure no Gateways are associated
+### Ensure no gateways are associated
 
     describe aws_route_table(route_table_id: 'rtb-123abcde') do
       its('associated_gateway_ids') { should be_empty }

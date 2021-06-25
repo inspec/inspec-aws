@@ -24,7 +24,7 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 | ----------------------------               | ---------------------------------                 |   ---             |
 | route\_table\_ids                          | The route table IDs                               | `route_table_id`  |
 | vpc\_ids                                   | The VPC IDs                                       | `vpc_id`          |
-| entries                                    | Provides access to the raw results of the query, which can be treated as an array of hashes. | 
+| entries                                    | Provides access to the raw results of the query, which can be treated as an array of hashes. | Not Applicable | 
 | routes(carrier\_gateway\_ids)              | The ID of the carrier gateway.                    | `carrier_gateway_id` |
 | routes(destination\_cidr\_blocks)          | The IPv4 CIDR block used for the destination match.| `destination_cidr_block`        |
 | routes(destination\_ipv\_6\_cidr\_blocks)  | The IPv6 CIDR block used for the destination match.| `destination_ipv_6_cidr_block`  |
