@@ -2,21 +2,15 @@ control 'aws-logs-metric-filter-1.0' do
   impact 1.0
   title 'Describes the metric filter of the logs.'
 
-  describe aws_logs_metric_filter(filter_name: 'test1') do
+  describe aws_logs_metric_filter(filter_name: 'TestMetricFilter') do
     it { should exist }
   end
 
-  describe aws_logs_metric_filter(filter_name: 'test1') do
-    its('filter_name') { should eq 'test1' }
+  describe aws_logs_metric_filter(filter_name: 'TestMetricFilter') do
+    its('filter_name') { should eq 'TestMetricFilter' }
     its('filter_pattern') { should eq 'ERROR' }
-    its('metric_transformations.first.metric_name') { should eq 'test1' }
-    its('metric_transformations.first.metric_namespace') { should eq 'test' }
+    its('metric_transformations.first.metric_name') { should eq 'TestMetric' }
+    its('metric_transformations.first.metric_namespace') { should eq 'TestNamespace' }
     its('metric_transformations.first.metric_value') { should eq '1' }
-    its('metric_transformations.first.default_value') { should eq 1.0 }
-    its('creation_time') { should eq 1621452000626 }
-  end
-
-  describe aws_logs_metric_filter(filter_name: 'dummy') do
-    it { should_not exist }
   end
 end

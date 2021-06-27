@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSRAMResourceShares < AwsResourceBase
   name 'aws_ram_resource_shares'
-  desc 'Describes the resource shares of the ram.'
+  desc 'Lists the resources that you added to a resource shares or the resources that are shared with you.'
 
   example "
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
@@ -15,14 +15,16 @@ class AWSRAMResourceShares < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns,                                        field: :arn)
-             .register_column(:types,                                       field: :type)
              .register_column(:resource_share_arns,                         field: :resource_share_arn)
-             .register_column(:resource_group_arns,                         field: :resource_group_arn)
+             .register_column(:names,                                       field: :name)
+             .register_column(:owning_account_ids,                          field: :owning_account_id)
+             .register_column(:allow_external_principals,                   field: :allow_external_principals)
              .register_column(:statuses,                                    field: :status)
              .register_column(:status_messages,                             field: :status_message)
+             .register_column(:tags,                                        field: :tags)
              .register_column(:creation_times,                              field: :creation_time)
              .register_column(:last_updated_times,                          field: :last_updated_time)
+             .register_column(:feature_sets,                                field: :feature_set)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -39,20 +41,24 @@ class AWSRAMResourceShares < AwsResourceBase
 
   def fetch_data
     rows = []
+    @query_params[:max_results] = 10
+    # require 'pry'; binding.pry
     loop do
       catch_aws_errors do
-        @api_response = @aws.ram_client.list_resources(@query_params)
+        @api_response = @aws.ram_client.get_resource_shares(@query_params)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.resources.each do |res|
-        rows += [{ arn: res.arn,
-                   type: res.type,
-                   resource_share_arn: res.resource_share_arn,
-                   resource_group_arn: res.resource_group_arn,
+      @api_response.resource_shares.each do |res|
+        rows += [{ resource_share_arn: res.resource_share_arn,
+                   name: res.name,
+                   owning_account_id: res.owning_account_id,
+                   allow_external_principals: res.allow_external_principals,
                    status: res.status,
                    status_message: res.status_message,
+                   tags: res.tags,
                    creation_time: res.creation_time,
-                   last_updated_time: res.last_updated_time }]
+                   last_updated_time: res.last_updated_time,
+                   feature_set: res.feature_set }]
       end
       break unless @api_response.next_token
       @query_params[:next_token] = @api_response.next_token

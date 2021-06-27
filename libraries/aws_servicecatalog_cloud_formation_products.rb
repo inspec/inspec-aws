@@ -29,20 +29,45 @@ class AWSServiceCatalogCloudFormationProducts < AwsResourceBase
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
+    # super(opts)
+    # validate_parameters(require_any_of: %i(name id))
+    # @query_params = {}
+    # @query_params[:name] = opts[:name]
+    # raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    # @query_params[:name] = opts[:name]
+    # @table = fetch_data
+    #
     super(opts)
-    validate_parameters(require_any_of: %i(name id))
+    validate_parameters
     @query_params = {}
-    @query_params[:name] = opts[:name]
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
-    @query_params[:name] = opts[:name]
     @table = fetch_data
   end
 
   def fetch_data
-    catch_aws_errors do
-      @resp = @aws.servicecatalog_client.describe_product_as_admin(@query_params)
+    rows = []
+    @query_params[:page_size] = 20
+    loop do
+      catch_aws_errors do
+        @api_response = @aws.servicecatalog_client.search_products(@query_params)
+      end
+      return rows if !@api_response || @api_response.empty?
+
+      @api_response.product_view_summaries.each do |resp|
+        rows += [{ id: resp.id,
+                   product_id: resp.product_id,
+                   name: resp.name,
+                   owner: resp.owner,
+                   short_description: resp.short_description,
+                   type: resp.type,
+                   distributor: resp.distributor,
+                   has_default_path: resp.has_default_path,
+                   support_email: resp.support_email,
+                   support_description: resp.support_description,
+                   support_url: resp.support_url }]
+      end
+      break unless @api_response.next_page_token
+      @query_params[:page_token] = @api_response.next_page_token
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.product_view_detail.product_view_summary.map(&:to_h)
+    @table = rows
   end
 end

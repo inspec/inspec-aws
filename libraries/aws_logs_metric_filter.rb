@@ -35,6 +35,6 @@ class AWSLogsMetricFilter < AwsResourceBase
   end
 
   def to_s
-    "filter_name: #{@display_name}"
+    "Filter Name: #{@display_name}"
   end
 end

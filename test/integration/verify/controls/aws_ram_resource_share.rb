@@ -1,21 +1,21 @@
+aws_ram_resource_share_arn = attribute("aws_ram_resource_share_arn", value: "", description: "")
+
 control 'aws-ram-resource-share-1.0' do
-impact 1.0
+    impact 1.0
     title 'Describes the resource share of the ram.'
 
-    describe aws_ram_resource_share(resource_owner: "SELF", resource_share_arn: 'arn:aws:ram:us-east-2:112758395563:resource-share/76970b3f-97cf-4dd2-934f-76fc2b43a8e0') do
+    describe aws_ram_resource_share(resource_owner: "SELF", resource_share_arn: aws_ram_resource_share_arn) do
         it { should exist }
     end
 
-    describe aws_ram_resource_share(resource_owner: "SELF", resource_share_arn: 'arn:aws:ram:us-east-2:112758395563:resource-share/76970b3f-97cf-4dd2-934f-76fc2b43a8e0') do
-        its("resource_share_arn") { should eq "arn:aws:ram:us-east-2:112758395563:resource-share/76970b3f-97cf-4dd2-934f-76fc2b43a8e0" }
-        its("name") { should eq "test1" }
-        its("owning_account_id") { should eq "112758395563" }
+    describe aws_ram_resource_share(resource_owner: "SELF", resource_share_arn: aws_ram_resource_share_arn) do
+        its("resource_share_arn") { should eq aws_ram_resource_share_arn }
+        its("name") { should eq "ResourceShareTest" }
+        its("owning_account_id") { should_not eq "1234567890" }
         its("allow_external_principals") { should eq true }
         its("status") { should eq "ACTIVE" }
         its("status_message") { should be_empty }
-        its("tags") { should be_empty }
-        # its("creation_time") { should_not be_empty }
-        # its("last_updated_time")  { should_not be_empty }
+        its("tags") { should_not be_empty }
         its("feature_set") { should eq "STANDARD" }
     end
 end
