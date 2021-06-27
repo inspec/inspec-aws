@@ -7,7 +7,7 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   desc 'Gets information about an association between a specified Resolver rule and a VPC.'
 
   example "
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'resolver_rule_association_id_test') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
       it { should exist }
     end
   "
@@ -35,6 +35,6 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   end
 
   def to_s
-    "resolver_rule_association_id: #{@display_name}"
+    "Resolver Endpoint Association ID: #{@display_name}"
   end
 end

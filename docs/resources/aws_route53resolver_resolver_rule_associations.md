@@ -1,69 +1,72 @@
 ---
-title: About the aws_athena_work_groups Resource
+title: About the aws_route53resolver_resolver_rule_associations Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws\_route53resolver\_resolver\_rule\_associations
 
-Use the `aws_athena_work_groups` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_route53resolver_resolver_rule_associations` InSpec audit resource to test properties of a plural Athena Work Groups.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Route53Resolver::ResolverRuleAssociation resource provides information about an association between a resolver rule and a VPC. The association determines which DNS queries that originate in the VPC are forwarded to your network.
 
 ## Syntax
 
-Ensure that a work_group exists.
-    describe aws_athena_work_groups do
+Ensure that a resolver name exists.
+
+    describe aws_route53resolver_resolver_rule_associations do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| names | The workgroup name. |
-| states | The state of the workgroup: ENABLED or DISABLED. |
-| descriptions | The workgroup description. |
-| creation_times | The workgroup creation time. |
+| ids | The ID of the association between a Resolver rule and a VPC. |
+| resolver_rule_ids | The ID of the Resolver rule that you associated with the VPC that is specified by VPCId. |
+| names | The name of an association between a Resolver rule and a VPC. |
+| vpc_ids | The ID of the VPC that you associated the Resolver rule with. |
+| statuses | A code that specifies the current status of the association between a Resolver rule and a VPC. |
+| status_messages | A detailed description of the status of the association between a Resolver rule and a VPC. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_groups do
-      its('names') { should include 'test1' }
+### Ensure a resolver name is available.
+    describe aws_route53resolver_resolver_rule_associations do
+      its('names') { should include 'ResolverRuleName' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_groups do
-        its('states') { should include 'ENABLED' }
+### Ensure that the status is `COMPLETE` or `FAILED`.
+    describe aws_route53resolver_resolver_rule_associations do
+        its('statuses') { should include 'COMPLETE' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_groups do
+    describe aws_route53resolver_resolver_rule_associations do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_groups do
+    describe aws_route53resolver_resolver_rule_associations do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_athena_work_groups do
       it { should be_available }
@@ -71,4 +74,4 @@ Use `should` to check if the work_group name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:list_work_groups` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `route53resolver:client:list_resolver_rule_associations` action with `Effect` set to `Allow`.

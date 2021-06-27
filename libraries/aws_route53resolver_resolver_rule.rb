@@ -39,6 +39,6 @@ class AWSRoute53ResolverResolverRule < AwsResourceBase
   end
 
   def to_s
-    "resolver_rule_id: #{@display_name}"
+    "Resolver Rule ID: #{@display_name}"
   end
 end

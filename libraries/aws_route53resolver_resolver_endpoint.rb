@@ -7,7 +7,7 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
   desc 'Gets information about a specified Resolver endpoint, such as whether its an inbound or an outbound Resolver endpoint, and the current status of the endpoint.'
 
   example "
-    describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'resolver_endpoint_id_test') do
+    describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'ResourceId') do
       it { should exist }
     end
   "
@@ -35,6 +35,6 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
   end
 
   def to_s
-    "resolver_endpoint_id: #{@display_name}"
+    "Resolver Endpoint ID: #{@display_name}"
   end
 end

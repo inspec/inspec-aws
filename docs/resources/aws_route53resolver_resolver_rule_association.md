@@ -1,85 +1,79 @@
 ---
-title: About the aws_athena_work_group Resource
+title: About the aws_route53resolver_resolver_rule_association Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws\_route53resolver\_resolver\_rule\_association
 
-Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Athena Work Group.
+Use the `aws_route53resolver_resolver_rule_association` InSpec audit resource to test properties of a single specific AWS Route53Resolver Resolver Rule Association.
 
-The AWS::Athena::WorkGroup resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration. Each workgroup enables you to isolate queries for you or your group from other queries in the same account.
+The AWS::Route53Resolver::ResolverRuleAssociation resource provides information about an association between a resolver rule and a VPC. The association determines which DNS queries that originate in the VPC are forwarded to your network.
 
 ## Syntax
 
-Ensure that a work_group name exists.
+Ensure that a resolver rule exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
       it { should exist }
     end
 
 ## Parameters
 
-`work_group` _(required)_
+`resolver_rule_association_id` _(required)_
 
-For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| name | The workgroup name. |
-| state | The state of the workgroup: ENABLED or DISABLED. |
-| description | The workgroup description. |
-| creation_time | The workgroup creation time. |
-| tags | An array of key-value pairs to apply to this resource. |
-| configuration (result_configuration) | The workgroup result configuration of the configuration. |
-| configuration (enforce_work_group_configuration) | The enforce workgroup configuration of the configuration. |
-| configuration (publish_cloud_watch_metrics_enabled) | The publish cloudwatch metrics enabled of the configuration. |
-| configuration (bytes_scanned_cutoff_per_query) | The bytes scanned cutoff per query of the configuration. |
-| configuration (requester_pays_enabled) | The requester pays enabled of the configuration. |
-| configuration (engine_version (selected_engine_version)) | The selected engine version of engine version of the configuration. |
-| configuration (engine_version (effective_engine_version)) | The effective engine version of engine version of the configuration. |
+| id | The ID of the association between a Resolver rule and a VPC. |
+| resolver_rule_id | The ID of the Resolver rule that you associated with the VPC that is specified by VPCId. |
+| name | The name of an association between a Resolver rule and a VPC. |
+| vpc_id | The ID of the VPC that you associated the Resolver rule with. |
+| status | A code that specifies the current status of the association between a Resolver rule and a VPC. |
+| status_message | A detailed description of the status of the association between a Resolver rule and a VPC. |
 
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_athena_work_group(work_group: 'test1') do
-      its('name') { should eq 'test1' }
+### Ensure a resolver rule name is available.
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
+      its('name') { should eq 'ResolverRuleName' }
     end
 
-### Ensure that the state is `ENABLED` or `DISABLED`.
-    describe aws_athena_work_group(work_group: 'test1') do
-        its('state') { should eq 'ENABLED' }
+### Ensure that the status is `COMPLETE` or `FAILED`.
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
+        its('status') { should eq 'COMPLETE' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_athena_work_group(work_group: 'dummy') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'dummy') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `athena:client:get_work_group` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `route53resolver:client:get_resolver_rule_association` action with `Effect` set to `Allow`.
