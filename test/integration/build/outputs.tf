@@ -478,3 +478,15 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+
+output "aws_secure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.secure_distribution.0.id
+}
+
+output "aws_insecure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.insecure_distribution.0.id
+}
+
+output "aws_default_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.default.0.id
+}

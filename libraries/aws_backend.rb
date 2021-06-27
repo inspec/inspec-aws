@@ -3,6 +3,7 @@
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
+require 'aws-sdk-cloudfront'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -76,6 +77,10 @@ class AwsConnection
 
   def cloudformation_client
     aws_client(Aws::CloudFormation::Client)
+  end
+
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
   end
 
   def cloudtrail_client

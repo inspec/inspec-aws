@@ -126,6 +126,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_auto_scaling_groups](docs/resources/aws_auto_scaling_groups.md)
 - [aws_cloudformation_stack](docs/resources/aws_cloudformation_stack.md)
 - [aws_cloudformation_stacks](docs/resources/aws_cloudformation_stacks.md)
+- [aws_cloudfront_distribution](docs/resources/aws_cloudfront_distribution.md)
+- [aws_cloudfront_distributions](docs/resources/aws_cloudfront_distributions.md)
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
 - [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md)
