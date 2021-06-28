@@ -25,9 +25,9 @@ class AWSLambdaPermissions < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(function_name))
-    @query_params = {}
+    # @query_params = {}
     raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    @query_params[:function_name] = opts[:function_name]
+    # @query_params[:function_name] = opts[:function_name]
     @table = fetch_data
   end
 
@@ -38,7 +38,7 @@ class AWSLambdaPermissions < AwsResourceBase
       statements = JSON.parse(resp.policy)['Statement']
       statements.each do |value|
         # next if value['Sid'] != opts[:Sid]
-        rows = [{
+        rows += [{
                   sid: value['Sid'],
                   effect: value['Effect'],
                   principal: value['Principal'],
@@ -46,7 +46,8 @@ class AWSLambdaPermissions < AwsResourceBase
                   resource: value['Resource'],
                 }]
       end
-      rows.to_h
+      rows
+      # require 'pry'; binding.pry
     end
   end
 end
