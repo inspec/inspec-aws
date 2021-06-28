@@ -17,8 +17,8 @@ class AWSLambdaPermission < AwsResourceBase
     validate_parameters(required: %i(function_name Sid))
     raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
     raise ArgumentError, "#{@__resource_name__}: statement_id must be provided" unless opts[:Sid] && !opts[:Sid].empty?
-    @display_name = opts[:function_name]
-    row = []
+    @statement_id = opts[:Sid]
+    row = {}
     catch_aws_errors do
       resp = @aws.lambda_client.get_policy({ function_name: opts[:function_name] })
       statements = JSON.parse(resp.policy)['Statement']
@@ -37,10 +37,10 @@ class AWSLambdaPermission < AwsResourceBase
   end
 
   def exists?
-    !@res.nil? && !@res.empty?
+    !row.nil? && !row.empty?
   end
 
   def to_s
-    "Function Name: #{@display_name}"
+    "Statement ID: #{@statement_id}"
   end
 end
