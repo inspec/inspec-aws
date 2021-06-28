@@ -15,19 +15,17 @@ class AWSLambdaPermissions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:sids,                                  field: :Sid)
-             .register_column(:effects,                               field: :Effect)
-             .register_column(:principals,                            field: :Principal)
-             .register_column(:actions,                               field: :Action)
-             .register_column(:resources,                             field: :Resource)
+             .register_column(:sids,                                  field: :sid)
+             .register_column(:effects,                               field: :effect)
+             .register_column(:principals,                            field: :principal)
+             .register_column(:actions,                               field: :action)
+             .register_column(:resources,                             field: :resource)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(function_name))
-    # @query_params = {}
     raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    # @query_params[:function_name] = opts[:function_name]
     @table = fetch_data
   end
 
@@ -37,17 +35,15 @@ class AWSLambdaPermissions < AwsResourceBase
       resp = @aws.lambda_client.get_policy({ function_name: opts[:function_name] })
       statements = JSON.parse(resp.policy)['Statement']
       statements.each do |value|
-        # next if value['Sid'] != opts[:Sid]
         rows += [{
-                  sid: value['Sid'],
+          sid: value['Sid'],
                   effect: value['Effect'],
                   principal: value['Principal'],
                   action: value['Action'],
                   resource: value['Resource'],
-                }]
+        }]
       end
       rows
-      # require 'pry'; binding.pry
     end
   end
 end
