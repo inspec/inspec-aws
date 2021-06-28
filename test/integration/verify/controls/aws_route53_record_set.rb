@@ -1,14 +1,24 @@
-describe aws_route53_record_set(hosted_zone_id: "Z0659249DKX791K6SOW", start_record_name: "record1.aws_progress_test1.com.") do
-    it { should exist }
-end
+title 'Test single AWS Route53 record set'
 
-describe aws_route53_record_set(hosted_zone_id: "Z0659249DKX791K6SOW", start_record_name: "record1.aws_progress_test1.com.") do
-    its('name') { should eq 'aws_progress_test1.com.' }
-    its('type') { should eq 'NS' }
-    its('resource_records.first.value') { should_not be_empty }
-    its('resource_records.first.value') { should eq 'ns-1385.awsdns-45.org.' }
-end
+hosted_zone_id = attribute(:aws_route53_hosted_zone_id, value: '', description: 'The  AWS Route53 record set identifier.')
+start_record_name = attribute(:aws_route52_record_set_name, value: '', description: 'The AWS Route53 record set identifier.')
 
-describe aws_route53_record_set(hosted_zone_id: "dummy", start_record_name: "dummy") do
-    it { should_not exist }
+control 'aws-route53-record-set-1.0' do
+
+    impact 1.0
+    title 'Ensure AWS Route53 record set has the correct properties.'
+
+    describe aws_route53_record_set(hosted_zone_id: hosted_zone_id, start_record_name: start_record_name) do
+        it { should exist }
+    end
+
+    describe aws_route53_record_set(hosted_zone_id: hosted_zone_id, start_record_name: start_record_name) do
+        its('name') { should eq start_record_name }
+        its('type') { should eq 'A' }
+        its('resource_records.first.value') { should eq '192.0.0.2' }
+    end
+
+    describe aws_route53_record_set(hosted_zone_id: "dummy", start_record_name: "dummy") do
+        it { should_not exist }
+    end
 end
