@@ -7,8 +7,8 @@ class AWSLambdaPermission < AwsResourceBase
   desc 'eturns the resource-based IAM policy for a function, version, or alias.'
 
   example "
-    describe aws_lambda_policy(function_name: 'test1') do
-      it { should exist }
+    describe aws_lambda_permission(function_name: 'LambdaFunctionName', Sid: 'StatementID') do
+      its('sid') { should eq 'StatementID' }
     end
   "
 
@@ -34,10 +34,6 @@ class AWSLambdaPermission < AwsResourceBase
       end
       create_resource_methods(row.to_h)
     end
-  end
-
-  def exists?
-    !row.nil? && !row.empty?
   end
 
   def to_s
