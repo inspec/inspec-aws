@@ -208,6 +208,7 @@ variable "aws_min_vcpus" {}
 variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
+variable "aws_route52_record_set_name" {}
 
 
 provider "aws" {
@@ -2769,4 +2770,17 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = var.aws_availability_zone
 
+}
+
+resource "aws_route53_zone" "for_route53_set_record_test" {
+  name = var.aws_route52_record_set_name
+}
+
+resource "aws_route53_record" "for_route53_set_record_test" {
+  allow_overwrite = true
+  name            = var.aws_route52_record_set_name
+  ttl             = 172800
+  type            = "A"
+  zone_id         = aws_route53_zone.for_route53_set_record_test.zone_id
+  records = ["192.0.0.2"]
 }

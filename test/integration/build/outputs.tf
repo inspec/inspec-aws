@@ -478,3 +478,7 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+
+output "aws_route53_hosted_zone_id" {
+  value = aws_route53_zone.for_route53_set_record_test.zone_id
+}
