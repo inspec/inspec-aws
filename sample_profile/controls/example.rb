@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
-# copyright: 2018, The Authors
+control 'aws-lambda-function-permission-1.0' do
+  impact 1.0
+  title 'Describes the permission of the lambda function.'
 
-title 'Sample Section'
-
-# Plural resources can be inspected to check for specific resource details
-control 'aws-vpcs-multi-region-status-check' do                             # A unique ID for this control.
-  impact 1.0                                                                # The criticality, if this control fails.
-  title 'Check AWS VPCs in all regions have status "available"'             # A human-readable title.
-  aws_regions.region_names.each do |region|                                 # Loop over all available AWS regions
-    aws_vpcs(aws_region: region).vpc_ids.each do |vpc|                      # Find all VPCs in a single AWS region
-      describe aws_vpc(aws_region: region, vpc_id: vpc) do                  # The test itself.
-        it { should exist }                                                 # Confirms AWS VPC exists
-        it { should be_available }                                          # Confirms AWS VPC has status "available"
-      end
-    end
+  describe aws_lambda_permission(function_name: 'test_Lambda', Sid: 'AllowExecutionFromSqs') do
+    its('sid') { should eq 'AllowExecutionFromSqs' }
+    its('effect') { should eq 'Allow' }
+    its('principal') { should_not be '' }
+    its('resource') { should eq aws_lambda_function_arn }
   end
 end
