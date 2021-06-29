@@ -2770,3 +2770,21 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+
+# Logs-Metric Filter
+resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_test" {
+  name           = "TestMetricFilter"
+  pattern        = "ERROR"
+  log_group_name = aws_cloudwatch_log_group.aws_cloudwatch_log_group_test.name
+
+  metric_transformation {
+    name = "TestMetric"
+    namespace = "TestNamespace"
+    value = "1"
+    default_value = "1.0"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
+  name = "TestLogGroup"
+}
