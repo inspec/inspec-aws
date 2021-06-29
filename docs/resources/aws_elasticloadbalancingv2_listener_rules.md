@@ -5,19 +5,21 @@ platform: aws
 
 # aws\_elasticloadbalancingv2\_listener\_rules
 
-Use the `aws_elasticloadbalancingv2_listener_rules` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_elasticloadbalancingv2_listener_rules` InSpec audit resource to test properties of multiple listener rules associated with an Application Load Balancer.
 
-The AWS::ElasticLoadBalancingV2::ListenerRule specifies a listener rule. The listener must be associated with an Application Load Balancer. Each rule consists of a priority, one or more actions, and one or more conditions.
+Each rule consists of a priority, one or more actions, and one or more conditions.
 
 ## Syntax
 
-Ensure that a listener_arn exists.
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+Ensure that a listener ARN exists.
+
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
       it { should exist }
     end
 
 ## Parameters
-  listener_arn  _(required)_
+
+`listener_arn`  _(required)_
 
 For additional information, see the [AWS documentation on ELBv2 Listener Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
 
@@ -25,21 +27,23 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 
 | Property | Description|
 | --- | ---    |
-| listener_arn | The Amazon Resource Names (ARN) of the listener. |
-| priorities   | The priority. |
-| conditions   | The conditions. Each rule can include zero or one of the following conditions: http-request-method , host-header , path-pattern , and source-ip , and zero or more of the following conditions: http-header and query-string. Information about a condition for a rule. Each rule can optionally include up to one of each of the following conditions: http-request-method , host-header , path-pattern , and source-ip . Each rule can also optionally include one or more of each of the following conditions: http-header and query-string . |
-| actions      | The actions. Each rule must include exactly one of the following types of actions: forward , redirect , or fixed-response , and it must be the last action to be performed. Information about an action. Each rule must include exactly one of the following types of actions: forward , fixed-response , or redirect , and it must be the last action to be performed. |
+| listener_arn | The ARN of the listener. |
+| priorities   | The rule priority. |
+| conditions   | The conditions for listener rules. Each rule can include zero or one of the following conditions: `http-request-method` , `host-header` , `path-pattern` , and `source-ip`, and zero or more of the following conditions: `http-header` and `query-string`. |
+| actions      | The actions for listener rules. Each rule includes exactly one of the following types of actions: `forward`, `redirect`, or `fixed-response`. |
 | is_defaults  | Indicates whether this is the default rule. |
 
 ## Examples
 
-### Ensure a listener_arn is available.
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+### Ensure a listener ARN is available.
+
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
       its('names') { should include 'test1' }
     end
 
-### Verify the priority of the desired rule arn
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+### Verify the priority of the desired rule ARN.
+
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
         its('priorities') { should include 1 }
     end
 
@@ -53,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'dummy') do
+
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
       it { should_not exist }
     end
 
@@ -67,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
       it { should be_available }
     end
 
