@@ -25,18 +25,20 @@ class AWSLambdaPermissionsHappyPathTest < Minitest::Test
   end
 
   def test_sids
-    assert_equal(@resp.sids, ["AllowExecutionFromSqs"]
-    )
+    assert_equal(@resp.sids, ["AllowExecutionFromSqs"])
   end
 
   def test_effects
     assert_equal(@resp.effects, ['Allow'])
   end
 
+  def test_principals
+    assert_equal(@resp.principals, ["sqs.amazonaws.com"])
+  end
+
   def test_actions
     assert_equal(@resp.actions, ["lambda:InvokeFunction"])
   end
-
 
   def test_resources
     assert_equal(@resp.resources, ['arn:aws:lambda:us-east-2:112758395563:function:test_Lambda'])

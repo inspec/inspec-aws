@@ -29,7 +29,7 @@ class AWSLambdaPermission < AwsResourceBase
         row = {
           sid: value['Sid'],
           effect: value['Effect'],
-          principal: value['Principal'],
+          principal: value['Principal']['Service'],
           action: value['Action'],
           resource: value['Resource'],
         }

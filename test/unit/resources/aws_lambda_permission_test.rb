@@ -36,6 +36,10 @@ class AWSLambdaPermissionSuccessPathTest < Minitest::Test
     assert_equal(@resp.effect, 'Allow')
   end
 
+  def test_principal
+    assert_equal(@resp.principal, "sqs.amazonaws.com")
+  end
+
   def test_resource
     assert_equal(@resp.resource, "arn:aws:lambda:us-east-2:112758395563:function:test_Lambda")
   end
