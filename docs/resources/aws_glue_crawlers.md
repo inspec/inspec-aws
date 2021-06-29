@@ -25,36 +25,38 @@ For additional information, see the [AWS documentation on Glue Crawler](https://
 
 | Property | Description|
 | --- | --- |
-| names | The name of the crawler. |
-| roles | The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data. |
+| names | The name of a crawler. |
+| roles | The ARNs of IAM roles used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data. |
 | targets | A collection of targets to crawl. |
-| database_names | The name of the database in which the crawler's output is stored. |
-| descriptions | A description of the crawler. |
-| classifiers | A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler. |
+| database_names | The name of the database in which a crawler's output is stored. |
+| descriptions | A description of a crawler. |
+| classifiers | A list of UTF-8 strings that specify the custom classifiers that are associated with a crawler. |
 | recrawl_policies | A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. |
-| schema_change_policies | The policy that specifies update and delete behaviors for the crawler. |
-| lineage_configurations | A configuration that specifies whether data lineage is enabled for the crawler. |
-| states | The state of the crawler. |
-| table_prefixes |The table prefix of the crawler. |
-| schedules | The schedule of the crawler. |
-| crawl_elapsed_times | If the crawler is running, contains the total time elapsed since the last crawl began. |
-| creation_times | The workgroup creation time. |
-| last_updated | The time that the crawler was last updated. |
+| schema_change_policies | The policy that specifies update and delete behaviors for a crawler. |
+| lineage_configurations | A configuration that specifies whether data lineage is enabled for a crawler. |
+| states | Whether a crawler is running, or whether a run is pending. |
+| table_prefixes | The prefix added to the names of tables that are created. |
+| schedules | The schedule of a crawler. |
+| crawl_elapsed_times | If a crawler is running, contains the total time elapsed since the last crawl began. |
+| creation_times | The time that a crawler was created. |
+| last_updated | The time that a crawler was last updated. |
 | last_crawls | The status of the last crawl, and potentially error information if an error occurred. |
-| versions | The version of the crawler. |
-| configurations | Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see Configuring a Crawler . |
-| crawler_security_configurations | The name of the SecurityConfiguration structure to be used by this crawler. |
+| versions | The version of a crawler. |
+| configurations | Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. |
+| crawler_security_configurations | The name of the `SecurityConfiguration` structure to be used by a crawler. |
 
 ## Examples
 
 ### Ensure a crawler name is available.
+
     describe aws_glue_crawlers do
-      its('names') { should include 'crawler-name' }
+      its('names') { should include 'CRAWLER_NAME' }
     end
 
 ### Ensure a database name is available.
+
     describe aws_glue_crawlers do
-      its('database_names') { should include 'database-name' }
+      its('database_names') { should include 'CRAWLER_DATABASE_NAME' }
     end
 
 ## Matchers
@@ -79,7 +81,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the crawler name is available.
+Use `should` to check if a crawler name is available.
 
     describe aws_glue_crawlers do
       it { should be_available }
