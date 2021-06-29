@@ -7,7 +7,7 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
   desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
 
   example "
-    describe aws_ec2_transit_gateway_attachement(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
+    describe aws_ec2_transit_gateway_attachment(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
       it { should exist }
     end
   "
