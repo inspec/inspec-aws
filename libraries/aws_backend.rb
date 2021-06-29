@@ -37,6 +37,7 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-ram'
 
 # AWS Inspec Backend Classes
 #
@@ -220,6 +221,10 @@ class AwsConnection
 
   def applicationautoscaling_client
     aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def ram_client
+    aws_client(Aws::RAM::Client)
   end
 end
 

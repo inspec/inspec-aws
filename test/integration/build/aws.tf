@@ -2770,3 +2770,13 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+
+# RAM-Resource Share
+resource "aws_ram_resource_share" "aws_ram_resource_share_test" {
+  name                      = "ResourceShareTest"
+  allow_external_principals = true
+
+  tags = {
+    Environment = "Production"
+  }
+}

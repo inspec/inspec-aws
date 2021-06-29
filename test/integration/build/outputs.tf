@@ -478,3 +478,7 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+
+output "aws_ram_resource_share_arn" {
+  value = aws_ram_resource_share.aws_ram_resource_share_test.arn
+}
