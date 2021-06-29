@@ -11,7 +11,8 @@ The AWS::Elasticsearch::Domain resource creates an Amazon Elasticsearch Service 
 
 ## Syntax
 
-Ensure that a domains exists.
+Ensure that a domain name exists.
+
     describe aws_elasticsearchservice_domains do
       it { should exist }
     end
@@ -24,13 +25,14 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 
 | Property | Description|
 | --- | --- |
-| DomainName | Specifies the DomainName. |
+| domain_name | Specifies the domain name. |
 
 ## Examples
 
 ### Ensure a domain name is available.
+
     describe aws_elasticsearchservice_domains do
-      its('domain_name') { should include 'DomainName' }
+      its('domain_name') { should include 'DOMAIN_NAME' }
     end
 
 ## Matchers

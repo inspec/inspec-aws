@@ -5,20 +5,24 @@ platform: aws
 
 # aws\_elasticsearchservice\_domain
 
-Use the `aws_elasticsearchservice_domain` InSpec audit resource to test properties of a single specific Elasticsearch Domain.
+Use the `aws_elasticsearchservice_domain` InSpec audit resource to test properties of a single specific Elasticsearch domain.
 
 The AWS::Elasticsearch::Domain resource creates an Amazon Elasticsearch Service (Amazon ES) domain.
 
 ## Syntax
 
 Ensure that a domain name exists.
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
+
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
       it { should exist }
     end
 
 ## Parameters
 
 `domain_name` _(required)_
+
+The name of an Elasticsearch domain.
+Pass the domain name as a key-value entry in a hash.
 
 For additional information, see the [AWS documentation on Elasticsearch Domain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html).
 
@@ -27,19 +31,19 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 | Property | Description|
 | --- | --- |
 | domain_id | The unique identifier for the specified Elasticsearch domain. |
-| domain_name | The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen). |
+| domain_name | The name of an Elasticsearch domain. |
 | arn | The Amazon resource name (ARN) of an Elasticsearch domain. |
-| created | The domain creation status. True if the creation of an Elasticsearch domain is complete. False if domain creation is still in progress. |
-| deleted | The domain deletion status. True if a delete request has been received for the domain but resource cleanup is still in progress. False if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned. |
+| created | The domain creation status. `true` if the creation of an Elasticsearch domain is complete. `false` if domain creation is still in progress. |
+| deleted | The domain deletion status. `true` if a delete request has been received for the domain but resource cleanup is still in progress. `false` if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned. |
 | endpoint | The Elasticsearch domain endpoint that you use to submit index and search requests. |
-| endpoints | Map containing the Elasticsearch domain endpoints used to submit index and search requests. Example key, value : 'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'. |
-| processing | The status of the Elasticsearch domain configuration. True if Amazon Elasticsearch Service is processing configuration changes. False if the configuration is active. |
-| upgrade_processing | The status of an Elasticsearch domain version upgrade. True if Amazon Elasticsearch Service is undergoing a version upgrade. False if the configuration is active. |
+| endpoints | Key-value map containing the Elasticsearch domain endpoints used to submit index and search requests. |
+| processing | The status of the Elasticsearch domain configuration. `true` if Amazon Elasticsearch Service is processing configuration changes. `false` if the configuration is active. |
+| upgrade_processing | The status of an Elasticsearch domain version upgrade. `true` if Amazon Elasticsearch Service is undergoing a version upgrade. `false` if the configuration is active. |
 | elasticsearch_version | The elasticsearch version. |
 | elasticsearch_cluster_config (instance_type) | The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances. |
 | elasticsearch_cluster_config (instance_count) | The number of instances in the specified domain cluster. |
-| elasticsearch_cluster_config (dedicated_master_enabled) | A boolean value to indicate whether a dedicated master node is enabled. See About Dedicated Master Nodes for more information. |
-| elasticsearch_cluster_config (zone_awareness_enabled) | A boolean value to indicate whether zone awareness is enabled. See About Zone Awareness for more information. |
+| elasticsearch_cluster_config (dedicated_master_enabled) | A boolean value to indicate whether a dedicated master node is enabled. |
+| elasticsearch_cluster_config (zone_awareness_enabled) | A boolean value to indicate whether zone awareness is enabled. |
 | elasticsearch_cluster_config (zone_awareness_config (availability_zone_count)) | An integer value to indicate the number of availability zones for a domain when zone awareness is enabled. This should be equal to number of subnets if VPC endpoints is enabled. |
 | elasticsearch_cluster_config (dedicated_master_type) | The instance type for a dedicated master node. |
 | elasticsearch_cluster_config (dedicated_master_count) | Total number of dedicated master nodes, active and on standby, for the cluster.|
@@ -63,27 +67,27 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 | encryption_at_rest_options (enabled) | Specifies the option to enable Encryption At Rest. |
 | encryption_at_rest_options (kms_key_id) | Specifies the KMS Key ID for Encryption At Rest options. |
 | node_to_node_encryption_options (enabled) | Specify true to enable node-to-node encryption. |
-| advanced_options | Specifies the status of the AdvancedOptions. |
+| advanced_options | Additional options to specify for the Amazon ES domain. |
 | log_publishing_options (cloud_watch_logs_log_group_arn) | ARN of the Cloudwatch log group to which log needs to be published. |
 | log_publishing_options (enabled) | Specifies whether given log publishing option is enabled or not. |
 | service_software_options (current_version) | The current service software version that is present on the domain. |
 | service_software_options (new_version) | The new service software version if one is available. |
-| service_software_options (update_available) | True if you are able to update you service software version. False if you are not able to update your service software version. |
-| service_software_options (cancellable) | True if you are able to cancel your service software version update. False if you are not able to cancel your service software version. |
-| service_software_options (update_status) | The status of your service software update. This field can take the following values: ELIGIBLE , PENDING_UPDATE , IN_PROGRESS , COMPLETED , and NOT_ELIGIBLE. |
+| service_software_options (update_available) | Whether you are able to update your service software version. Valid values: `true` or `false`. |
+| service_software_options (cancellable) | Whether you are able to cancel your service software version update. Valid values: `true` or `false`. |
+| service_software_options (update_status) | The status of your service software update. Valid values: `ELIGIBLE`, `PENDING_UPDATE`, `IN_PROGRESS` , `COMPLETED`, and `NOT_ELIGIBLE`. |
 | service_software_options (description) | The description of the UpdateStatus. |
 | service_software_options (automated_update_date) | Timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software. |
-| service_software_options (optional_deployment) | True if a service software is never automatically updated. False if a service software is automatically updated after AutomatedUpdateDate. |
+| service_software_options (optional_deployment) | Whether service software is never automatically updated after `AutomatedUpdateDate`. Valid values: `true` or `false`. |
 | domain_endpoint_options (enforce_https) | Specify if only HTTPS endpoint should be enabled for the Elasticsearch domain. |
-| domain_endpoint_options (tls_security_policy) | Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain. It can be one of the following values are Policy-Min-TLS-1-0-2019-07 and Policy-Min-TLS-1-2-2019-07. |
-| domain_endpoint_options (custom_endpoint_enabled) | Specify if custom endpoint should be enabled for the Elasticsearch domain. |
+| domain_endpoint_options (tls_security_policy) | Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain. Valid values are: `Policy-Min-TLS-1-0-2019-07` and `Policy-Min-TLS-1-2-2019-07`. |
+| domain_endpoint_options (custom_endpoint_enabled) | Specify if custom endpoint should be enabled for the Elasticsearch domain. Valid values: `true` or `false`. |
 | domain_endpoint_options (custom_endpoint) | Specify the fully qualified domain for your custom endpoint. |
 | domain_endpoint_options (custom_endpoint_certificate_arn) | Specify ACM certificate ARN for your custom endpoint. |
-| advanced_security_options (enabled) | True if advanced security is enabled. |
-| advanced_security_options (internal_user_database_enabled) | True if the internal user database is enabled. |
-| advanced_security_options (saml_options (enabled)) | True if SAML is enabled. |
-| advanced_security_options (saml_options (idp (metadata_content))) | The Metadata of the SAML application in xml format. |
-| advanced_security_options (saml_options (idp (entity_id))) | The unique Entity ID of the application in SAML Identity Provider. |
+| advanced_security_options (enabled) | `true` if advanced security is enabled. Valid values: `true` or `false`. |
+| advanced_security_options (internal_user_database_enabled) | `true` if the internal user database is enabled. Valid values: `true` or `false`. |
+| advanced_security_options (saml_options (enabled)) | `true` if SAML is enabled. Valid values: `true` or `false`. |
+| advanced_security_options (saml_options (idp (metadata_content))) | The metadata of the SAML application in XML format. |
+| advanced_security_options (saml_options (idp (entity_id))) | The unique entity ID of the application in SAML Identity Provider. |
 | advanced_security_options (saml_options (subject_key)) | The key used for matching the SAML Subject attribute. |
 | advanced_security_options (saml_options (roles_key)) | The key used for matching the SAML Roles attribute. |
 | advanced_security_options (saml_options (session_timeout_minutes)) | The duration, in minutes, after which a user session becomes inactive. |
@@ -91,13 +95,15 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 ## Examples
 
 ### Ensure a domain name is available.
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
-      its('domain_name') { should eq 'DomainName' }
+
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
+      its('domain_name') { should eq 'DOMAIN_NAME' }
     end
 
-### Verify the arn of a desired domain.
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
-        its('arn') { should eq 'test_arn' }
+### Verify the ARN of a desired domain.
+
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
+        its('arn') { should eq 'ELASTICSEARCH_DOMAIN_ARN' }
     end
 
 ## Matchers
@@ -109,19 +115,22 @@ The controls will pass if the `describe` method returns at least one result.
 ### exist
 
 Use `should` to test that the entity exists.
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
+
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-    describe aws_elasticsearchservice_domain(domain_name: 'dummy') do
+
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
       it { should_not exist }
     end
 
 ### be_available
+
 Use `should` to check if the domain name is available.
 
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
+    describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
       it { should be_available }
     end
 
