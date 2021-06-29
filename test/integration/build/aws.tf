@@ -2770,3 +2770,11 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+
+resource "aws_lambda_permission" "allow_cloudwatch" {
+  statement_id  = "AllowExecutionFromSqs"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "sqs.amazonaws.com"
+  source_arn    = aws_sqs_queue.terraform_queue.arn
+}
