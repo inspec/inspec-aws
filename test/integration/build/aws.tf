@@ -208,6 +208,7 @@ variable "aws_min_vcpus" {}
 variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
+variable "aws_route53_resolver_endpoint_name" {}
 
 
 provider "aws" {
@@ -2332,9 +2333,7 @@ resource "aws_batch_job_definition" "aws_batch_job_definition1" {
 CONTAINER_PROPERTIES
 }
 
-resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
-  name = var.aws_identity_pool_name
-}
+
 
 resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
   name                   = "my-saml-provider"
@@ -2383,12 +2382,6 @@ resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
   health_check_type         = var.aws_auto_scaling_health_check_type
   force_delete              = var.aws_auto_scaling_force_delete
   launch_configuration      = aws_launch_configuration.as_conf.name
-}
-
-resource "aws_launch_configuration" "as_conf" {
-  name          = var.aws_launch_configuration_name
-  image_id      = var.aws_image_id
-  instance_type = var.aws_instance_type
 }
 
 
@@ -2788,8 +2781,8 @@ resource "aws_subnet" "for_res" {
   availability_zone = "us-east-2c"
 
 }
-resource "aws_route53_resolver_endpoint" "foo" {
-  name      = "foo"
+resource "aws_route53_resolver_endpoint" "for-int" {
+  name      = var.aws_route53_resolver_endpoint_name
   direction = "INBOUND"
 
   security_group_ids = [ aws_security_group.for_endpoint.id ]
@@ -2813,7 +2806,7 @@ resource "aws_route53_resolver_rule" "sys" {
   domain_name = "subdomain.example.com"
   rule_type   = "SYSTEM"
 }
-resource "aws_route53_resolver_rule_association" "example" {
+resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }

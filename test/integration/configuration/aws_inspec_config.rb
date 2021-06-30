@@ -266,6 +266,7 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
   }
 
   def self.config

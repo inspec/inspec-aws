@@ -478,3 +478,18 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+output "aws_resolver_endpoint_id" {
+  value = aws_route53_resolver_endpoint.for-int.id
+}
+output "aws_resolver_endpoint_arn" {
+  value = aws_route53_resolver_endpoint.for-int.arn
+}
+output "aws_resolver_endpoint_name" {
+  value = aws_route53_resolver_endpoint.for-int.name
+}
+output "aws_resolver_endpoint_vpc_id" {
+  value = aws_route53_resolver_endpoint.for-int.host_vpc_id
+}
+output "aws_resolver_endpoint_security_group_ids" {
+  value = aws_route53_resolver_endpoint.for-int.security_group_ids
+}
