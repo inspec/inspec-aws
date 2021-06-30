@@ -478,3 +478,13 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+output "resolver_rule_association_id" {
+  value = aws_route53_resolver_rule_association.example.id
+}
+output "resolver_rule_id" {
+  value =  aws_route53_resolver_rule_association.example.resolver_rule_id
+}
+output "re_vpc_id" {
+  value =  aws_route53_resolver_rule_association.example.vpc_id
+}
+
