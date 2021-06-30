@@ -2763,10 +2763,9 @@ resource "aws_efs_file_system" "aws_efs_file_system_mt_test" {
 resource "aws_vpc" "aws_vpc_mount_mt_test" {
   cidr_block = "10.0.0.0/16"
 }
-
 resource "aws_subnet" "aws_subnet_mount_mt_test" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = var.aws_availability_zone
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "us-east-2c"
 
 }
