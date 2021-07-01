@@ -86,3 +86,4 @@ Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structur
 `iam:ListAccessKeys` 
 `iam:ListUserPolicies` 
 `iam:ListAttachedUserPolicies` 
+
