@@ -70,6 +70,18 @@ class AWSECSTaskDefinition < AwsResourceBase
     container_definitions.map(&:port_mappings)
   end
 
+  def container_definitions_port_mappings_container_ports
+    (container_definitions.map(&:port_mappings)).map(&:container_port)
+  end
+
+  def container_definitions_port_mappings_host_ports
+    (container_definitions.map(&:port_mappings)).map(&:host_port)
+  end
+
+  def container_definitions_port_mappings_protocols
+    (container_definitions.map(&:port_mappings)).map(&:protocol)
+  end
+
   def container_definitions_essentials
     container_definitions.map(&:essential)
   end

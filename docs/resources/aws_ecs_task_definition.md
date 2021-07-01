@@ -39,9 +39,9 @@ container_definitions (memory) | The amount (in MiB) of memory to present to the
 container_definitions (memory_reservation) | The soft limit (in MiB) of memory to reserve for the container. | container_definitions_memory_reservations |
 container_definitions (links) | The links parameter allows containers to communicate with each other without the need for port mappings. | container_definitions_links |
 container_definitions (port_mappings) | The list of port mappings for the container. | container_definitions_port_mappings |
-container_definitions (port_mappings (container_port)) | The port number on the container that is bound to the user-specified or automatically assigned host port. | FieldName |
-container_definitions (port_mappings (host_port)) | The port number on the container instance to reserve for your container. | FieldName |
-container_definitions (port_mappings (protocol)) | The protocol used for the port mapping. Valid values are tcp and udp. The default is tcp. | FieldName |
+container_definitions (port_mappings (container_port)) | The port number on the container that is bound to the user-specified or automatically assigned host port. | container_definitions_port_mappings_container_ports |
+container_definitions (port_mappings (host_port)) | The port number on the container instance to reserve for your container. | container_definitions_port_mappings_host_ports |
+container_definitions (port_mappings (protocol)) | The protocol used for the port mapping. Valid values are tcp and udp. The default is tcp. | container_definitions_port_mappings_protocols |
 container_definitions (essential) | If the essential parameter of a container is marked as true , and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the essential parameter of a container is marked as false , then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential. | container_definitions_essentials |
 container_definitions (entry_point) | The entry point that is passed to the container. | container_definitions_entry_points |
 container_definitions (command) | The command that is passed to the container. | container_definitions_commands |
