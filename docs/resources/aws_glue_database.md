@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_glue\_database
 
-Use the `aws_glue_database` InSpec audit resource to test properties of a single specific Glue Database.
+Use the `aws_glue_database` InSpec audit resource to test properties of a single Glue database.
 
 The AWS::Glue::Database resource specifies a logical grouping of tables in AWS Glue.
 
@@ -13,13 +13,15 @@ The AWS::Glue::Database resource specifies a logical grouping of tables in AWS G
 
 Ensure that a database name exists.
 
-    describe aws_glue_database(name: 'db_name')
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME')
       it { should exist }
     end
 
 ## Parameters
 
 `name` _(required)_
+
+The name of the Glue database.
 
 For additional information, see the [AWS documentation on Glue Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html).
 
@@ -41,13 +43,15 @@ For additional information, see the [AWS documentation on Glue Database](https:/
 ## Examples
 
 ### Ensure a database name is available.
-    describe aws_glue_database(name: 'db_name') do
-      its('name') { should eq 'db_name' }
+
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
+      its('name') { should eq 'GLUE_DATABASE_NAME' }
     end
 
 ### Ensure a target database name is available.
-    describe aws_glue_database(name: 'db_name') do
-        its('target_database.database_name') { should eq 'target_db_name' }
+
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
+        its('target_database.database_name') { should eq 'CATALOG_DATABASE_NAME' }
     end
 
 ## Matchers
@@ -60,13 +64,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_glue_database(name: 'db_name') do
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_glue_database(name: 'dummy') do
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
       it { should_not exist }
     end
 
@@ -74,7 +78,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the database name is available.
 
-    describe aws_glue_database(name: 'db_name') do
+    describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
       it { should be_available }
     end
 
