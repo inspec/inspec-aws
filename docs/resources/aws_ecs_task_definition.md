@@ -26,27 +26,156 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| task_definition_arn     | The ARN of the task definition. |
-| family                  | The family of the task definition. |
-| container_definitions   | The list of container definitions passed to the docker daemon. |
-| task_role_arn           | The ARN of the AWS IAM role that grants containers in the task permission to call AWS APIs. |
-| execution_role_arn      | The ARN of the execution role. |
-| network_mode            | The Docker networking mode for the task containers. |
-| revision                | The revision number of the task definition. |
-| volumes                 | The data volumes used with the containers in the task. |
-| status                  | The status of the task definition. |
-| requires_attributes     | The required container instance attributes of the task. |
-| placement_constraints   | The placement constraints on task placement in a task. |
-| compatibilities         | The task launch types that the task definition was validated against. |
-| cpu                     | The number of CPU units used by the task. |
-| memory                  | The amount of memory used by the task in MiB. |
-| inference_accelerators  | The Elastic Interference accelerators used for a container in a task. |
-| pid_mode                | The process namespace use by containers in the task. Valid values are `host` or `task`. |
-| ipc_mode                | The IPC resource namespace used by containers in the task. Valid values are `host`, `task`, or `none`. |
-| proxy_configuration     | The configuration details for the App Mesh proxy. |
-| tags                    | The tags of the task definition. |
+| Property | Description| Field_Name |
+| --- | --- | --- |
+task_definition_arn | The full Amazon Resource Name (ARN) of the task definition. | task_definition_arn |
+container_definitions | A list of container definitions in JSON format that describe the different containers that make up your task. | container_definitions |
+container_definitions (name) | The name of a container.  | container_definitions_names |
+container_definitions (image) | The image used to start a container. | container_definitions_images |
+container_definitions (repository_credentials) | The private repository authentication credentials to use. | container_definitions_repository_credentials |
+container_definitions (repository_credentials (credentials_parameter)) | The Amazon Resource Name (ARN) of the secret containing the private repository credentials. | container_definitions_repository_credentials_credentials_parameter |
+container_definitions (cpu) | The number of cpu units reserved for the container. | container_definitions_cpus |
+container_definitions (memory) | The amount (in MiB) of memory to present to the container. | container_definitions_memories |
+container_definitions (memory_reservation) | The soft limit (in MiB) of memory to reserve for the container. | container_definitions_memory_reservations |
+container_definitions (links) | The links parameter allows containers to communicate with each other without the need for port mappings. | container_definitions_links |
+container_definitions (port_mappings) | The list of port mappings for the container. | container_definitions_port_mappings |
+container_definitions (port_mappings (container_port)) | The port number on the container that is bound to the user-specified or automatically assigned host port. | FieldName |
+container_definitions (port_mappings (host_port)) | The port number on the container instance to reserve for your container. | FieldName |
+container_definitions (port_mappings (protocol)) | The protocol used for the port mapping. Valid values are tcp and udp. The default is tcp. | FieldName |
+container_definitions (essential) | If the essential parameter of a container is marked as true , and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the essential parameter of a container is marked as false , then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential. | container_definitions_essentials |
+container_definitions (entry_point) | The entry point that is passed to the container. | container_definitions_entry_points |
+container_definitions (command) | The command that is passed to the container. | container_definitions_commands |
+container_definitions (environment) | The environment variables to pass to a container. | container_definitions_environments |
+container_definitions (environment (name)) | The name of the key-value pair. | container_definitions_environments_names |
+container_definitions (environment (value)) | The value of the key-value pair. | container_definitions_environments_values |
+container_definitions (environment_files) | A list of files containing the environment variables to pass to a container. | container_definitions_environment_files |
+container_definitions (environment_files (value) | The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file. | container_definitions_environment_files_values |
+container_definitions (environment_files (type) | The file type to use. The only supported value is s3. | container_definitions_environment_files_types |
+container_definitions (mount_points) | The mount points for data volumes in your container. | container_definitions_mount_points |
+container_definitions (mount_points (source_volume)) | The name of the volume to mount. Must be a volume name referenced in the name parameter of task definition volume. | container_definitions_mount_points_source_volumes |
+container_definitions (mount_points (container_path)) | The path on the container to mount the host volume at. | container_definitions_mount_points_container_paths |
+container_definitions (mount_points (read_only)) | If this value is true , the container has read-only access to the volume. If this value is false , then the container can write to the volume. The default value is false. | container_definitions_mount_points_read_only |
+container_definitions (volumes_from) | Data volumes to mount from another container. | container_definitions_volumes_froms |
+container_definitions (volumes_from (source_container)) | The name of another container within the same task definition from which to mount volumes. | container_definitions_volumes_froms_source_containers |
+container_definitions (volumes_from (read_only)) | If this value is true , the container has read-only access to the volume. If this value is false , then the container can write to the volume. The default value is false. | container_definitions_volumes_froms_read_only |
+container_definitions (linux_parameters) | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see KernelCapabilities. | container_definitions_linux_parameters_capabilities_add |
+container_definitions (linux_parameters (capabilities)) | The Linux capabilities for the container that are added to or dropped from the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_add |
+container_definitions (linux_parameters (capabilities (add))) | The Linux capabilities for the container that have been added to the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_add |
+container_definitions (linux_parameters (capabilities (drop))) | The Linux capabilities for the container that have been removed from the default configuration provided by Docker.  | container_definitions_linux_parameters_capabilities_drop |
+container_definitions (linux_parameters (devices)) | Any host devices to expose to the container. | container_definitions_linux_parameters_capabilities_devices |
+container_definitions (linux_parameters (devices (host_path))) | The path for the device on the host container instance. | container_definitions_linux_parameters_capabilities_devices_host_path |
+container_definitions (linux_parameters (devices (container_path))) | The path inside the container at which to expose the host device. | container_definitions_linux_parameters_capabilities_devices_container_path |
+container_definitions (linux_parameters (devices (permissions))) | The explicit permissions to provide to the container for the device. By default, the container has permissions for read , write , and mknod for the device. | container_definitions_linux_parameters_capabilities_devices_permissions |
+container_definitions (linux_parameters (init_process_enabled)) | Run an init process inside the container that forwards signals and reaps processes. This parameter maps to the --init option to docker run . | container_definitions_linux_parameters_init_process_enabled |
+container_definitions (linux_parameters (shared_memory_size) | The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run. | container_definitions_linux_parameters_shared_memory_size |
+container_definitions (linux_parameters (tmpfs) | The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the --tmpfs option to docker run. | container_definitions_linux_parameters_tmpfs |
+container_definitions (linux_parameters (tmpfs (container_path)) | The absolute file path where the tmpfs volume is to be mounted. | container_definitions_linux_parameters_tmpfs_container_path |
+container_definitions (linux_parameters (tmpfs (size)) | The maximum size (in MiB) of the tmpfs volume. | container_definitions_linux_parameters_tmpfs_size |
+container_definitions (linux_parameters (tmpfs (mount_options)) | The list of tmpfs volume mount options. | container_definitions_linux_parameters_tmpfs_mount_options |
+container_definitions (linux_parameters (max_swap)) | The total amount of swap memory (in MiB) a container can use. | container_definitions_linux_parameters_max_swap |
+container_definitions (linux_parameters (swappiness)) | This allows you to tune a container's memory swappiness behavior. | container_definitions_linux_parameters_swappiness |
+container_definitions (secrets) | The secrets to pass to the container. | container_definitions_secrets |
+container_definitions (secrets (name)) | The name of the secret. | container_definitions_secrets_name |
+container_definitions (secrets (value_from)) | The secret to expose to the container. | container_definitions_secrets_value_from |
+container_definitions (depends_on) | The dependencies defined for container startup and shutdown. | container_definitions_depends_on |
+container_definitions (depends_on (container_name)) | The name of a container. | container_definitions_depends_on_container_name |
+container_definitions (depends_on (condition)) | The dependency condition of the container. | container_definitions_depends_on_condition |
+container_definitions (start_timeout) | Time duration (in seconds) to wait before giving up on resolving dependencies for a container. | container_definitions_start_timeouts |
+container_definitions (stop_timeout) | Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own. | container_definitions_stop_timeouts |
+container_definitions (hostname) | The hostname to use for your container. | container_definitions_hostnames |
+container_definitions (user) | The user to use inside the container. | container_definitions_users |
+container_definitions (working_directory) | The working directory in which to run commands inside the container. | container_definitions_working_directories |
+container_definitions (disable_networking) | When this parameter is true, networking is disabled within the container. | container_definitions_disable_networkings |
+container_definitions (privileged) | When this parameter is true, the container is given elevated privileges on the host container instance (similar to the root user). | container_definitions_privilegeds |
+container_definitions (readonly_root_filesystem) | When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the --read-only option to docker run. | container_definitions_readonly_root_filesystems |
+container_definitions (dns_servers) | A list of DNS servers that are presented to the container. | container_definitions_dns_servers |
+container_definitions (dns_search_domains) | A list of DNS search domains that are presented to the container. | container_definitions_dns_search_domains |
+container_definitions (extra_hosts) | A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. | container_definitions_extra_hosts |
+container_definitions (extra_hosts (hostname)) | The hostname to use in the /etc/hosts entry. | container_definitions_extra_hosts_hostname |
+container_definitions (extra_hosts (ip_address)) | The IP address to use in the /etc/hosts entry. | container_definitions_extra_hosts_ip_address |
+container_definitions (docker_security_options) | A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems. This field is not valid for containers in tasks using the Fargate launch type. | container_definitions_docker_security_options |
+container_definitions (interactive) | When this parameter is true , this allows you to deploy containerized applications that require stdin or a tty to be allocated. This parameter maps to OpenStdin in the Create a container section of the Docker Remote API and the --interactive option to docker run. | container_definitions_interactives |
+container_definitions (pseudo_terminal) | When this parameter is true , a TTY is allocated. This parameter maps to Tty in the Create a container section of the Docker Remote API and the --tty option to docker run. | container_definitions_pseudo_terminals |
+container_definitions (docker_labels) | A key/value map of labels to add to the container. | container_definitions_docker_labels |
+container_definitions (ulimits) | The ulimit settings to pass to the container. | container_definitions_ulimits |
+container_definitions (ulimits (name)) | The type of the ulimit. | container_definitions_ulimits_name |
+container_definitions (ulimits (soft_limit)) | The soft limit for the ulimit type. | container_definitions_ulimits_soft_limit |
+container_definitions (ulimits (hard_limit)) | The hard limit for the ulimit type. | container_definitions_ulimits_hard_limit |
+container_definitions (log_configuration) | The log configuration specification for the container. | container_definitions_log_configurations |
+container_definitions (log_configuration (log_driver)) | The log driver to use for the container. | container_definitions_log_configurations_log_driver |
+container_definitions (log_configuration (options)) | The configuration options to send to the log driver. | container_definitions_log_configurations_options |
+container_definitions (log_configuration (secret_options)) | The secrets to pass to the log configuration. | container_definitions_log_configurations_secret_options |
+container_definitions (log_configuration (secret_options (name))) | The name of the secret. | container_definitions_log_configurations_secret_options_name |
+container_definitions (log_configuration (secret_options (value_from))) | The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store. | container_definitions_log_configurations_secret_value_from |
+container_definitions (health_check) | The container health check command and associated configuration parameters for the container. | container_definitions_health_checks |
+container_definitions (health_check (command)) | A string array representing the command that the container runs to determine if it is healthy. | container_definitions_health_checks_command |
+container_definitions (health_check (interval)) | The time period in seconds between each health check execution. | container_definitions_health_checks_interval |
+container_definitions (health_check (timeout)) | The time period in seconds to wait for a health check to succeed before it is considered a failure. | container_definitions_health_checks_timeout |
+container_definitions (health_check (retries)) | The number of times to retry a failed health check before the container is considered unhealthy. | container_definitions_health_checks_retries |
+container_definitions (health_check (start_period)) | The optional grace period within which to provide containers time to bootstrap before failed health checks count towards the maximum number of retries. | container_definitions_health_checks_start_period |
+container_definitions (system_controls) | A list of namespaced kernel parameters to set in the container. | container_definitions_system_controls |
+container_definitions (system_controls (namespace)) | The namespaced kernel parameter for which to set a value. | container_definitions_system_controls_namespace |
+container_definitions (system_controls (value)) | The value for the namespaced kernel parameter specified in namespace. | container_definitions_system_controls_value |
+container_definitions (resource_requirements) | The type and amount of a resource to assign to a container. | container_definitions_resource_requirements |
+container_definitions (resource_requirements (value)) | The value for the specified resource type. | container_definitions_resource_requirements_value |
+container_definitions (resource_requirements (type)) | The type of resource to assign to a container. | container_definitions_resource_requirements_type |
+container_definitions (firelens_configuration) | The FireLens configuration for the container. | container_definitions_firelens_configurations |
+container_definitions (firelens_configuration (type)) | The log router to use. The valid values are fluentd or fluentbit. | container_definitions_firelens_configurations_type |
+container_definitions (firelens_configuration (options)) | The options to use when configuring the log router. | container_definitions_firelens_configurations_options |
+family | The name of a family that this task definition is registered to. | family |
+task_role_arn | The short name or full Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role. | task_role_arn |
+execution_role_arn | The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container. | execution_role_arn |
+network_mode | The Docker networking mode to use for the containers in the task. The valid values are none, bridge, awsvpc, and host. | network_mode |
+revision | The revision of the task in a particular family. | revision |
+volumes | The list of data volume definitions for the task. | volumes |
+volumes (name) | The name of the volume. | volumes_names |
+volumes (host) | The host of the volume. | volumes_hosts |
+volumes (host (source_path)) | The source path of the volume. | volumes_source_paths |
+volumes (docker_volume_configuration) | This parameter is specified when you are using Docker volumes. | volumes_docker_volume_configurations |
+volumes (docker_volume_configuration (scope)) | The scope for the Docker volume that determines its lifecycle. | volumes_docker_volume_configuration_scopes |
+volumes (docker_volume_configuration (autoprovision)) | If this value is true , the Docker volume is created if it does not already exist. | volumes_docker_volume_configuration_autoprovisions |
+volumes (docker_volume_configuration (driver)) | The Docker volume driver to use. | volumes_docker_volume_configuration_drivers |
+volumes (docker_volume_configuration (driver_opts)) | A map of Docker driver-specific options passed through. | volumes_docker_volume_configuration_driver_opts |
+volumes (docker_volume_configuration (labels)) | Custom metadata to add to your Docker volume. | volumes_docker_volume_configuration_labels |
+volumes (efs_volume_configuration) | This parameter is specified when you are using an Amazon Elastic File System file system for task storage. | volumes_efs_volume_configurations |
+volumes (efs_volume_configuration (file_system_id)) | The Amazon EFS file system ID to use. | volumes_efs_volume_configuration_file_system_ids |
+volumes (efs_volume_configuration (root_directory)) | The directory within the Amazon EFS file system to mount as the root directory inside the host. | volumes_efs_volume_configuration_root_directories |
+volumes (efs_volume_configuration (transit_encryption)) | Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. | volumes_efs_volume_configuration_transit_encryptions |
+volumes (efs_volume_configuration (transit_encryption_port)) | The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server. | volumes_efs_volume_configuration_transit_encryption_ports |
+volumes (efs_volume_configuration (authorization_config) | The authorization configuration details for the Amazon EFS file system. | volumes_efs_volume_configuration_authorization_configs |
+volumes (efs_volume_configuration (authorization_config (access_point_id)) | The Amazon EFS access point ID to use. | volumes_efs_volume_configuration_authorization_config_access_point_ids |
+volumes (efs_volume_configuration (authorization_config (iam)) | The Amazon EFS IAM to use. | volumes_efs_volume_configuration_authorization_config_iams |
+volumes (fsx_windows_file_server_volume_configuration) | This parameter is specified when you are using Amazon FSx for Windows File Server file system for task storage. | volumes_fsx_windows_file_server_volume_configurations |
+volumes (fsx_windows_file_server_volume_configuration (file_system_id)) | The Amazon FSx for Windows File Server file system ID to use. | volumes_fsx_windows_file_server_volume_configurations_file_system_ids |
+volumes (fsx_windows_file_server_volume_configuration (root_directory)) | The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host. | volumes_fsx_windows_file_server_volume_configurations_root_directories |
+volumes (fsx_windows_file_server_volume_configuration (authorization_config)) | The authorization configuration details for the Amazon FSx for Windows File Server file system. | volumes_fsx_windows_file_server_volume_configurations_authorization_configs |
+volumes (fsx_windows_file_server_volume_configuration (authorization_config (credentials_parameter))) | The authorization credential option to use. | volumes_fsx_windows_file_server_volume_configurations_authorization_configs_credentials_parameters |
+volumes (fsx_windows_file_server_volume_configuration (authorization_config (domain))) | A fully qualified domain name hosted by an AWS Directory Service Managed Microsoft AD (Active Directory) or self-hosted AD on Amazon EC2. | volumes_fsx_windows_file_server_volume_configurations_authorization_configs_domains |
+status | The status of the task definition. | status |
+requires_attributes | The container instance attributes required by your task. | requires_attributes |
+requires_attributes (name) | The name of the attribute. | requires_attributes_names |
+requires_attributes (value) | The value of the attribute. | requires_attributes_values |
+requires_attributes (target_type) | The type of the target with which to attach the attribute. | requires_attributes_target_types |
+requires_attributes (target_id) | The ID of the target. | requires_attributes_targets |
+placement_constraints | An array of placement constraint objects to use for tasks. | placement_constraints |
+placement_constraints (type) | The type of constraint. | placement_constraints_types |
+placement_constraints (expression) | The expression of constraint. | placement_constraints_expressions |
+compatibilities | The task launch types the task definition validated against during task definition registration. | compatibilities |
+requires_compatibilities | The task launch types the task definition was validated against. | FieldName |
+cpu | The number of cpu units used by the task. | cpu |
+memory | The amount (in MiB) of memory used by the task. | memory |
+inference_accelerators | The Elastic Inference accelerator associated with the task. | inference_accelerators |
+inference_accelerators (device_name) | The Elastic Inference accelerator device name. | inference_accelerators_device_names |
+inference_accelerators (device_type) | The Elastic Inference accelerator type to use. | inference_accelerators_device_types |
+pid_mode | The process namespace to use for the containers in the task. The valid values are host or task. | pid_mode |
+ipc_mode | The IPC resource namespace to use for the containers in the task. The valid values are host, task, or none. | ipc_mode |
+proxy_configuration | The configuration details for the App Mesh proxy. | proxy_configuration |
+proxy_configuration (type) | The proxy type. The only supported value is APPMESH. | proxy_configuration_types |
+proxy_configuration (container_name) | The name of the container that will serve as the App Mesh proxy. | proxy_configuration_container_names |
+proxy_configuration (properties) | The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified as key-value pairs. | proxy_configuration_properties |
+proxy_configuration (properties (name)) | The name of the key-value pair. | proxy_configuration_properties_names |
+proxy_configuration (properties (value)) | The value of the key-value pair. | proxy_configuration_properties_values |
+tags | The tags of the task definition. | tags |
 
 ## Examples
 

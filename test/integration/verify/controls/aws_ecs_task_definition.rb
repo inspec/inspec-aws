@@ -29,9 +29,9 @@ control 'aws-ec2-task-definition-1.0' do
     its('container_definitions_environment_files') { should_not be_empty }
     its('container_definitions_mount_points') { should_not be_empty }
     its('container_definitions_volumes_froms') { should_not be_empty }
-    its('container_definitions_linux_parameters') { should_not be_empty }
 
     # Container_Definitions - Linux Parameters
+    its('container_definitions_linux_parameters') { should_not be_empty }
     its('container_definitions_linux_parameters_capabilities_add') { should_not be_empty }
     its('container_definitions_linux_parameters_capabilities_drop') { should_not be_empty }
     its('container_definitions_linux_parameters_capabilities_devices') { should_not be_empty }

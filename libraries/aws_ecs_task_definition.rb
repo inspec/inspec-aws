@@ -86,16 +86,52 @@ class AWSECSTaskDefinition < AwsResourceBase
     container_definitions.map(&:environment)
   end
 
+  def container_definitions_environments_names
+    (container_definitions.map(&:environment)).map(&:name)
+  end
+
+  def container_definitions_environments_values
+    (container_definitions.map(&:environment)).map(&:value)
+  end
+
   def container_definitions_environment_files
     container_definitions.map(&:environment_files)
+  end
+
+  def container_definitions_environment_files_values
+    (container_definitions.map(&:environment_files)).map(&:value)
+  end
+
+  def container_definitions_environment_files_types
+    (container_definitions.map(&:environment_files)).map(&:type)
   end
 
   def container_definitions_mount_points
     container_definitions.map(&:mount_points)
   end
 
+  def container_definitions_mount_points_source_volumes
+    (container_definitions.map(&:mount_points)).map(&:source_volume)
+  end
+
+  def container_definitions_mount_points_container_paths
+    (container_definitions.map(&:mount_points)).map(&:container_path)
+  end
+
+  def container_definitions_mount_points_read_only
+    (container_definitions.map(&:mount_points)).map(&:read_only)
+  end
+
   def container_definitions_volumes_froms
     container_definitions.map(&:volumes_from)
+  end
+
+  def container_definitions_volumes_froms_source_containers
+    (container_definitions.map(&:volumes_from)).map(&:source_container)
+  end
+
+  def container_definitions_volumes_froms_read_only
+    (container_definitions.map(&:volumes_from)).map(&:read_only)
   end
 
   def container_definitions_linux_parameters
@@ -350,35 +386,135 @@ class AWSECSTaskDefinition < AwsResourceBase
     (container_definitions.map(&:firelens_configuration)).map(&:options)
   end
 
-  def requires_attributes_name
+  def volumes_names
+    volumes.map(&:name)
+  end
+
+  def volumes_hosts
+    volumes.map(&:host)
+  end
+
+  def volumes_source_paths
+    volumes.map(&:source_path)
+  end
+
+  def volumes_docker_volume_configurations
+    volumes.map(&:docker_volume_configuration)
+  end
+
+  def volumes_docker_volume_configuration_scopes
+    (volumes.map(&:docker_volume_configuration)).map(&:scope)
+  end
+
+  def volumes_docker_volume_configuration_autoprovisions
+    (volumes.map(&:docker_volume_configuration)).map(&:autoprovision)
+  end
+
+  def volumes_docker_volume_configuration_drivers
+    (volumes.map(&:docker_volume_configuration)).map(&:driver)
+  end
+
+  def volumes_docker_volume_configuration_driver_opts
+    (volumes.map(&:docker_volume_configuration)).map(&:driver_opts)
+  end
+
+  def volumes_docker_volume_configuration_labels
+    (volumes.map(&:docker_volume_configuration)).map(&:labels)
+  end
+
+  def volumes_efs_volume_configurations
+    volumes.map(&:efs_volume_configurations)
+  end
+
+  def volumes_efs_volume_configuration_file_system_ids
+    (volumes.map(&:efs_volume_configurations)).map(&:file_system_id)
+  end
+
+  def volumes_efs_volume_configuration_root_directories
+    (volumes.map(&:efs_volume_configurations)).map(&:root_directory)
+  end
+
+  def volumes_efs_volume_configuration_transit_encryptions
+    (volumes.map(&:efs_volume_configurations)).map(&:transit_encryption)
+  end
+
+  def volumes_efs_volume_configuration_transit_encryption_ports
+    (volumes.map(&:efs_volume_configurations)).map(&:transit_encryption_port)
+  end
+
+  def volumes_efs_volume_configuration_authorization_configs
+    (volumes.map(&:efs_volume_configurations)).map(&:authorization_config)
+  end
+
+  def volumes_efs_volume_configuration_authorization_config_access_point_ids
+    ((volumes.map(&:efs_volume_configurations)).map(&:authorization_config)).map(&:access_point_id)
+  end
+
+  def volumes_efs_volume_configuration_authorization_config_iams
+    ((volumes.map(&:efs_volume_configurations)).map(&:authorization_config)).map(&:iam)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations
+    volumes.map(&:fsx_windows_file_server_volume_configuration)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations_file_system_ids
+    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:file_system_id)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations_root_directories
+    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:root_directory)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations_authorization_configs
+    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_credentials_parameters
+    ((volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)).map(&:credentials_parameter)
+  end
+
+  def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_domains
+    ((volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)).map(&:domain)
+  end
+
+  def requires_attributes_names
     requires_attributes.map(&:name)
   end
 
-  def requires_attributes_value
+  def requires_attributes_values
     requires_attributes.map(&:value)
   end
 
-  def requires_attributes_target_type
+  def requires_attributes_target_types
     requires_attributes.map(&:target_type)
   end
 
-  def requires_attributes_target
+  def requires_attributes_targets
     requires_attributes.map(&:target)
   end
 
-  def inference_accelerators_device_name
+  def placement_constraints_types
+    placement_constraints.map(&:type)
+  end
+
+  def placement_constraints_expressions
+    placement_constraints.map(&:expression)
+  end
+
+  def inference_accelerators_device_names
     inference_accelerators.map(&:device_name)
   end
 
-  def inference_accelerators_device_type
+  def inference_accelerators_device_types
     inference_accelerators.map(&:device_type)
   end
 
-  def proxy_configuration_type
+  def proxy_configuration_types
     proxy_configuration.map(&:type)
   end
 
-  def proxy_configuration_container_name
+  def proxy_configuration_container_names
     proxy_configuration.map(&:container_name)
   end
 
@@ -386,11 +522,11 @@ class AWSECSTaskDefinition < AwsResourceBase
     proxy_configuration.map(&:properties)
   end
 
-  def proxy_configuration_properties_name
+  def proxy_configuration_properties_names
     (proxy_configuration.map(&:properties)).map(&:name)
   end
 
-  def proxy_configuration_properties_value
+  def proxy_configuration_properties_values
     (proxy_configuration.map(&:properties)).map(&:value)
   end
 
