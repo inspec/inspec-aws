@@ -26,14 +26,14 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Properties
 
-| Property | Description| Field_Name |
+| Property | Description | Field_Name |
 | --- | --- | --- |
 task_definition_arn | The full Amazon Resource Name (ARN) of the task definition. | task_definition_arn |
 container_definitions | A list of container definitions in JSON format that describe the different containers that make up your task. | container_definitions |
 container_definitions (name) | The name of a container.  | container_definitions_names |
 container_definitions (image) | The image used to start a container. | container_definitions_images |
 container_definitions (repository_credentials) | The private repository authentication credentials to use. | container_definitions_repository_credentials |
-container_definitions (repository_credentials (credentials_parameter)) | The Amazon Resource Name (ARN) of the secret containing the private repository credentials. | container_definitions_repository_credentials_credentials_parameter |
+container_definitions (repository_credentials (credentials_parameter)) | The Amazon Resource Name (ARN) of the secret containing the private repository credentials. | container_definitions_repository_credentials_credentials_parameters |
 container_definitions (cpu) | The number of cpu units reserved for the container. | container_definitions_cpus |
 container_definitions (memory) | The amount (in MiB) of memory to present to the container. | container_definitions_memories |
 container_definitions (memory_reservation) | The soft limit (in MiB) of memory to reserve for the container. | container_definitions_memory_reservations |
@@ -58,28 +58,28 @@ container_definitions (mount_points (read_only)) | If this value is true , the c
 container_definitions (volumes_from) | Data volumes to mount from another container. | container_definitions_volumes_froms |
 container_definitions (volumes_from (source_container)) | The name of another container within the same task definition from which to mount volumes. | container_definitions_volumes_froms_source_containers |
 container_definitions (volumes_from (read_only)) | If this value is true , the container has read-only access to the volume. If this value is false , then the container can write to the volume. The default value is false. | container_definitions_volumes_froms_read_only |
-container_definitions (linux_parameters) | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see KernelCapabilities. | container_definitions_linux_parameters_capabilities_add |
-container_definitions (linux_parameters (capabilities)) | The Linux capabilities for the container that are added to or dropped from the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_add |
-container_definitions (linux_parameters (capabilities (add))) | The Linux capabilities for the container that have been added to the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_add |
-container_definitions (linux_parameters (capabilities (drop))) | The Linux capabilities for the container that have been removed from the default configuration provided by Docker.  | container_definitions_linux_parameters_capabilities_drop |
+container_definitions (linux_parameters) | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see KernelCapabilities. | container_definitions_linux_parameters |
+container_definitions (linux_parameters (capabilities)) | The Linux capabilities for the container that are added to or dropped from the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities |
+container_definitions (linux_parameters (capabilities (add))) | The Linux capabilities for the container that have been added to the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_adds |
+container_definitions (linux_parameters (capabilities (drop))) | The Linux capabilities for the container that have been removed from the default configuration provided by Docker.  | container_definitions_linux_parameters_capabilities_drops |
 container_definitions (linux_parameters (devices)) | Any host devices to expose to the container. | container_definitions_linux_parameters_capabilities_devices |
-container_definitions (linux_parameters (devices (host_path))) | The path for the device on the host container instance. | container_definitions_linux_parameters_capabilities_devices_host_path |
-container_definitions (linux_parameters (devices (container_path))) | The path inside the container at which to expose the host device. | container_definitions_linux_parameters_capabilities_devices_container_path |
+container_definitions (linux_parameters (devices (host_path))) | The path for the device on the host container instance. | container_definitions_linux_parameters_capabilities_devices_host_paths |
+container_definitions (linux_parameters (devices (container_path))) | The path inside the container at which to expose the host device. | container_definitions_linux_parameters_capabilities_devices_container_paths |
 container_definitions (linux_parameters (devices (permissions))) | The explicit permissions to provide to the container for the device. By default, the container has permissions for read , write , and mknod for the device. | container_definitions_linux_parameters_capabilities_devices_permissions |
 container_definitions (linux_parameters (init_process_enabled)) | Run an init process inside the container that forwards signals and reaps processes. This parameter maps to the --init option to docker run . | container_definitions_linux_parameters_init_process_enabled |
-container_definitions (linux_parameters (shared_memory_size) | The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run. | container_definitions_linux_parameters_shared_memory_size |
+container_definitions (linux_parameters (shared_memory_size) | The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run. | container_definitions_linux_parameters_shared_memory_sizes|
 container_definitions (linux_parameters (tmpfs) | The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the --tmpfs option to docker run. | container_definitions_linux_parameters_tmpfs |
-container_definitions (linux_parameters (tmpfs (container_path)) | The absolute file path where the tmpfs volume is to be mounted. | container_definitions_linux_parameters_tmpfs_container_path |
-container_definitions (linux_parameters (tmpfs (size)) | The maximum size (in MiB) of the tmpfs volume. | container_definitions_linux_parameters_tmpfs_size |
+container_definitions (linux_parameters (tmpfs (container_path)) | The absolute file path where the tmpfs volume is to be mounted. | container_definitions_linux_parameters_tmpfs_container_paths |
+container_definitions (linux_parameters (tmpfs (size)) | The maximum size (in MiB) of the tmpfs volume. | container_definitions_linux_parameters_tmpfs_sizes |
 container_definitions (linux_parameters (tmpfs (mount_options)) | The list of tmpfs volume mount options. | container_definitions_linux_parameters_tmpfs_mount_options |
-container_definitions (linux_parameters (max_swap)) | The total amount of swap memory (in MiB) a container can use. | container_definitions_linux_parameters_max_swap |
+container_definitions (linux_parameters (max_swap)) | The total amount of swap memory (in MiB) a container can use. | container_definitions_linux_parameters_max_swaps |
 container_definitions (linux_parameters (swappiness)) | This allows you to tune a container's memory swappiness behavior. | container_definitions_linux_parameters_swappiness |
 container_definitions (secrets) | The secrets to pass to the container. | container_definitions_secrets |
-container_definitions (secrets (name)) | The name of the secret. | container_definitions_secrets_name |
-container_definitions (secrets (value_from)) | The secret to expose to the container. | container_definitions_secrets_value_from |
+container_definitions (secrets (name)) | The name of the secret. | container_definitions_secrets_names |
+container_definitions (secrets (value_from)) | The secret to expose to the container. | container_definitions_secrets_value_froms |
 container_definitions (depends_on) | The dependencies defined for container startup and shutdown. | container_definitions_depends_on |
-container_definitions (depends_on (container_name)) | The name of a container. | container_definitions_depends_on_container_name |
-container_definitions (depends_on (condition)) | The dependency condition of the container. | container_definitions_depends_on_condition |
+container_definitions (depends_on (container_name)) | The name of a container. | container_definitions_depends_on_container_names |
+container_definitions (depends_on (condition)) | The dependency condition of the container. | container_definitions_depends_on_conditions |
 container_definitions (start_timeout) | Time duration (in seconds) to wait before giving up on resolving dependencies for a container. | container_definitions_start_timeouts |
 container_definitions (stop_timeout) | Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own. | container_definitions_stop_timeouts |
 container_definitions (hostname) | The hostname to use for your container. | container_definitions_hostnames |
@@ -91,36 +91,36 @@ container_definitions (readonly_root_filesystem) | When this parameter is true, 
 container_definitions (dns_servers) | A list of DNS servers that are presented to the container. | container_definitions_dns_servers |
 container_definitions (dns_search_domains) | A list of DNS search domains that are presented to the container. | container_definitions_dns_search_domains |
 container_definitions (extra_hosts) | A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. | container_definitions_extra_hosts |
-container_definitions (extra_hosts (hostname)) | The hostname to use in the /etc/hosts entry. | container_definitions_extra_hosts_hostname |
-container_definitions (extra_hosts (ip_address)) | The IP address to use in the /etc/hosts entry. | container_definitions_extra_hosts_ip_address |
+container_definitions (extra_hosts (hostname)) | The hostname to use in the /etc/hosts entry. | container_definitions_extra_hosts_hostnames |
+container_definitions (extra_hosts (ip_address)) | The IP address to use in the /etc/hosts entry. | container_definitions_extra_hosts_ip_addresses |
 container_definitions (docker_security_options) | A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems. This field is not valid for containers in tasks using the Fargate launch type. | container_definitions_docker_security_options |
 container_definitions (interactive) | When this parameter is true , this allows you to deploy containerized applications that require stdin or a tty to be allocated. This parameter maps to OpenStdin in the Create a container section of the Docker Remote API and the --interactive option to docker run. | container_definitions_interactives |
 container_definitions (pseudo_terminal) | When this parameter is true , a TTY is allocated. This parameter maps to Tty in the Create a container section of the Docker Remote API and the --tty option to docker run. | container_definitions_pseudo_terminals |
 container_definitions (docker_labels) | A key/value map of labels to add to the container. | container_definitions_docker_labels |
 container_definitions (ulimits) | The ulimit settings to pass to the container. | container_definitions_ulimits |
-container_definitions (ulimits (name)) | The type of the ulimit. | container_definitions_ulimits_name |
-container_definitions (ulimits (soft_limit)) | The soft limit for the ulimit type. | container_definitions_ulimits_soft_limit |
-container_definitions (ulimits (hard_limit)) | The hard limit for the ulimit type. | container_definitions_ulimits_hard_limit |
+container_definitions (ulimits (name)) | The type of the ulimit. | container_definitions_ulimits_names |
+container_definitions (ulimits (soft_limit)) | The soft limit for the ulimit type. | container_definitions_ulimits_soft_limits |
+container_definitions (ulimits (hard_limit)) | The hard limit for the ulimit type. | container_definitions_ulimits_hard_limits |
 container_definitions (log_configuration) | The log configuration specification for the container. | container_definitions_log_configurations |
-container_definitions (log_configuration (log_driver)) | The log driver to use for the container. | container_definitions_log_configurations_log_driver |
+container_definitions (log_configuration (log_driver)) | The log driver to use for the container. | container_definitions_log_configurations_log_drivers |
 container_definitions (log_configuration (options)) | The configuration options to send to the log driver. | container_definitions_log_configurations_options |
 container_definitions (log_configuration (secret_options)) | The secrets to pass to the log configuration. | container_definitions_log_configurations_secret_options |
-container_definitions (log_configuration (secret_options (name))) | The name of the secret. | container_definitions_log_configurations_secret_options_name |
-container_definitions (log_configuration (secret_options (value_from))) | The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store. | container_definitions_log_configurations_secret_value_from |
+container_definitions (log_configuration (secret_options (name))) | The name of the secret. | container_definitions_log_configurations_secret_options_names |
+container_definitions (log_configuration (secret_options (value_from))) | The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store. | container_definitions_log_configurations_secret_value_froms |
 container_definitions (health_check) | The container health check command and associated configuration parameters for the container. | container_definitions_health_checks |
-container_definitions (health_check (command)) | A string array representing the command that the container runs to determine if it is healthy. | container_definitions_health_checks_command |
-container_definitions (health_check (interval)) | The time period in seconds between each health check execution. | container_definitions_health_checks_interval |
-container_definitions (health_check (timeout)) | The time period in seconds to wait for a health check to succeed before it is considered a failure. | container_definitions_health_checks_timeout |
+container_definitions (health_check (command)) | A string array representing the command that the container runs to determine if it is healthy. | container_definitions_health_checks_commands |
+container_definitions (health_check (interval)) | The time period in seconds between each health check execution. | container_definitions_health_checks_intervals |
+container_definitions (health_check (timeout)) | The time period in seconds to wait for a health check to succeed before it is considered a failure. | container_definitions_health_checks_timeouts |
 container_definitions (health_check (retries)) | The number of times to retry a failed health check before the container is considered unhealthy. | container_definitions_health_checks_retries |
-container_definitions (health_check (start_period)) | The optional grace period within which to provide containers time to bootstrap before failed health checks count towards the maximum number of retries. | container_definitions_health_checks_start_period |
+container_definitions (health_check (start_period)) | The optional grace period within which to provide containers time to bootstrap before failed health checks count towards the maximum number of retries. | container_definitions_health_checks_start_periods |
 container_definitions (system_controls) | A list of namespaced kernel parameters to set in the container. | container_definitions_system_controls |
-container_definitions (system_controls (namespace)) | The namespaced kernel parameter for which to set a value. | container_definitions_system_controls_namespace |
-container_definitions (system_controls (value)) | The value for the namespaced kernel parameter specified in namespace. | container_definitions_system_controls_value |
+container_definitions (system_controls (namespace)) | The namespaced kernel parameter for which to set a value. | container_definitions_system_controls_namespaces |
+container_definitions (system_controls (value)) | The value for the namespaced kernel parameter specified in namespace. | container_definitions_system_controls_values |
 container_definitions (resource_requirements) | The type and amount of a resource to assign to a container. | container_definitions_resource_requirements |
-container_definitions (resource_requirements (value)) | The value for the specified resource type. | container_definitions_resource_requirements_value |
-container_definitions (resource_requirements (type)) | The type of resource to assign to a container. | container_definitions_resource_requirements_type |
+container_definitions (resource_requirements (value)) | The value for the specified resource type. | container_definitions_resource_requirements_values |
+container_definitions (resource_requirements (type)) | The type of resource to assign to a container. | container_definitions_resource_requirements_types |
 container_definitions (firelens_configuration) | The FireLens configuration for the container. | container_definitions_firelens_configurations |
-container_definitions (firelens_configuration (type)) | The log router to use. The valid values are fluentd or fluentbit. | container_definitions_firelens_configurations_type |
+container_definitions (firelens_configuration (type)) | The log router to use. The valid values are fluentd or fluentbit. | container_definitions_firelens_configurations_types |
 container_definitions (firelens_configuration (options)) | The options to use when configuring the log router. | container_definitions_firelens_configurations_options |
 family | The name of a family that this task definition is registered to. | family |
 task_role_arn | The short name or full Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role. | task_role_arn |
@@ -191,6 +191,18 @@ tags | The tags of the task definition. | tags |
         its('memory') { should eq 500 }
     end
 
+### Verify the name of a task definition.
+
+    describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
+        its('container_definitions_names') { should include 'Task_Definition_Container_Name' }    
+    end
+
+### Verify the cpu of a task definition.
+
+    describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
+        its('container_definitions_cpus') { should include 10 }
+    end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -207,7 +219,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
+    describe aws_ecs_task_definition(task_definition: 'dummy') do
       it { should_not exist }
     end
 

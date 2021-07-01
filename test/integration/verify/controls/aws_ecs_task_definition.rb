@@ -16,7 +16,7 @@ control 'aws-ec2-task-definition-1.0' do
     its('container_definitions_names') { should include 'second' }
     its('container_definitions_images') { should include 'service-second' }
     its('repository_credentials') { should be_empty }
-    its('container_definitions_repository_credentials_credentials_parameter') { should_not be_empty }
+    its('container_definitions_repository_credentials_credentials_parameters') { should_not be_empty }
     its('container_definitions_cpus') { should include 10 }
     its('container_definitions_memories') { should include 512 }
     its('container_definitions_memory_reservations') { should_not be_empty }
@@ -32,29 +32,29 @@ control 'aws-ec2-task-definition-1.0' do
 
     # Container_Definitions - Linux Parameters
     its('container_definitions_linux_parameters') { should_not be_empty }
-    its('container_definitions_linux_parameters_capabilities_add') { should_not be_empty }
-    its('container_definitions_linux_parameters_capabilities_drop') { should_not be_empty }
+    its('container_definitions_linux_parameters_capabilities_adds') { should_not be_empty }
+    its('container_definitions_linux_parameters_capabilities_drops') { should_not be_empty }
     its('container_definitions_linux_parameters_capabilities_devices') { should_not be_empty }
-    its('container_definitions_linux_parameters_capabilities_devices_host_path') { should_not be_empty }
-    its('container_definitions_linux_parameters_capabilities_devices_container_path') { should_not be_empty }
+    its('container_definitions_linux_parameters_capabilities_devices_host_paths') { should_not be_empty }
+    its('container_definitions_linux_parameters_capabilities_devices_container_paths') { should_not be_empty }
     its('container_definitions_linux_parameters_capabilities_devices_permissions') { should_not be_empty }
     its('container_definitions_linux_parameters_init_process_enabled') { should_not be_empty }
-    its('container_definitions_linux_parameters_shared_memory_size') { should_not be_empty }
+    its('container_definitions_linux_parameters_shared_memory_sizes') { should_not be_empty }
     its('container_definitions_linux_parameters_tmpfs') { should_not be_empty }
-    its('container_definitions_linux_parameters_tmpfs_container_path') { should_not be_empty }
-    its('container_definitions_linux_parameters_tmpfs_size') { should_not be_empty }
+    its('container_definitions_linux_parameters_tmpfs_container_paths') { should_not be_empty }
+    its('container_definitions_linux_parameters_tmpfs_sizes') { should_not be_empty }
     its('container_definitions_linux_parameters_tmpfs_mount_options') { should_not be_empty }
-    its('container_definitions_linux_parameters_max_swap') { should_not be_empty }
+    its('container_definitions_linux_parameters_max_swaps') { should_not be_empty }
     its('container_definitions_linux_parameters_swappiness') { should_not be_empty }
 
     # Container_Definitions - Secrets
     its('container_definitions_secrets') { should_not be_empty }
-    its('container_definitions_secrets_name') { should_not be_empty }
-    its('container_definitions_secrets_value_from') { should_not be_empty }
+    its('container_definitions_secrets_names') { should_not be_empty }
+    its('container_definitions_secrets_value_froms') { should_not be_empty }
 
     its('container_definitions_depends_on') { should_not be_empty }
-    its('container_definitions_depends_on_container_name') { should_not be_empty }
-    its('container_definitions_depends_on_condition') { should_not be_empty }
+    its('container_definitions_depends_on_container_names') { should_not be_empty }
+    its('container_definitions_depends_on_conditions') { should_not be_empty }
 
     its('container_definitions_start_timeouts') { should_not be_empty }
     its('container_definitions_stop_timeouts') { should_not be_empty }
@@ -68,8 +68,8 @@ control 'aws-ec2-task-definition-1.0' do
     its('container_definitions_dns_search_domains') { should_not be_empty }
 
     its('container_definitions_extra_hosts') { should_not be_empty }
-    its('container_definitions_extra_hosts_hostname') { should_not be_empty }
-    its('container_definitions_extra_hosts_ip_address') { should_not be_empty }
+    its('container_definitions_extra_hosts_hostnames') { should_not be_empty }
+    its('container_definitions_extra_hosts_ip_addresses') { should_not be_empty }
 
     its('container_definitions_docker_security_options') { should_not be_empty }
     its('container_definitions_interactives') { should_not be_empty }
@@ -78,41 +78,41 @@ control 'aws-ec2-task-definition-1.0' do
 
     # Container_Definitions - Ulimits
     its('container_definitions_ulimits') { should_not be_empty }
-    its('container_definitions_ulimits_name') { should_not be_empty }
-    its('container_definitions_ulimits_soft_limit') { should_not be_empty }
-    its('container_definitions_ulimits_hard_limit') { should_not be_empty }
+    its('container_definitions_ulimits_names') { should_not be_empty }
+    its('container_definitions_ulimits_soft_limits') { should_not be_empty }
+    its('container_definitions_ulimits_hard_limits') { should_not be_empty }
 
     # Container_Definitions - Log Configurations
     its('container_definitions_log_configurations') { should_not be_empty }
-    its('container_definitions_log_configurations_log_driver') { should_not be_empty }
+    its('container_definitions_log_configurations_log_drivers') { should_not be_empty }
     its('container_definitions_log_configurations_options') { should_not be_empty }
 
     # Container_Definitions - Log Configurations - Secret - Options
     its('container_definitions_log_configurations_secret_options') { should_not be_empty }
-    its('container_definitions_log_configurations_secret_options_name') { should_not be_empty }
-    its('container_definitions_log_configurations_secret_value_from') { should_not be_empty }
+    its('container_definitions_log_configurations_secret_options_names') { should_not be_empty }
+    its('container_definitions_log_configurations_secret_value_froms') { should_not be_empty }
 
     # Container_Definitions - Health Checks
     its('container_definitions_health_checks') { should_not be_empty }
-    its('container_definitions_health_checks_command') { should_not be_empty }
-    its('container_definitions_health_checks_interval') { should_not be_empty }
-    its('container_definitions_health_checks_timeout') { should_not be_empty }
+    its('container_definitions_health_checks_commands') { should_not be_empty }
+    its('container_definitions_health_checks_intervals') { should_not be_empty }
+    its('container_definitions_health_checks_timeouts') { should_not be_empty }
     its('container_definitions_health_checks_retries') { should_not be_empty }
-    its('container_definitions_health_checks_start_period') { should_not be_empty }
+    its('container_definitions_health_checks_start_periods') { should_not be_empty }
 
     # Container_Definitions - System Controls
     its('container_definitions_system_controls') { should_not be_empty }
-    its('container_definitions_system_controls_namespace') { should_not be_empty }
-    its('container_definitions_system_controls_value') { should_not be_empty }
+    its('container_definitions_system_controls_namespaces') { should_not be_empty }
+    its('container_definitions_system_controls_values') { should_not be_empty }
 
     # Container_Definitions - Resource Requirements
     its('container_definitions_resource_requirements') { should_not be_empty }
-    its('container_definitions_resource_requirements_value') { should_not be_empty }
-    its('container_definitions_resource_requirements_type') { should_not be_empty }
+    its('container_definitions_resource_requirements_values') { should_not be_empty }
+    its('container_definitions_resource_requirements_types') { should_not be_empty }
 
     # Container_Definitions - Firelens Configurations
     its('container_definitions_firelens_configurations') { should_not be_empty }
-    its('container_definitions_firelens_configurations_type') { should_not be_empty }
+    its('container_definitions_firelens_configurations_types') { should_not be_empty }
     its('container_definitions_firelens_configurations_options') { should_not be_empty }
 
     its('family') { should eq 'service' }
