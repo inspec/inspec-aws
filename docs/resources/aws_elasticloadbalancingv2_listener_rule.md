@@ -71,8 +71,8 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 | actions (fixed_response_config (message_body)) | The message from a custom HTTP response. Only valid when Type is `fixed-response`. |
 | actions (fixed_response_config (status_code)) | The HTTP response code (2XX, 4XX, or 5XX) from a custom HTTP response. |
 | actions (fixed_response_config (content_type)) | The content type from a custom HTTP response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, `application/json`. |
-| actions (fixed_response_config (target_groups (target_group_arn))) | The ARN of the target group. |
-| actions (fixed_response_config (target_groups (weight))) | The weight of the target group. The range is 0 to 999. |
+| actions (forward_config (target_groups ( target_group_tupple (target_group_arn)))) | The ARN of the target group. |
+| actions (forward_config (target_groups ( target_group_tupple (weight)))) | The weight of the target group. The range is 0 to 999. |
 | actions (fixed_response_config (target_group_stickiness_config (enabled))) | Indicates whether target group stickiness is enabled. |
 | actions (fixed_response_config (target_group_stickiness_config (duration_seconds))) | The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days). |
 | is_default | Indicates whether this is the default rule. |
