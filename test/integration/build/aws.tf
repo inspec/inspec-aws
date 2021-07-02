@@ -2282,9 +2282,6 @@ resource "aws_batch_job_queue" "test_queue" {
   ]
 }
 
-resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
-  name = var.aws_identity_pool_name
-}
 
 resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
   name = var.aws_client_name
@@ -2382,10 +2379,10 @@ resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
   health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
   health_check_type         = var.aws_auto_scaling_health_check_type
   force_delete              = var.aws_auto_scaling_force_delete
-  launch_configuration      = aws_launch_configuration.as_conf.name
+  launch_configuration      = aws_launch_configuration.as_conf_for_autoscalling.name
 }
 
-resource "aws_launch_configuration" "as_conf" {
+resource "aws_launch_configuration" "as_conf_for_autoscalling" {
   name          = var.aws_launch_configuration_name
   image_id      = var.aws_image_id
   instance_type = var.aws_instance_type
