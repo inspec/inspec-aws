@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on Transfer user](https:/
 | home_directories | The landing directories for users when they log in to the server using the client. |
 | home_directory_types | The landing directory types you want your users' home directory to be when they log into the server. |
 | roles | The ARNs of the IAM roles that controls your users' access to your Amazon S3 bucket or EFS file system. |
-| ssh_public_key_counts | The ssh public key counts of the user. |
+| ssh_public_key_count | The ssh public key count of the user. |
 | user_names | The user names associated with a server as specified by the `ServerId`. |
 
 ## Examples
