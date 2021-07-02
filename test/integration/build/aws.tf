@@ -153,7 +153,7 @@ variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "aws_identity_pool_name" {}
-variable "aws_open_id_connect_provider_arns" {}
+variable "aws_openid_connect_provider_arns" {}
 variable "aws_image_id" {}
 variable "aws_instance_type" {}
 variable "aws_auto_scaling_group_name" {}
@@ -1967,7 +1967,7 @@ resource "aws_nat_gateway" "inspec_test" {
   count         = var.aws_enable_creation
   allocation_id = aws_eip.for_nat_gateway[0].id
   subnet_id     = aws_subnet.for_nat_gateway[0].id
-  depends_on    = ["aws_internet_gateway.inspec_test[0]"]
+  depends_on    = [aws_internet_gateway.inspec_test[0]]
 
   tags = {
     Name = var.aws_nat_gateway_name
@@ -2358,7 +2358,7 @@ resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
   }
 
-  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+  openid_connect_provider_arns = [var.aws_openid_connect_provider_arns]
 }
 
 
