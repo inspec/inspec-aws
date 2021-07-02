@@ -38,7 +38,7 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 ### Ensure a listener ARN is available.
 
     describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
-      its('names') { should include 'test1' }
+      its('listener_arn') { should include 'LISTENER_ARN' }
     end
 
 ### Verify the priority of the desired rule ARN.
