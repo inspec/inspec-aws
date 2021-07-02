@@ -46,12 +46,12 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 
 ### Ensure a target group arn is available.
     describe aws_elasticloadbalancingv2_target_groups  do
-      its('names') { should include 'test1' }
+      its('target_group_names') { should include 'test1' }
     end
 
 ### Ensure that the target group name exists.
     describe aws_elasticloadbalancingv2_target_groups  do
-        its('states') { should include 'ENABLED' }
+        its('protocol_versions') { should include 'HTTP1' }
     end
 
 ## Matchers
