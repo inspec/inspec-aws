@@ -1,9 +1,14 @@
-<!-- latest_release 1.50.6 -->
+<!-- latest_release 1.50.7 -->
+## [v1.50.7](https://github.com/inspec/inspec-aws/tree/v1.50.7) (2021-07-02)
+
+#### Merged Pull Requests
+- Need changes in the Readme.md file [#479](https://github.com/inspec/inspec-aws/pull/479) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.50.6](https://github.com/inspec/inspec-aws/tree/v1.50.6) (2021-07-02)
 
 #### Merged Pull Requests
 - removed/modified duplicate tf resources [#481](https://github.com/inspec/inspec-aws/pull/481) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.50.5](https://github.com/inspec/inspec-aws/tree/v1.50.5) (2021-06-14)
 
