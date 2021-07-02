@@ -5,15 +5,13 @@ platform: aws
 
 # aws\_servicecatalog\_cloud\_formation\_product
 
-Use the `aws_servicecatalog_cloud_formation_product` InSpec audit resource to test properties of a single specific AWS Service Catalog Cloud Formation Product.
-
-The AWS::ServiceCatalog::CloudFormationProduct specifies a product.
+Use the `aws_servicecatalog_cloud_formation_product` InSpec audit resource to test properties of a single AWS Service Catalog CloudFormation product.
 
 ## Syntax
 
 Ensure that a product exists.
 
-    describe aws_servicecatalog_cloud_formation_product(name: 'ProductViewName') do
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
       it { should exist }
     end
 
@@ -21,7 +19,9 @@ Ensure that a product exists.
 
 `name` _(required)_
 
-For additional information, see the [AWS documentation on AWS Service Catalog Cloud Formation Product](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationproduct.html).
+The name of the product. 
+
+For additional information, see the [AWS documentation on AWS Service Catalog CloudFormation product](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationproduct.html).
 
 ## Properties
 
@@ -35,20 +35,22 @@ For additional information, see the [AWS documentation on AWS Service Catalog Cl
 | type | The product type. |
 | distributor | The distributor of the product. |
 | has_default_path | Indicates whether the product has a default path. |
-| support_email | The email contact information to obtain support for this Product. |
-| support_description | The description of the support for this Product. |
-| support_url | The URL information to obtain support for this Product. |
+| support_email | The email contact information to obtain support for this product. |
+| support_description | The description of the support for this product. |
+| support_url | The URL information to obtain support for this product. |
 
 ## Examples
 
 ### Ensure a product name is available.
-    describe aws_servicecatalog_cloud_formation_product(name: 'ProductViewName') do
-      its('name') { should eq 'ProductViewName' }
+
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
+      its('name') { should eq 'PRODUCT_NAME' }
     end
 
 ### Ensure a owner is available.
-    describe aws_servicecatalog_cloud_formation_product(name: 'ProductViewName') do
-        its('owner') { should eq 'TestUser' }
+
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
+        its('owner') { should eq 'PRODUCT_OWNER' }
     end
 
 ## Matchers
@@ -61,13 +63,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_servicecatalog_cloud_formation_product(name: 'ProductViewName') do
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_servicecatalog_cloud_formation_product(name: 'dummy') do
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
       it { should_not exist }
     end
 
@@ -75,7 +77,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_servicecatalog_cloud_formation_product(name: 'ProductViewName') do
+    describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
       it { should be_available }
     end
 
