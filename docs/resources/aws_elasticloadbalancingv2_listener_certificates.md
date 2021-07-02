@@ -37,7 +37,7 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener Certificate](
 
 ##### Ensure that listerner has a desired certificate arn attached.
     describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
-      its('certificate_arns') { should eq "test" }
+      its('certificate_arns') { should include "test" }
     end
 
 
