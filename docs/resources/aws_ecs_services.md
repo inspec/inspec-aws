@@ -26,6 +26,19 @@ For additional information, see the [AWS documentation on ECS Service](https://d
 | Property | Description|
 | --- | --- |
 | service_arns | The service arns of the service. |
+| service_names | The name of the service. |
+| cluster_arns | The Amazon Resource Name (ARN) of the cluster that hosts the service.|
+| status |The status of the service. The valid values are ACTIVE , DRAINING , or INACTIVE . |
+| desired_count |The desired number of instantiations of the task definition to keep running on the service. |
+| running_count | The number of tasks in the cluster that are in the RUNNING state. |
+| pending_count | The number of tasks in the cluster that are in the PENDING state.|
+| launch_types | The infrastructure on which your service is running. |
+| task_definitions | The task definition to use for tasks in the service. |
+| platform_versions | The AWS Fargate platform version on which the tasks in the task set are running. |
+
+For additional information, see the [AWS documentation on ECS describe services method](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/ECS/Client.html#describe_services-instance_method).
+
+
 
 ## Examples
 
