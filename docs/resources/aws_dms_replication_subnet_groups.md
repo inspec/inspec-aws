@@ -5,9 +5,7 @@ platform: aws
 
 # aws_dms_replication_subnet_groups
 
-Use the `aws_dms_replication_subnet_groups` InSpec audit resource to test properties of a plural DMS Replication Instance Subnet Groups.
-
-The AWS::DMS::ReplicationSubnetGroup resource creates an AWS DMS replication subnet group. Subnet groups must contain at least two subnets in two different Availability Zones in the same region.
+Use the `aws_dms_replication_subnet_groups` InSpec audit resource to test properties of multiple DMS replication instance subnet groups.
 
 ## Syntax
 
@@ -19,28 +17,32 @@ Ensure that a subnet group exists.
 
 ## Parameters
 
+This resource does not expect any parameters.
+
 For additional information, see the [AWS documentation on DMS Replication Subnet Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationsubnetgroup.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| replication_subnet_group_identifiers | The identifiers of the replication subnet group. |
-| replication_subnet_group_descriptions | The descriptions of the replication subnet group. |
-| vpc_ids | The vpc ids of the replication subnet group. |
-| subnet_group_statuses | The statuses of the replication subnet group. |
-| subnets | The subnets of the replication subnet group. |
+| replication_subnet_group_identifiers | The identifiers of the replication subnet groups. |
+| replication_subnet_group_descriptions | The descriptions of the replication subnet groups. |
+| vpc_ids | The IDs of the virtual private clouds. |
+| subnet_group_statuses | The statuses of the replication subnet groups. |
+| subnets | The subnets that are in the replication subnet groups. |
 
 ## Examples
 
-### Ensure a identifier is available.
+### Ensure an identifier is available.
+
     describe aws_dms_replication_subnet_groups do
-      its('replication_subnet_group_identifiers') { should include 'test1' }
+      its('replication_subnet_group_identifiers') { should include 'REPLICATION_SUBNET_GROUP_IDENTIFIER' }
     end
 
-### Ensure that the vpc is available.
+### Ensure that the VPC is available.
+
     describe aws_dms_replication_subnet_groups do
-        its('vpc_ids') { should include 'vpc-0123456789' }
+        its('vpc_ids') { should include 'VPC_ID' }
     end
 
 ## Matchers

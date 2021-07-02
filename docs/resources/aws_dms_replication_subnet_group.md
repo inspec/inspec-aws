@@ -5,9 +5,7 @@ platform: aws
 
 # aws_dms_replication_subnet_group
 
-Use the `aws_dms_replication_subnet_group` InSpec audit resource to test properties of a single specific DMS Replication Instance Subnet Group.
-
-The AWS::DMS::ReplicationSubnetGroup resource creates an AWS DMS replication subnet group. Subnet groups must contain at least two subnets in two different Availability Zones in the same region.
+Use the `aws_dms_replication_subnet_group` InSpec audit resource to test properties of a single DMS replication instance subnet group.
 
 ## Syntax
 
@@ -21,6 +19,8 @@ Ensure that a subnet group identifier exists.
 
 `replication_subnet_group_identifier` _(required)_
 
+The identifier for the replication subnet group.
+
 For additional information, see the [AWS documentation on DMS Replication Subnet Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationsubnetgroup.html).
 
 ## Properties
@@ -29,20 +29,22 @@ For additional information, see the [AWS documentation on DMS Replication Subnet
 | --- | --- |
 | replication_subnet_group_identifier | The identifier of the replication subnet group. |
 | replication_subnet_group_description | The description of the replication subnet group. |
-| vpc_id | The vpc id of the replication subnet group. |
+| vpc_id | The ID of the virtual private cloud. |
 | subnet_group_status | The status of the replication subnet group. |
-| subnets | The subnets of the replication subnet group. |
+| subnets | The subnets that are in the replication subnet group. |
 
 ## Examples
 
 ### Ensure a identifier is available.
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
-      its('replication_subnet_group_identifier') { should eq 'test' }
+
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
+      its('replication_subnet_group_identifier') { should eq 'SUBNET_GROUP_IDENTIFIER' }
     end
 
 ### Ensure that the vpc is available.
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
-        its('vpc_id') { should eq 'vpc-0123456789' }
+
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
+        its('vpc_id') { should eq 'VPC_ID' }
     end
 
 ## Matchers
@@ -55,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'dummy') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
       it { should_not exist }
     end
 
@@ -69,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the identifier is available.
 
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
       it { should be_available }
     end
 
