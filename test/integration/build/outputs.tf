@@ -482,3 +482,8 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+
+output "aws_vpc_endpoint_service_allowed_principal_arn" {
+  value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
+}
+
