@@ -334,6 +334,19 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_service_id" {
+  value = aws_ecs_service.bar.id
+}
+
+output "aws_cluster_arn" {
+  value = aws_ecs_cluster.for_ecs_service.arn
+}
+
+output "aws_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
+
 output "aws_dms_endpoint_arn" {
   value = aws_dms_endpoint.aws_dms_endpoint_test.endpoint_arn
 }

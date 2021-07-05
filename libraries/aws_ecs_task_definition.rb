@@ -25,17 +25,13 @@ class AWSECSTaskDefinition < AwsResourceBase
     end
   end
 
-  def id
+  def task_definition
     return nil unless exists?
     @task_definition[:task_definition]
   end
 
   def exists?
     !@task_definition.nil? && !@task_definition.empty?
-  end
-
-  def encrypted?
-    @task_definition[:encrypted]
   end
 
   def to_s

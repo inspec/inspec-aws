@@ -266,6 +266,9 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
+      aws_ecs_task_definition_family: "service-#{add_random_string}",
+      aws_ecs_service_name: "bar-#{add_random_string}",
+      aws_cluster_name: "white-hart-#{add_random_string}"
   }
 
   def self.config
