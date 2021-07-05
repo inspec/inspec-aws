@@ -16,7 +16,7 @@ class AWSElasticLoadBalancingV2LoadBalancer < AwsResourceBase
     super(opts)
     validate_parameters(required: [:load_balancer_arn])
     raise ArgumentError, "#{@__resource_name__}: load_balancer_arn must be provided" unless opts[:load_balancer_arn] && !opts[:load_balancer_arn].empty?
-    @display_name = opts[:listener_arn]
+    @display_name = opts[:load_balancer_arn]
     catch_aws_errors do
       resp = @aws.elb_client_v2.describe_load_balancers({ load_balancer_arns: [opts[:load_balancer_arn]] })
       @load_balancers = resp.load_balancers[0].to_h
@@ -24,20 +24,16 @@ class AWSElasticLoadBalancingV2LoadBalancer < AwsResourceBase
     end
   end
 
-  def id
+  def load_balancer_arn
     return nil unless exists?
-    @load_balancers[:listener_arns]
+    @load_balancers[:load_balancer_arn]
   end
 
   def exists?
     !@load_balancers.nil? && !@load_balancers.empty?
   end
 
-  def encrypted?
-    @load_balancers[:encrypted]
-  end
-
   def to_s
-    "load_balancer_arn: #{@display_name}"
+    "Load Balancer ARN: #{@display_name}"
   end
 end
