@@ -25,7 +25,7 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
     end
   end
 
-  def id
+  def domain_name
     return nil unless exists?
     @domain_status[:domain_name]
   end
@@ -34,11 +34,7 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
     !@domain_status.nil? && !@domain_status.empty?
   end
 
-  def encrypted?
-    @domain_status[:encrypted]
-  end
-
   def to_s
-    "domain_name: #{@display_name}"
+    "Domain Name: #{@display_name}"
   end
 end
