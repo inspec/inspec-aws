@@ -36,8 +36,10 @@ See also the [AWS documentation on CloudWatch Logs](https://docs.aws.amazon.com/
 | kms_key_id | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data |
 | tags | The tags for the log group. |
 
+## Examples
 
-##### Test tags on the CloudWatch Log Group
+### Test tags on the CloudWatch Log Group
+
     describe aws_cloudwatch_log_group('my_log_group') do
       its('tags') { should include(:Environment => 'env-name',
                                    :Name => 'my_log_group')}
