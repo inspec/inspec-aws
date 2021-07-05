@@ -1,9 +1,14 @@
-<!-- latest_release 1.51.1 -->
+<!-- latest_release 1.51.2 -->
+## [v1.51.2](https://github.com/inspec/inspec-aws/tree/v1.51.2) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_elasticloadbalancingv2_load_balancer  [#376](https://github.com/inspec/inspec-aws/pull/376) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.51.1](https://github.com/inspec/inspec-aws/tree/v1.51.1) (2021-07-05)
 
 #### Merged Pull Requests
 - aws elasticloadbalancingv2 listener [#373](https://github.com/inspec/inspec-aws/pull/373) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.51.0](https://github.com/inspec/inspec-aws/tree/v1.51.0) (2021-07-05)
 
