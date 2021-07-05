@@ -2049,16 +2049,13 @@ resource "aws_launch_template" "launch-template-test" {
   }
 
   disable_api_termination = true
-
   ebs_optimized = true
-
 
   iam_instance_profile {
     name = var.aws_launch_template_instance_profile
   }
 
   image_id = "ami-0a83ebf1ac32a3fbe"
-
   instance_initiated_shutdown_behavior = "terminate"
 
   instance_market_options {
@@ -2067,7 +2064,6 @@ resource "aws_launch_template" "launch-template-test" {
 
   instance_type = var.aws_launch_template_instance_type
   key_name = var.aws_launch_template_key_name
-
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -2082,8 +2078,6 @@ resource "aws_launch_template" "launch-template-test" {
   network_interfaces {
     associate_public_ip_address = true
   }
-
-
 
   tag_specifications {
     resource_type = var.aws_launch_template_resource_type
@@ -2106,6 +2100,11 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb"
+  description = "Sample Description"
 }
 
 resource "aws_dms_certificate" "aws_dms_certificate_test" {
@@ -2259,7 +2258,6 @@ resource "aws_security_group" "to_test_batch" {
 
 resource "aws_vpc" "to_test_batch" {
   cidr_block = "10.1.0.0/16"
-
 }
 
 resource "aws_subnet" "to_test_batch" {
@@ -2410,7 +2408,6 @@ resource "aws_launch_configuration" "as_conf_for_autoscalling" {
   instance_type = var.aws_instance_type
 }
 
-
 resource "aws_athena_workgroup" "aws_athena_workgroup_" {
   name = var.aws_athena_workgroup
   state = var.aws_athena_workgroup_state
@@ -2440,7 +2437,6 @@ resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
   blackhole                      = true
   transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
 }
-
 
 resource "aws_redshift_cluster" "redshift_test" {
   cluster_identifier = var.aws_redshift_cluster_identifier
@@ -2515,7 +2511,6 @@ resource "aws_subnet" "for_attachment" {
     Name = "Main"
   }
 }
-
 
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
@@ -2742,7 +2737,6 @@ resource "aws_dynamodb_table" "example" {
   }
 }
 
-
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
   body = jsonencode({
     openapi = "3.0.1"
@@ -2853,6 +2847,7 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+
 resource "aws_lb" "test" {
   name               = "test-lb-tf-i"
   internal           = false
@@ -2882,6 +2877,7 @@ resource "aws_vpc" "for_lb" {
     Name = "main"
   }
 }
+
 resource "aws_subnet" "for_elb" {
   vpc_id     = aws_vpc.for_lb.id
   availability_zone = "us-east-2a"
@@ -2891,6 +2887,7 @@ resource "aws_subnet" "for_elb" {
     Name = "Main"
   }
 }
+
 resource "aws_subnet" "for_elb_second" {
   vpc_id     = aws_vpc.for_lb.id
   availability_zone = "us-east-2b"
@@ -2947,6 +2944,7 @@ resource "aws_lb_listener_rule" "static" {
     }
   }
 }
+
 resource "aws_security_group" "allow_tls_for_lb" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
@@ -2958,7 +2956,6 @@ resource "aws_security_group" "allow_tls_for_lb" {
     to_port          = 443
     protocol         = "tcp"
     cidr_blocks      = [aws_vpc.for_lb.cidr_block]
-
   }
 
   egress {

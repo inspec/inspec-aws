@@ -37,6 +37,7 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
+require 'aws-sdk-glue'
 
 # AWS Inspec Backend Classes
 #
@@ -188,6 +189,10 @@ class AwsConnection
 
   def ssm_client
     aws_client(Aws::SSM::Client)
+  end
+
+  def glue_client
+    aws_client(Aws::Glue::Client)
   end
 
   def athena_client
