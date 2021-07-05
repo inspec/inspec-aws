@@ -1,6 +1,5 @@
 ---
 AllCops:
-  NewCops: disable
   Exclude:
   - Gemfile
   - Rakefile

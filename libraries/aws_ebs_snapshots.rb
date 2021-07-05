@@ -15,6 +15,9 @@ class AwsEbsSnapshots < AwsResourceBase
 
   FilterTable.create
              .register_column(:snapshot_ids, field: :snapshot_id)
+             .register_column(:owner_ids,    field: :owner_id)
+             .register_column(:encrypted,    field: :encrypted)
+             .register_column(:tags,         field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -33,7 +36,10 @@ class AwsEbsSnapshots < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
 
       @api_response.snapshots.map do |snapshot|
-        snapshot_rows += [{ snapshot_id: snapshot.snapshot_id }]
+        snapshot_rows += [{ snapshot_id: snapshot.snapshot_id,
+                            owner_id:    snapshot.owner_id,
+                            encrypted:   snapshot.encrypted,
+                            tags:        snapshot.tags }]
       end
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }

@@ -8,6 +8,6 @@ control 'aws-ebs-snapshots-1.0' do
 
   describe aws_ebs_snapshots do
     it { should exist }
-    its ('snapshot_ids') { should include aws_ebs_snapshot_id }
+    its('snapshot_ids') { should include aws_ebs_snapshot_id }
   end
 end

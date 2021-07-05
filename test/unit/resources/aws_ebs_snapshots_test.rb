@@ -1,6 +1,7 @@
 require 'helper'
 require 'aws_ebs_snapshots'
 require 'aws-sdk-core'
+require_relative 'mock/aws_ebs_snapshot_mock'
 
 class AwsEbsSnaphotsConstructorTest < Minitest::Test
   def test_empty_params_ok
@@ -18,29 +19,31 @@ end
 
 class AwsEbsSnaphotsHappyPathTest < Minitest::Test
   def setup
-    data = {}
-    data[:method] = :describe_snapshots
-    mock_snapshot = {}
-    mock_snapshot[:tags] = [{ :key => 'Name', :value => 'inspec-ebs-snapshot-name' }]
-    mock_snapshot[:progress] = '100%'
-    mock_snapshot[:encrypted] = true
-    mock_snapshot[:snapshot_id] = 'snap-0e6c89e2aca6e66fb'
-    mock_snapshot[:state] = 'completed'
-    mock_snapshot[:volume_id] = 'vol-012b75749d0b5ceb5'
-    data[:data] = { :snapshots => [mock_snapshot] }
-    data[:client] = Aws::EC2::Client
-    @snapshot = AwsEbsSnapshot.new(snapshot_id: 'snap-0e6c89e2aca6e66fb', client_args: { stub_responses: true }, stub_data: [data])
+    mock = AwsEbsSnapshotMock.new
+    @mock_snapshots = []
+    @mock_snapshots += [mock.snapshot_public]
+    @mock_snapshots += [mock.snapshot_private]
+
+    stub_data = [{:client => Aws::EC2::Client,
+      :method => :describe_snapshots,
+      :data =>  {snapshots: @mock_snapshots}}]
+
+    @snapshots = AwsEbsSnapshots.new(client_args: { stub_responses: true }, stub_data: stub_data)
   end
 
   def test_snapshots_exists
-    assert @snapshot.exist?
+    assert @snapshots.exist?
   end
 
   def test_snapshots_ids
-    assert_equal('snap-0e6c89e2aca6e66fb', @snapshot.snapshot_id)
+    assert_equal(@snapshots.snapshot_ids, ['snap-0e5c89e1eca7e66fa', 'snap-0e5c89e1eca7e66fb'])
   end
 
   def test_snapshots_filtering_there
-    assert @snapshot.where(:snapshot_id => 'snap-0e6c89e2aca6e66fb').exist?
+    assert @snapshots.where(:snapshot_id => 'snap-0e5c89e1eca7e66fa').exist?
+  end
+
+  def test_snapshots_filtering_not_there
+    refute @snapshots.where(:snapshot_id => 'bad').exist?
   end
 end

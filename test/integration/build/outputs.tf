@@ -42,6 +42,14 @@ output "aws_ebs_snapshot_id" {
   value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
 }
 
+output "aws_ebs_snapshot_owner_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.owner_id
+}
+
+output "aws_ebs_encrypted_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_encrypted_ebs_snapshot.0.id
+}
+
 output "aws_kms_key_enabled_id" {
   value = aws_kms_key.kms_key_enabled_rotating.0.key_id
 }
