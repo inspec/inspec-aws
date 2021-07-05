@@ -1,172 +1,229 @@
-//# AWS Terraform Templates for InSpec Testing
-//
-//terraform {
-//  required_version = ">= 0.12"
-//}
-//
-//# Configure variables
-//variable "aws_region" {}
-//variable "aws_availability_zone" {}
-//
-//variable "aws_alb_name" {}
-//variable "aws_auto_scaling_group" {}
-//variable "aws_bucket_acl_policy_name" {}
-//variable "aws_bucket_auth_name" {}
-//variable "aws_bucket_encryption_disabled" {}
-//variable "aws_bucket_encryption_enabled" {}
-//variable "aws_bucket_versioning_disabled" {}
-//variable "aws_bucket_versioning_enabled" {}
-//variable "aws_bucket_log_delivery_name" {}
-//variable "aws_bucket_log_sender_name" {}
-//variable "aws_bucket_logging_disabled" {}
-//variable "aws_bucket_private_name" {}
-//variable "aws_bucket_public_name" {}
-//variable "aws_bucket_public_objects_name" {}
-//variable "aws_cloudformation_stack_name" {}
-//variable "aws_cloudformation_stack_ecr_name" {}
-//variable "aws_cloud_trail_bucket_name" {}
-//variable "aws_cloud_trail_key_description" {}
-//variable "aws_cloud_trail_log_group" {}
-//variable "aws_cloud_trail_name" {}
-//variable "aws_cloud_trail_open_name" {}
-//variable "aws_cloud_watch_alarm_metric_name" {}
-//variable "aws_cloud_watch_alarm_name" {}
-//variable "aws_cloud_watch_alarm_name_with_dimensions" {}
-//variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
-//variable "aws_cloud_watch_log_group_name" {}
-//variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
-//variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
-//variable "aws_cloud_watch_log_metric_filter_metric_name" {}
-//variable "aws_cloud_watch_log_metric_filter_name" {}
-//variable "aws_cloud_watch_log_metric_filter_namespace" {}
-//variable "aws_cloud_watch_log_metric_filter_pattern" {}
-//variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
-//variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
-//variable "aws_cloud_watch_log_metric_filter_two_name" {}
-//variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
-//variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
-//variable "aws_cloud_watch_logs_role_name" {}
-//variable "aws_cloud_watch_logs_role_policy_name" {}
-//variable "aws_configuration_recorder_name" {}
-//variable "aws_configuration_recorder_role" {}
-//variable "aws_create_configuration_recorder" {}
-//variable "aws_dynamodb_table_name" {}
-//variable "aws_delivery_channel_bucket_name" {}
-//variable "aws_delivery_channel_frequency" {}
-//variable "aws_delivery_channel_name" {}
-//variable "aws_delivery_channel_sns_topic_name" {}
-//variable "aws_ebs_volume_name" {}
-//variable "aws_ecr_name" {}
-//variable "aws_ecrpublic_name" {}
-//variable "aws_ecr_repository_name" {}
-//variable "aws_ecrpublic_repository_name" {}
-//variable "aws_ecr_repository_image_tag_mutability" {}
-//variable "aws_ecr_repository_scan_on_push_enabled" {}
-//variable "aws_ecs_cluster_name" {}
-//variable "aws_efs_creation_token" {}
-//variable "aws_efs_encrypted" {}
-//variable "aws_efs_performance_mode" {}
-//variable "aws_efs_throughput_mode" {}
-//variable "aws_efs_name" {}
-//variable "aws_efs_company_name" {}
-//variable "aws_efs_count" {}
-//variable "aws_eks_cluster_name" {}
-//variable "aws_eks_role_name" {}
-//variable "aws_eks_subnet_name_1" {}
-//variable "aws_eks_subnet_name_2" {}
-//variable "aws_eks_vpc_name" {}
-//variable "aws_elasticache_cluster_id" {}
-//variable "aws_elasticache_cluster_engine" {}
-//variable "aws_elasticache_cluster_node_type" {}
-//variable "aws_elasticache_cluster_num_cache_nodes" {}
-//variable "aws_elasticache_cluster_parameter_group_name" {}
-//variable "aws_elasticache_cluster_engine_version" {}
-//variable "aws_elasticache_cluster_port" {}
-//variable "aws_elasticache_replication_group_node_type" {}
-//variable "aws_elasticache_replication_group_id" {}
-//variable "aws_elb_access_log_name" {}
-//variable "aws_elb_access_log_prefix" {}
-//variable "aws_elb_name" {}
-//variable "aws_enable_cli_calls" {}
-//variable "aws_enable_creation" {}
-//variable "aws_enable_privileged_resources" {}
-//variable "aws_flow_log_bucket_name" {}
-//variable "aws_iam_group_name" {}
-//variable "aws_iam_group_policy_name" {}
-//variable "aws_iam_policy_arn" {}
-//variable "aws_iam_role_generic_name" {}
-//variable "aws_iam_role_generic_policy_name" {}
-//variable "aws_iam_user_name" {}
-//variable "aws_iam_user_policy_name" {}
-//variable "aws_iam_profile_name_for_ec2" {}
-//variable "aws_iam_role_name_for_ec2" {}
-//variable "aws_iam_policy_name_for_lambda" {}
-//variable "aws_iam_role_name_for_lambda" {}
-//variable "aws_internet_gateway_name" {}
-//variable "aws_internet_gateway_name_tag" {}
-//variable "aws_internet_gateway_vpc_name" {}
-//variable "aws_iam_policy_name" {}
-//variable "aws_iam_attached_policy_name" {}
-//variable "aws_key_description_disabled" {}
-//variable "aws_key_description_enabled" {}
-//variable "aws_launch_configuration_name" {}
-//variable "aws_nat_gateway_name" {}
-//variable "aws_nat_gateway_eip_name" {}
-//variable "aws_nat_gateway_subnet_name" {}
-//variable "aws_rds_db_engine" {}
-//variable "aws_rds_db_engine_version" {}
-//variable "aws_rds_db_identifier" {}
-//variable "aws_rds_db_master_user" {}
-//variable "aws_rds_db_name" {}
-//variable "aws_rds_db_storage_type" {}
-//variable "aws_rds_db_subnet_group_name" {}
-//variable "aws_rds_db_subnet_group_description" {}
-//variable "rds_subnet_name_1" {}
-//variable "aws_rds_cluster_identifier" {}
-//variable "aws_rds_cluster_instance_1_identifier" {}
-//variable "aws_rds_cluster_instance_2_identifier" {}
-//variable "aws_rds_cluster_database_name" {}
-//variable "aws_rds_cluster_engine" {}
-//variable "aws_rds_cluster_master_user" {}
-//variable "aws_security_group_alpha" {}
-//variable "aws_security_group_beta" {}
-//variable "aws_security_group_gamma" {}
-//variable "aws_security_group_zeta" {}
-//variable "aws_security_group_omega" {}
-//variable "aws_security_group_lb" {}
-//variable "aws_ssm_parameter_name" {}
-//variable "aws_ssm_document_name" {}
-//variable "aws_sqs_queue_name" {}
-//variable "aws_subnet_ip_address_count" {}
-//variable "aws_sns_topic_with_encryption" {}
-//variable "aws_sns_topic_no_subscription" {}
-//variable "aws_sns_topic_subscription_sqs" {}
-//variable "aws_sns_topic_with_subscription" {}
-//variable "aws_subnet_name" {}
-//variable "aws_vm_image_filter" {}
-//variable "aws_vm_name" {}
-//variable "aws_vm_size" {}
-//variable "aws_vpc_cidr_block" {}
-//variable "aws_vpc_instance_tenancy" {}
-//variable "aws_vpc_name" {}
-//variable "aws_vpc_dhcp_options_name" {}
-//variable "aws_vpc_endpoint_name" {}
-//variable "aws_route_53_zone" {}
-//
-//provider "aws" {
-//  version = ">= 2.0.0"
-//  region  = var.aws_region
-//}
-//
-//data "aws_caller_identity" "creds" {}
-//
-//data "aws_region" "current" {}
-//
-//# default VPC always exists for every AWS region
-//data "aws_vpc" "default" {
-//  default = "true"
-//}
-//
+# AWS Terraform Templates for InSpec Testing
+
+terraform {
+  required_version = ">= 0.12"
+}
+
+# Configure variables
+variable "aws_region" {}
+variable "aws_availability_zone" {}
+
+variable "aws_alb_name" {}
+variable "aws_auto_scaling_group" {}
+variable "aws_bucket_acl_policy_name" {}
+variable "aws_bucket_auth_name" {}
+variable "aws_bucket_encryption_disabled" {}
+variable "aws_bucket_encryption_enabled" {}
+variable "aws_bucket_versioning_disabled" {}
+variable "aws_bucket_versioning_enabled" {}
+variable "aws_bucket_log_delivery_name" {}
+variable "aws_bucket_log_sender_name" {}
+variable "aws_bucket_logging_disabled" {}
+variable "aws_bucket_private_name" {}
+variable "aws_bucket_public_name" {}
+variable "aws_bucket_public_objects_name" {}
+variable "aws_cloudformation_stack_name" {}
+variable "aws_cloudformation_stack_ecr_name" {}
+variable "aws_cloud_trail_bucket_name" {}
+variable "aws_cloud_trail_key_description" {}
+variable "aws_cloud_trail_log_group" {}
+variable "aws_cloud_trail_name" {}
+variable "aws_cloud_trail_open_name" {}
+variable "aws_cloud_watch_alarm_metric_name" {}
+variable "aws_cloud_watch_alarm_name" {}
+variable "aws_cloud_watch_alarm_name_with_dimensions" {}
+variable "aws_cloud_watch_alarm_metric_name_with_dimensions" {}
+variable "aws_cloud_watch_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_namespace_with_dimensions" {}
+variable "aws_cloud_watch_log_metric_filter_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_name" {}
+variable "aws_cloud_watch_log_metric_filter_namespace" {}
+variable "aws_cloud_watch_log_metric_filter_pattern" {}
+variable "aws_cloud_watch_log_metric_filter_two_log_group_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_metric_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_name" {}
+variable "aws_cloud_watch_log_metric_filter_two_namespace" {}
+variable "aws_cloud_watch_log_metric_filter_two_pattern" {}
+variable "aws_cloud_watch_logs_role_name" {}
+variable "aws_cloud_watch_logs_role_policy_name" {}
+variable "aws_configuration_recorder_name" {}
+variable "aws_configuration_recorder_role" {}
+variable "aws_create_configuration_recorder" {}
+variable "aws_dynamodb_table_name" {}
+variable "aws_delivery_channel_bucket_name" {}
+variable "aws_delivery_channel_frequency" {}
+variable "aws_delivery_channel_name" {}
+variable "aws_delivery_channel_sns_topic_name" {}
+variable "aws_ebs_volume_name" {}
+variable "aws_ecr_name" {}
+variable "aws_ecrpublic_name" {}
+variable "aws_ecr_repository_name" {}
+variable "aws_ecrpublic_repository_name" {}
+variable "aws_ecr_repository_image_tag_mutability" {}
+variable "aws_ecr_repository_scan_on_push_enabled" {}
+variable "aws_ecs_cluster_name" {}
+variable "aws_efs_creation_token" {}
+variable "aws_efs_encrypted" {}
+variable "aws_efs_performance_mode" {}
+variable "aws_efs_throughput_mode" {}
+variable "aws_efs_name" {}
+variable "aws_efs_company_name" {}
+variable "aws_efs_count" {}
+variable "aws_eks_cluster_name" {}
+variable "aws_eks_role_name" {}
+variable "aws_eks_subnet_name_1" {}
+variable "aws_eks_subnet_name_2" {}
+variable "aws_eks_vpc_name" {}
+variable "aws_elasticache_cluster_id" {}
+variable "aws_elasticache_cluster_engine" {}
+variable "aws_elasticache_cluster_node_type" {}
+variable "aws_elasticache_cluster_num_cache_nodes" {}
+variable "aws_elasticache_cluster_parameter_group_name" {}
+variable "aws_elasticache_cluster_engine_version" {}
+variable "aws_elasticache_cluster_port" {}
+variable "aws_elasticache_replication_group_node_type" {}
+variable "aws_elasticache_replication_group_id" {}
+variable "aws_elb_access_log_name" {}
+variable "aws_elb_access_log_prefix" {}
+variable "aws_elb_name" {}
+variable "aws_enable_cli_calls" {}
+variable "aws_enable_creation" {}
+variable "aws_enable_privileged_resources" {}
+variable "aws_flow_log_bucket_name" {}
+variable "aws_iam_group_name" {}
+variable "aws_iam_group_policy_name" {}
+variable "aws_iam_policy_arn" {}
+variable "aws_iam_role_generic_name" {}
+variable "aws_iam_role_generic_policy_name" {}
+variable "aws_iam_user_name" {}
+variable "aws_iam_user_policy_name" {}
+variable "aws_iam_profile_name_for_ec2" {}
+variable "aws_iam_role_name_for_ec2" {}
+variable "aws_iam_policy_name_for_lambda" {}
+variable "aws_iam_role_name_for_lambda" {}
+variable "aws_internet_gateway_name" {}
+variable "aws_internet_gateway_name_tag" {}
+variable "aws_internet_gateway_vpc_name" {}
+variable "aws_iam_policy_name" {}
+variable "aws_iam_attached_policy_name" {}
+variable "aws_key_description_disabled" {}
+variable "aws_key_description_enabled" {}
+variable "aws_launch_configuration_name" {}
+variable "aws_nat_gateway_name" {}
+variable "aws_nat_gateway_eip_name" {}
+variable "aws_nat_gateway_subnet_name" {}
+variable "aws_rds_db_engine" {}
+variable "aws_rds_db_engine_version" {}
+variable "aws_rds_db_identifier" {}
+variable "aws_rds_db_master_user" {}
+variable "aws_rds_db_name" {}
+variable "aws_rds_db_storage_type" {}
+variable "aws_rds_db_subnet_group_name" {}
+variable "aws_rds_db_subnet_group_description" {}
+variable "rds_subnet_name_1" {}
+variable "aws_rds_cluster_identifier" {}
+variable "aws_rds_cluster_instance_1_identifier" {}
+variable "aws_rds_cluster_instance_2_identifier" {}
+variable "aws_rds_cluster_database_name" {}
+variable "aws_rds_cluster_engine" {}
+variable "aws_rds_cluster_master_user" {}
+variable "aws_security_group_alpha" {}
+variable "aws_security_group_beta" {}
+variable "aws_security_group_gamma" {}
+variable "aws_security_group_zeta" {}
+variable "aws_security_group_omega" {}
+variable "aws_security_group_lb" {}
+variable "aws_ssm_parameter_name" {}
+variable "aws_ssm_document_name" {}
+variable "aws_sqs_queue_name" {}
+variable "aws_subnet_ip_address_count" {}
+variable "aws_sns_topic_with_encryption" {}
+variable "aws_sns_topic_no_subscription" {}
+variable "aws_sns_topic_subscription_sqs" {}
+variable "aws_sns_topic_with_subscription" {}
+variable "aws_subnet_name" {}
+variable "aws_vm_image_filter" {}
+variable "aws_vm_name" {}
+variable "aws_vm_size" {}
+variable "aws_vpc_cidr_block" {}
+variable "aws_vpc_instance_tenancy" {}
+variable "aws_vpc_name" {}
+variable "aws_vpc_dhcp_options_name" {}
+variable "aws_vpc_endpoint_name" {}
+variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
+variable "aws_open_id_connect_provider_arns" {}
+variable "aws_image_id" {}
+variable "aws_instance_type" {}
+variable "aws_auto_scaling_group_name" {}
+variable "aws_auto_scaling_max_size" {}
+variable "aws_auto_scaling_min_size" {}
+variable "aws_auto_scaling_health_check_grace_period" {}
+variable "aws_auto_scaling_health_check_type" {}
+variable "aws_auto_scaling_force_delete" {}
+variable "aws_auto_scaling_policy_name" {}
+variable "aws_auto_scaling_adjustment" {}
+variable "aws_auto_scaling_adjustment_type" {}
+variable "aws_auto_scaling_cooldown" {}
+variable "tgw_route_cidr_block" {}
+variable "tgw_route_cidr_block_blockhole" {}
+variable "aws_db_option_group_name" {}
+variable "aws_db_option_group_description" {}
+variable "aws_db_option_group_engine_name"  {}
+variable "aws_launch_template_name" {}
+variable "aws_launch_template_core" {}
+variable "aws_launch_template_threads_per_core" {}
+variable "aws_launch_template_cpu_credits" {}
+variable "aws_launch_template_volume_size" {}
+variable "aws_launch_template_instance_profile" {}
+variable "aws_launch_template_resource_type" {}
+variable "aws_launch_template_tag_name" {}
+variable "aws_launch_template_instance_type"  {}
+variable "aws_launch_template_kernel_id" {}
+variable "aws_launch_template_key_name" {}
+variable "aws_vpn_gw_name" {}
+variable "aws_network_acl_cidr_block" {}
+variable "aws_network_acl_name" {}
+variable "acl_egress_rule_number" {}
+variable "acl_ingress_rule_number" {}
+variable "aws_db_parameter_group_name" {}
+variable "aws_db_parameter_group_family_name" {}
+variable "aws_db_parameter_group_description" {}
+variable "aws_redshift_cluster_identifier" {}
+variable "aws_redshift_parameter_group_name" {}
+variable "aws_redshift_parameter_group_family" {}
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
+variable "aws_client_name" {}
+variable "aws_batch_job_queue_name" {}
+variable "aws_batch_job_queue_status" {}
+variable "aws_batch_job_queue_priority" {}
+variable "aws_compute_environment_name" {}
+variable "aws_max_vcpus" {}
+variable "aws_min_vcpus" {}
+variable "aws_type" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
+
+
+provider "aws" {
+  version = ">= 2.0.0"
+  region  = var.aws_region
+}
+
+data "aws_caller_identity" "creds" {}
+
+data "aws_region" "current" {}
+
+# default VPC always exists for every AWS region
+data "aws_vpc" "default" {
+  default = "true"
+}
+
 resource "aws_vpc" "inspec_vpc" {
   count            = var.aws_enable_creation
   cidr_block       = var.aws_vpc_cidr_block
@@ -1971,6 +2028,77 @@ resource "aws_guardduty_detector" "detector_1" {
   finding_publishing_frequency = "SIX_HOURS"
 }
 
+resource "aws_launch_template" "launch-template-test" {
+  name = var.aws_launch_template_name
+
+  block_device_mappings {
+    device_name = "/dev/sda1"
+
+    ebs {
+      volume_size = var.aws_launch_template_volume_size
+    }
+  }
+
+  cpu_options {
+    core_count       = var.aws_launch_template_core
+    threads_per_core = var.aws_launch_template_threads_per_core
+  }
+
+  credit_specification {
+    cpu_credits = var.aws_launch_template_cpu_credits
+  }
+
+  disable_api_termination = true
+
+  ebs_optimized = true
+
+
+  iam_instance_profile {
+    name = var.aws_launch_template_instance_profile
+  }
+
+  image_id = "ami-0a83ebf1ac32a3fbe"
+
+  instance_initiated_shutdown_behavior = "terminate"
+
+  instance_market_options {
+    market_type = "spot"
+  }
+
+  instance_type = var.aws_launch_template_instance_type
+  key_name = var.aws_launch_template_key_name
+
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
+
+  monitoring {
+    enabled = true
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+  }
+
+
+
+  tag_specifications {
+    resource_type = var.aws_launch_template_resource_type
+
+    tags = {
+      Name = var.aws_launch_template_tag_name
+    }
+  }
+
+}
+
+resource "aws_eip" "aws_eip_1" {
+  vpc      = true
+}
+
 resource "aws_elasticache_replication_group" "replication_group" {
   replication_group_id          = var.aws_elasticache_replication_group_id 
   replication_group_description = "replication group"
@@ -1978,4 +2106,750 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_dms_certificate" "aws_dms_certificate_test" {
+  certificate_id = "test1"
+  certificate_pem = "-----BEGIN ENCRYPTED PRIVATE KEY----- MIIJJwIBAAKCAgEAqkLV+54yJ9DP9MNTqMHTHcbgsRuy/c93Y/tPZ1WG3QS834n1OV92s2NsWjEluMFU7AsKS3oR7mugGWEVtPEcoqA3XrD7hRz87BgpKbA9Q8fc1xs2D1RBK1EE23Vhz6RRUwZmFDvX8qM1AxN4E7px2pLVM9r8jxdXjbao3HkuvA== -----END ENCRYPTED PRIVATE KEY-----"
+}
+
+output "aws_dms_certificate_arn" {
+  value = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+}
+
+resource "aws_dms_endpoint" "aws_dms_endpoint_test" {
+  certificate_arn             = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+  database_name               = "test1"
+  endpoint_id                 = "test1"
+  endpoint_type               = "source"
+  engine_name                 = "aurora"
+  extra_connection_attributes = ""
+  password                    = "test"
+  port                        = 3306
+  server_name                 = "test"
+  ssl_mode                    = "none"
+
+  tags = {
+    Name = "test"
+  }
+  username = "test"
+}
+
+resource "aws_dms_replication_instance" "aws_dms_replication_instance_test" {
+  replication_instance_class   = "dms.t2.micro"
+  replication_instance_id      = "test-dms-replication-instance-tf1"
+  replication_subnet_group_id  = aws_dms_replication_subnet_group.aws_dms_replication_subnet_group_test.id
+}
+
+resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_test" {
+  replication_subnet_group_description = "Test replication subnet group"
+  replication_subnet_group_id          = "test-dms-replication-subnet-group-tf1"
+
+  subnet_ids = ["subnet-700ff218", "subnet-0674044b"]
+
+  tags = {
+    Name = "test"
+  }
+}
+
+data "aws_iam_policy_document" "dms_assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      identifiers = ["dms.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
+resource "aws_iam_role" "dms-access-for-endpoint" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-access-for-endpoint"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+  role       = aws_iam_role.dms-access-for-endpoint.name
+}
+
+resource "aws_iam_role" "dms-cloudwatch-logs-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-cloudwatch-logs-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+  role       = aws_iam_role.dms-cloudwatch-logs-role.name
+}
+
+resource "aws_iam_role" "dms-vpc-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-vpc-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+  role       = aws_iam_role.dms-vpc-role.name
+}
+
+resource "aws_iam_role" "ecs_instance_role" {
+  name = "ecs_instance_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+  role       = aws_iam_role.ecs_instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+}
+
+resource "aws_iam_instance_profile" "ecs_instance_role" {
+  name = "ecs_instance_role"
+  role = aws_iam_role.ecs_instance_role.name
+}
+
+resource "aws_iam_role" "aws_batch_service_role" {
+  name = "aws_batch_service_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+        "Service": "batch.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+  role       = aws_iam_role.aws_batch_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+}
+
+resource "aws_security_group" "to_test_batch" {
+  name = "aws_batch_compute_environment_security_group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_vpc" "to_test_batch" {
+  cidr_block = "10.1.0.0/16"
+
+}
+
+resource "aws_subnet" "to_test_batch" {
+  vpc_id     = aws_vpc.to_test_batch.id
+  cidr_block = "10.1.1.0/24"
+}
+
+resource "aws_batch_compute_environment" "to_test_batch" {
+  compute_environment_name = var.aws_compute_environment_name
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance_role.arn
+
+    instance_type = [
+      "c4.large",
+    ]
+
+    max_vcpus = var.aws_max_vcpus
+    min_vcpus = var.aws_min_vcpus
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id,
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id,
+    ]
+
+    type = var.aws_type
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+
+resource "aws_batch_job_queue" "test_queue" {
+  name     = var.aws_batch_job_queue_name
+  state    =  var.aws_batch_job_queue_status
+  priority = var.aws_batch_job_queue_priority
+  compute_environments = [
+    aws_batch_compute_environment.to_test_batch.arn,
+  ]
+}
+
+resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
+  name = var.aws_client_name
+
+  user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+  generate_secret     = true
+}
+
+resource "aws_batch_job_definition" "aws_batch_job_definition1" {
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
+
+  container_properties = <<CONTAINER_PROPERTIES
+{
+    "command": ["ls", "-la"],
+    "image": "busybox",
+    "memory": 1024,
+    "vcpus": 1,
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "/tmp"
+        },
+        "name": "tmp"
+      }
+    ],
+    "environment": [
+        {"name": "VARNAME", "value": "VARVAL"}
+    ],
+    "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp",
+          "readOnly": false
+        }
+    ],
+    "ulimits": [
+      {
+        "hardLimit": 1024,
+        "name": "nofile",
+        "softLimit": 1024
+      }
+    ]
+}
+CONTAINER_PROPERTIES
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
+  name                   = "my-saml-provider"
+  saml_metadata_document = file("saml-metadata.xml")
+}
+
+resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
+  identity_pool_name               = var.aws_identity_pool_name
+
+  cognito_identity_providers {
+    client_id               = "6lhlkkfbfb4q5kpp90urffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
+    server_side_token_check = false
+  }
+
+  cognito_identity_providers {
+    client_id               = "7kodkvfqfb4qfkp39eurffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
+    server_side_token_check = false
+  }
+
+  supported_login_providers = {
+    "graph.facebook.com"  = "7346241598935552"
+    "accounts.google.com" = "123456789012.apps.googleusercontent.com"
+  }
+
+  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+}
+
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
+  name                   = var.aws_auto_scaling_policy_name
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
+
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
+  availability_zones        = ["us-east-2a"]
+  name                      = var.aws_auto_scaling_group_name
+  max_size                  = var.aws_auto_scaling_max_size
+  min_size                  = var.aws_auto_scaling_min_size
+  health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
+  health_check_type         = var.aws_auto_scaling_health_check_type
+  force_delete              = var.aws_auto_scaling_force_delete
+  launch_configuration      = aws_launch_configuration.as_conf_for_autoscalling.name
+}
+
+resource "aws_launch_configuration" "as_conf_for_autoscalling" {
+  name          = var.aws_launch_configuration_name
+  image_id      = var.aws_image_id
+  instance_type = var.aws_instance_type
+}
+
+
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
+
+  configuration {
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
+
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
+  subnet_ids         = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id             = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_static" {
+  destination_cidr_block         = var.tgw_route_cidr_block
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.inspec_tgw_attachment.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
+  destination_cidr_block         = var.tgw_route_cidr_block_blockhole
+  blackhole                      = true
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
+}
+
+
+resource "aws_redshift_cluster" "redshift_test" {
+  cluster_identifier = var.aws_redshift_cluster_identifier
+  database_name      = "dev"
+  master_username    = "testcluster"
+  master_password    = "Mustbe8characters"
+  node_type          = "dc2.large"
+  cluster_type       = "single-node"
+}
+
+resource "aws_db_option_group" "test-option-group" {
+  name                     = var.aws_db_option_group_name
+  option_group_description = var.aws_db_option_group_description
+  engine_name              = var.aws_db_option_group_engine_name
+  major_engine_version     = "11.00"
+
+  option {
+    option_name = "TDE"
+  }
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment1" {
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
+  vpc_id = aws_vpc.inspec_vpc[0].id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_vpn_gateway" "inspec_vpn_gw" {
+  vpc_id = aws_vpc.attachment.id
+
+  tags = {
+    Name = var.aws_vpn_gw_name
+  }
+}
+
+resource "aws_vpc" "attachment" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_ec2_transit_gateway_route_table_association" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_attachment_association1" {
+  subnet_ids         = [aws_subnet.for_attachment.id]
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+  vpc_id             = aws_vpc.attachment.id
+  transit_gateway_default_route_table_association = false
+  transit_gateway_default_route_table_propagation = false
+
+}
+
+resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
+  transit_gateway_id = aws_ec2_transit_gateway.gateway.id
+}
+
+resource "aws_subnet" "for_attachment" {
+  vpc_id     = aws_vpc.attachment.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+
+resource "aws_network_acl" "inspec-nw-acl" {
+  vpc_id = aws_vpc.inspec_vpc[0].id
+  subnet_ids = [aws_subnet.inspec_subnet[0].id]
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = var.acl_egress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = var.acl_ingress_rule_number
+    action     = "allow"
+    cidr_block = var.aws_network_acl_cidr_block
+    from_port  = 80
+    to_port    = 80
+  }
+
+
+  tags = {
+    Name = var.aws_network_acl_name
+  }
+}
+
+resource "aws_route" "aws_route1" {
+  route_table_id            = aws_route_table.route_table_first[0].id
+  destination_cidr_block    = "172.31.0.0/16"
+  gateway_id                = aws_internet_gateway.inspec_internet_gateway[0].id
+  depends_on                = [aws_route_table.route_table_first]
+}
+
+resource "aws_db_parameter_group" "inspec_db_parameter_group" {
+  name   = var.aws_db_parameter_group_name
+  family = var.aws_db_parameter_group_family_name
+  description = var.aws_db_parameter_group_description
+
+  parameter {
+    name  = "character_set_server"
+    value = "utf8"
+  }
+
+  parameter {
+    name  = "character_set_client"
+    value = "utf8"
+  }
+}
+
+resource "aws_redshift_parameter_group" "aws_redshift_parameter_group1" {
+  name   = var.aws_redshift_parameter_group_name
+  family = var.aws_redshift_parameter_group_family
+}
+
+resource "aws_lb" "test-lb" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_sns_topic" "topic" {
+  name = "vpce-notification-topic"
+
+  policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "vpce.amazonaws.com"
+        },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
+    }]
+}
+POLICY
+}
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = [aws_subnet.main.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "notification-test" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_vpc_endpoint_service" "notification_service" {
+  acceptance_required        = false
+  network_load_balancer_arns = [aws_lb.test.arn]
+}
+
+resource "aws_vpc_endpoint_service_allowed_principal" "notification_service_principal" {
+  vpc_endpoint_service_id = aws_vpc_endpoint_service.notification_service.id
+  principal_arn = aws_iam_user.iam_user[0].arn
+}
+
+resource "aws_vpc_endpoint" "for_notification" {
+  service_name      = "com.amazonaws.us-east-2.ec2"
+  vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
+  vpc_id            = aws_vpc.for_lb.id
+  security_group_ids = [aws_security_group.alpha[0].id]
+}
+
+resource "aws_vpc_endpoint_connection_notification" "test-endpoint-notification" {
+  vpc_endpoint_service_id     = aws_vpc_endpoint_service.notification_service.id
+  connection_notification_arn = aws_sns_topic.topic.arn
+  connection_events           = ["Accept", "Reject"]
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.for_lb.id
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.ig_for_lb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "ig_for_lb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
+}
+
+resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+  max_capacity       = 100
+  min_capacity       = 5
+  resource_id        = "table/${aws_dynamodb_table.example.name}"
+  scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+  service_namespace  = "dynamodb"
+}
+
+resource "aws_appautoscaling_policy" "dynamodb_table_read_policy" {
+  name               = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.dynamodb_table_read_target.resource_id}"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.dynamodb_table_read_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.dynamodb_table_read_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.dynamodb_table_read_target.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "DynamoDBReadCapacityUtilization"
+    }
+
+    target_value = 70
+  }
+}
+
+resource "aws_dynamodb_table" "example" {
+  name           = "GameScores"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = false
+  }
+
+  global_secondary_index {
+    name               = "GameTitleIndex"
+    hash_key           = "GameTitle"
+    range_key          = "TopScore"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
+
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
+  name        = "MyDemoAPI"
+  description = "This is my API for demonstration purposes"
+}
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.root_resource_id
+  path_part   = "mydemoresource"
+}
+
+resource "aws_api_gateway_method" "aws_api_gateway_method_test" {
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  resource_id   = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "test1"
+      image     = "test1"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_efs_mount_target" "aws_efs_mount_target_mt_test" {
+  file_system_id = aws_efs_file_system.aws_efs_file_system_mt_test.id
+  subnet_id      = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+resource "aws_efs_file_system" "aws_efs_file_system_mt_test" {
+  creation_token = "my-product"
+
+  tags = {
+    Name = "MyProduct"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_mount_mt_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_mount_mt_test" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = var.aws_availability_zone
+
 }

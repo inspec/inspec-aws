@@ -33,10 +33,6 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
     !@listeners.nil? && !@listeners.empty?
   end
 
-  def encrypted?
-    @listeners[:encrypted]
-  end
-
   def to_s
     "listener_arns: #{@display_name}"
   end
