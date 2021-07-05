@@ -36,13 +36,13 @@ For additional information, see the [AWS documentation on Step Functions State M
 | logging_configuration (level) | The level of the logging configuration of the state machine. |
 | logging_configuration (include_execution_data) | The include execution data of the logging configuration of the state machine. |
 | logging_configuration (destinations) | The destinations of the logging configuration of the state machine. |
-| logging_configuration (enabled) | The enabled of the logging configuration of the state machine. |
+| logging_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. |
 
 ## Examples
 
 ### Ensure a state machine arn is available.
     describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
-      its('identity_pool_id') { should eq 'test' }
+      its('state_machine_arn') { should eq 'test' }
     end
 
 ### Ensure that the status is available.
