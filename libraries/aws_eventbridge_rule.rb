@@ -25,17 +25,13 @@ class AWSEventBridgeRule < AwsResourceBase
     end
   end
 
-  def id
+  def name
     return nil unless exists?
     @res[:name]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s
