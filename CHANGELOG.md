@@ -1,9 +1,54 @@
-<!-- latest_release 1.49.12 -->
+<!-- latest_release 1.50.8 -->
+## [v1.50.8](https://github.com/inspec/inspec-aws/tree/v1.50.8) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_deployment [#426](https://github.com/inspec/inspec-aws/pull/426) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.50.7](https://github.com/inspec/inspec-aws/tree/v1.50.7) (2021-07-02)
+
+#### Merged Pull Requests
+- Need changes in the Readme.md file [#479](https://github.com/inspec/inspec-aws/pull/479) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.6](https://github.com/inspec/inspec-aws/tree/v1.50.6) (2021-07-02)
+
+#### Merged Pull Requests
+- removed/modified duplicate tf resources [#481](https://github.com/inspec/inspec-aws/pull/481) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.50.5](https://github.com/inspec/inspec-aws/tree/v1.50.5) (2021-06-14)
+
+#### Merged Pull Requests
+- efs mount target [#372](https://github.com/inspec/inspec-aws/pull/372) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.4](https://github.com/inspec/inspec-aws/tree/v1.50.4) (2021-06-14)
+
+#### Merged Pull Requests
+- ecs task definitions [#371](https://github.com/inspec/inspec-aws/pull/371) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.3](https://github.com/inspec/inspec-aws/tree/v1.50.3) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job definition [#365](https://github.com/inspec/inspec-aws/pull/365) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.2](https://github.com/inspec/inspec-aws/tree/v1.50.2) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch compute environments [#364](https://github.com/inspec/inspec-aws/pull/364) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.1](https://github.com/inspec/inspec-aws/tree/v1.50.1) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job queues [#366](https://github.com/inspec/inspec-aws/pull/366) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.0](https://github.com/inspec/inspec-aws/tree/v1.50.0) (2021-06-14)
+
+#### Merged Pull Requests
+- VPC endpoint services resource(s) [#384](https://github.com/inspec/inspec-aws/pull/384) ([sathish-progress](https://github.com/sathish-progress))
+
 ## [v1.49.12](https://github.com/inspec/inspec-aws/tree/v1.49.12) (2021-06-07)
 
 #### Merged Pull Requests
 - aws cognito userpool client [#368](https://github.com/inspec/inspec-aws/pull/368) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.49.11](https://github.com/inspec/inspec-aws/tree/v1.49.11) (2021-06-07)
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'aws-sdk-autoscaling'
+require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
@@ -34,6 +35,7 @@ require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
+require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
 
 # AWS Inspec Backend Classes
@@ -90,6 +92,10 @@ class AwsConnection
 
   def compute_client
     aws_client(Aws::EC2::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
   end
 
   def config_client
@@ -184,6 +190,10 @@ class AwsConnection
     aws_client(Aws::SSM::Client)
   end
 
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
   def athena_client
     aws_client(Aws::Athena::Client)
   end
@@ -206,6 +216,10 @@ class AwsConnection
 
   def apigateway_client
     aws_client(Aws::APIGateway::Client)
+  end
+
+  def applicationautoscaling_client
+    aws_client(Aws::ApplicationAutoScaling::Client)
   end
 end
 

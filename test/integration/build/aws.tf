@@ -199,6 +199,16 @@ variable "aws_publish_cloudwatch_metrics_enabled" {}
 variable "aws_athena_workgroup_description" {}
 variable "aws_athena_workgroup_state" {}
 variable "aws_client_name" {}
+variable "aws_batch_job_queue_name" {}
+variable "aws_batch_job_queue_status" {}
+variable "aws_batch_job_queue_priority" {}
+variable "aws_compute_environment_name" {}
+variable "aws_max_vcpus" {}
+variable "aws_min_vcpus" {}
+variable "aws_type" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2098,8 +2108,157 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
-resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
-  name = var.aws_identity_pool_name
+data "aws_iam_policy_document" "dms_assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      identifiers = ["dms.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
+resource "aws_iam_role" "dms-access-for-endpoint" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-access-for-endpoint"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+  role       = aws_iam_role.dms-access-for-endpoint.name
+}
+
+resource "aws_iam_role" "dms-cloudwatch-logs-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-cloudwatch-logs-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+  role       = aws_iam_role.dms-cloudwatch-logs-role.name
+}
+
+resource "aws_iam_role" "dms-vpc-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-vpc-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+  role       = aws_iam_role.dms-vpc-role.name
+}
+
+resource "aws_iam_role" "ecs_instance_role" {
+  name = "ecs_instance_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+  role       = aws_iam_role.ecs_instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+}
+
+resource "aws_iam_instance_profile" "ecs_instance_role" {
+  name = "ecs_instance_role"
+  role = aws_iam_role.ecs_instance_role.name
+}
+
+resource "aws_iam_role" "aws_batch_service_role" {
+  name = "aws_batch_service_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+        "Service": "batch.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+  role       = aws_iam_role.aws_batch_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+}
+
+resource "aws_security_group" "to_test_batch" {
+  name = "aws_batch_compute_environment_security_group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_vpc" "to_test_batch" {
+  cidr_block = "10.1.0.0/16"
+
+}
+
+resource "aws_subnet" "to_test_batch" {
+  vpc_id     = aws_vpc.to_test_batch.id
+  cidr_block = "10.1.1.0/24"
+}
+
+resource "aws_batch_compute_environment" "to_test_batch" {
+  compute_environment_name = var.aws_compute_environment_name
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance_role.arn
+
+    instance_type = [
+      "c4.large",
+    ]
+
+    max_vcpus = var.aws_max_vcpus
+    min_vcpus = var.aws_min_vcpus
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id,
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id,
+    ]
+
+    type = var.aws_type
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+
+resource "aws_batch_job_queue" "test_queue" {
+  name     = var.aws_batch_job_queue_name
+  state    =  var.aws_batch_job_queue_status
+  priority = var.aws_batch_job_queue_priority
+  compute_environments = [
+    aws_batch_compute_environment.to_test_batch.arn,
+  ]
 }
 
 resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
@@ -2107,6 +2266,45 @@ resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
 
   user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
   generate_secret     = true
+}
+
+resource "aws_batch_job_definition" "aws_batch_job_definition1" {
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
+
+  container_properties = <<CONTAINER_PROPERTIES
+{
+    "command": ["ls", "-la"],
+    "image": "busybox",
+    "memory": 1024,
+    "vcpus": 1,
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "/tmp"
+        },
+        "name": "tmp"
+      }
+    ],
+    "environment": [
+        {"name": "VARNAME", "value": "VARVAL"}
+    ],
+    "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp",
+          "readOnly": false
+        }
+    ],
+    "ulimits": [
+      {
+        "hardLimit": 1024,
+        "name": "nofile",
+        "softLimit": 1024
+      }
+    ]
+}
+CONTAINER_PROPERTIES
 }
 
 resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
@@ -2159,10 +2357,10 @@ resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
   health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
   health_check_type         = var.aws_auto_scaling_health_check_type
   force_delete              = var.aws_auto_scaling_force_delete
-  launch_configuration      = aws_launch_configuration.as_conf.name
+  launch_configuration      = aws_launch_configuration.as_conf_for_autoscalling.name
 }
 
-resource "aws_launch_configuration" "as_conf" {
+resource "aws_launch_configuration" "as_conf_for_autoscalling" {
   name          = var.aws_launch_configuration_name
   image_id      = var.aws_image_id
   instance_type = var.aws_instance_type
@@ -2408,6 +2606,7 @@ resource "aws_vpc" "for_lb" {
     Name = "main"
   }
 }
+
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.for_lb.id
   cidr_block = "10.0.0.0/24"
@@ -2424,4 +2623,184 @@ resource "aws_internet_gateway" "ig_for_lb" {
   tags = {
     Name = var.aws_internet_gateway_name
   }
+}
+
+resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+  max_capacity       = 100
+  min_capacity       = 5
+  resource_id        = "table/${aws_dynamodb_table.example.name}"
+  scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+  service_namespace  = "dynamodb"
+}
+
+resource "aws_appautoscaling_policy" "dynamodb_table_read_policy" {
+  name               = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.dynamodb_table_read_target.resource_id}"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.dynamodb_table_read_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.dynamodb_table_read_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.dynamodb_table_read_target.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "DynamoDBReadCapacityUtilization"
+    }
+
+    target_value = 70
+  }
+}
+
+resource "aws_dynamodb_table" "example" {
+  name           = "GameScores"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = false
+  }
+
+  global_secondary_index {
+    name               = "GameTitleIndex"
+    hash_key           = "GameTitle"
+    range_key          = "TopScore"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
+
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
+  name        = "MyDemoAPI"
+  description = "This is my API for demonstration purposes"
+}
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.root_resource_id
+  path_part   = "mydemoresource"
+}
+
+resource "aws_api_gateway_method" "aws_api_gateway_method_test" {
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  resource_id   = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "test1"
+      image     = "test1"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_efs_mount_target" "aws_efs_mount_target_mt_test" {
+  file_system_id = aws_efs_file_system.aws_efs_file_system_mt_test.id
+  subnet_id      = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+resource "aws_efs_file_system" "aws_efs_file_system_mt_test" {
+  creation_token = "my-product"
+
+  tags = {
+    Name = "MyProduct"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_mount_mt_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_mount_mt_test" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = var.aws_availability_zone
+
 }
