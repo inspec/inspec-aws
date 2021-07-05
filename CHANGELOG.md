@@ -1,9 +1,29 @@
-<!-- latest_release 1.50.5 -->
+<!-- latest_release 1.50.9 -->
+## [v1.50.9](https://github.com/inspec/inspec-aws/tree/v1.50.9) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_restapi [#428](https://github.com/inspec/inspec-aws/pull/428) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.50.8](https://github.com/inspec/inspec-aws/tree/v1.50.8) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_deployment [#426](https://github.com/inspec/inspec-aws/pull/426) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.7](https://github.com/inspec/inspec-aws/tree/v1.50.7) (2021-07-02)
+
+#### Merged Pull Requests
+- Need changes in the Readme.md file [#479](https://github.com/inspec/inspec-aws/pull/479) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.6](https://github.com/inspec/inspec-aws/tree/v1.50.6) (2021-07-02)
+
+#### Merged Pull Requests
+- removed/modified duplicate tf resources [#481](https://github.com/inspec/inspec-aws/pull/481) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.50.5](https://github.com/inspec/inspec-aws/tree/v1.50.5) (2021-06-14)
 
 #### Merged Pull Requests
 - efs mount target [#372](https://github.com/inspec/inspec-aws/pull/372) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.50.4](https://github.com/inspec/inspec-aws/tree/v1.50.4) (2021-06-14)
 

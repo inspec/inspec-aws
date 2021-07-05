@@ -35,8 +35,8 @@ require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
-require 'aws-sdk-apigateway'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-apigateway'
 
 # AWS Inspec Backend Classes
 #
