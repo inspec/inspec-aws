@@ -31,7 +31,7 @@ class AWSDMSEndpoint < AwsResourceBase
     end
   end
 
-  def id
+  def endpoint_arn
     return nil unless exists?
     @endpoints[:endpoint_arn]
   end
@@ -40,11 +40,7 @@ class AWSDMSEndpoint < AwsResourceBase
     !@endpoints.nil? && !@endpoints.empty?
   end
 
-  def encrypted?
-    @endpoints[:encrypted]
-  end
-
   def to_s
-    "endpoint_arn: #{@display_name}"
+    "Endpoint ARN: #{@display_name}"
   end
 end
