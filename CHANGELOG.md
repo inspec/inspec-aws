@@ -1,9 +1,14 @@
-<!-- latest_release 1.50.7 -->
+<!-- latest_release 1.50.8 -->
+## [v1.50.8](https://github.com/inspec/inspec-aws/tree/v1.50.8) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_deployment [#426](https://github.com/inspec/inspec-aws/pull/426) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.50.7](https://github.com/inspec/inspec-aws/tree/v1.50.7) (2021-07-02)
 
 #### Merged Pull Requests
 - Need changes in the Readme.md file [#479](https://github.com/inspec/inspec-aws/pull/479) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.50.6](https://github.com/inspec/inspec-aws/tree/v1.50.6) (2021-07-02)
 
