@@ -1,9 +1,14 @@
-<!-- latest_release 1.50.9 -->
+<!-- latest_release 1.50.10 -->
+## [v1.50.10](https://github.com/inspec/inspec-aws/tree/v1.50.10) (2021-07-05)
+
+#### Merged Pull Requests
+- aws dms endpoint [#421](https://github.com/inspec/inspec-aws/pull/421) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.50.9](https://github.com/inspec/inspec-aws/tree/v1.50.9) (2021-07-05)
 
 #### Merged Pull Requests
 - aws_api_gateway_restapi [#428](https://github.com/inspec/inspec-aws/pull/428) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.50.8](https://github.com/inspec/inspec-aws/tree/v1.50.8) (2021-07-05)
 
