@@ -226,10 +226,6 @@ class AwsConnection
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
   end
-
-  def glue_client
-    aws_client(Aws::Glue::Client)
-  end
 end
 
 # Base class for AWS resources
