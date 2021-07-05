@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsLaunchConfigurations < AwsResourceBase
   name 'aws_launch_configurations'
-  desc 'Verifies settings for a collection AWS Launch Configurations'
-  example '
+  desc 'Verifies settings for a collection AWS Launch Configurations.'
+  example "
     describe aws_launch_configurations do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

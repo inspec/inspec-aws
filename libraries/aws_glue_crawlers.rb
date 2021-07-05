@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSGlueCrawlers < AwsResourceBase
   name 'aws_glue_crawlers'
   desc 'Retrieves metadata for all crawlers defined in the customer account.'
+
   example "
     describe aws_glue_crawlers do
       it { should exist }
@@ -47,8 +48,7 @@ class AWSGlueCrawlers < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.glue_client.get_crawlers(@query_params)
       end
-
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.crawlers.each do |res|
         rows += [{
           name: res.name,
