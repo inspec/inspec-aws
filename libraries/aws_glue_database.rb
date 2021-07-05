@@ -25,7 +25,7 @@ class AWSGlueDatabase < AwsResourceBase
     end
   end
 
-  def id
+  def name
     return nil unless exists?
     @res[:name]
   end
@@ -34,11 +34,7 @@ class AWSGlueDatabase < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def encrypted?
-    @res[:encrypted]
-  end
-
   def to_s
-    "name: #{@display_name}"
+    "Glue Name: #{@display_name}"
   end
 end
