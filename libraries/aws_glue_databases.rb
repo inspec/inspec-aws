@@ -38,7 +38,7 @@ class AWSGlueDatabases < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.glue_client.get_databases(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.database_list.each do |res|
         rows += [{
           name: res.name,

@@ -209,6 +209,7 @@ variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
 
+variable "aws_crawler_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1725,7 +1726,6 @@ STACK
 
 }
 
-
 resource "aws_route53_zone" "test_zone" {
   count = var.aws_enable_creation
   name  = var.aws_route_53_zone
@@ -1846,6 +1846,7 @@ resource "aws_cloudwatch_log_group" "lambda_test_logs" {
 locals {
   test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
+
 resource "aws_lambda_function" "lambda_test" {
   count            = var.aws_enable_creation
   filename         = local.test_lambda_zip_file_name
@@ -1885,7 +1886,7 @@ resource "aws_ecr_repository" "inspec_test_ecr_repository" {
 
 resource "aws_ecr_repository" "inspec_test" {
   name = var.aws_ecr_repository_name
-} 
+}
 
 resource "aws_ecr_repository_policy" "inspec_test_ecr_repository_policy" {
   repository = aws_ecr_repository.inspec_test.name
@@ -2094,12 +2095,26 @@ resource "aws_eip" "aws_eip_1" {
 }
 
 resource "aws_elasticache_replication_group" "replication_group" {
-  replication_group_id          = var.aws_elasticache_replication_group_id 
+  replication_group_id          = var.aws_elasticache_replication_group_id
   replication_group_description = "replication group"
   number_cache_clusters         = 1
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_glue_crawler" "aws_glue_crawler_test" {
+  database_name = aws_glue_catalog_database.aws_glue_catalog_database_test.name
+  name          = var.aws_crawler_name
+  role          = aws_iam_role.cloud_watch_logs_role[0].arn
+
+  dynamodb_target {
+    path = "table-name"
+  }
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb3"
 }
 
 resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {

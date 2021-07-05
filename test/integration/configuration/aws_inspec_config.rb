@@ -266,6 +266,7 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
+      aws_crawler_name: "crawler"
   }
 
   def self.config
