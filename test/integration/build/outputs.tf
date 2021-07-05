@@ -334,6 +334,10 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_dms_endpoint_arn" {
+  value = aws_dms_endpoint.aws_dms_endpoint_test.endpoint_arn
+}
+
 output "aws_mount_target_mt_id" {
   value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
 }

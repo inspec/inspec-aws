@@ -190,10 +190,6 @@ class AwsConnection
     aws_client(Aws::SSM::Client)
   end
 
-  def dmsmigrationservice_client
-    aws_client(Aws::DatabaseMigrationService::Client)
-  end
-
   def athena_client
     aws_client(Aws::Athena::Client)
   end
@@ -220,6 +216,10 @@ class AwsConnection
 
   def applicationautoscaling_client
     aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
   end
 end
 

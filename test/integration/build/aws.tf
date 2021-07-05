@@ -2108,6 +2108,50 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_dms_certificate" "aws_dms_certificate_test" {
+  certificate_id = "test1"
+  certificate_pem = "-----BEGIN ENCRYPTED PRIVATE KEY----- MIIJJwIBAAKCAgEAqkLV+54yJ9DP9MNTqMHTHcbgsRuy/c93Y/tPZ1WG3QS834n1OV92s2NsWjEluMFU7AsKS3oR7mugGWEVtPEcoqA3XrD7hRz87BgpKbA9Q8fc1xs2D1RBK1EE23Vhz6RRUwZmFDvX8qM1AxN4E7px2pLVM9r8jxdXjbao3HkuvA== -----END ENCRYPTED PRIVATE KEY-----"
+}
+
+output "aws_dms_certificate_arn" {
+  value = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+}
+
+resource "aws_dms_endpoint" "aws_dms_endpoint_test" {
+  certificate_arn             = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+  database_name               = "test1"
+  endpoint_id                 = "test1"
+  endpoint_type               = "source"
+  engine_name                 = "aurora"
+  extra_connection_attributes = ""
+  password                    = "test"
+  port                        = 3306
+  server_name                 = "test"
+  ssl_mode                    = "none"
+
+  tags = {
+    Name = "test"
+  }
+  username = "test"
+}
+
+resource "aws_dms_replication_instance" "aws_dms_replication_instance_test" {
+  replication_instance_class   = "dms.t2.micro"
+  replication_instance_id      = "test-dms-replication-instance-tf1"
+  replication_subnet_group_id  = aws_dms_replication_subnet_group.aws_dms_replication_subnet_group_test.id
+}
+
+resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_test" {
+  replication_subnet_group_description = "Test replication subnet group"
+  replication_subnet_group_id          = "test-dms-replication-subnet-group-tf1"
+
+  subnet_ids = ["subnet-700ff218", "subnet-0674044b"]
+
+  tags = {
+    Name = "test"
+  }
+}
+
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
