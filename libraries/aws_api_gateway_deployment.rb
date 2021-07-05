@@ -25,17 +25,13 @@ class AWSApiGatewayDeployment < AwsResourceBase
     end
   end
 
-  def id
+  def rest_api_id
     return nil unless exists?
     @res[:rest_api_id]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s
