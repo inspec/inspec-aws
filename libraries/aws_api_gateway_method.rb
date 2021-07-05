@@ -19,7 +19,7 @@ class AWSApiGatewayMethod < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
     raise ArgumentError, "#{@__resource_name__}: resource_id must be provided" unless opts[:resource_id] && !opts[:resource_id].empty?
     raise ArgumentError, "#{@__resource_name__}: http_method must be provided" unless opts[:http_method] && !opts[:http_method].empty?
-    @display_name = opts[:resource_id]
+    @display_name = opts[:rest_api_id]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_method({ rest_api_id: opts[:rest_api_id], resource_id: opts[:resource_id], http_method: opts[:http_method] })
       @res = resp.to_h
