@@ -434,7 +434,6 @@ output "aws_transit_gateway_attachment_vpc_id_association" {
   value = aws_vpc.attachment.id
 }
 
-
 output "network_acl_id" {
   value = aws_network_acl.inspec-nw-acl.id
 }
@@ -487,3 +486,9 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
 
+output "load_balancer_arn" {
+  value = aws_lb.test.arn
+}
+output "listener_arn" {
+  value = aws_lb_listener.front_end.arn
+}

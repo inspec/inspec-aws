@@ -2853,3 +2853,123 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+resource "aws_lb" "test" {
+  name               = "test-lb-tf-i"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.allow_tls_for_lb.id]
+  subnets            = [aws_subnet.for_elb.id,aws_subnet.for_elb_second.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "for_elb" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+resource "aws_subnet" "for_elb" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2a"
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+resource "aws_subnet" "for_elb_second" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2b"
+  cidr_block = "10.0.1.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "for_elb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
+}
+
+resource "aws_lb_listener" "front_end" {
+  load_balancer_arn = aws_lb.test.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Fixed response content"
+      status_code  = "200"
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "static" {
+  listener_arn = aws_lb_listener.front_end.arn
+  priority     = 100
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.for_elb.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/static/*"]
+    }
+  }
+
+  condition {
+    host_header {
+      values = ["example.com"]
+    }
+  }
+}
+resource "aws_security_group" "allow_tls_for_lb" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.for_lb.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.for_lb.cidr_block]
+
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
