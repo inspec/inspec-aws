@@ -2108,6 +2108,48 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+data "aws_iam_policy_document" "dms_assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      identifiers = ["dms.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
+resource "aws_iam_role" "dms-access-for-endpoint" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-access-for-endpoint"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+  role       = aws_iam_role.dms-access-for-endpoint.name
+}
+
+resource "aws_iam_role" "dms-cloudwatch-logs-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-cloudwatch-logs-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+  role       = aws_iam_role.dms-cloudwatch-logs-role.name
+}
+
+resource "aws_iam_role" "dms-vpc-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-vpc-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+  role       = aws_iam_role.dms-vpc-role.name
+}
+
+
 resource "aws_batch_compute_environment" "aws_batch_compute_environment1" {
   compute_environment_name = "test1"
 
@@ -2241,10 +2283,6 @@ resource "aws_batch_job_queue" "test_queue" {
   ]
 }
 
-resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
-  name = var.aws_identity_pool_name
-}
-
 resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
   name = var.aws_client_name
 
@@ -2341,10 +2379,10 @@ resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
   health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
   health_check_type         = var.aws_auto_scaling_health_check_type
   force_delete              = var.aws_auto_scaling_force_delete
-  launch_configuration      = aws_launch_configuration.as_conf.name
+  launch_configuration      = aws_launch_configuration.as_conf_for_autoscalling.name
 }
 
-resource "aws_launch_configuration" "as_conf" {
+resource "aws_launch_configuration" "as_conf_for_autoscalling" {
   name          = var.aws_launch_configuration_name
   image_id      = var.aws_image_id
   instance_type = var.aws_instance_type
@@ -2590,6 +2628,7 @@ resource "aws_vpc" "for_lb" {
     Name = "main"
   }
 }
+
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.for_lb.id
   cidr_block = "10.0.0.0/24"
@@ -2607,6 +2646,75 @@ resource "aws_internet_gateway" "ig_for_lb" {
     Name = var.aws_internet_gateway_name
   }
 }
+
+resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+  max_capacity       = 100
+  min_capacity       = 5
+  resource_id        = "table/${aws_dynamodb_table.example.name}"
+  scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+  service_namespace  = "dynamodb"
+}
+
+resource "aws_appautoscaling_policy" "dynamodb_table_read_policy" {
+  name               = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.dynamodb_table_read_target.resource_id}"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.dynamodb_table_read_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.dynamodb_table_read_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.dynamodb_table_read_target.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "DynamoDBReadCapacityUtilization"
+    }
+
+    target_value = 70
+  }
+}
+
+resource "aws_dynamodb_table" "example" {
+  name           = "GameScores"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = false
+  }
+
+  global_secondary_index {
+    name               = "GameTitleIndex"
+    hash_key           = "GameTitle"
+    range_key          = "TopScore"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
+
 
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
   body = jsonencode({

@@ -36,6 +36,7 @@ require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-apigateway'
+require 'aws-sdk-databasemigrationservice'
 
 # AWS Inspec Backend Classes
 #
@@ -189,6 +190,10 @@ class AwsConnection
     aws_client(Aws::SSM::Client)
   end
 
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
   def athena_client
     aws_client(Aws::Athena::Client)
   end
@@ -211,6 +216,10 @@ class AwsConnection
 
   def apigateway_client
     aws_client(Aws::APIGateway::Client)
+  end
+
+  def applicationautoscaling_client
+    aws_client(Aws::ApplicationAutoScaling::Client)
   end
 end
 
