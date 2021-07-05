@@ -24,7 +24,7 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
     end
   end
 
-  def id
+  def listener_arn
     return nil unless exists?
     @listeners[:listener_arns]
   end
