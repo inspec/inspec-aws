@@ -1,9 +1,14 @@
-<!-- latest_release 1.51.0 -->
+<!-- latest_release 1.51.1 -->
+## [v1.51.1](https://github.com/inspec/inspec-aws/tree/v1.51.1) (2021-07-05)
+
+#### Merged Pull Requests
+- aws elasticloadbalancingv2 listener [#373](https://github.com/inspec/inspec-aws/pull/373) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.51.0](https://github.com/inspec/inspec-aws/tree/v1.51.0) (2021-07-05)
 
 #### Merged Pull Requests
 - Support VPC endpoint service permission(s) [#418](https://github.com/inspec/inspec-aws/pull/418) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.50.10](https://github.com/inspec/inspec-aws/tree/v1.50.10) (2021-07-05)
 
