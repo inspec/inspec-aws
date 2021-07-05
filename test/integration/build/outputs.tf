@@ -334,6 +334,7 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+<<<<<<< HEAD
 output "aws_mount_target_mt_id" {
   value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
 }
@@ -478,3 +479,20 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
+=======
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
+}
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e

@@ -209,6 +209,7 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
+<<<<<<< HEAD
       aws_openid_connect_provider_arns: "arn:aws:iam::123456789012:oidc-provider/id.example.com",
       aws_image_id:"ami-09f56df189a29f532",
       aws_instance_type: "t2.micro",
@@ -266,6 +267,10 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
+=======
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_sfn_state_machine_name: "my-state-machine",
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
   }
 
   def self.config

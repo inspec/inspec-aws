@@ -30,6 +30,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+<<<<<<< HEAD
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
@@ -37,6 +38,9 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-databasemigrationservice'
+=======
+require 'aws-sdk-states'
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
 
 # AWS Inspec Backend Classes
 #
@@ -190,6 +194,7 @@ class AwsConnection
     aws_client(Aws::SSM::Client)
   end
 
+<<<<<<< HEAD
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
   end
@@ -220,6 +225,10 @@ class AwsConnection
 
   def applicationautoscaling_client
     aws_client(Aws::ApplicationAutoScaling::Client)
+=======
+  def states_client
+    aws_client(Aws::States::Client)
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
   end
 end
 

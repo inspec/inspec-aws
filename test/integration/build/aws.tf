@@ -152,6 +152,7 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+<<<<<<< HEAD
 variable "aws_identity_pool_name" {}
 variable "aws_open_id_connect_provider_arns" {}
 variable "aws_image_id" {}
@@ -209,6 +210,9 @@ variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
 
+=======
+variable "aws_sfn_state_machine_name" {}
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2107,6 +2111,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+<<<<<<< HEAD
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -2173,11 +2178,25 @@ resource "aws_batch_compute_environment" "aws_batch_compute_environment1" {
 
 resource "aws_iam_role" "ecs_instance_role" {
   name = "ecs_instance_role"
+=======
+
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
 
   assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
+<<<<<<< HEAD
     {
         "Action": "sts:AssumeRole",
         "Effect": "Allow",
@@ -2185,11 +2204,21 @@ resource "aws_iam_role" "ecs_instance_role" {
             "Service": "ec2.amazonaws.com"
         }
     }
+=======
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
     ]
 }
 EOF
 }
 
+<<<<<<< HEAD
 resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
   role       = aws_iam_role.ecs_instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
@@ -2770,3 +2799,84 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
+=======
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_sfn_state_machine" "sfn_state_machine_sf_test" {
+  name     = var.aws_sfn_state_machine_name
+  role_arn = aws_iam_role.aws_iam_role_sf_test.arn
+
+  definition = <<EOF
+{
+  "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
+  "StartAt": "HelloWorld",
+  "States": {
+    "HelloWorld": {
+      "Type": "Task",
+      "Resource": "${aws_lambda_function.aws_lambda_function_sf_test.arn}",
+      "End": true
+    }
+  }
+}
+EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_sf_test" {
+  name = "iam_for_lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_sf_test" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name"
+  role          = aws_iam_role.aws_iam_role_sf_test.arn
+  handler       = "exports.test"
+
+  # The filebase64sha256() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
+  source_code_hash = filebase64sha256("files/lambda.zip")
+
+
+  runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+>>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
