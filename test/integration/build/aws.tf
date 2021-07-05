@@ -2107,6 +2107,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -2146,29 +2147,6 @@ resource "aws_iam_role" "dms-vpc-role" {
 resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
   role       = aws_iam_role.dms-vpc-role.name
-}
-
-
-resource "aws_batch_compute_environment" "aws_batch_compute_environment1" {
-  compute_environment_name = "test1"
-
-  compute_resources {
-    max_vcpus = 16
-
-    security_group_ids = [
-      aws_security_group.to_test_batch.id
-    ]
-
-    subnets = [
-      aws_subnet.to_test_batch.id
-    ]
-
-    type = "FARGATE"
-  }
-
-  service_role = aws_iam_role.aws_batch_service_role.arn
-  type         = "MANAGED"
-  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
 }
 
 resource "aws_iam_role" "ecs_instance_role" {
@@ -2273,6 +2251,7 @@ resource "aws_batch_compute_environment" "to_test_batch" {
   type         = "MANAGED"
   depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
 }
+
 resource "aws_batch_job_queue" "test_queue" {
   name     = var.aws_batch_job_queue_name
   state    =  var.aws_batch_job_queue_status
@@ -2281,7 +2260,6 @@ resource "aws_batch_job_queue" "test_queue" {
     aws_batch_compute_environment.to_test_batch.arn,
   ]
 }
-
 
 resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
   name = var.aws_client_name
@@ -2628,6 +2606,7 @@ resource "aws_vpc" "for_lb" {
     Name = "main"
   }
 }
+
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.for_lb.id
   cidr_block = "10.0.0.0/24"
@@ -2714,6 +2693,64 @@ resource "aws_dynamodb_table" "example" {
   }
 }
 
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
+  name        = "MyDemoAPI"
+  description = "This is my API for demonstration purposes"
+}
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.root_resource_id
+  path_part   = "mydemoresource"
+}
+
+resource "aws_api_gateway_method" "aws_api_gateway_method_test" {
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  resource_id   = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
 
 resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
   family = "service"
