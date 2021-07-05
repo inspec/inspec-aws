@@ -19,8 +19,8 @@ class AWSTransferUsers < AwsResourceBase
              .register_column(:home_directories,                        field: :home_directory)
              .register_column(:home_directory_types,                    field: :home_directory_type)
              .register_column(:roles,                                   field: :role)
-             .register_column(:ssh_public_key_count,                   field: :ssh_public_key_count)
-             .register_column(:user_names,                              field: :user_name)
+             .register_column(:ssh_public_key_count, field: :ssh_public_key_count)
+             .register_column(:user_names, field: :user_name)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
