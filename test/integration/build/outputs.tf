@@ -301,3 +301,19 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
+}
