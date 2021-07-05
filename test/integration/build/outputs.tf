@@ -334,6 +334,14 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_elasticsearch_domain_id" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.domain_id
+}
+
+output "aws_elasticsearch_domain_arn" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.arn
+}
+
 output "aws_dms_endpoint_arn" {
   value = aws_dms_endpoint.aws_dms_endpoint_test.endpoint_arn
 }
