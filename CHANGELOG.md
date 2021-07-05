@@ -1,9 +1,14 @@
-<!-- latest_release 1.51.3 -->
+<!-- latest_release 1.51.4 -->
+## [v1.51.4](https://github.com/inspec/inspec-aws/tree/v1.51.4) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_glue_crawler [#380](https://github.com/inspec/inspec-aws/pull/380) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.51.3](https://github.com/inspec/inspec-aws/tree/v1.51.3) (2021-07-05)
 
 #### Merged Pull Requests
 - aws_glue_database [#381](https://github.com/inspec/inspec-aws/pull/381) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.51.2](https://github.com/inspec/inspec-aws/tree/v1.51.2) (2021-07-05)
 
