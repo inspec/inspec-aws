@@ -35,6 +35,6 @@ class AWSEventBridgeRule < AwsResourceBase
   end
 
   def to_s
-    "name: #{@display_name}"
+    "Rule Name: #{@display_name}"
   end
 end
