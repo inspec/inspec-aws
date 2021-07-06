@@ -39,20 +39,17 @@ class AWSEventBridgeRules < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.eventbridge_client.list_rules(@query_params)
       end
-
       return rows if !@api_response || @api_response.empty?
       @api_response.rules.each do |res|
-        rows += [{
-          name: res.name,
-          arn: res.arn,
-          event_pattern: res.event_pattern,
-          state: res.state,
-          description: res.description,
-          schedule_expression: res.schedule_expression,
-          role_arn: res.role_arn,
-          managed_by: res.managed_by,
-          event_bus_name: res.event_bus_name,
-        }]
+        rows += [{ name: res.name,
+                   arn: res.arn,
+                   event_pattern: res.event_pattern,
+                   state: res.state,
+                   description: res.description,
+                   schedule_expression: res.schedule_expression,
+                   role_arn: res.role_arn,
+                   managed_by: res.managed_by,
+                   event_bus_name: res.event_bus_name }]
       end
       break unless @api_response.next_token
       @query_params[:next_token] = @api_response.next_token

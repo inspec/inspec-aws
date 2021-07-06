@@ -4,16 +4,12 @@ require 'aws-sdk-core'
 
 class AWSEventBridgeRulesConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AWSEventBridgeRules.new(client_args: { stub_responses: true })
+  def test_empty_params_argument_error_check
+    assert_raises(ArgumentError)  {AWSEventBridgeRules.new(name_prefix: '', client_args: { stub_responses: true })}
   end
 
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSEventBridgeRules.new('rubbish') }
-  end
-
-  def test_rules_non_existing_for_empty_response
-    refute AWSEventBridgeRules.new(client_args: { stub_responses: true }).exist?
   end
 end
 
