@@ -30,6 +30,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
@@ -226,6 +227,10 @@ class AwsConnection
 
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
+  def elasticsearch_service_client
+    aws_client(Aws::ElasticsearchService::Client)
   end
 
   def eventbridge_client

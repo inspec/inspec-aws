@@ -1,9 +1,14 @@
-<!-- latest_release 1.51.4 -->
+<!-- latest_release 1.51.5 -->
+## [v1.51.5](https://github.com/inspec/inspec-aws/tree/v1.51.5) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_elastic_search_domain [#378](https://github.com/inspec/inspec-aws/pull/378) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.51.4](https://github.com/inspec/inspec-aws/tree/v1.51.4) (2021-07-05)
 
 #### Merged Pull Requests
 - aws_glue_crawler [#380](https://github.com/inspec/inspec-aws/pull/380) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.51.3](https://github.com/inspec/inspec-aws/tree/v1.51.3) (2021-07-05)
 

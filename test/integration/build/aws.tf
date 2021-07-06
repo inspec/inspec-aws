@@ -208,8 +208,11 @@ variable "aws_min_vcpus" {}
 variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
-
 variable "aws_crawler_name" {}
+variable "aws_elasticsearch_domain_name" {}
+variable "aws_elasticsearch_version" {}
+variable "aws_elasticsearch_instance_type" {}
+variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2155,6 +2158,29 @@ resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
     ]
   }
   EOF
+}
+
+
+resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
+  domain_name           = var.aws_elasticsearch_domain_name
+  elasticsearch_version = var.aws_elasticsearch_version
+
+  cluster_config {
+    instance_type = var.aws_elasticsearch_instance_type
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = var.aws_elasticsearch_automated_snapshot_start_hour
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
 }
 
 resource "aws_glue_crawler" "aws_glue_crawler_test" {
