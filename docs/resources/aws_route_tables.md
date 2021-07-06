@@ -53,25 +53,25 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 ### Confirm that a route table exists.
 
     describe aws_route_tables do
-      its('vpc_ids') { should include 'vpc-01625e36123456789' }
+      its('vpc_ids') { should include 'VPC_ID' }
     end
 
 ### Confirm a route table exists.
 
     describe aws_route_tables do
-      its('route_table_ids') { should include 'rtb-12345678' }
+      its('route_table_ids') { should include 'ROUTE_TABLE_ID' }
     end
 
 ### Confirm a destination_cidr_blocks is there in the routes.
 
     describe aws_route_tables do
-      its('destination_cidr_blocks') { should include "10.0.0.0/27" }
+      its('destination_cidr_blocks') { should include "IPV4_CIDR_BLOCK" }
     end
 
 ### Ensure subnet ID of interest is associated 
 
     describe aws_route_tables do
-      its('associated_subnet_ids') { should include 'subnet-026a4cbe6c04c36c2' }
+      its('associated_subnet_ids') { should include 'SUBNET_ID' }
     end
 
 ### Filter only main route tables

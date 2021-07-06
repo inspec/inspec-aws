@@ -11,11 +11,11 @@ Use the `aws_route_table` InSpec audit resource to test the properties of a sing
 
 This resource expects a single parameter that uniquely identifies the route table. You may pass it as a string, or as the value in a hash:
 
-    describe aws_route_table('rtb-123abcde') do
+    describe aws_route_table('ROUTE_TABLE_ID') do
       it { should exist }
     end
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       it { should exist }
     end
 
@@ -26,9 +26,7 @@ This resource expects a single parameter that uniquely identifies the route tabl
 This resource accepts a single parameter, the `route\_table\_id`.
 This can be passed either as a string or as a `route_table_id: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html).
-
-See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html).
+See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html) and the [AWS documentation on routes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html#cfn-ec2-route-destinationcidrblock).
 
 ## Properties
 
@@ -56,57 +54,57 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 | routes(instance\_owner\_id) | The owner ID of a NAT instance in your VPC. |
 | routes(origin) | Describes how the route was created. |
 | routes(state) | The state of the route. |
-| associated_subnet_ids | List of associated subnet IDs |
-| associated_gateway_ids | List of associated gateway IDs |
+| associated_subnet_ids | List of associated subnet IDs. |
+| associated_gateway_ids | List of associated gateway IDs. |
 
 ## Examples
 
 ### Confirm that the route table has expected VPC identifier
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      its('vpc_id') { should eq 'vpc-01625e36123456789' }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      its('vpc_id') { should eq 'VPC_ID' }
     end
 
 ### Confirm that the route table has expected owner identifier
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      its('owner_id') { should eq '123456789012' }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      its('owner_id') { should eq 'OWNER_ID' }
     end
 
 ### Ensure the expected number of routes is present
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       its('routes.count') { should eq 2 }
     end
 
 ### Ensure the expected number of associations is present
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       its('associations.count') { should eq 1 }
     end
 
 ### Ensure the subnet ID of interest is associated
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      its('associated_subnet_ids') { should include 'subnet-026a4cbe6c04c36c2' }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      its('associated_subnet_ids') { should include 'SUBNET_ID' }
     end
 
 ### Ensure no gateways are associated
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       its('associated_gateway_ids') { should be_empty }
     end
 
 ### Ensure there are no virtual private gateway (VGW) propagating routes
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       its('propagating_vgws') { should be_empty }
     end
 
-### Confirm that the route table has the expected destination_cidr_block of the route
+### Confirm that the route table has the expected destination IPv4 CIDR block of the route
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      its('routes.first.destination_cidr_block') { should eq '10.0.0.0/16' }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      its('routes.first.destination_cidr_block') { should eq 'IPV4_CIDR_BLOCK' }
     end
 
 ## Matchers
@@ -129,37 +127,43 @@ Use `should_not` to test the entity should not exist.
 
 ### main
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
+The control will pass if the route table is the main route table for the VPC.
+
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
       it { should be_main }
     end
 
-
 ### have_subnet_associated
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      it { should have_subnet_associated('subnet-026a4cbe6c04c36c2') }
+The control will pass if the subnet is associated with the route table.
+
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      it { should have_subnet_associated('SUBNET_ID') }
     end
 
 
 ### have_gateway_associated
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      it { should have_gateway_associated('tgw-026a4cbe6c04c36c2') }
-    end
+The control will pass if the specified gateway is associated with the route table.
 
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      it { should have_gateway_associated('GATEWAY_ID') }
+    end
 
 ### have_failed_association_value
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      it { should have_failed_association_value(gateway_id: 'tgw-026a4cbe6c04c36c2') }
+The control will pass if the specified gateway, subnet, or association that is associated with the route table has a failed state.
+
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      it { should have_failed_association_value(gateway_id: 'GATEWAY_ID') }
     end
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      it { should have_failed_association_value(subnet_id: 'subnet-026a4cbe6c04c36c2') }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      it { should have_failed_association_value(subnet_id: 'SUBNET_ID') }
     end
 
-    describe aws_route_table(route_table_id: 'rtb-123abcde') do
-      it { should have_failed_association_value(route_table_association_id: 'rtbassoc-05dc3f4b81d9d500f') }
+    describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
+      it { should have_failed_association_value(route_table_association_id: 'ROUTE_TABLE_ASSOCIATION_ID') }
     end
 
 ## AWS Permissions
