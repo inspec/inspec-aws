@@ -5,9 +5,7 @@ platform: aws
 
 # aws\_elasticloadbalancingv2\_target\_groups
 
-Use the `aws_elasticloadbalancingv2_target_groups` InSpec audit resource to test properties of a plural ElasticLoadBalancingV2 TargetGroups.
-
-The AWS::ElasticLoadBalancingV2::TargetGroup resource specifies a target group for a load balancer. Before you register a Lambda function as a target, you must create a AWS::Lambda::Permission resource that grants the Elastic Load Balancing service principal permission to invoke the Lambda function.
+Use the `aws_elasticloadbalancingv2_target_groups` InSpec audit resource to test properties of multiple Elastic Load Balancing V2 target groups.
 
 ## Syntax
 
@@ -15,8 +13,6 @@ Ensure that a target group arn exists.
     describe aws_elasticloadbalancingv2_target_groups  do
       it { should exist }
     end
-
-
 
 For additional information, see the [AWS documentation on ElasticLoadBalancingV2 TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html).
 
@@ -26,30 +22,32 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 | --- | --- |
 | target_group_arns | The Amazon Resource Name (ARN) of the target group. |
 | target_group_names | The name of the target group. |
-| protocols | The protocol to use for routing traffic to the targets. |
+| protocols | The protocol to use for routing traffic to the targets. Valid values are: `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, or `UDP`. |
 | ports | The port on which the targets are listening. Not used if the target is a Lambda function. |
 | vpc_id s| The ID of the VPC for the targets. |
-| health_check_protocols | The protocol to use to connect with the target. The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health checks. |
+| health_check_protocols | The protocol to use to connect with the target. The `GENEVE`, `TLS`, `UDP`, and `TCP_UDP` protocols are not supported for health checks. |
 | health_check_ports | The port to use to connect with the target. |
 | health_check_enableds | Indicates whether health checks are enabled. |
 | health_check_interval_seconds | The approximate amount of time, in seconds, between health checks of an individual target. |
 | health_check_timeout_seconds | The amount of time, in seconds, during which no response means a failed health check. |
-| healthy_threshold_counts | The number of consecutive health checks successes required before considering an unhealthy target healthy. |
+| healthy_threshold_counts | The number of consecutive health check successes required before considering an unhealthy target healthy. |
 | unhealthy_threshold_counts | The number of consecutive health check failures required before considering the target unhealthy. |
 | health_check_paths | The destination for health checks on the targets. |
 | matchers | The HTTP or gRPC codes to use when checking for a successful response from a target. |
 | load_balancer_arns | The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group. |
 | target_types | The type of target that you must specify when registering targets with this target group. The possible values are instance (register targets by instance ID), ip (register targets by IP address), or lambda (register a single Lambda function as a target). |
-| protocol_versions | [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC , HTTP1 , and HTTP2 . |
+| protocol_versions | For HTTP or HTTPS protocols, the protocol version. Valid values are `GRPC`, `HTTP1`, and `HTTP2`. |
 
 ## Examples
 
-### Ensure a target group arn is available.
+### Ensure a target group ARN is available.
+
     describe aws_elasticloadbalancingv2_target_groups  do
-      its('target_group_names') { should include 'test1' }
+      its('target_group_names') { should include 'TARGET_GROUP_NAME' }
     end
 
 ### Ensure that the target group name exists.
+
     describe aws_elasticloadbalancingv2_target_groups  do
         its('protocol_versions') { should include 'HTTP1' }
     end
