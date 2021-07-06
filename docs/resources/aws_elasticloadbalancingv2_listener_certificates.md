@@ -5,18 +5,21 @@ platform: aws
 
 # aws\_elasticloadbalancingv2\_listener\_certificates
 
-Use the `aws_elasticloadbalancingv2_listener_certificates` InSpec audit resource to test properties of a plural AWS ElasticLoadBalancingV2 Listener Certificates.
+Use the `aws_elasticloadbalancingv2_listener_certificates` InSpec audit resource to test properties of multiple TLS or HTTPS listener certificates.
 
 ## Syntax
 
-Ensure that a listener_arn exists.
-    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
+Ensure that a listener ARN exists.
+
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
       it { should exist }
     end
 
 ## Parameters
 
-##### listener_arn _(required)_
+### listener_arn _(required)_
+
+The Amazon Resource Name (ARN) of the listener certificate.
 
 See also the [AWS documentation on ElasticLoadBalancingV2 Listener Certificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
 
@@ -24,22 +27,22 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener Certificate](
 
 |Property | Description|
 | --- | --- |
-| certificate_arn | The Amazon Resource Name (ARN) of the certificate. |
-| is_default | Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates. |
+| certificate_arns | The Amazon Resource Name (ARN) of the certificate. |
+| is_default | Indicates whether the certificate is the default certificate.  |
 
 ## Examples
 
-### Ensure a listener_arn is available.
-    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
+### Ensure a listener ARN is available.
+
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
       it { should exist }
     end
 
+### Ensure that listener has a desired certificate ARN attached.
 
-##### Ensure that listerner has a desired certificate arn attached.
-    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
-      its('certificate_arns') { should include "test" }
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
+      its('certificate_arns') { should include "CERTIFICATE_ARN" }
     end
-
 
 ## Matchers
 
@@ -51,13 +54,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'dummy') do
+
+    describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
       it { should_not exist }
     end
 
