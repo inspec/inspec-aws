@@ -11,7 +11,6 @@ control 'aws_transit_gateway_multicast_domain' do
     its('transit_gateway_multicast_domain_arn') { should eq 'arn:aws:ec2:us-east-2:112758395563:transit-gateway-multicast-domain/tgw-mcast-domain-0814d49959a72bcd5' }
     its('owner_id') { should eq '112758395563' }
     its('state') { should eq 'available' }
-    # its('creation_time') { should_not be_empty }
     its('tags') { should_not be_empty }
   end
 
