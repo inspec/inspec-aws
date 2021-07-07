@@ -2,8 +2,8 @@
 
 require 'aws_backend'
 
-class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
-  name 'aws_transit_gateway_multicast_domain_associations'
+class AWSTransitGatewayConnects < AwsResourceBase
+  name 'aws_transit_gateway_connects'
   desc 'Gets information about the associations for the transit gateway multicast domain.'
 
   example "
@@ -19,7 +19,7 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_attachment_id,                   field: :transit_gateway_attachment_id)
+             .register_column(:transit_gateway_attachment_ids,                  field: :transit_gateway_attachment_id)
              .register_column(:transport_transit_gateway_attachment_ids,        field: :transport_transit_gateway_attachment_id)
              .register_column(:transit_gateway_ids,                             field: :transit_gateway_id)
              .register_column(:states,                                          field: :state)
@@ -41,10 +41,10 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
     pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_transit_gateway_multicast_domains(pagination_options)
+        @api_response = @aws.compute_client.describe_transit_gateway_connects(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.transit_gateway_multicast_domains.each do |resp|
+      @api_response.transit_gateway_connects.each do |resp|
         rows += [{ transit_gateway_attachment_id: resp.transit_gateway_attachment_id,
                    transport_transit_gateway_attachment_id: resp.transport_transit_gateway_attachment_id,
                    transit_gateway_id: resp.transit_gateway_id,
