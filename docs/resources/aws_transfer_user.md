@@ -53,7 +53,7 @@ For additional information, see the [AWS documentation on Transfer user](https:/
       its('user_name') { should eq 'USER_NAME' }
     end
 
-### Ensure that the server id is available.
+### Ensure that the server ID is available.
 
     describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
         its('server_id') { should eq 'SERVER_ID' }
