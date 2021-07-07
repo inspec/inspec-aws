@@ -70,7 +70,7 @@ The role is used to grant permissions to S3 Buckets, SNS topics and to get confi
 
 ## Matchers
 
-####be\_recording
+#### be\_recording
 Ensure the recorder is active
 
       it { should be_recording }

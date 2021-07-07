@@ -43,6 +43,23 @@ class AwsRouteTableHappyPathTest < Minitest::Test
     mock_route_table[:route_table_id] = 'rtb-ad212345'
     mock_route_table[:tags] = []
     mock_route_table[:vpc_id] = 'vpc-c2a12345'
+    mock_route_table[:routes] = [{
+      destination_cidr_block: "default",
+      destination_ipv_6_cidr_block: "default",
+      destination_prefix_list_id: "default",
+      egress_only_internet_gateway_id: "default",
+      gateway_id: "default",
+      instance_id: "default",
+      instance_owner_id: "default",
+      nat_gateway_id: "default",
+      transit_gateway_id: "default",
+      local_gateway_id: "default",
+      carrier_gateway_id: "default",
+      network_interface_id: "default",
+      origin: "default",
+      state: "default",
+      vpc_peering_connection_id: "default",
+    }]
     data[:data] = { :route_tables => [mock_route_table] }
     data[:client] = Aws::EC2::Client
     @route_table = AwsRouteTable.new(route_table_id: 'rtb-ad212345', client_args: { stub_responses: true }, stub_data: [data])
