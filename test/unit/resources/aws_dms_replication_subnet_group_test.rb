@@ -3,7 +3,6 @@ require 'aws_dms_replication_subnet_group'
 require 'aws-sdk-core'
 
 class AWSDMSReplicationSubnetGroupConstructorTest < Minitest::Test
-
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AWSDMSReplicationSubnetGroup.new(client_args: { stub_responses: true }) }
   end
@@ -38,7 +37,7 @@ class AWSDMSReplicationSubnetGroupHappyPathTest < Minitest::Test
     mock_data[:replication_subnet_group_description] = 'test1'
     mock_data[:vpc_id] = 'test1'
     mock_data[:subnet_group_status] = 'test1'
-    data[:data] = { :replication_subnet_groups => [mock_data] }
+    data[:data] = { replication_subnet_groups: [mock_data] }
     data[:client] = Aws::DatabaseMigrationService::Client
     @replication_subnet_groups = AWSDMSReplicationSubnetGroup.new(replication_subnet_group_identifier: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
