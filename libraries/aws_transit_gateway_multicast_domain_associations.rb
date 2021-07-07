@@ -19,7 +19,7 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_attachment_id,                   field: :transit_gateway_attachment_id)
+             .register_column(:transit_gateway_attachment_ids,                  field: :transit_gateway_attachment_id)
              .register_column(:resource_ids,                                    field: :resource_id)
              .register_column(:resource_types,                                  field: :resource_type)
              .register_column(:resource_owner_ids,                              field: :resource_owner_id)
@@ -28,20 +28,23 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(transit_gateway_multicast_domain_id))
+    @query_params = {}
+    @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
+    raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
+    @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
     @table = fetch_data
   end
 
   def fetch_data
-    pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    @query_params[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_transit_gateway_multicast_domains(pagination_options)
+        @api_response = @aws.compute_client.get_transit_gateway_multicast_domain_associations(@query_params)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.transit_gateway_multicast_domains.each do |resp|
+      @api_response.multicast_domain_associations.each do |resp|
         rows += [{ transit_gateway_attachment_id: resp.transit_gateway_attachment_id,
                    resource_id: resp.resource_id,
                    resource_type: resp.resource_type,

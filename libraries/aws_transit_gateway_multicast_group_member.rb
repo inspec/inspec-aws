@@ -8,11 +8,11 @@ class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
 
   example "
     describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'test') do
-      it { should eq 'test' }
+      it { should exist }
     end
 
     describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'test') do
-      it { should exist }
+      its ('group_ip_address') { should eq '224.0.0.1' }
     end
   "
 
@@ -20,7 +20,6 @@ class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
     opts = { transit_gateway_multicast_domain_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_multicast_domain_id])
-
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
     @display_name = opts[:transit_gateway_multicast_domain_id]
     catch_aws_errors do

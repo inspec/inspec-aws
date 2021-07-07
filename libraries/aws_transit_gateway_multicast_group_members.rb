@@ -7,12 +7,12 @@ class AWSTransitGatewayMulticastGroupMembers < AwsResourceBase
   desc 'Searches one or more transit gateway multicast groups and returns the group membership information.'
 
   example "
-    describe aws_transit_gateway_multicast_group_members do
+    describe aws_transit_gateway_multicast_group_members(transit_gateway_multicast_domain_id: 'tgw-mcast-domain-1234567890') do
       it { should exist }
     end
 
-    describe aws_transit_gateway_multicast_group_members do
-      its ('group_ip_addresses') { should include 'group_ip_address' }
+    describe aws_transit_gateway_multicast_group_members(transit_gateway_multicast_domain_id: 'tgw-mcast-domain-1234567890') do
+      its ('group_ip_addresses') { should include '224.0.0.1' }
     end
   "
 
@@ -25,6 +25,7 @@ class AWSTransitGatewayMulticastGroupMembers < AwsResourceBase
              .register_column(:resource_ids,                          field: :resource_id)
              .register_column(:resource_types,                        field: :resource_type)
              .register_column(:resource_owner_ids,                    field: :resource_owner_id)
+             .register_column(:network_interface_ids,                 field: :network_interface_id)
              .register_column(:group_members,                         field: :group_member)
              .register_column(:group_sources,                         field: :group_source)
              .register_column(:member_types,                          field: :member_type)
@@ -33,26 +34,30 @@ class AWSTransitGatewayMulticastGroupMembers < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(transit_gateway_multicast_domain_id))
+    @query_params = {}
+    @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
+    raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
+    @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
     @table = fetch_data
   end
 
   def fetch_data
-    pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    @query_params[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_transit_gateway_multicast_domains(pagination_options)
+        @api_response = @aws.compute_client.search_transit_gateway_multicast_groups(@query_params)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.transit_gateway_multicast_domains.each do |resp|
+      @api_response.multicast_groups.each do |resp|
         rows += [{ group_ip_address: resp.group_ip_address,
                    transit_gateway_attachment_id: resp.transit_gateway_attachment_id,
                    subnet_id: resp.subnet_id,
                    resource_id: resp.resource_id,
                    resource_type: resp.resource_type,
                    resource_owner_id: resp.resource_owner_id,
+                   network_interface_id: resp.network_interface_id,
                    group_member: resp.group_member,
                    group_source: resp.group_source,
                    member_type: resp.member_type,

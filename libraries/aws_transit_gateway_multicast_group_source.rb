@@ -7,12 +7,12 @@ class AWSTransitGatewayMulticastGroupSource < AwsResourceBase
   desc 'Searches one or more transit gateway multicast groups and returns the group membership information.'
 
   example "
-    describe aws_transit_gateway_multicast_group_source(transit_gateway_attachment_ids: 'test') do
-      it { should eq 'test' }
+    describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_domain_id: 'test') do
+      it { should exist }
     end
 
-    describe aws_transit_gateway_multicast_group_source(transit_gateway_attachment_ids: 'test') do
-      it { should exits }
+    describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_domain_id: 'test') do
+      its ('group_ip_address') { should eq '224.0.0.1' }
     end
   "
 
@@ -20,7 +20,6 @@ class AWSTransitGatewayMulticastGroupSource < AwsResourceBase
     opts = { transit_gateway_multicast_domain_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_multicast_domain_id])
-
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
     @display_name = opts[:transit_gateway_multicast_domain_id]
     catch_aws_errors do
