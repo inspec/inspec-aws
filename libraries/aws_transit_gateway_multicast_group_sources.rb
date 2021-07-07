@@ -6,7 +6,15 @@ class AWSTransitGatewayMulticastDomains < AwsResourceBase
   name 'aws_transit_gateway_multicast_domains'
   desc 'Describes one or more transit gateway multicast domains.'
 
-  example
+  example "
+    describe aws_transit_gateway_multicast_domains do
+      it { should exist }
+    end
+
+    describe aws_transit_gateway_multicast_domains do
+      its ('group_ip_addresses') { should include 'group_ip_address' }
+    end
+  "
 
   attr_reader :table
 

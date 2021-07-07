@@ -12,7 +12,7 @@ class AWSTransitGatewayMulticastGroupMembers < AwsResourceBase
     end
 
     describe aws_transit_gateway_multicast_group_members do
-      its('group_ip_addresses') { should include 'group_ip_address' }
+      its ('group_ip_addresses') { should include 'group_ip_address' }
     end
   "
 
