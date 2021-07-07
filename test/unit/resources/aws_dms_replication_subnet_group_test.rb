@@ -29,8 +29,7 @@ class AWSDMSReplicationSubnetGroupConstructorTest < Minitest::Test
   end
 end
 
-class AWSDMSEndpointHappyPathTest < Minitest::Test
-
+class AWSDMSReplicationSubnetGroupHappyPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_replication_subnet_groups
