@@ -2,18 +2,18 @@ require 'helper'
 require 'aws_transit_gateway_multicast_group_sources'
 require 'aws-sdk-core'
 
-class AWSTransitGatewayMulticastGroupsConstructorTest < Minitest::Test
+class AWSTransitGatewayMulticastGroupSourcesConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) {AWSTransitGatewayMulticastGroups.new(client_args: { stub_responses: true })}
+    assert_raises(ArgumentError) {AWSTransitGatewayMulticastGroupSources.new(transit_gateway_multicast_domain_id: '', client_args: { stub_responses: true })}
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AWSTransitGatewayMulticastGroups.new('rubbish') }
+    assert_raises(ArgumentError) { AWSTransitGatewayMulticastGroupSources.new('rubbish') }
   end
 end
 
-class AWSTransitGatewayMulticastGroupsHappyPathTest < Minitest::Test
+class AWSTransitGatewayMulticastGroupSourcesHappyPathTest < Minitest::Test
 
   def setup
     data = {}
@@ -30,9 +30,9 @@ class AWSTransitGatewayMulticastGroupsHappyPathTest < Minitest::Test
     mock_data[:group_source] = true
     mock_data[:member_type] = 'test1'
     mock_data[:source_type] = 'test1'
-    data[:data] = { multicast_groups: mock_data }
+    data[:data] = { :multicast_groups => [mock_data] }
     data[:client] = Aws::EC2::Client
-    @multicast_groups = AWSTransitGatewayMulticastGroups.new(client_args: { stub_responses: true }, stub_data: [data])
+    @multicast_groups = AWSTransitGatewayMulticastGroupSources.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_group_ip_addresses

@@ -34,7 +34,7 @@ class AWSTransitGatewayMulticastGroupSourceSuccessPathTest < Minitest::Test
     mock_data[:group_source] = true
     mock_data[:member_type] = 'test1'
     mock_data[:source_type] = 'test1'
-    data[:data] = { multicast_groups: mock_data }
+    data[:data] = { :multicast_groups => [mock_data] }
     data[:client] = Aws::EC2::Client
     @multicast_groups = AWSTransitGatewayMulticastGroupSource.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end

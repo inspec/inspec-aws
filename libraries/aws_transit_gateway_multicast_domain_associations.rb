@@ -7,11 +7,11 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
   desc 'Gets information about the associations for the transit gateway multicast domain.'
 
   example "
-    describe aws_transit_gateway_multicast_domain_associations do
+    describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'id') do
       it { should exist }
     end
 
-    describe aws_transit_gateway_multicast_domain_associations do
+    describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'id') do
       its('transit_gateway_attachment_ids') { should include 'Domain ID' }
     end
   "

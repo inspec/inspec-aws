@@ -29,7 +29,7 @@ class AWSTransitGatewayConnectSuccessPathTest < Minitest::Test
     mock_data[:state] = 'test1'
     mock_data[:creation_time] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_data[:tags] = []
-    data[:data] = { multicast_domain_associations: mock_data }
+    data[:data] = { transit_gateway_connects: [mock_data] }
     data[:client] = Aws::EC2::Client
     @multicast_domain_associations = AWSTransitGatewayConnect.new(transit_gateway_attachment_ids: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -56,9 +56,5 @@ class AWSTransitGatewayConnectSuccessPathTest < Minitest::Test
 
   def test_creation_time
     assert_equal(@multicast_domain_associations.creation_time, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
-  end
-
-  def test_tags
-    assert_equal(@multicast_domain_associations.tags, [])
   end
 end

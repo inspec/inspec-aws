@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSTransitGatewayMulticastDomainsConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) {AWSTransitGatewayMulticastDomains.new(client_args: { stub_responses: true })}
+    assert_raises(ArgumentError) {AWSTransitGatewayMulticastDomains.new(transit_gateway_multicast_domain_id: '', client_args: { stub_responses: true })}
   end
 
   def test_rejects_other_args
@@ -24,9 +24,9 @@ class AWSTransitGatewayMulticastDomainsHappyPathTest < Minitest::Test
     mock_data[:transit_gateway_multicast_domain_arn] = 'test1'
     mock_data[:owner_id] = 'test1'
     mock_data[:state] = 'test1'
-    data[:data] = { transit_gateway_multicast_domains: mock_data }
+    data[:data] = { :transit_gateway_multicast_domains => [mock_data] }
     data[:client] = Aws::EC2::Client
-    @transit_gateway_multicast_domains = AWSTransitGatewayMulticastDomain.new(client_args: { stub_responses: true }, stub_data: [data])
+    @transit_gateway_multicast_domains = AWSTransitGatewayMulticastDomains.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_transit_gateway_multicast_domain_ids

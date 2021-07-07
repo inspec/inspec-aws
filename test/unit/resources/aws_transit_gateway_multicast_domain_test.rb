@@ -28,7 +28,7 @@ class AWSTransitGatewayMulticastDomainSuccessPathTest < Minitest::Test
     mock_data[:transit_gateway_multicast_domain_arn] = 'test1'
     mock_data[:owner_id] = 'test1'
     mock_data[:state] = 'test1'
-    data[:data] = { transit_gateway_multicast_domains: mock_data }
+    data[:data] = { transit_gateway_multicast_domains: [mock_data] }
     data[:client] = Aws::EC2::Client
     @transit_gateway_multicast_domains = AWSTransitGatewayMulticastDomain.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end

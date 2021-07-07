@@ -26,7 +26,6 @@ class AWSTransitGatewayConnect < AwsResourceBase
       resp = @aws.compute_client.describe_transit_gateway_connects({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_ids]] })
       @transit_gateway_connects = resp.transit_gateway_connects[0].to_h
       create_resource_methods(@transit_gateway_connects)
-      require 'pry'; binding.pry
     end
   end
 
