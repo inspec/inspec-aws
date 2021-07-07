@@ -43,10 +43,9 @@ For additional information, see the [AWS documentation on Step Functions state m
 
 ## Examples
 
-<<<<<<< HEAD
-### Ensure a state machine arn is available.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
-      its('state_machine_arn') { should eq 'test' }
+### Ensure a state machine ARN is available.
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
+      its('state_machine_arn') { should eq 'STATE_MACHINE_ARN' }
     end
 
 ### Ensure that the status is available.
