@@ -2,53 +2,52 @@
 
 require 'aws_backend'
 
-class AWSEc2LaunchTemplates < AwsResourceBase
-  name 'aws_ec2_launch_templates'
-  desc 'Verifies settings for a collection of AWS EC2 Instances'
-  example '
-    describe aws_ec2_launch_templates do
+class AWSEc2TrafficMirrorFilters < AwsResourceBase
+  name 'aws_ec2_traffic_mirror_filters'
+  desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror Filters'
+  example "
+    describe aws_ec2_traffic_mirror_filters do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:launch_template_ids,           field: :launch_template_id)
-             .register_column(:launch_template_names,         field: :launch_template_name)
-             .register_column(:create_time,                   field: :create_time)
-             .register_column(:created_by,                    field: :created_by)
-             .register_column(:default_version_number,        field: :default_version_number)
-             .register_column(:tags,                          field: :tags)
-             .register_column(:latest_version_number,         field: :launch_template_number)
+             .register_column(:traffic_mirror_filter_ids,      field: :traffic_mirror_filter_id)
+             .register_column(:traffic_mirror_filter_rule_ids, field: :traffic_mirror_filter_rule_id)
+             .register_column(:descriptions,                   field: :description)
+             .register_column(:tags, field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
+
     validate_parameters
+    # require 'byebug'
+    # byebug
     @table = fetch_data
   end
 
   def fetch_data
-    launch_template_rows = []
+    traffic_mirror_filters_rows = []
     pagination_options = {}
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_launch_templates(pagination_options)
-      end
-      return launch_template_rows if !@api_response || @api_response.empty?
 
-      @api_response.launch_templates.each do |launch_template|
-        launch_template_tags = map_tags(launch_template.tags)
-        launch_template_rows += [{
-          launch_template_id: launch_template.launch_template_id,
-          launch_template_name: launch_template.launch_template_name,
-          create_time: launch_template.create_time,
-          created_by: launch_template.created_by,
-          tags: launch_template_tags,
-          launch_template_tags_name: launch_template_tags['Name'],
-          default_version_number: launch_template.default_version_number,
-          latest_version_number: launch_template.latest_version_number,
+        @api_response = @aws.compute_client.describe_traffic_mirror_filters(pagination_options)
+      end
+      return traffic_mirror_filters_rows if !@api_response || @api_response.empty?
+
+      @api_response.traffic_mirror_filters.each do |traffic_mirror_filter|
+        traffic_mirror_filters_tags = map_tags(traffic_mirror_filter.tags)
+        # require 'byebug' ; byebug
+        traffic_mirror_filters_rows += [{
+          traffic_mirror_filter_id: traffic_mirror_filter.traffic_mirror_filter_id,
+          description: traffic_mirror_filter.description,
+          tags: traffic_mirror_filters_tags,
+
 
         }]
       end
@@ -56,7 +55,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
-    @table = launch_template_rows
+    @table = traffic_mirror_filters_rows
   end
 end
 
