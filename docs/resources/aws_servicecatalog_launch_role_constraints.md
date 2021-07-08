@@ -5,21 +5,21 @@ platform: aws
 
 # aws\_servicecatalog\_launch\_role\_constraints
 
-Use the `aws_servicecatalog_launch_role_constraints` InSpec audit resource to test properties of a plural AWS ServiceCatalog LaunchRoleConstraints.
-
-The AWS::ServiceCatalog::LaunchRoleConstraint resource specifies a launch constraint.
+Use the `aws_servicecatalog_launch_role_constraints` InSpec audit resource to test properties of multiple AWS Service Catalog launch constraint.
 
 ## Syntax
 
 Ensure that a portfolio exists.
 
-    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
+    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
       it { should exist }
     end
 
 ## Parameters
 
 `portfolio_id` _(required)_
+
+The identifier of the portfolio the product resides in.
 
 For additional information, see the [AWS documentation on AWS ServiceCatalog LaunchRoleConstraint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-launchroleconstraint.html).
 
@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS ServiceCatalog Lau
 | Property | Description|
 | --- | --- |
 | constraint_ids | The identifier of the constraint. |
-| types | The type of constraint. |
+| types | The type of constraint. Valid values are: `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`. |
 | descriptions | The description of the constraint. |
 | owners | The owner of the constraint. |
 | product_ids | The identifier of the product the constraint applies to. Note that a constraint applies to a specific instance of a product within a certain portfolio. |
@@ -37,12 +37,14 @@ For additional information, see the [AWS documentation on AWS ServiceCatalog Lau
 ## Examples
 
 ### Ensure a constraint is available.
-    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
+
+    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
       its('constraint_ids') { should include 'ID' }
     end
 
-### Ensure that the type is 'LAUNCH'
-    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
+### Ensure that the type is 'LAUNCH'.
+
+    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
         its('types') { should include 'LAUNCH' }
     end
 
@@ -56,13 +58,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
+    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'dummy') do
+    describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
       it { should_not exist }
     end
 
