@@ -5,21 +5,21 @@ platform: aws
 
 # aws\_servicecatalog\_portfolio\_principal\_associations
 
-Use the `aws_servicecatalog_portfolio_principal_associations` InSpec audit resource to test properties of a single specific AWS Service Catalog Portfolio Principal Association.
-
-The AWS::ServiceCatalog::PortfolioPrincipalAssociation resource associates the specified principal ARN with the specified portfolio.
+Use the `aws_servicecatalog_portfolio_principal_associations` InSpec audit resource to test properties of a single specific AWS Service Catalog portfolio principal association.
 
 ## Syntax
 
 Ensure that portfolio are available.
 
-    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'portfolio_id') do
+    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'PORTFOLIO_ID') do
       it { should exist }
     end
 
 ## Parameters
 
 `portfolio_id` _(required)_
+
+The ID of the portfolio.
 
 For additional information, see the [AWS documentation on AWS Service Catalog Portfolio Principal Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioprincipalassociation.html).
 
@@ -28,17 +28,19 @@ For additional information, see the [AWS documentation on AWS Service Catalog Po
 | Property | Description|
 | --- | --- |
 | principal_arns | The ARN of the principal (IAM user, role, or group). |
-| principal_types | The principal type. The supported value is IAM. |
+| principal_types | The principal type. The supported value is `IAM`. |
 
 ## Examples
 
-### Ensure a principal arn is available.
-    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'portfolio_id') do
-      its('principal_arns') { should include 'principal_arn' }
+### Ensure a principal ARN is available.
+
+    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'PORTFOLIO_ID') do
+      its('principal_arns') { should include 'PRINCIPAL_ARN' }
     end
 
 ### Ensure a principal type is 'IAM'
-    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'portfolio_id') do
+
+    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'PORTFOLIO_ID') do
         its('principal_types') { should include 'IAM' }
     end
 
@@ -52,13 +54,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'portfolio_id') do
+    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'PORTFOLIO_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'dummy') do
+    describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'PORTFOLIO_ID') do
       it { should_not exist }
     end
 
