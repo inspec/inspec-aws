@@ -5,21 +5,21 @@ platform: aws
 
 # aws\_servicecatalog\_portfolio\_product\_associations
 
-Use the `aws_servicecatalog_portfolio_product_associations` InSpec audit resource to test properties of a single specific AWS Service Catalog Portfolio Product Association.
-
-The AWS::ServiceCatalog::PortfolioProductAssociation resource associates the specified product with the specified portfolio.
+Use the `aws_servicecatalog_portfolio_product_associations` InSpec audit resource to test properties of a single specific AWS Service Catalog portfolio product association.
 
 ## Syntax
 
 Ensure that a portfolio exists.
 
-    describe aws_servicecatalog_portfolio_product_associations(product_id: 'test') do
+    describe aws_servicecatalog_portfolio_product_associations(product_id: 'PRODUCT_ID') do
       it { should exist }
     end
 
 ## Parameters
 
 `product_id` _(required)_
+
+The product identifier.
 
 For additional information, see the [AWS documentation on AWS Service Catalog Portfolio Product Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioproductassociation.html).
 
@@ -37,13 +37,15 @@ For additional information, see the [AWS documentation on AWS Service Catalog Po
 ## Examples
 
 ### Ensure a product name is available.
-    describe aws_servicecatalog_portfolio_product_association(product_id: 'test') do
-      its('ids') { should include 'test1' }
+
+    describe aws_servicecatalog_portfolio_product_association(product_id: 'PRODUCT_ID') do
+      its('ids') { should include 'PORTFOLIO_ID' }
     end
 
-### Ensure a status is available
-    describe aws_servicecatalog_portfolio_product_association(product_id: 'test') do
-        its('provider_names') { should include 'test_provider_name' }
+### Ensure a status is available.
+
+    describe aws_servicecatalog_portfolio_product_association(product_id: 'PRODUCT_ID') do
+        its('provider_names') { should include 'PORTFOLIO_PROVIDER_NAME' }
     end
 
 ## Matchers
@@ -56,13 +58,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_servicecatalog_portfolio_product_associations(product_id: 'test') do
+    describe aws_servicecatalog_portfolio_product_associations(product_id: 'PRODUCT_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_servicecatalog_portfolio_product_associations(product_id: 'dummy') do
+    describe aws_servicecatalog_portfolio_product_associations(product_id: 'PRODUCT_ID') do
       it { should_not exist }
     end
 
