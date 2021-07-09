@@ -346,6 +346,10 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_cloudwatch_event_rule_arn" {
+  value = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule_test.arn
+}
+
 output "aws_elasticsearch_domain_id" {
   value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.domain_id
 }
