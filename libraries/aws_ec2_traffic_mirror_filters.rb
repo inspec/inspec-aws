@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSEc2TrafficMirrorFilters < AwsResourceBase
   name 'aws_ec2_traffic_mirror_filters'
   desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror Filters'
+
   example "
     describe aws_ec2_traffic_mirror_filters do
       it { should exist }
@@ -17,15 +18,12 @@ class AWSEc2TrafficMirrorFilters < AwsResourceBase
              .register_column(:traffic_mirror_filter_ids,      field: :traffic_mirror_filter_id)
              .register_column(:traffic_mirror_filter_rule_ids, field: :traffic_mirror_filter_rule_id)
              .register_column(:descriptions,                   field: :description)
-             .register_column(:tags, field: :tags)
+             .register_column(:tags,                           field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
-
     validate_parameters
-    # require 'byebug'
-    # byebug
     @table = fetch_data
   end
 
@@ -35,27 +33,18 @@ class AWSEc2TrafficMirrorFilters < AwsResourceBase
     pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-
         @api_response = @aws.compute_client.describe_traffic_mirror_filters(pagination_options)
       end
       return traffic_mirror_filters_rows if !@api_response || @api_response.empty?
-
       @api_response.traffic_mirror_filters.each do |traffic_mirror_filter|
         traffic_mirror_filters_tags = map_tags(traffic_mirror_filter.tags)
-        # require 'byebug' ; byebug
-        traffic_mirror_filters_rows += [{
-          traffic_mirror_filter_id: traffic_mirror_filter.traffic_mirror_filter_id,
-          description: traffic_mirror_filter.description,
-          tags: traffic_mirror_filters_tags,
-
-
-        }]
+        traffic_mirror_filters_rows += [{ traffic_mirror_filter_id: traffic_mirror_filter.traffic_mirror_filter_id,
+                                          description: traffic_mirror_filter.description,
+                                          tags: traffic_mirror_filters_tags }]
       end
-
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
     @table = traffic_mirror_filters_rows
   end
 end
-

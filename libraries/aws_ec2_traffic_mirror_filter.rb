@@ -3,19 +3,19 @@
 require 'aws_backend'
 
 class AWSEc2TrafficMirrorFilter < AwsResourceBase
-
   name 'aws_ec2_traffic_mirror_filter'
   desc 'Audits EC2 Traffic Mirror Filter'
-  example "describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'test-traffic_mirror_filter') do
-             it { should exist }
-           end
-          "
+
+  example "
+    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'test-traffic_mirror_filter') do
+      it { should exist }
+    end
+  "
 
   def initialize(opts = {})
     opts = { traffic_mirror_filter_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(traffic_mirror_filter_id))
-
     if opts[:traffic_mirror_filter_id] && !opts[:traffic_mirror_filter_id].empty? # Use instance_id, if provided
       if !opts[:traffic_mirror_filter_id].is_a?(String) || opts[:traffic_mirror_filter_id] !~ /(^tmf-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
         raise ArgumentError, "#{@__resource_name__}: `traffic_mirror_filter_id` must be a string in the format of 'lt-' followed by 8 or 17 hexadecimal characters."
@@ -23,12 +23,9 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
       @display_name = opts[:traffic_mirror_filter_id]
       traffic_mirror_filters_arguments = { traffic_mirror_filter_ids: [opts[:traffic_mirror_filter_id]] }
     end
-
     catch_aws_errors do
-
       resp = @aws.compute_client.describe_traffic_mirror_filters(traffic_mirror_filters_arguments)
       @traffic_mirror_filters = resp.traffic_mirror_filters[0].to_h
-
       create_resource_methods(@traffic_mirror_filters)
     end
   end
@@ -41,4 +38,3 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
     "EC2 Traffic Mirror Filter #{@display_name}"
   end
 end
-
