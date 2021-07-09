@@ -1,9 +1,144 @@
-<!-- latest_release 1.49.4 -->
+<!-- latest_release 1.52.0 -->
+## [v1.52.0](https://github.com/inspec/inspec-aws/tree/v1.52.0) (2021-07-09)
+
+#### Merged Pull Requests
+- Fix aws_auto_scaling_groups tags handling [#423](https://github.com/inspec/inspec-aws/pull/423) ([guilhermef](https://github.com/guilhermef))
+<!-- latest_release -->
+
+## [v1.51.6](https://github.com/inspec/inspec-aws/tree/v1.51.6) (2021-07-06)
+
+#### Merged Pull Requests
+- aws_event_rule [#379](https://github.com/inspec/inspec-aws/pull/379) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.5](https://github.com/inspec/inspec-aws/tree/v1.51.5) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_elastic_search_domain [#378](https://github.com/inspec/inspec-aws/pull/378) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.4](https://github.com/inspec/inspec-aws/tree/v1.51.4) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_glue_crawler [#380](https://github.com/inspec/inspec-aws/pull/380) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.3](https://github.com/inspec/inspec-aws/tree/v1.51.3) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_glue_database [#381](https://github.com/inspec/inspec-aws/pull/381) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.2](https://github.com/inspec/inspec-aws/tree/v1.51.2) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_elasticloadbalancingv2_load_balancer  [#376](https://github.com/inspec/inspec-aws/pull/376) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.1](https://github.com/inspec/inspec-aws/tree/v1.51.1) (2021-07-05)
+
+#### Merged Pull Requests
+- aws elasticloadbalancingv2 listener [#373](https://github.com/inspec/inspec-aws/pull/373) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.51.0](https://github.com/inspec/inspec-aws/tree/v1.51.0) (2021-07-05)
+
+#### Merged Pull Requests
+- Support VPC endpoint service permission(s) [#418](https://github.com/inspec/inspec-aws/pull/418) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.50.10](https://github.com/inspec/inspec-aws/tree/v1.50.10) (2021-07-05)
+
+#### Merged Pull Requests
+- aws dms endpoint [#421](https://github.com/inspec/inspec-aws/pull/421) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.9](https://github.com/inspec/inspec-aws/tree/v1.50.9) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_restapi [#428](https://github.com/inspec/inspec-aws/pull/428) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.8](https://github.com/inspec/inspec-aws/tree/v1.50.8) (2021-07-05)
+
+#### Merged Pull Requests
+- aws_api_gateway_deployment [#426](https://github.com/inspec/inspec-aws/pull/426) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.7](https://github.com/inspec/inspec-aws/tree/v1.50.7) (2021-07-02)
+
+#### Merged Pull Requests
+- Need changes in the Readme.md file [#479](https://github.com/inspec/inspec-aws/pull/479) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.6](https://github.com/inspec/inspec-aws/tree/v1.50.6) (2021-07-02)
+
+#### Merged Pull Requests
+- removed/modified duplicate tf resources [#481](https://github.com/inspec/inspec-aws/pull/481) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.50.5](https://github.com/inspec/inspec-aws/tree/v1.50.5) (2021-06-14)
+
+#### Merged Pull Requests
+- efs mount target [#372](https://github.com/inspec/inspec-aws/pull/372) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.4](https://github.com/inspec/inspec-aws/tree/v1.50.4) (2021-06-14)
+
+#### Merged Pull Requests
+- ecs task definitions [#371](https://github.com/inspec/inspec-aws/pull/371) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.3](https://github.com/inspec/inspec-aws/tree/v1.50.3) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job definition [#365](https://github.com/inspec/inspec-aws/pull/365) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.2](https://github.com/inspec/inspec-aws/tree/v1.50.2) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch compute environments [#364](https://github.com/inspec/inspec-aws/pull/364) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.1](https://github.com/inspec/inspec-aws/tree/v1.50.1) (2021-06-14)
+
+#### Merged Pull Requests
+- aws batch job queues [#366](https://github.com/inspec/inspec-aws/pull/366) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.50.0](https://github.com/inspec/inspec-aws/tree/v1.50.0) (2021-06-14)
+
+#### Merged Pull Requests
+- VPC endpoint services resource(s) [#384](https://github.com/inspec/inspec-aws/pull/384) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.49.12](https://github.com/inspec/inspec-aws/tree/v1.49.12) (2021-06-07)
+
+#### Merged Pull Requests
+- aws cognito userpool client [#368](https://github.com/inspec/inspec-aws/pull/368) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.49.11](https://github.com/inspec/inspec-aws/tree/v1.49.11) (2021-06-07)
+
+#### Merged Pull Requests
+- aws cognito userpool [#369](https://github.com/inspec/inspec-aws/pull/369) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.49.10](https://github.com/inspec/inspec-aws/tree/v1.49.10) (2021-06-07)
+
+#### Merged Pull Requests
+- Soumyo/aws cognito identity pool [#367](https://github.com/inspec/inspec-aws/pull/367) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.49.9](https://github.com/inspec/inspec-aws/tree/v1.49.9) (2021-06-07)
+
+#### Merged Pull Requests
+- aws autoscaling scaling policy [#363](https://github.com/inspec/inspec-aws/pull/363) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.49.8](https://github.com/inspec/inspec-aws/tree/v1.49.8) (2021-06-07)
+
+#### Merged Pull Requests
+- fix lint  [#419](https://github.com/inspec/inspec-aws/pull/419) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.49.7](https://github.com/inspec/inspec-aws/tree/v1.49.7) (2021-06-07)
+
+#### Merged Pull Requests
+- aws athena work group [#362](https://github.com/inspec/inspec-aws/pull/362) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.49.6](https://github.com/inspec/inspec-aws/tree/v1.49.6) (2021-06-07)
+
+#### Merged Pull Requests
+- Upgrade to GitHub-native Dependabot [#337](https://github.com/inspec/inspec-aws/pull/337) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v1.49.5](https://github.com/inspec/inspec-aws/tree/v1.49.5) (2021-06-07)
+
+#### Merged Pull Requests
+- Minor docs fixes [#417](https://github.com/inspec/inspec-aws/pull/417) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.49.4](https://github.com/inspec/inspec-aws/tree/v1.49.4) (2021-06-04)
 
 #### Merged Pull Requests
 - remove unwanted backticks [#416](https://github.com/inspec/inspec-aws/pull/416) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.49.3](https://github.com/inspec/inspec-aws/tree/v1.49.3) (2021-06-03)
 

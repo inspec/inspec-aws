@@ -40,8 +40,8 @@ See also the [AWS documentation on EC2](https://docs.aws.amazon.com/AWSEC2/lates
 | ntp_servers | The list of ntp servers in the dhcp configuration |
 | tags | The tags of the DHCP Options. |
 
-
-##### Test tags on the DHCP options
+## Examples
+### Test tags on the DHCP options
 
     describe aws_dhcp_options('dopt-0123456789abcdefg') do
       its('tags') { should include(:Environment => 'env-name',
