@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_stepfunctions_state_machines` InSpec audit resource to test properties of multiple Step Functions state machines.
 
-A state machine consists of a collection of states that can do work (Task states), determine which states to transition next (Choice states), stop an execution with an error (Fail states), and so on. State machines are specified using a JSON-based, structured language.
+A state machine consists of a collection of states that can do work (Task states), determine which states to transition next (Choice states), stop an execution with an error (Fail states), and so on.
 
 ## Syntax
 

@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_stepfunctions_state_machine` InSpec audit resource to test properties of a single specific Step Functions state machine.
 
-Provisions a state machine. A state machine consists of a collection of states that can do work (Task states), determine which states to transition next (Choice states), stop an execution with an error (Fail states), and so on. State machines are specified using a JSON-based, structured language.
+A state machine consists of a collection of states that can do work (Task states), determine which states to transition next (Choice states), stop an execution with an error (Fail states), and so on.
 
 ## Syntax
 
@@ -37,15 +37,16 @@ For additional information, see the [AWS documentation on Step Functions state m
 | type | The type of the state machine. Valid values: `STANDARD` or `EXPRESS`. |
 | creation_date | The creation date of the state machine. |
 | logging_configuration (level) | The category of execution history in which events are logged. |
-| logging_configuration (include_execution_data) | Whether execution data is included in your log. Valid values, `true` or `false`. |
+| logging_configuration (include_execution_data) | Whether execution data is included in your log. Valid values: `true` or `false`. |
 | logging_configuration (destinations) | An array of objects that describes where your execution history events will be logged. |
-| logging_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. |
+| logging_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. Valid values: `true` or `false`. |
 
 ## Examples
 
-### Ensure a state machine arn is available.
-    describe aws_stepfunctions_state_machine(state_machine_arn: 'test') do
-      its('state_machine_arn') { should eq 'test' }
+### Ensure a state machine ARN is available.
+
+    describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
+      its('state_machine_arn') { should eq 'STATE_MACHINE_ARN' }
     end
 
 ### Ensure that the status is available.
