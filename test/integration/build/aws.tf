@@ -152,6 +152,20 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
+variable "aws_identity_pool_name" {}
+variable "aws_open_id_connect_provider_arns" {}
+variable "aws_image_id" {}
+variable "aws_instance_type" {}
+variable "aws_auto_scaling_group_name" {}
+variable "aws_auto_scaling_max_size" {}
+variable "aws_auto_scaling_min_size" {}
+variable "aws_auto_scaling_health_check_grace_period" {}
+variable "aws_auto_scaling_health_check_type" {}
+variable "aws_auto_scaling_force_delete" {}
+variable "aws_auto_scaling_policy_name" {}
+variable "aws_auto_scaling_adjustment" {}
+variable "aws_auto_scaling_adjustment_type" {}
+variable "aws_auto_scaling_cooldown" {}
 variable "tgw_route_cidr_block" {}
 variable "tgw_route_cidr_block_blockhole" {}
 variable "aws_db_option_group_name" {}
@@ -179,7 +193,26 @@ variable "aws_db_parameter_group_description" {}
 variable "aws_redshift_cluster_identifier" {}
 variable "aws_redshift_parameter_group_name" {}
 variable "aws_redshift_parameter_group_family" {}
-
+variable "aws_athena_workgroup" {}
+variable "aws_enforce_workgroup_configuration" {}
+variable "aws_publish_cloudwatch_metrics_enabled" {}
+variable "aws_athena_workgroup_description" {}
+variable "aws_athena_workgroup_state" {}
+variable "aws_client_name" {}
+variable "aws_batch_job_queue_name" {}
+variable "aws_batch_job_queue_status" {}
+variable "aws_batch_job_queue_priority" {}
+variable "aws_compute_environment_name" {}
+variable "aws_max_vcpus" {}
+variable "aws_min_vcpus" {}
+variable "aws_type" {}
+variable "aws_batch_job_name" {}
+variable "aws_batch_job_type" {}
+variable "aws_crawler_name" {}
+variable "aws_elasticsearch_domain_name" {}
+variable "aws_elasticsearch_version" {}
+variable "aws_elasticsearch_instance_type" {}
+variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -1696,7 +1729,6 @@ STACK
 
 }
 
-
 resource "aws_route53_zone" "test_zone" {
   count = var.aws_enable_creation
   name  = var.aws_route_53_zone
@@ -1817,6 +1849,7 @@ resource "aws_cloudwatch_log_group" "lambda_test_logs" {
 locals {
   test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
+
 resource "aws_lambda_function" "lambda_test" {
   count            = var.aws_enable_creation
   filename         = local.test_lambda_zip_file_name
@@ -1998,6 +2031,7 @@ resource "aws_guardduty_detector" "detector_1" {
   enable = true
   finding_publishing_frequency = "SIX_HOURS"
 }
+
 resource "aws_launch_template" "launch-template-test" {
   name = var.aws_launch_template_name
 
@@ -2019,16 +2053,13 @@ resource "aws_launch_template" "launch-template-test" {
   }
 
   disable_api_termination = true
-
   ebs_optimized = true
-
 
   iam_instance_profile {
     name = var.aws_launch_template_instance_profile
   }
 
   image_id = "ami-0a83ebf1ac32a3fbe"
-
   instance_initiated_shutdown_behavior = "terminate"
 
   instance_market_options {
@@ -2037,7 +2068,6 @@ resource "aws_launch_template" "launch-template-test" {
 
   instance_type = var.aws_launch_template_instance_type
   key_name = var.aws_launch_template_key_name
-
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -2052,8 +2082,6 @@ resource "aws_launch_template" "launch-template-test" {
   network_interfaces {
     associate_public_ip_address = true
   }
-
-
 
   tag_specifications {
     resource_type = var.aws_launch_template_resource_type
@@ -2078,6 +2106,415 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule1" {
+  name        = "capture-aws-sign-in"
+  description = "Capture each AWS Console Sign In"
+
+  event_pattern = <<EOF
+{
+  "detail-type": [
+    "AWS Console Sign In via CloudTrail"
+  ]
+}
+EOF
+}
+
+resource "aws_cloudwatch_event_target" "aws_cloudwatch_event_target1" {
+  rule      = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule1.name
+  target_id = "SendToSNS"
+  arn       = aws_sns_topic.aws_sns_topic1.arn
+}
+
+resource "aws_sns_topic" "aws_sns_topic1" {
+  name = "aws-console-logins"
+}
+
+resource "aws_sns_topic_policy" "default" {
+  arn    = aws_sns_topic.aws_sns_topic1.arn
+  policy = data.aws_iam_policy_document.sns_topic_policy.json
+}
+
+data "aws_iam_policy_document" "sns_topic_policy" {
+  statement {
+    effect  = "Allow"
+    actions = ["SNS:Publish"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    resources = [aws_sns_topic.aws_sns_topic1.arn]
+  }
+}
+
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
+  name        = "test_rule"
+  description = "Description of the rule."
+  event_pattern = <<EOF
+  {
+    "detail-type": [
+      "AWS Console Sign In via CloudTrail"
+    ]
+  }
+  EOF
+}
+
+
+resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
+  domain_name           = var.aws_elasticsearch_domain_name
+  elasticsearch_version = var.aws_elasticsearch_version
+
+  cluster_config {
+    instance_type = var.aws_elasticsearch_instance_type
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = var.aws_elasticsearch_automated_snapshot_start_hour
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
+
+resource "aws_glue_crawler" "aws_glue_crawler_test" {
+  database_name = aws_glue_catalog_database.aws_glue_catalog_database_test.name
+  name          = var.aws_crawler_name
+  role          = aws_iam_role.cloud_watch_logs_role[0].arn
+
+  dynamodb_target {
+    path = "table-name"
+  }
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb3"
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb"
+  description = "Sample Description"
+}
+
+resource "aws_dms_certificate" "aws_dms_certificate_test" {
+  certificate_id = "test1"
+  certificate_pem = "-----BEGIN ENCRYPTED PRIVATE KEY----- MIIJJwIBAAKCAgEAqkLV+54yJ9DP9MNTqMHTHcbgsRuy/c93Y/tPZ1WG3QS834n1OV92s2NsWjEluMFU7AsKS3oR7mugGWEVtPEcoqA3XrD7hRz87BgpKbA9Q8fc1xs2D1RBK1EE23Vhz6RRUwZmFDvX8qM1AxN4E7px2pLVM9r8jxdXjbao3HkuvA== -----END ENCRYPTED PRIVATE KEY-----"
+}
+
+output "aws_dms_certificate_arn" {
+  value = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+}
+
+resource "aws_dms_endpoint" "aws_dms_endpoint_test" {
+  certificate_arn             = aws_dms_certificate.aws_dms_certificate_test.certificate_arn
+  database_name               = "test1"
+  endpoint_id                 = "test1"
+  endpoint_type               = "source"
+  engine_name                 = "aurora"
+  extra_connection_attributes = ""
+  password                    = "test"
+  port                        = 3306
+  server_name                 = "test"
+  ssl_mode                    = "none"
+
+  tags = {
+    Name = "test"
+  }
+  username = "test"
+}
+
+resource "aws_dms_replication_instance" "aws_dms_replication_instance_test" {
+  replication_instance_class   = "dms.t2.micro"
+  replication_instance_id      = "test-dms-replication-instance-tf1"
+  replication_subnet_group_id  = aws_dms_replication_subnet_group.aws_dms_replication_subnet_group_test.id
+}
+
+resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_test" {
+  replication_subnet_group_description = "Test replication subnet group"
+  replication_subnet_group_id          = "test-dms-replication-subnet-group-tf1"
+
+  subnet_ids = ["subnet-700ff218", "subnet-0674044b"]
+
+  tags = {
+    Name = "test"
+  }
+}
+
+data "aws_iam_policy_document" "dms_assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      identifiers = ["dms.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
+resource "aws_iam_role" "dms-access-for-endpoint" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-access-for-endpoint"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+  role       = aws_iam_role.dms-access-for-endpoint.name
+}
+
+resource "aws_iam_role" "dms-cloudwatch-logs-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-cloudwatch-logs-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+  role       = aws_iam_role.dms-cloudwatch-logs-role.name
+}
+
+resource "aws_iam_role" "dms-vpc-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-vpc-role"
+}
+
+resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+  role       = aws_iam_role.dms-vpc-role.name
+}
+
+resource "aws_iam_role" "ecs_instance_role" {
+  name = "ecs_instance_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
+  role       = aws_iam_role.ecs_instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+}
+
+resource "aws_iam_instance_profile" "ecs_instance_role" {
+  name = "ecs_instance_role"
+  role = aws_iam_role.ecs_instance_role.name
+}
+
+resource "aws_iam_role" "aws_batch_service_role" {
+  name = "aws_batch_service_role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+        "Service": "batch.amazonaws.com"
+        }
+    }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role" {
+  role       = aws_iam_role.aws_batch_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
+}
+
+resource "aws_security_group" "to_test_batch" {
+  name = "aws_batch_compute_environment_security_group"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_vpc" "to_test_batch" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_subnet" "to_test_batch" {
+  vpc_id     = aws_vpc.to_test_batch.id
+  cidr_block = "10.1.1.0/24"
+}
+
+resource "aws_batch_compute_environment" "to_test_batch" {
+  compute_environment_name = var.aws_compute_environment_name
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance_role.arn
+
+    instance_type = [
+      "c4.large",
+    ]
+
+    max_vcpus = var.aws_max_vcpus
+    min_vcpus = var.aws_min_vcpus
+
+    security_group_ids = [
+      aws_security_group.to_test_batch.id,
+    ]
+
+    subnets = [
+      aws_subnet.to_test_batch.id,
+    ]
+
+    type = var.aws_type
+  }
+
+  service_role = aws_iam_role.aws_batch_service_role.arn
+  type         = "MANAGED"
+  depends_on   = [aws_iam_role_policy_attachment.aws_batch_service_role]
+}
+
+resource "aws_batch_job_queue" "test_queue" {
+  name     = var.aws_batch_job_queue_name
+  state    =  var.aws_batch_job_queue_status
+  priority = var.aws_batch_job_queue_priority
+  compute_environments = [
+    aws_batch_compute_environment.to_test_batch.arn,
+  ]
+}
+
+resource "aws_cognito_user_pool_client" "aws_cognito_user_pool_client_test" {
+  name = var.aws_client_name
+
+  user_pool_id = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+  generate_secret     = true
+}
+
+resource "aws_batch_job_definition" "aws_batch_job_definition1" {
+  name = var.aws_batch_job_name
+  type = var.aws_batch_job_type
+
+  container_properties = <<CONTAINER_PROPERTIES
+{
+    "command": ["ls", "-la"],
+    "image": "busybox",
+    "memory": 1024,
+    "vcpus": 1,
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "/tmp"
+        },
+        "name": "tmp"
+      }
+    ],
+    "environment": [
+        {"name": "VARNAME", "value": "VARVAL"}
+    ],
+    "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp",
+          "readOnly": false
+        }
+    ],
+    "ulimits": [
+      {
+        "hardLimit": 1024,
+        "name": "nofile",
+        "softLimit": 1024
+      }
+    ]
+}
+CONTAINER_PROPERTIES
+}
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_test" {
+  name = var.aws_identity_pool_name
+}
+
+resource "aws_iam_saml_provider" "aws_iam_saml_provider1" {
+  name                   = "my-saml-provider"
+  saml_metadata_document = file("saml-metadata.xml")
+}
+
+resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
+  identity_pool_name               = var.aws_identity_pool_name
+
+  cognito_identity_providers {
+    client_id               = "6lhlkkfbfb4q5kpp90urffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
+    server_side_token_check = false
+  }
+
+  cognito_identity_providers {
+    client_id               = "7kodkvfqfb4qfkp39eurffae"
+    provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
+    server_side_token_check = false
+  }
+
+  supported_login_providers = {
+    "graph.facebook.com"  = "7346241598935552"
+    "accounts.google.com" = "123456789012.apps.googleusercontent.com"
+  }
+
+  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+}
+
+
+resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
+  name                   = var.aws_auto_scaling_policy_name
+  scaling_adjustment     = 4
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300
+  autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
+
+}
+
+resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
+  availability_zones        = ["us-east-2a"]
+  name                      = var.aws_auto_scaling_group_name
+  max_size                  = var.aws_auto_scaling_max_size
+  min_size                  = var.aws_auto_scaling_min_size
+  health_check_grace_period = var.aws_auto_scaling_health_check_grace_period
+  health_check_type         = var.aws_auto_scaling_health_check_type
+  force_delete              = var.aws_auto_scaling_force_delete
+  launch_configuration      = aws_launch_configuration.as_conf_for_autoscalling.name
+}
+
+resource "aws_launch_configuration" "as_conf_for_autoscalling" {
+  name          = var.aws_launch_configuration_name
+  image_id      = var.aws_image_id
+  instance_type = var.aws_instance_type
+}
+
+resource "aws_athena_workgroup" "aws_athena_workgroup_" {
+  name = var.aws_athena_workgroup
+  state = var.aws_athena_workgroup_state
+  description = var.aws_athena_workgroup_description
+
+  configuration {
+    enforce_workgroup_configuration    = var.aws_enforce_workgroup_configuration
+    publish_cloudwatch_metrics_enabled = var.aws_publish_cloudwatch_metrics_enabled
+
+  }
+}
+
 resource "aws_ec2_transit_gateway_vpc_attachment" "inspec_tgw_attachment" {
   subnet_ids         = [aws_subnet.inspec_subnet[0].id]
   transit_gateway_id = aws_ec2_transit_gateway.gateway[0].id
@@ -2095,7 +2532,6 @@ resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
   blackhole                      = true
   transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
 }
-
 
 resource "aws_redshift_cluster" "redshift_test" {
   cluster_identifier = var.aws_redshift_cluster_identifier
@@ -2170,7 +2606,6 @@ resource "aws_subnet" "for_attachment" {
     Name = "Main"
   }
 }
-
 
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
@@ -2284,6 +2719,11 @@ resource "aws_vpc_endpoint_service" "notification_service" {
   network_load_balancer_arns = [aws_lb.test.arn]
 }
 
+resource "aws_vpc_endpoint_service_allowed_principal" "notification_service_principal" {
+  vpc_endpoint_service_id = aws_vpc_endpoint_service.notification_service.id
+  principal_arn = aws_iam_user.iam_user[0].arn
+}
+
 resource "aws_vpc_endpoint" "for_notification" {
   service_name      = "com.amazonaws.us-east-2.ec2"
   vpc_endpoint_type = aws_vpc_endpoint_service.notification_service.service_type
@@ -2305,6 +2745,7 @@ resource "aws_vpc" "for_lb" {
     Name = "main"
   }
 }
+
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.for_lb.id
   cidr_block = "10.0.0.0/24"
@@ -2320,5 +2761,307 @@ resource "aws_internet_gateway" "ig_for_lb" {
 
   tags = {
     Name = var.aws_internet_gateway_name
+  }
+}
+
+resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+  max_capacity       = 100
+  min_capacity       = 5
+  resource_id        = "table/${aws_dynamodb_table.example.name}"
+  scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+  service_namespace  = "dynamodb"
+}
+
+resource "aws_appautoscaling_policy" "dynamodb_table_read_policy" {
+  name               = "DynamoDBReadCapacityUtilization:${aws_appautoscaling_target.dynamodb_table_read_target.resource_id}"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.dynamodb_table_read_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.dynamodb_table_read_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.dynamodb_table_read_target.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "DynamoDBReadCapacityUtilization"
+    }
+
+    target_value = 70
+  }
+}
+
+resource "aws_dynamodb_table" "example" {
+  name           = "GameScores"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
+  }
+
+  attribute {
+    name = "TopScore"
+    type = "N"
+  }
+
+  ttl {
+    attribute_name = "TimeToExist"
+    enabled        = false
+  }
+
+  global_secondary_index {
+    name               = "GameTitleIndex"
+    hash_key           = "GameTitle"
+    range_key          = "TopScore"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
+  name        = "MyDemoAPI"
+  description = "This is my API for demonstration purposes"
+}
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.root_resource_id
+  path_part   = "mydemoresource"
+}
+
+resource "aws_api_gateway_method" "aws_api_gateway_method_test" {
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  resource_id   = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "test1"
+      image     = "test1"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_efs_mount_target" "aws_efs_mount_target_mt_test" {
+  file_system_id = aws_efs_file_system.aws_efs_file_system_mt_test.id
+  subnet_id      = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+resource "aws_efs_file_system" "aws_efs_file_system_mt_test" {
+  creation_token = "my-product"
+
+  tags = {
+    Name = "MyProduct"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_mount_mt_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_mount_mt_test" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = var.aws_availability_zone
+
+}
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf-i"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.allow_tls_for_lb.id]
+  subnets            = [aws_subnet.for_elb.id,aws_subnet.for_elb_second.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "for_elb" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_subnet" "for_elb" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2a"
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_subnet" "for_elb_second" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2b"
+  cidr_block = "10.0.1.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "for_elb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
+}
+
+resource "aws_lb_listener" "front_end" {
+  load_balancer_arn = aws_lb.test.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Fixed response content"
+      status_code  = "200"
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "static" {
+  listener_arn = aws_lb_listener.front_end.arn
+  priority     = 100
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.for_elb.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/static/*"]
+    }
+  }
+
+  condition {
+    host_header {
+      values = ["example.com"]
+    }
+  }
+}
+
+resource "aws_security_group" "allow_tls_for_lb" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.for_lb.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.for_lb.cidr_block]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
   }
 }
