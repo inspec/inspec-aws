@@ -3,7 +3,6 @@ require 'aws_subnets'
 require 'aws-sdk-core'
 
 class AwsSubnetsConstructorTest < Minitest::Test
-
   def test_empty_params_ok
     AwsSubnets.new(client_args: { stub_responses: true })
   end
@@ -18,7 +17,6 @@ class AwsSubnetsConstructorTest < Minitest::Test
 end
 
 class AwsSubnetsHappyPathTest < Minitest::Test
-
   def setup
     data = {}
     data[:method] = :describe_subnets
@@ -33,7 +31,8 @@ class AwsSubnetsHappyPathTest < Minitest::Test
     mock_subnet[:ipv_6_cidr_block_association_set] = []
     mock_subnet[:assign_ipv_6_address_on_creation] = true
     mock_subnet[:state] = 'available'
-    data[:data] = { :subnets => [mock_subnet] }
+    mock_subnet[:tags] = [{ key: 'Name', value: 'My favourite subnet' }]
+    data[:data] = { subnets: [mock_subnet] }
     data[:client] = Aws::EC2::Client
     @subnets = AwsSubnets.new(client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -54,6 +53,10 @@ class AwsSubnetsHappyPathTest < Minitest::Test
     assert_equal(@subnets.cidr_blocks, ['10.0.0.0/27'])
   end
 
+  def test_subnets_tags
+    assert_equal(@subnets.tags, [[{ key: 'Name', value: 'My favourite subnet' }]])
+  end
+
   def test_subnets_states
     assert_equal(@subnets.states, ['available'])
   end
@@ -67,26 +70,26 @@ class AwsSubnetsHappyPathTest < Minitest::Test
   end
 
   def test_subnets_filtering_not_there
-    refute @subnets.where(:subnet_id => 'bad').exist?
+    refute @subnets.where(subnet_id: 'bad').exist?
   end
 
   def test_subnets_filtering_there
-    assert @subnets.where(:subnet_id => 'subnet-12345678').exist?
+    assert @subnets.where(subnet_id: 'subnet-12345678').exist?
   end
 
   def test_subnets_filtering_availability_zone_not_there
-    refute @subnets.where(:availability_zone => 'eu-central-1a').exist?
+    refute @subnets.where(availability_zone: 'eu-central-1a').exist?
   end
 
   def test_subnets_filtering_availability_zone_there
-    assert @subnets.where(:availability_zone => 'us-east-1a').exist?
+    assert @subnets.where(availability_zone: 'us-east-1a').exist?
   end
 
   def test_subnets_filtering_map_public_ip_not_there
-    refute @subnets.where(:map_public_ip_on_launch => false).exist?
+    refute @subnets.where(map_public_ip_on_launch: false).exist?
   end
 
   def test_subnets_filtering_map_public_ip_here
-    assert @subnets.where(:map_public_ip_on_launch => true).exist?
+    assert @subnets.where(map_public_ip_on_launch: true).exist?
   end
 end

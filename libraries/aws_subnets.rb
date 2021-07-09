@@ -23,6 +23,7 @@ class AwsSubnets < AwsResourceBase
              .register_column(:states,                  field: :state)
              .register_column(:subnet_ids,              field: :subnet_id)
              .register_column(:vpc_ids,                 field: :vpc_id)
+             .register_column(:tags,                    field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -45,6 +46,7 @@ class AwsSubnets < AwsResourceBase
         state:                   subnet[:state],
         subnet_id:               subnet[:subnet_id],
         vpc_id:                  subnet[:vpc_id],
+        tags:                    subnet[:tags],
       }]
     end
     @table = subnet_rows
