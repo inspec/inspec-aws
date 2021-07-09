@@ -34,15 +34,15 @@ container_definitions (name) | The name of a container.  | container_definitions
 container_definitions (image) | The image used to start a container. | container_definitions_images |
 container_definitions (repository_credentials) | The private repository authentication credentials to use. | container_definitions_repository_credentials |
 container_definitions (repository_credentials (credentials_parameter)) | The Amazon Resource Name (ARN) of the secret containing the private repository credentials. | container_definitions_repository_credentials_credentials_parameters |
-container_definitions (cpu) | The number of cpu units reserved for the container. | container_definitions_cpus |
+container_definitions (cpu) | The number of CPU units reserved for the container. | container_definitions_cpus |
 container_definitions (memory) | The amount (in MiB) of memory to present to the container. | container_definitions_memories |
 container_definitions (memory_reservation) | The soft limit (in MiB) of memory to reserve for the container. | container_definitions_memory_reservations |
 container_definitions (links) | The links parameter allows containers to communicate with each other without the need for port mappings. | container_definitions_links |
 container_definitions (port_mappings) | The list of port mappings for the container. | container_definitions_port_mappings |
 container_definitions (port_mappings (container_port)) | The port number on the container that is bound to the user-specified or automatically assigned host port. | container_definitions_port_mappings_container_ports |
 container_definitions (port_mappings (host_port)) | The port number on the container instance to reserve for your container. | container_definitions_port_mappings_host_ports |
-container_definitions (port_mappings (protocol)) | The protocol used for the port mapping. Valid values are tcp and udp. The default is tcp. | container_definitions_port_mappings_protocols |
-container_definitions (essential) | If the essential parameter of a container is marked as true , and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the essential parameter of a container is marked as false , then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential. | container_definitions_essentials |
+container_definitions (port_mappings (protocol)) | The protocol used for the port mapping. Valid values are `tcp` and `udp`. Default value: `tcp`. | container_definitions_port_mappings_protocols |
+container_definitions (essential) | If the essential parameter of a container is marked as `true`, and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the essential parameter of a container is marked as `false`, then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential. | container_definitions_essentials |
 container_definitions (entry_point) | The entry point that is passed to the container. | container_definitions_entry_points |
 container_definitions (command) | The command that is passed to the container. | container_definitions_commands |
 container_definitions (environment) | The environment variables to pass to a container. | container_definitions_environments |
@@ -50,25 +50,25 @@ container_definitions (environment (name)) | The name of the key-value pair. | c
 container_definitions (environment (value)) | The value of the key-value pair. | container_definitions_environments_values |
 container_definitions (environment_files) | A list of files containing the environment variables to pass to a container. | container_definitions_environment_files |
 container_definitions (environment_files (value) | The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file. | container_definitions_environment_files_values |
-container_definitions (environment_files (type) | The file type to use. The only supported value is s3. | container_definitions_environment_files_types |
+container_definitions (environment_files (type) | The file type to use. The only supported value is `s3`. | container_definitions_environment_files_types |
 container_definitions (mount_points) | The mount points for data volumes in your container. | container_definitions_mount_points |
 container_definitions (mount_points (source_volume)) | The name of the volume to mount. Must be a volume name referenced in the name parameter of task definition volume. | container_definitions_mount_points_source_volumes |
 container_definitions (mount_points (container_path)) | The path on the container to mount the host volume at. | container_definitions_mount_points_container_paths |
-container_definitions (mount_points (read_only)) | If this value is true , the container has read-only access to the volume. If this value is false , then the container can write to the volume. The default value is false. | container_definitions_mount_points_read_only |
+container_definitions (mount_points (read_only)) | If this value is `true`, the container has read-only access to the volume. If this value is `false`, then the container can write to the volume. The default value is `false`. | container_definitions_mount_points_read_only |
 container_definitions (volumes_from) | Data volumes to mount from another container. | container_definitions_volumes_froms |
 container_definitions (volumes_from (source_container)) | The name of another container within the same task definition from which to mount volumes. | container_definitions_volumes_froms_source_containers |
-container_definitions (volumes_from (read_only)) | If this value is true , the container has read-only access to the volume. If this value is false , then the container can write to the volume. The default value is false. | container_definitions_volumes_froms_read_only |
-container_definitions (linux_parameters) | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see KernelCapabilities. | container_definitions_linux_parameters |
+container_definitions (volumes_from (read_only)) | If this value is `true`, the container has read-only access to the volume. If this value is `false`, then the container can write to the volume. The default value is `false`. | container_definitions_volumes_froms_read_only |
+container_definitions (linux_parameters) | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. | container_definitions_linux_parameters |
 container_definitions (linux_parameters (capabilities)) | The Linux capabilities for the container that are added to or dropped from the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities |
 container_definitions (linux_parameters (capabilities (add))) | The Linux capabilities for the container that have been added to the default configuration provided by Docker. | container_definitions_linux_parameters_capabilities_adds |
 container_definitions (linux_parameters (capabilities (drop))) | The Linux capabilities for the container that have been removed from the default configuration provided by Docker.  | container_definitions_linux_parameters_capabilities_drops |
 container_definitions (linux_parameters (devices)) | Any host devices to expose to the container. | container_definitions_linux_parameters_capabilities_devices |
 container_definitions (linux_parameters (devices (host_path))) | The path for the device on the host container instance. | container_definitions_linux_parameters_capabilities_devices_host_paths |
 container_definitions (linux_parameters (devices (container_path))) | The path inside the container at which to expose the host device. | container_definitions_linux_parameters_capabilities_devices_container_paths |
-container_definitions (linux_parameters (devices (permissions))) | The explicit permissions to provide to the container for the device. By default, the container has permissions for read , write , and mknod for the device. | container_definitions_linux_parameters_capabilities_devices_permissions |
-container_definitions (linux_parameters (init_process_enabled)) | Run an init process inside the container that forwards signals and reaps processes. This parameter maps to the --init option to docker run . | container_definitions_linux_parameters_init_process_enabled |
-container_definitions (linux_parameters (shared_memory_size) | The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run. | container_definitions_linux_parameters_shared_memory_sizes|
-container_definitions (linux_parameters (tmpfs) | The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the --tmpfs option to docker run. | container_definitions_linux_parameters_tmpfs |
+container_definitions (linux_parameters (devices (permissions))) | The explicit permissions to provide to the container for the device. By default, the container has permissions for `read`, `write`, and `mknod` for the device. | container_definitions_linux_parameters_capabilities_devices_permissions |
+container_definitions (linux_parameters (init_process_enabled)) | Run an `init` process inside the container that forwards signals and reaps processes. This parameter maps to the `--init` option to docker run. | container_definitions_linux_parameters_init_process_enabled |
+container_definitions (linux_parameters (shared_memory_size) | The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the `--shm-size` option to docker run. | container_definitions_linux_parameters_shared_memory_sizes|
+container_definitions (linux_parameters (tmpfs) | The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the `--tmpfs` option to docker run. | container_definitions_linux_parameters_tmpfs |
 container_definitions (linux_parameters (tmpfs (container_path)) | The absolute file path where the tmpfs volume is to be mounted. | container_definitions_linux_parameters_tmpfs_container_paths |
 container_definitions (linux_parameters (tmpfs (size)) | The maximum size (in MiB) of the tmpfs volume. | container_definitions_linux_parameters_tmpfs_sizes |
 container_definitions (linux_parameters (tmpfs (mount_options)) | The list of tmpfs volume mount options. | container_definitions_linux_parameters_tmpfs_mount_options |
@@ -85,17 +85,17 @@ container_definitions (stop_timeout) | Time duration (in seconds) to wait before
 container_definitions (hostname) | The hostname to use for your container. | container_definitions_hostnames |
 container_definitions (user) | The user to use inside the container. | container_definitions_users |
 container_definitions (working_directory) | The working directory in which to run commands inside the container. | container_definitions_working_directories |
-container_definitions (disable_networking) | When this parameter is true, networking is disabled within the container. | container_definitions_disable_networkings |
-container_definitions (privileged) | When this parameter is true, the container is given elevated privileges on the host container instance (similar to the root user). | container_definitions_privilegeds |
-container_definitions (readonly_root_filesystem) | When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the --read-only option to docker run. | container_definitions_readonly_root_filesystems |
+container_definitions (disable_networking) | When this parameter is `true`, networking is disabled within the container. | container_definitions_disable_networkings |
+container_definitions (privileged) | When this parameter is `true`, the container is given elevated privileges on the host container instance (similar to the root user). | container_definitions_privilegeds |
+container_definitions (readonly_root_filesystem) | When this parameter is `true`, the container is given read-only access to its root file system. This parameter maps to `ReadonlyRootfs` in the Create a container section of the Docker Remote API and the `--read-only` option to docker run. | container_definitions_readonly_root_filesystems |
 container_definitions (dns_servers) | A list of DNS servers that are presented to the container. | container_definitions_dns_servers |
 container_definitions (dns_search_domains) | A list of DNS search domains that are presented to the container. | container_definitions_dns_search_domains |
-container_definitions (extra_hosts) | A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. | container_definitions_extra_hosts |
-container_definitions (extra_hosts (hostname)) | The hostname to use in the /etc/hosts entry. | container_definitions_extra_hosts_hostnames |
-container_definitions (extra_hosts (ip_address)) | The IP address to use in the /etc/hosts entry. | container_definitions_extra_hosts_ip_addresses |
+container_definitions (extra_hosts) | A list of hostnames and IP address mappings to append to the `/etc/hosts` file on the container. | container_definitions_extra_hosts |
+container_definitions (extra_hosts (hostname)) | The hostname to use in the `/etc/hosts` entry. | container_definitions_extra_hosts_hostnames |
+container_definitions (extra_hosts (ip_address)) | The IP address to use in the `/etc/hosts` entry. | container_definitions_extra_hosts_ip_addresses |
 container_definitions (docker_security_options) | A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems. This field is not valid for containers in tasks using the Fargate launch type. | container_definitions_docker_security_options |
-container_definitions (interactive) | When this parameter is true , this allows you to deploy containerized applications that require stdin or a tty to be allocated. This parameter maps to OpenStdin in the Create a container section of the Docker Remote API and the --interactive option to docker run. | container_definitions_interactives |
-container_definitions (pseudo_terminal) | When this parameter is true , a TTY is allocated. This parameter maps to Tty in the Create a container section of the Docker Remote API and the --tty option to docker run. | container_definitions_pseudo_terminals |
+container_definitions (interactive) | When this parameter is `true`, this allows you to deploy containerized applications that require stdin or a tty to be allocated. This parameter maps to OpenStdin in the Create a container section of the Docker Remote API and the --interactive option to docker run. | container_definitions_interactives |
+container_definitions (pseudo_terminal) | When this parameter is `true`, a TTY is allocated. This parameter maps to Tty in the Create a container section of the Docker Remote API and the --tty option to docker run. | container_definitions_pseudo_terminals |
 container_definitions (docker_labels) | A key/value map of labels to add to the container. | container_definitions_docker_labels |
 container_definitions (ulimits) | The ulimit settings to pass to the container. | container_definitions_ulimits |
 container_definitions (ulimits (name)) | The type of the ulimit. | container_definitions_ulimits_names |
@@ -120,12 +120,12 @@ container_definitions (resource_requirements) | The type and amount of a resourc
 container_definitions (resource_requirements (value)) | The value for the specified resource type. | container_definitions_resource_requirements_values |
 container_definitions (resource_requirements (type)) | The type of resource to assign to a container. | container_definitions_resource_requirements_types |
 container_definitions (firelens_configuration) | The FireLens configuration for the container. | container_definitions_firelens_configurations |
-container_definitions (firelens_configuration (type)) | The log router to use. The valid values are fluentd or fluentbit. | container_definitions_firelens_configurations_types |
+container_definitions (firelens_configuration (type)) | The log router to use. The valid values are `fluentd` or `fluentbit`. | container_definitions_firelens_configurations_types |
 container_definitions (firelens_configuration (options)) | The options to use when configuring the log router. | container_definitions_firelens_configurations_options |
 family | The name of a family that this task definition is registered to. | family |
 task_role_arn | The short name or full Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role. | task_role_arn |
 execution_role_arn | The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container. | execution_role_arn |
-network_mode | The Docker networking mode to use for the containers in the task. The valid values are none, bridge, awsvpc, and host. | network_mode |
+network_mode | The Docker networking mode to use for the containers in the task. The valid values are `none`, `bridge`, `awsvpc`, and `host`. | network_mode |
 revision | The revision of the task in a particular family. | revision |
 volumes | The list of data volume definitions for the task. | volumes |
 volumes (name) | The name of the volume. | volumes_names |
@@ -133,7 +133,7 @@ volumes (host) | The host of the volume. | volumes_hosts |
 volumes (host (source_path)) | The source path of the volume. | volumes_source_paths |
 volumes (docker_volume_configuration) | This parameter is specified when you are using Docker volumes. | volumes_docker_volume_configurations |
 volumes (docker_volume_configuration (scope)) | The scope for the Docker volume that determines its lifecycle. | volumes_docker_volume_configuration_scopes |
-volumes (docker_volume_configuration (autoprovision)) | If this value is true , the Docker volume is created if it does not already exist. | volumes_docker_volume_configuration_autoprovisions |
+volumes (docker_volume_configuration (autoprovision)) | If this value is `true`, the Docker volume is created if it does not already exist. | volumes_docker_volume_configuration_autoprovisions |
 volumes (docker_volume_configuration (driver)) | The Docker volume driver to use. | volumes_docker_volume_configuration_drivers |
 volumes (docker_volume_configuration (driver_opts)) | A map of Docker driver-specific options passed through. | volumes_docker_volume_configuration_driver_opts |
 volumes (docker_volume_configuration (labels)) | Custom metadata to add to your Docker volume. | volumes_docker_volume_configuration_labels |
@@ -162,15 +162,15 @@ placement_constraints (type) | The type of constraint. | placement_constraints_t
 placement_constraints (expression) | The expression of constraint. | placement_constraints_expressions |
 compatibilities | The task launch types the task definition validated against during task definition registration. | compatibilities |
 requires_compatibilities | The task launch types the task definition was validated against. | FieldName |
-cpu | The number of cpu units used by the task. | cpu |
+cpu | The number of CPU units used by the task. | cpu |
 memory | The amount (in MiB) of memory used by the task. | memory |
 inference_accelerators | The Elastic Inference accelerator associated with the task. | inference_accelerators |
 inference_accelerators (device_name) | The Elastic Inference accelerator device name. | inference_accelerators_device_names |
 inference_accelerators (device_type) | The Elastic Inference accelerator type to use. | inference_accelerators_device_types |
-pid_mode | The process namespace to use for the containers in the task. The valid values are host or task. | pid_mode |
-ipc_mode | The IPC resource namespace to use for the containers in the task. The valid values are host, task, or none. | ipc_mode |
+pid_mode | The process namespace to use for the containers in the task. The valid values are `host` or `task`. | pid_mode |
+ipc_mode | The IPC resource namespace to use for the containers in the task. The valid values are `host`, `task`, or `none`. | ipc_mode |
 proxy_configuration | The configuration details for the App Mesh proxy. | proxy_configuration |
-proxy_configuration (type) | The proxy type. The only supported value is APPMESH. | proxy_configuration_types |
+proxy_configuration (type) | The proxy type. The only supported value is `APPMESH`. | proxy_configuration_types |
 proxy_configuration (container_name) | The name of the container that will serve as the App Mesh proxy. | proxy_configuration_container_names |
 proxy_configuration (properties) | The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified as key-value pairs. | proxy_configuration_properties |
 proxy_configuration (properties (name)) | The name of the key-value pair. | proxy_configuration_properties_names |
@@ -219,7 +219,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ecs_task_definition(task_definition: 'dummy') do
+    describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
       it { should_not exist }
     end
 
