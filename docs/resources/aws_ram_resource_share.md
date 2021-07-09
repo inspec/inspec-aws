@@ -5,21 +5,25 @@ platform: aws
 
 # aws\_ram\_resource\_share
 
-Use the `aws_ram_resource_share` InSpec audit resource to test properties of a single specific AWS RAM Resource Share.
-
-The AWS::RAM::ResourceShare resource specifies a resource share.
+Use the `aws_ram_resource_share` InSpec audit resource to test properties of a single specific AWS RAM resource share.
 
 ## Syntax
 
 Ensure that a resource exists.
 
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
       it { should exist }
     end
 
 ## Parameters
 
-`resource_owner resource_share_arn` _(required)_
+`resource_owner` _(required)_
+
+The type of owner. Possible values: `SELF` and `OTHER-ACCOUNTS`.
+
+`resource_share_arn` _(required)_
+
+The Amazon Resource Name (ARN) of the resource share.
 
 For additional information, see the [AWS documentation on AWS RAM Resource Share](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html).
 
@@ -36,18 +40,20 @@ For additional information, see the [AWS documentation on AWS RAM Resource Share
 | tags | The tags for the resource share. |
 | creation_time | The time when the resource share was created. |
 | last_updated_time | The time when the resource share was last updated. |
-| feature_set | Indicates how the resource share was created. Possible values include CREATED_FROM_POLICY, PROMOTING_TO_STANDARD and STANDARD. |
+| feature_set | Indicates how the resource share was created. Possible values include `CREATED_FROM_POLICY`, `PROMOTING_TO_STANDARD`, and `STANDARD`. |
 
 ## Examples
 
-### Ensure a resource share arn is available.
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
-      its('resource_share_arn') { should eq 'resource_share_arn_test' }
+### Ensure a resource share ARN is available.
+
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
+      its('resource_share_arn') { should eq 'RESOURCE_SHARE_ARN' }
     end
 
 ### Ensure a resource name is available.
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
-        its('name') { should eq 'resource_name' }
+
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
+        its('name') { should eq 'RESOURCE_SHARE_NAME' }
     end
 
 ## Matchers
@@ -60,13 +66,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'dummy') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
       it { should_not exist }
     end
 
@@ -74,7 +80,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the work_group name is available.
 
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
       it { should be_available }
     end
 

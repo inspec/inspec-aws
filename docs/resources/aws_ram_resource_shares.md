@@ -5,9 +5,7 @@ platform: aws
 
 # aws\_ram\_resource\_shares
 
-Use the `aws_ram_resource_shares` InSpec audit resource to test properties of a plural AWS RAM Resource Shares.
-
-The AWS::RAM::ResourceShare resource specifies a resource share.
+Use the `aws_ram_resource_shares` InSpec audit resource to test properties of multiple AWS RAM resource shares.
 
 ## Syntax
 
@@ -20,6 +18,8 @@ Ensure that a resource exists.
 ## Parameters
 
 `resource_owner` _(required)_
+
+The type of owner. Possible values: `SELF` and `OTHER-ACCOUNTS`.
 
 For additional information, see the [AWS documentation on AWS RAM Resource Share](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html).
 
@@ -36,21 +36,18 @@ For additional information, see the [AWS documentation on AWS RAM Resource Share
 | tags | The tags for the resource share. |
 | creation_times | The time when the resource share was created. |
 | last_updated_times | The time when the resource share was last updated. |
-| feature_sets | Indicates how the resource share was created. Possible values include CREATED_FROM_POLICY, PROMOTING_TO_STANDARD and STANDARD. |
+| feature_sets | Indicates how the resource share was created. Possible values include `CREATED_FROM_POLICY`, `PROMOTING_TO_STANDARD`, and `STANDARD`. |
 
 ## Examples
 
-### Ensure a resource arn is available.
+### Ensure a resource ARN is available.
+
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
-      its('resource_share_arns') { should include 'resource_arn_test' }
+      its('resource_share_arns') { should include 'RESOURCE_SHARE_ARN' }
     end
 
-### Ensure a resource group arn is available.
-    describe aws_ram_resource_shares(resource_owner: 'SELF') do
-      its('resource_group_arns') { should include 'resource_group_arn_test' }
-    end
+### Ensure that a resource share has an `ACTIVE` status.
 
-### Ensure that the status is `ACTIVE` or `not.
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
         its('statuses') { should include 'ACTIVE' }
     end
