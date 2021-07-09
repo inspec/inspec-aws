@@ -1,9 +1,14 @@
-<!-- latest_release 1.51.6 -->
+<!-- latest_release 1.52.0 -->
+## [v1.52.0](https://github.com/inspec/inspec-aws/tree/v1.52.0) (2021-07-09)
+
+#### Merged Pull Requests
+- Fix aws_auto_scaling_groups tags handling [#423](https://github.com/inspec/inspec-aws/pull/423) ([guilhermef](https://github.com/guilhermef))
+<!-- latest_release -->
+
 ## [v1.51.6](https://github.com/inspec/inspec-aws/tree/v1.51.6) (2021-07-06)
 
 #### Merged Pull Requests
 - aws_event_rule [#379](https://github.com/inspec/inspec-aws/pull/379) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.51.5](https://github.com/inspec/inspec-aws/tree/v1.51.5) (2021-07-05)
 
