@@ -334,6 +334,22 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_cloudwatch_event_rule_arn" {
+  value = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule_test.arn
+}
+
+output "aws_elasticsearch_domain_id" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.domain_id
+}
+
+output "aws_elasticsearch_domain_arn" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.arn
+}
+
+output "aws_dms_endpoint_arn" {
+  value = aws_dms_endpoint.aws_dms_endpoint_test.endpoint_arn
+}
+
 output "aws_mount_target_mt_id" {
   value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
 }
@@ -430,7 +446,6 @@ output "aws_transit_gateway_attachment_vpc_id_association" {
   value = aws_vpc.attachment.id
 }
 
-
 output "network_acl_id" {
   value = aws_network_acl.inspec-nw-acl.id
 }
@@ -477,4 +492,15 @@ output "aws_vpc_endpoint_service_id" {
 
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
+}
+
+output "aws_vpc_endpoint_service_allowed_principal_arn" {
+  value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
+}
+
+output "load_balancer_arn" {
+  value = aws_lb.test.arn
+}
+output "listener_arn" {
+  value = aws_lb_listener.front_end.arn
 }
