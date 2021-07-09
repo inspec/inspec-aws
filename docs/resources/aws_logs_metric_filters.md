@@ -5,9 +5,7 @@ platform: aws
 
 # aws\_logs\_metric\_filters
 
-Use the `aws_logs_metric_filters` InSpec audit resource to test properties of a plural AWS Logs Metric Filters.
-
-The AWS::Logs::MetricFilter resource specifies a metric filter that describes how CloudWatch Logs extracts information from logs and transforms it into Amazon CloudWatch metrics. If you have multiple metric filters that are associated with a log group, all the filters are applied to the log streams in that group.
+Use the `aws_logs_metric_filters` InSpec audit resource to test properties of multiple AWS CloudWatch logs metric filters.
 
 ## Syntax
 
@@ -18,6 +16,8 @@ Ensure that a filter name exists.
     end
 
 ## Parameters
+
+This resource does not expect any parameters.
 
 For additional information, see the [AWS documentation on AWS Logs MetricFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html).
 
@@ -34,13 +34,15 @@ For additional information, see the [AWS documentation on AWS Logs MetricFilter]
 ## Examples
 
 ### Ensure a filter name is available.
+
     describe aws_logs_metric_filters do
-      its('filter_names') { should include 'FilterName' }
+      its('filter_names') { should include 'FILTER_NAME' }
     end
 
 ### Ensure a log group name is available.
+
     describe aws_logs_metric_filters do
-        its('log_group_names') { should include 'LogGroupName' }
+        its('log_group_names') { should include 'LOG_GROUP_NAME' }
     end
 
 ## Matchers

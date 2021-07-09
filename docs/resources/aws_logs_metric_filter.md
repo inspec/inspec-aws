@@ -5,21 +5,21 @@ platform: aws
 
 # aws\_logs\_metric\_filter
 
-Use the `aws_logs_metric_filter` InSpec audit resource to test properties of a single specific AWS Logs Metric Filter.
-
-The AWS::Logs::MetricFilter resource specifies a metric filter that describes how CloudWatch Logs extracts information from logs and transforms it into Amazon CloudWatch metrics. If you have multiple metric filters that are associated with a log group, all the filters are applied to the log streams in that group.
+Use the `aws_logs_metric_filter` InSpec audit resource to test properties of a single specific AWS CloudWatch logs metric filter.
 
 ## Syntax
 
 Ensure that a work_group name exists.
 
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+    describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
       it { should exist }
     end
 
 ## Parameters
 
 `filter_name` _(required)_
+
+The name of the metric filter.
 
 For additional information, see the [AWS documentation on AWS Logs MetricFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html).
 
@@ -39,12 +39,14 @@ For additional information, see the [AWS documentation on AWS Logs MetricFilter]
 ## Examples
 
 ### Ensure a filter name is available.
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+
+    describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
       its('filter_name') { should eq 'FilterName' }
     end
 
 ### Ensure a log group name is available.
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+
+    describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
         its('log_group_name') { should eq 'LogGroupName' }
     end
 
@@ -58,7 +60,7 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+    describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
       it { should exist }
     end
 
@@ -72,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the filter name is available.
 
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+    describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
       it { should be_available }
     end
 
