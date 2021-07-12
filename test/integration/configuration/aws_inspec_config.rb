@@ -72,6 +72,7 @@ module AWSInspecConfig
       aws_bucket_versioning_enabled: "aws-bucket-version-enabled-#{add_random_string}",
       aws_cloudformation_stack_name: "aws-cloudformation-stack-#{add_random_string}",
       aws_cloudformation_stack_ecr_name: "aws-cloudformation-stack-ecr-name-#{add_random_string}",
+      aws_cloudfront_origin_s3_bucket: "inspec-cloudfront-origin-#{add_random_string}",
       aws_cloud_trail_bucket_name: "aws-cloud-trail-bucket-#{add_random_string}",
       aws_cloud_trail_key_description: "aws-cloud-trail-key-description-#{add_random_string}",
       aws_cloud_trail_log_group: "aws-cloud-trail-log-group-#{add_random_string}",
