@@ -1,9 +1,14 @@
-<!-- latest_release 1.52.0 -->
+<!-- latest_release 1.52.1 -->
+## [v1.52.1](https://github.com/inspec/inspec-aws/tree/v1.52.1) (2021-07-12)
+
+#### Merged Pull Requests
+- Fix some terraform and config bugs [#482](https://github.com/inspec/inspec-aws/pull/482) ([sandratiffin](https://github.com/sandratiffin))
+<!-- latest_release -->
+
 ## [v1.52.0](https://github.com/inspec/inspec-aws/tree/v1.52.0) (2021-07-09)
 
 #### Merged Pull Requests
 - Fix aws_auto_scaling_groups tags handling [#423](https://github.com/inspec/inspec-aws/pull/423) ([guilhermef](https://github.com/guilhermef))
-<!-- latest_release -->
 
 ## [v1.51.6](https://github.com/inspec/inspec-aws/tree/v1.51.6) (2021-07-06)
 
