@@ -272,7 +272,8 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
-      aws_crawler_name: "crawler"
+      aws_crawler_name: "crawler",
+      aws_sfn_state_machine_name: "my-state-machine",
   }
 
   def self.config
