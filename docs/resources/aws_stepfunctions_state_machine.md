@@ -39,7 +39,7 @@ For additional information, see the [AWS documentation on Step Functions state m
 | logging_configuration (level) | The category of execution history in which events are logged. |
 | logging_configuration (include_execution_data) | Whether execution data is included in your log. Valid values: `true` or `false`. |
 | logging_configuration (destinations) | An array of objects that describes where your execution history events will be logged. |
-| logging_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. Valid values: `true` or `false`. |
+| tracing_configuration (enabled) | Selects whether or not the state machine's AWS X-Ray tracing is enabled. Valid values: `true` or `false`. |
 
 ## Examples
 

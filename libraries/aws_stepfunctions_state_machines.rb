@@ -34,7 +34,7 @@ class AWSStepFunctionsStateMachines < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.states_client.list_state_machines(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.state_machines.each do |res|
         rows += [{
           state_machine_arn: res.state_machine_arn,

@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSStepFunctionsStateMachine < AwsResourceBase
   name 'aws_stepfunctions_state_machine'
   desc 'Describes a state machine.'
+
   example "
     describe aws_stepfunctions_state_machine(state_machine_arn: 'state_machine_arn_value') do
       it { should exist }
@@ -24,17 +25,13 @@ class AWSStepFunctionsStateMachine < AwsResourceBase
     end
   end
 
-  def id
+  def state_machine_arn
     return nil unless exists?
     @res[:state_machine_arn]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s

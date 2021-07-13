@@ -152,7 +152,6 @@ variable "aws_vpc_name" {}
 variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
-<<<<<<< HEAD
 variable "aws_identity_pool_name" {}
 variable "aws_open_id_connect_provider_arns" {}
 variable "aws_image_id" {}
@@ -209,10 +208,7 @@ variable "aws_min_vcpus" {}
 variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
-
-=======
 variable "aws_sfn_state_machine_name" {}
->>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2111,7 +2107,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
-<<<<<<< HEAD
+
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -2178,7 +2174,7 @@ resource "aws_batch_compute_environment" "aws_batch_compute_environment1" {
 
 resource "aws_iam_role" "ecs_instance_role" {
   name = "ecs_instance_role"
-=======
+}
 
 resource "aws_transfer_server" "aws_transfer_server_tu_test" {
   identity_provider_type = "SERVICE_MANAGED"
@@ -2190,13 +2186,11 @@ resource "aws_transfer_server" "aws_transfer_server_tu_test" {
 
 resource "aws_iam_role" "aws_iam_role_tu_test" {
   name = "tf-test-transfer-user-iam-tu-role"
->>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
 
   assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
-<<<<<<< HEAD
     {
         "Action": "sts:AssumeRole",
         "Effect": "Allow",
@@ -2204,7 +2198,6 @@ resource "aws_iam_role" "aws_iam_role_tu_test" {
             "Service": "ec2.amazonaws.com"
         }
     }
-=======
         {
         "Effect": "Allow",
         "Principal": {
@@ -2212,13 +2205,11 @@ resource "aws_iam_role" "aws_iam_role_tu_test" {
         },
         "Action": "sts:AssumeRole"
         }
->>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
     ]
 }
 EOF
 }
 
-<<<<<<< HEAD
 resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
   role       = aws_iam_role.ecs_instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
@@ -2799,7 +2790,7 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   availability_zone = var.aws_availability_zone
 
 }
-=======
+
 resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
   name = "tf-test-transfer-user-iam-tu-policy"
   role = aws_iam_role.aws_iam_role_tu_test.id
@@ -2879,4 +2870,3 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
     }
   }
 }
->>>>>>> bf2b353771531e4bc55b01b79cb300f1c0d5028e
