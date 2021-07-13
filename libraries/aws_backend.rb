@@ -40,6 +40,7 @@ require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
+require 'aws-sdk-eventbridge'
 
 # AWS Inspec Backend Classes
 #
@@ -235,6 +236,10 @@ class AwsConnection
 
   def elasticsearch_service_client
     aws_client(Aws::ElasticsearchService::Client)
+  end
+
+  def eventbridge_client
+    aws_client(Aws::EventBridge::Client)
   end
 end
 
