@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_route53resolver\_resolver\_rule\_associations
 
-Use the `aws_route53resolver_resolver_rule_associations` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_route53resolver_resolver_rule_associations` InSpec audit resource to test properties of multiple AWS Route53 Resolver rule associations.
 
-The AWS::Route53Resolver::ResolverRuleAssociation resource provides information about an association between a resolver rule and a VPC. The association determines which DNS queries that originate in the VPC are forwarded to your network.
+The Resolver rule association determines which DNS queries that originate in the VPC are forwarded to your network.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Ensure that a resolver name exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverruleassociation.html).
 
 ## Properties
 
@@ -35,13 +35,15 @@ For additional information, see the [AWS documentation on AWS Route53Resolver Re
 ## Examples
 
 ### Ensure a resolver name is available.
+
     describe aws_route53resolver_resolver_rule_associations do
-      its('names') { should include 'ResolverRuleName' }
+      its('names') { should include 'RESOLVER_RULE_NAME' }
     end
 
 ### Ensure that the status is `COMPLETE` or `FAILED`.
+
     describe aws_route53resolver_resolver_rule_associations do
-        its('statuses') { should include 'COMPLETE' }
+      its('statuses') { should include 'COMPLETE' }
     end
 
 ## Matchers

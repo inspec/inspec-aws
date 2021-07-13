@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_route53resolver\_resolver\_rule\_association
 
-Use the `aws_route53resolver_resolver_rule_association` InSpec audit resource to test properties of a single specific AWS Route53Resolver Resolver Rule Association.
+Use the `aws_route53resolver_resolver_rule_association` InSpec audit resource to test properties of a single AWS Route53 Resolver rule association.
 
-The AWS::Route53Resolver::ResolverRuleAssociation resource provides information about an association between a resolver rule and a VPC. The association determines which DNS queries that originate in the VPC are forwarded to your network.
+The Resolver rule association determines which DNS queries that originate in the VPC are forwarded to your network.
 
 ## Syntax
 
 Ensure that a resolver rule exists.
 
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
       it { should exist }
     end
 
@@ -21,7 +21,9 @@ Ensure that a resolver rule exists.
 
 `resolver_rule_association_id` _(required)_
 
-For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+The ID of the Resolver rule association that you want to get information about.
+
+For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverruleassociation.html).
 
 ## Properties
 
@@ -37,13 +39,15 @@ For additional information, see the [AWS documentation on AWS Route53Resolver Re
 ## Examples
 
 ### Ensure a resolver rule name is available.
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
-      its('name') { should eq 'ResolverRuleName' }
+
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
+      its('name') { should eq 'RESOLVER_RULE_NAME' }
     end
 
 ### Ensure that the status is `COMPLETE` or `FAILED`.
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
-        its('status') { should eq 'COMPLETE' }
+
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
+      its('status') { should eq 'COMPLETE' }
     end
 
 ## Matchers
@@ -56,13 +60,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
       
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'dummy') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
       it { should_not exist }
     end
 
@@ -70,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
+    describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
       it { should be_available }
     end
 
