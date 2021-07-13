@@ -45,7 +45,7 @@ class AwsCloudFrontDistributions < AwsResourceBase
       catch_aws_errors do
         cfds = @aws.cloudfront_client.list_distributions(pagination_options).distribution_list
       end
-      return [] if !cfds || cfds.items.empty?
+      return cfd_rows if !cfds || cfds.items.empty?
 
       cfds.items.each do |cfd|
         custom_origin_ssl_protocols = []
@@ -54,7 +54,7 @@ class AwsCloudFrontDistributions < AwsResourceBase
             custom_origin_ssl_protocols += origin.custom_origin_config.origin_ssl_protocols.items
           end
         end
-        custom_origin_ssl_protocols = custom_origin_ssl_protocols.sort.uniq
+        custom_origin_ssl_protocols = custom_origin_ssl_protocols.uniq.sort
 
         cfd_rows += [{ distribution_ids:                         cfd.id,
                        distribution_arns:                        cfd.arn,

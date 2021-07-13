@@ -33,7 +33,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     catch_aws_errors do
       @resp = @aws.cloudfront_client.get_distribution(id: opts[:distribution_id])
     end
-    return nil if @resp.nil?
+    return if @resp.nil?
 
     @distribution_arn = @resp.distribution.arn
     config = @resp.distribution.distribution_config
@@ -55,7 +55,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
       config.cache_behaviors.items.each do |behavior|
         @viewer_protocol_policies << behavior[:viewer_protocol_policy]
       end
-      @viewer_protocol_policies = @viewer_protocol_policies.sort.uniq
+      @viewer_protocol_policies = @viewer_protocol_policies.uniq.sort
     end
 
     @custom_origin_ssl_protocols = []
@@ -67,7 +67,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
         @custom_origin_ssl_protocols += origin[:custom_origin_config][:origin_ssl_protocols][:items]
       end
     end
-    @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.sort.uniq
+    @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
   end
 
   def exists?
