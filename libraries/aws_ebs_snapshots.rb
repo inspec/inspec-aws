@@ -23,7 +23,7 @@ class AwsEbsSnapshots < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    @table = fetch_data
+    fetch_data
   end
 
   def fetch_data
@@ -33,14 +33,10 @@ class AwsEbsSnapshots < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_snapshots(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return snapshot_rows if !@api_response || @api_response.empty?
 
-      @api_response.snapshots.map do |snapshot|
-        snapshot_rows += [{ snapshot_id: snapshot.snapshot_id,
-                            owner_id:    snapshot.owner_id,
-                            encrypted:   snapshot.encrypted,
-                            tags:        snapshot.tags }]
-      end
+      snapshot_rows += @api_response.snapshots.map(&:to_h)
+
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end

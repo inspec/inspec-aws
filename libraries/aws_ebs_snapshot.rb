@@ -97,11 +97,9 @@ class AwsEbsSnapshot < AwsResourceBase
 
       @group = nil
       @user_ids = []
-      if !@create_volume_permissions.empty?
-        @create_volume_permissions.each do |perms|
-          @group = 'all' if perms[:group] == 'all'
-          @user_ids += [perms[:user_id]] unless perms[:user_id].nil?
-        end
+      @create_volume_permissions.each do |perms|
+        @group = 'all' if perms[:group] == 'all'
+        @user_ids << perms[:user_id] unless perms[:user_id].nil?
       end
     end
   end
