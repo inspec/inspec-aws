@@ -5,12 +5,12 @@ platform: aws
 
 # aws\_ebs\_snapshot
 
-Use the `aws_ebs_snapshot` InSpec audit resource to test properties of a single AWS EBS snapshot. These are point-in-time
+Use the `aws_ebs_snapshot` InSpec audit resource to test properties of a single AWS EBS Snapshot. These are point-in-time
 incremental backups of AWS EBS volumes that are saved to AWS S3.
 
 ## Syntax
 
-Ensure an EBS snapshot exists:
+Ensure an EBS Snapshot exists:
 
     describe aws_ebs_snapshot(snapshot_id: 'SNAPSHOT_ID') do
       it { should exist }
@@ -24,14 +24,14 @@ You may also use hash syntax to pass the EBS volume name:
 
 ### Parameters
 
-This resource accepts a single parameter, either the EBS snapshot ID or name (from the Name tag). At least one must be provided.
+This resource accepts a single parameter, either the EBS Snapshot ID or name (from the Name tag). At least one must be provided.
 
 #### snapshot\_id
 
-The EBS snapshot ID which uniquely identifies the volume.
+The EBS Snapshot ID which uniquely identifies the volume.
 This can be passed as either a string or an `snapshot_id: 'value'` key-value entry in a hash.
 
-For additional information, see the [AWS documentation on EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html).
+For additional information, see the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html).
 
 #### name _(required if `snapshot_id` not provided)_
 
@@ -40,32 +40,41 @@ It is not advised to use this parameter if your Name tags for your snapshots are
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|snapshot\_id | The unique ID for the EBS snapshot. |
-|tags         | A hash of tags for the EBS snapshot, e.g. {'Name' => 'snapshot-name'} . |
-|encrypted    | A boolean indicating whether the snapshot is encrypted. |
-|group        | Either set to `all` if the EBS snapshot is public (anyone can create a volume from the EBS snapshot), or `nil`. |
-|user\_ids    | An array of user\_ids (account numbers) that have been granted create volume permission, or an empty array if no other accounts have been granted permission to create a volume from this EBS snapshot. |
-
-There are also additional properties available, for instance `description`, `owner_id` and `volume_size`. For a comprehensive list,
-see [the API reference documentation for EBS snapshots](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/EC2/snapshot.html).
+|Property                  | Description|
+| ---                      | --- |
+|snapshot\_id              | The unique ID for the EBS Snapshot. |
+|encrypted                 | A boolean indicating whether the EBS Snapshot is encrypted. |
+|data\_encryption\_key\_id | The data encryption key identifier for the EBS Snapshot. |
+|description               | The description for the EBS Snapshot. |
+|group                     | Either set to `'all'` if the EBS Snapshot is public (anyone can create a volume from the EBS Snapshot), or `nil`. |
+|kms\_key\_id              | The ARN of the AWS KMS customer master key that was used to protect the volume encryption key for the parent volume. |
+|outpost\_arn              | The ARN of the AWS Outpost on which the EBS Snapshot is stored. |
+|owner\_alias              | The AWS owner alias, from an Amazon-maintained list. |
+|owner\_id                 | The AWS account ID of the EBS Snapshot owner. |
+|progress                  | The progress of the EBS Snapshot, as a percentage, e.g. `'100%'`. |
+|start\_time               | The time stamp when the EBS Snapshot was initiated. |
+|state                     | The EBS Snapshot state. |
+|state\_message            | A message about the EBS Snapshot state. | 
+|tags                      | A hash of tags for the EBS Snapshot, e.g. `{'Name' => 'snapshot-name'}` . |
+|user\_ids                 | An array of user\_ids (account numbers) that have been granted permission to create a volume from this EBS Snapshot. |
+|volume\_id                | The ID of the volume that was used to create the EBS Snapshot. |
+|volume\_size              | The size of the volume, in GiB. |
 
 ## Examples
 
-### Test that an EBS snapshot is encrypted
+### Test that an EBS Snapshot is encrypted
 
     describe aws_ebs_snapshot(id: 'SNAPSHOT_ID')do
       its('encrypted') { should eq true }
     end
 
-### Test that an EBS snapshot has the expected Name tag
+### Test that an EBS Snapshot has the expected Name tag
 
     describe aws_ebs_snapshot(id: 'SNAPSHOT_ID') do
       its('tags') { should include(key: 'Name', value: 'SNAPSHOT_NAME') }
     end
 
-### Tests that no specified accounts have been given access to create volumes from this EBS snapshot
+### Tests that no specified accounts have been given access to create volumes from this EBS Snapshot
 
     describe aws_ebs_snapshot(id: 'SNAPSHOT_ID') do
       its('user_ids') { should be_empty }
@@ -91,21 +100,21 @@ Use `should_not` to test the entity should not exist.
 
 ### be\_encrypted
 
-The `be_encrypted` matcher tests whether the described EBS snapshot is encrypted.
+The `be_encrypted` matcher tests whether the described EBS Snapshot is encrypted.
 
     it { should be_encrypted }
 
 ### be\_public
 
-The `be_public` matcher tests whether the described EBS snapshot is public, i.e. if anyone may create a volume from the EBS snapshot.
+The `be_public` matcher tests whether the described EBS Snapshot is public, i.e. if anyone may create a volume from the EBS Snapshot.
 
     it { should be_public }
 
 ### be\_private
 
-The `be_private` matcher tests whether the described EBS snapshot is private, i.e. not open for anyone to create a volume from
-the EBS snapshot. It does not check whether specific user\_ids (AWS accounts) have been given access to create a volume from the
-EBS snapshot). To check permissions for specific user\_ids, see the last example in the previous section.
+The `be_private` matcher tests whether the described EBS Snapshot is private, i.e. not open for anyone to create a volume from
+the EBS Snapshot. It does not check whether specific user\_ids (AWS accounts) have been given access to create a volume from the
+EBS Snapshot). To check permissions for specific user\_ids, see the last example in the previous section.
 
     it { should be_private }
 
