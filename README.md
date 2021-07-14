@@ -140,6 +140,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_db_parameter_groups](docs/resources/aws_db_parameter_groups.md)
 - [aws_dhcp_options](docs/resources/aws_dhcp_options.md)
 - [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
+- [aws_ebs_snapshot](docs/resources/aws_ebs_snapshot.md)
+- [aws_ebs_snapshots](docs/resources/aws_ebs_snapshots.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_dhcp_option](docs/resources/aws_ec2_dhcp_option.md)
