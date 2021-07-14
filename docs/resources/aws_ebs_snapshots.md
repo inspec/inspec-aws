@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ebs\_snapshots
 
-Use the `aws_ebs_snapshots` InSpec audit resource to test properties of a collection of AWS EBS Snapshots.
+Use the `aws_ebs_snapshots` InSpec audit resource to test properties of a collection of AWS EBS snapshots.
 
 ## Syntax
 
@@ -19,26 +19,27 @@ Use the `aws_ebs_snapshots` InSpec audit resource to test properties of a collec
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html).
+See also the [AWS documentation on EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSsnapshots.html).
 
 ## Properties
 
 |Property      | Description|
 | ---          | --- |
-|snapshot\_ids | An array of the unique IDs of the EBS Snapshots that are returned. |
-|owner\_ids    | An array of AWS Account IDs of the owners of the EBS Snapshots that are returned. |
-|encrypted     | An array of booleans indicating whether the EBS Shapshots returned are encrypted. |
-|tags          | An array of hashes; each hash is a set of keys and values for tags for one of the EBS Shapshots returned, and may be empty. |
+|snapshot\_ids | An array of the unique IDs of the EBS snapshots that are returned. |
+|owner\_ids    | An array of AWS Account IDs of the owners of the EBS snapshots that are returned. |
+|encrypted     | An array of booleans indicating whether the EBS snapshots returned are encrypted. |
+|tags          | An array of hashes; each hash is a set of keys and values for tags for one of the EBS snapshots returned, and may be empty. |
 |entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
-##### Ensure a specific snapshot exists
+### Ensure a specific snapshot exists
+
     describe aws_ebs_snapshots do
-      its('snapshot_ids') { should include 'snap-12345678' }
+      its('snapshot_ids') { should include 'SNAPSHOT_ID' }
     end
 
-##### Use the InSpec resource to request the IDs of all EBS snapshots, then test in-depth using `aws_ebs_snapshot` to ensure all snapshots are encrypted and not public
+### Use the InSpec resource to request the IDs of all EBS snapshots, then test in-depth using `aws_ebs_snapshot` to ensure all snapshots are encrypted and not public
 
     aws_ebs_snapshots.snapshot_ids.each do |snapshot_id|
       describe aws_ebs_snapshot(snapshot_id: snapshot_id) do
@@ -51,7 +52,7 @@ See also the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AW
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -67,6 +68,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:Describesnapshots` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeSnapshots` actions with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
