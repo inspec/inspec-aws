@@ -493,6 +493,18 @@ output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
 
+output "aws_secure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.secure_distribution.0.id
+}
+
+output "aws_insecure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.insecure_distribution.0.id
+}
+
+output "aws_default_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.default.0.id
+}
+
 output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
@@ -500,9 +512,11 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
 output "load_balancer_arn" {
   value = aws_lb.test.arn
 }
+
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
+
 output "aws_sfn_state_machine_id" {
   value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
 }
