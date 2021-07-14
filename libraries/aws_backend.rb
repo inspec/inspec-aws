@@ -41,6 +41,7 @@ require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
+require 'aws-sdk-states'
 
 # AWS Inspec Backend Classes
 #
@@ -240,6 +241,10 @@ class AwsConnection
 
   def eventbridge_client
     aws_client(Aws::EventBridge::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
