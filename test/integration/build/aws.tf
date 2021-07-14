@@ -24,6 +24,7 @@ variable "aws_bucket_public_name" {}
 variable "aws_bucket_public_objects_name" {}
 variable "aws_cloudformation_stack_name" {}
 variable "aws_cloudformation_stack_ecr_name" {}
+variable "aws_cloudfront_origin_s3_bucket" {}
 variable "aws_cloud_trail_bucket_name" {}
 variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_trail_log_group" {}
@@ -270,7 +271,6 @@ resource "aws_subnet" "inspec_subnet" {
     Name = var.aws_subnet_name
   }
 }
-
 
 resource "aws_iam_role" "for_ec2" {
   count = var.aws_enable_creation
@@ -3009,6 +3009,219 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = var.aws_availability_zone
 
+}
+
+resource "aws_s3_bucket" "cloudfront_origin" {
+  count  = var.aws_enable_creation
+  bucket = var.aws_cloudfront_origin_s3_bucket
+  acl    = "private"
+}
+
+resource "tls_private_key" "example_com" {
+  count     = var.aws_enable_creation
+  algorithm = "RSA"
+}
+
+resource "tls_self_signed_cert" "example_com" {
+  count           = var.aws_enable_creation
+  key_algorithm   = "RSA"
+  private_key_pem = tls_private_key.example_com.0.private_key_pem
+
+  subject {
+    common_name  = "example.com"
+    organization = "ACME Examples, Inc"
+  }
+
+  validity_period_hours = 12
+
+  allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth",
+  ]
+}
+
+resource "aws_acm_certificate" "example_com_cert" {
+  count            = var.aws_enable_creation
+  private_key      = tls_private_key.example_com.0.private_key_pem
+  certificate_body = tls_self_signed_cert.example_com.0.cert_pem
+}
+
+locals {
+  s3_origin_id_1 = "inspec-test-s3-origin1"
+  s3_origin_id_2 = "inspec-test-s3-origin2"
+  s3_origin_id_3 = "inspec-test-s3-origin3"
+}
+
+resource "aws_cloudfront_origin_access_identity" "cfoa_identity_1" {
+  count = var.aws_enable_creation
+}
+
+resource "aws_cloudfront_distribution" "secure_distribution" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1.2"]
+    }
+  }
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_2
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1.1", "TLSv1.2"]
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "https-only"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  ordered_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_2
+    viewer_protocol_policy = "redirect-to-https"
+    path_pattern     = "/content/*"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn = aws_acm_certificate.example_com_cert.0.arn
+    minimum_protocol_version = "TLSv1.1_2016"
+    ssl_support_method = "sni-only"
+  }
+}
+
+resource "aws_cloudfront_distribution" "insecure_distribution" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1"]
+    }
+  }
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_2
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["SSLv3","TLSv1","TLSv1.1","TLSv1.2"]
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "allow-all"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  ordered_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_2
+    viewer_protocol_policy = "redirect-to-https"
+    path_pattern     = "/content/2/*"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}
+
+resource "aws_cloudfront_distribution" "default" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+
+    s3_origin_config {
+      origin_access_identity = "origin-access-identity/cloudfront/${aws_cloudfront_origin_access_identity.cfoa_identity_1.0.id}"
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "allow-all"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
 }
 
 resource "aws_lb" "test" {
