@@ -1,9 +1,14 @@
-<!-- latest_release 1.53.0 -->
+<!-- latest_release 1.54.0 -->
+## [v1.54.0](https://github.com/inspec/inspec-aws/tree/v1.54.0) (2021-07-14)
+
+#### Merged Pull Requests
+- EBS snapshot resources [#485](https://github.com/inspec/inspec-aws/pull/485) ([sandratiffin](https://github.com/sandratiffin))
+<!-- latest_release -->
+
 ## [v1.53.0](https://github.com/inspec/inspec-aws/tree/v1.53.0) (2021-07-14)
 
 #### Merged Pull Requests
 - aws_cloudfront_distribution resources [#483](https://github.com/inspec/inspec-aws/pull/483) ([sandratiffin](https://github.com/sandratiffin))
-<!-- latest_release -->
 
 ## [v1.52.2](https://github.com/inspec/inspec-aws/tree/v1.52.2) (2021-07-14)
 
