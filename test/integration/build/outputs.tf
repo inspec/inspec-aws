@@ -384,7 +384,6 @@ output "batch_job_queue_compute_environments" {
   value = aws_batch_job_queue.test_queue.compute_environments
 }
 
-
 output "aws_ecs_task_definition_arn" {
   value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
 }
@@ -515,4 +514,19 @@ output "load_balancer_arn" {
 }
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
+}
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
 }

@@ -156,7 +156,7 @@ variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "aws_identity_pool_name" {}
-variable "aws_open_id_connect_provider_arns" {}
+variable "aws_openid_connect_provider_arns" {}
 variable "aws_image_id" {}
 variable "aws_instance_type" {}
 variable "aws_auto_scaling_group_name" {}
@@ -216,6 +216,7 @@ variable "aws_elasticsearch_domain_name" {}
 variable "aws_elasticsearch_version" {}
 variable "aws_elasticsearch_instance_type" {}
 variable "aws_elasticsearch_automated_snapshot_start_hour" {}
+variable "aws_sfn_state_machine_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2004,7 +2005,7 @@ resource "aws_nat_gateway" "inspec_test" {
   count         = var.aws_enable_creation
   allocation_id = aws_eip.for_nat_gateway[0].id
   subnet_id     = aws_subnet.for_nat_gateway[0].id
-  depends_on    = ["aws_internet_gateway.inspec_test[0]"]
+  depends_on    = [aws_internet_gateway.inspec_test[0]]
 
   tags = {
     Name = var.aws_nat_gateway_name
@@ -2279,6 +2280,7 @@ resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_te
   }
 }
 
+
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -2334,6 +2336,40 @@ resource "aws_iam_role" "ecs_instance_role" {
             "Service": "ec2.amazonaws.com"
         }
     }
+    ]
+}
+EOF
+}
+
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
     ]
 }
 EOF
@@ -2506,9 +2542,8 @@ resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
   }
 
-  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+  openid_connect_provider_arns = [var.aws_openid_connect_provider_arns]
 }
-
 
 resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
   name                   = var.aws_auto_scaling_policy_name
@@ -3096,5 +3131,85 @@ resource "aws_security_group" "allow_tls_for_lb" {
 
   tags = {
     Name = "allow_tls"
+  }
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_sfn_state_machine" "sfn_state_machine_sf_test" {
+  name     = var.aws_sfn_state_machine_name
+  role_arn = aws_iam_role.aws_iam_role_sf_test.arn
+
+  definition = <<EOF
+{
+  "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
+  "StartAt": "HelloWorld",
+  "States": {
+    "HelloWorld": {
+      "Type": "Task",
+      "Resource": "${aws_lambda_function.aws_lambda_function_sf_test.arn}",
+      "End": true
+    }
+  }
+}
+EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_sf_test" {
+  name = "iam_for_lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_sf_test" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name"
+  role          = aws_iam_role.aws_iam_role_sf_test.arn
+  handler       = "exports.test"
+
+  # The filebase64sha256() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
+  source_code_hash = filebase64sha256("files/lambda.zip")
+
+
+  runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
   }
 }

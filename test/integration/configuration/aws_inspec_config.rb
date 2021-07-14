@@ -110,6 +110,8 @@ module AWSInspecConfig
       aws_ecr_repository_name: "aws-ecr-repo-name-#{add_random_string}",
       aws_ecr_repository_image_tag_mutability: 'MUTABLE',
       aws_ecr_repository_scan_on_push_enabled: false,
+      aws_ecrpublic_name: "aws-ecrpublic-name-#{add_random_string}",
+      aws_ecrpublic_repository_name: "aws-ecrpublic-repo-name-#{add_random_string}",
       aws_ecs_cluster_name: "ecs-cluster-#{add_random_string}",
       aws_efs_creation_token: "aws-efs-creation-token-#{add_random_string}",
       aws_efs_encrypted: "true",
@@ -218,7 +220,7 @@ module AWSInspecConfig
       aws_elasticsearch_instance_type: "r6g.large.elasticsearch",
       aws_elasticsearch_automated_snapshot_start_hour: 23,
       aws_openid_connect_provider_arns: "arn:aws:iam::123456789012:oidc-provider/id.example.com",
-      aws_image_id:"ami-09f56df189a29f532",
+      aws_image_id: "ami-09f56df189a29f532",
       aws_instance_type: "t2.micro",
       aws_auto_scaling_group_name: "test1",
       aws_auto_scaling_max_size: 1,
@@ -228,7 +230,7 @@ module AWSInspecConfig
       aws_auto_scaling_force_delete: true,
       aws_auto_scaling_policy_name: "test_policy",
       aws_auto_scaling_adjustment: 4,
-      aws_auto_scaling_adjustment_type:"ChangeInCapacity",
+      aws_auto_scaling_adjustment_type: "ChangeInCapacity",
       aws_auto_scaling_cooldown: 300,
       tgw_route_cidr_block: '0.0.0.0/15',
       tgw_route_cidr_block_blockhole: '0.0.0.0/16',
@@ -273,7 +275,8 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
-      aws_crawler_name: "crawler"
+      aws_crawler_name: "crawler",
+      aws_sfn_state_machine_name: "my-state-machine",
   }
 
   def self.config
@@ -319,7 +322,7 @@ module AWSInspecConfig
     outputs = get_tf_output_vars
     outputs.each do |tf|
       # also assuming single values here
-      value = `cd #{build_dir} && terraform output #{tf}`.strip
+      value = `cd "#{build_dir}" && terraform output #{tf}`.strip
       contents[tf.to_sym] = value
     end
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), 'w') do |f|
