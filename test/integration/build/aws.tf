@@ -2145,6 +2145,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
 }
 
 
+
 resource "aws_acm_certificate" "aws_acm_certificate1" {
   # ...
 }

@@ -345,6 +345,9 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+output "aws_target_group_arn" {
+  value = aws_lb_target_group.for_elb.arn
+}
 output "aws_elbv2_rule_arn" {
   value = aws_lb_listener_rule.static.arn
 }
