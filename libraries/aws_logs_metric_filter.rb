@@ -25,7 +25,7 @@ class AWSLogsMetricFilter < AwsResourceBase
     end
   end
 
-  def id
+  def filter_name
     return nil unless exists?
     @metric_filters[:filter_name_prefix]
   end
