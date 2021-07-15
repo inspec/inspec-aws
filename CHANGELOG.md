@@ -1,9 +1,34 @@
-<!-- latest_release 1.52.0 -->
+<!-- latest_release 1.55.0 -->
+## [v1.55.0](https://github.com/inspec/inspec-aws/tree/v1.55.0) (2021-07-15)
+
+#### Merged Pull Requests
+- Subnet route table assoc resource [#413](https://github.com/inspec/inspec-aws/pull/413) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
+## [v1.54.0](https://github.com/inspec/inspec-aws/tree/v1.54.0) (2021-07-14)
+
+#### Merged Pull Requests
+- EBS snapshot resources [#485](https://github.com/inspec/inspec-aws/pull/485) ([sandratiffin](https://github.com/sandratiffin))
+
+## [v1.53.0](https://github.com/inspec/inspec-aws/tree/v1.53.0) (2021-07-14)
+
+#### Merged Pull Requests
+- aws_cloudfront_distribution resources [#483](https://github.com/inspec/inspec-aws/pull/483) ([sandratiffin](https://github.com/sandratiffin))
+
+## [v1.52.2](https://github.com/inspec/inspec-aws/tree/v1.52.2) (2021-07-14)
+
+#### Merged Pull Requests
+- Ecs task definitions missing methods [#484](https://github.com/inspec/inspec-aws/pull/484) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.52.1](https://github.com/inspec/inspec-aws/tree/v1.52.1) (2021-07-12)
+
+#### Merged Pull Requests
+- Fix some terraform and config bugs [#482](https://github.com/inspec/inspec-aws/pull/482) ([sandratiffin](https://github.com/sandratiffin))
+
 ## [v1.52.0](https://github.com/inspec/inspec-aws/tree/v1.52.0) (2021-07-09)
 
 #### Merged Pull Requests
 - Fix aws_auto_scaling_groups tags handling [#423](https://github.com/inspec/inspec-aws/pull/423) ([guilhermef](https://github.com/guilhermef))
-<!-- latest_release -->
 
 ## [v1.51.6](https://github.com/inspec/inspec-aws/tree/v1.51.6) (2021-07-06)
 

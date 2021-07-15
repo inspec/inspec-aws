@@ -38,6 +38,18 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
+}
+
+output "aws_ebs_snapshot_owner_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.owner_id
+}
+
+output "aws_ebs_encrypted_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_encrypted_ebs_snapshot.0.id
+}
+
 output "aws_kms_key_enabled_id" {
   value = aws_kms_key.kms_key_enabled_rotating.0.key_id
 }
@@ -372,7 +384,6 @@ output "batch_job_queue_compute_environments" {
   value = aws_batch_job_queue.test_queue.compute_environments
 }
 
-
 output "aws_ecs_task_definition_arn" {
   value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
 }
@@ -494,6 +505,18 @@ output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
 
+output "aws_secure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.secure_distribution.0.id
+}
+
+output "aws_insecure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.insecure_distribution.0.id
+}
+
+output "aws_default_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.default.0.id
+}
+
 output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
@@ -501,6 +524,31 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
 output "load_balancer_arn" {
   value = aws_lb.test.arn
 }
+
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
+}
+
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
+}
+
+output "aws_route_table_association_id" {
+  value = aws_route_table_association.association_route_table_first.id
+}
+
+output "aws_route_table_associated_subnet" {
+  value = aws_route_table_association.association_route_table_first.subnet_id
 }
