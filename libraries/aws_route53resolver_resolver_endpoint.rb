@@ -25,7 +25,7 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
     end
   end
 
-  def id
+  def resolver_endpoint_id
     return nil unless exists?
     @res[:resolver_endpoint_id]
   end
