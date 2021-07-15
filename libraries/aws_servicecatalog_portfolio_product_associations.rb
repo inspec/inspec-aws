@@ -27,7 +27,6 @@ class AWSServiceCatalogPortfolioProductAssociations < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(product_id))
     @query_params = {}
-    @query_params[:product_id] = opts[:product_id]
     raise ArgumentError, "#{@__resource_name__}: product_id must be provided" unless opts[:product_id] && !opts[:product_id].empty?
     @query_params[:product_id] = opts[:product_id]
     @table = fetch_data
