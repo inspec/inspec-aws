@@ -39,17 +39,13 @@ class AWSDMSReplicationSubnetGroup < AwsResourceBase
     end
   end
 
-  def id
+  def replication_subnet_group_identifier
     return nil unless exists?
     @replication_subnet_groups[:replication_subnet_group_identifier]
   end
 
   def exists?
     !@replication_subnet_groups.nil? && !@replication_subnet_groups.empty?
-  end
-
-  def encrypted?
-    @replication_subnet_groups[:encrypted]
   end
 
   def to_s
