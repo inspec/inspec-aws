@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'aws-sdk-autoscaling'
+require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
+require 'aws-sdk-cloudfront'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -29,6 +31,17 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-elasticsearchservice'
+require 'aws-sdk-cognitoidentity'
+require 'aws-sdk-redshift'
+require 'aws-sdk-athena'
+require 'aws-sdk-applicationautoscaling'
+require 'aws-sdk-cognitoidentityprovider'
+require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-apigateway'
+require 'aws-sdk-glue'
+require 'aws-sdk-eventbridge'
+require 'aws-sdk-states'
 
 # AWS Inspec Backend Classes
 #
@@ -70,6 +83,10 @@ class AwsConnection
     aws_client(Aws::CloudFormation::Client)
   end
 
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
+  end
+
   def cloudtrail_client
     aws_client(Aws::CloudTrail::Client)
   end
@@ -84,6 +101,10 @@ class AwsConnection
 
   def compute_client
     aws_client(Aws::EC2::Client)
+  end
+
+  def batch_client
+    aws_client(Aws::Batch::Client)
   end
 
   def config_client
@@ -176,6 +197,54 @@ class AwsConnection
 
   def ssm_client
     aws_client(Aws::SSM::Client)
+  end
+
+  def glue_client
+    aws_client(Aws::Glue::Client)
+  end
+
+  def athena_client
+    aws_client(Aws::Athena::Client)
+  end
+
+  def redshift_client
+    aws_client(Aws::Redshift::Client)
+  end
+
+  def autoscaling_client
+    aws_client(Aws::AutoScaling::Client)
+  end
+
+  def cognitoidentity_client
+    aws_client(Aws::CognitoIdentity::Client)
+  end
+
+  def cognitoidentityprovider_client
+    aws_client(Aws::CognitoIdentityProvider::Client)
+  end
+
+  def apigateway_client
+    aws_client(Aws::APIGateway::Client)
+  end
+
+  def applicationautoscaling_client
+    aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
+  def elasticsearch_service_client
+    aws_client(Aws::ElasticsearchService::Client)
+  end
+
+  def eventbridge_client
+    aws_client(Aws::EventBridge::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
