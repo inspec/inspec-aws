@@ -21,24 +21,26 @@ Ensure that a listener ARN exists.
 
 `listener_arn`  _(required)_
 
+The ARN of the listener.
+
 For additional information, see the [AWS documentation on ELBv2 Listener Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
 
 ## Properties
 
-| Property | Description|
-| --- | ---    |
-| listener_arn | The ARN of the listener. |
-| priorities   | The rule priority. |
-| conditions   | The conditions for listener rules. Each rule can include zero or one of the following conditions: `http-request-method` , `host-header` , `path-pattern` , and `source-ip`, and zero or more of the following conditions: `http-header` and `query-string`. |
-| actions      | The actions for listener rules. Each rule includes exactly one of the following types of actions: `forward`, `redirect`, or `fixed-response`. |
-| is_defaults  | Indicates whether this is the default rule. |
+| Property | Description | Fields |
+| --- | ---    | ---    |
+| rule_arns    | The Amazon Resource Name (ARN) of the rule. | rule_arns    |
+| priorities   | The rule priority. | priorities   |
+| conditions   | The conditions for listener rules. Each rule can include zero or one of the following conditions: `http-request-method` , `host-header` , `path-pattern` , and `source-ip`, and zero or more of the following conditions: `http-header` and `query-string`. | conditions   |
+| actions      | The actions for listener rules. Each rule includes exactly one of the following types of actions: `forward`, `redirect`, or `fixed-response`. | actions      |
+| is_defaults  | Indicates whether this is the default rule. | is_defaults  |
 
 ## Examples
 
 ### Ensure a listener ARN is available.
 
     describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
-      its('listener_arn') { should include 'LISTENER_ARN' }
+      its('rule_arns') { should include 'RULE_ARN' }
     end
 
 ### Verify the priority of the desired rule ARN.
