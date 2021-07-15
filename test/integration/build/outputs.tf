@@ -544,3 +544,11 @@ output "aws_sfn_state_machine_status" {
 output "aws_sfn_state_machine_role_arn" {
   value = aws_iam_role.aws_iam_role_sf_test.arn
 }
+
+output "aws_route_table_association_id" {
+  value = aws_route_table_association.association_route_table_first.id
+}
+
+output "aws_route_table_associated_subnet" {
+  value = aws_route_table_association.association_route_table_first.subnet_id
+}

@@ -445,6 +445,11 @@ resource "aws_route_table" "route_table_first" {
   }
 }
 
+resource "aws_route_table_association" "association_route_table_first" {
+  subnet_id      = aws_subnet.inspec_subnet.id
+  route_table_id = aws_route_table.route_table_first.id
+}
+
 resource "aws_route_table" "route_table_second" {
   count  = var.aws_enable_creation
   vpc_id = aws_vpc.inspec_vpc[0].id
