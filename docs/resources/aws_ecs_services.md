@@ -4,14 +4,15 @@ platform: aws
 ---
 # aws\_ecs\_services
 
-Use the `aws_ecs_services` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_ecs_services` InSpec audit resource to test properties of multiple AWS ECS Services.
 
-The AWS::ECS::Service resource creates an Amazon Elastic Container Service (Amazon ECS) service that runs and maintains the requested number of tasks and associated load balancers.
+The AWS ECS Service resource creates an Amazon Elastic Container Service (Amazon ECS) service that runs and maintains the requested number of tasks and associated load balancers.
 
 ## Syntax
 
 Ensure that a service exists.
-    describe aws_ecs_services(cluster: "cluster_name") do
+
+    describe aws_ecs_services(cluster: "CLUSTER_NAME") do
       it { should exist }
     end
 
@@ -19,32 +20,33 @@ Ensure that a service exists.
 
 `cluster` _(required)_
 
+The short name or full Amazon Resource Name (ARN) of the cluster on which your service is running.
+
 For additional information, see the [AWS documentation on ECS Service](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
-| service_arns | The service arns of the service. |
-| service_names | The name of the service. |
-| cluster_arns | The Amazon Resource Name (ARN) of the cluster that hosts the service.|
-| status |The status of the service. The valid values are ACTIVE , DRAINING , or INACTIVE . |
+| service_arns | The ARNs of the services. |
+| service_names | The names of the services. |
+| cluster_arns | The Amazon Resource Name (ARN) of the cluster that hosts the services.|
+| status |The status of the service. The valid values are `ACTIVE`, `DRAINING`, or `INACTIVE`. |
 | desired_count |The desired number of instantiations of the task definition to keep running on the service. |
-| running_count | The number of tasks in the cluster that are in the RUNNING state. |
-| pending_count | The number of tasks in the cluster that are in the PENDING state.|
+| running_count | The number of tasks in the cluster that are in the `RUNNING` state. |
+| pending_count | The number of tasks in the cluster that are in the `PENDING` state.|
 | launch_types | The infrastructure on which your service is running. |
-| task_definitions | The task definition to use for tasks in the service. |
-| platform_versions | The AWS Fargate platform version on which the tasks in the task set are running. |
+| task_definitions | The task definitions to use for tasks in the service. |
+| platform_versions | The AWS Fargate platform versions on which the tasks in the task set are running. |
 
 For additional information, see the [AWS documentation on ECS describe services method](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/ECS/Client.html#describe_services-instance_method).
 
-
-
 ## Examples
 
-### Ensure a work_group name is available.
-    describe aws_ecs_services(cluster: "cluster_name") do
-      its('service_arns') { should include 'arn:aws:ecs:us-east-1:012345678910:service/ecs-simple-service' }
+### Ensure a specific service is available on a cluster.
+
+    describe aws_ecs_services(cluster: "CLUSTER_NAME") do
+      its('service_arns') { should include 'SERVICE_ARN' }
     end
 
 ## Matchers
@@ -57,13 +59,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ecs_services(cluster: "cluster_name") do
+    describe aws_ecs_services(cluster: "CLUSTER_NAME") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
-      
-    describe aws_ecs_services(cluster: "cluster_name") do
+
+    describe aws_ecs_services(cluster: "CLUSTER_NAME") do
       it { should_not exist }
     end
 
@@ -71,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the service is available.
 
-    describe aws_ecs_services(cluster: "cluster_name") do
+    describe aws_ecs_services(cluster: "CLUSTER_NAME") do
       it { should be_available }
     end
 
