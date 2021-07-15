@@ -1,9 +1,14 @@
-<!-- latest_release 1.54.0 -->
+<!-- latest_release 1.55.0 -->
+## [v1.55.0](https://github.com/inspec/inspec-aws/tree/v1.55.0) (2021-07-15)
+
+#### Merged Pull Requests
+- Subnet route table assoc resource [#413](https://github.com/inspec/inspec-aws/pull/413) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.54.0](https://github.com/inspec/inspec-aws/tree/v1.54.0) (2021-07-14)
 
 #### Merged Pull Requests
 - EBS snapshot resources [#485](https://github.com/inspec/inspec-aws/pull/485) ([sandratiffin](https://github.com/sandratiffin))
-<!-- latest_release -->
 
 ## [v1.53.0](https://github.com/inspec/inspec-aws/tree/v1.53.0) (2021-07-14)
 
