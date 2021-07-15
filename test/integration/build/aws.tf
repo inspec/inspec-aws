@@ -2144,6 +2144,7 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+
 resource "aws_acm_certificate" "aws_acm_certificate1" {
   # ...
 }
