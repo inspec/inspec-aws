@@ -25,7 +25,7 @@ class AWSTransferUser < AwsResourceBase
     end
   end
 
-  def id
+  def user_name
     return nil unless exists?
     @res[:user_name]
   end
