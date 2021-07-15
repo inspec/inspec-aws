@@ -3,6 +3,7 @@
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
+require 'aws-sdk-cloudfront'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -30,6 +31,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
@@ -37,6 +39,9 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
+require 'aws-sdk-glue'
+require 'aws-sdk-eventbridge'
+require 'aws-sdk-states'
 
 # AWS Inspec Backend Classes
 #
@@ -76,6 +81,10 @@ class AwsConnection
 
   def cloudformation_client
     aws_client(Aws::CloudFormation::Client)
+  end
+
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
   end
 
   def cloudtrail_client
@@ -190,8 +199,8 @@ class AwsConnection
     aws_client(Aws::SSM::Client)
   end
 
-  def dmsmigrationservice_client
-    aws_client(Aws::DatabaseMigrationService::Client)
+  def glue_client
+    aws_client(Aws::Glue::Client)
   end
 
   def athena_client
@@ -220,6 +229,22 @@ class AwsConnection
 
   def applicationautoscaling_client
     aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def dmsmigrationservice_client
+    aws_client(Aws::DatabaseMigrationService::Client)
+  end
+
+  def elasticsearch_service_client
+    aws_client(Aws::ElasticsearchService::Client)
+  end
+
+  def eventbridge_client
+    aws_client(Aws::EventBridge::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
