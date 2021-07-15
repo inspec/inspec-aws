@@ -1,9 +1,14 @@
-<!-- latest_release 1.55.0 -->
+<!-- latest_release 1.55.1 -->
+## [v1.55.1](https://github.com/inspec/inspec-aws/tree/v1.55.1) (2021-07-15)
+
+#### Merged Pull Requests
+- aws elasticloadbalancingv2 listener_certificate [#374](https://github.com/inspec/inspec-aws/pull/374) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.55.0](https://github.com/inspec/inspec-aws/tree/v1.55.0) (2021-07-15)
 
 #### Merged Pull Requests
 - Subnet route table assoc resource [#413](https://github.com/inspec/inspec-aws/pull/413) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.54.0](https://github.com/inspec/inspec-aws/tree/v1.54.0) (2021-07-14)
 
