@@ -26,7 +26,7 @@ class AWSRAMResourceShare < AwsResourceBase
     end
   end
 
-  def id
+  def resource_share_arn
     return nil unless exists?
     @res[:resource_share_arn]
   end

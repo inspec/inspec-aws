@@ -42,7 +42,6 @@ class AWSRAMResourceShares < AwsResourceBase
   def fetch_data
     rows = []
     @query_params[:max_results] = 10
-    # require 'pry'; binding.pry
     loop do
       catch_aws_errors do
         @api_response = @aws.ram_client.get_resource_shares(@query_params)
