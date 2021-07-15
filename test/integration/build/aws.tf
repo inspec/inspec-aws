@@ -1355,7 +1355,6 @@ EOF
 
 }
 
-
 resource "aws_iam_group" "aws_iam_group_1" {
   count = var.aws_enable_creation
   name  = var.aws_iam_group_name
@@ -2143,6 +2142,19 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_acm_certificate" "aws_acm_certificate1" {
+  # ...
+}
+
+resource "aws_lb_listener" "aws_lb_listener1" {
+  # ...
+}
+
+resource "aws_lb_listener_certificate" "aws_lb_listener_certificate1" {
+  listener_arn    = aws_lb_listener.aws_lb_listener1.arn
+  certificate_arn = aws_acm_certificate.aws_acm_certificate1.arn
 }
 
 resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule1" {
