@@ -39,11 +39,11 @@ require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-servicecatalog'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
-require 'aws-sdk-servicecatalog'
 require 'aws-sdk-ram'
 
 # AWS Inspec Backend Classes
