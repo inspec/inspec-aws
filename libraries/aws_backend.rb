@@ -44,6 +44,7 @@ require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-servicecatalog'
+require 'aws-sdk-ram'
 
 # AWS Inspec Backend Classes
 #
@@ -231,6 +232,10 @@ class AwsConnection
 
   def applicationautoscaling_client
     aws_client(Aws::ApplicationAutoScaling::Client)
+  end
+
+  def ram_client
+    aws_client(Aws::RAM::Client)
   end
 
   def dmsmigrationservice_client

@@ -522,6 +522,10 @@ output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
 
+output "aws_ram_resource_share_arn" {
+  value = aws_ram_resource_share.aws_ram_resource_share_test.arn
+}
+
 output "aws_secure_cloudfront_distribution_id" {
   value = aws_cloudfront_distribution.secure_distribution.0.id
 }

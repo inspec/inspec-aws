@@ -2205,9 +2205,6 @@ resource "aws_transfer_user" "aws_transfer_user_tu_test" {
   }
 }
 
-
-
-
 resource "aws_acm_certificate" "aws_acm_certificate1" {
   # ...
 }
@@ -2360,7 +2357,6 @@ resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_te
     Name = "test"
   }
 }
-
 
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
@@ -3508,7 +3504,6 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
   }
 }
 
-
 // SERVICE_CATALOG
 resource "aws_servicecatalog_product" "aws_servicecatalog_product_sc_test" {
   name  = "ProductTest"
@@ -3576,4 +3571,14 @@ EOF
 resource "aws_servicecatalog_product_portfolio_association" "aws_servicecatalog_product_portfolio_association_sc_test" {
   portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
   product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}
+
+# RAM-Resource Share
+resource "aws_ram_resource_share" "aws_ram_resource_share_test" {
+  name                      = "ResourceShareTest"
+  allow_external_principals = true
+
+  tags = {
+    Environment = "Production"
+  }
 }
