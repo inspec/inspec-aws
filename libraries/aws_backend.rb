@@ -3,6 +3,7 @@
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
+require 'aws-sdk-cloudfront'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -40,6 +41,7 @@ require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
+require 'aws-sdk-states'
 
 # AWS Inspec Backend Classes
 #
@@ -79,6 +81,10 @@ class AwsConnection
 
   def cloudformation_client
     aws_client(Aws::CloudFormation::Client)
+  end
+
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
   end
 
   def cloudtrail_client
@@ -235,6 +241,10 @@ class AwsConnection
 
   def eventbridge_client
     aws_client(Aws::EventBridge::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
   end
 end
 
