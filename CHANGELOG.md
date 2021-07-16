@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.1 -->
+<!-- latest_release 1.56.2 -->
+## [v1.56.2](https://github.com/inspec/inspec-aws/tree/v1.56.2) (2021-07-16)
+
+#### Merged Pull Requests
+- aws transfer user [#457](https://github.com/inspec/inspec-aws/pull/457) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.1](https://github.com/inspec/inspec-aws/tree/v1.56.1) (2021-07-16)
 
 #### Merged Pull Requests
 - aws dms replication subnet group [#422](https://github.com/inspec/inspec-aws/pull/422) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.0](https://github.com/inspec/inspec-aws/tree/v1.56.0) (2021-07-16)
 
