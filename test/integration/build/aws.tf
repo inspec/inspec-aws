@@ -3507,3 +3507,73 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
     }
   }
 }
+
+
+// SERVICE_CATALOG
+resource "aws_servicecatalog_product" "aws_servicecatalog_product_sc_test" {
+  name  = "ProductTest"
+  owner = "test"
+  type  = "CLOUD_FORMATION_TEMPLATE"
+
+  provisioning_artifact_parameters {
+    type  = "CLOUD_FORMATION_TEMPLATE"
+    template_url = "https://awsdocs.s3.amazonaws.com/servicecatalog/development-environment.template"
+  }
+}
+
+resource "aws_security_group" "aws_security_group_sc_test" {
+  vpc_id = aws_vpc.aws_vpc_sc_test.id
+  name   = "default1"
+}
+
+resource "aws_vpc" "aws_vpc_sc_test" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+}
+
+resource "aws_servicecatalog_constraint" "aws_servicecatalog_constraint_sc_test" {
+  description  = "Test Description."
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+  type         = "LAUNCH"
+
+  parameters = jsonencode({
+    "RoleArn" : "arn:aws:iam::112758395563:role/servicecatalog_test"
+  })
+}
+
+resource "aws_servicecatalog_portfolio" "aws_servicecatalog_portfolio_sc_test" {
+  name          = "My App Portfolio"
+  description  = "Test Description."
+  provider_name = "Brett"
+}
+
+resource "aws_servicecatalog_principal_portfolio_association" "aws_servicecatalog_principal_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  principal_arn = aws_iam_role.aws_iam_role_sc_test.arn
+}
+
+resource "aws_iam_role" "aws_iam_role_sc_test" {
+  name  = "test_role_sc_test"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_servicecatalog_product_portfolio_association" "aws_servicecatalog_product_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}

@@ -43,6 +43,7 @@ require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
+require 'aws-sdk-servicecatalog'
 
 # AWS Inspec Backend Classes
 #
@@ -250,6 +251,10 @@ class AwsConnection
 
   def transfer_client
     aws_client(Aws::Transfer::Client)
+  end
+
+  def servicecatalog_client
+    aws_client(Aws::ServiceCatalog::Client)
   end
 end
 

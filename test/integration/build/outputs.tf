@@ -569,3 +569,26 @@ output "aws_route_table_association_id" {
 output "aws_route_table_associated_subnet" {
   value = aws_route_table_association.association_route_table_first.subnet_id
 }
+output "aws_servicecatalog_product_sm_id" {
+  value = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}
+
+output "aws_servicecatalog_portfolio_sm_id" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+}
+
+output "aws_servicecatalog_portfolio_sm_arn" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.arn
+}
+
+output "aws_servicecatalog_portfolio_sm_created_time" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.created_time
+}
+
+output "aws_servicecatalog_constraint_sm_id" {
+  value = aws_servicecatalog_constraint.aws_servicecatalog_constraint_sc_test.id
+}
+
+output "aws_iam_role_sc_test_sm_arn" {
+  value = aws_iam_role.aws_iam_role_sc_test.arn
+}
