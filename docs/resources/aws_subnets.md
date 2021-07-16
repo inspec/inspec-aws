@@ -31,18 +31,19 @@ See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/late
 
 |Property                    | Description|
 | ---                        | --- |
-|subnet\_ids                 | The name of the auto scaling launch configuration associated with the auto scaling group |
-|vpc\_ids                    | An integer indicating the maximum number of instances in the auto scaling group |
-|cidr\_blocks                | An integer indicating the minimum number of instances in the auto scaling group |
+|subnet\_ids                 | The name of the auto scaling launch configuration associated with the auto scaling group. |
+|vpc\_ids                    | An integer indicating the maximum number of instances in the auto scaling group. |
+|cidr\_blocks                | An integer indicating the minimum number of instances in the auto scaling group. |
 |availability\_zone          | The availability zone this subnet is part of. |
 |map\_public\_ip\_on\_launch | A boolean indicating if a public IP is automatically mapped to instances launched in this subnet. |
-|states                      | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
+|states                      | An array of strings corresponding to the subnet IDs associated with the auto scaling group. |
 |entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|tags                        | Array of arrays of hashes with existing tags. |
 
 ## Examples
 
 ##### Look for all subnets within a vpc.
-    describe aws_subnets.where( vpc_id: 'vpc-12345678') do
+    describe aws_subnets.where(vpc_id: 'vpc-12345678') do
       its('subnet_ids') { should include 'subnet-12345678' }
       its('subnet_ids') { should include 'subnet-98765432' }
     end
@@ -53,14 +54,20 @@ See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/late
     end
 
 ##### Examine a specific vpcs Subnet IDs
-    describe aws_subnets.where( vpc_id: 'vpc-12345678') do
+    describe aws_subnets.where(vpc_id: 'vpc-12345678') do
       its('states') { should_not include 'pending' }
     end
 
 ##### Examine a specific subnets VPC IDS
-    describe aws_subnets.where( subnet_id: 'subnet-12345678') do
+    describe aws_subnets.where(subnet_id: 'subnet-12345678') do
       its('vpc_ids') { should include 'vpc-12345678' }
     end
+
+##### Check existing tags
+    describe aws_subnets.where(vpc_id: vpc_id) do
+      its('tags') { should include([{key: 'Name', value: 'My favourite subnet'}]) }
+    end
+
 ## Matchers
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
