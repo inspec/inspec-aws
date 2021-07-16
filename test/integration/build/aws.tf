@@ -218,6 +218,7 @@ variable "aws_elasticsearch_version" {}
 variable "aws_elasticsearch_instance_type" {}
 variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
+variable "aws_transfer_user_name" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2143,6 +2144,67 @@ resource "aws_elasticache_replication_group" "replication_group" {
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
 }
+
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_transfer_user" "aws_transfer_user_tu_test" {
+  server_id = aws_transfer_server.aws_transfer_server_tu_test.id
+  user_name = var.aws_transfer_user_name
+  role      = aws_iam_role.aws_iam_role_tu_test.arn
+
+  home_directory_type = "LOGICAL"
+  home_directory_mappings {
+    entry  = "/test.pdf"
+    target = "/bucket3/test-path/tftestuser.pdf"
+  }
+}
+
 
 
 

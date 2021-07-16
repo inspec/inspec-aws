@@ -31,6 +31,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-transfer'
 require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
@@ -245,6 +246,10 @@ class AwsConnection
 
   def states_client
     aws_client(Aws::States::Client)
+  end
+
+  def transfer_client
+    aws_client(Aws::Transfer::Client)
   end
 end
 

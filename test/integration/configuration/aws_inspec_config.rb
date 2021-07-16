@@ -278,6 +278,7 @@ module AWSInspecConfig
       aws_batch_job_type: "container",
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
+      aws_transfer_user_name: "tftestuser",
   }
 
   def self.config
