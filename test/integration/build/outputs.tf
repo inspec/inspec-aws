@@ -38,6 +38,18 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
+}
+
+output "aws_ebs_snapshot_owner_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.owner_id
+}
+
+output "aws_ebs_encrypted_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_encrypted_ebs_snapshot.0.id
+}
+
 output "aws_kms_key_enabled_id" {
   value = aws_kms_key.kms_key_enabled_rotating.0.key_id
 }
@@ -294,6 +306,38 @@ output "aws_guardduty_detector_publishing_frequency" {
   value = aws_guardduty_detector.detector_1.0.finding_publishing_frequency
 }
 
+output "aws_public_ip" {
+  value = aws_eip.aws_eip_1.public_ip
+}
+
+output "aws_instance_id1" {
+  value = aws_eip.aws_eip_1.instance
+}
+
+output "aws_allocation_id" {
+  value = aws_eip.aws_eip_1.allocation_id
+}
+
+output "aws_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
+
+output "aws_domain" {
+  value = aws_eip.aws_eip_1.domain
+}
+
+output "aws_network_interface_id" {
+  value = aws_eip.aws_eip_1.network_interface
+}
+
+output "aws_network_interface_owner_id" {
+  value = aws_eip.aws_eip_1.customer_owned_ip
+}
+
+output "aws_private_ip_address" {
+  value = aws_eip.aws_eip_1.private_ip
+}
+
 output "aws_elasticache_replication_group_id" {
   value = aws_elasticache_replication_group.replication_group.id
 }
@@ -312,4 +356,216 @@ output "aws_transfer_server_id" {
 
 output "aws_transfer_user_arn" {
   value = aws_transfer_user.aws_transfer_user_tu_test.arn
+}
+output "aws_target_group_arn" {
+  value = aws_lb_target_group.for_elb.arn
+}
+output "aws_elbv2_rule_arn" {
+  value = aws_lb_listener_rule.static.arn
+}
+
+output "aws_cloudwatch_event_rule_arn" {
+  value = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule_test.arn
+}
+
+output "aws_elasticsearch_domain_id" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.domain_id
+}
+
+output "aws_elasticsearch_domain_arn" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.arn
+}
+
+output "aws_dms_endpoint_arn" {
+  value = aws_dms_endpoint.aws_dms_endpoint_test.endpoint_arn
+}
+
+output "aws_mount_target_mt_id" {
+  value = aws_efs_mount_target.aws_efs_mount_target_mt_test.id
+}
+
+output "aws_file_system_mt_id" {
+  value = aws_efs_file_system.aws_efs_file_system_mt_test.id
+}
+
+output "aws_subnet_mt_id" {
+  value = aws_subnet.aws_subnet_mount_mt_test.id
+}
+
+output "aws_vpc_mt_id" {
+  value = aws_vpc.aws_vpc_mount_mt_test.id
+}
+output "batch_job_queue_arn" {
+  value = aws_batch_job_queue.test_queue.arn
+}
+output "batch_job_queue_compute_environments" {
+  value = aws_batch_job_queue.test_queue.compute_environments
+}
+
+output "aws_ecs_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
+output "aws_ecs_task_definition_revision" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.revision
+}
+
+output "aws_client_id" {
+  value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.id
+}
+
+output "aws_client_secret" {
+  value = aws_cognito_user_pool_client.aws_cognito_user_pool_client_test.client_secret
+}
+
+output "aws_batch_job_arn" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.arn
+}
+
+output "aws_batch_job_revision" {
+  value = aws_batch_job_definition.aws_batch_job_definition1.revision
+}
+
+output "aws_user_pool_id" {
+  value = aws_cognito_user_pool.aws_cognito_user_pool_test.id
+}
+
+output "aws_identity_pool_id" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.id
+}
+
+output "aws_saml_provider_arns" {
+  value = aws_cognito_identity_pool.aws_cognito_identity_pool_test.arn
+}
+
+output "aws_option_group_name" {
+value = aws_db_option_group.test-option-group.name
+}
+
+output "transit_gateway_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.transit_gateway_id
+}
+
+output "transit_gateway_route_table_id" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table1.id
+}
+
+output "launch_template_name" {
+  value = aws_launch_template.launch-template-test.name
+}
+
+output "aws_vpn_gateway_id" {
+  value = aws_vpn_gateway.inspec_vpn_gw.id
+}
+
+output "aws_amazon_side_asn" {
+  value = aws_vpn_gateway.inspec_vpn_gw.amazon_side_asn
+}
+
+output "aws_transit_gateway_route_table_id_association" {
+  value = aws_ec2_transit_gateway_route_table.aws_ec2_transit_gateway_route_table_association1.id
+}
+
+output "aws_transit_gateway_attachment_id_association" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment_association1.id
+}
+
+output "aws_transit_gateway_attachment_vpc_id_association" {
+  value = aws_vpc.attachment.id
+}
+
+output "network_acl_id" {
+  value = aws_network_acl.inspec-nw-acl.id
+}
+
+output "aws_db_parameter_group_arn" {
+  value = aws_db_parameter_group.inspec_db_parameter_group.arn
+}
+
+output "aws_transit_gateway_attachment_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.id
+}
+
+output "aws_transit_gateway_id1" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.transit_gateway_id
+}
+
+output "aws_transit_gateway_owner_id" {
+  value = aws_ec2_transit_gateway_vpc_attachment.aws_ec2_transit_gateway_vpc_attachment1.vpc_owner_id
+}
+
+output "aws_redshift_cluster_identifier" {
+  value = aws_redshift_cluster.redshift_test.cluster_identifier
+}
+
+output "aws_vpc_endpoint_notification_id" {
+  value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.id
+}
+
+output "aws_vpc_notifications_arn" {
+  value = aws_vpc_endpoint_connection_notification.test-endpoint-notification.connection_notification_arn
+}
+
+output "aws_transit_gateway_route_table_id" {
+  value = aws_ec2_transit_gateway.gateway.association_default_route_table_id
+}
+
+output "aws_vpc_endpoint_service_name" {
+  value = aws_vpc_endpoint_service.notification_service.service_name
+}
+
+output "aws_vpc_endpoint_service_id" {
+  value = aws_vpc_endpoint_service.notification_service.id
+}
+
+output "aws_vpc_base_endpoint_dns_names" {
+  value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
+}
+
+output "aws_secure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.secure_distribution.0.id
+}
+
+output "aws_insecure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.insecure_distribution.0.id
+}
+
+output "aws_default_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.default.0.id
+}
+
+output "aws_vpc_endpoint_service_allowed_principal_arn" {
+  value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
+}
+
+output "load_balancer_arn" {
+  value = aws_lb.test.arn
+}
+
+output "listener_arn" {
+  value = aws_lb_listener.front_end.arn
+}
+
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
+}
+
+output "aws_route_table_association_id" {
+  value = aws_route_table_association.association_route_table_first.id
+}
+
+output "aws_route_table_associated_subnet" {
+  value = aws_route_table_association.association_route_table_first.subnet_id
 }
