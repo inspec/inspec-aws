@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.0 -->
+<!-- latest_release 1.56.1 -->
+## [v1.56.1](https://github.com/inspec/inspec-aws/tree/v1.56.1) (2021-07-16)
+
+#### Merged Pull Requests
+- aws dms replication subnet group [#422](https://github.com/inspec/inspec-aws/pull/422) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.0](https://github.com/inspec/inspec-aws/tree/v1.56.0) (2021-07-16)
 
 #### Merged Pull Requests
 - Support for checking tags in aws_subnets resource [#361](https://github.com/inspec/inspec-aws/pull/361) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.55.3](https://github.com/inspec/inspec-aws/tree/v1.55.3) (2021-07-15)
 
