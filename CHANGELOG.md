@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.6 -->
+<!-- latest_release 1.56.7 -->
+## [v1.56.7](https://github.com/inspec/inspec-aws/tree/v1.56.7) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_servicecatalog_portfolio_product_association [#470](https://github.com/inspec/inspec-aws/pull/470) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.6](https://github.com/inspec/inspec-aws/tree/v1.56.6) (2021-07-16)
 
 #### Merged Pull Requests
 - aws_logs_metric_filter [#472](https://github.com/inspec/inspec-aws/pull/472) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.5](https://github.com/inspec/inspec-aws/tree/v1.56.5) (2021-07-16)
 
