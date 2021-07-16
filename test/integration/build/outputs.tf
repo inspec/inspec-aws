@@ -345,6 +345,12 @@ output "aws_elasticache_replication_group_id" {
 output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
+output "aws_target_group_arn" {
+  value = aws_lb_target_group.for_elb.arn
+}
+output "aws_elbv2_rule_arn" {
+  value = aws_lb_listener_rule.static.arn
+}
 
 output "aws_cloudwatch_event_rule_arn" {
   value = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule_test.arn
@@ -407,7 +413,6 @@ output "aws_batch_job_arn" {
 output "aws_batch_job_revision" {
   value = aws_batch_job_definition.aws_batch_job_definition1.revision
 }
-
 
 output "aws_user_pool_id" {
   value = aws_cognito_user_pool.aws_cognito_user_pool_test.id
