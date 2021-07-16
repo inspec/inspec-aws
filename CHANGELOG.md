@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.4 -->
+<!-- latest_release 1.56.5 -->
+## [v1.56.5](https://github.com/inspec/inspec-aws/tree/v1.56.5) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_ram_resource_share [#471](https://github.com/inspec/inspec-aws/pull/471) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.4](https://github.com/inspec/inspec-aws/tree/v1.56.4) (2021-07-16)
 
 #### Merged Pull Requests
 - aws_servicecatalog_cloud_formation_product [#467](https://github.com/inspec/inspec-aws/pull/467) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.3](https://github.com/inspec/inspec-aws/tree/v1.56.3) (2021-07-16)
 
