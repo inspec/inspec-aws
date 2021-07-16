@@ -49,7 +49,7 @@ class AWSServiceCatalogPortfolioProductAssociations < AwsResourceBase
                    provider_name: resp.provider_name }]
       end
       break unless @api_response.next_page_token
-      @query_params[:next_page_token] = @api_response.next_page_token
+      @query_params[:page_token] = @api_response.next_page_token
     end
     rows
   end
