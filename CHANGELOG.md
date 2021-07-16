@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.2 -->
+<!-- latest_release 1.56.3 -->
+## [v1.56.3](https://github.com/inspec/inspec-aws/tree/v1.56.3) (2021-07-16)
+
+#### Merged Pull Requests
+- aws stepfunctions state machine [#458](https://github.com/inspec/inspec-aws/pull/458) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.2](https://github.com/inspec/inspec-aws/tree/v1.56.2) (2021-07-16)
 
 #### Merged Pull Requests
 - aws transfer user [#457](https://github.com/inspec/inspec-aws/pull/457) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.1](https://github.com/inspec/inspec-aws/tree/v1.56.1) (2021-07-16)
 
