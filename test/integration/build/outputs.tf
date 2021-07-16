@@ -357,9 +357,11 @@ output "aws_transfer_server_id" {
 output "aws_transfer_user_arn" {
   value = aws_transfer_user.aws_transfer_user_tu_test.arn
 }
+
 output "aws_target_group_arn" {
   value = aws_lb_target_group.for_elb.arn
 }
+
 output "aws_elbv2_rule_arn" {
   value = aws_lb_listener_rule.static.arn
 }
@@ -395,9 +397,11 @@ output "aws_subnet_mt_id" {
 output "aws_vpc_mt_id" {
   value = aws_vpc.aws_vpc_mount_mt_test.id
 }
+
 output "batch_job_queue_arn" {
   value = aws_batch_job_queue.test_queue.arn
 }
+
 output "batch_job_queue_compute_environments" {
   value = aws_batch_job_queue.test_queue.compute_environments
 }
@@ -595,4 +599,23 @@ output "aws_servicecatalog_constraint_sm_id" {
 
 output "aws_iam_role_sc_test_sm_arn" {
   value = aws_iam_role.aws_iam_role_sc_test.arn
+}
+
+output "aws_resolver_endpoint_id" {
+  value = aws_route53_resolver_endpoint.for-int.id
+}
+output "aws_resolver_endpoint_arn" {
+  value = aws_route53_resolver_endpoint.for-int.arn
+}
+
+output "aws_resolver_endpoint_name" {
+  value = aws_route53_resolver_endpoint.for-int.name
+}
+
+output "aws_resolver_endpoint_vpc_id" {
+  value = aws_route53_resolver_endpoint.for-int.host_vpc_id
+}
+
+output "aws_resolver_endpoint_security_group_ids" {
+  value = aws_route53_resolver_endpoint.for-int.security_group_ids
 }

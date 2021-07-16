@@ -45,6 +45,7 @@ require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
+require 'aws-sdk-route53resolver'
 
 # AWS Inspec Backend Classes
 #
@@ -260,6 +261,10 @@ class AwsConnection
 
   def servicecatalog_client
     aws_client(Aws::ServiceCatalog::Client)
+  end
+
+  def route53resolver_client
+    aws_client(Aws::Route53Resolver::Client)
   end
 end
 

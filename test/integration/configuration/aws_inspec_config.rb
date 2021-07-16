@@ -279,6 +279,7 @@ module AWSInspecConfig
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
   }
 
   def self.config

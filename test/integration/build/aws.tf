@@ -219,6 +219,8 @@ variable "aws_elasticsearch_instance_type" {}
 variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
+variable "aws_route53_resolver_endpoint_name" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -3081,11 +3083,55 @@ resource "aws_vpc" "aws_vpc_mount_mt_test" {
   cidr_block = "10.0.0.0/16"
 }
 
+resource "aws_security_group" "for_endpoint" {
+  vpc_id = aws_vpc.aws_vpc_mount_mt_test.id
+  # ... other configuration ...
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+
+  }
+}
+
 resource "aws_subnet" "aws_subnet_mount_mt_test" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = var.aws_availability_zone
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "us-east-2c"
 
+}
+
+resource "aws_subnet" "for_res" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-east-2c"
+
+}
+
+resource "aws_route53_resolver_endpoint" "for-int" {
+  name      = var.aws_route53_resolver_endpoint_name
+  direction = "INBOUND"
+  security_group_ids = [ aws_security_group.for_endpoint.id ]
+
+  ip_address {
+    subnet_id = aws_subnet.for_res.id
+    ip = "10.0.2.7"
+  }
+
+  ip_address {
+    subnet_id = aws_subnet.aws_subnet_mount_mt_test.id
+    ip = "10.0.3.7"
+  }
+
+  tags = {
+    Environment = "Prod"
+  }
+}
+
+resource "aws_route53_resolver_rule" "sys" {
+  domain_name = "subdomain.example.com"
+  rule_type   = "SYSTEM"
 }
 
 resource "aws_s3_bucket" "cloudfront_origin" {
@@ -3599,4 +3645,8 @@ resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_te
 
 resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
   name = "TestLogGroup"
+}
+resource "aws_route53_resolver_rule_association" "for-int-test" {
+  resolver_rule_id = aws_route53_resolver_rule.sys.id
+  vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }
