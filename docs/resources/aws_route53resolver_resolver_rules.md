@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_route53resolver\_resolver\_rules
 
-Use the `aws_route53resolver_resolver_rules` InSpec audit resource to test properties of a plural AWS Route53Resolver Resolver Rule Association.
+Use the `aws_route53resolver_resolver_rules` InSpec audit resource to test properties of multiple AWS Route53 Resolver rules.
 
-The AWS::Route53Resolver::ResolverRule resource specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
+The AWS Route53 Resolver Rule resource specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 
 ## Syntax
 
@@ -19,16 +19,16 @@ Ensure that a rule exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html).
+For additional information, see the [AWS documentation on AWS Route53 Resolver Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html).
 
 ## Properties
 
 | Property | Description|
 | --- | --- |
 | ids | The ID that Resolver assigned to the Resolver rule when you created it. |
-| creator_request_ids | A unique string that you specified when you created the Resolver rule. CreatorRequestId identifies the request and allows failed requests to be retried without the risk of running the operation twice. |
-| arns | The ARN (Amazon Resource Name) for the Resolver rule specified by Id. |
-| domain_names | DNS queries for this domain name are forwarded to the IP addresses that are specified in TargetIps. |
+| creator_request_ids | A unique string that you specified when you created the Resolver rule. `CreatorRequestId` identifies the request and allows failed requests to be retried without the risk of running the operation twice. |
+| arns | The ARN (Amazon Resource Name) for the Resolver rule specified by ID. |
+| domain_names | DNS queries for this domain name are forwarded to the IP addresses that are specified in `TargetIps`. |
 | statuses | A code that specifies the current status of the Resolver rule. |
 | status_messages | A detailed description of the status of a Resolver rule. |
 | rule_types | When you want to forward DNS queries for specified domain name to resolvers on your network, specify FORWARD. |
@@ -43,11 +43,13 @@ For additional information, see the [AWS documentation on AWS Route53Resolver Re
 ## Examples
 
 ### Ensure a rule name is available.
+
     describe aws_route53resolver_resolver_rules do
-      its('names') { should include 'RuleName' }
+      its('names') { should include 'RULE_NAME' }
     end
 
 ### Ensure that the status is `COMPLETE` or `FAILED`.
+
     describe aws_route53resolver_resolver_rules do
         its('statuses') { should include 'COMPLETE' }
     end
@@ -67,7 +69,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_route53resolver_resolver_rules do
       it { should_not exist }
     end
