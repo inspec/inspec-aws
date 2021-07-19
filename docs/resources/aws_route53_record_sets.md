@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_route53\_record\_sets
 
-Use the `aws_route53_record_sets` InSpec audit resource to test properties of a plural Athena Work Groups.
+Use the `aws_route53_record_sets` InSpec audit resource to test properties of multiple AWS Route53 record sets.
 
-The AWS::Route53::RecordSet resource specifies information about the record that you want to create.
+The `AWS::Route53::RecordSet` resource specifies information about the record that you want to create.
 
 ## Syntax
 
 Ensure that a record exists.
 
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should exist }
     end
 
@@ -27,30 +27,32 @@ For additional information, see the [AWS documentation on AWS Route53 Record Set
 
 | Property | Description|
 | --- | --- |
-| names | The name of the record that you want to create, update, or delete. |
+| names | The name of a record in the specified hosted zone. |
 | types | The DNS record type.  |
 | set_identifiers | In a group of resource record sets that have the same name and type, the value of SetIdentifier must be unique for each resource record set. |
-| weights | The Weight element for every weighted resource record set. |
-| regions | The region of the record set. |
+| weights | The weight element for every weighted resource record set. |
+| regions | The Amazon EC2 Region of the record set. |
 | geo_locations | The geo location of the record set. |
-| failovers | To configure failover, you add the Failover element to two resource record sets. For one resource record set, you specify PRIMARY as the value for Failover ; for the other resource record set, you specify SECONDARY. |
-| multi_value_answers | Multivalue answer resource record sets only : To route traffic approximately randomly to multiple resources, such as web servers, create one multivalue answer record for each resource and specify true for MultiValueAnswer. |
+| failovers | The failover configuration of resource record set. Valid values are `PRIMARY` and `SECONDARY`. |
+| multi_value_answers |  Whether a resource is a Multivalue answer resource record set. Valid values: `true` or `false`. |
 | ttls | The resource record cache time to live (TTL), in seconds. |
 | resource_records | Information about the resource records to act upon. |
 | alias_targets | The alias target of the record set. |
-| health_check_ids | If you want Amazon Route 53 to return this resource record set in response to a DNS query only when the status of a health check is healthy, include the HealthCheckId element and specify the ID of the applicable health check. |
-| traffic_policy_instance_ids | When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record set. TrafficPolicyInstanceId is the ID of the traffic policy instance that Route 53 created this resource record set for. |
+| health_check_ids | The IDs of a health check. |
+| traffic_policy_instance_ids | The ID of the traffic policy instance. When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record set. `TrafficPolicyInstanceId` is the ID of the traffic policy instance that Route 53 created this resource record set for. |
 
 
 ## Examples
 
 ### Ensure a record name is available.
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
-      its('names') { should include 'DNSName' }
+
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
+      its('names') { should include 'RECORD_SET_NAME' }
     end
 
-### Ensure that the failover is `PRIMARY` or `SECONDARY`.
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
+### Ensure that the failover of a record set is configured to `PRIMARY`.
+
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
         its('failovers') { should include 'PRIMARY' }
     end
 
@@ -64,13 +66,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_route53_record_sets(hosted_zone_id: 'dummy') do
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should_not exist }
     end
 
@@ -78,7 +80,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the record name is available.
 
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should be_available }
     end
 
