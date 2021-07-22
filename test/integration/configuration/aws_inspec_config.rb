@@ -279,7 +279,7 @@ module AWSInspecConfig
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
-      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}",
       aws_ecs_task_definition_family: "service-#{add_random_string}",
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}"
