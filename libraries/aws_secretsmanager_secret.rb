@@ -25,9 +25,9 @@ class AWSSecretsManagerSecret < AwsResourceBase
     end
   end
 
-  def id
+  def secret_id
     return nil unless exists?
-    @res[:id]
+    @res[:secret_id]
   end
 
   def exists?
@@ -35,6 +35,6 @@ class AWSSecretsManagerSecret < AwsResourceBase
   end
 
   def to_s
-    "secret_id: #{@display_name}"
+    "Secret ID: #{@display_name}"
   end
 end
