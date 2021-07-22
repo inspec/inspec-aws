@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.8 -->
+<!-- latest_release 1.56.9 -->
+## [v1.56.9](https://github.com/inspec/inspec-aws/tree/v1.56.9) (2021-07-22)
+
+#### Merged Pull Requests
+- Correct typo in README.md: AWS_RETRY_LIMIT [#492](https://github.com/inspec/inspec-aws/pull/492) ([SeanSith](https://github.com/SeanSith))
+<!-- latest_release -->
+
 ## [v1.56.8](https://github.com/inspec/inspec-aws/tree/v1.56.8) (2021-07-16)
 
 #### Merged Pull Requests
 - aws_route53resolver_resolver_endpoint [#474](https://github.com/inspec/inspec-aws/pull/474) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.7](https://github.com/inspec/inspec-aws/tree/v1.56.7) (2021-07-16)
 
