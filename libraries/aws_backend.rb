@@ -31,6 +31,7 @@ require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-transfer'
 require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
@@ -38,10 +39,13 @@ require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-servicecatalog'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
+require 'aws-sdk-ram'
+require 'aws-sdk-route53resolver'
 
 # AWS Inspec Backend Classes
 #
@@ -231,6 +235,10 @@ class AwsConnection
     aws_client(Aws::ApplicationAutoScaling::Client)
   end
 
+  def ram_client
+    aws_client(Aws::RAM::Client)
+  end
+
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
   end
@@ -245,6 +253,18 @@ class AwsConnection
 
   def states_client
     aws_client(Aws::States::Client)
+  end
+
+  def transfer_client
+    aws_client(Aws::Transfer::Client)
+  end
+
+  def servicecatalog_client
+    aws_client(Aws::ServiceCatalog::Client)
+  end
+
+  def route53resolver_client
+    aws_client(Aws::Route53Resolver::Client)
   end
 end
 

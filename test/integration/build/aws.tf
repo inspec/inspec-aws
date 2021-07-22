@@ -218,6 +218,9 @@ variable "aws_elasticsearch_version" {}
 variable "aws_elasticsearch_instance_type" {}
 variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
+variable "aws_transfer_user_name" {}
+variable "aws_route53_resolver_endpoint_name" {}
+
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2144,7 +2147,65 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
 
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_transfer_user" "aws_transfer_user_tu_test" {
+  server_id = aws_transfer_server.aws_transfer_server_tu_test.id
+  user_name = var.aws_transfer_user_name
+  role      = aws_iam_role.aws_iam_role_tu_test.arn
+
+  home_directory_type = "LOGICAL"
+  home_directory_mappings {
+    entry  = "/test.pdf"
+    target = "/bucket3/test-path/tftestuser.pdf"
+  }
+}
 
 resource "aws_acm_certificate" "aws_acm_certificate1" {
   # ...
@@ -2298,7 +2359,6 @@ resource "aws_dms_replication_subnet_group" "aws_dms_replication_subnet_group_te
     Name = "test"
   }
 }
-
 
 data "aws_iam_policy_document" "dms_assume_role" {
   statement {
@@ -3023,11 +3083,55 @@ resource "aws_vpc" "aws_vpc_mount_mt_test" {
   cidr_block = "10.0.0.0/16"
 }
 
+resource "aws_security_group" "for_endpoint" {
+  vpc_id = aws_vpc.aws_vpc_mount_mt_test.id
+  # ... other configuration ...
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+
+  }
+}
+
 resource "aws_subnet" "aws_subnet_mount_mt_test" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = var.aws_availability_zone
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "us-east-2c"
 
+}
+
+resource "aws_subnet" "for_res" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-east-2c"
+
+}
+
+resource "aws_route53_resolver_endpoint" "for-int" {
+  name      = var.aws_route53_resolver_endpoint_name
+  direction = "INBOUND"
+  security_group_ids = [ aws_security_group.for_endpoint.id ]
+
+  ip_address {
+    subnet_id = aws_subnet.for_res.id
+    ip = "10.0.2.7"
+  }
+
+  ip_address {
+    subnet_id = aws_subnet.aws_subnet_mount_mt_test.id
+    ip = "10.0.3.7"
+  }
+
+  tags = {
+    Environment = "Prod"
+  }
+}
+
+resource "aws_route53_resolver_rule" "sys" {
+  domain_name = "subdomain.example.com"
+  rule_type   = "SYSTEM"
 }
 
 resource "aws_s3_bucket" "cloudfront_origin" {
@@ -3444,4 +3548,105 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
       foo = "bar"
     }
   }
+}
+
+// SERVICE_CATALOG
+resource "aws_servicecatalog_product" "aws_servicecatalog_product_sc_test" {
+  name  = "ProductTest"
+  owner = "test"
+  type  = "CLOUD_FORMATION_TEMPLATE"
+
+  provisioning_artifact_parameters {
+    type  = "CLOUD_FORMATION_TEMPLATE"
+    template_url = "https://awsdocs.s3.amazonaws.com/servicecatalog/development-environment.template"
+  }
+}
+
+resource "aws_security_group" "aws_security_group_sc_test" {
+  vpc_id = aws_vpc.aws_vpc_sc_test.id
+  name   = "default1"
+}
+
+resource "aws_vpc" "aws_vpc_sc_test" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+}
+
+resource "aws_servicecatalog_constraint" "aws_servicecatalog_constraint_sc_test" {
+  description  = "Test Description."
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+  type         = "LAUNCH"
+
+  parameters = jsonencode({
+    "RoleArn" : "arn:aws:iam::112758395563:role/servicecatalog_test"
+  })
+}
+
+resource "aws_servicecatalog_portfolio" "aws_servicecatalog_portfolio_sc_test" {
+  name          = "My App Portfolio"
+  description  = "Test Description."
+  provider_name = "Brett"
+}
+
+resource "aws_servicecatalog_principal_portfolio_association" "aws_servicecatalog_principal_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  principal_arn = aws_iam_role.aws_iam_role_sc_test.arn
+}
+
+resource "aws_iam_role" "aws_iam_role_sc_test" {
+  name  = "test_role_sc_test"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_servicecatalog_product_portfolio_association" "aws_servicecatalog_product_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}
+
+# RAM-Resource Share
+resource "aws_ram_resource_share" "aws_ram_resource_share_test" {
+  name                      = "ResourceShareTest"
+  allow_external_principals = true
+
+  tags = {
+    Environment = "Production"
+  }
+}
+
+# Logs-Metric Filter
+resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_test" {
+  name           = "TestMetricFilter"
+  pattern        = "ERROR"
+  log_group_name = aws_cloudwatch_log_group.aws_cloudwatch_log_group_test.name
+
+  metric_transformation {
+    name = "TestMetric"
+    namespace = "TestNamespace"
+    value = "1"
+    default_value = "1.0"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
+  name = "TestLogGroup"
+}
+resource "aws_route53_resolver_rule_association" "for-int-test" {
+  resolver_rule_id = aws_route53_resolver_rule.sys.id
+  vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }

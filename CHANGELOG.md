@@ -1,9 +1,44 @@
-<!-- latest_release 1.56.1 -->
+<!-- latest_release 1.56.8 -->
+## [v1.56.8](https://github.com/inspec/inspec-aws/tree/v1.56.8) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_route53resolver_resolver_endpoint [#474](https://github.com/inspec/inspec-aws/pull/474) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.56.7](https://github.com/inspec/inspec-aws/tree/v1.56.7) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_servicecatalog_portfolio_product_association [#470](https://github.com/inspec/inspec-aws/pull/470) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.6](https://github.com/inspec/inspec-aws/tree/v1.56.6) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_logs_metric_filter [#472](https://github.com/inspec/inspec-aws/pull/472) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.5](https://github.com/inspec/inspec-aws/tree/v1.56.5) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_ram_resource_share [#471](https://github.com/inspec/inspec-aws/pull/471) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.4](https://github.com/inspec/inspec-aws/tree/v1.56.4) (2021-07-16)
+
+#### Merged Pull Requests
+- aws_servicecatalog_cloud_formation_product [#467](https://github.com/inspec/inspec-aws/pull/467) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.3](https://github.com/inspec/inspec-aws/tree/v1.56.3) (2021-07-16)
+
+#### Merged Pull Requests
+- aws stepfunctions state machine [#458](https://github.com/inspec/inspec-aws/pull/458) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.2](https://github.com/inspec/inspec-aws/tree/v1.56.2) (2021-07-16)
+
+#### Merged Pull Requests
+- aws transfer user [#457](https://github.com/inspec/inspec-aws/pull/457) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.56.1](https://github.com/inspec/inspec-aws/tree/v1.56.1) (2021-07-16)
 
 #### Merged Pull Requests
 - aws dms replication subnet group [#422](https://github.com/inspec/inspec-aws/pull/422) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.0](https://github.com/inspec/inspec-aws/tree/v1.56.0) (2021-07-16)
 
