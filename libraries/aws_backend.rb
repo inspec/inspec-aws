@@ -266,7 +266,6 @@ class AwsConnection
   def route53resolver_client
     aws_client(Aws::Route53Resolver::Client)
   end
-
 end
 
 # Base class for AWS resources
