@@ -39,6 +39,7 @@ aws_vpc_peering_connection_id = attribute("aws_vpc_peering_connection_id", defau
 aws_instance_owner_id = attribute("aws_instance_owner_id", default: "", description: "The owner ID of a NAT instance in your VPC.")
 aws_origin = attribute("aws_origin", default: "", description: "Describes how the route was created.")
 aws_state = attribute("aws_state", default: "", description: "The state of the route.")
+aws_route_table_associated_subnet = attribute(:aws_route_table_associated_subnet, default: '', description: 'The associated routed table subnet ID')
 
 control 'aws-route-1.0' do
   impact 1.0
@@ -61,5 +62,12 @@ control 'aws-route-1.0' do
     its ('routes.first.origin') { should eq aws_origin }
     its ('routes.first.state') { should eq aws_state }
     its ('routes.first.vpc_peering_connection_id') { should be_empty }
+
+    its('associated_subnet_ids') { should include aws_route_table_associated_subnet }
+    its('associated_gateway_ids') { should be_empty }
+    it { should_not be_main }
+    it { should have_subnet_associated(aws_route_table_associated_subnet) }
+    it { should_not have_failed_association_value(aws_route_table_associated_subnet) }
+    it { should_not have_failed_association_value }
   end
 end

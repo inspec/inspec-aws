@@ -24,6 +24,7 @@ variable "aws_bucket_public_name" {}
 variable "aws_bucket_public_objects_name" {}
 variable "aws_cloudformation_stack_name" {}
 variable "aws_cloudformation_stack_ecr_name" {}
+variable "aws_cloudfront_origin_s3_bucket" {}
 variable "aws_cloud_trail_bucket_name" {}
 variable "aws_cloud_trail_key_description" {}
 variable "aws_cloud_trail_log_group" {}
@@ -56,6 +57,9 @@ variable "aws_delivery_channel_frequency" {}
 variable "aws_delivery_channel_name" {}
 variable "aws_delivery_channel_sns_topic_name" {}
 variable "aws_ebs_volume_name" {}
+variable "aws_ebs_encrypted_volume_name" {}
+variable "aws_ebs_snapshot_name" {}
+variable "aws_ebs_encrypted_snapshot_name" {}
 variable "aws_ecr_name" {}
 variable "aws_ecrpublic_name" {}
 variable "aws_ecr_repository_name" {}
@@ -153,7 +157,7 @@ variable "aws_vpc_dhcp_options_name" {}
 variable "aws_vpc_endpoint_name" {}
 variable "aws_route_53_zone" {}
 variable "aws_identity_pool_name" {}
-variable "aws_open_id_connect_provider_arns" {}
+variable "aws_openid_connect_provider_arns" {}
 variable "aws_image_id" {}
 variable "aws_instance_type" {}
 variable "aws_auto_scaling_group_name" {}
@@ -208,6 +212,14 @@ variable "aws_min_vcpus" {}
 variable "aws_type" {}
 variable "aws_batch_job_name" {}
 variable "aws_batch_job_type" {}
+variable "aws_crawler_name" {}
+variable "aws_elasticsearch_domain_name" {}
+variable "aws_elasticsearch_version" {}
+variable "aws_elasticsearch_instance_type" {}
+variable "aws_elasticsearch_automated_snapshot_start_hour" {}
+variable "aws_sfn_state_machine_name" {}
+variable "aws_transfer_user_name" {}
+variable "aws_route53_resolver_endpoint_name" {}
 
 variable "aws_cluster_name" {}
 variable "aws_ecs_task_definition_family" {}
@@ -265,7 +277,6 @@ resource "aws_subnet" "inspec_subnet" {
     Name = var.aws_subnet_name
   }
 }
-
 
 resource "aws_iam_role" "for_ec2" {
   count = var.aws_enable_creation
@@ -340,6 +351,36 @@ resource "aws_ebs_volume" "inspec_ebs_volume" {
   }
 }
 
+resource "aws_ebs_snapshot" "inspec_ebs_snapshot" {
+  count             = var.aws_enable_creation
+  volume_id         = aws_ebs_volume.inspec_ebs_volume.0.id
+
+  tags = {
+    Name = var.aws_ebs_snapshot_name
+  }
+}
+
+resource "aws_ebs_volume" "inspec_encrypted_ebs_volume" {
+  # count             = var.aws_enable_creation
+  count             = 1
+  availability_zone = var.aws_availability_zone
+  size              = 1
+  encrypted         = true
+
+  tags = {
+    Name = var.aws_ebs_volume_name
+  }
+}
+resource "aws_ebs_snapshot" "inspec_encrypted_ebs_snapshot" {
+  # count     = var.aws_enable_creation
+  count     = 1
+  volume_id = aws_ebs_volume.inspec_encrypted_ebs_volume.0.id
+
+  tags = {
+    Name = var.aws_ebs_encrypted_snapshot_name
+  }
+}
+
 resource "aws_efs_file_system" "inspec_efs_file_system" {
   count            = var.aws_enable_creation
   creation_token   = var.aws_efs_creation_token
@@ -408,6 +449,11 @@ resource "aws_route_table" "route_table_first" {
     cidr_block = "10.0.0.0/25"
     gateway_id = aws_internet_gateway.inspec_internet_gateway[0].id
   }
+}
+
+resource "aws_route_table_association" "association_route_table_first" {
+  subnet_id      = aws_subnet.inspec_subnet.id
+  route_table_id = aws_route_table.route_table_first.id
 }
 
 resource "aws_route_table" "route_table_second" {
@@ -1315,7 +1361,6 @@ EOF
 
 }
 
-
 resource "aws_iam_group" "aws_iam_group_1" {
   count = var.aws_enable_creation
   name  = var.aws_iam_group_name
@@ -1728,7 +1773,6 @@ STACK
 
 }
 
-
 resource "aws_route53_zone" "test_zone" {
   count = var.aws_enable_creation
   name  = var.aws_route_53_zone
@@ -1849,6 +1893,7 @@ resource "aws_cloudwatch_log_group" "lambda_test_logs" {
 locals {
   test_lambda_zip_file_name = "${path.module}/files/lambda.zip"
 }
+
 resource "aws_lambda_function" "lambda_test" {
   count            = var.aws_enable_creation
   filename         = local.test_lambda_zip_file_name
@@ -1970,7 +2015,7 @@ resource "aws_nat_gateway" "inspec_test" {
   count         = var.aws_enable_creation
   allocation_id = aws_eip.for_nat_gateway[0].id
   subnet_id     = aws_subnet.for_nat_gateway[0].id
-  depends_on    = ["aws_internet_gateway.inspec_test[0]"]
+  depends_on    = [aws_internet_gateway.inspec_test[0]]
 
   tags = {
     Name = var.aws_nat_gateway_name
@@ -2052,16 +2097,13 @@ resource "aws_launch_template" "launch-template-test" {
   }
 
   disable_api_termination = true
-
   ebs_optimized = true
-
 
   iam_instance_profile {
     name = var.aws_launch_template_instance_profile
   }
 
   image_id = "ami-0a83ebf1ac32a3fbe"
-
   instance_initiated_shutdown_behavior = "terminate"
 
   instance_market_options {
@@ -2070,7 +2112,6 @@ resource "aws_launch_template" "launch-template-test" {
 
   instance_type = var.aws_launch_template_instance_type
   key_name = var.aws_launch_template_key_name
-
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -2085,8 +2126,6 @@ resource "aws_launch_template" "launch-template-test" {
   network_interfaces {
     associate_public_ip_address = true
   }
-
-
 
   tag_specifications {
     resource_type = var.aws_launch_template_resource_type
@@ -2109,6 +2148,175 @@ resource "aws_elasticache_replication_group" "replication_group" {
   node_type                     = var.aws_elasticache_replication_group_node_type
   at_rest_encryption_enabled    = true
   transit_encryption_enabled    = false
+}
+
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_transfer_user" "aws_transfer_user_tu_test" {
+  server_id = aws_transfer_server.aws_transfer_server_tu_test.id
+  user_name = var.aws_transfer_user_name
+  role      = aws_iam_role.aws_iam_role_tu_test.arn
+
+  home_directory_type = "LOGICAL"
+  home_directory_mappings {
+    entry  = "/test.pdf"
+    target = "/bucket3/test-path/tftestuser.pdf"
+  }
+}
+
+resource "aws_acm_certificate" "aws_acm_certificate1" {
+  # ...
+}
+
+resource "aws_lb_listener" "aws_lb_listener1" {
+  # ...
+}
+
+resource "aws_lb_listener_certificate" "aws_lb_listener_certificate1" {
+  listener_arn    = aws_lb_listener.aws_lb_listener1.arn
+  certificate_arn = aws_acm_certificate.aws_acm_certificate1.arn
+}
+
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule1" {
+  name        = "capture-aws-sign-in"
+  description = "Capture each AWS Console Sign In"
+
+  event_pattern = <<EOF
+{
+  "detail-type": [
+    "AWS Console Sign In via CloudTrail"
+  ]
+}
+EOF
+}
+
+resource "aws_cloudwatch_event_target" "aws_cloudwatch_event_target1" {
+  rule      = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule1.name
+  target_id = "SendToSNS"
+  arn       = aws_sns_topic.aws_sns_topic1.arn
+}
+
+resource "aws_sns_topic" "aws_sns_topic1" {
+  name = "aws-console-logins"
+}
+
+resource "aws_sns_topic_policy" "default" {
+  arn    = aws_sns_topic.aws_sns_topic1.arn
+  policy = data.aws_iam_policy_document.sns_topic_policy.json
+}
+
+data "aws_iam_policy_document" "sns_topic_policy" {
+  statement {
+    effect  = "Allow"
+    actions = ["SNS:Publish"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    resources = [aws_sns_topic.aws_sns_topic1.arn]
+  }
+}
+
+resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
+  name        = "test_rule"
+  description = "Description of the rule."
+  event_pattern = <<EOF
+  {
+    "detail-type": [
+      "AWS Console Sign In via CloudTrail"
+    ]
+  }
+  EOF
+}
+
+
+resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
+  domain_name           = var.aws_elasticsearch_domain_name
+  elasticsearch_version = var.aws_elasticsearch_version
+
+  cluster_config {
+    instance_type = var.aws_elasticsearch_instance_type
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = var.aws_elasticsearch_automated_snapshot_start_hour
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
+
+resource "aws_glue_crawler" "aws_glue_crawler_test" {
+  database_name = aws_glue_catalog_database.aws_glue_catalog_database_test.name
+  name          = var.aws_crawler_name
+  role          = aws_iam_role.cloud_watch_logs_role[0].arn
+
+  dynamodb_target {
+    path = "table-name"
+  }
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb3"
+}
+
+resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
+  name = "sampledb"
+  description = "Sample Description"
 }
 
 resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
@@ -2273,6 +2481,40 @@ resource "aws_iam_role" "ecs_instance_role" {
 EOF
 }
 
+resource "aws_transfer_server" "aws_transfer_server_tu_test" {
+  identity_provider_type = "SERVICE_MANAGED"
+
+  tags = {
+    NAME = "tf-acc-test-transfer-server"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-role"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "ec2.amazonaws.com"
+        }
+    }
+        {
+        "Effect": "Allow",
+        "Principal": {
+            "Service": "transfer.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+}
+
 resource "aws_iam_role_policy_attachment" "ecs_instance_role" {
   role       = aws_iam_role.ecs_instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
@@ -2320,7 +2562,6 @@ resource "aws_security_group" "to_test_batch" {
 
 resource "aws_vpc" "to_test_batch" {
   cidr_block = "10.1.0.0/16"
-
 }
 
 resource "aws_subnet" "to_test_batch" {
@@ -2441,9 +2682,8 @@ resource "aws_cognito_identity_pool" "aws_cognito_identity_pool_test" {
     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
   }
 
-  openid_connect_provider_arns = [var.aws_open_id_connect_provider_arns]
+  openid_connect_provider_arns = [var.aws_openid_connect_provider_arns]
 }
-
 
 resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
   name                   = var.aws_auto_scaling_policy_name
@@ -2470,7 +2710,6 @@ resource "aws_launch_configuration" "as_conf_for_autoscalling" {
   image_id      = var.aws_image_id
   instance_type = var.aws_instance_type
 }
-
 
 resource "aws_athena_workgroup" "aws_athena_workgroup_" {
   name = var.aws_athena_workgroup
@@ -2501,7 +2740,6 @@ resource "aws_ec2_transit_gateway_route" "inspec_tgw_route_blackhole" {
   blackhole                      = true
   transit_gateway_route_table_id = aws_ec2_transit_gateway.gateway[0].association_default_route_table_id
 }
-
 
 resource "aws_redshift_cluster" "redshift_test" {
   cluster_identifier = var.aws_redshift_cluster_identifier
@@ -2576,7 +2814,6 @@ resource "aws_subnet" "for_attachment" {
     Name = "Main"
   }
 }
-
 
 resource "aws_network_acl" "inspec-nw-acl" {
   vpc_id = aws_vpc.inspec_vpc[0].id
@@ -2803,7 +3040,6 @@ resource "aws_dynamodb_table" "example" {
   }
 }
 
-
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
   body = jsonencode({
     openapi = "3.0.1"
@@ -2908,9 +3144,570 @@ resource "aws_vpc" "aws_vpc_mount_mt_test" {
   cidr_block = "10.0.0.0/16"
 }
 
+resource "aws_security_group" "for_endpoint" {
+  vpc_id = aws_vpc.aws_vpc_mount_mt_test.id
+  # ... other configuration ...
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+
+  }
+}
+
 resource "aws_subnet" "aws_subnet_mount_mt_test" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = var.aws_availability_zone
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "us-east-2c"
 
+}
+
+resource "aws_subnet" "for_res" {
+  vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-east-2c"
+
+}
+
+resource "aws_route53_resolver_endpoint" "for-int" {
+  name      = var.aws_route53_resolver_endpoint_name
+  direction = "INBOUND"
+  security_group_ids = [ aws_security_group.for_endpoint.id ]
+
+  ip_address {
+    subnet_id = aws_subnet.for_res.id
+    ip = "10.0.2.7"
+  }
+
+  ip_address {
+    subnet_id = aws_subnet.aws_subnet_mount_mt_test.id
+    ip = "10.0.3.7"
+  }
+
+  tags = {
+    Environment = "Prod"
+  }
+}
+
+resource "aws_route53_resolver_rule" "sys" {
+  domain_name = "subdomain.example.com"
+  rule_type   = "SYSTEM"
+}
+
+resource "aws_s3_bucket" "cloudfront_origin" {
+  count  = var.aws_enable_creation
+  bucket = var.aws_cloudfront_origin_s3_bucket
+  acl    = "private"
+}
+
+resource "tls_private_key" "example_com" {
+  count     = var.aws_enable_creation
+  algorithm = "RSA"
+}
+
+resource "tls_self_signed_cert" "example_com" {
+  count           = var.aws_enable_creation
+  key_algorithm   = "RSA"
+  private_key_pem = tls_private_key.example_com.0.private_key_pem
+
+  subject {
+    common_name  = "example.com"
+    organization = "ACME Examples, Inc"
+  }
+
+  validity_period_hours = 12
+
+  allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth",
+  ]
+}
+
+resource "aws_acm_certificate" "example_com_cert" {
+  count            = var.aws_enable_creation
+  private_key      = tls_private_key.example_com.0.private_key_pem
+  certificate_body = tls_self_signed_cert.example_com.0.cert_pem
+}
+
+locals {
+  s3_origin_id_1 = "inspec-test-s3-origin1"
+  s3_origin_id_2 = "inspec-test-s3-origin2"
+  s3_origin_id_3 = "inspec-test-s3-origin3"
+}
+
+resource "aws_cloudfront_origin_access_identity" "cfoa_identity_1" {
+  count = var.aws_enable_creation
+}
+
+resource "aws_cloudfront_distribution" "secure_distribution" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1.2"]
+    }
+  }
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_2
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1.1", "TLSv1.2"]
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "https-only"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  ordered_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_2
+    viewer_protocol_policy = "redirect-to-https"
+    path_pattern     = "/content/*"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn = aws_acm_certificate.example_com_cert.0.arn
+    minimum_protocol_version = "TLSv1.1_2016"
+    ssl_support_method = "sni-only"
+  }
+}
+
+resource "aws_cloudfront_distribution" "insecure_distribution" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1"]
+    }
+  }
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_2
+    custom_origin_config {
+      http_port = "80"
+      https_port = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["SSLv3","TLSv1","TLSv1.1","TLSv1.2"]
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "allow-all"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  ordered_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_2
+    viewer_protocol_policy = "redirect-to-https"
+    path_pattern     = "/content/2/*"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}
+
+resource "aws_cloudfront_distribution" "default" {
+  count   = var.aws_enable_creation
+  enabled = true
+
+  origin {
+    domain_name = aws_s3_bucket.cloudfront_origin.0.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id_1
+
+    s3_origin_config {
+      origin_access_identity = "origin-access-identity/cloudfront/${aws_cloudfront_origin_access_identity.cfoa_identity_1.0.id}"
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id_1
+    viewer_protocol_policy = "allow-all"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf-i"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.allow_tls_for_lb.id]
+  subnets            = [aws_subnet.for_elb.id,aws_subnet.for_elb_second.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_target_group" "for_elb" {
+  name     = "tf-example-lb-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.for_lb.id
+}
+
+resource "aws_vpc" "for_lb" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_subnet" "for_elb" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2a"
+  cidr_block = "10.0.0.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_subnet" "for_elb_second" {
+  vpc_id     = aws_vpc.for_lb.id
+  availability_zone = "us-east-2b"
+  cidr_block = "10.0.1.0/24"
+  depends_on    = [aws_internet_gateway.for_elb[0]]
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_internet_gateway" "for_elb" {
+  count  = var.aws_enable_creation
+  vpc_id = aws_vpc.for_lb.id
+
+  tags = {
+    Name = var.aws_internet_gateway_name
+  }
+}
+
+resource "aws_lb_listener" "front_end" {
+  load_balancer_arn = aws_lb.test.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Fixed response content"
+      status_code  = "200"
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "static" {
+  listener_arn = aws_lb_listener.front_end.arn
+  priority     = 100
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.for_elb.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/static/*"]
+    }
+  }
+
+  condition {
+    host_header {
+      values = ["example.com"]
+    }
+  }
+}
+
+resource "aws_security_group" "allow_tls_for_lb" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.for_lb.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.for_lb.cidr_block]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_tu_test" {
+  name = "tf-test-transfer-user-iam-tu-policy"
+  role = aws_iam_role.aws_iam_role_tu_test.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFullAccesstoS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+POLICY
+}
+
+resource "aws_sfn_state_machine" "sfn_state_machine_sf_test" {
+  name     = var.aws_sfn_state_machine_name
+  role_arn = aws_iam_role.aws_iam_role_sf_test.arn
+
+  definition = <<EOF
+{
+  "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
+  "StartAt": "HelloWorld",
+  "States": {
+    "HelloWorld": {
+      "Type": "Task",
+      "Resource": "${aws_lambda_function.aws_lambda_function_sf_test.arn}",
+      "End": true
+    }
+  }
+}
+EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_sf_test" {
+  name = "iam_for_lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_sf_test" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name"
+  role          = aws_iam_role.aws_iam_role_sf_test.arn
+  handler       = "exports.test"
+
+  # The filebase64sha256() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
+  source_code_hash = filebase64sha256("files/lambda.zip")
+
+
+  runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+// SERVICE_CATALOG
+resource "aws_servicecatalog_product" "aws_servicecatalog_product_sc_test" {
+  name  = "ProductTest"
+  owner = "test"
+  type  = "CLOUD_FORMATION_TEMPLATE"
+
+  provisioning_artifact_parameters {
+    type  = "CLOUD_FORMATION_TEMPLATE"
+    template_url = "https://awsdocs.s3.amazonaws.com/servicecatalog/development-environment.template"
+  }
+}
+
+resource "aws_security_group" "aws_security_group_sc_test" {
+  vpc_id = aws_vpc.aws_vpc_sc_test.id
+  name   = "default1"
+}
+
+resource "aws_vpc" "aws_vpc_sc_test" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+}
+
+resource "aws_servicecatalog_constraint" "aws_servicecatalog_constraint_sc_test" {
+  description  = "Test Description."
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+  type         = "LAUNCH"
+
+  parameters = jsonencode({
+    "RoleArn" : "arn:aws:iam::112758395563:role/servicecatalog_test"
+  })
+}
+
+resource "aws_servicecatalog_portfolio" "aws_servicecatalog_portfolio_sc_test" {
+  name          = "My App Portfolio"
+  description  = "Test Description."
+  provider_name = "Brett"
+}
+
+resource "aws_servicecatalog_principal_portfolio_association" "aws_servicecatalog_principal_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  principal_arn = aws_iam_role.aws_iam_role_sc_test.arn
+}
+
+resource "aws_iam_role" "aws_iam_role_sc_test" {
+  name  = "test_role_sc_test"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_servicecatalog_product_portfolio_association" "aws_servicecatalog_product_portfolio_association_sc_test" {
+  portfolio_id = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+  product_id   = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}
+
+# RAM-Resource Share
+resource "aws_ram_resource_share" "aws_ram_resource_share_test" {
+  name                      = "ResourceShareTest"
+  allow_external_principals = true
+
+  tags = {
+    Environment = "Production"
+  }
+}
+
+# Logs-Metric Filter
+resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_test" {
+  name           = "TestMetricFilter"
+  pattern        = "ERROR"
+  log_group_name = aws_cloudwatch_log_group.aws_cloudwatch_log_group_test.name
+
+  metric_transformation {
+    name = "TestMetric"
+    namespace = "TestNamespace"
+    value = "1"
+    default_value = "1.0"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
+  name = "TestLogGroup"
+}
+resource "aws_route53_resolver_rule_association" "for-int-test" {
+  resolver_rule_id = aws_route53_resolver_rule.sys.id
+  vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }

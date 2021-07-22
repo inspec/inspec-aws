@@ -38,6 +38,18 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
+}
+
+output "aws_ebs_snapshot_owner_id" {
+  value = aws_ebs_snapshot.inspec_ebs_snapshot.0.owner_id
+}
+
+output "aws_ebs_encrypted_snapshot_id" {
+  value = aws_ebs_snapshot.inspec_encrypted_ebs_snapshot.0.id
+}
+
 output "aws_kms_key_enabled_id" {
   value = aws_kms_key.kms_key_enabled_rotating.0.key_id
 }
@@ -334,6 +346,38 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_transfer_server_arn" {
+  value = aws_transfer_server.aws_transfer_server_tu_test.arn
+}
+
+output "aws_transfer_server_id" {
+  value = aws_transfer_server.aws_transfer_server_tu_test.id
+}
+
+output "aws_transfer_user_arn" {
+  value = aws_transfer_user.aws_transfer_user_tu_test.arn
+}
+
+output "aws_target_group_arn" {
+  value = aws_lb_target_group.for_elb.arn
+}
+
+output "aws_elbv2_rule_arn" {
+  value = aws_lb_listener_rule.static.arn
+}
+
+output "aws_cloudwatch_event_rule_arn" {
+  value = aws_cloudwatch_event_rule.aws_cloudwatch_event_rule_test.arn
+}
+
+output "aws_elasticsearch_domain_id" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.domain_id
+}
+
+output "aws_elasticsearch_domain_arn" {
+  value = aws_elasticsearch_domain.aws_elasticsearch_domain_test.arn
+}
+
 output "aws_service_id" {
   value = aws_ecs_service.bar.id
 }
@@ -366,9 +410,11 @@ output "aws_subnet_mt_id" {
 output "aws_vpc_mt_id" {
   value = aws_vpc.aws_vpc_mount_mt_test.id
 }
+
 output "batch_job_queue_arn" {
   value = aws_batch_job_queue.test_queue.arn
 }
+
 output "batch_job_queue_compute_environments" {
   value = aws_batch_job_queue.test_queue.compute_environments
 }
@@ -496,7 +542,96 @@ output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
 
+output "aws_ram_resource_share_arn" {
+  value = aws_ram_resource_share.aws_ram_resource_share_test.arn
+}
+
+output "aws_secure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.secure_distribution.0.id
+}
+
+output "aws_insecure_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.insecure_distribution.0.id
+}
+
+output "aws_default_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.default.0.id
+}
+
 output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
 
+output "load_balancer_arn" {
+  value = aws_lb.test.arn
+}
+
+output "listener_arn" {
+  value = aws_lb_listener.front_end.arn
+}
+
+output "aws_sfn_state_machine_id" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
+}
+
+output "aws_sfn_state_machine_arn" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.arn
+}
+
+output "aws_sfn_state_machine_status" {
+  value = aws_sfn_state_machine.sfn_state_machine_sf_test.status
+}
+
+output "aws_sfn_state_machine_role_arn" {
+  value = aws_iam_role.aws_iam_role_sf_test.arn
+}
+
+output "aws_route_table_association_id" {
+  value = aws_route_table_association.association_route_table_first.id
+}
+
+output "aws_route_table_associated_subnet" {
+  value = aws_route_table_association.association_route_table_first.subnet_id
+}
+output "aws_servicecatalog_product_sm_id" {
+  value = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
+}
+
+output "aws_servicecatalog_portfolio_sm_id" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.id
+}
+
+output "aws_servicecatalog_portfolio_sm_arn" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.arn
+}
+
+output "aws_servicecatalog_portfolio_sm_created_time" {
+  value = aws_servicecatalog_portfolio.aws_servicecatalog_portfolio_sc_test.created_time
+}
+
+output "aws_servicecatalog_constraint_sm_id" {
+  value = aws_servicecatalog_constraint.aws_servicecatalog_constraint_sc_test.id
+}
+
+output "aws_iam_role_sc_test_sm_arn" {
+  value = aws_iam_role.aws_iam_role_sc_test.arn
+}
+
+output "aws_resolver_endpoint_id" {
+  value = aws_route53_resolver_endpoint.for-int.id
+}
+output "aws_resolver_endpoint_arn" {
+  value = aws_route53_resolver_endpoint.for-int.arn
+}
+
+output "aws_resolver_endpoint_name" {
+  value = aws_route53_resolver_endpoint.for-int.name
+}
+
+output "aws_resolver_endpoint_vpc_id" {
+  value = aws_route53_resolver_endpoint.for-int.host_vpc_id
+}
+
+output "aws_resolver_endpoint_security_group_ids" {
+  value = aws_route53_resolver_endpoint.for-int.security_group_ids
+}
