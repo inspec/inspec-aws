@@ -350,7 +350,7 @@ In certain cases AWS may implement rate limiting. In order to mitigate this issu
 Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level.
 
 ```bash
-   export AWS_RETRY_LMIIT=5
+   export AWS_RETRY_LIMIT=5
    export aws_retry_limit=5
 ```
 _Note environment variables are case insensitive._
