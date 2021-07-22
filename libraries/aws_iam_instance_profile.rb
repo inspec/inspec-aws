@@ -25,17 +25,13 @@ class AWSIAMInstanceProfile < AwsResourceBase
     end
   end
 
-  def id
+  def instance_profile_name
     return nil unless exists?
     @res[:instance_profile_name]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s
