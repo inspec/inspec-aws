@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.10 -->
+<!-- latest_release 1.56.11 -->
+## [v1.56.11](https://github.com/inspec/inspec-aws/tree/v1.56.11) (2021-07-22)
+
+#### Merged Pull Requests
+- aws_servicecatalog_launch_role_role_constraint [#468](https://github.com/inspec/inspec-aws/pull/468) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.10](https://github.com/inspec/inspec-aws/tree/v1.56.10) (2021-07-22)
 
 #### Merged Pull Requests
 - aws_route53resolver_resolver_rule_association [#475](https://github.com/inspec/inspec-aws/pull/475) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.9](https://github.com/inspec/inspec-aws/tree/v1.56.9) (2021-07-22)
 
