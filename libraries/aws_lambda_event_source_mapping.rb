@@ -25,7 +25,7 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
     end
   end
 
-  def id
+  def uuid
     return nil unless exists?
     @res[:uuid]
   end
@@ -34,11 +34,7 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def encrypted?
-    @res[:encrypted]
-  end
-
   def to_s
-    "uuid: #{@display_name}"
+    "UUID: #{@display_name}"
   end
 end
