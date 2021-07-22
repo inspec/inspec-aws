@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_iam\_instance\_profiles
 
-Use the `aws_iam_instance_profiles` InSpec audit resource to test properties of a plural IAM Instance Profile.
+Use the `aws_iam_instance_profiles` InSpec audit resource to test properties of multiple IAM instance profiles.
 
 This resource lists the instance profiles that have the specified path prefix.
 
@@ -35,13 +35,14 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 ## Examples
 
 ### Ensure an instance profile name is available.
+
     describe aws_iam_instance_profiles do
-      its('instance_profile_names') { should include 'ExampleInstanceProfile' }
+      its('instance_profile_names') { should include 'INSTANCE_PROFILE_NAME' }
     end
 
 ### Ensure that an arn is available.
     describe aws_iam_instance_profiles do
-        its('arns') { should include 'arn:aws:iam::336924118301:instance-profile/ExampleInstanceProfile' }
+        its('arns') { should include 'INSTANCE_PROFILE_ARN' }
     end
 
 ## Matchers

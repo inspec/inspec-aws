@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_iam\_instance\_profile
 
-Use the `aws_iam_instance_profile` InSpec audit resource to test properties of a single specific IAM Instance Profile.
+Use the `aws_iam_instance_profile` InSpec audit resource to test properties of a single IAM instance profile.
 
 This resource retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role.
 
@@ -13,7 +13,7 @@ This resource retrieves information about the specified instance profile, includ
 
 Ensure that a instance profile name exists.
 
-    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
       it { should exist }
     end
 
@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 | roles (role_name) | The friendly name that identifies the role. |
 | roles (role_id) | The stable and unique string identifying the role. |
 | roles (arn) | The Amazon Resource Name (ARN) specifying the role. |
-| roles (create_date) | The date and time, in ISO 8601 date-time format , when the role was created. |
+| roles (create_date) | The date and time, in [ISO 8601 date-time format](https://www.iso.org/iso-8601-date-and-time-format.html), when the role was created. |
 | roles (assume_role_policy_document) | The policy that grants an entity permission to assume the role. |
 | roles (description) | A description of the role that you provide. |
 | roles (max_session_duration) | The maximum session duration (in seconds) for the specified role. Anyone who uses the AWS CLI, or API to assume the role can specify the duration using the optional DurationSeconds API parameter or duration-seconds CLI parameter. |
@@ -50,13 +50,14 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 ## Examples
 
 ### Ensure a instance profile name is available.
-    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
-      its('instance_profile_name') { should eq 'ExampleInstanceProfile' }
+
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
+      its('instance_profile_name') { should eq 'INSTANCE_PROFILE_NAME' }
     end
 
 ### Ensure that an arn is available.
-    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
-        its('arn') { should eq 'arn:aws:iam::336924118301:instance-profile/ExampleInstanceProfile' }
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
+        its('arn') { should eq 'INSTANCE_PROFILE_NAME_ARN' }
     end
 
 ## Matchers
@@ -69,13 +70,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_iam_instance_profile(instance_profile_name: 'dummy') do
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
       it { should_not exist }
     end
 
@@ -83,7 +84,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the instance profile name is available.
 
-    describe aws_iam_instance_profile(instance_profile_name: 'ExampleInstanceProfile') do
+    describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
       it { should be_available }
     end
 
