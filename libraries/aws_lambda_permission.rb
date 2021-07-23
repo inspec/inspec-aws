@@ -21,8 +21,6 @@ class AWSLambdaPermission < AwsResourceBase
     row = {}
     catch_aws_errors do
       resp = @aws.lambda_client.get_policy({ function_name: opts[:function_name] })
-      # require 'byebug'
-      # byebug
       statements = JSON.parse(resp.policy)['Statement']
       statements.each do |value|
         next if value['Sid'] != opts[:Sid]

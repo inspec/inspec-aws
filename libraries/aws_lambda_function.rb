@@ -25,7 +25,7 @@ class AWSLambdaFunction < AwsResourceBase
     end
   end
 
-  def id
+  def function_name
     return nil unless exists?
     @res[:function_name]
   end
