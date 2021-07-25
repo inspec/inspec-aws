@@ -629,3 +629,7 @@ output "aws_resolver_endpoint_vpc_id" {
 output "aws_resolver_endpoint_security_group_ids" {
   value = aws_route53_resolver_endpoint.for-int.security_group_ids
 }
+
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_test_vcr.id
+}

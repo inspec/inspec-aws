@@ -220,7 +220,8 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
-
+variable "aws_vpn_connection_route_destination_cidr_block" {}
+variable "aws_vpn_connection_route_state" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -3649,7 +3650,36 @@ resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_te
 resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
   name = "TestLogGroup"
 }
+
 resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
+}
+
+# aws_vpn_connection_route tf resource
+
+resource "aws_vpc" "aws_vpc_test_vcr" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_test_vcr" {
+  vpc_id = aws_vpc.aws_vpc_test_vcr.id
+}
+
+resource "aws_customer_gateway" "aws_customer_gateway_test_vcr" {
+  bgp_asn    = 65000
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_test_vcr" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_test_vcr.id
+  customer_gateway_id = aws_customer_gateway.aws_customer_gateway_test_vcr.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test_vcr" {
+  destination_cidr_block = var.aws_vpn_connection_route_destination_cidr_block
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_test_vcr.id
 }

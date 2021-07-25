@@ -279,7 +279,9 @@ module AWSInspecConfig
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
-      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}",
+      aws_vpn_connection_route_destination_cidr_block: "192.168.10.0/24",
+      aws_vpn_connection_route_state: "available",
   }
 
   def self.config
