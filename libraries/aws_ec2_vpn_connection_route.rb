@@ -20,7 +20,7 @@ class AWSEc2VPNConnectionRoute < AwsResourceBase
     opts = { vpn_connection_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:vpn_connection_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:vpn_connection_id] && !opts[:vpn_connection_id].empty?
+    raise ArgumentError, "#{@__resource_name__}: vpn_connection_id must be provided" unless opts[:vpn_connection_id] && !opts[:vpn_connection_id].empty?
     @display_name = opts[:vpn_connection_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_vpn_connections({ vpn_connection_ids: [opts[:vpn_connection_id]] })
