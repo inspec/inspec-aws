@@ -1,3 +1,5 @@
+aws_vpc_peering_connection_id = attribute(:aws_vpc_peering_connection_id, value: '')
+
 control 'aws-ec2-vpc-peering-connections-1.0' do
   impact 1.0
   title 'Lists VPC Peering Connection of a particular vpc connection id.'
@@ -12,6 +14,6 @@ control 'aws-ec2-vpc-peering-connections-1.0' do
     its ('requester_vpc_infos') { should_not be_empty }
     its ('statuses') { should_not be_empty }
     its ('tags') { should_not be_empty }
-    its ('vpc_peering_connection_ids') { should include 'pcx-064e897e01ca86d4e' }
+    its ('vpc_peering_connection_ids') { should include aws_vpc_peering_connection_id }
   end
 end

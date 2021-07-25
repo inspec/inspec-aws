@@ -10,8 +10,9 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
     describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
       it { should exist }
     end
+
     describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
-      its ('state') { should eq 'enabled }
+      its ('vpn_gateway_id') { should eq 'vpn_gateway_id }
     end
   "
 
@@ -29,7 +30,7 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
     end
   end
 
-  def route_table_id
+  def id
     return nil unless exists?
     @route_tables[:route_table_id]
   end

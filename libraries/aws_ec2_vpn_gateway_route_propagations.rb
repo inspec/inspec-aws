@@ -6,17 +6,20 @@ class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
   name 'aws_ec2_vpn_gateway_route_propagations'
   desc 'List the properties.'
 
-  example '
+  example "
     describe aws_ec2_vpn_gateway_route_propagations do
       it { should exist }
     end
-  '
+    describe aws_ec2_vpn_gateway_route_propagations do
+      its('propagating_vgws_gateway_ids') { should include 'vpn_gateway_id' }
+    end
+  "
 
   attr_reader :table
 
   FilterTable.create
              .register_column(:route_table_ids,                           field: :route_table_id)
-             .register_column(:propagating_vgws_gateway_ids,                   field: :propagating_vgws_gateway_ids, style: :simple)
+             .register_column(:propagating_vgws_gateway_ids,              field: :propagating_vgws_gateway_ids, style: :simple)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -52,11 +55,9 @@ class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
 
   def flat_hash_from(route_table)
     propagating_vgws = route_table.propagating_vgws
-    # propagation = propagating_vgws.select { |propagation| propagation.association_state.state == 'associated' }
     {
       route_table_id: route_table.route_table_id,
       propagating_vgws_gateway_ids: map(propagating_vgws, 'gateway_id'),
-      # associated_gateway_ids: map(propagating_vgws, 'gateway_id'),
     }
   end
 

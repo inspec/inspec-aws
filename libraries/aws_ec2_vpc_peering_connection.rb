@@ -10,6 +10,7 @@ class AWSEc2VPCPeeringConnection < AwsResourceBase
     describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'test1') do
       it { should exist }
     end
+
     describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'test1') do
       its ('state') { should eq 'enabled }
     end
