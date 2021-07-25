@@ -2,42 +2,47 @@
 
 require 'aws_backend'
 
-class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
-  name 'aws_ec2_transit_gateway_route_table_propagation'
-  desc 'Describes information about the route table propagations for the specified transit gateway route table.'
+class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
+  name 'aws_ec2_vpn_gateway_route_propagation'
+  desc 'Describes virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.'
 
   example "
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
+    describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
       it { should exist }
     end
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
+    describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
       its ('state') { should eq 'enabled }
     end
   "
 
   def initialize(opts = {})
-    opts = { transit_gateway_route_table_id: opts } if opts.is_a?(String)
+    opts = { route_table_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:transit_gateway_route_table_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
-    @display_name = opts[:transit_gateway_route_table_id]
+    validate_parameters(required: [:route_table_id])
+    raise ArgumentError, "#{@__resource_name__}: route_table_id must be provided" unless opts[:route_table_id] && !opts[:route_table_id].empty?
+    @display_name = opts[:route_table_id]
+    @route_arguments = { route_table_ids: [opts[:route_table_id]] }
     catch_aws_errors do
-      resp = @aws.compute_client.get_transit_gateway_route_table_propagations({ transit_gateway_route_table_id: opts[:transit_gateway_route_table_id] })
-      @transit_gateway_route_table_propagations = resp.transit_gateway_route_table_propagations[0].to_h
-      create_resource_methods(@transit_gateway_route_table_propagations)
+      resp = @aws.compute_client.describe_route_tables(@route_arguments)
+      @route_tables = resp.route_tables[0].to_h
+      create_resource_methods(@route_tables)
     end
   end
 
-  def transit_gateway_route_table_id
+  def route_table_id
     return nil unless exists?
-    @transit_gateway_route_table_propagations[:transit_gateway_route_table_id]
+    @route_tables[:route_table_id]
+  end
+
+  def vpn_gateway_id
+    propagating_vgws.map(&:gateway_id)
   end
 
   def exists?
-    !@transit_gateway_route_table_propagations.nil? && !@transit_gateway_route_table_propagations.empty?
+    !@route_tables.nil? && !@route_tables.empty?
   end
 
   def to_s
-    "Transit Gateway Route Table ID: #{@display_name}"
+    "Route Table ID: #{@display_name}"
   end
 end
