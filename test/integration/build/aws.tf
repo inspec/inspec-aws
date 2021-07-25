@@ -220,6 +220,8 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
+variable "aws_accepter_vpc_info_cidr_block" {}
+variable "aws_requester_vpc_info_cidr_block" {}
 
 
 provider "aws" {
@@ -3649,7 +3651,28 @@ resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_te
 resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
   name = "TestLogGroup"
 }
+
 resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
+}
+
+#aws_vpc_peering_connection terraform
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_test1.id
+  vpc_id        = aws_vpc.aws_vpc_test2.id
+  auto_accept   = true
+
+  tags = {
+    Name = "VPC Peering between foo and bar"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_test1" {
+  cidr_block = var.aws_requester_vpc_info_cidr_block
+}
+
+resource "aws_vpc" "aws_vpc_test2" {
+  cidr_block = var.aws_accepter_vpc_info_cidr_block
 }
