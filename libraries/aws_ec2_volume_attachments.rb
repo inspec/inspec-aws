@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSEc2VolumeAttachtments < AwsResourceBase
+class AWSEc2VolumeAttachments < AwsResourceBase
   name 'aws_ec2_volume_attachments'
   desc 'Describes EC2 volume attachments.'
 
