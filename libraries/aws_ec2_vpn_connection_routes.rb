@@ -42,7 +42,7 @@ class AWSEc2VPNConnectionRoutes < AwsResourceBase
                        source: route.source,
                        state: route.state }]
       end
-      break
+      break unless @api_response.next_token
     end
     @table = vpn_rows
   end
