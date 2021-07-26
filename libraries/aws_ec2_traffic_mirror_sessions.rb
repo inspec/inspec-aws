@@ -39,8 +39,8 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
     @pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-
         @api_response = @aws.compute_client.describe_traffic_mirror_sessions(@pagination_options)
+
       end
       return traffic_mirror_sessions_rows if !@api_response || @api_response.empty?
 
@@ -48,23 +48,20 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
         @traffic_mirror_sessions_rows += [{
 
           description: traffic_mirror_sessions.description,
-        traffic_mirror_target_id: traffic_mirror_sessions.traffic_mirror_target_id,
-        network_interface_id: traffic_mirror_sessions.network_interface_id,
-        traffic_mirror_filter_id: traffic_mirror_sessions.traffic_mirror_filter_id,
-        owner_id: traffic_mirror_sessions.owner_id,
-        packet_length: traffic_mirror_sessions.packet_length,
-        session_number: traffic_mirror_sessions.session_number,
-        virtual_network_id: traffic_mirror_sessions.virtual_network_id,
-        tags: traffic_mirror_sessions.tags,
-
+          traffic_mirror_target_id: traffic_mirror_sessions.traffic_mirror_target_id,
+          network_interface_id: traffic_mirror_sessions.network_interface_id,
+          traffic_mirror_filter_id: traffic_mirror_sessions.traffic_mirror_filter_id,
+          owner_id: traffic_mirror_sessions.owner_id,
+          packet_length: traffic_mirror_sessions.packet_length,
+          session_number: traffic_mirror_sessions.session_number,
+          virtual_network_id: traffic_mirror_sessions.virtual_network_id,
+          tags: traffic_mirror_sessions.tags,
 
         }]
       end
       break unless @api_response.next_token
       @pagination_options = { next_token: @api_response.next_token }
     end
-end
+  end
   @table = @traffic_mirror_sessions_rows
 end
-
-
