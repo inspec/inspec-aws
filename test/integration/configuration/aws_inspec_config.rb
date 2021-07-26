@@ -72,6 +72,7 @@ module AWSInspecConfig
       aws_bucket_versioning_enabled: "aws-bucket-version-enabled-#{add_random_string}",
       aws_cloudformation_stack_name: "aws-cloudformation-stack-#{add_random_string}",
       aws_cloudformation_stack_ecr_name: "aws-cloudformation-stack-ecr-name-#{add_random_string}",
+      aws_cloudfront_origin_s3_bucket: "inspec-cloudfront-origin-#{add_random_string}",
       aws_cloud_trail_bucket_name: "aws-cloud-trail-bucket-#{add_random_string}",
       aws_cloud_trail_key_description: "aws-cloud-trail-key-description-#{add_random_string}",
       aws_cloud_trail_log_group: "aws-cloud-trail-log-group-#{add_random_string}",
@@ -103,10 +104,15 @@ module AWSInspecConfig
       aws_delivery_channel_name: "aws-delivery-channel-#{add_random_string}",
       aws_delivery_channel_sns_topic_name: "aws-delivery-channel-sns-topic-#{add_random_string}",
       aws_ebs_volume_name: "inspec-ebs-volume-name-#{add_random_string}",
+      aws_ebs_encrypted_volume_name: "inspec-ebs-encrypted-volume-name-#{add_random_string}",
+      aws_ebs_snapshot_name: "inspec-ebs-snapshot-name-#{add_random_string}",
+      aws_ebs_encrypted_snapshot_name: "inspec-ebs-encrypted-snapshot-name-#{add_random_string}",
       aws_ecr_name: "aws-ecr-name-#{add_random_string}",
       aws_ecr_repository_name: "aws-ecr-repo-name-#{add_random_string}",
       aws_ecr_repository_image_tag_mutability: 'MUTABLE',
       aws_ecr_repository_scan_on_push_enabled: false,
+      aws_ecrpublic_name: "aws-ecrpublic-name-#{add_random_string}",
+      aws_ecrpublic_repository_name: "aws-ecrpublic-repo-name-#{add_random_string}",
       aws_ecs_cluster_name: "ecs-cluster-#{add_random_string}",
       aws_efs_creation_token: "aws-efs-creation-token-#{add_random_string}",
       aws_efs_encrypted: "true",
@@ -209,8 +215,13 @@ module AWSInspecConfig
       # Only test execution is affected by this flag, resource creation via terraform is unaffected.
       # Default behaviour is for this to be disabled, enable by changing the below flag.
       aws_enable_cli_calls: 0,
+      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
+      aws_elasticsearch_domain_name: "domain1",
+      aws_elasticsearch_version: "7.10",
+      aws_elasticsearch_instance_type: "r6g.large.elasticsearch",
+      aws_elasticsearch_automated_snapshot_start_hour: 23,
       aws_openid_connect_provider_arns: "arn:aws:iam::123456789012:oidc-provider/id.example.com",
-      aws_image_id:"ami-09f56df189a29f532",
+      aws_image_id: "ami-09f56df189a29f532",
       aws_instance_type: "t2.micro",
       aws_auto_scaling_group_name: "test1",
       aws_auto_scaling_max_size: 1,
@@ -220,7 +231,7 @@ module AWSInspecConfig
       aws_auto_scaling_force_delete: true,
       aws_auto_scaling_policy_name: "test_policy",
       aws_auto_scaling_adjustment: 4,
-      aws_auto_scaling_adjustment_type:"ChangeInCapacity",
+      aws_auto_scaling_adjustment_type: "ChangeInCapacity",
       aws_auto_scaling_cooldown: 300,
       tgw_route_cidr_block: '0.0.0.0/15',
       tgw_route_cidr_block_blockhole: '0.0.0.0/16',
@@ -254,7 +265,6 @@ module AWSInspecConfig
       aws_athena_workgroup: "test-workgroup",
       aws_athena_workgroup_description: "Test work group",
       aws_athena_workgroup_state: "ENABLED",
-      aws_route_53_zone: "aws-route53-zone-#{add_random_string}",
       aws_client_name: "pool_client",
       aws_identity_pool_name: "mypool",
       aws_batch_job_queue_name: "batch-queue-test-#{add_random_string}",
@@ -267,6 +277,10 @@ module AWSInspecConfig
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
       aws_route52_record_set_name: "integration.test.",
+      aws_crawler_name: "crawler",
+      aws_sfn_state_machine_name: "my-state-machine",
+      aws_transfer_user_name: "tftestuser",
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
   }
 
   def self.config
@@ -312,7 +326,7 @@ module AWSInspecConfig
     outputs = get_tf_output_vars
     outputs.each do |tf|
       # also assuming single values here
-      value = `cd #{build_dir} && terraform output #{tf}`.strip
+      value = `cd "#{build_dir}" && terraform output #{tf}`.strip
       contents[tf.to_sym] = value
     end
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), 'w') do |f|
