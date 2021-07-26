@@ -220,6 +220,7 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
+variable "aws_route52_record_set_name" {}
 
 
 provider "aws" {
@@ -3712,4 +3713,16 @@ resource "aws_lambda_event_source_mapping" "event_source_mapping" {
 resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
   role       = aws_iam_role.iam_for_lambda.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
+}
+resource "aws_route53_zone" "for_route53_set_record_test" {
+name = var.aws_route52_record_set_name
+}
+
+resource "aws_route53_record" "for_route53_set_record_test" {
+allow_overwrite = true
+name            = var.aws_route52_record_set_name
+ttl             = 172800
+type            = "A"
+zone_id         = aws_route53_zone.for_route53_set_record_test.zone_id
+records = ["192.0.0.2"]
 }
