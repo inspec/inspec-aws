@@ -8,7 +8,6 @@ aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default: '', descr
 aws_vpc_name = attribute(:aws_vpc_name, default: '', description: 'The AWS VPC name.')
 
 control 'aws-vpc-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPC has the correct properties.'
 
@@ -19,8 +18,18 @@ control 'aws-vpc-1.0' do
     its ('vpc_id') { should eq aws_vpc_id }
     its ('state') { should eq 'available' }
     its ('dhcp_options_id') { should eq aws_vpc_dhcp_options_id }
-    its ('tags') { should include('Name' => aws_vpc_name)}
+    its ('tags') { should include('Name' => aws_vpc_name) }
+    its ('associated_cidr_blocks') { should include(aws_vpc_cidr_block) }
+    its('associated_ipv6_cidr_blocks') { should be_empty }
     it { should_not be_default }
+    it { should be_available }
+    it { should_not be_pending }
+    it { should be_default_instance }
+    it { should_not be_dedicated_instance }
+    it { should_not be_host_instance }
+    it { should have_cidr_block_associated(aws_vpc_cidr_block) }
+    it { should_not have_cidr_block_association_failed(aws_vpc_cidr_block) }
+    it { should_not has_cidr_block_disassociated(aws_vpc_cidr_block) }
   end
 
   describe aws_vpc do
@@ -35,5 +44,4 @@ control 'aws-vpc-1.0' do
     it { should_not be_default }
     its ('vpc_id') { should eq aws_vpc_id }
   end
-
 end
