@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.12 -->
+<!-- latest_release 1.56.13 -->
+## [v1.56.13](https://github.com/inspec/inspec-aws/tree/v1.56.13) (2021-07-26)
+
+#### Merged Pull Requests
+- aws_route53_record_set [#473](https://github.com/inspec/inspec-aws/pull/473) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.12](https://github.com/inspec/inspec-aws/tree/v1.56.12) (2021-07-26)
 
 #### Merged Pull Requests
 - aws_lambda_event_source_mapping [#383](https://github.com/inspec/inspec-aws/pull/383) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.11](https://github.com/inspec/inspec-aws/tree/v1.56.11) (2021-07-22)
 
