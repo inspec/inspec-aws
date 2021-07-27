@@ -1,9 +1,14 @@
-<!-- latest_release 1.58.1 -->
+<!-- latest_release 1.58.2 -->
+## [v1.58.2](https://github.com/inspec/inspec-aws/tree/v1.58.2) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_lambda_permission [#478](https://github.com/inspec/inspec-aws/pull/478) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.58.1](https://github.com/inspec/inspec-aws/tree/v1.58.1) (2021-07-27)
 
 #### Merged Pull Requests
 - aws_route53resolver_resolver_rule [#476](https://github.com/inspec/inspec-aws/pull/476) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.58.0](https://github.com/inspec/inspec-aws/tree/v1.58.0) (2021-07-27)
 
