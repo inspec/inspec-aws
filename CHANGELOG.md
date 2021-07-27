@@ -1,9 +1,14 @@
-<!-- latest_release 1.58.2 -->
+<!-- latest_release 1.58.3 -->
+## [v1.58.3](https://github.com/inspec/inspec-aws/tree/v1.58.3) (2021-07-27)
+
+#### Merged Pull Requests
+- Changes Done in the Readme.md file [#501](https://github.com/inspec/inspec-aws/pull/501) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.58.2](https://github.com/inspec/inspec-aws/tree/v1.58.2) (2021-07-27)
 
 #### Merged Pull Requests
 - aws_lambda_permission [#478](https://github.com/inspec/inspec-aws/pull/478) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.58.1](https://github.com/inspec/inspec-aws/tree/v1.58.1) (2021-07-27)
 
