@@ -175,6 +175,7 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_dms_replication_subnet_group](docs/resources/aws_dms_replication_subnet_group.md)
 - [aws_dms_replication_subnet_groups](docs/resources/aws_dms_replication_subnet_groups.md)
 - [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
+- [aws_dynamodb_tables](docs/resources/aws_dynamodb_tables.md)
 - [aws_ebs_snapshot](docs/resources/aws_ebs_snapshot.md)
 - [aws_ebs_snapshots](docs/resources/aws_ebs_snapshots.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
