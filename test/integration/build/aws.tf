@@ -2885,7 +2885,6 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_a
   vpc_id             = aws_vpc.attachment.id
   transit_gateway_default_route_table_association = false
   transit_gateway_default_route_table_propagation = false
-
 }
 
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
@@ -2922,7 +2921,6 @@ resource "aws_network_acl" "inspec-nw-acl" {
     from_port  = 80
     to_port    = 80
   }
-
 
   tags = {
     Name = var.aws_network_acl_name
@@ -3877,4 +3875,12 @@ resource "aws_secretsmanager_secret" "aws_secretsmanager_secret_sm_test" {
   }
   cidr_block        = "10.0.3.0/24"
   availability_zone = var.aws_location
+}
+
+resource "aws_lambda_permission" "allow_cloudwatch" {
+  statement_id  = "AllowExecutionFromSqs"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "sqs.amazonaws.com"
+  source_arn    = aws_sqs_queue.terraform_queue.arn
 }
