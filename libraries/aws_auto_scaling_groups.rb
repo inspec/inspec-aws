@@ -42,19 +42,17 @@ class AwsAutoScalingGroups < AwsResourceBase
                          desired_capacity:          group[:desired_capacity].to_i,
                          vpc_zone_identifier:       group[:vpc_zone_identifier].split(','),
                          launch_configuration_name: group[:launch_configuration_name],
-                         health_check_type:         group[:health_check_type] }]
+                         health_check_type:         group[:health_check_type],
+                         tags:                      group[:tags].map { |tag|
+                                                      {
+                                                        'resource_id':          tag.resource_id,
+                                                        'resource_type':        tag.resource_type,
+                                                        'key':                  tag.key,
+                                                        'value':                tag.value,
+                                                        'propagate_at_launch':  tag.propagate_at_launch,
+                                                      }
+                                                    } }]
 
-        group[:tags].map { |tag|
-          config_rows.push(
-            {
-              'resource_id':          tag.resource_id,
-              'resource_type':        tag.resource_type,
-              'key':                  tag.key,
-              'value':                tag.value,
-              'propagate_at_launch':  tag.propagate_at_launch,
-            },
-          )
-        }
       end
     end
     @table = config_rows
