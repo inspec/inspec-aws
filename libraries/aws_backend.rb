@@ -40,12 +40,12 @@ require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-route53resolver'
 require 'aws-sdk-servicecatalog'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
-require 'aws-sdk-route53resolver'
 require 'aws-sdk-secretsmanager'
 
 # AWS Inspec Backend Classes

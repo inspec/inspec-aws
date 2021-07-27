@@ -284,6 +284,7 @@ module AWSInspecConfig
       aws_ecs_task_definition_family: "service-#{add_random_string}",
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}",
+      aws_location: "us-east-2c",
   }
 
   def self.config

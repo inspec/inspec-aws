@@ -7,6 +7,7 @@ terraform {
 # Configure variables
 variable "aws_region" {}
 variable "aws_availability_zone" {}
+variable "aws_location" {}
 
 variable "aws_alb_name" {}
 variable "aws_auto_scaling_group" {}
@@ -373,6 +374,7 @@ resource "aws_ebs_volume" "inspec_encrypted_ebs_volume" {
     Name = var.aws_ebs_volume_name
   }
 }
+
 resource "aws_ebs_snapshot" "inspec_encrypted_ebs_snapshot" {
   # count     = var.aws_enable_creation
   count     = 1
@@ -2776,7 +2778,6 @@ resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
   autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
-
 }
 
 resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
@@ -3874,4 +3875,6 @@ resource "aws_secretsmanager_secret" "aws_secretsmanager_secret_sm_test" {
   tags = {
     Name = "main"
   }
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = var.aws_location
 }
