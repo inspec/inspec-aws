@@ -7,7 +7,6 @@ aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', descrip
 aws_vpc_name = attribute(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
 
 control 'aws-vpcs-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPC plural resource has the correct properties.'
 
@@ -18,9 +17,17 @@ control 'aws-vpcs-1.0' do
     its('vpc_ids')           { should include aws_vpc_id }
     its('states')            { should include 'available' }
     its('dhcp_options_ids')  { should include aws_vpc_dhcp_options_id }
-    its('instance_tenancys') { should include aws_vpc_instance_tenancy }
+    its('instance_tenancies') { should include aws_vpc_instance_tenancy }
     its('is_defaults')       { should be_in [true, false] }
     its('tags')              { should include('Name' => aws_vpc_name) }
+    its('associated_cidr_blocks') { should include(aws_vpc_cidr_block) }
   end
 
+  describe aws_vpcs.where { cidr_block_states.include?('associated') } do
+    it { should exist }
+  end
+
+  describe aws_vpcs.where { ipv6_network_border_groups.include?('us-east-2a') } do
+    it { should exist }
+  end
 end
