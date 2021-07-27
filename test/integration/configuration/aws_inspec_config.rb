@@ -281,8 +281,6 @@ module AWSInspecConfig
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
       aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}",
-      aws_iam_instance_profile_name1: "test_profile123",
-      aws_iam_role_name1: "test_role123",
       aws_ecs_task_definition_family: "service-#{add_random_string}",
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}",

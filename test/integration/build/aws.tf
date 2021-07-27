@@ -2405,6 +2405,65 @@ resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
   description = "Sample Description"
 }
 
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "first"
+      image     = "service-first"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    },
+    {
+      name      = "second"
+      image     = "service-second"
+      cpu       = 10
+      memory    = 256
+      essential = true
+      portMappings = [
+        {
+          containerPort = 443
+          hostPort      = 443
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_ecs_service" "bar" {
+  name                = var.aws_ecs_service_name
+  cluster             = aws_ecs_cluster.for_ecs_service.id
+  task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+  scheduling_strategy = "DAEMON"
+}
+
+resource "aws_ecs_cluster" "for_ecs_service" {
+  name = var.aws_cluster_name
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+
 resource "aws_dms_certificate" "aws_dms_certificate_test" {
   certificate_id = "test1"
   certificate_pem = "-----BEGIN ENCRYPTED PRIVATE KEY----- MIIJJwIBAAKCAgEAqkLV+54yJ9DP9MNTqMHTHcbgsRuy/c93Y/tPZ1WG3QS834n1OV92s2NsWjEluMFU7AsKS3oR7mugGWEVtPEcoqA3XrD7hRz87BgpKbA9Q8fc1xs2D1RBK1EE23Vhz6RRUwZmFDvX8qM1AxN4E7px2pLVM9r8jxdXjbao3HkuvA== -----END ENCRYPTED PRIVATE KEY-----"
@@ -3194,7 +3253,6 @@ resource "aws_subnet" "for_res" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-2c"
-
 }
 
 resource "aws_route53_resolver_endpoint" "for-int" {
@@ -3738,7 +3796,6 @@ resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }
-
 
 #lambda_event source mapping
 resource "aws_sqs_queue" "terraform_queue" {
