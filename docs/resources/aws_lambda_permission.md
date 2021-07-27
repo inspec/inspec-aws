@@ -31,7 +31,7 @@ For additional information, see the [AWS documentation on AWS Lambda permission]
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | sid | The statement ID of the function. |
 | effect | The effect of the function. |
