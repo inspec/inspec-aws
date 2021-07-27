@@ -46,7 +46,7 @@ class AWSSecretsManagerSecrets < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.secretsmanager_client.list_secrets(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.secret_list.each do |res|
         rows += [{
           arn: res.arn,
