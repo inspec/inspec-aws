@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSLambdaPermission < AwsResourceBase
   name 'aws_lambda_permission'
-  desc 'eturns the resource-based IAM policy for a function, version, or alias.'
+  desc 'Returns the resource-based IAM policy for a function, version, or alias.'
 
   example "
     describe aws_lambda_permission(function_name: 'LambdaFunctionName', Sid: 'StatementID') do
@@ -21,8 +21,6 @@ class AWSLambdaPermission < AwsResourceBase
     row = {}
     catch_aws_errors do
       resp = @aws.lambda_client.get_policy({ function_name: opts[:function_name] })
-      # require 'byebug'
-      # byebug
       statements = JSON.parse(resp.policy)['Statement']
       statements.each do |value|
         next if value['Sid'] != opts[:Sid]
