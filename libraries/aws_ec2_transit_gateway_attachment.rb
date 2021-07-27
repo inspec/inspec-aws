@@ -16,7 +16,6 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
     opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_attachment_id])
-
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_id].empty?
     @display_name = opts[:transit_gateway_attachment_id]
     catch_aws_errors do
@@ -26,7 +25,7 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
     end
   end
 
-  def id
+  def transit_gateway_attachment_id
     return nil unless exists?
     @transit_gateway_attachments[:transit_gateway_attachment_id]
   end
@@ -35,11 +34,7 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
     !@transit_gateway_attachments.nil? && !@transit_gateway_attachments.empty?
   end
 
-  def encrypted?
-    @transit_gateway_attachments[:encrypted]
-  end
-
   def to_s
-    "Transit gateway attachment #{@display_name}"
+    "Transit gateway Attachment ID: #{@display_name}"
   end
 end
