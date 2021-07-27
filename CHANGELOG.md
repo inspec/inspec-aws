@@ -1,9 +1,14 @@
-<!-- latest_release 1.57.0 -->
+<!-- latest_release 1.58.0 -->
+## [v1.58.0](https://github.com/inspec/inspec-aws/tree/v1.58.0) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_servicecatalog_portfolio_principal_association [#469](https://github.com/inspec/inspec-aws/pull/469) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.57.0](https://github.com/inspec/inspec-aws/tree/v1.57.0) (2021-07-27)
 
 #### Merged Pull Requests
 - aws secret manager secret [#465](https://github.com/inspec/inspec-aws/pull/465) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.15](https://github.com/inspec/inspec-aws/tree/v1.56.15) (2021-07-27)
 
