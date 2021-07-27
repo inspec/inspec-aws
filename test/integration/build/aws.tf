@@ -222,6 +222,8 @@ variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
 variable "aws_route52_record_set_name" {}
 
+variable "aws_iam_instance_profile_name1" {}
+variable "aws_iam_role_name1" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -2148,6 +2150,32 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_iam_instance_profile" "aws_iam_instance_profile_test" {
+  name = var.aws_iam_instance_profile_name1
+  role = aws_iam_role.aws_iam_role_test[0].name
+}
+
+resource "aws_iam_role" "aws_iam_role_test" {
+  count = 1
+  name  = var.aws_iam_role_name1
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
 resource "aws_transfer_server" "aws_transfer_server_tu_test" {
   identity_provider_type = "SERVICE_MANAGED"
 
@@ -3100,10 +3128,6 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = var.aws_availability_zone
-}
-  cidr_block        = "10.0.3.0/24"
-  availability_zone = "us-east-2c"
-
 }
 
 resource "aws_subnet" "for_res" {

@@ -280,7 +280,9 @@ module AWSInspecConfig
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
-      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}",
+      aws_iam_instance_profile_name1: "test_profile123",
+      aws_iam_role_name1: "test_role123",
   }
 
   def self.config
@@ -326,7 +328,7 @@ module AWSInspecConfig
     outputs = get_tf_output_vars
     outputs.each do |tf|
       # also assuming single values here
-      value = `cd "#{build_dir}" && terraform output #{tf}`.strip
+      value = `cd #{build_dir} && terraform output #{tf}`.strip
       contents[tf.to_sym] = value
     end
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), 'w') do |f|

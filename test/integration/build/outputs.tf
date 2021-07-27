@@ -656,3 +656,19 @@ output "aws_lambda_event_source_mapping_event_source_arn" {
 output "aws_route53_hosted_zone_id" {
   value = aws_route53_zone.for_route53_set_record_test.zone_id
 }
+
+output "aws_iam_instance_profile_id" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.id
+}
+
+output "aws_iam_instance_profile_arn" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.arn
+}
+
+output "aws_iam_role_id" {
+  value = aws_iam_role.aws_iam_role_test.id
+}
+
+output "aws_iam_role_arn" {
+  value = aws_iam_role.aws_iam_role_test.arn
+}
