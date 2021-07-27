@@ -1,9 +1,14 @@
-<!-- latest_release 1.58.0 -->
+<!-- latest_release 1.58.1 -->
+## [v1.58.1](https://github.com/inspec/inspec-aws/tree/v1.58.1) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_route53resolver_resolver_rule [#476](https://github.com/inspec/inspec-aws/pull/476) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.58.0](https://github.com/inspec/inspec-aws/tree/v1.58.0) (2021-07-27)
 
 #### Merged Pull Requests
 - aws_servicecatalog_portfolio_principal_association [#469](https://github.com/inspec/inspec-aws/pull/469) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.57.0](https://github.com/inspec/inspec-aws/tree/v1.57.0) (2021-07-27)
 
