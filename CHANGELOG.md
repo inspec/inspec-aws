@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.14 -->
+<!-- latest_release 1.56.15 -->
+## [v1.56.15](https://github.com/inspec/inspec-aws/tree/v1.56.15) (2021-07-27)
+
+#### Merged Pull Requests
+- aws ecs service [#370](https://github.com/inspec/inspec-aws/pull/370) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.14](https://github.com/inspec/inspec-aws/tree/v1.56.14) (2021-07-27)
 
 #### Merged Pull Requests
 - aws_iam_instance_profile [#382](https://github.com/inspec/inspec-aws/pull/382) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.13](https://github.com/inspec/inspec-aws/tree/v1.56.13) (2021-07-26)
 
