@@ -1,9 +1,14 @@
-<!-- latest_release 1.56.13 -->
+<!-- latest_release 1.56.14 -->
+## [v1.56.14](https://github.com/inspec/inspec-aws/tree/v1.56.14) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_iam_instance_profile [#382](https://github.com/inspec/inspec-aws/pull/382) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.56.13](https://github.com/inspec/inspec-aws/tree/v1.56.13) (2021-07-26)
 
 #### Merged Pull Requests
 - aws_route53_record_set [#473](https://github.com/inspec/inspec-aws/pull/473) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.12](https://github.com/inspec/inspec-aws/tree/v1.56.12) (2021-07-26)
 
