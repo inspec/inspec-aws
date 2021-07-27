@@ -2209,7 +2209,6 @@ resource "aws_ecs_cluster" "for_ecs_service" {
   }
 }
 
-
 resource "aws_iam_instance_profile" "aws_iam_instance_profile_test" {
   name = var.aws_iam_instance_profile_name1
   role = aws_iam_role.aws_iam_role_test[0].name
@@ -2362,7 +2361,6 @@ resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
   }
   EOF
 }
-
 
 resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
   domain_name           = var.aws_elasticsearch_domain_name
@@ -3866,4 +3864,14 @@ ttl             = 172800
 type            = "A"
 zone_id         = aws_route53_zone.for_route53_set_record_test.zone_id
 records = ["192.0.0.2"]
+}
+
+// SECRETS MANAGER
+resource "aws_secretsmanager_secret" "aws_secretsmanager_secret_sm_test" {
+  name = "secret-manager-test"
+  description  = "Test Description."
+
+  tags = {
+    Name = "main"
+  }
 }
