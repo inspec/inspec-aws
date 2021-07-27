@@ -44,7 +44,7 @@ class AWSRoute53ResolverResolverRules < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.route53resolver_client.list_resolver_rules(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.resolver_rules.each do |res|
         rows += [{
           id: res.id,

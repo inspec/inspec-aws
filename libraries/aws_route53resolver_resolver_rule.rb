@@ -25,17 +25,13 @@ class AWSRoute53ResolverResolverRule < AwsResourceBase
     end
   end
 
-  def id
+  def resolver_rule_id
     return nil unless exists?
     @res[:resolver_rule_id]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s
