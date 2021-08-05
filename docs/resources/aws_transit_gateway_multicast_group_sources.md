@@ -36,7 +36,9 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 | resource_types | The type of the resource. | resource_type |
 | resource_owner_ids | The Owner ID of the resource. | resource_owner_id |
 | network_interface_ids | The network interface ID of the resource. | network_interface_id |
+| group_members | The resource is a group member. Valid values are true and false. | group_member |
 | group_sources | The resource is a group source. Valid values are true and false. | group_source |
+| member_types | The member type. Valid values are igmp and static. | member_type |
 | source_types | The source type. Valid values are igmp and static. | source_type |
 
 ## Examples
