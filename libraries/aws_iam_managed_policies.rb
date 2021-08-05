@@ -29,15 +29,14 @@ class AwsIamManagedPolicies < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    parameters = {}
-    @table = fetch_data(parameters)
+    @table = fetch_data
   end
 
-  def fetch_data(parameters = {})
+  def fetch_data
     iam_policy_rows = []
     loop do
       catch_aws_errors do
-        @response = @aws.iam_client.list_entities_for_policy
+        @response = @aws.iam_client.list_policies(max_items: 1000)
       end
       return iam_policy_rows if !@response || @response.empty?
       @response.policies.each do |p|

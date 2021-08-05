@@ -30,7 +30,7 @@ class AwsIamManagedPolicy < AwsResourceBase
   end
 
   def exists?
-    !@arn.nil?
+    !@res.nil?
   end
 
   def to_s

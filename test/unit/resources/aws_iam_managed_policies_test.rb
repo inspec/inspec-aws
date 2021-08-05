@@ -23,10 +23,8 @@ class AwsIamManagedPoliciesHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :list_policies
     mock_data = {}
-    mock_data[:path] = 'test1'
     mock_data[:policy_name] = 'test1'
     mock_data[:policy_id] = 'test1'
-    mock_data[:policy_arn] = 'test1'
     mock_data[:arn] = 'test1'
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :policies => [mock_data] }
@@ -36,10 +34,6 @@ class AwsIamManagedPoliciesHappyPathTest < Minitest::Test
 
   def test_iam_client_exists
     assert @iam_client.exist?
-  end
-
-  def test_paths
-    assert_equal(@iam_client.paths, ['test1'])
   end
 
   def test_policy_names
