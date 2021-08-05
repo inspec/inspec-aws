@@ -21,15 +21,15 @@ class AwsIamManagedPoliciesHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_instance_profiles
+    data[:method] = :list_policies
     mock_data = {}
     mock_data[:path] = 'test1'
     mock_data[:policy_name] = 'test1'
     mock_data[:policy_id] = 'test1'
+    mock_data[:policy_arn] = 'test1'
     mock_data[:arn] = 'test1'
-    mock_data[:roles] = []
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
-    data[:data] = { :instance_profiles => [mock_data] }
+    data[:data] = { :policies => [mock_data] }
     data[:client] = Aws::IAM::Client
     @iam_client = AwsIamManagedPolicies.new(client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -43,11 +43,11 @@ class AwsIamManagedPoliciesHappyPathTest < Minitest::Test
   end
 
   def test_policy_names
-    assert_equal(@iam_client.instance_profile_names, ['test1'])
+    assert_equal(@iam_client.policy_names, ['test1'])
   end
 
   def test_instance_profile_ids
-    assert_equal(@iam_client.instance_profile_ids, ['test1'])
+    assert_equal(@iam_client.policy_ids, ['test1'])
   end
 
   def test_arns

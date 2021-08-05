@@ -13,7 +13,7 @@ class AWSIAMManagedPolicyTest < Minitest::Test
   end
 
   def test_iam_client_non_existing_for_empty_response
-    refute AwsIamManagedPolicy.new(client_args: { stub_responses: true }).exist?
+    refute AwsIamManagedPolicy.new(policy_arn: 'test1' ,client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -31,26 +31,26 @@ class AwsIamManagedPolicyHappyPathTest < Minitest::Test
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :policy => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @iam_client = AwsIamManagedPolicy.new(client_args: { stub_responses: true }, stub_data: [data])
+    @iam_client = AwsIamManagedPolicy.new(policy_arn: 'test1' ,client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_iam_client_exists
     assert @iam_client.exist?
   end
 
-  def test_paths
+  def test_path
     assert_equal(@iam_client.paths, 'test1')
   end
 
-  def test_policy_names
-    assert_equal(@iam_client.instance_profile_names, 'test1')
+  def test_policy_name
+    assert_equal(@iam_client.policy_name, 'test1')
   end
 
-  def test_instance_profile_ids
-    assert_equal(@iam_client.instance_profile_ids, 'test1')
+  def test_instance_profile_id
+    assert_equal(@iam_client.policy_id, 'test1')
   end
 
-  def test_arns
-    assert_equal(@iam_client.arns, 'test1')
+  def test_arn
+    assert_equal(@iam_client.arn, 'test1')
   end
 end

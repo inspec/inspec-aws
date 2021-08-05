@@ -34,7 +34,6 @@ class AwsIamManagedPolicy < AwsResourceBase
   end
 
   def to_s
-    "AWS Iam Policy #{@policy_name}"
+    "AWS Iam Managed Policy ARN : #{@policy_arn}"
   end
 end
-
