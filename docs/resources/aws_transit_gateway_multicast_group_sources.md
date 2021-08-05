@@ -27,19 +27,17 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| group_ip_addresses | The IP address of the transit gateway multicast group. |
-| transit_gateway_attachment_ids | The attachment id of the transit gateway. |
-| subnet_ids | The ID of the subnet. |
-| resource_ids | The ID of the resource. |
-| resource_types | The type of the resource. |
-| resource_owner_ids | The Owner ID of the resource. |
-| network_interface_ids | The network interface ID of the resource. |
-| group_Sources | The resource is a group Source. Valid values are true and false. |
-| group_sources | The resource is a group source. Valid values are true and false. |
-| Source_types | The Source type. Valid values are igmp and static. |
-| source_types | The source type. Valid values are igmp and static. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| group_ip_addresses | The IP address of the transit gateway multicast group. | group_ip_address |
+| transit_gateway_attachment_ids | The attachment id of the transit gateway. | transit_gateway_attachment_id |
+| subnet_ids | The ID of the subnet. | subnet_id |
+| resource_ids | The ID of the resource. | resource_id |
+| resource_types | The type of the resource. | resource_type |
+| resource_owner_ids | The Owner ID of the resource. | resource_owner_id |
+| network_interface_ids | The network interface ID of the resource. | network_interface_id |
+| group_sources | The resource is a group source. Valid values are true and false. | group_source |
+| source_types | The source type. Valid values are igmp and static. | source_type |
 
 ## Examples
 
