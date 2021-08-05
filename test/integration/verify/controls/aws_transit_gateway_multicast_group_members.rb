@@ -7,7 +7,7 @@ control 'aws_transit_gateway_multicast_group_members' do
   end
 
   describe aws_transit_gateway_multicast_group_members(transit_gateway_multicast_domain_id: "") do
-    its('group_ip_addresses') { should include '224.0.0.1' }
+    its('group_ip_addresses') { should include '' }
     its('transit_gateway_attachment_ids') { should include '' }
     its('subnet_ids') { should include '' }
     its('resource_ids') { should include '' }
