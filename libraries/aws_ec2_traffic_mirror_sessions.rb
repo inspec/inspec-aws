@@ -55,6 +55,7 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
           packet_length: traffic_mirror_sessions.packet_length,
           session_number: traffic_mirror_sessions.session_number,
           virtual_network_id: traffic_mirror_sessions.virtual_network_id,
+          traffic_mirror_session_id: traffic_mirror_sessions.traffic_mirror_session_id,
           tags: traffic_mirror_sessions.tags,
 
         }]

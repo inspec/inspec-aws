@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSEc2TrafficMirrorSession < AwsResourceBase
   name 'aws_ec2_traffic_mirror_session'
-  desc 'Audits EC2 Traffic Mirror Session'
+  desc 'Describes one or Traffic Mirror session.'
 
   example "
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
