@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSEc2TrafficMirrorFilters < AwsResourceBase
   name 'aws_ec2_traffic_mirror_filters'
-  desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror Filters'
+  desc 'Describes one or more Traffic Mirror filters.'
 
   example "
     describe aws_ec2_traffic_mirror_filters do

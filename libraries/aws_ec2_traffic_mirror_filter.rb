@@ -7,7 +7,7 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
   desc 'Describes one or more Traffic Mirror filters.'
 
   example "
-    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'test-traffic_mirror_filter') do
+    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'tmf-0293f26e86EXAMPLE') do
       it { should exist }
     end
   "
