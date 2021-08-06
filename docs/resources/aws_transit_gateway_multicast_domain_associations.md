@@ -69,7 +69,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the function is available.
+Use `should` to check if the entity is available.
 
     describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
       it { should be_available }
