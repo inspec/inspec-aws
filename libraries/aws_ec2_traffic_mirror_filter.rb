@@ -7,7 +7,7 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
   desc 'Describes one or more Traffic Mirror filters.'
 
   example "
-    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'tmf-0293f26e86EXAMPLE') do
+    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'tmf-1234567890') do
       it { should exist }
     end
   "
@@ -30,11 +30,16 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
     end
   end
 
+  def traffic_mirror_filter_id
+    return nil unless exists?
+    @traffic_mirror_filters[:traffic_mirror_filter_id]
+  end
+
   def exists?
     !@traffic_mirror_filters.nil? && !@traffic_mirror_filters.empty?
   end
 
   def to_s
-    "EC2 Traffic Mirror Filter: #{@display_name}"
+    "EC2 Traffic Mirror Filter ID: #{@display_name}"
   end
 end

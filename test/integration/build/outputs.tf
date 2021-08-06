@@ -501,9 +501,11 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
 output "load_balancer_arn" {
   value = aws_lb.test.arn
 }
+
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
+
 output "aws_traffic_filter_id" {
   value = aws_ec2_traffic_mirror_filter.filter.id
 }
