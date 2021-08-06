@@ -3,8 +3,8 @@
 require 'aws_backend'
 
 class AWSEc2TrafficMirrorFilter < AwsResourceBase
-  name 'aws_ec2_traffic_mirror_filter'
-  desc 'Audits EC2 Traffic Mirror Filter'
+  name 'aws_ec2_traffic_mirror_filter.md'
+  desc 'Describes one or more Traffic Mirror filters.'
 
   example "
     describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'test-traffic_mirror_filter') do
@@ -17,8 +17,8 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(traffic_mirror_filter_id))
     if opts[:traffic_mirror_filter_id] && !opts[:traffic_mirror_filter_id].empty? # Use instance_id, if provided
-      if !opts[:traffic_mirror_filter_id].is_a?(String) || opts[:traffic_mirror_filter_id] !~ /(^tmf-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
-        raise ArgumentError, "#{@__resource_name__}: `traffic_mirror_filter_id` must be a string in the format of 'lt-' followed by 8 or 17 hexadecimal characters."
+      if !opts[:traffic_mirror_filter_id].is_a?(String) || opts[:traffic_mirror_filter_id] !~ /(^tmf-[0-9a-f]{8})|(^tmf-[0-9a-f]{17})$/
+        raise ArgumentError, "#{@__resource_name__}: `traffic_mirror_filter_id` must be a string in the format of 'tfm-' followed by 8 or 17 hexadecimal characters."
       end
       @display_name = opts[:traffic_mirror_filter_id]
       traffic_mirror_filters_arguments = { traffic_mirror_filter_ids: [opts[:traffic_mirror_filter_id]] }
@@ -35,6 +35,6 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
   end
 
   def to_s
-    "EC2 Traffic Mirror Filter #{@display_name}"
+    "EC2 Traffic Mirror Filter: #{@display_name}"
   end
 end

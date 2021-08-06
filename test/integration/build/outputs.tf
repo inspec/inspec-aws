@@ -504,3 +504,10 @@ output "load_balancer_arn" {
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
+output "aws_traffic_filter_id" {
+  value = aws_ec2_traffic_mirror_filter.filter.id
+}
+
+output "aws_traffic_filter_desc" {
+  value = aws_ec2_traffic_mirror_filter.filter.description
+}

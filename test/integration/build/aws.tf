@@ -3065,3 +3065,8 @@ resource "aws_security_group" "allow_tls_for_lb" {
     Name = "allow_tls"
   }
 }
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
