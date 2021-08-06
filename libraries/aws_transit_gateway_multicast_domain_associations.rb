@@ -30,7 +30,6 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(transit_gateway_multicast_domain_id))
     @query_params = {}
-    @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
     @query_params[:transit_gateway_multicast_domain_id] = opts[:transit_gateway_multicast_domain_id]
     @table = fetch_data
@@ -52,7 +51,7 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
                    subnet: resp.subnet }]
       end
       break unless @api_response.next_token
-      pagination_options[:next_token] = @api_response.next_token
+      @query_params[:next_token] = @api_response.next_token
     end
     rows
   end
