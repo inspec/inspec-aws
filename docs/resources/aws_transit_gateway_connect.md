@@ -13,13 +13,15 @@ The AWS::EC2::TransitGatewayConnect resource creates a Connect attachment from a
 
 Ensure that transit gateway connect exists.
 
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'tgw-attach-1234567890') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'tgw-attach-1234567890') do
       it { should exits }
     end
 
 ## Parameters
 
-`transit_gateway_attachment_ids` _(required)_
+`transit_gateway_attachment_id` _(required)_
+
+The transit_gateway_attachment_id is the ID of the Connect attachment.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayConnect](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayconnect.html).
 
@@ -38,12 +40,12 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 ## Examples
 
 ### Ensure a transit gateway attachment id is available.
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'tgw-attach-1234567890') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'tgw-attach-1234567890') do
       its('transit_gateway_attachment_id') { should eq 'tgw-attach-1234567890' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'tgw-attach-1234567890') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'tgw-attach-1234567890') do
         its('state') { should eq 'available' }
     end
 
@@ -57,21 +59,21 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'tgw-attach-1234567890') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'tgw-attach-1234567890') do
       it { should exits }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'dummy') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'dummy') do
       it { should_not exits }
     end
 
 ### be_available
 
-Use `should` to check if the function is available.
+Use `should` to check if the entity is available.
 
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'dummy') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'dummy') do
       it { should be_available }
     end
 

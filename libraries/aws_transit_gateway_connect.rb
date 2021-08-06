@@ -17,13 +17,13 @@ class AWSTransitGatewayConnect < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { transit_gateway_attachment_ids: opts } if opts.is_a?(String)
+    opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:transit_gateway_attachment_ids])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_ids must be provided" unless opts[:transit_gateway_attachment_ids] && !opts[:transit_gateway_attachment_ids].empty?
-    @display_name = opts[:transit_gateway_attachment_ids]
+    validate_parameters(required: [:transit_gateway_attachment_id])
+    raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_ids].empty?
+    @display_name = opts[:transit_gateway_attachment_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_transit_gateway_connects({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_ids]] })
+      resp = @aws.compute_client.describe_transit_gateway_connects({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_id]] })
       @transit_gateway_connects = resp.transit_gateway_connects[0].to_h
       create_resource_methods(@transit_gateway_connects)
     end
@@ -31,7 +31,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
 
   def transit_gateway_attachment_id
     return nil unless exists?
-    @transit_gateway_connects[:transit_gateway_attachment_ids]
+    @transit_gateway_connects[:transit_gateway_attachment_id]
   end
 
   def exists?
