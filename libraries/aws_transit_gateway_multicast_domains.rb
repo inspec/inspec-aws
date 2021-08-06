@@ -25,7 +25,7 @@ class AWSTransitGatewayMulticastDomains < AwsResourceBase
              .register_column(:owner_ids,                                       field: :owner_id)
              .register_column(:options,                                         field: :options)
              .register_column(:states,                                          field: :state)
-             .register_column(:creation_times,                                  field: :creation_time)
+             .register_column(:creation_time,                                   field: :creation_time)
              .register_column(:tags,                                            field: :tags)
              .install_filter_methods_on_resource(self, :table)
 

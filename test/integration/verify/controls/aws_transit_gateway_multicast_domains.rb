@@ -1,4 +1,4 @@
-control 'aws_transit_gateway_multicast_domains' do
+skip_control 'aws_transit_gateway_multicast_domains' do
   impact 1.0
   title 'Describes one or more transit gateway multicast domains.'
   describe aws_transit_gateway_multicast_domains do
