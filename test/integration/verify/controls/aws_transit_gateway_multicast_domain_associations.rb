@@ -1,4 +1,4 @@
-control 'aws_transit_gateway_multicast_domain_associations' do
+skip_control 'aws_transit_gateway_multicast_domain_associations' do
   impact 1.0
   title 'Gets information about the associations for the transit gateway multicast domain.'
 
