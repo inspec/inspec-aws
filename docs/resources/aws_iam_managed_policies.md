@@ -55,11 +55,13 @@ For a full list of available matchers, please visit our [matchers page](https://
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
     describe aws_iam_managed_policies.where( <property>: <value>) do
       it { should exist }
     end
+
+Use `should_not` to test the entity should not exist.
       
     describe aws_iam_managed_policies.where( <property>: <value>) do
       it { should_not exist }
