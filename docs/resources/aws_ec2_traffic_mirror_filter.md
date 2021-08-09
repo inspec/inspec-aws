@@ -33,7 +33,7 @@ This can be passed either as a string or as an `aws_ec2_traffic_mirror_filter_id
 | ---                     | --- |
 |traffic_mirror_filter_id     | The id of a Traffic mirror filter.|
 |description                  | The description of a Traffic mirror filter.|
-|tags                         | A list of hashes with each key-value pair corresponding to an EC2 instance tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+|tags                         | A list of hashes with each key-value pair corresponding to an Traffic Mirror tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 

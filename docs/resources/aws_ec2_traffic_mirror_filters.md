@@ -25,7 +25,7 @@ No required parameters
 | ---                     | --- |
 |traffic_mirror_filter_ids     | The id of a Traffic mirror filter.|
 |descriptions                  | The description of a Traffic mirror filter.|
-|tags                         | A list of hashes with each key-value pair corresponding to an EC2 instance tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+|tags                         | A list of hashes with each key-value pair corresponding to an Traffic Mirror Filter, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 
