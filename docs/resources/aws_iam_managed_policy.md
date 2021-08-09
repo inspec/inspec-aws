@@ -9,7 +9,7 @@ Use the `aws_iam_managed_policy` InSpec audit resource to test properties of  AW
 
 ## Syntax
 
-`aws_iam_managed_policy` Resource gets attributes related to a managed policy and allows testing of that collection.
+`aws_iam_managed_policy` resource returns a collection of IAM Policies and allows testing of that collection..
 
     describe aws_iam_managed_policy(policy_arn: 'policy-arn') do
       its('policy_name') { should eq 'test-policy-1' }
@@ -26,12 +26,12 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 |Property              | Description|
 | ---                  | --- |
-|arns                  | The ARN identifier of the specified policy. |
-|policy\_id            | The policy ids. |
-|policy\_name          | The policy names. |
-|attachment\_count     | The count of attached entities for each policy. |
-|attached\_group       | The list of group names of the groups attached to each policy. |
-|default\_version\_id  | The 'default\_version\_id' value of each policy. |
+|arns                   | The ARN identifier of the specified policy. |                                                                          
+|policy\_id             | The stable and unique string identifying the policy. |                                                                 
+|policy\_name           | The friendly name (not ARN) identifying the policy.|                                                                   
+|attachment\_count      | The count of attached entities for each policy. |                                                                      
+|attached\_group        | The list of group names of the groups attached to each policy. |                                                       
+|default\_version\_id   |The identifier for the version of the policy that is set as the default version. |                                      
 
 
 
@@ -55,11 +55,13 @@ For a full list of available matchers, please visit our [matchers page](https://
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `shouldt` to test the entity should exist.
 
     describe aws_iam_managed_policy(policy_arn: 'policy-arn').where( <property>: <value>) do
       it { should exist }
     end
+
+Use `should_not` to test the entity should not exist. 
       
     describe aws_iam_managed_policy(policy_arn: 'policy-arn').where( <property>: <value>) do
       it { should_not exist }

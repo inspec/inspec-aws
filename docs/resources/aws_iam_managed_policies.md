@@ -3,7 +3,7 @@ title: About the aws_iam_managed_policies Resource
 platform: aws
 ---
 
-# aws\_iam\_policies
+# aws\_iam\_managed\_policies
 
 Use the `aws_iam_managed_policies` InSpec audit resource to test properties of a collection of AWS IAM Policies.
 
@@ -27,11 +27,11 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 |Property              | Description|
 | ---                  | --- |
 |arns                  | The ARN identifier of the specified policy. |
-|policy\_ids           | The policy ids. |
-|policy\_names         | The policy names. |
+|policy\_ids           | The stable and unique string identifying the policy. |
+|policy\_names         | The friendly name (not ARN) identifying the policy.|
 |attachment\_counts    | The count of attached entities for each policy. |
 |attached\_groups      | The list of group names of the groups attached to each policy. |
-|default\_version\_ids | The 'default\_version\_id' value of each policy. |
+|default\_version\_ids |The identifier for the version of the policy that is set as the default version. |
 
 
 
