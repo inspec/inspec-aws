@@ -28,24 +28,21 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-
     validate_parameters
     @table = fetch_data
   end
 
   def fetch_data
-    @traffic_mirror_sessions_rows = []
-    @pagination_options = {}
-    @pagination_options[:max_results] = 100
+    traffic_mirror_sessions_rows = []
+    pagination_options = {}
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_traffic_mirror_sessions(@pagination_options)
-
+        @api_response = @aws.compute_client.describe_traffic_mirror_sessions(pagination_options)
       end
       return traffic_mirror_sessions_rows if !@api_response || @api_response.empty?
-
       @api_response.traffic_mirror_sessions.each do |traffic_mirror_sessions|
-        @traffic_mirror_sessions_rows += [{
+        traffic_mirror_sessions_rows += [{
 
           description: traffic_mirror_sessions.description,
           traffic_mirror_target_id: traffic_mirror_sessions.traffic_mirror_target_id,
@@ -56,12 +53,10 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
           session_number: traffic_mirror_sessions.session_number,
           virtual_network_id: traffic_mirror_sessions.virtual_network_id,
           traffic_mirror_session_id: traffic_mirror_sessions.traffic_mirror_session_id,
-          tags: traffic_mirror_sessions.tags,
-
-        }]
+          tags: traffic_mirror_sessions.tags, }]
       end
       break unless @api_response.next_token
-      @pagination_options = { next_token: @api_response.next_token }
+      pagination_options = { next_token: @api_response.next_token }
     end
   end
   @table = @traffic_mirror_sessions_rows

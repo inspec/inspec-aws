@@ -1,11 +1,11 @@
 ---
-title: About the aws_ec2_traffic_mirror_sessions Resource
+title: About the aws_ec2_traffic_mirror_sessions 
 platform: aws
 ---
 
 # aws\_ec2\_traffic_\mirror_\session
 
-Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties an AWS Traffic Mirror Session
+Use the `aws_ec2_traffic_mirror_session` InSpec audit resource to test properties an AWS Traffic Mirror Session
 
 ## Syntax
 
@@ -13,7 +13,7 @@ An `aws_ec2_traffic_mirror_session` resource block declares the tests for an  AW
 
 ## Syntax
 
-An `aws_ec2_launch_template` resource block declares the tests for a single  AWS Traffic Mirror Session by traffic_mirror_session_id.
+An `aws_ec2_traffic_mirror_session` resource block declares the tests for a single  AWS Traffic Mirror Session by traffic_mirror_session_id.
 
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
       it { should exist }
@@ -46,17 +46,17 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-##### Test that an should exist
+##### Test that a Traffic mirror session should exist
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
       it { should exist }
     end
 
-##### Test that an EC2 instance is using the correct AMI
+##### Test the packet_length of a Traffic mirror session
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
       its('packet_length') { should eq 1 }
     end
 
-##### Test that an EC2 instance has the correct tag
+##### Test that a Traffic mirror session has the correct ID 
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
       its('traffic_mirror_session_id') { should eq 'test-lt' }
     end
