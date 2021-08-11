@@ -1,9 +1,14 @@
-<!-- latest_release 1.58.3 -->
+<!-- latest_release 1.58.4 -->
+## [v1.58.4](https://github.com/inspec/inspec-aws/tree/v1.58.4) (2021-08-11)
+
+#### Merged Pull Requests
+- Fix: Resource aws_rds_clusters Raises NULLException [#507](https://github.com/inspec/inspec-aws/pull/507) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.58.3](https://github.com/inspec/inspec-aws/tree/v1.58.3) (2021-07-27)
 
 #### Merged Pull Requests
 - Changes Done in the Readme.md file [#501](https://github.com/inspec/inspec-aws/pull/501) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.58.2](https://github.com/inspec/inspec-aws/tree/v1.58.2) (2021-07-27)
 
