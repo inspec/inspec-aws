@@ -1,9 +1,14 @@
-<!-- latest_release 1.58.4 -->
+<!-- latest_release 1.58.5 -->
+## [v1.58.5](https://github.com/inspec/inspec-aws/tree/v1.58.5) (2021-08-11)
+
+#### Merged Pull Requests
+- DynamoDB Pagination Issue Fix [#508](https://github.com/inspec/inspec-aws/pull/508) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.58.4](https://github.com/inspec/inspec-aws/tree/v1.58.4) (2021-08-11)
 
 #### Merged Pull Requests
 - Fix: Resource aws_rds_clusters Raises NULLException [#507](https://github.com/inspec/inspec-aws/pull/507) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.58.3](https://github.com/inspec/inspec-aws/tree/v1.58.3) (2021-07-27)
 
