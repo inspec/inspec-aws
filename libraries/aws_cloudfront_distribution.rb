@@ -13,7 +13,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs, :origin_path
+              :custom_origin_ssl_protocols, :s3_origin_configs, :s3_origin_path
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -51,7 +51,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
 
     # origin path for CF distro
-    @origin_path = [config.origins.items.first.origin_path]
+    @s3_origin_path = config.origins.items.first.origin_path
 
     # If there are additional cache behaviors, add them to the list
     if config.cache_behaviors.quantity.positive?
