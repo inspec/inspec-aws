@@ -17,9 +17,9 @@ class AWSIAMVirtualMFADevices < AwsResourceBase
   FilterTable.create
              .register_column(:serial_number, field: :serial_number)
              .register_column(:path,          field: :path)
-             .register_column(:user_name,     field: :user_name)
-             .register_column(:user_id,       field: :user_id)
-             .register_column(:arn,           field: :arn)
+             .register_column(:user_names,     field: :user_name)
+             .register_column(:user_ids,       field: :user_id)
+             .register_column(:arns,           field: :arn)
              .register_column(:tags,          field: :tags)
              .register_column(:enable_date,   field: :enable_date)
              .register_column(:create_date,   field: :create_date)
@@ -45,7 +45,7 @@ class AWSIAMVirtualMFADevices < AwsResourceBase
           path:                             p.user.path,
           user_name:                        p.user.user_name,
           user_id:                          p.user.user_id,
-          arn:                              p.user.user_arn,
+          arn:                              p.user.arn,
           create_date:                      p.user.create_date,
           enable_date:                      p.enable_date,
           tags:                             p.tags,
