@@ -50,7 +50,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
     # A viewer protocol policy is one of "https-only", "redirect-to-https" or "allow-all".
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
 
-    # origin path for CF distro
+    # Origin path for aws cloudfront distro
+    # Either rerutn black or with some path.
     @s3_origin_path = config.origins.items.first.origin_path
 
     # If there are additional cache behaviors, add them to the list
