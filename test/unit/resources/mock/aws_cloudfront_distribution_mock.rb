@@ -67,6 +67,7 @@ class AwsCloudFrontDistributionMock < AwsBaseResourceMock
         }, {
           id: 'origin2',
           domain_name: 'origin2.com',
+          origin_path: '/release',
           custom_origin_config: {
             http_port: 80,
             https_port: 443,

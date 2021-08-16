@@ -66,6 +66,13 @@ class AwsCloudFrontDistributionS3OriginDefaultCertificateTest < Minitest::Test
     assert_equal(@cloudfront_distribution.s3_origin_configs, true)
   end
 
+  def test_empty_s3_origin_path
+      assert_equal(@cloudfront_distribution.s3_origin_path, '')
+  end
+
+  def testy_s3_origin_path
+      assert_equal(@cloudfront_distribution.s3_origin_path, '/release')
+  end
   def test_has_viewer_protocol_policies_allowing_http
     assert @cloudfront_distribution.has_viewer_protocol_policies_allowing_http?
   end
