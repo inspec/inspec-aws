@@ -13,7 +13,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs
+              :custom_origin_ssl_protocols, :s3_origin_configs, :s3_origin_path
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -44,6 +44,9 @@ class AwsCloudFrontDistribution < AwsResourceBase
     # The Viewer Certificate minimum SSL version at the time of writing is TLSv1 for a default cloud certificate,
     # and for custom certifcates one of TLSv1.2_2021, TLSv1.2_2019, TLSv1.2_2018, TLSv1.1_2016, TLSv1_2016 or TLSv1
     @viewer_certificate_minimum_ssl_protocol = config.viewer_certificate[:minimum_protocol_version]
+    
+    # get origin path
+    @s3_origin_path = [config.origins.items.origin_path]
 
     # Each distribution has a default cache behavior viewer protocol policy, and zero or more additional cache
     # behavior viewer protocol policies, for different origins.
