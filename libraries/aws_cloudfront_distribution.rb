@@ -13,7 +13,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs, :s3_origin_path
+              :custom_origin_ssl_protocols, :s3_origin_configs
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -70,16 +70,17 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
   end
 
-  def aws_get_distribution_config(opts = {})
-    opts = { distribution_id: opts } if opts.is_a?(String)
-    super(opts)
-
+  def s3_origin_path
     catch_aws_errors do
-      @resp = @aws.cloudfront_client.get_distribution_config(id: opts[:distribution_id])
+      @resp_config = @aws.cloudfront_client.get_distribution(id: opts[:distribution_id])
     end
-    return if @resp.nil?
+    return if @resp_config.nil?
 
-    @s3_origin_path = @resp.distribution_config.origins.items.first.origin_path
+    config = @resp_config.distribution.distribution_config
+
+    # AWS CloudFront web distribution origin path
+    # Either blank , or return path
+    @origin_path = config.origins.items.first['origin_path']
   end
 
   def exists?

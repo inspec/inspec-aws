@@ -107,6 +107,20 @@ Use `should_not` to test the entity should not exist.
       it { should_not exist }
     end
 
+### _s3\_origin\_path
+
+The `s3_origin_path` either return origin path or blank in case of no origin configured.
+
+    describe aws_cloudfront_distribution('EXISTING_DISTRIBUTION_ID') do
+      its ('s3_origin_path') { should include '/release' }
+    end
+
+For default origin path
+  
+    describe aws_cloudfront_distribution('EXISTING_DISTRIBUTION_ID') do
+      its ('s3_origin_path') { should include "" }
+    end
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudfront:GetDistribution` action set to Allow.
