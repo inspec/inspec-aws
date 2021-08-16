@@ -46,7 +46,7 @@ For additional information, see the [AWS API reference for CloudFront distributi
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution, empty if there are no no custom origins (i.e. only one or more standard S3 bucket origins). Current valid values: `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | True if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), false otherwise. |
-|s3\_origin\_path                            | Retuern S3 Origin path if there are any S3 origin configs in the distribution, blank otherwise. |
+|s3\_origin\_path                            | Return S3 Origin path if there are any S3 origin configs in the distribution, blank otherwise. |
 
 ## Examples
 
