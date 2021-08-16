@@ -18,7 +18,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:distribution_id], allow: [:disallowed_ssl_protocols, :s3_origin_path])
+    validate_parameters(required: [:distribution_id], allow: %I[disallowed_ssl_protocols s3_origin_path])
 
     @distribution_id = opts[:distribution_id]
     if opts[:disallowed_ssl_protocols]
