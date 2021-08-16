@@ -13,7 +13,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs
+              :custom_origin_ssl_protocols, :s3_origin_configs, :s3_origin_path
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -49,6 +49,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
     # behavior viewer protocol policies, for different origins.
     # A viewer protocol policy is one of "https-only", "redirect-to-https" or "allow-all".
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
+    # get origin path
+    @s3_origin_path = [config.origins.items.origin_path]
 
     # If there are additional cache behaviors, add them to the list
     if config.cache_behaviors.quantity.positive?
