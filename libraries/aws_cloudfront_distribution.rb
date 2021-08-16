@@ -51,7 +51,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
 
     # origin path for CF distro
-    @origin_path = [config.origins.items.origin_path]
+    @origin_path = [config.origins.items[0].origin_path]
     # If there are additional cache behaviors, add them to the list
     if config.cache_behaviors.quantity.positive?
       config.cache_behaviors.items.each do |behavior|
