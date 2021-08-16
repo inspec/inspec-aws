@@ -79,7 +79,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     end
     return if @resp.nil?
 
-    @s3_origin_configs = @resp.distribution_config.origins.items.first.origin_path
+    @s3_origin_path = @resp.distribution_config.origins.items.first.origin_path
   end
 
   def exists?
