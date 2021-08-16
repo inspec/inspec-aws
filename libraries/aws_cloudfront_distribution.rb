@@ -18,7 +18,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:distribution_id], allow: [:disallowed_ssl_protocols])
+    validate_parameters(required: [:distribution_id], allow: [:disallowed_ssl_protocols, :s3_origin_path])
 
     @distribution_id = opts[:distribution_id]
     if opts[:disallowed_ssl_protocols]
@@ -50,10 +50,6 @@ class AwsCloudFrontDistribution < AwsResourceBase
     # A viewer protocol policy is one of "https-only", "redirect-to-https" or "allow-all".
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
 
-    # Origin path for aws cloudfront distro
-    # Either rerutn black or with some path.
-    @s3_origin_path = config.origins.items.first.origin_path
-
     # If there are additional cache behaviors, add them to the list
     if config.cache_behaviors.quantity.positive?
       config.cache_behaviors.items.each do |behavior|
@@ -72,6 +68,18 @@ class AwsCloudFrontDistribution < AwsResourceBase
       end
     end
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
+  end
+
+  def aws_get_distribution_config(opts = {})
+    opts = { distribution_id: opts } if opts.is_a?(String)
+    super(opts)
+
+    catch_aws_errors do
+      @resp = @aws.cloudfront_client.get_distribution_config(id: opts[:distribution_id])
+    end
+    return if @resp.nil?
+
+    @s3_origin_configs = @resp.distribution_config.origins.items.first.origin_path
   end
 
   def exists?

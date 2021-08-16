@@ -27,6 +27,11 @@ class AwsCloudFrontDistributionConstructionTest < Minitest::Test
     assert_raises(ArgumentError) { AwsCloudFrontDistribution.new(rubbish: 'rubbish') }
   end
 
+  def test_s3_origin_path
+      AwsCloudFrontDistribution.new(distribution_id: 'id',
+                                   s3_origin_path: '/release')
+  end
+
   def test_cloudfront_disribution_non_existing
     refute AwsCloudFrontDistribution.new(distribution_id: 'id-not-there', client_args: { stub_responses: true }).exists?
   end
@@ -66,13 +71,6 @@ class AwsCloudFrontDistributionS3OriginDefaultCertificateTest < Minitest::Test
     assert_equal(@cloudfront_distribution.s3_origin_configs, true)
   end
 
-  def test_empty_s3_origin_path
-      assert_equal(@cloudfront_distribution.s3_origin_path, '')
-  end
-
-  def testy_s3_origin_path
-      assert_equal(@cloudfront_distribution.s3_origin_path, '/release')
-  end
   def test_has_viewer_protocol_policies_allowing_http
     assert @cloudfront_distribution.has_viewer_protocol_policies_allowing_http?
   end
