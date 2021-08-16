@@ -107,7 +107,7 @@ Use `should_not` to test the entity should not exist.
       it { should_not exist }
     end
 
-### _s3\_origin\_path
+### s3\_origin\_path
 
 The `s3_origin_path` either return origin path or blank in case of no origin configured.
 
