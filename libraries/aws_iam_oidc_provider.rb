@@ -20,7 +20,7 @@ class AWSIAMOIDCProvider < AwsResourceBase
     @display_name = opts[:open_id_connect_provider_arn]
     catch_aws_errors do
       resp = @aws.iam_client.get_open_id_connect_provider({ open_id_connect_provider_arn: opts[:open_id_connect_provider_arn] })
-      @res = resp.instance_profile.to_h
+      @res = resp.to_h
       create_resource_methods(@res)
     end
   end
