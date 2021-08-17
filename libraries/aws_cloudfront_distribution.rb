@@ -13,7 +13,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs
+              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policy
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -68,6 +68,15 @@ class AwsCloudFrontDistribution < AwsResourceBase
       end
     end
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
+
+    @s3_origin_configs = false
+    config.origins.items.each do |origin|
+      if origin[:s3_origin_config]
+        @s3_origin_configs = true
+      elsif origin[:custom_origin_config]
+        @custom_origin_protocol_policy = origin[:custom_origin_config][:origin_protocol_policy]
+      end
+    end
   end
 
   def exists?
