@@ -13,12 +13,12 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs
+              :custom_origin_ssl_protocols, :s3_origin_configs, :origin_domain_name, :s3_origin_path
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:distribution_id], allow: %I[disallowed_ssl_protocols s3_origin_path])
+    validate_parameters(required: [:distribution_id], allow: %i(disallowed_ssl_protocols origin_domain_name))
 
     @distribution_id = opts[:distribution_id]
     if opts[:disallowed_ssl_protocols]
@@ -68,19 +68,17 @@ class AwsCloudFrontDistribution < AwsResourceBase
       end
     end
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
-  end
 
-  def s3_origin_path
-    catch_aws_errors do
-      @resp_config = @aws.cloudfront_client.get_distribution(id: opts[:distribution_id])
+    # Find aws cloudfront distribution origin path.
+    # Either return path string, or ""
+    return unless opts[:origin_domain_name]
+    @cf_origin_domain_name = opts[:origin_domain_name]
+    @s3_origin_path = ''
+    config.origins.items.each do |origin_config|
+      if origin_config.domain_name == @cf_origin_domain_name
+        @s3_origin_path = origin_config.origin_path
+      end
     end
-    return if @resp_config.nil?
-
-    config = @resp_config.distribution.distribution_config
-
-    # AWS CloudFront web distribution origin path
-    # Either blank , or return path
-    @origin_path = config.origins.items.first['origin_path']
   end
 
   def exists?

@@ -46,7 +46,8 @@ For additional information, see the [AWS API reference for CloudFront distributi
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution, empty if there are no no custom origins (i.e. only one or more standard S3 bucket origins). Current valid values: `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | True if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), false otherwise. |
-|s3\_origin\_path                            | Return S3 Origin path if there are any S3 origin configs in the distribution, blank otherwise. |
+|origin\_domain\_name                        | Provide the `origin_domain_name` in case want to validate `s3_origin_path`
+|s3\_origin\_path                            | Return S3 Origin path for given `origin_domain_name`, blank otherwise. |
 
 ## Examples
 
@@ -111,14 +112,18 @@ Use `should_not` to test the entity should not exist.
 
 The `s3_origin_path` either return origin path or blank in case of no origin configured.
 
-    describe aws_cloudfront_distribution('EXISTING_DISTRIBUTION_ID') do
-      its ('s3_origin_path') { should include '/release' }
-    end
+      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_1') do
+        its ('s3_origin_path') { should include '/next' }
+      end
+
+      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_2') do
+        its ('s3_origin_path') { should include '/release' }
+      end
 
 For default origin path
-  
-    describe aws_cloudfront_distribution('EXISTING_DISTRIBUTION_ID') do
-      its ('s3_origin_path') { should include "" }
+
+    describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_3') do
+        its ('s3_origin_path') { should include '' }
     end
 
 ## AWS Permissions

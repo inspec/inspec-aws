@@ -27,11 +27,6 @@ class AwsCloudFrontDistributionConstructionTest < Minitest::Test
     assert_raises(ArgumentError) { AwsCloudFrontDistribution.new(rubbish: 'rubbish') }
   end
 
-  def test_s3_origin_path
-      AwsCloudFrontDistribution.new(distribution_id: 'id',
-                                   s3_origin_path: '/release')
-  end
-
   def test_cloudfront_disribution_non_existing
     refute AwsCloudFrontDistribution.new(distribution_id: 'id-not-there', client_args: { stub_responses: true }).exists?
   end
