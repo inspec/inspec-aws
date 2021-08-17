@@ -20,14 +20,9 @@ class AWSIAMServerCertificate < AwsResourceBase
     @display_name = opts[:server_certificate_name]
     catch_aws_errors do
       resp = @aws.iam_client.get_server_certificate({ server_certificate_name: opts[:server_certificate_name] })
-      @res = resp.instance_profile.to_h
+      @res = resp.server_certificate.server_certificate_metadata.to_h
       create_resource_methods(@res)
     end
-  end
-
-  def server_certificate_name
-    return nil unless exists?
-    @res[:server_certificate_name]
   end
 
   def exists?
