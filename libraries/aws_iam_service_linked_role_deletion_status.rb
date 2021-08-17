@@ -19,15 +19,15 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: deletion_task_id must be provided" unless opts[:deletion_task_id] && !opts[:deletion_task_id].empty?
     @display_name = opts[:deletion_task_id]
     catch_aws_errors do
-      resp = @aws.iam_client.get_instance_profile({ deletion_task_id: opts[:deletion_task_id] })
-      @res = resp.instance_profile.to_h
+      resp = @aws.iam_client.get_service_linked_role_deletion_status({ deletion_task_id: opts[:deletion_task_id] })
+      @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
-  def deletion_task_id
+  def status
     return nil unless exists?
-    @res[:deletion_task_id]
+    @res[:status]
   end
 
   def exists?
