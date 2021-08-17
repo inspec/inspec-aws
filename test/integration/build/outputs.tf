@@ -712,3 +712,6 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+output "oidc_arn" {
+  value = aws_iam_openid_connect_provider.for_oidc.arn
+}

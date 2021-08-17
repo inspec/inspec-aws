@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+open_id_connect_provider_arn = value("oidc_arn", default: "", description: "")
 
 describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arn:aws:iam::112758395563:oidc-provider/accounts.google.com') do
   it { should exist }
