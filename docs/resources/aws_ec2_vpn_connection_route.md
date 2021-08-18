@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_vpn\_connection\_route
 
-Use the `aws_ec2_vpn_connection_route` InSpec audit resource to test properties of a single specific AWS EC2 Connection Route.
+Use the `aws_ec2_vpn_connection_route` InSpec audit resource to test properties of a single specific AWS EC2 VPC Connection Route.
 
 The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway.
 

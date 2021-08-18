@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_vpn\_connection\_routes
 
-Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of a plural AWS EC2 Connection Routes.
+Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of a plural AWS EC2 VPC Connection Routes.
 
 The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway..
 
@@ -13,7 +13,7 @@ The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN con
 
 Ensure that a VPN Connection ID exists.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
       it { should exist }
     end
 
