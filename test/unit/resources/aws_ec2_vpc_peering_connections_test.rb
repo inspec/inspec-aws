@@ -23,10 +23,6 @@ class AWSEc2VPCPeeringConnectionsHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :describe_vpc_peering_connections
     mock_data = {}
-    mock_data[:accepter_vpc_info] = {}
-    mock_data[:requester_vpc_info] = {}
-    mock_data[:status] = {}
-    mock_data[:tags] = []
     mock_data[:vpc_peering_connection_id] = "test1"
     data[:data] = { :vpc_peering_connections => [mock_data] }
     data[:client] = Aws::EC2::Client
