@@ -13,6 +13,7 @@ class AwsCloudFrontDistributionMock < AwsBaseResourceMock
         items: [{
           id: 'id1',
           domain_name: 'something.s3.amazonaws.com',
+          origin_path: '/release',
           s3_origin_config: {
             origin_access_identity: "origin-access-identity/cloudfront/XYZABC",
           }
@@ -67,7 +68,6 @@ class AwsCloudFrontDistributionMock < AwsBaseResourceMock
         }, {
           id: 'origin2',
           domain_name: 'origin2.com',
-          origin_path: '/release',
           custom_origin_config: {
             http_port: 80,
             https_port: 443,
