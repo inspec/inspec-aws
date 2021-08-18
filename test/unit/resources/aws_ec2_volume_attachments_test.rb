@@ -14,7 +14,6 @@ class AWSEc2VolumeAttachmentsHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :describe_volumes
     mock_data = {}
-    mock_data[:volume_id] = "vol-012b75749d0b5ceb5"
     data[:data] = { :volumes => [mock_data] }
     data[:client] = Aws::EC2::Client
     @vol = AWSEc2VolumeAttachments.new(volume_id: 'vol-012b75749d0b5ceb5', client_args: { stub_responses: true }, stub_data: [data])
