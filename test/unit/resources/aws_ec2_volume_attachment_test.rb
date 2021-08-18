@@ -23,7 +23,6 @@ class AWSEc2VolumeAttachmentSuccessPathTest < Minitest::Test
     data = {}
     data[:method] = :describe_volumes
     mock_data = {}
-    mock_data[:volume_id] = ""
     mock_data[:attachments] = []
     data[:data] = { :volumes => [mock_data] }
     data[:client] = Aws::EC2::Client
@@ -32,10 +31,6 @@ class AWSEc2VolumeAttachmentSuccessPathTest < Minitest::Test
 
   def test_volume_id_exists
     assert @vol.exists
-  end
-
-  def test_volume_id
-    assert_nil(@vol.volume_id, nil)
   end
 
   def test_attachments
