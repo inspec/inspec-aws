@@ -21,8 +21,6 @@ end
 The ID of the AWS Traffic Mirror Session ID. This is in the format of `tms-` followed by 8 or 17 hexadecimal characters.
 This can be passed either as a string or as an `aws_ec2_traffic_mirror_sessions: 'value'` key-value entry in a hash.
 
-
-
 ## Properties
 
 |Property                     | Description|
