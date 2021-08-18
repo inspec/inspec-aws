@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_volume\_attachment
 
-Use the `aws_ec2_volume_attachment` InSpec audit resource to test properties of a single specific AWS EC2 VolumeAttachment.
+Use the `aws_ec2_volume_attachment` InSpec audit resource to test properties of a single specific AWS EC2 Volume Attachment.
 
 The AWS::EC2::VolumeAttachment resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
 
@@ -34,12 +34,12 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| attachments (attach_time) | The time stamp when the attachment initiated. | attach_time |
-| attachments (device) | The device name specified in the block device mapping (for example, /dev/sda1 ). | device |
-| attachments (instance_id) | The ID of the instance the volume is attached to. | instance_id |
-| attachments (state) | The attachment state. | state |
-| attachments (volume_id) | The volume ID. | volume_id |
-| attachments (delete_on_termination) | Whether the volume is deleted on instance termination. | delete_on_termination |
+| attach_time | The time stamp when the attachment initiated. | attach_time |
+| device | The device name specified in the block device mapping (for example, /dev/sda1 ). | device |
+| instance_id | The ID of the instance the volume is attached to. | instance_id |
+| state | The attachment state. | state |
+| volume_id | The volume ID. | volume_id |
+| delete_on_termination | Whether the volume is deleted on instance termination. | delete_on_termination |
 
 ## Examples
 
