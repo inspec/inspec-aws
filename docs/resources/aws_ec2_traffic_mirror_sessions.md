@@ -53,7 +53,7 @@ end
 
 ##### Test that description is present
 describe aws_ec2_traffic_mirror_sessions do
-  its('description') { should include 'test-lt' }
+  its('description') { should include 'test-description' }
 end
 
 
