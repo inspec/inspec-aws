@@ -35,7 +35,7 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
   end
 
   def to_s
-    "deletion_task_id: #{@display_name}"
+    "Deletion Task ID: #{@display_name}"
   end
 end
 
