@@ -142,6 +142,22 @@ output "aws_rds_instance_id" {
   value = aws_db_instance.db_rds.0.id
 }
 
+output "aws_rds_snapshot_identifier" {
+  value = aws_db_snapshot.test.db_instance_identifier
+}
+
+output "aws_rds_snapshot_engine" {
+  value = aws_db_snapshot.test.engine
+}
+
+output "aws_rds_snapshot_engine_version" {
+  value = aws_db_snapshot.test.engine_version
+}
+
+output "aws_rds_snapshot_storage_type" {
+  value = aws_db_snapshot.test.storage_type
+}
+
 output "aws_cloud_trail_arn" {
   value = aws_cloudtrail.trail_1.0.arn
 }

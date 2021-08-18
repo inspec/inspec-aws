@@ -919,6 +919,11 @@ resource "aws_db_instance" "db_rds" {
   }
 }
 
+resource "aws_db_snapshot" "test" {
+  db_instance_identifier = aws_db_instance.db_rds.id
+  db_snapshot_identifier = "testsnapshot1234"
+}
+
 # Cloudtrail
 resource "aws_s3_bucket" "trail_1_bucket" {
   count         = var.aws_enable_creation
