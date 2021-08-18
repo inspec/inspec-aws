@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_vpn\_connection\_routes
 
-Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of a plural AWS EC2 Functions.
+Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of a plural AWS EC2 Connection Routes.
 
 The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway..
 
@@ -25,7 +25,7 @@ Ensure that a VPN Connection ID exists.
 
 | Property | Description|
 | --- | --- |
-| vpn_connection_id | The ID of the vpn connection ID. |
+| vpn_connection_id | The ID of the vpn connection. |
 
 For additional information, see the [AWS documentation on AWS EC2 VPNConnectionRoute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection-route.html).
 
@@ -40,12 +40,12 @@ For additional information, see the [AWS documentation on AWS EC2 VPNConnectionR
 ## Examples
 
 ### Ensure a destination cidr block is available.
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
       its('destination_cidr_blocks') { should include 'destination_cidr_block' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
         its('states') { should include 'available' }
     end
 
@@ -59,7 +59,7 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
       it { should exist }
     end
 
@@ -73,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
       it { should be_available }
     end
 

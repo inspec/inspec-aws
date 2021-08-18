@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_ec2\_vpn\_connection\_route
 
-Use the `aws_ec2_vpn_connection_route` InSpec audit resource to test properties of a single specific AWS EC2 Function.
+Use the `aws_ec2_vpn_connection_route` InSpec audit resource to test properties of a single specific AWS EC2 Connection Route.
 
-The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway..
+The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway.
 
 ## Syntax
 
 Ensure that a VPN Connection ID exists.
 
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'vpn-1234567890') do
       it { should exist }
     end
 
@@ -25,7 +25,7 @@ Ensure that a VPN Connection ID exists.
 
 | Property | Description|
 | --- | --- |
-| vpn_connection_id | The ID of the vpn connection ID. |
+| vpn_connection_id | The ID of the VPN connection. |
 
 For additional information, see the [AWS documentation on AWS EC2 VPNConnectionRoute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection-route.html).
 
@@ -40,12 +40,12 @@ For additional information, see the [AWS documentation on AWS EC2 VPNConnectionR
 ## Examples
 
 ### Ensure a destination cidr block is available.
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'vpn-1234567890') do
       its('destination_cidr_block') { should eq 'destination_cidr_block' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'vpn-1234567890') do
         its('state') { should eq 'available' }
     end
 
@@ -59,7 +59,7 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'vpn-1234567890') do
       it { should exist }
     end
 
@@ -73,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_route(vpn_connection_id: 'vpn-1234567890') do
       it { should be_available }
     end
 

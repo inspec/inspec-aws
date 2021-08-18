@@ -7,7 +7,7 @@ class AWSEc2VPNConnectionRoutes < AwsResourceBase
   desc 'Specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway.'
 
   example "
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vol-1234567890') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'vpn-1234567890') do
       it { should exist }
     end
   "
