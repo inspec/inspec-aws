@@ -34,8 +34,8 @@ This resource does not expect any parameters.
 |option_group_arns                              | The arn of a option group.|                                        option_group_arn                            | 
 |vpc_ids                                        | The vpc id of  option group. |                                     vpc_id                                      | 
 |allows_vpc_and_non_vpc_instance_memberships    | The storage allocated to each cluster. |                           allows_vpc_and_non_vpc_instance_memberships  | 
-                                                                                                                                                                    
-ee also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
+
+See also the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
 
 
 For a comprehensive list of properties available to test on an RDS cluster see the [AWS Response Object](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/DBCluster.html).
@@ -49,7 +49,7 @@ For a comprehensive list of properties available to test on an RDS cluster see t
       its('major_engine_version') { should include '5.6.37' }
     end
 
-#####Ensure a specific cluster exists
+##### Ensure a specific cluster exists
     describe aws_rds_group_options do
       its('option_group_name') { should include 'option_group_name8-test }
     end

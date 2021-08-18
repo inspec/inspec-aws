@@ -65,6 +65,8 @@ Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
 
 Metrics/ClassLength:
   Max: 300
+  Exclude:
+    - libraries/aws_ecs_task_definition.rb
 Metrics/MethodLength:
   Max: 45
 Metrics/BlockLength:

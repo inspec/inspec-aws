@@ -126,6 +126,8 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_auto_scaling_groups](docs/resources/aws_auto_scaling_groups.md)
 - [aws_cloudformation_stack](docs/resources/aws_cloudformation_stack.md)
 - [aws_cloudformation_stacks](docs/resources/aws_cloudformation_stacks.md)
+- [aws_cloudfront_distribution](docs/resources/aws_cloudfront_distribution.md)
+- [aws_cloudfront_distributions](docs/resources/aws_cloudfront_distributions.md)
 - [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md)
 - [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md)
 - [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md)
@@ -134,10 +136,12 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_config_recorder](docs/resources/aws_config_recorder.md)
 - [aws_db_subnet_group](docs/resources/aws_db_subnet_group.md)
 - [aws_db_subnet_groups](docs/resources/aws_db_subnet_groups.md)
-- [aws_db_subnet_group](docs/resources/aws_db_parameter_group.md)
-- [aws_db_subnet_groups](docs/resources/aws_db_parameter_groups.md)
+- [aws_db_parameter_group](docs/resources/aws_db_parameter_group.md)
+- [aws_db_parameter_groups](docs/resources/aws_db_parameter_groups.md)
 - [aws_dhcp_options](docs/resources/aws_dhcp_options.md)
 - [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md)
+- [aws_ebs_snapshot](docs/resources/aws_ebs_snapshot.md)
+- [aws_ebs_snapshots](docs/resources/aws_ebs_snapshots.md)
 - [aws_ebs_volume](docs/resources/aws_ebs_volume.md)
 - [aws_ebs_volumes](docs/resources/aws_ebs_volumes.md)
 - [aws_ec2_dhcp_option](docs/resources/aws_ec2_dhcp_option.md)
@@ -249,8 +253,12 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_vpc](docs/resources/aws_vpc.md)
 - [aws_vpc_endpoint](docs/resources/aws_vpc_endpoint.md)
 - [aws_vpc_endpoints](docs/resources/aws_vpc_endpoints.md)
+- [aws_vpc_endpoint_service](docs/resources/aws_vpc_endpoint_service.md)
+- [aws_vpc_endpoint_services](docs/resources/aws_vpc_endpoint_services.md)
 - [aws_vpcs](docs/resources/aws_vpcs.md)
 - [aws_vpn_connections](docs/resources/aws_vpn_connections.md)
+- [aws_vpc_endpoint_service_permission](docs/resources/aws_vpc_endpoint_service_permission.md)
+- [aws_vpc_endpoint_service_permissions](docs/resources/aws_vpc_endpoint_service_permissions.md)
 - [aws_vpn_gateway](docs/resources/aws_vpn_gateway.md)
 - [aws_vpn_gateways](docs/resources/aws_vpn_gateways.md)
 
@@ -343,7 +351,7 @@ In certain cases AWS may implement rate limiting. In order to mitigate this issu
 Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level.
 
 ```bash
-   export AWS_RETRY_LMIIT=5
+   export AWS_RETRY_LIMIT=5
    export aws_retry_limit=5
 ```
 _Note environment variables are case insensitive._

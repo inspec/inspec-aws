@@ -5,19 +5,19 @@ platform: AWS
 
 # AWS\_vpc\_endpoint\_connection\_notification
 
-Use the `aws_vpc_endpoint_connection_notification` Inspec audit resource to test properties of a single specific AWS VPC endpoint connection notification.
+Use the `aws_vpc_endpoint_connection_notification` Inspec audit resource to test the properties of a single specific AWS VPC endpoint connection notification.
 
 ## Syntax
 
 Ensure that an AWS VPC endpoint connection notification exists.
 
     # Find a AWS VPC endpoint connection notification by ID
-    describe aws_vpc_endpoint_connection_notification('vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notification('VPCE-NFN-12345678987654321') do
       it { should exist }
     end
 
     # Hash syntax for ID
-    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'VPCE-NFN-12345678987654321') do
       it { should exist }
     end
 
@@ -46,20 +46,20 @@ See also the [AWS VPC endpoint connection notification documentation](https://do
 
 ### Ensure an AWS VPC endpoint connection notification's ARN is available
 
-    describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'vpce-nfn-12345678987654321') do
-      its('connection_notification_arn') { should eq 'arn:aws:sns:us-east-2:112758395563:AWS-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju' }
+    describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'VPCE-NFN-12345678987654321') do
+      its('CONNECTION_NOTIFICATION_ARN') { should eq 'ARN:AWS:SNS:US-EAST-2:112758395563:AWS-SNS-TOPIC-ENCRYPTION-BLOIXLVRSNFYBLZXNBGCBVHJU' }
     end
 
 ### Ensure that the VPC endpoint connection notification has a type using a key-value hash
 
-    describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'vpce-nfn-12345678987654321') do
-      its('connection_notification_type') { should eq 'Topic' }
+    describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'VPCE-NFN-12345678987654321') do
+      its('connection_notification_type') { should eq 'TOPIC' }
     end
 
 ### Verify the ARN of a VPC endpoint connection notification.
 
-    describe aws_vpc_endpoint_connection_notification('vpce-nfn-12345678987654321') do
-      its('connection_notification_arn') { should eq 'arn:aws:sns:us-east-2:112758395563:AWS-sns-topic-encryption-bloixlvrsnfyblzxnbgcbvhju' }
+    describe aws_vpc_endpoint_connection_notification('VPCE-NFN-12345678987654321') do
+      its('CONNECTION_NOTIFICATION_ARN') { should eq 'ARN:AWS:SNS:US-EAST-2:112758395563:AWS-SNS-TOPIC-ENCRYPTION-BLOIXLVRSNFYBLZXNBGCBVHJU' }
     end
 
 ## Matchers
@@ -72,13 +72,13 @@ The controls will pass if the `describe` returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'VPCE-NFN-12345678987654321') do
       it { should exist }
     end
 
 Use `should` to test the entity should not exists.
 
-    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-nfn-12345678987654321') do
+    describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'VPCE-NFN-12345678987654321') do
       it { should_not exist }
     end
 
@@ -86,4 +86,4 @@ Use `should` to test the entity should not exists.
 
 To get the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), will need the `ec2:VpcEndpointConnectionNotifications` action with `Effect` set to `Allow`.
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.AWS.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.AWS.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

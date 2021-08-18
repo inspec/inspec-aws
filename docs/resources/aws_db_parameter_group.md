@@ -3,7 +3,7 @@ title: About the aws_db_parameter_group Resource
 platform: aws
 ---
 
-# aws\_db\_parameter_\_group
+# aws\_db\_parameter\_group
 
 Use the `aws_db_parameter_group` InSpec audit resource to test properties of an AWS DB parameter group.
 
