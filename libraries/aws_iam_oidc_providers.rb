@@ -26,17 +26,15 @@ class AWSIAMOIDCProviders < AwsResourceBase
 
   def fetch_data
     aws_iam_oidc_providers_rows = []
-
     catch_aws_errors do
       @response = @aws.iam_client.list_open_id_connect_providers
     end
     return aws_iam_oidc_providers_rows if !@response || @response.empty?
-    @response.open_id_connect_provider_list.each do |p|
+    @response.open_id_connect_provider_list.each do |provider|
       aws_iam_oidc_providers_rows += [{
-        arn:     p.arn,
+        arn: provider.arn,
       }]
     end
-
     @table = aws_iam_oidc_providers_rows
   end
 end

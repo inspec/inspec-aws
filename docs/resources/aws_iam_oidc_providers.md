@@ -24,21 +24,21 @@ For additional information, see the [AWS documentation on IAM OIDC Provider](htt
 
 | Property | Description|
 | --- | --- |
-| arns | The Amazon Resource Name (ARN). ARNs are unique identifiers for Amazon Web Services resources. |
+| arns | The Amazon Resource Name (ARN). |
 
 ## Examples
 
 ### Ensure a OIDC Provider is available.
 
     describe aws_iam_oidc_providers do
-      its('arns') { should include 'open_id_connect_provider_arn' }
+      its('arns') { should include 'arnType' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 

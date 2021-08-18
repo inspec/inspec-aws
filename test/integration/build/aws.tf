@@ -3884,12 +3884,12 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
 resource "aws_iam_openid_connect_provider" "for_oidc" {
   url = "https://accounts.google.com"
 
   client_id_list = [
     "266362248691-342342xasdasdasda-apps.googleusercontent.com",
   ]
-
   thumbprint_list = []
 }

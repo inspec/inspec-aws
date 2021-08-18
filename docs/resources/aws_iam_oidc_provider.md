@@ -11,15 +11,19 @@ This resource retrieves information about the specified OIDC Provider.
 
 ## Syntax
 
-Ensure that a OIDC provider exists.
+Ensure that an OIDC provider exists.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
       it { should exist }
     end
 
 ## Parameters
 
 `open_id_connect_provider_arn` _(required)_
+
+| Property | Description|
+| --- | --- |
+| open_id_connect_provider_arn | The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. |
 
 For additional information, see the [AWS documentation on IAM OIDC Provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-oidcprovider.html).
 
@@ -33,14 +37,14 @@ For additional information, see the [AWS documentation on IAM OIDC Provider](htt
 
 ## Examples
 
-### Ensure a  url is available.
+### Ensure an url is available.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
-      its('url') { should eq 'open_id_connect_provider_arn.com' }
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
+      its('url') { should eq 'test.com' }
     end
 
 ### Ensure that tags are available.
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
         its('tags') { should eq ':test_tag => 'oidc' }
     end
 
@@ -54,21 +58,21 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the OIDC Provider is available.
+Use `should` to check if the entity is available.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'open_id_connect_provider_arn') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
       it { should be_available }
     end
 

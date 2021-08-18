@@ -27,18 +27,18 @@ class AWSIAMOIDCProviderSuccessPathTest < Minitest::Test
     mock_parameter[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] =  mock_parameter
     data[:client] = Aws::IAM::Client
-    @oidc = AWSIAMOIDCProvider.new(open_id_connect_provider_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSIAMOIDCProvider.new(open_id_connect_provider_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_oidc_provider_exists
-    assert @oidc.exists?
+    assert @resp.exists?
   end
 
-  def test_open_id_connect_provider_arn
-    assert_equal(@oidc.url, 'test1.com')
+  def test_url
+    assert_equal(@resp.url, 'test1.com')
   end
 
-  def test_instance_profile_id
-    assert_equal(@oidc.create_date, Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
+  def test_create_date
+    assert_equal(@resp.create_date, Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 end

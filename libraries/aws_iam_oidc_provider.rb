@@ -35,6 +35,6 @@ class AWSIAMOIDCProvider < AwsResourceBase
   end
 
   def to_s
-    "open_id_connect_provider_arn: #{@display_name}"
+    "Open ID Connect Provider ARN: #{@display_name}"
   end
 end
