@@ -224,6 +224,7 @@ This resouce pack allows the testing of the following AWS resources. If a resour
 - [aws_s3_buckets](docs/resources/aws_s3_buckets.md)
 - [aws_security_group](docs/resources/aws_security_group.md)
 - [aws_security_groups](docs/resources/aws_security_groups.md)
+- [aws_shield_subscription](docs/resources/aws_shield_subscription.md)
 - [aws_sns_subscription](docs/resources/aws_sns_subscription.md)
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
