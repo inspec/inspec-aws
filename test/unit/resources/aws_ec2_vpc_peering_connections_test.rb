@@ -12,7 +12,7 @@ class AWSEc2VPCPeeringConnectionsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEc2VPCPeeringConnections.new('rubbish') }
   end
 
-  def test_functions_non_existing_for_empty_response
+  def test_vpc_peer_connections_non_existing_for_empty_response
     refute AWSEc2VPCPeeringConnections.new(client_args: { stub_responses: true }).exist?
   end
 end
