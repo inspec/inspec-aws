@@ -34,12 +34,12 @@ For additional information, see the [AWS documentation on AWS EC2 VPCPeeringConn
 
 ## Examples
 
-### Ensure a taccepter_vpc_infos is available.
+### Ensure a vpc peering connection id is available.
     describe aws_ec2_vpc_peering_connections do
-      its('accepter_vpc_infos') { should_not be_empty }
+      its('vpc_peering_connection_id') { should eq 'VpcPeeringConnectionId' }
     end
 
-### Ensure that the statuses is `available`.
+### Ensure that the status is `available`.
     describe aws_ec2_vpc_peering_connections do
         its('statuses') { should include 'available' }
     end

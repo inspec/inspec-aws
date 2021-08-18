@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_vpc\_peering\_connection
 
-Use the `aws_ec2_vpc_peering_connection` InSpec audit resource to test properties of a single specific AWS EC2 VPCPeeringConnection.
+Use the `aws_ec2_vpc_peering_connection` InSpec audit resource to test properties of a single specific AWS EC2 VPC Peering Connection.
 
 The AWS::EC2::VPCPeeringConnection resource requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection.
 
