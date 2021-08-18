@@ -287,6 +287,8 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_rds_instances](docs/resources/aws_rds_instances.md)
 - [aws_rds_group_option](docs/resources/aws_rds_group_option.md)
 - [aws_rds_group_options](docs/resources/aws_rds_group_options.md)
+- [aws_rds_snapshot](docs/resources/aws_rds_snapshot.md)
+- [aws_rds_snapshots](docs/resources/aws_rds_snapshots.md)
 - [aws_redshift_cluster](docs/resources/aws_redshift_cluster.md)
 - [aws_redshift_clusters](docs/resources/aws_redshift_clusters.md)
 - [aws_redshift_cluster_parameter_group](docs/resources/aws_redshift_cluster_parameter_group.md)
