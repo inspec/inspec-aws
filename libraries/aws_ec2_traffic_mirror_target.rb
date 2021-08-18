@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSEc2TrafficMirrorTarget < AwsResourceBase
   name 'aws_ec2_traffic_mirror_target'
-  desc 'Audits EC2 Traffic Mirror target'
+  desc 'Information about one or more Traffic Mirror targets.'
 
   example "
-    describe aws_ec2_traffic_mirror_target(traffic_mirror_target_id: 'test-traffic_mirror_target_id') do
+    describe aws_ec2_traffic_mirror_target(traffic_mirror_target_id: 'TrafficMirrorTargetId') do
       it { should exist }
     end
   "
@@ -35,6 +35,6 @@ class AWSEc2TrafficMirrorTarget < AwsResourceBase
   end
 
   def to_s
-    "EC2 Traffic Mirror target : #{@display_name}"
+    "EC2 Traffic Mirror Target ID: #{@display_name}"
   end
 end

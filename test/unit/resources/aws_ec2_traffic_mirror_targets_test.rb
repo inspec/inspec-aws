@@ -15,7 +15,7 @@ class AWSEc2TrafficMirrorTargetsTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(rubbish: 9) }
   end
 
-  def test_rejects_invalid_launch_template_endpoint_id
+  def test_rejects_invalid_traffic_mirror_session_id
     assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(traffic_mirror_session_id: 'test') }
   end
 end
@@ -32,27 +32,27 @@ class AWSEc2TrafficMirrorTargetsPathTest < Minitest::Test
     mock_lt[:owner_id] = 'dummy_id'
     data[:data] = { :traffic_mirror_targets => [mock_lt] }
     data[:client] = Aws::EC2::Client
-    @addr = AWSEc2TrafficMirrorTargets.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEc2TrafficMirrorTargets.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_aws_ec2_traffic_mirror_targets_exists
-    assert @addr.exists?
+  def test_traffic_mirror_targets_exists
+    assert @resp.exists?
   end
 
-  def test_traffic_mirror_session_id
-    assert_equal(@addr.traffic_mirror_target_ids, ["tmt-01a6e9ac9f962f154"])
+  def test_traffic_mirror_target_ids
+    assert_equal(@resp.traffic_mirror_target_ids, ["tmt-01a6e9ac9f962f154"])
   end
 
-  def test_traffic_mirror_target_id
-    assert_equal(@addr.owner_ids, ["dummy_id"])
+  def test_owner_ids
+    assert_equal(@resp.owner_ids, ["dummy_id"])
   end
 
-  def test_traffic_mirror_filter_id
-    assert_equal(@addr.network_interface_ids, ['test-account'])
+  def test_network_interface_ids
+    assert_equal(@resp.network_interface_ids, ['test-account'])
   end
 
-  def test_network_interface_id
-    assert_equal(@addr.network_load_balancer_arns, ['dummy_id'])
+  def test_network_load_balancer_arns
+    assert_equal(@resp.network_load_balancer_arns, ['dummy_id'])
   end
 end
 
