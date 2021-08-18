@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_ec2\_traffic_\mirror_\sessions
 
-Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of a all the AWS Traffic Mirror Sessions
+Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of a all the AWS Traffic Mirror Sessions.
 
 ## Syntax
 
