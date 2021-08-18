@@ -12,7 +12,7 @@ class AWSIAMVirtualMFADevicesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSIAMVirtualMFADevices.new('rubbish') }
   end
 
-  def test_iam_client_non_existing_for_empty_response
+  def test_iam_virtual_mfa_devices_non_existing_for_empty_response
     refute AWSIAMVirtualMFADevices.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -33,26 +33,26 @@ class AWSIAMVirtualMFADevicesHappyPathTest < Minitest::Test
     user[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :virtual_mfa_devices => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @iam_client = AWSIAMVirtualMFADevices.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSIAMVirtualMFADevices.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_iam_client_exists
-    assert @iam_client.exist?
+    assert @resp.exist?
   end
 
   def test_paths
-    assert_equal(@iam_client.path, ['/'])
+    assert_equal(@resp.paths, ['/'])
   end
 
-  def test_instance_user_id
-    assert_equal(@iam_client.user_ids, ['test1'])
+  def test_user_ids
+    assert_equal(@resp.user_ids, ['test1'])
   end
 
-  def test_instance_serial_number
-    assert_equal(@iam_client.serial_number, ['test1'])
+  def test_serial_numbers
+    assert_equal(@resp.serial_numbers, ['test1'])
   end
 
   def test_arns
-    assert_equal(@iam_client.arns, ['test1'])
+    assert_equal(@resp.arns, ['test1'])
   end
 end

@@ -15,14 +15,14 @@ class AWSIAMVirtualMFADevices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:serial_number, field: :serial_number)
-             .register_column(:path,          field: :path)
+             .register_column(:serial_numbers, field: :serial_number)
+             .register_column(:paths,          field: :path)
              .register_column(:user_names,     field: :user_name)
              .register_column(:user_ids,       field: :user_id)
              .register_column(:arns,           field: :arn)
-             .register_column(:tags,          field: :tags)
-             .register_column(:enable_date,   field: :enable_date)
-             .register_column(:create_date,   field: :create_date)
+             .register_column(:tags,           field: :tags)
+             .register_column(:enable_dates,   field: :enable_date)
+             .register_column(:create_dates,   field: :create_date)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -39,16 +39,16 @@ class AWSIAMVirtualMFADevices < AwsResourceBase
         @response = @aws.iam_client.list_virtual_mfa_devices(parameters)
       end
       return iam_virtual_mfa_device_rows if !@response || @response.empty?
-      @response.virtual_mfa_devices.each do |p|
+      @response.virtual_mfa_devices.each do |mfa_device_row|
         iam_virtual_mfa_device_rows += [{
-          serial_number:                    p.serial_number,
-          path:                             p.user.path,
-          user_name:                        p.user.user_name,
-          user_id:                          p.user.user_id,
-          arn:                              p.user.arn,
-          create_date:                      p.user.create_date,
-          enable_date:                      p.enable_date,
-          tags:                             p.tags,
+          serial_number:                    mfa_device_row.serial_number,
+          path:                             mfa_device_row.user.path,
+          user_name:                        mfa_device_row.user.user_name,
+          user_id:                          mfa_device_row.user.user_id,
+          arn:                              mfa_device_row.user.arn,
+          create_date:                      mfa_device_row.user.create_date,
+          enable_date:                      mfa_device_row.enable_date,
+          tags:                             mfa_device_row.tags,
         }]
       end
       break unless @response.is_truncated
