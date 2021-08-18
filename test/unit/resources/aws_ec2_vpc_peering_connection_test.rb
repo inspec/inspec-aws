@@ -33,7 +33,7 @@ class AWSEc2VPCPeeringConnectionSuccessPathTest < Minitest::Test
     @vpc_peering_connections = AWSEc2VPCPeeringConnection.new(vpc_peering_connection_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_function_exists
+  def test_vpc_peering_connections_exists
     assert @vpc_peering_connections.exists?
   end
 
