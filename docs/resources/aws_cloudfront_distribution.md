@@ -25,9 +25,9 @@ Ensure that an `aws_cloudfront_distribution` exists:
 
 The ID of the CloudFront distribution. This can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
 
-##### disallowed\_ssl\_protocols _(optional)_
+### disallowed\_ssl\_protocols _(optional)_
 
-If provided, this parameter is expected to be an array of strings identifying SSL/TLS protocols that you wish not to allow.
+If provided, this parameter is expected to be an array of strings identifying disallowed SSL/TLS protocol.
 
 Included in the array should be the union of disallowed identifiers for:
 - custom origin SSL/TLS protocols (currently SSLv3 | TLSv1 | TLSv1.1 | TLSv1.2)
