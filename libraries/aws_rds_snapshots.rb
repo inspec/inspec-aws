@@ -40,15 +40,14 @@ class AwsRdsSnapshots < AwsResourceBase
     pagination_options = {}
     loop do
       catch_aws_errors do
-        @api_response = @aws.rds_client.describe_db_snapshots(**pagination_options)
+        @api_response = @aws.rds_client.describe_db_snapshots(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rds_snapshot_rows if !@api_response || @api_response.empty?
 
-      @api_response.db_snapshots.each do |db_snapshot|
-        rds_snapshot_rows += [{ db_snapshot_identifier: db_snapshot.db_snapshot_identifier }]
-      end
+      rds_snapshot_rows += @api_response.db_snapshots.map(&:to_h)
+
       break unless @api_response.marker
-      pagination_options = { marker: @api_response[:marker] }
+      pagination_options = { marker: @api_response.marker }
     end
     @table = rds_snapshot_rows
   end

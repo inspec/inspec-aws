@@ -919,7 +919,7 @@ resource "aws_db_instance" "db_rds" {
   }
 }
 
-resource "aws_db_snapshot" "test" {
+resource "aws_db_snapshot" "test_db_snapshot" {
   db_instance_identifier = aws_db_instance.db_rds.id
   db_snapshot_identifier = "testsnapshot1234"
 }

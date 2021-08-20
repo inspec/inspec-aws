@@ -45,9 +45,9 @@ class AwsRdsSnapshotAttributes < AwsResourceBase
       response = @aws.rds_client.describe_db_snapshot_attributes(db_snapshot_identifier: opts[:db_snapshot_identifier])
       return [] if !response || response.empty?
       response.db_snapshot_attributes_result.db_snapshot_attributes.each do |db_snapshot_attribute|
-        db_snapshot_rows += [{ db_snapshot_identifier:           opts[:db_snapshot_identifier],
-                               attribute_name:                   db_snapshot_attribute.attribute_name,
-                               attribute_values:                 db_snapshot_attribute.attribute_values }]
+        db_snapshot_rows += [{ db_snapshot_identifier:         response.db_snapshot_attributes_result.db_snapshot_identifier,
+                               attribute_name:                 db_snapshot_attribute.attribute_name,
+                               attribute_values:               db_snapshot_attribute.attribute_values }]
       end
     end
     @table = db_snapshot_rows

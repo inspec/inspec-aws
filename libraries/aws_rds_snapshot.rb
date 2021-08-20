@@ -22,13 +22,9 @@ class AwsRdsSnapshot < AwsResourceBase
     catch_aws_errors do
       @display_name = opts[:db_snapshot_identifier]
 
-      begin
-        resp = @aws.rds_client.describe_db_snapshots(db_snapshot_identifier: opts[:db_snapshot_identifier])
-        return if resp.db_snapshots.empty?
-        @rds_snapshot = resp.db_snapshots[0].to_h
-      rescue Aws::RDS::Errors::DBSnapshotNotFound
-        return
-      end
+      resp = @aws.rds_client.describe_db_snapshots(db_snapshot_identifier: opts[:db_snapshot_identifier])
+      return if resp.db_snapshots.empty?
+      @rds_snapshot = resp.db_snapshots[0].to_h
       create_resource_methods(@rds_snapshot)
     end
   end
