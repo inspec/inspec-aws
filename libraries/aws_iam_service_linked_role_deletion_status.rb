@@ -38,4 +38,3 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
     "Deletion Task ID: #{@display_name}"
   end
 end
-
