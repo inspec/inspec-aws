@@ -31,27 +31,26 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
     mock_data[:expiration] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :server_certificate_metadata_list => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @iam_client = AWSIAMServerCertificates.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSIAMServerCertificates.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_iam_client_exists
-    assert @iam_client.exist?
+  def test_iam_server_certificate_exists
+    assert @resp.exist?
   end
 
   def test_paths
-    puts @iam_client.server_certificate_name
-    assert_equal(@iam_client.path, 'test1')
+    assert_equal(@resp.path, 'test1')
   end
 
-  # def test_server_certificate_name
-  #   assert_equal(@iam_client.server_certificate_name, 'test1')
-  # end
-  #
-  # def test_server_certificate_id
-  #   assert_equal(@iam_client.server_certificate_id, 'test1')
-  # end
+  def test_server_certificate_name
+    assert_equal(@resp.server_certificate_name, ['test1'])
+  end
+
+  def test_server_certificate_id
+    assert_equal(@resp.server_certificate_id, 'test1')
+  end
 
   def test_arns
-    assert_equal(@iam_client.arn, 'test1')
+    assert_equal(@resp.arn, 'test1')
   end
 end

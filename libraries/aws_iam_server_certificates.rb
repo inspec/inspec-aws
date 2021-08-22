@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSIAMServerCertificates < AwsResourceBase
   name 'aws_iam_server_certificates'
-  desc 'Verifies the server certificates stored in IAM'
-  example '
+  desc 'Verifies the server certificates stored in IAM.'
+
+  example "
     describe aws_iam_server_certificates do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
