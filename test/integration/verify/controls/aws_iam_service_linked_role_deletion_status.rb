@@ -4,5 +4,9 @@ skip_control 'service-linked-role-deletion-status' do
   describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'dummy-value') do
     it { should exist }
   end
+
+  describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'dummy-value') do
+    its('status') { should eq 'SUCCEEDED' }
+  end
 end
 
