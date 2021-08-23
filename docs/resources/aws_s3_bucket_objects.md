@@ -103,14 +103,6 @@ Use `should_not` to test the entity does not exist.
       it { should_not exist }
     end
 
-### be_available
-
-Use `should` to check if the entity is available.
-
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
-      it { should be_available }
-    end
-
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `s3:client:list_objects_v2` action with `Effect` set to `Allow`.
