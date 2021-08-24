@@ -50,6 +50,5 @@ class AWSEC2InternetGateways < AwsResourceBase
       pagination_options[:next_token] = @api_response.next_token
     end
     rows
-
   end
 end

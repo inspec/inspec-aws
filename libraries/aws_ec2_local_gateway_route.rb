@@ -4,30 +4,31 @@ require 'aws_backend'
 
 class AWSEC2LocalGatewayRoute < AwsResourceBase
   name 'aws_ec2_local_gateway_route'
-  desc 'Returns'
+  desc 'Test the singular local gateway route.'
 
   example "
-    describe aws_ec2_local_gateway_route(function_name: 'test1') do
+    describe aws_ec2_local_gateway_route(local_gateway_route_table_id: 'LocalGatewayRoutetableId') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { function_name: opts } if opts.is_a?(String)
+    opts = { local_gateway_route_table_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:function_name])
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    @display_name = opts[:instance_profile_name]
+    validate_parameters(required: [:local_gateway_route_table_id])
+    raise ArgumentError, "#{@__resource_name__}: local_gateway_route_table_id must be provided" unless opts[:local_gateway_route_table_id] && !opts[:local_gateway_route_table_id].empty?
+    @display_name = opts[:local_gateway_route_table_id]
+    filter = { name: 'local-gateway-route-table-id', values: [opts[:local_gateway_route_table_id]] }
     catch_aws_errors do
-      resp = @aws.compute_client.search_local_gateway_routes({ function_name: opts[:function_name] })
-      @res = resp.routes.to_h
+      resp = @aws.compute_client.search_local_gateway_routes({ local_gateway_route_table_id: opts[:local_gateway_route_table_id], filters: [filter] })
+      @res = resp.routes[0].to_h
       create_resource_methods(@res)
     end
   end
 
-  def function_name
+  def local_gateway_route_table_id
     return nil unless exists?
-    @res[:function_name]
+    @res[:local_gateway_route_table_id]
   end
 
   def exists?
@@ -35,6 +36,6 @@ class AWSEC2LocalGatewayRoute < AwsResourceBase
   end
 
   def to_s
-    "Function Name: #{@display_name}"
+    "Local Gateway Route Table ID: #{@display_name}"
   end
 end
