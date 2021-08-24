@@ -4,30 +4,38 @@ require 'aws_backend'
 
 class AWSEC2InternetGateway < AwsResourceBase
   name 'aws_ec2_internet_gateway'
-  desc 'Returns'
+  desc 'Describes a internet gateway.'
 
   example "
-    describe aws_ec2_internet_gateway(function_name: 'test1') do
+    describe aws_ec2_internet_gateway(internet_gateway_id: 'test1') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { function_name: opts } if opts.is_a?(String)
+    opts = { internet_gateway_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:function_name])
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    @display_name = opts[:instance_profile_name]
+    validate_parameters(required: [:internet_gateway_id])
+    raise ArgumentError, "#{@__resource_name__}: internet_gateway_id must be provided" unless opts[:internet_gateway_id] && !opts[:internet_gateway_id].empty?
+    @display_name = opts[:internet_gateway_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_internet_gateways({ function_name: opts[:function_name] })
-      @res = resp.configuration.to_h
+      resp = @aws.compute_client.describe_internet_gateways({ internet_gateway_ids: [opts[:internet_gateway_id]] })
+      @res = resp.internet_gateways[0].to_h
       create_resource_methods(@res)
     end
   end
 
-  def function_name
+  def internet_gateway_id
     return nil unless exists?
-    @res[:function_name]
+    @res[:internet_gateway_id]
+  end
+
+  def attachments_states
+    attachments.map(&:state)
+  end
+
+  def attachments_vpc_ids
+    attachments.map(&:vpc_id)
   end
 
   def exists?
@@ -35,6 +43,6 @@ class AWSEC2InternetGateway < AwsResourceBase
   end
 
   def to_s
-    "Function Name: #{@display_name}"
+    "Internet Gateway ID: #{@display_name}"
   end
 end
