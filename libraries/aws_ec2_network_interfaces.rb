@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AWSLambdaFunctions < AwsResourceBase
-  name 'aws_lambda_functions'
-  desc 'List all the functions.'
+class AWSEC2NetworkInterfaces < AwsResourceBase
+  name 'aws_ec2_network_interfaces'
+  desc 'List all the network interfaces.'
 
   example "
-    describe aws_lambda_functions do
+    describe aws_ec2_network_interfaces do
       it { should exist }
     end
   "
@@ -15,33 +15,25 @@ class AWSLambdaFunctions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:function_names,                                  field: :function_name)
-             .register_column(:function_arns,                                   field: :function_arn)
-             .register_column(:runtimes,                                        field: :runtime)
-             .register_column(:roles,                                           field: :role)
-             .register_column(:handlers,                                        field: :handler)
-             .register_column(:code_sizes,                                      field: :code_size)
-             .register_column(:descriptions,                                    field: :description)
-             .register_column(:timeouts,                                        field: :timeout)
-             .register_column(:memory_sizes,                                    field: :memory_size)
-             .register_column(:last_modified,                                   field: :last_modified)
-             .register_column(:code_sha_256,                                    field: :code_sha_256)
-             .register_column(:versions,                                        field: :version)
-             .register_column(:vpc_configs,                                     field: :vpc_config)
-             .register_column(:dead_letter_configs,                             field: :dead_letter_config)
-             .register_column(:environments,                                    field: :environment)
-             .register_column(:kms_key_arns,                                    field: :kms_key_arn)
-             .register_column(:tracing_configs,                                 field: :tracing_config)
-             .register_column(:master_arns,                                     field: :master_arn)
-             .register_column(:revision_ids,                                    field: :revision_id)
-             .register_column(:layers,                                          field: :layers)
-             .register_column(:states,                                          field: :state)
-             .register_column(:state_reasons,                                   field: :state_reason)
-             .register_column(:state_reason_codes,                              field: :state_reason_code)
-             .register_column(:last_update_statuses,                            field: :last_update_status)
-             .register_column(:last_update_status_reasons,                      field: :last_update_status_reason)
-             .register_column(:last_update_status_reason_codes,                 field: :last_update_status_reason_code)
-             .register_column(:file_system_configs,                             field: :file_system_configs)
+             .register_column(:associations, field: :association)
+             .register_column(:availability_zones, field: :availability_zone)
+             .register_column(:descriptions, field: :description)
+             .register_column(:groups, field: :groups)
+             .register_column(:ipv_6_addresses, field: :ipv_6_addresses)
+             .register_column(:mac_addresses, field: :mac_address)
+             .register_column(:network_interface_ids, field: :network_interface_id)
+             .register_column(:outpost_arns, field: :outpost_arn)
+             .register_column(:owner_ids, field: :owner_id)
+             .register_column(:private_dns_names, field: :private_dns_name)
+             .register_column(:private_ip_addresses, field: :private_ip_address)
+             .register_column(:ipv_4_prefixes, field: :ipv_4_prefixes)
+             .register_column(:requester_ids, field: :requester_id)
+             .register_column(:requester_managed, field: :requester_managed)
+             .register_column(:source_dest_checks, field: :source_dest_check)
+             .register_column(:statuses, field: :status)
+             .register_column(:subnet_ids, field: :subnet_id)
+             .register_column(:tag_sets,  field: :tag_set)
+             .register_column(:vpc_ids, field: :vpc_id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -53,43 +45,37 @@ class AWSLambdaFunctions < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_items] = 10
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.lambda_client.list_functions(pagination_options)
+        @api_response = @aws.compute_client.describe_network_interfaces(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.functions.each do |resp|
-        rows += [{ function_name: resp.function_name,
-                   function_arn: resp.function_arn,
-                   runtime: resp.runtime,
-                   role: resp.role,
-                   handler: resp.handler,
-                   code_size: resp.code_size,
+      @api_response.network_interfaces.each do |resp|
+        rows += [{ association: resp.association,
+                   attachment: resp.attachment,
+                   availability_zone: resp.availability_zone,
                    description: resp.description,
-                   timeout: resp.timeout,
-                   memory_size: resp.memory_size,
-                   last_modified: resp.last_modified,
-                   code_sha_256: resp.code_sha_256,
-                   version: resp.version,
-                   vpc_config: resp.vpc_config,
-                   dead_letter_config: resp.dead_letter_config,
-                   environment: resp.environment,
-                   kms_key_arn: resp.kms_key_arn,
-                   tracing_config: resp.tracing_config,
-                   master_arn: resp.master_arn,
-                   revision_id: resp.revision_id,
-                   layers: resp.layers,
-                   state: resp.state,
-                   state_reason: resp.state_reason,
-                   state_reason_code: resp.state_reason_code,
-                   last_update_status: resp.last_update_status,
-                   last_update_status_reason: resp.last_update_status_reason,
-                   last_update_status_reason_code: resp.last_update_status_reason_code,
-                   file_system_configs: resp.file_system_configs }]
+                   groups: resp.groups,
+                   interface_type: resp.interface_type,
+                   ipv_6_addresses: resp.ipv_6_addresses,
+                   mac_address: resp.mac_address,
+                   network_interface_id: resp.network_interface_id,
+                   outpost_arn: resp.outpost_arn,
+                   owner_id: resp.owner_id,
+                   private_dns_name: resp.private_dns_name,
+                   private_ip_address: resp.private_ip_address,
+                   ipv_4_prefixes: resp.ipv_4_prefixes,
+                   requester_id: resp.requester_id,
+                   requester_managed: resp.requester_managed,
+                   source_dest_check: resp.source_dest_check,
+                   status: resp.status,
+                   subnet_id: resp.subnet_id,
+                   tag_set: resp.tag_set,
+                   vpc_id: resp.vpc_id }]
       end
-      break unless @api_response.next_marker
-      pagination_options[:marker] = @api_response.next_marker
+      break unless @api_response.next_token
+      pagination_options[:next_token] = @api_response.next_token
     end
     rows
   end

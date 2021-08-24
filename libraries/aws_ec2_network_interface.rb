@@ -4,30 +4,30 @@ require 'aws_backend'
 
 class AWSEC2NetworkInterface < AwsResourceBase
   name 'aws_ec2_network_interface'
-  desc 'Returns'
+  desc 'Describes one or more of your network interfaces.'
 
   example "
-    describe aws_ec2_network_interface(function_name: 'test1') do
+    describe aws_ec2_network_interface(network_interface_id: 'test1') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { function_name: opts } if opts.is_a?(String)
+    opts = { network_interface_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:function_name])
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    @display_name = opts[:instance_profile_name]
+    validate_parameters(required: [:network_interface_id])
+    raise ArgumentError, "#{@__resource_name__}: network_interface_id must be provided" unless opts[:network_interface_id] && !opts[:network_interface_id].empty?
+    @display_name = opts[:network_interface_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_network_interfaces({ function_name: opts[:function_name] })
+      resp = @aws.compute_client.describe_network_interfaces({ network_interface_ids: [opts[:network_interface_id]] })
       @res = resp.network_interfaces[0].to_h
       create_resource_methods(@res)
     end
   end
 
-  def function_name
+  def network_interface_id
     return nil unless exists?
-    @res[:function_name]
+    @res[:network_interface_id]
   end
 
   def exists?
@@ -35,6 +35,6 @@ class AWSEC2NetworkInterface < AwsResourceBase
   end
 
   def to_s
-    "Function Name: #{@display_name}"
+    "Network Interface ID: #{@display_name}"
   end
 end
