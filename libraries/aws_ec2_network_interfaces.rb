@@ -16,6 +16,7 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
 
   FilterTable.create
              .register_column(:associations, field: :association)
+             .register_column(:attachments, field: :attachment)
              .register_column(:availability_zones, field: :availability_zone)
              .register_column(:descriptions, field: :description)
              .register_column(:groups, field: :groups)
@@ -26,7 +27,6 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
              .register_column(:owner_ids, field: :owner_id)
              .register_column(:private_dns_names, field: :private_dns_name)
              .register_column(:private_ip_addresses, field: :private_ip_address)
-             .register_column(:ipv_4_prefixes, field: :ipv_4_prefixes)
              .register_column(:requester_ids, field: :requester_id)
              .register_column(:requester_managed, field: :requester_managed)
              .register_column(:source_dest_checks, field: :source_dest_check)
@@ -65,7 +65,6 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
                    owner_id: resp.owner_id,
                    private_dns_name: resp.private_dns_name,
                    private_ip_address: resp.private_ip_address,
-                   ipv_4_prefixes: resp.ipv_4_prefixes,
                    requester_id: resp.requester_id,
                    requester_managed: resp.requester_managed,
                    source_dest_check: resp.source_dest_check,

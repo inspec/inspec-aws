@@ -27,8 +27,7 @@ class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(network_interface_id))
-    raise ArgumentError, "#{@__resource_name__}: network_interface_id must be provided" unless opts[:network_interface_id] && !opts[:network_interface_id].empty?
+    validate_parameters
     @table = fetch_data
   end
 
@@ -38,18 +37,18 @@ class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
     pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_network_interfaces({ network_interface_ids: [opts[:network_interface_id]]})
+        @api_response = @aws.compute_client.describe_network_interfaces(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.network_interfaces[0].attachment.each do |resp|
-        rows += [{ attach_time: resp.attach_time,
-                   attachment_id: resp.attachment_id,
-                   delete_on_termination: resp.delete_on_termination,
-                   device_index: resp.device_index,
-                   network_card_index: resp.network_card_index,
-                   instance_id: resp.instance_id,
-                   instance_owner_id: resp.instance_owner_id,
-                   status: resp.status }]
+      @api_response.network_interfaces.each do |resp|
+        rows += [{ attach_time:  resp.attachment[:attach_time],
+                   attachment_id:  resp.attachment[:attachment_id],
+                   delete_on_termination:  resp.attachment.delete_on_termination,
+                   device_index:  resp.attachment.device_index,
+                   network_card_index:  resp.attachment.network_card_index,
+                   instance_id:  resp.attachment.instance_id,
+                   instance_owner_id:  resp.attachment.instance_owner_id,
+                   status:  resp.attachment.status }]
       end
       break unless @api_response.next_token
       pagination_options[:next_token] = @api_response.next_token

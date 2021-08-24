@@ -21,6 +21,7 @@ class AWSEC2NetworkInterface < AwsResourceBase
     catch_aws_errors do
       resp = @aws.compute_client.describe_network_interfaces({ network_interface_ids: [opts[:network_interface_id]] })
       @res = resp.network_interfaces[0].to_h
+      # require 'pry'; binding.pry
       create_resource_methods(@res)
     end
   end
