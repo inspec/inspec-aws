@@ -7,7 +7,7 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
   desc 'Returns'
 
   example "
-    describe aws_ec2_network_insights_path(network_insights_path_id: 'test1') do
+    describe aws_ec2_network_insights_path(network_insights_path_id: 'NetworkInsightsPathId') do
       it { should exist }
     end
   "

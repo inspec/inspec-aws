@@ -7,7 +7,7 @@ class AWSEC2InternetGateway < AwsResourceBase
   desc 'Describes a ec2 internet gateway.'
 
   example "
-    describe aws_ec2_internet_gateway(internet_gateway_id: 'test1') do
+    describe aws_ec2_internet_gateway(internet_gateway_id: 'InternetGatewayId') do
       it { should exist }
     end
   "
