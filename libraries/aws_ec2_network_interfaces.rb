@@ -20,6 +20,7 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
              .register_column(:availability_zones, field: :availability_zone)
              .register_column(:descriptions, field: :description)
              .register_column(:groups, field: :groups)
+             .register_column(:interface_types, field: :interface_type)
              .register_column(:ipv_6_addresses, field: :ipv_6_addresses)
              .register_column(:mac_addresses, field: :mac_address)
              .register_column(:network_interface_ids, field: :network_interface_id)
@@ -32,7 +33,7 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
              .register_column(:source_dest_checks, field: :source_dest_check)
              .register_column(:statuses, field: :status)
              .register_column(:subnet_ids, field: :subnet_id)
-             .register_column(:tag_sets,  field: :tag_set)
+             .register_column(:tag_sets, field: :tag_set)
              .register_column(:vpc_ids, field: :vpc_id)
              .install_filter_methods_on_resource(self, :table)
 

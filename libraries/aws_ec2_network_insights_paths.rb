@@ -54,12 +54,9 @@ class AWSEC2NetworkInsightsPaths < AwsResourceBase
                    destination_port: resp.destination_port,
                    tags: resp.tags }]
       end
-      require 'pry'; binding.pry
-
       break unless @api_response.next_token
       pagination_options[:next_token] = @api_response.next_token
     end
     rows
-    require 'pry'; binding.pry
   end
 end

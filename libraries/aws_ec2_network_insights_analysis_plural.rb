@@ -39,13 +39,13 @@ class AWSEC2NetworkInsightsAnalysisPlural < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_items] = 100
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.lambda_client.describe_network_insights_analyses(pagination_options)
+        @api_response = @aws.compute_client.describe_network_insights_analyses(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.functions.each do |resp|
+      @api_response.network_insights_analyses.each do |resp|
         rows += [{ network_insights_analysis_id: resp.network_insights_analysis_id,
                    network_insights_analysis_arn: resp.network_insights_analysis_arn,
                    network_insights_path_id: resp.network_insights_path_id,

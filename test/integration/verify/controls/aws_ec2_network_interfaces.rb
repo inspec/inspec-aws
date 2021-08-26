@@ -10,7 +10,6 @@ control 'aws-ec2-network-interfaces-1.0' do
     its('associations') { should_not be_empty }
     its('attachments') { should_not be_empty }
     its('availability_zones') { should include "us-east-2a" }
-    its('descriptions') { should include "Network Interface for Transit Gateway Attachment tgw-attach-03a924ff49189ecb2" }
     its('groups') { should_not be_empty }
     its('ipv_6_addresses') { should_not be_empty }
   end

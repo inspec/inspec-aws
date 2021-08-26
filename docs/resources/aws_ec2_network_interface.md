@@ -48,34 +48,17 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 | attachment.status | The attachment state. | attachment (status) |
 | availability_zone | The Availability Zone. | availability_zone |
 | description | A description. | description |
-
-| needchanges | The name of the security group. | groups (group_name) |
-| needchanges | The id of the security group. | groups (group_id) |
-
+| groups | The security group. | groups |
 | interface_type | The type of network interface. | interface_type |
-
-| needchanges | The IPv6 address. | ipv_6_addresses (ipv_6_address) |
-
+| ipv_6_addresses | The IPv6 address. | ipv_6_addresses |
 | mac_address | The MAC address. | mac_address |
 | network_interface_id | The ID of the network interface. | network_interface_id |
 | outpost_arn | The Amazon Resource Name (ARN) of the Outpost. | outpost_arn |
 | owner_id | The Amazon Web Services account ID of the owner of the network interface. | owner_id |
 | private_dns_name | The private DNS name. | private_dns_name |
 | private_ip_address | The IPv4 address of the network interface within the subnet. | private_ip_address |
-
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The allocation ID. | private_ip_addresses (association (allocation_id)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The association ID. | private_ip_addresses (association (association_id)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The ID of the Elastic IP address owner. | private_ip_addresses (association (ip_owner_id)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The public DNS name. | private_ip_addresses (association (public_dns_name)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The address of the Elastic IP address bound to the network interface. | private_ip_addresses (association (public_ip)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The customer-owned IP address associated with the network interface. | private_ip_addresses (association (customer_owned_ip)) |
-| needchanges | The private IPv4 addresses associated with the network interface. The association information for an Elastic IP address (IPv4) associated with the network interface. The carrier IP address associated with the network interface. | private_ip_addresses (association (carrier_ip)) |
-| needchanges | The private IPv4 addresses associated with the network interface. Indicates whether this IPv4 address is the primary private IPv4 address of the network interface. | private_ip_addresses (primary) |
-| needchanges | The private IPv4 addresses associated with the network interface. The private DNS name. | private_ip_addresses (private_dns_name) |
-| needchanges | The private IPv4 addresses associated with the network interface. The private IPv4 address. | private_ip_addresses (private_ip_address) |
-| needchanges | The IPv4 Prefix Delegation prefixes that are assigned to the network interface. The IPv4 Prefix Delegation prefix. | ipv_4_prefixes (ipv_4_prefix) |
-| needchanges | The IPv4 Prefix Delegation prefixes that are assigned to the network interface. The IPv6 Prefix Delegation prefix. | ipv_6_prefixes (ipv_6_prefix) |
-
+| ipv_4_prefixes | The IPv4 Prefix Delegation prefixes that are assigned to the network interface. | ipv_4_prefixes |
+| ipv_6_prefixes | The IPv6 Prefix Delegation prefixes that are assigned to the network interface. The IPv6 Prefix Delegation prefix. | ipv_6_prefixes |
 | requester_id | The alias or Amazon Web Services account ID of the principal or service that created the network interface. | requester_id |
 | requester_managed | Indicates whether the network interface is being managed by Amazon Web Services. | requester_managed |
 | source_dest_check | Indicates whether source/destination checking is enabled. | source_dest_check |

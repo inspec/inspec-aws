@@ -8,7 +8,7 @@ control 'aws-ec2-network-interface-attachments-1.0' do
 
   describe aws_ec2_network_interface_attachments do
     its('attach_times') { should_not be_empty }
-    its('attachment_ids') { should include "ela-attach-095c19182f6144c17" }
+    its('attachment_ids') { should_not be_empty }
     its('delete_on_terminations') { should include false }
     its('device_indexes') { should include 1 }
     its('network_card_indexes') { should be_empty }

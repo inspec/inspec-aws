@@ -7,7 +7,7 @@ class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
   desc 'List all the network interface attachments.'
 
   example "
-    describe aws_ec2_network_interface_attachments(network_interface_id: 'test1') do
+    describe aws_ec2_network_interface_attachments do
       it { should exist }
     end
   "

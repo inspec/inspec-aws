@@ -11,7 +11,7 @@ The AWS::EC2::InternetGateway resource allocates an internet gateway for use wit
 
 ## Syntax
 
-Ensure that function exists.
+Ensure that internet gateway exists.
 
     describe aws_ec2_internet_gateway(internet_gateway_id: 'InternetGatewayId') do
       it { should exist }
@@ -90,4 +90,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:client:DescribeInternetGatewaysResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeInternetGatewaysResult` action with `Effect` set to `Allow`.
