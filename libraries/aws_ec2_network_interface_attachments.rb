@@ -41,6 +41,7 @@ class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.network_interfaces.each do |resp|
+        next if resp.attachment.nil?
         rows += [{ attach_time:  resp.attachment[:attach_time],
                    attachment_id:  resp.attachment[:attachment_id],
                    delete_on_termination:  resp.attachment.delete_on_termination,

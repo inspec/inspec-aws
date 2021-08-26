@@ -11,8 +11,8 @@ control 'aws-ec2-network-interface-attachments-1.0' do
     its('attachment_ids') { should_not be_empty }
     its('delete_on_terminations') { should include false }
     its('device_indexes') { should include 1 }
-    its('network_card_indexes') { should be_empty }
-    its('instance_ids') { should be_empty }
+    its('network_card_indexes') { should_not be_empty }
+    its('instance_ids') { should_not be_empty }
     its('instance_owner_ids') { should include 'amazon-aws' }
     its('statuses') { should include 'attached' }
   end
