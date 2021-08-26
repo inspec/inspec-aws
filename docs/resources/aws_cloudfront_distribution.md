@@ -19,9 +19,9 @@ Ensure that an `aws_cloudfront_distribution` exists:
       it { should exist }
     end
 
-#### Parameters
+### Parameters
 
-##### distribution\_id _(required)_
+#### distribution\_id _(required)_
 
 The ID of the CloudFront distribution. This can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
 
