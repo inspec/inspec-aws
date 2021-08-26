@@ -23,43 +23,40 @@ Ensure that an `aws_cloudfront_distribution` exists:
 
 ### distribution\_id _(required)_
 
-The ID of the CloudFront distribution. This parameter can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
+The CloudFront distribution ID, which can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
 
 ### disallowed\_ssl\_protocols _(optional)_
 
-If provided, this parameter is expected to be an array of strings identifying disallowed SSL/TLS protocol.
+If provided, this parameter is expected to be an array of strings identifying SSL/TLS protocols that you wish not to allow.
 
 Included in the array should be the union of disallowed identifiers for:
 
-- custom origin SSL/TLS protocols (SSLv3 | TLSv1 | TLSv1.1 | TLSv1.2)
+- custom origin SSL/TLS protocols (currently SSLv3 | TLSv1 | TLSv1.1 | TLSv1.2)
 - identifiers for the minimum SSL/TLS protocol in the Viewer Certificate that CloudFront can use to communicate with viewers (currently SSLv3 | TLSv1 | TLSv1_1026 | TLSv1.1_2016 | TLSv1.2_2018 | TLSv1.2_2019 | TLSv1.2_2021).
 
 Newer protocol identification strings (when available) may be provided in the set, as validity is not checked. The default value for disallowed_ssl_protocols is `%w{SSLv3 TLSv1 TLSv1_2016}`.
 
-For additional information, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html) documentation.
-
-For available SSL/TLS version identifiers, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [AWS::CloudFront::distribution ViewerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-viewercertificate.html) documentation.
+For additional information, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html) documentation. For available SSL/TLS version identifiers, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [AWS::CloudFront::distribution ViewerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-viewercertificate.html) documentation.
 
 ## Properties
 
-|Property                                   | Description|
+|Property                             | Description|
 | ---                                        | --- |
 |distribution\_id                            | The identifier for the CloudFront distribution. |
 |viewer\_protocol\_policies                  | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows HTTP and HTTPS), `https-only` or `redirect-to-https`. |
-|custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution, empty if there are no custom origins (i.e. only one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
-|custom\_origin\_protocol\_policy            | Custom origin protocol policy. It is a string, one of "http-only", "match-viewer", "https-only"
-|viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values are `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
-|s3\_origin\_config                          | True if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), false otherwise. |
+|custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are`SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
+|viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
+|s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
 
 ## Examples
 
 ### Test that a CloudFront distribution has secure protocols configured
 
     describe aws_cloudfront_distribution('DISTRIBUTION_ID') do
-      its('VIEWER_CERTIFICATE_MINIMUM_SSL_PROTOCOL') { should_not match /SSLv3|TLSv1$|TLSv1_2016/ }
-      its('VIEWER_PROTOCOL_POLICIES') { should_not include 'ALLOW-ALL' }
-      %w{SSLv3 TLSv1}.each do |protocol|
-        its('CUSTOM_ORIGIN_SSL_PROTOCOLS') { should_not include protocol }
+      its('viewer_certificate_minimum_ssl_protocol') { should_not match /SSLv3|TLSv1$|TLSv1_2016/ }
+      its('viewer_protocol_policies') { should_not include 'allow-all' }
+      {SSLv3 TLSv1}.each do |protocol|
+        its('custom_origin_ssl_protocols') { should_not include protocol }
       end
     end
 
@@ -69,7 +66,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ### have_viewer_protocol_policies_allowing_http
 
-The `have_viewer_protocol_policies_allowing_http` matcher tests if any of the caches for origins, including the default cache, has its viewer_protocol_policy set to `allow-all`.
+The `have_viewer_protocol_policies_allowing_http` matcher tests if any of the caches for origins, including the default cache, has its viewer_protocol_policy set to 'allow-all'.
 
     it { should_not have_viewer_protocol_policies_allowing_http }
 
