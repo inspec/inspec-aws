@@ -317,6 +317,7 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_servicecatalog_portfolio_principal_associations](docs/resources/aws_servicecatalog_portfolio_principal_associations.md)
 - [aws_servicecatalog_portfolio_product_association](docs/resources/aws_servicecatalog_portfolio_product_association.md)
 - [aws_servicecatalog_portfolio_product_associations](docs/resources/aws_servicecatalog_portfolio_product_associations.md)
+- [aws_shield_subscription](docs/resources/aws_shield_subscription.md)
 - [aws_sns_subscription](docs/resources/aws_sns_subscription.md)
 - [aws_sns_topic](docs/resources/aws_sns_topic.md)
 - [aws_sns_topics](docs/resources/aws_sns_topics.md)
