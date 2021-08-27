@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_transit\_gateway\_multicast\_domains
 
-Use the `aws_transit_gateway_multicast_domains` InSpec audit resource to test properties of a plural AWS EC2 TransitGatewayMulticastDomain.
+Use the `aws_transit_gateway_multicast_domains` Chef InSpec audit resource to test properties of multiple AWS EC2 transit gateway multicast domains.
 
-The AWS::EC2::TransitGatewayMulticastDomain resource creates a Connect attachment from a specified transit gateway attachment.
+The `AWS::EC2::TransitGatewayMulticastDomain` resource creates a Connect attachment from a specified transit gateway attachment.
 
 ## Syntax
 
@@ -19,6 +19,8 @@ Ensure that transit gateway multicast domain exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomain.html).
 
 ## Properties
@@ -28,7 +30,7 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 | transit_gateway_multicast_domain_ids | The ID of the transit gateway multicast domain. |
 | transit_gateway_ids | The ID of the transit gateway. |
 | transit_gateway_multicast_domain_arns | The Amazon Resource Name (ARN) of the transit gateway multicast domain. |
-| owner_ids | The ID of the AWS account that owns the transit gateway multiicast domain. |
+| owner_ids | The ID of the AWS account that owns the transit gateway multicast domain. |
 | options | The options for the transit gateway multicast domain. |
 | states | The state of the transit gateway multicast domain. |
 | creation_time | The time the transit gateway multicast domain was created. |
@@ -36,14 +38,16 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Examples
 
-### Ensure a transit gateway attachment id is available.
+### Ensure a specific transit gateway attachment ID is available.
+
     describe aws_transit_gateway_multicast_domains do
-    its('transit_gateway_multicast_domain_id') { should eq 'tgw-mcast-domain-1234567890' }
+      its('transit_gateway_multicast_domain_ids') { should include 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_transit_gateway_multicast_domains(transit_gateway_multicast_domain_ids: "tgw-mcast-domain-1234567890") do
-        its('states') { should include 'available' }
+
+    describe aws_transit_gateway_multicast_domains do
+      its('states') { should include 'available' }
     end
 
 ## Matchers
