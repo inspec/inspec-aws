@@ -5,19 +5,21 @@ platform: aws
 
 # aws\_transit\_gateway\_connects
 
-Use the `aws_transit_gateway_connects` InSpec audit resource to test properties of a plural AWS EC2 TransitGatewayConnect.
+Use the `aws_transit_gateway_connects` InSpec audit resource to test properties of multiple AWS EC2 transit gateway Connect attachments.
 
-The AWS::EC2::TransitGatewayConnect resource creates a Connect attachment from a specified transit gateway attachment.
+The `AWS::EC2::TransitGatewayConnect` resource creates a Connect attachment from a specified transit gateway attachment.
 
 ## Syntax
 
-Ensure that transit gateway connect exists.
+Ensure that transit gateway Connect exists.
 
     describe aws_transit_gateway_connects do
       it { should exist }
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayConnect](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayconnect.html).
 
@@ -35,12 +37,14 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Examples
 
-### Ensure a transit gateway attachment id is available.
+### Ensure a transit gateway attachment ID is available.
+
     describe aws_transit_gateway_connects do
-      its('transit_gateway_attachment_ids') { should include 'tgw-attach-1234567890' }
+      its('transit_gateway_attachment_ids') { should include 'TRANSIT_GATEWAY_ATTACHMENT_ID' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_transit_gateway_connects do
         its('states') { should include 'available' }
     end
