@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_transit\_gateway\_multicast\_domain\_association
 
-Use the `aws_transit_gateway_multicast_domain_association` InSpec audit resource to test properties of a single specific AWS EC2 TransitGatewayMulticastDomainAssociation.
+Use the `aws_transit_gateway_multicast_domain_association` Chef InSpec audit resource to test properties of a single AWS EC2 transit gateway multicast domain association.
 
-The AWS::EC2::TransitGatewayMulticastDomainAssociation resource associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
+The `AWS::EC2::TransitGatewayMulticastDomainAssociation` resource associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
 
 ## Syntax
 
-Ensure that transit gateway multicast domain association exists.
+Ensure that the transit gateway multicast domain association exists.
 
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exits }
     end
 
@@ -21,7 +21,7 @@ Ensure that transit gateway multicast domain association exists.
 
 `transit_gateway_multicast_domain_id` _(required)_
 
-The transit_gateway_multicast_domain_id is the ID of the transit gateway multicast domain.
+The ID of the transit gateway multicast domain.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayMulticastDomainAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomainassociation.html).
 
@@ -38,13 +38,15 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Examples
 
-### Ensure a transit gateway attachment id is available.
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
+### Ensure a transit gateway attachment ID is available.
+
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       its('transit_gateway_attachment_id') { should eq 'tgw-attach-1234567890' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
+
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
         its('subnet.state') { should eq 'associated' }
     end
 
@@ -58,13 +60,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exits }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "dummy") do
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID") do
       it { should_not exits }
     end
 
@@ -72,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the transit gateway multicast domain association is available.
 
-    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: "tgw-mcast-domain-1234567890") do
+    describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should be_available }
     end
 
