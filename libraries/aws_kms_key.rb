@@ -39,6 +39,24 @@ class AwsKmsKey < AwsResourceBase
     !@key.empty?
   end
 
+  def kms_tags(tag_list)
+    return {} if tag_list.nil? || tag_list.empty?
+    tags = {}
+    tag_list.each do |tag|
+      tags[tag[:tag_key]] = tag[:tag_value]
+    end
+    tags
+  end
+
+  def tags
+    begin
+      tag_list = @aws.kms_client.list_resource_tags(key_id: @display_name).tags
+    rescue
+      return {}
+    end
+    kms_tags(tag_list)
+  end
+
   def created_days_ago
     ((Time.now - @key[:creation_date]) / (24 * 60 * 60)).to_i unless @key[:creation_date].nil?
   end

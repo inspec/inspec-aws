@@ -56,6 +56,7 @@ See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/late
 |description       | The description of the key. |
 |deletion\_time     | Specifies the date and time after which AWS KMS deletes the key. This value is present only when KeyState is PendingDeletion, otherwise this value is nil. |
 |invalidation\_time | Provides the date and time until the key is not valid.  Once the key is not valid, AWS KMS deletes the key and it becomes unusable.  This value will be null unless the keys Origin is EXTERNAL and its matcher have\_key\_expiration is set to true. |
+|tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
 
