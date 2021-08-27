@@ -1,8 +1,0 @@
-extends: substitution
-message: "Use '%s' instead of '%s'"
-level: error
-ignorecase: false
-swap:
-  '(?:[^\s]*) ?Automate app': Chef Automate Integration App
-  '(?:[^\s]*) ?Automate application': Chef Automate Integration App
-  '(?:[^\s]*) ?Automate plugin': Chef Automate Integration App

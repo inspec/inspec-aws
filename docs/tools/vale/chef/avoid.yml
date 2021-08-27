@@ -1,8 +1,0 @@
-extends: existence
-message: "Don't use '%s'"
-ignorecase: true
-level: error
-tokens:
-  - GUI
-  - UI
-
