@@ -13,7 +13,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs, :origin_domain_name, :s3_origin_path
+
+              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :origin_domain_name, :s3_origin_path
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -58,6 +59,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
       @viewer_protocol_policies = @viewer_protocol_policies.uniq.sort
     end
 
+    @custom_origin_protocol_policies = []
     @custom_origin_ssl_protocols = []
     @s3_origin_configs = false
     config.origins.items.each do |origin|
@@ -65,9 +67,11 @@ class AwsCloudFrontDistribution < AwsResourceBase
         @s3_origin_configs = true
       elsif origin[:custom_origin_config]
         @custom_origin_ssl_protocols += origin[:custom_origin_config][:origin_ssl_protocols][:items]
+        @custom_origin_protocol_policies += [origin[:custom_origin_config][:origin_protocol_policy]]
       end
     end
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
+    @custom_origin_protocol_policies = @custom_origin_protocol_policies.uniq.sort
 
     # Find aws cloudfront distribution origin path.
     # Either return path string, or ""
