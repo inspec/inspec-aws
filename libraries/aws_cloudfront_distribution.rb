@@ -13,7 +13,6 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-
               :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :origin_domain_name, :s3_origin_path
 
   def initialize(opts = {})
