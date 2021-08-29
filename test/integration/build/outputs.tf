@@ -712,3 +712,7 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_network_interface_id" {
+  value = aws_network_interface.aws_network_interface_test.id
+}
