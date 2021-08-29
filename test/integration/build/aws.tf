@@ -3884,3 +3884,17 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+#Internet Gateway
+resource "aws_internet_gateway" "aws_internet_gateway_test" {
+  vpc_id = aws_vpc.aws_vpc_internet_gateway_test.id
+
+  tags = {
+    Name = "test"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_internet_gateway_test" {
+  cidr_block = "10.0.0.0/16"
+}
+

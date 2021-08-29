@@ -712,3 +712,15 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_internet_gateway_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.id
+}
+
+output "aws_internet_gateway_owner_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.owner_id
+}
+
+output "aws_internet_gateway_vpc_id" {
+  value = aws_vpc.aws_vpc_internet_gateway_test.id
+}
