@@ -81,4 +81,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2.Client.search_local_gateway_routes` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2.Client.SearchLocalGatewayRoutesResult` action with `Effect` set to `Allow`.

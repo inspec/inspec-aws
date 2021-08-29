@@ -11,7 +11,7 @@ The AWS::EC2::LocalGatewayRouteTableVPCAssociation resource associates the speci
 
 ## Syntax
 
-Ensure that function exists.
+Ensure that Local Gateway Route Table Vpc Association Id exists.
 
     describe aws_ec2_local_gateway_route_table_vpc_association(local_gateway_route_table_vpc_association_id: 'LocalGatewayRouteTableVpcAssociationId') do
       it { should exist }

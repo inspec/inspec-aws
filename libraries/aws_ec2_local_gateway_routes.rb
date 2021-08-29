@@ -26,7 +26,8 @@ class AWSEC2LocalGatewayRoutes < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(local_gateway_route_table_id))
+    raise ArgumentError, "#{@__resource_name__}: local_gateway_route_table_id must be provided" unless opts[:local_gateway_route_table_id] && !opts[:local_gateway_route_table_id].empty?
     @table = fetch_data
   end
 
@@ -34,7 +35,8 @@ class AWSEC2LocalGatewayRoutes < AwsResourceBase
     pagination_options = {}
     rows = []
     pagination_options[:max_results] = 100
-    pagination_options[:filters] = { name: 'local-gateway-route-table-id', values: [opts[:local_gateway_route_table_id]] }
+    pagination_options[:local_gateway_route_table_id] = opts[:local_gateway_route_table_id]
+    pagination_options[:filters] = [{ name: 'local-gateway-route-table-id', values: [opts[:local_gateway_route_table_id]] }]
     loop do
       catch_aws_errors do
         @api_response = @aws.compute_client.search_local_gateway_routes(pagination_options)
