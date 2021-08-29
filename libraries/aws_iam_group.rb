@@ -35,6 +35,6 @@ class AwsIamGroup < AwsResourceBase
   end
 
   def to_s
-    "AWS Iam Group #{@group_name}"
+    "AWS IAM Group: #{@group_name}"
   end
 end

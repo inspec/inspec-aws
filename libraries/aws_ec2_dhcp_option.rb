@@ -40,7 +40,7 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def to_s
-    "EC2 DHCP Option Set #{display_name}"
+    "EC2 DHCP Option Set: #{display_name}"
   end
 
   def netbios_node_type

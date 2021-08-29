@@ -39,7 +39,7 @@ class AwsSsmActivations < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.ssm_client.describe_activations(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
+      return ssm_activation_rows if !api_response || api_response.empty?
 
       api_response.activation_list.each do |ssm_activation|
         ssm_activation_rows += [{ activation_id:         ssm_activation.activation_id,

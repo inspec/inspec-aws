@@ -26,17 +26,13 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
     end
   end
 
-  def id
+  def transit_gateway_route_table_id
     return nil unless exists?
     @transit_gateway_route_tables[:transit_gateway_route_table_ids]
   end
 
   def exists?
     !@transit_gateway_route_tables.nil? && !@transit_gateway_route_tables.empty?
-  end
-
-  def encrypted?
-    @transit_gateway_route_tables[:encrypted]
   end
 
   def to_s

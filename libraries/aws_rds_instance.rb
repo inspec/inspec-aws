@@ -53,6 +53,6 @@ class AwsRdsInstance < AwsResourceBase
   end
 
   def to_s
-    "RDS Instance #{@display_name}"
+    "RDS Instance: #{@display_name}"
   end
 end

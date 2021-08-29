@@ -42,6 +42,6 @@ class AWSEc2LaunchTemplate < AwsResourceBase
   end
 
   def to_s
-    "Launch Template #{@display_name}"
+    "Launch Template: #{@display_name}"
   end
 end

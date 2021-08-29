@@ -35,7 +35,7 @@ class AwsVpnConnections < AwsResourceBase
     catch_aws_errors do
       @api_response = @aws.compute_client.describe_vpn_connections
     end
-    return [] if !@api_response || @api_response.empty?
+    return vpn_connection_rows if !@api_response || @api_response.empty?
     @api_response.vpn_connections.each do |vpn_connection|
       vpn_connection_rows+=[{ vpn_connection_id: vpn_connection.vpn_connection_id,
         vpn_gateway_id: vpn_connection.vpn_gateway_id,

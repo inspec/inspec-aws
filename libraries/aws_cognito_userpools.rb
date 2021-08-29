@@ -37,7 +37,7 @@ class AWSCognitoUserPools < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.cognitoidentityprovider_client.list_user_pools(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.user_pools.each do |res|
         rows += [{
           id: res.id,

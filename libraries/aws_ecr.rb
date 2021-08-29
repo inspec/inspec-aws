@@ -52,6 +52,6 @@ class AwsEcr < AwsResourceBase
   end
 
   def to_s
-    "AWS ECR #{@repository_name}"
+    "AWS ECR: #{@repository_name}"
   end
 end

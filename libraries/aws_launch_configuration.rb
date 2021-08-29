@@ -44,6 +44,6 @@ class AwsLaunchConfiguration < AwsResourceBase
   end
 
   def to_s
-    "AWS Launch Configuration #{@name}"
+    "AWS Launch Configuration Name: #{@name}"
   end
 end

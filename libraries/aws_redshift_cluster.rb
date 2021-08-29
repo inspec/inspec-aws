@@ -38,6 +38,6 @@ class AwsRedshiftCluster < AwsResourceBase
   end
 
   def to_s
-    "Redshift Cluster : #{@display_name}"
+    "Redshift Cluster Identifier: #{@display_name}"
   end
 end

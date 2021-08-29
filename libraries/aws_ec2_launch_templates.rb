@@ -49,7 +49,6 @@ class AWSEc2LaunchTemplates < AwsResourceBase
           launch_template_tags_name: launch_template_tags['Name'],
           default_version_number: launch_template.default_version_number,
           latest_version_number: launch_template.latest_version_number,
-
         }]
       end
 

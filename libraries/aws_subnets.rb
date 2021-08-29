@@ -37,7 +37,7 @@ class AwsSubnets < AwsResourceBase
     catch_aws_errors do
       @subnets = @aws.compute_client.describe_subnets.to_h[:subnets]
     end
-    return [] if !@subnets || @subnets.empty?
+    return subnet_rows if !@subnets || @subnets.empty?
     @subnets.each do |subnet|
       subnet_rows += [{
         availability_zone:       subnet[:availability_zone],

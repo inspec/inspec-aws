@@ -35,7 +35,7 @@ class AwsVpcEndpointConnectionNotifications < AwsResourceBase
     catch_aws_errors do
       @vpcens = @aws.compute_client.describe_vpc_endpoint_connection_notifications
     end
-    return [] if !@vpcens || @vpcens.empty?
+    return vpcen_rows if !@vpcens || @vpcens.empty?
     @vpcens.connection_notification_set.each do |vpcen|
       vpcen_rows+=[{ connection_notification_id: vpcen[:connection_notification_id],
                      service_id: vpcen[:service_id],

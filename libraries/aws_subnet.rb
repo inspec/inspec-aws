@@ -52,6 +52,6 @@ class AwsSubnet < AwsResourceBase
   end
 
   def to_s
-    "VPC Subnet #{@display_name}"
+    "VPC Subnet: #{@display_name}"
   end
 end

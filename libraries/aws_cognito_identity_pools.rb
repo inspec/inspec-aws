@@ -33,7 +33,7 @@ class AWSCognitoIdentityPools < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.cognitoidentity_client.list_identity_pools(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.identity_pools.each do |identity_pool|
         rows += [{
           identity_pool_id: identity_pool.identity_pool_id,

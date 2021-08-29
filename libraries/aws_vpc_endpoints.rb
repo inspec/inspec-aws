@@ -37,7 +37,7 @@ class AwsVpces < AwsResourceBase
     catch_aws_errors do
       @vpces = @aws.compute_client.describe_vpc_endpoints
     end
-    return [] if !@vpces || @vpces.empty?
+    return vpce_rows if !@vpces || @vpces.empty?
     @vpces.vpc_endpoints.each do |vpce|
       vpce_rows+=[{ vpc_endpoint_id: vpce[:vpc_endpoint_id],
                     vpc_endpoint_type: vpce[:vpc_endpoint_type],

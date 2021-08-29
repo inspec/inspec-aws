@@ -37,7 +37,7 @@ class AwsSsmParameters < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.ssm_client.describe_parameters(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
+      return ssm_parameter_rows if !api_response || api_response.empty?
 
       api_response.parameters.each do |ssm_param|
         ssm_parameter_rows += [{ name:               ssm_param.name,
