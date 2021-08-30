@@ -45,6 +45,7 @@ require 'aws-sdk-transfer'
 require 'aws-sdk-states'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-servicecatalog'
+require 'aws-sdk-networkmanager'
 
 # AWS Inspec Backend Classes
 #
@@ -260,6 +261,10 @@ class AwsConnection
 
   def servicecatalog_client
     aws_client(Aws::ServiceCatalog::Client)
+  end
+
+  def network_manager_client
+    aws_client(Aws::NetworkManager::Client)
   end
 end
 
