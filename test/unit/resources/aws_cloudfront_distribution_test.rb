@@ -169,12 +169,6 @@ class AwsCloudFrontDistributionsOriginPathTest < Minitest::Test
   def setup
     stub_data = AwsCloudFrontDistributionMock.new.stub_default_data
     @mock_cfd = stub_data.first[:data][:distribution]
-
-    @cloudfront_distribution = AwsCloudFrontDistribution.new(
-      distribution_id: @mock_cfd[:id],
-      client_args: { stub_responses: true },
-      stub_data: stub_data
-    )
   end
 
   def test_cf_origin_path
