@@ -23,10 +23,6 @@ class AwsRdsSnapshotAttributesConstructorTest < Minitest::Test
   def test_rejects_invalid_db_snapshot_identifier
     assert_raises(ArgumentError) { AwsRdsSnapshotAttributes.new(db_snapshot_identifier: 'rds_rubbish') }
   end
-
-  def test_rds_non_existing
-    refute AwsRdsSnapshotAttributes.new(db_snapshot_identifier: 'rds-012b75749d0b5ceb5', client_args: { stub_responses: true }).exists?
-  end
 end
 
 class AwsRdsSnapshotAttributesHappyPathTest < Minitest::Test
@@ -34,9 +30,13 @@ class AwsRdsSnapshotAttributesHappyPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_db_snapshot_attributes
-    mock_snapshot_atrribute = {}
-    mock_snapshot_atrribute[:db_snapshot_identifier] = 'rds-012b75749d0b5ceb5'
-    data[:data] = { :db_snapshot_attributes_result.to_h => [mock_snapshot_atrribute] }
+    mock_snapshot_attribute = {}
+    mock_snapshot_attribute[:db_snapshot_identifier] = 'rds-012b75749d0b5ceb5'
+    mock_snapshot_attribute[:db_snapshot_attributes] = [{
+      attribute_name: "restore",
+      attribute_values: ["all"]
+    }]
+    data[:data] = { :db_snapshot_attributes_result => mock_snapshot_attribute }
     data[:client] = Aws::RDS::Client
     @snapshot = AwsRdsSnapshotAttributes.new(db_snapshot_identifier: 'rds-012b75749d0b5ceb5', client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -46,6 +46,14 @@ class AwsRdsSnapshotAttributesHappyPathTest < Minitest::Test
   end
 
   def test_snapshot_id
-    assert_equal(@snapshot.db_snapshot_identifier,  'rds-012b75749d0b5ceb5')
+    assert_equal(@snapshot.db_snapshot_identifier,  ['rds-012b75749d0b5ceb5'])
+  end
+
+  def test_attr_name
+    assert_equal(@snapshot.attribute_name, ['restore'])
+  end
+
+  def test_attr_value
+    assert_equal(@snapshot.attribute_values, [['all']])
   end
 end
