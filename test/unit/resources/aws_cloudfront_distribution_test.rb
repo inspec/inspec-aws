@@ -164,15 +164,3 @@ class AwsCloudFrontDistributionCustomTest < Minitest::Test
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSv1.2_2021 TLSv1.2_2019 TLSv1.2_2018 TLSv1.2})
   end
 end
-
-class AwsCloudFrontDistributionsOriginPathTest < Minitest::Test
-  def setup
-    stub_data = AwsCloudFrontDistributionMock.new.stub_default_data
-    @mock_cfd = stub_data.first[:data][:distribution]
-  end
-
-  def test_cf_origin_path
-    AwsCloudFrontDistribution.new(distribution_id: @mock_cfd[:id],
-                                  origin_domain_name: @mock_cfd[:distribution_config][:origins][:items][0][:domain_name])
-  end
-end

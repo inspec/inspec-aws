@@ -13,7 +13,6 @@ class AwsCloudFrontDistributionMock < AwsBaseResourceMock
         items: [{
           id: 'id1',
           domain_name: 'something.s3.amazonaws.com',
-          origin_path: '/release',
           s3_origin_config: {
             origin_access_identity: "origin-access-identity/cloudfront/XYZABC",
           }
