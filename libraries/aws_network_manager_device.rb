@@ -17,7 +17,7 @@ class AWSNetworkManagerDevice < AwsResourceBase
     super(opts)
     validate_parameters(required: [:device_id])
     raise ArgumentError, "#{@__resource_name__}: device_id must be provided" unless opts[:device_id] && !opts[:device_id].empty?
-    @display_name = opts[:global_network_id]
+    @display_name = opts[:device_id]
     catch_aws_errors do
       resp = @aws.network_manager_client.get_devices({ device_ids: opts[:device_id] })
       @res = resp.devices[0].to_h
