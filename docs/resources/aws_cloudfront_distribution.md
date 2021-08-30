@@ -42,10 +42,10 @@ For additional information, see the [AWS API reference for CloudFront distributi
 |Property                       	     | Description|
 | ---                                        | --- |
 |distribution\_id                            | The identifier for the CloudFront distribution. |
-|viewer\_protocol\_policies                  | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows http and https), `https-only` or `redirect-to-https`. |
-|custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution, empty if there are no no custom origins (i.e. only one or more standard S3 bucket origins). Current valid values: `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
+|viewer\_protocol\_policies                  | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows HTTP and HTTPS), `https-only` or `redirect-to-https`. |
+|custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values: `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
-|s3\_origin\_config                          | True if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), false otherwise. |
+|s3\_origin\_config                          | True if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else false. |
 
 ## Examples
 
@@ -54,7 +54,7 @@ For additional information, see the [AWS API reference for CloudFront distributi
     describe aws_cloudfront_distribution('DISTRIBUTION_ID') do
       its('viewer_certificate_minimum_ssl_protocol') { should_not match /SSLv3|TLSv1$|TLSv1_2016/ }
       its('viewer_protocol_policies') { should_not include 'allow-all' }
-      %w{SSLv3 TLSv1}.each do |protocol|
+      {SSLv3 TLSv1}.each do |protocol|
         its('custom_origin_ssl_protocols') { should_not include protocol }
       end
     end
@@ -71,24 +71,19 @@ The `have_viewer_protocol_policies_allowing_http` matcher tests if any of the ca
 
 ### have\_disallowed\_custom\_origin\_ssl\_protocols
 
-The `have_disallowed_custom_origin_ssl_protocols` matcher tests whether any of the the SSL/TLS protocols
-defined in the ssl_protocols for all custom origins in the distribution are present in the
-`disallowed_ssl_protocols` parameter (if provided), or in the default disallowed SSL/TLS protocol list (if not).
+The `have_disallowed_custom_origin_ssl_protocols` matcher tests whether any of the the SSL/TLS protocols defined in the ssl_protocols for all custom origins in the distribution are present in the `disallowed_ssl_protocols` parameter (if provided), or in the default disallowed SSL/TLS protocol list (if not).
 
     it { should_not have_disallowed_custom_origin_ssl_protocols }
 
 ### have\_disallowed\_viewer\_certificate\_minimum\_ssl\_protocol
 
-The `have_disallowed_viewer_minimum_ssl_protocol` matcher tests whether the minimum SSL/TLS protocol
-for the distribution's Viewer Certificate is in the `disallowed_ssl_protocols` parameter (if provided),
-or in the default disallowed SSL/TLS protocol list (if not).
+The `have_disallowed_viewer_minimum_ssl_protocol` matcher tests whether the minimum SSL/TLS protocol for the distribution's Viewer Certificate is in the `disallowed_ssl_protocols` parameter (if provided), or in the default disallowed SSL/TLS protocol list (if not).
 
     it { should_not have_disallowed_viewer_certificate_minimum_ssl_protocol }
 
 ### have\_s3\_origin\_configs
 
-The `have_s3_origin_configs` matcher tests whether the distribution has a non-nil s3_origin_configs setting in
-any of its origins.
+The `have_s3_origin_configs` matcher tests whether the distribution has a non-nil s3_origin_configs setting in any of its origins.
 
     it { should_not have_s3_origin_configs }
 
