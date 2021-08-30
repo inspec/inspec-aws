@@ -75,10 +75,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
     # Find aws cloudfront distribution origin path.
     # Either return path string, or ""
     return unless opts[:origin_domain_name]
-    @origin_domain_name = opts[:origin_domain_name]
-    @s3_origin_path = ''
     config.origins.items.each do |origin_config|
-      if origin_config.domain_name == @origin_domain_name
+      if origin_config.domain_name == opts[:origin_domain_name]
         @s3_origin_path = origin_config.origin_path
       end
     end
