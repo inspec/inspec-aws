@@ -7,11 +7,11 @@ class AWSTransitGatewayConnect < AwsResourceBase
   desc 'Describes one or more Connect attachments.'
 
   example "
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'test') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'test') do
       it { should eq 'test' }
     end
 
-    describe aws_transit_gateway_connect(transit_gateway_attachment_ids: 'test') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'test') do
       it { should exits }
     end
   "
@@ -20,7 +20,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
     opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_attachment_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_ids].empty?
+    raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_id].empty?
     @display_name = opts[:transit_gateway_attachment_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_transit_gateway_connects({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_id]] })
@@ -30,7 +30,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
   end
 
   def transit_gateway_attachment_id
-    return nil unless exists?
+    # return nil unless exists?
     @transit_gateway_connects[:transit_gateway_attachment_id]
   end
 

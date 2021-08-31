@@ -23,30 +23,30 @@ class AWSTransitGatewayConnectsHappyPathTest < Minitest::Test
     mock_data[:tags] = []
     data[:data] = { :transit_gateway_connects => [mock_data] }
     data[:client] = Aws::EC2::Client
-    @transit_gateway_connects = AWSTransitGatewayConnects.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSTransitGatewayConnects.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_transit_gateway_attachment_ids
-    assert_equal(@transit_gateway_connects.transit_gateway_attachment_ids, ['test1'])
+    assert_equal(@resp.transit_gateway_attachment_ids, ['test1'])
   end
 
   def test_transport_transit_gateway_attachment_ids
-    assert_equal(@transit_gateway_connects.transport_transit_gateway_attachment_ids, ['test1'])
+    assert_equal(@resp.transport_transit_gateway_attachment_ids, ['test1'])
   end
 
   def test_transit_gateway_ids
-    assert_equal(@transit_gateway_connects.transit_gateway_ids, ['test1'])
+    assert_equal(@resp.transit_gateway_ids, ['test1'])
   end
 
   def test_states
-    assert_equal(@transit_gateway_connects.states, ['test1'])
+    assert_equal(@resp.states, ['test1'])
   end
 
   def test_creation_times
-    assert_equal(@transit_gateway_connects.creation_times, [Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
+    assert_equal(@resp.creation_times, [Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
   end
 
   def test_tags
-    assert_equal(@transit_gateway_connects.tags, [[]])
+    assert_equal(@resp.tags, [[]])
   end
 end
