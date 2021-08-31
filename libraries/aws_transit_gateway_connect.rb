@@ -8,10 +8,6 @@ class AWSTransitGatewayConnect < AwsResourceBase
 
   example "
     describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'test') do
-      it { should eq 'test' }
-    end
-
-    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'test') do
       it { should exits }
     end
   "
