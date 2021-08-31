@@ -5,13 +5,13 @@ platform: aws
 
 # aws\_transit\_gateway\_connects
 
-Use the `aws_transit_gateway_connects` InSpec audit resource to test properties of multiple AWS EC2 transit gateway Connect attachments.
+Use the `aws_transit_gateway_connects` InSpec audit resource to test properties of multiple AWS EC2 Transit Gateway Connect.
 
 The `AWS::EC2::TransitGatewayConnect` resource creates a Connect attachment from a specified transit gateway attachment.
 
 ## Syntax
 
-Ensure that transit gateway Connect exists.
+Ensure that Transit Gateway Connect exists.
 
     describe aws_transit_gateway_connects do
       it { should exist }
@@ -71,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the function is available.
+Use `should` to check if the entity is available.
 
     describe aws_transit_gateway_connects do
       it { should be_available }
@@ -79,4 +79,4 @@ Use `should` to check if the function is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:client:describe_transit_gateway_connects` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTransitGatewayConnectsResult` action with `Effect` set to `Allow`.
