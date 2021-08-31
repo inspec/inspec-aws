@@ -38,6 +38,13 @@ Newer protocol identification strings (when available) may be provided in the se
 
 For additional information, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html) documentation. For available SSL/TLS version identifiers, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [AWS::CloudFront::distribution ViewerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-viewercertificate.html) documentation.
 
+### origin\_domain\_name _(optional)_
+
+If provided, this parameter is expected an existing `origin_domain_name` along with `s3_origin_path`
+
+It will return empty string if `s3_origin_path` path wasn't configured, else it will retuen the configured path.
+
+
 ## Properties
 
 |Property                             | Description|
@@ -47,8 +54,7 @@ For additional information, see the [AWS API reference for CloudFront distributi
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
-|origin\_domain\_name                        | Provide the `origin_domain_name` in case want to validate `s3_origin_path`
-|s3\_origin\_path                            | Return S3 Origin path for given `origin_domain_name`, blank otherwise. |
+|s3\_origin\_path                            | Return S3 Origin path for given `origin_domain_name`, blank otherwise. see example section below |
 
 ## Examples
 
