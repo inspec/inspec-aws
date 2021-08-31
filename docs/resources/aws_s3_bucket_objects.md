@@ -13,7 +13,7 @@ Amazon S3 is an object store that uses unique key-values to store as many object
 
 Ensure that a bucket exists.
 
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
       it { should exist }
     end
 
@@ -54,32 +54,32 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 ## Examples
 
 ### Ensure whether the bucket is truncated.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
       its ('is_truncated') { should include true }
     end
 
 ### Verify the bucket name.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
       its ('names') { should include "test_bucket_name" }
     end
 
 ### Ensure a object name is available.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
         its('contents_keys') { should include 'test_object_name' }
     end
 
 ### Ensure a last modified of an object exist.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
         its('contents_last_modified') { should include  Time.parse("2021-05-05 06:22:04.000000000 +0000") }
     end
 
 ### Ensure a storage class of an object exist.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
         its('contents_storage_classes') { should include "STANDARD") }
     end
 
 ### Verify the key counts of a bucket.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
         its('key_counts') { should include 2 }
     end
 
@@ -93,7 +93,7 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
       it { should exist }
     end
 
@@ -105,4 +105,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `s3:client:list_objects_v2` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `S3:Client:ListObjectsV2Output` action with `Effect` set to `Allow`.
