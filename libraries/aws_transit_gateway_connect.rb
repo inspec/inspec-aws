@@ -7,7 +7,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
   desc 'Describes one or more Connect attachments.'
 
   example "
-    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'test') do
+    describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GATEWAY_CONNECT_ATTACHMENT_ID') do
       it { should exits }
     end
   "
@@ -26,7 +26,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
   end
 
   def transit_gateway_attachment_id
-    # return nil unless exists?
+    return nil unless exists?
     @transit_gateway_connects[:transit_gateway_attachment_id]
   end
 
