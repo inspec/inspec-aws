@@ -40,10 +40,9 @@ For additional information, see the [AWS API reference for CloudFront distributi
 
 ### origin\_domain\_name _(optional)_
 
-If provided, this parameter is expected an existing `origin_domain_name` along with `s3_origin_path`
+The domain name for the origin.
 
-It will return empty string if `s3_origin_path` path wasn't configured, else it will retuen the configured path.
-
+Provide the `origin_domain_name` if you want to validate the `s3_origin_path` property.
 
 ## Properties
 
