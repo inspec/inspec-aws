@@ -53,7 +53,7 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
-|s3\_origin\_path                            | Return S3 Origin path for given `origin_domain_name`, blank otherwise. see example section below |
+|s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
 
 ## Examples
 
