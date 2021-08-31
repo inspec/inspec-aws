@@ -1,9 +1,14 @@
-<!-- latest_release 1.61.0 -->
+<!-- latest_release 1.62.0 -->
+## [v1.62.0](https://github.com/inspec/inspec-aws/tree/v1.62.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_domain_association [#487](https://github.com/inspec/inspec-aws/pull/487) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.61.0](https://github.com/inspec/inspec-aws/tree/v1.61.0) (2021-08-31)
 
 #### Merged Pull Requests
 - Adding RDS snapshot resource [#519](https://github.com/inspec/inspec-aws/pull/519) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.60.0](https://github.com/inspec/inspec-aws/tree/v1.60.0) (2021-08-27)
 
