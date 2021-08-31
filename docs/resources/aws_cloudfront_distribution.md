@@ -111,19 +111,19 @@ Use `should_not` to test the entity should not exist.
 
 ### s3\_origin\_path
 
-The `s3_origin_path` either return origin path or blank in case of no origin configured.
+Use `s3_origin_path` to return an origin path for the specified origin domain name if the origin path is configured, otherwise it returns an empty string.
 
-      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_1') do
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '/next' }
       end
 
-      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_2') do
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '/release' }
       end
 
-For default origin path
+For the default origin path:
 
-    describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_3') do
+    describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '' }
     end
 
