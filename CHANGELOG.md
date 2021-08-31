@@ -1,9 +1,39 @@
-<!-- latest_release 1.58.3 -->
+<!-- latest_release 1.62.0 -->
+## [v1.62.0](https://github.com/inspec/inspec-aws/tree/v1.62.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_domain_association [#487](https://github.com/inspec/inspec-aws/pull/487) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.61.0](https://github.com/inspec/inspec-aws/tree/v1.61.0) (2021-08-31)
+
+#### Merged Pull Requests
+- Adding RDS snapshot resource [#519](https://github.com/inspec/inspec-aws/pull/519) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.60.0](https://github.com/inspec/inspec-aws/tree/v1.60.0) (2021-08-27)
+
+#### Merged Pull Requests
+- adding new attribute for cloud front distribution resource [#517](https://github.com/inspec/inspec-aws/pull/517) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.59.0](https://github.com/inspec/inspec-aws/tree/v1.59.0) (2021-08-18)
+
+#### Merged Pull Requests
+- AWS Shield Subscription - finalize PR#272 [#400](https://github.com/inspec/inspec-aws/pull/400) ([tbugfinder](https://github.com/tbugfinder))
+
+## [v1.58.5](https://github.com/inspec/inspec-aws/tree/v1.58.5) (2021-08-11)
+
+#### Merged Pull Requests
+- DynamoDB Pagination Issue Fix [#508](https://github.com/inspec/inspec-aws/pull/508) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.58.4](https://github.com/inspec/inspec-aws/tree/v1.58.4) (2021-08-11)
+
+#### Merged Pull Requests
+- Fix: Resource aws_rds_clusters Raises NULLException [#507](https://github.com/inspec/inspec-aws/pull/507) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.58.3](https://github.com/inspec/inspec-aws/tree/v1.58.3) (2021-07-27)
 
 #### Merged Pull Requests
 - Changes Done in the Readme.md file [#501](https://github.com/inspec/inspec-aws/pull/501) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.58.2](https://github.com/inspec/inspec-aws/tree/v1.58.2) (2021-07-27)
 
