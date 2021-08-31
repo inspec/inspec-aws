@@ -3,6 +3,7 @@
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
+require 'aws-sdk-cloudfront'
 require 'aws-sdk-cloudtrail'
 require 'aws-sdk-cloudwatch'
 require 'aws-sdk-cloudwatchlogs'
@@ -25,21 +26,28 @@ require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-route53'
 require 'aws-sdk-s3'
+require 'aws-sdk-shield'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
 require 'aws-sdk-ssm'
 require 'rspec/expectations'
+require 'aws-sdk-transfer'
 require 'aws-sdk-elasticsearchservice'
 require 'aws-sdk-cognitoidentity'
 require 'aws-sdk-redshift'
 require 'aws-sdk-athena'
 require 'aws-sdk-applicationautoscaling'
 require 'aws-sdk-cognitoidentityprovider'
-require 'aws-sdk-databasemigrationservice'
 require 'aws-sdk-apigateway'
+require 'aws-sdk-databasemigrationservice'
+require 'aws-sdk-route53resolver'
+require 'aws-sdk-servicecatalog'
 require 'aws-sdk-glue'
 require 'aws-sdk-eventbridge'
+require 'aws-sdk-states'
+require 'aws-sdk-ram'
+require 'aws-sdk-secretsmanager'
 
 # AWS Inspec Backend Classes
 #
@@ -79,6 +87,10 @@ class AwsConnection
 
   def cloudformation_client
     aws_client(Aws::CloudFormation::Client)
+  end
+
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
   end
 
   def cloudtrail_client
@@ -173,6 +185,10 @@ class AwsConnection
     aws_client(Aws::AutoScaling::Client)
   end
 
+  def shield_client
+    aws_client(Aws::Shield::Client)
+  end
+
   def sqs_client
     aws_client(Aws::SQS::Client)
   end
@@ -225,6 +241,10 @@ class AwsConnection
     aws_client(Aws::ApplicationAutoScaling::Client)
   end
 
+  def ram_client
+    aws_client(Aws::RAM::Client)
+  end
+
   def dmsmigrationservice_client
     aws_client(Aws::DatabaseMigrationService::Client)
   end
@@ -235,6 +255,26 @@ class AwsConnection
 
   def eventbridge_client
     aws_client(Aws::EventBridge::Client)
+  end
+
+  def states_client
+    aws_client(Aws::States::Client)
+  end
+
+  def transfer_client
+    aws_client(Aws::Transfer::Client)
+  end
+
+  def servicecatalog_client
+    aws_client(Aws::ServiceCatalog::Client)
+  end
+
+  def route53resolver_client
+    aws_client(Aws::Route53Resolver::Client)
+  end
+
+  def secretsmanager_client
+    aws_client(Aws::SecretsManager::Client)
   end
 end
 
