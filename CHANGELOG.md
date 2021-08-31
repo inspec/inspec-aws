@@ -1,9 +1,14 @@
-<!-- latest_release 1.63.0 -->
+<!-- latest_release 1.64.0 -->
+## [v1.64.0](https://github.com/inspec/inspec-aws/tree/v1.64.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_group_member [#489](https://github.com/inspec/inspec-aws/pull/489) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.63.0](https://github.com/inspec/inspec-aws/tree/v1.63.0) (2021-08-31)
 
 #### Merged Pull Requests
 - aws_transit_gateway_multicast_domain [#486](https://github.com/inspec/inspec-aws/pull/486) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.62.0](https://github.com/inspec/inspec-aws/tree/v1.62.0) (2021-08-31)
 
