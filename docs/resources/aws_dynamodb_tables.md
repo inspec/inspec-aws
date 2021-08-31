@@ -41,6 +41,19 @@ For a comprehensive list of properties available, see [the API reference documen
       end
     end
 
+##### Ensure the DynamoDB Tables exists and encrypted
+    aws_dynamodb_tables.where(table_names: 'table_name').table_names.each do |table|
+        describe aws_dynamodb_table(table_name: table) do
+            it { should exist }
+            it { should be_encrypted }
+        end
+    end
+
+##### Ensure the DynamoDB table exist
+    describe aws_dynamodb_tables do
+        its('table_names') { should include 'table_name'}
+    end
+
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -49,11 +62,13 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
     describe aws_dynamodb_tables.where( <property>: <value> ) do
       it { should exist }
     end
+
+Use `should_not` to test the entity should not exist.
 
     describe aws_dynamodb_tables.where( <property>: <value> ) do
       it { should_not exist }

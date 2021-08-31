@@ -43,7 +43,7 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 ### Ensure a specific cluster exists
 
     describe aws_rds_clusters do
-      its('db_cluster_identifier') { should include 'cluster-12345678' }
+      its('db_cluster_identifier') { should include ['cluster-12345678', 'cluster-456786786'] }
     end
 
 ### Request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size.
