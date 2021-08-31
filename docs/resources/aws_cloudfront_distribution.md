@@ -40,10 +40,9 @@ For additional information, see the [AWS API reference for CloudFront distributi
 
 ### origin\_domain\_name _(optional)_
 
-If provided, this parameter is expected an existing `origin_domain_name` along with `s3_origin_path`
+The domain name for the origin.
 
-It will return empty string if `s3_origin_path` path wasn't configured, else it will retuen the configured path.
-
+Provide the `origin_domain_name` if you want to validate the `s3_origin_path` property.
 
 ## Properties
 
@@ -54,7 +53,7 @@ It will return empty string if `s3_origin_path` path wasn't configured, else it 
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
-|s3\_origin\_path                            | Return S3 Origin path for given `origin_domain_name`, blank otherwise. see example section below |
+|s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
 
 ## Examples
 
@@ -112,19 +111,19 @@ Use `should_not` to test the entity should not exist.
 
 ### s3\_origin\_path
 
-The `s3_origin_path` either return origin path or blank in case of no origin configured.
+Use `s3_origin_path` to return an origin path for the specified origin domain name if the origin path is configured, otherwise it returns an empty string.
 
-      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_1') do
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '/next' }
       end
 
-      describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_2') do
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '/release' }
       end
 
-For default origin path
+For the default origin path:
 
-    describe aws_cloudfront_distribution(distribution_id: 'EXISTING_DISTRIBUTION_ID', origin_domain_name: 'EXISTING_CF_ORIGIN_NAME_3') do
+    describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
         its ('s3_origin_path') { should include '' }
     end
 
