@@ -1,9 +1,14 @@
-<!-- latest_release 1.59.0 -->
+<!-- latest_release 1.60.0 -->
+## [v1.60.0](https://github.com/inspec/inspec-aws/tree/v1.60.0) (2021-08-27)
+
+#### Merged Pull Requests
+- adding new attribute for cloud front distribution resource [#517](https://github.com/inspec/inspec-aws/pull/517) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.59.0](https://github.com/inspec/inspec-aws/tree/v1.59.0) (2021-08-18)
 
 #### Merged Pull Requests
 - AWS Shield Subscription - finalize PR#272 [#400](https://github.com/inspec/inspec-aws/pull/400) ([tbugfinder](https://github.com/tbugfinder))
-<!-- latest_release -->
 
 ## [v1.58.5](https://github.com/inspec/inspec-aws/tree/v1.58.5) (2021-08-11)
 
