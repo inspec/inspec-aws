@@ -17,7 +17,7 @@ class AWSEC2NetworkInterfacePermissionsConstructorTest < Minitest::Test
   end
 end
 
-class AWSEC2NetworkInterfacePermissionSuccessPathTest < Minitest::Test
+class AWSEC2NetworkInterfacePermissionsSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
