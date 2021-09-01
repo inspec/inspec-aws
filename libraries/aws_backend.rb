@@ -45,7 +45,7 @@ require 'aws-sdk-transfer'
 require 'aws-sdk-states'
 require 'aws-sdk-apigateway'
 require 'aws-sdk-servicecatalog'
-require 'aws-sdk-networkmanager'
+# require 'aws-sdk-networkmanager'
 
 # AWS Inspec Backend Classes
 #
