@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsSsmAssociations < AwsResourceBase
   name 'aws_ssm_associations'
   desc 'Verifies settings for a SSM Association in bulk.'
-  example '
+  example "
     describe aws_ssm_associations do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 

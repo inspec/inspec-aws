@@ -3,15 +3,15 @@
 class AwsStsCallerIdentity < AwsResourceBase
   name 'aws_sts_caller_identity'
   desc 'Verifies settings for an AWS STS Caller Identity.'
-  example '
+  example "
     describe aws_sts_caller_identity do
-      its("arn") { should match "arn:aws:iam::.*:user/service-account-inspec" }
+      its('arn') { should match 'arn:aws:iam::.*:user/service-account-inspec' }
     end
 
     describe aws_sts_caller_identity do
       it { should be_govcloud }
     end
-  '
+  "
 
   def initialize(opts = {})
     super(opts)

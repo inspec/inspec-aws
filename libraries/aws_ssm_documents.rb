@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsSsmDocuments < AwsResourceBase
   name 'aws_ssm_documents'
   desc 'Verifies settings for a SSM Document in bulk.'
-  example '
+  example "
     describe aws_ssm_documents do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 

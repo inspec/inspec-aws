@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsEksClusters < AwsResourceBase
   name 'aws_eks_clusters'
   desc 'Verifies settings for a collection AWS EKS Clusters.'
-  example '
+  example "
     describe aws_eks_queues do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

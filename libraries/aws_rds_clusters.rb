@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsRdsClusters < AwsResourceBase
   name 'aws_rds_clusters'
   desc 'Verifies settings for a collection AWS RDS Clusters.'
-  example '
+  example "
     describe aws_rds_clusters do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

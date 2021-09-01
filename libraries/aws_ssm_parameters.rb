@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsSsmParameters < AwsResourceBase
   name 'aws_ssm_parameters'
   desc 'Verifies settings for a SSM Parameter in bulk.'
-  example '
+  example "
     describe aws_ssm_parameters do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 

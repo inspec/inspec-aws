@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsIamGroups < AwsResourceBase
   name 'aws_iam_groups'
   desc 'Verifies settings for a collection AWS IAM Groups.'
-  example '
+  example "
     describe aws_iam_groups do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

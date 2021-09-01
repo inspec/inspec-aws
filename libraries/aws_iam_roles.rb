@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsIamRoles < AwsResourceBase
   name 'aws_iam_roles'
   desc 'Verifies settings for a collection AWS IAM Roles.'
-  example '
+  example "
     describe aws_iam_roles do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
