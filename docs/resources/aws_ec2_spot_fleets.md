@@ -11,9 +11,9 @@ The AWS::EC2::SpotFleet resource specifies a Spot Fleet request. A Spot Fleet re
 
 ## Syntax
 
-Ensure that Network Interface Attachment exists.
+Ensure that spot fleets exists.
 
-    describe aws_ec2_network_interface_attachments do
+    describe aws_ec2_spot_fleets do
       it { should exist }
     end
 
@@ -35,12 +35,12 @@ For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](h
 ## Examples
 
 ### Ensure an activity status is there.
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+    describe aws_ec2_spot_fleets do
       its('activity_statuses') { should include 'error' }
     end
 
 ### Ensure that the state is `active`.
-    describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do
+    describe aws_ec2_spot_fleets do
         its('spot_fleet_request_states') { should include 'available' }
     end
 
@@ -54,13 +54,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_network_interface_attachments do
+    describe aws_ec2_spot_fleets do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_network_interface_attachments do
+    describe aws_ec2_spot_fleets do
       it { should_not exist }
     end
 

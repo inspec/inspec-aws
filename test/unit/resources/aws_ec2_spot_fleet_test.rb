@@ -9,7 +9,7 @@ class AWSEC2SpotFleetConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSEC2SpotFleet.new(network_interface_id: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSEC2SpotFleet.new(spot_fleet_request_id: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
