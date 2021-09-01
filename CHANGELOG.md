@@ -1,9 +1,14 @@
-<!-- latest_release 1.65.0 -->
+<!-- latest_release 1.66.0 -->
+## [v1.66.0](https://github.com/inspec/inspec-aws/tree/v1.66.0) (2021-09-01)
+
+#### Merged Pull Requests
+- aws_transit_gateway_connect [#488](https://github.com/inspec/inspec-aws/pull/488) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.65.0](https://github.com/inspec/inspec-aws/tree/v1.65.0) (2021-09-01)
 
 #### Merged Pull Requests
 - Added feature request for origin_path in aws_cloudfront_distribution … [#516](https://github.com/inspec/inspec-aws/pull/516) ([sharmajee1](https://github.com/sharmajee1))
-<!-- latest_release -->
 
 ## [v1.64.0](https://github.com/inspec/inspec-aws/tree/v1.64.0) (2021-08-31)
 
