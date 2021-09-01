@@ -1,5 +1,5 @@
 aws_traffic_filter_id = value(:aws_traffic_filter_id, value: '', description: 'aws traffic filter id.')
-aws_traffic_filter_desc = value(:aws_traffic_filter_desc, value: '', description: ' description aws traffic filter .')
+aws_traffic_filter_desc = value(:aws_traffic_filter_desc, value: '', description: 'description aws traffic filter .')
 
 title 'Test AWS Traffic Filters in bulk'
 control 'aws_traffic_filters-1.0' do
