@@ -712,3 +712,7 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_placement_group_name" {
+  value = aws_placement_group.web.name
+}

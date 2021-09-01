@@ -3884,3 +3884,8 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+resource "aws_placement_group" "web" {
+  name     = "hunky-dory-pg"
+  strategy = "cluster"
+}
