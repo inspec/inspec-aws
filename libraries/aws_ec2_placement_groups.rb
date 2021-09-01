@@ -5,19 +5,21 @@ require 'aws_backend'
 class AWSEC2PlacementGroups < AwsResourceBase
   name 'aws_ec2_placement_groups'
   desc 'Audits Placement Groups'
+
   example "
-           describe aws_ec2_placement_groups do
-             it { should exist }
-           end"
+    describe aws_ec2_placement_groups do
+      it { should exist }
+    end
+  "
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:group_names,                  field: :group_name)
-             .register_column(:strategy,                     field: :strategy)
-             .register_column(:partition_count,              field: :partition_count)
-             .register_column(:group_ids,                    field: :group_id)
-             .register_column(:tags,                         field: :tags)
+             .register_column(:group_names, field: :group_name)
+             .register_column(:strategies, field: :strategy)
+             .register_column(:partition_counts, field: :partition_count)
+             .register_column(:group_ids, field: :group_id)
+             .register_column(:tags, field: :tags)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -34,4 +36,3 @@ class AWSEC2PlacementGroups < AwsResourceBase
     @table = @resp.placement_groups.map(&:to_h)
   end
 end
-
