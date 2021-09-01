@@ -54,7 +54,9 @@ describe aws_ec2_traffic_mirror_sessions do
   its('description') { should include 'test-description' }
 end
 
-
 ## Matchers
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTrafficMirrorSessionsResult` action with Effect set to Allow.
