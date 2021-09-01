@@ -14,11 +14,11 @@ class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
   def initialize(opts = {})
     opts = { rule_arns: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:rule_arn])
-    raise ArgumentError, "#{@__resource_name__}: rule_arns must be provided" unless opts[:rule_arn] && !opts[:rule_arn].empty?
-    @display_name = opts[:rule_arn]
+    validate_parameters(required: [:rule_arns])
+    raise ArgumentError, "#{@__resource_name__}: rule_arns must be provided" unless opts[:rule_arns] && !opts[:rule_arns].empty?
+    @display_name = opts[:rule_arns]
     catch_aws_errors do
-      resp = @aws.elb_client_v2.describe_rules({ rule_arns: [opts[:rule_arn]] })
+      resp = @aws.elb_client_v2.describe_rules({ rule_arns: [opts[:rule_arns]] })
       @listeners = resp.rules[0].to_h
       create_resource_methods(@listeners)
     end

@@ -11,6 +11,7 @@ class AWSEFSMountTarget < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { mount_target_id: opts } if opts.is_a?(String)
     super(opts)

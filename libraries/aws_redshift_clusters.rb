@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRedshiftClusters < AwsResourceBase
   name 'aws_redshift_clusters'
-  desc 'Verifies settings for a collection AWS RDS Clusters'
+  desc 'Verifies settings for a collection AWS RDS Clusters.'
   example '
     describe aws_redshift_clusters do
       it { should exist }

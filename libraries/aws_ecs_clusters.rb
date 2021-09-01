@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEcsClusters < AwsResourceBase
   name 'aws_ecs_clusters'
-  desc 'Verifies settings for a collection AWS ECS Clusters'
+  desc 'Verifies settings for a collection AWS ECS Clusters.'
   example '
     describe aws_ecs_clusters do
       it { should exist }

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsGuardDutyDetectors < AwsResourceBase
   name 'aws_guardduty_detectors'
-  desc 'Verifies settings for a Detector in bulk'
+  desc 'Verifies settings for a Detector in bulk.'
   example "
     describe aws_guardduty_detectors do
       it { should exist }

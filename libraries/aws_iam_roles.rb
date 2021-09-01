@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamRoles < AwsResourceBase
   name 'aws_iam_roles'
-  desc 'Verifies settings for a collection AWS IAM Roles'
+  desc 'Verifies settings for a collection AWS IAM Roles.'
   example '
     describe aws_iam_roles do
       it { should exist }

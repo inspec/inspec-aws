@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRdsInstance < AwsResourceBase
   name 'aws_rds_instance'
-  desc 'Verifies settings for an RDS instance'
+  desc 'Verifies settings for an RDS instance.'
 
   example "
     describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do

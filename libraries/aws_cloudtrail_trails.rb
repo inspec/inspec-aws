@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsCloudTrailTrails < AwsResourceBase
   name 'aws_cloudtrail_trails'
-  desc 'Verifies settings for AWS CloudTrail Trails in bulk'
-  example '
+  desc 'Verifies settings for AWS CloudTrail Trails in bulk.'
+  example "
     describe aws_cloudtrail_trails do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

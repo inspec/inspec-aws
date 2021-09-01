@@ -6,11 +6,11 @@ class AwsVpnConnections < AwsResourceBase
   name 'aws_vpn_connections'
   desc 'Verifies settings for an AWS VPN connections in bulk'
 
-  example '
+  example "
     describe aws_vpn_connections do
       it { should exist }
     end
-  '
+  "
   attr_reader :table
 
   # FilterTable setup

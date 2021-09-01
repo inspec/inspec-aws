@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsLambdas < AwsResourceBase
   name 'aws_lambdas'
-  desc 'Verifies generic settings for a set of lambdas'
+  desc 'Verifies generic settings for a set of lambdas.'
   example '
     describe aws_lambdas() do
       its ("count") { should eq 6}

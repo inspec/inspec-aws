@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSsmParameters < AwsResourceBase
   name 'aws_ssm_parameters'
-  desc 'Verifies settings for a SSM Parameter in bulk'
+  desc 'Verifies settings for a SSM Parameter in bulk.'
   example '
     describe aws_ssm_parameters do
       it { should exist }

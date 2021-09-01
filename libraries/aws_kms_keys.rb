@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsKmsKeys < AwsResourceBase
   name 'aws_kms_keys'
-  desc 'Verifies settings for AWS KMS Keys in bulk'
+  desc 'Verifies settings for AWS KMS Keys in bulk.'
   example '
     describe aws_kms_keys do
       it { should exist }

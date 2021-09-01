@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSsmDocuments < AwsResourceBase
   name 'aws_ssm_documents'
-  desc 'Verifies settings for a SSM Document in bulk'
+  desc 'Verifies settings for a SSM Document in bulk.'
   example '
     describe aws_ssm_documents do
       it { should exist }

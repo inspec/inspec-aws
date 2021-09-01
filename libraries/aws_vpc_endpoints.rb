@@ -4,13 +4,13 @@ require 'aws_backend'
 
 class AwsVpces < AwsResourceBase
   name 'aws_vpc_endpoints'
-  desc 'Verifies settings for an AWS VPC Endpoints in bulk'
+  desc 'Verifies settings for an AWS VPC Endpoints in bulk.'
 
-  example '
+  example "
     describe aws_vpc_endpoints do
       it { should exist }
     end
-  '
+  "
   attr_reader :table
 
   # FilterTable setup
