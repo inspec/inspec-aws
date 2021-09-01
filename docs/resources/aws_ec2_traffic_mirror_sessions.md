@@ -30,9 +30,10 @@ This can be passed either as a string or as an `aws_ec2_traffic_mirror_sessions:
 |traffic_mirror_filter_ids    | The ID of the Traffic Mirror filter.|
 |network_interface_ids         | The ID of the Traffic Mirror session's network interface. |
 |owner_ids                     | The ID of the account that owns the Traffic Mirror session.|
-|packet_length                | The number of bytes in each packet to mirror. |
+|packet_lengths                | The number of bytes in each packet to mirror. |
+|session_numbers                | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. |
 |virtual_network_ids           | The virtual network ID associated with the Traffic Mirror session. |
-|description                  | The description of the Traffic Mirror session. |
+|descriptions                  | The description of the Traffic Mirror session. |
 |tags                         | The tags assigned to the Traffic Mirror session., e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
@@ -40,19 +41,19 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Examples
 
 ##### Test that an AWS Traffic Mirror Session should exist
-describe aws_ec2_traffic_mirror_sessions do
-  it { should exist }
-end
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should exist }
+    end
 
 ##### Test that Traffic  mirror target includes a value
-describe aws_ec2_traffic_mirror_sessions do
-  its('traffic_mirror_target_id') { should include 'test-mirror-id' }
-end
+    describe aws_ec2_traffic_mirror_sessions do
+      its('traffic_mirror_target_id') { should include 'test-mirror-id' }
+    end
 
 ##### Test that description is present
-describe aws_ec2_traffic_mirror_sessions do
-  its('description') { should include 'test-description' }
-end
+    describe aws_ec2_traffic_mirror_sessions do
+      its('description') { should include 'test-description' }
+    end
 
 ## Matchers
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).

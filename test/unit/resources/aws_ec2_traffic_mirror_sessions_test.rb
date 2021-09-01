@@ -33,29 +33,27 @@ class AwsEc2TrafficMirrorSessionsPathTest < Minitest::Test
     mock_lt[:owner_id] = 'dummy_id'
     data[:data] = { :traffic_mirror_sessions => [mock_lt] }
     data[:client] = Aws::EC2::Client
-    @addr = AWSEc2TrafficMirrorSessions.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEc2TrafficMirrorSessions.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_aws_ec2_traffic_mirror_sessions_exists
-    require 'byebug'
-    byebug
-    assert @addr.exists?
+    assert @resp.exists?
   end
 
-  def test_traffic_mirror_session_id
-    assert_equal(@addr.traffic_mirror_session_ids, ["tms-01a6e9ac9f962f154"])
+  def test_traffic_mirror_session_ids
+    assert_equal(@resp.traffic_mirror_session_ids, ["tms-01a6e9ac9f962f154"])
   end
 
-  def test_traffic_mirror_target_id
-    assert_equal(@addr.traffic_mirror_target_ids, ["tmt-01a6e9ac9f962f154"])
+  def test_traffic_mirror_target_ids
+    assert_equal(@resp.traffic_mirror_target_ids, ["tmt-01a6e9ac9f962f154"])
   end
 
-  def test_traffic_mirror_filter_id
-    assert_equal(@addr.traffic_mirror_filter_ids, ['test-account'])
+  def test_traffic_mirror_filter_ids
+    assert_equal(@resp.traffic_mirror_filter_ids, ['test-account'])
   end
 
-  def test_network_interface_id
-    assert_equal(@addr.network_interface_ids, ['dummy_id'])
+  def test_network_interface_ids
+    assert_equal(@resp.network_interface_ids, ['dummy_id'])
   end
 end
 
