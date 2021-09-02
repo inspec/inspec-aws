@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AWSNetworkManagerCustomerGatewayAssociationsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: '', client_args: { stub_responses: true })
+    AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSNetworkManagerCustomerGatewayAssociations.new('rubbish') }
   end
 
-  def test_spot_fleet_request_configs_non_existing_for_empty_response
-    refute AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: '', client_args: { stub_responses: true }).exist?
+  def test_customer_gateway_associations_request_configs_non_existing_for_empty_response
+    refute AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -29,7 +29,7 @@ class AWSNetworkManagerCustomerGatewayAssociationsHappyPathTest < Minitest::Test
     mock_data[:tags] = []
     data[:data] = { :customer_gateway_associations => [mock_data] }
     data[:client] = Aws::NetworkManager::Client
-    @resp = AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: '', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_customer_gateway_arns
