@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_ec2\_vpc\_peering\_connection
 
-Use the `aws_ec2_vpc_peering_connection` InSpec audit resource to test properties of a single specific AWS EC2 VPC Peering Connection.
+Use the `aws_ec2_vpc_peering_connection` InSpec audit resource to test properties of a single AWS EC2 VPC peering connection.
 
-The AWS::EC2::VPCPeeringConnection resource requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection.
+The `AWS::EC2::VPCPeeringConnection` resource requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection.
 
 ## Syntax
 
 Ensure that a VPC peering Connection ID exists.
 
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
       it { should exist }
     end
 
@@ -21,17 +21,13 @@ Ensure that a VPC peering Connection ID exists.
 
 `vpc_peering_connection_id` _(required)_
 
-## Properties of the Required Parameter
-
-| Property | Description|
-| --- | --- |
-| vpc_peering_connection_id | The ID of the VPC peering connection. |
+The ID of the VPC peering connection.
 
 For additional information, see the [AWS documentation on AWS EC2 VPCPeeringConnection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html).
 
 ## Properties
 
-| Fields | Description | Property |
+| Property | Description | Field |
 | --- | --- | --- |
 | accepter_vpc_info (cidr_block) | The IPv4 CIDR block of the accepter VPC. | accepter_vpc_info.cidr_block |
 | accepter_vpc_info (ipv_6_cidr_block_set) | The IPv4 CIDR block set of the accepter's VPC. | accepter_vpc_info.ipv_6_cidr_block_set |
@@ -63,14 +59,16 @@ For additional information, see the [AWS documentation on AWS EC2 VPCPeeringConn
 
 ## Examples
 
-### Ensure a accepter vpc cidr block is available.
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
-      its('accepter_vpc_info.cidr_block') { should eq 'cidr_block' }
+### Ensure a accepter VPC CIDR block is available.
+
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
+      its('accepter_vpc_info.cidr_block') { should eq 'CIDR_BLOCK' }
     end
 
-### Ensure that the accepter owner_id is available.
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
-        its('accepter_vpc_info.owner_id') { should eq '1234567890' }
+### Ensure that the accepter owner ID is available.
+
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
+        its('accepter_vpc_info.owner_id') { should eq 'OWNER_ID' }
     end
 
 ## Matchers
@@ -83,13 +81,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'dummy') do
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
       it { should_not exist }
     end
 
@@ -97,7 +95,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the function is available.
 
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPC_PEERING_CONNECTION_ID') do
       it { should be_available }
     end
 
