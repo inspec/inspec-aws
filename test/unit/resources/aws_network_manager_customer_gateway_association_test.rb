@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSNetworkManagerCustomerGatewayAssociationConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSNetworkManagerCustomerGatewayAssociation.new(client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSNetworkManagerCustomerGatewayAssociation.new(global_network_id: '', client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
