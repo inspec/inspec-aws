@@ -5,19 +5,21 @@ platform: aws
 
 # aws\_ec2\_transit_gateway_route\_table\_propagations
 
-Use the `aws_ec2_transit_gateway_route_table_propagations` InSpec audit resource to test properties of a plural AWS EC2 VPNGatewayRoutePropagation.
+Use the `aws_ec2_transit_gateway_route_table_propagations` InSpec audit resource to test if virtual private gateways can propagate routes to multiple AWS EC2 route tables.
 
-The AWS::EC2::TransitGatewayRouteTablePropagation resource enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
+The `AWS::EC2::TransitGatewayRouteTablePropagation` resource enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
 
 ## Syntax
 
-Ensure that a route table ID exists.
+Ensure that a route table exists.
 
     describe aws_ec2_vpn_gateway_route_propagations do
       it { should exist }
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 VPNGatewayRoutePropagation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-gatewayrouteprop.html).
 
@@ -26,18 +28,20 @@ For additional information, see the [AWS documentation on AWS EC2 VPNGatewayRout
 | Property | Description | Fields |
 | --- | --- | --- |
 | route_table_ids | The ID of the route table. | route_table_id |
-| propagating_vgws_gateway_ids | The ID of the virtual private gateway. | propagating_vgws (gateway_id) |
+| propagating_vgws_gateway_ids | The ID of the virtual private gateway. | propagating_vgws_gateway_ids |
 
 ## Examples
 
-### Ensure a vpn gateway id is available.
+### Ensure a VPN gateway ID is available.
+
     describe aws_ec2_vpn_gateway_route_propagations do
-      its('vpn_gateway_id') { should include 'VPNGatewayID' }
+      its('propagating_vgws_gateway_ids') { should include 'VPN_GATEWAY_ID' }
     end
 
-### Ensure a route table id is available.
+### Ensure a route table ID is available.
+
     describe aws_ec2_vpn_gateway_route_propagations do
-        its('route_table_id') { include eq 'RouteTableID' }
+        its('route_table_ids') { should include 'ROUTE_TABLE_ID' }
     end
 
 ## Matchers
