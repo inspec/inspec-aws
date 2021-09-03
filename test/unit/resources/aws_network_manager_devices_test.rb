@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSNetworkManagerDevicesConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSNetworkManagerGlobalNetworks.new(client_args: { stub_responses: true })
+    AWSNetworkManagerDevices.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
@@ -34,10 +34,9 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
     mock_data[:site_id] = 'test1'
     mock_data[:created_at] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_data[:state] = 'test1'
-    mock_data[:tags] = ['test1']
     data[:data] = { :devices => [mock_data] }
     data[:client] = Aws::NetworkManager::Client
-    @resp = AWSNetworkManagerDevices.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSNetworkManagerDevices.new(global_network_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_device_ids

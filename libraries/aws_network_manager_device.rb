@@ -7,19 +7,19 @@ class AWSNetworkManagerDevice < AwsResourceBase
   desc 'Gets information about one or more of your devices in a global network.'
 
   example "
-    describe aws_network_manager_device(device_id: 'test1') do
+    describe aws_network_manager_device(device_id: 'test1', global_network_id: 'test1') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { device_id: opts } if opts.is_a?(String)
+    opts = { global_network_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:device_id])
+    validate_parameters(required: %i(device_id global_network_id))
     raise ArgumentError, "#{@__resource_name__}: device_id must be provided" unless opts[:device_id] && !opts[:device_id].empty?
     @display_name = opts[:device_id]
     catch_aws_errors do
-      resp = @aws.network_manager_client.get_devices({ device_ids: opts[:device_id] })
+      resp = @aws.networkmanager_client.get_devices({ device_ids: opts[:device_id], global_network_id: opts[:global_network_id] })
       @res = resp.devices[0].to_h
       create_resource_methods(@res)
     end

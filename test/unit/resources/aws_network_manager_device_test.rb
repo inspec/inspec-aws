@@ -34,10 +34,9 @@ class AWSNetworkManagerDeviceSuccessPathTest < Minitest::Test
     mock_data[:site_id] = 'test1'
     mock_data[:created_at] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_data[:state] = 'test1'
-    mock_data[:tags] = ['test1']
     data[:data] = { devices: [mock_data] }
     data[:client] = Aws::NetworkManager::Client
-    @resp = AWSNetworkManagerDevice.new(device_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSNetworkManagerDevice.new(global_network_id: 'test1', device_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_devices_exists

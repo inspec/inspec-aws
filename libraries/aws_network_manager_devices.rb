@@ -33,17 +33,17 @@ class AWSNetworkManagerDevices < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: [:global_network_id])
     @table = fetch_data
   end
 
   def fetch_data
     pagination_options = {}
+    pagination_options[:global_network_id]= opts[:global_network_id]
     rows = []
-    pagination_options[:max_items] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.network_manager_client.get_devices(pagination_options)
+        @api_response = @aws.networkmanager_client.get_devices(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.devices.each do |resp|
