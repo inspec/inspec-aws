@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSNetworkFirewallFirewalls < AwsResourceBase
   name 'aws_network_firewall_firewalls'
-  desc 'Retrieves the metadata for the firewall policies that you have defined.'
+  desc 'Retrieves the metadata for the firewalls that you have defined.'
 
   example "
     describe aws_network_firewall_firewalls do

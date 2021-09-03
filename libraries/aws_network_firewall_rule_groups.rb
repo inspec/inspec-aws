@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSNetworkFirewallRuleGroups < AwsResourceBase
   name 'aws_network_firewall_rule_groups'
-  desc 'Retrieves the metadata for the rule groups that you have defined. '
+  desc 'Retrieves the metadata for the rule groups that you have defined.'
 
   example "
     describe aws_network_firewall_rule_groups do
@@ -34,7 +34,7 @@ class AWSNetworkFirewallRuleGroups < AwsResourceBase
         @api_response = @aws.network_firewall_client.list_rule_groups(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.each do |resp|
+      @api_response.rule_groups.each do |resp|
         rows += [{ name: resp.name,
                    arn: resp.arn }]
       end

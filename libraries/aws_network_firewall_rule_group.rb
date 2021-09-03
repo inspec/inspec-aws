@@ -19,8 +19,8 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: rule_group_name must be provided" unless opts[:rule_group_name] && !opts[:rule_group_name].empty?
     @display_name = opts[:rule_group_name]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_rule_group({ rule_group_name: [opts[:rule_group_name]] })
-      @res = resp.rule_group.to_h
+      resp = @aws.network_firewall_client.describe_rule_group({ rule_group_name: opts[:rule_group_name] })
+      @res = resp.to_h
       create_resource_methods(@res)
     end
   end

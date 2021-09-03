@@ -19,7 +19,7 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: global_network_id must be provided" unless opts[:global_network_id] && !opts[:global_network_id].empty?
     @display_name = opts[:global_network_id]
     catch_aws_errors do
-      resp = @aws.network_manager_client.get_customer_gateway_associations({ global_network_id: [opts[:global_network_id]] })
+      resp = @aws.network_manager_client.get_customer_gateway_associations({ global_network_id: opts[:global_network_id] })
       @res = resp.customer_gateway_associations[0].to_h
       create_resource_methods(@res)
     end

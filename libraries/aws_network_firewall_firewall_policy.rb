@@ -2,8 +2,8 @@
 
 require 'aws_backend'
 
-class AWSNetworkFirewallPolicy < AwsResourceBase
-  name 'aws_network_firewall_policy'
+class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
+  name 'aws_network_firewall_firewall_policy'
   desc 'Returns the data objects for the specified firewall policy.'
 
   example "
@@ -19,7 +19,7 @@ class AWSNetworkFirewallPolicy < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: firewall_policy_name must be provided" unless opts[:firewall_policy_name] && !opts[:firewall_policy_name].empty?
     @display_name = opts[:firewall_policy_name]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_firewall_policy({ firewall_policy_name: [opts[:firewall_policy_name]] })
+      resp = @aws.network_firewall_client.describe_firewall_policy({ firewall_policy_name: opts[:firewall_policy_name] })
       @res = resp.to_h
       create_resource_methods(@res)
     end

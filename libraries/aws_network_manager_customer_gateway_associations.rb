@@ -24,20 +24,20 @@ class AWSNetworkManagerCustomerGatewayAssociations < AwsResourceBase
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
-    opts = { global_network_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:global_network_id])
+    validate_parameters(required: %i(global_network_id))
+    @query_params = {}
     raise ArgumentError, "#{@__resource_name__}: global_network_id must be provided" unless opts[:global_network_id] && !opts[:global_network_id].empty?
+    @query_params[:global_network_id] = opts[:global_network_id]
     @table = fetch_data
   end
 
   def fetch_data
-    pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    @query_params[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.network_manager_client.get_customer_gateway_associations(pagination_options)
+        @api_response = @aws.network_manager_client.get_customer_gateway_associations(@query_params)
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.customer_gateway_associations.each do |resp|
@@ -48,7 +48,7 @@ class AWSNetworkManagerCustomerGatewayAssociations < AwsResourceBase
                    state: resp.state }]
       end
       break unless @api_response.next_token
-      pagination_options[:next_token] = @api_response.next_token
+      @query_params[:next_token] = @api_response.next_token
     end
     rows
   end

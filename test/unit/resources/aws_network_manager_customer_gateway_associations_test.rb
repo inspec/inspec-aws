@@ -23,10 +23,11 @@ class AWSNetworkManagerCustomerGatewayAssociationsHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :get_customer_gateway_associations
     mock_data = {}
-    mock_data[:activity_status] = 'test1'
-    mock_data[:spot_fleet_request_id] = 'test1'
-    mock_data[:spot_fleet_request_state] = 'test1'
-    mock_data[:tags] = []
+    mock_data[:customer_gateway_arn] = 'test1'
+    mock_data[:global_network_id] = 'test1'
+    mock_data[:device_id] = 'test1'
+    mock_data[:link_id] = 'test1'
+    mock_data[:state] = 'test1'
     data[:data] = { :customer_gateway_associations => [mock_data] }
     data[:client] = Aws::NetworkManager::Client
     @resp = AWSNetworkManagerCustomerGatewayAssociations.new(global_network_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
