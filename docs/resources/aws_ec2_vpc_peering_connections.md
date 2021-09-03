@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS EC2 VPC Peering Co
 
 ### Ensure a VPC Peering Connection ID is available.
     describe aws_ec2_vpc_peering_connections do
-      its('vpc_peering_connection_id') { should include 'VPCPeeringConnectionID' }
+      its('vpc_peering_connection_ids') { should include 'VPCPeeringConnectionID' }
     end
 
 ### Ensure that the status is `available`.

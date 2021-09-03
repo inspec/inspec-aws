@@ -740,3 +740,8 @@ output "aws_vpc_peering_test2_id" {
 output "aws_vpc_peering_connection_id" {
   value = aws_vpc_peering_connection.aws_vpc_peering_connection_test.id
 }
+
+
+output "aws_vpc_peering_connection_id" {
+  value = aws_vpc_peering_connection.aws_vpc_peering_connection_test.id
+}
