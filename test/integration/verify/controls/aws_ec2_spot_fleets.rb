@@ -1,8 +1,8 @@
-aws_spot_fleet_request_id = value("aws_spot_fleet_request_id", value: "", description: "")
+aws_spot_fleet_request_id = attribute("aws_spot_fleet_request_id", value: "", description: "")
 
 control 'aws-ec2-spot-fleets-1.0' do
   impact 1.0
-  title 'Test a singular resource of the aws ec2 spot fleet.'
+  title 'Test a plural resource of the aws ec2 spot fleet.'
 
   describe aws_ec2_spot_fleets do
     it { should exist }

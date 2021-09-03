@@ -9,7 +9,7 @@ class AWSNetworkFirewallRuleGroupConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSNetworkFirewallRuleGroup.new(rule_group_name: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSNetworkFirewallRuleGroup.new(rule_group_arn: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -31,7 +31,7 @@ class AWSNetworkFirewallRuleGroupSuccessPathTest < Minitest::Test
     }
     data[:data] = mock_data
     data[:client] = Aws::NetworkFirewall::Client
-    @resp = AWSNetworkFirewallRuleGroup.new(rule_group_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSNetworkFirewallRuleGroup.new(rule_group_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_configs_exists
