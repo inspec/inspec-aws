@@ -728,3 +728,11 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_volume_attachment_instance_device_name" {
+  value = aws_volume_attachment.aws_volume_attachment_test.device_name
+}
+
+output "aws_volume_attachment_instance_volume_id" {
+  value = aws_volume_attachment.aws_volume_attachment_test.volume_id
+}
