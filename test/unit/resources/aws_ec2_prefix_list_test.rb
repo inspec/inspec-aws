@@ -29,9 +29,8 @@ class AWSEC2PrefixListSuccessPathTest < Minitest::Test
     mock_data[:state_message] = 'test1'
     mock_data[:prefix_list_arn] = 'test1'
     mock_data[:prefix_list_name] = 'test1'
-    mock_data[:max_entries] = 'test1'
-    mock_data[:version] = 'test1'
-    mock_data[:tags] = ['test1']
+    mock_data[:max_entries] = 1
+    mock_data[:version] = 1
     mock_data[:owner_id] = 'test1'
     data[:data] = { prefix_lists: [mock_data] }
     data[:client] = Aws::EC2::Client
@@ -67,15 +66,11 @@ class AWSEC2PrefixListSuccessPathTest < Minitest::Test
   end
 
   def test_max_entries
-    assert_equal(@resp.max_entries, 'test1')
+    assert_equal(@resp.max_entries, 1 )
   end
 
   def test_version
-    assert_equal(@resp.version, 'test1')
-  end
-
-  def test_tags
-    assert_equal(@resp.tags, ['test1'])
+    assert_equal(@resp.version, 1)
   end
 
   def test_owner_id

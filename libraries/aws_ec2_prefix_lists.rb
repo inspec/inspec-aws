@@ -36,7 +36,7 @@ class AWSEC2PrefixLists < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_items] = 100
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_managed_prefix_lists(pagination_options)
