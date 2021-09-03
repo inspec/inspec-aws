@@ -728,3 +728,11 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_spot_fleet_request_id" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.id
+}
+
+output "aws_spot_fleet_request_iam_fleet_role" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.iam_fleet_role
+}

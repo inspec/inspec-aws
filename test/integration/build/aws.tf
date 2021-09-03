@@ -3889,3 +3889,24 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+#Spot Fleets
+
+resource "aws_launch_template" "foo" {
+  name          = "launch-template"
+  image_id      = "ami-00399ec92321828f5"
+  instance_type = "t2.micro"
+  key_name      = "some-key"
+}
+
+resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
+  iam_fleet_role  = "arn:aws:iam::112758395563:role/aws-ec2-spot-fleet-tagging-role"
+  target_capacity = 2
+
+  launch_template_config {
+    launch_template_specification {
+      id      = aws_launch_template.foo.id
+      version = "1"
+    }
+  }
+}
