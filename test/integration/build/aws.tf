@@ -3889,3 +3889,19 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+#VPC Peering Connection
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_peering_test1.id
+  vpc_id        = aws_vpc.aws_vpc_peering_test2.id
+  peer_region   = "us-east-2"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test1" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test2" {
+  cidr_block = "10.2.0.0/16"
+}
