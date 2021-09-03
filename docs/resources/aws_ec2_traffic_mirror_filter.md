@@ -5,48 +5,49 @@ platform: aws
 
 # aws\_ec2\_traffic\_mirror\_filter
 
-Use the `aws_ec2_traffic_mirror_filter` InSpec audit resource to test properties of a single AWS Traffic Mirror Filter.
+Use the `aws_ec2_traffic_mirror_filter` InSpec audit resource to test properties of a single AWS traffic mirror filter.
 
 ## Syntax
 
-An `aws_ec2_traffic_mirror_filter` resource block declares the tests for a single AWS Traffic Mirror Filter by aws_ec2_traffic_mirror_filter_id.
+An `aws_ec2_traffic_mirror_filter` resource block declares the tests for a single AWS traffic mirror filter.
 
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'tmf-01a2349e94458a507') do
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should exist }
     end
 
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'my-tmf-id') do
+    describe aws_ec2_traffic_mirror_filter('TRAFFIC_MIRROR_FILTER_ID') do
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-traffic_mirror_filter_id must be be provided.
+`traffic_mirror_filter_id` _(required)_
 
-##### traffic\_mirror\_filter\_id
-
-The ID of the EC2 Traffic Mirror. This is in the format of `tmf-` followed by 8 or 17 hexadecimal characters.
+The ID of the EC2 traffic mirror. This is in the format of `tmf-` followed by 8 or 17 hexadecimal characters.
 This can be passed either as a string or as an `aws_ec2_traffic_mirror_filter_id: 'value'` key-value entry in a hash.
 
 ## Properties
-|Property                 | Description|
-| ---                     | --- |
-|traffic_mirror_filter_id     | The id of a Traffic mirror filter.|
-|description                  | The description of a Traffic mirror filter.|
-|tags                         | A list of hashes with each key-value pair corresponding to an Traffic Mirror tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
 
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
+|Property                     | Description|
+| ---                         | --- |
+|traffic_mirror_filter_id     | The ID of a traffic mirror filter.|
+|description                  | The description of a traffic mirror filter.|
+|tags                         | A list of hashes with each key-value pair corresponding to a traffic mirror tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilter.html)
 
 ## Examples
 
-##### Test that an EC2 Traffic Mirror should exist
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'tmf-1234567890') do
+### Test that an EC2 traffic mirror should exist
+
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should exist }
     end
 
-##### Test that an EC2 Traffic Mirror description is correct
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'tmf-1234567890') do
-      its('description') { should eq "test-description" }
+### Test that an EC2 traffic mirror description is correct
+
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
+      its('description') { should eq "DESCRIPTION_TEXT" }
     end
 
 ## Matchers
@@ -59,13 +60,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'tmf-1234567890') do
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'dummy') do
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should_not exist }
     end
 
@@ -73,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Check if the test the entity is available.
 
-    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'tmf-1234567890') do
+    describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should be_available }
     end
 
@@ -82,5 +83,3 @@ Check if the test the entity is available.
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:describe_traffic_mirror_filters` action with `Effect` set to `Allow`.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
-
-
