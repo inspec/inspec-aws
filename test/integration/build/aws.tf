@@ -3889,3 +3889,31 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+#VPN Connection Route
+
+resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_vpn_connection_route_test" {
+  vpc_id = aws_vpc.aws_vpc_vpn_connection_route_test.id
+}
+
+resource "aws_customer_gateway" "customer_gateway_vpn_connection_route_test" {
+  bgp_asn    = 65001
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_vpn_connection_route_test" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_vpn_connection_route_test.id
+  customer_gateway_id = aws_customer_gateway.customer_gateway_vpn_connection_route_test.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test" {
+  destination_cidr_block = "192.168.10.0/24"
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}

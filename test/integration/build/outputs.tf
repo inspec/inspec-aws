@@ -728,3 +728,7 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
