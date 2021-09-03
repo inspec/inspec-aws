@@ -3892,7 +3892,7 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
 
 #Spot Fleets
 
-resource "aws_launch_template" "foo" {
+resource "aws_launch_template" "aws_launch_template_sf_test" {
   name          = "launch-template"
   image_id      = "ami-00399ec92321828f5"
   instance_type = "t2.micro"
@@ -3905,7 +3905,7 @@ resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
 
   launch_template_config {
     launch_template_specification {
-      id      = aws_launch_template.foo.id
+      id      = aws_launch_template.aws_launch_template_sf_test.id
       version = "1"
     }
   }
