@@ -285,6 +285,8 @@ module AWSInspecConfig
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}",
       aws_location: "us-east-2c",
+      aws_accepter_vpc_info_cidr_block: "10.2.0.0/16",
+      aws_requester_vpc_info_cidr_block: "10.1.0.0/16",
   }
 
   def self.config
