@@ -40,8 +40,15 @@ class AwsRouteTablesHappyPathTest < Minitest::Test
       network_interface_id: "default",
       origin: "default",
       state: "default",
-      vpc_peering_connection_id: "default",
+      vpc_peering_connection_id: "default"
     }]
+    mock_route_table[:associations] =  [{
+                                          main: false,
+                                          route_table_association_id: "rtbassoc-05dc3f4b81d9d500f",
+                                          route_table_id: "rtb-083b0c200426df383",
+                                          subnet_id: "subnet-026a4cbe6c04c36c2",
+                                          gateway_id: nil,
+                                          association_state: { state: "associated", status_message: nil } }]
     data[:data] = { :route_tables => [mock_route_table] }
     data[:client] = Aws::EC2::Client
     @route_tables = AwsRouteTables.new(client_args: { stub_responses: true }, stub_data: [data])
@@ -101,5 +108,29 @@ class AwsRouteTablesHappyPathTest < Minitest::Test
 
   def test_vpc_peering_connection_ids
     assert_equal(@route_tables.vpc_peering_connection_ids, ['default'])
+  end
+
+  def test_route_table_association_ids
+    assert_includes(@route_tables.route_table_association_ids, 'rtbassoc-05dc3f4b81d9d500f')
+  end
+
+  def test_association_subnet_ids
+    assert_includes(@route_tables.association_subnet_ids, 'subnet-026a4cbe6c04c36c2')
+  end
+
+  def test_associated_subnet_ids
+    assert_includes(@route_tables.associated_subnet_ids, 'subnet-026a4cbe6c04c36c2')
+  end
+
+  def test_association_gateway_ids
+    assert_empty(@route_tables.association_gateway_ids)
+  end
+
+  def test_associated_gateway_ids
+    assert_empty(@route_tables.associated_gateway_ids)
+  end
+
+  def test_association_states
+    assert_includes(@route_tables.association_states, 'associated')
   end
 end
