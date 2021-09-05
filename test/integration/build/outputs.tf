@@ -142,6 +142,22 @@ output "aws_rds_instance_id" {
   value = aws_db_instance.db_rds.0.id
 }
 
+output "aws_rds_snapshot_identifier" {
+  value = aws_db_snapshot.test_db_snapshot.db_instance_identifier
+}
+
+output "aws_rds_snapshot_engine" {
+  value = aws_db_snapshot.test_db_snapshot.engine
+}
+
+output "aws_rds_snapshot_engine_version" {
+  value = aws_db_snapshot.test_db_snapshot.engine_version
+}
+
+output "aws_rds_snapshot_storage_type" {
+  value = aws_db_snapshot.test_db_snapshot.storage_type
+}
+
 output "aws_cloud_trail_arn" {
   value = aws_cloudtrail.trail_1.0.arn
 }
@@ -346,6 +362,18 @@ output "aws_elasticache_replication_group_node_type" {
   value = aws_elasticache_replication_group.replication_group.node_type
 }
 
+output "aws_service_id" {
+  value = aws_ecs_service.bar.id
+}
+
+output "aws_cluster_arn" {
+  value = aws_ecs_cluster.for_ecs_service.arn
+}
+
+output "aws_task_definition_arn" {
+  value = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+}
+
 output "aws_transfer_server_arn" {
   value = aws_transfer_server.aws_transfer_server_tu_test.arn
 }
@@ -443,7 +471,7 @@ output "aws_saml_provider_arns" {
 }
 
 output "aws_option_group_name" {
-value = aws_db_option_group.test-option-group.name
+  value = aws_db_option_group.test-option-group.name
 }
 
 output "transit_gateway_id" {
@@ -525,16 +553,26 @@ output "aws_vpc_endpoint_service_id" {
 output "aws_vpc_base_endpoint_dns_names" {
   value = aws_vpc_endpoint_service.notification_service.base_endpoint_dns_names
 }
-output "resolver_rule_association_id" {
-  value = aws_route53_resolver_rule_association.example.id
-}
-output "resolver_rule_id" {
-  value =  aws_route53_resolver_rule_association.example.resolver_rule_id
-}
-output "re_vpc_id" {
-  value =  aws_route53_resolver_rule_association.example.vpc_id
+
+output "resolver_rule_arn" {
+  value = aws_route53_resolver_rule.sys.arn
 }
 
+output "resolver_rule_type" {
+  value = aws_route53_resolver_rule.sys.rule_type
+}
+
+output "resolver_rule_association_id" {
+  value = aws_route53_resolver_rule_association.for-int-test.id
+}
+
+output "resolver_rule_id" {
+  value =  aws_route53_resolver_rule_association.for-int-test.resolver_rule_id
+}
+
+output "re_vpc_id" {
+  value =  aws_route53_resolver_rule_association.for-int-test.vpc_id
+}
 
 output "aws_ram_resource_share_arn" {
   value = aws_ram_resource_share.aws_ram_resource_share_test.arn
@@ -587,6 +625,7 @@ output "aws_route_table_association_id" {
 output "aws_route_table_associated_subnet" {
   value = aws_route_table_association.association_route_table_first.subnet_id
 }
+
 output "aws_servicecatalog_product_sm_id" {
   value = aws_servicecatalog_product.aws_servicecatalog_product_sc_test.id
 }
@@ -614,6 +653,7 @@ output "aws_iam_role_sc_test_sm_arn" {
 output "aws_resolver_endpoint_id" {
   value = aws_route53_resolver_endpoint.for-int.id
 }
+
 output "aws_resolver_endpoint_arn" {
   value = aws_route53_resolver_endpoint.for-int.arn
 }
@@ -628,4 +668,63 @@ output "aws_resolver_endpoint_vpc_id" {
 
 output "aws_resolver_endpoint_security_group_ids" {
   value = aws_route53_resolver_endpoint.for-int.security_group_ids
+}
+
+output "aws_lambda_event_source_mapping_uuid" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.uuid
+}
+
+output "aws_lambda_event_source_mapping_function_arn" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.function_arn
+}
+
+output "aws_lambda_event_source_mapping_last_modified" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.last_modified
+}
+
+output "aws_lambda_event_source_mapping_last_processing_result" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.last_processing_result
+}
+
+output "aws_lambda_event_source_mapping_state" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.state
+}
+
+output "aws_lambda_event_source_mapping_state_transition_reason" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.state_transition_reason
+}
+
+output "aws_lambda_event_source_mapping_function_name" {
+  value = aws_lambda_function.test_lambda.function_name
+}
+
+output "aws_lambda_event_source_mapping_event_source_arn" {
+  value = aws_lambda_event_source_mapping.event_source_mapping.event_source_arn
+}
+
+output "aws_route53_hosted_zone_id" {
+  value = aws_route53_zone.for_route53_set_record_test.zone_id
+}
+
+output "aws_iam_instance_profile_id" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.id
+}
+
+output "aws_iam_instance_profile_arn" {
+  value = aws_iam_instance_profile.aws_iam_instance_profile_test.arn
+}
+
+output "aws_iam_role_id" {
+  value = aws_iam_role.aws_iam_role_test.id
+}
+
+output "aws_iam_role_arn" {
+  value = aws_iam_role.aws_iam_role_test.arn
+}
+output "aws_secretsmanager_secret_sm_id" {
+  value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.id
+}
+
+output "aws_secretsmanager_secret_sm_arn" {
+  value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
