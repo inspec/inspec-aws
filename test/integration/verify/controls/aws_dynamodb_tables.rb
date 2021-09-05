@@ -4,7 +4,7 @@ aws_dynamodb_table_name = attribute(:aws_dynamodb_table_name, value: '', descrip
 control 'aws-dynamodb-tables-1.0' do
 
   impact 1.0
-  title 'Ensure AWS DynamoDB Table has current properties'
+  title 'Ensure AWS DynamoDB Table has current properties.'
 
   describe aws_dynamodb_tables do
     it { should exist }
@@ -15,5 +15,9 @@ control 'aws-dynamodb-tables-1.0' do
       it { should exist }
       it { should be_encrypted }
     end
+  end
+
+  describe aws_dynamodb_tables do
+    its('table_names') { should include aws_dynamodb_table_name }
   end
 end
