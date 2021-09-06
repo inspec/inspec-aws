@@ -10,7 +10,7 @@ control 'aws_placement_group_name-1.0' do
 
   describe aws_ec2_placement_groups do
     it { should exist }
-    its('strategy') { should include "cluster" }
-    its('aws_placement_group_name') { should include aws_placement_group_name  }
+    its('strategies) { should include "cluster" }
+    its('aws_placement_group_names') { should include aws_placement_group_name  }
   end
 end
