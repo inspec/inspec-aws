@@ -58,7 +58,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_network_interface_permissions(network_interface_permission_id: 'dummy') do
+    describe aws_ec2_network_interface_permissions do
       it { should_not exist }
     end
 
