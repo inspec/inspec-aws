@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on EC2 Placement Group](h
 ### Ensure a Placement Group ID is available
 
     describe aws_ec2_placement_groups do
-      its('group_id') { should eq 'GroupID' }
+      its('group_ids') { should include 'GroupID' }
     end
 
 ### Ensure that the state is `available` or `deleted`
