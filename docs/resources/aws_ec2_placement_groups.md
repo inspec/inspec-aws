@@ -42,7 +42,7 @@ For additional information, see the [AWS documentation on EC2 Placement Group](h
 ### Ensure that the state is `available` or `deleted`
 
     describe aws_ec2_placement_groups do
-        its('state') { should eq 'available' }
+        its('states') { should include 'available' }
     end
 
 ## Matchers
