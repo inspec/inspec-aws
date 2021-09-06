@@ -55,6 +55,7 @@ class AWSNetworkManagerDevices < AwsResourceBase
                    type: resp.type,
                    vendor: resp.vendor,
                    model: resp.model,
+                   serial_number: resp.serial_number,
                    location: resp.location,
                    site_id: resp.site_id,
                    created_at: resp.created_at,

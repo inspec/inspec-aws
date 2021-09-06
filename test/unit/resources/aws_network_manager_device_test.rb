@@ -86,8 +86,4 @@ class AWSNetworkManagerDeviceSuccessPathTest < Minitest::Test
   def test_state
     assert_equal(@resp.state, 'test1')
   end
-
-  def test_tags
-    assert_equal(@resp.tags, ['test1'])
-  end
 end

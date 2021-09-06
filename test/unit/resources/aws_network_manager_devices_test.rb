@@ -4,8 +4,8 @@ require 'aws-sdk-core'
 
 class AWSNetworkManagerDevicesConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AWSNetworkManagerDevices.new(client_args: { stub_responses: true })
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) {AWSNetworkManagerDevices.new(client_args: { stub_responses: true })}
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSNetworkManagerDevicesConstructorTest < Minitest::Test
   end
 
   def test_devices_non_existing_for_empty_response
-    refute AWSNetworkManagerDevices.new(client_args: { stub_responses: true }).exist?
+    refute AWSNetworkManagerDevices.new(global_network_id: 'test1' , client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -81,9 +81,5 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
 
   def test_states
     assert_equal(@resp.states, ['test1'])
-  end
-
-  def test_tags
-    assert_equal(@resp.tags, [['test1']])
   end
 end
