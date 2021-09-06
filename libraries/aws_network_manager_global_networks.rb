@@ -32,7 +32,7 @@ class AWSNetworkManagerGlobalNetworks < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_items] = 100
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
         @api_response = @aws.network_manager_client.describe_global_networks(pagination_options)
