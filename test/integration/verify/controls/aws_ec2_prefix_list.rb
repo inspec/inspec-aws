@@ -1,6 +1,3 @@
-aws_ec2_prefix_list_id = attribute(:aws_ec2_prefix_list_id, value: '', description: 'The AWS  Launch Template Name.')
-
-
 title 'Test single EC2 prefix list'
 control 'aws-ec2-prefix-list-1.0' do
 

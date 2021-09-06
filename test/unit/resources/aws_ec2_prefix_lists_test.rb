@@ -68,8 +68,4 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
   def test_versions
     assert_equal(@resp.versions, [1])
   end
-
-  def test_owner_ids
-    assert_equal(@resp.owner_ids, ['test1'])
-  end
 end
