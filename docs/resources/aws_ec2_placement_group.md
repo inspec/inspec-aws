@@ -11,7 +11,7 @@ Use the `aws_ec2_placement_group` InSpec audit resource to test properties of a 
 
 ### Ensure that a Placement Group ID exists
 
-    describe aws_ec2_placement_group(group_id:'GroupID') do
+    describe aws_ec2_placement_group(group_id: 'GroupID') do
       it { should exist }
     end
 
