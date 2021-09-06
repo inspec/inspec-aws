@@ -34,7 +34,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ### Ensure a Network Interface Permission Id is available.
     describe aws_ec2_network_interface_permissions do
-      its('network_interface_permission_id') { should include 'NetworkInterfacePermissionId' }
+      its('network_interface_permission_ids') { should include 'NetworkInterfacePermissionId' }
     end
 
 ### Ensure that the interface Permission state is 'pending'.
