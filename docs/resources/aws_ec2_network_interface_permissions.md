@@ -39,7 +39,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ### Ensure that the interface Permission state is 'pending'.
     describe aws_ec2_network_interface_permissions do
-        its('state') { should include 'pending' }
+        its('states') { should include 'pending' }
     end
 
 ## Matchers
