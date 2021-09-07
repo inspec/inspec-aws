@@ -36,7 +36,7 @@ class AWSEc2VolumeAttachments < AwsResourceBase
       filter = { name: 'tag:Name', values: [opts[:name]] }
       @volume_arguments = { filters: [filter] }
     else
-      raise ArgumentError, "#{@__resource_name__}:  `volume_id` or `name` must be provided"
+      raise ArgumentError, "#{@__resource_name__}: `volume_id` or `name` must be provided"
     end
     @table = fetch_data
   end
@@ -48,13 +48,14 @@ class AWSEc2VolumeAttachments < AwsResourceBase
         @api_response = @aws.compute_client.describe_volumes(@volume_arguments)
       end
       return volume_rows if !@api_response || @api_response.empty?
-      @api_response.volumes[0].attachments.map do |attachment|
-        volume_rows += [{ attach_time: attachment.attach_time,
-                          device: attachment.device,
-                          instance_id: attachment.instance_id,
-                          state: attachment.state,
-                          volume_id: attachment.volume_id,
-                          delete_on_termination: attachment.delete_on_termination }]
+      @api_response.volumes[0].attachments.each do |res|
+        # require 'pry'; binding.pry
+        volume_rows += [{ attach_time: res.attach_time,
+                          device: res.device,
+                          instance_id: res.instance_id,
+                          state: res.state,
+                          volume_id: res.volume_id,
+                          delete_on_termination: res.delete_on_termination }]
       end
       break unless @api_response.next_token
       @volume_arguments = { next_token: @api_response.next_token }
