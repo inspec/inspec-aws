@@ -33,12 +33,12 @@ For additional information, see the [AWS documentation on AWS EC2 VPN Connection
 
 ### Ensure a destination cidr block is available.
     describe aws_ec2_vpn_connection_routes do
-      its('destination_cidr_blocks') { should eq ['192.168.10.0/24'] }
+      its('destination_cidr_blocks') { should eq [['192.168.10.0/24']] }
     end
 
 ### Ensure that the states is `available`.
     describe aws_ec2_vpn_connection_routes do
-        its('states') { should eq ['available'] }
+        its('states') { should eq [['available']] }
     end
 
 ## Matchers
