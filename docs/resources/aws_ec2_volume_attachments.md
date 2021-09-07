@@ -34,12 +34,12 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| attach_time | The time stamp when the attachment initiated. | attach_times |
-| device | The device name specified in the block device mapping (for example, /dev/sda1 ). | devices |
-| instance_id | The ID of the instance the volume is attached to. | instance_ids |
-| state | The attachment state. | states |
-| volume_id | The volume ID. | volume_ids |
-| delete_on_termination | Whether the volume is deleted on instance termination. | delete_on_terminations |
+| attach_times | The time stamp when the attachment initiated. | attach_time |
+| devices | The device name specified in the block device mapping (for example, /dev/sda1 ). | device |
+| instance_ids | The ID of the instance the volume is attached to. | instance_id |
+| states | The attachment state. | state |
+| volume_ids | The volume ID. | volume_id |
+| delete_on_terminations | Whether the volume is deleted on instance termination. | delete_on_termination |
 
 ## Examples
 
