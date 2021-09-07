@@ -13,19 +13,20 @@ The AWS::EC2::TransitGatewayRouteTablePropagation resource enables the specified
 
 Ensure that a transit gateway route table id exists.
 
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId', transit_gateway_attachment_id: "TransitGatewayAttachmentId") do
       it { should exist }
     end
 
 ## Parameters
 
-`transit_gateway_route_table_id` _(required)_
+`transit_gateway_route_table_id transit_gateway_attachment_id` _(required)_
 
 ## Properties of the Required Parameter
 
 | Property | Description|
 | --- | --- |
 | transit_gateway_route_table_id | The ID of the transit gateway route table. |
+| transit_gateway_attachment_id | The ID of the attachment. |
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetablepropagation.html).
 
@@ -41,12 +42,12 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 ## Examples
 
 ### Ensure a transit gateway attachment id is available.
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId', transit_gateway_attachment_id: "TransitGatewayAttachmentId") do
       its('transit_gateway_attachment_id') { should eq 'TransitGatewayRouteTableId' }
     end
 
 ### Ensure that the state is `enabled`.
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId', transit_gateway_attachment_id: "TransitGatewayAttachmentId") do
         its('state') { should eq 'enabled' }
     end
 
@@ -60,7 +61,7 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId', transit_gateway_attachment_id: "TransitGatewayAttachmentId") do
       it { should exist }
     end
 
@@ -74,7 +75,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TransitGatewayRouteTableId', transit_gateway_attachment_id: "TransitGatewayAttachmentId") do
       it { should be_available }
     end
 
