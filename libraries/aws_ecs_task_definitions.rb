@@ -11,6 +11,7 @@ class AWSECSTaskDefinitions < AwsResourceBase
       it { should exist }
     end
   "
+
   attr_reader :table
 
   FilterTable.create
