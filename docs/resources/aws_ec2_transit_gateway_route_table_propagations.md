@@ -42,7 +42,7 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ### Ensure a transit gateway attachment id is available.
     describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
-      its('transit_gateway_attachment_id') { should include 'TransitGatewayRouteTableId' }
+      its('transit_gateway_attachment_ids') { should include 'TransitGatewayRouteTableId' }
     end
 
 ### Ensure that the state is `enabled`.
