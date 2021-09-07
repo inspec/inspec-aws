@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSEC2VPNConnectionRoutesConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSEC2VPNConnectionRoutes.new(client_args: { stub_responses: true })
+    AWSEC2VPNConnectionRoutes.new(vpn_connection_id: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSEC2VPNConnectionRoutesConstructorTest < Minitest::Test
   end
 
   def test_vpn_connections_configs_non_existing_for_empty_response
-    refute AWSEC2VPNConnectionRoutes.new(client_args: { stub_responses: true }).exist?
+    refute AWSEC2VPNConnectionRoutes.new(vpn_connection_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -30,7 +30,7 @@ class AWSEC2VPNConnectionRoutesHappyPathTest < Minitest::Test
                           }]
     data[:data] = { :vpn_connections => [mock_data] }
     data[:client] = Aws::EC2::Client
-    @resp = AWSEC2VPNConnectionRoutes.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEC2VPNConnectionRoutes.new(vpn_connection_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_destination_cidr_blocks

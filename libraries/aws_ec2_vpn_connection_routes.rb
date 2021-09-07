@@ -7,7 +7,7 @@ class AWSEC2VPNConnectionRoutes < AwsResourceBase
   desc 'Describes one or more of your VPN connections route.'
 
   example "
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
       it { should exist }
     end
   "
@@ -22,14 +22,15 @@ class AWSEC2VPNConnectionRoutes < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: [:vpn_connection_id])
+    raise ArgumentError, "#{@__resource_name__}: vpn_connection_id must be provided" unless opts[:vpn_connection_id] && !opts[:vpn_connection_id].empty?
     @table = fetch_data
   end
 
   def fetch_data
     rows = []
     catch_aws_errors do
-      @api_response = @aws.compute_client.describe_vpn_connections
+      @api_response = @aws.compute_client.describe_vpn_connections({ vpn_connection_ids: [opts[:vpn_connection_id]] })
     end
     return rows if !@api_response || @api_response.empty?
     @api_response.vpn_connections.each do |resp|
