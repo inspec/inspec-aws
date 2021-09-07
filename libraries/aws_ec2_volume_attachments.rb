@@ -42,24 +42,23 @@ class AWSEc2VolumeAttachments < AwsResourceBase
   end
 
   def fetch_data
-    volume_rows = []
+    rows = []
     loop do
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_volumes(@volume_arguments)
       end
-      return volume_rows if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.volumes[0].attachments.each do |res|
-        # require 'pry'; binding.pry
-        volume_rows += [{ attach_time: res.attach_time,
-                          device: res.device,
-                          instance_id: res.instance_id,
-                          state: res.state,
-                          volume_id: res.volume_id,
-                          delete_on_termination: res.delete_on_termination }]
+        rows += [{ attach_time: res.attach_time,
+                   device: res.device,
+                   instance_id: res.instance_id,
+                   state: res.state,
+                   volume_id: res.volume_id,
+                   delete_on_termination: res.delete_on_termination }]
       end
       break unless @api_response.next_token
-      @volume_arguments = { next_token: @api_response.next_token }
+      @volume_arguments[:next_token] = @api_response.next_token
     end
-    @table = volume_rows
+    @table = rows
   end
 end
