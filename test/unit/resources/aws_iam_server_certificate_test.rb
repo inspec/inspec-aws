@@ -11,7 +11,6 @@ class AWSIAMServerCertificateConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSIAMServerCertificate.new(random: 'rubbish') }
   end
-
 end
 
 class AWSIAMServerCertificateHappyPathTest < Minitest::Test

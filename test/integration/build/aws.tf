@@ -3884,12 +3884,15 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
 locals {
   test_cert = "${path.module}/files/cert.pem"
 }
+
 locals {
   test_key = "${path.module}/files/key.pem"
 }
+
 resource "aws_iam_server_certificate" "test_cert" {
   name             = "some_test_cert"
   certificate_body = file(local.test_cert)
