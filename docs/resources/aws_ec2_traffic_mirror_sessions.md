@@ -16,15 +16,11 @@ An `aws_ec2_traffic_mirror_sessions` resource block declares the tests for all t
     end
 
 
-##### aws_\ec2\_traffic\_mirror\_sessions
-
-The ID of the AWS Traffic Mirror Session ID. This is in the format of `tms-` followed by 8 or 17 hexadecimal characters.
-This can be passed either as a string or as an `aws_ec2_traffic_mirror_sessions: 'value'` key-value entry in a hash.
 
 ## Properties
 
 |Property                     | Description                           | Fields|
-| ---                         | --- |                                        --- |
+| ---                         | -----------------------------------|  ----- |
 |traffic_mirror_session_ids    | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
 |traffic_mirror_target_ids     | The ID of the Traffic Mirror target. | traffic_mirror_target_id | 
 |traffic_mirror_filter_ids    | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
