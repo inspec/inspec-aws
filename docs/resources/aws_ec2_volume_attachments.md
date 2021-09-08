@@ -5,51 +5,52 @@ platform: aws
 
 # aws\_ec2\_volume\_attachments
 
-Use the `aws_ec2_volume_attachments` InSpec audit resource to test properties of a plural AWS EC2 Volume Attachment.
+Use the `aws_ec2_volume_attachments` InSpec audit resource to test properties of multiple AWS EBS volume attachments to running instances.
 
-The AWS::EC2::VolumeAttachment resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
+The `AWS::EC2::VolumeAttachment` resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
 
 ## Syntax
 
 Ensure that a volume id exists.
 
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`volume_id or name` _(required)_
+`volume_id` _(required if name not provided)_
 
-## Properties of the Required Parameter
+The volume ID.
 
-| Property | Description|
-| --- | --- |
-| volume_id | The volume ID. |
-| name | The volume name. |
+`name` _(required if volume_id not provided)_
 
-For additional information, see the [AWS documentation on AWS EC2 TransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetablepropagation.html).
+The volume name.
+
+For additional information, see the [AWS documentation on AWS EC2 Volume Attachments](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeAttachment.html).
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| attach_times | The time stamp when the attachment initiated. | attach_time |
-| devices | The device name specified in the block device mapping (for example, /dev/sda1 ). | device |
-| instance_ids | The ID of the instance the volume is attached to. | instance_id |
-| states | The attachment state. | state |
-| volume_ids | The volume ID. | volume_id |
-| delete_on_terminations | Whether the volume is deleted on instance termination. | delete_on_termination |
+| attach_times | A list of the time stamps when the attachment is initiated. | attach_time |
+| devices | A list of the device names specified in the block device mapping (for example, `/dev/sda1` ). | device |
+| instance_ids | A list of the instance IDs of that the volume is attached to. | instance_id |
+| states | A list of the attachment states. | state |
+| volume_ids | A list of the volume IDs. | volume_id |
+| delete_on_terminations | A list indicating whether the EBS volumes are deleted on instance termination. | delete_on_termination |
 
 ## Examples
 
-### Ensure a volume id is available.
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
-      its('volume_ids') { should include 'vol-1234567890' }
+### Ensure a volume ID is available.
+
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
+      its('volume_ids') { should include 'VOLUME_ID' }
     end
 
 ### Ensure that the device is `/dev/sda1`.
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
+
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
         its('devices') { should include '/dev/sda1' }
     end
 
@@ -63,13 +64,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_volume_attachments(volume_id: 'dummy') do
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
       it { should_not exist }
     end
 
@@ -77,7 +78,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
+    describe aws_ec2_volume_attachments(volume_id: 'VOLUME_ID') do
       it { should be_available }
     end
 
