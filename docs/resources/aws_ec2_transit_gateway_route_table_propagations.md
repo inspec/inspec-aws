@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_ec2\_transit_gateway_route\_table\_propagations
 
-Use the `aws_ec2_transit_gateway_route_table_propagations` InSpec audit resource to test properties of a plural AWS Lambda TransitGatewayRouteTablePropagation.
+Use the `aws_ec2_transit_gateway_route_table_propagations` InSpec audit resource to test properties of multiple propagation routes between Transit Gateway attachments and a Transit Gateway route table.
 
-The AWS::EC2::TransitGatewayRouteTablePropagation resource enables the specified attachment to propagate routes to the specified propagation route table.
+The `AWS::EC2::TransitGatewayRouteTablePropagation` resource enables the specified attachment to propagate routes to the specified propagation route table.
 
 ## Syntax
 
-Ensure that a transit gateway route table id exists.
+Ensure that a Transit Gateway route table id exists.
 
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
 
@@ -21,11 +21,7 @@ Ensure that a transit gateway route table id exists.
 
 `transit_gateway_route_table_id` _(required)_
 
-## Properties of the Required Parameter
-
-| Property | Description|
-| --- | --- |
-| transit_gateway_route_table_id | The ID of the transit gateway route table. |
+The ID of the Transit Gateway route table.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetablepropagation.html).
 
@@ -33,20 +29,22 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| transit_gateway_attachment_ids | The ID of the attachment. | transit_gateway_attachment_id |
-| resource_ids | The ID of the resource. | resource_id |
-| resource_types | The type of resource. | resource_type |
-| states | The state of the resource. | state |
+| transit_gateway_attachment_ids | A list of the attachment IDs. | transit_gateway_attachment_id |
+| resource_ids | A list of the resource IDs. | resource_id |
+| resource_types | A list of the resource types. | resource_type |
+| states | A list of the resource states. | state |
 
 ## Examples
 
-### Ensure a transit gateway attachment id is available.
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
-      its('transit_gateway_attachment_ids') { should include 'TransitGatewayRouteTableId' }
+### Ensure that a Transit Gateway attachment ID is available.
+
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
+      its('transit_gateway_attachment_ids') { should include 'TRANSIT_GATEWAY_ROUTE_TABLE_ID' }
     end
 
-### Ensure that the state is `enabled`.
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+### Ensure that a propagation route is `enabled`.
+
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
         its('states') { should include 'enabled' }
     end
 
@@ -58,23 +56,23 @@ The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
-Use `should` to test that the entity exists.
+Use `should` to test that an entity exists.
 
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test an entity does not exist.
 
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'dummy') do
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the entity is available.
+Use `should` to check if an entity is available.
 
-    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TransitGatewayRouteTableId') do
+    describe aws_ec2_transit_gateway_route_table_propagations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should be_available }
     end
 
