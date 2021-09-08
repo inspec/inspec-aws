@@ -25,17 +25,18 @@ An `aws_ec2_traffic_mirror_session` resource block declares the tests for a sing
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|traffic_mirror_session_id    | The ID for the Traffic Mirror session.|
-|traffic_mirror_target_id     | The ID of the Traffic Mirror target. |
-|traffic_mirror_filter_id     | The ID of the Traffic Mirror filter.|
-|network_interface_id         | The ID of the Traffic Mirror session's network interface. |
-|owner_id                     | The ID of the account that owns the Traffic Mirror session.|
-|packet_length                | The number of bytes in each packet to mirror. |
-|virtual_network_id           | The virtual network ID associated with the Traffic Mirror session. |
-|description                  | The description of the Traffic Mirror session. |
-|tags                         | The tags assigned to the Traffic Mirror session. |
+|Property                     | Description                           | Fields|
+| ---                         | --- |                                        --- |
+|traffic_mirror_session_id    | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
+|traffic_mirror_target_id     | The ID of the Traffic Mirror target. | traffic_mirror_target_id | 
+|traffic_mirror_filter_id     | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
+|network_interface_id         | The ID of the Traffic Mirror session's network interface. | network_interface_id |
+|owner_id                     | The ID of the account that owns the Traffic Mirror session.| owner_id |
+|packet_length                | The number of bytes in each packet to mirror. | packet_length |
+|session_number               | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. | session_number |
+|virtual_network_id           | The virtual network ID associated with the Traffic Mirror session. | virtual_network_id |
+|descriptions                 | The description of the Traffic Mirror session. | description |
+|tags                         | The tags assigned to the Traffic Mirror session.| tags |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 
