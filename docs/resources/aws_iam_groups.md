@@ -28,13 +28,15 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
-|group\_names | The group name. |
-|group\_ids   | The group ID. |
-|arns         | The Amazon Resource Name of the group. |
-|users        | Array of users associated with the group.  |
-|entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|Property              | Description|
+| ---                  | --- |
+|group\_names          | The group name. |
+|group\_ids            | The group ID. |
+|arns                  | The Amazon Resource Name of the group. |
+|users                 | Array of users associated with the group.  |
+|entries               | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+|has\_inline\_policies | Boolean indicating whether or not the Group has policies set directly on it. |
+|inline\_policy\_names | The names of the policies (if any) which are directly on the Group. |
 
 
 ## Examples
@@ -43,6 +45,12 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
     describe aws_iam_groups do
       it                 { should exist }
       its('group_names') { should include 'prod-access-group' }
+    end
+
+##### Ensure there are no Groups with inline policies
+
+    describe aws_iam_groups.where(has_inline_policies: true) do
+      its('group_names') { should be_empty }
     end
 
 ## Matchers
