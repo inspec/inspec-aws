@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-server_certificate_name = attribute(:server_certificate_name, value: '', description: 'Name of server certificates.')
-server_certificate_id = attribute(:server_certificate_id, value: '', description: 'Name of server certificates.')
+server_certificate_name = attribute(:server_certificate_name, value: '')
+server_certificate_id = attribute(:server_certificate_id, value: '')
 control 'aws_iam_server_certificate-1.0' do
 
   impact 1.0
