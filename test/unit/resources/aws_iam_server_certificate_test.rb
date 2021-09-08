@@ -21,7 +21,7 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_server_certificates
+    data[:method] = :get_server_certificate
     mock_data = {}
     mock_data[:path] = 'test1'
     mock_data[:server_certificate_name] = 'test1'
@@ -29,7 +29,7 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
     mock_data[:arn] = 'test1'
     mock_data[:upload_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_data[:expiration] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
-    data[:data] = { :server_certificate_metadata_list => [mock_data] }
+    data[:data] = { :server_certificate_metadata => [mock_data] }
     data[:client] = Aws::IAM::Client
     @resp = AWSIAMServerCertificate.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
