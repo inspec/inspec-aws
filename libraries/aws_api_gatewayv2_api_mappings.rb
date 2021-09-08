@@ -25,7 +25,6 @@ class AWSApiGatewayV2APIMappings < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(domain_name))
     @query_params = {}
-    # if opts.key?(:domain_name)
     raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
     @query_params[:domain_name] = opts[:domain_name]
     # end
@@ -35,7 +34,6 @@ class AWSApiGatewayV2APIMappings < AwsResourceBase
   def fetch_data
     rows = []
     @query_params[:max_results] = '100'
-    require 'byebug'; byebug
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_api_mappings(@query_params)
