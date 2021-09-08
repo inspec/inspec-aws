@@ -3650,3 +3650,44 @@ resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+resource "aws_ec2_traffic_mirror_target" "target" {
+  network_load_balancer_arn = aws_lb.test.arn
+}
+
+resource "aws_ec2_traffic_mirror_session" "session" {
+  description              = "traffic mirror session - terraform example"
+  network_interface_id     = aws_instance.web.primary_network_interface_id
+  session_number           = 1
+  traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
+  traffic_mirror_target_id = aws_ec2_traffic_mirror_target.target.id
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+
+}
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}

@@ -57,6 +57,7 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
+
+    @table = traffic_mirror_sessions_rows
   end
-  @table = @traffic_mirror_sessions_rows
 end

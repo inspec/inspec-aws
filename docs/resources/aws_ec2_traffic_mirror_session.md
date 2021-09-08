@@ -58,6 +58,21 @@ There are also additional properties available. For a comprehensive list, see [t
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
 
+### be_available
+
+Check if the Traffic mirror session is available.
+
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
+      it { should be_available }
+    end
+
+Use `should_not` to test a Traffic mirror session that should not exist.
+
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
+      it { should_not be_available }
+    end
+
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTrafficMirrorSessionsResult` action with Effect set to Allow.

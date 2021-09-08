@@ -33,6 +33,7 @@ class AwsEc2TrafficMirrorSessionPathTest < Minitest::Test
     mock_lt[:owner_id] = 'dummy_id'
     data[:data] = { :traffic_mirror_sessions => [mock_lt] }
     data[:client] = Aws::EC2::Client
+
     @resp = AWSEc2TrafficMirrorSession.new(traffic_mirror_session_id: 'tms-01a6e9ac9f962f154',client_args: { stub_responses: true }, stub_data: [data])
   end
 
@@ -41,6 +42,7 @@ class AwsEc2TrafficMirrorSessionPathTest < Minitest::Test
   end
 
   def test_traffic_mirror_session_id
+
     assert_equal(@resp.traffic_mirror_session_id, "tms-01a6e9ac9f962f154")
   end
 

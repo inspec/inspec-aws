@@ -47,16 +47,30 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ##### Test that Traffic  mirror target includes a value
     describe aws_ec2_traffic_mirror_sessions do
-      its('traffic_mirror_target_id') { should include 'test-mirror-id' }
+      its('traffic_mirror_target_ids') { should include 'test-mirror-id' }
     end
 
 ##### Test that description is present
     describe aws_ec2_traffic_mirror_sessions do
-      its('description') { should include 'test-description' }
+      its('descriptions') { should include 'test-description' }
     end
 
 ## Matchers
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+### be_available
+
+Check if the Traffic mirror session is available.
+
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should be_available }
+    end
+
+Use `should_not` to test a Traffic mirror session that should not exist.
+
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should_not be_available }
+    end
 
 ## AWS Permissions
 
