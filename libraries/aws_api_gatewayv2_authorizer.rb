@@ -7,7 +7,7 @@ class AWSApiGatewayV2Authorizer < AwsResourceBase
   desc 'Gets an Authorizer.'
 
   example "
-    describe aws_api_gatewayv2_authorizer(api_id: 'api_id', authorizer_id: 'authorizer_id') do
+    describe aws_api_gatewayv2_authorizer(api_id: 'APIID', authorizer_id: 'AuthorizerID') do
       it { should exist }
     end
   "

@@ -7,7 +7,7 @@ class AWSApiGatewayV2Routes < AwsResourceBase
   desc 'Gets the Routes for an API.'
 
   example "
-    describe aws_api_gatewayv2_routes(api_id: 'api_id') do
+    describe aws_api_gatewayv2_routes(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -45,7 +45,7 @@ class AWSApiGatewayV2Routes < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_routes(pagination_options)

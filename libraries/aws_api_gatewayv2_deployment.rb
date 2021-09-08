@@ -7,7 +7,7 @@ class AWSApiGatewayV2Deployment < AwsResourceBase
   desc 'Gets a Deployment.'
 
   example "
-    describe aws_api_gatewayv2_deployment(rest_api_id: 'rest_api_id') do
+    describe aws_api_gatewayv2_deployment(api_id: 'APIID', deployment_id: 'DeploymentID') do
       it { should exist }
     end
   "

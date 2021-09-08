@@ -7,7 +7,7 @@ class AWSApiGatewayV2Authorizers < AwsResourceBase
   desc 'Gets the Authorizers for an API.'
 
   example "
-    describe aws_api_gatewayv2_authorizers(api_id: 'api_id') do
+    describe aws_api_gatewayv2_authorizers(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -43,7 +43,7 @@ class AWSApiGatewayV2Authorizers < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_authorizers(pagination_options)

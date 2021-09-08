@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSApiGatewayV2RouteResponse < AwsResourceBase
   name 'aws_api_gatewayv2_route_response'
-  desc 'Gets a RouteResponse.'
+  desc 'Gets a Route Response.'
 
   example "
-    describe aws_api_gatewayv2_route_response(api_id: 'api_id', route_id: 'route_id', route_response_id: 'route_response_id') do
+    describe aws_api_gatewayv2_route_response(api_id: 'APIID', route_id: 'RouteID', route_response_id: 'RouteResponseID') do
       it { should exist }
     end
   "

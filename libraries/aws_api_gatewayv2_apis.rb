@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSApiGatewayV2APIs < AwsResourceBase
-  name 'aws_ec2_vpc_peering_connections'
-  desc 'Describes a vpc peering connection.'
+  name 'aws_api_gatewayv2_apis'
+  desc 'Gets a collection of Api resources.'
 
   example "
-    describe aws_ec2_vpc_peering_connections do
+    describe aws_api_gatewayv2_apis do
       it { should exist }
     end
   "

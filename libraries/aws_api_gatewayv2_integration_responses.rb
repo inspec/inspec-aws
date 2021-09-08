@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSApiGatewayV2IntegrationResponses < AwsResourceBase
   name 'aws_api_gatewayv2_integration_responses'
-  desc 'Gets the IntegrationResponses for an Integration.'
+  desc 'Gets the Integration Responses for an Integration.'
 
   example "
-    describe aws_api_gatewayv2_integration_responses(api_id: 'api_id', integration_id: 'integration_id') do
+    describe aws_api_gatewayv2_integration_responses(api_id: 'APIID', integration_id: 'IntegrationID') do
       it { should exist }
     end
   "
@@ -41,7 +41,7 @@ class AWSApiGatewayV2IntegrationResponses < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_integration_responses(pagination_options)

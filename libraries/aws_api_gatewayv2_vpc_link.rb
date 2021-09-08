@@ -7,7 +7,7 @@ class AWSApiGatewayV2VPCLink < AwsResourceBase
   desc 'Gets a VPC link.'
 
   example "
-    describe get_vpc_link(vpc_link_id: 'vpc_link_id') do
+    describe get_vpc_link(vpc_link_id: 'VPCLinkID') do
       it { should exist }
     end
   "

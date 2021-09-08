@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSApiGatewayV2Integrations < AwsResourceBase
-  name 'aws_ec2_vpc_peering_connections'
+  name 'aws_api_gatewayv2_integrations'
   desc 'Gets the Integrations for an API.'
 
   example "
-    describe aws_ec2_vpc_peering_connections do
+    describe aws_api_gatewayv2_integrations(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -50,7 +50,7 @@ class AWSApiGatewayV2Integrations < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_integrations(pagination_options)

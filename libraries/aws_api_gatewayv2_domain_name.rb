@@ -7,7 +7,7 @@ class AWSApiGatewayV2DomainName < AwsResourceBase
   desc 'Gets a domain name.'
 
   example "
-    describe aws_api_gatewayv2_domain_name(domain_name: 'domain_name') do
+    describe aws_api_gatewayv2_domain_name(domain_name: 'DomainName') do
       it { should exist }
     end
   "

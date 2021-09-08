@@ -7,7 +7,7 @@ class AWSApiGatewayV2API < AwsResourceBase
   desc 'Gets an Api resource.'
 
   example "
-    describe aws_api_gatewayv2_api(api_id: 'api_id') do
+    describe aws_api_gatewayv2_api(api_id: 'APIID') do
       it { should exist }
     end
   "

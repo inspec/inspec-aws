@@ -7,7 +7,7 @@ class AWSApiGatewayV2Stage < AwsResourceBase
   desc 'Gets a Stage.'
 
   example "
-    describe aws_api_gatewayv2_stage(api_id: 'api_id', stage_name: 'stage_name') do
+    describe aws_api_gatewayv2_stage(api_id: 'APIID', stage_name: 'StageName') do
       it { should exist }
     end
   "

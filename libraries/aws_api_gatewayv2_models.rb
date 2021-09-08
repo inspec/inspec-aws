@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSApiGatewayV2Models < AwsResourceBase
   name 'aws_api_gatewayv2_models'
-  desc 'Describes a vpc peering connection.'
+  desc 'Gets the Models for an API.'
 
   example "
-    describe aws_api_gatewayv2_models(api_id: 'api_id') do
+    describe aws_api_gatewayv2_models(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -37,7 +37,7 @@ class AWSApiGatewayV2Models < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_models(pagination_options)

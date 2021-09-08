@@ -7,7 +7,7 @@ class AWSApiGatewayV2IntegrationResponse < AwsResourceBase
   desc 'Gets an Integration Responses.'
 
   example "
-    describe aws_api_gatewayv2_integration_response(api_id: 'api_id', integration_id: 'integration_id', integration_response_id: 'integration_response_id') do
+    describe aws_api_gatewayv2_integration_response(api_id: 'APIID', integration_id: 'IntegrationID', integration_response_id: 'IntegrationResponseID') do
       it { should exist }
     end
   "

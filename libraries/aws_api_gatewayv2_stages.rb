@@ -7,7 +7,7 @@ class AWSApiGatewayV2Stages < AwsResourceBase
   desc 'Gets the Stages for an API.'
 
   example "
-    describe aws_api_gatewayv2_stages(api_id: 'api_id') do
+    describe aws_api_gatewayv2_stages(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -46,7 +46,7 @@ class AWSApiGatewayV2Stages < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_stages(pagination_options)

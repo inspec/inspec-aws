@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSApiGatewayV2Deployments < AwsResourceBase
-  name 'aws_api_gatewayv2_deployment'
+  name 'aws_api_gatewayv2_deployments'
   desc 'Gets the Deployments for an API.'
 
   example "
-    describe aws_api_gatewayv2_deployments(api_id: 'api_id') do
+    describe aws_api_gatewayv2_deployments(api_id: 'APIID') do
       it { should exist }
     end
   "
@@ -38,7 +38,7 @@ class AWSApiGatewayV2Deployments < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_deployments(pagination_options)

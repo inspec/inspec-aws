@@ -7,7 +7,7 @@ class AWSApiGatewayV2Model < AwsResourceBase
   desc 'Gets a Model.'
 
   example "
-    describe aws_api_gatewayv2_model(api_id: 'api_id', model_id: 'model_id') do
+    describe aws_api_gatewayv2_model(api_id: 'APIID', model_id: 'ModelID') do
       it { should exist }
     end
   "

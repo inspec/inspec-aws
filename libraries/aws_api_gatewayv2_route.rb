@@ -7,7 +7,7 @@ class AWSApiGatewayV2Route < AwsResourceBase
   desc 'Gets a Route.'
 
   example "
-    describe aws_api_gatewayv2_route(api_id: 'api_id', route_id: 'route_id') do
+    describe aws_api_gatewayv2_route(api_id: 'APIID', route_id: 'RouteID') do
       it { should exist }
     end
   "

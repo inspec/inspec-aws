@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSApiGatewayV2RouteResponses < AwsResourceBase
   name 'aws_api_gatewayv2_route_responses'
-  desc 'Gets the RouteResponses for a Route.'
+  desc 'Gets the Route Responses for a Route.'
 
   example "
-    describe aws_api_gatewayv2_route_responses(api_id: 'api_id', route_id: 'route_id') do
+    describe aws_api_gatewayv2_route_responses(api_id: 'APIID', route_id: 'RouteID') do
       it { should exist }
     end
   "
@@ -38,7 +38,7 @@ class AWSApiGatewayV2RouteResponses < AwsResourceBase
 
   def fetch_data
     rows = []
-    @query_params[:max_results] = 100
+    @query_params[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_route_responses(@query_params)

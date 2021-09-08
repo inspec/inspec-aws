@@ -35,7 +35,7 @@ class AWSApiGatewayV2VPCLinks < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_vpc_links(pagination_options)

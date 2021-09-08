@@ -7,7 +7,7 @@ class AWSApiGatewayV2APIGatewayManagedOverride < AwsResourceBase
   desc 'Tests whether the API Gateway has a managed override'
 
   example "
-    describe aws_api_gateway_restapi(api_id: 'api_id') do
+    describe aws_api_gateway_restapi(api_id: 'APIID') do
       it { should exist }
     end
   "

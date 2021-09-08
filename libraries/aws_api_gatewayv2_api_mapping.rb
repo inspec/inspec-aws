@@ -7,7 +7,7 @@ class AWSApiGatewayV2APIMapping < AwsResourceBase
   desc 'Gets an API mapping.'
 
   example "
-    describe aws_api_gatewayv2_api_mapping(api_mapping_id: 'api_mapping_id', domain_name: 'domain_name') do
+    describe aws_api_gatewayv2_api_mapping(api_mapping_id: 'APIMappingID', domain_name: 'DomainName') do
       it { should exist }
     end
   "

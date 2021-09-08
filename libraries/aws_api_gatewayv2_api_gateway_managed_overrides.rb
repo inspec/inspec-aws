@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSApiGatewayV2APIGatewayManagedOverrides < AwsResourceBase
-  name 'aws_ec2_vpc_peering_connections'
-  desc 'Describes a vpc peering connection.'
+  name 'aws_api_gatewayv2_api_gateway_managed_override'
+  desc 'Tests whether the API Gateway has a managed override'
 
   example "
-    describe aws_ec2_vpc_peering_connections do
+    describe aws_api_gatewayv2_api_gateway_managed_override do
       it { should exist }
     end
   "
@@ -32,7 +32,7 @@ class AWSApiGatewayV2APIGatewayManagedOverrides < AwsResourceBase
   def fetch_data
     pagination_options = {}
     rows = []
-    pagination_options[:max_results] = 100
+    pagination_options[:max_results] = '100'
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_apis(pagination_options)
