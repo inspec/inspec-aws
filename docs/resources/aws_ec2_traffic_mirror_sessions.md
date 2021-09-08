@@ -11,9 +11,9 @@ Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properti
 
 An `aws_ec2_traffic_mirror_sessions` resource block declares the tests for all the  AWS Traffic Mirror Sessions.
 
-describe aws_ec2_traffic_mirror_sessions do
-  it { should exist }
-end
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should exist }
+    end
 
 
 ##### aws_\ec2\_traffic\_mirror\_sessions
