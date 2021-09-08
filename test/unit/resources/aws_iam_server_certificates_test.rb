@@ -17,7 +17,7 @@ class AWSIAMServerCertificateConstructorTest < Minitest::Test
   end
 end
 
-class AWSIAMServerCertificateHappyPathTest < Minitest::Test
+class AWSIAMServerCertificatesHappyPathTest < Minitest::Test
 
   def setup
     data = {}
