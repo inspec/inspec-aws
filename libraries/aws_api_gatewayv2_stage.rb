@@ -7,7 +7,7 @@ class AWSApiGatewayV2Stage < AwsResourceBase
   desc 'Gets a Stage.'
 
   example "
-    describe aws_api_gatewayv2_stage(rest_api_id: 'rest_api_id', stage_name: 'stage_name') do
+    describe aws_api_gatewayv2_stage(api_id: 'api_id', stage_name: 'stage_name') do
       it { should exist }
     end
   "
@@ -16,7 +16,7 @@ class AWSApiGatewayV2Stage < AwsResourceBase
     opts = { api_id: opts } if opts.is_a?(String)
     opts = { stage_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id authorizer_id))
+    validate_parameters(required: %i(api_id stage_name))
     raise ArgumentError, "#{@__resource_name__}: api_id must be provided" unless opts[:api_id] && !opts[:api_id].empty?
     raise ArgumentError, "#{@__resource_name__}: stage_name must be provided" unless opts[:stage_name] && !opts[:stage_name].empty?
     @display_name = opts[:stage_name]

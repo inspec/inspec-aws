@@ -274,7 +274,7 @@ class AwsConnection
   end
 
   def apigatewayv2_client
-    aws_client(Aws::APIGatewayV2::Client)
+    aws_client(Aws::ApiGatewayV2::Client)
   end
 end
 

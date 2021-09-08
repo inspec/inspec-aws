@@ -21,7 +21,7 @@ class AWSApiGatewayV2Route < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: route_id must be provided" unless opts[:route_id] && !opts[:route_id].empty?
     @display_name = opts[:route_id]
     catch_aws_errors do
-      resp = @aws.apigatewayv2_client.get_route({ rest_api_id: opts[:rest_api_id], route_id: opts[:route_id] })
+      resp = @aws.apigatewayv2_client.get_route({ api_id: opts[:api_id], route_id: opts[:route_id] })
       @res = resp.to_h
       create_resource_methods(@res)
     end

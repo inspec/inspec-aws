@@ -17,7 +17,7 @@ class AWSApiGatewayV2APIMappings < AwsResourceBase
   FilterTable.create
              .register_column(:api_ids, field: :api_id)
              .register_column(:api_mapping_ids, field: :api_mapping_id)
-             .register_column(:api_mapping_key, field: :api_mapping_key)
+             .register_column(:api_mapping_keys, field: :api_mapping_key)
              .register_column(:stages, field: :stage)
              .install_filter_methods_on_resource(self, :table)
 
@@ -25,17 +25,17 @@ class AWSApiGatewayV2APIMappings < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(domain_name))
     @query_params = {}
+    # if opts.key?(:domain_name)
+    raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
     @query_params[:domain_name] = opts[:domain_name]
-    if opts.key?(:domain_name)
-      raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
-      @query_params[:domain_name] = opts[:domain_name]
-    end
+    # end
     @table = fetch_data
   end
 
   def fetch_data
     rows = []
-    @query_params[:max_results] = 100
+    @query_params[:max_results] = '100'
+    require 'byebug'; byebug
     loop do
       catch_aws_errors do
         @api_response = @aws.apigatewayv2_client.get_api_mappings(@query_params)

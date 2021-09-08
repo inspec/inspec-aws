@@ -13,10 +13,11 @@ class AWSApiGatewayV2APIMapping < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { rest_api_id: opts } if opts.is_a?(String)
+    opts = { api_mapping_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(api_mapping_id domain_name))
     raise ArgumentError, "#{@__resource_name__}: api_mapping_id must be provided" unless opts[:api_mapping_id] && !opts[:api_mapping_id].empty?
+    raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
     @display_name = opts[:api_mapping_id]
     catch_aws_errors do
       resp = @aws.apigatewayv2_client.get_api_mapping({ api_mapping_id: opts[:api_mapping_id], domain_name: opts[:domain_name] })
@@ -25,9 +26,9 @@ class AWSApiGatewayV2APIMapping < AwsResourceBase
     end
   end
 
-  def rest_api_id
+  def api_mapping_id
     return nil unless exists?
-    @res[:rest_api_id]
+    @res[:api_mapping_id]
   end
 
   def exists?
@@ -35,6 +36,6 @@ class AWSApiGatewayV2APIMapping < AwsResourceBase
   end
 
   def to_s
-    "Rest: #{@display_name}"
+    "API Mapping ID: #{@display_name}"
   end
 end

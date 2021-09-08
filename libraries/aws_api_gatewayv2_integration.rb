@@ -7,7 +7,7 @@ class AWSApiGatewayV2Integration < AwsResourceBase
   desc 'Gets an Integration.'
 
   example "
-    describe aws_api_gatewayv2_integration(api_id: 'api_id', authorizer_id: 'authorizer_id') do
+    describe aws_api_gatewayv2_integration(api_id: 'api_id', integration_id: 'integration_id') do
       it { should exist }
     end
   "

@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSApiGatewayV2DomainName < AwsResourceBase
   name 'aws_api_gatewayv2_domain_name'
-  desc 'Lists'
+  desc 'Gets a domain name.'
 
   example "
-    describe aws_api_gatewayv2_domain_name(domain_name: 'rest_api_id') do
+    describe aws_api_gatewayv2_domain_name(domain_name: 'domain_name') do
       it { should exist }
     end
   "
@@ -83,6 +83,6 @@ class AWSApiGatewayV2DomainName < AwsResourceBase
   end
 
   def to_s
-    "Rest: #{@display_name}"
+    "Domain Name: #{@display_name}"
   end
 end

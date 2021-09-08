@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AWSApiGatewayRestApi < AwsResourceBase
+class AWSApiGatewayV2IntegrationResponse < AwsResourceBase
   name 'aws_api_gatewayv2_integration_response'
-  desc 'Lists'
+  desc 'Gets an Integration Responses.'
 
   example "
-    describe aws_api_gatewayv2_integration_response(rest_api_id: 'rest_api_id') do
+    describe aws_api_gatewayv2_integration_response(api_id: 'api_id', integration_id: 'integration_id', integration_response_id: 'integration_response_id') do
       it { should exist }
     end
   "
@@ -17,7 +17,7 @@ class AWSApiGatewayRestApi < AwsResourceBase
     opts = { integration_id: opts } if opts.is_a?(String)
     opts = { integration_response_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id integration_id))
+    validate_parameters(required: %i(api_id integration_id integration_response_id))
     raise ArgumentError, "#{@__resource_name__}: api_id must be provided" unless opts[:api_id] && !opts[:api_id].empty?
     raise ArgumentError, "#{@__resource_name__}: integration_id must be provided" unless opts[:integration_id] && !opts[:integration_id].empty?
     raise ArgumentError, "#{@__resource_name__}: integration_response_id must be provided" unless opts[:integration_response_id] && !opts[:integration_response_id].empty?

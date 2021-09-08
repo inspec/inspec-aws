@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSApiGatewayV2Deployment < AwsResourceBase
   name 'aws_api_gatewayv2_deployment'
-  desc 'Lists'
+  desc 'Gets a Deployment.'
 
   example "
     describe aws_api_gatewayv2_deployment(rest_api_id: 'rest_api_id') do
@@ -27,9 +27,9 @@ class AWSApiGatewayV2Deployment < AwsResourceBase
     end
   end
 
-  def api_id
+  def deployment_id
     return nil unless exists?
-    @res[:api_id]
+    @res[:deployment_id]
   end
 
   def exists?
@@ -37,6 +37,6 @@ class AWSApiGatewayV2Deployment < AwsResourceBase
   end
 
   def to_s
-    "API ID: #{@display_name}"
+    "Deployment ID: #{@display_name}"
   end
 end
