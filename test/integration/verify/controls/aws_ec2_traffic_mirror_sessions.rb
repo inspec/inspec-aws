@@ -1,7 +1,7 @@
-traffic_mirror_session_id = attribute(:traffic_mirror_session_id, value: '', description: 'The ID of Traffic mirror session.')
-traffic_mirror_target_id = attribute(:traffic_mirror_target_id, value: '', description: 'The ID of Traffic mirror session.')
-traffic_mirror_filter_id = attribute(:traffic_mirror_filter_id, value: '', description: 'The ID of Traffic mirror session.')
-network_interface_id = attribute(:network_interface_id, value: '', description: 'The ID of Traffic mirror session.')
+traffic_mirror_session_id = attribute(:traffic_mirror_session_id, value: '')
+traffic_mirror_target_id = attribute(:traffic_mirror_target_id, value: '')
+traffic_mirror_filter_id = attribute(:traffic_mirror_filter_id, value: '')
+network_interface_id = attribute(:network_interface_id, value: '')
 
 
 control 'aws_ec2_traffic_mirror_sessions-v1.0.0' do
