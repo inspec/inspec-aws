@@ -3650,6 +3650,7 @@ resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }
+
 resource "aws_ec2_traffic_mirror_filter" "filter" {
   description      = "traffic mirror filter - terraform example"
   network_services = ["amazon-dns"]
@@ -3676,6 +3677,7 @@ resource "aws_instance" "web" {
   }
 
 }
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
