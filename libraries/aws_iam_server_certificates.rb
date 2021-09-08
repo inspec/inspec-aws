@@ -20,7 +20,7 @@ class AWSIAMServerCertificates < AwsResourceBase
              .register_column(:server_certificate_ids, field: :server_certificate_id)
              .register_column(:arns, field: :arn)
              .register_column(:upload_date, field: :upload_date)
-             .register_column(:expiration, field: :expiration)
+             .register_column(:expiration_date, field: :expiration_date)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -43,7 +43,7 @@ class AWSIAMServerCertificates < AwsResourceBase
                                            server_certificate_id:     p.server_certificate_id,
                                            arn:                       p.arn,
                                            upload_date:               p.upload_date,
-                                           expiration:                p.expiration }]
+                                           expiration_date:                p.expiration }]
       end
       break unless @response.is_truncated
       break unless @response.marker

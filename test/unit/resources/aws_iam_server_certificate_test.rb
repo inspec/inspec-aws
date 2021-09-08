@@ -31,7 +31,7 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
     mock_data[:expiration] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :server_certificate_metadata_list => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @resp = AWSIAMServerCertificates.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSIAMServerCertificate.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_iam_server_certificate_exists
@@ -43,7 +43,7 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
   end
 
   def test_server_certificate_name
-    assert_equal(@resp.server_certificate_name, ['test1'])
+    assert_equal(@resp.server_certificate_name, 'test1')
   end
 
   def test_server_certificate_id

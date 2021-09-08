@@ -712,3 +712,6 @@ output "aws_secretsmanager_secret_sm_id" {
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
 }
+output "server_certificate_name" {
+  value = aws_iam_server_certificate.test_cert.name
+}
