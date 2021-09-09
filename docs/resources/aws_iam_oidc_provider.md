@@ -5,15 +5,15 @@ platform: aws
 
 # aws\_iam\_oidc\_provider
 
-Use the `aws_iam_oidc_provider` InSpec audit resource to test properties of a single IAM OIDC Provider.
+Use the `aws_iam_oidc_provider` InSpec audit resource to test properties of a single IAM OpenID Connect (OIDC) provider.
 
-This resource retrieves information about the specified OIDC Provider.
+This resource retrieves information about the specified OIDC provider.
 
 ## Syntax
 
 Ensure that an OIDC provider exists.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
       it { should exist }
     end
 
@@ -21,11 +21,10 @@ Ensure that an OIDC provider exists.
 
 `open_id_connect_provider_arn` _(required)_
 
-| Property | Description|
-| --- | --- |
-| open_id_connect_provider_arn | The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. |
+The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for.
 
-For additional information, see the [AWS documentation on IAM OIDC Provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-oidcprovider.html).
+
+For additional information, see the [AWS documentation on IAM OIDC provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-oidcprovider.html).
 
 ## Properties
 
@@ -37,15 +36,16 @@ For additional information, see the [AWS documentation on IAM OIDC Provider](htt
 
 ## Examples
 
-### Ensure an url is available.
+### Ensure an URL is available.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
-      its('url') { should eq 'test.com' }
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
+      its('url') { should eq 'example.com' }
     end
 
 ### Ensure that tags are available.
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
-        its('tags') { should eq ':test_tag => 'oidc' }
+
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
+        its('tags') { should eq ':TAG => 'TAG_VALUE' }
     end
 
 ## Matchers
@@ -58,13 +58,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
       it { should_not exist }
     end
 
@@ -72,7 +72,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'arnType') do
+    describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
       it { should be_available }
     end
 

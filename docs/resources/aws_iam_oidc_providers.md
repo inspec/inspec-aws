@@ -5,20 +5,23 @@ platform: aws
 
 # aws\_iam\_oidc\_providers
 
-Use the `aws_iam_oidc_providers` InSpec audit resource to test properties of a set of IAM OIDC Provider.
+Use the `aws_iam_oidc_providers` InSpec audit resource to test properties of a set of AWS IAM OpenID Connect (OIDC) providers.
 
-This resource retrieves information about all the OIDC Providers.
+This resource retrieves information about all OIDC providers.
 
 ## Syntax
 
-Ensure that OIDC providers exists.
+Ensure that an OIDC provider exists.
 
     describe aws_iam_oidc_providers do
       it { should exist }
     end
 
+For additional information, see the [AWS documentation on IAM OIDC provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-oidcprovider.html).
 
-For additional information, see the [AWS documentation on IAM OIDC Provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-oidcprovider.html).
+## Parameters
+
+This resource does not require any parameters.
 
 ## Properties
 
@@ -31,7 +34,7 @@ For additional information, see the [AWS documentation on IAM OIDC Provider](htt
 ### Ensure a OIDC Provider is available.
 
     describe aws_iam_oidc_providers do
-      its('arns') { should include 'arnType' }
+      its('arns') { should include 'OIDC_PROVIDER_ARN' }
     end
 
 ## Matchers
