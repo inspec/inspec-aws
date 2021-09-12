@@ -3977,3 +3977,12 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
+
+resource "aws_iam_openid_connect_provider" "for_oidc" {
+  url = "https://accounts.google.com"
+
+  client_id_list = [
+    "266362248691-342342xasdasdasda-apps.googleusercontent.com",
+  ]
+  thumbprint_list = []
+}

@@ -729,6 +729,7 @@ output "aws_iam_role_id" {
 output "aws_iam_role_arn" {
   value = aws_iam_role.aws_iam_role_test.arn
 }
+
 output "aws_secretsmanager_secret_sm_id" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.id
 }
@@ -763,4 +764,7 @@ output "traffic_mirror_filter_id" {
 
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
+}
+output "oidc_arn" {
+  value = aws_iam_openid_connect_provider.for_oidc.arn
 }
