@@ -1,9 +1,139 @@
-<!-- latest_release 1.56.11 -->
+<!-- latest_release 1.66.7 -->
+## [v1.66.7](https://github.com/inspec/inspec-aws/tree/v1.66.7) (2021-09-12)
+
+#### Merged Pull Requests
+- NIrbhay/  Traffic mirror Session [#493](https://github.com/inspec/inspec-aws/pull/493) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.66.6](https://github.com/inspec/inspec-aws/tree/v1.66.6) (2021-09-12)
+
+#### Merged Pull Requests
+- Added support to audit  Traffic mirror filter [#491](https://github.com/inspec/inspec-aws/pull/491) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.66.5](https://github.com/inspec/inspec-aws/tree/v1.66.5) (2021-09-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_volume_attachment [#496](https://github.com/inspec/inspec-aws/pull/496) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.4](https://github.com/inspec/inspec-aws/tree/v1.66.4) (2021-09-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_transit_gateway_route_table_propagation [#495](https://github.com/inspec/inspec-aws/pull/495) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.3](https://github.com/inspec/inspec-aws/tree/v1.66.3) (2021-09-05)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_vpc_peering_connection [#497](https://github.com/inspec/inspec-aws/pull/497) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.2](https://github.com/inspec/inspec-aws/tree/v1.66.2) (2021-09-05)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_vpn_gateway_route_propagation [#499](https://github.com/inspec/inspec-aws/pull/499) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.1](https://github.com/inspec/inspec-aws/tree/v1.66.1) (2021-09-05)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_group_source [#490](https://github.com/inspec/inspec-aws/pull/490) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.0](https://github.com/inspec/inspec-aws/tree/v1.66.0) (2021-09-01)
+
+#### Merged Pull Requests
+- aws_transit_gateway_connect [#488](https://github.com/inspec/inspec-aws/pull/488) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.65.0](https://github.com/inspec/inspec-aws/tree/v1.65.0) (2021-09-01)
+
+#### Merged Pull Requests
+- Added feature request for origin_path in aws_cloudfront_distribution … [#516](https://github.com/inspec/inspec-aws/pull/516) ([sharmajee1](https://github.com/sharmajee1))
+
+## [v1.64.0](https://github.com/inspec/inspec-aws/tree/v1.64.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_group_member [#489](https://github.com/inspec/inspec-aws/pull/489) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.63.0](https://github.com/inspec/inspec-aws/tree/v1.63.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_domain [#486](https://github.com/inspec/inspec-aws/pull/486) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.62.0](https://github.com/inspec/inspec-aws/tree/v1.62.0) (2021-08-31)
+
+#### Merged Pull Requests
+- aws_transit_gateway_multicast_domain_association [#487](https://github.com/inspec/inspec-aws/pull/487) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.61.0](https://github.com/inspec/inspec-aws/tree/v1.61.0) (2021-08-31)
+
+#### Merged Pull Requests
+- Adding RDS snapshot resource [#519](https://github.com/inspec/inspec-aws/pull/519) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.60.0](https://github.com/inspec/inspec-aws/tree/v1.60.0) (2021-08-27)
+
+#### Merged Pull Requests
+- adding new attribute for cloud front distribution resource [#517](https://github.com/inspec/inspec-aws/pull/517) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.59.0](https://github.com/inspec/inspec-aws/tree/v1.59.0) (2021-08-18)
+
+#### Merged Pull Requests
+- AWS Shield Subscription - finalize PR#272 [#400](https://github.com/inspec/inspec-aws/pull/400) ([tbugfinder](https://github.com/tbugfinder))
+
+## [v1.58.5](https://github.com/inspec/inspec-aws/tree/v1.58.5) (2021-08-11)
+
+#### Merged Pull Requests
+- DynamoDB Pagination Issue Fix [#508](https://github.com/inspec/inspec-aws/pull/508) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.58.4](https://github.com/inspec/inspec-aws/tree/v1.58.4) (2021-08-11)
+
+#### Merged Pull Requests
+- Fix: Resource aws_rds_clusters Raises NULLException [#507](https://github.com/inspec/inspec-aws/pull/507) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.58.3](https://github.com/inspec/inspec-aws/tree/v1.58.3) (2021-07-27)
+
+#### Merged Pull Requests
+- Changes Done in the Readme.md file [#501](https://github.com/inspec/inspec-aws/pull/501) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.58.2](https://github.com/inspec/inspec-aws/tree/v1.58.2) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_lambda_permission [#478](https://github.com/inspec/inspec-aws/pull/478) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.58.1](https://github.com/inspec/inspec-aws/tree/v1.58.1) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_route53resolver_resolver_rule [#476](https://github.com/inspec/inspec-aws/pull/476) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.58.0](https://github.com/inspec/inspec-aws/tree/v1.58.0) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_servicecatalog_portfolio_principal_association [#469](https://github.com/inspec/inspec-aws/pull/469) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.57.0](https://github.com/inspec/inspec-aws/tree/v1.57.0) (2021-07-27)
+
+#### Merged Pull Requests
+- aws secret manager secret [#465](https://github.com/inspec/inspec-aws/pull/465) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.15](https://github.com/inspec/inspec-aws/tree/v1.56.15) (2021-07-27)
+
+#### Merged Pull Requests
+- aws ecs service [#370](https://github.com/inspec/inspec-aws/pull/370) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.14](https://github.com/inspec/inspec-aws/tree/v1.56.14) (2021-07-27)
+
+#### Merged Pull Requests
+- aws_iam_instance_profile [#382](https://github.com/inspec/inspec-aws/pull/382) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.13](https://github.com/inspec/inspec-aws/tree/v1.56.13) (2021-07-26)
+
+#### Merged Pull Requests
+- aws_route53_record_set [#473](https://github.com/inspec/inspec-aws/pull/473) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.56.12](https://github.com/inspec/inspec-aws/tree/v1.56.12) (2021-07-26)
+
+#### Merged Pull Requests
+- aws_lambda_event_source_mapping [#383](https://github.com/inspec/inspec-aws/pull/383) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.56.11](https://github.com/inspec/inspec-aws/tree/v1.56.11) (2021-07-22)
 
 #### Merged Pull Requests
 - aws_servicecatalog_launch_role_role_constraint [#468](https://github.com/inspec/inspec-aws/pull/468) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.56.10](https://github.com/inspec/inspec-aws/tree/v1.56.10) (2021-07-22)
 

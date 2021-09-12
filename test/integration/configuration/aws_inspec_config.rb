@@ -276,10 +276,17 @@ module AWSInspecConfig
       aws_type: "EC2",
       aws_batch_job_name: "test1",
       aws_batch_job_type: "container",
+      aws_route52_record_set_name: "integration.test.",
       aws_crawler_name: "crawler",
       aws_sfn_state_machine_name: "my-state-machine",
       aws_transfer_user_name: "tftestuser",
-      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}"
+      aws_route53_resolver_endpoint_name: "endpooint-#{add_random_string}",
+      aws_ecs_task_definition_family: "service-#{add_random_string}",
+      aws_ecs_service_name: "bar-#{add_random_string}",
+      aws_cluster_name: "white-hart-#{add_random_string}",
+      aws_location: "us-east-2c",
+      aws_accepter_vpc_info_cidr_block: "10.2.0.0/16",
+      aws_requester_vpc_info_cidr_block: "10.1.0.0/16",
   }
 
   def self.config
@@ -325,7 +332,7 @@ module AWSInspecConfig
     outputs = get_tf_output_vars
     outputs.each do |tf|
       # also assuming single values here
-      value = `cd "#{build_dir}" && terraform output #{tf}`.strip
+      value = `cd #{build_dir} && terraform output #{tf}`.strip
       contents[tf.to_sym] = value
     end
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), 'w') do |f|

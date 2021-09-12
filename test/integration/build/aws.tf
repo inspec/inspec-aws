@@ -7,6 +7,7 @@ terraform {
 # Configure variables
 variable "aws_region" {}
 variable "aws_availability_zone" {}
+variable "aws_location" {}
 
 variable "aws_alb_name" {}
 variable "aws_auto_scaling_group" {}
@@ -220,7 +221,14 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
-
+variable "aws_accepter_vpc_info_cidr_block" {}
+variable "aws_requester_vpc_info_cidr_block" {}
+variable "aws_route52_record_set_name" {}
+variable "aws_cluster_name" {}
+variable "aws_ecs_task_definition_family" {}
+variable "aws_ecs_service_name" {}
+variable "aws_iam_instance_profile_name1" {}
+variable "aws_iam_role_name1" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -368,6 +376,7 @@ resource "aws_ebs_volume" "inspec_encrypted_ebs_volume" {
     Name = var.aws_ebs_volume_name
   }
 }
+
 resource "aws_ebs_snapshot" "inspec_encrypted_ebs_snapshot" {
   # count     = var.aws_enable_creation
   count     = 1
@@ -910,6 +919,11 @@ resource "aws_db_instance" "db_rds" {
     Name        = var.aws_rds_db_name
     Environment = "Dev"
   }
+}
+
+resource "aws_db_snapshot" "test_db_snapshot" {
+  db_instance_identifier = aws_db_instance.db_rds.id
+  db_snapshot_identifier = "testsnapshot1234"
 }
 
 # Cloudtrail
@@ -2147,6 +2161,89 @@ resource "aws_elasticache_replication_group" "replication_group" {
   transit_encryption_enabled    = false
 }
 
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "first"
+      image     = "service-first"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    },
+    {
+      name      = "second"
+      image     = "service-second"
+      cpu       = 10
+      memory    = 256
+      essential = true
+      portMappings = [
+        {
+          containerPort = 443
+          hostPort      = 443
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_ecs_service" "bar" {
+  name                = var.aws_ecs_service_name
+  cluster             = aws_ecs_cluster.for_ecs_service.id
+  task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+  scheduling_strategy = "DAEMON"
+}
+resource "aws_ecs_cluster" "for_ecs_service" {
+  name = var.aws_cluster_name
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+resource "aws_iam_instance_profile" "aws_iam_instance_profile_test" {
+  name = var.aws_iam_instance_profile_name1
+  role = aws_iam_role.aws_iam_role_test[0].name
+}
+
+resource "aws_iam_role" "aws_iam_role_test" {
+  count = 1
+  name  = var.aws_iam_role_name1
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
 resource "aws_transfer_server" "aws_transfer_server_tu_test" {
   identity_provider_type = "SERVICE_MANAGED"
 
@@ -2274,7 +2371,6 @@ resource "aws_cloudwatch_event_rule" "aws_cloudwatch_event_rule_test" {
   EOF
 }
 
-
 resource "aws_elasticsearch_domain" "aws_elasticsearch_domain_test" {
   domain_name           = var.aws_elasticsearch_domain_name
   elasticsearch_version = var.aws_elasticsearch_version
@@ -2315,6 +2411,65 @@ resource "aws_glue_catalog_database" "aws_glue_catalog_database_test" {
   name = "sampledb"
   description = "Sample Description"
 }
+
+resource "aws_ecs_task_definition" "aws_ecs_task_definition_test" {
+  family = "service"
+  container_definitions = jsonencode([
+    {
+      name      = "first"
+      image     = "service-first"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
+    },
+    {
+      name      = "second"
+      image     = "service-second"
+      cpu       = 10
+      memory    = 256
+      essential = true
+      portMappings = [
+        {
+          containerPort = 443
+          hostPort      = 443
+        }
+      ]
+    }
+  ])
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
+
+resource "aws_ecs_service" "bar" {
+  name                = var.aws_ecs_service_name
+  cluster             = aws_ecs_cluster.for_ecs_service.id
+  task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
+  scheduling_strategy = "DAEMON"
+}
+
+resource "aws_ecs_cluster" "for_ecs_service" {
+  name = var.aws_cluster_name
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
 
 resource "aws_dms_certificate" "aws_dms_certificate_test" {
   certificate_id = "test1"
@@ -2630,7 +2785,6 @@ resource "aws_autoscaling_policy" "aws_autoscaling_policy_test" {
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
   autoscaling_group_name = aws_autoscaling_group.aws_autoscaling_group_policy.name
-
 }
 
 resource "aws_autoscaling_group" "aws_autoscaling_group_policy" {
@@ -2738,7 +2892,6 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "aws_ec2_transit_gateway_vpc_a
   vpc_id             = aws_vpc.attachment.id
   transit_gateway_default_route_table_association = false
   transit_gateway_default_route_table_propagation = false
-
 }
 
 resource "aws_ec2_transit_gateway_route_table" "aws_ec2_transit_gateway_route_table_association1" {
@@ -2775,7 +2928,6 @@ resource "aws_network_acl" "inspec-nw-acl" {
     from_port  = 80
     to_port    = 80
   }
-
 
   tags = {
     Name = var.aws_network_acl_name
@@ -3100,16 +3252,11 @@ resource "aws_subnet" "aws_subnet_mount_mt_test" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = var.aws_availability_zone
 }
-  cidr_block        = "10.0.3.0/24"
-  availability_zone = "us-east-2c"
-
-}
 
 resource "aws_subnet" "for_res" {
   vpc_id            = aws_vpc.aws_vpc_mount_mt_test.id
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-2c"
-
 }
 
 resource "aws_route53_resolver_endpoint" "for-int" {
@@ -3649,7 +3796,184 @@ resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_te
 resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
   name = "TestLogGroup"
 }
+
 resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
+}
+
+#aws_vpc_peering_connection terraform
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_test1.id
+  vpc_id        = aws_vpc.aws_vpc_test2.id
+  auto_accept   = true
+
+  tags = {
+    Name = "VPC Peering between foo and bar"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_test1" {
+  cidr_block = var.aws_requester_vpc_info_cidr_block
+}
+
+resource "aws_vpc" "aws_vpc_test2" {
+  cidr_block = var.aws_accepter_vpc_info_cidr_block
+}
+
+#lambda_event source mapping
+resource "aws_sqs_queue" "terraform_queue" {
+  name                      = "terraform-example-queue"
+  delay_seconds             = 90
+  max_message_size          = 2048
+  message_retention_seconds = 86400
+  receive_wait_time_seconds = 10
+
+}
+
+resource "aws_iam_role" "iam_for_lambda" {
+  name = "iam_for_lambda"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "test_lambda" {
+  filename         = local.test_lambda_zip_file_name
+  description      = "Test Lambda"
+  function_name    = "test_Lambda"
+  role             = aws_iam_role.iam_for_lambda.arn
+  handler          = "exports.test"
+  source_code_hash = filebase64sha256(local.test_lambda_zip_file_name)
+  runtime          = "python3.7"
+  publish          = true
+  timeout          = 10
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+# Event source from SQS
+resource "aws_lambda_event_source_mapping" "event_source_mapping" {
+  event_source_arn = aws_sqs_queue.terraform_queue.arn
+  enabled          = true
+  function_name    = aws_lambda_function.test_lambda.arn
+  batch_size       = 1
+}
+
+resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
+  role       = aws_iam_role.iam_for_lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
+}
+resource "aws_route53_zone" "for_route53_set_record_test" {
+name = var.aws_route52_record_set_name
+}
+
+resource "aws_route53_record" "for_route53_set_record_test" {
+allow_overwrite = true
+name            = var.aws_route52_record_set_name
+ttl             = 172800
+type            = "A"
+zone_id         = aws_route53_zone.for_route53_set_record_test.zone_id
+records = ["192.0.0.2"]
+}
+
+// SECRETS MANAGER
+resource "aws_secretsmanager_secret" "aws_secretsmanager_secret_sm_test" {
+  name = "secret-manager-test"
+  description  = "Test Description."
+
+  tags = {
+    Name = "main"
+  }
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = var.aws_location
+}
+
+resource "aws_lambda_permission" "allow_cloudwatch" {
+  statement_id  = "AllowExecutionFromSqs"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "sqs.amazonaws.com"
+  source_arn    = aws_sqs_queue.terraform_queue.arn
+}
+
+#VPC Peering Connection
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_peering_test1.id
+  vpc_id        = aws_vpc.aws_vpc_peering_test2.id
+  peer_region   = "us-east-2"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test1" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test2" {
+  cidr_block = "10.2.0.0/16"
+}
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+resource "aws_ec2_traffic_mirror_target" "target" {
+  network_load_balancer_arn = aws_lb.test.arn
+}
+
+resource "aws_ec2_traffic_mirror_session" "session" {
+  description              = "traffic mirror session - terraform example"
+  network_interface_id     = aws_instance.web.primary_network_interface_id
+  session_number           = 1
+  traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
+  traffic_mirror_target_id = aws_ec2_traffic_mirror_target.target.id
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
 }

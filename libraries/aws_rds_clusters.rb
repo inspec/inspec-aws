@@ -42,7 +42,7 @@ class AwsRdsClusters < AwsResourceBase
       response.db_clusters.each do |rds_cluster|
         cluster_rows += [{ cluster_identifier:               rds_cluster.db_cluster_identifier,
                            database_name:                    rds_cluster.database_name,
-                           cluster_members:                  rds_cluster.db_cluster_members[0].db_instance_identifier,
+                           cluster_members:                  rds_cluster.db_cluster_members.map(&:db_instance_identifier),
                            engine:                           rds_cluster.engine,
                            engine_version:                   rds_cluster.engine_version,
                            status:                           rds_cluster.status,
