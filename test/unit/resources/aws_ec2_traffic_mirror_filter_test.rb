@@ -26,10 +26,10 @@ class AWSEc2TrafficMirrorFilterPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_traffic_mirror_filters
-    mock_lt = {}
-    mock_lt[:traffic_mirror_filter_id] = 'tmf-01a6e9ac9f962f154'
-    mock_lt[:description] = 'test-description'
-    data[:data] = { :traffic_mirror_filters => [mock_lt] }
+    mock_data = {}
+    mock_data[:traffic_mirror_filter_id] = 'tmf-01a6e9ac9f962f154'
+    mock_data[:description] = 'test-description'
+    data[:data] = { :traffic_mirror_filters => [mock_data] }
     data[:client] = Aws::EC2::Client
     @resp = AWSEc2TrafficMirrorFilter.new(traffic_mirror_filter_id: 'tmf-01a6e9ac9f962f154', client_args: { stub_responses: true }, stub_data: [data])
   end
