@@ -106,6 +106,49 @@ supports:
   - platform: aws
 ```
 
+
+### Use the Resources
+
+Since this is an InSpec resource pack, it only defines InSpec resources. To use these resources in your own controls you should create your own profile:
+
+#### Create a new profile
+
+```
+$ inspec init profile --platform aws my-aws-profile
+```
+
+The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows
+
+Example `inspec.yml`:
+
+```yaml
+name: my-aws-profile
+title: My own AWS profile
+version: 0.1.0
+inspec_version: '>= 4.6.9'
+depends:
+ - name: inspec-aws
+   url: https://github.com/inspec/inspec-aws/archive/x.tar.gz
+supports:
+ - platform: aws
+```
+
+(For available inspec-aws versions, see this list of [inspec-aws versions](https://github.com/inspec/inspec-aws/releases).)
+
+If a resource is in local, change the `url` to `path`.
+
+```yaml
+name: my-aws-profile
+title: My own AWS profile
+version: 0.1.0
+inspec_version: '>= 4.6.9'
+depends:
+ - name: inspec-aws
+   path: ../my-aws-profile
+supports:
+ - platform: aws
+```
+
 (For available inspec-aws versions, see this list of [inspec-aws versions](https://github.com/inspec/inspec-aws/releases).)
 
 Add some tests and run the profile via:
@@ -113,7 +156,6 @@ Add some tests and run the profile via:
 ```
 $ inspec exec my-profile -t aws://
 ```
-
 
 ## Resource documentation
 This resource pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/inspec/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/inspec/inspec-aws/pulls).
@@ -188,12 +230,24 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_ec2_instances](docs/resources/aws_ec2_instances.md)
 - [aws_ec2_launch_template](docs/resources/aws_ec2_launch_template.md)
 - [aws_ec2_launch_templates](docs/resources/aws_ec2_launch_templates.md)
+- [aws_ec2_launch_templates](docs/resources/aws_ec2_launch_templates.md)
+- [aws_ec2_traffic_mirror_filter](docs/resources/aws_ec2_traffic_mirror_filter.md)
+- [aws_ec2_traffic_mirror_filters](docs/resources/aws_ec2_traffic_mirror_filters.md)
+- [aws_ec2_traffic_mirror_session](docs/resources/aws_ec2_traffic_mirror_session.md)
+- [aws_ec2_traffic_mirror_sessions](docs/resources/aws_ec2_traffic_mirror_sessions.md)
 - [aws_ec2_transit_gateway_attachment](docs/resources/aws_ec2_transit_gateway_attachment.md)
 - [aws_ec2_transit_gateway_attachments](docs/resources/aws_ec2_transit_gateway_attachments.md)
 - [aws_ec2_transit_gateway_route_table](docs/resources/aws_ec2_transit_gateway_route_table.md)
 - [aws_ec2_transit_gateway_route_tables](docs/resources/aws_ec2_transit_gateway_route_tables.md)
 - [aws_ec2_transit_gateway_route_table_association](docs/resources/aws_ec2_transit_gateway_route_table_association.md)
 - [aws_ec2_transit_gateway_route_table_associations](docs/resources/aws_ec2_transit_gateway_route_table_associations.md)
+- [aws_ec2_transit_gateway_route_table_propagation](docs/resources/aws_ec2_transit_gateway_route_table_propagation.md)
+- [aws_ec2_transit_gateway_route_table_propagations](docs/resources/aws_ec2_transit_gateway_route_table_propagations.md)
+- [aws_ec2_volume_attachments](docs/resources/aws_ec2_volume_attachments.md)
+- [aws_ec2_vpc_peering_connection](docs/resources/aws_ec2_vpc_peering_connection.md)
+- [aws_ec2_vpc_peering_connections](docs/resources/aws_ec2_vpc_peering_connections.md)
+- [aws_ec2_vpn_gateway_route_propagation](docs/resources/aws_ec2_vpn_gateway_route_propagation.md)
+- [aws_ec2_vpn_gateway_route_propagations](docs/resources/aws_ec2_vpn_gateway_route_propagations.md)
 - [aws_ecr](docs/resources/aws_ecr.md)
 - [aws_ecr_image](docs/resources/aws_ecr_image.md)
 - [aws_ecr_images](docs/resources/aws_ecr_images.md)
@@ -252,6 +306,8 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_iam_inline_policy](docs/resources/aws_iam_inline_policy.md)
 - [aws_iam_instance_profile](docs/resources/aws_iam_instance_profile.md)
 - [aws_iam_instance_profiles](docs/resources/aws_iam_instance_profiles.md)
+- [aws_iam_oidc_provider](docs/resources/aws_iam_oidc_provider.md)
+- [aws_iam_oidc_providers](docs/resources/aws_iam_oidc_providers.md)
 - [aws_iam_password_policy](docs/resources/aws_iam_password_policy.md)
 - [aws_iam_policy](docs/resources/aws_iam_policy.md)
 - [aws_iam_policies](docs/resources/aws_iam_policies.md)
@@ -273,7 +329,8 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_lambda_permission](docs/resources/aws_lambda_permission.md)
 - [aws_lambda_permissions](docs/resources/aws_lambda_permissions.md)
 - [aws_launch_configuration](docs/resources/aws_launch_configuration.md)
-- [aws_launch_configurations](docs/resources/aws_launch_configurations.md)
+- [aws_logs_metric_filter](docs/resources/aws_logs_metric_filter.md)
+- [aws_logs_metric_filters](docs/resources/aws_logs_metric_filters.md)
 - [aws_nat_gateway](docs/resources/aws_nat_gateway.md)
 - [aws_nat_gateways](docs/resources/aws_nat_gateways.md)
 - [aws_network_acl](docs/resources/aws_network_acl.md)
@@ -289,6 +346,7 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_rds_group_options](docs/resources/aws_rds_group_options.md)
 - [aws_rds_snapshot](docs/resources/aws_rds_snapshot.md)
 - [aws_rds_snapshots](docs/resources/aws_rds_snapshots.md)
+- [aws_rds_snapshot_attributes](docs/resources/aws_rds_snapshot_attributes.md)
 - [aws_redshift_cluster](docs/resources/aws_redshift_cluster.md)
 - [aws_redshift_clusters](docs/resources/aws_redshift_clusters.md)
 - [aws_redshift_cluster_parameter_group](docs/resources/aws_redshift_cluster_parameter_group.md)
@@ -306,8 +364,9 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_route_table](docs/resources/aws_route_table.md)
 - [aws_route_tables](docs/resources/aws_route_tables.md)
 - [aws_s3_bucket](docs/resources/aws_s3_bucket.md)
-- [aws_s3_bucket_object](docs/resources/aws_s3_bucket_object.md)
 - [aws_s3_buckets](docs/resources/aws_s3_buckets.md)
+- [aws_s3_bucket_object](docs/resources/aws_s3_bucket_object.md)
+- [aws_s3_bucket_objects](docs/resources/aws_s3_bucket_objects.md)
 - [aws_secretsmanager_secret](docs/resources/aws_secretsmanager_secret.md)
 - [aws_secretsmanager_secrets](docs/resources/aws_secretsmanager_secrets.md)
 - [aws_security_group](docs/resources/aws_security_group.md)
@@ -338,9 +397,19 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_sts_caller_identity](docs/resources/aws_sts_caller_identity.md)
 - [aws_subnet](docs/resources/aws_subnet.md)
 - [aws_subnets](docs/resources/aws_subnets.md)
-- [aws_transit_gateway](docs/resources/aws_transit_gateway.md)
 - [aws_transfer_user](docs/resources/aws_transfer_user.md)
 - [aws_transfer_users](docs/resources/aws_transfer_users.md)
+- [aws_transit_gateway](docs/resources/aws_transit_gateway.md)
+- [aws_transit_gateway_connect](docs/resources/aws_transit_gateway_connect.md)
+- [aws_transit_gateway_connects](docs/resources/aws_transit_gateway_connects.md)
+- [aws_transit_gateway_multicast_domain](docs/resources/aws_transit_gateway_multicast_domain.md)
+- [aws_transit_gateway_multicast_domains](docs/resources/aws_transit_gateway_multicast_domains.md)
+- [aws_transit_gateway_multicast_domain_association](docs/resources/aws_transit_gateway_multicast_domain_association.md)
+- [aws_transit_gateway_multicast_domain_associations](docs/resources/aws_transit_gateway_multicast_domain_associations.md)
+- [aws_transit_gateway_multicast_group_member](docs/resources/aws_transit_gateway_multicast_group_member.md)
+- [aws_transit_gateway_multicast_group_members](docs/resources/aws_transit_gateway_multicast_group_members.md)
+- [aws_transit_gateway_multicast_group_source](docs/resources/aws_transit_gateway_multicast_group_source.md)
+- [aws_transit_gateway_multicast_group_sources](docs/resources/aws_transit_gateway_multicast_group_sources.md)
 - [aws_transit_gateway_route](docs/resources/aws_transit_gateway_route.md)
 - [aws_transit_gateway_routes](docs/resources/aws_transit_gateway_routes.md)
 - [aws_vpc](docs/resources/aws_vpc.md)
