@@ -748,3 +748,19 @@ output "aws_vpc_peering_test2_id" {
 output "aws_vpc_peering_connection_id" {
   value = aws_vpc_peering_connection.aws_vpc_peering_connection_test.id
 }
+
+output "traffic_mirror_session_id" {
+  value = aws_ec2_traffic_mirror_session.session.id
+}
+
+output "traffic_mirror_target_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_target_id
+}
+
+output "traffic_mirror_filter_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_filter_id
+}
+
+output "network_interface_id" {
+  value = aws_ec2_traffic_mirror_session.session.network_interface_id
+}
