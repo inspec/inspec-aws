@@ -26,7 +26,7 @@ This resource does not require any parameters.
 
 ## Properties
 
-|Property              | Description| Field
+| Property              | Description | Field |
 | ---                  | --- | --- |
 |arns                  | A list of the ARN identifiers of the policies. | arn |
 |policy\_ids           | A list of the stable and unique strings identifying the policies. | policy_id |

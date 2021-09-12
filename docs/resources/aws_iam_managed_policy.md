@@ -3,7 +3,7 @@ title: About the aws_iam_managed_policy Resource
 platform: aws
 ---
 
-# aws\_iam\_policies
+# aws\_iam\_managed\_policy
 
 Use the `aws_iam_managed_policy` InSpec audit resource to test properties of an AWS IAM managed policy.
 
@@ -22,7 +22,7 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 ## Parameters
 
-`policy_arn`
+`policy_arn` _(required)_
 
 The ARN of the AWS IAM managed policy.
 
