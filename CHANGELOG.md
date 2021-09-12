@@ -1,9 +1,14 @@
-<!-- latest_release 1.66.5 -->
+<!-- latest_release 1.66.6 -->
+## [v1.66.6](https://github.com/inspec/inspec-aws/tree/v1.66.6) (2021-09-12)
+
+#### Merged Pull Requests
+- Added support to audit  Traffic mirror filter [#491](https://github.com/inspec/inspec-aws/pull/491) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.66.5](https://github.com/inspec/inspec-aws/tree/v1.66.5) (2021-09-12)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_volume_attachment [#496](https://github.com/inspec/inspec-aws/pull/496) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.66.4](https://github.com/inspec/inspec-aws/tree/v1.66.4) (2021-09-12)
 
