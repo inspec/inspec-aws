@@ -3928,3 +3928,9 @@ resource "aws_vpc" "aws_vpc_peering_test1" {
 resource "aws_vpc" "aws_vpc_peering_test2" {
   cidr_block = "10.2.0.0/16"
 }
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
