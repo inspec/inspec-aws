@@ -1,5 +1,5 @@
-transit_gateway_route_table_id = attribute(:transit_gateway_route_table_id, default: '', description: 'The ID of the transit gateway route table.')
-transit_gateway_id = attribute(:transit_gateway_id, default: '', description: 'The ID of the transit gateway.')
+transit_gateway_route_table_id = attribute(:transit_gateway_route_table_id, value: '', description: 'The ID of the transit gateway route table.')
+transit_gateway_id = attribute(:transit_gateway_id, value: '', description: 'The ID of the transit gateway.')
 state = "active"
 default_association_route_table = true
 default_propagation_route_table = true

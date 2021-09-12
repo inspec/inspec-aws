@@ -4,7 +4,7 @@ require 'aws-sdk-core'
 
 class AwsEc2TrafficMirrorSessionsTest < Minitest::Test
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSEc2TrafficMirrorSessions.new(rubbish: 9,client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSEc2TrafficMirrorSessions.new(rubbish: 9, client_args: { stub_responses: true }) }
   end
 
   def test_rejects_scalar_invalid_args
@@ -13,10 +13,6 @@ class AwsEc2TrafficMirrorSessionsTest < Minitest::Test
 
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AWSEc2TrafficMirrorSessions.new(rubbish: 9) }
-  end
-
-  def test_rejects_invalid_launch_template_endpoint_id
-    assert_raises(ArgumentError) { AWSEc2TrafficMirrorSessions.new(traffic_mirror_session_id: 'test') }
   end
 end
 
