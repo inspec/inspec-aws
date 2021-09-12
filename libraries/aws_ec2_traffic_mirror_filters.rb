@@ -16,7 +16,6 @@ class AWSEc2TrafficMirrorFilters < AwsResourceBase
 
   FilterTable.create
              .register_column(:traffic_mirror_filter_ids,      field: :traffic_mirror_filter_id)
-             .register_column(:traffic_mirror_filter_rule_ids, field: :traffic_mirror_filter_rule_id)
              .register_column(:descriptions,                   field: :description)
              .register_column(:tags,                           field: :tags)
              .install_filter_methods_on_resource(self, :table)
@@ -39,7 +38,6 @@ class AWSEc2TrafficMirrorFilters < AwsResourceBase
       @api_response.traffic_mirror_filters.each do |traffic_mirror_filter|
         traffic_mirror_filters_tags = map_tags(traffic_mirror_filter.tags)
         traffic_mirror_filters_rows += [{ traffic_mirror_filter_id: traffic_mirror_filter.traffic_mirror_filter_id,
-                                          traffic_mirror_filter_rule_id: traffic_mirror_filter.traffic_mirror_filter_rule_id,
                                           description: traffic_mirror_filter.description,
                                           tags: traffic_mirror_filters_tags }]
       end

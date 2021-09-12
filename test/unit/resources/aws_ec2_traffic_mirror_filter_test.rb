@@ -1,6 +1,6 @@
 
 require 'helper'
-require 'aws_ec2_traffic_mirror_filter.md'
+require 'aws_ec2_traffic_mirror_filter'
 require 'aws-sdk-core'
 
 class AWSEc2TrafficMirrorFilterTest < Minitest::Test
@@ -31,19 +31,19 @@ class AWSEc2TrafficMirrorFilterPathTest < Minitest::Test
     mock_lt[:description] = 'test-description'
     data[:data] = { :traffic_mirror_filters => [mock_lt] }
     data[:client] = Aws::EC2::Client
-    @addr = AWSEc2TrafficMirrorFilter.new(traffic_mirror_filter_id: 'tmf-01a6e9ac9f962f154',client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEc2TrafficMirrorFilter.new(traffic_mirror_filter_id: 'tmf-01a6e9ac9f962f154', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_traffic_mirrior_filter_exists
-    assert @addr.exists?
+    assert @resp.exists?
   end
 
   def test_traffic_mirrior_filter_id
-    assert_equal(@addr.traffic_mirror_filter_id, "tmf-01a6e9ac9f962f154")
+    assert_equal(@resp.traffic_mirror_filter_id, "tmf-01a6e9ac9f962f154")
   end
 
   def test_traffic_mirrior_filter_description
-    assert_equal(@addr.description, "test-description")
+    assert_equal(@resp.description, "test-description")
   end
 end
 

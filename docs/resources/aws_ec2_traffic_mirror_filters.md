@@ -23,9 +23,9 @@ This resource does not require any parameters.
 
 |Property                      | Description|
 | ---                          | --- |
-|traffic_mirror_filter_ids     | The ID of a traffic mirror filter.|
-|descriptions                  | The description of a traffic mirror filter.|
-|tags                          | A list of hashes with each key-value pair corresponding to an traffic mirror filter, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+|traffic_mirror_filter_ids     | The ID of a traffic mirror filter. |
+|descriptions                  | The description of a traffic mirror filter. |
+|tags                          | A list of hashes with each key-value pair corresponding to an traffic mirror filter. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilter.html)
 
@@ -40,10 +40,10 @@ There are also additional properties available. For a comprehensive list, see [t
 ### Test that EC2 traffic mirror filter's description is correct.
 
     describe aws_ec2_traffic_mirror_filters do
-      its('description') { should include 'DESCRIPTION_TEXT' }
+      its('descriptions') { should include 'DESCRIPTION_TEXT' }
     end
 
-### Test that an EC2 traffic mirror has the correct tag
+### Test that an EC2 traffic mirror has the correct tag.
 
     describe aws_ec2_traffic_mirror_filters do
       its('tags') { should include 'TAG' }
@@ -71,6 +71,6 @@ Use `should_not` to test that an entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:describe_traffic_mirror_filters` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTrafficMirrorFiltersResult` action with `Effect` set to `Allow`.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
