@@ -114,7 +114,7 @@ Since this is an InSpec resource pack, it only defines InSpec resources. To use 
 #### Create a new profile
 
 ```
-$ inspec init profile --platform aws my-aws-profile
+$ inspec init profile --platform aws my-profile
 ```
 
 The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows
@@ -122,7 +122,7 @@ The above command will generate a sample inspec.yml that depends on `master`.  W
 Example `inspec.yml`:
 
 ```yaml
-name: my-aws-profile
+name: my-profile
 title: My own AWS profile
 version: 0.1.0
 inspec_version: '>= 4.6.9'
@@ -138,13 +138,13 @@ supports:
 If a resource is in local, change the `url` to `path`.
 
 ```yaml
-name: my-aws-profile
+name: my-profile
 title: My own AWS profile
 version: 0.1.0
 inspec_version: '>= 4.6.9'
 depends:
  - name: inspec-aws
-   path: ../my-aws-profile
+   path: ../my-profile
 supports:
  - platform: aws
 ```
@@ -617,6 +617,14 @@ Target:  aws://us-east-1
 Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
 Test Summary: 50 successful, 0 failures, 0 skipped
 ```
+
+### Running a single unit test
+
+```
+rake test TEST=inspec-aws/test/unit/resources/aws_alb_test.rb
+```
+
+The above example is for running the `aws_alb_test.rb` file.
 
 ### Running the unit and integration tests
 
