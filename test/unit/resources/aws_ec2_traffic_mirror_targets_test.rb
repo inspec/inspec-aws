@@ -3,8 +3,9 @@ require 'aws_ec2_traffic_mirror_targets'
 require 'aws-sdk-core'
 
 class AWSEc2TrafficMirrorTargetsTest < Minitest::Test
+
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(rubbish: 9,client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(rubbish: 9, client_args: { stub_responses: true }) }
   end
 
   def test_rejects_scalar_invalid_args
@@ -13,10 +14,6 @@ class AWSEc2TrafficMirrorTargetsTest < Minitest::Test
 
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(rubbish: 9) }
-  end
-
-  def test_rejects_invalid_traffic_mirror_session_id
-    assert_raises(ArgumentError) { AWSEc2TrafficMirrorTargets.new(traffic_mirror_session_id: 'test') }
   end
 end
 
