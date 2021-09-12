@@ -27,27 +27,20 @@ class AWSApiGatewayV2APIMappings < AwsResourceBase
     @query_params = {}
     raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
     @query_params[:domain_name] = opts[:domain_name]
-    # end
     @table = fetch_data
   end
 
   def fetch_data
-    rows = []
-    @query_params[:max_results] = '100'
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.apigatewayv2_client.get_api_mappings(@query_params)
-      end
-      return rows if !@api_response || @api_response.empty?
-      @api_response.items.each do |resp|
-        rows += [{ api_id: resp.api_id,
-                   api_mapping_id: resp.api_mapping_id,
-                   api_mapping_key: resp.api_mapping_key,
-                   stage: resp.stage }]
-      end
-      break unless @api_response.next_token
-      @query_params[:next_token] = @api_response.next_token
+    catch_aws_errors do
+      @table = @aws.apigatewayv2_client.get_api_mappings(@query_params).map do |table|
+        table.items.map { |table_name| {
+          api_id: table_name.api_id,
+          api_mapping_id: table_name.api_mapping_id,
+          api_mapping_key: table_name.api_mapping_key,
+          stage: table_name.stage,
+        }
+        }
+      end.flatten
     end
-    rows
   end
 end
