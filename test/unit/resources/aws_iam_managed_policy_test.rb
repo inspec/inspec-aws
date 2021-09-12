@@ -25,22 +25,26 @@ class AwsIamManagedPolicyHappyPathTest < Minitest::Test
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :policy => mock_data }
     data[:client] = Aws::IAM::Client
-    @iam_client = AwsIamManagedPolicy.new(policy_arn: 'test1' ,client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AwsIamManagedPolicy.new(policy_arn: 'test1' ,client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_iam_client_exists
-    assert @iam_client.exist?
+    assert @resp.exist?
   end
 
   def test_policy_name
-    assert_equal(@iam_client.policy_name, 'test1')
+    assert_equal(@resp.policy_name, 'test1')
   end
 
   def test_instance_profile_id
-    assert_equal(@iam_client.policy_id, 'test1')
+    assert_equal(@resp.policy_id, 'test1')
   end
 
   def test_arn
-    assert_equal(@iam_client.arn, 'test1')
+    assert_equal(@resp.arn, 'test1')
+  end
+
+  def test_create_date
+    assert_equal(@resp.create_date, Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 end

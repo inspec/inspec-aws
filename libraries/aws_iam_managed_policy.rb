@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AwsIamManagedPolicy < AwsResourceBase
   name 'aws_iam_managed_policy'
-  desc 'Verifies settings for an Iam Policy'
+  desc 'Verifies settings for an Iam Policy.'
 
   example "
-    describe aws_iam_managed_policy(policy_arn: 'policy-1') do
+    describe aws_iam_managed_policy(policy_arn: 'PolicyARN') do
       it { should exist }
     end
   "
@@ -34,6 +34,6 @@ class AwsIamManagedPolicy < AwsResourceBase
   end
 
   def to_s
-    "AWS Iam Managed Policy ARN : #{@policy_arn}"
+    "AWS IAM Managed Policy ARN : #{@policy_arn}"
   end
 end

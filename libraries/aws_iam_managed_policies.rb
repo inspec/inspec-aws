@@ -5,11 +5,12 @@ require 'aws_backend'
 class AwsIamManagedPolicies < AwsResourceBase
   name 'aws_iam_managed_policies'
   desc 'Lists all IAM users, groups, and roles that the specified managed policy is attached to.'
-  example '
+
+  example "
     describe aws_iam_managed_policies do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
@@ -34,8 +35,8 @@ class AwsIamManagedPolicies < AwsResourceBase
 
   def fetch_data
     iam_policy_rows = []
-    parameters={}
-    parameters[max_items]=1000
+    parameters = {}
+    parameters[:max_items] = 1000
     loop do
       catch_aws_errors do
         @response = @aws.iam_client.list_policies(parameters)
