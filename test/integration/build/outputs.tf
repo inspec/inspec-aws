@@ -142,6 +142,22 @@ output "aws_rds_instance_id" {
   value = aws_db_instance.db_rds.0.id
 }
 
+output "aws_rds_snapshot_identifier" {
+  value = aws_db_snapshot.test_db_snapshot.db_instance_identifier
+}
+
+output "aws_rds_snapshot_engine" {
+  value = aws_db_snapshot.test_db_snapshot.engine
+}
+
+output "aws_rds_snapshot_engine_version" {
+  value = aws_db_snapshot.test_db_snapshot.engine_version
+}
+
+output "aws_rds_snapshot_storage_type" {
+  value = aws_db_snapshot.test_db_snapshot.storage_type
+}
+
 output "aws_cloud_trail_arn" {
   value = aws_cloudtrail.trail_1.0.arn
 }
@@ -586,6 +602,14 @@ output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
 
+output "aws_traffic_filter_id" {
+  value = aws_ec2_traffic_mirror_filter.filter.id
+}
+
+output "aws_traffic_filter_desc" {
+  value = aws_ec2_traffic_mirror_filter.filter.description
+}
+
 output "aws_sfn_state_machine_id" {
   value = aws_sfn_state_machine.sfn_state_machine_sf_test.id
 }
@@ -711,4 +735,32 @@ output "aws_secretsmanager_secret_sm_id" {
 
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
+}
+
+output "aws_vpc_peering_test1_id" {
+  value = aws_vpc.aws_vpc_peering_test1.id
+}
+
+output "aws_vpc_peering_test2_id" {
+  value = aws_vpc.aws_vpc_peering_test2.id
+}
+
+output "aws_vpc_peering_connection_id" {
+  value = aws_vpc_peering_connection.aws_vpc_peering_connection_test.id
+}
+
+output "traffic_mirror_session_id" {
+  value = aws_ec2_traffic_mirror_session.session.id
+}
+
+output "traffic_mirror_target_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_target_id
+}
+
+output "traffic_mirror_filter_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_filter_id
+}
+
+output "network_interface_id" {
+  value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
