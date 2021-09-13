@@ -5,12 +5,12 @@ platform: aws
 
 # aws\_iam\_virtual\_mfa\_devices
 
-Use the `aws_iam_virtual_mfa_devices` InSpec audit resource to test properties of multiple virtual MFA devices.
+Use the `aws_iam_virtual_mfa_devices` InSpec audit resource to test properties of multiple virtual multi-factor authentication (MFA) devices.
 
 
 ## Syntax
 
-Ensure that an virtual mfa device exist.
+Ensure that a virtual MFA device exists.
 
     describe aws_iam_virtual_mfa_devices do
       it { should exist }
@@ -18,37 +18,40 @@ Ensure that an virtual mfa device exist.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on IAM virtual MFA Devices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-virtualmfadevice.html).
+This resource does not require any parameters.
+
+See the [AWS documentation on IAM virtual MFA Devices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-virtualmfadevice.html) for additional information.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| serial_number |The VirtualMfaDevice's serial_number identifier. |
-| path | The path to the user. For more information about paths, see IAM Identifiers in the Using IAM guide. |
-| user_name | The friendly name identifying the user. |
-| user_id | The stable and unique string identifying the user. For more information about IDs, see IAM Identifiers in the Using IAM guide. |
-| arn | The Amazon Resource Name (ARN) that identifies the user. |
-| create_date | The date and time, in ISO 8601 date-time format , when the user was created. |
-| tags | The tags for the resource. |
-| enable_date | The date when the virtual mfa was Enabled.  |
+| Property | Description| Field |
+| --- | --- | --- |
+| serial_numbers | A list of the virtual MFA device's serial number identifiers. | serial_number |
+| paths | A list of the user paths. | path |
+| user_names | A list of the friendly names identifying the users. | user_name |
+| user_ids | A list of the stable and unique user IDs. | user_id |
+| arns | A list of the Amazon Resource Names (ARNs) that identify the users. | arn |
+| create_dates | A list of timestamps, in ISO 8601 date-time format, when the user was created. | create_date |
+| enable_dates | A list of timestamps on which the virtual MFA devices were enabled.  | enable_date |
+| tags | A list of the tags for the resources. | tags |
 
 ## Examples
 
-### Ensure an user_name is available.
+### Ensure a username is available.
 
     describe aws_iam_virtual_mfa_devices do
-      its('user_name') { should include 'user_name' }
+      its('user_names') { should include 'USER_NAME' }
     end
 
-### Ensure that an arn is available.
+### Ensure that an ARN is available.
+
     describe aws_iam_virtual_mfa_devices do
-        its('arns') { should include 'TEST_ARN' }
+        its('arns') { should include 'USER_ARN' }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a complete list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `list` method returns at least one result.
 
