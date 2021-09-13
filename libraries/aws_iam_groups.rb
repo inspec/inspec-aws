@@ -11,7 +11,7 @@ class AwsIamGroups < AwsResourceBase
     end
   '
 
-  attr_reader :table, :inline_policy_names
+  attr_reader :table
 
   FilterTable.create
              .register_column(:group_names,  field: :group_name)
@@ -45,7 +45,7 @@ class AwsIamGroups < AwsResourceBase
                            arn:                 g.arn,
                            users:               @aws.iam_client.get_group({ 'group_name': g.group_name }).users.map(&:user_name),
                            has_inline_policies: !inline_policies.empty?,
-                           inline_policy_names: @aws.iam_client.list_group_policies({ 'group_name': g.group_name }).policy_names }]
+                           inline_policy_names: inline_policies }]
         end
       end
       break unless groups.marker
