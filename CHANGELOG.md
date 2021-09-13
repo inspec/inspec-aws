@@ -1,9 +1,34 @@
-<!-- latest_release 1.66.3 -->
+<!-- latest_release 1.66.8 -->
+## [v1.66.8](https://github.com/inspec/inspec-aws/tree/v1.66.8) (2021-09-12)
+
+#### Merged Pull Requests
+- Added Support to Audit  OIDC Provider/Providers [#510](https://github.com/inspec/inspec-aws/pull/510) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.66.7](https://github.com/inspec/inspec-aws/tree/v1.66.7) (2021-09-12)
+
+#### Merged Pull Requests
+- NIrbhay/  Traffic mirror Session [#493](https://github.com/inspec/inspec-aws/pull/493) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.66.6](https://github.com/inspec/inspec-aws/tree/v1.66.6) (2021-09-12)
+
+#### Merged Pull Requests
+- Added support to audit  Traffic mirror filter [#491](https://github.com/inspec/inspec-aws/pull/491) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.66.5](https://github.com/inspec/inspec-aws/tree/v1.66.5) (2021-09-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_volume_attachment [#496](https://github.com/inspec/inspec-aws/pull/496) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.66.4](https://github.com/inspec/inspec-aws/tree/v1.66.4) (2021-09-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_transit_gateway_route_table_propagation [#495](https://github.com/inspec/inspec-aws/pull/495) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.66.3](https://github.com/inspec/inspec-aws/tree/v1.66.3) (2021-09-05)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_vpc_peering_connection [#497](https://github.com/inspec/inspec-aws/pull/497) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.66.2](https://github.com/inspec/inspec-aws/tree/v1.66.2) (2021-09-05)
 
