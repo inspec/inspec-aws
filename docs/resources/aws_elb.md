@@ -30,24 +30,34 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|load\_balancer\_name         | The name of the load balancer. |
-|dns\_name                    | The DNS name of the load balancer. |
-|availability\_zones          | The Availability Zones for the load balancer. |
-|instance\_ids                | An array containing all instance ids associated with the ELB. |
-|external\_ports              | An array of the external ports exposed on the ELB. |
-|internal\_ports              | An array of the internal ports exposed on the ELB. |
-|security\_group\_ids         | The security groups for the load balancer. Valid only for load balancers in a VPC. |
-|vpc\_id                      | The ID of the VPC for the load balancer. |
-|subnet\_ids                  | The IDs of the subnets for the load balancer. |
-|listeners                    | A collection of the listeners for the load balancer. |
-|ssl_policies                 | A collection of the SSL Policies configured in-use for the load balancer (and their policy attributes). |
-|protocols                    | A list of the protocols configured for the listeners of the load balancer. |
-|cross\_zone\_load\_balancing | The cross zone load balancing status for ELB. |
-|access\_log                  | The access log status for ELB. |
+|Property                               | Description|
+| ---                                   | --- |
+|load\_balancer\_name                   | The name of the load balancer. |
+|dns\_name                              | The DNS name of the load balancer. |
+|availability\_zones                    | The Availability Zones for the load balancer. |
+|instance\_ids                          | An array containing all instance ids associated with the ELB. |
+|external\_ports                        | An array of the external ports exposed on the ELB. |
+|internal\_ports                        | An array of the internal ports exposed on the ELB. |
+|security\_group\_ids                   | The security groups for the load balancer. Valid only for load balancers in a VPC. |
+|vpc\_id                                | The ID of the VPC for the load balancer. |
+|subnet\_ids                            | The IDs of the subnets for the load balancer. |
+|listeners                              | A collection of the listeners for the load balancer. |
+|ssl_policies                           | A collection of the SSL Policies configured in-use for the load balancer (and their policy attributes). |
+|protocols                              | A list of the protocols configured for the listeners of the load balancer. |
+|cross\_zone\_load\_balancing\_enabled? | The cross zone load balancing status for ELB. |
+|access\_log\_enabled?                  | The access log status for ELB. |
 
 ## Examples
+
+##### Test that cross zone load balancing for ELB is enabled
+    describe aws_elb('prod_web_app_elb') do
+      it { should be_cross_zone_load_balancing_enabled }
+    end
+
+##### Test that access log for ELB is enabled
+    describe aws_elb('prod_web_app_elb') do
+      it { should be_access_log_enabled }
+    end
 
 ##### Test that an ELB has its availability zones configured correctly
     describe aws_elb('prod_web_app_elb') do

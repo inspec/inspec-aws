@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols, :cross_zone_load_balancing, :access_log
+              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
@@ -24,6 +24,7 @@ class AwsElb < AwsResourceBase
     catch_aws_errors do
       load_balancer_name = { load_balancer_names: [opts[:load_balancer_name]] }
       resp = @aws.elb_client.describe_load_balancers(load_balancer_name).load_balancer_descriptions.first
+      @attrs = @aws.elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name]).load_balancer_attributes
 
       @availability_zones = resp.availability_zones
       @dns_name           = resp.dns_name
@@ -43,10 +44,6 @@ class AwsElb < AwsResourceBase
       policies_in_use     = resp.listener_descriptions.map(&:policy_names).flatten.uniq
       @ssl_policies       = @aws.elb_client.describe_load_balancer_policies(load_balancer_name: opts[:load_balancer_name])
                                 .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
-      @cross_zone_load_balancing = @aws.elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name])
-                                       .load_balancer_attributes.cross_zone_load_balancing.enabled
-      @access_log = @aws.elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name])
-                        .load_balancer_attributes.access_log.enabled
     end
   end
 
@@ -56,5 +53,13 @@ class AwsElb < AwsResourceBase
 
   def to_s
     "AWS ELB #{load_balancer_name}"
+  end
+
+  def cross_zone_load_balancing_enabled?
+    !@attrs.cross_zone_load_balancing.enabled == false
+  end
+
+  def access_log_enabled?
+    !@attrs.access_log.enabled == false
   end
 end
