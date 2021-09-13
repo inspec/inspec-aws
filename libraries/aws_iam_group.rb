@@ -30,9 +30,6 @@ class AwsIamGroup < AwsResourceBase
       @arn        = group.arn
       @users      = @resp[:users].map(&:user_name)
       @inline_policy_names = iam_client.list_group_policies(group_name).policy_names
-    rescue Aws::IAM::Errors::NoSuchEntity
-      # If the requested inline policy does not exist
-      @inline_policy_names = []
     end
   end
 
