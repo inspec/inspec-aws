@@ -1,5 +1,5 @@
 ---
-title: About the aws_ec2_traffic_mirror_sessions
+title: About the aws_ec2_traffic_mirror_session Resource
 platform: aws
 ---
 
