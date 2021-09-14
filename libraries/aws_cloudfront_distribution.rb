@@ -13,7 +13,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path
+              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path, :s3_origin_access, :access_logging,
+              :ssl_certificate
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -38,6 +39,10 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @distribution_arn = @resp.distribution.arn
     config = @resp.distribution.distribution_config
 
+    @access_logging = config.logging.enabled
+
+    @ssl_certificate = config.viewer_certificate.certificate_source
+
     # AWS CloudFront web distribution that allow TLS versions 1.0 or lower
     # AWS CloudFront distribution is using insecure SSL protocols for HTTPS communication
 
@@ -60,10 +65,12 @@ class AwsCloudFrontDistribution < AwsResourceBase
 
     @custom_origin_protocol_policies = []
     @custom_origin_ssl_protocols = []
+    @s3_origin_access = []
     @s3_origin_configs = false
     config.origins.items.each do |origin|
       if origin[:s3_origin_config]
         @s3_origin_configs = true
+        @s3_origin_access += [origin[:s3_origin_config][:origin_access_identity]]
       elsif origin[:custom_origin_config]
         @custom_origin_ssl_protocols += origin[:custom_origin_config][:origin_ssl_protocols][:items]
         @custom_origin_protocol_policies += [origin[:custom_origin_config][:origin_protocol_policy]]
@@ -71,6 +78,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     end
     @custom_origin_ssl_protocols = @custom_origin_ssl_protocols.uniq.sort
     @custom_origin_protocol_policies = @custom_origin_protocol_policies.uniq.sort
+    @s3_origin_access = @s3_origin_access.uniq.sort
 
     # Find aws cloudfront distribution origin path.
     # Either return path string, or ""
