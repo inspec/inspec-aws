@@ -1,9 +1,14 @@
-<!-- latest_release 1.66.8 -->
+<!-- latest_release 1.66.9 -->
+## [v1.66.9](https://github.com/inspec/inspec-aws/tree/v1.66.9) (2021-09-14)
+
+#### Merged Pull Requests
+- Add vale linter config: [#521](https://github.com/inspec/inspec-aws/pull/521) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.66.8](https://github.com/inspec/inspec-aws/tree/v1.66.8) (2021-09-12)
 
 #### Merged Pull Requests
 - Added Support to Audit  OIDC Provider/Providers [#510](https://github.com/inspec/inspec-aws/pull/510) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.66.7](https://github.com/inspec/inspec-aws/tree/v1.66.7) (2021-09-12)
 
