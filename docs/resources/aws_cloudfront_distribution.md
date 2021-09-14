@@ -55,7 +55,7 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
 |s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
 |s3\_origin\_access                          | The origin access identity for s3 origin config
-|access\_logging\_enabled                      | Access logging for CloudFront distribution
+|access\_logging\_enabled?                   | Access logging for CloudFront distribution
 |ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution
 
 ## Examples
