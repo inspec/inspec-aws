@@ -67,7 +67,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     config.origins.items.each do |origin|
       if origin[:s3_origin_config]
         @s3_origin_configs = true
-        @s3_origin_access += [origin[:s3_origin_config][:origin_access_identity]]
+        @s3_origin_access << origin[:s3_origin_config][:origin_access_identity]
       elsif origin[:custom_origin_config]
         @custom_origin_ssl_protocols += origin[:custom_origin_config][:origin_ssl_protocols][:items]
         @custom_origin_protocol_policies += [origin[:custom_origin_config][:origin_protocol_policy]]
@@ -92,7 +92,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def access_logging_enabled?
-    config.logging.enabled == false
+    !!config.logging.enabled
   end
 
   def has_viewer_protocol_policies_allowing_http?
