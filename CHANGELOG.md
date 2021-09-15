@@ -1,9 +1,14 @@
-<!-- latest_release 1.66.10 -->
+<!-- latest_release 1.67.0 -->
+## [v1.67.0](https://github.com/inspec/inspec-aws/tree/v1.67.0) (2021-09-15)
+
+#### Merged Pull Requests
+- bugfix/modifying Regex for db snapshot identifier [#622](https://github.com/inspec/inspec-aws/pull/622) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.66.10](https://github.com/inspec/inspec-aws/tree/v1.66.10) (2021-09-14)
 
 #### Merged Pull Requests
 - Fix resource title in MD file [#634](https://github.com/inspec/inspec-aws/pull/634) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.66.9](https://github.com/inspec/inspec-aws/tree/v1.66.9) (2021-09-14)
 
