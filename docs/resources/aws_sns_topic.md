@@ -4,7 +4,7 @@ title: About the aws_sns_topic Resource
 
 # aws\_sns\_topic
 
-Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS Simple Notification Service Topic.  SNS topics are channels for related events. AWS resources place events in the SNS topic, while other AWS resources subscribe to receive notifications when new events occur.
+Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS Simple Notification Service Topic.  SNS topics are channels for related events. AWS resources place events in the Simple Notification Service (SNS) topic, while other AWS resources subscribe to receive notifications when new events occur.
 
 ## Syntax
 
