@@ -40,7 +40,7 @@ class AWSEC2VolumeAttachments < AwsResourceBase
       return rows if !@api_response || @api_response.empty?
       @api_response.volumes.each do |resp|
         next if resp.attachments.nil?
-        rows += [{ activity_status: resp.attachments.map(&:attach_time),
+        rows += [{ attach_time: resp.attachments.map(&:attach_time),
                    device: resp.attachments.map(&:device),
                    instance_id: resp.attachments.map(&:instance_id),
                    state: resp.attachments.map(&:state),
