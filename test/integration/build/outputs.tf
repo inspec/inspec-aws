@@ -768,3 +768,11 @@ output "network_interface_id" {
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
+
+output "broker_id" {
+  value = aws_mq_broker.test-broker.id
+}
+
+output "broker_arn" {
+  value = aws_mq_broker.test-broker.arn
+}
