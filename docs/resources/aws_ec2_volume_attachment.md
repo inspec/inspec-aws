@@ -29,7 +29,7 @@ For additional information, see the [AWS documentation on AWS EC2 Volume Attachm
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | attach_time | The time stamp when the attachment initiated. | attach_time |
 | device | The device name. | device |
