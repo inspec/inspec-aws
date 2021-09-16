@@ -1,15 +1,18 @@
 title 'Test single EC2 prefix list'
-control 'aws-ec2-prefix-list-1.0' do
 
+skip_control "aws-ec2-prefix-list-1.0" do
   impact 1.0
-  title 'Ensure EC2 prefix list resource has the correct properties.'
+  title "Ensure EC2 prefix list singular resource has the correct properties."
 
-  describe aws_ec2_prefix_list(prefix_list_id: aws_ec2_prefix_list_id) do
+  describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
     it { should exist }
-    its('owner_id') {should eq 'AWS'}
-    its('prefix_list_arn') {should eq 'arn:aws:ec2:us-east-2:aws:prefix-list/pl-4ca54025'}
+  end
+
+  describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
+    its('owner_id') {should eq 'OwnerID'}
+    its('prefix_list_arn') {should eq 'PrefixListARN'}
     its('address_family') {should eq 'IPv4'}
-    its('prefix_list_name') {should eq 'com.amazonaws.us-east-2.dynamodb'}
+    its('prefix_list_name') {should eq 'PrefixListName'}
   end
 end
 
