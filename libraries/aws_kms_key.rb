@@ -49,12 +49,10 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def tags
-    begin
+    catch_aws_errors do
       tag_list = @aws.kms_client.list_resource_tags(key_id: @display_name).tags
-    rescue
-      return {}
+      kms_tags(tag_list)
     end
-    kms_tags(tag_list)
   end
 
   def created_days_ago
