@@ -1,9 +1,14 @@
-<!-- latest_release 1.67.0 -->
+<!-- latest_release 1.67.1 -->
+## [v1.67.1](https://github.com/inspec/inspec-aws/tree/v1.67.1) (2021-09-16)
+
+#### Merged Pull Requests
+- Added Support for Virtual  MFA Audit  [#509](https://github.com/inspec/inspec-aws/pull/509) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.67.0](https://github.com/inspec/inspec-aws/tree/v1.67.0) (2021-09-15)
 
 #### Merged Pull Requests
 - bugfix/modifying Regex for db snapshot identifier [#622](https://github.com/inspec/inspec-aws/pull/622) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.66.10](https://github.com/inspec/inspec-aws/tree/v1.66.10) (2021-09-14)
 
