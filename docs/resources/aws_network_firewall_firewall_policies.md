@@ -5,7 +5,7 @@ platform: aws
 
 # aws_network_firewall_firewall_policies
 
-Use the `aws_network_firewall_firewall_policies` InSpec audit resource to test properties of a multiple AWS Network Firewall Policy.
+Use the `aws_network_firewall_firewall_policies` InSpec audit resource to test properties of multiple AWS Network Firewall Policy.
 
 The firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.
 
