@@ -13,17 +13,18 @@ The AWS::NetworkManager::CustomerGatewayAssociation resource specifies an associ
 
 Ensure that the customer gateway association exists.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
       it { should exist }
     end
 
 ## Parameters
 
-`global_network_id` _(required)_
+`global_network_id and , customer_gateway_arn` _(required)_
 
 | Property | Description |
 | --- | --- |
 | global_network_id | The ID of the global network. |
+| customer_gateway_arn | The Amazon Resource Name (ARN) of the customer gateway. |
 
 For additional information, see the [AWS documentation on AWS Network Manager Customer Gateway Association.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-customergatewayassociation.html).
 
@@ -40,12 +41,12 @@ For additional information, see the [AWS documentation on AWS Network Manager Cu
 ## Examples
 
 ### Ensure a customer gateway arn is available.
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
       its('customer_gateway_arn') { should eq 'CustomerGatewayARN' }
     end
 
 ### Ensure that the state is `active`.
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -59,13 +60,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'dummy') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'dummy', customer_gateway_arn: 'dummy') do
       it { should_not exist }
     end
 
@@ -73,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
       it { should be_available }
     end
 
