@@ -15,7 +15,6 @@ class AwsS3BucketObjects < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:is_truncated, field: :is_truncated)
              .register_column(:contents, field: :contents)
              .register_column(:contents_keys, field: :contents_keys, style: :simple)
              .register_column(:contents_last_modified, field: :contents_last_modified, style: :simple)
@@ -31,8 +30,6 @@ class AwsS3BucketObjects < AwsResourceBase
              .register_column(:encoding_types, field: :encoding_type)
              .register_column(:key_counts, field: :key_count)
              .register_column(:continuation_tokens, field: :continuation_token)
-             .register_column(:next_continuation_tokens, field: :next_continuation_token)
-             .register_column(:start_after, field: :start_after)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -52,8 +49,7 @@ class AwsS3BucketObjects < AwsResourceBase
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.each do |resp|
-        rows += [{ is_truncated: resp.is_truncated,
-                   contents: resp.contents,
+        rows += [{ contents: resp.contents,
                    contents_keys: resp.contents.map(&:key),
                    contents_last_modified: resp.contents.map(&:last_modified),
                    contents_etags: resp.contents.map(&:etag),
@@ -67,11 +63,10 @@ class AwsS3BucketObjects < AwsResourceBase
                    common_prefixes: resp.common_prefixes.map(&:prefix),
                    encoding_type: resp.encoding_type,
                    key_count: resp.key_count,
-                   continuation_token: resp.continuation_token,
-                   next_continuation_token: resp.next_continuation_token,
-                   start_after: resp.start_after }]
+                   continuation_token: resp.continuation_token }]
       end
       break unless @api_response.next_continuation_token
+      @query_params[:start_after] = @api_response.start_after
     end
     rows
   end

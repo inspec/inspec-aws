@@ -25,14 +25,12 @@ Ensure that a bucket exists.
 | --- | --- | --- |
 | bucket_name | The bucket name. | bucket |
 
-
 See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| is_truncated | Set to false if all of the results were returned. Set to true if more keys are available to return. If the number of results exceeds that specified by MaxKeys, all of the results might not be returned. | is_truncated |
 | contents | Metadata about each object returned.| contents |
 | contents_keys | The name that you assign to an object. | contents (key) |
 | contents_last_modified | Creation date of the object. | contents (last_modified) |
@@ -47,9 +45,6 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 | common_prefixes | Container for the specified common prefix. | common_prefixes (prefix) |
 | encoding_types | Encoding type used by Amazon S3 to encode object key names in the XML response. | encoding_type |
 | key_counts | KeyCount is the number of keys returned with this request. | key_count |
-| continuation_tokens | If ContinuationToken was sent with the request, it is included in the response. | continuation_token |
-| next_continuation_tokens | The next continuation token. NextContinuationToken is sent when isTruncated is true, which means there are more keys in the bucket that can be listed. The next list requests to Amazon S3 can be continued with this NextContinuationToken . NextContinuationToken is obfuscated and is not a real key. | next_continuation_token |
-| start_after | If StartAfter was sent with the request, it is included in the response. | start_after |
 
 ## Examples
 
