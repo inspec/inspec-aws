@@ -2,9 +2,9 @@
 
 require 'aws_backend'
 
-class AWSBatchJobDefinitions < AwsResourceBase
+class AWSMQBrokers < AwsResourceBase
   name 'aws_mq_brokers'
-  desc 'Describes a list of job definitions.'
+  desc 'Describes a list of aws mq broker.'
 
   example "
     describe aws_mq_brokers do

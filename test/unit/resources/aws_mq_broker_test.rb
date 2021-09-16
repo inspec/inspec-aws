@@ -32,15 +32,15 @@ class AWSMQBrokerSuccessPathTest < Minitest::Test
     @mq_broker = AWSMQBroker.new(broker_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_job_definitions_exists
+  def test_mq_broker_exists
     assert @mq_broker.exists?
   end
 
-  def test_job_definition_name
+  def test_mq_broker_arn
     assert_equal(@mq_broker.broker_arn, 'test1')
   end
 
-  def test_revision
-    assert_equal(@mq_broker.revision, 'test1')
+  def test_mq_broker_name
+    assert_equal(@mq_broker.broker_name, 'test1')
   end
 end

@@ -27,21 +27,21 @@ class AWSMQBrokersSuccessPathTest < Minitest::Test
     mock_parameter[:broker_id] = 'test1'
     mock_parameter[:broker_name] = 'test1'
     mock_parameter[:broker_state] = 'test1'
-    data[:data] = { job_definitions: [mock_parameter] }
+    data[:data] = mock_parameter
     data[:client] = Aws::MQ::Client
     @mq_broker = AWSMQBrokers.new( client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_job_definitions_exists
+  def test_mq_broker_exists
     assert @mq_broker.exists?
   end
 
-  def test_job_definition_name
-    assert_equal(@mq_broker.broker_arns, 'test1')
+  def test_mq_broker_arn
+    assert_equal(@mq_broker.broker_arns, ['test1'])
   end
 
-  def test_revision
-    assert_equal(@mq_broker.revisions, 'test1')
+  def test_mq_broker_name
+    assert_equal(@mq_broker.broker_names, ['test1'])
   end
 end
 

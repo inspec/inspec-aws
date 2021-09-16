@@ -19,7 +19,7 @@ class AWSMQBroker < AwsResourceBase
 
     raise ArgumentError, "#{@__resource_name__}: broker_id must be provided" unless opts[:broker_id] && !opts[:broker_id].empty?
     @display_name = opts[:broker_id]
-    resp = @aws.batch_client.describe_job_definitions({ broker_id: opts[:broker_id] })
+    resp = @aws.batch_client.describe_broker({ broker_id: opts[:broker_id] })
     @brokers = resp.to_h
     create_resource_methods(@brokers)
   end
