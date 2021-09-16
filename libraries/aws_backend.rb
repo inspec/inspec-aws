@@ -276,6 +276,10 @@ class AwsConnection
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
   end
+
+  def mq_client
+    aws_client(Aws::MQ::Client)
+  end
 end
 
 # Base class for AWS resources
