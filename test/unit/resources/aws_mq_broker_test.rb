@@ -27,7 +27,7 @@ class AWSMQBrokerSuccessPathTest < Minitest::Test
     mock_parameter[:broker_id] = 'test1'
     mock_parameter[:broker_name] = 'test1'
     mock_parameter[:broker_state] = 'test1'
-    data[:data] = mock_parameter
+    data[:data] = { job_definitions: [mock_parameter] }
     data[:client] = Aws::MQ::Client
     @mq_broker = AWSMQBroker.new(broker_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end

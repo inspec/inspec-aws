@@ -1,5 +1,0 @@
-default
-lint
-rubocop
-test
-test:integration
