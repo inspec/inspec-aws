@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSEC2PlacementGroup < AwsResourceBase
   name 'aws_ec2_placement_group'
-  desc 'Audits Placement Group'
+  desc 'Verifies settings for a collection of AWS EC2 Placement Groups.'
 
   example "
     describe aws_ec2_placement_group(group_id: 'test-group-id') do

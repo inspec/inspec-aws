@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSEC2PlacementGroups < AwsResourceBase
   name 'aws_ec2_placement_groups'
-  desc 'Audits Placement Groups'
+  desc 'Audits Placement Groups.'
 
   example "
     describe aws_ec2_placement_groups do

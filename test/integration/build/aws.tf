@@ -3891,6 +3891,6 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
 }
 
 resource "aws_placement_group" "web" {
-  name     = "hunky-dory-pg"
+  name     = "test_placement_group"
   strategy = "cluster"
 }
