@@ -5,7 +5,7 @@ platform: aws
 
 # aws_network_manager_global_network
 
-Use the `aws_network_manager_global_network` InSpec audit resource to test properties of a single specific AWS Network Manager Global Network.
+Use the `aws_network_manager_global_network` InSpec audit resource to test properties of a specific AWS Network Manager Global Network.
 
 The AWS::NetworkManager::GlobalNetwork resource describes one or more global networks.
 
