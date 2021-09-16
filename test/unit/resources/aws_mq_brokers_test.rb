@@ -4,8 +4,8 @@ require 'aws-sdk-core'
 
 class AWSMQBrokersConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-    AWSMQBrokers.new(client_args: { stub_responses: true })
+  def test_empty_params_not_ok
+    assert_raises(ArgumentError) { AWSMQBrokers.new(client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
@@ -21,15 +21,13 @@ class AWSMQBrokersSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_brokers
+    data[:method] = :describe_broker
     mock_parameter = {}
     mock_parameter[:broker_arn] = 'test1'
     mock_parameter[:broker_id] = 'test1'
     mock_parameter[:broker_name] = 'test1'
     mock_parameter[:broker_state] = 'test1'
-    mock_parameter[:deployment_mode] = 'test1'
-    mock_parameter[:engine_type] = 'test1'
-    data[:data] = { broker_summaries: [mock_parameter]}
+    data[:data] = mock_parameter
     data[:client] = Aws::MQ::Client
     @mq_broker = AWSMQBrokers.new( client_args: { stub_responses: true }, stub_data: [data])
   end
