@@ -5,7 +5,7 @@ platform: aws
 
 # aws_network_firewall_rule_groups
 
-Use the `aws_network_firewall_rule_groups` InSpec audit resource to test properties of a multiple AWS Network Firewall Rule Group.
+Use the `aws_network_firewall_rule_groups` InSpec audit resource to test properties of multiple AWS Network Firewall Rule Group.
 
 Use the AWS::NetworkFirewall::RuleGroup to define a reusable collection of stateless or stateful network traffic filtering rules.
 
