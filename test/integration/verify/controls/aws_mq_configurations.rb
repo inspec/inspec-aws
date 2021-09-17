@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-configuration_id = value(:configuration_id, value: '', description: 'configuration_id of AWS MQ')
+configuration_id = value(:configuration_id, value: '', description: ' configuration_id of AWS MQ')
 configuration_arn = value(:configuration_arn, value: '', description: 'configuration_arn of AWS MQ')
 
 title 'Test a AWS MQ Broker'
