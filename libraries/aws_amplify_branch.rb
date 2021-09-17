@@ -15,7 +15,7 @@ class AWSAmplifyBranch < AwsResourceBase
   def initialize(opts = {})
     opts = { app_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:app_id, branch_name])
+    validate_parameters(required: %i(app_id branch_name))
 
     raise ArgumentError, "#{@__resource_name__}: app_id must and branch_name be provided" unless opts[:app_id] && !opts[:app_id].empty? && opts[:branch_name] && !opts[:branch_name].empty?
     @display_name = opts[:app_id]

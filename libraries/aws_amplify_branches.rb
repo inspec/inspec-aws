@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSAmplifyApp < AwsResourceBase
+class AWSAmplifyBranches < AwsResourceBase
   name 'aws_amplify_apps'
   desc 'Describes a list of Amplify Branches.'
 
@@ -29,7 +29,7 @@ class AWSAmplifyApp < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: [:app_id])
+    validate_parameters(required: %i(app_id))
     @table = fetch_data
   end
 
