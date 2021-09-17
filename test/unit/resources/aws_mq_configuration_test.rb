@@ -9,7 +9,7 @@ class AWSMQConfigurationConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSMQConfiguration.new(configurations_id: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSMQConfiguration.new(configuration_id: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -29,7 +29,7 @@ class AWSMQConfigurationSuccessPathTest < Minitest::Test
     mock_parameter[:engine_version] = 'test1'
     data[:data] = mock_parameter
     data[:client] = Aws::MQ::Client
-    @mq_configurations = AWSMQConfiguration.new(configurations_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @mq_configurations = AWSMQConfiguration.new(configuration_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_mq_configurations_exists

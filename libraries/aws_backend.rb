@@ -48,6 +48,7 @@ require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
+require 'aws-sdk-mq'
 
 # AWS Inspec Backend Classes
 #
@@ -275,6 +276,10 @@ class AwsConnection
 
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
+  end
+
+  def mq_client
+    aws_client(Aws::MQ::Client)
   end
 end
 
