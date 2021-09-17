@@ -3,7 +3,7 @@ title: About the aws_mq_brokers resource
 platform: aws
 ---
 
-# aws\_batch\_mq\_brokers
+# aws\_mq\_brokers
 
 Use the `aws_mq_brokers` InSpec audit resource to test the properties of multiple AWS MQ Broker.
 
@@ -21,7 +21,6 @@ For additional information, see the [AWS documentation on AWS MQ Broker](https:/
 
 | Property | Description| Field|
 | --- | --- | --- |
-
 | broker_arns | The broker's Amazon Resource Name (ARN). | broker_arn |
 | broker_names | The broker's name.| broker_name |
 | broker_states | The broker's status.| broker_state |
@@ -30,7 +29,6 @@ For additional information, see the [AWS documentation on AWS MQ Broker](https:/
 | engine_types | The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ. | engine_type |
 | engine_versions | The broker engine's version.  | engine_version |
 | host_instance_types | The broker's instance type. | host_instance_type |
-
 
 ## Examples
 
@@ -76,4 +74,4 @@ Use `should` to check if the AWS MQ broker is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:client:list_broker` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:DescribeBrokerResponse` action with `Effect` set to `Allow`.

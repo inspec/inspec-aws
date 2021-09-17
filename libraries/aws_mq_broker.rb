@@ -16,7 +16,6 @@ class AWSMQBroker < AwsResourceBase
     opts = { broker_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:broker_id])
-
     raise ArgumentError, "#{@__resource_name__}: broker_id must be provided" unless opts[:broker_id] && !opts[:broker_id].empty?
     @display_name = opts[:broker_id]
     resp = @aws.mq_client.describe_broker({ broker_id: opts[:broker_id] })
@@ -24,7 +23,7 @@ class AWSMQBroker < AwsResourceBase
     create_resource_methods(@brokers)
   end
 
-  def id
+  def broker_id
     return nil unless exists?
     @brokers[:broker_id]
   end
@@ -34,6 +33,6 @@ class AWSMQBroker < AwsResourceBase
   end
 
   def to_s
-    "Broker Name: #{@display_name}"
+    "Broker ID: #{@display_name}"
   end
 end

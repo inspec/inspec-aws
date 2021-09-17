@@ -3,7 +3,7 @@ title: About the aws_mq_broker resource
 platform: aws
 ---
 
-# aws\_batch\_mq\_broker
+# aws\_mq\_broker
 
 Use the `aws_mq_broker` InSpec audit resource to test the properties of a single specific AWS MQ Broker.
 
@@ -19,13 +19,17 @@ Ensure that AWS MQ Broker exists.
 
 `broker_id` _(required)_
 
+| Property | Description|
+| --- | --- |
+| broker_id | The broker_id. | 
+
 The broker_id.
 
 For additional information, see the [AWS documentation on AWS MQ Broker](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html).
 
 ## Properties
 
-| Property | Description| Field|
+| Property | Description| Field |
 | --- | --- | --- |
 | authentication_strategy | The authentication strategy used to secure the broker. The default is SIMPLE. | authentication_strategy |
 | auto_minor_version_upgrade | Enables automatic upgrades to new minor versions for brokers, as new versions are released and supported by Amazon MQ. | auto_minor_version_upgrade |
@@ -88,4 +92,4 @@ Use `should` to check if the mq broker is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:client:describe_broker` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:DescribeBrokerResponse` action with `Effect` set to `Allow`.
