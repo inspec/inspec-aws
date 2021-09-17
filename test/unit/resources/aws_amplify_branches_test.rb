@@ -9,7 +9,7 @@ class AWSAmplifyBranchesConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSAmplifyBranches.new(app_id: '', branch_name: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSAmplifyBranches.new(app_id: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -21,7 +21,7 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :get_app
+    data[:method] = :list_branches
     mock_parameter = {}
     mock_parameter[:branch_arn] = 'test1'
     mock_parameter[:branch_name] = 'test1'
@@ -35,7 +35,7 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:custom_domains] = 'test1'
     mock_parameter[:enable_basic_auth] = true
     mock_parameter[:source_branch] = false
-    data[:data] = { app: mock_parameter }
+    data[:data] = { :branches => [mock_parameter] }
     data[:client] = Aws::Amplify::Client
     @amplify = AWSAmplifyBranches.new(app_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
