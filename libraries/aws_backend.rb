@@ -48,6 +48,7 @@ require 'aws-sdk-servicecatalog'
 require 'aws-sdk-networkmanager'
 require 'aws-sdk-networkfirewall'
 require 'aws-sdk-apigatewayv2'
+require 'aws-sdk-cloudfront'
 
 # AWS Inspec Backend Classes
 #
@@ -275,6 +276,10 @@ class AwsConnection
 
   def apigatewayv2_client
     aws_client(Aws::ApiGatewayV2::Client)
+  end
+
+  def cloudfront_client
+    aws_client(Aws::CloudFront::Client)
   end
 end
 
