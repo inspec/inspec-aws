@@ -16,7 +16,7 @@ class AWSApiGatewayAccount < AwsResourceBase
     super(opts)
     validate_parameters
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_account()
+      resp = @aws.apigateway_client.get_account
       @res = resp.to_h
       create_resource_methods(@res)
     end

@@ -19,7 +19,7 @@ class AWSApiGatewayAPIKeys < AwsResourceBase
              .register_column(:values, field: :value)
              .register_column(:names, field: :name)
              .register_column(:customer_ids, field: :customer_id)
-             .register_column(:description, field: :description)
+             .register_column(:descriptions, field: :description)
              .register_column(:enabled, field: :enabled)
              .register_column(:created_dates, field: :created_date)
              .register_column(:last_updated_dates, field: :last_updated_date)
@@ -35,7 +35,7 @@ class AWSApiGatewayAPIKeys < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.apigateway_client.get_api_keys().map do |table|
+      @table = @aws.apigateway_client.get_api_keys.map do |table|
         table.items.map { |table_name| {
           id: table_name.id,
           value: table_name.value,

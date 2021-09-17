@@ -21,7 +21,7 @@ class AWSApiGatewayAuthorizer < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: authorizer_id must be provided" unless opts[:authorizer_id] && !opts[:authorizer_id].empty?
     @display_name = opts[:authorizer_id]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_api_key({ rest_api_id: opts[:rest_api_id], authorizer_id: opts[:authorizer_id] })
+      resp = @aws.apigateway_client.get_authorizer({ rest_api_id: opts[:rest_api_id], authorizer_id: opts[:authorizer_id] })
       @res = resp.to_h
       create_resource_methods(@res)
     end

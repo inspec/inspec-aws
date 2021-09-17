@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSApiGatewayClientCertificate < AwsResourceBase
+class AWSApiGatewayClientCertificates < AwsResourceBase
   name 'aws_apigateway_client_certificates'
   desc 'Gets a collection of ClientCertificate resources.'
 
@@ -31,7 +31,7 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.apigateway_client.get_client_certificates().map do |table|
+      @table = @aws.apigateway_client.get_client_certificates.map do |table|
         table.items.map { |table_name| {
           client_certificate_id: table_name.client_certificate_id,
           description: table_name.description,

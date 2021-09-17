@@ -11,9 +11,9 @@ The AWS::ApiGateway::ApiKey resource creates a unique key that you can distribut
 
 ## Syntax
 
-Ensure that the spot fleet exists.
+Ensure that the api key exists.
 
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
       it { should exist }
     end
 
@@ -45,12 +45,12 @@ For additional information, see the [AWS documentation on AWS APIGateway ApiKey.
 ## Examples
 
 ### Ensure an id is available.
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
       its('id') { should eq 'ID' }
     end
 
 ### Ensure that the name is available.
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
         its('name') { should eq 'APIKeyName' }
     end
 
@@ -64,13 +64,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_api_key(api_id: 'dummy') do
+    describe aws_apigateway_api_key(api_key: 'dummy') do
       it { should_not exist }
     end
 
@@ -78,7 +78,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
       it { should be_available }
     end
 

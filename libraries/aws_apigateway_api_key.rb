@@ -7,27 +7,27 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   desc 'Gets information about the current ApiKey resource.'
 
   example "
-    describe aws_apigateway_api_key(api_id: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'APIID') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
-    opts = { api_id: opts } if opts.is_a?(String)
+    opts = { api_key: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided" unless opts[:api_id] && !opts[:api_id].empty?
-    @display_name = opts[:api_id]
+    validate_parameters(required: %i(api_key))
+    raise ArgumentError, "#{@__resource_name__}: api_key must be provided" unless opts[:api_key] && !opts[:api_key].empty?
+    @display_name = opts[:api_key]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_api_key({ api_id: opts[:api_id] })
+      resp = @aws.apigateway_client.get_api_key({ api_key: opts[:api_key] })
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
-  def api_id
+  def api_key
     return nil unless exists?
-    @res[:api_id]
+    @res[:api_key]
   end
 
   def exists?
@@ -35,6 +35,6 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   end
 
   def to_s
-    "Rest API ID: #{@display_name}"
+    "API Key: #{@display_name}"
   end
 end
