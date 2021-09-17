@@ -48,7 +48,7 @@ For additional information, see the [AWS documentation on AWS MQ Broker](https:/
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
@@ -74,4 +74,4 @@ Use `should` to check if the AWS MQ broker is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:DescribeBrokerResponse` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:ListBrokersResponse` action with `Effect` set to `Allow`.

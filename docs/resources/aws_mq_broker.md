@@ -78,7 +78,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_mq_broker(broker_id: 'broker_id') do
+    describe aws_mq_broker(broker_id: 'dummy') do
       it { should_not exist }
     end
 
