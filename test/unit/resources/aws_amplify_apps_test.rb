@@ -4,10 +4,6 @@ require 'aws-sdk-core'
 
 class AWSAmplifyAppsConstructorTest < Minitest::Test
 
-  def test_empty_params_ok
-     AWSAmplifyApps.new(client_args: { stub_responses: true })
-  end
-
   def test_param_arg_not_ok
     assert_raises(ArgumentError) { AWSAmplifyApps.new(app_id: 'random', client_args: { stub_responses: true }) }
   end

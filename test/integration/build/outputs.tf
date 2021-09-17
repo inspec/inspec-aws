@@ -773,3 +773,5 @@ output "oidc_arn" {
 output "app_id" {
   value = aws_amplify_app.test-app.id
 }
+
+

@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSAmplifyApp < AwsResourceBase
+class AWSAmplifyApps < AwsResourceBase
   name 'aws_amplify_apps'
   desc 'Describes a list of Amplify App.'
 
@@ -56,8 +56,6 @@ class AWSAmplifyApp < AwsResourceBase
           iam_service_role_arn: apps.iam_service_role_arn,
         }]
       end
-      require 'byebug'
-      byebug
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
