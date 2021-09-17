@@ -3,7 +3,7 @@ title: About the aws_mq_configurations resource
 platform: aws
 ---
 
-# aws\_batch\_mq\_configurations
+# aws\_mq\_configurations
 
 Use the `aws_mq_configurations` InSpec audit resource to test the properties of multiple AWS MQ configuration.
 
@@ -37,13 +37,13 @@ For additional information, see the [AWS documentation on AWS MQ configuration](
 ### Ensure a configuration id is available.
 
     describe aws_mq_configurations do
-      its('configuration_id') { should eq 'configuration_id' }
+      its('ids') { should include 'configuration_id' }
     end
 
 ### Ensure a configuration name is available..
 
     describe aws_mq_configurations do
-        its('configuration_name') { should eq 'configuration_name' }
+        its('names') { should include 'configuration_name' }
     end
 
 ## Matchers
@@ -76,4 +76,4 @@ Use `should` to check if the mq configuration is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:client:list_configurations` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:ListConfigurationsResponsegit ` action with `Effect` set to `Allow`.

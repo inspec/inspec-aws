@@ -3,7 +3,7 @@ title: About the aws_mq_configuration resource
 platform: aws
 ---
 
-# aws\_batch\_mq\_configuration
+# aws\_mq\_configuration
 
 Use the `aws_mq_configuration` InSpec audit resource to test the properties of a single specific AWS MQ configuration.
 
@@ -19,13 +19,15 @@ Ensure that AWS MQ configuration exists.
 
 `configuration_id` _(required)_
 
-The configuration_id.
+| Property | Description |
+| --- | --- |
+| configuration_id | The configuration ID.| 
 
 For additional information, see the [AWS documentation on AWS MQ configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html).
 
 ## Properties
 
-| Property | Description| Field|
+| Property | Description| Field |
 | --- | --- | --- |
 | arn | The ARN of the configuration.| arn |
 | authentication_strategy |  The authentication strategy associated with the configuration. The default is SIMPLE.| authentication_strategy |
@@ -45,7 +47,7 @@ For additional information, see the [AWS documentation on AWS MQ configuration](
       its('configuration_id') { should eq 'configuration_id' }
     end
 
-### Ensure a configuration name is available..
+### Ensure a configuration name is available.
 
     describe aws_mq_configuration(configuration_id: 'configuration_id') do
         its('configuration_name') { should eq 'configuration_name' }
@@ -67,7 +69,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_mq_configuration(configuration_id: 'configuration_id') do
+    describe aws_mq_configuration(configuration_id: 'dummy') do
       it { should_not exist }
     end
 
@@ -81,4 +83,4 @@ Use `should` to check if the mq configuration is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:client:describe_configuration` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:DescribeConfigurationResponse` action with `Effect` set to `Allow`.

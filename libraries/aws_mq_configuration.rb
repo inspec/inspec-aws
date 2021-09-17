@@ -24,7 +24,7 @@ class AWSMQConfiguration < AwsResourceBase
     create_resource_methods(@configurations)
   end
 
-  def id
+  def configuration_id
     return nil unless exists?
     @configurations[:configuration_id]
   end
@@ -34,6 +34,6 @@ class AWSMQConfiguration < AwsResourceBase
   end
 
   def to_s
-    "configuration ID : #{@display_name}"
+    "Configuration ID: #{@display_name}"
   end
 end

@@ -3,7 +3,7 @@
 configuration_id = value(:configuration_id, value: '', description: 'configuration_id of AWS MQ')
 configuration_arn = value(:configuration_arn, value: '', description: 'configuration_arn of AWS MQ')
 
-title 'Test a AWS MQ Broker'
+title 'Test a AWS MQ Broker.'
 control 'aws_mq_configuration-1.0' do
   impact 1.0
   title 'Ensure AWS MQ Broker has the correct properties.'
