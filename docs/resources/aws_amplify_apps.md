@@ -16,7 +16,8 @@ Ensure that AWS Amplify App exists.
     end
 
 
-For additional information, see the [AWS documentation on AWS Amplify  App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
+For additional information, see the [AWS documentation on AWS Amplify App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
+
 
 ## Properties
 
@@ -42,20 +43,20 @@ For additional information, see the [AWS documentation on AWS Amplify  App](http
 ### Ensure a app id is available.
 
     describe aws_amplify_apps  do
-      its('app_id') { should include 'app_id' }
+      its('app_ids') { should include 'app_id' }
     end
 
-### Ensure a app name is available..
+### Ensure a app name is available.
 
     describe aws_amplify_apps  do
-        its('app_name') { should include 'app_name' }
+        its('app_names') { should include 'app_name' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The controls will pass if the `List` method returns at least one result.
 
 ### exist
 
