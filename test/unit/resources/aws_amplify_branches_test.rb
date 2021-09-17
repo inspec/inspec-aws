@@ -27,6 +27,7 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:branch_name] = 'test1'
     mock_parameter[:description] = 'test1'
     mock_parameter[:tags] = 'test1'
+    mock_parameter[:tags] = { "value" => 'test1'}
     mock_parameter[:display_name] = 'test1'
     mock_parameter[:create_time] = Time.now
     mock_parameter[:update_time] = Time.now
@@ -35,19 +36,19 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:source_branch] = false
     data[:data] = { :branches => [mock_parameter] }
     data[:client] = Aws::Amplify::Client
-    @amplify = AWSAmplifyBranches.new(app_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSAmplifyBranches.new(app_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_branch_exists
-    assert @amplify.exists?
+    assert @resp.exists?
   end
 
   def test_branch_arns
-    assert_equal(@amplify.branch_arns, ['test1'])
+    assert_equal(@resp.branch_arns, ['test1'])
   end
 
   def test_branch_names
-    assert_equal(@amplify.branch_names, ['test1'])
+    assert_equal(@resp.branch_names, ['test1'])
   end
 end
 

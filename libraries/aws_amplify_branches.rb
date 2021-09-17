@@ -56,7 +56,6 @@ class AWSAmplifyBranches < AwsResourceBase
                         create_time: branches.create_time,
                         update_time: branches.update_time,
                         iam_service_role_arn: branches.iam_service_role_arn,
-
         }]
       end
       break unless @api_response.next_token
