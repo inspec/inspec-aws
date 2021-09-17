@@ -43,7 +43,7 @@ class AWSAmplifyApp < AwsResourceBase
       return apps_rows if !@api_response || @api_response.empty?
       @api_response.branches.each do |branches|
         apps_rows += [{
-                        branch_arn: branches.branch_arn,
+          branch_arn: branches.branch_arn,
                         branch_name: branches.branch_name,
                         stage: branches.stage,
                         tags: branches.tags,
@@ -51,7 +51,6 @@ class AWSAmplifyApp < AwsResourceBase
                         display_name: branches.display_name,
                         enable_notification: branches.enable_notification,
                         create_time: branches.create_time,
-                        display_name: branches.display_name,
                         update_time: branches.update_time,
                         iam_service_role_arn: branches.iam_service_role_arn,
 

@@ -37,4 +37,3 @@ class AWSAmplifyBranch < AwsResourceBase
     "Amplify Branch ID : #{@display_name}"
   end
 end
-

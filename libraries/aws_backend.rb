@@ -48,6 +48,7 @@ require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
+require 'aws-sdk-amplify'
 
 # AWS Inspec Backend Classes
 #
@@ -275,6 +276,10 @@ class AwsConnection
 
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
+  end
+
+  def amplify_client
+    aws_client(Aws::Amplify::Client)
   end
 end
 

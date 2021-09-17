@@ -768,3 +768,9 @@ output "network_interface_id" {
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
+output "app_id" {
+  value = aws_amplify_app.test-app.id
+}
+output "branch_name" {
+  value = aws_amplify_app.test-app.name
+}
