@@ -765,6 +765,79 @@ output "traffic_mirror_filter_id" {
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_api_gateway_account_throttle_settings" {
+  value = aws_api_gateway_account.aws_api_gateway_account_test1.throttle_settings
+}
+
+output "aws_api_gateway_account_cloudwatch_role_arn" {
+  value = aws_api_gateway_account.aws_api_gateway_account_test1.cloudwatch_role_arn
+}
+
+output "aws_api_gateway_api_key_id" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.id
+}
+
+output "aws_api_gateway_api_key_created_date" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.created_date
+}
+
+output "aws_api_gateway_api_key_last_updated_date" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.last_updated_date
+}
+
+output "aws_api_gateway_api_key_arn" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.arn
+}
+
+output "aws_api_gateway_authorizer_id" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.id
+}
+
+output "aws_api_gateway_authorizer_authorizer_uri" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_uri
+}
+
+output "aws_api_gateway_authorizer_authorizer_credentials" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_credentials
+}
+
+output "aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_result_ttl_in_seconds
+}
+
+output "aws_api_gateway_authorizer_name" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.name
+}
+
+output "aws_api_gateway_authorizer_type" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.type
+}
+
+output "aws_api_gateway_authorizer_provider_arns" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.provider_arns
+}
+
+output "aws_api_gateway_rest_api_id" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test2.id
+}
+
+output "aws_api_gateway_client_certificate_id" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.id
+}
+
+output "aws_api_gateway_client_certificate_created_date" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.created_date
+}
+
+output "aws_api_gateway_client_certificate_expiration_date" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.expiration_date
+}
+
+output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }

@@ -3986,3 +3986,141 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+resource "aws_api_gateway_account" "aws_api_gateway_account_test1" {
+  cloudwatch_role_arn = aws_iam_role.aws_iam_role_api_gateway_account_test1.arn
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_account_test1" {
+  name = "aws_iam_role_api_gateway_account_test2"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_api_gateway_account_test1" {
+  name = "aws_iam_role_policy_api_gateway_account_test1"
+  role = aws_iam_role.aws_iam_role_api_gateway_account_test1.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_api_gateway_api_key" "aws_api_gateway_api_key_test1" {
+  name = "aws_api_gateway_api_key_demo1"
+}
+
+resource "aws_api_gateway_authorizer" "aws_api_gateway_authorizer_test1" {
+  name                   = "aws_api_gateway_authorizer_test_demo"
+  rest_api_id            = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test2.id
+  authorizer_uri         = aws_lambda_function.aws_lambda_function_api_gateway_authorizer_test1.invoke_arn
+  authorizer_credentials = aws_iam_role.aws_iam_role_api_gateway_authorizer_test1.arn
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test2" {
+  name = "aws_api_gateway_rest_api_test2-auth-demo"
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_authorizer_test1" {
+  name = "api_gateway_auth_invocation"
+  path = "/"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_api_gateway_authorizer_test1" {
+  name = "aws_iam_role_policy_api_gateway_authorizer_test_demo1"
+  role = aws_iam_role.aws_iam_role_api_gateway_authorizer_test1.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "lambda:InvokeFunction",
+      "Effect": "Allow",
+      "Resource": "${aws_lambda_function.aws_lambda_function_api_gateway_authorizer_test1.arn}"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_authorizer_lambda_test1" {
+  name = "api-gateway-authorizer-lambda-demo-lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_api_gateway_authorizer_test1" {
+  filename      = "lambda.zip"
+  function_name = "api_gateway_authorizer"
+  role          = aws_iam_role.aws_iam_role_api_gateway_authorizer_lambda_test1.arn
+  handler       = "exports.test"
+  runtime       = "nodejs12.x"
+
+  source_code_hash = filebase64sha256("lambda.zip")
+}
+
+resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate_test1" {
+  description = "My client certificate."
+}
