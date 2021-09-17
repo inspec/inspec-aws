@@ -22,10 +22,10 @@ class AWSAmplifyBranchSuccessPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :get_branch
-    mock_parameter = {}
-    mock_parameter[:branch_arn] = 'test1'
-    mock_parameter[:branch_name] = 'test1'
-    data[:data] = [mock_parameter]
+    mock_data = {}
+    mock_data[:branch_arn] = 'test1'
+    mock_data[:branch_name] = 'test1'
+    data[:data] = [mock_data]
     data[:client] = Aws::Amplify::Client
     @resp = AWSAmplifyBranch.new(app_id: 'test1', branch_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end

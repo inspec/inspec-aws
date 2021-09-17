@@ -27,12 +27,10 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:branch_name] = 'test1'
     mock_parameter[:description] = 'test1'
     mock_parameter[:tags] = 'test1'
-    mock_parameter[:tags] = 'test1'
     mock_parameter[:display_name] = 'test1'
     mock_parameter[:create_time] = Time.now
     mock_parameter[:update_time] = Time.now
     mock_parameter[:environment_variables] = { "value" => 'test1'}
-    mock_parameter[:custom_domains] = 'test1'
     mock_parameter[:enable_basic_auth] = true
     mock_parameter[:source_branch] = false
     data[:data] = { :branches => [mock_parameter] }
