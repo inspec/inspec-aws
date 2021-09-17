@@ -36,15 +36,15 @@ class AWSAmplifyAppsSuccessPathTest < Minitest::Test
     @mq_app = AWSAmplifyApps.new( client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_mq_app_exists
+  def test_amplify_app_exists
     assert @mq_app.exists?
   end
 
-  def test_mq_app_arn
+  def test_amplify_app_arn
     assert_equal(@mq_app.app_arns, ['test1'])
   end
 
-  def test_mq_app_name
+  def test_amplify_app_name
     assert_equal(@mq_app.names, ['test1'])
   end
 end

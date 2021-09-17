@@ -18,8 +18,9 @@ Ensure that AWS Amplify App exists.
 ## Parameters
 
 `app_id` _(required)_
-
-The app_id.
+| Property | Description| 
+| --- | --- | 
+| app_id | The unique ID of the Amplify app. |
 
 For additional information, see the [AWS documentation on AWS Amplify  App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
@@ -72,7 +73,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_amplify_app(app_id: 'app_id') do
+    describe aws_amplify_app(app_id: 'dummy') do
       it { should_not exist }
     end
 
@@ -86,4 +87,4 @@ Use `should` to check if the Amplify  App is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Amplify:client:get_app` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Amplify:Client:GetAppResult` action with `Effect` set to `Allow`.

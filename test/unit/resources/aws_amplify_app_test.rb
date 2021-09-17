@@ -44,11 +44,11 @@ class AWSAmplifyAppSuccessPathTest < Minitest::Test
     assert @mq_app.exists?
   end
 
-  def test_mq_app_arn
+  def test_amplify_app_arn
     assert_equal(@mq_app.app_arn, 'test1')
   end
 
-  def test_mq_app_name
+  def test_amplify_app_name
     assert_equal(@mq_app.name, 'test1')
   end
 end

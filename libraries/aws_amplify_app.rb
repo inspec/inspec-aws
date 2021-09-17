@@ -34,6 +34,6 @@ class AWSAmplifyApp < AwsResourceBase
   end
 
   def to_s
-    "Amplify App ID : #{@display_name}"
+    "Amplify App ID: #{@display_name}"
   end
 end

@@ -1,5 +1,5 @@
 app_id= attribute(app_id, default: "", description: "")
-title 'Amplify App'
+title 'Audits Amplify App.'
 control 'aws_amplify_app-1.0' do
   impact 1.0
   title 'Ensure Amplify App have the correct properties.'
