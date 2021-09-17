@@ -765,6 +765,19 @@ output "traffic_mirror_filter_id" {
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_cloudfront_origin_access_identity_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.id
+}
+
+output "aws_cloudfront_origin_access_identity_s3_canonical_user_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.s3_canonical_user_id
+}
+
+output "aws_cloudfront_origin_access_identity_caller_reference" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.caller_reference
 }

@@ -3986,3 +3986,9 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+## Cloud Front Origin Access Identity
+
+resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
+  comment = "Some comment"
+}
