@@ -765,6 +765,11 @@ output "traffic_mirror_filter_id" {
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_cloudfront_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
 }
