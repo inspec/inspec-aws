@@ -26,17 +26,13 @@ class AWSBatchComputeEnvironment < AwsResourceBase
     end
   end
 
-  def id
+  def compute_environment_name
     return nil unless exists?
     @compute_environments[:compute_environment_name]
   end
 
   def exists?
     !@compute_environments.nil? && !@compute_environments.empty?
-  end
-
-  def encrypted?
-    @compute_environments[:encrypted]
   end
 
   def to_s

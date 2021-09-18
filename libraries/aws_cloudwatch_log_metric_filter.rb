@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsCloudwatchLogMetricFilter < AwsResourceBase
   name 'aws_cloudwatch_log_metric_filter'
-  desc 'Verifies individual Cloudwatch Log Metric Filters'
+  desc 'Verifies individual Cloudwatch Log Metric Filters.'
 
   example "
   # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.

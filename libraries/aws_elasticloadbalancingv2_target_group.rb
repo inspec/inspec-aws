@@ -24,7 +24,7 @@ class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
     end
   end
 
-  def id
+  def target_group_arn
     return nil unless exists?
     @target_groups[:target_group_arn]
   end
@@ -34,6 +34,6 @@ class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
   end
 
   def to_s
-    "target_group_arns: #{@display_name}"
+    "Target Group ARN: #{@display_name}"
   end
 end

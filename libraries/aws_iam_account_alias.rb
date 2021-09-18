@@ -3,12 +3,12 @@
 class AwsIamAccountAlias < AwsResourceBase
   name 'aws_iam_account_alias'
   desc 'Verifies settings for an AWS IAM Account Alias.'
-  example '
+  example "
     describe aws_iam_account_alias do
       it { should exist }
-      its("alias") { should match /^fancy-/ }
+      its('alias') { should match /^fancy-/ }
     end
-  '
+  "
   supports platform: 'aws'
 
   attr_reader :alias

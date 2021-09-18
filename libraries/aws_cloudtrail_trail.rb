@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsCloudTrailTrail < AwsResourceBase
   name 'aws_cloudtrail_trail'
-  desc 'Verifies settings for an individual AWS CloudTrail Trail'
+  desc 'Verifies settings for an individual AWS CloudTrail Trail.'
 
   example "
     describe aws_cloudtrail_trail('trail-name') do

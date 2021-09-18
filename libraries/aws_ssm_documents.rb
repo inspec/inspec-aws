@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsSsmDocuments < AwsResourceBase
   name 'aws_ssm_documents'
-  desc 'Verifies settings for a SSM Document in bulk'
-  example '
+  desc 'Verifies settings for a SSM Document in bulk.'
+  example "
     describe aws_ssm_documents do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 
@@ -38,7 +38,7 @@ class AwsSsmDocuments < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.ssm_client.list_documents(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
+      return ssm_document_rows if !api_response || api_response.empty?
 
       api_response.document_identifiers.each do |ssm_document|
         ssm_document_rows += [{ name:             ssm_document.name,

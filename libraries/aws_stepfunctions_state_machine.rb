@@ -35,6 +35,6 @@ class AWSStepFunctionsStateMachine < AwsResourceBase
   end
 
   def to_s
-    "State Machine Arn: #{@display_name}"
+    "State Machine ARN: #{@display_name}"
   end
 end

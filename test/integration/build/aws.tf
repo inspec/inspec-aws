@@ -221,6 +221,8 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
+variable "aws_accepter_vpc_info_cidr_block" {}
+variable "aws_requester_vpc_info_cidr_block" {}
 variable "aws_route52_record_set_name" {}
 variable "aws_cluster_name" {}
 variable "aws_ecs_task_definition_family" {}
@@ -3802,6 +3804,26 @@ resource "aws_route53_resolver_rule_association" "for-int-test" {
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
 }
 
+#aws_vpc_peering_connection terraform
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_test1.id
+  vpc_id        = aws_vpc.aws_vpc_test2.id
+  auto_accept   = true
+
+  tags = {
+    Name = "VPC Peering between foo and bar"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_test1" {
+  cidr_block = var.aws_requester_vpc_info_cidr_block
+}
+
+resource "aws_vpc" "aws_vpc_test2" {
+  cidr_block = var.aws_accepter_vpc_info_cidr_block
+}
+
 # aws_vpn_connection_route tf resource
 
 resource "aws_vpc" "aws_vpc_test_vcr" {
@@ -3888,6 +3910,7 @@ resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
   role       = aws_iam_role.iam_for_lambda.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
 }
+
 resource "aws_route53_zone" "for_route53_set_record_test" {
 name = var.aws_route52_record_set_name
 }
@@ -3947,4 +3970,78 @@ resource "aws_vpn_connection" "aws_vpn_connection_vpn_connection_route_test" {
 resource "aws_vpn_connection_route" "aws_vpn_connection_route_test" {
   destination_cidr_block = "192.168.10.0/24"
   vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
+#VPC Peering Connection
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_peering_test1.id
+  vpc_id        = aws_vpc.aws_vpc_peering_test2.id
+  peer_region   = "us-east-2"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test1" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test2" {
+  cidr_block = "10.2.0.0/16"
+}
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+resource "aws_ec2_traffic_mirror_target" "target" {
+  network_load_balancer_arn = aws_lb.test.arn
+}
+
+resource "aws_ec2_traffic_mirror_session" "session" {
+  description              = "traffic mirror session - terraform example"
+  network_interface_id     = aws_instance.web.primary_network_interface_id
+  session_number           = 1
+  traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
+  traffic_mirror_target_id = aws_ec2_traffic_mirror_target.target.id
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_iam_openid_connect_provider" "for_oidc" {
+  url = "https://accounts.google.com"
+
+  client_id_list = [
+    "266362248691-342342xasdasdasda-apps.googleusercontent.com",
+  ]
+  thumbprint_list = []
 }
