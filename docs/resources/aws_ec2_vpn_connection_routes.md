@@ -13,11 +13,17 @@ The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN con
 
 Ensure that VPN Connection ID exists.
 
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
       it { should exist }
     end
 
 ## Parameters
+
+`vpn_connection_id` _(required)_
+
+| Property | Description |
+| --- | --- |
+| vpn_connection_id | The id of the VPN Connection. |
 
 For additional information, see the [AWS documentation on AWS EC2 VPN Connection Route.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection-route.html).
 
@@ -32,12 +38,12 @@ For additional information, see the [AWS documentation on AWS EC2 VPN Connection
 ## Examples
 
 ### Ensure a destination cidr block is available.
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
       its('destination_cidr_blocks') { should eq [['192.168.10.0/24']] }
     end
 
 ### Ensure that the states is `available`.
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
         its('states') { should eq [['available']] }
     end
 
@@ -51,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_vpn_connection_routes do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'dummy') do
       it { should_not exist }
     end
 
