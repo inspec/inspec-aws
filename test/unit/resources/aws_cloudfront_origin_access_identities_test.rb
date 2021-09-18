@@ -38,10 +38,18 @@ class AWSCloudFrontOriginAccessIdentitiesHappyPathTest < Minitest::Test
     }
     data[:data] = [mock_data]
     data[:client] = Aws::CloudFront::Client
-    @resp = AWSCloudFrontOriginAccessIdentities.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSCloudFrontOriginAccessIdentities.new
   end
 
-  def test_cache_policy_exists
-    assert @resp.exists?
+  def test_ids
+    assert(@resp.ids, ['test1'])
+  end
+
+  def test_s3_canonical_user_ids
+    assert(@resp.s3_canonical_user_ids, ['test1'])
+  end
+
+  def test_comments
+    assert(@resp.comments, ['test1'])
   end
 end

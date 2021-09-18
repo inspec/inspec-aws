@@ -14,6 +14,5 @@ control 'aws-cloudfront-origin-access-identities' do
     its('ids') { should include aws_cloudfront_origin_access_identity_id }
     its('s3_canonical_user_ids') { should include aws_cloudfront_origin_access_identity_s3_canonical_user_id }
     its('comments') { should include 'Some comment' }
-
   end
 end
