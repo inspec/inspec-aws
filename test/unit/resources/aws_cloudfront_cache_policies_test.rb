@@ -43,18 +43,10 @@ class AWSCloudFrontCachePoliciesHappyPathTest < Minitest::Test
     }
     data[:data] = [mock_data]
     data[:client] = Aws::CloudFront::Client
-    @resp = AWSCloudFrontCachePolicies.new
+    @resp = AWSCloudFrontCachePolicies.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_types
-    assert(@resp.types, ['test1'])
-  end
-
-  def test_ids
-    assert(@resp.cache_policy.ids, ['test1'])
-  end
-
-  def test_last_modified_times
-    assert(@resp.cache_policy.last_modified_times, [Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
+    assert_equal(@resp.types, ['test1'])
   end
 end

@@ -48,11 +48,6 @@ class AWSCloudFrontCachePolicies < AwsResourceBase
           default_ttl: table_name.cache_policy.cache_policy_config.default_ttl,
           max_ttl: table_name.cache_policy.cache_policy_config.max_ttl,
           min_ttl: table_name.cache_policy.cache_policy_config.min_ttl,
-          enable_accept_encoding_gzip: table_name.cache_policy.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.enable_accept_encoding_gzip,
-          enable_accept_encoding_brotli: table_name.cache_policy.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.enable_accept_encoding_brotli,
-          header_behavior: table_name.cache_policy.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.headers_config.header_behavior,
-          cookie_behavior: table_name.cache_policy.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.cookies_config.cookie_behavior,
-          query_string_behavior: table_name.cache_policy.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.query_strings_config.query_string_behavior,
         }
         }
       end.flatten

@@ -18,10 +18,5 @@ control 'aws-cloudfront-cache-policies' do
     its('default_ttls') { should include 50 }
     its('max_ttls') { should include 100 }
     its('min_ttls') { should include 1 }
-    its('enable_accept_encoding_gzips') { should include false }
-    its('enable_accept_encoding_brotlis') { should include false }
-    its('header_behaviors') { should include 'whitelist' }
-    its('cookie_behaviors') { should include 'whitelist' }
-    its('query_string_behaviors') { should include 'whitelist' }
   end
 end

@@ -33,11 +33,6 @@ For additional information, see the [AWS documentation on AWS CloudFormation Cac
 | default_ttls | The default amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. | default_ttl |
 | max_ttls | The maximum amount of time, in seconds, that objects stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. | max_ttl |
 | min_ttls | The minimum amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated. | min_ttl |
-| enable_accept_encoding_gzips | A flag that can affect whether the Accept-Encoding HTTP header is included in the cache key and included in requests that CloudFront sends to the origin. | enable_accept_encoding_gzip |
-| enable_accept_encoding_brotlis | A flag that can affect whether the Accept-Encoding HTTP header is included in the cache key and included in requests that CloudFront sends to the origin. | enable_accept_encoding_brotli |
-| header_behaviors | Determines whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. | header_behavior |
-| cookie_behavior | Determines whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. | cookie_behavior |
-| query_string_behaviors | Determines whether any URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. | query_string_behavior |
 
 ## Examples
 
