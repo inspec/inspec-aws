@@ -26,10 +26,6 @@ class AwsS3BucketObjectsHappyPathTest < Minitest::Test
     @resp = AwsS3BucketObjects.new(bucket_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_is_truncated
-    assert_equal(@resp.is_truncated, [true])
-  end
-
   def test_names
     assert_equal(@resp.names, ['test1'])
   end
