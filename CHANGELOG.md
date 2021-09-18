@@ -1,9 +1,14 @@
-<!-- latest_release 1.67.2 -->
+<!-- latest_release 1.68.0 -->
+## [v1.68.0](https://github.com/inspec/inspec-aws/tree/v1.68.0) (2021-09-18)
+
+#### Merged Pull Requests
+- soumyo/minor text changes in the libraries [#530](https://github.com/inspec/inspec-aws/pull/530) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.67.2](https://github.com/inspec/inspec-aws/tree/v1.67.2) (2021-09-16)
 
 #### Merged Pull Requests
 - Added support to audit the status of a service-linked role deletion. [#514](https://github.com/inspec/inspec-aws/pull/514) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.67.1](https://github.com/inspec/inspec-aws/tree/v1.67.1) (2021-09-16)
 

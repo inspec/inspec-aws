@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSsmActivation < AwsResourceBase
   name 'aws_ssm_activation'
-  desc 'Verifies settings for a SSM Activation'
+  desc 'Verifies settings for a SSM Activation.'
 
   example "
     describe aws_ssm_activation(activation_id: 'activation-id') do

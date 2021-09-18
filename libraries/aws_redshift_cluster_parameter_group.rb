@@ -25,7 +25,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
     end
   end
 
-  def id
+  def parameter_group_name
     return nil unless exists?
     @parameter_groups[:parameter_group_name]
   end
@@ -34,11 +34,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
     !@parameter_groups.nil? && !@parameter_groups.empty?
   end
 
-  def encrypted?
-    @parameter_groups[:encrypted]
-  end
-
   def to_s
-    "Redshift Cluster Parameter Group: #{@display_name}"
+    "Redshift Cluster Parameter Group Name: #{@display_name}"
   end
 end

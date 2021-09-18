@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSsmResourceComplianceSummary < AwsResourceBase
   name 'aws_ssm_resource_compliance_summary'
-  desc 'Verifies settings for a SSM Resource Compliance Summary'
+  desc 'Verifies settings for a SSM Resource Compliance Summary.'
 
   example "
     describe aws_ssm_resource_compliance_summary(resource_id: 'resource-id') do
