@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamRootUser < AwsResourceBase
   name 'aws_iam_root_user'
-  desc 'Verifies settings for AWS Root Account'
+  desc 'Verifies settings for AWS Root Account.'
   example "
     describe aws_iam_root_user do
       it { should have_access_key }

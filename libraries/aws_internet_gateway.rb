@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsInternetGateway < AwsResourceBase
   name 'aws_internet_gateway'
-  desc 'Verifies settings for an AWS Internet Gateway'
+  desc 'Verifies settings for an AWS Internet Gateway.'
 
   example "
     describe aws_internet_gateway(id: 'igw-abc12450edc87a8bd') do

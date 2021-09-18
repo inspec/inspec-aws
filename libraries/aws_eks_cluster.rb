@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEksCluster < AwsResourceBase
   name 'aws_eks_cluster'
-  desc 'Verifies settings for an EKS cluster'
+  desc 'Verifies settings for an EKS cluster.'
 
   example "
     describe aws_eks_cluster('cluster-name') do
