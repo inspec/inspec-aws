@@ -34,6 +34,6 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
   end
 
   def to_s
-    "listener_arns: #{@display_name}"
+    "Listener ARN: #{@display_name}"
   end
 end

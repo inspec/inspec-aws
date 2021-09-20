@@ -3,9 +3,9 @@ title: About the aws_ec2_eip Resource
 platform: aws
 ---
 
-# aws\_eip
+# aws\_ec2\_eip
 
-Use the `aws_eip` InSpec audit resource to test properties of a single specific Elastic IP (EIP). 
+Use the `aws_ec2_eip` InSpec audit resource to test properties of a single specific Elastic IP (EIP).
 
 An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `192.0.2.0`.
 
@@ -65,7 +65,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_vpc_endpoint(public_ip: '192.0.2.0') do
       it { should_not exist }
     end
