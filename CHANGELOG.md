@@ -1,9 +1,14 @@
-<!-- latest_release 1.68.0 -->
+<!-- latest_release 1.68.1 -->
+## [v1.68.1](https://github.com/inspec/inspec-aws/tree/v1.68.1) (2021-09-20)
+
+#### Merged Pull Requests
+- chore: fix typo&#39;s and formatting in docs [#646](https://github.com/inspec/inspec-aws/pull/646) ([timonz](https://github.com/timonz))
+<!-- latest_release -->
+
 ## [v1.68.0](https://github.com/inspec/inspec-aws/tree/v1.68.0) (2021-09-18)
 
 #### Merged Pull Requests
 - soumyo/minor text changes in the libraries [#530](https://github.com/inspec/inspec-aws/pull/530) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.67.2](https://github.com/inspec/inspec-aws/tree/v1.67.2) (2021-09-16)
 
