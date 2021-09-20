@@ -5,15 +5,15 @@ platform: aws
 
 # aws_ec2_vpn_connection_routes
 
-Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of a plural AWS EC2 VPN Connection Route.
+Use the `aws_ec2_vpn_connection_routes` InSpec audit resource to test properties of multiple AWS EC2 VPN connection routes.
 
-The AWS::EC2::VPNConnectionRoute resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
+The `AWS::EC2::VPNConnectionRoute` resource specifies a static route for a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
 ## Syntax
 
 Ensure that VPN Connection ID exists.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
       it { should exist }
     end
 
@@ -21,15 +21,13 @@ Ensure that VPN Connection ID exists.
 
 `vpn_connection_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| vpn_connection_id | The id of the VPN Connection. |
+The ID of the VPN Connection.
 
 For additional information, see the [AWS documentation on AWS EC2 VPN Connection Route.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection-route.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | destination_cidr_blocks | The CIDR block associated with the local subnet of the customer data center. | destination_cidr_block |
 | sources | Indicates how the routes were provided. | source |
@@ -37,13 +35,15 @@ For additional information, see the [AWS documentation on AWS EC2 VPN Connection
 
 ## Examples
 
-### Ensure a destination cidr block is available.
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
-      its('destination_cidr_blocks') { should eq [['192.168.10.0/24']] }
+### Ensure a destination CIDR block is available.
+
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
+      its('destination_cidr_blocks') { should eq [['CIDR_BLOCK']] }
     end
 
-### Ensure that the states is `available`.
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+### Ensure that a VPN connection route is `available`.
+
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
         its('states') { should eq [['available']] }
     end
 
@@ -57,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'dummy') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
       it { should_not exist }
     end
 
