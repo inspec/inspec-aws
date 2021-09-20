@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsNatGateway < AwsResourceBase
   name 'aws_nat_gateway'
-  desc 'Verifies settings for an AWS NAT Gateway'
+  desc 'Verifies settings for an AWS NAT Gateway.'
 
   example "
     describe aws_nat_gateway(id: 'nat-11aa578bffadf6ba6') do

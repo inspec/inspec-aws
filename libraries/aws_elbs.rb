@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsElbs < AwsResourceBase
   name 'aws_elbs'
-  desc 'Verifies settings for a collection AWS Elastic Load Balancers'
-  example '
+  desc 'Verifies settings for a collection AWS Elastic Load Balancers.'
+  example "
     describe aws_elbs do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

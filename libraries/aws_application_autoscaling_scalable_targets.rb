@@ -37,7 +37,7 @@ class AWSApplicationAutoScalingScalableTargets < AwsResourceBase
 
   def fetch_data
     rows = []
-    @query_params[:max_results] = 10
+    @query_params[:max_results] = 100
     loop do
       catch_aws_errors do
         @api_response = @aws.applicationautoscaling_client.describe_scalable_targets(@query_params)

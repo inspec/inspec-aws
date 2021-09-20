@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsCloudFrontDistribution < AwsResourceBase
   name 'aws_cloudfront_distribution'
-  desc 'Verifies settings for a CloudFront Distribution'
+  desc 'Verifies settings for a CloudFront Distribution.'
 
   example "
     describe aws_cloudfront_distribution('cloudfront-1') do

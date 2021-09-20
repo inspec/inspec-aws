@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSqsQueue < AwsResourceBase
   name 'aws_sqs_queue'
-  desc 'Verifies settings for an SQS Queue'
+  desc 'Verifies settings for an SQS Queue.'
 
   example "
     describe aws_sqs_queue('queue-name') do

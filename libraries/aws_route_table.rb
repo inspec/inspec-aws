@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRouteTable < AwsResourceBase
   name 'aws_route_table'
-  desc 'Verifies settings for an AWS Route Table'
+  desc 'Verifies settings for an AWS Route Table.'
   example "
     describe aws_route_table(route_table_id: 'rtb-05462d2278326a79c') do
       its('route_table_id') { should cmp 'rtb-05462d2278326a79c' }

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsElb < AwsResourceBase
   name 'aws_elb'
-  desc 'Verifies settings for an Elastic Load Balancer'
+  desc 'Verifies settings for an Elastic Load Balancer.'
 
   example "
     describe aws_elb('load-balancer-1') do
