@@ -765,6 +765,19 @@ output "traffic_mirror_filter_id" {
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_api_gateway_rest_api_id" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+}
+
+output "aws_api_gateway_stage_name" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_bm_test1.stage_name
+}
+
+output "aws_api_gateway_base_path_mapping_domain_name" {
+  value = aws_api_gateway_base_path_mapping.aws_api_gateway_base_path_mapping_bm_test1.domain_name
 }
