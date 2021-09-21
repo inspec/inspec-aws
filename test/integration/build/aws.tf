@@ -4045,3 +4045,17 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+//AWS::EC2::EgressOnlyInternetGateway
+resource "aws_vpc" "aws_vpc_eoig_test1" {
+  cidr_block                       = "10.1.0.0/16"
+  assign_generated_ipv6_cidr_block = true
+}
+
+resource "aws_egress_only_internet_gateway" "aws_egress_only_internet_gateway_test1" {
+  vpc_id = aws_vpc.aws_vpc_eoig_test1.id
+
+  tags = {
+    Name = "main"
+  }
+}
