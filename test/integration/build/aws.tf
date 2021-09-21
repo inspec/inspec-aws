@@ -4045,3 +4045,11 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+//AWS::EC2::CapacityReservation
+resource "aws_ec2_capacity_reservation" "aws_ec2_capacity_reservation_test1" {
+  instance_type     = "t2.micro"
+  instance_platform = "Linux/UNIX"
+  availability_zone = "us-east-2a"
+  instance_count    = 1
+}
