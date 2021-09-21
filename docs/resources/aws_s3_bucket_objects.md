@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_s3\_bucket\_objects
 
-Use the `aws_s3_bucket_objects` InSpec audit resource to test properties of a plural AWS S3 Bucket Objects.
+Use the `aws_s3_bucket_objects` InSpec audit resource to test properties of multiple AWS S3 bucket objects.
 
 Amazon S3 is an object store that uses unique key-values to store as many objects as you want.
 
@@ -13,7 +13,7 @@ Amazon S3 is an object store that uses unique key-values to store as many object
 
 Ensure that a bucket exists.
 
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
 
@@ -21,60 +21,64 @@ Ensure that a bucket exists.
 
 `bucket_name` _(required)_
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| bucket_name | The bucket name. | bucket |
+The bucket name.
 
-See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
+See the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) for additional information.
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| contents | Metadata about each object returned.| contents |
-| contents_keys | The name that you assign to an object. | contents (key) |
-| contents_last_modified | Creation date of the object. | contents (last_modified) |
-| contents_etags | The entity tag is a hash of the object. | contents (etag) |
-| contents_sizes | The size in bytes of the object. | contents (size) |
-| contents_storage_classes | The class of storage used to store the object. | contents (storage_class) |
-| contents_owners | The owner of the object. | contents (owners) |
+| contents | A list of the metadata about each object returned.| contents |
+| contents_keys | A list of the object names. | contents (key) |
+| contents_last_modified |  A list of creation date of the objects. | contents (last_modified) |
+| contents_sizes | A list of the sizes of the objects in bytes. | contents (size) |
+| contents_etags | A list of the entity tags which are a hash of the objects. | contents (etag) |
+| contents_storage_classes | A list of the classes of storage used to store the objects. | contents (storage_class) |
+| contents_owners | A list of the owners of the objects. | contents (owners) |
 | names | The bucket name. | name |
-| prefixes | Keys that begin with the indicated prefix. | prefix |
-| delimiters | A delimiter is a character you use to group keys. | delimiter |
-| max_keys | Sets the maximum number of keys returned in the response. By default the action returns up to 1,000 key names. | max_keys |
-| common_prefixes | Container for the specified common prefix. | common_prefixes (prefix) |
-| encoding_types | Encoding type used by Amazon S3 to encode object key names in the XML response. | encoding_type |
-| key_counts | KeyCount is the number of keys returned with this request. | key_count |
+| prefixes | A list of keys that begin with the indicated prefix. | prefix |
+| delimiters | A list of delimiters, which are a character used to group keys. | delimiter |
+| max_keys | The maximum number of keys returned in the response. By default the action returns up to 1,000 key names. | max_keys |
+| common_prefixes | A list of containers for the specified common prefix. | common_prefixes (prefix) |
+| encoding_types | A list of the encoding types used by Amazon S3 to encode object key names in the XML response. | encoding_type |
+| key_counts | The number of keys returned with this request. | key_count |
 
 ## Examples
 
 ### Ensure whether the bucket is truncated.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
       its ('is_truncated') { should include true }
     end
 
 ### Verify the bucket name.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
-      its ('names') { should include "test_bucket_name" }
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
+      its ('names') { should include "BUCKET_NAME" }
     end
 
-### Ensure a object name is available.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
-        its('contents_keys') { should include 'test_object_name' }
+### Ensure an object name exists.
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
+        its('contents_keys') { should include 'OBJECT_NAME' }
     end
 
-### Ensure a last modified of an object exist.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+### Ensure an object has a last modified date.
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
         its('contents_last_modified') { should include  Time.parse("2021-05-05 06:22:04.000000000 +0000") }
     end
 
-### Ensure a storage class of an object exist.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+### Ensure a storage class of an object exists.
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
         its('contents_storage_classes') { should include "STANDARD") }
     end
 
 ### Verify the key counts of a bucket.
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
         its('key_counts') { should include 2 }
     end
 
@@ -88,13 +92,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket') do
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_s3_bucket_objects(bucket_name: 'dummy') do
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
       it { should_not exist }
     end
 
