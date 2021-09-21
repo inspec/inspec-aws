@@ -209,6 +209,7 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 | [aws_ec2_transit_gateway_route_table_propagation](docs/resources/aws_ec2_transit_gateway_route_table_propagation.md) | [aws_ec2_transit_gateway_route_table_propagations](docs/resources/aws_ec2_transit_gateway_route_table_propagations.md) |
 | No Singular Resource | [aws_ec2_volume_attachments](docs/resources/aws_ec2_volume_attachments.md) | [aws_ec2_vpc_peering_connection](docs/resources/aws_ec2_vpc_peering_connection.md) |
 | No Singular Resource | [aws_ec2_vpc_peering_connections](docs/resources/aws_ec2_vpc_peering_connections.md) |
+| No Singular Resource | [aws_ec2_vpn_connection_routes](docs/resources/aws_ec2_vpn_connection_routes.md) |
 | [aws_ec2_vpn_gateway_route_propagation](docs/resources/aws_ec2_vpn_gateway_route_propagation.md) | [aws_ec2_vpn_gateway_route_propagations](docs/resources/aws_ec2_vpn_gateway_route_propagations.md) |
 | [aws_ecr](docs/resources/aws_ecr.md) | No Plural Resource |
 | [aws_ecr_image](docs/resources/aws_ecr_image.md) | [aws_ecr_images](docs/resources/aws_ecr_images.md) |
