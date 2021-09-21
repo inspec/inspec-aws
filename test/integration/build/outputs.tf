@@ -773,3 +773,11 @@ output "oidc_arn" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
+output "aws_placement_group_placement_group_id" {
+  value = aws_placement_group.aws_placement_group_test1.placement_group_id
+}
+
+output "aws_placement_group_name" {
+  value = aws_placement_group.aws_placement_group_test1.name
+}

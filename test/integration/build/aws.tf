@@ -4045,3 +4045,9 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+#AWS::EC2::PlacementGroup
+resource "aws_placement_group" "aws_placement_group_test1" {
+  name     = "placement-group-test1"
+  strategy = "cluster"
+}
