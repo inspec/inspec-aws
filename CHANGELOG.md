@@ -1,9 +1,14 @@
-<!-- latest_release 1.69.0 -->
+<!-- latest_release 1.69.1 -->
+## [v1.69.1](https://github.com/inspec/inspec-aws/tree/v1.69.1) (2021-09-21)
+
+#### Merged Pull Requests
+- soumyo/plural_resource_s3_bucket_objects [#520](https://github.com/inspec/inspec-aws/pull/520) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.69.0](https://github.com/inspec/inspec-aws/tree/v1.69.0) (2021-09-20)
 
 #### Merged Pull Requests
 - adding attributes for cloud front distribution [#633](https://github.com/inspec/inspec-aws/pull/633) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.68.1](https://github.com/inspec/inspec-aws/tree/v1.68.1) (2021-09-20)
 
