@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsElastiCacheClusters < AwsResourceBase
   name 'aws_elasticache_clusters'
-  desc 'Verifies settings for a collection of AWS Elasticache Clusters'
+  desc 'Verifies settings for a collection of AWS Elasticache Clusters.'
   example "
     describe aws_elasticache_clusters do
       its('count') { should eq 3 }

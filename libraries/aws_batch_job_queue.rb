@@ -26,17 +26,13 @@ class AWSBatchJobQueue < AwsResourceBase
     end
   end
 
-  def id
+  def job_queue_name
     return nil unless exists?
     @job_queues[:job_queue_name]
   end
 
   def exists?
     !@job_queues.nil? && !@job_queues.empty?
-  end
-
-  def encrypted?
-    @job_queues[:encrypted]
   end
 
   def to_s

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsAlb < AwsResourceBase
   name 'aws_alb'
-  desc 'Verifies settings for an Application Load Balancer'
+  desc 'Verifies settings for an Application Load Balancer.'
 
   example "
     describe aws_alb('arn:aws:elasticloadbalancing') do

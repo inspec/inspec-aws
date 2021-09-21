@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsIamAccessKeys < AwsResourceBase
   name 'aws_iam_access_keys'
-  desc 'Verifies settings for a collection of AWS IAM Access Keys'
-  example '
+  desc 'Verifies settings for a collection of AWS IAM Access Keys.'
+  example "
     describe aws_iam_access_keys do
       it { should_not exist }
     end
-  '
+  "
 
   attr_reader :table
 
