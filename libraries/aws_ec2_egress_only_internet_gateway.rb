@@ -7,7 +7,7 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
   desc 'Describes one or more of your egress-only internet gateways.'
 
   example "
-    describe aws_ec2_egress_only_internet_gateway(capacity_reservation_id: 'CapacityReservationId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'CapacityReservationId') do
       it { should exist }
     end
   "
@@ -38,11 +38,11 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
     "Egress Only Internet Gateway Id: #{@display_name}"
   end
 
-  def attachments_state
+  def attachments_states
     attachments.map(&:state)
   end
 
-  def attachments_vpc_id
+  def attachments_vpc_ids
     attachments.map(&:vpc_id)
   end
 end

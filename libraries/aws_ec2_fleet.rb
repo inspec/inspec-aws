@@ -19,7 +19,7 @@ class AWSEC2Fleet < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: fleet_id must be provided" unless opts[:fleet_id] && !opts[:fleet_id].empty?
     @display_name = opts[:fleet_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_capacity_reservations({ fleet_ids: [opts[:fleet_id]] })
+      resp = @aws.compute_client.describe_fleets({ fleet_ids: [opts[:fleet_id]] })
       @resp = resp.fleets[0].to_h
       create_resource_methods(@resp)
     end
