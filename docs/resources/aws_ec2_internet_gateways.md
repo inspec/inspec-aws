@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_internet_gateways
 
-Use the `aws_ec2_internet_gateways` InSpec audit resource to test properties of a plural AWS EC2 Internet Gateway.
+Use the `aws_ec2_internet_gateways` InSpec audit resource to test properties of multiple AWS EC2 internet gateways.
 
-The AWS::EC2::InternetGateway resource allocates an internet gateway for use with a VPC. After creating the Internet gateway, you then attach it to a VPC..
+The `AWS::EC2::InternetGateway` resource allocates an internet gateway for use with a VPC. After creating the internet gateway, you then attach it to a VPC.
 
 ## Syntax
 
-Ensure that internet gateway exists.
+Ensure that an internet gateway exists.
 
     describe aws_ec2_internet_gateways do
       it { should exist }
@@ -19,39 +19,43 @@ Ensure that internet gateway exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Internet Gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html).
+For additional information, see the [AWS documentation on AWS EC2 internet gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| attachments | The attachment of the Internet gateway. | attachments |
-| attachments_states | The | attachments (state) |
-| attachments_vpc_ids | The | attachments (vpc_id) |
-| internet_gateway_ids | The ID of the Internet gateway. | internet_gateway_id |
-| owner_ids | The ID of the Amazon Web Services account that owns the internet gateway. | owner_id |
-| tags | The key/value combination of a tag assigned to the resource.  | tags |
+| Property | Description| Field |
+| --- | --- | --- |
+| attachments | The attachments of the internet gateways. | attachments |
+| attachments_states | The current attachment states. For an internet gateway, the state is available when attached to a VPC; otherwise, this value is not returned. | attachments (state) |
+| attachments_vpc_ids | The IDs of the VPCs. | attachments (vpc_id) |
+| internet_gateway_ids | The IDs of the internet gateways. | internet_gateway_id |
+| owner_ids | The IDs of the AWS accounts that own the internet gateways. | owner_id |
+| tags | The key/value combination of tags assigned to the resources. | tags |
 
 ## Examples
 
-### Ensure a attachments is available.
+### Ensure an attachment is available.
+
     describe aws_ec2_internet_gateways do
       its('attachments') { should_not be_empty }
     end
 
-### Ensure that the attachment state is `available`.
+### Ensure that an attachment state is `available`.
+
     describe aws_ec2_internet_gateways do
         its('attachments_states') { should include 'available' }
     end
 
-### Ensure a internet gateway id is available.
+### Ensure an internet gateway ID is available.
+
     describe aws_ec2_internet_gateways do
-      its('internet_gateway_ids') { should include 'InternetGatewayId' }
+      its('internet_gateway_ids') { should include 'INTERNET_GATEWAY_ID' }
     end
 
-### Ensure a owner id is available.
+### Ensure an owner ID is available.
+
     describe aws_ec2_internet_gateways do
-      its('owner_ids') { should include '1234567890' }
+      its('owner_ids') { should include 'OWNER_ID' }
     end
 
 ## Matchers
