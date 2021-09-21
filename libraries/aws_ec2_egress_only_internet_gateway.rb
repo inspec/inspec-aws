@@ -7,7 +7,7 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
   desc 'Describes one or more of your egress-only internet gateways.'
 
   example "
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'CapacityReservationId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
       it { should exist }
     end
   "

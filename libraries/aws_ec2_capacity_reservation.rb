@@ -25,9 +25,9 @@ class AWSEC2CapacityReservation < AwsResourceBase
     end
   end
 
-  def transit_gateway_attachment_id
+  def capacity_reservation_id
     return nil unless exists?
-    @resp[:transit_gateway_attachment_id]
+    @resp[:capacity_reservation_id]
   end
 
   def exists?
