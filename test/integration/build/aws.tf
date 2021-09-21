@@ -4045,3 +4045,14 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+//AWS::EC2::CustomerGateway
+resource "aws_customer_gateway" "aws_customer_gateway_test1" {
+  bgp_asn    = 65000
+  ip_address = "172.83.124.10"
+  type       = "ipsec.1"
+
+  tags = {
+    Name = "main-customer-gateway"
+  }
+}

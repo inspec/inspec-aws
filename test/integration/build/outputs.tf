@@ -773,3 +773,11 @@ output "oidc_arn" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
+output "aws_customer_gateway_id" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.id
+}
+
+output "aws_customer_gateway_arn" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.arn
+}
