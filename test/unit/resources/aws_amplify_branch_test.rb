@@ -56,7 +56,7 @@ class AWSAmplifyBranchSuccessPathTest < Minitest::Test
   end
 
   def test_branch_name
-    assert_equal(@amplify.name, 'test1')
+    assert_equal(@amplify.branch_name, 'test1')
   end
 end
 

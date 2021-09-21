@@ -19,8 +19,8 @@ class AWSAmplifyBranch < AwsResourceBase
 
     raise ArgumentError, "#{@__resource_name__}: app_id must and branch_name be provided" unless opts[:app_id] && !opts[:app_id].empty? && opts[:branch_name] && !opts[:branch_name].empty?
     @display_name = opts[:app_id]
-    resp = @aws.amplify_client.get_app({ app_id: opts[:app_id], branch_name: opts[:branch_name] })
-    @apps = resp.app.to_h
+    resp = @aws.amplify_client.get_branch({ app_id: opts[:app_id], branch_name: opts[:branch_name] })
+    @apps = resp.branch.to_h
     create_resource_methods(@apps)
   end
 

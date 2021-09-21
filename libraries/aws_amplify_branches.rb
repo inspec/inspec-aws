@@ -15,16 +15,15 @@ class AWSAmplifyBranches < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:branch_arn, field: :branch_arn)
+             .register_column(:branch_arns, field: :branch_arn)
              .register_column(:branch_names, field: :branch_name)
-             .register_column(:stage, field: :stage)
+             .register_column(:stages, field: :stage)
              .register_column(:tags, field: :tags)
-             .register_column(:description, field: :description)
-             .register_column(:display_name, field: :display_name)
-             .register_column(:enable_notification, field: :enable_notification)
+             .register_column(:descriptions, field: :description)
+             .register_column(:display_names, field: :display_name)
+             .register_column(:enable_notifications, field: :enable_notification)
              .register_column(:create_time, field: :create_time)
              .register_column(:update_time, field: :update_time)
-             .register_column(:iam_service_role_arns, field: :iam_service_role_arn)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -36,6 +35,7 @@ class AWSAmplifyBranches < AwsResourceBase
   def fetch_data
     apps_rows = []
     pagination_options = {}
+    pagination_options[:app_id]=opts[:app_id]
     loop do
       catch_aws_errors do
         @api_response = @aws.amplify_client.list_branches(pagination_options)
@@ -52,8 +52,6 @@ class AWSAmplifyBranches < AwsResourceBase
                         enable_notification: branches.enable_notification,
                         create_time: branches.create_time,
                         update_time: branches.update_time,
-                        iam_service_role_arn: branches.iam_service_role_arn,
-
         }]
       end
       break unless @api_response.next_token
