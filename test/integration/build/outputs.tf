@@ -765,6 +765,11 @@ output "traffic_mirror_filter_id" {
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
