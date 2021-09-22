@@ -1,9 +1,14 @@
-<!-- latest_release 1.69.2 -->
+<!-- latest_release 1.69.3 -->
+## [v1.69.3](https://github.com/inspec/inspec-aws/tree/v1.69.3) (2021-09-22)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_insights_analysis [#524](https://github.com/inspec/inspec-aws/pull/524) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.69.2](https://github.com/inspec/inspec-aws/tree/v1.69.2) (2021-09-21)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_vpn_connection_route [#498](https://github.com/inspec/inspec-aws/pull/498) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.69.1](https://github.com/inspec/inspec-aws/tree/v1.69.1) (2021-09-21)
 
