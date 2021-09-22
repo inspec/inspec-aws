@@ -4045,3 +4045,17 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+#Internet Gateway
+resource "aws_internet_gateway" "aws_internet_gateway_test" {
+  vpc_id = aws_vpc.aws_vpc_internet_gateway_test.id
+
+  tags = {
+    Name = "test"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_internet_gateway_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
