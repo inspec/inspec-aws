@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_network_insights_paths
 
-Use the `aws_ec2_network_insights_paths` InSpec audit resource to test properties of a plural AWS EC2 Internet Gateway.
+Use the `aws_ec2_network_insights_paths` InSpec audit resource to test properties of multiple AWS EC2 paths to analyze for reachability.
 
-The AWS::EC2::NetworkInsightsPath resource specifies a path to analyze for reachability.
+The `AWS::EC2::NetworkInsightsPath` resource specifies a path to analyze for reachability.
 
 ## Syntax
 
-Ensure that Network Insights Path Id exists.
+Ensure that network insights path ID exists.
 
     describe aws_ec2_network_insights_paths do
       it { should exist }
@@ -19,7 +19,7 @@ Ensure that Network Insights Path Id exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Network Insights Path](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightspath.html).
+For additional information, see the [AWS documentation on AWS EC2 network insights path](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightspath.html).
 
 ## Properties
 
@@ -38,14 +38,16 @@ For additional information, see the [AWS documentation on AWS EC2 Network Insigh
 
 ## Examples
 
-### Ensure a Network Insights Path Id is available.
+### Ensure a network insights path ID is available.
+
     describe aws_ec2_network_insights_paths do
-      its('network_insights_path_ids') { should include 'NetworkInsightsPathId' }
+      its('network_insights_path_ids') { should include 'NETWORK_INSIGHTS_PATH_ID' }
     end
 
-### Ensure a Network Insights Path ARN is available.
+### Ensure a network insights path ARN is available.
+
     describe aws_ec2_network_insights_paths do
-        its('network_insights_path_arns') { should include 'NetworkInsightsPathARN' }
+        its('network_insights_path_arns') { should include 'NETWORK_INSIGHTS_PATH_ARN' }
     end
 
 ## Matchers
