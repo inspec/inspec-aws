@@ -1,9 +1,14 @@
-<!-- latest_release 1.69.3 -->
+<!-- latest_release 1.69.4 -->
+## [v1.69.4](https://github.com/inspec/inspec-aws/tree/v1.69.4) (2021-09-22)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_internet_gateway [#523](https://github.com/inspec/inspec-aws/pull/523) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.69.3](https://github.com/inspec/inspec-aws/tree/v1.69.3) (2021-09-22)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_network_insights_analysis [#524](https://github.com/inspec/inspec-aws/pull/524) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.69.2](https://github.com/inspec/inspec-aws/tree/v1.69.2) (2021-09-21)
 
