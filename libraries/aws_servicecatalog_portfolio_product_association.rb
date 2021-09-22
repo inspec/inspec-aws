@@ -35,6 +35,6 @@ class AWSServiceCatalogPortfolioProductAssociation < AwsResourceBase
   end
 
   def to_s
-    "product_id: #{@display_name}"
+    "Product ID: #{@display_name}"
   end
 end
