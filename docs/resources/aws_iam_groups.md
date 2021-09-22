@@ -47,7 +47,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
       its('group_names') { should include 'prod-access-group' }
     end
 
-##### Ensure there are no Groups with inline policies
+##### Ensure there are no groups with inline policies.
 
     describe aws_iam_groups.where(has_inline_policies: true) do
       its('group_names') { should be_empty }
