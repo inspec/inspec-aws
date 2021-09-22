@@ -37,7 +37,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 |group\_id           | The group ID. |
 |arn                 | The Amazon Resource Name of the group. |
 |users               | Array of users associated with the group.  |
-|inline_policy_names | The arns of the standalone IAM policies which are attached to the user. |
+|inline_policy_names | A list of inline policy names associated with the user. |
 
 ## Examples
 
