@@ -5,19 +5,21 @@ platform: aws
 
 # aws_ec2_network_insights_analysis_plural
 
-Use the `aws_ec2_network_insights_analysis_plural` InSpec audit resource to test properties of a plural AWS EC2 Internet Gateway.
+Use the `aws_ec2_network_insights_analysis_plural` InSpec audit resource to test properties of multiple AWS EC2 network insights analyses.
 
-The AWS::EC2::NetworkInsightsAnalysis resource specifies a network insights analysis.
+The `AWS::EC2::NetworkInsightsAnalysis` resource specifies a network insights analysis.
 
 ## Syntax
 
-Ensure that Network Insights Analysis Id exists.
+Ensure that network insights analysis ID exists.
 
     describe aws_ec2_network_insights_analysis_plural do
       it { should exist }
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 Network Insights Analysis](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightsanalysis.html).
 
@@ -41,14 +43,16 @@ For additional information, see the [AWS documentation on AWS EC2 Network Insigh
 
 ## Examples
 
-### Ensure a Network Insights Analysis Id is available.
+### Ensure a network insights analysis ID is available.
+
     describe aws_ec2_network_insights_analysis_plural do
-      its('network_insights_analysis_ids') { should include 'NetworkInsightsAnalysisId' }
+      its('network_insights_analysis_ids') { should include 'NETWORK_INSIGHTS_ANALYSIS_ID' }
     end
 
-### Ensure that the Network Insights Path Id is available.
+### Ensure that the network insights path ID is available.
+
     describe aws_ec2_network_insights_analysis_plural do
-        its('network_insights_path_ids') { should include 'NetworkInsightsPathId' }
+        its('network_insights_path_ids') { should include 'NETWORK_INSIGHTS_PATH_ID' }
     end
 
 ## Matchers
