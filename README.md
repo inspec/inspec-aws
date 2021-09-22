@@ -200,15 +200,17 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 | [aws_ec2_dhcp_option](docs/resources/aws_ec2_dhcp_option.md) | [aws_ec2_dhcp_options](docs/resources/aws_ec2_dhcp_options.md) |
 | [aws_ec2_eip](docs/resources/aws_ec2_eip.md) | [aws_ec2_eips](docs/resources/aws_ec2_eips.md) |
 | [aws_ec2_instance](docs/resources/aws_ec2_instance.md) | [aws_ec2_instances](docs/resources/aws_ec2_instances.md) |
+| [aws_ec2_internet_gateway](docs/resources/aws_ec2_internet_gateway.md) | [aws_ec2_internet_gateways](docs/resources/aws_ec2_internet_gateways.md) |
 | [aws_ec2_launch_template](docs/resources/aws_ec2_launch_template.md) | [aws_ec2_launch_templates](docs/resources/aws_ec2_launch_templates.md) |
+| [aws_ec2_network_insights_analysis](docs/resources/aws_ec2_network_insights_analysis.md) | [aws_ec2_network_insights_analysis_plural](docs/resources/aws_ec2_network_insights_analysis_plural.md) |
 | [aws_ec2_traffic_mirror_filter](docs/resources/aws_ec2_traffic_mirror_filter.md) | [aws_ec2_traffic_mirror_filters](docs/resources/aws_ec2_traffic_mirror_filters.md) |
 | [aws_ec2_traffic_mirror_session](docs/resources/aws_ec2_traffic_mirror_session.md) | [aws_ec2_traffic_mirror_sessions](docs/resources/aws_ec2_traffic_mirror_sessions.md) |
 | [aws_ec2_transit_gateway_attachment](docs/resources/aws_ec2_transit_gateway_attachment.md) | [aws_ec2_transit_gateway_attachments](docs/resources/aws_ec2_transit_gateway_attachments.md) |
 | [aws_ec2_transit_gateway_route_table](docs/resources/aws_ec2_transit_gateway_route_table.md) | [aws_ec2_transit_gateway_route_tables](docs/resources/aws_ec2_transit_gateway_route_tables.md) |
 | [aws_ec2_transit_gateway_route_table_association](docs/resources/aws_ec2_transit_gateway_route_table_association.md) | [aws_ec2_transit_gateway_route_table_associations](docs/resources/aws_ec2_transit_gateway_route_table_associations.md) |
 | [aws_ec2_transit_gateway_route_table_propagation](docs/resources/aws_ec2_transit_gateway_route_table_propagation.md) | [aws_ec2_transit_gateway_route_table_propagations](docs/resources/aws_ec2_transit_gateway_route_table_propagations.md) |
-| No Singular Resource | [aws_ec2_volume_attachments](docs/resources/aws_ec2_volume_attachments.md) | [aws_ec2_vpc_peering_connection](docs/resources/aws_ec2_vpc_peering_connection.md) |
-| No Singular Resource | [aws_ec2_vpc_peering_connections](docs/resources/aws_ec2_vpc_peering_connections.md) |
+| No Singular Resource | [aws_ec2_volume_attachments](docs/resources/aws_ec2_volume_attachments.md) |
+| [aws_ec2_vpc_peering_connection](docs/resources/aws_ec2_vpc_peering_connection.md) | [aws_ec2_vpc_peering_connections](docs/resources/aws_ec2_vpc_peering_connections.md) |
 | No Singular Resource | [aws_ec2_vpn_connection_routes](docs/resources/aws_ec2_vpn_connection_routes.md) |
 | [aws_ec2_vpn_gateway_route_propagation](docs/resources/aws_ec2_vpn_gateway_route_propagation.md) | [aws_ec2_vpn_gateway_route_propagations](docs/resources/aws_ec2_vpn_gateway_route_propagations.md) |
 | [aws_ecr](docs/resources/aws_ecr.md) | No Plural Resource |
