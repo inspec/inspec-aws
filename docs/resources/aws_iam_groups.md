@@ -35,7 +35,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 |arns                  | The Amazon Resource Name of the group. |
 |users                 | Array of users associated with the group.  |
 |entries               | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-|has\_inline\_policies | Boolean indicating whether or not the Group has policies set directly on it. |
+|has\_inline\_policies | Boolean indicating whether or not the group has policies applied to it. |
 |inline\_policy\_names | The names of the policies (if any) which are directly on the Group. |
 
 
