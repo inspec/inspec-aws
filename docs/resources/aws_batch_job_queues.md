@@ -3,7 +3,7 @@ title: About the aws_batch_job_queues Resource
 platform: aws
 ---
 
-# aws\_batch_\_job\_queues
+# aws\_batch\_job\_queues
 
 Use the `aws_batch_job_queues` InSpec audit resource to test the properties of multiple AWS Batch job queues.
 

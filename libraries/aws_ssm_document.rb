@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSsmDocument < AwsResourceBase
   name 'aws_ssm_document'
-  desc 'Verifies settings for a SSM Document'
+  desc 'Verifies settings for a SSM Document.'
 
   example "
     describe aws_ssm_document(name: 'document-name') do
