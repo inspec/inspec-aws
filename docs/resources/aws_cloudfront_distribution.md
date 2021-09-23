@@ -38,6 +38,12 @@ Newer protocol identification strings (when available) may be provided in the se
 
 For additional information, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html) documentation. For available SSL/TLS version identifiers, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [AWS::CloudFront::distribution ViewerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-viewercertificate.html) documentation.
 
+### origin\_domain\_name _(optional)_
+
+The domain name for the origin.
+
+Provide the `origin_domain_name` if you want to validate the `s3_origin_path` property.
+
 ## Properties
 
 |Property                             | Description|
@@ -47,6 +53,10 @@ For additional information, see the [AWS API reference for CloudFront distributi
 |custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
+|s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
+|s3\_origin\_access                          | The origin access identity for s3 origin config
+|access\_logging\_enabled?                   | Access logging for CloudFront distribution
+|ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution
 
 ## Examples
 
@@ -100,6 +110,24 @@ Use `should_not` to test the entity should not exist.
 
     describe cloudfront_distribution('NONEXISTING_DISTRIBUTION_ID') do
       it { should_not exist }
+    end
+
+### s3\_origin\_path
+
+Use `s3_origin_path` to return an origin path for the specified origin domain name if the origin path is configured, otherwise it returns an empty string.
+
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
+        its ('s3_origin_path') { should include '/next' }
+      end
+
+      describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
+        its ('s3_origin_path') { should include '/release' }
+      end
+
+For the default origin path:
+
+    describe aws_cloudfront_distribution(distribution_id: 'DISTRIBUTION_ID', origin_domain_name: 'ORIGIN_DOMAIN_NAME') do
+        its ('s3_origin_path') { should include '' }
     end
 
 ## AWS Permissions
