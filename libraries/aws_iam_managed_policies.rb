@@ -21,7 +21,7 @@ class AwsIamManagedPolicies < AwsResourceBase
              .register_column(:policy_names,        field: :policy_name)
              .register_column(:policy_ids,          field: :policy_id)
              .register_column(:permissions_boundary_usage_count, field: :permissions_boundary_usage_count)
-             .register_column(:description,      field: :description)
+             .register_column(:descriptions,      field: :description)
              .register_column(:create_date,      field: :create_date)
              .register_column(:update_date,      field: :update_date)
              .register_column(:update_date,      field: :update_date)
