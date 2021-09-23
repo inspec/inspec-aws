@@ -162,14 +162,12 @@ This resource pack allows the testing of the following AWS resources. If a resou
 
 InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://docs.chef.io/inspec/resources/)
 
-| Module Name | Type | Resource Name | Singular Resource | Plural Resource |
+| Module Name | Services | Resource & Property Reference | Singular Resource | Plural Resource |
 | --- | --- | --- | --- | --- |
 | AmazonMQ | Application Integration | [AWS::AmazonMQ::Broker](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html) | [aws_mq_broker](docs/resources/aws_mq_broker.md) | [aws_mq_brokers](docs/resources/aws_mq_brokers.md) |
 |  |  | [AWS::AmazonMQ::Configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html) | [aws_mq_configuration](docs/resources/aws_mq_configuration.md) | [aws_mq_configurations](docs/resources/aws_mq_configurations.md) |
-| --- | --- | --- | --- | --- |
 | Amplify Console | Front-end Web & Mobile | [AWS::Amplify::App](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-app.html) | [aws_amplify_app](docs/resources/aws_amplify_app.md) | [aws_amplify_apps](docs/resources/aws_amplify_apps.md) |
 |  |  | [AWS::Amplify::Branch](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-branch.html) | [aws_amplify_branch](docs/resources/aws_amplify_branch.md) | [aws_amplify_branches](docs/resources/aws_amplify_branches.md) |
-| --- | --- | --- | --- | --- |
 | API Gateway | Networking & Content Delivery | [AWS::ApiGateway::Account](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html) | [aws_apigateway_account](docs/resources/aws_apigateway_account.md) | No Plural Resource |
 |  |  | [AWS::ApiGateway::ApiKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html) | [aws_apigateway_api_key](docs/resources/aws_apigateway_api_key.md) | [aws_apigateway_api_keys](docs/resources/aws_apigateway_api_keys.md) |
 |  |  | [AWS::ApiGateway::Authorizer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html) | [aws_apigateway_authorizer](docs/resources/aws_apigateway_authorizer.md) | [aws_apigateway_authorizers](docs/resources/aws_apigateway_authorizers.md) |
@@ -178,46 +176,33 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | [AWS::ApiGateway::Deployment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-deployment.html) | [aws_api_gateway_deployment](docs/resources/aws_api_gateway_deployment.md) | [aws_api_gateway_deployments](docs/resources/aws_api_gateway_deployments.md) |
 |  |  | [AWS::ApiGateway::Method](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-method.html) | [aws_api_gateway_method](docs/resources/aws_api_gateway_method.md) | [aws_api_gateway_methods](docs/resources/aws_api_gateway_methods.md) |
 |  |  | [AWS::ApiGateway::RestApi](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html) | [aws_api_gateway_restapi](docs/resources/aws_api_gateway_restapi.md) | [aws_api_gateway_restapis](docs/resources/aws_api_gateway_restapis.md) |
-| --- | --- | --- | --- | --- |
 | Application Auto Scaling | Compute | [AWS::ApplicationAutoScaling::ScalableTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html) | [aws_application_autoscaling_scalable_target](docs/resources/aws_application_autoscaling_scalable_target.md) | [aws_application_autoscaling_scalable_targets](docs/resources/aws_application_autoscaling_scalable_targets.md) |
 |  |  | [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html) | [aws_application_autoscaling_scaling_policy](docs/resources/aws_application_autoscaling_scaling_policy.md) | [aws_application_autoscaling_scaling_policies](docs/resources/aws_application_autoscaling_scaling_policies.md) |
-| --- | --- | --- | --- | --- |
 | Athena | Analytics | [AWS::Athena::WorkGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html) | [aws_athena_work_group](docs/resources/aws_athena_work_group.md) | [aws_athena_work_groups](docs/resources/aws_athena_work_groups.md) |
-| --- | --- | --- | --- | --- |
 | Amazon EC2 Auto Scaling | Compute | [AWS::AutoScaling::AutoScalingGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html) | [aws_auto_scaling_group](docs/resources/aws_auto_scaling_group.md) | [aws_auto_scaling_groups](docs/resources/aws_auto_scaling_groups.md) |
 |  |  | [AWS::AutoScaling::LaunchConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-launchconfig.html) | [aws_launch_configuration](docs/resources/aws_launch_configuration.md) | No Plural Resource |
 |  |  | [AWS::AutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-policy.html) | [aws_autoscaling_scaling_policy](docs/resources/aws_autoscaling_scaling_policy.md) | [aws_autoscaling_scaling_policies](docs/resources/aws_autoscaling_scaling_policies.md) |
-| --- | --- | --- | --- | --- |
 | AWS Batch | Compute | [AWS::Batch::ComputeEnvironment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html) | [aws_batch_compute_environment](docs/resources/aws_batch_compute_environment.md) | [aws_batch_compute_environments](docs/resources/aws_batch_compute_environments.md) |
 |  |  | [AWS::Batch::JobDefinition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html) | [aws_batch_job_definition](docs/resources/aws_batch_job_definition.md) | [aws_batch_job_definitions](docs/resources/aws_batch_job_definitions.md) |
 |  |  | [AWS::Batch::JobQueue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html) | [aws_batch_job_queue](docs/resources/aws_batch_job_queue.md) | [aws_batch_job_queues](docs/resources/aws_batch_job_queues.md) |
 | CloudFormation | Management & Governance | [AWS::CloudFormation::Stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html) | [aws_cloudformation_stack](docs/resources/aws_cloudformation_stack.md) | [aws_cloudformation_stacks](docs/resources/aws_cloudformation_stacks.md) |
-| --- | --- | --- | --- | --- |
 | CloudFront | Networking & Content Delivery | [AWS::CloudFront::CachePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cachepolicy.html) | [aws_cloudfront_cache_policy](docs/resources/aws_cloudfront_cache_policy.md) | [aws_cloudfront_cache_policies](docs/resources/aws_cloudfront_cache_policies.md) |
 |  |  | [AWS::CloudFront::CloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cloudfrontoriginaccessidentity.html) | [aws_cloudfront_origin_access_identity](docs/resources/aws_cloudfront_origin_access_identity.md) | [aws_cloudfront_origin_access_identities](docs/resources/aws_cloudfront_origin_access_identities.md) |
 |  |  | [AWS::CloudFront::Distribution](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html) | [aws_cloudfront_distribution](docs/resources/aws_cloudfront_distribution.md) | [aws_cloudfront_distributions](docs/resources/aws_cloudfront_distributions.md) |
-| --- | --- | --- | --- | --- |
 | CloudTrail | Management & Governance | [AWS::CloudTrail::Trail](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html) | [aws_cloudtrail_trail](docs/resources/aws_cloudtrail_trail.md) | [aws_cloudtrail_trails](docs/resources/aws_cloudtrail_trails.md) |
-| --- | --- | --- | --- | --- |
 | CloudWatch | Management & Governance | [AWS::CloudWatch::Alarm](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html) | [aws_cloudwatch_alarm](docs/resources/aws_cloudwatch_alarm.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
 | CloudWatch Logs | Management & Governance | [AWS::Logs::LogGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html) | [aws_cloudwatch_log_group](docs/resources/aws_cloudwatch_log_group.md) | No Plural Resource |
 |  |  | [AWS::Logs::MetricFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html) | [aws_cloudwatch_log_metric_filter](docs/resources/aws_cloudwatch_log_metric_filter.md) | No Plural Resource |
 |  |  |  | [aws_logs_metric_filter](docs/resources/aws_logs_metric_filter.md) | [aws_logs_metric_filters](docs/resources/aws_logs_metric_filters.md) |
-| --- | --- | --- | --- | --- |
 | Amazon Cognito | Security, Identity, & Compliance | [AWS::Cognito::IdentityPool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html) | [aws_cognito_identity_pool](docs/resources/aws_cognito_identity_pool.md) | [aws_cognito_identity_pools](docs/resources/aws_cognito_identity_pools.md) |
 |  |  | [AWS::Cognito::UserPool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html) | [aws_cognito_userpool](docs/resources/aws_cognito_userpool.md) | [aws_cognito_userpools](docs/resources/aws_cognito_userpools.md) |
 | Amazon Cognito | Security, Identity, & Compliance | [AWS::Cognito::UserPoolClient](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html) | [aws_cognito_userpool_client](docs/resources/aws_cognito_userpool_client.md) | [aws_cognito_userpool_clients](docs/resources/aws_cognito_userpool_clients.md) |
-| --- | --- | --- | --- | --- |
 | Config | Management & Governance  | [AWS::Config::ConfigurationRecorder](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html) | [aws_config_recorder](docs/resources/aws_config_recorder.md) | No Plural Resource |
 |  |   | [AWS::Config::DeliveryChannel](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-deliverychannel.html) | [aws_config_delivery_channel](docs/resources/aws_config_delivery_channel.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
 | DMS | Compute | [AWS::DMS::Endpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html) | [aws_dms_endpoint](docs/resources/aws_dms_endpoint.md) | [aws_dms_endpoints](docs/resources/aws_dms_endpoints.md) |
 |  |  | [AWS::DMS::ReplicationInstance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationinstance.html) | [aws_dms_replication_instance](docs/resources/aws_dms_replication_instance.md) | [aws_dms_replication_instances](docs/resources/aws_dms_replication_instances.md) |
 |  |  | [AWS::DMS::ReplicationSubnetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationsubnetgroup.html) | [aws_dms_replication_subnet_group](docs/resources/aws_dms_replication_subnet_group.md) | [aws_dms_replication_subnet_groups](docs/resources/aws_dms_replication_subnet_groups.md) |
-| --- | --- | --- | --- | --- |
 | DynamoDB | Database | [AWS::DynamoDB::Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html) | [aws_dynamodb_table](docs/resources/aws_dynamodb_table.md) | [aws_dynamodb_tables](docs/resources/aws_dynamodb_tables.md) |
-| --- | --- | --- | --- | --- |
 | EC2 | Compute | [AWS::EC2::DHCPOptions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-dhcpoptions.html) | No Singular Resource | [aws_dhcp_options](docs/resources/aws_dhcp_options.md) |
 |  |  |  | [aws_ec2_dhcp_option](docs/resources/aws_ec2_dhcp_option.md) | [aws_ec2_dhcp_options](docs/resources/aws_ec2_dhcp_options.md) |
 |  |  | [AWS::EC2::EIP](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html) | [aws_ec2_eip](docs/resources/aws_ec2_eip.md) | [aws_ec2_eips](docs/resources/aws_ec2_eips.md) |
@@ -273,28 +258,22 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | Others | [aws_region](docs/resources/aws_region.md) | [aws_regions](docs/resources/aws_regions.md) |
 |  |  |  | [aws_ebs_snapshot](docs/resources/aws_ebs_snapshot.md) | [aws_ebs_snapshots](docs/resources/aws_ebs_snapshots.md) |
 |  |  |  | [aws_ami](docs/resources/aws_ami.md) | [aws_amis](docs/resources/aws_amis.md) |
-| --- | --- | --- | --- | --- |
 | Amazon ECR | Containers | [AWS::ECR::PublicRepository](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html) | [aws_ecrpublic_repository](docs/resources/aws_ecrpublic_repository.md) | [aws_ecrpublic_repositories](docs/resources/aws_ecrpublic_repositories.md) | |
 |  |  | [AWS::ECR::Repository](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html) | [aws_ecr_repository](docs/resources/aws_ecr_repository.md) | [aws_ecr_repositories](docs/resources/aws_ecr_repositories.md) |
-| Amazon ECS |  | [AWS::ECS::Cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html) | [aws_ecs_cluster](docs/resources/aws_ecs_cluster.md) | [aws_ecs_clusters](docs/resources/aws_ecs_clusters.md) |
+| Amazon ECS | Containers | [AWS::ECS::Cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html) | [aws_ecs_cluster](docs/resources/aws_ecs_cluster.md) | [aws_ecs_clusters](docs/resources/aws_ecs_clusters.md) |
 |  |  | [AWS::ECS::Service](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html) | [aws_ecs_service](docs/resources/aws_ecs_service.md) | [aws_ecs_services](docs/resources/aws_ecs_services.md) |
 |  |  | [AWS::ECS::TaskDefinition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html) | [aws_ecs_task_definition](docs/resources/aws_ecs_task_definition.md) | [aws_ecs_task_definitions](docs/resources/aws_ecs_task_definitions.md) |
 |  |  | Others | [aws_ecr_repository_policy](docs/resources/aws_ecr_repository_policy.md) | No Plural Resource |
 |  |  |  | [aws_ecr](docs/resources/aws_ecr.md) | No Plural Resource |
 |  |  |  | [aws_ecr_image](docs/resources/aws_ecr_image.md) | [aws_ecr_images](docs/resources/aws_ecr_images.md) |
-| --- | --- | --- | --- | --- |
-| EFS |  | [AWS::EFS::FileSystem](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html) | [aws_efs_file_system](docs/resources/aws_efs_file_system.md) | [aws_efs_file_systems](docs/resources/aws_efs_file_systems.md) |
+| EFS | Storage | [AWS::EFS::FileSystem](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html) | [aws_efs_file_system](docs/resources/aws_efs_file_system.md) | [aws_efs_file_systems](docs/resources/aws_efs_file_systems.md) |
 |  |  | [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) | [aws_efs_mount_target](docs/resources/aws_efs_mount_target.md) | [aws_efs_mount_targets](docs/resources/aws_efs_mount_targets.md) |
 | EKS | Containers | [AWS::EKS::Cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-cluster.html) | [aws_eks_cluster](docs/resources/aws_eks_cluster.md) | [aws_eks_clusters](docs/resources/aws_eks_clusters.md)
-| --- | --- | --- | --- | --- |
-| ElastiCache | Database | [AWS::ElastiCache::CacheCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cache-cluster.html) | [aws_elasticache_cluster](docs/resources/aws_elasticache_cluster.md) | [aws_elasticache_clusters](docs/resources/aws_elasticache_clusters.md) |
+| ElasticCache | Database | [AWS::ElastiCache::CacheCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cache-cluster.html) | [aws_elasticache_cluster](docs/resources/aws_elasticache_cluster.md) | [aws_elasticache_clusters](docs/resources/aws_elasticache_clusters.md) |
 |  |  | [AWS::ElastiCache::ReplicationGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-replicationgroup.html) | [aws_elasticache_replication_group](docs/resources/aws_elasticache_replication_group.md) | [aws_elasticache_replication_groups](docs/resources/aws_elasticache_replication_groups.md) |
 |  |  |  | [aws_elasticache_cluster_node](docs/resources/aws_elasticache_cluster_node.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
 | Elasticsearch | Analytics | [AWS::Elasticsearch::Domain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html) | [aws_elasticsearchservice_domain](docs/resources/aws_elasticsearchservice_domain.md) | [aws_elasticsearchservice_domains](docs/resources/aws_elasticsearchservice_domains.md) |
-| --- | --- | --- | --- | --- |
 | Elastic Load Balancing | Networking & Content Delivery | [AWS::ElasticLoadBalancing::LoadBalancer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html) | [aws_elasticloadbalancingv2_load_balancer](docs/resources/aws_elasticloadbalancingv2_load_balancer.md) | [aws_elasticloadbalancingv2_load_balancers](docs/resources/aws_elasticloadbalancingv2_load_balancers.md) |
-| --- | --- | --- | --- | --- |
 | ElasticLoadBalancingV2 | Networking & Content Delivery | [AWS::ElasticLoadBalancingV2::Listener](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html) | [aws_elasticloadbalancingv2_listener](docs/resources/aws_elasticloadbalancingv2_listener.md) | [aws_elasticloadbalancingv2_listeners](docs/resources/aws_elasticloadbalancingv2_listeners.md) |
 |  |  | [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html) | [aws_elasticloadbalancingv2_listener_certificate](docs/resources/aws_elasticloadbalancingv2_listener_certificate.md) | [aws_elasticloadbalancingv2_listener_certificates](docs/resources/aws_elasticloadbalancingv2_listener_certificates.md) |
 |  |  | [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html) | [aws_elasticloadbalancingv2_listener_rule](docs/resources/aws_elasticloadbalancingv2_listener_rule.md) | [aws_elasticloadbalancingv2_listener_rules](docs/resources/aws_elasticloadbalancingv2_listener_rules.md) |
@@ -302,14 +281,10 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  |  | [aws_elb](docs/resources/aws_elb.md) | [aws_elbs](docs/resources/aws_elbs.md) |
 |  |  |  | [aws_alb](docs/resources/aws_alb.md) | [aws_albs](docs/resources/aws_albs.md) |
 |  |  | [AWS::ElasticLoadBalancingV2::TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html) | [aws_elasticloadbalancingv2_target_group](docs/resources/aws_elasticloadbalancingv2_target_group.md) | [aws_elasticloadbalancingv2_target_groups](docs/resources/aws_elasticloadbalancingv2_target_groups.md) |
-| --- | --- | --- | --- | --- |
 | Amazon EventBridge | Application Integration  | [AWS::Events::Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-rule.html) | [aws_eventbridge_rule](docs/resources/aws_eventbridge_rule.md) | [aws_eventbridge_rules](docs/resources/aws_eventbridge_rules.md) |
-| --- | --- | --- | --- | --- |
 | AWS Glue | Analytics | [AWS::Glue::Crawler](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-crawler.html) | [aws_glue_crawler](docs/resources/aws_glue_crawler.md) | [aws_glue_crawlers](docs/resources/aws_glue_crawlers.md) |
 |  |  | [AWS::Glue::Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html) | [aws_glue_database](docs/resources/aws_glue_database.md) | [aws_glue_databases](docs/resources/aws_glue_databases.md) |
-| --- | --- | --- | --- | --- |
 | GuardDuty | Security, Identity, & Compliance | [AWS::GuardDuty::Detector](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-detector.html) | [aws_guardduty_detector](docs/resources/aws_guardduty_detector.md) | [aws_guardduty_detectors](docs/resources/aws_guardduty_detectors.md) |
-| --- | --- | --- | --- | --- |
 | IAM | Security, Identity, & Compliance | [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html) | [aws_iam_access_key](docs/resources/aws_iam_access_key.md) | [aws_iam_access_keys](docs/resources/aws_iam_access_keys.md) |
 |  |  |  | No Singular Resource | [aws_iam_account_alias](docs/resources/aws_iam_account_alias.md) |
 |  |  | [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html) | [aws_iam_group](docs/resources/aws_iam_group.md) | [aws_iam_groups](docs/resources/aws_iam_groups.md) |
@@ -326,26 +301,19 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html) | [aws_iam_user](docs/resources/aws_iam_user.md) | [aws_iam_users](docs/resources/aws_iam_users.md) |
 |  |  |  | [aws_iam_root_user](docs/resources/aws_iam_root_user.md) | No Plural Resource |
 |  |  | [AWS::IAM::VirtualMFADevice](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-virtualmfadevice.html) | No Singular Resource | [aws_iam_virtual_mfa_devices](docs/resources/aws_iam_virtual_mfa_devices.md) |
-| --- | --- | --- | --- | --- |
 | KMS | Security, Identity, & Compliance | [AWS::KMS::Key](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html) | [aws_kms_key](docs/resources/aws_kms_key.md) | [aws_kms_keys](docs/resources/aws_kms_keys.md) |
-| --- | --- | --- | --- | --- |
 | Lambda | Compute | [AWS::Lambda::EventSourceMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html) | [aws_lambda_event_source_mapping](docs/resources/aws_lambda_event_source_mapping.md) | [aws_lambda_event_source_mappings](docs/resources/aws_lambda_event_source_mappings.md) |
 |  |  | [AWS::Lambda::Function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html) | [aws_lambda](docs/resources/aws_lambda.md) | [aws_lambdas](docs/resources/aws_lambdas.md) |
 |  |  | [AWS::Lambda::Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html) | [aws_lambda_permission](docs/resources/aws_lambda_permission.md) | [aws_lambda_permissions](docs/resources/aws_lambda_permissions.md) |
-| --- | --- | --- | --- | --- |
 | Network Firewall | Security, Identity, & Compliance | [AWS::NetworkFirewall::Firewall](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html) | [aws_network_firewall_firewall](docs/resources/aws_network_firewall_firewall.md) | [aws_network_firewall_firewalls](docs/resources/aws_network_firewall_firewalls.md) |
 |  |  | [AWS::NetworkFirewall::FirewallPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewallpolicy.html) | [aws_network_firewall_firewall_policy](docs/resources/aws_network_firewall_firewall_policy.md) | [aws_network_firewall_firewall_policies](docs/resources/aws_network_firewall_firewall_policies.md) |
 |  |  | [AWS::NetworkFirewall::LoggingConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-loggingconfiguration.html) | [aws_network_firewall_logging_configuration](docs/resources/aws_network_firewall_logging_configuration.md) | No Plural Resource |
 |  |  | [AWS::NetworkFirewall::RuleGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-rulegroup.html) | [aws_network_firewall_rule_group](docs/resources/aws_network_firewall_rule_group.md) | [aws_network_firewall_rule_groups](docs/resources/aws_network_firewall_rule_groups.md) |
-| --- | --- | --- | --- | --- |
 | NetworkManager | Networking & Content Delivery | [AWS::NetworkManager::CustomerGatewayAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-customergatewayassociation.html) | [aws_network_manager_customer_gateway_association](docs/resources/aws_network_manager_customer_gateway_association.md) | [aws_network_manager_customer_gateway_associations](docs/resources/aws_network_manager_customer_gateway_associations.md) |
 |  |  | [AWS::NetworkManager::Device](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-device.html) | [aws_network_manager_device](docs/resources/aws_network_manager_device.md) | [aws_network_manager_devices](docs/resources/aws_network_manager_devices.md) |
 |  |  | [AWS::NetworkManager::GlobalNetwork](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-globalnetwork.html) | [aws_network_manager_global_network](docs/resources/aws_network_manager_global_network.md) | [aws_network_manager_global_networks](docs/resources/aws_network_manager_global_networks.md) |
-| --- | --- | --- | --- | --- |
-| Organizations |  | AWS::Organizations::Member | [aws_organizations_member](docs/resources/aws_organizations_member.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
-| RAM |  | [AWS::RAM::ResourceShare](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html) | [aws_ram_resource_share](docs/resources/aws_ram_resource_share.md) | [aws_ram_resource_shares](docs/resources/aws_ram_resource_shares.md) |
-| --- | --- | --- | --- | --- |
+| Organizations | Management & Governance | AWS::Organizations::Member | [aws_organizations_member](docs/resources/aws_organizations_member.md) | No Plural Resource |
+| RAM | Security, Identity, & Compliance | [AWS::RAM::ResourceShare](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html) | [aws_ram_resource_share](docs/resources/aws_ram_resource_share.md) | [aws_ram_resource_shares](docs/resources/aws_ram_resource_shares.md) |
 | RDS | Database | [AWS::RDS::DBCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html) | [aws_rds_cluster](docs/resources/aws_rds_cluster.md) | [aws_rds_clusters](docs/resources/aws_rds_clusters.md) |
 |  |  | [AWS::RDS::DBInstance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html) | [aws_rds_instance](docs/resources/aws_rds_instance.md) | [aws_rds_instances](docs/resources/aws_rds_instances.md)
 |  |  | [AWS::RDS::DBParameterGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html) | [aws_db_parameter_group](docs/resources/aws_db_parameter_group.md) | [aws_db_parameter_groups](docs/resources/aws_db_parameter_groups.md) |
@@ -353,47 +321,34 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | [AWS::RDS::OptionGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html) | [aws_rds_group_option](docs/resources/aws_rds_group_option.md) | [aws_rds_group_options](docs/resources/aws_rds_group_options.md) |
 |  |  | Others | [aws_rds_snapshot](docs/resources/aws_rds_snapshot.md) | [aws_rds_snapshots](docs/resources/aws_rds_snapshots.md) |
 |  |  |  | No Singular Resource | [aws_rds_snapshot_attributes](docs/resources/aws_rds_snapshot_attributes.md) |
-| --- | --- | --- | --- | --- |
 | Amazon Redshift | Analytics | [AWS::Redshift::Cluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html) | [aws_redshift_cluster](docs/resources/aws_redshift_cluster.md) | [aws_redshift_clusters](docs/resources/aws_redshift_clusters.md) |
 |  |  | [AWS::Redshift::ClusterParameterGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html) | [aws_redshift_cluster_parameter_group](docs/resources/aws_redshift_cluster_parameter_group.md) | [aws_redshift_cluster_parameter_groups](docs/resources/aws_redshift_cluster_parameter_groups.md) |
-| --- | --- | --- | --- | --- |
 | Route 53 | Networking & Content Delivery | [AWS::Route53::HostedZone](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-hostedzone.html) | [aws_hosted_zone](docs/resources/aws_hosted_zone.md) | [aws_hosted_zones](docs/resources/aws_hosted_zones.md) |
 |  |  | [AWS::Route53::RecordSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html) | [aws_route53_record_set](docs/resources/aws_route53_record_set.md) | [aws_route53_record_sets](docs/resources/aws_route53_record_sets.md) |
-| --- | --- | --- | --- | --- |
 | Route 53 Resolver | Networking & Content Delivery  | [AWS::Route53Resolver::ResolverEndpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverendpoint.html) | [aws_route53resolver_resolver_endpoint](docs/resources/aws_route53resolver_resolver_endpoint.md) | [aws_route53resolver_resolver_endpoints](docs/resources/aws_route53resolver_resolver_endpoints.md) |
 |  |  | [AWS::Route53Resolver::ResolverRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html) | [aws_route53resolver_resolver_rule](docs/resources/aws_route53resolver_resolver_rule.md) | [aws_route53resolver_resolver_rules](docs/resources/aws_route53resolver_resolver_rules.md) |
 |  |  | [AWS::Route53Resolver::ResolverRuleAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverruleassociation.html) | [aws_route53resolver_resolver_rule_association](docs/resources/aws_route53resolver_resolver_rule_association.md) | [aws_route53resolver_resolver_rule_associations](docs/resources/aws_route53resolver_resolver_rule_associations.md) |
-| --- | --- | --- | --- | --- |
 | Amazon S3 | Compute | [AWS::S3::Bucket](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html) | [aws_s3_bucket](docs/resources/aws_s3_bucket.md) | [aws_s3_buckets](docs/resources/aws_s3_buckets.md) |
 |  |  | Others | [aws_s3_bucket_object](docs/resources/aws_s3_bucket_object.md) | [aws_s3_bucket_objects](docs/resources/aws_s3_bucket_objects.md) |
-| --- | --- | --- | --- | --- |
 | Secrets Manager | Security, Identity, & Compliance | [AWS::SecretsManager::Secret](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html) | [aws_secretsmanager_secret](docs/resources/aws_secretsmanager_secret.md) | [aws_secretsmanager_secrets](docs/resources/aws_secretsmanager_secrets.md) |
-| --- | --- | --- | --- | --- |
 | Service Catalog | Management & Governance | [AWS::ServiceCatalog::CloudFormationProduct](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationproduct.html) | [aws_servicecatalog_cloud_formation_product](docs/resources/aws_servicecatalog_cloud_formation_product.md) | No Plural Resource |
 |  |  | [AWS::ServiceCatalog::LaunchRoleConstraint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-launchroleconstraint.html) | [aws_servicecatalog_launch_role_constraint](docs/resources/aws_servicecatalog_launch_role_constraint.md) | [aws_servicecatalog_launch_role_constraints](docs/resources/aws_servicecatalog_launch_role_constraints.md) |
 |  |  | [AWS::ServiceCatalog::PortfolioPrincipalAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioprincipalassociation.html) | [aws_servicecatalog_portfolio_principal_association](docs/resources/aws_servicecatalog_portfolio_principal_association.md) | [aws_servicecatalog_portfolio_principal_associations](docs/resources/aws_servicecatalog_portfolio_principal_associations.md) |
 |  |  | [AWS::ServiceCatalog::PortfolioPrincipalAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-portfolioproductassociation.html) | [aws_servicecatalog_portfolio_product_association](docs/resources/aws_servicecatalog_portfolio_product_association.md) |  [aws_servicecatalog_portfolio_product_associations](docs/resources/aws_servicecatalog_portfolio_product_associations.md) |
-| --- | --- | --- | --- | --- |
-| Shield |  | AWS::Shield::Subscription | [aws_shield_subscription](docs/resources/aws_shield_subscription.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
-| Amazon SNS |  | [AWS::SNS::Subscription](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html) | [aws_sns_subscription](docs/resources/aws_sns_subscription.md) | No Plural Resource |
+| Shield | Security, Identity, & Compliance | AWS::Shield::Subscription | [aws_shield_subscription](docs/resources/aws_shield_subscription.md) | No Plural Resource |
+| Amazon SNS | Application Integration | [AWS::SNS::Subscription](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html) | [aws_sns_subscription](docs/resources/aws_sns_subscription.md) | No Plural Resource |
 |  |  | [AWS::SNS::Topic](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic.html) | [aws_sns_topic](docs/resources/aws_sns_topic.md) |  [aws_sns_topics](docs/resources/aws_sns_topics.md) |
 |  |  | [AWS::SNS::TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html) | [aws_sns_topic](docs/resources/aws_sns_topic.md) |  [aws_sns_topics](docs/resources/aws_sns_topics.md) |
-| Amazon SQS |  | [AWS::SQS::Queue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html) | [aws_sqs_queue](docs/resources/aws_sqs_queue.md) |  [aws_sqs_queues](docs/resources/aws_sqs_queues.md) |
+| Amazon SQS | Application Integration | [AWS::SQS::Queue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html) | [aws_sqs_queue](docs/resources/aws_sqs_queue.md) |  [aws_sqs_queues](docs/resources/aws_sqs_queues.md) |
 |  |  | [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html) | [aws_sqs_queue](docs/resources/aws_sqs_queue.md) |  [aws_sqs_queues](docs/resources/aws_sqs_queues.md) |
-| --- | --- | --- | --- | --- |
-| Step Functions |  | [AWS::StepFunctions::StateMachine](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html) | [aws_stepfunctions_state_machine](docs/resources/aws_stepfunctions_state_machine.md) |  [aws_stepfunctions_state_machines](docs/resources/aws_stepfunctions_state_machines.md) |
-| --- | --- | --- | --- | --- |
-| System Manager |  | [AWS::SSM::Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html) | [aws_ssm_association](docs/resources/aws_ssm_association.md) | [aws_ssm_associations](docs/resources/aws_ssm_associations.md) |
+| Step Functions | Application Integration | [AWS::StepFunctions::StateMachine](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html) | [aws_stepfunctions_state_machine](docs/resources/aws_stepfunctions_state_machine.md) |  [aws_stepfunctions_state_machines](docs/resources/aws_stepfunctions_state_machines.md) |
+| System Manager | Management & Governance | [AWS::SSM::Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html) | [aws_ssm_association](docs/resources/aws_ssm_association.md) | [aws_ssm_associations](docs/resources/aws_ssm_associations.md) |
 |  |  | [AWS::SSM::Document](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-document.html) | [aws_ssm_document](docs/resources/aws_ssm_document.md) | [aws_ssm_documents](docs/resources/aws_ssm_documents.md) |
 |  |  | [AWS::SSM::Parameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-parameter.html) | [aws_ssm_parameter](docs/resources/aws_ssm_parameter.md) | [aws_ssm_parameters](docs/resources/aws_ssm_parameters.md) |
 |  |  | Others | [aws_ssm_activation](docs/resources/aws_ssm_activation.md) |  [aws_ssm_activations](docs/resources/aws_ssm_activations.md) |
 |  |  |  | [aws_ssm_resource_compliance_summary](docs/resources/aws_ssm_resource_compliance_summary.md) | [aws_ssm_resource_compliance_summaries](docs/resources/aws_ssm_resource_compliance_summaries.md) |
-| --- | --- | --- | --- | --- |
-| STS |  | AWS::STS::CallerIdentity | [aws_sts_caller_identity](docs/resources/aws_sts_caller_identity.md) | No Plural Resource |
-| --- | --- | --- | --- | --- |
-| Amazon Timestream |  | [AWS::Transfer::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html) | [aws_transfer_user](docs/resources/aws_transfer_user.md) | [aws_transfer_users](docs/resources/aws_transfer_users.md) |
-| --- | --- | --- | --- | --- |
+| STS | Security, Identity, & Compliance | AWS::STS::CallerIdentity | [aws_sts_caller_identity](docs/resources/aws_sts_caller_identity.md) | No Plural Resource |
+| Amazon Timestream | Migration & Transfer | [AWS::Transfer::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html) | [aws_transfer_user](docs/resources/aws_transfer_user.md) | [aws_transfer_users](docs/resources/aws_transfer_users.md) |
 
 ## Examples
 
