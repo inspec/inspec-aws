@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_network_interfaces
 
-Use the `aws_ec2_network_interfaces` InSpec audit resource to test properties of a plural AWS EC2 Network Interface.
+Use the `aws_ec2_network_interfaces` InSpec audit resource to test properties of multiple network interfaces in an Amazon EC2 instance for AWS CloudFormation.
 
-The AWS::EC2::NetworkInterface resource describes a network interface in an Elastic Compute Cloud (EC2) instance for AWS CloudFormation.
+The `AWS::EC2::NetworkInterface` resource describes a network interface in an Elastic Compute Cloud (EC2) instance for AWS CloudFormation.
 
 ## Syntax
 
-Ensure that Network Interface Id exists.
+Ensure that network interface ID exists.
 
     describe aws_ec2_network_interfaces do
       it { should exist }
@@ -19,7 +19,7 @@ Ensure that Network Interface Id exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Network Interface](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface.html).
+For additional information, see the [AWS documentation on AWS EC2 network interface](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface.html).
 
 ## Properties
 
@@ -49,12 +49,14 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ## Examples
 
-### Ensure a Network Interface Id is available.
+### Ensure a network interface ID is available.
+
     describe aws_ec2_network_interfaces do
       its('network_interface_ids') { should include 'NetworkInterfaceId' }
     end
 
-### Ensure that the a availability zone is available.
+### Ensure that an availability zone is available.
+
     describe aws_ec2_network_interfaces do
         its('availability_zones') { should include "us-east-2a" }
     end
