@@ -221,12 +221,16 @@ variable "aws_elasticsearch_automated_snapshot_start_hour" {}
 variable "aws_sfn_state_machine_name" {}
 variable "aws_transfer_user_name" {}
 variable "aws_route53_resolver_endpoint_name" {}
+variable "aws_accepter_vpc_info_cidr_block" {}
+variable "aws_requester_vpc_info_cidr_block" {}
 variable "aws_route52_record_set_name" {}
 variable "aws_cluster_name" {}
 variable "aws_ecs_task_definition_family" {}
 variable "aws_ecs_service_name" {}
 variable "aws_iam_instance_profile_name1" {}
 variable "aws_iam_role_name1" {}
+variable "aws_vpn_connection_route_destination_cidr_block" {}
+variable "aws_vpn_connection_route_state" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -917,6 +921,11 @@ resource "aws_db_instance" "db_rds" {
     Name        = var.aws_rds_db_name
     Environment = "Dev"
   }
+}
+
+resource "aws_db_snapshot" "test_db_snapshot" {
+  db_instance_identifier = aws_db_instance.db_rds.id
+  db_snapshot_identifier = "testsnapshot1234"
 }
 
 # Cloudtrail
@@ -3789,9 +3798,58 @@ resource "aws_cloudwatch_log_metric_filter" "aws_cloudwatch_log_metric_filter_te
 resource "aws_cloudwatch_log_group" "aws_cloudwatch_log_group_test" {
   name = "TestLogGroup"
 }
+
 resource "aws_route53_resolver_rule_association" "for-int-test" {
   resolver_rule_id = aws_route53_resolver_rule.sys.id
   vpc_id           = aws_vpc.aws_vpc_mount_mt_test.id
+}
+
+#aws_vpc_peering_connection terraform
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_test1.id
+  vpc_id        = aws_vpc.aws_vpc_test2.id
+  auto_accept   = true
+
+  tags = {
+    Name = "VPC Peering between foo and bar"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_test1" {
+  cidr_block = var.aws_requester_vpc_info_cidr_block
+}
+
+resource "aws_vpc" "aws_vpc_test2" {
+  cidr_block = var.aws_accepter_vpc_info_cidr_block
+}
+
+# aws_vpn_connection_route tf resource
+
+resource "aws_vpc" "aws_vpc_test_vcr" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_test_vcr" {
+  vpc_id = aws_vpc.aws_vpc_test_vcr.id
+}
+
+resource "aws_customer_gateway" "aws_customer_gateway_test_vcr" {
+  bgp_asn    = 65000
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_test_vcr" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_test_vcr.id
+  customer_gateway_id = aws_customer_gateway.aws_customer_gateway_test_vcr.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test_vcr" {
+  destination_cidr_block = var.aws_vpn_connection_route_destination_cidr_block
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_test_vcr.id
 }
 
 #lambda_event source mapping
@@ -3852,6 +3910,7 @@ resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
   role       = aws_iam_role.iam_for_lambda.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
 }
+
 resource "aws_route53_zone" "for_route53_set_record_test" {
 name = var.aws_route52_record_set_name
 }
@@ -3884,6 +3943,123 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
+
+#VPN Connection Route
+
+resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_vpn_connection_route_test" {
+  vpc_id = aws_vpc.aws_vpc_vpn_connection_route_test.id
+}
+
+resource "aws_customer_gateway" "customer_gateway_vpn_connection_route_test" {
+  bgp_asn    = 65001
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_vpn_connection_route_test" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_vpn_connection_route_test.id
+  customer_gateway_id = aws_customer_gateway.customer_gateway_vpn_connection_route_test.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test" {
+  destination_cidr_block = "192.168.10.0/24"
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
+#VPC Peering Connection
+
+resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
+  peer_vpc_id   = aws_vpc.aws_vpc_peering_test1.id
+  vpc_id        = aws_vpc.aws_vpc_peering_test2.id
+  peer_region   = "us-east-2"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test1" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_vpc" "aws_vpc_peering_test2" {
+  cidr_block = "10.2.0.0/16"
+}
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+
+resource "aws_ec2_traffic_mirror_filter" "filter" {
+  description      = "traffic mirror filter - terraform example"
+  network_services = ["amazon-dns"]
+}
+
+resource "aws_ec2_traffic_mirror_target" "target" {
+  network_load_balancer_arn = aws_lb.test.arn
+}
+
+resource "aws_ec2_traffic_mirror_session" "session" {
+  description              = "traffic mirror session - terraform example"
+  network_interface_id     = aws_instance.web.primary_network_interface_id
+  session_number           = 1
+  traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
+  traffic_mirror_target_id = aws_ec2_traffic_mirror_target.target.id
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_iam_openid_connect_provider" "for_oidc" {
+  url = "https://accounts.google.com"
+
+  client_id_list = [
+    "266362248691-342342xasdasdasda-apps.googleusercontent.com",
+  ]
+  thumbprint_list = []
+}
+
+#Internet Gateway
+resource "aws_internet_gateway" "aws_internet_gateway_test" {
+  vpc_id = aws_vpc.aws_vpc_internet_gateway_test.id
+
+  tags = {
+    Name = "test"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_internet_gateway_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+
 
 #Network Interface
 

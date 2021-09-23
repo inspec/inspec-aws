@@ -3,7 +3,7 @@ title: About the aws_ec2_launch_template Resource
 platform: aws
 ---
 
-# aws\_ec2\_launch_\template
+# aws\_ec2\_launch\_template
 
 Use the `aws_ec2_launch_template` InSpec audit resource to test properties of a single AWS Launch Template.
 

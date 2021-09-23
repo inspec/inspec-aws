@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsLaunchConfiguration < AwsResourceBase
   name 'aws_launch_configuration'
-  desc 'Verifies settings for an AWS Launch Configuration'
+  desc 'Verifies settings for an AWS Launch Configuration.'
 
   example "
     describe aws_launch_configuration('config-name') do
@@ -44,6 +44,6 @@ class AwsLaunchConfiguration < AwsResourceBase
   end
 
   def to_s
-    "AWS Launch Configuration #{@name}"
+    "AWS Launch Configuration Name: #{@name}"
   end
 end
