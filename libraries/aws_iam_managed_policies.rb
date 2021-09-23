@@ -15,7 +15,7 @@ class AwsIamManagedPolicies < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns,  field: :arn)
+             .register_column(:arns, field: :arn)
              .register_column(:attachment_counts, field: :attachment_count)
              .register_column(:default_version_ids, field: :default_version_id)
              .register_column(:policy_names, field: :policy_name)
