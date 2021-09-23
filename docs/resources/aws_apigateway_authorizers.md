@@ -13,11 +13,15 @@ The AWS::ApiGateway::Authorizer resource creates an authorization layer that API
 
 Ensure that the authorizer exists.
 
-    describe aws_apigateway_authorizers do
+    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
       it { should exist }
     end
 
 ## Parameters
+
+| Property | Description | 
+| --- | --- |
+| rest_api_id | The id of the rest api. |
 
 For additional information, see the [AWS documentation on AWS APIGateway Authorizer.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
 
@@ -39,12 +43,12 @@ For additional information, see the [AWS documentation on AWS APIGateway Authori
 ## Examples
 
 ### Ensure a id is available.
-    describe aws_apigateway_authorizers do
+    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
       its('ids') { should include 'AuthorizerID' }
     end
 
 ### Ensure a name is available.
-    describe aws_apigateway_authorizers do
+    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
       its('names') { should include 'AuthorizerName' }
     end
 
@@ -58,13 +62,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_authorizers do
+    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_authorizers do
+    describe aws_apigateway_authorizers(rest_api_id: 'dummy') do
       it { should_not exist }
     end
 
