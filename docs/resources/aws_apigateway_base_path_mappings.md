@@ -39,12 +39,12 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 
 ### Ensure a base path is available.
     describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
-      its('base_path') { should include 'BasePath')' }
+      its('base_paths') { should include 'BasePath')' }
     end
 
 ### Ensure that stage name is available.
     describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
-        its('stage') { should include 'StageName' }
+        its('stages') { should include 'StageName' }
     end
 
 ## Matchers
