@@ -204,6 +204,7 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 | [aws_ec2_launch_template](docs/resources/aws_ec2_launch_template.md) | [aws_ec2_launch_templates](docs/resources/aws_ec2_launch_templates.md) |
 | [aws_ec2_network_insights_analysis](docs/resources/aws_ec2_network_insights_analysis.md) | [aws_ec2_network_insights_analysis_plural](docs/resources/aws_ec2_network_insights_analysis_plural.md) |
 | [aws_ec2_network_insights_path](docs/resources/aws_ec2_network_insights_path.md) | [aws_ec2_network_insights_paths](docs/resources/aws_ec2_network_insights_paths.md) |
+| [aws_ec2_network_interface](docs/resources/aws_ec2_network_interface.md) | [aws_ec2_network_interfaces](docs/resources/aws_ec2_network_interfaces.md) |
 | [aws_ec2_traffic_mirror_filter](docs/resources/aws_ec2_traffic_mirror_filter.md) | [aws_ec2_traffic_mirror_filters](docs/resources/aws_ec2_traffic_mirror_filters.md) |
 | [aws_ec2_traffic_mirror_session](docs/resources/aws_ec2_traffic_mirror_session.md) | [aws_ec2_traffic_mirror_sessions](docs/resources/aws_ec2_traffic_mirror_sessions.md) |
 | [aws_ec2_transit_gateway_attachment](docs/resources/aws_ec2_transit_gateway_attachment.md) | [aws_ec2_transit_gateway_attachments](docs/resources/aws_ec2_transit_gateway_attachments.md) |
