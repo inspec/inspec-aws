@@ -36,12 +36,12 @@ For additional information, see the [AWS documentation on AWS APIGateway ClientC
 
 ### Ensure a client certificate id is available.
     describe aws_apigateway_client_certificates do
-      its('client_certificate_id') { should include 'ClientCertificateID' }
+      its('client_certificate_ids') { should include 'ClientCertificateID' }
     end
 
 ### Ensure a pem encoded certificate is available.
     describe aws_apigateway_client_certificates do
-        its('pem_encoded_certificate') { should include 'PemEncodedCertificate' }
+        its('pem_encoded_certificates') { should include 'PemEncodedCertificate' }
     end
 
 ## Matchers
