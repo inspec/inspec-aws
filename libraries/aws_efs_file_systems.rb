@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEfsFileSystems < AwsResourceBase
   name 'aws_efs_file_systems'
-  desc 'Verifies settings for a collection of AWS EFS File Systems'
+  desc 'Verifies settings for a collection of AWS EFS File Systems.'
   example "
     describe aws_efs_file_systems do
       its('count') { should eq 3 }

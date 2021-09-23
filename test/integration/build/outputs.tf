@@ -729,6 +729,7 @@ output "aws_iam_role_id" {
 output "aws_iam_role_arn" {
   value = aws_iam_role.aws_iam_role_test.arn
 }
+
 output "aws_secretsmanager_secret_sm_id" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.id
 }
@@ -763,4 +764,27 @@ output "traffic_mirror_filter_id" {
 
 output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
+}
+
+output "oidc_arn" {
+  value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+output "aws_internet_gateway_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.id
+}
+
+output "aws_internet_gateway_owner_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.owner_id
+}
+
+output "aws_internet_gateway_vpc_id" {
+  value = aws_vpc.aws_vpc_internet_gateway_test.id
+}
+
+output "aws_network_interface_id1" {
+  value = aws_network_interface.aws_network_interface_test.id
 }

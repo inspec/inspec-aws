@@ -42,7 +42,7 @@ class AWSApplicationAutoScalingScalingPolicies < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.applicationautoscaling_client.describe_scaling_policies(@query_params)
       end
-      return [] if !@api_response || @api_response.empty?
+      return rows if !@api_response || @api_response.empty?
       @api_response.scaling_policies.each do |res|
         rows += [{
           policy_arn: res.policy_arn,

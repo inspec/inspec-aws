@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_sessions Resource
 platform: aws
 ---
 
-# aws_ec2_traffic_\mirror_\sessions
+# aws_ec2_traffic\_mirror\_sessions
 
 Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of all AWS Traffic Mirror sessions.
 

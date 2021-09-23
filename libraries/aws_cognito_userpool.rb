@@ -26,17 +26,13 @@ class AWSCognitoUserPool < AwsResourceBase
     end
   end
 
-  def id
+  def job_queue_name
     return nil unless exists?
     @user_pool[:job_queue_name]
   end
 
   def exists?
     !@user_pool.nil? && !@user_pool.empty?
-  end
-
-  def encrypted?
-    @user_pool[:encrypted]
   end
 
   def to_s

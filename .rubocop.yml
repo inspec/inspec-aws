@@ -69,6 +69,8 @@ Metrics/ClassLength:
     - libraries/aws_ecs_task_definition.rb
 Metrics/MethodLength:
   Max: 45
+  Exclude:
+    - libraries/aws_cloudfront_distribution.rb
 Metrics/BlockLength:
   Max: 100
 Metrics/AbcSize:
