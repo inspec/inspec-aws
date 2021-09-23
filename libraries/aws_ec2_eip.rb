@@ -30,7 +30,7 @@ class AwsEc2Eip < AwsResourceBase
     end
   end
 
-  def id
+  def public_ip
     return nil unless exists?
     @addresses[:public_ip]
   end
@@ -39,11 +39,7 @@ class AwsEc2Eip < AwsResourceBase
     !@addresses.nil? && !@addresses.empty?
   end
 
-  def encrypted?
-    @addresses[:encrypted]
-  end
-
   def to_s
-    "EIP #{@display_name}"
+    "Public IP: #{@display_name}"
   end
 end

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRdsSnapshotAttributes < AwsResourceBase
   name 'aws_rds_snapshot_attributes'
-  desc 'Verifies settings for an RDS snapshot attributes'
+  desc 'Verifies settings for an RDS snapshot attributes.'
 
   example '
     describe aws_rds_snapshot_attributes(db_snapshot_identifier: "test") do
@@ -24,7 +24,7 @@ class AwsRdsSnapshotAttributes < AwsResourceBase
     opts = { db_snapshot_identifier: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:db_snapshot_identifier])
-    raise ArgumentError, "#{@__resource_name__}: db_snapshot_identifier must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_snapshot_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
+    raise ArgumentError, "#{@__resource_name__}: db_snapshot_identifier must start with a letter followed by up to 1 to 255 characters." if opts[:db_snapshot_identifier] !~ /^[a-z]{1}[0-9a-z\-\:]{1,255}$/
     catch_aws_errors do
       @display_name = opts[:db_snapshot_identifier]
 

@@ -24,7 +24,7 @@ class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
     end
   end
 
-  def id
+  def listener_arn
     return nil unless exists?
     @listeners[:listener_arn]
   end
@@ -33,11 +33,7 @@ class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
     !@listeners.nil? && !@listeners.empty?
   end
 
-  def encrypted?
-    @listeners[:encrypted]
-  end
-
   def to_s
-    "listener_arns: #{@display_name}"
+    "Listener ARN: #{@display_name}"
   end
 end

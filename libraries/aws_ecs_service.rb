@@ -25,7 +25,7 @@ class AWSECSService < AwsResourceBase
     end
   end
 
-  def id
+  def services
     return nil unless exists?
     @services[:services]
   end
