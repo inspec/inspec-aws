@@ -35,6 +35,6 @@ class AWSTransferUser < AwsResourceBase
   end
 
   def to_s
-    "user_name: #{@user_name}"
+    "User Name: #{@user_name}"
   end
 end

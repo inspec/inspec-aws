@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamGroup < AwsResourceBase
   name 'aws_iam_group'
-  desc 'Verifies settings for an AWS IAM Group'
+  desc 'Verifies settings for an AWS IAM Group.'
 
   example "
     describe aws_iam_group('group-1') do
@@ -38,6 +38,6 @@ class AwsIamGroup < AwsResourceBase
   end
 
   def to_s
-    "AWS Iam Group #{@group_name}"
+    "AWS IAM Group: #{@group_name}"
   end
 end

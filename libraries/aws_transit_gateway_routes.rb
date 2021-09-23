@@ -6,7 +6,7 @@ class AwsTransitGatewayRoutes < AwsResourceBase
   TYPES = %w{static propagated}.freeze
   SUPPORTED_FILTER_PARAMS = %i(exact_match longest_prefix_match subnet_of_match supernet_of_match).freeze
   name 'aws_transit_gateway_routes'
-  desc 'Verifies settings for list of AWS Transit Gateways'
+  desc 'Verifies settings for list of AWS Transit Gateways.'
 
   example "
     describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589') do

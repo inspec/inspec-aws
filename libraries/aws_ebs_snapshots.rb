@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsEbsSnapshots < AwsResourceBase
   name 'aws_ebs_snapshots'
-  desc 'Verifies settings for a collection of AWS EBS Snapshots'
-  example '
+  desc 'Verifies settings for a collection of AWS EBS Snapshots.'
+  example "
     describe aws_ebs_snapshots do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
