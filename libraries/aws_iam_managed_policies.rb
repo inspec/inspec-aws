@@ -15,16 +15,16 @@ class AwsIamManagedPolicies < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns,                field: :arn)
-             .register_column(:attachment_counts,   field: :attachment_count)
+             .register_column(:arns,  field: :arn)
+             .register_column(:attachment_counts, field: :attachment_count)
              .register_column(:default_version_ids, field: :default_version_id)
-             .register_column(:policy_names,        field: :policy_name)
-             .register_column(:policy_ids,          field: :policy_id)
+             .register_column(:policy_names, field: :policy_name)
+             .register_column(:policy_ids, field: :policy_id)
              .register_column(:permissions_boundary_usage_count, field: :permissions_boundary_usage_count)
-             .register_column(:descriptions,      field: :description)
-             .register_column(:create_date,      field: :create_date)
-             .register_column(:update_date,      field: :update_date)
-             .register_column(:update_date,      field: :update_date)
+             .register_column(:descriptions, field: :description)
+             .register_column(:create_date, field: :create_date)
+             .register_column(:update_date, field: :update_date)
+             .register_column(:update_date, field: :update_date)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
