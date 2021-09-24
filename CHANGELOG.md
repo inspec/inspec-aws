@@ -1,9 +1,14 @@
-<!-- latest_release 1.69.7 -->
+<!-- latest_release 1.69.8 -->
+## [v1.69.8](https://github.com/inspec/inspec-aws/tree/v1.69.8) (2021-09-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_interface_attachment [#527](https://github.com/inspec/inspec-aws/pull/527) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.69.7](https://github.com/inspec/inspec-aws/tree/v1.69.7) (2021-09-23)
 
 #### Merged Pull Requests
 - Scripts to automate release notes &amp; announcement [#632](https://github.com/inspec/inspec-aws/pull/632) ([kagarmoe](https://github.com/kagarmoe))
-<!-- latest_release -->
 
 ## [v1.69.6](https://github.com/inspec/inspec-aws/tree/v1.69.6) (2021-09-23)
 
