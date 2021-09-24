@@ -3,9 +3,9 @@ title: About the aws_ec2_eips Resource
 platform: aws
 ---
 
-# aws\_eips
+# aws\_ec2\_eips
 
-Use the `aws_eips` InSpec audit resource to test properties of some or all AWS Elastic IP addresses.
+Use the `aws_ec2_eips` InSpec audit resource to test properties of some or all AWS Elastic IP addresses.
 
 ## Syntax
 

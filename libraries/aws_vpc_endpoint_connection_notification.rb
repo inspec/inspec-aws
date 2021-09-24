@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsVpcEndpointConnectionNotification < AwsResourceBase
   name 'aws_vpc_endpoint_connection_notification'
-  desc 'Verifies settings for an AWS VPC Endpoint Notification'
+  desc 'Verifies settings for an AWS VPC Endpoint Notification.'
 
   example "
     describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-12345678123456789') do
@@ -27,10 +27,8 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
 
     @display_name = opts[:connection_notification_id]
     req_param = { connection_notification_id: opts[:connection_notification_id] }
-
     catch_aws_errors do
       resp = @aws.compute_client.describe_vpc_endpoint_connection_notifications(req_param)
-
       @vpcen = resp.connection_notification_set[0].to_h
       create_resource_methods(@vpcen)
     end
@@ -45,6 +43,6 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
   end
 
   def to_s
-    "VPC Endpoint Connection Notification #{@display_name}"
+    "VPC Endpoint Connection Notification: #{@display_name}"
   end
 end

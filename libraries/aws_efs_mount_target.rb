@@ -11,6 +11,7 @@ class AWSEFSMountTarget < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { mount_target_id: opts } if opts.is_a?(String)
     super(opts)
@@ -25,17 +26,13 @@ class AWSEFSMountTarget < AwsResourceBase
     end
   end
 
-  def id
+  def mount_target_id
     return nil unless exists?
     @mount_targets[:mount_target_id]
   end
 
   def exists?
     !@mount_targets.nil? && !@mount_targets.empty?
-  end
-
-  def encrypted?
-    @mount_targets[:encrypted]
   end
 
   def to_s

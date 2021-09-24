@@ -36,6 +36,6 @@ class AWSRAMResourceShare < AwsResourceBase
   end
 
   def to_s
-    "resource_share: #{@display_name}"
+    "Resource Share ARN: #{@display_name}"
   end
 end
