@@ -10,6 +10,10 @@ class AwsIamManagedPolicies < AwsResourceBase
     describe aws_iam_managed_policies do
       it { should exist }
     end
+
+    describe aws_iam_managed_policies(scope: 'SCOPE') do
+      it { should exist }
+    end
   "
 
   attr_reader :table
@@ -29,13 +33,15 @@ class AwsIamManagedPolicies < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(allow: %i(scope))
+    raise ArgumentError, "#{@__resource_name__}: Scope accepts one out of 'All','AWS', 'Local'" unless %w{All AWS Local}.include? opts[:scope]
     @table = fetch_data
   end
 
   def fetch_data
     iam_policy_rows = []
     parameters = {}
+    parameters[:scope] = opts[:scope] if opts[:scope]
     parameters[:max_items] = 1000
     loop do
       catch_aws_errors do
