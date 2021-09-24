@@ -34,7 +34,9 @@ class AwsIamManagedPolicies < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(allow: %i(scope))
-    raise ArgumentError, "#{@__resource_name__}: Scope accepts one out of 'All','AWS', 'Local'" unless %w{All AWS Local}.include? opts[:scope]
+    if !opts[:scope].nil? && !(%w{All AWS Local}.include? opts[:scope])
+      raise ArgumentError, "#{@__resource_name__}: Scope accepts one out of 'All','AWS', 'Local'"
+    end
     @table = fetch_data
   end
 
@@ -48,17 +50,17 @@ class AwsIamManagedPolicies < AwsResourceBase
         @response = @aws.iam_client.list_policies(parameters)
       end
       return iam_policy_rows if !@response || @response.empty?
-      @response.policies.each do |p|
-        iam_policy_rows += [{ arn:                              p.arn,
-                              attachment_count:                 p.attachment_count,
-                              default_version_id:               p.default_version_id,
-                              policy_name:                      p.policy_name,
-                              policy_id:                        p.policy_id,
-                              permissions_boundary_usage_count: p.permissions_boundary_usage_count,
-                              description:                      p.description,
-                              create_date:                      p.create_date,
-                              update_date:                      p.update_date,
-                              tags:                             p.tags }]
+      @response.policies.each do |policies|
+        iam_policy_rows += [{ arn:                              policies.arn,
+                              attachment_count:                 policies.attachment_count,
+                              default_version_id:               policies.default_version_id,
+                              policy_name:                      policies.policy_name,
+                              policy_id:                        policies.policy_id,
+                              permissions_boundary_usage_count: policies.permissions_boundary_usage_count,
+                              description:                      policies.description,
+                              create_date:                      policies.create_date,
+                              update_date:                      policies.update_date,
+                              tags:                             policies.tags }]
       end
       break unless @response.is_truncated
       break unless @response.marker
