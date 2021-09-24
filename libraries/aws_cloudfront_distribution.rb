@@ -39,7 +39,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @distribution_arn = @resp.distribution.arn
     config = @resp.distribution.distribution_config
 
-    @access_logging = config.logging.enabled
+    @access_logging = config.logging
 
     @ssl_certificate = config.viewer_certificate.certificate_source
 
@@ -95,7 +95,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def has_access_logging_enabled?
-    @access_logging
+    @access_logging.enabled
   end
 
   def has_viewer_protocol_policies_allowing_http?
