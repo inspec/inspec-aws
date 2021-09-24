@@ -1,9 +1,14 @@
-<!-- latest_release 1.69.8 -->
+<!-- latest_release 1.70.0 -->
+## [v1.70.0](https://github.com/inspec/inspec-aws/tree/v1.70.0) (2021-09-24)
+
+#### Merged Pull Requests
+- Inline policy names for IAM Groups [#621](https://github.com/inspec/inspec-aws/pull/621) ([jb897](https://github.com/jb897))
+<!-- latest_release -->
+
 ## [v1.69.8](https://github.com/inspec/inspec-aws/tree/v1.69.8) (2021-09-24)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_network_interface_attachment [#527](https://github.com/inspec/inspec-aws/pull/527) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.69.7](https://github.com/inspec/inspec-aws/tree/v1.69.7) (2021-09-23)
 
