@@ -13,7 +13,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
   "
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
-              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path, :s3_origin_access, :ssl_certificate
+              :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path, :s3_origin_access, :ssl_certificate,
+              :access_logging
 
   def initialize(opts = {})
     opts = { distribution_id: opts } if opts.is_a?(String)
@@ -37,6 +38,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
 
     @distribution_arn = @resp.distribution.arn
     config = @resp.distribution.distribution_config
+
+    @access_logging = config.logging.enabled
 
     @ssl_certificate = config.viewer_certificate.certificate_source
 
@@ -91,8 +94,8 @@ class AwsCloudFrontDistribution < AwsResourceBase
     !@distribution_arn.nil? && @distribution_arn.start_with?('arn')
   end
 
-  def access_logging_enabled?
-    !!config.logging.enabled
+  def has_access_logging_enabled?
+    @access_logging
   end
 
   def has_viewer_protocol_policies_allowing_http?
