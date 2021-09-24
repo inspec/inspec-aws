@@ -5,19 +5,21 @@ platform: aws
 
 # aws_ec2_network_interface_attachments
 
-Use the `aws_ec2_network_interface_attachments` InSpec audit resource to test properties of a plural AWS EC2 Network Interface Attachment.
+Use the `aws_ec2_network_interface_attachments` InSpec audit resource to test properties of multiple AWS EC2 network interface attachments.
 
-The AWS::EC2::NetworkInterfaceAttachment resource attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this resource type to attach additional network interfaces to an instance without interruption.
+The `AWS::EC2::NetworkInterfaceAttachment` resource attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this resource type to attach additional network interfaces to an instance without interruption.
 
 ## Syntax
 
-Ensure that Network Interface Attachment exists.
+Ensure that a network interface attachment exists.
 
     describe aws_ec2_network_interface_attachments do
       it { should exist }
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS Lambda Function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html).
 
@@ -36,13 +38,15 @@ For additional information, see the [AWS documentation on AWS Lambda Function](h
 
 ## Examples
 
-### Ensure a attachment id is available.
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
-      its('attachment_ids') { should include 'AttachmentID' }
+### Ensure an attachment ID is available.
+
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
+      its('attachment_ids') { should include 'ATTACHMENT_ID' }
     end
 
-### Ensure that the status is `available`.
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+### Ensure that a network interface status is `available`.
+
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
         its('statuses') { should include 'available' }
     end
 

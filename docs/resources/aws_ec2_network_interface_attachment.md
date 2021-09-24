@@ -5,15 +5,15 @@ platform: aws
 
 # aws_ec2_network_interface_attachment
 
-Use the `aws_ec2_network_interface_attachment` InSpec audit resource to test properties of a single specific AWS EC2 Network Interface Attachment.
+Use the `aws_ec2_network_interface_attachment` InSpec audit resource to test properties of a single specific AWS EC2 network interface attachment.
 
-The AWS::EC2::NetworkInterfaceAttachment resource attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this resource type to attach additional network interfaces to an instance without interruption.
+The `AWS::EC2::NetworkInterfaceAttachment` resource attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this resource type to attach additional network interfaces to an instance without interruption.
 
 ## Syntax
 
-Ensure that Network Interface Attachment exists.
+Ensure that network interface attachment exists.
 
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
       it { should exist }
     end
 
@@ -21,34 +21,34 @@ Ensure that Network Interface Attachment exists.
 
 `network_interface_id` _(required)_
 
-| Property | Description |
-| --- | --- | --- |
-| network_interface_id | The ID of the network interface. |
+The ID of the network interface.
 
-For additional information, see the [AWS documentation on AWS EC2 Network Interface Attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface-attachment.html).
+For additional information, see the [AWS documentation on AWS EC2 network interface attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface-attachment.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| attach_time | The timestamp indicating when the attachment initiated. | attach_time |
-| attachment_id | The ID of the network interface attachment. | attachment_id |
-| delete_on_termination | Indicates whether the network interface is deleted when the instance is terminated. | delete_on_termination |
-| device_index | The device index of the network interface attachment on the instance. | device_index |
-| network_card_index | The index of the network card. | network_card_index |
-| instance_id | The ID of the instance. | instance_id |
-| instance_owner_id | The Amazon Web Services account ID of the owner of the instance. | instance_owner_id |
-| status | The attachment state. | status |
+| Property | Description |
+| --- | --- |
+| attach_time | The timestamp indicating when the attachment initiated. |
+| attachment_id | The ID of the network interface attachment. |
+| delete_on_termination | Indicates whether the network interface is deleted when the instance is terminated. |
+| device_index | The device index of the network interface attachment on the instance. | d
+| network_card_index | The index of the network card. |
+| instance_id | The ID of the instance. |
+| instance_owner_id | The Amazon Web Services account ID of the owner of the instance. |
+| status | The attachment state. |
 
 ## Examples
 
-### Ensure a attachment id is available.
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
-      its('attachment_id') { should eq 'AttachmentID' }
+### Ensure aN attachment ID is available.
+
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
+      its('attachment_id') { should eq 'ATTACHMENT_ID' }
     end
 
 ### Ensure that the status is `available`.
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
         its('status') { should eq 'available' }
     end
 
@@ -62,13 +62,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'dummy') do
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
       it { should_not exist }
     end
 
@@ -76,7 +76,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
       it { should be_available }
     end
 
