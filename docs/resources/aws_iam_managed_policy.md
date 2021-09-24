@@ -48,7 +48,7 @@ The ARN of the AWS IAM managed policy.
 ### Test that a specific policy ID exists
 
     describe aws_iam_managed_policy(policy_arn: 'POLICY_ARN') do
-      its('polict_id') { should eq 'POLICY_ID'}
+      its('policy_id') { should eq 'POLICY_ID'}
     end
 
 ## Matchers
