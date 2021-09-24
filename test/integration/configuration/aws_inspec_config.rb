@@ -285,6 +285,10 @@ module AWSInspecConfig
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}",
       aws_location: "us-east-2c",
+      aws_vpn_connection_route_destination_cidr_block: "192.168.10.0/24",
+      aws_vpn_connection_route_state: "available",
+      aws_accepter_vpc_info_cidr_block: "10.2.0.0/16",
+      aws_requester_vpc_info_cidr_block: "10.1.0.0/16",
   }
 
   def self.config

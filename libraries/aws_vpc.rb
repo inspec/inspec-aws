@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsVpc < AwsResourceBase
   name 'aws_vpc'
-  desc 'Verifies settings for an AWS VPC'
+  desc 'Verifies settings for an AWS VPC.'
 
   example "
     describe aws_vpc(vpc_id: 'vpc-12345678') do
