@@ -44,17 +44,17 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |listeners                              | A collection of the listeners for the load balancer. |
 |ssl_policies                           | A collection of the SSL Policies configured in-use for the load balancer (and their policy attributes). |
 |protocols                              | A list of the protocols configured for the listeners of the load balancer. |
-|cross\_zone\_load\_balancing\_enabled? | The cross zone load balancing status for ELB. |
+|cross\_zone\_load\_balancing\_enabled? | The cross-zone load balancing status for ELB. |
 |access\_log\_enabled?                  | The access log status for ELB. |
 
 ## Examples
 
-##### Test that cross zone load balancing for ELB is enabled
+##### Test that cross-zone load balancing for ELB is enabled
     describe aws_elb('prod_web_app_elb') do
       it { should be_cross_zone_load_balancing_enabled }
     end
 
-##### Test that access log for ELB is enabled
+##### Test that access logs for ELB are enabled
     describe aws_elb('prod_web_app_elb') do
       it { should be_access_log_enabled }
     end
