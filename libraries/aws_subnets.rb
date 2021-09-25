@@ -4,9 +4,13 @@ require 'aws_backend'
 
 class AwsSubnets < AwsResourceBase
   name 'aws_subnets'
-  desc 'Verifies settings for an AWS VPC Subnets in bulk'
+  desc 'Verifies settings for an AWS VPC Subnets in bulk.'
 
   example "
+    describe aws_subnets do
+      it { should exist }
+    end
+
     describe aws_subnets.where(vpc_id: 'vpc-123456789') do
       its('subnet_ids') { should eq ['subnet-12345678', 'subnet-87654321'] }
       its('cidr_blocks') { should eq ['172.31.96.0/20'] }
@@ -37,7 +41,7 @@ class AwsSubnets < AwsResourceBase
     catch_aws_errors do
       @subnets = @aws.compute_client.describe_subnets.to_h[:subnets]
     end
-    return [] if !@subnets || @subnets.empty?
+    return subnet_rows if !@subnets || @subnets.empty?
     @subnets.each do |subnet|
       subnet_rows += [{
         availability_zone:       subnet[:availability_zone],
