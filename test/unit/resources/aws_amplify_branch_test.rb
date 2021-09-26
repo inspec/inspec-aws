@@ -25,6 +25,7 @@ class AWSAmplifyBranchSuccessPathTest < Minitest::Test
     mock_data = {}
     mock_data[:branch_arn] = 'test1'
     mock_data[:branch_name] = 'test1'
+    mock_data[:description] = 'test1'
     data[:data] = [mock_data]
     data[:client] = Aws::Amplify::Client
     @resp = AWSAmplifyBranch.new(app_id: 'test1', branch_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
@@ -40,6 +41,10 @@ class AWSAmplifyBranchSuccessPathTest < Minitest::Test
 
   def test_branch_name
     assert_equal(@resp.branch_name, 'test1')
+  end
+
+  def test_description
+    assert_equal(@resp.description, 'test1')
   end
 end
 

@@ -3987,6 +3987,7 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   thumbprint_list = []
 }
 
+#Amplify App
 resource "aws_amplify_app" "test-app" {
   name       = "example-app"
   repository = "https://github.com/example/app"
@@ -4023,6 +4024,7 @@ resource "aws_amplify_app" "test-app" {
   }
 }
 
+#Amplify Branch
 resource "aws_amplify_branch" "main" {
   app_id      = aws_amplify_app.test-app.id
   branch_name = "master"

@@ -11,13 +11,17 @@ Use the `aws_amplify_branches` InSpec audit resource to test the properties of a
 
 Ensure that AWS Amplify Branch exists.
 
-    describe aws_amplify_branches(app_id: 'app_id') do
+    describe aws_amplify_branches(app_id: 'AppId') do
       it { should exist }
     end
 
 ## Parameters
 
-`app_id`  _(required)_
+`app_id` _(required)_
+
+| Property | Description |
+| --- | --- |
+| app_id | The unique ID for an Amplify app. |
 
 For additional information, see the [AWS documentation on AWS Amplify Branch](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
@@ -40,37 +44,35 @@ For additional information, see the [AWS documentation on AWS Amplify Branch](ht
 | pull_request_environment_names | Automatically disconnect a branch in the Amplify Console when you delete a branch from your Git repository. | pull_request_environment_name |
 | enable_basic_auth |Enables basic authorization for the Amplify Branch's branches. | enable_basic_auth |
 
-
-
 ### Ensure a branch id is available.
 
-    describe aws_amplify_branches(app_id: 'app_id') do
-      its('branch_arns') { should include 'app_id' }
+    describe aws_amplify_branches(app_id: 'AppId') do
+      its('branch_arns') { should include 'BranchARN' }
     end
 
 ### Ensure a branch name is available..
 
-    describe aws_amplify_branches(app_id: 'app_id') do
-        its('branch_names') { should include 'app_name' }
+    describe aws_amplify_branches(app_id: 'AppId') do
+        its('branch_names') { should include 'BranchName' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_amplify_branches(app_id: 'app_id') do
+    describe aws_amplify_branches(app_id: 'AppId') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_amplify_branches(app_id: 'app_id') do
+    describe aws_amplify_branches(app_id: 'dummy') do
       it { should_not exist }
     end
 
@@ -78,10 +80,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the Amplify Branch is available.
 
-    describe aws_amplify_branches(app_id: 'app_id') do
+    describe aws_amplify_branches(app_id: 'AppId') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Amplify:client:get_branch` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Amplify:Client:ListBranchesResult` action with `Effect` set to `Allow`.
