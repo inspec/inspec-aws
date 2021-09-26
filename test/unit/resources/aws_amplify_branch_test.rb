@@ -22,11 +22,27 @@ class AWSAmplifyBranchSuccessPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :get_branch
-    mock_data = {}
-    mock_data[:branch_arn] = 'test1'
-    mock_data[:branch_name] = 'test1'
-    mock_data[:description] = 'test1'
-    data[:data] = [mock_data]
+    mock_parameter = {}
+    mock_parameter[:branch_arn] = 'test1'
+    mock_parameter[:branch_name] = 'test1'
+    mock_parameter[:description] = 'test1'
+    mock_parameter[:tags] = {"type" =>'test1'}
+    mock_parameter[:display_name] = 'test1'
+    mock_parameter[:create_time] = Time.now
+    mock_parameter[:update_time] = Time.now
+    mock_parameter[:environment_variables] = { "value" => 'test1'}
+    mock_parameter[:custom_domains] = ['test1']
+    mock_parameter[:enable_basic_auth] = true
+    mock_parameter[:source_branch] = "false"
+    mock_parameter[:stage] = 'test1'
+    mock_parameter[:enable_notification] = true
+    mock_parameter[:enable_auto_build] = false
+    mock_parameter[:framework] = 'test1'
+    mock_parameter[:active_job_id] = 'test1'
+    mock_parameter[:total_number_of_jobs] = "1"
+    mock_parameter[:ttl] = 'test1'
+    mock_parameter[:enable_pull_request_preview] = true
+    data[:data] = { branch: mock_parameter }
     data[:client] = Aws::Amplify::Client
     @resp = AWSAmplifyBranch.new(app_id: 'test1', branch_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end

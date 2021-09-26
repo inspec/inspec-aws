@@ -24,24 +24,23 @@ class AWSAmplifyBranches < AwsResourceBase
              .register_column(:enable_notifications, field: :enable_notification)
              .register_column(:create_time, field: :create_time)
              .register_column(:update_time, field: :update_time)
-             .register_column(:iam_service_role_arns, field: :iam_service_role_arn)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(app_id))
-    @query_params = {}
+    @table = fetch_data
     raise ArgumentError, "#{@__resource_name__}: app_id must be provided" unless opts[:app_id] && !opts[:app_id].empty?
-    @query_params[:app_id] = opts[:app_id]
     @table = fetch_data
   end
 
   def fetch_data
     apps_rows = []
-    @query_params[:max_results] = 100
+    pagination_options = {}
+    pagination_options[:app_id] = opts[:app_id]
     loop do
       catch_aws_errors do
-        @api_response = @aws.amplify_client.list_branches(@query_params)
+        @api_response = @aws.amplify_client.list_branches(pagination_options)
       end
       return apps_rows if !@api_response || @api_response.empty?
       @api_response.branches.each do |branches|
@@ -55,11 +54,10 @@ class AWSAmplifyBranches < AwsResourceBase
                         enable_notification: branches.enable_notification,
                         create_time: branches.create_time,
                         update_time: branches.update_time,
-                        iam_service_role_arn: branches.iam_service_role_arn,
         }]
       end
       break unless @api_response.next_token
-      @query_params[:next_token] = @api_response.next_token
+      pagination_options[:next_token] = @api_response.next_token
     end
     @table = apps_rows
   end
