@@ -34,6 +34,14 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:environment_variables] = { "value" => 'test1'}
     mock_parameter[:enable_basic_auth] = true
     mock_parameter[:source_branch] = false
+    mock_parameter[:stage] = 'test1'
+    mock_parameter[:enable_notification] = true
+    mock_parameter[:enable_auto_build] = false
+    mock_parameter[:framework] = 'test1'
+    mock_parameter[:active_job_id] = 'test1'
+    mock_parameter[:total_number_of_jobs] = "1"
+    mock_parameter[:ttl] = 'test1'
+    mock_parameter[:enable_pull_request_preview] = true
     data[:data] = { :branches => [mock_parameter] }
     data[:client] = Aws::Amplify::Client
     @resp = AWSAmplifyBranches.new(app_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
