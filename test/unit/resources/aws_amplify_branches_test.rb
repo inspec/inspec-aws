@@ -26,7 +26,6 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:branch_arn] = 'test1'
     mock_parameter[:branch_name] = 'test1'
     mock_parameter[:description] = 'test1'
-    mock_parameter[:tags] = 'test1'
     mock_parameter[:tags] = { "value" => 'test1'}
     mock_parameter[:display_name] = 'test1'
     mock_parameter[:create_time] = Time.now
@@ -42,6 +41,7 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:total_number_of_jobs] = "1"
     mock_parameter[:ttl] = 'test1'
     mock_parameter[:enable_pull_request_preview] = true
+    mock_parameter[:custom_domains] = ['test1']
     data[:data] = { :branches => [mock_parameter] }
     data[:client] = Aws::Amplify::Client
     @resp = AWSAmplifyBranches.new(app_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
