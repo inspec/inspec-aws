@@ -32,7 +32,7 @@ class AWSAmplifyBranchesSuccessPathTest < Minitest::Test
     mock_parameter[:update_time] = Time.now
     mock_parameter[:environment_variables] = { "value" => 'test1'}
     mock_parameter[:enable_basic_auth] = true
-    mock_parameter[:source_branch] = false
+    mock_parameter[:source_branch] = 'test1'
     mock_parameter[:stage] = 'test1'
     mock_parameter[:enable_notification] = true
     mock_parameter[:enable_auto_build] = false
