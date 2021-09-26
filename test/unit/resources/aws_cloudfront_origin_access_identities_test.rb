@@ -25,31 +25,30 @@ class AWSCloudFrontOriginAccessIdentitiesHappyPathTest < Minitest::Test
     mock_data = {}
     mock_data[:cloud_front_origin_access_identity_list] = {
       marker: "test1",
-      is_truncated: true,
+      next_marker: "test1",
       max_items: 1,
+      is_truncated: false,
       quantity: 1,
       items: [
-        {
-          id: 'test1',
-          s3_canonical_user_id: 'test1',
-          comment: 'test1'
-        }
+        id: 'test1',
+        s3_canonical_user_id: 'test1',
+        comment: 'test1'
       ]
     }
     data[:data] = [mock_data]
     data[:client] = Aws::CloudFront::Client
-    @resp = AWSCloudFrontOriginAccessIdentities.new
+    @resp = AWSCloudFrontOriginAccessIdentities.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_ids
-    assert(@resp.ids, ['test1'])
+    assert_equal(@resp.ids, ['test1'])
   end
 
   def test_s3_canonical_user_ids
-    assert(@resp.s3_canonical_user_ids, ['test1'])
+    assert_equal(@resp.s3_canonical_user_ids, ['test1'])
   end
 
   def test_comments
-    assert(@resp.comments, ['test1'])
+    assert_equal(@resp.comments, ['test1'])
   end
 end
