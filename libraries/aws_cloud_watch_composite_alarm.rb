@@ -19,7 +19,7 @@ class AWSCloudWatchCompositeAlarm < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: alarm_name must be provided" unless opts[:alarm_name] && !opts[:alarm_name].empty?
     @display_name = opts[:alarm_name]
     catch_aws_errors do
-      resp = @aws.cloudwatch_client.describe_alarms({ alarm_names: [opts[:alarm_name]], alarm_types: ["CompositeAlarm"] })
+      resp = @aws.cloudwatch_client.describe_alarms({ alarm_names: [opts[:alarm_name]], alarm_types: ['CompositeAlarm'] })
       @res = resp.composite_alarms[0].to_h
       create_resource_methods(@res)
     end

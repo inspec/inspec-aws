@@ -18,7 +18,6 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
     validate_parameters(required: %i(id))
     raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
     @display_name = opts[:id]
-    require 'pry'; binding.pry
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_streaming_distribution({ id: opts[:id] })
       @res = resp.streaming_distribution.to_h

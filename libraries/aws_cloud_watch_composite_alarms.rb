@@ -38,7 +38,7 @@ class AWSCloudWatchCompositeAlarms < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.cloudwatch_client.describe_alarms(alarm_types: ["CompositeAlarm"]).map do |table|
+      @table = @aws.cloudwatch_client.describe_alarms(alarm_types: ['CompositeAlarm']).map do |table|
         table.composite_alarms.map { |table_name| {
           actions_enabled: table_name.actions_enabled,
           alarm_actions: table_name.alarm_actions,
