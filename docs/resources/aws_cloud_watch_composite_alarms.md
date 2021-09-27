@@ -1,61 +1,81 @@
-# frozen_string_literal: true
+---
+title: About the aws_cloud_watch_composite_alarms Resource
+platform: aws
+---
 
-require 'aws_backend'
+# aws_cloud_watch_composite_alarms
 
-class AWSCloudWatchCompositeAlarms < AwsResourceBase
-  name 'aws_cloud_watch_composite_alarms'
-  desc 'Lists all composite alarms.'
+Use the `aws_cloud_watch_composite_alarms` InSpec audit resource to test properties of the plural resource of AWS CloudWatch CompositeAlarm.
 
-  example "
+The AWS::CloudWatch::CompositeAlarm type creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
+
+## Syntax
+
+Ensure that the alarms exists.
+
     describe aws_cloud_watch_composite_alarms do
       it { should exist }
     end
-  "
 
-  attr_reader :table
+## Parameters
 
-  FilterTable.create
-             .register_column(:actions_enabled, field: :actions_enabled)
-             .register_column(:alarm_actions, field: :alarm_actions)
-             .register_column(:alarm_arns, field: :alarm_arn)
-             .register_column(:alarm_configuration_updated_timestamp, field: :alarm_configuration_updated_timestamp)
-             .register_column(:alarm_descriptions, field: :alarm_description)
-             .register_column(:alarm_names, field: :alarm_name)
-             .register_column(:alarm_rules, field: :alarm_rule)
-             .register_column(:insufficient_data_actions, field: :insufficient_data_actions)
-             .register_column(:ok_actions, field: :ok_actions)
-             .register_column(:state_reasons, field: :state_reason)
-             .register_column(:state_reason_data, field: :state_reason_data)
-             .register_column(:state_updated_timestamp, field: :state_updated_timestamp)
-             .register_column(:state_values, field: :state_value)
-             .install_filter_methods_on_resource(self, :table)
+For additional information, see the [AWS documentation on AWS CloudWatch CompositeAlarm.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
 
-  def initialize(opts = {})
-    super(opts)
-    validate_parameters
-    @table = fetch_data
-  end
+## Properties
 
-  def fetch_data
-    catch_aws_errors do
-      @table = @aws.cloudwatch_client.describe_alarms(alarm_types: ['CompositeAlarm']).map do |table|
-        table.composite_alarms.map { |table_name| {
-          actions_enabled: table_name.actions_enabled,
-          alarm_actions: table_name.alarm_actions,
-          alarm_arn: table_name.alarm_arn,
-          alarm_configuration_updated_timestamp: table_name.alarm_configuration_updated_timestamp,
-          alarm_description: table_name.alarm_description,
-          alarm_name: table_name.alarm_name,
-          alarm_rule: table_name.alarm_rule,
-          insufficient_data_actions: table_name.insufficient_data_actions,
-          ok_actions: table_name.ok_actions,
-          state_reason: table_name.state_reason,
-          state_reason_data: table_name.state_reason_data,
-          state_updated_timestamp: table_name.state_updated_timestamp,
-          state_value: table_name.state_value,
-        }
-        }
-      end.flatten
+| Property | Description | Field | 
+| --- | --- | --- |
+| actions_enabled | Indicates whether actions should be executed during any changes to the alarm state. | actions_enabled |
+| alarm_actions | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN). | alarm_actions |
+| alarm_arns | The Amazon Resource Name (ARN) of the alarm. | alarm_arn |
+| alarm_configuration_updated_timestamp | The time stamp of the last update to the alarm configuration. | alarm_configuration_updated_timestamp |
+| alarm_descriptions | The description of the alarm. | alarm_description |
+| alarm_names | The name of the alarm. | alarm_name |
+| alarm_rules | The rule that this alarm uses to evaluate its alarm state. | alarm_rule |
+| insufficient_data_actions | The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN). | insufficient_data_actions |
+| ok_actions | The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN). | ok_actions |
+| state_reasons | An explanation for the alarm state, in text format. | state_reason |
+| state_reason_data | An explanation for the alarm state, in JSON format. | state_reason_data |
+| state_updated_timestamp | The time stamp of the last update to the alarm state. | state_updated_timestamp |
+| state_values | The state value for the alarm. | state_value |
+
+## Examples
+
+### Ensure an actions is enabled.
+    describe aws_cloud_watch_composite_alarms do
+      its('actions_enabled') { should include true }
     end
-  end
-end
+
+### Ensure an alarm arn is available.
+    describe aws_cloud_watch_composite_alarms do
+        its('alarm_arns') { should include 'AlarmARN' }
+    end
+
+### Ensure an alarm name is available.
+    describe aws_cloud_watch_composite_alarms do
+        its('alarm_names') { should include 'AlarmName' }
+    end
+
+## Matchers
+
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+The controls will pass if the `describe` method returns at least one result.
+
+### exist
+
+Use `should` to test that the entity exists.
+
+    describe aws_cloud_watch_composite_alarms do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_cloud_watch_composite_alarms do
+      it { should_not exist }
+    end
+
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:DescribeAlarmsOutput` action with `Effect` set to `Allow`.
