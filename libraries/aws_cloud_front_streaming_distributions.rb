@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSCloudFrontStreamingDistributions < AwsResourceBase
+class AwsCloudFrontStreamingDistributions < AwsResourceBase
   name 'aws_cloud_front_streaming_distributions'
   desc 'List streaming distributions.'
 

@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSCloudFrontStreamingDistribution < AwsResourceBase
+class AwsCloudFrontStreamingDistribution < AwsResourceBase
   name 'aws_cloud_front_streaming_distribution'
   desc 'Get the information about a distribution.'
 
@@ -36,5 +36,17 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
 
   def to_s
     "ID: #{@display_name}"
+  end
+
+  def active_aws_account_numbers
+    (active_trusted_signers.map(&:items)).map(&:aws_account_number)
+  end
+
+  def active_key_pair_id_quantities
+    ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:quantity)
+  end
+
+  def active_key_pair_id_items
+    ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:items)
   end
 end

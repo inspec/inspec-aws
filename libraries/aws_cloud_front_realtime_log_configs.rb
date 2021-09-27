@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSCloudFrontRealtimeLogConfigs < AwsResourceBase
+class AwsCloudFrontRealtimeLogConfigs < AwsResourceBase
   name 'aws_cloud_front_realtime_log_configs'
   desc 'Gets a list of real-time log configurations.'
 

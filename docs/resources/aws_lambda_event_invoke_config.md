@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsLambdaEventInvokeConfig < AwsResourceBase
+class AWSLambdaEventInvokeConfig < AwsResourceBase
   name 'aws_lambda_event_invoke_config'
   desc 'Retrieves the configuration for asynchronous invocation for a function, version, or alias.'
 

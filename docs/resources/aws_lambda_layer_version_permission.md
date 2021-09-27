@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsLambdaLayerVersionPermission < AwsResourceBase
+class AWSLambdaLayerVersionPermission < AwsResourceBase
   name 'aws_lambda_layer_version_permission'
   desc 'Returns the permission policy for a version of an Lambda layer.'
 
