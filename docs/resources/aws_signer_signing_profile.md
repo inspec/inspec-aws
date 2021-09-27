@@ -1,65 +1,71 @@
 ---
-title: About the aws_cloud_front_realtime_log_config Resource
+title: About the aws_signer_signing_profile Resource
 platform: aws
 ---
 
-# aws_cloud_front_realtime_log_config
+# aws_signer_signing_profile
 
-Use the `aws_cloud_front_realtime_log_config` InSpec audit resource to test properties of a single specific AWS CloudFront RealtimeLogConfig.
+Use the `aws_signer_signing_profile` InSpec audit resource to test properties of a single specific AWS Signer SigningProfile.
 
-The AWS::CloudFront::RealtimeLogConfig is a real-time log configuration.
+A signing profile is a code signing template that can be used to carry out a pre-defined signing job.
 
 ## Syntax
 
-Ensure that the config exists.
+Ensure that the signing profile exists.
 
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
       it { should exist }
     end
 
 ## Parameters
 
-`name` _(required)_
+`profile_name` _(required)_
 
 | Property | Description |
 | --- | --- |
-| name | The unique name of this real-time log configuration. |
+| profile_name | The name of the target signing profile. |
 
-For additional information, see the [AWS documentation on AWS CloudFront RealtimeLogConfig.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-realtimelogconfig.html).
+For additional information, see the [AWS documentation on AWS Signer SigningProfile.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-signingprofile.html).
 
 ## Properties
 
 | Property | Description | Field | 
 | --- | --- | --- |
-| arn | The Amazon Resource Name (ARN) of this real-time log configuration. | arn |
-| name | The unique name of this real-time log configuration. | name |
-| sampling_rate | The sampling rate for this real-time log configuration. | sampling_rate |
-| end_points | Contains information about the Amazon Kinesis data stream where you are sending real-time log data for this real-time log configuration. | end_points |
-| end_points_stream_types | The type of data stream where you are sending real-time log data. The only valid value is Kinesis. | stream_type |
-| end_points_kinesis_stream_config_role_arns | The Amazon Resource Name (ARN) of an Identity and Access Management (IAM) role that CloudFront can use to send real-time log data to your Kinesis data stream. | role_arn |
-| end_points_kinesis_stream_config_stream_arns | The Amazon Resource Name (ARN) of the Kinesis data stream where you are sending real-time log data. | stream_arn |
-| fields | A list of fields that are included in each real-time log record. | fields |
+| profile_name | The name of the target signing profile. | profile_name |
+| profile_version | The current version of the signing profile. | profile_version |
+| profile_version_arn | The signing profile ARN, including the profile version. | profile_version_arn |
+| revocation_record.revocation_effective_from | The time when revocation becomes effective. | revocation_effective_from |
+| revocation_record.revoked_at | The time when the signing profile was revoked. | revoked_at |
+| revocation_record.revoked_by | The identity of the revoker. | revoked_by |
+| signing_material.certificate_arn | The Amazon Resource Name (ARN) of the certificates that is used to sign your code. | certificate_arn |
+| platform_id | The ID of the platform that is used by the target signing profile. | platform_id |
+| platform_display_name | A human-readable name for the signing platform associated with the signing profile. | platform_display_name |
+| signature_validity_period.value | The numerical value of the time unit for signature validity. | value |
+| signature_validity_period.type | The time unit for signature validity. | type |
+| overrides.signing_configuration.encryption_algorithm | A specified override of the default encryption algorithm that is used in a code signing job. | encryption_algorithm |
+| overrides.signing_configuration.hash_algorithm | A specified override of the default hash algorithm that is used in a code signing job. | hash_algorithm |
+| overrides.signing_image_format | profile_name | signing_image_format |
+| signing_parameters | A map of key-value pairs for signing operations that is attached to the target signing profile. | signing_parameters |
+| status | The status of the target signing profile. | status |
+| status_reason | Reason for the status of the target signing profile. | status_reason |
+| arn | The Amazon Resource Name (ARN) for the signing profile. | arn |
+| tags | A list of tags associated with the signing profile. | tags |
 
 ## Examples
 
-### Ensure an arn is available.
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
-      its('arn') { should eq 'ARN' }
+### Ensure a profile name is available.
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+      its('profile_name') { should eq 'ProfileName' }
     end
 
-### Ensure a name is available.
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
-        its('name') { should eq 'ConfigName' }
+### Ensure a profile version is available.
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+        its('profile_version') { should eq 'ProfileVersion' }
     end
 
-### Ensure a stream type is available.
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
-        its('end_points_stream_types') { should include 'Kinesis' }
-    end
-
-### Ensure a stream arn is available.
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
-        its('end_points_kinesis_stream_config_stream_arns') { should include 'StreamARN' }
+### Ensure a status is `Active`.
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+        its('status') { should eq 'Active' }
     end
 
 ## Matchers
@@ -72,13 +78,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloud_front_realtime_log_config(name: 'dummy') do
+    describe aws_signer_signing_profile(profile_name: 'dummy') do
       it { should_not exist }
     end
 
@@ -86,10 +92,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_cloud_front_realtime_log_config(name: 'ConfigName') do
+    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFront:Client:GetRealtimeLogConfigResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Signer:Client:GetSigningProfileResponse` action with `Effect` set to `Allow`.

@@ -1,52 +1,73 @@
-# frozen_string_literal: true
+---
+title: About the aws_lambda_event_invoke_configs Resource
+platform: aws
+---
 
-require 'aws_backend'
+# aws_lambda_event_invoke_configs
 
-class AWSLambdaEventInvokeConfigs < AwsResourceBase
-  name 'aws_lambda_event_invoke_configs'
-  desc 'Gets information about the scalable targets in the specified namespace.'
+Use the `aws_lambda_event_invoke_configs` InSpec audit resource to test properties of the plural resource of AWS Lambda EventInvokeConfig.
 
-  example "
+The AWS::Lambda::EventInvokeConfig resource configures options for asynchronous invocation on a version or an alias.
+
+## Syntax
+
+Ensure that the config exists.
+
     describe aws_lambda_event_invoke_configs(function_name: 'FunctionName') do
       it { should exist }
     end
-  "
 
-  attr_reader :table
+## Parameters
 
-  FilterTable.create
-             .register_column(:last_modified, field: :last_modified)
-             .register_column(:function_arns, field: :function_arn)
-             .register_column(:maximum_retry_attempts, field: :maximum_retry_attempts)
-             .register_column(:maximum_event_age_in_seconds, field: :maximum_event_age_in_seconds)
-             .register_column(:destination_configs, field: :destination_config)
-             .install_filter_methods_on_resource(self, :table)
+`function_name` _(required)_
 
-  def initialize(opts = {})
-    super(opts)
-    validate_parameters(required: %i(function_name))
-    @query_params = {}
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    @query_params[:function_name] = opts[:function_name]
-    @table = fetch_data
-  end
+| Property | Description |
+| --- | --- |
+| function_name | The name of the function. |
 
-  def fetch_data
-    rows = []
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.lambda_client.list_function_event_invoke_configs(@query_params)
-      end
-      return rows if !@api_response || @api_response.empty?
-      @api_response.function_event_invoke_configs.each do |resp|
-        rows += [{ last_modified: resp.last_modified,
-                   function_arn: resp.function_arn,
-                   maximum_retry_attempts: resp.maximum_retry_attempts,
-                   destination_config: resp.destination_config }]
-      end
-      break unless @api_response.next_marker
-      @query_params[:next_marker] = @api_response.next_marker
+For additional information, see the [AWS documentation on AWS CloudFront RealtimeLogConfig.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html).
+
+## Properties
+
+| Property | Description | Field | 
+| --- | --- | --- |
+| last_modified | The date and time that the configuration was last updated. | last_modified |
+| function_arns | The Amazon Resource Name (ARN) of the function. | function_arn |
+| maximum_retry_attempts | The maximum number of times to retry when the function returns an error. | maximum_retry_attempts |
+| destination_configs | A destination for events after they have been sent to a function for processing. | destination_configs |
+
+## Examples
+
+### Ensure an arn is available.
+    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
+      its('function_arns') { should include 'FunctionARN' }
     end
-    rows
-  end
-end
+
+### Ensure a maximum retry attempts is available.
+    describe aws_lambda_event_invoke_configs(function_name: 'FunctionName') do
+        its('maximum_retry_attempts') { should include 1 }
+    end
+
+## Matchers
+
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+The controls will pass if the `list` method returns at least one result.
+
+### exist
+
+Use `should` to test that the entity exists.
+
+    describe aws_lambda_event_invoke_configs(function_name: 'FunctionName') do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_lambda_event_invoke_configs(function_name: 'dummy') do
+      it { should_not exist }
+    end
+
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Lambda:Client:ListFunctionEventInvokeConfigsResponse` action with `Effect` set to `Allow`.
