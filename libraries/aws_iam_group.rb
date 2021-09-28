@@ -12,7 +12,7 @@ class AwsIamGroup < AwsResourceBase
     end
   "
 
-  attr_reader :group_name, :users, :group_id, :arn
+  attr_reader :group_name, :users, :group_id, :arn, :inline_policy_names
 
   def initialize(opts = {})
     opts = { group_name: opts } if opts.is_a?(String)
@@ -21,12 +21,15 @@ class AwsIamGroup < AwsResourceBase
 
     catch_aws_errors do
       @resp = @aws.iam_client.get_group(group_name: opts[:group_name])
+      group_name = { group_name: opts[:group_name] }
+      iam_client = @aws.iam_client
 
       group       = @resp[:group]
       @group_name = group.group_name
       @group_id   = group.group_id
       @arn        = group.arn
       @users      = @resp[:users].map(&:user_name)
+      @inline_policy_names = iam_client.list_group_policies(group_name).policy_names
     end
   end
 
