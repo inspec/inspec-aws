@@ -19,7 +19,7 @@ class AWSApiGatewayBasePathMapping < AwsResourceBase
     validate_parameters(required: %i(domain_name base_path))
     raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" unless opts[:domain_name] && !opts[:domain_name].empty?
     raise ArgumentError, "#{@__resource_name__}: base_path must be provided" unless opts[:base_path] && !opts[:base_path].empty?
-    @display_name = opts[:authorizer_id]
+    @display_name = opts[:base_path]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_base_path_mapping({ domain_name: opts[:domain_name], base_path: opts[:base_path] })
       @res = resp.to_h
