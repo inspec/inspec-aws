@@ -30,11 +30,7 @@ For additional information, see the [AWS documentation on AWS S3 Access Points.]
 | Property | Description | Field | 
 | --- | --- | --- |
 | ids | The ID used to identify the metrics configuration. | id |
-| filter_prefixes | The prefix used when evaluating a metrics filter. | filter.prefix |
-| filter_tags | The tag used when evaluating a metrics filter. | filter.tag |
 | filter_access_point_arns | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |
-| filter_and_prefixes | The prefix used when evaluating an AND predicate. | filter.and.prefix |
-| filter_and_tags | The list of tags used when evaluating an AND predicate. | filter.and.tags |
 | filter_and_access_point_arns | The access point ARN used when evaluating an AND predicate. | filter.and.access_point_arn |
 
 ## Example
@@ -46,7 +42,7 @@ For additional information, see the [AWS documentation on AWS S3 Access Points.]
 
 ### Ensure that stage name is available.
     describe aws_s3_access_points(bucket_name: 'BucketName') do
-        its('filter_access_point_arn') { should include 'AccessPointArn' }
+        its('filter_access_point_arns') { should include 'AccessPointArn' }
     end
 
 ## Matchers

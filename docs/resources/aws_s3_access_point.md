@@ -17,7 +17,7 @@ Ensure that the base path mapping exists.
 
 ## Parameters
 
-`domain_name metrics_id` _(required)_
+`domain_name` and `metrics_id` _(required)_
 
 | Property | Description |
 | --- | --- |
@@ -31,11 +31,7 @@ For additional information, see the [AWS documentation on AWS API Metric.](https
 | Property | Description | Field | 
 | --- | --- | --- |
 | id | The ID used to identify the metrics configuration. | id |
-| filter.prefix | The prefix used when evaluating a metrics filter. | filter.prefix |
-| filter.tag | The tag used when evaluating a metrics filter. | filter.tag |
 | filter.access_point_arn | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |
-| filter.and.prefix | The prefix used when evaluating an AND predicate. | filter.and.prefix |
-| filter.and.tags | The list of tags used when evaluating an AND predicate. | filter.and.tags |
 | filter.and.access_point_arn | The access point ARN used when evaluating an AND predicate. | filter.and.access_point_arn |
 
 ## Example
