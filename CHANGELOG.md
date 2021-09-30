@@ -1,9 +1,14 @@
-<!-- latest_release 1.70.3 -->
+<!-- latest_release 1.71.0 -->
+## [v1.71.0](https://github.com/inspec/inspec-aws/tree/v1.71.0) (2021-09-30)
+
+#### Merged Pull Requests
+- Adding attributes for ELB resource [#623](https://github.com/inspec/inspec-aws/pull/623) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.70.3](https://github.com/inspec/inspec-aws/tree/v1.70.3) (2021-09-30)
 
 #### Merged Pull Requests
 - Change date format in publish-release-notes script [#653](https://github.com/inspec/inspec-aws/pull/653) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.70.2](https://github.com/inspec/inspec-aws/tree/v1.70.2) (2021-09-29)
 
