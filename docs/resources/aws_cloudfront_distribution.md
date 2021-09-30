@@ -55,7 +55,7 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
 |s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
 |s3\_origin\_access                          | The origin access identity for s3 origin config
-|access\_logging\_enabled?                   | Access logging for CloudFront distribution
+|access\_logging                             | Access logging for CloudFront distribution
 |ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution
 
 ## Examples
@@ -97,6 +97,12 @@ The `have_disallowed_viewer_minimum_ssl_protocol` matcher tests whether the mini
 The `have_s3_origin_configs` matcher tests whether the distribution has a non-nil s3_origin_configs setting in any of its origins.
 
     it { should_not have_s3_origin_configs }
+
+### have\_access\_logging\_enabled
+
+The `have_access_logging_enabled` matcher tests whether the distribution has access logging enabled.
+
+    it { should have_access_logging_enabled }
 
 ### exist
 
