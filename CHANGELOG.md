@@ -1,9 +1,19 @@
-<!-- latest_release 1.70.1 -->
+<!-- latest_release 1.70.3 -->
+## [v1.70.3](https://github.com/inspec/inspec-aws/tree/v1.70.3) (2021-09-30)
+
+#### Merged Pull Requests
+- Change date format in publish-release-notes script [#653](https://github.com/inspec/inspec-aws/pull/653) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
+## [v1.70.2](https://github.com/inspec/inspec-aws/tree/v1.70.2) (2021-09-29)
+
+#### Merged Pull Requests
+- Add releases as a Hugo module [#650](https://github.com/inspec/inspec-aws/pull/650) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.70.1](https://github.com/inspec/inspec-aws/tree/v1.70.1) (2021-09-29)
 
 #### Merged Pull Requests
 - fixed typo [#649](https://github.com/inspec/inspec-aws/pull/649) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.70.0](https://github.com/inspec/inspec-aws/tree/v1.70.0) (2021-09-24)
 
