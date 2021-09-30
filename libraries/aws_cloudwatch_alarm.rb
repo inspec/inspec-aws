@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsCloudwatchAlarm < AwsResourceBase
   name 'aws_cloudwatch_alarm'
-  desc 'Verifies settings for an AWS CloudWatch Alarm'
+  desc 'Verifies settings for an AWS CloudWatch Alarm.'
 
   example "
   # Look for a specific alarm
@@ -12,6 +12,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
     it { should exist }
   end
   "
+
   attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace, :dimensions
 
   def initialize(opts = {})

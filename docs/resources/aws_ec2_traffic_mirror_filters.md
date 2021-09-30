@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_filters Resource
 platform: aws
 ---
 
-# aws_\ec2_\traffic_\mirror_\filters
+# aws\_ec2\_traffic\_mirror\_filters
 
 Use the `aws_ec2_traffic_mirror_filters` InSpec audit resource to test properties of multiple AWS traffic mirror filters.
 

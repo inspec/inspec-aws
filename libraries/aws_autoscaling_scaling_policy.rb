@@ -29,7 +29,7 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
     end
   end
 
-  def id
+  def auto_scaling_group_name
     return nil unless exists?
     @scaling_policies[:auto_scaling_group_name]
   end
@@ -38,11 +38,7 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
     !@scaling_policies.nil? && !@scaling_policies.empty?
   end
 
-  def encrypted?
-    @scaling_policies[:encrypted]
-  end
-
   def to_s
-    "auto_scaling_group_name: #{@display_name}"
+    "Auto Scaling Group Name: #{@display_name}"
   end
 end
