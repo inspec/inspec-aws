@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSCloudFormationStackSets < AwsResourceBase
   name 'aws_cloud_formation_stack_sets'
   desc 'Describes all the specified stack set.'
+
   example "
     describe aws_cloud_formation_stack_sets do
       it { should exist }
@@ -14,7 +15,6 @@ class AWSCloudFormationStackSets < AwsResourceBase
   attr_reader :table
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters
     @table = fetch_data
@@ -25,6 +25,7 @@ class AWSCloudFormationStackSets < AwsResourceBase
              .register_column(:stack_set_ids, field: :stack_set_id)
              .register_column(:descriptions, field: :description)
              .register_column(:statuses, field: :status)
+             .register_column(:auto_deployments, field: :auto_deployment)
              .register_column(:permission_models, field: :permission_model)
              .register_column(:drift_statuses, field: :drift_status)
              .register_column(:last_drift_check_timestamps, field: :last_drift_check_timestamp)
@@ -32,15 +33,16 @@ class AWSCloudFormationStackSets < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @cloudwatch_dashboards = @aws.cloudwatch_client.list_dashboards.map do |dashboards|
-        dashboards.dashboard_entries.map { |cloudwatch_dashboards| {
-          stack_set_name: cloudwatch_dashboards[:stack_set_name],
-          stack_set_id: cloudwatch_dashboards[:stack_set_id],
-          description: cloudwatch_dashboards[:description],
-          status: cloudwatch_dashboards[:status],
-          permission_model: cloudwatch_dashboards[:permission_model],
-          drift_status: cloudwatch_dashboards[:drift_status],
-          last_drift_check_timestamp: cloudwatch_dashboards[:last_drift_check_timestamp],
+      @resp = @aws.cloudformation_client.list_stack_sets.map do |table|
+        table.summaries.map { |table_name| {
+          stack_set_name: table_name[:stack_set_name],
+          stack_set_id: table_name[:stack_set_id],
+          description: table_name[:description],
+          status: table_name[:status],
+          auto_deployment: table_name[:auto_deployment],
+          permission_model: table_name[:permission_model],
+          drift_status: table_name[:drift_status],
+          last_drift_check_timestamp: table_name[:last_drift_check_timestamp],
         }
         }
       end.flatten
