@@ -788,3 +788,7 @@ output "aws_internet_gateway_vpc_id" {
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
+
+output "request_origin_id" {
+  value = aws_cloudfront_origin_request_policy.test-origin-policy.id
+}
