@@ -1,0 +1,73 @@
+---
+title: About the aws_cloudwatch_dashboard Resource
+platform: aws
+---
+
+# aws_cloudwatch_dashboard
+
+Use the `aws_cloudwatch_dashboard` InSpec audit resource to test properties of the plural AWS CloudWatch Dashboard.
+
+## Syntax
+
+Ensure that the identity exists.
+
+    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+      it { should exist }
+    end
+
+## Parameters
+
+`dashboard_name` _(required)_
+
+| Property | Description |
+| --- | --- |
+| dashboard_name | The name of a dashboard |
+
+
+For additional information, see the [AWS documentation on AWS CloudWatch Dashboard.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create_dashboard.html).
+
+## Properties
+
+| Property | Description | Field | 
+| --- | --- | --- |
+| dashboard_arn | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
+| dashboard_body | The detailed information about the dashboard, including what widgets are included and their location on the dashboard.| dashboard_body |
+| dashboard_name | The name of the dashboard. | dashboard_name |
+
+
+
+## Examples
+
+### Ensure an dashboard_arn is available.
+    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+      its('dashboard_arn') { should eq 'ARN' }
+    end
+
+### Ensure a dashboard_body is available.
+    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+        its('dashboard_body') { should eq 'BODY' }
+    end
+
+## Matchers
+
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+The controls will pass if the `get` method returns at least one result.
+
+### exist
+
+Use `should` to test that the entity exists.
+
+    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+      it { should_not exist }
+    end
+
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:GetDashboardOutput action with `Effect` set to `Allow`.
