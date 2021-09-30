@@ -9,9 +9,9 @@ Use the `aws_cloudwatch_dashboard` InSpec audit resource to test properties of t
 
 ## Syntax
 
-Ensure that the identity exists.
+Ensure that the dashboard exists.
 
-    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
       it { should exist }
     end
 
@@ -21,10 +21,9 @@ Ensure that the identity exists.
 
 | Property | Description |
 | --- | --- |
-| dashboard_name | The name of a dashboard |
+| dashboard_name | The name of a dashboard. |
 
-
-For additional information, see the [AWS documentation on AWS CloudWatch Dashboard.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create_dashboard.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Dashboard.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html).
 
 ## Properties
 
@@ -34,17 +33,15 @@ For additional information, see the [AWS documentation on AWS CloudWatch Dashboa
 | dashboard_body | The detailed information about the dashboard, including what widgets are included and their location on the dashboard.| dashboard_body |
 | dashboard_name | The name of the dashboard. | dashboard_name |
 
-
-
 ## Examples
 
-### Ensure an dashboard_arn is available.
-    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+### Ensure a dashboard arn is available.
+    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
       its('dashboard_arn') { should eq 'ARN' }
     end
 
-### Ensure a dashboard_body is available.
-    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+### Ensure a dashboard body is available.
+    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
         its('dashboard_body') { should eq 'BODY' }
     end
 
@@ -58,13 +55,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloudwatch_dashboard (dashboard_name: 'DashboardName' ) do
+    describe aws_cloudwatch_dashboard(dashboard_name: 'dummy') do
       it { should_not exist }
     end
 

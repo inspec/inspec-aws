@@ -9,7 +9,7 @@ Use the `aws_cloudwatch_dashboards` InSpec audit resource to test properties of 
 
 ## Syntax
 
-Ensure that the identity exists.
+Ensure that the dashboard exists.
 
     describe aws_cloudwatch_dashboards do
       it { should exist }
@@ -17,29 +17,27 @@ Ensure that the identity exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront CloudFrontOriginAccessIdentity.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-monitoring.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Dashboard.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html).
 
 ## Properties
 
 | Property | Description | Field | 
 | --- | --- | --- |
-| dashboard_arn | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
-| dashboard_body | The detailed information about the dashboard, including what widgets are included and their location on the dashboard.| dashboard_body |
 | dashboard_name | The name of the dashboard. | dashboard_name |
+| dashboard_arn | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
+| last_modified | The time stamp of when the dashboard was last modified, either by an API call or through the console. | last_modified |
 | size | The size of the dashboard, in bytes. | size |
-
-
 
 ## Examples
 
-### Ensure an dashboard_arn is available.
+### Ensure a dashboard arn is available.
     describe aws_cloudwatch_dashboards do
-      its('dashboard_arns') { should eq 'ARN' }
+      its('dashboard_arns') { should include 'ARN' }
     end
 
-### Ensure a dashboard_body is available.
+### Ensure a dashboard name is available.
     describe aws_cloudwatch_dashboards do
-        its('dashboard_body') { should eq 'BODY' }
+        its('dashboard_names') { should include 'DashboardName' }
     end
 
 ## Matchers
@@ -64,4 +62,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:ListMetricStreamsOutput action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:ListDashboardsOutput action with `Effect` set to `Allow`.

@@ -5,16 +5,16 @@ require 'aws-sdk-core'
 class AWSCloudwatchDashboardConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSCloudwatchDashboard.new(client_args: { stub_responses: true })}
+    assert_raises(ArgumentError) { AWSCloudwatchDashboard.new(client_args: { stub_responses: true }) }
   end
 
-  def test_rejects_other_args
-    assert_raises(ArgumentError) { AWSCloudwatchDashboard.new( board: 'rubbish') }
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AWSCloudwatchDashboard.new(dashboard_name: '', client_args: { stub_responses: true }) }
   end
 
-  # def test_dashboards_non_existing_for_empty_response
-  #   refute AWSCloudwatchDashboard.new(dashboard_name: 'test1' ,client_args: { stub_responses: true }).exist?
-  # end
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AWSCloudwatchDashboard.new(unexpected: 9) }
+  end
 end
 
 class AWSCloudwatchDashboardHappyPathTest < Minitest::Test
@@ -28,18 +28,18 @@ class AWSCloudwatchDashboardHappyPathTest < Minitest::Test
     mock_cloudwatch_dashboards[:dashboard_body] = "test-body"
     data[:data] = mock_cloudwatch_dashboards
     data[:client] = Aws::CloudWatch::Client
-    @dashboards = AWSCloudwatchDashboard.new(dashboard_name: 'test1' , client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSCloudwatchDashboard.new(dashboard_name: 'test1' , client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_dashboard_exists
-    assert @dashboards.exist?
+    assert @resp.exist?
   end
 
   def test_dashboard_name
-    assert_equal(@dashboards.dashboard_name, 'test-name')
+    assert_equal(@resp.dashboard_name, 'test-name')
   end
 
   def test_dashboard_arn
-    assert_equal(@dashboards.dashboard_arn, 'test-arn')
+    assert_equal(@resp.dashboard_arn, 'test-arn')
   end
 end

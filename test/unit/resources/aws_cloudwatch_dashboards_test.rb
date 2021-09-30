@@ -25,29 +25,29 @@ class AWSCloudwatchDashboardsHappyPathTest < Minitest::Test
     mock_cloudwatch_dashboards = {}
     mock_cloudwatch_dashboards[:dashboard_name] = 'test-name'
     mock_cloudwatch_dashboards[:dashboard_arn] = 'test-arn'
-    mock_cloudwatch_dashboards[:last_modified] = Time.now
+    mock_cloudwatch_dashboards[:last_modified] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     another_mock_cloudwatch_dashboards = {}
     another_mock_cloudwatch_dashboards[:dashboard_name] = 'test-name'
     another_mock_cloudwatch_dashboards[:dashboard_arn] = 'test-arn'
-    mock_cloudwatch_dashboards[:last_modified] = Time.now
+    another_mock_cloudwatch_dashboards[:last_modified] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :dashboard_entries => [mock_cloudwatch_dashboards, another_mock_cloudwatch_dashboards] }
     data[:client] = Aws::CloudWatch::Client
-    @dashboards = AWSCloudwatchDashboards.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSCloudwatchDashboards.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_dashboards_exists
-    assert @dashboards.exist?
+    assert @resp.exist?
   end
 
   def test_dashboards_count
-    assert_equal(@dashboards.dashboard_names.count, 2)
+    assert_equal(@resp.dashboard_names.count, 2)
   end
 
   def test_dashboards_names
-    assert_equal(@dashboards.dashboard_names, %w[test-name test-name])
+    assert_equal(@resp.dashboard_names, %w[test-name test-name])
   end
 
   def test_dashboards_arns
-    assert_equal(@dashboards.dashboard_arns, %w[test-arn test-arn])
+    assert_equal(@resp.dashboard_arns, %w[test-arn test-arn])
   end
 end
