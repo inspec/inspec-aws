@@ -5,6 +5,7 @@ require 'aws_backend'
 class AWSCloudwatchInsightRules < AwsResourceBase
   name 'aws_cloudwatch_insight_rules'
   desc 'Verifies settings for Cloudwatch insight rules in bulk.'
+
   example "
     describe aws_cloudwatch_insight_rules do
       it { should exist }
@@ -14,7 +15,6 @@ class AWSCloudwatchInsightRules < AwsResourceBase
   attr_reader :table
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters
     @table = fetch_data

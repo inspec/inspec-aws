@@ -9,7 +9,7 @@ Use the `aws_cloudwatch_insight_rules` InSpec audit resource to test properties 
 
 ## Syntax
 
-Ensure that the identity exists.
+Ensure that the insight rule exists.
 
     describe aws_cloudwatch_insight_rules do
       it { should exist }
@@ -17,7 +17,7 @@ Ensure that the identity exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudWatch Insight Rules.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-CreateRule.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Insight Rules.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-insightrule.html).
 
 ## Properties
 
@@ -26,27 +26,25 @@ For additional information, see the [AWS documentation on AWS CloudWatch Insight
 | names | The name of the rule. | name |
 | states | Indicates whether the rule is enabled or disabled.| schema |
 | schemas | For rules that you create, this is always {"Name": "CloudWatchLogRule", "Version": 1} . For built-in rules, this is {"Name": "ServiceLogRule", "Version": 1}. | dashboard_name |
-| definitions | he definition of the rule, as a JSON object.  | definition |
-
-
+| definitions | The definition of the rule, as a JSON object.  | definition |
 
 ## Examples
 
-### Ensure an dashboard_arn is available.
+### Ensure a rule name is available.
     describe aws_cloudwatch_insight_rules do
-      its('dashboard_arn') { should eq 'ARN' }
+      its('names') { should include 'RuleName' }
     end
 
-### Ensure a dashboard_body is available.
+### Ensure a state is available.
     describe aws_cloudwatch_insight_rules do
-        its('dashboard_body') { should eq 'BODY' }
+        its('states') { should include 'enabled' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The controls will pass if the `describe` method returns at least one result.
 
 ### exist
 
@@ -64,4 +62,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:DescribeInsightRulesOutputaction with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatch:Client:DescribeInsightRulesOutput` action with `Effect` set to `Allow`.
