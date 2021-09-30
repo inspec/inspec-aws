@@ -3,7 +3,7 @@
 set -eou pipefail
 
 PRODUCT=inspec-aws
-CURRENTDATE=$(date +"%m-%d-%Y")
+CURRENTDATE=$(date +"%Y-%m-%d")
 DOCS_DIR="docs-chef-io/static/release-notes/inspec-aws"
 BRANCH="expeditor/update_release_notes_${CURRENTDATE}"
 
