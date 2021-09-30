@@ -4,10 +4,10 @@ require 'aws_backend'
 
 class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
   name 'aws_cloud_front_origin_request_policy'
-  desc 'Describes an origin request policy .'
+  desc 'Describes an origin request policy.'
 
   example "
-    describe aws_cloud_front_origin_request_policy(id: 'test1') do
+    describe aws_cloud_front_origin_request_policy(id: 'ID') do
       it { should exist }
     end
   "
@@ -16,7 +16,6 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
     opts = { id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:id])
-
     raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
     @display_name = opts[:id]
     resp = @aws.cloudfront_client.get_origin_request_policy({ id: opts[:id] })
@@ -34,6 +33,6 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
   end
 
   def to_s
-    "Origin request policy ID: #{@display_name}"
+    "Origin Request Policy ID: #{@display_name}"
   end
 end
