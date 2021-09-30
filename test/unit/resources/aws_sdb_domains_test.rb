@@ -2,40 +2,34 @@ require 'helper'
 require 'aws_sdb_domains'
 require 'aws-sdk-core'
 
-class AwsSDBDomainsConstructorTest < Minitest::Test
+class AWSSDBDomainsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AwsSDBDomains.new(client_args: { stub_responses: true })
+    AWSSDBDomains.new(client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AwsSDBDomains.new('rubbish') }
-  end
-
-  def test_instances_non_existing_for_empty_response
-    refute AwsSDBDomains.new(client_args: { stub_responses: true }).exist?
+    assert_raises(ArgumentError) { AWSSDBDomains.new('rubbish') }
   end
 end
 
-class AwsSDBDomainsHappyPathTest < Minitest::Test
+class AWSSDBDomainsHappyPathTest < Minitest::Test
 
   def setup
     data = {}
     data[:method] = :list_domains
-    mock_instance = {}
-    mock_instance[:domain_names] = ['rds-012b75749d0b5ceb5']
-    data[:data] = { :db_instances => [mock_instance] }
-    data[:client] = Aws::RDS::Client
-    @domains = AwsSDBDomains.new(client_args: { stub_responses: true }, stub_data: [data])
+    mock_data = {}
+    mock_data[:domain_names] = ['DomainName']
+    data[:data] = [mock_data]
+    data[:client] = Aws::SimpleDB::Client
+    @resp = AWSSDBDomains.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_instances_exists
-    assert @domains.exist?
+  def test_domain_name_exists
+    assert @resp.exist?
   end
 
   def test_domain_names
-    assert_equal(@domains.db_instance_identifiers, ['rds-012b75749d0b5ceb5'])
+    assert_equal(@resp.domain_names, [['DomainName']])
   end
-
 end
-

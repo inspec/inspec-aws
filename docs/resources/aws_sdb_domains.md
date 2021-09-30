@@ -5,28 +5,27 @@ platform: aws
 
 # aws_sdb_domains
 
-Use the `aws_sdb_domains` InSpec audit resource to get the list of all SDB Domain names.
+Use the `aws_sdb_domains` InSpec audit resource to test the plural resource of SDB Domain names.
 
 ## Syntax
 
-Ensure that the base path mappings exists.
+Ensure that the domain exists.
 
     describe aws_sdb_domains do
       it { should exist }
     end
 
-
-For additional information, see the [AWS documentation on AWS SDB Domains.](https://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/Welcome.html).
+For additional information, see the [AWS documentation on AWS SDB Domains.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-simpledb.html).
 
 ## Properties
 
 | Property | Description | Field | 
 | --- | --- | --- |
-| domain_names | Names of the domains. | domain_names |
+| domain_names | A list of domain names that match the expression. | domain_names |
 
 ## Examples
 
-### Ensure a base path is available.
+### Ensure domain names is available.
     describe aws_sdb_domains do
       its('domain_names') { should include 'DomainName')' }
     end
@@ -53,4 +52,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `APIGateway:Client:DomainsResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `SimpleDB:Client:ListDomainsResult` action with `Effect` set to `Allow`.
