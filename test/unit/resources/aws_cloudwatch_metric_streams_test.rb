@@ -29,25 +29,29 @@ class AWSCloudwatchMetricStreamsHappyPathTest < Minitest::Test
     another_mock_cloudwatch_metric_streams = {}
     another_mock_cloudwatch_metric_streams[:name] = 'test-name'
     another_mock_cloudwatch_metric_streams[:arn] = 'test-arn'
-    mock_cloudwatch_metric_streams[:firehose_arn] = 'test-arn'
+    another_mock_cloudwatch_metric_streams[:firehose_arn] = 'test-arn'
     data[:data] = { :entries => [mock_cloudwatch_metric_streams, another_mock_cloudwatch_metric_streams] }
     data[:client] = Aws::CloudWatch::Client
-    @dashboards = AWSCloudwatchMetricStreams.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSCloudwatchMetricStreams.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_metric_streams_exists
-    assert @dashboards.exist?
+    assert @resp.exist?
   end
 
   def test_metric_streams_count
-    assert_equal(@dashboards.names.count, 2)
+    assert_equal(@resp.names.count, 2)
   end
 
   def test_metric_streams_names
-    assert_equal(@dashboards.names, %w[test-name test-name])
+    assert_equal(@resp.names, %w[test-name test-name])
   end
 
   def test_metric_streams_arns
-    assert_equal(@dashboards.arns, %w[test-arn test-arn])
+    assert_equal(@resp.arns, %w[test-arn test-arn])
+  end
+
+  def test_metric_streams_firehose_arns
+    assert_equal(@resp.firehose_arns, %w[test-arn test-arn])
   end
 end

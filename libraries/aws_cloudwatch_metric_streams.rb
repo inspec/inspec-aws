@@ -4,7 +4,8 @@ require 'aws_backend'
 
 class AWSCloudwatchMetricStreams < AwsResourceBase
   name 'aws_cloudwatch_metric_streams'
-  desc 'Verifies settings for Cloudwatch Metric Stream in bulk.'
+  desc 'Returns a list of metric streams in this account.'
+
   example "
     describe aws_cloudwatch_metric_streams do
       it { should exist }
@@ -14,7 +15,6 @@ class AWSCloudwatchMetricStreams < AwsResourceBase
   attr_reader :table
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters
     @table = fetch_data

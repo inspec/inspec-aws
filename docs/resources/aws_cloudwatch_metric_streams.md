@@ -17,7 +17,7 @@ Ensure that the identity exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront CloudFrontOriginAccessIdentity.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-monitoring.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Metric Stream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html).
 
 ## Properties
 
@@ -29,13 +29,11 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 | names | The name of the metric stream.| name |
 | firehose_arns | The ARN of the Kinesis Firehose delivery stream that is used for this metric stream. | firehose_arn |
 | states | The current state of this stream. Valid values are running and stopped . | state |
-| output_formats | The output format of this metric stream. Valid values are json and opentelemetry0.7 | output_format |
-
-
+| output_formats | The output format of this metric stream. Valid values are 'json' and 'opentelemetry0.7' | output_format |
 
 ## Examples
 
-### Ensure an arns is available.
+### Ensure an arn is available.
     describe aws_cloudwatch_metric_streams do
       its('arns') { should include 'ARN' }
     end
