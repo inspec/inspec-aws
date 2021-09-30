@@ -1,9 +1,19 @@
-<!-- latest_release 1.70.0 -->
+<!-- latest_release 1.70.2 -->
+## [v1.70.2](https://github.com/inspec/inspec-aws/tree/v1.70.2) (2021-09-29)
+
+#### Merged Pull Requests
+- Add releases as a Hugo module [#650](https://github.com/inspec/inspec-aws/pull/650) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
+## [v1.70.1](https://github.com/inspec/inspec-aws/tree/v1.70.1) (2021-09-29)
+
+#### Merged Pull Requests
+- fixed typo [#649](https://github.com/inspec/inspec-aws/pull/649) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.70.0](https://github.com/inspec/inspec-aws/tree/v1.70.0) (2021-09-24)
 
 #### Merged Pull Requests
 - Inline policy names for IAM Groups [#621](https://github.com/inspec/inspec-aws/pull/621) ([jb897](https://github.com/jb897))
-<!-- latest_release -->
 
 ## [v1.69.8](https://github.com/inspec/inspec-aws/tree/v1.69.8) (2021-09-24)
 
