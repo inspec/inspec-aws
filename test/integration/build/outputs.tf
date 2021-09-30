@@ -788,3 +788,11 @@ output "aws_internet_gateway_vpc_id" {
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
+
+output "dashbaord_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}
+
+output "dashbaord_arn" {
+  value = aws_cloudwatch_dashboard.main.dashboard_arn
+}
