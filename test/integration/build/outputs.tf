@@ -788,3 +788,11 @@ output "aws_internet_gateway_vpc_id" {
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
+
+output "stream_arns" {
+  value = aws_cloudwatch_metric_stream.main.name
+}
+
+output "stream_name" {
+  value = aws_cloudwatch_metric_stream.main.arn
+}
