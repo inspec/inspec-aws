@@ -1,9 +1,14 @@
-<!-- latest_release 1.72.0 -->
+<!-- latest_release 1.73.0 -->
+## [v1.73.0](https://github.com/inspec/inspec-aws/tree/v1.73.0) (2021-09-30)
+
+#### Merged Pull Requests
+- fixing a attribute in cloudfront resource [#648](https://github.com/inspec/inspec-aws/pull/648) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.72.0](https://github.com/inspec/inspec-aws/tree/v1.72.0) (2021-09-30)
 
 #### Merged Pull Requests
 - adding tags attribute to KMS key resource [#522](https://github.com/inspec/inspec-aws/pull/522) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.71.0](https://github.com/inspec/inspec-aws/tree/v1.71.0) (2021-09-30)
 
