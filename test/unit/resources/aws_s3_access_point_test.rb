@@ -8,8 +8,12 @@ class AWSS3AccessPointConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSS3AccessPoint.new(client_args: { stub_responses: true }) }
   end
 
-  def test_rejects_other_args
-    assert_raises(ArgumentError) { AWSS3AccessPoint.new('rubbish') }
+  def test_empty_param_arg_not_ok
+    assert_raises(ArgumentError) { AWSS3AccessPoint.new(bucket_name: '', metrics_id: '', client_args: { stub_responses: true }) }
+  end
+
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AWSS3AccessPoint.new(unexpected: 9) }
   end
 end
 
@@ -17,20 +21,27 @@ class AWSS3AccessPointHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_bucket_metrics_configurations
-    mock_parameter = {}
-    mock_parameter[:id]='test1'
-    mock_parameter[:filter] = { access_point_arn: "test1" }
-    data[:data] = { :metrics_configuration => mock_parameter }
+    data[:method] = :get_bucket_metrics_configuration
+    mock_data = {}
+    mock_data[:id] = 'test1'
+    mock_data[:filter] = {
+      prefix: "test1",
+      access_point_arn: "test1"
+    }
+    data[:data] = { metrics_configuration: mock_data }
     data[:client] = Aws::S3::Client
-    @access_point = AWSS3AccessPoint.new(bucket_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSS3AccessPoint.new(bucket_name: 'test1', metrics_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_work_groups_exists
-    assert @access_point.exist?
+    assert @resp.exist?
   end
 
-  def test_compute_environment_names
-    assert_equal(@access_point.access_point_arn, ['test1'])
+  def test_id
+    assert_equal(@resp.id, 'test1')
+  end
+
+  def test_access_point_arn
+    assert_equal(@resp.filter.access_point_arn, 'test1')
   end
 end

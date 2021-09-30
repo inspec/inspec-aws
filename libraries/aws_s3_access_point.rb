@@ -7,29 +7,29 @@ class AWSS3AccessPoint < AwsResourceBase
   desc 'Describes one S3 Access Points.'
 
   example "
-    describe aws_s3_access_point(bucket_name: 'BucketName', id: 'MetricsId') do
+    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
       it { should exits }
     end
   "
 
   def initialize(opts = {})
     opts = { bucket_name: opts } if opts.is_a?(String)
-    opts = { id: opts } if opts.is_a?(String)
+    opts = { metrics_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(bucket_name id))
+    validate_parameters(required: %i(bucket_name metrics_id))
     raise ArgumentError, "#{@__resource_name__}: bucket_name must be provided" unless opts[:bucket_name] && !opts[:bucket_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
-    @display_name = opts[:bucket]
+    raise ArgumentError, "#{@__resource_name__}: metrics_id must be provided" unless opts[:metrics_id] && !opts[:metrics_id].empty?
+    @display_name = opts[:metrics_id]
     catch_aws_errors do
-      resp = @aws.s3.get_bucket_metrics_configuration({ bucket: opts[:bucket_name], id: opts[:id] })
-      @resp = resp.metrics_configuration.filter.to_h
+      resp = @aws.storage_client.get_bucket_metrics_configuration({ bucket: opts[:bucket_name], id: opts[:metrics_id] })
+      @resp = resp.metrics_configuration.to_h
       create_resource_methods(@resp)
     end
   end
 
-  def bucket_name
+  def metrics_id
     return nil unless exists?
-    @resp[:bucket]
+    @resp[:id]
   end
 
   def exists?
@@ -37,6 +37,6 @@ class AWSS3AccessPoint < AwsResourceBase
   end
 
   def to_s
-    "Bucket Name: #{@display_name}"
+    "Metrics ID: #{@display_name}"
   end
 end

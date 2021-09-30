@@ -15,7 +15,13 @@ class AWSS3AccessPoints < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:access_point_arns, field: :access_point_arn)
+             .register_column(:ids, field: :id)
+             .register_column(:filter_prefixes, field: :filter_prefix)
+             .register_column(:filter_tags, field: :filter_tag)
+             .register_column(:filter_access_point_arns, field: :filter_access_point_arn)
+             .register_column(:filter_and_prefixes, field: :filter_and_prefix)
+             .register_column(:filter_and_tags, field: :filter_and_tag)
+             .register_column(:filter_and_access_point_arns, field: :filter_and_access_point_arn)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -35,7 +41,13 @@ class AWSS3AccessPoints < AwsResourceBase
       end
       return rows if !@api_response || @api_response.empty?
       @api_response.metrics_configuration_list.each do |resp|
-        rows += [{ access_point_arn: resp.filter.access_point_arn }]
+        rows += [{ id: resp.id,
+                   filter_prefix: resp.filter.prefix,
+                   filter_tag: resp.filter.tag,
+                   filter_access_point_arn: resp.filter.access_point_arn,
+                   filter_and_prefix: resp.filter.and.prefix,
+                   filter_and_tag: resp.filter.and.tag,
+                   filter_and_access_point_arn: resp.filter.and.access_point_arn }]
       end
       break unless @api_response.is_truncated
       @query_params[:continuation_token] = @api_response.continuation_token

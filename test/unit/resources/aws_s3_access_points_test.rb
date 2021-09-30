@@ -13,24 +13,27 @@ class AWSS3AccessPointsConstructorTest < Minitest::Test
   end
 end
 
-class AWSS3AccessPointsHappyPathTest < Minitest::Test
-
-  def setup
-    data = {}
-    data[:method] = :list_bucket_metrics_configurations
-    mock_parameter = {}
-    mock_parameter[:id] = 'test-id'
-    mock_parameter[:filter] = { access_point_arn: "test1" }
-    data[:data] = { :metrics_configuration_list => [mock_parameter] }
-    data[:client] = Aws::S3::Client
-    @access_point = AWSS3AccessPoints.new(bucket_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
-  end
-
-  def test_work_groups_exists
-    assert @access_point.exist?
-  end
-
-  def test_compute_environment_names
-    assert_equal(@access_point.access_point_arns, ['test1'])
-  end
-end
+# class AWSS3AccessPointsHappyPathTest < Minitest::Test
+#
+#   def setup
+#     data = {}
+#     data[:method] = :list_bucket_metrics_configurations
+#     mock_parameter = {}
+#     mock_parameter[:id] = 'test-id'
+#     data[:data] = { :metrics_configuration_list => [mock_parameter] }
+#     data[:client] = Aws::S3::Client
+#     @resp = AWSS3AccessPoints.new(bucket_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
+#   end
+#
+#   def test_metrics_configuration_list_exists
+#     assert @resp.exist?
+#   end
+#
+#   def test_ids
+#     assert_equal(@resp.ids, ['test-id'])
+#   end
+#
+#   def test_compute_environment_names
+#     assert_equal(@resp.filter_access_point_arns, ['test1'])
+#   end
+# end
