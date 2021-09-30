@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSCloudwatchMetricStream < AwsResourceBase
-  name 'aws_cloudwatch_metric_stream '
+  name 'aws_cloudwatch_metric_stream'
   desc 'Returns the configuration information and metadata of the specified cloudwatch stream.'
 
   example "
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'test1') do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName') do
       it { should exist }
     end
   "
@@ -16,7 +16,6 @@ class AWSCloudwatchMetricStream < AwsResourceBase
     opts = { metric_stream_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:metric_stream_name])
-
     raise ArgumentError, "#{@__resource_name__}: metric_stream_name must be provided" unless opts[:metric_stream_name] && !opts[:metric_stream_name].empty?
     @display_name = opts[:metric_stream_name]
     catch_aws_errors do
@@ -24,6 +23,11 @@ class AWSCloudwatchMetricStream < AwsResourceBase
       @stream = resp.to_h
       create_resource_methods(@stream)
     end
+  end
+
+  def metric_stream_name
+    return nil unless exists?
+    @stream[:name]
   end
 
   def exists?

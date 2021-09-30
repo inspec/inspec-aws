@@ -9,15 +9,15 @@ Use the `aws_cloudwatch_metric_stream` InSpec audit resource to test properties 
 
 ## Syntax
 
-Ensure that the identity exists.
+Ensure that the metric stream exists.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name:  'MetricStreamName' ) do
+    describe aws_cloudwatch_metric_stream(metric_stream_name: 'MetricStreamName') do
       it { should exist }
     end
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront CloudFrontOriginAccessIdentity.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-monitoring.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Metric Stream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html).
 
 ## Properties
 
@@ -31,17 +31,15 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 | state | The current state of this stream. Valid values are running and stopped . | state |
 | output_format | The output format of this metric stream. Valid values are json and opentelemetry0.7 | output_format |
 
-
-
 ## Examples
 
-### Ensure an arns is available.
-    describe aws_cloudwatch_metric_stream (metric_stream_name:  'MetricStreamName' ) do
+### Ensure an arn is available.
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName' ) do
       its('arn') { should eq 'ARN' }
     end
 
 ### Ensure a firehose_arn is available.
-    describe aws_cloudwatch_metric_stream (metric_stream_name:  'MetricStreamName' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName' ) do
         its('firehose_arn') { should eq 'FIREHOSEARN' }
     end
 
@@ -49,19 +47,19 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `list` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name:  'MetricStreamName' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName' ) do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name:  'MetricStreamName' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'dummy' ) do
       it { should_not exist }
     end
 
