@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.1 -->
+<!-- latest_release 1.73.2 -->
+## [v1.73.2](https://github.com/inspec/inspec-aws/tree/v1.73.2) (2021-10-01)
+
+#### Merged Pull Requests
+- Update release notes 2021-10-01 [#662](https://github.com/inspec/inspec-aws/pull/662) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.73.1](https://github.com/inspec/inspec-aws/tree/v1.73.1) (2021-10-01)
 
 #### Merged Pull Requests
 - Fix underscore in publish-release-notes.sh [#661](https://github.com/inspec/inspec-aws/pull/661) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.73.0](https://github.com/inspec/inspec-aws/tree/v1.73.0) (2021-09-30)
 
