@@ -19,6 +19,7 @@ class AWSS3AccessPointsHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :list_bucket_metrics_configurations
     mock_parameter = {}
+    mock_parameter[:id] = "test-id"
     mock_parameter[:filter] = { access_point_arn: 'test-id', and: { access_point_arn: 'test-id' } }
     data[:data] = { :metrics_configuration_list => [mock_parameter] }
     data[:client] = Aws::S3::Client
