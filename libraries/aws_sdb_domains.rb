@@ -21,7 +21,7 @@ class AWSSDBDomains < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:domain_names, field: :domain_names)
+             .register_column(:domain_names, field: :domain_names, style: :simple)
              .install_filter_methods_on_resource(self, :table)
 
   def fetch_data

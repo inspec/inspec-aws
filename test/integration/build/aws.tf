@@ -4103,3 +4103,7 @@ resource "aws_instance" "aws_instance_test" {
     cpu_credits = "unlimited"
   }
 }
+
+resource "aws_simpledb_domain" "users" {
+  name = "users"
+}
