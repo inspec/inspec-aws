@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.0 -->
+<!-- latest_release 1.73.1 -->
+## [v1.73.1](https://github.com/inspec/inspec-aws/tree/v1.73.1) (2021-10-01)
+
+#### Merged Pull Requests
+- Fix underscore in publish-release-notes.sh [#661](https://github.com/inspec/inspec-aws/pull/661) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.73.0](https://github.com/inspec/inspec-aws/tree/v1.73.0) (2021-09-30)
 
 #### Merged Pull Requests
 - fixing a attribute in cloudfront resource [#648](https://github.com/inspec/inspec-aws/pull/648) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.72.0](https://github.com/inspec/inspec-aws/tree/v1.72.0) (2021-09-30)
 
