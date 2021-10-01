@@ -45,6 +45,7 @@ rm -rf inspec-aws.wiki
 
 git add .
 
+
 # give a friendly message for the commit and make sure it's noted for any future
 # audit of our codebase that no DCO sign-off is needed for this sort of PR since
 # it contains no intellectual property
