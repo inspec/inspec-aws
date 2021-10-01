@@ -12,7 +12,7 @@ git checkout -b "$BRANCH"
 git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/inspec/inspec-aws.wiki.git"
 
 # Copy release notes from the wiki into the Hugo static directory
-cp inspec-aws.wiki/Pending-Release_Notes.md ${DOCS_DIR}/${CURRENTDATE}.md
+cp inspec-aws.wiki/Pending-Release-Notes.md ${DOCS_DIR}/${CURRENTDATE}.md
 
 # Append the date to the array of dates in docs-chef-io/static/release-notes/inspec-aws/release-dates.json
 DATES_FILE="${DOCS_DIR}/release-dates.json"
