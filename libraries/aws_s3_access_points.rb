@@ -30,20 +30,16 @@ class AWSS3AccessPoints < AwsResourceBase
   end
 
   def fetch_data
-    rows = []
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.storage_client.list_bucket_metrics_configurations(@query_params)
-      end
-      return rows if !@api_response || @api_response.empty?
-      @api_response.metrics_configuration_list.each do |resp|
-        rows += [{ id: resp.id,
+    catch_aws_errors do
+      @api_response = @aws.storage_client.list_bucket_metrics_configurations.map do | table |
+        table.metrics_configuration_list.map { |resp| {
+                   id: resp.id,
                    filter_access_point_arn: resp.filter.access_point_arn,
-                   filter_and_access_point_arn: resp.filter.and.access_point_arn }]
+                   filter_and_access_point_arn: resp.filter.and.access_point_arn,
+        }
+        }
       end
-      break unless @api_response.is_truncated
-      @query_params[:continuation_token] = @api_response.continuation_token
     end
-    rows
   end
 end
+
