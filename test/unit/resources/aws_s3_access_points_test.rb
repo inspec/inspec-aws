@@ -33,7 +33,7 @@ class AWSS3AccessPointsHappyPathTest < Minitest::Test
     assert_equal(@resp.ids, ['test-id'])
   end
 
-  def test_compute_environment_names
+  def test_filter_access_point_arns_names
     assert_equal(@resp.filter_access_point_arns, ['test1'])
   end
 end
