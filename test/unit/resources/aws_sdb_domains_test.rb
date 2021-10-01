@@ -30,6 +30,6 @@ class AWSSDBDomainsHappyPathTest < Minitest::Test
   end
 
   def test_domain_names
-    assert_equal(@resp.domain_names, [['DomainName']])
+    assert_equal(@resp.domain_names, ['DomainName'])
   end
 end
