@@ -31,7 +31,7 @@ class AWSS3AccessPoints < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @api_response = @aws.storage_client.list_bucket_metrics_configurations.map do | table |
+      @api_response = @aws.storage_client.list_bucket_metrics_configurations.map do |table|
         table.metrics_configuration_list.map { |resp| {
                    id: resp.id,
                    filter_access_point_arn: resp.filter.access_point_arn,

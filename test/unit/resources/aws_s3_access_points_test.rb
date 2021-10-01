@@ -20,6 +20,7 @@ class AWSS3AccessPointsHappyPathTest < Minitest::Test
     data[:method] = :list_bucket_metrics_configurations
     mock_parameter = {}
     mock_parameter[:id] = 'test-id'
+    mock_parameter[:filter] = { and: { access_point_arn: 'test-id' } }
     data[:data] = { :metrics_configuration_list => [mock_parameter] }
     data[:client] = Aws::S3::Client
     @resp = AWSS3AccessPoints.new(bucket_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
