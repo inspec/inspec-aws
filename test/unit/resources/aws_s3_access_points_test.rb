@@ -20,7 +20,7 @@ class AWSS3AccessPointsHappyPathTest < Minitest::Test
     data[:method] = :list_bucket_metrics_configurations
     mock_parameter = {}
     mock_parameter[:id] = "test-id"
-    mock_parameter[:filter] = { access_point_arn: 'test-id', and: { access_point_arn: 'test-id' } }
+    mock_parameter[:filter] = { access_point_arn: 'test-arn', and: { access_point_arn: 'test-arn' } }
     data[:data] = { :metrics_configuration_list => [mock_parameter] }
     data[:client] = Aws::S3::Client
     @resp = AWSS3AccessPoints.new(bucket_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
@@ -35,6 +35,6 @@ class AWSS3AccessPointsHappyPathTest < Minitest::Test
   end
 
   def test_filter_access_point_arns_names
-    assert_equal(@resp.filter_access_point_arns, ['test1'])
+    assert_equal(@resp.filter_access_point_arns, ['test-arn'])
   end
 end
