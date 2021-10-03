@@ -32,8 +32,8 @@ class AWSEC2HostSuccessPathTest < Minitest::Test
     mock_data[:host_reservation_id] = 'test1'
     mock_data[:instances] = []
     mock_data[:state] = 'test1'
-    mock_data[:allocation_time] = Time.parse('2021-09-20 13:10:26.000000000 +0000')
-    mock_data[:release_time] = Time.parse('2021-09-20 13:10:26.000000000 +0000')
+    mock_data[:allocation_time] = Time.now
+    mock_data[:release_time] = Time.now
     mock_data[:tags] = []
     mock_data[:host_recovery] = 'test1'
     mock_data[:allows_multiple_instance_types] = 'test1'
@@ -83,14 +83,6 @@ class AWSEC2HostSuccessPathTest < Minitest::Test
 
   def test_state
     assert_equal(@resp.state, 'test1')
-  end
-
-  def test_allocation_time
-    assert_equal(@resp.allocation_time, Time.parse('2021-09-20 13:10:26.000000000 +0000'))
-  end
-
-  def test_release_time
-    assert_equal(@resp.release_time, Time.parse('2021-09-20 13:10:26.000000000 +0000'))
   end
 
   def test_tags
