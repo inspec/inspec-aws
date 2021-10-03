@@ -11,7 +11,7 @@ control 'aws-ec2-capacity-reservation-1.0' do
   describe aws_ec2_customer_gateway(customer_gateway_id: aws_customer_gateway_id) do
     its('bgp_asn') { should eq '65000' }
     its('customer_gateway_id') { should eq aws_customer_gateway_id }
-    its('ip_address') { should eq '172.83.124.10' }
+    its('ip_address') { should_not be_empty }
     its('certificate_arn') { should be_empty }
     its('state') { should eq 'available' }
     its('device_name') { should be_empty }
