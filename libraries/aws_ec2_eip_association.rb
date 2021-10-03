@@ -17,9 +17,15 @@ class AWSEC2EIPAssociation < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(association_id))
     raise ArgumentError, "#{@__resource_name__}: association_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
+    filter = [
+      {
+        name: 'association-id',
+        values: [opts[:association_id]],
+      },
+    ]
     @display_name = opts[:association_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_addresses({ association_ids: [opts[:association_id]] })
+      resp = @aws.compute_client.describe_addresses({ filters: filter })
       @resp = resp.addresses[0].to_h
       create_resource_methods(@resp)
     end

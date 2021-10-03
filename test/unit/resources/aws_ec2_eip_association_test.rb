@@ -1,8 +1,9 @@
 require 'helper'
-require 'aws_ec2_eip_association_test'
+require 'aws_ec2_eip_association'
 require 'aws-sdk-core'
 
 class AwsEIPConstructorTest < Minitest::Test
+
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AWSEC2EIPAssociation.new(client_args: { stub_responses: true }) }
   end

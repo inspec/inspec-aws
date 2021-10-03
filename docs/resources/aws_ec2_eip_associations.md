@@ -5,33 +5,32 @@ platform: aws
 
 # aws_ec2_eip_associations
 
-Use the `aws_ec2_eip_associations` InSpec audit resource to test properties of some or all AWS Elastic IP addresses.
+Use the `aws_ec2_eip_associations` InSpec audit resource to test properties of some or all AWS Elastic IP Association.
 
 ## Syntax
 
-Verify that a public IP address exists.
+##### Verify that the association exists.
 
     describe aws_ec2_eip_associations do
       it { should exist }
     end
 
-An `aws_eips` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
-
 ## Parameters
 
 This resource does not expect any parameters.
 
-See the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html) for additional information.
+See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| association_ids | The association ID for the address. |
+| Property | Description | Field |
+| --- | --- | --- |
+| association_ids | The association ID for the address. | association_id |
 
 ## Examples
 
-##### Check Association ID is available
+##### Check Association Id is available
+
     describe aws_ec2_eip_associations do
        its('association_ids') { should include "AssociationID" }
     end

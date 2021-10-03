@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_eip_association
 
-Use the `aws_ec2_eip_association` InSpec audit resource to test properties of a single specific Elastic IP (EIP).
+Use the `aws_ec2_eip_association` InSpec audit resource to test properties of a single specific AWS Elastic IP Association.
 
-An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `AssociationID`.
+An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `association_id`.
 
 ## Syntax
 
-Ensure that a Public IP exists.
+##### Verify that the association exists.
 
     describe aws_ec2_eip_association(association_id: 'AssociationID') do
       it { should exist }
@@ -25,17 +25,18 @@ Ensure that a Public IP exists.
 | --- | --- |
 | association_id | The association ID for the address. |
 
-For additional information, see the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html).
+See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| association_id | The association ID for the address. |
+| Property | Description | Field |
+| --- | --- | --- |
+| association_id | The association ID for the address. | association_id |
 
 ## Examples
 
 ##### Check Association ID whether it is correct or not
+
     describe aws_ec2_eip_association(association_id: 'AssociationID') do
        its('association_id') { should eq "AssociationID" }
     end
@@ -56,7 +57,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
+    describe aws_ec2_eip_association(association_id: 'dummy') do
       it { should_not exist }
     end
 
@@ -66,12 +67,6 @@ Check if the IP address is available.
 
     describe aws_ec2_eip_association(association_id: 'AssociationID') do
       it { should be_available }
-    end
-
-Use `should_not` to test an IP address that should not exist.
-
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
-      it { should_not be_available }
     end
 
 ## AWS Permissions

@@ -1,8 +1,9 @@
 require 'helper'
-require 'aws_ec2_eip_associations_test'
+require 'aws_ec2_eip_associations'
 require 'aws-sdk-core'
 
 class AwsEIPsConstructorTest < Minitest::Test
+
   def test_empty_params_ok
     AWSEC2EIPAssociations.new(client_args: { stub_responses: true })
   end
@@ -24,7 +25,7 @@ class AWSEC2EIPAssociationsHappyPathTest < Minitest::Test
     mock_data[:association_id] = 'test1'
     data[:data] = { addresses: [mock_data] }
     data[:client] = Aws::EC2::Client
-    @resp = AwsEc2Eip.new(association_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEC2EIPAssociations.new(client_args: { stub_responses: true }, stub_data: [data])
     end
 
   def test_association_ids

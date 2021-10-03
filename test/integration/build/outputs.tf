@@ -773,3 +773,7 @@ output "oidc_arn" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
