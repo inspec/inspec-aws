@@ -773,6 +773,7 @@ output "oidc_arn" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
@@ -787,4 +788,20 @@ output "aws_internet_gateway_vpc_id" {
 
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_lambda_function_event_invoke_config_id" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.id
+}
+
+output "aws_lambda_function_event_invoke_config_arn" {
+  value = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.arn
+}
+
+output "aws_lambda_function_event_invoke_config_function_name" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.function_name
+}
+
+output "aws_lambda_layer_version_id" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
 }

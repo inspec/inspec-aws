@@ -4103,3 +4103,55 @@ resource "aws_instance" "aws_instance_test" {
     cpu_credits = "unlimited"
   }
 }
+
+#Lambda Event Invoke Config
+
+resource "aws_iam_role" "aws_iam_role_lambda_event_invoke_config_test1" {
+  name = "iam_for_lambda123"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_lambda_event_invoke_config_test1" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name123"
+  role          = aws_iam_role.aws_iam_role_lambda_event_invoke_config_test1.arn
+  handler       = "index.test"
+
+  source_code_hash = filebase64sha256("lambda.zip")
+
+  runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+resource "aws_lambda_function_event_invoke_config" "aws_lambda_function_event_invoke_config_test1" {
+  function_name                = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.function_name
+  maximum_event_age_in_seconds = 60
+  maximum_retry_attempts       = 0
+}
+
+resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
+  filename   = "lambda.zip"
+  layer_name = "lambda_layer_name"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
