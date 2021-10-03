@@ -774,6 +774,22 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+output "aws_cloudfront_realtime_log_config_name" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.name
+}
+
+output "aws_cloudfront_realtime_log_config_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.arn
+}
+
+output "aws_cloudfront_realtime_log_config_sampling_rate" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
+output "aws_end_points_kinesis_stream_config_role_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }

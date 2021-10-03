@@ -4059,8 +4059,6 @@ resource "aws_vpc" "aws_vpc_internet_gateway_test" {
   cidr_block = "10.0.0.0/16"
 }
 
-
-
 #Network Interface
 
 resource "aws_vpc" "my_vpc_network_interface_test" {
@@ -4104,10 +4102,25 @@ resource "aws_instance" "aws_instance_test" {
   }
 }
 
-#Lambda Event Invoke Config
+#Cloud Front Log Config
 
-resource "aws_iam_role" "aws_iam_role_lambda_event_invoke_config_test1" {
-  name = "iam_for_lambda123"
+resource "aws_kinesis_stream" "aws_kinesis_stream_cf_log_config_test1" {
+  name             = "terraform-kinesis-test"
+  shard_count      = 1
+  retention_period = 48
+
+  shard_level_metrics = [
+    "IncomingBytes",
+    "OutgoingBytes",
+  ]
+
+  tags = {
+    Environment = "test"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
 
   assume_role_policy = <<EOF
 {
@@ -4116,42 +4129,51 @@ resource "aws_iam_role" "aws_iam_role_lambda_event_invoke_config_test1" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "lambda.amazonaws.com"
+        "Service": "cloudfront.amazonaws.com"
       },
-      "Effect": "Allow",
-      "Sid": ""
+      "Effect": "Allow"
     }
   ]
 }
 EOF
 }
 
-resource "aws_lambda_function" "aws_lambda_function_lambda_event_invoke_config_test1" {
-  filename      = "lambda.zip"
-  function_name = "lambda_function_name123"
-  role          = aws_iam_role.aws_iam_role_lambda_event_invoke_config_test1.arn
-  handler       = "index.test"
+resource "aws_iam_role_policy" "aws_iam_role_policy_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
+  role = aws_iam_role.aws_iam_role_cf_log_config_test1.id
 
-  source_code_hash = filebase64sha256("lambda.zip")
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+        "Effect": "Allow",
+        "Action": [
+          "kinesis:DescribeStreamSummary",
+          "kinesis:DescribeStream",
+          "kinesis:PutRecord",
+          "kinesis:PutRecords"
+        ],
+        "Resource": "${aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn}"
+    }
+  ]
+}
+EOF
+}
 
-  runtime = "nodejs12.x"
+resource "aws_cloudfront_realtime_log_config" "aws_cloudfront_realtime_log_config_test1" {
+  name          = "example"
+  sampling_rate = 75
+  fields        = ["timestamp", "c-ip"]
 
-  environment {
-    variables = {
-      foo = "bar"
+  endpoint {
+    stream_type = "Kinesis"
+
+    kinesis_stream_config {
+      role_arn   = aws_iam_role.aws_iam_role_cf_log_config_test1.arn
+      stream_arn = aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn
     }
   }
-}
 
-resource "aws_lambda_function_event_invoke_config" "aws_lambda_function_event_invoke_config_test1" {
-  function_name                = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.function_name
-  maximum_event_age_in_seconds = 60
-  maximum_retry_attempts       = 0
-}
-
-resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
-  filename   = "lambda.zip"
-  layer_name = "lambda_layer_name"
-
-  compatible_runtimes = ["nodejs12.x"]
+  depends_on = [aws_iam_role_policy.aws_iam_role_policy_cf_log_config_test1]
 }
