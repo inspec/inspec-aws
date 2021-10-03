@@ -4103,3 +4103,20 @@ resource "aws_instance" "aws_instance_test" {
     cpu_credits = "unlimited"
   }
 }
+
+#EC2::Signer::SigningProfile
+
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}

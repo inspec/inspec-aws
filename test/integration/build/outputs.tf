@@ -788,3 +788,31 @@ output "aws_internet_gateway_vpc_id" {
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
+
+output "aws_signer_signing_profile_id" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.id
+}
+
+output "aws_signer_signing_profile_name" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.name
+}
+
+output "aws_signer_signing_profile_platform_id" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.platform_id
+}
+
+output "aws_signer_signing_profile_status" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.status
+}
+
+output "aws_signer_signing_profile_arn" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.arn
+}
+
+output "aws_signer_signing_profile_version" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.version
+}
+
+output "aws_signer_signing_profile_version_arn" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.version_arn
+}
