@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsCloudWatchCompositeAlarms < AwsResourceBase
+class AWSCloudWatchCompositeAlarms < AwsResourceBase
   name 'aws_cloud_watch_composite_alarms'
   desc 'Lists all composite alarms.'
 

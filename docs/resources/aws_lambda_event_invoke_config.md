@@ -35,8 +35,8 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 | function_arn | The Amazon Resource Name (ARN) of the function. | function_arn |
 | maximum_retry_attempts | The maximum number of times to retry when the function returns an error. | maximum_retry_attempts |
 | maximum_event_age_in_seconds | The maximum age of a request that Lambda sends to a function for processing. | maximum_event_age_in_seconds |
-| on_success_destination | The destination configuration for successful invocations. The Amazon Resource Name (ARN) of the destination resource. | destination_config (on_success (destination)) |
-| on_faliure_destination | The destination configuration for failed invocations. The Amazon Resource Name (ARN) of the destination resource. | destination_config (on_failure (destination)) |
+| on_success_destinations | The destination configuration for successful invocations. The Amazon Resource Name (ARN) of the destination resource. | destination_config (on_success (destination)) |
+| on_faliure_destinations | The destination configuration for failed invocations. The Amazon Resource Name (ARN) of the destination resource. | destination_config (on_failure (destination)) |
 
 ## Examples
 
@@ -52,7 +52,7 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ### Ensure on success destination is available.
     describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
-        its('on_success_destination') { should include 'Destination' }
+        its('on_success_destinations') { should include 'Destination' }
     end
 
 ## Matchers

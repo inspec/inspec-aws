@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsLambdaEventInvokeConfig < AwsResourceBase
+class AWSLambdaEventInvokeConfig < AwsResourceBase
   name 'aws_lambda_event_invoke_config'
   desc 'Retrieves the configuration for asynchronous invocation for a function, version, or alias.'
 
@@ -38,11 +38,11 @@ class AwsLambdaEventInvokeConfig < AwsResourceBase
     "Function Name: #{@display_name}"
   end
 
-  def on_success_destination
+  def on_success_destinations
     destination_config.on_success
   end
 
-  def on_faliure_destination
+  def on_faliure_destinations
     destination_config.on_faliure
   end
 end

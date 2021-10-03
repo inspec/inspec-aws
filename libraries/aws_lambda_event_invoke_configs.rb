@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsLambdaEventInvokeConfigs < AwsResourceBase
+class AWSLambdaEventInvokeConfigs < AwsResourceBase
   name 'aws_lambda_event_invoke_configs'
   desc 'Gets information about the scalable targets in the specified namespace.'
 

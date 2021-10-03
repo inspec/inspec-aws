@@ -49,7 +49,7 @@ For additional information, see the [AWS documentation on AWS CloudWatch Anomaly
       its('namespace') { should eq 'Namespace' }
     end
 
-### Ensure a name is available.
+### Ensure a config name is available.
     describe aws_cloud_watch_anomaly_detector(metric_name: 'MetricName') do
         its('name') { should eq 'ConfigName' }
     end
