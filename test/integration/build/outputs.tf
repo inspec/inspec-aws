@@ -773,6 +773,8 @@ output "oidc_arn" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
@@ -787,4 +789,12 @@ output "aws_internet_gateway_vpc_id" {
 
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_cloudwatch_anomaly_detector_namespace" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.namespace
+}
+
+output "aws_cloudwatch_anomaly_detector_metric_name" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.metric_name
 }
