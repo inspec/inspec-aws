@@ -5,15 +5,15 @@ platform: aws
 
 # aws_network_manager_device
 
-Use the `aws_network_manager_device` InSpec audit resource to test properties of a single specific AWS Network Manager Device.
+Use the `aws_network_manager_device` InSpec audit resource to test properties of a single specific AWS Network Manager device.
 
-The AWS::NetworkManager::Device resource gets information about one or more of your devices in a global network.
+The `AWS::NetworkManager::Device` resource gets information about one or more of your devices in a global network.
 
 ## Syntax
 
 Ensure that a device exists.
 
-    describe aws_network_manager_device(device_id: 'DeviceID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
       it { should exist }
     end
 
@@ -21,53 +21,55 @@ Ensure that a device exists.
 
 `device_id` _(required)_
 
-| Property | Description | Description |
-| --- | --- | --- |
-| device_id | The ID of the device. | device_id |
+The ID of the device.
 
 For additional information, see the [AWS documentation on AWS Network Manager Device](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-device.html).
 
 ## Properties
 
-| Property | Description | Description |
-| --- | --- | --- |
-| device_id | The ID of the device. | device_id |
-| device_arn | The Amazon Resource Name (ARN) of the device. | device_arn |
-| global_network_id | The ID of the global network. | global_network_id |
-| aws_location.zone | The Zone the device is located in. This can be the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost. | zone |
-| aws_location.subnet_arn | The Amazon Resource Name (ARN) of the subnet the device is located in. | device_id |
-| description | The description of the device. | description |
-| type | The device type. | type |
-| vendor | The device vendor. | vendor |
-| model | The device model. | model |
-| serial_number | The device serial number. | serial_number |
-| location.address | The physical address of the location. | address |
-| location.latitude | The latitude of the location. | latitude |
-| location.longitude | The longitude of the location. | longitude |
-| site_id | The site ID. | site_id |
-| created_at | The date and time that the site was created. | created_at |
-| state | The device state. | state |
-| tags | The tags for the device. | tags |
+| Property | Description |
+| --- | --- |
+| device_id | The ID of the device. |
+| device_arn | The Amazon Resource Name (ARN) of the device. |
+| global_network_id | The ID of the global network. |
+| aws_location.zone | The Zone the device is located in. This can be the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost. |
+| aws_location.subnet_arn | The Amazon Resource Name (ARN) of the subnet the device is located in. |
+| description | The description of the device. |
+| type | The device type. |
+| vendor | The device vendor. |
+| model | The device model. |
+| serial_number | The device serial number. |
+| location.address | The physical address of the location. |
+| location.latitude | The latitude of the location. |
+| location.longitude | The longitude of the location. |
+| site_id | The site ID. |
+| created_at | The date and time that the site was created. |
+| state | The device state. |
+| tags | The tags for the device. |
 
 ## Examples
 
-### Ensure a Device ID is available.
-    describe aws_network_manager_device(device_id: 'DeviceID') do
-      its('device_id') { should eq 'DeviceID' }
+### Ensure a device ID is available.
+
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
+      its('device_id') { should eq 'DEVICE_ID' }
     end
 
-### Ensure a Global Network ID is available.
-    describe aws_network_manager_device(device_id: 'DeviceID') do
-      its('global_network_id') { should eq 'GlobalNetworkID' }
+### Ensure a global network ID is available.
+
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
+      its('global_network_id') { should eq 'GLOBAL_NETWORK_ID' }
     end
 
 ### Ensure a zone is available.
-    describe aws_network_manager_device(device_id: 'DeviceID') do
-      its('aws_location.zone') { should eq 'ZoneName' }
+
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
+      its('aws_location.zone') { should eq 'ZONE_NAME' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
-    describe aws_network_manager_global_network(device_id: 'GlobalNetworkID') do
+
+    describe aws_network_manager_global_network(device_id: 'DEVICE_ID') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -81,13 +83,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_device(device_id: 'DeviceID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_network_manager_device(device_id: 'summy') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
       it { should_not exist }
     end
 
@@ -95,7 +97,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_network_manager_device(device_id: 'DeviceID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID') do
       it { should be_available }
     end
 

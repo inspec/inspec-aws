@@ -5,9 +5,9 @@ platform: aws
 
 # aws_network_manager_devices
 
-Use the `aws_network_manager_devices` InSpec audit resource to test properties of a plural resource of AWS Network Manager Device.
+Use the `aws_network_manager_devices` InSpec audit resource to test properties of multiple AWS Network Manager devices.
 
-The AWS::NetworkManager::Device resource gets information about one or more of your devices in a global network.
+The `AWS::NetworkManager::Device` resource gets information about one or more of your devices in a global network.
 
 ## Syntax
 
@@ -23,12 +23,12 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 
 ## Properties
 
-| Property | Description | Description |
+| Property | Description | Field |
 | --- | --- | --- |
 | device_ids | The ID of the device. | device_id |
 | device_arns | The Amazon Resource Name (ARN) of the device. | device_arn |
 | global_network_ids | The ID of the global network. | global_network_id |
-| aws_locations | The aws locations. | aws_location |
+| aws_locations | The AWS locations. | aws_location |
 | descriptions | The description of the device. | description |
 | types | The device type. | type |
 | vendors | The device vendor. | vendor |
@@ -41,24 +41,28 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 
 ## Examples
 
-### Ensure a Device ID is available.
+### Ensure a device ID is available.
+
     describe aws_network_manager_devices do
-      its('device_id') { should include 'DeviceID' }
+      its('device_ids') { should include 'DEVICE_ID' }
     end
 
-### Ensure a Global Network ID is available.
+### Ensure a global network ID is available.
+
     describe aws_network_manager_devices do
-      its('global_network_id') { should include 'GlobalNetworkID' }
+      its('global_network_ids') { should include 'GLOBAL_NETWORK_ID' }
     end
 
 ### Ensure a zone is available.
+
     describe aws_network_manager_devices do
-      its('aws_location.zone') { should include 'ZoneName' }
+      its('aws_location.zone') { should include 'ZONE_NAME' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
+
     describe aws_network_manager_devices do
-        its('state') { should include 'AVAILABLE' }
+        its('states') { should include 'AVAILABLE' }
     end
 
 ## Matchers
