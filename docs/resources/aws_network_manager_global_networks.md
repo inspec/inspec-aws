@@ -5,9 +5,9 @@ platform: aws
 
 # aws_network_manager_global_networks
 
-Use the `aws_network_manager_global_networks` InSpec audit resource to test properties of a single specific AWS Network Manager Global Network.
+Use the `aws_network_manager_global_networks` InSpec audit resource to test properties of a single specific AWS Network Manager global network.
 
-The AWS::NetworkManager::GlobalNetwork resource describes one or more global networks.
+The `AWS::NetworkManager::GlobalNetwork` resource describes one or more global networks.
 
 ## Syntax
 
@@ -19,11 +19,7 @@ Ensure that Global Network ID exists.
 
 ## Parameters
 
-`global_network_id` _(required)_
-
-| Property | Description | Description |
-| --- | --- | --- |
-| global_network_id | The ID of the global network. | global_network_id |
+The resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS Network Manager Global Network](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-globalnetwork.html).
 
@@ -42,7 +38,7 @@ For additional information, see the [AWS documentation on AWS Network Manager Gl
 
 ### Ensure a Global Network ID is available.
     describe aws_network_manager_global_networks do
-      its('global_network_ids') { should include 'GlobalNetworkID' }
+      its('global_network_ids') { should include 'GLOBAL_NETWORK_ID' }
     end
 
 ### Ensure that the state is `AVAILABLE`.

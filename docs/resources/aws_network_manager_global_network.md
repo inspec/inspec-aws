@@ -5,15 +5,15 @@ platform: aws
 
 # aws_network_manager_global_network
 
-Use the `aws_network_manager_global_network` InSpec audit resource to test properties of a specific AWS Network Manager Global Network.
+Use the `aws_network_manager_global_network` InSpec audit resource to test properties of a specific AWS Network Manager global network.
 
-The AWS::NetworkManager::GlobalNetwork resource describes one or more global networks.
+The `AWS::NetworkManager::GlobalNetwork` resource describes one or more global networks.
 
 ## Syntax
 
 Ensure that Global Network ID exists.
 
-    describe aws_network_manager_global_network(global_network_id: 'GlobalNetworkID') do
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should exist }
     end
 
@@ -21,32 +21,32 @@ Ensure that Global Network ID exists.
 
 `global_network_id` _(required)_
 
-| Property | Description | Description |
-| --- | --- | --- |
-| global_network_id | The ID of the global network. | global_network_id |
+The ID of the global network.
 
 For additional information, see the [AWS documentation on AWS Network Manager Global Network](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-globalnetwork.html).
 
 ## Properties
 
-| Property | Description | Description |
-| --- | --- | --- |
-| global_network_id | The ID of the global network. | global_network_id |
-| global_network_arn | The Amazon Resource Name (ARN) of the global network. | global_network_arn |
-| description | The description of the global network. | description |
-| created_at | The date and time that the global network was created. | created_at |
-| state | The state of the global network. | state |
-| tags | The tags for the global network. | tags |
+| Property | Description |
+| --- | --- |
+| global_network_id | The ID of the global network. |
+| global_network_arn | The Amazon Resource Name (ARN) of the global network. |
+| description | The description of the global network. |
+| created_at | The date and time that the global network was created. |
+| state | The state of the global network. |
+| tags | The tags for the global network. |
 
 ## Examples
 
-### Ensure a Global Network ID is available.
-    describe aws_network_manager_global_network(global_network_id: 'GlobalNetworkID') do
-      its('global_network_id') { should eq 'GlobalNetworkID' }
+### Ensure a global network ID is available.
+
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
+      its('global_network_id') { should eq 'GLOBAL_NETWORK_ID' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
-    describe aws_network_manager_global_network(global_network_id: 'GlobalNetworkID') do
+
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -60,13 +60,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_global_network(global_network_id: 'GlobalNetworkID') do
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_network_manager_global_network(global_network_id: 'dummy') do
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should_not exist }
     end
 
@@ -74,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_network_manager_global_network(global_network_id: 'GlobalNetworkID') do
+    describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should be_available }
     end
 
