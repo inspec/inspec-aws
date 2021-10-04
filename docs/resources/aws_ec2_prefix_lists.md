@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_prefix_lists
 
-Use the `aws_ec2_prefix_lists` InSpec audit resource to test properties of a plural resource of AWS EC2 Prefix Lists.
+Use the `aws_ec2_prefix_lists` InSpec audit resource to test properties of multiple AWS EC2 prefix lists.
 
-The AWS::EC2::PrefixList resource specifies a managed prefix list.
+The `AWS::EC2::PrefixList` resource specifies a managed prefix list.
 
 ## Syntax
 
@@ -19,7 +19,9 @@ Ensure that a prefix list exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Prefix Lists](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html).
+This resource does not require any parameters.
+
+For additional information, see the [AWS documentation on AWS EC2 prefix lists](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html).
 
 ## Properties
 
@@ -38,19 +40,22 @@ For additional information, see the [AWS documentation on AWS EC2 Prefix Lists](
 
 ## Examples
 
-### Ensure a Prefix List ID is available.
+### Ensure a prefix list ID is available.
+
     describe aws_ec2_prefix_lists do
-      its('prefix_list_ids') { should include 'PrefixListID' }
+      its('prefix_list_ids') { should include 'PREFIX_LIST_ID' }
     end
 
-### Ensure a Address Family is available.
+### Ensure an address family is available.
+
     describe aws_ec2_prefix_lists do
-      its('address_families') { should include 'AddressFamily' }
+      its('address_families') { should include 'ADDRESS_FAMILY' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
+
     describe aws_ec2_prefix_lists do
-        its('states') { should eq 'AVAILABLE' }
+        its('states') { should include 'AVAILABLE' }
     end
 
 ## Matchers

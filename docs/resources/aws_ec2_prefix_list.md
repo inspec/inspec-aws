@@ -5,15 +5,15 @@ platform: aws
 
 # aws_ec2_prefix_list
 
-Use the `aws_ec2_prefix_list` InSpec audit resource to test properties of a single specific AWS EC2 Prefix Lists.
+Use the `aws_ec2_prefix_list` InSpec audit resource to test properties of a single specific AWS EC2 prefix list.
 
-The AWS::EC2::PrefixList resource specifies a managed prefix list.
+The `AWS::EC2::PrefixList` resource specifies a managed prefix list.
 
 ## Syntax
 
 Ensure that a prefix list exists.
 
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
       it { should exist }
     end
 
@@ -21,41 +21,42 @@ Ensure that a prefix list exists.
 
 `prefix_list_id` _(required)_
 
-| Property | Description | Description |
-| --- | --- | --- |
-| prefix_list_id | The ID of the prefix list. | prefix_list_id |
+The ID of the prefix list.
 
-For additional information, see the [AWS documentation on AWS EC2 Prefix Lists](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html).
+For additional information, see the [AWS documentation on AWS EC2 prefix lists](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html).
 
 ## Properties
 
-| Property | Description | Description |
-| --- | --- | --- |
-| prefix_list_id | The ID of the prefix list. | prefix_list_id |
-| address_family | The IP address version. | address_family |
-| state | The state of the prefix list. | state |
-| state_message | The state message. | state_message |
-| prefix_list_arn | The Amazon Resource Name (ARN) for the prefix list. | prefix_list_arn |
-| prefix_list_name | The name of the prefix list. | prefix_list_name |
-| max_entries | The maximum number of entries for the prefix list. | max_entries |
-| version | The version of the prefix list. | version |
-| tags | The tags for the prefix list. | tags |
-| owner_id | The ID of the owner of the prefix list. | owner_id |
+| Property | Description |
+| --- | --- |
+| prefix_list_id | The ID of the prefix list. |
+| address_family | The IP address version. |
+| state | The state of the prefix list. |
+| state_message | The state message. |
+| prefix_list_arn | The Amazon Resource Name (ARN) for the prefix list. |
+| prefix_list_name | The name of the prefix list. |
+| max_entries | The maximum number of entries for the prefix list. |
+| version | The version of the prefix list. |
+| tags | The tags for the prefix list. |
+| owner_id | The ID of the owner of the prefix list. |
 
 ## Examples
 
-### Ensure a Prefix List ID is available.
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
-      its('prefix_list_id') { should eq 'PrefixListID' }
+### Ensure a prefix list ID is available.
+
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
+      its('prefix_list_id') { should eq 'PREFIX_LIST_ID' }
     end
 
-### Ensure a Address Family is available.
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
-      its('address_family') { should eq 'AddressFamily' }
+### Ensure an address family is available.
+
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
+      its('address_family') { should eq 'ADDRESS_FAMILY' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
+
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -69,13 +70,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_prefix_list(prefix_list_id: 'dummy') do
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
       it { should_not exist }
     end
 
@@ -83,7 +84,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_prefix_list(prefix_list_id: 'PrefixListID') do
+    describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
       it { should be_available }
     end
 
