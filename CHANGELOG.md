@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.3 -->
+<!-- latest_release 1.73.4 -->
+## [v1.73.4](https://github.com/inspec/inspec-aws/tree/v1.73.4) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Support for network manager global network resource [#539](https://github.com/inspec/inspec-aws/pull/539) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.73.3](https://github.com/inspec/inspec-aws/tree/v1.73.3) (2021-10-05)
 
 #### Merged Pull Requests
 - Nirbhay/Added Prefix list resource support [#538](https://github.com/inspec/inspec-aws/pull/538) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.73.2](https://github.com/inspec/inspec-aws/tree/v1.73.2) (2021-10-01)
 
