@@ -5,11 +5,11 @@ platform: aws
 
 # aws_ec2_placement_groups
 
-Use the `aws_ec2_placement_groups` InSpec audit resource to test properties of multiple EC2 Placement Groups.
+Use the `aws_ec2_placement_groups` InSpec audit resource to test properties of multiple EC2 placement groups.
 
 ## Syntax
 
-### Ensure that a Placement Group ID exists
+### Ensure that a placement group ID exists
 
     describe aws_ec2_placement_groups do
       it { should exist }
@@ -26,17 +26,16 @@ For additional information, see the [AWS documentation on EC2 Placement Group](h
 | group_names | The name of the placement group. | group_name |
 | states | The state of the placement group. | state |
 | strategies | The placement strategy. | strategy |
-| partition_counts | The Partition count of the placement group. | partition_count |
-| group_ids | The id of the placement group. | group_id |
+| partition_counts | The partition count of the placement group. | partition_count |
+| group_ids | The ID of the placement group. | group_id |
 | tags | The tags of the placement group. | tags |
-
 
 ## Examples
 
 ### Ensure a Placement Group ID is available
 
     describe aws_ec2_placement_groups do
-      its('group_ids') { should include 'GroupID' }
+      its('group_ids') { should include 'GROUPID' }
     end
 
 ### Ensure that the state is `available` or `deleted`
@@ -67,6 +66,6 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribePlacementGroupsResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribePlacementGroupsResult` action with `Effect` set to *Allow*.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
