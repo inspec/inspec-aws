@@ -3993,7 +3993,6 @@ resource "aws_ec2_traffic_mirror_filter" "filter" {
   network_services = ["amazon-dns"]
 }
 
-
 resource "aws_ec2_traffic_mirror_filter" "filter" {
   description      = "traffic mirror filter - terraform example"
   network_services = ["amazon-dns"]
@@ -4018,12 +4017,10 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld"
   }
-
 }
 
 data "aws_ami" "ubuntu" {
   most_recent = true
-
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -4033,7 +4030,6 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
   owners = ["099720109477"] # Canonical
 }
 
@@ -4058,8 +4054,6 @@ resource "aws_internet_gateway" "aws_internet_gateway_test" {
 resource "aws_vpc" "aws_vpc_internet_gateway_test" {
   cidr_block = "10.0.0.0/16"
 }
-
-
 
 #Network Interface
 
