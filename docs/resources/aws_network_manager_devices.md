@@ -28,12 +28,15 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 | device_ids | The ID of the device. | device_id |
 | device_arns | The Amazon Resource Name (ARN) of the device. | device_arn |
 | global_network_ids | The ID of the global network. | global_network_id |
-| aws_locations | The AWS locations. | aws_location |
+| location_zones | The Zone the device is located in. This can be the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost. |
+| location_subnet_arns | The Amazon Resource Name (ARN) of the subnet the device is located in. |
 | descriptions | The description of the device. | description |
 | types | The device type. | type |
 | vendors | The device vendor. | vendor |
 | models | The device model. | model |
-| locations | The location. | location |
+| addresses | The physical address of the location. |
+| latitudes | The latitude of the location. |
+| longitudes | The longitude of the location. |
 | site_ids | The site ID. | site_id |
 | created_at | The date and time that the site was created. | created_at |
 | states | The device state. | state |
@@ -56,7 +59,7 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 ### Ensure a zone is available.
 
     describe aws_network_manager_devices do
-      its('aws_location.zone') { should include 'ZONE_NAME' }
+      its('location_zones') { should include 'ZONE_NAME' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
