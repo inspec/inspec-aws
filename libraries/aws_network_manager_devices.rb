@@ -43,37 +43,6 @@ class AWSNetworkManagerDevices < AwsResourceBase
   def fetch_data
     pagination_options = {}
     pagination_options[:global_network_id]= opts[:global_network_id]
-    # rows = []
-    # loop do
-    #   catch_aws_errors do
-    #     @api_response = @aws.networkmanager_client.get_devices(pagination_options)
-    #
-    #   end
-    #   return rows if !@api_response || @api_response.empty?
-    #   @api_response.devices.each do |resp|
-    #     require 'byebug'
-    #     byebug
-    #     rows += [{ device_id: resp.device_id,
-    #                device_arn: resp.device_arn,
-    #                global_network_id: resp.global_network_id,
-    #                location_zones: resp.aws_location.zone,
-    #                description: resp.description,
-    #                type: resp.type,
-    #                vendor: resp.vendor,
-    #                model: resp.model,
-    #                serial_number: resp.serial_number,
-    #                address: resp.location.map { |k,v| [v] },
-    #                latitude: resp.location.latitude,
-    #                longitude: resp.location.longitude,
-    #                site_id: resp.site_id,
-    #                created_at: resp.created_at,
-    #                state: resp.state,
-    #                tags: resp.tags }]
-    #   end
-    #   break unless @api_response.next_token
-    #   pagination_options[:next_token] = @api_response.next_token
-    # end
-    # rows
     catch_aws_errors do
       @api_response = @aws.networkmanager_client.get_devices(pagination_options).map do |device|
         device.devices.map { |devices| {
@@ -93,7 +62,7 @@ class AWSNetworkManagerDevices < AwsResourceBase
                          site_id: devices.site_id,
                          created_at: devices.created_at,
                          state: devices.state,
-                         tags: devices.tags
+                         tags: devices.tags,
         }
         }
       end.flatten
