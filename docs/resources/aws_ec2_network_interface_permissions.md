@@ -5,23 +5,21 @@ platform: aws
 
 # aws_ec2_network_interface_permissions
 
-Use the `aws_ec2_network_interface_permissions` InSpec audit resource to test properties of a multiple AWS EC2 Network Interface Permission.
+Use the `aws_ec2_network_interface_permissions` InSpec audit resource to test properties of a multiple AWS EC2 network interface permission.
 
 ## Syntax
 
-Ensure that Network Interface Permission Id exists.
+Ensure that network interface permission ID exists.
 
     describe aws_ec2_network_interface_permissions do
       it { should exist }
     end
 
-
-
 For additional information, see the [AWS documentation on AWS EC2 Network Interface Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | network_interface_permission_ids | The ID of the network interface. | network_interface_permission_id |
 | network_interface_ids |  The Amazon Web Services account ID. | network_interface_id |
@@ -29,15 +27,16 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 | states |The state of the permission.  String, one of "pending", "granted", "revoking", "revoked". | state |
 | status_messages | The status message of the permission state. | status_message |
 
-
 ## Examples
 
-### Ensure a Network Interface Permission Id is available.
+### Ensure a network interface permission ID is available
+
     describe aws_ec2_network_interface_permissions do
-      its('network_interface_permission_ids') { should include 'NetworkInterfacePermissionId' }
+      its('network_interface_permission_ids') { should include 'NETWORK_ID' }
     end
 
-### Ensure that the interface Permission state is 'pending'.
+### Ensure that the interface permission state is 'pending'
+
     describe aws_ec2_network_interface_permissions do
         its('states') { should include 'pending' }
     end
@@ -72,4 +71,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to *Allow*.

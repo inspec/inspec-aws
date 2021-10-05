@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_network_interface_permission
 
-Use the `aws_ec2_network_interface_permission` InSpec audit resource to test properties of a single specific AWS EC2 Network Interface Permission Permission.
+Use the `aws_ec2_network_interface_permission` InSpec audit resource to test the properties of a single specific AWS EC2 network interface permission.
 
 ## Syntax
 
-Ensure that Network Interface Permission Id exists.
+Ensure that network interface permission ID exists.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NetworkInterfacePermissionId') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
       it { should exist }
     end
 
@@ -21,13 +21,13 @@ Ensure that Network Interface Permission Id exists.
 
 | Property | Description |
 | --- | --- |
-| network_interface_permission_id | The ID of the network interface Permission. |
+| network_interface_permission_id | The ID of the network interface permission. |
 
 For additional information, see the [AWS documentation on AWS EC2 Network Interface Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | network_interface_permission_id | The ID of the network interface. | network_interface_permission_id |
 | network_interface_id |  The Amazon Web Services account ID. | network_interface_id |
@@ -35,16 +35,17 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 | state |The state of the permission.  String, one of "pending", "granted", "revoking", "revoked". | state |
 | status_message | The status message of the permission state. | status_message |
 
-
 ## Examples
 
-### Ensure a Network Interface Permission Id is available.
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NetworkInterfacePermissionId') do
+### Ensure a network interface permission ID is available
+
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
       its('network_interface_permission_id') { should eq 'NetworkInterfacePermissionId' }
     end
 
-### Ensure that the interface Permission state is 'pending'.
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NetworkInterfacePermissionId') do
+### Ensure that the interface permission state is 'pending'
+
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
         its('state') { should eq 'pending' }
     end
 
@@ -58,13 +59,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NetworkInterfacePermissionId') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'dummy') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'DUMMY') do
       it { should_not exist }
     end
 
@@ -72,10 +73,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NetworkInterfacePermissionId') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to *Allow*.
