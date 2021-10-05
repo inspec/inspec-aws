@@ -67,6 +67,5 @@ class AWSNetworkManagerDevices < AwsResourceBase
         }
       end.flatten
     end
-
   end
 end
