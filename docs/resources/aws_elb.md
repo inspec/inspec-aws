@@ -46,6 +46,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |protocols                              | A list of the protocols configured for the listeners of the load balancer. |
 |cross\_zone\_load\_balancing\_enabled? | The cross-zone load balancing status for ELB. |
 |access\_log\_enabled?                  | The access log status for ELB. |
+|certificate\_id                        | A list of SSL certificate ids configured for the listeners of the load balancer. |
 
 ## Examples
 
