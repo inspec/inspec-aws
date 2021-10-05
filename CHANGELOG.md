@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.2 -->
+<!-- latest_release 1.73.3 -->
+## [v1.73.3](https://github.com/inspec/inspec-aws/tree/v1.73.3) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Prefix list resource support [#538](https://github.com/inspec/inspec-aws/pull/538) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.73.2](https://github.com/inspec/inspec-aws/tree/v1.73.2) (2021-10-01)
 
 #### Merged Pull Requests
 - Update release notes 2021-10-01 [#662](https://github.com/inspec/inspec-aws/pull/662) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.73.1](https://github.com/inspec/inspec-aws/tree/v1.73.1) (2021-10-01)
 
