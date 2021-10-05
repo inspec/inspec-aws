@@ -12,8 +12,8 @@ An `aws_elasticache_replication_groups` resource block collects a group of Elast
 
     describe aws_elasticache_replication_groups
       it { should exist }
-    end   
-    
+    end
+
 ### Parameters
 
 This resource does not expect any parameters.
@@ -25,7 +25,6 @@ This resource does not expect any parameters.
 |ids                       | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group. |
 |node\_types               | The name of the compute and memory capacity node type for the replication group, e.g. `cache.m5.large`. |
 |status                    | The current state of the replication group, e.g. `creating`, `available`. |
-|
 |encrypted\_at\_rest       | Indicates whether the content is encrypted at rest or not. |
 |encrypted\_at\_transit    | Indicates whether the content is encrypted at transit or not. |
 
@@ -45,7 +44,7 @@ This resource does not expect any parameters.
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -54,13 +53,13 @@ The control will pass if the 'describe' method returns at least one result.
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should exist }
     end
-      
+
 Use `should_not` to test an entity that should not exist.
 
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should_not exist }
     end
-    
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticache:DescribeReplicationGroups` action set to allow.

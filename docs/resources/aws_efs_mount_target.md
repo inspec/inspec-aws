@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on EFS Mount Target](http
 
 | Property | Description|
 | --- | --- |
-| owner_id | | The owner ID of the mount targets. | |
+| owner_id | The owner ID of the mount targets. |
 | mount_target_id | ID of the file system whose mount targets you want to list (String). |
 | file_system_id | The ID of the file system for which to create the mount target. |
 | life_cycle_state | The life cycle state of the mount targets. |

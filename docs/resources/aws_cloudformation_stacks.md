@@ -26,8 +26,8 @@ See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSClo
 |creation\_time                  | The time at which the stack was created. |
 |notification\_arns              | SNS topic ARNs to which stack related events are published. |
 |role\_arn                       | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  |
-parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
-|root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
+| parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
+|root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. |
 
 ## Examples
 

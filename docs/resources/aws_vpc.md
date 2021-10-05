@@ -48,7 +48,7 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |cidr\_block       | The IPv4 address range that is managed by the VPC. |
 |dhcp\_options\_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
 |instance\_tenancy | The allowed tenancy of the instances launched into the VPC. |
-|state            | The state of the VPC (`pending` | `available`). |
+|state            | The state of the VPC. Valid values: `pending` and `available`. |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
 |associated_cidr_blocks | The associated CIDR blocks. |
