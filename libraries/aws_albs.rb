@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsAlbs < AwsResourceBase
   name 'aws_albs'
-  desc 'Verifies settings for a collection AWS Application Load Balancers'
-  example '
+  desc 'Verifies settings for a collection AWS Application Load Balancers.'
+  example "
     describe aws_albs do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

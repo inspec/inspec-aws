@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsDynamoDbTable < AwsResourceBase
   name 'aws_dynamodb_table'
-  desc 'Verifies the settings for a DynamoDB table'
+  desc 'Verifies the settings for a DynamoDB table.'
 
   example "
     describe aws_dynamodb_table(table_name: 'table-name') do
