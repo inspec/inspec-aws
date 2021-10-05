@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_network_interface_permissions
 
-Use the `aws_ec2_network_interface_permissions` InSpec audit resource to test properties of a multiple AWS EC2 network interface permission.
+Use the `aws_ec2_network_interface_permissions` InSpec audit resource to test properties of multiple AWS EC2 network interface permission.
 
 ## Syntax
 
