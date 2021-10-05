@@ -11,7 +11,7 @@ Use the `aws_ec2_instances` InSpec audit resource to test properties of some or 
 
 An `aws_ec2_instances` resource block collects a group of EC2 Instances and then tests that group.
 
-    describe aws_ec2_instances
+    describe aws_ec2_instances do
       it { should exist }
     end   
     

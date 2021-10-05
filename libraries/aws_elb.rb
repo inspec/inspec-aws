@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsElb < AwsResourceBase
   name 'aws_elb'
-  desc 'Verifies settings for an Elastic Load Balancer'
+  desc 'Verifies settings for an Elastic Load Balancer.'
 
   example "
     describe aws_elb('load-balancer-1') do
@@ -24,6 +24,7 @@ class AwsElb < AwsResourceBase
     catch_aws_errors do
       load_balancer_name = { load_balancer_names: [opts[:load_balancer_name]] }
       resp = @aws.elb_client.describe_load_balancers(load_balancer_name).load_balancer_descriptions.first
+      @attrs = @aws.elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name]).load_balancer_attributes
 
       @availability_zones = resp.availability_zones
       @dns_name           = resp.dns_name
@@ -52,5 +53,13 @@ class AwsElb < AwsResourceBase
 
   def to_s
     "AWS ELB #{load_balancer_name}"
+  end
+
+  def cross_zone_load_balancing_enabled?
+    !@attrs.cross_zone_load_balancing.enabled == false
+  end
+
+  def access_log_enabled?
+    !@attrs.access_log.enabled == false
   end
 end

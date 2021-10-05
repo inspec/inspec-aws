@@ -7,7 +7,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
   TYPES = %w{static propagated}.freeze
   ATTACHMENT_RESOURCE_TYPES = %w{vpc vpn direct-connect-gateway connect peering tgw-peering}.freeze
   name 'aws_transit_gateway_route'
-  desc 'Verifies settings for an AWS Transit Gateway'
+  desc 'Verifies settings for an AWS Transit Gateway.'
 
   example "
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do

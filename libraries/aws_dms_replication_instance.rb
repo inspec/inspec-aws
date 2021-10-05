@@ -21,7 +21,7 @@ class AWSDMSReplicationInstance < AwsResourceBase
     end
   end
 
-  def id
+  def replication_instance_class
     return nil unless exists?
     @orderable_replication_instances[:replication_instance_class]
   end
