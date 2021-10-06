@@ -5,9 +5,9 @@ platform: aws
 
 # aws_apigateway_account
 
-Use the `aws_apigateway_account` InSpec audit resource to test properties of a single specific AWS APIGateway Account.
+Use the `aws_apigateway_account` InSpec audit resource to test properties of a single specific AWS API Gateway account.
 
-The AWS::ApiGateway::Account resource specifies the IAM role that Amazon API Gateway uses to write API logs to Amazon CloudWatch Logs.
+The `AWS::ApiGateway::Account` resource specifies the IAM role that Amazon API Gateway uses to write API logs to Amazon CloudWatch Logs.
 
 ## Syntax
 
@@ -19,27 +19,29 @@ Ensure that the account exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS APIGateway Account.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html).
+For additional information, see the [AWS documentation on AWS API Gateway accounts.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| cloudwatch_role_arn | The ARN of an Amazon CloudWatch role for the current Account. | cloudwatch_role_arn |
-| throttle_settings.burst_limit | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. | burst_limit |
-| throttle_settings.rate_limit | The API request steady-state rate limit. | rate_limit |
-| features | A list of features supported for the account. When usage plans are enabled, the features list will include an entry of "UsagePlans". | features |
-| api_key_version | The version of the API keys used for the account. | api_key_version |
+| Property | Description |
+| --- | --- |
+| cloudwatch_role_arn | The ARN of an Amazon CloudWatch role for the current account. |
+| throttle_settings.burst_limit | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. |
+| throttle_settings.rate_limit | The API request steady-state rate limit. |
+| features | A list of features supported for the account. When usage plans are enabled, the features list will include an entry of "UsagePlans". |
+| api_key_version | The version of the API keys used for the account. |
 
 
 ## Examples
 
-### Ensure a cloudwatch role arn is available.
+### Ensure a Cloudwatch role ARN is available.
+
     describe aws_apigateway_account do
       its('cloudwatch_role_arn') { should eq 'CloudWatchRoleARN' }
     end
 
 ### Ensure that the burst limit is `1`.
+
     describe aws_apigateway_account do
         its('throttle_settings.burst_limit') { should eq '1' }
     end
