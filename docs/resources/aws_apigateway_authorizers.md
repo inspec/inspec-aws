@@ -5,29 +5,29 @@ platform: aws
 
 # aws_apigateway_authorizers
 
-Use the `aws_apigateway_authorizers` InSpec audit resource to test properties of the plural AWS APIGateway Authorizer.
+Use the `aws_apigateway_authorizers` InSpec audit resource to test properties of multiple AWS API Gateway authorizers.
 
-The AWS::ApiGateway::Authorizer resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
+The `AWS::ApiGateway::Authorizer` resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
 
 ## Syntax
 
 Ensure that the authorizer exists.
 
-    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-| Property | Description | 
-| --- | --- |
-| rest_api_id | The id of the rest api. |
+`rest_api_id` _(required)_
+
+The ID of the REST API.
 
 For additional information, see the [AWS documentation on AWS APIGateway Authorizer.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The identifier for the authorizer resource. | id |
 | names | The name of the authorizer. | name |
@@ -42,14 +42,16 @@ For additional information, see the [AWS documentation on AWS APIGateway Authori
 
 ## Examples
 
-### Ensure a id is available.
-    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
-      its('ids') { should include 'AuthorizerID' }
+### Test that an ID is available.
+
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
+      its('ids') { should include 'AUTHORIZER_ID' }
     end
 
-### Ensure a name is available.
-    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
-      its('names') { should include 'AuthorizerName' }
+### Test that a name is available.
+
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
+      its('names') { should include 'AUTHORIZER_NAME' }
     end
 
 ## Matchers
@@ -62,13 +64,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_authorizers(rest_api_id: 'dummy') do
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
       it { should_not exist }
     end
 

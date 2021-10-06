@@ -5,54 +5,57 @@ platform: aws
 
 # aws_apigateway_authorizer
 
-Use the `aws_apigateway_authorizer` InSpec audit resource to test properties of a single specific AWS APIGateway Authorizer.
+Use the `aws_apigateway_authorizer` InSpec audit resource to test properties of a single specific AWS API Gateway authorizer.
 
-The AWS::ApiGateway::Authorizer resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
+The `AWS::ApiGateway::Authorizer` resource creates an authorization layer that API Gateway activates for methods that have authorization enabled. API Gateway activates the authorizer when a client calls those methods.
 
 ## Syntax
 
 Ensure that the authorizer exists.
 
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`rest_api_id  authorizer_id` _(required)_
+`rest_api_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| rest_api_id | The string identifier of the associated RestApi. |
-| authorizer_id | The identifier of the Authorizer resource. |
+The string identifier of the associated REST API.
+
+`authorizer_id` _(required)_
+
+The identifier of the authorizer resource.
 
 For additional information, see the [AWS documentation on AWS APIGateway Authorizer.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| id | The identifier for the authorizer resource. | id |
-| name | The name of the authorizer. | name |
-| type | The authorizer type. | type |
-| provider_arns | A list of the Amazon Cognito user pool ARNs for the COGNITO_USER_POOLS authorizer. | provider_arns |
-| auth_type | Optional customer-defined field, used in OpenAPI imports and exports without functional impact. | auth_type |
-| authorizer_uri | Specifies the authorizer's Uniform Resource Identifier (URI). | authorizer_uri |
-| authorizer_credentials | Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. | authorizer_credentials |
-| identity_source | The identity source for which authorization is requested. | identity_source |
-| identity_validation_expression | A validation expression for the incoming identity token. | identity_validation_expression |
-| authorizer_result_ttl_in_seconds | The TTL in seconds of cached authorizer results. | authorizer_result_ttl_in_seconds |
+| Property | Description |
+| --- | --- |
+| id | The identifier for the authorizer resource. |
+| name | The name of the authorizer. |
+| type | The authorizer type. |
+| provider_arns | A list of the Amazon Cognito user pool ARNs for the COGNITO_USER_POOLS authorizer. |
+| auth_type | Optional customer-defined field, used in OpenAPI imports and exports without functional impact. |
+| authorizer_uri | Specifies the authorizer's Uniform Resource Identifier (URI). |
+| authorizer_credentials | Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer. |
+| identity_source | The identity source for which authorization is requested. |
+| identity_validation_expression | A validation expression for the incoming identity token. |
+| authorizer_result_ttl_in_seconds | The TTL in seconds of cached authorizer results. |
 
 ## Examples
 
-### Ensure a id is available.
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
-      its('id') { should eq 'AuthorizerID' }
+### Test that an ID is available.
+
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
+      its('id') { should eq 'AUTHORIZER_ID' }
     end
 
-### Ensure a name is available.
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
-      its('name') { should eq 'AuthorizerName' }
+### Test that a name is available.
+
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
+      its('name') { should eq 'AUTHORIZER_NAME' }
     end
 
 ## Matchers
@@ -65,13 +68,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_authorizer(rest_api_id: 'dummy', authorizer_id: 'dummy') do
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should_not exist }
     end
 
@@ -79,7 +82,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should be_available }
     end
 
