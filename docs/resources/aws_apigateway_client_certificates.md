@@ -5,9 +5,9 @@ platform: aws
 
 # aws_apigateway_client_certificates
 
-Use the `aws_apigateway_client_certificates` InSpec audit resource to test properties of the plural AWS APIGateway ClientCertificate.
+Use the `aws_apigateway_client_certificates` InSpec audit resource to test properties of multiple AWS API Gateway client certificates.
 
-The AWS::ApiGateway::ClientCertificate resource creates a client certificate that API Gateway uses to configure client-side SSL authentication for sending requests to the integration endpoint.
+The `AWS::ApiGateway::ClientCertificate` resource creates a client certificate that API Gateway uses to configure client-side SSL authentication for sending requests to the integration endpoint.
 
 ## Syntax
 
@@ -19,11 +19,13 @@ Ensure that the client certificate exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS APIGateway ClientCertificate.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
+This resource does not require any parameters.
+
+For additional information, see the [AWS documentation on AWS API Gateway client certificate.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | client_certificate_ids | The identifier of the client certificate. | client_certificate_id |
 | descriptions | The description of the client certificate. | description |
@@ -34,14 +36,16 @@ For additional information, see the [AWS documentation on AWS APIGateway ClientC
 
 ## Examples
 
-### Ensure a client certificate id is available.
+### Ensure a client certificate ID is available.
+
     describe aws_apigateway_client_certificates do
-      its('client_certificate_ids') { should include 'ClientCertificateID' }
+      its('client_certificate_ids') { should include 'CLIENT_CERTIFICATE_ID' }
     end
 
-### Ensure a pem encoded certificate is available.
+### Ensure a PEM encoded certificate is available.
+
     describe aws_apigateway_client_certificates do
-        its('pem_encoded_certificates') { should include 'PemEncodedCertificate' }
+        its('pem_encoded_certificates') { should include 'PEM_ENCODED_CERTIFICATE' }
     end
 
 ## Matchers
