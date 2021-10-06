@@ -7,7 +7,7 @@ class AWSNetworkManagerDevices < AwsResourceBase
   desc 'List all the devices.'
 
   example "
-    describe aws_network_manager_devices do
+    describe aws_network_manager_devices(global_network_id: 'GlobalNetworkID') do
       it { should exist }
     end
   "
@@ -37,32 +37,33 @@ class AWSNetworkManagerDevices < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: [:global_network_id])
+    raise ArgumentError, "#{@__resource_name__}: global_network_id must be provided" unless opts[:global_network_id] && !opts[:global_network_id].empty?
     @table = fetch_data
   end
 
   def fetch_data
-    pagination_options = {}
-    pagination_options[:global_network_id]= opts[:global_network_id]
+    query_params = {}
+    query_params[:global_network_id]= opts[:global_network_id]
     catch_aws_errors do
-      @api_response = @aws.networkmanager_client.get_devices(pagination_options).map do |device|
+      @api_response = @aws.networkmanager_client.get_devices(query_params).map do |device|
         device.devices.map { |devices| {
           device_id: devices.device_id,
-                         device_arn: devices.device_arn,
-                         global_network_id: devices.global_network_id,
-                         location_zones: devices.aws_location.zone,
-                         location_subnet_arn: devices.aws_location.subnet_arn,
-                         description: devices.description,
-                         type: devices.type,
-                         vendor: devices.vendor,
-                         model: devices.model,
-                         serial_number: devices.serial_number,
-                         address: devices.location.address,
-                         latitude: devices.location.latitude,
-                         longitude: devices.location.longitude,
-                         site_id: devices.site_id,
-                         created_at: devices.created_at,
-                         state: devices.state,
-                         tags: devices.tags,
+          device_arn: devices.device_arn,
+          global_network_id: devices.global_network_id,
+          location_zones: devices.aws_location.zone,
+          location_subnet_arn: devices.aws_location.subnet_arn,
+          description: devices.description,
+          type: devices.type,
+          vendor: devices.vendor,
+          model: devices.model,
+          serial_number: devices.serial_number,
+          address: devices.location.address,
+          latitude: devices.location.latitude,
+          longitude: devices.location.longitude,
+          site_id: devices.site_id,
+          created_at: devices.created_at,
+          state: devices.state,
+          tags: devices.tags,
         }
         }
       end.flatten

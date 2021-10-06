@@ -26,11 +26,20 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
     mock_data[:device_id] = 'test1'
     mock_data[:device_arn] = 'test1'
     mock_data[:global_network_id] = 'test1'
+    mock_data[:aws_location] = {
+      zone: 'test1',
+      subnet_arn: 'test1'
+    }
     mock_data[:description] = 'test1'
     mock_data[:type] = 'test1'
     mock_data[:vendor] = 'test1'
     mock_data[:model] = 'test1'
     mock_data[:serial_number] = 'test1'
+    mock_data[:location] = {
+      address: 'test1',
+      latitude: 'test1',
+      longitude: 'test1'
+    }
     mock_data[:site_id] = 'test1'
     mock_data[:created_at] = Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     mock_data[:state] = 'test1'
@@ -51,6 +60,14 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
     assert_equal(@resp.global_network_ids, ['test1'])
   end
 
+  def test_aws_location_zones
+    assert_equal(@resp.location_zones, ['test1'])
+  end
+
+  def test_aws_location_subnet_arns
+    assert_equal(@resp.location_subnet_arns, ['test1'])
+  end
+
   def test_descriptions
     assert_equal(@resp.descriptions, ['test1'])
   end
@@ -69,6 +86,18 @@ class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
 
   def test_serial_numbers
     assert_equal(@resp.serial_numbers, ['test1'])
+  end
+
+  def test_addresses
+    assert_equal(@resp.addresses, ['test1'])
+  end
+
+  def test_latitudes
+    assert_equal(@resp.latitudes, ['test1'])
+  end
+
+  def test_longitudes
+    assert_equal(@resp.longitudes, ['test1'])
   end
 
   def test_site_ids
