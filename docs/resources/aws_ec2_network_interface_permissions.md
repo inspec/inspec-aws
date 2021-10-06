@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 ### Ensure a network interface permission ID is available
 
     describe aws_ec2_network_interface_permissions do
-      its('network_interface_permission_ids') { should include 'NETWORK_ID' }
+      its('network_interface_permission_ids') { should include 'NETWORK_INTERFACE_PERMISSION_ID' }
     end
 
 ### Ensure that the interface permission state is 'pending'
@@ -71,4 +71,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to *Allow*.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to `Allow`.

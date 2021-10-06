@@ -11,17 +11,13 @@ Use the `aws_ec2_network_interface_permission` InSpec audit resource to test the
 
 Ensure that network interface permission ID exists.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`network_interface_permission_id` _(required)_
-
-| Property | Description |
-| --- | --- |
-| network_interface_permission_id | The ID of the network interface permission. |
+`network_interface_permission_id` _(required)_: The ID of the network interface permission.
 
 For additional information, see the [AWS documentation on AWS EC2 Network Interface Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html).
 
@@ -39,13 +35,13 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ### Ensure a network interface permission ID is available
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
-      its('network_interface_permission_id') { should eq 'NetworkInterfacePermissionId' }
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
+      its('network_interface_permission_id') { should eq 'NETWORK_INTERFACE_PERMISSION_ID' }
     end
 
 ### Ensure that the interface permission state is 'pending'
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
         its('state') { should eq 'pending' }
     end
 
@@ -59,13 +55,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'DUMMY') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
       it { should_not exist }
     end
 
@@ -73,10 +69,10 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_ID') do
+    describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to *Allow*.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeNetworkInterfacePermissionsResult` action with `Effect` set to `Allow`.
