@@ -5,13 +5,13 @@ platform: aws
 
 # aws_apigateway_api_keys
 
-Use the `aws_apigateway_api_keys` InSpec audit resource to test properties of the plural AWS APIGateway ApiKey.
+Use the `aws_apigateway_api_keys` InSpec audit resource to test properties of multiple AWS API Gateway API keys.
 
-The AWS::ApiGateway::ApiKey resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key.
+The `AWS::ApiGateway::ApiKey` resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key.
 
 ## Syntax
 
-Ensure that the api key exists.
+Ensure that the API key exists.
 
     describe aws_apigateway_api_keys do
       it { should exist }
@@ -19,11 +19,11 @@ Ensure that the api key exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS APIGateway ApiKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
+For additional information, see the [AWS documentation on AWS API Gateway API Key.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The identifier of the API Key. | id |
 | values | The value of the API Key. | value |
@@ -38,14 +38,16 @@ For additional information, see the [AWS documentation on AWS APIGateway ApiKey.
 
 ## Examples
 
-### Ensure a id is available.
+### Ensure a ID is available.
+
     describe aws_apigateway_api_keys do
       its('ids') { should include 'API_ID' }
     end
 
 ### Ensure that the name is available.
+
     describe aws_apigateway_api_keys do
-        its('names') { should include 'API_Name' }
+        its('names') { should include 'API_NAME' }
     end
 
 ## Matchers
