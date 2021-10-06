@@ -11,7 +11,7 @@ Use the `aws_ec2_placement_group` InSpec audit resource to test the properties o
 
 ### Ensure that a placement group ID exists
 
-    describe aws_ec2_placement_group(group_id: 'GROUPID') do
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
       it { should exist }
     end
 
@@ -41,13 +41,13 @@ For additional information, refer [AWS documentation on EC2 Placement Group](htt
 
 ### Ensure a placement group ID is available
 
-    describe aws_ec2_placement_group(group_id: 'GROUPID') do
-      its('group_id') { should eq 'GROUPID' }
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
+      its('group_id') { should eq 'GROUP_ID' }
     end
 
 ### Ensure that the state is `available` or `deleted`
 
-    describe aws_ec2_placement_group(group_id: 'GROUPID') do
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
         its('state') { should eq 'available' }
     end
 
@@ -61,13 +61,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_placement_group(group_id: 'GROUPID') do
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_placement_group(group_id: 'DUMMY') do
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
       it { should_not exist }
     end
 
@@ -75,12 +75,12 @@ Use `should_not` to test the entity does not exist.
 
 Check if the entity is available.
 
-    describe aws_ec2_placement_group(group_id: 'GROUPID') do
+    describe aws_ec2_placement_group(group_id: 'GROUP_ID') do
       it { should be_available }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribePlacementGroupsResult` action with `Effect` set to *Allow*.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribePlacementGroupsResult` action with `Effect` set to `Allow`.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
