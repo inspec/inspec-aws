@@ -5,15 +5,15 @@ platform: aws
 
 # aws_apigateway_base_path_mappings
 
-Use the `aws_apigateway_base_path_mappings` InSpec audit resource to test properties of the plural AWS APIGateway ApiKey.
+Use the `aws_apigateway_base_path_mappings` InSpec audit resource to test properties of multiple AWS API Gateway base path mappings.
 
-The AWS::ApiGateway::BasePathMapping resource creates a base path that clients who call your API must use in the invocation URL.
+The `AWS::ApiGateway::BasePathMapping` resource creates a base path that clients who call your API must use in the invocation URL.
 
 ## Syntax
 
 Ensure that the base path mappings exists.
 
-    describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
+    describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
       it { should exist }
     end
 
@@ -21,9 +21,7 @@ Ensure that the base path mappings exists.
 
 `domain_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| domain_name | The domain name of the BasePathMapping resource to be described. |
+The domain name of the BasePathMapping resource to be described.
 
 For additional information, see the [AWS documentation on AWS APIGateway BasePathMapping.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
 
@@ -38,13 +36,14 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 ## Examples
 
 ### Ensure a base path is available.
-    describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
-      its('base_paths') { should include 'BasePath')' }
+
+    describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
+      its('base_paths') { should include 'BASE_PATH')' }
     end
 
 ### Ensure that stage name is available.
-    describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
-        its('stages') { should include 'StageName' }
+    describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
+        its('stages') { should include 'STAGE_NAME' }
     end
 
 ## Matchers
@@ -57,13 +56,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
+    describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_base_path_mappings(domain_name: 'dummy') do
+    describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
       it { should_not exist }
     end
 

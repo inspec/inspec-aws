@@ -5,46 +5,49 @@ platform: aws
 
 # aws_apigateway_base_path_mapping
 
-Use the `aws_apigateway_base_path_mapping` InSpec audit resource to test properties of a single specific AWS APIGateway BasePathMapping.
+Use the `aws_apigateway_base_path_mapping` Chef InSpec audit resource to test properties of a single specific AWS API Gateway base path mapping.
 
-The AWS::ApiGateway::BasePathMapping resource creates a base path that clients who call your API must use in the invocation URL.
+The `AWS::ApiGateway::BasePathMapping` resource creates a base path that clients who call your API must use in the invocation URL.
 
 ## Syntax
 
-Ensure that the base path mapping exists.
+Test that the base path mapping exists.
 
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should exist }
     end
 
 ## Parameters
 
-`domain_name base_path` _(required)_
+`domain_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| domain_name | The domain name of the BasePathMapping resource to be described. |
-| base_path | The base path name that callers of the API must provide as part of the URL after the domain name. |
+The domain name of the base path mapping resource to be described.
+
+`base_path` _(required)_
+
+The base path name that callers of the API must provide as part of the URL after the domain name.
 
 For additional information, see the [AWS documentation on AWS APIGateway BasePathMapping.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| base_path | The base path name that callers of the API must provide as part of the URL after the domain name. | base_path |
-| rest_api_id | The string identifier of the associated RestApi.| rest_api_id |
-| stage | The name of the associated stage. | stage |
+| Property | Description |
+| --- | --- |
+| base_path | The base path name that callers of the API must provide as part of the URL after the domain name. |
+| rest_api_id | The string identifier of the associated RestApi.|
+| stage | The name of the associated stage. |
 
 ## Examples
 
-### Ensure a base path is available.
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
-      its('base_path') { should eq 'BasePath')' }
+### Test that a base path is available.
+
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
+      its('base_path') { should eq 'BASE_PATH')' }
     end
 
-### Ensure that stage name is available.
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
+### Test that a stage name is available.
+
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
         its('stage') { should eq 'StageName' }
     end
 
@@ -58,13 +61,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_base_path_mapping(domain_name: 'dummy', base_path: 'dummy') do
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should_not exist }
     end
 
@@ -72,7 +75,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should be_available }
     end
 
