@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloud_formation_stack_sets
 
-Use the `aws_cloud_formation_stack_sets` InSpec audit resource to test properties of the plural AWS Cloud Formation Stack Set.
+Use the `aws_cloud_formation_stack_sets` InSpec audit resource to test properties of multiple AWS Cloud Formation stack sets.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ For additional information, see the [AWS documentation on AWS CloudFormation Sta
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | stack_set_names | The name of the stack set. | stack_set_name |
 | stack_set_ids | The ID of the stack set. | stack_set_ids |
@@ -34,14 +34,16 @@ For additional information, see the [AWS documentation on AWS CloudFormation Sta
 
 ## Examples
 
-### Ensure a stack set id is available.
+### Verify that a stack set ID is available.
+
     describe aws_cloud_formation_stack_sets do
-      its('stack_set_ids') { should include 'StackSetId' }
+      its('stack_set_ids') { should include 'STACK_SET_ID' }
     end
 
-### Verify the descriptions of the Stack Set.
+### Verify the descriptions of the stack set.
+
     describe aws_cloud_formation_stack_sets do
-        its('descriptions') { should include 'test-description'}
+        its('descriptions') { should include 'DESCRIPTION_STRING'}
     end
 
 ## Matchers
