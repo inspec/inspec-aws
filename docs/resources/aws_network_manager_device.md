@@ -13,7 +13,7 @@ The `AWS::NetworkManager::Device` resource gets information about one or more of
 
 Ensure that a device exists.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should exist }
     end
 
@@ -22,6 +22,10 @@ Ensure that a device exists.
 `device_id` _(required)_
 
 The ID of the device.
+
+`global_network_id` _(required)_
+
+The ID of the global network.
 
 For additional information, see the [AWS documentation on AWS Network Manager Device](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-device.html).
 
@@ -51,25 +55,25 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 
 ### Ensure a device ID is available.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       its('device_id') { should eq 'DEVICE_ID' }
     end
 
 ### Ensure a global network ID is available.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       its('global_network_id') { should eq 'GLOBAL_NETWORK_ID' }
     end
 
 ### Ensure a zone is available.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       its('aws_location.zone') { should eq 'ZONE_NAME' }
     end
 
 ### Ensure that the state is `AVAILABLE`.
 
-    describe aws_network_manager_global_network(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_global_network(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -83,13 +87,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should_not exist }
     end
 
@@ -97,7 +101,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_DEVICE_ID') do
+    describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should be_available }
     end
 
