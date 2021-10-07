@@ -1,9 +1,39 @@
-<!-- latest_release 1.72.0 -->
+<!-- latest_release 1.73.5 -->
+## [v1.73.5](https://github.com/inspec/inspec-aws/tree/v1.73.5) (2021-10-06)
+
+#### Merged Pull Requests
+- adding attribute for ELB resource [#677](https://github.com/inspec/inspec-aws/pull/677) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
+## [v1.73.4](https://github.com/inspec/inspec-aws/tree/v1.73.4) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Support for network manager global network resource [#539](https://github.com/inspec/inspec-aws/pull/539) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.73.3](https://github.com/inspec/inspec-aws/tree/v1.73.3) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Prefix list resource support [#538](https://github.com/inspec/inspec-aws/pull/538) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.73.2](https://github.com/inspec/inspec-aws/tree/v1.73.2) (2021-10-01)
+
+#### Merged Pull Requests
+- Update release notes 2021-10-01 [#662](https://github.com/inspec/inspec-aws/pull/662) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.73.1](https://github.com/inspec/inspec-aws/tree/v1.73.1) (2021-10-01)
+
+#### Merged Pull Requests
+- Fix underscore in publish-release-notes.sh [#661](https://github.com/inspec/inspec-aws/pull/661) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.73.0](https://github.com/inspec/inspec-aws/tree/v1.73.0) (2021-09-30)
+
+#### Merged Pull Requests
+- fixing a attribute in cloudfront resource [#648](https://github.com/inspec/inspec-aws/pull/648) ([Rohit1509](https://github.com/Rohit1509))
+
 ## [v1.72.0](https://github.com/inspec/inspec-aws/tree/v1.72.0) (2021-09-30)
 
 #### Merged Pull Requests
 - adding tags attribute to KMS key resource [#522](https://github.com/inspec/inspec-aws/pull/522) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.71.0](https://github.com/inspec/inspec-aws/tree/v1.71.0) (2021-09-30)
 
