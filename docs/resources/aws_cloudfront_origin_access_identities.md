@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_origin_access_identities
 
-Use the `aws_cloudfront_origin_access_identities` InSpec audit resource to test properties of the plural AWS CloudFront CloudFrontOriginAccessIdentity.
+Use the `aws_cloudfront_origin_access_identities` InSpec audit resource to test properties of multiple AWS CloudFront origin access identities.
 
-The request to create a new origin access identity (OAI). An origin access identity is a special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all or just some of your Amazon S3 content.
+An origin access identity is a special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all or just some of your Amazon S3 content.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The ID for the origin access identity. | id |
 | s3_canonical_user_ids | The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. | s3_canonical_user_id |
@@ -32,14 +32,16 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 
 ## Examples
 
-### Ensure an id is available.
+### Test that an ID is available.
+
     describe aws_cloudfront_origin_access_identities do
       its('ids') { should include 'ID' }
     end
 
-### Ensure a s3 canonical user id is available.
+### Test that an s3 canonical user ID is available.
+
     describe aws_cloudfront_origin_access_identities do
-        its('s3_canonical_user_ids') { should include 'S3CanonicalUserID' }
+        its('s3_canonical_user_ids') { should include 'S3_CANONICAL_USER_ID' }
     end
 
 ## Matchers

@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_origin_access_identity
 
-Use the `aws_cloudfront_origin_access_identity` InSpec audit resource to test properties of a single specific AWS CloudFront CloudFrontOriginAccessIdentity.
+Use the `aws_cloudfront_origin_access_identity` InSpec audit resource to test properties of a single specific AWS CloudFront origin access identity.
 
-The request to create a new origin access identity (OAI). An origin access identity is a special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all or just some of your Amazon S3 content.
+An origin access identity is a special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all or just some of your Amazon S3 content.
 
 ## Syntax
 
@@ -21,31 +21,31 @@ Ensure that the identity exists.
 
 `id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| id | The ID for the origin access identity. |
+The ID for the origin access identity.
 
 For additional information, see the [AWS documentation on AWS CloudFront CloudFrontOriginAccessIdentity.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cloudfrontoriginaccessidentity.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| id | The ID for the origin access identity. | id |
-| s3_canonical_user_id | The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. | s3_canonical_user_id |
-| cloud_front_origin_access_identity_config.caller_reference | A unique value (for example, a date-time stamp) that ensures that the request can't be replayed. | caller_reference |
-| cloud_front_origin_access_identity_config.comment | A comment to describe the origin access identity. | comment |
+| Property | Description |
+| --- | --- |
+| id | The ID for the origin access identity. |
+| s3_canonical_user_id | The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. |
+| cloud_front_origin_access_identity_config.caller_reference | A unique value (for example, a date-time stamp) that ensures that the request can't be replayed. |
+| cloud_front_origin_access_identity_config.comment | A comment to describe the origin access identity. |
 
 ## Examples
 
-### Ensure an id is available.
+### Test that an ID is available.
+
     describe aws_cloudfront_origin_access_identity(id: 'ID') do
       its('id') { should eq 'ID' }
     end
 
-### Ensure a s3 canonical user id is available.
+### Test that an s3 canonical user ID is available.
+
     describe aws_cloudfront_origin_access_identity(id: 'ID') do
-        its('s3_canonical_user_id') { should eq 'S3CanonicalUserID' }
+        its('s3_canonical_user_id') { should eq 'S3_CANONICAL_USER_ID' }
     end
 
 ## Matchers
@@ -64,7 +64,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloudfront_origin_access_identity(id: 'dummy') do
+    describe aws_cloudfront_origin_access_identity(id: 'ID') do
       it { should_not exist }
     end
 
