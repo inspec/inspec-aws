@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.6 -->
+<!-- latest_release 1.73.7 -->
+## [v1.73.7](https://github.com/inspec/inspec-aws/tree/v1.73.7) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_base_path_mapping [#643](https://github.com/inspec/inspec-aws/pull/643) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.73.6](https://github.com/inspec/inspec-aws/tree/v1.73.6) (2021-10-07)
 
 #### Merged Pull Requests
 - Nirbhay/CloudFormationStackSet [#655](https://github.com/inspec/inspec-aws/pull/655) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.73.5](https://github.com/inspec/inspec-aws/tree/v1.73.5) (2021-10-06)
 
