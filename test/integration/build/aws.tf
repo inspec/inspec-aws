@@ -4097,3 +4097,57 @@ resource "aws_instance" "aws_instance_test" {
     cpu_credits = "unlimited"
   }
 }
+
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_bm_test1" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_bm_test1" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_bm_test1" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_bm_test1.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name    = "example"
+}
+
+resource "aws_api_gateway_base_path_mapping" "aws_api_gateway_base_path_mapping_bm_test1" {
+  api_id      = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name  = aws_api_gateway_stage.aws_api_gateway_stage_bm_test1.stage_name
+  domain_name = "test.eng.chefdemo.net"
+}
+
