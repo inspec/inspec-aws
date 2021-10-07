@@ -31,12 +31,13 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|group\_name | The group name. |
-|group\_id   | The group ID. |
-|arn         | The Amazon Resource Name of the group. |
-|users       | Array of users associated with the group.  |
+|Property            | Description|
+| ---                | --- |
+|group\_name         | The group name. |
+|group\_id           | The group ID. |
+|arn                 | The Amazon Resource Name of the group. |
+|users               | Array of users associated with the group.  |
+|inline_policy_names | A list of inline policy names associated with the group. |
 
 ## Examples
 

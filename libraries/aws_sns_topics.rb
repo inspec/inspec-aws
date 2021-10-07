@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSnsTopics < AwsResourceBase
   name 'aws_sns_topics'
-  desc 'Verifies settings for SNS Topics in bulk'
+  desc 'Verifies settings for SNS Topics in bulk.'
   example "
     describe aws_sns_topics do
       its('topic_arns') { should include 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf' }
