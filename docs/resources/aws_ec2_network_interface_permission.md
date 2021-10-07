@@ -23,12 +23,12 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
-| network_interface_permission_id | The ID of the network interface. | network_interface_permission_id |
-| network_interface_id |  The Amazon Web Services account ID. | network_interface_id |
-| aws_account_id |The Amazon Web Service. Currently not supported. | aws_account_id|
-| state |The state of the permission.  String, one of "pending", "granted", "revoking", "revoked". | state |
+| Property | Description | 
+| --- | --- |
+| network_interface_permission_id | The ID of the network interface. |
+| network_interface_id |  The Amazon Web Services account ID. |
+| aws_account_id |The Amazon Web Service. Currently not supported. |
+| state |The state of the permission.  Valid values are: "pending", "granted", "revoking", "revoked". |
 | status_message | The status message of the permission state. | status_message |
 
 ## Examples
