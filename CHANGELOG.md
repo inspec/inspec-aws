@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.7 -->
+<!-- latest_release 1.73.8 -->
+## [v1.73.8](https://github.com/inspec/inspec-aws/tree/v1.73.8) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_authorizer [#641](https://github.com/inspec/inspec-aws/pull/641) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.73.7](https://github.com/inspec/inspec-aws/tree/v1.73.7) (2021-10-07)
 
 #### Merged Pull Requests
 - soumyo/aws_apigateway_base_path_mapping [#643](https://github.com/inspec/inspec-aws/pull/643) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.73.6](https://github.com/inspec/inspec-aws/tree/v1.73.6) (2021-10-07)
 
