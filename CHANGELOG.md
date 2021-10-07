@@ -1,9 +1,114 @@
-<!-- latest_release 1.69.0 -->
+<!-- latest_release 1.73.6 -->
+## [v1.73.6](https://github.com/inspec/inspec-aws/tree/v1.73.6) (2021-10-07)
+
+#### Merged Pull Requests
+- Nirbhay/CloudFormationStackSet [#655](https://github.com/inspec/inspec-aws/pull/655) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.73.5](https://github.com/inspec/inspec-aws/tree/v1.73.5) (2021-10-06)
+
+#### Merged Pull Requests
+- adding attribute for ELB resource [#677](https://github.com/inspec/inspec-aws/pull/677) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.73.4](https://github.com/inspec/inspec-aws/tree/v1.73.4) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Support for network manager global network resource [#539](https://github.com/inspec/inspec-aws/pull/539) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.73.3](https://github.com/inspec/inspec-aws/tree/v1.73.3) (2021-10-05)
+
+#### Merged Pull Requests
+- Nirbhay/Added Prefix list resource support [#538](https://github.com/inspec/inspec-aws/pull/538) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.73.2](https://github.com/inspec/inspec-aws/tree/v1.73.2) (2021-10-01)
+
+#### Merged Pull Requests
+- Update release notes 2021-10-01 [#662](https://github.com/inspec/inspec-aws/pull/662) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.73.1](https://github.com/inspec/inspec-aws/tree/v1.73.1) (2021-10-01)
+
+#### Merged Pull Requests
+- Fix underscore in publish-release-notes.sh [#661](https://github.com/inspec/inspec-aws/pull/661) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.73.0](https://github.com/inspec/inspec-aws/tree/v1.73.0) (2021-09-30)
+
+#### Merged Pull Requests
+- fixing a attribute in cloudfront resource [#648](https://github.com/inspec/inspec-aws/pull/648) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.72.0](https://github.com/inspec/inspec-aws/tree/v1.72.0) (2021-09-30)
+
+#### Merged Pull Requests
+- adding tags attribute to KMS key resource [#522](https://github.com/inspec/inspec-aws/pull/522) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.71.0](https://github.com/inspec/inspec-aws/tree/v1.71.0) (2021-09-30)
+
+#### Merged Pull Requests
+- Adding attributes for ELB resource [#623](https://github.com/inspec/inspec-aws/pull/623) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.70.3](https://github.com/inspec/inspec-aws/tree/v1.70.3) (2021-09-30)
+
+#### Merged Pull Requests
+- Change date format in publish-release-notes script [#653](https://github.com/inspec/inspec-aws/pull/653) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.70.2](https://github.com/inspec/inspec-aws/tree/v1.70.2) (2021-09-29)
+
+#### Merged Pull Requests
+- Add releases as a Hugo module [#650](https://github.com/inspec/inspec-aws/pull/650) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.70.1](https://github.com/inspec/inspec-aws/tree/v1.70.1) (2021-09-29)
+
+#### Merged Pull Requests
+- fixed typo [#649](https://github.com/inspec/inspec-aws/pull/649) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.70.0](https://github.com/inspec/inspec-aws/tree/v1.70.0) (2021-09-24)
+
+#### Merged Pull Requests
+- Inline policy names for IAM Groups [#621](https://github.com/inspec/inspec-aws/pull/621) ([jb897](https://github.com/jb897))
+
+## [v1.69.8](https://github.com/inspec/inspec-aws/tree/v1.69.8) (2021-09-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_interface_attachment [#527](https://github.com/inspec/inspec-aws/pull/527) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.7](https://github.com/inspec/inspec-aws/tree/v1.69.7) (2021-09-23)
+
+#### Merged Pull Requests
+- Scripts to automate release notes &amp; announcement [#632](https://github.com/inspec/inspec-aws/pull/632) ([kagarmoe](https://github.com/kagarmoe))
+
+## [v1.69.6](https://github.com/inspec/inspec-aws/tree/v1.69.6) (2021-09-23)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_interface [#526](https://github.com/inspec/inspec-aws/pull/526) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.5](https://github.com/inspec/inspec-aws/tree/v1.69.5) (2021-09-23)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_insights_path [#525](https://github.com/inspec/inspec-aws/pull/525) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.4](https://github.com/inspec/inspec-aws/tree/v1.69.4) (2021-09-22)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_internet_gateway [#523](https://github.com/inspec/inspec-aws/pull/523) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.3](https://github.com/inspec/inspec-aws/tree/v1.69.3) (2021-09-22)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_network_insights_analysis [#524](https://github.com/inspec/inspec-aws/pull/524) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.2](https://github.com/inspec/inspec-aws/tree/v1.69.2) (2021-09-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_vpn_connection_route [#498](https://github.com/inspec/inspec-aws/pull/498) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.69.1](https://github.com/inspec/inspec-aws/tree/v1.69.1) (2021-09-21)
+
+#### Merged Pull Requests
+- soumyo/plural_resource_s3_bucket_objects [#520](https://github.com/inspec/inspec-aws/pull/520) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.69.0](https://github.com/inspec/inspec-aws/tree/v1.69.0) (2021-09-20)
 
 #### Merged Pull Requests
 - adding attributes for cloud front distribution [#633](https://github.com/inspec/inspec-aws/pull/633) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.68.1](https://github.com/inspec/inspec-aws/tree/v1.68.1) (2021-09-20)
 

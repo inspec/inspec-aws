@@ -770,6 +770,26 @@ output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
 
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
+output "aws_internet_gateway_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.id
+}
+
+output "aws_internet_gateway_owner_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.owner_id
+}
+
+output "aws_internet_gateway_vpc_id" {
+  value = aws_vpc.aws_vpc_internet_gateway_test.id
+}
+
+output "aws_network_interface_id1" {
+  value = aws_network_interface.aws_network_interface_test.id
+}
+
 output "aws_api_gateway_rest_api_id" {
   value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
 }
