@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudwatch_dashboards
 
-Use the `aws_cloudwatch_dashboards` InSpec audit resource to test properties of the plural AWS CloudWatch Dashboard.
+Use the `aws_cloudwatch_dashboards` InSpec audit resource to test properties of the plural AWS CloudWatch dashboard.
 
 ## Syntax
 
@@ -17,27 +17,31 @@ Ensure that the dashboard exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudWatch Dashboard.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html).
+This resource does not require any parameters.
+
+For additional information, see the [AWS documentation on AWS CloudWatch dashboard.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
-| dashboard_name | The name of the dashboard. | dashboard_name |
-| dashboard_arn | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
+| dashboard_names | The name of the dashboard. | dashboard_name |
+| dashboard_arns | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
 | last_modified | The time stamp of when the dashboard was last modified, either by an API call or through the console. | last_modified |
-| size | The size of the dashboard, in bytes. | size |
+| sizes | The size of the dashboard, in bytes. | size |
 
 ## Examples
 
-### Ensure a dashboard arn is available.
+### Ensure a dashboard ARN is available.
+
     describe aws_cloudwatch_dashboards do
       its('dashboard_arns') { should include 'ARN' }
     end
 
 ### Ensure a dashboard name is available.
+
     describe aws_cloudwatch_dashboards do
-        its('dashboard_names') { should include 'DashboardName' }
+        its('dashboard_names') { should include 'DASHBOARD_NAME' }
     end
 
 ## Matchers
