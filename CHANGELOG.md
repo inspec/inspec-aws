@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.10 -->
+<!-- latest_release 1.73.11 -->
+## [v1.73.11](https://github.com/inspec/inspec-aws/tree/v1.73.11) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_api_key [#640](https://github.com/inspec/inspec-aws/pull/640) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.73.10](https://github.com/inspec/inspec-aws/tree/v1.73.10) (2021-10-07)
 
 #### Merged Pull Requests
 - soumyo/aws_apigateway_account [#639](https://github.com/inspec/inspec-aws/pull/639) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.73.9](https://github.com/inspec/inspec-aws/tree/v1.73.9) (2021-10-07)
 
