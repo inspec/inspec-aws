@@ -1,9 +1,39 @@
-<!-- latest_release 1.73.5 -->
+<!-- latest_release 1.73.11 -->
+## [v1.73.11](https://github.com/inspec/inspec-aws/tree/v1.73.11) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_api_key [#640](https://github.com/inspec/inspec-aws/pull/640) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.73.10](https://github.com/inspec/inspec-aws/tree/v1.73.10) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_account [#639](https://github.com/inspec/inspec-aws/pull/639) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.73.9](https://github.com/inspec/inspec-aws/tree/v1.73.9) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_client_certificate [#642](https://github.com/inspec/inspec-aws/pull/642) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.73.8](https://github.com/inspec/inspec-aws/tree/v1.73.8) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_authorizer [#641](https://github.com/inspec/inspec-aws/pull/641) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.73.7](https://github.com/inspec/inspec-aws/tree/v1.73.7) (2021-10-07)
+
+#### Merged Pull Requests
+- soumyo/aws_apigateway_base_path_mapping [#643](https://github.com/inspec/inspec-aws/pull/643) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.73.6](https://github.com/inspec/inspec-aws/tree/v1.73.6) (2021-10-07)
+
+#### Merged Pull Requests
+- Nirbhay/CloudFormationStackSet [#655](https://github.com/inspec/inspec-aws/pull/655) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.73.5](https://github.com/inspec/inspec-aws/tree/v1.73.5) (2021-10-06)
 
 #### Merged Pull Requests
 - adding attribute for ELB resource [#677](https://github.com/inspec/inspec-aws/pull/677) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.73.4](https://github.com/inspec/inspec-aws/tree/v1.73.4) (2021-10-05)
 
