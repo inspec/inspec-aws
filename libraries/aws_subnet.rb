@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSubnet < AwsResourceBase
   name 'aws_subnet'
-  desc 'Verifies settings for an AWS VPC Subnet'
+  desc 'Verifies settings for an AWS VPC Subnet.'
 
   example "
     describe aws_subnet(subnet_id: 'subnet-12345678') do
@@ -52,6 +52,6 @@ class AwsSubnet < AwsResourceBase
   end
 
   def to_s
-    "VPC Subnet #{@display_name}"
+    "VPC Subnet: #{@display_name}"
   end
 end

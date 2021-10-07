@@ -34,7 +34,7 @@ class AWSAthenaWorkGroups < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.athena_client.list_work_groups(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return work_groups_rows if !@api_response || @api_response.empty?
       @api_response.work_groups.each do |work_group|
         work_groups_rows += [{
           name: work_group.name,

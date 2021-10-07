@@ -4,13 +4,13 @@ require 'aws_backend'
 
 class AwsVpces < AwsResourceBase
   name 'aws_vpc_endpoints'
-  desc 'Verifies settings for an AWS VPC Endpoints in bulk'
+  desc 'Verifies settings for an AWS VPC Endpoints in bulk.'
 
-  example '
+  example "
     describe aws_vpc_endpoints do
       it { should exist }
     end
-  '
+  "
   attr_reader :table
 
   # FilterTable setup
@@ -37,7 +37,7 @@ class AwsVpces < AwsResourceBase
     catch_aws_errors do
       @vpces = @aws.compute_client.describe_vpc_endpoints
     end
-    return [] if !@vpces || @vpces.empty?
+    return vpce_rows if !@vpces || @vpces.empty?
     @vpces.vpc_endpoints.each do |vpce|
       vpce_rows+=[{ vpc_endpoint_id: vpce[:vpc_endpoint_id],
                     vpc_endpoint_type: vpce[:vpc_endpoint_type],

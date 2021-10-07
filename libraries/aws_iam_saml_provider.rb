@@ -5,13 +5,13 @@ require 'aws_backend'
 class AwsIamSamlProvider < AwsResourceBase
   name 'aws_iam_saml_provider'
   desc 'Verifies settings for a SAML Provider.'
-  example '
-    describe aws_iam_saml_provider("arn:aws:iam::123456789012:saml-provider/FANCY") do
+  example "
+    describe aws_iam_saml_provider('arn:aws:iam::123456789012:saml-provider/FANCY') do
         it { should exist }
-        its("arn") { should match("arn:aws:iam::.*:saml-provider\/FANCY") }
-        its("valid_until") { should be > Time.now + 90 * 86400 }
+        its('arn') { should match('arn:aws:iam::.*:saml-provider\/FANCY') }
+        its('valid_until') { should be > Time.now + 90 * 86400 }
     end
-  '
+  "
   supports platform: 'aws'
 
   attr_reader :provider, :arn, :saml_metadata_document, :create_date, :valid_until
