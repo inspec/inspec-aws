@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.5 -->
+<!-- latest_release 1.73.6 -->
+## [v1.73.6](https://github.com/inspec/inspec-aws/tree/v1.73.6) (2021-10-07)
+
+#### Merged Pull Requests
+- Nirbhay/CloudFormationStackSet [#655](https://github.com/inspec/inspec-aws/pull/655) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.73.5](https://github.com/inspec/inspec-aws/tree/v1.73.5) (2021-10-06)
 
 #### Merged Pull Requests
 - adding attribute for ELB resource [#677](https://github.com/inspec/inspec-aws/pull/677) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.73.4](https://github.com/inspec/inspec-aws/tree/v1.73.4) (2021-10-05)
 
