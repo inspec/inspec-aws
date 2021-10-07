@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_cache_policies
 
-Use the `aws_cloudfront_cache_policies` InSpec audit resource to test properties of the plural AWS CloudFront CachePolicy.
+Use the `aws_cloudfront_cache_policies` InSpec audit resource to test properties of multiple AWS CloudFront cache policies.
 
-The AWS::CloudFront::CachePolicy describes the cache policy.
+The `AWS::CloudFront::CachePolicy` resource describes the CloudFront cache policy.
 
 ## Syntax
 
@@ -19,11 +19,13 @@ Ensure that the custom resource exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFormation CachePolicy.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cachepolicy.html).
+This resource does not require any parameters.
+
+For additional information, see the [AWS documentation on AWS CloudFront cache policy.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cache policy.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | types | The type for the cache policy. | type |
 | ids | The unique identifier for the cache policy. | id |
@@ -36,12 +38,14 @@ For additional information, see the [AWS documentation on AWS CloudFormation Cac
 
 ## Examples
 
-### Ensure a id is available.
+### Test that an ID is available.
+
     describe aws_cloudfront_cache_policies do
       its('ids') { should include 'ID' }
     end
 
-### Verify the max ttl of the policy.
+### Verify the maximum TTL of the policy.
+
     describe aws_cloudfront_cache_policies do
         its('max_ttls') { should include 1 }
     end
