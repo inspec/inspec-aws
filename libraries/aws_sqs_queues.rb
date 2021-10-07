@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsSqsQueues < AwsResourceBase
   name 'aws_sqs_queues'
-  desc 'Verifies settings for a collection AWS SQS Queues'
-  example '
+  desc 'Verifies settings for a collection AWS SQS Queues.'
+  example "
     describe aws_sqs_queues do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

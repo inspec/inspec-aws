@@ -26,17 +26,13 @@ class AWSAthenaWorkGroup < AwsResourceBase
     end
   end
 
-  def id
+  def work_group
     return nil unless exists?
     @work_group[:work_group]
   end
 
   def exists?
     !@work_group.nil? && !@work_group.empty?
-  end
-
-  def encrypted?
-    @work_group[:encrypted]
   end
 
   def to_s

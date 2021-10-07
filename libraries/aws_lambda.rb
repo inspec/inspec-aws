@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsLambda < AwsResourceBase
   name 'aws_lambda'
-  desc 'Verifies the settings for a set of lambda'
-  example '
-    describe aws_lambda("lambda_fred") do
+  desc 'Verifies the settings for a set of lambda.'
+  example "
+    describe aws_lambda('lambda_fred') do
       ....
     end
-  '
+  "
 
   attr_reader :tags
 
