@@ -26,7 +26,7 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
     end
   end
 
-  def id
+  def service_namespace
     return nil unless exists?
     @scaling_policies[:service_namespace]
   end

@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsIamPolicies < AwsResourceBase
   name 'aws_iam_policies'
-  desc 'Verifies settings for a collection AWS Iam Policies'
-  example '
+  desc 'Verifies settings for a collection AWS IAM Policies.'
+  example "
     describe aws_iam_policies do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

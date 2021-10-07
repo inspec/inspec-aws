@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsVPCEndpointService < AwsResourceBase
   name 'aws_vpc_endpoint_service'
-  desc 'Verifies settings for an AWS VPC End Point Service'
+  desc 'Verifies settings for an AWS VPC End Point Service.'
 
   example "
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do

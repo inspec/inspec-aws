@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsVPNGateways < AwsResourceBase
   name 'aws_vpn_gateways'
-  desc 'Verifies settings for AWS VPN Gateways'
+  desc 'Verifies settings for AWS VPN Gateways.'
 
   example "
     describe aws_vpn_gateways do

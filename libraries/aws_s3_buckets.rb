@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsS3Buckets < AwsResourceBase
   name 'aws_s3_buckets'
-  desc 'Verifies settings for AWS S3 Buckets in bulk'
+  desc 'Verifies settings for AWS S3 Buckets in bulk.'
   example "
     describe aws_s3_bucket do
       its('bucket_names') { should eq ['my_bucket'] }
