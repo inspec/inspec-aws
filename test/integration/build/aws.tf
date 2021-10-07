@@ -229,6 +229,8 @@ variable "aws_ecs_task_definition_family" {}
 variable "aws_ecs_service_name" {}
 variable "aws_iam_instance_profile_name1" {}
 variable "aws_iam_role_name1" {}
+variable "aws_vpn_connection_route_destination_cidr_block" {}
+variable "aws_vpn_connection_route_state" {}
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -3822,6 +3824,34 @@ resource "aws_vpc" "aws_vpc_test2" {
   cidr_block = var.aws_accepter_vpc_info_cidr_block
 }
 
+# aws_vpn_connection_route tf resource
+
+resource "aws_vpc" "aws_vpc_test_vcr" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_test_vcr" {
+  vpc_id = aws_vpc.aws_vpc_test_vcr.id
+}
+
+resource "aws_customer_gateway" "aws_customer_gateway_test_vcr" {
+  bgp_asn    = 65000
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_test_vcr" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_test_vcr.id
+  customer_gateway_id = aws_customer_gateway.aws_customer_gateway_test_vcr.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test_vcr" {
+  destination_cidr_block = var.aws_vpn_connection_route_destination_cidr_block
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_test_vcr.id
+}
+
 #lambda_event source mapping
 resource "aws_sqs_queue" "terraform_queue" {
   name                      = "terraform-example-queue"
@@ -3880,6 +3910,7 @@ resource "aws_iam_role_policy_attachment" "sto-readonly-role-policy-attach" {
   role       = aws_iam_role.iam_for_lambda.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
 }
+
 resource "aws_route53_zone" "for_route53_set_record_test" {
 name = var.aws_route52_record_set_name
 }
@@ -3913,6 +3944,34 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
 
+#VPN Connection Route
+
+resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_vpn_gateway" "aws_vpn_gateway_vpn_connection_route_test" {
+  vpc_id = aws_vpc.aws_vpc_vpn_connection_route_test.id
+}
+
+resource "aws_customer_gateway" "customer_gateway_vpn_connection_route_test" {
+  bgp_asn    = 65001
+  ip_address = "172.0.0.1"
+  type       = "ipsec.1"
+}
+
+resource "aws_vpn_connection" "aws_vpn_connection_vpn_connection_route_test" {
+  vpn_gateway_id      = aws_vpn_gateway.aws_vpn_gateway_vpn_connection_route_test.id
+  customer_gateway_id = aws_customer_gateway.customer_gateway_vpn_connection_route_test.id
+  type                = "ipsec.1"
+  static_routes_only  = true
+}
+
+resource "aws_vpn_connection_route" "aws_vpn_connection_route_test" {
+  destination_cidr_block = "192.168.10.0/24"
+  vpn_connection_id      = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
 #VPC Peering Connection
 
 resource "aws_vpc_peering_connection" "aws_vpc_peering_connection_test" {
@@ -3933,7 +3992,6 @@ resource "aws_ec2_traffic_mirror_filter" "filter" {
   description      = "traffic mirror filter - terraform example"
   network_services = ["amazon-dns"]
 }
-
 
 resource "aws_ec2_traffic_mirror_filter" "filter" {
   description      = "traffic mirror filter - terraform example"
@@ -3959,12 +4017,10 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld"
   }
-
 }
 
 data "aws_ami" "ubuntu" {
   most_recent = true
-
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -3974,7 +4030,6 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
   owners = ["099720109477"] # Canonical
 }
 
@@ -3986,3 +4041,113 @@ resource "aws_iam_openid_connect_provider" "for_oidc" {
   ]
   thumbprint_list = []
 }
+
+#Internet Gateway
+resource "aws_internet_gateway" "aws_internet_gateway_test" {
+  vpc_id = aws_vpc.aws_vpc_internet_gateway_test.id
+
+  tags = {
+    Name = "test"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_internet_gateway_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+#Network Interface
+
+resource "aws_vpc" "my_vpc_network_interface_test" {
+  cidr_block = "172.16.0.0/16"
+
+  tags = {
+    Name = "tf-example"
+  }
+}
+
+resource "aws_subnet" "my_subnet_network_interface_test" {
+  vpc_id            = aws_vpc.my_vpc_network_interface_test.id
+  cidr_block        = "172.16.10.0/24"
+  availability_zone = "us-west-2a"
+
+  tags = {
+    Name = "tf-example"
+  }
+}
+
+resource "aws_network_interface" "aws_network_interface_test" {
+  subnet_id   = aws_subnet.my_subnet_network_interface_test.id
+  private_ips = ["172.16.10.100"]
+
+  tags = {
+    Name = "primary_network_interface"
+  }
+}
+
+resource "aws_instance" "aws_instance_test" {
+  ami           = "ami-003634241a8fcdec0" # us-west-2
+  instance_type = "t2.micro"
+
+  network_interface {
+    network_interface_id = aws_network_interface.aws_network_interface_test.id
+    device_index         = 0
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_bm_test1" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_bm_test1" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_bm_test1" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_bm_test1.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name    = "example"
+}
+
+resource "aws_api_gateway_base_path_mapping" "aws_api_gateway_base_path_mapping_bm_test1" {
+  api_id      = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name  = aws_api_gateway_stage.aws_api_gateway_stage_bm_test1.stage_name
+  domain_name = "test.eng.chefdemo.net"
+}
+

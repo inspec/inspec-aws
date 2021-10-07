@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEbsSnapshot < AwsResourceBase
   name 'aws_ebs_snapshot'
-  desc 'Verifies settings for an EBS snapshot'
+  desc 'Verifies settings for an EBS snapshot.'
 
   example "
     describe aws_ebs_snapshot('snap-12345678') do
