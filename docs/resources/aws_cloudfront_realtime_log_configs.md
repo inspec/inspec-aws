@@ -1,11 +1,11 @@
 ---
-title: About the aws_cloud_front_realtime_log_configs Resource
+title: About the aws_cloudfront_realtime_log_configs Resource
 platform: aws
 ---
 
-# aws_cloud_front_realtime_log_configs
+# aws_cloudfront_realtime_log_configs
 
-Use the `aws_cloud_front_realtime_log_configs` InSpec audit resource to test plural properties of AWS CloudFront RealtimeLogConfig.
+Use the `aws_cloudfront_realtime_log_configs` InSpec audit resource to test plural properties of AWS CloudFront RealtimeLogConfig.
 
 The AWS::CloudFront::RealtimeLogConfig is a real-time log configuration.
 
@@ -13,7 +13,7 @@ The AWS::CloudFront::RealtimeLogConfig is a real-time log configuration.
 
 Ensure that the config exists.
 
-    describe aws_cloud_front_realtime_log_configs do
+    describe aws_cloudfront_realtime_log_configs do
       it { should exist }
     end
 
@@ -34,13 +34,13 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 ## Examples
 
 ### Ensure an arn is available.
-    describe aws_cloud_front_realtime_log_configs do
+    describe aws_cloudfront_realtime_log_configs do
       its('arns') { should include 'ARN' }
     end
 
 ### Ensure a name is available.
-    describe aws_cloud_front_realtime_log_configs do
-        its('names') { should include 'ConfigName' }
+    describe aws_cloudfront_realtime_log_configs do
+        its('names') { should include 'CONFIG_NAME' }
     end
 
 ## Matchers
@@ -53,13 +53,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloud_front_realtime_log_configs do
+    describe aws_cloudfront_realtime_log_configs do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloud_front_realtime_log_configs do
+    describe aws_cloudfront_realtime_log_configs do
       it { should_not exist }
     end
 
@@ -67,7 +67,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_cloud_front_realtime_log_configs do
+    describe aws_cloudfront_realtime_log_configs do
       it { should be_available }
     end
 

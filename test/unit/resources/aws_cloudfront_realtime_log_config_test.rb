@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloud_front_realtime_log_config'
+require 'aws_cloudfront_realtime_log_config'
 require 'aws-sdk-core'
 
 class AwsCloudFrontRealtimeLogConfigConstructorTest < Minitest::Test

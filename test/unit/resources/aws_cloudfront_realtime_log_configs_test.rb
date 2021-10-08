@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloud_front_realtime_log_configs'
+require 'aws_cloudfront_realtime_log_configs'
 require 'aws-sdk-core'
 
 class AwsCloudFrontRealtimeLogConfigsConstructorTest < Minitest::Test
@@ -12,7 +12,7 @@ class AwsCloudFrontRealtimeLogConfigsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsCloudFrontRealtimeLogConfigs.new('rubbish') }
   end
 
-  def test_api_mapping_non_existing_for_empty_response
+  def test_realtime_log_configs_non_existing_for_empty_response
     refute AwsCloudFrontRealtimeLogConfigs.new(client_args: { stub_responses: true }).exist?
   end
 end
