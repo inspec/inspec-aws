@@ -4290,3 +4290,9 @@ resource "aws_lambda_function" "aws_lambda_function_api_gateway_authorizer_test1
 resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate_test1" {
   description = "My client certificate."
 }
+
+## Cloud Front Origin Access Identity
+
+resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
+  comment = "Some comment"
+}

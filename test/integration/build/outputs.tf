@@ -770,6 +770,18 @@ output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
 
+output "aws_cloudfront_origin_access_identity_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.id
+}
+
+output "aws_cloudfront_origin_access_identity_s3_canonical_user_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.s3_canonical_user_id
+}
+
+output "aws_cloudfront_origin_access_identity_caller_reference" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.caller_reference
+}
+
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
