@@ -17,7 +17,9 @@ Ensure that network interface permission ID exists.
 
 ## Parameters
 
-`network_interface_permission_id` _(required)_: The ID of the network interface permission.
+`network_interface_permission_id` _(required)_
+
+: The ID of the network interface permission.
 
 For additional information, see the [AWS documentation on AWS EC2 Network Interface Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html).
 
