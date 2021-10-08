@@ -17,12 +17,13 @@ Use the `aws_ec2_placement_group` InSpec audit resource to test the properties o
 
 ## Parameters
 
-`group_id/group_name` _(required)_
+`group_id` _(required)_
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| group_id | The id of the placement group. | group_id |
-| group_name | The name of the placement group. | group_name |
+The ID of the placement group.
+
+`group_name` _(required)_
+
+The name of the placement group.
 
 For additional information, refer [AWS documentation on EC2 Placement Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
 
