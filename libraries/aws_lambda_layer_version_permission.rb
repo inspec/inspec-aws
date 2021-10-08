@@ -7,7 +7,7 @@ class AWSLambdaLayerVersionPermission < AwsResourceBase
   desc 'Returns the permission policy for a version of an Lambda layer.'
 
   example "
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       it { should exist }
     end
   "

@@ -7,13 +7,13 @@ platform: aws
 
 Use the `aws_lambda_layer_version_permission` InSpec audit resource to test properties of a single specific AWS Lambda LayerVersionPermission.
 
-The AWS::Lambda::LayerVersionPermission resource adds permissions to the resource-based policy of a version of an Lambda layer.
+The AWS::Lambda::LayerVersionPermission adds permissions to the resource-based policy of a version of an Lambda layer.
 
 ## Syntax
 
 Ensure that the permission exists.
 
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       it { should exist }
     end
 
@@ -30,21 +30,21 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| policy | The policy document. | policy |
-| revision_id | A unique identifier for the current revision of the policy. | revision_id |
+| Property | Description |
+| --- | --- |
+| policy | The policy document. |
+| revision_id | A unique identifier for the current revision of the policy. |
 
 ## Examples
 
 ### Ensure policy is available.
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
-      its('policy') { should eq 'Policy' }
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
+      its('policy') { should eq 'POLICY' }
     end
 
 ### Ensure a revision id is available.
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
-        its('revision_id') { should eq 'RevisionId' }
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
+        its('revision_id') { should eq 'REVISION_ID' }
     end
 
 ## Matchers
@@ -57,13 +57,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_lambda_layer_version_permission(layer_name: 'dummy', version_number: 'dummy') do
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       it { should_not exist }
     end
 
@@ -71,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_lambda_layer_version_permission(layer_name: 'LayerName', version_number: 'VersionNumber') do
+    describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       it { should be_available }
     end
 
