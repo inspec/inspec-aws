@@ -48,12 +48,12 @@ For additional information, see the [AWS documentation on AWS CloudWatch Composi
 
 ### Ensure an alarm arn is available.
     describe aws_cloudwatch_composite_alarms do
-        its('alarm_arns') { should include 'AlarmARN' }
+        its('alarm_arns') { should include 'ALARM_ARN' }
     end
 
 ### Ensure an alarm name is available.
     describe aws_cloudwatch_composite_alarms do
-        its('alarm_names') { should include 'AlarmName' }
+        its('alarm_names') { should include 'ALARM_NAME' }
     end
 
 ## Matchers
