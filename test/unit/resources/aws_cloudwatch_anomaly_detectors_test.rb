@@ -1,11 +1,11 @@
 require 'helper'
-require 'aws_cloud_watch_anomaly_detectors'
+require 'aws_cloudwatch_anomaly_detectors'
 require 'aws-sdk-core'
 
 class AWSCloudWatchAnomalyDetectorsConstructorTest < Minitest::Test
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AWSCloudWatchAnomalyDetectors.new(unexpected: 9) }
+    assert_raises(ArgumentError) { AwsCloudwatchAnomalyDetectors.new(unexpected: 9) }
   end
 end
 
@@ -23,7 +23,7 @@ class AWSCloudWatchAnomalyDetectorsHappyPathTest < Minitest::Test
     mock_data[:state_value] = 'test1'
     data[:data] = { :anomaly_detectors => [mock_data] }
     data[:client] = Aws::CloudWatch::Client
-    @resp = AWSCloudWatchAnomalyDetectors.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AwsCloudwatchAnomalyDetectors.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_namespaces

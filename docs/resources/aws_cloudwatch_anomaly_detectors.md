@@ -1,11 +1,11 @@
 ---
-title: About the aws_cloud_watch_anomaly_detectors Resource
+title: About the aws_cloudwatch_anomaly_detectors Resource
 platform: aws
 ---
 
-# aws_cloud_watch_anomaly_detectors
+# aws_cloudwatch_anomaly_detectors
 
-Use the `aws_cloud_watch_anomaly_detectors` InSpec audit resource to test properties of the plural resource of AWS CloudWatch AnomalyDetector.
+Use the `aws_cloudwatch_anomaly_detectors` InSpec audit resource to test properties of the plural resource of AWS CloudWatch AnomalyDetector.
 
 The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band for a certain metric and statistic. The band represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values, and for alarms.
 
@@ -13,7 +13,7 @@ The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band fo
 
 Ensure that the anomaly detector exists.
 
-    describe aws_cloud_watch_anomaly_detectors do
+    describe aws_cloudwatch_anomaly_detectors do
       it { should exist }
     end
 
@@ -35,13 +35,13 @@ For additional information, see the [AWS documentation on AWS CloudWatch Anomaly
 ## Examples
 
 ### Ensure a namespace is available.
-    describe aws_cloud_watch_anomaly_detectors do
-      its('namespaces') { should include 'Namespace' }
+    describe aws_cloudwatch_anomaly_detectors do
+      its('namespaces') { should include 'NAMESPACE' }
     end
 
 ### Ensure a metric name is available.
-    describe aws_cloud_watch_anomaly_detectors do
-        its('metric_names') { should include 'MetricName' }
+    describe aws_cloudwatch_anomaly_detectors do
+        its('metric_names') { should include 'METRIC_NAME' }
     end
 
 ## Matchers
@@ -54,13 +54,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloud_watch_anomaly_detectors do
+    describe aws_cloudwatch_anomaly_detectors do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloud_watch_anomaly_detectors do
+    describe aws_cloudwatch_anomaly_detectors do
       it { should_not exist }
     end
 
@@ -68,7 +68,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_cloud_watch_anomaly_detectors do
+    describe aws_cloudwatch_anomaly_detectors do
       it { should be_available }
     end
 
