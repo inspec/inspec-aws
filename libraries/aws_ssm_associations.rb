@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsSsmAssociations < AwsResourceBase
   name 'aws_ssm_associations'
-  desc 'Verifies settings for a SSM Association in bulk'
-  example '
+  desc 'Verifies settings for a SSM Association in bulk.'
+  example "
     describe aws_ssm_associations do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 
@@ -39,7 +39,7 @@ class AwsSsmAssociations < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.ssm_client.list_associations(pagination_options)
       end
-      return [] if !api_response || api_response.empty?
+      return ssm_association_rows if !api_response || api_response.empty?
 
       api_response.associations.each do |ssm_association|
         ssm_association_rows += [{ name:                ssm_association.name,

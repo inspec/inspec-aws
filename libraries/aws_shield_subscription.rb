@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsShieldSubscription < AwsResourceBase
   name 'aws_shield_subscription'
-  desc 'Verifies settings for a Shield Subscription'
+  desc 'Verifies settings for a Shield Subscription.'
   example "
     describe aws_shield_subscription() do
       it { should exist }

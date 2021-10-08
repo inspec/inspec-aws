@@ -35,6 +35,6 @@ class AWSIAMInstanceProfile < AwsResourceBase
   end
 
   def to_s
-    "instance_profile_name: #{@display_name}"
+    "Instance Profile Name: #{@display_name}"
   end
 end

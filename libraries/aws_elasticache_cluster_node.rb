@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsElastiCacheClusterNode < AwsResourceBase
   name 'aws_elasticache_cluster_node'
-  desc 'Verifies settings for an AWS Elasticache Cluster Node'
+  desc 'Verifies settings for an AWS Elasticache Cluster Node.'
 
   example "
     describe aws_elasticache_cluster_node(cache_cluster_id: 'my-elasticache-cluster', node_id: '0001') do
