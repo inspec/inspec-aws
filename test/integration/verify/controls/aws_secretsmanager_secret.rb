@@ -1,7 +1,7 @@
 aws_secretsmanager_secret_sm_id = attribute("aws_secretsmanager_secret_sm_id", value: "", description: "")
 aws_secretsmanager_secret_sm_arn = attribute("aws_secretsmanager_secret_sm_arn", value: "", description: "")
 
-control 'aws-secretsmanager-secrets-1.0' do
+control 'aws-secretsmanager-secret-1.0' do
     impact 1.0
     title 'Lists all of the secrets that are stored by Secrets Manager in the AWS account.'
 

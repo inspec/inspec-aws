@@ -1,8 +1,9 @@
-aws_internet_gateway_id = value("aws_internet_gateway_id", value: "", description: "")
-aws_internet_gateway_owner_id = value("aws_internet_gateway_owner_id", value: "", description: "")
-aws_internet_gateway_vpc_id = value("aws_internet_gateway_vpc_id", value: "", description: "")
+aws_internet_gateway_id = attribute("aws_internet_gateway_id", value: "", description: "")
+aws_internet_gateway_owner_id = attribute("aws_internet_gateway_owner_id", value: "", description: "")
+aws_internet_gateway_vpc_id = attribute("aws_internet_gateway_vpc_id", value: "", description: "")
 
 control 'aws-ec2-internet-gateway-1.0' do
+
   impact 1.0
   title 'Test a singular resource of the internet gateway.'
 
