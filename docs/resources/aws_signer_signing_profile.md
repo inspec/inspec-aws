@@ -13,7 +13,7 @@ A signing profile is a code signing template that can be used to carry out a pre
 
 Ensure that the signing profile exists.
 
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
       it { should exist }
     end
 
@@ -21,50 +21,48 @@ Ensure that the signing profile exists.
 
 `profile_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| profile_name | The name of the target signing profile. |
+The name of the target signing profile.
 
 For additional information, see the [AWS documentation on AWS Signer SigningProfile.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-signingprofile.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| profile_name | The name of the target signing profile. | profile_name |
-| profile_version | The current version of the signing profile. | profile_version |
-| profile_version_arn | The signing profile ARN, including the profile version. | profile_version_arn |
-| revocation_record.revocation_effective_from | The time when revocation becomes effective. | revocation_effective_from |
-| revocation_record.revoked_at | The time when the signing profile was revoked. | revoked_at |
-| revocation_record.revoked_by | The identity of the revoker. | revoked_by |
-| signing_material.certificate_arn | The Amazon Resource Name (ARN) of the certificates that is used to sign your code. | certificate_arn |
-| platform_id | The ID of the platform that is used by the target signing profile. | platform_id |
-| platform_display_name | A human-readable name for the signing platform associated with the signing profile. | platform_display_name |
-| signature_validity_period.value | The numerical value of the time unit for signature validity. | value |
-| signature_validity_period.type | The time unit for signature validity. | type |
-| overrides.signing_configuration.encryption_algorithm | A specified override of the default encryption algorithm that is used in a code signing job. | encryption_algorithm |
-| overrides.signing_configuration.hash_algorithm | A specified override of the default hash algorithm that is used in a code signing job. | hash_algorithm |
-| overrides.signing_image_format | profile_name | signing_image_format |
-| signing_parameters | A map of key-value pairs for signing operations that is attached to the target signing profile. | signing_parameters |
-| status | The status of the target signing profile. | status |
-| status_reason | Reason for the status of the target signing profile. | status_reason |
-| arn | The Amazon Resource Name (ARN) for the signing profile. | arn |
-| tags | A list of tags associated with the signing profile. | tags |
+| Property | Description |
+| --- | --- |
+| profile_name | The name of the target signing profile. |
+| profile_version | The current version of the signing profile. |
+| profile_version_arn | The signing profile ARN, including the profile version. |
+| revocation_record.revocation_effective_from | The time when revocation becomes effective. |
+| revocation_record.revoked_at | The time when the signing profile was revoked. |
+| revocation_record.revoked_by | The identity of the revoker. |
+| signing_material.certificate_arn | The Amazon Resource Name (ARN) of the certificates that is used to sign your code. |
+| platform_id | The ID of the platform that is used by the target signing profile. |
+| platform_display_name | A human-readable name for the signing platform associated with the signing profile. |
+| signature_validity_period.value | The numerical value of the time unit for signature validity. |
+| signature_validity_period.type | The time unit for signature validity. |
+| overrides.signing_configuration.encryption_algorithm | A specified override of the default encryption algorithm that is used in a code signing job. |
+| overrides.signing_configuration.hash_algorithm | A specified override of the default hash algorithm that is used in a code signing job. |
+| overrides.signing_image_format | profile_name |
+| signing_parameters | A map of key-value pairs for signing operations that is attached to the target signing profile. |
+| status | The status of the target signing profile. |
+| status_reason | Reason for the status of the target signing profile. |
+| arn | The Amazon Resource Name (ARN) for the signing profile. |
+| tags | A list of tags associated with the signing profile. |
 
 ## Examples
 
 ### Ensure a profile name is available.
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
-      its('profile_name') { should eq 'ProfileName' }
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
+      its('profile_name') { should eq 'PROFILE_NAME' }
     end
 
 ### Ensure a profile version is available.
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
-        its('profile_version') { should eq 'ProfileVersion' }
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
+        its('profile_version') { should eq 'PROFILE_VERSION' }
     end
 
 ### Ensure a status is `Active`.
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
         its('status') { should eq 'Active' }
     end
 
@@ -78,13 +76,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_signer_signing_profile(profile_name: 'dummy') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
       it { should_not exist }
     end
 
@@ -92,7 +90,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
       it { should be_available }
     end
 

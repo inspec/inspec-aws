@@ -7,7 +7,7 @@ class AWSSignerSigningProfile < AwsResourceBase
   desc 'Returns information on a specific signing profile.'
 
   example "
-    describe aws_signer_signing_profile(profile_name: 'ProfileName') do
+    describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
       it { should exist }
     end
   "

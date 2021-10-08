@@ -42,12 +42,12 @@ For additional information, see the [AWS documentation on AWS Signer SigningProf
 
 ### Ensure a profile name is available.
     describe aws_signer_signing_profiles do
-      its('profile_names') { should include 'ProfileName' }
+      its('profile_names') { should include 'PROFILE_NAME' }
     end
 
 ### Ensure a profile version is available.
     describe aws_signer_signing_profiles do
-        its('profile_versions') { should include 'ProfileVersion' }
+        its('profile_versions') { should include 'PROFILE_VERSION' }
     end
 
 ### Ensure a status is `Active`.
