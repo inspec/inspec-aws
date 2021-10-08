@@ -7,7 +7,7 @@ class AWSEC2Host < AwsResourceBase
   desc 'Describes the specified Dedicated Hosts or all your Dedicated Hosts.'
 
   example "
-    describe aws_ec2_host(host_id: 'DedicatedHostId') do
+    describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do
       it { should exist }
     end
   "

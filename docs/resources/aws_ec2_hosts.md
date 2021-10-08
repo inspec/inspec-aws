@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_hosts` InSpec audit resource to test properties of the plural resource AWS EC2 Host.
 
-The AWS::EC2::Host resource allocates a fully dedicated physical server for launching EC2 instances.
+The AWS::EC2::Host allocates a fully dedicated physical server for launching EC2 instances.
 
 ## Syntax
 
@@ -47,7 +47,7 @@ For additional information, see the [AWS documentation on AWS EC2 Host.](https:/
 
 ### Ensure a host is available.
     describe aws_ec2_hosts do
-      its('host_ids') { should include 'DedicatedHostId' }
+      its('host_ids') { should include 'DEDICATED_HOST_ID' }
     end
 
 ### Ensure that the state is `available`.
