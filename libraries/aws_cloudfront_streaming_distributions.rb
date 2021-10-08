@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSCloudFrontStreamingDistributions < AwsResourceBase
-  name 'aws_cloud_front_streaming_distributions'
+  name 'aws_cloudfront_streaming_distributions'
   desc 'List streaming distributions.'
 
   example "
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
       it { should exist }
     end
   "

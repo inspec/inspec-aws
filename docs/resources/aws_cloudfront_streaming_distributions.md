@@ -1,17 +1,17 @@
 ---
-title: About the aws_cloud_front_streaming_distributions Resource
+title: About the aws_cloudfront_streaming_distributions Resource
 platform: aws
 ---
 
-# aws_cloud_front_streaming_distributions
+# aws_cloudfront_streaming_distributions
 
-Use the `aws_cloud_front_streaming_distributions` InSpec audit resource to test plural properties of AWS CloudFront StreamingDistribution.
+Use the `aws_cloudfront_streaming_distributions` InSpec audit resource to test plural properties of AWS CloudFront StreamingDistribution.
 
 ## Syntax
 
 Ensure that the distribution exists.
 
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
       it { should exist }
     end
 
@@ -38,12 +38,12 @@ For additional information, see the [AWS documentation on AWS CloudFront Streami
 ## Examples
 
 ### Ensure an id is available.
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
       its('ids') { should include 'ID' }
     end
 
 ### Ensure a status is `Deployed`.
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
         its('statuses') { should include 'Deployed' }
     end
 
@@ -57,13 +57,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloud_front_streaming_distributions do
+    describe aws_cloudfront_streaming_distributions do
       it { should_not exist }
     end
 

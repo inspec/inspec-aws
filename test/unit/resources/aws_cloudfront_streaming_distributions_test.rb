@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloud_front_streaming_distributions'
+require 'aws_cloudfront_streaming_distributions'
 require 'aws-sdk-core'
 
 class AWSCloudFrontStreamingDistributionsConstructorTest < Minitest::Test
