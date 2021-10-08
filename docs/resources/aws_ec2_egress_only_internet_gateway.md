@@ -7,13 +7,13 @@ platform: aws
 
 Use the `aws_ec2_egress_only_internet_gateway` InSpec audit resource to test properties of a single specific AWS EC2 Egress Only Internet Gateway.
 
-The AWS::EC2::EgressOnlyInternetGateway resource specifies an egress-only internet gateway for your VPC.
+The AWS::EC2::EgressOnlyInternetGateway specifies an egress-only internet gateway for your VPC.
 
 ## Syntax
 
 Ensure that the Egress Only Internet Gateway Id exists.
 
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       it { should exist }
     end
 
@@ -21,15 +21,13 @@ Ensure that the Egress Only Internet Gateway Id exists.
 
 `egress_only_internet_gateway_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| egress_only_internet_gateway_id | The ID of the egress-only internet gateway. |
+The ID of the egress-only internet gateway.
 
 For additional information, see the [AWS documentation on AWS EC2 Egress Only Internet Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-egressonlyinternetgateway.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | attachments | Information about the attachment of the egress-only internet gateway. | attachments |
 | attachments_states | The current state of the attachment. | state |
@@ -40,12 +38,12 @@ For additional information, see the [AWS documentation on AWS EC2 Egress Only In
 ## Examples
 
 ### Ensure an Egress Only Internet Gateway Id is available.
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
-      its('egress_only_internet_gateway_id') { should eq 'EgressOnlyInternetGatewayId' }
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
+      its('egress_only_internet_gateway_id') { should eq 'EGRESS_ONLY_INTERNET_GATEWAY_ID' }
     end
 
 ### Ensure that the attachments states is `attached`.
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
         its('attachments_states') { should eq 'attached' }
     end
 
@@ -59,13 +57,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'dummy') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       it { should_not exist }
     end
 
@@ -73,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EgressOnlyInternetGatewayId') do
+    describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       it { should be_available }
     end
 

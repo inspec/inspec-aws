@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_egress_only_internet_gateways` InSpec audit resource to test properties of the plural AWS EC2 Egress Only Internet Gateway.
 
-The AWS::EC2::EgressOnlyInternetGateway resource specifies an egress-only internet gateway for your VPC.
+The AWS::EC2::EgressOnlyInternetGateway specifies an egress-only internet gateway for your VPC.
 
 ## Syntax
 
