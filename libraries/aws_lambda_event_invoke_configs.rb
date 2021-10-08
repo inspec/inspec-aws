@@ -7,7 +7,7 @@ class AWSLambdaEventInvokeConfigs < AwsResourceBase
   desc 'Gets information about the scalable targets in the specified namespace.'
 
   example "
-    describe aws_lambda_event_invoke_configs(function_name: 'FunctionName') do
+    describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do
       it { should exist }
     end
   "

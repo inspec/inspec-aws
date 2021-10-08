@@ -7,7 +7,7 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   desc 'Retrieves the configuration for asynchronous invocation for a function, version, or alias.'
 
   example "
-    describe get_function_event_invoke_config(function_name: 'FunctionName') do
+    describe get_function_event_invoke_config(function_name: 'FUNCTION_NAME') do
       it { should exist }
     end
   "

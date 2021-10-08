@@ -5,7 +5,7 @@ platform: aws
 
 # aws_lambda_event_invoke_config
 
-Use the `aws_lambda_event_invoke_config` InSpec audit resource to test properties of a single specific AWS Lambda EventInvokeConfig.
+Use the `aws_lambda_event_invoke_config` InSpec audit resource to test properties of a specific AWS Lambda EventInvokeConfig.
 
 The AWS::Lambda::EventInvokeConfig resource configures options for asynchronous invocation on a version or an alias.
 
@@ -13,7 +13,7 @@ The AWS::Lambda::EventInvokeConfig resource configures options for asynchronous 
 
 Ensure that the config exists.
 
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
       it { should exist }
     end
 
@@ -21,11 +21,9 @@ Ensure that the config exists.
 
 `function_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| function_name | The name of the function. |
+The name of the function.
 
-For additional information, see the [AWS documentation on AWS CloudFront RealtimeLogConfig.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html).
+For additional information, see the [AWS documentation on AWS Lambda EventInvokeConfig.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html).
 
 ## Properties
 
@@ -41,18 +39,18 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 ## Examples
 
 ### Ensure an arn is available.
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
-      its('function_arn') { should eq 'FunctionARN' }
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
+      its('function_arn') { should eq 'FUNCTION_ARN' }
     end
 
 ### Ensure a maximum retry attempts is available.
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
         its('maximum_retry_attempts') { should eq 1 }
     end
 
 ### Ensure on success destination is available.
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
-        its('on_success_destinations') { should include 'Destination' }
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
+        its('on_success_destinations') { should include 'DESTINATION' }
     end
 
 ## Matchers
@@ -65,13 +63,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_lambda_event_invoke_config(function_name: 'dummy') do
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
       it { should_not exist }
     end
 
@@ -79,7 +77,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_lambda_event_invoke_config(function_name: 'FunctionName') do
+    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
       it { should be_available }
     end
 
