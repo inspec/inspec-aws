@@ -42,7 +42,7 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs
 
     describe aws_elasticloadbalancingv2_listener(load_balancer_arn: "LOAD_BALANCER_ARN") do
         its('ports') { should include PORT_NUMBER}
-      end
+    end
 
 ## Matchers
 
@@ -60,6 +60,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `autoscaling:Describe*` actions with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElasticLoadBalancingV2:Client:DescribeListenersOutput` actions with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).

@@ -74,11 +74,9 @@ Use `should_not` to test the entity should not exist.
     it { should exist }
  
     it { should_not exist }
-    
+
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions set to Allow: 
-`iam:GetUser` 
-`iam:GetAccessKeyLastUsed` 
-`iam:ListUsers` 
-`iam:ListAccessKeys` 
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetAccessKeyLastUsedResponse`, `IAM:Client:ListAccessKeysResponse` and `IAM:Client:ListUsersResponse` action with Effect set to Allow.
+
+You can find detailed documentation at [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/r53-api-permissions-ref.html)
