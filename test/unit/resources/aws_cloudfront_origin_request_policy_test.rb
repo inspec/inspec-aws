@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloud_front_origin_request_policy'
+require 'aws_cloudfront_origin_request_policy'
 require 'aws-sdk-core'
 
 class AWSCloudFrontOriginRequestPolicyConstructorTest < Minitest::Test

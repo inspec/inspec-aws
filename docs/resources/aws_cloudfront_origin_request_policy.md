@@ -1,17 +1,17 @@
 ---
-title: About the aws_cloud_front_origin_request_policy Resource
+title: About the aws_cloudfront_origin_request_policy Resource
 platform: aws
 ---
 
-# aws_cloud_front_origin_request_policy
+# aws_cloudfront_origin_request_policy
 
-Use the `aws_cloud_front_origin_request_policy` InSpec audit resource to test properties of a single specific AWS CloudFront origin request policy.
+Use the `aws_cloudfront_origin_request_policy` InSpec audit resource to test properties of a single specific AWS CloudFront origin request policy.
 
 ## Syntax
 
 Ensure that the origin request policy exists.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should exist }
     end
 
@@ -45,13 +45,13 @@ For additional information, see the [AWS documentation on AWS CloudFront origin 
 
 ### Test that an ID is available.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       its('id') { should eq 'ID' }
     end
 
 ### Verify the number of cookies.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
         its('origin_request_policy_config.cookies_config.cookies.quantity') { should eq 1 }
     end
 
@@ -65,13 +65,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should_not exist }
     end
 
@@ -79,7 +79,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should be_available }
     end
 

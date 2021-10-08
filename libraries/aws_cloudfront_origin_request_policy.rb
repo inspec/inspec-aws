@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
-  name 'aws_cloud_front_origin_request_policy'
+  name 'aws_cloudfront_origin_request_policy'
   desc 'Describes an origin request policy.'
 
   example "
-    describe aws_cloud_front_origin_request_policy(id: 'ID') do
+    describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should exist }
     end
   "
