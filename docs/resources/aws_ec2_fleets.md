@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_fleets` InSpec audit resource to test properties of the plural AWS EC2 Fleet.
 
-The AWS::EC2::SpotFleet resource specifies the configuration information to launch a fleet--or group--of instances.
+The AWS::EC2::SpotFleet specifies the configuration information to launch a fleet--or group--of instances.
 
 ## Syntax
 
@@ -50,7 +50,7 @@ For additional information, see the [AWS documentation on AWS EC2 Fleet.](https:
 
 ### Ensure a fleet id is available.
     describe aws_ec2_fleets do
-      its('fleet_ids') { should include 'FleetId' }
+      its('fleet_ids') { should include 'FLEET_ID' }
     end
 
 ### Ensure that the type is `instant`.
