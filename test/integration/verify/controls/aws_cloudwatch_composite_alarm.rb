@@ -1,12 +1,12 @@
-control 'aws-cloud-watch-composite-alarm-1.0' do
+control 'aws-cloudwatch-composite-alarm-1.0' do
   impact 1.0
   title 'Get the information about a composite alarm.'
 
-  describe aws_cloud_watch_composite_alarm(alarm_name: 'test1') do
+  describe aws_cloudwatch_composite_alarm(alarm_name: 'test1') do
     it { should exist }
   end
 
-  describe aws_cloud_watch_composite_alarm(alarm_name: 'test1') do
+  describe aws_cloudwatch_composite_alarm(alarm_name: 'test1') do
     its('actions_enabled') { should eq true }
     its('alarm_actions') { should be_empty }
     its('alarm_arn') { should_not be_empty }

@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AWSCloudWatchCompositeAlarm < AwsResourceBase
-  name 'aws_cloud_watch_composite_alarm'
+class AwsCloudwatchCompositeAlarm < AwsResourceBase
+  name 'aws_cloudwatch_composite_alarm'
   desc 'Gets a composite alarm.'
 
   example "
-    describe aws_cloud_watch_composite_alarm(alarm_name: 'CompositeAlarmName') do
+    describe aws_cloudwatch_composite_alarm(alarm_name: 'CompositeAlarmName') do
       it { should exist }
     end
   "

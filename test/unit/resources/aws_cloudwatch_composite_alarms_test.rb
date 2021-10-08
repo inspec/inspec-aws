@@ -1,11 +1,11 @@
 require 'helper'
-require 'aws_cloud_watch_composite_alarms'
+require 'aws_cloudwatch_composite_alarms'
 require 'aws-sdk-core'
 
 class AWSCloudWatchCompositeAlarmsConstructorTest < Minitest::Test
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AWSCloudWatchCompositeAlarms.new(unexpected: 9) }
+    assert_raises(ArgumentError) { AwsCloudwatchCompositeAlarms.new(unexpected: 9) }
   end
 end
 
@@ -29,7 +29,7 @@ class AWSCloudWatchCompositeAlarmsHappyPathTest < Minitest::Test
     mock_data[:state_value] = 'test1'
     data[:data] = { :composite_alarms => [mock_data] }
     data[:client] = Aws::CloudWatch::Client
-    @resp = AWSCloudWatchCompositeAlarms.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AwsCloudwatchCompositeAlarms.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_actions_enabled
