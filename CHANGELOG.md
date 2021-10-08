@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.12 -->
+<!-- latest_release 1.73.13 -->
+## [v1.73.13](https://github.com/inspec/inspec-aws/tree/v1.73.13) (2021-10-08)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudfront_origin_access_identity [#645](https://github.com/inspec/inspec-aws/pull/645) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.73.12](https://github.com/inspec/inspec-aws/tree/v1.73.12) (2021-10-08)
 
 #### Merged Pull Requests
 - soumyo/minor_modifications_in_integration_tests [#651](https://github.com/inspec/inspec-aws/pull/651) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.73.11](https://github.com/inspec/inspec-aws/tree/v1.73.11) (2021-10-07)
 
