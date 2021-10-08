@@ -7,7 +7,7 @@ class AWSEC2PlacementGroup < AwsResourceBase
   desc 'Describes the specified placement groups or all of your placement groups.'
 
   example "
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should exist }
     end
   "

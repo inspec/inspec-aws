@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_placement_groups` InSpec audit resource to test properties of the plural AWS EC2 Placement Group.
 
-The AWS::EC2::PlacementGroup resource specifies a placement group in which to launch instances.
+The AWS::EC2::PlacementGroup specifies a placement group in which to launch instances.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS EC2 Placement Grou
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | group_names | The name of the placement group. | group_name |
 | states | The state of the placement group. | state |
@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS EC2 Placement Grou
 
 ### Ensure a placement group name is available.
     describe aws_ec2_placement_groups do
-      its('group_names') { should include 'PlacementGroupName' }
+      its('group_names') { should include 'PLACEMENT_GROUP_NAME' }
     end
 
 ### Ensure that the state is `available`.

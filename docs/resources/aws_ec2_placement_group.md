@@ -7,13 +7,13 @@ platform: aws
 
 Use the `aws_ec2_placement_group` InSpec audit resource to test properties of a single specific AWS EC2 Placement Group.
 
-The AWS::EC2::PlacementGroup resource specifies a placement group in which to launch instances.
+The AWS::EC2::PlacementGroup specifies a placement group in which to launch instances.
 
 ## Syntax
 
 Ensure that the placement group exists.
 
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should exist }
     end
 
@@ -21,9 +21,7 @@ Ensure that the placement group exists.
 
 `placement_group_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| placement_group_name |The name of the placement group. |
+The name of the placement group.
 
 For additional information, see the [AWS documentation on AWS EC2 Placement Group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
 
@@ -31,22 +29,22 @@ For additional information, see the [AWS documentation on AWS EC2 Placement Grou
 
 | Property | Description | Field | 
 | --- | --- | --- |
-| group_name | The name of the placement group. | group_name |
-| state | The state of the placement group. | state |
-| strategy | The placement strategy. | strategy |
-| partition_count | The number of partitions. | partition_count |
-| group_id | The ID of the placement group. | group_id |
-| tags | Any tags applied to the placement group. | tags |
+| group_name | The name of the placement group. |
+| state | The state of the placement group. |
+| strategy | The placement strategy. |
+| partition_count | The number of partitions. |
+| group_id | The ID of the placement group. |
+| tags | Any tags applied to the placement group. |
 
 ## Examples
 
 ### Ensure a placement group name is available.
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
-      its('group_name') { should eq 'PlacementGroupName' }
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
+      its('group_name') { should eq 'PLACEMENT_GROUP_NAME' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
         its('state') { should eq 'available' }
     end
 
@@ -60,13 +58,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_placement_group(placement_group_name: 'dummy') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should_not exist }
     end
 
@@ -74,7 +72,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_placement_group(placement_group_name: 'PlacementGroupName') do
+    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should be_available }
     end
 
