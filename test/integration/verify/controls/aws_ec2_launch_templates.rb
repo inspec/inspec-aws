@@ -1,6 +1,5 @@
 aws_launch_template_name = attribute(:launch_template_name, value: '', description: 'The AWS  Launch Template Name.')
 
-
 title 'Test AWS launch templates in bulk'
 control 'aws-launch-templates-1.0' do
 

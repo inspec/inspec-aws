@@ -1,6 +1,7 @@
 aws_ebs_volume_id = attribute(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
 
 control 'aws-ec2-volume-attachments-1.0' do
+
   impact 1.0
   title 'Lists Volume Attachments'
 

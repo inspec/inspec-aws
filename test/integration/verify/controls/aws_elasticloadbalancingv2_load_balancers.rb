@@ -1,4 +1,5 @@
 aws_elbv2_load_balancer_arn = attribute(:load_balancer_arn, value: '', description: '')
+
 control 'aws-eelbv2-load-balancers-1.0' do
 
   impact 1.0

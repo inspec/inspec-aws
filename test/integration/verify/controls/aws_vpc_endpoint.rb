@@ -1,10 +1,10 @@
 title 'Test Single AWS VPC Endpoint'
 
-aws_vpce_id = attribute(:aws_vpce_id, default: '', description: 'The AWS VPC Endpoint ID.')
-aws_vpce_name = attribute(:aws_vpc_endpoint_name, default: '', description: 'The AWS VPC Endpoint Name.')
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The VPC ID where the endpoint resides')
-aws_vpce_service_name = attribute(:aws_vpce_service_name, default: '', description: 'The VPC Endpoint service name')
-aws_route_table_first_id = attribute(:aws_route_table_first_id, default: '', description: 'The VPC Endpoint Route Table ID')
+aws_vpce_id = attribute(:aws_vpce_id, value: '', description: 'The AWS VPC Endpoint ID.')
+aws_vpce_name = attribute(:aws_vpc_endpoint_name, value: '', description: 'The AWS VPC Endpoint Name.')
+aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The VPC ID where the endpoint resides')
+aws_vpce_service_name = attribute(:aws_vpce_service_name, value: '', description: 'The VPC Endpoint service name')
+aws_route_table_first_id = attribute(:aws_route_table_first_id, value: '', description: 'The VPC Endpoint Route Table ID')
 
 control 'aws-vpcendpoint-1.0' do
 
@@ -34,5 +34,4 @@ control 'aws-vpcendpoint-1.0' do
     its('private_dns_enabled')       { should be_in [true, false] }
     its('tags')              { should include('Name' => aws_vpce_name) }
   end
-
 end
