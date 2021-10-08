@@ -7,7 +7,7 @@ class AWSEC2EIPAssociation < AwsResourceBase
   desc 'Describes the specified Elastic IP addresses or all of your Elastic IP addresses.'
 
   example "
-    describe aws_ec2_eip_association(association_id: 'AllocationID') do
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should exist }
     end
   "

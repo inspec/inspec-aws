@@ -13,7 +13,7 @@ An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for examp
 
 ##### Verify that the association exists.
 
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should exist }
     end
 
@@ -21,24 +21,22 @@ An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for examp
 
 `association_id` _(required)_
 
-| Property | Description|
-| --- | --- |
-| association_id | The association ID for the address. |
+The association ID for the address.
 
 See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
-| association_id | The association ID for the address. | association_id |
+| Property | Description |
+| --- | --- |
+| association_id | The association ID for the address. |
 
 ## Examples
 
 ##### Check Association ID whether it is correct or not
 
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
-       its('association_id') { should eq "AssociationID" }
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
+       its('association_id') { should eq "ASSOCIATION_ID" }
     end
 
 ## Matchers
@@ -51,13 +49,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_eip_association(association_id: 'dummy') do
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should_not exist }
     end
 
@@ -65,7 +63,7 @@ Use `should_not` to test the entity does not exist.
 
 Check if the IP address is available.
 
-    describe aws_ec2_eip_association(association_id: 'AssociationID') do
+    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should be_available }
     end
 

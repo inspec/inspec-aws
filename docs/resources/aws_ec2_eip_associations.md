@@ -32,7 +32,7 @@ See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazo
 ##### Check Association Id is available
 
     describe aws_ec2_eip_associations do
-       its('association_ids') { should include "AssociationID" }
+       its('association_ids') { should include "ASSOCIATION_ID" }
     end
 
 ## Matchers

@@ -26,9 +26,9 @@ class AWSEC2EIPAssociations < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @addrs = @aws.compute_client.describe_addresses
+      @resp = @aws.compute_client.describe_addresses
     end
-    return [] if !@addrs || @addrs.empty?
-    @table = @addrs.addresses.map(&:to_h)
+    return [] if !@resp || @resp.empty?
+    @table = @resp.addresses.map(&:to_h)
   end
 end
