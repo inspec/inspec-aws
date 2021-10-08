@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_customer_gateways` InSpec audit resource to test properties of the plural AWS EC2 Customer Gateway.
 
-The AWS::EC2::CustomerGateway resource specifies a customer gateway.
+The AWS::EC2::CustomerGateway specifies a customer gateway.
 
 ## Syntax
 
@@ -38,7 +38,7 @@ For additional information, see the [AWS documentation on AWS EC2 Customer Gatew
 
 ### Ensure a Customer Gateway Id is available.
     describe aws_ec2_customer_gateways do
-      its('customer_gateway_ids') { should include 'CustomerGatewayId' }
+      its('customer_gateway_ids') { should include 'CUSTOMER_GATEWAY_ID' }
     end
 
 ### Ensure that the state is `available`.

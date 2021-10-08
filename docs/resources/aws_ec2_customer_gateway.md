@@ -5,15 +5,15 @@ platform: aws
 
 # aws_ec2_customer_gateway
 
-Use the `aws_ec2_customer_gateway` InSpec audit resource to test properties of a single specific AWS EC2 Customer Gateway.
+Use the `aws_ec2_customer_gateway` InSpec audit resource to test properties of a specific AWS EC2 Customer Gateway.
 
-The AWS::EC2::CustomerGateway resource specifies a customer gateway.
+The AWS::EC2::CustomerGateway specifies a customer gateway.
 
 ## Syntax
 
 Ensure that the Customer Gateway Id exists.
 
-    describe aws_ec2_customer_gateway(customer_gateway_id: "CustomerGatewayId") do
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
       it { should exist }
     end
 
@@ -21,34 +21,32 @@ Ensure that the Customer Gateway Id exists.
 
 `customer_gateway_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| customer_gateway_id | The ID of the customer gateway. |
+The ID of the customer gateway.
 
 For additional information, see the [AWS documentation on AWS EC2 Customer Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-customer-gateway.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| bgp_asn | The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). | bgp_asn |
-| customer_gateway_id | The ID of the customer gateway. | customer_gateway_id |
-| ip_address | The Internet-routable IP address of the customer gateway's outside interface. | ip_address |
-| certificate_arn | The Amazon Resource Name (ARN) for the customer gateway certificate. | certificate_arn |
-| state | The current state of the customer gateway. | state |
-| type | The type of VPN connection the customer gateway supports (ipsec.1). | type |
-| device_name | The name of customer gateway device. | device_name |
-| tags | Any tags assigned to the customer gateway. | tags |
+| Property | Description |
+| --- | --- |
+| bgp_asn | The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). |
+| customer_gateway_id | The ID of the customer gateway. |
+| ip_address | The Internet-routable IP address of the customer gateway's outside interface. |
+| certificate_arn | The Amazon Resource Name (ARN) for the customer gateway certificate. |
+| state | The current state of the customer gateway. |
+| type | The type of VPN connection the customer gateway supports (ipsec.1). |
+| device_name | The name of customer gateway device. |
+| tags | Any tags assigned to the customer gateway. |
 
 ## Examples
 
 ### Ensure a Customer Gateway Id is available.
-    describe aws_ec2_customer_gateway(customer_gateway_id: "CustomerGatewayId") do
-      its('customer_gateway_id') { should eq 'CustomerGatewayId' }
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
+      its('customer_gateway_id') { should eq 'CUSTOMER_GATEWAY_ID' }
     end
 
 ### Ensure that the state is `available`.
-    describe aws_ec2_customer_gateway(customer_gateway_id: "CustomerGatewayId") do
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
         its('state') { should eq 'available' }
     end
 
@@ -62,13 +60,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_customer_gateway(customer_gateway_id: "CustomerGatewayId") do
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_customer_gateway(customer_gateway_id: "dummy") do
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
       it { should_not exist }
     end
 
@@ -76,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_customer_gateway(customer_gateway_id: "CustomerGatewayId") do
+    describe aws_ec2_customer_gateway(customer_gateway_id: "CUSTOMER_GATEWAY_ID") do
       it { should be_available }
     end
 
