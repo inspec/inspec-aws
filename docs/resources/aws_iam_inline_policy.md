@@ -147,7 +147,7 @@ Examples:
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetUserPolicy`, `iam:GetRolePolicy`, and `iam:GetGroupPolicy` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetUserPolicyResponse`, `IAM:Client:GetPolicyResponse`, and `IAM:Client:GetRolePolicyResponse` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
 

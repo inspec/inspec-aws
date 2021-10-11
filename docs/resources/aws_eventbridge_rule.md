@@ -84,4 +84,4 @@ Use `should` to check if the work_group name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `eventbridge_client.describe_rule` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EventBridge:Client:DescribeRuleResponse` action with `Effect` set to `Allow`.

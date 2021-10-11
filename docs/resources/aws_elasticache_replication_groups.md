@@ -25,7 +25,6 @@ This resource does not expect any parameters.
 |ids                       | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group. |
 |node\_types               | The name of the compute and memory capacity node type for the replication group, e.g. `cache.m5.large`. |
 |status                    | The current state of the replication group, e.g. `creating`, `available`. |
-|
 |encrypted\_at\_rest       | Indicates whether the content is encrypted at rest or not. |
 |encrypted\_at\_transit    | Indicates whether the content is encrypted at transit or not. |
 
@@ -63,6 +62,6 @@ Use `should_not` to test an entity that should not exist.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticache:DescribeReplicationGroups` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElastiCache:Client:ReplicationGroupMessage` action set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonelasticache.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
