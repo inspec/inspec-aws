@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.14 -->
+<!-- latest_release 1.73.15 -->
+## [v1.73.15](https://github.com/inspec/inspec-aws/tree/v1.73.15) (2021-10-11)
+
+#### Merged Pull Requests
+- Type Name Changes in Singular and Plural Resource in Docs [#681](https://github.com/inspec/inspec-aws/pull/681) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.73.14](https://github.com/inspec/inspec-aws/tree/v1.73.14) (2021-10-08)
 
 #### Merged Pull Requests
 - Release note automation [#680](https://github.com/inspec/inspec-aws/pull/680) ([kagarmoe](https://github.com/kagarmoe))
-<!-- latest_release -->
 
 ## [v1.73.13](https://github.com/inspec/inspec-aws/tree/v1.73.13) (2021-10-08)
 
