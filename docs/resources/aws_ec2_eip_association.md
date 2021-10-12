@@ -61,7 +61,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Check if the IP address is available.
+Check if the entity is available.
 
     describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
       it { should be_available }
