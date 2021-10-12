@@ -21,9 +21,7 @@ Ensure that the fleet id exists.
 
 `fleet_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| fleet_id | The ID of the EC2 Fleet. |
+The ID of the EC2 Fleet. 
 
 For additional information, see the [AWS documentation on AWS EC2 Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html).
 
