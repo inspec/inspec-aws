@@ -11,7 +11,7 @@ The AWS::EC2::CustomerGateway specifies a customer gateway.
 
 ## Syntax
 
-Ensure that the Customer Gateway Id exists.
+Ensure that the Customer Gateway exists.
 
     describe aws_ec2_customer_gateways do
       it { should exist }
