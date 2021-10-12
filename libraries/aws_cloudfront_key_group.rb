@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AwsCloudfrontKeyGroup < AwsResourceBase
+class AwsCloudFrontKeyGroup < AwsResourceBase
   name 'aws_cloudfront_key_group'
   desc 'Describes one Key Group.'
 
   example "
-    describe aws_cloudfront_key_group(id: 'ID') do
+    describe aws_cloudfront_key_group(id: 'KEY_GROUP_ID') do
       it { should exist }
     end
   "
@@ -16,12 +16,11 @@ class AwsCloudfrontKeyGroup < AwsResourceBase
     opts = { id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:id])
-
     raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
     @display_name = opts[:id]
     catch_aws_errors do
-      resp = @aws.cloudfront_client.get_key_group({ id: [opts[:id]] })
-      @resp = resp.key_group[0].to_h
+      resp = @aws.cloudfront_client.get_key_group({ id: opts[:id] })
+      @resp = resp.key_group.to_h
       create_resource_methods(@resp)
     end
   end
