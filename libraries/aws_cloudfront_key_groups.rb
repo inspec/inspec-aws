@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AwsCloudFrontKeyGroups < AwsResourceBase
-  name 'aws_cloud_front_key_groups'
+class AwsCloudfrontKeyGroups < AwsResourceBase
+  name 'aws_cloudfront_key_groups'
   desc 'Describes one or more of Key Group.'
 
   example "
-    describe aws_cloud_front_key_groups do
+    describe aws_cloudfront_key_groups do
       it { should exist }
     end
   "

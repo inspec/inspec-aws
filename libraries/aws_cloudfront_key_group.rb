@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AwsCloudFrontKeyGroup < AwsResourceBase
-  name 'aws_cloud_front_key_group'
+class AwsCloudfrontKeyGroup < AwsResourceBase
+  name 'aws_cloudfront_key_group'
   desc 'Describes one Key Group.'
 
   example "
-    describe aws_cloud_front_key_group(id: 'ID') do
+    describe aws_cloudfront_key_group(id: 'ID') do
       it { should exist }
     end
   "
@@ -21,18 +21,18 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
     @display_name = opts[:id]
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_key_group({ id: [opts[:id]] })
-      @job_queues = resp.key_group.to_h
-      create_resource_methods(@job_queues)
+      @resp = resp.key_group[0].to_h
+      create_resource_methods(@resp)
     end
   end
 
   def id
     return nil unless exists?
-    @job_queues[:id]
+    @resp[:id]
   end
 
   def exists?
-    !@job_queues.nil? && !@job_queues.empty?
+    !@resp.nil? && !@resp.empty?
   end
 
   def to_s
