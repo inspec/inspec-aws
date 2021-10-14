@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_eip_association
 
-Use the `aws_ec2_eip_association` InSpec audit resource to test properties of a single specific AWS Elastic IP Association.
+Use the `aws_ec2_eip_association` InSpec audit resource to test properties of the singular resource of AWS Elastic IP Association.
 
 An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `association_id`.
 
