@@ -7,7 +7,7 @@ class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
   desc 'Describes multiple subscription filter.'
 
   example "
-   describe aws_cloudwatch_logs_subscription_filters(log_group_name: 'LOG_GROUP_NAME') do
+   describe aws_cloudwatchlogs_subscription_filters(log_group_name: 'LOG_GROUP_NAME') do
      it { should exist }
    end
   "
