@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_customer_gateways
 
-Use the `aws_ec2_customer_gateways` InSpec audit resource to test properties of the plural AWS EC2 Customer Gateway.
+Use the `aws_ec2_customer_gateways` InSpec audit resource to test properties of the plural resource of AWS EC2 Customer Gateway.
 
 The AWS::EC2::CustomerGateway specifies a customer gateway.
 
