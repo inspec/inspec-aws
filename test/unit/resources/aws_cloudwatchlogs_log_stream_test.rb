@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloudwatch_logs_log_stream'
+require 'aws_cloudwatchlogs_log_stream'
 require 'aws-sdk-core'
 
 class AWSCloudWatchLogsLogStreamConstructorTest < Minitest::Test

@@ -1,11 +1,11 @@
 ---
-title: About the aws_cloudwatch_logs_log_stream Resource
+title: About the aws_cloudwatchlogs_log_stream Resource
 platform: aws
 ---
 
-# aws_cloudwatch_logs_log_stream
+# aws_cloudwatchlogs_log_stream
 
-Use the `aws_cloudwatch_logs_log_stream` InSpec audit resource to test properties of a single specific AWS Logs LogStream.
+Use the `aws_cloudwatchlogs_log_stream` InSpec audit resource to test properties of the singular resource of AWS Logs LogStream.
 
 The AWS::Logs::LogStream resource specifies an Amazon CloudWatch Logs log stream in a specific log group. A log stream represents the sequence of events coming from an application instance or resource that you are monitoring.
 
@@ -13,7 +13,7 @@ The AWS::Logs::LogStream resource specifies an Amazon CloudWatch Logs log stream
 
 Ensure that the log stream exists.
 
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       it { should exist }
     end
 
@@ -44,12 +44,12 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 ## Examples
 
 ### Ensure a log stream name is available.
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       its('log_stream_name') { should eq 'LOG_STREAM_NAME' }
     end
 
 ### Ensure a log stream arn is available.
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
         its('arn') { should eq 'LOG_STREAM_ARN' }
     end
 
@@ -63,13 +63,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       it { should_not exist }
     end
 
@@ -77,7 +77,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
+    describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       it { should be_available }
     end
 

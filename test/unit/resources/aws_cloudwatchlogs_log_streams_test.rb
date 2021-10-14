@@ -1,11 +1,11 @@
 require 'helper'
-require 'aws_cloudwatch_logs_log_streams'
+require 'aws_cloudwatchlogs_log_streams'
 require 'aws-sdk-core'
 
 class AWSCloudWatchLogsLogStreamsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSCloudWatchLogsLogStreams.new(log_group_name: 'test1',client_args: { stub_responses: true })
+    AWSCloudWatchLogsLogStreams.new(log_group_name: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSCloudWatchLogsLogStreamsConstructorTest < Minitest::Test
   end
 
   def test_job_definitions_non_existing_for_empty_response
-    refute AWSCloudWatchLogsLogStreams.new(log_group_name: 'test1',client_args: { stub_responses: true }).exist?
+    refute AWSCloudWatchLogsLogStreams.new(log_group_name: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
