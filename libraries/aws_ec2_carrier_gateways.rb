@@ -17,7 +17,7 @@ class AWSEC2CarrierGateways < AwsResourceBase
   FilterTable.create
              .register_column(:carrier_gateway_ids, field: :carrier_gateway_id)
              .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:states, field: :fleet_id)
+             .register_column(:states, field: :state)
              .register_column(:owner_ids, field: :owner_id)
              .register_column(:tags, field: :tags)
              .install_filter_methods_on_resource(self, :table)
