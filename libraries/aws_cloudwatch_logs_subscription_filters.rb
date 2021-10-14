@@ -26,13 +26,16 @@ class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters
+    validate_parameters(required: %i(log_group_name))
+    raise ArgumentError, "#{@__resource_name__}: log_group_name must be provided" unless opts[:log_group_name] && !opts[:log_group_name].empty?
     @table = fetch_data
   end
 
   def fetch_data
+    params = {}
+    params[:log_group_name] = opts[:log_group_name]
     catch_aws_errors do
-      @table = @aws.cloudwatchlogs_client.describe_subscription_filters.map do |table|
+      @table = @aws.cloudwatchlogs_client.describe_subscription_filters(params).map do |table|
         table.subscription_filters.map { |table_name| {
           filter_name: table_name.filter_name,
           log_group_name: table_name.log_group_name,
