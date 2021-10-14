@@ -16,7 +16,7 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
     opts = { log_stream_name_prefix: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(log_stream_name_prefix log_group_name))
-    raise ArgumentError, "#{@__resource_name__}: log_stream_name_prefix must be provided" unless opts[:log_stream_name_prefix] && !opts[:log_stream_name_prefix].empty?
+    raise ArgumentError, "#{@__resource_name__}: log_stream_name_prefix must be provided." unless opts[:log_stream_name_prefix] && !opts[:log_stream_name_prefix].empty?
     raise ArgumentError, "#{@__resource_name__}: log_stream_name_prefix must be provided" unless opts[:log_group_name] && !opts[:log_group_name].empty?
     @display_name = opts[:log_stream_name_prefix]
     catch_aws_errors do
