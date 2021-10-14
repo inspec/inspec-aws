@@ -1,19 +1,19 @@
 ---
-title: About the aws_cloudwatch_logs_destinations Resource
+title: About the aws_cloudwatchlogs_destinations Resource
 platform: aws
 ---
 
-# aws_cloudwatch_logs_destinations
+# aws_cloudwatchlogs_destinations
 
-Use the `aws_cloudwatch_logs_destinations` InSpec audit resource to test properties of the plural resource of AWS Logs Destination.
+Use the `aws_cloudwatchlogs_destinations` InSpec audit resource to test properties of the plural resource of AWS Logs Destination.
 
-The AWS::Logs::Destination resource specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
+The AWS::Logs::Destination specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
 
 ## Syntax
 
 Ensure that the destination name exists.
 
-    describe aws_cloudwatch_logs_destinations do
+    describe aws_cloudwatchlogs_destinations do
       it { should exist }
     end
 
@@ -35,13 +35,13 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 ## Examples
 
 ### Ensure a destination name is available.
-    describe aws_cloudwatch_logs_destinations do
-      its('destination_names') { should include 'DestinationName' }
+    describe aws_cloudwatchlogs_destinations do
+      its('destination_names') { should include 'DESTINATION_NAME' }
     end
 
 ### Ensure a destination role arn is available.
-    describe aws_cloudwatch_logs_destinations do
-        its('role_arns') { should include 'RoleARN' }
+    describe aws_cloudwatchlogs_destinations do
+        its('role_arns') { should include 'ROLE_ARN' }
     end
 
 ## Matchers
@@ -54,13 +54,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloudwatch_logs_destinations do
+    describe aws_cloudwatchlogs_destinations do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_cloudwatch_logs_destinations do
+    describe aws_cloudwatchlogs_destinations do
       it { should_not exist }
     end
 

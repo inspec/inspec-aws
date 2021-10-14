@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloudwatch_logs_destinantion'
+require 'aws_cloudwatchlogs_destinantion'
 require 'aws-sdk-core'
 
 class AWSCloudWatchLogsDestinationConstructorTest < Minitest::Test

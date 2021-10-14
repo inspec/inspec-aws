@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloudwatch_logs_destinantions'
+require 'aws_cloudwatchlogs_destinantions'
 require 'aws-sdk-core'
 
 class AWSCloudWatchLogsDestinationsConstructorTest < Minitest::Test
@@ -12,7 +12,7 @@ class AWSCloudWatchLogsDestinationsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSCloudWatchLogsDestinations.new('rubbish') }
   end
 
-  def test_job_definitions_non_existing_for_empty_response
+  def test_destinations_non_existing_for_empty_response
     refute AWSCloudWatchLogsDestinations.new(client_args: { stub_responses: true }).exist?
   end
 end

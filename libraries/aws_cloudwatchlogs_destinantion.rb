@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSCloudWatchLogsDestination < AwsResourceBase
-  name 'aws_cloudwatch_logs_destination'
-  desc 'Describes one or more of your logs destination.'
+  name 'aws_cloudwatchlogs_destination'
+  desc 'Describes a log destination.'
 
   example "
-    describe aws_cloudwatch_logs_destination(destination_name_prefix: 'Destination_Name') do
+    describe aws_cloudwatchlogs_destination(destination_name_prefix: 'DESTINATION_NAME') do
       it { should exist }
     end
   "
@@ -16,7 +16,6 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
     opts = { destination_name_prefix: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:destination_name_prefix])
-
     raise ArgumentError, "#{@__resource_name__}: destination_name_prefix must be provided" unless opts[:destination_name_prefix] && !opts[:destination_name_prefix].empty?
     @display_name = opts[:destination_name_prefix]
     catch_aws_errors do
@@ -36,6 +35,6 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
   end
 
   def to_s
-    " Destination Name: #{@display_name}"
+    "Destination Name: #{@display_name}"
   end
 end

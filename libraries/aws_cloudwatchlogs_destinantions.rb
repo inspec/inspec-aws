@@ -3,11 +3,11 @@
 require 'aws_backend'
 
 class AWSCloudWatchLogsDestinations < AwsResourceBase
-  name 'aws_cloudwatch_logs_destinations'
-  desc 'Lists all Public Keys.'
+  name 'aws_cloudwatchlogs_destinations'
+  desc 'Lists all destinations.'
 
   example "
-    describe aws_cloudwatch_logs_destinations do
+    describe aws_cloudwatchlogs_destinations do
       it { should exist }
     end
   "
