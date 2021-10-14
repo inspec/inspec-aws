@@ -45,7 +45,7 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ### Ensure a log stream name is available.
     describe aws_cloudwatch_logs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
-      its('log_stream_name') { should eq 'LogStreamName' }
+      its('log_stream_name') { should eq 'LOG_STREAM_NAME' }
     end
 
 ### Ensure a log stream arn is available.
