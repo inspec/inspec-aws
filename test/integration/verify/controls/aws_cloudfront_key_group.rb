@@ -11,6 +11,5 @@ control 'aws_cloudfront_public_key-1.0' do
     its('id') { should eq aws_cloudfront_group_id }
     its('key_group_config.name') { should eq aws_cloudfront_group_name }
     its('key_group_config.comment') { should eq aws_cloudfront_group_comment }
-    its('key_group_config.items') { should eq ["K2D69QXW99SIJQ"] }
   end
 end
