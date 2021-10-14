@@ -16,7 +16,7 @@ class AwsCloudFrontKeyGroups < AwsResourceBase
 
   FilterTable.create
              .register_column(:ids, field: :id)
-             .register_column(:last_modified_times, field: :last_modified_time)
+             .register_column(:last_modified_time, field: :last_modified_time)
              .register_column(:key_group_config_names, field: :key_group_config_name)
              .register_column(:key_group_config_items, field: :key_group_config_items, style: :simple)
              .register_column(:key_group_config_comments, field: :key_group_config_comment, style: :simple)
@@ -34,9 +34,9 @@ class AwsCloudFrontKeyGroups < AwsResourceBase
         table.key_group_list.items.map { |table_name| {
           id: table_name.key_group.id,
           last_modified_time: table_name.key_group.last_modified_time,
-          key_group_config_name: table_name.key_group_config.name,
-          key_group_config_items: table_name.key_group_config.items,
-          key_group_config_comment: table_name.key_group_config.comment,
+          key_group_config_name: table_name.key_group.key_group_config.name,
+          key_group_config_items: table_name.key_group.key_group_config.items,
+          key_group_config_comment: table_name.key_group.key_group_config.comment,
         }
         }
       end.flatten
