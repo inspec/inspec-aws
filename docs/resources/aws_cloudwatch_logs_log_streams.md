@@ -21,9 +21,7 @@ Ensure that the log stream exists.
 
 `log_group_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| log_group_name | The name of the log group. |
+The name of the log group.
 
 For additional information, see the [AWS documentation on AWS Logs LogStream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-logstream.html).
 
