@@ -47,7 +47,7 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ### Ensure a log stream arn is available.
     describe aws_cloudwatch_logs_log_streams(log_group_name: "LOG_GROUP_NAME") do
-        its('arns') { should include 'ARN' }
+        its('arns') { should include 'LOG_STREAM_ARN' }
     end
 
 ## Matchers
