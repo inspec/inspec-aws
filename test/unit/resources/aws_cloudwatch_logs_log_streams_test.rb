@@ -33,7 +33,7 @@ class AWSCloudWatchLogsLogStreamsHappyPathTest < Minitest::Test
     @resp = AWSCloudWatchLogsLogStreams.new(log_group_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_destination_exists
+  def test_log_streams_exists
     assert @resp.exists?
   end
 
