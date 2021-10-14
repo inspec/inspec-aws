@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSCloudWatchLogsLogStreams < AwsResourceBase
   name 'aws_cloudwatch_logs_log_streams'
-  desc 'Lists all Public Keys.'
+  desc 'Lists all Log Streams.'
 
   example "
     describe aws_cloudwatch_logs_log_streams(log_group_name: 'Log_Group_Name' ) do
