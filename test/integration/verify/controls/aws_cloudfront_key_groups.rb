@@ -9,6 +9,5 @@ control 'aws_cloudfront_key_groups-1.0' do
     it { should exist }
     its('key_group_config_names') { should include aws_cloudfront_group_name }
     its('ids') { should include aws_cloudfront_group_id }
-    its('key_group_config_items') { should include "K2D69QXW99SIJQ"}
   end
 end
