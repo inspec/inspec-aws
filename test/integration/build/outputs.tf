@@ -884,3 +884,15 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }
+
+output "aws_cloudwatch_log_stream_name" {
+  value = aws_cloudwatch_log_stream.for_test.name
+}
+
+output "aws_cloudwatch_log_group_name" {
+  value = aws_cloudwatch_log_group.for_stream.name
+}
+
+output "aws_cloudwatch_log_stream_arn" {
+  value = aws_cloudwatch_log_stream.for_test.arn
+}
