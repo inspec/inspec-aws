@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudfront_key_groups
 
-Use the `aws_cloudfront_key_groups` InSpec audit resource to test properties of the plural AWS CloudFront Key Group.
+Use the `aws_cloudfront_key_groups` InSpec audit resource to test properties of the plural resource AWS CloudFront Key Group.
 
 ## Syntax
 
