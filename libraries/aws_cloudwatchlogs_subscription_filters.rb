@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
-  name 'aws_cloudwatch_logs_subscription_filters'
+  name 'aws_cloudwatchlogs_subscription_filters'
   desc 'Describes multiple subscription filter.'
 
   example "

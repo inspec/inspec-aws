@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_cloudwatch_logs_subscription_filter'
+require 'aws_cloudwatchlogs_subscription_filter'
 require 'aws-sdk-core'
 
 class AWSCloudWatchLogsSubscriptionFilterConstructorTest < Minitest::Test
