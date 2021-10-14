@@ -30,16 +30,16 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| log_stream_name | The name of the log stream. | log_stream_name |
-| creation_time | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | creation_time |
-| first_event_timestamp | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | first_event_timestamp |
-| last_event_timestamp | The time of the most recent log event in the log stream in CloudWatch Logs. | last_event_timestamp |
-| last_ingestion_time | The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | last_ingestion_time |
-| upload_sequence_token | The sequence token. | upload_sequence_token |
-| arn | The Amazon Resource Name (ARN) of the log stream. | arn |
-| stored_bytes | The number of bytes stored. | stored_bytes |
+| Property | Description |
+| --- | --- |
+| log_stream_name | The name of the log stream. |
+| creation_time | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
+| first_event_timestamp | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
+| last_event_timestamp | The time of the most recent log event in the log stream in CloudWatch Logs.  |
+| last_ingestion_time | The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
+| upload_sequence_token | The sequence token. |
+| arn | The Amazon Resource Name (ARN) of the log stream. |
+| stored_bytes | The number of bytes stored. |
 
 ## Examples
 
