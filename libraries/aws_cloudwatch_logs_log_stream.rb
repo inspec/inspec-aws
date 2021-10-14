@@ -36,6 +36,6 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
   end
 
   def to_s
-    " Destination Name: #{@display_name}"
+    "Destination Name: #{@display_name}"
   end
 end
