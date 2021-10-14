@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AWSCloudWatchLogsSubscriptionFiltersConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSCloudWatchLogsSubscriptionFilters.new(log_group_name: 'test1',client_args: { stub_responses: true })
+    AWSCloudWatchLogsSubscriptionFilters.new(log_group_name: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSCloudWatchLogsSubscriptionFilters.new('rubbish') }
   end
 
-  def test_job_definitions_non_existing_for_empty_response
-    refute AWSCloudWatchLogsSubscriptionFilters.new(log_group_name: 'test1',client_args: { stub_responses: true }).exist?
+  def test_subscription_filter_non_existing_for_empty_response
+    refute AWSCloudWatchLogsSubscriptionFilters.new(log_group_name: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
