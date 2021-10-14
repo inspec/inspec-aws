@@ -4296,6 +4296,7 @@ resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificat
 resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
   comment = "Some comment"
 }
+
 ## AWS cloudwatch log stream
 
 resource "aws_cloudwatch_log_group" "for_stream" {
