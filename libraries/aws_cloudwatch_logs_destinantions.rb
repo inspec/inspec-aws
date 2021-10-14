@@ -38,7 +38,7 @@ class AWSCloudWatchLogsDestinations < AwsResourceBase
           role_arn: table_name.role_arn,
           access_policy: table_name.access_policy,
           creation_time: table_name.creation_time,
-          comment: table_name.comment,
+          arn: table_name.arn,
         }
         }
       end.flatten

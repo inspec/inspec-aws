@@ -20,7 +20,7 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: destination_name_prefix must be provided" unless opts[:destination_name_prefix] && !opts[:destination_name_prefix].empty?
     @display_name = opts[:destination_name_prefix]
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.describe_destinations({ destination_name_prefix: [opts[:destination_name_prefix]] })
+      resp = @aws.cloudwatchlogs_client.describe_destinations({ destination_name_prefix: opts[:destination_name_prefix] })
       @destinations = resp.destinations[0].to_h
       create_resource_methods(@destinations)
     end
