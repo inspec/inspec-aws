@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_capacity_reservation
 
-Use the `aws_ec2_capacity_reservation` InSpec audit resource to test properties of a specific AWS EC2 Capacity Reservation.
+Use the `aws_ec2_capacity_reservation` InSpec audit resource to test properties of the singular resource of AWS EC2 Capacity Reservation.
 
 The AWS::EC2::CapacityReservation creates a new Capacity Reservation with the specified attributes.
 
