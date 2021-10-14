@@ -31,12 +31,12 @@ class AWSCloudFrontPublicKeys < AwsResourceBase
   def fetch_data
     catch_aws_errors do
       @table = @aws.cloudfront_client.list_public_keys.map do |table|
-        table.public_key_list.map { |table_name| {
-          id: table_name.items.map(&:id),
-          created_time: table_name.items.map(&:created_time),
-          name: table_name.items.map(&:name),
-          encoded_key: table_name.items.map(&:encoded_key),
-          comment: table_name.items.map(&:comment),
+        table.public_key_list.items.map { |table_name| {
+          id: table_name.id,
+          created_time: table_name.created_time,
+          name: table_name.name,
+          encoded_key: table_name.encoded_key,
+          comment: table_name.comment,
         }
         }
       end.flatten
