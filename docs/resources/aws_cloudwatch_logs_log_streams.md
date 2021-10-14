@@ -42,7 +42,7 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ### Ensure a log stream name is available.
     describe aws_cloudwatch_logs_log_streams(log_group_name: "LOG_GROUP_NAME") do
-      its('log_stream_names') { should include 'LogStreamName' }
+      its('log_stream_names') { should include 'LOG_STREAM_NAME' }
     end
 
 ### Ensure a log stream arn is available.
