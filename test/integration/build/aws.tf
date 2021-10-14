@@ -4296,3 +4296,16 @@ resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificat
 resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
   comment = "Some comment"
 }
+
+## Cloud Front Public Key
+
+locals {
+  test_key = "${path.module}/pubkey.pem"
+}
+
+resource "aws_cloudfront_public_key" "test_cf_pk" {
+  comment     = "test public key"
+  encoded_key = file(local.test_key)
+  name        = "test_key"
+}
+

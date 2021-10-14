@@ -884,3 +884,15 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }
+
+output "aws_cloudfront_public_key_name" {
+  value =  aws_cloudfront_public_key.test_cf_pk.name
+}
+
+output "aws_cloudfront_public_key_id" {
+  value =  aws_cloudfront_public_key.test_cf_pk.id
+}
+
+output "aws_cloudfront_public_key" {
+  value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
+}
