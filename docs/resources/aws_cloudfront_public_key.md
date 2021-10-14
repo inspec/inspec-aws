@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudfront_public_key
 
-Use the `aws_cloudfront_public_key` InSpec audit resource to test properties of a single specific AWS Logs Public Key.
+Use the `aws_cloudfront_public_key` InSpec audit resource to test properties of the singular resource of AWS Logs Public Key.
 
 A public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 
