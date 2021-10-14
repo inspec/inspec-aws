@@ -7,7 +7,7 @@ class AWSCloudWatchLogsLogStreams < AwsResourceBase
   desc 'Lists all Log Streams.'
 
   example "
-    describe aws_cloudwatch_logs_log_streams(log_group_name: 'Log_Group_Name' ) do
+    describe aws_cloudwatch_logs_log_streams(log_group_name: 'LOG_GROUP_NAME' ) do
       it { should exist }
     end
   "
