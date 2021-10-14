@@ -28,7 +28,7 @@ class AWSCloudWatchLogsLogStreams < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(log_group_name))
-    raise ArgumentError, "#{@__resource_name__}: log_stream_name_prefix must be provided" unless opts[:log_group_name] && !opts[:log_group_name].empty?
+    raise ArgumentError, "#{@__resource_name__}: log_group_name must be provided" unless opts[:log_group_name] && !opts[:log_group_name].empty?
     @table = fetch_data
   end
 
