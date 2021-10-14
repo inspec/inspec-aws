@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_host
 
-Use the `aws_ec2_host` InSpec audit resource to test properties of a single specific AWS EC2 Host.
+Use the `aws_ec2_host` InSpec audit resource to test properties of the singular resource of AWS EC2 Host.
 
 The AWS::EC2::Host allocates a fully dedicated physical server for launching EC2 instances.
 
