@@ -56,7 +56,7 @@ class AWSRDSDBSnapShots < AwsResourceBase
       return rows if !@api_response || @api_response.empty?
       @api_response.db_cluster_snapshots.each do |res|
         rows += [{
-                   availability_zones: res.availability_zones,
+          availability_zones: res.availability_zones,
                    db_cluster_snapshot_identifier: res.db_cluster_snapshot_identifier,
                    db_cluster_identifier: res.db_cluster_identifier,
                    snapshot_create_time: res.snapshot_create_time,
@@ -78,7 +78,7 @@ class AWSRDSDBSnapShots < AwsResourceBase
                    source_db_cluster_snapshot_arn: res.source_db_cluster_snapshot_arn,
                    iam_database_authentication_enabled: res.iam_database_authentication_enabled,
                    tag_list: res.tag_list,
-                 }]
+        }]
       end
       break unless @api_response.marker
       @query_params[:marker] = @api_response.marker

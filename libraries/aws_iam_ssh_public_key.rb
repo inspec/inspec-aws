@@ -7,7 +7,7 @@ class AWSIAMSSHPublicKey < AwsResourceBase
   desc 'Retrieves the specified SSH public key, including metadata about the key.'
 
   example "
-    describe aws_iam_ssh_public_key(user_name: 'UserName', ssh_public_key_id: 'SSHPublicKeyId', encoding: 'SSH') do
+    describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
       it { should exist }
     end
   "
@@ -35,7 +35,7 @@ class AWSIAMSSHPublicKey < AwsResourceBase
     return nil unless exists?
     result = (Time.now - @res[:upload_date]).to_i / (24 * 60 * 60)
     return false if result > 730
-    return true
+    true
   end
 
   def exists?

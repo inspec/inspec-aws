@@ -2,9 +2,9 @@
 
 require 'aws_backend'
 
-class AWSSNSSubscriptions  < AwsResourceBase
+class AWSSNSSubscriptions < AwsResourceBase
   name 'aws_sns_subscriptions'
-  desc 'Verifies settings for a SNS Subscription.'
+  desc 'Verifies setting for a SNS Subscriptions.'
 
   example "
     describe aws_sns_subscriptions do

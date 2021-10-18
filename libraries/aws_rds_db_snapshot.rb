@@ -20,7 +20,7 @@ class AWSRDSDBSnapShot < AwsResourceBase
     @display_name = opts[:db_cluster_snapshot_id]
     filter = [
       {
-        name: "db-cluster-snapshot-id",
+        name: 'db-cluster-snapshot-id',
         values: [opts[:db_cluster_snapshot_id]],
       },
     ]

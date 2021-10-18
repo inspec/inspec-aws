@@ -7,7 +7,7 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
   desc 'Gets information about the current ClientCertificate resource.'
 
   example "
-    describe aws_api_gateway_client_certificate(client_certificate_id: 'ClientCertificateID') do
+    describe aws_api_gateway_client_certificate(client_certificate_id: 'CLIENT_CERTIFICATE_ID') do
       it { should exist }
     end
   "
