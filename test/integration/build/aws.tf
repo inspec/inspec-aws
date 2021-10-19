@@ -4296,3 +4296,10 @@ resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificat
 resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
   comment = "Some comment"
 }
+
+## RDS Cluster Snapshot
+
+resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
+  db_cluster_identifier          = aws_rds_cluster.rds_cluster.id
+  db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+}
