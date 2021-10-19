@@ -51,6 +51,7 @@ require 'aws-sdk-apigatewayv2'
 require 'aws-sdk-cloudfront'
 require 'aws-sdk-signer'
 require 'aws-sdk-ses'
+require 'aws-sdk-synthetics'
 
 # AWS Inspec Backend Classes
 #
@@ -290,6 +291,10 @@ class AwsConnection
 
   def ses_client
     aws_client(Aws::SES::Client)
+  end
+
+  def synthetics_client
+    aws_client(Aws::Synthetics::Client)
   end
 end
 

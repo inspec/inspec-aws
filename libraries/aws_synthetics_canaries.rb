@@ -42,7 +42,7 @@ class AWSSyntheticsCanaries < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.ssm_client.describe_canaries.map do |table|
+      @table = @aws.synthetics_client.describe_canaries.map do |table|
         table.canaries.map { |table_name| {
           id: table_name.id,
           name: table_name.name,
