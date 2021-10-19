@@ -9,7 +9,7 @@ Use the `aws_iam_ssh_public_key` InSpec audit resource to test properties of the
 
 ## Syntax
 
-Ensure that the client vpn endpoint exists.
+Ensure that the public key exists.
 
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
       it { should exist }
