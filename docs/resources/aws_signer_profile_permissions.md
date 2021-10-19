@@ -19,7 +19,7 @@ Ensure that the profile permission exists.
 
 ## Parameters
 
-`profile_name` _(required)_
+`profile_name` _(required)_ 
 
 Name of the signing profile containing the cross-account permissions.
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Signer ProfilePerm
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | actions | The | action |
 | principals | The | principal |

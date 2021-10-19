@@ -19,7 +19,7 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: window_target_id must be provided" unless opts[:window_target_id] && !opts[:window_target_id].empty?
     filter = [
       {
-        key: "WindowTargetId",
+        key: 'WindowTargetId',
         values: [opts[:window_target_id]],
       },
     ]

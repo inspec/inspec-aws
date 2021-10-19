@@ -19,7 +19,7 @@ class AWSSESMaintenanceWindowTask < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: window_task_id must be provided" unless opts[:window_task_id] && !opts[:window_task_id].empty?
     filter = [
       {
-        key: "WindowTaskId",
+        key: 'WindowTaskId',
         values: [opts[:window_task_id]],
       },
     ]
