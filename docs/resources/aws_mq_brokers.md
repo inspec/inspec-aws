@@ -19,36 +19,36 @@ For additional information, see the [AWS documentation on AWS MQ Broker](https:/
 
 ## Properties
 
-| Property | Description| Field|
-| --- | --- | --- |
-| broker_arns | The broker's Amazon Resource Name (ARN). | broker_arn |
-| broker_names | The broker's name.| broker_name |
-| broker_states | The broker's status.| broker_state |
-| created | The time when the broker was created. | created |
-| deployment_modes | The broker's deployment mode.| deployment_mode |
-| engine_types | The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ. | engine_type |
-| engine_versions | The broker engine's version.  | engine_version |
-| host_instance_types | The broker's instance type. | host_instance_type |
+| Property            | Description                                                               | Field             |
+| :------------------:| :-----------------------------------------------------------------------: | :---------------: |
+| broker_arns         | The broker's Amazon Resource Name (ARN).                                  | broker_arn        |
+| broker_names        | The name of the broker. This value must be unique in your AWS account, 1-50 characters long, contain only letters, numbers, dashes, and underscores, and not contain white spaces, brackets, wildcard characters, or special characters.           | broker_name |
+| broker_states       | The broker's status.                                                      | broker_state      |
+| created             | Creation time of the broker profile.                                      | created |
+| deployment_modes    | The deployment mode of the broker. Available values: `SINGLE_INSTANCE`', `ACTIVE_STANDBY_MULTI_AZ`, and `CLUSTER_MULTI_AZ`    | deployment_mode |
+| engine_types        | The type of broker engine. Currently, Amazon MQ supports `ACTIVEMQ` and `RABBITMQ.` | engine_type |
+| engine_versions     | The version of the broker engine.                                         | engine_version |
+| host_instance_types | The broker's instance type.                                               | host_instance_type |
 
 ## Examples
 
-### Ensure a broker is available.
+### Ensure a broker is available
 
     describe aws_mq_brokers do
-      its('broker_ids') { should include 'broker_id' }
+      its('broker_ids') { should include 'BROKER_ID' }
     end
 
-### Ensure that the status is correct.
+### Ensure that the status is correct
 
     describe aws_mq_brokers do
-        its('broker_names') { should include 'broker_name' }
+        its('broker_names') { should include 'BROKER_NAME' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `list` method returns at least one result.
+The control pass if the `list` method returns at least one result.
 
 ### exist
 
