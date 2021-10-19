@@ -49,6 +49,8 @@ require 'aws-sdk-networkmanager'
 require 'aws-sdk-networkfirewall'
 require 'aws-sdk-apigatewayv2'
 require 'aws-sdk-cloudfront'
+require 'aws-sdk-signer'
+require 'aws-sdk-ses'
 
 # AWS Inspec Backend Classes
 #
@@ -280,6 +282,14 @@ class AwsConnection
 
   def cloudfront_client
     aws_client(Aws::CloudFront::Client)
+  end
+
+  def signer_client
+    aws_client(Aws::Signer::Client)
+  end
+
+  def ses_client
+    aws_client(Aws::SES::Client)
   end
 end
 
