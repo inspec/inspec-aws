@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_iam\_managed\_policy
 
-Use the `aws_iam_managed_policy` InSpec audit resource to test properties of an AWS IAM managed policy.
+Use the `aws_iam_managed_policy` InSpec audit resource to test the properties of an AWS IAM managed policy.
 
 ## Syntax
 
@@ -15,8 +15,11 @@ The `aws_iam_managed_policy` resource returns an IAM managed policy and allows t
       its('policy_name') { should eq 'POLICY_NAME' }
     end
 
-This resource allows filtering by scope.
-To list only AWS-managed policies, set `Scope` to `AWS`. To list only the customer-managed policies in your AWS account, set `Scope` to `Local`. If you do not specify the scope, `ALL` policies are returned.
+This resource allows filtering by scope, which are:
+
+- To list only AWS-managed policies, set `Scope` to `AWS`. 
+- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`. 
+- If you do not specify the scope, `ALL` policies are returned.
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
 
@@ -28,14 +31,14 @@ The ARN of the AWS IAM managed policy.
 
 ## Properties
 
-|Property               | Description|
-| ---                   | --- |
-|arn                    | The ARN identifier of the specified policy. |
-|policy\_id             | The stable and unique string identifying the policy. |
-|policy\_name           | The friendly name (not ARN) identifying the policy.|
-|attachment\_count      | The count of attached entities for each policy. |
+|Property                | Description                                                   |
+| :---------------------:| :-----------------------------------------------------------: |
+|arn                    | The ARN identifier of the specified policy.                    |
+|policy\_id             | The stable and unique string identifying the policy.           |
+|policy\_name           | The friendly name (not ARN) identifying the policy.            |
+|attachment\_count      | The count of attached entities for each policy.                |
 |attached\_group        | The list of group names of the groups attached to each policy. |
-|default\_version\_id   | The identifier for the default version of the policy. |
+|default\_version\_id   | The identifier for the default version of the policy.          |
 
 ## Examples
 
@@ -57,7 +60,7 @@ For a full list of available matchers, please visit our [matchers page](https://
 
 #### exist
 
-The control will pass if the describe method returns at least one result.
+The control passes if the describe method returns at least one result.
 
 Use `should` to test an entity that should exist.
 
@@ -73,6 +76,6 @@ Use `should_not` to test an entity that should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:ListPolicies` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:ListPolicies` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

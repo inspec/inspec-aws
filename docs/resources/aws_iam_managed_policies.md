@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_iam\_managed\_policies
 
-Use the `aws_iam_managed_policies` InSpec audit resource to test properties of a collection of AWS IAM Managed Policies.
+Use the `aws_iam_managed_policies` InSpec audit resource to test the properties of a collection of AWS IAM Managed policies.
 
 ## Syntax
 
@@ -15,34 +15,36 @@ The `aws_iam_managed_policies` resource returns a collection of IAM managed poli
       its('policy_names') { should include('POLICY_NAME') }
     end
 
-This resource allows filtering by scope.
-To list only AWS-managed policies, set `Scope` to `AWS`. To list only the customer-managed policies in your AWS account, set `Scope` to `Local`. If a scope is not supplied, `ALL` policies are returned.
+This resource allows filtering by scope, which are:
+
+- To list only AWS-managed policies, set `Scope` to `AWS`. 
+- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`.
+- If a scope is not provided, `ALL` policies are returned.
 
     describe aws_iam_managed_policies(scope: 'LOCAL') do
       it { should exist }
     end
 
     describe aws_iam_managed_policies(scope: 'AWS') do
-      its('policy_names') { should include 'PLOICYNAME' }
+      its('policy_names') { should include 'PLOICY_NAME' }
     end
-
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
 
 ## Parameters
 
-##### scope _(allowed)_   This is a optional parameter
+scope _(allowed)_ : This is an optional parameter
 
 ## Properties
 
-| Property              | Description | Field |
-| ---                  | --- | --- |
-|arns                  | A list of the ARN identifiers of the policies. | arn |
-|policy\_ids           | A list of the stable and unique strings identifying the policies. | policy_id |
-|policy\_names         | A list of the friendly names (not ARN) identifying the policies.| policy_name |
-|attachment\_counts    | A list of the counts of attached entities for each policy. | attachment_count |
-|attached_groups      | A list of the list of group names of the groups attached to each policy. | attached_group |
-|default\_version\_ids | A list of the identifier for the default version of the policy. | default\_version\_id |
+| Property              | Description                                                | Field                   |
+| :--------------------:| :---------------------------------------------------------:| :---------------------: |
+|arns                   | A list of the ARN identifiers of the policies.             | arn                     |
+|policy\_ids            | A list of the stable and unique strings identifying the policies. | policy_id        |
+|policy\_names          | A list of the friendly names (not ARN) identifying the policies.| policy_name        |
+|attachment\_counts     | A list of the counts of attached entities for each policy. | attachment_count        |
+|attached_groups        | A list of the list of group names of the groups attached to each policy. | attached_group |
+|default\_version\_ids  | A list of the identifier for the default version of the policy. | default\_version\_id |
 
 ## Examples
 
@@ -64,7 +66,7 @@ For a full list of available matchers, please visit our [matchers page](https://
 
 ### exist
 
-The control will pass if the describe returns at least one result.
+The control passes if the describe returns at least one result.
 
 Use `should` to test the entity should exist.
 
