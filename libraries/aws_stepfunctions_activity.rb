@@ -7,7 +7,7 @@ class AWSStepFunctionsActivity < AwsResourceBase
   desc 'Describes an activity.'
 
   example "
-    describe aws_ssm_maintenance_window(activity_arn: 'ACTIVITY_ARN') do
+    describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
       it { should exist }
     end
   "

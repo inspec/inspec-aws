@@ -2,14 +2,14 @@
 
 require 'aws_backend'
 
-class AWSSESMaintenanceWindow < AwsResourceBase
-  name 'aws_ssm_maintenance_window'
+class AWSSSOPermissionSet < AwsResourceBase
+  name 'aws_sso_permission_set'
   desc 'Retrieves a maintenance window.'
 
   example "
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
-      it { should exist }
-    end
+    describe aws_sso_permission_set(window_id: 'WINDOW_ID') do
+    it { should exist }
+  end
   "
 
   def initialize(opts = {})

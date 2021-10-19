@@ -7,7 +7,7 @@ class AWSSignerProfilePermissions < AwsResourceBase
   desc 'Lists the cross-account permissions associated with a signing profile.'
 
   example "
-    describe aws_signer_profile_permissions(profile_name: PROFILE_NAME') do
+    describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
       it { should exist }
     end
   "

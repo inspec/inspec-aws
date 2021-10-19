@@ -7,7 +7,7 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
   desc 'Retrieves a target in the maintenance window.'
 
   example "
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
+    describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
       it { should exist }
     end
   "

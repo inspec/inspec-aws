@@ -7,7 +7,7 @@ class AWSSESMaintenanceWindows < AwsResourceBase
   desc 'Lists the receipt rule sets that exist under your AWS account in the current AWS Region.'
 
   example "
-    describe aws_ses_receipt_rule_sets do
+    describe aws_ssm_maintenance_windows do
       it { should exist }
     end
   "

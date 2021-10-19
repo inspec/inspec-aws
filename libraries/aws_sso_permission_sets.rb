@@ -2,14 +2,14 @@
 
 require 'aws_backend'
 
-class AWSSESMaintenanceWindowTasks < AwsResourceBase
-  name 'aws_ssm_maintenance_window_tasks'
+class AWSSSOPermissionSets < AwsResourceBase
+  name 'aws_sso_permission_sets'
   desc 'Retrieves a task in the maintenance window.'
 
   example "
-    describe aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID') do
-      it { should exist }
-    end
+    describe aws_sso_permission_sets(window_id: 'WINDOW_ID') do
+    it { should exist }
+  end
   "
 
   attr_reader :table
