@@ -40,6 +40,14 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def target_keys
+    targets.map(&:key)
+  end
+
+  def target_values
+    targets.map(&:value)
+  end
+
   def to_s
     "Window Target Id: #{@display_name}"
   end

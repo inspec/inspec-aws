@@ -14,7 +14,7 @@ class AWSSESPatchBaseline < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(window_id))
+    validate_parameters(required: %i(baseline_id))
     raise ArgumentError, "#{@__resource_name__}: baseline_id must be provided" unless opts[:baseline_id] && !opts[:baseline_id].empty?
     @display_name = opts[:baseline_id]
     catch_aws_errors do

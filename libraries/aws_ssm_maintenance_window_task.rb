@@ -17,10 +17,16 @@ class AWSSESMaintenanceWindowTask < AwsResourceBase
     validate_parameters(required: %i(window_id window_task_id))
     raise ArgumentError, "#{@__resource_name__}: window_id must be provided" unless opts[:window_id] && !opts[:window_id].empty?
     raise ArgumentError, "#{@__resource_name__}: window_task_id must be provided" unless opts[:window_task_id] && !opts[:window_task_id].empty?
+    filter = [
+      {
+        key: "WindowTaskId",
+        values: [opts[:window_task_id]],
+      },
+    ]
     @display_name = opts[:window_task_id]
     catch_aws_errors do
-      resp = @aws.ssm_client.describe_maintenance_window_targets({ window_id: opts[:window_id], window_task_id: opts[:window_task_id] })
-      @res = resp.to_h
+      resp = @aws.ssm_client.describe_maintenance_window_tasks({ window_id: opts[:window_id], filters: filter })
+      @res = resp.tasks[0].to_h
       create_resource_methods(@res)
     end
   end
@@ -32,6 +38,14 @@ class AWSSESMaintenanceWindowTask < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
+  end
+
+  def target_keys
+    targets.map(&:key)
+  end
+
+  def target_values
+    targets.map(&:value)
   end
 
   def to_s
