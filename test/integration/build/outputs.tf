@@ -594,10 +594,6 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
 
-output "load_balancer_arn" {
-  value = aws_lb.test.arn
-}
-
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
