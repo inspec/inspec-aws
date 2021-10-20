@@ -1,9 +1,14 @@
-<!-- latest_release 1.73.16 -->
+<!-- latest_release 1.74.0 -->
+## [v1.74.0](https://github.com/inspec/inspec-aws/tree/v1.74.0) (2021-10-20)
+
+#### Merged Pull Requests
+- Removed duplicate resource [#697](https://github.com/inspec/inspec-aws/pull/697) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.73.16](https://github.com/inspec/inspec-aws/tree/v1.73.16) (2021-10-14)
 
 #### Merged Pull Requests
 - Release notes 10/13 [#687](https://github.com/inspec/inspec-aws/pull/687) ([kagarmoe](https://github.com/kagarmoe))
-<!-- latest_release -->
 
 ## [v1.73.15](https://github.com/inspec/inspec-aws/tree/v1.73.15) (2021-10-11)
 
