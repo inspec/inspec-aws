@@ -5,13 +5,13 @@ platform: aws
 
 # aws_rds_db_cluster_snapshot
 
-Use the `aws_rds_db_cluster_snapshot` InSpec audit resource to test properties of the singular resource of AWS RDS Cluster Snapshot.
+Use the `aws_rds_db_cluster_snapshot` InSpec audit resource to test the properties of the singular resource of AWS RDS Cluster snapshot.
 
 ## Syntax
 
 Ensure that cluster snapshot exists.
 
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
       it { should exist }
     end
 
@@ -19,46 +19,45 @@ Ensure that cluster snapshot exists.
 
 `db_cluster_snapshot_id` _(required)_
 
-The ID of the cluster snapshot.
+The cluster snapshot ID.
 
 For additional information, see the [AWS documentation on AWS RDS Cluster Snapshot.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_RDS.html).
 
 ## Properties
 
-
-|Property                     | Description|
-| ---                         | --- |
-|availability_zones    | Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in. |
-|db_cluster_snapshot_identifier    | Specifies the identifier for the DB cluster snapshot. |
-|db_cluster_identifier    | Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from. |
-|snapshot_create_time    | Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC). |
-|engine   | Specifies the name of the database engine. |
-|allocated_storage    | Specifies the allocated storage size in gibibytes (GiB). |
-|status    | Specifies the status of this DB cluster snapshot. |
-|port    | Specifies the port that the DB cluster was listening on at the time of the snapshot.  |
-|vpc_id  | Provides the VPC ID associated with the DB cluster snapshot. |
-|cluster_create_time   | Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC). |
-|master_username    | Provides the master username for the DB cluster snapshot. |
-|engine_version    | Provides the version of the database engine for this DB cluster snapshot. |
-|license_model    | Provides the license model information for this DB cluster snapshot.  |
-|snapshot_type  | Provides the type of the DB cluster snapshot. |
-|percent_progress   | Specifies the percentage of the estimated data that has been transferred. |
-|storage_encrypted    | Specifies whether the DB cluster snapshot is encrypted. |
-|kms_key_id  | If StorageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.  |
-|db_cluster_snapshot_arn  | The Amazon Resource Name (ARN) for the DB cluster snapshot.|
-|source_db_cluster_snapshot_arn   | If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot, otherwise, a null value. |
-|iam_database_authentication_enabled  | True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false. |
-|tag_list   | The related tags. |
+| Property                       | Description                                                                                |
+| :----------------------------: | :----------------------------------------------------------------------------------------: |
+| availability_zones             | Provides the list of EC2 Availability Zones instances in the DB cluster snapshot that can be restored. |
+|db_cluster_snapshot_identifier  | Specifies the identifier for the DB cluster snapshot.                                      |
+|db_cluster_identifier           | Specifies the identifier of the DB cluster from which the DB cluster snapshot is created.  |
+|snapshot_create_time            | Provides the time when the snapshot is taken, in Universal Coordinated Time (UTC).         |
+|engine                          | Specifies the name of the database engine.                                                 |
+|allocated_storage               | Specifies the allocated storage size in Gibibytes (GiB).                                   |
+|status                          | Specifies the status of this DB cluster snapshot.                                          |
+|port                            | Specifies the port where the DB cluster is listening at the time of the snapshot.          |
+|vpc_id                          | Provides the VPC ID associated with the DB cluster snapshot.                               |
+|cluster_create_time             | Specifies when the DB cluster is created, in Universal Coordinated Time (UTC).    |
+|master_username                 | Provides the master username for the DB cluster snapshot.                                  |
+|engine_version                  | Provides the version of the database engine for the DB cluster snapshot.                   |
+|license_model                   | Provides the license model information for the DB cluster snapshot.                        |
+|snapshot_type                   | Provides the DB cluster snapshot type.                                                     |
+|percent_progress                | Specifies the percentage of the estimated data that is transferred.                        |
+|storage_encrypted               | Specifies whether the DB cluster snapshot is encrypted.                                    |
+|kms_key_id                      | If `StorageEncrypted` is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.  |
+|db_cluster_snapshot_arn         | The Amazon Resource Name (ARN) for the DB cluster snapshot.                                |
+|source_db_cluster_snapshot_arn  | If the DB cluster snapshot is copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot, otherwise, a null value. |
+|iam_database_authentication_enabled  | `True`, if the mapping of the AWS Identity and Access Management (IAM) corresponds to database accounts that are enabled, and otherwise `False`. |
+|tag_list                        | The related tags. |
 
 ## Examples
 
-### Ensure a cluster snapshot id is available.
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
-      its('db_cluster_snapshot_id') { should eq 'DB_CLUSTER_SNAPSHOT_ID' }
+### Ensure a cluster snapshot ID is `available`
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
+      its('db_cluster_snapshot_id') { should eq 'CLUSTER_ID' }
     end
 
-### Ensure that the status is `available`.
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
+### Ensure that the status is `available`
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
         its('status') { should eq 'available' }
     end
 
@@ -66,19 +65,19 @@ For additional information, see the [AWS documentation on AWS RDS Cluster Snapsh
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The control passes if the `describe` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
       it { should_not exist }
     end
 
@@ -86,7 +85,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "DB_CLUSTER_SNAPSHOT_ID") do
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
       it { should be_available }
     end
 
