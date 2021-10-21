@@ -46,16 +46,19 @@ For additional information, see the [AWS documentation on AWS IAM AccessKey.](ht
 ## Examples
 
 ### Ensure a user name is available
+
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
       its('user_name') { should eq 'USER_NAME' }
     end
 
 ### Ensure an SSH public key ID is available
+
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
         its('ssh_public_key_id') { should eq 'SSH_PUBLIC_KEY_ID' }
     end
 
 ### Ensure SSH key is expired or not
+
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
         its('ssh_key_age_valid') { should eq true }
     end
