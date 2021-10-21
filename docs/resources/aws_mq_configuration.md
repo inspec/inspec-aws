@@ -31,7 +31,7 @@ For additional information, see the [AWS documentation on AWS MQ configuration](
 | --- | --- | --- |
 | arn | The ARN of the configuration.| arn |
 | authentication_strategy |  The authentication strategy associated with the configuration. The default is SIMPLE.| authentication_strategy |
-| Created | The date and time of the configuration revision. | Created |
+| created | The date and time of the configuration revision. | Created |
 | description | The description of the configuration. | description |
 | engine_type | The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ. | engine_type |
 | engine_version |  The broker engine's version. For a list of supported engine versions | engine_version |
