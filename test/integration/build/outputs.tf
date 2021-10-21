@@ -880,3 +880,11 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }
+
+output "broker_id" {
+  value = aws_mq_broker.test-broker.id
+}
+
+output "broker_arn" {
+  value = aws_mq_broker.test-broker.arn
+}
