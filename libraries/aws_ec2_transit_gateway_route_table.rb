@@ -8,15 +8,14 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
 
   example "
     describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-0123456789') do
-    it { should exist }
-  end
+      it { should exist }
+    end
   "
 
   def initialize(opts = {})
     opts = { transit_gateway_route_table_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_route_table_id])
-
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
     @display_name = opts[:transit_gateway_route_table_id]
     catch_aws_errors do
@@ -26,17 +25,13 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
     end
   end
 
-  def id
+  def transit_gateway_route_table_id
     return nil unless exists?
-    @transit_gateway_route_tables[:transit_gateway_route_table_ids]
+    @transit_gateway_route_tables[:transit_gateway_route_table_id]
   end
 
   def exists?
     !@transit_gateway_route_tables.nil? && !@transit_gateway_route_tables.empty?
-  end
-
-  def encrypted?
-    @transit_gateway_route_tables[:encrypted]
   end
 
   def to_s

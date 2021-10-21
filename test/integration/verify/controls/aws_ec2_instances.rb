@@ -4,7 +4,7 @@ aws_instance_id = attribute(:aws_instance_id, value: '', description: 'The AWS E
 aws_iam_profile_name_for_ec2 = attribute(:aws_iam_profile_name_for_ec2, value: '', description: "The AWS EC2 IAM profile name.")
 aws_vm_name = attribute(:aws_vm_name, value: '', description: 'The AWS EC2 Instance name.')
 
-title 'Test AWS EC2 Instances in bulk'
+title 'Test AWS EC2 Instances in bulk.'
 control 'aws-ec2-instances-1.0' do
 
   impact 1.0
