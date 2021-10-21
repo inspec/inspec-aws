@@ -5,7 +5,7 @@ platform: aws
 
 # aws_iam_ssh_public_key
 
-Use the `aws_iam_ssh_public_key` InSpec audit resource to test properties of the singular resource of AWS IAM PublicKey.
+Use the `aws_iam_ssh_public_key` InSpec audit resource to test the properties of the singular resource of AWS IAM PublicKey.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Ensure that the public key exists.
 
 `user_name` _(required)_
 
-The name of the IAM user associated with the SSH public key.
+The IAM user name associated with the SSH public key.
 
 `ssh_public_key_id` _(required)_
 
@@ -27,35 +27,35 @@ The unique identifier for the SSH public key.
 
 `encoding` _(required)_
 
-Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use SSH. To retrieve the public key in PEM format, use PEM.
+Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
 
 For additional information, see the [AWS documentation on AWS IAM AccessKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html).
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| user_name | The name of the IAM user associated with the SSH public key. |
-| ssh_public_key_id | The unique identifier for the SSH public key. |
-| fingerprint | The MD5 message digest of the SSH public key. |
-| ssh_public_key_body | The SSH public key. |
-| status | The status of the SSH public key. |
-| upload_date | The date and time, in ISO 8601 date-time format , when the SSH public key was uploaded. |
-| ssh_key_age_valid | This is a customized parameter. It helps to check AWS IAM SSH Keys age rotated within 730 days. It returns boolean value. |
+| Property               | Description                                                  |
+| :--------------------: | :----------------------------------------------------------: |
+| user_name              | The name of the IAM user associated with the SSH public key. |
+| ssh_public_key_id      | The unique identifier for the SSH public key.                |
+| fingerprint            | The MD5 message digest of the SSH public key.                |
+| ssh_public_key_body    | The SSH public key.                                          |
+| status                 | The status of the SSH public key.                            |
+| upload_date            | The date and time, in ISO 8601 date-time format, when the SSH public key is uploaded. |
+| ssh_key_age_valid      | This is a customized parameter. It helps to check AWS IAM SSH keys's age rotated within 730 days. It returns a boolean value. |
 
 ## Examples
 
-### Ensure an user name is available.
+### Ensure a user name is available
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
       its('user_name') { should eq 'USER_NAME' }
     end
 
-### Ensure a ssh public key id is available.
+### Ensure an SSH public key ID is available
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
         its('ssh_public_key_id') { should eq 'SSH_PUBLIC_KEY_ID' }
     end
 
-### Ensure ssh key is expired or not.
+### Ensure SSH key is expired or not
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
         its('ssh_key_age_valid') { should eq true }
     end
@@ -64,7 +64,7 @@ For additional information, see the [AWS documentation on AWS IAM AccessKey.](ht
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
