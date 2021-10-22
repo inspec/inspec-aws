@@ -43,20 +43,22 @@ For additional information, see the [AWS documentation on AWS RDS Cluster Snapsh
 |snapshot_type                   | Provides the DB cluster snapshot type.                                                     |
 |percent_progress                | Specifies the percentage of the estimated data that is transferred.                        |
 |storage_encrypted               | Specifies whether the DB cluster snapshot is encrypted.                                    |
-|kms_key_id                      | If `StorageEncrypted` is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.  |
+|kms_key_id                      | If `StorageEncrypted` is true, the AWS Key Management Service (AWS KMS) identifier for the encrypted DB cluster snapshot is set to protect the data. |
 |db_cluster_snapshot_arn         | The Amazon Resource Name (ARN) for the DB cluster snapshot.                                |
-|source_db_cluster_snapshot_arn  | If the DB cluster snapshot is copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot, otherwise, a null value. |
+|source_db_cluster_snapshot_arn  | If the DB cluster snapshot is copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot is associated, otherwise a null value is stored for the source DB cluster snapsot ARN. |
 |iam_database_authentication_enabled  | `True`, if the mapping of the AWS Identity and Access Management (IAM) corresponds to database accounts that are enabled, and otherwise `False`. |
 |tag_list                        | The related tags. |
 
 ## Examples
 
 ### Ensure a cluster snapshot ID is `available`
+
     describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
       its('db_cluster_snapshot_id') { should eq 'CLUSTER_ID' }
     end
 
 ### Ensure that the status is `available`
+
     describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
         its('status') { should eq 'available' }
     end
