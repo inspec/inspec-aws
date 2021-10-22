@@ -30,9 +30,16 @@ class AWSSNSSubscriptions < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.sns_client.list_subscriptions
+      @table = @aws.sns_client.list_subscriptions.map do |table|
+        table.subscriptions.map { |table_name| {
+          subscription_arn: table_name.subscription_arn,
+          owner: table_name.owner,
+          protocol: table_name.protocol,
+          endpoint: table_name.endpoint,
+          topic_arn: table_name.topic_arn,
+        }
+        }
+      end.flatten
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.subscriptions.map(&:to_h)
   end
 end
