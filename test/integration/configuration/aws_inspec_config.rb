@@ -126,6 +126,7 @@ module AWSInspecConfig
       aws_eks_subnet_name_1: "eks-subnet-1-#{add_random_string}",
       aws_eks_subnet_name_2: "eks-subnet-2-#{add_random_string}",
       aws_eks_vpc_name: "eks-vpc-name-#{add_random_string}",
+      aws_emr_cluster_name: "emr-cluster-#{add_random_string}",
       aws_elasticache_cluster_id: "elasticache-cluster-#{add_random_string}",
       aws_elasticache_cluster_engine: "memcached",
       aws_elasticache_cluster_node_type: "cache.t2.micro",

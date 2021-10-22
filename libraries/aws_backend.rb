@@ -49,6 +49,7 @@ require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
 require 'aws-sdk-networkmanager'
+require 'aws-sdk-emr'
 
 # AWS Inspec Backend Classes
 #
@@ -280,6 +281,10 @@ class AwsConnection
 
   def network_manager_client
     aws_client(Aws::NetworkManager::Client)
+  end
+
+  def emr_client
+    aws_client(Aws::EMR::Client)
   end
 end
 

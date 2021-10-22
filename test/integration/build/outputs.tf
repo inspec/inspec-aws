@@ -884,3 +884,7 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }
+
+output "aws_emr_cluster_id" {
+  value = aws_emr_cluster.emr_cluster.id
+}

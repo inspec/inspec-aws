@@ -111,7 +111,7 @@ namespace :tf do
 
   task cleanup_integration_tests: [:tf_dir] do
     puts '----> Cleanup'
-    cmd = 'terraform destroy -force -var-file=%s '
+    cmd = 'terraform destroy -var-file=%s '
     cmd += ' || true' if ENV['CLEANUP_TRAP_NON_ZERO_EXIT']
     cmd = format(cmd, TF_VAR_FILE_NAME)
     sh(cmd)
