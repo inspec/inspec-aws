@@ -7,7 +7,7 @@ class AWSIAMServerCertificate < AwsResourceBase
   desc 'Retrieves information about the specified server certificate stored in IAM.'
 
   example "
-    describe aws_iam_server_certificate(server_certificate_name: 'serverCertificateNameType') do
+    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
       it { should exist }
     end
   "
