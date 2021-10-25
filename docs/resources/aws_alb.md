@@ -42,6 +42,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |state                       | The state of the load balancer. |
 |subnets                     | A collection of the subnet ids. |
 |type                        | The type of the load balancer. |
+|access\_log\_enabled        | To check the status of access log for load balancer. |
 |vpc\_id                     | The ID of the VPC for the load balancer. |
 |zone\_names                 | A collection of the names of the availability zones. |
 |listeners                   | A collection of the listeners for the load balancer. |
@@ -57,7 +58,11 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
       its('zone_names')        { should include 'us-east-2a' }
       its('zone_names')        { should include 'us-east-2b' }
     end
-
+##### Test access log status for ALB
+    describe aws_alb('load_balancer_arn::alb') do
+    it                         { should exist }
+    its ('access_log_enabled') { should eq true }
+  end  
 ## Matchers
 
 This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).

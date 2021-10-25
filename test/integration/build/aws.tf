@@ -1747,6 +1747,32 @@ resource "aws_security_group" "lb_sg" {
   }
 }
 
+resource "aws_s3_bucket" "b" {
+  bucket = "aws-lb-test-bucket"
+}
+
+resource "aws_s3_bucket_policy" "b" {
+  bucket = aws_s3_bucket.b.id
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression's result to valid JSON syntax.
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Id      = "MYBUCKETPOLICY"
+    Statement = [
+      {
+        Sid       = ""
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:*"
+        Resource = [
+          aws_s3_bucket.b.arn,
+          "${aws_s3_bucket.b.arn}/*",
+        ]
+      },
+    ]
+  })
+}
 resource "aws_lb" "aws-alb" {
   count              = var.aws_enable_creation
   name               = var.aws_alb_name
@@ -1755,6 +1781,11 @@ resource "aws_lb" "aws-alb" {
   security_groups    = [aws_security_group.lb_sg[0].id]
   subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
 
+ access_logs {
+    bucket  = aws_s3_bucket.b.id
+    prefix  = "test-lb"
+    enabled = true
+  }
   tags = {
     Environment = "inspec-aws"
   }
