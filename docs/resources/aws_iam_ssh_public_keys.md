@@ -17,6 +17,14 @@ Ensure that the public key exists.
 
 ## Parameters
 
+`user_name` _(required)_
+
+The IAM user name associated with the SSH public key.
+
+`ssh_public_key_id` _(required)_
+
+The unique identifier for the SSH public key.
+
 For additional information, see the [AWS documentation on AWS IAM AccessKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html).
 
 ## Properties
