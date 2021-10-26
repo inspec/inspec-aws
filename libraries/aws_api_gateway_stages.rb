@@ -7,7 +7,7 @@ class AWSApiGatewayStages < AwsResourceBase
   desc 'Gets information about a Stages collection.'
 
   example "
-    describe aws_api_gateway_stages(rest_api_id: 'rest_api_id') do
+    describe aws_api_gateway_stages(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
   "

@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_api\_gateway\_stage
 
-Use the `aws_api_gateway_stage` InSpec audit resource to test properties of a single AWS ApiGateway Stage.
+Use the `aws_api_gateway_stage` InSpec audit resource to test properties of the singular resource of AWS ApiGateway Stage.
 
 The AWS::ApiGateway::Stage resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
 
@@ -50,7 +50,7 @@ For additional information, see the [AWS ApiGateway Stage documentation](https:/
 ### Ensure that the client certificate ID exists.
 
     describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
-        its('client_certificate_id') { should eq 'CERT_ID' }
+        its('client_certificate_id') { should eq 'CLIENT_CETIFICATE_ID' }
     end
 
 ## Matchers
@@ -75,7 +75,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
       it { should be_available }

@@ -33,7 +33,7 @@ class AWSApiGatewayStageSuccessPathTest < Minitest::Test
 		@res = AWSApiGatewayStage.new(rest_api_id: 'test1', stage_name: 'stage1', client_args: { stub_responses: true }, stub_data: [data])
 	end
 
-	def test_api_gateway_stage_exists
+	def test_stage_exists
 		assert @res.exists?
 	end
 

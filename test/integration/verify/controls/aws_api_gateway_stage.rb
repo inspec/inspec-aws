@@ -3,7 +3,12 @@ aws_api_gateway_stage_name = attribute(:aws_api_gateway_stage_name_test, value: 
 aws_api_gateway_client_certificate_id = attribute(:aws_api_gateway_client_certificate_id_test, value: '', description: '')
 aws_api_gateway_rest_api_id = attribute(:aws_api_gateway_rest_api_id_test, value: '', description: '')
 
-describe aws_api_gateway_stage(rest_api_id: aws_api_gateway_rest_api_id, stage_name: aws_api_gateway_stage_name) do
+control 'aws-apigateway-stage' do
+
+  impact 1.0
+  title 'Ensure API Gateway Stage resource has the correct properties.'
+
+  describe aws_api_gateway_stage(rest_api_id: aws_api_gateway_rest_api_id, stage_name: aws_api_gateway_stage_name) do
     it { should exist }
   end
   

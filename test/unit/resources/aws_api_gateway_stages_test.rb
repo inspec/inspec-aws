@@ -12,7 +12,7 @@ class AWSApiGatewayStagesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayStages.new('rubbish') }
   end
 
-  def test_items_non_existing_for_empty_response
+  def test_stages_non_existing_for_empty_response
     refute AWSApiGatewayStages.new(rest_api_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
@@ -29,26 +29,26 @@ class AWSApiGatewayStagesHappyPathTest < Minitest::Test
     mock_data[:created_date] = Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :item => [mock_data] }
     data[:client] = Aws::APIGateway::Client
-    @items = AWSApiGatewayStages.new(rest_api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSApiGatewayStages.new(rest_api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_work_groups_exists
-    assert @items.exist?
+  def test_stages_exists
+    assert @resp.exist?
   end
 
   def test_deployment_ids
-    assert_equal(@items.deployment_ids, ['test1'])
+    assert_equal(@resp.deployment_ids, ['test1'])
   end
 
   def test_stage_names
-    assert_equal(@items.stage_names, ['stage1'])
+    assert_equal(@resp.stage_names, ['stage1'])
   end
 
   def test_descriptions
-    assert_equal(@items.descriptions, ['test1'])
+    assert_equal(@resp.descriptions, ['test1'])
   end
 
   def test_created_dates
-    assert_equal(@items.created_dates, [Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
+    assert_equal(@resp.created_dates, [Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")])
   end
 end
