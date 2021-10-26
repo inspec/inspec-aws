@@ -25,7 +25,7 @@ The ID of the placement group.
 
 The name of the placement group.
 
-For additional information, refer [AWS documentation on EC2 Placement Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
+For additional information, see the [AWS documentation on EC2 placement groups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
 
 ## Properties
 
