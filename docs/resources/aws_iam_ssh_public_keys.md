@@ -9,13 +9,23 @@ Use the `aws_iam_ssh_public_keys` InSpec audit resource to test the properties o
 
 ## Syntax
 
-Ensure that the public key exists.
+Ensure that the public key exists by passing the parameter user_name.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+      it { should exist }
+    end
+
+Ensure that the public key exists without passing any parameter.
 
     describe aws_iam_ssh_public_keys do
       it { should exist }
     end
 
 ## Parameters
+
+`user_name` _(required)_ 
+
+The IAM user name associated with the SSH public key. The above required parameter is optional.
 
 For additional information, see the [AWS documentation on AWS IAM AccessKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html).
 
@@ -30,19 +40,37 @@ For additional information, see the [AWS documentation on AWS IAM AccessKey.](ht
 
 ## Examples
 
-### Ensure an user name is available
+### Ensure an user name is available by passing the parameter user_name.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+      its('user_names') { should include 'USER_NAME' }
+    end
+
+### Ensure an user name is available without passing any parameter.
 
     describe aws_iam_ssh_public_keys do
       its('user_names') { should include 'USER_NAME' }
     end
 
-### Ensure a ssh public key id is available
+### Ensure a ssh public key id is available by passing the parameter user_name.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+        its('ssh_public_key_ids') { should include 'SSH_PUBLIC_KEY_ID' }
+    end
+
+### Ensure a ssh public key id is available without passing any parameter.
 
     describe aws_iam_ssh_public_keys do
         its('ssh_public_key_ids') { should include 'SSH_PUBLIC_KEY_ID' }
     end
 
-### Ensure status is 'Active'
+### Ensure status is 'Active' by passing the parameter user_name.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+        its('statuses') { should include 'Active' }
+    end
+
+### Ensure status is 'Active' without passing any parameter.
 
     describe aws_iam_ssh_public_keys do
         its('statuses') { should include 'Active' }
@@ -58,11 +86,19 @@ The control passes if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+      it { should exist }
+    end
+
     describe aws_iam_ssh_public_keys do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+      it { should_not exist }
+    end
 
     describe aws_iam_ssh_public_keys do
       it { should_not exist }
@@ -71,6 +107,10 @@ Use `should_not` to test the entity does not exist.
 ### be_available
 
 Use `should` to check if the entity is available.
+
+    describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
+      it { should be_available }
+    end
 
     describe aws_iam_ssh_public_keys do
       it { should be_available }
