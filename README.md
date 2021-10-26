@@ -12,12 +12,12 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)
 
-There are multiple ways to set AWS credentials as shown below:
+There are multiple ways to set the AWS credentials, as shown below:
 
 #### 1) Environment Variables
 
-Set your AWS credentials in an `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
-    
+Set your AWS credentials in a `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
+
 ```bash
     # Example configuration
     export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
@@ -27,10 +27,11 @@ Set your AWS credentials in an `.envrc` file or export them in your shell. (See 
 ```
 
 #### 2) Configuration File
+
 Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See example [aws configure credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))
 
-
 Example `~/.aws/credentials` :
+
    ```
       [default]
       aws_access_key_id=AKIAIOSFODNN7EXAMPLE
@@ -40,8 +41,9 @@ Example `~/.aws/credentials` :
       aws_access_key_id=AKIAIOSFODNN7EXAMPLF
       aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY1
    ```
-   
+
 Example `~/.aws/config` :
+
  ```
     [default]
     region=us-west-2
@@ -49,22 +51,26 @@ Example `~/.aws/config` :
     [engineering]
     region=us-east-2
  ```
- 
- AWS SDK will select the default credentials unless `aws_profile` is set in an `.envrc`
+
+ AWS SDK selects the default credentials unless `aws_profile` is set in an `.envrc`.
+
  ```bash
      # Example configuration
      export AWS_PROFILE="engineering"
  ```
- 
- ##### The credentials precedence is:
+
+##### The credentials precedence is
+
    1. Credentials set in `.envrc` OR as an Environment variable.
    2. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` set as an Environment variable.
-   3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` is NOT set as an Environment variable. Default credentials will be used.
-   
+   3. Credentials set in `~/.aws/credentials` AND `~/.aws/config` AND `AWS_PROFILE` is NOT set as an Environment variable. Default credentials are used.
+
 ### AWS Region
-The `aws_region` parameter can be provided to query resources in a specific region. If not provided, the AWS region set in environment variables or configuration files will be used. 
+
+The `aws_region` parameter queries resources in a specific region. If not provided, the AWS region set in environment variables or configuration files are used.
 
 Example:
+
 ```ruby
 describe aws_ec2_instances(aws_region: 'us-west-2') do
   its('count') { should eq 10 }
@@ -72,9 +78,11 @@ end
 ```
 
 ### Assuming an IAM role
-Assuming an IAM role allows an IAM user to gain additional/different permissions to perform actions in a different AWS account. (See example [aws configure IAM role](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html))
+
+Assuming an IAM role allows an IAM users gain additional (or different) permissions to perform actions in a different AWS account. (See example [aws configure IAM role](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html))
 
 Example:
+
 ```bash
    [profile example_profile]
    role_arn = arn:aws:iam::123456789012:role/example_profile
@@ -82,17 +90,18 @@ Example:
 ```
 
 ### Permissions
-Each resource will require specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal will require the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's required permissions in the [documentation](docs/).
+
+Each resource requires specific permissions to perform the operations required for testing. For example, to test an AWS EC2 instance, your service principal requires the `ec2:DescribeInstances` and `iam:GetInstanceProfile` permissions. You can find a comprehensive list of each resource's permissions needed in the [documentation](docs/).
 
 ## Use the Resources
 
-Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the AWS resources in your tests do the following:
+Since this is an InSpec resource pack, it defines the InSpec resources and includes example tests only. To use the AWS resources in your tests, do the following:
 
 ```
-$ inspec init profile --platform aws my-profile
+inspec init profile --platform aws my-profile
 ```
 
-The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows:
+The above command generates a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows:
 
 ```
 name: my-profile
@@ -106,18 +115,18 @@ supports:
   - platform: aws
 ```
 
-
 ### Use the Resources
 
-Since this is an InSpec resource pack, it only defines InSpec resources. To use these resources in your own controls you should create your own profile:
+Since this is an InSpec resource pack, it only defines InSpec resources. To use these resources in your controls, create your profile:
 
-#### Create a new profile
+#### Create a profile
 
 ```
-$ inspec init profile --platform aws my-profile
+
+inspec init profile --platform aws my-profile
 ```
 
-The above command will generate a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows
+The above command generates a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows.
 
 Example `inspec.yml`:
 
@@ -154,11 +163,12 @@ supports:
 Add some tests and run the profile via:
 
 ```
-$ inspec exec my-profile -t aws://
+inspec exec my-profile -t aws://
 ```
 
 ## Resource documentation
-This resource pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/inspec/inspec-aws/issues). As an open source project, we also welcome public contributions via [Pull Request](https://github.com/inspec/inspec-aws/pulls).
+
+This resource pack allows the testing of the following AWS resources. If a resource you wish to test is not listed, please feel free to open an [Issue](https://github.com/inspec/inspec-aws/issues). As an open-source project, we also welcome public contributions via [Pull Request](https://github.com/inspec/inspec-aws/pulls).
 
 InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://docs.chef.io/inspec/resources/)
 
@@ -357,9 +367,9 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 
 ## Examples
 
-### Ensure Security Groups Disallow FTP
+### Ensure Security Groups disallow FTP
 
-For disallowing FTP we check that there is no ingress from 0.0.0.0/0 on port 21.  The below sample control loops across all regions, checking all security groups for the account:
+For disallowing FTP, we check that there is no ingress from 0.0.0.0/0 on port 21.  The below sample control loops across all regions, checking all security groups for the account:
 
 ```
 title 'Test AWS Security Groups Across All Regions For an Account Disallow FTP'
@@ -388,10 +398,10 @@ end
       its('image_id') { should eq 'ami-27a58d5c' }
     end
 ```
-    
+
 ### Ensure all AWS Users have MFA enabled
 
-```   
+```
     describe aws_iam_users.where( has_mfa_enabled: false) do
       it { should_not exist }
     end
@@ -401,9 +411,9 @@ end
 
 ### `aws_region`
 
-In order to provide multi-region support, the `aws_region` property may be specified to a resource.  This will only have an effect on AWS resources that have a region dependency e.g. security groups.  One special-case worth mentioning is the `aws_s3_bucket` resource that updates its region based on the location returned from S3.
+To provide multi-region support, the `aws_region` property is specified to a resource.  This property affects AWS resources that have a region dependency. For example, security groups.  One special case worth mentioning is the `aws_s3_bucket` resource that updates its region based on the location returned from S3.
 
-The `aws_regions` resource can be used to loop across all regions e.g.
+The `aws_regions` resource is used to loop across all regions.
 
 ```
   aws_regions.region_names.each do |region|
@@ -413,7 +423,7 @@ The `aws_regions` resource can be used to loop across all regions e.g.
 
 ### `aws_endpoint`
 
-A custom endpoint URL can optionally be specified to resources for testing other compatible providers.  This propagates to the AWS client configuration.  An example is provided below for [Minio](https://github.com/minio/minio) S3 compatible buckets e.g.
+A custom endpoint URL can optionally be specified to resources for testing other compatible providers.  This propagates to the AWS client configuration.  An example is provided below for [Minio](https://github.com/minio/minio) S3 compatible buckets.
 
 ```
 title 'Test For  Minio Buckets Existing at a Custom Endpoint'
@@ -434,23 +444,30 @@ control 'minio-buckets-1.0' do
 end
 ```
 
-Note that InSpec AWS assumes full compatibility with the underlying AWS SDK and unsupported operations will cause failures.  Therefore, depending on the external provider implementation your mileage may vary!
+{{< note >}}
+
+The InSpec AWS assumes full compatibility with the underlying AWS SDK, and unsupported operations cause failures. Hence, depending on the external provider implementation, your mileage may vary!
+
+{{< /note >}}
 
 ### `aws_retry_limit` and `aws_retry_backoff`
 
-In certain cases AWS may implement rate limiting. In order to mitigate this issue the `Retry Limit` and `Retry Backoff` can be set in two ways:
+In certain cases, AWS implements rate-limiting. To mitigate this issue, the `Retry Limit` and `Retry Backoff` can be set in two ways:
 
 #### 1) Environment Variables
-Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables will be implemented at session level.
+
+Setting `AWS_RETRY_LIMIT` and `AWS_RETRY_BACKOFF` environment variables is implemented at the session level.
 
 ```bash
    export AWS_RETRY_LIMIT=5
    export aws_retry_limit=5
 ```
+
 _Note environment variables are case insensitive._
 
 #### 2) InSpec Control
-InSpec AWS resources now support setting the Retry Limit and Retry Backoff at control level as shown below.
+
+InSpec AWS resources now support setting the Retry Limit and Retry Backoff at the control level, as shown below.
 
 ```
   describe aws_config_recorder(recorder_name: aws_config_recorder_name, aws_retry_limit=5, aws_retry_backoff=5) do
@@ -460,15 +477,16 @@ InSpec AWS resources now support setting the Retry Limit and Retry Backoff at co
 ```
 
  #####The `aws_retry_limit` and `aws_retry_backoff` precedence:
+
    1. Set at Inspec control level.
    2. Set at Environment level.
 
 [Retry Limit and Retry Backoff documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/timeout-duration.html)
 
+### `NullResponse`
 
-### `NullResponse` 
+InSpec AWS resources returns `NullResponse` when an undefined property is tested from version **1.24** onwards instead of raising a `NoMethodError`.
 
-InSpec AWS resources will return `NullResponse` when an undefined property is tested from version **1.24** onwards instead of raising a `NoMethodError`.
 ```ruby
 describe aws_ec2_instance(instance_id: 'i-12345678') do
   its('fake_property') { should be_nil }
@@ -486,6 +504,7 @@ end
 ```
 
 Prior to version **1.24**.
+
 ```ruby
 describe aws_ec2_instance(instance_id: 'i-12345678') do
   its('fake_property') { should be_nil }
@@ -500,27 +519,26 @@ end
 # => undefined method `instance_ID' for EC2 Instance i-12345678
 ```
 
-
 ## Environment and Setup Notes
 
-#### Train and InSpec Dependencies
+### Train and InSpec Dependencies
 
-InSpec AWS depends on version 3 of the AWS SDK that is provided via [Train AWS](https://github.com/inspec/train-aws).  InSpec depends on Train AWS so this is not explicitly listed in the Gemfile here.
+InSpec AWS depends on version 3 of the AWS SDK provided via [Train AWS](https://github.com/inspec/train-aws). InSpec depends on Train AWS, so this is not explicitly listed in the Gemfile here.
 
-### Running a Sample Profile Using Docker
+### Running a sample profile using Docker
 
-A `Dockerfile` is provided in the root of this resource pack repository.  
+A `Dockerfile` is provided at the root of this resource pack repository.  
 
 ```
 cd inspec-aws
-docker build -t inspec-aws -f Dockerfile .
+docker build -t inspec-aws -f Dockerfile
 docker run -it inspec-aws /bin/bash
 export AWS_ACCESS_KEY_ID=<your creds here>
 export AWS_SECRET_ACCESS_KEY=<your creds here>
 bundle exec inspec exec sample_profile -t aws://
 ```
 
-If successful, output similar to this should be seen:
+If successful, output similar to below code is seen:
 
 ```
 # bundle exec inspec exec sample_profile -t aws://
@@ -539,7 +557,7 @@ Profile: Amazon Web Services  Resource Pack (inspec-aws)
 Version: 0.1.0
 Target:  aws://us-east-1
 
-     No tests executed.
+     No tests were executed.
 
 Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
 Test Summary: 50 successful, 0 failures, 0 skipped
@@ -556,6 +574,7 @@ The above example is for running the `aws_alb_test.rb` file.
 ### Running the unit and integration tests
 
 Run the linting and unit tests via the below:
+
 ```
 $ bundle exec rake
 Running RuboCop...
@@ -585,7 +604,7 @@ Valid:       true
 Summary:     0 errors, 1 warnings
 ```
 
-Conversely run using within a docker container, using the make file:
+Conversely, run using within a docker container, using the make file:
 
 To run unit tests and linting:
 
@@ -593,6 +612,7 @@ To run unit tests and linting:
 make sure
 
 ````
+
 Will result in...
 
 ````
@@ -617,7 +637,7 @@ Fabulous run in 4.613042s, 155.6457 runs/s, 172.3375 assertions/s.
 
 ````
 
-To run the full suite of tests run
+To run the full suite of tests, run
 
 ```` bash
 
@@ -625,17 +645,18 @@ make doubly_sure
 
 ````
 
-This will run the unit tests, create the target infrastructure and run the intergration tests.  If successful, will automatically destroy everything.  If it fails it will keep the environment up, testing then can be achieved by running:
+This test runs the unit tests, creates the target infrastructure, and runs the intergration tests.  If successful, the test  automatically destroy everything.  If it fails, it will keep the environment up, testing then can be achieved by running:
 
 ```` bash
 make int_test
 ````
 
-To keep things simple the aws credentials can either be supplied via environmental variables or files located on ./aws in this folder.
+The AWS credentials can either be supplied via environmental variables or files located on ./aws folder.
 
-This just requires docker, docker-compose and make, see [Three Musketeers Pattern](https://3musketeers.io/docs/make.html) for details
+This requires docker, docker-compose and make, see [Three Musketeers Pattern](https://3musketeers.io/docs/make.html) for details.
 
 Running the integration tests (after `setup_integration_tests`):
+
 ```
 $ bundle exec rake test:run_integration_tests
 ----> Run
@@ -665,7 +686,7 @@ Profile: Amazon Web Services  Resource Pack (inspec-aws)
 Version: 0.1.0
 Target:  aws://eu-west-2
 
-     No tests executed.
+     No tests were executed.
 
 Profile Summary: 50 successful controls, 0 control failures, 3 controls skipped
 Test Summary: 602 successful, 0 failures, 18 skipped
@@ -675,21 +696,22 @@ Test Summary: 602 successful, 0 failures, 18 skipped
 
 ### Failure running "inspec exec" on my AWS profile
 
-If an error such occurs when running "inspec exec" on a newly created AWS profile, check that the AWS transport is being specified as below:
+If an error occurs when running "inspec exec" on a newly created AWS profile, check that the AWS transport is specified as below:
 
 ```
-$ inspec exec . -t aws://
+inspec exec . -t aws://
 ```
 
-If a method missing error occurs and all the steps documented above have been followed try running the following command within the profile directory:
+If a method missing error occurs and all the steps documented above is followed try running the following command within the profile directory:
+
 ```bash
 inspec vendor --overwrite
 ```
 
 ## Support
 
-The InSpec AWS resources are community supported. For bugs and features, please open a github issue and label it appropriately.
+The InSpec AWS resources are community-supported. For bugs and features, please open a GitHub issue and label it appropriately.
 
 ## Kudos
 
-This work builds on the InSpec 2 AWS resources that were originally shipped as part of InSpec. 
+This work builds on the InSpec 2 AWS resources that are originally shipped as part of InSpec.
