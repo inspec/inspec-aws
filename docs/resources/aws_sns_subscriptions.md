@@ -5,9 +5,9 @@ platform: aws
 
 # aws_sns_subscriptions
 
-Use the `aws_sns_subscriptions` InSpec audit resource to test properties of the singular resource of AWS SNS Subscription Vpn Route.
+Use the `aws_sns_subscriptions` InSpec audit resource to test properties of an AWS Simple Notification Service (SNS) subscription VPN route.
 
-The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon SNS topic. For a subscription to be created, the owner of the endpoint must confirm the subscription.
+The `AWS::SNS::Subscription` resource subscribes an endpoint to an Amazon SNS topic. For a subscription to be created, the owner of the endpoint must confirm the subscription.
 
 ## Syntax
 
@@ -19,11 +19,11 @@ Ensure that the subscription exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS SNS Subscription.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html).
+For additional information, see the [AWS documentation on AWS SNS subscriptions.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | subscription_arns | The subscription's ARN. | subscription_arn |
 | owners | The subscription's owner. | owner |
@@ -33,12 +33,14 @@ For additional information, see the [AWS documentation on AWS SNS Subscription.]
 
 ## Examples
 
-### Ensure a subscription arn is available.
+### Ensure a subscription ARN is available.
+
     describe aws_sns_subscriptions do
       its('subscription_arns') { should include 'SUBSCRIPTION_ARN' }
     end
 
-### Ensure a topic arn is available.
+### Ensure a topic ARN is available.
+
     describe aws_sns_subscriptions do
         its('topic_arns') { should include 'TOPIC_ARN' }
     end
