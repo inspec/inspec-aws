@@ -5,7 +5,7 @@ platform: aws
 
 # aws_iam_server_certificate
 
-Use the `aws_iam_server_certificate` InSpec audit resource to test properties of a single IAM server certificate.
+Use the `aws_iam_server_certificate` InSpec audit resource to test the properties of a single IAM server certificate.
 
 This resource retrieves information about the specified server certificate, including the server certificate's path, GUID, ARN, and role.
 
@@ -13,7 +13,7 @@ This resource retrieves information about the specified server certificate, incl
 
 Ensure that a server certificate name exists.
 
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
       it { should exist }
     end
 
@@ -26,24 +26,24 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 ## Properties
 
 | Property | Description|
-| --- | --- |
+| :---: | :---: |
 | path | The path to the server certificate. |
 | server_certificate_name | The name that identifies the server certificate. |
 | server_certificate_id | The stable and unique string identifying the server certificate. |
 | arn | The Amazon Resource Name (ARN) specifying the server certificate. |
-| upload_date | The date when the server certificate was uploaded. |
+| upload_date | The date when the server certificate is uploaded. |
 | expiration | The date on which the certificate is set to expire. |
 
 ## Examples
 
-### Ensure a server certificate name is available.
+### Ensure a server certificate name is available
 
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
-      its('server_certificate_name') { should eq 'INSTANCE_PROFILE_NAME' }
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
+      its('server_certificate_name') { should eq 'PROFILE_NAME' }
     end
 
-### Ensure that an arn is available.
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
+### Ensure that an arn is available
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
         its('arn') { should eq 'INSTANCE_PROFILE_NAME_ARN' }
     end
 
@@ -57,13 +57,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
       it { should_not exist }
     end
 
@@ -71,7 +71,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the server certificate is available.
 
-    describe aws_iam_server_certificate(server_certificate_name: 'SERVER_CERTIFICATE_NAME') do
+    describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
       it { should be_available }
     end
 

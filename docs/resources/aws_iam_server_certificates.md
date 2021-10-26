@@ -5,9 +5,9 @@ platform: aws
 
 # aws_iam_server_certificates
 
-Use the `aws_iam_server_certificates` InSpec audit resource to test properties of all the IAM server certificate.
+Use the `aws_iam_server_certificates` InSpec audit resource to test the properties of all IAM server certificates.
 
-This resource retrieves information about all the server certificate, including the server certificate's path, GUID, ARN, and role.
+This resource retrieves information about the server certificate, including the server certificate's path, GUID, ARN, and role.
 
 ## Syntax
 
@@ -16,7 +16,6 @@ Ensure that a server certificate name exists.
     describe aws_iam_server_certificates do
       it { should exist }
     end
-
 
 For additional information, see the [AWS documentation on IAM Instance Profile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html).
 
@@ -28,18 +27,18 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 | server_certificate_names | The name that identifies the server certificate. |
 | server_certificate_ids | The stable and unique string identifying the server certificate. |
 | arns | The Amazon Resource Name (ARN) specifying the server certificate. |
-| upload_date | The date when the server certificate was uploaded. |
+| upload_date | The date when the server certificate is uploaded. |
 | expiration_date | The date on which the certificate is set to expire. |
 
 ## Examples
 
-### Ensure a server certificate name is available.
+### Ensure a server certificate name is available
 
     describe aws_iam_server_certificates do
-      its('server_certificate_name') { should include 'INSTANCE_PROFILE_NAME' }
+      its('server_certificate_name') { should include 'PROFILE_NAME' }
     end
 
-### Ensure that an arn is available.
+### Ensure that an arn is available
     describe aws_iam_server_certificates do
         its('arn') { should include 'INSTANCE_PROFILE_NAME_ARN' }
     end
