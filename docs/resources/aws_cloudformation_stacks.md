@@ -49,7 +49,6 @@ See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSClo
       end
     end
 
-
 ## Matchers
 
 This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -70,6 +69,6 @@ Use `should_not` to test that an entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudformation:DescribeStacks` action set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFormation:Client:DescribeStacksOutput` action set to Allow.
 
 You can find detailed documentation at [Authentication and Access Control for CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)

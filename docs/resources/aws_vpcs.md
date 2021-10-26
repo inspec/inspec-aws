@@ -151,6 +151,6 @@ Use `should_not` to test the entity should not exist
 
 ## AWS Permissions
 
-To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with effect set to `Allow`.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeVpcsResult` action with effect set to `Allow`.
 
 You can find detailed documentation at the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

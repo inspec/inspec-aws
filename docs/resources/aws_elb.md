@@ -46,6 +46,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |protocols                              | A list of the protocols configured for the listeners of the load balancer. |
 |cross\_zone\_load\_balancing\_enabled? | The cross-zone load balancing status for ELB. |
 |access\_log\_enabled?                  | The access log status for ELB. |
+|certificate\_id                        | A list of SSL certificate IDs configured for the listeners of the load balancer. |
 
 ## Examples
 
@@ -109,6 +110,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticloadbalancing:DescribeLoadBalancers` action set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElasticLoadBalancing:Client:DescribeAccessPointsOutput` action set to Allow.
 
 You can find detailed documentation at [Authentication and Access Control for Your Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-authentication-access-control.html)

@@ -75,4 +75,4 @@ Use `should` to check if the filter name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudwatchlogs:client:describe_metric_filters` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatchLogs:Client:DescribeMetricFiltersResponse` action with `Effect` set to `Allow`.

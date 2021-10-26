@@ -1,6 +1,6 @@
 title 'Test single AWS ECS Cluster'
 
-aws_ecs_cluster_name = attribute(:aws_ecs_cluster_name, default: '', description: 'The AWS ECS Cluster name.')
+aws_ecs_cluster_name = attribute(:aws_ecs_cluster_name, value: '', description: 'The AWS ECS Cluster name.')
 
 control 'aws-ecs-cluster-1.0' do
 

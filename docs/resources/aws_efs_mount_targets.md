@@ -78,4 +78,4 @@ Use `should` to check if the file system is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `efs:client:describe_mount_targets` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EFS:Client:DescribeMountTargetsResponse` action with `Effect` set to `Allow`.

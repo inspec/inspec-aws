@@ -1,6 +1,6 @@
-resolver_rule_association_id = attribute("resolver_rule_association_id", default: "", description: "")
-resolver_rule_id = attribute("resolver_rule_id", default: "", description: "")
-re_vpc_id = attribute("re_vpc_id", default: "", description: "")
+resolver_rule_association_id = attribute("resolver_rule_association_id", value: "", description: "")
+resolver_rule_id = attribute("resolver_rule_id", value: "", description: "")
+re_vpc_id = attribute("re_vpc_id", value: "", description: "")
 
 control 'aws-route53-resolver-resolver-rule-associations-1.0' do
     impact 1.0
