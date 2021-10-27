@@ -1,9 +1,9 @@
 title 'Test AWS KMS Keys in bulk'
 
-aws_kms_key_enabled_id = attribute(:aws_kms_key_enabled_id, default: '', description: 'The AWS KMS key ID.')
-aws_kms_key_enabled_arn = attribute(:aws_kms_key_enabled_arn, default: '', description: 'The AWS KMS key ARN.')
-aws_kms_key_disabled_id = attribute(:aws_kms_key_disabled_id, default: '', description: 'The AWS KMS key ID.')
-aws_kms_key_disabled_arn = attribute(:aws_kms_key_disabled_arn, default: '', description: 'The AWS KMS key ARN.')
+aws_kms_key_enabled_id = attribute(:aws_kms_key_enabled_id, value: '', description: 'The AWS KMS key ID.')
+aws_kms_key_enabled_arn = attribute(:aws_kms_key_enabled_arn, value: '', description: 'The AWS KMS key ARN.')
+aws_kms_key_disabled_id = attribute(:aws_kms_key_disabled_id, value: '', description: 'The AWS KMS key ID.')
+aws_kms_key_disabled_arn = attribute(:aws_kms_key_disabled_arn, value: '', description: 'The AWS KMS key ARN.')
 
 control 'aws-kms-keys-1.0' do
 

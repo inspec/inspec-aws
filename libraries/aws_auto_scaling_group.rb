@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsAutoScalingGroup < AwsResourceBase
   name 'aws_auto_scaling_group'
-  desc 'Verifies settings for an AWS Auto Scaling Group'
+  desc 'Verifies settings for an AWS Auto Scaling Group.'
 
   example "
     describe aws_auto_scaling_group('group-name') do

@@ -3,9 +3,9 @@ title: About the aws_ec2_eip Resource
 platform: aws
 ---
 
-# aws\_eip
+# aws\_ec2\_eip
 
-Use the `aws_eip` InSpec audit resource to test properties of a single specific Elastic IP (EIP). 
+Use the `aws_ec2_eip` InSpec audit resource to test properties of a single specific Elastic IP (EIP).
 
 An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `192.0.2.0`.
 
@@ -65,7 +65,7 @@ Use `should` to test that the entity exists.
     end
 
 Use `should_not` to test the entity does not exist.
-      
+
     describe aws_vpc_endpoint(public_ip: '192.0.2.0') do
       it { should_not exist }
     end
@@ -86,6 +86,6 @@ Use `should_not` to test an IP address that should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeAddresses` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeAddressesResult` action with `Effect` set to `Allow`.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.
