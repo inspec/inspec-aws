@@ -4340,3 +4340,8 @@ resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
   db_cluster_identifier          = aws_rds_cluster.rds_cluster.id
   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 }
+
+resource "aws_placement_group" "web" {
+  name     = "test_placement_group"
+  strategy = "cluster"
+}

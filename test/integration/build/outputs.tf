@@ -932,3 +932,7 @@ output "aws_db_cluster_snapshot_source_db_cluster_snapshot_arn" {
 output "aws_db_cluster_snapshot_storage_encrypted" {
   value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.storage_encrypted
 }
+
+output "aws_placement_group_name" {
+  value = aws_placement_group.web.name
+}
