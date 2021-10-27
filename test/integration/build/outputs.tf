@@ -888,3 +888,47 @@ output "broker_id" {
 output "broker_arn" {
   value = aws_mq_broker.test-broker.arn
 }
+
+output "aws_db_cluster_snapshot_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.id
+}
+
+output "aws_db_cluster_snapshot_availability_zones" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.availability_zones
+}
+
+output "aws_db_cluster_snapshot_allocated_storage" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.allocated_storage
+}
+
+output "aws_db_cluster_snapshot_status" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.status
+}
+
+output "aws_db_cluster_snapshot_engine" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine
+}
+
+output "aws_db_cluster_snapshot_engine_version" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine_version
+}
+
+output "aws_db_cluster_snapshot_db_cluster_identifier" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_identifier
+}
+
+output "aws_db_cluster_snapshot_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_vpc_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.vpc_id
+}
+
+output "aws_db_cluster_snapshot_source_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.source_db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_storage_encrypted" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.storage_encrypted
+}

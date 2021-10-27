@@ -4333,3 +4333,10 @@ resource "aws_mq_broker" "test-broker" {
     password = "ExampleUser"
   }
 }
+
+## RDS Cluster Snapshot
+
+resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
+  db_cluster_identifier          = aws_rds_cluster.rds_cluster.id
+  db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+}
