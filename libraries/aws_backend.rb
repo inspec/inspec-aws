@@ -26,6 +26,7 @@ require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-route53'
 require 'aws-sdk-s3'
+require 'aws-sdk-shield'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
 require 'aws-sdk-efs'
@@ -47,6 +48,8 @@ require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
+require 'aws-sdk-networkmanager'
+require 'aws-sdk-mq'
 
 # AWS Inspec Backend Classes
 #
@@ -184,6 +187,10 @@ class AwsConnection
     aws_client(Aws::AutoScaling::Client)
   end
 
+  def shield_client
+    aws_client(Aws::Shield::Client)
+  end
+
   def sqs_client
     aws_client(Aws::SQS::Client)
   end
@@ -270,6 +277,14 @@ class AwsConnection
 
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
+  end
+
+  def network_manager_client
+    aws_client(Aws::NetworkManager::Client)
+  end
+
+  def mq_client
+    aws_client(Aws::MQ::Client)
   end
 end
 

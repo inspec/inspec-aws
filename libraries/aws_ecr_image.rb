@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEcrImage < AwsResourceBase
   name 'aws_ecr_image'
-  desc 'Verifies settings for an AWS ECR Image'
+  desc 'Verifies settings for an AWS ECR Image.'
 
   example "
     describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do

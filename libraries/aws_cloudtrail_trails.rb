@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsCloudTrailTrails < AwsResourceBase
   name 'aws_cloudtrail_trails'
-  desc 'Verifies settings for AWS CloudTrail Trails in bulk'
-  example '
+  desc 'Verifies settings for AWS CloudTrail Trails in bulk.'
+  example "
     describe aws_cloudtrail_trails do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
@@ -30,7 +30,7 @@ class AwsCloudTrailTrails < AwsResourceBase
     catch_aws_errors do
       @cloudtrails = @aws.cloudtrail_client.describe_trails({}).to_h[:trail_list]
     end
-    return [] if !@cloudtrails || @cloudtrails.empty?
+    return cloudtrail_rows if !@cloudtrails || @cloudtrails.empty?
     @cloudtrails.each do |cloudtrail|
       cloudtrail_rows+=[{ trail_arn: cloudtrail[:trail_arn],
                           name: cloudtrail[:name] }]

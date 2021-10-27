@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsAmis < AwsResourceBase
   name 'aws_amis'
-  desc 'Verifies settings for a collection of AWS AMIs'
+  desc 'Verifies settings for a collection of AWS AMIs.'
   example "
     describe aws_amis(all_amis: 'true') do
       it { should exist }

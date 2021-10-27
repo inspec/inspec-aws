@@ -142,6 +142,22 @@ output "aws_rds_instance_id" {
   value = aws_db_instance.db_rds.0.id
 }
 
+output "aws_rds_snapshot_identifier" {
+  value = aws_db_snapshot.test_db_snapshot.db_instance_identifier
+}
+
+output "aws_rds_snapshot_engine" {
+  value = aws_db_snapshot.test_db_snapshot.engine
+}
+
+output "aws_rds_snapshot_engine_version" {
+  value = aws_db_snapshot.test_db_snapshot.engine_version
+}
+
+output "aws_rds_snapshot_storage_type" {
+  value = aws_db_snapshot.test_db_snapshot.storage_type
+}
+
 output "aws_cloud_trail_arn" {
   value = aws_cloudtrail.trail_1.0.arn
 }
@@ -578,12 +594,16 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
 
-output "load_balancer_arn" {
-  value = aws_lb.test.arn
-}
-
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
+}
+
+output "aws_traffic_filter_id" {
+  value = aws_ec2_traffic_mirror_filter.filter.id
+}
+
+output "aws_traffic_filter_desc" {
+  value = aws_ec2_traffic_mirror_filter.filter.description
 }
 
 output "aws_sfn_state_machine_id" {
@@ -712,6 +732,205 @@ output "aws_secretsmanager_secret_sm_id" {
 
 output "aws_secretsmanager_secret_sm_arn" {
   value = aws_secretsmanager_secret.aws_secretsmanager_secret_sm_test.arn
+}
+
+output "aws_vpc_peering_test1_id" {
+  value = aws_vpc.aws_vpc_peering_test1.id
+}
+
+output "aws_vpc_peering_test2_id" {
+  value = aws_vpc.aws_vpc_peering_test2.id
+}
+
+output "aws_vpc_peering_connection_id" {
+  value = aws_vpc_peering_connection.aws_vpc_peering_connection_test.id
+}
+
+output "traffic_mirror_session_id" {
+  value = aws_ec2_traffic_mirror_session.session.id
+}
+
+output "traffic_mirror_target_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_target_id
+}
+
+output "traffic_mirror_filter_id" {
+  value = aws_ec2_traffic_mirror_session.session.traffic_mirror_filter_id
+}
+
+output "network_interface_id" {
+  value = aws_ec2_traffic_mirror_session.session.network_interface_id
+}
+
+output "oidc_arn" {
+  value = aws_iam_openid_connect_provider.for_oidc.arn
+}
+
+output "aws_cloudfront_origin_access_identity_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.id
+}
+
+output "aws_cloudfront_origin_access_identity_s3_canonical_user_id" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.s3_canonical_user_id
+}
+
+output "aws_cloudfront_origin_access_identity_caller_reference" {
+  value = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.caller_reference
+}
+
+output "aws_vpn_connection_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
+output "aws_internet_gateway_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.id
+}
+
+output "aws_internet_gateway_owner_id" {
+  value = aws_internet_gateway.aws_internet_gateway_test.owner_id
+}
+
+output "aws_internet_gateway_vpc_id" {
+  value = aws_vpc.aws_vpc_internet_gateway_test.id
+}
+
+output "aws_network_interface_id1" {
+  value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_api_gateway_rest_api_id" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+}
+
+output "aws_api_gateway_stage_name" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_bm_test1.stage_name
+}
+
+output "aws_api_gateway_base_path_mapping_domain_name" {
+  value = aws_api_gateway_base_path_mapping.aws_api_gateway_base_path_mapping_bm_test1.domain_name
+}
+output "aws_api_gateway_account_throttle_settings" {
+  value = aws_api_gateway_account.aws_api_gateway_account_test1.throttle_settings
+}
+
+output "aws_api_gateway_account_cloudwatch_role_arn" {
+  value = aws_api_gateway_account.aws_api_gateway_account_test1.cloudwatch_role_arn
+}
+
+output "aws_api_gateway_api_key_id" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.id
+}
+
+output "aws_api_gateway_api_key_created_date" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.created_date
+}
+
+output "aws_api_gateway_api_key_last_updated_date" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.last_updated_date
+}
+
+output "aws_api_gateway_api_key_arn" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test1.arn
+}
+
+output "aws_api_gateway_authorizer_id" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.id
+}
+
+output "aws_api_gateway_authorizer_authorizer_uri" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_uri
+}
+
+output "aws_api_gateway_authorizer_authorizer_credentials" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_credentials
+}
+
+output "aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.authorizer_result_ttl_in_seconds
+}
+
+output "aws_api_gateway_authorizer_name" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.name
+}
+
+output "aws_api_gateway_authorizer_type" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.type
+}
+
+output "aws_api_gateway_authorizer_provider_arns" {
+  value = aws_api_gateway_authorizer.aws_api_gateway_authorizer_test1.provider_arns
+}
+
+output "aws_api_gateway_rest_api_id1" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test2.id
+}
+
+output "aws_api_gateway_client_certificate_id" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.id
+}
+
+output "aws_api_gateway_client_certificate_created_date" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.created_date
+}
+
+output "aws_api_gateway_client_certificate_expiration_date" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.expiration_date
+}
+
+output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
+  value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
+}
+
+output "broker_id" {
+  value = aws_mq_broker.test-broker.id
+}
+
+output "broker_arn" {
+  value = aws_mq_broker.test-broker.arn
+}
+
+output "aws_db_cluster_snapshot_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.id
+}
+
+output "aws_db_cluster_snapshot_availability_zones" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.availability_zones
+}
+
+output "aws_db_cluster_snapshot_allocated_storage" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.allocated_storage
+}
+
+output "aws_db_cluster_snapshot_status" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.status
+}
+
+output "aws_db_cluster_snapshot_engine" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine
+}
+
+output "aws_db_cluster_snapshot_engine_version" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine_version
+}
+
+output "aws_db_cluster_snapshot_db_cluster_identifier" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_identifier
+}
+
+output "aws_db_cluster_snapshot_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_vpc_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.vpc_id
+}
+
+output "aws_db_cluster_snapshot_source_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.source_db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_storage_encrypted" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.storage_encrypted
 }
 
 output "server_certificate_name" {

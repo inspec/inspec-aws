@@ -1,23 +1,25 @@
 # Documentation available at https://expeditor.chef.io/docs/getting-started/
 ---
+project:
+  alias: inspec-aws
+
+slack:
+ notify_channel: inspec-notify
 
 pipelines:
  - verify:
     description: Pull Request validation tests
     public: true
 
-slack:
- notify_channel: inspec-notify
-
 github:
  delete_branch_on_merge: true
  minor_bump_labels:
   - "Version: Bump Minor"
  version_tag_format: v{{version}}
- 
+
 release_branches:
-  - master
- 
+  - main
+
 changelog:
  categories:
   - "Type: New Resource": "New Resources"
@@ -27,7 +29,7 @@ changelog:
 
 subscriptions:
   - workload: pull_request_merged:{{github_repo}}:{{release_branch}}:*
-    actions: 
+    actions:
       - built_in:bump_version:
           ignore_labels:
             - "Version: Skip Bump"
@@ -38,4 +40,12 @@ subscriptions:
           ignore_labels:
            - "Changelog: Skip Update"
            - "Expeditor: Skip All"
-
+  # These actions are taken when `/expeditor promote` is run from Slack
+  # Creates a release by announcing changes since the last announcement
+  # THE SLACK COMMAND IS `expeditor promote inspec-aws`
+  - workload: project_promoted:{{agent_id}}:*
+    actions:
+    - bash:.expeditor/publish-release-notes.sh:
+        post_commit: true
+    - bash:.expeditor/announce-release.sh:
+        post_commit: true

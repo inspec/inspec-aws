@@ -5,8 +5,7 @@ platform: aws
 
 # aws\_cloudfront\_distributions
 
-Use the `aws_cloudfront_distributions` InSpec audit resource to test properties of a collection of
-AWS CloudFront distributions.
+Use the `aws_cloudfront_distributions` InSpec audit resource to test the properties of a collection of an AWS CloudFront distributions.
 
 ## Syntax
 
@@ -16,7 +15,7 @@ Ensure that a particular CloudFront distribution exists in `aws_cloudfront_distr
       its('distribution_ids') { should include 'DISTRIBUTION_ID' }
     end
 
-### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -68,6 +67,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudfront:Listdistributions` action set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFront:Client:ListDistributionsResult` action set to Allow.
 
 You can find detailed documentation at [Identity and Access Management (IAM) in CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/auth-and-access-control.html).
