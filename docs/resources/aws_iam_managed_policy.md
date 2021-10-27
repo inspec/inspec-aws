@@ -3,7 +3,7 @@ title: About the aws_iam_managed_policy Resource
 platform: aws
 ---
 
-# aws\_iam\_managed\_policy
+# aws_iam_managed_policy
 
 Use the `aws_iam_managed_policy` InSpec audit resource to test the properties of an AWS IAM managed policy.
 
@@ -17,8 +17,8 @@ The `aws_iam_managed_policy` resource returns an IAM managed policy and allows t
 
 This resource allows filtering by scope, which are:
 
-- To list only AWS-managed policies, set `Scope` to `AWS`. 
-- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`. 
+- To list only AWS-managed policies, set `Scope` to `AWS`.
+- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`.
 - If you do not specify the scope, `ALL` policies are returned.
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
@@ -34,11 +34,11 @@ The ARN of the AWS IAM managed policy.
 |Property                | Description                                                   |
 | :---------------------:| :-----------------------------------------------------------: |
 |arn                    | The ARN identifier of the specified policy.                    |
-|policy\_id             | The stable and unique string identifying the policy.           |
-|policy\_name           | The friendly name (not ARN) identifying the policy.            |
-|attachment\_count      | The count of attached entities for each policy.                |
-|attached\_group        | The list of group names of the groups attached to each policy. |
-|default\_version\_id   | The identifier for the default version of the policy.          |
+|policy_id             | The stable and unique string identifying the policy.           |
+|policy_name           | The friendly name (not ARN) identifying the policy.            |
+|attachment_count      | The count of attached entities for each policy.                |
+|attached_group        | The list of group names of the groups attached to each policy. |
+|default_version_id   | The identifier for the default version of the policy.          |
 
 ## Examples
 

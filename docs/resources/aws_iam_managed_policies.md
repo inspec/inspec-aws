@@ -3,9 +3,9 @@ title: About the aws_iam_managed_policies Resource
 platform: aws
 ---
 
-# aws\_iam\_managed\_policies
+# aws_iam_managed_policies
 
-Use the `aws_iam_managed_policies` InSpec audit resource to test the properties of a collection of AWS IAM Managed policies.
+Use the `aws_iam_managed_policies` InSpec audit resource to test the properties of a collection of AWS IAM managed policies.
 
 ## Syntax
 
@@ -17,7 +17,7 @@ The `aws_iam_managed_policies` resource returns a collection of IAM managed poli
 
 This resource allows filtering by scope, which are:
 
-- To list only AWS-managed policies, set `Scope` to `AWS`. 
+- To list only AWS-managed policies, set `Scope` to `AWS`.
 - To list only the customer-managed policies in your AWS account, set `Scope` to `Local`.
 - If a scope is not provided, `ALL` policies are returned.
 
@@ -26,25 +26,30 @@ This resource allows filtering by scope, which are:
     end
 
     describe aws_iam_managed_policies(scope: 'AWS') do
-      its('policy_names') { should include 'PLOICY_NAME' }
+      its('policy_names') { should include 'POLICY_NAME' }
     end
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
 
 ## Parameters
 
-scope _(allowed)_ : This is an optional parameter
+`scope` _(optional)_
+
+Set `scope` to `AWS` or `Local` to test AWS-managed or customer-managed policies.
+This must be passed as a `scope: 'VALUE'` key-value entry in a hash.
+
+If ommitted, all policies are returned.
 
 ## Properties
 
 | Property              | Description                                                | Field                   |
 | :--------------------:| :---------------------------------------------------------:| :---------------------: |
 |arns                   | A list of the ARN identifiers of the policies.             | arn                     |
-|policy\_ids            | A list of the stable and unique strings identifying the policies. | policy_id        |
-|policy\_names          | A list of the friendly names (not ARN) identifying the policies.| policy_name        |
-|attachment\_counts     | A list of the counts of attached entities for each policy. | attachment_count        |
+|policy_ids            | A list of the stable and unique strings identifying the policies. | policy_id        |
+|policy_names          | A list of the friendly names (not ARN) identifying the policies.| policy_name        |
+|attachment_counts     | A list of the counts of attached entities for each policy. | attachment_count        |
 |attached_groups        | A list of the list of group names of the groups attached to each policy. | attached_group |
-|default\_version\_ids  | A list of the identifier for the default version of the policy. | default\_version\_id |
+|default_version_ids  | A list of the identifier for the default version of the policy. | default_version_id |
 
 ## Examples
 
