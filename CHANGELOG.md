@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.3 -->
+<!-- latest_release 1.74.4 -->
+## [v1.74.4](https://github.com/inspec/inspec-aws/tree/v1.74.4) (2021-10-27)
+
+#### Merged Pull Requests
+- Nirbhay/DB Cluster snapshots [#696](https://github.com/inspec/inspec-aws/pull/696) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.3](https://github.com/inspec/inspec-aws/tree/v1.74.3) (2021-10-27)
 
 #### Merged Pull Requests
 - soumyo/aws_sns_subscriptions [#698](https://github.com/inspec/inspec-aws/pull/698) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.2](https://github.com/inspec/inspec-aws/tree/v1.74.2) (2021-10-26)
 
