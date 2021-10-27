@@ -594,10 +594,6 @@ output "aws_vpc_endpoint_service_allowed_principal_arn" {
   value = aws_vpc_endpoint_service_allowed_principal.notification_service_principal.principal_arn
 }
 
-output "load_balancer_arn" {
-  value = aws_lb.test.arn
-}
-
 output "listener_arn" {
   value = aws_lb_listener.front_end.arn
 }
@@ -883,6 +879,14 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
+}
+
+output "broker_id" {
+  value = aws_mq_broker.test-broker.id
+}
+
+output "broker_arn" {
+  value = aws_mq_broker.test-broker.arn
 }
 
 output "aws_db_cluster_snapshot_id" {

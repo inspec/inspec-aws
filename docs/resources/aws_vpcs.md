@@ -49,7 +49,7 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 | ipv6_cidr_block_states | List of all the states of the IPV6 CIDR blocks. | ipv6_cidr_block_states |
 | ipv6_network_border_groups | List of all the network border group options. | ipv6_network_border_groups |
 | ipv6_pools | List of all IDs of the IPv6 address pool from which the IPv6 CIDR block is allocated. | ipv6_pools |
-| entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |  |
 
 ## Examples
 
