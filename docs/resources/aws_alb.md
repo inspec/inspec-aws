@@ -42,7 +42,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 |state                       | The state of the load balancer. |
 |subnets                     | A collection of the subnet ids. |
 |type                        | The type of the load balancer. |
-|access\_log\_enabled        | To check the status of access log for load balancer. |
+|access\_log\_enabled        | Whether the access log for the load balancer is enabled. |
 |vpc\_id                     | The ID of the VPC for the load balancer. |
 |zone\_names                 | A collection of the names of the availability zones. |
 |listeners                   | A collection of the listeners for the load balancer. |
@@ -58,7 +58,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
       its('zone_names')        { should include 'us-east-2a' }
       its('zone_names')        { should include 'us-east-2b' }
     end
-##### Test access log status for ALB
+##### Test whether the access log is enabled for the Application Load Balancer
     describe aws_alb('load_balancer_arn::alb') do
     it                         { should exist }
     its ('access_log_enabled') { should eq true }
