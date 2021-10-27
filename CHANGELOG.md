@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.2 -->
+<!-- latest_release 1.74.3 -->
+## [v1.74.3](https://github.com/inspec/inspec-aws/tree/v1.74.3) (2021-10-27)
+
+#### Merged Pull Requests
+- soumyo/aws_sns_subscriptions [#698](https://github.com/inspec/inspec-aws/pull/698) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.2](https://github.com/inspec/inspec-aws/tree/v1.74.2) (2021-10-26)
 
 #### Merged Pull Requests
 - Fix table formatting in docs [#678](https://github.com/inspec/inspec-aws/pull/678) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.1](https://github.com/inspec/inspec-aws/tree/v1.74.1) (2021-10-21)
 
