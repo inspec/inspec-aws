@@ -57,6 +57,7 @@ This can be passed either as a string or as an `repository_name: 'value'` key-va
         its ('image_uploaded_date') { should eq '2019-06-11'}
         its ('image_pushed_at')     { should eq '2019-06-11 15:08:29 +0100'}
       end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -73,6 +74,6 @@ Use `should_not` to test the entity should not exist.
       
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecr:DescribeRepositories` and `ecr:DescribeImages` actions set to allow..
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ECR:Client:DescribeRepositoriesResponse` and `ECR:Client:DescribeImagesResponse` actions set to allow..
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ECR](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonelasticcontainerregistry.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

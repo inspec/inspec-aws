@@ -11,7 +11,7 @@ Use the `aws_ec2_instances` InSpec audit resource to test properties of some or 
 
 An `aws_ec2_instances` resource block collects a group of EC2 Instances and then tests that group.
 
-    describe aws_ec2_instances
+    describe aws_ec2_instances do
       it { should exist }
     end   
     
@@ -98,6 +98,6 @@ Use `should_not` to test the entity should not exist.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeInstances`, and `iam:GetInstanceProfile` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeInstancesResult` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

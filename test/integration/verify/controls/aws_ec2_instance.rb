@@ -4,7 +4,7 @@ aws_vm_size = attribute(:aws_vm_size, value: '', description: 'The AWS EC2 Insta
 aws_ec2_ami_id = attribute(:aws_ec2_ami_id, value: '', description: 'The AWS EC2 image id.')
 aws_iam_role_name_for_ec2 = attribute(:aws_iam_role_name_for_ec2, value: '', description: "The AWS EC2 IAM instance role name.")
 
-title 'Test single AWS EC2 Instance'
+title 'Test single AWS EC2 Instance.'
 control 'aws-ec2-instance-1.0' do
 
   impact 1.0

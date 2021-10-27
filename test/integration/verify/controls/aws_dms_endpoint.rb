@@ -1,6 +1,7 @@
 aws_dms_endpoint_arn = attribute("aws_dms_endpoint_arn", value: "", description: "")
 
 control 'aws-endpoint-1.0' do
+
   impact 1.0
   title 'Ensure AWS DMS Endpoint has the correct properties.'
 
