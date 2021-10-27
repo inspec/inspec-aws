@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.1 -->
+<!-- latest_release 1.74.2 -->
+## [v1.74.2](https://github.com/inspec/inspec-aws/tree/v1.74.2) (2021-10-26)
+
+#### Merged Pull Requests
+- Fix table formatting in docs [#678](https://github.com/inspec/inspec-aws/pull/678) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.1](https://github.com/inspec/inspec-aws/tree/v1.74.1) (2021-10-21)
 
 #### Merged Pull Requests
 - Nirbhay/AmazonMQBroker [#635](https://github.com/inspec/inspec-aws/pull/635) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.0](https://github.com/inspec/inspec-aws/tree/v1.74.0) (2021-10-20)
 
