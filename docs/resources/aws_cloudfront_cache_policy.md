@@ -92,4 +92,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFront:Client:Getcache policyResult` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFront:Client:GetCachePolicyResult` action with `Effect` set to `Allow`.
