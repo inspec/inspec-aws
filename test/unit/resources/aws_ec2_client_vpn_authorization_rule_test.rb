@@ -4,7 +4,7 @@ require 'aws-sdk-core'
 
 class AWSEC2ClientVPNAuthorizationRuleConstructorTest < Minitest::Test
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSEC2ClientVPNRule.new(client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSEC2ClientVPNAuthorizationRule.new(client_args: { stub_responses: true }) }
   end
 
   def test_accepts_client_vpn_endpoint_id_as_hash_eight_sign
