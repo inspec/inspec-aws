@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.7 -->
+<!-- latest_release 1.74.8 -->
+## [v1.74.8](https://github.com/inspec/inspec-aws/tree/v1.74.8) (2021-10-28)
+
+#### Merged Pull Requests
+- Added support for Cloud front origin request policy [#656](https://github.com/inspec/inspec-aws/pull/656) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.7](https://github.com/inspec/inspec-aws/tree/v1.74.7) (2021-10-28)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudfront_cache_policy [#644](https://github.com/inspec/inspec-aws/pull/644) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.6](https://github.com/inspec/inspec-aws/tree/v1.74.6) (2021-10-28)
 
