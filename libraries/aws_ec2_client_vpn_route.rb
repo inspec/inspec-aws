@@ -17,7 +17,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(client_vpn_endpoint_id target_subnet))
     raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:client_vpn_endpoint_id] && !opts[:client_vpn_endpoint_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:target_subnet] && !opts[:target_subnet].empty?
+    raise ArgumentError, "#{@__resource_name__}: target_subnet must be provided" unless opts[:target_subnet] && !opts[:target_subnet].empty?
     @display_name = opts[:client_vpn_endpoint_id]
     filter = [{ name: 'target-subnet',
                 values: [opts[:target_subnet]] }]
