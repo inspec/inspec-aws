@@ -932,3 +932,24 @@ output "aws_db_cluster_snapshot_source_db_cluster_snapshot_arn" {
 output "aws_db_cluster_snapshot_storage_encrypted" {
   value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.storage_encrypted
 }
+
+output "aws_placement_group_name" {
+  value = aws_placement_group.web.name
+}
+
+output "aws_cloudfront_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
+}
+
+
+output "request_origin_id" {
+  value = aws_cloudfront_origin_request_policy.test-origin-policy.id
+}
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}
+
+output "dashboard_arn" {
+  value = aws_cloudwatch_dashboard.main.dashboard_arn
+}
