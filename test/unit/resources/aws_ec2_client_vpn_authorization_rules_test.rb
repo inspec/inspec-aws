@@ -8,7 +8,7 @@ class AWSEC2ClientVPNAuthorizationRulesConstructorTest < Minitest::Test
   end
 
   def test_accepts_vpc_endpoint_id_as_hash_eight_sign
-    AWSEC2ClientVPNRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true })
+    AWSEC2ClientVPNAuthorizationRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true })
   end
 
   def test_accepts_vpc_endpoint_id_as_hash
