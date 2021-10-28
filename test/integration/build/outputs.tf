@@ -936,3 +936,7 @@ output "aws_db_cluster_snapshot_storage_encrypted" {
 output "aws_placement_group_name" {
   value = aws_placement_group.web.name
 }
+
+output "aws_cloudfront_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
+}
