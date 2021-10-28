@@ -33,7 +33,7 @@ class AWSEC2ClientVPNAuthorizationRulesPathTest < Minitest::Test
     mock_data[:status] = { code: "test", message: "test" }
     data[:data] = { authorization_rules: [mock_data] }
     data[:client] = Aws::EC2::Client
-    @resp = AWSEC2ClientVPNRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEC2ClientVPNAuthorizationRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_client_vpn_endpoint_rule_exists
