@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AWSEC2ClientVPNRules < AwsResourceBase
+class AWSEC2ClientVPNAuthorizationRules < AwsResourceBase
   name 'aws_ec2_client_vpn_authorization_rules'
   desc 'Describes all the VPN rules.'
 
