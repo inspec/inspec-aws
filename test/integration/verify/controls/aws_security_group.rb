@@ -1,18 +1,18 @@
 title 'Test single AWS Security Group'
 
-aws_default_vpc_id = attribute(:aws_default_vpc_id, default: '', description: 'The AWS region default VPC ID.')
+aws_default_vpc_id = attribute(:aws_default_vpc_id, value: '', description: 'The AWS region default VPC ID.')
 aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
-aws_security_group_default_id = attribute(:aws_security_group_default_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha_id = attribute(:aws_security_group_alpha_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha = attribute(:aws_security_group_alpha, default: '', description: 'AWS Security Group name.')
-aws_security_group_beta_id = attribute(:aws_security_group_beta_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_beta = attribute(:aws_security_group_beta, default: '', description: 'AWS Security Group name.')
-aws_security_group_gamma_id = attribute(:aws_security_group_gamma_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_gamma = attribute(:aws_security_group_gamma, default: '', description: 'AWS Security Group name.')
-aws_security_group_zeta_id = attribute(:aws_security_group_zeta_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_zeta = attribute(:aws_security_group_zeta, default: '', description: 'AWS Security Group name.')
-aws_security_group_omega_id = attribute(:aws_security_group_omega_id, default: '', description: 'AWS Security Group ID.')
-aws_security_group_omega = attribute(:aws_security_group_omega, default: '', description: 'AWS Security Group name.')
+aws_security_group_default_id = attribute(:aws_security_group_default_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha_id = attribute(:aws_security_group_alpha_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha = attribute(:aws_security_group_alpha, value: '', description: 'AWS Security Group name.')
+aws_security_group_beta_id = attribute(:aws_security_group_beta_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_beta = attribute(:aws_security_group_beta, value: '', description: 'AWS Security Group name.')
+aws_security_group_gamma_id = attribute(:aws_security_group_gamma_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_gamma = attribute(:aws_security_group_gamma, value: '', description: 'AWS Security Group name.')
+aws_security_group_zeta_id = attribute(:aws_security_group_zeta_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_zeta = attribute(:aws_security_group_zeta, value: '', description: 'AWS Security Group name.')
+aws_security_group_omega_id = attribute(:aws_security_group_omega_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_omega = attribute(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
 
 control 'aws-security-group-1.0' do
 

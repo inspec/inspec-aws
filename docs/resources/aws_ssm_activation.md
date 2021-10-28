@@ -15,7 +15,6 @@ Use the `aws_ssm_activation` InSpec audit resource to test properties of a ssm a
       it { should exist }
     end
 
-
 #### Parameters
 
 ##### activation_id _(required)_
@@ -24,7 +23,6 @@ This resource accepts a single parameter, the SSM Activation ID.
 This can be passed either as a string or as a `activation_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on SSM Activations](https://docs.aws.amazon.com/systems-manager/latest/userguide/activations.html).
-
 
 ## Properties
 
@@ -71,6 +69,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ssm:DescribeActivations` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `SSM:Client:DescribeActivationsResult` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Systems Manager](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awssystemsmanager.html).

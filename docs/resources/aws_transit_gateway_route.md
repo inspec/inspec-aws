@@ -125,6 +125,6 @@ This InSpec audit resource has the following special matchers. For a complete li
 
 ## AWS Permissions
 
-To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeTransitGatewayRouteTables` action.
+To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeTransitGatewayRouteTablesResult` action.
 
 Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
