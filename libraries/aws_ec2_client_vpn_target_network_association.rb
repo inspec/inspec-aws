@@ -7,7 +7,7 @@ class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
   desc 'Describes a single AWS EC2 Client Vpn Target Network Association.'
 
   example "
-    describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID',association_id: 'ASSOCIATION_ID') do
+    describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', association_id: 'ASSOCIATION_ID') do
       it { should exist }
     end
   "
