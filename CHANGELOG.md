@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.5 -->
+<!-- latest_release 1.74.6 -->
+## [v1.74.6](https://github.com/inspec/inspec-aws/tree/v1.74.6) (2021-10-28)
+
+#### Merged Pull Requests
+- Nirbhay/aws ec2 network interface permission [#536](https://github.com/inspec/inspec-aws/pull/536) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.5](https://github.com/inspec/inspec-aws/tree/v1.74.5) (2021-10-27)
 
 #### Merged Pull Requests
 - Nirbhay/Placement Group/Groups Resource [#535](https://github.com/inspec/inspec-aws/pull/535) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.4](https://github.com/inspec/inspec-aws/tree/v1.74.4) (2021-10-27)
 
