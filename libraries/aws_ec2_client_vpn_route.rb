@@ -28,7 +28,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
     end
   end
 
-  def client_vpn_route
+  def client_vpn_endpoint_id
     return nil unless exists?
     @res[:client_vpn_endpoint_id]
   end
