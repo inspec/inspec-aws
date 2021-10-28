@@ -945,3 +945,11 @@ output "aws_cloudfront_cache_policy_id" {
 output "request_origin_id" {
   value = aws_cloudfront_origin_request_policy.test-origin-policy.id
 }
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}
+
+output "dashboard_arn" {
+  value = aws_cloudwatch_dashboard.main.dashboard_arn
+}
