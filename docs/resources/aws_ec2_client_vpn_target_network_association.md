@@ -31,8 +31,8 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnTarge
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
+| Property | Description |
+| --- | --- |
 | association_id | The ID of the association. | carrier_gateway_id |
 | vpc_id | The ID of the VPC in which the target network (subnet) is located. | carrier_gateway_id |
 | target_network_id | The ID of the subnet specified as the target network. | carrier_gateway_id |
