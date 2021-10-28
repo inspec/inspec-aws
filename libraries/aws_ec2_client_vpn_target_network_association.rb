@@ -42,6 +42,6 @@ class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
   end
 
   def to_s
-    "Client VPN Endpoint ID: #{@display_name}"
+    "Association ID: #{@display_name}"
   end
 end
