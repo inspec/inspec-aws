@@ -940,3 +940,8 @@ output "aws_placement_group_name" {
 output "aws_cloudfront_cache_policy_id" {
   value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
 }
+
+
+output "request_origin_id" {
+  value = aws_cloudfront_origin_request_policy.test-origin-policy.id
+}

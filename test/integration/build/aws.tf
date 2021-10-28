@@ -3692,7 +3692,6 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
   source_code_hash = filebase64sha256("files/lambda.zip")
 
-
   runtime = "nodejs12.x"
 
   environment {
@@ -4098,7 +4097,6 @@ resource "aws_instance" "aws_instance_test" {
   }
 }
 
-
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_bm_test1" {
   body = jsonencode({
     openapi = "3.0.1"
@@ -4372,6 +4370,29 @@ resource "aws_cloudfront_cache_policy" "aws_cloudfront_cache_policy_test1" {
       query_strings {
         items = ["example"]
       }
+    }
+  }
+}
+
+resource "aws_cloudfront_origin_request_policy" "test-origin-policy" {
+  name    = "example-policy"
+  comment = "example comment"
+  cookies_config {
+    cookie_behavior = "whitelist"
+    cookies {
+      items = ["example"]
+    }
+  }
+  headers_config {
+    header_behavior = "whitelist"
+    headers {
+      items = ["example"]
+    }
+  }
+  query_strings_config {
+    query_string_behavior = "whitelist"
+    query_strings {
+      items = ["example"]
     }
   }
 }
