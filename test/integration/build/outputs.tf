@@ -953,3 +953,10 @@ output "dashboard_name" {
 output "dashboard_arn" {
   value = aws_cloudwatch_dashboard.main.dashboard_arn
 }
+output "server_certificate_name" {
+  value = aws_iam_server_certificate.test_cert.name
+}
+
+output "server_certificate_id" {
+  value = aws_iam_server_certificate.test_cert.id
+}
