@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_client_vpn_endpoint
 
-Use the `aws_ec2_client_vpn_endpoint` InSpec audit resource to test properties of a single specific AWS EC2 Client Vpn Endpoint.
+Use the `aws_ec2_client_vpn_endpoint` InSpec audit resource to test properties of a single specific AWS EC2 Client VPN endpoint.
 
-The AWS::EC2::ClientVpnEndpoint specifies a Client VPN endpoint.
+The `AWS::EC2::ClientVpnEndpoint` specifies a Client VPN endpoint.
 
 ## Syntax
 
-Ensure that the client vpn endpoint exists.
+Ensure that the client VPN endpoint exists.
 
     describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
       it { should exist }
@@ -66,12 +66,14 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnEndpo
 
 ## Examples
 
-### Ensure a client vpn endpoint id is available.
+### Ensure a client VPN endpoint ID is available.
+
     describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
       its('client_vpn_endpoint_id') { should eq 'CLIENT_VPN_ENDPOINT_ID' }
     end
 
 ### Ensure that the status code is `available`.
+
     describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
         its('status.code') { should eq 'available' }
     end
