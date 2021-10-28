@@ -11,7 +11,7 @@ class AWSEC2ClientVPNEndpointsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2ClientVPNEndpoints.new('rubbish') }
   end
 
-  def test_vpcs_non_existing_for_empty_response
+  def test_client_vpn_endpoints_non_existing_for_empty_response
     refute AWSEC2ClientVPNEndpoints.new(client_args: { stub_responses: true }).exist?
   end
 end
