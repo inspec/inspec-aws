@@ -44,19 +44,19 @@ class AWSEC2ClientVPNTargetNetworkAssociationssPathTest < Minitest::Test
     assert @resp.available?
   end
 
-  def test_vpc_id
+  def test_vpc_ids
     assert_equal(@resp.vpc_ids, ['test'])
   end
 
-  def test_association_id
+  def test_association_ids
     assert_equal(@resp.association_ids, ['test'])
   end
 
-  def test_target_network_id
+  def test_target_network_ids
     assert_equal(@resp.target_network_ids, ['test'])
   end
 
-  def test_code
+  def test_status_codes
     assert_equal(@resp.status_codes, ['test'])
   end
 
