@@ -76,4 +76,4 @@ Use `should` to check if the scalable policy is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `applicationscaling:client:describe_scalable_policies` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ApplicationAutoScaling:Client:DescribeScalingPoliciesResponse` action with `Effect` set to `Allow`.

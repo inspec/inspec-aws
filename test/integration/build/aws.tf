@@ -4296,3 +4296,52 @@ resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificat
 resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
   comment = "Some comment"
 }
+
+resource "aws_mq_configuration" "for_broker" {
+  description    = "Example Configuration"
+  name           = "To_test_broker"
+  engine_type    = "ActiveMQ"
+  engine_version = "5.15.0"
+
+  data = <<DATA
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<broker xmlns="http://activemq.apache.org/schema/core">
+  <plugins>
+    <forcePersistencyModeBrokerPlugin persistenceFlag="true"/>
+    <statisticsBrokerPlugin/>
+    <timeStampingBrokerPlugin ttlCeiling="86400000" zeroExpirationOverride="86400000"/>
+  </plugins>
+</broker>
+DATA
+}
+
+resource "aws_mq_broker" "test-broker" {
+  broker_name = "test_broker"
+
+  configuration {
+    id       = aws_mq_configuration.for_broker.id
+    revision = aws_mq_configuration.for_broker.latest_revision
+  }
+
+  engine_type        = "ActiveMQ"
+  engine_version     = "5.15.9"
+  host_instance_type = "mq.t2.micro"
+  security_groups    = [aws_security_group.to_test_batch.id]
+
+  user {
+    username = "ExampleUser"
+    password = "ExampleUser"
+  }
+}
+
+## RDS Cluster Snapshot
+
+resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
+  db_cluster_identifier          = aws_rds_cluster.rds_cluster.id
+  db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+}
+
+resource "aws_placement_group" "web" {
+  name     = "test_placement_group"
+  strategy = "cluster"
+}

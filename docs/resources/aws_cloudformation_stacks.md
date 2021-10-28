@@ -26,8 +26,8 @@ See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSClo
 |creation\_time                  | The time at which the stack was created. |
 |notification\_arns              | SNS topic ARNs to which stack related events are published. |
 |role\_arn                       | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  |
-parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
-|root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
+| parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
+|root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. |
 
 ## Examples
 
@@ -49,7 +49,6 @@ parent\_id                      | For nested stacks--stacks created as resources
       end
     end
 
-
 ## Matchers
 
 This InSpec audit resource has no special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
@@ -70,6 +69,6 @@ Use `should_not` to test that an entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudformation:DescribeStacks` action set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFormation:Client:DescribeStacksOutput` action set to Allow.
 
 You can find detailed documentation at [Authentication and Access Control for CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)

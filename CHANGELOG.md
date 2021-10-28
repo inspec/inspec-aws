@@ -1,9 +1,54 @@
-<!-- latest_release 1.73.13 -->
+<!-- latest_release 1.74.5 -->
+## [v1.74.5](https://github.com/inspec/inspec-aws/tree/v1.74.5) (2021-10-27)
+
+#### Merged Pull Requests
+- Nirbhay/Placement Group/Groups Resource [#535](https://github.com/inspec/inspec-aws/pull/535) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.74.4](https://github.com/inspec/inspec-aws/tree/v1.74.4) (2021-10-27)
+
+#### Merged Pull Requests
+- Nirbhay/DB Cluster snapshots [#696](https://github.com/inspec/inspec-aws/pull/696) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.3](https://github.com/inspec/inspec-aws/tree/v1.74.3) (2021-10-27)
+
+#### Merged Pull Requests
+- soumyo/aws_sns_subscriptions [#698](https://github.com/inspec/inspec-aws/pull/698) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.2](https://github.com/inspec/inspec-aws/tree/v1.74.2) (2021-10-26)
+
+#### Merged Pull Requests
+- Fix table formatting in docs [#678](https://github.com/inspec/inspec-aws/pull/678) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.1](https://github.com/inspec/inspec-aws/tree/v1.74.1) (2021-10-21)
+
+#### Merged Pull Requests
+- Nirbhay/AmazonMQBroker [#635](https://github.com/inspec/inspec-aws/pull/635) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.0](https://github.com/inspec/inspec-aws/tree/v1.74.0) (2021-10-20)
+
+#### Merged Pull Requests
+- Removed duplicate resource [#697](https://github.com/inspec/inspec-aws/pull/697) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.73.16](https://github.com/inspec/inspec-aws/tree/v1.73.16) (2021-10-14)
+
+#### Merged Pull Requests
+- Release notes 10/13 [#687](https://github.com/inspec/inspec-aws/pull/687) ([kagarmoe](https://github.com/kagarmoe))
+
+## [v1.73.15](https://github.com/inspec/inspec-aws/tree/v1.73.15) (2021-10-11)
+
+#### Merged Pull Requests
+- Type Name Changes in Singular and Plural Resource in Docs [#681](https://github.com/inspec/inspec-aws/pull/681) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.73.14](https://github.com/inspec/inspec-aws/tree/v1.73.14) (2021-10-08)
+
+#### Merged Pull Requests
+- Release note automation [#680](https://github.com/inspec/inspec-aws/pull/680) ([kagarmoe](https://github.com/kagarmoe))
+
 ## [v1.73.13](https://github.com/inspec/inspec-aws/tree/v1.73.13) (2021-10-08)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudfront_origin_access_identity [#645](https://github.com/inspec/inspec-aws/pull/645) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.73.12](https://github.com/inspec/inspec-aws/tree/v1.73.12) (2021-10-08)
 
