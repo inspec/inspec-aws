@@ -17,7 +17,7 @@ class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(client_vpn_endpoint_id association_id))
     raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:client_vpn_endpoint_id] && !opts[:client_vpn_endpoint_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
+    raise ArgumentError, "#{@__resource_name__}: association_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
     @display_name = opts[:client_vpn_endpoint_id]
     filters = [
       {
