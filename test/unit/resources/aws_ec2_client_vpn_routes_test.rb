@@ -37,7 +37,7 @@ class AWSEC2ClientVPNRoutessPathTest < Minitest::Test
     @resp = AWSEC2ClientVPNRoutes.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_client_vpn_endpoint_route_exists
+  def test_routes_exists
     assert @resp.exists?
   end
 
