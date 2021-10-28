@@ -11,7 +11,7 @@ class AWSEC2ClientVPNTargetNetworkAssociationConstructorTest < Minitest::Test
     AWSEC2ClientVPNTargetNetworkAssociation.new(client_vpn_endpoint_id: 'test', association_id: 'test', client_args: { stub_responses: true })
   end
 
-  def test_accepts_accepts_vpc_endpoint_id_association_id_as_hash
+  def test_accepts_vpc_endpoint_id_association_id_as_hash
     AWSEC2ClientVPNTargetNetworkAssociation.new(client_vpn_endpoint_id: 'test', association_id: 'test', client_args: { stub_responses: true })
   end
 
