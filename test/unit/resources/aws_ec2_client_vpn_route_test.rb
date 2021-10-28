@@ -41,7 +41,7 @@ class AWSEC2ClientVPNRoutePathTest < Minitest::Test
     assert @resp.exists?
   end
 
-  def test_client_vpn_endpoint_route_available
+  def test_routes_available
     assert @resp.available?
   end
 
