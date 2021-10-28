@@ -33,7 +33,7 @@ class AWSEC2ClientVPNTargetNetworkAssociationPathTest < Minitest::Test
     mock_data[:target_network_id] = 'test'
     data[:data] = { client_vpn_target_networks: [mock_data] }
     data[:client] = Aws::EC2::Client
-    @resp = AWSEC2ClientVPNTargetNetworkAssociation.new(client_vpn_endpoint_id: 'test',association_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEC2ClientVPNTargetNetworkAssociation.new(client_vpn_endpoint_id: 'test', association_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_client_vpn_endpoint_route_exists
