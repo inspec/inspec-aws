@@ -5,7 +5,7 @@ platform: aws
 
 # aws_signer_signing_profiles
 
-Use the `aws_signer_signing_profiles` InSpec audit resource to test properties of a single specific AWS Signer SigningProfile.
+Use the `aws_signer_signing_profiles` InSpec audit resource to test properties of multiple AWS Signer signing profiles.
 
 A signing profile is a code signing template that can be used to carry out a pre-defined signing job.
 
@@ -19,11 +19,13 @@ Ensure that the signing profile exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS Signer SigningProfile.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-signingprofile.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | profile_names | The name of the target signing profile. | profile_name |
 | profile_versions | The current version of the signing profile. | profile_version |
@@ -41,16 +43,19 @@ For additional information, see the [AWS documentation on AWS Signer SigningProf
 ## Examples
 
 ### Ensure a profile name is available.
+
     describe aws_signer_signing_profiles do
       its('profile_names') { should include 'PROFILE_NAME' }
     end
 
 ### Ensure a profile version is available.
+
     describe aws_signer_signing_profiles do
         its('profile_versions') { should include 'PROFILE_VERSION' }
     end
 
 ### Ensure a status is `Active`.
+
     describe aws_signer_signing_profiles do
         its('statuses') { should include 'Active' }
     end
