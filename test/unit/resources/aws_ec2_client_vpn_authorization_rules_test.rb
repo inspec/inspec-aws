@@ -40,7 +40,7 @@ class AWSEC2ClientVPNAuthorizationRulesPathTest < Minitest::Test
     assert @resp.exists?
   end
 
-  def test_client_vpn_endpoint_route_available
+  def test_client_vpn_endpoint_rule_available
     assert @resp.available?
   end
 
