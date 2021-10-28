@@ -36,7 +36,7 @@ class AWSEC2ClientVPNTargetNetworkAssociationPathTest < Minitest::Test
     @resp = AWSEC2ClientVPNTargetNetworkAssociation.new(client_vpn_endpoint_id: 'test', association_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_client_vpn_endpoint_route_exists
+  def test_client_vpn_target_network_association_exists
     assert @resp.exists?
   end
 
