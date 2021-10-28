@@ -4345,3 +4345,11 @@ resource "aws_placement_group" "web" {
   name     = "test_placement_group"
   strategy = "cluster"
 }
+
+## VPN AUTH
+
+resource "aws_ec2_client_vpn_authorization_rule" "test_auth" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  target_network_cidr    = "0.0.0.0/0"
+  authorize_all_groups   = true
+}
