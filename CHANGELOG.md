@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.10 -->
+<!-- latest_release 1.74.11 -->
+## [v1.74.11](https://github.com/inspec/inspec-aws/tree/v1.74.11) (2021-10-28)
+
+#### Merged Pull Requests
+- aws_ec2_traffic_mirror_target [#500](https://github.com/inspec/inspec-aws/pull/500) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.10](https://github.com/inspec/inspec-aws/tree/v1.74.10) (2021-10-28)
 
 #### Merged Pull Requests
 - Nirbhay/IAM Server Certificate/Certificates [#511](https://github.com/inspec/inspec-aws/pull/511) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.9](https://github.com/inspec/inspec-aws/tree/v1.74.9) (2021-10-28)
 
