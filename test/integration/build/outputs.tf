@@ -936,3 +936,15 @@ output "aws_db_cluster_snapshot_storage_encrypted" {
 output "aws_placement_group_name" {
   value = aws_placement_group.web.name
 }
+
+output "client_vpn_endpoint_id" {
+  value = aws_ec2_client_vpn_endpoint.test-endpoint.id
+}
+
+output "association_id" {
+  value = aws_ec2_client_vpn_network_association.test-association.id
+}
+
+output "target_vpc_subnet_id" {
+  value = aws_ec2_client_vpn_route.test-route.id
+}
