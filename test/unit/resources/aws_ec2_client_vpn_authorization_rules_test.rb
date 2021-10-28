@@ -12,7 +12,7 @@ class AWSEC2ClientVPNRulesConstructorTest < Minitest::Test
   end
 
   def test_accepts_vpc_endpoint_id_as_hash
-    AWSEC2ClientVPNRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true })
+    AWSEC2ClientVPNAuthorizationRules.new(client_vpn_endpoint_id: 'test', client_args: { stub_responses: true })
   end
 
   def test_rejects_unrecognized_params
