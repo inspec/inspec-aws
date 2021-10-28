@@ -50,6 +50,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `shield:DescribeSubscription` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Shield:Client:DescribeSubscriptionResponse` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Shield](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsshield.html).

@@ -1,18 +1,14 @@
 aws_user_pool_id = attribute("aws_user_pool_id", value: "", description: "")
 aws_identity_pool_name = attribute("aws_identity_pool_name", value: "", description: "")
 
-control 'aws-auto-user-pool1-1.0' do
+control 'aws-auto-user-pool-1.0' do
+
   impact 1.0
   title 'Ensure AWS User Pool has the correct properties.'
 
   describe aws_cognito_userpool(user_pool_id: aws_user_pool_id) do
     it { should exist }
   end
-end
-
-control 'aws-auto-user-pool2-1.0' do
-  impact 1.0
-  title 'Ensure AWS User Pool has the correct properties.'
 
   describe aws_cognito_userpool(user_pool_id: aws_user_pool_id) do
     its('id') { should eq aws_user_pool_id }
