@@ -7,7 +7,7 @@ class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
   desc 'Describes a VPN rule.'
 
   example "
-    describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID',group_id: 'GROUP_ID') do
+    describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', group_id: 'GROUP_ID') do
       it { should exist }
     end
   "
@@ -28,7 +28,7 @@ class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
     end
   end
 
-  def client_vpn_rule
+  def client_vpn_endpoint_id
     return nil unless exists?
     @res[:client_vpn_endpoint_id]
   end
