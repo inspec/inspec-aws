@@ -50,6 +50,7 @@ require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
 require 'aws-sdk-networkmanager'
 require 'aws-sdk-mq'
+require 'aws-sdk-securityhub'
 
 # AWS Inspec Backend Classes
 #
@@ -285,6 +286,10 @@ class AwsConnection
 
   def mq_client
     aws_client(Aws::MQ::Client)
+  end
+
+  def securityhub_client
+    aws_client(Aws::SecurityHub::Client)
   end
 end
 
