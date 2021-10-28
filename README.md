@@ -225,8 +225,6 @@ This resource pack allows the testing of the following AWS resources. If a resou
 - [aws_elasticloadbalancingv2_listener_certificates](docs/resources/aws_elasticloadbalancingv2_listener_certificates.md)
 - [aws_elasticloadbalancingv2_listener_rule](docs/resources/aws_elasticloadbalancingv2_listener_rule.md)
 - [aws_elasticloadbalancingv2_listener_rules](docs/resources/aws_elasticloadbalancingv2_listener_rules.md)
-- [aws_elasticloadbalancingv2_load_balancer](docs/resources/aws_elasticloadbalancingv2_load_balancer.md)
-- [aws_elasticloadbalancingv2_load_balancers](docs/resources/aws_elasticloadbalancingv2_load_balancers.md)
 - [aws_elasticloadbalancingv2_target_group](docs/resources/aws_elasticloadbalancingv2_target_group.md)
 - [aws_elasticloadbalancingv2_target_groups](docs/resources/aws_elasticloadbalancingv2_target_groups.md)
 - [aws_elasticsearchservice_domain](docs/resources/aws_elasticsearchservice_domain.md)

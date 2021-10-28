@@ -32,11 +32,7 @@ class AWSCognitoUserPoolClient < AwsResourceBase
     !@user_pool_client.nil? && !@user_pool_client.empty?
   end
 
-  def encrypted?
-    @user_pool_client[:encrypted]
-  end
-
   def to_s
-    "userpool_client: #{@display_name}"
+    "User Pool ID: #{@display_name}"
   end
 end
