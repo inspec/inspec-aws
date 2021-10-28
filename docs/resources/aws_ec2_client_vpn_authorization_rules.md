@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_client_vpn_authorization_rules
 
-Use the `aws_ec2_client_vpn_authorization_rules` InSpec audit resource to test properties of a single specific AWS EC2 Client Vpn Authorization Rule.
+Use the `aws_ec2_client_vpn_authorization_rules` InSpec audit resource to test properties of a single specific AWS EC2 Client VPN authorization rule.
 
 The AWS::EC2::ClientVpnAuthorizationRule specifies an ingress authorization rule to add to a Client VPN endpoint.
 
 ## Syntax
 
-Ensure that the client vpn endpoint association rule exists.
+Ensure that the client VPN endpoint association rule exists.
 
     describe aws_ec2_client_vpn_authorization_rules(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
       it { should exist }
@@ -23,28 +23,30 @@ Ensure that the client vpn endpoint association rule exists.
 
 The ID of the Client VPN endpoint.
 
-For additional information, see the [AWS documentation on AWS EC2 Client Vpn Authorization Rule.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html).
+For additional information, see the [AWS documentation on AWS EC2 Client VPN authorization rule.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | client_vpn_endpoint_ids | The ID of the Client VPN endpoint with which the authorization rule is associated. | client_vpn_endpoint_id |
 | descriptions | A brief description of the authorization rule. | description |
 | group_ids | The ID of the Active Directory group to which the authorization rule grants access. | group_id |
 | access_all | Indicates whether the authorization rule grants access to all clients. | access_all |
 | destination_cidrs | The IPv4 address range, in CIDR notation, of the network to which the authorization rule applies. | destination_cidr |
-| status_codes | The status of the authorization rule. | status.code |
-| status_messages | A message about the status of the authorization rule, if applicable. | status.message |
+| status_codes | The status of the authorization rule. | status_code |
+| status_messages | A message about the status of the authorization rule, if applicable. | status_message |
 
 ## Examples
 
-### Ensure a client vpn endpoint id is available.
+### Ensure a client VPN endpoint ID is available.
+
     describe aws_ec2_client_vpn_authorization_rules(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", group_id: "GROUP_ID") do
       its('client_vpn_endpoint_ids') { should include 'CLIENT_VPN_ENDPOINT_ID' }
     end
 
 ### Ensure that the status code is `active`.
+
     describe aws_ec2_client_vpn_authorization_rules(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", group_id: "GROUP_ID") do
         its('status_codes') { should include 'active' }
     end

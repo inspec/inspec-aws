@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_client_vpn_authorization_rule
 
-Use the `aws_ec2_client_vpn_authorization_rule` InSpec audit resource to test properties of a single specific AWS EC2 Client Vpn Authorization Rule.
+Use the `aws_ec2_client_vpn_authorization_rule` InSpec audit resource to test properties of a single specific AWS EC2 Client VPN authorization rule.
 
-The AWS::EC2::ClientVpnAuthorizationRule specifies an ingress authorization rule to add to a Client VPN endpoint.
+The `AWS::EC2::ClientVpnAuthorizationRule` specifies an ingress authorization rule to add to a Client VPN endpoint.
 
 ## Syntax
 
-Ensure that the client vpn endpoint association rule exists.
+Ensure that the client VPN endpoint association rule exists.
 
     describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", group_id: "GROUP_ID") do
       it { should exist }
@@ -27,7 +27,7 @@ The ID of the Client VPN endpoint.
 
 The ID of the Active Directory group to which the authorization rule grants access.
 
-For additional information, see the [AWS documentation on AWS EC2 Client Vpn Authorization Rule.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html).
+For additional information, see the [AWS documentation on AWS EC2 Client VPN authorization rule.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html).
 
 ## Properties
 
@@ -43,12 +43,14 @@ For additional information, see the [AWS documentation on AWS EC2 Client Vpn Aut
 
 ## Examples
 
-### Ensure a client vpn endpoint id is available.
+### Ensure a client VPN endpoint ID is available.
+
     describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", group_id: "GROUP_ID") do
       its('client_vpn_endpoint_id') { should eq 'CLIENT_VPN_ENDPOINT_ID' }
     end
 
 ### Ensure that the status code is `active`.
+
     describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", group_id: "GROUP_ID") do
         its('status.code') { should eq 'active' }
     end
