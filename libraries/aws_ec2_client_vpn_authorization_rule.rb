@@ -17,7 +17,7 @@ class AWSEC2ClientVPNRule < AwsResourceBase
     super(opts)
     validate_parameters(required: %i(client_vpn_endpoint_id group_id))
     raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:client_vpn_endpoint_id] && !opts[:client_vpn_endpoint_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:group_id] && !opts[:group_id].empty?
+    raise ArgumentError, "#{@__resource_name__}: group_id must be provided" unless opts[:group_id] && !opts[:group_id].empty?
     @display_name = opts[:client_vpn_endpoint_id]
     filter = [{ name: 'group-id',
                 values: [opts[:group_id]] }]
