@@ -20,7 +20,7 @@ class AWSEC2ClientVPNRulesConstructorTest < Minitest::Test
   end
 end
 
-class AWSEC2ClientVPNRulessPathTest < Minitest::Test
+class AWSEC2ClientVPNAuthorizationRulesPathTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :describe_client_vpn_authorization_rules
