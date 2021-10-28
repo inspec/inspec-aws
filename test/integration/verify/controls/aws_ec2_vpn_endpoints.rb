@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 client_vpn_endpoint_id = attribute('client_vpn_endpoint_id', value: '', description: '')
 
-control 'aws_ec2_client_vpn_endpoints-1.0' do
+skip_control 'aws_ec2_client_vpn_endpoints-1.0' do
   impact 1.0
   title 'Test the properties of the vpn endpoints.'
 
