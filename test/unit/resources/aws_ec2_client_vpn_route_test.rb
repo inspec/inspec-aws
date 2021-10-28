@@ -34,7 +34,7 @@ class AWSEC2ClientVPNRoutePathTest < Minitest::Test
     mock_data[:status] = { code: "test", message: "test" }
     data[:data] = { routes: [mock_data] }
     data[:client] = Aws::EC2::Client
-    @resp = AWSEC2ClientVPNRoute.new(client_vpn_endpoint_id: 'test',target_subnet: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEC2ClientVPNRoute.new(client_vpn_endpoint_id: 'test', target_subnet: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_client_vpn_endpoint_route_exists
