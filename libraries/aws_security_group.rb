@@ -6,7 +6,7 @@ require 'aws_backend'
 
 class AwsSecurityGroup < AwsResourceBase
   name 'aws_security_group'
-  desc 'Verifies settings for an individual AWS Security Group'
+  desc 'Verifies settings for an individual AWS Security Group.'
   example "
   describe aws_security_group('sg-12345678') do
     it { should exist }

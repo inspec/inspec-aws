@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsEc2Instances < AwsResourceBase
   name 'aws_ec2_instances'
-  desc 'Verifies settings for a collection of AWS EC2 Instances'
-  example '
+  desc 'Verifies settings for a collection of AWS EC2 Instances.'
+  example "
     describe aws_ec2_instances do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

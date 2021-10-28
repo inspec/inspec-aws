@@ -9,7 +9,7 @@ class AWSElasticLoadBalancingV2ListenerRuleConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2ListenerRule.new(rule_arn: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSElasticLoadBalancingV2ListenerRule.new(rule_arns: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -28,7 +28,7 @@ class AWSElasticLoadBalancingV2ListenerRuleSuccessPathTest < Minitest::Test
     mock_parameter[:is_default] = false
     data[:data] = { rules: [mock_parameter] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @rules = AWSElasticLoadBalancingV2ListenerRule.new(rule_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @rules = AWSElasticLoadBalancingV2ListenerRule.new(rule_arns: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_rules_exists

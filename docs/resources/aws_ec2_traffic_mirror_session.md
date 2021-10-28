@@ -1,5 +1,5 @@
 ---
-title: About the aws_ec2_traffic_mirror_session
+title: About the aws_ec2_traffic_mirror_session Resource
 platform: aws
 ---
 
@@ -19,24 +19,22 @@ An `aws_ec2_traffic_mirror_session` resource block declares the tests for a sing
 
 `traffic_mirror_session_id` _(required)_
 
-|Property                     | Description|
-| ---                         | --- |
-|traffic_mirror_session_id    | The ID for the Traffic Mirror session. |
+The ID of the Traffic Mirror session.
 
 ## Properties
 
-|Property                     | Description | Fields |
-| ---                         | --- | --- |
-|traffic_mirror_session_id    | The ID for the Traffic Mirror session. | traffic_mirror_session_id |
-|traffic_mirror_target_id     | The ID of the Traffic Mirror target. | traffic_mirror_target_id |
-|traffic_mirror_filter_id     | The ID of the Traffic Mirror filter. | traffic_mirror_filter_id |
-|network_interface_id         | The ID of the Traffic Mirror session's network interface. | network_interface_id |
-|owner_id                     | The ID of the account that owns the Traffic Mirror session. | owner_id |
-|packet_length                | The number of bytes in each packet to mirror. | packet_length |
-|virtual_network_id           | The virtual network ID associated with the Traffic Mirror session. | virtual_network_id |
-|description                  | The description of the Traffic Mirror session. | description |
-|tags                         | The tags assigned to the Traffic Mirror session. | tags |
-|session_number               | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. | session_number |
+|Property                     | Description|
+| ---                         | --- |
+|traffic_mirror_session_id    | The ID for the Traffic Mirror session.|
+|traffic_mirror_target_id     | The ID of the Traffic Mirror target. |
+|traffic_mirror_filter_id     | The ID of the Traffic Mirror filter. |
+|network_interface_id         | The ID of the Traffic Mirror session's network interface. |
+|owner_id                     | The ID of the account that owns the Traffic Mirror session.|
+|packet_length                | The number of bytes in each packet to mirror. |
+|virtual_network_id           | The virtual network ID associated with the Traffic Mirror session. |
+|description                  | The description of the Traffic Mirror session. |
+|tags                         | The tags assigned to the Traffic Mirror session. |
+|session_number               | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. |
 
 For additional information, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
 
@@ -68,13 +66,13 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 Check if the Traffic Mirror session is available.
 
-    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
       it { should be_available }
     end
 
 Use `should_not` to test a Traffic Mirror session that should not exist.
 
-    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'dummy') do
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
       it { should_not be_available }
     end
 

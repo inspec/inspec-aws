@@ -4,13 +4,13 @@ require 'aws_backend'
 
 class AwsRegions < AwsResourceBase
   name 'aws_regions'
-  desc 'Verifies settings for AWS Regions in bulk'
+  desc 'Verifies settings for AWS Regions in bulk.'
 
-  example '
+  example "
     describe aws_regions do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 

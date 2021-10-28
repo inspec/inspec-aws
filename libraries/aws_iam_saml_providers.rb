@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsIamSamlProviders < AwsResourceBase
   name 'aws_iam_saml_providers'
   desc 'Verifies settings for a collection of SAML Providers.'
-  example '
+  example "
     describe aws_iam_saml_providers do
       it { should exist }
     end
-  '
+  "
   supports platform: 'aws'
 
   attr_reader :table
