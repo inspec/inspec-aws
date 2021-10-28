@@ -7,7 +7,7 @@ class AWSEC2ClientVPNRuleConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2ClientVPNRule.new(client_args: { stub_responses: true }) }
   end
 
-  def test_accepts_vpc_endpoint_id_as_hash_eight_sign
+  def test_accepts_client_vpn_endpoint_id_as_hash_eight_sign
     AWSEC2ClientVPNRule.new(client_vpn_endpoint_id: 'test',group_id: 'test', client_args: { stub_responses: true })
   end
 
