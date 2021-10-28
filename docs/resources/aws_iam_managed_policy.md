@@ -15,11 +15,6 @@ The `aws_iam_managed_policy` resource returns an IAM managed policy and allows t
       its('policy_name') { should eq 'POLICY_NAME' }
     end
 
-This resource allows filtering by scope, which are:
-
-- To list only AWS-managed policies, set `Scope` to `AWS`.
-- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`.
-- If you do not specify the scope, `ALL` policies are returned.
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
 
