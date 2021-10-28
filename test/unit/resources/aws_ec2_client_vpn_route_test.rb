@@ -7,7 +7,7 @@ class AWSEC2ClientVPNRouteConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2ClientVPNRoute.new(client_args: { stub_responses: true }) }
   end
 
-  def test_accepts_vpc_endpoint_id_as_hash_eight_sign
+  def test_accepts_client_vpn_endpoint_id_as_hash_eight_sign
     AWSEC2ClientVPNRoute.new(client_vpn_endpoint_id: 'test',target_subnet: 'test', client_args: { stub_responses: true })
   end
 
