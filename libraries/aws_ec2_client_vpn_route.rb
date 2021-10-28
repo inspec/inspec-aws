@@ -38,6 +38,6 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
   end
 
   def to_s
-    "Client VPN Route ID: #{@display_name}"
+    "Client VPN Endpoint ID: #{@display_name}"
   end
 end
