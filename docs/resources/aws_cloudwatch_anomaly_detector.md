@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudwatch_anomaly_detector
 
-Use the `aws_cloudwatch_anomaly_detector` InSpec audit resource to test properties of a single specific AWS CloudWatch AnomalyDetector.
+Use the `aws_cloudwatch_anomaly_detector` InSpec audit resource to test properties of a single specific AWS CloudWatch anomaly detector.
 
-The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band for a certain metric and statistic. The band represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values, and for alarms.
+The `AWS::CloudWatch::AnomalyDetector` type specifies an anomaly detection band for a certain metric and statistic. The band represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values, and for alarms.
 
 ## Syntax
 
@@ -43,16 +43,19 @@ For additional information, see the [AWS documentation on AWS CloudWatch Anomaly
 ## Examples
 
 ### Ensure a namespace is available.
+
     describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
       its('namespace') { should eq 'NAMESPACE' }
     end
 
 ### Ensure a config name is available.
+
     describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
         its('name') { should eq 'CONFIG_NAME' }
     end
 
 ### Ensure a dimension name is available.
+
     describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
         its('dimensions_names') { should include 'DIMENSION_NAME' }
     end

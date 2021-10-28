@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudwatch_anomaly_detectors
 
-Use the `aws_cloudwatch_anomaly_detectors` InSpec audit resource to test properties of the plural resource of AWS CloudWatch AnomalyDetector.
+Use the `aws_cloudwatch_anomaly_detectors` InSpec audit resource to test properties of multiple AWS CloudWatch anomaly detectors.
 
-The AWS::CloudWatch::AnomalyDetector type specifies an anomaly detection band for a certain metric and statistic. The band represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values, and for alarms.
+The `AWS::CloudWatch::AnomalyDetector` type specifies an anomaly detection band for a certain metric and statistic. The band represents the expected "normal" range for the metric values. Anomaly detection bands can be used for visualization of a metric's expected values, and for alarms.
 
 ## Syntax
 
@@ -19,11 +19,13 @@ Ensure that the anomaly detector exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS CloudWatch AnomalyDetector.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-anomalydetector.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | namespaces | The namespace of the metric associated with the anomaly detection model. | namespace |
 | metric_names | The name of the metric associated with the anomaly detection model. | metric_name |
@@ -35,11 +37,13 @@ For additional information, see the [AWS documentation on AWS CloudWatch Anomaly
 ## Examples
 
 ### Ensure a namespace is available.
+
     describe aws_cloudwatch_anomaly_detectors do
       its('namespaces') { should include 'NAMESPACE' }
     end
 
 ### Ensure a metric name is available.
+
     describe aws_cloudwatch_anomaly_detectors do
         its('metric_names') { should include 'METRIC_NAME' }
     end
