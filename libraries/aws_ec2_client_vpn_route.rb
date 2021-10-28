@@ -7,7 +7,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
   desc 'Describes a VPN route.'
 
   example "
-    describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID',target_subnet: 'TARGET_SUBNET') do
+    describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', target_subnet: 'TARGET_SUBNET') do
       it { should exist }
     end
   "
