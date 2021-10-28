@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_client_vpn_target_network_associations
 
-Use the `aws_ec2_client_vpn_target_network_associations` InSpec audit resource to test properties of a single specific AWS EC2 Client Vpn Target Network Association.
+Use the `aws_ec2_client_vpn_target_network_associations` InSpec audit resource to test properties of multiple AWS EC2 Client VPN target network associations.
 
-The AWS::EC2::ClientVpnTargetNetworkAssociation specifies a target network to associate with a Client VPN endpoint.
+The `AWS::EC2::ClientVpnTargetNetworkAssociation` specifies a target network to associate with a Client VPN endpoint.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnTarge
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | association_ids | The ID of the association. | association_id |
 | vpc_ids | The ID of the VPC in which the target network (subnet) is located. | vpc_id |
@@ -40,11 +40,13 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnTarge
 ## Examples
 
 ### Ensure an association exists.
+
     describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
       its('association_ids') { should include 'ASSOCIATION_ID' }
     end
 
 ### Ensure that the status code is `active`.
+
     describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
         its('status_code') { should include 'active' }
     end

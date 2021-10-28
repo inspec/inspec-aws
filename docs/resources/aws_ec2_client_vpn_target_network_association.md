@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_client_vpn_target_network_association
 
-Use the `aws_ec2_client_vpn_target_network_association` InSpec audit resource to test properties of a single AWS EC2 Client Vpn Target Network Association.
+Use the `aws_ec2_client_vpn_target_network_association` InSpec audit resource to test properties of a single AWS EC2 Client VPN target network association.
 
-The AWS::EC2::ClientVpnTargetNetworkAssociation checks if a target network to associated with a Client VPN endpoint.
+The `AWS::EC2::ClientVpnTargetNetworkAssociation` checks if a target network to associated with a Client VPN endpoint.
 
 ## Syntax
 
-Ensure that the client vpn target network association exists.
+Ensure that the client VPN target network association exists.
 
     describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", association_id: "ASSOCIATION_ID") do
       it { should exist }
@@ -27,7 +27,7 @@ The ID of the Client VPN endpoint.
 
 The ID of the association.
 
-For additional information, see the [AWS documentation on AWS EC2 ClientVpnTargetNetworkAssociation.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpntargetnetworkassociation.html).
+For additional information, see the [AWS documentation on AWS EC2 Client VPN target network association.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpntargetnetworkassociation.html).
 
 ## Properties
 
@@ -44,11 +44,13 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnTarge
 ## Examples
 
 ### Ensure an association exists.
+
     describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", association_id: "ASSOCIATION_ID") do
       its('association_id') { should eq 'ASSOCIATION_ID' }
     end
 
 ### Ensure that the status code is `active`.
+
     describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", association_id: "ASSOCIATION_ID") do
         its('status.code') { should eq 'active' }
     end
