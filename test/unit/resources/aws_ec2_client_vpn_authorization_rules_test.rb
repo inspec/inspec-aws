@@ -16,7 +16,7 @@ class AWSEC2ClientVPNRulesConstructorTest < Minitest::Test
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AWSEC2ClientVPNRules.new(rubbish: 9) }
+    assert_raises(ArgumentError) { AWSEC2ClientVPNAuthorizationRules.new(rubbish: 9) }
   end
 end
 
