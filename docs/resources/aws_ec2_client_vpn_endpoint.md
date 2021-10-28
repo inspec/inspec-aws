@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnEndpo
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
+| Property | Description |
+| --- | --- |
 | client_vpn_endpoint_id | The ID of the Client VPN endpoint. |
 | description | A brief description of the endpoint. |
 | status.code | The state of the Client VPN endpoint. |
