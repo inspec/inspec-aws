@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-control 'aws_securityhub_hub-1.0' do
+skip_control 'aws_securityhub_hub-1.0' do
   impact 1.0
   title 'Test the properties of Security Hub.'
   describe aws_securityhub_hub(hub_arn: 'arn:aws:securityhub:us-east-2:1234567890:hub/default') do
