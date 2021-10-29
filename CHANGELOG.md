@@ -1,9 +1,44 @@
-<!-- latest_release 1.74.5 -->
+<!-- latest_release 1.74.12 -->
+## [v1.74.12](https://github.com/inspec/inspec-aws/tree/v1.74.12) (2021-10-29)
+
+#### Merged Pull Requests
+- Nirbhay/ClientVpnTargetNetworkAssociation [#746](https://github.com/inspec/inspec-aws/pull/746) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.74.11](https://github.com/inspec/inspec-aws/tree/v1.74.11) (2021-10-28)
+
+#### Merged Pull Requests
+- aws_ec2_traffic_mirror_target [#500](https://github.com/inspec/inspec-aws/pull/500) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.10](https://github.com/inspec/inspec-aws/tree/v1.74.10) (2021-10-28)
+
+#### Merged Pull Requests
+- Nirbhay/IAM Server Certificate/Certificates [#511](https://github.com/inspec/inspec-aws/pull/511) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.9](https://github.com/inspec/inspec-aws/tree/v1.74.9) (2021-10-28)
+
+#### Merged Pull Requests
+- Added support Cloud Watch Dashboard [#658](https://github.com/inspec/inspec-aws/pull/658) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.8](https://github.com/inspec/inspec-aws/tree/v1.74.8) (2021-10-28)
+
+#### Merged Pull Requests
+- Added support for Cloud front origin request policy [#656](https://github.com/inspec/inspec-aws/pull/656) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.7](https://github.com/inspec/inspec-aws/tree/v1.74.7) (2021-10-28)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudfront_cache_policy [#644](https://github.com/inspec/inspec-aws/pull/644) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.6](https://github.com/inspec/inspec-aws/tree/v1.74.6) (2021-10-28)
+
+#### Merged Pull Requests
+- Nirbhay/aws ec2 network interface permission [#536](https://github.com/inspec/inspec-aws/pull/536) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.5](https://github.com/inspec/inspec-aws/tree/v1.74.5) (2021-10-27)
 
 #### Merged Pull Requests
 - Nirbhay/Placement Group/Groups Resource [#535](https://github.com/inspec/inspec-aws/pull/535) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.4](https://github.com/inspec/inspec-aws/tree/v1.74.4) (2021-10-27)
 

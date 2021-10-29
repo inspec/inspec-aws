@@ -3692,7 +3692,6 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
   source_code_hash = filebase64sha256("files/lambda.zip")
 
-
   runtime = "nodejs12.x"
 
   environment {
@@ -4098,7 +4097,6 @@ resource "aws_instance" "aws_instance_test" {
   }
 }
 
-
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_bm_test1" {
   body = jsonencode({
     openapi = "3.0.1"
@@ -4344,6 +4342,116 @@ resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
 resource "aws_placement_group" "web" {
   name     = "test_placement_group"
   strategy = "cluster"
+}
+
+##Cloud Front Cache Policy
+
+resource "aws_cloudfront_cache_policy" "aws_cloudfront_cache_policy_test1" {
+  name        = "example-policy"
+  comment     = "test comment"
+  default_ttl = 50
+  max_ttl     = 100
+  min_ttl     = 1
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = "whitelist"
+      cookies {
+        items = ["example"]
+      }
+    }
+    headers_config {
+      header_behavior = "whitelist"
+      headers {
+        items = ["example"]
+      }
+    }
+    query_strings_config {
+      query_string_behavior = "whitelist"
+      query_strings {
+        items = ["example"]
+      }
+    }
+  }
+}
+
+resource "aws_cloudfront_origin_request_policy" "test-origin-policy" {
+  name    = "example-policy"
+  comment = "example comment"
+  cookies_config {
+    cookie_behavior = "whitelist"
+    cookies {
+      items = ["example"]
+    }
+  }
+  headers_config {
+    header_behavior = "whitelist"
+    headers {
+      items = ["example"]
+    }
+  }
+  query_strings_config {
+    query_string_behavior = "whitelist"
+    query_strings {
+      items = ["example"]
+    }
+  }
+}
+
+
+resource "aws_cloudwatch_dashboard" "main" {
+  dashboard_name = "my-dashboard"
+
+  dashboard_body = <<EOF
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/EC2",
+            "CPUUtilization",
+            "InstanceId",
+            "i-012345"
+          ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "us-east-1",
+        "title": "EC2 Instance CPU"
+      }
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 7,
+      "width": 3,
+      "height": 3,
+      "properties": {
+        "markdown": "Hello world"
+      }
+    }
+  ]
+}
+EOF
+}
+
+locals {
+  test_cert = "${path.module}/files/cert.pem"
+}
+
+locals {
+  test_key = "${path.module}/files/key.pem"
+}
+
+resource "aws_iam_server_certificate" "test_cert" {
+  name             = "some_test_cert"
+  certificate_body = file(local.test_cert)
+  private_key      = file(local.test_key)
 }
 
 ## VPN AUTH
