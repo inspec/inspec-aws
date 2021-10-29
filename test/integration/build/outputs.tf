@@ -972,3 +972,12 @@ output "association_id" {
 output "target_vpc_subnet_id" {
   value = aws_ec2_client_vpn_route.test-route.id
 }
+
+
+output "aws_cloudwatch_anomaly_detector_namespace" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.namespace
+}
+
+output "aws_cloudwatch_anomaly_detector_metric_name" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.metric_name
+}
