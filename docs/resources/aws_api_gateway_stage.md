@@ -39,6 +39,8 @@ For additional information, see the [AWS ApiGateway Stage documentation](https:/
 | stage_name | The name for the stage resource. |
 | client_certificate_id | The client certificate identifier for the stage resource. |
 
+There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)
+
 ## Examples
 
 ### Ensure that the stage name exists.
