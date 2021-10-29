@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.14 -->
+<!-- latest_release 1.74.15 -->
+## [v1.74.15](https://github.com/inspec/inspec-aws/tree/v1.74.15) (2021-10-29)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudwatch_anomaly_detector [#675](https://github.com/inspec/inspec-aws/pull/675) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.14](https://github.com/inspec/inspec-aws/tree/v1.74.14) (2021-10-29)
 
 #### Merged Pull Requests
 - Nirbhay/aws_ec2_client_vpn_endpoint [#715](https://github.com/inspec/inspec-aws/pull/715) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.13](https://github.com/inspec/inspec-aws/tree/v1.74.13) (2021-10-29)
 
