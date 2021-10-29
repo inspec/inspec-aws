@@ -4539,3 +4539,20 @@ resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
   alarm_description         = "This metric monitors ec2 cpu utilization"
   insufficient_data_actions = []
 }
+
+#EC2::Signer::SigningProfile
+
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
