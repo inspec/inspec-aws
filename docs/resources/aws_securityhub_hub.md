@@ -9,7 +9,7 @@ Use the `aws_securityhub_hub` InSpec audit resource to test properties of a sing
 
 ## Syntax
 
-Ensure that the config exists.
+Ensure that the hub exists.
 
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
       it { should exist }
