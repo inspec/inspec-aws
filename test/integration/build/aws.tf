@@ -4453,3 +4453,11 @@ resource "aws_iam_server_certificate" "test_cert" {
   certificate_body = file(local.test_cert)
   private_key      = file(local.test_key)
 }
+
+## VPN AUTH
+
+resource "aws_ec2_client_vpn_authorization_rule" "test_auth" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  target_network_cidr    = "0.0.0.0/0"
+  authorize_all_groups   = true
+}
