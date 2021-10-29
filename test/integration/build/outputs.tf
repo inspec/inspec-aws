@@ -937,6 +937,30 @@ output "aws_placement_group_name" {
   value = aws_placement_group.web.name
 }
 
+output "aws_cloudfront_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
+}
+
+output "request_origin_id" {
+  value = aws_cloudfront_origin_request_policy.test-origin-policy.id
+}
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}
+
+output "dashboard_arn" {
+  value = aws_cloudwatch_dashboard.main.dashboard_arn
+}
+
+output "server_certificate_name" {
+  value = aws_iam_server_certificate.test_cert.name
+}
+
+output "server_certificate_id" {
+  value = aws_iam_server_certificate.test_cert.id
+}
+
 output "client_vpn_endpoint_id" {
   value = aws_ec2_client_vpn_endpoint.test-endpoint.id
 }
