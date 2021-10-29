@@ -34,7 +34,7 @@ For additional information, see the [AWS documentation on AWS Security Hub.](htt
 
 ## Examples
 
-### Ensure an auto_enable_controls is true.
+### Ensure an auto enable controls is true.
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
       its('auto_enable_controls') { should eq true }
     end
