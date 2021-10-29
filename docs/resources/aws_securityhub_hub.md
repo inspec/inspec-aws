@@ -41,7 +41,7 @@ For additional information, see the [AWS documentation on AWS Security Hub.](htt
 
 ### Ensure an hub arn is available.
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
-        its('hub_arn') { should eq 'ALARM_NAME' }
+        its('hub_arn') { should eq 'HUB_ARN' }
     end
 
 ## Matchers
