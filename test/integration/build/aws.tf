@@ -4461,3 +4461,33 @@ resource "aws_ec2_client_vpn_authorization_rule" "test_auth" {
   target_network_cidr    = "0.0.0.0/0"
   authorize_all_groups   = true
 }
+
+## VPN Endpoints
+resource "aws_ec2_client_vpn_route" "test-route" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  destination_cidr_block = "0.0.0.0/0"
+  target_vpc_subnet_id   = aws_ec2_client_vpn_network_association.test-association.subnet_id
+}
+
+resource "aws_ec2_client_vpn_network_association" "test-association" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  subnet_id              = "subnet-700ff218"
+}
+
+resource "aws_ec2_client_vpn_endpoint" "test-endpoint" {
+  description            = "Example Client VPN endpoint"
+  server_certificate_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  client_cidr_block      = "10.0.0.0/16"
+
+  authentication_options {
+    type                       = "certificate-authentication"
+    root_certificate_chain_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  }
+
+  connection_log_options {
+    enabled = false
+  }
+}
+
+
+
