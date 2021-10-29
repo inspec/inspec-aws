@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.13 -->
+<!-- latest_release 1.74.14 -->
+## [v1.74.14](https://github.com/inspec/inspec-aws/tree/v1.74.14) (2021-10-29)
+
+#### Merged Pull Requests
+- Nirbhay/aws_ec2_client_vpn_endpoint [#715](https://github.com/inspec/inspec-aws/pull/715) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.13](https://github.com/inspec/inspec-aws/tree/v1.74.13) (2021-10-29)
 
 #### Merged Pull Requests
 - NIrbhay/aws_ec2_client_vpn_authorization_rules [#717](https://github.com/inspec/inspec-aws/pull/717) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.12](https://github.com/inspec/inspec-aws/tree/v1.74.12) (2021-10-29)
 
