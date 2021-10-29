@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Lambda Function](h
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description| Field |
+| --- | --- | --- |
 | attach_times | The timestamp indicating when the attachment initiated. | attach_time |
 | attachment_ids | The ID of the network interface attachment. | attachment_id |
 | delete_on_terminations | Indicates whether the network interface is deleted when the instance is terminated. | delete_on_termination |
