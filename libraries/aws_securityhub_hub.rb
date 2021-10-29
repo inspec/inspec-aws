@@ -35,6 +35,6 @@ class AWSSecurityHubHub < AwsResourceBase
   end
 
   def to_s
-    "HUB ARN: #{@display_name}"
+    "Hub ARN: #{@display_name}"
   end
 end
