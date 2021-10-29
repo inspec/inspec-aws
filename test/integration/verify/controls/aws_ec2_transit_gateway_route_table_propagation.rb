@@ -2,6 +2,7 @@ transit_gateway_route_table_id = attribute(:transit_gateway_route_table_id, valu
 aws_transit_gateway_attachment_id = attribute(:aws_transit_gateway_attachment_id1, value: '', description: 'The IDs of the attachments.')
 
 control 'aws-ec2-transit-gateway-route-table-propagation-1.0' do
+
   impact 1.0
   title 'Describes information about the route table propagations for the specified transit gateway route table.'
 
