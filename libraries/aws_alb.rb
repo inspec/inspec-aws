@@ -26,9 +26,8 @@ class AwsAlb < AwsResourceBase
     validate_parameters(required: [:load_balancer_arn])
 
     catch_aws_errors do
-      load_balancer_arns = { load_balancer_arns: [opts[:load_balancer_arn].gsub('"', '')] }
+      load_balancer_arns = { load_balancer_arns: [opts[:load_balancer_arn]] }
       resp = @aws.elb_client_v2.describe_load_balancers(load_balancer_arns)
-      opts[:load_balancer_arn].gsub!('"', '')
       req_load_balancer_attr = { load_balancer_arn: opts[:load_balancer_arn] }
       resp_load_balancer_attr = @aws.elb_client_v2.describe_load_balancer_attributes(req_load_balancer_attr)
       return nil if resp.load_balancers.nil? || resp.load_balancers.empty?
