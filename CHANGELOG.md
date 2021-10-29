@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.15 -->
+<!-- latest_release 1.74.16 -->
+## [v1.74.16](https://github.com/inspec/inspec-aws/tree/v1.74.16) (2021-10-29)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_signing_profile [#670](https://github.com/inspec/inspec-aws/pull/670) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.15](https://github.com/inspec/inspec-aws/tree/v1.74.15) (2021-10-29)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudwatch_anomaly_detector [#675](https://github.com/inspec/inspec-aws/pull/675) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.14](https://github.com/inspec/inspec-aws/tree/v1.74.14) (2021-10-29)
 
