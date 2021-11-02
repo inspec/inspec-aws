@@ -38,8 +38,32 @@ For additional information, see the [AWS ApiGateway Stage documentation](https:/
 | created_date | The date and time that the stage resource was created. |
 | stage_name | The name for the stage resource. |
 | client_certificate_id | The client certificate identifier for the stage resource. |
-
-There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)
+| cache_cluster_enabled | Specifies whether a cache cluster is enabled for the stage. |
+| cache_cluster_size | The size of the cache cluster for the stage, if enabled. |
+| cache_cluster_status | The status of the cache cluster for the stage, if enabled. |
+| method_settings | A map that defines the method settings for a Stage resource. |
+| method_settings (metrics_enabled) | Specifies whether Amazon CloudWatch metrics are enabled for this method. |
+| method_settings (logging_level) | Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. |
+| method_settings (data_trace_enabled) | Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs. |
+| method_settings (throttling_burst_limit) | Specifies the throttling burst limit. |
+| method_settings (throttling_rate_limit) | Specifies the throttling rate limit. |
+| method_settings (caching_enabled) | Specifies whether responses should be cached and returned for requests. |
+| method_settings (cache_ttl_in_seconds) | Specifies the time to live (TTL), in seconds, for cached responses. |
+| method_settings (cache_data_encrypted) | Specifies whether the cached responses are encrypted. |
+| method_settings (require_authorization_for_cache_control) | Specifies whether authorization is required for a cache invalidation request. |
+| method_settings (unauthorized_cache_control_header_strategy) | Specifies how to handle unauthorized requests for cache invalidation. |
+| variables | A map that defines the stage variables for a Stage resource. |
+| documentation_version | The version of the associated API documentation. |
+| access_log_settings.format | A single line format of the access logs of data. |
+| access_log_settings.destination_arn | The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. |
+| canary_settings.percent_traffic | The percent (0-100) of traffic diverted to a canary deployment. |
+| canary_settings.deployment_id | The identifier for the canary settings deployment. |
+| canary_settings.stage_variable_overrides | Stage variables overridden for a canary release deployment, including new stage variables introduced in the canary. |
+| canary_settings.use_stage_cache | A Boolean flag to indicate whether the canary deployment uses the stage cache or not. |
+| tracing_enabled | Specifies whether active tracing with X-ray is enabled for the Stage. |
+| web_acl_arn | The ARN of the WebAcl associated with the Stage. |
+| tags | The collection of tags. Each tag element is associated with a given resource. |
+| last_updated_date | The timestamp when the stage last updated. |
 
 ## Examples
 
