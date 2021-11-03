@@ -32,7 +32,7 @@ Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See 
 
 Example `~/.aws/credentials` :
 
-   ```
+   ```bash
       [default]
       aws_access_key_id=AKIAIOSFODNN7EXAMPLE
       aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -44,7 +44,7 @@ Example `~/.aws/credentials` :
 
 Example `~/.aws/config` :
 
- ```
+ ```bash
     [default]
     region=us-west-2
     
@@ -97,13 +97,13 @@ Each resource requires specific permissions to perform the operations required f
 
 Since this is an InSpec resource pack, it defines the InSpec resources and includes example tests only. To use the AWS resources in your tests, do the following:
 
-```
+```bash
 inspec init profile --platform aws my-profile
 ```
 
 The above command generates a sample inspec.yml that depends on `master`.  We recommend this is pinned to a release of the resource pack as follows:
 
-```
+```yaml
 name: my-profile
 title: My own AWS profile
 version: 0.1.0
@@ -121,8 +121,7 @@ Since this is an InSpec resource pack, it only defines InSpec resources. To use 
 
 #### Create a profile
 
-```
-
+```bash
 inspec init profile --platform aws my-profile
 ```
 
@@ -162,7 +161,7 @@ supports:
 
 Add some tests and run the profile via:
 
-```
+```bash
 inspec exec my-profile -t aws://
 ```
 
@@ -371,7 +370,7 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 
 For disallowing FTP, we check that there is no ingress from 0.0.0.0/0 on port 21.  The below sample control loops across all regions, checking all security groups for the account:
 
-```
+```ruby
 title 'Test AWS Security Groups Across All Regions For an Account Disallow FTP'
 
 control 'aws-multi-region-security-group-ftp-1.0' do
@@ -390,9 +389,9 @@ control 'aws-multi-region-security-group-ftp-1.0' do
 end
 ```
 
-### Test that an EC2 instance is running & using the correct AMI
+### Test that an EC2 instance is running and using the correct AMI
 
-```
+```ruby
     describe aws_ec2_instance(name: 'ProdWebApp') do
       it              { should be_running }
       its('image_id') { should eq 'ami-27a58d5c' }
@@ -401,7 +400,7 @@ end
 
 ### Ensure all AWS Users have MFA enabled
 
-```
+```ruby
     describe aws_iam_users.where( has_mfa_enabled: false) do
       it { should_not exist }
     end
@@ -415,7 +414,7 @@ To provide multi-region support, the `aws_region` property is specified to a res
 
 The `aws_regions` resource is used to loop across all regions.
 
-```
+```ruby
   aws_regions.region_names.each do |region|
     <use region in other resources here>
   end
@@ -425,7 +424,7 @@ The `aws_regions` resource is used to loop across all regions.
 
 A custom endpoint URL can optionally be specified to resources for testing other compatible providers.  This propagates to the AWS client configuration.  An example is provided below for [Minio](https://github.com/minio/minio) S3 compatible buckets.
 
-```
+```ruby
 title 'Test For  Minio Buckets Existing at a Custom Endpoint'
 
 endpoint = input(:minio_server, value: 'http://127.0.0.1:9000', description: 'The Minio server custom endpoint.')
@@ -469,7 +468,7 @@ _Note environment variables are case insensitive._
 
 InSpec AWS resources now support setting the Retry Limit and Retry Backoff at the control level, as shown below.
 
-```
+```ruby
   describe aws_config_recorder(recorder_name: aws_config_recorder_name, aws_retry_limit=5, aws_retry_backoff=5) do
     it { should exist }
     its('recorder_name') { should eq aws_config_recorder_name }
@@ -529,7 +528,7 @@ InSpec AWS depends on version 3 of the AWS SDK provided via [Train AWS](https://
 
 A `Dockerfile` is provided at the root of this resource pack repository.  
 
-```
+```bash
 cd inspec-aws
 docker build -t inspec-aws -f Dockerfile
 docker run -it inspec-aws /bin/bash
@@ -540,7 +539,7 @@ bundle exec inspec exec sample_profile -t aws://
 
 If successful, output similar to below code is seen:
 
-```
+```bash
 # bundle exec inspec exec sample_profile -t aws://
 
 Profile: AWS InSpec Profile (InSpec AWS Sample Profile)
@@ -565,7 +564,7 @@ Test Summary: 50 successful, 0 failures, 0 skipped
 
 ### Running a single unit test
 
-```
+```bash
 rake test TEST=inspec-aws/test/unit/resources/aws_alb_test.rb
 ```
 
@@ -575,7 +574,7 @@ The above example is for running the `aws_alb_test.rb` file.
 
 Run the linting and unit tests via the below:
 
-```
+```bash
 $ bundle exec rake
 Running RuboCop...
 Inspecting 2 files
@@ -615,7 +614,7 @@ make sure
 
 Will result in...
 
-````
+````bash
 make sure
 
 docker-compose run --rm builder 
@@ -639,15 +638,14 @@ Fabulous run in 4.613042s, 155.6457 runs/s, 172.3375 assertions/s.
 
 To run the full suite of tests, run
 
-```` bash
-
+````bash
 make doubly_sure
 
 ````
 
 This test runs the unit tests, creates the target infrastructure, and runs the intergration tests.  If successful, the test  automatically destroy everything.  If it fails, it will keep the environment up, testing then can be achieved by running:
 
-```` bash
+````bash
 make int_test
 ````
 
@@ -657,7 +655,7 @@ This requires docker, docker-compose and make, see [Three Musketeers Pattern](ht
 
 Running the integration tests (after `setup_integration_tests`):
 
-```
+```bash
 $ bundle exec rake test:run_integration_tests
 ----> Run
 bundle exec inspec exec test/integration/verify --attrs test/integration/build/aws-inspec-attributes.yaml; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi
@@ -698,7 +696,7 @@ Test Summary: 602 successful, 0 failures, 18 skipped
 
 If an error occurs when running "inspec exec" on a newly created AWS profile, check that the AWS transport is specified as below:
 
-```
+```bash
 inspec exec . -t aws://
 ```
 
