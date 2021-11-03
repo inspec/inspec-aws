@@ -17,16 +17,20 @@ The `aws_iam_managed_policies` resource returns a collection of IAM managed poli
 
 This resource allows filtering by scope, which are:
 
-- To list only AWS-managed policies, set `Scope` to `AWS`.
-- To list only the customer-managed policies in your AWS account, set `Scope` to `Local`.
-- If a scope is not provided, `ALL` policies are returned.
+- To list only AWS-managed policies, set `scope` to `AWS`.
+- To list only the customer-managed policies in your AWS account, set `scope` to `Local`.
+- If a scope is not provided or if `scope` is set to `ALL`, all policies are returned.
 
-    describe aws_iam_managed_policies(scope: 'LOCAL') do
+    describe aws_iam_managed_policies(scope: 'AWS') do
       it { should exist }
     end
 
-    describe aws_iam_managed_policies(scope: 'AWS') do
-      its('policy_names') { should include 'POLICY_NAME' }
+    describe aws_iam_managed_policies(scope: 'Local') do
+      it { should exist }
+    end
+
+    describe aws_iam_managed_policies(scope: 'ALL') do
+      it { should exist }
     end
 
 See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html) for additional information.
@@ -35,8 +39,13 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 `scope` _(optional)_
 
-Set `scope` to `AWS` or `Local` to test AWS-managed or customer-managed policies.
-This must be passed as a `scope: 'VALUE'` key-value entry in a hash.
+`scope` accepts three possible values, `AWS`, `Local`, or `ALL`:
+
+- `AWS` returns AWS-managed policies.
+- `Local` returns customer-managed policies.
+- `ALL` returns all policies.
+
+Specify a scope by passing a key-value entry in a hash: `scope: 'VALUE'`.
 
 If ommitted, all policies are returned.
 
