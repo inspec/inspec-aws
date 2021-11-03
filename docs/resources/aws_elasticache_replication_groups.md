@@ -12,8 +12,8 @@ An `aws_elasticache_replication_groups` resource block collects a group of Elast
 
     describe aws_elasticache_replication_groups
       it { should exist }
-    end   
-    
+    end
+
 ### Parameters
 
 This resource does not expect any parameters.
@@ -44,7 +44,7 @@ This resource does not expect any parameters.
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -53,13 +53,13 @@ The control will pass if the 'describe' method returns at least one result.
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should exist }
     end
-      
+
 Use `should_not` to test an entity that should not exist.
 
     describe aws_elasticache_replication_groups.where( <property>: <value>) do
       it { should_not exist }
     end
-    
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElastiCache:Client:ReplicationGroupMessage` action set to allow.
