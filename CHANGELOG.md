@@ -1,9 +1,34 @@
-<!-- latest_release 1.74.11 -->
+<!-- latest_release 1.74.16 -->
+## [v1.74.16](https://github.com/inspec/inspec-aws/tree/v1.74.16) (2021-10-29)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_signing_profile [#670](https://github.com/inspec/inspec-aws/pull/670) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.15](https://github.com/inspec/inspec-aws/tree/v1.74.15) (2021-10-29)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudwatch_anomaly_detector [#675](https://github.com/inspec/inspec-aws/pull/675) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.14](https://github.com/inspec/inspec-aws/tree/v1.74.14) (2021-10-29)
+
+#### Merged Pull Requests
+- Nirbhay/aws_ec2_client_vpn_endpoint [#715](https://github.com/inspec/inspec-aws/pull/715) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.13](https://github.com/inspec/inspec-aws/tree/v1.74.13) (2021-10-29)
+
+#### Merged Pull Requests
+- NIrbhay/aws_ec2_client_vpn_authorization_rules [#717](https://github.com/inspec/inspec-aws/pull/717) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.12](https://github.com/inspec/inspec-aws/tree/v1.74.12) (2021-10-29)
+
+#### Merged Pull Requests
+- Nirbhay/ClientVpnTargetNetworkAssociation [#746](https://github.com/inspec/inspec-aws/pull/746) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.11](https://github.com/inspec/inspec-aws/tree/v1.74.11) (2021-10-28)
 
 #### Merged Pull Requests
 - aws_ec2_traffic_mirror_target [#500](https://github.com/inspec/inspec-aws/pull/500) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.10](https://github.com/inspec/inspec-aws/tree/v1.74.10) (2021-10-28)
 

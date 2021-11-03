@@ -4453,3 +4453,106 @@ resource "aws_iam_server_certificate" "test_cert" {
   certificate_body = file(local.test_cert)
   private_key      = file(local.test_key)
 }
+
+## VPN AUTH
+
+resource "aws_ec2_client_vpn_authorization_rule" "test_auth" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  target_network_cidr    = "0.0.0.0/0"
+  authorize_all_groups   = true
+}
+
+## VPN Endpoints
+resource "aws_ec2_client_vpn_route" "test-route" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  destination_cidr_block = "0.0.0.0/0"
+  target_vpc_subnet_id   = aws_ec2_client_vpn_network_association.test-association.subnet_id
+}
+
+resource "aws_ec2_client_vpn_network_association" "test-association" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  subnet_id              = "subnet-700ff218"
+}
+
+resource "aws_ec2_client_vpn_endpoint" "test-endpoint" {
+  description            = "Example Client VPN endpoint"
+  server_certificate_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  client_cidr_block      = "10.0.0.0/16"
+
+  authentication_options {
+    type                       = "certificate-authentication"
+    root_certificate_chain_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  }
+
+  connection_log_options {
+    enabled = false
+  }
+}
+
+
+
+
+
+//CloudWatch Anomaly Detector
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_anomaly_detector_test1" {
+  alarm_name                = "terraform-test-foobar"
+  comparison_operator       = "GreaterThanUpperThreshold"
+  evaluation_periods        = "2"
+  threshold_metric_id       = "e1"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+
+  metric_query {
+    id          = "e1"
+    expression  = "ANOMALY_DETECTION_BAND(m1)"
+    label       = "CPUUtilization (Expected)"
+    return_data = "true"
+  }
+
+  metric_query {
+    id          = "m1"
+    return_data = "true"
+    metric {
+      metric_name = "CPUUtilization"
+      namespace   = "AWS/EC2"
+      period      = "120"
+      stat        = "Average"
+      unit        = "Count"
+
+      dimensions = {
+        InstanceId = "i-0111913dd854e6590"
+      }
+    }
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
+  alarm_name                = "terraform-test-bravo"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "CPUUtilization"
+  namespace                 = "AWS/EC2"
+  period                    = "120"
+  statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+}
+
+#EC2::Signer::SigningProfile
+
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
