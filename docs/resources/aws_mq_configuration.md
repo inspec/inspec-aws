@@ -21,7 +21,7 @@ Ensure that AWS MQ configuration exists.
 
 | Property | Description |
 | --- | --- |
-| configuration_id | The configuration ID.| 
+| configuration_id | The configuration ID.|
 
 For additional information, see the [AWS documentation on AWS MQ configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html).
 
