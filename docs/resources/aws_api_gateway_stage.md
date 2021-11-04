@@ -76,7 +76,7 @@ For additional information, see the [AWS API Gateway stage documentation](https:
 ### Ensure that the client certificate ID exists.
 
     describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
-        its('client_certificate_id') { should eq 'CLIENT_CETIFICATE_ID' }
+        its('client_certificate_id') { should eq 'CLIENT_CERTIFICATE_ID' }
     end
 
 ## Matchers
