@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_api\_gateway\_stages
 
-Use the `aws_api_gateway_stages` InSpec audit resource to test properties of multiple AWS ApiGateway Stages.
+Use the `aws_api_gateway_stages` InSpec audit resource to test properties of multiple AWS API Gateway stages.
 
-The AWS::ApiGateway::Stage resource deploys an API Gateway RestAPI resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
+The 'AWS::ApiGateway::Stage' resource deploys an API Gateway REST API resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
 
 ## Syntax
 
@@ -21,7 +21,9 @@ Ensure that the stage exists.
 
 `rest_api_id` _(required)_
 
-For additional information, see the [AWS ApiGateway Stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
+The ID of the REST API resource that you're deploying with this stage.
+
+For additional information, see the [AWS API Gateway stage Stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
 
 ## Properties
 

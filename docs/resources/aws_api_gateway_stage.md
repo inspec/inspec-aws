@@ -5,9 +5,9 @@ platform: aws
 
 # aws\_api\_gateway\_stage
 
-Use the `aws_api_gateway_stage` InSpec audit resource to test properties of the singular resource of AWS ApiGateway Stage.
+Use the `aws_api_gateway_stage` InSpec audit resource to test properties of a single AWS API Gateway stage.
 
-The AWS::ApiGateway::Stage resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
+The `AWS::ApiGateway::Stage` resource deploys an API Gateway REST API resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
 
 ## Syntax
 
@@ -21,13 +21,13 @@ Ensure that the stage exists.
 
 `rest_api_id` _(required)_
 
-The string identifier of the associated RestApi.
+The ID of the REST API resource that you're deploying with this stage.
 
 `stage_name` _(required)_
 
-The identifier of the stage resource to get information about.
+The API Gateway stage name.
 
-For additional information, see the [AWS ApiGateway Stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
+For additional information, see the [AWS API Gateway stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
 
 ## Properties
 
@@ -41,7 +41,7 @@ For additional information, see the [AWS ApiGateway Stage documentation](https:/
 | cache_cluster_enabled | Specifies whether a cache cluster is enabled for the stage. |
 | cache_cluster_size | The size of the cache cluster for the stage, if enabled. |
 | cache_cluster_status | The status of the cache cluster for the stage, if enabled. |
-| method_settings | A map that defines the method settings for a Stage resource. |
+| method_settings | A map that defines the method settings for a stage resource. |
 | method_settings (metrics_enabled) | Specifies whether Amazon CloudWatch metrics are enabled for this method. |
 | method_settings (logging_level) | Specifies the logging level for this method, which affects the log entries pushed to Amazon CloudWatch Logs. |
 | method_settings (data_trace_enabled) | Specifies whether data trace logging is enabled for this method, which affects the log entries pushed to Amazon CloudWatch Logs. |
@@ -52,14 +52,14 @@ For additional information, see the [AWS ApiGateway Stage documentation](https:/
 | method_settings (cache_data_encrypted) | Specifies whether the cached responses are encrypted. |
 | method_settings (require_authorization_for_cache_control) | Specifies whether authorization is required for a cache invalidation request. |
 | method_settings (unauthorized_cache_control_header_strategy) | Specifies how to handle unauthorized requests for cache invalidation. |
-| variables | A map that defines the stage variables for a Stage resource. |
+| variables | A map that defines the stage variables for a stage resource. |
 | documentation_version | The version of the associated API documentation. |
 | access_log_settings.format | A single line format of the access logs of data. |
 | access_log_settings.destination_arn | The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. |
 | canary_settings.percent_traffic | The percent (0-100) of traffic diverted to a canary deployment. |
 | canary_settings.deployment_id | The identifier for the canary settings deployment. |
 | canary_settings.stage_variable_overrides | Stage variables overridden for a canary release deployment, including new stage variables introduced in the canary. |
-| canary_settings.use_stage_cache | A Boolean flag to indicate whether the canary deployment uses the stage cache or not. |
+| canary_settings.use_stage_cache | A boolean flag to indicate whether the canary deployment uses the stage cache or not. |
 | tracing_enabled | Specifies whether active tracing with X-ray is enabled for the Stage. |
 | web_acl_arn | The ARN of the WebAcl associated with the Stage. |
 | tags | The collection of tags. Each tag element is associated with a given resource. |
