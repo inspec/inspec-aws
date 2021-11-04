@@ -904,3 +904,124 @@ output "broker_id" {
 output "broker_arn" {
   value = aws_mq_broker.test-broker.arn
 }
+
+output "aws_db_cluster_snapshot_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.id
+}
+
+output "aws_db_cluster_snapshot_availability_zones" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.availability_zones
+}
+
+output "aws_db_cluster_snapshot_allocated_storage" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.allocated_storage
+}
+
+output "aws_db_cluster_snapshot_status" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.status
+}
+
+output "aws_db_cluster_snapshot_engine" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine
+}
+
+output "aws_db_cluster_snapshot_engine_version" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.engine_version
+}
+
+output "aws_db_cluster_snapshot_db_cluster_identifier" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_identifier
+}
+
+output "aws_db_cluster_snapshot_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_vpc_id" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.vpc_id
+}
+
+output "aws_db_cluster_snapshot_source_db_cluster_snapshot_arn" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.source_db_cluster_snapshot_arn
+}
+
+output "aws_db_cluster_snapshot_storage_encrypted" {
+  value = aws_db_cluster_snapshot.aws_db_cluster_snapshot_test.storage_encrypted
+}
+
+output "aws_placement_group_name" {
+  value = aws_placement_group.web.name
+}
+
+output "aws_cloudfront_cache_policy_id" {
+  value = aws_cloudfront_cache_policy.aws_cloudfront_cache_policy_test1.id
+}
+
+output "request_origin_id" {
+  value = aws_cloudfront_origin_request_policy.test-origin-policy.id
+}
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}
+
+output "dashboard_arn" {
+  value = aws_cloudwatch_dashboard.main.dashboard_arn
+}
+
+output "server_certificate_name" {
+  value = aws_iam_server_certificate.test_cert.name
+}
+
+output "server_certificate_id" {
+  value = aws_iam_server_certificate.test_cert.id
+}
+
+output "client_vpn_endpoint_id" {
+  value = aws_ec2_client_vpn_endpoint.test-endpoint.id
+}
+
+output "association_id" {
+  value = aws_ec2_client_vpn_network_association.test-association.id
+}
+
+output "target_vpc_subnet_id" {
+  value = aws_ec2_client_vpn_route.test-route.id
+}
+
+
+output "aws_cloudwatch_anomaly_detector_namespace" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.namespace
+}
+
+output "aws_cloudwatch_anomaly_detector_metric_name" {
+  value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.metric_name
+}
+
+output "aws_signer_signing_profile_id" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.id
+}
+
+output "aws_signer_signing_profile_name" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.name
+}
+
+output "aws_signer_signing_profile_platform_id" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.platform_id
+}
+
+output "aws_signer_signing_profile_status" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.status
+}
+
+output "aws_signer_signing_profile_arn" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.arn
+}
+
+output "aws_signer_signing_profile_version" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.version
+}
+
+output "aws_signer_signing_profile_version_arn" {
+  value = aws_signer_signing_profile.aws_signer_signing_profile_test.version_arn
+}
