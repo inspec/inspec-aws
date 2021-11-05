@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.18 -->
+<!-- latest_release 1.74.19 -->
+## [v1.74.19](https://github.com/inspec/inspec-aws/tree/v1.74.19) (2021-11-05)
+
+#### Merged Pull Requests
+- AWS IAM Managed policy resource [#504](https://github.com/inspec/inspec-aws/pull/504) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.18](https://github.com/inspec/inspec-aws/tree/v1.74.18) (2021-11-05)
 
 #### Merged Pull Requests
 - adding api gateway stage resource [#700](https://github.com/inspec/inspec-aws/pull/700) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.74.17](https://github.com/inspec/inspec-aws/tree/v1.74.17) (2021-11-03)
 
