@@ -48,8 +48,8 @@ require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
-require 'aws-sdk-networkmanager'
 require 'aws-sdk-mq'
+require 'aws-sdk-networkmanager'
 require 'aws-sdk-signer'
 
 # AWS Inspec Backend Classes

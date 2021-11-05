@@ -1025,3 +1025,10 @@ output "aws_signer_signing_profile_version" {
 output "aws_signer_signing_profile_version_arn" {
   value = aws_signer_signing_profile.aws_signer_signing_profile_test.version_arn
 }
+output "configuration_id" {
+  value = aws_mq_configuration.for_broker.id
+}
+
+output "configuration_arn" {
+  value = aws_mq_configuration.for_broker.arn
+}
