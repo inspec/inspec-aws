@@ -33,7 +33,7 @@ class AWSCloudWatchLogsSubscriptionFiltersHappyPathTest < Minitest::Test
     @resp = AWSCloudWatchLogsSubscriptionFilters.new(log_group_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_filter
+  def test_subscription_filters
     assert @resp.exists?
   end
 
