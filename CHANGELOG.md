@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.20 -->
+<!-- latest_release 1.74.21 -->
+## [v1.74.21](https://github.com/inspec/inspec-aws/tree/v1.74.21) (2021-11-05)
+
+#### Merged Pull Requests
+- soumyo/Adding the Missing Docs in the Readme.md [#631](https://github.com/inspec/inspec-aws/pull/631) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.20](https://github.com/inspec/inspec-aws/tree/v1.74.20) (2021-11-05)
 
 #### Merged Pull Requests
 - Nirbhay/MQConfigurations [#636](https://github.com/inspec/inspec-aws/pull/636) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.19](https://github.com/inspec/inspec-aws/tree/v1.74.19) (2021-11-05)
 
