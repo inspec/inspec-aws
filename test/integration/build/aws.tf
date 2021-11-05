@@ -1755,6 +1755,11 @@ resource "aws_lb" "aws-alb" {
   security_groups    = [aws_security_group.lb_sg[0].id]
   subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
 
+ access_logs {
+    bucket  = aws_s3_bucket.bucket_public[0].id
+    prefix  = "test-lb"
+    enabled = true
+  }
   tags = {
     Environment = "inspec-aws"
   }
