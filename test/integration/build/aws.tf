@@ -3178,6 +3178,17 @@ resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
   }
 }
 
+resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate" {
+  description = "Test client certificate"
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "api_gateway_stage"
+  client_certificate_id = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate.id
+}
+
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
   name        = "MyDemoAPI"
   description = "This is my API for demonstration purposes"

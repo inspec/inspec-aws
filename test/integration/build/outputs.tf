@@ -798,6 +798,22 @@ output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
 
+output "aws_api_gateway_deployement_id_test" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
+}
+
+output "aws_api_gateway_stage_name_test" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_test.stage_name
+}
+
+output "aws_api_gateway_client_certificate_id_test" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_test.client_certificate_id
+}
+
+output "aws_api_gateway_rest_api_id_test" {
+  value = aws_api_gateway_stage.aws_api_gateway_stage_test.rest_api_id
+}
+
 output "aws_api_gateway_rest_api_id" {
   value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
 }
