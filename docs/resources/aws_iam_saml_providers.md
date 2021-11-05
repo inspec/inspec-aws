@@ -70,5 +70,5 @@ You may also use `it { should_not exist }`.
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions set to Allow:
-`iam:ListSamlProviders`
-`iam:GetSamlProvider`
+`IAM:Client:ListSAMLProvidersResponse`
+`IAM:Client:etSAMLProviderResponse`

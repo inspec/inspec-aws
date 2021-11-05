@@ -1,8 +1,8 @@
 title 'Test single AWS Option Group'
 
-aws_option_group_name= attribute(:aws_db_option_group_name, default: '', description: 'The AWS option group name.')
-aws_db_option_group_engine_name= attribute(:aws_db_option_group_engine_name, default: '', description: 'The AWS option group name.')
-aws_db_option_group_description= attribute(:aws_db_option_group_description, default: '', description: 'The AWS option group name.')
+aws_option_group_name= attribute(:aws_db_option_group_name, value: '', description: 'The AWS option group name.')
+aws_db_option_group_engine_name= attribute(:aws_db_option_group_engine_name, value: '', description: 'The AWS option group name.')
+aws_db_option_group_description= attribute(:aws_db_option_group_description, value: '', description: 'The AWS option group name.')
 
 describe aws_rds_option_group(option_group_name: aws_option_group_name ) do
   it { should exist }

@@ -48,7 +48,7 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 |cidr\_block       | The IPv4 address range that is managed by the VPC. |
 |dhcp\_options\_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
 |instance\_tenancy | The allowed tenancy of the instances launched into the VPC. |
-|state            | The state of the VPC (`pending` | `available`). |
+|state            | The state of the VPC. Valid values: `pending` and `available`. |
 |vpc\_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
 |associated_cidr_blocks | The associated CIDR blocks. |
@@ -222,6 +222,6 @@ Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identi
 
 ## AWS Permissions
 
-To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `ec2:DescribeVpcs` action with effect set to `Allow`.
+To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeVpcsResult` action with effect set to `Allow`.
 
 You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
