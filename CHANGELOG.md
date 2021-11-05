@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.19 -->
+<!-- latest_release 1.74.20 -->
+## [v1.74.20](https://github.com/inspec/inspec-aws/tree/v1.74.20) (2021-11-05)
+
+#### Merged Pull Requests
+- Nirbhay/MQConfigurations [#636](https://github.com/inspec/inspec-aws/pull/636) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.19](https://github.com/inspec/inspec-aws/tree/v1.74.19) (2021-11-05)
 
 #### Merged Pull Requests
 - AWS IAM Managed policy resource [#504](https://github.com/inspec/inspec-aws/pull/504) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.18](https://github.com/inspec/inspec-aws/tree/v1.74.18) (2021-11-05)
 
