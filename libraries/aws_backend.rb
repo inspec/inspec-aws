@@ -49,6 +49,8 @@ require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
 require 'aws-sdk-mq'
+require 'aws-sdk-networkmanager'
+require 'aws-sdk-signer'
 
 # AWS Inspec Backend Classes
 #
@@ -276,6 +278,14 @@ class AwsConnection
 
   def secretsmanager_client
     aws_client(Aws::SecretsManager::Client)
+  end
+
+  def signer_client
+    aws_client(Aws::Signer::Client)
+  end
+
+  def network_manager_client
+    aws_client(Aws::NetworkManager::Client)
   end
 
   def mq_client

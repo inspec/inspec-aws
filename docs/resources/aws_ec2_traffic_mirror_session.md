@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_session Resource
 platform: aws
 ---
 
-# aws\_ec2\_traffic_\mirror_\session
+# aws\_ec2\_traffic\_mirror\_session
 
 Use the `aws_ec2_traffic_mirror_session` InSpec audit resource to test properties an AWS Traffic Mirror session.
 
@@ -66,13 +66,13 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 Check if the Traffic Mirror session is available.
 
-    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
       it { should be_available }
     end
 
 Use `should_not` to test a Traffic Mirror session that should not exist.
 
-    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'test-traffic_mirror_session_id') do
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
       it { should_not be_available }
     end
 

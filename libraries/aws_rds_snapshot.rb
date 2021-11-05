@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsRdsSnapshot < AwsResourceBase
   name 'aws_rds_snapshot'
-  desc 'Verifies settings for an RDS snapshot'
+  desc 'Verifies settings for an RDS snapshot.'
 
   example "
     describe aws_rds_snapshot(db_snapshot_identifier: 'test-snapshot-id') do

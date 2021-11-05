@@ -109,4 +109,4 @@ Indicates that the Flow Log is attached to a vpc resource.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeFlowLogs` actions with Effect set to Allow.  
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeFlowLogsResult` actions with Effect set to Allow.  

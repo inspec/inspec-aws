@@ -39,6 +39,6 @@ class AwsRdsOptionGroup < AwsResourceBase
   end
 
   def to_s
-    "RDS option group: #{@display_name}"
+    "RDS Option Group: #{@display_name}"
   end
 end

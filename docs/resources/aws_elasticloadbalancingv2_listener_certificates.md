@@ -66,4 +66,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elb_client_v2.describe_listener_certificates` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElasticLoadBalancingV2:Client:DescribeListenerCertificatesOutput` action with `Effect` set to `Allow`.
