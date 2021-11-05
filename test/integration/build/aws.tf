@@ -1755,6 +1755,11 @@ resource "aws_lb" "aws-alb" {
   security_groups    = [aws_security_group.lb_sg[0].id]
   subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
 
+ access_logs {
+    bucket  = aws_s3_bucket.bucket_public[0].id
+    prefix  = "test-lb"
+    enabled = true
+  }
   tags = {
     Environment = "inspec-aws"
   }
@@ -3171,6 +3176,17 @@ resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate" {
+  description = "Test client certificate"
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "api_gateway_stage"
+  client_certificate_id = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate.id
 }
 
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
