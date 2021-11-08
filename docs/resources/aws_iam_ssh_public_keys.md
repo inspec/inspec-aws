@@ -38,16 +38,16 @@ For additional information, see the [AWS documentation on AWS IAM AccessKey.](ht
 
 ## Examples
 
-### Ensure an user name is available
+### Ensure a user name is available
 
     describe aws_iam_ssh_public_keys do
       its('user_names') { should include 'USER_NAME' }
     end
 
-### Ensure a ssh public key id is available
+### Ensure an ssh public key id is available
 
     describe aws_iam_ssh_public_keys do
-        its('ssh_public_key_ids') { should include 'SSH_PUBLIC_KEY_ID' }
+        its('ssh_public_key_ids') { should include 'KEY_ID' }
     end
 
 ### Ensure status is 'Active'
