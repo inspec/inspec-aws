@@ -1,11 +1,11 @@
 ---
-title: About the aws_config_recorders Resource
+title: About the aws_config_recorder Resource
 platform: aws
 ---
 
-# aws\_config\_recorders
+# aws\_config\_recorder
 
-Use the `aws_config_recorders` InSpec audit resource to test properties of collection of AWS Config Service.
+Use the `aws_config_recorder` InSpec audit resource to test properties of your AWS Config Service.
 
 The AWS Config service can monitor and record changes to your AWS resource configurations.  The Aws Config Recorder is used to detect changes in resource configurations and capture these changes as configuration items.
 
@@ -13,13 +13,30 @@ As of April 2018, you are only permitted one configuration recorder per region.
 
 ## Syntax
 
-    describe aws_config_recorders do
-      its('RECORDER_NAME) { should include 'GIVEN_RECORDER_NAME' }
+An `aws_config_recorder` resource block declares the tests for a single AWS Config resource by recorder name.
+
+    describe aws_config_recorder('RECORDER_NAME') do
+      it { should exist }
     end
 
+You may also use hash syntax to pass the recorder name
+
+    describe aws_config_recorder(recorder_name: 'RECORDER_NAME') do
+      it { should exist }
+    end
+    
+Since you may only have one recorder per region, and InSpec connections are per-region, you may also omit the recorder name to obtain the one recorder (if any) that exists:
+    
+    describe aws_config_recorder do
+      it { should exist }
+    end
+    
 #### Parameters
 
-This resource does not expect any parameters.
+##### recorder\_name _(optional)_
+
+This resource accepts a single parameter, the Configuration Recorder Name. 
+This can be passed either as a string or as a `recorder_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on Configuration](https://docs.aws.amazon.com/config/latest/developerguide/aws-config-landing-page.html).
 
