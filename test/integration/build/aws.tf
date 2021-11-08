@@ -1222,6 +1222,15 @@ resource "aws_config_configuration_recorder" "config_recorder" {
   count    = var.aws_create_configuration_recorder
   name     = var.aws_configuration_recorder_name
   role_arn = aws_iam_role.role_for_config_recorder[0].arn
+  recording_group {
+    all_supported = true
+  }
+}
+
+resource "aws_config_configuration_recorder_status" "config_recorder_status" {
+  name       = aws_config_configuration_recorder.config_recorder.0.name
+  is_enabled = true
+  depends_on = [aws_config_delivery_channel.delivery_channel]
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {

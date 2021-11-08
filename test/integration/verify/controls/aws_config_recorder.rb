@@ -15,7 +15,8 @@ control 'aws-config-recorder-1.0' do
     its('recorder_name') { should eq aws_configuration_recorder_name }
     its('role_arn') { should eq aws_config_recorder_role_arn }
     its('resource_types') { should eq [] }
-    it { should_not be_recording }
+    its('last_status') { should eq 'FAILURE'}
+    it { should be_recording }
     it { should be_recording_all_resource_types }
     it { should_not be_recording_all_global_types }
   end
@@ -25,7 +26,8 @@ control 'aws-config-recorder-1.0' do
     its('recorder_name') { should eq aws_configuration_recorder_name }
     its('role_arn') { should eq aws_config_recorder_role_arn }
     its('resource_types') { should eq [] }
-    it { should_not be_recording }
+    its('last_status') { should eq 'FAILURE'}
+    it { should be_recording }
     it { should be_recording_all_resource_types }
     it { should_not be_recording_all_global_types }
   end
