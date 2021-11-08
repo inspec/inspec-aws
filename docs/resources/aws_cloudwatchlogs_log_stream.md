@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_cloudwatchlogs_log_stream` InSpec audit resource to test properties of the singular resource of AWS Logs LogStream.
 
-The AWS::Logs::LogStream resource specifies an Amazon CloudWatch Logs log stream in a specific log group. A log stream represents the sequence of events coming from an application instance or resource that you are monitoring.
+The AWS::Logs::LogStream resource specifies an Amazon CloudWatch Logs log stream in a specific log group. A log stream represents the sequence of events coming from an application instance or resource you are monitoring.
 
 ## Syntax
 
@@ -21,34 +21,36 @@ Ensure that the log stream exists.
 
 `log_group_name` and `log_stream_name_prefix` _(required)_
 
-| Property | Description |
-| --- | --- |
-| log_group_name | The name of the log group. |
-| log_stream_name_prefix | The name of the log stream. |
+| Property               | Description                                                |
+| :--------------------: | :--------------------------------------------------------: |
+| log_group_name         | The name of the log group where the log stream is created. |
+| log_stream_name_prefix | The name of the log stream.                                |
 
 For additional information, see the [AWS documentation on AWS Logs LogStream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-logstream.html).
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| log_stream_name | The name of the log stream. |
-| creation_time | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
-| first_event_timestamp | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
-| last_event_timestamp | The time of the most recent log event in the log stream in CloudWatch Logs.  |
-| last_ingestion_time | The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
-| upload_sequence_token | The sequence token. |
-| arn | The Amazon Resource Name (ARN) of the log stream. |
-| stored_bytes | The number of bytes stored. |
+| Property              | Description                                                                                               |
+| :-------------------: | :-------------------------------------------------------------------------------------------------------: |
+| log_stream_name       | The name of the log stream. The name must be unique within the log group.                                 |
+| creation_time         | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.  |
+| first_event_timestamp | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.      |
+| last_event_timestamp  | The time of the most recent log event in the log stream in CloudWatch Logs.                               |
+| last_ingestion_time   | The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.               |
+| upload_sequence_token | The sequence token.                                                                                       |
+| arn                   | The Amazon Resource Name (ARN) of the log stream.                                                         |
+| stored_bytes          | The number of bytes stored.                                                                               |
 
 ## Examples
 
-### Ensure a log stream name is available.
+### Ensure a log stream name is available
+
     describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
       its('log_stream_name') { should eq 'LOG_STREAM_NAME' }
     end
 
-### Ensure a log stream arn is available.
+### Ensure a log stream ARN is available
+
     describe aws_cloudwatchlogs_log_stream(log_group_name: "LOG_GROUP_NAME", log_stream_name_prefix: 'LOG_STREAM_NAME') do
         its('arn') { should eq 'LOG_STREAM_ARN' }
     end

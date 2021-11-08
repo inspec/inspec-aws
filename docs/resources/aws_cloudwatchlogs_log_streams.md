@@ -27,10 +27,10 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| log_stream_names | The name of the log stream. | log_stream_name |
-| creation_times | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | creation_time |
+| Property           | Description                   | Field                      |
+| :----------------: | :---------------------------: | :------------------------: |
+| log_stream_names   | The name of the log stream.   | log_stream_name            |
+| creation_times     | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | creation_time |
 | first_event_timestamps | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | first_event_timestamp |
 | last_event_timestamps | The time of the most recent log event in the log stream in CloudWatch Logs. | last_event_timestamp |
 | last_ingestion_times | The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | last_ingestion_time |
@@ -40,12 +40,14 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ## Examples
 
-### Ensure a log stream name is available.
+### Ensure a log stream name is available
+
     describe aws_cloudwatchlogs_log_streams(log_group_name: "LOG_GROUP_NAME") do
       its('log_stream_names') { should include 'LOG_STREAM_NAME' }
     end
 
-### Ensure a log stream arn is available.
+### Ensure a log stream arn is available
+
     describe aws_cloudwatchlogs_log_streams(log_group_name: "LOG_GROUP_NAME") do
         its('arns') { should include 'LOG_STREAM_ARN' }
     end
