@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.22 -->
+<!-- latest_release 1.74.23 -->
+## [v1.74.23](https://github.com/inspec/inspec-aws/tree/v1.74.23) (2021-11-08)
+
+#### Merged Pull Requests
+- Fix release notes dates file [#752](https://github.com/inspec/inspec-aws/pull/752) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.22](https://github.com/inspec/inspec-aws/tree/v1.74.22) (2021-11-08)
 
 #### Merged Pull Requests
 - update release notes 2021-11-08 [#751](https://github.com/inspec/inspec-aws/pull/751) ([kagarmoe](https://github.com/kagarmoe))
-<!-- latest_release -->
 
 ## [v1.74.21](https://github.com/inspec/inspec-aws/tree/v1.74.21) (2021-11-05)
 
