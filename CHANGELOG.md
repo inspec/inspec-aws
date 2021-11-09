@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.23 -->
+<!-- latest_release 1.74.24 -->
+## [v1.74.24](https://github.com/inspec/inspec-aws/tree/v1.74.24) (2021-11-09)
+
+#### Merged Pull Requests
+- soumyo/aws_iam_ssh_public_key [#695](https://github.com/inspec/inspec-aws/pull/695) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.23](https://github.com/inspec/inspec-aws/tree/v1.74.23) (2021-11-08)
 
 #### Merged Pull Requests
 - Fix release notes dates file [#752](https://github.com/inspec/inspec-aws/pull/752) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.22](https://github.com/inspec/inspec-aws/tree/v1.74.22) (2021-11-08)
 
