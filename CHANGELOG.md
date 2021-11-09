@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.24 -->
+<!-- latest_release 1.74.25 -->
+## [v1.74.25](https://github.com/inspec/inspec-aws/tree/v1.74.25) (2021-11-09)
+
+#### Merged Pull Requests
+- Nirbhay/AWSCloudWatchLogsStreams [#684](https://github.com/inspec/inspec-aws/pull/684) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.24](https://github.com/inspec/inspec-aws/tree/v1.74.24) (2021-11-09)
 
 #### Merged Pull Requests
 - soumyo/aws_iam_ssh_public_key [#695](https://github.com/inspec/inspec-aws/pull/695) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.23](https://github.com/inspec/inspec-aws/tree/v1.74.23) (2021-11-08)
 
