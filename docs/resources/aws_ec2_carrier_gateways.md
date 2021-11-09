@@ -19,26 +19,28 @@ Ensure that the carrier gateway exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Carrier Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-carriergateway.html).
+See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-carriergateway.html) for additional information.
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| carrier_gateway_ids | The ID of the carrier gateway. | carrier_gateway_id |
-| vpc_ids | The ID of the VPC associated with the carrier gateway. | vpc_id |
-| states | The state of the carrier gateway. | state |
-| owner_ids | The Amazon Web Services account ID of the owner of the carrier gateway. | owner_id |
-| tags | The tags assigned to the carrier gateway. | tags |
+| Property             | Description                                                                    | Field              |
+| :------------------: | :----------------------------------------------------------------------------: | :----------------- |
+| carrier_gateway_ids  | The ID of the carrier gateway.                                                 | carrier_gateway_id |
+| vpc_ids              | The ID of the VPC (Virtual Private Cloud) associated with the carrier gateway. | vpc_id             |
+| states               | The state of the carrier gateway.                                              | state              |
+| owner_ids            | The Amazon Web Services account ID of the owner of the carrier gateway.        | owner_id           |
+| tags                 | The tags assigned to the carrier gateway.                                      | tags               |
 
 ## Examples
 
-### Ensure a carrier gateway id is available.
+### Ensure a carrier gateway ID is available
+
     describe aws_ec2_carrier_gateways do
-      its('carrier_gateway_ids') { should include 'CARRIER_GATEWAY_ID' }
+      its('carrier_gateway_ids') { should include 'GATEWAY_ID' }
     end
 
-### Ensure that the state is `available`.
+### Ensure that the state is `available`
+
     describe aws_ec2_carrier_gateways do
         its('states') { should include 'available' }
     end
