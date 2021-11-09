@@ -4165,8 +4165,6 @@ resource "aws_api_gateway_base_path_mapping" "aws_api_gateway_base_path_mapping_
   domain_name = "test.eng.chefdemo.net"
 }
 
-
-
 resource "aws_api_gateway_account" "aws_api_gateway_account_test1" {
   cloudwatch_role_arn = aws_iam_role.aws_iam_role_api_gateway_account_test1.arn
 }
@@ -4572,3 +4570,15 @@ resource "aws_signer_signing_profile" "aws_signer_signing_profile_test" {
     tag2 = "value2"
   }
 }
+
+## AWS cloudwatch log stream
+
+resource "aws_cloudwatch_log_group" "for_stream" {
+  name = "Yada"
+}
+
+resource "aws_cloudwatch_log_stream" "for_test" {
+  name           = "SampleLogStream1234"
+  log_group_name = aws_cloudwatch_log_group.for_stream.name
+}
+

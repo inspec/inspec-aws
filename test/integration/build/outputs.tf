@@ -989,7 +989,6 @@ output "target_vpc_subnet_id" {
   value = aws_ec2_client_vpn_route.test-route.id
 }
 
-
 output "aws_cloudwatch_anomaly_detector_namespace" {
   value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.namespace
 }
@@ -1025,10 +1024,23 @@ output "aws_signer_signing_profile_version" {
 output "aws_signer_signing_profile_version_arn" {
   value = aws_signer_signing_profile.aws_signer_signing_profile_test.version_arn
 }
+
 output "configuration_id" {
   value = aws_mq_configuration.for_broker.id
 }
 
 output "configuration_arn" {
   value = aws_mq_configuration.for_broker.arn
+}
+
+output "aws_cloudwatch_log_stream_name" {
+  value = aws_cloudwatch_log_stream.for_test.name
+}
+
+output "aws_cloudwatch_log_group_name" {
+  value = aws_cloudwatch_log_group.for_stream.name
+}
+
+output "aws_cloudwatch_log_stream_arn" {
+  value = aws_cloudwatch_log_stream.for_test.arn
 }
