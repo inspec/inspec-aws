@@ -1044,3 +1044,23 @@ output "aws_cloudwatch_log_group_name" {
 output "aws_cloudwatch_log_stream_arn" {
   value = aws_cloudwatch_log_stream.for_test.arn
 }
+
+output "aws_ses_template_id" {
+  value = aws_ses_template.aws_ses_template_test1.id
+}
+
+output "aws_ses_template_name" {
+  value = aws_ses_template.aws_ses_template_test1.name
+}
+
+output "aws_ses_template_subject" {
+  value = aws_ses_template.aws_ses_template_test1.subject
+}
+
+output "aws_ses_template_html" {
+  value = aws_ses_template.aws_ses_template_test1.html
+}
+
+output "aws_ses_template_text" {
+  value = aws_ses_template.aws_ses_template_test1.text
+}

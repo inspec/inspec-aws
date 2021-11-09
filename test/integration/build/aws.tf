@@ -4582,3 +4582,10 @@ resource "aws_cloudwatch_log_stream" "for_test" {
   log_group_name = aws_cloudwatch_log_group.for_stream.name
 }
 
+//AWS::SES::Template
+resource "aws_ses_template" "aws_ses_template_test1" {
+  name    = "MyTemplate"
+  subject = "Greetings"
+  html    = "Hello"
+  text    = "Hello"
+}
