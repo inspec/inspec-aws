@@ -1,9 +1,19 @@
-<!-- latest_release 1.74.21 -->
+<!-- latest_release 1.74.23 -->
+## [v1.74.23](https://github.com/inspec/inspec-aws/tree/v1.74.23) (2021-11-08)
+
+#### Merged Pull Requests
+- Fix release notes dates file [#752](https://github.com/inspec/inspec-aws/pull/752) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
+## [v1.74.22](https://github.com/inspec/inspec-aws/tree/v1.74.22) (2021-11-08)
+
+#### Merged Pull Requests
+- update release notes 2021-11-08 [#751](https://github.com/inspec/inspec-aws/pull/751) ([kagarmoe](https://github.com/kagarmoe))
+
 ## [v1.74.21](https://github.com/inspec/inspec-aws/tree/v1.74.21) (2021-11-05)
 
 #### Merged Pull Requests
 - soumyo/Adding the Missing Docs in the Readme.md [#631](https://github.com/inspec/inspec-aws/pull/631) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.20](https://github.com/inspec/inspec-aws/tree/v1.74.20) (2021-11-05)
 
