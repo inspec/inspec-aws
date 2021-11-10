@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.25 -->
+<!-- latest_release 1.74.26 -->
+## [v1.74.26](https://github.com/inspec/inspec-aws/tree/v1.74.26) (2021-11-10)
+
+#### Merged Pull Requests
+- Nirbhay/EC2-Carrier-Gateway [#686](https://github.com/inspec/inspec-aws/pull/686) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.25](https://github.com/inspec/inspec-aws/tree/v1.74.25) (2021-11-09)
 
 #### Merged Pull Requests
 - Nirbhay/AWSCloudWatchLogsStreams [#684](https://github.com/inspec/inspec-aws/pull/684) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.24](https://github.com/inspec/inspec-aws/tree/v1.74.24) (2021-11-09)
 
