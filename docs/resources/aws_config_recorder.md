@@ -69,7 +69,7 @@ The role is used to grant permissions to S3 Buckets, SNS topics and to get confi
       its('resource_types') { should include 'AWS::EC2::EIP' }
     end
 
-##### Test recorder's last status
+##### Test the recorder's last status.
     describe aws_config_recorder do
       its('last_status') { should eq 'SUCCESS' }
     end
