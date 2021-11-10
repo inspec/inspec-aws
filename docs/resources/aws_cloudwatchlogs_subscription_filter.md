@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS Logs SubscriptionF
 | log_group_name      | The name of the log group.                                                                 |
 | filter_pattern      | A symbolic description of how CloudWatch Logs should interpret the data in each log event. |
 | destination_arn     | The Amazon Resource Name (ARN) of the destination.                                         |
-| role_arn            | The ARN role type.                                                                         |
+| role_arn            | The ARN of the IAM role.                                                                         |
 | distribution        | The method used to distribute log data to the destination, which can be either random or grouped by log stream. |
 | creation_time       | The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
 
