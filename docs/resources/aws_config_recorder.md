@@ -38,7 +38,7 @@ Since you may only have one recorder per region, and InSpec connections are per-
 This resource accepts a single parameter, the Configuration Recorder Name. 
 This can be passed either as a string or as a `recorder_name: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Configuration](https://docs.aws.amazon.com/config/latest/developerguide/aws-config-landing-page.html).
+See also the [AWS documentation on AWS Config Configuration Recorder](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html).
 
 
 ## Properties
@@ -69,7 +69,7 @@ The role is used to grant permissions to S3 Buckets, SNS topics and to get confi
       its('resource_types') { should include 'AWS::EC2::EIP' }
     end
 
-##### Test recorder's last status
+##### Test the recorder's last status.
     describe aws_config_recorder do
       its('last_status') { should eq 'SUCCESS' }
     end
