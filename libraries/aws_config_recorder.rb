@@ -11,7 +11,6 @@ class AwsConfigurationRecorder < AwsResourceBase
       it { should be_recording }
       it { should be_all_supported }
       it { should have_include_global_resource_types }
-
       its('last_status') { should eq 'Pending' }
     end
   "
@@ -64,8 +63,7 @@ class AwsConfigurationRecorder < AwsResourceBase
 
   def recording?
     return false unless exists?
-    @recording = @status[:recording]
-    @recording
+    @status[:recording]
   end
 
   def to_s

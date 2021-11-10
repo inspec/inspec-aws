@@ -14,23 +14,23 @@ As of April 2018, you are only permitted one configuration recorder per region.
 ## Syntax
 
 An `aws_config_recorder` resource block declares the tests for a single AWS Config resource by recorder name.
-
-    describe aws_config_recorder('RECORDER_NAME') do
-      it { should exist }
-    end
-
+```ruby
+describe aws_config_recorder('RECORDER_NAME') do
+  it { should exist }
+end
+```
 You may also use hash syntax to pass the recorder name
-
-    describe aws_config_recorder(recorder_name: 'RECORDER_NAME') do
-      it { should exist }
-    end
-    
+```ruby
+describe aws_config_recorder(recorder_name: 'RECORDER_NAME') do
+  it { should exist }
+end
+```
 Since you may only have one recorder per region, and InSpec connections are per-region, you may also omit the recorder name to obtain the one recorder (if any) that exists:
-    
-    describe aws_config_recorder do
-      it { should exist }
-    end
-    
+```ruby    
+describe aws_config_recorder do
+  it { should exist }
+end
+```    
 #### Parameters
 
 ##### recorder\_name _(optional)_
@@ -53,44 +53,48 @@ See also the [AWS documentation on AWS Config Configuration Recorder](https://do
 ## Examples
 
 ##### Test if the recorder is active and recording
-    describe aws_config_recorder do
-      it { should be_recording }
-    end
-
+```ruby 
+describe aws_config_recorder do
+  it { should be_recording }
+end
+```
 ##### Ensure the role\_arn is correct for the recorder
 The role is used to grant permissions to S3 Buckets, SNS topics and to get configuration details for supported AWS resources.
-    describe aws_config_recorder do
-      its('role_arn') { should eq 'arn:aws:iam::721741954427:role/My_Recorder' }
-    end
-
+```ruby 
+describe aws_config_recorder do
+  its('role_arn') { should eq 'arn:aws:iam::721741954427:role/My_Recorder' }
+end
+```
 ##### Test the recorder is monitoring changes to the correct resources.
-    describe aws_config_recorder do
-      its('resource_types') { should include 'AWS::EC2::CustomerGateway' }
-      its('resource_types') { should include 'AWS::EC2::EIP' }
-    end
-
+```ruby 
+describe aws_config_recorder do
+  its('resource_types') { should include 'AWS::EC2::CustomerGateway' }
+  its('resource_types') { should include 'AWS::EC2::EIP' }
+end
+```
 ##### Test the recorder's last status.
-    describe aws_config_recorder do
-      its('last_status') { should eq 'SUCCESS' }
-    end
-
+```ruby 
+describe aws_config_recorder do
+  its('last_status') { should eq 'SUCCESS' }
+end
+```
 ## Matchers
 
 #### be\_recording
 Ensure the recorder is active
-
-      it { should be_recording }
-
+```ruby 
+it { should be_recording }
+```
 #### be\_recording\_all\_resource\_types
 Indicates if the ConfigurationRecorder will record changes for all resources, regardless of type. If this is true, resource\_types is ignored.
-
-      it { should be_recording_all_resource_types }
-
+```ruby 
+it { should be_recording_all_resource_types }
+```
 #### be\_recording\_all\_global\_types
 Indicates whether the ConfigurationRecorder will record changes for global resource types (such as [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)s).
-
-      it { should be_recording_all_global_types }
-
+```ruby 
+it { should be_recording_all_global_types }
+```
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ConfigService:Client:DescribeConfigurationRecordersResponse` action with Effect set to Allow.
