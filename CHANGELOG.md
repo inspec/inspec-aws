@@ -1,9 +1,39 @@
-<!-- latest_release 1.74.21 -->
+<!-- latest_release 1.74.27 -->
+## [v1.74.27](https://github.com/inspec/inspec-aws/tree/v1.74.27) (2021-11-10)
+
+#### Merged Pull Requests
+- Nirbhay/AWS_Logs_Subscription_Filter [#685](https://github.com/inspec/inspec-aws/pull/685) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.74.26](https://github.com/inspec/inspec-aws/tree/v1.74.26) (2021-11-10)
+
+#### Merged Pull Requests
+- Nirbhay/EC2-Carrier-Gateway [#686](https://github.com/inspec/inspec-aws/pull/686) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.25](https://github.com/inspec/inspec-aws/tree/v1.74.25) (2021-11-09)
+
+#### Merged Pull Requests
+- Nirbhay/AWSCloudWatchLogsStreams [#684](https://github.com/inspec/inspec-aws/pull/684) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.24](https://github.com/inspec/inspec-aws/tree/v1.74.24) (2021-11-09)
+
+#### Merged Pull Requests
+- soumyo/aws_iam_ssh_public_key [#695](https://github.com/inspec/inspec-aws/pull/695) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.23](https://github.com/inspec/inspec-aws/tree/v1.74.23) (2021-11-08)
+
+#### Merged Pull Requests
+- Fix release notes dates file [#752](https://github.com/inspec/inspec-aws/pull/752) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.22](https://github.com/inspec/inspec-aws/tree/v1.74.22) (2021-11-08)
+
+#### Merged Pull Requests
+- update release notes 2021-11-08 [#751](https://github.com/inspec/inspec-aws/pull/751) ([kagarmoe](https://github.com/kagarmoe))
+
 ## [v1.74.21](https://github.com/inspec/inspec-aws/tree/v1.74.21) (2021-11-05)
 
 #### Merged Pull Requests
 - soumyo/Adding the Missing Docs in the Readme.md [#631](https://github.com/inspec/inspec-aws/pull/631) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.20](https://github.com/inspec/inspec-aws/tree/v1.74.20) (2021-11-05)
 
