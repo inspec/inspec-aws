@@ -4591,3 +4591,132 @@ resource "aws_cloudwatch_log_stream" "for_test" {
   log_group_name = aws_cloudwatch_log_group.for_stream.name
 }
 
+######################################
+# EMR Security Configuration
+######################################
+resource "aws_kms_key" "a" {}
+
+resource "aws_kms_grant" "a" {
+  name              = "my-grant"
+  key_id            = aws_kms_key.a.key_id
+  grantee_principal = aws_iam_role.emr_instance_iam_role.arn
+  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
+}
+
+resource "aws_emr_security_configuration" "emr_security_configuration" {
+  name = "emr_security_configuration"
+
+  configuration = <<EOF
+{
+  "EncryptionConfiguration": {
+    "EnableInTransitEncryption": false,
+    "EnableAtRestEncryption": true,
+    "AtRestEncryptionConfiguration": {
+      "S3EncryptionConfiguration": {
+        "EncryptionMode": "SSE-S3"
+      },
+      "LocalDiskEncryptionConfiguration": {
+        "EncryptionKeyProviderType": "AwsKms",
+        "AwsKmsKey": "${aws_kms_key.a.arn}"
+      }
+    }
+  }
+}
+EOF
+}
+######################################
+# EC2 instance profile
+######################################
+resource "aws_iam_instance_profile" "emr_ec2_instance_profile" {
+  name = "emr-ec2-instance-profile"
+  role = aws_iam_role.emr_instance_iam_role.name
+}
+
+resource "aws_iam_role" "emr_instance_iam_role" {
+  name = "emr-instance-${var.aws_iam_role_generic_name}"
+  path = "/"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action =  "sts:AssumeRole"
+        Effect = "Allow",
+        Principal = {
+          Service =  "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "ec2-read-only-policy-attachment" {
+    role = "${aws_iam_role.emr_instance_iam_role.name}"
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role"
+}
+######################################
+# EMR role
+######################################
+resource "aws_iam_role" "emr_iam_role" {
+  name = "emr-iam-${var.aws_iam_role_generic_name}"
+  path = "/"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action =  "sts:AssumeRole"
+        Sid = ""
+        Effect = "Allow"
+        Principal = {
+          Service =  "elasticmapreduce.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "emr-role-policy-attachment" {
+    role = "${aws_iam_role.emr_iam_role.name}"
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceRole"
+}
+
+######################################
+# EMR Cluster Create
+######################################
+resource "aws_emr_cluster" "emr_cluster" {
+  name          = var.aws_emr_cluster_name
+  release_label = "emr-6.4.0"
+  applications  = ["Spark"]
+
+  security_configuration = aws_emr_security_configuration.emr_security_configuration.name
+
+   ec2_attributes {
+    instance_profile = aws_iam_instance_profile.emr_ec2_instance_profile.arn
+  }
+
+   master_instance_group {
+    instance_type = "m4.large"
+  }
+
+  core_instance_group {
+    instance_type  = "c4.large"
+    instance_count = 1
+
+    ebs_config {
+      size = "40"
+      type = "gp2"
+      volumes_per_instance = 1
+    }
+
+    bid_price = "0.30"
+  }
+
+  ebs_root_volume_size = 50
+
+  service_role = aws_iam_role.emr_iam_role.arn
+  tags = {
+      "X-Contact" = "varun.sharma@progress.com"
+      "X-Dept" = "PS"
+    }
+}
