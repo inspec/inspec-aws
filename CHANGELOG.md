@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.27 -->
+<!-- latest_release 1.74.28 -->
+## [v1.74.28](https://github.com/inspec/inspec-aws/tree/v1.74.28) (2021-11-11)
+
+#### Merged Pull Requests
+- Added support for checking last_status for a config recorder [#750](https://github.com/inspec/inspec-aws/pull/750) ([varunsharma5](https://github.com/varunsharma5))
+<!-- latest_release -->
+
 ## [v1.74.27](https://github.com/inspec/inspec-aws/tree/v1.74.27) (2021-11-10)
 
 #### Merged Pull Requests
 - Nirbhay/AWS_Logs_Subscription_Filter [#685](https://github.com/inspec/inspec-aws/pull/685) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.26](https://github.com/inspec/inspec-aws/tree/v1.74.26) (2021-11-10)
 
