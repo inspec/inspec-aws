@@ -4715,8 +4715,4 @@ resource "aws_emr_cluster" "emr_cluster" {
   ebs_root_volume_size = 50
 
   service_role = aws_iam_role.emr_iam_role.arn
-  tags = {
-      "X-Contact" = "varun.sharma@progress.com"
-      "X-Dept" = "PS"
-    }
 }
