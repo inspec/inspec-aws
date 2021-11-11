@@ -1,9 +1,9 @@
-aws_lambda_layer_arn = attribute(:aws_lambda_layer_arn, value: 'arn:aws:lambda:us-west-2:112758395563:layer:lambda_layer_name')
-aws_lambda_layer_version_layer_arn = attribute(:aws_lambda_layer_version_layer_arn, value: 'arn:aws:lambda:us-west-2:112758395563:layer:lambda_layer_name:4')
+aws_lambda_layer_arn = attribute(:aws_lambda_layer_arn, value: '')
+aws_lambda_layer_version_layer_arn = attribute(:aws_lambda_layer_version_layer_arn, value: '')
 aws_lambda_code_signing_config_description = attribute(:aws_lambda_code_signing_config_description, value: '')
-aws_lambda_layer_version_created_date = attribute(:aws_lambda_layer_version_created_date, value: '2021-11-10 08:09:33.333000000 +0000')
-aws_lambda_layer_version_source_code_size = attribute(:aws_lambda_layer_version_source_code_size, value: 422)
-aws_lambda_layer_version = attribute(:aws_lambda_layer_version, value: 4)
+aws_lambda_layer_version_created_date = attribute(:aws_lambda_layer_version_created_date, value: '')
+aws_lambda_layer_version_source_code_size = attribute(:aws_lambda_layer_version_source_code_size, value: '')
+aws_lambda_layer_version = attribute(:aws_lambda_layer_version, value: '')
 
 control 'aws-lambda-version-1.0' do
   impact 1.0

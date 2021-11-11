@@ -1,7 +1,7 @@
-aws_lambda_code_signing_config_id = attribute(:aws_lambda_code_signing_config_id, value: 'arn:aws:lambda:us-west-2:112758395563:code-signing-config:csc-019e0535d6038f697')
-aws_lambda_code_signing_config_arn = attribute(:aws_lambda_code_signing_config_arn, value: 'arn:aws:lambda:us-west-2:112758395563:code-signing-config:csc-019e0535d6038f697')
-aws_lambda_code_signing_config_description = attribute(:aws_lambda_code_signing_config_description, value: 'My awesome code signing config.')
-aws_lambda_code_signing_config_last_modified = attribute(:aws_lambda_code_signing_config_last_modified, value: '2021-11-10T08:07:11.653929Z')
+aws_lambda_code_signing_config_id = attribute(:aws_lambda_code_signing_config_id, value: '')
+aws_lambda_code_signing_config_arn = attribute(:aws_lambda_code_signing_config_arn, value: '')
+aws_lambda_code_signing_config_description = attribute(:aws_lambda_code_signing_config_description, value: '')
+aws_lambda_code_signing_config_last_modified = attribute(:aws_lambda_code_signing_config_last_modified, value: '')
 
 control 'aws-lambda-alias-1.0' do
   impact 1.0
