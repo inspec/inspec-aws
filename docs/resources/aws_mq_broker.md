@@ -1,5 +1,5 @@
 ---
-title: About the aws_mq_broker resource
+title: About the aws_mq_broker Resource
 platform: aws
 ---
 
