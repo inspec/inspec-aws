@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.28 -->
+<!-- latest_release 1.74.29 -->
+## [v1.74.29](https://github.com/inspec/inspec-aws/tree/v1.74.29) (2021-11-11)
+
+#### Merged Pull Requests
+- Minor docs fixes [#759](https://github.com/inspec/inspec-aws/pull/759) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.28](https://github.com/inspec/inspec-aws/tree/v1.74.28) (2021-11-11)
 
 #### Merged Pull Requests
 - Added support for checking last_status for a config recorder [#750](https://github.com/inspec/inspec-aws/pull/750) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.74.27](https://github.com/inspec/inspec-aws/tree/v1.74.27) (2021-11-10)
 
