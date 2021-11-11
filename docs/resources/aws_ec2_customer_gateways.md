@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_customer_gateways
 
-Use the `aws_ec2_customer_gateways` InSpec audit resource to test properties of the plural resource of AWS EC2 Customer Gateway.
+Use the `aws_ec2_customer_gateways` InSpec audit resource to test properties of the plural resource of AWS EC2 customer gateway.
 
-The AWS::EC2::CustomerGateway specifies a customer gateway.
+The `AWS::EC2::CustomerGateway` resource type specifies a customer gateway.
 
 ## Syntax
 
-Ensure that the Customer Gateway exists.
+Ensure that the customer gateway exists.
 
     describe aws_ec2_customer_gateways do
       it { should exist }
@@ -19,11 +19,11 @@ Ensure that the Customer Gateway exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Customer Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-customer-gateway.html).
+For additional information, see the [AWS documentation on AWS EC2 customer gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-customer-gateway.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | bgp_asns | The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). | bgp_asn |
 | customer_gateway_ids | The ID of the customer gateway. | customer_gateway_id |
@@ -36,12 +36,14 @@ For additional information, see the [AWS documentation on AWS EC2 Customer Gatew
 
 ## Examples
 
-### Ensure a Customer Gateway Id is available.
+### Ensure a customer gateway ID is available.
+
     describe aws_ec2_customer_gateways do
       its('customer_gateway_ids') { should include 'CUSTOMER_GATEWAY_ID' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_ec2_customer_gateways do
         its('states') { should include 'available' }
     end
