@@ -7,11 +7,11 @@ platform: aws
 
 Use the `aws_ec2_capacity_reservations` InSpec audit resource to test properties of the plural resource of AWS EC2 Capacity Reservation.
 
-The AWS::EC2::CapacityReservation creates a new Capacity Reservation with the specified attributes.
+The `AWS::EC2::CapacityReservation` resource type creates a new Capacity Reservation with the specified attributes.
 
 ## Syntax
 
-Ensure that the Capacity Reservation Id exists.
+Ensure that the Capacity Reservation ID exists.
 
     describe aws_ec2_capacity_reservations do
       it { should exist }
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS EC2 Capacity Reser
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | capacity_reservation_ids | The ID of the Capacity Reservation. | capacity_reservation_id |
 | owner_ids | The ID of the Amazon Web Services account that owns the Capacity Reservation. | owner_id |
@@ -48,12 +48,14 @@ For additional information, see the [AWS documentation on AWS EC2 Capacity Reser
 
 ## Examples
 
-### Ensure a Capacity Reservation Id is available.
+### Ensure a Capacity Reservation ID is available.
+
     describe aws_ec2_capacity_reservations do
       its('capacity_reservation_ids') { should include 'CAPACITY_RESERVATION_ID' }
     end
 
 ### Ensure that the state is `active`.
+
     describe aws_ec2_capacity_reservations do
         its('states') { should include 'active' }
     end
