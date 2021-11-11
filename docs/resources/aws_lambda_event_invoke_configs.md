@@ -37,7 +37,7 @@ For additional information, see the [AWS documentation on AWS Lambda EventInvoke
 ## Examples
 
 ### Ensure an arn is available.
-    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
+    describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do
       its('function_arns') { should include 'FUNCTION_ARN' }
     end
 
