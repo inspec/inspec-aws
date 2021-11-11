@@ -7,7 +7,16 @@ class AWSCloudFormationTemplates < AwsResourceBase
   desc 'Returns information about a new or existing template.'
 
   example "
-    describe aws_cloudformation_templates do
+    describe aws_cloudformation_templates(stack_name: 'STACK_NAME') do
+      it { should exist }
+    end
+    describe aws_cloudformation_templates(stack_set_name: 'STACK_SET_NAME') do
+      it { should exist }
+    end
+    describe aws_cloudformation_templates(template_url: 'TEMPLATE_URL') do
+      it { should exist }
+    end
+    describe aws_cloudformation_templates(template_body: 'TEMPLATE_BODY') do
       it { should exist }
     end
   "
