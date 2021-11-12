@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.30 -->
+<!-- latest_release 1.74.31 -->
+## [v1.74.31](https://github.com/inspec/inspec-aws/tree/v1.74.31) (2021-11-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_customer_gateway [#664](https://github.com/inspec/inspec-aws/pull/664) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.30](https://github.com/inspec/inspec-aws/tree/v1.74.30) (2021-11-12)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_capacity_reservation [#663](https://github.com/inspec/inspec-aws/pull/663) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.29](https://github.com/inspec/inspec-aws/tree/v1.74.29) (2021-11-11)
 
