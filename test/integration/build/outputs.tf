@@ -782,6 +782,14 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+output "aws_customer_gateway_id" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.id
+}
+
+output "aws_customer_gateway_arn" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.arn
+}
+
 output "aws_ec2_capacity_reservation_id" {
   value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.id
 }

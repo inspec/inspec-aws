@@ -1444,7 +1444,6 @@ resource "aws_iam_policy" "aws_policy_1" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
@@ -1630,7 +1629,6 @@ resource "aws_iam_role" "aws_role_generic" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_role_policy" "generic_policy" {
@@ -1652,7 +1650,6 @@ resource "aws_iam_role_policy" "generic_policy" {
   ]
 }
 EOF
-
 }
 
 data "aws_ami" "aws_vm_config" {
@@ -1797,7 +1794,6 @@ resource "aws_cloudformation_stack" "ecr" {
   }
 }
 STACK
-
 }
 
 resource "aws_route53_zone" "test_zone" {
@@ -1892,7 +1888,6 @@ resource "aws_iam_role" "lambda_test_role" {
   ]
 }
 EOF
-
 }
 
 data "aws_iam_policy" "lambda_execute" {
@@ -2225,6 +2220,7 @@ resource "aws_ecs_service" "bar" {
   task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
   scheduling_strategy = "DAEMON"
 }
+
 resource "aws_ecs_cluster" "for_ecs_service" {
   name = var.aws_cluster_name
 
@@ -2485,7 +2481,6 @@ resource "aws_ecs_cluster" "for_ecs_service" {
     value = "enabled"
   }
 }
-
 
 resource "aws_dms_certificate" "aws_dms_certificate_test" {
   certificate_id = "test1"
@@ -4591,4 +4586,15 @@ resource "aws_ec2_capacity_reservation" "aws_ec2_capacity_reservation_test1" {
   instance_platform = "Linux/UNIX"
   availability_zone = "us-east-2a"
   instance_count    = 1
+}
+
+//AWS::EC2::CustomerGateway
+resource "aws_customer_gateway" "aws_customer_gateway_test1" {
+  bgp_asn    = 65000
+  ip_address = "172.83.124.10"
+  type       = "ipsec.1"
+
+  tags = {
+    Name = "main-customer-gateway"
+  }
 }
