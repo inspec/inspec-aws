@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.29 -->
+<!-- latest_release 1.74.30 -->
+## [v1.74.30](https://github.com/inspec/inspec-aws/tree/v1.74.30) (2021-11-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_capacity_reservation [#663](https://github.com/inspec/inspec-aws/pull/663) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.29](https://github.com/inspec/inspec-aws/tree/v1.74.29) (2021-11-11)
 
 #### Merged Pull Requests
 - Minor docs fixes [#759](https://github.com/inspec/inspec-aws/pull/759) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.28](https://github.com/inspec/inspec-aws/tree/v1.74.28) (2021-11-11)
 
