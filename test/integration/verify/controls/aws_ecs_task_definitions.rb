@@ -1,4 +1,5 @@
 control 'aws-ec2-task-definitions1-1.0' do
+
     impact 1.0
     title 'Ensure EC2 Task Definitions has the correct properties.'
   
@@ -8,6 +9,7 @@ control 'aws-ec2-task-definitions1-1.0' do
 end
 
 control 'aws-ec2-task-definitions2-1.0' do
+
     impact 1.0
     title 'Ensure EC2 Task Definitions has the correct properties.'
   
@@ -18,6 +20,7 @@ end
 
 
 control 'aws-ec2-task-definitions3-1.0' do
+
     impact 1.0
     title 'Ensure EC2 Task Definitions has the correct properties.'
   

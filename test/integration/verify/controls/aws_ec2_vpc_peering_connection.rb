@@ -3,6 +3,7 @@ aws_vpc_peering_test1_id = attribute("aws_vpc_peering_test1_id", value: "", desc
 aws_vpc_peering_test2_id = attribute("aws_vpc_peering_test2_id", value: "", description: "")
 
 control 'aws-ec2-vpc-peering-connection-1.0' do
+
   impact 1.0
   title 'Test the properties of the aws ec2 vpc peer connection.'
 

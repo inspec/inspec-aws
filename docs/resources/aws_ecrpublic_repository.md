@@ -61,6 +61,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecrpublic:DescribeRepositories` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ECRPublic:Client:DescribeRepositoriesResponse` action set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ECR Public](https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
