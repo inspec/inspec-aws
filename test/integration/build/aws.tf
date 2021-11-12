@@ -4304,7 +4304,6 @@ resource "aws_lambda_function" "aws_lambda_function_api_gateway_authorizer_test1
   role          = aws_iam_role.aws_iam_role_api_gateway_authorizer_lambda_test1.arn
   handler       = "exports.test"
   runtime       = "nodejs12.x"
-
   source_code_hash = filebase64sha256("lambda.zip")
 }
 
@@ -4420,7 +4419,6 @@ resource "aws_cloudfront_origin_request_policy" "test-origin-policy" {
   }
 }
 
-
 resource "aws_cloudwatch_dashboard" "main" {
   dashboard_name = "my-dashboard"
 
@@ -4512,10 +4510,6 @@ resource "aws_ec2_client_vpn_endpoint" "test-endpoint" {
   }
 }
 
-
-
-
-
 //CloudWatch Anomaly Detector
 
 resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_anomaly_detector_test1" {
@@ -4591,3 +4585,10 @@ resource "aws_cloudwatch_log_stream" "for_test" {
   log_group_name = aws_cloudwatch_log_group.for_stream.name
 }
 
+//AWS::EC2::CapacityReservation
+resource "aws_ec2_capacity_reservation" "aws_ec2_capacity_reservation_test1" {
+  instance_type     = "t2.micro"
+  instance_platform = "Linux/UNIX"
+  availability_zone = "us-east-2a"
+  instance_count    = 1
+}

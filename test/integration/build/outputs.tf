@@ -782,6 +782,30 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+output "aws_ec2_capacity_reservation_id" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.id
+}
+
+output "aws_ec2_capacity_reservation_instance_type" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_type
+}
+
+output "aws_ec2_capacity_reservation_instance_platform" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_platform
+}
+
+output "aws_ec2_capacity_reservation_availability_zone" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.availability_zone
+}
+
+output "aws_ec2_capacity_reservation_instance_count" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_count
+}
+
+output "aws_ec2_capacity_reservation_instance_arn" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.arn
+}
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
