@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_emr\_clusters
 
-Use the `aws_emr_clusters` resource to test the configuration of a collection of AWS Elastic MapReduce Service.
+Use the `aws_emr_clusters` resource to test the configuration of a collection of clusters of AWS Elastic MapReduce Service.
 
 ## Syntax
 ```ruby
