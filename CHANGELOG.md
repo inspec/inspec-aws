@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.31 -->
+<!-- latest_release 1.74.32 -->
+## [v1.74.32](https://github.com/inspec/inspec-aws/tree/v1.74.32) (2021-11-15)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudformation_template [#753](https://github.com/inspec/inspec-aws/pull/753) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.31](https://github.com/inspec/inspec-aws/tree/v1.74.31) (2021-11-12)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_customer_gateway [#664](https://github.com/inspec/inspec-aws/pull/664) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.30](https://github.com/inspec/inspec-aws/tree/v1.74.30) (2021-11-12)
 
