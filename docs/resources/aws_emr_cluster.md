@@ -27,7 +27,7 @@ end
 This resource requires a single parameter, the EMR Cluster ID.
 This can be passed either as a string or as a `cluster_id: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on EMR Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html).
+See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
 
 ## Properties
 
