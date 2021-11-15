@@ -10,7 +10,7 @@ Use the `aws_emr_clusters` resource to test the configuration of a collection of
 ## Syntax
 ```ruby
 describe aws_emr_clusters do
-  its('CLUSTER_IDS') { should include 'GIVEN_CLUSTER_ID'}
+  its('cluster_ids') { should include 'CLUSTER_ID'}
 end
 ```
 #### Parameters
