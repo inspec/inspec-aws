@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.32 -->
+<!-- latest_release 1.74.33 -->
+## [v1.74.33](https://github.com/inspec/inspec-aws/tree/v1.74.33) (2021-11-15)
+
+#### Merged Pull Requests
+- minor updates to InSpec AWS Resources that were merged - 684, 685, 686, and 695. [#763](https://github.com/inspec/inspec-aws/pull/763) ([dkumaras](https://github.com/dkumaras))
+<!-- latest_release -->
+
 ## [v1.74.32](https://github.com/inspec/inspec-aws/tree/v1.74.32) (2021-11-15)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudformation_template [#753](https://github.com/inspec/inspec-aws/pull/753) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.31](https://github.com/inspec/inspec-aws/tree/v1.74.31) (2021-11-12)
 
