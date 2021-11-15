@@ -11,7 +11,7 @@ Use the `aws_emr_cluster` InSpec audit resource to test properties of the singul
 
 An `aws_emr_cluster` resource block declares the tests for a single AWS EMR Cluster by cluster ID.
 ```ruby
-describe aws_emr_cluser(cluster_id: 'CLUSTER_ID') do
+describe aws_emr_cluster(cluster_id: 'CLUSTER_ID') do
   it { should exist }
 end
 ```
