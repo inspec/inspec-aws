@@ -62,7 +62,7 @@ end
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticmapreduce:DescribeCluster`, `elasticmapreduce:DescribeSecurityConfiguration` & `elasticmapreduce:ListClusters` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EMR:Client:DescribeClusterOutput`, `EMR:Client:DescribeSecurityConfigurationOutput` actions set to allow.
 
 You can find detailed documentation at [Amazon EMR IAM Policies, Roles, and Permissions](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-iam-policies.html)
 The documentation for EMR actions is at [Policy Structure](https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_id-based-policy-examples.html)
