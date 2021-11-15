@@ -48,11 +48,11 @@ For a full list of available matchers, please visit our [matchers page](https://
 The control will pass if the describe returns at least one result.
 
 Use `should` to test the entity should exist.
+Use `should_not` to test the entity should not exist.
 ```ruby
 describe aws_emr_clusters.where( <property>: <value>) do
   it { should exist }
 end
-```
 ```ruby
 describe aws_emr_clusters.where( <property>: <value>) do
   it { should_not exist }
