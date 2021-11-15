@@ -88,7 +88,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should not exist.
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do
   it { should exist }
