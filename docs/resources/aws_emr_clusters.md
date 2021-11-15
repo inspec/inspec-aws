@@ -30,7 +30,6 @@ See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com
 
 ## Examples
 
-
 ##### Ensure there are no Clusters in an undesired state.
 ```ruby
 describe aws_emr_clusters do
