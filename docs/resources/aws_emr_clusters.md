@@ -35,8 +35,8 @@ See also the [AWS documentation on EMR Clusters](https://docs.aws.amazon.com/emr
 ```ruby
 describe aws_emr_clusters do
   it { should exist }
-  its('state') { should_not include 'UNDESIRED-STATE'}
-  its('CLUSTER_IDS') { should include 'GIVEN_CLUSTER_ID'}
+  its('state') { should_not include 'UNDESIRED_STATE'}
+  its('cluster_ids') { should include 'CLUSTER_ID'}
 end
 ```
 ## Matchers
