@@ -57,11 +57,11 @@ describe aws_emr_cluster('CLUSTER_ID') do
   its ('state') { should eq 'WAITING' }
 end
 ```
+##### Test that an EMR Cluster state is `RUNNING`.
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do
   its ('state') { should eq 'RUNNING' }
 end
-```
 ##### Test that an EMR Cluster's at-rest encryption is enabled
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do
