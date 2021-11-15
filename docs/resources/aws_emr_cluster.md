@@ -16,7 +16,7 @@ describe aws_emr_cluster(cluster_id: 'CLUSTER_ID') do
 end
 ```
 ```ruby
-describe aws_emr_cluser('CLUSTER_ID') do
+describe aws_emr_cluster('CLUSTER_ID') do
   it { should exist }
 end
 ```
