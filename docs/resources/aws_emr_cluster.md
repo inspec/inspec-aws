@@ -94,6 +94,8 @@ describe aws_emr_cluster('CLUSTER_ID') do
   it { should exist }
 end
 ```
+
+Use `should_not` to test the entity should not exist.
 ```ruby
 describe aws_emr_cluster('cCLUSTER_ID') do
   it { should_not exist }
