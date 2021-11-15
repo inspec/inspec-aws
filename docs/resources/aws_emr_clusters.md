@@ -23,9 +23,9 @@ See also the [AWS documentation on EMR Clusters](https://docs.aws.amazon.com/emr
 
 |Property                                | Description|
 | ---                                    | --- |
-|cluster\_id                             | The unique identifier of the cluster. |
-|cluster\_arn                            | The Amazon Resource Name (ARN) that identifies the cluster. |
-|cluster\_name                           | A user-generated string that you use to identify your cluster. |
+|cluster\_ids                             | The unique identifier of the cluster. |
+|cluster\_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |
+|cluster\_names                           | A user-generated string that you use to identify your cluster. |
 |state                                   | The current state of the cluster. |
 
 ## Examples
