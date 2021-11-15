@@ -51,7 +51,7 @@ describe aws_emr_cluster(cluster_id: 'INVALID_CLUSTER_ID') do
   it { should_not exist }
 end
 ```
-##### Test that an EMR Cluster is active
+##### Test that an EMR Cluster state is `WAITING`
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do
   its ('state') { should eq 'WAITING' }
