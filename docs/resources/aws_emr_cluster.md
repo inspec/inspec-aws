@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_emr\_cluster
 
-Use the `aws_emr_cluster` InSpec audit resource to test properties of a single AWS EMR Cluster.
+Use the `aws_emr_cluster` InSpec audit resource to test properties of the singular resource of AWS EMR Cluster.
 
 ## Syntax
 
