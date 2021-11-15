@@ -10,25 +10,10 @@ class AwsEmrCluster < AwsResourceBase
   example "
     describe aws_emr_cluster('CLUSTER_ID') do
       it { should exist }
-    end
-
-    describe aws_emr_cluster('CLUSTER_ID') do
       it { should be_running }
-    end
-
-    describe aws_emr_cluster('CLUSTER_ID') do
       it { should be_waiting }
-    end
-
-    describe aws_emr_cluster('CLUSTER_ID') do
       its('encryption_at_rest') { should eq true }
-    end
-
-    describe aws_emr_cluster('CLUSTER_ID') do
       its('encryption_in_transit') { should eq true }
-    end
-
-    describe aws_emr_cluster('CLUSTER_ID') do
       its('local_disk_encryption') { should eq true }
     end
   "
