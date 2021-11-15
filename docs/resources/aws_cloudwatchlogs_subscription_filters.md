@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudwatchlogs_subscription_filters
 
-Use the `aws_cloudwatchlogs_subscription_filters` InSpec audit resource to test properties of the plural resource of AWS Logs Subscription Filter.
+Use the `aws_cloudwatchlogs_subscription_filters` InSpec audit resource to test properties of the plural resource of AWS Logs Subscription Filters.
 
 The AWS::Logs::SubscriptionFilter specifies a subscription filter and associates it with the specified log group.
 
@@ -27,13 +27,13 @@ For additional information, see the [AWS documentation on AWS Logs SubscriptionF
 
 ## Properties
 
-| Property         | Description                          | Field           |
-| :--------------: | :----------------------------------: | :-------------: |
-| filter_names     | The name of the subscription filter. | filter_name     |
-| log_group_names  | The name of the log group.           | log_group_name  |
+| Property         | Description                           | Field           |
+| :--------------: | :-----------------------------------: | :-------------: |
+| filter_names     | The name of the subscription filters. | filter_name     |
+| log_group_names  | The name of the log group.            | log_group_name  |
 | filter_patterns  | A symbolic description of how CloudWatch Logs should interpret the data in each log event. | filter_pattern |
 | destination_arns | The Amazon Resource Name (ARN) of the destination.     | destination_arn |
-| role_arns        | The ARN role type.                   | role_arn        |
+| role_arns        | The ARN of the IAM role.              | role_arn        |
 | distributions    | The method used to distribute log data to the destination, which can be either random or grouped by log stream. | distribution |
 | creation_times   | The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | creation_time |
 
