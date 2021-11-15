@@ -17,7 +17,7 @@ end
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on EMR Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html).
+See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
 
 ## Properties
 
