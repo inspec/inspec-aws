@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_carrier_gateway
 
-Use the `aws_ec2_carrier_gateway` InSpec audit resource to test properties of a specific AWS EC2 Carrier Gateway.
+Use the `aws_ec2_carrier_gateway` InSpec audit resource to test properties of a specific AWS EC2 carrier gateway.
 
 The AWS::EC2::CarrierGateway resource creates a carrier gateway.
 
