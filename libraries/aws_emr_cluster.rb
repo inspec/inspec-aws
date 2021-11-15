@@ -66,6 +66,6 @@ class AwsEmrCluster < AwsResourceBase
   end
 
   def to_s
-    "AWS EMR cluster #{cluster_name}"
+    "AWS EMR Cluster Name: #{@cluster_name}"
   end
 end
