@@ -34,7 +34,7 @@ class AwsEmrClusters < AwsResourceBase
       resp = @aws.emr_client.list_clusters(pagination_options)
     end
 
-    return [] if !resp || resp.empty?
+    return cluster_rows if !resp || resp.empty?
 
     resp.clusters.each do |c|
       cluster_rows += [{  cluster_arn:  c.cluster_arn,
