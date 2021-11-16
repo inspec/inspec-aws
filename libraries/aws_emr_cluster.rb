@@ -18,10 +18,6 @@ class AwsEmrCluster < AwsResourceBase
       its('applications') { should include 'Spark' }
     end
   "
-
-  # attr_reader :cluster_id, :cluster_arn, :cluster_name, :state,
-  #             :encryption_at_rest, :encryption_in_transit,
-  #             :local_disk_encryption
   attr_reader :cluster_id, :cluster_arn, :cluster_name, :status_state, :status_state_change_reason_code,
               :status_state_change_reason_message, :status_timeline_creation_date_time, :status_timeline_ready_date_time,
               :status_timeline_end_date_time,
@@ -55,10 +51,8 @@ class AwsEmrCluster < AwsResourceBase
       @cluster_name = cluster.name
       @cluster_id = cluster.id
       @applications = []
-      if !cluster.applications.nil?
-        cluster.applications.each do |application|
-          @applications << application.name
-        end
+      cluster.applications&.each do |application|
+        @applications << application.name
       end
       @auto_scaling_role = cluster.auto_scaling_role
       @custom_ami_id = cluster.custom_ami_id
