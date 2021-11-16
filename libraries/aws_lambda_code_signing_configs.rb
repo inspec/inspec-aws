@@ -7,9 +7,9 @@ class AWSLambdaCodeSigningConfigs < AwsResourceBase
   desc 'Returns a list of code signing configurations.'
 
   example "
-  describe aws_lambda_code_signing_configs do
-    it { should exist }
-  end
+    describe aws_lambda_code_signing_configs do
+      it { should exist }
+    end
   "
 
   attr_reader :table
