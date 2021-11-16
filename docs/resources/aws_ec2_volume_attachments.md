@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_volume_attachments
 
-Use the `aws_ec2_volume_attachments` InSpec audit resource to test properties of a plural AWS EC2 Volume Attachment.
+Use the `aws_ec2_volume_attachments` InSpec audit resource to test properties of multiple AWS EC2 volume attachments.
 
-The AWS::EC2::VolumeAttachment resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
+The `AWS::EC2::VolumeAttachment` resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
 
 ## Syntax
 
@@ -18,6 +18,8 @@ Ensure that volume attachment exists.
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 Volume Attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volumeattachment.html).
 
@@ -35,11 +37,13 @@ For additional information, see the [AWS documentation on AWS EC2 Volume Attachm
 ## Examples
 
 ### Ensure a device is available.
+
     describe aws_ec2_volume_attachments do
       its('devices') { should include '/dev/sdf' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_ec2_volume_attachments do
         its('states') { should include 'available' }
     end
