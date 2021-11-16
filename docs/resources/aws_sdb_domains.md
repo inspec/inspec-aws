@@ -5,11 +5,11 @@ platform: aws
 
 # aws_sdb_domains
 
-Use the `aws_sdb_domains` InSpec audit resource to test the plural resource of SDB Domain names.
+Use the `aws_sdb_domains` InSpec audit resource to test multiple SimpleDB domain names.
 
 ## Syntax
 
-Ensure that the domain exists.
+Ensure that a domain exists.
 
     describe aws_sdb_domains do
       it { should exist }
@@ -17,17 +17,23 @@ Ensure that the domain exists.
 
 For additional information, see the [AWS documentation on AWS SDB Domains.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-simpledb.html).
 
+
+## Parameters
+
+This resource does not require any parameters.
+
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | domain_names | A list of domain names that match the expression. | domain_names |
 
 ## Examples
 
-### Ensure domain names is available.
+### Ensure a domain name is available.
+
     describe aws_sdb_domains do
-      its('domain_names') { should include 'DomainName')' }
+      its('domain_names') { should include 'DOMAIN_NAME')' }
     end
 
 ## Matchers
