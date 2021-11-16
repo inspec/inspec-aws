@@ -231,6 +231,7 @@ variable "aws_iam_instance_profile_name1" {}
 variable "aws_iam_role_name1" {}
 variable "aws_vpn_connection_route_destination_cidr_block" {}
 variable "aws_vpn_connection_route_state" {}
+variable "aws_emr_cluster_name" {} 
 
 provider "aws" {
   version = ">= 2.0.0"
@@ -4594,11 +4595,11 @@ resource "aws_cloudwatch_log_stream" "for_test" {
 ######################################
 # EMR Security Configuration
 ######################################
-resource "aws_kms_key" "a" {}
+resource "aws_kms_key" "emr_kms_key" {}
 
-resource "aws_kms_grant" "a" {
+resource "aws_kms_grant" "emr_kms_grant" {
   name              = "my-grant"
-  key_id            = aws_kms_key.a.key_id
+  key_id            = aws_kms_key.emr_kms_key.key_id
   grantee_principal = aws_iam_role.emr_instance_iam_role.arn
   operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
 }
@@ -4617,7 +4618,7 @@ resource "aws_emr_security_configuration" "emr_security_configuration" {
       },
       "LocalDiskEncryptionConfiguration": {
         "EncryptionKeyProviderType": "AwsKms",
-        "AwsKmsKey": "${aws_kms_key.a.arn}"
+        "AwsKmsKey": "${aws_kms_key.emr_kms_key.arn}"
       }
     }
   }
@@ -4708,11 +4709,23 @@ resource "aws_emr_cluster" "emr_cluster" {
       type = "gp2"
       volumes_per_instance = 1
     }
-
     bid_price = "0.30"
   }
 
   ebs_root_volume_size = 50
 
   service_role = aws_iam_role.emr_iam_role.arn
+}
+######################################
+# Managed Scaling policy for EMR Cluster
+######################################
+resource "aws_emr_managed_scaling_policy" "samplepolicy" {
+  cluster_id = aws_emr_cluster.emr_cluster.id
+  compute_limits {
+    unit_type                       = "Instances"
+    minimum_capacity_units          = 1
+    maximum_capacity_units          = 10
+    maximum_ondemand_capacity_units = 2
+    maximum_core_capacity_units     = 10
+  }
 }

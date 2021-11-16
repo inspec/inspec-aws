@@ -21,12 +21,30 @@ See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com
 
 ## Properties
 
-|Property                                | Description|
-| ---                                    | --- |
-|cluster\_ids                             | The unique identifier of the cluster. |
-|cluster\_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |
-|cluster\_names                           | A user-generated string that you use to identify your cluster. |
-|state                                   | The current state of the cluster. |
+|Property                                | Description| Fields|
+| ---                                    | --- |---|
+|cluster\_ids                             | The unique identifier of the cluster. |cluster\_id|
+|cluster\_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |cluster\_arn|
+|cluster\_names                           | A user-generated string that you use to identify your cluster. |cluster\_name|
+|status_states                            | The current state of the cluster.|status(state)|
+|status_state_change_reason_code         | The programmatic code for the state change reason.|status(state_change_reason(code))|
+|status_state_change_reason_message      | The descriptive message for the state change reason.|status(state_change_reason(message))|
+|status_timeline_creation_date_time      | The creation date and time of the cluster.|status(timeline(creation_date_time))|
+|status_timeline_ready_date_time         | The date and time when the cluster was ready to run steps.|status(timeline(ready_date_time))|
+|status_timeline_end_date_time           | The date and time when the cluster was terminated.|status(timeline(end_date_time))|
+|applications                            | The name of applications installed on this cluster.|applications|
+|auto_scaling_roles                       | An IAM role for automatic scaling policies.|auto_scaling_role|
+|custom_ami_ids                           | Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.|custom_ami_id|
+|ebs_root_volume_sizes                    | The size, in GiB, of the Amazon EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.|ebs_root_volume_size|
+|kerberos_attributes_realms               | The name of the Kerberos realm to which all nodes in a cluster belong.|kerberos_attributes(realm)|
+|kerberos_attributes_realm_ad_domain_join_user  | A user with sufficient privileges to join resources to the domain. Required only when establishing a cross-realm trust with an Active Directory domain.|kerberos_attributes(ad_domain_join_user)|
+|log_encryption_kms_key_ids               | The KMS key used for encrypting log files.|log_encryption_kms_key_id|
+|log_uris                                 | The path to the Amazon S3 location where logs for this cluster are stored.|log_uri|
+|release_labels                           | The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster.|release_label|
+|scale_down_behaviors                     | The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. Valid values are TERMINATE_AT_INSTANCE_HOUR, TERMINATE_AT_TASK_COMPLETION |scale_down_behavior|
+|service_roles                            | The IAM role that Amazon EMR assumes in order to access Amazon Web Services resources on your behalf.|service_role|
+|step_concurrency_levels                  | Specifies the number of steps that can be executed concurrently.|step_concurrency_level|
+|visible_to_all_users                    | Indicates whether the cluster is visible to IAM principals in the Amazon Web Services account associated with the cluster.|visible_to_all_users|
 
 ## Examples
 

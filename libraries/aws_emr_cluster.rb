@@ -15,12 +15,20 @@ class AwsEmrCluster < AwsResourceBase
       its('encryption_at_rest') { should eq true }
       its('encryption_in_transit') { should eq true }
       its('local_disk_encryption') { should eq true }
+      its('applications') { should include 'Spark' }
     end
   "
 
-  attr_reader :cluster_id, :cluster_arn, :cluster_name, :state,
-              :encryption_at_rest, :encryption_in_transit,
-              :local_disk_encryption
+  # attr_reader :cluster_id, :cluster_arn, :cluster_name, :state,
+  #             :encryption_at_rest, :encryption_in_transit,
+  #             :local_disk_encryption
+  attr_reader :cluster_id, :cluster_arn, :cluster_name, :status_state, :status_state_change_reason_code,
+              :status_state_change_reason_message, :status_timeline_creation_date_time, :status_timeline_ready_date_time,
+              :status_timeline_end_date_time,
+              :applications, :auto_scaling_role, :custom_ami_id, :ebs_root_volume_size,
+              :kerberos_attributes_realm, :kerberos_attributes_realm_ad_domain_join_user,
+              :log_encryption_kms_key_id, :log_uri, :release_label, :scale_down_behavior,
+              :service_role, :step_concurrency_level, :visible_to_all_users, :managed_scaling_policy_unit_type
 
   def initialize(opts = {})
     opts = { cluster_id: opts } if opts.is_a?(String)
@@ -33,23 +41,43 @@ class AwsEmrCluster < AwsResourceBase
 
       return if !cluster || cluster.empty?
 
-      @state = cluster.status.state
+      @status_state = cluster.status.state
+      if !cluster.status.state_change_reason.nil?
+        @status_state_change_reason_code = cluster.status.state_change_reason.code
+        @status_state_change_reason_message = cluster.status.state_change_reason.message
+      end
+      if !cluster.status.timeline.nil?
+        @status_timeline_creation_date_time = cluster.status.timeline.creation_date_time
+        @status_timeline_ready_date_time = cluster.status.timeline.ready_date_time
+        @status_timeline_end_date_time = cluster.status.timeline.end_date_time
+      end
       @cluster_arn = cluster.cluster_arn
       @cluster_name = cluster.name
       @cluster_id = cluster.id
-
-      return if cluster.security_configuration.nil? || cluster.security_configuration.empty?
-
-      resp = @aws.emr_client.describe_security_configuration({ name: cluster.security_configuration })
-      return if resp.nil? || resp.empty?
-      json_security_configuration = resp.security_configuration
-      return if json_security_configuration.nil? || json_security_configuration.empty?
-      parsed_json = JSON.parse(json_security_configuration)
-      @encryption_at_rest = !parsed_json['EncryptionConfiguration']['EnableAtRestEncryption'].nil? && parsed_json['EncryptionConfiguration']['EnableAtRestEncryption']
-      @encryption_in_transit = !parsed_json['EncryptionConfiguration']['EnableInTransitEncryption'].nil? && parsed_json['EncryptionConfiguration']['EnableInTransitEncryption']
-      @local_disk_encryption = !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration'].nil? &&
-                               !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration']['LocalDiskEncryptionConfiguration'].nil? &&
-                               !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration']['LocalDiskEncryptionConfiguration'].empty?
+      @applications = []
+      if !cluster.applications.nil?
+        cluster.applications.each do |application|
+          @applications << application.name
+        end
+      end
+      @auto_scaling_role = cluster.auto_scaling_role
+      @custom_ami_id = cluster.custom_ami_id
+      @ebs_root_volume_size = cluster.ebs_root_volume_size
+      if !cluster.kerberos_attributes.nil?
+        @kerberos_attributes_realm = cluster.kerberos_attributes.realm
+        @kerberos_attributes_realm_ad_domain_join_user = cluster.kerberos_attributes.ad_domain_join_user
+      end
+      @log_encryption_kms_key_id = cluster.log_encryption_kms_key_id
+      @log_uri = cluster.log_uri
+      @release_label = cluster.release_label
+      @scale_down_behavior = cluster.scale_down_behavior
+      @service_role = cluster.service_role
+      @step_concurrency_level = cluster.step_concurrency_level
+      @visible_to_all_users = cluster.visible_to_all_users
+      cluster_managed_policy = @aws.emr_client.get_managed_scaling_policy(req_cluster_id).managed_scaling_policy
+      if !cluster_managed_policy.nil?
+        @managed_scaling_policy_unit_type = cluster_managed_policy.compute_limits.unit_type
+      end
     end
   end
 
@@ -58,11 +86,11 @@ class AwsEmrCluster < AwsResourceBase
   end
 
   def running?
-    !@state.nil? && @state == 'RUNNING'
+    !@status_state.nil? && @status_state == 'RUNNING'
   end
 
   def waiting?
-    !@state.nil? && @state == 'WAITING'
+    !@status_state.nil? && @status_state == 'WAITING'
   end
 
   def to_s

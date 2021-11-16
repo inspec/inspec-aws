@@ -5,7 +5,7 @@ require_relative 'mock/aws_emr_mock'
 
 class AwsEmrClusterConstructorTest < Minitest::Test
   def setup
-    @stub_data = AwsEmrMock.new.stub_data_mock_cluster
+    @stub_data = AwsEmrMock.new.stub_data(StubDataType::SINGULAR)
     @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
                                  client_args: { stub_responses: true },
                                  stub_data: @stub_data)
@@ -24,70 +24,22 @@ class AwsEmrClusterConstructorTest < Minitest::Test
   end
 
   def test_state
-    assert_equal(@cluster.state, @stub_data[0][:data][:cluster][:status][:state])
+    assert_equal(@stub_data[0][:data][:cluster][:status][:state], @cluster.status_state)
+  end
+
+  def test_state_change_reason_code
+    assert_equal(@stub_data[0][:data][:cluster][:status][:state_change_reason][:code], @cluster.status_state_change_reason_code)
+  end
+
+  def test_state_change_reason_message
+    assert_equal(@stub_data[0][:data][:cluster][:status][:state_change_reason][:message], @cluster.status_state_change_reason_message)
+  end
+
+  def test_applications_name
+    assert_equal(@stub_data[0][:data][:cluster][:applications][0][:name], @cluster.applications[0])
   end
 
   def test_exists
     assert @cluster.exists?
-  end
-end
-
-class AwsEmrClusterAtRestEncryptionEnabledPathTest < Minitest::Test
-  def setup
-    @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
-                                 client_args: { stub_responses: true },
-                                 stub_data: AwsEmrMock.new.stub_data(StubDataType::AT_REST_ENCRYPTION_ENABLED))
-  end
-
-  def test_encryption_at_rest_enabled
-    assert_equal(@cluster.encryption_at_rest, true)
-  end
-end
-
-class AwsEmrClusterAtRestEncryptionDisabledPathTest < Minitest::Test
-  def setup
-    @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
-                                 client_args: { stub_responses: true },
-                                 stub_data: AwsEmrMock.new.stub_data(StubDataType::AT_REST_ENCRYPTION_DISBALED))
-  end
-
-  def test_encryption_at_rest_disabled
-    assert_equal(@cluster.encryption_at_rest, false)
-  end
-end
-
-class AwsEmrClusterInTransitEncryptionEnabledPathTest < Minitest::Test
-  def setup
-    @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
-                                 client_args: { stub_responses: true },
-                                 stub_data: AwsEmrMock.new.stub_data(StubDataType::IN_TRANSIT_ENCRYPTION_ENABLED))
-  end
-
-  def test_encryption_in_transit_enabled
-    assert_equal(@cluster.encryption_in_transit, true)
-  end
-end
-
-class AwsEmrClusterInTransitEncryptionDisabledPathTest < Minitest::Test
-  def setup
-    @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
-                                 client_args: { stub_responses: true },
-                                 stub_data: AwsEmrMock.new.stub_data(StubDataType::IN_TRANSIT_ENCRYPTION_DISABLED))
-  end
-
-  def test_encryption_in_transit_disabled
-    assert_equal(@cluster.encryption_in_transit, false)
-  end
-end
-
-class AwsEmrClusterLocalDiskEncryptionEnabledPathTest < Minitest::Test
-  def setup
-    @cluster = AwsEmrCluster.new(cluster_id: 'j-27SM4YJB3YVPL',
-                                 client_args: { stub_responses: true },
-                                 stub_data: AwsEmrMock.new.stub_data(StubDataType::LOCAL_DISK_ENCRYPTION_ENABLED))
-  end
-
-  def test_encryption_local_disk_enabled
-    assert_equal(@cluster.local_disk_encryption, true)
   end
 end

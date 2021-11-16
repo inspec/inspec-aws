@@ -19,17 +19,7 @@ end
 
 class AwsEmrClustersHappyPathTest < Minitest::Test
   def setup
-    mock_clusters = []
-    mock_cluster1 = AwsEmrMock.new.mock_cluster
-    mock_clusters << mock_cluster1
-    mock_cluster2 = AwsEmrMock.new.mock_cluster('j-27SM4ABCDEF', 'RUNNING', 'mycluster-arn')
-    mock_clusters << mock_cluster2
-
-    data = {}
-    data[:method] = :list_clusters
-    data[:data] = { clusters: mock_clusters }
-    data[:client] = Aws::EMR::Client
-    @clusters = AwsEmrClusters.new(client_args: { stub_responses: true }, stub_data: [data])
+    @clusters = AwsEmrClusters.new(client_args: { stub_responses: true }, stub_data: AwsEmrMock.new.stub_data(StubDataType::PLURAL))
   end
 
   def test_clusters_exists

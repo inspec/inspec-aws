@@ -11,84 +11,49 @@ class AwsEmrMock < AwsBaseResourceMock
       status: { state: 'RUNNING' },
       cluster_arn: 'cluster-arn',
     }
-
-    @mock_cluster_sec_config_at_rest_encryption_enabled = {}
-    @mock_cluster_sec_config_at_rest_encryption_enabled[:name] = 'sec_config_at_rest_encryption_enabled'
-    @mock_cluster_sec_config_at_rest_encryption_enabled[:security_configuration] = '
-    {
-      "EncryptionConfiguration": {
-        "EnableInTransitEncryption": false,
-        "EnableAtRestEncryption": true,
-        "AtRestEncryptionConfiguration": {
-          "S3EncryptionConfiguration": {
-            "EncryptionMode": "SSE-S3"
-          }
-        }
-      }
-    }'
-
-    @mock_cluster_sec_config_at_rest_encryption_disabled = {}
-    @mock_cluster_sec_config_at_rest_encryption_disabled[:name] = 'sec_config_at_rest_encryption_disabled'
-    @mock_cluster_sec_config_at_rest_encryption_disabled[:security_configuration] = '
-    {
-      "EncryptionConfiguration": {
-        "EnableInTransitEncryption": false,
-        "EnableAtRestEncryption": false
-      }
-    }'
-
-    @mock_cluster_sec_config_in_transit_encryption_enabled = {}
-    @mock_cluster_sec_config_in_transit_encryption_enabled[:name] = 'sec_config_in_transit_encryption_enabled'
-    @mock_cluster_sec_config_in_transit_encryption_enabled[:security_configuration] = '
-    {
-      "EncryptionConfiguration": {
-        "EnableInTransitEncryption": true,
-        "EnableAtRestEncryption": false,
-        "InTransitEncryptionConfiguration": {
-          "TLSCertificateConfiguration": {
-            "CertificateProviderType": "PEM",
-            "S3Object": "s3://MyConfigStore/artifacts/MyCerts.zip"
-          }
-        }
-      }
-    }'
-
-    @mock_cluster_sec_config_in_transit_encryption_disabled = {}
-    @mock_cluster_sec_config_in_transit_encryption_disabled[:name] = 'sec_config_in_transit_encryption_disabled'
-    @mock_cluster_sec_config_in_transit_encryption_disabled[:security_configuration] = '
-    {
-      "EncryptionConfiguration": {
-        "EnableInTransitEncryption": false,
-        "EnableAtRestEncryption": false
-      }
-    }'
-
-    @mock_cluster_sec_config_local_disk_encryption_enabled = {}
-    @mock_cluster_sec_config_local_disk_encryption_enabled[:name] = 'sec_config_local_disk_encryption_enabled'
-    @mock_cluster_sec_config_local_disk_encryption_enabled[:security_configuration] = '
-    {
-      "EncryptionConfiguration": {
-        "EnableInTransitEncryption": false,
-        "EnableAtRestEncryption": true,
-        "AtRestEncryptionConfiguration": {
-          "S3EncryptionConfiguration": {
-            "EncryptionMode": "SSE-S3"
-          },
-          "LocalDiskEncryptionConfiguration": {
-            "EncryptionKeyProviderType": "AwsKms",
-            "AwsKmsKey": "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
-          }
-        }
-      }
-    }'
   end
 
   def mock_cluster(cluster_id = 'j-27SM4YJB3YVPL', cluster_state = 'RUNNING', cluster_arn = 'cluster-arn')
     @mock_cluster = {
       id: cluster_id,
-      status: { state: cluster_state },
+      status: {
+        state: cluster_state,
+        state_change_reason: {
+          code: 'USER_REQUEST',
+          message: 'This is test message',
+        },
+      },
+      cluster_arn: cluster_arn,
+      applications: [
+        {
+          name: 'Spark',
+          version: '3.1.2',
+        },
+      ],
+    }
+  end
+
+  def create_simple_mock_cluster(cluster_id = 'j-27SM4YJB3YVPL', cluster_state = 'RUNNING', cluster_arn = 'cluster-arn')
+    @mock_cluster = {
+      id: cluster_id,
+      status: {
+        state: cluster_state,
+        state_change_reason: {
+          code: 'USER_REQUEST',
+          message: 'This is test message',
+        },
+      },
       cluster_arn: cluster_arn,
     }
+  end
+
+  def create_mock_cluster_list
+    mock_clusters = []
+    mock_cluster1 = AwsEmrMock.new.create_simple_mock_cluster
+    mock_clusters << mock_cluster1
+    mock_cluster2 = AwsEmrMock.new.create_simple_mock_cluster('j-27SM4ABCDEF', 'RUNNING', 'mycluster-arn')
+    mock_clusters << mock_cluster2
+    mock_clusters
   end
 
   def stub_data_mock_cluster
@@ -100,40 +65,44 @@ class AwsEmrMock < AwsBaseResourceMock
     [describe_cluster]
   end
 
-  def stub_data(stub_type)
-    security_configuration_data = ''
-    case stub_type
-    when StubDataType::AT_REST_ENCRYPTION_ENABLED
-      security_configuration_data = @mock_cluster_sec_config_at_rest_encryption_enabled
-    when StubDataType::AT_REST_ENCRYPTION_DISBALED
-      security_configuration_data = @mock_cluster_sec_config_at_rest_encryption_disabled
-    when StubDataType::IN_TRANSIT_ENCRYPTION_ENABLED
-      security_configuration_data = @mock_cluster_sec_config_in_transit_encryption_enabled
-    when StubDataType::IN_TRANSIT_ENCRYPTION_DISABLED
-      security_configuration_data = @mock_cluster_sec_config_in_transit_encryption_disabled
-    when StubDataType::LOCAL_DISK_ENCRYPTION_ENABLED
-      security_configuration_data = @mock_cluster_sec_config_local_disk_encryption_enabled
-    end
-
-    stub_data = []
-    mock_cluster_stub_data = stub_data_mock_cluster
-    mock_cluster_stub_data[0][:data][:cluster][:security_configuration] = security_configuration_data[:name]
-    stub_data += [mock_cluster_stub_data[0]]
-
-    describe_security_configuration = {
+  def stub_data_mock_clusters
+    list_cluster = {
       client: Aws::EMR::Client,
-      method: 'describe_security_configuration',
-      data:  security_configuration_data,
+      method: 'list_clusters',
+      data: { clusters: create_mock_cluster_list },
     }
-    stub_data += [describe_security_configuration]
+    describe_cluster = {
+      client: Aws::EMR::Client,
+      method: 'describe_cluster',
+      data: { cluster: mock_cluster },
+    }
+    [list_cluster, describe_cluster]
+  end
+
+  def stub_data(stub_type)
+    stub_data = []
+    describe_cluster = {
+      client: Aws::EMR::Client,
+      method: 'describe_cluster',
+      data: { cluster: mock_cluster },
+    }
+    list_cluster = {
+      client: Aws::EMR::Client,
+      method: 'list_clusters',
+      data: { clusters: create_mock_cluster_list },
+    }
+    case stub_type
+    when StubDataType::SINGULAR
+      stub_data += [describe_cluster]
+    when StubDataType::PLURAL
+      stub_data += [describe_cluster]
+      stub_data += [list_cluster]
+    end
+    stub_data
   end
 end
 
 module StubDataType
-  SIMPLE = 0
-  AT_REST_ENCRYPTION_ENABLED = 1
-  AT_REST_ENCRYPTION_DISBALED = 2
-  IN_TRANSIT_ENCRYPTION_ENABLED = 3
-  IN_TRANSIT_ENCRYPTION_DISABLED = 4
-  LOCAL_DISK_ENCRYPTION_ENABLED = 5
+  SINGULAR = 0
+  PLURAL = 1
 end

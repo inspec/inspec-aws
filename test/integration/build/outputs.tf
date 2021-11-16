@@ -1048,3 +1048,30 @@ output "aws_cloudwatch_log_stream_arn" {
 output "aws_emr_cluster_id" {
   value = aws_emr_cluster.emr_cluster.id
 }
+output "aws_emr_cluster_service_role" {
+  value = aws_emr_cluster.emr_cluster.service_role
+}
+
+output "aws_emr_cluster_applications" {
+  value = aws_emr_cluster.emr_cluster.applications
+}
+
+output "aws_emr_cluster_arn" {
+  value = aws_emr_cluster.emr_cluster.arn
+}
+
+output "aws_emr_cluster_name" {
+  value = aws_emr_cluster.emr_cluster.name
+}
+
+output "aws_emr_cluster_visible_to_all_users" {
+  value = aws_emr_cluster.emr_cluster.visible_to_all_users
+}
+
+output "aws_emr_cluster_release_label" {
+  value = aws_emr_cluster.emr_cluster.release_label
+}
+
+output "aws_emr_cluster_log_uri" {
+  value = aws_emr_cluster.emr_cluster.log_uri
+}
