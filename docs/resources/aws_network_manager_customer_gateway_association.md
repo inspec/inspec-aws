@@ -5,48 +5,51 @@ platform: aws
 
 # aws_network_manager_customer_gateway_association
 
-Use the `aws_network_manager_customer_gateway_association` InSpec audit resource to test properties of a single specific AWS Network Manager Customer Gateway Association.
+Use the `aws_network_manager_customer_gateway_association` InSpec audit resource to test properties of a single specific AWS Network Manager customer gateway association.
 
-The AWS::NetworkManager::CustomerGatewayAssociation resource specifies an association between a customer gateway, a device, and optionally, a link.
+The `AWS::NetworkManager::CustomerGatewayAssociation` resource specifies an association between a customer gateway, a device, and optionally, a link.
 
 ## Syntax
 
 Ensure that the customer gateway association exists.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
       it { should exist }
     end
 
 ## Parameters
 
-`global_network_id and , customer_gateway_arn` _(required)_
+`global_network_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| global_network_id | The ID of the global network. |
-| customer_gateway_arn | The Amazon Resource Name (ARN) of the customer gateway. |
+The ID of the global network.
+
+`customer_gateway_arn` _(required)_
+
+The Amazon Resource Name (ARN) of the customer gateway.
 
 For additional information, see the [AWS documentation on AWS Network Manager Customer Gateway Association.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-customergatewayassociation.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
-| customer_gateway_arn | The Amazon Resource Name (ARN) of the customer gateway. | customer_gateway_arn |
-| global_network_id | The ID of the global network. | global_network_id |
-| device_id | The ID of the device.| device_id |
-| link_id | The ID of the link. | link_id |
-| state | The association state. | state |
+| Property | Description |
+| --- | --- |
+| customer_gateway_arn | The Amazon Resource Name (ARN) of the customer gateway. |
+| global_network_id | The ID of the global network. |
+| device_id | The ID of the device.|
+| link_id | The ID of the link. |
+| state | The association state. |
 
 ## Examples
 
 ### Ensure a customer gateway arn is available.
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
       its('customer_gateway_arn') { should eq 'CustomerGatewayARN' }
     end
 
 ### Ensure that the state is `active`.
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
         its('state') { should eq 'AVAILABLE' }
     end
 
@@ -60,13 +63,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'dummy', customer_gateway_arn: 'dummy') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
       it { should_not exist }
     end
 
@@ -74,7 +77,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID', customer_gateway_arn: 'CUSTOMER_GATEWAY_ARN') do
       it { should be_available }
     end
 

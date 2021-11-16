@@ -5,15 +5,15 @@ platform: aws
 
 # aws_network_manager_customer_gateway_associations
 
-Use the `aws_network_manager_customer_gateway_associations` InSpec audit resource to test properties of the plural AWS Network Manager Customer Gateway Association.
+Use the `aws_network_manager_customer_gateway_associations` InSpec audit resource to test properties of multiple AWS Network Manager customer gateway associations.
 
-The AWS::NetworkManager::CustomerGatewayAssociation resource specifies an association between a customer gateway, a device, and optionally, a link.
+The `AWS::NetworkManager::CustomerGatewayAssociation` resource specifies an association between a customer gateway, a device, and optionally, a link.
 
 ## Syntax
 
 Ensure that the customer gateway association exists.
 
-    describe aws_network_manager_customer_gateway_associations(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_associations(global_network_id: "GLOBAL_NETWORK_ID") do
       it { should exist }
     end
 
@@ -21,15 +21,13 @@ Ensure that the customer gateway association exists.
 
 `global_network_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| global_network_id | The ID of the global network. |
+The ID of the global network.
 
 For additional information, see the [AWS documentation on AWS Network Manager Customer Gateway Association.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-customergatewayassociation.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | customer_gateway_arns | The Amazon Resource Name (ARN) of the customer gateway. | customer_gateway_arn |
 | global_network_ids | The ID of the global network. | global_network_id |
@@ -40,12 +38,13 @@ For additional information, see the [AWS documentation on AWS Network Manager Cu
 ## Examples
 
 ### Ensure a customer gateway arn is available.
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID') do
       its('customer_gateway_arns') { should include 'CustomerGatewayARN' }
     end
 
 ### Ensure that the state is `active`.
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID') do
         its('states') { should include 'AVAILABLE' }
     end
 
@@ -59,7 +58,7 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_network_manager_customer_gateway_association(global_network_id: "GlobalNetworkID") do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID') do
       it { should exist }
     end
 
