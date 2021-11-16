@@ -19,11 +19,13 @@ Ensure that the policy exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS Network Firewall Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | firewall_names | The descriptive name of the firewall. | firewall_name |
 | firewall_arns | The Amazon Resource Name (ARN) of the firewall. | firewall_arn |
@@ -31,13 +33,15 @@ For additional information, see the [AWS documentation on AWS Network Firewall P
 ## Examples
 
 ### Ensure a policy name is available.
+
     describe aws_network_firewall_firewall_policies do
-      its('names') { should include 'FirewallName' }
+      its('names') { should include 'FIREWALL_NAME' }
     end
 
 ### Ensure that the policy arn is available.
+
     describe aws_network_firewall_firewall_policies do
-        its('arns') { should include 'PolicyARN' }
+        its('arns') { should include 'POLICY_ARN' }
     end
 
 ## Matchers
