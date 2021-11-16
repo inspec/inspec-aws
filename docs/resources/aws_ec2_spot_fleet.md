@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_spot_fleet` InSpec audit resource to test properties of a single specific AWS EC2 Spot Fleet.
 
-The AWS::EC2::SpotFleet resource specifies a Spot Fleet request. A Spot Fleet request contains the configuration information to launch a fleet, or group, of instances.
+The `AWS::EC2::SpotFleet` resource specifies a Spot Fleet request. A Spot Fleet request contains the configuration information to launch a fleet, or group, of instances.
 
 ## Syntax
 
@@ -21,15 +21,13 @@ Ensure that the spot fleet exists.
 
 `spot_fleet_request_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| spot_fleet_request_id | The ID of the Spot Fleet request. |
+The ID of the Spot Fleet request.
 
 For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | activity_status | The progress of the Spot Fleet request. | activity_status |
 | create_time | The creation date and time of the request. | create_time |
@@ -63,15 +61,16 @@ For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](h
 | spot_fleet_request_state | The state of the Spot Fleet request. | spot_fleet_request_state |
 | tags | The tags for a Spot Fleet resource. | tags |
 
-
 ## Examples
 
 ### Ensure a iam fleet role is available.
+
     describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do
       its('iam_fleet_role') { should eq 'IAMFleetRole' }
     end
 
 ### Ensure that the state is `active`.
+
     describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do
         its('spot_fleet_request_state') { should eq 'available' }
     end

@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_ec2_spot_fleets` InSpec audit resource to test properties of the plural AWS EC2 Spot Fleet.
 
-The AWS::EC2::SpotFleet resource specifies a Spot Fleet request. A Spot Fleet request contains the configuration information to launch a fleet, or group, of instances.
+The `AWS::EC2::SpotFleet` resource specifies a Spot Fleet request. A Spot Fleet request contains the configuration information to launch a fleet, or group, of instances.
 
 ## Syntax
 
@@ -18,6 +18,8 @@ Ensure that spot fleets exists.
     end
 
 ## Parameters
+
+This resource does not require any parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html).
 
@@ -35,11 +37,13 @@ For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](h
 ## Examples
 
 ### Ensure an activity status is there.
+
     describe aws_ec2_spot_fleets do
       its('activity_statuses') { should include 'error' }
     end
 
 ### Ensure that the state is `active`.
+
     describe aws_ec2_spot_fleets do
         its('spot_fleet_request_states') { should include 'available' }
     end
