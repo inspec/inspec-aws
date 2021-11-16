@@ -5,56 +5,55 @@ platform: aws
 
 # aws\_amplify\_app
 
-Use the `aws_amplify_app` InSpec audit resource to test the properties of a single specific AWS Amplify App.
+Use the `aws_amplify_app` InSpec audit resource to test the properties of a single specific AWS Amplify app.
 
 ## Syntax
 
 Ensure that AWS Amplify App exists.
 
-    describe aws_amplify_app(app_id: 'app_id') do
+    describe aws_amplify_app(app_id: 'APP_ID') do
       it { should exist }
     end
 
 ## Parameters
 
 `app_id` _(required)_
-| Property | Description| 
-| --- | --- | 
-| app_id | The unique ID of the Amplify app. |
+
+The unique ID of the Amplify app.
 
 For additional information, see the [AWS documentation on AWS Amplify  App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
 ## Properties
 
-| Property | Description| Field|
-| --- | --- | --- |
-| app_arn | The Amazon Resource Name (ARN) of the Amplify app. | app_arn |
-| app_id | The unique ID of the Amplify app. | app_id |
-| app_arn | The app's Amazon Resource app_id (ARN). | app_arn |
-| name | The name for the Amplify app.| name |
-| description | The description for the Amplify app.| description |
-| repository | The repository for the Amplify app. | repository |
-| platform | The platform for the Amplify app. | platform |
-| create_time | Creates a date and time for the Amplify app. | create_time |
-| update_time | Updates the date and time for the Amplify app.  | update_time |
-| environment_variables | The environment variables for the Amplify app. | environment_variables |
-| pending_engine_versions | The app engine version to upgrade to.  | pending_engine_version |
-| default_domain | The default domain for the Amplify app. | default_domain |
-| enable_branch_auto_build |Automatically disconnect a branch in the Amplify Console when you delete a branch from your Git repository. | enable_branch_auto_build |
-| enable_basic_auth |Enables basic authorization for the Amplify app's branches. | enable_basic_auth |
+| Property | Description|
+| --- | --- |
+| app_arn | The Amazon Resource Name (ARN) of the Amplify app. |
+| app_id | The unique ID of the Amplify app. |
+| app_arn | The app's Amazon Resource app_id (ARN). |
+| name | The name for the Amplify app.|
+| description | The description for the Amplify app.|
+| repository | The repository for the Amplify app. |
+| platform | The platform for the Amplify app. |
+| create_time | Creates a date and time for the Amplify app. |
+| update_time | Updates the date and time for the Amplify app.  |
+| environment_variables | The environment variables for the Amplify app. |
+| pending_engine_versions | The app engine version to upgrade to.  |
+| default_domain | The default domain for the Amplify app. |
+| enable_branch_auto_build |Automatically disconnect a branch in the Amplify Console when you delete a branch from your Git repository. |
+| enable_basic_auth |Enables basic authorization for the Amplify app's branches. |
 
 ## Examples
 
-### Ensure a app id is available.
+### Ensure a app ID is available.
 
-    describe aws_amplify_app(app_id: 'app_id') do
-      its('app_id') { should eq 'app_id' }
+    describe aws_amplify_app(app_id: 'APP_ID') do
+      its('app_id') { should eq 'APP_ID' }
     end
 
-### Ensure a app name is available..
+### Ensure a app name is available.
 
-    describe aws_amplify_app(app_id: 'app_id') do
-        its('app_name') { should eq 'app_name' }
+    describe aws_amplify_app(app_id: 'APP_ID') do
+        its('app_name') { should eq 'APP_NAME' }
     end
 
 ## Matchers
@@ -67,13 +66,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_amplify_app(app_id: 'app_id') do
+    describe aws_amplify_app(app_id: 'APP_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_amplify_app(app_id: 'dummy') do
+    describe aws_amplify_app(app_id: 'APP_ID') do
       it { should_not exist }
     end
 
@@ -81,7 +80,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the Amplify  App is available.
 
-    describe aws_amplify_app(app_id: 'app_id') do
+    describe aws_amplify_app(app_id: 'APP_ID') do
       it { should be_available }
     end
 

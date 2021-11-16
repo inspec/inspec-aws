@@ -5,23 +5,26 @@ platform: aws
 
 # aws\_amplify\_apps
 
-Use the `aws_amplify_apps` InSpec audit resource to test the properties of Multiple AWS Amplify Apps.
+Use the `aws_amplify_apps` InSpec audit resource to test the properties of Multiple AWS Amplify apps.
 
 ## Syntax
 
-Ensure that AWS Amplify App exists.
+Ensure that AWS Amplify app exists.
 
     describe aws_amplify_apps  do
       it { should exist }
     end
 
 
-For additional information, see the [AWS documentation on AWS Amplify App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
+## Parameters
 
+This resource does not require any parameters.
+
+For additional information, see the [AWS documentation on AWS Amplify App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
 ## Properties
 
-| Property | Description| Field|
+| Property | Description| Field |
 | --- | --- | --- |
 | app_arns | The Amazon Resource Name (ARN) of the Amplify app. | app_arn |
 | app_ids | The unique ID of the Amplify app. | app_id |
@@ -40,7 +43,7 @@ For additional information, see the [AWS documentation on AWS Amplify App](https
 
 ## Examples
 
-### Ensure a app id is available.
+### Ensure a app ID is available.
 
     describe aws_amplify_apps  do
       its('app_ids') { should include 'app_id' }
