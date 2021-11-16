@@ -5,9 +5,9 @@ platform: aws
 
 # aws_network_firewall_rule_groups
 
-Use the `aws_network_firewall_rule_groups` InSpec audit resource to test properties of multiple AWS Network Firewall Rule Group.
+Use the `aws_network_firewall_rule_groups` InSpec audit resource to test properties of multiple AWS Network Firewall rule groups.
 
-Use the AWS::NetworkFirewall::RuleGroup to define a reusable collection of stateless or stateful network traffic filtering rules.
+The `AWS::NetworkFirewall::RuleGroup` resource defines a reusable collection of stateless or stateful network traffic filtering rules.
 
 ## Syntax
 
@@ -19,11 +19,13 @@ Ensure that the rule group exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS Network Firewall Rule Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-rulegroup.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | names | The descriptive name of the rule group. | name |
 | arns | The Amazon Resource Name (ARN) of the rule group. | arn |
@@ -31,11 +33,13 @@ For additional information, see the [AWS documentation on AWS Network Firewall R
 ## Examples
 
 ### Ensure a name is available.
+
     describe aws_network_firewall_rule_groups do
-      its('names') { should include 'Name' }
+      its('names') { should include 'RULE_GROUP_NaAME' }
     end
 
 ### Ensure that the arn is available.
+
     describe aws_network_firewall_rule_groups do
         its('arns') { should include 'ARN' }
     end
