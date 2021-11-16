@@ -5,7 +5,7 @@ platform: aws
 
 # aws_network_firewall_firewalls
 
-Use the `aws_network_firewall_firewalls` InSpec audit resource to test properties of multiple AWS Network Firewall Firewall.
+Use the `aws_network_firewall_firewalls` InSpec audit resource to test properties of multiple AWS Network Firewall firewalls.
 
 The firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS Network Firewall F
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | firewall_names | The descriptive name of the firewall. | firewall_name |
 | firewall_arns | The Amazon Resource Name (ARN) of the firewall. | firewall_arn |
@@ -31,13 +31,15 @@ For additional information, see the [AWS documentation on AWS Network Firewall F
 ## Examples
 
 ### Ensure a firewall name is available.
+
     describe aws_network_firewall_firewalls do
-      its('firewall_names') { should include 'FirewallName' }
+      its('firewall_names') { should include 'FIREWALL_NAME' }
     end
 
-### Ensure that the firewall arn is `FirewallARN`.
+### Ensure that the firewall ARN is `FIREWALL_ARN`.
+
     describe aws_network_firewall_firewalls do
-        its('firewall_arns') { should include 'FirewallARN' }
+        its('firewall_arns') { should include 'FIREWALL_ARN' }
     end
 
 ## Matchers
