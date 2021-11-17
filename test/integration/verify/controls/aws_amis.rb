@@ -13,12 +13,6 @@ control 'aws-amis-1.0' do
       its('platform_details') { should eq 'Linux/UNIX' }
     end
   end
-end
-
-control 'aws-amis-2.0' do
-
-  impact 1.0
-  title 'Test owners: self parameter'
 
   describe aws_amis(owners: 'self') do
     its('owner_ids.uniq.size') { be 1 }

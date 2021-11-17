@@ -4,16 +4,17 @@ require 'aws_backend'
 
 class AwsConfigurationRecorder < AwsResourceBase
   name 'aws_config_recorder'
-  desc 'Verifies settings for AWS Configuration Recorder'
+  desc 'Verifies settings for AWS Configuration Recorder.'
   example "
     describe aws_config_recorder('My_Recorder') do
       it { should exist }
       it { should be_recording }
       it { should be_all_supported }
       it { should have_include_global_resource_types }
+      its('last_status') { should eq 'Pending' }
     end
   "
-  attr_reader :role_arn, :resource_types, :recorder_name, :recording_all_resource_types, :recording_all_global_types
+  attr_reader :role_arn, :resource_types, :recorder_name, :recording_all_resource_types, :recording_all_global_types, :last_status, :recording
 
   alias recording_all_resource_types? recording_all_resource_types
   alias recording_all_global_types? recording_all_global_types
@@ -42,6 +43,8 @@ class AwsConfigurationRecorder < AwsResourceBase
       @resource_types = recorder[:recording_group][:resource_types]
       @recording_all_resource_types = recorder[:recording_group][:all_supported]
       @recording_all_global_types   = recorder[:recording_group][:include_global_resource_types]
+
+      status
     end
   end
 
@@ -54,12 +57,13 @@ class AwsConfigurationRecorder < AwsResourceBase
     catch_aws_errors do
       @status_response = @aws.config_client.describe_configuration_recorder_status(configuration_recorder_names: [@recorder_name])
       @status = @status_response.configuration_recorders_status.first.to_h
+      @last_status = @status[:last_status]
     end
   end
 
   def recording?
     return false unless exists?
-    status[:recording]
+    @status[:recording]
   end
 
   def to_s

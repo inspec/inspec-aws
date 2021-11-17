@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEc2Instance < AwsResourceBase
   name 'aws_ec2_instance'
-  desc 'Verifies settings for an AWS EC2 instance'
+  desc 'Verifies settings for an AWS EC2 instance.'
 
   example "
     describe aws_ec2_instance('i-12345678') do

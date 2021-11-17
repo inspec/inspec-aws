@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsSsmResourceComplianceSummaries < AwsResourceBase
   name 'aws_ssm_resource_compliance_summaries'
-  desc 'Verifies settings for a SSM Resource Compliance Summary in bulk'
-  example '
+  desc 'Verifies settings for a SSM Resource Compliance Summary in bulk.'
+  example "
     describe aws_ssm_resource_compliance_summaries do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :api_response
 
