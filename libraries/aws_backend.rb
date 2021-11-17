@@ -51,6 +51,7 @@ require 'aws-sdk-secretsmanager'
 require 'aws-sdk-mq'
 require 'aws-sdk-networkmanager'
 require 'aws-sdk-signer'
+require 'aws-sdk-amplify'
 
 # AWS Inspec Backend Classes
 #
@@ -290,6 +291,10 @@ class AwsConnection
 
   def mq_client
     aws_client(Aws::MQ::Client)
+  end
+
+  def amplify_client
+    aws_client(Aws::Amplify::Client)
   end
 end
 

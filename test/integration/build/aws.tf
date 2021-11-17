@@ -2156,7 +2156,6 @@ resource "aws_launch_template" "launch-template-test" {
       Name = var.aws_launch_template_tag_name
     }
   }
-
 }
 
 resource "aws_eip" "aws_eip_1" {
@@ -4596,5 +4595,41 @@ resource "aws_customer_gateway" "aws_customer_gateway_test1" {
 
   tags = {
     Name = "main-customer-gateway"
+  }
+}
+
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
   }
 }

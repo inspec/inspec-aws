@@ -1076,3 +1076,8 @@ output "aws_cloudwatch_log_group_name" {
 output "aws_cloudwatch_log_stream_arn" {
   value = aws_cloudwatch_log_stream.for_test.arn
 }
+output "app_id" {
+  value = aws_amplify_app.test-app.id
+}
+
+
