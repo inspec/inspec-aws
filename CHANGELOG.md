@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.34 -->
+<!-- latest_release 1.74.35 -->
+## [v1.74.35](https://github.com/inspec/inspec-aws/tree/v1.74.35) (2021-11-17)
+
+#### Merged Pull Requests
+- aws_ec2_volume_attachments [#629](https://github.com/inspec/inspec-aws/pull/629) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.34](https://github.com/inspec/inspec-aws/tree/v1.74.34) (2021-11-17)
 
 #### Merged Pull Requests
 - Nirbhay/AmplifyApp [#637](https://github.com/inspec/inspec-aws/pull/637) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.33](https://github.com/inspec/inspec-aws/tree/v1.74.33) (2021-11-15)
 
