@@ -95,12 +95,12 @@ end
 
 Use `should_not` to test the entity should not exist.
 ```ruby
-describe aws_emr_cluster('cCLUSTER_ID') do
+describe aws_emr_cluster('CLUSTER_ID') do
   it { should_not exist }
 end
 ```
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticmapreduce:DescribeCluster`, `elasticmapreduce:DescribeSecurityConfiguration` & `elasticmapreduce:ListClusters` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticmapreduce:DescribeCluster`, `elasticmapreduce:DescribeSecurityConfiguration` action set to allow.
 

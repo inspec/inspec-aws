@@ -16,7 +16,7 @@ class AwsEmrClusters < AwsResourceBase
              .register_column(:cluster_ids, field: :cluster_id)
              .register_column(:cluster_names, field: :cluster_name)
              .register_column(:cluster_arns, field: :cluster_arn)
-             .register_column(:applications, field: :applications)
+             .register_column(:application_names, field: :application_names, style: :simple) # TODO: to be tested
              .register_column(:status_states, field: :status_state)
              .register_column(:auto_scaling_roles, field: :auto_scaling_role)
              .register_column(:custom_ami_ids, field: :custom_ami_id)
@@ -64,7 +64,7 @@ class AwsEmrClusters < AwsResourceBase
         cluster_id:   cluster.id,
         cluster_name: cluster.name,
         status_state: cluster.status.state,
-        applications: cluster.applications[0].name,
+        application_names: cluster.applications.map(&:name),
         auto_scaling_role: cluster.auto_scaling_role,
         custom_ami_id: cluster.custom_ami_id,
         ebs_root_volume_size: cluster.ebs_root_volume_size,

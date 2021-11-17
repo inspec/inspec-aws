@@ -36,7 +36,7 @@ class AwsEmrClusterConstructorTest < Minitest::Test
   end
 
   def test_applications_name
-    assert_equal(@stub_data[0][:data][:cluster][:applications][0][:name], @cluster.applications[0])
+    assert_equal(@stub_data[0][:data][:cluster][:applications][0][:name], @cluster.application_names[0])
   end
 
   def test_exists

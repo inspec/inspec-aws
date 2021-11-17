@@ -29,4 +29,16 @@ class AwsEmrClustersHappyPathTest < Minitest::Test
   def test_clusters_running
     assert @clusters.running?
   end
+
+  def test_clusters_application_names
+    assert_equal(['Spark'], @clusters.application_names)
+  end
+
+  def test_clusters_status_states
+    assert_equal(%w{ RUNNING RUNNING }, @clusters.status_states)
+  end
+
+  def test_clusters_cluster_arns
+    assert_equal(%w{ cluster-arn cluster-arn }, @clusters.cluster_arns)
+  end
 end

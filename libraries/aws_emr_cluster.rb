@@ -21,7 +21,7 @@ class AwsEmrCluster < AwsResourceBase
   attr_reader :cluster_id, :cluster_arn, :cluster_name, :status_state, :status_state_change_reason_code,
               :status_state_change_reason_message, :status_timeline_creation_date_time, :status_timeline_ready_date_time,
               :status_timeline_end_date_time,
-              :applications, :auto_scaling_role, :custom_ami_id, :ebs_root_volume_size,
+              :application_names, :auto_scaling_role, :custom_ami_id, :ebs_root_volume_size,
               :kerberos_attributes_realm, :kerberos_attributes_realm_ad_domain_join_user,
               :log_encryption_kms_key_id, :log_uri, :release_label, :scale_down_behavior,
               :service_role, :step_concurrency_level, :visible_to_all_users, :managed_scaling_policy_unit_type
@@ -50,9 +50,9 @@ class AwsEmrCluster < AwsResourceBase
       @cluster_arn = cluster.cluster_arn
       @cluster_name = cluster.name
       @cluster_id = cluster.id
-      @applications = []
+      @application_names = []
       cluster.applications&.each do |application|
-        @applications << application.name
+        @application_names << application.name
       end
       @auto_scaling_role = cluster.auto_scaling_role
       @custom_ami_id = cluster.custom_ami_id
