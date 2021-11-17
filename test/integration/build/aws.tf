@@ -4818,3 +4818,7 @@ resource "aws_amplify_branch" "main" {
     REACT_APP_API_SERVER = "https://api.example.com"
   }
 }
+
+resource "aws_simpledb_domain" "users" {
+  name = "users"
+}

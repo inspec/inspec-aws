@@ -830,6 +830,10 @@ output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
 
+output "domain-names-sdb" {
+  value = aws_simpledb_domain.users.name
+}
+
 output "aws_api_gateway_deployement_id_test" {
   value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
 }
