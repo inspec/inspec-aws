@@ -37,7 +37,7 @@ class AwsConfigurationRecorderPositiveTest < Minitest::Test
     data[:client] = Aws::ConfigService::Client
     status = {}
     status[:method] = :describe_configuration_recorder_status
-    status[:data] = { :configuration_recorders_status => [{ :recording => true }] }
+    status[:data] = { :configuration_recorders_status => [{ :recording => true, :last_status => 'Success' }] }
     status[:client] = Aws::ConfigService::Client
     @config_recorder = AwsConfigurationRecorder.new(recorder_name: 'recorder', client_args: { stub_responses: true }, stub_data: [data, status])
   end
@@ -60,6 +60,10 @@ class AwsConfigurationRecorderPositiveTest < Minitest::Test
 
   def test_config_recorder_recording
     assert @config_recorder.recording?
+  end
+
+  def test_config_recorder_last_status
+    assert_equal('Success', @config_recorder.last_status)
   end
 
   def test_config_recorder_recording_all_resource_types
@@ -89,6 +93,7 @@ class AwsConfigurationRecorderNegativeTest < Minitest::Test
     status[:method] = :describe_configuration_recorder_status
     status[:data] = { :configuration_recorders_status => [{ :recording => false }] }
     status[:client] = Aws::ConfigService::Client
+
     @config_recorder = AwsConfigurationRecorder.new(recorder_name: 'recorder', client_args: { stub_responses: true }, stub_data: [data, status])
   end
 

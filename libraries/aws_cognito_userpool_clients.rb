@@ -34,7 +34,7 @@ class AWSCognitoUserPoolClients < AwsResourceBase
 
   def fetch_data
     table_rows = []
-    @query_params[:max_results] = 10
+    @query_params[:max_results] = 100
 
     loop do
       catch_aws_errors do

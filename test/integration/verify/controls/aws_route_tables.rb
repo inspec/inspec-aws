@@ -1,8 +1,8 @@
 title 'Test AWS Route Tables in bulk'
 
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
-aws_route_table_first_id = attribute(:aws_route_table_first_id, default: '', description: 'The AWS route table ID.')
-aws_route_table_second_id = attribute(:aws_route_table_second_id, default: '', description: 'The AWS route table ID.')
+aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_route_table_first_id = attribute(:aws_route_table_first_id, value: '', description: 'The AWS route table ID.')
+aws_route_table_second_id = attribute(:aws_route_table_second_id, value: '', description: 'The AWS route table ID.')
 
 control 'aws-route-tables-1.0' do
   impact 1.0
@@ -17,23 +17,23 @@ control 'aws-route-tables-1.0' do
 end
 
 title 'Test multiple AWS Route'
-aws_carrier_gateway_id = attribute("aws_carrier_gateway_id", default: "", description: "The ID of the carrier gateway.")
-aws_destination_cidr_block = attribute("aws_destination_cidr_block", default: "", description: "The IPv4 CIDR block used for the destination match.")
-aws_destination_ipv_6_cidr_block = attribute("aws_destination_ipv_6_cidr_block", default: "", description: "The IPv6 CIDR block used for the destination match.")
-aws_destination_prefix_list_id = attribute("aws_destination_prefix_list_id", default: "", description: "The prefix of the AWS service.")
-aws_egress_only_internet_gateway_id = attribute("aws_egress_only_internet_gateway_id", default: "", description: "The ID of the egress-only internet gateway.")
-aws_gateway_id = attribute("aws_gateway_id", default: "", description: "The ID of a gateway attached to your VPC.")
-aws_instance_id = attribute("aws_instance_id", default: "", description: "The ID of a NAT instance in your VPC.")
-aws_local_gateway_id = attribute("aws_local_gateway_id", default: "", description: "The ID of the local gateway.")
-aws_nat_gateway_id = attribute("aws_nat_gateway_id", default: "", description: "The ID of a NAT gateway.")
-aws_network_interface_id = attribute("aws_network_interface_id", default: "", description: "The ID of the network interface.")
-aws_transit_gateway_id = attribute("aws_transit_gateway_id", default: "", description: "The ID of a transit gateway.")
-aws_vpc_peering_connection_id = attribute("aws_vpc_peering_connection_id", default: "", description: "The ID of a VPC peering connection.")
-aws_instance_owner_id = attribute("aws_instance_owner_id", default: "", description: "The owner ID of a NAT instance in your VPC.")
-aws_origin = attribute("aws_origin", default: "", description: "Describes how the route was created.")
-aws_state = attribute("aws_state", default: "", description: "The state of the route.")
-aws_route_table_association_id = attribute(:aws_route_table_association_id, default: '', description: 'The ID of the AWS Route Table')
-aws_route_table_associated_subnet = attribute(:aws_route_table_associated_subnet, default: '', description: 'The associated routed table subnet ID')
+aws_carrier_gateway_id = attribute("aws_carrier_gateway_id", value: "", description: "The ID of the carrier gateway.")
+aws_destination_cidr_block = attribute("aws_destination_cidr_block", value: "", description: "The IPv4 CIDR block used for the destination match.")
+aws_destination_ipv_6_cidr_block = attribute("aws_destination_ipv_6_cidr_block", value: "", description: "The IPv6 CIDR block used for the destination match.")
+aws_destination_prefix_list_id = attribute("aws_destination_prefix_list_id", value: "", description: "The prefix of the AWS service.")
+aws_egress_only_internet_gateway_id = attribute("aws_egress_only_internet_gateway_id", value: "", description: "The ID of the egress-only internet gateway.")
+aws_gateway_id = attribute("aws_gateway_id", value: "", description: "The ID of a gateway attached to your VPC.")
+aws_instance_id = attribute("aws_instance_id", value: "", description: "The ID of a NAT instance in your VPC.")
+aws_local_gateway_id = attribute("aws_local_gateway_id", value: "", description: "The ID of the local gateway.")
+aws_nat_gateway_id = attribute("aws_nat_gateway_id", value: "", description: "The ID of a NAT gateway.")
+aws_network_interface_id = attribute("aws_network_interface_id", value: "", description: "The ID of the network interface.")
+aws_transit_gateway_id = attribute("aws_transit_gateway_id", value: "", description: "The ID of a transit gateway.")
+aws_vpc_peering_connection_id = attribute("aws_vpc_peering_connection_id", value: "", description: "The ID of a VPC peering connection.")
+aws_instance_owner_id = attribute("aws_instance_owner_id", value: "", description: "The owner ID of a NAT instance in your VPC.")
+aws_origin = attribute("aws_origin", value: "", description: "Describes how the route was created.")
+aws_state = attribute("aws_state", value: "", description: "The state of the route.")
+aws_route_table_association_id = attribute(:aws_route_table_association_id, value: '', description: 'The ID of the AWS Route Table')
+aws_route_table_associated_subnet = attribute(:aws_route_table_associated_subnet, value: '', description: 'The associated routed table subnet ID')
 
 
 control 'aws-routes-1.0' do

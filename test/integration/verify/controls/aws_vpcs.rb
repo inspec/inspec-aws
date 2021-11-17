@@ -7,6 +7,7 @@ aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', descrip
 aws_vpc_name = attribute(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
 
 control 'aws-vpcs-1.0' do
+
   impact 1.0
   title 'Ensure AWS VPC plural resource has the correct properties.'
 

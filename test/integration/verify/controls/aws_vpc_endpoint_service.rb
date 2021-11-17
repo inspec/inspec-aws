@@ -1,7 +1,8 @@
 title 'Test Single AWS VPC Endpoint Service'
-aws_vpc_service_name = attribute(:aws_vpc_endpoint_service_name, default: '', description: 'The VPC Endpoint service name')
-aws_vpc_endpoint_service_id = attribute(:aws_vpc_endpoint_service_id, default: '', description: 'The VPC Endpoint service ID')
-aws_vpc_base_endpoint_dns_names = attribute(:aws_vpc_base_endpoint_dns_names, default: '', description: 'The VPC base endpoint DNS names')
+
+aws_vpc_service_name = attribute(:aws_vpc_endpoint_service_name, value: '', description: 'The VPC Endpoint service name')
+aws_vpc_endpoint_service_id = attribute(:aws_vpc_endpoint_service_id, value: '', description: 'The VPC Endpoint service ID')
+aws_vpc_base_endpoint_dns_names = attribute(:aws_vpc_base_endpoint_dns_names, value: '', description: 'The VPC base endpoint DNS names')
 
 control 'aws-vpc-endpoint-service-1.0' do
 
