@@ -74,4 +74,4 @@ Use `should` to check if the user is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `transfer_client:client:list_users` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Transfer:Client:ListUsersResponse` action with `Effect` set to `Allow`.

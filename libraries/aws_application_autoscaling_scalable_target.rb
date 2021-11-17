@@ -25,7 +25,7 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
     end
   end
 
-  def id
+  def service_namespace
     return nil unless exists?
     @scalable_targets[:service_namespace]
   end

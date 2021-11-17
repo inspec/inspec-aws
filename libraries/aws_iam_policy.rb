@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamPolicy < AwsResourceBase
   name 'aws_iam_policy'
-  desc 'Verifies settings for an Iam Policy'
+  desc 'Verifies settings for an IAM Policy.'
 
   example "
     describe aws_iam_policy('policy-1') do

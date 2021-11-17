@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_sessions Resource
 platform: aws
 ---
 
-# aws_ec2_traffic_\mirror_\sessions
+# aws_ec2_traffic\_mirror\_sessions
 
 Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of all AWS Traffic Mirror sessions.
 
@@ -24,7 +24,7 @@ This resource does not require any parameters.
 ## Properties
 
 |Property                      | Description                           | Fields|
-| ---                          | ------------------------------------- | ----- |
+| ---                          | --- | --- |
 |traffic_mirror_session_ids    | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
 |traffic_mirror_target_ids     | The ID of the Traffic Mirror target. | traffic_mirror_target_id |
 |traffic_mirror_filter_ids     | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
@@ -59,6 +59,7 @@ For additional information, see [the API reference documentation](https://docs.a
     end
 
 ## Matchers
+
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### be_available

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsSnsTopic < AwsResourceBase
   name 'aws_sns_topic'
-  desc 'Verifies settings for an SNS Topic'
+  desc 'Verifies settings for an SNS Topic.'
   example "
     describe aws_sns_topic('arn:aws:sns:us-east-1:123456789012:some-topic') do
       it { should exist }

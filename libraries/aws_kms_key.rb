@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsKmsKey < AwsResourceBase
   name 'aws_kms_key'
-  desc 'Verifies settings for an individual AWS KMS Key'
+  desc 'Verifies settings for an individual AWS KMS Key.'
   example "
     describe aws_kms_key(key_id: 'arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
       it { should exist }
@@ -37,6 +37,22 @@ class AwsKmsKey < AwsResourceBase
 
   def exists?
     !@key.empty?
+  end
+
+  def kms_tags(tag_list)
+    return {} if tag_list.nil? || tag_list.empty?
+    tags = {}
+    tag_list.each do |tag|
+      tags[tag[:tag_key]] = tag[:tag_value]
+    end
+    tags
+  end
+
+  def tags
+    catch_aws_errors do
+      tag_list = @aws.kms_client.list_resource_tags(key_id: @display_name).tags
+      kms_tags(tag_list)
+    end
   end
 
   def created_days_ago
