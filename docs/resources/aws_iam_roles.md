@@ -61,9 +61,12 @@ The `exists` matcher tests if the filtered IAM User(s) exists.
       describe aws_iam_roles.where( <property>: <param>) do
         it { should exist }
       end
+
 You may also use `it { should_not exist }`.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions set to Allow: 
-`iam:ListRoles` 
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:ListRolesResponse` action with Effect set to Allow.
+
+You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
+

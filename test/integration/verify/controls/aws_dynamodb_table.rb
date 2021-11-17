@@ -1,4 +1,4 @@
-title 'Test single AWS DynamoDB Table'
+title 'Test single AWS DynamoDB Table.'
 
 aws_dynamodb_table_name = attribute(:aws_dynamodb_table_name, value: '', description: 'The AWS Dynamodb Table name.')
 aws_dynamodb_table_arn = attribute(:aws_dynamodb_table_arn, value: '', description: 'The AWS Dynamodb Table arn.')

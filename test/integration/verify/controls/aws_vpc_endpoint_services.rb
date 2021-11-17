@@ -1,5 +1,6 @@
 title 'Test All AWS VPC Endpoint Services'
-aws_vpc_service_name = attribute(:aws_vpc_endpoint_service_name, default: '', description: 'The VPC Endpoint service name')
+
+aws_vpc_service_name = attribute(:aws_vpc_endpoint_service_name, value: '', description: 'The VPC Endpoint service name')
 
 control 'aws-vpc-endpoint-services-1.0' do
 

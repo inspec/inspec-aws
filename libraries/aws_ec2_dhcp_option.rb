@@ -5,7 +5,7 @@ class AwsEc2DHCPOption < AwsResourceBase
   SERVER_TYPES = %w{domain-name-servers netbios-name-servers ntp-servers}.freeze
 
   name 'aws_ec2_dhcp_option'
-  desc 'Verifies settings for an AWS EC2 DHCP Option'
+  desc 'Verifies settings for an AWS EC2 DHCP Option.'
 
   example "
     describe aws_ec2_dhcp_option('dotp-12345678') do
@@ -40,7 +40,7 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def to_s
-    "EC2 DHCP Option Set #{display_name}"
+    "EC2 DHCP Option Set: #{display_name}"
   end
 
   def netbios_node_type

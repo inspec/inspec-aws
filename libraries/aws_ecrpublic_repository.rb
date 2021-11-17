@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEcrPublicRepository < AwsResourceBase
   name 'aws_ecrpublic_repository'
-  desc 'Verifies settings for an AWS ECR Public Repository'
+  desc 'Verifies settings for an AWS ECR Public Repository.'
 
   example "
     describe aws_ecrpublic_repository('my-public-repository') do

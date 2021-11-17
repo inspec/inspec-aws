@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsConfigDeliveryChannel < AwsResourceBase
   name 'aws_config_delivery_channel'
-  desc 'Verifies settings for AWS Config Delivery Channel'
+  desc 'Verifies settings for AWS Config Delivery Channel.'
   example "
     describe aws_config_delivery_channel do
       it                    { should exist }

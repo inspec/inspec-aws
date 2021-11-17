@@ -1,6 +1,6 @@
 title 'Test AWS SSM Parameters in bulk'
 
-aws_ssm_parameter_name = attribute(:aws_ssm_parameter_name, default: '', description: 'The AWS SSM Parameter Name')
+aws_ssm_parameter_name = attribute(:aws_ssm_parameter_name, value: '', description: 'The AWS SSM Parameter Name')
 
 control 'aws-ssm-parameters-1.0' do
 
