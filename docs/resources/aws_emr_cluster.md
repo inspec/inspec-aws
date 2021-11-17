@@ -102,5 +102,5 @@ end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticmapreduce:DescribeCluster`, `elasticmapreduce:DescribeSecurityConfiguration` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EMR:Client:DescribeClusterOutput` action set to allow.
 
