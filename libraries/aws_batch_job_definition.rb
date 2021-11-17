@@ -24,7 +24,7 @@ class AWSBatchJobDefinition < AwsResourceBase
     create_resource_methods(@job_definitions)
   end
 
-  def id
+  def job_definition_name
     return nil unless exists?
     @job_definitions[:job_definition_name]
   end

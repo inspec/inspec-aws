@@ -1,4 +1,5 @@
 control 'aws-dms-replication-subnet-group-1.0' do
+
   impact 1.0
   title 'Ensure AWS DMS Replication Subnet Group has the correct properties.'
 

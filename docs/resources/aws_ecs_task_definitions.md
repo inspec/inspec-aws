@@ -63,4 +63,4 @@ Use `should` to check if the task definition arns is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:client:list_task_definitions` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ECS:Client:ListTaskDefinitionsResponse` action with `Effect` set to `Allow`.

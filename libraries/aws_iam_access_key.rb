@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamAccessKey < AwsResourceBase
   name 'aws_iam_access_key'
-  desc 'Verifies settings for an AWS IAM Access Key'
+  desc 'Verifies settings for an AWS IAM Access Key.'
   example "
     describe aws_iam_access_key(username: 'username', access_key_id: 'access-key id') do
       it                    { should exist }

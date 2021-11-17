@@ -3,7 +3,7 @@ title: About the aws_ec2_launch_templates Resource
 platform: aws
 ---
 
-# aws\_ec2\_launch_\templates
+# aws\_ec2\_launch\_templates
 
 Use the `aws_ec2_launch_templates` InSpec audit resource to test properties of a all the AWS Launch templates.
 
@@ -57,4 +57,4 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).

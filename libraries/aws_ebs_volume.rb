@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsEbsVolume < AwsResourceBase
   name 'aws_ebs_volume'
-  desc 'Verifies settings for an EBS volume'
+  desc 'Verifies settings for an EBS volume.'
 
   example "
     describe aws_ebs_volume('vol-12345678') do

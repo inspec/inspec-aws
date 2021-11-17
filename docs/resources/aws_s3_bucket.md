@@ -138,6 +138,6 @@ The `have_secure_transport_enabled` matcher tests if a bucket policy that explic
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `s3:GetBucketAcl`, `s3:GetBucketLocation`, `s3:GetBucketLogging`, `s3:GetBucketPolicy`, and `s3:GetEncryptionConfiguration` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `S3:Client:GetBucketAclOutput`, `S3:Client:GetBucketLocationOutput`, `S3:Client:GetBucketLoggingOutput`, `S3:Client:GetBucketPolicyOutput`, and `S3:Client:GetBucketEncryptionOutput` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazons3.html).
