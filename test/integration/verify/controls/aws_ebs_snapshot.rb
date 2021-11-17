@@ -4,6 +4,7 @@ aws_ebs_snapshot_owner_id = attribute(:aws_ebs_snapshot_owner_id, value: '', des
 aws_ebs_encrypted_snapshot_id = attribute(:aws_ebs_encrypted_snapshot_id, value: '', description: 'The encrypted AWS EBS Snapshot ID.')
 
 title 'Test single AWS EBS Snapshot'
+
 control 'aws-ebs-snapshot-1.0' do
 
   impact 1.0

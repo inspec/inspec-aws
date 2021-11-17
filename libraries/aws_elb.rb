@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsElb < AwsResourceBase
   name 'aws_elb'
-  desc 'Verifies settings for an Elastic Load Balancer'
+  desc 'Verifies settings for an Elastic Load Balancer.'
 
   example "
     describe aws_elb('load-balancer-1') do
@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols
+              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols, :certificate_id
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
@@ -24,6 +24,7 @@ class AwsElb < AwsResourceBase
     catch_aws_errors do
       load_balancer_name = { load_balancer_names: [opts[:load_balancer_name]] }
       resp = @aws.elb_client.describe_load_balancers(load_balancer_name).load_balancer_descriptions.first
+      @attrs = @aws.elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name]).load_balancer_attributes
 
       @availability_zones = resp.availability_zones
       @dns_name           = resp.dns_name
@@ -36,6 +37,7 @@ class AwsElb < AwsResourceBase
       @subnet_ids         = resp.subnets
       @vpc_id             = resp.vpc_id
       @protocols          = resp.listener_descriptions.map { |l| l.listener.protocol }.uniq
+      @certificate_id     = resp.listener_descriptions.map { |l| l.listener.ssl_certificate_id }
 
       # The ELB will list multiple custom policies, including previously configured policies
       # Even if a pre-defined policy is selected, a custom policy is created from that template
@@ -52,5 +54,13 @@ class AwsElb < AwsResourceBase
 
   def to_s
     "AWS ELB #{load_balancer_name}"
+  end
+
+  def cross_zone_load_balancing_enabled?
+    !@attrs.cross_zone_load_balancing.enabled == false
+  end
+
+  def access_log_enabled?
+    !@attrs.access_log.enabled == false
   end
 end

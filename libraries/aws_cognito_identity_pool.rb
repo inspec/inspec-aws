@@ -25,17 +25,13 @@ class AWSCognitoIdentityPool < AwsResourceBase
     end
   end
 
-  def id
+  def identity_pool_id
     return nil unless exists?
     @res[:identity_pool_id]
   end
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def encrypted?
-    @res[:encrypted]
   end
 
   def to_s

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsIamInlinePolicy < AwsResourceBase
   name 'aws_iam_inline_policy'
-  desc 'Verifies settings for an Iam Inline Policy, attached to a user, role or group'
+  desc 'Verifies settings for an Iam Inline Policy, attached to a user, role or group.'
 
   example "
     describe aws_iam_inline_policy(role_name:'rolename-a', policy_name:'policy-1') do

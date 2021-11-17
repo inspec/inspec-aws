@@ -20,7 +20,6 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     validate_parameters(required: [:transit_gateway_route_table_id])
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
     @display_name = opts[:transit_gateway_route_table_id]
-
     catch_aws_errors do
       resp = aws.compute_client.get_transit_gateway_route_table_associations({ transit_gateway_route_table_id: @display_name })
       @association = resp.associations[0].to_h
@@ -28,7 +27,7 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     end
   end
 
-  def id
+  def transit_gateway_route_table_id
     return nil unless exists?
     @association[:transit_gateway_route_table_id]
   end
@@ -37,11 +36,7 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     !@association.nil? && !@association.empty?
   end
 
-  def encrypted?
-    @association[:encrypted]
-  end
-
   def to_s
-    "Transit gateway Route table Association #{@display_name}"
+    "Transit gateway Route table Association: #{@display_name}"
   end
 end

@@ -1,9 +1,9 @@
-aws_mount_target_mt_id = attribute(:aws_mount_target_mt_id, default: '', description: '')
-aws_file_system_mt_id = attribute(:aws_file_system_mt_id, default: '', description: '')
-aws_subnet_mt_id = attribute(:aws_subnet_mt_id, default: '', description: '')
-aws_vpc_mt_id = attribute(:aws_vpc_mt_id, default: '', description: '')
+aws_mount_target_mt_id = attribute(:aws_mount_target_mt_id, value: '', description: '')
+aws_file_system_mt_id = attribute(:aws_file_system_mt_id, value: '', description: '')
+aws_subnet_mt_id = attribute(:aws_subnet_mt_id, value: '', description: '')
+aws_vpc_mt_id = attribute(:aws_vpc_mt_id, value: '', description: '')
 
-control 'aws-efs-mount-target1-1.0' do
+control 'aws-efs-mount-target-1.0' do
 
     impact 1.0
     title 'Ensure AWS EFS Mount Target has the correct properties.'
@@ -11,12 +11,6 @@ control 'aws-efs-mount-target1-1.0' do
     describe aws_efs_mount_target(mount_target_id: aws_mount_target_mt_id) do
         it { should exist }
     end
-end
-
-control 'aws-efs-mount-target2-1.0' do
-
-    impact 1.0
-    title 'Ensure AWS EFS Mount Target has the correct properties.'
   
     describe aws_efs_mount_target(mount_target_id: aws_mount_target_mt_id)  do
         its('owner_id') { should eq "112758395563" }
