@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.33 -->
+<!-- latest_release 1.74.34 -->
+## [v1.74.34](https://github.com/inspec/inspec-aws/tree/v1.74.34) (2021-11-17)
+
+#### Merged Pull Requests
+- Nirbhay/AmplifyApp [#637](https://github.com/inspec/inspec-aws/pull/637) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.33](https://github.com/inspec/inspec-aws/tree/v1.74.33) (2021-11-15)
 
 #### Merged Pull Requests
 - minor updates to InSpec AWS Resources that were merged - 684, 685, 686, and 695. [#763](https://github.com/inspec/inspec-aws/pull/763) ([dkumaras](https://github.com/dkumaras))
-<!-- latest_release -->
 
 ## [v1.74.32](https://github.com/inspec/inspec-aws/tree/v1.74.32) (2021-11-15)
 
