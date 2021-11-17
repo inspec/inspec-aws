@@ -1076,3 +1076,11 @@ output "aws_cloudwatch_log_group_name" {
 output "aws_cloudwatch_log_stream_arn" {
   value = aws_cloudwatch_log_stream.for_test.arn
 }
+
+output "aws_emr_security_configuration_name" {
+  value = aws_emr_security_configuration.emr_security_configuration.name
+}
+
+output "aws_emr_security_configuration_json" {
+  value = aws_emr_security_configuration.emr_security_configuration.configuration
+}
