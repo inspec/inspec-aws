@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.35 -->
+<!-- latest_release 1.74.36 -->
+## [v1.74.36](https://github.com/inspec/inspec-aws/tree/v1.74.36) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_firewall_firewall_policy [#630](https://github.com/inspec/inspec-aws/pull/630) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.35](https://github.com/inspec/inspec-aws/tree/v1.74.35) (2021-11-17)
 
 #### Merged Pull Requests
 - aws_ec2_volume_attachments [#629](https://github.com/inspec/inspec-aws/pull/629) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.34](https://github.com/inspec/inspec-aws/tree/v1.74.34) (2021-11-17)
 
