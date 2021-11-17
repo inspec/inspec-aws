@@ -30,6 +30,7 @@ class AwsEmrClusters < AwsResourceBase
              .register_column(:service_roles, field: :service_role)
              .register_column(:step_concurrency_levels, field: :step_concurrency_level)
              .register_column(:visible_to_all_users, field: :visible_to_all_users)
+             .register_column(:security_configuration_names, field: :security_configuration_name)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -76,6 +77,7 @@ class AwsEmrClusters < AwsResourceBase
         scale_down_behavior: cluster.scale_down_behavior,
         service_role: cluster.service_role,
         step_concurrency_level: cluster.step_concurrency_level,
+        security_configuration_name: cluster.security_configuration,
         visible_to_all_users: cluster.visible_to_all_users }]
     end
     @table = cluster_rows

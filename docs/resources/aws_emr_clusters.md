@@ -45,6 +45,7 @@ See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com
 |service_roles                            | The IAM role that Amazon EMR assumes in order to access Amazon Web Services resources on your behalf.|service_role|
 |step_concurrency_levels                  | Specifies the number of steps that can be executed concurrently.|step_concurrency_level|
 |visible_to_all_users                    | Indicates whether the cluster is visible to IAM principals in the Amazon Web Services account associated with the cluster.|visible_to_all_users|
+|security_configuration_names             | The name of the security configuration applied to the cluster.|security_configuration|
 
 ## Examples
 

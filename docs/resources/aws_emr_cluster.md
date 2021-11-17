@@ -56,6 +56,7 @@ See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com
 |step_concurrency_level                  | Specifies the number of steps that can be executed concurrently.|
 |visible_to_all_users                    | Indicates whether the cluster is visible to IAM principals in the Amazon Web Services account associated with the cluster.|
 |managed_scaling_policy_unit_type        | The unit type used for specifying a managed scaling policy. Valid values are InstanceFleetUnits, Instances, VCPU|
+|security_configuration_name             | The name of the security configuration applied to the cluster.|
               
 ## Examples
 
