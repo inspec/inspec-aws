@@ -52,6 +52,7 @@ require 'aws-sdk-mq'
 require 'aws-sdk-networkmanager'
 require 'aws-sdk-signer'
 require 'aws-sdk-amplify'
+require 'aws-sdk-networkfirewall'
 
 # AWS Inspec Backend Classes
 #
@@ -295,6 +296,10 @@ class AwsConnection
 
   def amplify_client
     aws_client(Aws::Amplify::Client)
+  end
+
+  def network_firewall_client
+    aws_client(Aws::NetworkFirewall::Client)
   end
 end
 
