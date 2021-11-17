@@ -1222,6 +1222,15 @@ resource "aws_config_configuration_recorder" "config_recorder" {
   count    = var.aws_create_configuration_recorder
   name     = var.aws_configuration_recorder_name
   role_arn = aws_iam_role.role_for_config_recorder[0].arn
+  recording_group {
+    all_supported = true
+  }
+}
+
+resource "aws_config_configuration_recorder_status" "config_recorder_status" {
+  name       = aws_config_configuration_recorder.config_recorder.0.name
+  is_enabled = true
+  depends_on = [aws_config_delivery_channel.delivery_channel]
 }
 
 resource "aws_iam_role" "role_for_config_recorder" {
@@ -1435,7 +1444,6 @@ resource "aws_iam_policy" "aws_policy_1" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_policy" "aws_attached_policy_1" {
@@ -1621,7 +1629,6 @@ resource "aws_iam_role" "aws_role_generic" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_role_policy" "generic_policy" {
@@ -1643,7 +1650,6 @@ resource "aws_iam_role_policy" "generic_policy" {
   ]
 }
 EOF
-
 }
 
 data "aws_ami" "aws_vm_config" {
@@ -1755,6 +1761,11 @@ resource "aws_lb" "aws-alb" {
   security_groups    = [aws_security_group.lb_sg[0].id]
   subnets            = [aws_subnet.eks_subnet[0].id, aws_subnet.eks_subnet-2[0].id]
 
+ access_logs {
+    bucket  = aws_s3_bucket.bucket_public[0].id
+    prefix  = "test-lb"
+    enabled = true
+  }
   tags = {
     Environment = "inspec-aws"
   }
@@ -1783,7 +1794,6 @@ resource "aws_cloudformation_stack" "ecr" {
   }
 }
 STACK
-
 }
 
 resource "aws_route53_zone" "test_zone" {
@@ -1878,7 +1888,6 @@ resource "aws_iam_role" "lambda_test_role" {
   ]
 }
 EOF
-
 }
 
 data "aws_iam_policy" "lambda_execute" {
@@ -2147,7 +2156,6 @@ resource "aws_launch_template" "launch-template-test" {
       Name = var.aws_launch_template_tag_name
     }
   }
-
 }
 
 resource "aws_eip" "aws_eip_1" {
@@ -2211,6 +2219,7 @@ resource "aws_ecs_service" "bar" {
   task_definition     = aws_ecs_task_definition.aws_ecs_task_definition_test.arn
   scheduling_strategy = "DAEMON"
 }
+
 resource "aws_ecs_cluster" "for_ecs_service" {
   name = var.aws_cluster_name
 
@@ -2471,7 +2480,6 @@ resource "aws_ecs_cluster" "for_ecs_service" {
     value = "enabled"
   }
 }
-
 
 resource "aws_dms_certificate" "aws_dms_certificate_test" {
   certificate_id = "test1"
@@ -3173,6 +3181,17 @@ resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
   }
 }
 
+resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate" {
+  description = "Test client certificate"
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "api_gateway_stage"
+  client_certificate_id = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate.id
+}
+
 resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
   name        = "MyDemoAPI"
   description = "This is my API for demonstration purposes"
@@ -3692,7 +3711,6 @@ resource "aws_lambda_function" "aws_lambda_function_sf_test" {
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
   source_code_hash = filebase64sha256("files/lambda.zip")
 
-
   runtime = "nodejs12.x"
 
   environment {
@@ -3944,6 +3962,29 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
 
+#Volume Attachment
+
+resource "aws_volume_attachment" "aws_volume_attachment_test" {
+  device_name = "/dev/sdf"
+  volume_id   = aws_ebs_volume.aws_ebs_volume_VA_test.id
+  instance_id = aws_instance.aws_instance_VA_test.id
+}
+
+resource "aws_instance" "aws_instance_VA_test" {
+  ami               = "ami-00399ec92321828f5"
+  availability_zone = "us-east-2a"
+  instance_type     = "t2.micro"
+
+  tags = {
+    Name = "TestInstance"
+  }
+}
+
+resource "aws_ebs_volume" "aws_ebs_volume_VA_test" {
+  availability_zone = "us-east-2a"
+  size              = 1
+}
+
 #VPN Connection Route
 
 resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
@@ -3993,7 +4034,6 @@ resource "aws_ec2_traffic_mirror_filter" "filter" {
   network_services = ["amazon-dns"]
 }
 
-
 resource "aws_ec2_traffic_mirror_filter" "filter" {
   description      = "traffic mirror filter - terraform example"
   network_services = ["amazon-dns"]
@@ -4018,12 +4058,10 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld"
   }
-
 }
 
 data "aws_ami" "ubuntu" {
   most_recent = true
-
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -4033,7 +4071,6 @@ data "aws_ami" "ubuntu" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
   owners = ["099720109477"] # Canonical
 }
 
@@ -4058,8 +4095,6 @@ resource "aws_internet_gateway" "aws_internet_gateway_test" {
 resource "aws_vpc" "aws_vpc_internet_gateway_test" {
   cidr_block = "10.0.0.0/16"
 }
-
-
 
 #Network Interface
 
@@ -4101,6 +4136,686 @@ resource "aws_instance" "aws_instance_test" {
 
   credit_specification {
     cpu_credits = "unlimited"
+  }
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_bm_test1" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_bm_test1" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_bm_test1" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_bm_test1.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name    = "example"
+}
+
+resource "aws_api_gateway_base_path_mapping" "aws_api_gateway_base_path_mapping_bm_test1" {
+  api_id      = aws_api_gateway_rest_api.aws_api_gateway_rest_api_bm_test1.id
+  stage_name  = aws_api_gateway_stage.aws_api_gateway_stage_bm_test1.stage_name
+  domain_name = "test.eng.chefdemo.net"
+}
+
+resource "aws_api_gateway_account" "aws_api_gateway_account_test1" {
+  cloudwatch_role_arn = aws_iam_role.aws_iam_role_api_gateway_account_test1.arn
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_account_test1" {
+  name = "aws_iam_role_api_gateway_account_test2"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_api_gateway_account_test1" {
+  name = "aws_iam_role_policy_api_gateway_account_test1"
+  role = aws_iam_role.aws_iam_role_api_gateway_account_test1.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_api_gateway_api_key" "aws_api_gateway_api_key_test1" {
+  name = "aws_api_gateway_api_key_demo1"
+}
+
+resource "aws_api_gateway_authorizer" "aws_api_gateway_authorizer_test1" {
+  name                   = "aws_api_gateway_authorizer_test_demo"
+  rest_api_id            = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test2.id
+  authorizer_uri         = aws_lambda_function.aws_lambda_function_api_gateway_authorizer_test1.invoke_arn
+  authorizer_credentials = aws_iam_role.aws_iam_role_api_gateway_authorizer_test1.arn
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test2" {
+  name = "aws_api_gateway_rest_api_test2-auth-demo"
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_authorizer_test1" {
+  name = "api_gateway_auth_invocation"
+  path = "/"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_api_gateway_authorizer_test1" {
+  name = "aws_iam_role_policy_api_gateway_authorizer_test_demo1"
+  role = aws_iam_role.aws_iam_role_api_gateway_authorizer_test1.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "lambda:InvokeFunction",
+      "Effect": "Allow",
+      "Resource": "${aws_lambda_function.aws_lambda_function_api_gateway_authorizer_test1.arn}"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "aws_iam_role_api_gateway_authorizer_lambda_test1" {
+  name = "api-gateway-authorizer-lambda-demo-lambda"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_lambda_function" "aws_lambda_function_api_gateway_authorizer_test1" {
+  filename      = "lambda.zip"
+  function_name = "api_gateway_authorizer"
+  role          = aws_iam_role.aws_iam_role_api_gateway_authorizer_lambda_test1.arn
+  handler       = "exports.test"
+  runtime       = "nodejs12.x"
+  source_code_hash = filebase64sha256("lambda.zip")
+}
+
+resource "aws_api_gateway_client_certificate" "aws_api_gateway_client_certificate_test1" {
+  description = "My client certificate."
+}
+
+## Cloud Front Origin Access Identity
+
+resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
+  comment = "Some comment"
+}
+
+resource "aws_mq_configuration" "for_broker" {
+  description    = "Example Configuration"
+  name           = "To_test_broker"
+  engine_type    = "ActiveMQ"
+  engine_version = "5.15.0"
+
+  data = <<DATA
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<broker xmlns="http://activemq.apache.org/schema/core">
+  <plugins>
+    <forcePersistencyModeBrokerPlugin persistenceFlag="true"/>
+    <statisticsBrokerPlugin/>
+    <timeStampingBrokerPlugin ttlCeiling="86400000" zeroExpirationOverride="86400000"/>
+  </plugins>
+</broker>
+DATA
+}
+
+resource "aws_mq_broker" "test-broker" {
+  broker_name = "test_broker"
+
+  configuration {
+    id       = aws_mq_configuration.for_broker.id
+    revision = aws_mq_configuration.for_broker.latest_revision
+  }
+
+  engine_type        = "ActiveMQ"
+  engine_version     = "5.15.9"
+  host_instance_type = "mq.t2.micro"
+  security_groups    = [aws_security_group.to_test_batch.id]
+
+  user {
+    username = "ExampleUser"
+    password = "ExampleUser"
+  }
+}
+
+## RDS Cluster Snapshot
+
+resource "aws_db_cluster_snapshot" "aws_db_cluster_snapshot_test" {
+  db_cluster_identifier          = aws_rds_cluster.rds_cluster.id
+  db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
+}
+
+resource "aws_placement_group" "web" {
+  name     = "test_placement_group"
+  strategy = "cluster"
+}
+
+##Cloud Front Cache Policy
+
+resource "aws_cloudfront_cache_policy" "aws_cloudfront_cache_policy_test1" {
+  name        = "example-policy"
+  comment     = "test comment"
+  default_ttl = 50
+  max_ttl     = 100
+  min_ttl     = 1
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = "whitelist"
+      cookies {
+        items = ["example"]
+      }
+    }
+    headers_config {
+      header_behavior = "whitelist"
+      headers {
+        items = ["example"]
+      }
+    }
+    query_strings_config {
+      query_string_behavior = "whitelist"
+      query_strings {
+        items = ["example"]
+      }
+    }
+  }
+}
+
+resource "aws_cloudfront_origin_request_policy" "test-origin-policy" {
+  name    = "example-policy"
+  comment = "example comment"
+  cookies_config {
+    cookie_behavior = "whitelist"
+    cookies {
+      items = ["example"]
+    }
+  }
+  headers_config {
+    header_behavior = "whitelist"
+    headers {
+      items = ["example"]
+    }
+  }
+  query_strings_config {
+    query_string_behavior = "whitelist"
+    query_strings {
+      items = ["example"]
+    }
+  }
+}
+
+resource "aws_cloudwatch_dashboard" "main" {
+  dashboard_name = "my-dashboard"
+
+  dashboard_body = <<EOF
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/EC2",
+            "CPUUtilization",
+            "InstanceId",
+            "i-012345"
+          ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "region": "us-east-1",
+        "title": "EC2 Instance CPU"
+      }
+    },
+    {
+      "type": "text",
+      "x": 0,
+      "y": 7,
+      "width": 3,
+      "height": 3,
+      "properties": {
+        "markdown": "Hello world"
+      }
+    }
+  ]
+}
+EOF
+}
+
+locals {
+  test_cert = "${path.module}/files/cert.pem"
+}
+
+locals {
+  test_key = "${path.module}/files/key.pem"
+}
+
+resource "aws_iam_server_certificate" "test_cert" {
+  name             = "some_test_cert"
+  certificate_body = file(local.test_cert)
+  private_key      = file(local.test_key)
+}
+
+## VPN AUTH
+
+resource "aws_ec2_client_vpn_authorization_rule" "test_auth" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  target_network_cidr    = "0.0.0.0/0"
+  authorize_all_groups   = true
+}
+
+## VPN Endpoints
+resource "aws_ec2_client_vpn_route" "test-route" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  destination_cidr_block = "0.0.0.0/0"
+  target_vpc_subnet_id   = aws_ec2_client_vpn_network_association.test-association.subnet_id
+}
+
+resource "aws_ec2_client_vpn_network_association" "test-association" {
+  client_vpn_endpoint_id = aws_ec2_client_vpn_endpoint.test-endpoint.id
+  subnet_id              = "subnet-700ff218"
+}
+
+resource "aws_ec2_client_vpn_endpoint" "test-endpoint" {
+  description            = "Example Client VPN endpoint"
+  server_certificate_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  client_cidr_block      = "10.0.0.0/16"
+
+  authentication_options {
+    type                       = "certificate-authentication"
+    root_certificate_chain_arn = "arn:aws:acm:us-east-2:112758395563:certificate/a20fe841-b1ef-4785-aefb-e69838eacdcb"
+  }
+
+  connection_log_options {
+    enabled = false
+  }
+}
+
+//CloudWatch Anomaly Detector
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_anomaly_detector_test1" {
+  alarm_name                = "terraform-test-foobar"
+  comparison_operator       = "GreaterThanUpperThreshold"
+  evaluation_periods        = "2"
+  threshold_metric_id       = "e1"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+
+  metric_query {
+    id          = "e1"
+    expression  = "ANOMALY_DETECTION_BAND(m1)"
+    label       = "CPUUtilization (Expected)"
+    return_data = "true"
+  }
+
+  metric_query {
+    id          = "m1"
+    return_data = "true"
+    metric {
+      metric_name = "CPUUtilization"
+      namespace   = "AWS/EC2"
+      period      = "120"
+      stat        = "Average"
+      unit        = "Count"
+
+      dimensions = {
+        InstanceId = "i-0111913dd854e6590"
+      }
+    }
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
+  alarm_name                = "terraform-test-bravo"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "CPUUtilization"
+  namespace                 = "AWS/EC2"
+  period                    = "120"
+  statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+}
+
+#EC2::Signer::SigningProfile
+
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
+
+## AWS cloudwatch log stream
+
+resource "aws_cloudwatch_log_group" "for_stream" {
+  name = "Yada"
+}
+
+resource "aws_cloudwatch_log_stream" "for_test" {
+  name           = "SampleLogStream1234"
+  log_group_name = aws_cloudwatch_log_group.for_stream.name
+}
+
+//AWS::EC2::CapacityReservation
+resource "aws_ec2_capacity_reservation" "aws_ec2_capacity_reservation_test1" {
+  instance_type     = "t2.micro"
+  instance_platform = "Linux/UNIX"
+  availability_zone = "us-east-2a"
+  instance_count    = 1
+}
+
+//AWS::EC2::CustomerGateway
+resource "aws_customer_gateway" "aws_customer_gateway_test1" {
+  bgp_asn    = 65000
+  ip_address = "172.83.124.10"
+  type       = "ipsec.1"
+
+  tags = {
+    Name = "main-customer-gateway"
+  }
+}
+
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
+  }
+}
+
+
+resource "aws_networkfirewall_firewall" "aws_networkfirewall_firewall_test" {
+  name                = "example"
+  firewall_policy_arn = aws_networkfirewall_firewall_policy.aws_networkfirewall_firewall_policy_test.arn
+  vpc_id              = aws_vpc.aws_vpc_firewall_test.id
+  subnet_mapping {
+    subnet_id = aws_subnet.aws_subnet_firewall_test.id
+  }
+
+  tags = {
+    Tag1 = "Value1"
+    Tag2 = "Value2"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_firewall_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_firewall_test" {
+  vpc_id     = aws_vpc.aws_vpc_firewall_test.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_networkfirewall_firewall_policy" "aws_networkfirewall_firewall_policy_test" {
+  name = "example"
+
+  firewall_policy {
+    stateless_default_actions          = ["aws:pass"]
+    stateless_fragment_default_actions = ["aws:drop"]
+    stateless_custom_action {
+      action_definition {
+        publish_metric_action {
+          dimension {
+            value = "1"
+          }
+        }
+      }
+      action_name = "ExampleCustomAction"
+    }
+  }
+}
+
+resource "aws_networkfirewall_logging_configuration" "aws_networkfirewall_logging_configuration_test" {
+  firewall_arn = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.arn
+  logging_configuration {
+    log_destination_config {
+      log_destination = {
+        bucketName = aws_s3_bucket.example.bucket
+        prefix     = "/example"
+      }
+      log_destination_type = "S3"
+      log_type             = "FLOW"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "aws-bucket-public-test1"
+  acl    = "public-read"
+
+  tags = {
+    Name        = "My bucket123"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_networkfirewall_rule_group" "aws_networkfirewall_rule_group_test" {
+  capacity = 100
+  name     = "example"
+  type     = "STATEFUL"
+  rule_group {
+    rules_source {
+      rules_source_list {
+        generated_rules_type = "DENYLIST"
+        target_types         = ["HTTP_HOST"]
+        targets              = ["test.example.com"]
+      }
+    }
+  }
+
+  tags = {
+    Tag1 = "Value1"
+    Tag2 = "Value2"
+  }
+}
+
+#Spot Fleets
+
+resource "aws_launch_template" "aws_launch_template_sf_test" {
+  name          = "launch-template"
+  image_id      = "ami-00399ec92321828f5"
+  instance_type = "t2.micro"
+  key_name      = "some-key"
+}
+
+resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
+  iam_fleet_role  = "arn:aws:iam::112758395563:role/aws-ec2-spot-fleet-tagging-role"
+  target_capacity = 2
+
+  launch_template_config {
+    launch_template_specification {
+      id      = aws_launch_template.aws_launch_template_sf_test.id
+      version = "1"
+    }
+  }
+}
+
+#Amplify App
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
+  }
+}
+
+#Amplify Branch
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.test-app.id
+  branch_name = "master"
+
+  framework = "React"
+  stage     = "PRODUCTION"
+
+  environment_variables = {
+    REACT_APP_API_SERVER = "https://api.example.com"
   }
 }
 

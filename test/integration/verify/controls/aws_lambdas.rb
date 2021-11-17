@@ -1,6 +1,5 @@
 title 'AWS Lambdas compliance Tests'
 
-
 control "Check that any lambdas are correctly configured" do
   impact  1.0
   title   "Lambda tests"
