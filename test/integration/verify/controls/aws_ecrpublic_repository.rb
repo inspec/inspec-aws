@@ -1,6 +1,7 @@
 aws_ecrpublic_repository_name = attribute(:aws_ecrpublic_repository_name, value: "", description: "The ECR public repository identifier.")
 
 title "Test single AWS ECR public Repository"
+
 control "aws-ecrpublic-repository-1.0" do
 
   impact 1.0
@@ -8,7 +9,6 @@ control "aws-ecrpublic-repository-1.0" do
 
   describe aws_ecrpublic_repository(repository_name: aws_ecrpublic_repository_name) do
     it { should exist }
-    
   end
 
   describe aws_ecrpublic_repository(repository_name: 'not-there') do

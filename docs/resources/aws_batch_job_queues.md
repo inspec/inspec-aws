@@ -3,7 +3,7 @@ title: About the aws_batch_job_queues Resource
 platform: aws
 ---
 
-# aws\_batch_\_job\_queues
+# aws\_batch\_job\_queues
 
 Use the `aws_batch_job_queues` InSpec audit resource to test the properties of multiple AWS Batch job queues.
 
@@ -75,4 +75,4 @@ Use `should` to check if the job_queue name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `batch:client:describe_job_queues` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Batch:Client:DescribeJobQueuesResponse` action with `Effect` set to `Allow`.

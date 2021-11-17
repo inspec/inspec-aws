@@ -77,7 +77,6 @@ The `active` matcher tests if the described IAM Access Key has a status of Activ
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions action set to allow: 
-`iam:ListAccessKeys` 
-`iam:GetAccessKeyLastUsed` 
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetAccessKeyLastUsedResponse` action with Effect set to Allow.
 
+You can find detailed documentation at [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/r53-api-permissions-ref.html)

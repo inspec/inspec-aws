@@ -1,6 +1,6 @@
 title 'Test single AWS Group'
 
-aws_iam_group_name = attribute(:aws_iam_group_name, default: '', description: 'The AWS Iam Group name.')
+aws_iam_group_name = attribute(:aws_iam_group_name, value: '', description: 'The AWS Iam Group name.')
 
 control 'aws-iam-group-1.0' do
 

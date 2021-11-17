@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsDbSubnetGroup < AwsResourceBase
   name 'aws_db_subnet_group'
-  desc 'Verifies settings for a Subnet Group'
+  desc 'Verifies settings for a Subnet Group.'
   example "
     describe aws_subnet_group(db_subnet_group_name: 'subnet-group') do
       it { should exist }

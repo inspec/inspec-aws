@@ -1,6 +1,7 @@
-aws_crawler_name = attribute(:aws_crawler_name, value: 'test1', description: '')
+aws_crawler_name = attribute(:aws_crawler_name, value: '', description: '')
 
 control 'aws-glue-crawler-1.0' do
+
   impact 1.0
   title 'Ensure AWS Glue Crawler has the correct properties.'
 

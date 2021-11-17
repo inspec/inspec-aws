@@ -1,6 +1,7 @@
 aws_ecrpublic_repository_name = attribute(:aws_ecrpublic_repository_name, value: "", description: "The ECR public repository identifier.")
 
 title "Test multiple AWS ECR public Repositories"
+
 control "aws-ecrpublic-repositories-1.0" do
 
   impact 1.0

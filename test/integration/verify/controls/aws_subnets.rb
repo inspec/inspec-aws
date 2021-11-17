@@ -1,8 +1,8 @@
 title 'Test AWS VPC Subnets in bulk'
 
-aws_subnet_id = attribute(:aws_subnet_id, default: '', description: 'The AWS VPC Subnet ID.')
-aws_subnet_cidr_block = attribute(:aws_subnet_cidr_block, default: '', description: 'The AWS VPC Subnet CIDR block.')
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
+aws_subnet_id = attribute(:aws_subnet_id, value: '', description: 'The AWS VPC Subnet ID.')
+aws_subnet_cidr_block = attribute(:aws_subnet_cidr_block, value: '', description: 'The AWS VPC Subnet CIDR block.')
+aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 
 control 'aws-subnets-1.0' do
 

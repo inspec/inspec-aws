@@ -8,5 +8,4 @@ control 'aws-db-subnet-groups-1.0' do
   describe aws_db_subnet_groups do
     it { should exist }
   end
-
 end
