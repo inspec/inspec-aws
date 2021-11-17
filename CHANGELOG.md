@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.36 -->
+<!-- latest_release 1.74.37 -->
+## [v1.74.37](https://github.com/inspec/inspec-aws/tree/v1.74.37) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_manager_customer_gateway_association [#628](https://github.com/inspec/inspec-aws/pull/628) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.36](https://github.com/inspec/inspec-aws/tree/v1.74.36) (2021-11-17)
 
 #### Merged Pull Requests
 - soumyo/aws_network_firewall_firewall_policy [#630](https://github.com/inspec/inspec-aws/pull/630) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.35](https://github.com/inspec/inspec-aws/tree/v1.74.35) (2021-11-17)
 
