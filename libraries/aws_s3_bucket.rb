@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsS3Bucket < AwsResourceBase
   name 'aws_s3_bucket'
-  desc 'Verifies settings for a s3 bucket'
+  desc 'Verifies settings for a s3 bucket.'
   example "
     describe aws_s3_bucket(bucket_name: 'test_bucket') do
       it { should exist }

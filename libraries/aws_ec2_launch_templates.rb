@@ -4,12 +4,13 @@ require 'aws_backend'
 
 class AWSEc2LaunchTemplates < AwsResourceBase
   name 'aws_ec2_launch_templates'
-  desc 'Verifies settings for a collection of AWS EC2 Instances'
-  example '
+  desc 'Verifies settings for a collection of launch templates.'
+
+  example "
     describe aws_ec2_launch_templates do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table
 
@@ -37,7 +38,6 @@ class AWSEc2LaunchTemplates < AwsResourceBase
         @api_response = @aws.compute_client.describe_launch_templates(pagination_options)
       end
       return launch_template_rows if !@api_response || @api_response.empty?
-
       @api_response.launch_templates.each do |launch_template|
         launch_template_tags = map_tags(launch_template.tags)
         launch_template_rows += [{
@@ -49,10 +49,8 @@ class AWSEc2LaunchTemplates < AwsResourceBase
           launch_template_tags_name: launch_template_tags['Name'],
           default_version_number: launch_template.default_version_number,
           latest_version_number: launch_template.latest_version_number,
-
         }]
       end
-
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end

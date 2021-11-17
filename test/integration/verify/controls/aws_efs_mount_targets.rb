@@ -1,9 +1,9 @@
-aws_mount_target_mt_id = attribute(:aws_mount_target_mt_id, default: '', description: '')
-aws_file_system_mt_id = attribute(:aws_file_system_mt_id, default: '', description: '')
-aws_subnet_mt_id = attribute(:aws_subnet_mt_id, default: '', description: '')
-aws_vpc_mt_id = attribute(:aws_vpc_mt_id, default: '', description: '')
+aws_mount_target_mt_id = attribute(:aws_mount_target_mt_id, value: '', description: '')
+aws_file_system_mt_id = attribute(:aws_file_system_mt_id, value: '', description: '')
+aws_subnet_mt_id = attribute(:aws_subnet_mt_id, value: '', description: '')
+aws_vpc_mt_id = attribute(:aws_vpc_mt_id, value: '', description: '')
 
-control 'aws-efs-mount-targets2-1.0' do
+control 'aws-efs-mount-targets-1.0' do
 
     impact 1.0
     title 'Ensure AWS EFS Mount Targets has the correct properties.'
@@ -11,12 +11,6 @@ control 'aws-efs-mount-targets2-1.0' do
     describe aws_efs_mount_targets(file_system_id: aws_file_system_mt_id) do
         it { should exist }
     end
-end
-
-control 'aws-efs-mount-targets2-1.0' do
-
-    impact 1.0
-    title 'Ensure AWS EFS Mount Targets has the correct properties.'
   
     describe aws_efs_mount_targets(file_system_id: aws_file_system_mt_id) do
         its('owner_ids') { should include "112758395563" }
@@ -30,12 +24,6 @@ control 'aws-efs-mount-targets2-1.0' do
         its('availability_zone_names') { should include "us-east-2a" }
         its('vpc_ids') { should include aws_vpc_mt_id }
     end
-end
-
-control 'aws-efs-mount-targets3-1.0' do
-
-    impact 1.0
-    title 'Ensure AWS EFS Mount Targets has the correct properties.'
   
     describe aws_efs_mount_targets(file_system_id: "dummy") do
         it { should_not exist }

@@ -1,6 +1,6 @@
-resolver_rule_id= attribute("resolver_rule_id", default: "", description: "")
-resolver_rule_arn = attribute("resolver_rule_arn", default: "", description: "")
-resolver_rule_type = attribute("resolver_rule_type", default: "", description: "")
+resolver_rule_id= attribute("resolver_rule_id", value: "", description: "")
+resolver_rule_arn = attribute("resolver_rule_arn", value: "", description: "")
+resolver_rule_type = attribute("resolver_rule_type", value: "", description: "")
 
 
 control 'aws-route53-resolver-resolver-resolver-rules-1.0' do

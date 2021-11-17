@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsCloudformationStacks < AwsResourceBase
   name 'aws_cloudformation_stacks'
-  desc 'Verifies settings for aws CloudFormation Stacks'
+  desc 'Verifies settings for aws CloudFormation Stacks.'
 
   example "
     describe aws_cloudformation_stacks do

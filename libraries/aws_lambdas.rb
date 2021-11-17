@@ -4,12 +4,12 @@ require 'aws_backend'
 
 class AwsLambdas < AwsResourceBase
   name 'aws_lambdas'
-  desc 'Verifies generic settings for a set of lambdas'
-  example '
+  desc 'Verifies generic settings for a set of lambdas.'
+  example "
     describe aws_lambdas() do
-      its ("count") { should eq 6}
+      its ('count') { should eq 6}
     end
-  '
+  "
   attr_reader :table
 
   FilterTable.create
