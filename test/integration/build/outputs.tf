@@ -857,6 +857,7 @@ output "aws_api_gateway_stage_name" {
 output "aws_api_gateway_base_path_mapping_domain_name" {
   value = aws_api_gateway_base_path_mapping.aws_api_gateway_base_path_mapping_bm_test1.domain_name
 }
+
 output "aws_api_gateway_account_throttle_settings" {
   value = aws_api_gateway_account.aws_api_gateway_account_test1.throttle_settings
 }
@@ -1076,11 +1077,6 @@ output "aws_cloudwatch_log_group_name" {
 output "aws_cloudwatch_log_stream_arn" {
   value = aws_cloudwatch_log_stream.for_test.arn
 }
-output "app_id" {
-  value = aws_amplify_app.test-app.id
-}
-
-
 
 output "aws_volume_attachment_instance_device_name" {
   value = aws_volume_attachment.aws_volume_attachment_test.device_name
@@ -1140,4 +1136,12 @@ output "aws_spot_fleet_request_id" {
 
 output "aws_spot_fleet_request_iam_fleet_role" {
   value = aws_spot_fleet_request.aws_spot_fleet_request_test.iam_fleet_role
+}
+
+output "app_id" {
+  value = aws_amplify_app.test-app.id
+}
+
+output "branch_name" {
+  value = aws_amplify_app.test-app.name
 }

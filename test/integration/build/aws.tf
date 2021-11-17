@@ -4768,3 +4768,53 @@ resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
     }
   }
 }
+
+#Amplify App
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
+  }
+}
+
+#Amplify Branch
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.test-app.id
+  branch_name = "master"
+
+  framework = "React"
+  stage     = "PRODUCTION"
+
+  environment_variables = {
+    REACT_APP_API_SERVER = "https://api.example.com"
+  }
+}
