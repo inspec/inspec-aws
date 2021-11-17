@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.42 -->
+<!-- latest_release 1.74.43 -->
+## [v1.74.43](https://github.com/inspec/inspec-aws/tree/v1.74.43) (2021-11-17)
+
+#### Merged Pull Requests
+- Adding support for SDB Resource [#654](https://github.com/inspec/inspec-aws/pull/654) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.42](https://github.com/inspec/inspec-aws/tree/v1.74.42) (2021-11-17)
 
 #### Merged Pull Requests
 - Nirbhay/AmplifyBranch [#638](https://github.com/inspec/inspec-aws/pull/638) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.41](https://github.com/inspec/inspec-aws/tree/v1.74.41) (2021-11-17)
 
