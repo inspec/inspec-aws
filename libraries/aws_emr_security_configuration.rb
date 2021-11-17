@@ -9,6 +9,7 @@ class AwsEmrClusterSecurityConfiguration < AwsResourceBase
 
   example "
     describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
+      it { should exist }
       its('encryption_at_rest') { should eq true }
       its('encryption_in_transit') { should eq true }
       its('local_disk_encryption') { should eq true }

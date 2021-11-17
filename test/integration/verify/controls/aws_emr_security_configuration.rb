@@ -19,17 +19,8 @@ control 'aws-emr-security-configuration-1.0' do
 
   describe aws_emr_security_configuration(security_configuration_name: aws_emr_security_configuration_name) do
     it { should exist }
-  end
-
-  describe aws_emr_security_configuration(security_configuration_name: aws_emr_security_configuration_name) do
     its('encryption_at_rest'){ should eq encryption_at_rest }
-  end
-
-  describe aws_emr_security_configuration(security_configuration_name: aws_emr_security_configuration_name) do
     its('encryption_in_transit'){ should eq encryption_in_transit }
-  end
-
-  describe aws_emr_security_configuration(security_configuration_name: aws_emr_security_configuration_name) do
     its('local_disk_encryption'){ should eq local_disk_encryption }
   end
 end
