@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.41 -->
+<!-- latest_release 1.74.42 -->
+## [v1.74.42](https://github.com/inspec/inspec-aws/tree/v1.74.42) (2021-11-17)
+
+#### Merged Pull Requests
+- Nirbhay/AmplifyBranch [#638](https://github.com/inspec/inspec-aws/pull/638) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.41](https://github.com/inspec/inspec-aws/tree/v1.74.41) (2021-11-17)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_spot_fleet [#624](https://github.com/inspec/inspec-aws/pull/624) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.40](https://github.com/inspec/inspec-aws/tree/v1.74.40) (2021-11-17)
 
