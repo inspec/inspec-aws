@@ -30,6 +30,7 @@ class AwsEmrMock < AwsBaseResourceMock
           version: '3.1.2',
         },
       ],
+      security_configuration: 'my-test-security-configuration',
     }
   end
 

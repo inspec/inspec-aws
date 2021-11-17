@@ -20,7 +20,7 @@ class AwsEmrCluster < AwsResourceBase
   "
   attr_reader :cluster_id, :cluster_arn, :cluster_name, :status_state, :status_state_change_reason_code,
               :status_state_change_reason_message, :status_timeline_creation_date_time, :status_timeline_ready_date_time,
-              :status_timeline_end_date_time,
+              :status_timeline_end_date_time, :security_configuration_name,
               :application_names, :auto_scaling_role, :custom_ami_id, :ebs_root_volume_size,
               :kerberos_attributes_realm, :kerberos_attributes_realm_ad_domain_join_user,
               :log_encryption_kms_key_id, :log_uri, :release_label, :scale_down_behavior,
@@ -68,6 +68,7 @@ class AwsEmrCluster < AwsResourceBase
       @service_role = cluster.service_role
       @step_concurrency_level = cluster.step_concurrency_level
       @visible_to_all_users = cluster.visible_to_all_users
+      @security_configuration_name = cluster.security_configuration
       cluster_managed_policy = @aws.emr_client.get_managed_scaling_policy(req_cluster_id).managed_scaling_policy
       if !cluster_managed_policy.nil?
         @managed_scaling_policy_unit_type = cluster_managed_policy.compute_limits.unit_type
