@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsTransitGateway < AwsResourceBase
   name 'aws_transit_gateway'
-  desc 'Verifies settings for an AWS Transit Gateway'
+  desc 'Verifies settings for an AWS Transit Gateway.'
 
   example "
     describe aws_transit_gateway('transit_gateway_id') do

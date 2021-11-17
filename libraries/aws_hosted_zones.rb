@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AwsHostedZones < AwsResourceBase
   name 'aws_hosted_zones'
-  desc 'Verifies hosted zones settings are correct'
+  desc 'Verifies hosted zones settings are correct.'
 
   example "
     describe aws_hosted_zones() do

@@ -1,10 +1,8 @@
-aws_job_definition_name = attribute("aws_batch_job_name", default: "", description: "")
-aws_job_definition_arn = attribute("aws_batch_job_arn", default: "", description: "")
-aws_revision = attribute("aws_batch_job_revision", default: "", description: "")
-aws_status = attribute("aws_status", default: "ACTIVE", description: "")
-aws_type = attribute("aws_batch_job_type", default: "container", description: "")
-
-
+aws_job_definition_name = attribute("aws_batch_job_name", value: "", description: "")
+aws_job_definition_arn = attribute("aws_batch_job_arn", value: "", description: "")
+aws_revision = attribute("aws_batch_job_revision", value: "", description: "")
+aws_status = attribute("aws_status", value: "", description: "")
+aws_type = attribute("aws_batch_job_type", value: "", description: "")
 
 describe aws_batch_job_definitions do
   it { should exist }

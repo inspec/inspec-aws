@@ -2,7 +2,7 @@
 
 class AwsIamRole < AwsResourceBase
   name 'aws_iam_role'
-  desc 'Verifies settings for an IAM Role'
+  desc 'Verifies settings for an IAM Role.'
   example "
     describe aws_iam_role('my-role') do
       it { should exist }
