@@ -1089,3 +1089,47 @@ output "aws_volume_attachment_instance_device_name" {
 output "aws_volume_attachment_instance_volume_id" {
   value = aws_volume_attachment.aws_volume_attachment_test.volume_id
 }
+
+output "aws_networkfirewall_firewall_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_firewall_policy_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.firewall_policy_arn
+}
+
+output "aws_networkfirewall_firewall_name" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.name
+}
+
+output "aws_networkfirewall_firewall_vpc_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.vpc_id
+}
+
+output "aws_networkfirewall_firewall_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.arn
+}
+
+output "aws_networkfirewall_firewall_policy_name" {
+  value = aws_networkfirewall_firewall_policy.aws_networkfirewall_firewall_policy_test.name
+}
+
+output "aws_networkfirewall_firewall_policy_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_rule_group_name" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.name
+}
+
+output "aws_networkfirewall_rule_group_arn" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.id
+}
+
+output "aws_networkfirewall_rule_group_capacity" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.capacity
+}
+
+output "aws_networkfirewall_rule_group_type" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.type
+}
