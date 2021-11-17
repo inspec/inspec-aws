@@ -1,11 +1,11 @@
 ---
-title: About the aws_ec2_volume_attachments Resource
+title: About the aws_ec2_volume_attachment Resource
 platform: aws
 ---
 
-# aws_ec2_volume_attachments
+# aws_ec2_volume_attachment
 
-Use the `aws_ec2_volume_attachments` InSpec audit resource to test properties of multiple AWS EC2 volume attachments.
+Use the `aws_ec2_volume_attachment` InSpec audit resource to test properties of a single specific AWS EC2 volume attachment.
 
 The `AWS::EC2::VolumeAttachment` resource attaches an Amazon EBS volume to a running instance and exposes it to the instance with the specified device name.
 
@@ -13,39 +13,41 @@ The `AWS::EC2::VolumeAttachment` resource attaches an Amazon EBS volume to a run
 
 Ensure that volume attachment exists.
 
-    describe aws_ec2_volume_attachments do
+    describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-This resource does not require any parameters.
+`volume_id` _(required)_
+
+The volume ID.
 
 For additional information, see the [AWS documentation on AWS EC2 Volume Attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volumeattachment.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| attach_times | The time stamp when the attachment initiated. | attach_time |
-| devices | The device name. | device |
-| instance_ids | The ID of the instance. | instance_id |
-| states | The attachment state of the volume. | state |
-| volume_ids | The ID of the volume. | volume_id |
-| delete_on_terminations | Indicates whether the EBS volume is deleted on instance termination. | delete_on_termination |
+| Property | Description |
+| --- | --- |
+| attach_time | The time stamp when the attachment initiated. |
+| device | The device name. |
+| instance_id | The ID of the instance. |
+| state | The attachment state of the volume. |
+| volume_id | The ID of the volume. |
+| delete_on_termination | Indicates whether the EBS volume is deleted on instance termination. |
 
 ## Examples
 
 ### Ensure a device is available.
 
-    describe aws_ec2_volume_attachments do
-      its('devices') { should include '/dev/sdf' }
+    describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
+      its('device') { should eq '/dev/sdf' }
     end
 
 ### Ensure that the state is `available`.
 
-    describe aws_ec2_volume_attachments do
-        its('states') { should include 'available' }
+    describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
+        its('state') { should eq 'available' }
     end
 
 ## Matchers
@@ -58,14 +60,22 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_volume_attachments do
+    describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_volume_attachments do
+    describe aws_ec2_volume_attachment(volume_id: 'dummy') do
       it { should_not exist }
+    end
+
+### be_available
+
+Use `should` to check if the entity is available.
+
+    describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
+      it { should be_available }
     end
 
 ## AWS Permissions

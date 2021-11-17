@@ -1081,3 +1081,11 @@ output "app_id" {
 }
 
 
+
+output "aws_volume_attachment_instance_device_name" {
+  value = aws_volume_attachment.aws_volume_attachment_test.device_name
+}
+
+output "aws_volume_attachment_instance_volume_id" {
+  value = aws_volume_attachment.aws_volume_attachment_test.volume_id
+}
