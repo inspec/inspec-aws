@@ -4747,3 +4747,24 @@ resource "aws_networkfirewall_rule_group" "aws_networkfirewall_rule_group_test" 
     Tag2 = "Value2"
   }
 }
+
+#Spot Fleets
+
+resource "aws_launch_template" "aws_launch_template_sf_test" {
+  name          = "launch-template"
+  image_id      = "ami-00399ec92321828f5"
+  instance_type = "t2.micro"
+  key_name      = "some-key"
+}
+
+resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
+  iam_fleet_role  = "arn:aws:iam::112758395563:role/aws-ec2-spot-fleet-tagging-role"
+  target_capacity = 2
+
+  launch_template_config {
+    launch_template_specification {
+      id      = aws_launch_template.aws_launch_template_sf_test.id
+      version = "1"
+    }
+  }
+}

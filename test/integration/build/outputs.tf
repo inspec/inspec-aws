@@ -1133,3 +1133,11 @@ output "aws_networkfirewall_rule_group_capacity" {
 output "aws_networkfirewall_rule_group_type" {
   value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.type
 }
+
+output "aws_spot_fleet_request_id" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.id
+}
+
+output "aws_spot_fleet_request_iam_fleet_role" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.iam_fleet_role
+}
