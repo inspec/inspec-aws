@@ -3962,6 +3962,29 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
 
+#Volume Attachment
+
+resource "aws_volume_attachment" "aws_volume_attachment_test" {
+  device_name = "/dev/sdf"
+  volume_id   = aws_ebs_volume.aws_ebs_volume_VA_test.id
+  instance_id = aws_instance.aws_instance_VA_test.id
+}
+
+resource "aws_instance" "aws_instance_VA_test" {
+  ami               = "ami-00399ec92321828f5"
+  availability_zone = "us-east-2a"
+  instance_type     = "t2.micro"
+
+  tags = {
+    Name = "TestInstance"
+  }
+}
+
+resource "aws_ebs_volume" "aws_ebs_volume_VA_test" {
+  availability_zone = "us-east-2a"
+  size              = 1
+}
+
 #VPN Connection Route
 
 resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
