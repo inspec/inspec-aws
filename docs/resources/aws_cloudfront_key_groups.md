@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudfront_key_groups
 
-Use the `aws_cloudfront_key_groups` InSpec audit resource to test properties of the plural resource AWS CloudFront Key Group.
+Use the `aws_cloudfront_key_groups` InSpec audit resource to test properties of multiple AWS CloudFront key groups.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Ensure that the key group exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront Key Group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-keygroup.html).
+For additional information, see the [AWS documentation on AWS CloudFront key group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-keygroup.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The identifier for the key group. | id |
 | last_modified_times | The date and time when the key group was last modified. | last_modified_time |
@@ -31,12 +31,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Key Gro
 
 ## Examples
 
-### Ensure an id is available.
+### Ensure an ID is available.
+
     describe aws_cloudfront_key_groups do
       its('ids') { should include 'ID' }
     end
 
 ### Ensure that the key group name is available.
+
     describe aws_cloudfront_key_groups do
         its('names') { should include 'KEY_GROUP_NAME' }
     end
@@ -55,7 +57,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_cloudfront_key_groups do
       it { should_not exist }
