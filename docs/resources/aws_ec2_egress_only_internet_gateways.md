@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_egress_only_internet_gateways
 
-Use the `aws_ec2_egress_only_internet_gateways` InSpec audit resource to test properties of the plural AWS EC2 Egress Only Internet Gateway.
+Use the `aws_ec2_egress_only_internet_gateways` InSpec audit resource to test properties of multiple AWS EC2 egress-only internet gateways.
 
-The AWS::EC2::EgressOnlyInternetGateway specifies an egress-only internet gateway for your VPC.
+The `AWS::EC2::EgressOnlyInternetGateway` specifies an egress-only internet gateway for your VPC.
 
 ## Syntax
 
-Ensure that the Egress Only Internet Gateway Id exists.
+Ensure that the egress-only internet gateway Id exists.
 
     describe aws_ec2_egress_only_internet_gateways do
       it { should exist }
@@ -19,11 +19,11 @@ Ensure that the Egress Only Internet Gateway Id exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Egress Only Internet Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-egressonlyinternetgateway.html).
+For additional information, see the [AWS documentation on AWS EC2 egress-only internet gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-egressonlyinternetgateway.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | attachments | Information about the attachment of the egress-only internet gateway. | attachments |
 | attachments_states | The current state of the attachment. | state |
@@ -33,12 +33,14 @@ For additional information, see the [AWS documentation on AWS EC2 Egress Only In
 
 ## Examples
 
-### Ensure an Egress Only Internet Gateway Id is available.
+### Ensure an egress-only internet gateway ID is available.
+
     describe aws_ec2_egress_only_internet_gateways do
       its('egress_only_internet_gateway_ids') { should include 'EgressOnlyInternetGatewayId' }
     end
 
 ### Ensure that the attachments states is `attached`.
+
     describe aws_ec2_egress_only_internet_gateways do
         its('attachments_states') { should include 'attached' }
     end
@@ -57,7 +59,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_ec2_egress_only_internet_gateways do
       it { should_not exist }

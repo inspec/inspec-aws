@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_egress_only_internet_gateway
 
-Use the `aws_ec2_egress_only_internet_gateway` InSpec audit resource to test properties of a single specific AWS EC2 Egress Only Internet Gateway.
+Use the `aws_ec2_egress_only_internet_gateway` InSpec audit resource to test properties of a single specific AWS EC2 egress-only internet gateway.
 
-The AWS::EC2::EgressOnlyInternetGateway specifies an egress-only internet gateway for your VPC.
+The `AWS::EC2::EgressOnlyInternetGateway` specifies an egress-only internet gateway for your VPC.
 
 ## Syntax
 
-Ensure that the Egress Only Internet Gateway Id exists.
+Ensure that the egress-only internet gateway Id exists.
 
     describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       it { should exist }
@@ -23,26 +23,28 @@ Ensure that the Egress Only Internet Gateway Id exists.
 
 The ID of the egress-only internet gateway.
 
-For additional information, see the [AWS documentation on AWS EC2 Egress Only Internet Gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-egressonlyinternetgateway.html).
+For additional information, see the [AWS documentation on AWS EC2 egress-only internet gateway.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-egressonlyinternetgateway.html).
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
-| attachments | Information about the attachment of the egress-only internet gateway. | attachments |
-| attachments_states | The current state of the attachment. | state |
-| attachments_vpc_ids | The ID of the VPC. | vpc_id |
-| egress_only_internet_gateway_id | The ID of the egress-only internet gateway. | egress_only_internet_gateway_id |
-| tags | The tags assigned to the egress-only internet gateway. | tags |
+| Property | Description |
+| --- | --- |
+| attachments | Information about the attachment of the egress-only internet gateway. |
+| attachments_states | The current state of the attachment. |
+| attachments_vpc_ids | The ID of the VPC. |
+| egress_only_internet_gateway_id | The ID of the egress-only internet gateway. |
+| tags | The tags assigned to the egress-only internet gateway. |
 
 ## Examples
 
-### Ensure an Egress Only Internet Gateway Id is available.
+### Ensure an egress-only internet gateway ID is available.
+
     describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
       its('egress_only_internet_gateway_id') { should eq 'EGRESS_ONLY_INTERNET_GATEWAY_ID' }
     end
 
 ### Ensure that the attachments states is `attached`.
+
     describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
         its('attachments_states') { should eq 'attached' }
     end
