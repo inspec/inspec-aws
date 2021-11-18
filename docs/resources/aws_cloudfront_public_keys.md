@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_public_keys
 
-Use the `aws_cloudfront_public_keys` InSpec audit resource to test properties of the plural resource of AWS Logs Public Key.
+Use the `aws_cloudfront_public_keys` InSpec audit resource to test properties of multiple AWS CloudFront public keys.
 
-A public key that you can use with signed URLs and signed cookies, or with field-level encryption.
+The `AWS::CloudFront::PublicKey` resource type creates a public key that you can use with signed URLs and signed cookies, or with field-level encryption.
 
 ## Syntax
 
@@ -19,11 +19,11 @@ Ensure that the public key exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront Public Key.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-publickey.html).
+For additional information, see the [AWS documentation on AWS CloudFront public key.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-publickey.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The identifier of the public key. | id |
 | created_times | The date and time when the public key was uploaded. | created_time |
@@ -34,12 +34,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Public 
 
 ## Examples
 
-### Ensure a public key id is available.
+### Ensure a public key ID is available.
+
     describe aws_cloudfront_public_keys do
       its('ids') { should include 'ID' }
     end
 
 ### Ensure a public key name is available.
+
     describe aws_cloudfront_public_keys do
         its('names') { should include 'PUBLIC_KEY_NAME' }
     end
