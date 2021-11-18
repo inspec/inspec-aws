@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.43 -->
+<!-- latest_release 1.74.44 -->
+## [v1.74.44](https://github.com/inspec/inspec-aws/tree/v1.74.44) (2021-11-18)
+
+#### Merged Pull Requests
+- Docs fixes [#767](https://github.com/inspec/inspec-aws/pull/767) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.43](https://github.com/inspec/inspec-aws/tree/v1.74.43) (2021-11-17)
 
 #### Merged Pull Requests
 - Adding support for SDB Resource [#654](https://github.com/inspec/inspec-aws/pull/654) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.42](https://github.com/inspec/inspec-aws/tree/v1.74.42) (2021-11-17)
 
