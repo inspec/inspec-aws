@@ -5,11 +5,11 @@ platform: aws
 
 # aws_cloudwatch_insight_rules
 
-Use the `aws_cloudwatch_insight_rules` InSpec audit resource to test properties of the plural AWS CloudWatch Insight Rules.
+Use the `aws_cloudwatch_insight_rules` InSpec audit resource to test properties of the plural AWS CloudWatch Insight rules.
 
 ## Syntax
 
-Ensure that the insight rule exists.
+Ensure that the Insight rule exists.
 
     describe aws_cloudwatch_insight_rules do
       it { should exist }
@@ -17,7 +17,7 @@ Ensure that the insight rule exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudWatch Insight Rules.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-insightrule.html).
+For additional information, see the [AWS documentation on AWS CloudWatch Insight rules.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-insightrule.html).
 
 ## Properties
 
@@ -31,11 +31,13 @@ For additional information, see the [AWS documentation on AWS CloudWatch Insight
 ## Examples
 
 ### Ensure a rule name is available.
+
     describe aws_cloudwatch_insight_rules do
       its('names') { should include 'RuleName' }
     end
 
 ### Ensure a state is available.
+
     describe aws_cloudwatch_insight_rules do
         its('states') { should include 'enabled' }
     end
