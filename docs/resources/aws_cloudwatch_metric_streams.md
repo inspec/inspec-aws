@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudwatch_metric_streams
 
-Use the `aws_cloudwatch_metric_streams` InSpec audit resource to test properties of the plural AWS CloudWatch Metric Stream.
+Use the `aws_cloudwatch_metric_streams` InSpec audit resource to test properties of multiple AWS CloudWatch metric streams.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Ensure that the metric streams exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudWatch Metric Stream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html).
+For additional information, see the [AWS documentation on AWS CloudWatch metric stream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | arns | The ARN of the metric stream. | arn |
 | creation_date | The date that the metric stream was originally created. | creation_date |
@@ -33,14 +33,16 @@ For additional information, see the [AWS documentation on AWS CloudWatch Metric 
 
 ## Examples
 
-### Ensure an arn is available.
+### Ensure an ARN is available.
+
     describe aws_cloudwatch_metric_streams do
       its('arns') { should include 'ARN' }
     end
 
-### Ensure a firehose_arn is available.
+### Ensure a Firehose ARN is available.
+
     describe aws_cloudwatch_metric_streams do
-        its('firehose_arns') { should include 'FIREHOSEARN' }
+        its('firehose_arns') { should include 'FIREHOSE_ARN' }
     end
 
 ## Matchers
@@ -57,7 +59,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
     describe aws_cloudwatch_metric_streams do
       it { should_not exist }
