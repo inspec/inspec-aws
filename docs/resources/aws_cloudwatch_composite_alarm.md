@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudwatch_composite_alarm
 
-Use the `aws_cloudwatch_composite_alarm` InSpec audit resource to test properties of a single specific AWS CloudWatch CompositeAlarm.
+Use the `aws_cloudwatch_composite_alarm` InSpec audit resource to test properties of a single specific AWS CloudWatch composite alarm.
 
-The AWS::CloudWatch::CompositeAlarm type creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
+The `AWS::CloudWatch::CompositeAlarm` resource type creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that the config exists.
 
 The name of the alarm.
 
-For additional information, see the [AWS documentation on AWS CloudWatch CompositeAlarm.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
+For additional information, see the [AWS documentation on AWS CloudWatch composite alarm.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
 
 ## Properties
 
@@ -46,16 +46,19 @@ For additional information, see the [AWS documentation on AWS CloudWatch Composi
 ## Examples
 
 ### Ensure an actions is enabled.
+
     describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
       its('actions_enabled') { should eq true }
     end
 
-### Ensure an alarm arn is available.
+### Ensure an alarm ARN is available.
+
     describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
         its('alarm_arn') { should eq 'ALARM_ARN' }
     end
 
 ### Ensure an alarm name is available.
+
     describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
         its('alarm_name') { should eq 'ALARM_NAME' }
     end
@@ -74,7 +77,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
       it { should_not exist }

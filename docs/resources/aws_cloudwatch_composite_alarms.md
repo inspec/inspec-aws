@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudwatch_composite_alarms
 
-Use the `aws_cloudwatch_composite_alarms` InSpec audit resource to test properties of the plural resource of AWS CloudWatch CompositeAlarm.
+Use the `aws_cloudwatch_composite_alarms` InSpec audit resource to test properties of multiple AWS CloudWatch composite alarms.
 
-The AWS::CloudWatch::CompositeAlarm type creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
+The `AWS::CloudWatch::CompositeAlarm` resource type creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
 
 ## Syntax
 
@@ -19,11 +19,11 @@ Ensure that the alarms exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudWatch CompositeAlarm.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
+For additional information, see the [AWS documentation on AWS CloudWatch composite alarm.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | actions_enabled | Indicates whether actions should be executed during any changes to the alarm state. | actions_enabled |
 | alarm_actions | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN). | alarm_actions |
@@ -42,16 +42,19 @@ For additional information, see the [AWS documentation on AWS CloudWatch Composi
 ## Examples
 
 ### Ensure an actions is enabled.
+
     describe aws_cloudwatch_composite_alarms do
       its('actions_enabled') { should include true }
     end
 
 ### Ensure an alarm arn is available.
+
     describe aws_cloudwatch_composite_alarms do
         its('alarm_arns') { should include 'ALARM_ARN' }
     end
 
 ### Ensure an alarm name is available.
+
     describe aws_cloudwatch_composite_alarms do
         its('alarm_names') { should include 'ALARM_NAME' }
     end
@@ -70,7 +73,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_cloudwatch_composite_alarms do
       it { should_not exist }
