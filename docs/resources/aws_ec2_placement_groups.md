@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_placement_groups
 
-Use the `aws_ec2_placement_groups` InSpec audit resource to test properties of the plural AWS EC2 Placement Group.
+Use the `aws_ec2_placement_groups` InSpec audit resource to test properties of multiple AWS EC2 placement groups.
 
-The AWS::EC2::PlacementGroup specifies a placement group in which to launch instances.
+The `AWS::EC2::PlacementGroup` resource type specifies a placement group in which to launch instances.
 
 ## Syntax
 
@@ -19,11 +19,11 @@ Ensure that the placement group exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS EC2 Placement Group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
+For additional information, see the [AWS documentation on AWS EC2 placement group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
 
 ## Properties
 
-| Property | Description | Fields | 
+| Property | Description | Fields |
 | --- | --- | --- |
 | group_names | The name of the placement group. | group_name |
 | states | The state of the placement group. | state |
@@ -35,11 +35,13 @@ For additional information, see the [AWS documentation on AWS EC2 Placement Grou
 ## Examples
 
 ### Ensure a placement group name is available.
+
     describe aws_ec2_placement_groups do
       its('group_names') { should include 'PLACEMENT_GROUP_NAME' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_ec2_placement_groups do
         its('states') { should include 'available' }
     end
@@ -58,7 +60,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_ec2_placement_groups do
       it { should_not exist }

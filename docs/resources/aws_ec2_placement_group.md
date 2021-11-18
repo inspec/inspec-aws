@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_placement_group
 
-Use the `aws_ec2_placement_group` InSpec audit resource to test properties of a single specific AWS EC2 Placement Group.
+Use the `aws_ec2_placement_group` InSpec audit resource to test properties of a single specific AWS EC2 placement group.
 
-The AWS::EC2::PlacementGroup specifies a placement group in which to launch instances.
+The `AWS::EC2::PlacementGroup` resource type specifies a placement group in which to launch instances.
 
 ## Syntax
 
@@ -23,12 +23,12 @@ Ensure that the placement group exists.
 
 The name of the placement group.
 
-For additional information, see the [AWS documentation on AWS EC2 Placement Group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
+For additional information, see the [AWS documentation on AWS EC2 placement group.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html).
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
+| Property | Description |
+| --- | --- |
 | group_name | The name of the placement group. |
 | state | The state of the placement group. |
 | strategy | The placement strategy. |
@@ -39,11 +39,13 @@ For additional information, see the [AWS documentation on AWS EC2 Placement Grou
 ## Examples
 
 ### Ensure a placement group name is available.
+
     describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       its('group_name') { should eq 'PLACEMENT_GROUP_NAME' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
         its('state') { should eq 'available' }
     end
@@ -62,7 +64,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
       it { should_not exist }
