@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudfront_streaming_distributions
 
-Use the `aws_cloudfront_streaming_distributions` InSpec audit resource to test plural properties of AWS CloudFront StreamingDistribution.
+Use the `aws_cloudfront_streaming_distributions` InSpec audit resource to test plural properties of AWS CloudFront streaming distribution.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Ensure that the distribution exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS CloudFront StreamingDistribution.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html).
+For additional information, see the [AWS documentation on AWS CloudFront streaming distribution.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The streaming distribution's ID. | id |
 | arns | The ARN (Amazon Resource Name) for the distribution. | arn |
@@ -37,12 +37,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Streami
 
 ## Examples
 
-### Ensure an id is available.
+### Ensure an ID is available.
+
     describe aws_cloudfront_streaming_distributions do
       its('ids') { should include 'ID' }
     end
 
 ### Ensure a status is `Deployed`.
+
     describe aws_cloudfront_streaming_distributions do
         its('statuses') { should include 'Deployed' }
     end

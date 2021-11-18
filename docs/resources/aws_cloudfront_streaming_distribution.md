@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudfront_streaming_distribution
 
-Use the `aws_cloudfront_streaming_distribution` InSpec audit resource to test properties of a single specific AWS CloudFront StreamingDistribution.
+Use the `aws_cloudfront_streaming_distribution` InSpec audit resource to test properties of a single specific AWS CloudFront streaming distribution.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ Ensure that the distribution exists.
 
 The streaming distribution's ID.
 
-For additional information, see the [AWS documentation on AWS CloudFront StreamingDistribution.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html).
+For additional information, see the [AWS documentation on AWS CloudFront streaming distribution.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html).
 
 ## Properties
 
@@ -55,12 +55,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Streami
 
 ## Examples
 
-### Ensure an id is available.
+### Ensure an ID is available.
+
     describe aws_cloudfront_streaming_distribution(id: 'ID') do
       its('id') { should eq 'ID' }
     end
 
 ### Ensure a status is `Deployed`.
+
     describe aws_cloudfront_streaming_distribution(id: 'ID') do
         its('status') { should eq 'Deployed' }
     end
@@ -79,7 +81,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that an entity does not exist.
 
     describe aws_cloudfront_streaming_distribution(id: 'ID') do
       it { should_not exist }
