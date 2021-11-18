@@ -299,7 +299,6 @@ class AwsResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
     client_args = { client_args: {} }
-
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
@@ -316,8 +315,6 @@ class AwsResourceBase < Inspec.resource(1)
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
-    # require 'byebug';
-    # byebug
      @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
