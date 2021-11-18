@@ -5,9 +5,9 @@ platform: aws
 
 # aws_lambda_layer_version_permission
 
-Use the `aws_lambda_layer_version_permission` InSpec audit resource to test properties of a single specific AWS Lambda LayerVersionPermission.
+Use the `aws_lambda_layer_version_permission` InSpec audit resource to test properties of a single AWS Lambda layer version permission.
 
-The AWS::Lambda::LayerVersionPermission adds permissions to the resource-based policy of a version of an Lambda layer.
+The `AWS::Lambda::LayerVersionPermission` resource adds permissions to the resource-based policy of a version of an Lambda layer.
 
 ## Syntax
 
@@ -19,14 +19,16 @@ Ensure that the permission exists.
 
 ## Parameters
 
-`layer_name` and `version_number` _(required)_
 
-| Property | Description |
-| --- | --- |
-| layer_name | The name or Amazon Resource Name (ARN) of the layer. |
-| version_number | The version number. |
+`layer_name` _(required)_
 
-For additional information, see the [AWS documentation on AWS CloudFront RealtimeLogConfig.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-realtimelogconfig.html).
+The name or Amazon Resource Name (ARN) of the layer.
+
+`version_number` _(required)_
+
+The version number.
+
+For additional information, see the [AWS documentation on AWS Lambda layer version permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-layerversionpermission.html).
 
 ## Properties
 
@@ -37,12 +39,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Examples
 
-### Ensure policy is available.
+### Ensure a policy is available.
+
     describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
       its('policy') { should eq 'POLICY' }
     end
 
-### Ensure a revision id is available.
+### Ensure a revision ID is available.
+
     describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
         its('revision_id') { should eq 'REVISION_ID' }
     end
