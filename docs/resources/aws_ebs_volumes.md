@@ -3,7 +3,7 @@ title: About the aws_ebs_volumes Resource
 platform: aws
 ---
 
-# aws\_ebs\_volumes
+# aws_ebs_volumes
 
 Use the `aws_ebs_volumes` InSpec audit resource to test properties of a collection of AWS EBS volumes.
 
@@ -16,8 +16,8 @@ EBS volumes are persistent block storage volumes for use with Amazon EC2 instanc
     describe aws_ebs_volumes do
       its('volume_ids.count') { should cmp 3 }
     end
-    
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -27,17 +27,18 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 |Property                    | Description|
 | ---                        | --- |
-|volume\_ids                 | The unique IDs of the EBS Volumes returned. |
+|volume_ids                 | The unique IDs of the EBS Volumes returned. |
 |entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-   
+
 ## Examples
 
-##### Ensure a specific volume exists
+### Ensure a specific volume exists
+
     describe aws_ebs_volumes do
       its('volume_ids') { should include 'vol-12345678' }
     end
 
-##### Use the InSpec resource to request the IDs of all EBS volumes, then test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
+### Use the InSpec resource to request the IDs of all EBS volumes, then test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
 
     aws_ebs_volumes.volume_ids.each do |volume_id|
       describe aws_ebs_volume(volume_id) do
@@ -50,9 +51,9 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -61,10 +62,12 @@ Use `should_not` to test the entity should not exist.
     describe aws_ebs_volumes do
       it { should exist }
     end
-      
+
     describe aws_ebs_volumes do
       it { should_not exist }
     end
+
+## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeVolumesResult` actions set to allow.
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

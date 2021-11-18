@@ -60,7 +60,7 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [def
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
