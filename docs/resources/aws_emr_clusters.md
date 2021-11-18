@@ -3,29 +3,31 @@ title: About the aws_emr_clusters Resource
 platform: aws
 ---
 
-# aws\_emr\_clusters
+# aws_emr_clusters
 
 Use the `aws_emr_clusters` resource to test the configuration of a collection of clusters of AWS Elastic MapReduce Service.
 
 ## Syntax
+
 ```ruby
 describe aws_emr_clusters do
   its('cluster_ids') { should include 'CLUSTER_ID'}
 end
 ```
-#### Parameters
+
+## Parameters
 
 This resource does not expect any parameters.
 
-See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
+See also the [AWS documentation on AWS EMR clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
 
 ## Properties
 
 |Property                                | Description| Fields|
 | ---                                    | --- |---|
-|cluster\_ids                             | The unique identifier of the cluster. |cluster\_id|
-|cluster\_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |cluster\_arn|
-|cluster\_names                           | A user-generated string that you use to identify your cluster. |cluster\_name|
+|cluster_ids                             | The unique identifier of the cluster. |cluster_id|
+|cluster_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |cluster_arn|
+|cluster_names                           | A user-generated string that you use to identify your cluster. |cluster_name|
 |status_states                            | The current state of the cluster.|status(state)|
 |status_state_change_reason_code         | The programmatic code for the state change reason.|status(state_change_reason(code))|
 |status_state_change_reason_message      | The descriptive message for the state change reason.|status(state_change_reason(message))|
@@ -49,7 +51,8 @@ See also the [AWS documentation on AWS EMR Clusters](https://docs.aws.amazon.com
 
 ## Examples
 
-##### Ensure there are no Clusters in an undesired state.
+### Ensure there are no EMR clusters in an undesired state.
+
 ```ruby
 describe aws_emr_clusters do
   it { should exist }
@@ -57,28 +60,29 @@ describe aws_emr_clusters do
   its('cluster_ids') { should include 'CLUSTER_ID'}
 end
 ```
+
 ## Matchers
 
 For a full list of available matchers, please visit our [matchers page](https://docs.chef.io/inspec/matchers/).
 
-#### exist
+### exist
 
-The control will pass if the describe returns at least one result.
+Use `should` to test for an entity that should exist.
 
-Use `should` to test the entity should exist.
-Use `should_not` to test the entity should not exist.
 ```ruby
 describe aws_emr_clusters.where( <property>: <value>) do
   it { should exist }
 end
 ```
+
+Use `should_not` to test for an entity that should not exist.
+
 ```ruby
 describe aws_emr_clusters.where( <property>: <value>) do
   it { should_not exist }
 end
 ```
-    
-    
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EMR:Client:DescribeClusterOutput`, `EMR:Client:ListClustersOutput` actions set to allow.
