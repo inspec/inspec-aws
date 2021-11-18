@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_host
 
-Use the `aws_ec2_host` InSpec audit resource to test properties of the singular resource of AWS EC2 Host.
+Use the `aws_ec2_host` InSpec audit resource to test properties of a single AWS EC2 host resource.
 
-The AWS::EC2::Host allocates a fully dedicated physical server for launching EC2 instances.
+The `AWS::EC2::host` allocates a fully dedicated physical server for launching EC2 instances.
 
 ## Syntax
 
@@ -21,45 +21,47 @@ Ensure that the host exists.
 
 `host_id` _(required)_
 
-The ID of the Dedicated Host.
+The ID of the dedicated host.
 
-For additional information, see the [AWS documentation on AWS EC2 Host.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-host.html).
+For additional information, see the [AWS documentation on AWS EC2 host.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-host.html).
 
 ## Properties
 
-| Property | Description | 
+| Property | Description |
 | --- | --- |
 | auto_placement | Whether auto-placement is on or off. |
-| availability_zone | The Availability Zone of the Dedicated Host. |
-| available_capacity.available_instance_capacity | The number of instances that can be launched onto the Dedicated Host based on the host's available capacity. |
-| available_capacity.available_v_cpus | The number of vCPUs available for launching instances onto the Dedicated Host. |
+| availability_zone | The Availability Zone of the Dedicated host. |
+| available_capacity.available_instance_capacity | The number of instances that can be launched onto the Dedicated host based on the host's available capacity. |
+| available_capacity.available_v_cpus | The number of vCPUs available for launching instances onto the Dedicated host. |
 | client_token | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. |
-| host_id | The ID of the Dedicated Host. |
-| host_properties.cores | The number of cores on the Dedicated Host. |
-| host_properties.instance_type | The instance type supported by the Dedicated Host. |
-| host_properties.instance_family | The instance family supported by the Dedicated Host. |
-| host_properties.sockets | The number of sockets on the Dedicated Host. |
-| host_properties.total_v_cpus | The total number of vCPUs on the Dedicated Host. |
-| host_reservation_id | The reservation ID of the Dedicated Host. |
-| instances | The IDs and instance type that are currently running on the Dedicated Host. |
-| state | The Dedicated Host's state. |
-| allocation_time | The time that the Dedicated Host was allocated. |
-| release_time | The time that the Dedicated Host was released. |
-| tags | Any tags assigned to the Dedicated Host. |
-| host_recovery | Indicates whether host recovery is enabled or disabled for the Dedicated Host. |
-| allows_multiple_instance_types | Indicates whether the Dedicated Host supports multiple instance types of the same instance family. |
-| owner_id | The ID of the Amazon Web Services account that owns the Dedicated Host. |
-| availability_zone_id | The ID of the Availability Zone in which the Dedicated Host is allocated. |
-| member_of_service_linked_resource_group | Indicates whether the Dedicated Host is in a host resource group. |
+| host_id | The ID of the Dedicated host. |
+| host_properties.cores | The number of cores on the Dedicated host. |
+| host_properties.instance_type | The instance type supported by the Dedicated host. |
+| host_properties.instance_family | The instance family supported by the Dedicated host. |
+| host_properties.sockets | The number of sockets on the Dedicated host. |
+| host_properties.total_v_cpus | The total number of vCPUs on the Dedicated host. |
+| host_reservation_id | The reservation ID of the Dedicated host. |
+| instances | The IDs and instance type that are currently running on the Dedicated host. |
+| state | The Dedicated host's state. |
+| allocation_time | The time that the Dedicated host was allocated. |
+| release_time | The time that the Dedicated host was released. |
+| tags | Any tags assigned to the Dedicated host. |
+| host_recovery | Indicates whether host recovery is enabled or disabled for the Dedicated host. |
+| allows_multiple_instance_types | Indicates whether the Dedicated host supports multiple instance types of the same instance family. |
+| owner_id | The ID of the Amazon Web Services account that owns the Dedicated host. |
+| availability_zone_id | The ID of the Availability Zone in which the Dedicated host is allocated. |
+| member_of_service_linked_resource_group | Indicates whether the Dedicated host is in a host resource group. |
 
 ## Examples
 
 ### Ensure a host is available.
+
     describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do
       its('host_id') { should eq 'DEDICATED_HOST_ID' }
     end
 
 ### Ensure that the state is `available`.
+
     describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do
         its('state') { should eq 'available' }
     end
