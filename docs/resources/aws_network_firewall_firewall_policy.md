@@ -40,8 +40,8 @@ For additional information, see the [AWS documentation on AWS Network Firewall F
 | firewall_policy.stateless_rule_group_references.first.resource_arn | The Amazon Resource Name (ARN) of the stateless rule group. |
 | firewall_policy.stateless_rule_group_references.first.priority | An integer setting that indicates the order in which to run the stateless rule groups in a single FirewallPolicy. |
 | firewall_policy.stateless_default_actions | The actions to take on a fragmented UDP packet if it doesn't match any of the stateless rules in the policy. |
-| firewall_policy.stateless_fragment_default_actions | The actions to take on a fragmented UDP packet if it doesn't match any of the stateless rules in the policy. | stateless_fragment_default_actions |]
-| firewall_policy.stateless_custom_actions | The custom action definitions that are available for use in the firewall policy's StatelessDefaultActions setting. | stateless_custom_actions | |
+| firewall_policy.stateless_fragment_default_actions | The actions to take on a fragmented UDP packet if it doesn't match any of the stateless rules in the policy. |
+| firewall_policy.stateless_custom_actions | The custom action definitions that are available for use in the firewall policy's StatelessDefaultActions setting. |
 | firewall_policy.stateless_custom_actions.first.action_name | The descriptive name of the custom action. |
 | firewall_policy.stateless_custom_actions.first.action_definition.publish_metric_action.dimensions | The value to use in an Amazon CloudWatch custom metric dimension. |
 | firewall_policy.stateful_rule_group_references | References to the stateless rule groups that are used in the policy. |

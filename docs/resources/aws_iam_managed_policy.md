@@ -53,7 +53,7 @@ The ARN of the AWS IAM managed policy.
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control passes if the describe method returns at least one result.
 

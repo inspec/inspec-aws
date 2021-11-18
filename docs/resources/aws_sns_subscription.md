@@ -62,7 +62,7 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
