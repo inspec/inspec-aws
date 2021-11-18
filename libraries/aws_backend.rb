@@ -315,7 +315,7 @@ class AwsResourceBase < Inspec.resource(1)
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
-     @aws = AwsConnection.new(client_args)
+    @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
