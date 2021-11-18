@@ -299,6 +299,7 @@ class AwsResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a AWS connection, resources can choose which of the clients to instantiate
     client_args = { client_args: {} }
+
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
       client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
@@ -306,14 +307,18 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
       # below allows each resource to optionally and conveniently set max_retries and retry_backoff
       env_hash = ENV.map { |k, v| [k.downcase, v] }.to_h
+      opts[:aws_http_proxy]=   env_hash['aws_http_proxy'].to_i if !opts[:aws_http_proxy] && env_hash['aws_http_proxy']
       opts[:aws_retry_limit]=   env_hash['aws_retry_limit'].to_i if !opts[:aws_retry_limit] && env_hash['aws_retry_limit']
       opts[:aws_retry_backoff]= env_hash['aws_retry_backoff'].to_i if !opts[:aws_retry_backoff] && env_hash['aws_retry_backoff']
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
+      client_args[:client_args][:http_proxy]= opts[:aws_http_proxy] if opts[:aws_http_proxy]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
-    @aws = AwsConnection.new(client_args)
+    # require 'byebug';
+    # byebug
+     @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
     # inspec.backend.aws_resource(Aws::EC2::Resource,opts)
