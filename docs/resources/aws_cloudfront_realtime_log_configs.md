@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_realtime_log_configs
 
-Use the `aws_cloudfront_realtime_log_configs` InSpec audit resource to test plural properties of AWS CloudFront RealtimeLogConfig.
+Use the `aws_cloudfront_realtime_log_configs` InSpec audit resource to test multiple AWS CloudFront real-time log configurations.
 
-The AWS::CloudFront::RealtimeLogConfig is a real-time log configuration.
+The `AWS::CloudFront::RealtimeLogConfig` resource creates a real-time log configuration.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | arns | The Amazon Resource Name (ARN) of this real-time log configuration. | arn |
 | names | The unique name of this real-time log configuration. | name |
@@ -33,12 +33,14 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Examples
 
-### Ensure an arn is available.
+### Ensure an ARN is available.
+
     describe aws_cloudfront_realtime_log_configs do
       its('arns') { should include 'ARN' }
     end
 
 ### Ensure a name is available.
+
     describe aws_cloudfront_realtime_log_configs do
         its('names') { should include 'CONFIG_NAME' }
     end

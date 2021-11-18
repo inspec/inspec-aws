@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudfront_realtime_log_config
 
-Use the `aws_cloudfront_realtime_log_config` InSpec audit resource to test properties of a single specific AWS CloudFront RealtimeLogConfig.
+Use the `aws_cloudfront_realtime_log_config` InSpec audit resource to test properties of a single specific AWS CloudFront real-time log configuration.
 
-The AWS::CloudFront::RealtimeLogConfig is a real-time log configuration.
+The `AWS::CloudFront::RealtimeLogConfig` resource creates a real-time log configuration.
 
 ## Syntax
 
@@ -40,22 +40,26 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Examples
 
-### Ensure an arn is available.
+### Ensure an ARN is available.
+
     describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
       its('arn') { should eq 'ARN' }
     end
 
 ### Ensure a name is available.
+
     describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
         its('name') { should eq 'CONFIG_NAME' }
     end
 
 ### Ensure a stream type is `Kinesis`.
+
     describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
         its('end_points_stream_types') { should include 'Kinesis' }
     end
 
-### Ensure a stream arn is available.
+### Ensure a stream ARN is available.
+
     describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
         its('end_points_kinesis_stream_config_stream_arns') { should include 'STREAM_ARN' }
     end
