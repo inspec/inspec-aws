@@ -5,11 +5,11 @@ platform: aws
 
 # aws_ec2_eip_associations
 
-Use the `aws_ec2_eip_associations` InSpec audit resource to test properties of some or all AWS Elastic IP Association.
+Use the `aws_ec2_eip_associations` InSpec audit resource to test properties of some or all AWS Elastic IP association.
 
 ## Syntax
 
-##### Verify that the association exists.
+Verify that the association exists.
 
     describe aws_ec2_eip_associations do
       it { should exist }
@@ -19,7 +19,7 @@ Use the `aws_ec2_eip_associations` InSpec audit resource to test properties of s
 
 This resource does not expect any parameters.
 
-See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
+See the [AWS documentation on AWS Elastic IP association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
 
 ## Properties
 
@@ -29,7 +29,7 @@ See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazo
 
 ## Examples
 
-##### Check Association Id is available
+##### Check association ID is available
 
     describe aws_ec2_eip_associations do
        its('association_ids') { should include "ASSOCIATION_ID" }
@@ -39,7 +39,7 @@ See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazo
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

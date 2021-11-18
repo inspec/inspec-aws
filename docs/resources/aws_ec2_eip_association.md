@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_eip_association
 
-Use the `aws_ec2_eip_association` InSpec audit resource to test properties of the singular resource of AWS Elastic IP Association.
+Use the `aws_ec2_eip_association` InSpec audit resource to test properties of the singular resource of AWS Elastic IP association.
 
 An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for example `association_id`.
 
@@ -23,7 +23,7 @@ An Elastic IP (EIP) is uniquely identified by the public IPv4 address, for examp
 
 The association ID for the address.
 
-See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
+See the [AWS documentation on AWS Elastic IP association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip-association.html) for additional information.
 
 ## Properties
 
@@ -33,10 +33,10 @@ See the [AWS documentation on AWS Elastic IP Association](https://docs.aws.amazo
 
 ## Examples
 
-##### Check Association ID whether it is correct or not
+##### Check association ID whether it is correct or not
 
     describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
-       its('association_id') { should eq "ASSOCIATION_ID" }
+       its('ASSOCIATION_ID') { should eq "ASSOCIATION_ID" }
     end
 
 ## Matchers
