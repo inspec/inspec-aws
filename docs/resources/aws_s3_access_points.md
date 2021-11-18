@@ -11,7 +11,7 @@ Use the `aws_s3_access_points` InSpec audit resource to test properties of a Mul
 
 Ensure that the base path mapping exists.
 
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
 
@@ -19,15 +19,13 @@ Ensure that the base path mapping exists.
 
 `bucket_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| bucket_name | The name of the bucket containing the metrics configuration to retrieve. |
+The name of the bucket containing the metrics configuration to retrieve.
 
-For additional information, see the [AWS documentation on AWS S3 Access Points.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
+For additional information, see the [AWS documentation on AWS S3 Access Points.](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | ids | The ID used to identify the metrics configuration. | id |
 | filter_access_point_arns | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |
@@ -36,12 +34,14 @@ For additional information, see the [AWS documentation on AWS S3 Access Points.]
 ## Example
 
 ### Ensure that id is available.
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
         its('ids') { should include 'AccessPointArn' }
     end
 
 ### Ensure that stage name is available.
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
         its('filter_access_point_arns') { should include 'AccessPointArn' }
     end
 
@@ -55,13 +55,13 @@ The controls will pass if the `list` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_s3_access_points(bucket_name: 'dummy') do
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
       it { should_not exist }
     end
 
@@ -69,7 +69,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
       it { should be_available }
     end
 

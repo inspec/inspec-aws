@@ -11,24 +11,25 @@ Use the `aws_s3_access_point` InSpec audit resource to test properties of a sing
 
 Ensure that the base path mapping exists.
 
-    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
+    describe aws_s3_access_point(bucket_name: 'BUCKET_NAME', metrics_id: 'METRICS_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`domain_name` and `metrics_id` _(required)_
+`domain_name` _(required)_
 
-| Property | Description |
-| --- | --- |
-| bucket_name | The name of the bucket containing the metrics configuration to retrieve. |
-| metrics_id | The ID used to identify the metrics configuration. |
+The name of the bucket containing the metrics configuration to retrieve.
 
-For additional information, see the [AWS documentation on AWS API Metric.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
+`metrics_id` _(required)_
+
+The ID used to identify the metrics configuration.
+
+For additional information, see the [AWS documentation on AWS API Metric.](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | id | The ID used to identify the metrics configuration. | id |
 | filter.access_point_arn | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |
@@ -37,12 +38,14 @@ For additional information, see the [AWS documentation on AWS API Metric.](https
 ## Example
 
 ### Ensure that the id is available.
-    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
-        its('id') { should eq 'MetricsId' }
+
+    describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_ID') do
+        its('id') { should eq 'METRICS_ID' }
     end
 
 ### Ensure that access point arn is available.
-    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
+
+    describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_ID') do
         its('filter.access_point_arn') { should eq 'AccessPointArn' }
     end
 
@@ -56,7 +59,7 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
+    describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_ID') do
       it { should exist }
     end
 
@@ -70,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
+    describe aws_s3_access_point(bucket_name: 'BUCKET_NAME', metrics_id: 'METRICS_ID') do
       it { should be_available }
     end
 
