@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_fleet
 
-Use the `aws_ec2_fleet` InSpec audit resource to test properties of the singular resource of AWS EC2 Fleet.
+Use the `aws_ec2_fleet` InSpec audit resource to test properties of a single AWS EC2 fleet.
 
-The AWS::EC2::SpotFleet specifies the configuration information to launch a fleet--or group--of instances.
+The `AWS::EC2::SpotFleet` resource specifies the configuration information to launch a fleet--or group--of instances.
 
 ## Syntax
 
-Ensure that the fleet id exists.
+Ensure that the fleet ID exists.
 
     describe aws_ec2_fleet(fleet_id: "FLEET_ID") do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the fleet id exists.
 
 `fleet_id` _(required)_
 
-The ID of the EC2 Fleet. 
+The ID of the EC2 Fleet.
 
 For additional information, see the [AWS documentation on AWS EC2 Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html).
 
@@ -68,12 +68,14 @@ For additional information, see the [AWS documentation on AWS EC2 Fleet.](https:
 
 ## Examples
 
-### Ensure a fleet id is available.
+### Ensure a fleet ID is available.
+
     describe aws_ec2_fleet(fleet_id: "FLEET_ID") do
       its('fleet_id') { should eq 'FLEET_ID' }
     end
 
 ### Ensure that the type is `instant`.
+
     describe aws_ec2_fleet(fleet_id: "FLEET_ID") do
         its('type') { should eq 'instant' }
     end

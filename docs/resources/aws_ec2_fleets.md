@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ec2_fleets
 
-Use the `aws_ec2_fleets` InSpec audit resource to test properties of the plural resource of AWS EC2 Fleet.
+Use the `aws_ec2_fleets` InSpec audit resource to test properties multiple AWS EC2 fleets.
 
-The AWS::EC2::SpotFleet specifies the configuration information to launch a fleet--or group--of instances.
+The `AWS::EC2::SpotFleet` resource specifies the configuration information to launch a fleet--or group--of instances.
 
 ## Syntax
 
