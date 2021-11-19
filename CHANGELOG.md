@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.45 -->
+<!-- latest_release 1.74.46 -->
+## [v1.74.46](https://github.com/inspec/inspec-aws/tree/v1.74.46) (2021-11-19)
+
+#### Merged Pull Requests
+- Added support for AWS EMR Cluster resource [#758](https://github.com/inspec/inspec-aws/pull/758) ([varunsharma5](https://github.com/varunsharma5))
+<!-- latest_release -->
+
 ## [v1.74.45](https://github.com/inspec/inspec-aws/tree/v1.74.45) (2021-11-19)
 
 #### Merged Pull Requests
 - Added support for AWS::EMR::SecurityConfiguration. [#766](https://github.com/inspec/inspec-aws/pull/766) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.74.44](https://github.com/inspec/inspec-aws/tree/v1.74.44) (2021-11-18)
 
