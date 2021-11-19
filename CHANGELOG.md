@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.44 -->
+<!-- latest_release 1.74.45 -->
+## [v1.74.45](https://github.com/inspec/inspec-aws/tree/v1.74.45) (2021-11-19)
+
+#### Merged Pull Requests
+- Added support for AWS::EMR::SecurityConfiguration. [#766](https://github.com/inspec/inspec-aws/pull/766) ([varunsharma5](https://github.com/varunsharma5))
+<!-- latest_release -->
+
 ## [v1.74.44](https://github.com/inspec/inspec-aws/tree/v1.74.44) (2021-11-18)
 
 #### Merged Pull Requests
 - Docs fixes [#767](https://github.com/inspec/inspec-aws/pull/767) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.43](https://github.com/inspec/inspec-aws/tree/v1.74.43) (2021-11-17)
 
