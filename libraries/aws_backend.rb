@@ -54,6 +54,7 @@ require 'aws-sdk-networkmanager'
 require 'aws-sdk-signer'
 require 'aws-sdk-amplify'
 require 'aws-sdk-simpledb'
+require 'aws-sdk-emr'
 
 # AWS Inspec Backend Classes
 #
@@ -305,6 +306,10 @@ class AwsConnection
 
   def simpledb_client
     aws_client(Aws::SimpleDB::Client)
+  end
+
+  def emr_client
+    aws_client(Aws::EMR::Client)
   end
 end
 
