@@ -92,7 +92,7 @@ Provides the VPC ID for the subnet.
       it { should be_mapping_public_ip_on_launch }
     end
     
-#### exist
+### exist
 
 The `exist` matcher indicates that a subnet exists for the specified vpc.
 

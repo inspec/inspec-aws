@@ -81,7 +81,7 @@ The `be_public` matcher tests if the AMI has public launch permissons.
       it { should_not be_public }
     end
    
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

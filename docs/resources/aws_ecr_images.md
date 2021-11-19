@@ -62,7 +62,7 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [def
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.

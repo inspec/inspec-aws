@@ -830,6 +830,10 @@ output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
 }
 
+output "domain-names-sdb" {
+  value = aws_simpledb_domain.users.name
+}
+
 output "aws_api_gateway_deployement_id_test" {
   value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
 }
@@ -857,6 +861,7 @@ output "aws_api_gateway_stage_name" {
 output "aws_api_gateway_base_path_mapping_domain_name" {
   value = aws_api_gateway_base_path_mapping.aws_api_gateway_base_path_mapping_bm_test1.domain_name
 }
+
 output "aws_api_gateway_account_throttle_settings" {
   value = aws_api_gateway_account.aws_api_gateway_account_test1.throttle_settings
 }
@@ -1075,6 +1080,74 @@ output "aws_cloudwatch_log_group_name" {
 
 output "aws_cloudwatch_log_stream_arn" {
   value = aws_cloudwatch_log_stream.for_test.arn
+}
+
+output "aws_volume_attachment_instance_device_name" {
+  value = aws_volume_attachment.aws_volume_attachment_test.device_name
+}
+
+output "aws_volume_attachment_instance_volume_id" {
+  value = aws_volume_attachment.aws_volume_attachment_test.volume_id
+}
+
+output "aws_networkfirewall_firewall_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_firewall_policy_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.firewall_policy_arn
+}
+
+output "aws_networkfirewall_firewall_name" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.name
+}
+
+output "aws_networkfirewall_firewall_vpc_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.vpc_id
+}
+
+output "aws_networkfirewall_firewall_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.arn
+}
+
+output "aws_networkfirewall_firewall_policy_name" {
+  value = aws_networkfirewall_firewall_policy.aws_networkfirewall_firewall_policy_test.name
+}
+
+output "aws_networkfirewall_firewall_policy_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_rule_group_name" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.name
+}
+
+output "aws_networkfirewall_rule_group_arn" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.id
+}
+
+output "aws_networkfirewall_rule_group_capacity" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.capacity
+}
+
+output "aws_networkfirewall_rule_group_type" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.type
+}
+
+output "aws_spot_fleet_request_id" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.id
+}
+
+output "aws_spot_fleet_request_iam_fleet_role" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.iam_fleet_role
+}
+
+output "app_id" {
+  value = aws_amplify_app.test-app.id
+}
+
+output "branch_name" {
+  value = aws_amplify_app.test-app.name
 }
 
 output "aws_emr_security_configuration_name" {

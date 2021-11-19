@@ -2156,7 +2156,6 @@ resource "aws_launch_template" "launch-template-test" {
       Name = var.aws_launch_template_tag_name
     }
   }
-
 }
 
 resource "aws_eip" "aws_eip_1" {
@@ -3963,6 +3962,29 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   source_arn    = aws_sqs_queue.terraform_queue.arn
 }
 
+#Volume Attachment
+
+resource "aws_volume_attachment" "aws_volume_attachment_test" {
+  device_name = "/dev/sdf"
+  volume_id   = aws_ebs_volume.aws_ebs_volume_VA_test.id
+  instance_id = aws_instance.aws_instance_VA_test.id
+}
+
+resource "aws_instance" "aws_instance_VA_test" {
+  ami               = "ami-00399ec92321828f5"
+  availability_zone = "us-east-2a"
+  instance_type     = "t2.micro"
+
+  tags = {
+    Name = "TestInstance"
+  }
+}
+
+resource "aws_ebs_volume" "aws_ebs_volume_VA_test" {
+  availability_zone = "us-east-2a"
+  size              = 1
+}
+
 #VPN Connection Route
 
 resource "aws_vpc" "aws_vpc_vpn_connection_route_test" {
@@ -4597,4 +4619,206 @@ resource "aws_customer_gateway" "aws_customer_gateway_test1" {
   tags = {
     Name = "main-customer-gateway"
   }
+}
+
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
+  }
+}
+
+
+resource "aws_networkfirewall_firewall" "aws_networkfirewall_firewall_test" {
+  name                = "example"
+  firewall_policy_arn = aws_networkfirewall_firewall_policy.aws_networkfirewall_firewall_policy_test.arn
+  vpc_id              = aws_vpc.aws_vpc_firewall_test.id
+  subnet_mapping {
+    subnet_id = aws_subnet.aws_subnet_firewall_test.id
+  }
+
+  tags = {
+    Tag1 = "Value1"
+    Tag2 = "Value2"
+  }
+}
+
+resource "aws_vpc" "aws_vpc_firewall_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "aws_subnet_firewall_test" {
+  vpc_id     = aws_vpc.aws_vpc_firewall_test.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_networkfirewall_firewall_policy" "aws_networkfirewall_firewall_policy_test" {
+  name = "example"
+
+  firewall_policy {
+    stateless_default_actions          = ["aws:pass"]
+    stateless_fragment_default_actions = ["aws:drop"]
+    stateless_custom_action {
+      action_definition {
+        publish_metric_action {
+          dimension {
+            value = "1"
+          }
+        }
+      }
+      action_name = "ExampleCustomAction"
+    }
+  }
+}
+
+resource "aws_networkfirewall_logging_configuration" "aws_networkfirewall_logging_configuration_test" {
+  firewall_arn = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.arn
+  logging_configuration {
+    log_destination_config {
+      log_destination = {
+        bucketName = aws_s3_bucket.example.bucket
+        prefix     = "/example"
+      }
+      log_destination_type = "S3"
+      log_type             = "FLOW"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "aws-bucket-public-test1"
+  acl    = "public-read"
+
+  tags = {
+    Name        = "My bucket123"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_networkfirewall_rule_group" "aws_networkfirewall_rule_group_test" {
+  capacity = 100
+  name     = "example"
+  type     = "STATEFUL"
+  rule_group {
+    rules_source {
+      rules_source_list {
+        generated_rules_type = "DENYLIST"
+        target_types         = ["HTTP_HOST"]
+        targets              = ["test.example.com"]
+      }
+    }
+  }
+
+  tags = {
+    Tag1 = "Value1"
+    Tag2 = "Value2"
+  }
+}
+
+#Spot Fleets
+
+resource "aws_launch_template" "aws_launch_template_sf_test" {
+  name          = "launch-template"
+  image_id      = "ami-00399ec92321828f5"
+  instance_type = "t2.micro"
+  key_name      = "some-key"
+}
+
+resource "aws_spot_fleet_request" "aws_spot_fleet_request_test" {
+  iam_fleet_role  = "arn:aws:iam::112758395563:role/aws-ec2-spot-fleet-tagging-role"
+  target_capacity = 2
+
+  launch_template_config {
+    launch_template_specification {
+      id      = aws_launch_template.aws_launch_template_sf_test.id
+      version = "1"
+    }
+  }
+}
+
+#Amplify App
+resource "aws_amplify_app" "test-app" {
+  name       = "example-app"
+  repository = "https://github.com/example/app"
+
+  # The default build_spec added by the Amplify Console for React.
+  build_spec = <<-EOT
+    version: 0.1
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands:
+            - yarn run build
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  EOT
+
+  # The default rewrites and redirects added by the Amplify Console.
+  custom_rule {
+    source = "/<*>"
+    status = "404"
+    target = "/index.html"
+  }
+
+  environment_variables = {
+    ENV = "test"
+  }
+}
+
+#Amplify Branch
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.test-app.id
+  branch_name = "master"
+
+  framework = "React"
+  stage     = "PRODUCTION"
+
+  environment_variables = {
+    REACT_APP_API_SERVER = "https://api.example.com"
+  }
+}
+
+resource "aws_simpledb_domain" "users" {
+  name = "users"
 }

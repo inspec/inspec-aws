@@ -81,7 +81,7 @@ The `be_encrypted` matcher tests if the DynamoDB Table is encrypted.
 
     it { should be_encrypted }
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
