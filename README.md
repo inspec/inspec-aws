@@ -60,7 +60,7 @@ Example `~/.aws/config` :
  ```
 #### 2) Proxy
 
-Set your http_proxy in a `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
+Set your http_proxy in a `.envrc` file or export it in your shell. (See example [.envrc file](.envrc_example))
 
  ```bash
    export http_proxy="http://proxy.com:123"
