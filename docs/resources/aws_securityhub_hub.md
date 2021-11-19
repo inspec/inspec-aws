@@ -21,7 +21,7 @@ Ensure that the hub exists.
 
 The ARN of the Hub resource that was retrieved.
 
-For additional information, see the [AWS documentation on AWS Security Hub.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-compositealarm.html).
+For additional information, see the [AWS documentation on AWS Security Hub](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_DescribeHub.html).
 
 ## Properties
 
@@ -34,11 +34,13 @@ For additional information, see the [AWS documentation on AWS Security Hub.](htt
 ## Examples
 
 ### Ensure an auto enable controls is true.
+
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
       its('auto_enable_controls') { should eq true }
     end
 
-### Ensure an hub arn is available.
+### Ensure a hub ARN is available.
+
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
         its('hub_arn') { should eq 'HUB_ARN' }
     end
