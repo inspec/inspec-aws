@@ -3,7 +3,7 @@ title: About the aws_vpc_endpoint_service_permissions Resource
 platform: aws
 ---
 
-# service\_id
+# service_id
 
 Use the `aws_vpc_endpoint_service_permissions` InSpec audit resource to test the properties of all Amazon VPC endpoint service permissions. To audit a single AWS VPC Endpoint service, use the `aws_vpc_endpoint_service_permission` (singular) resource.
 
@@ -19,7 +19,7 @@ An `aws_vpc_endpoint_service_permissions` resource block collects a group of AWS
 
 The AWS VPC endpoint service ID is required.
 
-#### service\_id _(required)_
+#### service_id _(required)_
 
 The ID of the VPC endpoint service:
 
@@ -35,7 +35,7 @@ It can be passed as a `service_id: 'value'` key-value entry in a hash.
 
 | Property           | Description                              |        Fields                       |
 | ---                | ---                                      | ---                                 |
-| principal\_types   | List of types of principal.              | `principal_type`                    |
+| principal_types   | List of types of principal.              | `principal_type`                    |
 | principals         | List of the Amazon Resource Name (ARN) of the principal. | `principal`         |
 ## Examples
 
@@ -72,7 +72,8 @@ Use `should_not` to test an entity that should not exist.
       it { should_not exist }
     end
 
+## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeVpcEndpointServicePermissionsResult` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeVpcEndpointServicePermissionsResult` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon VPC endpoint service permissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServicePermissions.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

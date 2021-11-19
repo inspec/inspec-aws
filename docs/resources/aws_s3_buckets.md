@@ -45,7 +45,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
     
 ## Matchers
 
-#### exists
+### exist
 
 The control will pass if the resource contains at least one bucket.
 

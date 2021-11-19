@@ -55,7 +55,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if a group with the given group name exists.
 
