@@ -1149,3 +1149,11 @@ output "app_id" {
 output "branch_name" {
   value = aws_amplify_app.test-app.name
 }
+
+output "aws_emr_security_configuration_name" {
+  value = aws_emr_security_configuration.emr_security_configuration.name
+}
+
+output "aws_emr_security_configuration_json" {
+  value = aws_emr_security_configuration.emr_security_configuration.configuration
+}
