@@ -69,10 +69,6 @@ class AwsEmrCluster < AwsResourceBase
       @step_concurrency_level = cluster.step_concurrency_level
       @visible_to_all_users = cluster.visible_to_all_users
       @security_configuration_name = cluster.security_configuration
-      cluster_managed_policy = @aws.emr_client.get_managed_scaling_policy(req_cluster_id).managed_scaling_policy
-      if !cluster_managed_policy.nil?
-        @managed_scaling_policy_unit_type = cluster_managed_policy.compute_limits.unit_type
-      end
     end
   end
 
