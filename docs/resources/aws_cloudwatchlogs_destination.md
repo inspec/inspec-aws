@@ -5,9 +5,9 @@ platform: aws
 
 # aws_cloudwatchlogs_destination
 
-Use the `aws_cloudwatchlogs_destination` InSpec audit resource to test properties of a single specific AWS Logs Destination.
+Use the `aws_cloudwatchlogs_destination` InSpec audit resource to test properties of a single specific AWS CloudWatch Logs destination.
 
-The AWS::Logs::Destination specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
+The `AWS::Logs::Destination` resource type specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 
 ## Properties
 
-| Property | Description | 
+| Property | Description |
 | --- | --- |
 | destination_name | The name of the destination. |
 | target_arn | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). |
@@ -39,11 +39,13 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 ## Examples
 
 ### Ensure destination name is available.
+
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
       its('destination_name') { should eq 'DESTINATION_NAME' }
     end
 
 ### Ensure that the role_arn is available.
+
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
         its('role_arn') { should eq 'ROLE_ARN' }
     end
@@ -62,7 +64,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
       it { should_not exist }
