@@ -326,7 +326,6 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
       # below allows each resource to optionally and conveniently set max_retries and retry_backoff
       env_hash = ENV.map { |k, v| [k.downcase, v] }.to_h
-      opts[:aws_http_proxy]=   env_hash['aws_http_proxy'] if !opts[:aws_http_proxy] && env_hash['aws_http_proxy']
       opts[:aws_retry_limit]=   env_hash['aws_retry_limit'].to_i if !opts[:aws_retry_limit] && env_hash['aws_retry_limit']
       opts[:aws_retry_backoff]= env_hash['aws_retry_backoff'].to_i if !opts[:aws_retry_backoff] && env_hash['aws_retry_backoff']
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
