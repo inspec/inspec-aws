@@ -54,7 +54,7 @@ See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/la
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The `exists` matcher tests if the filtered IAM User(s) exists.
 

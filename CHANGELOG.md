@@ -1,9 +1,94 @@
-<!-- latest_release 1.74.28 -->
+<!-- latest_release 1.74.45 -->
+## [v1.74.45](https://github.com/inspec/inspec-aws/tree/v1.74.45) (2021-11-19)
+
+#### Merged Pull Requests
+- Added support for AWS::EMR::SecurityConfiguration. [#766](https://github.com/inspec/inspec-aws/pull/766) ([varunsharma5](https://github.com/varunsharma5))
+<!-- latest_release -->
+
+## [v1.74.44](https://github.com/inspec/inspec-aws/tree/v1.74.44) (2021-11-18)
+
+#### Merged Pull Requests
+- Docs fixes [#767](https://github.com/inspec/inspec-aws/pull/767) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.43](https://github.com/inspec/inspec-aws/tree/v1.74.43) (2021-11-17)
+
+#### Merged Pull Requests
+- Adding support for SDB Resource [#654](https://github.com/inspec/inspec-aws/pull/654) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.42](https://github.com/inspec/inspec-aws/tree/v1.74.42) (2021-11-17)
+
+#### Merged Pull Requests
+- Nirbhay/AmplifyBranch [#638](https://github.com/inspec/inspec-aws/pull/638) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.41](https://github.com/inspec/inspec-aws/tree/v1.74.41) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_spot_fleet [#624](https://github.com/inspec/inspec-aws/pull/624) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.40](https://github.com/inspec/inspec-aws/tree/v1.74.40) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_firewall_firewall [#625](https://github.com/inspec/inspec-aws/pull/625) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.39](https://github.com/inspec/inspec-aws/tree/v1.74.39) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_firewall_logging_configuration [#626](https://github.com/inspec/inspec-aws/pull/626) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.38](https://github.com/inspec/inspec-aws/tree/v1.74.38) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_firewall_rule_group [#627](https://github.com/inspec/inspec-aws/pull/627) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.37](https://github.com/inspec/inspec-aws/tree/v1.74.37) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_manager_customer_gateway_association [#628](https://github.com/inspec/inspec-aws/pull/628) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.36](https://github.com/inspec/inspec-aws/tree/v1.74.36) (2021-11-17)
+
+#### Merged Pull Requests
+- soumyo/aws_network_firewall_firewall_policy [#630](https://github.com/inspec/inspec-aws/pull/630) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.35](https://github.com/inspec/inspec-aws/tree/v1.74.35) (2021-11-17)
+
+#### Merged Pull Requests
+- aws_ec2_volume_attachments [#629](https://github.com/inspec/inspec-aws/pull/629) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.34](https://github.com/inspec/inspec-aws/tree/v1.74.34) (2021-11-17)
+
+#### Merged Pull Requests
+- Nirbhay/AmplifyApp [#637](https://github.com/inspec/inspec-aws/pull/637) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.33](https://github.com/inspec/inspec-aws/tree/v1.74.33) (2021-11-15)
+
+#### Merged Pull Requests
+- minor updates to InSpec AWS Resources that were merged - 684, 685, 686, and 695. [#763](https://github.com/inspec/inspec-aws/pull/763) ([dkumaras](https://github.com/dkumaras))
+
+## [v1.74.32](https://github.com/inspec/inspec-aws/tree/v1.74.32) (2021-11-15)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudformation_template [#753](https://github.com/inspec/inspec-aws/pull/753) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.31](https://github.com/inspec/inspec-aws/tree/v1.74.31) (2021-11-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_customer_gateway [#664](https://github.com/inspec/inspec-aws/pull/664) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.30](https://github.com/inspec/inspec-aws/tree/v1.74.30) (2021-11-12)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_capacity_reservation [#663](https://github.com/inspec/inspec-aws/pull/663) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.29](https://github.com/inspec/inspec-aws/tree/v1.74.29) (2021-11-11)
+
+#### Merged Pull Requests
+- Minor docs fixes [#759](https://github.com/inspec/inspec-aws/pull/759) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.74.28](https://github.com/inspec/inspec-aws/tree/v1.74.28) (2021-11-11)
 
 #### Merged Pull Requests
 - Added support for checking last_status for a config recorder [#750](https://github.com/inspec/inspec-aws/pull/750) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.74.27](https://github.com/inspec/inspec-aws/tree/v1.74.27) (2021-11-10)
 

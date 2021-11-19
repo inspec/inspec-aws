@@ -139,6 +139,7 @@ module AWSInspecConfig
       aws_elb_access_log_name: "elb-log-name-#{add_random_string}",
       aws_elb_access_log_prefix: "elb-log-prefix-#{add_random_string}",
       aws_elb_name: "elb-#{add_random_string}",
+      aws_emr_security_configuration_name: "emr-sec-config-#{add_random_string}",
       aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
       aws_iam_user_name: "iam-user-#{add_random_string}",
       aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",

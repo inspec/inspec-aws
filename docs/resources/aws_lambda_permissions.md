@@ -3,11 +3,11 @@ title: About the aws_lambda_permissions Resource
 platform: aws
 ---
 
-# aws\_lambda\_permissions
+# aws_lambda_permissions
 
 Use the `aws_lambda_permissions` InSpec audit resource to test properties of multiple AWS Lambda permissions.
 
-The AWS Lambda Permission resource grants an AWS service or another account permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.
+The `AWS::Lambda::Permission` resource grants an AWS service or another account permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.
 
 ## Syntax
 
