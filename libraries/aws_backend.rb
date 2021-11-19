@@ -330,7 +330,7 @@ class AwsResourceBase < Inspec.resource(1)
       opts[:aws_retry_backoff]= env_hash['aws_retry_backoff'].to_i if !opts[:aws_retry_backoff] && env_hash['aws_retry_backoff']
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
-      client_args[:client_args][:http_proxy]= opts[:aws_http_proxy].presence || env_hash['aws_http_proxy'].presence
+      client_args[:client_args][:http_proxy]= opts[:aws_http_proxy] || env_hash['aws_http_proxy']
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
