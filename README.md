@@ -58,7 +58,7 @@ Example `~/.aws/config` :
      # Example configuration
      export AWS_PROFILE="engineering"
  ```
-#### 2) Proxy
+#### 3) Proxy
 
 Set your http_proxy in a `.envrc` file or export it in your shell. (See example [.envrc file](.envrc_example))
 
