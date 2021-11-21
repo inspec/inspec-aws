@@ -1,8 +1,8 @@
 title 'Test AWS GuardDuty Detector in bulk'
 
-aws_guardduty_detector_id = attribute(:aws_guardduty_detector_id, default: '', description: 'The AWS GuardDuty Detector ID.')
+aws_guardduty_detector_id = attribute(:aws_guardduty_detector_id, value: '', description: 'The AWS GuardDuty Detector ID.')
 aws_guardduty_detector_publishing_frequency = attribute(:aws_guardduty_detector_publishing_frequency,
-                                                        default: '',
+                                                        value: '',
                                                         description: 'The AWS GuardDuty Detector ID.')
 
 control 'aws-guardduty-detector-1.0' do

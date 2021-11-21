@@ -1,6 +1,6 @@
 secure_distribution_id = attribute(:aws_secure_cloudfront_distribution_id, value: '', description: 'The secure AWS Cloudfront distribution ID.')
 
-title 'Test plural Cloudfront distributions'
+title 'Test plural Cloudfront distributions.'
 
 control 'aws-cloudfront-distributions-1.0' do
 

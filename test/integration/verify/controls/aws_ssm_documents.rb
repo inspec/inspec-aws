@@ -1,7 +1,7 @@
 title 'Test AWS SSM Documents in bulk'
 
-aws_ssm_document_name = attribute(:aws_ssm_document_name, default: '', description: 'The AWS SSM Document Name')
-aws_ssm_document_document_type = attribute(:aws_ssm_document_document_type, default: '', description: 'The AWS SSM Document Command')
+aws_ssm_document_name = attribute(:aws_ssm_document_name, value: '', description: 'The AWS SSM Document Name')
+aws_ssm_document_document_type = attribute(:aws_ssm_document_document_type, value: '', description: 'The AWS SSM Document Command')
 
 control 'aws-ssm-documents-1.0' do
 

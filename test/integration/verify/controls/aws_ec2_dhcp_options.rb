@@ -1,12 +1,13 @@
 title 'Test Collection of EC2 AWS DHCP Options'
 
-aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default: '', description: 'The AWS EC2 DHCP Options ID.')
-aws_vpc_dhcp_options_name = attribute(:aws_vpc_dhcp_options_name, default: '', description: 'The AWS EC2 DHCP Options Name.')
+aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS EC2 DHCP Options ID.')
+aws_vpc_dhcp_options_name = attribute(:aws_vpc_dhcp_options_name, value: '', description: 'The AWS EC2 DHCP Options Name.')
 
 control 'aws-ec2-dhcp-options-1.0' do
 
   impact 1.0
   title 'Ensure AWS EC2 DHCP Options has the correct properties.'
+
   aws_ec2_dhcp_options.each do |dhcp_option|
     describe aws_ec2_dhcp_option(dhcp_options_id: dhcp_option.dhcp_options_id) do
       it { should exist }
