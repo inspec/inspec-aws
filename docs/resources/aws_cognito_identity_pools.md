@@ -67,4 +67,4 @@ Use `should` to check if the identity pool is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cognitoidentity:client:list_identity_pools` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CognitoIdentity:Client:ListIdentityPoolsResponse` action with `Effect` set to `Allow`.

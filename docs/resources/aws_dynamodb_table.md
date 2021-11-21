@@ -81,7 +81,7 @@ The `be_encrypted` matcher tests if the DynamoDB Table is encrypted.
 
     it { should be_encrypted }
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -96,6 +96,6 @@ Use `should_not` to test the entity should not exist.
     end
     
 ## AWS Permissions
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `DynamoDB::DescribeTable` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `DynamoDB:Client:DescribeTableOutput` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Dynamodb](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazondynamodb.html).

@@ -1,7 +1,7 @@
 title 'Test single AWS Flow Log'
 
-aws_vpc_flow_log_id = attribute(:aws_vpc_flow_log_id, default: '', description: 'The AWS VPC identifier with flow log.')
-aws_flow_log_id = attribute(:aws_flow_log_id, default: '', description: 'The AWS flow log ID.')
+aws_vpc_flow_log_id = attribute(:aws_vpc_flow_log_id, value: '', description: 'The AWS VPC identifier with flow log.')
+aws_flow_log_id = attribute(:aws_flow_log_id, value: '', description: 'The AWS flow log ID.')
 
 control 'aws-flow-log-1.0' do
 

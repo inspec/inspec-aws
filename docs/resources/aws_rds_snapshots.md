@@ -3,7 +3,7 @@ title: About the aws_rds_snapshots Resource
 platform: aws
 ---
 
-# aws\_rds\_snapshots
+# aws_rds_snapshots
 
 Use the `aws_rds_snapshots` InSpec audit resource to test the properties of a collection of AWS RDS snapshots.
 
@@ -25,7 +25,7 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 |Property                     | Description|
 | ---                         | --- |
-|db\_snapshot\_identifiers    | The unique IDs of the RDS snapshots returned. |
+|db_snapshot_identifiers    | The unique IDs of the RDS snapshots returned. |
 |entries                      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
@@ -62,6 +62,8 @@ Use `should_not` to test the entity should not exist.
       it { should_not exist }
     end
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeSnapshots`, and `iam:GetSnapshotProfile` actions set to allow.
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `RDS:Client:DBSnapshotMessage` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

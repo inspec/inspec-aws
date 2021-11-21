@@ -1,4 +1,5 @@
 skip_control 'aws-ec2-network-insights-paths-1.0' do
+
   impact 1.0
   title 'Test a plural resource of the aws ec2 network insight path.'
 

@@ -2,6 +2,7 @@ aws_ebs_volume_name = attribute(:aws_ebs_volume_name, value: '', description: 'T
 aws_ebs_volume_id = attribute(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
 
 title 'Test single AWS EBS Volume'
+
 control 'aws-ebs-volume-1.0' do
 
   impact 1.0

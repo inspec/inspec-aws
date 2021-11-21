@@ -36,7 +36,7 @@ EOH
   # Push changes back up to GitHub
   git add .
   git commit -m "Release Notes for published release ${CURRENTDATE}"
-  git push origin main
+  git push origin master
 popd
 
 rm -rf inspec-aws.wiki

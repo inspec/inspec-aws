@@ -69,7 +69,7 @@ See also the [AWS documentation on Flow Logs](https://docs.aws.amazon.com/vpc/la
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
@@ -109,4 +109,4 @@ Indicates that the Flow Log is attached to a vpc resource.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeFlowLogs` actions with Effect set to Allow.  
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeFlowLogsResult` actions with Effect set to Allow.  

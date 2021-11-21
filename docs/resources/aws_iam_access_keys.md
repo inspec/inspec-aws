@@ -34,18 +34,18 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 | ---                    | --- |
 | access\_key\_id        | The ID of the Access Key. |
 | username               | The IAM Username which is associated with the Access Key. |
-| active                 | Indicates if the status of the Key is Active.
-| inactive               | Indicates if the status of the Key is Inactive.
-| ever\_used             | Indicates if the Key has ever been used.
-| never\_used            | Indicates if the Key has never been used.
+| active                 | Indicates if the status of the Key is Active. |
+| inactive               | Indicates if the status of the Key is Inactive. |
+| ever\_used             | Indicates if the Key has ever been used. |
+| never\_used            | Indicates if the Key has never been used. |
 | create\_date           | The creation date of the Access Key. |
-| created\_days\_ago     | How many days ago the Access Key was created.
-| created\_hours\_ago    | How many hours ago the Access Key was created.
-| created\_with\_user    | Boolean indicating if the Access Key was created with a User.
-| last\_used\_date       | The date the Access Key was last used.
-| last\_used\_hours\_ago | How many hours ago the Key was last used.
-| last\_used\_days\_ago  | How many days ago the Key was last used.
-| user\_created\_date    | The date on which the associated User was created.
+| created\_days\_ago     | How many days ago the Access Key was created. |
+| created\_hours\_ago    | How many hours ago the Access Key was created. |
+| created\_with\_user    | Boolean indicating if the Access Key was created with a user. |
+| last\_used\_date       | The date the Access Key was last used. |
+| last\_used\_hours\_ago | How many hours ago the Key was last used. |
+| last\_used\_days\_ago  | How many days ago the Key was last used. |
+| user\_created\_date    | The date on which the associated User was created. |
 | entries                | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 
@@ -65,7 +65,7 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -74,11 +74,9 @@ Use `should_not` to test the entity should not exist.
     it { should exist }
  
     it { should_not exist }
-    
+
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions set to Allow: 
-`iam:GetUser` 
-`iam:GetAccessKeyLastUsed` 
-`iam:ListUsers` 
-`iam:ListAccessKeys` 
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetAccessKeyLastUsedResponse`, `IAM:Client:ListAccessKeysResponse` and `IAM:Client:ListUsersResponse` action with Effect set to Allow.
+
+You can find detailed documentation at [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/r53-api-permissions-ref.html)
