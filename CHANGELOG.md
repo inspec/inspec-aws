@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.46 -->
+<!-- latest_release 1.74.47 -->
+## [v1.74.47](https://github.com/inspec/inspec-aws/tree/v1.74.47) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/AWS CloudFront Public Key resource [#682](https://github.com/inspec/inspec-aws/pull/682) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.46](https://github.com/inspec/inspec-aws/tree/v1.74.46) (2021-11-19)
 
 #### Merged Pull Requests
 - Added support for AWS EMR Cluster resource [#758](https://github.com/inspec/inspec-aws/pull/758) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.74.45](https://github.com/inspec/inspec-aws/tree/v1.74.45) (2021-11-19)
 
