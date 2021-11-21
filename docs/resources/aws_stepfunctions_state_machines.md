@@ -74,4 +74,4 @@ Use `should` to check if the state machine is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `states:client:list_state_machines` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `States:Client:ListStateMachinesOutput` action with `Effect` set to `Allow`.

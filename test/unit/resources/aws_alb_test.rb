@@ -29,11 +29,13 @@ class AwsAlbTest < Minitest::Test
     @mock = AwsAlbMock.new
     @mock_alb = @mock.alb[:load_balancers].first
     @mock_alb_listeners = @mock.alb_listeners[:listeners]
+    @mock_alb_attributes = @mock.alb_attributes[:attributes]
 
     # When
     @alb = AwsAlb.new(load_balancer_arn: @mock_alb[:load_balancer_arn],
                                  client_args: { stub_responses: true },
                                  stub_data: @mock.stub_data)
+
   end
 
   def test_lb_name
@@ -95,6 +97,10 @@ class AwsAlbTest < Minitest::Test
 
   def test_lb_protocols
     assert_equal(@alb.protocols, [@mock_alb_listeners.first[:protocol], @mock_alb_listeners.last[:protocol]])
+  end
+
+  def test_access_log
+    assert_equal(true, @alb.access_log_enabled)
   end
 
   def test_exists
