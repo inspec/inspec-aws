@@ -194,7 +194,7 @@ The matchers accept a key-value list of search criteria.  For a rule to match, i
           it { should allow_in_only(port: 3389, ipv4_range: '10.5.1.34/32', position: 1) }
         end
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

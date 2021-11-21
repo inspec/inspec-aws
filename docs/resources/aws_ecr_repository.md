@@ -73,7 +73,7 @@ There are also additional properties available. For a comprehensive list, see [t
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 
     describe aws_ecr_repository(repository_name: 'my-repo') do
         it { should exist }

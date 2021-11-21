@@ -3,7 +3,7 @@ title: About the aws_redshift_cluster_parameter_groups Resource
 platform: aws
 ---
 
-# aws\_redshift\_cluster\_parameter\_groups
+# aws_redshift_cluster_parameter_groups
 
 Use the `aws_redshift_cluster_parameter_groups` InSpec audit resource to test properties of some or all AWS Redshift cluster parameter groups.
 
@@ -54,7 +54,7 @@ See the [AWS documentation on Redshift cluster parameter group](https://docs.aws
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -70,6 +70,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Redshift:Client:ClusterParameterGroupsMessage` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Redshift:Client:ClusterParameterGroupsMessage` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

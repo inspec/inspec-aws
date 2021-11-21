@@ -15,6 +15,12 @@ class AwsAlbMock < AwsBaseResourceMock
                             type: @aws.any_string,
                             vpc_id: @aws.any_string,
                             created_time: Time.now }]}
+    
+    @alb_attributes = {attributes: [{
+                                    key: "access_logs.s3.enabled", 
+                                    value: "true", },  
+                                    ]}
+                            
     @alb_listeners = {listeners: [{
                                     listener_arn: @aws.any_arn,
                                     load_balancer_arn: @aws.any_arn,
@@ -43,6 +49,11 @@ class AwsAlbMock < AwsBaseResourceMock
 
     stub_data += [alb]
 
+    alb_attributes = {:client => Aws::ElasticLoadBalancingV2::Client,
+      :method => :describe_load_balancer_attributes,
+      :data => @alb_attributes}
+    stub_data += [alb_attributes]
+
       ## Need to stub the AWS ALB class with listeners seperately (it's a second client method call to describe_listeners)
     alb_listeners = {:client => Aws::ElasticLoadBalancingV2::Client,
               :method => :describe_listeners,
@@ -54,6 +65,10 @@ class AwsAlbMock < AwsBaseResourceMock
   def alb
     @alb
   end
+
+ def alb_attributes
+  @alb_attributes
+ end
 
   def alb_listeners
     @alb_listeners

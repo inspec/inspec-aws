@@ -55,7 +55,7 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

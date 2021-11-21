@@ -3,14 +3,15 @@ title: About the aws_guardduty_detector Resource
 platform: aws
 ---
 
-# Requirements
-
-Train AWS version 0.1.18 or newer is required for this resource.
-
 # aws\_guardduty\_detector
 
 Use the `aws_guardduty_detector` InSpec audit resource to test properties of a single AWS GuardDuty Detector.
 
+For additional information, including details on parameters and properties, see the [Actions, Resources, and Condition Keys for Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetDetector.html).
+
+## Requirements
+
+Train AWS version 0.1.18 or newer is required for this resource.
 ## Syntax
 
 An `aws_guardduty_detector` resource block declares the tests for a single AWS GuardDuty Detector by detector id.
@@ -46,6 +47,7 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Examples
 
 ##### Check the publishing frequency of a Detector
+
     describe aws_guardduty_detector(detector_id: '12abc34d567e8fa901bc2d34e56789f0') do
       its('finding_publishing_frequency') { should eq "SIX_HOURS" }
     end
@@ -66,7 +68,7 @@ The `be_enabled` matcher tests if the status of the detector is enabled.
       it { should_not be_enabled }
     end
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -82,6 +84,4 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `GuardDuty:Client:GetDetectorResponse`.
-
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html).  
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `GuardDuty:Client:GetDetectorResponse` action with `Effect` set to `Allow`.
