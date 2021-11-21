@@ -48,8 +48,13 @@ require 'aws-sdk-eventbridge'
 require 'aws-sdk-states'
 require 'aws-sdk-ram'
 require 'aws-sdk-secretsmanager'
-require 'aws-sdk-networkmanager'
+require 'aws-sdk-networkfirewall'
 require 'aws-sdk-mq'
+require 'aws-sdk-networkmanager'
+require 'aws-sdk-signer'
+require 'aws-sdk-amplify'
+require 'aws-sdk-simpledb'
+require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
 
 # AWS Inspec Backend Classes
@@ -280,6 +285,10 @@ class AwsConnection
     aws_client(Aws::SecretsManager::Client)
   end
 
+  def signer_client
+    aws_client(Aws::Signer::Client)
+  end
+
   def network_manager_client
     aws_client(Aws::NetworkManager::Client)
   end
@@ -290,6 +299,22 @@ class AwsConnection
 
   def securityhub_client
     aws_client(Aws::SecurityHub::Client)
+  end
+
+  def amplify_client
+    aws_client(Aws::Amplify::Client)
+  end
+
+  def network_firewall_client
+    aws_client(Aws::NetworkFirewall::Client)
+  end
+
+  def simpledb_client
+    aws_client(Aws::SimpleDB::Client)
+  end
+
+  def emr_client
+    aws_client(Aws::EMR::Client)
   end
 end
 

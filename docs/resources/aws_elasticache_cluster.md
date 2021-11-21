@@ -73,7 +73,7 @@ There are also additional properties available. For a comprehensive list, see [t
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 
     describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
         it { should exist }

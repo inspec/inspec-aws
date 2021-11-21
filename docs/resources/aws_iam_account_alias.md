@@ -42,7 +42,7 @@ See also the [AWS documentation on Account Aliases](https://docs.aws.amazon.com/
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
