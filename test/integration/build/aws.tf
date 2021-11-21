@@ -5345,3 +5345,10 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile_permission" "aws_signer_signing_profile_permission_test1" {
+  profile_name = aws_signer_signing_profile.aws_signer_signing_profile_test.name
+  action       = "signer:StartSigningJob"
+  principal    = 112758395563
+}

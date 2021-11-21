@@ -1301,3 +1301,23 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "aws_signer_signing_profile_permission_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.id
+}
+
+output "aws_signer_signing_profile_permission_action" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.action
+}
+
+output "aws_signer_signing_profile_permission_principal" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.principal
+}
+
+output "aws_signer_signing_profile_permission_profile_name" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.profile_name
+}
+
+output "aws_signer_signing_profile_permission_statement_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.statement_id
+}
