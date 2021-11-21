@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.50 -->
+<!-- latest_release 1.74.51 -->
+## [v1.74.51](https://github.com/inspec/inspec-aws/tree/v1.74.51) (2021-11-21)
+
+#### Merged Pull Requests
+- Added support for Cloud watch metric stream [#657](https://github.com/inspec/inspec-aws/pull/657) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.50](https://github.com/inspec/inspec-aws/tree/v1.74.50) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudfront_streaming_distribution [#674](https://github.com/inspec/inspec-aws/pull/674) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.49](https://github.com/inspec/inspec-aws/tree/v1.74.49) (2021-11-21)
 

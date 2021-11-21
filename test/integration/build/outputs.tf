@@ -815,7 +815,6 @@ output "aws_ec2_capacity_reservation_instance_arn" {
   value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.arn
 }
 
-
 output "aws_cloudfront_realtime_log_config_name" {
   value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.name
 }
@@ -1257,6 +1256,14 @@ output "aws_cloudfront_public_key_id" {
 
 output "aws_cloudfront_public_key" {
   value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
+}
+
+output "stream_arns" {
+  value = aws_cloudwatch_metric_stream.main.name
+}
+
+output "stream_name" {
+  value = aws_cloudwatch_metric_stream.main.arn
 }
 
 output "aws_lambda_function_event_invoke_config_id" {
