@@ -782,6 +782,7 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+
 output "aws_customer_gateway_id" {
   value = aws_customer_gateway.aws_customer_gateway_test1.id
 }
@@ -828,6 +829,34 @@ output "aws_internet_gateway_vpc_id" {
 
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.id
+}
+
+output "aws_cloudfront_distribution_enabled" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.enabled
+}
+
+output "aws_cloudfront_distribution_arn" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.arn
+}
+
+output "aws_cloudfront_distribution_caller_reference" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.caller_reference
+}
+
+output "aws_cloudfront_distribution_status" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.status
+}
+
+output "aws_cloudfront_distribution_domain_name" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.domain_name
+}
+
+output "aws_cloudfront_distribution_in_progress_validation_batches" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.in_progress_validation_batches
 }
 
 output "domain-names-sdb" {
