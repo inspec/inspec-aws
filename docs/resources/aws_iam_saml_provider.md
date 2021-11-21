@@ -3,14 +3,19 @@ title: About the aws_iam_saml_provider Resource
 platform: aws
 ---
 
-# aws\_iam\_saml\_provider
+# aws_iam_saml_provider
 
 Use the `aws_iam_saml_provider` InSpec audit resource to test properties of an AWS IAM SAML Provider.
 
+## Syntax
 
-#### Parameters
+    describe aws_iam_saml_provider('SAML_ARN') do
+        it { should exist }
+    end
 
-##### saml\_provider\_arn _(required)_
+## Parameters
+
+`saml_provider_arn` _(required)_
 
 This resource accepts a single parameter, the ARN of the SAML Provider.
 This can be passed either as a string or as a `saml_provider_arn: 'value'` key-value entry in a hash.
@@ -21,9 +26,9 @@ This can be passed either as a string or as a `saml_provider_arn: 'value'` key-v
 | ---                     | --- |
 |provider                 | The provider. |
 |arn                      | The arn of the provider. |
-|saml\_metadata\_document | Metadata document associated with the saml provider. |
-|valid\_until             | The expiration date and time for the SAML provider.  |
-|create\_date             | The date and time, in ISO 8601 date-time format , when the role was created. |
+|saml_metadata_document | Metadata document associated with the saml provider. |
+|valid_until             | The expiration date and time for the SAML provider.  |
+|create_date             | The date and time, in ISO 8601 date-time format , when the role was created. |
 
 ## Syntax
 
@@ -35,20 +40,19 @@ An `aws_iam_saml_provider` resource block declares the tests for a single AWS IA
 
 ## Examples
 
-#### Ensure we have at least one provider currently valid
+### Ensure we have at least one provider currently valid
+
       describe aws_iam_saml_provider("arn:aws:iam::123456789012:saml-provider/FANCY") do
         it { should exist }
         its("arn") { should match("arn:aws:iam::.*:saml-provider\/FANCY") }
         its("valid_until") { should be > Time.now + 90 * 86400 }
     end
 
-<br>
-
 ## Matchers
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+### exist
 
 The `exists` matcher tests if the filtered IAM SAML Provider(s) exists.
 
@@ -59,5 +63,4 @@ You may also use `it { should_not exist }`.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions set to Allow:
-`iam:GetSamlProvider`
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetSAMLProviderResponse` action with `Effect` set to `Allow`.

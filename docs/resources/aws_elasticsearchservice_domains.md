@@ -65,4 +65,4 @@ Use `should` to check if the work_group name is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `elasticsearch_service_client.list_domain_names` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ElasticsearchService:Client:ListDomainNamesResponse` action with `Effect` set to `Allow`.
