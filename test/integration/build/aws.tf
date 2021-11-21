@@ -5310,3 +5310,17 @@ resource "aws_cloudfront_realtime_log_config" "aws_cloudfront_realtime_log_confi
 
   depends_on = [aws_iam_role_policy.aws_iam_role_policy_cf_log_config_test1]
 }
+
+//AWS::EC2::EgressOnlyInternetGateway
+resource "aws_vpc" "aws_vpc_eoig_test1" {
+  cidr_block                       = "10.1.0.0/16"
+  assign_generated_ipv6_cidr_block = true
+}
+
+resource "aws_egress_only_internet_gateway" "aws_egress_only_internet_gateway_test1" {
+  vpc_id = aws_vpc.aws_vpc_eoig_test1.id
+
+  tags = {
+    Name = "main"
+  }
+}

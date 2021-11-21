@@ -762,6 +762,14 @@ output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
 
+output "aws_egress_only_internet_gateway_id" {
+  value = aws_egress_only_internet_gateway.aws_egress_only_internet_gateway_test1.id
+}
+
+output "aws_vpc_eoig_test1_id" {
+  value = aws_vpc.aws_vpc_eoig_test1.id
+}
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
