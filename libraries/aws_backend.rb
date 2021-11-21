@@ -55,6 +55,7 @@ require 'aws-sdk-signer'
 require 'aws-sdk-amplify'
 require 'aws-sdk-simpledb'
 require 'aws-sdk-emr'
+require 'aws-sdk-securityhub'
 
 # AWS Inspec Backend Classes
 #
@@ -294,6 +295,10 @@ class AwsConnection
 
   def mq_client
     aws_client(Aws::MQ::Client)
+  end
+
+  def securityhub_client
+    aws_client(Aws::SecurityHub::Client)
   end
 
   def amplify_client

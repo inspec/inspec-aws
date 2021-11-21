@@ -1,9 +1,79 @@
-<!-- latest_release 1.74.46 -->
+<!-- latest_release 1.74.60 -->
+## [v1.74.60](https://github.com/inspec/inspec-aws/tree/v1.74.60) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_placement_group [#669](https://github.com/inspec/inspec-aws/pull/669) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.59](https://github.com/inspec/inspec-aws/tree/v1.74.59) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_host [#668](https://github.com/inspec/inspec-aws/pull/668) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.58](https://github.com/inspec/inspec-aws/tree/v1.74.58) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_fleet [#667](https://github.com/inspec/inspec-aws/pull/667) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.57](https://github.com/inspec/inspec-aws/tree/v1.74.57) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_egress_only_internet_gateway [#665](https://github.com/inspec/inspec-aws/pull/665) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.56](https://github.com/inspec/inspec-aws/tree/v1.74.56) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_eip_association [#666](https://github.com/inspec/inspec-aws/pull/666) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.55](https://github.com/inspec/inspec-aws/tree/v1.74.55) (2021-11-21)
+
+#### Merged Pull Requests
+- added audit support for s3 access points [#660](https://github.com/inspec/inspec-aws/pull/660) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.54](https://github.com/inspec/inspec-aws/tree/v1.74.54) (2021-11-21)
+
+#### Merged Pull Requests
+- Added Support for Insight Rules [#659](https://github.com/inspec/inspec-aws/pull/659) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.53](https://github.com/inspec/inspec-aws/tree/v1.74.53) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_layer_version_permission [#671](https://github.com/inspec/inspec-aws/pull/671) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.52](https://github.com/inspec/inspec-aws/tree/v1.74.52) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudfront_realtime_log_config [#673](https://github.com/inspec/inspec-aws/pull/673) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.51](https://github.com/inspec/inspec-aws/tree/v1.74.51) (2021-11-21)
+
+#### Merged Pull Requests
+- Added support for Cloud watch metric stream [#657](https://github.com/inspec/inspec-aws/pull/657) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.50](https://github.com/inspec/inspec-aws/tree/v1.74.50) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudfront_streaming_distribution [#674](https://github.com/inspec/inspec-aws/pull/674) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.49](https://github.com/inspec/inspec-aws/tree/v1.74.49) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_cloudwatch_composite_alarm [#676](https://github.com/inspec/inspec-aws/pull/676) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.48](https://github.com/inspec/inspec-aws/tree/v1.74.48) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/CloudFront Key Group  [#679](https://github.com/inspec/inspec-aws/pull/679) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.47](https://github.com/inspec/inspec-aws/tree/v1.74.47) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/AWS CloudFront Public Key resource [#682](https://github.com/inspec/inspec-aws/pull/682) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.46](https://github.com/inspec/inspec-aws/tree/v1.74.46) (2021-11-19)
 
 #### Merged Pull Requests
 - Added support for AWS EMR Cluster resource [#758](https://github.com/inspec/inspec-aws/pull/758) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.74.45](https://github.com/inspec/inspec-aws/tree/v1.74.45) (2021-11-19)
 

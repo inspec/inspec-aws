@@ -762,6 +762,14 @@ output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
 
+output "aws_egress_only_internet_gateway_id" {
+  value = aws_egress_only_internet_gateway.aws_egress_only_internet_gateway_test1.id
+}
+
+output "aws_vpc_eoig_test1_id" {
+  value = aws_vpc.aws_vpc_eoig_test1.id
+}
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
@@ -781,6 +789,11 @@ output "aws_cloudfront_origin_access_identity_caller_reference" {
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
+
+output "aws_ec2_fleet_id" {
+  value = aws_ec2_fleet.aws_ec2_fleet_test1.id
+}
+
 
 output "aws_customer_gateway_id" {
   value = aws_customer_gateway.aws_customer_gateway_test1.id
@@ -814,6 +827,22 @@ output "aws_ec2_capacity_reservation_instance_arn" {
   value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.arn
 }
 
+output "aws_cloudfront_realtime_log_config_name" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.name
+}
+
+output "aws_cloudfront_realtime_log_config_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.arn
+}
+
+output "aws_cloudfront_realtime_log_config_sampling_rate" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
+output "aws_end_points_kinesis_stream_config_role_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
@@ -828,6 +857,34 @@ output "aws_internet_gateway_vpc_id" {
 
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.id
+}
+
+output "aws_cloudfront_distribution_enabled" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.enabled
+}
+
+output "aws_cloudfront_distribution_arn" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.arn
+}
+
+output "aws_cloudfront_distribution_caller_reference" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.caller_reference
+}
+
+output "aws_cloudfront_distribution_status" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.status
+}
+
+output "aws_cloudfront_distribution_domain_name" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.domain_name
+}
+
+output "aws_cloudfront_distribution_in_progress_validation_batches" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.in_progress_validation_batches
 }
 
 output "domain-names-sdb" {
@@ -932,6 +989,18 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
+}
+
+output "aws_cloudfront_group_id" {
+  value =  aws_cloudfront_key_group.example.id
+}
+
+output "aws_cloudfront_group_name" {
+  value =  aws_cloudfront_key_group.example.name
+}
+
+output "aws_cloudfront_group_comment" {
+  value =  aws_cloudfront_key_group.example.comment
 }
 
 output "broker_id" {
@@ -1187,4 +1256,48 @@ output "aws_emr_cluster_release_label" {
 
 output "aws_emr_cluster_log_uri" {
   value = aws_emr_cluster.emr_cluster.log_uri
+}
+
+output "aws_cloudfront_public_key_name" {
+  value =  aws_cloudfront_public_key.test_cf_pk.name
+}
+
+output "aws_cloudfront_public_key_id" {
+  value =  aws_cloudfront_public_key.test_cf_pk.id
+}
+
+output "aws_cloudfront_public_key" {
+  value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
+}
+
+output "stream_arns" {
+  value = aws_cloudwatch_metric_stream.main.name
+}
+
+output "stream_name" {
+  value = aws_cloudwatch_metric_stream.main.arn
+}
+
+output "aws_lambda_function_event_invoke_config_id" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.id
+}
+
+output "aws_lambda_function_event_invoke_config_arn" {
+  value = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.arn
+}
+
+output "aws_lambda_function_event_invoke_config_function_name" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.function_name
+}
+
+output "aws_lambda_layer_version_id" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
+}
+
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
+
+output "aws_placement_group_placement_group_id" {
+  value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }

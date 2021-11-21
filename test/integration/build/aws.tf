@@ -1253,7 +1253,6 @@ resource "aws_iam_role" "role_for_config_recorder" {
   ]
 }
 POLICY
-
 }
 
 resource "aws_s3_bucket" "bucket_for_delivery_channel" {
@@ -1285,7 +1284,6 @@ resource "aws_iam_role_policy" "policy_for_delivery_channel" {
   ]
 }
 POLICY
-
 }
 
 resource "aws_sns_topic" "sns_topic_for_delivery_channel" {
@@ -1297,9 +1295,7 @@ resource "aws_config_delivery_channel" "delivery_channel" {
   count          = var.aws_create_configuration_recorder
   name           = var.aws_delivery_channel_name
   s3_bucket_name = aws_s3_bucket.bucket_for_delivery_channel[0].bucket
-
   depends_on = [aws_config_configuration_recorder.config_recorder]
-
   sns_topic_arn = aws_sns_topic.sns_topic_for_delivery_channel[0].arn
 
   snapshot_delivery_properties {
@@ -1381,7 +1377,6 @@ resource "aws_iam_user_policy" "iam_user_policy" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_group" "aws_iam_group_1" {
@@ -1417,7 +1412,6 @@ resource "aws_iam_group_policy" "iam_group_policy" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_policy" "aws_policy_1" {
@@ -3878,7 +3872,6 @@ resource "aws_sqs_queue" "terraform_queue" {
   max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
-
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
@@ -4137,6 +4130,108 @@ resource "aws_instance" "aws_instance_test" {
 
   credit_specification {
     cpu_credits = "unlimited"
+  }
+}
+
+# CloudFront Streaming Distribution
+
+resource "aws_s3_bucket" "aws_s3_bucket_cf_distribution_test1" {
+  bucket = "soumyo-test-bucket-7259"
+  acl    = "private"
+
+  tags = {
+    Name = "My bucket"
+  }
+}
+
+locals {
+  s3_origin_id = "myS3Origin"
+}
+
+resource "aws_cloudfront_origin_access_identity" "aws_cloudfront_origin_access_identity_test1" {
+  comment = "Some comment"
+}
+
+resource "aws_cloudfront_distribution" "aws_cloudfront_distribution_test1" {
+  origin {
+    domain_name = aws_s3_bucket.aws_s3_bucket_cf_distribution_test1.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.aws_cloudfront_origin_access_identity_test1.cloudfront_access_identity_path
+    }
+  }
+
+  enabled             = true
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "allow-all"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  # Cache behavior with precedence 0
+  ordered_cache_behavior {
+    path_pattern     = "/content/immutable/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = local.s3_origin_id
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  # Cache behavior with precedence 1
+  ordered_cache_behavior {
+    path_pattern     = "/content/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["US", "CA", "GB", "DE"]
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
   }
 }
 
@@ -4803,6 +4898,7 @@ resource "aws_emr_security_configuration" "emr_security_configuration" {
 }
 EOF
 }
+
 ######################################
 # EC2 instance profile
 ######################################
@@ -4894,9 +4990,10 @@ resource "aws_emr_cluster" "emr_cluster" {
 
   service_role = aws_iam_role.emr_iam_role.arn
 }
-######################################
-# Managed Scaling policy for EMR Cluster
-######################################
+
+##########################################
+# Managed Scaling policy for EMR Cluster #
+##########################################
 resource "aws_emr_managed_scaling_policy" "samplepolicy" {
   cluster_id = aws_emr_cluster.emr_cluster.id
   compute_limits {
@@ -4960,4 +5057,291 @@ resource "aws_amplify_branch" "main" {
 
 resource "aws_simpledb_domain" "users" {
   name = "users"
+}
+
+## Cloud Front Public Key
+
+locals {
+  test_key = "${path.module}/pubkey.pem"
+}
+
+resource "aws_cloudfront_public_key" "test_cf_pk" {
+  comment     = "test public key"
+  encoded_key = file(local.test_key)
+  name        = "test_key"
+}
+
+
+
+## Cloudfront key Group
+locals {
+  test_key = "${path.module}/pubkey.pem"
+}
+
+resource "aws_cloudfront_public_key" "test_cf_pk" {
+  comment     = "test public key"
+  encoded_key = file(local.test_key)
+  name        = "test_key"
+}
+
+resource "aws_cloudfront_key_group" "example" {
+  comment = "example key group"
+  items   = [aws_cloudfront_public_key.test_cf_pk.id]
+  name    = "example-key-group"
+}
+
+
+//Composite Alarm
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
+  alarm_name                = "terraform-test-bravo"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "CPUUtilization"
+  namespace                 = "AWS/EC2"
+  period                    = "120"
+  statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+}
+
+resource "aws_cloudwatch_composite_alarm" "example" {
+  alarm_description = "This is a composite alarm!"
+  alarm_name        = "examplecompositealarm"
+
+  alarm_rule = <<EOF
+ALARM(${aws_cloudwatch_metric_alarm.aws_cloudwatch_metric_alarm_test1.alarm_name})
+EOF
+}
+
+resource "aws_cloudwatch_metric_stream" "main" {
+  name          = "my-metric-stream"
+  role_arn      = aws_iam_role.metric_stream_to_firehose.arn
+  firehose_arn  = aws_kinesis_firehose_delivery_stream.s3_stream.arn
+  output_format = "json"
+
+  include_filter {
+    namespace = "AWS/EC2"
+  }
+
+  include_filter {
+    namespace = "AWS/EBS"
+  }
+}
+
+
+resource "aws_iam_role" "metric_stream_to_firehose" {
+  name = "metric_stream_to_firehose_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "streams.metrics.cloudwatch.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+
+resource "aws_iam_role_policy" "metric_stream_to_firehose" {
+  name = "default"
+  role = aws_iam_role.metric_stream_to_firehose.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "firehose:PutRecord",
+                "firehose:PutRecordBatch"
+            ],
+            "Resource": "${aws_kinesis_firehose_delivery_stream.s3_stream.arn}"
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = "metric-stream-test-bucket"
+  acl    = "private"
+}
+
+resource "aws_iam_role" "firehose_to_s3" {
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "firehose.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "firehose_to_s3" {
+  name = "default"
+  role = aws_iam_role.firehose_to_s3.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:AbortMultipartUpload",
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "${aws_s3_bucket.bucket.arn}",
+                "${aws_s3_bucket.bucket.arn}/*"
+            ]
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_kinesis_firehose_delivery_stream" "s3_stream" {
+  name        = "metric-stream-test-stream"
+  destination = "s3"
+
+  s3_configuration {
+    role_arn   = aws_iam_role.firehose_to_s3.arn
+    bucket_arn = aws_s3_bucket.bucket.arn
+  }
+}
+
+
+#Cloud Front Log Config
+
+resource "aws_kinesis_stream" "aws_kinesis_stream_cf_log_config_test1" {
+  name             = "terraform-kinesis-test"
+  shard_count      = 1
+  retention_period = 48
+
+  shard_level_metrics = [
+    "IncomingBytes",
+    "OutgoingBytes",
+  ]
+
+  tags = {
+    Environment = "test"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+      },
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
+  role = aws_iam_role.aws_iam_role_cf_log_config_test1.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+        "Effect": "Allow",
+        "Action": [
+          "kinesis:DescribeStreamSummary",
+          "kinesis:DescribeStream",
+          "kinesis:PutRecord",
+          "kinesis:PutRecords"
+        ],
+        "Resource": "${aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn}"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_cloudfront_realtime_log_config" "aws_cloudfront_realtime_log_config_test1" {
+  name          = "example"
+  sampling_rate = 75
+  fields        = ["timestamp", "c-ip"]
+
+  endpoint {
+    stream_type = "Kinesis"
+
+    kinesis_stream_config {
+      role_arn   = aws_iam_role.aws_iam_role_cf_log_config_test1.arn
+      stream_arn = aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn
+    }
+  }
+
+  depends_on = [aws_iam_role_policy.aws_iam_role_policy_cf_log_config_test1]
+}
+
+//AWS::EC2::EgressOnlyInternetGateway
+resource "aws_vpc" "aws_vpc_eoig_test1" {
+  cidr_block                       = "10.1.0.0/16"
+  assign_generated_ipv6_cidr_block = true
+}
+
+resource "aws_egress_only_internet_gateway" "aws_egress_only_internet_gateway_test1" {
+  vpc_id = aws_vpc.aws_vpc_eoig_test1.id
+
+  tags = {
+    Name = "main"
+  }
+}
+
+//AWS::EC2::EC2Fleet
+resource "aws_ec2_fleet" "aws_ec2_fleet_test1" {
+  launch_template_config {
+    launch_template_specification {
+      launch_template_id = "lt-07a6064fc3faa7e77"
+      version            = "1"
+    }
+  }
+
+  target_capacity_specification {
+    default_target_capacity_type = "spot"
+    total_target_capacity        = 5
+  }
+}
+
+#AWS::EC2::PlacementGroup
+resource "aws_placement_group" "aws_placement_group_test1" {
+  name     = "placement-group-test1"
+  strategy = "cluster"
 }
