@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.47 -->
+<!-- latest_release 1.74.48 -->
+## [v1.74.48](https://github.com/inspec/inspec-aws/tree/v1.74.48) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/CloudFront Key Group  [#679](https://github.com/inspec/inspec-aws/pull/679) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.47](https://github.com/inspec/inspec-aws/tree/v1.74.47) (2021-11-21)
 
 #### Merged Pull Requests
 - Nirbhay/AWS CloudFront Public Key resource [#682](https://github.com/inspec/inspec-aws/pull/682) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.46](https://github.com/inspec/inspec-aws/tree/v1.74.46) (2021-11-19)
 
