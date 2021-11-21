@@ -31,12 +31,13 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
-|group\_name | The group name. |
-|group\_id   | The group ID. |
-|arn         | The Amazon Resource Name of the group. |
-|users       | Array of users associated with the group.  |
+|Property            | Description|
+| ---                | --- |
+|group\_name         | The group name. |
+|group\_id           | The group ID. |
+|arn                 | The Amazon Resource Name of the group. |
+|users               | Array of users associated with the group.  |
+|inline_policy_names | A list of inline policy names associated with the group. |
 
 ## Examples
 
@@ -47,7 +48,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -63,6 +64,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetGroup` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetGroupResponse` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

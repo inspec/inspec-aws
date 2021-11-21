@@ -66,3 +66,7 @@ The `be_govcloud` matcher tests if the account is a 'GovCloud' AWS Account.
     describe aws_sts_caller_identity do
         it { should_not be_govcloud }
     end
+
+## AWS Permissions
+
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `STS:Client:GetCallerIdentityResponse` action with `Effect` set to `Allow`.

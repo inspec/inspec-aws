@@ -79,7 +79,7 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -188,7 +188,7 @@ Examples:
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:GetPolicy`, `iam:ListPolicy`, and `iam:ListEntitiesForPolicy` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetGroupPolicyResponse`, `IAM:Client:ListPoliciesResponse`, and `IAM:Client:ListEntitiesForPolicyResponse` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
 aws\_iam\_policy.md

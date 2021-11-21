@@ -66,7 +66,7 @@ The following examples show how to use this InSpec audit resource.
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -90,10 +90,10 @@ This will ensure the User has a console password set.
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions action set to allow: 
-`iam:GetUser` 
-`iam:GetLoginProfile` 
-`iam:ListMFADevices` 
-`iam:ListAccessKeys` 
-`iam:ListUserPolicies` 
-`iam:ListAttachedUserPolicies` 
+`IAM:Client:GetUserResponse` 
+`IAM:Client:GetLoginProfileResponse` 
+`IAM:Client:ListMFADevicesResponse` 
+`IAM:Client:ListAccessKeysResponse` 
+`IAM:Client:ListUserPoliciesResponse` 
+`IAM:Client:ListAttachedUserPoliciesResponse` 
 

@@ -80,4 +80,4 @@ Use `should` to check if the transit gateway multicast domain association is ava
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:client:get_transit_gateway_multicast_domain_associations` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:GetTransitGatewayMulticastDomainAssociationsResult` action with `Effect` set to `Allow`.

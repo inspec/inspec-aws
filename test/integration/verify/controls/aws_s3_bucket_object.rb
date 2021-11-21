@@ -1,8 +1,8 @@
 title 'Test single AWS S3 Bucket Object'
 
-aws_s3_bucket_object_public = attribute(:aws_s3_bucket_object_public, default: '', description: 'The AWS bucket object key.')
-aws_s3_bucket_object_private = attribute(:aws_s3_bucket_object_private, default: '', description: 'The AWS bucket object key.')
-aws_bucket_public_objects_name = attribute(:aws_bucket_public_objects_name, default: '', description: 'The AWS bucket.')
+aws_s3_bucket_object_public = attribute(:aws_s3_bucket_object_public, value: '', description: 'The AWS bucket object key.')
+aws_s3_bucket_object_private = attribute(:aws_s3_bucket_object_private, value: '', description: 'The AWS bucket object key.')
+aws_bucket_public_objects_name = attribute(:aws_bucket_public_objects_name, value: '', description: 'The AWS bucket.')
 
 control 'aws-s3-bucket-object-1.0' do
 
