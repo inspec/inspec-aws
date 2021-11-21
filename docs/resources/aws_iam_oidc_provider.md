@@ -78,4 +78,4 @@ Use `should` to check if the entity is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam_client.get_open_id_connect_provider` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetOpenIDConnectProviderResponse` action with `Effect` set to `Allow`.

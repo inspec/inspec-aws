@@ -1,4 +1,5 @@
 control 'aws_transit_gateway_multicast_group_sources' do
+
   impact 1.0
   title 'Gets information about the associations for the transit gateway multicast domain.'
 

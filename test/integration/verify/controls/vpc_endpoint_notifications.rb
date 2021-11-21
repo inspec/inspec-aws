@@ -2,6 +2,7 @@ aws_notification_id        = attribute(:aws_vpc_endpoint_notification_id, value:
 aws_notification_arn       = attribute(:aws_vpc_notifications_arn, value: '', description: 'The AWS Subnet Group Name')
 
 title "Test multiple AWS VPC Notifications"
+
 control "aws-vpc-endpoint-connection-notifications-1.0" do
 
   impact 1.0

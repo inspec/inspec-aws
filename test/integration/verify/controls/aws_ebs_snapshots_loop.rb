@@ -3,6 +3,7 @@ aws_ebs_snapshot_name = attribute(:aws_ebs_snapshot_name, value: '', description
 aws_ebs_snapshot_owner_id = attribute(:aws_ebs_snapshot_owner_id, value: '', description: 'The AWS EBS Owner ID.')
 
 title 'Test AWS EBS Snapshots in bulk using plural and singular resources'
+
 control 'aws-ebs-snapshots-loop-1.0' do
 
   impact 1.0
