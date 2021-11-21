@@ -92,7 +92,7 @@ Provides the VPC ID for the subnet.
       it { should be_mapping_public_ip_on_launch }
     end
     
-#### exist
+### exist
 
 The `exist` matcher indicates that a subnet exists for the specified vpc.
 
@@ -102,6 +102,6 @@ The `exist` matcher indicates that a subnet exists for the specified vpc.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeSubnets` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeSubnetsResult` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

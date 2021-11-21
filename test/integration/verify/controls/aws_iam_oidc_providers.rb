@@ -1,4 +1,4 @@
-open_id_connect_provider_arn = value("oidc_arn", default: "", description: "")
+open_id_connect_provider_arn = value("oidc_arn", value: "", description: "")
 
 title 'Test an IAM OIDC Providers'
 
