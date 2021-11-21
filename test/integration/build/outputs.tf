@@ -1188,3 +1188,15 @@ output "aws_emr_cluster_release_label" {
 output "aws_emr_cluster_log_uri" {
   value = aws_emr_cluster.emr_cluster.log_uri
 }
+
+output "aws_cloudfront_public_key_name" {
+  value =  aws_cloudfront_public_key.test_cf_pk.name
+}
+
+output "aws_cloudfront_public_key_id" {
+  value =  aws_cloudfront_public_key.test_cf_pk.id
+}
+
+output "aws_cloudfront_public_key" {
+  value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
+}

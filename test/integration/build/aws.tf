@@ -3878,7 +3878,6 @@ resource "aws_sqs_queue" "terraform_queue" {
   max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
-
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
@@ -4961,3 +4960,16 @@ resource "aws_amplify_branch" "main" {
 resource "aws_simpledb_domain" "users" {
   name = "users"
 }
+
+## Cloud Front Public Key
+
+locals {
+  test_key = "${path.module}/pubkey.pem"
+}
+
+resource "aws_cloudfront_public_key" "test_cf_pk" {
+  comment     = "test public key"
+  encoded_key = file(local.test_key)
+  name        = "test_key"
+}
+
