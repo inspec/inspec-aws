@@ -1,6 +1,7 @@
 aws_route_table_first_id = attribute(:aws_route_table_first_id, value: '', description: 'The AWS route table ID.')
 
 control 'aws-ec2-vpn-gateway-route-propagation-1.0' do
+
   impact 1.0
   title 'Describes a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.'
 

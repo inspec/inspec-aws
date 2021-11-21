@@ -56,6 +56,7 @@ See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/late
 |description       | The description of the key. |
 |deletion\_time     | Specifies the date and time after which AWS KMS deletes the key. This value is present only when KeyState is PendingDeletion, otherwise this value is nil. |
 |invalidation\_time | Provides the date and time until the key is not valid.  Once the key is not valid, AWS KMS deletes the key and it becomes unusable.  This value will be null unless the keys Origin is EXTERNAL and its matcher have\_key\_expiration is set to true. |
+|tags          | A hash with each key-value pair corresponding to a tag associated with the entity. |
 
 ## Examples
 
@@ -85,7 +86,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 Use `should_not` to test the entity should not exist in all cases.
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -125,6 +126,6 @@ The test will pass if automatic rotation of the key material is enabled for the 
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `kms:DescribeKey`, and `kms:GetKeyRotationStatus` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `KMS:Client:DescribeKeyResponse`, and `KMS:Client:GetKeyRotationStatusResponse` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS Key Management Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html).
