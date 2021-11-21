@@ -4973,3 +4973,21 @@ resource "aws_cloudfront_public_key" "test_cf_pk" {
   name        = "test_key"
 }
 
+
+
+## Cloudfront key Group
+locals {
+  test_key = "${path.module}/pubkey.pem"
+}
+
+resource "aws_cloudfront_public_key" "test_cf_pk" {
+  comment     = "test public key"
+  encoded_key = file(local.test_key)
+  name        = "test_key"
+}
+
+resource "aws_cloudfront_key_group" "example" {
+  comment = "example key group"
+  items   = [aws_cloudfront_public_key.test_cf_pk.id]
+  name    = "example-key-group"
+}

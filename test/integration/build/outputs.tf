@@ -934,6 +934,18 @@ output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
 }
 
+output "aws_cloudfront_group_id" {
+  value =  aws_cloudfront_key_group.example.id
+}
+
+output "aws_cloudfront_group_name" {
+  value =  aws_cloudfront_key_group.example.name
+}
+
+output "aws_cloudfront_group_comment" {
+  value =  aws_cloudfront_key_group.example.comment
+}
+
 output "broker_id" {
   value = aws_mq_broker.test-broker.id
 }
