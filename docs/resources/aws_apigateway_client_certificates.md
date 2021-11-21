@@ -64,10 +64,10 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_apigateway_api_keys do
+    describe aws_apigateway_client_certificates do
       it { should_not exist }
     end
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `APIGateway:Client:ClientCertificate` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `APIGateway:Client:ClientCertificates` action with `Effect` set to `Allow`.

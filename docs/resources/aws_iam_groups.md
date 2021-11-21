@@ -55,7 +55,7 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if a group with the given group name exists.
 
@@ -65,6 +65,6 @@ The control will pass if a group with the given group name exists.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:ListGroup` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:ListGroupsResponse` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

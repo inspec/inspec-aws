@@ -194,7 +194,7 @@ The matchers accept a key-value list of search criteria.  For a rule to match, i
           it { should allow_in_only(port: 3389, ipv4_range: '10.5.1.34/32', position: 1) }
         end
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -206,6 +206,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeSecurityGroups` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeSecurityGroupsResult` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

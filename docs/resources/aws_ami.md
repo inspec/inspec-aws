@@ -81,7 +81,7 @@ The `be_public` matcher tests if the AMI has public launch permissons.
       it { should_not be_public }
     end
    
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -97,6 +97,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeImages` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeImages` action set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
