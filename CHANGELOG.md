@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.59 -->
+<!-- latest_release 1.74.60 -->
+## [v1.74.60](https://github.com/inspec/inspec-aws/tree/v1.74.60) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_placement_group [#669](https://github.com/inspec/inspec-aws/pull/669) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.59](https://github.com/inspec/inspec-aws/tree/v1.74.59) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_host [#668](https://github.com/inspec/inspec-aws/pull/668) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.58](https://github.com/inspec/inspec-aws/tree/v1.74.58) (2021-11-21)
 
