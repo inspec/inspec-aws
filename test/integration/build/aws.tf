@@ -4991,9 +4991,9 @@ resource "aws_emr_cluster" "emr_cluster" {
   service_role = aws_iam_role.emr_iam_role.arn
 }
 
-######################################
-# Managed Scaling policy for EMR Cluster
-######################################
+##########################################
+# Managed Scaling policy for EMR Cluster #
+##########################################
 resource "aws_emr_managed_scaling_policy" "samplepolicy" {
   cluster_id = aws_emr_cluster.emr_cluster.id
   compute_limits {
@@ -5232,4 +5232,81 @@ resource "aws_kinesis_firehose_delivery_stream" "s3_stream" {
     role_arn   = aws_iam_role.firehose_to_s3.arn
     bucket_arn = aws_s3_bucket.bucket.arn
   }
+}
+
+
+#Cloud Front Log Config
+
+resource "aws_kinesis_stream" "aws_kinesis_stream_cf_log_config_test1" {
+  name             = "terraform-kinesis-test"
+  shard_count      = 1
+  retention_period = 48
+
+  shard_level_metrics = [
+    "IncomingBytes",
+    "OutgoingBytes",
+  ]
+
+  tags = {
+    Environment = "test"
+  }
+}
+
+resource "aws_iam_role" "aws_iam_role_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+      },
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "aws_iam_role_policy_cf_log_config_test1" {
+  name = "cloudfront-realtime-log-config-example"
+  role = aws_iam_role.aws_iam_role_cf_log_config_test1.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+        "Effect": "Allow",
+        "Action": [
+          "kinesis:DescribeStreamSummary",
+          "kinesis:DescribeStream",
+          "kinesis:PutRecord",
+          "kinesis:PutRecords"
+        ],
+        "Resource": "${aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn}"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_cloudfront_realtime_log_config" "aws_cloudfront_realtime_log_config_test1" {
+  name          = "example"
+  sampling_rate = 75
+  fields        = ["timestamp", "c-ip"]
+
+  endpoint {
+    stream_type = "Kinesis"
+
+    kinesis_stream_config {
+      role_arn   = aws_iam_role.aws_iam_role_cf_log_config_test1.arn
+      stream_arn = aws_kinesis_stream.aws_kinesis_stream_cf_log_config_test1.arn
+    }
+  }
+
+  depends_on = [aws_iam_role_policy.aws_iam_role_policy_cf_log_config_test1]
 }

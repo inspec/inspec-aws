@@ -815,6 +815,22 @@ output "aws_ec2_capacity_reservation_instance_arn" {
   value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.arn
 }
 
+output "aws_cloudfront_realtime_log_config_name" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.name
+}
+
+output "aws_cloudfront_realtime_log_config_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.arn
+}
+
+output "aws_cloudfront_realtime_log_config_sampling_rate" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
+output "aws_end_points_kinesis_stream_config_role_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
@@ -1248,4 +1264,20 @@ output "stream_arns" {
 
 output "stream_name" {
   value = aws_cloudwatch_metric_stream.main.arn
+}
+
+output "aws_lambda_function_event_invoke_config_id" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.id
+}
+
+output "aws_lambda_function_event_invoke_config_arn" {
+  value = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.arn
+}
+
+output "aws_lambda_function_event_invoke_config_function_name" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.function_name
+}
+
+output "aws_lambda_layer_version_id" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
 }
