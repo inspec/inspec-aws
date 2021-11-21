@@ -1241,3 +1241,11 @@ output "aws_cloudfront_public_key_id" {
 output "aws_cloudfront_public_key" {
   value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
 }
+
+output "stream_arns" {
+  value = aws_cloudwatch_metric_stream.main.name
+}
+
+output "stream_name" {
+  value = aws_cloudwatch_metric_stream.main.arn
+}
