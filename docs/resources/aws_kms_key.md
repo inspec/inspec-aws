@@ -86,7 +86,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 Use `should_not` to test the entity should not exist in all cases.
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -126,6 +126,6 @@ The test will pass if automatic rotation of the key material is enabled for the 
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `kms:DescribeKey`, and `kms:GetKeyRotationStatus` actions set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `KMS:Client:DescribeKeyResponse`, and `KMS:Client:GetKeyRotationStatusResponse` actions set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS Key Management Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html).

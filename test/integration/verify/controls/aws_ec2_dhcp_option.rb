@@ -1,7 +1,7 @@
 title 'Test single AWS Ec2 DHCP Option'
 
-aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, default: '', description: 'The AWS EC2 DHCP Option ID.')
-aws_vpc_dhcp_options_name = attribute(:aws_vpc_dhcp_options_name, default: '', description: 'The AWS EC2 DHCP Option Name.')
+aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS EC2 DHCP Option ID.')
+aws_vpc_dhcp_options_name = attribute(:aws_vpc_dhcp_options_name, value: '', description: 'The AWS EC2 DHCP Option Name.')
 
 control 'aws-ec2-dhcp-option-1.0' do
 

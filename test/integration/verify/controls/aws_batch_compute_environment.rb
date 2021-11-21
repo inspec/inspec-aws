@@ -1,8 +1,8 @@
-aws_compute_environment_name = attribute("aws_compute_environment_name", default: "", description: "")
-aws_state = attribute("aws_batch_job_queue_status", default: "", description: "")
-aws_compute_resources_type = attribute("aws_type", default: "", description: "")
-aws_compute_resources_minv_cpus = attribute("aws_min_vcpus", default: "", description: "")
-aws_compute_resources_maxv_cpus = attribute("aws_max_vcpus", default: "", description: "")
+aws_compute_environment_name = attribute("aws_compute_environment_name", value: "", description: "")
+aws_state = attribute("aws_batch_job_queue_status", value: "", description: "")
+aws_compute_resources_type = attribute("aws_type", value: "", description: "")
+aws_compute_resources_minv_cpus = attribute("aws_min_vcpus", value: "", description: "")
+aws_compute_resources_maxv_cpus = attribute("aws_max_vcpus", value: "", description: "")
 
 describe aws_batch_compute_environment(compute_environment_name: aws_compute_environment_name) do
   it { should exist }

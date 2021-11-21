@@ -9,7 +9,6 @@ describe aws_application_autoscaling_scalable_target( service_namespace: 'dynamo
   its('min_capacity') { should eq 5 }
   its('max_capacity') { should eq 100 }
   its('role_arn') { should eq 'arn:aws:iam::112758395563:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable' }
-  # its('creation_time') { should eq 'GET' }
   its('suspended_state.dynamic_scaling_in_suspended') { should eq false }
   its('suspended_state.dynamic_scaling_out_suspended') { should eq false }
   its('suspended_state.scheduled_scaling_suspended') { should eq false }

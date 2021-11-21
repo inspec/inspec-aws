@@ -70,4 +70,4 @@ Use `should_not` to test the entity does not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `servicecatalog:client:ListPortfoliosForProduct` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ServiceCatalog:Client:ListPortfoliosForProductOutput` action with `Effect` set to `Allow`.
