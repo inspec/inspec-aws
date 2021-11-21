@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.55 -->
+<!-- latest_release 1.74.56 -->
+## [v1.74.56](https://github.com/inspec/inspec-aws/tree/v1.74.56) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_eip_association [#666](https://github.com/inspec/inspec-aws/pull/666) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.55](https://github.com/inspec/inspec-aws/tree/v1.74.55) (2021-11-21)
 
 #### Merged Pull Requests
 - added audit support for s3 access points [#660](https://github.com/inspec/inspec-aws/pull/660) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.54](https://github.com/inspec/inspec-aws/tree/v1.74.54) (2021-11-21)
 
