@@ -84,4 +84,4 @@ Use `should` to check if the identity pool id is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `states:client:describe_state_machine` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `States:Client:DescribeStateMachineOutput` action with `Effect` set to `Allow`.

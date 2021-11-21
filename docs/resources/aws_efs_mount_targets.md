@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on EFS Mount Target](http
 
 | Property | Description|
 | --- | --- |
-| owner_ids | | The owner IDs of the mount targets. | |
+| owner_ids | The owner IDs of the mount targets. |
 | mount_target_ids | IDs of the file system whose mount targets you want to list (String). |
 | file_system_ids | The IDs of the file system for which to create the mount target. |
 | life_cycle_states | The life cycle states of the mount targets. |
@@ -78,4 +78,4 @@ Use `should` to check if the file system is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `efs:client:describe_mount_targets` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EFS:Client:DescribeMountTargetsResponse` action with `Effect` set to `Allow`.

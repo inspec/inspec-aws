@@ -1,9 +1,9 @@
 title 'Test a single AWS RDS Subnet Group'
 
-aws_rds_db_subnet_group_name        = attribute(:aws_rds_db_subnet_group_name, default: '', description: 'The AWS Subnet Group Name')
-aws_rds_db_subnet_group_description = attribute(:aws_rds_db_subnet_group_description, default: '', description: 'The AWS Subnet Group Description')
-aws_rds_db_subnet_group_vpc_id      = attribute(:aws_rds_db_subnet_group_vpc_id, default: '', description: 'The VPC id for DB Subnet Group.')
-aws_rds_db_subnet_group_arn         = attribute(:aws_rds_db_subnet_group_arn, default: '', description: 'The ARN for DB Subnet Group.')
+aws_rds_db_subnet_group_name        = attribute(:aws_rds_db_subnet_group_name, value: '', description: 'The AWS Subnet Group Name')
+aws_rds_db_subnet_group_description = attribute(:aws_rds_db_subnet_group_description, value: '', description: 'The AWS Subnet Group Description')
+aws_rds_db_subnet_group_vpc_id      = attribute(:aws_rds_db_subnet_group_vpc_id, value: '', description: 'The VPC id for DB Subnet Group.')
+aws_rds_db_subnet_group_arn         = attribute(:aws_rds_db_subnet_group_arn, value: '', description: 'The ARN for DB Subnet Group.')
 
 control 'aws-db-subnet-group-1.0' do
 
