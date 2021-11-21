@@ -1,7 +1,7 @@
 title 'Test AWS ALBs'
 
-aws_alb_arn = attribute(:aws_alb_arn, default: '', description: 'The AWS ALB arn.')
-region = attribute(:aws_region, default: '', description: 'The AWS region.')
+aws_alb_arn = attribute(:aws_alb_arn, value: '', description: 'The AWS ALB arn.')
+region = attribute(:aws_region, value: '', description: 'The AWS region.')
 
 control 'aws-albs-1.0' do
 
