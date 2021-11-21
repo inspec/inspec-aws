@@ -1301,3 +1301,19 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "aws_lambda_alias_function_name" {
+  value = aws_lambda_function.aws_lambda_function_alias_test1.function_name
+}
+
+output "aws_lambda_alias_name" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.name
+}
+
+output "aws_lambda_alias_description" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.description
+}
+
+output "aws_lambda_alias_arn" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.arn
+}
