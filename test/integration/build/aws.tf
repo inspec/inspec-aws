@@ -4991,3 +4991,28 @@ resource "aws_cloudfront_key_group" "example" {
   items   = [aws_cloudfront_public_key.test_cf_pk.id]
   name    = "example-key-group"
 }
+
+
+//Composite Alarm
+
+resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
+  alarm_name                = "terraform-test-bravo"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "CPUUtilization"
+  namespace                 = "AWS/EC2"
+  period                    = "120"
+  statistic                 = "Average"
+  threshold                 = "80"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+}
+
+resource "aws_cloudwatch_composite_alarm" "example" {
+  alarm_description = "This is a composite alarm!"
+  alarm_name        = "examplecompositealarm"
+
+  alarm_rule = <<EOF
+ALARM(${aws_cloudwatch_metric_alarm.aws_cloudwatch_metric_alarm_test1.alarm_name})
+EOF
+}
