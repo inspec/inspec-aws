@@ -5345,3 +5345,27 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test1" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
+
+//Lambda Version
+resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
+  filename   = "lambda.zip"
+  layer_name = "lambda_layer_name"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
