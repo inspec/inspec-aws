@@ -5339,3 +5339,9 @@ resource "aws_ec2_fleet" "aws_ec2_fleet_test1" {
     total_target_capacity        = 5
   }
 }
+
+#AWS::EC2::PlacementGroup
+resource "aws_placement_group" "aws_placement_group_test1" {
+  name     = "placement-group-test1"
+  strategy = "cluster"
+}
