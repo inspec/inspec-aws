@@ -1301,3 +1301,19 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "aws_lambda_code_signing_config_id" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.id
+}
+
+output "aws_lambda_code_signing_config_arn" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.arn
+}
+
+output "aws_lambda_code_signing_config_description" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.description
+}
+
+output "aws_lambda_code_signing_config_last_modified" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.last_modified
+}

@@ -5345,3 +5345,18 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+//Lambda Code Signing Config
+resource "aws_lambda_code_signing_config" "aws_lambda_code_signing_config_test1" {
+  allowed_publishers {
+    signing_profile_version_arns = [
+      aws_signer_signing_profile.aws_signer_signing_profile_test1.arn
+    ]
+  }
+
+  policies {
+    untrusted_artifact_on_deployment = "Warn"
+  }
+
+  description = "My awesome code signing config."
+}
