@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.60 -->
+<!-- latest_release 1.74.61 -->
+## [v1.74.61](https://github.com/inspec/inspec-aws/tree/v1.74.61) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/AWS_SecurityHub_Hub [#747](https://github.com/inspec/inspec-aws/pull/747) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.60](https://github.com/inspec/inspec-aws/tree/v1.74.60) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_placement_group [#669](https://github.com/inspec/inspec-aws/pull/669) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.59](https://github.com/inspec/inspec-aws/tree/v1.74.59) (2021-11-21)
 
