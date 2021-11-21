@@ -67,4 +67,4 @@ Use `should` to check if the Service Linked Role deletion task is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam_client.get_service_linked_role_deletion_status` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:GetServiceLinkedRoleDeletionStatusResponse` action with `Effect` set to `Allow`.

@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols
+              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols, :certificate_id
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
@@ -37,6 +37,7 @@ class AwsElb < AwsResourceBase
       @subnet_ids         = resp.subnets
       @vpc_id             = resp.vpc_id
       @protocols          = resp.listener_descriptions.map { |l| l.listener.protocol }.uniq
+      @certificate_id     = resp.listener_descriptions.map { |l| l.listener.ssl_certificate_id }
 
       # The ELB will list multiple custom policies, including previously configured policies
       # Even if a pre-defined policy is selected, a custom policy is created from that template
