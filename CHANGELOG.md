@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.56 -->
+<!-- latest_release 1.74.57 -->
+## [v1.74.57](https://github.com/inspec/inspec-aws/tree/v1.74.57) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_egress_only_internet_gateway [#665](https://github.com/inspec/inspec-aws/pull/665) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.56](https://github.com/inspec/inspec-aws/tree/v1.74.56) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_eip_association [#666](https://github.com/inspec/inspec-aws/pull/666) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.55](https://github.com/inspec/inspec-aws/tree/v1.74.55) (2021-11-21)
 
