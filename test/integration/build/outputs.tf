@@ -762,6 +762,14 @@ output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
 
+output "aws_egress_only_internet_gateway_id" {
+  value = aws_egress_only_internet_gateway.aws_egress_only_internet_gateway_test1.id
+}
+
+output "aws_vpc_eoig_test1_id" {
+  value = aws_vpc.aws_vpc_eoig_test1.id
+}
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
@@ -1284,4 +1292,8 @@ output "aws_lambda_function_event_invoke_config_function_name" {
 
 output "aws_lambda_layer_version_id" {
   value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
+}
+
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
 }
