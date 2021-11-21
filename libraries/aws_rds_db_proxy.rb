@@ -37,23 +37,23 @@ class AWSRDSProxy < AwsResourceBase
     "DB Proxy Name: #{@display_name}"
   end
 
-  def auth_description
+  def auth_descriptions
     auth.map(&:description)
   end
 
-  def auth_user_name
+  def auth_user_names
     auth.map(&:user_name)
   end
 
-  def auth_scheme
+  def auth_schemes
     auth.map(&:auth_scheme)
   end
 
-  def auth_secret_arn
+  def auth_secret_arns
     auth.map(&:secret_arn)
   end
 
-  def auth_iam_auth
+  def auth_iam_auths
     auth.map(&:iam_auth)
   end
 end
