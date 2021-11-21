@@ -1,7 +1,8 @@
-aws_ecs_task_definition_arn = attribute(:aws_ecs_task_definition_arn, value: 'arn:aws:ecs:us-east-2:112758395563:task-definition/service:11', description: '')
-aws_ecs_task_definition_revision = attribute(:aws_ecs_task_definition_revision, value: '11', description: '')
+aws_ecs_task_definition_arn = attribute(:aws_ecs_task_definition_arn, value: '', description: '')
+aws_ecs_task_definition_revision = attribute(:aws_ecs_task_definition_revision, value: '', description: '')
 
 control 'aws-ec2-task-definition-1.0' do
+
   impact 1.0
   title 'Ensure EC2 Task Definition has the correct properties.'
 

@@ -1,7 +1,6 @@
 aws_sfn_state_machine_name = attribute(:aws_sfn_state_machine_name, value: '', description: '')
 aws_sfn_state_machine_arn = attribute(:aws_sfn_state_machine_arn, value: '', description: '')
 
-
 control 'aws-state-resource-state-machines-1.0' do
 
     impact 1.0

@@ -1,7 +1,7 @@
-resolver_endpoint_id = attribute("aws_resolver_endpoint_id", default: "", description: "")
-aws_resolver_endpoint_vpc_id = attribute("aws_resolver_endpoint_vpc_id", default: "", description: "")
-aws_resolver_endpoint_name = attribute("aws_resolver_endpoint_name", default: "", description: "")
-aws_resolver_endpoint_arn = attribute("aws_resolver_endpoint_arn", default: "", description: "")
+resolver_endpoint_id = attribute("aws_resolver_endpoint_id", value: "", description: "")
+aws_resolver_endpoint_vpc_id = attribute("aws_resolver_endpoint_vpc_id", value: "", description: "")
+aws_resolver_endpoint_name = attribute("aws_resolver_endpoint_name", value: "", description: "")
+aws_resolver_endpoint_arn = attribute("aws_resolver_endpoint_arn", value: "", description: "")
 control 'aws-route53-resolver-resolver-endpoint-1.0' do
     impact 1.0
     title 'Describes the endpoint of the route53 resolver.'

@@ -54,9 +54,9 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 |viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
 |s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
 |s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
-|s3\_origin\_access                          | The origin access identity for s3 origin config
-|access\_logging                             | Access logging for CloudFront distribution
-|ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution
+|s3\_origin\_access                          | The origin access identity for s3 origin config |
+|access\_logging                             | Access logging for CloudFront distribution |
+|ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution |
 
 ## Examples
 
@@ -138,6 +138,6 @@ For the default origin path:
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `cloudfront:GetDistribution` action set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudFront:Client:GetDistributionResult` action set to `Allow`.
 
 You can find detailed documentation at [Identity and Access Management (IAM) in CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/auth-and-access-control.html).
