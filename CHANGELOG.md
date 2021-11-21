@@ -1,9 +1,24 @@
-<!-- latest_release 1.74.52 -->
+<!-- latest_release 1.74.55 -->
+## [v1.74.55](https://github.com/inspec/inspec-aws/tree/v1.74.55) (2021-11-21)
+
+#### Merged Pull Requests
+- added audit support for s3 access points [#660](https://github.com/inspec/inspec-aws/pull/660) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.74.54](https://github.com/inspec/inspec-aws/tree/v1.74.54) (2021-11-21)
+
+#### Merged Pull Requests
+- Added Support for Insight Rules [#659](https://github.com/inspec/inspec-aws/pull/659) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.53](https://github.com/inspec/inspec-aws/tree/v1.74.53) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_layer_version_permission [#671](https://github.com/inspec/inspec-aws/pull/671) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.74.52](https://github.com/inspec/inspec-aws/tree/v1.74.52) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_cloudfront_realtime_log_config [#673](https://github.com/inspec/inspec-aws/pull/673) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.51](https://github.com/inspec/inspec-aws/tree/v1.74.51) (2021-11-21)
 
