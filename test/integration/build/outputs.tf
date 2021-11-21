@@ -1281,3 +1281,7 @@ output "aws_lambda_function_event_invoke_config_function_name" {
 output "aws_lambda_layer_version_id" {
   value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
 }
+
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
