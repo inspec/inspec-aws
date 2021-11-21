@@ -762,6 +762,14 @@ output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
 
+output "aws_egress_only_internet_gateway_id" {
+  value = aws_egress_only_internet_gateway.aws_egress_only_internet_gateway_test1.id
+}
+
+output "aws_vpc_eoig_test1_id" {
+  value = aws_vpc.aws_vpc_eoig_test1.id
+}
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
@@ -780,6 +788,10 @@ output "aws_cloudfront_origin_access_identity_caller_reference" {
 
 output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
+}
+
+output "aws_ec2_fleet_id" {
+  value = aws_ec2_fleet.aws_ec2_fleet_test1.id
 }
 
 
@@ -1282,10 +1294,10 @@ output "aws_lambda_layer_version_id" {
   value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
 }
 
-output "aws_placement_group_placement_group_id" {
-  value = aws_placement_group.aws_placement_group_test1.placement_group_id
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
 }
 
-output "aws_placement_group_name" {
-  value = aws_placement_group.aws_placement_group_test1.name
+output "aws_placement_group_placement_group_id" {
+  value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }

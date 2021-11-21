@@ -5311,6 +5311,35 @@ resource "aws_cloudfront_realtime_log_config" "aws_cloudfront_realtime_log_confi
   depends_on = [aws_iam_role_policy.aws_iam_role_policy_cf_log_config_test1]
 }
 
+//AWS::EC2::EgressOnlyInternetGateway
+resource "aws_vpc" "aws_vpc_eoig_test1" {
+  cidr_block                       = "10.1.0.0/16"
+  assign_generated_ipv6_cidr_block = true
+}
+
+resource "aws_egress_only_internet_gateway" "aws_egress_only_internet_gateway_test1" {
+  vpc_id = aws_vpc.aws_vpc_eoig_test1.id
+
+  tags = {
+    Name = "main"
+  }
+}
+
+//AWS::EC2::EC2Fleet
+resource "aws_ec2_fleet" "aws_ec2_fleet_test1" {
+  launch_template_config {
+    launch_template_specification {
+      launch_template_id = "lt-07a6064fc3faa7e77"
+      version            = "1"
+    }
+  }
+
+  target_capacity_specification {
+    default_target_capacity_type = "spot"
+    total_target_capacity        = 5
+  }
+}
+
 #AWS::EC2::PlacementGroup
 resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
