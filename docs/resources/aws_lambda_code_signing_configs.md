@@ -38,7 +38,7 @@ For additional information, see the [AWS documentation on AWS SSM CodeSigningCon
 
 ### Ensure a code signing config id is available.
     describe aws_lambda_code_signing_configs do
-      its('code_signing_config_id') { should include 'CODE_SIGNING_CONFIG_ID' }
+      its('code_signing_config_ids') { should include 'CODE_SIGNING_CONFIG_ID' }
     end
 
 ### Ensure a code signing config arn is available.
