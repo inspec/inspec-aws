@@ -43,7 +43,7 @@ For additional information, see the [AWS documentation on AWS SSM CodeSigningCon
 
 ### Ensure a code signing config arn is available.
     describe aws_lambda_code_signing_configs do
-      its('code_signing_config_arn') { should include 'CODE_SIGNING_CONFIG_ARN' }
+      its('code_signing_config_arns') { should include 'CODE_SIGNING_CONFIG_ARN' }
     end
 
 ## Matchers
