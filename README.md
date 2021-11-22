@@ -466,7 +466,7 @@ The `aws_regions` resource is used to loop across all regions.
 A custom endpoint URL can optionally be specified to resources for testing other compatible providers.  This propagates to the AWS client configuration.  An example is provided below for [Minio](https://github.com/minio/minio) S3 compatible buckets.
 
 ```ruby
-title 'Test For  Minio Buckets Existing at a Custom Endpoint'
+title 'Test For Minio Buckets Existing at a Custom Endpoint'
 
 endpoint = input(:minio_server, value: 'http://127.0.0.1:9000', description: 'The Minio server custom endpoint.')
 
