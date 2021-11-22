@@ -33,13 +33,13 @@ For additional information, see the [AWS documentation on AWS EC2 Client VPN tar
 
 | Property | Description |
 | --- | --- |
-| association_id | The ID of the association. | carrier_gateway_id |
-| vpc_id | The ID of the VPC in which the target network (subnet) is located. | carrier_gateway_id |
-| target_network_id | The ID of the subnet specified as the target network. | carrier_gateway_id |
-| client_vpn_endpoint_id | The ID of the Client VPN endpoint with which the target network is associated. | carrier_gateway_id |
-| status.code | The state of the target network association. | carrier_gateway_id |
-| status.message | A message about the status of the target network association, if applicable. | carrier_gateway_id |
-| security_groups | The IDs of the security groups applied to the target network association. | carrier_gateway_id |
+| association_id | The ID of the association. |
+| vpc_id | The ID of the VPC in which the target network (subnet) is located. |
+| target_network_id | The ID of the subnet specified as the target network. |
+| client_vpn_endpoint_id | The ID of the Client VPN endpoint with which the target network is associated. |
+| status.code | The state of the target network association. |
+| status.message | A message about the status of the target network association, if applicable. |
+| security_groups | The IDs of the security groups applied to the target network association. |
 
 ## Examples
 

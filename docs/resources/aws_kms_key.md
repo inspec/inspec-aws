@@ -86,7 +86,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 Use `should_not` to test the entity should not exist in all cases.
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

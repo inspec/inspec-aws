@@ -1,5 +1,5 @@
 ---
-title: About the aws_mq_configuration resource
+title: About the aws_mq_configuration Resource
 platform: aws
 ---
 

@@ -762,6 +762,14 @@ output "network_interface_id" {
   value = aws_ec2_traffic_mirror_session.session.network_interface_id
 }
 
+output "aws_egress_only_internet_gateway_id" {
+  value = aws_egress_only_internet_gateway.aws_egress_only_internet_gateway_test1.id
+}
+
+output "aws_vpc_eoig_test1_id" {
+  value = aws_vpc.aws_vpc_eoig_test1.id
+}
+
 output "oidc_arn" {
   value = aws_iam_openid_connect_provider.for_oidc.arn
 }
@@ -782,6 +790,59 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+output "aws_ec2_fleet_id" {
+  value = aws_ec2_fleet.aws_ec2_fleet_test1.id
+}
+
+
+output "aws_customer_gateway_id" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.id
+}
+
+output "aws_customer_gateway_arn" {
+  value = aws_customer_gateway.aws_customer_gateway_test1.arn
+}
+
+output "aws_ec2_capacity_reservation_id" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.id
+}
+
+output "aws_ec2_capacity_reservation_instance_type" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_type
+}
+
+output "aws_ec2_capacity_reservation_instance_platform" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_platform
+}
+
+output "aws_ec2_capacity_reservation_availability_zone" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.availability_zone
+}
+
+output "aws_ec2_capacity_reservation_instance_count" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.instance_count
+}
+
+output "aws_ec2_capacity_reservation_instance_arn" {
+  value = aws_ec2_capacity_reservation.aws_ec2_capacity_reservation_test1.arn
+}
+
+output "aws_cloudfront_realtime_log_config_name" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.name
+}
+
+output "aws_cloudfront_realtime_log_config_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.arn
+}
+
+output "aws_cloudfront_realtime_log_config_sampling_rate" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
+output "aws_end_points_kinesis_stream_config_role_arn" {
+  value = aws_cloudfront_realtime_log_config.aws_cloudfront_realtime_log_config_test1.sampling_rate
+}
+
 output "aws_internet_gateway_id" {
   value = aws_internet_gateway.aws_internet_gateway_test.id
 }
@@ -796,6 +857,38 @@ output "aws_internet_gateway_vpc_id" {
 
 output "aws_network_interface_id1" {
   value = aws_network_interface.aws_network_interface_test.id
+}
+
+output "aws_cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.id
+}
+
+output "aws_cloudfront_distribution_enabled" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.enabled
+}
+
+output "aws_cloudfront_distribution_arn" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.arn
+}
+
+output "aws_cloudfront_distribution_caller_reference" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.caller_reference
+}
+
+output "aws_cloudfront_distribution_status" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.status
+}
+
+output "aws_cloudfront_distribution_domain_name" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.domain_name
+}
+
+output "aws_cloudfront_distribution_in_progress_validation_batches" {
+  value = aws_cloudfront_distribution.aws_cloudfront_distribution_test1.in_progress_validation_batches
+}
+
+output "domain-names-sdb" {
+  value = aws_simpledb_domain.users.name
 }
 
 output "aws_api_gateway_deployement_id_test" {
@@ -825,6 +918,7 @@ output "aws_api_gateway_stage_name" {
 output "aws_api_gateway_base_path_mapping_domain_name" {
   value = aws_api_gateway_base_path_mapping.aws_api_gateway_base_path_mapping_bm_test1.domain_name
 }
+
 output "aws_api_gateway_account_throttle_settings" {
   value = aws_api_gateway_account.aws_api_gateway_account_test1.throttle_settings
 }
@@ -895,6 +989,18 @@ output "aws_api_gateway_client_certificate_expiration_date" {
 
 output "aws_api_gateway_client_certificate_pem_encoded_certificate" {
   value = aws_api_gateway_client_certificate.aws_api_gateway_client_certificate_test1.pem_encoded_certificate
+}
+
+output "aws_cloudfront_group_id" {
+  value =  aws_cloudfront_key_group.example.id
+}
+
+output "aws_cloudfront_group_name" {
+  value =  aws_cloudfront_key_group.example.name
+}
+
+output "aws_cloudfront_group_comment" {
+  value =  aws_cloudfront_key_group.example.comment
 }
 
 output "broker_id" {
@@ -989,7 +1095,6 @@ output "target_vpc_subnet_id" {
   value = aws_ec2_client_vpn_route.test-route.id
 }
 
-
 output "aws_cloudwatch_anomaly_detector_namespace" {
   value = aws_cloudwatch_metric_alarm.aws_cloudwatch_anomaly_detector_test1.namespace
 }
@@ -1025,10 +1130,174 @@ output "aws_signer_signing_profile_version" {
 output "aws_signer_signing_profile_version_arn" {
   value = aws_signer_signing_profile.aws_signer_signing_profile_test.version_arn
 }
+
 output "configuration_id" {
   value = aws_mq_configuration.for_broker.id
 }
 
 output "configuration_arn" {
   value = aws_mq_configuration.for_broker.arn
+}
+
+output "aws_cloudwatch_log_stream_name" {
+  value = aws_cloudwatch_log_stream.for_test.name
+}
+
+output "aws_cloudwatch_log_group_name" {
+  value = aws_cloudwatch_log_group.for_stream.name
+}
+
+output "aws_cloudwatch_log_stream_arn" {
+  value = aws_cloudwatch_log_stream.for_test.arn
+}
+
+output "aws_volume_attachment_instance_device_name" {
+  value = aws_volume_attachment.aws_volume_attachment_test.device_name
+}
+
+output "aws_volume_attachment_instance_volume_id" {
+  value = aws_volume_attachment.aws_volume_attachment_test.volume_id
+}
+
+output "aws_networkfirewall_firewall_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_firewall_policy_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.firewall_policy_arn
+}
+
+output "aws_networkfirewall_firewall_name" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.name
+}
+
+output "aws_networkfirewall_firewall_vpc_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.vpc_id
+}
+
+output "aws_networkfirewall_firewall_arn" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.arn
+}
+
+output "aws_networkfirewall_firewall_policy_name" {
+  value = aws_networkfirewall_firewall_policy.aws_networkfirewall_firewall_policy_test.name
+}
+
+output "aws_networkfirewall_firewall_policy_id" {
+  value = aws_networkfirewall_firewall.aws_networkfirewall_firewall_test.id
+}
+
+output "aws_networkfirewall_rule_group_name" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.name
+}
+
+output "aws_networkfirewall_rule_group_arn" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.id
+}
+
+output "aws_networkfirewall_rule_group_capacity" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.capacity
+}
+
+output "aws_networkfirewall_rule_group_type" {
+  value = aws_networkfirewall_rule_group.aws_networkfirewall_rule_group_test.type
+}
+
+output "aws_spot_fleet_request_id" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.id
+}
+
+output "aws_spot_fleet_request_iam_fleet_role" {
+  value = aws_spot_fleet_request.aws_spot_fleet_request_test.iam_fleet_role
+}
+
+output "app_id" {
+  value = aws_amplify_app.test-app.id
+}
+
+output "branch_name" {
+  value = aws_amplify_app.test-app.name
+}
+
+output "aws_emr_security_configuration_name" {
+  value = aws_emr_security_configuration.emr_security_configuration.name
+}
+
+output "aws_emr_security_configuration_json" {
+  value = aws_emr_security_configuration.emr_security_configuration.configuration
+}
+
+output "aws_emr_cluster_id" {
+  value = aws_emr_cluster.emr_cluster.id
+}
+output "aws_emr_cluster_service_role" {
+  value = aws_emr_cluster.emr_cluster.service_role
+}
+
+output "aws_emr_cluster_applications" {
+  value = aws_emr_cluster.emr_cluster.applications
+}
+
+output "aws_emr_cluster_arn" {
+  value = aws_emr_cluster.emr_cluster.arn
+}
+
+output "aws_emr_cluster_name" {
+  value = aws_emr_cluster.emr_cluster.name
+}
+
+output "aws_emr_cluster_visible_to_all_users" {
+  value = aws_emr_cluster.emr_cluster.visible_to_all_users
+}
+
+output "aws_emr_cluster_release_label" {
+  value = aws_emr_cluster.emr_cluster.release_label
+}
+
+output "aws_emr_cluster_log_uri" {
+  value = aws_emr_cluster.emr_cluster.log_uri
+}
+
+output "aws_cloudfront_public_key_name" {
+  value =  aws_cloudfront_public_key.test_cf_pk.name
+}
+
+output "aws_cloudfront_public_key_id" {
+  value =  aws_cloudfront_public_key.test_cf_pk.id
+}
+
+output "aws_cloudfront_public_key" {
+  value =  aws_cloudfront_public_key.test_cf_pk.encoded_key
+}
+
+output "stream_arns" {
+  value = aws_cloudwatch_metric_stream.main.name
+}
+
+output "stream_name" {
+  value = aws_cloudwatch_metric_stream.main.arn
+}
+
+output "aws_lambda_function_event_invoke_config_id" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.id
+}
+
+output "aws_lambda_function_event_invoke_config_arn" {
+  value = aws_lambda_function.aws_lambda_function_lambda_event_invoke_config_test1.arn
+}
+
+output "aws_lambda_function_event_invoke_config_function_name" {
+  value = aws_lambda_function_event_invoke_config.aws_lambda_function_event_invoke_config_test1.function_name
+}
+
+output "aws_lambda_layer_version_id" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.id
+}
+
+output "aws_eip_association_id" {
+  value = aws_eip.aws_eip_1.association_id
+}
+
+output "aws_placement_group_placement_group_id" {
+  value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
