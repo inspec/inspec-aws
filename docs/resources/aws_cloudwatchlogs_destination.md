@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 
 ## Properties
 
-| Property            | Description               | 
+| Property            | Description               |
 | :-----------------: | :-----------------------: |
 | destination_name    | The name of the destination. |
 | target_arn          | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). |
@@ -39,11 +39,13 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 ## Examples
 
 ### Ensure destination name is available
+
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
       its('destination_name') { should eq 'DESTINATION_NAME' }
     end
 
-### Ensure that the role_arn is available
+### Ensure that the IAM role ARN is available
+
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
         its('role_arn') { should eq 'ROLE_ARN' }
     end
