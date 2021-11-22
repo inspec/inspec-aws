@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_cloudwatchlogs_destination` InSpec audit resource to test properties of a single specific AWS Logs destination.
 
-The AWS::Logs::Destination specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
+The `AWS::Logs::Destination` resource type specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
 
 ## Syntax
 
@@ -62,7 +62,7 @@ Use `should` to test that the entity exists.
       it { should exist }
     end
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
       it { should_not exist }
