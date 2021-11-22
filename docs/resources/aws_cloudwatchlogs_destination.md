@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudwatchlogs_destination
 
-Use the `aws_cloudwatchlogs_destination` InSpec audit resource to test properties of a single specific AWS Logs Destination.
+Use the `aws_cloudwatchlogs_destination` InSpec audit resource to test properties of a single specific AWS Logs destination.
 
 The AWS::Logs::Destination specifies a CloudWatch Logs destination. A destination encapsulates a physical resource (such as an Amazon Kinesis data stream) and enables you to subscribe that resource to a stream of log events.
 
@@ -27,23 +27,23 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 
 ## Properties
 
-| Property | Description | 
-| --- | --- |
-| destination_name | The name of the destination. |
-| target_arn | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). |
-| role_arn | A role for impersonation, used when delivering log events to the target. |
-| access_policy | An IAM policy document that governs which Amazon Web Services accounts can create subscription filters against this destination. |
-| arn | The ARN of this destination. |
-| creation_time | The creation time of the destination, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
+| Property            | Description               | 
+| :-----------------: | :-----------------------: |
+| destination_name    | The name of the destination. |
+| target_arn          | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). |
+| role_arn            | The ARN of an IAM role that permits CloudWatch Logs to send data to the specified AWS resource. |
+| access_policy       | An IAM policy document governing the Amazon Web Services accounts, which can create subscription filters against this destination. |
+| arn                 | The ARN of this destination. |
+| creation_time       | The creation time of the destination, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. |
 
 ## Examples
 
-### Ensure destination name is available.
+### Ensure destination name is available
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
       its('destination_name') { should eq 'DESTINATION_NAME' }
     end
 
-### Ensure that the role_arn is available.
+### Ensure that the role_arn is available
     describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
         its('role_arn') { should eq 'ROLE_ARN' }
     end
