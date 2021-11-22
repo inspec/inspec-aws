@@ -29,10 +29,10 @@ For additional information, see the [AWS documentation on AWS Signer ProfilePerm
 
 | Property | Description | Fields | 
 | --- | --- | --- |
-| actions | The | action |
-| principals | The | principal |
-| statement_ids | The | statement_id |
-| profile_versions | The | profile_version |
+| actions | An AWS Signer action permitted as part of cross-account permissions. | action |
+| principals | The AWS principal that has been granted a cross-account permission. | principal |
+| statement_ids | A unique identifier for a cross-account permission statement. | statement_id |
+| profile_versions | The signing profile version that a permission applies to. | profile_version |
 
 ## Examples
 
