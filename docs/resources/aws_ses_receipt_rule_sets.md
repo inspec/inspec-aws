@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ses_receipt_rule_sets
 
-Use the `aws_ses_receipt_rule_sets` InSpec audit resource to test properties of the plural resource of AWS SES ReceiptRuleSet.
+Use the `aws_ses_receipt_rule_sets` InSpec audit resource to test properties of multiple AWS Simple Email Service (SES) receipt rule sets.
 
-The AWS::SES::ReceiptRuleSet resource specifies a receipt rule set.
+The `AWS::SES::ReceiptRuleSet` resource specifies a receipt rule set.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS SES ReceiptRuleSet
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | names | The name of the receipt rule set. | name |
 | created_timestamps | The date and time the receipt rule set was created. | created_timestamp |
@@ -31,6 +31,7 @@ For additional information, see the [AWS documentation on AWS SES ReceiptRuleSet
 ## Examples
 
 ### Ensure a rule set name is available.
+
     describe aws_ses_receipt_rule_sets do
       its('names') { should include 'RULE_SET_NAME' }
     end
