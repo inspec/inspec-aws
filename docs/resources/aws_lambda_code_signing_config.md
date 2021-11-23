@@ -5,9 +5,9 @@ platform: aws
 
 # aws_lambda_code_signing_config
 
-Use the `aws_lambda_code_signing_config` InSpec audit resource to test properties of the singular resource of AWS Lambda CodeSigningConfig.
+Use the `aws_lambda_code_signing_config` InSpec audit resource to test properties of a single AWS Lambda code signing configuration.
 
-The AWS::Lambda::CodeSigningConfig specifies the details about a Code signing configuration.
+The `AWS::Lambda::CodeSigningConfig` resource specifies the details about a code signing configuration.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ Ensure that the code signing config exists.
 
 `code_signing_config_arn` _(required)_
 
-The The Amazon Resource Name (ARN) of the code signing configuration.
+The Amazon Resource Name (ARN) of the code signing configuration.
 
 For additional information, see the [AWS documentation on AWS SSM CodeSigningConfig](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-codesigningconfig.html).
 
@@ -38,12 +38,14 @@ For additional information, see the [AWS documentation on AWS SSM CodeSigningCon
 
 ## Examples
 
-### Ensure a code signing config id is available.
+### Ensure a code signing config ID is available.
+
     describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do
       its('code_signing_config_id') { should eq 'CODE_SIGNING_CONFIG_ID' }
     end
 
-### Ensure a code signing config arn is available.
+### Ensure a code signing config ARN is available.
+
     describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do
       its('code_signing_config_arn') { should eq 'CODE_SIGNING_CONFIG_ARN' }
     end

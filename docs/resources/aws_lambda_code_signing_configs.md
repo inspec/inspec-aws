@@ -5,9 +5,9 @@ platform: aws
 
 # aws_lambda_code_signing_configs
 
-Use the `aws_lambda_code_signing_configs` InSpec audit resource to test properties of the plural resource of AWS Lambda CodeSigningConfig.
+Use the `aws_lambda_code_signing_configs` InSpec audit resource to test properties of multiple AWS Lambda code signing configurations.
 
-The AWS::Lambda::CodeSigningConfig specifies the details about a Code signing configuration.
+The `AWS::Lambda::CodeSigningConfig` resource specifies the details about a code signing configuration.
 
 ## Syntax
 
@@ -37,11 +37,13 @@ For additional information, see the [AWS documentation on AWS SSM CodeSigningCon
 ## Examples
 
 ### Ensure a code signing config id is available.
+
     describe aws_lambda_code_signing_configs do
       its('code_signing_config_ids') { should include 'CODE_SIGNING_CONFIG_ID' }
     end
 
 ### Ensure a code signing config arn is available.
+
     describe aws_lambda_code_signing_configs do
       its('code_signing_config_arns') { should include 'CODE_SIGNING_CONFIG_ARN' }
     end
