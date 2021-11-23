@@ -73,7 +73,7 @@ There are also additional properties available. For a comprehensive list, see [t
 This InSpec audit resource has the following special matcher. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 
     describe aws_internet_gateway(name: 'my-igw') do
         it { should exist }

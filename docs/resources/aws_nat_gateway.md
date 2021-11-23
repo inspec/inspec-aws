@@ -103,7 +103,7 @@ For more examples, please check the [integration tests](../../test/integration/v
 This InSpec audit resource has the following special matcher. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 
     describe aws_nat_gateway(name: 'my-nat-gateway') do
         it { should exist }
