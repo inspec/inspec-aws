@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ses_template
 
-Use the `aws_ses_template` InSpec audit resource to test properties of the singular resource of AWS SES Template.
+Use the `aws_ses_template` InSpec audit resource to test properties of a single AWS Simple Email Service (SES) template.
 
-The AWS::SES::Template resource specifies an email template.
+The `AWS::SES::Template` resource specifies an email template.
 
 ## Syntax
 
@@ -27,31 +27,35 @@ For additional information, see the [AWS documentation on AWS SES Template](http
 
 ## Properties
 
-| Property | Description | 
-| --- | --- | 
-| template_name | The name of the template. | 
-| subject_part | The subject line of the email. | 
-| text_part | The email body that will be visible to recipients whose email clients do not display HTML. | 
-| html_part | The HTML body of the email. | 
+| Property | Description |
+| --- | --- |
+| template_name | The name of the template. |
+| subject_part | The subject line of the email. |
+| text_part | The email body that will be visible to recipients whose email clients do not display HTML. |
+| html_part | The HTML body of the email. |
 
 ## Examples
 
 ### Ensure a template name is available.
+
     describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
       its('template_name') { should eq 'TEMPLATE_NAME' }
     end
 
-### Ensure a subject is available.
+### Ensure a subject is available in the template.
+
     describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
       its('subject_part') { should eq 'HTML_SUBJECT' }
     end
 
-### Ensure a text part is available.
+### Ensure a text part is available in the template.
+
     describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
       its('text_part') { should eq 'HTML_TEXT_PART' }
     end
 
-### Ensure a html part is available.
+### Ensure an HTML body is available in the template.
+
     describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
       its('html_part') { should eq 'HTML_PART' }
     end

@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ses_templates
 
-Use the `aws_ses_templates` InSpec audit resource to test properties of the plural resource of AWS SES Template.
+Use the `aws_ses_templates` InSpec audit resource to test properties of multiple AWS Simple Email Service (SES) templates.
 
-The AWS::SES::Template resource specifies an email template.
+The `AWS::SES::Template` resource specifies an email template.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS SES Template](http
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Field |
 | --- | --- | --- |
 | names | The name of the template. | name |
 | created_timestamps | The time and date the template was created. | created_timestamp |
@@ -31,6 +31,7 @@ For additional information, see the [AWS documentation on AWS SES Template](http
 ## Examples
 
 ### Ensure a template name is available.
+
     describe aws_ses_templates do
       its('names') { should include 'TEMPLATE_NAME' }
     end
