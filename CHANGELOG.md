@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.63 -->
+<!-- latest_release 1.74.64 -->
+## [v1.74.64](https://github.com/inspec/inspec-aws/tree/v1.74.64) (2021-11-23)
+
+#### Merged Pull Requests
+- NIRBHAY/aws_ec2_client_vpn_route [#716](https://github.com/inspec/inspec-aws/pull/716) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.63](https://github.com/inspec/inspec-aws/tree/v1.74.63) (2021-11-23)
 
 #### Merged Pull Requests
 - CloudWatch Logs Destinantion [#683](https://github.com/inspec/inspec-aws/pull/683) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.62](https://github.com/inspec/inspec-aws/tree/v1.74.62) (2021-11-22)
 
