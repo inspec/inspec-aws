@@ -58,7 +58,7 @@ This can be passed either as a string or as a `saml_provider_arn: 'value'` key-v
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### exists
+### exist
 
 The `exists` matcher tests if the filtered IAM SAML Provider(s) exists.
 
