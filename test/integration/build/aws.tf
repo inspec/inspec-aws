@@ -4906,6 +4906,28 @@ resource "aws_iam_instance_profile" "emr_ec2_instance_profile" {
   name = "emr-ec2-instance-profile"
   role = aws_iam_role.emr_instance_iam_role.name
 }
+//AWS::SES::ReceiptRule
+
+resource "aws_ses_receipt_rule" "aws_ses_receipt_rule_test1" {
+  name          = "receiptrule"
+  rule_set_name = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+  recipients    = ["test1@test1.com"]
+  enabled       = true
+  scan_enabled  = true
+
+  add_header_action {
+    header_name  = "Custom-Header"
+    header_value = "Added by SES"
+    position     = 1
+  }
+}
+
+//AWS::SES::ReceiptRuleSet
+
+resource "aws_ses_receipt_rule_set" "aws_ses_receipt_rule_set_test1" {
+  rule_set_name = "primary-rules"
+}
+
 
 resource "aws_iam_role" "emr_instance_iam_role" {
   name = "emr-instance-${var.aws_iam_role_generic_name}"
