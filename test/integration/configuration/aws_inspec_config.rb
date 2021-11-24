@@ -126,6 +126,7 @@ module AWSInspecConfig
       aws_eks_subnet_name_1: "eks-subnet-1-#{add_random_string}",
       aws_eks_subnet_name_2: "eks-subnet-2-#{add_random_string}",
       aws_eks_vpc_name: "eks-vpc-name-#{add_random_string}",
+      aws_emr_cluster_name: "emr-cluster-#{add_random_string}",
       aws_elasticache_cluster_id: "elasticache-cluster-#{add_random_string}",
       aws_elasticache_cluster_engine: "memcached",
       aws_elasticache_cluster_node_type: "cache.t2.micro",
@@ -138,6 +139,7 @@ module AWSInspecConfig
       aws_elb_access_log_name: "elb-log-name-#{add_random_string}",
       aws_elb_access_log_prefix: "elb-log-prefix-#{add_random_string}",
       aws_elb_name: "elb-#{add_random_string}",
+      aws_emr_security_configuration_name: "emr-sec-config-#{add_random_string}",
       aws_flow_log_bucket_name: "aws-flow-log-bucket-#{add_random_string}",
       aws_iam_user_name: "iam-user-#{add_random_string}",
       aws_iam_user_policy_name: "iam-user-policy-#{add_random_string}",
@@ -285,6 +287,10 @@ module AWSInspecConfig
       aws_ecs_service_name: "bar-#{add_random_string}",
       aws_cluster_name: "white-hart-#{add_random_string}",
       aws_location: "us-east-2c",
+      aws_vpn_connection_route_destination_cidr_block: "192.168.10.0/24",
+      aws_vpn_connection_route_state: "available",
+      aws_accepter_vpc_info_cidr_block: "10.2.0.0/16",
+      aws_requester_vpc_info_cidr_block: "10.1.0.0/16",
   }
 
   def self.config

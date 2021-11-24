@@ -50,7 +50,7 @@ See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/Ama
 
 For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -67,4 +67,4 @@ Use `should_not` to test the entity should not exist.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecs:ListClusters` & `ecs:DescribeClusters` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ECS:Client:ListClustersResponse` & `ECS:Client:DescribeClustersResponse` action set to allow.

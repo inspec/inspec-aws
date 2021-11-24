@@ -3,20 +3,20 @@ title: About the aws_ec2_launch_templates Resource
 platform: aws
 ---
 
-# aws\_ec2\_launch_\templates
+# aws_ec2_launch_templates
 
 Use the `aws_ec2_launch_templates` InSpec audit resource to test properties of a all the AWS Launch templates.
 
 ## Syntax
 
-An `aws_ec2_launch_templates` resource block declares the tests for a all the  AWS Launch templates.
+An `aws_ec2_launch_templates` resource block declares the tests for a all the AWS Launch templates.
 
 describe aws_ec2_launch_templates do
 it { should exist }
 end
 
 
-##### launch\_templates\_id
+##### launch_templates_id
 
 The ID of the EC2 launch_templates. This is in the format of `lt-` followed by 8 or 17 hexadecimal characters.
 This can be passed either as a string or as an `launch_templates_id: 'value'` key-value entry in a hash.
@@ -39,17 +39,20 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-##### Test that an launch templates should exist
+### Test that an launch templates should exist
+
  describe aws_ec2_launch_templates do
    it { should exist }
  end
 
-##### Test that an EC2 instance is using the correct AMI
+### Test that an EC2 instance is using the correct AMI
+
  describe aws_ec2_launch_templates do
    its('launch_template_ids.count') { should cmp 3 }
  end
 
-##### Test that an EC2 instance has the correct tag
+### Test that an EC2 instance has the correct tag
+
  describe aws_ec2_launch_templates do
    its('launch_templates_names') { should include 'test-lt' }
  end
@@ -57,4 +60,6 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/). 
+For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+

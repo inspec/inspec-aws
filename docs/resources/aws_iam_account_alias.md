@@ -42,7 +42,7 @@ See also the [AWS documentation on Account Aliases](https://docs.aws.amazon.com/
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
@@ -54,5 +54,5 @@ Use `should_not` to test the entity should not exist.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `iam:ListAccountAliases` action with Effect set to Allow.  
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `IAM:Client:ListAccountAliasesResponse` action with Effect set to Allow.  
     

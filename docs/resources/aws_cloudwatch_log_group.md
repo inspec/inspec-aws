@@ -47,6 +47,6 @@ See also the [AWS documentation on CloudWatch Logs](https://docs.aws.amazon.com/
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `logs:DescribeLogGroups` and `logs:ListTagsLogGroup` actions with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `CloudWatchLogs:Client:DescribeLogGroupsResponse` and `CloudWatchLogs:Client:ListTagsLogGroupResponse` actions with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon CloudWatch Logs](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatchlogs.html).

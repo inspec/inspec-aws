@@ -62,7 +62,7 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [def
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
    
-#### exist
+### exist
 The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
@@ -77,6 +77,6 @@ Use `should_not` to test the entity should not exist.
     
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ecr:DescribeImages` action set to allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ECR:Client:DescribeImagesResponse` action set to allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Operations.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

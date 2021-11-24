@@ -1,9 +1,9 @@
 title 'Test a single AWS SSM Parameter'
 
-aws_ssm_parameter_name  = attribute(:aws_ssm_parameter_name, default: '', description: 'The AWS SSM Parameter Name')
-aws_ssm_parameter_type  = attribute(:aws_ssm_parameter_type, default: '', description: 'The AWS SSM Parameter Type')
-aws_ssm_parameter_value = attribute(:aws_ssm_parameter_value, default: '', description: 'The AWS SSM Parameter Value')
-aws_ssm_parameter_arn   = attribute(:aws_ssm_parameter_arn, default: '', description: 'The AWS SSM Parameter ARN.')
+aws_ssm_parameter_name  = attribute(:aws_ssm_parameter_name, value: '', description: 'The AWS SSM Parameter Name')
+aws_ssm_parameter_type  = attribute(:aws_ssm_parameter_type, value: '', description: 'The AWS SSM Parameter Type')
+aws_ssm_parameter_value = attribute(:aws_ssm_parameter_value, value: '', description: 'The AWS SSM Parameter Value')
+aws_ssm_parameter_arn   = attribute(:aws_ssm_parameter_arn, value: '', description: 'The AWS SSM Parameter ARN.')
 
 control 'aws-ssm-parameter-1.0' do
 

@@ -1,6 +1,6 @@
-aws_transfer_user_name = attribute(:aws_transfer_user_name, default: '', description: '')
-aws_transfer_server_id = attribute(:aws_transfer_server_id, default: '', description: '')
-aws_transfer_user_arn = attribute(:aws_transfer_server_id, default: '', description: '')
+aws_transfer_user_name = attribute(:aws_transfer_user_name, value: '', description: '')
+aws_transfer_server_id = attribute(:aws_transfer_server_id, value: '', description: '')
+aws_transfer_user_arn = attribute(:aws_transfer_server_id, value: '', description: '')
 
 control 'aws-transfer-users-1.0' do
 
