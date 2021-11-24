@@ -1,9 +1,49 @@
-<!-- latest_release 1.74.61 -->
+<!-- latest_release 1.74.69 -->
+## [v1.74.69](https://github.com/inspec/inspec-aws/tree/v1.74.69) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_receipt_rule_set [#755](https://github.com/inspec/inspec-aws/pull/755) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.68](https://github.com/inspec/inspec-aws/tree/v1.74.68) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_template [#756](https://github.com/inspec/inspec-aws/pull/756) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.67](https://github.com/inspec/inspec-aws/tree/v1.74.67) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_receipt_rule [#754](https://github.com/inspec/inspec-aws/pull/754) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.66](https://github.com/inspec/inspec-aws/tree/v1.74.66) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_event_invoke_config [#672](https://github.com/inspec/inspec-aws/pull/672) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.65](https://github.com/inspec/inspec-aws/tree/v1.74.65) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_code_signing_config [#776](https://github.com/inspec/inspec-aws/pull/776) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.64](https://github.com/inspec/inspec-aws/tree/v1.74.64) (2021-11-23)
+
+#### Merged Pull Requests
+- NIRBHAY/aws_ec2_client_vpn_route [#716](https://github.com/inspec/inspec-aws/pull/716) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.63](https://github.com/inspec/inspec-aws/tree/v1.74.63) (2021-11-23)
+
+#### Merged Pull Requests
+- CloudWatch Logs Destinantion [#683](https://github.com/inspec/inspec-aws/pull/683) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.62](https://github.com/inspec/inspec-aws/tree/v1.74.62) (2021-11-22)
+
+#### Merged Pull Requests
+- updated the readme file till NOV_12 [#748](https://github.com/inspec/inspec-aws/pull/748) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.74.61](https://github.com/inspec/inspec-aws/tree/v1.74.61) (2021-11-21)
 
 #### Merged Pull Requests
 - Nirbhay/AWS_SecurityHub_Hub [#747](https://github.com/inspec/inspec-aws/pull/747) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.60](https://github.com/inspec/inspec-aws/tree/v1.74.60) (2021-11-21)
 
