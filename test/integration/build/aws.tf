@@ -5382,3 +5382,10 @@ resource "aws_lambda_code_signing_config" "aws_lambda_code_signing_config_test1"
 
   description = "My awesome code signing config."
 }
+//AWS::SES::Template
+resource "aws_ses_template" "aws_ses_template_test1" {
+  name    = "MyTemplate"
+  subject = "Greetings"
+  html    = "Hello"
+  text    = "Hello"
+}
