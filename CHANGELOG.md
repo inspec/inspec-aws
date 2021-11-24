@@ -1,9 +1,44 @@
-<!-- latest_release 1.74.58 -->
+<!-- latest_release 1.74.65 -->
+## [v1.74.65](https://github.com/inspec/inspec-aws/tree/v1.74.65) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_code_signing_config [#776](https://github.com/inspec/inspec-aws/pull/776) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.64](https://github.com/inspec/inspec-aws/tree/v1.74.64) (2021-11-23)
+
+#### Merged Pull Requests
+- NIRBHAY/aws_ec2_client_vpn_route [#716](https://github.com/inspec/inspec-aws/pull/716) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.63](https://github.com/inspec/inspec-aws/tree/v1.74.63) (2021-11-23)
+
+#### Merged Pull Requests
+- CloudWatch Logs Destinantion [#683](https://github.com/inspec/inspec-aws/pull/683) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.62](https://github.com/inspec/inspec-aws/tree/v1.74.62) (2021-11-22)
+
+#### Merged Pull Requests
+- updated the readme file till NOV_12 [#748](https://github.com/inspec/inspec-aws/pull/748) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.61](https://github.com/inspec/inspec-aws/tree/v1.74.61) (2021-11-21)
+
+#### Merged Pull Requests
+- Nirbhay/AWS_SecurityHub_Hub [#747](https://github.com/inspec/inspec-aws/pull/747) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.60](https://github.com/inspec/inspec-aws/tree/v1.74.60) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_placement_group [#669](https://github.com/inspec/inspec-aws/pull/669) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.59](https://github.com/inspec/inspec-aws/tree/v1.74.59) (2021-11-21)
+
+#### Merged Pull Requests
+- soumyo/aws_ec2_host [#668](https://github.com/inspec/inspec-aws/pull/668) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.74.58](https://github.com/inspec/inspec-aws/tree/v1.74.58) (2021-11-21)
 
 #### Merged Pull Requests
 - soumyo/aws_ec2_fleet [#667](https://github.com/inspec/inspec-aws/pull/667) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.57](https://github.com/inspec/inspec-aws/tree/v1.74.57) (2021-11-21)
 
