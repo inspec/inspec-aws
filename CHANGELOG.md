@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.67 -->
+<!-- latest_release 1.74.68 -->
+## [v1.74.68](https://github.com/inspec/inspec-aws/tree/v1.74.68) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_template [#756](https://github.com/inspec/inspec-aws/pull/756) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.67](https://github.com/inspec/inspec-aws/tree/v1.74.67) (2021-11-24)
 
 #### Merged Pull Requests
 - soumyo/aws_ses_receipt_rule [#754](https://github.com/inspec/inspec-aws/pull/754) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.66](https://github.com/inspec/inspec-aws/tree/v1.74.66) (2021-11-24)
 
