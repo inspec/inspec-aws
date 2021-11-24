@@ -39,7 +39,7 @@ The following examples show how to use this InSpec audit resource.
 
 ## Matchers
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
