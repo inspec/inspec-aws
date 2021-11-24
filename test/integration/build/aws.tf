@@ -5345,3 +5345,35 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+#AWS::RDS::TargetGroup
+resource "aws_db_proxy_default_target_group" "for_proxy" {
+  db_proxy_name = aws_db_proxy.for_proxy.name
+
+  connection_pool_config {
+    connection_borrow_timeout    = 120
+    init_query                   = "SET x=1, y=2"
+    max_connections_percent      = 100
+    max_idle_connections_percent = 50
+    session_pinning_filters      = ["EXCLUDE_VARIABLE_SETS"]
+  }
+}
+
+resource "aws_db_proxy_target" "for_proxy" {
+  db_instance_identifier = aws_db_instance.for_proxy.id
+  db_proxy_name          = aws_db_proxy.example.name
+  target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
+}
+
+
+resource "aws_db_instance" "for_proxy" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "test"
+  password             = "foobarbaz"
+  parameter_group_name = "default.mysql5.7"
+  skip_final_snapshot  = true
+}
