@@ -69,7 +69,7 @@ The `be_master` matcher tests if the account is a 'master' AWS Account.
 
     it { should_not be_master }
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

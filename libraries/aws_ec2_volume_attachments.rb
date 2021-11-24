@@ -2,12 +2,12 @@
 
 require 'aws_backend'
 
-class AWSEc2VolumeAttachments < AwsResourceBase
+class AWSEC2VolumeAttachments < AwsResourceBase
   name 'aws_ec2_volume_attachments'
-  desc 'Lists all the EC2 volume attachments.'
+  desc 'Describes the specified EBS volumes attachments or all of your EBS volumes attachments.'
 
   example "
-    describe aws_ec2_volume_attachments(volume_id: 'vol-1234567890') do
+    describe aws_ec2_volume_attachments do
       it { should exist }
     end
   "
@@ -25,40 +25,31 @@ class AWSEc2VolumeAttachments < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(require_any_of: %i(volume_id name))
-    @volume_arguments = {}
-    if opts[:volume_id] && !opts[:volume_id].empty?
-      raise ArgumentError, "#{@__resource_name__}:  must be in the format 'vol- followed by 8 or 17 hexadecimal characters." if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/
-      @display_name = opts[:volume_id]
-      @volume_arguments = { volume_ids: [opts[:volume_id]] }
-    elsif opts[:name] && !opts[:name].empty?
-      @display_name = opts[:name]
-      filter = { name: 'tag:Name', values: [opts[:name]] }
-      @volume_arguments = { filters: [filter] }
-    else
-      raise ArgumentError, "#{@__resource_name__}: `volume_id` or `name` must be provided"
-    end
+    validate_parameters
     @table = fetch_data
   end
 
   def fetch_data
+    pagination_options = {}
     rows = []
+    pagination_options[:max_results] = 100
     loop do
       catch_aws_errors do
-        @api_response = @aws.compute_client.describe_volumes(@volume_arguments)
+        @api_response = @aws.compute_client.describe_volumes(pagination_options)
       end
       return rows if !@api_response || @api_response.empty?
-      @api_response.volumes[0].attachments.each do |res|
-        rows += [{ attach_time: res.attach_time,
-                   device: res.device,
-                   instance_id: res.instance_id,
-                   state: res.state,
-                   volume_id: res.volume_id,
-                   delete_on_termination: res.delete_on_termination }]
+      @api_response.volumes.each do |resp|
+        next if resp.attachments.nil?
+        rows += [{ attach_time: resp.attachments.map(&:attach_time),
+                   device: resp.attachments.map(&:device),
+                   instance_id: resp.attachments.map(&:instance_id),
+                   state: resp.attachments.map(&:state),
+                   volume_id: resp.attachments.map(&:volume_id),
+                   delete_on_termination: resp.attachments.map(&:delete_on_termination) }]
       end
       break unless @api_response.next_token
-      @volume_arguments[:next_token] = @api_response.next_token
+      pagination_options[:next_token] = @api_response.next_token
     end
-    @table = rows
+    rows
   end
 end

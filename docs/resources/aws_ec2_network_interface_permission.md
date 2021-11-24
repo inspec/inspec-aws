@@ -31,7 +31,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 | network_interface_id |  The Amazon Web Services account ID. |
 | aws_account_id |The Amazon Web Service. Currently not supported. |
 | state |The state of the permission.  Valid values are: "pending", "granted", "revoking", "revoked". |
-| status_message | The status message of the permission state. | status_message |
+| status_message | The status message of the permission state. |
 
 ## Examples
 

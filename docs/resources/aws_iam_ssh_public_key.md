@@ -5,7 +5,7 @@ platform: aws
 
 # aws_iam_ssh_public_key
 
-Use the `aws_iam_ssh_public_key` InSpec audit resource to test the properties of a singular resource of AWS IAM PublicKey.
+Use the `aws_iam_ssh_public_key` InSpec audit resource to test the properties of a singular resource of an AWS SSH public key for an IAM user.
 
 ## Syntax
 
