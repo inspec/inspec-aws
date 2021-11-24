@@ -5389,3 +5389,31 @@ resource "aws_ses_template" "aws_ses_template_test1" {
   html    = "Hello"
   text    = "Hello"
 }
+
+//Lambda Function
+resource "aws_lambda_function" "aws_lambda_function_alias_test1" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name123456"
+  role          = aws_iam_role.lambda_test_role.arn
+  handler       = "index.test"
+
+  source_code_hash = filebase64sha256("lambda.zip")
+
+  runtime = "nodejs12.x"
+
+  publish = "1"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+//Lambda Alias
+resource "aws_lambda_alias" "aws_lambda_alias_test1" {
+  name             = "lambda_alias_test1"
+  description      = "a sample description"
+  function_name    = aws_lambda_function.aws_lambda_function_alias_test1.arn
+  function_version = "$LATEST"
+}

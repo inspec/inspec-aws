@@ -1365,3 +1365,19 @@ output "aws_ses_template_html" {
 output "aws_ses_template_text" {
   value = aws_ses_template.aws_ses_template_test1.text
 }
+
+output "aws_lambda_alias_function_name" {
+  value = aws_lambda_function.aws_lambda_function_alias_test1.function_name
+}
+
+output "aws_lambda_alias_name" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.name
+}
+
+output "aws_lambda_alias_description" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.description
+}
+
+output "aws_lambda_alias_arn" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.arn
+}
