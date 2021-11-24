@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.64 -->
+<!-- latest_release 1.74.65 -->
+## [v1.74.65](https://github.com/inspec/inspec-aws/tree/v1.74.65) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_code_signing_config [#776](https://github.com/inspec/inspec-aws/pull/776) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.64](https://github.com/inspec/inspec-aws/tree/v1.74.64) (2021-11-23)
 
 #### Merged Pull Requests
 - NIRBHAY/aws_ec2_client_vpn_route [#716](https://github.com/inspec/inspec-aws/pull/716) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.63](https://github.com/inspec/inspec-aws/tree/v1.74.63) (2021-11-23)
 
