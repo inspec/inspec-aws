@@ -1317,3 +1317,31 @@ output "aws_lambda_code_signing_config_description" {
 output "aws_lambda_code_signing_config_last_modified" {
   value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.last_modified
 }
+
+output "aws_ses_receipt_rule_id" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.id
+}
+
+output "aws_ses_receipt_rule_arn" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.arn
+}
+
+output "aws_ses_receipt_rule_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.name
+}
+
+output "aws_ses_receipt_rule_rule_set_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_id" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.id
+}
+
+output "aws_ses_receipt_rule_set_name" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_arn" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.arn
+}
