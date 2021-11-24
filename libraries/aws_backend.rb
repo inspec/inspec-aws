@@ -316,6 +316,10 @@ class AwsConnection
   def emr_client
     aws_client(Aws::EMR::Client)
   end
+
+  def s3_client
+    aws_client(Aws::S3::Client)
+  end
 end
 
 # Base class for AWS resources
