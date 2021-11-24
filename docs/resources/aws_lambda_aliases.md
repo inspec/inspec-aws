@@ -5,9 +5,9 @@ platform: aws
 
 # aws_lambda_aliases
 
-Use the `aws_lambda_aliases` InSpec audit resource to test properties of the plural resource of AWS Lambda Alias.
+Use the `aws_lambda_aliases` InSpec audit resource to test properties of multiple AWS Lambda aliases.
 
-The AWS::Lambda::Alias resource creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
+The `AWS::Lambda::Alias` resource creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 
 ## Syntax
 
@@ -23,27 +23,29 @@ Ensure that the alias exists.
 
 The name of the lambda function.
 
-For additional information, see the [AWS documentation on AWS Lambda Alias](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html).
+For additional information, see the [AWS documentation on AWS Lambda alias](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html).
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
 | alias_arns | Lambda function ARN that is qualified using the alias name as the suffix. | alias_arn |
-| names | Alias name. | name |
+| names | The alias names. | name |
 | function_versions | Function version to which the alias points. | function_version |
-| descriptions | Alias description. | description |
+| descriptions | The alias descriptions. | description |
 | routing_configs | Specifies an additional function versions the alias points to, allowing you to dictate what percentage of traffic will invoke each version. | routing_config |
 | revision_ids | Represents the latest updated revision of the function or alias. | revision_id |
 
 ## Examples
 
-### Ensure a alias arn is available.
+### Ensure an alias ARN is available.
+
     describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
       its('alias_arns') { should include 'ALIAS_ARN' }
     end
 
-### Ensure a alias name is available.
+### Ensure an alias name is available.
+
     describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
       its('names') { should include 'FUNCTION_ALIAS_NAME' }
     end

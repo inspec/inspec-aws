@@ -5,9 +5,9 @@ platform: aws
 
 # aws_lambda_alias
 
-Use the `aws_lambda_alias` InSpec audit resource to test properties of the singular resource of AWS Lambda Alias.
+Use the `aws_lambda_alias` InSpec audit resource to test properties of a single AWS Lambda alias.
 
-The AWS::Lambda::Alias resource creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
+The `AWS::Lambda::Alias` resource creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 
 ## Syntax
 
@@ -27,27 +27,29 @@ The name of the lambda function.
 
 Name of the alias for which you want to retrieve information.
 
-For additional information, see the [AWS documentation on AWS Lambda Alias](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html).
+For additional information, see the [AWS documentation on AWS Lambda alias](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html).
 
 ## Properties
 
 | Property | Description |
 | --- | --- |
 | alias_arn | Lambda function ARN that is qualified using the alias name as the suffix. |
-| name | Alias name. |
+| name | The alias name. |
 | function_version | Function version to which the alias points. |
-| description | Alias description. |
+| description | The alias description. |
 | routing_config.additional_version_weights | The name of the second alias, and the percentage of traffic that is routed to it. |
 | revision_id | Represents the latest updated revision of the function or alias. |
 
 ## Examples
 
-### Ensure a alias arn is available.
+### Ensure an alias ARN is available.
+
     describe aws_lambda_alias(function_name: 'FUNCTION_NAME', function_alias_name: 'FUNCTION_ALIAS_NAME') do
       its('alias_arn') { should eq 'ALIAS_ARN' }
     end
 
 ### Ensure a alias name is available.
+
     describe aws_lambda_alias(function_name: 'FUNCTION_NAME', function_alias_name: 'FUNCTION_ALIAS_NAME') do
       its('name') { should eq 'FUNCTION_ALIAS_NAME' }
     end
