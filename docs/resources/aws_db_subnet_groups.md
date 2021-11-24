@@ -47,7 +47,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 

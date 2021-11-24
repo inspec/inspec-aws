@@ -5,7 +5,7 @@ platform: aws
 
 # aws_cloudwatchlogs_log_streams
 
-Use the `aws_cloudwatchlogs_log_streams` InSpec audit resource to test properties of the plural resource of AWS Logs LogStream.
+Use the `aws_cloudwatchlogs_log_streams` InSpec audit resource to test properties of the plural resource of AWS Logs log stream.
 
 The AWS::Logs::LogStream resource specifies an Amazon CloudWatch Logs log stream in a specific log group. A log stream represents the sequence of events coming from an application instance or resource that you are monitoring.
 

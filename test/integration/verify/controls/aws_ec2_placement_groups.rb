@@ -1,16 +1,20 @@
+aws_placement_group_name = attribute('aws_placement_group_name', value: '', description: '')
+aws_placement_group_placement_group_id = attribute('aws_placement_group_placement_group_id', value: '', description: '')
 
-aws_placement_group_name = attribute(:aws_placement_group_name, value: '', description: 'The AWS EC2 Placement groups.')
-
-
-title 'Test WS EC2 Placement groups in bulk'
-control 'aws_placement_group_names-1.0' do
-
+control 'aws-ec2-placement-groups-1.0' do
   impact 1.0
-  title 'Ensure AWS EC2 Placement groups resource has the correct properties.'
+  title 'Describes the specified placement groups or all of your placement groups.'
 
   describe aws_ec2_placement_groups do
     it { should exist }
-    its('strategies) { should include "cluster" }
-    its('aws_placement_group_names') { should include aws_placement_group_name  }
+  end
+
+  describe aws_ec2_placement_groups do
+    its('group_names') { should include aws_placement_group_name }
+    its('states') { should include 'available' }
+    its('strategies') { should include 'cluster' }
+    its('partition_counts') { should_not be_empty }
+    its('group_ids') { should include aws_placement_group_placement_group_id }
+    its('tags') { should_not be_empty }
   end
 end

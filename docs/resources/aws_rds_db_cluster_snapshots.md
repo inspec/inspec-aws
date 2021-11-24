@@ -24,7 +24,7 @@ For additional information, see the [AWS documentation on AWS RDS Cluster Snapsh
 | Property                       | Description                                                | Fields         |
 | :----------------------------: | :--------------------------------------------------------: | :------------: |
 | availability_zones             | Provides the list of EC2 Availability Zones instances in the DB cluster snapshot that can be restored.| availability_zone |
-|db_cluster_snapshot_identifiers | Specifies the identifier for the DB cluster snapshot. | db_cluster_snapshot_identifier | db_cluster_snapshot_identifiers |
+|db_cluster_snapshot_identifiers | Specifies the identifier for the DB cluster snapshot. | db_cluster_snapshot_identifier |
 |db_cluster_identifiers          | Specifies the identifier of the DB cluster from which the DB cluster snapshot is created. | db_cluster_identifier |
 |snapshot_create_times           | Provides the time when the snapshot is taken, in Universal Coordinated Time (UTC). | snapshot_create_time |
 |engines                         | Specifies the name of the database engine. | engine |
@@ -40,7 +40,7 @@ For additional information, see the [AWS documentation on AWS RDS Cluster Snapsh
 |percent_progresses              | Specifies the percentage of the estimated data that is transferred. | percent_progress |
 |storage_encrypted               | Specifies whether the DB cluster snapshot is encrypted. | storage_encrypted |
 |kms_key_ids                     | If `StorageEncrypted` is true, the AWS Key Management Service (AWS KMS) identifier for the encrypted DB cluster snapshot is set to protect the data. | kms_key_id |
-|db_cluster_snapshot_arns        | The Amazon Resource Name (ARN) for the DB cluster snapshot.| db_cluster_snapshot_arn | db_cluster_snapshot_arn |
+|db_cluster_snapshot_arns        | The Amazon Resource Name (ARN) for the DB cluster snapshot.| db_cluster_snapshot_arn |
 |source_db_cluster_snapshot_arns | If the DB cluster snapshot is copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot is associated, otherwise a null value is stored for the source DB cluster snapsot ARN. |  source_db_cluster_snapshot_arn |
 |iam_database_authentication_enabled  | `True`, if the mapping of the AWS Identity and Access Management (IAM) corresponds to database accounts are enabled, and otherwise `False`. | iam_database_authentication_enabled |
 |tag_lists   | The related tags. | tag_list |

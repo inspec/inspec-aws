@@ -79,7 +79,7 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### exist
+### exist
 
 The control will pass if the describe returns at least one result.
 
