@@ -29,7 +29,7 @@ class AWSRDSEventSubscriptionsSuccessPathTest < Minitest::Test
     @resp = AWSRDSEventSubscriptions.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_global_cluster_exist
+  def test_event_subscription_exist
     assert @resp.exists?
   end
 
