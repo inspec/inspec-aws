@@ -7,7 +7,7 @@ class AWSRDSEventSubscription < AwsResourceBase
   desc 'Returns information about a RDS Event Subscription.'
 
   example "
-    describe aws_rds_event_subscription(subscription_name: 'SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
       it { should exist }
     end
   "
