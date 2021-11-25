@@ -1301,3 +1301,7 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "subscription_name" {
+  value = aws.aws_db_event_subscription.name
+}

@@ -5345,3 +5345,98 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+#AWS::RDS::EventSubscription
+resource "aws_vpc" "for_proxy" {
+  cidr_block = "10.0.0.0/16"
+}
+
+
+resource "aws_subnet" "for_proxy" {
+  availability_zone = "us-east-2a"
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.16.0/20"
+
+
+  tags = {
+    Name = "forproxy1"
+  }
+}
+
+resource "aws_subnet" "for_proxy-2" {
+  availability_zone = "us-east-2b"
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.32.0/20"
+
+
+  tags = {
+    Name ="forproxy"
+  }
+}
+
+resource "aws_db_subnet_group" "for_test" {
+  name       = "main"
+  subnet_ids = [aws_subnet.for_proxy.id, aws_subnet.for_proxy-2.id]
+
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
+
+resource "aws_rds_global_cluster" "example" {
+  global_cluster_identifier = "global-test"
+  engine                    = "aurora"
+  engine_version            = "5.6.mysql_aurora.1.22.2"
+  database_name             = "example_db"
+}
+resource "aws_db_parameter_group" "default" {
+  name   = "rds-pg"
+  family = "mysql5.6"
+
+  parameter {
+    name  = "character_set_server"
+    value = "utf8"
+  }
+
+  parameter {
+    name  = "character_set_client"
+    value = "utf8"
+  }
+}
+
+resource "aws_db_instance" "for_test" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.6.17"
+  instance_class       = "db.t2.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "bar"
+  db_subnet_group_name = aws_db_subnet_group.for_test.name
+  parameter_group_name = aws_db_parameter_group.default.name
+}
+
+resource "aws_sns_topic" "for_test" {
+  name = "rds-events"
+}
+
+resource "aws_db_event_subscription" "for_test" {
+  name      = "rds-event-sub"
+  sns_topic = aws_sns_topic.for_test.arn
+
+  source_type = "db-instance"
+  source_ids  = [aws_db_instance.for_test.id]
+
+  event_categories = [
+    "availability",
+    "deletion",
+    "failover",
+    "failure",
+    "low storage",
+    "maintenance",
+    "notification",
+    "read replica",
+    "recovery",
+    "restoration",
+  ]
+}
