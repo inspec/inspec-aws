@@ -3,7 +3,7 @@ event_subscription = attribute(:event_subscription, value: '', description: 'The
 
 control 'aws_rds_event_subscriptions-1.0' do
   impact 1.0
-  title 'Test the properties of Event Subscription.'
+  title 'Test the properties of Event Subscriptions.'
   describe aws_rds_event_subscriptions do
     it { should exist }
     its('customer_aws_ids') { should include '11384673629' }
