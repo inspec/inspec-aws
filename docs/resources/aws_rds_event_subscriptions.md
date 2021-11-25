@@ -39,19 +39,19 @@ For additional information, see the [AWS documentation on AWS RDS Event Subscrip
 
 ## Examples
 
-### Ensure a event subscription name is available.
+### Ensure an event subscription name is available.
     describe aws_rds_event_subscriptions do
-      its('cust_subscription_ids') { should eq 'SUBSCRIPTION_ID' }
+      its('cust_subscription_ids') { should eq 'CUST_SUBSCRIPTION_ID' }
     end
 
-### Ensure a event subscription sns topic arn is available.
+### Ensure an event subscription SNS Topic ARN is available.
     describe aws_rds_event_subscriptions do
-      its('sns_topic_arns') { should eq 'SECURITY_GROUP_DESC' }
+      its('sns_topic_arns') { should eq 'SNS_TOPIC_ARN' }
     end
 
-### Ensure a customer AWD ID is `available`.
+### Ensure a customer AWS ID is available.
     describe aws_rds_event_subscriptions do
-      its('customer_aws_ids') { should eq 'available' }
+      its('customer_aws_ids') { should eq 'CUSTOMER_AWS_ID' }
     end
 
 
