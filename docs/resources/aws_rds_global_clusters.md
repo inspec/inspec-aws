@@ -10,7 +10,7 @@ Use the `aws_rds_global_clusters` InSpec audit resource to test properties of th
 
 ## Syntax
 
-Ensure that the target group exists.
+Ensure that the global cluster exists.
 
     aws_rds_global_clusters do
       it { should exist }
