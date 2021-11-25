@@ -34,6 +34,6 @@ class AWSRDSGlobalCluster < AwsResourceBase
   end
 
   def to_s
-    "RDS Global cluster identifier: #{@display_name}"
+    "RDS Global Cluster Identifier: #{@display_name}"
   end
 end
