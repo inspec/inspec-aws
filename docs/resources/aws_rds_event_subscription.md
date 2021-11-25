@@ -5,7 +5,7 @@ platform: aws
 
 # aws_rds_event_subscription
 
-Use the `aws_rds_event_subscription` InSpec audit resource to test properties of the singular resource of AWS RDS event subscription .
+Use the `aws_rds_event_subscription` InSpec audit resource to test properties of the singular resource of AWS RDS event subscription.
 
 ## Syntax
 
