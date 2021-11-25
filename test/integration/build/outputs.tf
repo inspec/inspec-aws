@@ -1302,5 +1302,5 @@ output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
  output "aws_proxy_name" {
-   value = ""
+   value = aws_db_proxy.for_proxy.name
  }
