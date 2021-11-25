@@ -29,6 +29,6 @@ class AWSRDSS3Policy < AwsResourceBase
   end
 
   def to_s
-    "S3 Bucket name: #{@display_name}"
+    "S3 Bucket Name: #{@display_name}"
   end
 end
