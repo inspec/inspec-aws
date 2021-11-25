@@ -15,13 +15,11 @@ control 'aws-rds-db-proxy-1.0' do
     its('vpc_id') { should_not eq 'vpc-6d9d7505' }
     its('vpc_security_group_ids') { should_not be_empty }
     its('vpc_subnet_ids') { should_not be_empty }
-
     its('auth_description') { should_not be_empty }
     its('auth_user_name') { should_not be_empty }
     its('auth_scheme') { should include 'SECRETS' }
     its('auth_secret_arn') { should_not include 'arn:aws:secretsmanager:us-east-2:456489375435:secret:automate-pg-key-wq150x' }
     its('auth_iam_auth') { should_not include 'DISABLED' }
-
     its('role_arn') { should_not eq 'arn:aws:iam::454375843759:role/service-role/rds-proxy-role-1609863739417' }
     its('endpoint') { should_not eq 'automate-pg-proxy.proxy-cvjb1wur4wqf.us-east-2.rds.amazonaws.com' }
     its('require_tls') { should eq false }
