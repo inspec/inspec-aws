@@ -57,6 +57,7 @@ require 'aws-sdk-simpledb'
 require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
 require 'aws-sdk-ses'
+require 'aws-sdk-waf'
 
 # AWS Inspec Backend Classes
 #
@@ -320,6 +321,10 @@ class AwsConnection
 
   def ses_client
     aws_client(Aws::SES::Client)
+  end
+
+  def waf_client
+    aws_client(Aws::WAF::Client)
   end
 end
 
