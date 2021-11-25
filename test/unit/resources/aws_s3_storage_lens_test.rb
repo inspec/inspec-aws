@@ -1,3 +1,5 @@
+require 'helper'
+require 'aws_s3_storage_lens'
 require 'aws-sdk-core'
 
 class AWSS3StorageLensConstructorTest < Minitest::Test
@@ -22,10 +24,10 @@ class AWSS3StorageLensSuccessPathTest < Minitest::Test
     data[:method] = :get_storage_lens_configuration
     mock_data = {}
     mock_data[:id] = 'test1'
+    mock_data[:is_enabled] = true
     mock_data[:storage_lens_arn] = 'test1'
-    mock_data[:is_enabled] = 'test1'
     data[:data] = { storage_lens_configuration: [mock_data] }
-    data[:client] = Aws::S3Outputs::Client
+    data[:client] = Aws::S3Control::Client
     @resp = AWSS3StorageLens.new(config_id: 'test1', account_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
@@ -34,10 +36,14 @@ class AWSS3StorageLensSuccessPathTest < Minitest::Test
   end
 
   def test_id
-    assert_equal(@resp.account_id, 'test1')
+    assert_equal(@resp.id, 'test1')
+  end
+
+  def test_is_enabled
+    assert_equal(@resp.is_enabled, true)
   end
 
   def test_storage_lens_arn
-    assert_equal(@resp.is_enabled, 'test1')
+    assert_equal(@resp.storage_lens_arn, 'test1')
   end
 end
