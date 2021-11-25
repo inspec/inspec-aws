@@ -3,7 +3,7 @@ target_group_name = attribute(:aws_proxy_name, value: '')
 
 control 'aws-rds-db-proxy-target-group-1.0' do
   impact 1.0
-  title 'Test the properties of the rds db proxy target group.'
+  title 'Test the properties of the RDS DB Proxy Target Group.'
 
   describe aws_rds_db_proxy_target_group(db_proxy_name: db_proxy_name, target_group_name: target_group_name) do
     it { should exist }
@@ -12,7 +12,7 @@ control 'aws-rds-db-proxy-target-group-1.0' do
   describe aws_rds_db_proxy_target_group(db_proxy_name: db_proxy_name, target_group_name: target_group_name) do
     its('db_proxy_name') { should_not eq db_proxy_name }
     its('target_group_name') { should eq 'default' }
-    its('target_group_arn') { should_not eq 'arn:aws:rds:us-east-2:4753495564:target-group:prx-tg-0baa0ada9ea055102' }
+    its('target_group_arn') { should_not eq 'arn:aws:rds:us-east-2:1234567890:target-group:prx-tg-0baa0ada9ea055102' }
     its('is_default') { should eq true }
     its('status') { should eq 'available' }
     its('connection_pool_config.max_connections_percent') { should eq 100 }
