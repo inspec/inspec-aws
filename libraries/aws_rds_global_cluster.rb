@@ -7,7 +7,7 @@ class AWSRDSGlobalCluster < AwsResourceBase
   desc 'Returns information about DB proxies.'
 
   example "
-    describe aws_rds_global_cluster(global_cluster_identifier: 'DB_PROXY_NAME') do
+    describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER') do
       it { should exist }
     end
   "
