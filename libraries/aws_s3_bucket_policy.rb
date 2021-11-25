@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSRDSS3Policy < AwsResourceBase
   name 'aws_s3_bucket_policy'
-  desc 'Retrieves information about a bucket policy'
+  desc 'Retrieves information about a bucket policy.'
 
   example "
     describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
