@@ -5351,7 +5351,6 @@ resource "aws_vpc" "for_proxy" {
   cidr_block = "10.0.0.0/16"
 }
 
-
 resource "aws_subnet" "for_proxy" {
   availability_zone = "us-east-2a"
   vpc_id            = aws_vpc.for_proxy.id
