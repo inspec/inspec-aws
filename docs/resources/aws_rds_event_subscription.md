@@ -11,7 +11,7 @@ Use the `aws_rds_event_subscription` InSpec audit resource to test properties of
 
 Ensure that the event subscription exists.
 
-    describe aws_rds_event_subscription(subscription_name: 'SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
       it { should exist }
     end
 
