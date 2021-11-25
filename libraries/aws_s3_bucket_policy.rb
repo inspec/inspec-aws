@@ -7,7 +7,7 @@ class AWSRDSS3Policy < AwsResourceBase
   desc 'Retrieves information about a bucket policy'
 
   example "
-    describe aws_s3_bucket_policy(bucket: 'DB_PROXY_NAME') do
+    describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
       it { should exist }
     end
   "
