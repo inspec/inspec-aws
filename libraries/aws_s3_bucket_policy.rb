@@ -2,24 +2,23 @@
 
 require 'aws_backend'
 
-class AWSRDSS3Policy < AwsResourceBase
+class AWSS3BucketPolicy < AwsResourceBase
   name 'aws_s3_bucket_policy'
   desc 'Retrieves information about a bucket policy.'
 
   example "
-    describe aws_s3_bucket_policy(account_id: 'ACCOUNT_ID', bucket: 'BUCKET_NAME') do
+    describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
       it { should exist }
     end
   "
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(account_id bucket))
-    raise ArgumentError, "#{@__resource_name__}: account_id must be provided" unless opts[:account_id] && !opts[:account_id].empty?
+    validate_parameters(required: %i(bucket))
     raise ArgumentError, "#{@__resource_name__}: bucket must be provided" unless opts[:bucket] && !opts[:bucket].empty?
     @display_name = opts[:bucket]
     catch_aws_errors do
-      resp = @aws.s3control_client.get_bucket_policy({ account_id: opts[:account_id], bucket: opts[:bucket] })
+      resp = @aws.storage_client.get_bucket_policy({ bucket: opts[:bucket] })
       @res = resp.to_h
       create_resource_methods(@res)
     end
