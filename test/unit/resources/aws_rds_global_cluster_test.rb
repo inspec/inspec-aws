@@ -49,7 +49,7 @@ class AWSRDSGlobalClusterSuccessPathTest < Minitest::Test
     assert_equal(@resp.global_cluster_arn, 'test1')
   end
 
-  def test_statuses
+  def test_status
     assert_equal(@resp.status, 'test1')
   end
 end
