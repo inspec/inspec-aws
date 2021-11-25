@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.70 -->
+<!-- latest_release 1.74.71 -->
+## [v1.74.71](https://github.com/inspec/inspec-aws/tree/v1.74.71) (2021-11-25)
+
+#### Merged Pull Requests
+- Nirbhay/ Network Manager Device [#537](https://github.com/inspec/inspec-aws/pull/537) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.70](https://github.com/inspec/inspec-aws/tree/v1.74.70) (2021-11-24)
 
 #### Merged Pull Requests
 - soumyo/aws_lambda_alias [#775](https://github.com/inspec/inspec-aws/pull/775) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.69](https://github.com/inspec/inspec-aws/tree/v1.74.69) (2021-11-24)
 

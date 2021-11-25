@@ -17,7 +17,7 @@ class AWSEC2PrefixListsConstructorTest < Minitest::Test
   end
 end
 
-class AWSNetworkManagerDevicesHappyPathTest < Minitest::Test
+class AWSEC2PrefixListsHappyPathTest < Minitest::Test
 
   def setup
     data = {}
