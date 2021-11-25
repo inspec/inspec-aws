@@ -47,7 +47,7 @@ For additional information, see the [AWS documentation on AWS RDS DBGlobalCluste
 | global_cluster_members.global_write_forwarding_status | Specifies whether a secondary cluster in an Aurora global database has write forwarding enabled, not enabled, or is in the process of enabling it. |
 ## Examples
 
-### Ensure a db global cluster ID name is available.
+### Ensure a DB global cluster is available.
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER'') do
       its('global_cluster_resource_id') { should eq 'GLOBAL_CLUSTER_ID' }
     end
