@@ -38,7 +38,6 @@ For additional information, see the [AWS documentation on AWS RDS Event Subscrip
 | enabled | A Boolean value indicating if the subscription is enabled. True indicates the subscription is enabled. |
 | event_subscription_arn | The Amazon Resource Name (ARN) for the event subscription.Exceptions |
 
-
 ## Examples
 
 ### Ensure a event subscription name is available.

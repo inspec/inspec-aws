@@ -19,7 +19,6 @@ Ensure that the event subscription exists.
 
 This resource does not expect any parameters.
 
-
 For additional information, see the [AWS documentation on AWS RDS Event Subscription](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html).
 
 ## Properties
@@ -53,7 +52,6 @@ For additional information, see the [AWS documentation on AWS RDS Event Subscrip
     describe aws_rds_event_subscriptions do
       its('customer_aws_ids') { should eq 'CUSTOMER_AWS_ID' }
     end
-
 
 ## Matchers
 
