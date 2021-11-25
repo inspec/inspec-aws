@@ -38,7 +38,6 @@ class AWSS3StorageLenses < AwsResourceBase
           storage_lens_arn: table_name.storage_lens_arn,
           home_region: table_name.home_region,
           is_enabled: table_name.is_enabled,
-
         }
         }
       end.flatten
