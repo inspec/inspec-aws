@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS RDS DBGlobalCluste
 
 ### Ensure global cluster resource ids are available.
     describe aws_rds_global_clusters do
-      its('global_cluster_identifiers') { should include 'DB_PROXY_NAME' }
+      its('global_cluster_identifiers') { should include 'GLOBAL_CLUSTER_IDENTIFIER' }
     end
 
 ### Ensure global cluster resource ids are available.
