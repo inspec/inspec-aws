@@ -1,3 +1,4 @@
+aws_proxy_name = attribute(:aws_proxy_name, value: '')
 control 'aws-rds-db-proxies-1.0' do
   impact 1.0
   title 'Test the properties of the rds db proxies.'

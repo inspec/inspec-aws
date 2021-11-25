@@ -5348,7 +5348,7 @@ resource "aws_placement_group" "aws_placement_group_test1" {
 
 #AWS:RDS:Proxy
 
-resource "aws_db_proxy" "example" {
+resource "aws_db_proxy" "for_proxy" {
   name                   = "example"
   debug_logging          = false
   engine_family          = "MYSQL"
@@ -5436,7 +5436,7 @@ resource "aws_db_proxy_default_target_group" "for_proxy" {
 
 resource "aws_db_proxy_target" "for_proxy" {
   db_instance_identifier = aws_db_instance.for_proxy.id
-  db_proxy_name          = aws_db_proxy.example.name
+  db_proxy_name          = aws_db_proxy.for_proxy.name
   target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
 }
 
