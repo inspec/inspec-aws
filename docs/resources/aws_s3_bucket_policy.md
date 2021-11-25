@@ -27,14 +27,19 @@ For additional information, see the [AWS documentation on AWS S3 BucketPolicy](h
 
 | Property | Description |
 | --- | --- |
-| policy | The policy of the S3 bucket. |
+| Version | The version of the policy. |
+| Id | The policy ID of the S3 bucket. |
+| Statement | The policy Statement of the S3 bucket. |
+| Principal | The policy Principal of the S3 bucket. |
+| Resource | The policy Resource of the S3 bucket. |
+
 
 ## Examples
 
 ### Ensure a policy is available.
 
     describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
-      its('policy') { should eq 'BUCKET_POLICY' }
+      its('Principal') { should eq 'PRINCIPAL' }
     end
 
 ## Matchers

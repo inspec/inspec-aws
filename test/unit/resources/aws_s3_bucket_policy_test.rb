@@ -23,7 +23,7 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
     data = {}
     data[:method] = :get_bucket_policy
     mock_data = {}
-    mock_data[:policy] = 'test1'
+    mock_data[:policy] = '{"Version"=>"2012-10-17", "Id"=>"Policy1637840900212", "Statement"=>[{"Sid"=>"Stmt1637840894970", "Effect"=>"Allow", "Principal"=>{"AWS"=>"*"}, "Action"=>"s3:*", "Resource"=>"arn:aws:s3:::test-112334"}]}'
     data[:data] = mock_data
     data[:client] = Aws::S3::Client
     @resp = AWSS3BucketPolicy.new(bucket: 'test1', client_args: { stub_responses: true }, stub_data: [data])
@@ -33,7 +33,7 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
     assert @resp.exists?
   end
 
-  def test_policy
-    assert_equal(@resp.policy, 'test1')
+  def test_Version
+    assert_equal(@resp.Version, "2012-10-17")
   end
 end
