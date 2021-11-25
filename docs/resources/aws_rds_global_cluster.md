@@ -5,11 +5,13 @@ platform: aws
 
 # aws_rds_global_cluster
 
-Use the `aws_rds_global_cluster` InSpec audit resource to test properties of the singular resource of AWS RDS DBProxyTargetGroup.
+Use the `aws_rds_global_cluster` InSpec audit resource to test properties of the singular resource of AWS RDS GlobalCluster.
+
+The AWS::RDS::GlobalCluster resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.
 
 ## Syntax
 
-Ensure that the target group exists.
+Ensure that the global cluster exists.
 
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER') do
       it { should exist }
@@ -19,9 +21,9 @@ Ensure that the target group exists.
 
 `global_cluster_identifier` _(required)_
 
-The list of global clusters returned by this request.
+The cluster identifier of the global database cluster.
 
-For additional information, see the [AWS documentation on AWS RDS DBGlobalCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
+For additional information, see the [AWS documentation on AWS RDS GlobalCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
 
 ## Properties
 
