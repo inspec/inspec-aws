@@ -32,7 +32,7 @@ class AWSS3StorageLenses < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.rds_client.describe_db_proxy_endpoints(@query_params).map do |table|
+      @table = @aws.storage_client.list_storage_lens_configurations(@query_params).map do |table|
         table.db_proxy_endpoints.map { |table_name| {
           id: table_name.id,
           storage_lens_arn: table_name.storage_lens_arn,
