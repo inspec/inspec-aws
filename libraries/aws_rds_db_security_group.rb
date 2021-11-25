@@ -37,27 +37,27 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
     "DB Security Group Name: #{@display_name}"
   end
 
-  def auth_description
-    ec2_security_groups.map(&:description)
-  end
-
-  def ec2_security_group_name
+  def ec2_security_group_statuses
     ec2_security_groups.map(&:ec2_security_group_name)
   end
 
-  def ec2_security_group_id
+  def ec2_security_group_names
+    ec2_security_groups.map(&:ec2_security_group_name)
+  end
+
+  def ec2_security_group_ids
     ec2_security_groups.map(&:ec2_security_group_id)
   end
 
-  def ec2_security_group_owner_id
+  def ec2_security_group_owner_ids
     ec2_security_groups.map(&:ec2_security_group_owner_id)
   end
 
-  def status
+  def ip_ranges_statuses
     ip_ranges.map(&:status)
   end
 
-  def cidrip
+  def ip_ranges_cidrips
     ip_ranges.map(&:cidrip)
   end
 end

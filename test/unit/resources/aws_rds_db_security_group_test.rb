@@ -53,7 +53,7 @@ class AWSRDSDBSecurityGroupSuccessPathTest < Minitest::Test
     assert_equal(@resp.db_security_group_description, 'test1')
   end
 
-  def test_ec2_security_group_name
-    assert_equal(@resp.ec2_security_group_name, ['test1'])
+  def test_ec2_security_group_names
+    assert_equal(@resp.ec2_security_group_names, ['test1'])
   end
 end

@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSRDSDBSecurityGroupsConstructorTest < Minitest::Test
 
   def test_non_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSRDSDBSecurityGroups.new('test', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSRDSDBSecurityGroups.new(name: '', client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
@@ -41,7 +41,7 @@ class AWSRDSDBSecurityGroupsSuccessPathTest < Minitest::Test
     assert @resp.exists?
   end
 
-  def test_owner_id
+  def test_owner_ids
     assert_equal(@resp.owner_ids, ['test1'])
   end
 
@@ -52,5 +52,4 @@ class AWSRDSDBSecurityGroupsSuccessPathTest < Minitest::Test
   def test_db_security_group_descriptions
     assert_equal(@resp.db_security_group_descriptions, ['test1'])
   end
-
 end
