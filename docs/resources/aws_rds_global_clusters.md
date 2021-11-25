@@ -7,7 +7,6 @@ platform: aws
 
 Use the `aws_rds_global_clusters` InSpec audit resource to test properties of the singular resource of AWS RDS DBProxyTargetGroup.
 
-The AWS::RDS::DBProxyTargetGroup resource represents a set of RDS DB instances, Aurora DB clusters, or both that a proxy can connect to.
 
 ## Syntax
 
