@@ -1301,3 +1301,11 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "db_proxy_name" {
+  value = aws_db_proxy.for_proxy.name
+}
+
+output "target_group_name" {
+  value = aws_db_proxy_default_target_group.for_proxy.name
+}

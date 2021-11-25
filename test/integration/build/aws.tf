@@ -5365,7 +5365,6 @@ resource "aws_db_proxy_target" "for_proxy" {
   target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
 }
 
-
 resource "aws_db_instance" "for_proxy" {
   allocated_storage    = 10
   engine               = "mysql"
