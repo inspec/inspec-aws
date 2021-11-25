@@ -25,7 +25,6 @@ For additional information, see the [AWS documentation on AWS RDS security group
 | db_security_group_names | The name of the DB security group to return details for. | db_security_group_name |
 | db_security_group_descriptions | Provides the description of the DB security group.| db_security_group_description |
 | vpc_ids |Provides the VpcId of the DB security group. | vpc_id |
-| statuses | Provides the status of the EC2 security group. Status can be "authorizing", "authorized", "revoking", and "revoked". | status |
 | db_security_group_arns | The Amazon Resource Name (ARN) for the DB security group. | db_security_group_arn |
 
 

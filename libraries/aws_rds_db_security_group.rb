@@ -37,7 +37,7 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
     "DB Security Group Name: #{@display_name}"
   end
 
-  def auth_descriptions
+  def auth_description
     ec2_security_groups.map(&:description)
   end
 
