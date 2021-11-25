@@ -5345,3 +5345,30 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+#AWS::RDS::DBEndpoint
+
+resource "aws_rds_cluster" "default" {
+  cluster_identifier      = "aurora-cluster-demo"
+  availability_zones      = ["us-east-2a", "us-east-2b"]
+  database_name           = "mydb"
+  master_username         = "foo"
+  master_password         = "barbarbar"
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
+}
+
+resource "aws_rds_cluster_instance" "test1" {
+  apply_immediately  = true
+  cluster_identifier = aws_rds_cluster.default.id
+  identifier         = "test1"
+  instance_class     = "db.t2.small"
+  engine             = aws_rds_cluster.default.engine
+  engine_version     = aws_rds_cluster.default.engine_version
+}
+
+resource "aws_rds_cluster_endpoint" "eligible" {
+  cluster_identifier          = aws_rds_cluster.default.id
+  cluster_endpoint_identifier = "reader"
+  custom_endpoint_type        = "READER"
+}
