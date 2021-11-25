@@ -5389,6 +5389,7 @@ resource "aws_rds_global_cluster" "example" {
   engine_version            = "5.6.mysql_aurora.1.22.2"
   database_name             = "example_db"
 }
+
 resource "aws_db_parameter_group" "default" {
   name   = "rds-pg"
   family = "mysql5.6"
