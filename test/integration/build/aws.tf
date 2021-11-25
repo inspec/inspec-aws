@@ -5347,7 +5347,6 @@ resource "aws_placement_group" "aws_placement_group_test1" {
 }
 
 #AWS::Bucket::Policy
-
 resource "aws_s3_bucket" "my_test_bucket" {
   bucket = "my-tf-test-bucket-221123"
 }
