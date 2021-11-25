@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-event_subscription = attribute(:event_subscription, value: '', description: 'The AWS Auto Scaling Group name.')
+event_subscription = attribute(:event_subscription, value: '', description: '')
 
 control 'aws_rds_event_subscriptions-1.0' do
   impact 1.0
