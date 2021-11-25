@@ -45,8 +45,6 @@ For additional information, see the [AWS documentation on AWS RDS DBGlobalCluste
 | global_cluster_members.readers | The Amazon Resource Name (ARN) for each read-only secondary cluster associated with the Aurora global database. |
 | global_cluster_members.is_writer | Specifies whether the Aurora cluster is the primary cluster (that is, has read-write capability) for the Aurora global database with which it is associated. |
 | global_cluster_members.global_write_forwarding_status | Specifies whether a secondary cluster in an Aurora global database has write forwarding enabled, not enabled, or is in the process of enabling it. |
-
-
 ## Examples
 
 ### Ensure a db global cluster ID name is available.
