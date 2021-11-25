@@ -24,7 +24,7 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
     data[:method] = :get_bucket_policy
     mock_data = {}
     mock_data[:policy] = 'test1'
-    data[:data] = [mock_data]
+    data[:data] = mock_data
     data[:client] = Aws::S3::Client
     @resp = AWSS3BucketPolicy.new(bucket: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
