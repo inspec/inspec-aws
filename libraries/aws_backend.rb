@@ -318,7 +318,7 @@ class AwsConnection
     aws_client(Aws::EMR::Client)
   end
 
-  def storage_client
+  def s3control_client
     aws_client(Aws::S3Control::Client)
   end
 end

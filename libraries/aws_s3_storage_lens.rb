@@ -19,8 +19,8 @@ class AWSS3StorageLens < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: account_id must be provided" unless opts[:account_id] && !opts[:account_id].empty?
     @display_name = opts[:config_id]
     catch_aws_errors do
-      resp = @aws.storage_client.get_storage_lens_configuration({ config_id: opts[:config_id], account_id: opts[:account_id] })
-      @res = resp.storage_lens_configuration[0].to_h
+      resp = @aws.s3control_client.get_storage_lens_configuration({ config_id: opts[:config_id], account_id: opts[:account_id] })
+      @res = resp.storage_lens_configuration.to_h
       create_resource_methods(@res)
     end
   end
@@ -35,6 +35,6 @@ class AWSS3StorageLens < AwsResourceBase
   end
 
   def to_s
-    "S3 Storage lens: #{@display_name}"
+    "S3 Storage Lens: #{@display_name}"
   end
 end
