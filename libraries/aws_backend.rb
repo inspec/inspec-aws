@@ -56,6 +56,7 @@ require 'aws-sdk-amplify'
 require 'aws-sdk-simpledb'
 require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
+require 'aws-sdk-s3control'
 
 # AWS Inspec Backend Classes
 #
@@ -317,8 +318,8 @@ class AwsConnection
     aws_client(Aws::EMR::Client)
   end
 
-  def s3_client
-    aws_client(Aws::S3::Client)
+  def s3control_client
+    aws_client(Aws::S3Control::Client)
   end
 end
 

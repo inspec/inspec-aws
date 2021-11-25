@@ -5,11 +5,11 @@ require 'aws-sdk-core'
 class AWSRDSS3PolicyConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSRDSS3Policy.new(client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSRDSS3Policy.new(account_id: '', bucket: '', client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSRDSS3Policy.new(bucket: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSRDSS3Policy.new(account_id: '', bucket: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -25,8 +25,8 @@ class AWSRDSS3PolicySuccessPathTest < Minitest::Test
     mock_data = {}
     mock_data[:policy] = 'test1'
     data[:data] = mock_data
-    data[:client] = Aws::S3::Client
-    @resp = AWSRDSS3Policy.new(bucket: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    data[:client] = Aws::S3Control::Client
+    @resp = AWSRDSS3Policy.new(account_id: 'test1', bucket: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_s3_policy_exist
