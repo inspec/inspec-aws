@@ -9,7 +9,7 @@ class AWSRDSS3PolicyConstructorTest < Minitest::Test
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSRDSS3Policy.new(bucket: '', db_proxy_endpoint_name: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSRDSS3Policy.new(bucket: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
