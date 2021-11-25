@@ -5368,7 +5368,6 @@ resource "aws_subnet" "for_proxy-2" {
   vpc_id            = aws_vpc.for_proxy.id
   cidr_block        = "10.0.32.0/20"
 
-
   tags = {
     Name ="forproxy"
   }
