@@ -34,6 +34,6 @@ class AWSRDSEventSubscription < AwsResourceBase
   end
 
   def to_s
-    "RDS Event Subscription name: #{@display_name}"
+    "RDS Event Subscription Name: #{@display_name}"
   end
 end
