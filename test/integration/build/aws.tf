@@ -5345,3 +5345,37 @@ resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
 }
+
+#AWS::Bucket::Policy
+
+resource "aws_s3_bucket" "my_test_bucket" {
+  bucket = "my-tf-test-bucket-221123"
+}
+
+resource "aws_s3_bucket_policy" "my_test_bucket_policy" {
+  bucket = aws_s3_bucket.my_test_bucket.id
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression's result to valid JSON syntax.
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Id      = "MYBUCKETPOLICY"
+    Statement = [
+      {
+        Sid       = "IPAllow"
+        Effect    = "Deny"
+        Principal = "*"
+        Action    = "s3:*"
+        Resource = [
+          aws_s3_bucket.my_test_bucket.arn,
+          "${aws_s3_bucket.my_test_bucket.arn}/*",
+        ]
+        Condition = {
+          NotIpAddress = {
+            "aws:SourceIp" = "8.8.8.8/32"
+          }
+        }
+      },
+    ]
+  })
+}
