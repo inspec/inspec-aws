@@ -29,7 +29,7 @@ class AWSS3StorageLensesSuccessPathTest < Minitest::Test
     mock_data[:is_enabled] = true
     data[:data] = { storage_lens_configuration_list: [mock_data] }
     data[:client] = Aws::S3Control::Client
-    @resp = AWSS3StorageLenses.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSS3StorageLenses.new(account_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_storage_lens_configuration_list_exists
