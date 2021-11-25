@@ -4906,6 +4906,28 @@ resource "aws_iam_instance_profile" "emr_ec2_instance_profile" {
   name = "emr-ec2-instance-profile"
   role = aws_iam_role.emr_instance_iam_role.name
 }
+//AWS::SES::ReceiptRule
+
+resource "aws_ses_receipt_rule" "aws_ses_receipt_rule_test1" {
+  name          = "receiptrule"
+  rule_set_name = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+  recipients    = ["test1@test1.com"]
+  enabled       = true
+  scan_enabled  = true
+
+  add_header_action {
+    header_name  = "Custom-Header"
+    header_value = "Added by SES"
+    position     = 1
+  }
+}
+
+//AWS::SES::ReceiptRuleSet
+
+resource "aws_ses_receipt_rule_set" "aws_ses_receipt_rule_set_test1" {
+  rule_set_name = "primary-rules"
+}
+
 
 resource "aws_iam_role" "emr_instance_iam_role" {
   name = "emr-instance-${var.aws_iam_role_generic_name}"
@@ -5359,4 +5381,39 @@ resource "aws_lambda_code_signing_config" "aws_lambda_code_signing_config_test1"
   }
 
   description = "My awesome code signing config."
+}
+//AWS::SES::Template
+resource "aws_ses_template" "aws_ses_template_test1" {
+  name    = "MyTemplate"
+  subject = "Greetings"
+  html    = "Hello"
+  text    = "Hello"
+}
+
+//Lambda Function
+resource "aws_lambda_function" "aws_lambda_function_alias_test1" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name123456"
+  role          = aws_iam_role.lambda_test_role.arn
+  handler       = "index.test"
+
+  source_code_hash = filebase64sha256("lambda.zip")
+
+  runtime = "nodejs12.x"
+
+  publish = "1"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+//Lambda Alias
+resource "aws_lambda_alias" "aws_lambda_alias_test1" {
+  name             = "lambda_alias_test1"
+  description      = "a sample description"
+  function_name    = aws_lambda_function.aws_lambda_function_alias_test1.arn
+  function_version = "$LATEST"
 }
