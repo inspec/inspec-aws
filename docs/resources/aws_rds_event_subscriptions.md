@@ -17,9 +17,8 @@ Ensure that the event subscription exists.
 
 ## Parameters
 
-`subscription_name` _(required)_
+This resource does not expect any parameters.
 
-The identifier for the event subscription.
 
 For additional information, see the [AWS documentation on AWS RDS Event Subscription](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html).
 
