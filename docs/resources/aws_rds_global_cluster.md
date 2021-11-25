@@ -7,7 +7,6 @@ platform: aws
 
 Use the `aws_rds_global_cluster` InSpec audit resource to test properties of the singular resource of AWS RDS DBProxyTargetGroup.
 
-
 ## Syntax
 
 Ensure that the target group exists.
