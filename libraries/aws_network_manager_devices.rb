@@ -45,7 +45,7 @@ class AWSNetworkManagerDevices < AwsResourceBase
     query_params = {}
     query_params[:global_network_id]= opts[:global_network_id]
     catch_aws_errors do
-      @api_response = @aws.networkmanager_client.get_devices(query_params).map do |device|
+      @api_response = @aws.network_manager_client.get_devices(query_params).map do |device|
         device.devices.map { |devices| {
           device_id: devices.device_id,
           device_arn: devices.device_arn,

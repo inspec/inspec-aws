@@ -19,7 +19,7 @@ class AWSNetworkManagerDevice < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: device_id must be provided" unless opts[:device_id] && !opts[:device_id].empty?
     @display_name = opts[:device_id]
     catch_aws_errors do
-      resp = @aws.networkmanager_client.get_devices({ device_ids: [opts[:device_id]], global_network_id: opts[:global_network_id] })
+      resp = @aws.network_manager_client.get_devices({ device_ids: [opts[:device_id]], global_network_id: opts[:global_network_id] })
       @res = resp.devices[0].to_h
       create_resource_methods(@res)
     end
