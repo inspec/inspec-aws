@@ -66,13 +66,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_rds_event_subscription(subscription_name: 'SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_rds_event_subscription(subscription_name: 'SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
       it { should_not exist }
     end
 
@@ -80,7 +80,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_rds_event_subscription(subscription_name: 'SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
       it { should be_available }
     end
 
