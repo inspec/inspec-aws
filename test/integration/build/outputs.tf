@@ -1381,3 +1381,15 @@ output "aws_lambda_alias_description" {
 output "aws_lambda_alias_arn" {
   value = aws_lambda_alias.aws_lambda_alias_test1.arn
 }
+
+output "aws_sfn_activity_id" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.id
+}
+
+output "aws_sfn_activity_name" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.name
+}
+
+output "aws_sfn_activity_creation_date" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.creation_date
+}
