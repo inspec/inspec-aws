@@ -21,10 +21,10 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
 
   def setup
     data = {}
+    mock_data={}
     data[:method] = :get_bucket_policy
-    mock_data = {}
-    mock_data[:policy] = '{"Version"=>"2012-10-17", "Id"=>"Policy1637840900212", "Statement"=>[{"Sid"=>"Stmt1637840894970", "Effect"=>"Allow", "Principal"=>{"AWS"=>"*"}, "Action"=>"s3:*", "Resource"=>"arn:aws:s3:::test-112334"}]}'
-    data[:data] = mock_data
+    mock_data[:policy] = "{\"Version\":\"2012-10-17\",\"Id\":\"default\",\"Statement\":[{\"Sid\":\"AllowExecutionFromSqs\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sqs.amazonaws.com\"},\"Action\":\"lambda:InvokeFunction\",\"Resource\":\"arn:aws:lambda:us-east-2:112758395563:function:test_Lambda\",\"Condition\":{\"ArnLike\":{\"AWS:SourceArn\":\"arn:aws:sqs:us-east-2:112758395563:terraform-example-queue\"}}}]}"
+    data[:data] =  mock_data
     data[:client] = Aws::S3::Client
     @resp = AWSS3BucketPolicy.new(bucket: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -33,7 +33,7 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
     assert @resp.exists?
   end
 
-  def test_Version
+  def test_version
     assert_equal(@resp.Version, "2012-10-17")
   end
 end
