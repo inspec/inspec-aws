@@ -11,7 +11,7 @@ Use the `aws_ssm_maintenance_windows` InSpec audit resource to test properties o
 
 Ensure that the maintenance windows exists.
 
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       it { should exist }
     end
 
@@ -21,7 +21,7 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | window_ids | The ID of the maintenance window. | window_id |
 | names | The name of the maintenance window. | name |
@@ -39,17 +39,17 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 ## Examples
 
 ### Ensure a maintenance window id is available.
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       its('window_ids') { should include 'MAINTENANCE_WINDOW_ID' }
     end
 
 ### Ensure a maintenance window name is available.
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       its('names') { should include 'MAINTENANCE_WINDOW_NAME' }
     end
 
 ### Verify the maintenance window is enabled.
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       its('enabled') { should include true }
     end
 
@@ -63,13 +63,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ssm_maintenance_windows do do
+    describe aws_ssm_maintenance_windows do
       it { should_not exist }
     end
 

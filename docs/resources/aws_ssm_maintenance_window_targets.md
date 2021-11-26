@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 
 ## Properties
 
-| Property | Description | 
-| --- | --- | 
+| Property | Description | Fields | 
+| --- | --- | --- |
 | window_ids | The ID of the maintenance window to register the target with. | window_id |
 | window_target_ids | The ID of the target. | window_target_id |
 | resource_types | The type of target that is being registered with the maintenance window. | resource_type |

@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSSESMaintenanceWindows < AwsResourceBase
   name 'aws_ssm_maintenance_windows'
-  desc 'Lists the receipt rule sets that exist under your AWS account in the current AWS Region.'
+  desc 'Retrieves the maintenance windows in an Amazon Web Services account.'
 
   example "
     describe aws_ssm_maintenance_windows do

@@ -11,9 +11,9 @@ The AWS::SSM::MaintenanceWindow resource represents general information about a 
 
 ## Syntax
 
-Ensure that the activity exists.
+Ensure that the maintenance window exists.
 
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       it { should exist }
     end
 
@@ -48,22 +48,22 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 ## Examples
 
 ### Ensure a window id is available.
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('window_id') { should eq 'WINDOW_ID' }
     end
 
 ### Ensure a name is available.
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('name') { should eq 'WINDOW_NAME' }
     end
 
 ### Ensure a duration is `1`.
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('duration') { should eq 1 }
     end
 
 ### Ensure a maintenance window is enabled.
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('enabled') { should eq true }
     end
 
@@ -77,13 +77,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID')
+    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       it { should_not exist }
     end
 
