@@ -5417,3 +5417,8 @@ resource "aws_lambda_alias" "aws_lambda_alias_test1" {
   function_name    = aws_lambda_function.aws_lambda_function_alias_test1.arn
   function_version = "$LATEST"
 }
+
+//AWS::StepFunctions::Activity
+resource "aws_sfn_activity" "aws_sfn_activity_test1" {
+  name = "my-activity"
+}
