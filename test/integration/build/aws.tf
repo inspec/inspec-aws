@@ -5417,3 +5417,130 @@ resource "aws_lambda_alias" "aws_lambda_alias_test1" {
   function_name    = aws_lambda_function.aws_lambda_function_alias_test1.arn
   function_version = "$LATEST"
 }
+
+//AWS::SSM::MaintenanceWindow
+resource "aws_ssm_maintenance_window" "aws_ssm_maintenance_window_test1" {
+  name     = "maintenance-window-application"
+  schedule = "cron(0 16 ? * TUE *)"
+  duration = 3
+  cutoff   = 1
+}
+
+//AWS::SSM::MaintenanceWindowTarget
+resource "aws_ssm_maintenance_window_target" "aws_ssm_maintenance_window_target_test1" {
+  window_id     = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+  name          = "maintenance-window-target"
+  description   = "This is a maintenance window target"
+  resource_type = "INSTANCE"
+
+  targets {
+    key    = "tag:Name"
+    values = ["acceptance_test"]
+  }
+}
+
+//AWS::SSM::MaintenanceWindowTask
+resource "aws_ssm_maintenance_window_task" "aws_ssm_maintenance_window_task_test1" {
+  max_concurrency = 2
+  max_errors      = 1
+  priority        = 1
+  task_arn        = "AWS-RestartEC2Instance"
+  task_type       = "AUTOMATION"
+  window_id       = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+
+  targets {
+    key    = "InstanceIds"
+    values = [aws_instance.aws_instance_smw_test1.id]
+  }
+
+  task_invocation_parameters {
+    automation_parameters {
+      document_version = "$LATEST"
+
+      parameter {
+        name   = "InstanceId"
+        values = [aws_instance.aws_instance_smw_test1.id]
+      }
+    }
+  }
+}
+
+data "aws_ami" "aws_ami_smw_test1" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "aws_instance_smw_test1" {
+  ami           = data.aws_ami.aws_ami_smw_test1.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+//AWS::SSM::PatchBaseline
+resource "aws_ssm_patch_baseline" "aws_ssm_patch_baseline_test1" {
+  name             = "patch-baseline"
+  approved_patches = ["KB123456"]
+}
+
+//AWS::SSM::ResourceDataSync
+resource "aws_s3_bucket" "aws_s3_bucket_ssm_rds_test1" {
+  bucket = "tf-test-bucket-12345-test1"
+}
+
+resource "aws_s3_bucket_policy" "aws_s3_bucket_policy_ssm_rds_test1" {
+  bucket = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.bucket
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SSMBucketPermissionsCheck",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ssm.amazonaws.com"
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::tf-test-bucket-12345-test1"
+        },
+        {
+            "Sid": " SSMBucketDelivery",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ssm.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": ["arn:aws:s3:::tf-test-bucket-12345-test1/*"],
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_ssm_resource_data_sync" "aws_ssm_resource_data_sync_test1" {
+  name = "foo"
+
+  s3_destination {
+    bucket_name = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.bucket
+    region      = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.region
+  }
+}
