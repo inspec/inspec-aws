@@ -5,13 +5,13 @@ platform: aws
 
 # aws_rds_db_proxy_endpoints
 
-Use the `aws_rds_db_proxy_endpoints` InSpec audit resource to test properties of the plural resource of AWS RDS DBProxyEndpoint.
+Use the `aws_rds_db_proxy_endpoints` InSpec audit resource to test properties of multiple AWS Relational Database Service (RDS) database proxy endpoints.
 
-The AWS::RDS::DBProxyEndpoint resource creates or updates a DB proxy endpoint.
+The `AWS::RDS::DBProxyEndpoint` resource creates or updates an AWS RDS DB proxy endpoint.
 
 ## Syntax
 
-Ensure that the db proxy endpoint exists.
+Ensure that the DB proxy endpoint exists.
 
     describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
       it { should exist }
@@ -43,17 +43,20 @@ For additional information, see the [AWS documentation on AWS RDS DBProxyEndpoin
 
 ## Examples
 
-### Ensure a db proxy endpoint name is available.
+### Ensure a DB proxy endpoint name is available.
+
     describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
       its('db_proxy_endpoint_names') { should include 'DB_PROXY_ENDPOINT_NAME' }
     end
 
-### Ensure a db proxy is available.
+### Ensure a DB proxy is available.
+
     describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
       its('db_proxy_names') { should include 'DB_PROXY_NAME' }
     end
 
 ### Ensure a status is `available`.
+
     describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
       its('statuses') { should include 'available' }
     end
