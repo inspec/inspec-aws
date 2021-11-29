@@ -5,9 +5,9 @@ platform: aws
 
 # aws_signer_profile_permissions
 
-Use the `aws_signer_profile_permissions` InSpec audit resource to test properties of the plural resource of AWS Signer ProfilePermission.
+Use the `aws_signer_profile_permissions` InSpec audit resource to test properties of multiple AWS Signer profile permissions.
 
-The AWS::Signer::ProfilePermission resource adds cross-account permissions to a signing profile.
+The `AWS::Signer::ProfilePermission` resource adds cross-account permissions to a signing profile.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Ensure that the profile permission exists.
 
 ## Parameters
 
-`profile_name` _(required)_ 
+`profile_name` _(required)_
 
 Name of the signing profile containing the cross-account permissions.
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Signer ProfilePerm
 
 ## Properties
 
-| Property | Description | Fields | 
+| Property | Description | Fields |
 | --- | --- | --- |
 | actions | An AWS Signer action permitted as part of cross-account permissions. | action |
 | principals | The AWS principal that has been granted a cross-account permission. | principal |
@@ -37,16 +37,19 @@ For additional information, see the [AWS documentation on AWS Signer ProfilePerm
 ## Examples
 
 ### Ensure a principal is available.
+
     describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
       its('principals') { should include 'PRINCIPAL' }
     end
 
-### Ensure a statement id is available.
+### Ensure a statement ID is available.
+
     describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
       its('statement_ids') { should include 'STATEMENT_ID' }
     end
 
 ### Ensure a profile version is available.
+
     describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
       its('profile_versions') { should include 'PROFILE_VERSION' }
     end
