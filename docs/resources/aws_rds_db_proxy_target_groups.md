@@ -5,9 +5,9 @@ platform: aws
 
 # aws_rds_db_proxy_target_groups
 
-Use the `aws_rds_db_proxy_target_groups` InSpec audit resource to test properties of the plural resource of AWS RDS DBProxyTargetGroup.
+Use the `aws_rds_db_proxy_target_groups` InSpec audit resource to test properties of multiple AWS Relational Database Service (RDS) database proxy target groups.
 
-The AWS::RDS::DBProxyTargetGroup resource represents a set of RDS DB instances, Aurora DB clusters, or both that a proxy can connect to.
+The `AWS::RDS::DBProxyTargetGroup` resource represents a set of RDS DB instances, Aurora DB clusters, or both that a proxy can connect to.
 
 ## Syntax
 
@@ -40,17 +40,20 @@ For additional information, see the [AWS documentation on AWS RDS DBProxyTargetG
 
 ## Examples
 
-### Ensure a db proxy name is available.
+### Ensure a DB proxy name is available.
+
     describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
       its('db_proxy_names') { should include 'DB_PROXY_NAME' }
     end
 
 ### Ensure a target group name is available.
+
     describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
       its('target_group_names') { should include 'TARGET_GROUP_NAME' }
     end
 
 ### Ensure a status is `available`.
+
     describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
       its('statuses') { should include 'available' }
     end
