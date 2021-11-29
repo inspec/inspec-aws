@@ -5,13 +5,13 @@ platform: aws
 
 # aws_lambda_versions
 
-Use the `aws_lambda_versions` InSpec audit resource to test properties of the plural resource of AWS Lambda Version.
+Use the `aws_lambda_versions` InSpec audit resource to test properties of multiple AWS Lambda function versions.
 
-The AWS::Lambda::Version resource creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
+The `AWS::Lambda::Version` resource creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 
 ## Syntax
 
-Ensure that the lambda version exists.
+Ensure that a Lambda version exists.
 
     describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the lambda version exists.
 
 `layer_name` _(required)_
 
-The name or Amazon Resource Name (ARN) of the layer.
+The name or Amazon Resource Name (ARN) of the Lambda layer.
 
 For additional information, see the [AWS documentation on AWS Lambda Version](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-version.html).
 
@@ -39,12 +39,14 @@ For additional information, see the [AWS documentation on AWS Lambda Version](ht
 
 ## Examples
 
-### Ensure a layer version arn is available.
+### Ensure a layer version ARN is available.
+
     describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
       its('layer_version_arns') { should include 'LAYER_VERSION_ARN' }
     end
 
 ### Ensure a version is available.
+
     describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
       its('versions') { should include 1 }
     end

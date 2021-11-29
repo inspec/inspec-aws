@@ -5,13 +5,13 @@ platform: aws
 
 # aws_lambda_version
 
-Use the `aws_lambda_version` InSpec audit resource to test properties of the singular resource of AWS Lambda Version.
+Use the `aws_lambda_version` InSpec audit resource to test properties of a single AWS Lambda function version.
 
-The AWS::Lambda::Version resource creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
+The `AWS::Lambda::Version` resource creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 
 ## Syntax
 
-Ensure that the layer version exists.
+Ensure that the Lambda layer version exists.
 
     describe aws_lambda_version(layer_name: 'LAYER_NAME', version_number: 1) do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the layer version exists.
 
 `layer_name` _(required)_
 
-The name or Amazon Resource Name (ARN) of the layer.
+The name or Amazon Resource Name (ARN) of the Lambda layer.
 
 `version_number` _(required)_
 
@@ -45,16 +45,18 @@ For additional information, see the [AWS documentation on AWS Lambda Version](ht
 | version | The version number. |
 | compatible_runtimes | The layer's compatible runtimes. |
 | license_info | The layer's software license. |
-| compatible_architectures | A list of compatible instruction set architectures . |
+| compatible_architectures | A list of compatible instruction set architectures. |
 
 ## Examples
 
-### Ensure a layer arn is available.
+### Ensure a layer ARN is available.
+
     describe aws_lambda_version(layer_name: 'LAYER_NAME', version_number: 1) do
       its('layer_arn') { should eq 'LAYER_ARN' }
     end
 
-### Ensure a layer version arn is available.
+### Ensure a layer version ARN is available.
+
     describe aws_lambda_version(layer_name: 'LAYER_NAME', version_number: 1) do
       its('layer_version_arn') { should eq 'LAYER_VERSION_ARN' }
     end
