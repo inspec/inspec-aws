@@ -5,9 +5,9 @@ platform: aws
 
 # aws_rds_db_proxy
 
-Use the `aws_rds_db_proxy` InSpec audit resource to test properties of the singular resource of AWS RDS DBProxy.
+Use the `aws_rds_db_proxy` InSpec audit resource to test properties of a single AWS Relational Database Service (RDS) database proxy.
 
-The AWS::RDS::DBProxy resource creates or updates a DB proxy.
+The `AWS::RDS::DBProxy` resource creates or updates an RDS DB proxy.
 
 ## Syntax
 
@@ -52,16 +52,19 @@ For additional information, see the [AWS documentation on AWS RDS DBProxy](https
 ## Examples
 
 ### Ensure a db proxy name is available.
+
     describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
       its('db_proxy_name') { should eq 'DB_PROXY_NAME' }
     end
 
 ### Ensure a db proxy arn is available.
+
     describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
       its('db_proxy_arn') { should eq 'DB_PROXY_ARN' }
     end
 
 ### Ensure a status is `available`.
+
     describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
       its('status') { should eq 'available' }
     end
