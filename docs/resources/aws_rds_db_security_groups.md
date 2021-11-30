@@ -5,17 +5,17 @@ platform: aws
 
 # aws_rds_db_security_groups
 
-Use the `aws_rds_db_security_groups` InSpec audit resource to test properties of the plural resource of AWS RDS DBSecurityGroup.
+Use the `aws_rds_db_security_groups` InSpec audit resource to test properties of multiple Amazon Relational Database Service (RDS) database security groups.
 
 ## Syntax
 
-Ensure that the db security group exists.
+Ensure that the DB security group exists.
 
     describe aws_rds_db_security_groups do
       it { should exist }
     end
 
-For additional information, see the [AWS documentation on AWS RDS DBSecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html).
+For additional information, see the [AWS documentation on the `AWS::RDS::DBSecurityGroup` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html).
 
 ## Properties
 
@@ -29,12 +29,14 @@ For additional information, see the [AWS documentation on AWS RDS DBSecurityGrou
 
 ## Examples
 
-### Ensure a db security group name is available.
+### Ensure a DB security group name is available.
+
     describe aws_rds_db_security_groups do
       its('db_security group_names') { should include 'DB_SECURITY_GROUP_NAME' }
     end
 
-### Ensure a db security group arn is available.
+### Ensure a DB security group ARN is available.
+
     describe aws_rds_db_security_groups do
       its('db_security_group_arns') { should include 'DB_SECURITY_GROUP_ARN' }
     end

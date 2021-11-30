@@ -5,7 +5,7 @@ platform: aws
 
 # aws_rds_db_security_group
 
-Use the `aws_rds_db_security_group` InSpec audit resource to test properties of the singular resource of AWS DBSecurityGroup.
+Use the `aws_rds_db_security_group` InSpec audit resource to test properties of a single Amazon Relational Database Service (RDS) database security group.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ Ensure that the security group exists.
 
 The identifier for the security group.
 
-For additional information, see the [AWS documentation on AWS RDS DBSecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html).
+For additional information, see the [AWS documentation on the `AWS::RDS::DBSecurityGroup` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html).
 
 ## Properties
 
@@ -43,16 +43,19 @@ For additional information, see the [AWS documentation on AWS RDS DBSecurityGrou
 ## Examples
 
 ### Ensure a security group name is available.
+
     describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do
       its('db_security_group_name') { should eq 'DB_SECURITY_GROUP_NAME' }
     end
 
 ### Ensure a security group description is available.
+
     describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do
       its('db_security_group_description') { should eq 'DB_SECURITY_GROUP_DESCRIPTION' }
     end
 
 ### Ensure a status is `authorized`.
+
     describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do
       its('ec2_security_group_statuses') { should include 'authorized' }
     end
