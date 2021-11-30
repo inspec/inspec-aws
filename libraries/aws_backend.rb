@@ -57,6 +57,7 @@ require 'aws-sdk-simpledb'
 require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
 require 'aws-sdk-ses'
+require 'aws-sdk-waf'
 
 # AWS Inspec Backend Classes
 #
@@ -321,6 +322,10 @@ class AwsConnection
   def ses_client
     aws_client(Aws::SES::Client)
   end
+
+  def waf_client
+    aws_client(Aws::WAF::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -470,7 +475,7 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   # This is to make RuboCop happy.
-  # Disbling Useless method definition detection as there is an issue with rubocop
+  # Disabling Useless method definition detection as there is an issue with rubocop
   # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
@@ -647,7 +652,7 @@ class AwsResourceProbe
   end
 
   # This is to make RuboCop happy.
-  # Disbling Useless method definition detection as there is an issue with rubocop
+  # Disabling Useless method definition detection as there is an issue with rubocop
   # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
@@ -687,7 +692,7 @@ class NullResponse
   end
 
   # This is to make RuboCop happy.
-  # Disbling Useless method definition detection as there is an issue with rubocop
+  # Disabling Useless method definition detection as there is an issue with rubocop
   # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
