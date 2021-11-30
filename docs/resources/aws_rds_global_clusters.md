@@ -5,7 +5,7 @@ platform: aws
 
 # aws_rds_global_clusters
 
-Use the `aws_rds_global_clusters` InSpec audit resource to test properties of the plural resource of AWS RDS GlobalCluster.
+Use the `aws_rds_global_clusters` InSpec audit resource to test properties of multiple Amazon Aurora global database clusters.
 
 The AWS::RDS::GlobalCluster resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.
 
@@ -17,7 +17,7 @@ Ensure that the global cluster exists.
       it { should exist }
     end
 
-For additional information, see the [AWS documentation on AWS RDS GlobalCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
+For additional information, see the [AWS documentation on the `AWS::RDS::GlobalCluster` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
 
 ## Properties
 
@@ -35,17 +35,20 @@ For additional information, see the [AWS documentation on AWS RDS GlobalCluster]
 
 ## Examples
 
-### Ensure global cluster resource id is available.
+### Ensure global cluster resource ID is available.
+
     describe aws_rds_global_clusters do
       its('global_cluster_identifiers') { should include 'GLOBAL_CLUSTER_IDENTIFIER' }
     end
 
-### Ensure global cluster resource id is available.
+### Ensure global cluster resource ID is available.
+
     describe aws_rds_global_clusters do
       its('global_cluster_resource_ids') { should include 'GLOBAL_CLUSTER_RESOURCE_ID' }
     end
 
 ### Ensure a status is `available`.
+
     describe aws_rds_global_clusters do
       its('statuses') { should include 'available' }
     end

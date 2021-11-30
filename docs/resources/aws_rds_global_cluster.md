@@ -5,9 +5,9 @@ platform: aws
 
 # aws_rds_global_cluster
 
-Use the `aws_rds_global_cluster` InSpec audit resource to test properties of the singular resource of AWS RDS GlobalCluster.
+Use the `aws_rds_global_cluster` InSpec audit resource to test properties of a single Amazon Aurora global database cluster.
 
-The AWS::RDS::GlobalCluster resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.
+The `AWS::RDS::GlobalCluster` resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that the global cluster exists.
 
 The cluster identifier of the global database cluster.
 
-For additional information, see the [AWS documentation on AWS RDS GlobalCluster](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
+For additional information, see the [AWS documentation on the `AWS::RDS::GlobalCluster` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
 
 ## Properties
 
@@ -45,19 +45,23 @@ For additional information, see the [AWS documentation on AWS RDS GlobalCluster]
 | global_cluster_members.readers | The Amazon Resource Name (ARN) for each read-only secondary cluster associated with the Aurora global database. |
 | global_cluster_members.is_writer | Specifies whether the Aurora cluster is the primary cluster (that is, has read-write capability) for the Aurora global database with which it is associated. |
 | global_cluster_members.global_write_forwarding_status | Specifies whether a secondary cluster in an Aurora global database has write forwarding enabled, not enabled, or is in the process of enabling it. |
+
 ## Examples
 
 ### Ensure a DB global cluster is available.
+
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER'') do
       its('global_cluster_resource_id') { should eq 'GLOBAL_CLUSTER_ID' }
     end
 
 ### Ensure a global cluster engine is available.
+
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER'') do
       its('engine') { should eq 'ENGINE' }
     end
 
 ### Ensure a status is `available`.
+
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER'') do
       its('status') { should eq 'available' }
     end
