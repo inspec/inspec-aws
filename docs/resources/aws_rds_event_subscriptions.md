@@ -5,7 +5,7 @@ platform: aws
 
 # aws_rds_event_subscriptions
 
-Use the `aws_rds_event_subscriptions` InSpec audit resource to test properties of the plural resource of AWS RDS event subscription.
+Use the `aws_rds_event_subscriptions` InSpec audit resource to test properties of multiple AWS RDS event subscriptions.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Ensure that the event subscription exists.
 
 This resource does not expect any parameters.
 
-For additional information, see the [AWS documentation on AWS RDS Event Subscription](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html).
+For additional information, see the [AWS documentation on the `AWS::RDS::EventSubscription` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html).
 
 ## Properties
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS RDS Event Subscrip
 | --- | --- | --- |
 | customer_aws_ids | The Amazon Web Services customer account associated with the RDS event notification subscription. | customer_aws_id |
 | cust_subscription_ids | The RDS event notification subscription Id. | cust_subscription_id |
-| sns_topic_arns | The topic ARN of the RDS event notification subscription.| sns_topic_arn |    
+| sns_topic_arns | The topic ARN of the RDS event notification subscription.| sns_topic_arn |
 | statuses |The status of the RDS event notification subscription. | status |
 | subscription_creation_times | The time the RDS event notification subscription was created. | subscription_creation_time |
 | source_types | The source type for the RDS event notification subscription.| source_type |
@@ -39,18 +39,21 @@ For additional information, see the [AWS documentation on AWS RDS Event Subscrip
 ## Examples
 
 ### Ensure an event subscription name is available.
+
     describe aws_rds_event_subscriptions do
-      its('cust_subscription_ids') { should eq 'CUST_SUBSCRIPTION_ID' }
+      its('cust_subscription_ids') { should include 'CUST_SUBSCRIPTION_ID' }
     end
 
 ### Ensure an event subscription SNS Topic ARN is available.
+
     describe aws_rds_event_subscriptions do
-      its('sns_topic_arns') { should eq 'SNS_TOPIC_ARN' }
+      its('sns_topic_arns') { should include 'SNS_TOPIC_ARN' }
     end
 
 ### Ensure a customer AWS ID is available.
+
     describe aws_rds_event_subscriptions do
-      its('customer_aws_ids') { should eq 'CUSTOMER_AWS_ID' }
+      its('customer_aws_ids') { should include 'CUSTOMER_AWS_ID' }
     end
 
 ## Matchers
