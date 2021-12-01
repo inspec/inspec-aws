@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.72 -->
+<!-- latest_release 1.74.73 -->
+## [v1.74.73](https://github.com/inspec/inspec-aws/tree/v1.74.73) (2021-12-01)
+
+#### Merged Pull Requests
+- Publish release notes 2021-11-30 [#795](https://github.com/inspec/inspec-aws/pull/795) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.72](https://github.com/inspec/inspec-aws/tree/v1.74.72) (2021-11-25)
 
 #### Merged Pull Requests
 - added the waf client in AWS Backend [#793](https://github.com/inspec/inspec-aws/pull/793) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.71](https://github.com/inspec/inspec-aws/tree/v1.74.71) (2021-11-25)
 
