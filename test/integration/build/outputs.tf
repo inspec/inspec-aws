@@ -1301,6 +1301,86 @@ output "aws_eip_association_id" {
 output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
+
+output "aws_lambda_code_signing_config_id" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.id
+}
+
+output "aws_lambda_code_signing_config_arn" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.arn
+}
+
+output "aws_lambda_code_signing_config_description" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.description
+}
+
+output "aws_lambda_code_signing_config_last_modified" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.last_modified
+}
+
+output "aws_ses_receipt_rule_id" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.id
+}
+
+output "aws_ses_receipt_rule_arn" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.arn
+}
+
+output "aws_ses_receipt_rule_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.name
+}
+
+output "aws_ses_receipt_rule_rule_set_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_id" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.id
+}
+
+output "aws_ses_receipt_rule_set_name" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_arn" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.arn
+}
+
+output "aws_ses_template_id" {
+  value = aws_ses_template.aws_ses_template_test1.id
+}
+
+output "aws_ses_template_name" {
+  value = aws_ses_template.aws_ses_template_test1.name
+}
+
+output "aws_ses_template_subject" {
+  value = aws_ses_template.aws_ses_template_test1.subject
+}
+
+output "aws_ses_template_html" {
+  value = aws_ses_template.aws_ses_template_test1.html
+}
+
+output "aws_ses_template_text" {
+  value = aws_ses_template.aws_ses_template_test1.text
+}
+
+output "aws_lambda_alias_function_name" {
+  value = aws_lambda_function.aws_lambda_function_alias_test1.function_name
+}
+
+output "aws_lambda_alias_name" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.name
+}
+
+output "aws_lambda_alias_description" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.description
+}
+
+output "aws_lambda_alias_arn" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.arn
+}
  output "aws_proxy_name" {
    value = aws_db_proxy.for_proxy.name
  }
