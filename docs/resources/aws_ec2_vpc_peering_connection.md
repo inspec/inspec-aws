@@ -21,9 +21,7 @@ Ensure that VPC Peering Connection ID exists.
 
 `vpc_peering_connection_id` _(required)_
 
-| Property | Description |
-| --- | --- | --- |
-| vpc_peering_connection_id| The ID of the VPC peering connection. |
+The ID of the VPC peering connection.
 
 For additional information, see the [AWS documentation on AWS EC2 VPC Peering Connection.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html).
 
