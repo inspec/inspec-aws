@@ -19,7 +19,7 @@ An `aws_transit_gateway_route` resource block declares the tests for a single AW
 
 To set the parameters of the AWS transit gateway route table, **ID** and **CIDR** block is required.
 
-#### transit\_gateway\_route\_table\_id _(required)_
+#### transit_gateway_route_table_id _(required)_
 
 The **ID** of the AWS transit gateway route table:
 
@@ -29,7 +29,7 @@ The **ID** of the AWS transit gateway route table:
 
 The ID of the AWS transit gateway route table should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
 
-#### cidr\_block _(required)_
+#### cidr_block _(required)_
 
 The **CIDR** block range of the route is associated to the AWS transit gateway route table. It should be passed as a `cidr_block: 'value'` key-value entry in a hash.
 
@@ -125,6 +125,6 @@ This InSpec audit resource has the following special matchers. For a complete li
 
 ## AWS Permissions
 
-To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeTransitGatewayRouteTablesResult` action.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTransitGatewayRouteTablesResult` action with `Effect` set to `Allow`.
 
 Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
