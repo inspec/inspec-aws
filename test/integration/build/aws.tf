@@ -5418,6 +5418,114 @@ resource "aws_lambda_alias" "aws_lambda_alias_test1" {
   function_version = "$LATEST"
 }
 
+#AWS:RDS:Proxy
+
+resource "aws_db_proxy" "for_proxy" {
+  name                   = "example"
+  debug_logging          = false
+  engine_family          = "MYSQL"
+  idle_client_timeout    = 1800
+  require_tls            = true
+  role_arn               = "arn:aws:iam::112758395563:role/service-role/rds-proxy-role-1609863739417"
+  vpc_security_group_ids = [aws_security_group.allow_proxy.id]
+  vpc_subnet_ids         = [aws_subnet.for_proxy.id,aws_subnet.for_proxy-2.id]
+
+  auth {
+    auth_scheme = "SECRETS"
+    description = "example"
+    iam_auth    = "DISABLED"
+    secret_arn  ="arn:aws:secretsmanager:us-east-2:112758395563:secret:test1-sJ9Lur"
+  }
+
+  tags = {
+    Name = "example"
+    Key  = "value"
+  }
+}
+
+resource "aws_vpc" "for_proxy" {
+  cidr_block = "10.0.0.0/16"
+}
+
+
+resource "aws_subnet" "for_proxy" {
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.16.0/20"
+
+
+  tags = {
+    Name = "forproxy1"
+  }
+}
+
+resource "aws_subnet" "for_proxy-2" {
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.32.0/20"
+
+
+  tags = {
+    Name ="forproxy"
+  }
+}
+
+
+resource "aws_security_group" "allow_proxy" {
+  name        = "allow_proxy"
+  description = "Allow all inbound traffic"
+  vpc_id      = aws_vpc.for_proxy.id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+#AWS::RDS::TargetGroup
+resource "aws_db_proxy_default_target_group" "for_proxy" {
+  db_proxy_name = aws_db_proxy.for_proxy.name
+
+  connection_pool_config {
+    connection_borrow_timeout    = 120
+    init_query                   = "SET x=1, y=2"
+    max_connections_percent      = 100
+    max_idle_connections_percent = 50
+    session_pinning_filters      = ["EXCLUDE_VARIABLE_SETS"]
+  }
+}
+
+resource "aws_db_proxy_target" "for_proxy" {
+  db_instance_identifier = aws_db_instance.for_proxy.id
+  db_proxy_name          = aws_db_proxy.for_proxy.name
+  target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
+}
+
+
+resource "aws_db_instance" "for_proxy" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "test"
+  password             = "foobarbaz"
+  parameter_group_name = "default.mysql5.7"
+  skip_final_snapshot  = true
+}
+
+
 #AWS::RDS::DBEndpoint
 
 resource "aws_rds_cluster" "default" {
