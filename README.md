@@ -73,7 +73,7 @@ Example:
 
 ```ruby
 describe aws_ec2_instances(aws_region: 'us-west-2') do
-  its('count') { should eq 10 }
+  its('count')  { should eq 10 }
 end
 ```
 
