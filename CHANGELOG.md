@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.78 -->
+<!-- latest_release 1.74.79 -->
+## [v1.74.79](https://github.com/inspec/inspec-aws/tree/v1.74.79) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_profile_permission [#777](https://github.com/inspec/inspec-aws/pull/777) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.78](https://github.com/inspec/inspec-aws/tree/v1.74.78) (2021-12-05)
 
 #### Merged Pull Requests
 - nitbhay/aws_rds_global_cluster [#780](https://github.com/inspec/inspec-aws/pull/780) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.77](https://github.com/inspec/inspec-aws/tree/v1.74.77) (2021-12-05)
 
