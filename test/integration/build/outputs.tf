@@ -1381,6 +1381,11 @@ output "aws_lambda_alias_description" {
 output "aws_lambda_alias_arn" {
   value = aws_lambda_alias.aws_lambda_alias_test1.arn
 }
- output "aws_proxy_name" {
-   value = aws_db_proxy.for_proxy.name
- }
+
+output "aws_proxy_name" {
+  value = aws_db_proxy.for_proxy.name
+}
+
+output "subscription_name" {
+  value = aws.aws_db_event_subscription.name
+}
