@@ -27,11 +27,11 @@ For additional information, see the [AWS documentation on AWS S3 BucketPolicy](h
 
 | Property | Description |
 | --- | --- |
-| Version | The version of the policy. |
+| Version | The version policy of the S3 Bucket. |
 | Id | The policy ID of the S3 bucket. |
-| Statement | The policy Statement of the S3 bucket. |
-| Principal | The policy Principal of the S3 bucket. |
-| Resource | The policy Resource of the S3 bucket. |
+| Statement | The policy statement of the S3 Bucket. |
+| Principal | The policy principal of the S3 Bucket. |
+| Resource | The policy resource of the S3 Bucket. |
 
 
 ## Examples
