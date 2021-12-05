@@ -33,7 +33,6 @@ For additional information, see the [AWS documentation on AWS S3 BucketPolicy](h
 | Principal | The policy principal of the S3 Bucket. |
 | Resource | The policy resource of the S3 Bucket. |
 
-
 ## Examples
 
 ### Ensure a policy is available.
