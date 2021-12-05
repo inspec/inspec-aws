@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.77 -->
+<!-- latest_release 1.74.78 -->
+## [v1.74.78](https://github.com/inspec/inspec-aws/tree/v1.74.78) (2021-12-05)
+
+#### Merged Pull Requests
+- nitbhay/aws_rds_global_cluster [#780](https://github.com/inspec/inspec-aws/pull/780) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.77](https://github.com/inspec/inspec-aws/tree/v1.74.77) (2021-12-05)
 
 #### Merged Pull Requests
 - nirbhay/aws_rds_event_subscription [#781](https://github.com/inspec/inspec-aws/pull/781) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.76](https://github.com/inspec/inspec-aws/tree/v1.74.76) (2021-12-05)
 
