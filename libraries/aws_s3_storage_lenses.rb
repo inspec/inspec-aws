@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSS3StorageLenses < AwsResourceBase
   name 'aws_s3_storage_lenses'
-  desc 'Returns information about S3 Storage lens.'
+  desc 'Gets a list of Amazon S3 Storage Lens configurations.'
 
   example "
     describe aws_s3_storage_lenses(account_id: 'ACCOUNT_ID') do
