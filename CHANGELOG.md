@@ -1,9 +1,99 @@
-<!-- latest_release 1.74.62 -->
+<!-- latest_release 1.74.80 -->
+## [v1.74.80](https://github.com/inspec/inspec-aws/tree/v1.74.80) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_version [#774](https://github.com/inspec/inspec-aws/pull/774) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.79](https://github.com/inspec/inspec-aws/tree/v1.74.79) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_profile_permission [#777](https://github.com/inspec/inspec-aws/pull/777) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.78](https://github.com/inspec/inspec-aws/tree/v1.74.78) (2021-12-05)
+
+#### Merged Pull Requests
+- nitbhay/aws_rds_global_cluster [#780](https://github.com/inspec/inspec-aws/pull/780) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.77](https://github.com/inspec/inspec-aws/tree/v1.74.77) (2021-12-05)
+
+#### Merged Pull Requests
+- nirbhay/aws_rds_event_subscription [#781](https://github.com/inspec/inspec-aws/pull/781) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.76](https://github.com/inspec/inspec-aws/tree/v1.74.76) (2021-12-05)
+
+#### Merged Pull Requests
+- nirbhay/aws_rds_db_security_group [#782](https://github.com/inspec/inspec-aws/pull/782) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.75](https://github.com/inspec/inspec-aws/tree/v1.74.75) (2021-12-02)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy_endpoint [#772](https://github.com/inspec/inspec-aws/pull/772) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.74](https://github.com/inspec/inspec-aws/tree/v1.74.74) (2021-12-02)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy [#771](https://github.com/inspec/inspec-aws/pull/771) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.73](https://github.com/inspec/inspec-aws/tree/v1.74.73) (2021-12-01)
+
+#### Merged Pull Requests
+- Publish release notes 2021-11-30 [#795](https://github.com/inspec/inspec-aws/pull/795) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.72](https://github.com/inspec/inspec-aws/tree/v1.74.72) (2021-11-25)
+
+#### Merged Pull Requests
+- added the waf client in AWS Backend [#793](https://github.com/inspec/inspec-aws/pull/793) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.71](https://github.com/inspec/inspec-aws/tree/v1.74.71) (2021-11-25)
+
+#### Merged Pull Requests
+- Nirbhay/ Network Manager Device [#537](https://github.com/inspec/inspec-aws/pull/537) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.70](https://github.com/inspec/inspec-aws/tree/v1.74.70) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_alias [#775](https://github.com/inspec/inspec-aws/pull/775) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.69](https://github.com/inspec/inspec-aws/tree/v1.74.69) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_receipt_rule_set [#755](https://github.com/inspec/inspec-aws/pull/755) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.68](https://github.com/inspec/inspec-aws/tree/v1.74.68) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_template [#756](https://github.com/inspec/inspec-aws/pull/756) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.67](https://github.com/inspec/inspec-aws/tree/v1.74.67) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_ses_receipt_rule [#754](https://github.com/inspec/inspec-aws/pull/754) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.66](https://github.com/inspec/inspec-aws/tree/v1.74.66) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_event_invoke_config [#672](https://github.com/inspec/inspec-aws/pull/672) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.65](https://github.com/inspec/inspec-aws/tree/v1.74.65) (2021-11-24)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_code_signing_config [#776](https://github.com/inspec/inspec-aws/pull/776) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.64](https://github.com/inspec/inspec-aws/tree/v1.74.64) (2021-11-23)
+
+#### Merged Pull Requests
+- NIRBHAY/aws_ec2_client_vpn_route [#716](https://github.com/inspec/inspec-aws/pull/716) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.63](https://github.com/inspec/inspec-aws/tree/v1.74.63) (2021-11-23)
+
+#### Merged Pull Requests
+- CloudWatch Logs Destinantion [#683](https://github.com/inspec/inspec-aws/pull/683) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.62](https://github.com/inspec/inspec-aws/tree/v1.74.62) (2021-11-22)
 
 #### Merged Pull Requests
 - updated the readme file till NOV_12 [#748](https://github.com/inspec/inspec-aws/pull/748) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.61](https://github.com/inspec/inspec-aws/tree/v1.74.61) (2021-11-21)
 
