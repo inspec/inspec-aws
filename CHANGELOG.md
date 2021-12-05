@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.81 -->
+<!-- latest_release 1.74.82 -->
+## [v1.74.82](https://github.com/inspec/inspec-aws/tree/v1.74.82) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/update_the_readme_till_nov_26 [#778](https://github.com/inspec/inspec-aws/pull/778) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.74.81](https://github.com/inspec/inspec-aws/tree/v1.74.81) (2021-12-05)
 
 #### Merged Pull Requests
 - soumyo/aws_rds_db_proxy_target_group [#773](https://github.com/inspec/inspec-aws/pull/773) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.80](https://github.com/inspec/inspec-aws/tree/v1.74.80) (2021-12-05)
 
