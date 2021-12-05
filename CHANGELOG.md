@@ -1,9 +1,39 @@
-<!-- latest_release 1.74.76 -->
+<!-- latest_release 1.74.82 -->
+## [v1.74.82](https://github.com/inspec/inspec-aws/tree/v1.74.82) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/update_the_readme_till_nov_26 [#778](https://github.com/inspec/inspec-aws/pull/778) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.74.81](https://github.com/inspec/inspec-aws/tree/v1.74.81) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy_target_group [#773](https://github.com/inspec/inspec-aws/pull/773) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.80](https://github.com/inspec/inspec-aws/tree/v1.74.80) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_version [#774](https://github.com/inspec/inspec-aws/pull/774) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.79](https://github.com/inspec/inspec-aws/tree/v1.74.79) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_profile_permission [#777](https://github.com/inspec/inspec-aws/pull/777) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.78](https://github.com/inspec/inspec-aws/tree/v1.74.78) (2021-12-05)
+
+#### Merged Pull Requests
+- nitbhay/aws_rds_global_cluster [#780](https://github.com/inspec/inspec-aws/pull/780) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.77](https://github.com/inspec/inspec-aws/tree/v1.74.77) (2021-12-05)
+
+#### Merged Pull Requests
+- nirbhay/aws_rds_event_subscription [#781](https://github.com/inspec/inspec-aws/pull/781) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.76](https://github.com/inspec/inspec-aws/tree/v1.74.76) (2021-12-05)
 
 #### Merged Pull Requests
 - nirbhay/aws_rds_db_security_group [#782](https://github.com/inspec/inspec-aws/pull/782) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.75](https://github.com/inspec/inspec-aws/tree/v1.74.75) (2021-12-02)
 
