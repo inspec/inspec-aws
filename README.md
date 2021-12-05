@@ -414,7 +414,7 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  |  | [aws_ssm_resource_compliance_summary](docs/resources/aws_ssm_resource_compliance_summary.md) | [aws_ssm_resource_compliance_summaries](docs/resources/aws_ssm_resource_compliance_summaries.md) |
 | Amazon Timestream | Migration & Transfer | [AWS::Transfer::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html) | [aws_transfer_user](docs/resources/aws_transfer_user.md) | [aws_transfer_users](docs/resources/aws_transfer_users.md) |
 
-## Examples
+## Examples 
 
 ### Ensure Security Groups disallow FTP
 
