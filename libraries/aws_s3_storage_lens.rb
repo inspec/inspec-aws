@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSS3StorageLens < AwsResourceBase
   name 'aws_s3_storage_lens'
-  desc 'Retrieves information about a patch baseline.'
+  desc 'Gets the Amazon S3 Storage Lens configuration.'
 
   example "
     describe aws_s3_storage_lens(config_id: 'CONFIG_ID', account_id: 'ACCOUNT_ID') do
