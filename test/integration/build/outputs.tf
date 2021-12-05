@@ -1413,3 +1413,27 @@ output "aws_signer_signing_profile_permission_profile_name" {
 output "aws_signer_signing_profile_permission_statement_id" {
   value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.statement_id
 }
+
+output "aws_lambda_layer_version_layer_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.layer_arn
+}
+
+output "aws_lambda_layer_version_created_date" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.created_date
+}
+
+output "aws_lambda_layer_version_signing_job_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.signing_job_arn
+}
+
+output "aws_lambda_layer_version_signing_profile_version_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.signing_profile_version_arn
+}
+
+output "aws_lambda_layer_version_source_code_size" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.source_code_size
+}
+
+output "aws_lambda_layer_version" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.version
+}

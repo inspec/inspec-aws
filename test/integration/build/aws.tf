@@ -5444,7 +5444,6 @@ resource "aws_vpc" "for_proxy" {
   cidr_block = "10.0.0.0/16"
 }
 
-
 resource "aws_subnet" "for_proxy" {
   vpc_id            = aws_vpc.for_proxy.id
   cidr_block        = "10.0.16.0/20"
@@ -5462,7 +5461,6 @@ resource "aws_subnet" "for_proxy-2" {
     Name ="forproxy"
   }
 }
-
 
 resource "aws_security_group" "allow_proxy" {
   name        = "allow_proxy"
@@ -5639,7 +5637,6 @@ resource "aws_db_event_subscription" "for_test" {
   ]
 }
 
-
 #AWS::RDS::GlobalCluster
 resource "aws_rds_global_cluster" "for_test" {
   global_cluster_identifier = "global-test-1"
@@ -5673,4 +5670,28 @@ resource "aws_signer_signing_profile_permission" "aws_signer_signing_profile_per
   profile_name = aws_signer_signing_profile.aws_signer_signing_profile_test.name
   action       = "signer:StartSigningJob"
   principal    = 112758395563
+}
+
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test1" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
+
+//Lambda Version
+resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
+  filename   = "lambda.zip"
+  layer_name = "lambda_layer_name"
+
+  compatible_runtimes = ["nodejs12.x"]
 }
