@@ -1437,3 +1437,11 @@ output "aws_lambda_layer_version_source_code_size" {
 output "aws_lambda_layer_version" {
   value = aws_lambda_layer_version.aws_lambda_layer_version_test1.version
 }
+
+output "db_proxy_name" {
+  value = aws_db_proxy.for_proxy.name
+}
+
+output "target_group_name" {
+  value = aws_db_proxy_default_target_group.for_proxy.name
+}
