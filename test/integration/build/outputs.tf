@@ -1302,6 +1302,150 @@ output "aws_placement_group_placement_group_id" {
   value = aws_placement_group.aws_placement_group_test1.placement_group_id
 }
 
+output "aws_lambda_code_signing_config_id" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.id
+}
+
+output "aws_lambda_code_signing_config_arn" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.arn
+}
+
+output "aws_lambda_code_signing_config_description" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.description
+}
+
+output "aws_lambda_code_signing_config_last_modified" {
+  value = aws_lambda_code_signing_config.aws_lambda_code_signing_config_test1.last_modified
+}
+
+output "aws_ses_receipt_rule_id" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.id
+}
+
+output "aws_ses_receipt_rule_arn" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.arn
+}
+
+output "aws_ses_receipt_rule_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.name
+}
+
+output "aws_ses_receipt_rule_rule_set_name" {
+  value = aws_ses_receipt_rule.aws_ses_receipt_rule_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_id" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.id
+}
+
+output "aws_ses_receipt_rule_set_name" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+}
+
+output "aws_ses_receipt_rule_set_arn" {
+  value = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.arn
+}
+
+output "aws_ses_template_id" {
+  value = aws_ses_template.aws_ses_template_test1.id
+}
+
+output "aws_ses_template_name" {
+  value = aws_ses_template.aws_ses_template_test1.name
+}
+
+output "aws_ses_template_subject" {
+  value = aws_ses_template.aws_ses_template_test1.subject
+}
+
+output "aws_ses_template_html" {
+  value = aws_ses_template.aws_ses_template_test1.html
+}
+
+output "aws_ses_template_text" {
+  value = aws_ses_template.aws_ses_template_test1.text
+}
+
+output "aws_lambda_alias_function_name" {
+  value = aws_lambda_function.aws_lambda_function_alias_test1.function_name
+}
+
+output "aws_lambda_alias_name" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.name
+}
+
+output "aws_lambda_alias_description" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.description
+}
+
+output "aws_lambda_alias_arn" {
+  value = aws_lambda_alias.aws_lambda_alias_test1.arn
+}
+
+output "aws_proxy_name" {
+  value = aws_db_proxy.for_proxy.name
+}
+
+output "subscription_name" {
+  value = aws.aws_db_event_subscription.name
+}
+
+output "global_cluster_identifier" {
+  value = aws_rds_global_cluster.for_test.global_cluster_identifier
+}
+
+output "aws_signer_signing_profile_permission_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.id
+}
+
+output "aws_signer_signing_profile_permission_action" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.action
+}
+
+output "aws_signer_signing_profile_permission_principal" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.principal
+}
+
+output "aws_signer_signing_profile_permission_profile_name" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.profile_name
+}
+
+output "aws_signer_signing_profile_permission_statement_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.statement_id
+}
+
+output "aws_lambda_layer_version_layer_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.layer_arn
+}
+
+output "aws_lambda_layer_version_created_date" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.created_date
+}
+
+output "aws_lambda_layer_version_signing_job_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.signing_job_arn
+}
+
+output "aws_lambda_layer_version_signing_profile_version_arn" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.signing_profile_version_arn
+}
+
+output "aws_lambda_layer_version_source_code_size" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.source_code_size
+}
+
+output "aws_lambda_layer_version" {
+  value = aws_lambda_layer_version.aws_lambda_layer_version_test1.version
+}
+
+output "db_proxy_name" {
+  value = aws_db_proxy.for_proxy.name
+}
+
+output "target_group_name" {
+  value = aws_db_proxy_default_target_group.for_proxy.name
+}
+
 output "bucket_name" {
   value = aws_s3_bucket.my_test_bucket.id
 }

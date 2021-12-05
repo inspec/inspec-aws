@@ -4907,6 +4907,29 @@ resource "aws_iam_instance_profile" "emr_ec2_instance_profile" {
   role = aws_iam_role.emr_instance_iam_role.name
 }
 
+//AWS::SES::ReceiptRule
+
+resource "aws_ses_receipt_rule" "aws_ses_receipt_rule_test1" {
+  name          = "receiptrule"
+  rule_set_name = aws_ses_receipt_rule_set.aws_ses_receipt_rule_set_test1.rule_set_name
+  recipients    = ["test1@test1.com"]
+  enabled       = true
+  scan_enabled  = true
+
+  add_header_action {
+    header_name  = "Custom-Header"
+    header_value = "Added by SES"
+    position     = 1
+  }
+}
+
+//AWS::SES::ReceiptRuleSet
+
+resource "aws_ses_receipt_rule_set" "aws_ses_receipt_rule_set_test1" {
+  rule_set_name = "primary-rules"
+}
+
+
 resource "aws_iam_role" "emr_instance_iam_role" {
   name = "emr-instance-${var.aws_iam_role_generic_name}"
   path = "/"
@@ -4929,6 +4952,7 @@ resource "aws_iam_role_policy_attachment" "ec2-read-only-policy-attachment" {
     role = "${aws_iam_role.emr_instance_iam_role.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role"
 }
+
 ######################################
 # EMR role
 ######################################
@@ -5090,7 +5114,6 @@ resource "aws_cloudfront_key_group" "example" {
   name    = "example-key-group"
 }
 
-
 //Composite Alarm
 
 resource "aws_cloudwatch_metric_alarm" "aws_cloudwatch_metric_alarm_test1" {
@@ -5130,7 +5153,6 @@ resource "aws_cloudwatch_metric_stream" "main" {
   }
 }
 
-
 resource "aws_iam_role" "metric_stream_to_firehose" {
   name = "metric_stream_to_firehose_role"
 
@@ -5150,7 +5172,6 @@ resource "aws_iam_role" "metric_stream_to_firehose" {
 }
 EOF
 }
-
 
 resource "aws_iam_role_policy" "metric_stream_to_firehose" {
   name = "default"
@@ -5344,6 +5365,335 @@ resource "aws_ec2_fleet" "aws_ec2_fleet_test1" {
 resource "aws_placement_group" "aws_placement_group_test1" {
   name     = "placement-group-test1"
   strategy = "cluster"
+}
+
+//Lambda Code Signing Config
+resource "aws_lambda_code_signing_config" "aws_lambda_code_signing_config_test1" {
+  allowed_publishers {
+    signing_profile_version_arns = [
+      aws_signer_signing_profile.aws_signer_signing_profile_test1.arn
+    ]
+  }
+
+  policies {
+    untrusted_artifact_on_deployment = "Warn"
+  }
+
+  description = "My awesome code signing config."
+}
+//AWS::SES::Template
+resource "aws_ses_template" "aws_ses_template_test1" {
+  name    = "MyTemplate"
+  subject = "Greetings"
+  html    = "Hello"
+  text    = "Hello"
+}
+
+//Lambda Function
+resource "aws_lambda_function" "aws_lambda_function_alias_test1" {
+  filename      = "lambda.zip"
+  function_name = "lambda_function_name123456"
+  role          = aws_iam_role.lambda_test_role.arn
+  handler       = "index.test"
+
+  source_code_hash = filebase64sha256("lambda.zip")
+  runtime = "nodejs12.x"
+  publish = "1"
+
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+//Lambda Alias
+resource "aws_lambda_alias" "aws_lambda_alias_test1" {
+  name             = "lambda_alias_test1"
+  description      = "a sample description"
+  function_name    = aws_lambda_function.aws_lambda_function_alias_test1.arn
+  function_version = "$LATEST"
+}
+
+#AWS:RDS:Proxy
+
+resource "aws_db_proxy" "for_proxy" {
+  name                   = "example"
+  debug_logging          = false
+  engine_family          = "MYSQL"
+  idle_client_timeout    = 1800
+  require_tls            = true
+  role_arn               = "arn:aws:iam::112758395563:role/service-role/rds-proxy-role-1609863739417"
+  vpc_security_group_ids = [aws_security_group.allow_proxy.id]
+  vpc_subnet_ids         = [aws_subnet.for_proxy.id,aws_subnet.for_proxy-2.id]
+
+  auth {
+    auth_scheme = "SECRETS"
+    description = "example"
+    iam_auth    = "DISABLED"
+    secret_arn  ="arn:aws:secretsmanager:us-east-2:112758395563:secret:test1-sJ9Lur"
+  }
+
+  tags = {
+    Name = "example"
+    Key  = "value"
+  }
+}
+
+resource "aws_vpc" "for_proxy" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "for_proxy" {
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.16.0/20"
+
+  tags = {
+    Name = "forproxy1"
+  }
+}
+
+resource "aws_subnet" "for_proxy-2" {
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.32.0/20"
+
+  tags = {
+    Name ="forproxy"
+  }
+}
+
+resource "aws_security_group" "allow_proxy" {
+  name        = "allow_proxy"
+  description = "Allow all inbound traffic"
+  vpc_id      = aws_vpc.for_proxy.id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+#AWS::RDS::TargetGroup
+resource "aws_db_proxy_default_target_group" "for_proxy" {
+  db_proxy_name = aws_db_proxy.for_proxy.name
+
+  connection_pool_config {
+    connection_borrow_timeout    = 120
+    init_query                   = "SET x=1, y=2"
+    max_connections_percent      = 100
+    max_idle_connections_percent = 50
+    session_pinning_filters      = ["EXCLUDE_VARIABLE_SETS"]
+  }
+}
+
+resource "aws_db_proxy_target" "for_proxy" {
+  db_instance_identifier = aws_db_instance.for_proxy.id
+  db_proxy_name          = aws_db_proxy.for_proxy.name
+  target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
+}
+
+resource "aws_db_instance" "for_proxy" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "test"
+  password             = "foobarbaz"
+  parameter_group_name = "default.mysql5.7"
+  skip_final_snapshot  = true
+}
+
+#AWS::RDS::DBEndpoint
+
+resource "aws_rds_cluster" "default" {
+  cluster_identifier      = "aurora-cluster-demo"
+  availability_zones      = ["us-east-2a", "us-east-2b"]
+  database_name           = "mydb"
+  master_username         = "foo"
+  master_password         = "barbarbar"
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
+}
+
+resource "aws_rds_cluster_instance" "test1" {
+  apply_immediately  = true
+  cluster_identifier = aws_rds_cluster.default.id
+  identifier         = "test1"
+  instance_class     = "db.t2.small"
+  engine             = aws_rds_cluster.default.engine
+  engine_version     = aws_rds_cluster.default.engine_version
+}
+
+resource "aws_rds_cluster_endpoint" "eligible" {
+  cluster_identifier          = aws_rds_cluster.default.id
+  cluster_endpoint_identifier = "reader"
+  custom_endpoint_type        = "READER"
+}
+
+#AWS::RDS::EventSubscription
+resource "aws_vpc" "for_proxy" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "for_proxy" {
+  availability_zone = "us-east-2a"
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.16.0/20"
+
+  tags = {
+    Name = "forproxy1"
+  }
+}
+
+resource "aws_subnet" "for_proxy-2" {
+  availability_zone = "us-east-2b"
+  vpc_id            = aws_vpc.for_proxy.id
+  cidr_block        = "10.0.32.0/20"
+
+  tags = {
+    Name ="forproxy"
+  }
+}
+
+resource "aws_db_subnet_group" "for_test" {
+  name       = "main"
+  subnet_ids = [aws_subnet.for_proxy.id, aws_subnet.for_proxy-2.id]
+
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
+
+resource "aws_rds_global_cluster" "example" {
+  global_cluster_identifier = "global-test"
+  engine                    = "aurora"
+  engine_version            = "5.6.mysql_aurora.1.22.2"
+  database_name             = "example_db"
+}
+
+resource "aws_db_parameter_group" "default" {
+  name   = "rds-pg"
+  family = "mysql5.6"
+
+  parameter {
+    name  = "character_set_server"
+    value = "utf8"
+  }
+
+  parameter {
+    name  = "character_set_client"
+    value = "utf8"
+  }
+}
+
+resource "aws_db_instance" "for_test" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.6.17"
+  instance_class       = "db.t2.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "bar"
+  db_subnet_group_name = aws_db_subnet_group.for_test.name
+  parameter_group_name = aws_db_parameter_group.default.name
+}
+
+resource "aws_sns_topic" "for_test" {
+  name = "rds-events"
+}
+
+resource "aws_db_event_subscription" "for_test" {
+  name      = "rds-event-sub"
+  sns_topic = aws_sns_topic.for_test.arn
+
+  source_type = "db-instance"
+  source_ids  = [aws_db_instance.for_test.id]
+
+  event_categories = [
+    "availability",
+    "deletion",
+    "failover",
+    "failure",
+    "low storage",
+    "maintenance",
+    "notification",
+    "read replica",
+    "recovery",
+    "restoration",
+  ]
+}
+
+#AWS::RDS::GlobalCluster
+resource "aws_rds_global_cluster" "for_test" {
+  global_cluster_identifier = "global-test-1"
+  engine                    = "aurora"
+  engine_version            = "5.6.mysql_aurora.1.22.2"
+  database_name             = "example_db"
+}
+
+resource "aws_rds_cluster" "primary" {
+  engine                    = aws_rds_global_cluster.for_test.engine
+  engine_version            = aws_rds_global_cluster.for_test.engine_version
+  cluster_identifier        = "test-primary-cluster"
+  master_username           = "username"
+  master_password           = "somepass123"
+  database_name             = "example_db"
+  global_cluster_identifier = aws_rds_global_cluster.for_test.id
+  db_subnet_group_name      = "default"
+}
+
+resource "aws_rds_cluster_instance" "primary" {
+  engine               = aws_rds_global_cluster.for_test.engine
+  engine_version       = aws_rds_global_cluster.for_test.engine_version
+  identifier           = "test-primary-cluster-instance"
+  cluster_identifier   = aws_rds_cluster.primary.id
+  instance_class       = "db.r4.large"
+  db_subnet_group_name = "default"
+}
+
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile_permission" "aws_signer_signing_profile_permission_test1" {
+  profile_name = aws_signer_signing_profile.aws_signer_signing_profile_test.name
+  action       = "signer:StartSigningJob"
+  principal    = 112758395563
+}
+
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile" "aws_signer_signing_profile_test1" {
+  platform_id = "AWSLambda-SHA384-ECDSA"
+  name_prefix = "prod_sp_"
+
+  signature_validity_period {
+    value = 5
+    type  = "YEARS"
+  }
+
+  tags = {
+    tag1 = "value1"
+    tag2 = "value2"
+  }
+}
+
+//Lambda Version
+resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
+  filename   = "lambda.zip"
+  layer_name = "lambda_layer_name"
+
+  compatible_runtimes = ["nodejs12.x"]
 }
 
 #AWS::Bucket::Policy
