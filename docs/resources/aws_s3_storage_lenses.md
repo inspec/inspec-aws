@@ -3,7 +3,7 @@ title: About the aws_s3_storage_lenses Resource
 platform: aws
 ---
 
-# aws_rds_db_cluster_snapshot
+# aws_s3_storage_lenses
 
 Use the `aws_s3_storage_lenses` InSpec audit resource to test the properties of the plural resource of AWS S3 StorageLens.
 
