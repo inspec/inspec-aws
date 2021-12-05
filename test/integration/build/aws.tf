@@ -5397,9 +5397,7 @@ resource "aws_lambda_function" "aws_lambda_function_alias_test1" {
   handler       = "index.test"
 
   source_code_hash = filebase64sha256("lambda.zip")
-
   runtime = "nodejs12.x"
-
   publish = "1"
 
   environment {
@@ -5451,7 +5449,6 @@ resource "aws_subnet" "for_proxy" {
   vpc_id            = aws_vpc.for_proxy.id
   cidr_block        = "10.0.16.0/20"
 
-
   tags = {
     Name = "forproxy1"
   }
@@ -5460,7 +5457,6 @@ resource "aws_subnet" "for_proxy" {
 resource "aws_subnet" "for_proxy-2" {
   vpc_id            = aws_vpc.for_proxy.id
   cidr_block        = "10.0.32.0/20"
-
 
   tags = {
     Name ="forproxy"
@@ -5511,7 +5507,6 @@ resource "aws_db_proxy_target" "for_proxy" {
   target_group_name      = aws_db_proxy_default_target_group.for_proxy.name
 }
 
-
 resource "aws_db_instance" "for_proxy" {
   allocated_storage    = 10
   engine               = "mysql"
@@ -5523,7 +5518,6 @@ resource "aws_db_instance" "for_proxy" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
 }
-
 
 #AWS::RDS::DBEndpoint
 
@@ -5551,7 +5545,6 @@ resource "aws_rds_cluster_endpoint" "eligible" {
   cluster_endpoint_identifier = "reader"
   custom_endpoint_type        = "READER"
 }
-
 
 #AWS::RDS::EventSubscription
 resource "aws_vpc" "for_proxy" {
@@ -5675,3 +5668,9 @@ resource "aws_rds_cluster_instance" "primary" {
   db_subnet_group_name = "default"
 }
 
+//AWS::Signer::ProfilePermission
+resource "aws_signer_signing_profile_permission" "aws_signer_signing_profile_permission_test1" {
+  profile_name = aws_signer_signing_profile.aws_signer_signing_profile_test.name
+  action       = "signer:StartSigningJob"
+  principal    = 112758395563
+}

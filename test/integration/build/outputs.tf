@@ -1393,3 +1393,23 @@ output "subscription_name" {
 output "global_cluster_identifier" {
   value = aws_rds_global_cluster.for_test.global_cluster_identifier
 }
+
+output "aws_signer_signing_profile_permission_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.id
+}
+
+output "aws_signer_signing_profile_permission_action" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.action
+}
+
+output "aws_signer_signing_profile_permission_principal" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.principal
+}
+
+output "aws_signer_signing_profile_permission_profile_name" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.profile_name
+}
+
+output "aws_signer_signing_profile_permission_statement_id" {
+  value = aws_signer_signing_profile_permission.aws_signer_signing_profile_permission_test1.statement_id
+}
