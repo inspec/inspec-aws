@@ -20,7 +20,6 @@ class AWSS3BucketPolicy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.storage_client.get_bucket_policy({ bucket: opts[:bucket] })
       @parsed_json = JSON.parse(resp.policy.read)['Statement']
-
       create_resource_methods(@parsed_json[0])
     end
   end
