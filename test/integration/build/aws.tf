@@ -5645,3 +5645,33 @@ resource "aws_db_event_subscription" "for_test" {
     "restoration",
   ]
 }
+
+
+#AWS::RDS::GlobalCluster
+resource "aws_rds_global_cluster" "for_test" {
+  global_cluster_identifier = "global-test-1"
+  engine                    = "aurora"
+  engine_version            = "5.6.mysql_aurora.1.22.2"
+  database_name             = "example_db"
+}
+
+resource "aws_rds_cluster" "primary" {
+  engine                    = aws_rds_global_cluster.for_test.engine
+  engine_version            = aws_rds_global_cluster.for_test.engine_version
+  cluster_identifier        = "test-primary-cluster"
+  master_username           = "username"
+  master_password           = "somepass123"
+  database_name             = "example_db"
+  global_cluster_identifier = aws_rds_global_cluster.for_test.id
+  db_subnet_group_name      = "default"
+}
+
+resource "aws_rds_cluster_instance" "primary" {
+  engine               = aws_rds_global_cluster.for_test.engine
+  engine_version       = aws_rds_global_cluster.for_test.engine_version
+  identifier           = "test-primary-cluster-instance"
+  cluster_identifier   = aws_rds_cluster.primary.id
+  instance_class       = "db.r4.large"
+  db_subnet_group_name = "default"
+}
+

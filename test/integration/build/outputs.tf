@@ -1389,3 +1389,7 @@ output "aws_proxy_name" {
 output "subscription_name" {
   value = aws.aws_db_event_subscription.name
 }
+
+output "global_cluster_identifier" {
+  value = aws_rds_global_cluster.for_test.global_cluster_identifier
+}
