@@ -17,6 +17,10 @@ Ensure that `aws_cloudformation_stacks` exists
 
 See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html) for additional information.
 
+## Parameters
+
+This resource does not expect any parameters.
+
 ## Properties
 
 |Property                        | Description|

@@ -17,6 +17,10 @@ Ensure that an AWS VPC endpoint connection notification exists.
 
 See also the [AWS VPC endpoint connection notification documentation](https://docs.AWS.amazon.com/AWSCloudFormation/latest/UserGuide/AWS-resource-ec2-vpcendpointconnectionnotification.html).
 
+## Parameters
+
+This resource does not expect any parameters.
+
 ## Properties
 
 |Property                                   | Description|

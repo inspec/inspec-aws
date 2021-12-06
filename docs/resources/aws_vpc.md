@@ -3,7 +3,7 @@ title: About the aws_vpc Resource
 platform: aws
 ---
 
-# aws\_vpc
+# aws_vpc
 
 Use the `aws_vpc` InSpec audit resource to test the properties of a single AWS Virtual Private Cloud (VPC) and the CIDR Block that is used within the VPC.
 
@@ -30,11 +30,11 @@ An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, th
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 If no parameter is provided, the subscription's default VPC will be returned.
 
-##### vpc\_id _(optional)_
+### vpc_id _(optional)_
 
 This resource accepts a single parameter, the VPC ID.
 This can be passed either as a string or as a `vpc_id: 'VALUE'` key-value entry in a hash.
@@ -45,11 +45,11 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 
 |Property         | Description|
 | ---             | --- |
-|cidr\_block       | The IPv4 address range that is managed by the VPC. |
-|dhcp\_options\_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
-|instance\_tenancy | The allowed tenancy of the instances launched into the VPC. |
+|cidr_block       | The IPv4 address range that is managed by the VPC. |
+|dhcp_options_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
+|instance_tenancy | The allowed tenancy of the instances launched into the VPC. |
 |state            | The state of the VPC. Valid values: `pending` and `available`. |
-|vpc\_id           | The ID of the VPC. |
+|vpc_id           | The ID of the VPC. |
 |tags             | The tags of the VPC. |
 |associated_cidr_blocks | The associated CIDR blocks. |
 |disassociated_cidr_blocks | The CIDR blocks that are disassociated. |
@@ -108,7 +108,7 @@ The following examples show how to use this InSpec audit resource.
 
 This InSpec audit resource has the following special matchers. For a complete list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-### be\_default
+### be_default
 
 The test will pass if the identified VPC is the default VPC for the region.
 
@@ -116,7 +116,7 @@ The test will pass if the identified VPC is the default VPC for the region.
       it { should be_default }
     end
 
-### be\_available
+### be_available
 
 The test will pass if the identified VPC has a `available` state.
 
@@ -124,7 +124,7 @@ The test will pass if the identified VPC has a `available` state.
       it { should be_available }
     end
 
-### be\_pending
+### be_pending
 
 Check if the identified VPC has a `pending` state.
 
@@ -132,7 +132,7 @@ Check if the identified VPC has a `pending` state.
         it { should be_pending }
     end
 
-### be\_default\_instance
+### be_default_instance
 
 Check if the identified VPC has a `default` instance tendency.
 
@@ -140,7 +140,7 @@ Check if the identified VPC has a `default` instance tendency.
         it { should be_default_instance }
     end
 
-### be\_dedicated\_instance
+### be_dedicated_instance
 
 Check if the identified VPC has a `dedicated` instance tendency.
 
@@ -148,7 +148,7 @@ Check if the identified VPC has a `dedicated` instance tendency.
         it { should be_dedicated_instance }
     end
 
-### be\_host\_instance
+### be_host_instance
 
 Check if the identified VPC has a `host` instance tendency.
 
@@ -156,7 +156,7 @@ Check if the identified VPC has a `host` instance tendency.
         it { should be_host_instance }
     end
 
-### have\_cidr\_block\_associated
+### have_cidr_block_associated
 
 Check if a cidr block is associated to the identified VPC.
 
@@ -164,7 +164,7 @@ Check if a cidr block is associated to the identified VPC.
         it { should have_cidr_block_associated('10.0.0.0/27') }
     end
 
-### have\_cidr\_block\_association\_failed
+### have_cidr_block_association_failed
 
 Check if a cidr block has failed to associated to the identified VPC.
 
@@ -172,7 +172,7 @@ Check if a cidr block has failed to associated to the identified VPC.
         it { should have_cidr_block_failed('10.0.0.0/27') }
     end
 
-### have\_cidr\_block\_disassociated
+### have_cidr_block_disassociated
 
 Check if a cidr block has failed to associated to the identified VPC.
 
@@ -180,7 +180,7 @@ Check if a cidr block has failed to associated to the identified VPC.
         it { should have_cidr_block_disassociated('10.0.0.0/27') }
     end
 
-### have\_ipv6\_cidr\_block\_associated
+### have_ipv6_cidr_block_associated
 
 Check if the IPV6 cidr block is associated to the identified VPC.
 
@@ -188,7 +188,7 @@ Check if the IPV6 cidr block is associated to the identified VPC.
       it { should have_ipv6_cidr_block_associated('2600:1f16:409:6700::/56') }
     end
 
-### have\_ipv6\_cidr\_block\_disassociated
+### have_ipv6_cidr_block_disassociated
 
 Check if the IPV6 cidr block is disassociated to the identified VPC.
 
@@ -196,7 +196,7 @@ Check if the IPV6 cidr block is disassociated to the identified VPC.
       it { should have_ipv6_cidr_block_disassociated('2600:1f16:409:6700::/56') }
     end
 
-### have\_ipv6\_cidr\_block\_association_failed
+### have_ipv6_cidr_block_association_failed
 
 Check if the IPV6 cidr block failed to associate to the identified VPC.
 
@@ -204,7 +204,7 @@ Check if the IPV6 cidr block failed to associate to the identified VPC.
       it { should have_ipv6_cidr_block_association_failed('2600:1f16:409:6700::/56') }
     end
 
-### have\_network\_border\_group\_value
+### have_network_border_group_value
 
 Check if the associated IPV6 cidr block has valid network border group value for the identified VPC.
 
@@ -212,7 +212,7 @@ Check if the associated IPV6 cidr block has valid network border group value for
       it { should have_network_border_group_value(ipv6_cidr_block: '2600:1f16:409:6700::/56', network_border_group: 'us-east-2a') }
     end
 
-### have\_ipv6\_pool\_value
+### have_ipv6_pool_value
 
 Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identified VPC.
 
@@ -222,6 +222,6 @@ Check if the associated IPV6 cidr block has valid IPv6 Pool value for the identi
 
 ## AWS Permissions
 
-To set the permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeVpcsResult` action with effect set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeVpcsResult` action with `Effect` set to `Allow`.
 
 You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

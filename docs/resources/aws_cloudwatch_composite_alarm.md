@@ -33,7 +33,7 @@ For additional information, see the [AWS documentation on AWS CloudWatch composi
 | alarm_actions | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN). |
 | alarm_arn | The Amazon Resource Name (ARN) of the alarm. |
 | alarm_configuration_updated_timestamp | The time stamp of the last update to the alarm configuration. |
-| alarm_description | The description of the alarm. | alarm_description |
+| alarm_description | The description of the alarm. |
 | alarm_name | The name of the alarm. |
 | alarm_rule | The rule that this alarm uses to evaluate its alarm state. |
 | insufficient_data_actions | The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN). |

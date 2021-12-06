@@ -53,7 +53,10 @@ Confirm that the type of a VPC Endpoint is as expected.
 
 ## Parameters
 
-This resource expects the VPC Endpoint ID as a parameter.
+`vpc_endpoint_id`
+
+The VPC endpoint ID.
+This can be passed either as a string or as a `vpc_endpoint_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html).
 
