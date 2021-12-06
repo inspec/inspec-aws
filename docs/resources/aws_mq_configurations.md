@@ -17,6 +17,10 @@ Ensure that AWS MQ configuration exists.
 
 For additional information, see the [AWS documentation on AWS MQ configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html).
 
+## Parameters
+
+This resource does not expect any parameters.
+
 ## Properties
 
 | Property | Description| Field|
@@ -33,13 +37,13 @@ For additional information, see the [AWS documentation on AWS MQ configuration](
 
 ## Examples
 
-### Ensure a configuration id is available.
+### Ensure a configuration ID is available.
 
     describe aws_mq_configurations do
       its('ids') { should include 'configuration_id' }
     end
 
-### Ensure a configuration name is available..
+### Ensure a configuration name is available.
 
     describe aws_mq_configurations do
         its('names') { should include 'configuration_name' }
@@ -75,4 +79,4 @@ Use `should` to check if the mq configuration is available.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:ListConfigurationsResponsegit ` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `MQ:Client:ListConfigurationsResponsegit` action with `Effect` set to `Allow`.
