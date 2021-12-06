@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.82 -->
+<!-- latest_release 1.74.83 -->
+## [v1.74.83](https://github.com/inspec/inspec-aws/tree/v1.74.83) (2021-12-06)
+
+#### Merged Pull Requests
+- Miscellaneous docs fixes [#797](https://github.com/inspec/inspec-aws/pull/797) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.74.82](https://github.com/inspec/inspec-aws/tree/v1.74.82) (2021-12-05)
 
 #### Merged Pull Requests
 - soumyo/update_the_readme_till_nov_26 [#778](https://github.com/inspec/inspec-aws/pull/778) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.81](https://github.com/inspec/inspec-aws/tree/v1.74.81) (2021-12-05)
 
