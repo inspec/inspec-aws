@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.83 -->
+<!-- latest_release 1.74.84 -->
+## [v1.74.84](https://github.com/inspec/inspec-aws/tree/v1.74.84) (2021-12-06)
+
+#### Merged Pull Requests
+- Feature request for CloudFormation Template [#770](https://github.com/inspec/inspec-aws/pull/770) ([jb897](https://github.com/jb897))
+<!-- latest_release -->
+
 ## [v1.74.83](https://github.com/inspec/inspec-aws/tree/v1.74.83) (2021-12-06)
 
 #### Merged Pull Requests
 - Miscellaneous docs fixes [#797](https://github.com/inspec/inspec-aws/pull/797) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.82](https://github.com/inspec/inspec-aws/tree/v1.74.82) (2021-12-05)
 
