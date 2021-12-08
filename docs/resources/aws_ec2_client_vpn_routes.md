@@ -5,15 +5,15 @@ platform: aws
 
 # aws_ec2_client_vpn_routes
 
-Use the `aws_ec2_client_vpn_routes` InSpec audit resource to test properties of a single specific AWS EC2 Client VPN route.
+Use the `aws_ec2_client_vpn_routes` InSpec audit resource to test the properties of multiple AWS EC2 client VPN routes.
 
-The `AWS::EC2::ClientVpnRoute` specifies a network route to add to a Client VPN endpoint.
+The `AWS::EC2::ClientVpnRoute` specifies the network route to add to a client VPN endpoint.
 
 ## Syntax
 
 Ensure that the client VPN endpoint exists.
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
       it { should exist }
     end
 
@@ -21,34 +21,34 @@ Ensure that the client VPN endpoint exists.
 
 `client_vpn_endpoint_id` _(required)_
 
-The ID of the Client VPN endpoint with which the route is associated.
+The association between the client VPN endpoint ID and the route.
 
 For additional information, see the [AWS documentation on AWS EC2 ClientVpnRoute.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnroute.html).
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
-| client_vpn_endpoint_ids | The ID of the Client VPN endpoint with which the route is associated. | client_vpn_endpoint_id |
-| destination_cidrs | The IPv4 address range, in CIDR notation, of the route destination. | destination_cidr |
-| target_subnets | The ID of the subnet through which traffic is routed. | target_subnet |
-| types | The route type. | type |
-| origins | Indicates how the route was associated with the Client VPN endpoint. associate indicates that the route was automatically added when the target network was associated with the Client VPN endpoint. | origin |
-| status_codes | The state of the Client VPN endpoint route. | status.code |
-| status_messages | A message about the status of the Client VPN endpoint route, if applicable. | status.message |
-| descriptions | A brief description of the route. | carrier_gateway_id |
+| Property                 | Description                                                           | Field                  |
+| :----------------------: | :-------------------------------------------------------------------: | :--------------------: |
+| client_vpn_endpoint_ids  | The association between the client VPN endpoint ID and the route.     | client_vpn_endpoint_id |
+| destination_cidrs        | The IPv4 address range, in CIDR notation, of the route destination.   | destination_cidr       |
+| target_subnets           | The subnet ID to which you want to route traffic                      | target_subnet          |
+| types                    | The route type.                                                       | type                   |
+| origins                  | Indicates how the route associates with the client VPN endpoint, and the route is automatically added when the target network associates with the client VPN endpoint. | origin |
+| status_codes             | The state of the client VPN endpoint route.                           | status.code |
+| status_messages          | A message about the status of the client VPN endpoint route, if applicable.    | status.message |
+| descriptions             | A brief description of the route.                                      | carrier_gateway_id |
 
 ## Examples
 
-### Ensure a client VPN endpoint ID is available.
+### Ensure a client VPN endpoint ID is available
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
-      its('client_vpn_endpoint_ids') { should include 'CLIENT_VPN_ENDPOINT_ID' }
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
+      its('client_vpn_endpoint_ids') { should include 'VPN_ID' }
     end
 
-### Ensure that the status code is `active`.
+### Ensure that the status code is `active`
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
         its('status_codes') { should include 'active' }
     end
 
@@ -56,19 +56,19 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnRoute
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls pass if the `describe` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
       it { should_not exist }
     end
 
@@ -76,7 +76,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
+    describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: "VPN_ID") do
       it { should be_available }
     end
 
