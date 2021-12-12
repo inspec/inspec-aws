@@ -5695,3 +5695,100 @@ resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
 
   compatible_runtimes = ["nodejs12.x"]
 }
+
+# AWS::WAF::ByteMatchSet
+
+resource "aws_waf_byte_match_set" "aws_waf_byte_match_set_test1" {
+  name = "tf_waf_byte_match_set"
+
+  byte_match_tuples {
+    text_transformation   = "NONE"
+    target_string         = "badrefer1"
+    positional_constraint = "CONTAINS"
+
+    field_to_match {
+      type = "HEADER"
+      data = "referer"
+    }
+  }
+}
+
+#AWS::WAF::IPSet
+resource "aws_waf_ipset" "aws_waf_ipset_test1" {
+  name = "tfIPSet"
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "192.0.7.0/24"
+  }
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "10.0.0.0/16"
+  }
+}
+
+#AWS::WAF::Rule
+resource "aws_waf_rule" "aws_waf_rule_test1" {
+  depends_on  = [aws_waf_ipset.aws_waf_ipset_test1]
+  name        = "tfWAFRule"
+  metric_name = "tfWAFRule"
+
+  predicates {
+    data_id = aws_waf_ipset.aws_waf_ipset_test1.id
+    negated = false
+    type    = "IPMatch"
+  }
+}
+
+#AWS::WAF::SizeConstraintSet
+resource "aws_waf_size_constraint_set" "aws_waf_size_constraint_set_test1" {
+  name = "tfsize_constraints"
+
+  size_constraints {
+    text_transformation = "NONE"
+    comparison_operator = "EQ"
+    size                = "4096"
+
+    field_to_match {
+      type = "BODY"
+    }
+  }
+}
+
+#AWS::WAF::SqlInjectionMatchSet
+resource "aws_waf_sql_injection_match_set" "sql_injection_match_set" {
+  name = "tf-sql_injection_match_set"
+
+  sql_injection_match_tuples {
+    text_transformation = "URL_DECODE"
+
+    field_to_match {
+      type = "QUERY_STRING"
+    }
+  }
+}
+
+//AWS::WAF::WebACL
+resource "aws_waf_web_acl" "aws_waf_web_acl_test1" {
+  depends_on = [
+    aws_waf_ipset.aws_waf_ipset_test1,
+    aws_waf_rule.aws_waf_rule_test1,
+  ]
+  name        = "tfWebACL"
+  metric_name = "tfWebACL"
+
+  default_action {
+    type = "ALLOW"
+  }
+
+  rules {
+    action {
+      type = "BLOCK"
+    }
+
+    priority = 1
+    rule_id  = aws_waf_rule.aws_waf_rule_test1.id
+    type     = "REGULAR"
+  }
+}
