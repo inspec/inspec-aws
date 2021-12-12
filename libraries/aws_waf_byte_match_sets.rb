@@ -21,16 +21,16 @@ class AWSWAFByteMatchSets < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:byte_match_set_ids, field: :byte_match_set_id)
-             .register_column(:names, field: :name)
+             .register_column(:byte_match_set_ids, field: :byte_match_set_id, style: :simple)
+             .register_column(:names, field: :name, style: :simple)
              .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do
       @resp = @aws.waf_client.list_byte_match_sets.map do |table|
         table.map { |table_name| {
-          byte_match_set_id: table_name[:byte_match_set_id],
-          name: table_name[:name],
+          byte_match_set_id: table_name.byte_match_sets.map(&:byte_match_set_id),
+          name: table_name.byte_match_sets.map(&:name),
         }
         }
       end.flatten

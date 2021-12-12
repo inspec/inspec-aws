@@ -17,10 +17,9 @@ class AWSWAFByteMatchSetsHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :list_rules
+    data[:method] = :list_byte_match_sets
     mock_data = {}
-    mock_data[:byte_match_set_id] = 'byte_match_set_ids'
-    mock_data[:name] = 'name'
+    mock_data[:byte_match_sets] = [{ byte_match_set_id: 'byte_match_set_id', name: 'name' }]
     data[:data] = mock_data
     data[:client] = Aws::WAF::Client
     @resp = AWSWAFByteMatchSets.new(client_args: { stub_responses: true }, stub_data: [data])
@@ -31,6 +30,6 @@ class AWSWAFByteMatchSetsHappyPathTest < Minitest::Test
   end
 
   def test_rule_ids
-    assert_equal(@resp.byte_match_set_ids, ['byte_match_set_ids'])
+    assert_equal(@resp.byte_match_set_ids, ['byte_match_set_id'])
   end
 end

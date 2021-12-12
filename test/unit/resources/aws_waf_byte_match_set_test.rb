@@ -21,11 +21,10 @@ class AWSWAFByteMatchSetHappyPathTest < Minitest::Test
 
   def setup
     data = {}
-    data[:method] = :get_rule
+    data[:method] = :get_byte_match_set
     mock_data = {}
     mock_data[:byte_match_set_id] = 'test1'
     mock_data[:name] = 'test1'
-    mock_data[:metric_name] = 'test1'
     mock_data[:byte_match_tuples] = [{ target_string: "test1", field_to_match: { type: 'test1', data: 'test1'}, text_transformation: 'test1', positional_constraint: 'test1' }]
     data[:data] = { byte_match_set: mock_data }
     data[:client] = Aws::WAF::Client
