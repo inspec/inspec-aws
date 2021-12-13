@@ -25,7 +25,7 @@ The association between the client VPN endpoint ID and the route.
 
 `target_subnet` _(required)_
 
-The subnet ID to which traffic is routed.
+The subnet ID through which traffic is routed.
 
 For additional information, see the [AWS documentation on AWS EC2 ClientVpnRoute.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnroute.html).
 
