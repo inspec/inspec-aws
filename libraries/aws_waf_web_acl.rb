@@ -35,6 +35,6 @@ class AWSWAFWebACL < AwsResourceBase
   end
 
   def to_s
-    "Resource ID: #{@display_name}"
+    "Web ACL ID: #{@display_name}"
   end
 end
