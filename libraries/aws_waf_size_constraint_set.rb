@@ -35,6 +35,6 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   end
 
   def to_s
-    "Resource ID: #{@display_name}"
+    "Size Constraint Set ID: #{@display_name}"
   end
 end
