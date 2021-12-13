@@ -31,7 +31,7 @@ class AWSWAFSizeConstraintSetHappyPathTest < Minitest::Test
     @resp = AWSWAFSizeConstraintSet.new(size_constraint_set_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_rule_exists
+  def test_size_constraint_set_exists
     assert @resp.exist?
   end
 
