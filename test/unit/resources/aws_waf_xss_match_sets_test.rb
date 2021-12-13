@@ -9,7 +9,7 @@ class AWSWAFXSSMatchSetsConstructorTest < Minitest::Test
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AWSWAFXSSMatchSets.new(test: 'rubbish') }
+    assert_raises(ArgumentError) { AWSWAFXSSMatchSets.new(test: 'dummy') }
   end
 end
 
