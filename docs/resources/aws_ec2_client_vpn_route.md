@@ -13,7 +13,7 @@ The `AWS::EC2::ClientVpnRoute` specifies a network route to add to a client VPN 
 
 Ensure that the client VPN endpoint exists.
 
-    describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "VPN_ID", target_subnet: "SUBNET_ID") do
+    describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "ENDPOINT_ID", target_subnet: "SUBNET_ID") do
       it { should exist }
     end
 
