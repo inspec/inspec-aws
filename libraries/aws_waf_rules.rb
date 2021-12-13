@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AWSWAFRules < AwsResourceBase
-  name 'rules'
+  name 'aws_waf_rules'
   desc 'Verifies settings for all the WAF rules.'
 
   example "
