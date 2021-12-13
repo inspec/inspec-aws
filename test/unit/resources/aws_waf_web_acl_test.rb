@@ -42,7 +42,7 @@ class AWSWAFWebACLHappyPathTest < Minitest::Test
     assert_equal(@resp.web_acl_id, 'test1')
   end
 
-  def test_web_acl_name
+  def test_name
     assert_equal(@resp.name, 'test1')
   end
 end
