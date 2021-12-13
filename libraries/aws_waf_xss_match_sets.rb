@@ -3,7 +3,7 @@
 require 'aws_backend'
 
 class AWSWAFXSSMatchSets < AwsResourceBase
-  name 'aws_waf_xss_match_set'
+  name 'aws_waf_xss_match_sets'
   desc 'Verifies settings for all the WAF rules.'
 
   example "
