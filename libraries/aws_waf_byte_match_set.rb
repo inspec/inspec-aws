@@ -35,6 +35,6 @@ class AWSWAFByteMatchSet < AwsResourceBase
   end
 
   def to_s
-    "Resource ID: #{@display_name}"
+    "Byte Match Set ID: #{@display_name}"
   end
 end
