@@ -33,4 +33,8 @@ class AWSWAFRulesHappyPathTest < Minitest::Test
   def test_rule_ids
     assert_equal(@resp.rule_ids, ['test_rule_id'])
   end
+
+  def test_names
+    assert_equal(@resp.names, ['name'])
+  end
 end
