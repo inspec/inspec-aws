@@ -7,7 +7,7 @@ class AWSWAFRule < AwsResourceBase
   desc 'Describes one WAF rule.'
 
   example "
-    describe aws_waf_rule(rule_id: 'BucketName') do
+    describe aws_waf_rule(rule_id: 'RULE_ID') do
       it { should exits }
     end
   "
