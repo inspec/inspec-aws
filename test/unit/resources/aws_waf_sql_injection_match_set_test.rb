@@ -39,7 +39,7 @@ class AWSWAFSQLInjectionMatchSetHappyPathTest < Minitest::Test
     assert_equal(@resp.sql_injection_match_set_id, 'test1')
   end
 
-  def test_sql_injection_match_set_name
+  def test_name
     assert_equal(@resp.name, 'test1')
   end
 end
