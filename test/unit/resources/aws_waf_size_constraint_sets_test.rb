@@ -29,7 +29,7 @@ class AWSWAFSizeConstraintSetsHappyPathTest < Minitest::Test
     assert @resp.exist?
   end
 
-  def test_rule_ids
+  def test_size_constraint_set_ids
     assert_equal(@resp.size_constraint_set_ids, ['size_constraint_set_id'])
   end
 end 
