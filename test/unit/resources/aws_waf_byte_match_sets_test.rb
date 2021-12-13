@@ -9,7 +9,7 @@ class AWSWAFByteMatchSetsConstructorTest < Minitest::Test
   end
 
   def test_rejects_other_args
-    assert_raises(ArgumentError) { AWSWAFByteMatchSets.new(test: 'rubbish') }
+    assert_raises(ArgumentError) { AWSWAFByteMatchSets.new(test: 'dummy') }
   end
 end
 
