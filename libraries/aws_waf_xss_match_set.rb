@@ -7,7 +7,7 @@ class AWSWAFXSSMatchSet < AwsResourceBase
   desc 'Describes one WAF XSS match set.'
 
   example "
-    describe aws_waf_xss_match_set(xss_match_set_id: 'ResourceId') do
+    describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
       it { should exits }
     end
   "
