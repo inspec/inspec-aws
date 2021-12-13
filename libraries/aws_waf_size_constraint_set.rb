@@ -7,7 +7,7 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   desc 'Describes one WAF size constraint set.'
 
   example "
-    describe aws_waf_size_constraint_set(size_constraint_set_id: 'BucketName') do
+    describe aws_waf_size_constraint_set(size_constraint_set_id: 'SET_CONSTRAINT_SET_ID') do
       it { should exits }
     end
   "
