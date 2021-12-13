@@ -7,7 +7,7 @@ class AWSWAFIPSet < AwsResourceBase
   desc 'Describes one WAF IP set.'
 
   example "
-    describe aws_waf_ip_set(ip_set_id: 'IP_SET_NAME') do
+    describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
       it { should exits }
     end
   "
