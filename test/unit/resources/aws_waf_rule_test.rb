@@ -36,7 +36,7 @@ class AWSWAFRuleHappyPathTest < Minitest::Test
     assert @resp.exist?
   end
 
-  def rule_id
+  def test_rule_id
     assert_equal(@resp.rule_id, 'test1')
   end
 
