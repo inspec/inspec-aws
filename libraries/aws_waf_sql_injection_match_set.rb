@@ -35,6 +35,6 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   end
 
   def to_s
-    "Resource ID: #{@display_name}"
+    "SQL Injection Match Set ID: #{@display_name}"
   end
 end
