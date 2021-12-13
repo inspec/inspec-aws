@@ -7,7 +7,7 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   desc 'Describes one WAF SQL Injection match set.'
 
   example "
-    describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'ResourceId') do
+    describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do
       it { should exits }
     end
   "
