@@ -31,7 +31,7 @@ class AWSWAFByteMatchSetHappyPathTest < Minitest::Test
     @resp = AWSWAFByteMatchSet.new(byte_match_set_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_rule_exists
+  def test_byte_match_set_exists
     assert @resp.exist?
   end
 
