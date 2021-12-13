@@ -7,7 +7,7 @@ class AWSWAFByteMatchSet < AwsResourceBase
   desc 'Describes one WAF byte set.'
 
   example "
-    describe aws_waf_byte_match_set(byte_match_set_id: 'BucketName') do
+    describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do
       it { should exits }
     end
   "
