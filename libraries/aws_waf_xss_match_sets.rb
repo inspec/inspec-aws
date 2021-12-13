@@ -7,7 +7,7 @@ class AWSWAFXSSMatchSets < AwsResourceBase
   desc 'Verifies settings for all the WAF rules.'
 
   example "
-    describe aws_waf_xss_match_set do
+    describe aws_waf_xss_match_sets do
       it { should exist }
     end
   "
