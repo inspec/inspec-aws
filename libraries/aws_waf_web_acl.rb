@@ -7,7 +7,7 @@ class AWSWAFWebACL < AwsResourceBase
   desc 'Describes one WAF Web ACL.'
 
   example "
-    describe aws_waf_web_acl(web_acl_id: 'ResourceId') do
+    describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do
       it { should exits }
     end
   "
