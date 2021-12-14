@@ -37,4 +37,12 @@ class AWSWAFIPSet < AwsResourceBase
   def to_s
     "IP Set ID: #{@display_name}"
   end
+
+  def ip_set_descriptors_types
+    ip_set_descriptors.map(&:type)
+  end
+
+  def ip_set_descriptors_values
+    ip_set_descriptors.map(&:value)
+  end
 end
