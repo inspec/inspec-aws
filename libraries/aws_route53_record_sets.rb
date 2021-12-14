@@ -24,7 +24,7 @@ class AWSRoute53RecordSets < AwsResourceBase
              .register_column(:failovers,                                   field: :failover)
              .register_column(:multi_value_answers,                         field: :multi_value_answer)
              .register_column(:ttls,                                        field: :ttl)
-             .register_column(:resource_records,                            field: :resource_records)
+             .register_column(:resource_records,                            field: :resource_records, style: :simple)
              .register_column(:alias_targets,                               field: :alias_target)
              .register_column(:health_check_ids,                            field: :health_check_id)
              .register_column(:traffic_policy_instance_ids,                 field: :traffic_policy_instance_id)
@@ -44,9 +44,24 @@ class AWSRoute53RecordSets < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @resp = @aws.route53_client.list_resource_record_sets(@query_params)
+      @resp = @aws.route53_client.list_resource_record_sets(@query_params).map do |table|
+        table.resource_record_sets.map { |table_items| {
+          name: table_items.name,
+          type: table_items.type,
+          set_identifier: table_items.set_identifier,
+          weight: table_items.weight,
+          region: table_items.region,
+          geo_location: table_items.geo_location,
+          failover: table_items.failover,
+          multi_value_answer: table_items.multi_value_answer,
+          ttl: table_items.ttl,
+          resource_records: table_items.resource_records.map(&:type),
+          alias_target: table_items.alias_target,
+          health_check_id: table_items.health_check_id,
+          traffic_policy_instance_id: table_items.traffic_policy_instance_id,
+        }
+        }
+      end.flatten
     end
-    return [] if !@resp || @resp.empty?
-    @table = @resp.resource_record_sets.map(&:to_h)
   end
 end
