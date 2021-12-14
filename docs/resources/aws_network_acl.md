@@ -1,5 +1,5 @@
 ---
-title: About the AWS network ACL Resource
+title: About the aws_network_acl Resource
 platform: aws
 ---
 
@@ -25,7 +25,7 @@ The value of the `network_acl_id` can be provided as a string.
 
 The network ACL ID is required.
 
-#### network\_acl\_id _(required)_
+#### network_acl_id _(required)_
 
 The ID of the network ACL:
 
@@ -39,7 +39,7 @@ It can be passed either as a string or as a `network_acl_id: 'value'` key-value 
 
 |Property         | Description                                                    |
 | ---             | ---                                                            |
-|network\_acl\_id | The ID of the network ACL.                                     |
+|network_acl_id | The ID of the network ACL.                                     |
 |is_default       | Indicates whether this is the default network ACL for the VPC. |
 |vpc_id           | The ID of the VPC for the network ACL.                         |
 |owner_id         | The ID of the AWS account that owns the network ACL.           |

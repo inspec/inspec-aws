@@ -2,7 +2,7 @@
 title: About the aws_rds_cluster Resource
 ---
 
-# aws\_rds\_cluster
+# aws_rds_cluster
 
 Use the `aws_rds_cluster` InSpec audit resource to test detailed properties of an individual RDS cluster.
 
@@ -21,9 +21,9 @@ An `aws_rds_cluster` resource block uses resource parameters to search for an RD
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-#### db\_cluster\_identifier _(required)_
+### db_cluster_identifier _(required)_
 
 This resource accepts a single parameter, the user-supplied cluster identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_cluster_identifier: 'value'` key-value entry in a hash.
