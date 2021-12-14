@@ -7,7 +7,9 @@ control 'aws-s3-bucket-policy-1.0' do
   
   describe aws_s3_bucket_policy(bucket: bucket_name) do
     it { should exist }
-    its('policy') { should_not empty }
+    its('Sid') { should eq 'IPAllow' }
+    its('Effect') { should eq 'Deny' }
+    its('Principal') { should eq '*' }
   end
 end
 
