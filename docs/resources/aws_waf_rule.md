@@ -5,7 +5,9 @@ platform: aws
 
 # aws_waf_rule
 
-Use the `aws_waf_rule` InSpec audit resource to test the properties of the singular resource of AWS WAF Rule.
+Use the `aws_waf_rule` Chef InSpec audit resource to test the properties of a single AWS WAF (web application firewall) rule.
+
+The `AWS::WAF::Rule` resource type creates a firewall rule that identifies the web requests that you want to allow, block, or count.
 
 ## Syntax
 
@@ -19,20 +21,20 @@ Ensure that a WAF rule exists.
 
 `rule_id` _(required)_
 
-A unique identifier for a WAF Rule.
+A unique identifier for a WAF rule.
 
-For additional information, see the [AWS documentation on AWS WAF Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::Rule` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| rule_id | A unique identifier for a Rule. | rule_id |
-| name | The name of the Rule. | name |
-| metric_name | The name of the metrics for this Rule. | metric_name |
-| predicates_negated | Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the specified ByteMatchSet , IPSet , SqlInjectionMatchSet , XssMatchSet , RegexMatchSet , GeoMatchSet , or SizeConstraintSet . | negated |
-| predicates_type | The type of predicate in a Rule , such as ByteMatch or IPSet . | type |
-| predicates_data_id | A unique identifier for a predicate in a Rule , such as ByteMatchSetId or IPSetId. | data_id |
+| Property | Description |
+| --- | --- |
+| rule_id | A unique identifier for a rule. |
+| name | The name of the rule. |
+| metric_name | The name of the metrics for this rule. |
+| predicates_negated | `False` if the AWS WAF rule will allow, block, or count requests based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, `RegexMatchSet`, `GeoMatchSet`, or `SizeConstraintSet` object. |
+| predicates_type | The type of predicate in a rule, such as `ByteMatch` or `IPSet`. |
+| predicates_data_id | A unique identifier for a predicate in a rule, such as `ByteMatchSetId` or `IPSetId`. |
 
 ## Examples
 
@@ -42,13 +44,13 @@ For additional information, see the [AWS documentation on AWS WAF Rule](https://
       its('rule_id') { should eq 'RULE_ID' }
     end
 
-### Ensure a rule name is available..
+### Ensure a rule name is available.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
         its('name') { should eq 'RULE_ID_NAME' }
     end
 
-### Ensure an a metric name type is `METRIC_NAME`.
+### Ensure a metric name type is `METRIC_NAME`.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
         its('metric_name') { should include 'METRIC_NAME' }

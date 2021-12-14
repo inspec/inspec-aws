@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_rules
 
-Use the `aws_waf_rules` InSpec audit resource to test the properties of the plural resource of AWS WAF Rule.
+Use the `aws_waf_rules` Chef InSpec audit resource to test the properties of multiple AWS WAF (web application firewall) rules.
 
 ## Syntax
 
-Ensure that web acl exists.
+Ensure that a WAF rule exists.
 
     describe aws_waf_rules do
       it { should exist }
@@ -19,24 +19,24 @@ Ensure that web acl exists.
 
 No required parameters.
 
-For additional information, see the [AWS documentation on AWS WAF Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::Rule` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
 
 ## Properties
 
 | Property | Description                         | Fields  |
 |----------|-------------------------------------|---------|
 | rule_ids | The unique identifier for the rule. | rule_id |
-| names    | The name of the web ACL.            | name    |
+| names    | A friendly name or description of the rule. | name    |
 
 ## Examples
 
-### Ensure a web acl is available.
+### Ensure a rule is available by rule ID.
 
     describe aws_waf_rules do
       its('rule_ids') { should include 'RULE_ID' }
     end
 
-### Ensure a web acl name is available..
+### Ensure a rule is available by name.
 
     describe aws_waf_rules do
         its('names') { should include 'RULE_NAMES' }
