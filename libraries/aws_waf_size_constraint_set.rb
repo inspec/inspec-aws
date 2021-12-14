@@ -7,7 +7,7 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   desc 'Describes one WAF size constraint set.'
 
   example "
-    describe aws_waf_size_constraint_set(size_constraint_set_id: 'SET_CONSTRAINT_SET_ID') do
+    describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do
       it { should exits }
     end
   "
@@ -36,5 +36,25 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
 
   def to_s
     "Size Constraint Set ID: #{@display_name}"
+  end
+  
+  def size_constraints_field_to_match_types
+    (size_constraints.map(&:field_to_match)).map(&:type)
+  end
+
+  def size_constraints_field_to_match_data
+    (size_constraints.map(&:field_to_match)).map(&:data)
+  end
+
+  def size_constraints_text_transformations
+    size_constraints.map(&:text_transformation)
+  end
+
+  def size_constraints_comparison_operator
+    size_constraints.map(&:comparison_operator)
+  end
+
+  def size_constraints_sizes
+    size_constraints.map(&:size)
   end
 end
