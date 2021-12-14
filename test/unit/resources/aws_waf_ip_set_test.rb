@@ -31,7 +31,7 @@ class AWSWAFIPSetHappyPathTest < Minitest::Test
     @resp = AWSWAFIPSet.new(ip_set_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_rule_exists
+  def test_ip_set_exists
     assert @resp.exist?
   end
 
