@@ -37,7 +37,7 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   def to_s
     "Size Constraint Set ID: #{@display_name}"
   end
-  
+
   def size_constraints_field_to_match_types
     (size_constraints.map(&:field_to_match)).map(&:type)
   end
