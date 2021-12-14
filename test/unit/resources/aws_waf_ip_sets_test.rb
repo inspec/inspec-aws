@@ -29,7 +29,7 @@ class AWSWAFIPSetsHappyPathTest < Minitest::Test
     assert @resp.exist?
   end
 
-  def test_rule_ids
+  def test_ip_set_ids
     assert_equal(@resp.ip_set_ids, ['ip_set_id'])
   end
 end 
