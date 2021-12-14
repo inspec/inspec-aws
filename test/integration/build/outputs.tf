@@ -1445,3 +1445,11 @@ output "db_proxy_name" {
 output "target_group_name" {
   value = aws_db_proxy_default_target_group.for_proxy.name
 }
+
+output "aws_route53_zone_id" {
+  value = aws_route53_zone.test_zone.id
+}
+
+output "aws_route53_zone_name" {
+  value = aws_route53_zone.test_zone.name
+}

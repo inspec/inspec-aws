@@ -1,12 +1,22 @@
-hosted_zone_name = attribute(:aws_route_53_zone)
+aws_route53_zone_id = attribute(aws_route53_zone_id, value: '', description: '')
+aws_route53_zone_name = attribute(aws_route53_zone_name, value: '', description: '')
 
-control "Hosted zones tests" do
-  impact  1.0
-  title   "Hosted zones"
-  desc    "Check hosted zones work"
+title 'Ensure the hosted zone have the correct properties.'
 
-  describe aws_hosted_zones() do
+control 'aws-hosted-zones-1.0' do
+  impact 1.0
+
+  describe aws_hosted_zones do
     it { should exist }
-    its ('name') { should include ("#{hosted_zone_name}.")}
+    its('count') { should >= 1 }
+  end
+
+  describe aws_hosted_zones do
+    its('ids') { should include aws_route53_zone_id }
+    its('names') { should include aws_route53_zone_name }
+    its('caller_references') { should_not be_empty }
+    its('configs') { should_not be_empty }
+    its('resource_record_set_counts') { should_not include 1 }
+    its('linked_services') { should_not be_empty }
   end
 end

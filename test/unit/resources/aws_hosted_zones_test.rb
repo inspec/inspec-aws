@@ -1,36 +1,61 @@
-require 'aws-sdk-core'
+require 'helper'
 require 'aws_hosted_zones'
+require 'aws-sdk-core'
 
-class AwsHostedZonesTests < Minitest::Test
+class AWSHostedZonesConstructorTest < Minitest::Test
 
-  def test_fail_constructor_values
-    assert_raises(ArgumentError) { AwsHostedZones.new('not needed') }
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AWSHostedZones.new(unexpected: 9) }
   end
-  
+end
+
+class AWSHostedZonesSuccessPathTest < Minitest::Test
+
   def setup
-    zones_call = {}
-    zones_call[:method] = :list_hosted_zones
-    zones_call[:data]   = { hosted_zones: 
-                    [{name: "carry-on.films.com", id: "some_random_id", caller_reference: "reference"}], 
-                    marker: "nil", is_truncated: false, next_marker: "nil", max_items: 100}
-    zones_call[:client] = Aws::Route53::Client
-
-    @zones = AwsHostedZones.new(client_args: { stub_responses: true }, stub_data: [zones_call])
+    data = {}
+    data[:method] = :list_hosted_zones
+    mock_data = {}
+    mock_data[:marker] = 'test1'
+    mock_data[:is_truncated] = true
+    mock_data[:max_items] = 1
+    mock_data[:hosted_zones] = [
+      id: 'test1',
+      name: 'test1',
+      caller_reference: 'test1',
+      config: {},
+      resource_record_set_count: 10,
+      linked_service: {},
+    ]
+    data[:data] = mock_data
+    data[:client] = Aws::Route53::Client
+    @resp = AWSHostedZones.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_exists_works
-    assert @zones.exist?
+  def test_hosted_zones_exist
+    assert @resp.exists?
   end
 
-  def test_includes_finds
-    assert @zones.name.include?("carry-on.films.com")
+  def test_ids
+    assert_equal(@resp.ids, ['test1'])
   end
 
-  def test_count_correct
-    assert_equal(@zones.name.count, 1)
+  def test_names
+    assert_equal(@resp.names, ['test1'])
   end
 
-  def test_not_included
-    refute @zones.name.include?("fast.films.com")
+  def test_caller_references
+    assert_equal(@resp.caller_references, ['test1'])
+  end
+
+  def test_configs
+    assert_equal(@resp.configs, [{}])
+  end
+
+  def test_resource_record_set_counts
+    assert_equal(@resp.resource_record_set_counts, [10])
+  end
+
+  def test_linked_services
+    assert_equal(@resp.linked_services, [{}])
   end
 end
