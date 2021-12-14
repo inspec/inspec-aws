@@ -7,7 +7,7 @@ class AWSRoute53RecordSets < AwsResourceBase
   desc 'Lists the resource record sets in a specified hosted zone.'
 
   example "
-    describe aws_route53_record_sets(hosted_zone_id: 'ResourceId') do
+    describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should exist }
     end
   "
