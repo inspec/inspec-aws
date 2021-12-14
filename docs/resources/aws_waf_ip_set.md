@@ -44,7 +44,7 @@ For additional information, see the [AWS documentation on AWS WAF IPSet](https:/
 ### Ensure a ip set name is available..
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
-        its('name') { should eq 'WEB_ACL_NAME' }
+        its('name') { should eq 'IP_SET_NAME' }
     end
 
 ### Ensure a ip set descriptors type is `IPV4`.
