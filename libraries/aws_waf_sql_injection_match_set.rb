@@ -37,4 +37,16 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   def to_s
     "SQL Injection Match Set ID: #{@display_name}"
   end
+
+  def sql_injection_match_tuples_field_to_match_types
+    (sql_injection_match_tuples.map(&:field_to_match)).map(&:type)
+  end
+
+  def sql_injection_match_tuples_field_to_match_data
+    (sql_injection_match_tuples.map(&:field_to_match)).map(&:data)
+  end
+
+  def sql_injection_match_tuples_text_transformations
+    sql_injection_match_tuples.map(&:text_transformation)
+  end
 end
