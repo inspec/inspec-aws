@@ -41,7 +41,7 @@ For additional information, see the [AWS documentation on AWS WAF IPSet](https:/
 ### Ensure a ip set name is available..
 
     describe aws_waf_ip_sets do
-        its('name') { should include 'WEB_ACL_NAME' }
+        its('names') { should include 'IP_SET_NAME' }
     end
 
 ## Matchers
