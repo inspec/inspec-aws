@@ -50,7 +50,7 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
     size_constraints.map(&:text_transformation)
   end
 
-  def size_constraints_comparison_operator
+  def size_constraints_comparison_operators
     size_constraints.map(&:comparison_operator)
   end
 
