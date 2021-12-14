@@ -37,4 +37,28 @@ class AWSWAFByteMatchSet < AwsResourceBase
   def to_s
     "Byte Match Set ID: #{@display_name}"
   end
+
+  def byte_match_tuples_field_to_matches
+    byte_match_tuples.map(&:field_to_match)
+  end
+
+  def byte_match_tuples_field_to_match_types
+    (byte_match_tuples.map(&:field_to_match)).map(&:type)
+  end
+
+  def byte_match_tuples_field_to_match_data
+    (byte_match_tuples.map(&:field_to_match)).map(&:data)
+  end
+
+  def byte_match_tuples_target_strings
+    byte_match_tuples.map(&:target_string)
+  end
+
+  def byte_match_tuples_text_transformations
+    byte_match_tuples.map(&:text_transformation)
+  end
+
+  def byte_match_tuples_positional_constraints
+    byte_match_tuples.map(&:positional_constraint)
+  end
 end
