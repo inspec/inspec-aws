@@ -55,7 +55,7 @@ class AWSRoute53RecordSets < AwsResourceBase
           failover: table_items.failover,
           multi_value_answer: table_items.multi_value_answer,
           ttl: table_items.ttl,
-          resource_records: table_items.resource_records.map(&:type),
+          resource_records: table_items.resource_records.map(&:value),
           alias_target: table_items.alias_target,
           health_check_id: table_items.health_check_id,
           traffic_policy_instance_id: table_items.traffic_policy_instance_id,
