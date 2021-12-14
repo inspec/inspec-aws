@@ -37,4 +37,40 @@ class AWSWAFWebACL < AwsResourceBase
   def to_s
     "Web ACL ID: #{@display_name}"
   end
+
+  def rules_priorities
+    rules.map(&:priority)
+  end
+
+  def rules_rule_ids
+    rules.map(&:rule_id)
+  end
+
+  def rules_actions
+    rules.map(&:action)
+  end
+
+  def rules_action_types
+    (rules.map(&:action)).map(&:type)
+  end
+
+  def rules_override_actions
+    rules.map(&:override_action)
+  end
+
+  def rules_override_action_types
+    (rules.map(&:override_action)).map(&:type)
+  end
+
+  def rules_types
+    rules.map(&:type)
+  end
+
+  def rules_excluded_rules
+    rules.map(&:excluded_rules)
+  end
+
+  def rules_excluded_rules_rule_ids
+    (rules.map(&:excluded_rules)).map(&:rule_id)
+  end
 end
