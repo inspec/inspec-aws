@@ -37,4 +37,16 @@ class AWSWAFRule < AwsResourceBase
   def to_s
     "Rule ID: #{@display_name}"
   end
+
+  def predicates_negated
+    predicates.map(&:negated)
+  end
+
+  def predicates_type
+    predicates.map(&:type)
+  end
+
+  def predicates_data_id
+    predicates.map(&:data_id)
+  end
 end
