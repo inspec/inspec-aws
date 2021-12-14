@@ -9,7 +9,7 @@ Use the `aws_waf_rule` InSpec audit resource to test the properties of the singu
 
 ## Syntax
 
-Ensure that a Rule exists.
+Ensure that a WAF rule exists.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
       it { should exist }
@@ -36,25 +36,25 @@ For additional information, see the [AWS documentation on AWS WAF Rule](https://
 
 ## Examples
 
-### Ensure a size constraint set is available.
+### Ensure a rule is available.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
       its('rule_id') { should eq 'RULE_ID' }
     end
 
-### Ensure a size constraint set name is available..
+### Ensure a rule name is available..
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
         its('name') { should eq 'RULE_ID_NAME' }
     end
 
-### Ensure an a metric name constraint set type is `METRIC_NAME`.
+### Ensure an a metric name type is `METRIC_NAME`.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
         its('metric_name') { should include 'METRIC_NAME' }
     end
 
-### Verify the size of the constraints set.
+### Verify the type of data ID should be 'DATA_ID'.
 
     describe aws_waf_rule(rule_id: 'RULE_ID') do
         its('predicates_data_id') { should include 'DATA_ID' }
