@@ -5,11 +5,13 @@ platform: aws
 
 # aws_s3_bucket_policy
 
-Use the `aws_s3_bucket_policy` InSpec audit resource to test properties of the singular resource of AWS S3 BucketPolicy.
+Use the `aws_s3_bucket_policy` Chef InSpec audit resource to test properties of a single AWS S3 bucket policy.
+
+The `AWS::S3::BucketPolicy` resource type applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 
 ## Syntax
 
-Ensure that a S3 bucket policy exists.
+Ensure that an S3 bucket policy exists.
 
     describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
       it { should exist }
@@ -19,20 +21,20 @@ Ensure that a S3 bucket policy exists.
 
 `bucket` _(required)_
 
-The bucket name for which to get the bucket policy.
+The name of the Amazon S3 bucket to which the policy applies.
 
-For additional information, see the [AWS documentation on AWS S3 BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html).
+For additional information, see the [AWS documentation on the `AWS::S3::BucketPolicy` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html).
 
 ## Properties
 
 | Property | Description |
 | -- | --- |
 | Effect | The effect of the policy. |
-| Sid | The policy ID of the S3 bucket. |
-| Condition | The policy condition of the S3 Bucket. |
-| Action | The policy Action of the S3 Bucket. |
-| Resource | The policy resource of the S3 Bucket. |
-| Principal | The policy principal of the S3 Bucket. |
+| Sid | The policy statement ID of the S3 bucket. |
+| Condition | The policy condition key of the S3 bucket. |
+| Action | The policy action of the S3 bucket. |
+| Resource | The policy resource type of the S3 bucket. |
+| Principal | The policy principal of the S3 bucket. |
 
 ## Examples
 
