@@ -38,7 +38,7 @@ For additional information, see the [AWS documentation on AWS WAF IPSet](https:/
 ### Ensure a ip set is available.
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
-      its('ip_set_id') { should eq 'WEB_ACL_ID' }
+      its('ip_set_id') { should eq 'IP_SET_ID' }
     end
 
 ### Ensure a ip set name is available..
