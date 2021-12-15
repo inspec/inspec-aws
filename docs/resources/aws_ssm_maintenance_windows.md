@@ -5,11 +5,13 @@ platform: aws
 
 # aws_ssm_maintenance_windows
 
-Use the `aws_ssm_maintenance_windows` InSpec audit resource to test properties of the plural resource of AWS SSM MaintenanceWindow.
+Use the `aws_ssm_maintenance_windows` InSpec audit resource to test properties of multiple AWS Systems Manager (SSM) maintenance windows.
+
+The `AWS::SSM::MaintenanceWindow` resource represents general information about a maintenance window for AWS Systems Manager.
 
 ## Syntax
 
-Ensure that the maintenance windows exists.
+Ensure that a maintenance window exists.
 
     describe aws_ssm_maintenance_windows do
       it { should exist }
@@ -17,11 +19,11 @@ Ensure that the maintenance windows exists.
 
 ## Parameters
 
-For additional information, see the [AWS documentation on AWS SSM MaintenanceWindow](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html).
+For additional information, see the [AWS documentation on the `AWS::SSM::MaintenanceWindow` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html).
 
 ## Properties
 
-| Property | Description | Fields | 
+| Property | Description | Fields |
 | --- | --- | --- |
 | window_ids | The ID of the maintenance window. | window_id |
 | names | The name of the maintenance window. | name |
@@ -38,17 +40,20 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 
 ## Examples
 
-### Ensure a maintenance window id is available.
+### Ensure a maintenance window ID is available.
+
     describe aws_ssm_maintenance_windows do
       its('window_ids') { should include 'MAINTENANCE_WINDOW_ID' }
     end
 
 ### Ensure a maintenance window name is available.
+
     describe aws_ssm_maintenance_windows do
       its('names') { should include 'MAINTENANCE_WINDOW_NAME' }
     end
 
-### Verify the maintenance window is enabled.
+### Verify a maintenance window is enabled.
+
     describe aws_ssm_maintenance_windows do
       its('enabled') { should include true }
     end

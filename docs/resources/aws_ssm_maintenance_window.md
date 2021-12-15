@@ -5,9 +5,9 @@ platform: aws
 
 # aws_ssm_maintenance_window
 
-Use the `aws_ssm_maintenance_window` InSpec audit resource to test properties of the singular resource of AWS SSM MaintenanceWindow.
+Use the `aws_ssm_maintenance_window` InSpec audit resource to test properties of a single AWS Systems Manager (SSM) maintenance window.
 
-The AWS::SSM::MaintenanceWindow resource represents general information about a maintenance window for AWS Systems Manager.
+The `AWS::SSM::MaintenanceWindow` resource represents general information about a maintenance window for AWS Systems Manager.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that the maintenance window exists.
 
 The ID of the maintenance window for which you want to retrieve information.
 
-For additional information, see the [AWS documentation on AWS SSM MaintenanceWindow](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html).
+For additional information, see the [AWS documentation on the `AWS::SSM::MaintenanceWindow` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html).
 
 ## Properties
 
@@ -47,29 +47,33 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 
 ## Examples
 
-### Ensure a window id is available.
+### Ensure a window ID is available.
+
     describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('window_id') { should eq 'WINDOW_ID' }
     end
 
 ### Ensure a name is available.
+
     describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('name') { should eq 'WINDOW_NAME' }
     end
 
 ### Ensure a duration is `1`.
+
     describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('duration') { should eq 1 }
     end
 
 ### Ensure a maintenance window is enabled.
+
     describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
       its('enabled') { should eq true }
     end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This Chef InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `get` method returns at least one result.
 
