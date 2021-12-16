@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ec2_client_vpn_route
 
-Use the `aws_ec2_client_vpn_route` InSpec audit resource to test the properties of a single specific AWS EC2 client VPN route.
+Use the `aws_ec2_client_vpn_route` InSpec audit resource to test the properties of a single specific AWS EC2 Client VPN route.
 
-The `AWS::EC2::ClientVpnRoute` specifies a network route to add to a client VPN endpoint.
+The `AWS::EC2::ClientVpnRoute` specifies a network route to add to a Client VPN endpoint.
 
 ## Syntax
 
-Ensure that the client VPN endpoint exists.
+Ensure that the Client VPN endpoint exists.
 
     describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "VPN_ID", target_subnet: "SUBNET_ID") do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the client VPN endpoint exists.
 
 `client_vpn_endpoint_id` _(required)_
 
-The association between the client VPN endpoint ID and the route.
+The association between the Client VPN endpoint ID and the route.
 
 `target_subnet` _(required)_
 
@@ -33,13 +33,13 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnRoute
 
 | Property               | Description                                                           | Field              |
 | :--------------------: | :-------------------------------------------------------------------: | :----------------: |
-| client_vpn_endpoint_id | The association between the client VPN endpoint ID and the route.     | carrier_gateway_id |
+| client_vpn_endpoint_id | The Client VPN endpoint ID to which to add the route.                 | carrier_gateway_id |
 | destination_cidr       | The IPv4 address range, in CIDR notation, of the route destination.   | carrier_gateway_id |
 | target_subnet          | The subnet ID to which you want to route traffic.                     | carrier_gateway_id |
 | type                   | The route type.                                                       | carrier_gateway_id |
-| origin                 | Indicates how the route associates with the client VPN endpoint, and the route is automatically added when the target network associates with the client VPN endpoint. | carrier_gateway_id |
-| status.code            | The state of the client VPN endpoint route.                           | carrier_gateway_id |
-| status.message         | A message about the status of the client VPN endpoint route, if applicable. | carrier_gateway_id |
+| origin                 | Indicates how the route associates with the Client VPN endpoint, and the route is automatically added when the target network associates with the Client VPN endpoint. | carrier_gateway_id |
+| status.code            | The state of the Client VPN endpoint route.                           | carrier_gateway_id |
+| status.message         | A message about the status of the Client VPN endpoint route, if applicable. | carrier_gateway_id |
 | description            | A brief description of the route.                                     | carrier_gateway_id |
 
 ## Examples
