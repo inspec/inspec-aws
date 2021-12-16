@@ -1446,6 +1446,10 @@ output "target_group_name" {
   value = aws_db_proxy_default_target_group.for_proxy.name
 }
 
+output "bucket_name" {
+  value = aws_s3_bucket.my_test_bucket.id
+}
+
 output "aws_ssm_maintenance_window_id" {
   value = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
 }

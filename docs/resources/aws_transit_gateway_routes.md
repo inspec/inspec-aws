@@ -3,7 +3,7 @@ title: About the aws_transit_gateway_routes Resource
 platform: aws
 ---
 
-# aws\_transit\_gateway\_routes
+# aws_transit_gateway_routes
 
 Use the `aws_transit_gateway_routes` InSpec audit resource to test the properties of all Route for a AWS transit gateway route table.
 To audit a single gateway route, use the `aws_transit_gateway_route` (singular) resource.
@@ -27,7 +27,7 @@ The following additional parameters are optional:
 - `subnet_of_match`
 - `supernet_of_match`
 
-#### transit\_gateway\_route\_table\_id _(required)_
+#### transit_gateway_route_table_id _(required)_
 
 The **ID** of the AWS transit gateway route table:
 
@@ -37,19 +37,19 @@ The **ID** of the AWS transit gateway route table:
 
 The ID of the AWS transit gateway route table should be passed as a `transit_gateway_route_table_id: 'value'` key-value entry in a hash.
 
-#### exact\_match
+#### exact_match
 
 The exact match of the **CIDR** block is used for destination matches. It could be passed as a `exact_match: 'value'` key-value entry in a hash.
 
-#### longest\_prefix\_match
+#### longest_prefix_match
 
 The longest prefix that matches the route. It could be passed as a `longest_prefix_match: 'value'` key-value entry in a hash.
 
-#### subnet\_of\_match
+#### subnet_of_match
 
 The routes with a subnet that match the specified CIDR filter. It could be passed as a `subnet_of_match: 'value'` key-value entry in a hash.
 
-#### supernet\_of\_match
+#### supernet_of_match
 
 The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
@@ -136,6 +136,6 @@ Use `should_not` to test an entity that should not exist.
 
 ## AWS Permissions
 
-To set the `allow` permission for the [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal), you need the `EC2:Client:DescribeTransitGatewayRouteTablesResult` action.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTransitGatewayRouteTablesResult` action with `Effect` set to `Allow`.
 
 Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
