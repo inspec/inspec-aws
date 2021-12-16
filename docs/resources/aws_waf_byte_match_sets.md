@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_byte_match_sets
 
-Use the `aws_waf_byte_match_sets` InSpec audit resource to test the properties of the plural resource of AWS WAF ByteMatchSet.
+Use the `aws_waf_byte_match_sets` Chef InSpec audit resource to test the properties of multiple AWS (Web Application Firewall) WAF byte match sets.
 
 ## Syntax
 
-### Ensure that byte match set exists.
+### Ensure that a byte match set exists.
 
     describe aws_waf_byte_match_sets do
       it { should exist }
@@ -19,7 +19,7 @@ Use the `aws_waf_byte_match_sets` InSpec audit resource to test the properties o
 
 This resource does not expect any parameters.
 
-For additional information, see the [AWS documentation on AWS WAF ByteMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-bytematchset.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::ByteMatchSet` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-bytematchset.html).
 
 ## Properties
 
@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS WAF ByteMatchSet](
       its('byte_match_set_ids') { should include 'BYTE_MATCH_SET_ID' }
     end
 
-### Ensure a byte match set name is available..
+### Ensure a byte match set name is available.
 
     describe aws_waf_byte_match_sets do
         its('names') { should include 'BYTE_MATCH_SET_NAME' }
@@ -44,7 +44,7 @@ For additional information, see the [AWS documentation on AWS WAF ByteMatchSet](
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This Chef InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 The controls will pass if the `list` method returns at least one result.
 
