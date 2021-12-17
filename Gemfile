@@ -16,6 +16,7 @@ gem 'bundle'
 gem 'inspec-bin'
 
 gem 'rubocop', '~> 1.3'
+gem 'activesupport', '6.1.4.1'
 
 group :development do
   gem 'rake'
