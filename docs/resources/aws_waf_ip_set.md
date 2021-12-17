@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_ip_set
 
-Use the `aws_waf_ip_set` InSpec audit resource to test the properties of the singular resource of AWS WAF IPSet.
+Use the `aws_waf_ip_set` Chef InSpec audit resource to test the properties of a single AWS Web Application Firewall (WAF) IP set.
 
 ## Syntax
 
-Ensure that ip set exists.
+Ensure that IP set exists.
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
       it { should exist }
@@ -19,35 +19,35 @@ Ensure that ip set exists.
 
 `ip_set_id` _(required)_
 
-The IPSetId for an IPSet.
+The ID for an IP set.
 
 For additional information, see the [AWS documentation on AWS WAF IPSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| ip_set_id | The IPSetId for an IPSet. | ip_set_id |
-| name | A friendly name or description of the IPSet. | name |
-| ip_set_descriptors | The IP address type (IPV4 or IPV6 ) and the IP address range (in CIDR notation) that web requests originate from. | ip_set_descriptors |
-| ip_set_descriptors_types | Specify IPV4 or IPV6. |  ip_set_descriptors (type) |
-| ip_set_descriptors_values | Specify an IPv4 address by using CIDR notation. |  ip_set_descriptors (value) |
+| Property | Description |
+| --- | --- |
+| ip_set_id | The IPSetId for an IP set. |
+| name | A friendly name or description of the IP set. |
+| ip_set_descriptors | The IP address type (IPV4 or IPV6 ) and the IP address range (in CIDR notation) that web requests originate from. |
+| ip_set_descriptors_types | Specify IPV4 or IPV6. |
+| ip_set_descriptors_values | Specify an IPv4 address by using CIDR notation. |
 
 ## Examples
 
-### Ensure a ip set is available.
+### Ensure an IP set is available.
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
       its('ip_set_id') { should eq 'IP_SET_ID' }
     end
 
-### Ensure a ip set name is available..
+### Ensure an IP set name is available.
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
         its('name') { should eq 'IP_SET_NAME' }
     end
 
-### Ensure a ip set descriptors type is `IPV4`.
+### Ensure an IP set descriptors type is `IPV4`.
 
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
         its('ip_set_descriptors_types') { should include 'IPV4' }

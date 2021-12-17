@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_ip_sets
 
-Use the `aws_waf_ip_sets` InSpec audit resource to test the properties of the plural resource of AWS WAF IPSet.
+Use the `aws_waf_ip_sets` Chef InSpec audit resource to test the properties of multiple AWS Web Application Firewall (WAF) IP sets.
 
 ## Syntax
 
-Ensure that ip set exists.
+Ensure that IP set exists.
 
     describe aws_waf_ip_sets do
       it { should exist }
@@ -19,9 +19,9 @@ Ensure that ip set exists.
 
 `ip_set_id` _(required)_
 
-The IPSetId for an IPSet.
+The ID for an IP set.
 
-For additional information, see the [AWS documentation on AWS WAF IPSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html).
+For additional information, see the [AWS documentation on `AWS::WAF::IPSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html).
 
 ## Properties
 
@@ -32,13 +32,13 @@ For additional information, see the [AWS documentation on AWS WAF IPSet](https:/
 
 ## Examples
 
-### Ensure a ip set is available.
+### Ensure an IP set is available.
 
     describe aws_waf_ip_sets do
       its('ip_set_ids') { should include 'IP_SET_ID' }
     end
 
-### Ensure a ip set name is available..
+### Ensure an IP set name is available.
 
     describe aws_waf_ip_sets do
         its('names') { should include 'IP_SET_NAME' }
