@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_sql_injection_match_sets
 
-Use the `aws_waf_sql_injection_match_sets` InSpec audit resource to test the properties of the plural resource of AWS WAF SqlInjectionMatchSet.
+Use the `aws_waf_sql_injection_match_sets` Chef InSpec audit resource to test the properties of multiple AWS WAF `SqlInjectionMatchSet` objects.
 
 ## Syntax
 
-Ensure that injection match set exists.
+Ensure that a `SqlInjectionMatchSet` object exists.
 
     describe aws_waf_sql_injection_match_sets do
       it { should exist }
@@ -17,16 +17,16 @@ Ensure that injection match set exists.
 
 ## Parameters
 
-No parameters required.
+This resource does not require any parameters.
 
-For additional information, see the [AWS documentation on AWS WAF SqlInjectionMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::SqlInjectionMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html).
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| sql_injection_match_set_ids | A unique identifier for a SqlInjectionMatchSet. | sql_injection_match_set_id |
-| names | The name of the SqlInjectionMatchSet. | name |
+| sql_injection_match_set_ids | A unique identifier for a `SqlInjectionMatchSet`. | sql_injection_match_set_id |
+| names | The name of the `SqlInjectionMatchSet`. | name |
 
 ## Examples
 
@@ -36,7 +36,7 @@ For additional information, see the [AWS documentation on AWS WAF SqlInjectionMa
       its('sql_injection_match_set_ids') { should include 'SQL_INJECTION_MATCH_SET_ID' }
     end
 
-### Ensure an injection match set is available..
+### Ensure an injection match set is available.
 
     describe aws_waf_sql_injection_match_sets do
         its('names') { should include 'SQL_INJECTION_MATCH_SET_NAME' }

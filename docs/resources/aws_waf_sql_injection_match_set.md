@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_sql_injection_match_set
 
-Use the `aws_waf_sql_injection_match_set` InSpec audit resource to test the properties of the singular resource of AWS WAF SqlInjectionMatchSet.
+Use the `aws_waf_sql_injection_match_set` InSpec audit resource to test the properties of a single AWS WAF `SqlInjectionMatchSet` object.
 
 ## Syntax
 
-Ensure that injection match set exists.
+Ensure that a `SqlInjectionMatchSet` object exists.
 
     describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do
       it { should exist }
@@ -19,20 +19,20 @@ Ensure that injection match set exists.
 
 `sql_injection_match_set_id` _(required)_
 
-A unique identifier for a SqlInjectionMatchSet.
+A unique identifier for a `SqlInjectionMatchSet` object.
 
-For additional information, see the [AWS documentation on AWS WAF SqlInjectionMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::SqlInjectionMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| sql_injection_match_set_id | A unique identifier for a SqlInjectionMatchSet. | sql_injection_match_set_id |
-| name | The name of the SqlInjectionMatchSet. | name |
-| sql_injection_match_tuples | Specifies the parts of web requests that you want to inspect for cross-site scripting attacks. | sql_injection_match_tuples |
-| sql_injection_match_tuples_field_to_match_types | The part of the web request that you want AWS WAF to search for a specified string. | sql_injection_match_tuples (field_to_match (type)) |
-| sql_injection_match_tuples_field_to_match_data | When the value of Type is HEADER , enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. | sql_injection_match_tuples (field_to_match (data)) |
-| sql_injection_match_tuples_text_transformations | Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. | sql_injection_match_tuples (text_transformation) |
+| Property | Description |
+| --- | --- |
+| sql_injection_match_set_id | A unique identifier for a `SqlInjectionMatchSet`. |
+| name | The name of the `SqlInjectionMatchSet`. |
+| sql_injection_match_tuples | Specifies the parts of web requests that you want to inspect for cross-site scripting attacks. |
+| sql_injection_match_tuples_field_to_match_types | The part of the web request that you want AWS WAF to search for a specified string. |
+| sql_injection_match_tuples_field_to_match_data | When the value of Type is `HEADER`, enter the name of the header that you want AWS WAF to search, for example, `User-Agent` or `Referer`. |
+| sql_injection_match_tuples_text_transformations | Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. |
 
 ## Examples
 
