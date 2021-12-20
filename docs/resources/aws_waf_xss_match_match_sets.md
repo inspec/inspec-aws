@@ -5,11 +5,11 @@ platform: aws
 
 # aws_waf_xss_match_sets
 
-Use the `aws_waf_xss_match_sets` InSpec audit resource to test the properties of the plural resource of AWS WAF XssMatchSet.
+Use the `aws_waf_xss_match_sets` InSpec audit resource to test the properties of multiple AWS WAF `XssMatchSet` objects.
 
 ## Syntax
 
-Ensure that xss match set exists.
+Ensure that any `XssMatchSet` object exists.
 
     describe aws_waf_xss_match_sets do
       it { should exist }
@@ -17,26 +17,26 @@ Ensure that xss match set exists.
 
 ## Parameters
 
-No parameters required.
+This resource does not require any parameters.
 
-For additional information, see the [AWS documentation on AWS WAF XssMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html).
+For additional information, see the [AWS documentation on the `AWS::WAF::XssMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html).
 
 ## Properties
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| xss_match_set_ids | A unique identifier for an XssMatchSet. | xss_match_set_id |
-| names | The name of the XssMatchSet. | name |
+| xss_match_set_ids | A unique identifier for an `XssMatchSet`. | xss_match_set_id |
+| names | The name of the `XssMatchSet`. | name |
 
 ## Examples
 
-### Ensure a xss match set is available.
+### Verify an `XssMatchSet` object is available by ID.
 
     describe aws_waf_xss_match_sets do
       its('xss_match_set_ids') { should include 'XSS_MATCH_SET_ID' }
     end
 
-### Ensure a xss match setl name is available..
+### Verify an `XssMatchSet` object name is available.
 
     describe aws_waf_xss_match_sets do
         its('names') { should include 'XSS_MATCH_SET_NAME' }
