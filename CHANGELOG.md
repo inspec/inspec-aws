@@ -1,9 +1,19 @@
-<!-- latest_release 1.74.85 -->
+<!-- latest_release 1.74.87 -->
+## [v1.74.87](https://github.com/inspec/inspec-aws/tree/v1.74.87) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_rule [#802](https://github.com/inspec/inspec-aws/pull/802) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.74.86](https://github.com/inspec/inspec-aws/tree/v1.74.86) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_s3_bucket_policy [#783](https://github.com/inspec/inspec-aws/pull/783) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.85](https://github.com/inspec/inspec-aws/tree/v1.74.85) (2021-12-13)
 
 #### Merged Pull Requests
 - Fix resource name in docs [#799](https://github.com/inspec/inspec-aws/pull/799) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.74.84](https://github.com/inspec/inspec-aws/tree/v1.74.84) (2021-12-06)
 
