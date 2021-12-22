@@ -1445,3 +1445,7 @@ output "db_proxy_name" {
 output "target_group_name" {
   value = aws_db_proxy_default_target_group.for_proxy.name
 }
+
+output "bucket_name" {
+  value = aws_s3_bucket.my_test_bucket.id
+}
