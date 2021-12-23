@@ -1,9 +1,14 @@
-<!-- latest_release 1.74.87 -->
+<!-- latest_release 1.75.0 -->
+## [v1.75.0](https://github.com/inspec/inspec-aws/tree/v1.75.0) (2021-12-23)
+
+#### Merged Pull Requests
+- Fixed build failing because of Activesupport library for ruby 2.6 [#816](https://github.com/inspec/inspec-aws/pull/816) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.74.87](https://github.com/inspec/inspec-aws/tree/v1.74.87) (2021-12-15)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_rule [#802](https://github.com/inspec/inspec-aws/pull/802) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.86](https://github.com/inspec/inspec-aws/tree/v1.74.86) (2021-12-15)
 
