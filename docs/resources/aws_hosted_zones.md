@@ -5,7 +5,7 @@ platform: aws
 
 # aws_hosted_zones
 
-Use the `aws_hosted_zones` InSpec audit resource to test the properties of the plural resource of AWS Route53 HostedZone.
+Use the `aws_hosted_zones` InSpec audit resource to test the properties of multiple AWS Route53 hosted zones.
 
 The AWS::Route53::HostedZone creates a new public or private hosted zone.
 
