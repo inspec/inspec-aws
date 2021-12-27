@@ -3,7 +3,7 @@ title: About the aws_route53_record_sets Resource
 platform: aws
 ---
 
-# aws\_route53\_record\_sets
+# aws_route53_record_sets
 
 Use the `aws_route53_record_sets` InSpec audit resource to test properties of multiple AWS Route53 record sets.
 
