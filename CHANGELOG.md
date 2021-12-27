@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.3 -->
+<!-- latest_release 1.75.4 -->
+## [v1.75.4](https://github.com/inspec/inspec-aws/tree/v1.75.4) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_ip_set [#804](https://github.com/inspec/inspec-aws/pull/804) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.75.3](https://github.com/inspec/inspec-aws/tree/v1.75.3) (2021-12-27)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_sql_injection_match_set [#806](https://github.com/inspec/inspec-aws/pull/806) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.75.2](https://github.com/inspec/inspec-aws/tree/v1.75.2) (2021-12-27)
 
