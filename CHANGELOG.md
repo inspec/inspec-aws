@@ -1,9 +1,34 @@
-<!-- latest_release 1.74.84 -->
+<!-- latest_release 1.75.1 -->
+## [v1.75.1](https://github.com/inspec/inspec-aws/tree/v1.75.1) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_byte_match_set [#803](https://github.com/inspec/inspec-aws/pull/803) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.75.0](https://github.com/inspec/inspec-aws/tree/v1.75.0) (2021-12-23)
+
+#### Merged Pull Requests
+- Fixed build failing because of Activesupport library for ruby 2.6 [#816](https://github.com/inspec/inspec-aws/pull/816) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.87](https://github.com/inspec/inspec-aws/tree/v1.74.87) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_rule [#802](https://github.com/inspec/inspec-aws/pull/802) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.86](https://github.com/inspec/inspec-aws/tree/v1.74.86) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_s3_bucket_policy [#783](https://github.com/inspec/inspec-aws/pull/783) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.85](https://github.com/inspec/inspec-aws/tree/v1.74.85) (2021-12-13)
+
+#### Merged Pull Requests
+- Fix resource name in docs [#799](https://github.com/inspec/inspec-aws/pull/799) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.74.84](https://github.com/inspec/inspec-aws/tree/v1.74.84) (2021-12-06)
 
 #### Merged Pull Requests
 - Feature request for CloudFormation Template [#770](https://github.com/inspec/inspec-aws/pull/770) ([jb897](https://github.com/jb897))
-<!-- latest_release -->
 
 ## [v1.74.83](https://github.com/inspec/inspec-aws/tree/v1.74.83) (2021-12-06)
 
