@@ -21,7 +21,7 @@ The `AWS::Route53::HostedZone` creates a new public or private hosted zone.
 
 This resource does not expect any parameters.
 
-For additional information, see the [AWS documentation on AWS Route53 HostedZone](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-hostedzone.html).
+For additional information, see the [AWS documentation on the `AWS::Route53::HostedZone` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-hostedzone.html).
 
 ## Properties
 
