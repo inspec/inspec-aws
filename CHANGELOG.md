@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.4 -->
+<!-- latest_release 1.75.5 -->
+## [v1.75.5](https://github.com/inspec/inspec-aws/tree/v1.75.5) (2021-12-27)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_maintenance_window [#798](https://github.com/inspec/inspec-aws/pull/798) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.75.4](https://github.com/inspec/inspec-aws/tree/v1.75.4) (2021-12-27)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_ip_set [#804](https://github.com/inspec/inspec-aws/pull/804) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.75.3](https://github.com/inspec/inspec-aws/tree/v1.75.3) (2021-12-27)
 
