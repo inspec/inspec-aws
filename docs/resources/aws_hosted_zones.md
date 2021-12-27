@@ -11,7 +11,7 @@ The `AWS::Route53::HostedZone` creates a new public or private hosted zone.
 
 ## Syntax
 
-##### Ensure the hosted zones are available
+Ensure the hosted zones are available
 
     describe aws_hosted_zones do
       it { should exist }
