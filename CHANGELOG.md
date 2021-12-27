@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.1 -->
+<!-- latest_release 1.75.2 -->
+## [v1.75.2](https://github.com/inspec/inspec-aws/tree/v1.75.2) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_xss_match_set [#807](https://github.com/inspec/inspec-aws/pull/807) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.75.1](https://github.com/inspec/inspec-aws/tree/v1.75.1) (2021-12-27)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_byte_match_set [#803](https://github.com/inspec/inspec-aws/pull/803) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.75.0](https://github.com/inspec/inspec-aws/tree/v1.75.0) (2021-12-23)
 
