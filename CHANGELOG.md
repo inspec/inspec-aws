@@ -1,9 +1,39 @@
-<!-- latest_release 1.74.87 -->
+<!-- latest_release 1.75.5 -->
+## [v1.75.5](https://github.com/inspec/inspec-aws/tree/v1.75.5) (2021-12-27)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_maintenance_window [#798](https://github.com/inspec/inspec-aws/pull/798) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.75.4](https://github.com/inspec/inspec-aws/tree/v1.75.4) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_ip_set [#804](https://github.com/inspec/inspec-aws/pull/804) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.3](https://github.com/inspec/inspec-aws/tree/v1.75.3) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_sql_injection_match_set [#806](https://github.com/inspec/inspec-aws/pull/806) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.2](https://github.com/inspec/inspec-aws/tree/v1.75.2) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_xss_match_set [#807](https://github.com/inspec/inspec-aws/pull/807) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.1](https://github.com/inspec/inspec-aws/tree/v1.75.1) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_byte_match_set [#803](https://github.com/inspec/inspec-aws/pull/803) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.0](https://github.com/inspec/inspec-aws/tree/v1.75.0) (2021-12-23)
+
+#### Merged Pull Requests
+- Fixed build failing because of Activesupport library for ruby 2.6 [#816](https://github.com/inspec/inspec-aws/pull/816) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.74.87](https://github.com/inspec/inspec-aws/tree/v1.74.87) (2021-12-15)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_rule [#802](https://github.com/inspec/inspec-aws/pull/802) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.74.86](https://github.com/inspec/inspec-aws/tree/v1.74.86) (2021-12-15)
 

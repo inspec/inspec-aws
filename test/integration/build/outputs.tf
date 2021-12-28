@@ -1449,3 +1449,71 @@ output "target_group_name" {
 output "bucket_name" {
   value = aws_s3_bucket.my_test_bucket.id
 }
+
+output "aws_ssm_maintenance_window_id" {
+  value = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_name" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.name
+}
+
+output "aws_ssm_maintenance_window_target_description" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.description
+}
+
+output "aws_ssm_maintenance_window_target_window_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.id
+}
+
+output "aws_ssm_maintenance_window_task_window_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_task_arn" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_arn
+}
+
+output "aws_ssm_maintenance_window_task_task_type" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_type
+}
+
+output "aws_ssm_maintenance_window_task_max_concurrency" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.max_concurrency
+}
+
+output "aws_ssm_maintenance_window_task_priority" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.priority
+}
+
+output "aws_ssm_patch_baseline_id" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.id
+}
+
+output "aws_ssm_patch_baseline_arn" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.arn
+}
+
+output "aws_ssm_patch_baseline_name" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.name
+}
+
+output "aws_ssm_patch_baseline_approved_patches" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.approved_patches
+}
+
+output "aws_ssm_resource_data_sync_name" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.name
+}
+
+output "aws_ssm_resource_data_sync_id" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.id
+}
