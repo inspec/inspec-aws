@@ -27,7 +27,21 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 |Property                    | Description|
 | ---                        | --- |
-|volume_ids                 | The unique IDs of the EBS Volumes returned. |
+| attachments | The EBS Volume attachments returned. |
+| availability_zones | The list of availability zones in use by the EBS Volumes. |
+| create_times | The creation times of the EBS Volumes. |
+| encrypted | The list of true/false values indicating whether the EBS Volumes are encrypted. |
+| fast_restored | The list of true/false values indicating whether the EBS Volume was created with a snapshot enabled for fast snapshot restore. |
+| iops | The list of I/O per second for each EBS Volume. |
+| kms_key_ids | The list of ARNs for EBS Volume KMS Keys. |
+| multi_attach_enabled | The list of boolean values indicating whether the EBS Volume is Multi-Attach enabled. |
+| outpost_arns | The list of ARNs of Outposts. |
+| sizes | The list of EBS Volume sizes. |
+| snapshot_ids | The list of snapshots from which EBS Volumes were created. |
+| states | The list of volume states returned. |
+| tags | The list of volume tags returned. |
+| volume_ids | The unique IDs of the EBS Volumes returned. |
+| volume_types | The list of volume types returned |
 |entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
