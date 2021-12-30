@@ -5,11 +5,13 @@ platform: aws
 
 # aws_waf_web_acls
 
-Use the `aws_waf_web_acls` InSpec audit resource to test the properties of the plural resource of AWS WAF WebACL.
+Use the `aws_waf_web_acls` InSpec audit resource to test the properties of multiple of AWS WAF WebACL.
+
+The `AWS::WAFv2::WebACL` AWS resource defines a collection of rules to use to inspect and control web requests.
 
 ## Syntax
 
-Ensure that web acl exists.
+Ensure that web ACL exists.
 
     describe aws_waf_web_acls do
       it { should exist }
@@ -19,7 +21,7 @@ Ensure that web acl exists.
 
 No required parameters.
 
-For additional information, see the [AWS documentation on AWS WAF WebACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html).
+For additional information, see the [AWS documentation on the `AWS::WAFv2::WebACL` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html).
 
 ## Properties
 
@@ -30,13 +32,13 @@ For additional information, see the [AWS documentation on AWS WAF WebACL](https:
 
 ## Examples
 
-### Ensure a web acl is available.
+### Ensure a web ACL is available.
 
     describe aws_waf_web_acls do
       its('web_acl_ids') { should include 'WEB_ACL_ID' }
     end
 
-### Ensure a web acl name is available..
+### Ensure a web ACL name is available..
 
     describe aws_waf_web_acls do
         its('names') { should include 'WEB_ACL_NAME' }
