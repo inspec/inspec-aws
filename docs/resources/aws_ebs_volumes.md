@@ -5,16 +5,16 @@ platform: aws
 
 # aws_ebs_volumes
 
-Use the `aws_ebs_volumes` InSpec audit resource to test properties of a collection of AWS EBS volumes.
+Use the `aws_ebs_volumes` InSpec audit resource to test the properties of a collection of AWS EBS volumes.
 
-EBS volumes are persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud.
+EBS volumes are persistent block storage volumes for Amazon EC2 instances in the AWS Cloud.
 
 ## Syntax
 
- Ensure you have exactly 3 volumes
+ Ensure you have exactly three volumes.
 
     describe aws_ebs_volumes do
-      its('volume_ids.count') { should cmp 3 }
+      its('VOLUME_ID_COUNT') { should cmp 3 }
     end
 
 ## Parameters
@@ -25,20 +25,36 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-|Property                    | Description|
+| Property                   | Description |
 | ---                        | --- |
-|volume_ids                 | The unique IDs of the EBS Volumes returned. |
-|entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| attachments                | The EBS volume attachments returned. |
+| availability_zones         | The list of availability zones in use by the EBS volumes. |
+| create_times               | The creation times of the EBS volumes. |
+| encrypted                  | The list of true/false values indicating whether the EBS volumes are encrypted. |
+| fast_restored              | The list of true/false values indicating whether the EBS volume is created with a snapshot enabled for fast snapshot restore. |
+| iops                       | The list of I/O per second for each EBS volume. |
+| kms_key_ids                | The list of ARNs for EBS volume KMS keys. |
+| multi_attach_enabled       | The list of boolean values indicating whether the EBS volume is multi-attach enabled. |
+| outpost_arns               | The list of ARNs of outposts. |
+| sizes                      | The list of EBS volume sizes. |
+| snapshot_ids               | The list of snapshots from which EBS volumes are created. |
+| states                     | The list of volume states returned. |
+| tags                       | The list of volume tags returned. |
+| volume_ids                 | The unique IDs of the EBS volumes returned. |
+| volume_types               | The list of volume types returned. |
+| entries                    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
 ### Ensure a specific volume exists
 
     describe aws_ebs_volumes do
-      its('volume_ids') { should include 'vol-12345678' }
+      its('VOLUME_IDs') { should include 'VOLUME-12345678' }
     end
 
-### Use the InSpec resource to request the IDs of all EBS volumes, then test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
+### Request the EBS volumes IDs
+
+Test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
 
     aws_ebs_volumes.volume_ids.each do |volume_id|
       describe aws_ebs_volume(volume_id) do
@@ -47,7 +63,6 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
         its('iops') { should cmp 100 }
       end
     end
-
 
 ## Matchers
 
