@@ -1541,3 +1541,87 @@ output "aws_route53_zone_id" {
 output "aws_route53_zone_name" {
   value = aws_route53_zone.test_zone.name
 }
+
+output "aws_waf_byte_match_set_id" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.id
+}
+
+output "aws_waf_byte_match_set_name" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.name
+}
+
+output "aws_waf_byte_match_set_byte_match_tuples" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.byte_match_tuples
+}
+
+output "aws_waf_ipset_id" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.id
+}
+
+output "aws_waf_ipset_arn" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.arn
+}
+
+output "aws_waf_ipset_name" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.name
+}
+
+output "aws_waf_ipset_ip_set_descriptors" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.ip_set_descriptors
+}
+
+output "aws_waf_rule_id" {
+  value = aws_waf_rule.aws_waf_rule_test1.id
+}
+
+output "aws_waf_rule_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.name
+}
+
+output "aws_waf_rule_arn" {
+  value = aws_waf_rule.aws_waf_rule_test1.arn
+}
+
+output "aws_waf_rule_metric_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.metric_name
+}
+
+output "aws_waf_size_constraint_set_id" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.id
+}
+
+output "aws_waf_size_constraint_set_name" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.name
+}
+
+output "aws_waf_size_constraint_set_arn" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.arn
+}
+
+output "aws_waf_size_constraint_set_size_constraints" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.size_constraints
+}
+
+output "aws_waf_sql_injection_match_set_id" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.id
+}
+
+output "aws_waf_sql_injection_match_set_name" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.name
+}
+
+output "aws_waf_web_acl_id" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.id
+}
+
+output "aws_waf_web_acl_arn" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.arn
+}
+
+output "aws_waf_web_acl_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.name
+}
+
+output "aws_waf_web_acl_metric_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.metric_name
+}
