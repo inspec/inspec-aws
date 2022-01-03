@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.8 -->
+<!-- latest_release 1.75.9 -->
+## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/update_readme_till_sprint_15 [#812](https://github.com/inspec/inspec-aws/pull/812) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.75.8](https://github.com/inspec/inspec-aws/tree/v1.75.8) (2022-01-03)
 
 #### Merged Pull Requests
 - nirbhay/aws_waf_web_acl [#808](https://github.com/inspec/inspec-aws/pull/808) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.75.7](https://github.com/inspec/inspec-aws/tree/v1.75.7) (2022-01-03)
 
