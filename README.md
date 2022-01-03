@@ -414,6 +414,13 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | Others | [aws_ssm_activation](docs/resources/aws_ssm_activation.md) |  [aws_ssm_activations](docs/resources/aws_ssm_activations.md) |
 |  |  |  | [aws_ssm_resource_compliance_summary](docs/resources/aws_ssm_resource_compliance_summary.md) | [aws_ssm_resource_compliance_summaries](docs/resources/aws_ssm_resource_compliance_summaries.md) |
 | Amazon Timestream | Migration & Transfer | [AWS::Transfer::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html) | [aws_transfer_user](docs/resources/aws_transfer_user.md) | [aws_transfer_users](docs/resources/aws_transfer_users.md) |
+| WAF | Security, Identity, & Compliance | [AWS::WAF::ByteMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-bytematchset.html) | [aws_waf_byte_match_set](docs/resources/aws_waf_byte_match_set.md) | [aws_waf_byte_match_sets](docs/resources/aws_waf_byte_match_sets.md) |
+|  |  | [AWS::WAF::IPSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html) | [aws_waf_ip_set](docs/resources/aws_waf_ip_set.md) | [aws_waf_ip_sets](docs/resources/aws_waf_ip_sets.md) |
+|  |  | [AWS::WAF::Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html) | [aws_waf_rule](docs/resources/aws_waf_rule.md) | [aws_waf_rules](docs/resources/aws_waf_rules.md) |
+|  |  | [AWS::WAF::SizeConstraintSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sizeconstraintset.html) | [aws_waf_size_constraint_set](docs/resources/aws_waf_size_constraint_set.md) | [aws_waf_size_constraint_sets](docs/resources/aws_waf_size_constraint_sets.md) |
+|  |  | [AWS::WAF::SqlInjectionMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html) | [aws_waf_sql_injection_match_set](docs/resources/aws_waf_sql_injection_match_set.md) | [aws_waf_sql_injection_match_sets](docs/resources/aws_waf_sql_injection_match_sets.md) |
+|  |  | [AWS::WAF::WebACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html) | [aws_waf_web_acl](docs/resources/aws_waf_web_acl.md) | [aws_waf_web_acls](docs/resources/aws_waf_web_acls.md) |
+|  |  | [AWS::WAF::XssMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html) | [aws_waf_xss_match_set](docs/resources/aws_waf_xss_match_set.md) | [aws_waf_xss_match_sets](docs/resources/aws_waf_xss_match_sets.md) |
 
 ## Examples 
 
