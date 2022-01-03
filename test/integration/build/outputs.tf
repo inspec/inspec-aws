@@ -38,6 +38,22 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_volume_encrypted" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.encrypted
+}
+
+output "aws_ebs_volume_iops" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.iops
+}
+
+output "aws_ebs_volume_size" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.size
+}
+
+output "aws_ebs_volume_type" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.type
+}
+
 output "aws_ebs_snapshot_id" {
   value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
 }
@@ -1516,4 +1532,12 @@ output "aws_ssm_resource_data_sync_name" {
 
 output "aws_ssm_resource_data_sync_id" {
   value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.id
+}
+
+output "aws_route53_zone_id" {
+  value = aws_route53_zone.test_zone.id
+}
+
+output "aws_route53_zone_name" {
+  value = aws_route53_zone.test_zone.name
 }

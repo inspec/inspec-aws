@@ -1,9 +1,19 @@
-<!-- latest_release 1.75.5 -->
+<!-- latest_release 1.75.7 -->
+## [v1.75.7](https://github.com/inspec/inspec-aws/tree/v1.75.7) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/aws_hosted_zone_all_record_issue_fix [#811](https://github.com/inspec/inspec-aws/pull/811) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.75.6](https://github.com/inspec/inspec-aws/tree/v1.75.6) (2021-12-30)
+
+#### Merged Pull Requests
+- Add attributes to ebs volumes resource [#813](https://github.com/inspec/inspec-aws/pull/813) ([jnikles1](https://github.com/jnikles1))
+
 ## [v1.75.5](https://github.com/inspec/inspec-aws/tree/v1.75.5) (2021-12-27)
 
 #### Merged Pull Requests
 - soumyo/aws_ssm_maintenance_window [#798](https://github.com/inspec/inspec-aws/pull/798) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.75.4](https://github.com/inspec/inspec-aws/tree/v1.75.4) (2021-12-27)
 
