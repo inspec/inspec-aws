@@ -38,6 +38,22 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_volume_encrypted" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.encrypted
+}
+
+output "aws_ebs_volume_iops" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.iops
+}
+
+output "aws_ebs_volume_size" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.size
+}
+
+output "aws_ebs_volume_type" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.type
+}
+
 output "aws_ebs_snapshot_id" {
   value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
 }
@@ -1444,4 +1460,84 @@ output "db_proxy_name" {
 
 output "target_group_name" {
   value = aws_db_proxy_default_target_group.for_proxy.name
+}
+
+output "bucket_name" {
+  value = aws_s3_bucket.my_test_bucket.id
+}
+
+output "aws_ssm_maintenance_window_id" {
+  value = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_name" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.name
+}
+
+output "aws_ssm_maintenance_window_target_description" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.description
+}
+
+output "aws_ssm_maintenance_window_target_window_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.id
+}
+
+output "aws_ssm_maintenance_window_task_window_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_task_arn" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_arn
+}
+
+output "aws_ssm_maintenance_window_task_task_type" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_type
+}
+
+output "aws_ssm_maintenance_window_task_max_concurrency" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.max_concurrency
+}
+
+output "aws_ssm_maintenance_window_task_priority" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.priority
+}
+
+output "aws_ssm_patch_baseline_id" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.id
+}
+
+output "aws_ssm_patch_baseline_arn" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.arn
+}
+
+output "aws_ssm_patch_baseline_name" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.name
+}
+
+output "aws_ssm_patch_baseline_approved_patches" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.approved_patches
+}
+
+output "aws_ssm_resource_data_sync_name" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.name
+}
+
+output "aws_ssm_resource_data_sync_id" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.id
+}
+
+output "aws_route53_zone_id" {
+  value = aws_route53_zone.test_zone.id
+}
+
+output "aws_route53_zone_name" {
+  value = aws_route53_zone.test_zone.name
 }

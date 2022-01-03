@@ -1,13 +1,13 @@
 ---
-title: About the aws_ec2_transit_gateway_route_table_propagations Resource
+title: About the aws_ec2_vpn_gateway_route_propagations Resource
 platform: aws
 ---
 
-# aws\_ec2\_transit_gateway_route\_table\_propagations
+# aws_ec2_vpn_gateway_route_propagations
 
-Use the `aws_ec2_transit_gateway_route_table_propagations` InSpec audit resource to test if virtual private gateways can propagate routes to multiple AWS EC2 route tables.
+Use the `aws_ec2_vpn_gateway_route_propagations` InSpec audit resource to test if virtual private gateways can propagate routes to multiple AWS EC2 route tables.
 
-The `AWS::EC2::TransitGatewayRouteTablePropagation` resource enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
+The `AWS::EC2::VPNGatewayRoutePropagation` resource enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
 
 ## Syntax
 
