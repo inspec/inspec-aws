@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.10 -->
+<!-- latest_release 1.75.11 -->
+## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
+
+#### Merged Pull Requests
+- Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
 
 #### Merged Pull Requests
 - Move release dates JSON file to assets dir [#817](https://github.com/inspec/inspec-aws/pull/817) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
 
