@@ -37,9 +37,13 @@ While this resource provides facilities for searching inbound and outbound rules
       it { should exist }
     end
 
+    # Using only resource_data for cached aws_security_group for faster execution.
+    describe aws_security_group(resource_data: aws_security_group_object) do
+      it { should exist }
+    end
 #### Parameters
 
-You must provide at least one parameter; `group_id`, `group_name` or `vpc_id`
+You must provide at least one parameter; `group_id`, `group_name` , `vpc_id` or `resource_data`
 
 ##### group\_id _(required if no other parameter provided)_
 
@@ -55,6 +59,11 @@ This can be passed either as a string or as a `group_name: 'value'` key-value en
 
 The ID of the VPC associated with the SG.
 This can be passed either as a string or as a `vpc_id: 'value'` key-value entry in a hash.
+
+##### resource_data _(required if no other parameter provided)_
+
+The resource_data cached object of SG.
+This needs be passed either as a `resource_data: security_group AWS struct` key-value entry in a hash.
 
 See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 

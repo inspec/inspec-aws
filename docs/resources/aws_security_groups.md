@@ -16,7 +16,22 @@ An `aws_security_groups` resource block uses an optional filter to select a grou
     describe aws_security_groups do
       its('entries.count') { should be > 1 }
     end
-    
+
+An `aws_security_groups` resource block uses an optional filter to select a group of security groups and then tests that group.
+
+    describe aws_security_groups do
+      its('entries.count') { should be > 1 }
+    end
+
+Testing for `aws_security_groups` using local caching(in memory caching)  for quicker execution of large set of test cases.
+It uses `security_group_objects` as resource_data filter passed to singular resource for each iteration.
+
+    aws_security_groups.entries.each do |entry|
+        describe aws_security_group(resource_data: entry) do
+            it { should exist }
+            its('count') { should be >= 4 }
+        end
+    end
 #### Parameters
 
 This resource does not expect any parameters.
@@ -30,6 +45,9 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 |group\_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
 |group\_names | An integer indicating the maximum number of instances in the auto scaling group |
 |vpc\_ids     | An integer indicating the desired  number of instances in the auto scaling group |
+|ip_permissions         | A list of the rules that the Security Group applies to incoming network traffic. |
+|ip_permissions_egress  | A list of the rules that the Security Group applies to outgoing network traffic initiated by the AWS resource in the Security Group. |
+|descriptions |Description for the rule, which can help to identify it later. A description can be up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*.|
 |tags         | An integer indicating the minimum number of instances in the auto scaling group |
 |entries      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 

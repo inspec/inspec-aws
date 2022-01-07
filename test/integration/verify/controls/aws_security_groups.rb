@@ -35,4 +35,11 @@ control 'aws-security-groups-1.0' do
                                         'Name' => aws_security_group_alpha)}
   end
 
+  aws_security_groups.entries.each do |entry|
+    describe aws_security_group(resource_data: entry) do
+      it { should exist }
+      its('count') { should be >= 4 }
+    end
+  end
+
 end

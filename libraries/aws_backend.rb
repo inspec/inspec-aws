@@ -386,7 +386,7 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
@@ -454,7 +454,7 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   def map_tags(tag_list)
-    return {} if tag_list.nil? || tag_list.empty?
+    return {} if tag_list.nil? || tag_list.empty? || tag_list.is_a?(Hash)
     tags = {}
     tag_list.each do |tag|
       tags[tag[:key]] = tag[:value]

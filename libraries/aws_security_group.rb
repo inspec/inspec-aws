@@ -12,48 +12,53 @@ class AwsSecurityGroup < AwsResourceBase
     it { should exist }
   end
   "
-  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :tags
+  attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :tags, :resource_data
 
   def initialize(opts = {})
     opts = { group_id: opts } if opts.is_a?(String)
     opts[:group_id] = opts.delete(:id) if opts.key?(:id) # id is an alias for group_id
 
     super(opts)
-    validate_parameters(require_any_of: %i(group_id group_name vpc_id))
 
-    filter = []
-    if opts.key?(:vpc_id)
-      raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-[0-9a-f]{8}|(^vpc\-[0-9a-f]{17})$/
-      filter += [{ name: 'vpc-id', values: [opts[:vpc_id]] }]
-    end
+    if !opts.key?(:resource_data)
+      validate_parameters(require_any_of: %i(group_id group_name vpc_id))
 
-    if opts.key?(:group_id)
-      raise ArgumentError, "#{@__resource_name__}: security group ID must be in the format 'sg-' followed by 8 or 17 hexadecimal characters." if opts[:group_id] !~ /^sg\-[0-9a-f]{8}|(^sg\-[0-9a-f]{17})$/
-      filter += [{ name: 'group-id', values: [opts[:group_id]] }]
-    end
-
-    filter += [{ name: 'group-name', values: [opts[:group_name]] }] if opts.key?(:group_name)
-
-    catch_aws_errors do
-      resp = @aws.compute_client.describe_security_groups({ filters: filter })
-      if resp.security_groups.empty?
-        @inbound_rules = []
-        @outbound_rules = []
-        @group_id = 'empty response'
-        return
+      filter = []
+      if opts.key?(:vpc_id)
+        raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-[0-9a-f]{8}|(^vpc\-[0-9a-f]{17})$/
+        filter += [{ name: 'vpc-id', values: [opts[:vpc_id]] }]
       end
-      @security_group = resp.security_groups[0]
-      @group_id = @security_group.group_id
-      @vpc_id   = @security_group.vpc_id
-      @description    = @security_group.description
-      @group_name     = @security_group.group_name
-      @inbound_rules  = @security_group.ip_permissions.map(&:to_h)
-      @outbound_rules = @security_group.ip_permissions_egress.map(&:to_h)
 
-      @inbound_rules_count = count_sg_rules(@security_group.ip_permissions.map(&:to_h))
-      @outbound_rules_count = count_sg_rules(@security_group.ip_permissions_egress.map(&:to_h))
-      @tags = map_tags(@security_group.tags)
+      if opts.key?(:group_id)
+        raise ArgumentError, "#{@__resource_name__}: security group ID must be in the format 'sg-' followed by 8 or 17 hexadecimal characters." if opts[:group_id] !~ /^sg\-[0-9a-f]{8}|(^sg\-[0-9a-f]{17})$/
+        filter += [{ name: 'group-id', values: [opts[:group_id]] }]
+      end
+      filter += [{ name: 'group-name', values: [opts[:group_name]] }] if opts.key?(:group_name)
     end
+
+    if opts.key?(:resource_data)
+      @security_group = opts[:resource_data]
+    else
+      catch_aws_errors do
+        resp = @aws.compute_client.describe_security_groups({ filters: filter })
+        if resp.security_groups.empty?
+          @inbound_rules = []
+          @outbound_rules = []
+          @group_id = 'empty response'
+          return
+        end
+        @security_group = resp.security_groups[0]
+      end
+    end
+    @group_id = @security_group.group_id
+    @vpc_id   = @security_group.vpc_id
+    @description    = @security_group.description
+    @group_name     = @security_group.group_name
+    @inbound_rules = @security_group.ip_permissions.map(&:to_h)
+    @outbound_rules = @security_group.ip_permissions_egress.map(&:to_h)
+    @inbound_rules_count = count_sg_rules(@inbound_rules.map(&:to_h))
+    @outbound_rules_count = count_sg_rules(@outbound_rules.map(&:to_h))
+    @tags = map_tags(@security_group.tags)
   end
 
   def allow_in?(criteria = {})

@@ -25,6 +25,9 @@ class AwsSecurityGroups < AwsResourceBase
              .register_column(:group_names, field: :group_name)
              .register_column(:vpc_ids,     field: :vpc_id)
              .register_column(:tags,        field: :tags)
+             .register_column(:descriptions, field: :description)
+             .register_column(:ip_permissions, field: :ip_permissions)
+             .register_column(:ip_permissions_egress, field: :ip_permissions_egress)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -48,11 +51,15 @@ class AwsSecurityGroups < AwsResourceBase
                                     vpc_id: security_group.vpc_id,
                                     group_name: security_group.group_name,
                                     tags: map_tags(security_group.tags),
+                                    description: security_group.description,
+                                    ip_permissions:  security_group.ip_permissions,
+                                    ip_permissions_egress: security_group.ip_permissions_egress,
         }]
       end
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
+    # require 'pry'; binding.pry
     @table = security_group_rows
   end
 end
