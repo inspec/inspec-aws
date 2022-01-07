@@ -1,9 +1,14 @@
-<!-- latest_release 1.75.9 -->
+<!-- latest_release 1.75.10 -->
+## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
+
+#### Merged Pull Requests
+- Move release dates JSON file to assets dir [#817](https://github.com/inspec/inspec-aws/pull/817) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
 
 #### Merged Pull Requests
 - soumyo/update_readme_till_sprint_15 [#812](https://github.com/inspec/inspec-aws/pull/812) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.75.8](https://github.com/inspec/inspec-aws/tree/v1.75.8) (2022-01-03)
 
