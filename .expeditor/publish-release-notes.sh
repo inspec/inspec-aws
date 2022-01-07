@@ -20,7 +20,7 @@ DATES_FILE="${DOCS_DIR}/release-dates.json"
 DATES=$( cat "$DATES_FILE" | jq --arg DATE "$CURRENTDATE" '. |= .+ [$DATE]' )
 echo $DATES | jq . > "$DATES_FILE"
 
-# Temporary fix
+# Append the date to the array of dates in docs-chef-io/assets/release-notes/inspec-aws/release-dates.json
 DATES_FILE="${DOCS_ASSETS_DIR}/release-dates.json"
 DATES=$( cat "$DATES_FILE" | jq --arg DATE "$CURRENTDATE" '. |= .+ [$DATE]' )
 echo $DATES | jq . > "$DATES_FILE"
