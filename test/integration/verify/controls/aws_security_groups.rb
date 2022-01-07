@@ -35,4 +35,20 @@ control 'aws-security-groups-1.0' do
                                         'Name' => aws_security_group_alpha)}
   end
 
+  aws_security_groups.entries.each do |entry|
+    describe aws_security_group(resource_data: entry) do
+      it { should exist }
+      its('count') { should be >= 4 }
+      its('description') { should cmp 'SG alpha' }
+      its('inbound_rules') { should be_a_kind_of(Array) }
+      its('inbound_rules.first') { should be_a_kind_of(Hash) }
+      its('inbound_rules.count') { should cmp 3 } # 3 explicit, one implicit
+      its('inbound_rules_count') { should cmp 4 }
+      its('outbound_rules') { should be_a_kind_of(Array) }
+      its('outbound_rules.first') { should be_a_kind_of(Hash) }
+      its('outbound_rules.count') { should cmp 1 } # 1 explicit
+      its('outbound_rules_count') { should cmp 3 } # 3 CIDR blocks specified
+    end
+  end
+
 end
