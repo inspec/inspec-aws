@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_route53_record_sets` InSpec audit resource to test properties of multiple AWS Route53 record sets.
 
-The AWS::Route53::RecordSet type can be used as a standalone resource or as an embedded property in the AWS::Route53::RecordSetGroup type.
+The `AWS::Route53::RecordSet` type can be used as a standalone resource or as an embedded property in the `AWS::Route53::RecordSetGroup` type.
 
 ## Syntax
 
