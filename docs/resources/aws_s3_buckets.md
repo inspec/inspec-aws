@@ -25,7 +25,6 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 |Property      | Description|
 | ---          | --- |
 |bucket\_names | An Array of bucket names. |
-|tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
 |entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
@@ -36,12 +35,6 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
       # OR
       its('bucket_names') { should include 'my_bucket' }
     end
-    
-##### Check the tags on buckets                
-        describe aws_s3_buckets.where( bucket_names: 'my-bucket' ) do
-            its('tags') { should include(:Environment => 'env-name',
-                                         :Name => 'bucket-name')}
-        end
     
 ## Matchers
 
