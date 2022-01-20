@@ -23,7 +23,8 @@ class AwsEc2Instance < AwsResourceBase
     super(opts)
     validate_parameters(require_any_of: %i(instance_id name))
 
-    if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
+    if !opts[:resource_data]
+      if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
       if !opts[:instance_id].is_a?(String) || opts[:instance_id] !~ /(^i-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
         raise ArgumentError, "#{@__resource_name__}: `instance_id` must be a string in the format of 'i-' followed by 8 or 17 hexadecimal characters."
       end
@@ -34,10 +35,11 @@ class AwsEc2Instance < AwsResourceBase
       instance_arguments = { filters: [{ name: 'tag:Name', values: [opts[:name]] }] }
     else
       raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided."
+      end
     end
 
     catch_aws_errors do
-      resp = @aws.compute_client.describe_instances(instance_arguments)
+      resp = opts[:resource_data] || @aws.compute_client.describe_instances(instance_arguments)
       if resp.reservations.first.nil? || resp.reservations.first.instances.first.nil?
         empty_response_warn
         return
