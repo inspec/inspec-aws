@@ -78,6 +78,11 @@ class AwsConnection
 
   def aws_client(klass)
     # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different args per client in cases such as EC2 instance that use multiple different clients
+
+    # @client_args[:stub_data][:client] ||= klass if @client_args[:stub_data].present?
+    if @client_args && @client_args[:resource_data] && !@client_args[:resource_data].empty?
+      return AwsMockResource.new(@client_args[:resource_data])
+    end
     return @cache[klass.to_s.to_sym] ||= klass.new(@client_args) if @client_args
     @cache[klass.to_s.to_sym] ||= klass.new
   end
@@ -328,6 +333,19 @@ class AwsConnection
   end
 end
 
+
+class AwsMockResource
+  def initialize(opts)
+    @opts = opts
+  end
+
+  private
+  attr_reader :opts
+  def method_missing(symbol, *args)
+    [opts[:resource_data]]
+  end
+end
+
 # Base class for AWS resources
 #
 class AwsResourceBase < Inspec.resource(1)
@@ -351,6 +369,13 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
+      if @opts.key?(:resource_data)
+        @opts[:resource_data] = @opts[:resource_data].to_h
+      end
+      if @opts[:resource_data] && !@opts[:resource_data].empty?
+        client_args[:client_args][:stub_responses] = true
+        client_args[:client_args][:resource_data] = @opts[:resource_data]
+      end
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
     end
     @aws = AwsConnection.new(client_args)
@@ -386,7 +411,7 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
