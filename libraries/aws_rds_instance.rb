@@ -40,10 +40,8 @@ class AwsRdsInstance < AwsResourceBase
   alias encrypted? has_encrypted_storage?
 
   def tags
-    begin
-      tag_list = @aws.rds_client.list_tags_for_resource(resource_name: @rds_instance[:db_instance_arn]).tag_list
-    rescue
-      return {}
+    tag_list = catch_aws_errors do
+      @aws.rds_client.list_tags_for_resource(resource_name: @rds_instance[:db_instance_arn]).tag_list
     end
     map_tags(tag_list)
   end
