@@ -539,13 +539,13 @@ class AwsCollectionResourceBase < AwsResourceBase
   end
 
   private
+
   def populate_filter_table_from_response
     return unless @table.present?
 
     table_schema = @table.first.keys.map { |key| { column: key.to_s.pluralize.to_sym, field: key, style: :simple } }
     AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
   end
-
 end
 
 # Class to create methods on the calling object at run time.  Heavily based on the Azure Inspec resources.
