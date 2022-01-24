@@ -39,6 +39,7 @@ control 'aws-security-groups-1.0' do
     describe aws_security_group(resource_data: entry) do
       it { should exist }
       its('count') { should be >= 4 }
+
     end
   end
 
