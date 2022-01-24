@@ -1,9 +1,14 @@
-<!-- latest_release 1.76.0 -->
+<!-- latest_release 1.76.1 -->
+## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
+
+#### Merged Pull Requests
+- Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
 
 #### Merged Pull Requests
 - Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
-<!-- latest_release -->
 
 ## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
 

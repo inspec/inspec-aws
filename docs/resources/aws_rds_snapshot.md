@@ -22,6 +22,11 @@ An error is raised if more than one RDS snapshot matches (due to vague search pa
     describe aws_rds_snapshot(db_snapshot_identifier: 'TEST-SNAPSHOT-ID') do
       it { should exist }
     end
+    describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+        its ('engine')         { should eq 'MYSQL' }
+        its ('engine_version') { should eq '5.6.37' }
+    end
+
 
 ## Parameters
 
@@ -30,6 +35,12 @@ An error is raised if more than one RDS snapshot matches (due to vague search pa
 This resource accepts a single parameter either as a string or a `db_snapshot_identifier: 'value'` key-value entry in a hash. This parameter is user-supplied DB snapshot identifier. This parameter isn't case-sensitive and is a required parameter.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
+
+### resource_data _(required_if_no_other_param_is_provided)_
+
+This resource accepts a single parameter, the user-supplied cached AWS_RDS_SNAPSHOT. 
+This needs to be passed  as a `struct` .
+
 
 ## Properties
 
@@ -44,11 +55,13 @@ For a comprehensive list of properties available to test on an RDS snapshot see 
       its ('engine_version') { should eq '5.6.37' }
     end
 
+
 ### Tests the storage allocated to an RDS snapshot
 
     describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
       its ('allocated_storage') { should eq 10 }
     end
+    
 
 ### Tests the snapshot type and master username
 
@@ -56,6 +69,11 @@ For a comprehensive list of properties available to test on an RDS snapshot see 
       its ('master_username')   { should eq 'DB-MAINTAIN' }
     end
 
+### Tests the snapshot using cached resource_data
+    describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+        its ('engine')         { should eq 'MYSQL' }
+        its ('engine_version') { should eq '5.6.37' }
+    end
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
