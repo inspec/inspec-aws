@@ -59,7 +59,7 @@ class AwsEcrRepositories < AwsResourceBase
         }]
       end
       break unless @api_response.next_token
-      query_params[:next_token] = @api_response.next_token
+      @query_params[:next_token] = @api_response.next_token
     end
     ecr_repositories_rows
   end
