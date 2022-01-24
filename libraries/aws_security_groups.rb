@@ -59,7 +59,6 @@ class AwsSecurityGroups < AwsResourceBase
       break unless @api_response.next_token
       pagination_options = { next_token: @api_response.next_token }
     end
-    # require 'pry'; binding.pry
     @table = security_group_rows
   end
 end
