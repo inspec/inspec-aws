@@ -15,22 +15,13 @@ class AwsRdsInstance < AwsResourceBase
   def initialize(opts = {})
     opts = { db_instance_identifier: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:db_instance_identifier])
-
-    raise ArgumentError, "#{@__resource_name__}: db_instance_identifer must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
-
-    catch_aws_errors do
-      @display_name = opts[:db_instance_identifier]
-
-      begin
-        resp = @aws.rds_client.describe_db_instances(db_instance_identifier: opts[:db_instance_identifier])
-        return if resp.db_instances.empty?
-        @rds_instance = resp.db_instances[0].to_h
-      rescue Aws::RDS::Errors::DBInstanceNotFound
-        return
-      end
-      create_resource_methods(@rds_instance)
+    unless @resource_data
+      validate_parameters(required: [:db_instance_identifier])
+      raise ArgumentError, "#{@__resource_name__}: db_instance_identifer must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:db_instance_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
     end
+    @display_name = opts[:db_instance_identifier] || opts.dig(@resource_data, :db_instance_identifier)
+    @rds_instance = @resource_data || get_resource(opts)
+    create_resource_methods(@rds_instance)
   end
 
   def has_encrypted_storage?
