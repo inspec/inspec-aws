@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support'
+require 'active_support/core_ext/string'
+
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
@@ -352,6 +355,8 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
+
+      @resource_data = opts[:resource_data].presence&.to_h
     end
     @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
@@ -502,6 +507,44 @@ class AwsResourceBase < Inspec.resource(1)
     @failed_resource = true
     # Do not fail in InSpec core. The test `it { should_not exist }` will pass.
     Inspec::Log.warn message
+  end
+end
+
+class AwsCollectionResourceBase < AwsResourceBase
+  attr_reader :table
+
+  # Populate the FilterTable.
+  # FilterTable is a class bound object so is this method.
+  # @param raw_data [Symbol] Method name of the table with raw data.
+  # @param table_scheme [Array] [{column: :blahs, field: :blah}, {..}]
+  def self.populate_filter_table(raw_data, table_scheme)
+    filter_table = FilterTable.create
+    table_scheme.each do |col_field|
+      opts = { field: col_field[:field] }
+      opts[:style] = col_field[:style] if col_field[:style]
+      filter_table.register_column(col_field[:column], opts)
+    end
+    filter_table.install_filter_methods_on_resource(self, raw_data)
+  end
+
+  def fetch(client:, operation:, kwargs: {})
+    raise ArgumentError, 'Valid Client not found!' unless @aws.respond_to?(client)
+
+    client_obj = @aws.send(client)
+    raise ArgumentError, "#{client} does not support #{operation}" unless client_obj.respond_to?(operation)
+
+    catch_aws_errors do
+      client_obj.send(operation, **kwargs)
+    end
+  end
+
+  private
+
+  def populate_filter_table_from_response
+    return unless @table.present?
+
+    table_schema = @table.first.keys.map { |key| { column: key.to_s.pluralize.to_sym, field: key, style: :simple } }
+    AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
   end
 end
 
