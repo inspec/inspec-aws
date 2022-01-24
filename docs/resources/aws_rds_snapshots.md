@@ -14,6 +14,15 @@ Use the `aws_rds_snapshots` InSpec audit resource to test the properties of a co
     describe aws_rds_snapshots do
       its('db_snapshot_identifiers.count') { should cmp 3 }
     end
+    
+    # Testing for `aws_rds_snapshot` using local caching(in memory caching) for quicker execution of large set of test cases.
+    # It uses cached `AWS_RDS_SNAPSHOT` as resource_data filter passed to singular resource.
+    aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
+        describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+            it { should exist }
+            it { should have_encrypted_snapshot }
+        end
+    end
 
 ## Parameters
 
@@ -44,6 +53,13 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
       end
     end
 
+### Tests the snapshot using cached resource_data
+    aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
+        describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+            its ('engine')         { should eq 'MYSQL' }
+            its ('engine_version') { should eq '5.6.37' }
+        end
+    end
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
