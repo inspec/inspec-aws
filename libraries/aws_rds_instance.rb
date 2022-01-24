@@ -55,4 +55,15 @@ class AwsRdsInstance < AwsResourceBase
   def to_s
     "RDS Instance: #{@display_name}"
   end
+
+  private
+
+  def get_resource(opts)
+    catch_aws_errors do
+      resp = @aws.rds_client.describe_db_instances(db_instance_identifier: opts[:db_instance_identifier])
+      return if resp.db_instances.empty?
+
+      resp.db_instances.first.to_h
+    end
+  end
 end
