@@ -38,12 +38,12 @@ While this resource provides facilities for searching inbound and outbound rules
     end
 
     # Using only resource_data for cached aws_security_group for faster execution.
-    describe aws_security_group(resource_data: aws_security_group_object) do
+    describe aws_security_group(resource_data: 'AWS_SECURITY_GROUP_OBJECT') do
       it { should exist }
     end
 #### Parameters
 
-You must provide at least one parameter; `group_id`, `group_name` , `vpc_id` or `resource_data`
+You must provide at least one parameter; `group_id`, `group_name` , `vpc_id` or `resource_data`.
 
 ##### group\_id _(required if no other parameter provided)_
 

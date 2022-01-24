@@ -23,7 +23,7 @@ An `aws_security_groups` resource block uses an optional filter to select a grou
       its('entries.count') { should be > 1 }
     end
 
-Testing for `aws_security_groups` using local caching(in memory caching)  for quicker execution of large set of test cases.
+Testing for `aws_security_groups` using local caching(in memory caching) for quicker execution of large set of test cases.
 It uses `security_group_objects` as resource_data filter passed to singular resource for each iteration.
 
     aws_security_groups.entries.each do |entry|

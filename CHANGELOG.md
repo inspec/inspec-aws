@@ -10,7 +10,6 @@
 #### Merged Pull Requests
 - Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
 
-
 ## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
 
 #### Merged Pull Requests
