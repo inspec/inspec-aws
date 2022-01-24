@@ -510,6 +510,44 @@ class AwsResourceBase < Inspec.resource(1)
   end
 end
 
+class AwsCollectionResourceBase < AwsResourceBase
+  attr_reader :table
+
+  # Populate the FilterTable.
+  # FilterTable is a class bound object so is this method.
+  # @param raw_data [Symbol] Method name of the table with raw data.
+  # @param table_scheme [Array] [{column: :blahs, field: :blah}, {..}]
+  def self.populate_filter_table(raw_data, table_scheme)
+    filter_table = FilterTable.create
+    table_scheme.each do |col_field|
+      opts = { field: col_field[:field] }
+      opts[:style] = col_field[:style] if col_field[:style]
+      filter_table.register_column(col_field[:column], opts)
+    end
+    filter_table.install_filter_methods_on_resource(self, raw_data)
+  end
+
+  def fetch(client:, operation:, kwargs: {})
+    raise ArgumentError, 'Valid Client not found!' unless @aws.respond_to?(client)
+
+    client_obj = @aws.send(client)
+    raise ArgumentError, "#{client} does not support #{operation}" unless client_obj.respond_to?(operation)
+
+    catch_aws_errors do
+      client_obj.send(operation, **kwargs)
+    end
+  end
+
+  private
+  def populate_filter_table_from_response
+    return unless @table.present?
+
+    table_schema = @table.first.keys.map { |key| { column: key.to_s.pluralize.to_sym, field: key, style: :simple } }
+    AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
+  end
+
+end
+
 # Class to create methods on the calling object at run time.  Heavily based on the Azure Inspec resources.
 #
 class AwsResourceDynamicMethods
