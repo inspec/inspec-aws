@@ -1,9 +1,15 @@
-<!-- latest_release 1.75.11 -->
+<!-- latest_release 1.76.0 -->
+## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
+
+#### Merged Pull Requests
+- Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
+<!-- latest_release -->
+
 ## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
 
 #### Merged Pull Requests
 - Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
+
 
 ## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
 
