@@ -1,9 +1,14 @@
-<!-- latest_release 1.76.2 -->
+<!-- latest_release 1.76.3 -->
+## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
+
+#### Merged Pull Requests
+- Added Pagination  for the Route53 [#810](https://github.com/inspec/inspec-aws/pull/810) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.76.2](https://github.com/inspec/inspec-aws/tree/v1.76.2) (2022-01-25)
 
 #### Merged Pull Requests
 - Fix title in resource doc [#829](https://github.com/inspec/inspec-aws/pull/829) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
 
