@@ -1,9 +1,44 @@
-<!-- latest_release 1.75.6 -->
+<!-- latest_release 1.76.1 -->
+## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
+
+#### Merged Pull Requests
+- Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
+## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
+
+#### Merged Pull Requests
+- Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
+
+## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
+
+#### Merged Pull Requests
+- Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
+
+#### Merged Pull Requests
+- Move release dates JSON file to assets dir [#817](https://github.com/inspec/inspec-aws/pull/817) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/update_readme_till_sprint_15 [#812](https://github.com/inspec/inspec-aws/pull/812) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.75.8](https://github.com/inspec/inspec-aws/tree/v1.75.8) (2022-01-03)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_web_acl [#808](https://github.com/inspec/inspec-aws/pull/808) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.7](https://github.com/inspec/inspec-aws/tree/v1.75.7) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/aws_hosted_zone_all_record_issue_fix [#811](https://github.com/inspec/inspec-aws/pull/811) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.75.6](https://github.com/inspec/inspec-aws/tree/v1.75.6) (2021-12-30)
 
 #### Merged Pull Requests
 - Add attributes to ebs volumes resource [#813](https://github.com/inspec/inspec-aws/pull/813) ([jnikles1](https://github.com/jnikles1))
-<!-- latest_release -->
 
 ## [v1.75.5](https://github.com/inspec/inspec-aws/tree/v1.75.5) (2021-12-27)
 
