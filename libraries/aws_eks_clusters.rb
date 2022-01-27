@@ -18,32 +18,35 @@ class AwsEksClusters < AwsCollectionResourceBase
   end
 
   def fetch_data
-    cluster_rows = []
-    pagination_options = {}
-    catch_aws_errors do
-      response = @aws.eks_client.list_clusters(pagination_options)
-      return [] if !response || response.empty?
-      response.clusters.each do |cluster_name|
-        cluster = @aws.eks_client.describe_cluster(name: cluster_name).cluster
-        cluster_rows += [{ version:               cluster.version,
-                           arn:                   cluster.arn,
-                           certificate_authority: cluster.certificate_authority.data,
-                           name:                  cluster.name,
-                           status:                cluster.status,
-                           endpoint:              cluster.endpoint,
-                           security_group_ids:    cluster.resources_vpc_config.security_group_ids,
-                           subnets_count:         cluster.resources_vpc_config.subnet_ids.length,
-                           subnet_ids:            cluster.resources_vpc_config.subnet_ids,
-                           created_at:            cluster.created_at,
-                           role_arn:              cluster.role_arn,
-                           vpc_id:                cluster.resources_vpc_config.vpc_id,
-                           security_groups_count: cluster.resources_vpc_config.security_group_ids.length,
-                           creating:              cluster.status == 'CREATING',
-                           active:                cluster.status == 'ACTIVE',
-                           failed:                cluster.status == 'FAILED',
-                           deleting:              cluster.status == 'DELETING' }]
+    fetch(client: :eks_client, operation: :list_clusters).flat_map do |response|
+      response.clusters.flat_map do |cluster_name|
+        cluster_attributes_from(cluster_name)
       end
     end
-    @table = cluster_rows
+  end
+
+  private
+
+  def cluster_attributes_from(cluster_name)
+    cluster = fetch(client: :eks_client, operation: :describe_cluster, kwargs: { name: cluster_name }).cluster
+    cluster.to_h.merge({
+                         version:               cluster.version,
+      arn:                   cluster.arn,
+      certificate_authority: cluster.certificate_authority.data,
+      name:                  cluster.name,
+      status:                cluster.status,
+      endpoint:              cluster.endpoint,
+      security_group_ids:    cluster.resources_vpc_config.security_group_ids,
+      subnets_count:         cluster.resources_vpc_config.subnet_ids.length,
+      subnet_ids:            cluster.resources_vpc_config.subnet_ids,
+      created_at:            cluster.created_at,
+      role_arn:              cluster.role_arn,
+      vpc_id:                cluster.resources_vpc_config.vpc_id,
+      security_groups_count: cluster.resources_vpc_config.security_group_ids.length,
+      creating:              cluster.status == 'CREATING',
+      active:                cluster.status == 'ACTIVE',
+      failed:                cluster.status == 'FAILED',
+      deleting:              cluster.status == 'DELETING',
+                       })
   end
 end
