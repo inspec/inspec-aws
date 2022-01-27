@@ -48,4 +48,12 @@ class AwsEksCluster < AwsResourceBase
   def to_s
     "AWS EKS Cluster #{@name}"
   end
+
+  private
+
+  def get_resource(opts)
+    catch_aws_errors do
+      @aws.eks_client.describe_cluster(name: opts[:cluster_name]).cluster.to_h
+    end
+  end
 end
