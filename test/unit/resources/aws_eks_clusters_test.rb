@@ -23,7 +23,7 @@ class AwsEksClustersTest < Minitest::Test
   def setup
     data = {}
     data[:method] = :list_clusters
-    data[:data] = { :clusters => ['mock1', 'mock2'] }
+    data[:data] = { clusters: ['mock1'] }
     data[:client] = Aws::EKS::Client
     data2 = {}
     @mock = AwsEksClusterMock.new
@@ -38,8 +38,8 @@ class AwsEksClustersTest < Minitest::Test
   end
 
   def test_eks_count
-    assert_equal(@eks.names.count, 2)
-    assert_equal(@eks.arns.count, 2)
+    assert_equal(@eks.names.count, 1)
+    assert_equal(@eks.arns.count, 1)
   end
 
   def test_eks_filtering_not_there
