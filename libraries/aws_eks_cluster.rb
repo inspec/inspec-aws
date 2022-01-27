@@ -27,18 +27,8 @@ class AwsEksCluster < AwsResourceBase
     end
     create_resource_methods(@resp.to_h)
 
-    @certificate_authority = @resp[:certificate_authority][:data]
-    @subnet_ids            = @resp[:resources_vpc_config][:subnet_ids]
-    @subnets_count         = @resp[:resources_vpc_config][:subnet_ids].length
-    @security_group_ids    = @resp[:resources_vpc_config][:security_group_ids]
-    @security_groups_count = @resp[:resources_vpc_config][:security_group_ids].length
-    @vpc_id                = @resp[:resources_vpc_config][:vpc_id]
-    @active                = @resp[:status] == 'ACTIVE'
-    @failed                = @resp[:status] == 'FAILED'
-    @creating              = @resp[:status] == 'CREATING'
-    @deleting              = @resp[:status] == 'DELETING'
-    @enabled_logging_types = @resp.dig(:logging, :cluster_logging)&.select(&:enabled)&.map { |type| type[:types] }&.flatten
-    @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject(&:enabled)&.map { |type| type[:types] }&.flatten
+    @enabled_logging_types = @resp.dig(:logging, :cluster_logging)&.select { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
+    @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
   end
 
   def exists?
