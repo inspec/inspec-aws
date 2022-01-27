@@ -459,7 +459,7 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   def map_tags(tag_list)
-    return {} if tag_list.nil? || tag_list.empty? || tag_list.is_a?(Hash)
+    return {} if tag_list.nil? || tag_list.empty?
     tags = {}
     tag_list.each do |tag|
       tags[tag[:key]] = tag[:value]
