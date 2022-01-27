@@ -30,7 +30,7 @@ class AwsEksClustersTest < Minitest::Test
     data2[:method] = :describe_cluster
     data2[:data] = @mock.eks
     data2[:client] = Aws::EKS::Client
-    @eks = AwsEksClusters.new(client_args: { stub_responses: true }, stub_data: [data, data2])
+    @eks = AwsEksClusters.new(client_args: { stub_responses: true }, stub_data: [data, data2, data2])
   end
 
   def test_exists
