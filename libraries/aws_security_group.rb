@@ -37,7 +37,12 @@ class AwsSecurityGroup < AwsResourceBase
     end
 
     if opts.key?(:resource_data)
-      @security_group = opts[:resource_data]
+      if opts[:resource_data].is_a?(Hash)
+        @security_group = OpenStruct.new(opts[:resource_data])
+      else
+        @security_group = opts[:resource_data]
+      end
+
     else
       catch_aws_errors do
         resp = @aws.compute_client.describe_security_groups({ filters: filter })
@@ -58,11 +63,7 @@ class AwsSecurityGroup < AwsResourceBase
     @outbound_rules = @security_group.ip_permissions_egress.map(&:to_h)
     @inbound_rules_count = count_sg_rules(@inbound_rules.map(&:to_h))
     @outbound_rules_count = count_sg_rules(@outbound_rules.map(&:to_h))
-    @tags = {}
-    unless @security_group.dig(:tags).nil?
-      @tags = map_tags(@security_group.tags)
-    end
-
+    @tags = map_tags(@security_group.tags) if @security_group.respond_to?(:tags)
   end
 
   def allow_in?(criteria = {})
