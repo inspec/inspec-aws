@@ -2,11 +2,9 @@
 require 'helper'
 require 'aws-sdk-core'
 require 'aws_eks_clusters'
-require 'helper'
 require_relative 'mock/iam/aws_eks_cluster_mock'
 
 class AwsEksClustersConstructorTest < Minitest::Test
-
   def test_empty_params_ok
     AwsEksClusters.new(client_args: { stub_responses: true })
   end
@@ -21,7 +19,6 @@ class AwsEksClustersConstructorTest < Minitest::Test
 end
 
 class AwsEksClustersTest < Minitest::Test
-
   def setup
     data = {}
     data[:method] = :list_clusters
@@ -45,12 +42,12 @@ class AwsEksClustersTest < Minitest::Test
   end
 
   def test_eks_filtering_not_there
-    refute @eks.where(:name => 'bad').exist?
-    refute @eks.where(:version => 'bad').exist?
+    refute @eks.where(name: 'bad').exist?
+    refute @eks.where(version: 'bad').exist?
   end
 
   def test_eks_filtering_there
-    assert @eks.where(:version => '1.11').exist?
-    assert @eks.where(:name => 'mock-cluster').exist?
+    assert @eks.where(version: '1.11').exist?
+    assert @eks.where(name: 'mock-cluster').exist?
   end
 end
