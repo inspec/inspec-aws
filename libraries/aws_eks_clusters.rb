@@ -15,7 +15,6 @@ class AwsEksClusters < AwsCollectionResourceBase
     super(opts)
     validate_parameters
     @table = fetch_data
-    populate_filter_table_from_response
 
     # custom keys
     table_schema = [
@@ -26,7 +25,9 @@ class AwsEksClusters < AwsCollectionResourceBase
       { column: :deleting, field: :deleting },
     ]
 
-    self.class.populate_filter_table(:table, table_schema)
+    AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
+
+    populate_filter_table_from_response
   end
 
   def fetch_data
