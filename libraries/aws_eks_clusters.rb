@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsEksClusters < AwsResourceBase
+class AwsEksClusters < AwsCollectionResourceBase
   name 'aws_eks_clusters'
   desc 'Verifies settings for a collection AWS EKS Clusters.'
   example "
