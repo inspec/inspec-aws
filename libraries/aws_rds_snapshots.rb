@@ -23,7 +23,6 @@ class AwsRdsSnapshots < AwsCollectionResourceBase
     end
   "
 
-
   def initialize(opts = {})
     super(opts)
     validate_parameters

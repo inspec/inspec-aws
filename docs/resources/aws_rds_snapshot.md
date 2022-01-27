@@ -39,7 +39,8 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/la
 ### resource_data _(required_if_no_other_param_is_provided)_
 
 This resource accepts a single parameter, the user-supplied cached AWS_RDS_SNAPSHOT. 
-This needs to be passed  as a `struct` .
+
+This needs to be passed  as a `Aws ruby object` .
 
 
 ## Properties
