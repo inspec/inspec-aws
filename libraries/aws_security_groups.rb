@@ -17,7 +17,6 @@ class AwsSecurityGroups < AwsCollectionResourceBase
     end
   "
 
-
   def initialize(opts = {})
     super(opts)
     validate_parameters
