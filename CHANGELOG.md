@@ -1,9 +1,29 @@
-<!-- latest_release 1.75.11 -->
+<!-- latest_release 1.76.3 -->
+## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
+
+#### Merged Pull Requests
+- Added Pagination  for the Route53 [#810](https://github.com/inspec/inspec-aws/pull/810) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.76.2](https://github.com/inspec/inspec-aws/tree/v1.76.2) (2022-01-25)
+
+#### Merged Pull Requests
+- Fix title in resource doc [#829](https://github.com/inspec/inspec-aws/pull/829) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
+
+#### Merged Pull Requests
+- Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
+
+#### Merged Pull Requests
+- Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
+
 ## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
 
 #### Merged Pull Requests
 - Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
 
