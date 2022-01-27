@@ -1,3 +1,5 @@
+
+require 'helper'
 require 'aws-sdk-core'
 require 'aws_eks_clusters'
 require 'helper'
