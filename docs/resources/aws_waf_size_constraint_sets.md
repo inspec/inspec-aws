@@ -1,5 +1,5 @@
 ---
-title: About the aws_waf_size_constraint_set resource
+title: About the aws_waf_size_constraint_sets resource
 platform: aws
 ---
 
