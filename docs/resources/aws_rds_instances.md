@@ -29,8 +29,13 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 |Property                     | Description|
 | ---                         | --- |
-|db_instance_identifiers    | The unique IDs of the RDS Instances returned. |
-|entries                      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| db_instance_identifiers     | The unique IDs of the RDS Instances returned. |
+| db_instance_classes         | The list of the name of the compute and memory capacity class of the DB instances.|
+| db_security_groups          | A list of DB security group elements containing DBSecurityGroup.Name and DBSecurityGroup.Status subelements.|
+| vpc_security_groups         | Provides a list of VPC security group elements that the DB instance belongs to.|
+| entries                     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+
+Various other properties of AWS RDS can be found [here](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/RDS/Types/DBInstanceMessage.html#db_instances-instance_method) 
 
 ## Examples
 

@@ -27,6 +27,11 @@ An `aws_rds_instance` resource block uses resource parameters to search for an R
 
 This resource accepts a single parameter, the user-supplied instance identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_instance_identifier: 'value'` key-value entry in a hash.
+This parameter can be skipped when `resource_data` attribute is used.
+
+##### resource_data(optional)
+
+Resource Data could be a hash or the AWS response from the collection resource. 
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
 
@@ -52,6 +57,14 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 
 ##### Test the instance type and master username
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
+      its ('master_username')   { should eq 'db-maintain' }
+      its ('db_instance_class') { should eq 'db.t3.micro' }
+    end
+
+##### Test the instance type and master username from cached resources
+
+    resource = aws_rds_instances.where(db_instance_identifier: 'awsrds123')
+    describe aws_rds_instance(resource_data: resource) do
       its ('master_username')   { should eq 'db-maintain' }
       its ('db_instance_class') { should eq 'db.t3.micro' }
     end
