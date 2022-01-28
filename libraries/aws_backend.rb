@@ -426,6 +426,7 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
+    nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
       advice = ''
@@ -443,8 +444,8 @@ class AwsResourceBase < Inspec.resource(1)
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
                        'behaving as expected.'
       @failed_resource = true
-      nil
     end
+    nil
   end
 
   def create_resource_methods(object)
