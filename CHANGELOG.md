@@ -1,9 +1,14 @@
-<!-- latest_release 1.76.3 -->
+<!-- latest_release 1.76.4 -->
+## [v1.76.4](https://github.com/inspec/inspec-aws/tree/v1.76.4) (2022-01-28)
+
+#### Merged Pull Requests
+- return nil values from catch aws errors [#836](https://github.com/inspec/inspec-aws/pull/836) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
 
 #### Merged Pull Requests
 - Added Pagination  for the Route53 [#810](https://github.com/inspec/inspec-aws/pull/810) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.76.2](https://github.com/inspec/inspec-aws/tree/v1.76.2) (2022-01-25)
 
