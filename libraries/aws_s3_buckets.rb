@@ -24,7 +24,6 @@ class AwsS3Buckets < AwsResourceBase
     tag_list = instance.catch_aws_errors do
       instance.aws.storage_client.get_bucket_tagging(bucket: row[:bucket_name])
     end
-    return {} if instance.is_a?(String) # to handle failed errors
     instance.map_tags(tag_list&.tag_set)
   end
 
