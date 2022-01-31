@@ -17,22 +17,7 @@ An `aws_security_groups` resource block uses an optional filter to select a grou
       its('entries.count') { should be > 1 }
     end
 
-An `aws_security_groups` resource block uses an optional filter to select a group of security groups and then tests that group.
-
-    describe aws_security_groups do
-      its('entries.count') { should be > 1 }
-    end
-
-Testing for `aws_security_groups` using local caching(in memory caching) for quicker execution of large set of test cases.
-It uses `security_group_objects` as resource_data filter passed to singular resource for each iteration.
-
-    aws_security_groups.entries.each do |entry|
-        describe aws_security_group(resource_data: entry) do
-            it { should exist }
-            its('count') { should be >= 4 }
-        end
-    end
-#### Parameters
+### Parameters
 
 This resource does not expect any parameters.
 
@@ -56,20 +41,34 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 The following examples show how to use this InSpec audit resource.
 
 ##### Look for a particular security group in just one VPC
+
     describe aws_security_groups.where( vpc_id: 'vpc-12345678') do
       its('group_ids') { should include('sg-abcdef12')}
     end
 
 ##### Examine the default security group in all VPCs
+
     describe aws_security_groups.where( group_name: 'default') do
       it { should exist }
     end
 
 ##### Allow at most 100 security groups on the account
+
     describe aws_security_groups do
       its('entries.count') { should be <= 100}
     end
 
+##### Pass entry resource data from security groups to the singular resource for testing.
+
+Use the `security_group_objects` resource to pass resource data to the singular resource for testing.
+This method uses local in-memory caching for quicker execution of large sets of test cases.
+
+    aws_security_groups.entries.each do |entry|
+        describe aws_security_group(resource_data: entry) do
+            it { should exist }
+            its('count') { should be >= 4 }
+        end
+    end
 
 ## Matchers
 
