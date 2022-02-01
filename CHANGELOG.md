@@ -1,10 +1,14 @@
-<!-- latest_release 1.76.1 -->
+<!-- latest_release 1.76.5 -->
+## [v1.76.5](https://github.com/inspec/inspec-aws/tree/v1.76.5) (2022-01-31)
+
+#### Merged Pull Requests
+- Remove release notes content from static dir [#831](https://github.com/inspec/inspec-aws/pull/831) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
 
 ## [v1.76.4](https://github.com/inspec/inspec-aws/tree/v1.76.4) (2022-01-28)
 
 #### Merged Pull Requests
 - return nil values from catch aws errors [#836](https://github.com/inspec/inspec-aws/pull/836) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
 
