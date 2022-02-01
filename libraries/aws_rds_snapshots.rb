@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsRdsSnapshots < AwsResourceBase
+class AwsRdsSnapshots < AwsCollectionResourceBase
   name 'aws_rds_snapshots'
   desc 'Verifies settings for AWS RDS snapshots in bulk.'
   example "
@@ -23,32 +23,11 @@ class AwsRdsSnapshots < AwsResourceBase
     end
   "
 
-  attr_reader :table
-
-  FilterTable.create
-             .register_column(:db_snapshot_identifiers, field: :db_snapshot_identifier)
-             .install_filter_methods_on_resource(self, :table)
-
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    @table = fetch_data
-  end
+    @table = fetch(client: :rds_client, operation: :describe_db_snapshots).db_snapshots.map(&:to_h)
 
-  def fetch_data
-    rds_snapshot_rows = []
-    pagination_options = {}
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.rds_client.describe_db_snapshots(pagination_options)
-      end
-      return rds_snapshot_rows if !@api_response || @api_response.empty?
-
-      rds_snapshot_rows += @api_response.db_snapshots.map(&:to_h)
-
-      break unless @api_response.marker
-      pagination_options = { marker: @api_response.marker }
-    end
-    @table = rds_snapshot_rows
+    populate_filter_table_from_response
   end
 end
