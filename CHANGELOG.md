@@ -1,9 +1,14 @@
-<!-- latest_release 1.76.6 -->
+<!-- latest_release 1.77.0 -->
+## [v1.77.0](https://github.com/inspec/inspec-aws/tree/v1.77.0) (2022-02-01)
+
+#### Merged Pull Requests
+- AWS rds snapshot in memory caching implementation  [#830](https://github.com/inspec/inspec-aws/pull/830) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.76.6](https://github.com/inspec/inspec-aws/tree/v1.76.6) (2022-02-01)
 
 #### Merged Pull Requests
 - Cache implementation for for SAP use case. [#824](https://github.com/inspec/inspec-aws/pull/824) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.76.5](https://github.com/inspec/inspec-aws/tree/v1.76.5) (2022-01-31)
 
