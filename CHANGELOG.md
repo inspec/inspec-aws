@@ -1,9 +1,14 @@
-<!-- latest_release 1.76.5 -->
+<!-- latest_release 1.76.6 -->
+## [v1.76.6](https://github.com/inspec/inspec-aws/tree/v1.76.6) (2022-02-01)
+
+#### Merged Pull Requests
+- Cache implementation for for SAP use case. [#824](https://github.com/inspec/inspec-aws/pull/824) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.76.5](https://github.com/inspec/inspec-aws/tree/v1.76.5) (2022-01-31)
 
 #### Merged Pull Requests
 - Remove release notes content from static dir [#831](https://github.com/inspec/inspec-aws/pull/831) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.76.4](https://github.com/inspec/inspec-aws/tree/v1.76.4) (2022-01-28)
 
