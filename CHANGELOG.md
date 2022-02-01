@@ -1,9 +1,14 @@
-<!-- latest_release 1.77.0 -->
+<!-- latest_release 1.78.0 -->
+## [v1.78.0](https://github.com/inspec/inspec-aws/tree/v1.78.0) (2022-02-01)
+
+#### Merged Pull Requests
+- Lazy load tags [#834](https://github.com/inspec/inspec-aws/pull/834) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.77.0](https://github.com/inspec/inspec-aws/tree/v1.77.0) (2022-02-01)
 
 #### Merged Pull Requests
 - AWS rds snapshot in memory caching implementation  [#830](https://github.com/inspec/inspec-aws/pull/830) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.76.6](https://github.com/inspec/inspec-aws/tree/v1.76.6) (2022-02-01)
 
