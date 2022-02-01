@@ -30,6 +30,7 @@
 #### Merged Pull Requests
 - Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
 
+
 ## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
 
 #### Merged Pull Requests
