@@ -8,9 +8,9 @@ Use the `aws_rds_snapshot` InSpec audit resource to test the detailed properties
 
 ## Syntax
 
-An `aws_rds_snapshot` resource block uses resource parameters to search for an RDS snapshot and test the respective RDS snapshot.  
+An `aws_rds_snapshot` resource block uses resource parameters to search for an RDS snapshot and test the respective RDS snapshot.
 
-No error is raised if no RDS snapshots match. However, the `exists` matcher will return `false`, and all properties will be `nil`.  
+No error is raised if no RDS snapshots match. However, the `exists` matcher will return `false`, and all properties will be `nil`.
 
 An error is raised if more than one RDS snapshot matches (due to vague search parameters).
 
@@ -23,13 +23,25 @@ An error is raised if more than one RDS snapshot matches (due to vague search pa
       it { should exist }
     end
 
+    # Passing in
+    describe aws_rds_snapshot(resource_data: 'RESOURCE_DATA_OBJECT') do
+      it { should exist }
+    end
+
 ## Parameters
 
-### db_snapshot_identifier
+### db_snapshot_identifier _(required if resource_data not provided)_
 
-This resource accepts a single parameter either as a string or a `db_snapshot_identifier: 'value'` key-value entry in a hash. This parameter is user-supplied DB snapshot identifier. This parameter isn't case-sensitive and is a required parameter.
+The user-supplied database snapshot identifier.
+This parameter can passed as a string or a `db_snapshot_identifier: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
+
+### resource_data _(required if db_snapshot_identifier not provided)_
+
+A cached resource data object.
+This must be passed key-value entry in a hash. For example, `resource_data: 'RESOURCE_DATA_OBJECT'` .
+
 
 ## Properties
 
@@ -44,16 +56,25 @@ For a comprehensive list of properties available to test on an RDS snapshot see 
       its ('engine_version') { should eq '5.6.37' }
     end
 
+
 ### Tests the storage allocated to an RDS snapshot
 
     describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
       its ('allocated_storage') { should eq 10 }
     end
 
+
 ### Tests the snapshot type and master username
 
     describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
       its ('master_username')   { should eq 'DB-MAINTAIN' }
+    end
+
+### Tests the snapshot using cached resource data
+
+    describe aws_rds_snapshot(resource_data: 'AWS_RDS_SNAPSHOT') do
+        its ('engine')         { should eq 'MYSQL' }
+        its ('engine_version') { should eq '5.6.37' }
     end
 
 ## Matchers

@@ -391,7 +391,7 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
@@ -426,6 +426,7 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
+    nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
       advice = ''
@@ -443,8 +444,8 @@ class AwsResourceBase < Inspec.resource(1)
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
                        'behaving as expected.'
       @failed_resource = true
-      nil
     end
+    nil
   end
 
   def create_resource_methods(object)

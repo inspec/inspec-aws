@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsSecurityGroups < AwsResourceBase
+class AwsSecurityGroups < AwsCollectionResourceBase
   name 'aws_security_groups'
   desc 'Verifies settings for AWS Security Groups in bulk.'
   example "
@@ -17,42 +17,10 @@ class AwsSecurityGroups < AwsResourceBase
     end
   "
 
-  attr_reader :table
-
-  # FilterTable setup
-  FilterTable.create
-             .register_column(:group_ids,   field: :group_id)
-             .register_column(:group_names, field: :group_name)
-             .register_column(:vpc_ids,     field: :vpc_id)
-             .register_column(:tags,        field: :tags)
-             .install_filter_methods_on_resource(self, :table)
-
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    @table = fetch_data
-  end
-
-  def fetch_data
-    security_group_rows = []
-    pagination_options = {}
-    loop do
-      catch_aws_errors do
-        @api_response = @aws.compute_client.describe_security_groups(pagination_options)
-      end
-      return [] if !@api_response || @api_response.empty?
-
-      @api_response.security_groups.map do |security_group|
-        security_group_rows += [{
-          group_id: security_group.group_id,
-                                    vpc_id: security_group.vpc_id,
-                                    group_name: security_group.group_name,
-                                    tags: map_tags(security_group.tags),
-        }]
-      end
-      break unless @api_response.next_token
-      pagination_options = { next_token: @api_response.next_token }
-    end
-    @table = security_group_rows
+    @table = fetch(client: :compute_client, operation: :describe_security_groups).security_groups.map(&:to_h)
+    populate_filter_table_from_response
   end
 end
