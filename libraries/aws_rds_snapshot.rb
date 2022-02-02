@@ -15,18 +15,13 @@ class AwsRdsSnapshot < AwsResourceBase
   def initialize(opts = {})
     opts = { db_snapshot_identifier: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:db_snapshot_identifier])
-
-    raise ArgumentError, "#{@__resource_name__}: db_snapshot_identifier must start with a letter followed by up to 1 to 255 characters." if opts[:db_snapshot_identifier] !~ /^[a-z]{1}[0-9a-z\-\:]{1,255}$/
-
-    catch_aws_errors do
-      @display_name = opts[:db_snapshot_identifier]
-
-      resp = @aws.rds_client.describe_db_snapshots(db_snapshot_identifier: opts[:db_snapshot_identifier])
-      return if resp.db_snapshots.empty?
-      @rds_snapshot = resp.db_snapshots[0].to_h
-      create_resource_methods(@rds_snapshot)
+    unless @resource_data
+      validate_parameters(required: [:db_snapshot_identifier])
+      raise ArgumentError, "#{@__resource_name__}: db_snapshot_identifier must start with a letter followed by up to 1 to 255 characters." if opts[:db_snapshot_identifier] !~ /^[a-z]{1}[0-9a-z\-\:]{1,255}$/
     end
+    @display_name = opts[:db_snapshot_identifier] || opts.dig(@resource_data, :db_snapshot_identifier)
+    @rds_snapshot = @resource_data || get_resource(opts)
+    create_resource_methods(@rds_snapshot)
   end
 
   def has_encrypted_snapshot?
@@ -40,5 +35,16 @@ class AwsRdsSnapshot < AwsResourceBase
 
   def to_s
     "RDS Snapshot #{@display_name}"
+  end
+
+  private
+
+  def get_resource(opts)
+    catch_aws_errors do
+      resp = @aws.rds_client.describe_db_snapshots(db_snapshot_identifier: opts[:db_snapshot_identifier])
+      return if resp.db_snapshots.empty?
+
+      resp.db_snapshots.first.to_h
+    end
   end
 end

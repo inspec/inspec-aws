@@ -11,10 +11,6 @@ class AwsSecurityGroupsConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AwsSecurityGroups.new('rubbish') }
   end
-
-  def test_security_groups_non_existing_for_empty_response
-    refute AwsSecurityGroups.new(client_args: { stub_responses: true }).exist?
-  end
 end
 
 class AwsSecurityGroupsTest < Minitest::Test
