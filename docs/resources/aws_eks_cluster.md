@@ -5,7 +5,7 @@ platform: aws
 
 # aws\_eks\_cluster
 
-Use the `aws_eks_cluster` InSpec audit resource to test properties of a single AWS Elastic Container Service for Kubernetes. 
+Use the `aws_eks_cluster` InSpec audit resource to test properties of a single AWS Elastic Container Service for Kubernetes.
 
 ## Syntax
 
@@ -21,10 +21,14 @@ An `aws_eks_cluster` resource block declares the tests for a single EKS Cluster 
 
 #### Parameters
 
-##### cluster\_name _(required)_
+##### cluster\_name _(required if resource_data not provided)_
 
-This resource requires a single parameter, the EKS Cluster Name.
+The name of the EKS cluster.
 This can be passed either as a string or as a `cluster_name: 'value'` key-value entry in a hash.
+
+##### resource_data _(required if cluster_name not provided)_
+
+A hash or the cached AWS response passed from the `aws_eks_clusters` resource.
 
 See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 
@@ -52,14 +56,14 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
 |tags                    | Cluster tags. |
 |enabled\_logging\_types | Return list of enabled logging types. |
 |disabled\_logging\_types | Return list of disabled logging types. |
-           
+
 ## Examples
 
 ##### Test that an EKS Cluster has at least 2 subnets
     describe aws_eks_cluster('my-cluster') do
       its('subnets_count') { should be > 1 }
     end
-    
+
 ##### Ensure a Cluster has the correct status.
     describe aws_eks_cluster(cluster_name: 'my-eks') do
       its('status') { should eq 'ACTIVE' }
@@ -69,10 +73,17 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
     describe aws_eks_cluster('my-cluster') do
       its('vpc_id') { should eq 'vpc-12345678' }
     end
-    
+
 ##### Ensure the EKS Cluster is using the correct IAM Role.
     describe aws_eks_cluster('my-cluster') do
       its('role_arn') { should cmp 'rn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ONKE3BQ4PI' }
+    end
+
+##### Ensure that the EKS Cluster is on the correct VPC from cached resources
+
+    resource = aws_eks_clusters.where(cluster_name: 'my-eks')
+    describe aws_eks_cluster(resource_data: resource) do
+      its('vpc_id') { should eq 'vpc-12345678' }
     end
 
 ##### Integrate with other resources
