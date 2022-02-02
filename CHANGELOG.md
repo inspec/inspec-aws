@@ -1,9 +1,14 @@
-<!-- latest_release 1.79.0 -->
+<!-- latest_release 1.80.0 -->
+## [v1.80.0](https://github.com/inspec/inspec-aws/tree/v1.80.0) (2022-02-02)
+
+#### Merged Pull Requests
+- Support cache aws rds instance [#828](https://github.com/inspec/inspec-aws/pull/828) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.79.0](https://github.com/inspec/inspec-aws/tree/v1.79.0) (2022-02-02)
 
 #### Merged Pull Requests
 - Support in memory cache aws eks clusters [#833](https://github.com/inspec/inspec-aws/pull/833) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.78.0](https://github.com/inspec/inspec-aws/tree/v1.78.0) (2022-02-01)
 
