@@ -20,14 +20,12 @@ class AwsEksCluster < AwsResourceBase
   def initialize(opts = {})
     opts = { cluster_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: [:cluster_name])
+    validate_parameters(required: [:cluster_name]) unless @resource_data
 
-    catch_aws_errors do
-      @resp = @aws.eks_client.describe_cluster(name: opts[:cluster_name]).cluster
-    end
-    create_resource_methods(@resp.to_h)
+    @resp = @resource_data || get_resource(opts)
+    create_resource_methods(@resp)
 
-    @certificate_authority = @resp[:certificate_authority][:data]
+    @certificate_authority = @resp[:certificate_authority].is_a?(Hash) ? @resp.dig(:certificate_authority, :data) : @resp[:certificate_authority]
     @subnet_ids            = @resp[:resources_vpc_config][:subnet_ids]
     @subnets_count         = @resp[:resources_vpc_config][:subnet_ids].length
     @security_group_ids    = @resp[:resources_vpc_config][:security_group_ids]
@@ -37,8 +35,9 @@ class AwsEksCluster < AwsResourceBase
     @failed                = @resp[:status] == 'FAILED'
     @creating              = @resp[:status] == 'CREATING'
     @deleting              = @resp[:status] == 'DELETING'
-    @enabled_logging_types = @resp.dig(:logging, :cluster_logging)&.select(&:enabled)&.map { |type| type[:types] }&.flatten
-    @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject(&:enabled)&.map { |type| type[:types] }&.flatten
+
+    @enabled_logging_types = @resp.dig(:logging, :cluster_logging)&.select { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
+    @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
   end
 
   def exists?
@@ -47,5 +46,13 @@ class AwsEksCluster < AwsResourceBase
 
   def to_s
     "AWS EKS Cluster #{@name}"
+  end
+
+  private
+
+  def get_resource(opts)
+    catch_aws_errors do
+      @aws.eks_client.describe_cluster(name: opts[:cluster_name]).cluster.to_h
+    end
   end
 end
