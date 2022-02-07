@@ -11,7 +11,7 @@ The AWS::SSM::PatchBaseline resource defines the basic information for an AWS Sy
 
 ## Syntax
 
-Ensure that the baseline exists.
+### Ensure that the baseline exists.
 
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the baseline exists.
 
 `baseline_id` _(required)_
 
-The ID of the retrieved patch baseline.
+The ID of the patch baseline.
 
 For additional information, see the [AWS documentation on AWS SSM PatchBaseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
 
@@ -29,7 +29,7 @@ For additional information, see the [AWS documentation on AWS SSM PatchBaseline]
 
 | Property | Description | Fields |
 | --- | --- | --- |
-| baseline_id | The ID of the retrieved patch baseline. | baseline_id |
+| baseline_id | The ID of the patch baseline. | baseline_id |
 | name | The name of the patch baseline. | name |
 | operating_system | Returns the operating system specified for the patch baseline. | operating_system |
 | patch_filters | The set of patch filters that make up the group. | patch_filters |
@@ -67,6 +67,16 @@ For additional information, see the [AWS documentation on AWS SSM PatchBaseline]
 ### Ensure a operating system is `WINDOWS`.
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('operating_system') { should eq 'WINDOWS' }
+    end
+
+### Ensure a source name is empty.
+    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
+      its('source_names') { should be_empty }
+    end
+
+### Ensure a approved patches compliance level is `UNSPECIFIED`.
+    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
+      its('approved_patches_compliance_level') { should eq 'UNSPECIFIED' }
     end
 
 ## Matchers
