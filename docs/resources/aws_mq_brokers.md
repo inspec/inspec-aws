@@ -17,6 +17,10 @@ Ensure that AWS MQ Broker exists.
 
 For additional information, see the [AWS documentation on AWS MQ Broker](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html).
 
+## Parameters
+
+This resource does not expect any parameters.
+
 ## Properties
 
 | Property            | Description                                                               | Field             |

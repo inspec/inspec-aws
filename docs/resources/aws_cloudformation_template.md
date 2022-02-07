@@ -78,6 +78,7 @@ For additional information, see the [AWS documentation on AWS CloudFormation tem
 | resource_types(resource_identifier_summaries) | The resource types of the resource identifier summaries.                                                          |
 | logical_resource_ids                          | The logical resource id of the resource identifier summaries.                                                     |
 | resource_identifiers                          | The resource identifier of the resource identifier summaries.                                                     |
+| template_body                                 | The structure that contains the body of the template. The `stack_name` must be passed as a parameter to access this property. |
 
 ## Examples
 
