@@ -11,7 +11,7 @@ The AWS::SSM::ResourceDataSync resource creates, updates, or deletes a resource 
 
 ## Syntax
 
-Ensure that the resource data syncs exists.
+### Ensure that the resource data syncs exists.
 
     describe aws_ssm_resource_data_syncs do
       it { should exist }
@@ -19,7 +19,7 @@ Ensure that the resource data syncs exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not expect any required parameters.
 
 For additional information, see the [AWS documentation on AWS SSM ResourceDataSync](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-resourcedatasync.html).
 
