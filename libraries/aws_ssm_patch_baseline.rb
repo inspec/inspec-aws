@@ -10,6 +10,14 @@ class AWSSESPatchBaseline < AwsResourceBase
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       it { should exist }
     end
+
+    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
+      its('baseline_id') { should eq 'BASELINE_ID' }
+    end
+
+    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
+      its('source_names') { should be_empty }
+    end
   "
 
   def initialize(opts = {})

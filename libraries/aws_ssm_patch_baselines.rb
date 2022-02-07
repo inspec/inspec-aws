@@ -10,6 +10,10 @@ class AWSSESPatchBaselines < AwsResourceBase
     describe aws_ssm_patch_baselines do
       it { should exist }
     end
+
+    describe aws_ssm_patch_baselines do
+      its('baseline_ids') { should include BASELINE_ID' }
+    end
   "
 
   attr_reader :table
