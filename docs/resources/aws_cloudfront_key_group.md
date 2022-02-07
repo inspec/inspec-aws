@@ -29,7 +29,7 @@ For additional information, see the [AWS documentation on AWS CloudFront key gro
 | --- | --- |
 | id | The identifier for the key group. |
 | last_modified_time | The date and time when the key group was last modified. |
-| key_group_config.name | A name to identify the key group. | name |
+| key_group_config.name | A name to identify the key group. |
 | key_group_config.items | A list of the identifiers of the public keys in the key group. |
 | key_group_config.comment | A comment to describe the key group. The comment cannot be longer than 128 characters. |
 

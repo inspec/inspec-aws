@@ -15,13 +15,12 @@ describe aws_ec2_launch_templates do
 it { should exist }
 end
 
+## Parameters
 
-##### launch_templates_id
+### launch_templates_id
 
 The ID of the EC2 launch_templates. This is in the format of `lt-` followed by 8 or 17 hexadecimal characters.
 This can be passed either as a string or as an `launch_templates_id: 'value'` key-value entry in a hash.
-
-
 
 ## Properties
 
@@ -61,5 +60,3 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
-
-

@@ -4,18 +4,15 @@ set -eou pipefail
 
 PRODUCT=inspec-aws
 CURRENTDATE=$(date +"%Y-%m-%d")
-DOCS_DIR="docs-chef-io/static/release-notes/inspec-aws"
+DOCS_ASSETS_DIR="docs-chef-io/assets/release-notes/inspec-aws"
 BRANCH="expeditor/update_release_notes_${CURRENTDATE}"
 
 git checkout -b "$BRANCH"
 
 git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/inspec/inspec-aws.wiki.git"
 
-# Copy release notes from the wiki into the Hugo static directory
-cp inspec-aws.wiki/Pending-Release-Notes.md ${DOCS_DIR}/${CURRENTDATE}.md
-
-# Append the date to the array of dates in docs-chef-io/static/release-notes/inspec-aws/release-dates.json
-DATES_FILE="${DOCS_DIR}/release-dates.json"
+# Append the date to the array of dates in docs-chef-io/assets/release-notes/inspec-aws/release-dates.json
+DATES_FILE="${DOCS_ASSETS_DIR}/release-dates.json"
 DATES=$( cat "$DATES_FILE" | jq --arg DATE "$CURRENTDATE" '. |= .+ [$DATE]' )
 echo $DATES | jq . > "$DATES_FILE"
 

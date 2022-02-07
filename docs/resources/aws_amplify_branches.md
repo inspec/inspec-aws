@@ -3,7 +3,7 @@ title: About the aws_amplify_branches resource
 platform: aws
 ---
 
-# aws\_amplify\_branches
+# aws_amplify_branches
 
 Use the `aws_amplify_branches` InSpec audit resource to test the properties of multiple AWS Amplify branches.
 
@@ -41,6 +41,8 @@ For additional information, see the [AWS documentation on AWS Amplify branch](ht
 | custom_domains | The custom domain for the Amplify branch. | custom_domain |
 | pull_request_environment_names | Automatically disconnect a branch in the Amplify Console when you delete a branch from your Git repository. | pull_request_environment_name |
 | enable_basic_auth |Enables basic authorization for the Amplify branch's branches. | enable_basic_auth |
+
+## Examples
 
 ### Ensure a branch ID is available.
 

@@ -20,13 +20,17 @@ An `aws_rds_instance` resource block uses resource parameters to search for an R
     describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do
       it { should exist }
     end
-    
+
 #### Parameters
 
-##### db\_instance\_identifier _(required)_
+##### db_instance_identifier _(required if resource_data not provided)_
 
-This resource accepts a single parameter, the user-supplied instance identifier. This parameter isn't case-sensitive.
+The user-supplied instance identifier. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `db_instance_identifier: 'value'` key-value entry in a hash.
+
+##### resource_data _(required if db_instance_identifier not provided)_
+
+A hash or the cached AWS response passed from the `aws_rds_instances` resource.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
 
@@ -42,9 +46,9 @@ For a comprehensive list of properties available to test on an RDS Instance see 
       its ('engine')         { should eq 'mysql' }
       its ('engine_version') { should eq '5.6.37' }
     end
-    
+
 ##### Test the storage allocated to an RDS instance
-    
+
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
       its ('storage_type')      { should eq 'gp2' }
       its ('allocated_storage') { should eq 10 }
@@ -52,6 +56,14 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 
 ##### Test the instance type and master username
     describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
+      its ('master_username')   { should eq 'db-maintain' }
+      its ('db_instance_class') { should eq 'db.t3.micro' }
+    end
+
+##### Test the instance type and master username from cached resources
+
+    resource = aws_rds_instances.where(db_instance_identifier: 'awsrds123')
+    describe aws_rds_instance(resource_data: resource) do
       its ('master_username')   { should eq 'db-maintain' }
       its ('db_instance_class') { should eq 'db.t3.micro' }
     end
