@@ -27,7 +27,7 @@ class AWSApiGatewayDocumentationPartHappyPathTest < Minitest::Test
     @items = AWSApiGatewayDocumentationPart.new(rest_api_id: 'test1', documentation_part_id: 'test1' , client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_work_groups_exists
+  def test_documentation_exists
     assert @items.exist?
   end
 
