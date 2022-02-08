@@ -24,19 +24,19 @@ class AWSApiGatewayDocumentationVersionHappyPathTest < Minitest::Test
     mock_data[:description] = 'test'
     data[:data] = mock_data
     data[:client] = Aws::APIGateway::Client
-    @items = AWSApiGatewayDocumentationVersion.new(rest_api_id: 'test', documentation_version: 'test' , client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSApiGatewayDocumentationVersion.new(rest_api_id: 'test', documentation_version: 'test' , client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_documentation_exists
-    assert @items.exist?
+    assert @resp.exist?
   end
 
   def test_version
-    assert_equal(@items.version, 'test')
+    assert_equal(@resp.version, 'test')
   end
 
   def test_description
-    assert_equal(@items.description, 'test')
+    assert_equal(@resp.description, 'test')
   end
 
 end
