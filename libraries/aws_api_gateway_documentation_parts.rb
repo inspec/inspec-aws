@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSApiGatewayDocumentationParts < AwsResourceBase
   name 'aws_api_gateway_documentation_parts'
-  desc 'Lists the patch baselines in your Amazon Web Services account.'
+  desc 'Lists all the API Gateway documentation parts.'
 
   example "
     describe aws_api_gateway_documentation_parts do
