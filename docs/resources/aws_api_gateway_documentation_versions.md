@@ -25,11 +25,13 @@ For additional information, see the [AWS ApiGateway Documentation Part documenta
 
 ## Properties
 
-| Property      | Description                                               |
-|---------------|-----------------------------------------------------------|
-| created_dates | The date when the API documentation snapshot is created.  |
-| versions      | The version identifier of the API documentation snapshot. |
-| descriptions  | The description of the API documentation snapshot.        |
+| Property     | Description                                               | Fields      |
+
+|--------------|-----------------------------------------------------------|-----------  |
+| created_date | The date when the API documentation snapshot is created.  | created_date|
+| version      | The version identifier of the API documentation snapshot. | version     |
+| description  | The description of the API documentation snapshot.        | description |
+
 
 ## Examples
 
