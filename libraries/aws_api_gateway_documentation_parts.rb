@@ -7,7 +7,7 @@ class AWSApiGatewayDocumentationParts < AwsResourceBase
   desc 'Lists all the API Gateway documentation parts.'
 
   example "
-    describe aws_api_gateway_documentation_parts do
+    describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
       it { should exist }
     end
     describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
