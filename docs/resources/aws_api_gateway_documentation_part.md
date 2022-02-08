@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_api_gateway_documentation_part` InSpec audit resource to test properties of a single AWS ApiGateway Deployment.
 
-The AWS::ApiGateway::Deployment resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
+The AWS::ApiGateway::DocumentationPart resource creates a documentation part for an API.
 
 ## Syntax
 
