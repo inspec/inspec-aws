@@ -21,7 +21,7 @@ Ensure that the documentation part exists.
 
 `rest_api_id` _(required)_
 
-For additional information, see the [AWS ApiGateway Documentation Part  documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
+For additional information, see the [AWS ApiGateway Documentation Part documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
 
 ## Properties
 
