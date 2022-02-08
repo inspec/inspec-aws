@@ -27,7 +27,7 @@ The string identifier of the associated RestApi.
 
 The identifier of the documentation version resource to get information about.
 
-For additional information, see the [AWS ApiGateway Documentation Part](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
+For additional information, see the [AWS ApiGateway Documentation Version documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
 
 ## Properties
 
