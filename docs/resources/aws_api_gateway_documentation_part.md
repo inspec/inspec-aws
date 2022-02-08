@@ -5,7 +5,7 @@ platform: aws
 
 # aws_api_gateway_documentation_part
 
-Use the `aws_api_gateway_documentation_part` InSpec audit resource to test properties of a single AWS ApiGateway Deployment.
+Use the `aws_api_gateway_documentation_part` InSpec audit resource to test properties of a single AWS ApiGateway DocumentationPart.
 
 The AWS::ApiGateway::DocumentationPart resource creates a documentation part for an API.
 
