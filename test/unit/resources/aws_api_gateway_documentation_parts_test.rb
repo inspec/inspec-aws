@@ -12,7 +12,7 @@ class AWSApiGatewayDocumentationPartsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayDocumentationParts.new('rubbish') }
   end
 
-  def test_items_non_existing_for_empty_response
+  def test_documentation_parts_non_existing_for_empty_response
     refute AWSApiGatewayDocumentationParts.new(rest_api_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
@@ -25,24 +25,37 @@ class AWSApiGatewayDocumentationPartsHappyPathTest < Minitest::Test
     mock_data = {}
     mock_data[:id] = 'test'
     mock_data[:location] = { type: "test", path: "test", method: "test", status_code: "test"}
+    mock_data[:properties] = 'test'
     data[:data] = { :items => [mock_data] }
     data[:client] = Aws::APIGateway::Client
-    @items = AWSApiGatewayDocumentationParts.new(rest_api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSApiGatewayDocumentationParts.new(rest_api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_work_groups_exists
-    assert @items.exist?
+  def test_documentation_parts_exists
+    assert @resp.exist?
   end
 
   def test_ids
-    assert_equal(@items.ids, ['test'])
+    assert_equal(@resp.ids, ['test'])
   end
 
-  def test_path
-    assert_equal(@items.paths, ['test'])
+  def test_location_types
+    assert_equal(@resp.types, ['test'])
   end
 
-  def test_status_code
-    assert_equal(@items.status_codes, ['test'])
+  def test_location_paths
+    assert_equal(@resp.paths, ['test'])
+  end
+
+  def test_location_methods
+    assert_equal(@resp.methods, ['test'])
+  end
+
+  def test_location_status_codes
+    assert_equal(@resp.status_codes, ['test'])
+  end
+
+  def test_properties
+    assert_equal(@resp.properties, ['test'])
   end
 end
