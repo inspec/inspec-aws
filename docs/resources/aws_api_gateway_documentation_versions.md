@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_api_gateway_documentation_versions` InSpec audit resource to test properties of multiple AWS ApiGateway Documentation Parts.
 
-The AWS::ApiGateway::DocumentationParts resource creates a documentation part for an API.
+The AWS::ApiGateway::DocumentationParts resource creates a documentation versions for an API.
 
 ## Syntax
 
@@ -35,7 +35,7 @@ For additional information, see the [AWS ApiGateway Documentation Version docume
 
 ## Examples
 
-### Ensure that the documentation part ID exists.
+### Ensure that the documentation versions ID exists.
 
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       its('versions') { should include 'VERSION' }
@@ -63,7 +63,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the documentation part is available.
+Use `should` to check if the documentation versions is available.
 
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       it { should be_available }
