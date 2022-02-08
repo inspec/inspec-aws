@@ -32,7 +32,6 @@ For additional information, see the [AWS ApiGateway Documentation Version docume
 | version      | The version identifier of the API documentation snapshot. | version     |
 | description  | The description of the API documentation snapshot.        | description |
 
-
 ## Examples
 
 ### Ensure that the documentation part ID exists.
