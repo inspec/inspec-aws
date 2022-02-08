@@ -10,6 +10,7 @@ class AWSApiGatewayDocumentationParts < AwsResourceBase
     describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
       it { should exist }
     end
+
     describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
       its('ids') { should include DOCUMENTATION_PART_ID' }
     end
