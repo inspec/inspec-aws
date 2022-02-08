@@ -36,7 +36,6 @@ For additional information, see the [AWS ApiGateway Documentation Part  document
 | names        | The name of the targeted API entity.                                              |
 | properties   | A content map of API-specific key-value pairs describing the targeted API entity. |
 
-
 ## Examples
 
 ### Ensure that the documentation part  ID exists.
