@@ -11,7 +11,7 @@ The AWS::ApiGateway::DocumentationParts resource creates a documentation part fo
 
 ## Syntax
 
-Ensure that the documentation part exists.
+Ensure that the documentation version exists.
 
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that the documentation part exists.
 
 `rest_api_id` _(required)_
 
-For additional information, see the [AWS ApiGateway Documentation Part documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
+For additional information, see the [AWS ApiGateway Documentation Version documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
 
 ## Properties
 

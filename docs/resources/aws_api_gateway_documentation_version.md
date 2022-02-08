@@ -74,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_VERSION') do
       it { should be_available }

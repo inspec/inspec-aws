@@ -7,7 +7,7 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
   desc 'Retrieves API Gateway Documentation Version.'
 
   example "
-    describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_PART_ID') do
+    describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_VERSION') do
       it { should exist }
     end
   "
