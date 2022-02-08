@@ -11,7 +11,7 @@ class AWSApiGatewayDocumentationVersions < AwsResourceBase
       it { should exist }
     end
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
-      its('versions') { should include VERSION' }
+      its('versions') { should include 'VERSION' }
     end
   "
 
