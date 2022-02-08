@@ -11,7 +11,6 @@ class AWSApiGatewayDocumentationPartConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AWSApiGatewayDocumentationPart.new('rubbish') }
   end
-
 end
 
 class AWSApiGatewayDocumentationPartHappyPathTest < Minitest::Test
