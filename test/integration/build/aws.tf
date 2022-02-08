@@ -5953,3 +5953,24 @@ resource "aws_waf_web_acl" "aws_waf_web_acl_test1" {
     type     = "REGULAR"
   }
 }
+//AWS::APIGateway:Documentation
+
+resource "aws_api_gateway_documentation_version" "for_documentation" {
+  version     = "example_version"
+  rest_api_id = aws_api_gateway_rest_api.for_documentation.id
+  description = "Example description"
+  depends_on  = [aws_api_gateway_documentation_part.for_documentation]
+}
+
+resource "aws_api_gateway_rest_api" "for_documentation" {
+  name = "example_api"
+}
+
+resource "aws_api_gateway_documentation_part" "for_documentation" {
+  location {
+    type = "API"
+  }
+
+  properties  = "{\"description\":\"Example\"}"
+  rest_api_id = aws_api_gateway_rest_api.for_documentation.id
+}
