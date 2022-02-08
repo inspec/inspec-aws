@@ -52,7 +52,7 @@ For additional information, see the [AWS ApiGateway Documentation Part](https://
 ### Check whether the API path exist for a documentation part.
 
     describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'DOCUMENTATION_PART_ID') do
-        its('location.path') { should eq REQUEST_BODY }
+        its('location.path') { should eq 'REQUEST_BODY' }
     end
 
 ## Matchers
