@@ -42,5 +42,4 @@ class AWSApiGatewayDocumentationVersionsHappyPathTest < Minitest::Test
   def test_descriptions
     assert_equal(@resp.descriptions, ['test'])
   end
-
 end
