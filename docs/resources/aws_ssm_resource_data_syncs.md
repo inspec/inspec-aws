@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ssm_resource_data_syncs
 
-Use the `aws_ssm_resource_data_syncs` InSpec audit resource to test properties of the plural resource of AWS SSM ResourceDataSync.
+Use the `aws_ssm_resource_data_syncs` InSpec audit resource to test properties of the plural resource of an AWS Systems Manager (SSM) resource data sync.
 
-The AWS::SSM::ResourceDataSync resource creates, updates, or deletes a resource data sync for AWS Systems Manager. A resource data sync helps you view data from multiple sources in a single location. Systems Manager offers two types of resource data sync: SyncToDestination and SyncFromSource.
+The `AWS::SSM::ResourceDataSync` resource creates, updates, or deletes a resource data sync for AWS Systems Manager. A resource data sync helps you view data from multiple sources in a single location. Systems Manager offers two types of resource data sync: `SyncToDestination` and `SyncFromSource`.
 
 ## Syntax
 
-### Ensure that the resource data syncs exists.
+Ensure that the resource data syncs exists:
 
     describe aws_ssm_resource_data_syncs do
       it { should exist }
@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on AWS SSM ResourceDataSy
 
 ## Properties
 
-| Property | Description | Fields | 
+| Property | Description | Fields |
 | --- | --- | --- |
 | sync_names | The name of the resource data sync. | sync_name |
 | sync_types | The type of resource data sync. | sync_type |
@@ -41,16 +41,19 @@ For additional information, see the [AWS documentation on AWS SSM ResourceDataSy
 ## Examples
 
 ### Ensure a sync name is available.
+
     describe aws_ssm_resource_data_syncs do
       its('sync_names') { should include 'RESOURCE_DATA_SYNC_NAME' }
     end
 
 ### Ensure a sync type is available.
+
     describe aws_ssm_resource_data_syncs do
       its('sync_types') { should include 'RESOURCE_DATA_SYNC_TYPE' }
     end
 
 ### Ensure a status is `Successful`.
+
     describe aws_ssm_resource_data_syncs do
       its('last_statuses') { should include 'Successful' }
     end
