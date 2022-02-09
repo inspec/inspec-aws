@@ -5,9 +5,9 @@ platform: aws
 
 # aws_api_gateway_documentation_parts
 
-Use the `aws_api_gateway_documentation_parts` InSpec audit resource to test properties of multiple AWS ApiGateway Documentation Parts.
+Use the `aws_api_gateway_documentation_parts` InSpec audit resource to test properties of multiple documentation parts for an AWS API Gateway.
 
-The AWS::ApiGateway::DocumentationParts resource creates a documentation part for an API.
+The `AWS::ApiGateway::DocumentationParts` resource creates a documentation part for an API.
 
 ## Syntax
 
@@ -20,6 +20,8 @@ Ensure that the documentation part exists.
 ## Parameters
 
 `rest_api_id` _(required)_
+
+The string identifier of the associated REST API.
 
 For additional information, see the [AWS ApiGateway Documentation Part documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
 
