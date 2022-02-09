@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ssm_patch_baseline
 
-Use the `aws_ssm_patch_baseline` InSpec audit resource to test properties of the singular resource of AWS SSM PatchBaseline.
+Use the `aws_ssm_patch_baseline` InSpec audit resource to test properties of a single AWS Systems Manager (SSM) patch baseline.
 
-The AWS::SSM::PatchBaseline resource defines the basic information for an AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for installation on your instances.
+The `AWS::SSM::PatchBaseline` resource defines the basic information for an AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for installation on your instances.
 
 ## Syntax
 
-### Ensure that the baseline exists.
+Ensure that the baseline exists:
 
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ The AWS::SSM::PatchBaseline resource defines the basic information for an AWS Sy
 
 The ID of the patch baseline.
 
-For additional information, see the [AWS documentation on AWS SSM PatchBaseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
+For additional information, see the [AWS documentation on AWS SSM patch baseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
 
 ## Properties
 
@@ -59,22 +59,26 @@ For additional information, see the [AWS documentation on AWS SSM PatchBaseline]
 
 ## Examples
 
-### Ensure a baseline id is available.
+### Ensure a baseline ID is available.
+
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('baseline_id') { should eq 'BASELINE_ID' }
     end
 
-### Ensure a operating system is `WINDOWS`.
+### Ensure an operating system is `WINDOWS`.
+
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('operating_system') { should eq 'WINDOWS' }
     end
 
 ### Ensure a source name is empty.
+
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('source_names') { should be_empty }
     end
 
-### Ensure a approved patches compliance level is `UNSPECIFIED`.
+### Ensure an approved patches compliance level is `UNSPECIFIED`.
+
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('approved_patches_compliance_level') { should eq 'UNSPECIFIED' }
     end

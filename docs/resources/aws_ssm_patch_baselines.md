@@ -5,13 +5,13 @@ platform: aws
 
 # aws_ssm_patch_baseline
 
-Use the `aws_ssm_patch_baseline` InSpec audit resource to test properties of the plural resource of AWS SSM PatchBaseline.
+Use the `aws_ssm_patch_baseline` InSpec audit resource to test properties of multiple AWS Systems Manager (SSM) patch baselines.
 
-The AWS::SSM::PatchBaseline resource defines the basic information for an AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for installation on your instances.
+The `AWS::SSM::PatchBaseline` resource defines the basic information for an AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for installation on your instances.
 
 ## Syntax
 
-### Ensure that the baseline exists.
+Ensure that a baseline exists:
 
     describe aws_ssm_patch_baselines do
       it { should exist }
@@ -21,7 +21,7 @@ The AWS::SSM::PatchBaseline resource defines the basic information for an AWS Sy
 
 This resource does not expect any required parameters.
 
-For additional information, see the [AWS documentation on AWS SSM PatchBaseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
+For additional information, see the [AWS documentation on AWS SSM patch baseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
 
 ## Properties
 
@@ -35,22 +35,26 @@ For additional information, see the [AWS documentation on AWS SSM PatchBaseline]
 
 ## Examples
 
-### Ensure a baseline id is available.
+### Ensure a baseline ID is available.
+
     describe aws_ssm_patch_baselines do
       its('baseline_ids') { should include 'BASELINE_ID' }
     end
 
 ### Ensure a baseline name is present.
+
     describe aws_ssm_patch_baselines do
         its('baseline_names') { should include 'BASELINE_NAME' }
     end
 
-### Ensure a operating system is `WINDOWS`.
+### Ensure a patch baseline has the `WINDOWS` operating system.
+
     describe aws_ssm_patch_baselines do
       its('operating_systems') { should include 'WINDOWS' }
     end
 
 ### Ensure a baseline description is present.
+
     describe aws_ssm_patch_baselines do
         its('baseline_descriptions') { should include 'BASELINE_DESCRIPTION' }
     end
