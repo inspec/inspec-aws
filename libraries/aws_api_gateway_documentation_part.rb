@@ -25,6 +25,10 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
     end
   end
 
+  def exists?
+    !@res.nil? && !@res.empty?
+  end
+
   def documentation_part_id
     return nil unless exists?
     @res[:documentation_part_id]

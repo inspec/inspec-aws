@@ -5956,22 +5956,22 @@ resource "aws_waf_web_acl" "aws_waf_web_acl_test1" {
 
 // AWS::APIGateway:Documentation
 
-resource "aws_api_gateway_documentation_version" "aws_api_gateway_documentation_version_test1" {
+resource "aws_api_gateway_documentation_version" "aws_api_gateway_documentation_version_test" {
   version = "example_version"
-  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
   description = "Example description"
-  depends_on = [aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test1]
+  depends_on = [aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test]
 }
 
-resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test1" {
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
   name = "example_api"
 }
 
-resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_part_test1" {
+resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_part_test" {
   location {
     type = "API"
   }
   properties = "{\"description\":\"Example\"}"
-  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test1.id
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
 }
 
