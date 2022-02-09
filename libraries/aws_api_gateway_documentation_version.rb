@@ -25,6 +25,10 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
     end
   end
 
+  def exists?
+    !@res.nil? && !@res.empty?
+  end
+
   def documentation_version
     return nil unless exists?
     @res[:documentation_version]
