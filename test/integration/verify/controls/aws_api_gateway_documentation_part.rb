@@ -1,7 +1,7 @@
 aws_api_gateway_rest_api_id = attribute(:aws_api_gateway_rest_api_id_1, value: '', description: '')
 documentation_part_id = attribute(:aws_api_gateway_documentation_part_id, value: '', description: '')
 aws_api_gateway_documentation_part_location_type = attribute(:aws_api_gateway_documentation_part_location_type, value: '', description: '')
-start_index = documentation_part_id.index("/") + 1
+start_index = documentation_part_id.index("/")
 aws_api_gateway_documentation_part_id = documentation_part_id[start_index..]
 
 control 'aws-api-gateway-documentation-part-1.0' do
