@@ -1,9 +1,14 @@
-<!-- latest_release 1.80.3 -->
+<!-- latest_release 1.80.4 -->
+## [v1.80.4](https://github.com/inspec/inspec-aws/tree/v1.80.4) (2022-02-10)
+
+#### Merged Pull Requests
+- RESOURCE-30 Set up SimpleCov [#853](https://github.com/inspec/inspec-aws/pull/853) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.80.3](https://github.com/inspec/inspec-aws/tree/v1.80.3) (2022-02-10)
 
 #### Merged Pull Requests
 - soumyo/aws_ssm_resource_data_syncs [#845](https://github.com/inspec/inspec-aws/pull/845) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.80.2](https://github.com/inspec/inspec-aws/tree/v1.80.2) (2022-02-10)
 
