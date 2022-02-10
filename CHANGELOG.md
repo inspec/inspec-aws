@@ -1,9 +1,14 @@
-<!-- latest_release 1.80.1 -->
+<!-- latest_release 1.80.2 -->
+## [v1.80.2](https://github.com/inspec/inspec-aws/tree/v1.80.2) (2022-02-10)
+
+#### Merged Pull Requests
+- Aws api gateway documentation part [#849](https://github.com/inspec/inspec-aws/pull/849) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.80.1](https://github.com/inspec/inspec-aws/tree/v1.80.1) (2022-02-10)
 
 #### Merged Pull Requests
 - Edits in backend.rb to include some common error handling [#851](https://github.com/inspec/inspec-aws/pull/851) ([jb897](https://github.com/jb897))
-<!-- latest_release -->
 
 ## [v1.80.0](https://github.com/inspec/inspec-aws/tree/v1.80.0) (2022-02-02)
 
