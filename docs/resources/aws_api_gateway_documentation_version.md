@@ -5,9 +5,9 @@ platform: aws
 
 # aws_api_gateway_documentation_version
 
-Use the `aws_api_gateway_documentation_version` InSpec audit resource to test properties of a single AWS ApiGateway Documentation Version.
+Use the `aws_api_gateway_documentation_version` InSpec audit resource to test properties of a single AWS API Gateway documentation version.
 
-The AWS::ApiGateway::DocumentationVersion resource creates a documentation version for an API.
+The `AWS::ApiGateway::DocumentationVersion` resource creates a documentation version for an API.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The string identifier of the associated RestApi.
 
 The identifier of the documentation version resource to get information about.
 
-For additional information, see the [AWS ApiGateway Documentation Version documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
+For additional information, see the [AWS ApiGateway documentation version documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
 
 ## Properties
 

@@ -5,9 +5,9 @@ platform: aws
 
 # aws_api_gateway_documentation_versions
 
-Use the `aws_api_gateway_documentation_versions` InSpec audit resource to test properties of multiple AWS ApiGateway Documentation Versions.
+Use the `aws_api_gateway_documentation_versions` InSpec audit resource to test properties of multiple AWS API Gateway documentation versions.
 
-The AWS::ApiGateway::DocumentationParts resource creates a documentation versions for an API.
+The `AWS::ApiGateway::DocumentationParts` resource creates a documentation versions for an API.
 
 ## Syntax
 
