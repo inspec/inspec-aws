@@ -11,10 +11,6 @@ class AwsRdsSnapshotsConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AwsRdsSnapshots.new('rubbish') }
   end
-
-  def test_snapshots_non_existing_for_empty_response
-    refute AwsRdsSnapshots.new(client_args: { stub_responses: true }).exist?
-  end
 end
 
 class AwsRdsSnapshotsHappyPathTest < Minitest::Test

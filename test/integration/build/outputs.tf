@@ -1541,3 +1541,123 @@ output "aws_route53_zone_id" {
 output "aws_route53_zone_name" {
   value = aws_route53_zone.test_zone.name
 }
+
+output "aws_waf_byte_match_set_id" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.id
+}
+
+output "aws_waf_byte_match_set_name" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.name
+}
+
+output "aws_waf_byte_match_set_byte_match_tuples" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.byte_match_tuples
+}
+
+output "aws_waf_ipset_id" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.id
+}
+
+output "aws_waf_ipset_arn" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.arn
+}
+
+output "aws_waf_ipset_name" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.name
+}
+
+output "aws_waf_ipset_ip_set_descriptors" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.ip_set_descriptors
+}
+
+output "aws_waf_rule_id" {
+  value = aws_waf_rule.aws_waf_rule_test1.id
+}
+
+output "aws_waf_rule_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.name
+}
+
+output "aws_waf_rule_arn" {
+  value = aws_waf_rule.aws_waf_rule_test1.arn
+}
+
+output "aws_waf_rule_metric_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.metric_name
+}
+
+output "aws_waf_size_constraint_set_id" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.id
+}
+
+output "aws_waf_size_constraint_set_name" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.name
+}
+
+output "aws_waf_size_constraint_set_arn" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.arn
+}
+
+output "aws_waf_size_constraint_set_size_constraints" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.size_constraints
+}
+
+output "aws_waf_sql_injection_match_set_id" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.id
+}
+
+output "aws_waf_sql_injection_match_set_name" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.name
+}
+
+output "aws_waf_web_acl_id" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.id
+}
+
+output "aws_waf_web_acl_arn" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.arn
+}
+
+output "aws_waf_web_acl_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.name
+}
+
+output "aws_waf_web_acl_metric_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.metric_name
+}
+
+output "aws_api_gateway_rest_api_id_1" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+}
+
+output "aws_api_gateway_documentation_part_id" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.id
+}
+
+output "aws_api_gateway_documentation_part_location_type" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].type
+}
+
+output "aws_api_gateway_documentation_part_location_path" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].path
+}
+
+output "aws_api_gateway_documentation_part_location_method" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].method
+}
+
+output "aws_api_gateway_documentation_part_location_status_code" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].status_code
+}
+
+output "aws_api_gateway_documentation_part_location_name" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].name
+}
+
+output "aws_api_gateway_documentation_version_id" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.id
+}
+
+output "aws_api_gateway_documentation_version_description" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.description
+}

@@ -1,9 +1,115 @@
-<!-- latest_release 1.75.7 -->
+<!-- latest_release 1.80.6 -->
+## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
+
+#### Merged Pull Requests
+- soumyo/update_readme_file_upto_feb9 [#847](https://github.com/inspec/inspec-aws/pull/847) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.80.5](https://github.com/inspec/inspec-aws/tree/v1.80.5) (2022-02-11)
+
+#### Merged Pull Requests
+- AWSApiGatewayDocumentationVersion [#850](https://github.com/inspec/inspec-aws/pull/850) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.80.4](https://github.com/inspec/inspec-aws/tree/v1.80.4) (2022-02-10)
+
+#### Merged Pull Requests
+- RESOURCE-30 Set up SimpleCov [#853](https://github.com/inspec/inspec-aws/pull/853) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.80.3](https://github.com/inspec/inspec-aws/tree/v1.80.3) (2022-02-10)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_resource_data_syncs [#845](https://github.com/inspec/inspec-aws/pull/845) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.80.2](https://github.com/inspec/inspec-aws/tree/v1.80.2) (2022-02-10)
+
+#### Merged Pull Requests
+- Aws api gateway documentation part [#849](https://github.com/inspec/inspec-aws/pull/849) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.80.1](https://github.com/inspec/inspec-aws/tree/v1.80.1) (2022-02-10)
+
+#### Merged Pull Requests
+- Edits in backend.rb to include some common error handling [#851](https://github.com/inspec/inspec-aws/pull/851) ([jb897](https://github.com/jb897))
+
+## [v1.80.0](https://github.com/inspec/inspec-aws/tree/v1.80.0) (2022-02-02)
+
+#### Merged Pull Requests
+- Support cache aws rds instance [#828](https://github.com/inspec/inspec-aws/pull/828) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.79.0](https://github.com/inspec/inspec-aws/tree/v1.79.0) (2022-02-02)
+
+#### Merged Pull Requests
+- Support in memory cache aws eks clusters [#833](https://github.com/inspec/inspec-aws/pull/833) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.78.0](https://github.com/inspec/inspec-aws/tree/v1.78.0) (2022-02-01)
+
+#### Merged Pull Requests
+- Lazy load tags [#834](https://github.com/inspec/inspec-aws/pull/834) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.77.0](https://github.com/inspec/inspec-aws/tree/v1.77.0) (2022-02-01)
+
+#### Merged Pull Requests
+- AWS rds snapshot in memory caching implementation  [#830](https://github.com/inspec/inspec-aws/pull/830) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.76.6](https://github.com/inspec/inspec-aws/tree/v1.76.6) (2022-02-01)
+
+#### Merged Pull Requests
+- Cache implementation for for SAP use case. [#824](https://github.com/inspec/inspec-aws/pull/824) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.76.5](https://github.com/inspec/inspec-aws/tree/v1.76.5) (2022-01-31)
+
+#### Merged Pull Requests
+- Remove release notes content from static dir [#831](https://github.com/inspec/inspec-aws/pull/831) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.76.4](https://github.com/inspec/inspec-aws/tree/v1.76.4) (2022-01-28)
+
+#### Merged Pull Requests
+- return nil values from catch aws errors [#836](https://github.com/inspec/inspec-aws/pull/836) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
+
+#### Merged Pull Requests
+- Added Pagination  for the Route53 [#810](https://github.com/inspec/inspec-aws/pull/810) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.76.2](https://github.com/inspec/inspec-aws/tree/v1.76.2) (2022-01-25)
+
+#### Merged Pull Requests
+- Fix title in resource doc [#829](https://github.com/inspec/inspec-aws/pull/829) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
+
+#### Merged Pull Requests
+- Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
+
+
+## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
+
+#### Merged Pull Requests
+- Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
+
+## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
+
+#### Merged Pull Requests
+- Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
+
+#### Merged Pull Requests
+- Move release dates JSON file to assets dir [#817](https://github.com/inspec/inspec-aws/pull/817) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/update_readme_till_sprint_15 [#812](https://github.com/inspec/inspec-aws/pull/812) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.75.8](https://github.com/inspec/inspec-aws/tree/v1.75.8) (2022-01-03)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_web_acl [#808](https://github.com/inspec/inspec-aws/pull/808) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
 ## [v1.75.7](https://github.com/inspec/inspec-aws/tree/v1.75.7) (2022-01-03)
 
 #### Merged Pull Requests
 - soumyo/aws_hosted_zone_all_record_issue_fix [#811](https://github.com/inspec/inspec-aws/pull/811) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.75.6](https://github.com/inspec/inspec-aws/tree/v1.75.6) (2021-12-30)
 

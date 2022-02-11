@@ -5855,3 +5855,123 @@ resource "aws_s3_bucket_policy" "my_test_bucket_policy" {
     ]
   })
 }
+
+
+# AWS::WAF::ByteMatchSet
+
+resource "aws_waf_byte_match_set" "aws_waf_byte_match_set_test1" {
+  name = "tf_waf_byte_match_set"
+
+  byte_match_tuples {
+    text_transformation   = "NONE"
+    target_string         = "badrefer1"
+    positional_constraint = "CONTAINS"
+
+    field_to_match {
+      type = "HEADER"
+      data = "referer"
+    }
+  }
+}
+
+#AWS::WAF::IPSet
+resource "aws_waf_ipset" "aws_waf_ipset_test1" {
+  name = "tfIPSet"
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "192.0.7.0/24"
+  }
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "10.0.0.0/16"
+  }
+}
+
+#AWS::WAF::Rule
+resource "aws_waf_rule" "aws_waf_rule_test1" {
+  depends_on  = [aws_waf_ipset.aws_waf_ipset_test1]
+  name        = "tfWAFRule"
+  metric_name = "tfWAFRule"
+
+  predicates {
+    data_id = aws_waf_ipset.aws_waf_ipset_test1.id
+    negated = false
+    type    = "IPMatch"
+  }
+}
+
+#AWS::WAF::SizeConstraintSet
+resource "aws_waf_size_constraint_set" "aws_waf_size_constraint_set_test1" {
+  name = "tfsize_constraints"
+
+  size_constraints {
+    text_transformation = "NONE"
+    comparison_operator = "EQ"
+    size                = "4096"
+
+    field_to_match {
+      type = "BODY"
+    }
+  }
+}
+
+#AWS::WAF::SqlInjectionMatchSet
+resource "aws_waf_sql_injection_match_set" "sql_injection_match_set" {
+  name = "tf-sql_injection_match_set"
+
+  sql_injection_match_tuples {
+    text_transformation = "URL_DECODE"
+
+    field_to_match {
+      type = "QUERY_STRING"
+    }
+  }
+}
+
+//AWS::WAF::WebACL
+resource "aws_waf_web_acl" "aws_waf_web_acl_test1" {
+  depends_on = [
+    aws_waf_ipset.aws_waf_ipset_test1,
+    aws_waf_rule.aws_waf_rule_test1,
+  ]
+  name        = "tfWebACL"
+  metric_name = "tfWebACL"
+
+  default_action {
+    type = "ALLOW"
+  }
+
+  rules {
+    action {
+      type = "BLOCK"
+    }
+
+    priority = 1
+    rule_id  = aws_waf_rule.aws_waf_rule_test1.id
+    type     = "REGULAR"
+  }
+}
+
+// AWS::APIGateway:Documentation
+
+resource "aws_api_gateway_documentation_version" "aws_api_gateway_documentation_version_test" {
+  version = "example_version"
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  description = "Example description"
+  depends_on = [aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test]
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  name = "example_api"
+}
+
+resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_part_test" {
+  location {
+    type = "API"
+  }
+  properties = "{\"description\":\"Example\"}"
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+}
+
