@@ -16,4 +16,10 @@ control 'aws-rds-snapshots-1.0' do
       it { should be_encrypted }
     end
   end
+
+  aws_rds_snapshots.entries.each do |entry|
+    describe aws_rds_snapshot(resource_data: entry) do
+      it { should exist }
+    end
+  end
 end

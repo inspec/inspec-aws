@@ -26,7 +26,7 @@ An `aws_iam_inline_policy` resource block identifies an inline policy by policy 
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 This resource requires `policy_name` and one of the `role_name`, `group_name` or `user_name` to be provided.
 

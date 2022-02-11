@@ -17,6 +17,10 @@ Ensure that network interface permission ID exists.
 
 For additional information, see the [AWS documentation on AWS EC2 Network Interface Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfacepermission.html).
 
+## Parameters
+
+This resource does not expect any parameters.
+
 ## Properties
 
 | Property | Description | Field |

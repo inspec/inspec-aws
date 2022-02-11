@@ -3,7 +3,7 @@ title: About the aws_network_acls Resource
 platform: aws
 ---
 
-# aws\_network\_acls
+# aws_network_acls
 
 Use the `aws_network_acls` InSpec audit resource to test the properties of all Amazon network ACLs.
 To audit a single network ACL, use the `aws_network_acl` (singular) resource.

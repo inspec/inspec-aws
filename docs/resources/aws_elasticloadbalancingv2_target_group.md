@@ -16,7 +16,7 @@ Ensure that a target group arn exists.
 
 ## Parameters
 
-`   target_group_arn` _(required)_
+`target_group_arn` _(required)_
 
 The Amazon Resource Name (ARN) of the target group.
 

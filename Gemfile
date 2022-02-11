@@ -17,8 +17,17 @@ gem 'inspec-bin'
 
 gem 'rubocop', '~> 1.3'
 
+group :test do
+  gem "simplecov", "~> 0.21"
+  gem "simplecov_json_formatter"
+end
+
 group :development do
   gem 'rake'
   gem 'minitest'
   gem 'pry-byebug'
+end
+
+if Gem.ruby_version < Gem::Version.new("2.7.0")
+  gem "activesupport", "< 7.0.0"
 end
