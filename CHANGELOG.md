@@ -1,9 +1,34 @@
-<!-- latest_release 1.80.0 -->
+<!-- latest_release 1.80.5 -->
+## [v1.80.5](https://github.com/inspec/inspec-aws/tree/v1.80.5) (2022-02-11)
+
+#### Merged Pull Requests
+- AWSApiGatewayDocumentationVersion [#850](https://github.com/inspec/inspec-aws/pull/850) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
+## [v1.80.4](https://github.com/inspec/inspec-aws/tree/v1.80.4) (2022-02-10)
+
+#### Merged Pull Requests
+- RESOURCE-30 Set up SimpleCov [#853](https://github.com/inspec/inspec-aws/pull/853) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.80.3](https://github.com/inspec/inspec-aws/tree/v1.80.3) (2022-02-10)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_resource_data_syncs [#845](https://github.com/inspec/inspec-aws/pull/845) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.80.2](https://github.com/inspec/inspec-aws/tree/v1.80.2) (2022-02-10)
+
+#### Merged Pull Requests
+- Aws api gateway documentation part [#849](https://github.com/inspec/inspec-aws/pull/849) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.80.1](https://github.com/inspec/inspec-aws/tree/v1.80.1) (2022-02-10)
+
+#### Merged Pull Requests
+- Edits in backend.rb to include some common error handling [#851](https://github.com/inspec/inspec-aws/pull/851) ([jb897](https://github.com/jb897))
+
 ## [v1.80.0](https://github.com/inspec/inspec-aws/tree/v1.80.0) (2022-02-02)
 
 #### Merged Pull Requests
 - Support cache aws rds instance [#828](https://github.com/inspec/inspec-aws/pull/828) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.79.0](https://github.com/inspec/inspec-aws/tree/v1.79.0) (2022-02-02)
 
