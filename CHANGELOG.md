@@ -1,9 +1,14 @@
-<!-- latest_release 1.80.5 -->
+<!-- latest_release 1.80.6 -->
+## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
+
+#### Merged Pull Requests
+- soumyo/update_readme_file_upto_feb9 [#847](https://github.com/inspec/inspec-aws/pull/847) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.80.5](https://github.com/inspec/inspec-aws/tree/v1.80.5) (2022-02-11)
 
 #### Merged Pull Requests
 - AWSApiGatewayDocumentationVersion [#850](https://github.com/inspec/inspec-aws/pull/850) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.80.4](https://github.com/inspec/inspec-aws/tree/v1.80.4) (2022-02-10)
 
