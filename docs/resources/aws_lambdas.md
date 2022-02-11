@@ -9,14 +9,13 @@ Use the `aws_lambdas` resource to test the collection of lambdas deployed into a
 
 ## Syntax
 ````
-    describe aws_lambdas do
-      its('count') { should eq 20 }
-    end
-````    
-#### Parameters
+describe aws_lambdas do
+    its('count') { should eq 20 }
+end
+````
+## Parameters
 
 This resource does not expect any parameters.
-
 
 ## Properties
 
@@ -28,27 +27,27 @@ This resource does not expect any parameters.
 ## Examples
 
 
-##### tests that all lambdas with a particular tag is correctly deployed
+### Tests that all lambdas with a particular tag is correctly deployed
+
 ````
-  lambdas = aws_lambdas() 
+lambdas = aws_lambdas()
 
-  describe lambdas do
-    its ('count') { should eq 33}    
-  end
+describe lambdas do
+its ('count') { should eq 33}
+end
 
-  lambdas.tags.each_with_index { | tag, i |    
-    if tag!= {} and tag.include? 'Application' and tag['Application']=='test')
-      lambda_name = lambdas.names[i]
-      
-      describe aws_lambda(lambda_name) do
-          it { should exist}    
-          its ('handler') { should eq 'main.on_event'}
-          its ('version') { should eq '$LATEST' }
-          its ('runtime') { should eq 'python3.7' }
-      end
+lambdas.tags.each_with_index { | tag, i |
+if tag!= {} and tag.include? 'Application' and tag['Application']=='test')
+    lambda_name = lambdas.names[i]
+
+    describe aws_lambda(lambda_name) do
+        it { should exist}
+        its ('handler') { should eq 'main.on_event'}
+        its ('version') { should eq '$LATEST' }
+        its ('runtime') { should eq 'python3.7' }
     end
-  }
-
+end
+}
 ````
 
 ## Matchers
@@ -58,7 +57,6 @@ This InSpec audit resource uses the standard matchers.  For a full list of avail
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Lambda:Client:ListFunctionsResponse` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Lambda:Client:ListFunctionsResponse` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-api-permissions-ref.html)
-
