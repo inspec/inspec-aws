@@ -333,15 +333,16 @@ class AwsConnection
   end
 end
 
-
 class AwsMockResource
   def initialize(opts)
     @opts = opts
   end
 
   private
+
   attr_reader :opts
-  def method_missing(symbol, *args)
+
+  def method_missing(_symbol, *_args)
     [opts[:resource_data]]
   end
 end
