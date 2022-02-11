@@ -1625,3 +1625,39 @@ output "aws_waf_web_acl_name" {
 output "aws_waf_web_acl_metric_name" {
   value = aws_waf_web_acl.aws_waf_web_acl_test1.metric_name
 }
+
+output "aws_api_gateway_rest_api_id_1" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+}
+
+output "aws_api_gateway_documentation_part_id" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.id
+}
+
+output "aws_api_gateway_documentation_part_location_type" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].type
+}
+
+output "aws_api_gateway_documentation_part_location_path" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].path
+}
+
+output "aws_api_gateway_documentation_part_location_method" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].method
+}
+
+output "aws_api_gateway_documentation_part_location_status_code" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].status_code
+}
+
+output "aws_api_gateway_documentation_part_location_name" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].name
+}
+
+output "aws_api_gateway_documentation_version_id" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.id
+}
+
+output "aws_api_gateway_documentation_version_description" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.description
+}
