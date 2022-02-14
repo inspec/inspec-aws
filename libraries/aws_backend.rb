@@ -470,7 +470,9 @@ class AwsResourceBase < Inspec.resource(1)
         advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
                  'and ensure your Service Principal has these permissions set.'
       end
-      fail_resource("Unable to execute control: #{e.message}\n#{advice}")
+      error_message = "#{e.message}: #{advice}"
+
+      raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
