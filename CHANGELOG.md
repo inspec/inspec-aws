@@ -1,9 +1,14 @@
-<!-- latest_release 1.80.6 -->
+<!-- latest_release 1.80.7 -->
+## [v1.80.7](https://github.com/inspec/inspec-aws/tree/v1.80.7) (2022-02-11)
+
+#### Merged Pull Requests
+- Another error handling line for the backend.rb file, better error output and json logging [#854](https://github.com/inspec/inspec-aws/pull/854) ([jb897](https://github.com/jb897))
+<!-- latest_release -->
+
 ## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
 
 #### Merged Pull Requests
 - soumyo/update_readme_file_upto_feb9 [#847](https://github.com/inspec/inspec-aws/pull/847) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.80.5](https://github.com/inspec/inspec-aws/tree/v1.80.5) (2022-02-11)
 
