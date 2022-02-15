@@ -427,6 +427,10 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
     nil
+  rescue Aws::Errors::NoSuchEndpointError
+    Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'
+    fail_resource('Invalid Endpoint error')
+    nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
       advice = ''
@@ -434,11 +438,15 @@ class AwsResourceBase < Inspec.resource(1)
       case error_type
       when 'InvalidAccessKeyId'
         advice = 'Please ensure your AWS Access Key ID is set correctly.'
+      when 'InvalidClientTokenId'
+        advice = 'Please ensure that the aws access key, aws secret access key, and the aws session token are correct.'
       when 'AccessDenied'
         advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
                  'and ensure your Service Principal has these permissions set.'
       end
-      fail_resource("Unable to execute control: #{e.message}\n#{advice}")
+      error_message = "#{e.message}: #{advice}"
+
+      raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
