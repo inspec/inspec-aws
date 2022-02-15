@@ -14,11 +14,11 @@ One delivery channel is allowed per region per AWS account, and the delivery cha
 
 ## Syntax
 
-    describe aws_config_delivery_channel('my_channel') do
+    describe aws_config_delivery_channel('CHANNEL_NAME') do
       it { should exist }
     end
 
-    describe aws_config_delivery_channel(channel_name: 'my-channel') do
+    describe aws_config_delivery_channel(channel_name: 'CHANNEL_NAME') do
       it { should exist }
     end
 
@@ -40,26 +40,26 @@ See also the [AWS documentation on Delivery Channels](https://docs.aws.amazon.co
 
 ## Properties
 
-|Property                       | Description|
-| ---                           | --- |
-|channel_name                  | The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. |
-|s3_bucket_name               | The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.  |
-|s3_key_prefix                | The prefix for the specified Amazon S3 bucket. |
-|sns_topic_arn                | The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.  |
-|delivery_frequency_in_hours | Specifies how often the AWS Config sends configuration changes to the s3 bucket in the delivery channel. |
+| Property | Description |
+| ---  | --- |
+| channel_name | The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. |
+| s3_bucket_name | The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files. |
+| s3_key_prefix | The prefix for the specified Amazon S3 bucket. |
+| sns_topic_arn | The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes. |
+| delivery_frequency_in_hours | Specifies how often the AWS Config sends configuration changes to the s3 bucket in the delivery channel. |
 
 ## Examples
 
-### Test how frequently the channel writes configuration changes to the s3 bucket
+### Test how frequently the channel writes configuration changes to the s3 bucket.
 
-    describe aws_config_delivery_channel(channel_name: 'my-recorder') do
+    describe aws_config_delivery_channel(channel_name: 'CHANNEL_NAME') do
       its('delivery_frequency_in_hours') { should be > 3 }
     end
 
-### Ensure configuration change notifications are being delivered to the correct bucket and key
+### Ensure configuration change notifications are being delivered to the correct bucket and key.
 
-    describe aws_config_delivery_channel(channel_name: 'my_channel')
-      its('s3_bucket_name') { should eq 'my_bucket' }
+    describe aws_config_delivery_channel(channel_name: 'CHANNEL_NAME') do
+      its('s3_bucket_name') { should eq 'S3_BUCKET_NAME' }
       its('s3_key_prefix')  { should eq 'logs/' }
     end
 
@@ -69,13 +69,15 @@ See also the [AWS documentation on Delivery Channels](https://docs.aws.amazon.co
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
-    describe aws_config_delivery_channel('my_channel') do
+    describe aws_config_delivery_channel(channel_name: 'CHANNEL_NAME') do
       it { should exist }
     end
 
-    describe aws_config_delivery_channel('my-nonexistent-channel') do
+Use `should_not` to test the entity does not exist.
+
+    describe aws_config_delivery_channel(channel_name: 'CHANNEL_NAME') do
       it { should_not exist }
     end
 

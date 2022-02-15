@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS CloudFront public 
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | ids | The identifier of the public key. | id |
 | created_times | The date and time when the public key was uploaded. | created_time |

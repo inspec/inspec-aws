@@ -21,7 +21,7 @@ For additional information, see the [AWS documentation on AWS CloudFront streami
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | ids | The streaming distribution's ID. | id |
 | arns | The ARN (Amazon Resource Name) for the distribution. | arn |

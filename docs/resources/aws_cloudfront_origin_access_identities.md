@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | ids | The ID for the origin access identity. | id |
 | s3_canonical_user_ids | The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. | s3_canonical_user_id |

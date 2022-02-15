@@ -3,7 +3,7 @@ title: About the aws_athena_work_group Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_group
+# aws_athena_work_group
 
 Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Amazon Athena workgroup.
 
@@ -17,11 +17,13 @@ Use the `aws_athena_work_group` InSpec audit resource to test properties of a si
 
 `work_group` _(required)_
 
+The workgroup name.
+
 For additional information, see the [AWS Athena workgroup documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | name          | The workgroup name. |
 | state         | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. |
@@ -54,7 +56,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `get` method returns at least one result.
 
 ### exist
 
@@ -72,7 +74,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should be_available }

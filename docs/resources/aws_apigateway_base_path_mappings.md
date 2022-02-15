@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | base_paths | The base path name that callers of the API must provide as part of the URL after the domain name. | base_path |
 | rest_api_ids | The string identifier of the associated RestApi.| rest_api_id |

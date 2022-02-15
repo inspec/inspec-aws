@@ -35,13 +35,13 @@ For additional information, see the [AWS documentation on AWS CloudWatch Dashboa
 ### Ensure a dashboard ARN is available.
 
     describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
-      its('dashboard_arn') { should eq 'ARN' }
+      its('dashboard_arn') { should eq 'DASHBOARD_ARN' }
     end
 
 ### Ensure a dashboard body is available.
 
     describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
-        its('dashboard_body') { should eq 'BODY' }
+        its('dashboard_body') { should eq 'DASHBOARD_BODY' }
     end
 
 ## Matchers

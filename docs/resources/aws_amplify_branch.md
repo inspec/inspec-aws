@@ -29,7 +29,7 @@ For additional information, see the [AWS documentation on AWS Amplify Branch](ht
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | branch_arn | The Amazon Resource Name (ARN) for a branch that is part of an Amplify app. |
 | branch_name | The name for the branch that is part of an Amplify app. |
@@ -82,7 +82,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the Amplify Branch is available.
+Use `should` to check if the entity is available.
 
     describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do
       it { should be_available }

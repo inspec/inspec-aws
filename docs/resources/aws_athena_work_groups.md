@@ -3,7 +3,7 @@ title: About the aws_athena_work_groups Resource
 platform: aws
 ---
 
-# aws\_athena\_work\_groups
+# aws_athena_work_groups
 
 Use the `aws_athena_work_groups` InSpec audit resource to test properties of multiple Amazon Athena workgroups.
 
@@ -15,16 +15,18 @@ Use the `aws_athena_work_groups` InSpec audit resource to test properties of mul
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS Athena workgroup documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| names           | The workgroup name. |
-| states          | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. |
-| descriptions    | The workgroup description. |
-| creation_times  | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ |
+| Property | Description | Fields |
+| --- | --- | --- |
+| names           | The workgroup name. | name |
+| states          | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. | state |
+| descriptions    | The workgroup description. | description |
+| creation_times  | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ | creation_time |
 
 ## Examples
 
@@ -44,7 +46,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `describe` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
@@ -62,7 +64,7 @@ Use `should_not` to test that an entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_athena_work_groups do
       it { should be_available }

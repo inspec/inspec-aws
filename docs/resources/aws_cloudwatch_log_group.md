@@ -3,13 +3,13 @@ title: About the aws_cloudwatch_log_group Resource
 platform: aws
 ---
 
-# aws\_cloudwatch\_log\_group
+# aws_cloudwatch_log_group
 
 Use the `aws_cloudwatch_log_group` InSpec audit resource to test properties of a single AWS CloudWatch Log Group.
 
 ## Syntax
 
-Ensure that an `aws_cloudwatch_log_group` exists
+Ensure that a log group exists
 
     describe aws_cloudwatch_log_group('my_log_group') do
       it { should exist }
@@ -21,7 +21,7 @@ Ensure that an `aws_cloudwatch_log_group` exists
 
 #### Parameters
 
-##### log\_group\_name _(required)_
+log_group_name _(required)_
 
 This resource accepts a single parameter, the log group name which uniquely identifies the CloudWatch Log Group.
 This can be passed either as a string or as a `log_group_name: 'value'` key-value entry in a hash.

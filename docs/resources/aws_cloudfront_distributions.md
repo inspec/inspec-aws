@@ -3,7 +3,7 @@ title: About the aws_cloudfront_distributions Resource
 platform: aws
 ---
 
-# aws\_cloudfront\_distributions
+# aws_cloudfront_distributions
 
 Use the `aws_cloudfront_distributions` InSpec audit resource to test the properties of a collection of an AWS CloudFront distributions.
 
@@ -23,7 +23,7 @@ See also the [AWS API reference for CloudFront distributions](https://docs.aws.a
 
 ## Properties
 
-|Property                                     | Description|
+|Property                                     | Description |
 | ---                                         | --- |
 |distribution_ids                            | The names of the CloudFront distributions. |
 |distribution_arns                           | The Amazon Resource Name (ARN) of the CloudFront distributions. |
@@ -59,10 +59,16 @@ This InSpec audit resource has no special matchers. For a full list of available
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
     describe aws_cloudfront_distributions do
       it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_cloudfront_distributions do
+      it { should_not exist }
     end
 
 ## AWS Permissions

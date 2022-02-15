@@ -3,7 +3,7 @@ title: About the aws_db_subnet_groups Resource
 platform: aws
 ---
 
-# aws\_db\_subnet\_groups
+# aws_db_subnet_groups
 
 Use the `aws_db_subnet_groups` InSpec audit resource to test properties of a collection of AWS RDS subnet groups.
 
@@ -25,7 +25,7 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 ## Properties
 
-|Property                     | Description|
+|Property                     | Description |
 | ---                         | --- |
 |db\_subnet\_group\_names    | The name of the DB subnet group. |
 |db\_subnet\_group\_descriptions    | Provides the description of the DB subnet group. | 

@@ -3,7 +3,7 @@ title: About the aws_albs Resource
 platform: aws
 ---
 
-# aws\_albs
+# aws_albs
 
 Use the `aws_albs` InSpec audit resource to test the configuration of a collection of Application Load Balancers.
 
@@ -55,7 +55,7 @@ This InSpec audit resource has no special matchers. For a full list of available
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
     describe aws_albs do
       it                             { should exist }

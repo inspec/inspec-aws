@@ -17,11 +17,13 @@ Ensure that the stack set exists.
 
 ## Parameters
 
+This resource does not accept any parameters.
+
 For additional information, see the [AWS documentation on AWS CloudFormation Stack Set.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | stack_set_names | The name of the stack set. | stack_set_name |
 | stack_set_ids | The ID of the stack set. | stack_set_ids |
@@ -43,7 +45,7 @@ For additional information, see the [AWS documentation on AWS CloudFormation Sta
 ### Verify the descriptions of the stack set.
 
     describe aws_cloud_formation_stack_sets do
-        its('descriptions') { should include 'DESCRIPTION_STRING'}
+        its('descriptions') { should include 'STACK_SET_DESCRIPTION'}
     end
 
 ## Matchers

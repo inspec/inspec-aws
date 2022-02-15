@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS APIGateway Authori
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | ids | The identifier for the authorizer resource. | id |
 | names | The name of the authorizer. | name |

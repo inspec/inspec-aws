@@ -3,7 +3,7 @@ title: About the aws_api_gateway_methods Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_methods
+# aws_api_gateway_methods
 
 Use the `aws_api_gateway_methods` InSpec audit resource to test properties of multiple API Gateway methods.
 
@@ -35,7 +35,7 @@ For additional information, see the [AWS APIGateway Method documentation](https:
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | http_methods | The HTTP method that clients use to call this method. |
 | authorization_types | The method's authorization type. Valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito user pool. |
@@ -79,7 +79,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the method name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_methods(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do
       it { should be_available }

@@ -71,7 +71,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 ### be_public
 
-The `be_public` matcher tests if the AMI has public launch permissons.
+The `be_public` matcher tests if the AMI has public launch permissions.
 
     describe aws_ami(image_id: 'aki-1234') do
       it { should be_public }
@@ -85,11 +85,13 @@ The `be_public` matcher tests if the AMI has public launch permissons.
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
     describe aws_ami(image_id: 'aki-1234') do
       it { should exist }
     end
+
+Use `should_not` to test the entity should not exist.
 
     describe aws_ami(image_id: 'aki-6789') do
       it { should_not exist }

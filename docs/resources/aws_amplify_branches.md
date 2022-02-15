@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on AWS Amplify branch](ht
 
 ## Properties
 
-| Property | Description| Field|
+| Property | Description | Fields |
 | --- | --- | --- |
 | branch_arns | The Amazon Resource Name (ARN) for a branch that is part of an Amplify app. | branch_arn |
 | branch_names | The name for the branch that is part of an Amplify app. | branch_name |
@@ -47,13 +47,13 @@ For additional information, see the [AWS documentation on AWS Amplify branch](ht
 ### Ensure a branch ID is available.
 
     describe aws_amplify_branches(app_id: 'APP_ID') do
-      its('branch_arns') { should include 'BranchARN' }
+      its('branch_arns') { should include 'BRANCH_ARN' }
     end
 
 ### Ensure a branch name is available.
 
     describe aws_amplify_branches(app_id: 'APP_ID') do
-        its('branch_names') { should include 'BranchName' }
+        its('branch_names') { should include 'BRANCH_NAME' }
     end
 
 ## Matchers
@@ -72,7 +72,7 @@ Use `should` to test that the entity exists.
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_amplify_branches(app_id: 'dummy') do
+    describe aws_amplify_branches(app_id: 'APP_ID') do
       it { should_not exist }
     end
 

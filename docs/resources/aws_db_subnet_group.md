@@ -3,7 +3,7 @@ title: About the aws_db_subnet_group Resource
 platform: aws
 ---
 
-# aws\_db\_subnet\_group
+# aws_db_subnet_group
 
 Use the `aws_db_subnet_group` InSpec audit resource to test properties of a db subnet group.
 
@@ -11,10 +11,9 @@ Use the `aws_db_subnet_group` InSpec audit resource to test properties of a db s
 
  An `aws_db_subnet_group` resource block uses the parameter to select a subnet group.
 
-    describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
+    describe aws_db_subnet_group(db_subnet_group_name: 'DB_SUBNET_GROUP_NAME') do
       it { should exist }
     end
-
 
 #### Parameters
 
@@ -28,23 +27,23 @@ See also the [AWS documentation on DB Subnet Groups](https://docs.aws.amazon.com
 
 ## Properties
 
-|Property                     | Description|
+| Property                     | Description |
 | ---                         | --- |
-|db\_subnet\_group\_name    | The name of the DB subnet group. |
-|db\_subnet\_group\_description    | Provides the description of the DB subnet group. |
-|vpc\_id    | Provides the VPC ID of the DB subnet group. |
-|subnet\_group\_status    | Provides the status of the DB subnet group. |
-|subnets    | Contains a list of Subnet elements. |
-|db\_subnet\_group\_arn    | The Amazon Resource Name for the DB subnet group. |
+| db_subnet_group_name    | The name of the DB subnet group. |
+| db_subnet_group_description    | Provides the description of the DB subnet group. |
+| vpc_id    | Provides the VPC ID of the DB subnet group. |
+| subnet_group_status    | Provides the status of the DB subnet group. |
+| subnets    | Contains a list of Subnet elements. |
+| db_subnet_group_arn    | The Amazon Resource Name for the DB subnet group. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBSubnetGroup.html)
 
 ## Examples
 
-##### Check DB Subnet Group Name of a subnet group
+##### Check DB subnet group name of a subnet group
 
-    describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
-      its('db_subnet_group_name')  { should eq 'subnet-group-name-12345' }
+    describe aws_db_subnet_group(db_subnet_group_name: 'DB_SUBNET_GROUP_NAME') do
+      its('db_subnet_group_name')  { should eq 'DB_SUBNET_GROUP_NAME' }
     end
 
 ## Matchers
@@ -55,13 +54,15 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
-    describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
+    describe aws_db_subnet_group(db_subnet_group_name: 'DB_SUBNET_GROUP_NAME') do
       it { should exist }
     end
 
-    describe aws_rds_cluster(db_cluster_identifier: 'subnet-group-name-6789') do
+Use `should_not` to test the entity does not exist.
+
+    describe aws_db_subnet_group(db_subnet_group_name: 'DB_SUBNET_GROUP_NAME') do
       it { should_not exist }
     end
 

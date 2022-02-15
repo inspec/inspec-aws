@@ -35,7 +35,7 @@ For additional information, see the [AWS documentation on AWS CloudWatch dashboa
 ### Ensure a dashboard ARN is available.
 
     describe aws_cloudwatch_dashboards do
-      its('dashboard_arns') { should include 'ARN' }
+      its('dashboard_arns') { should include 'DASHBOARD_ARN' }
     end
 
 ### Ensure a dashboard name is available.

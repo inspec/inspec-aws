@@ -17,6 +17,10 @@ Ensure that the stack set exists.
 
 ## Parameters
 
+stack_set_name _(required)_
+
+The name that's associated with the stack set.
+
 For additional information, see the [AWS documentation on AWS CloudFormation stack set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html).
 
 ## Properties

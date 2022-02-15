@@ -3,7 +3,7 @@ title: About the aws_amplify_app resource
 platform: aws
 ---
 
-# aws\_amplify\_app
+# aws_amplify_app
 
 Use the `aws_amplify_app` InSpec audit resource to test the properties of a single specific AWS Amplify app.
 
@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on AWS Amplify  App](http
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | app_arn | The Amazon Resource Name (ARN) of the Amplify app. |
 | app_id | The unique ID of the Amplify app. |
@@ -78,7 +78,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the Amplify  App is available.
+Use `should` to check if the entity is available.
 
     describe aws_amplify_app(app_id: 'APP_ID') do
       it { should be_available }

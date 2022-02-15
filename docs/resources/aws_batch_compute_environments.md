@@ -3,7 +3,7 @@ title: About the aws_batch_compute_environments Resource
 platform: aws
 ---
 
-# aws\_batch\_compute\_environments
+# aws_batch_compute_environments
 
 Use the `aws_batch_compute_environments` InSpec audit resource to test properties of multiple AWS Batch compute environments.
 
@@ -23,21 +23,21 @@ For additional information, see the [AWS documentation on Batch compute environm
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| compute_environment_names | The name of the compute environment. |
-| compute_environment_arns | The ARN of the compute environment. |
-| ecs_cluster_arns | The ECS cluster ARN of the compute environment. |
-| tags | The tags of the compute environment. |
-| types | The type of the compute environment. |
-| states | The state of the compute environment. |
-| statuses | The status of the compute environment. |
-| status_reasons | The status reason of the compute environment. |
-| service_roles | The service role of the compute environment. |
+| Property | Description | Fields |
+| ---  | --- | --- |
+| compute_environment_names | The name of the compute environment. | compute_environment_name |
+| compute_environment_arns | The ARN of the compute environment. | compute_environment_arn |
+| ecs_cluster_arns | The ECS cluster ARN of the compute environment. | ecs_cluster_arn |
+| tags | The tags of the compute environment. | tags |
+| types | The type of the compute environment. | type |
+| states | The state of the compute environment. | state |
+| statuses | The status of the compute environment. | status |
+| status_reasons | The status reason of the compute environment. | status_reason |
+| service_roles | The service role of the compute environment. | service_role |
 
 ## Examples
 
-### Ensure a work group name is available.
+### Ensure a compute environment name is available.
 
     describe aws_batch_compute_environments do
       its('compute_environment_names') { should include 'COMPUTE_ENVIRONMENT_NAME' }
@@ -70,7 +70,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the compute environments are available.
+Use `should` to check if the entity is available.
 
     describe aws_batch_compute_environments do
       it { should be_available }

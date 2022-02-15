@@ -3,7 +3,7 @@ title: About the aws_api_gateway_deployment Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_deployment
+# aws_api_gateway_deployment
 
 Use the `aws_api_gateway_deployment` InSpec audit resource to test properties of a single AWS ApiGateway Deployment.
 
@@ -76,7 +76,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: 'DEPLOYMENT_ID') do
       it { should be_available }

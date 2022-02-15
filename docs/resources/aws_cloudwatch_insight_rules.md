@@ -9,7 +9,7 @@ Use the `aws_cloudwatch_insight_rules` InSpec audit resource to test properties 
 
 ## Syntax
 
-Ensure that the Insight rule exists.
+Ensure that the insight rule exists.
 
     describe aws_cloudwatch_insight_rules do
       it { should exist }
@@ -17,11 +17,13 @@ Ensure that the Insight rule exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on AWS CloudWatch Insight rules.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-insightrule.html).
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | names | The name of the rule. | name |
 | states | Indicates whether the rule is enabled or disabled.| schema |

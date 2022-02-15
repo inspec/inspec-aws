@@ -3,7 +3,7 @@ title: About the aws_api_gateway_stages Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_stages
+# aws_api_gateway_stages
 
 Use the `aws_api_gateway_stages` InSpec audit resource to test properties of multiple AWS API Gateway stages.
 
@@ -27,12 +27,12 @@ For additional information, see the [AWS API Gateway stage Stage documentation](
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| deployment_ids | The identifier for the deployment attached to stage resource. |
-| descriptions | The description for the stage resource. |
-| created_dates | The date and time that the stage resource was created. |
-| stage_names | The name for the stage resource. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| deployment_ids | The identifier for the deployment attached to stage resource. | deployment_id |
+| descriptions | The description for the stage resource. | description |
+| created_dates | The date and time that the stage resource was created. | created_date |
+| stage_names | The name for the stage resource. | stage_name |
 
 ## Examples
 
@@ -64,7 +64,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the stage is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_stages(rest_api_id: 'REST_API_ID') do
       it { should be_available }

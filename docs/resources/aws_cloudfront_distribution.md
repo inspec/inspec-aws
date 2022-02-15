@@ -3,7 +3,7 @@ title: About the aws_cloudfront_distribution Resource
 platform: aws
 ---
 
-# aws\_cloudfront\_distribution
+# aws_cloudfront_distribution
 
 Use the `aws_cloudfront_distribution` InSpec audit resource to test the properties of a single AWS CloudFront distribution.
 
@@ -21,11 +21,11 @@ Ensure that an `aws_cloudfront_distribution` exists:
 
 ## Parameters
 
-### distribution\_id _(required)_
+### distribution_id _(required)_
 
 The CloudFront distribution ID, which can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
 
-### disallowed\_ssl\_protocols _(optional)_
+### disallowed_ssl_protocols _(optional)_
 
 If provided, this parameter is expected to be an array of strings identifying SSL/TLS protocols that you wish not to allow.
 
@@ -38,7 +38,7 @@ Newer protocol identification strings (when available) may be provided in the se
 
 For additional information, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html) documentation. For available SSL/TLS version identifiers, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [AWS::CloudFront::distribution ViewerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-viewercertificate.html) documentation.
 
-### origin\_domain\_name _(optional)_
+### origin_domain_name _(optional)_
 
 The domain name for the origin.
 
@@ -46,17 +46,17 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 
 ## Properties
 
-|Property                             | Description|
-| ---                                        | --- |
-|distribution\_id                            | The identifier for the CloudFront distribution. |
-|viewer\_protocol\_policies                  | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows HTTP and HTTPS), `https-only` or `redirect-to-https`. |
-|custom\_origin\_ssl\_protocols              | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
-|viewer\_certificate\_minimum\_ssl\_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
-|s3\_origin\_config                          | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
-|s3\_origin\_path                            | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
-|s3\_origin\_access                          | The origin access identity for s3 origin config |
-|access\_logging                             | Access logging for CloudFront distribution |
-|ssl\_certificate                            | The viewer certificate certificate source of CloudFront distribution |
+| Property | Description |
+| --- | --- |
+| distribution_id | The identifier for the CloudFront distribution. |
+| viewer_protocol_policies | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows HTTP and HTTPS), `https-only` or `redirect-to-https`. |
+| custom_origin_ssl_protocols | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |
+| viewer_certificate_minimum_ssl_protocol | The minimum SSL/TLS protocol version in the Viewer Certificate. Current valid values: `SSLv3`, `TLSv1`, `TLSv1_2016`, `TLSv1.1_2016`, `TLSv1.2_2018`, `TLSv1.2_2019`, `TLSv1.2_2021`. |
+| s3_origin_config | `True`: if there are any S3 origin configs in the distribution (i.e. standard S3 bucket origins), else `False`. |
+| s3_origin_path | The S3 origin path if `origin_domain_name` is specified in the resource parameters. |
+| s3_origin_access | The origin access identity for s3 origin config |
+| access_logging | Access logging for CloudFront distribution |
+| ssl_certificate | The viewer certificate certificate source of CloudFront distribution |
 
 ## Examples
 

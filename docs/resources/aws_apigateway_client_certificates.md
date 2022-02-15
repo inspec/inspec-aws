@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on AWS API Gateway client
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | client_certificate_ids | The identifier of the client certificate. | client_certificate_id |
 | descriptions | The description of the client certificate. | description |

@@ -3,13 +3,13 @@ title: About the aws_application_autoscaling_scalable_target Resource
 platform: aws
 ---
 
-# aws\_application\_autoscaling\_scalable\_target
+# aws_application_autoscaling_scalable_target
 
 Use the `aws_application_autoscaling_scalable_target` InSpec audit resource to test properties of a resource that Application Auto Scaling can scale.
 
 ## Syntax
 
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
       it { should exist }
     end
 
@@ -23,7 +23,7 @@ For additional information, see the [AWS ApplicationAutoScaling ScalableTarget d
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | service_namespace | The namespace of the AWS service that provides the resource. |
 | resource_id | The identifier of the resource associated with the scalable target. |
@@ -40,13 +40,13 @@ For additional information, see the [AWS ApplicationAutoScaling ScalableTarget d
 
 ### Ensure a service namespace is available.
 
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
       its('service_namespace') { should eq 'ec2' }
     end
 
 ### Verify the min scale capacity.
 
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
         its('min_capacity') { should eq 1 }
     end
 
@@ -60,16 +60,22 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
       it { should exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
       it { should be_available }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
+      it { should_not exist }
     end
 
 ## AWS Permissions

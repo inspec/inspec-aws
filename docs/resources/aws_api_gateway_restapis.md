@@ -3,7 +3,7 @@ title: About the aws_api_gateway_restapis Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_restapis
+# aws_api_gateway_restapis
 
 Use the `aws_api_gateway_restapis` InSpec audit resource to test properties of multiple AWS API Gateway REST APIs.
 
@@ -65,6 +65,12 @@ Use `should` to test that the entity exists.
 
     describe aws_api_gateway_restapis do
       it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_api_gateway_restapis do
+      it { should_not exist }
     end
 
 ## AWS Permissions

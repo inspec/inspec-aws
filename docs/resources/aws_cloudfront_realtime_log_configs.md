@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | arns | The Amazon Resource Name (ARN) of this real-time log configuration. | arn |
 | names | The unique name of this real-time log configuration. | name |

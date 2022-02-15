@@ -3,26 +3,29 @@ title: About the aws_cognito_identity_pool Resource
 platform: aws
 ---
 
-# aws\_cognito\_identity\_pool
+# aws_cognito_identity_pool
 
 Use the `aws_cognito_identity_pool` InSpec audit resource to test properties of a single Cognito identity pool.
 
 ## Syntax
 
 Ensure that an identity pool exists.
+
     describe aws_cognito_identity_pool(identity_pool_id: 'IDENTITY_POOL_ID') do
       it { should exist }
     end
 
 ## Parameters
 
-`identity\_pool\_id` _(required)_
+identity_pool_id _(required)_
+
+An identity pool ID in the format REGION:GUID.
 
 For additional information, see the [AWS documentation on Cognito identity pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html).
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | identity_pool_id | An identity pool ID in the format REGION:GUID. |
 | identity_pool_name | The name of your Amazon Cognito identity pool. |
@@ -72,7 +75,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the identity pool id is available.
+Use `should` to check if the entity is available.
 
     describe aws_cognito_identity_pool(identity_pool_id: 'IDENTITY_POOL_ID') do
       it { should be_available }

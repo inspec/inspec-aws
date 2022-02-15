@@ -27,19 +27,19 @@ For additional information, see the [AWS documentation on AWS CloudFront origin 
 
 | Property | Description |
 | --- | --- |
-| id| The unique identifier for the origin request policy.  |
+| id | The unique identifier for the origin request policy. |
 | last_modified_time | The date and time when the origin request policy was last modified. |
-| origin_request_policy_config.comment|  A comment to describe the origin request policy. |
-| origin_request_policy_config.name|  A unique name to identify the origin request policy. |
-| origin_request_policy_config.headers_config.header_behavior|  Determines whether any HTTP headers are included in requests that CloudFront sends to the origin. |
-| origin_request_policy_config.headers_config.headers.quantity|  The number of header names in the Items list. |
-| origin_request_policy_config.headers_config.headers.items|  A list of HTTP header names. |
-| origin_request_policy_config.cookies_config.cookie_behavior|  Determines whether cookies in viewer requests are included in requests that CloudFront sends to the origin. |
-| origin_request_policy_config.cookies_config.cookies.quantity|  The number of cookie names in the Items list. |
-| origin_request_policy_config.cookies_config.cookies.items|  A list of cookie names. |
-| origin_request_policy_config.query_strings_config.query_string_behavior|  Determines whether any URL query strings in viewer requests are included in requests that CloudFront sends to the origin. |
-| origin_request_policy_config.query_strings_config.query_strings.quantity|  The number of query string names in the Items list. |
-| origin_request_policy_config.query_strings_config.query_strings.items|  A list of query string names. |
+| origin_request_policy_config.comment |  A comment to describe the origin request policy. |
+| origin_request_policy_config.name |  A unique name to identify the origin request policy. |
+| origin_request_policy_config.headers_config.header_behavior |  Determines whether any HTTP headers are included in requests that CloudFront sends to the origin. |
+| origin_request_policy_config.headers_config.headers.quantity |  The number of header names in the Items list. |
+| origin_request_policy_config.headers_config.headers.items |  A list of HTTP header names. |
+| origin_request_policy_config.cookies_config.cookie_behavior |  Determines whether cookies in viewer requests are included in requests that CloudFront sends to the origin. |
+| origin_request_policy_config.cookies_config.cookies.quantity |  The number of cookie names in the Items list. |
+| origin_request_policy_config.cookies_config.cookies.items |  A list of cookie names. |
+| origin_request_policy_config.query_strings_config.query_string_behavior |  Determines whether any URL query strings in viewer requests are included in requests that CloudFront sends to the origin. |
+| origin_request_policy_config.query_strings_config.query_strings.quantity |  The number of query string names in the Items list. |
+| origin_request_policy_config.query_strings_config.query_strings.items |  A list of query string names. |
 
 ## Examples
 

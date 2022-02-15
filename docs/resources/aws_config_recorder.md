@@ -48,12 +48,12 @@ For additional information, see the [AWS documentation on the `AWS::Config::Conf
 
 ## Properties
 
-|Property        | Description|
+| Property       | Description |
 | ---            | --- |
-|recorder_name  | The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.  |
-|role_arn       | Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.  |
-|resource_types | A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (i.e. AWS::EC2::Instance)  |
-|last_status    | The last (previous) status of the recorder.  |
+| recorder_name  | The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.  |
+| role_arn       | Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.  |
+| resource_types | A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (i.e. AWS::EC2::Instance)  |
+| last_status    | The last (previous) status of the recorder.  |
 
 ## Examples
 

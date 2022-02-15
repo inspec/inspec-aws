@@ -31,8 +31,8 @@ For additional information, see the [AWS documentation on AWS APIGateway ClientC
 | --- | --- |
 | client_certificate_id | The identifier of the client certificate. |
 | description | The description of the client certificate. |
-| pem_encoded_certificate | The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .|
-| created_date | The timestamp when the client certificate was created.|
+| pem_encoded_certificate | The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint. |
+| created_date | The timestamp when the client certificate was created. |
 | expiration_date | The timestamp when the client certificate will expire.|
 | tags | The collection of tags. Each tag element is associated with a given resource. |
 

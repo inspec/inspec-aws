@@ -3,7 +3,7 @@ title: About the aws_autoscaling_scaling_policies Resource
 platform: aws
 ---
 
-# aws\_autoscaling\_scaling\_policies
+# aws_autoscaling_scaling_policies
 
 Use the `aws_autoscaling_scaling_policies` InSpec audit resource to test properties of multiple Amazon EC2 Auto Scaling scaling policies.
 
@@ -21,21 +21,21 @@ For additional information, see the [AWS AutoScaling Scaling Policy documentatio
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| auto_scaling_group_names |  The name of an Auto Scaling group. |
-| policy_names | The names of one or more policies. If you omit this parameter, all policies are described. |
-| policy_arns | The ARN of the Auto Scaling group. |
-| policy_types | One or more policy types. The valid values are `SimpleScaling`, `StepScaling`, and `TargetTrackingScaling`. |
-| adjustment_types | The adjustment type of the Auto Scaling group. |
-| min_adjustment_steps | The minimum adjustment step of the Auto Scaling group. |
-| min_adjustment_magnitudes | The minimum adjustment magnitude of the Auto Scaling group. |
-| scaling_adjustments | The scaling adjustment of the Auto Scaling group. |
-| cooldowns | The cooldown period of the Auto Scaling group. |
-| step_adjustments | The step adjustments of the Auto Scaling group. |
-| metric_aggregation_types | The aggregation type for CloudWatch metrics of the Auto Scaling group. |
-| estimated_instance_warmups | The estimated warmup time of the Auto Scaling group until a new instance can contribute to CloudWatch metrics. |
-| target_tracking_configurations | The target tracking configuration of the Auto Scaling group. |
+| Property | Description | Fields |
+| ---  | --- | --- |
+| auto_scaling_group_names |  The name of an Auto Scaling group. | auto_scaling_group_name |
+| policy_names | The names of one or more policies. If you omit this parameter, all policies are described. | policy_name |
+| policy_arns | The ARN of the Auto Scaling group. | policy_arn |
+| policy_types | One or more policy types. The valid values are `SimpleScaling`, `StepScaling`, and `TargetTrackingScaling`. | policy_type |
+| adjustment_types | The adjustment type of the Auto Scaling group. | adjustment_type |
+| min_adjustment_steps | The minimum adjustment step of the Auto Scaling group. | min_adjustment_step |
+| min_adjustment_magnitudes | The minimum adjustment magnitude of the Auto Scaling group. | min_adjustment_magnitude |
+| scaling_adjustments | The scaling adjustment of the Auto Scaling group. | scaling_adjustment |
+| cooldowns | The cooldown period of the Auto Scaling group. | cooldown |
+| step_adjustments | The step adjustments of the Auto Scaling group. | step_adjustments |
+| metric_aggregation_types | The aggregation type for CloudWatch metrics of the Auto Scaling group. | metric_aggregation_type |
+| estimated_instance_warmups | The estimated warmup time of the Auto Scaling group until a new instance can contribute to CloudWatch metrics. | estimated_instance_warmup |
+| target_tracking_configurations | The target tracking configuration of the Auto Scaling group. | target_tracking_configuration |
 
 ## Examples
 
@@ -73,7 +73,8 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
+
     describe aws_autoscaling_scaling_policies do
       it { should be_available }
     end

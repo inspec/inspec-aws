@@ -3,18 +3,17 @@ title: About the aws_amplify_apps resource
 platform: aws
 ---
 
-# aws\_amplify\_apps
+# aws_amplify_apps
 
-Use the `aws_amplify_apps` InSpec audit resource to test the properties of Multiple AWS Amplify apps.
+Use the `aws_amplify_apps` InSpec audit resource to test the properties of multiple AWS Amplify Apps.
 
 ## Syntax
 
 Ensure that AWS Amplify app exists.
 
-    describe aws_amplify_apps  do
+    describe aws_amplify_apps do
       it { should exist }
     end
-
 
 ## Parameters
 
@@ -45,21 +44,21 @@ For additional information, see the [AWS documentation on AWS Amplify App](https
 
 ### Ensure a app ID is available.
 
-    describe aws_amplify_apps  do
-      its('app_ids') { should include 'app_id' }
+    describe aws_amplify_apps do
+      its('app_ids') { should include 'APP_ID' }
     end
 
 ### Ensure a app name is available.
 
-    describe aws_amplify_apps  do
-        its('app_names') { should include 'app_name' }
+    describe aws_amplify_apps do
+        its('app_names') { should include 'APP_NAME' }
     end
 
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `List` method returns at least one result.
+The controls will pass if the `list` method returns at least one result.
 
 ### exist
 
@@ -77,7 +76,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the Amplify  App is available.
+Use `should` to check if the entity is available.
 
     describe aws_amplify_apps  do
       it { should be_available }

@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS API Gateway API Ke
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | ids | The identifier of the API Key. | id |
 | values | The value of the API Key. | value |

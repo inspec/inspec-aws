@@ -3,13 +3,13 @@ title: About the aws_batch_compute_environment Resource
 platform: aws
 ---
 
-# aws\_batch\_compute\_environment
+# aws_batch_compute_environment
 
 Use the `aws_batch_compute_environment` InSpec audit resource to test the properties of a single AWS Batch compute environment.
 
 ## Syntax
 
-Ensure that a compute_environment name exists.
+Ensure that a batch compute environment name exists.
     describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRONMENT_NAME') do
       it { should exist }
     end
@@ -24,7 +24,7 @@ For additional information, see the [AWS documentation on Batch compute environm
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | compute_environment_name | The name of the compute environment. |
 | compute_environment_arn | The ARN of the compute environment. |
@@ -90,7 +90,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the compute environment name is available.
+Use `should` to check if the entity is available.
 
     describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRONMENT_NAME') do
       it { should be_available }

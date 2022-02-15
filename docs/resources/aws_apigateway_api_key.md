@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS APIGateway ApiKey.
 | id | The identifier of the API Key. |
 | value | The value of the API Key. |
 | name | The name of the API Key. |
-| customer_id | An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace. |
+| customer_id | An AWS Marketplace customer identifier, when integrating with the AWS SaaS Marketplace. |
 | description | The description of the API Key. |
 | enabled | Specifies whether the API Key can be used by callers. |
 | created_date | The timestamp when the API Key was created. |

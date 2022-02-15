@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Logs SubscriptionF
 
 ## Properties
 
-| Property         | Description                           | Field           |
+| Property         | Description                           | Fields          |
 | :--------------: | :-----------------------------------: | :-------------: |
 | filter_names     | The name of the subscription filters. | filter_name     |
 | log_group_names  | The name of the log group.            | log_group_name  |

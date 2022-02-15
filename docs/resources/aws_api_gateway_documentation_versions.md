@@ -25,11 +25,11 @@ For additional information, see the [AWS ApiGateway Documentation Version docume
 
 ## Properties
 
-| Property     | Description                                               | Fields      |
-|--------------|-----------------------------------------------------------|-----------  |
-| created_dates | The date when the API documentation snapshot is created.  | created_date|
-| versions      | The version identifier of the API documentation snapshot. | version     |
-| descriptions  | The description of the API documentation snapshot.        | description |
+| Property      | Description                                                | Fields       |
+|-------------- |----------------------------------------------------------- |------------- |
+| created_dates | The date when the API documentation snapshot is created.   | created_date |
+| versions      | The version identifier of the API documentation snapshot.  | version      |
+| descriptions  | The description of the API documentation snapshot.         | description  |
 
 ## Examples
 
@@ -61,7 +61,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the documentation versions is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       it { should be_available }

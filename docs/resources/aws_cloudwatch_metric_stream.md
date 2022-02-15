@@ -17,6 +17,10 @@ Ensure that the metric stream exists.
 
 ## Parameters
 
+metric_stream_name _(required)_
+
+The name of the metric stream.
+
 For additional information, see the [AWS documentation on AWS CloudWatch metric stream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html).
 
 ## Properties
@@ -35,13 +39,13 @@ For additional information, see the [AWS documentation on AWS CloudWatch metric 
 
 ### Ensure an ARN is available.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME') do
       its('arn') { should eq 'ARN' }
     end
 
 ### Ensure a firehose_ARN is available.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME') do
         its('firehose_arn') { should eq 'FIREHOSE_ARN' }
     end
 
@@ -55,13 +59,13 @@ The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test that the entity does not exist.
 
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME' ) do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'METRIC_STREAM_NAME') do
       it { should_not exist }
     end
 

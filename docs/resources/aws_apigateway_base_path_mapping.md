@@ -11,7 +11,7 @@ The `AWS::ApiGateway::BasePathMapping` resource creates a base path that clients
 
 ## Syntax
 
-Test that the base path mapping exists.
+Ensure that the base path mapping exists.
 
     describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should exist }
@@ -33,7 +33,7 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 
 | Property | Description |
 | --- | --- |
-| base_path | The base path name that callers of the API must provide as part of the URL after the domain name. |
+| base_path | The base path name that callers of the API must provide as part of the URL after the domain name.  ddd|
 | rest_api_id | The string identifier of the associated RestApi.|
 | stage | The name of the associated stage. |
 
@@ -48,7 +48,7 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 ### Test that a stage name is available.
 
     describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
-        its('stage') { should eq 'StageName' }
+        its('stage') { should eq 'STAGE_NAME' }
     end
 
 ## Matchers

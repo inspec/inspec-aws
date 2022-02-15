@@ -3,7 +3,7 @@ title: About the aws_cloudformation_stacks Resource
 platform: aws
 ---
 
-# aws\_cloudformation\_stacks
+# aws_cloudformation_stacks
 
 Use the `aws_cloudformation_stacks` InSpec audit resource to test properties of an AWS CloudFormation stack in bulk.
 
@@ -23,15 +23,15 @@ This resource does not expect any parameters.
 
 ## Properties
 
-|Property                        | Description|
-| ---                            | --- |
-|stack\_name                     | The name associated with the stack. |
-|stack\_id                       | Unique identifier of the stack. |
-|creation\_time                  | The time at which the stack was created. |
-|notification\_arns              | SNS topic ARNs to which stack related events are published. |
-|role\_arn                       | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  |
-| parent\_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
-|root\_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. |
+| Property | Description | Fields |
+| ---| --- | --- |
+| names | The name associated with the stack. | stack_name |
+| stack_ids | Unique identifier of the stack. | stack_id |
+| creation_times | The time at which the stack was created. | creation_time |
+| notification_arns | SNS topic ARNs to which stack related events are published. | notification_arns |
+| role_arns | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  | role_arn |
+| parent_ids | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. | parent_id |
+| root_ids | For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. | root_id |
 
 ## Examples
 

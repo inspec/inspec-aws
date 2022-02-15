@@ -25,7 +25,7 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | policy_arns | The Amazon Resource Name (ARN) of the scaling policy. |
 | policy_names | The name of the scaling policy. |
@@ -68,7 +68,7 @@ Use `should` to test that the entity exists.
 
 ### be_available
 
-Use `should` to check if the scalable policy is available.
+Use `should` to check if the entity is available.
 
     describe aws_application_autoscaling_scaling_policies( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should be_available }

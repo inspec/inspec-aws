@@ -3,7 +3,7 @@ title: About the aws_cognito_userpool_client Resource
 platform: aws
 ---
 
-# aws\_cognito\_userpool\_client
+# aws_cognito_userpool_client
 
 Use the `aws_cognito_userpool_client` InSpec audit resource to test properties of a single Cognito user pool client.
 
@@ -20,7 +20,6 @@ Ensure that a user pool exists.
 `user_pool_id` _(required)_
 
 The ID of the user pool.
-
 
 `client_id` _(required)_
 
@@ -97,7 +96,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the user pool is available.
+Use `should` to check if the entity is available.
 
     describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should be_available }

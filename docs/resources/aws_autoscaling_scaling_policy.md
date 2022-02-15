@@ -3,7 +3,7 @@ title: About the aws_autoscaling_scaling_policy Resource
 platform: aws
 ---
 
-# aws\_autoscaling\_scaling\_policy
+# aws_autoscaling_scaling_policy
 
 Use the `aws_autoscaling_scaling_policy` InSpec audit resource to test properties of a single Amazon EC2 Auto Scaling scaling policy.
 

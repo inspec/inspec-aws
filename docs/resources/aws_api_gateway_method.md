@@ -3,7 +3,7 @@ title: About the aws_api_gateway_method Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_method
+# aws_api_gateway_method
 
 Use the `aws_api_gateway_method` InSpec audit resource to test properties of a single API Gateway method.
 
@@ -105,7 +105,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do
       it { should be_available }

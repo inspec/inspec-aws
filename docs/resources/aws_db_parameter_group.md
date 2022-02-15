@@ -3,7 +3,7 @@ title: About the aws_db_parameter_group Resource
 platform: aws
 ---
 
-# aws\_db\_parameter\_group
+# aws_db_parameter_group
 
 Use the `aws_db_parameter_group` InSpec audit resource to test properties of an AWS DB parameter group.
 
@@ -11,35 +11,35 @@ Use the `aws_db_parameter_group` InSpec audit resource to test properties of an 
 
 An `aws_db_parameter_group` resource block uses the parameter to select a parameter group.
 
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-12345') do
+    describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
       it { should exist }
     end
 
 ### Parameters
 
-#### db\_parameter\_group\_name _(required)_
+#### db_parameter_group_name _(required)_
 
-This resource accepts a single parameter, the DB parameter group name. This can be passed either as a string or as a `aws_db_parameter_group: 'value'` key-value entry in a hash.
+The name of the DB parameter group.
 
 See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html) for additional information.
 
 ## Properties
 
-|Property                         | Description|
-| ---                             | --- |
-|db\_parameter\_group\_name       | The name of the DB parameter group. |
-|db\_parameter\_group\_family     | The name of the DB parameter group family that this DB parameter group is compatible with. |
-|description                      | The customer-specified description for this DB parameter group. |
-|db\_parameter\_group\_arn        | The Amazon Resource Name (ARN) for the DB parameter group. |
+| Property  | Description |
+| --- | --- |
+| db_parameter_group_name | The name of the DB parameter group. |
+| db_parameter_group_family | The name of the DB parameter group family that this DB parameter group is compatible with. |
+| description | The customer-specified description for this DB parameter group. |
+| db_parameter_group_arn | The Amazon Resource Name (ARN) for the DB parameter group. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBParameterGroup.html)
 
 ## Examples
 
-### Verify the group name of a DB parameter group
+### Verify the group name of a DB parameter group.
 
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-12345') do
-      its('db_parameter_group_name')  { should eq 'parameter-group-name-12345' }
+    describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
+      its('db_parameter_group_name')  { should eq 'DB_PARAMETER_GROUP_NAME' }
     end
 
 ## Matchers
@@ -50,13 +50,13 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The control will pass if the describe returns at least one result.
 
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-12345') do
+    describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
       it { should exist }
     end
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-6789') do
+    describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
       it { should_not exist }
     end
 

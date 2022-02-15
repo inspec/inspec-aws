@@ -3,7 +3,7 @@ title: About the aws_batch_job_definition Resource
 platform: aws
 ---
 
-# aws\_batch\_job\_definition
+# aws_batch_job_definition
 
 Use the `aws_batch_job_definition` InSpec audit resource to test the properties of a single specific Batch job definition.
 
@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | job_definition_name | The name of the job definition. |
 | job_definition_arn | The ARN of the job definition. |

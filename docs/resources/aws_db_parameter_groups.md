@@ -3,13 +3,13 @@ title: About the aws_db_parameter_groups Resource
 platform: aws
 ---
 
-# aws\_db\_parameter\_groups
+# aws_db_parameter_groups
 
 Use the `aws_db_parameter_groups` InSpec audit resource to test properties of a collection of AWS DB parameter groups.
 
 ## Syntax
 
-Ensure you have exactly three DB parameter groups:
+Ensure you have exactly three DB parameter groups.
 
     describe aws_db_parameter_groups do
       its('db_parameter_group_names.count') { should cmp 3 }
@@ -23,12 +23,12 @@ See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/A
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|db\_parameter\_group\_names    | The name of the DB parameter group. |
-|db\_parameter\_group\_families   | The name of the DB parameter group family that this DB parameter group is compatible with. |
-|descriptions    | Provides the customer-specified description for this DB parameter group. |
-|db\_parameter\_group\_arns    | The Amazon Resource Name (ARN) for the DB parameter group. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| db_parameter_group_names | The name of the DB parameter group. | db_parameter_group_name |
+| db_parameter_group_families | The name of the DB parameter group family that this DB parameter group is compatible with. | db_parameter_group_family |
+| descriptions | Provides the customer-specified description for this DB parameter group. | description |
+| db_parameter_group_arns | The Amazon Resource Name (ARN) for the DB parameter group. | db_parameter_group_arn |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBParameterGroup.html)
 

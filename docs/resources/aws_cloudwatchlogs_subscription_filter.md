@@ -19,12 +19,13 @@ Ensure that the subscription filter exists.
 
 ## Parameters
 
-`log_group_name` and `filter_name_prefix` _(required)_
+log_group_name _(required)_
 
-| Property           | Description                              |
-| :----------------: | :--------------------------------------: |
-| log_group_name     | The name of the log group to associate with the subscription filter. All log events that are uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events. |
-| filter_name_prefix | The name of the subscription filter.     |
+The name of the log group to associate with the subscription filter. All log events that are uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events.
+
+filter_name_prefix _(required)_
+
+The name of the subscription filter.
 
 For additional information, see the [AWS documentation on AWS Logs SubscriptionFilter.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-subscriptionfilter.html).
 

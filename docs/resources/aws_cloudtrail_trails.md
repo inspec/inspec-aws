@@ -3,7 +3,7 @@ title: About the aws_cloudtrail_trails Resource
 platform: aws
 ---
 
-# aws\_cloudtrail\_trails
+# aws_cloudtrail_trails
 
 Use the `aws_cloudtrail_trails` InSpec audit resource to test properties of a collection of AWS CloudTrail Trails.
 
@@ -23,20 +23,22 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property    | Description|
+| Property    | Description |
 | ---        | --- |
-|trail\_arns | Specifies the ARNs of the trails. |
-|names       | The names of the trails. |
-|entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| trail_arns | Specifies the ARNs of the trails. |
+| names | The names of the trails. |
+| entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples
 
 ##### Ensure a CloudTrail with a specific name exists
+
     describe aws_cloudtrail_trails do
       its('names') { should include('trail-1') }
     end
 
 ##### Ensure a CloudTrail with a specific arn exists
+
     describe aws_cloudtrail_trails do
       its('trail_arns') { should include('arn:aws:cloudtrail:us-east-1::trail/trail-1') }
     end
@@ -49,11 +51,13 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
     describe aws_cloudtrail_trails do
       it { should exist }
     end
+
+Use `should_not` to test the entity does not exist.
 
     describe aws_cloudtrail_trails do
       it { should_not exist }

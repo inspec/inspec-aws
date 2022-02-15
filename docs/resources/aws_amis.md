@@ -3,7 +3,7 @@ title: About the aws_amis Resource
 platform: aws
 ---
 
-# aws\_amis
+# aws_amis
 
 Use the `aws_amis` InSpec audit resource to test properties of some or all AWS AMIs.
 
@@ -61,7 +61,7 @@ This can be passed either as a string or as a `all_amis: 'value'` key-value entr
 
 ## Properties
 
-|Property                 | Description|
+|Property                 | Description |
 | ---                     | --- |
 |architectures            | The architecture of the image. |
 |creation\_dates          | The date and time the image was created. |

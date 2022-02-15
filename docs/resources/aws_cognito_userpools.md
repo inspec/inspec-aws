@@ -3,7 +3,7 @@ title: About the aws_cognito_userpools Resource
 platform: aws
 ---
 
-# aws\_cognito\_userpools
+# aws_cognito_userpools
 
 Use the `aws_cognito_userpools` InSpec audit resource to test properties of multiple Cognito user pools.
 
@@ -17,18 +17,20 @@ Ensure that a user pool exists.
 
 ## Parameters
 
+This resource does not require any parameters.
+
 For additional information, see the [AWS documentation on Cognito user pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| ids | The IDs of the user pools. |
-| names | The names of the user pools. |
-| lambda_configs | The lambda trigger configuration of the user pools. |
-| statuses | The statuses of the user pools. |
-| last_modified_dates | The last_modified_dates of the user pools. |
-| creation_dates | The creation_dates of the user pools. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| ids | The IDs of the user pools. | id |
+| names | The names of the user pools. | name |
+| lambda_configs | The lambda trigger configuration of the user pools. | lambda_config |
+| statuses | The statuses of the user pools. | status |
+| last_modified_dates | The last_modified_dates of the user pools. | last_modified_date |
+| creation_dates | The creation_dates of the user pools. | creation_date |
 
 ## Examples
 
@@ -66,7 +68,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the user pool is available.
+Use `should` to check if the entity is available.
 
     describe aws_cognito_userpools do
       it { should be_available }

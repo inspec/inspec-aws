@@ -3,7 +3,7 @@ title: About the aws_batch_job_queues Resource
 platform: aws
 ---
 
-# aws\_batch\_job\_queues
+# aws_batch_job_queues
 
 Use the `aws_batch_job_queues` InSpec audit resource to test the properties of multiple AWS Batch job queues.
 
@@ -17,19 +17,21 @@ Ensure that a job queue exists.
 
 ## Parameters
 
+This resource does not accept any parameters.
+
 For additional information, see the [AWS Batch job queues documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| job_queue_names | The name of the job queue. |
-| job_queue_arns | The ARN of the job queue. |
-| states | The state of the job queue. |
-| statuses | The status of the job queue. |
-| status_reasons | The status_reason of the job queue. |
-| priorities | The priority of the job queue. |
-| tags | The tags of the job queue. |
+| Property | Description | Fields |
+| ---  | --- | --- |
+| job_queue_names | The name of the job queue. | job_queue_name |
+| job_queue_arns | The ARN of the job queue. | job_queue_arn |
+| states | The state of the job queue. | state |
+| statuses | The status of the job queue. | status |
+| status_reasons | The status_reason of the job queue. | status_reason |
+| priorities | The priority of the job queue. | priority |
+| tags | The tags of the job queue. | tags |
 
 ## Examples
 
@@ -67,7 +69,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the job_queue name is available.
+Use `should` to check if the entity is available.
 
     describe aws_batch_job_queues do
       it { should be_available }

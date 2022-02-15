@@ -3,7 +3,7 @@ title: About the aws_cloudwatch_alarm Resource
 platform: aws
 ---
 
-# aws\_cloudwatch\_alarm
+# aws_cloudwatch_alarm
 
 Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a single CloudWatch Alarm.
 
@@ -12,41 +12,45 @@ Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a sin
 ## Syntax
 
 ##### Ensure an Alarm exists.
-      aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
+
+      aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIC_NAMESPACE') do
         it { should exist }
       end
       
 #### Parameters
-##### metric\_name _(required)_
+
+metric_name _(required)_
 
 The metric name used by this alarm. This must be passed as a `metric_name: 'value'` key-value entry in a hash.
 
-##### metric\_namespace _(required)_
+metric_namespace _(required)_
 
 The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` key-value entry in a hash.
 
-##### dimensions _(optional)_
+dimensions _(optional)_
 
-The dimensions associated with this alarm. This must be passed as an array of hashes `dimensions: [{key:'value'}]` .
+The dimensions associated with this alarm. This must be passed as an array of hashes `dimensions: [{key:'value'}]`.
 
 ## Properties
 
-|Property         | Description|
+|Property         | Description |
 | ---             | --- |
-|alarm\_actions    | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).  |
-|alarm\_name       | The name of the alarm. |
-|metric\_name      | The name of the metric. |
-|metric\_namespace | The namespace of the metric. |
+|alarm_actions    | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).  |
+|alarm_name       | The name of the alarm. |
+|metric_name      | The name of the metric. |
+|metric_namespace | The namespace of the metric. |
 
 ## Examples
 
 ##### Ensure an Alarm has at least one alarm action
-    describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
+
+    aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIC_NAMESPACE') do
       its('alarm_actions') { should_not be_empty }
     end
     
 ##### Ensure an Alarm with Dimensions exists
-    describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace', dimensions: [{key: 'value'}]) do
+
+    describe aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIC_NAMESPACE', dimensions: [{key: 'value'}]) do
       it { should exist }
     end
 
@@ -60,11 +64,11 @@ The control will pass if the describe returns at least one result.
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_cloudwatch_alarm(metric_name: 'good-metric', metric_namespace: 'my-metric-namespace') do
+    aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIC_NAMESPACE') do
       it { should exist }
     end
 
-    describe aws_cloudwatch_alarm(metric_name: 'bed-metric', metric_namespace: 'my-metric-namespace') do
+    aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIC_NAMESPACE') do
       it { should_not exist }
     end
     

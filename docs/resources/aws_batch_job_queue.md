@@ -3,13 +3,13 @@ title: About the aws_batch_job_queue Resource
 platform: aws
 ---
 
-# aws\_batch\_job\_queue
+# aws_batch_job_queue
 
 Use the `aws_batch_job_queue` InSpec audit resource to test the properties of a single AWS Batch job queue.
 
 ## Syntax
 
-Ensure that a job_queue name exists.
+Ensure that a job queue name exists.
 
     describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should exist }
@@ -25,7 +25,7 @@ For additional information, see the [AWS Batch job queues documentation](https:/
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | job_queue_name | The name of the job queue. |
 | job_queue_arn | The ARN of the job queue. |
@@ -73,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the job_queue name is available.
+Use `should` to check if the entity is available.
 
     describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should be_available }

@@ -46,13 +46,13 @@ For additional information, see the [AWS documentation on AWS APIGateway Authori
 
 ## Examples
 
-### Test that an ID is available.
+### Test that an authorizer ID is available.
 
     describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       its('id') { should eq 'AUTHORIZER_ID' }
     end
 
-### Test that a name is available.
+### Test that an authorizer name is available.
 
     describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       its('name') { should eq 'AUTHORIZER_NAME' }

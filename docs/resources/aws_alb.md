@@ -75,11 +75,13 @@ This InSpec audit resource has no special matchers. For a full list of available
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
     describe aws_alb('AnExistingALB') do
       it { should exist }
     end
+
+Use `should_not` to test the entity should not exist.
 
     describe aws_alb('ANonExistentALB') do
       it { should_not exist }

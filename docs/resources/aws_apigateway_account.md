@@ -31,7 +31,6 @@ For additional information, see the [AWS documentation on AWS API Gateway accoun
 | features | A list of features supported for the account. When usage plans are enabled, the features list will include an entry of "UsagePlans". |
 | api_key_version | The version of the API keys used for the account. |
 
-
 ## Examples
 
 ### Ensure a Cloudwatch role ARN is available.

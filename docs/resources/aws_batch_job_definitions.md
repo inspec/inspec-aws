@@ -3,7 +3,7 @@ title: About the aws_batch_job_definitions Resource
 platform: aws
 ---
 
-# aws\_batch\_job\_definitions
+# aws_batch_job_definitions
 
 Use the `aws_batch_job_definitions` InSpec audit resource to test properties of multiple AWS Batch job definitions.
 
@@ -19,21 +19,23 @@ Ensure that a job definition exists.
 
 ## Parameters
 
+This resource does not accept any parameters.
+
 For additional information, see the [AWS documentation on Batch Job Definition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| job_definition_names | The name of the job definition. |
-| job_definition_arns | The ARN of the job definition. |
-| revisions | The revision of the job definition. |
-| statuses | The status of the job definition. |
-| types | The type of the job definition. |
-| parameters | The parameter of the job definition. |
-| tags | The tags of the job definition. |
-| propagate_tags | Whether to propagate tags from the job definition to the ECS task. |
-| platform_capabilities | The platform capabilities required by the job definition. |
+| Property | Description | Fields |
+| ---  | --- | --- |
+| job_definition_names | The name of the job definition. | job_definition_name |
+| job_definition_arns | The ARN of the job definition. | job_definition_arn |
+| revisions | The revision of the job definition. | revision |
+| statuses | The status of the job definition. | status |
+| types | The type of the job definition. | type |
+| parameters | The parameter of the job definition. | parameters |
+| tags | The tags of the job definition. | tags |
+| propagate_tags | Whether to propagate tags from the job definition to the ECS task. | propagate_tags |
+| platform_capabilities | The platform capabilities required by the job definition. | platform_capabilities |
 
 ## Examples
 
@@ -71,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the job_definition name is available.
+Use `should` to check if the entity is available.
 
     describe aws_batch_job_definitions do
       it { should be_available }

@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ## Properties
 
-| Property           | Description                   | Field                      |
+| Property           | Description                   | Fields                     |
 | :----------------: | :---------------------------: | :------------------------: |
 | log_stream_names   | The name of the log stream.   | log_stream_name            |
 | creation_times     | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. | creation_time |

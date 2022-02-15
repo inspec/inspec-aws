@@ -87,7 +87,7 @@ Use `should` to test that the entity exists.
 
 ### be_available
 
-Use `should` to check if the scalable policy is available.
+Use `should` to check if the entity is available.
 
     describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
       it { should be_available }

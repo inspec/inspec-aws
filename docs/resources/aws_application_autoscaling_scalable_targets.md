@@ -9,7 +9,7 @@ Use the `aws_application_autoscaling_scalable_targets` InSpec audit resource to 
 
 ## Syntax
 
-    describe aws_application_autoscaling_scalable_targets( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
       it { should exist }
     end
 
@@ -23,28 +23,28 @@ For additional information, see the [AWS ApplicationAutoScaling ScalableTarget d
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| service_namespaces | The namespace of the AWS service that provides the resource. |
-| resource_ids | The identifier of the resource associated with the scalable target. |
-| scalable_dimensions | The scalable dimension associated with the scalable target. |
-| min_capacities | The minimum value to scale to in response to a scale-in activity. |
-| max_capacities | The maximum value to scale to in response to a scale-out activity. |
-| role_arns | The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf. |
-| creation_times | The Unix timestamp for when the scalable target was created. |
-| suspended_states | The suspended state of the scalable target. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| service_namespaces | The namespace of the AWS service that provides the resource. | service_namespace |
+| resource_ids | The identifier of the resource associated with the scalable target. | resource_id |
+| scalable_dimensions | The scalable dimension associated with the scalable target. | scalable_dimension |
+| min_capacities | The minimum value to scale to in response to a scale-in activity. | min_capacity |
+| max_capacities | The maximum value to scale to in response to a scale-out activity. | max_capacity |
+| role_arns | The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf. | role_arn |
+| creation_times | The Unix timestamp for when the scalable target was created. | creation_time |
+| suspended_states | The suspended state of the scalable target. | suspended_state |
 
 ## Examples
 
 ### Ensure a service namespace is available.
 
-    describe aws_application_autoscaling_scalable_targets( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
       its('service_namespace') { should include 'ec2' }
     end
 
 ### Verify the minimum scale capacity.
 
-    describe aws_application_autoscaling_scalable_targets( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
         its('min_capacity') { should include 1 }
     end
 
@@ -58,15 +58,21 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_application_autoscaling_scalable_targets( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
       it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
+      it { should_not exist }
     end
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
-    describe aws_application_autoscaling_scalable_targets( service_namespace: 'SERVICE_NAMESPACE' ) do
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'SERVICE_NAMESPACE') do
       it { should be_available }
     end
 

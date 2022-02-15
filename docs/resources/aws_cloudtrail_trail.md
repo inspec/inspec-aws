@@ -3,7 +3,7 @@ title: About the aws_cloudtrail_trail Resource
 platform: aws
 ---
 
-# aws\_cloudtrail\_trail
+# aws_cloudtrail_trail
 
 Use the `aws_cloudtrail_trail` InSpec audit resource to test properties of a single AWS CloudTrail.
 
@@ -23,7 +23,7 @@ An `aws_cloudtrail_trail` resource block identifies a trail by `trail_name`.
 
 #### Parameters
 
-##### trail\_name _(required)_
+##### trail_name _(required)_
 This resource expects a single parameter, the CloudTrail Name which uniquely identifies it. 
 This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
@@ -31,15 +31,15 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 
 ## Properties
 
-|Property                            | Description|
+| Property                            | Description |
 | ---                                | --- |
-|trail\_arn                          | Specifies the ARN of the trail. |
-|trail\_name                         | Name of the trail. |
-|home\_region                        | The region in which the trail was created.  |
-|s3\_bucket\_name                    | Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. |
-|cloud\_watch\_logs\_role\_arn       | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. |
-|cloud\_watch\_logs\_log\_group\_arn | Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. |
-|kms\_key\_id                        | Specifies the KMS key ID that encrypts the logs delivered by CloudTrail.  |
+| trail_arn                          | Specifies the ARN of the trail. |
+| trail_name                         | Name of the trail. |
+| home_region                        | The region in which the trail was created.  |
+| s3_bucket_name                    | Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. |
+| cloud_watch_logs_role_arn       | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. |
+| cloud_watch_logs_log_group_arn | Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. |
+| kms_key_id                        | Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. |
 
 ## Examples
 
@@ -82,7 +82,7 @@ Use `should_not` to test the entity should not exist.
       it { should exist }
     end
 
-#### be\_multi\_region\_trail
+#### be_multi_region_trail
 
 The test will pass if the identified trail is a multi-region trail.
 
@@ -90,7 +90,7 @@ The test will pass if the identified trail is a multi-region trail.
       it { should be_multi_region_trail }
     end
 
-#### be\_encrypted
+#### be_encrypted
 
 The test will pass if the logs delivered by the identified trail are encrypted.
 
@@ -98,7 +98,7 @@ The test will pass if the logs delivered by the identified trail are encrypted.
       it { should be_encrypted }
     end
 
-#### be\_log\_file\_validation\_enabled
+#### be_log_file_validation_enabled
 
 The test will pass if the identified trail has log file integrity validation is enabled.
 

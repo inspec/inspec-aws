@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 
 ## Properties
 
-| Property            | Description   | Field                |
+| Property            | Description   | Fields               |
 | :-----------------: | :-----------: | :------------------: |
 | destination_names   | The name of the destination. | destination_name |
 | target_arns         | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). | target_arn |

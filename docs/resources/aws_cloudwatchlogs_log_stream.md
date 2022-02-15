@@ -19,12 +19,13 @@ Ensure that the log stream exists.
 
 ## Parameters
 
-`log_group_name` and `log_stream_name_prefix` _(required)_
+log_group_name _(required)_
 
-| Property               | Description                                                |
-| :--------------------: | :--------------------------------------------------------: |
-| log_group_name         | The name of the log group where the log stream is created. |
-| log_stream_name_prefix | The name of the log stream.                                |
+The name of the log group where the log stream is created.
+
+log_stream_name_prefix _(required)_
+
+The name of the log stream.
 
 For additional information, see the [AWS documentation on AWS Logs LogStream.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-logstream.html).
 

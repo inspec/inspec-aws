@@ -3,7 +3,7 @@ title: About the aws_api_gateway_stage Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_stage
+# aws_api_gateway_stage
 
 Use the `aws_api_gateway_stage` InSpec audit resource to test properties of a single AWS API Gateway stage.
 
@@ -31,7 +31,7 @@ For additional information, see the [AWS API Gateway stage documentation](https:
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | deployment_id | The identifier for the deployment attached to stage resource. |
 | description | The description for the stage resource. |

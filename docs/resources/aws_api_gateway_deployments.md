@@ -21,6 +21,8 @@ Ensure that the deployment exists.
 
 `rest_api_id` _(required)_
 
+The string identifier of the associated RestApi.
+
 For additional information, see the [AWS ApiGateway Deployment documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-deployment.html).
 
 ## Properties
@@ -62,7 +64,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the deployment is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should be_available }

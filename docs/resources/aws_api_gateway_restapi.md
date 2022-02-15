@@ -3,7 +3,7 @@ title: About the aws_api_gateway_restapi Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_restapi
+# aws_api_gateway_restapi
 
 Use the `aws_api_gateway_restapi` InSpec audit resource to test properties of a single AWS API Gateway REST API.
 
@@ -78,7 +78,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_api_gateway_restapi(rest_api_id: "REST_API_ID") do
       it { should be_available }
