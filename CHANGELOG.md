@@ -1,9 +1,14 @@
-<!-- latest_release 1.80.7 -->
+<!-- latest_release 1.81.0 -->
+## [v1.81.0](https://github.com/inspec/inspec-aws/tree/v1.81.0) (2022-02-15)
+
+#### Merged Pull Requests
+- adding missing error handling for aws iam password policy resource [#856](https://github.com/inspec/inspec-aws/pull/856) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.80.7](https://github.com/inspec/inspec-aws/tree/v1.80.7) (2022-02-11)
 
 #### Merged Pull Requests
 - Another error handling line for the backend.rb file, better error output and json logging [#854](https://github.com/inspec/inspec-aws/pull/854) ([jb897](https://github.com/jb897))
-<!-- latest_release -->
 
 ## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
 
