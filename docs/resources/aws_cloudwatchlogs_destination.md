@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS::Logs::Destination
 
 ## Properties
 
-| Property            | Description               |
-| :-----------------: | :-----------------------: |
+| Property | Description |
+| :---: | :--- |
 | destination_name    | The name of the destination. |
 | target_arn          | The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for example, a Kinesis stream). |
 | role_arn            | The ARN of an IAM role that permits CloudWatch Logs to send data to the specified AWS resource. |

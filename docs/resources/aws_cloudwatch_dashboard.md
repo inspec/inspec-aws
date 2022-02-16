@@ -26,10 +26,11 @@ For additional information, see the [AWS documentation on AWS CloudWatch Dashboa
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | dashboard_arn | The Amazon Resource Name (ARN) of the dashboard. |
 | dashboard_body | The detailed information about the dashboard, including what widgets are included and their location on the dashboard.|
 | dashboard_name | The name of the dashboard. |
+
 ## Examples
 
 ### Ensure a dashboard ARN is available.

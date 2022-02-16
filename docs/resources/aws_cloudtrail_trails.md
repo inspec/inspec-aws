@@ -23,11 +23,10 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-| Property    | Description |
-| ---        | --- |
-| trail_arns | Specifies the ARNs of the trails. |
-| names | The names of the trails. |
-| entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| trail_arns | Specifies the ARNs of the trails. | trail_arn |
+| names | The names of the trails. | name |
 
 ## Examples
 

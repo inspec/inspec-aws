@@ -17,14 +17,14 @@ Ensure that AWS Amplify app exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandate parameters.
 
 For additional information, see the [AWS documentation on AWS Amplify App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
 ## Properties
 
-| Property | Description| Field |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | app_arns | The Amazon Resource Name (ARN) of the Amplify app. | app_arn |
 | app_ids | The unique ID of the Amplify app. | app_id |
 | app_arns | The app's Amazon Resource app_id (ARN). | app_arn |
@@ -42,7 +42,7 @@ For additional information, see the [AWS documentation on AWS Amplify App](https
 
 ## Examples
 
-### Ensure a app ID is available.
+### Ensure an app ID is available.
 
     describe aws_amplify_apps do
       its('app_ids') { should include 'APP_ID' }

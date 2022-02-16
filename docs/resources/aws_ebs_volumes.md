@@ -11,10 +11,10 @@ EBS volumes are persistent block storage volumes for Amazon EC2 instances in the
 
 ## Syntax
 
- Ensure you have exactly three volumes.
+Ensure a volume exists.
 
     describe aws_ebs_volumes do
-      its('VOLUME_ID_COUNT') { should cmp 3 }
+      it { should exist }
     end
 
 ## Parameters
@@ -25,31 +25,30 @@ See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| attachments                | The EBS volume attachments returned. |
-| availability_zones         | The list of availability zones in use by the EBS volumes. |
-| create_times               | The creation times of the EBS volumes. |
-| encrypted                  | The list of true/false values indicating whether the EBS volumes are encrypted. |
-| fast_restored              | The list of true/false values indicating whether the EBS volume is created with a snapshot enabled for fast snapshot restore. |
-| iops                       | The list of I/O per second for each EBS volume. |
-| kms_key_ids                | The list of ARNs for EBS volume KMS keys. |
-| multi_attach_enabled       | The list of boolean values indicating whether the EBS volume is multi-attach enabled. |
-| outpost_arns               | The list of ARNs of outposts. |
-| sizes                      | The list of EBS volume sizes. |
-| snapshot_ids               | The list of snapshots from which EBS volumes are created. |
-| states                     | The list of volume states returned. |
-| tags                       | The list of volume tags returned. |
-| volume_ids                 | The unique IDs of the EBS volumes returned. |
-| volume_types               | The list of volume types returned. |
-| entries                    | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| attachments | The EBS volume attachments returned. | attachments |
+| availability_zones | The list of availability zones in use by the EBS volumes. | availability_zone |
+| create_times | The creation times of the EBS volumes. | create_time |
+| encrypted | The list of true/false values indicating whether the EBS volumes are encrypted. | encrypted |
+| fast_restored | The list of true/false values indicating whether the EBS volume is created with a snapshot enabled for fast snapshot restore. | fast_restored |
+| iops | The list of I/O per second for each EBS volume. | iops |
+| kms_key_ids | The list of ARNs for EBS volume KMS keys. | kms_key_id |
+| multi_attach_enabled | The list of boolean values indicating whether the EBS volume is multi-attach enabled. | multi_attach_enabled |
+| outpost_arns | The list of ARNs of outposts. | outpost_arn |
+| sizes | The list of EBS volume sizes. | size |
+| snapshot_ids | The list of snapshots from which EBS volumes are created. | snapshot_id |
+| states | The list of volume states returned. | state |
+| tags | The list of volume tags returned. | iops |
+| volume_ids | The unique IDs of the EBS volumes returned. | attachments |
+| volume_types | The list of volume types returned. | volume_type |
 
 ## Examples
 
 ### Ensure a specific volume exists
 
     describe aws_ebs_volumes do
-      its('VOLUME_IDs') { should include 'VOLUME-12345678' }
+      its('volume_ids') { should include 'VOLUME_ID' }
     end
 
 ### Request the EBS volumes IDs
@@ -72,11 +71,13 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+#### Use `should` to test that the entity exists.
 
     describe aws_ebs_volumes do
       it { should exist }
     end
+
+#### Use `should_not` to test the entity does not exist.
 
     describe aws_ebs_volumes do
       it { should_not exist }

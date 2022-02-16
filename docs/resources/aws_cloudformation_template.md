@@ -60,8 +60,8 @@ For additional information, see the [AWS documentation on AWS CloudFormation tem
 
 ## Properties
 
-| Property                                      | Description                                                                                                 |
-| :-------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+| Property | Description |
+| :---: | :--- |
 | parameter_keys                                | The name that is associated with the parameter.                                                             |
 | default_values                                | The default value of the parameter.                                                                         |
 | parameter_types                               | The type of parameter.                                                                                            |

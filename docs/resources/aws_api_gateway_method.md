@@ -35,8 +35,8 @@ For additional information, see the [AWS APIGateway Method documentation](https:
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | http_method | The HTTP method that clients use to call this method. |
 | authorization_type | The method's authorization type. Valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito user pool. |
 | authorizer_id | The identifier of an Authorizer to use on this method. The authorizationType must be `CUSTOM`. |

@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 Fleet.](https:
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | activity_status | The progress of the EC2 Fleet. |
 | create_time | The creation date and time of the EC2 Fleet. |
 | fleet_id | The ID of the EC2 Fleet. |

@@ -23,8 +23,8 @@ For additional information, see the [AWS ApplicationAutoScaling ScalableTarget d
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | service_namespaces | The namespace of the AWS service that provides the resource. | service_namespace |
 | resource_ids | The identifier of the resource associated with the scalable target. | resource_id |
 | scalable_dimensions | The scalable dimension associated with the scalable target. | scalable_dimension |

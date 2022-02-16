@@ -28,7 +28,7 @@ See the [AWS documentation on AWS Elastic IP association](https://docs.aws.amazo
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | association_id | The association ID for the address. |
 
 ## Examples

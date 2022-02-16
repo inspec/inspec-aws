@@ -32,7 +32,7 @@ For additional information, see the [AWS API Gateway stage documentation](https:
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | deployment_id | The identifier for the deployment attached to stage resource. |
 | description | The description for the stage resource. |
 | created_date | The date and time that the stage resource was created. |

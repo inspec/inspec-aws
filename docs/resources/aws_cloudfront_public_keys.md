@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS CloudFront public 
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | ids | The identifier of the public key. | id |
 | created_times | The date and time when the public key was uploaded. | created_time |
 | caller_references | A string included in the request to help make sure that the request can’t be replayed. | caller_reference |

@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on Batch Job Definition](
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | job_definition_name | The name of the job definition. |
 | job_definition_arn | The ARN of the job definition. |
 | revision | The revision of the job definition. |

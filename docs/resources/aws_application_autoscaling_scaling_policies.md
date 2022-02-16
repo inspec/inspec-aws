@@ -25,18 +25,18 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| policy_arns | The Amazon Resource Name (ARN) of the scaling policy. |
-| policy_names | The name of the scaling policy. |
-| service_namespaces | The namespace of the AWS service that provides the resource, or a custom-resource. |
-| resource_ids | The identifier of the resource associated with the scaling policy. This string consists of the resource type and unique identifier. |
-| scalable_dimensions | The scalable dimension. This string consists of the service namespace, resource type, and scaling property. |
-| policy_types | The scaling policy type. |
-| step_scaling_policy_configurations | A step scaling policy. |
-| target_tracking_scaling_policy_configurations | A target tracking scaling policy. |
-| alarms | The CloudWatch alarms associated with the scaling policy. |
-| creation_times | The Unix timestamp for when the scaling policy was created. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| policy_arns | The Amazon Resource Name (ARN) of the scaling policy. | policy_arn |
+| policy_names | The name of the scaling policy. | policy_name |
+| service_namespaces | The namespace of the AWS service that provides the resource, or a custom-resource. | service_namespace |
+| resource_ids | The identifier of the resource associated with the scaling policy. This string consists of the resource type and unique identifier. | resource_id |
+| scalable_dimensions | The scalable dimension. This string consists of the service namespace, resource type, and scaling property. | scalable_dimension |
+| policy_types | The scaling policy type. | policy_type |
+| step_scaling_policy_configurations | A step scaling policy. | step_scaling_policy_configuration |
+| target_tracking_scaling_policy_configurations | A target tracking scaling policy. | target_tracking_scaling_policy_configuration |
+| alarms | The CloudWatch alarms associated with the scaling policy. | alarms |
+| creation_times | The Unix timestamp for when the scaling policy was created. | creation_time |
 
 ## Examples
 

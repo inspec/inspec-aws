@@ -25,8 +25,8 @@ For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy do
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | policy_arn | The Amazon Resource Name (ARN) of the scaling policy. |
 | policy_name | The name of the scaling policy. |
 | service_namespace | The namespace of the AWS service that provides the resource, or a custom-resource. |

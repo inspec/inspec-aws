@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 host.](https:/
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | auto_placements | Whether auto-placement is on or off. | auto_placement |
 | availability_zones | The Availability Zone of the Dedicated host. | availability_zone |
 | available_capacities | The number of instances that can be launched onto the Dedicated host depending on the host's available capacity. | available_instance_capacity |
@@ -66,6 +66,8 @@ This InSpec audit resource has the following special matchers. For a full list o
 The controls will pass if the `describe` method returns at least one result.
 
 ### exist
+
+The control will pass if the describe returns at least one result.
 
 Use `should` to test that the entity exists.
 

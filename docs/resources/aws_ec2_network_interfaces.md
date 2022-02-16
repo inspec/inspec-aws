@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 network interf
 
 ## Properties
 
-| Property | Description| Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | attachments | The attachment. | attachment |
 | availability_zones | The Availability Zone. | availability_zone |
 | descriptions | A description. | description |

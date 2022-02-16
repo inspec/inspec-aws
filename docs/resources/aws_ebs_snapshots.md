@@ -23,13 +23,12 @@ See also the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AW
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|snapshot\_ids | An array of the unique IDs of the EBS Snapshots that are returned. |
-|owner\_ids    | An array of AWS Account IDs of the owners of the EBS Snapshots that are returned. |
-|encrypted     | An array of booleans indicating whether the EBS Snapshots returned are encrypted. |
-|tags          | An array of hashes; each hash is a set of keys and values for tags for one of the EBS Snapshots returned, and may be empty. |
-|entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| snapshot_ids | An array of the unique IDs of the EBS Snapshots that are returned. | snapshot_id |
+| owner_ids | An array of AWS Account IDs of the owners of the EBS Snapshots that are returned. | owner_id |
+| encrypted | An array of booleans indicating whether the EBS Snapshots returned are encrypted. | encrypted |
+| tags | An array of hashes; each hash is a set of keys and values for tags for one of the EBS Snapshots returned, and may be empty. | tags |
 
 ## Examples
 
@@ -56,11 +55,13 @@ For a full list of available matchers, please visit our [Universal Matchers page
 
 The control will pass if the describe returns at least one result.
 
+#### Use `should` to test that the entity exists.
+
     describe aws_ebs_snapshots do
       it { should exist }
     end
 
-Use `should_not` to test the entity should not exist.
+#### Use `should_not` to test the entity does not exist.
 
     describe aws_ebs_snapshots do
       it { should_not exist }

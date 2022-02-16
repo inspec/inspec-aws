@@ -25,34 +25,29 @@ See the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSC
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| public_ip | The Elastic IP address, or the carrier IP address. |
-| instance_id | The ID of the instance the address is associated with, if any. |
-| allocation_id | The allocation ID for the address. |
-| association_id | The association ID for the address. |
-| domain | Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc). |
-| network_interface_id | The ID of the network interface that the address is associated with, if any. |
-| network_interface_owner_id | The AWS account ID of the owner. |
-| private_ip_address | The private IP address associated with the Elastic IP address. |
-| public_ipv_4_pool | The Elastic IPV4 pool address. |
-| network_border_group | A unique set of Availability Zones, Local Zones, or Wavelength Zones from where AWS advertises IP addresses. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| public_ips | The Elastic IP address, or the carrier IP address. | public_ip |
+| instance_ids | The ID of the instance the address is associated with, if any. | instance_id |
+| allocation_ids | The allocation ID for the address. | allocation_id |
+| association_ids | The association ID for the address. | association_id |
+| domains | Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc). | domain |
+| network_interface_ids | The ID of the network interface that the address is associated with, if any. | network_interface_id |
+| network_interface_owner_ids | The AWS account ID of the owner. | network_interface_owner_id |
+| private_ip_addresses | The private IP address associated with the Elastic IP address. | private_ip_address |
+| public_ipv_4_pools | The Elastic IPV4 pool address. | public_ipv_4_pool |
+| network_border_groups | A unique set of Availability Zones, Local Zones, or Wavelength Zones from where AWS advertises IP addresses. | network_border_group |
 
 ## Examples
 
-##### Ensure a Elastic IP(EIP) has Public IP.
-    describe aws_ec2_eips do
-      it { should exist }
-    end
-
-##### Match count of Elastic IP(EIP).
+##### Match count of Elastic IP (EIP).
     describe aws_ec2_eips do
         its('count') { should eq 5 }
     end
 
 ##### Check Allocation ID whether it is correct or not
     describe aws_ec2_eips do
-       its('allocation_ids') { should include "eipassoc-0ew2bc8cde18191da" }
+       its('allocation_ids') { should include "ALLOCATION_ID" }
     end
 
 ## Matchers
@@ -63,7 +58,13 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
+
+    describe aws_ec2_eips do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
 
     describe aws_ec2_eips do
       it { should_not exist }

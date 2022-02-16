@@ -27,12 +27,12 @@ For additional information, see the [AWS ApiGateway Deployment documentation](ht
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| ids | The identifier for the deployment resource. |
-| descriptions | The description for the deployment resource. |
-| created_dates | The date and time that the deployment resource was created. |
-| api_summaries | A summary of the RestApi at the date and time that the deployment resource was created. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| ids | The identifier for the deployment resource. | id |
+| descriptions | The description for the deployment resource. | description |
+| created_dates | The date and time that the deployment resource was created. | created_date |
+| api_summaries | A summary of the RestApi at the date and time that the deployment resource was created. | api_summary |
 
 ## Examples
 

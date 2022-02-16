@@ -23,20 +23,20 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Properties
 
-|Property                     | Description |
-| ---                         | --- |
-|load_balancer_names        | The names of the load balancers. |
-|load_balancer_addresses    | A collection of the load balancers addresses. |
-|canonical_hosted_zone_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. |
-|dns_names                   | The DNS names of the load balancers. |
-|availability_zones          | The Availability Zones for the load balancers. |
-|security_groups             | The security groups for the load balancers. Valid only for load balancers in a VPC. |
-|schemes                      | The types of load balancers. Valid only for load balancers in a VPC. |
-|states                       | The states of the load balancers. |
-|subnets                      | A collection of the subnet ids. |
-|types                        | The types of the load balancers. |
-|vpc_ids                     | The IDs of the VPCs for the load balancers. |
-|zone_names                 | A collection of the names of the availability zones. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| load_balancer_names | The names of the load balancers. | load_balancer_name |
+| load_balancer_addresses | A collection of the load balancers addresses. | load_balancer_addresses |
+| canonical_hosted_zone_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. | canonical_hosted_zone_id |
+| dns_names | The DNS names of the load balancers. | dns_name |
+| availability_zones | The Availability Zones for the load balancers. | availability_zones |
+| security_groups | The security groups for the load balancers. Valid only for load balancers in a VPC. | security_groups |
+| schemes | The types of load balancers. Valid only for load balancers in a VPC. | scheme |
+| states | The states of the load balancers. | scheme |
+| subnets | A collection of the subnet ids. | subnet_id |
+| types | The types of the load balancers. | type |
+| vpc_ids | The IDs of the VPCs for the load balancers. | vpc_id |
+| zone_names | A collection of the names of the availability zones. | zone_name |
 
 ## Examples
 

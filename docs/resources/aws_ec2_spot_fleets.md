@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](h
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | activity_statuses | The progress of the Spot Fleet request. | activity_status |
 | create_times | The creation date and time of the request. | create_time |
 | spot_fleet_request_configs | The configs of the Spot Fleet request. | spot_fleet_request_config |

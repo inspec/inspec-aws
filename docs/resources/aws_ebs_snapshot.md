@@ -22,43 +22,43 @@ You may also use hash syntax to pass the EBS volume name:
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
 This resource accepts a single parameter, either the EBS Snapshot ID or name (from the Name tag). At least one must be provided.
 
-#### snapshot\_id
+`snapshot_id` _(required)_
 
 The EBS Snapshot ID which uniquely identifies the volume.
 This can be passed as either a string or an `snapshot_id: 'value'` key-value entry in a hash.
 
 For additional information, see the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html).
 
-#### name _(required if `snapshot_id` not provided)_
+`name` _(required if `snapshot_id` not provided)_
 
 The EBS volume name from the name tag. This must be passed as a `name: 'value'` key-value entry in a hash.
 It is not advised to use this parameter if your Name tags for your snapshots are not unique, as at most one entry is returned.
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
-|snapshot\_id              | The unique ID for the EBS Snapshot. |
-|encrypted                 | A boolean indicating whether the EBS Snapshot is encrypted. |
-|data\_encryption\_key\_id | The data encryption key identifier for the EBS Snapshot. |
-|description               | The description for the EBS Snapshot. |
-|group                     | Either set to `'all'` if the EBS Snapshot is public (anyone can create a volume from the EBS Snapshot), or `nil`. |
-|kms\_key\_id              | The ARN of the AWS KMS customer master key that was used to protect the volume encryption key for the parent volume. |
-|outpost\_arn              | The ARN of the AWS Outpost on which the EBS Snapshot is stored. |
-|owner\_alias              | The AWS owner alias, from an Amazon-maintained list. |
-|owner\_id                 | The AWS account ID of the EBS Snapshot owner. |
-|progress                  | The progress of the EBS Snapshot, as a percentage, e.g. `'100%'`. |
-|start\_time               | The time stamp when the EBS Snapshot was initiated. |
-|state                     | The EBS Snapshot state. |
-|state\_message            | A message about the EBS Snapshot state. | 
-|tags                      | A hash of tags for the EBS Snapshot, e.g. `{'Name' => 'snapshot-name'}` . |
-|user\_ids                 | An array of user\_ids (account numbers) that have been granted permission to create a volume from this EBS Snapshot. |
-|volume\_id                | The ID of the volume that was used to create the EBS Snapshot. |
-|volume\_size              | The size of the volume, in GiB. |
+| Property | Description |
+| :---: | :--- |
+| snapshot_id | The unique ID for the EBS Snapshot. |
+| encrypted | A boolean indicating whether the EBS Snapshot is encrypted. |
+| data_encryption_key_id | The data encryption key identifier for the EBS Snapshot. |
+| description | The description for the EBS Snapshot. |
+| group | Either set to `'all'` if the EBS Snapshot is public (anyone can create a volume from the EBS Snapshot), or `nil`. |
+| kms_key_id | The ARN of the AWS KMS customer master key that was used to protect the volume encryption key for the parent volume. |
+| outpost_arn | The ARN of the AWS Outpost on which the EBS Snapshot is stored. |
+| owner_alias | The AWS owner alias, from an Amazon-maintained list. |
+| owner_id | The AWS account ID of the EBS Snapshot owner. |
+| progress | The progress of the EBS Snapshot, as a percentage, e.g. `'100%'`. |
+| start_time | The time stamp when the EBS Snapshot was initiated. |
+| state | The EBS Snapshot state. |
+| state_message | A message about the EBS Snapshot state. | 
+| tags | A hash of tags for the EBS Snapshot, e.g. `{'Name' => 'snapshot-name'}` . |
+| user_ids | An array of user\_ids (account numbers) that have been granted permission to create a volume from this EBS Snapshot. |
+| volume_id | The ID of the volume that was used to create the EBS Snapshot. |
+| volume_size | The size of the volume, in GiB. |
 
 ## Examples
 

@@ -27,8 +27,8 @@ For additional information, see the [AWS API Gateway stage Stage documentation](
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | deployment_ids | The identifier for the deployment attached to stage resource. | deployment_id |
 | descriptions | The description for the stage resource. | description |
 | created_dates | The date and time that the stage resource was created. | created_date |

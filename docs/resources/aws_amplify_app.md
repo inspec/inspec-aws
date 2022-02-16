@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS Amplify  App](http
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | app_arn | The Amazon Resource Name (ARN) of the Amplify app. |
 | app_id | The unique ID of the Amplify app. |
 | app_arn | The app's Amazon Resource app_id (ARN). |

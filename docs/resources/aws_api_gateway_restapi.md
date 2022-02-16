@@ -21,12 +21,14 @@ Ensure the rest api exists.
 
 `rest_api_id` _(required)_
 
+The API's identifier. This identifier is unique across all of your APIs in API Gateway.
+
 For additional information, see the [AWS API Gateway REST API documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | id | The API's identifier. This identifier is unique across all of your APIs in API Gateway. |
 | name | The API's name. |
 | description | The API's description. |

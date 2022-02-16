@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 Capacity Reser
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | capacity_reservation_id | The ID of the Capacity Reservation. |
 | owner_id | The ID of the Amazon Web Services account that owns the Capacity Reservation. |
 | capacity_reservation_arn | The Amazon Resource Name (ARN) of the Capacity Reservation. |

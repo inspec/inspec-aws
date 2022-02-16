@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 internet gatew
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | attachments | The attachments of the internet gateways. | attachments |
 | attachments_states | The current attachment states. For an internet gateway, the state is available when attached to a VPC; otherwise, this value is not returned. | attachments (state) |
 | attachments_vpc_ids | The IDs of the VPCs. | attachments (vpc_id) |

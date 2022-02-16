@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS APIGateway ApiKey.
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The identifier of the API Key. |
 | value | The value of the API Key. |
 | name | The name of the API Key. |

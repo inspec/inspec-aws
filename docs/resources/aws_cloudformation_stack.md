@@ -19,9 +19,9 @@ Ensure that a cloud formation stack exists
       it { should exist }
     end
     
-#### Parameters
+## Parameters
 
-##### stack_name _(required)_
+`stack_name` _(required)_
 
 This resource accepts a single parameter, the CloudFormation Stack name which uniquely identifies the stack. 
 This can be passed either as a string or as a `stack_name: 'value'` key-value entry in a hash.
@@ -30,30 +30,30 @@ See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property                        | Description |
-| ---                            | --- |
-|stack_id                       | Unique identifier of the stack. |
-|stack_name                     | The name associated with the stack. |
-|change_set_id                 | The unique ID of the change set. |
-|description                     | A user-defined description associated with the stack. |
-|parameters                      | A list of Parameter structures. |
-|creation_time                  | The time at which the stack was created. |
-|deletion_time                  | The time the stack was deleted. |
-|last_updated_time             | The time the stack was last updated. |
-|rollback_configuration         | The rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards. |
-|stack_status                   | Current status of the stack. |
-|stack_status_reason           | Success/failure message associated with the stack status. |
-|drift_information              | Information on whether a stack's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters. |
-|disable_rollback               | Boolean to enable or disable rollback on stack creation failures: |
-|notification_arns              | SNS topic ARNs to which stack related events are published. |
-|timeout_in_minutes            | The amount of time within which stack creation should complete. |
-|capabilities                    | The capabilities allowed in the stack. |
-|outputs                         | A list of output structures. |
-|role_arn                       | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  |
-|tags                            | A list of Tags that specify information about the stack. |
-|enable_termination_protection | Whether termination protection is enabled for the stack. |
-|parent_id                      | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
-|root_id                        | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
+| Property | Description |
+| :---: | :--- |
+| stack_id | Unique identifier of the stack. |
+| stack_name | The name associated with the stack. |
+| change_set_id | The unique ID of the change set. |
+| description | A user-defined description associated with the stack. |
+| parameters | A list of Parameter structures. |
+| creation_time | The time at which the stack was created. |
+| deletion_time | The time the stack was deleted. |
+| last_updated_time | The time the stack was last updated. |
+| rollback_configuration | The rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards. |
+| stack_status | Current status of the stack. |
+| stack_status_reason | Success/failure message associated with the stack status. |
+| drift_information | Information on whether a stack's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters. |
+| disable_rollback | Boolean to enable or disable rollback on stack creation failures: |
+| notification_arns | SNS topic ARNs to which stack related events are published. |
+| timeout_in_minutes | The amount of time within which stack creation should complete. |
+| capabilities | The capabilities allowed in the stack. |
+| outputs | A list of output structures. |
+| role_arn | The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack.  |
+| tags | A list of Tags that specify information about the stack. |
+| enable_termination_protection | Whether termination protection is enabled for the stack. |
+| parent_id | For nested stacks--stacks created as resources for another stack--the stack ID of the direct parent of this stack. |
+| root_id | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. |
 
 ## Examples
 

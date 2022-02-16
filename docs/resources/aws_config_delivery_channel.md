@@ -24,9 +24,9 @@ One delivery channel is allowed per region per AWS account, and the delivery cha
 
 Since you may only have one Delivery Channel per region, and InSpec connections are per-region, you may also omit the `channel_name` to obtain the one Delivery Channel (if any) that exists:
 
-        describe aws_config_delivery_channel do
-          it { should exist }
-        end
+    describe aws_config_delivery_channel do
+        it { should exist }
+    end
 
 ## Parameters
 
@@ -41,7 +41,7 @@ See also the [AWS documentation on Delivery Channels](https://docs.aws.amazon.co
 ## Properties
 
 | Property | Description |
-| ---  | --- |
+| :---: | :--- |
 | channel_name | The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. |
 | s3_bucket_name | The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files. |
 | s3_key_prefix | The prefix for the specified Amazon S3 bucket. |

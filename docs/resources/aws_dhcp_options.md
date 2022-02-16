@@ -33,14 +33,15 @@ See also the [AWS documentation on EC2](https://docs.aws.amazon.com/AWSEC2/lates
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| dhcp_configurations | The list of dhcp configurations |
-| domain_name_servers | The list of domain name servers in the dhcp configuration |
-| ntp_servers | The list of ntp servers in the dhcp configuration |
-| tags | The tags of the DHCP Options. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| dhcp_configurations | The list of dhcp configurations | dhcp_configurations |
+| domain_name_servers | The list of domain name servers in the dhcp configuration | domain_name_servers |
+| ntp_servers | The list of ntp servers in the dhcp configuration | ntp_servers |
+| tags | The tags of the DHCP Options. | tags |
 
 ## Examples
+
 ### Test tags on the DHCP options
 
     describe aws_dhcp_options('dopt-0123456789abcdefg') do

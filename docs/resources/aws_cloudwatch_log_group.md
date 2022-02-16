@@ -21,7 +21,7 @@ Ensure that a log group exists
 
 #### Parameters
 
-log_group_name _(required)_
+`log_group_name` _(required)_
 
 This resource accepts a single parameter, the log group name which uniquely identifies the CloudWatch Log Group.
 This can be passed either as a string or as a `log_group_name: 'value'` key-value entry in a hash.
@@ -31,7 +31,7 @@ See also the [AWS documentation on CloudWatch Logs](https://docs.aws.amazon.com/
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | retention_in_days | The number of days to retain the log events in the specified log group |
 | kms_key_id | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data |
 | tags | The tags for the log group. |

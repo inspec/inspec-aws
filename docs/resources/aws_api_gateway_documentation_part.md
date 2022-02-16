@@ -31,8 +31,8 @@ For additional information, see the [AWS ApiGateway Documentation Part](https://
 
 ## Properties
 
-| Property             | Description                                                                       |
-|----------------------|-----------------------------------------------------------------------------------|
+| Property | Description |
+| :---: | :--- |
 | id                   | The identifier for the documentation part resource.                               |
 | location.type        | The type of API entity to which the documentation content applies.                |
 | location.path        | The URL path of the target.                                                       |

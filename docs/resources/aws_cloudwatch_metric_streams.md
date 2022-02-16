@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on AWS CloudWatch metric 
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | arns | The ARN of the metric stream. | arn |
 | creation_date | The date that the metric stream was originally created. | creation_date |
 | last_update_date | The date that the configuration of this metric stream was most recently updated. | last_update_date |

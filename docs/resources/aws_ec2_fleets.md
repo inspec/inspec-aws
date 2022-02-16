@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 Fleet.](https:
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | activity_statuses | The progress of the EC2 Fleet. | activity_status |
 | create_times | The creation date and time of the EC2 Fleet. | create_time |
 | fleet_ids | The ID of the EC2 Fleet. | fleet_id |
@@ -51,11 +51,13 @@ For additional information, see the [AWS documentation on AWS EC2 Fleet.](https:
 ## Examples
 
 ### Ensure a fleet id is available.
+
     describe aws_ec2_fleets do
       its('fleet_ids') { should include 'FLEET_ID' }
     end
 
 ### Ensure that the type is `instant`.
+
     describe aws_ec2_fleets do
         its('types') { should include 'instant' }
     end

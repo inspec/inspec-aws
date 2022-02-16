@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS API Gateway client
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | client_certificate_ids | The identifier of the client certificate. | client_certificate_id |
 | descriptions | The description of the client certificate. | description |
 | pem_encoded_certificates | The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .| pem_encoded_certificate |

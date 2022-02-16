@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS EC2 Client VPN aut
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | client_vpn_endpoint_id | The ID of the Client VPN endpoint with which the authorization rule is associated. |
 | description | A brief description of the authorization rule. |
 | group_id | The ID of the Active Directory group to which the authorization rule grants access. |

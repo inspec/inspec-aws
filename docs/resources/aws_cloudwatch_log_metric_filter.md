@@ -17,25 +17,25 @@ Use the `aws_cloudwatch_log_metric_filter` InSpec audit resource to search for a
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
 **Note**: _While all parameters are optional, at least one must be provided. In practice, the more parameters you provide the narrower a result you will return._
 
-filter_name _(optional)_
+`filter_name` _(optional)_
 The name of the Log Metric Filter. Expected in a hash as `filter_name: 'value'`.
 
-log_group_name _(optional)_
+`log_group_name` _(optional)_
 The log group of the filter. Expected in a hash as `log_group_name: 'value'`.
 
-pattern _(optional)_
+`pattern` _(optional)_
 A pattern by which to narrow down the result-set, if you expect multiple results. Expected in a hash as `pattern: 'value'`.
 
 See also the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html).
 
 ## Properties
 
-| Property         | Description |
-| ---             | --- |
+| Property | Description |
+| :---: | :--- |
 | filter_name      | The name of the metric filter. |
 | log_group_name   | The name of the log group. |
 | metric_name      | The name of the metric. |
@@ -45,6 +45,7 @@ See also the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/l
 ## Examples
 
 ##### Ensure a Filter exists
+
     describe aws_cloudwatch_log_metric_filter(filter_name: 'FILTER_NAME', log_group_name: 'LOG_GROUP_NAME') do
       it { should exist }
     end

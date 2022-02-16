@@ -24,7 +24,7 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | name          | The workgroup name. |
 | state         | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. |
 | description   | The workgroup description. |

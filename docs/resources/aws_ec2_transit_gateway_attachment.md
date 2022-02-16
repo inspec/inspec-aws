@@ -27,12 +27,12 @@ A Transit Gateway attachment attaches a VPC to a Transit Gateway.
 
 `transit_gateway_attachment_id` _(required)_
 
-For additional information, see the [AWS documentation on Transit Gateway attachments](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html).
+For additional information, see the [AWS documentation on Transit Gateway Attachments](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_attachment_id | The IDs of the attachments. |
 | transit_gateway_id | The ID of the Transit Gateway. |
 | transit_gateway_owner_id | The ID of the AWS account that owns the Transit Gateway. |
@@ -95,6 +95,6 @@ Use `should_not` to test an IP address that should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeAddresses` action with `Effect` set to `Allow`.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTransitGatewayAttachmentsResult` action with `Effect` set to `Allow`.
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.

@@ -3,7 +3,7 @@ title: About the aws_dynamodb_tables Resource
 platform: aws
 ---
 
-# aws\_dynamodb\_tables
+# aws_dynamodb_tables
 
 Use the `aws_dynamodb_table` InSpec audit resource to test properties of a collection of AWS DynamoDB Table.
 
@@ -19,13 +19,13 @@ Use the `aws_dynamodb_table` InSpec audit resource to test properties of a colle
 
 This resource does not require any required parameters.
 
-See also the [AWS documentation on DynamoDB](https://docs.aws.amazon.com/dynamodb/?id=docs_gateway).
+See also the [AWS documentation on AWS DynamoDB Table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|table\_names                 | The names of the tables associated with the current account at the current endpoint. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| table_names | The names of the tables associated with the current account at the current endpoint. | table_name |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ListTables.html)
 

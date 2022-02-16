@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on Transit Gateway route 
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_route_table_id | The ID of the Transit Gateway route table. |
 | transit_gateway_id | The ID of the Transit Gateway. |
 | state | The state of the route table. Relevant values are: `available`, `deleting`, `deleted`, and `pending`. |

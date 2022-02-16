@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on AWS CloudWatch Insight
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | names | The name of the rule. | name |
 | states | Indicates whether the rule is enabled or disabled.| schema |
 | schemas | For rules that you create, this is always {"Name": "CloudWatchLogRule", "Version": 1} . For built-in rules, this is {"Name": "ServiceLogRule", "Version": 1}. | dashboard_name |

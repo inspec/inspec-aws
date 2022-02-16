@@ -13,7 +13,7 @@ The AWS::EC2::CarrierGateway resource creates a carrier gateway.
 
 Ensure that the carrier gateway exists.
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
       it { should exist }
     end
 
@@ -27,8 +27,8 @@ See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.c
 
 ## Properties
 
-| Property            | Description                                                                    |
-| :-----------------: | :----------------------------------------------------------------------------: |
+| Property | Description |
+| :---: | :--- |
 | carrier_gateway_id  | The ID of the carrier gateway.                                                 |
 | vpc_id              | The ID of the VPC (Virtual Private Cloud) associated with the carrier gateway. |
 | state               | The state of the carrier gateway.                                              |
@@ -39,13 +39,13 @@ See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.c
 
 ### Ensure a carrier gateway ID is available
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
       its('carrier_gateway_id') { should eq 'GATEWAY_ID' }
     end
 
 ### Ensure that the state is `available`
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
         its('state') { should eq 'available' }
     end
 
@@ -59,13 +59,13 @@ The controls will pass if the `describe` method returns at least one result.
 
 Use `should` to test that the entity exists.
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
       it { should exist }
     end
 
 Use `should_not` to test the entity does not exist.
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
       it { should_not exist }
     end
 
@@ -73,7 +73,7 @@ Use `should_not` to test the entity does not exist.
 
 Use `should` to check if the entity is available.
 
-    describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
+    describe aws_ec2_carrier_gateway(carrier_gateway_id: "CARRIER_GATEWAY_ID") do
       it { should be_available }
     end
 

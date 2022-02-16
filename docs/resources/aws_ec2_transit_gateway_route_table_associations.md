@@ -3,7 +3,7 @@ title: About the aws_ec2_transit_gateway_route_table_associations Resource
 platform: aws
 ---
 
-# aws\_ec2\_transit\_gateway\_route_table\_associations
+# aws_ec2_transit_gateway_route_table_associations
 
 Use the `aws_ec2_transit_gateway_route_table_associations` InSpec audit resource to test properties of some or all AWS transit gateway route table associations.
 
@@ -27,12 +27,12 @@ For addition information, check out the [AWS documentation on transit gateway ro
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| transit_gateway_route_table_ids | The ID of the transit gateway route table. |
-| resource_types | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. |
-| resource_ids | The ID of the resource. |
-| states | The possible states of the route table are: `available`, `deleting`, `deleted`, and `pending`. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| transit_gateway_route_table_ids | The ID of the transit gateway route table. | transit_gateway_route_table_id |
+| resource_types | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. | resource_type |
+| resource_ids | The ID of the resource. | resource_id |
+| states | The possible states of the route table are: `available`, `deleting`, `deleted`, and `pending`. | state |
 
 ## Examples
 

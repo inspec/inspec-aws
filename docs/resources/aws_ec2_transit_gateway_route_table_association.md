@@ -25,8 +25,8 @@ For additional information, check out the [AWS documentation on transit gateway 
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_route_table_id | The ID of the transit gateway route table. |
 | resource_type | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. |
 | resource_id | The ID of the resource. |

@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 host.](https:/
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | auto_placement | Whether auto-placement is on or off. |
 | availability_zone | The Availability Zone of the Dedicated host. |
 | available_capacity.available_instance_capacity | The number of instances that can be launched onto the Dedicated host based on the host's available capacity. |

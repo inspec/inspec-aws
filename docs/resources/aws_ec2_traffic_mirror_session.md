@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_session Resource
 platform: aws
 ---
 
-# aws\_ec2\_traffic\_mirror\_session
+# aws_ec2_traffic_mirror_session
 
 Use the `aws_ec2_traffic_mirror_session` InSpec audit resource to test properties an AWS Traffic Mirror session.
 
@@ -21,10 +21,12 @@ An `aws_ec2_traffic_mirror_session` resource block declares the tests for a sing
 
 The ID of the Traffic Mirror session.
 
+For additional information, see [the API reference documentation for AWS Traffic Mirror Session](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
+
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description |
+| :---: | :--- |
 |traffic_mirror_session_id    | The ID for the Traffic Mirror session.|
 |traffic_mirror_target_id     | The ID of the Traffic Mirror target. |
 |traffic_mirror_filter_id     | The ID of the Traffic Mirror filter. |
@@ -35,8 +37,6 @@ The ID of the Traffic Mirror session.
 |description                  | The description of the Traffic Mirror session. |
 |tags                         | The tags assigned to the Traffic Mirror session. |
 |session_number               | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. |
-
-For additional information, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
 
 ## Examples
 
@@ -60,22 +60,31 @@ For additional information, see [the API reference documentation](https://docs.a
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+
+The controls will pass if the `describe` method returns at least one result.
+
+### exist
+
+Use `should` to test that the entity exists.
+
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
+      it { should_not exist }
+    end
 
 ### be_available
 
-Check if the Traffic Mirror session is available.
+Use `should` to check if the entity is available.
 
     describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
       it { should be_available }
     end
-
-Use `should_not` to test a Traffic Mirror session that should not exist.
-
-    describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
-      it { should_not be_available }
-    end
-
 
 ## AWS Permissions
 

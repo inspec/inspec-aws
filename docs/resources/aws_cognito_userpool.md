@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on Cognito user pool](htt
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | user_pool_id | The user pool ID. |
 | client_name | The client name of the user pool. |
 | client_id | The client ID of the user pool. |

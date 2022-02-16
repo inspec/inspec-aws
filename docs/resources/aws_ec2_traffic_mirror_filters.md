@@ -21,8 +21,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | traffic_mirror_filter_ids | The ID of a traffic mirror filter. |
 | descriptions | The description of a traffic mirror filter. |
 | tags | A list of hashes with each key-value pair corresponding to an traffic mirror filter. |

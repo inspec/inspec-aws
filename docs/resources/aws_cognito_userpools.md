@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on Cognito user pool](htt
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | ids | The IDs of the user pools. | id |
 | names | The names of the user pools. | name |
 | lambda_configs | The lambda trigger configuration of the user pools. | lambda_config |

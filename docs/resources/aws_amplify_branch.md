@@ -30,7 +30,7 @@ For additional information, see the [AWS documentation on AWS Amplify Branch](ht
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | branch_arn | The Amazon Resource Name (ARN) for a branch that is part of an Amplify app. |
 | branch_name | The name for the branch that is part of an Amplify app. |
 | description | The description for the branch that is part of an Amplify app. |

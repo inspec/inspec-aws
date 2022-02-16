@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS CloudFront origin 
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The unique identifier for the origin request policy. |
 | last_modified_time | The date and time when the origin request policy was last modified. |
 | origin_request_policy_config.comment |  A comment to describe the origin request policy. |

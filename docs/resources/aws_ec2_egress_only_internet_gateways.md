@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 egress-only in
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | attachments | Information about the attachment of the egress-only internet gateway. | attachments |
 | attachments_states | The current state of the attachment. | state |
 | attachments_vpc_ids | The ID of the VPC. | vpc_id |

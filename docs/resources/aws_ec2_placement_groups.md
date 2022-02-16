@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 placement grou
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | group_names | The name of the placement group. | group_name |
 | states | The state of the placement group. | state |
 | strategies | The placement strategy. | strategy |

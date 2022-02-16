@@ -23,8 +23,8 @@ For additional information, see the [AWS Batch job queues documentation](https:/
 
 ## Properties
 
-| Property | Description | Fields |
-| ---  | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | job_queue_names | The name of the job queue. | job_queue_name |
 | job_queue_arns | The ARN of the job queue. | job_queue_arn |
 | states | The state of the job queue. | state |

@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ## Properties
 
-| Property | Description | 
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | network_interface_permission_id | The ID of the network interface. |
 | network_interface_id |  The Amazon Web Services account ID. |
 | aws_account_id |The Amazon Web Service. Currently not supported. |

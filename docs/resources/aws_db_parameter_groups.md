@@ -23,8 +23,8 @@ See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/A
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | db_parameter_group_names | The name of the DB parameter group. | db_parameter_group_name |
 | db_parameter_group_families | The name of the DB parameter group family that this DB parameter group is compatible with. | db_parameter_group_family |
 | descriptions | Provides the customer-specified description for this DB parameter group. | description |

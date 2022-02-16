@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 network interf
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | association (allocation_id) | The allocation ID. |
 | association (association_id) | The association ID. |
 | association (ip_owner_id) | The ID of the Elastic IP address owner. |

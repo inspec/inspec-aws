@@ -5,7 +5,7 @@ platform: aws
 
 # aws_ec2_transit_gateway_attachments
 
-Use the `aws_ec2_transit_gateway_attachments` InSpec audit resource to test properties of some or all AWS Transit Gateway attachments.
+Use the `aws_ec2_transit_gateway_attachments` InSpec audit resource to test properties of some or all AWS Transit Gateway Attachments.
 
 ## Syntax
 
@@ -21,39 +21,38 @@ An `aws_ec2_transit_gateway_attachments` resource block uses an optional filter 
 
 This resource does not require any required parameters.
 
-See the [AWS documentation on Transit Gateway attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html) for additional information.
+See the [AWS documentation on Transit Gateway Attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html) for additional information.
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| transit_gateway_attachment_ids | The IDs of the attachments. |
-| transit_gateway_ids | The ID of the Transit Gateway. |
-| transit_gateway_owner_ids | The ID of the AWS account that owns the Transit Gateway. |
-| resource_owner_ids | The ID of the AWS account that owns the resource. |
-| resource_types | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. |
-| resource_ids | The ID of the resource. |
-| states | The state of the attachment. Valid values are: `available`, `deleted`, `deleting`, `failed`, `failing`, `initiatingRequest`, `modifying`, `pendingAcceptance`, `pending`, `rollingBack`, `rejected`, and `rejecting`. |
-| associations (transit_gateway_route_table_id) | The ID of the route table for the Transit Gateway. |
-| associations (state) | The state of the attachment. Valid values are `associating`, `associated`, `disassociating`, and `disassociated`. |
-| creation_times | The creation time of the Transit Gateway. |
-| tags | The tags of the attachments. |
+| Property  | Description | Field |
+| --- | --- | --- |
+| transit_gateway_attachment_ids | The IDs of the attachments. | transit_gateway_attachment_id |
+| transit_gateway_ids | The ID of the Transit Gateway. | transit_gateway_id |
+| transit_gateway_owner_ids | The ID of the AWS account that owns the Transit Gateway. | transit_gateway_owner_id |
+| resource_owner_ids | The ID of the AWS account that owns the resource. | resource_owner_id |
+| resource_types | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. | resource_type |
+| resource_ids | The ID of the resource. | resource_id |
+| states | The state of the attachment. Valid values are: `available`, `deleted`, `deleting`, `failed`, `failing`, `initiatingRequest`, `modifying`, `pendingAcceptance`, `pending`, `rollingBack`, `rejected`, and `rejecting`. | state |
+| associations | The association of the Transit Gateway. | association |
+| creation_times | The creation time of the Transit Gateway. | creation_time |
+| tags | The tags of the attachments. | tags |
 
 ## Examples
 
-##### Ensure a Transit Gateway attachment has transit_gateway_attachment_ids
+##### Ensure a Transit Gateway has an attachment.
 
     describe aws_ec2_transit_gateway_attachments do
       it { should exist }
     end
 
-##### Match count of Transit Gateway attachment
+##### Match count of Transit Gateway attachment.
 
     describe aws_ec2_transit_gateway_attachments do
         its('count') { should eq 5 }
     end
 
-##### Check State whether it is correct or not
+##### Check State whether it is correct or not.
 
     describe aws_ec2_transit_gateway_attachments do
        its('states') { should include "available" }
@@ -73,7 +72,6 @@ Use `should` to test the entity exist.
       it { should exist }
     end
 
-
 Use `should_not` to test the entity should not exist.
 
     describe aws_ec2_transit_gateway_attachments do
@@ -82,6 +80,6 @@ Use `should_not` to test the entity should not exist.
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `ec2:DescribeVpcEndpoints` action with Effect set to Allow.
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `EC2:Client:DescribeTransitGatewayAttachmentsResult` action with `Effect` set to `Allow`.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

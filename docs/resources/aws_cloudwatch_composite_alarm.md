@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS CloudWatch composi
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | actions_enabled | Indicates whether actions should be executed during any changes to the alarm state. |
 | alarm_actions | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN). |
 | alarm_arn | The Amazon Resource Name (ARN) of the alarm. |

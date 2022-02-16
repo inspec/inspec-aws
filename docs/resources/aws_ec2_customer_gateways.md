@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 customer gatew
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | bgp_asns | The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). | bgp_asn |
 | customer_gateway_ids | The ID of the customer gateway. | customer_gateway_id |
 | ip_addresses | The Internet-routable IP address of the customer gateway's outside interface. | ip_address |

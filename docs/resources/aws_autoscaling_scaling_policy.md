@@ -25,8 +25,8 @@ For additional information, see the [AWS AutoScaling Scaling Policy documentatio
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | auto_scaling_group_name |  The name of the Auto Scaling group. |
 | policy_name | The names of one or more policies. If you omit this parameter, all policies are described. |
 | policy_arn | The ARN of the Auto Scaling group. |

@@ -17,7 +17,7 @@ Ensure that an identity pool exists.
 
 ## Parameters
 
-identity_pool_id _(required)_
+`identity_pool_id` _(required)_
 
 An identity pool ID in the format REGION:GUID.
 
@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on Cognito identity pool]
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | identity_pool_id | An identity pool ID in the format REGION:GUID. |
 | identity_pool_name | The name of your Amazon Cognito identity pool. |
 | allow_unauthenticated_identities | Specifies whether the identity pool supports unauthenticated logins. |

@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS CloudFront key gro
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The identifier for the key group. |
 | last_modified_time | The date and time when the key group was last modified. |
 | key_group_config.name | A name to identify the key group. |

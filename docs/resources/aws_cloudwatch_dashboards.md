@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on AWS CloudWatch dashboa
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | dashboard_names | The name of the dashboard. | dashboard_name |
 | dashboard_arns | The Amazon Resource Name (ARN) of the dashboard. | dashboard_arn |
 | last_modified | The time stamp of when the dashboard was last modified, either by an API call or through the console. | last_modified |

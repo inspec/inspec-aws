@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS APIGateway BasePat
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | base_path | The base path name that callers of the API must provide as part of the URL after the domain name.  ddd|
 | rest_api_id | The string identifier of the associated RestApi.|
 | stage | The name of the associated stage. |

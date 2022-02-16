@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on Batch compute environm
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | compute_environment_name | The name of the compute environment. |
 | compute_environment_arn | The ARN of the compute environment. |
 | ecs_cluster_arn | The ECS cluster ARN of the compute environment. |

@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS CloudFront streami
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The streaming distribution's ID. |
 | arn | The ARN (Amazon Resource Name) for the distribution. |
 | status | The current status of the RTMP distribution. |

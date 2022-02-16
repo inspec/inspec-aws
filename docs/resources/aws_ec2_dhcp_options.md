@@ -25,14 +25,14 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| domain_names          | The list of DHCP configurations domain names. |
-| domain_name_servers   | The list of domain name servers in the DHCP configuration. |
-| ntp_servers           | The list of ntp servers in the DHCP configuration. |
-| netbios_name_servers  | The list of NetBIOS name servers in the DHCP configuration. |
-| netbios_node_types    | The list of NetBIOS node types in the DHCP configuration. |
-| tags                  | The tags of the DHCP options. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| domain_names | The list of DHCP configurations domain names. | domain_name |
+| domain_name_servers | The list of domain name servers in the DHCP configuration. | domain_name_servers |
+| ntp_servers | The list of ntp servers in the DHCP configuration. | ntp_servers |
+| netbios_name_servers | The list of NetBIOS name servers in the DHCP configuration. | netbios_name_servers |
+| netbios_node_types | The list of NetBIOS node types in the DHCP configuration. | netbios_node_type |
+| tags | The tags of the DHCP options. | Fields |
 
 ## Examples
 

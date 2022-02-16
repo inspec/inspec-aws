@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on DMS Replication Instan
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | engine_versions | The engine versions of the replication instance. |
 | replication_instance_classes | The compute and memory capacity of the replication instance as defined for the specified replication instance class. |
 | storage_types | The storage types of the replication instance. |

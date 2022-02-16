@@ -31,8 +31,8 @@ For additional information, see the [AWS documentation on AWS EC2 ClientVpnRoute
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
+| Property | Description | Fields |
+| :---: | :--- | :---: |
 | client_vpn_endpoint_id | The ID of the Client VPN endpoint with which the route is associated. | carrier_gateway_id |
 | destination_cidr | The IPv4 address range, in CIDR notation, of the route destination. | carrier_gateway_id |
 | target_subnet | The ID of the subnet through which traffic is routed. | carrier_gateway_id |

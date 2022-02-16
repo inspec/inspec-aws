@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS CloudFormation cac
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The unique identifier for the cache policy. |
 | last_modified_time | The date and time when the cache policy was last modified. |
 | cache_policy_config.comment | A comment to describe the cache policy. |

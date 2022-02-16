@@ -15,9 +15,9 @@ An `aws_db_parameter_group` resource block uses the parameter to select a parame
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-#### db_parameter_group_name _(required)_
+`db_parameter_group_name` _(required)_
 
 The name of the DB parameter group.
 
@@ -25,8 +25,8 @@ See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/A
 
 ## Properties
 
-| Property  | Description |
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | db_parameter_group_name | The name of the DB parameter group. |
 | db_parameter_group_family | The name of the DB parameter group family that this DB parameter group is compatible with. |
 | description | The customer-specified description for this DB parameter group. |

@@ -17,7 +17,7 @@ Ensure that the stack set exists.
 
 ## Parameters
 
-stack_set_name _(required)_
+`stack_set_name` _(required)_
 
 The name that's associated with the stack set.
 
@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS CloudFormation sta
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | stack_set_name | The name that's associated with the stack set. |
 | stack_set_id | The ID of the stack set. |
 | description | A description of the stack set that you specify when the stack set is created or updated. |

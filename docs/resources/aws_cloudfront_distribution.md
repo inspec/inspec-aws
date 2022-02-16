@@ -47,7 +47,7 @@ Provide the `origin_domain_name` if you want to validate the `s3_origin_path` pr
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | distribution_id | The identifier for the CloudFront distribution. |
 | viewer_protocol_policies | An array of viewer protocol policies for all caches in this distribution; valid policy names are `allow-all` (which allows HTTP and HTTPS), `https-only` or `redirect-to-https`. |
 | custom_origin_ssl_protocols | An array containing SSL/TLS protocols allowed by custom origins in this distribution. Empty if there are no custom origins (one or more standard S3 bucket origins). Current valid values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. |

@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Insigh
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | network_insights_analysis_id | The ID of the network insights analysis. |
 | network_insights_analysis_arn | The Amazon Resource Name (ARN) of the network insights analysis. |
 | network_insights_path_id | The ID of the path. |
@@ -42,6 +42,7 @@ For additional information, see the [AWS documentation on AWS EC2 Network Insigh
 | explanations | The explanations. |
 | alternate_path_hints | Potential intermediate components. |
 | tags | The tags of the insights analysis. |
+
 ## Examples
 
 ### Ensure a Network Insights Analysis Id is available.

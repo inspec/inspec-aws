@@ -23,8 +23,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | network_interface_permission_ids | The ID of the network interface. | network_interface_permission_id |
 | network_interface_ids |  The Amazon Web Services account ID. | network_interface_id |
 | aws_account_ids |The Amazon Web Service. Currently not supported. | aws_account_id|

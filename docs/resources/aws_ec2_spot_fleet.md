@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](h
 
 ## Properties
 
-| Property | Description | Field |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | activity_status | The progress of the Spot Fleet request. | activity_status |
 | create_time | The creation date and time of the request. | create_time |
 | spot_fleet_request_config.allocation_strategy | Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot Fleet request. | spot_fleet_request_config.allocation_strategy |

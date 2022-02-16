@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS Logs public key.](
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The identifier of the public key. |
 | created_time | The date and time when the public key was uploaded. |
 | public_key_config.caller_reference | A string included in the request to help make sure that the request can’t be replayed. |

@@ -23,8 +23,8 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-| Property | Description | Fields |
-| ---  | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | names  | The names of the Auto Scaling groups. | auto_scaling_group_name |
 | min_sizes | An integer indicating the minimum number of instances in the auto scaling group. | min_size |
 | max_sizes | An integer indicating the maximum number of instances in the auto scaling group. | max_size |

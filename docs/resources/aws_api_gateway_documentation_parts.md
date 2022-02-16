@@ -27,15 +27,15 @@ For additional information, see the [AWS ApiGateway Documentation Part documenta
 
 ## Properties
 
-| Property     | Description                                                                       |
-|--------------|-----------------------------------------------------------------------------------|
-| ids          | The identifier for the documentation part resource.                               |
-| types        | The type of API entity to which the documentation content applies.                |
-| paths        | The URL path of the target.                                                       |
-| methods      | The HTTP verb of a method.                                                        |
-| status_codes | The HTTP status code of a response.                                               |
-| names        | The name of the targeted API entity.                                              |
-| properties   | A content map of API-specific key-value pairs describing the targeted API entity. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| ids          | The identifier for the documentation part resource.                               | id |
+| types        | The type of API entity to which the documentation content applies.                | type |
+| paths        | The URL path of the target.                                                       | path |
+| methods      | The HTTP verb of a method.                                                        | method |
+| status_codes | The HTTP status code of a response.                                               | status_code |
+| names        | The name of the targeted API entity.                                              | name |
+| properties   | A content map of API-specific key-value pairs describing the targeted API entity. | properties |
 
 ## Examples
 

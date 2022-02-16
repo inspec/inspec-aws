@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS CloudWatch Anomaly
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | namespaces | The namespace of the metric associated with the anomaly detection model. | namespace |
 | metric_names | The name of the metric associated with the anomaly detection model. | metric_name |
 | dimensions | The metric dimensions associated with the anomaly detection model. | dimensions |

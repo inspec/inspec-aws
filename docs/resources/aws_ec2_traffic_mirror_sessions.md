@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_sessions Resource
 platform: aws
 ---
 
-# aws_ec2_traffic\_mirror\_sessions
+# aws_ec2_traffic_mirror_sessions
 
 Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of all AWS Traffic Mirror sessions.
 
@@ -21,10 +21,12 @@ end
 
 This resource does not require any required parameters.
 
+For additional information, see [the API reference documentation for AWS Traffic Mirror Session](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
+
 ## Properties
 
-| Property  | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | traffic_mirror_session_ids | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
 | traffic_mirror_target_ids | The ID of the Traffic Mirror target. | traffic_mirror_target_id |
 | traffic_mirror_filter_ids | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
@@ -36,7 +38,6 @@ This resource does not require any required parameters.
 | descriptions | The description of the Traffic Mirror session. | description |
 | tags  | The tags assigned to the Traffic Mirror session.| tags |
 
-For additional information, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
 
 ## Examples
 
@@ -62,6 +63,21 @@ For additional information, see [the API reference documentation](https://docs.a
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
+The controls will pass if the `describe` method returns at least one result.
+
+### exist
+
+Use `should` to test that the entity exists.
+
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should exist }
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_ec2_traffic_mirror_sessions do
+      it { should_not exist }
+    end
 ### be_available
 
 Check if the Traffic mirror session is available.

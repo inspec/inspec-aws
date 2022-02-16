@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on AWS CloudFormation Sta
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | stack_set_names | The name of the stack set. | stack_set_name |
 | stack_set_ids | The ID of the stack set. | stack_set_ids |
 | descriptions | A description of the stack set that you specify when the stack set is created or updated. | description |

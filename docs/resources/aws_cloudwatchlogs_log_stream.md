@@ -19,11 +19,11 @@ Ensure that the log stream exists.
 
 ## Parameters
 
-log_group_name _(required)_
+`log_group_name` _(required)_
 
 The name of the log group where the log stream is created.
 
-log_stream_name_prefix _(required)_
+`log_stream_name_prefix` _(required)_
 
 The name of the log stream.
 
@@ -31,8 +31,8 @@ For additional information, see the [AWS documentation on AWS Logs LogStream.](h
 
 ## Properties
 
-| Property              | Description                                                                                               |
-| :-------------------: | :-------------------------------------------------------------------------------------------------------: |
+| Property | Description |
+| :---: | :--- |
 | log_stream_name       | The name of the log stream. The name must be unique within the log group.                                 |
 | creation_time         | The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.  |
 | first_event_timestamp | The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.      |

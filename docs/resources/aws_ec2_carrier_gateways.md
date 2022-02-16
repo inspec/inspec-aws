@@ -25,8 +25,8 @@ See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.c
 
 ## Properties
 
-| Property | Description | Fields |
-| :------------------: | :----------------------------------------------------------------------------: | :----------------- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | carrier_gateway_ids  | The ID of the carrier gateway.                                                 | carrier_gateway_id |
 | vpc_ids              | The ID of the VPC (Virtual Private Cloud) associated with the carrier gateway. | vpc_id             |
 | states               | The state of the carrier gateway.                                              | state              |
@@ -38,7 +38,7 @@ See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.c
 ### Ensure a carrier gateway ID is available
 
     describe aws_ec2_carrier_gateways do
-      its('carrier_gateway_ids') { should include 'GATEWAY_ID' }
+      its('carrier_gateway_ids') { should include 'CARRIER_GATEWAY_ID' }
     end
 
 ### Ensure that the state is `available`

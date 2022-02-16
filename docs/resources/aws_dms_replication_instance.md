@@ -19,12 +19,14 @@ Ensure that a replication instance exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on DMS replication instances](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationinstance.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | engine_version | The engine version of the replication instance. |
 | replication_instance_class | The compute and memory capacity of the replication instance as defined for the specified replication instance class. |
 | storage_type | The storage type of the replication instance. |

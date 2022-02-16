@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on Cognito identity pool]
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | identity_pool_ids | The ID of the identity pool. |identity_pool_id |
 | identity_pool_names | The name of the identity pool. |identity_pool_name |
 

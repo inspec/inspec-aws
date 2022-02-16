@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS CloudFront CloudFr
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The ID for the origin access identity. |
 | s3_canonical_user_id | The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. |
 | cloud_front_origin_access_identity_config.caller_reference | A unique value (for example, a date-time stamp) that ensures that the request can't be replayed. |

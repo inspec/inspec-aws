@@ -23,8 +23,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| ---| --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | names | The name associated with the stack. | stack_name |
 | stack_ids | Unique identifier of the stack. | stack_id |
 | creation_times | The time at which the stack was created. | creation_time |

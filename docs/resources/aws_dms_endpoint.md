@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on DMS endpoints](https:/
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | endpoint_identifier | The database endpoint identifier. |
 | endpoint_type | The endpoint type. |
 | engine_name | The type of engine for the endpoint. Valid values: `mysql`, `oracle`, `postgres`, `mariadb`, `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`, `sybase`, `dynamodb`, `mongodb`, `kinesis`, `kafka`, `elasticsearch`, `docdb`, `sqlserver`, and `neptune`. |

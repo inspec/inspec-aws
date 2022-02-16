@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 network interf
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | attach_time | The timestamp indicating when the attachment initiated. |
 | attachment_id | The ID of the network interface attachment. |
 | delete_on_termination | Indicates whether the network interface is deleted when the instance is terminated. |

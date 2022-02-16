@@ -19,12 +19,14 @@ Ensure that the account exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS API Gateway accounts.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html).
 
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | cloudwatch_role_arn | The ARN of an Amazon CloudWatch role for the current account. |
 | throttle_settings.burst_limit | The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity. |
 | throttle_settings.rate_limit | The API request steady-state rate limit. |

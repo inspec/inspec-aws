@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS CloudFront Realtim
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | arns | The Amazon Resource Name (ARN) of this real-time log configuration. | arn |
 | names | The unique name of this real-time log configuration. | name |
 | sampling_rates | The sampling rate for this real-time log configuration. | sampling_rate |

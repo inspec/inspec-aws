@@ -23,13 +23,13 @@ For additional information, see the [AWS documentation on DMS Replication Subnet
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| replication_subnet_group_identifiers | The identifiers of the replication subnet groups. |
-| replication_subnet_group_descriptions | The descriptions of the replication subnet groups. |
-| vpc_ids | The IDs of the virtual private clouds. |
-| subnet_group_statuses | The statuses of the replication subnet groups. |
-| subnets | The subnets that are in the replication subnet groups. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| replication_subnet_group_identifiers | The identifiers of the replication subnet groups. | replication_subnet_group_identifier |
+| replication_subnet_group_descriptions | The descriptions of the replication subnet groups. | replication_subnet_group_description |
+| vpc_ids | The IDs of the virtual private clouds. | vpc_id |
+| subnet_group_statuses | The statuses of the replication subnet groups. | subnet_group_status |
+| subnets | The subnets that are in the replication subnet groups. | subnets |
 
 ## Examples
 
@@ -67,7 +67,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Use `should` to check if the work_group name is available.
+Use `should` to check if the entity is available.
 
     describe aws_dms_replication_subnet_groups do
       it { should be_available }

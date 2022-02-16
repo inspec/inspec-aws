@@ -17,7 +17,7 @@ An `aws_ami` resource block declares the tests for a single AWS AMI by image id.
 
 ## Parameters
 
-### image_id _(required)_
+`image_id` _(required)_
 
 This resource accepts a single parameter, the AMI Image ID.
 This can be passed either as a string or as a `image_id: 'value'` key-value entry in a hash.
@@ -26,34 +26,34 @@ See also the [AWS documentation on EC2 Amazon Machine Images](https://docs.aws.a
 
 ## Properties
 
-|Property                 | Description|
-| ---                     | --- |
-|architecture             | The architecture of the image. |
-|creation_date           | The date and time the image was created. |
-|image_id                | The ID of the AMI. |
-|image_location          | The location of the AMI. |
-|image_type              | The type of image. |
-|public                   | Indicates whether the image has public launch permissions. |
-|kernel_id               | The kernel associated with the image, if any. Only applicable for machine images. |
-|owner_id                | The AWS account ID of the image owner. |
-|platform                 | This value is set to windows for Windows AMIs; otherwise, it is blank. |
-|platform_details        | The platform details associated with the billing code of the AMI. |
-|usage_operation         | The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. |
-|product_codes           | Any product codes associated with the AMI. |
-|ramdisk_id              | The RAM disk associated with the image, if any. Only applicable for machine images. |
-|state                    | The state of the AMI. |
-|block_device_mappings  | Any block device mapping entries. |
-|description              | The description of the AMI that was provided during image creation. |
-|ena_support             | Specifies whether enhanced networking with ENA is enabled. |
-|hypervisor               | The hypervisor type of the image. |
-|image_owner_alias      | The AWS account alias or the AWS account ID of the AMI owner. |
-|name                     | The name of the AMI that was provided during image creation. |
-|root_device_name       | The device name of the root device volume. |
-|root_device_type       | The type of root device used by the AMI. |
-|sriov_net_support      | Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled. |
-|state_reason            | Provides the reason for the state change. |
-|tags                     | Provides any tags assigned to the image. |
-|virtualization_type     | The type of virtualization of the AMI. |
+| Property | Description |
+| :---: | :--- |
+| architecture | The architecture of the image. |
+| creation_date | The date and time the image was created. |
+| image_id | The ID of the AMI. |
+| image_location | The location of the AMI. |
+| image_type | The type of image. |
+| public | Indicates whether the image has public launch permissions. |
+| kernel_id | The kernel associated with the image, if any. Only applicable for machine images. |
+| owner_id | The AWS account ID of the image owner. |
+| platform | This value is set to windows for Windows AMIs; otherwise, it is blank. |
+| platform_details | The platform details associated with the billing code of the AMI. |
+| usage_operation | The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. |
+| product_codes | Any product codes associated with the AMI. |
+| ramdisk_id | The RAM disk associated with the image, if any. Only applicable for machine images. |
+| state | The state of the AMI. |
+| block_device_mappings | Any block device mapping entries. |
+| description | The description of the AMI that was provided during image creation. |
+| ena_support | Specifies whether enhanced networking with ENA is enabled. |
+| hypervisor | The hypervisor type of the image. |
+| image_owner_alias | The AWS account alias or the AWS account ID of the AMI owner. |
+| name | The name of the AMI that was provided during image creation. |
+| root_device_name | The device name of the root device volume. |
+| root_device_type | The type of root device used by the AMI. |
+| sriov_net_support | Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled. |
+| state_reason | Provides the reason for the state change. |
+| tags | Provides any tags assigned to the image. |
+| virtualization_type | The type of virtualization of the AMI. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Image.html)
 

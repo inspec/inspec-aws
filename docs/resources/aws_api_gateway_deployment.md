@@ -31,8 +31,8 @@ For additional information, see the [AWS ApiGateway Deployment documentation](ht
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | id | The identifier for the deployment resource. |
 | description | The description for the deployment resource. |
 | created_date | The date and time that the deployment resource was created. |

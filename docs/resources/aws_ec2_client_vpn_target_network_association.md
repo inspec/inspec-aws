@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS EC2 Client VPN tar
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | association_id | The ID of the association. |
 | vpc_id | The ID of the VPC in which the target network (subnet) is located. |
 | target_network_id | The ID of the subnet specified as the target network. |

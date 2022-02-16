@@ -25,14 +25,14 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|db_subnet_group_names | The name of the DB subnet group. |
-|db_subnet_group_descriptions | Provides the description of the DB subnet group. | 
-|vpc_ids | Provides the VPC ID of the DB subnet group. |
-|subnet_group_status | Provides the status of the DB subnet group. | 
-|subnets | Contains a list of Subnet elements. |
-|db_subnet_group_arns | The Amazon Resource Name for the DB subnet group. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| db_subnet_group_names | The name of the DB subnet group. | db_subnet_group_name |
+| db_subnet_group_descriptions | Provides the description of the DB subnet group. | db_subnet_group_description |
+| vpc_ids | Provides the VPC ID of the DB subnet group. | subnets |
+| subnet_group_status | Provides the status of the DB subnet group. | subnet_group_status |
+| subnets | Contains a list of Subnet elements. | subnets |
+| db_subnet_group_arns | The Amazon Resource Name for the DB subnet group. | db_subnet_group_arn |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBSubnetGroup.html)
 

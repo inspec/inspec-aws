@@ -3,7 +3,7 @@ title: About the aws_ec2_traffic_mirror_filter Resource
 platform: aws
 ---
 
-# aws\_ec2\_traffic\_mirror\_filter
+# aws_ec2_traffic_mirror_filter
 
 Use the `aws_ec2_traffic_mirror_filter` InSpec audit resource to test properties of a single AWS traffic mirror filter.
 
@@ -28,11 +28,11 @@ This can be passed either as a string or as an `aws_ec2_traffic_mirror_filter_id
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|traffic_mirror_filter_id     | The ID of a traffic mirror filter.|
-|description                  | The description of a traffic mirror filter.|
-|tags                         | A list of hashes with each key-value pair corresponding to a traffic mirror tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`|
+| Property | Description |
+| :---: | :--- |
+| traffic_mirror_filter_id | The ID of a traffic mirror filter. |
+| description | The description of a traffic mirror filter. |
+| tags | A list of hashes with each key-value pair corresponding to a traffic mirror tag, e.g, `[{:key=>"Name", :value=>"Testing Box"}, {:key=>"Environment", :value=>"Dev"}]`. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilter.html)
 
@@ -72,7 +72,7 @@ Use `should_not` to test the entity does not exist.
 
 ### be_available
 
-Check if the test the entity is available.
+Use `should` to check if the entity is available.
 
     describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
       it { should be_available }

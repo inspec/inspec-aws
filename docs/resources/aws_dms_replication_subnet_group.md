@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on DMS Replication Subnet
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | replication_subnet_group_identifier | The identifier of the replication subnet group. |
 | replication_subnet_group_description | The description of the replication subnet group. |
 | vpc_id | The ID of the virtual private cloud. |

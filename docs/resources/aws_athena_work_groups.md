@@ -21,12 +21,12 @@ For additional information, see the [AWS Athena workgroup documentation](https:/
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-| names           | The workgroup name. | name |
-| states          | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. | state |
-| descriptions    | The workgroup description. | description |
-| creation_times  | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ | creation_time |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| names | The workgroup name. | name |
+| states | The state of the workgroup. Valid values are: `ENABLED` or `DISABLED`. | state |
+| descriptions | The workgroup description. | description |
+| creation_times | The workgroup creation time. Format: YYYY-MM-DD HH:MM:SS ZZZZ | creation_time |
 
 ## Examples
 

@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS APIGateway Authori
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | id | The identifier for the authorizer resource. |
 | name | The name of the authorizer. |
 | type | The authorizer type. |

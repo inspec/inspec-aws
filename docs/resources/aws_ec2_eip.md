@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Elastic IP (EIP)](http
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | public_ip | The Elastic IP address, or the carrier IP address. |
 | instance_id | The ID of the instance the address is associated with, if any. |
 | allocation_id | The allocation ID for the address. |

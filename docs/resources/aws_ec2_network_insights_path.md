@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS EC2 network insigh
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | network_insights_path_id | The ID of the path. |
 | network_insights_path_arn | The Amazon Resource Name (ARN) of the path. |
 | created_date | The timestamp when the path was created. |

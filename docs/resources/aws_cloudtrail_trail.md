@@ -21,9 +21,10 @@ An `aws_cloudtrail_trail` resource block identifies a trail by `trail_name`.
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### trail_name _(required)_
+`trail_name` _(required)_
+
 This resource expects a single parameter, the CloudTrail Name which uniquely identifies it. 
 This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
@@ -31,15 +32,15 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 
 ## Properties
 
-| Property                            | Description |
-| ---                                | --- |
-| trail_arn                          | Specifies the ARN of the trail. |
-| trail_name                         | Name of the trail. |
-| home_region                        | The region in which the trail was created.  |
-| s3_bucket_name                    | Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. |
-| cloud_watch_logs_role_arn       | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. |
+| Property | Description |
+| :---: | :--- |
+| trail_arn | Specifies the ARN of the trail. |
+| trail_name | Name of the trail. |
+| home_region | The region in which the trail was created.  |
+| s3_bucket_name | Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. |
+| cloud_watch_logs_role_arn | Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. |
 | cloud_watch_logs_log_group_arn | Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. |
-| kms_key_id                        | Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. |
+| kms_key_id | Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. |
 
 ## Examples
 

@@ -23,9 +23,9 @@ You may also use hash syntax to pass the auto scaling group name
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### name _(required)_
+`name` _(required)_
 
 This resource accepts a single parameter, the Auto Scaling Group Name which uniquely identifies the auto scaling group. 
 This can be passed either as a string or as a `name: 'value'` key-value entry in a hash.
@@ -34,14 +34,14 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
-|min_size                  | An integer indicating the minimum number of instances in the auto scaling group |
-|maximum_size              | An integer indicating the maximum number of instances in the auto scaling group |
-|desired_capacity          | An integer indicating the desired  number of instances in the auto scaling group |
-|launch_configuration_name | The name of the auto scaling launch configuration associated with the auto scaling group |
-|vpc_zone_identifier       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
-|tags                      | An hash with each key-value pair corresponding to a tag associated with the entity |
+| Property | Description |
+| :---: | :--- |
+| min_size                  | An integer indicating the minimum number of instances in the auto scaling group |
+| maximum_size              | An integer indicating the maximum number of instances in the auto scaling group |
+| desired_capacity          | An integer indicating the desired  number of instances in the auto scaling group |
+| launch_configuration_name | The name of the auto scaling launch configuration associated with the auto scaling group |
+| vpc_zone_identifier       | An array of strings corresponding to the subnet IDs associated with the auto scaling group |
+| tags                      | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
 

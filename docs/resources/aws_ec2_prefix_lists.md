@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 prefix lists](
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | prefix_list_ids | The ID of the prefix list. | prefix_list_id |
 | address_families | The IP address version. | address_family |
 | states | The state of the prefix list. | state |

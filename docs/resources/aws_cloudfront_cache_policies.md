@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS CloudFront cache p
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
 | types | The type for the cache policy. | type |
 | ids | The unique identifier for the cache policy. | id |
 | last_modified_times | The date and time when the cache policy was last modified. | last_modified_time |

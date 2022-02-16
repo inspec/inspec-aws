@@ -3,7 +3,7 @@ title: About the aws_ec2_instances Resource
 platform: aws
 ---
 
-# aws\_ec2\_instances
+# aws_ec2_instances
 
 Use the `aws_ec2_instances` InSpec audit resource to test properties of some or all AWS EC2 instances. To audit a single EC2 instance, use `aws_ec2_instance` (singular).
 
@@ -21,16 +21,15 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|instance\_ids   | The ID of the EC2 instance. The field name is `instance_id`. |
-|names           | The value of the `Name` tag if applied to the instance. The filed name is `name`. |
-|vpc\_ids        | The VPC with which the EC2 instance is associated. The field name is `vpc_id`. |
-|subnet\_ids     | The subnet with which the EC2 instance is associated. The field name is `subnet_id`. |
-|instance\_types | The type of instance, for example m5.large. The field name is `instance_type`. |
-|entries         | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-|tags            | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards. The field name is `tags`. |
-|iam_profiles    | The IAM instance profile associated with the instance. The `role` property of the `aws_ec2_instance` singular resource can be used to check the attached IAM role on the profile. The field name is `iam_profile`. |
+| Property  | Description | Field |
+| :---: | :--- | :---: |
+| instance_ids | The ID of the EC2 instance. The field name is `instance_id`. | instance_id |
+| names           | The value of the `Name` tag if applied to the instance. The filed name is `name`. | name |
+| vpc_ids        | The VPC with which the EC2 instance is associated. The field name is `vpc_id`. | vpc_id |
+| subnet_ids     | The subnet with which the EC2 instance is associated. The field name is `subnet_id`. | subnet_id |
+| instance_types | The type of instance, for example m5.large. The field name is `instance_type`. | instance_type |
+| tags | A hash, with each key-value pair corresponding to an EC2 instance tag, e.g, `{"Name"=>"Testing Box", "Environment"=>"Dev"}`. This property is available in InSpec AWS resource pack version **[1.12.0](https://github.com/inspec/inspec-aws/releases/tag/v1.12.0)** onwards. The field name is `tags`. | tags |
+| iam_profiles | The IAM instance profile associated with the instance. The `role` property of the `aws_ec2_instance` singular resource can be used to check the attached IAM role on the profile. The field name is `iam_profile`. | iam_profile |
 
 ## Examples
 
@@ -54,6 +53,7 @@ This resource does not require any required parameters.
         it { should be_stopped }
       end
     end
+
 <superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/"Environment"=>"Dev"/`    
    
 ##### Filter EC2 instances with multiple tags like `Environment` equal to `Dev` and `Component` equal to `API` , then test in-depth using `aws_ec2_instance`.
@@ -86,12 +86,14 @@ For a full list of available matchers, please visit our [Universal Matchers page
 The control will pass if the describe returns at least one result.
 The field names described in the [properties table](##-properties) should be used for the `<property>` in the `where` clause.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test that the entity exists.
 
     describe aws_ec2_instances.where( <property>: <value>) do
       it { should exist }
     end
-      
+
+Use `should_not` to test the entity does not exist.
+
     describe aws_ec2_instances.where( <property>: <value>) do
       it { should_not exist }
     end

@@ -19,22 +19,22 @@ Use the `aws_cloudwatch_alarm` InSpec audit resource to test properties of a sin
       
 #### Parameters
 
-metric_name _(required)_
+`metric_name` _(required)_
 
 The metric name used by this alarm. This must be passed as a `metric_name: 'value'` key-value entry in a hash.
 
-metric_namespace _(required)_
+`metric_namespace` _(required)_
 
 The metric namespace used by this alarm. This must be passed as a `metric_namespace: 'value'` key-value entry in a hash.
 
-dimensions _(optional)_
+`dimensions` _(optional)_
 
 The dimensions associated with this alarm. This must be passed as an array of hashes `dimensions: [{key:'value'}]`.
 
 ## Properties
 
-|Property         | Description |
-| ---             | --- |
+| Property | Description |
+| :---: | :--- |
 |alarm_actions    | The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).  |
 |alarm_name       | The name of the alarm. |
 |metric_name      | The name of the metric. |
