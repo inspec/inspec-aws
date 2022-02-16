@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_application_autoscaling_scaling_policies` InSpec audit resource to test properties of multiple AWS Application Auto Scaling scaling policies.
 
+The `AWS::ApplicationAutoScaling::ScalingPolicy` resource defines a scaling policy that Application Auto Scaling uses to adjust the capacity of a scalable target.
+
 ## Syntax
 
 Ensure a scaling policy exists.
@@ -21,7 +23,7 @@ Ensure a scaling policy exists.
 
 The namespace of the AWS service that provides the resource, or a custom-resource.
 
-For additional information, see the [AWS ApplicationAutoScaling ScalingPolicy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).
+For additional information, see the [AWS documentation on the `AWS::ApplicationAutoScaling::ScalingPolicy` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html).
 
 ## Properties
 

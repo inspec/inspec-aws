@@ -16,6 +16,12 @@ An `aws_vpc_endpoint_services` resource block collects a group of VPC endpoint s
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any mandatory parameters.
+
+See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html).
+
 ## Properties
 
 | Property | Description | Field |

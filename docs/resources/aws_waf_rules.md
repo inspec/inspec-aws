@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_waf_rules` Chef InSpec audit resource to test the properties of multiple AWS WAF (web application firewall) rules.
 
+The `AWS::WAF::Rule` resource type creates a firewall rule that identifies the web requests that you want to allow, block, or count.
+
 ## Syntax
 
 Ensure that a WAF rule exists.
@@ -17,7 +19,7 @@ Ensure that a WAF rule exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::Rule` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
 

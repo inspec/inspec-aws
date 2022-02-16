@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_amplify_app` InSpec audit resource to test the properties of a single specific AWS Amplify app.
 
+The `AWS::Amplify::App` resource creates Apps in the Amplify Console. An App is a collection of branches.
+
 ## Syntax
 
 Ensure that AWS Amplify App exists.
@@ -21,7 +23,7 @@ Ensure that AWS Amplify App exists.
 
 The unique ID of the Amplify app.
 
-For additional information, see the [AWS documentation on AWS Amplify  App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
+For additional information, see the [AWS documentation on the `AWS::Amplify::App` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-app.html).
 
 ## Properties
 

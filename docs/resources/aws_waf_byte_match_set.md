@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_waf_byte_match_set` Chef InSpec audit resource to test the properties of a single AWS (Web Application Firewall) WAF byte match set.
 
+The `AWS::WAF::ByteMatchSet` resource creates an AWS WAF ByteMatchSet that identifies a part of a web request that you want to inspect.
+
 ## Syntax
 
 Ensure that a byte match set exists.

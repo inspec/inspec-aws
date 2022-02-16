@@ -27,7 +27,7 @@ The domain name of the base path mapping resource to be described.
 
 The base path name that callers of the API must provide as part of the URL after the domain name.
 
-For additional information, see the [AWS documentation on AWS APIGateway BasePathMapping.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::BasePathMapping` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
 
 ## Properties
 

@@ -3,7 +3,7 @@ title: About the aws_vpc_endpoints Resource
 platform: aws
 ---
 
-# aws\_vpc\_endpoints
+# aws_vpc_endpoints
 
 Use the `aws_vpc_endpoints` InSpec audit resource to test properties of some or all AWS VPC Endpoints.
 
@@ -23,17 +23,17 @@ An `aws_vpc_endpoints` resource block uses an optional filter to select a group 
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html).
+For additional information, see the [AWS documentation on the `AWS::EC2::VPCEndpoint` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html).
 
 ## Properties
 
 | Property | Description | Field |
 | :---: | :--- | :---: |
-|vpc\_endpoint\_ids       | This property provides a list of the VPC Endpoint IDs that the matched VPC Endpoints serve as strings. |
-|vpc\_endpoint\_types | The type of the VPC Endpoint for the match VPC Endpoints. |
-|vpc\_ids           | The IDs of the VPCs in which the endpoints reside. |
+|vpc_endpoint_ids       | This property provides a list of the VPC Endpoint IDs that the matched VPC Endpoints serve as strings. |
+|vpc_endpoint_types | The type of the VPC Endpoint for the match VPC Endpoints. |
+|vpc_ids           | The IDs of the VPCs in which the endpoints reside. |
 |service_names | The names of the services that the VPC endpoint is assigned with . |
 |states | The states of the VPC Endpoints. |
 |route_table_ids | The route table IDs for the Gateway type endpoints. |

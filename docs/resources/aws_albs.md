@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_albs` InSpec audit resource to test the configuration of a collection of Application Load Balancers.
 
+The `AWS::ElasticLoadBalancing::LoadBalancer` resource specifies a Classic Load Balancer.
+
 ## Syntax
 
 Ensure that an `aws_albs` exists
@@ -19,7 +21,7 @@ Ensure that an `aws_albs` exists
 
 This resource does not require any required parameters.
 
-See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
+For additional information, see the [AWS documentation on the `AWS::ElasticLoadBalancing::LoadBalancer` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html).
 
 ## Properties
 
@@ -55,11 +57,17 @@ This InSpec audit resource has no special matchers. For a full list of available
 
 The control will pass if the describe returns at least one result.
 
-Use `should` to test the entity should exist.
+Use `should` to test that the entity exists.
 
     describe aws_albs do
-      it                             { should exist }
+      it { should exist }
       its('availability_zones')      { should_not include 'us-east-1a'}
+    end
+
+Use `should_not` to test the entity does not exist.
+
+    describe aws_albs do
+      it { should_not exist }
     end
 
 ## AWS Permissions

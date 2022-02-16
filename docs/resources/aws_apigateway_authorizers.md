@@ -23,7 +23,7 @@ Ensure that the authorizer exists.
 
 The ID of the REST API.
 
-For additional information, see the [AWS documentation on AWS APIGateway Authorizer.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Authorizer` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
 
 ## Properties
 

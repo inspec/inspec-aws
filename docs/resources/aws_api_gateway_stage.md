@@ -27,7 +27,7 @@ The ID of the REST API resource that you're deploying with this stage.
 
 The API Gateway stage name.
 
-For additional information, see the [AWS API Gateway stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Stage` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
 
 ## Properties
 

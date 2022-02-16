@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_waf_ip_sets` Chef InSpec audit resource to test the properties of multiple AWS Web Application Firewall (WAF) IP sets.
 
+The `AWS::WAF::IPSet` contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56, /64, and /128.
+
 ## Syntax
 
 Ensure that IP set exists.
@@ -17,7 +19,7 @@ Ensure that IP set exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS documentation on `AWS::WAF::IPSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html).
 

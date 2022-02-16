@@ -23,7 +23,7 @@ Ensure that the documentation version exists.
 
 The id of the rest API.
 
-For additional information, see the [AWS ApiGateway Documentation Version documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::DocumentationVersion` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationversion.html).
 
 ## Properties
 

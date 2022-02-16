@@ -3,7 +3,7 @@ title: About the aws_vpcs Resource
 platform: aws
 ---
 
-# aws\_vpcs
+# aws_vpcs
 
 Use the `aws_vpcs` InSpec audit resource to test the properties of some or all AWS Virtual Private Clouds (VPCs) and the CIDR block that is used within the VPC.
 
@@ -22,20 +22,21 @@ An `aws_vpcs` resource block uses an optional filter to select a group of VPCs a
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any mandatory parameters.
 
 See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpccidrblock.html).
+There are also additional properties available. For a comprehensive list, see [AWS documentation on `AWS::EC2::VPC` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html).
 
 ## Properties
 
 | Property | Description | Field |
 | :---: | :--- | :---: |
-| cidr\_blocks | The cidr\_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. | cidr_block |
-| dhcp\_options\_ids | The dhcp\_option\_set\_ids property provides a de-duplicated list of the DHCP option set IDs that the matched VPCs use when assigning IPs to resources. | dhcp_options_id |
-| vpc\_ids | The vpc\_ids property provides a list of the IDs of the matched VPCs. | vpc_id |
+| cidr_blocks | The cidr_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. | cidr_block |
+| dhcp_options_ids | The dhcp_option_set_ids property provides a de-duplicated list of the DHCP option set IDs that the matched VPCs use when assigning IPs to resources. | dhcp_options_id |
+| vpc_ids | The vpc_ids property provides a list of the IDs of the matched VPCs. | vpc_id |
 | states   | The current state of the VPC. | state |
 | instance_tenancies | The allowed tenancy of instances launched into the VPC. | instance_tenancy |
 | is_default | Indicates whether the VPC is the default VPC. | is_default |
@@ -49,7 +50,6 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 | ipv6_cidr_block_states | List of all the states of the IPV6 CIDR blocks. | ipv6_cidr_block_states |
 | ipv6_network_border_groups | List of all the network border group options. | ipv6_network_border_groups |
 | ipv6_pools | List of all IDs of the IPv6 address pool from which the IPv6 CIDR block is allocated. | ipv6_pools |
-| entries | Provides access to the raw results of the query, which can be treated as an array of hashes. |  |
 
 ## Examples
 
@@ -124,11 +124,13 @@ This InSpec audit resource has the following special matchers. For a complete li
 
 The control will pass if the `describe` returns at least one result.
 
-Use `should_not` to test the entity should not exist
+Use `should` to test that the entity exists.
 
     describe aws_vpcs do
       it { should exist }
     end
+
+Use `should_not` to test the entity does not exist.
 
     describe aws_vpcs.where( <property> : <value>) do
       it { should_not exist }

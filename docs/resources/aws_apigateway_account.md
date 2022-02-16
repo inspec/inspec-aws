@@ -19,9 +19,9 @@ Ensure that the account exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS documentation on AWS API Gateway accounts.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Account` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html).
 
 ## Properties
 
@@ -51,9 +51,9 @@ For additional information, see the [AWS documentation on AWS API Gateway accoun
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
-
 ### exist
+
+The controls will pass if the `get` method returns at least one result.
 
 Use `should` to test that the entity exists.
 

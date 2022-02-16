@@ -27,7 +27,10 @@ The string identifier of the associated REST API.
 
 The identifier of the documentation part resource to get information about.
 
-For additional information, see the [AWS ApiGateway Documentation Part](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
+
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::DocumentationPart` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
 
 ## Properties
 

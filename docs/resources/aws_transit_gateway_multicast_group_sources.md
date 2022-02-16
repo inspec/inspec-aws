@@ -22,7 +22,9 @@ Ensure that a transit gateway multicast group source exists.
 `transit_gateway_multicast_domain_id` _(required)_
 
 The ID of the transit gateway multicast domain.
+This resource does not require any mandatory parameters.
 
+For additional information, see the [AWS documentation on the `rwgrwgrwgrwg` resource]().
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayMulticastGroupSource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastgroupsource.html).
 
 ## Properties

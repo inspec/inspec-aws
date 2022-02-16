@@ -59,7 +59,7 @@ _OR_
 `sriov_net_support` _(optional)_
 `virtualization_type` _(optional)_
 
-This can be passed either as a string or as a `all_amis: 'value'` key-value entry in a hash.
+See also the [AWS documentation on EC2 Amazon Machine Images](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
 
 ## Properties
 

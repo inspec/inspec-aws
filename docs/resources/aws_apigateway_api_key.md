@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_apigateway_api_key` InSpec audit resource to test properties of a single specific AWS APIGateway ApiKey.
 
-The AWS::ApiGateway::ApiKey resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key.
+The `AWS::ApiGateway::ApiKey` resource creates a unique key that you can distribute to clients who are executing API Gateway Method resources that require an API key.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that the api key exists.
 
 The identifier of the API key resource.
 
-For additional information, see the [AWS documentation on AWS APIGateway ApiKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::ApiKey` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
 
 ## Properties
 

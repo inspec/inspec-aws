@@ -16,7 +16,7 @@ An `aws_transit_gateway_routes` resource block collects a group of transit gatew
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
 To set the parameters of the AWS transit gateway route table, **ID** is required.
 
@@ -53,6 +53,8 @@ The routes with a subnet that match the specified CIDR filter. It could be passe
 
 The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
+
+For additional information, see the [AWS documentation on the `rwgrwgrwgrwg` resource]().
 
 ## Properties
 

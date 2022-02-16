@@ -27,7 +27,7 @@ The string identifier of the associated REST API.
 
 The identifier of the authorizer resource.
 
-For additional information, see the [AWS documentation on AWS APIGateway Authorizer.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Authorizer` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html).
 
 ## Properties
 

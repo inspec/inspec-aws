@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_amplify_branches` InSpec audit resource to test the properties of multiple AWS Amplify branches.
 
+The `AWS::Amplify::Branch` resource creates a new branch within an app.
+
 ## Syntax
 
 Ensure that AWS Amplify branch exists.
@@ -21,7 +23,7 @@ Ensure that AWS Amplify branch exists.
 
 The unique ID for an Amplify app.
 
-For additional information, see the [AWS documentation on AWS Amplify branch](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
+For additional information, see the [AWS documentation on the `AWS::Amplify::Branch` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-branch.html).
 
 ## Properties
 

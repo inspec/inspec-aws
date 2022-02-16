@@ -23,7 +23,7 @@ Ensure that the client certificate exists.
 
 The identifier of the client certificate.
 
-For additional information, see the [AWS documentation on AWS APIGateway ClientCertificate.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::ClientCertificate` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
 
 ## Properties
 

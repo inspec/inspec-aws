@@ -19,9 +19,9 @@ Ensure the rest api exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS API Gateway REST API documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::RestApi` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
 
 ## Properties
 

@@ -17,7 +17,7 @@ An `aws_auto_scaling_groups` resource block returns all Auto Scaling Groups and 
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 

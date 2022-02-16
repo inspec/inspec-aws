@@ -3,7 +3,7 @@ title: About the aws_vpc_endpoint_service_permissions Resource
 platform: aws
 ---
 
-# service_id
+# aws_vpc_endpoint_service_permissions
 
 Use the `aws_vpc_endpoint_service_permissions` InSpec audit resource to test the properties of all Amazon VPC endpoint service permissions. To audit a single AWS VPC Endpoint service, use the `aws_vpc_endpoint_service_permission` (singular) resource.
 
@@ -11,15 +11,17 @@ Use the `aws_vpc_endpoint_service_permissions` InSpec audit resource to test the
 
 An `aws_vpc_endpoint_service_permissions` resource block collects a group of AWS VPC endpoint service permissions descriptions and then tests that group.
 
+Ensure a VPC Service Permission exists.
+
     describe aws_vpc_endpoint_service_permissions(service_id: 'VPC_SERVICE_ID')
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
 The AWS VPC endpoint service ID is required.
 
-#### service_id _(required)_
+`service_id` _(required)_
 
 The ID of the VPC endpoint service:
 
@@ -35,8 +37,9 @@ It can be passed as a `service_id: 'value'` key-value entry in a hash.
 
 | Property | Description | Field |
 | :---: | :--- | :---: |
-| principal_types | List of types of principal. | `principal_type` |
-| principals | List of the Amazon Resource Name (ARN) of the principal. | `principal` |
+| principal_types | List of types of principal. | principal_type |
+| principals | List of the Amazon Resource Name (ARN) of the principal. | principal |
+
 ## Examples
 
 ### Ensure that exactly three AWS VPC endpoint service permissions exist
@@ -61,6 +64,8 @@ For a full list of available matchers, please visit our [Universal Matchers page
 ### exist
 
 The control will pass if the 'describe' method returns at least one result.
+
+Use `should` to test an entity exist.
 
     describe aws_vpc_endpoint_service_permissions(service_id: 'VPC_SERVICE_ID').where( PROPERTY: VALUE) do
       it { should exist }

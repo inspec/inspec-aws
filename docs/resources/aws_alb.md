@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_alb` InSpec audit resource to test properties of a single AWS Application Load Balancer (ALB).
 
+The `AWS::ElasticLoadBalancing::LoadBalancer` resource specifies a Classic Load Balancer.
+
 ## Syntax
 
 Ensure that an `aws_alb` exists
@@ -26,7 +28,7 @@ Ensure that an `aws_alb` exists
 This resource accepts a single parameter, the ALB Arn which uniquely identifies the ALB.
 This can be passed either as a string or as a `load_balancer_arn: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
+For additional information, see the [AWS documentation on the `AWS::ElasticLoadBalancing::LoadBalancer` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html).
 
 ## Properties
 

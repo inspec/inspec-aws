@@ -23,7 +23,7 @@ Ensure that the base path mappings exists.
 
 The domain name of the BasePathMapping resource to be described.
 
-For additional information, see the [AWS documentation on AWS APIGateway BasePathMapping.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::BasePathMapping` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-basepathmapping.html).
 
 ## Properties
 

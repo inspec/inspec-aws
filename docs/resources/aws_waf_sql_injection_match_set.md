@@ -7,6 +7,9 @@ platform: aws
 
 Use the `aws_waf_sql_injection_match_set` InSpec audit resource to test the properties of a single AWS WAF `SqlInjectionMatchSet` object.
 
+A complex type that contains SqlInjectionMatchTuple objects, which specify the parts of web requests that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+If a SqlInjectionMatchSet contains more than one SqlInjectionMatchTuple object, a request needs to include snippets of SQL code in only one of the specified parts of the request to be considered a match.
+
 ## Syntax
 
 Ensure that a `SqlInjectionMatchSet` object exists.

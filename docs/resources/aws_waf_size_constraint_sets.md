@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_waf_size_constraint_sets` Chef InSpec audit resource to test the properties of multiple AWS Web Application Firewall (WAF) size constraint sets.
 
+A complex type that contains SizeConstraint objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a SizeConstraintSet contains more than one SizeConstraint object, a request only needs to match one constraint to be considered a match.
+
 ## Syntax
 
 Ensure that a size constraint set exists.
@@ -17,7 +19,7 @@ Ensure that a size constraint set exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS documentation on AWS WAF SizeConstraintSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sizeconstraintset.html).
 

@@ -3,7 +3,7 @@ title: About the aws_transit_gateway_multicast_domain_associations Resource
 platform: aws
 ---
 
-# aws\_transit\_gateway\_multicast\_domain\_associations
+# aws_transit_gateway_multicast_domain_associations
 
 Use the `aws_transit_gateway_multicast_domain_associations` Chef InSpec audit resource to test properties of multiple AWS EC2 transit gateway multicast domain associations.
 
@@ -23,17 +23,19 @@ Ensure that transit gateway connect exists.
 
 The ID of the transit gateway multicast domain.
 
+For additional information, see the [AWS documentation on the `rwgrwgrwgrwg` resource]().
+
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayMulticastDomainAssociation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomainassociation.html).
 
 ## Properties
 
 | Property | Description | Field |
 | :---: | :--- | :---: |
-| transit_gateway_attachment_ids | The ID of the transit gateway attachment. |
-| resource_ids | The ID of the resource. |
-| resource_types | The type of resource, for example a VPC attachment. |
-| resource_owner_ids | The ID of the AWS account that owns the transit gateway multicast domain association resource. |
-| subnets | The subnet associated with the transit gateway multicast domain. |
+| transit_gateway_attachment_ids | The ID of the transit gateway attachment. | transit_gateway_attachment_id |
+| resource_ids | The ID of the resource. | resource_id |
+| resource_types | The type of resource, for example a VPC attachment. | resource_type |
+| resource_owner_ids | The ID of the AWS account that owns the transit gateway multicast domain association resource. | resource_owner_id |
+| subnets | The subnet associated with the transit gateway multicast domain. | subnets |
 
 ## Examples
 

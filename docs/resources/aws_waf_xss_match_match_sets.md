@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_waf_xss_match_sets` InSpec audit resource to test the properties of multiple AWS WAF `XssMatchSet` objects.
 
+A complex type that contains XssMatchTuple objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a XssMatchSet contains more than one XssMatchTuple object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.
+
 ## Syntax
 
 Ensure that any `XssMatchSet` object exists.
@@ -17,7 +19,7 @@ Ensure that any `XssMatchSet` object exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::XssMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html).
 

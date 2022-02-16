@@ -15,11 +15,11 @@ An `aws_vpc_endpoint_service_permission` resource block declares the tests for a
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
 The AWS VPC endpoint service ID is required.
 
-#### service\_id _(required)_
+#### service_id _(required)_
 
 The ID of the VPC endpoint service:
 

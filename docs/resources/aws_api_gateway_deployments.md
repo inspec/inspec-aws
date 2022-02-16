@@ -3,11 +3,11 @@ title: About the aws_api_gateway_deployments Resource
 platform: aws
 ---
 
-# aws\_api\_gateway\_deployments
+# aws_api_gateway_deployments
 
 Use the `aws_api_gateway_deployments` InSpec audit resource to test properties of multiple AWS ApiGateway Deployments.
 
-The AWS::ApiGateway::Deployment resource deploys an API Gateway RestAPI resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
+The `AWS::ApiGateway::Deployment` resource deploys an API Gateway RestApi resource to a stage so that clients can call the API over the internet. The stage acts as an environment.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that the deployment exists.
 
 The string identifier of the associated RestApi.
 
-For additional information, see the [AWS ApiGateway Deployment documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-deployment.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Deployment` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-deployment.html).
 
 ## Properties
 

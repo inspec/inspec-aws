@@ -19,9 +19,9 @@ Ensure that the API key exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS documentation on AWS API Gateway API Key.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::ApiKey` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
 
 ## Properties
 

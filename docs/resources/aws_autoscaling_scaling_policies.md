@@ -9,7 +9,7 @@ Use the `aws_autoscaling_scaling_policies` InSpec audit resource to test propert
 
 ## Syntax
 
-Ensure that an auto scaling group name exists.
+Ensure that an auto scaling group policy exists.
 
     describe aws_autoscaling_scaling_policies do
       it { should exist }
@@ -17,7 +17,7 @@ Ensure that an auto scaling group name exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS AutoScaling Scaling Policy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-policy.html).
 

@@ -7,7 +7,11 @@ platform: aws
 
 Use the `aws_athena_work_group` InSpec audit resource to test properties of a single specific Amazon Athena workgroup.
 
+The `AWS::Athena::WorkGroup` resource specifies an Amazon Athena workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroupConfiguration.
+
 ## Syntax
+
+Ensure that a work group exists.
 
     describe aws_athena_work_group(work_group: 'WORK_GROUP') do
       it { should exist }
@@ -17,9 +21,9 @@ Use the `aws_athena_work_group` InSpec audit resource to test properties of a si
 
 `work_group` _(required)_
 
-The workgroup name.
+The workgroup name
 
-For additional information, see the [AWS Athena workgroup documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
+For additional information, see the [AWS documentation on the `AWS::Athena::WorkGroup` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 

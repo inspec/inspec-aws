@@ -19,7 +19,9 @@ See also the [AWS VPC endpoint connection notification documentation](https://do
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `rwgrwgrwgrwg` resource]().
 
 ## Properties
 

@@ -19,9 +19,9 @@ Ensure that the client certificate exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS documentation on AWS API Gateway client certificate.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::ClientCertificate` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html).
 
 ## Properties
 

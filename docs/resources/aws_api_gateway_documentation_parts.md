@@ -23,7 +23,7 @@ Ensure that the documentation part exists.
 
 The string identifier of the associated REST API.
 
-For additional information, see the [AWS ApiGateway Documentation Part documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::DocumentationPart` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-documentationpart.html).
 
 ## Properties
 

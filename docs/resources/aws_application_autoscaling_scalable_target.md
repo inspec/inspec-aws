@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_application_autoscaling_scalable_target` InSpec audit resource to test properties of a resource that Application Auto Scaling can scale.
 
+The `AWS::ApplicationAutoScaling::ScalableTarget` resource specifies a resource that Application Auto Scaling can scale, such as an AWS::DynamoDB::Table or AWS::ECS::Service resource.
+
 ## Syntax
 
     describe aws_application_autoscaling_scalable_target(service_namespace: 'SERVICE_NAMESPACE') do
@@ -19,7 +21,7 @@ Use the `aws_application_autoscaling_scalable_target` InSpec audit resource to t
 
 The namespace of the AWS service that provides the resource.
 
-For additional information, see the [AWS ApplicationAutoScaling ScalableTarget documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html).
+For additional information, see the [AWS documentation on the `AWS::ApplicationAutoScaling::ScalableTarget` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html).
 
 ## Properties
 

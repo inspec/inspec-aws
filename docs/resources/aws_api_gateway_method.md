@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_api_gateway_method` InSpec audit resource to test properties of a single API Gateway method.
 
-The AWS::ApiGateway::Method resource creates API Gateway methods that define the parameters and body that clients must send in their requests.
+The `AWS::ApiGateway::Method` resource creates API Gateway methods that define the parameters and body that clients must send in their requests.
 
 ## Syntax
 
@@ -31,7 +31,7 @@ The ID of an API Gateway resource. For root resource methods, specify the RestAp
 
 The HTTP method that clients use to call this method.
 
-For additional information, see the [AWS APIGateway Method documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-method.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::Method` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-method.html).
 
 ## Properties
 

@@ -11,7 +11,7 @@ Use the `aws_ami` InSpec audit resource to test properties of a single AWS AMI.
 
 An `aws_ami` resource block declares the tests for a single AWS AMI by image id.
 
-    describe aws_ami(image_id: 'aki-2349e94458a507') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should exist }
     end
 
@@ -61,7 +61,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ### Check if an AMI is public
 
-    describe aws_ami(image_id: 'aki-25348fd4323') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should be_public }
     end
 
@@ -73,11 +73,11 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The `be_public` matcher tests if the AMI has public launch permissions.
 
-    describe aws_ami(image_id: 'aki-1234') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should be_public }
     end
 
-    describe aws_ami(image_id: 'aki-6789') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should_not be_public }
     end
 
@@ -87,13 +87,13 @@ The control will pass if the describe returns at least one result.
 
 Use `should` to test the entity should exist.
 
-    describe aws_ami(image_id: 'aki-1234') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should exist }
     end
 
 Use `should_not` to test the entity should not exist.
 
-    describe aws_ami(image_id: 'aki-6789') do
+    describe aws_ami(image_id: 'IMAGE_ID') do
       it { should_not exist }
     end
 

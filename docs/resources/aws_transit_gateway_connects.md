@@ -19,8 +19,9 @@ Ensure that Transit Gateway Connect exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
+For additional information, see the [AWS documentation on the `rwgrwgrwgrwg` resource]().
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayConnect](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayconnect.html).
 
 ## Properties

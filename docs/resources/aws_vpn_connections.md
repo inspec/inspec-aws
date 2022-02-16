@@ -3,9 +3,11 @@ title: About the aws_vpn_connections Resource
 platform: aws
 ---
 
-# aws\_vpn\_connections
+# aws_vpn_connections
 
 Use the `aws_vpn_connections` InSpec audit resource to test properties of all AWS VPN Connections.
+
+The `AWS::EC2::VPNConnection` specifies a VPN connection between a virtual private gateway and a VPN customer gateway or a transit gateway and a VPN customer gateway.
 
 ## Syntax
 
@@ -17,21 +19,21 @@ Ensure that one or more VPN Connections exist.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html).
+For additional information, see the [AWS documentation on `AWS::EC2::VPNConnection` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-connection.html).
 
 ## Properties
 
 | Property | Description | Field |
 | :---: | :--- | :---: |
-|vpn\_connection\_ids    | This property provides all the IDs of the VPN Connections. |
-|vpn\_gateway\_ids       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. |
-|outside\_ip\_addresses  | This property provides the outside IP addresses of the VPN Connections. |
-|tunnel\_inside\_cidrs   | This property provides the tunnel inside cidrs of the VPN Connections. |
-|states                  | This property provides the current state of the VPN Connections. |
-|types                   | This property provides the current types of the VPN Connections. |
-|tags                    | This property provids the current tags of the VPN Connections. |
+| vpn_connection_ids | This property provides all the IDs of the VPN Connections. | vpn_connection_id |
+| vpn_gateway_ids | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. | vpn_gateway_id |
+| outside_ip_addresses | This property provides the outside IP addresses of the VPN Connections. | outside_ip_address |
+| tunnel_inside_cidrs | This property provides the tunnel inside cidrs of the VPN Connections. | tunnel_inside_cidr |
+| states | This property provides the current state of the VPN Connections. | state |
+| types | This property provides the current types of the VPN Connections. | type |
+| tags | This property provids the current tags of the VPN Connections. | tags |
 
 ## Examples
 

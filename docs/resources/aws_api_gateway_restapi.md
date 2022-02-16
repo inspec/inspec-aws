@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_api_gateway_restapi` InSpec audit resource to test properties of a single AWS API Gateway REST API.
 
-The AWS::ApiGateway::RestApi resource creates a REST API.
+The `AWS::ApiGateway::RestApi` resource creates a REST API.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure the rest api exists.
 
 The API's identifier. This identifier is unique across all of your APIs in API Gateway.
 
-For additional information, see the [AWS API Gateway REST API documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
+For additional information, see the [AWS documentation on the `AWS::ApiGateway::RestApi` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html).
 
 ## Properties
 
