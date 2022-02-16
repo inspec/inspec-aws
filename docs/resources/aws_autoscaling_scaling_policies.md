@@ -17,6 +17,8 @@ Ensure that an auto scaling group name exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS AutoScaling Scaling Policy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-policy.html).
 
 ## Properties

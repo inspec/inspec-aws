@@ -19,11 +19,13 @@ Ensure that the firewall exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS Network Firewall Firewall](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | firewall_names | The descriptive name of the firewall. | firewall_name |
 | firewall_arns | The Amazon Resource Name (ARN) of the firewall. | firewall_arn |

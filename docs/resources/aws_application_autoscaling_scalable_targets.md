@@ -3,7 +3,7 @@ title: About the aws_application_autoscaling_scalable_targets Resource
 platform: aws
 ---
 
-# aws\_application\_autoscaling\_scalable\_targets
+# aws_application_autoscaling_scalable_targets
 
 Use the `aws_application_autoscaling_scalable_targets` InSpec audit resource to test properties of multiple resourcese that Application Auto Scaling can scale.
 

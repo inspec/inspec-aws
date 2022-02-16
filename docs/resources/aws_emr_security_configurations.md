@@ -15,16 +15,16 @@ describe aws_emr_security_configurations do
 end
 ```
 
-### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on AWS EMR security configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-securityconfiguration.html).
 
 ## Properties
 
-|Property                              | Description|Fields |
-| ---                                  | --- |---|
+| Property | Description | Fields |
+| --- | --- | --- |
 |security_configuration_names          |The name of the security configuration.|name|
 |encryption_at_rest                    | Specifies whether at-rest encryption is enabled for the cluster.|security_configuration(EncryptionConfiguration(EnableAtRestEncryption))|
 |encryption_in_transit                 | Specifies whether in-transit encryption is enabled for the cluster.|security_configuration(EncryptionConfiguration(EnableInTransitEncryption))|

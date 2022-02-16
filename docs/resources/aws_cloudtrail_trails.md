@@ -14,10 +14,10 @@ An `aws_cloudtrail_trails` resource block returns all CloudTrail Trails and allo
     describe aws_cloudtrail_trails do
       it { should exist }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 

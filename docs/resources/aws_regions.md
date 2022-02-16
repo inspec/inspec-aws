@@ -19,16 +19,16 @@ An `aws_regions` resource block uses an optional filter to select a group of reg
 
 #### Parameters
 
-##### name _(required)_
+name _(required)_
 
-This resource does not expect any parameters.
+The names of the region.
 
 See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |region\_names | The Names of the regions. |
 |endpoints     | The resolved endpoints of the regions. |
 

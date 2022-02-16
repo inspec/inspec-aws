@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Service Catalog Po
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | ids | The portfolio identifier. |
 | arns | The ARN assigned to the portfolio. |
 | display_names | The name to use for display purposes. |

@@ -19,22 +19,22 @@ end
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                      | Description                           | Fields|
-| ---                          | --- | --- |
-|traffic_mirror_session_ids    | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
-|traffic_mirror_target_ids     | The ID of the Traffic Mirror target. | traffic_mirror_target_id |
-|traffic_mirror_filter_ids     | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
-|network_interface_ids         | The ID of the Traffic Mirror session's network interface. | network_interface_id |
-|owner_ids                     | The ID of the account that owns the Traffic Mirror session.| owner_id |
-|packet_lengths                | The number of bytes in each packet to mirror. | packet_length |
-|session_numbers               | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. | session_number |
-|virtual_network_ids           | The virtual network ID associated with the Traffic Mirror session. | virtual_network_id |
-|descriptions                  | The description of the Traffic Mirror session. | description |
-|tags                          | The tags assigned to the Traffic Mirror session.| tags |
+| Property  | Description | Fields |
+| --- | --- | --- |
+| traffic_mirror_session_ids | The ID for the Traffic Mirror session.| traffic_mirror_session_id |
+| traffic_mirror_target_ids | The ID of the Traffic Mirror target. | traffic_mirror_target_id |
+| traffic_mirror_filter_ids | The ID of the Traffic Mirror filter.| traffic_mirror_filter_id |
+| network_interface_ids | The ID of the Traffic Mirror session's network interface. | network_interface_id |
+| owner_ids | The ID of the account that owns the Traffic Mirror session.| owner_id |
+| packet_lengths | The number of bytes in each packet to mirror. | packet_length |
+| session_numbers | The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. | session_number |
+| virtual_network_ids | The virtual network ID associated with the Traffic Mirror session. | virtual_network_id |
+| descriptions | The description of the Traffic Mirror session. | description |
+| tags  | The tags assigned to the Traffic Mirror session.| tags |
 
 For additional information, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html).
 

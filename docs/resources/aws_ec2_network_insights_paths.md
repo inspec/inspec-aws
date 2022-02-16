@@ -19,11 +19,13 @@ Ensure that network insights path ID exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 network insights path](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightspath.html).
 
 ## Properties
 
-| Property | Description| Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | network_insights_path_ids | The ID of the path. | network_insights_path_id |
 | network_insights_path_arns | The Amazon Resource Name (ARN) of the path. | network_insights_path_arn |

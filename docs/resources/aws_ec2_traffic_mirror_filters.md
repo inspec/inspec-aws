@@ -17,15 +17,15 @@ An `aws_ec2_traffic_mirror_filters` resource block declares the tests for a set 
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                      | Description|
-| ---                          | --- |
-|traffic_mirror_filter_ids     | The ID of a traffic mirror filter. |
-|descriptions                  | The description of a traffic mirror filter. |
-|tags                          | A list of hashes with each key-value pair corresponding to an traffic mirror filter. |
+| Property | Description | Fields |
+| --- | --- | --- |
+| traffic_mirror_filter_ids | The ID of a traffic mirror filter. |
+| descriptions | The description of a traffic mirror filter. |
+| tags | A list of hashes with each key-value pair corresponding to an traffic mirror filter. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilter.html)
 

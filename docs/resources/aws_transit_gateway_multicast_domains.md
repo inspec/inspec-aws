@@ -19,14 +19,14 @@ Ensure that transit gateway multicast domain exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomain.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | transit_gateway_multicast_domain_ids | The ID of the transit gateway multicast domain. |
 | transit_gateway_ids | The ID of the transit gateway. |
 | transit_gateway_multicast_domain_arns | The Amazon Resource Name (ARN) of the transit gateway multicast domain. |

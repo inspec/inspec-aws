@@ -19,11 +19,13 @@ Ensure that the client VPN endpoint exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 ClientVpnEndpoint.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnendpoint.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | client_vpn_endpoint_ids | The ID of the Client VPN endpoint. | client_vpn_endpoint_id |
 | descriptions | A brief description of the endpoint. | description |

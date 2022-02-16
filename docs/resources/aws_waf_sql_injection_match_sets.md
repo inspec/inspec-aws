@@ -17,13 +17,13 @@ Ensure that a `SqlInjectionMatchSet` object exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::SqlInjectionMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sqlinjectionmatchset.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | sql_injection_match_set_ids | A unique identifier for a `SqlInjectionMatchSet`. | sql_injection_match_set_id |
 | names | The name of the `SqlInjectionMatchSet`. | name |

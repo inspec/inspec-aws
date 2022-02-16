@@ -17,7 +17,7 @@ Use the `aws_rds_snapshots` InSpec audit resource to test the properties of a co
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs_gateway).
 

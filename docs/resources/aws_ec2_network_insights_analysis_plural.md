@@ -19,13 +19,13 @@ Ensure that network insights analysis ID exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 Network Insights Analysis](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightsanalysis.html).
 
 ## Properties
 
-| Property | Description| Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | network_insights_analysis_ids | The ID of the network insights analysis. | network_insights_analysis_id |
 | network_insights_analysis_arns | The Amazon Resource Name (ARN) of the network insights analysis. | network_insights_analysis_arn |

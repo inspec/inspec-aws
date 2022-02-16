@@ -15,14 +15,14 @@ Use the `aws_sqs_queues` InSpec audit resource to test properties of some or  al
 
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 
 ## Properties
 
-|Property                                 | Description|
-| ---                                     | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |arns                                     | The ARNs of the SQS Queues. |
 |is\_fifo\_queues                         | A boolean value indicate if queues are a FIFO queues |
 |visibility\_timeouts                     | An integer indicating the visibility timeout of the message in seconds |

@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Signer ProfilePerm
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | actions | An AWS Signer action permitted as part of cross-account permissions. | action |
 | principals | The AWS principal that has been granted a cross-account permission. | principal |

@@ -17,14 +17,14 @@ Ensure that a subnet group exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on DMS Replication Subnet Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationsubnetgroup.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | replication_subnet_group_identifiers | The identifiers of the replication subnet groups. |
 | replication_subnet_group_descriptions | The descriptions of the replication subnet groups. |
 | vpc_ids | The IDs of the virtual private clouds. |

@@ -19,11 +19,13 @@ Ensure that a maintenance window exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on the `AWS::SSM::MaintenanceWindow` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | window_ids | The ID of the maintenance window. | window_id |
 | names | The name of the maintenance window. | name |

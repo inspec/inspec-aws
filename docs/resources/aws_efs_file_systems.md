@@ -15,15 +15,15 @@ An `aws_efs_file_systems` resource block collects a group of EFS file system des
     describe aws_efs_file_systems
       it { should exist }
     end   
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property             | Description|
-| ---                 | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |tags                 | The list of tags that the EFS file system has. |
 |names                | The value of the `Name` (case sensitive) tag if it is defined. |
 |file\_system\_ids    | The ID of the EFS file system. |

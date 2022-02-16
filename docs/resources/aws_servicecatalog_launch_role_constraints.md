@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS ServiceCatalog Lau
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | constraint_ids | The identifier of the constraint. |
 | types | The type of constraint. Valid values are: `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`. |
 | descriptions | The description of the constraint. |

@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Lambda EventInvoke
 
 ## Properties
 
-| Property | Description | Field | 
+| Property | Description | Fields | 
 | --- | --- | --- |
 | last_modified | The date and time that the configuration was last updated. | last_modified |
 | function_arns | The Amazon Resource Name (ARN) of the function. | function_arn |

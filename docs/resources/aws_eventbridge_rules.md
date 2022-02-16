@@ -19,12 +19,14 @@ Ensure that a rule name exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on Events Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-rule.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | names | The name of the rule. |
 | arns | The Amazon Resource Name (ARN) of the rule. |
 | event_patterns | The event pattern. |

@@ -19,12 +19,14 @@ The AWS::DMS::ReplicationInstance resource creates an AWS DMS replication instan
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on DMS Replication Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-replicationinstance.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | engine_versions | The engine versions of the replication instance. |
 | replication_instance_classes | The compute and memory capacity of the replication instance as defined for the specified replication instance class. |
 | storage_types | The storage types of the replication instance. |

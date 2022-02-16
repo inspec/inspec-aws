@@ -12,12 +12,14 @@ Use the `aws_iam_policies` InSpec audit resource to test properties of a collect
 `aws_iam_policies` Resource returns a collection of IAM Policies and allows testing of that collection.
 
     describe aws_iam_policies do
-      its('policy_names') { should include('test-policy-1') }
+      its('policy_names') { should include('POLICY_NAME') }
     end
-    
-#### Parameters
 
-##### only\_attached _(optional)_
+## Parameters
+
+This resource does not require any required parameters.
+
+only_attached _(optional)_
 
 This resource allows filtering by only\_attached.
 When `OnlyAttached` is `true`, the returned list contains only the policies that are attached to an IAM user, group, or role. When `OnlyAttached` is `false`, or when the parameter is not included, all policies are returned.
@@ -32,8 +34,8 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property              | Description|
-| ---                  | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |arns                  | The ARN identifier of the specified policy. |
 |policy\_ids           | The policy ids. |
 |policy\_names         | The policy names. |

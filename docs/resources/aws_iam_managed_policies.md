@@ -37,6 +37,8 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 `scope` _(optional)_
 
 `scope` accepts three possible values, `AWS`, `Local`, or `ALL`:
@@ -47,11 +49,11 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 Specify a scope by passing a key-value entry in a hash: `scope: 'VALUE'`.
 
-If ommitted, all policies are returned.
+If omitted, all policies are returned.
 
 ## Properties
 
-| Property              | Description                                                | Field                   |
+| Property              | Description                                                | Fields                  |
 | :--------------------:| :---------------------------------------------------------:| :---------------------: |
 |arns                   | A list of the ARN identifiers of the policies.             | arn                     |
 |policy_ids            | A list of the stable and unique strings identifying the policies. | policy_id        |

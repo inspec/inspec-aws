@@ -17,14 +17,14 @@ Verify that a Parameter group name exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on Redshift cluster parameter group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html) for additional information.
 
 ### Properties
 
-| Property                 | Description                                                                                                                                                        | Fields                   |
-| ---                      | ---                                                                                                                                                                | ---                      |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | parameter_group_names    | The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.   | parameter_group_name     |
 | parameter_group_families | The family of the parameter group.                                                                                                                                 | parameter_group_family   |
 | descriptions             | The description of the parameter group.                                                                                                                            | description              |

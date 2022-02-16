@@ -12,17 +12,17 @@ Use the `aws_elbs` InSpec audit resource to test the configuration of a collecti
     describe aws_elbs do
       its('load_balancer_names') { should include 'elb-name' }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 
 ## Properties
 
-|Property              | Description|
-| ---                  | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |load\_balancer\_names | The name of the load balancer. |
 |dns\_names            | The DNS name of the load balancer. |
 |availability\_zones   | The Availability Zones for the load balancer. |

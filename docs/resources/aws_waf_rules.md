@@ -17,16 +17,16 @@ Ensure that a WAF rule exists.
 
 ## Parameters
 
-No required parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::Rule` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-rule.html).
 
 ## Properties
 
-| Property | Description                         | Fields  |
-|----------|-------------------------------------|---------|
+| Property | Description | Fields | 
+| --- | --- | --- |
 | rule_ids | The unique identifier for the rule. | rule_id |
-| names    | A friendly name or description of the rule. | name    |
+| names | A friendly name or description of the rule. | name |
 
 ## Examples
 

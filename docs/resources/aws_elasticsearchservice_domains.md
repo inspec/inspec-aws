@@ -19,11 +19,13 @@ Ensure that a domain name exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on Elasticsearch Domain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html).
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | domain_name | Specifies the domain name. |
 

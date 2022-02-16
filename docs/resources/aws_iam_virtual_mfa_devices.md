@@ -18,13 +18,13 @@ Ensure that a virtual MFA device exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on IAM virtual MFA Devices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-virtualmfadevice.html) for additional information.
 
 ## Properties
 
-| Property | Description| Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | serial_numbers | A list of the virtual MFA device's serial number identifiers. | serial_number |
 | paths | A list of the user paths. | path |

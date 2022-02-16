@@ -19,14 +19,14 @@ Ensure you have exactly 3 clusters
 
 ### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 Also see the [AWS Redshift cluster documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html).
 
 ## Properties
 
-|Property                     | Description|                                                                            Fields                     |
-| ---                         | --- |                                                                                    ---                         |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |cluster_identifiers         | The unique IDs of the Redshift clusters returned. |                                     cluster_identifier          |
 |db_names                    | The name of the database associated with each Redshift cluster. |                       db_name                     |
 |node_types                  | The Redshift instance type. |                                                           node_type                   |

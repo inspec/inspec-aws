@@ -19,13 +19,13 @@ Ensure that the signing profile exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS Signer SigningProfile.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-signingprofile.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | profile_names | The name of the target signing profile. | profile_name |
 | profile_versions | The current version of the signing profile. | profile_version |

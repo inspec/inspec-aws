@@ -19,11 +19,13 @@ Ensure that the carrier gateway exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 See the [AWS documentation on AWS EC2 Carrier Gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-carriergateway.html) for additional information.
 
 ## Properties
 
-| Property             | Description                                                                    | Field              |
+| Property | Description | Fields |
 | :------------------: | :----------------------------------------------------------------------------: | :----------------- |
 | carrier_gateway_ids  | The ID of the carrier gateway.                                                 | carrier_gateway_id |
 | vpc_ids              | The ID of the VPC (Virtual Private Cloud) associated with the carrier gateway. | vpc_id             |

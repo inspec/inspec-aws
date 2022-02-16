@@ -19,11 +19,13 @@ Ensure that the Capacity Reservation ID exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 Capacity Reservation.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | capacity_reservation_ids | The ID of the Capacity Reservation. | capacity_reservation_id |
 | owner_ids | The ID of the Amazon Web Services account that owns the Capacity Reservation. | owner_id |

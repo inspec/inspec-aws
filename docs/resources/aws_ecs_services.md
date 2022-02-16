@@ -26,8 +26,8 @@ For additional information, see the [AWS documentation on ECS Service](https://d
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | service_arns | The ARNs of the services. |
 | service_names | The names of the services. |
 | cluster_arns | The Amazon Resource Name (ARN) of the cluster that hosts the services.|

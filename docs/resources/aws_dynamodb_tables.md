@@ -14,19 +14,18 @@ Use the `aws_dynamodb_table` InSpec audit resource to test properties of a colle
     describe aws_dynamodb_tables do
       its('names.count') { should cmp 3 }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on DynamoDB](https://docs.aws.amazon.com/dynamodb/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |table\_names                 | The names of the tables associated with the current account at the current endpoint. |
-
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ListTables.html)
 

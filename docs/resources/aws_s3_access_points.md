@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on AWS S3 Access Points.]
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | ids | The ID used to identify the metrics configuration. | id |
 | filter_access_point_arns | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |

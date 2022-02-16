@@ -17,14 +17,14 @@ Use the `aws_ssm_parameters` InSpec audit resource to test properties of a colle
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |names    | Provides the name of the parameter. |
 |types    | Provides the type of the parameter. |
 |key_ids    | Provides the key id of the parameter. |

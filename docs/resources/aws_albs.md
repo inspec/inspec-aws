@@ -15,28 +15,28 @@ Ensure that an `aws_albs` exists
       its('load_balancer_arns') { should include 'arn:aws:elasticloadbalancing' }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 
 ## Properties
 
-|Property                     | Description|
+|Property                     | Description |
 | ---                         | --- |
-|load\_balancer\_names        | The names of the load balancers. |
-|load\_balancer\_addresses    | A collection of the load balancers addresses. |
-|canonical\_hosted\_zone\_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. |
-|dns\_names                   | The DNS names of the load balancers. |
-|availability\_zones          | The Availability Zones for the load balancers. |
-|security\_groups             | The security groups for the load balancers. Valid only for load balancers in a VPC. |
+|load_balancer_names        | The names of the load balancers. |
+|load_balancer_addresses    | A collection of the load balancers addresses. |
+|canonical_hosted_zone_ids | The IDs of the Amazon Route 53 hosted zone for the load balancers. |
+|dns_names                   | The DNS names of the load balancers. |
+|availability_zones          | The Availability Zones for the load balancers. |
+|security_groups             | The security groups for the load balancers. Valid only for load balancers in a VPC. |
 |schemes                      | The types of load balancers. Valid only for load balancers in a VPC. |
 |states                       | The states of the load balancers. |
 |subnets                      | A collection of the subnet ids. |
 |types                        | The types of the load balancers. |
-|vpc\_ids                     | The IDs of the VPCs for the load balancers. |
-|zone\_names                 | A collection of the names of the availability zones. |
+|vpc_ids                     | The IDs of the VPCs for the load balancers. |
+|zone_names                 | A collection of the names of the availability zones. |
 
 ## Examples
 

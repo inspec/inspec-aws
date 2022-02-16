@@ -17,13 +17,13 @@ Ensure that any `XssMatchSet` object exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::XssMatchSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | xss_match_set_ids | A unique identifier for an `XssMatchSet`. | xss_match_set_id |
 | names | The name of the `XssMatchSet`. | name |

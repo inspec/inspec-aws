@@ -23,16 +23,16 @@ Train AWS version 0.1.18 or newer is required for this resource.
       its('detector_ids.count') { should cmp 3 }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html).
 
 ## Properties
 
-|Property                 | Description|
-| ---                     | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |detector_ids             | A list of detector IDs. |
 
 ## Examples

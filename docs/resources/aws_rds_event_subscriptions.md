@@ -17,13 +17,13 @@ Ensure that the event subscription exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::RDS::EventSubscription` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | customer_aws_ids | The Amazon Web Services customer account associated with the RDS event notification subscription. | customer_aws_id |
 | cust_subscription_ids | The RDS event notification subscription Id. | cust_subscription_id |

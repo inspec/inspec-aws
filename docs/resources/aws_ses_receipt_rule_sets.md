@@ -19,11 +19,13 @@ Ensure that the rule set exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS SES ReceiptRuleSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-receiptruleset.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | names | The name of the receipt rule set. | name |
 | created_timestamps | The date and time the receipt rule set was created. | created_timestamp |

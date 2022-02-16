@@ -19,13 +19,13 @@ Ensure that Global Network ID exists.
 
 ## Parameters
 
-The resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS Network Manager Global Network](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-globalnetwork.html).
 
 ## Properties
 
-| Property | Description | Description |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | global_network_ids | The ID of the global network. | global_network_id |
 | global_network_arns | The Amazon Resource Name (ARN) of the global network. | global_network_arn |

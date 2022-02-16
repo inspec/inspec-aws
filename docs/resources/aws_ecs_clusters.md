@@ -14,10 +14,10 @@ An `aws_ecs_clusters` resource block returns all ECS Clusters and allows the tes
     describe aws_ecs_clusters do
       its('cluster_names') { should include 'cluster-root' }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_clusters.html).
 

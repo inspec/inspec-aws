@@ -17,14 +17,14 @@ Ensure that one or more VPN Connections exist.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html).
 
 ## Properties
 
-|Property                | Description|
-| ---                    | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |vpn\_connection\_ids    | This property provides all the IDs of the VPN Connections. |
 |vpn\_gateway\_ids       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. |
 |outside\_ip\_addresses  | This property provides the outside IP addresses of the VPN Connections. |

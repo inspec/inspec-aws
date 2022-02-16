@@ -17,11 +17,15 @@ Ensure that the global cluster exists.
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on the `AWS::RDS::GlobalCluster` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | global_cluster_identifiers | The list of global clusters returned by this request. | global_cluster_identifier |
 | global_cluster_resource_ids | Contains a user-supplied global database cluster identifier. | global_cluster_resource_id |

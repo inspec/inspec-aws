@@ -19,11 +19,11 @@ For additional information, see the [AWS documentation on AWS EC2 Network Interf
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | network_interface_permission_ids | The ID of the network interface. | network_interface_permission_id |
 | network_interface_ids |  The Amazon Web Services account ID. | network_interface_id |

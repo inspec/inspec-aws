@@ -19,12 +19,14 @@ Ensure that a mapping exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on Athena Work Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-workgroup.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | uuids | The identifier of the event source mapping. |
 | starting_positions | The position in a stream from which to start reading. Required for Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources. `AT_TIMESTAMP` is only supported for Amazon Kinesis streams. |
 | starting_position_timestamps | With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to start reading. |

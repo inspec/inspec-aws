@@ -16,12 +16,14 @@ An `aws_iam_access_keys` resource block returns all IAM Access Keys and allows t
         its('access_key_ids') { should include 'AKIA1111111111111111' }
       end
 
-#### Parameters
+## Parameters
+
+This resource does not require any required parameters.
 
 This resources accepts a single optional parameter, a Username for which to retrieve all Access Keys.
 If not provided, all Access Keys for all Users will be retrieved.
 
-##### username _(optional)_
+username _(optional)_
 
 The IAM Username for which to retrieve the Access Keys.
 This can be passed either as a string or as a `username: 'value'` key-value entry in a hash.
@@ -30,7 +32,7 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 
 ## Properties
 
-| Property               | Description|
+| Property               | Description |
 | ---                    | --- |
 | access\_key\_id        | The ID of the Access Key. |
 | username               | The IAM Username which is associated with the Access Key. |
@@ -47,7 +49,6 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 | last\_used\_days\_ago  | How many days ago the Key was last used. |
 | user\_created\_date    | The date on which the associated User was created. |
 | entries                | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-
 
 ## Examples
 

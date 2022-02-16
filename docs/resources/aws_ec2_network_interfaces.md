@@ -19,11 +19,13 @@ Ensure that network interface ID exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 network interface](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface.html).
 
 ## Properties
 
-| Property | Description| Field |
+| Property | Description| Fields |
 | --- | --- | --- |
 | attachments | The attachment. | attachment |
 | availability_zones | The Availability Zone. | availability_zone |

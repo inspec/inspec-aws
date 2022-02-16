@@ -14,14 +14,14 @@ An `aws_nat_gateways` resource block collects all of the NAT gateways and then t
       it { should exist }
     end 
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property            | Description |
-| ---                | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |ids                 | The ID of the NAT gateway. The field name is `id`.|
 |names               | The value of the `Name` tag. It is `nil` if not defined. The field name is `name`.|
 |vpc\_ids            | The ID of the VPC in which the NAT gateway is located. The field name is `vpc_id`.|

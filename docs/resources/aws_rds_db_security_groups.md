@@ -15,11 +15,15 @@ Ensure that the DB security group exists.
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on the `AWS::RDS::DBSecurityGroup` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | owner_ids | Provides the Amazon Web Services ID of the owner of a specific DB security group. | owner_id |
 | db_security_group_names | The name of the DB security group to return details for. | db_security_group_name |

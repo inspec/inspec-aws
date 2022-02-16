@@ -19,11 +19,13 @@ Ensure that the customer gateway exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 customer gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-customer-gateway.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | bgp_asns | The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). | bgp_asn |
 | customer_gateway_ids | The ID of the customer gateway. | customer_gateway_id |

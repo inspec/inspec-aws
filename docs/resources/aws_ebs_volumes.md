@@ -19,14 +19,14 @@ EBS volumes are persistent block storage volumes for Amazon EC2 instances in the
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
 
 ## Properties
 
-| Property                   | Description |
-| ---                        | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | attachments                | The EBS volume attachments returned. |
 | availability_zones         | The list of availability zones in use by the EBS volumes. |
 | create_times               | The creation times of the EBS volumes. |

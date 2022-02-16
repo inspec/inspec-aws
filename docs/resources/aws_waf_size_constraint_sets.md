@@ -17,13 +17,13 @@ Ensure that a size constraint set exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS WAF SizeConstraintSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sizeconstraintset.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | size_constraint_set_ids | A unique identifier for a size constraint set. | size_constraint_set_id |
 | names | The name of the size constraint set. | name |

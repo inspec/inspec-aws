@@ -14,12 +14,16 @@ Ensure that a target group arn exists.
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on ElasticLoadBalancingV2 TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | target_group_arns | The Amazon Resource Name (ARN) of the target group. |
 | target_group_names | The name of the target group. |
 | protocols | The protocol to use for routing traffic to the targets. Valid values are: `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, or `UDP`. |

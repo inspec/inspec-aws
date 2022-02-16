@@ -14,14 +14,14 @@ An `aws_internet_gateways` resource block collects all of the internet gateways 
       it { should exist }
     end 
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property            | Description |
-| ---                | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |ids                 | The ID of the internet gateway. The field name is `id`.|
 |names               | The value of the `Name` tag. It is `nil` if not defined. The field name is `name`.|
 |vpc\_ids            | The ID of the attached VPC. It is `nil` if the resource is in a `detached` state. The field name is `vpc_id`.|

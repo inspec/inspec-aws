@@ -16,14 +16,14 @@ An `aws_network_acls` resource block collects a group of network ACL description
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                    | Description| Field Name |
-| ---                        | ---        | ---        |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |network_acl_ids             | The IDs of all network ACLs.                 | network_acl_id |
 |vpc_ids                     | The IDs of all the VPCs of the network ACLs. | vpc_id |
 |default                     | The boolean flag to say whether the network ACL is default or not. | default |

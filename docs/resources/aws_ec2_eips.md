@@ -19,14 +19,14 @@ An `aws_eips` resource block uses an optional filter to select a group of Elasti
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on Elastic IP (EIP)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html) for additional information.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | public_ip | The Elastic IP address, or the carrier IP address. |
 | instance_id | The ID of the instance the address is associated with, if any. |
 | allocation_id | The allocation ID for the address. |

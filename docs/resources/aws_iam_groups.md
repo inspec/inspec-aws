@@ -19,17 +19,17 @@ An `aws_iam_groups` resource block identifies a group by group name.
     describe aws_iam_groups(group_name: 'mygroup') do
       it { should exist }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html).
 
 ## Properties
 
-|Property              | Description|
-| ---                  | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |group\_names          | The group name. |
 |group\_ids            | The group ID. |
 |arns                  | The Amazon Resource Name of the group. |

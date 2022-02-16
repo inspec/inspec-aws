@@ -19,12 +19,14 @@ Ensure that a secret exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS Secret Manager Secret](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | arns | The Amazon Resource Name (ARN) of the secret. |
 | names | The friendly name of the secret. |
 | descriptions | The user-provided description of the secret. |

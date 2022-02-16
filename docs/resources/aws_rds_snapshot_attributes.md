@@ -25,7 +25,7 @@ An error is raised if more than one RDS snapshot matches (due to vague search pa
 
 ## Parameters
 
-### db_snapshot_identifier
+db_snapshot_identifier
 
 This resource accepts a single parameter either as a string or a `db_snapshot_identifier: 'value'` key-value entry in a hash. This parameter is user-supplied DB snapshot identifier. This parameter isn't case-sensitive and is a required parameter.
 

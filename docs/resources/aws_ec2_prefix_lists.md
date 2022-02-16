@@ -19,13 +19,13 @@ Ensure that a prefix list exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 prefix lists](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html).
 
 ## Properties
 
-| Property | Description | Description |
+| Property | Description | Fields |
 | --- | --- | --- |
 | prefix_list_ids | The ID of the prefix list. | prefix_list_id |
 | address_families | The IP address version. | address_family |

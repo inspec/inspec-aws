@@ -21,13 +21,13 @@ For additional information, see the [AWS documentation on IAM OIDC provider](htt
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
-| arns | The Amazon Resource Name (ARN). |
+| Property | Description | Fields |
+| --- | --- | --- |
+| arns | The Amazon Resource Name (ARN). | arn |
 
 ## Examples
 

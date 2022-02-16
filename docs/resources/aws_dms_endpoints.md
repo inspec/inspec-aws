@@ -3,7 +3,7 @@ title: About the aws_dms_endpoints Resource
 platform: aws
 ---
 
-# aws\_dms\_endpoints
+# aws_dms_endpoints
 
 Use the `aws_dms_endpoints` InSpec audit resource to test properties of a single specific AWS Database Migration Service (DMS) endpoint.
 
@@ -17,14 +17,14 @@ Ensure that an endpoint exists.
 
 ## Parameters
 
-There are no required parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on DMS Endpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-endpoint.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | endpoint_identifiers | The database endpoint identifiers. |
 | endpoint_types | The endpoint types. |
 | engine_names | The type of engine for an endpoint. Valid values: `mysql`, `oracle`, `postgres`, `mariadb`, `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`, `sybase`, `dynamodb`, `mongodb`, `kinesis`, `kafka`, `elasticsearch`, `docdb`, `sqlserver`, and `neptune`. |

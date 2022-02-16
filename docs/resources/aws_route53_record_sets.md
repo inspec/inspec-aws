@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS Route53 Record Set
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | names | The name of a record in the specified hosted zone. | name |
 | types | The DNS record type. | type |

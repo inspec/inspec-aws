@@ -17,14 +17,14 @@ end
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on AWS EMR clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
 
 ## Properties
 
-|Property                                | Description| Fields|
-| ---                                    | --- |---|
+| Property | Description | Fields |
+| --- | --- | --- |
 |cluster_ids                             | The unique identifier of the cluster. |cluster_id|
 |cluster_arns                            | The Amazon Resource Name (ARN) that identifies the cluster. |cluster_arn|
 |cluster_names                           | A user-generated string that you use to identify your cluster. |cluster_name|

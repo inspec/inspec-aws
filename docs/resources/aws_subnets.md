@@ -23,14 +23,14 @@ An `aws_subnets` resource block uses an optional filter to select a group of sub
 
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
 
 ## Properties
 
-|Property                    | Description|
-| ---                        | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |subnet\_ids                 | The name of the auto scaling launch configuration associated with the auto scaling group. |
 |vpc\_ids                    | An integer indicating the maximum number of instances in the auto scaling group. |
 |cidr\_blocks                | An integer indicating the minimum number of instances in the auto scaling group. |

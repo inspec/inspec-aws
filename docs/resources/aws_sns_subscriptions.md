@@ -19,11 +19,13 @@ Ensure that the subscription exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS SNS subscriptions.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | subscription_arns | The subscription's ARN. | subscription_arn |
 | owners | The subscription's owner. | owner |

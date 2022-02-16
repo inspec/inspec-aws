@@ -19,14 +19,14 @@ An `aws_security_groups` resource block uses an optional filter to select a grou
 
 ### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |group\_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
 |group\_names | An integer indicating the maximum number of instances in the auto scaling group |
 |vpc\_ids     | An integer indicating the desired  number of instances in the auto scaling group |

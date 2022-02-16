@@ -16,17 +16,16 @@ User the 'aws\_sns\_topic' InSpec audit resource to test a single SNS Topic in a
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html).
 
 ## Properties
 
-|Property    | Description|
-| ---        | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |topic\_arns | The ARNs of the SNS Topics. |
 |entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
-
 
 ## Examples
 

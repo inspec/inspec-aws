@@ -17,14 +17,14 @@ Use the `aws_ssm_activations` InSpec audit resource to test properties of a coll
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |activation\_ids              | Provides  ID created by Systems Manager when you submitted the activation. |
 |created\_dates               | Provides the date the activation was created. |
 |default\_instance\_names     | Provides the name for the managed instance when it is created. |

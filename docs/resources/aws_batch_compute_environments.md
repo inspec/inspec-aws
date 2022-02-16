@@ -17,7 +17,7 @@ Ensure that a compute environment exists.
 
 ## Parameters
 
-This resource does not accept any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 

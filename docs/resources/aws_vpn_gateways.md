@@ -16,12 +16,12 @@ An `aws_vpn_gateways` resource block collects a group of AWS VPN descriptions an
 
 ### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                   | Description|
-| ---                       | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |vpn\_gateway\_ids          | List of unique identifiers that identifies a AWS VPN gateway.|
 |states                     | List of the current state of the VPN gateway. Possible values are: `pending`, `available`, `deleting`, `deleted`. |
 |types                      | List of the types of VPN connection the VPN gateway supports. |

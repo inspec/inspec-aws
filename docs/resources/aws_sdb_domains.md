@@ -20,11 +20,11 @@ For additional information, see the [AWS documentation on AWS SDB Domains.](http
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | domain_names | A list of domain names that match the expression. | domain_names |
 

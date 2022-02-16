@@ -8,19 +8,21 @@ platform: aws
 Use the `aws_lambdas` resource to test the collection of lambdas deployed into an account.
 
 ## Syntax
+
 ````
 describe aws_lambdas do
     its('count') { should eq 20 }
 end
 ````
+
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property              | Description|
-| ---                  | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |names                 | The names of the lambda deployed. |
 |tags                  | The tags of the lambda deployed.  |
 

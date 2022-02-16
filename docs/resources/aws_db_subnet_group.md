@@ -17,7 +17,7 @@ Use the `aws_db_subnet_group` InSpec audit resource to test properties of a db s
 
 #### Parameters
 
-##### db\_subnet\_group\_name _(required)_
+##### db_subnet_group_name _(required)_
 
 This resource accepts a single parameter, the DB Subnet Group Name.
 This can be passed either as a string or as a `aws_db_subnet_group: 'value'` key-value entry in a hash.
@@ -29,12 +29,12 @@ See also the [AWS documentation on DB Subnet Groups](https://docs.aws.amazon.com
 
 | Property                     | Description |
 | ---                         | --- |
-| db_subnet_group_name    | The name of the DB subnet group. |
-| db_subnet_group_description    | Provides the description of the DB subnet group. |
-| vpc_id    | Provides the VPC ID of the DB subnet group. |
-| subnet_group_status    | Provides the status of the DB subnet group. |
-| subnets    | Contains a list of Subnet elements. |
-| db_subnet_group_arn    | The Amazon Resource Name for the DB subnet group. |
+| db_subnet_group_name | The name of the DB subnet group. |
+| db_subnet_group_description | Provides the description of the DB subnet group. |
+| vpc_id | Provides the VPC ID of the DB subnet group. |
+| subnet_group_status | Provides the status of the DB subnet group. |
+| subnets | Contains a list of Subnet elements. |
+| db_subnet_group_arn | The Amazon Resource Name for the DB subnet group. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBSubnetGroup.html)
 

@@ -17,14 +17,14 @@ Use the `aws_ssm_associations` InSpec audit resource to test properties of a col
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |association\_ids             | Provides the ID of the association. |
 |association\_names           | Provides the name of the association. |
 |association\_versions        | Provides the version of the association. |

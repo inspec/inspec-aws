@@ -19,13 +19,13 @@ Ensure that a baseline exists:
 
 ## Parameters
 
-This resource does not expect any required parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS SSM patch baseline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | baseline_ids | The ID of the patch baseline. | baseline_id |
 | names | The name of the patch baseline. | name |

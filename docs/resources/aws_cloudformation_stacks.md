@@ -19,7 +19,7 @@ See the [AWS documentation on CloudFormation](https://docs.aws.amazon.com/AWSClo
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 

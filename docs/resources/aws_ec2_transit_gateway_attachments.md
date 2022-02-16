@@ -19,13 +19,13 @@ An `aws_ec2_transit_gateway_attachments` resource block uses an optional filter 
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on Transit Gateway attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html) for additional information.
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | transit_gateway_attachment_ids | The IDs of the attachments. |
 | transit_gateway_ids | The ID of the Transit Gateway. |

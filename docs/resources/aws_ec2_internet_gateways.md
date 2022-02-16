@@ -19,11 +19,13 @@ Ensure that an internet gateway exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 internet gateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html).
 
 ## Properties
 
-| Property | Description| Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | attachments | The attachments of the internet gateways. | attachments |
 | attachments_states | The current attachment states. For an internet gateway, the state is available when attached to a VPC; otherwise, this value is not returned. | attachments (state) |

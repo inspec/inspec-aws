@@ -19,11 +19,14 @@ Ensure that an `aws_ec2_dhcp_options` exists.
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | domain_names          | The list of DHCP configurations domain names. |
 | domain_name_servers   | The list of domain name servers in the DHCP configuration. |
 | ntp_servers           | The list of ntp servers in the DHCP configuration. |

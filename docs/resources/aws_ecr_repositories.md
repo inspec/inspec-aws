@@ -21,18 +21,20 @@ Repositories in a non-default registry can be tested by supplying the registry I
       it { should exist }
     end
 
-#### Parameters
+## Parameters
+
+This resource does not require any required parameters.
 
 The registry id is optional.
 
-##### registry\_id _(optional)_
+registry_id _(optional)_
 
 The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
 
 ## Properties
 
-|Property                             | Description |
-| ---                                 | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |arns                                 | The Amazon Resource Name (ARN) that identifies the repository.|
 |names                                | The name of the repository.|
 |uris                                 | The URI for the repository. |

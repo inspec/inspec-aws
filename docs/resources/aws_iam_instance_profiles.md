@@ -19,12 +19,14 @@ Ensure that an instance profile name exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on IAM Instance Profile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | paths | The path to the instance profile. |
 | instance_profile_names | The name identifying the instance profile. |
 | instance_profile_ids | The stable and unique string identifying the instance profile. |

@@ -3,7 +3,7 @@ title: About the aws_iam_saml_providers Resource
 platform: aws
 ---
 
-# aws\_iam\_saml\_providers
+# aws_iam_saml_providers
 
 Use the `aws_iam_saml_providers` InSpec audit resource to test properties of some or all AWS IAM SAML Providers.
 
@@ -18,15 +18,15 @@ An `aws_iam_saml_providers` resource block returns all IAM SAML Providers and al
 
 #### Parameters
 
-##### saml\_provider\_arn _(required)_
+saml_provider_arn _(required)_
 
 This resource accepts a single parameter, the ARN of the SAML Provider.
 This can be passed either as a string or as a `saml_provider_arn: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property       | Description|
-| ---           | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |provider\_arns | The ARNs of the returned providers. |
 |valid\_untils  | The expiration date and time for the SAML provider.  |
 |entries        | Provides access to the raw results of the query, which can be treated as an array of hashes. |

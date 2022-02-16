@@ -14,14 +14,14 @@ Use the `aws_route_tables` InSpec audit resource to test the properties of all r
 
 ### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html).
 
 ## Properties
 
-|Property                                    | Description                                       |   Field           |
-| ----------------------------               | ---------------------------------                 |   ---             |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | route\_table\_ids                          | The route table IDs                               | `route_table_id`  |
 | vpc\_ids                                   | The VPC IDs                                       | `vpc_id`          |
 | entries                                    | Provides access to the raw results of the query, which can be treated as an array of hashes. | Not Applicable | 

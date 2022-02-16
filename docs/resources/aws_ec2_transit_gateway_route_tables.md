@@ -17,15 +17,15 @@ Verify that a Transit Gateway route table ID exists.
 
 An `aws_ec2_transit_gateway_route_tables` resource block uses an optional filter to select a group of Elastic IPs and then test that group.
 
-### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on Transit Gateway route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetable.html) for additional information.
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | transit_gateway_route_table_ids | The ID of the Transit Gateway route table. |
 | transit_gateway_ids | The ID of the Transit Gateway. |

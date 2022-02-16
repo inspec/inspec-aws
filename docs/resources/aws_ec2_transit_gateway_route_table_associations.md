@@ -21,12 +21,14 @@ Verify whether a transit gateway route table ID exists.
 
 `transit_gateway_route_table_id` _(required)_
 
+The ID of the transit gateway route table.
+
 For addition information, check out the [AWS documentation on transit gateway route table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetableassociation.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | transit_gateway_route_table_ids | The ID of the transit gateway route table. |
 | resource_types | The resource type. Valid values are: `vpc`, `vpn`, `direct-connect-gateway`, `peering`, and `connect`. |
 | resource_ids | The ID of the resource. |

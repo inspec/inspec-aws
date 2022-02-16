@@ -17,15 +17,13 @@ Ensure that IP set exists.
 
 ## Parameters
 
-`ip_set_id` _(required)_
-
-The ID for an IP set.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on `AWS::WAF::IPSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-ipset.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | ip_set_ids | The IPSetId for an IPSet. | ip_set_id |
 | names | A friendly name or description of the IPSet. | name |

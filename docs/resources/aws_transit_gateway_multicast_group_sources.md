@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | group_ip_addresses | The IP address of the transit gateway multicast group. | group_ip_address |
 | transit_gateway_attachment_ids | The attachment ID of the transit gateway. | transit_gateway_attachment_id |

@@ -17,7 +17,7 @@ Ensure that a particular CloudFront distribution exists in `aws_cloudfront_distr
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html).
 

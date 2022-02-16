@@ -21,7 +21,9 @@ Use the `aws_amis` InSpec audit resource to test properties of some or all AWS A
       it { should exist }
     end
 
-#### Parameters
+## Parameters
+
+This resource does not require any required parameters.
 
 This resource must be provided with the parameter 'all_amis' (returns ALL AMIs available to you) OR a combination of the following.
 

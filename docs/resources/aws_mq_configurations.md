@@ -19,11 +19,11 @@ For additional information, see the [AWS documentation on AWS MQ configuration](
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description| Field|
+| Property | Description | Fields | 
 | --- | --- | --- |
 | arns | The ARN of the configuration.| arn |
 | authentication_strategies |  The authentication strategy associated with the configuration. The default is SIMPLE.| authentication_strategy |

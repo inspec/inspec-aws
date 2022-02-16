@@ -19,14 +19,14 @@ Ensure that a database name exists.
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on Glue Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | names | The name of a database. For Hive compatibility, this is folded to lowercase when it is stored. |
 | descriptions | A description of a database. |
 | location_uris | The location of a database (for example, an HDFS path). |

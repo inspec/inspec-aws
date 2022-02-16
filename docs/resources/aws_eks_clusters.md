@@ -12,10 +12,10 @@ Use the `aws_eks_clusters` resource to test the configuration of a collection of
     describe aws_eks_clusters do
       its('names.count') { should cmp 10 }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 

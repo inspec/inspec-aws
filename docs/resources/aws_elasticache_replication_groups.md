@@ -14,14 +14,14 @@ An `aws_elasticache_replication_groups` resource block collects a group of Elast
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |ids                       | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group. |
 |node\_types               | The name of the compute and memory capacity node type for the replication group, e.g. `cache.m5.large`. |
 |status                    | The current state of the replication group, e.g. `creating`, `available`. |

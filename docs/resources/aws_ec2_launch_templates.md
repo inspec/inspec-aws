@@ -11,21 +11,18 @@ Use the `aws_ec2_launch_templates` InSpec audit resource to test properties of a
 
 An `aws_ec2_launch_templates` resource block declares the tests for a all the AWS Launch templates.
 
-describe aws_ec2_launch_templates do
-it { should exist }
-end
+    describe aws_ec2_launch_templates do
+        it { should exist }
+    end
 
 ## Parameters
 
-### launch_templates_id
-
-The ID of the EC2 launch_templates. This is in the format of `lt-` followed by 8 or 17 hexadecimal characters.
-This can be passed either as a string or as an `launch_templates_id: 'value'` key-value entry in a hash.
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property                 | Description|
-| ---                     | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |launch_template_name     | The name of launch template.|
 |launch_template_id       | The id of the launch template. |
 |create_time              | The create time of the launch template. |

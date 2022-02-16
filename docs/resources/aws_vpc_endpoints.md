@@ -23,14 +23,14 @@ An `aws_vpc_endpoints` resource block uses an optional filter to select a group 
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html).
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |vpc\_endpoint\_ids       | This property provides a list of the VPC Endpoint IDs that the matched VPC Endpoints serve as strings. |
 |vpc\_endpoint\_types | The type of the VPC Endpoint for the match VPC Endpoints. |
 |vpc\_ids           | The IDs of the VPCs in which the endpoints reside. |

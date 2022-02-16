@@ -22,9 +22,9 @@ Ensure that an `aws_dhcp_options` exists
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-#### dhcp\_options\_id _(required)_
+dhcp_options_id _(required)_
 
 This resource accepts a single parameter, the DHCP Options ID which uniquely identifies the DHCP Options.
 This can be passed either as a string or as a `dhcp_options_id: 'value'` key-value entry in a hash.

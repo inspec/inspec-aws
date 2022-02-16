@@ -15,9 +15,9 @@ Ensure you have exactly three DB parameter groups.
       its('db_parameter_group_names.count') { should cmp 3 }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html) for additional information.
 

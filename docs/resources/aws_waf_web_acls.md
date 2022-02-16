@@ -19,13 +19,13 @@ Ensure that web ACL exists.
 
 ## Parameters
 
-No required parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAFv2::WebACL` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | web_acl_ids | The unique identifier for the web ACL. | web_acl_id |
 | names | The name of the web ACL. | name |

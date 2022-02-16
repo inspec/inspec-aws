@@ -23,16 +23,18 @@ Ensure that the public key exists without passing any parameter.
 
 ## Parameters
 
-`user_name` _(required)_ 
+This resource does not require any required parameters.
 
-The IAM user name associated with the SSH public key. The above required parameter is optional.
+`user_name` _(optional)_ 
+
+The IAM user name associated with the SSH public key. The above parameter is optional.
 
 For additional information, see the [AWS documentation on AWS IAM AccessKey.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html).
 
 ## Properties
 
-| Property           | Description                                           | Field_Name        |
-| :----------------: | :---------------------------------------------------: | :---------------: |
+| Property | Description | Fields |
+| --- | --- | --- |
 | user_names         | The IAM user name associated with the SSH public key. | user_name         |
 | ssh_public_key_ids | The unique identifier for the SSH public key.         | ssh_public_key_id |
 | statuses           | The status of the SSH public key.                     | status            |

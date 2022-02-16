@@ -19,7 +19,7 @@ Ensure that a listener ARN exists.
 
 ## Parameters
 
-`listener_arn`  _(required)_
+`listener_arn` _(required)_
 
 The ARN of the listener.
 
@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 ## Properties
 
 | Property | Description | Fields |
-| --- | ---    | ---    |
+| --- | --- | --- |
 | rule_arns    | The Amazon Resource Name (ARN) of the rule. | rule_arns    |
 | priorities   | The rule priority. | priorities   |
 | conditions   | The conditions for listener rules. Each rule can include zero or one of the following conditions: `http-request-method` , `host-header` , `path-pattern` , and `source-ip`, and zero or more of the following conditions: `http-header` and `query-string`. | conditions   |

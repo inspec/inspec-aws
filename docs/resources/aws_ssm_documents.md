@@ -17,14 +17,14 @@ Use the `aws_ssm_documents` InSpec audit resource to test properties of a collec
     
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |names                        | Provides the name of the Systems Manager document. |
 |owners                       | Provides the AWS user account that created the document. |
 |platform\_types              | Provides the list of OS platforms compatible with this Systems Manager document. |

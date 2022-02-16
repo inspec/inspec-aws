@@ -17,14 +17,14 @@ An `aws_iam_roles` resource block returns all IAM Roles and allows the testing o
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 
 ## Properties
 
-|Property                       | Description |
-| ---                           | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |paths                          | The path to the role. |
 |role_names                     | The name of the role. |
 |role_ids                       | The ID of the role. |

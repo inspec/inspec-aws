@@ -19,17 +19,17 @@ An `aws_kms_keys` resource block uses an optional filter to select a group of KM
     describe aws_kms_keys do
       its('entries.count') { should cmp 10 }
     end
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html).
 
 ## Properties
 
-|Property  | Description|
-| ---      | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |key\_ids  | The IDs of the returned keys. |
 |key\_arns | The Amazon Resource Names of the returned keys. |
 |entries   | Provides access to the raw results of the query, which can be treated as an array of hashes. |

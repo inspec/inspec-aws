@@ -19,11 +19,13 @@ Ensure that VPC Peering Connection ID exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 VPC Peering Connection.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | accepter_vpc_infos | Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection. | accepter_vpc_info |
 | expiration_times | The time that an unaccepted VPC peering connection will expire. | expiration_time |

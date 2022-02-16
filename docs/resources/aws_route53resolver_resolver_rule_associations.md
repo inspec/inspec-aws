@@ -19,12 +19,14 @@ Ensure that a resolver name exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverruleassociation.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | ids | The ID of the association between a Resolver rule and a VPC. |
 | resolver_rule_ids | The ID of the Resolver rule that you associated with the VPC that is specified by VPCId. |
 | names | The name of an association between a Resolver rule and a VPC. |

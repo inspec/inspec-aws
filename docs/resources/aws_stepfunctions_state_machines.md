@@ -19,12 +19,14 @@ Ensure that a state machine exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on Step Functions state machine](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | state_machine_arns | The ARNs of the state machine. |
 | names | The names of the state machine. |
 | types | The type of the state machine. Valid values: `STANDARD` or `EXPRESS`. |

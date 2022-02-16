@@ -16,14 +16,14 @@ An `aws_s3_buckets` resource block takes no arguments
 
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 |bucket\_names | An Array of bucket names. |
 |tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
 |entries       | Provides access to the raw results of the query, which can be treated as an array of hashes. |

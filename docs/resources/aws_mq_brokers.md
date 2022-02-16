@@ -19,11 +19,11 @@ For additional information, see the [AWS documentation on AWS MQ Broker](https:/
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 ## Properties
 
-| Property            | Description                                                               | Field             |
+| Property            | Description                                                               | Fields            |
 | :------------------:| :-----------------------------------------------------------------------: | :---------------: |
 | broker_arns         | The broker's Amazon Resource Name (ARN).                                  | broker_arn        |
 | broker_names        | The name of the broker. This value must be unique in your AWS account, 1-50 characters long, contain only letters, numbers, dashes, and underscores, and not contain white spaces, brackets, wildcard characters, or special characters.           | broker_name |

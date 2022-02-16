@@ -21,14 +21,14 @@ Ensure you have exactly 3 instances
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs_gateway).
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | db_instance_identifiers     | The unique IDs of the RDS Instances returned. |
 | db_instance_classes         | The list of the name of the compute and memory capacity class of the DB instances.|
 | db_security_groups          | A list of DB security group elements containing `DBSecurityGroup.Name` and `DBSecurityGroup.Status` subelements.|

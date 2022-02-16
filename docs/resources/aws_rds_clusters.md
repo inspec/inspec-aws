@@ -19,7 +19,7 @@ Ensure you have exactly 3 clusters
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs_gateway).
 

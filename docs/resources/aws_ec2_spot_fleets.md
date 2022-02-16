@@ -19,13 +19,13 @@ Ensure that spot fleets exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 Spot Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | activity_statuses | The progress of the Spot Fleet request. | activity_status |
 | create_times | The creation date and time of the request. | create_time |

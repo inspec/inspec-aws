@@ -27,7 +27,7 @@ For additional information, see the [AWS documentation on AWS EC2 Client VPN aut
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | client_vpn_endpoint_ids | The ID of the Client VPN endpoint with which the authorization rule is associated. | client_vpn_endpoint_id |
 | descriptions | A brief description of the authorization rule. | description |

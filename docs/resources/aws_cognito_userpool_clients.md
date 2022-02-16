@@ -19,6 +19,8 @@ Ensure that a user pool client exists.
 
 `user_pool_id` _(required)_
 
+The user pool ID of the user pools.
+
 For additional information, see the [AWS documentation on Cognito user pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html).
 
 ## Properties

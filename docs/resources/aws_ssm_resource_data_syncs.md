@@ -19,13 +19,13 @@ Ensure that the resource data syncs exists:
 
 ## Parameters
 
-This resource does not expect any required parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS SSM ResourceDataSync](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-resourcedatasync.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | sync_names | The name of the resource data sync. | sync_name |
 | sync_types | The type of resource data sync. | sync_type |

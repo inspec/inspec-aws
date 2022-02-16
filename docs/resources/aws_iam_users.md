@@ -16,16 +16,16 @@ An `aws_iam_users` resource block returns all IAM Users and allows the testing o
       its('usernames') { should include 'payroll-admin' }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html).
 
 ## Properties
 
-|Property                         | Description|
-| ---                             | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | usernames                       | The usernames of the returned Users. |
 | user\_arns                      | The Amazon Resource Names of the returned Users. |
 | user\_ids                       | The IDs of the returned Users. |

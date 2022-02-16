@@ -19,11 +19,13 @@ Ensure that the host exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on AWS EC2 host.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-host.html).
 
 ## Properties
 
-| Property | Description | Field |
+| Property | Description | Fields |
 | --- | --- | --- |
 | auto_placements | Whether auto-placement is on or off. | auto_placement |
 | availability_zones | The Availability Zone of the Dedicated host. | availability_zone |

@@ -3,7 +3,7 @@ title: About the aws_dms_endpoint Resource
 platform: aws
 ---
 
-# aws\_dms\_endpoint
+# aws_dms_endpoint
 
 Use the `aws_dms_endpoint` InSpec audit resource to test properties of a single specific AWS Database Migration Service (DMS) endpoint.
 
@@ -25,7 +25,7 @@ For additional information, see the [AWS documentation on DMS endpoints](https:/
 
 ## Properties
 
-| Property | Description|
+| Property | Description |
 | --- | --- |
 | endpoint_identifier | The database endpoint identifier. |
 | endpoint_type | The endpoint type. |

@@ -19,14 +19,14 @@ Ensure that Transit Gateway Connect exists.
 
 ## Parameters
 
-This resource does not require any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on AWS EC2 TransitGatewayConnect](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayconnect.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | transit_gateway_attachment_ids | The ID of the Connect attachment. |
 | transport_transit_gateway_attachment_ids | The ID of the attachment from which the Connect attachment was created. |
 | transit_gateway_ids | The ID of the transit gateway. |

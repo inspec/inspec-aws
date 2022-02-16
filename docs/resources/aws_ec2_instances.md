@@ -14,15 +14,15 @@ An `aws_ec2_instances` resource block collects a group of EC2 Instances and then
     describe aws_ec2_instances do
       it { should exist }
     end   
-    
-#### Parameters
 
-This resource does not expect any parameters.
+## Parameters
+
+This resource does not require any required parameters.
 
 ## Properties
 
-|Property        | Description|
-| ---            | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |instance\_ids   | The ID of the EC2 instance. The field name is `instance_id`. |
 |names           | The value of the `Name` tag if applied to the instance. The filed name is `name`. |
 |vpc\_ids        | The VPC with which the EC2 instance is associated. The field name is `vpc_id`. |

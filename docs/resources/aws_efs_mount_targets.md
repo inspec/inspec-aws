@@ -19,14 +19,16 @@ Ensure that a file system exists.
 
 ## Parameters
 
-`file_system_ids` _(required)_
+`file_system_id` _(required)_
+
+The ID of the file system for which to create the mount target.
 
 For additional information, see the [AWS documentation on EFS Mount Target](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | owner_ids | The owner IDs of the mount targets. |
 | mount_target_ids | IDs of the file system whose mount targets you want to list (String). |
 | file_system_ids | The IDs of the file system for which to create the mount target. |

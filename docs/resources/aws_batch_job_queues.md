@@ -17,7 +17,7 @@ Ensure that a job queue exists.
 
 ## Parameters
 
-This resource does not accept any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS Batch job queues documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 

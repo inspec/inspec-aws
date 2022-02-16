@@ -15,16 +15,16 @@ Use the `aws_ebs_snapshots` InSpec audit resource to test properties of a collec
       its('snapshot_ids.count') { should cmp 3 }
     end
 
-#### Parameters
+## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 See also the [AWS documentation on EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSsnapshots.html).
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 |snapshot\_ids | An array of the unique IDs of the EBS Snapshots that are returned. |
 |owner\_ids    | An array of AWS Account IDs of the owners of the EBS Snapshots that are returned. |
 |encrypted     | An array of booleans indicating whether the EBS Snapshots returned are encrypted. |

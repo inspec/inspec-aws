@@ -17,13 +17,13 @@ Use the `aws_waf_byte_match_sets` Chef InSpec audit resource to test the propert
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any required parameters.
 
 For additional information, see the [AWS documentation on the `AWS::WAF::ByteMatchSet` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-bytematchset.html).
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Fields | 
 | --- | --- | --- |
 | byte_match_set_ids | The unique identifier for the ByteMatchSet. | byte_match_set_id |
 | names | The name of the ByteMatchSet. | name |

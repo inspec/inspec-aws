@@ -17,12 +17,14 @@ Ensure that a task definition ARNs exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS ECS task definition documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | task_definition_arns | A list of ARNs to describe the task definition. |
 
 ## Examples

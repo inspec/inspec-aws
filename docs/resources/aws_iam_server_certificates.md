@@ -17,12 +17,16 @@ Ensure that a server certificate name exists.
       it { should exist }
     end
 
+## Parameters
+
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on IAM Instance Profile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields |
+| --- | --- | --- |
 | paths | The path to the server certificate. |
 | server_certificate_names | The name that identifies the server certificate. |
 | server_certificate_ids | The stable and unique string identifying the server certificate. |

@@ -18,8 +18,8 @@ An `aws_vpc_endpoint_services` resource block collects a group of VPC endpoint s
 
 ## Properties
 
-|Property                           | Description                                                   | Field Name     |
-| ---                               | ---                                                           | ---            |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | service_names                     | The Amazon Resource Names (ARN) of the services.              | `service_name`     |
 | service_ids                       | The IDs of the endpoint services.                             | `service_id` |
 | service_types                     | The types of services.                                        | `service_type`      |

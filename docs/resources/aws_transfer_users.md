@@ -17,12 +17,14 @@ Ensure that an user exists.
 
 ## Parameters
 
+This resource does not require any required parameters.
+
 For additional information, see the [AWS documentation on Transfer user](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html).
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description | Fields | 
+| --- | --- | --- |
 | ARNs | The ARNs of the user. |
 | home_directories | The landing directories for users when they log in to the server using the client. |
 | home_directory_types | The landing directory types you want your users' home directory to be when they log into the server. |
