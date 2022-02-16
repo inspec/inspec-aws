@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_batch_compute_environments` InSpec audit resource to test properties of multiple AWS Batch compute environments.
 
+The `AWS::Batch::ComputeEnvironment` resource defines your AWS Batch compute environment.
+
 ## Syntax
 
 Ensure that a compute environment exists.
@@ -17,9 +19,9 @@ Ensure that a compute environment exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
+For additional information, see the [AWS documentation on the `AWS::Batch::ComputeEnvironment` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
 ## Properties
 
@@ -48,6 +50,7 @@ For additional information, see the [AWS documentation on Batch compute environm
     describe aws_batch_compute_environments do
         its('states') { should include 'ENABLED' }
     end
+
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of the available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).

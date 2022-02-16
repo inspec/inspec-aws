@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_batch_job_queues` InSpec audit resource to test the properties of multiple AWS Batch job queues.
 
+The `AWS::Batch::JobQueue` resource specifies the parameters for an AWS Batch job queue definition.
+
 ## Syntax
 
 Ensure that a job queue exists.
@@ -17,9 +19,9 @@ Ensure that a job queue exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
-For additional information, see the [AWS Batch job queues documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
+For additional information, see the [AWS documentation on the `AWS::Batch::JobQueue` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 
 ## Properties
 

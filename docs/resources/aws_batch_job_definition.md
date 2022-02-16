@@ -7,7 +7,7 @@ platform: aws
 
 Use the `aws_batch_job_definition` InSpec audit resource to test the properties of a single specific Batch job definition.
 
-The AWS::Batch::JobDefinition resource specifies the parameters for an AWS Batch job definition.
+The `AWS::Batch::JobDefinition` resource specifies the parameters for an AWS Batch job definition.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Ensure that a job definition name exists.
 
 The name of the job definition.
 
-For additional information, see the [AWS documentation on Batch Job Definition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
 
 ## Properties
 

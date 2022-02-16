@@ -7,9 +7,12 @@ platform: aws
 
 Use the `aws_batch_compute_environment` InSpec audit resource to test the properties of a single AWS Batch compute environment.
 
+The `AWS::Batch::ComputeEnvironment` resource defines your AWS Batch compute environment.
+
 ## Syntax
 
 Ensure that a batch compute environment name exists.
+
     describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRONMENT_NAME') do
       it { should exist }
     end
@@ -20,7 +23,7 @@ Ensure that a batch compute environment name exists.
 
 The name of the Batch compute environment.
 
-For additional information, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
+For additional information, see the [AWS documentation on the `AWS::Batch::ComputeEnvironment` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
 ## Properties
 
