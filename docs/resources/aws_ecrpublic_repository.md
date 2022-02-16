@@ -2,7 +2,7 @@
 title: About the aws_ecrpublic_repository Resource
 ---
 
-# aws\_ecrpublic\_repository
+# aws_ecrpublic_repository
 
 Use the `aws_ecrpublic_repository` InSpec audit resource to test the properties of a single AWS Elastic Container Registry (ECR) public repository.
 
@@ -24,7 +24,7 @@ The value of the `repository_name` can be provided as a string.
 
 The repository name must be provided. The registry id is optional.
 
-#### repository\_name _(required)_
+#### repository_name _(required)_
 
 The name of the ECR repository must satisfy the following constraints:
 
@@ -39,10 +39,10 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, this res
 
 ## Properties
 
-|Property                  | Description |
-| ---                      | --- |
-|repository\_name          | The name of the repository.|
-|registry\_id              | The AWS account ID associated with the registry that contains the repository. |
+| Property | Description |
+| :---: | :--- |
+| repository_name | The name of the repository.|
+| registry_id| The AWS account ID associated with the registry that contains the repository. |
 
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html)

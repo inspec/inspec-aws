@@ -26,8 +26,8 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Properties
 
-| Property | Description | Field_Name |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | task_definition_arn | The full Amazon Resource Name (ARN) of the task definition. | task_definition_arn |
 | container_definitions | A list of container definitions in JSON format that describe the different containers that make up your task. | container_definitions |
 | container_definitions (name) | The name of a container.  | container_definitions_names |

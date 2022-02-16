@@ -23,8 +23,8 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |names    | Provides the name of the parameter. |
 |types    | Provides the type of the parameter. |
 |key_ids    | Provides the key id of the parameter. |

@@ -3,7 +3,7 @@ title: About the aws_lambdas Resource
 platform: aws
 ---
 
-# aws\_lambdas
+# aws_lambdas
 
 Use the `aws_lambdas` resource to test the collection of lambdas deployed into an account.
 
@@ -21,10 +21,10 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
-|names                 | The names of the lambda deployed. |
-|tags                  | The tags of the lambda deployed.  |
+| Property | Description| Field |
+| :---: | :--- | :---: |
+| names | The names of the lambda deployed. |
+| tags | The tags of the lambda deployed.  |
 
 ## Examples
 

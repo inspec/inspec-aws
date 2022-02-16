@@ -3,7 +3,7 @@ title: About the aws_ssm_activation Resource
 platform: aws
 ---
 
-# aws\_ssm\_activation
+# aws_ssm_activation
 
 Use the `aws_ssm_activation` InSpec audit resource to test properties of a ssm activation.
 
@@ -15,9 +15,9 @@ Use the `aws_ssm_activation` InSpec audit resource to test properties of a ssm a
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### activation_id _(required)_
+`activation_id` _(required)_
 
 This resource accepts a single parameter, the SSM Activation ID.
 This can be passed either as a string or as a `activation_id: 'value'` key-value entry in a hash.
@@ -26,17 +26,17 @@ See also the [AWS documentation on SSM Activations](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
-|activation\_id               | Provides  ID created by Systems Manager when you submitted the activation. |
-|created\_date                | Provides the date the activation was created. |
-|default\_instance\_name      | Provides the name for the managed instance when it is created. |
+| Property | Description |
+| :---: | :--- |
+|activation_id               | Provides  ID created by Systems Manager when you submitted the activation. |
+|created_date                | Provides the date the activation was created. |
+|default_instance_name      | Provides the name for the managed instance when it is created. |
 |description                  | Provides a user defined description of the activation. |
-|expiration\_date             | Provides the date when this activation can no longer be used to register managed instances. |
+|expiration_date             | Provides the date when this activation can no longer be used to register managed instances. |
 |expired                      | Whether or not the activation is expired. |
-|iam\_role                    | Provides the Amazon Identity and Access Management (IAM) role to assign to the managed instance. |
-|registration\_limit          | Provides the maximum number of managed instances that can be registered with this activation. |
-|registrations\_count         | Provides the number of managed instances already registered with this activation. |
+|iam_role                    | Provides the Amazon Identity and Access Management (IAM) role to assign to the managed instance. |
+|registration_limit          | Provides the maximum number of managed instances that can be registered with this activation. |
+|registrations_count         | Provides the number of managed instances already registered with this activation. |
 |tags                         | Provides the tags assigned to the activation. |
 
 For a comprehensive list of properties available, see [the API reference documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_Activation.html)

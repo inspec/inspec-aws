@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS SES Template](http
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | template_name | The name of the template. |
 | subject_part | The subject line of the email. |
 | text_part | The email body that will be visible to recipients whose email clients do not display HTML. |

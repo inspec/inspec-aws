@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on the `AWS::WAF::XssMatc
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | xss_match_set_id | A unique identifier for an `XssMatchSet`. |
 | name | The name of the `XssMatchSet`. |
 | xss_match_tuples | Specifies the parts of web requests that you want to inspect for cross-site scripting attacks. |

@@ -30,7 +30,7 @@ For additional information, see the [AWS documentation on AWS API Metric.](https
 ## Properties
 
 | Property | Description | Field |
-| --- | --- | --- |
+| :---: | :--- | :---: |
 | id | The ID used to identify the metrics configuration. | id |
 | filter.access_point_arn | The access point ARN used when evaluating a metrics filter. | filter.access_point_arn |
 | filter.and.access_point_arn | The access point ARN used when evaluating an AND predicate. | filter.and.access_point_arn |

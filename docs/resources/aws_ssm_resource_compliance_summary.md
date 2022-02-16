@@ -3,7 +3,7 @@ title: About the aws_ssm_resource_compliance_summary Resource
 platform: aws
 ---
 
-# aws\_ssm\_resource\_compliance\_summary
+# aws_ssm_resource_compliance_summary
 
 Use the `aws_ssm_resource_compliance_summary` InSpec audit resource to test properties of a ssm resource compliance summary.
 
@@ -15,33 +15,31 @@ Use the `aws_ssm_resource_compliance_summary` InSpec audit resource to test prop
       it { should exist }
     end
 
+## Parameters
 
-#### Parameters
-
-##### resource_id _(required)_
+`resource_id` _(required)_
 
 This resource requires the SSM Resource ID parameter.
 This can be passed either as a string or as a `resource_id: 'value'` key-value entry in a hash.
 
-##### compliance_type _(optional)_
+`compliance_type` _(optional)_
 
 This optional parameter allows you to filter based on resource_id and compliance type together. This must be passed as a string `compliance_type: 'value'`.
 
-##### overall_severity _(optional)_
+`overall_severity` _(optional)_
 
 This optional parameter allows you to filter based on resource_id and overall severity together. This must be passed as a string `overall_severity: 'value'`.
 
-##### status _(optional)_
+`status` _(optional)_
 
 This optional parameter allows you to filter based on resource_id and status together. This must be passed as a string `status: 'value'`.
 
 See also the [AWS documentation on SSM Resource Compliance Summary](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#compliance-view-results).
 
-
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description |
+| :---: | :--- |
 |compliance_type              | Provides the compliance type. |
 |compliant_summary            | Provides a list of items that are compliant for the resource. |
 |execution_summary            | Provides information about the execution |
@@ -90,6 +88,7 @@ Use `should_not` to test the entity should not exist.
     end
 
 ## AWS Permissions
+
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `SSM:Client:ListResourceComplianceSummariesResult` action with Effect set to Allow.
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Systems Manager](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awssystemsmanager.html).

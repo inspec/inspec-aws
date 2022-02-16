@@ -23,8 +23,8 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |db_snapshot_identifiers    | The unique IDs of the RDS snapshots returned. |
 |entries                      | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 

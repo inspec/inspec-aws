@@ -22,8 +22,8 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |topic\_arns | The ARNs of the SNS Topics. |
 |entries     | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 

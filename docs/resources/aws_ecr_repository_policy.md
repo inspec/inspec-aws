@@ -27,7 +27,7 @@ The value of the `repository_name` can be provided as a string.
 
 The repository name must be provided.
 
-#### repository\_name _(required)_
+`repository_name` _(required)_
 
 The name of the ECR repository must satisfy the following constraints:
 - Regex pattern `(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*`.

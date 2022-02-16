@@ -37,33 +37,33 @@ It can be passed either as a string or as a `network_acl_id: 'value'` key-value 
 
 ## Properties
 
-|Property         | Description                                                    |
-| ---             | ---                                                            |
-|network_acl_id | The ID of the network ACL.                                     |
-|is_default       | Indicates whether this is the default network ACL for the VPC. |
-|vpc_id           | The ID of the VPC for the network ACL.                         |
-|owner_id         | The ID of the AWS account that owns the network ACL.           |
-|associated_subnet_ids | The ID of the associated subnets to the network ACL.      |
-|egress           | All rules that are applied to traffic leaving the subnet.      |
-|ingress          | All rules that are applied to traffic incoming to the subnet.  |
-|associations     | All subnet associations on the network ACL.                    |
-|tags             | A hash with each key-value pair corresponding to a network ACL. |
-|egress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the egress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
-|ingress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the ingress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
+| Property | Description |
+| :---: | :--- |
+| network_acl_id | The ID of the network ACL.                                     |
+| is_default       | Indicates whether this is the default network ACL for the VPC. |
+| vpc_id           | The ID of the VPC for the network ACL.                         |
+| owner_id         | The ID of the AWS account that owns the network ACL.           |
+| associated_subnet_ids | The ID of the associated subnets to the network ACL.      |
+| egress           | All rules that are applied to traffic leaving the subnet.      |
+| ingress          | All rules that are applied to traffic incoming to the subnet.  |
+| associations     | All subnet associations on the network ACL.                    |
+| tags             | A hash with each key-value pair corresponding to a network ACL. |
+| egress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the egress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
+| ingress_rule_number_*`ACL_RULE_NUMBER`* | This is a dynamically formed property of the ingress ACL rule for a specific *`ACL_RULE_NUMBER`*. See below for nested details and examples. |
 
 ## Nested Properties of dynamic egress and ingress rule number properties
 
-|Nested Property     | Description                                                                          |
-| ---                | ---                                                                                  |
-|cidr_block          | The IPv4 network range to allow or deny, in CIDR notation.                           |
-|ipv_6_cidr_block    | The IPv6 network range to allow or deny, in CIDR notation.                           |
-|protocol            | The protocol specified in the entry. Accepted values are: `tcp`, `udp`, `icmp`, or a protocol number. |
-|rule_action         | Allows or denies the matching traffic. Accepted values are: `allow` or `deny`.       |
-|rule_number         | The number of an entry (in other words, rule) in the set of ACL entries.             |
-|port_range.from     | The start of the port range specified in the entry.                                  |
-|port_range.to       | The end of the port range specified in the entry.                                    |
-|icmp_type_cod.code  | The ICMP code specified in the entry, if any.                                        |
-|icmp_type_code.type | The ICMP type specified in the entry, if any.                                        |
+| Nested Property     | Description                                                                          |
+| :---:                | :---                                                                                |
+| cidr_block          | The IPv4 network range to allow or deny, in CIDR notation.                           |
+| ipv_6_cidr_block    | The IPv6 network range to allow or deny, in CIDR notation.                           |
+| protocol            | The protocol specified in the entry. Accepted values are: `tcp`, `udp`, `icmp`, or a protocol number. |
+| rule_action         | Allows or denies the matching traffic. Accepted values are: `allow` or `deny`.       |
+| rule_number         | The number of an entry (in other words, rule) in the set of ACL entries.             |
+| port_range.from     | The start of the port range specified in the entry.                                  |
+| port_range.to       | The end of the port range specified in the entry.                                    |
+| icmp_type_cod.code  | The ICMP code specified in the entry, if any.                                        |
+| icmp_type_code.type | The ICMP type specified in the entry, if any.                                        |
 
 You can find detailed documentation at [NetworkAclEntry](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/EC2/Types/NetworkAclEntry.html)
 

@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Service Catalog la
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | constraint_detail (constraint_id) | The identifier of the constraint. |
 | constraint_detail (type) | The type of constraint. Valid values are: `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`. |
 | constraint_detail (description) | The description of the constraint. |

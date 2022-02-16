@@ -23,8 +23,8 @@ For additional information, see the [AWS ECS task definition documentation](http
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | task_definition_arns | A list of ARNs to describe the task definition. |
 
 ## Examples

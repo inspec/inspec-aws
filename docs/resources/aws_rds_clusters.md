@@ -25,8 +25,8 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |cluster_identifier    | The unique IDs of the RDS clusters returned. |
 |database_name    | The name of the database associated with each RDS cluster. |
 |cluster_\members    | The RDS instances attached to each RDS cluster. |

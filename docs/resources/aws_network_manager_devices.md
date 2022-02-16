@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | device_ids | The ID of the device. | device_id |
 | device_arns | The Amazon Resource Name (ARN) of the device. | device_arn |
 | global_network_ids | The ID of the global network. | global_network_id |

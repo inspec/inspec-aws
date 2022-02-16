@@ -28,8 +28,8 @@ See also the [AWS documentation on SSM Documents](https://docs.aws.amazon.com/sy
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description |
+| :---: | :--- |
 |sha\_1                       | Provides the SHA1 hash of the document, which you can use for verification. |
 |hash                         | Provides the Sha256 or Sha1 hash created by the system when the document was created. |
 |hash\_type                   | Provides the hash type of the document. Valid values include Sha256 or Sha1. |

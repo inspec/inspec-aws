@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Lambda permission]
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | sids | The statement ID of the function. |
 | effects | The effect of the function. |
 | principals | The AWS services or accounts that invokes the function. |

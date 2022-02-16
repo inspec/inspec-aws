@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Events Rule](https://d
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | names | The name of the rule. |
 | arns | The Amazon Resource Name (ARN) of the rule. |
 | event_patterns | The event pattern. |

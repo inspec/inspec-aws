@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Logs MetricFilter]
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | filter_name | The name of the metric filter. |
 | filter_pattern | A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message. |
 | metric_transformations (metric_name) | The metric transformations. The name of the CloudWatch metric. |

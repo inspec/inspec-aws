@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 
 ## Properties
 
-| Property | Description|
-| :---: | :---: |
+| Property | Description |
+| :---: | :--- |
 | path | The path to the server certificate. |
 | server_certificate_name | The name that identifies the server certificate. |
 | server_certificate_id | The stable and unique string identifying the server certificate. |

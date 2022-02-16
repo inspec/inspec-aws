@@ -3,7 +3,7 @@ title: About the aws_transit_gateway Resource
 platform: aws
 ---
 
-# aws\_transit\_gateway
+# aws_transit_gateway
 
 Use the `aws_transit_gateway` InSpec audit resource to test properties of a transit gateway.
 
@@ -17,7 +17,7 @@ An `aws_transit_gateway` resource block uses the parameter to select a transit g
 
 #### Parameters
 
-##### transit_gateway_id _(required)_
+`transit_gateway_id` _(required)_
 
 This resource accepts a single parameter, the Transit Gateway ID.
 This can be passed either as a string or as a `transit_gateway_id: 'value'` key-value entry in a hash.
@@ -26,15 +26,15 @@ See also the [AWS documentation on Transit Gateways](https://docs.aws.amazon.com
 
 ## Properties
 
-| Property                               | Description                                                             |
-| -------------------------------------- | ----------------------------------------------------------------------- |
-| transit\_gateway\_id                   | Provides the ID of the Transit Gateway.                                 |
-| transit\_gateway\_arn                  | Provides the ARN of the Transit Gateway.                                |
-| transit\_gateway\_owner\_id            | Provides the id of the owner of the Transit Gateway.                    |
-| default_route_table_id                 | Provides the id of the default route table of the Transit Gateway.      |
-| propagation\_default\_route\_table\_id | Provides the propagation default route table id for the Transit gateway |
-| dns\_support                           | Provides the status of dns support for the Transit Gateway              |
-| vpn\_ecmp\_support                     | Provides the status of vpn ecmp support for the Transit Gateway         |
+| Property | Description |
+| :---: | :--- |
+| transit_gateway_id | Provides the ID of the Transit Gateway. |
+| transit_gateway_arn | Provides the ARN of the Transit Gateway. |
+| transit_gateway_owner_id | Provides the id of the owner of the Transit Gateway. |
+| default_route_table_id | Provides the id of the default route table of the Transit Gateway. |
+| propagation_default_route_table_id | Provides the propagation default route table id for the Transit gateway. |
+| dns_support | Provides the status of dns support for the Transit Gateway. |
+| vpn_ecmp_support | Provides the status of vpn ecmp support for the Transit Gateway. |
 
 ## Examples
 

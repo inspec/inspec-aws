@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on the `AWS::WAFv2::WebAC
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | web_acl_id | The unique identifier for the web ACL. |
 | name | The name of the web ACL. |
 | default_action.type | Specifies how you want AWS WAF to respond to requests that match the settings in a Rule. |

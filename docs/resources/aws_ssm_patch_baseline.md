@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS SSM patch baseline
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | baseline_id | The ID of the patch baseline. | baseline_id |
 | name | The name of the patch baseline. | name |
 | operating_system | Returns the operating system specified for the patch baseline. | operating_system |

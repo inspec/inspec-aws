@@ -20,8 +20,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |ids                 | The ID of the internet gateway. The field name is `id`.|
 |names               | The value of the `Name` tag. It is `nil` if not defined. The field name is `name`.|
 |vpc\_ids            | The ID of the attached VPC. It is `nil` if the resource is in a `detached` state. The field name is `vpc_id`.|

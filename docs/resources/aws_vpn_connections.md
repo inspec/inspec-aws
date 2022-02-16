@@ -23,8 +23,8 @@ See also the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |vpn\_connection\_ids    | This property provides all the IDs of the VPN Connections. |
 |vpn\_gateway\_ids       | This property provides all the IDs of the virtual private gateways associated with the VPN Connections. |
 |outside\_ip\_addresses  | This property provides the outside IP addresses of the VPN Connections. |

@@ -20,11 +20,11 @@ The value of the `cache_cluster_id` can be provided as a string.
       its('engine') { should cmp 'redis' }
     end
 
-#### Parameters
+## Parameters
 
 The ElastiCache cluster ID must be provided.
 
-##### cache\_cluster\_id _(required)_
+`cache_cluster_id` _(required)_
 
 The ID of the ElastiCache cluster:
  - contains between 1 and 50 alphanumeric characters or hyphens, 
@@ -35,15 +35,15 @@ It can be passed either as a string or as a `cache_cluster_id: 'value'` key-valu
 
 ## Properties
 
-|Property               | Description |
-| ---                   | --- |
-|cache\_cluster\_id     | The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster.|
-|engine                 | The name of the cache engine, e.g. `redis`. |
-|node_ids               | The id list of all cluster nodes. |
-|ports                  | A hash of the node ID and port number pairs. |
-|status                 | The current state of the cluster, e.g. `creating`, `available`. |
-|encrypted\_at\_rest    | Indicates whether the content is encrypted at rest or not. |
-|encrypted\_at\_transit | Indicates whether the content is encrypted at transit or not. |
+| Property | Description |
+| :---: | :--- |
+| cache_cluster_id | The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster.|
+| engine | The name of the cache engine, e.g. `redis`. |
+| node_ids | The id list of all cluster nodes. |
+| ports | A hash of the node ID and port number pairs. |
+| status | The current state of the cluster, e.g. `creating`, `available`. |
+| encrypted_at_rest | Indicates whether the content is encrypted at rest or not. |
+| encrypted_at_transit | Indicates whether the content is encrypted at transit or not. |
 
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheCluster.html).

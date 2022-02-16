@@ -15,7 +15,7 @@ An `aws_iam_account_alias` resource block may be used to perform tests on detail
       it { should exist }
     end
     
-#### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -23,8 +23,8 @@ See also the [AWS documentation on Account Aliases](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property | Description|
-| ---     | --- |
+| Property | Description |
+| :---: | :--- |
 |alias    | String containing the Alias of the account.|
 
 ## Examples

@@ -38,8 +38,8 @@ It can be passed as a `principal: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property        | Description |
-| ---            | ---         |
+| Property | Description |
+| :---: | :--- |
 | principal_type | The type of principal. |
 | principal      | The Amazon Resource Name (ARN) of the principal. |
 

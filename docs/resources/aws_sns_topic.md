@@ -2,7 +2,7 @@
 title: About the aws_sns_topic Resource
 ---
 
-# aws\_sns\_topic
+# aws_sns_topic
 
 Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS Simple Notification Service Topic.  SNS topics are channels for related events. AWS resources place events in the Simple Notification Service (SNS) topic, while other AWS resources subscribe to receive notifications when new events occur.
 
@@ -17,9 +17,9 @@ Use the `aws_sns_topic` InSpec audit resource to test properties of a single AWS
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### arn _(required)_
+`arn` _(required)_
 
 This resource accepts a single parameter, the ARN of the SNS Topic. 
 This can be passed either as a string or as a `arn: 'value'` key-value entry in a hash.
@@ -28,10 +28,10 @@ See also the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/d
 
 ## Properties
 
-|Property                       | Description|
-| ---                           | --- |
-|kms\_master\_key\_id           | Provides the ID of an AWS-managed customer master key (CMK) for Amazon SNS topic or a custom CMK. |
-|confirmed\_subscription\_count | An integer indicating the number of currently active subscriptions. |
+| Property | Description |
+| :---: | :--- |
+| kms_master_key_id | Provides the ID of an AWS-managed customer master key (CMK) for Amazon SNS topic or a custom CMK. |
+| confirmed_subscription_count | An integer indicating the number of currently active subscriptions. |
 
 ## Examples
 

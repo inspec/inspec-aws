@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 VPN Connection
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | destination_cidr_blocks | The CIDR block associated with the local subnet of the customer data center. | destination_cidr_block |
 | sources | Indicates how the routes were provided. | source |
 | states | The current state of the static route. | state |

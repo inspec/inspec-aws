@@ -19,14 +19,14 @@ An `aws_eks_cluster` resource block declares the tests for a single EKS Cluster 
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### cluster\_name _(required if resource_data not provided)_
+`cluster_name` _(required if resource_data not provided)_
 
 The name of the EKS cluster.
 This can be passed either as a string or as a `cluster_name: 'value'` key-value entry in a hash.
 
-##### resource_data _(required if cluster_name not provided)_
+`resource_data` _(required if cluster_name not provided)_
 
 A hash or the cached AWS response passed from the `aws_eks_clusters` resource.
 
@@ -34,8 +34,8 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
 
 ## Properties
 
-|Property                | Description|
-| ---                    | --- |
+| Property | Description |
+| :---: | :--- |
 |arn                     | The Amazon Resource Name (ARN) of the cluster. |
 |name                    | The name of the cluster. |
 |endpoint                | The endpoint for your Kubernetes API server. |

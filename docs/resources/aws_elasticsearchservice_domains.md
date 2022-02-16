@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | domain_name | Specifies the domain name. |
 
 ## Examples

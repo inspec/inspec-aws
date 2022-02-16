@@ -35,8 +35,8 @@ The **CIDR** block range of the route is associated to the AWS transit gateway r
 
 ## Properties
 
-|Property               | Description                                             |
-| ---                   | ---                                                     |
+| Property | Description |
+| :---: | :--- |
 |cidr_block             | The CIDR block used for destination matches.            |
 |prefix_list_id         | The ID of the prefix list used for destination matches. |
 |type                   | The type of route. Valid values: `propagated` or `static`. |

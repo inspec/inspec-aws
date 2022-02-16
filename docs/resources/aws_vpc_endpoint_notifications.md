@@ -23,8 +23,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-|Property                                   | Description|
-| ---                                       | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |vpc_endpoint_id                            | The ID of the endpoint. |
 |connection_notification_id                 | The ID of the AWS VPC endpoint connection notification. |
 |service_id                                 | The ID of the endpoint service. |

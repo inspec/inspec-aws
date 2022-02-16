@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on the `AWS::WAF::Rule` r
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | rule_id | A unique identifier for a rule. |
 | name | The name of the rule. |
 | metric_name | The name of the metrics for this rule. |

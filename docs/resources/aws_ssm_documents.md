@@ -23,8 +23,8 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |names                        | Provides the name of the Systems Manager document. |
 |owners                       | Provides the AWS user account that created the document. |
 |platform\_types              | Provides the list of OS platforms compatible with this Systems Manager document. |

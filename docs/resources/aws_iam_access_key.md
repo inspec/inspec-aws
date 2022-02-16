@@ -33,8 +33,8 @@ See also the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/
 
 ## Properties
 
-|Property        | Description|
-| ---            | --- |
+| Property | Description |
+| :---: | :--- |
 |access\_key\_id | The ID of the Access Key. |
 |username        | The IAM Username which is associated with the Access Key. |
 |status          | The status of the Access Key, e.g. "Active". |

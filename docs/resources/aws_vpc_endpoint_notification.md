@@ -32,8 +32,8 @@ See also the [AWS VPC endpoint connection notification documentation](https://do
 
 ## Properties
 
-|Property                                   | Description|
-| ---                                       | --- |
+| Property | Description |
+| :---: | :--- |
 |vpc_endpoint_id                            | The ID of the endpoint. |
 |connection_notification_id                 | The ID of the AWS VPC endpoint connection notification. |
 |service_id                                 | The ID of the endpoint service. |

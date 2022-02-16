@@ -26,8 +26,8 @@ This resource takes one parameter, the name of the hosted zone to validate.
 
 ## Properties
 
-|Property               | Description|
-| ---                   | --- |
+| Property | Description |
+| :---: | :--- |
 |name                   | The name of the hosted zone. |
 |id                     | It's id. |
 |name\_servers          | List of the associated name servers |

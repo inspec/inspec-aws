@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS SNS subscriptions.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | subscription_arns | The subscription's ARN. | subscription_arn |
 | owners | The subscription's owner. | owner |
 | protocols | The subscription's protocol. | protocol |

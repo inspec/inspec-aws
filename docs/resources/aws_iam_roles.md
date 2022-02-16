@@ -23,8 +23,8 @@ See also the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/la
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |paths                          | The path to the role. |
 |role_names                     | The name of the role. |
 |role_ids                       | The ID of the role. |

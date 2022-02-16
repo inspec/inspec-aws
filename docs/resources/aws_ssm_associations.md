@@ -23,8 +23,8 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |association\_ids             | Provides the ID of the association. |
 |association\_names           | Provides the name of the association. |
 |association\_versions        | Provides the version of the association. |

@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on `AWS::WAF::IPSet` reso
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | ip_set_ids | The IPSetId for an IPSet. | ip_set_id |
 | names | A friendly name or description of the IPSet. | name |
 

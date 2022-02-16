@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS SSM CodeSigningCon
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | code_signing_config_id | Unique identifier for the Code signing configuration. |
 | code_signing_config_arn | The Amazon Resource Name (ARN) of the Code signing configuration. |
 | description | Code signing configuration description. |

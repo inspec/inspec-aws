@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 VPC Peering Co
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | accepter_vpc_infos | Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection. | accepter_vpc_info |
 | expiration_times | The time that an unaccepted VPC peering connection will expire. | expiration_time |
 | requester_vpc_infos | Information about the requester VPC. CIDR block information is only returned when describing an active VPC peering connection. | requester_vpc_info |

@@ -33,8 +33,8 @@ It can be passed as a `service_id: 'value'` key-value entry in a hash.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | principal_types | List of types of principal. | `principal_type` |
 | principals | List of the Amazon Resource Name (ARN) of the principal. | `principal` |
 ## Examples

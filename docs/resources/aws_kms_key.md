@@ -46,8 +46,8 @@ See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/late
 
 ## Properties
 
-|Property          | Description|
-| ---              | --- |
+| Property | Description |
+| :---: | :--- |
 |key\_id            | The globally unique identifier for the key. |
 |arn               | The ARN identifier of the specified key. |
 |creation\_date     | Specifies the date and time when the key was created. |

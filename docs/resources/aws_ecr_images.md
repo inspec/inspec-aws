@@ -2,7 +2,7 @@
 title: About the aws_ecr_images Resource
 ---
 
-# aws\_ecr\_images
+# aws_ecr_images
 
 Use the `aws_ecr_images` InSpec audit resource to test the properties of all images in an AWS Elastic Container Registry (ECR) repository.
 This resource is available in InSpec AWS resource pack version **[1.11.0](https://github.com/inspec/inspec-aws/releases/tag/v1.11.0)** onwards.
@@ -19,20 +19,20 @@ An `aws_ecr_images` resource block declares the tests for all images in an AWS E
 
 The repository name must be provided. The ID of the registry is optional.
 
-##### repository_name _(required)_
+`repository_name` _(required)_
 
 The name of the ECR repository must satisfy the following constraints:
 - Regex pattern `(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*`.
 - Minimum 2 and maximum of 256 characters long.
 
-##### registry_id _(optional)_
+`registry_id` _(optional)_
 
 The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
 
 ## Properties
 
-|Property                         | Description |
-| ---                             | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |digests                          | The sha256 digest of the image manifest. The field name is `digest`. |
 |size\_in\_bytes                  | The size, in bytes, of the image in the repository. |
 |tags                             | The list of tags associated with an image. The field name is `tags`. |

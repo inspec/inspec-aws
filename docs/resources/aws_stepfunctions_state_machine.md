@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on Step Functions state m
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | state_machine_arn | The ARN of the state machine. |
 | name | The name of the state machine. |
 | status | The current status of the state machine. |

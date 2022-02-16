@@ -33,8 +33,8 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/la
 
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |db\_snapshot\_identifier     | The unique ID of the RDS snapshot returned. |
 |attribute_name               | The name of the attribute returned for a RDS snapshot. |
 |attribute_values             | The attribute values associated with the attribute_name. |

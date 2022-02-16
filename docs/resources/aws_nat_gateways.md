@@ -20,14 +20,14 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
-|ids                 | The ID of the NAT gateway. The field name is `id`.|
-|names               | The value of the `Name` tag. It is `nil` if not defined. The field name is `name`.|
-|vpc\_ids            | The ID of the VPC in which the NAT gateway is located. The field name is `vpc_id`.|
-|subnet\_ids         | The ID of the subnet in which the NAT gateway is placed. The field name is `subnet_id`.|
-|tags                | A hash, with each key-value pair corresponding to a NAT gateway tag. The field name is `tags`.|
-|states              | The sate of the NAT gateway. Valid values are: `pending`, `failed`, `available`, `deleting` and `deleted`. The field name is `state`.|
+| Property | Description | Field |
+| :---: | :--- | :---: |
+| ids | The ID of the NAT gateway. | ids |
+| names | The value of the `Name` tag. It is `nil` if not defined. | name |
+| vpc_ids | The ID of the VPC in which the NAT gateway is located. | vpc_id |
+| subnet_ids | The ID of the subnet in which the NAT gateway is placed. | subnet_id |
+| tags | A hash, with each key-value pair corresponding to a NAT gateway tag. | tags |
+| states | The sate of the NAT gateway. Valid values are: `pending`, `failed`, `available`, `deleting` and `deleted`. | state |
 
 ## Examples
 

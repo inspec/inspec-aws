@@ -43,8 +43,8 @@ See also the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/
 
 ## Properties
 
-|Property         | Description|
-| ---             | --- |
+| Property | Description |
+| :---: | :--- |
 |cidr_block       | The IPv4 address range that is managed by the VPC. |
 |dhcp_options_id  | The ID of the set of DHCP options associated with the VPC (or `default` if the default options are associated with the VPC). |
 |instance_tenancy | The allowed tenancy of the instances launched into the VPC. |

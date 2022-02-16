@@ -3,7 +3,7 @@ title: About the aws_ssm_parameter Resource
 platform: aws
 ---
 
-# aws\_ssm\_parameter
+# aws_ssm_parameter
 
 Use the `aws_ssm_parameter` InSpec audit resource to test properties of a ssm parameter.
 
@@ -18,22 +18,21 @@ Use the `aws_ssm_parameter` InSpec audit resource to test properties of a ssm pa
 
 #### Parameters
 
-##### name _(required)_
+`name` _(required)_
 
 This resource accepts a single parameter, the SSM Parameter Name.
 This can be passed either as a string or as a `aws_ssm_parameter: 'value'` key-value entry in a hash.
 
-##### with_decryption _(optional)_
+`with_decryption` _(optional)_
 
 This decrypts the value associated with the ssm parameter. This must be passed as a string `with_decryption: "true"`.
 
 See also the [AWS documentation on SSM Parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-ps-secretsmanager.html).
 
-
 ## Properties
 
-|Property                     | Description|
-| ---                         | --- |
+| Property | Description |
+| :---: | :--- |
 |arn    | Provides the Amazon Resource Name (ARN) of the parameter. |
 |data_type    | Provides the data type of the parameter. |
 |last\_modified\_date    | Provides the date the parameter was last changed or updated and the parameter version was created. |

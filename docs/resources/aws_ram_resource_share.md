@@ -29,8 +29,8 @@ For additional information, see the [AWS documentation on AWS RAM Resource Share
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | resource_share_arn | The Amazon Resource Name (ARN) of the resource share. |
 | name | The name of the resource share. |
 | owning_account_id | The ID of the AWS account that owns the resource share. |

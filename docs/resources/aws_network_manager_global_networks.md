@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Network Manager Gl
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | global_network_ids | The ID of the global network. | global_network_id |
 | global_network_arns | The Amazon Resource Name (ARN) of the global network. | global_network_arn |
 | descriptions | The description of the global network. | description |

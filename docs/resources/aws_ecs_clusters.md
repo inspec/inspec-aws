@@ -23,8 +23,8 @@ See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/Ama
 
 ## Properties
 
-|Property                                | Description|
-| ---                                    | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |cluster\_arn                            | The Amazon Resource Name (ARN) that identifies the cluster. |
 |cluster\_name                           | A user-generated string that you use to identify your cluster. |
 |status                                  | The status of the cluster. |

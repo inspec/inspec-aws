@@ -32,8 +32,8 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 ## Properties
 
-|Property                       | Description|
-| ---                           | --- |
+| Property | Description |
+| :---: | :--- |
 |created\_at                    | The timestamp of when the detector was created. |
 |data\_sources                  | An object that describes which data sources are enabled for the detector. |
 |finding\_publishing\_frequency | The publishing frequency of the finding. |

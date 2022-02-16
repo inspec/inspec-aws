@@ -2,7 +2,7 @@
 title: About the aws_sqs_queue Resource
 ---
 
-# aws\_sqs\_queue
+# aws_sqs_queue
 
 Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS Simple Queue Service queue. 
 
@@ -12,10 +12,9 @@ Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS
       it { should exist }
     end
 
+## Parameters
 
-#### Parameters
-
-##### queue\_url _(required)_
+`queue_url` _(required)_
 
 This resource accepts a single parameter, the SQS Queue URL. 
 This can be passed either as a string or as a `queue_url: 'value'` key-value entry in a hash.
@@ -24,8 +23,8 @@ See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQue
 
 ## Properties
 
-|Property                                 | Description|
-| ---                                     | --- |
+| Property | Description |
+| :---: | :--- |
 |arn                                      | The ARN of the SQS Queue. |
 |is\_fifo\_queue                          | A boolean value indicate if this queue is a FIFO queue |
 |visibility\_timeout                      | An integer indicating the visibility timeout of the message in seconds |

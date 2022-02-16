@@ -3,7 +3,7 @@ title: About the aws_ssm_association Resource
 platform: aws
 ---
 
-# aws\_ssm\_association
+# aws_ssm_association
 
 Use the `aws_ssm_association` InSpec audit resource to test properties of a ssm association.
 
@@ -19,20 +19,19 @@ Use the `aws_ssm_association` InSpec audit resource to test properties of a ssm 
       it { should exist }
     end
 
-#### Parameters
+## Parameters
 
-##### association_id _OR_ name _AND_ instance_id _(name and instance_id are required together)_
+`association_id` _OR_ `name` _AND_ `instance_id` _(name and instance_id are required together)_
 
 This resource accepts the association_id, document name and instance id. If not using association_id, name and instance id must both be provided as parameters
 This can be passed either as a string or as a `association_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on SSM Associations](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-assoc.html).
 
-
 ## Properties
 
-|Property                            | Description|
-| ---                                | --- |
+| Property | Description |
+| :---: | :--- |
 |name                                | The name of the Systems Manager document. |
 |instance\_id                        | Provides the id of the instance. |
 |association\_version                | Provides the version of the association. |

@@ -29,8 +29,8 @@ For additional information, see the [AWS documentation on Transfer user](https:/
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | server_id | The system-assigned unique identifier for a server that this user has been assigned to. |
 | user (home_directory) | The landing directory for a user when they log in to the server using the client.  |
 | user (home_directory_mappings) | Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. |

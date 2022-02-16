@@ -30,8 +30,8 @@ See also the [AWS documentation on Elastic Load Balancing](https://docs.aws.amaz
 
 ## Properties
 
-|Property                               | Description|
-| ---                                   | --- |
+| Property | Description |
+| :---: | :--- |
 |load\_balancer\_name                   | The name of the load balancer. |
 |dns\_name                              | The DNS name of the load balancer. |
 |availability\_zones                    | The Availability Zones for the load balancer. |

@@ -74,8 +74,8 @@ See the [AWS documentation on Security Groups](https://docs.aws.amazon.com/AWSEC
 
 ## Properties
 
-|Property               | Description|
-| ---                   | --- |
+| Property | Description |
+| :---: | :--- |
 |description            | A String reflecting the human-meaningful description that was given to the SG at creation time. |
 |group\_id              | Provides the Security Group ID. |
 |group\_name            | A String reflecting the name that was given to the SG at creation time. |

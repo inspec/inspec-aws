@@ -30,8 +30,8 @@ See also the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/l
 
 ## Properties
 
-|Property     | Description|
-| ---         | --- |
+| Property | Description |
+| :---: | :--- |
 |region\_name | The Name of the region. |
 |endpoint     | The resolved endpoint of the region. |
 

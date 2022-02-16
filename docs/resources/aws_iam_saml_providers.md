@@ -25,8 +25,8 @@ This can be passed either as a string or as a `saml_provider_arn: 'value'` key-v
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |provider\_arns | The ARNs of the returned providers. |
 |valid\_untils  | The expiration date and time for the SAML provider.  |
 |entries        | Provides access to the raw results of the query, which can be treated as an array of hashes. |

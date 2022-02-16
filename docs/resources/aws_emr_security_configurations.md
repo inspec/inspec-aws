@@ -23,8 +23,8 @@ See also the [AWS documentation on AWS EMR security configuration](https://docs.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |security_configuration_names          |The name of the security configuration.|name|
 |encryption_at_rest                    | Specifies whether at-rest encryption is enabled for the cluster.|security_configuration(EncryptionConfiguration(EnableAtRestEncryption))|
 |encryption_in_transit                 | Specifies whether in-transit encryption is enabled for the cluster.|security_configuration(EncryptionConfiguration(EnableInTransitEncryption))|

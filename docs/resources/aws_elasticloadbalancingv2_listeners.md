@@ -25,8 +25,8 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |listener_arns | The Amazon Resource Name (ARN) of the listener. |
 |load_balancer_arns | The Amazon Resource Name (ARN) of the load balancer. |
 |ports | The port on which the load balancer is listening. |

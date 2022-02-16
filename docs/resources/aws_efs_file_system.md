@@ -44,8 +44,8 @@ This must be passed as a `creation_token: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property             | Description |
-| ---                 | --- |
+| Property | Description |
+| :---: | :--- |
 |creation_token       | The value of the creation token.|
 |file\_system\_id     | The id of the file system which is auto-assigned by the AWS. |
 |encrypted            | Indicates whether the file system is encrypted or not. |

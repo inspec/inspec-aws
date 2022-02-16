@@ -19,14 +19,14 @@ Ensure that AWS MQ Broker exists.
 
 `broker_id` _(required)_
 
-broker_id: The ID of the AWS MQ broker.
+The ID of the AWS MQ broker.
 
 For additional information, see the [AWS documentation on AWS MQ Broker](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html).
 
 ## Properties
 
-| Property                | Description                                                                        | Field             |
-| :---------------------: | :-------------------------------------------------------------------------------:  | :---------------: |
+| Property | Description| Field |
+| :---: | :--- | :---: |
 | authentication_strategy | The authentication strategy used to secure the broker. The default is `SIMPLE`.    |authentication_strategy |
 | auto_minor_version_upgrade | Enables automatic upgrades to new minor versions for brokers, as new versions are released and supported by Amazon MQ. | auto_minor_version_upgrade |
 | broker_arn              | The broker's Amazon Resource Name (ARN).                                            | broker_arn       |

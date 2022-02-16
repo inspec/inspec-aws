@@ -24,7 +24,7 @@ The value of the `vpn_gateway_id` can be provided as a string.
 
 The AWS VPN gateway ID is required.
 
-#### vpn\_group\_id _(required)_
+#### vpn_group_id _(required)_
 
 The ID of the VPN gateway:
 
@@ -36,14 +36,14 @@ It can be passed either as a string or as a `vpn_gateway_id: 'value'` key-value 
 
 ## Properties
 
-|Property               | Description |
-| ---                   | --- |
-|vpn\_gateway\_id       | The identifier of the AWS VPN gateway. |
+| Property | Description |
+| :---: | :--- |
+|vpn_gateway_id       | The identifier of the AWS VPN gateway. |
 |state                  | The current state of the VPN gateway. Possible values are: `pending`, `available`, `deleting`, `deleted`. |
 |type                   | The type of VPN connection that the VPN gateway supports. |
 |availability_zone      | The Availability Zone where the virtual private gateway was created. If not applicable, this field will be be empty. |
 |vpc_id                 | The ID of the associated VPC. |
-|amazon\_side\_asn      | The private Autonomous System Number (ASN) for the Amazon side of a BGP session. |
+|amazon_side_asn      | The private Autonomous System Number (ASN) for the Amazon side of a BGP session. |
 |tags                   | All tags that are associated to the VPN gateway. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/EC2/Types/VpnGateway.html).
@@ -60,7 +60,6 @@ There are also additional properties available. For a comprehensive list, see [t
 ## Matchers
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
-
 
 ### exist
 

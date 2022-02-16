@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS SES ReceiptRuleSet
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | name | The name of the receipt rule. |
 | enabled | If `true`, the receipt rule is active. The default value is `false`. |
 | tls_policy | Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). |

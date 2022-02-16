@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Route53Resolver Re
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | ids | The ID of the association between a Resolver rule and a VPC. |
 | resolver_rule_ids | The ID of the Resolver rule that you associated with the VPC that is specified by VPCId. |
 | names | The name of an association between a Resolver rule and a VPC. |

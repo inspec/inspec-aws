@@ -20,8 +20,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |vpn\_gateway\_ids          | List of unique identifiers that identifies a AWS VPN gateway.|
 |states                     | List of the current state of the VPN gateway. Possible values are: `pending`, `available`, `deleting`, `deleted`. |
 |types                      | List of the types of VPN connection the VPN gateway supports. |

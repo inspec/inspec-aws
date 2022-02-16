@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS Network Manager De
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | device_id | The ID of the device. |
 | device_arn | The Amazon Resource Name (ARN) of the device. |
 | global_network_id | The ID of the global network. |

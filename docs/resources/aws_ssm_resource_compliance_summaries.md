@@ -31,8 +31,8 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |compliance_types             | Provides the compliance type. |
 |compliant_summaries          | Provides a list of items that are compliant for the resource. |
 |execution_summaries          | Provides information about the execution |

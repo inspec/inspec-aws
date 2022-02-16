@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Signer SigningProf
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | profile_names | The name of the target signing profile. | profile_name |
 | profile_versions | The current version of the signing profile. | profile_version |
 | profile_version_arns | The signing profile ARN, including the profile version. | profile_version_arn |

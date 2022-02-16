@@ -25,8 +25,8 @@ See also the [AWS documentation on ElasticLoadBalancingV2 Listener Certificate](
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | certificate_arns | The Amazon Resource Name (ARN) of the certificate. |
 | is_default | Indicates whether the certificate is the default certificate.  |
 

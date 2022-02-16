@@ -21,8 +21,8 @@ See also the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQue
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |arns                                     | The ARNs of the SQS Queues. |
 |is\_fifo\_queues                         | A boolean value indicate if queues are a FIFO queues |
 |visibility\_timeouts                     | An integer indicating the visibility timeout of the message in seconds |

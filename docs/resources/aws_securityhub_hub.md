@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS Security Hub](http
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | hub_arn | The ARN of the Hub resource that was retrieved. |
 | subscribed_at | The date and time when Security Hub was enabled in the account. |
 | auto_enable_controls |Whether to automatically enable new controls when they are added to standards that are enabled. |

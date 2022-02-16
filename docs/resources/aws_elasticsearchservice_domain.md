@@ -28,8 +28,8 @@ For additional information, see the [AWS documentation on Elasticsearch Domain](
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | domain_id | The unique identifier for the specified Elasticsearch domain. |
 | domain_name | The name of an Elasticsearch domain. |
 | arn | The Amazon resource name (ARN) of an Elasticsearch domain. |

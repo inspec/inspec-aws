@@ -31,8 +31,8 @@ See also the [AWS documentation on Launch Configurations](https://docs.aws.amazo
 
 ## Properties
 
-|Property                       | Description|
-| ---                           | --- |
+| Property | Description |
+| :---: | :--- |
 |arn                            | An string indicating the ARN of the launch configuration |
 |image\_id                      | An string indicating the AMI of the launch configuration |
 |instance\_type                 | A string indicating the instance type of the launch configuration |

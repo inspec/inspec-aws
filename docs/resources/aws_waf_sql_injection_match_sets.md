@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on the `AWS::WAF::SqlInje
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | sql_injection_match_set_ids | A unique identifier for a `SqlInjectionMatchSet`. | sql_injection_match_set_id |
 | names | The name of the `SqlInjectionMatchSet`. | name |
 

@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS RDS DBProxyEndpoin
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | db_proxy_endpoint_names | The name for the DB proxy endpoint. | db_proxy_endpoint_name |
 | db_proxy_endpoint_arns | The Amazon Resource Name (ARN) for the DB proxy endpoint. | db_proxy_endpoint_arn |
 | db_proxy_names | The identifier for the DB proxy that is associated with this DB proxy endpoint. | db_proxy_name |

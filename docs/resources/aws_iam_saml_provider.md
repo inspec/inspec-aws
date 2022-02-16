@@ -22,8 +22,8 @@ This can be passed either as a string or as a `saml_provider_arn: 'value'` key-v
 
 ## Properties
 
-|Property                 | Description|
-| ---                     | --- |
+| Property | Description |
+| :---: | :--- |
 |provider                 | The provider. |
 |arn                      | The arn of the provider. |
 |saml_metadata_document | Metadata document associated with the saml provider. |

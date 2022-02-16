@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS Network Firewall F
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | update_token | A token used for optimistic locking. |
 | firewall_policy_response.firewall_policy_name | The descriptive name of the firewall policy. |
 | firewall_policy_response.firewall_policy_arn | The Amazon Resource Name (ARN) of the firewall policy. |

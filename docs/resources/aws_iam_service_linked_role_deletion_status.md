@@ -25,8 +25,8 @@ See the [AWS documentation on Service linked role deletion status](https://docs.
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | status | The status of the deletion. Valid Values: `SUCCEEDED`, `IN_PROGRESS`, `FAILED`, `NOT_STARTED` |
 
 ## Examples

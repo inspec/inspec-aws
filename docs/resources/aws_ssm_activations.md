@@ -23,8 +23,8 @@ See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-mana
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |activation\_ids              | Provides  ID created by Systems Manager when you submitted the activation. |
 |created\_dates               | Provides the date the activation was created. |
 |default\_instance\_names     | Provides the name for the managed instance when it is created. |

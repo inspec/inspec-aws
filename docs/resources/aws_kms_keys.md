@@ -28,10 +28,10 @@ See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/late
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|key\_ids  | The IDs of the returned keys. |
-|key\_arns | The Amazon Resource Names of the returned keys. |
+| Property | Description | Field |
+| :---: | :--- | :---: |
+|key_ids  | The IDs of the returned keys. |
+|key_arns | The Amazon Resource Names of the returned keys. |
 |entries   | Provides access to the raw results of the query, which can be treated as an array of hashes. |
 
 ## Examples

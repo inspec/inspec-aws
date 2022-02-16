@@ -2,7 +2,7 @@
 title: About the aws_ecr_repository Resource
 ---
 
-# aws\_ecr\_repository
+# aws_ecr_repository
 
 Use the `aws_ecr_repository` InSpec audit resource to test the properties of a single AWS Elastic Container Registry (ECR) repository.
 This resource is available in InSpec AWS resource pack version **[1.11.0](https://github.com/inspec/inspec-aws/releases/tag/v1.11.0)** onwards.
@@ -25,7 +25,7 @@ The value of the `repository_name` can be provided as a string.
 
 The repository name must be provided. The registry id is optional.
 
-##### repository\_name _(required)_
+`repository_name` _(required)_
 
 The name of the ECR repository must satisfy the following constraints:
 - Regex pattern `(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*`.
@@ -33,18 +33,18 @@ The name of the ECR repository must satisfy the following constraints:
 
 This can be passed either as a string or as a `repository_name: 'value'` key-value entry in a hash.
 
-##### registry\_id _(optional)_
+`registry_id` _(optional)_
 
 The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [default](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html) registry is assumed.  
 
 ## Properties
 
-|Property                  | Description |
-| ---                      | --- |
-|repository\_name          | The name of the repository.|
-|image\_tag\_mutability    | The tag mutability settings for the repository. Valid values are `MUTABLE` or `IMMUTABLE`. |
-|registry\_id              | The AWS account ID associated with the registry that contains the repository. |
-|tags                      | An hash with each key-value pair corresponding to a tag associated with the entity. |
+| Property | Description |
+| :---: | :--- |
+| repository_name | The name of the repository.|
+| image_tag_mutability | The tag mutability settings for the repository. Valid values are `MUTABLE` or `IMMUTABLE`. |
+| registry_id | The AWS account ID associated with the registry that contains the repository. |
+| tags | An hash with each key-value pair corresponding to a tag associated with the entity. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html)
 

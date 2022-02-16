@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on the `AWS::WAF::ByteMat
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | byte_match_set_ids | The unique identifier for the ByteMatchSet. | byte_match_set_id |
 | names | The name of the ByteMatchSet. | name |
 

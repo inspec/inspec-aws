@@ -34,8 +34,8 @@ See also the [AWS documentation on AWS EMR security configuration](https://docs.
 
 ## Properties
 
-|Property                                | Description|
-| ---                                    | --- |
+| Property | Description |
+| :---: | :--- |
 |encryption_at_rest                    | Specifies whether at-rest encryption is enabled for the cluster.|
 |encryption_in_transit                 | Specifies whether in-transit encryption is enabled for the cluster.|
 |local_disk_encryption                 | Specifies whether local-disk encryption is enabled for the cluster. |

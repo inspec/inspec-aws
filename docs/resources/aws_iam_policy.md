@@ -39,8 +39,8 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property             | Description|
-| ---                 | --- |
+| Property | Description |
+| :---: | :--- |
 |arn                  | The ARN identifier of the specified policy. |
 |attachment\_count    | The count of attached entities for the specified policy. |
 |attached\_groups     | The list of group names of the groups attached to the policy. |

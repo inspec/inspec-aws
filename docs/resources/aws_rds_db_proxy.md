@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS RDS DBProxy](https
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | db_proxy_name | The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. |
 | db_proxy_arn | The Amazon Resource Name (ARN) for the proxy. |
 | status | The current status of this proxy. |

@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on the `AWS::WAF::XssMatc
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | xss_match_set_ids | A unique identifier for an `XssMatchSet`. | xss_match_set_id |
 | names | The name of the `XssMatchSet`. | name |
 

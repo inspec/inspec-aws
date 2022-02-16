@@ -33,8 +33,8 @@ The 12-digit ID of the AWS Elastic Container Registry. If not provided, the [def
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |arns                                 | The Amazon Resource Name (ARN) that identifies the repository.|
 |names                                | The name of the repository.|
 |uris                                 | The URI for the repository. |

@@ -24,8 +24,8 @@ See the [AWS documentation on IAM virtual MFA Devices](https://docs.aws.amazon.c
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | serial_numbers | A list of the virtual MFA device's serial number identifiers. | serial_number |
 | paths | A list of the user paths. | path |
 | user_names | A list of the friendly names identifying the users. | user_name |

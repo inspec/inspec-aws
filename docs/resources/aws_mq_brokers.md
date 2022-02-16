@@ -23,8 +23,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property            | Description                                                               | Fields            |
-| :------------------:| :-----------------------------------------------------------------------: | :---------------: |
+| Property | Description| Field |
+| :---: | :--- | :---: |
 | broker_arns         | The broker's Amazon Resource Name (ARN).                                  | broker_arn        |
 | broker_names        | The name of the broker. This value must be unique in your AWS account, 1-50 characters long, contain only letters, numbers, dashes, and underscores, and not contain white spaces, brackets, wildcard characters, or special characters.           | broker_name |
 | broker_states       | The broker's status.                                                      | broker_state      |

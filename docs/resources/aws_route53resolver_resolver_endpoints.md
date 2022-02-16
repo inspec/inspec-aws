@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Route53Resolver Re
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | ids | The ID of the Resolver endpoint. |
 | creator_request_ids | A unique string that identifies the request that created the Resolver endpoint. The `CreatorRequestId` allows failed requests to be retried without the risk of running the operation twice. |
 | arns | The ARN (Amazon Resource Name) for the Resolver endpoint. |

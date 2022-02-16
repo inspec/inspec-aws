@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS WAF IPSet](https:/
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | ip_set_id | The IPSetId for an IP set. |
 | name | A friendly name or description of the IP set. |
 | ip_set_descriptors | The IP address type (IPV4 or IPV6 ) and the IP address range (in CIDR notation) that web requests originate from. |

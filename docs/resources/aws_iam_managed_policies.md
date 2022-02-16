@@ -54,7 +54,7 @@ If omitted, all policies are returned.
 ## Properties
 
 | Property              | Description                                                | Fields                  |
-| :--------------------:| :---------------------------------------------------------:| :---------------------: |
+| :--------------------:| :---------------------------------------------------------| :---------------------: |
 |arns                   | A list of the ARN identifiers of the policies.             | arn                     |
 |policy_ids            | A list of the stable and unique strings identifying the policies. | policy_id        |
 |policy_names          | A list of the friendly names (not ARN) identifying the policies.| policy_name        |

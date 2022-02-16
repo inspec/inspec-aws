@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | transit_gateway_attachment_ids | A list of the attachment IDs. | transit_gateway_attachment_id |
 | resource_ids | A list of the resource IDs. | resource_id |
 | resource_types | A list of the resource types. | resource_type |

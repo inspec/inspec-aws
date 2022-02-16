@@ -26,8 +26,8 @@ See also the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/la
 
 ## Properties
 
-|Property                | Description|
-| ---                    | --- |
+| Property | Description |
+| :---: | :--- |
 |username                | The user's username. |
 |user\_id                | The user's ID. |
 |user\_arn               | The Amazon Resource Name of the user. |

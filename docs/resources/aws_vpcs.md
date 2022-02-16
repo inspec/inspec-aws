@@ -31,8 +31,8 @@ See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWS
 
 ## Properties
 
-|Property           | Description                           | Fields                        |
-| ---               | ---                                   | ---                           |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | cidr\_blocks | The cidr\_blocks property provides a list of the CIDR blocks that the matched VPCs serve as strings. | cidr_block |
 | dhcp\_options\_ids | The dhcp\_option\_set\_ids property provides a de-duplicated list of the DHCP option set IDs that the matched VPCs use when assigning IPs to resources. | dhcp_options_id |
 | vpc\_ids | The vpc\_ids property provides a list of the IDs of the matched VPCs. | vpc_id |

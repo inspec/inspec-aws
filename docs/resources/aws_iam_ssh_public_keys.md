@@ -33,8 +33,8 @@ For additional information, see the [AWS documentation on AWS IAM AccessKey.](ht
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | user_names         | The IAM user name associated with the SSH public key. | user_name         |
 | ssh_public_key_ids | The unique identifier for the SSH public key.         | ssh_public_key_id |
 | statuses           | The status of the SSH public key.                     | status            |

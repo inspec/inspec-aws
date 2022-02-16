@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on the `AWS::RDS::DBSecur
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | owner_ids | Provides the Amazon Web Services ID of the owner of a specific DB security group. | owner_id |
 | db_security_group_names | The name of the DB security group to return details for. | db_security_group_name |
 | db_security_group_descriptions | Provides the description of the DB security group. | db_security_group_description |

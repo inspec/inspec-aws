@@ -35,8 +35,8 @@ This can be passed either as a string or as an `repository_name: 'value'` key-va
 
 ## Properties
 
-|Property               | Description|
-| ---                   |--- |
+| Property | Description |
+| :---: | :--- |
 |registry\_id           | The AWS account ID associated with the registry |
 |repository\_arn        | The Amazon Resource Name of the repository |
 |repository\_name       | The name of the repository |

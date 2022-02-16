@@ -36,8 +36,8 @@ It can be passed either as a string or as a `replication_group_id: 'value'` key-
 
 ## Properties
 
-|Property               | Description |
-| ---                   | --- |
+| Property | Description |
+| :---: | :--- |
 |replication\_group\_id | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group.|
 |status                 | The current state of the replication group, e.g. `creating`, `available`. |
 |encrypted\_at\_rest    | Indicates whether the content is encrypted at rest or not. |

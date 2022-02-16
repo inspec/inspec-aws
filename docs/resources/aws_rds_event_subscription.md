@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on the `AWS::RDS::EventSu
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | customer_aws_id | The Amazon Web Services customer account associated with the RDS event notification subscription. |
 | cust_subscription_id | The RDS event notification subscription ID. |
 | sns_topic_arn | The topic ARN of the RDS event notification subscription.|

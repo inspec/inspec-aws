@@ -17,7 +17,7 @@ An `aws_vpc_endpoint_service` resource block declares the tests for a single AWS
 
 ### Parameters
 
-#### service\_name _(required)_
+#### service_name _(required)_
 
 The name of the AWS VPC endpoint service.
 
@@ -26,8 +26,8 @@ It should be passed as a `service_name: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property            | Description                                               |
-| ---                | ---                                                       |
+| Property | Description |
+| :---: | :--- |
 | service_name       | The Amazon Resource Name (ARN) of the service.            |
 | service_id         | The ID of the endpoint service.                           |
 | service_type       | The type of service.                                      |

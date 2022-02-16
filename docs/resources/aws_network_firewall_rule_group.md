@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS Network Firewall R
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | update_token| A token used for optimistic locking. |
 | rule_group.rule_variables.ip_sets| A list of IP addresses and address ranges, in CIDR notation. |
 | rule_group.rule_variables.ip_sets["RuleVariableName"].definition| The list of IP addresses and address ranges, in CIDR notation. |

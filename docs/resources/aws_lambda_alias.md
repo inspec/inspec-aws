@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS Lambda alias](http
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | alias_arn | Lambda function ARN that is qualified using the alias name as the suffix. |
 | name | The alias name. |
 | function_version | Function version to which the alias points. |

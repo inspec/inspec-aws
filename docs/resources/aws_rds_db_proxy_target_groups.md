@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS RDS DBProxyTargetG
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | db_proxy_names | The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region. | db_proxy_name |
 | target_group_names | The identifier for the target group. | target_group_name |
 | target_group_arns | The Amazon Resource Name (ARN) representing the target group. | target_group_arn |

@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS SES ReceiptRuleSet
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | names | The name of the receipt rule set. | name |
 | created_timestamps | The date and time the receipt rule set was created. | created_timestamp |
 

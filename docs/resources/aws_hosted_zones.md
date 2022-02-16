@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on the `AWS::Route53::Hos
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | ids | The ID that Amazon Route 53 assigned to the hosted zone when you created it. | id |
 | names | The name of the domain. | name |
 | caller_references | The value that you specified for CallerReference when you created the hosted zone. | caller_reference |

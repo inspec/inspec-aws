@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS Route53 Resolver r
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | id | The ID that Resolver assigned to the Resolver rule when you created it. |
 | creator_request_id | A unique string that you specified when you created the Resolver rule. `CreatorRequestId` identifies the request and allows failed requests to be retried without the risk of running the operation twice. |
 | arn | The ARN (Amazon Resource Name) for the Resolver rule specified by Id. |

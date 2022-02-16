@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on `AWS::WAF::SizeConstra
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | size_constraint_set_id | A unique identifier for a size constrain set. |
 | name | The name of the size constrain set. |
 | size_constraints | Specifies the parts of web requests that you want to inspect for cross-site scripting attacks. |

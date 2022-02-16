@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS Network Firewall L
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | firewall_arn | The Amazon Resource Name (ARN) of the firewall. |
 | logging_configuration_log_destination_configs_log_type | The type of log to send. |
 | logging_configuration_log_destination_configs_log_destination_type | The type of storage destination to send these logs to. |

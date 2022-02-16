@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS EC2 VPNGatewayRout
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | route_table_ids | The ID of the route table. | route_table_id |
 | propagating_vgws_gateway_ids | The ID of the virtual private gateway. | propagating_vgws_gateway_ids |
 

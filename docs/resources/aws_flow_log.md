@@ -36,8 +36,8 @@ See also the [AWS documentation on Flow Logs](https://docs.aws.amazon.com/vpc/la
 
 ## Properties
 
-|Property         | Description|
-| ---             | --- |
+| Property | Description |
+| :---: | :--- |
 |flow\_log\_id    | The ID of the Flow Log. |
 |log\_group\_name | The name of the associated log group. |
 |resource\_id     | The ID of the assosiated resource, e.g. VPC, Subnet or Network Interface. |

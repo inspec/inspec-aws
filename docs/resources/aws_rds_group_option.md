@@ -2,7 +2,7 @@
 title: About aws_rds_group_option Resource
 ---
 
-# aws\_rds\_option\_group
+# aws_rds_group_option
 
 Use the `aws_rds_group_option` InSpec audit resource to test detailed properties of an individual RDS cluster.An `aws_rds_group_option` resource block uses resource parameters to search for an RDS option group, and then tests that RDS option group.  If no RDS option group match, no error is raised, but the `exists` matcher will return `false` and all properties will be `nil`.
 
@@ -22,7 +22,7 @@ Ensure if the option group exists
 
 #### Parameters
 
-`option\_group\_name`  _(required)_
+`option_group_name`  _(required)_
 
 This resource accepts a single parameter, the user-supplied option_group_name. This parameter isn't case-sensitive.
 This can be passed either as a string or as a `option_group_name: 'value'` key-value entry in a hash.
@@ -30,8 +30,9 @@ This can be passed either as a string or as a `option_group_name: 'value'` key-v
 See also the [AWS documentation on RDS Option Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
 
 ## Properties
-|Property                     | Description|
-| ---                         | --- |
+
+| Property | Description |
+| :---: | :--- |
 |option_group_name    | The name RDS option group. |
 |option_group_description   | The name of the database associated with each RDS cluster. | 
 |engine_name    | The name of the engine associated with each RDS cluster. |

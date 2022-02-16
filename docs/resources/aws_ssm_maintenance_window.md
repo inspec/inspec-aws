@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on the `AWS::SSM::Mainten
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | window_id | The ID of the maintenance window for which you want to retrieve information. |
 | name | The name of the maintenance window. |
 | description | The description of the maintenance window. |

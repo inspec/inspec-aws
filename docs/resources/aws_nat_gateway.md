@@ -54,11 +54,10 @@ This should be in the format of `subnet-` followed by 8 or 17 hexadecimal charac
 The ID of the VPC in which the NAT gateway is located.
 This should be in the format of `vpc-` followed by 8 or 17 hexadecimal characters and passed as an `vpc_id: 'value'` key-value entry in a hash.
 
-
 ## Properties
 
-|Property                    | Description |
-| ---                        | --- |
+| Property | Description |
+| :---: | :--- |
 |id                          | The ID of the NAT gateway. |
 |name                        | The value of the `Name` tag. It is `nil` if not defined. |
 |vpc\_id                     | The ID of the VPC in which the NAT gateway is located. |

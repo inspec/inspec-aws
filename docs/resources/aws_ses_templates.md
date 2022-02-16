@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS SES Template](http
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | names | The name of the template. | name |
 | created_timestamps | The time and date the template was created. | created_timestamp |
 

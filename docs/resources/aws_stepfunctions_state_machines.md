@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Step Functions state m
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | state_machine_arns | The ARNs of the state machine. |
 | names | The names of the state machine. |
 | types | The type of the state machine. Valid values: `STANDARD` or `EXPRESS`. |

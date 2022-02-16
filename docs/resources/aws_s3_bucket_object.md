@@ -34,8 +34,8 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property       | Description|
-| ---           | --- |
+| Property | Description |
+| :---: | :--- |
 |bucket\_name   | The name of the bucket. |
 |key            | The key within the bucket. |
 |content\_length | Size of the body in bytes. |

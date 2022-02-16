@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on the `AWS::WAFv2::WebAC
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | web_acl_ids | The unique identifier for the web ACL. | web_acl_id |
 | names | The name of the web ACL. | name |
 

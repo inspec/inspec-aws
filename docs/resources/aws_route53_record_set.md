@@ -31,8 +31,8 @@ For additional information, see the [AWS documentation on AWS Route53 Record Set
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | name | The name of a record in the specified hosted zone. |
 | type | The DNS record type.  |
 | set_identifier | In a group of resource record sets that have the same name and type, the value of SetIdentifier must be unique for each resource record set. |

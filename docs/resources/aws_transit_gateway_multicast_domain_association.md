@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_attachment_id | The ID of the Connect attachment. |
 | resource_id | The ID of the resource. |
 | resource_type | The type of resource, for example a VPC attachment. |

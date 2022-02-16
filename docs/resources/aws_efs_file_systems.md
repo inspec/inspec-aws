@@ -22,8 +22,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |tags                 | The list of tags that the EFS file system has. |
 |names                | The value of the `Name` (case sensitive) tag if it is defined. |
 |file\_system\_ids    | The ID of the EFS file system. |

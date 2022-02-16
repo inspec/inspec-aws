@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on the `AWS::WAF::Rule` r
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | rule_ids | The unique identifier for the rule. | rule_id |
 | names | A friendly name or description of the rule. | name |
 

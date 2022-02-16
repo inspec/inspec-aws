@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | paths | The path to the instance profile. |
 | instance_profile_names | The name identifying the instance profile. |
 | instance_profile_ids | The stable and unique string identifying the instance profile. |

@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on Transfer user](https:/
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | ARNs | The ARNs of the user. |
 | home_directories | The landing directories for users when they log in to the server using the client. |
 | home_directory_types | The landing directory types you want your users' home directory to be when they log into the server. |

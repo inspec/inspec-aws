@@ -34,8 +34,8 @@ See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |arns                  | The ARN identifier of the specified policy. |
 |policy\_ids           | The policy ids. |
 |policy\_names         | The policy names. |

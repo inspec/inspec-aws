@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS Network Manager Cu
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | customer_gateway_arn | The Amazon Resource Name (ARN) of the customer gateway. |
 | global_network_id | The ID of the global network. |
 | device_id | The ID of the device.|

@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on the `AWS::WAF::SqlInje
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | sql_injection_match_set_id | A unique identifier for a `SqlInjectionMatchSet`. |
 | name | The name of the `SqlInjectionMatchSet`. |
 | sql_injection_match_tuples | Specifies the parts of web requests that you want to inspect for cross-site scripting attacks. |

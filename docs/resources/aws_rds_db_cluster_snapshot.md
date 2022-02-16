@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS RDS Cluster Snapsh
 
 ## Properties
 
-| Property                       | Description                                                                                |
-| :----------------------------: | :----------------------------------------------------------------------------------------: |
+| Property | Description |
+| :---: | :--- |
 | availability_zones             | Provides the list of EC2 Availability Zones instances in the DB cluster snapshot that can be restored. |
 |db_cluster_snapshot_identifier  | Specifies the identifier for the DB cluster snapshot.                                      |
 |db_cluster_identifier           | Specifies the identifier of the DB cluster from which the DB cluster snapshot is created.  |

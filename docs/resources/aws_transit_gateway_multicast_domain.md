@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_multicast_domain_id | The ID of the transit gateway multicast domain. |
 | transit_gateway_id | The ID of the transit gateway. |
 | transit_gateway_multicast_domain_arn | The Amazon Resource Name (ARN) of the transit gateway multicast domain. |

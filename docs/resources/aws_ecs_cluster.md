@@ -3,7 +3,7 @@ title: About the aws_ecs_cluster Resource
 platform: aws
 ---
 
-# aws\_ecs\_cluster
+# aws_ecs_cluster
 
 Use the `aws_ecs_cluster` InSpec audit resource to test properties of a single AWS ECS Cluster.
 
@@ -15,11 +15,11 @@ An `aws_ecs_cluster` resource block declares the tests for a single AWS ECS Clus
       it             { should exist }
     end
 
-#### Parameters
+## Parameters
 
 If no parameters are passed, the resource will attempt to retrieve the `default` ECS Cluster.
 
-##### cluster\_name _(optional)_
+`cluster_name` _(optional)_
 
 This resource accepts a single parameter, the Cluster Name. 
 This can be passed either as a string or as a `cluster_name: 'value'` key-value entry in a hash.
@@ -28,16 +28,16 @@ See also the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/Ama
 
 ## Properties
 
-|Property                                | Description|
-| ---                                    | --- |
-|cluster\_arn                            | The Amazon Resource Name (ARN) that identifies the cluster. |
-|cluster\_name                           | A user-generated string that you use to identify your cluster. |
-|status                                  | The status of the cluster. |
-|running\_tasks\_count                   | The number of tasks in the cluster that are in the RUNNING state. |
-|pending\_tasks\_count                   | The number of tasks in the cluster that are in the PENDING state.  |
-|active\_services\_count                 | The number of services that are running on the cluster in an ACTIVE state. |
-|registered\_container\_instances\_count | The number of container instances registered into the cluster. This includes container instances in both ACTIVE and DRAINING status. |
-|statistics                              | Additional information about your clusters that are separated by launch type. |
+| Property | Description |
+| :---: | :--- |
+| cluster_arn| The Amazon Resource Name (ARN) that identifies the cluster. |
+| cluster_name| A user-generated string that you use to identify your cluster. |
+| status | The status of the cluster. |
+| running_tasks_count | The number of tasks in the cluster that are in the RUNNING state. |
+| pending_tasks_count | The number of tasks in the cluster that are in the PENDING state.  |
+| active_services_count | The number of services that are running on the cluster in an ACTIVE state. |
+| registered_container_instances_count | The number of container instances registered into the cluster. This includes container instances in both ACTIVE and DRAINING status. |
+| statistics | Additional information about your clusters that are separated by launch type. |
               
 ## Examples
 

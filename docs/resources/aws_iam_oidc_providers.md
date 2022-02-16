@@ -25,8 +25,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | arns | The Amazon Resource Name (ARN). | arn |
 
 ## Examples

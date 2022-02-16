@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on Glue Database](https:/
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | name | The name of the database. For Hive compatibility, this is folded to lowercase when it is stored. |
 | description | A description of the database. |
 | location_uri | The location of the database (for example, an HDFS path). |

@@ -62,8 +62,8 @@ See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vp
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
+| Property | Description |
+| :---: | :--- |
 |vpc_endpoint_id       | The ID of the endpoint |
 |vpc_endpoint_type | One of "Interface", "Gateway" |
 |vpc_id           | The ID of the VPC in which the endpoint resides. |

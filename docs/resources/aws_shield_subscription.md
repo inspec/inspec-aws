@@ -16,7 +16,7 @@ An `aws_shield_subscription` resource block returns a Shield Advanced subscripti
     end
 
 
-#### Parameters
+## Parameters
 
 This resource does not expect any parameters.
 
@@ -25,8 +25,8 @@ Also, see the [AWS Shield Subscriptions documentation](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property                      | Description|
-| ---                          | --- |
+| Property | Description |
+| :---: | :--- |
 |auto\_renew                   | If `ENABLED`, the subscription will be automatically renewed at the end of the existing subscription period. Valid values: `ENABLED` or `DISABLED`. |
 |end\_time                     | The date and time your subscription will end. |
 |limits                        | Specifies how many protections of a given type you can create. This is an array containing the Type of protection and the maximum number of protections that can be created for the specified Type. |

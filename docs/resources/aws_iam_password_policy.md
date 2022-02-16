@@ -23,8 +23,8 @@ See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.c
 
 ## Properties
 
-|Property                            | Description|
-| ---                                | --- |
+| Property | Description |
+| :---: | :--- |
 |minimum\_password\_length           | The minimum character count of the password policy. |
 |max\_password\_age\_in\_days        | Integer representing in days how long a password may last before expiring.|
 |number\_of\_passwords\_to\_remember | Number of previous passwords to remember. |

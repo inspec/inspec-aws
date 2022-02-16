@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS Lambda Version](ht
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | content.location | A link to the layer archive in Amazon S3 that is valid for 10 minutes. |
 | content.code_sha_256 | The SHA-256 hash of the layer archive. |
 | content.code_size | The size of the layer archive in bytes. |

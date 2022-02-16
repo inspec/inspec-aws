@@ -26,8 +26,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |option_group_names                             | The name RDS option group. |                                       option_group_name                           | 
 |option_group_description                       | The name of the database associated with each RDS cluster. |       option_group_description                     | 
 |engine_names                                   | The name of the engine associated with each RDS cluster. |         engine_name                                 | 

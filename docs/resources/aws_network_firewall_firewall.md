@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on AWS Network Firewall F
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | firewall.firewall_name | The descriptive name of the firewall. |
 | firewall.firewall_arn | The Amazon Resource Name (ARN) of the firewall. |
 | firewall.firewall_policy_arn | The Amazon Resource Name (ARN) of the firewall policy. |

@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS Lambda EventSource
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | uuid | The identifier of the event source mapping. |
 | starting_position | The position in a stream from which to start reading. Required for Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources. `AT_TIMESTAMP` is only supported for Amazon Kinesis streams. |
 | starting_position_timestamp | With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to start reading. |

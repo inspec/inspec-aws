@@ -24,8 +24,8 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | target_group_arn | The Amazon Resource Name (ARN) of the target group. |
 | target_group_name | The name of the target group. |
 | protocol | The protocol to use for routing traffic to the targets. Valid values are: `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, or `UDP`. |

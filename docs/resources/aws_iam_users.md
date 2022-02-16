@@ -24,8 +24,8 @@ See also the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/la
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | usernames                       | The usernames of the returned Users. |
 | user\_arns                      | The Amazon Resource Names of the returned Users. |
 | user\_ids                       | The IDs of the returned Users. |

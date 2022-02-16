@@ -26,8 +26,8 @@ The ARN of the AWS IAM managed policy.
 
 ## Properties
 
-|Property                | Description                                                   |
-| :---------------------:| :-----------------------------------------------------------: |
+| Property | Description |
+| :---: | :--- |
 |arn                    | The ARN identifier of the specified policy.                    |
 |policy_id             | The stable and unique string identifying the policy.           |
 |policy_name           | The friendly name (not ARN) identifying the policy.            |

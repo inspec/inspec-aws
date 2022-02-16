@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Glue Crawler](https://
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | names | The name of a crawler. |
 | roles | The ARNs of IAM roles used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data. |
 | targets | A collection of targets to crawl. |

@@ -2,7 +2,7 @@
 title: About the aws_elasticache_cluster_node Resource
 ---
 
-# aws\_elasticache\_cluster\_node
+# aws_elasticache_cluster_node
 
 Use the `aws_elasticache_cluster_node` InSpec audit resource to test the properties of a single AWS ElastiCache cluster node.
 
@@ -18,7 +18,7 @@ An `aws_elasticache_cluster_node` resource block declares the tests for a single
 
 The ElastiCache cluster ID and node ID must be provided.
 
-##### cache\_cluster\_id _(required)_
+`cache_cluster_id` _(required)_
 
 The ID of the ElastiCache cluster:
  - contains between 1 and 50 alphanumeric characters or hyphens, 
@@ -27,19 +27,19 @@ The ID of the ElastiCache cluster:
  
 It can be passed either as a string or as a `cache_cluster_id: 'value'` key-value entry in a hash.
 
-##### node\_id _(required)_
+`node_id` _(required)_
 
 The ID of the node must be a string containing 4 digits. It can be passed as a `node_id: 'value'` key-value entry in a hash.
 
 ## Properties
 
-|Property               | Description |
-| ---                   | --- |
+| Property | Description |
+| :---: | :--- |
 |id                     | The cache node identifier, e.g. `0001`.|
 |port                   | The port number that the cache engine is listening on. |
 |address                | The DNS hostname of the cache node. |
 |status                 | The current state of the cache node. One of the following values: `available`, `creating`, `rebooting`, or `deleting`. |
-|create\_time           | The date and time when the cache node was created. |
+|create_time           | The date and time when the cache node was created. |
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheNode.html).
 

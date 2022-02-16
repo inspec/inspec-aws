@@ -24,8 +24,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | domain_names | A list of domain names that match the expression. | domain_names |
 
 ## Examples

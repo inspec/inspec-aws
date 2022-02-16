@@ -28,8 +28,8 @@ This resource does not expect any parameters.
 
 ## Properties
 
-|Property             | Description|
-| ---                 | --- |
+| Property | Description |
+| :---: | :--- |
 |master_account_id  | The ID of the AWS Organizations Master Account |
 |master_account_arn | The ARN of the AWS Organizations Master Account |
 

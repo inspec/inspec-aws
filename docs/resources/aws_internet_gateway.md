@@ -35,8 +35,8 @@ If there are multiple internet gateways with the same name, this resource will r
 
 ## Properties
 
-|Property            | Description |
-| ---                | --- |
+| Property | Description |
+| :---: | :--- |
 |id                  | The ID of the internet gateway. |
 |name                | The value of the `Name` tag. It is `nil` if not defined. |
 |vpc\_id             | The ID of the attached VPC. It is `nil` if the resource is in a `detached` state. |

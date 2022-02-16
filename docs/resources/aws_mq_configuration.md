@@ -3,7 +3,7 @@ title: About the aws_mq_configuration Resource
 platform: aws
 ---
 
-# aws\_mq\_configuration
+# aws_mq_configuration
 
 Use the `aws_mq_configuration` InSpec audit resource to test the properties of a single specific AWS MQ configuration.
 
@@ -19,16 +19,14 @@ Ensure that AWS MQ configuration exists.
 
 `configuration_id` _(required)_
 
-| Property | Description |
-| --- | --- |
-| configuration_id | The configuration ID.|
+The configuration ID.
 
 For additional information, see the [AWS documentation on AWS MQ configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-configuration.html).
 
 ## Properties
 
 | Property | Description| Field |
-| --- | --- | --- |
+| :---: | :--- | :---: |
 | arn | The ARN of the configuration.| arn |
 | authentication_strategy |  The authentication strategy associated with the configuration. The default is SIMPLE.| authentication_strategy |
 | created | The date and time of the configuration revision. | Created |

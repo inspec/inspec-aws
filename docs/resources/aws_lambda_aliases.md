@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS Lambda alias](http
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | alias_arns | Lambda function ARN that is qualified using the alias name as the suffix. | alias_arn |
 | names | The alias names. | name |
 | function_versions | Function version to which the alias points. | function_version |

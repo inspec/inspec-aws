@@ -23,10 +23,10 @@ See also the [AWS documentation on Root Users](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
-|summary_account | A hash containing a summary of the Root User's account. Properties within this hash can be accessed and tested against. Please see the [API Documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetAccountSummary.html) for details on the available properties. |
-|virtual_devices | A list of the virtual MFA devices in the AWS account. |
+| Property | Description |
+| :---: | :--- |
+| summary_account | A hash containing a summary of the Root User's account. Properties within this hash can be accessed and tested against. Please see the [API Documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetAccountSummary.html) for details on the available properties. |
+| virtual_devices | A list of the virtual MFA devices in the AWS account. |
 
 ## Examples
 

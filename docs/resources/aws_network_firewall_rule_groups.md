@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Network Firewall R
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | names | The descriptive name of the rule group. | name |
 | arns | The Amazon Resource Name (ARN) of the rule group. | arn |
 

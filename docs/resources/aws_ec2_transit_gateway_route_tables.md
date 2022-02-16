@@ -3,7 +3,7 @@ title: About the aws_ec2_transit_gateway_route_tables Resource
 platform: aws
 ---
 
-# aws\_ec2\_transit\_gateway\_route\_tables
+# aws_ec2_transit_gateway_route_tables
 
 Use the `aws_ec2_transit_gateway_route_tables` InSpec audit resource to test properties of some or all Transit Gateway route tables.
 
@@ -25,15 +25,15 @@ See the [AWS documentation on Transit Gateway route tables](https://docs.aws.ama
 
 ## Properties
 
-| Property | Description |
-| --- | --- |
-| transit_gateway_route_table_ids | The ID of the Transit Gateway route table. |
-| transit_gateway_ids | The ID of the Transit Gateway. |
-| states | The state of the route table. Relevant values are: `available`, `deleting`, `deleted`, and `pending`. |
-| default_association_route_tables | Indicates whether this is the default association route table for the Transit Gateway. Default values are `true` and `false`. |
-| default_propagation_route_tables | Indicates whether this is the default propagation route table for the Transit Gateway. Default values are `true` and `false`. |
-| creation_times | The creation time of the Transit Gateway route table. |
-| tags | The tags of the Transit Gateway route table. |
+| Property | Description | Field |
+| :---: | :--- | :---: |
+| transit_gateway_route_table_ids | The ID of the Transit Gateway route table. | transit_gateway_route_table_id |
+| transit_gateway_ids | The ID of the Transit Gateway. | transit_gateway_id |
+| states | The state of the route table. Relevant values are: `available`, `deleting`, `deleted`, and `pending`. | state |
+| default_association_route_tables | Indicates whether this is the default association route table for the Transit Gateway. Default values are `true` and `false`. | default_association_route_table |
+| default_propagation_route_tables | Indicates whether this is the default propagation route table for the Transit Gateway. Default values are `true` and `false`. | default_propagation_route_table |
+| creation_times | The creation time of the Transit Gateway route table. | creation_time |
+| tags | The tags of the Transit Gateway route table. | tags |
 
 ## Examples
 

@@ -31,8 +31,8 @@ See also the [AWS documentation on GuardDuty Detectors](https://docs.aws.amazon.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |detector_ids             | A list of detector IDs. |
 
 ## Examples

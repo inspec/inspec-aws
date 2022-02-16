@@ -3,7 +3,7 @@ title: About the aws_s3_bucket Resource
 platform: aws
 ---
 
-# aws\_s3\_bucket
+# aws_s3_bucket
 
 Use the `aws_s3_bucket` InSpec audit resource to test properties of a single AWS bucket.
 
@@ -20,9 +20,9 @@ An `aws_s3_bucket` resource block declares a bucket by name, and then lists test
       it { should exist }
     end
     
-#### Parameters
+## Parameters
 
-##### bucket\_name _(required)_
+`bucket_name` _(required)_
 
 This resource accepts a single parameter, the S3 Bucket Name which uniquely identifies the bucket. 
 This can be passed either as a string or as a `bucket_name: 'value'` key-value entry in a hash.
@@ -31,16 +31,15 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 ## Properties
 
-|Property      | Description|
-| ---          | --- |
-|region        | The region of the bucket. Region is overridden based on the location returned from S3 |
-|bucket\_acl    | An array of AWS Grants detailing permission grants on the bucket. |
-|bucket\_policy | The IAM policy document controlling access to the bucket.  |
-|bucket\_lifecycle\_rules | The lifecycle policy rules that define actions S3 will take for all objects (or a subset of objects) in their lifetime. |
-|tags          | An hash with each key-value pair corresponding to a tag associated with the entity |
+| Property | Description |
+| :---: | :--- |
+| region | The region of the bucket. Region is overridden based on the location returned from S3 |
+| bucket_acl | An array of AWS Grants detailing permission grants on the bucket. |
+| bucket_policy | The IAM policy document controlling access to the bucket.  |
+| bucket_lifecycle_rules | The lifecycle policy rules that define actions S3 will take for all objects (or a subset of objects) in their lifetime. |
+| tags | An hash with each key-value pair corresponding to a tag associated with the entity |
 
 ## Examples
-
 
 ##### Test the bucket-level ACL
     describe aws_s3_bucket('test_bucket') do
@@ -100,7 +99,7 @@ See also the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/Amazo
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-#### be\_public
+#### be_public
 
 The `be_public` matcher tests if the bucket has potentially insecure access controls. This high-level matcher detects several insecure conditions, which may be enhanced in the future. Currently, the matcher reports an insecure bucket if any of the following conditions are met:
 
@@ -112,25 +111,25 @@ Note: This resource does not detect insecure object ACLs.
 
     it { should_not be_public }
 
-#### have\_access\_logging\_enabled
+#### have_access_logging_enabled
 
 The `have_access_logging_enabled` matcher tests if access logging is enabled for the s3 bucket.
 
     it { should have_access_logging_enabled }
 
-#### have\_default\_encryption\_enabled
+#### have_default_encryption_enabled
 
 The `have_default_encryption_enabled` matcher tests if default encryption is enabled for the s3 bucket.
 
     it { should have_default_encryption_enabled }
 
-#### have\_versioning\_enabled
+#### have_versioning_enabled
 
 The `have_versioning_enabled` matcher tests if versioning is enabled for the s3 bucket.
 
    it { should have_versioning_enabled }
 
-#### have\_secure\_transport\_enabled
+#### have_secure_transport_enabled
 
 The `have_secure_transport_enabled` matcher tests if a bucket policy that explicitly denies requests via HTTP is enabled for the s3 bucket.
 

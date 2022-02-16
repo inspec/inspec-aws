@@ -15,20 +15,19 @@ An `aws_sts_caller_identity` resource block may be used to perform tests on deta
       it { should exist }
     end
     
-    
-#### Parameters
+## Parameters
 
-##### name _(required)_
+`name` _(required)_
 
 This resource does not expect any parameters.
 
 ## Properties
 
-|Property                  | Description|
-| ---                      | --- |
-|arn                       | The AWS ARN associated with the calling entity. |
-|account                   | The AWS account ID number of the account that owns or contains the calling entity. |
-|user_id                   | The unique identifier of the calling entity. |
+| Property | Description |
+| :---: | :--- |
+| arn | The AWS ARN associated with the calling entity. |
+| account | The AWS account ID number of the account that owns or contains the calling entity. |
+| user_id| The unique identifier of the calling entity. |
 
 For more info, see [the API reference documentation](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html)
 

@@ -27,8 +27,8 @@ See the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/l
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | contents | A list of the metadata about each object returned.| contents |
 | contents_keys | A list of the object names. | contents (key) |
 | contents_last_modified |  A list of creation date of the objects. | contents (last_modified) |

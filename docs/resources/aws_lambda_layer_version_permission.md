@@ -33,7 +33,7 @@ For additional information, see the [AWS documentation on AWS Lambda layer versi
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | policy | The policy document. |
 | revision_id | A unique identifier for the current revision of the policy. |
 

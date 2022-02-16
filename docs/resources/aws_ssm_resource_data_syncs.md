@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS SSM ResourceDataSy
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | sync_names | The name of the resource data sync. | sync_name |
 | sync_types | The type of resource data sync. | sync_type |
 | sync_sources | Information about the source where the data was synchronized. | sync_source |

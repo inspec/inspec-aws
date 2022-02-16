@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Service Catalog Po
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | principal_arn | The ARN of the principal (IAM user, role, or group). |
 | principal_type | The principal type. The supported value is `IAM`. |
 

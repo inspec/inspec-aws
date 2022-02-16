@@ -31,8 +31,8 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-|Property            | Description|
-| ---                | --- |
+| Property | Description |
+| :---: | :--- |
 |group\_name         | The group name. |
 |group\_id           | The group ID. |
 |arn                 | The Amazon Resource Name of the group. |

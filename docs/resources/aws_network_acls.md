@@ -22,8 +22,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |network_acl_ids             | The IDs of all network ACLs.                 | network_acl_id |
 |vpc_ids                     | The IDs of all the VPCs of the network ACLs. | vpc_id |
 |default                     | The boolean flag to say whether the network ACL is default or not. | default |

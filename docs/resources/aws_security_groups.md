@@ -25,8 +25,8 @@ See also the [AWS documentation on Security Groups](https://docs.aws.amazon.com/
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |group\_ids   | The name of the auto scaling launch configuration associated with the auto scaling group |
 |group\_names | An integer indicating the maximum number of instances in the auto scaling group |
 |vpc\_ids     | An integer indicating the desired  number of instances in the auto scaling group |

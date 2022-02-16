@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on ELBv2 Listener Rule](h
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | rule_arn | The Amazon Resource Names (ARN) of the rules. |
 | priority | The rule priority. |
 | conditions (field) | The field in the HTTP request. Valid values are `http-header`, `http-request-method`, `host-header`, `path-pattern`, `query-string, and source-ip`. |

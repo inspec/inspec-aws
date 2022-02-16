@@ -23,8 +23,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | arns | The ARN of the configuration.| arn |
 | authentication_strategies |  The authentication strategy associated with the configuration. The default is SIMPLE.| authentication_strategy |
 | Created | The date and time of the configuration revision. | Created |

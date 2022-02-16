@@ -20,8 +20,8 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |ids                       | The user-supplied identifier of the cluster. This identifier is a unique key that identifies a cluster. |
 |node\_types               | The name of the compute and memory capacity node type for the cluster, e.g. `cache.m5.large`. |
 |engines                   | The name of the cache engine, e.g. `redis`. |

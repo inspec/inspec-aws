@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 TransitGateway
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | transit_gateway_attachment_id | The ID of the Connect attachment. |
 | transport_transit_gateway_attachment_id | The ID of the attachment from which the Connect attachment was created. |
 | transit_gateway_id | The ID of the transit gateway. |

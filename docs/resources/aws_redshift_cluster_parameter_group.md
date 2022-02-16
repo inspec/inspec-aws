@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on Redshift cluster param
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | parameter_group_name | The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned. |
 | parameter_group_family | The family of the parameter group. |
 | description | The description of the parameter group. |

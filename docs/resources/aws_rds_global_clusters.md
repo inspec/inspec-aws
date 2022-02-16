@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on the `AWS::RDS::GlobalC
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | global_cluster_identifiers | The list of global clusters returned by this request. | global_cluster_identifier |
 | global_cluster_resource_ids | Contains a user-supplied global database cluster identifier. | global_cluster_resource_id |
 | global_cluster_arns | The Amazon Web Services Region-unique, immutable identifier for the global database cluster. | global_cluster_arn |

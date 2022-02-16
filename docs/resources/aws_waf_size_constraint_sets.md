@@ -23,8 +23,8 @@ For additional information, see the [AWS documentation on AWS WAF SizeConstraint
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | size_constraint_set_ids | A unique identifier for a size constraint set. | size_constraint_set_id |
 | names | The name of the size constraint set. | name |
 

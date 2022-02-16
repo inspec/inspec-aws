@@ -38,9 +38,9 @@ See AWS Documentation on inline policies for more details
 
 ## Properties
 
-| Property        | Description                                                                                                                                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| policy          | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
+| Property | Description |
+| :---: | :--- |
+| policy | Returns the default version of the policy document after decoding as a Ruby hash. This hash contains the policy statements and is useful for performing checks that cannot be expressed using higher-level matchers like `have_statement`. |
 | statement_count | Returns the number of statements present in the `policy`.                                                                                                                                                                                  |
 
 ## Examples

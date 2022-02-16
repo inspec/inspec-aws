@@ -20,8 +20,8 @@ See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWS
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | route\_table\_ids                          | The route table IDs                               | `route_table_id`  |
 | vpc\_ids                                   | The VPC IDs                                       | `vpc_id`          |
 | entries                                    | Provides access to the raw results of the query, which can be treated as an array of hashes. | Not Applicable | 

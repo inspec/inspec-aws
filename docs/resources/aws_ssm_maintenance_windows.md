@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on the `AWS::SSM::Mainten
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | window_ids | The ID of the maintenance window. | window_id |
 | names | The name of the maintenance window. | name |
 | descriptions | A description of the maintenance window. | description |

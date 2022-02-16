@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Service Catalog Cl
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | id | The product view identifier. |
 | product_id | The product identifier. |
 | name | The name of the product. |

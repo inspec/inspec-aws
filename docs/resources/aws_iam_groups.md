@@ -28,8 +28,8 @@ See also the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/l
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |group\_names          | The group name. |
 |group\_ids            | The group ID. |
 |arns                  | The Amazon Resource Name of the group. |

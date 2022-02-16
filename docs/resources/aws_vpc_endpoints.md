@@ -29,8 +29,8 @@ See also the [AWS documentation on VPC Endpoints](https://docs.aws.amazon.com/vp
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |vpc\_endpoint\_ids       | This property provides a list of the VPC Endpoint IDs that the matched VPC Endpoints serve as strings. |
 |vpc\_endpoint\_types | The type of the VPC Endpoint for the match VPC Endpoints. |
 |vpc\_ids           | The IDs of the VPCs in which the endpoints reside. |

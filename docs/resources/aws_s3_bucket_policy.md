@@ -28,7 +28,7 @@ For additional information, see the [AWS documentation on the `AWS::S3::BucketPo
 ## Properties
 
 | Property | Description |
-| -- | --- |
+| :---: | :--- |
 | Effect | The effect of the policy. |
 | Sid | The policy statement ID of the S3 bucket. |
 | Condition | The policy condition key of the S3 bucket. |

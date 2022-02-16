@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS EC2 VPC Peering Co
 
 ## Properties
 
-| Property | Description | Field | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | accepter_vpc_info.cidr_block | The IPv4 CIDR block for the VPC. | accepter_vpc_info.cidr_block |
 | accepter_vpc_info.ipv_6_cidr_block_set | The IPv6 CIDR block for the VPC. | accepter_vpc_info.ipv_6_cidr_block_set |
 | accepter_vpc_info.ipv_6_cidr_block_set.first.ipv_6_cidr_block | The IPv6 CIDR block. | accepter_vpc_info.ipv_6_cidr_block_set[0].ipv_6_cidr_block |

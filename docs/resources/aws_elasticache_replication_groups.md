@@ -20,13 +20,13 @@ This resource does not require any required parameters.
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
-|ids                       | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group. |
-|node\_types               | The name of the compute and memory capacity node type for the replication group, e.g. `cache.m5.large`. |
-|status                    | The current state of the replication group, e.g. `creating`, `available`. |
-|encrypted\_at\_rest       | Indicates whether the content is encrypted at rest or not. |
-|encrypted\_at\_transit    | Indicates whether the content is encrypted at transit or not. |
+| Property | Description | Field |
+| :---: | :--- | :---: |
+|ids | The user-supplied identifier of the replication group. This identifier is a unique key that identifies a replication group. |
+|node_types | The name of the compute and memory capacity node type for the replication group, e.g. `cache.m5.large`. |
+|status | The current state of the replication group, e.g. `creating`, `available`. |
+|encrypted_at_rest | Indicates whether the content is encrypted at rest or not. |
+|encrypted_at_transit | Indicates whether the content is encrypted at transit or not. |
 
 ## Examples
 

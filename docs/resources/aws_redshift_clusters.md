@@ -25,8 +25,8 @@ Also see the [AWS Redshift cluster documentation](https://docs.aws.amazon.com/AW
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |cluster_identifiers         | The unique IDs of the Redshift clusters returned. |                                     cluster_identifier          |
 |db_names                    | The name of the database associated with each Redshift cluster. |                       db_name                     |
 |node_types                  | The Redshift instance type. |                                                           node_type                   |

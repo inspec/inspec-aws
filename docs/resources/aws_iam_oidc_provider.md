@@ -28,8 +28,8 @@ For additional information, see the [AWS documentation on IAM OIDC provider](htt
 
 ## Properties
 
-| Property | Description|
-| --- | --- |
+| Property | Description |
+| :---: | :--- |
 | url | The URL that the IAM OIDC provider resource object is associated with. |
 | create_date | The date and time when the IAM OIDC provider resource object was created in the account. |
 | tags | A list of tags that are attached to the specified IAM OIDC provider. |

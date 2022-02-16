@@ -56,8 +56,8 @@ It could be passed as a `supernet_of_match: 'value'` key-value entry in a hash.
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |cidr_blocks               | All the CIDR blocks used for destination matches.          | cidr_block     |
 |prefix_list_ids           | The IDs of the prefix list used for destination matches.   | prefix_list_id |
 |types                     | The type of all routes. Valid values: `propagated` or `static`. | type      |

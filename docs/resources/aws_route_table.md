@@ -3,7 +3,7 @@ title: About the aws_route_table Resource
 platform: aws
 ---
 
-# aws\_route\_table
+# aws_route_table
 
 Use the `aws_route_table` InSpec audit resource to test the properties of a single route or route table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed.
 
@@ -19,19 +19,19 @@ This resource expects a single parameter that uniquely identifies the route tabl
       it { should exist }
     end
 
-### Parameters
+## Parameters
 
-#### route\_table\_id _(required)_
+`route_table_id` _(required)_
 
-This resource accepts a single parameter, the `route\_table\_id`.
+This resource accepts a single parameter, the `route_table_id`.
 This can be passed either as a string or as a `route_table_id: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html) and the [AWS documentation on routes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html#cfn-ec2-route-destinationcidrblock).
 
 ## Properties
 
-|Property           | Description|
-| ---               | --- |
+| Property | Description |
+| :---: | :--- |
 |route\_table\_id   | The ID of the route table.  |
 |owner\_id          | The ID of the AWS account that owns the route table.  |
 |vpc\_id            | The ID of the VPC.  |

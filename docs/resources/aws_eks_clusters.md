@@ -21,8 +21,8 @@ See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks
 
 ## Properties
 
-|Property                | Description|
-| ---                    | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 |arn                     | The Amazon Resource Name (ARN) of the cluster. |
 |name                    | The name of the cluster. |
 |endpoint                | The endpoint for your Kubernetes API server. |

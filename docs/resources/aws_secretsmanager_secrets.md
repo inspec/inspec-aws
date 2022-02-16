@@ -25,8 +25,8 @@ For additional information, see the [AWS documentation on AWS Secret Manager Sec
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | arns | The Amazon Resource Name (ARN) of the secret. |
 | names | The friendly name of the secret. |
 | descriptions | The user-provided description of the secret. |

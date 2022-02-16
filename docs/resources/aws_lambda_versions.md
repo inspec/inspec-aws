@@ -27,8 +27,8 @@ For additional information, see the [AWS documentation on AWS Lambda Version](ht
 
 ## Properties
 
-| Property | Description | Fields | 
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | layer_version_arns | The ARN of the layer version. | layer_version_arn |
 | versions | The version number. | version |
 | descriptions | The description of the version. | description |

@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on the `AWS::WAF::ByteMat
 ## Properties
 
 | Property | Description |
-| --- | --- |
+| :---: | :--- |
 | byte_match_set_id | The unique identifier for the byte match set. |
 | name | The name of the byte match set. |
 | byte_match_tuples | Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. |
