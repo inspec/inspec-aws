@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.1 -->
+<!-- latest_release 1.81.2 -->
+## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
+
+#### Merged Pull Requests
+- RESOURCE-32 Trigger coverage pipeline on PR [#861](https://github.com/inspec/inspec-aws/pull/861) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
 
 #### Merged Pull Requests
 - Setup sonarscanner [#859](https://github.com/inspec/inspec-aws/pull/859) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.81.0](https://github.com/inspec/inspec-aws/tree/v1.81.0) (2022-02-15)
 
