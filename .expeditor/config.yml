@@ -10,6 +10,9 @@ pipelines:
  - verify:
     description: Pull Request validation tests
     public: true
+ - coverage:
+    description: Unit Test Coverage tests
+    # private due to need for tokens
 
 github:
  delete_branch_on_merge: true
