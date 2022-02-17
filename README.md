@@ -23,7 +23,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
     export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
     export AWS_SECRET_ACCESS_KEY="vD2lfoNvPdwsofqyuO9jRuWUkZIMqisdfeFmkHTy7ON+w"
     export AWS_REGION="eu-west-3"
-    export AWS_AVAILABILITY_ZONE="eu-west-3a"  
+    export AWS_AVAILABILITY_ZONE="eu-west-3a"
 ```
 
 #### 2) Configuration File
@@ -36,7 +36,7 @@ Example `~/.aws/credentials` :
       [default]
       aws_access_key_id=AKIAIOSFODNN7EXAMPLE
       aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-      
+
       [engineering]
       aws_access_key_id=AKIAIOSFODNN7EXAMPLF
       aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY1
@@ -47,7 +47,7 @@ Example `~/.aws/config` :
  ```bash
     [default]
     region=us-west-2
-    
+
     [engineering]
     region=us-east-2
  ```
@@ -424,7 +424,7 @@ InSpec AWS Supported Resources [https://docs.chef.io/inspec/resources/](https://
 |  |  | [AWS::WAF::WebACL](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html) | [aws_waf_web_acl](docs/resources/aws_waf_web_acl.md) | [aws_waf_web_acls](docs/resources/aws_waf_web_acls.md) |
 |  |  | [AWS::WAF::XssMatchSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-xssmatchset.html) | [aws_waf_xss_match_set](docs/resources/aws_waf_xss_match_set.md) | [aws_waf_xss_match_sets](docs/resources/aws_waf_xss_match_sets.md) |
 
-## Examples 
+## Examples
 
 ### Ensure Security Groups disallow FTP
 
@@ -556,9 +556,9 @@ end
 describe aws_ec2_instance(instance_id: 'i-12345678') do
   its('instance_ID') { should eq 'i-12345678' }
 end
-# =>  ×  instance_ID is expected to eq "i-12345678"    
+# =>  ×  instance_ID is expected to eq "i-12345678"
 #     expected: "i-12345678"
-#          got: #<#<Class:0x00007ffc4aa24c68>::NullResponse:0x00007ffc39f16070>    
+#          got: #<#<Class:0x00007ffc4aa24c68>::NullResponse:0x00007ffc39f16070>
 #     (compared using ==)
 ```
 
@@ -569,7 +569,7 @@ describe aws_ec2_instance(instance_id: 'i-12345678') do
   its('fake_property') { should be_nil }
 end
 # => EC2 Instance i-12345678
-#          ×  fake_property 
+#          ×  fake_property
 #          undefined method `fake_property' for EC2 Instance i-12345678
 
 describe aws_ec2_instance(instance_id: 'i-12345678') do
@@ -586,7 +586,7 @@ InSpec AWS depends on version 3 of the AWS SDK provided via [Train AWS](https://
 
 ### Running a sample profile using Docker
 
-A `Dockerfile` is provided at the root of this resource pack repository.  
+A `Dockerfile` is provided at the root of this resource pack repository.
 
 ```bash
 cd inspec-aws
@@ -677,13 +677,13 @@ Will result in...
 ````bash
 make sure
 
-docker-compose run --rm builder 
+docker-compose run --rm builder
 Running RuboCop...
 Inspecting 68 files
 ....................................................................
 
 68 files inspected, no offenses detected
-/usr/local/bin/ruby -I"lib:libraries:test/unit" -I"/usr/local/bundle/gems/rake-12.3.3/lib" "/usr/local/bundle/gems/rake-12.3.3/lib/rake/rake_test_loader.rb" "test/unit/resources/aws_alb_test.rb" "test/unit/resources/aws_auto_scaling_group_test.rb" "test/unit/resources/aws_cloudformation_stack_test.rb" "test/unit/resources/aws_cloudtrail_trail_test.rb" "test/unit/resources/aws_cloudtrail_trails_test.rb" "test/unit/resources/aws_cloudwatch_alarm_test.rb" "test/unit/resources/aws_cloudwatch_log_metric_filter_test.rb" "test/unit/resources/aws_config_delivery_channel_test.rb" "test/unit/resources/aws_config_recorder_test.rb" "test/unit/resources/aws_dynamodb_table_test.rb" "test/unit/resources/aws_ebs_volume_test.rb" "test/unit/resources/aws_ebs_volumes_test.rb" "test/unit/resources/aws_ec2_instance_test.rb" "test/unit/resources/aws_ec2_instances_test.rb" "test/unit/resources/aws_ecr_test.rb" "test/unit/resources/aws_ecs_cluster_test.rb" "test/unit/resources/aws_eks_cluster_test.rb" "test/unit/resources/aws_eks_clusters_test.rb" "test/unit/resources/aws_elb_test.rb" "test/unit/resources/aws_flow_log_test.rb" "test/unit/resources/aws_hosted_zones_test.rb" "test/unit/resources/aws_iam_account_alias_test.rb" "test/unit/resources/aws_iam_group_test.rb" "test/unit/resources/aws_iam_password_policy_test.rb" "test/unit/resources/aws_iam_policy_test.rb" "test/unit/resources/aws_iam_role_test.rb" "test/unit/resources/aws_iam_root_user_test.rb" "test/unit/resources/aws_iam_saml_provider_test.rb" "test/unit/resources/aws_iam_user_test.rb" "test/unit/resources/aws_kms_key_test.rb" "test/unit/resources/aws_kms_keys_test.rb" "test/unit/resources/aws_launch_configuration_test.rb" "test/unit/resources/aws_organizations_member_test.rb" "test/unit/resources/aws_rds_instance_test.rb" "test/unit/resources/aws_rds_instances_test.rb" "test/unit/resources/aws_region_test.rb" "test/unit/resources/aws_regions_test.rb" "test/unit/resources/aws_route_table_test.rb" "test/unit/resources/aws_route_tables_test.rb" "test/unit/resources/aws_s3_bucket_object_test.rb" "test/unit/resources/aws_s3_bucket_test.rb" "test/unit/resources/aws_s3_buckets_test.rb" "test/unit/resources/aws_security_group_test.rb" "test/unit/resources/aws_security_groups_test.rb" "test/unit/resources/aws_sns_subscription_test.rb" "test/unit/resources/aws_sns_topic_test.rb" "test/unit/resources/aws_sns_topics_test.rb" "test/unit/resources/aws_sqs_queue_test.rb" "test/unit/resources/aws_sts_caller_identity_test.rb" "test/unit/resources/aws_subnet_test.rb" "test/unit/resources/aws_subnets_test.rb" "test/unit/resources/aws_vpc_test.rb" "test/unit/resources/aws_vpcs_test.rb" 
+/usr/local/bin/ruby -I"lib:libraries:test/unit" -I"/usr/local/bundle/gems/rake-12.3.3/lib" "/usr/local/bundle/gems/rake-12.3.3/lib/rake/rake_test_loader.rb" "test/unit/resources/aws_alb_test.rb" "test/unit/resources/aws_auto_scaling_group_test.rb" "test/unit/resources/aws_cloudformation_stack_test.rb" "test/unit/resources/aws_cloudtrail_trail_test.rb" "test/unit/resources/aws_cloudtrail_trails_test.rb" "test/unit/resources/aws_cloudwatch_alarm_test.rb" "test/unit/resources/aws_cloudwatch_log_metric_filter_test.rb" "test/unit/resources/aws_config_delivery_channel_test.rb" "test/unit/resources/aws_config_recorder_test.rb" "test/unit/resources/aws_dynamodb_table_test.rb" "test/unit/resources/aws_ebs_volume_test.rb" "test/unit/resources/aws_ebs_volumes_test.rb" "test/unit/resources/aws_ec2_instance_test.rb" "test/unit/resources/aws_ec2_instances_test.rb" "test/unit/resources/aws_ecr_test.rb" "test/unit/resources/aws_ecs_cluster_test.rb" "test/unit/resources/aws_eks_cluster_test.rb" "test/unit/resources/aws_eks_clusters_test.rb" "test/unit/resources/aws_elb_test.rb" "test/unit/resources/aws_flow_log_test.rb" "test/unit/resources/aws_hosted_zones_test.rb" "test/unit/resources/aws_iam_account_alias_test.rb" "test/unit/resources/aws_iam_group_test.rb" "test/unit/resources/aws_iam_password_policy_test.rb" "test/unit/resources/aws_iam_policy_test.rb" "test/unit/resources/aws_iam_role_test.rb" "test/unit/resources/aws_iam_root_user_test.rb" "test/unit/resources/aws_iam_saml_provider_test.rb" "test/unit/resources/aws_iam_user_test.rb" "test/unit/resources/aws_kms_key_test.rb" "test/unit/resources/aws_kms_keys_test.rb" "test/unit/resources/aws_launch_configuration_test.rb" "test/unit/resources/aws_organizations_member_test.rb" "test/unit/resources/aws_rds_instance_test.rb" "test/unit/resources/aws_rds_instances_test.rb" "test/unit/resources/aws_region_test.rb" "test/unit/resources/aws_regions_test.rb" "test/unit/resources/aws_route_table_test.rb" "test/unit/resources/aws_route_tables_test.rb" "test/unit/resources/aws_s3_bucket_object_test.rb" "test/unit/resources/aws_s3_bucket_test.rb" "test/unit/resources/aws_s3_buckets_test.rb" "test/unit/resources/aws_security_group_test.rb" "test/unit/resources/aws_security_groups_test.rb" "test/unit/resources/aws_sns_subscription_test.rb" "test/unit/resources/aws_sns_topic_test.rb" "test/unit/resources/aws_sns_topics_test.rb" "test/unit/resources/aws_sqs_queue_test.rb" "test/unit/resources/aws_sts_caller_identity_test.rb" "test/unit/resources/aws_subnet_test.rb" "test/unit/resources/aws_subnets_test.rb" "test/unit/resources/aws_vpc_test.rb" "test/unit/resources/aws_vpcs_test.rb"
 Run options: --seed 22010
 
 # Running:
