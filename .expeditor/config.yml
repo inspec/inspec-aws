@@ -13,6 +13,7 @@ pipelines:
  - coverage:
     description: Unit Test Coverage tests
     # private due to need for tokens
+    trigger: pull_request
 
 github:
  delete_branch_on_merge: true
