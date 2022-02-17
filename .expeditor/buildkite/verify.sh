@@ -7,6 +7,18 @@ uname -a
 ruby -v
 bundle --version
 
+if [ -n "${CI_ENABLE_COVERAGE:-}" ]; then
+  # Fetch token from vault ASAP so that long-running tests don't cause our vault token to expire
+  echo "--- installing vault"
+  export VAULT_VERSION=1.9.3
+  export VAULT_HOME=$HOME/vault
+  curl --create-dirs -sSLo $VAULT_HOME/vault.zip https://releases.hashicorp.com/vault/$VAULT_VERSION/vault_${VAULT_VERSION}_linux_amd64.zip
+  unzip -o $VAULT_HOME/vault.zip -d $VAULT_HOME
+
+  echo "--- fetching Sonar token from vault"
+  export SONAR_TOKEN=$($VAULT_HOME/vault kv get -field token secret/inspec/sonar)
+fi
+
 echo "--- bundle install"
 bundle config set --local without tools maintenance deploy
 bundle install --jobs=7 --retry=3
@@ -27,15 +39,6 @@ if [ -n "${CI_ENABLE_COVERAGE:-}" ]; then
   unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
   export PATH=$SONAR_SCANNER_HOME/bin:$PATH
   export SONAR_SCANNER_OPTS="-server"
-
-  echo "--- installing vault"
-  export VAULT_VERSION=1.9.3
-  export VAULT_HOME=$HOME/vault
-  curl --create-dirs -sSLo $VAULT_HOME/vault.zip https://releases.hashicorp.com/vault/$VAULT_VERSION/vault_${VAULT_VERSION}_linux_amd64.zip
-  unzip -o $VAULT_HOME/vault.zip -d $VAULT_HOME
-
-  echo "--- fetching Sonar token from vault"
-  export SONAR_TOKEN=$($VAULT_HOME/vault kv get -field token secret/inspec/sonar)
 
   echo "--- running sonarscanner"
   sonar-scanner \
