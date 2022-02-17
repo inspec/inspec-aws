@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.0 -->
+<!-- latest_release 1.81.1 -->
+## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
+
+#### Merged Pull Requests
+- Setup sonarscanner [#859](https://github.com/inspec/inspec-aws/pull/859) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.81.0](https://github.com/inspec/inspec-aws/tree/v1.81.0) (2022-02-15)
 
 #### Merged Pull Requests
 - adding missing error handling for aws iam password policy resource [#856](https://github.com/inspec/inspec-aws/pull/856) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.80.7](https://github.com/inspec/inspec-aws/tree/v1.80.7) (2022-02-11)
 
