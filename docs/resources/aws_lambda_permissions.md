@@ -53,6 +53,6 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 The controls will pass if the `get` method returns at least one result.
 
-## AWS permissions
+## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Lambda:Client:GetPolicyResponse` action with `Effect` set to `Allow`.

@@ -44,6 +44,26 @@ See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs
       end
     end
 
+### Tests the snapshot using cached resource_data
+
+    aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
+        describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+            its ('engine')         { should eq 'MYSQL' }
+            its ('engine_version') { should eq '5.6.37' }
+        end
+    end
+
+### Loop through all RDS snapshots and test each snapshot with singular resource.
+
+This method uses local in-memory caching to test each snapshot for quicker execution of large sets of test cases.
+
+    aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
+        describe aws_rds_snapshot(resource_data: AWS_RDS_SNAPSHOT) do
+            it { should exist }
+            it { should have_encrypted_snapshot }
+        end
+    end
+
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
