@@ -1,7 +1,0 @@
-extends: substitution
-message: "Use '%s' instead of '%s'"
-level: error
-ignorecase: true
-swap:
-  # '(?[^\s]*(Windows|macOS))? Desktop': Chef Desktop
-  'chefdesktop': Chef Desktop
