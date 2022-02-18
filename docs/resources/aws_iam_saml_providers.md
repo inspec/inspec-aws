@@ -23,6 +23,11 @@ saml_provider_arn _(required)_
 This resource accepts a single parameter, the ARN of the SAML Provider.
 This can be passed either as a string or as a `saml_provider_arn: 'value'` key-value entry in a hash.
 
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
+
 ## Properties
 
 | Property | Description | Field |

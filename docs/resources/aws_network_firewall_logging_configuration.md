@@ -23,6 +23,11 @@ Ensure that the firewall exists.
 
 The Amazon Resource Name (ARN) of the firewall.
 
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
+
 For additional information, see the [AWS documentation on AWS Network Firewall Logging Configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-loggingconfiguration.html).
 
 ## Properties

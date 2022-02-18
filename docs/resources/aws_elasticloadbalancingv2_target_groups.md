@@ -3,20 +3,24 @@ title: About the aws_elasticloadbalancingv2_target_groups Resource
 platform: aws
 ---
 
-# aws\_elasticloadbalancingv2\_target\_groups
+# aws_elasticloadbalancingv2_target_groups
 
 Use the `aws_elasticloadbalancingv2_target_groups` InSpec audit resource to test properties of multiple Elastic Load Balancing V2 target groups.
 
 ## Syntax
 
 Ensure that a target group arn exists.
+
     describe aws_elasticloadbalancingv2_target_groups  do
       it { should exist }
     end
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 For additional information, see the [AWS documentation on ElasticLoadBalancingV2 TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html).
 

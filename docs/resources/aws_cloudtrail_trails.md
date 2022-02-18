@@ -17,7 +17,10 @@ An `aws_cloudtrail_trails` resource block returns all CloudTrail Trails and allo
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 See also the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 

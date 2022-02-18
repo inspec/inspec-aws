@@ -32,6 +32,11 @@ To list only AWS managed policies, set `Scope` to `AWS`. To list only the custom
 
 See also the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 
+
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 ## Properties
 
 | Property | Description | Field |

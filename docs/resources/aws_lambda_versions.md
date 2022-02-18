@@ -23,6 +23,11 @@ Ensure that a Lambda version exists.
 
 The name or Amazon Resource Name (ARN) of the Lambda layer.
 
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
+
 For additional information, see the [AWS documentation on AWS Lambda Version](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-version.html).
 
 ## Properties

@@ -18,7 +18,10 @@ An `aws_network_acls` resource block collects a group of network ACL description
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 ## Properties
 

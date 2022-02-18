@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_cloud_formation_stack_set` InSpec audit resource to test properties of the singular Cloud Formation stack set.
 
+The `AWS::CloudFormation::StackSet` enables you to provision stacks into AWS accounts and across Regions by using a single CloudFormation template.
+
 ## Syntax
 
 Ensure that the stack set exists.
@@ -21,7 +23,7 @@ Ensure that the stack set exists.
 
 The name that's associated with the stack set.
 
-For additional information, see the [AWS documentation on AWS CloudFormation stack set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html).
+For additional information, see the [AWS documentation on the `AWS::CloudFormation::StackSet` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html).
 
 ## Properties
 

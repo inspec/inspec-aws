@@ -7,6 +7,8 @@ platform: aws
 
 Use the `aws_cloudformation_stack` InSpec audit resource to test properties of a single AWS Cloud Formation Stack.
 
+The `AWS::CloudFormation::Stack` resource nests a stack as a resource in a top-level template.
+
 ## Syntax
 
 Ensure that a cloud formation stack exists
@@ -26,7 +28,7 @@ Ensure that a cloud formation stack exists
 This resource accepts a single parameter, the CloudFormation Stack name which uniquely identifies the stack. 
 This can be passed either as a string or as a `stack_name: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html).
+For additional information, see the [AWS documentation on the `AWS::CloudFormation::Stack` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html).
 
 ## Properties
 

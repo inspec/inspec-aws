@@ -23,6 +23,11 @@ Verify whether a transit gateway route table ID exists.
 
 The ID of the transit gateway route table.
 
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
+
 For addition information, check out the [AWS documentation on transit gateway route table](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroutetableassociation.html).
 
 ## Properties

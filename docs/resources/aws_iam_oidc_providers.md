@@ -3,7 +3,7 @@ title: About the aws_iam_oidc_providers Resource
 platform: aws
 ---
 
-# aws\_iam\_oidc\_providers
+# aws_iam_oidc_providers
 
 Use the `aws_iam_oidc_providers` InSpec audit resource to test properties of a set of AWS IAM OpenID Connect (OIDC) providers.
 
@@ -21,7 +21,10 @@ For additional information, see the [AWS documentation on IAM OIDC provider](htt
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 ## Properties
 

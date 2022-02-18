@@ -21,6 +21,11 @@ Ensure that a service-linked role deletion task exists.
 
 The deletion task identifier.
 
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
+
 See the [AWS documentation on Service linked role deletion status](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-servicelinkedrole.html) for additional information.
 
 ## Properties

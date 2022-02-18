@@ -19,7 +19,10 @@ Ensure the hosted zones are available
 
 #### Parameters
 
-This resource does not expect any parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 For additional information, see the [AWS documentation on the `AWS::Route53::HostedZone` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-hostedzone.html).
 

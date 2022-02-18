@@ -19,7 +19,10 @@ RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Micros
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 See also the [AWS documentation on RDS](https://docs.aws.amazon.com/rds/?id=docs_gateway).
 

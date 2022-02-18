@@ -3,7 +3,7 @@ title: About the aws_eks_clusters Resource
 platform: aws
 ---
 
-# aws\_eks\_clusters
+# aws_eks_clusters
 
 Use the `aws_eks_clusters` resource to test the configuration of a collection of AWS Elastic Container Service for Kubernetes.
 
@@ -15,7 +15,10 @@ Use the `aws_eks_clusters` resource to test the configuration of a collection of
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 See also the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 

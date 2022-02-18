@@ -22,7 +22,10 @@ An `aws_kms_keys` resource block uses an optional filter to select a group of KM
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 See also the [AWS documentation on KS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html).
 

@@ -11,7 +11,7 @@ The `AWS::CloudFront::CachePolicy` resource describes the CloudFront cache polic
 
 ## Syntax
 
-Ensure that the custom resource exists.
+Ensure that the cache policy exists.
 
     describe aws_cloudfront_cache_policies do
       it { should exist }
@@ -19,7 +19,7 @@ Ensure that the custom resource exists.
 
 ## Parameters
 
-This resource does not require any required parameters.
+This resource does not require any mandatory parameters.
 
 For additional information, see the [AWS documentation on AWS CloudFront cache policy.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cache policy.html).
 

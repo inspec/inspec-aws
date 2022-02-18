@@ -22,7 +22,10 @@ If the current AWS Account _**is**_ the Master Account, you may also access prop
 
 ## Parameters
 
-This resource does not expect any parameters.
+This resource does not require any mandatory parameters.
+
+For additional information, see the [AWS documentation on the `AWS::Batch::JobDefinition` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html).
+
 
 **Note:** This resource must target AWS Region `us-east-1`. If another region is specified in your configuration, it will be overwritten at runtime.
 

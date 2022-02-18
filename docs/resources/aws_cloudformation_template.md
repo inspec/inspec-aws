@@ -56,29 +56,29 @@ Location of file containing the template body. The URL must point to a template 
 
 Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
 
-For additional information, see the [AWS documentation on AWS CloudFormation templates](https://aws.amazon.com/cloudformation/resources/templates/).
+For additional information, see the [AWS documentation on the `AWS CloudFormation Templates`]AWS CloudFormation templates](https://aws.amazon.com/cloudformation/resources/templates/).
 
 ## Properties
 
 | Property | Description |
 | :---: | :--- |
-| parameter_keys                                | The name that is associated with the parameter.                                                             |
-| default_values                                | The default value of the parameter.                                                                         |
-| parameter_types                               | The type of parameter.                                                                                            |
-| no_echos                                      | Flag that indicates whether the parameter value is shown as plain text in logs and in the AWS Management Console. |
-| descriptions                                  | The description that is associate with the parameter.                                                             |
-| parameter_constraints_allowed_values          | A list of values that are permitted for a parameter.                                                              |
-| description                                   | The value that is defined in the Description property of the template.                                            |
-| capabilities                                  | The capabilities found within the template.                                                                       |
-| capabilities_reason                           | The list of resources that generated the values in the Capabilities response element.                             |
-| resource_types                                | A list of all the template resource types that are defined in the template, such as `AWS::EC2::Instance`, `AWS::Dynamo::Table`, and `Custom::MyCustomInstance`.   |
-| version                                       | The AWS template format version, which identifies the capabilities of the template.                               |
-| metadata                                      | The value that is defined for the Metadata property of the template.                                              |
-| declared_transforms                           | A list of the transforms that are declared in the template.                                                       |
-| resource_types(resource_identifier_summaries) | The resource types of the resource identifier summaries.                                                          |
-| logical_resource_ids                          | The logical resource id of the resource identifier summaries.                                                     |
-| resource_identifiers                          | The resource identifier of the resource identifier summaries.                                                     |
-| template_body                                 | The structure that contains the body of the template. The `stack_name` must be passed as a parameter to access this property. |
+| parameter_keys | The name that is associated with the parameter. |
+| default_values | The default value of the parameter. |
+| parameter_types | The type of parameter. |
+| no_echos | Flag that indicates whether the parameter value is shown as plain text in logs and in the AWS Management Console. |
+| descriptions | The description that is associate with the parameter. |
+| parameter_constraints_allowed_values | A list of values that are permitted for a parameter. |
+| description | The value that is defined in the Description property of the template. |
+| capabilities | The capabilities found within the template. |
+| capabilities_reason | The list of resources that generated the values in the Capabilities response element. |
+| resource_types | A list of all the template resource types that are defined in the template, such as `AWS::EC2::Instance`, `AWS::Dynamo::Table`, and `Custom::MyCustomInstance`.  |
+| version | The AWS template format version, which identifies the capabilities of the template. 
+| metadata | The value that is defined for the Metadata property of the template. |
+| declared_transforms | A list of the transforms that are declared in the template. |
+| resource_types(resource_identifier_summaries) | The resource types of the resource identifier summaries. |
+| logical_resource_ids | The logical resource id of the resource identifier summaries. |
+| resource_identifiers | The resource identifier of the resource identifier summaries. |
+| template_body | The structure that contains the body of the template. The `stack_name` must be passed as a parameter to access this property. |
 
 ## Examples
 
