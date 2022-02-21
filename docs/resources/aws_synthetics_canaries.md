@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS Synthetics Canary]
 ## Properties
 
 | Property | Description | Fields |
-| --- | --- | --- |
+| :---: | :--- | :---: |
 | ids | The unique ID of this canary. | id |
 | names | The name of the canary. | name |
 | codes | This structure contains information about the canary's Lambda handler and where its code is stored by CloudWatch Synthetics. | code |
