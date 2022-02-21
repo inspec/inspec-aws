@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.2 -->
+<!-- latest_release 1.81.3 -->
+## [v1.81.3](https://github.com/inspec/inspec-aws/tree/v1.81.3) (2022-02-18)
+
+#### Merged Pull Requests
+- Munge docs content so we can deploy it on docs.chef.io [#863](https://github.com/inspec/inspec-aws/pull/863) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
 
 #### Merged Pull Requests
 - RESOURCE-32 Trigger coverage pipeline on PR [#861](https://github.com/inspec/inspec-aws/pull/861) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
 
