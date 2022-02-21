@@ -75,14 +75,6 @@ Use `should_not` to test the entity does not exist.
       it { should_not exist }
     end
 
-### be_available
-
-Use `should` to check if the entity is available.
-
-    describe aws_synthetics_canaries do
-      it { should be_available }
-    end
-
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Synthetics:Client:DescribeCanariesResponse` action with `Effect` set to `Allow`.
