@@ -90,7 +90,6 @@ Use `should_not` to test the entity does not exist.
       it { should_not exist }
     end
 
-
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `Synthetics:Client:GetCanaryResponse` action with `Effect` set to `Allow`.
