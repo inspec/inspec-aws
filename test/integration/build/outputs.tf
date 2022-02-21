@@ -1661,3 +1661,11 @@ output "aws_api_gateway_documentation_version_id" {
 output "aws_api_gateway_documentation_version_description" {
   value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.description
 }
+
+output "aws_api_gateway_gateway_response_id" {
+  value = aws_api_gateway_gateway_response.test.id
+}
+
+output "aws_api_gateway_gateway_response_response_type" {
+  value = aws_api_gateway_gateway_response.test.response_type
+}
