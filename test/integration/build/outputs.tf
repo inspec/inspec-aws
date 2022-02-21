@@ -1661,3 +1661,23 @@ output "aws_api_gateway_documentation_version_id" {
 output "aws_api_gateway_documentation_version_description" {
   value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.description
 }
+
+output "aws_api_gateway_model_id" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.id
+}
+
+output "aws_api_gateway_model_name" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.name
+}
+
+output "aws_api_gateway_model_content_type" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.content_type
+}
+
+output "aws_api_gateway_model_description" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.description
+}
+
+output "aws_api_gateway_model_rest_api_id" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.rest_api_id
+}

@@ -5975,3 +5975,37 @@ resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_par
   rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
 }
 
+resource "aws_api_gateway_rest_api" "main" {
+  name = "MyDemoAPI"
+}
+
+//API Gateway Gateway Response
+
+resource "aws_api_gateway_gateway_response" "test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  status_code = "401"
+  response_type = "UNAUTHORIZED"
+
+  response_templates = {
+    "application/json" = "{\"message\":$context.error.messageString}"
+  }
+
+  response_parameters = {
+    "gatewayresponse.header.Authorization" = "'Basic'"
+  }
+}
+
+//API Gateway Gateway Model
+
+resource "aws_api_gateway_model" "aws_api_gateway_model_test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  name = "user"
+  description = "a JSON schema"
+  content_type = "application/json"
+  schema = <<EOF
+  {
+    "type": "object"
+  }
+  EOF
+}
+
