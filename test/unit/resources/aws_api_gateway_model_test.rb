@@ -5,15 +5,15 @@ require 'aws-sdk-core'
 class AWSApiGatewayModelConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSApiGatewayDeployment.new(rest_api_id: 'test', model_name: 'test', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSApiGatewayModel.new(rest_api_id: '', model_name: '', client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSApiGatewayDeployment.new(rest_api_id: 'test', model_name: 'test', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSApiGatewayModel.new(rest_api_id: '', model_name: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
-    assert_raises(ArgumentError) { AWSApiGatewayDeployment.new(unexpected: 9) }
+    assert_raises(ArgumentError) { AWSApiGatewayModel.new(unexpected: 9) }
   end
 end
 
@@ -26,8 +26,8 @@ class AWSApiGatewayModelHappyPathTest < Minitest::Test
     mock_data[:id] = 'test'
     mock_data[:name] = 'test'
     mock_data[:description] = 'test'
-    mock_data[:schema] = 'test'
     mock_data[:content_type] = 'test'
+    mock_data[:schema] = 'test'
     data[:data] = mock_data
     data[:client] = Aws::APIGateway::Client
     @resp = AWSApiGatewayModel.new(rest_api_id: 'test', model_name: 'test', client_args: { stub_responses: true }, stub_data: [data])
@@ -49,11 +49,11 @@ class AWSApiGatewayModelHappyPathTest < Minitest::Test
     assert_equal(@resp.description, 'test')
   end
 
-  def test_schema
-    assert_equal(@resp.schema, 'test')
-  end
-
   def test_content_type
     assert_equal(@resp.content_type, 'test')
+  end
+
+  def test_schema
+    assert_equal(@resp.schema, 'test')
   end
 end
