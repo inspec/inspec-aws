@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS Synthetics Canary]
 ## Properties
 
 | Property | Description | 
-| --- | --- | 
+| :---: | :--- |
 | id | The unique ID of this canary. |
 | name | The name of the canary. |
 | code.source_location_arn | The ARN of the Lambda layer where Synthetics stores the canary script code. |
