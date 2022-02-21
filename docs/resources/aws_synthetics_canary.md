@@ -90,13 +90,6 @@ Use `should_not` to test the entity does not exist.
       it { should_not exist }
     end
 
-### be_available
-
-Use `should` to check if the entity is available.
-
-    describe aws_synthetics_canary(name: 'CANARY_NAME') do
-      it { should be_available }
-    end
 
 ## AWS Permissions
 
