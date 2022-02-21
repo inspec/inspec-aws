@@ -32,7 +32,7 @@ For additional information, see the [AWS documentation on AWS SSM MaintenanceWin
 ## Properties
 
 | Property | Description | 
-| --- | --- |
+| :---: | :--- |
 | window_id | The ID of the maintenance window where the task is registered. |
 | window_task_id | The task ID. |
 | task_arn | The resource that the task uses during execution. |
