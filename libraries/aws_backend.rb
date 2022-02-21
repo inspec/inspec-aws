@@ -61,6 +61,7 @@ require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
 require 'aws-sdk-ses'
 require 'aws-sdk-waf'
+require 'aws-sdk-synthetics'
 
 # AWS Inspec Backend Classes
 #
@@ -328,6 +329,10 @@ class AwsConnection
 
   def waf_client
     aws_client(Aws::WAF::Client)
+  end
+
+  def synthetics_client
+    aws_client(Aws::Synthetics::Client)
   end
 end
 
