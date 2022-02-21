@@ -25,6 +25,11 @@ class AWSApiGatewayResponse < AwsResourceBase
     end
   end
 
+  def response_type
+    return nil unless exists?
+    @res[:response_type]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end
