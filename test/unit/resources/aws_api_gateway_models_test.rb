@@ -5,7 +5,7 @@ require 'aws-sdk-core'
 class AWSApiGatewayModelsConstructorTest < Minitest::Test
 
   def test_empty_params_ok
-    AWSApiGatewayModels.new(api_id: 'test1', client_args: { stub_responses: true })
+    AWSApiGatewayModels.new(rest_api_id: 'test1', client_args: { stub_responses: true })
   end
 
   def test_rejects_other_args
@@ -13,7 +13,7 @@ class AWSApiGatewayModelsConstructorTest < Minitest::Test
   end
 
   def test_models_non_existing_for_empty_response
-    refute AWSApiGatewayModels.new(api_id: 'test1', client_args: { stub_responses: true }).exist?
+    refute AWSApiGatewayModels.new(rest_api_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
 
@@ -30,7 +30,7 @@ class AWSApiGatewayModelsHappyPathTest < Minitest::Test
     mock_data[:schema] = 'test'
     data[:data] = { :items => [mock_data] }
     data[:client] = Aws::APIGateway::Client
-    @resp = AWSApiGatewayModels.new(api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSApiGatewayModels.new(rest_api_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_models_exists

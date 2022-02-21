@@ -7,7 +7,7 @@ class AWSApiGatewayModels < AwsResourceBase
   desc 'Lists all the API Gateway models.'
 
   example "
-    describe aws_api_gateway_models(api_id: API_ID) do
+    describe aws_api_gateway_models(rest_api_id: rest_api_id) do
       it { should exist }
     end
   "
@@ -24,14 +24,14 @@ class AWSApiGatewayModels < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(api_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided" unless opts[:api_id] && !opts[:api_id].empty?
+    validate_parameters(required: %i(rest_api_id))
+    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
     @table = fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.apigateway_client.get_models(api_id: opts[:api_id]).map do |table|
+      @table = @aws.apigateway_client.get_models(rest_api_id: opts[:rest_api_id]).map do |table|
         table.items.map { |table_name| {
           content_type: table_name.content_type,
           description: table_name.description,
