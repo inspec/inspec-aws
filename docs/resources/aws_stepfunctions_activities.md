@@ -17,12 +17,14 @@ Ensure that the activity exists.
 
 ## Parameters
 
+This resource does not require any mandatory parameters.
+
 For additional information, see the [AWS documentation on AWS StepFunctions Activity](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-activity.html).
 
 ## Properties
 
-| Property | Description | Fields |
-| --- | --- | --- |
+| Property | Description | Field |
+| :---: | :--- | :---: |
 | activity_arns | The Amazon Resource Name (ARN) that identifies the activity. | activity_arn |
 | names | The name of the activity. | name |
 | creation_dates | The date the activity is created. | creation_date |
@@ -57,14 +59,6 @@ Use `should_not` to test the entity does not exist.
 
     describe aws_stepfunctions_activities do
       it { should_not exist }
-    end
-
-### be_available
-
-Use `should` to check if the entity is available.
-
-    describe aws_stepfunctions_activities do
-      it { should be_available }
     end
 
 ## AWS Permissions

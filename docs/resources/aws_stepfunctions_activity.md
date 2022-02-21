@@ -26,7 +26,7 @@ For additional information, see the [AWS documentation on AWS StepFunctions Acti
 ## Properties
 
 | Property | Description | 
-| --- | --- | 
+| :---: | :--- |
 | activity_arn | The Amazon Resource Name (ARN) that identifies the activity. | 
 | name | The name of the activity. | 
 | creation_date | The date the activity is created. | 
@@ -34,11 +34,13 @@ For additional information, see the [AWS documentation on AWS StepFunctions Acti
 ## Examples
 
 ### Ensure a activity arn is available.
+
     describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
       its('activity_arn') { should eq 'ACTIVITY_ARN' }
     end
 
 ### Ensure a activity name is available.
+
     describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
       its('name') { should eq 'ACTIVITY_NAME' }
     end
@@ -61,14 +63,6 @@ Use `should_not` to test the entity does not exist.
 
     describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
       it { should_not exist }
-    end
-
-### be_available
-
-Use `should` to check if the entity is available.
-
-    describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
-      it { should be_available }
     end
 
 ## AWS Permissions
