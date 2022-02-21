@@ -17,9 +17,9 @@ class AWSApiGatewayModels < AwsResourceBase
   FilterTable.create
              .register_column(:content_types, field: :content_type)
              .register_column(:descriptions, field: :description)
-             .register_column(:model_ids, field: :model_id)
              .register_column(:names, field: :name)
              .register_column(:schemas, field: :schema)
+             .register_column(:ids, field: :id)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -35,13 +35,12 @@ class AWSApiGatewayModels < AwsResourceBase
         table.items.map { |table_name| {
           content_type: table_name.content_type,
           description: table_name.description,
-          model_id: table_name.model_id,
           name: table_name.name,
           schema: table_name.schema,
+          id: table_name.id,
         }
         }
       end.flatten
     end
-    require 'pry'; binding.pry
   end
 end
