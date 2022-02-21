@@ -5,11 +5,11 @@ require 'aws-sdk-core'
 class AWSApiGatewayResponseConstructorTest < Minitest::Test
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AWSApiGatewayResponse.new(rest_api_id: '', model_name: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSApiGatewayResponse.new(rest_api_id: '', response_type: '', client_args: { stub_responses: true }) }
   end
 
   def test_empty_param_arg_not_ok
-    assert_raises(ArgumentError) { AWSApiGatewayResponse.new(rest_api_id: '', model_name: '', client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AWSApiGatewayResponse.new(rest_api_id: '', response_type: '', client_args: { stub_responses: true }) }
   end
 
   def test_rejects_unrecognized_params
@@ -23,37 +23,29 @@ class AWSApiGatewayResponseHappyPathTest < Minitest::Test
     data = {}
     data[:method] = :get_gateway_response
     mock_data = {}
-    mock_data[:id] = 'test'
-    mock_data[:name] = 'test'
-    mock_data[:description] = 'test'
-    mock_data[:content_type] = 'test'
-    mock_data[:schema] = 'test'
+    mock_data[:response_type] = 'test'
+    mock_data[:status_code] = 'test'
+    mock_data[:response_parameters] = {"String" => 'test'}
+    mock_data[:response_templates] = {"String" => 'test'}
+    mock_data[:default_response] = true
     data[:data] = mock_data
     data[:client] = Aws::APIGateway::Client
-    @resp = AWSApiGatewayResponse.new(rest_api_id: 'test', model_name: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSApiGatewayResponse.new(rest_api_id: 'test', response_type: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_model_exists
     assert @resp.exist?
   end
 
-  def test_id
-    assert_equal(@resp.id, 'test')
+  def test_response_type
+    assert_equal(@resp.response_type, 'test')
   end
 
-  def test_name
-    assert_equal(@resp.name, 'test')
+  def test_status_code
+    assert_equal(@resp.status_code, 'test')
   end
 
-  def test_description
-    assert_equal(@resp.description, 'test')
-  end
-
-  def test_content_type
-    assert_equal(@resp.content_type, 'test')
-  end
-
-  def test_schema
-    assert_equal(@resp.schema, 'test')
+  def test_default_response
+    assert_equal(@resp.default_response, true )
   end
 end

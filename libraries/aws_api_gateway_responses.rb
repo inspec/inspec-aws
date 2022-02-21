@@ -15,11 +15,11 @@ class AWSApiGatewayResponses < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:response_type, field: :response_type)
-             .register_column(:status_code, field: :status_code)
+             .register_column(:response_types, field: :response_type)
+             .register_column(:status_codes, field: :status_code)
              .register_column(:response_parameters, field: :response_parameters)
              .register_column(:response_templates, field: :response_templates)
-             .register_column(:default_response, field: :default_response)
+             .register_column(:default_responses, field: :default_response)
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -35,8 +35,8 @@ class AWSApiGatewayResponses < AwsResourceBase
         table.items.map { |table_name| {
           response_type: table_name.response_type,
           status_code: table_name.status_code,
-          response_parameters: table_name.response_parameters["String"],
-          response_templates: table_name.response_templates["String"],
+          response_parameters: table_name.response_parameters['String'],
+          response_templates: table_name.response_templates['String'],
           default_response: table_name.default_response,
         }
         }
