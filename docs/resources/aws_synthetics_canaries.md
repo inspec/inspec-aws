@@ -18,6 +18,7 @@ Ensure that the canary exists.
 ## Parameters
 
 This resource does not require any mandatory parameters.
+
 For additional information, see the [AWS documentation on AWS Synthetics Canary](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html).
 
 ## Properties
