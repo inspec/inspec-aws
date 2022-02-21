@@ -23,7 +23,7 @@ For additional information, see the [AWS documentation on AWS Synthetics Canary]
 
 ## Properties
 
-| Property | Description | Fields |
+| Property | Description | Field |
 | :---: | :--- | :---: |
 | ids | The unique ID of this canary. | id |
 | names | The name of the canary. | name |
