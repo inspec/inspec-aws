@@ -1,5 +1,5 @@
 +++
-title = "aws_ssm_patch_baseline Resource"
+title = "aws_ssm_patch_baselines Resource"
 platform = "aws"
 draft = false
 gh_repo = "inspec-aws"
