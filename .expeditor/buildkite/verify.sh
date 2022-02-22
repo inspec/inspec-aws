@@ -40,11 +40,6 @@ if [ -n "${CI_ENABLE_COVERAGE:-}" ]; then
   export PATH=$SONAR_SCANNER_HOME/bin:$PATH
   export SONAR_SCANNER_OPTS="-server"
 
-  echo "--- moving coverage report"
-  ls -l $HOME/coverage/coverage.json
-  mv $HOME/coverage/coverage.json $HOME/coverage/.resultset.json
-  ls -l $HOME/coverage/.resultset.json
-
   echo "--- running sonarscanner"
   sonar-scanner \
   -Dsonar.organization=inspec \
