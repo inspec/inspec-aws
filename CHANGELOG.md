@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.5 -->
+<!-- latest_release 1.81.6 -->
+## [v1.81.6](https://github.com/inspec/inspec-aws/tree/v1.81.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Move coverage report file to location expected by sonarscanner [#870](https://github.com/inspec/inspec-aws/pull/870) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.81.5](https://github.com/inspec/inspec-aws/tree/v1.81.5) (2022-02-22)
 
 #### Merged Pull Requests
 - RESOURCE-32 Extend buildkite timeout [#869](https://github.com/inspec/inspec-aws/pull/869) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.81.4](https://github.com/inspec/inspec-aws/tree/v1.81.4) (2022-02-22)
 
