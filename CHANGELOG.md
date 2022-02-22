@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.3 -->
+<!-- latest_release 1.81.4 -->
+## [v1.81.4](https://github.com/inspec/inspec-aws/tree/v1.81.4) (2022-02-22)
+
+#### Merged Pull Requests
+- Fix resource page title [#868](https://github.com/inspec/inspec-aws/pull/868) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.81.3](https://github.com/inspec/inspec-aws/tree/v1.81.3) (2022-02-18)
 
 #### Merged Pull Requests
 - Munge docs content so we can deploy it on docs.chef.io [#863](https://github.com/inspec/inspec-aws/pull/863) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
 
