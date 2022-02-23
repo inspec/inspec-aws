@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.9 -->
+<!-- latest_release 1.81.10 -->
+## [v1.81.10](https://github.com/inspec/inspec-aws/tree/v1.81.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-170 soumyo/aws_ssm_maintenance_window_task  [#858](https://github.com/inspec/inspec-aws/pull/858) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.81.9](https://github.com/inspec/inspec-aws/tree/v1.81.9) (2022-02-23)
 
 #### Merged Pull Requests
 - RESOURCE-171 soumyo/aws_ssm_maintenance_window_target [#855](https://github.com/inspec/inspec-aws/pull/855) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.81.8](https://github.com/inspec/inspec-aws/tree/v1.81.8) (2022-02-23)
 
