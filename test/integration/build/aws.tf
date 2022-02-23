@@ -5975,3 +5975,64 @@ resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_par
   rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
 }
 
+resource "aws_api_gateway_rest_api" "main" {
+  name = "MyDemoAPI"
+}
+
+//API Gateway Gateway Response
+
+resource "aws_api_gateway_gateway_response" "test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  status_code = "401"
+  response_type = "UNAUTHORIZED"
+
+  response_templates = {
+    "application/json" = "{\"message\":$context.error.messageString}"
+  }
+
+  response_parameters = {
+    "gatewayresponse.header.Authorization" = "'Basic'"
+  }
+}
+
+//API Gateway Gateway Model
+
+resource "aws_api_gateway_model" "aws_api_gateway_model_test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  name = "user"
+  description = "a JSON schema"
+  content_type = "application/json"
+  schema = <<EOF
+  {
+    "type": "object"
+  }
+  EOF
+}
+
+//AWS::Synthetics::Canary
+
+resource "aws_synthetics_canary" "aws_synthetics_canary_test1" {
+  name = "test-canary"
+  artifact_s3_location = "s3://a2-bucket/"
+  execution_role_arn = "arn:aws:iam::112758395563:role/aws-iam-role-bsqfbelcujbbpeahrnunhngxp"
+  runtime_version = "syn-nodejs-puppeteer-3.1"
+  handler = "signIn.handler"
+  zip_file = "${path.module}/lambda.zip"
+  start_canary = true
+  success_retention_period = 2
+  failure_retention_period = 14
+  schedule {
+    expression = "rate(1 hour)"
+    duration_in_seconds = 0
+  }
+  tags = {
+    Name = "sxctf-sign-in"
+    Environment = "TEST"
+    Application = "saints-xctf"
+  }
+}
+
+//AWS::StepFunctions::Activity
+resource "aws_sfn_activity" "aws_sfn_activity_test1" {
+  name = "my-activity"
+}
