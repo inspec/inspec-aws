@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.11 -->
+<!-- latest_release 1.81.12 -->
+## [v1.81.12](https://github.com/inspec/inspec-aws/tree/v1.81.12) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-172 soumyo/aws_stepfunctions_activity [#866](https://github.com/inspec/inspec-aws/pull/866) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.81.11](https://github.com/inspec/inspec-aws/tree/v1.81.11) (2022-02-23)
 
 #### Merged Pull Requests
 - RESOURCE-169 soumyo/aws_synthetics_canary [#865](https://github.com/inspec/inspec-aws/pull/865) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.81.10](https://github.com/inspec/inspec-aws/tree/v1.81.10) (2022-02-23)
 
