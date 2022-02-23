@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.7 -->
+<!-- latest_release 1.81.8 -->
+## [v1.81.8](https://github.com/inspec/inspec-aws/tree/v1.81.8) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-201 update aws tests to use ruby versions 2.7 and 3.0 only [#872](https://github.com/inspec/inspec-aws/pull/872) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.81.7](https://github.com/inspec/inspec-aws/tree/v1.81.7) (2022-02-22)
 
 #### Merged Pull Requests
 - Adjust coverage location using properties file [#871](https://github.com/inspec/inspec-aws/pull/871) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.81.6](https://github.com/inspec/inspec-aws/tree/v1.81.6) (2022-02-22)
 
