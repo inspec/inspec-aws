@@ -1693,3 +1693,15 @@ output "aws_synthetics_canary_timeline" {
 output "aws_synthetics_canary_status" {
   value = aws_synthetics_canary.aws_synthetics_canary_test1.status
 }
+
+output "aws_sfn_activity_id" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.id
+}
+
+output "aws_sfn_activity_name" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.name
+}
+
+output "aws_sfn_activity_creation_date" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.creation_date
+}

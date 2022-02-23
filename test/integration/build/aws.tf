@@ -5998,3 +5998,8 @@ resource "aws_synthetics_canary" "aws_synthetics_canary_test1" {
     Application = "saints-xctf"
   }
 }
+
+//AWS::StepFunctions::Activity
+resource "aws_sfn_activity" "aws_sfn_activity_test1" {
+  name = "my-activity"
+}
