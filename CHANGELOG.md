@@ -1,9 +1,59 @@
-<!-- latest_release 1.81.2 -->
+<!-- latest_release 1.81.12 -->
+## [v1.81.12](https://github.com/inspec/inspec-aws/tree/v1.81.12) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-172 soumyo/aws_stepfunctions_activity [#866](https://github.com/inspec/inspec-aws/pull/866) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.81.11](https://github.com/inspec/inspec-aws/tree/v1.81.11) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-169 soumyo/aws_synthetics_canary [#865](https://github.com/inspec/inspec-aws/pull/865) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.10](https://github.com/inspec/inspec-aws/tree/v1.81.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-170 soumyo/aws_ssm_maintenance_window_task  [#858](https://github.com/inspec/inspec-aws/pull/858) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.9](https://github.com/inspec/inspec-aws/tree/v1.81.9) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-171 soumyo/aws_ssm_maintenance_window_target [#855](https://github.com/inspec/inspec-aws/pull/855) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.8](https://github.com/inspec/inspec-aws/tree/v1.81.8) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-201 update aws tests to use ruby versions 2.7 and 3.0 only [#872](https://github.com/inspec/inspec-aws/pull/872) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.7](https://github.com/inspec/inspec-aws/tree/v1.81.7) (2022-02-22)
+
+#### Merged Pull Requests
+- Adjust coverage location using properties file [#871](https://github.com/inspec/inspec-aws/pull/871) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.6](https://github.com/inspec/inspec-aws/tree/v1.81.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Move coverage report file to location expected by sonarscanner [#870](https://github.com/inspec/inspec-aws/pull/870) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.5](https://github.com/inspec/inspec-aws/tree/v1.81.5) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-32 Extend buildkite timeout [#869](https://github.com/inspec/inspec-aws/pull/869) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.4](https://github.com/inspec/inspec-aws/tree/v1.81.4) (2022-02-22)
+
+#### Merged Pull Requests
+- Fix resource page title [#868](https://github.com/inspec/inspec-aws/pull/868) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.81.3](https://github.com/inspec/inspec-aws/tree/v1.81.3) (2022-02-18)
+
+#### Merged Pull Requests
+- Munge docs content so we can deploy it on docs.chef.io [#863](https://github.com/inspec/inspec-aws/pull/863) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
 
 #### Merged Pull Requests
 - RESOURCE-32 Trigger coverage pipeline on PR [#861](https://github.com/inspec/inspec-aws/pull/861) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
 
