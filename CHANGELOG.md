@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.12 -->
+<!-- latest_release 1.81.13 -->
+## [v1.81.13](https://github.com/inspec/inspec-aws/tree/v1.81.13) (2022-02-23)
+
+#### Merged Pull Requests
+- nirbhay/aws_api_gateway_model [#864](https://github.com/inspec/inspec-aws/pull/864) ([Nirbhay1997](https://github.com/Nirbhay1997))
+<!-- latest_release -->
+
 ## [v1.81.12](https://github.com/inspec/inspec-aws/tree/v1.81.12) (2022-02-23)
 
 #### Merged Pull Requests
 - RESOURCE-172 soumyo/aws_stepfunctions_activity [#866](https://github.com/inspec/inspec-aws/pull/866) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.81.11](https://github.com/inspec/inspec-aws/tree/v1.81.11) (2022-02-23)
 
