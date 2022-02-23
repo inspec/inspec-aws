@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support'
+require 'active_support/core_ext/string'
+
 require 'aws-sdk-autoscaling'
 require 'aws-sdk-batch'
 require 'aws-sdk-cloudformation'
@@ -58,6 +61,7 @@ require 'aws-sdk-emr'
 require 'aws-sdk-securityhub'
 require 'aws-sdk-ses'
 require 'aws-sdk-waf'
+require 'aws-sdk-synthetics'
 
 # AWS Inspec Backend Classes
 #
@@ -326,6 +330,10 @@ class AwsConnection
   def waf_client
     aws_client(Aws::WAF::Client)
   end
+
+  def synthetics_client
+    aws_client(Aws::Synthetics::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -352,6 +360,8 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
+
+      @resource_data = opts[:resource_data].presence&.to_h
     end
     @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
@@ -386,7 +396,7 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
@@ -421,6 +431,11 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
+    nil
+  rescue Aws::Errors::NoSuchEndpointError
+    Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'
+    fail_resource('Invalid Endpoint error')
+    nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
       advice = ''
@@ -428,18 +443,22 @@ class AwsResourceBase < Inspec.resource(1)
       case error_type
       when 'InvalidAccessKeyId'
         advice = 'Please ensure your AWS Access Key ID is set correctly.'
+      when 'InvalidClientTokenId'
+        advice = 'Please ensure that the aws access key, aws secret access key, and the aws session token are correct.'
       when 'AccessDenied'
         advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
                  'and ensure your Service Principal has these permissions set.'
       end
-      fail_resource("Unable to execute control: #{e.message}\n#{advice}")
+      error_message = "#{e.message}: #{advice}"
+
+      raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
                        'behaving as expected.'
       @failed_resource = true
-      nil
     end
+    nil
   end
 
   def create_resource_methods(object)
@@ -502,6 +521,44 @@ class AwsResourceBase < Inspec.resource(1)
     @failed_resource = true
     # Do not fail in InSpec core. The test `it { should_not exist }` will pass.
     Inspec::Log.warn message
+  end
+end
+
+class AwsCollectionResourceBase < AwsResourceBase
+  attr_reader :table
+
+  # Populate the FilterTable.
+  # FilterTable is a class bound object so is this method.
+  # @param raw_data [Symbol] Method name of the table with raw data.
+  # @param table_scheme [Array] [{column: :blahs, field: :blah}, {..}]
+  def self.populate_filter_table(raw_data, table_scheme)
+    filter_table = FilterTable.create
+    table_scheme.each do |col_field|
+      opts = { field: col_field[:field] }
+      opts[:style] = col_field[:style] if col_field[:style]
+      filter_table.register_column(col_field[:column], opts)
+    end
+    filter_table.install_filter_methods_on_resource(self, raw_data)
+  end
+
+  def fetch(client:, operation:, kwargs: {})
+    raise ArgumentError, 'Valid Client not found!' unless @aws.respond_to?(client)
+
+    client_obj = @aws.send(client)
+    raise ArgumentError, "#{client} does not support #{operation}" unless client_obj.respond_to?(operation)
+
+    catch_aws_errors do
+      client_obj.send(operation, **kwargs)
+    end
+  end
+
+  private
+
+  def populate_filter_table_from_response
+    return unless @table.present?
+
+    table_schema = @table.first.keys.map { |key| { column: key.to_s.pluralize.to_sym, field: key, style: :simple } }
+    AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
   end
 end
 

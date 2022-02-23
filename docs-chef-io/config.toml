@@ -1,0 +1,2 @@
+[params.inspec-aws]
+gh_path = "https://github.com/inspec/inspec-aws/tree/main/docs-chef-io/content/"

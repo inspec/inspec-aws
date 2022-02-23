@@ -1,9 +1,295 @@
-<!-- latest_release 1.74.72 -->
+<!-- latest_release 1.81.11 -->
+## [v1.81.11](https://github.com/inspec/inspec-aws/tree/v1.81.11) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-169 soumyo/aws_synthetics_canary [#865](https://github.com/inspec/inspec-aws/pull/865) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.81.10](https://github.com/inspec/inspec-aws/tree/v1.81.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-170 soumyo/aws_ssm_maintenance_window_task  [#858](https://github.com/inspec/inspec-aws/pull/858) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.9](https://github.com/inspec/inspec-aws/tree/v1.81.9) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-171 soumyo/aws_ssm_maintenance_window_target [#855](https://github.com/inspec/inspec-aws/pull/855) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.8](https://github.com/inspec/inspec-aws/tree/v1.81.8) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-201 update aws tests to use ruby versions 2.7 and 3.0 only [#872](https://github.com/inspec/inspec-aws/pull/872) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.81.7](https://github.com/inspec/inspec-aws/tree/v1.81.7) (2022-02-22)
+
+#### Merged Pull Requests
+- Adjust coverage location using properties file [#871](https://github.com/inspec/inspec-aws/pull/871) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.6](https://github.com/inspec/inspec-aws/tree/v1.81.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Move coverage report file to location expected by sonarscanner [#870](https://github.com/inspec/inspec-aws/pull/870) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.5](https://github.com/inspec/inspec-aws/tree/v1.81.5) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-32 Extend buildkite timeout [#869](https://github.com/inspec/inspec-aws/pull/869) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.4](https://github.com/inspec/inspec-aws/tree/v1.81.4) (2022-02-22)
+
+#### Merged Pull Requests
+- Fix resource page title [#868](https://github.com/inspec/inspec-aws/pull/868) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.81.3](https://github.com/inspec/inspec-aws/tree/v1.81.3) (2022-02-18)
+
+#### Merged Pull Requests
+- Munge docs content so we can deploy it on docs.chef.io [#863](https://github.com/inspec/inspec-aws/pull/863) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
+
+#### Merged Pull Requests
+- RESOURCE-32 Trigger coverage pipeline on PR [#861](https://github.com/inspec/inspec-aws/pull/861) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
+
+#### Merged Pull Requests
+- Setup sonarscanner [#859](https://github.com/inspec/inspec-aws/pull/859) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.0](https://github.com/inspec/inspec-aws/tree/v1.81.0) (2022-02-15)
+
+#### Merged Pull Requests
+- adding missing error handling for aws iam password policy resource [#856](https://github.com/inspec/inspec-aws/pull/856) ([Rohit1509](https://github.com/Rohit1509))
+
+## [v1.80.7](https://github.com/inspec/inspec-aws/tree/v1.80.7) (2022-02-11)
+
+#### Merged Pull Requests
+- Another error handling line for the backend.rb file, better error output and json logging [#854](https://github.com/inspec/inspec-aws/pull/854) ([jb897](https://github.com/jb897))
+
+## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
+
+#### Merged Pull Requests
+- soumyo/update_readme_file_upto_feb9 [#847](https://github.com/inspec/inspec-aws/pull/847) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.80.5](https://github.com/inspec/inspec-aws/tree/v1.80.5) (2022-02-11)
+
+#### Merged Pull Requests
+- AWSApiGatewayDocumentationVersion [#850](https://github.com/inspec/inspec-aws/pull/850) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.80.4](https://github.com/inspec/inspec-aws/tree/v1.80.4) (2022-02-10)
+
+#### Merged Pull Requests
+- RESOURCE-30 Set up SimpleCov [#853](https://github.com/inspec/inspec-aws/pull/853) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.80.3](https://github.com/inspec/inspec-aws/tree/v1.80.3) (2022-02-10)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_resource_data_syncs [#845](https://github.com/inspec/inspec-aws/pull/845) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.80.2](https://github.com/inspec/inspec-aws/tree/v1.80.2) (2022-02-10)
+
+#### Merged Pull Requests
+- Aws api gateway documentation part [#849](https://github.com/inspec/inspec-aws/pull/849) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.80.1](https://github.com/inspec/inspec-aws/tree/v1.80.1) (2022-02-10)
+
+#### Merged Pull Requests
+- Edits in backend.rb to include some common error handling [#851](https://github.com/inspec/inspec-aws/pull/851) ([jb897](https://github.com/jb897))
+
+## [v1.80.0](https://github.com/inspec/inspec-aws/tree/v1.80.0) (2022-02-02)
+
+#### Merged Pull Requests
+- Support cache aws rds instance [#828](https://github.com/inspec/inspec-aws/pull/828) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.79.0](https://github.com/inspec/inspec-aws/tree/v1.79.0) (2022-02-02)
+
+#### Merged Pull Requests
+- Support in memory cache aws eks clusters [#833](https://github.com/inspec/inspec-aws/pull/833) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.78.0](https://github.com/inspec/inspec-aws/tree/v1.78.0) (2022-02-01)
+
+#### Merged Pull Requests
+- Lazy load tags [#834](https://github.com/inspec/inspec-aws/pull/834) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.77.0](https://github.com/inspec/inspec-aws/tree/v1.77.0) (2022-02-01)
+
+#### Merged Pull Requests
+- AWS rds snapshot in memory caching implementation  [#830](https://github.com/inspec/inspec-aws/pull/830) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.76.6](https://github.com/inspec/inspec-aws/tree/v1.76.6) (2022-02-01)
+
+#### Merged Pull Requests
+- Cache implementation for for SAP use case. [#824](https://github.com/inspec/inspec-aws/pull/824) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.76.5](https://github.com/inspec/inspec-aws/tree/v1.76.5) (2022-01-31)
+
+#### Merged Pull Requests
+- Remove release notes content from static dir [#831](https://github.com/inspec/inspec-aws/pull/831) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.76.4](https://github.com/inspec/inspec-aws/tree/v1.76.4) (2022-01-28)
+
+#### Merged Pull Requests
+- return nil values from catch aws errors [#836](https://github.com/inspec/inspec-aws/pull/836) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.76.3](https://github.com/inspec/inspec-aws/tree/v1.76.3) (2022-01-25)
+
+#### Merged Pull Requests
+- Added Pagination  for the Route53 [#810](https://github.com/inspec/inspec-aws/pull/810) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.76.2](https://github.com/inspec/inspec-aws/tree/v1.76.2) (2022-01-25)
+
+#### Merged Pull Requests
+- Fix title in resource doc [#829](https://github.com/inspec/inspec-aws/pull/829) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.76.1](https://github.com/inspec/inspec-aws/tree/v1.76.1) (2022-01-24)
+
+#### Merged Pull Requests
+- Add base class for collection resources [#827](https://github.com/inspec/inspec-aws/pull/827) ([sathish-progress](https://github.com/sathish-progress))
+
+
+## [v1.76.0](https://github.com/inspec/inspec-aws/tree/v1.76.0) (2022-01-19)
+
+#### Merged Pull Requests
+- Fix/ECR infinite loop when 1000+ container registries in account [#820](https://github.com/inspec/inspec-aws/pull/820) ([voojoe](https://github.com/voojoe))
+
+## [v1.75.11](https://github.com/inspec/inspec-aws/tree/v1.75.11) (2022-01-07)
+
+#### Merged Pull Requests
+- Promote release notes 2022-01-07 [#818](https://github.com/inspec/inspec-aws/pull/818) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.10](https://github.com/inspec/inspec-aws/tree/v1.75.10) (2022-01-07)
+
+#### Merged Pull Requests
+- Move release dates JSON file to assets dir [#817](https://github.com/inspec/inspec-aws/pull/817) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.75.9](https://github.com/inspec/inspec-aws/tree/v1.75.9) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/update_readme_till_sprint_15 [#812](https://github.com/inspec/inspec-aws/pull/812) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.75.8](https://github.com/inspec/inspec-aws/tree/v1.75.8) (2022-01-03)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_web_acl [#808](https://github.com/inspec/inspec-aws/pull/808) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.7](https://github.com/inspec/inspec-aws/tree/v1.75.7) (2022-01-03)
+
+#### Merged Pull Requests
+- soumyo/aws_hosted_zone_all_record_issue_fix [#811](https://github.com/inspec/inspec-aws/pull/811) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.75.6](https://github.com/inspec/inspec-aws/tree/v1.75.6) (2021-12-30)
+
+#### Merged Pull Requests
+- Add attributes to ebs volumes resource [#813](https://github.com/inspec/inspec-aws/pull/813) ([jnikles1](https://github.com/jnikles1))
+
+## [v1.75.5](https://github.com/inspec/inspec-aws/tree/v1.75.5) (2021-12-27)
+
+#### Merged Pull Requests
+- soumyo/aws_ssm_maintenance_window [#798](https://github.com/inspec/inspec-aws/pull/798) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.75.4](https://github.com/inspec/inspec-aws/tree/v1.75.4) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_ip_set [#804](https://github.com/inspec/inspec-aws/pull/804) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.3](https://github.com/inspec/inspec-aws/tree/v1.75.3) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_sql_injection_match_set [#806](https://github.com/inspec/inspec-aws/pull/806) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.2](https://github.com/inspec/inspec-aws/tree/v1.75.2) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_xss_match_set [#807](https://github.com/inspec/inspec-aws/pull/807) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.1](https://github.com/inspec/inspec-aws/tree/v1.75.1) (2021-12-27)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_byte_match_set [#803](https://github.com/inspec/inspec-aws/pull/803) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.75.0](https://github.com/inspec/inspec-aws/tree/v1.75.0) (2021-12-23)
+
+#### Merged Pull Requests
+- Fixed build failing because of Activesupport library for ruby 2.6 [#816](https://github.com/inspec/inspec-aws/pull/816) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.87](https://github.com/inspec/inspec-aws/tree/v1.74.87) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_waf_rule [#802](https://github.com/inspec/inspec-aws/pull/802) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.86](https://github.com/inspec/inspec-aws/tree/v1.74.86) (2021-12-15)
+
+#### Merged Pull Requests
+- nirbhay/aws_s3_bucket_policy [#783](https://github.com/inspec/inspec-aws/pull/783) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.85](https://github.com/inspec/inspec-aws/tree/v1.74.85) (2021-12-13)
+
+#### Merged Pull Requests
+- Fix resource name in docs [#799](https://github.com/inspec/inspec-aws/pull/799) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.84](https://github.com/inspec/inspec-aws/tree/v1.74.84) (2021-12-06)
+
+#### Merged Pull Requests
+- Feature request for CloudFormation Template [#770](https://github.com/inspec/inspec-aws/pull/770) ([jb897](https://github.com/jb897))
+
+## [v1.74.83](https://github.com/inspec/inspec-aws/tree/v1.74.83) (2021-12-06)
+
+#### Merged Pull Requests
+- Miscellaneous docs fixes [#797](https://github.com/inspec/inspec-aws/pull/797) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.74.82](https://github.com/inspec/inspec-aws/tree/v1.74.82) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/update_the_readme_till_nov_26 [#778](https://github.com/inspec/inspec-aws/pull/778) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.81](https://github.com/inspec/inspec-aws/tree/v1.74.81) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy_target_group [#773](https://github.com/inspec/inspec-aws/pull/773) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.80](https://github.com/inspec/inspec-aws/tree/v1.74.80) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_lambda_version [#774](https://github.com/inspec/inspec-aws/pull/774) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.79](https://github.com/inspec/inspec-aws/tree/v1.74.79) (2021-12-05)
+
+#### Merged Pull Requests
+- soumyo/aws_signer_profile_permission [#777](https://github.com/inspec/inspec-aws/pull/777) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.78](https://github.com/inspec/inspec-aws/tree/v1.74.78) (2021-12-05)
+
+#### Merged Pull Requests
+- nitbhay/aws_rds_global_cluster [#780](https://github.com/inspec/inspec-aws/pull/780) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.77](https://github.com/inspec/inspec-aws/tree/v1.74.77) (2021-12-05)
+
+#### Merged Pull Requests
+- nirbhay/aws_rds_event_subscription [#781](https://github.com/inspec/inspec-aws/pull/781) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.76](https://github.com/inspec/inspec-aws/tree/v1.74.76) (2021-12-05)
+
+#### Merged Pull Requests
+- nirbhay/aws_rds_db_security_group [#782](https://github.com/inspec/inspec-aws/pull/782) ([Nirbhay1997](https://github.com/Nirbhay1997))
+
+## [v1.74.75](https://github.com/inspec/inspec-aws/tree/v1.74.75) (2021-12-02)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy_endpoint [#772](https://github.com/inspec/inspec-aws/pull/772) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.74](https://github.com/inspec/inspec-aws/tree/v1.74.74) (2021-12-02)
+
+#### Merged Pull Requests
+- soumyo/aws_rds_db_proxy [#771](https://github.com/inspec/inspec-aws/pull/771) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.74.73](https://github.com/inspec/inspec-aws/tree/v1.74.73) (2021-12-01)
+
+#### Merged Pull Requests
+- Publish release notes 2021-11-30 [#795](https://github.com/inspec/inspec-aws/pull/795) ([IanMadd](https://github.com/IanMadd))
+
 ## [v1.74.72](https://github.com/inspec/inspec-aws/tree/v1.74.72) (2021-11-25)
 
 #### Merged Pull Requests
 - added the waf client in AWS Backend [#793](https://github.com/inspec/inspec-aws/pull/793) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.74.71](https://github.com/inspec/inspec-aws/tree/v1.74.71) (2021-11-25)
 
