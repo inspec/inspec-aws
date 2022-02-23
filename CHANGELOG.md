@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.8 -->
+<!-- latest_release 1.81.9 -->
+## [v1.81.9](https://github.com/inspec/inspec-aws/tree/v1.81.9) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-171 soumyo/aws_ssm_maintenance_window_target [#855](https://github.com/inspec/inspec-aws/pull/855) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.81.8](https://github.com/inspec/inspec-aws/tree/v1.81.8) (2022-02-23)
 
 #### Merged Pull Requests
 - RESOURCE-201 update aws tests to use ruby versions 2.7 and 3.0 only [#872](https://github.com/inspec/inspec-aws/pull/872) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.81.7](https://github.com/inspec/inspec-aws/tree/v1.81.7) (2022-02-22)
 
