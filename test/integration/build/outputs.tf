@@ -1725,3 +1725,11 @@ output "aws_api_gateway_model_description" {
 output "aws_api_gateway_model_rest_api_id" {
   value = aws_api_gateway_model.aws_api_gateway_model_test.rest_api_id
 }
+
+output "aws_api_gateway_gateway_response_id" {
+  value = aws_api_gateway_gateway_response.test.id
+}
+
+output "aws_api_gateway_gateway_response_response_type" {
+  value = aws_api_gateway_gateway_response.test.response_type
+}
