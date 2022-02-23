@@ -1,9 +1,49 @@
-<!-- latest_release 1.80.7 -->
+<!-- latest_release 1.81.7 -->
+## [v1.81.7](https://github.com/inspec/inspec-aws/tree/v1.81.7) (2022-02-22)
+
+#### Merged Pull Requests
+- Adjust coverage location using properties file [#871](https://github.com/inspec/inspec-aws/pull/871) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
+## [v1.81.6](https://github.com/inspec/inspec-aws/tree/v1.81.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Move coverage report file to location expected by sonarscanner [#870](https://github.com/inspec/inspec-aws/pull/870) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.5](https://github.com/inspec/inspec-aws/tree/v1.81.5) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-32 Extend buildkite timeout [#869](https://github.com/inspec/inspec-aws/pull/869) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.4](https://github.com/inspec/inspec-aws/tree/v1.81.4) (2022-02-22)
+
+#### Merged Pull Requests
+- Fix resource page title [#868](https://github.com/inspec/inspec-aws/pull/868) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.81.3](https://github.com/inspec/inspec-aws/tree/v1.81.3) (2022-02-18)
+
+#### Merged Pull Requests
+- Munge docs content so we can deploy it on docs.chef.io [#863](https://github.com/inspec/inspec-aws/pull/863) ([IanMadd](https://github.com/IanMadd))
+
+## [v1.81.2](https://github.com/inspec/inspec-aws/tree/v1.81.2) (2022-02-17)
+
+#### Merged Pull Requests
+- RESOURCE-32 Trigger coverage pipeline on PR [#861](https://github.com/inspec/inspec-aws/pull/861) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.1](https://github.com/inspec/inspec-aws/tree/v1.81.1) (2022-02-17)
+
+#### Merged Pull Requests
+- Setup sonarscanner [#859](https://github.com/inspec/inspec-aws/pull/859) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.81.0](https://github.com/inspec/inspec-aws/tree/v1.81.0) (2022-02-15)
+
+#### Merged Pull Requests
+- adding missing error handling for aws iam password policy resource [#856](https://github.com/inspec/inspec-aws/pull/856) ([Rohit1509](https://github.com/Rohit1509))
+
 ## [v1.80.7](https://github.com/inspec/inspec-aws/tree/v1.80.7) (2022-02-11)
 
 #### Merged Pull Requests
 - Another error handling line for the backend.rb file, better error output and json logging [#854](https://github.com/inspec/inspec-aws/pull/854) ([jb897](https://github.com/jb897))
-<!-- latest_release -->
 
 ## [v1.80.6](https://github.com/inspec/inspec-aws/tree/v1.80.6) (2022-02-11)
 

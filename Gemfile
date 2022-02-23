@@ -27,7 +27,3 @@ group :development do
   gem 'minitest'
   gem 'pry-byebug'
 end
-
-if Gem.ruby_version < Gem::Version.new("2.7.0")
-  gem "activesupport", "< 7.0.0"
-end
