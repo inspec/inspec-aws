@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.14 -->
+<!-- latest_release 1.81.15 -->
+## [v1.81.15](https://github.com/inspec/inspec-aws/tree/v1.81.15) (2022-02-25)
+
+#### Merged Pull Requests
+- Remove redundant docs [#873](https://github.com/inspec/inspec-aws/pull/873) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.81.14](https://github.com/inspec/inspec-aws/tree/v1.81.14) (2022-02-23)
 
 #### Merged Pull Requests
 - nirbhay/aws_api_gateway_response [#867](https://github.com/inspec/inspec-aws/pull/867) ([Nirbhay1997](https://github.com/Nirbhay1997))
-<!-- latest_release -->
 
 ## [v1.81.13](https://github.com/inspec/inspec-aws/tree/v1.81.13) (2022-02-23)
 
