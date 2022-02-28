@@ -6,7 +6,7 @@ gh_repo = "inspec-aws"
 
 [menu.inspec]
 title = "aws_ssm_patch_baseline"
-identifier = "inspec/resources/aws/aws_ssm_patch_baseline Resource"
+identifier = "inspec/resources/aws/aws_ssm_patch_baselines Resource"
 parent = "inspec/resources/aws"
 +++
 
