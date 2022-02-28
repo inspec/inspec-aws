@@ -1,9 +1,14 @@
-<!-- latest_release 1.81.15 -->
+<!-- latest_release 1.81.16 -->
+## [v1.81.16](https://github.com/inspec/inspec-aws/tree/v1.81.16) (2022-02-28)
+
+#### Merged Pull Requests
+- fixing &#39;secure transport&#39; function definition [#874](https://github.com/inspec/inspec-aws/pull/874) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.81.15](https://github.com/inspec/inspec-aws/tree/v1.81.15) (2022-02-25)
 
 #### Merged Pull Requests
 - Remove redundant docs [#873](https://github.com/inspec/inspec-aws/pull/873) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.81.14](https://github.com/inspec/inspec-aws/tree/v1.81.14) (2022-02-23)
 
