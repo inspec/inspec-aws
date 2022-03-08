@@ -23,3 +23,5 @@ vendor
 .bundle
 .rakeTaskscoverage/*
 coverage
+
+.DS_Store

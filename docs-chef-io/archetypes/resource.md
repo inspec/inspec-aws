@@ -11,8 +11,11 @@ platform = "aws"
     parent = "inspec/resources/aws"
 +++
 
+{{% Run `hugo new -k resource inspec/resources/RESOURCE_NAME.md` to generate a new resource page. %}}
 
-{{% Run `hugo new -k resource resources/RESOURCE_NAME.md` to generate a new resource page. %}}
+## Installation
+
+{{% inspec_aws_install %}}
 
 ## Syntax
 
@@ -25,3 +28,7 @@ platform = "aws"
 ## Matchers
 
 For a full list of available matchers, please visit our [Universal Matchers page](https://docs.chef.io/inspec/matchers/).
+
+## AWS Permissions
+
+{{% aws_permissions_principal action="ACTION" %}}
