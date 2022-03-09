@@ -6,9 +6,8 @@ require 'json'
 class AwsEmrCluster < AwsResourceBase
   name 'aws_emr_cluster'
   desc 'Verifies settings for an EMR cluster.'
-
   example "
-    describe aws_emr_cluster('CLUSTER_ID') do
+    describe aws_emr_cluster('EMR_CLUSTER_ID') do
       it { should exist }
       it { should be_running }
       it { should be_waiting }
@@ -18,6 +17,7 @@ class AwsEmrCluster < AwsResourceBase
       its('applications') { should include 'Spark' }
     end
   "
+
   attr_reader :cluster_id, :cluster_arn, :cluster_name, :status_state, :status_state_change_reason_code,
               :status_state_change_reason_message, :status_timeline_creation_date_time, :status_timeline_ready_date_time,
               :status_timeline_end_date_time, :security_configuration_name,

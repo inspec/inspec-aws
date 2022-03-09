@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsVPNGateway < AwsResourceBase
   name 'aws_vpn_gateway'
   desc 'Verifies settings for a single AWS VPN Gateway.'
-
   example "
-   describe aws_vpn_gateway(vpn_gateway_id: 'vgw-014aef8a0689b8f43') do
+   describe aws_vpn_gateway(vpn_gateway_id: 'VPN_GATEWAY_ID') do
      it { should exist }
    end
-
-   describe aws_vpn_gateway('vgw-014aef8a0689b8f43') do
+   describe aws_vpn_gateway('VPN_GATEWAY_ID') do
      it { should exist }
    end
   "

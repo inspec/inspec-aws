@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSDMSEndpoint < AwsResourceBase
   name 'aws_dms_endpoint'
   desc 'Returns information about the endpoints for your account in the current region.'
-
   example "
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
+    describe aws_dms_endpoint(endpoint_arn: 'DMS_ENDPOINT_ARN') do
       it { should exist }
-    end
-
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
-      its('endpoint_arn') { should eq 'test-arn' }
+      its('endpoint_arn') { should eq 'DMS_ENDPOINT_ARN' }
     end
   "
 
@@ -20,7 +16,6 @@ class AWSDMSEndpoint < AwsResourceBase
     opts = { endpoint_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:endpoint_arn])
-
     raise ArgumentError, "#{@__resource_name__}: endpoint_arn must be provided" unless opts[:endpoint_arn] && !opts[:endpoint_arn].empty?
     @display_name = opts[:endpoint_arn]
     filter = { name: 'endpoint-arn', values: [opts[:endpoint_arn]] }
@@ -41,6 +36,6 @@ class AWSDMSEndpoint < AwsResourceBase
   end
 
   def to_s
-    "Endpoint ARN: #{@display_name}"
+    "DMS Endpoint ARN: #{@display_name}"
   end
 end

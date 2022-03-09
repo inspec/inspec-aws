@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsElb < AwsResourceBase
   name 'aws_elb'
   desc 'Verifies settings for an Elastic Load Balancer.'
-
   example "
-    describe aws_elb('load-balancer-1') do
+    describe aws_elb('ELB_LOAD_BALANCER_NAME') do
       it { should exist }
     end
   "
@@ -53,7 +52,7 @@ class AwsElb < AwsResourceBase
   end
 
   def to_s
-    "AWS ELB #{load_balancer_name}"
+    "ELB Load Balancer Name: #{load_balancer_name}"
   end
 
   def cross_zone_load_balancing_enabled?

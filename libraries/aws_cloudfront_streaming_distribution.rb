@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudFrontStreamingDistribution < AwsResourceBase
   name 'aws_cloudfront_streaming_distribution'
   desc 'Get the information about a distribution.'
-
   example "
-    describe aws_cloudfront_streaming_distribution(id: 'ID') do
+    describe aws_cloudfront_streaming_distribution(id: 'CLOUDFRONT_STEAMING_DISTRIBUTION_ID') do
       it { should exist }
     end
   "
@@ -35,7 +34,7 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
   end
 
   def to_s
-    "ID: #{@display_name}"
+    "Cloudfront Streaming DistributionID: #{@display_name}"
   end
 
   def active_aws_account_numbers

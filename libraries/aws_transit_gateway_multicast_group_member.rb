@@ -5,13 +5,9 @@ require 'aws_backend'
 class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
   name 'aws_transit_gateway_multicast_group_member'
   desc 'Searches one or more transit gateway multicast groups and returns the group membership information.'
-
   example "
-    describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'test') do
+    describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exist }
-    end
-
-    describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'test') do
       its ('group_ip_address') { should eq '224.0.0.1' }
     end
   "

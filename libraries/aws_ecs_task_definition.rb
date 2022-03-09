@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSECSTaskDefinition < AwsResourceBase
   name 'aws_ecs_task_definition'
   desc 'Describes a task definition.'
-
   example "
-    describe aws_ecs_task_definition(task_definition: 'hello_world:8') do
+    describe aws_ecs_task_definition(task_definition: 'ECS_TASK_DEFINITION') do
       it { should exist }
     end
   "
@@ -543,6 +542,6 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def to_s
-    "Task Definition Name: #{@display_name}"
+    "ECS Task Definition Name: #{@display_name}"
   end
 end

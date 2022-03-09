@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSProxy < AwsResourceBase
   name 'aws_rds_db_proxy'
   desc 'Returns information about DB proxies.'
-
   example "
-    describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
+    describe aws_rds_db_proxy(db_proxy_name: 'RDS_DB_PROXY_NAME') do
       it { should exist }
     end
   "
@@ -34,7 +33,7 @@ class AWSRDSProxy < AwsResourceBase
   end
 
   def to_s
-    "DB Proxy Name: #{@display_name}"
+    "RDS DB Proxy Name: #{@display_name}"
   end
 
   def auth_descriptions

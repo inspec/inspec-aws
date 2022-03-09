@@ -5,13 +5,9 @@ require 'aws_backend'
 class AWSIAMSSHPublicKey < AwsResourceBase
   name 'aws_iam_ssh_public_key'
   desc 'Retrieves the specified SSH public key, including metadata about the key.'
-
   example "
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
       it { should exist }
-    end
-
-    describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
        its('ssh_key_age_valid') { should eq true }
      end
   "
@@ -47,6 +43,6 @@ class AWSIAMSSHPublicKey < AwsResourceBase
   end
 
   def to_s
-    "SSH Public Key ID: #{@display_name}"
+    "IAM SSH Public Key ID: #{@display_name}"
   end
 end

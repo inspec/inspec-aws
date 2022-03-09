@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRAMResourceShare < AwsResourceBase
   name 'aws_ram_resource_share'
   desc 'Describes the resource shares of the ram.'
-
   example "
-    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
+    describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RAM_RESOURCE_SHARE_ARN') do
       it { should exist }
     end
   "
@@ -36,6 +35,6 @@ class AWSRAMResourceShare < AwsResourceBase
   end
 
   def to_s
-    "Resource Share ARN: #{@display_name}"
+    "RAM Resource Share ARN: #{@display_name}"
   end
 end

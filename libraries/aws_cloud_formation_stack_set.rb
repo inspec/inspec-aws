@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudFormationStackSet < AwsResourceBase
   name 'aws_cloud_formation_stack_set'
   desc 'Describes the specified stack set.'
-
   example "
-    describe aws_cloud_formation_stack_set(stack_set_name: 'StackSetName') do
+    describe aws_cloud_formation_stack_set(stack_set_name: 'CLOUD_FORMATION_STACK_SET_NAME') do
       it { should exist }
     end
   "
@@ -33,7 +32,7 @@ class AWSCloudFormationStackSet < AwsResourceBase
   end
 
   def to_s
-    "Stack Set Name: #{@display_name}"
+    "Cloud Formation Stack Set Name: #{@display_name}"
   end
 
   def parameter_keys

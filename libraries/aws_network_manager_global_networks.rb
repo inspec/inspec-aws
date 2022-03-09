@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSNetworkManagerGlobalNetworks < AwsResourceBase
   name 'aws_network_manager_global_networks'
   desc 'List all the global networks.'
-
   example "
     describe aws_network_manager_global_networks do
       it { should exist }

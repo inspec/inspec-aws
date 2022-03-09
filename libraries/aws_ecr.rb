@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEcr < AwsResourceBase
   name 'aws_ecr'
   desc 'Verifies settings for an Elastic Container Registry.'
-
   example "
-    describe aws_ecr('container-registry') do
+    describe aws_ecr('ECR_REPOSITORY_NAME') do
       it { should exist }
     end
   "
@@ -52,6 +51,6 @@ class AwsEcr < AwsResourceBase
   end
 
   def to_s
-    "AWS ECR: #{@repository_name}"
+    "ECR Repository Name: #{@repository_name}"
   end
 end

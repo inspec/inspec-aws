@@ -6,7 +6,7 @@ class AwsDbSubnetGroup < AwsResourceBase
   name 'aws_db_subnet_group'
   desc 'Verifies settings for a Subnet Group.'
   example "
-    describe aws_subnet_group(db_subnet_group_name: 'subnet-group') do
+    describe aws_subnet_group(db_subnet_group_name: 'DB_SUBNET_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -33,7 +33,7 @@ class AwsDbSubnetGroup < AwsResourceBase
   end
 
   def to_s
-    "Subnet Group Name #{@display_name}"
+    "DB Subnet Group Name: #{@display_name}"
   end
 
   def name

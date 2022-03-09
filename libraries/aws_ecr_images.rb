@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEcrImages < AwsResourceBase
   name 'aws_ecr_images'
   desc 'Verifies settings for a collection of AWS ECR Images in a repository.'
-
   example "
-    describe aws_ecr_images(repository_name: 'my-repo') do
+    describe aws_ecr_images(repository_name: 'ECR_REPOSITORY_NAME') do
       its('count') { should eq 3 }
     end
   "

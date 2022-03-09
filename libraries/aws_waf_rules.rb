@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFRules < AwsResourceBase
   name 'aws_waf_rules'
   desc 'Verifies settings for all the WAF rules.'
-
   example "
     describe aws_waf_rules do
       it { should exist }

@@ -5,13 +5,8 @@ require 'aws_backend'
 class AWSAutoScalingScalingPolicy < AwsResourceBase
   name 'aws_autoscaling_scaling_policy'
   desc 'Describes the policies for the specified Auto Scaling group.'
-
   example "
-    describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'test') do
-      it { should eq 'test' }
-    end
-
-    describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'test') do
+    describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_GROUP_NAME') do
       it { should exits }
     end
   "
@@ -19,7 +14,6 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
     opts = { auto_scaling_group_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:auto_scaling_group_name])
-
     raise ArgumentError, "#{@__resource_name__}: auto_scaling_group_name must be provided" unless opts[:auto_scaling_group_name] && !opts[:auto_scaling_group_name].empty?
     @display_name = opts[:auto_scaling_group_name]
     catch_aws_errors do

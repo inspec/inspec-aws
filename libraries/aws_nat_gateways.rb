@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsNatGateways < AwsResourceBase
   name 'aws_nat_gateways'
   desc 'Verifies settings for a collection of AWS NAT gateways.'
-
   example "
     describe aws_nat_gateways do
       its('count') { should eq 3 }
     end
-
-    describe aws_nat_gateways.where(name: 'my-gateway') do
+    describe aws_nat_gateways.where(name: 'EC2_NAT_GATEWAY_NAME') do
       it { should exist }
     end
   "
@@ -35,7 +33,7 @@ class AwsNatGateways < AwsResourceBase
   end
 
   def to_s
-    "NAT Gateway #{@display_name}"
+    "NAT Gateway Name: #{@display_name}"
   end
 
   def fetch_data

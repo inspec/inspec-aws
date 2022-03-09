@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsIamPolicy < AwsResourceBase
   name 'aws_iam_policy'
   desc 'Verifies settings for an IAM Policy.'
-
   example "
-    describe aws_iam_policy('policy-1') do
+    describe aws_iam_policy('IAM_POLICY') do
       it { should exist }
     end
   "
@@ -132,6 +131,6 @@ class AwsIamPolicy < AwsResourceBase
   end
 
   def to_s
-    "AWS Iam Policy #{@policy_name}"
+    "IAM Policy: #{@policy_name}"
   end
 end

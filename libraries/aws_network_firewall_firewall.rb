@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkFirewallFirewall < AwsResourceBase
   name 'aws_network_firewall_firewall'
   desc 'Returns the data objects for the specified firewall.'
-
   example "
-    describe aws_network_firewall_firewall(firewall_name: 'FirewallName') do
+    describe aws_network_firewall_firewall(firewall_name: 'NETWORK_FIREWALL_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSNetworkFirewallFirewall < AwsResourceBase
   end
 
   def to_s
-    "Firewall Name: #{@display_name}"
+    "Network Firewall Name: #{@display_name}"
   end
 end

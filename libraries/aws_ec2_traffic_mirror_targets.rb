@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEc2TrafficMirrorTargets < AwsResourceBase
   name 'aws_ec2_traffic_mirror_targets'
   desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror targets'
-
   example "
     describe aws_ec2_traffic_mirror_targets do
       it { should exist }

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2EIPAssociation < AwsResourceBase
   name 'aws_ec2_eip_association'
   desc 'Describes the specified Elastic IP addresses or all of your Elastic IP addresses.'
-
   example "
-    describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
+    describe aws_ec2_eip_association(association_id: 'EC2_EIP_ASSOCIATION_ID') do
       it { should exist }
     end
   "

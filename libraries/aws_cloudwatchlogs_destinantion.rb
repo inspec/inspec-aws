@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudWatchLogsDestination < AwsResourceBase
   name 'aws_cloudwatchlogs_destination'
   desc 'Describes a log destination.'
-
   example "
     describe aws_cloudwatchlogs_destination(destination_name_prefix: 'DESTINATION_NAME') do
       it { should exist }
@@ -35,6 +34,6 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
   end
 
   def to_s
-    "Destination Name: #{@display_name}"
+    "Cloudwatch Logs Destination Name: #{@display_name}"
   end
 end

@@ -4,8 +4,7 @@ require 'aws_backend'
 
 class AwsVpnConnections < AwsResourceBase
   name 'aws_vpn_connections'
-  desc 'Verifies settings for an AWS VPN connections in bulk'
-
+  desc 'Verifies settings for an AWS VPN connections in bulk.'
   example "
     describe aws_vpn_connections do
       it { should exist }

@@ -5,12 +5,12 @@ require 'aws_backend'
 class AwsFlowLog < AwsResourceBase
   name 'aws_flow_log'
   desc 'Verifies settings for an AWS VPC flow logs.'
-
   example "
-    describe aws_flow_log('fl-9c718cf5') do
+    describe aws_flow_log('EC2_FLOW_LOG_ID') do
       it { should exist }
     end
   "
+
   attr_reader :log_group_name, :resource_id, :flow_log_id
 
   def initialize(opts = {})

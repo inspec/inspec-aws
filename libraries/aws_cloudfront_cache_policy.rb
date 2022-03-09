@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudFrontCachePolicy < AwsResourceBase
   name 'aws_cloudfront_cache_policy'
   desc 'Gets a cache policy.'
-
   example "
-    describe aws_cloudfront_cache_policy(id: 'ID') do
+    describe aws_cloudfront_cache_policy(id: 'CACHE_POLICY_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSCloudFrontCachePolicy < AwsResourceBase
   end
 
   def to_s
-    "ID: #{@display_name}"
+    "Cache Policy ID: #{@display_name}"
   end
 end

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayClientCertificate < AwsResourceBase
   name 'aws_apigateway_client_certificate'
   desc 'Gets information about the current ClientCertificate resource.'
-
   example "
-    describe aws_apigateway_client_certificate(client_certificate_id: 'ClientCertificateID') do
+    describe aws_apigateway_client_certificate(client_certificate_id: 'REST_API_CLIENT_CERTIFICATE_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
   end
 
   def to_s
-    "Client Certificate ID: #{@display_name}"
+    "Rest API Client Certificate ID: #{@display_name}"
   end
 end

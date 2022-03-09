@@ -4,10 +4,9 @@ require 'aws_backend'
 
 class AWSEC2NetworkInsightsPath < AwsResourceBase
   name 'aws_ec2_network_insights_path'
-  desc 'Returns'
-
+  desc 'Describes one or more of your paths.'
   example "
-    describe aws_ec2_network_insights_path(network_insights_path_id: 'NetworkInsightsPathId') do
+    describe aws_ec2_network_insights_path(network_insights_path_id: 'EC2_NETWORK_INSIGHTS_PATH_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
   end
 
   def to_s
-    "Network Insights Path ID: #{@display_name}"
+    "EC2 Network Insights Path ID: #{@display_name}"
   end
 end

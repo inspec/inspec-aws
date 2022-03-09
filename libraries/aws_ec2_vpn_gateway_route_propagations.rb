@@ -5,13 +5,10 @@ require 'aws_backend'
 class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
   name 'aws_ec2_vpn_gateway_route_propagations'
   desc 'List the properties.'
-
   example "
     describe aws_ec2_vpn_gateway_route_propagations do
       it { should exist }
-    end
-    describe aws_ec2_vpn_gateway_route_propagations do
-      its('propagating_vgws_gateway_ids') { should include 'vpn_gateway_id' }
+      its('propagating_vgws_gateway_ids') { should include 'VPN_GATEWAY_ID' }
     end
   "
 

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
   name 'aws_network_firewall_firewall_policy'
   desc 'Returns the data objects for the specified firewall policy.'
-
   example "
-    describe aws_network_firewall_firewall_policy(firewall_policy_name: 'FirewallPolicyName') do
+    describe aws_network_firewall_firewall_policy(firewall_policy_name: 'NETWORK_FIREWALL_POLICY_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
   end
 
   def to_s
-    "Firewall Policy Name: #{@display_name}"
+    "Network Firewall Policy Name: #{@display_name}"
   end
 end

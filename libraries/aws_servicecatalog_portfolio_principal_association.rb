@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
   name 'aws_servicecatalog_portfolio_principal_association'
   desc 'Lists all principal ARNs associated with the specified portfolio.'
-
   example "
     describe aws_servicecatalog_portfolio_principal_association(portfolio_id: 'test1') do
       it { should exist }

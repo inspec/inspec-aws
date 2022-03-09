@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsRdsSnapshot < AwsResourceBase
   name 'aws_rds_snapshot'
   desc 'Verifies settings for an RDS snapshot.'
-
   example "
-    describe aws_rds_snapshot(db_snapshot_identifier: 'test-snapshot-id') do
+    describe aws_rds_snapshot(db_snapshot_identifier: 'RDS_DB_SNAPSHOT_IDENTIFIER') do
       it { should exist }
     end
   "
@@ -34,7 +33,7 @@ class AwsRdsSnapshot < AwsResourceBase
   end
 
   def to_s
-    "RDS Snapshot #{@display_name}"
+    "RDS DB Snapshot Identifier: #{@display_name}"
   end
 
   private

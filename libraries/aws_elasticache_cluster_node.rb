@@ -4,10 +4,9 @@ require 'aws_backend'
 
 class AwsElastiCacheClusterNode < AwsResourceBase
   name 'aws_elasticache_cluster_node'
-  desc 'Verifies settings for an AWS Elasticache Cluster Node.'
-
+  desc 'Verifies settings for an AWS Elastic Cache Cluster Node.'
   example "
-    describe aws_elasticache_cluster_node(cache_cluster_id: 'my-elasticache-cluster', node_id: '0001') do
+    describe aws_elasticache_cluster_node(cache_cluster_id: 'ELASTIC_CACHE_CLUSTER_ID', node_id: 'ELASTIC_CACHE_NOTE_ID') do
       it { should exist }
       its{'port' } { should cmp 11211 }
       its('status') { should eq 'available' }

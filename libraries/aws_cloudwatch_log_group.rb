@@ -5,6 +5,11 @@ require 'aws_backend'
 class AwsCloudWatchLogGroup < AwsResourceBase
   name 'aws_cloudwatch_log_group'
   desc 'Verifies settings for an AWS CloudWatch Log Group.'
+  example "
+    describe aws_cloudwatch_log_group('CLOUDWATCH_LOG_GROUP_NAME') do
+      it { should exist }
+    end
+  "
 
   attr_reader :log_group_name, :retention_in_days, :metric_filter_count, :kms_key_id, :tags
 
@@ -43,6 +48,6 @@ class AwsCloudWatchLogGroup < AwsResourceBase
   end
 
   def to_s
-    "CloudWatch Log Group #{@log_group_name}"
+    "CloudWatch Log Group Name: #{@log_group_name}"
   end
 end

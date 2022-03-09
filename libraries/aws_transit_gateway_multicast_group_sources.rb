@@ -5,13 +5,9 @@ require 'aws_backend'
 class AWSTransitGatewayMulticastGroupSources < AwsResourceBase
   name 'aws_transit_gateway_multicast_group_sources'
   desc 'Describes one or more transit gateway multicast domains.'
-
   example "
-    describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_domain_id: 'tgw-mcast-domain-1234567890') do
+    describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_domain_id: 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exist }
-    end
-
-    describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_domain_id: 'tgw-mcast-domain-1234567890') do
       its ('group_ip_addresses') { should include 'group_ip_address' }
     end
   "

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2NetworkInsightsPaths < AwsResourceBase
   name 'aws_ec2_network_insights_paths'
   desc 'List all the network insights paths.'
-
   example "
     describe aws_ec2_network_insights_paths do
       it { should exist }

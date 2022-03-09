@@ -5,12 +5,10 @@ require 'aws_backend'
 class AwsIamManagedPolicies < AwsResourceBase
   name 'aws_iam_managed_policies'
   desc 'Lists all IAM users, groups, and roles that the specified managed policy is attached to.'
-
   example "
     describe aws_iam_managed_policies do
       it { should exist }
     end
-
     describe aws_iam_managed_policies(scope: 'SCOPE') do
       it { should exist }
     end

@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsInternetGateways < AwsResourceBase
   name 'aws_internet_gateways'
   desc 'Verifies settings for a collection of AWS internet gateways.'
-
   example "
     describe aws_internet_gateways do
       its('count') { should eq 3 }
     end
-
-    describe aws_internet_gateways.where(name: 'my-gateway') do
+    describe aws_internet_gateways.where(name: 'EC2_INTERNET_GATEWAY_NAME') do
       it { should exist }
     end
   "

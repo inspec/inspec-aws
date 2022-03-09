@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEc2TrafficMirrorSessions < AwsResourceBase
   name 'aws_ec2_traffic_mirror_sessions'
   desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror Sessions.'
-
   example "
     describe aws_ec2_traffic_mirror_sessions do
       it { should exist }

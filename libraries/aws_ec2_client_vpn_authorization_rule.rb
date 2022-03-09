@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
   name 'aws_ec2_client_vpn_authorization_rule'
   desc 'Describes a VPN rule.'
-
   example "
-    describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', group_id: 'GROUP_ID') do
+    describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: 'EC2_CLIENT_VPN_ENDPOINT_ID', group_id: 'EC2_GROUP_ID') do
       it { should exist }
     end
   "
@@ -38,6 +37,6 @@ class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
   end
 
   def to_s
-    "Client VPN Endpoint ID: #{@display_name}"
+    "EC2 Client VPN Endpoint ID: #{@display_name}"
   end
 end

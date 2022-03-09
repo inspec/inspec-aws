@@ -5,12 +5,12 @@ require 'aws_backend'
 class AwsVPCEndpointService < AwsResourceBase
   name 'aws_vpc_endpoint_service'
   desc 'Verifies settings for an AWS VPC End Point Service.'
-
   example "
-    describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
+    describe aws_vpc_endpoint_service(service_name: 'EC2_VPC_SERVICE_NAME') do
       it { should exist }
     end
   "
+
   SERVICE_TYPES = %w{Interface Gateway GatewayLoadBalancer}.freeze
   BOOLEAN_FLAGS = %i(vpc_endpoint_policy_supported acceptance_required manages_vpc_endpoints).freeze
   PRIVATE_DNS_NAME_VERIFICATION_STATES = %w{pendingVerification verified failed}.freeze
@@ -22,7 +22,6 @@ class AwsVPCEndpointService < AwsResourceBase
   def initialize(opts = {})
     super
     validate_parameters(required: %i(service_name))
-
     @display_name = @opts[:service_name]
     fetch_response
     create_instance_methods
@@ -62,7 +61,7 @@ class AwsVPCEndpointService < AwsResourceBase
   end
 
   def to_s
-    "AWS Service Name #{@display_name}"
+    "EC2 Service Name: #{@display_name}"
   end
 
   private

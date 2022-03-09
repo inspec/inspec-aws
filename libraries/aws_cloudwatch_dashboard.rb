@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudwatchDashboard < AwsResourceBase
   name 'aws_cloudwatch_dashboard '
   desc 'Returns the configuration information and metadata of the specified cloudwatch dashboard.'
-
   example "
-    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
+    describe aws_cloudwatch_dashboard(dashboard_name: 'CLOUDWATCH_DASHBOARD_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSCloudwatchDashboard < AwsResourceBase
   end
 
   def to_s
-    "Dashboard Name: #{@display_name}"
+    "Cloudwatch Dashboard Name: #{@display_name}"
   end
 end

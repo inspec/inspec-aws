@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSNetworkFirewallRuleGroups < AwsResourceBase
   name 'aws_network_firewall_rule_groups'
   desc 'Retrieves the metadata for the rule groups that you have defined.'
-
   example "
     describe aws_network_firewall_rule_groups do
       it { should exist }

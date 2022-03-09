@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsEcrPublicRepositories < AwsResourceBase
   name 'aws_ecrpublic_repositories'
   desc 'Verifies settings for a collection of AWS ECR Public Repositories.'
-
   example "
     describe aws_ecrpublic_repositories do
       its('count') { should eq 3 }
     end
-
-    describe aws_ecrpublic_repositories.where(name: 'public-repo') do
+    describe aws_ecrpublic_repositories.where(name: 'ECR_REPOSITORY_NAME') do
       it { should exist }
     end
   "

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSApiGatewayRestApis < AwsResourceBase
   name 'aws_api_gateway_restapis'
   desc 'Lists the RestApis resources for your collection.'
-
   example "
     describe aws_api_gateway_restapis do
       it { should exist }

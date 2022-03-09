@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSignerSigningProfiles < AwsResourceBase
   name 'aws_signer_signing_profiles'
   desc 'Returns information on a specific signing profile.'
-
   example "
     describe aws_signer_signing_profiles do
       it { should exist }

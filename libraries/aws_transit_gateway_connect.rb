@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSTransitGatewayConnect < AwsResourceBase
   name 'aws_transit_gateway_connect'
   desc 'Describes one or more Connect attachments.'
-
   example "
     describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GATEWAY_CONNECT_ATTACHMENT_ID') do
       it { should exits }
@@ -35,6 +34,6 @@ class AWSTransitGatewayConnect < AwsResourceBase
   end
 
   def to_s
-    "Transit Gateway Attachment ID: #{@display_name}"
+    "EC2 Transit Gateway Attachment ID: #{@display_name}"
   end
 end

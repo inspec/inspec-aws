@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   name 'aws_network_firewall_logging_configuration'
   desc 'Returns the logging configuration for the specified firewall.'
-
   example "
-    describe aws_network_firewall_logging_configuration(firewall_name: 'FirewallName') do
+    describe aws_network_firewall_logging_configuration(firewall_name: 'NETWORK_FIREWALL_NAME') do
       it { should exist }
     end
   "
@@ -35,7 +34,7 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   end
 
   def to_s
-    "Firewall Name: #{@display_name}"
+    "Network Firewall Name: #{@display_name}"
   end
 
   def logging_configuration_log_destination_configs_log_type

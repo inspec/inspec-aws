@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEventBridgeRules < AwsResourceBase
   name 'aws_eventbridge_rules'
   desc 'Lists your Amazon EventBridge rules.'
-
   example "
     describe aws_eventbridge_rules do
       it { should exist }

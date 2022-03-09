@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayMethod < AwsResourceBase
   name 'aws_api_gateway_method'
   desc 'Describe an existing Method resource.'
-
   example "
-    describe aws_api_gateway_method(rest_api_id: 'rest_api_id_test', resource_id: 'resource_id_test', http_method: 'GET') do
+    describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'REST_API_RESOURCE_ID', http_method: 'GET') do
       it { should exist }
     end
   "
@@ -19,7 +18,7 @@ class AWSApiGatewayMethod < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
     raise ArgumentError, "#{@__resource_name__}: resource_id must be provided" unless opts[:resource_id] && !opts[:resource_id].empty?
     raise ArgumentError, "#{@__resource_name__}: http_method must be provided" unless opts[:http_method] && !opts[:http_method].empty?
-    @rest_api_id = opts[:rest_api_id]
+    @rest_api_id = opts[:http_method]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_method({ rest_api_id: opts[:rest_api_id], resource_id: opts[:resource_id], http_method: opts[:http_method] })
       @res = resp.to_h
@@ -37,6 +36,6 @@ class AWSApiGatewayMethod < AwsResourceBase
   end
 
   def to_s
-    "rest_api_id: #{@rest_api_id}"
+    "Rest API Method Name: #{@rest_api_id}"
   end
 end

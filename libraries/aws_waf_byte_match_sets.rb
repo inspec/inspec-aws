@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFByteMatchSets < AwsResourceBase
   name 'aws_waf_byte_match_sets'
   desc 'Verifies settings for all the WAF rules.'
-
   example "
     describe aws_waf_byte_match_sets do
       it { should exist }

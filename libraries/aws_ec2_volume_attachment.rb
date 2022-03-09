@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2VolumeAttachment < AwsResourceBase
   name 'aws_ec2_volume_attachment'
   desc 'Describes the specified EBS volumes attachments or all of your EBS volumes attachments.'
-
   example "
-    describe aws_ec2_volume_attachment(volume_id: 'VolumeID') do
+    describe aws_ec2_volume_attachment(volume_id: 'EC2_VOLUME_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2VolumeAttachment < AwsResourceBase
   end
 
   def to_s
-    "Volume ID: #{@display_name}"
+    "EC2 Volume ID: #{@display_name}"
   end
 end

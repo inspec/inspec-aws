@@ -5,13 +5,12 @@ require 'aws_backend'
 class AwsRdsOptionGroup < AwsResourceBase
   name 'aws_rds_option_group'
   desc 'Verifies settings for an RDS Option Group.'
-
   example "
-    describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
+    describe aws_rds_option_group(option_group_name: 'RDS_OPTION_GROUP_NAME') do
       it { should exist }
     end
 
-    describe aws_rds_option_group('test-option_group_name') do
+    describe aws_rds_option_group('RDS_OPTION_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -39,6 +38,6 @@ class AwsRdsOptionGroup < AwsResourceBase
   end
 
   def to_s
-    "RDS Option Group: #{@display_name}"
+    "RDS Option Group Name: #{@display_name}"
   end
 end

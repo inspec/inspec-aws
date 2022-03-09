@@ -5,14 +5,12 @@ require 'aws_backend'
 class AwsEbsVolume < AwsResourceBase
   name 'aws_ebs_volume'
   desc 'Verifies settings for an EBS volume.'
-
   example "
-    describe aws_ebs_volume('vol-12345678') do
+    describe aws_ebs_volume('EBS_VOLUME_ID') do
       it          { should be_encrypted }
       its('size') { should cmp 8 }
     end
-
-    describe aws_ebs_volume(name: 'my-volume') do
+    describe aws_ebs_volume(name: 'EBS_VOLUME_NAME') do
       its('encrypted') { should eq true }
       its('iops')      { should cmp 100 }
     end
@@ -64,6 +62,6 @@ class AwsEbsVolume < AwsResourceBase
   end
 
   def to_s
-    "EBS Volume #{@display_name}"
+    "EBS Volume: #{@display_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudwatchInsightRules < AwsResourceBase
   name 'aws_cloudwatch_insight_rules'
   desc 'Verifies settings for Cloudwatch insight rules in bulk.'
-
   example "
     describe aws_cloudwatch_insight_rules do
       it { should exist }

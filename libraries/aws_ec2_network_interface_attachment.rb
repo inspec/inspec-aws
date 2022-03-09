@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2NetworkInterfaceAttachment < AwsResourceBase
   name 'aws_ec2_network_interface_attachment'
   desc 'Describes one or more of your network interface attachment.'
-
   example "
-    describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
+    describe aws_ec2_network_interface_attachment(network_interface_id: 'EC2_NETWORK_INTERFACE_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2NetworkInterfaceAttachment < AwsResourceBase
   end
 
   def to_s
-    "Network Interface ID: #{@display_name}"
+    "EC2 Network Interface ID: #{@display_name}"
   end
 end

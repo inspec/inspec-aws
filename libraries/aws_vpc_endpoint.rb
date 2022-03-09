@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsVpce < AwsResourceBase
   name 'aws_vpc_endpoint'
   desc 'Verifies settings for an AWS VPC Endpoint.'
-
   example "
-    describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678123456789') do
+    describe aws_vpc_endpoint(vpc_endpoint_id: 'VPC_ENDPOINT_ID') do
       it { should exist }
     end
   "
@@ -54,6 +53,6 @@ class AwsVpce < AwsResourceBase
   end
 
   def to_s
-    "VPC Endpoint: #{@display_name}"
+    "VPC Endpoint ID: #{@display_name}"
   end
 end

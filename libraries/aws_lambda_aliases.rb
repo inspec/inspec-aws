@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaAliases < AwsResourceBase
   name 'aws_lambda_aliases'
   desc 'Returns a list of aliases for a Lambda function.'
-
   example "
-    describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
+    describe aws_lambda_aliases(function_name: 'LAMBDA_FUNCTION_NAME') do
       it { should exist }
     end
   "

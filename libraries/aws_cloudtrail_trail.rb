@@ -5,12 +5,12 @@ require 'aws_backend'
 class AwsCloudTrailTrail < AwsResourceBase
   name 'aws_cloudtrail_trail'
   desc 'Verifies settings for an individual AWS CloudTrail Trail.'
-
   example "
-    describe aws_cloudtrail_trail('trail-name') do
+    describe aws_cloudtrail_trail('TRAIL_NAME') do
       it { should exist }
     end
   "
+
   attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :trail_name,
               :kms_key_id, :s3_bucket_name, :trail_arn, :is_multi_region_trail, :log_file_validation_enabled
 
@@ -90,6 +90,6 @@ class AwsCloudTrailTrail < AwsResourceBase
   end
 
   def to_s
-    "CloudTrail #{@trail_name}"
+    "CloudTrail Trial Name: #{@trail_name}"
   end
 end

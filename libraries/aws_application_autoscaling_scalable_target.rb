@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   name 'aws_application_autoscaling_scalable_target'
   desc 'Gets information about the scalable targets in the specified namespace.'
-
   example "
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'ec2' ) do
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'AUTOSCALING_SERVICE_NAMESPACE') do
       it { should exist }
     end
   "
@@ -39,6 +38,6 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   end
 
   def to_s
-    "Service Namespace: #{@display_name}"
+    "Autoscaling Service Namespace: #{@display_name}"
   end
 end

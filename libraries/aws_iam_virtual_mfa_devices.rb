@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSIAMVirtualMFADevices < AwsResourceBase
   name 'aws_iam_virtual_mfa_devices'
   desc 'Lists all virtual MFA devices.'
-
   example "
     describe aws_iam_virtual_mfa_devices do
       it { should exist }

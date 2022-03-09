@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEcsCluster < AwsResourceBase
   name 'aws_ecs_cluster'
   desc 'Verifies settings for an ECS cluster.'
-
   example "
-    describe aws_ecs_cluster('backup-cluster') do
+    describe aws_ecs_cluster('ECS_CLUSTER_NAME') do
       it { should exist }
     end
   "
@@ -44,6 +43,6 @@ class AwsEcsCluster < AwsResourceBase
   end
 
   def to_s
-    "AWS ECS cluster #{cluster_name}"
+    "ECS Cluster Name: #{cluster_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSGlueDatabases < AwsResourceBase
   name 'aws_glue_databases'
   desc 'Retrieves all databases defined in a given Data Catalog.'
-
   example "
     describe aws_glue_databases do
       it { should exist }

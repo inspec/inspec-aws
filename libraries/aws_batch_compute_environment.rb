@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSBatchComputeEnvironment < AwsResourceBase
   name 'aws_batch_compute_environment'
   desc 'Describes one or more of your compute environments.'
-
   example "
-    describe aws_batch_compute_environment(compute_environment_name: 'test1') do
+    describe aws_batch_compute_environment(compute_environment_name: 'BATCH_COMPUTE_ENVIRONMENT_NAME') do
       it { should exist }
     end
   "
@@ -36,6 +35,6 @@ class AWSBatchComputeEnvironment < AwsResourceBase
   end
 
   def to_s
-    "Compute Environment Name: #{@display_name}"
+    "Batch Compute Environment Name: #{@display_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2InternetGateways < AwsResourceBase
   name 'aws_ec2_internet_gateways'
   desc 'List all the internet gateways.'
-
   example "
     describe aws_ec2_internet_gateways do
       it { should exist }

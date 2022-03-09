@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFIPSets < AwsResourceBase
   name 'aws_waf_ip_sets'
   desc 'Verifies settings for all the IP sets.'
-
   example "
     describe aws_waf_ip_sets do
       it { should exist }

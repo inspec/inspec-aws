@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSESMaintenanceWindow < AwsResourceBase
   name 'aws_ssm_maintenance_window'
   desc 'Retrieves a maintenance window.'
-
   example "
-    describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
+    describe aws_ssm_maintenance_window(window_id: 'SSM_MAINTENANCE_WINDOW_ID') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSSESMaintenanceWindow < AwsResourceBase
   end
 
   def to_s
-    "Window Id: #{@display_name}"
+    "SSM Maintenance Window Id: #{@display_name}"
   end
 end

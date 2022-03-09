@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsSqsQueue < AwsResourceBase
   name 'aws_sqs_queue'
   desc 'Verifies settings for an SQS Queue.'
-
   example "
-    describe aws_sqs_queue('queue-name') do
+    describe aws_sqs_queue('SQS_QUEUE_NAME') do
       it { should exist }
     end
   "
@@ -42,6 +41,6 @@ class AwsSqsQueue < AwsResourceBase
   end
 
   def to_s
-    "AWS SQS Queue #{@arn}"
+    "AWS SQS Queue Name: #{@arn}"
   end
 end

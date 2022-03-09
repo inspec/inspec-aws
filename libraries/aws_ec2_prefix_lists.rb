@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2PrefixLists < AwsResourceBase
   name 'aws_ec2_prefix_lists'
   desc 'List all the prefix list.'
-
   example "
     describe aws_ec2_prefix_lists do
       it { should exist }

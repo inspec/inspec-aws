@@ -9,6 +9,7 @@ class AwsIamAccountAlias < AwsResourceBase
       its('alias') { should match /^fancy-/ }
     end
   "
+
   supports platform: 'aws'
 
   attr_reader :alias

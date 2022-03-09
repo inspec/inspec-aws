@@ -8,12 +8,8 @@ class AwsRdsSnapshots < AwsCollectionResourceBase
   example "
     describe aws_rds_snapshots do
       it { should exist }
-    end
-
-    describe aws_rds_snapshots do
       its('entries.count') { should be > 1 }
     end
-
     # Iterate through all snapshots
     aws_rds_snapshots.db_snapshot_identifiers.each do |db_snapshot_identifier|
       describe aws_rds_snapshot(db_snapshot_identifier) do

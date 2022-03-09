@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSGlueCrawler < AwsResourceBase
   name 'aws_glue_crawler'
   desc 'Retrieves metadata for a crawler defined in the customer account.'
-
   example "
-    describe aws_glue_crawler(name: 'crawler_name') do
+    describe aws_glue_crawler(name: 'GLUE_CRAWLER_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSGlueCrawler < AwsResourceBase
   end
 
   def to_s
-    "Crawler Name: #{@display_name}"
+    "Glue Crawler Name: #{@display_name}"
   end
 end

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSElasticSearchServiceDomain < AwsResourceBase
   name 'aws_elasticsearchservice_domain'
   desc 'Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.'
-
   example "
-    describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
+    describe aws_elasticsearchservice_domain(domain_name: 'ESS_DOMAIN_SERVICE') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
   end
 
   def to_s
-    "Domain Name: #{@display_name}"
+    "Elastic Search Service Domain Name: #{@display_name}"
   end
 end

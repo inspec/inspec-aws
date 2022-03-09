@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2Hosts < AwsResourceBase
   name 'aws_ec2_hosts'
   desc 'Describes the specified Dedicated Hosts or all your Dedicated Hosts.'
-
   example "
     describe aws_ec2_hosts do
       it { should exist }

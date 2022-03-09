@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSStepFunctionsActivity < AwsResourceBase
   name 'aws_stepfunctions_activity'
   desc 'Describes an activity.'
-
   example "
-    describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
+    describe aws_stepfunctions_activity(activity_arn: 'STEP_FUNCTIONS_ACTIVITY_ARN') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSStepFunctionsActivity < AwsResourceBase
   end
 
   def to_s
-    "Activity ARN: #{@display_name}"
+    "Step Functions Activity ARN: #{@display_name}"
   end
 end

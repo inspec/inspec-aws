@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2Fleets < AwsResourceBase
   name 'aws_ec2_fleets'
   desc 'Describes the specified EC2 Fleets or all of your EC2 Fleets.'
-
   example "
     describe aws_ec2_fleets do
       it { should exist }

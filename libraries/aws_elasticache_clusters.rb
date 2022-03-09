@@ -4,12 +4,11 @@ require 'aws_backend'
 
 class AwsElastiCacheClusters < AwsResourceBase
   name 'aws_elasticache_clusters'
-  desc 'Verifies settings for a collection of AWS Elasticache Clusters.'
+  desc 'Verifies settings for a collection of AWS Elastic Cache Clusters.'
   example "
     describe aws_elasticache_clusters do
       its('count') { should eq 3 }
     end
-
     # Iterate through all clusters
     aws_elasticache_clusters.cache_cluster_ids.each do |cache_cluster_id|
       describe aws_elasticache_cluster(cache_cluster_id) do

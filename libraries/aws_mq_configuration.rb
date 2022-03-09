@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSMQConfiguration < AwsResourceBase
   name 'aws_mq_configuration'
   desc 'Describes a Amazon MQ configuration.'
-
   example "
-    describe aws_mq_configuration(configuration_id: 'test1') do
+    describe aws_mq_configuration(configuration_id: 'MQ_CONFIGURATION_ID') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSMQConfiguration < AwsResourceBase
   end
 
   def to_s
-    "Configuration ID: #{@display_name}"
+    "MQ Configuration ID: #{@display_name}"
   end
 end

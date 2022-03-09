@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsEcrImage < AwsResourceBase
   name 'aws_ecr_image'
   desc 'Verifies settings for an AWS ECR Image.'
-
   example "
-    describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
+    describe aws_ecr_image(repository_name: 'ECR_REPOSITORY_NAME', image_tag: 'latest') do
       it { should exist }
     end
-
-    describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:abc123...edf') do
+    describe aws_ecr_image(repository_name: 'ECR_REPOSITORY_NAME', image_digest: 'sha256:abc123...edf') do
       it { should exist }
     end
   "
@@ -128,6 +126,6 @@ class AwsEcrImage < AwsResourceBase
   end
 
   def to_s
-    "ECR Image #{@display_name}"
+    "ECR Image: #{@display_name}"
   end
 end

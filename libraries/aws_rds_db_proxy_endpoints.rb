@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSProxyEndpoints < AwsResourceBase
   name 'aws_rds_db_proxy_endpoints'
   desc 'Returns information about DB proxy endpoints.'
-
   example "
-    describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
+    describe aws_rds_db_proxy_endpoints(db_proxy_name: 'RDS_DB_PROXY_NAME') do
       it { should exist }
     end
   "

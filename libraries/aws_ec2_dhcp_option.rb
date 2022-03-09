@@ -3,16 +3,13 @@
 require 'aws_backend'
 class AwsEc2DHCPOption < AwsResourceBase
   SERVER_TYPES = %w{domain-name-servers netbios-name-servers ntp-servers}.freeze
-
   name 'aws_ec2_dhcp_option'
   desc 'Verifies settings for an AWS EC2 DHCP Option.'
-
   example "
-    describe aws_ec2_dhcp_option('dotp-12345678') do
+    describe aws_ec2_dhcp_option('EC2_DHCP_OPTION_ID') do
       it { should exist }
     end
-
-    describe aws_ec2_dhcp_option(name: 'dotp-12345678') do
+    describe aws_ec2_dhcp_option(name: 'EC2_DHCP_OPTION_NAME') do
       it { should exist }
     end
   "

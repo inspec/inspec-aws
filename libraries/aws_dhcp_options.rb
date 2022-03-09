@@ -5,6 +5,11 @@ require 'aws_backend'
 class AwsDhcpOptions < AwsResourceBase
   name 'aws_dhcp_options'
   desc 'Verifies settings for an AWS DHCP Options.'
+  example "
+    describe aws_dhcp_options('DHCP_OPTIONS_ID') do
+      it { should exist }
+    end
+  "
 
   def initialize(opts = {})
     Inspec::Log.warn deprecation_notice

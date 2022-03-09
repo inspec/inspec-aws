@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSApiGatewayDocumentationParts < AwsResourceBase
   name 'aws_api_gateway_documentation_parts'
   desc 'Lists all the API Gateway documentation parts.'
-
   example "
-    describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
+    describe aws_api_gateway_documentation_parts(rest_api_id: 'REST_API_ID') do
       it { should exist }
-    end
-
-    describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
-      its('ids') { should include DOCUMENTATION_PART_ID' }
+      its('ids') { should include 'REST_API_DOCUMENTATION_PART_ID' }
     end
   "
 

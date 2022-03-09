@@ -6,9 +6,9 @@ class AwsIamSamlProvider < AwsResourceBase
   name 'aws_iam_saml_provider'
   desc 'Verifies settings for a SAML Provider.'
   example "
-    describe aws_iam_saml_provider('arn:aws:iam::123456789012:saml-provider/FANCY') do
+    describe aws_iam_saml_provider('IAM_SAML_PROVIDER_ARN') do
         it { should exist }
-        its('arn') { should match('arn:aws:iam::.*:saml-provider\/FANCY') }
+        its('arn') { should match('IAM_SAML_PROVIDER_ARN') }
         its('valid_until') { should be > Time.now + 90 * 86400 }
     end
   "
@@ -35,6 +35,6 @@ class AwsIamSamlProvider < AwsResourceBase
   end
 
   def to_s
-    "AWS IAM SAML Provider #{@opts[:saml_provider_arn]}"
+    "IAM SAML Provider ARN: #{@opts[:saml_provider_arn]}"
   end
 end

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkManagerDevices < AwsResourceBase
   name 'aws_network_manager_devices'
   desc 'List all the devices.'
-
   example "
-    describe aws_network_manager_devices(global_network_id: 'GlobalNetworkID') do
+    describe aws_network_manager_devices(global_network_id: 'NETWORK_MANAGER_GLOBAL_NETWORK_ID') do
       it { should exist }
     end
   "

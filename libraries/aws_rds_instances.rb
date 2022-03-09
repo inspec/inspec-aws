@@ -8,12 +8,8 @@ class AwsRdsInstances < AwsCollectionResourceBase
   example "
     describe aws_rds_instances do
       it { should exist }
-    end
-
-    describe aws_rds_instances do
       its('entries.count') { should be > 1 }
     end
-
     # Iterate through all instances
     aws_rds_instances.db_instance_identifiers.each do |db_instance_identifier|
       describe aws_rds_instance(db_instance_identifier) do

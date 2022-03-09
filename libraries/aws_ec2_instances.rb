@@ -36,7 +36,7 @@ class AwsEc2Instances < AwsResourceBase
       catch_aws_errors do
         @api_response = @aws.compute_client.describe_instances(pagination_options)
       end
-      return [] if !@api_response || @api_response.empty?
+      return instance_rows if !@api_response || @api_response.empty?
       @api_response.reservations.each do |res|
         res.instances.each do |instance|
           instance_tags = map_tags(instance.tags)

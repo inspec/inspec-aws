@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
   name 'aws_cloudfront_realtime_log_config'
   desc 'Gets a real-time log configuration.'
-
   example "
-    describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
+    describe aws_cloudfront_realtime_log_config(name: 'CLOUDFRONT_REALTIME_CONFIG_NAME') do
       it { should exist }
     end
   "
@@ -35,7 +34,7 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
   end
 
   def to_s
-    "Config Name: #{@display_name}"
+    "Cloudfront Realtime Config Name: #{@display_name}"
   end
 
   def end_points_stream_types

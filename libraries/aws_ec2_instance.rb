@@ -5,14 +5,12 @@ require 'aws_backend'
 class AwsEc2Instance < AwsResourceBase
   name 'aws_ec2_instance'
   desc 'Verifies settings for an AWS EC2 instance.'
-
   example "
-    describe aws_ec2_instance('i-12345678') do
+    describe aws_ec2_instance('EC2_INSTANCE_ID') do
       it { should be_running }
       it { should have_roles }
     end
-
-    describe aws_ec2_instance(name: 'my-instance') do
+    describe aws_ec2_instance(name: 'EC2_INSTANCE_NAME') do
       it { should be_running }
       it { should have_roles }
     end

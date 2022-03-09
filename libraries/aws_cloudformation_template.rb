@@ -5,21 +5,17 @@ require 'aws_backend'
 class AWSCloudFormationTemplate < AwsResourceBase
   name 'aws_cloudformation_template'
   desc 'Returns information about a new or existing template.'
-
   example "
-    describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
+    describe aws_cloudformation_template(stack_name: 'CLOUD_FORMATION_STACK_NAME') do
       it { should exist }
     end
-
-    describe aws_cloudformation_template(stack_set_name: 'STACK_SET_NAME') do
+    describe aws_cloudformation_template(stack_set_name: 'CLOUD_FORMATION_STACK_SET_NAME') do
       it { should exist }
     end
-
-    describe aws_cloudformation_template(template_url: 'TEMPLATE_URL') do
+    describe aws_cloudformation_template(template_url: 'CLOUD_FORMATION_TEMPLATE_URL') do
       it { should exist }
     end
-
-    describe aws_cloudformation_template(template_body: 'TEMPLATE_BODY') do
+    describe aws_cloudformation_template(template_body: 'CLOUD_FORMATION_TEMPLATE_BODY') do
       it { should exist }
     end
   "

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSESResourceDataSyncs < AwsResourceBase
   name 'aws_ssm_resource_data_syncs'
   desc 'Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.'
-
   example "
     describe aws_ssm_resource_data_syncs do
       it { should exist }

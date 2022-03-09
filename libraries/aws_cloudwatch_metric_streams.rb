@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudwatchMetricStreams < AwsResourceBase
   name 'aws_cloudwatch_metric_streams'
   desc 'Returns a list of metric streams in this account.'
-
   example "
     describe aws_cloudwatch_metric_streams do
       it { should exist }

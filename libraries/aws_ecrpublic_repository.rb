@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEcrPublicRepository < AwsResourceBase
   name 'aws_ecrpublic_repository'
   desc 'Verifies settings for an AWS ECR Public Repository.'
-
   example "
-    describe aws_ecrpublic_repository('my-public-repository') do
+    describe aws_ecrpublic_repository('ECR_REPOSITORY_NAME') do
       it { should exist }
     end
   "
@@ -51,7 +50,7 @@ class AwsEcrPublicRepository < AwsResourceBase
   end
 
   def to_s
-    "ECR Repository #{@display_name}"
+    "ECR Repository Name: #{@display_name}"
   end
 
   def tags

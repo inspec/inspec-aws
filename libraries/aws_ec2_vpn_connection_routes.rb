@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2VPNConnectionRoutes < AwsResourceBase
   name 'aws_ec2_vpn_connection_routes'
   desc 'Describes one or more of your VPN connections route.'
-
   example "
-    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
+    describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'EC2_VPN_CONNECTION_ID') do
       it { should exist }
     end
   "

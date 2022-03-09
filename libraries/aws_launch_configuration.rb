@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsLaunchConfiguration < AwsResourceBase
   name 'aws_launch_configuration'
   desc 'Verifies settings for an AWS Launch Configuration.'
-
   example "
-    describe aws_launch_configuration('config-name') do
+    describe aws_launch_configuration('SERVICE_LAUNCH_CONFIGURATION_NAME') do
       it { should exist }
     end
   "

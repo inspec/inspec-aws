@@ -6,12 +6,11 @@ class AwsDbParameterGroup < AwsResourceBase
   name 'aws_db_parameter_group'
   desc 'Verifies settings for a Parameter Group.'
   example "
-    describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group') do
+    describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
       it { should exist }
     end
-
-    describe aws_db_parameter_group('parameter-group') do
-      its('db_parameter_group_name') { should eq 'parameter-group' }
+    describe aws_db_parameter_group('DB_PARAMETER_GROUP_NAME') do
+      its('db_parameter_group_name') { should eq 'DB_PARAMETER_GROUP_NAME' }
     end
   "
 
@@ -37,7 +36,7 @@ class AwsDbParameterGroup < AwsResourceBase
   end
 
   def to_s
-    "Parameter Group Name #{@display_name}"
+    "DB Parameter Group Name: #{@display_name}"
   end
 
   def name

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaPermissions < AwsResourceBase
   name 'aws_lambda_permissions'
   desc 'Returns the resource-based IAM policy for a function, version, or alias.'
-
   example "
-    describe aws_lambda_permissions(function_name: 'LambdaFunctionName') do
+    describe aws_lambda_permissions(function_name: 'LAMBDA_FUNCTION_NAME') do
       it { should exist }
     end
   "

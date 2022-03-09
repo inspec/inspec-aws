@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayAuthorizer < AwsResourceBase
   name 'aws_apigateway_authorizer'
   desc 'Describe an existing Authorizer resource.'
-
   example "
-    describe aws_apigateway_authorizer(rest_api_id: 'RestAPIID', authorizer_id: 'AuthorizerID') do
+    describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'REST_API_AUTHORIZER_ID') do
       it { should exist }
     end
   "
@@ -37,6 +36,6 @@ class AWSApiGatewayAuthorizer < AwsResourceBase
   end
 
   def to_s
-    "Authorizer ID: #{@display_name}"
+    "Rest API Authorizer ID: #{@display_name}"
   end
 end

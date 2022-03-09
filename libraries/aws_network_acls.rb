@@ -5,12 +5,10 @@ require 'aws_backend'
 class AwsNetworkACLs < AwsResourceBase
   name 'aws_network_acls'
   desc 'Verifies settings for a collection of AWS internet gateways.'
-
   example "
     describe aws_network_acls do
       its('count') { should eq 3 }
     end
-
     describe aws_network_acls.where{ entries_cidr_blocks.include?('0.0.0.0/0') } do
       it { should exist }
     end

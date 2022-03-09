@@ -84,11 +84,10 @@ class AwsAmis < AwsResourceBase
 
   def fetch_data(query_params)
     image_rows = []
-
     catch_aws_errors do
       @api_response = query_params.empty? ? @aws.compute_client.describe_images : @aws.compute_client.describe_images(query_params)
     end
-    return [] if !api_response || api_response.empty?
+    return image_rows if !api_response || api_response.empty?
     api_response.images.each do |image|
       image_rows += [{ architecture:          image.architecture,
                        creation_date:         image.creation_date,

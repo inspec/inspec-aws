@@ -6,7 +6,7 @@ class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_table_associations'
   desc 'Gets information about the associations for the specified transit gateway route table.'
   example "
-    describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'tgw-attach-0123456789') do
+    describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
   "

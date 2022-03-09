@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRoute53ResolverResolverRuleAssociations < AwsResourceBase
   name 'aws_route53resolver_resolver_rule_associations'
   desc 'Lists the associations that were created between Resolver rules and VPCs using the current AWS account.'
-
   example "
     describe aws_route53resolver_resolver_rule_associations do
       it { should exist }

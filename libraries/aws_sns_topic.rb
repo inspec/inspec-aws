@@ -6,7 +6,7 @@ class AwsSnsTopic < AwsResourceBase
   name 'aws_sns_topic'
   desc 'Verifies settings for an SNS Topic.'
   example "
-    describe aws_sns_topic('arn:aws:sns:us-east-1:123456789012:some-topic') do
+    describe aws_sns_topic('SNS_TOPIC_ARN') do
       it { should exist }
       its('confirmed_subscription_count') { should_not be_zero }
     end
@@ -38,6 +38,6 @@ class AwsSnsTopic < AwsResourceBase
   end
 
   def to_s
-    "SNS Topic #{@arn}"
+    "SNS Topic ARN: #{@arn}"
   end
 end

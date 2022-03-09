@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
   name 'aws_ec2_network_interface_attachments'
   desc 'List all the network interface attachments.'
-
   example "
     describe aws_ec2_network_interface_attachments do
       it { should exist }

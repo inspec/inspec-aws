@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsCloudwatchAnomalyDetector < AwsResourceBase
   name 'aws_cloudwatch_anomaly_detector'
   desc 'Lists the anomaly detection models that you have created in your account.'
-
   example "
-    describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
+    describe aws_cloudwatch_anomaly_detector(metric_name: 'ANOMALY_ALARM_NAME') do
       it { should exist }
     end
   "
@@ -35,7 +34,7 @@ class AwsCloudwatchAnomalyDetector < AwsResourceBase
   end
 
   def to_s
-    "Metric Name: #{@display_name}"
+    "Anomaly Metric Name: #{@display_name}"
   end
 
   def dimensions_names

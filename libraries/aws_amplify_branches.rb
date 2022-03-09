@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSAmplifyBranches < AwsResourceBase
   name 'aws_amplify_branches'
   desc 'Lists the branches of an Amplify app.'
-
   example "
-    describe aws_amplify_branches(app_id: 'AppId') do
+    describe aws_amplify_branches(app_id: 'AMPLIFY_BRANCH_ID') do
       it { should exist }
     end
   "

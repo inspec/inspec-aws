@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSAthenaWorkGroup < AwsResourceBase
   name 'aws_athena_work_group'
   desc 'Returns information about the workgroup with the specified name.'
-
   example "
-    describe aws_athena_work_group(work_group: 'test1') do
+    describe aws_athena_work_group(work_group: 'ATHENA_WORK_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -16,7 +15,6 @@ class AWSAthenaWorkGroup < AwsResourceBase
     opts = { work_group: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:work_group])
-
     raise ArgumentError, "#{@__resource_name__}: work_group must be provided" unless opts[:work_group] && !opts[:work_group].empty?
     @display_name = opts[:work_group]
     catch_aws_errors do
@@ -36,6 +34,6 @@ class AWSAthenaWorkGroup < AwsResourceBase
   end
 
   def to_s
-    "WorkGroup Name: #{@display_name}"
+    "Athena Work Group Name: #{@display_name}"
   end
 end

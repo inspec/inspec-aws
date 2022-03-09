@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEc2LaunchTemplates < AwsResourceBase
   name 'aws_ec2_launch_templates'
   desc 'Verifies settings for a collection of launch templates.'
-
   example "
     describe aws_ec2_launch_templates do
       it { should exist }

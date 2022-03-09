@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2CarrierGateways < AwsResourceBase
   name 'aws_ec2_carrier_gateways'
   desc 'Describes multiple carrier gateways.'
-
   example "
     describe aws_ec2_carrier_gateways do
       it { should exist }

@@ -8,12 +8,12 @@ class AwsTransitGatewayRoute < AwsResourceBase
   ATTACHMENT_RESOURCE_TYPES = %w{vpc vpn direct-connect-gateway connect peering tgw-peering}.freeze
   name 'aws_transit_gateway_route'
   desc 'Verifies settings for an AWS Transit Gateway.'
-
   example "
-    describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
+    describe aws_transit_gateway_route(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID', cidr_block: '0.0.0.0/16') do
       it { should exist }
     end
   "
+
   # defines boolean matchers for each state
   STATES.each do |state|
     method_name = "#{state}?"

@@ -10,6 +10,7 @@ class AwsEmrClusters < AwsResourceBase
       it { should exist }
     end
   "
+
   attr_reader :table
 
   FilterTable.create

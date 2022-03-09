@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRAMResourceShares < AwsResourceBase
   name 'aws_ram_resource_shares'
   desc 'Lists the resources that you added to a resource shares or the resources that are shared with you.'
-
   example "
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
       it { should exist }

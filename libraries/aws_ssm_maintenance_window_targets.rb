@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSESMaintenanceWindowTargets < AwsResourceBase
   name 'aws_ssm_maintenance_window_targets'
   desc 'Lists the targets registered with the maintenance window.'
-
   example "
-    describe aws_ssm_maintenance_window_targets(window_id: 'WINDOW_ID') do
+    describe aws_ssm_maintenance_window_targets(window_id: 'SSM_MAINTENANCE_WINDOW_ID') do
       it { should exist }
     end
   "

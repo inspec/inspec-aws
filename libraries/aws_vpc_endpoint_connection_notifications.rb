@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsVpcEndpointConnectionNotifications < AwsResourceBase
   name 'aws_vpc_endpoint_connection_notifications'
   desc 'Verifies settings for all the AWS VPC Endpoint Notifications.'
-
   example "
     describe aws_vpc_endpoint_connection_notifications do
       it { should exist }

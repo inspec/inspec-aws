@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaVersion < AwsResourceBase
   name 'aws_lambda_version'
   desc 'Returns information about a version of an Lambda layer.'
-
   example "
-    describe aws_lambda_version(layer_name: 'LAYER_NAME', version_number: 1) do
+    describe aws_lambda_version(layer_name: 'LAMBDA_LAYER_NAME', version_number: 1) do
       it { should exist }
     end
   "

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRDSDBSecurityGroups < AwsResourceBase
   name 'aws_rds_db_security_groups'
   desc 'Returns information about all the db security group.'
-
   example "
     describe aws_rds_db_security_groups do
       it { should exist }

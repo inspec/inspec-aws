@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSStepFunctionsActivities < AwsResourceBase
   name 'aws_stepfunctions_activities'
   desc 'Retrieves a task in the maintenance window.'
-
   example "
     describe aws_stepfunctions_activities do
       it { should exist }

@@ -9,7 +9,6 @@ class AwsEfsFileSystems < AwsResourceBase
     describe aws_efs_file_systems do
       its('count') { should eq 3 }
     end
-
     # Iterate through all file systems
     aws_efs_file_systems.file_system_ids.each do |file_system_id|
       describe aws_efs_file_system(file_system_id) do

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2InternetGateway < AwsResourceBase
   name 'aws_ec2_internet_gateway'
   desc 'Describes a ec2 internet gateway.'
-
   example "
-    describe aws_ec2_internet_gateway(internet_gateway_id: 'InternetGatewayId') do
+    describe aws_ec2_internet_gateway(internet_gateway_id: 'EC2_INTERNET_GATEWAY_ID') do
       it { should exist }
     end
   "

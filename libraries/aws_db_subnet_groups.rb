@@ -5,11 +5,11 @@ require 'aws_backend'
 class AwsDbSubnetGroups < AwsResourceBase
   name 'aws_db_subnet_groups'
   desc 'Verifies settings for a Subnet Group in bulk.'
-  example '
+  example "
     describe aws_db_subnet_groups do
       it { should exist }
     end
-  '
+  "
 
   attr_reader :table, :subnet_rows, :api_response
 

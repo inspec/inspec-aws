@@ -4,11 +4,11 @@ require 'aws_backend'
 
 class AwsOrganizationsMember < AwsResourceBase
   name 'aws_organizations_member'
-  desc 'Verifies status of the current AWWS Account within Organizations service.'
+  desc 'Verifies status of the current AWS Account within Organizations service.'
   example "
     describe aws_organizations_member do
       it                       { should_not be_master }
-      its('master_account_id') { should cmp '6525687452' }
+      its('master_account_id') { should cmp 'MASTER_ACCOUNT_ID' }
     end
   "
 

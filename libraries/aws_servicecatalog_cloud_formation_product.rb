@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
   name 'aws_servicecatalog_cloud_formation_product'
   desc 'Gets information about the specified product.'
-
   example "
     describe aws_servicecatalog_cloud_formation_product(name: 'product_name') do
       it { should exist }

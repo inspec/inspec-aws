@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_table_association'
   desc 'Gets information about the associations for the specified transit gateway route table.'
-
   example "
-    describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'tgw-attach-0123456789') do
+    describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
   "
@@ -21,7 +20,7 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
     @display_name = opts[:transit_gateway_route_table_id]
     catch_aws_errors do
-      resp = aws.compute_client.get_transit_gateway_route_table_associations({ transit_gateway_route_table_id: @display_name })
+      resp = aws.compute_client.get_transit_gateway_route_table_associations({ transit_gateway_route_table_id: opts[:transit_gateway_route_table_id] })
       @association = resp.associations[0].to_h
       create_resource_methods(@association)
     end
@@ -37,6 +36,6 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
   end
 
   def to_s
-    "Transit gateway Route table Association: #{@display_name}"
+    "EC2 Transit gateway Route Table ID: #{@display_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsRouteTables < AwsResourceBase
   name 'aws_route_tables'
   desc 'Verifies settings for an AWS Route Tables in bulk.'
-
   example "
     describe aws_route_tables do
       it { should exist }

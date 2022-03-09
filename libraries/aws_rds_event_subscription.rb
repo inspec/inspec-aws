@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSEventSubscription < AwsResourceBase
   name 'aws_rds_event_subscription'
   desc 'Returns information about a RDS Event Subscription.'
-
   example "
-    describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
+    describe aws_rds_event_subscription(subscription_name: 'RDS_EVENT_SUBSCRIPTION_NAME') do
       it { should exist }
     end
   "

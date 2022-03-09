@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudFrontPublicKey < AwsResourceBase
   name 'aws_cloudfront_public_key'
   desc 'Get the information about a Public Key.'
-
   example "
-    describe aws_cloudfront_public_key(id: 'ID') do
+    describe aws_cloudfront_public_key(id: 'PUBLIC_KEY_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSCloudFrontPublicKey < AwsResourceBase
   end
 
   def to_s
-    "ID: #{@display_name}"
+    "Cloudfront Public Key ID: #{@display_name}"
   end
 end

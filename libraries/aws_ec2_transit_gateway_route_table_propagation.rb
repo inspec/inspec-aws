@@ -5,13 +5,10 @@ require 'aws_backend'
 class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_table_propagation'
   desc 'Describes information about the route table propagations for the specified transit gateway route table.'
-
   example "
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
+    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_attachment_id: 'EC2_TRANSIT_GATEWAY_ATTACHMENT_ID') do
       it { should exist }
-    end
-    describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
-      its ('state') { should eq 'enabled }
+      its ('state') { should eq 'enabled' }
     end
   "
 

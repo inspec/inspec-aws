@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSBatchJobQueue < AwsResourceBase
   name 'aws_batch_job_queue'
   desc 'Describes one or more of your job queues.'
-
   example "
-    describe aws_batch_job_queue(job_queue_name: 'test1') do
+    describe aws_batch_job_queue(job_queue_name: 'BATCH_JOB_QUEUE_NAME') do
       it { should exist }
     end
   "
@@ -16,7 +15,6 @@ class AWSBatchJobQueue < AwsResourceBase
     opts = { job_queue_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:job_queue_name])
-
     raise ArgumentError, "#{@__resource_name__}: job_queue_name must be provided" unless opts[:job_queue_name] && !opts[:job_queue_name].empty?
     @display_name = opts[:job_queue_name]
     catch_aws_errors do
@@ -36,6 +34,6 @@ class AWSBatchJobQueue < AwsResourceBase
   end
 
   def to_s
-    "Job Queue Name: #{@display_name}"
+    "Batch Job Queue Name: #{@display_name}"
   end
 end

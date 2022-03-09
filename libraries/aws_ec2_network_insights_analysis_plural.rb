@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2NetworkInsightsAnalysisPlural < AwsResourceBase
   name 'aws_ec2_network_insights_analysis_plural'
   desc 'List all the network insights analyses.'
-
   example "
     describe aws_ec2_network_insights_analysis_plural do
       it { should exist }

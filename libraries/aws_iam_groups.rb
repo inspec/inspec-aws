@@ -36,7 +36,7 @@ class AwsIamGroups < AwsResourceBase
     loop do
       catch_aws_errors do
         groups = @aws.iam_client.list_groups(pagination_options)
-        return [] if !groups || groups.empty?
+        return group_rows if !groups || groups.empty?
 
         groups.groups.each do |g|
           inline_policies = @aws.iam_client.list_group_policies({ 'group_name': g.group_name }).policy_names

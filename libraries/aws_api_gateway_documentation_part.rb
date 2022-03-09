@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayDocumentationPart < AwsResourceBase
   name 'aws_api_gateway_documentation_part'
   desc 'Retrieves API Gateway Documentation part.'
-
   example "
-    describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'DOCUMENTATION_PART_ID') do
+    describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'REST_API_DOCUMENTATION_PART_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
   end
 
   def to_s
-    "Documentation Part ID: #{@display_name}"
+    "Rest API Documentation Part ID: #{@display_name}"
   end
 end

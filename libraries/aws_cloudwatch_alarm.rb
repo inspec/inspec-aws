@@ -5,12 +5,11 @@ require 'aws_backend'
 class AwsCloudwatchAlarm < AwsResourceBase
   name 'aws_cloudwatch_alarm'
   desc 'Verifies settings for an AWS CloudWatch Alarm.'
-
   example "
-  # Look for a specific alarm
-  aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
-    it { should exist }
-  end
+    # Look for a specific alarm
+    aws_cloudwatch_alarm(metric_name: 'CLOUDWATCH_METRIC_NAME', metric_namespace: 'CLOUDWATCH_METRIC_NAMESPACE') do
+      it { should exist }
+    end
   "
 
   attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace, :dimensions
@@ -53,6 +52,6 @@ class AwsCloudwatchAlarm < AwsResourceBase
   end
 
   def to_s
-    "CloudWatch Alarm #{@metric_name} #{@metric_namespace}"
+    "CloudWatch Alarm Name and Namespace: #{@metric_name} #{@metric_namespace}"
   end
 end

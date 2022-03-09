@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2VPCPeeringConnection < AwsResourceBase
   name 'aws_ec2_vpc_peering_connection'
   desc 'Describes a vpc peering connection.'
-
   example "
-    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VpcPeeringConnectionId') do
+    describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'EC2_VPC_PEERING_CONNECTION_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2VPCPeeringConnection < AwsResourceBase
   end
 
   def to_s
-    "VPC Peering Connection ID: #{@display_name}"
+    "EC2 VPC Peering Connection ID: #{@display_name}"
   end
 end

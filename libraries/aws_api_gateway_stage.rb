@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayStage < AwsResourceBase
   name 'aws_api_gateway_stage'
   desc 'Gets information about a Stage resource.'
-
   example "
-    describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
+    describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'REST_API_STAGE_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayStage < AwsResourceBase
   end
 
   def to_s
-    "Stage Name: #{@display_name}"
+    "Rest API Stage Name: #{@display_name}"
   end
 end

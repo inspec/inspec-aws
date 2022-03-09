@@ -39,13 +39,11 @@ class AwsAlbs < AwsResourceBase
     alb_rows = []
     load_balancers = {}
     pagination_options = {}
-
     loop do
       catch_aws_errors do
         load_balancers = @aws.elb_client_v2.describe_load_balancers(pagination_options)
       end
-      return [] if !load_balancers || load_balancers.empty?
-
+      return load_balancers if !load_balancers || load_balancers.empty?
       load_balancers.load_balancers.each do |l|
         alb_rows += [{ availability_zones:       l.availability_zones,
                        zone_names:               l.availability_zones.map(&:zone_name),

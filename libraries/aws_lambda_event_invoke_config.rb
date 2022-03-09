@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaEventInvokeConfig < AwsResourceBase
   name 'aws_lambda_event_invoke_config'
   desc 'Retrieves the configuration for asynchronous invocation for a function, version, or alias.'
-
   example "
-    describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
+    describe aws_lambda_event_invoke_config(function_name: 'LAMBDA_FUNCTION_NAME') do
       it { should exist }
     end
   "
@@ -35,7 +34,7 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   end
 
   def to_s
-    "Function Name: #{@display_name}"
+    "LAMBDA Function Name: #{@display_name}"
   end
 
   def on_success_destinations

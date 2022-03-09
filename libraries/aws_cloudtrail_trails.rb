@@ -14,7 +14,6 @@ class AwsCloudTrailTrails < AwsResourceBase
   attr_reader :table
 
   def initialize(opts = {})
-    # Call the parent class constructor
     super(opts)
     validate_parameters
     @table = fetch_data

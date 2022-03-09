@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
   name 'aws_ec2_network_insights_analysis'
   desc 'Describes one or more of your network insights analyses.'
-
   example "
-    describe aws_ec2_network_insights_analysis(network_insights_analysis_id: 'NetworkInsightsAnalysisId') do
+    describe aws_ec2_network_insights_analysis(network_insights_analysis_id: 'EC2_NETWORK_INSIGHTS_ANALYSIS_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
   end
 
   def to_s
-    "Network Insights Analysis ID: #{@display_name}"
+    "EC2 Network Insights Analysis ID: #{@display_name}"
   end
 end

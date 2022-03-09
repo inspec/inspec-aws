@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsRdsSnapshotAttributes < AwsResourceBase
   name 'aws_rds_snapshot_attributes'
   desc 'Verifies settings for an RDS snapshot attributes.'
-
   example '
-    describe aws_rds_snapshot_attributes(db_snapshot_identifier: "test") do
+    describe aws_rds_snapshot_attributes(db_snapshot_identifier: "RDS_DB_SNAPSHOT_IDENTIFIER") do
       it { should exist }
     end
   '

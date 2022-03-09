@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSIAMSSHPublicKeys < AwsResourceBase
   name 'aws_iam_ssh_public_keys'
   desc 'Returns information about the SSH public keys associated with the specified IAM user. If none exists, the operation returns an empty list.'
-
   example "
     describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
       it { should exist }

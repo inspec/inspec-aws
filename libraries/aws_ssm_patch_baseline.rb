@@ -5,17 +5,10 @@ require 'aws_backend'
 class AWSSESPatchBaseline < AwsResourceBase
   name 'aws_ssm_patch_baseline'
   desc 'Retrieves information about a patch baseline.'
-
   example "
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       it { should exist }
-    end
-
-    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('baseline_id') { should eq 'BASELINE_ID' }
-    end
-
-    describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
       its('source_names') { should be_empty }
     end
   "
@@ -90,6 +83,6 @@ class AWSSESPatchBaseline < AwsResourceBase
   end
 
   def to_s
-    "Baseline Id: #{@display_name}"
+    "SSM Baseline Id: #{@display_name}"
   end
 end

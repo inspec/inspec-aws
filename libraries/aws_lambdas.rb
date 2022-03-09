@@ -6,10 +6,11 @@ class AwsLambdas < AwsResourceBase
   name 'aws_lambdas'
   desc 'Verifies generic settings for a set of lambdas.'
   example "
-    describe aws_lambdas() do
+    describe aws_lambdas do
       its ('count') { should eq 6}
     end
   "
+
   attr_reader :table
 
   FilterTable.create
@@ -26,7 +27,6 @@ class AwsLambdas < AwsResourceBase
 
   def fetch_data
     lambdas = []
-
     catch_aws_errors do
       returned_lambdas = @aws.lambda_client.list_functions
       return [] if !returned_lambdas || returned_lambdas.empty?
@@ -42,7 +42,6 @@ class AwsLambdas < AwsResourceBase
         }]
       }
     end
-
     @table = lambdas
   end
 

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFSizeConstraintSets < AwsResourceBase
   name 'aws_waf_size_constraint_sets'
   desc 'Describes all the WAF size constraint sets.'
-
   example "
     describe aws_waf_size_constraint_set do
       it { should exist }

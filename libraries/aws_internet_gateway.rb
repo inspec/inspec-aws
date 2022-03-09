@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsInternetGateway < AwsResourceBase
   name 'aws_internet_gateway'
   desc 'Verifies settings for an AWS Internet Gateway.'
-
   example "
-    describe aws_internet_gateway(id: 'igw-abc12450edc87a8bd') do
+    describe aws_internet_gateway(id: 'EC2_INTERNET_GATEWAY_ID') do
       it { should be_attached }
     end
-
-    describe aws_internet_gateway(name: 'my-gateway') do
+    describe aws_internet_gateway(name: 'EC2_INTERNET_GATEWAY_NAME') do
       it { should exist }
     end
   "
@@ -110,6 +108,6 @@ class AwsInternetGateway < AwsResourceBase
   end
 
   def to_s
-    "Internet Gateway #{@display_name}"
+    "EC2 Internet Gateway: #{@display_name}"
   end
 end

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkManagerCustomerGatewayAssociations < AwsResourceBase
   name 'aws_network_manager_customer_gateway_associations'
   desc 'Gets the association information for customer gateways that are associated with devices and links in your global network.'
-
   example "
-    describe aws_network_manager_customer_gateway_associations(global_network_id: 'GlobalNetworkID') do
+    describe aws_network_manager_customer_gateway_associations(global_network_id: 'NETWORK_MANAGER_GLOBAL_NETWORK_ID') do
       it { should exist }
     end
   "

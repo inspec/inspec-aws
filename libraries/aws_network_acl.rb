@@ -8,11 +8,10 @@ class AwsNetworkACL < AwsResourceBase
   name 'aws_network_acl'
   desc 'Verifies settings for a single AWS Network ACL'
   example "
-   describe aws_network_acl(network_acl_id: '014aef8a0689b8f43') do
+   describe aws_network_acl(network_acl_id: 'EC2_NETWORK_ACL_ID') do
      it { should exist }
    end
-
-   describe aws_network_acl('014aef8a0689b8f43') do
+   describe aws_network_acl('EC2_NETWORK_ACL_ID') do
      it { should exist }
    end
   "
@@ -85,7 +84,7 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def to_s
-    "Network ACL ID: #{@opts[:network_acl_id]}"
+    "EC2 Network ACL ID: #{@opts[:network_acl_id]}"
   end
 
   private

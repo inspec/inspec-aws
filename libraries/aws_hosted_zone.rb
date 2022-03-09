@@ -5,13 +5,12 @@ require 'aws_backend'
 class AwsHostedZone < AwsResourceBase
   name 'aws_hosted_zone'
   desc 'Verifies hosted zone settings are correct.'
-
   example "
-    describe aws_hosted_zone('zone-name') do
+    describe aws_hosted_zone('HOSTED_ZONE_NAME') do
       it { should exist }
       its ('name_servers.count') { should eq 4 }
       its ('private_zone') { should be false }
-      its ('record_names') { should include 'sid-james.carry-on.films.com' }
+      its ('record_names') { should include 'RECORD_NAME' }
     end
   "
 
@@ -29,13 +28,9 @@ class AwsHostedZone < AwsResourceBase
   def initialize(opts = {})
     opts = { zone_name: opts } if opts.is_a?(String)
     super(opts)
-
     validate_parameters(required: [:zone_name])
-
     get_zone_id(opts[:zone_name])
-
     get_zone_details(@id) if !@id.nil?
-
     get_zone_record(@id) if !@id.nil?
   end
 

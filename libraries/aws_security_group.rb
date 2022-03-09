@@ -12,6 +12,7 @@ class AwsSecurityGroup < AwsResourceBase
     it { should exist }
   end
   "
+
   attr_reader :description, :group_id, :group_name, :vpc_id, :inbound_rules, :outbound_rules, :inbound_rules_count, :outbound_rules_count, :tags, :resource_data
 
   def initialize(opts = {})

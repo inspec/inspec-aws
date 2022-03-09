@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2SpotFleets < AwsResourceBase
   name 'aws_ec2_spot_fleets'
   desc 'Describes your Spot Fleet requests.'
-
   example "
     describe aws_ec2_spot_fleets do
       it { should exist }

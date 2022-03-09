@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSESReceiptRuleSets < AwsResourceBase
   name 'aws_ses_receipt_rule_sets'
   desc 'Lists the receipt rule sets that exist under your AWS account in the current AWS Region.'
-
   example "
     describe aws_ses_receipt_rule_sets do
       it { should exist }

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsCloudformationStack < AwsResourceBase
   name 'aws_cloudformation_stack'
   desc 'Verifies settings for an aws CloudFormation Stack.'
-
   example "
-    describe aws_cloudformation_stack('stack_name') do
+    describe aws_cloudformation_stack('CLOUD_FORMATION_STACK_NAME') do
       it { should exist }
     end
   "
@@ -56,6 +55,6 @@ class AwsCloudformationStack < AwsResourceBase
   end
 
   def to_s
-    "AWS CloudFormation Stack #{@stack_name}"
+    "Cloud Formation Stack Name: #{@stack_name}"
   end
 end

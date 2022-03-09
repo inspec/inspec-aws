@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSServiceCatalogLaunchRoleConstraints < AwsResourceBase
   name 'aws_servicecatalog_launch_role_constraints'
   desc 'Lists the constraints for the specified portfolio and product.'
-
   example "
     describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
       it { should exist }

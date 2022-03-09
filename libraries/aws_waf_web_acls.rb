@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFWebACLS < AwsResourceBase
   name 'aws_waf_web_acls'
   desc 'Verifies settings for all the Web ACLs.'
-
   example "
     describe aws_waf_web_acls do
       it { should exist }

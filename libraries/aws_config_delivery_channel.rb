@@ -9,7 +9,7 @@ class AwsConfigDeliveryChannel < AwsResourceBase
     describe aws_config_delivery_channel do
       it                    { should exist }
       its('s3_bucket_name') { should eq 'my_bucket' }
-      its('sns_topic_arn')  { should eq arn:aws:sns:us-east-1:721741954427:sns_topic' }
+      its('sns_topic_arn')  { should eq 'SNS_TOPIC_ARN' }
     end
   "
   attr_reader :channel_name, :s3_bucket_name, :s3_key_prefix, :sns_topic_arn, :delivery_frequency_in_hours
@@ -50,6 +50,6 @@ class AwsConfigDeliveryChannel < AwsResourceBase
   end
 
   def to_s
-    "Config Delivery Channel #{@channel_name}"
+    "Config Delivery Channel Name: #{@channel_name}"
   end
 end

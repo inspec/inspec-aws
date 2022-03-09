@@ -5,12 +5,12 @@ require 'aws_backend'
 class AwsTransitGateway < AwsResourceBase
   name 'aws_transit_gateway'
   desc 'Verifies settings for an AWS Transit Gateway.'
-
   example "
-    describe aws_transit_gateway('transit_gateway_id') do
+    describe aws_transit_gateway('EC2_TRANSIT_GATEWAY_ID') do
       it { should exist }
     end
   "
+
   attr_reader :transit_gateway_arn, :transit_gateway_id, :transit_gateway_owner_id,
               :default_route_table_id, :propagation_default_route_table_id,
               :vpn_ecmp_support, :dns_support
@@ -18,7 +18,7 @@ class AwsTransitGateway < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: [:transit_gateway_id])
-
+    @display_name = opts[:transit_gateway_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_transit_gateways(transit_gateway_ids: [opts[:transit_gateway_id]])
       return nil if resp.transit_gateways.nil? || resp.transit_gateways.empty?
@@ -38,6 +38,6 @@ class AwsTransitGateway < AwsResourceBase
   end
 
   def to_s
-    'AWS Transit Gateway'
+    "EC2 Transit Gateway ID: #{@display_name}"
   end
 end

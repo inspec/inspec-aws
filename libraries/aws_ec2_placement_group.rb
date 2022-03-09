@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2PlacementGroup < AwsResourceBase
   name 'aws_ec2_placement_group'
   desc 'Describes the specified placement groups or all of your placement groups.'
-
   example "
-    describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
+    describe aws_ec2_placement_group(placement_group_name: 'EC2_PLACEMENT_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2PlacementGroup < AwsResourceBase
   end
 
   def to_s
-    "Placement Group Name: #{@display_name}"
+    "EC2 Placement Group Name: #{@display_name}"
   end
 end

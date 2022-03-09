@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayResponses < AwsResourceBase
   name 'aws_api_gateway_responses'
   desc 'Retrieves API Gateway Responses.'
-
   example "
-    describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID') do
+    describe aws_api_gateway_responses(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
   "

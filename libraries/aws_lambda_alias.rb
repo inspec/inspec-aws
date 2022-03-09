@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaAlias < AwsResourceBase
   name 'aws_lambda_alias'
   desc 'Retrieves information about a patch baseline.'
-
   example "
-    describe aws_lambda_alias(function_name: 'FUNCTION_NAME', function_alias_name: 'FUNCTION_ALIAS_NAME') do
+    describe aws_lambda_alias(function_name: 'LAMBDA_FUNCTION_NAME', function_alias_name: 'LAMBDA_FUNCTION_ALIAS_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSLambdaAlias < AwsResourceBase
   end
 
   def to_s
-    "Function Alias Name: #{@display_name}"
+    "LAMBDA Function Alias Name: #{@display_name}"
   end
 end

@@ -6,8 +6,8 @@ class AwsLambda < AwsResourceBase
   name 'aws_lambda'
   desc 'Verifies the settings for a set of lambda.'
   example "
-    describe aws_lambda('lambda_fred') do
-      ....
+    describe aws_lambda('LAMBDA_NAME') do
+      it { should exist }
     end
   "
 
@@ -39,6 +39,6 @@ class AwsLambda < AwsResourceBase
   end
 
   def to_s
-    "Lambda #{name}"
+    "Lambda Name: #{name}"
   end
 end

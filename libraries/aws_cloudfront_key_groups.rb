@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsCloudFrontKeyGroups < AwsResourceBase
   name 'aws_cloudfront_key_groups'
   desc 'Describes one or more of Key Group.'
-
   example "
     describe aws_cloudfront_key_groups do
       it { should exist }

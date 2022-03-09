@@ -6,7 +6,7 @@ class AWSTransferUser < AwsResourceBase
   name 'aws_transfer_user'
   desc 'Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property.'
   example "
-    describe aws_transfer_user(server_id: 'test', user_name: 'test') do
+    describe aws_transfer_user(server_id: 'TRANSFER_SERVER_ID', user_name: 'TRANSFER_USERNAME') do
       it { should exist }
     end
   "
@@ -35,6 +35,6 @@ class AWSTransferUser < AwsResourceBase
   end
 
   def to_s
-    "User Name: #{@user_name}"
+    "Transfer Username: #{@user_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudwatchDashboards < AwsResourceBase
   name 'aws_cloudwatch_dashboards'
   desc 'Verifies settings for Cloudwatch Dashboard in bulk.'
-
   example "
     describe aws_cloudwatch_dashboards do
       it { should exist }

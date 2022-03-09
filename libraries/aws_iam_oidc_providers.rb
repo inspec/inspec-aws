@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSIAMOIDCProviders < AwsResourceBase
   name 'aws_iam_oidc_providers'
   desc 'Lists all OIDC Providers.'
-
   example "
     describe aws_iam_oidc_providers do
       it { should exist }

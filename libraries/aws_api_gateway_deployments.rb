@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayDeployments < AwsResourceBase
   name 'aws_api_gateway_deployments'
   desc 'Gets information about a Deployments collection.'
-
   example "
-    describe aws_api_gateway_deployments(rest_api_id: 'rest_api_id') do
+    describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
   "

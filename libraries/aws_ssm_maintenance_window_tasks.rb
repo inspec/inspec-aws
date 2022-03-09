@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSESMaintenanceWindowTasks < AwsResourceBase
   name 'aws_ssm_maintenance_window_tasks'
   desc 'Retrieves a task in the maintenance window.'
-
   example "
-    describe aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID') do
+    describe aws_ssm_maintenance_window_tasks(window_id: 'SSM_MAINTENANCE_WINDOW_ID') do
       it { should exist }
     end
   "

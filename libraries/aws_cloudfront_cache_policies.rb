@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudFrontCachePolicies < AwsResourceBase
   name 'aws_cloudfront_cache_policies'
   desc 'Gets a list of cache policies.'
-
   example "
     describe aws_cloudfront_cache_policies do
       it { should exist }

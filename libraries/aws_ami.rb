@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsAmi < AwsResourceBase
   name 'aws_ami'
   desc 'Verifies settings for an AWS AMI.'
-
   example "
-    describe aws_ami(image_id: 'ami-12345678') do
+    describe aws_ami(image_id: 'AMI_IMAGE_ID') do
       it { should exist }
     end
   "
@@ -17,7 +16,6 @@ class AwsAmi < AwsResourceBase
     super(opts)
     validate_parameters(required: [:image_id])
     @display_name = opts[:image_id]
-
     catch_aws_errors do
       resp = @aws.compute_client.describe_images({ image_ids: [opts[:image_id]] })
       if resp.images.first.nil?
@@ -39,6 +37,6 @@ class AwsAmi < AwsResourceBase
   end
 
   def to_s
-    "AMI ID #{@display_name}"
+    "AMI Image ID: #{@display_name}"
   end
 end

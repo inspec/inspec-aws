@@ -5,13 +5,11 @@ require 'aws_backend'
 class AwsElastiCacheCluster < AwsResourceBase
   name 'aws_elasticache_cluster'
   desc 'Verifies settings for an AWS Elasticache Cluster.'
-
   example "
-    describe aws_elasticache_cluster('my-cluster-001') do
+    describe aws_elasticache_cluster('ELASTIC_CACHE_CLUSTER_ID') do
       it { should be_encrypted_at_transit }
     end
-
-    describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-001') do
+    describe aws_elasticache_cluster(cache_cluster_id: 'ELASTIC_CACHE_CLUSTER_ID') do
       it { should exist }
       its('engine') { should cmp 'redis' }
     end
@@ -82,7 +80,7 @@ class AwsElastiCacheCluster < AwsResourceBase
   end
 
   def to_s
-    "ElastiCache Cluster #{@display_name}"
+    "Elastic Cache Cluster ID: #{@display_name}"
   end
 
   # ElastiCache clusters can have cost tags: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html

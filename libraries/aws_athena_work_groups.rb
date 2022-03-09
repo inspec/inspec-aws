@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSAthenaWorkGroups < AwsResourceBase
   name 'aws_athena_work_groups'
   desc 'Lists available workgroups for the account.'
-
   example "
     describe aws_athena_work_groups do
       it { should exist }

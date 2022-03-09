@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudFrontOriginAccessIdentities < AwsResourceBase
   name 'aws_cloudfront_origin_access_identities'
   desc 'Lists origin access identities.'
-
   example "
     describe aws_cloudfront_origin_access_identities do
       it { should exist }

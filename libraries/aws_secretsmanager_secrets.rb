@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSecretsManagerSecrets < AwsResourceBase
   name 'aws_secretsmanager_secrets'
   desc 'Lists all of the secrets that are stored by Secrets Manager in the AWS account.'
-
   example "
     describe aws_secretsmanager_secrets do
       it { should exist }

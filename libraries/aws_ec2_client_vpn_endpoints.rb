@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2ClientVPNEndpoints < AwsResourceBase
   name 'aws_ec2_client_vpn_endpoints'
   desc 'Describes all the VPN endpoint.'
-
   example "
     describe aws_ec2_client_vpn_endpoints do
       it { should exist }

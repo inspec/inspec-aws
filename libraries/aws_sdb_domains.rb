@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSDBDomains < AwsResourceBase
   name 'aws_sdb_domains'
   desc 'Verifies settings for SDB Domain in bulk.'
-
   example "
     describe aws_sdb_domains do
       it { should exist }

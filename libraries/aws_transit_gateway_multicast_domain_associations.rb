@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
   name 'aws_transit_gateway_multicast_domain_associations'
   desc 'Gets information about the associations for the transit gateway multicast domain.'
-
   example "
-    describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'id') do
+    describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exist }
-    end
-
-    describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'id') do
-      its('transit_gateway_attachment_ids') { should include 'Domain ID' }
+      its('transit_gateway_attachment_ids') { should include 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID' }
     end
   "
 

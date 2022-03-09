@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2EgressOnlyInternetGateways < AwsResourceBase
   name 'aws_ec2_egress_only_internet_gateways'
   desc 'Describes one or more of your egress-only internet gateways.'
-
   example "
     describe aws_ec2_egress_only_internet_gateways do
       it { should exist }

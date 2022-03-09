@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCognitoUserPoolClients < AwsResourceBase
   name 'aws_cognito_userpool_clients'
   desc 'Lists the clients that have been created for the specified user pool.'
-
   example "
-    describe aws_cognito_userpool_clients(user_pool_id: 'test1') do
+    describe aws_cognito_userpool_clients(user_pool_id: 'COGNITO_USER_POOL_ID') do
       its('count') { should eq 3 }
     end
   "

@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
   name 'aws_ec2_vpn_gateway_route_propagation'
   desc 'Describes virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.'
-
   example "
-    describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
+    describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'EC2_ROUTE_TABLE_ID') do
       it { should exist }
-    end
-
-    describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
-      its ('vpn_gateway_id') { should eq 'vpn_gateway_id }
+      its ('vpn_gateway_id') { should eq 'VPN_GATEWAY_ID' }
     end
   "
 
@@ -44,6 +40,6 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
   end
 
   def to_s
-    "Route Table ID: #{@display_name}"
+    "EC2 Route Table ID: #{@display_name}"
   end
 end

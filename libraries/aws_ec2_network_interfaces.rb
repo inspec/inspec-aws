@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2NetworkInterfaces < AwsResourceBase
   name 'aws_ec2_network_interfaces'
   desc 'List all the network interfaces.'
-
   example "
     describe aws_ec2_network_interfaces do
       it { should exist }

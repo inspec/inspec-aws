@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaCodeSigningConfig < AwsResourceBase
   name 'aws_lambda_code_signing_config'
   desc 'Returns information about the specified code signing configuration.'
-
   example "
-    describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do
+    describe aws_lambda_code_signing_config(code_signing_config_arn: 'LAMBDA_CODE_SIGNING_CONFIG_ARN') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSLambdaCodeSigningConfig < AwsResourceBase
   end
 
   def to_s
-    "Code Signing Config ARN: #{@display_name}"
+    "LAMBDA Code Signing Config ARN: #{@display_name}"
   end
 end

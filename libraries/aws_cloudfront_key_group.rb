@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsCloudFrontKeyGroup < AwsResourceBase
   name 'aws_cloudfront_key_group'
   desc 'Describes one Key Group.'
-
   example "
     describe aws_cloudfront_key_group(id: 'KEY_GROUP_ID') do
       it { should exist }
@@ -35,6 +34,6 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
   end
 
   def to_s
-    "Key Group ID: #{@display_name}"
+    "Cloudfront Key Group ID: #{@display_name}"
   end
 end

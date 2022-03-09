@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSAmplifyApps < AwsResourceBase
   name 'aws_amplify_apps'
   desc 'Describes a list of Amplify App.'
-
   example "
     describe aws_amplify_apps do
       it { should exist }

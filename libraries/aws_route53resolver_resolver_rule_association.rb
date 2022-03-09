@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   name 'aws_route53resolver_resolver_rule_association'
   desc 'Gets information about an association between a specified Resolver rule and a VPC.'
-
   example "
     describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
       it { should exist }

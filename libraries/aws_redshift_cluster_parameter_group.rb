@@ -6,7 +6,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   name 'aws_redshift_cluster_parameter_group'
   desc 'Describes a parameter group.'
   example "
-    describe aws_redshift_cluster_parameter_group(parameter_group_name: aws_parameter_group_name) do
+    describe aws_redshift_cluster_parameter_group(parameter_group_name: 'REDSHIFT_CLUSTER_PARAMETER_GROUP_NAME') do
       it { should exist }
     end
   "

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudwatchMetricStream < AwsResourceBase
   name 'aws_cloudwatch_metric_stream'
   desc 'Returns the configuration information and metadata of the specified cloudwatch stream.'
-
   example "
-    describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName') do
+    describe aws_cloudwatch_metric_stream (metric_stream_name: 'CLOUDWATCH_METRIC_STREAM_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSCloudwatchMetricStream < AwsResourceBase
   end
 
   def to_s
-    "Metric Stream Name: #{@display_name}"
+    "Cloudwatch Metric Stream Name: #{@display_name}"
   end
 end

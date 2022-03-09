@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSMQBroker < AwsResourceBase
   name 'aws_mq_broker'
   desc 'Describes a Amazon MQ broker.'
-
   example "
-    describe aws_mq_broker(broker_id: 'test1') do
+    describe aws_mq_broker(broker_id: 'MQ_BROKER_ID') do
       it { should exist }
     end
   "
@@ -33,6 +32,6 @@ class AWSMQBroker < AwsResourceBase
   end
 
   def to_s
-    "Broker ID: #{@display_name}"
+    "MQ Broker ID: #{@display_name}"
   end
 end

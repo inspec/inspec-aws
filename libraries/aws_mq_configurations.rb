@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSMQConfigurations < AwsResourceBase
   name 'aws_mq_configurations'
   desc 'Describes a list of aws mq broker.'
-
   example "
     describe aws_mq_configurations do
       it { should exist }

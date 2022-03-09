@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2PlacementGroups < AwsResourceBase
   name 'aws_ec2_placement_groups'
   desc 'Describes the specified placement groups or all of your placement groups.'
-
   example "
     describe aws_ec2_placement_groups do
       it { should exist }

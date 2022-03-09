@@ -5,13 +5,9 @@ require 'aws_backend'
 class AwsIamPasswordPolicy < AwsResourceBase
   name 'aws_iam_password_policy'
   desc 'Verifies settings for an IAM Password Policy.'
-
   example "
     describe aws_iam_password_policy do
       its('requires_lowercase_characters?') { should be true }
-    end
-
-    describe aws_iam_password_policy do
       its('requires_uppercase_characters?') { should be true }
     end
   "

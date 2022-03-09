@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayRestApi < AwsResourceBase
   name 'aws_api_gateway_restapi'
   desc 'Lists the RestApi resource in the collection.'
-
   example "
-    describe aws_api_gateway_restapi(rest_api_id: 'rest_api_id') do
+    describe aws_api_gateway_restapi(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayRestApi < AwsResourceBase
   end
 
   def to_s
-    "rest_api_id: #{@display_name}"
+    "Rest API ID: #{@display_name}"
   end
 end

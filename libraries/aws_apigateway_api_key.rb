@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayAPIKey < AwsResourceBase
   name 'aws_apigateway_api_key'
   desc 'Gets information about the current ApiKey resource.'
-
   example "
-    describe aws_apigateway_api_key(api_key: 'APIID') do
+    describe aws_apigateway_api_key(api_key: 'REST_API_KEY_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   end
 
   def to_s
-    "API Key: #{@display_name}"
+    "Rest API Key ID: #{@display_name}"
   end
 end

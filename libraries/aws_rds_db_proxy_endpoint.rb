@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSProxyEndpoint < AwsResourceBase
   name 'aws_rds_db_proxy_endpoint'
   desc 'Retrieves information about a patch baseline.'
-
   example "
-    describe aws_rds_db_proxy_endpoint(db_proxy_name: 'DB_PROXY_NAME', db_proxy_endpoint_name: 'DB_PROXY_ENDPOINT_NAME') do
+    describe aws_rds_db_proxy_endpoint(db_proxy_name: 'RDS_DB_PROXY_NAME', db_proxy_endpoint_name: 'RDS_DB_PROXY_ENDPOINT_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSRDSProxyEndpoint < AwsResourceBase
   end
 
   def to_s
-    "DB Proxy Endpoint Name: #{@display_name}"
+    "RDS DB Proxy Endpoint Name: #{@display_name}"
   end
 end

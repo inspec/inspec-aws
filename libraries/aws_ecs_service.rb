@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSECSService < AwsResourceBase
   name 'aws_ecs_service'
   desc 'Describes the specified services running in your cluster.'
-
   example "
-    describe aws_ecs_service(cluster: 'test-cluster', services: 'test1') do
+    describe aws_ecs_service(cluster: 'ECS_CLUSTER_NAME', services: 'ECS_SERVICES') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSECSService < AwsResourceBase
   end
 
   def to_s
-    "Service: #{@display_name}"
+    "ECS Service: #{@display_name}"
   end
 end

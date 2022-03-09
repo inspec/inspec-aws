@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
   name 'aws_cloudwatchlogs_subscription_filters'
   desc 'Describes multiple subscription filter.'
-
   example "
-   describe aws_cloudwatchlogs_subscription_filters(log_group_name: 'LOG_GROUP_NAME') do
+   describe aws_cloudwatchlogs_subscription_filters(log_group_name: 'CLOUDWATCH_LOGS_GROUP_NAME') do
      it { should exist }
    end
   "

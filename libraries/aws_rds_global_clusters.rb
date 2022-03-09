@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRDSGlobalClusters < AwsResourceBase
   name 'aws_rds_global_clusters'
   desc 'Returns information about DB Global Cluster.'
-
   example "
     describe aws_rds_global_clusters do
       it { should exist }

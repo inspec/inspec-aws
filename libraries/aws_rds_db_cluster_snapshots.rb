@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRDSDBClusterSnapShots < AwsResourceBase
   name 'aws_rds_db_cluster_snapshots'
   desc 'Returns information about DB cluster snapshots.'
-
   example "
     describe aws_rds_db_cluster_snapshots do
       it { should exist }

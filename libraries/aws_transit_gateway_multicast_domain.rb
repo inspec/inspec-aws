@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSTransitGatewayMulticastDomain < AwsResourceBase
   name 'aws_transit_gateway_multicast_domain'
   desc 'Describes one or more transit gateway multicast domains.'
-
   example "
-    describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'Domain ID') do
+    describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
       it { should exist }
-    end
-
-    describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'Domain ID') do
-      its('transit_gateway_multicast_domain_id') { should eq 'Domain ID' }
+      its('transit_gateway_multicast_domain_id') { should eq 'EC2_TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID' }
     end
   "
 
@@ -39,6 +35,6 @@ class AWSTransitGatewayMulticastDomain < AwsResourceBase
   end
 
   def to_s
-    "Transit Gateway Multicast Domain ID: #{@display_name}"
+    "EC2 Transit Gateway Multicast Domain ID: #{@display_name}"
   end
 end

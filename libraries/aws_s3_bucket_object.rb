@@ -6,11 +6,12 @@ class AwsS3BucketObject < AwsResourceBase
   name 'aws_s3_bucket_object'
   desc 'Verifies settings for a s3 bucket object.'
   example "
-    describe aws_s3_bucket_object(bucket_name: 'bucket_name', key: 'file_name') do
+    describe aws_s3_bucket_object(bucket_name: 'BUCKET_NAME', key: 'FILE_NAME') do
       it { should exist }
       it { should_not be_public }
     end
   "
+
   attr_reader :bucket_name, :key
 
   def initialize(opts = {})

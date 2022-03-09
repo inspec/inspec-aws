@@ -6,7 +6,7 @@ class AwsConfigurationRecorder < AwsResourceBase
   name 'aws_config_recorder'
   desc 'Verifies settings for AWS Configuration Recorder.'
   example "
-    describe aws_config_recorder('My_Recorder') do
+    describe aws_config_recorder('CONFIG_RECORDER_NAME') do
       it { should exist }
       it { should be_recording }
       it { should be_all_supported }
@@ -67,6 +67,6 @@ class AwsConfigurationRecorder < AwsResourceBase
   end
 
   def to_s
-    opts.key?(:aws_region) ? "Configuration Recorder #{@recorder_name} in #{opts[:aws_region]}" : "Configuration Recorder #{@recorder_name}"
+    opts.key?(:aws_region) ? "Configuration Recorder Name: #{@recorder_name} in #{opts[:aws_region]}" : "Configuration Recorder Name: #{@recorder_name}"
   end
 end

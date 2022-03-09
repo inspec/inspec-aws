@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSAmplifyApp < AwsResourceBase
   name 'aws_amplify_app'
   desc 'Describes a Amplify App.'
-
   example "
-    describe aws_amplify_app(app_id: 'test1') do
+    describe aws_amplify_app(app_id: 'AMPLIFY_APP_ID') do
       it { should exist }
     end
   "

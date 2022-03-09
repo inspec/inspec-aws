@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   name 'aws_application_autoscaling_scaling_policy'
   desc 'Describes the Application AutoScaling scaling policies for the specified service namespace.'
-
   example "
-    describe aws_application_autoscaling_scaling_policy(service_namespace: 'ec2') do
+    describe aws_application_autoscaling_scaling_policy(service_namespace: 'AUTOSCALING_SERVICE_NAMESPACE') do
       it { should exist }
     end
   "
@@ -36,6 +35,6 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   end
 
   def to_s
-    "Service Namespace: #{@display_name}"
+    "Autoscaling Service Namespace: #{@display_name}"
   end
 end

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsCloudFrontDistribution < AwsResourceBase
   name 'aws_cloudfront_distribution'
   desc 'Verifies settings for a CloudFront Distribution.'
-
   example "
-    describe aws_cloudfront_distribution('cloudfront-1') do
+    describe aws_cloudfront_distribution('CLOUDFRONT_DISTRIBUTION_ID') do
       it { should exist }
     end
   "
@@ -115,7 +114,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def to_s
-    "AWS CloudFront Distribution #{@distribution_id}"
+    "CloudFront Distribution ID: #{@distribution_id}"
   end
 
   private

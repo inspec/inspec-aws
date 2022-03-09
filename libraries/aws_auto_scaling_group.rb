@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsAutoScalingGroup < AwsResourceBase
   name 'aws_auto_scaling_group'
   desc 'Verifies settings for an AWS Auto Scaling Group.'
-
   example "
-    describe aws_auto_scaling_group('group-name') do
+    describe aws_auto_scaling_group('AUTO_SCALING_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -52,6 +51,6 @@ class AwsAutoScalingGroup < AwsResourceBase
   end
 
   def to_s
-    "AWS Auto Scaling Group #{@name}"
+    "Auto Scaling Group Name: #{@name}"
   end
 end

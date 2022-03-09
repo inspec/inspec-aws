@@ -7,9 +7,10 @@ class AwsSnsTopics < AwsResourceBase
   desc 'Verifies settings for SNS Topics in bulk.'
   example "
     describe aws_sns_topics do
-      its('topic_arns') { should include 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf' }
+      its('topic_arns') { should include 'SNS_TOPIC_ARN' }
     end
   "
+
   attr_reader :table
 
   FilterTable.create

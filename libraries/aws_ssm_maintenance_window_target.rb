@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSESMaintenanceWindowTarget < AwsResourceBase
   name 'aws_ssm_maintenance_window_target'
   desc 'Retrieves a target in the maintenance window.'
-
   example "
-    describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
+    describe aws_ssm_maintenance_window_target(window_id: 'SSM_MAINTENANCE_WINDOW_ID', window_target_id: 'SSM_MAINTENANCE_WINDOW_TARGET_ID') do
       it { should exist }
     end
   "
@@ -49,6 +48,6 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
   end
 
   def to_s
-    "Window Target Id: #{@display_name}"
+    "SSM Maintenance Window Target Id: #{@display_name}"
   end
 end

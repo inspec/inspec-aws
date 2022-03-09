@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSS3AccessPoints < AwsResourceBase
   name 'aws_s3_access_points'
   desc 'List one or more S3 Access Points.'
-
   example "
-    describe aws_s3_access_points(bucket_name: 'BucketName') do
+    describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
       it { should exits }
     end
   "

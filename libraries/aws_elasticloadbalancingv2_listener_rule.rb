@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener_rule'
   desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
-
   example "
-    describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test') do
+    describe aws_elasticloadbalancingv2_listener_rule(rule_arns: 'ELB2_RULE_ARN') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
   end
 
   def to_s
-    listener_arn
+    "ELB2 Rule ARN: #{@display_name}"
   end
 end

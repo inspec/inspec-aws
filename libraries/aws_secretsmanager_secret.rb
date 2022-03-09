@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSecretsManagerSecret < AwsResourceBase
   name 'aws_secretsmanager_secret'
   desc 'Retrieves the details of a secret.'
-
   example "
-    describe aws_secretsmanager_secret(secret_id: 'value') do
+    describe aws_secretsmanager_secret(secret_id: 'SECRET_ID') do
       it { should exist }
     end
   "

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEc2TrafficMirrorFilter < AwsResourceBase
   name 'aws_ec2_traffic_mirror_filter.md'
   desc 'Describes one or more Traffic Mirror filters.'
-
   example "
-    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'tmf-1234567890') do
+    describe aws_ec2_traffic_mirror_filter_rule(traffic_mirror_filter_id: 'EC2_TRAFFIC_MIRROR_FILTER_ID') do
       it { should exist }
     end
   "

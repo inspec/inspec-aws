@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
   name 'aws_cloudwatchlogs_subscription_filter'
   desc 'Describes single subscription filter.'
-
   example "
-   describe aws_cloudwatchlogs_subscription_filter(log_group_name: 'LOG_GROUP_NAME', filter_name_prefix: 'FILTER_NAME') do
+   describe aws_cloudwatchlogs_subscription_filter(log_group_name: 'CLOUDWATCH_LOGS_GROUP_NAME', filter_name_prefix: 'CLOUDWATCH_LOGS_FILTER_NAME') do
      it { should exist }
    end
   "
@@ -36,6 +35,6 @@ class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
   end
 
   def to_s
-    "Subscription Filter Name: #{@display_name}"
+    "Cloudwatch Logs Subscription Filter Name: #{@display_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCognitoUserPools < AwsResourceBase
   name 'aws_cognito_userpools'
   desc 'Lists the user pools associated with an AWS account.'
-
   example "
     describe aws_cognito_userpools do
       it { should exist }

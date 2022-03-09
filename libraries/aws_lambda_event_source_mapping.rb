@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLambdaEventSourceMapping < AwsResourceBase
   name 'aws_lambda_event_source_mapping'
   desc 'Returns details about an event source mapping.'
-
   example "
-    describe aws_lambda_event_source_mapping(uuid: 'test1') do
+    describe aws_lambda_event_source_mapping(uuid: 'LAMBDA_UUID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
   end
 
   def to_s
-    "UUID: #{@display_name}"
+    "LAMBDA UUID: #{@display_name}"
   end
 end

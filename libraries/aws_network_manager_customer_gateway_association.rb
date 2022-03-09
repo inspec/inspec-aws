@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
   name 'aws_network_manager_customer_gateway_association'
   desc 'Gets the association information for customer gateways that are associated with devices and links in your global network.'
-
   example "
-    describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
+    describe aws_network_manager_customer_gateway_association(global_network_id: 'NETWORK_MANAGER_GLOBAL_NETWORK_ID', customer_gateway_arn: 'NETWORK_MANAGER_CUSTOMER_GATEWAY_ARN') do
       it { should exist }
     end
   "
@@ -37,6 +36,6 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
   end
 
   def to_s
-    "Customer Gateway ARN: #{@display_name}"
+    "Network Manager Customer Gateway ARN: #{@display_name}"
   end
 end

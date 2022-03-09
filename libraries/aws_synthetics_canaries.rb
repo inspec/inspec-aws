@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSyntheticsCanaries < AwsResourceBase
   name 'aws_synthetics_canaries'
   desc 'Lists the canaries.'
-
   example "
     describe aws_synthetics_canaries do
       it { should exist }

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSApiGatewayClientCertificates < AwsResourceBase
   name 'aws_apigateway_client_certificates'
   desc 'Gets a collection of ClientCertificate resources.'
-
   example "
     describe aws_apigateway_client_certificates do
       it { should exist }

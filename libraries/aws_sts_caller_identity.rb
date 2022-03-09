@@ -5,9 +5,8 @@ class AwsStsCallerIdentity < AwsResourceBase
   desc 'Verifies settings for an AWS STS Caller Identity.'
   example "
     describe aws_sts_caller_identity do
-      its('arn') { should match 'arn:aws:iam::.*:user/service-account-inspec' }
+      its('arn') { should match 'STS_CALLER_IDENTITY_ARN' }
     end
-
     describe aws_sts_caller_identity do
       it { should be_govcloud }
     end

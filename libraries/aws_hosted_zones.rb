@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSHostedZones < AwsResourceBase
   name 'aws_hosted_zones'
   desc 'Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account.'
-
   example "
     describe aws_hosted_zones do
       it { should exist }

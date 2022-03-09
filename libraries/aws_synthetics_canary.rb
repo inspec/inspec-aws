@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSSyntheticsCanary < AwsResourceBase
   name 'aws_synthetics_canary'
   desc 'Retrieves complete information about one canary.'
-
   example "
-    describe aws_synthetics_canary(name: 'CANARY_NAME') do
+    describe aws_synthetics_canary(name: 'SYNTHETICS_CANARY_NAME') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSSyntheticsCanary < AwsResourceBase
   end
 
   def to_s
-    "Canary Name: #{@display_name}"
+    "Synthetics Canary Name: #{@display_name}"
   end
 end

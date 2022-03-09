@@ -9,7 +9,6 @@ class AwsRouteTable < AwsResourceBase
     describe aws_route_table(route_table_id: 'rtb-05462d2278326a79c') do
       its('route_table_id') { should cmp 'rtb-05462d2278326a79c' }
     end
-
     describe aws_route_table('rtb-05462d2278326a79c') do
       its('route_table_id') { should cmp 'rtb-05462d2278326a79c' }
     end

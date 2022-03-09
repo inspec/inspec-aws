@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSElasticSearchServiceDomains < AwsResourceBase
   name 'aws_elasticsearchservice_domains'
   desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
-
   example "
     describe aws_elasticsearchservice_domains do
       it { should exist }

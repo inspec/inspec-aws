@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSLambdaCodeSigningConfigs < AwsResourceBase
   name 'aws_lambda_code_signing_configs'
   desc 'Returns a list of code signing configurations.'
-
   example "
     describe aws_lambda_code_signing_configs do
       it { should exist }

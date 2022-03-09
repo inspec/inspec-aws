@@ -4,7 +4,7 @@ class AwsIamRole < AwsResourceBase
   name 'aws_iam_role'
   desc 'Verifies settings for an IAM Role.'
   example "
-    describe aws_iam_role('my-role') do
+    describe aws_iam_role('IAM_ROLE_NAME') do
       it { should exist }
     end
   "
@@ -53,7 +53,7 @@ class AwsIamRole < AwsResourceBase
   end
 
   def to_s
-    "AWS IAM Role #{@role_name}"
+    "IAM Role Name: #{@role_name}"
   end
 
   private

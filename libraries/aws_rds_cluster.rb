@@ -5,12 +5,12 @@ require 'aws_backend'
 class AwsRdsCluster < AwsResourceBase
   name 'aws_rds_cluster'
   desc 'Verifies settings for an RDS Cluster.'
-
   example "
-    describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do
+    describe aws_rds_cluster(db_cluster_identifier: 'RDS_CLUSTER_IDENTIFIER') do
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { db_cluster_identifier: opts } if opts.is_a?(String)
     super(opts)
@@ -56,6 +56,6 @@ class AwsRdsCluster < AwsResourceBase
   end
 
   def to_s
-    "RDS Cluster #{@display_name}"
+    "RDS Cluster Identifier: #{@display_name}"
   end
 end

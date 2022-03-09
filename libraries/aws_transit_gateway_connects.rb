@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSTransitGatewayConnects < AwsResourceBase
   name 'aws_transit_gateway_connects'
   desc 'Describes one or more Connect attachments.'
-
   example "
     describe aws_transit_gateway_connects do
       it { should exist }
-    end
-
-    describe aws_transit_gateway_connects do
-      its('transit_gateway_attachment_ids') { should include 'tgw-attach-1234567890' }
+      its('transit_gateway_attachment_ids') { should include 'EC2_TRANSIT_GATEWAY_ATTACHMENT_ID' }
     end
   "
 

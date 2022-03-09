@@ -6,9 +6,8 @@ require 'json'
 class AwsEmrClusterSecurityConfiguration < AwsResourceBase
   name 'aws_emr_security_configuration'
   desc 'Verifies security configuration for an EMR cluster.'
-
   example "
-    describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
+    describe aws_emr_security_configuration('EMR_SECURITY_CONFIGURATION_NAME') do
       it { should exist }
       its('encryption_at_rest') { should eq true }
       its('encryption_in_transit') { should eq true }
@@ -43,6 +42,6 @@ class AwsEmrClusterSecurityConfiguration < AwsResourceBase
   end
 
   def to_s
-    "AWS EMR Cluster Security Configuration Name: #{@security_configuration_name}"
+    "EMR Cluster Security Configuration Name: #{@security_configuration_name}"
   end
 end

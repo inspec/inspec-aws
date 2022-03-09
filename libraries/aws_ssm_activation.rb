@@ -7,7 +7,7 @@ class AwsSsmActivation < AwsResourceBase
   desc 'Verifies settings for a SSM Activation.'
 
   example "
-    describe aws_ssm_activation(activation_id: 'activation-id') do
+    describe aws_ssm_activation(activation_id: 'SSM_ACTIVATION_ID') do
       it { should exist }
     end
   "

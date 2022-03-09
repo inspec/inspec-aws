@@ -6,7 +6,7 @@ class AwsIamAccessKey < AwsResourceBase
   name 'aws_iam_access_key'
   desc 'Verifies settings for an AWS IAM Access Key.'
   example "
-    describe aws_iam_access_key(username: 'username', access_key_id: 'access-key id') do
+    describe aws_iam_access_key(username: 'IAM_ACCESS_USERNAME', access_key_id: 'IAM_ACCESS_KEY_ID') do
       it                    { should exist }
       it                    { should_not be_active }
       its('create_date')    { should be > Time.now - 365 * 86400 }

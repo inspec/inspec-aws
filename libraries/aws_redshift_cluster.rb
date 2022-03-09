@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsRedshiftCluster < AwsResourceBase
   name 'aws_redshift_cluster'
   desc 'Verifies an Redshift Cluster.'
-
   example "
-    describe aws_redshift_cluster(cluster_identifier: 'test-cluster-id') do
+    describe aws_redshift_cluster(cluster_identifier: 'REDSHIFT_CLUSTER_IDENTIFIER') do
       it { should exist }
     end
   "

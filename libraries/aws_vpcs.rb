@@ -5,15 +5,14 @@ require 'aws_backend'
 class AwsVpcs < AwsResourceBase
   name 'aws_vpcs'
   desc 'Verifies settings for an AWS VPCs in bulk.'
-
   example "
     describe aws_vpcs do
       it { should exist }
     end
   "
+
   attr_reader :table
 
-  # FilterTable setup
   FilterTable.create
              .register_column(:cidr_blocks, field: :cidr_block, style: :simple)
              .register_column(:vpc_ids, field: :vpc_id)

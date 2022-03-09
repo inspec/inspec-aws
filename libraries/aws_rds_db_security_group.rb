@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSDBSecurityGroup < AwsResourceBase
   name 'aws_rds_db_security_group'
   desc 'Returns information about a db security group.'
-
   example "
-    describe aws_rds_db_security_group(db_security_group_name: 'SECURITY_GROUP_NAME') do
+    describe aws_rds_db_security_group(db_security_group_name: 'RDS_SECURITY_GROUP_NAME') do
       it { should exist }
     end
   "
@@ -34,7 +33,7 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
   end
 
   def to_s
-    "DB Security Group Name: #{@display_name}"
+    "RDS DB Security Group Name: #{@display_name}"
   end
 
   def ec2_security_group_statuses

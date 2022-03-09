@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSServiceCatalogPortfolioProductAssociations < AwsResourceBase
   name 'aws_servicecatalog_portfolio_product_associations'
   desc 'Lists all portfolios that the specified product is associated with.'
-
   example "
     describe aws_servicecatalog_portfolio_product_associations(product_id: 'test1') do
       it { should exist }

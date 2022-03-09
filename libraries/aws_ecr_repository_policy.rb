@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEcrPolicy < AwsResourceBase
   name 'aws_ecr_repository_policy'
   desc 'Verifies policy settings for an AWS ECR Repository.'
-
   example "
-    describe aws_ecr_repository_policy(repository_name: 'my-repository') do
+    describe aws_ecr_repository_policy(repository_name: 'ECR_REPOSITORY_NAME') do
       it { should exist }
     end
   "
@@ -48,7 +47,7 @@ class AwsEcrPolicy < AwsResourceBase
   end
 
   def to_s
-    "ECR Policy for #{@repo_name}"
+    "ECR Policy for: #{@repo_name}"
   end
 
   private

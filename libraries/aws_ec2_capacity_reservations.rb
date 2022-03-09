@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEC2CapacityReservations < AwsResourceBase
   name 'aws_ec2_capacity_reservations'
   desc 'Describes one or more of your Capacity Reservations.'
-
   example "
     describe aws_ec2_capacity_reservations do
       it { should exist }

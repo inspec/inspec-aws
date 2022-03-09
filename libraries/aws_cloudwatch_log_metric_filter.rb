@@ -5,13 +5,12 @@ require 'aws_backend'
 class AwsCloudwatchLogMetricFilter < AwsResourceBase
   name 'aws_cloudwatch_log_metric_filter'
   desc 'Verifies individual Cloudwatch Log Metric Filters.'
-
   example "
-  # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
-  # If more than one Filter is returned, an error will be raised.
-  describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
-    it { should exist }
-  end
+    # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
+    # If more than one Filter is returned, an error will be raised.
+    describe aws_cloudwatch_log_metric_filter(filter_name: CLOUDWATCH_FILTER_NAME', log_group_name: 'CLOUDWATCH_LOG_GROUP_NAME') do
+      it { should exist }
+    end
   "
 
   attr_reader :filter_name, :log_group_name, :metric_name, :metric_namespace, :pattern
@@ -55,6 +54,6 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
   end
 
   def to_s
-    "AWS Cloudwatch Log Metric Filter #{@metric_name}"
+    "Cloudwatch Log Metric Filter Name: #{@metric_name}"
   end
 end

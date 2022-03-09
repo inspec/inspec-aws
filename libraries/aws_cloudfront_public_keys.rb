@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSCloudFrontPublicKeys < AwsResourceBase
   name 'aws_cloudfront_public_keys'
   desc 'Lists all Public Keys.'
-
   example "
     describe aws_cloudfront_public_keys do
       it { should exist }

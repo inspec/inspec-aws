@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSNetworkManagerGlobalNetwork < AwsResourceBase
   name 'aws_network_manager_global_network'
   desc 'Describes one or more global networks.'
-
   example "
-    describe aws_network_manager_global_network(global_network_id: 'test1') do
+    describe aws_network_manager_global_network(global_network_id: 'NETWORK_MANAGER_GLOBAL_NETWORK_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSNetworkManagerGlobalNetwork < AwsResourceBase
   end
 
   def to_s
-    "Global Network ID: #{@display_name}"
+    "Network Manager Global Network ID: #{@display_name}"
   end
 end

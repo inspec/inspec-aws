@@ -5,10 +5,11 @@ require 'aws_backend'
 class AWSEc2LaunchTemplate < AwsResourceBase
   name 'aws_ec2_launch_template'
   desc 'Audits Launch Template.'
-  example "describe aws_ec2_launch_template(launch_template_name: 'test-launch-temlate' do
-             it { should exist }
-           end
-"
+  example "
+    describe aws_ec2_launch_template(launch_template_name: 'EC2_LAUNCH_TEMPLATE_NAME') do
+      it { should exist }
+    end
+  "
 
   def initialize(opts = {})
     opts = { launch_template_id: opts } if opts.is_a?(String)
@@ -42,6 +43,6 @@ class AWSEc2LaunchTemplate < AwsResourceBase
   end
 
   def to_s
-    "Launch Template: #{@display_name}"
+    "EC2 Launch Template: #{@display_name}"
   end
 end

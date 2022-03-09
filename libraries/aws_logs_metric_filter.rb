@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSLogsMetricFilter < AwsResourceBase
   name 'aws_logs_metric_filter'
   desc 'Lists the specified metric filters.'
-
   example "
-    describe aws_logs_metric_filter(filter_name: 'FilterName') do
+    describe aws_logs_metric_filter(filter_name: 'CLOUDWATCH_LOGS_FILTER_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSLogsMetricFilter < AwsResourceBase
   end
 
   def to_s
-    "Filter Name: #{@display_name}"
+    "Cloud Watch Logs Filter Name: #{@display_name}"
   end
 end

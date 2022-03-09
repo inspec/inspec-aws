@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayResponse < AwsResourceBase
   name 'aws_api_gateway_response'
   desc 'Retrieves API Gateway Response.'
-
   example "
-    describe aws_api_gateway_response(rest_api_id: 'REST_API_ID', response_type: 'RESPONSE_TYPE') do
+    describe aws_api_gateway_response(rest_api_id: 'REST_API_ID', response_type: 'REST_API_RESPONSE_TYPE') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSApiGatewayResponse < AwsResourceBase
   end
 
   def to_s
-    "Response Type: #{@display_name}"
+    "Rest API Response Type: #{@display_name}"
   end
 end

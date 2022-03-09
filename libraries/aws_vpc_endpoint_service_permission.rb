@@ -6,7 +6,7 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
   name 'aws_vpc_endpoint_service_permission'
   desc 'Describes the principal (service consumers) that are permitted to discover your VPC endpoint service.'
   example "
-    describe aws_vpc_endpoint_service_permission(service_id: 'vpce-svc-04deb776dc2b8e67f', principal: 'arn:aws:iam::112758395563:user/chef-server') do
+    describe aws_vpc_endpoint_service_permission(service_id: 'EC2_VPC_SERVICE_ID', principal: 'EC2_VPC_PRINCIPAL_ARN') do
       it { should exist }
     end
   "

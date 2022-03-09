@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSApiGatewayAccount < AwsResourceBase
   name 'aws_apigateway_account'
   desc 'Gets information about the current Account resource.'
-
   example "
     describe aws_apigateway_account do
       it { should exist }

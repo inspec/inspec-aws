@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsRegions < AwsResourceBase
   name 'aws_regions'
   desc 'Verifies settings for AWS Regions in bulk.'
-
   example "
     describe aws_regions do
       it { should exist }
@@ -30,7 +29,7 @@ class AwsRegions < AwsResourceBase
     catch_aws_errors do
       @regions = @aws.compute_client.describe_regions.to_h[:regions]
     end
-    return [] if !@regions || @regions.empty?
+    return region_rows if !@regions || @regions.empty?
     @regions.each do |region|
       region_rows += [{ region_name: region[:region_name],
                         endpoint: region[:endpoint] }]

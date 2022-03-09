@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSESMaintenanceWindows < AwsResourceBase
   name 'aws_ssm_maintenance_windows'
   desc 'Retrieves the maintenance windows in an Amazon Web Services account.'
-
   example "
     describe aws_ssm_maintenance_windows do
       it { should exist }

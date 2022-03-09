@@ -6,7 +6,7 @@ class AwsKmsKey < AwsResourceBase
   name 'aws_kms_key'
   desc 'Verifies settings for an individual AWS KMS Key.'
   example "
-    describe aws_kms_key(key_id: 'arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
+    describe aws_kms_key(key_id: 'KMS_ID') do
       it { should exist }
     end
   "

@@ -5,14 +5,13 @@ require 'aws_backend'
 class AwsEfsFileSystem < AwsResourceBase
   name 'aws_efs_file_system'
   desc 'Verifies settings for an EFS File System.'
-
   example "
-    describe aws_efs_file_system('fs-12345678') do
+    describe aws_efs_file_system('EFS_FILE_SYSTEM_ID') do
       it                         { should be_encrypted }
       its('size_in_bytes.value') { should cmp 6144 }
     end
 
-    describe aws_efs_file_system(creation_token: 'my-token') do
+    describe aws_efs_file_system(creation_token: 'EFS_CREATION_TOKEN') do
       its('encrypted')       { should cmp true }
       its('throughput_mode') { should eq 'bursting' }
     end
@@ -75,6 +74,6 @@ class AwsEfsFileSystem < AwsResourceBase
   end
 
   def to_s
-    "EFS File System #{@display_name}"
+    "EFS ID: #{@display_name}"
   end
 end

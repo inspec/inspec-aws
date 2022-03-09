@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsS3BucketObjects < AwsResourceBase
   name 'aws_s3_bucket_objects'
   desc 'List all the objects for a particular bucket.'
-
   example "
-    describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
+    describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
   "

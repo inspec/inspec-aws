@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsAutoScalingGroups < AwsResourceBase
   name 'aws_auto_scaling_groups'
   desc 'Verifies settings for a collection AWS Auto Scaling Groups.'
-
   example "
     describe aws_auto_scaling_groups do
       it { should exist }
@@ -35,7 +34,7 @@ class AwsAutoScalingGroups < AwsResourceBase
     config_rows = []
     catch_aws_errors do
       response = @aws.service_client.describe_auto_scaling_groups
-      return [] if !response || response.empty?
+      return config_rows if !response || response.empty?
       response.auto_scaling_groups.each do |group|
         config_rows += [{ name:                     group[:auto_scaling_group_name],
                          min_size:                  group[:min_size].to_i,

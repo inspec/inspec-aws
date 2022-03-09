@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSApiGatewayStages < AwsResourceBase
   name 'aws_api_gateway_stages'
   desc 'Gets information about a Stages collection.'
-
   example "
     describe aws_api_gateway_stages(rest_api_id: 'REST_API_ID') do
       it { should exist }

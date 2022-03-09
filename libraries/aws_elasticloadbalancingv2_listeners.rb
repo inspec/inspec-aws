@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listeners'
   desc 'Lists the clients that have been created for the specified user pool.'
-
   example "
-    describe aws_elasticloadbalancingv2_listeners(load_balancer_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_listeners(load_balancer_arn: 'ELB2_LOAD_BALANCER_ARN') do
       its('count') { should eq 3 }
     end
   "

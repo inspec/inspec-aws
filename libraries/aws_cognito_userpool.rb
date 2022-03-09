@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCognitoUserPool < AwsResourceBase
   name 'aws_cognito_userpool'
   desc 'Returns the configuration information and metadata of the specified user pool.'
-
   example "
-    describe aws_cognito_userpool(user_pool_id: 'test1') do
+    describe aws_cognito_userpool(user_pool_id: 'COGNITO_USER_POOL_ID') do
       it { should exist }
     end
   "
@@ -36,6 +35,6 @@ class AWSCognitoUserPool < AwsResourceBase
   end
 
   def to_s
-    "Job Queue Name: #{@display_name}"
+    "Cognito User Pool ID: #{@display_name}"
   end
 end

@@ -5,10 +5,9 @@ require 'aws_backend'
 class AWSLambdaPermission < AwsResourceBase
   name 'aws_lambda_permission'
   desc 'Returns the resource-based IAM policy for a function, version, or alias.'
-
   example "
-    describe aws_lambda_permission(function_name: 'LambdaFunctionName', Sid: 'StatementID') do
-      its('sid') { should eq 'StatementID' }
+    describe aws_lambda_permission(function_name: 'LAMBDA_FUNCTION_NAME', Sid: 'LAMBDA_StatementID') do
+      its('sid') { should eq 'LAMBDA_StatementID' }
     end
   "
 
@@ -37,6 +36,6 @@ class AWSLambdaPermission < AwsResourceBase
   end
 
   def to_s
-    "Statement ID: #{@statement_id}"
+    "LAMBDA Statement ID: #{@statement_id}"
   end
 end

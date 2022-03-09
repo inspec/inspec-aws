@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFSQLInjectionMatchSets < AwsResourceBase
   name 'aws_waf_sql_injection_match_sets'
   desc 'Verifies settings for all the WAF SQL Injection match set.'
-
   example "
     describe aws_waf_sql_injection_match_sets do
       it { should exist }

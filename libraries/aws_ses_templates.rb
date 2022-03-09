@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSESTemplates < AwsResourceBase
   name 'aws_ses_templates'
   desc 'Lists the email templates present in your Amazon SES account in the current AWS Region.'
-
   example "
     describe aws_ses_templates do
       it { should exist }

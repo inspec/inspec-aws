@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2PrefixList < AwsResourceBase
   name 'aws_ec2_prefix_list'
   desc 'Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.'
-
   example "
-    describe aws_ec2_prefix_list(prefix_list_id: 'test1') do
+    describe aws_ec2_prefix_list(prefix_list_id: 'EC2_PREFIX_LIST_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2PrefixList < AwsResourceBase
   end
 
   def to_s
-    "Prefix List ID: #{@display_name}"
+    "EC2 Prefix List ID: #{@display_name}"
   end
 end

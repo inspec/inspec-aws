@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsIamUser < AwsResourceBase
   name 'aws_iam_user'
   desc 'Verifies settings for an AWS IAM User.'
-
   example "
-    describe aws_iam_user(user_name: 'psmith') do
+    describe aws_iam_user(user_name: 'IAM_USERNAME') do
       it { should exist }
     end
   "

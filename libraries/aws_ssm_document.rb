@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsSsmDocument < AwsResourceBase
   name 'aws_ssm_document'
   desc 'Verifies settings for a SSM Document.'
-
   example "
-    describe aws_ssm_document(name: 'document-name') do
+    describe aws_ssm_document(name: 'SSM_DOCUMENT_NAME') do
       it { should exist }
     end
   "
@@ -36,6 +35,6 @@ class AwsSsmDocument < AwsResourceBase
   end
 
   def to_s
-    "SSM Document Name #{@display_name}"
+    "SSM Document Name: #{@display_name}"
   end
 end

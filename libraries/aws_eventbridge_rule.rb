@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEventBridgeRule < AwsResourceBase
   name 'aws_eventbridge_rule'
   desc 'Describes the specified rule.'
-
   example "
-    describe aws_eventbridge_rule(name: 'test_rule') do
+    describe aws_eventbridge_rule(name: 'EVENT_BRIDGE_RULE_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEventBridgeRule < AwsResourceBase
   end
 
   def to_s
-    "Rule Name: #{@display_name}"
+    "Event Bridge Rule Name: #{@display_name}"
   end
 end

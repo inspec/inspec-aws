@@ -5,14 +5,10 @@ require 'aws_backend'
 class AWSSESPatchBaselines < AwsResourceBase
   name 'aws_ssm_patch_baselines'
   desc 'Lists the patch baselines in your Amazon Web Services account.'
-
   example "
     describe aws_ssm_patch_baselines do
       it { should exist }
-    end
-
-    describe aws_ssm_patch_baselines do
-      its('baseline_ids') { should include BASELINE_ID' }
+      its('baseline_ids') { should include 'BASELINE_ID' }
     end
   "
 

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSRoute53RecordSets < AwsResourceBase
   name 'aws_route53_record_sets'
   desc 'Lists the resource record sets in a specified hosted zone.'
-
   example "
     describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
       it { should exist }

@@ -6,7 +6,7 @@ class AwsS3Bucket < AwsResourceBase
   name 'aws_s3_bucket'
   desc 'Verifies settings for a s3 bucket.'
   example "
-    describe aws_s3_bucket(bucket_name: 'test_bucket') do
+    describe aws_s3_bucket(bucket_name: 'BUCKET_NAME') do
       it { should exist }
     end
   "

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSECSServices < AwsResourceBase
   name 'aws_ecs_services'
   desc 'Lists the services that are running in a specified cluster.'
-
   example "
-    describe aws_ecs_services(cluster: 'cluster_name') do
+    describe aws_ecs_services(cluster: 'ECS_CLUSTER_NAME') do
       it { should exist }
     end
   "

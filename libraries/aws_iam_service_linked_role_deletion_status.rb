@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
   name 'aws_iam_service_linked_role_deletion_status'
   desc 'Retrieves the status of your service-linked role deletion.'
-
   example "
-    describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'test1') do
+    describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'IAM_SERVICE_LINKED_DELETION_TASK_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
   end
 
   def to_s
-    "Deletion Task ID: #{@display_name}"
+    "IAM Service Linked Deletion Task ID: #{@display_name}"
   end
 end

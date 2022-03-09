@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSApiGatewayBasePathMappings < AwsResourceBase
   name 'aws_apigateway_base_path_mappings'
   desc 'Represents a collection of BasePathMapping resources.'
-
   example "
-    describe aws_apigateway_base_path_mappings(domain_name: 'DomainName') do
+    describe aws_apigateway_base_path_mappings(domain_name: 'REST_API_DOMAIN_NAME') do
       it { should exist }
     end
   "

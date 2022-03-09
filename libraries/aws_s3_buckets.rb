@@ -7,7 +7,7 @@ class AwsS3Buckets < AwsResourceBase
   desc 'Verifies settings for AWS S3 Buckets in bulk.'
   example "
     describe aws_s3_bucket do
-      its('bucket_names') { should eq ['my_bucket'] }
+      its('bucket_names') { should eq ['BUCKET_NAME'] }
     end
   "
 

@@ -4,14 +4,12 @@ require 'aws_backend'
 
 class AwsElastiCacheReplicationGroup < AwsResourceBase
   name 'aws_elasticache_replication_group'
-  desc 'Verifies settings for an AWS Elasticache Replication Group'
-
+  desc 'Verifies settings for an AWS Elastic Cache Replication Group.'
   example "
-    describe aws_elasticache_replication_group('my-replication_group-001') do
+    describe aws_elasticache_replication_group('ELASTIC_CACHE_REPLICATION_GROUP_ID') do
       it { should be_encrypted_at_transit }
     end
-
-    describe aws_elasticache_replication_group(replication_group_id: 'my-replication_group-001') do
+    describe aws_elasticache_replication_group(replication_group_id: 'ELASTIC_CACHE_REPLICATION_GROUP_ID') do
       it { should exist }
       its('engine') { should cmp 'redis' }
     end

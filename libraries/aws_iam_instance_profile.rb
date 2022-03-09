@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSIAMInstanceProfile < AwsResourceBase
   name 'aws_iam_instance_profile'
   desc 'Retrieves information about the specified instance profile, including the instance profiles path, GUID, ARN, and role.'
-
   example "
-    describe aws_iam_instance_profile(instance_profile_name: 'test1') do
+    describe aws_iam_instance_profile(instance_profile_name: 'IAM_INSTANCE_PROFILE_NAME') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSIAMInstanceProfile < AwsResourceBase
   end
 
   def to_s
-    "Instance Profile Name: #{@display_name}"
+    "IAM Instance Profile Name: #{@display_name}"
   end
 end

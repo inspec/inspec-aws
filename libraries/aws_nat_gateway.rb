@@ -5,21 +5,17 @@ require 'aws_backend'
 class AwsNatGateway < AwsResourceBase
   name 'aws_nat_gateway'
   desc 'Verifies settings for an AWS NAT Gateway.'
-
   example "
-    describe aws_nat_gateway(id: 'nat-11aa578bffadf6ba6') do
+    describe aws_nat_gateway(id: 'EC2_NAT_GATEWAY_ID') do
       it { should exist }
     end
-
-    describe aws_nat_gateway(vpc_id: 'vpc-11aa578bccadf6b77') do
+    describe aws_nat_gateway(vpc_id: 'EC2_NAT_GATEWAY_VPC_ID') do
       it { should exist }
     end
-
-    describe aws_nat_gateway(name: 'my-nat-gateway') do
+    describe aws_nat_gateway(name: 'EC2_NAT_GATEWAY_NAME') do
       it { should exist }
     end
-
-    describe aws_nat_gateway(subnet_id: 'subnet-00bbde2bccada6b33') do
+    describe aws_nat_gateway(subnet_id: 'EC2_NAT_GATEWAY_SUBNET_ID') do
       it { should exist }
     end
   "
@@ -81,6 +77,6 @@ class AwsNatGateway < AwsResourceBase
   end
 
   def to_s
-    "NAT Gateway #{@display_name}"
+    "EC2 NAT Gateway: #{@display_name}"
   end
 end

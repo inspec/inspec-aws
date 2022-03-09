@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener_rules'
   desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
-
   example "
-    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
+    describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'ELB2_LISTENER_ARN') do
       its('count') { should eq 3 }
     end
   "

@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEksCluster < AwsResourceBase
   name 'aws_eks_cluster'
   desc 'Verifies settings for an EKS cluster.'
-
   example "
-    describe aws_eks_cluster('cluster-name') do
+    describe aws_eks_cluster('EKS_CLUSTER_NAME') do
       it { should exist }
     end
   "
@@ -45,7 +44,7 @@ class AwsEksCluster < AwsResourceBase
   end
 
   def to_s
-    "AWS EKS Cluster #{@name}"
+    "EKS Cluster Name: #{@name}"
   end
 
   private

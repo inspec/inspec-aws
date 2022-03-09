@@ -5,9 +5,8 @@ require 'aws_backend'
 class AwsEc2TransitGatewayRouteTable < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_table'
   desc 'Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.'
-
   example "
-    describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-0123456789') do
+    describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
   end
 
   def to_s
-    "Transit gateway route table #{@display_name}"
+    "EC2 Transit gateway route table #{@display_name}"
   end
 end

@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSSNSSubscriptions < AwsResourceBase
   name 'aws_sns_subscriptions'
   desc 'Verifies setting for a SNS Subscriptions.'
-
   example "
     describe aws_sns_subscriptions do
       it { should exist }

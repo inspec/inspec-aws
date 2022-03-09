@@ -6,7 +6,7 @@ class AwsShieldSubscription < AwsResourceBase
   name 'aws_shield_subscription'
   desc 'Verifies settings for a Shield Subscription.'
   example "
-    describe aws_shield_subscription() do
+    describe aws_shield_subscription do
       it { should exist }
     end
   "

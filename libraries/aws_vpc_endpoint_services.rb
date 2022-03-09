@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsVPCEndpointServices < AwsResourceBase
   name 'aws_vpc_endpoint_services'
   desc 'Verifies settings for a collection of AWS VPC End Point Services.'
-
   example "
     describe aws_vpc_endpoint_services do
       its('count') { should eq 3 }

@@ -5,11 +5,9 @@ require 'aws_backend'
 class AWSEC2VPCPeeringConnections < AwsResourceBase
   name 'aws_ec2_vpc_peering_connections'
   desc 'Describes a vpc peering connection.'
-
   example "
     describe aws_ec2_vpc_peering_connections do
       it { should exist }
-    end
   "
 
   attr_reader :table

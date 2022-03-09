@@ -5,12 +5,10 @@ require 'aws_backend'
 class AwsEc2Eip < AwsResourceBase
   name 'aws_ec2_eip'
   desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
-
   example "
     describe aws_ec2_eip(public_ip: '192.0.2.0') do
       its('public_ip') { should eq '192.0.2.0' }
     end
-
     describe aws_ec2_eip('192.0.2.0') do
       it { should exits }
     end

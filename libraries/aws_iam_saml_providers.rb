@@ -10,6 +10,7 @@ class AwsIamSamlProviders < AwsResourceBase
       it { should exist }
     end
   "
+
   supports platform: 'aws'
 
   attr_reader :table
@@ -42,6 +43,6 @@ class AwsIamSamlProviders < AwsResourceBase
   end
 
   def to_s
-    'AWS IAM SAML Providers'
+    'IAM SAML Providers'
   end
 end

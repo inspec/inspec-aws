@@ -4,12 +4,11 @@ require 'aws_backend'
 
 class AwsElastiCacheReplicationGroups < AwsResourceBase
   name 'aws_elasticache_replication_groups'
-  desc 'Verifies settings for a collection of AWS Replication Groups'
+  desc 'Verifies settings for a collection of AWS Replication Groups.'
   example "
     describe aws_elasticache_replication_groups do
       its('count') { should eq 3 }
     end
-
     # Iterate through all clusters
     aws_elasticache_replication_groups.ids.each do |replication_group_id|
       describe aws_elasticache_replication_group(replication_group_id) do

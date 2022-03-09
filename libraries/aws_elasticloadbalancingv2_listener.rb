@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSElasticLoadBalancingV2Listener < AwsResourceBase
   name 'aws_elasticloadbalancingv2_listener'
   desc 'Returns information about the endpoints for your account in the current region.'
-
   example "
-    describe aws_elasticloadbalancingv2_listener(listener_arn: 'test') do
+    describe aws_elasticloadbalancingv2_listener(listener_arn: 'ELB2_LISTENER_ARN') do
       it { should exist }
     end
   "
@@ -34,6 +33,6 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
   end
 
   def to_s
-    "Listener ARN: #{@display_name}"
+    "ELB2 Listener ARN: #{@display_name}"
   end
 end

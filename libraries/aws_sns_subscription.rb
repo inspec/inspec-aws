@@ -6,12 +6,12 @@ class AwsSnsSubscription < AwsResourceBase
   name 'aws_sns_subscription'
   desc 'Verifies settings for a SNS Subscription.'
   example "
-    describe aws_sns_subscription('arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6') do
+    describe aws_sns_subscription('SNS_SUBSCRIPTION_ARN') do
       it               { should_not have_raw_message_delivery }
       it               { should be_confirmation_authenticated }
       its('owner')     { should cmp '12345678' }
-      its('topic_arn') { should cmp 'arn:aws:sns:us-east-1::test-topic-01' }
-      its('endpoint')  { should cmp 'arn:aws:sqs:us-east-1::test-queue-01' }
+      its('topic_arn') { should cmp 'SNS_TOPIC_ARN' }
+      its('endpoint')  { should cmp 'SNS_ENDPOINT' }
       its('protocol')  { should cmp 'sqs' }
     end
   "

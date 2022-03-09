@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSRDSDBClusterSnapShot < AwsResourceBase
   name 'aws_rds_db_cluster_snapshot'
   desc 'Returns information about DB cluster snapshots.'
-
   example "
-    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: 'DBSnapshotID') do
+    describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: 'RDS_DB_CLUSTER_SNAPSHOT_ID') do
       it { should exist }
     end
   "
@@ -41,6 +40,6 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
   end
 
   def to_s
-    "RDS DB Snapshot ID: #{@display_name}"
+    "RDS DB Cluster Snapshot ID: #{@display_name}"
   end
 end

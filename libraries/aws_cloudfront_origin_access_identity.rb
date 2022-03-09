@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCloudFrontOriginAccessIdentity < AwsResourceBase
   name 'aws_cloudfront_origin_access_identity'
   desc 'Get the information about an origin access identity.'
-
   example "
-    describe aws_cloudfront_origin_access_identity(id: 'ID') do
+    describe aws_cloudfront_origin_access_identity(id: 'CLOUDFRONT_ORIGIN_ACCESS_IDENTITY_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSCloudFrontOriginAccessIdentity < AwsResourceBase
   end
 
   def to_s
-    "ID: #{@display_name}"
+    "Cloudfront Origin Access Identity ID: #{@display_name}"
   end
 end

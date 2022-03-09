@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSWAFRule < AwsResourceBase
   name 'aws_waf_rule'
   desc 'Describes one WAF rule.'
-
   example "
     describe aws_waf_rule(rule_id: 'RULE_ID') do
       it { should exits }

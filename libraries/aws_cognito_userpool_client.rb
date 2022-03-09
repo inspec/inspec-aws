@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSCognitoUserPoolClient < AwsResourceBase
   name 'aws_cognito_userpool_client'
   desc 'Client method for returning the configuration information and metadata of the specified user pool app client.'
-
   example "
-    describe aws_cognito_userpool_client(user_pool_id: 'test1', client_id: 'test1') do
+    describe aws_cognito_userpool_client(user_pool_id: 'COGNITO_USER_POOL_ID', client_id: 'COGNITO_CLIENT_ID') do
       it { should exist }
     end
   "
@@ -16,6 +15,7 @@ class AWSCognitoUserPoolClient < AwsResourceBase
     opts = { user_pool_id: opts, client_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(user_pool_id client_id))
+    @display_name = opts[:client_id]
     catch_aws_errors do
       resp = @aws.cognitoidentityprovider_client.describe_user_pool_client({ user_pool_id: opts[:user_pool_id], client_id: opts[:client_id] })
       @user_pool_client = resp.user_pool_client.to_h
@@ -33,6 +33,6 @@ class AWSCognitoUserPoolClient < AwsResourceBase
   end
 
   def to_s
-    "User Pool ID: #{@display_name}"
+    "Cognito User Pool Client ID: #{@display_name}"
   end
 end

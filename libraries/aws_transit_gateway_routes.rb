@@ -7,13 +7,11 @@ class AwsTransitGatewayRoutes < AwsResourceBase
   SUPPORTED_FILTER_PARAMS = %i(exact_match longest_prefix_match subnet_of_match supernet_of_match).freeze
   name 'aws_transit_gateway_routes'
   desc 'Verifies settings for list of AWS Transit Gateways.'
-
   example "
-    describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589') do
+    describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
       it { should exist }
     end
-
-    describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', exact_match: '0.0.0.0/16') do
+    describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'EC2_TRANSIT_GATEWAY_ROUTE_TABLE_ID', exact_match: '0.0.0.0/16') do
       it { should exist }
     end
   "

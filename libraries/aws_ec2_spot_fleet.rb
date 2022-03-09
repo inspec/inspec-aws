@@ -5,9 +5,8 @@ require 'aws_backend'
 class AWSEC2SpotFleet < AwsResourceBase
   name 'aws_ec2_spot_fleet'
   desc 'Describes your Spot Fleet requests.'
-
   example "
-    describe aws_ec2_spot_fleet(spot_fleet_request_id: 'SpotFleetRequestID') do
+    describe aws_ec2_spot_fleet(spot_fleet_request_id: 'EC2_SPOT_FLEET_REQUEST_ID') do
       it { should exist }
     end
   "
@@ -35,6 +34,6 @@ class AWSEC2SpotFleet < AwsResourceBase
   end
 
   def to_s
-    "Spot Fleet Request ID: #{@display_name}"
+    "EC2 Spot Fleet Request ID: #{@display_name}"
   end
 end

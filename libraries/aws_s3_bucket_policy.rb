@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSS3BucketPolicy < AwsResourceBase
   name 'aws_s3_bucket_policy'
   desc 'Retrieves the policy of a specified S3 Bucket.'
-
   example "
     describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
       it { should exist }

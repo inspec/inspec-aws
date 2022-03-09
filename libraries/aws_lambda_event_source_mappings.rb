@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSLambdaEventSourceMappings < AwsResourceBase
   name 'aws_lambda_event_source_mappings'
   desc 'Lists event source mappings.'
-
   example "
     describe aws_lambda_event_source_mappings do
       it { should exist }
