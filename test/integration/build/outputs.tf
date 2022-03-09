@@ -1733,3 +1733,145 @@ output "aws_api_gateway_gateway_response_id" {
 output "aws_api_gateway_gateway_response_response_type" {
   value = aws_api_gateway_gateway_response.test.response_type
 }
+
+output "aws_api_gateway_resource_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+}
+
+output "aws_api_gateway_resource_rest_api_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.rest_api_id
+}
+
+output "aws_api_gateway_resource_parent_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.parent_id
+}
+
+output "aws_api_gateway_resource_path_part" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.path_part
+}
+
+output "aws_api_gateway_resource_path" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.path
+}
+
+output "aws_api_gateway_resource_status" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.status
+}
+
+output "aws_api_gateway_request_validator_id" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.id
+}
+
+output "aws_api_gateway_request_validator_name" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.name
+}
+
+output "aws_api_gateway_request_validator_rest_api_id" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.rest_api_id
+}
+
+output "aws_api_gateway_request_validator_validate_request_body" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.validate_request_body
+}
+
+output "aws_api_gateway_request_validator_validate_request_parameters" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.validate_request_parameters
+}
+
+// API Gateway VPC Link
+
+resource "aws_default_subnet" "aws_default_subnet_rest_api_test" {
+  availability_zone = "us-east-2a"
+
+  tags = {
+    Name = "DefaultSubnet"
+  }
+}
+
+resource "aws_lb" "aws_lb_rest_api_test" {
+  name               = "example"
+  internal           = true
+  load_balancer_type = "network"
+
+  subnet_mapping {
+    subnet_id = aws_default_subnet.aws_default_subnet_rest_api_test.id
+  }
+}
+
+resource "aws_api_gateway_vpc_link" "aws_api_gateway_vpc_link_test" {
+  name        = "example"
+  description = "example description"
+  target_arns = [aws_lb.aws_lb_rest_api_test.arn]
+}
+
+output "aws_api_gateway_vpc_link_id" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.id
+}
+
+output "aws_api_gateway_vpc_link_name" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.name
+}
+
+output "aws_api_gateway_vpc_link_description" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.description
+}
+
+output "aws_api_gateway_vpc_link_target_arns" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.target_arns
+}
+
+output "aws_api_gateway_usage_plan_id" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.id
+}
+
+output "aws_api_gateway_usage_plan_name" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.name
+}
+
+output "aws_api_gateway_usage_plan_description" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.description
+}
+
+output "aws_api_gateway_usage_plan_product_code" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.product_code
+}
+
+output "aws_api_gateway_usage_plan_api_stages" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.api_stages
+}
+
+output "aws_api_gateway_usage_plan_quota_settings" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.quota_settings
+}
+
+output "aws_api_gateway_usage_plan_throttle_settings" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.throttle_settings
+}
+
+output "aws_api_gateway_usage_plan_arn" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.arn
+}
+
+output "aws_api_gateway_api_key_name" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test.name
+}
+
+output "aws_api_gateway_usage_plan_key_id" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.id
+}
+
+output "aws_api_gateway_usage_plan_key_key_type" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.key_type
+}
+
+output "aws_api_gateway_usage_plan_key_usage_plan_id" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.usage_plan_id
+}
+
+output "aws_api_gateway_usage_plan_key_name" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.name
+}
+
+output "aws_api_gateway_usage_plan_key_value" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.value
+}
