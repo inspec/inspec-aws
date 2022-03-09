@@ -11,9 +11,11 @@ We use [Hugo](https://gohugo.io/) to incorporate documentation from this reposit
 
 All resource pages are located in `docs-chef-io/content/inspec/resources/`.
 
-Create a new page by duplicating an old page and then update the new page with content relevant to the new resource.
+### New Pages
 
-You can also run `hugo new -k resource inspec/resources/RESOURCE_NAME.md` to generate a new resource page from scratch.
+Make a new resource page by running `hugo new -k resource inspec/resources/RESOURCE_NAME.md` from the `docs-chef-io` directory.
+
+You can also create a new page by duplicating an old page and then update the new page with content relevant to the new resource.
 
 See our [style guide](https://docs.chef.io/style_index/) for suggestions on writing documentation.
 
@@ -74,7 +76,7 @@ which will render the following text:
 
 The chef/chef-web-docs repository uses the `release-dates.json` file in `docs-chef-io/assets/release-notes/inspec-aws` to generate release notes on <https://docs.chef.io/release_notes_inspec_aws/>. See below for more information on release notes for inspec-aws.
 
-## Update the InSpec Repository Module In `chef/chef-web-docs`
+## Update the InSpec AWS Repository Module In `chef/chef-web-docs`
 
 We use [Hugo modules](https://gohugo.io/hugo-modules/) to build Chef's documentation
 from multiple repositories.
