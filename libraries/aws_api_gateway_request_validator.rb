@@ -26,7 +26,7 @@ class AWSApiGatewayRequestValidator < AwsResourceBase
   end
 
   def exists?
-    !@res.nil? && !@res.empty?
+   @res.blank?
   end
 
   def request_validator_id
