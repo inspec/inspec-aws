@@ -106,7 +106,7 @@ For additional information, see [the API reference documentation](https://docs.a
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+{{% inspec_matchers_link %}}
 
 ### be_available
 

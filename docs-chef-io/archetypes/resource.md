@@ -1,19 +1,18 @@
 +++
-title = "{{ .Name | humanize | title }} resource"
+title = "{{ .Name }} resource"
 draft = false
 gh_repo = "inspec"
 platform = "aws"
 
 [menu]
   [menu.inspec]
-    title = "{{ .Name | humanize | title }}"
+    title = "{{ .Name }}"
     identifier = "inspec/resources/aws/{{ .Name | humanize | title }}"
     parent = "inspec/resources/aws"
 +++
+{{/* Run `hugo new -k resource inspec/resources/RESOURCE_NAME.md` to generate a new resource page. */}}
 
-{{% Run `hugo new -k resource inspec/resources/RESOURCE_NAME.md` to generate a new resource page. %}}
-
-Use the `RESOURCE_NAME` Chef InSpec audit resource to test the configuration of...
+Use the `{{ .Name }}` Chef InSpec audit resource to test the configuration of...
 
 For additional information, including details on parameters and properties, see the [AWS documentation on the `AWS::RESOURCE::NAME` resource]().
 
@@ -24,7 +23,7 @@ For additional information, including details on parameters and properties, see 
 ## Syntax
 
 ```ruby
-describe RESOURCE do
+describe {{ .Name }} do
   #...
 end
 ```
@@ -50,7 +49,7 @@ end
 **EXAMPLE DESCRIPTION**
 
 ```ruby
-describe RESOURCE do
+describe {{ .Name }} do
   #...
 end
 ```
@@ -58,14 +57,14 @@ end
 **EXAMPLE DESCRIPTION**
 
 ```ruby
-describe RESOURCE do
+describe {{ .Name }} do
   #...
 end
 ```
 
 ## Matchers
 
-For a full list of available matchers, please visit our [Universal Matchers page](https://docs.chef.io/inspec/matchers/).
+{{% inspec_matchers_link %}}
 
 ## AWS Permissions
 
