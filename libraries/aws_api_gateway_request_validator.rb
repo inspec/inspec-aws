@@ -15,8 +15,8 @@ class AWSApiGatewayRequestValidator < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(rest_api_id request_validator_id))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: request_validator_id must be provided" unless opts[:request_validator_id] && !opts[:request_validator_id].empty?
+    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" if opts[:rest_api_id].blank?
+    raise ArgumentError, "#{@__resource_name__}: request_validator_id must be provided" if opts[:request_validator_id].blank?
     @display_name = opts[:request_validator_id]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_request_validator({ rest_api_id: opts[:rest_api_id], request_validator_id: opts[:request_validator_id] })
@@ -26,12 +26,7 @@ class AWSApiGatewayRequestValidator < AwsResourceBase
   end
 
   def exists?
-   @res.blank?
-  end
-
-  def request_validator_id
-    return nil unless exists?
-    @res[:request_validator_id]
+    !@res.blank?
   end
 
   def to_s
