@@ -5,22 +5,20 @@ require 'aws_backend'
 class AwsSqsQueue < AwsResourceBase
   name 'aws_sqs_queue'
   desc 'Verifies settings for an SQS Queue.'
-
   example "
-    describe aws_sqs_queue('queue-name') do
+    describe aws_sqs_queue('queue-arn') do
       it { should exist }
     end
   "
 
   attr_reader :arn, :is_fifo_queue, :visibility_timeout, :maximum_message_size, :message_retention_period, :delay_seconds,
               :receive_message_wait_timeout_seconds, :content_based_deduplication, :redrive_policy, :kms_master_key_id,
-              :kms_data_key_reuse_period_seconds
+              :kms_data_key_reuse_period_seconds, :sqs_managed_enabled
 
   def initialize(opts = {})
     opts = { queue_url: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:queue_url])
-
     catch_aws_errors do
       resp = @aws.sqs_client.get_queue_attributes(queue_url: opts[:queue_url], attribute_names: ['All']).attributes
       @arn                                  = resp['QueueArn']
@@ -34,6 +32,8 @@ class AwsSqsQueue < AwsResourceBase
       @redrive_policy                       = resp['RedrivePolicy']
       @kms_master_key_id                    = resp['KmsMasterKeyId']
       @kms_data_key_reuse_period_seconds    = resp['KmsDataKeyReusePeriodSeconds']
+      @sqs_managed_enabled                  = resp['SqsManagedSseEnabled']
+      create_resource_methods(resp.to_h)
     end
   end
 
@@ -42,6 +42,6 @@ class AwsSqsQueue < AwsResourceBase
   end
 
   def to_s
-    "AWS SQS Queue #{@arn}"
+    "SQS Queue ARN: #{@arn}"
   end
 end
