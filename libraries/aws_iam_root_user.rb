@@ -57,6 +57,10 @@ class AwsIamRootUser < AwsResourceBase
     @summary_account['PolicyVersionsInUse'] == 1
   end
 
+  def has_min_users?
+    @summary_account['Users'] == 1
+  end
+
   def to_s
     'AWS Root-User'
   end
