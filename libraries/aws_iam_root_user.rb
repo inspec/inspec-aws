@@ -45,6 +45,18 @@ class AwsIamRootUser < AwsResourceBase
     !@summary_account.empty?
   end
 
+  def has_account_signing_certificate?
+    @summary_account['AccountSigningCertificatesPresent'] == 1
+  end
+
+  def has_MFA_devices_in_use?
+    @summary_account['MFADevicesInUse'] == 1
+  end
+
+  def has_policy_versions_in_use?
+    @summary_account['PolicyVersionsInUse'] == 1
+  end
+
   def to_s
     'AWS Root-User'
   end
