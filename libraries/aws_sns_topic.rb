@@ -9,9 +9,11 @@ class AwsSnsTopic < AwsResourceBase
     describe aws_sns_topic('arn:aws:sns:us-east-1:123456789012:some-topic') do
       it { should exist }
       its('confirmed_subscription_count') { should_not be_zero }
+      its('policy_actions') { should include 'SNS:Subscribe' }
     end
   "
-  attr_reader :arn, :kms_master_key_id, :confirmed_subscription_count
+
+  attr_reader :arn, :kms_master_key_id, :confirmed_subscription_count, :policy_actions
 
   def initialize(opts = {})
     opts = { arn: opts } if opts.is_a?(String)
@@ -26,6 +28,7 @@ class AwsSnsTopic < AwsResourceBase
         resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
         @confirmed_subscription_count = resp['SubscriptionsConfirmed'].to_i
         @kms_master_key_id = resp['KmsMasterKeyId']
+        @policy_actions = JSON.parse(resp['Policy'])["Statement"][0]["Action"]
         create_resource_methods(resp)
       rescue Aws::SNS::Errors::NotFound
         return
@@ -38,6 +41,6 @@ class AwsSnsTopic < AwsResourceBase
   end
 
   def to_s
-    "SNS Topic #{@arn}"
+    "SNS Topic ARN: #{@arn}"
   end
 end
