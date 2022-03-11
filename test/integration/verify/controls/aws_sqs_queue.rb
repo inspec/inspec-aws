@@ -18,8 +18,18 @@ control 'aws-sqs-queue-1.0' do
   title 'Ensure AWS SQS Queue has the correct properties.'
 
   describe aws_sqs_queue(queue_url: aws_sqs_queue_url) do
-    it         { should exist }
+    it { should exist }
     its('arn') { should eq arn }
     its('kms_master_key_id') { should eq kms_master_key_id }
+  end
+end
+
+control 'aws-sqs-queue-1.0' do
+  impact 1.0
+  title 'Ensure AWS SQS Queue has the correct properties.'
+
+  describe aws_sqs_queue(queue_url) do
+    it { should exist }
+    its("SqsManagedSseEnabled") { should eq "true" }
   end
 end
