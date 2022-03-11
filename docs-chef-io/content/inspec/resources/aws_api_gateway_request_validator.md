@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_request_validator Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_request_validator` InSpec audit resource to test properties of a single API Gateway Request Validator.
+Use the `aws_api_gateway_request_validator` InSpec audit resource to test the properties of a single API Gateway request validator.
 
-The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming requests to your API.
+The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming integration requests to your API.
 
 For additional information, including details on parameters and properties, see the [AWS APIGateway RequestValidator documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-requestvalidator.html).
 
@@ -21,7 +21,7 @@ For additional information, including details on parameters and properties, see 
 Ensure that an API Gateway request validator exists.
 
 ```ruby
-describe aws_api_gateway_request_validator(rest_api_id: 'REST_API_ID', request_validator_id: 'REST_API_REQUEST_VALIDATOR_ID') do
+describe aws_api_gateway_request_validator(rest_api_id: 'API_ID', request_validator_id: 'API_REQUEST_ID') do
   it { should exist }
 end
 ```
@@ -30,7 +30,7 @@ end
 
 `rest_api_id` _(required)_
 
-: The string identifier of the associated RestApi.
+: The string identifier of the associated RestApi entity.
 
 `request_validator_id` _(required)_
 
@@ -45,25 +45,25 @@ end
 : The name of this RequestValidator.
 
 `validate_request_body`
-: A Boolean flag to indicate whether to validate a request body according to the configured Model schema.
+: A Boolean flag to indicate whether to validate a request body according to the configured model schema for the method (`true`) or not (`false`).
 
 `validate_request_parameters`
-: A Boolean flag to indicate whether to validate request parameters (true) or not (false).
+: A Boolean flag to indicate whether to validate request parameters (`true`) or not (`false`).
 
 ## Examples
 
-**Ensure an request validator id is present.**
+### Test to ensure a request validator ID is present
 
 ```ruby
-describe aws_api_gateway_request_validator(rest_api_id: 'REST_API_ID', request_validator_id: 'REST_API_REQUEST_VALIDATOR_ID') do
-  its('id') { should eq 'REQUEST_VALIDATOR_ID' }
+describe aws_api_gateway_request_validator(rest_api_id: 'API_ID', request_validator_id: 'API_REQUEST_ID') do
+  its('id') { should eq 'REQUEST_ID' }
 end
 ```
 
-**Ensure the request body is `true`**
+### Test to ensure that the request body is 'true'
 
 ```ruby
-describe aws_api_gateway_request_validator(rest_api_id: 'REST_API_ID', request_validator_id: 'REST_API_REQUEST_VALIDATOR_ID') do
+describe aws_api_gateway_request_validator(rest_api_id: 'API_ID', request_validator_id: 'API_REQUEST_ID') do
     its('validate_request_body') { should eq true }
 end
 ```
@@ -72,14 +72,14 @@ end
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
 ```ruby
-describe aws_api_gateway_request_validator(rest_api_id: 'REST_API_ID', request_validator_id: 'REST_API_REQUEST_VALIDATOR_ID') do
+describe aws_api_gateway_request_validator(rest_api_id: 'API_ID', request_validator_id: 'API_REQUEST_ID') do
   it { should exist }
 end
 ```
@@ -87,10 +87,9 @@ end
 Use `should_not` to test the entity does not exist.
 
 ```ruby
-describe aws_api_gateway_request_validator(rest_api_id: 'REST_API_ID', request_validator_id: 'REST_API_REQUEST_VALIDATOR_ID') do
+describe aws_api_gateway_request_validator(rest_api_id: 'API_ID', request_validator_id: 'API_REQUEST_ID') do
   it { should_not exist }
 end
-```
 ```
 
 ## AWS Permissions

@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_request_validators Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_request_validators` Chef InSpec audit resource to test properties of multiple AWS API Gateway Request Validators.
+Use the `aws_api_gateway_request_validators` Chef InSpec audit resource to the test properties of multiple AWS API Gateway request validators.
 
 The AWS::ApiGateway::RequestValidator resource sets up basic validation rules for incoming requests to your API.
 
@@ -21,7 +21,7 @@ For additional information, including details on parameters and properties, see 
 Ensure that an API Gateway request validator exists.
 
 ```ruby
-describe aws_api_gateway_request_validators(rest_api_id: 'REST_API_ID') do
+describe aws_api_gateway_request_validators(rest_api_id: 'API_ID') do
   it { should exist }
 end
 ```
@@ -45,29 +45,29 @@ end
 : **Field**: `name`
 
 `validate_request_body`
-: A Boolean flag to indicate whether to validate a request body according to the configured Model schema.
+: A Boolean flag to indicate whether to validate a request body according to the configured model schema.
 
 : **Field**: `validate_request_body`
 
 `validate_request_parameters`
-: A Boolean flag to indicate whether to validate request parameters (true) or not (false).
+: A Boolean flag to indicate whether to validate request parameters (`true`) or not (`false`).
 
 : **Field**: `validate_request_parameters`
 
 ## Examples
 
-**Ensure an request validator id is present.**
+### Test to ensure a request validator ID is present
 
 ```ruby
-describe aws_api_gateway_request_validators(rest_api_id: 'REST_API_ID') do
-  its('ids') { should include 'REQUEST_VALIDATOR_ID' }
+describe aws_api_gateway_request_validators(rest_api_id: 'API_ID') do
+  its('ids') { should include 'REQUEST_ID' }
 end
 ```
 
-**Ensure the request body is `true`**
+### Test to ensure the request body is 'true'
 
 ```ruby
-describe aws_api_gateway_request_validators(rest_api_id: 'REST_API_ID') do
+describe aws_api_gateway_request_validators(rest_api_id: 'API_ID') do
     its('validate_request_bodies') { should include true }
 end
 ```
@@ -76,14 +76,14 @@ end
 
 This InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
 Use `should` to test that the entity exists.
 
 ```ruby
-describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do
+describe aws_api_gateway_method(rest_api_id: 'API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP') do
   it { should exist }
 end
 ```
@@ -91,7 +91,7 @@ end
 Use `should_not` to test the entity does not exist.
 
 ```ruby
-describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do
+describe aws_api_gateway_method(rest_api_id: 'API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP') do
   it { should_not exist }
 end
 ```
@@ -101,7 +101,7 @@ end
 Use `should` to check if the work_group name is available.
 
 ```ruby
-describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do
+describe aws_api_gateway_method(rest_api_id: 'API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP') do
   it { should be_available }
 end
 ```
