@@ -5,16 +5,16 @@ require 'aws_backend'
 class AwsIamUser < AwsResourceBase
   name 'aws_iam_user'
   desc 'Verifies settings for an AWS IAM User.'
-
   example "
-    describe aws_iam_user(user_name: 'psmith') do
+    describe aws_iam_user(user_name: 'test_user_name') do
       it { should exist }
     end
   "
 
   attr_reader :access_keys, :attached_policy_names, :attached_policy_arns,
               :has_console_password, :has_mfa_enabled, :inline_policy_names,
-              :username, :user_arn, :user_id
+              :username, :user_arn, :user_id, :user_path, :user_create_date,
+              :user_password_last_used, :user_permissions_boundary, :user_tags
 
   alias has_mfa_enabled? has_mfa_enabled
   alias has_console_password? has_console_password
@@ -31,9 +31,14 @@ class AwsIamUser < AwsResourceBase
       begin
         # Basic User attributes
         user = iam_client.get_user(username).user
-        @user_arn = user.arn
-        @user_id  = user.user_id
+        @user_path = user.path
         @username = opts[:user_name]
+        @user_id  = user.user_id
+        @user_arn = user.arn
+        @user_create_date  = user.create_date
+        @user_password_last_used  = user.password_last_used
+        @user_permissions_boundary  = user.permissions_boundary
+        @user_tags  = user.tags
 
         # Additional attributes
         @has_console_password = has_password?(username)
