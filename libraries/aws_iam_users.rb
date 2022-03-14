@@ -86,13 +86,8 @@ class AwsIamUsers < AwsResourceBase
     @table = user_rows
   end
 
-  private
-
-  def has_password?(username)
-    @aws.iam_client.get_login_profile(username)
-    true
-  rescue Aws::IAM::Errors::NoSuchEntity
-    false
+  def mfa_devices(username)
+    fetch(client: :iam_client, operation: :list_mfa_devices, kwargs: username).map(&:mfa_devices)
   end
 
   def lazy_load_has_mfa_enabled(row, _condition, _table)
