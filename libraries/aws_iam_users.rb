@@ -58,12 +58,10 @@ class AwsIamUsers < AwsCollectionResourceBase
           attached_policies = iam_client.list_attached_user_policies(username).attached_policies
           inline_policies   = iam_client.list_user_policies(username).policy_names
 
-          password_last_used = u.password_last_used
-          if password_last_used
-            password_last_used_days_ago = ((Time.now - password_last_used) / (24*60*60)).to_i
-          else
-            password_last_used_days_ago = -1 # Never used
-          end
+  def lazy_load_attached_policies(row, _condition, _table)
+    row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: row[:username])
+                                    .flat_map(&:attached_policies)
+  end
 
   def lazy_load_attached_policy_names(row, _condition, _table)
     row[:attached_policy_names] = lazy_load_attached_policies(row, _condition, _table).map { |p| p[:policy_name] }
