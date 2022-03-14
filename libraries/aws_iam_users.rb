@@ -7,7 +7,7 @@ class AwsIamUsers < AwsCollectionResourceBase
   desc 'Verifies settings for a collection of AWS IAM Users.'
 
   example "
-    describe aws_iam_user(user_name: 'psmith') do
+    describe aws_iam_users(user_name: 'psmith') do
       it { should exist }
     end
   "
