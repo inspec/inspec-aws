@@ -91,7 +91,9 @@ end
 
 ## Matchers
 
-This Chef InSpec audit resource has the following special matchers. For a full list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+This Chef InSpec audit resource has the following special matchers.
+
+{{% inspec_matchers_link %}}
 
 The controls will pass if the `get` method returns at least one result.
 

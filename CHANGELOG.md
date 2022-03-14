@@ -1,9 +1,19 @@
-<!-- latest_release 1.81.17 -->
+<!-- latest_release 1.81.19 -->
+## [v1.81.19](https://github.com/inspec/inspec-aws/tree/v1.81.19) (2022-03-14)
+
+#### Merged Pull Requests
+- Add readme content and configs for documentation [#876](https://github.com/inspec/inspec-aws/pull/876) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
+## [v1.81.18](https://github.com/inspec/inspec-aws/tree/v1.81.18) (2022-03-11)
+
+#### Merged Pull Requests
+- Resource 234 aws api gateway request validator [#878](https://github.com/inspec/inspec-aws/pull/878) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.81.17](https://github.com/inspec/inspec-aws/tree/v1.81.17) (2022-02-28)
 
 #### Merged Pull Requests
 - Fix identifier in MD page [#875](https://github.com/inspec/inspec-aws/pull/875) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.81.16](https://github.com/inspec/inspec-aws/tree/v1.81.16) (2022-02-28)
 
