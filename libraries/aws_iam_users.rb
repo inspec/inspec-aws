@@ -55,8 +55,10 @@ class AwsIamUsers < AwsCollectionResourceBase
         users.each do |u|
           username = { user_name: u.arn.split('/').last }
 
-          attached_policies = iam_client.list_attached_user_policies(username).attached_policies
-          inline_policies   = iam_client.list_user_policies(username).policy_names
+  def lazy_load_access_keys(row, _condition, _table)
+    row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: row[:username])
+                        .flat_map(&:access_key_metadata) || []
+  end
 
   def lazy_load_attached_policies(row, _condition, _table)
     row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: row[:username])
