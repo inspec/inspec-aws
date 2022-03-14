@@ -52,8 +52,9 @@ class AwsIamUsers < AwsCollectionResourceBase
 
         return [] if !users || users.empty?
 
-        users.each do |u|
-          username = { user_name: u.arn.split('/').last }
+  def lazy_load_has_console_password(row, _condition, _table)
+    fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username]).present?
+  end
 
   def lazy_load_access_keys(row, _condition, _table)
     row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: row[:username])
