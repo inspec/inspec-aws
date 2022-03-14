@@ -69,12 +69,12 @@ class AwsIamUsers < AwsCollectionResourceBase
                                     .flat_map(&:attached_policies)
   end
 
-  def lazy_load_attached_policy_names(row, _condition, _table)
-    row[:attached_policy_names] = lazy_load_attached_policies(row, _condition, _table).map { |p| p[:policy_name] }
+  def lazy_load_attached_policy_names(row, condition, table)
+    row[:attached_policy_names] = lazy_load_attached_policies(row, condition, table).map { |p| p[:policy_name] }
   end
 
-  def lazy_load_attached_policy_arns(row, _condition, _table)
-    row[:attached_policy_arns] = lazy_load_attached_policies(row, _condition, _table).map { |p| p[:policy_arn] }
+  def lazy_load_attached_policy_arns(row, condition, table)
+    row[:attached_policy_arns] = lazy_load_attached_policies(row, condition, table).map { |p| p[:policy_arn] }
   end
 
   def lazy_load_inline_policies(row, _condition, _table)
@@ -82,8 +82,8 @@ class AwsIamUsers < AwsCollectionResourceBase
                                   .flat_map(&:policy_names)
   end
 
-  def lazy_load_has_inline_policies(row, _condition, _table)
-    row[:has_inline_policies] = lazy_load_inline_policies(row, _condition, _table).present?
+  def lazy_load_has_inline_policies(row, condition, table)
+    row[:has_inline_policies] = lazy_load_inline_policies(row, condition, table).present?
   end
 
   def mfa_devices(username)
