@@ -65,25 +65,21 @@ class AwsIamUsers < AwsCollectionResourceBase
             password_last_used_days_ago = -1 # Never used
           end
 
-          user_rows += [{ username:     username[:user_name],
-                          user_arn:     u.arn,
-                          user_id:      u.user_id,
-                          access_keys:  user_access_keys(username),
-                          has_mfa_enabled:       !iam_client.list_mfa_devices(username).mfa_devices.empty?,
-                          has_attached_policies: !attached_policies.empty?,
-                          attached_policy_names: attached_policies.map { |p| p[:policy_name] },
-                          attached_policy_arns:  attached_policies.map { |p| p[:policy_arn] },
-                          has_inline_policies:   !inline_policies.empty?,
-                          inline_policy_names:   iam_client.list_user_policies(username).policy_names,
-                          password_ever_used?:   !password_last_used.nil?,
-                          password_last_used_days_ago: password_last_used_days_ago,
-                          has_console_password:  has_password?(username) }]
-        end
-      end
-      break if resp.marker.nil?
-      pagination_options = { marker: resp.marker }
-    end
-    @table = user_rows
+  def lazy_load_attached_policy_names(row, _condition, _table)
+    row[:attached_policy_names] = lazy_load_attached_policies(row, _condition, _table).map { |p| p[:policy_name] }
+  end
+
+  def lazy_load_attached_policy_arns(row, _condition, _table)
+    row[:attached_policy_arns] = lazy_load_attached_policies(row, _condition, _table).map { |p| p[:policy_arn] }
+  end
+
+  def lazy_load_inline_policies(row, _condition, _table)
+    row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: row[:username])
+                                  .flat_map(&:policy_names)
+  end
+
+  def lazy_load_has_inline_policies(row, _condition, _table)
+    row[:has_inline_policies] = lazy_load_inline_policies(row, _condition, _table).present?
   end
 
   def mfa_devices(username)
