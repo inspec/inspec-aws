@@ -39,18 +39,21 @@ class AwsIamUsers < AwsCollectionResourceBase
     @table = fetch_data
   end
 
+  private
+
   def fetch_data
-    user_rows = []
-    resp = {}
-    pagination_options = {}
-
-    loop do
-      catch_aws_errors do
-        iam_client = @aws.iam_client
-        resp = iam_client.list_users(pagination_options)
-        users = resp.users
-
-        return [] if !users || users.empty?
+    catch_aws_errors do
+      @aws.iam_client.list_users.flat_map do |response|
+        response.users.each_with_object({}) do |user, hash|
+          hash[:username] = user.arn.split('/').last
+          hash[:user_arn] = user.arn
+          hash[:user_id] = user.user_id
+          hash[:password_ever_used?] = user.password_last_used.present?
+          hash[:password_last_used_days_ago] = ((Time.current - user.password_last_used) / (24*60*60)).to_i
+        end
+      end
+    end
+  end
 
   def lazy_load_has_console_password(row, _condition, _table)
     fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username]).present?
