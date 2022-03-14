@@ -95,9 +95,8 @@ class AwsIamUsers < AwsResourceBase
     false
   end
 
-  def user_access_keys(username)
-    # Return empty array instead if no keys.
-    keys = @aws.iam_client.list_access_keys(username).access_key_metadata
-    [] if keys.empty?
+  def lazy_load_has_mfa_enabled(row, _condition, _table)
+    row[:mfa_devices] ||= mfa_devices(row[:username])
+    row[:has_mfa_enabled] = row[:mfa_devices].present?
   end
 end
