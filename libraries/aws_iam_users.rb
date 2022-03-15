@@ -49,7 +49,7 @@ class AwsIamUsers < AwsCollectionResourceBase
           hash[:user_arn] = user.arn
           hash[:user_id] = user.user_id
           hash[:password_ever_used?] = user.password_last_used.present?
-          hash[:password_last_used_days_ago] = ((Time.current - user.password_last_used) / (24*60*60)).to_i
+          hash[:password_last_used_days_ago] = user.password_last_used.present? ? ((Time.current - user.password_last_used) / (24*60*60)).to_i : 0
         end
       end
     end
