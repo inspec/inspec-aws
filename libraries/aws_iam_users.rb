@@ -14,9 +14,6 @@ class AwsIamUsers < AwsCollectionResourceBase
 
   attr_reader :table
 
-  alias has_mfa_enabled? has_mfa_enabled
-  alias has_console_password? has_console_password
-
   FilterTable.create
              .register_column(:usernames,   field: :username)
              .register_column(:user_arns,   field: :user_arn)
@@ -32,6 +29,9 @@ class AwsIamUsers < AwsCollectionResourceBase
              .register_column(:password_ever_used?,   field: :password_ever_used?)
              .register_column(:password_last_used_days_ago, field: :password_last_used_days_ago)
              .install_filter_methods_on_resource(self, :table)
+
+  alias has_mfa_enabled? has_mfa_enabled
+  alias has_console_password? has_console_password
 
   def initialize(opts = {})
     super(opts)
@@ -56,7 +56,8 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def lazy_load_has_console_password(row, _condition, _table)
-    fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username]).present?
+    row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username])
+                                 .present?
   end
 
   def lazy_load_access_keys(row, _condition, _table)
