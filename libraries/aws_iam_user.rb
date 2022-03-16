@@ -12,12 +12,7 @@ class AwsIamUser < AwsResourceBase
     end
   "
 
-  attr_reader :access_keys, :attached_policy_names, :attached_policy_arns,
-              :has_console_password, :has_mfa_enabled, :inline_policy_names,
-              :username, :user_arn, :user_id
-
-  alias has_mfa_enabled? has_mfa_enabled
-  alias has_console_password? has_console_password
+  attr_reader :username, :user_arn, :user_id
 
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
