@@ -27,6 +27,34 @@ class AwsIamUser < AwsResourceBase
     @username = opts[:user_name]
   end
 
+  def access_keys
+    @access_keys ||= (@aws.iam_client.list_access_keys(user_params).access_key_metadata || [])
+  end
+
+  def has_console_password
+    login_profile.present?
+  end
+
+  alias has_console_password? has_console_password
+
+  def attached_policy_names
+    @attached_policy_names ||= policies.map { |p| p[:policy_name] }
+  end
+
+  def attached_policy_arns
+    @attached_policy_arns ||= policies.map { |p| p[:policy_arn] }
+  end
+
+  def has_mfa_enabled
+    mfa_devices.present?
+  end
+
+  def inline_policy_names
+    @inline_policy_names ||= (iam_client.list_user_policies(user_params).policy_names || [])
+  end
+
+  alias has_mfa_enabled? has_mfa_enabled
+
   def exists?
     !@user_arn.nil?
   end
