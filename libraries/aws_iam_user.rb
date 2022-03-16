@@ -71,9 +71,23 @@ class AwsIamUser < AwsResourceBase
     end
   end
 
-  def user_access_keys(username)
-    # Return empty array instead if no keys.
-    keys = @aws.iam_client.list_access_keys(username).access_key_metadata
-    [] if keys.empty?
+  def policies
+    @policies ||= catch_aws_errors do
+      iam_client.list_attached_user_policies(user_params).attached_policies
+    end || []
+  end
+
+  def mfa_devices
+    @mfa_devices ||= catch_aws_errors do
+      iam_client.list_mfa_devices(user_params).mfa_devices
+    end
+  end
+
+  def user_params
+    { user_name: opts[:user_name] }
+  end
+
+  def iam_client
+    @aws.iam_client
   end
 end
