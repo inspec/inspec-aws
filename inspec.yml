@@ -6,4 +6,5 @@ copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 version: 1.81.19
 license: Apache-2.0
-inspec_version: '>= 4.18.108'
+# lazy_instance support for FilterTable is available only from https://github.com/inspec/inspec/pull/5922 and v4.56.17
+inspec_version: '>= 4.56.17'
