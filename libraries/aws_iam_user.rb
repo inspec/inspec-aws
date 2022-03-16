@@ -19,37 +19,12 @@ class AwsIamUser < AwsResourceBase
     super(opts)
     validate_parameters(required: [:user_name])
 
-    catch_aws_errors do
-      username   = { user_name: opts[:user_name] }
-      iam_client = @aws.iam_client
-
-      begin
-        # Basic User attributes
-        user = iam_client.get_user(username).user
-        @user_arn = user.arn
-        @user_id  = user.user_id
-        @username = opts[:user_name]
-
-        # Additional attributes
-        @has_console_password = has_password?(username)
-        @access_keys          = user_access_keys(username)
-        @has_mfa_enabled      = !iam_client.list_mfa_devices(username).mfa_devices.empty?
-        @inline_policy_names  = iam_client.list_user_policies(username).policy_names
-
-        policies = iam_client.list_attached_user_policies(username).attached_policies
-        @attached_policy_arns  = policies.map { |p| p[:policy_arn] }
-        @attached_policy_names = policies.map { |p| p[:policy_name] }
-      rescue Aws::IAM::Errors::NoSuchEntity
-        # If the requested User does not exist
-        @user_id = nil
-        @user_arn = nil
-
-        @access_keys = []
-        @inline_policy_names = []
-        @attached_policy_arns = []
-        @attached_policy_names = []
-      end
+    user = catch_aws_errors do
+      iam_client.get_user(user_params).user
     end
+    @user_arn = user.arn
+    @user_id  = user.user_id
+    @username = opts[:user_name]
   end
 
   def exists?
