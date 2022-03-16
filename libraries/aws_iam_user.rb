@@ -65,11 +65,10 @@ class AwsIamUser < AwsResourceBase
 
   private
 
-  def has_password?(username)
-    @aws.iam_client.get_login_profile(username)
-    true
-  rescue Aws::IAM::Errors::NoSuchEntity
-    false
+  def login_profile
+    @login_profile ||= catch_aws_errors do
+      iam_client.get_login_profile(user_params)
+    end
   end
 
   def user_access_keys(username)
