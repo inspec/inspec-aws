@@ -1,9 +1,14 @@
-<!-- latest_release 1.82.1 -->
+<!-- latest_release 1.82.2 -->
+## [v1.82.2](https://github.com/inspec/inspec-aws/tree/v1.82.2) (2022-03-21)
+
+#### Merged Pull Requests
+- Resource 221 lazy load iam user [#887](https://github.com/inspec/inspec-aws/pull/887) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.82.1](https://github.com/inspec/inspec-aws/tree/v1.82.1) (2022-03-16)
 
 #### Merged Pull Requests
 - Update docs makefile [#886](https://github.com/inspec/inspec-aws/pull/886) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.82.0](https://github.com/inspec/inspec-aws/tree/v1.82.0) (2022-03-16)
 
