@@ -5,7 +5,7 @@ SHELL=bash
 preview_netlify: chef_web_docs
 	cp -R content/inspec/resources/* chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/content/inspec/resources/
 	cp -R config.toml chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/
-	pushd chef-web-docs && make bundle; hugo --gc --minify --debug -v --buildFuture && popd
+	pushd chef-web-docs && make bundle; hugo --gc --minify --buildFuture --environment preview && popd
 
 
 replace = "replacements = \'github.com/inspec/inspec-aws/docs-chef-io -\> ../../\'\\n\\n"

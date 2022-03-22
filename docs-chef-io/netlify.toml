@@ -12,6 +12,7 @@
 [context.deploy-preview]
   publish = "chef-web-docs/public"
   command = "make preview_netlify"
+  HUGO_ENV = "preview"
 
 [context.production]
   publish = "netlify_production"
