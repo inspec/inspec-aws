@@ -5,7 +5,7 @@ SHELL=bash
 preview_netlify: chef_web_docs
 	cp -R content/inspec/resources/* chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/content/inspec/resources/
 	cp -R config.toml chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/
-	pushd chef-web-docs && make build; hugo --gc --minify --debug -v --buildFuture && popd
+	pushd chef-web-docs && make bundle; hugo --gc --minify --debug -v --buildFuture && popd
 
 
 replace = "replacements = \'github.com/inspec/inspec-aws/docs-chef-io -\> ../../\'\\n\\n"
@@ -15,7 +15,7 @@ serve: chef_web_docs
 	@cat chef-web-docs/config/_default/module.toml >> temp.txt
 	@cat temp.txt > chef-web-docs/config/_default/module.toml
 	rm temp.txt
-	pushd chef-web-docs && make build; hugo server --buildDrafts --buildFuture --noHTTPCache && popd
+	pushd chef-web-docs && make bundle; hugo server --buildDrafts --buildFuture --noHTTPCache && popd
 
 chef_web_docs:
 	if [ -d "chef-web-docs/" ]; then \
