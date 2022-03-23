@@ -46,8 +46,8 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   private
 
   def fetch_data(username)
-    users   = get_users(username)
-    @table  = get_keys(users)
+    @_users = get_users(username)
+    @table = get_keys
   end
 
   # Get details of a single user, if provided.
@@ -78,7 +78,13 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   end
 
   # Given a Hash of Users, build Access Key details for each.
-  def get_keys(users)
+  def get_keys
+    @_users.map do |user|
+      fetch_keys(user.user_name)
+    end
+  end
+
+  def fetch_keys(username)
     catch_aws_errors do
       @aws.iam_client.list_access_keys(user_name: username).flat_map do |response|
         response.access_key_metadata.flat_map do |access_key|
