@@ -6036,3 +6036,120 @@ resource "aws_synthetics_canary" "aws_synthetics_canary_test1" {
 resource "aws_sfn_activity" "aws_sfn_activity_test1" {
   name = "my-activity"
 }
+
+// API Gateway REST API
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+// API Gateway Resource
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.root_resource_id
+  path_part   = "messages"
+}
+
+// API Gateway Request Validator
+
+resource "aws_api_gateway_request_validator" "aws_api_gateway_request_validator_test" {
+  name                  = "apigw-validate-request"
+  rest_api_id           = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  validate_request_body = true
+}
+
+// API Gateway Deployment
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+// API Gateway Stage
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test_development" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "development"
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test_production" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "production"
+}
+
+// API Gateway Usage Plan
+
+resource "aws_api_gateway_usage_plan" "aws_api_gateway_usage_plan_test" {
+  name         = "my-usage-plan"
+  description  = "my description"
+  product_code = "MYCODE"
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+    stage  = aws_api_gateway_stage.aws_api_gateway_stage_test_development.stage_name
+  }
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+    stage  = aws_api_gateway_stage.aws_api_gateway_stage_test_production.stage_name
+  }
+
+  quota_settings {
+    limit  = 20
+    offset = 2
+    period = "WEEK"
+  }
+
+  throttle_settings {
+    burst_limit = 5
+    rate_limit  = 10
+  }
+}
+
+// API Gateway API Key
+
+resource "aws_api_gateway_api_key" "aws_api_gateway_api_key_test" {
+  name = "my_key"
+}
+
+// API Gateway Usage Plan Key
+
+resource "aws_api_gateway_usage_plan_key" "aws_api_gateway_usage_plan_key_test" {
+  key_id        = aws_api_gateway_api_key.aws_api_gateway_api_key_test.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.id
+}
