@@ -28,7 +28,7 @@ class AwsSnsTopic < AwsResourceBase
         resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
         @confirmed_subscription_count = resp['SubscriptionsConfirmed'].to_i
         @kms_master_key_id = resp['KmsMasterKeyId']
-        @policy_actions = JSON.parse(resp['Policy'])["Statement"][0]["Action"]
+        @policy_actions = JSON.parse(resp['Policy'])['Statement'][0]['Action']
         create_resource_methods(resp)
       rescue Aws::SNS::Errors::NotFound
         return
