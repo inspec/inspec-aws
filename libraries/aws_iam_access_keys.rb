@@ -98,27 +98,34 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
     end
   end
 
-  # Flatten user details and key details into the FilterTable format.
-  def merge(key_info, user_info)
-    key_info[:id]       = key_info[:access_key_id]
-    key_info[:active]   = key_info[:status] == 'Active'
-    key_info[:inactive] = key_info[:status] != 'Active'
-    key_info[:created_hours_ago]  = ((Time.now - key_info[:create_date]) / (60*60)).to_i
-    key_info[:created_days_ago]   = (key_info[:created_hours_ago] / 24).to_i
-    key_info[:user_created_date]  = user_info[:create_date]
-    key_info[:created_with_user]  = (key_info[:create_date] - key_info[:user_created_date]).abs < 1.0/24.0
-
-    catch_aws_errors do
-      last_used =@aws.iam_client.get_access_key_last_used(access_key_id: key_info[:access_key_id])
-                     .access_key_last_used
-                     .last_used_date
-
-      key_info[:ever_used]      = !last_used.nil?
-      key_info[:never_used]     = last_used.nil?
-      key_info[:last_used_time] = last_used
-      return unless last_used
-      key_info[:last_used_hours_ago] = ((Time.now - last_used) / (60*60)).to_i
-      key_info[:last_used_days_ago] = (key_info[:last_used_hours_ago]/24).to_i
+  def last_used(row, _condition, _table)
+    @_last_used ||= catch_aws_errors do
+      @aws.iam_client.get_access_key_last_used(access_key_id: row[:access_key_id])
+          .access_key_last_used
     end
+  end
+
+  def lazy_load_last_used_date(row, _condition, _table)
+    row[:last_used_date] ||= last_used(row, _condition, _table).last_used_date
+  end
+
+  def lazy_load_ever_used(row, _condition, _table)
+    row[:ever_used] = !lazy_load_never_used_time(row, _condition, _table)
+  end
+
+  def lazy_load_never_used_time(row, _condition, _table)
+    row[:never_used] = lazy_load_last_used_date(row, _condition, _table).nil?
+  end
+
+  def lazy_load_last_used_hours_ago(row, _condition, _table)
+    return if lazy_load_never_used_time(row, _condition, _table)
+
+    row[:last_used_hours_ago] = ((Time.now - row[:last_used_date]) / (60*60)).to_i
+  end
+
+  def lazy_load_last_used_days_ago(row, _condition, _table)
+    return if lazy_load_never_used_time(row, _condition, _table)
+
+    row[:last_used_days_ago] = (row[:last_used_hours_ago]/24).to_i
   end
 end
