@@ -80,29 +80,21 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   # Given a Hash of Users, build Access Key details for each.
   def get_keys(users)
     catch_aws_errors do
-      access_key_data = []
-      users.each_key do |username|
-        begin
-          user_keys = @aws.iam_client.list_access_keys(user_name: username)
-                          .access_key_metadata
-          user_keys = user_keys.map do |metadata|
-            {
-              access_key_id: metadata.access_key_id,
-              username: username,
-              status: metadata.status,
-              create_date: metadata.create_date,
-            }
-          end
-
-          user_keys.each do |key_info|
-            merge(key_info, users[username])
-          end
-          access_key_data.concat(user_keys)
-        rescue Aws::IAM::Errors::NoSuchEntity
-          # Swallow - a miss on search results should return an empty table
+      @aws.iam_client.list_access_keys(user_name: username).flat_map do |response|
+        response.access_key_metadata.flat_map do |access_key|
+          access_key_hash = access_key.to_h
+          access_key_hash[:username] = access_key_hash[:user_name]
+          access_key_hash[:id] = access_key_hash[:access_key_id]
+          access_key_hash[:active] = access_key_hash[:status] == 'Active'
+          access_key_hash[:inactive] = access_key_hash[:status] != 'Active'
+          access_key_hash[:created_hours_ago]  = ((Time.now - access_key_hash[:create_date]) / (60*60)).to_i
+          access_key_hash[:created_days_ago]   = (access_key_hash[:created_hours_ago] / 24).to_i
+          access_key_hash[:user_created_date]  = access_key_hash[:create_date]
+          access_key_hash[:created_with_user]  = (access_key_hash[:create_date] - access_key_hash[:user_created_date]).abs < 1.0/24.0
         end
       end
-      access_key_data
+    rescue Aws::IAM::Errors::NoSuchEntity
+      # Swallow - a miss on search results should return an empty table
     end
   end
 
