@@ -2,7 +2,7 @@
 
 require 'aws_backend'
 
-class AwsIamAccessKeys < AwsResourceBase
+class AwsIamAccessKeys < AwsCollectionResourceBase
   name 'aws_iam_access_keys'
   desc 'Verifies settings for a collection of AWS IAM Access Keys.'
   example "
