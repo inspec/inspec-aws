@@ -5,62 +5,55 @@ require 'aws_backend'
 class AwsIamUser < AwsResourceBase
   name 'aws_iam_user'
   desc 'Verifies settings for an AWS IAM User.'
+
   example "
-    describe aws_iam_user(user_name: 'test_user_name') do
+    describe aws_iam_user(user_name: 'psmith') do
       it { should exist }
     end
   "
 
-  attr_reader :access_keys, :attached_policy_names, :attached_policy_arns,
-              :has_console_password, :has_mfa_enabled, :inline_policy_names,
-              :username, :user_arn, :user_id, :user_path, :user_create_date,
-              :user_password_last_used, :user_permissions_boundary, :user_tags
-
-  alias has_mfa_enabled? has_mfa_enabled
-  alias has_console_password? has_console_password
+  attr_reader :username, :user_arn, :user_id
 
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:user_name])
 
-    catch_aws_errors do
-      username   = { user_name: opts[:user_name] }
-      iam_client = @aws.iam_client
-
-      begin
-        # Basic User attributes
-        user = iam_client.get_user(username).user
-        @user_path = user.path
-        @username = opts[:user_name]
-        @user_id  = user.user_id
-        @user_arn = user.arn
-        @user_create_date  = user.create_date
-        @user_password_last_used  = user.password_last_used
-        @user_permissions_boundary  = user.permissions_boundary
-        @user_tags  = user.tags
-
-        # Additional attributes
-        @has_console_password = has_password?(username)
-        @access_keys          = user_access_keys(username)
-        @has_mfa_enabled      = !iam_client.list_mfa_devices(username).mfa_devices.empty?
-        @inline_policy_names  = iam_client.list_user_policies(username).policy_names
-
-        policies = iam_client.list_attached_user_policies(username).attached_policies
-        @attached_policy_arns  = policies.map { |p| p[:policy_arn] }
-        @attached_policy_names = policies.map { |p| p[:policy_name] }
-      rescue Aws::IAM::Errors::NoSuchEntity
-        # If the requested User does not exist
-        @user_id = nil
-        @user_arn = nil
-
-        @access_keys = []
-        @inline_policy_names = []
-        @attached_policy_arns = []
-        @attached_policy_names = []
-      end
+    user = catch_aws_errors do
+      iam_client.get_user(user_params).user
     end
+    @user_arn = user.arn
+    @user_id  = user.user_id
+    @username = opts[:user_name]
   end
+
+  def access_keys
+    @access_keys ||= (@aws.iam_client.list_access_keys(user_params).access_key_metadata || [])
+  end
+
+  def has_console_password
+    login_profile.present?
+  end
+
+  alias has_console_password? has_console_password
+
+  def attached_policy_names
+    @attached_policy_names ||= policies.map { |p| p[:policy_name] }
+  end
+
+  def attached_policy_arns
+    @attached_policy_arns ||= policies.map { |p| p[:policy_arn] }
+  end
+
+  def has_mfa_enabled
+    mfa_devices.present?
+  end
+
+  def inline_policy_names
+    @inline_policy_names ||= (iam_client.list_user_policies(user_params).policy_names || [])
+  end
+
+  alias has_mfa_enabled? has_mfa_enabled
 
   def exists?
     !@user_arn.nil?
@@ -72,16 +65,29 @@ class AwsIamUser < AwsResourceBase
 
   private
 
-  def has_password?(username)
-    @aws.iam_client.get_login_profile(username)
-    true
-  rescue Aws::IAM::Errors::NoSuchEntity
-    false
+  def login_profile
+    @login_profile ||= catch_aws_errors do
+      iam_client.get_login_profile(user_params)
+    end
   end
 
-  def user_access_keys(username)
-    # Return empty array instead if no keys.
-    keys = @aws.iam_client.list_access_keys(username).access_key_metadata
-    [] if keys.empty?
+  def policies
+    @policies ||= catch_aws_errors do
+      iam_client.list_attached_user_policies(user_params).attached_policies
+    end || []
+  end
+
+  def mfa_devices
+    @mfa_devices ||= catch_aws_errors do
+      iam_client.list_mfa_devices(user_params).mfa_devices
+    end
+  end
+
+  def user_params
+    { user_name: opts[:user_name] }
+  end
+
+  def iam_client
+    @aws.iam_client
   end
 end
