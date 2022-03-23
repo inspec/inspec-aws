@@ -65,7 +65,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def fetch_user(username)
     catch_aws_errors do
-      @aws.iam_client.get_user(user_name: username).user
+      iam_client.get_user(user_name: username).user
     rescue Aws::IAM::Errors::NoSuchEntity
       # Swallow - a miss on search results should return an empty table
     end
@@ -73,7 +73,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def collect_all_users
     catch_aws_errors do
-      @aws.iam_client.list_users
+      iam_client.list_users
     end
   end
 
@@ -86,7 +86,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def fetch_keys(username)
     catch_aws_errors do
-      @aws.iam_client.list_access_keys(user_name: username).flat_map do |response|
+      iam_client.list_access_keys(user_name: username).flat_map do |response|
         response.access_key_metadata.flat_map do |access_key|
           access_key_hash = access_key.to_h
           access_key_hash[:username] = access_key_hash[:user_name]
@@ -106,8 +106,8 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def last_used(row, _condition, _table)
     @_last_used ||= catch_aws_errors do
-      @aws.iam_client.get_access_key_last_used(access_key_id: row[:access_key_id])
-          .access_key_last_used
+      iam_client.get_access_key_last_used(access_key_id: row[:access_key_id])
+                .access_key_last_used
     end
   end
 
@@ -133,5 +133,9 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
     return if lazy_load_never_used_time(row, _condition, _table)
 
     row[:last_used_days_ago] = (row[:last_used_hours_ago]/24).to_i
+  end
+
+  def iam_client
+    @aws.iam_client
   end
 end
