@@ -26,10 +26,10 @@ class AwsIamUser < AwsResourceBase
     @user_id  = user.user_id
     @username = opts[:user_name]
     @user_path = user.path
-    @user_create_date  = user.create_date
-    @user_password_last_used  = user.password_last_used
-    @user_permissions_boundary  = user.permissions_boundary
-    @user_tags  = user.tags
+    @user_create_date = user.create_date
+    @user_password_last_used = user.password_last_used
+    @user_permissions_boundary = user.permissions_boundary
+    @user_tags = user.tags
   end
 
   def access_keys
