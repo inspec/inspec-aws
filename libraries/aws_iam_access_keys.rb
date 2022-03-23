@@ -14,19 +14,19 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   attr_reader :table
 
   FilterTable.create
+             .register_column(:usernames,           field: :username)
              .register_column(:access_key_ids,      field: :access_key_id)
              .register_column(:created_date,        field: :create_date)
              .register_column(:created_days_ago,    field: :created_days_ago)
              .register_column(:created_with_user,   field: :created_with_user)
              .register_column(:created_hours_ago,   field: :created_hours_ago)
-             .register_column(:usernames,           field: :username)
              .register_column(:active,              field: :active)
              .register_column(:inactive,            field: :inactive)
-             .register_column(:last_used_date,      field: :last_used_date)
-             .register_column(:last_used_hours_ago, field: :last_used_hours_ago)
-             .register_column(:last_used_days_ago,  field: :last_used_days_ago)
-             .register_column(:ever_used,           field: :ever_used)
-             .register_column(:never_used,          field: :never_used)
+             .register_column(:last_used_date,      field: :last_used_date, lazy_instance: :lazy_load_last_used_date)
+             .register_column(:last_used_hours_ago, field: :last_used_hours_ago, lazy_instance: :lazy_load_last_used_hours_ago)
+             .register_column(:last_used_days_ago,  field: :last_used_days_ago, lazy_instance: :lazy_load_last_used_days_ago)
+             .register_column(:ever_used,           field: :ever_used, lazy_instance: :lazy_load_ever_used)
+             .register_column(:never_used,          field: :never_used, lazy_instance: :lazy_load_never_used_time)
              .register_column(:user_created_date,   field: :user_created_date)
              .register_custom_matcher(:exists?) { |x| !x.entries.empty? }
              .install_filter_methods_on_resource(self, :table)
