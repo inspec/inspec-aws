@@ -55,25 +55,25 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   # Returns a map (K,V) of (username: user_details)
   def get_users(username = nil)
     catch_aws_errors do
-      users = {}
       if username
-        begin
-          users[username] = @aws.iam_client.get_user(user_name: username).user
-        rescue Aws::IAM::Errors::NoSuchEntity
-          # Swallow - a miss on search results should return an empty table
-        end
+        fetch_user(username)
       else
-        pagination = {}
-        loop do
-          resp = @aws.iam_client.list_users(pagination)
-          resp.users.each do |user|
-            users[user.user_name] = user
-          end
-          break unless resp.is_truncated
-          pagination[:marker] = resp.marker
-        end
+        collect_all_users
       end
-      users
+    end
+  end
+
+  def fetch_user(username)
+    catch_aws_errors do
+      @aws.iam_client.get_user(user_name: username).user
+    rescue Aws::IAM::Errors::NoSuchEntity
+      # Swallow - a miss on search results should return an empty table
+    end
+  end
+
+  def collect_all_users
+    catch_aws_errors do
+      @aws.iam_client.list_users
     end
   end
 
