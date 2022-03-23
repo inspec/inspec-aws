@@ -6,14 +6,14 @@ class AwsSqsQueue < AwsResourceBase
   name 'aws_sqs_queue'
   desc 'Verifies settings for an SQS Queue.'
   example "
-    describe aws_sqs_queue('queue-arn') do
+    describe aws_sqs_queue('test-queue-url') do
       it { should exist }
     end
   "
 
   attr_reader :arn, :is_fifo_queue, :visibility_timeout, :maximum_message_size, :message_retention_period, :delay_seconds,
               :receive_message_wait_timeout_seconds, :content_based_deduplication, :redrive_policy, :kms_master_key_id,
-              :kms_data_key_reuse_period_seconds, :sqs_managed_enabled
+              :kms_data_key_reuse_period_seconds, :sqs_managed_enabled, :sqs_managed
 
   def initialize(opts = {})
     opts = { queue_url: opts } if opts.is_a?(String)
@@ -33,6 +33,7 @@ class AwsSqsQueue < AwsResourceBase
       @kms_master_key_id                    = resp['KmsMasterKeyId']
       @kms_data_key_reuse_period_seconds    = resp['KmsDataKeyReusePeriodSeconds']
       @sqs_managed_enabled                  = resp['SqsManagedSseEnabled']
+      @sqs_managed                          = resp['SqsManagedSseEnabled'].nil? ? false: true
       create_resource_methods(resp.to_h)
     end
   end
@@ -42,6 +43,6 @@ class AwsSqsQueue < AwsResourceBase
   end
 
   def to_s
-    "SQS Queue ARN: #{@arn}"
+    "SQS Queue URL: #{@arn}"
   end
 end
