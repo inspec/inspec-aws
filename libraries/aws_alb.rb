@@ -68,6 +68,30 @@ class AwsAlb < AwsResourceBase
   end
 
   def to_s
-    "AWS ALB #{@load_balancer_name}"
+    "AWS ALB #{load_balancer_name}"
+  end
+
+  private
+
+  def alb
+    load_balancers&.first
+  end
+
+  def alb_attributes
+    load_balancer_attributes&.attributes
+  end
+
+  def load_balancers
+    @load_balancers ||= catch_aws_errors do
+      elb_client.describe_load_balancers(load_balancer_arns: [opts[:load_balancer_arn]])
+    end
+  end
+
+  def load_balancer_attributes
+    @load_balancer_attributes ||= elb_client.describe_load_balancer_attributes(load_balancer_arn: opts[:load_balancer_arn])
+  end
+
+  def elb_client
+    @aws.elb_client_v2
   end
 end
