@@ -1,9 +1,14 @@
-<!-- latest_release 1.82.2 -->
+<!-- latest_release 1.82.3 -->
+## [v1.82.3](https://github.com/inspec/inspec-aws/tree/v1.82.3) (2022-03-29)
+
+#### Merged Pull Requests
+- Fix a few things in Netlify [#889](https://github.com/inspec/inspec-aws/pull/889) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.82.2](https://github.com/inspec/inspec-aws/tree/v1.82.2) (2022-03-21)
 
 #### Merged Pull Requests
 - Resource 221 lazy load iam user [#887](https://github.com/inspec/inspec-aws/pull/887) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.82.1](https://github.com/inspec/inspec-aws/tree/v1.82.1) (2022-03-16)
 
