@@ -90,7 +90,9 @@ class AwsAlb < AwsResourceBase
   end
 
   def load_balancer_attributes
-    @load_balancer_attributes ||= elb_client.describe_load_balancer_attributes(load_balancer_arn: opts[:load_balancer_arn])
+    @load_balancer_attributes ||= catch_aws_errors do
+      elb_client.describe_load_balancer_attributes(load_balancer_arn: opts[:load_balancer_arn])
+    end
   end
 
   def elb_client
