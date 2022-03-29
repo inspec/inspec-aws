@@ -17,8 +17,8 @@ class AwsAlb < AwsResourceBase
 "
 
   attr_reader :availability_zones, :canonical_hosted_zone_id, :created_time, :dns_name, :load_balancer_arn,
-              :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id, :zone_names,
-              :listeners, :ssl_policies, :external_ports, :protocols, :access_log_enabled
+              :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id,
+              :zone_names
 
   def initialize(opts = {})
     opts = { load_balancer_arn: opts } if opts.is_a?(String)
