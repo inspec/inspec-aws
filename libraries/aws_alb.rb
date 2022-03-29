@@ -66,7 +66,7 @@ class AwsAlb < AwsResourceBase
   end
 
   def exists?
-    !@load_balancer_arn.nil?
+    !load_balancer_arn.nil?
   end
 
   def to_s
