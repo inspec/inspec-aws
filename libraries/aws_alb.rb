@@ -24,7 +24,8 @@ class AwsAlb < AwsResourceBase
     opts = { load_balancer_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:load_balancer_arn])
-    return unless alb
+    return unless exists?
+
     @availability_zones = alb.availability_zones
     @canonical_hosted_zone_id = alb.canonical_hosted_zone_id
     @created_time = alb.created_time.to_s
