@@ -49,7 +49,7 @@ class AwsElb < AwsResourceBase
   end
 
   def exists?
-    !@vpc_id.nil?
+    !vpc_id.nil?
   end
 
   def to_s
