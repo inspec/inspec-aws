@@ -24,7 +24,7 @@ class AwsAlb < AwsResourceBase
     opts = { load_balancer_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:load_balancer_arn])
-    return unless exists?
+    return unless alb
 
     @availability_zones = alb.availability_zones
     @canonical_hosted_zone_id = alb.canonical_hosted_zone_id
@@ -86,7 +86,7 @@ class AwsAlb < AwsResourceBase
 
   def load_balancers
     @load_balancers ||= catch_aws_errors do
-      elb_client.describe_load_balancers(load_balancer_arns: [opts[:load_balancer_arn]])
+      elb_client.describe_load_balancers(load_balancer_arns: [opts[:load_balancer_arn]]).load_balancers
     end
   end
 
