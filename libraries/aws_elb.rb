@@ -63,4 +63,36 @@ class AwsElb < AwsResourceBase
   def access_log_enabled?
     !@attrs.access_log.enabled == false
   end
+
+  def ssl_policies
+    @ssl_policies ||= catch_aws_errors do
+      elb_client.describe_load_balancer_policies(load_balancer_name: opts[:load_balancer_name])
+                .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
+    end
+  end
+
+  private
+
+  def load_balancer_description
+    @load_balancer_description ||= catch_aws_errors do
+      elb_client.describe_load_balancers(load_balancer_names: [opts[:load_balancer_name]]).load_balancer_descriptions.first
+    end
+  end
+
+  def load_balancer_attributes
+    @load_balancer_attributes ||= catch_aws_errors do
+      elb_client.describe_load_balancer_attributes(load_balancer_name: opts[:load_balancer_name]).load_balancer_attributes
+    end
+  end
+
+  # The ELB will list multiple custom policies, including previously configured policies
+  # Even if a pre-defined policy is selected, a custom policy is created from that template
+  # So, we need to get a list of all policies currently in use and filter the list of policies that exist
+  def policies_in_use
+    load_balancer_description.listener_descriptions.flat_map(&:policy_names).uniq
+  end
+
+  def elb_client
+    @aws.elb_client
+  end
 end
