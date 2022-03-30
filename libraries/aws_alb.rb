@@ -44,8 +44,8 @@ class AwsAlb < AwsResourceBase
 
   def access_log_enabled
     return unless alb_attributes
-    s3_enabled_attr = alb_attributes.find { |attr| attr[:key].eql?('access_logs.s3.enabled') }
-    @access_log_enabled = s3_enabled_attr.fetch(:value, false) == 'true'
+    s3_enabled_attr = alb_attributes.find { |attr| attr.key.eql?('access_logs.s3.enabled') }
+    @access_log_enabled = s3_enabled_attr&.value == 'true'
   end
 
   def listeners
