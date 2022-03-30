@@ -57,11 +57,11 @@ class AwsElb < AwsResourceBase
   end
 
   def cross_zone_load_balancing_enabled?
-    !@attrs.cross_zone_load_balancing.enabled == false
+    !!load_balancer_attributes.cross_zone_load_balancing.enabled
   end
 
   def access_log_enabled?
-    !@attrs.access_log.enabled == false
+    !!load_balancer_attributes.access_log.enabled
   end
 
   def ssl_policies
