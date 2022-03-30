@@ -14,7 +14,7 @@ class AwsElb < AwsResourceBase
 
   attr_reader :availability_zones, :dns_name, :load_balancer_name, :external_ports,
               :instance_ids, :internal_ports, :security_group_ids,
-              :subnet_ids, :vpc_id, :listeners, :ssl_policies, :protocols, :certificate_id
+              :subnet_ids, :vpc_id, :listeners, :protocols, :certificate_id
 
   def initialize(opts = {})
     opts = { load_balancer_name: opts } if opts.is_a?(String)
