@@ -35,7 +35,7 @@ class AwsElb < AwsResourceBase
   end
 
   def exists?
-    !vpc_id.nil?
+    !load_balancer_description.nil?
   end
 
   def to_s
