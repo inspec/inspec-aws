@@ -23,6 +23,9 @@ class AwsS3Bucket < AwsResourceBase
     catch_aws_errors do
       begin
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
+        # LocationConstraint "EU" correlates to the region "eu-west-1", but region "EU" does not exist as a "region", only a LocationConstraint
+        # this currently is the only Location constraint that can have either of 2 values "EU" or "eu-west-1".  But only "eu-west-1" is a region
+        @region = 'eu-west-1' if @region == 'EU'
         # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
         # redirects and signing attempts.
         opts[:aws_region] = @region.empty? ? 'us-east-1' : @region
