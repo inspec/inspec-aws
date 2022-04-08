@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.1 -->
+<!-- latest_release 1.83.2 -->
+## [v1.83.2](https://github.com/inspec/inspec-aws/tree/v1.83.2) (2022-04-07)
+
+#### Merged Pull Requests
+- region=&quot;eu-west-1&quot; if LocationConstraint set =&quot;EU&quot; [#893](https://github.com/inspec/inspec-aws/pull/893) ([sc0ttruss](https://github.com/sc0ttruss))
+<!-- latest_release -->
+
 ## [v1.83.1](https://github.com/inspec/inspec-aws/tree/v1.83.1) (2022-04-04)
 
 #### Merged Pull Requests
 - Resource 227 iam access keys [#890](https://github.com/inspec/inspec-aws/pull/890) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.0](https://github.com/inspec/inspec-aws/tree/v1.83.0) (2022-03-31)
 
