@@ -92,17 +92,17 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def fetch_key_id
-    catch_aws_errors do
-      response = @aws.kms_client.list_aliases
-      if response || !response.empty?
-        response.aliases.each do |alias_entry|
-          if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
-            return alias_entry['target_key_id']
-          end
+    response = catch_aws_errors do
+      kms_client.list_aliases
+    end
+    if response.present?
+      response.aliases.each do |alias_entry|
+        if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
+          return alias_entry['target_key_id']
         end
       end
-      fail_resource("Unable to find KMS Key using provided alias: #{@alias}")
     end
+    fail_resource("Unable to find KMS Key using provided alias: #{@alias}")
   end
 
   private
