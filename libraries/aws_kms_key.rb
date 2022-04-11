@@ -26,7 +26,7 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def exists?
-    !@key.empty?
+    !key_metadata.blank?
   end
 
   def kms_tags(tag_list)
@@ -46,7 +46,9 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def created_days_ago
-    ((Time.now - @key[:creation_date]) / (24 * 60 * 60)).to_i unless @key[:creation_date].nil?
+    return unless key_metadata[:creation_date]
+
+    ((Time.now - key_metadata[:creation_date]) / (24 * 60 * 60)).to_i
   end
 
   def deletion_time
