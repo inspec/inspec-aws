@@ -60,31 +60,31 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def deletion_time
-    @key[:deletion_date]
+    key_metadata[:deletion_date]
   end
 
   def invalidation_time
-    @key[:valid_to]
+    key_metadata[:valid_to]
   end
 
   def external?
-    @key[:origin] == 'EXTERNAL'
+    key_metadata[:origin] == 'EXTERNAL'
   end
 
   def enabled?
-    @key[:enabled]
+    key_metadata[:enabled]
   end
 
   def managed_by_aws?
-    @key[:key_manager] == 'AWS'
+    key_metadata[:key_manager] == 'AWS'
   end
 
   def has_key_expiration?
-    @key[:expiration_model] == 'KEY_MATERIAL_EXPIRES'
+    key_metadata[:expiration_model] == 'KEY_MATERIAL_EXPIRES'
   end
 
   def has_rotation_enabled?
-    @key_rotation_response.key_rotation_enabled unless @key_rotation_response.nil? || @key_rotation_response.empty?
+    key_rotation_response.key_rotation_enabled unless key_rotation_response.blank?
   end
 
   def to_s
