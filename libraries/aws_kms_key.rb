@@ -104,4 +104,25 @@ class AwsKmsKey < AwsResourceBase
       fail_resource("Unable to find KMS Key using provided alias: #{@alias}")
     end
   end
+
+  private
+
+  def key_metadata
+    @key_metadata ||= catch_aws_errors do
+      kms_client.describe_key({ key_id: opts[:key_id] }).key_metadata.to_h
+    rescue Aws::KMS::Errors::NotFoundException
+      {}
+    end
+  end
+
+  def key_rotation_response
+    return if key_metadata[:key_manager] == 'AWS'
+    @key_rotation_response ||= catch_aws_errors do
+      kms_client.get_key_rotation_status({ key_id: opts[:key_id] })
+    end
+  end
+
+  def kms_client
+    @aws.kms_client
+  end
 end
