@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.3 -->
+<!-- latest_release 1.83.4 -->
+## [v1.83.4](https://github.com/inspec/inspec-aws/tree/v1.83.4) (2022-04-13)
+
+#### Merged Pull Requests
+- bugfix for aws_iam_users resource [#895](https://github.com/inspec/inspec-aws/pull/895) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.83.3](https://github.com/inspec/inspec-aws/tree/v1.83.3) (2022-04-11)
 
 #### Merged Pull Requests
 - Resource 225 elb optmization [#892](https://github.com/inspec/inspec-aws/pull/892) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.2](https://github.com/inspec/inspec-aws/tree/v1.83.2) (2022-04-07)
 
