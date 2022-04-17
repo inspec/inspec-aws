@@ -27,10 +27,20 @@ end
 control 'aws-sqs-queue-2.0' do
   impact 1.0
   title 'Ensure AWS SQS Queue is SQS managed.'
-
+  
   describe aws_sqs_queue(queue_url) do
     it { should exist }
     its("SqsManagedSseEnabled") { should eq "true" }
     its("sqs_managed") { should eq true }
+  end
+end
+
+control 'aws-sqs-queue-3.0' do
+  impact 1.0
+  title 'Check the policy permissions.'
+  
+  describe aws_sqs_queue(queue_url) do
+    it { should be_policy_statement_principal_all_permissions_enabled }
+    it { should be_policy_statement_action_all_permissions_enabled }
   end
 end
