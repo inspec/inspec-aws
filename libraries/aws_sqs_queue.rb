@@ -13,7 +13,9 @@ class AwsSqsQueue < AwsResourceBase
 
   attr_reader :arn, :is_fifo_queue, :visibility_timeout, :maximum_message_size, :message_retention_period, :delay_seconds,
               :receive_message_wait_timeout_seconds, :content_based_deduplication, :redrive_policy, :kms_master_key_id,
-              :kms_data_key_reuse_period_seconds, :sqs_managed_enabled, :sqs_managed
+              :kms_data_key_reuse_period_seconds, :sqs_managed_enabled, :sqs_managed,
+              :policy, :policy_statement, :policy_statement_sid, :policy_statement_effect, :policy_statement_principal, :policy_statement_action, :policy_statement_resource,
+              :policy_statement_principal_all_permissions_enabled, :policy_statement_action_all_permissions_enabled
 
   def initialize(opts = {})
     opts = { queue_url: opts } if opts.is_a?(String)
@@ -34,6 +36,13 @@ class AwsSqsQueue < AwsResourceBase
       @kms_data_key_reuse_period_seconds    = resp['KmsDataKeyReusePeriodSeconds']
       @sqs_managed_enabled                  = resp['SqsManagedSseEnabled']
       @sqs_managed                          = resp['SqsManagedSseEnabled'].nil? ? false: true
+      @policy                               = resp['Policy']
+      @policy_statement                     = JSON.parse(resp['Policy'])['Statement']
+      @policy_statement_sid                 = JSON.parse(resp['Policy'])['Statement'][0]['Sid'].to_s
+      @policy_statement_effect              = JSON.parse(resp['Policy'])['Statement'][0]['Effect'].to_s
+      @policy_statement_principal           = JSON.parse(resp['Policy'])['Statement'][0]['Principal'].to_s
+      @policy_statement_action              = JSON.parse(resp['Policy'])['Statement'][0]['Action'].to_s
+      @policy_statement_resource            = JSON.parse(resp['Policy'])['Statement'][0]['Resource'].to_s
       create_resource_methods(resp.to_h)
     end
   end
@@ -44,5 +53,13 @@ class AwsSqsQueue < AwsResourceBase
 
   def to_s
     "SQS Queue URL: #{@arn}"
+  end
+
+  def policy_statement_principal_all_permissions_enabled?
+    @policy_statement_principal_all_permissions_enabled = @policy_statement_principal.include? '*'
+  end
+
+  def policy_statement_action_all_permissions_enabled?
+    @policy_statement_action_all_permissions_enabled = @policy_statement_action.include? '*'
   end
 end
