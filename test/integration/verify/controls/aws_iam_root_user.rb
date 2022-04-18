@@ -5,9 +5,9 @@ skip_control 'aws-iam-root-user-1.0' do
   describe aws_iam_root_user do
     it { should have_access_key }
     it { should have_account_signing_certificate }
-    it { should have_MFA_devices_in_use }
+    it { should have_mfa_devices_in_use }
     it { should have_policy_versions_in_use }
-    it { should have_min_users }
+    it { should have_users }
     it { should have_virtual_mfa_enabled }
     it { should_not have_hardware_mfa_enabled }
     it { should have_mfa_enabled }
