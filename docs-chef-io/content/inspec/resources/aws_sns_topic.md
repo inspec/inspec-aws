@@ -48,6 +48,24 @@ end
 `confirmed_subscription_count`
 : An integer indicating the number of currently active subscriptions.
 
+`policy`
+: The policy of the topic.
+
+`policy_statement_sid`
+: The statement sid of the topic policy.
+
+`policy_statement_effect`
+: The statement effect of the topic policy.
+
+`policy_statement_principal`
+: The statement principal of the topic policy.
+
+`policy_statement_action`
+: The statement action of the topic policy.
+
+`policy_statement_condition`
+: The statement condition of the topic policy.
+
 ## Examples
 
 **Make sure something is subscribed to the topic.**
@@ -66,13 +84,15 @@ end
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
 ```ruby
 describe aws_sns_topic('arn:aws:sns:*::good-news') do
   it { should exist }
 end
 ```
+
+Use `should_not` to test the entity should not exist.
 
 ```ruby
 describe aws_sns_topic('arn:aws:sns:*::bad-news') do
