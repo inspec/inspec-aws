@@ -84,16 +84,16 @@ class AwsIamRootUser < AwsResourceBase
     @summary_account['AccountSigningCertificatesPresent'].present?
   end
 
-  def has_MFA_devices_in_use?
-    @summary_account['MFADevicesInUse'] >= 1
+  def has_mfa_devices_in_use?
+    @summary_account['MFADevicesInUse'].present?
   end
 
   def has_policy_versions_in_use?
-    @summary_account['PolicyVersionsInUse'] >= 1
+    @summary_account['PolicyVersionsInUse'].present?
   end
 
-  def has_min_users?
-    @summary_account['Users'] >= 1
+  def has_users?
+    @summary_account['Users'].present?
   end
 
   def to_s
