@@ -40,6 +40,84 @@ This resource does not require any parameters.
 `virtual_devices`
 : A list of the virtual MFA devices in the AWS account.
 
+`total_access_key_per_user_quota`
+: Returns the total access keys per user quota.
+
+`total_access_keys_present`
+: Return the total access keys present.
+
+`total_account_mfa_enabled`
+: Return the total account mfa enabled.
+
+`total_account_signing_certificates_present`
+: Return the total account signing certificates present.
+
+`total_attached_policies_per_group_quota`
+: Return the total attached policies per group quota.
+
+`total_attached_policies_per_role_quota`
+: Return the total attached policies per role quota.
+
+`total_attached_policies_per_user_quota`
+: Return the total attached policies per user quota.
+
+`total_global_endpoint_token_version`
+: Return the total global endpoint token version.
+
+`total_group_policy_size_quota`
+: Return the total group policy size quota.
+
+`total_groups`
+: Return the total groups.
+
+`total_groups_per_user_quota`
+: Return the total groups per user quota.
+
+`total_groups_quota`
+: Return the total groups quota.
+
+`total_mfa_devices`
+: Return the total mfa_devices.
+
+`total_mfa_devices_in_use`
+: Return the total mfa devices in use.
+
+`total_policies`
+: Return the total policies.
+
+`total_policies_quota`
+: Return the total policies quota.
+
+`total_policy_size_quota`
+: Return the total policy size quota.
+
+`total_policy_versions_in_use`
+: Return the total policy versions in use.
+
+`total_policy_versions_in_use_quota`
+: Return the total policy versions in use quota.
+
+`total_server_certificates`
+: Return the total server certificates.
+
+`total_server_certificates_quota`
+: Return the total server certificates quota.
+
+`total_signing_certificates_per_user_quota`
+: Return the total signing certificates per user quota.
+
+`total_user_policy_size_quota`
+: Return the total user policy size quota.
+
+`total_users`
+: Return the total users.
+
+`total_users_quota`
+: Return the total user quota.
+
+`total_versions_per_policy_quota`
+: Return the total versions per policy quota.
+
 ## Examples
 
 **Test that an IAM Root User has MFA enabled.**
@@ -66,7 +144,6 @@ describe aws_iam_root_user do
 end
 ```
 
-
 ## Matchers
 
 {{% inspec_matchers_link %}}
@@ -75,11 +152,19 @@ end
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
 ```ruby
 describe aws_iam_root_user do
   it { should exist }
+end
+```
+
+Use `should_not` to test the entity should not exist.
+
+```ruby
+describe aws_iam_root_user do
+  it { should_not exist }
 end
 ```
 
@@ -98,13 +183,37 @@ it { should have_virtual_mfa_enabled }
 ### have_access_key
 
 ```ruby
-it { should have_access_key }    
+it { should have_access_key }
 ```
 
 ### have_hardware_mfa_enabled
 
 ```ruby
 it { should have_hardware_mfa_enabled }    
+```
+
+### have_account_signing_certificate
+
+```ruby
+it { should have_account_signing_certificate }    
+```
+
+### have_mfa_devices_in_use
+
+```ruby
+it { should have_mfa_devices_in_use }    
+```
+
+### have_policy_versions_in_use
+
+```ruby
+it { should have_policy_versions_in_use }    
+```
+
+### have_users
+
+```ruby
+it { should have_users }    
 ```
 
 
