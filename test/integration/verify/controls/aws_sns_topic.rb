@@ -32,7 +32,7 @@ control 'aws-sns-topic-1.0' do
 
   describe aws_sns_topic(aws_sns_topic_with_encryption_arn) do
     it { should exist }
-    its('policy_actions') { should include "SNS:Subscribe" }
-    its('policy_actions') { should eq ["SNS:GetTopicAttributes", "SNS:SetTopicAttributes", "SNS:AddPermission", "SNS:RemovePermission", "SNS:DeleteTopic", "SNS:Subscribe", "SNS:ListSubscriptionsByTopic", "SNS:Publish", "SNS:Receive"] }
+    its('policy_statement_action') { should include "SNS:Subscribe" }
+    its('policy_statement_action') { should eq ["SNS:GetTopicAttributes", "SNS:SetTopicAttributes", "SNS:AddPermission", "SNS:RemovePermission", "SNS:DeleteTopic", "SNS:Subscribe", "SNS:ListSubscriptionsByTopic", "SNS:Publish", "SNS:Receive"] }
   end
 end
