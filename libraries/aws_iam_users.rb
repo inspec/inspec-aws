@@ -52,17 +52,17 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def lazy_load_has_console_password(row, _condition, _table)
-    row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username])
+    row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: { user_name: row[:username] })
                                  .present?
   end
 
   def lazy_load_access_keys(row, _condition, _table)
-    row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: row[:username])
+    row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: { user_name: row[:username] })
                         .flat_map(&:access_key_metadata) || []
   end
 
   def lazy_load_attached_policies(row, _condition, _table)
-    row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: row[:username])
+    row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: { user_name: row[:username] })
                                     .flat_map(&:attached_policies)
   end
 
@@ -75,7 +75,7 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def lazy_load_inline_policies(row, _condition, _table)
-    row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: row[:username])
+    row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: { user_name: row[:username] })
                                   .flat_map(&:policy_names)
   end
 
@@ -84,7 +84,7 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def mfa_devices(username)
-    fetch(client: :iam_client, operation: :list_mfa_devices, kwargs: username).map(&:mfa_devices)
+    fetch(client: :iam_client, operation: :list_mfa_devices, kwargs: { user_name: username }).map(&:mfa_devices)
   end
 
   def lazy_load_has_mfa_enabled(row, _condition, _table)
