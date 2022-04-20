@@ -44,25 +44,31 @@ class AwsIamUsers < AwsCollectionResourceBase
   def fetch_data
     catch_aws_errors do
       @aws.iam_client.list_users.flat_map do |response|
-        response.users.each_with_object({}) do |user, array|
-          array << { username: user.arn.split('/').last, user_arn: user.arn, user_id: user.user_id, password_ever_used?: user.password_last_used.present?, password_last_used_days_ago: user.password_last_used.present? ? ((Time.current - user.password_last_used) / (24*60*60)).to_i : 0 }
+        response.users.map do |user|
+          {
+            username: user.arn.split('/').last,
+            user_arn: user.arn,
+            user_id: user.user_id,
+            password_ever_used?: user.password_last_used.present?,
+            password_last_used_days_ago: user.password_last_used.present? ? ((Time.current - user.password_last_used) / (24*60*60)).to_i : 0,
+          }
         end
       end
     end
   end
 
   def lazy_load_has_console_password(row, _condition, _table)
-    row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: row[:username])
+    row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: { user_name: row[:username] })
                                  .present?
   end
 
   def lazy_load_access_keys(row, _condition, _table)
-    row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: row[:username])
+    row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: { user_name: row[:username] })
                         .flat_map(&:access_key_metadata) || []
   end
 
   def lazy_load_attached_policies(row, _condition, _table)
-    row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: row[:username])
+    row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: { user_name: row[:username] })
                                     .flat_map(&:attached_policies)
   end
 
@@ -75,7 +81,7 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def lazy_load_inline_policies(row, _condition, _table)
-    row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: row[:username])
+    row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: { user_name: row[:username] })
                                   .flat_map(&:policy_names)
   end
 
@@ -84,7 +90,7 @@ class AwsIamUsers < AwsCollectionResourceBase
   end
 
   def mfa_devices(username)
-    fetch(client: :iam_client, operation: :list_mfa_devices, kwargs: username).map(&:mfa_devices)
+    fetch(client: :iam_client, operation: :list_mfa_devices, kwargs: { user_name: username }).map(&:mfa_devices)
   end
 
   def lazy_load_has_mfa_enabled(row, _condition, _table)
