@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.5 -->
+<!-- latest_release 1.83.6 -->
+## [v1.83.6](https://github.com/inspec/inspec-aws/tree/v1.83.6) (2022-04-20)
+
+#### Merged Pull Requests
+- Fix aws iam users lazy load [#898](https://github.com/inspec/inspec-aws/pull/898) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.83.5](https://github.com/inspec/inspec-aws/tree/v1.83.5) (2022-04-18)
 
 #### Merged Pull Requests
 - RESOURCE-228 lazy load kms key [#894](https://github.com/inspec/inspec-aws/pull/894) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.4](https://github.com/inspec/inspec-aws/tree/v1.83.4) (2022-04-13)
 
