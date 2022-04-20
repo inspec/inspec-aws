@@ -44,8 +44,14 @@ class AwsIamUsers < AwsCollectionResourceBase
   def fetch_data
     catch_aws_errors do
       @aws.iam_client.list_users.flat_map do |response|
-        response.users.each_with_object({}) do |user, array|
-          array << { username: user.arn.split('/').last, user_arn: user.arn, user_id: user.user_id, password_ever_used?: user.password_last_used.present?, password_last_used_days_ago: user.password_last_used.present? ? ((Time.current - user.password_last_used) / (24*60*60)).to_i : 0 }
+        response.users.map do |user|
+          {
+            username: user.arn.split('/').last,
+            user_arn: user.arn,
+            user_id: user.user_id,
+            password_ever_used?: user.password_last_used.present?,
+            password_last_used_days_ago: user.password_last_used.present? ? ((Time.current - user.password_last_used) / (24*60*60)).to_i : 0,
+          }
         end
       end
     end
