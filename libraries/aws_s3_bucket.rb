@@ -47,6 +47,13 @@ class AwsS3Bucket < AwsResourceBase
     end
   end
 
+  def bucket_ownership_controls
+    return [] unless exists? # exists? would throw the same NoSuchBucket error if the bucket name was not valid
+    catch_aws_errors do
+      @bucket_ownership_controls ||= @aws.storage_client.get_bucket_ownership_controls(bucket: @bucket_name).ownership_controls.rules[0].object_ownership
+    end
+  end
+
   def public?
     return false unless exists?
     catch_aws_errors do

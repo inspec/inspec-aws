@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.6 -->
+<!-- latest_release 1.83.7 -->
+## [v1.83.7](https://github.com/inspec/inspec-aws/tree/v1.83.7) (2022-04-26)
+
+#### Merged Pull Requests
+- Adding bucket ownership attribute in s3 bucket resource [#900](https://github.com/inspec/inspec-aws/pull/900) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.83.6](https://github.com/inspec/inspec-aws/tree/v1.83.6) (2022-04-20)
 
 #### Merged Pull Requests
 - Fix aws iam users lazy load [#898](https://github.com/inspec/inspec-aws/pull/898) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.5](https://github.com/inspec/inspec-aws/tree/v1.83.5) (2022-04-18)
 
