@@ -75,6 +75,14 @@ class AwsS3Bucket < AwsResourceBase
     end
   end
 
+  def prevent_public_access?
+    return false unless exists?
+    @prevent_public_access ||= catch_aws_errors do
+      public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
+      public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+    end
+  end
+
   def has_default_encryption_enabled?
     return false unless exists?
     @has_default_encryption_enabled ||= catch_aws_errors do
