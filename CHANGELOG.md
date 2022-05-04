@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.8 -->
+<!-- latest_release 1.83.9 -->
+## [v1.83.9](https://github.com/inspec/inspec-aws/tree/v1.83.9) (2022-05-04)
+
+#### Merged Pull Requests
+- fix typo [#902](https://github.com/inspec/inspec-aws/pull/902) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.83.8](https://github.com/inspec/inspec-aws/tree/v1.83.8) (2022-04-27)
 
 #### Merged Pull Requests
 - Adding &#39;prevent public access&#39; attribute for s3 bucket [#897](https://github.com/inspec/inspec-aws/pull/897) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.83.7](https://github.com/inspec/inspec-aws/tree/v1.83.7) (2022-04-26)
 
