@@ -56,7 +56,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   def get_users(username = nil)
     catch_aws_errors do
       if username
-        fetch_user(username)
+        [fetch_user(username)]
       else
         collect_all_users
       end
@@ -73,7 +73,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def collect_all_users
     catch_aws_errors do
-      iam_client.list_users
+      iam_client.list_users.flat_map(&:users)
     end
   end
 
@@ -97,6 +97,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
           access_key_hash[:created_days_ago]   = (access_key_hash[:created_hours_ago] / 24).to_i
           access_key_hash[:user_created_date]  = access_key_hash[:create_date]
           access_key_hash[:created_with_user]  = (access_key_hash[:create_date] - access_key_hash[:user_created_date]).abs < 1.0/24.0
+          access_key_hash
         end
       end
     rescue Aws::IAM::Errors::NoSuchEntity
