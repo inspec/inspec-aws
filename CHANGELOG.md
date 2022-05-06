@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.9 -->
+<!-- latest_release 1.83.10 -->
+## [v1.83.10](https://github.com/inspec/inspec-aws/tree/v1.83.10) (2022-05-06)
+
+#### Merged Pull Requests
+- Fix aws iam access key [#903](https://github.com/inspec/inspec-aws/pull/903) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.83.9](https://github.com/inspec/inspec-aws/tree/v1.83.9) (2022-05-04)
 
 #### Merged Pull Requests
 - fix typo [#902](https://github.com/inspec/inspec-aws/pull/902) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.8](https://github.com/inspec/inspec-aws/tree/v1.83.8) (2022-04-27)
 
