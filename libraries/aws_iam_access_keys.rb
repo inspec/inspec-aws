@@ -35,7 +35,6 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
     opts = { username: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(allow: [:username])
-
     @table = fetch_data(opts[:username])
   end
 
@@ -79,7 +78,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   # Given a Hash of Users, build Access Key details for each.
   def get_keys
-    @_users.map do |user|
+    @_users.flat_map do |user|
       fetch_keys(user.user_name)
     end
   end
