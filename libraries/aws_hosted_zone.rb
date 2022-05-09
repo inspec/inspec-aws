@@ -40,7 +40,7 @@ class AwsHostedZone < AwsResourceBase
   end
 
   def exist?
-    !@id.nil?
+    !@id.blank?
   end
 
   def name_servers
