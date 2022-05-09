@@ -71,23 +71,21 @@ class AwsHostedZone < AwsResourceBase
   end
 
   def get_zone_record
-    resp = nil
-    catch_aws_errors do
-
-      resp = route53_client.list_resource_record_sets(hosted_zone_id: @id)
-    end
-
-    records_rows = []
-    resp[:resource_record_sets].each do |item|
-      item.resource_records.each do |record|
-        records_rows +=[{ record_name:  item.name,
+    @records = zone_record.fetch(:resource_record_sets, []).flat_map do |item|
+      item.resource_records.flat_map do |record|
+        { record_name:  item.name,
             id:  @id,
             type:  item.type,
             value:  record.value,
-            ttl:  item.ttl }]
+            ttl:  item.ttl }
       end
     end
-    @records = records_rows
+  end
+
+  def zone_record
+    @zone_record ||= catch_aws_errors do
+      route53_client.list_resource_record_sets(hosted_zone_id: @id)
+    end
   end
 
   def route53_client
