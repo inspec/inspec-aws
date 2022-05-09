@@ -31,12 +31,7 @@ class AwsHostedZone < AwsResourceBase
     super(opts)
 
     validate_parameters(required: [:zone_name])
-
-    get_zone_id(opts[:zone_name])
-
-    get_zone_details(@id) if !@id.nil?
-
-    get_zone_record(@id) if !@id.nil?
+    @id = get_zone_id
   end
 
   def exist?
