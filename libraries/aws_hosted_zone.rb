@@ -75,11 +75,11 @@ class AwsHostedZone < AwsResourceBase
     end
   end
 
-  def get_zone_record(zone_id)
+  def get_zone_record
     resp = nil
     catch_aws_errors do
 
-      resp = @aws.route53_client.list_resource_record_sets(hosted_zone_id: zone_id)
+      resp = route53_client.list_resource_record_sets(hosted_zone_id: @id)
     end
 
     records_rows = []
