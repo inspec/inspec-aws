@@ -15,7 +15,7 @@ class AwsHostedZone < AwsResourceBase
     end
   "
 
-  attr_reader :name_servers, :private_zone, :record_count, :records
+  attr_reader :records
 
   FilterTable.create
              .register_column(:record_names,      field: :record_name)
