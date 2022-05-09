@@ -43,6 +43,18 @@ class AwsHostedZone < AwsResourceBase
     !@id.nil?
   end
 
+  def name_servers
+    zone_details&.dig(:delegation_set, :name_servers).presence || []
+  end
+
+  def private_zone
+    zone_details&.dig(:hosted_zone, :config, :private_zone)
+  end
+
+  def record_count
+    zone_details&.dig(:hosted_zone, :resource_record_set_count)
+  end
+
   private
 
   def get_zone_id
