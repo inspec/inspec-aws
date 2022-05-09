@@ -132,7 +132,9 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def lazy_load_last_used_days_ago(row, condition, table)
     return if lazy_load_never_used_time(row, condition, table)
-
+    if row[:last_used_hours_ago].nil?
+      lazy_load_last_used_hours_ago(row, condition, table)
+    end
     row[:last_used_days_ago] = (row[:last_used_hours_ago]/24).to_i
   end
 
