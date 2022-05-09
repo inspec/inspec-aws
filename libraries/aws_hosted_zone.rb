@@ -32,7 +32,7 @@ class AwsHostedZone < AwsResourceBase
 
     validate_parameters(required: [:zone_name])
     @id = get_zone_id
-    get_zone_records
+    @records = get_zone_records
   end
 
   def exist?
@@ -72,14 +72,16 @@ class AwsHostedZone < AwsResourceBase
   end
 
   def get_zone_records
-    @records = zone_record_sets&.resource_record_sets.flat_map do |item|
+    return {} unless zone_record_sets
+
+    zone_record_sets.resource_record_sets.flat_map do |item|
       item.resource_records.flat_map do |record|
         {
           record_name:  item.name,
           id: @id,
           type: item.type,
           value: record.value,
-          ttl: item.ttl
+          ttl: item.ttl,
         }
       end
     end
