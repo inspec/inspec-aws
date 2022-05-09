@@ -45,18 +45,14 @@ class AwsHostedZone < AwsResourceBase
 
   private
 
-  def get_zone_id(zone_name)
-    catch_aws_errors do
-      resp = @aws.route53_client.list_hosted_zones
-
-      zone = resp.hosted_zones.find { |item| item.name==zone_name }
-
-      if zone.nil?
-        return @id = nil
-      end
-
-      @id = zone.id
+  def get_zone_id
+    resp = catch_aws_errors do
+      route53_client.list_hosted_zones
     end
+    return unless resp
+
+    zone = resp.hosted_zones.find { |item| item.name== opts[:zone_name] }
+    zone&.id
   end
 
   def get_zone_details(zone_id)
