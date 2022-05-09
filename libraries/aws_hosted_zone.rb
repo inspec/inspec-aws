@@ -55,20 +55,11 @@ class AwsHostedZone < AwsResourceBase
     zone&.id
   end
 
-  def get_zone_details(zone_id)
-    catch_aws_errors do
+  def zone_details
+    return unless @id
 
-      resp = @aws.route53_client.get_hosted_zone(id: zone_id)
-
-      if !resp[:delegation_set].nil? && !resp[:delegation_set][:name_servers].nil?
-        @name_servers = resp[:delegation_set][:name_servers]
-      else
-        @name_servers = []
-      end
-
-      @private_zone = resp[:hosted_zone][:config][:private_zone]
-      @record_count = resp[:hosted_zone][:resource_record_set_count]
-
+    @zone_details ||= catch_aws_errors do
+      route53_client.get_hosted_zone(id: @id)
     end
   end
 
