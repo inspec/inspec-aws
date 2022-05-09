@@ -94,4 +94,8 @@ class AwsHostedZone < AwsResourceBase
     end
     @records = records_rows
   end
+
+  def route53_client
+    @aws.route53_client
+  end
 end
