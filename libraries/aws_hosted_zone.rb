@@ -32,6 +32,7 @@ class AwsHostedZone < AwsResourceBase
 
     validate_parameters(required: [:zone_name])
     @id = get_zone_id
+    get_zone_records
   end
 
   def exist?
