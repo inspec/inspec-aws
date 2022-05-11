@@ -51,7 +51,7 @@ class AwsS3BucketObject < AwsResourceBase
   end
 
   def resource_id
-    @key
+    "#{@bucket_name}_#{@key}"
   end
 
   def to_s

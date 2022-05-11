@@ -101,7 +101,7 @@ class AwsS3BucketObjecPublicTest < Minitest::Test
   end
 
   def test_resource_id
-    assert_equal(@bucket_object.resource_id, 'public.file')
+    assert_equal(@bucket_object.resource_id, 'public_bucket_public.file')
   end
 
   def test_resource_id_not_nil_check
@@ -154,7 +154,7 @@ class AwsS3BucketObjecPrivateTest < Minitest::Test
   end
 
   def test_resource_id
-    assert_equal(@bucket_object.resource_id, 'private.file')
+    assert_equal(@bucket_object.resource_id, 'private_bucket_private.file')
   end
 
   def test_resource_id_not_nil_check
