@@ -109,7 +109,7 @@ class AwsS3BucketObjecPublicTest < Minitest::Test
   end
 end
 
-class AwsS3BucketObjecPrivateTest < Minitest::Test
+class AwsS3BucketObjectPrivateTest < Minitest::Test
 
   def setup
     # an empty response from get_object is sufficient in this case for the resource to exist
