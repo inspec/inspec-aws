@@ -55,4 +55,9 @@ class AWSCloudFrontOriginAccessIdentitySuccessPathTest < Minitest::Test
   def test_comment
     assert_equal(@resp.cloud_front_origin_access_identity_config.comment, 'test1')
   end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
+  end
 end

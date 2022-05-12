@@ -149,4 +149,9 @@ class AWSCloudFrontStreamingDistributionSuccessPathTest < Minitest::Test
   def test_streaming_distribution_config_enabled
     assert_equal(@resp.streaming_distribution_config.enabled, true)
   end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
+  end
 end
