@@ -46,6 +46,10 @@ class AwsEcrPublicRepository < AwsResourceBase
     end
   end
 
+  def resource_id
+    @ecr_repo[:repository_arn]
+  end
+
   def exists?
     !@ecr_repo.nil? && !@ecr_repo.empty?
   end

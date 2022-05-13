@@ -542,6 +542,10 @@ class AWSECSTaskDefinition < AwsResourceBase
     (proxy_configuration.map(&:properties)).map(&:value)
   end
 
+  def resource_id
+    @task_definition[:task_definition_arn]
+  end
+
   def to_s
     "Task Definition Name: #{@display_name}"
   end

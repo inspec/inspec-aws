@@ -25,6 +25,11 @@ class AwsEcsClusterConstructorTest < Minitest::Test
                                  stub_data: [stub_data])
   end
 
+  def test_resource_id
+    refute_nil(@cluster.resource_id)
+    assert_equal(@cluster.resource_id, @mock_cluster[:cluster_arn])
+  end
+
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsEcsCluster.new(client_args: { stub_responses: true }) }
   end

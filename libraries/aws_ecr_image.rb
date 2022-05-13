@@ -127,6 +127,10 @@ class AwsEcrImage < AwsResourceBase
     image_tags
   end
 
+  def resource_id
+    "#{@image[:repository_name]}_#{@image[:image_digest]}"
+  end
+
   def to_s
     "ECR Image #{@display_name}"
   end

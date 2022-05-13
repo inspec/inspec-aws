@@ -57,6 +57,10 @@ class AwsEcrPolicy < AwsResourceBase
     @statements ||= calculate_statements || []
   end
 
+  def resource_id
+    "#{@image[:repository_name]}_#{@image[:registry_id]}"
+  end
+
   def calculate_statements
     return unless @repo_policy
 

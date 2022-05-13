@@ -99,9 +99,8 @@ class AwsEksClusterTest < Minitest::Test
     assert_equal(@eks.disabled_logging_types, @mock_eks[:cluster].dig(:logging, :cluster_logging).select{|z| z[:enabled] == false }.map {|x| x[:types] }.flatten)
   end
 
-  def resource_id
+  def test_resource_id
     refute_nil(@eks.resource_id)
     assert_equal(@eks.resource_id, @mock_eks[:cluster][:arn])
   end
-
 end
