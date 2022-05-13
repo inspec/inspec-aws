@@ -48,6 +48,10 @@ class AwsVPNGateway < AwsResourceBase
     !attached?
   end
 
+  def resource_id
+    @opts[:vpn_gateway_id]
+  end
+
   private
 
   def fetch

@@ -63,6 +63,10 @@ class AwsEbsVolume < AwsResourceBase
     @volume[:encrypted]
   end
 
+  def resource_id
+    @volume[:volume_id]
+  end
+
   def to_s
     "EBS Volume #{@display_name}"
   end

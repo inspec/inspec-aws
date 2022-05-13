@@ -34,6 +34,10 @@ class AWSEC2CustomerGateway < AwsResourceBase
     !@resp.nil? && !@resp.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Customer Gateway Id: #{@display_name}"
   end

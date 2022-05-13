@@ -34,6 +34,10 @@ class AWSEc2TrafficMirrorSession < AwsResourceBase
     !@traffic_mirror_session.nil? && !@traffic_mirror_session.empty?
   end
 
+  def resource_id
+    @traffic_mirror_session[:traffic_mirror_session_id]
+  end
+
   def to_s
     "EC2 Traffic Mirror Session: #{@display_name}"
   end

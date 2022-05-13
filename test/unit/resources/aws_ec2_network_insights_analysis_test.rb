@@ -56,4 +56,9 @@ class AWSEC2NetworkInsightsAnalysisSuccessPathTest < Minitest::Test
   def test_status_message
     assert_equal(@resp.status_message, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.network_insights_analysis_id)
+  end
 end

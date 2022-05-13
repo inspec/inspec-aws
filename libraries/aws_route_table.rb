@@ -72,6 +72,10 @@ class AwsRouteTable < AwsResourceBase
     }
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Route table #{@display_name}"
   end

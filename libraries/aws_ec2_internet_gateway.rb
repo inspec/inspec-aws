@@ -38,6 +38,10 @@ class AWSEC2InternetGateway < AwsResourceBase
     attachments.map(&:vpc_id)
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

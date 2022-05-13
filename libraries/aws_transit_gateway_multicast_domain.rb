@@ -38,6 +38,10 @@ class AWSTransitGatewayMulticastDomain < AwsResourceBase
     !@transit_gateway_multicast_domains.nil? && !@transit_gateway_multicast_domains.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Transit Gateway Multicast Domain ID: #{@display_name}"
   end

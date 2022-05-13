@@ -17,7 +17,7 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
     super(opts)
     validate_parameters(required: [:network_insights_path_id])
     raise ArgumentError, "#{@__resource_name__}: network_insights_path_id must be provided" unless opts[:network_insights_path_id] && !opts[:network_insights_path_id].empty?
-    @display_name = opts[:instance_profile_name]
+    @display_name = opts[:network_insights_path_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_network_insights_paths({ network_insights_path_ids: [opts[:network_insights_path_id]] })
       @res = resp.network_insights_paths[0].to_h
@@ -32,6 +32,10 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
+  end
+
+  def resource_id
+    @display_name
   end
 
   def to_s

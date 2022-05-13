@@ -109,6 +109,10 @@ class AwsInternetGateway < AwsResourceBase
     !attached?
   end
 
+  def resource_id
+    @igw[:internet_gateway_id]
+  end
+
   def to_s
     "Internet Gateway #{@display_name}"
   end

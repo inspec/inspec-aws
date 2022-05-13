@@ -33,6 +33,7 @@ class AwsVpc < AwsResourceBase
     catch_aws_errors do
       @response = @aws.compute_client.describe_vpcs({ filters: [filter] })
     end
+
     vpc_hash = vpc.to_h
     vpc_hash.delete(:ipv_6_cidr_block_association_set)
     vpc_hash.delete(:cidr_block_association_set)
@@ -59,6 +60,10 @@ class AwsVpc < AwsResourceBase
 
   def exists?
     !!vpc && !vpc.empty?
+  end
+
+  def resource_id
+    @display_name[:vpc_id]
   end
 
   def has_cidr_block_associated?(cidr_block)

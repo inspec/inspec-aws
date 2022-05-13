@@ -37,6 +37,10 @@ class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    "#{@display_name}_#{@res[:group_id]}"
+  end
+
   def to_s
     "Client VPN Endpoint ID: #{@display_name}"
   end

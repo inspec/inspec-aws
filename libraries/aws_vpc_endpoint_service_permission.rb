@@ -38,6 +38,10 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
     !failed_resource? && !!allowed_principal && !allowed_principal.empty?
   end
 
+  def resource_id
+    "#{@opts[:service_id]}_#{@opts[:principal]}"
+  end
+
   def to_s
     "VPN Endpoint Service ID: #{@opts[:service_id]} and Permission Principal: #{@opts[:principal]}"
   end

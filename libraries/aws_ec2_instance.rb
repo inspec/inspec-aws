@@ -125,6 +125,10 @@ class AwsEc2Instance < AwsResourceBase
     end
   end
 
+  def resource_id
+    @instance[:instance_id]
+  end
+
   def to_s
     "EC2 Instance #{@display_name}"
   end

@@ -7,10 +7,11 @@ class AwsTransitGateway < AwsResourceBase
   desc 'Verifies settings for an AWS Transit Gateway.'
 
   example "
-    describe aws_transit_gateway('transit_gateway_id') do
+    describe aws_transit_gateway('TRANSIT_GATEWAY_ID') do
       it { should exist }
     end
   "
+
   attr_reader :transit_gateway_arn, :transit_gateway_id, :transit_gateway_owner_id,
               :default_route_table_id, :propagation_default_route_table_id,
               :vpn_ecmp_support, :dns_support
@@ -37,7 +38,11 @@ class AwsTransitGateway < AwsResourceBase
     !@transit_gateway_id.nil?
   end
 
+  def resource_id
+    @transit_gateway_id
+  end
+
   def to_s
-    'AWS Transit Gateway'
+    "AWS Transit Gateway ID: #{@transit_gateway_id}"
   end
 end

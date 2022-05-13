@@ -34,6 +34,10 @@ class AWSEC2CarrierGateway < AwsResourceBase
     !@resp.nil? && !@resp.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Carrier Gateway Id: #{@display_name}"
   end

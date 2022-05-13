@@ -39,6 +39,10 @@ class AwsEc2Eip < AwsResourceBase
     !@addresses.nil? && !@addresses.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Public IP: #{@display_name}"
   end

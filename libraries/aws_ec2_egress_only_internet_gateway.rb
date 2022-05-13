@@ -34,6 +34,10 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
     !@resp.nil? && !@resp.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Egress Only Internet Gateway Id: #{@display_name}"
   end

@@ -69,6 +69,11 @@ class AwsEc2InstanceConstructorNameTest < Minitest::Test
   def test_ec2_exists
     assert @ec2.exists?
   end
+
+  def test_resource_id
+    refute_nil(@ec2.resource_id)
+    assert_equal(@ec2.resource_id, @ec2.instance_id)
+  end
 end
 
 class AwsEc2InstanceHappyPathTest < Minitest::Test
@@ -260,6 +265,11 @@ class AwsEc2InstanceHappyPathTest < Minitest::Test
   def test_undefined_method_on_existing_property
     assert_raises(NoMethodError) { @ec2.placement.availability_zone.fake_method}
   end
+
+  def test_resource_id
+    refute_nil(@ec2.resource_id)
+    assert_equal(@ec2.resource_id, @ec2.instance_id)
+  end
 end
 
 class AwsEc2InstanceStatusTest < Minitest::Test
@@ -352,6 +362,11 @@ class AwsEc2InstanceEmptyRolesTest < Minitest::Test
   def test_no_tags_hash
     assert_equal(@ec2.tags_hash, {})
   end
+
+  def test_resource_id
+    refute_nil(@ec2.resource_id)
+    assert_equal(@ec2.resource_id, @ec2.instance_id)
+  end
 end
 
 class AwsEc2InstanceHasRolesTest < Minitest::Test
@@ -397,5 +412,10 @@ class AwsEc2InstanceHasRolesTest < Minitest::Test
 
   def test_role
     assert_equal(@ec2.role, "Test-Role")
+  end
+
+  def test_resource_id
+    refute_nil(@ec2.resource_id)
+    assert_equal(@ec2.resource_id, @ec2.instance_id)
   end
 end

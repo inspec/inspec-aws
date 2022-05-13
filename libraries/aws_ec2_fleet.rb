@@ -34,6 +34,10 @@ class AWSEC2Fleet < AwsResourceBase
     !@resp.nil? && !@resp.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Fleet Id: #{@display_name}"
   end
