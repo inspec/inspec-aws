@@ -31,6 +31,10 @@ class AWSRoute53RecordSet < AwsResourceBase
     @res[:hosted_zone_id]
   end
 
+  def resource_id
+    "#{@hosted_zone_id}_#{@start_record_name}"
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end
