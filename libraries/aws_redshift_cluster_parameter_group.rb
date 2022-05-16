@@ -12,10 +12,9 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { public_ip: opts } if opts.is_a?(String)
+    opts = { parameter_group_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:parameter_group_name])
-
     raise ArgumentError, "#{@__resource_name__}: parameter_group_name must be provided" unless opts[:parameter_group_name] && !opts[:parameter_group_name].empty?
     @display_name = opts[:parameter_group_name]
     catch_aws_errors do
@@ -28,6 +27,10 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   def parameter_group_name
     return nil unless exists?
     @parameter_groups[:parameter_group_name]
+  end
+
+  def resource_id
+    "#{@parameter_groups[:parameter_group_name]}_#{('a'..'z').to_a.shuffle.join}"
   end
 
   def exists?
