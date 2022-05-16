@@ -21,6 +21,10 @@ class AWSDMSReplicationInstance < AwsResourceBase
     end
   end
 
+  def resource_id
+    ('a'..'z').to_a.shuffle.join.to_s
+  end
+
   def replication_instance_class
     return nil unless exists?
     @orderable_replication_instances[:replication_instance_class]

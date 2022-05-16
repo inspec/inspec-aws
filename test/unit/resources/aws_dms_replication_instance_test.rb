@@ -33,6 +33,10 @@ class AWSDMSReplicationInstanceSuccessPathTest < Minitest::Test
     @orderable_replication_instances = AWSDMSReplicationInstance.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@orderable_replication_instances.resource_id)
+  end
+
   def test_orderable_replication_instances_exists
     assert @orderable_replication_instances.exists?
   end
