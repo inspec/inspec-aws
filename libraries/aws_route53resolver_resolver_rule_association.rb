@@ -30,6 +30,10 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
     @res[:resolver_rule_association_id]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

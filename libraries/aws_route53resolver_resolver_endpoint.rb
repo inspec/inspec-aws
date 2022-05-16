@@ -30,6 +30,10 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
     @res[:resolver_endpoint_id]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end
