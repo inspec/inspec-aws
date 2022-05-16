@@ -32,7 +32,6 @@ class AwsDynamodbTableConstructorTest < Minitest::Test
     not_existing[:client] = Aws::DynamoDB::Client
     refute AwsDynamoDbTable.new(table_name: 'table_that_doesnt_exist', client_args: { stub_responses: true }, stub_data: [not_existing]).exists?
   end
-
 end
 
 class AwsDynamodbTableTest < Minitest::Test
@@ -46,6 +45,10 @@ class AwsDynamodbTableTest < Minitest::Test
     @config = AwsDynamoDbTable.new(table_name: @mock_config[:table_name],
                                    client_args: { stub_responses: true },
                                    stub_data: @mock.stub_data)
+  end
+  
+  def test_resource_id
+    refute_nil(@config.resource_id)
   end
 
   def test_table_exists

@@ -66,6 +66,10 @@ class AwsDynamoDbTable < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@table_name}_#{('a'..'z').to_a.shuffle.join}"
+  end
+
   def encrypted?
     @dynamodb_table.dig(:sse_description, :status)&.upcase == 'ENABLED' || false
   end
