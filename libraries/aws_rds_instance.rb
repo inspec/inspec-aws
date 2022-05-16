@@ -24,6 +24,10 @@ class AwsRdsInstance < AwsResourceBase
     create_resource_methods(@rds_instance)
   end
 
+  def resource_id
+    "#{@rds_instance[:db_instance_identifier]}_#{@rds_instance[:db_name]}_#{@rds_instance[:master_username]}"
+  end
+
   def has_encrypted_storage?
     @rds_instance[:storage_encrypted]
   end

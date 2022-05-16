@@ -28,6 +28,10 @@ class AwsDbSubnetGroup < AwsResourceBase
     end
   end
 
+  def resource_id
+    @subnet_group[:db_subnet_group_arn]
+  end
+
   def exists?
     !failed_resource?
   end

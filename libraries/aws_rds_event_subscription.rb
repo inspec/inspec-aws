@@ -24,6 +24,10 @@ class AWSRDSEventSubscription < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:customer_aws_id]}_#{@res[:cust_subscription_id]}"
+  end
+
   def subscription_name
     return nil unless exists?
     @res[:subscription_name]

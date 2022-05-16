@@ -24,6 +24,10 @@ class AWSRDSGlobalCluster < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:global_cluster_resource_id]
+  end
+
   def global_cluster_identifier
     return nil unless exists?
     @res[:global_cluster_identifier]

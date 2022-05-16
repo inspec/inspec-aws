@@ -40,6 +40,11 @@ class AwsDbSubnetGroupSuccessPathTest < Minitest::Test
     @subnet_group = AwsDbSubnetGroup.new(db_subnet_group_name: 'default', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@subnet_group.resource_id)
+    assert_equal(@subnet_group.resource_id, @subnet_group.db_subnet_group_arn)
+  end
+
   def test_subnet_group_exists
     assert @subnet_group.exists?
   end

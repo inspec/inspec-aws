@@ -32,6 +32,10 @@ class AwsDbParameterGroup < AwsResourceBase
     end
   end
 
+  def resource_id
+    @parameter_group[:db_parameter_group_arn]
+  end
+
   def exists?
     !failed_resource?
   end

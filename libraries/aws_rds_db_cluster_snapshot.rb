@@ -36,6 +36,10 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
     @res[:db_cluster_snapshot_id]
   end
 
+  def resource_id
+    @res[:db_cluster_snapshot_arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

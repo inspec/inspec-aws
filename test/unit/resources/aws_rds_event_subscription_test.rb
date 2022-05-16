@@ -33,6 +33,11 @@ class AWSRDSEventSubscriptionSuccessPathTest < Minitest::Test
     @resp = AWSRDSEventSubscription.new( subscription_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.customer_aws_id+'_'+@resp.cust_subscription_id)
+  end
+
   def test_event_subscription_exist
     assert @resp.exists?
   end

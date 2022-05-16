@@ -24,6 +24,10 @@ class AwsRdsSnapshot < AwsResourceBase
     create_resource_methods(@rds_snapshot)
   end
 
+  def resource_id
+    @rds_snapshot[:db_snapshot_identifier]
+  end
+
   def has_encrypted_snapshot?
     @rds_snapshot[:encrypted]
   end

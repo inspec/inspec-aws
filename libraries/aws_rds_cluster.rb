@@ -11,6 +11,7 @@ class AwsRdsCluster < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { db_cluster_identifier: opts } if opts.is_a?(String)
     super(opts)
@@ -34,6 +35,10 @@ class AwsRdsCluster < AwsResourceBase
       end
       create_resource_methods(@rds_cluster)
     end
+  end
+
+  def resource_id
+    @rds_cluster[:db_cluster_arn]
   end
 
   def has_encrypted_storage?

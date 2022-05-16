@@ -29,6 +29,10 @@ class AWSRDSProxy < AwsResourceBase
     @res[:db_proxy_name]
   end
 
+  def resource_id
+    @res[:db_proxy_arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

@@ -24,6 +24,10 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:db_security_group_arn]
+  end
+
   def db_security_group_name
     return nil unless exists?
     @res[:db_security_group_name]
