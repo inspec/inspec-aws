@@ -31,6 +31,10 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
     @scaling_policies[:service_namespace]
   end
 
+  def resource_id
+    @scaling_policies[:resource_id]
+  end
+
   def exists?
     !@scaling_policies.nil? && !@scaling_policies.empty?
   end
