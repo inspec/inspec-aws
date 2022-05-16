@@ -30,6 +30,10 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
     @domain_status[:domain_name]
   end
 
+  def resource_id
+    @domain_status[:domain_id]
+  end
+
   def exists?
     !@domain_status.nil? && !@domain_status.empty?
   end
