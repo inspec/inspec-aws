@@ -30,6 +30,10 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
     @res[:firewall_policy_name]
   end
 
+  def resource_id
+    @res[:firewall_policy_arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

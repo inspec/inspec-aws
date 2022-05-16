@@ -30,6 +30,10 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
     @res[:rule_group_arn]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

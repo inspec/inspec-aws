@@ -30,6 +30,10 @@ class AWSNetworkFirewallFirewall < AwsResourceBase
     @res[:firewall_name]
   end
 
+  def resource_id
+    @res[:firewall][:firewall_arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end
