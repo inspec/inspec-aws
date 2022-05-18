@@ -85,5 +85,4 @@ class AwsElb < AwsResourceBase
   def resource_id
     @load_balancer_name
   end
-
 end
