@@ -83,6 +83,6 @@ class AwsElb < AwsResourceBase
   end
 
   def resource_id
-    @load_balancer_name
+    "#{@load_balancer_name}_#{@load_balancer_description[:availability_zones]}"
   end
 end

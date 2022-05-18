@@ -54,9 +54,9 @@ class AwsAlb < AwsResourceBase
     end
   end
 
-  def ssl_policies
-    @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == 'HTTPS' }.uniq
-  end
+  # def ssl_policies
+  #   @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == 'HTTPS' }.uniq
+  # end
 
   def external_ports
     @external_ports ||= listeners.map(&:port)

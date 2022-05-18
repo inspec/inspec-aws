@@ -49,7 +49,7 @@ class AwsElbConstructorTest < Minitest::Test
 
   def test_resource_id
     refute_nil(@elb.resource_id)
-    assert_equal(@elb.resource_id, @mock_elb[:load_balancer_name])
+    assert_equal(@elb.resource_id, "#{@mock_elb[:load_balancer_name]}_eu-central-1a")
   end
 
   def test_empty_params_not_ok
