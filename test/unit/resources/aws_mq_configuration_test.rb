@@ -43,5 +43,10 @@ class AWSMQConfigurationSuccessPathTest < Minitest::Test
   def test_mq_configurations_name
     assert_equal(@mq_configurations.name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@mq_configurations.resource_id)
+    assert_equal(@mq_configurations.resource_id, 'test1')
+  end
 end
 

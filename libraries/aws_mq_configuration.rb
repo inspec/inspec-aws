@@ -29,6 +29,10 @@ class AWSMQConfiguration < AwsResourceBase
     @configurations[:configuration_id]
   end
 
+  def resource_id
+    @configurations[:configuration_id]
+  end
+
   def exists?
     !@configurations.nil? && !@configurations.empty?
   end

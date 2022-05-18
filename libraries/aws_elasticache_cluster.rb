@@ -55,6 +55,10 @@ class AwsElastiCacheCluster < AwsResourceBase
     @cache_cluster[:cache_cluster_id] || nil
   end
 
+  def resource_id
+    @cache_cluster[:cache_cluster_id]
+  end
+
   def node_ids
     @cache_cluster[:cache_nodes].map { |node| node[:cache_node_id] }
   end
