@@ -34,6 +34,10 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
     @res[:documentation_part_id]
   end
 
+  def resource_id
+    @res[:id]
+  end
+
   def to_s
     "Documentation Part ID: #{@display_name}"
   end

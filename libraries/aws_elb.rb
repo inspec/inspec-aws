@@ -81,4 +81,9 @@ class AwsElb < AwsResourceBase
   def elb_client
     @aws.elb_client
   end
+
+  def resource_id
+    @load_balancer_name
+  end
+
 end

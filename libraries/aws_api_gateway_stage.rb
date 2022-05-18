@@ -30,6 +30,10 @@ class AWSApiGatewayStage < AwsResourceBase
     @res[:stage_name]
   end
 
+  def resource_id
+    @res[:stage_name]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

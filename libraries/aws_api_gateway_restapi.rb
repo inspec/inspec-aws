@@ -30,6 +30,10 @@ class AWSApiGatewayRestApi < AwsResourceBase
     @res[:rest_api_id]
   end
 
+  def resource_id
+    @res[:id]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

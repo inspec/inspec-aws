@@ -34,6 +34,10 @@ class AWSApiGatewayModel < AwsResourceBase
     @res[:model_name]
   end
 
+  def resource_id
+    @res[:id]
+  end
+
   def to_s
     "Model Name: #{@display_name}"
   end

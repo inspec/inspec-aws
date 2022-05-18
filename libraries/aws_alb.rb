@@ -66,6 +66,10 @@ class AwsAlb < AwsResourceBase
     @protocols ||= listeners.map(&:protocol).uniq
   end
 
+  def resource_id
+    @load_balancer_arn
+  end
+
   def exists?
     !load_balancer_arn.nil?
   end

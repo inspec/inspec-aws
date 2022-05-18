@@ -22,6 +22,10 @@ class AWSApiGatewayAccount < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:cloudwatch_role_arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end
