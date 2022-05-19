@@ -41,10 +41,4 @@ class AWSElasticLoadBalancingV2ListenerCertificatesHappyPathTest < Minitest::Tes
   def test_is_defaults
     assert_equal(@certificates.is_defaults, [true])
   end
-
-  def test_resource_id
-    refute_nil(@certificates.resource_id)
-    assert_equal(@certificates.resource_id, 'test1')
-  end
-
 end
