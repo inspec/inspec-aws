@@ -49,7 +49,7 @@ class AwsCloudWatchLogGroupConstructorSingleMatchTest < Minitest::Test
 
   def test_resource_id
     refute_nil(@log_group.resource_id)
-    assert_equal(@log_group.arn, 'my_log_group')
+    assert_equal(@log_group.resource_id, @log_group.arn)
   end
 
   def test_log_group_exists
