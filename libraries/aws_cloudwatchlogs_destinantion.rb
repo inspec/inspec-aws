@@ -25,6 +25,10 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@destinations[:destination_name]}_#{@destinations[:arn]}"
+  end
+
   def destination_name_prefix
     return nil unless exists?
     @destinations[:destination_name_prefix]

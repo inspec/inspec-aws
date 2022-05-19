@@ -25,9 +25,13 @@ class AWSCloudwatchDashboard < AwsResourceBase
     end
   end
 
+  def resource_id
+    @dashboard[:dashboard_arn]
+  end
+
   def dashboard_name
     return nil unless exists?
-    @res[:dashboard_name]
+    @dashboard[:dashboard_name]
   end
 
   def exists?

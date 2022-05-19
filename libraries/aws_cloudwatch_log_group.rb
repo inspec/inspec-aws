@@ -31,11 +31,16 @@ class AwsCloudWatchLogGroup < AwsResourceBase
     @retention_in_days = @log_groups.first.retention_in_days
     @metric_filter_count = @log_groups.first.metric_filter_count
     @kms_key_id = @log_groups.first.kms_key_id
+    @arn = @log_groups.first.arn
 
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.list_tags_log_group({ log_group_name: @log_group_name })
       @tags = resp.tags
     end
+  end
+
+  def resource_id
+    @log_groups[:arn]
   end
 
   def exists?

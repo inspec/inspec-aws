@@ -25,6 +25,10 @@ class AwsCloudwatchCompositeAlarm < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:alarm_arn]
+  end
+
   def alarm_name
     return nil unless exists?
     @res[:alarm_name]

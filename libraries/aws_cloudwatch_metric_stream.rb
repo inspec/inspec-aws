@@ -25,6 +25,10 @@ class AWSCloudwatchMetricStream < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@stream[:name]}_#{@stream[:arn]}"
+  end
+
   def metric_stream_name
     return nil unless exists?
     @stream[:name]

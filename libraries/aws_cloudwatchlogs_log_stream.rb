@@ -26,6 +26,10 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@log_streams[:log_stream_name]}_#{@log_streams[:arn]}"
+  end
+
   def log_stream_name_prefix
     return nil unless exists?
     @log_streams[:log_stream_name_prefix]

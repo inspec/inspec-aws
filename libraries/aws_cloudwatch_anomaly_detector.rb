@@ -25,6 +25,10 @@ class AwsCloudwatchAnomalyDetector < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:metric_name]}_#{@res[:namespace]}"
+  end
+
   def metric_name
     return nil unless exists?
     @res[:metric_name]

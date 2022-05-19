@@ -26,6 +26,10 @@ class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@filter[:filter_name]}_#{@filter[:log_group_name]}_#{@filter[:role_arn]}"
+  end
+
   def filter_name_prefix
     return nil unless exists?
     @filter[:filter_name_prefix]
