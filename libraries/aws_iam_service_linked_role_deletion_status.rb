@@ -30,6 +30,10 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
     @res[:status]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

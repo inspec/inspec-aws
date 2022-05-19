@@ -70,6 +70,10 @@ class AwsIamAccessKey < AwsResourceBase
     end
   end
 
+  def resource_id
+    @access_key_id
+  end
+
   def active?
     return nil unless exists?
     status == 'Active'

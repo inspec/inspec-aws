@@ -25,6 +25,10 @@ class AwsIamManagedPolicy < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:arn]
+  end
+
   def is_attachable?
     @res.is_attachable
   end

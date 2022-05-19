@@ -23,6 +23,10 @@ class AwsIamRootUser < AwsResourceBase
     end
   end
 
+  def resource_id
+    @virtual_devices.first.serial_number
+  end
+
   def has_access_key?
     @summary_account['AccountAccessKeysPresent'] == 1
   end

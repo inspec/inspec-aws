@@ -25,6 +25,10 @@ class AWSIAMOIDCProvider < AwsResourceBase
     end
   end
 
+  def resource_id
+    @display_name
+  end
+
   def open_id_connect_provider_arn
     return nil unless exists?
     @res[:open_id_connect_provider_arn]

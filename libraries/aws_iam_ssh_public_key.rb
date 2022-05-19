@@ -30,6 +30,10 @@ class AWSIAMSSHPublicKey < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:user_name]}_#{@res[:ssh_public_key_id]}"
+  end
+
   def ssh_public_key_id
     return nil unless exists?
     @res[:ssh_public_key_id]

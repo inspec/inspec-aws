@@ -25,6 +25,10 @@ class AWSIAMServerCertificate < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:arn]
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

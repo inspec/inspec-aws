@@ -25,6 +25,10 @@ class AWSIAMInstanceProfile < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:arn]
+  end
+
   def instance_profile_name
     return nil unless exists?
     @res[:instance_profile_name]
