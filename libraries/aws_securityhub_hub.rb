@@ -25,6 +25,10 @@ class AWSSecurityHubHub < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:hub_arn]
+  end
+
   def hub_arn
     return nil unless exists?
     @res[:hub_arn]
