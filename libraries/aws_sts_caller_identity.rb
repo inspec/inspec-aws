@@ -23,6 +23,10 @@ class AwsStsCallerIdentity < AwsResourceBase
     create_resource_methods(@resp.to_h)
   end
 
+  def resource_id
+    @resp[:arn]
+  end
+
   def govcloud?
     fetch_arn_components[:partition] == 'aws-us-gov'
   end

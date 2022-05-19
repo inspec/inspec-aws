@@ -22,6 +22,9 @@ class AwsOrganizationsMemberTest < Minitest::Test
     assert_equal(@org_member.account_arn, @mock_account[:arn])
     assert_equal(@org_member.account_name, @mock_account[:name])
     assert_equal(@org_member.account_email, @mock_account[:email])
+
+    refute_nil(@org_member.resource_id)
+    assert_equal(@org_member.resource_id, @org_member.account_arn)
   end
 
   def test_no_params_allowed
