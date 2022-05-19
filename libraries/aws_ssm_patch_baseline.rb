@@ -32,6 +32,10 @@ class AWSSESPatchBaseline < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:baseline_id]}_#{@res[:name]}"
+  end
+
   def baseline_id
     return nil unless exists?
     @res[:baseline_id]

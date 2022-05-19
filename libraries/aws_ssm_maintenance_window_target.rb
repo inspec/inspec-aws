@@ -31,6 +31,10 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:window_id]}_#{@res[:window_target_id]}"
+  end
+
   def window_target_id
     return nil unless exists?
     @res[:window_target_id]

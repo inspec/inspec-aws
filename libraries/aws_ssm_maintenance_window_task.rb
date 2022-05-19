@@ -31,6 +31,10 @@ class AWSSESMaintenanceWindowTask < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@res[:window_id]}_#{@res[:window_task_id]}"
+  end
+
   def window_task_id
     return nil unless exists?
     @res[:window_task_id]

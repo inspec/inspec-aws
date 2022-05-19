@@ -27,6 +27,10 @@ class AwsSsmAssociation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @association[:association_id]
+  end
+
   def request_params
     opts[:association_id] ? { association_id: opts[:association_id] } : { name: opts[:name], instance_id: opts[:instance_id] }
   end

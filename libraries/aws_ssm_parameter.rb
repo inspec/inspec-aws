@@ -29,6 +29,10 @@ class AwsSsmParameter < AwsResourceBase
     end
   end
 
+  def resource_id
+    @ssm_parameter[:arn]
+  end
+
   def request_params
     opts[:with_decryption] ? { name: opts[:name], with_decryption: true } : { name: opts[:name] }
   end

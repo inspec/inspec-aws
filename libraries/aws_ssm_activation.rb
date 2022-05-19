@@ -30,6 +30,10 @@ class AwsSsmActivation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @activation[:activation_id]
+  end
+
   def exists?
     !failed_resource?
   end
