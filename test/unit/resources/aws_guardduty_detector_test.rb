@@ -36,6 +36,11 @@ class AwsGuardDutyDetectorSuccessPathTest < Minitest::Test
     @detector = AwsGuardDutyDetector.new(detector_id: 'default', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@detector.resource_id)
+    assert_equal(@detector.resource_id, 'default'+'_'+@detector.created_at)
+  end
+
   def test_detector_exists
     assert @detector.exists?
   end
