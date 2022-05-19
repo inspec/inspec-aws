@@ -25,6 +25,10 @@ class AwsKmsKey < AwsResourceBase
     create_resource_methods(key_metadata)
   end
 
+  def resource_id
+    key_metadata[:arn]
+  end
+
   def exists?
     !key_metadata.blank?
   end
