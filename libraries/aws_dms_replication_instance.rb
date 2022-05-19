@@ -22,7 +22,7 @@ class AWSDMSReplicationInstance < AwsResourceBase
   end
 
   def resource_id
-    ('a'..'z').to_a.shuffle.join.to_s
+    "#{@orderable_replication_instances[:replication_instance_class]}_#{@orderable_replication_instances[:engine_version]}"
   end
 
   def replication_instance_class

@@ -37,6 +37,7 @@ class AwsRedshiftClusterParameterGroupPathTest < Minitest::Test
   
   def test_resource_id
     refute_nil(@parameter_groups.resource_id)
+    assert_equal(@parameter_groups.resource_id, @parameter_groups.parameter_group_name)
   end
 
   def test_parameter_group_name_exists

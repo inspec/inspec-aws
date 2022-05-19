@@ -49,6 +49,7 @@ class AwsDynamodbTableTest < Minitest::Test
   
   def test_resource_id
     refute_nil(@config.resource_id)
+    assert_equal(@config.resource_id, @mock_config[:table_arn])
   end
 
   def test_table_exists

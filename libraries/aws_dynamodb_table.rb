@@ -67,7 +67,7 @@ class AwsDynamoDbTable < AwsResourceBase
   end
 
   def resource_id
-    "#{@table_name}_#{('a'..'z').to_a.shuffle.join}"
+    @table_arn
   end
 
   def encrypted?

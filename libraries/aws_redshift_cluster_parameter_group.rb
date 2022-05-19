@@ -30,7 +30,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   end
 
   def resource_id
-    "#{@parameter_groups[:parameter_group_name]}_#{('a'..'z').to_a.shuffle.join}"
+    (@parameter_groups[:parameter_group_name]).to_s
   end
 
   def exists?
