@@ -25,6 +25,10 @@ class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:principal_arn]
+  end
+
   def portfolio_id
     return nil unless exists?
     @res[:portfolio_id]

@@ -25,6 +25,10 @@ class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:product_view_detail][:product_view_summary][:id]
+  end
+
   def name
     return nil unless exists?
     @res[:name]

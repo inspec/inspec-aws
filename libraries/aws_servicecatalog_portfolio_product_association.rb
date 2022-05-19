@@ -25,6 +25,10 @@ class AWSServiceCatalogPortfolioProductAssociation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:arn]
+  end
+
   def product_id
     return nil unless exists?
     @res[:product_id]
