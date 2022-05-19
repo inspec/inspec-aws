@@ -51,6 +51,11 @@ class AWSCloudFrontCachePolicySuccessPathTest < Minitest::Test
     data[:client] = Aws::CloudFront::Client
     @resp = AWSCloudFrontCachePolicy.new(id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
+  
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.id)
+  end
 
   def test_cache_policy_exists
     assert @resp.exists?
@@ -96,7 +101,7 @@ class AWSCloudFrontCachePolicySuccessPathTest < Minitest::Test
     assert_equal(@resp.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.headers_config.header_behavior, 'test1')
   end
 
-  def test_header_behavior
+  def test_cookie_behavior
     assert_equal(@resp.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.cookies_config.cookie_behavior, 'test1')
   end
 

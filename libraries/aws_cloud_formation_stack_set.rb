@@ -23,6 +23,10 @@ class AWSCloudFormationStackSet < AwsResourceBase
     create_resource_methods(@resp)
   end
 
+  def resource_id
+    @resp[:stack_set_id]
+  end
+
   def stack_set_name
     return nil unless exists?
     @resp[:stack_set_name]

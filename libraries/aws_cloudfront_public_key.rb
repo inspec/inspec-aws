@@ -25,6 +25,10 @@ class AWSCloudFrontPublicKey < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:id]
+  end
+
   def id
     return nil unless exists?
     @res[:id]

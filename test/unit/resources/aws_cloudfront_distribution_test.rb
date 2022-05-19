@@ -4,6 +4,7 @@ require 'aws_cloudfront_distribution'
 require_relative 'mock/aws_cloudfront_distribution_mock'
 
 class AwsCloudFrontDistributionConstructionTest < Minitest::Test
+  
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsCloudFrontDistribution.new(client_args: { stub_responses: true }) }
   end
@@ -42,6 +43,11 @@ class AwsCloudFrontDistributionS3OriginDefaultCertificateTest < Minitest::Test
       client_args: { stub_responses: true },
       stub_data: stub_data
     )
+  end
+
+  def test_resource_id
+    refute_nil(@cloudfront_distribution.resource_id)
+    assert_equal(@cloudfront_distribution.resource_id, @cloudfront_distribution.distribution_id)
   end
 
   def test_distribution_id

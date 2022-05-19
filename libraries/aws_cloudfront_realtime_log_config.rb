@@ -25,6 +25,10 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res[:arn]
+  end
+
   def name
     return nil unless exists?
     @res[:name]

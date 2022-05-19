@@ -23,6 +23,10 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
     create_resource_methods(@origin_request_policy)
   end
 
+  def resource_id
+    @origin_request_policy[:id]
+  end
+
   def id
     return nil unless exists?
     @origin_request_policy[:id]

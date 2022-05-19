@@ -3,7 +3,7 @@ require 'aws_iam_access_key'
 require 'helper'
 require_relative 'mock/iam/aws_iam_access_key_mock'
 
-class AwsIamAccessKey < Minitest::Test
+class AwsIamAccessKeyTest < Minitest::Test
 
   def setup
     # Given
@@ -11,13 +11,18 @@ class AwsIamAccessKey < Minitest::Test
     @mock_access_key = @mock.access_key
 
     # When
-    @access_key = AwsIamAccessKey.new(username: @mock_user[:user_name],
-                           client_args: { stub_responses: true },
-                           stub_data: @mock.stub_data)
+    @access_key = AwsIamAccessKeyTest.new(username:    @mock_user[:user_name],
+                                          client_args: { stub_responses: true },
+                                          stub_data:   @mock.stub_data)
   end
 
   def test_empty_params_not_ok
-    assert_raises(ArgumentError) { AwsIamAccessKey.new(client_args: { stub_responses: true }) }
+    assert_raises(ArgumentError) { AwsIamAccessKeyTest.new(client_args: { stub_responses: true }) }
+  end
+
+  def test_resource_id
+    refute_nil(@access_key.resource_id)
+    assert_equal(@access_key.resource_id, @access_key.access_key_id)
   end
 
   def test_username
