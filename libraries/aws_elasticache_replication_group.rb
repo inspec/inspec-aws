@@ -48,6 +48,10 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
     @replication_group[:replication_group_id]
   end
 
+  def resource_id
+    @replication_group[:replication_group_id]
+  end
+
   def status
     @replication_group[:status]
   end
@@ -68,10 +72,6 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
     @replication_group[:automatic_failover]
   end
 
-  def resource_id
-    @display_name
-  end
-  
   def to_s
     "ElastiCache Replication Group #{@display_name}"
   end
