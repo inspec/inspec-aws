@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.11 -->
+<!-- latest_release 1.83.12 -->
+## [v1.83.12](https://github.com/inspec/inspec-aws/tree/v1.83.12) (2022-05-18)
+
+#### Merged Pull Requests
+- Resource 226 aws hosted zone [#905](https://github.com/inspec/inspec-aws/pull/905) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.83.11](https://github.com/inspec/inspec-aws/tree/v1.83.11) (2022-05-09)
 
 #### Merged Pull Requests
 - Bugfix in iam access keys resource [#904](https://github.com/inspec/inspec-aws/pull/904) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.83.10](https://github.com/inspec/inspec-aws/tree/v1.83.10) (2022-05-06)
 
