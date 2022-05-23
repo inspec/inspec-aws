@@ -59,4 +59,9 @@ class AWSBatchJobQueueSuccessPathTest < Minitest::Test
   def test_priority
     assert_equal(@job_queues.priority, 1)
   end
+
+  def test_resource_id
+    refute_nil(@job_queues.resource_id)
+    assert_equal(@job_queues.resource_id, 'test1')
+  end
 end

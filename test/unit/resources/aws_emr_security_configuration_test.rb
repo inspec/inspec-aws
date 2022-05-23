@@ -61,4 +61,9 @@ class AwsEmrClusterSecurityConfigurationLocalDiskEncryptionEnabledPathTest < Min
   def test_encryption_local_disk_enabled
     assert_equal(@cluster.local_disk_encryption, true)
   end
+
+  def test_resource_id
+    refute_nil(@cluster.resource_id)
+    assert_equal(@cluster.resource_id, @cluster[:security_configuration_name])
+  end
 end
