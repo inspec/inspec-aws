@@ -97,6 +97,11 @@ class AwsCloudFrontDistributionS3OriginDefaultCertificateTest < Minitest::Test
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSv1.2_2021})
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSV1.2_2018 TLSv1.1 TLSv1.2_2021})
   end
+
+  def test_resource_id
+    assert !@cloudfront_distribution.resource_id.nil?
+    assert_equal(@cloudfront_distribution.resource_id, @cloudfront_distribution.distribution_id)
+  end
 end
 
 class AwsCloudFrontDistributionCustomTest < Minitest::Test
@@ -162,5 +167,10 @@ class AwsCloudFrontDistributionCustomTest < Minitest::Test
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSv1.2_2019})
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSv1.2_2021})
     refute @cloudfront_distribution.send(:disallowed?, %w{TLSv1.2_2021 TLSv1.2_2019 TLSv1.2_2018 TLSv1.2})
+  end
+
+  def test_resource_id
+    assert !@cloudfront_distribution.resource_id.nil?
+    assert_equal(@cloudfront_distribution.resource_id, @cloudfront_distribution.distribution_id)
   end
 end
