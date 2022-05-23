@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.13 -->
+<!-- latest_release 1.83.14 -->
+## [v1.83.14](https://github.com/inspec/inspec-aws/tree/v1.83.14) (2022-05-23)
+
+#### Merged Pull Requests
+- Remove hugo version and go version from Netlify config [#915](https://github.com/inspec/inspec-aws/pull/915) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.83.13](https://github.com/inspec/inspec-aws/tree/v1.83.13) (2022-05-23)
 
 #### Merged Pull Requests
 - RESOURCE-376 resource_ids - Storage [#906](https://github.com/inspec/inspec-aws/pull/906) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.12](https://github.com/inspec/inspec-aws/tree/v1.83.12) (2022-05-18)
 
