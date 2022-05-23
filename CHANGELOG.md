@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.12 -->
+<!-- latest_release 1.83.13 -->
+## [v1.83.13](https://github.com/inspec/inspec-aws/tree/v1.83.13) (2022-05-23)
+
+#### Merged Pull Requests
+- RESOURCE-376 resource_ids - Storage [#906](https://github.com/inspec/inspec-aws/pull/906) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.12](https://github.com/inspec/inspec-aws/tree/v1.83.12) (2022-05-18)
 
 #### Merged Pull Requests
 - Resource 226 aws hosted zone [#905](https://github.com/inspec/inspec-aws/pull/905) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.11](https://github.com/inspec/inspec-aws/tree/v1.83.11) (2022-05-09)
 
