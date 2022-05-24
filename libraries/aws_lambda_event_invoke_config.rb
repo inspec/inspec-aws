@@ -45,4 +45,8 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   def on_faliure_destinations
     destination_config.on_faliure
   end
+
+  def resource_id
+    @display_name
+  end
 end
