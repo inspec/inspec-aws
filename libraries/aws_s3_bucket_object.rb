@@ -50,6 +50,10 @@ class AwsS3BucketObject < AwsResourceBase
     !@bucket_object.nil?
   end
 
+  def resource_id
+    "#{@bucket_name}_#{@key}"
+  end
+
   def to_s
     "s3://#{@bucket_name}/#{@key}"
   end

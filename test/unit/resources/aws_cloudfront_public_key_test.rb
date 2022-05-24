@@ -36,11 +36,6 @@ class AWSCloudFrontPublicKeyHappyPathTest < Minitest::Test
     @resp = AWSCloudFrontPublicKey.new(id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_resource_id
-    refute_nil(@resp.resource_id)
-    assert_equal(@resp.resource_id, @resp.id)
-  end
-
   def test_public_key_exists
     assert @resp.exists?
   end
@@ -67,5 +62,10 @@ class AWSCloudFrontPublicKeyHappyPathTest < Minitest::Test
 
   def test_comment
     assert_equal(@resp.public_key_config.comment, 'test1')
+  end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
   end
 end
