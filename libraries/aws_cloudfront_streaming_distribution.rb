@@ -50,10 +50,6 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
     ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:items)
   end
 
-  def resource_id
-    @display_name
-  end
-
   def to_s
     "ID: #{@display_name}"
   end

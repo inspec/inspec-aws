@@ -36,10 +36,6 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
     !@origin_request_policy.nil? && !@origin_request_policy.empty?
   end
 
-  def resource_id
-    @display_name
-  end
-
   def to_s
     "Origin Request Policy ID: #{@display_name}"
   end
