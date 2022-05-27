@@ -40,7 +40,7 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
   end
 
   def resource_id
-    @traffic_mirror_filters[:traffic_mirror_filter_id]
+    @traffic_mirror_filters ? @traffic_mirror_filters[:traffic_mirror_filter_id] : @display_name
   end
 
   def to_s

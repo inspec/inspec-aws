@@ -32,7 +32,7 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   end
 
   def resource_id
-    @scaling_policies[:resource_id]
+    @scaling_policies ? @scaling_policies[:resource_id]: @display_name
   end
 
   def exists?

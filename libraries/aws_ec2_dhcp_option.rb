@@ -40,7 +40,7 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def resource_id
-    @dhcp_option[:dhcp_options_id]
+    @dhcp_option ? @dhcp_option[:dhcp_options_id] : display_name
   end
 
   def to_s

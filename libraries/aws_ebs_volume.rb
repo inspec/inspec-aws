@@ -64,7 +64,7 @@ class AwsEbsVolume < AwsResourceBase
   end
 
   def resource_id
-    @volume[:volume_id]
+    @volume ? @volume[:volume_id] : @display_name
   end
 
   def to_s

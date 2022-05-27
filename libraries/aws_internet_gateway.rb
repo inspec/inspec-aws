@@ -110,7 +110,7 @@ class AwsInternetGateway < AwsResourceBase
   end
 
   def resource_id
-    @igw[:internet_gateway_id]
+    @igw ? @igw[:internet_gateway_id] : @display_name
   end
 
   def to_s

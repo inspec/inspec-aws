@@ -81,7 +81,7 @@ class AwsNatGateway < AwsResourceBase
   end
 
   def resource_id
-    @nat_gateway[:nat_gateway_id]
+    @nat_gateway ? @nat_gateway[:nat_gateway_id]: @display_name
   end
 
   def to_s
