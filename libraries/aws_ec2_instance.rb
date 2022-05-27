@@ -126,7 +126,7 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def resource_id
-    @instance[:instance_id]
+    @instance ? @instance[:instance_id] : @display_name
   end
 
   def to_s
