@@ -35,7 +35,7 @@ class AWSEc2TrafficMirrorTarget < AwsResourceBase
   end
 
   def resource_id
-    @traffic_mirror_target[:traffic_mirror_target_id]
+    @traffic_mirror_target ? @traffic_mirror_target[:traffic_mirror_target_id] : @display_name
   end
 
   def to_s
