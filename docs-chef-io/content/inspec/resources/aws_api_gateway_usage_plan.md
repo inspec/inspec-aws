@@ -5,7 +5,7 @@ draft = false
 gh_repo = "inspec-aws"
 
 [menu.inspec]
-title = "aws_amplify_app"
+title = "aws_api_gateway_usage_plan"
 identifier = "inspec/resources/aws/aws_api_gateway_usage_plan resource"
 parent = "inspec/resources/aws"
 +++
