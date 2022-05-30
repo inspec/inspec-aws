@@ -66,7 +66,7 @@ class AwsEbsSnapshot < AwsResourceBase
   end
 
   def resource_id
-    @snapshot ?  @snapshot[:snapshot_id] : @display_name
+    @snapshot ? @snapshot[:snapshot_id] : @display_name
   end
 
   def to_s
