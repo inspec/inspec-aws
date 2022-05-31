@@ -103,4 +103,9 @@ class AWSCloudFrontCachePolicySuccessPathTest < Minitest::Test
   def test_query_string_behavior
     assert_equal(@resp.cache_policy_config.parameters_in_cache_key_and_forwarded_to_origin.query_strings_config.query_string_behavior, 'test1')
   end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
+  end
 end

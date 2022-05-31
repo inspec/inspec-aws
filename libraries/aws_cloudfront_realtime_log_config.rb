@@ -34,10 +34,6 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def to_s
-    "Config Name: #{@display_name}"
-  end
-
   def end_points_stream_types
     end_points.map(&:stream_type)
   end
@@ -48,5 +44,14 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
 
   def end_points_kinesis_stream_config_stream_arns
     (end_points.map(&:kinesis_stream_config)).map(&:stream_arn)
+  end
+
+  # Here we have used the arn as it is more unique than the name.
+  def resource_id
+    @res[:arn]
+  end
+
+  def to_s
+    "Config Name: #{@display_name}"
   end
 end
