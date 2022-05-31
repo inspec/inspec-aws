@@ -543,6 +543,7 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def resource_id
+    return @display_name unless exists?
     @task_definition[:task_definition_arn]
   end
 

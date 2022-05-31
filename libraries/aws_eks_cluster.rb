@@ -41,6 +41,7 @@ class AwsEksCluster < AwsResourceBase
   end
 
   def resource_id
+    return @name unless exists?
     @resp[:arn]
   end
 

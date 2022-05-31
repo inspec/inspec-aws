@@ -128,6 +128,7 @@ class AwsEcrImage < AwsResourceBase
   end
 
   def resource_id
+    return @display_name unless exists?
     "#{@image[:repository_name]}_#{@image[:image_digest]}"
   end
 

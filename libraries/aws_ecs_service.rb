@@ -31,6 +31,7 @@ class AWSECSService < AwsResourceBase
   end
 
   def resource_id
+    return @display_name unless exists?
     @services[:service_arn]
   end
 
