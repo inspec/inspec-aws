@@ -31,7 +31,7 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   end
 
   def resource_id
-    @res[:firewall_arn]
+    @res? @res[:firewall_arn]: ''
   end
 
   def exists?

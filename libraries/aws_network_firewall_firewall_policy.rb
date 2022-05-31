@@ -21,6 +21,7 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.network_firewall_client.describe_firewall_policy({ firewall_policy_name: opts[:firewall_policy_name] })
       @res = resp.to_h
+      @firewall_policy_arn = @res[:firewall_policy_arn]
       create_resource_methods(@res)
     end
   end
@@ -31,7 +32,7 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
   end
 
   def resource_id
-    @res[:firewall_policy_arn]
+    @firewall_policy_arn
   end
 
   def exists?

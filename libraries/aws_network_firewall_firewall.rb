@@ -21,6 +21,7 @@ class AWSNetworkFirewallFirewall < AwsResourceBase
     catch_aws_errors do
       resp = @aws.network_firewall_client.describe_firewall({ firewall_name: opts[:firewall_name] })
       @res = resp.to_h
+      @firewall_arn = @res[:firewall][:firewall_arn]
       create_resource_methods(@res)
     end
   end
@@ -31,7 +32,7 @@ class AWSNetworkFirewallFirewall < AwsResourceBase
   end
 
   def resource_id
-    @res[:firewall][:firewall_arn]
+    @firewall_arn
   end
 
   def exists?
