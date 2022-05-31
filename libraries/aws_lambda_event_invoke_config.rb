@@ -47,6 +47,7 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    return @display_name unless exists?
+    @res[:function_arn]
   end
 end
