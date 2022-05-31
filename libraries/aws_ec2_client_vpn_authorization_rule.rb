@@ -38,7 +38,7 @@ class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
   end
 
   def resource_id
-    "#{@display_name}_#{@res[:group_id]}"
+    "#{@display_name}_#{@res ? @res[:group_id] : ''}"
   end
 
   def to_s

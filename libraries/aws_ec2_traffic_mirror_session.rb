@@ -35,7 +35,7 @@ class AWSEc2TrafficMirrorSession < AwsResourceBase
   end
 
   def resource_id
-    @traffic_mirror_session[:traffic_mirror_session_id]
+    @display_name
   end
 
   def to_s

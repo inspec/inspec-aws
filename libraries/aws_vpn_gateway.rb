@@ -49,7 +49,7 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def resource_id
-    @opts[:vpn_gateway_id]
+    @opts ? @opts[:vpn_gateway_id] : ''
   end
 
   private

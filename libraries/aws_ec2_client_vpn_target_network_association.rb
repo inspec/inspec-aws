@@ -42,7 +42,7 @@ class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
   end
 
   def resource_id
-    "#{@display_name}_#{@res[:association_id]}"
+    "#{@display_name}_#{@res ? @res[:association_id] : ''}"
   end
 
   def to_s
