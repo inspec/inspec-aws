@@ -30,8 +30,7 @@ class AWSAmplifyApp < AwsResourceBase
   end
 
   def resource_id
-    return @display_name unless exists?
-    @apps[:app_id]
+    @apps? @apps[:app_id] : @display_name
   end
 
   def exists?
