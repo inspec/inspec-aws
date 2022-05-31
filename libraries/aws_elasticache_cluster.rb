@@ -56,6 +56,7 @@ class AwsElastiCacheCluster < AwsResourceBase
   end
 
   def resource_id
+    return @display_name unless exists?
     @cache_cluster[:cache_cluster_id]
   end
 
