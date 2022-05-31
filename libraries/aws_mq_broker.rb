@@ -29,8 +29,7 @@ class AWSMQBroker < AwsResourceBase
   end
 
   def resource_id
-    return @display_name unless exists?
-    @brokers[:broker_id]
+    @brokers? @brokers[:broker_id] : @display_name
   end
 
   def exists?

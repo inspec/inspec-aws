@@ -30,8 +30,7 @@ class AWSMQConfiguration < AwsResourceBase
   end
 
   def resource_id
-    return @display_name unless exists?
-    @configurations[:configuration_id]
+    @configurations? @configurations[:configuration_id] : @display_name
   end
 
   def exists?

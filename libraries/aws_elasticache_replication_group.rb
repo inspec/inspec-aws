@@ -49,8 +49,7 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
   end
 
   def resource_id
-    return @display_name unless exists?
-    @replication_group[:replication_group_id]
+    @replication_group? @replication_group[:replication_group_id] : @display_name
   end
 
   def status
