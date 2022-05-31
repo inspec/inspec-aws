@@ -34,10 +34,6 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def to_s
-    "ID: #{@display_name}"
-  end
-
   def active_aws_account_numbers
     (active_trusted_signers.map(&:items)).map(&:aws_account_number)
   end
@@ -48,5 +44,13 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
 
   def active_key_pair_id_items
     ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:items)
+  end
+
+  def resource_id
+    @display_name
+  end
+
+  def to_s
+    "ID: #{@display_name}"
   end
 end
