@@ -21,12 +21,13 @@ class AwsKmsKey < AwsResourceBase
       opts[:key_id] = fetch_key_id
     end
     @display_name = opts[:key_id]
+    @arn = key_metadata[:arn]
 
     create_resource_methods(key_metadata)
   end
 
   def resource_id
-    key_metadata[:arn]
+    @arn
   end
 
   def exists?

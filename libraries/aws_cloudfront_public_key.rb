@@ -26,7 +26,7 @@ class AWSCloudFrontPublicKey < AwsResourceBase
   end
 
   def resource_id
-    @res[:id]
+    @display_name
   end
 
   def id

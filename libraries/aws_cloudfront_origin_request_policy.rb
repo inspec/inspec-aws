@@ -19,17 +19,18 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
     @display_name = opts[:id]
     resp = @aws.cloudfront_client.get_origin_request_policy({ id: opts[:id] })
-    @origin_request_policy= resp.origin_request_policy.to_h
+    @origin_request_policy = resp.origin_request_policy.to_h
+    @origin_request_policy_id = @origin_request_policy[:id]
     create_resource_methods(@origin_request_policy)
   end
 
   def resource_id
-    @origin_request_policy[:id]
+    @origin_request_policy_id
   end
 
   def id
     return nil unless exists?
-    @origin_request_policy[:id]
+    @origin_request_policy_id
   end
 
   def exists?

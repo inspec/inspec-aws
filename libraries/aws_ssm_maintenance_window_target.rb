@@ -27,12 +27,14 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
     catch_aws_errors do
       resp = @aws.ssm_client.describe_maintenance_window_targets({ window_id: opts[:window_id], filters: filter })
       @res = resp.targets[0].to_h
+      @window_id = @res[:window_id]
+      @window_target_id = @res[:window_target_id]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    "#{@res[:window_id]}_#{@res[:window_target_id]}"
+    "#{@window_id}_#{@window_target_id}"
   end
 
   def window_target_id

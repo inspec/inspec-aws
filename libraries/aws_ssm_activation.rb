@@ -31,7 +31,7 @@ class AwsSsmActivation < AwsResourceBase
   end
 
   def resource_id
-    @activation[:activation_id]
+    @display_name
   end
 
   def exists?

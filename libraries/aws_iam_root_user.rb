@@ -20,11 +20,12 @@ class AwsIamRootUser < AwsResourceBase
     catch_aws_errors do
       @summary_account = @aws.iam_client.get_account_summary.summary_map
       @virtual_devices = @aws.iam_client.list_virtual_mfa_devices.virtual_mfa_devices
+      @serial_number = @virtual_devices.first.serial_number
     end
   end
 
   def resource_id
-    @virtual_devices.first.serial_number
+    @serial_number
   end
 
   def has_access_key?

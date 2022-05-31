@@ -26,12 +26,14 @@ class AWSIAMSSHPublicKey < AwsResourceBase
     catch_aws_errors do
       resp = @aws.iam_client.get_ssh_public_key({ user_name: opts[:user_name], ssh_public_key_id: opts[:ssh_public_key_id], encoding: opts[:encoding] })
       @res = resp.ssh_public_key.to_h
+      @user_name = @res[:user_name]
+      @ssh_public_key_id = @res[:ssh_public_key_id]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    "#{@res[:user_name]}_#{@res[:ssh_public_key_id]}"
+    "#{@user_name}_#{@ssh_public_key_id}"
   end
 
   def ssh_public_key_id

@@ -21,12 +21,13 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_streaming_distribution({ id: opts[:id] })
       @res = resp.streaming_distribution.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    @res[:arn]
+    @arn
   end
 
   def id

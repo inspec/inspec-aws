@@ -24,13 +24,14 @@ class AwsSsmParameter < AwsResourceBase
         empty_response_warn
       else
         @ssm_parameter = resp.parameter.to_h
+        @ssm_parameter_arn = @ssm_parameter[:arn]
         create_resource_methods(@ssm_parameter)
       end
     end
   end
 
   def resource_id
-    @ssm_parameter[:arn]
+    @ssm_parameter_arn
   end
 
   def request_params

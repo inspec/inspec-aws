@@ -19,12 +19,13 @@ class AwsStsCallerIdentity < AwsResourceBase
 
     catch_aws_errors do
       @resp = @aws.sts_client.get_caller_identity
+      @arn = @resp[:arn]
     end
     create_resource_methods(@resp.to_h)
   end
 
   def resource_id
-    @resp[:arn]
+    @arn
   end
 
   def govcloud?

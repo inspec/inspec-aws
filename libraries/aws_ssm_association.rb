@@ -28,7 +28,7 @@ class AwsSsmAssociation < AwsResourceBase
   end
 
   def resource_id
-    @association[:association_id]
+    @display_name
   end
 
   def request_params

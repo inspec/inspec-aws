@@ -22,12 +22,14 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.describe_log_streams({ log_stream_name_prefix: opts[:log_stream_name_prefix], log_group_name: opts[:log_group_name] })
       @log_streams = resp.log_streams[0].to_h
+      @log_stream_name = @log_streams[:log_stream_name]
+      @log_stream_arn = @log_streams[:arn]
       create_resource_methods(@log_streams)
     end
   end
 
   def resource_id
-    "#{@log_streams[:log_stream_name]}_#{@log_streams[:arn]}"
+    "#{@log_stream_name}_#{@log_stream_arn}"
   end
 
   def log_stream_name_prefix

@@ -21,12 +21,14 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.describe_destinations({ destination_name_prefix: opts[:destination_name_prefix] })
       @destinations = resp.destinations[0].to_h
+      @destination_name = @destinations[:destination_name]
+      @destination_arn = @destinations[:arn]
       create_resource_methods(@destinations)
     end
   end
 
   def resource_id
-    "#{@destinations[:destination_name]}_#{@destinations[:arn]}"
+    "#{@destination_name}_#{@destination_arn}"
   end
 
   def destination_name_prefix

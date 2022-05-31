@@ -28,12 +28,14 @@ class AWSSESPatchBaseline < AwsResourceBase
     catch_aws_errors do
       resp = @aws.ssm_client.get_patch_baseline({ baseline_id: opts[:baseline_id] })
       @res = resp.to_h
+      @baseline_id = @res[:baseline_id]
+      @name = @res[:name]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    "#{@res[:baseline_id]}_#{@res[:name]}"
+    "#{@baseline_id}_#{@name}"
   end
 
   def baseline_id

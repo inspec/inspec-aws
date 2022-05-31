@@ -21,12 +21,14 @@ class AWSLogsMetricFilter < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.describe_metric_filters({ filter_name_prefix: opts[:filter_name] })
       @metric_filters = resp.metric_filters[0].to_h
+      @filter_name = @metric_filters[:filter_name]
+      @log_group_name = @metric_filters[:log_group_name]
       create_resource_methods(@metric_filters)
     end
   end
 
   def resource_id
-    "#{@metric_filters[:filter_name]}_#{@metric_filters[:log_group_name]}"
+    "#{@filter_name}_#{@log_group_name}"
   end
 
   def filter_name
