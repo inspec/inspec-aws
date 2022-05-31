@@ -114,6 +114,10 @@ class AwsCloudFrontDistribution < AwsResourceBase
     disallowed?(@custom_origin_ssl_protocols)
   end
 
+  def resource_id
+    @distribution_id
+  end
+
   def to_s
     "AWS CloudFront Distribution #{@distribution_id}"
   end

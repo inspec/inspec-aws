@@ -152,6 +152,10 @@ class AwsS3Bucket < AwsResourceBase
     map_tags(tag_list)
   end
 
+  def resource_id
+    @bucket_name
+  end
+
   def to_s
     "S3 Bucket #{@bucket_name}"
   end
