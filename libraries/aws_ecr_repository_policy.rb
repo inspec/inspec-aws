@@ -23,7 +23,13 @@ class AwsEcrPolicy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.ecr_client.get_repository_policy(@repo_name)
       @repo_policy = resp.policy_text
+      @repository_name = resp.repository_name
+      @registry_id = resp.registry_id
     end
+  end
+
+  def resource_id
+    "#{@repository_name}_#{@registry_id}"
   end
 
   def exists?
@@ -55,10 +61,6 @@ class AwsEcrPolicy < AwsResourceBase
 
   def statements
     @statements ||= calculate_statements || []
-  end
-
-  def resource_id
-    "#{@image[:repository_name]}_#{@image[:registry_id]}"
   end
 
   def calculate_statements
