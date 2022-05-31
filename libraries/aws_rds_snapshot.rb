@@ -25,7 +25,7 @@ class AwsRdsSnapshot < AwsResourceBase
   end
 
   def resource_id
-    @rds_snapshot[:db_snapshot_identifier]
+    @rds_snapshot? @rds_snapshot[:db_snapshot_identifier]: ''
   end
 
   def has_encrypted_snapshot?

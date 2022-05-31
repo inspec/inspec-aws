@@ -25,7 +25,7 @@ class AWSRDSEventSubscription < AwsResourceBase
   end
 
   def resource_id
-    "#{@res[:customer_aws_id]}_#{@res[:cust_subscription_id]}"
+    "#{@res? @res[:customer_aws_id]: ''}_#{@res? @res[:cust_subscription_id]: ''}"
   end
 
   def subscription_name

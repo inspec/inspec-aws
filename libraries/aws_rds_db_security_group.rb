@@ -20,12 +20,13 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_security_groups({ db_security_group_name: opts[:db_security_group_name] })
       @res = resp.db_security_groups[0].to_h
+      @db_security_group_arn = @res[:db_security_group_arn]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    @res[:db_security_group_arn]
+    @db_security_group_arn
   end
 
   def db_security_group_name

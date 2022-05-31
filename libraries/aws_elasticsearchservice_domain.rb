@@ -31,7 +31,7 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
   end
 
   def resource_id
-    @domain_status[:domain_id]
+    @domain_status? @domain_status[:domain_id]: ''
   end
 
   def exists?

@@ -20,6 +20,7 @@ class AWSRDSProxy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_proxies({ db_proxy_name: opts[:db_proxy_name] })
       @res = resp.db_proxies[0].to_h
+      @db_proxy_arn = @res[:db_proxy_arn]
       create_resource_methods(@res)
     end
   end
@@ -30,7 +31,7 @@ class AWSRDSProxy < AwsResourceBase
   end
 
   def resource_id
-    @res[:db_proxy_arn]
+    @db_proxy_arn
   end
 
   def exists?

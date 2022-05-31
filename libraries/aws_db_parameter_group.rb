@@ -27,13 +27,14 @@ class AwsDbParameterGroup < AwsResourceBase
         empty_response_warn
       else
         @parameter_group = resp.db_parameter_groups[0].to_h
+        @db_parameter_group_arn = @parameter_group[:db_parameter_group_arn]
         create_resource_methods(@parameter_group)
       end
     end
   end
 
   def resource_id
-    @parameter_group[:db_parameter_group_arn]
+    @db_parameter_group_arn
   end
 
   def exists?

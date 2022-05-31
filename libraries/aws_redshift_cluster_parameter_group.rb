@@ -20,6 +20,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
     catch_aws_errors do
       resp = @aws.redshift_client.describe_cluster_parameter_groups({ parameter_group_name: opts[:parameter_group_name] })
       @parameter_groups = resp.parameter_groups[0].to_h
+      @parameter_group_name = (@parameter_groups[:parameter_group_name]).to_s
       create_resource_methods(@parameter_groups)
     end
   end
@@ -30,7 +31,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   end
 
   def resource_id
-    (@parameter_groups[:parameter_group_name]).to_s
+    @parameter_group_name
   end
 
   def exists?

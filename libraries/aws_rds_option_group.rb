@@ -34,7 +34,7 @@ class AwsRdsOptionGroup < AwsResourceBase
   end
 
   def resource_id
-    @rds_cluster[:option_group_arn]
+    @rds_cluster? @rds_cluster[:option_group_arn]: ''
   end
 
   def exists?

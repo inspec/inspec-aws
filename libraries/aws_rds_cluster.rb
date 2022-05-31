@@ -26,6 +26,7 @@ class AwsRdsCluster < AwsResourceBase
         resp = @aws.rds_client.describe_db_clusters(db_cluster_identifier: opts[:db_cluster_identifier])
         return if resp.db_clusters.empty?
         @rds_cluster = resp.db_clusters[0].to_h
+        @db_cluster_arn = @rds_cluster[:db_cluster_arn]
       rescue Aws::RDS::Errors::DBClusterNotFound
         return
       end
@@ -38,7 +39,7 @@ class AwsRdsCluster < AwsResourceBase
   end
 
   def resource_id
-    @rds_cluster[:db_cluster_arn]
+    @db_cluster_arn
   end
 
   def has_encrypted_storage?
