@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.17 -->
+<!-- latest_release 1.83.18 -->
+## [v1.83.18](https://github.com/inspec/inspec-aws/tree/v1.83.18) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-369 AWS resource_ids - DB [#910](https://github.com/inspec/inspec-aws/pull/910) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.17](https://github.com/inspec/inspec-aws/tree/v1.83.17) (2022-06-01)
 
 #### Merged Pull Requests
 -  RESOURCE-372 AWS resource_ids - Management [#913](https://github.com/inspec/inspec-aws/pull/913) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.16](https://github.com/inspec/inspec-aws/tree/v1.83.16) (2022-06-01)
 
