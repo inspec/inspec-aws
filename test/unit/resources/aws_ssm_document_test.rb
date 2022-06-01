@@ -43,6 +43,11 @@ class AwsSsmDocumentSuccessPathTest < Minitest::Test
     @ssm_document = AwsSsmDocument.new(name: 'document-name', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@ssm_document.resource_id)
+    assert_equal(@ssm_document.resource_id, @ssm_document.hash)
+  end
+
   def test_ssm_document_exists
     assert @ssm_document.exists?
   end

@@ -30,6 +30,10 @@ class AwsIamSamlProvider < AwsResourceBase
     end
   end
 
+  def resource_id
+    @arn
+  end
+
   def exists?
     !@provider.saml_metadata_document.nil?
   end

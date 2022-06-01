@@ -25,6 +25,10 @@ class AWSCloudFrontOriginAccessIdentity < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res? @res[:id]: @display_name
+  end
+
   def id
     return nil unless exists?
     @res[:id]
@@ -32,10 +36,6 @@ class AWSCloudFrontOriginAccessIdentity < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def resource_id
-    @display_name
   end
 
   def to_s

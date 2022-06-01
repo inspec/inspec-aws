@@ -31,6 +31,11 @@ class AWSSecurityHubHubSuccessPathTest < Minitest::Test
     @resp = AWSSecurityHubHub.new(hub_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.hub_arn)
+  end
+
   def test_security_hub_exists
     assert @resp.exists?
   end

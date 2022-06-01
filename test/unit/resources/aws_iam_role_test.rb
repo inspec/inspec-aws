@@ -16,6 +16,11 @@ class AwsIamRoleTest < Minitest::Test
                            stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@role.resource_id)
+    assert_equal(@role.resource_id, @role.arn)
+  end
+
   def test_exists
     assert(@role.exists?)
   end
