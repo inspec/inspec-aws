@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.20 -->
+<!-- latest_release 1.83.21 -->
+## [v1.83.21](https://github.com/inspec/inspec-aws/tree/v1.83.21) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-373-aws-resource-ids-messaging [#912](https://github.com/inspec/inspec-aws/pull/912) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.83.20](https://github.com/inspec/inspec-aws/tree/v1.83.20) (2022-06-01)
 
 #### Merged Pull Requests
 - RESOURCE-368 aws resource ids containers [#908](https://github.com/inspec/inspec-aws/pull/908) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.19](https://github.com/inspec/inspec-aws/tree/v1.83.19) (2022-06-01)
 
