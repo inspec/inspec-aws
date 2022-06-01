@@ -49,6 +49,11 @@ class AWSRoute53RecordSetSuccessPathTest < Minitest::Test
     @resource_record_sets = AWSRoute53RecordSet.new(hosted_zone_id: 'test1', start_record_name: 'test1', client_args: { stub_responses: true }, stub_data: [record_call])
   end
 
+  def test_resource_id
+    refute_nil(@resource_record_sets.resource_id)
+    assert_equal(@resource_record_sets.resource_id, 'test1_test1')
+  end
+
   def test_record_set_exists
     assert @resource_record_sets.exist?
   end
