@@ -20,7 +20,6 @@ class AwsRdsOptionGroup < AwsResourceBase
     opts = { option_group_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(require_any_of: %i(option_group_name))
-
     raise ArgumentError, "#{@__resource_name__}: .option_group_name must be a string" unless opts.key?(:option_group_name)
     param = { option_group_name: opts[:option_group_name] }
     @display_name = opts[:option_group_name]
@@ -32,6 +31,10 @@ class AwsRdsOptionGroup < AwsResourceBase
 
       create_resource_methods(@rds_cluster)
     end
+  end
+
+  def resource_id
+    @rds_cluster? @rds_cluster[:option_group_arn]: ''
   end
 
   def exists?
