@@ -33,7 +33,7 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @res[:customer_gateway_arn]: @display_name
   end
 
   def exists?

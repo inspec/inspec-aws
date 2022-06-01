@@ -28,11 +28,11 @@ class AWSRoute53RecordSet < AwsResourceBase
 
   def hosted_zone_id
     return nil unless exists?
-    @res[:hosted_zone_id]
+    @res[:alias_target][:hosted_zone_id]
   end
 
   def resource_id
-    "#{@hosted_zone_id}_#{@start_record_name}"
+    "#{@res? @hosted_zone_id: ''}_#{@res? @start_record_name: ''}"
   end
 
   def exists?

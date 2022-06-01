@@ -27,11 +27,11 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
 
   def resolver_rule_association_id
     return nil unless exists?
-    @res[:resolver_rule_association_id]
+    @res[:id]
   end
 
   def resource_id
-    @display_name
+    @res? @res[:id]: @display_name
   end
 
   def exists?

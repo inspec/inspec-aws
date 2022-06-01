@@ -31,7 +31,7 @@ class AWSNetworkManagerGlobalNetwork < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @res[:global_network_id]: @display_name
   end
 
   def exists?

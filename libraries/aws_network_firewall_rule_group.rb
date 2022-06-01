@@ -31,7 +31,7 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @res[:rule_group_response][:rule_group_arn]: @display_name
   end
 
   def exists?
