@@ -30,6 +30,10 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
     @scalable_targets[:service_namespace]
   end
 
+  def resource_id
+    @scalable_targets? @scalable_targets[:resource_id]: ''
+  end
+
   def exists?
     !@scalable_targets.nil? && !@scalable_targets.empty?
   end

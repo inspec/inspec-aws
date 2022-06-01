@@ -72,4 +72,9 @@ class AwsNetworkACLConstructorIdTest < Minitest::Test
   def test_dynamic_entry_rule_number
     assert_equal(@network_acl.egress_rule_number_32767.cidr_block, @network_acl_mock.cidr_block)
   end
+
+  def test_resource_id
+    refute_nil(@network_acl.resource_id)
+    assert_equal(@network_acl.resource_id, @network_acl_mock.network_acl_id)
+  end
 end

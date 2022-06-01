@@ -31,26 +31,27 @@ class AwsEc2TransitGatewayRouteTableAssociationPathTest < Minitest::Test
     mock_data[:state] = 'test'
     data[:data] = { :associations => [mock_data] }
     data[:client] = Aws::EC2::Client
-    @associations = AwsEc2TransitGatewayRouteTableAssociation.new(transit_gateway_route_table_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AwsEc2TransitGatewayRouteTableAssociation.new(transit_gateway_route_table_id: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_transit_gateway_route_table_id_exists
-    assert @associations.exists?
+    assert @resp.exists?
   end
 
   def test_transit_gateway_route_table_id_available
-    assert @associations.available?
+    assert @resp.available?
   end
 
   def test_transit_gateway_attachment_id
-    assert_equal(@associations.transit_gateway_attachment_id, 'test')
+    assert_equal(@resp.transit_gateway_attachment_id, 'test')
   end
 
   def test_resource_id
-    assert_equal(@associations.resource_id, 'test')
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test')
   end
 
   def test_state
-    assert_equal(@associations.state, 'test')
+    assert_equal(@resp.state, 'test')
   end
 end
