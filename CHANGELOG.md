@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.15 -->
+<!-- latest_release 1.83.16 -->
+## [v1.83.16](https://github.com/inspec/inspec-aws/tree/v1.83.16) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-370 AWS resource_ids - EC2 [#907](https://github.com/inspec/inspec-aws/pull/907) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.15](https://github.com/inspec/inspec-aws/tree/v1.83.15) (2022-06-01)
 
 #### Merged Pull Requests
 - RESOURCE-385 Increase the Timeout Limit of build [#918](https://github.com/inspec/inspec-aws/pull/918) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.14](https://github.com/inspec/inspec-aws/tree/v1.83.14) (2022-05-23)
 
