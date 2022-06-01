@@ -101,4 +101,9 @@ class AwsSnsTopicTest < Minitest::Test
   def test_sns_topic_kms_id
     assert_equal(@topic.kms_master_key_id, @mock_topic[:attributes]['KmsMasterKeyId'])
   end
+
+  def test_resource_id
+    refute_nil(@topic.resource_id)
+    assert_equal(@topic.resource_id, 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf')
+  end
 end
