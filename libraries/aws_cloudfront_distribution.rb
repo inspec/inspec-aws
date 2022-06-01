@@ -91,7 +91,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def resource_id
-    @distribution_id
+    @resp? @resp[:distribution][:id]: @distribution_id
   end
 
   def exists?

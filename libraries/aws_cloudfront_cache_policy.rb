@@ -26,7 +26,7 @@ class AWSCloudFrontCachePolicy < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @res[:id]: @display_name
   end
 
   def id

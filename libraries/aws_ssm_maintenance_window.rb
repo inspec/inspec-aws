@@ -25,7 +25,7 @@ class AWSSESMaintenanceWindow < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @res[:window_id]: @display_name
   end
 
   def window_id

@@ -49,7 +49,7 @@ class AwsCloudwatchAlarm < AwsResourceBase
   end
 
   def resource_id
-    "#{@metric_name}_#{@metric_namespace}"
+    "#{@metric_alarms? @metric_name: ''}_#{@metric_alarms? @metric_namespace: ''}"
   end
 
   def exists?

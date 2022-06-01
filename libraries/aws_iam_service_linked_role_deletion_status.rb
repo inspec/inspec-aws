@@ -31,7 +31,7 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @display_name: ''
   end
 
   def exists?

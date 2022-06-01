@@ -25,13 +25,14 @@ class AwsSsmActivation < AwsResourceBase
         empty_response_warn
       else
         @activation = resp.activation_list.first.to_h
+        @activation_id = resp.activation_list.first.activation_id
         create_resource_methods(@activation)
       end
     end
   end
 
   def resource_id
-    @display_name
+    @res? @activation_id : @display_name
   end
 
   def exists?

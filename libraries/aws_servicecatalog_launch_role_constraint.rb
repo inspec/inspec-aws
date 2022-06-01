@@ -25,13 +25,8 @@ class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
     end
   end
 
-  def id
-    return nil unless exists?
-    @res[:id]
-  end
-
   def resource_id
-    @display_name
+    @res? @display_name : ''
   end
 
   def exists?

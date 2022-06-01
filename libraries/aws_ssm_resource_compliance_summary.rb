@@ -37,7 +37,7 @@ class AwsSsmResourceComplianceSummary < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res? @compliance_summary[:resource_id]: @display_name
   end
 
   def exists?

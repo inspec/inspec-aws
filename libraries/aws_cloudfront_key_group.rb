@@ -26,7 +26,7 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @resp? @resp[:id]: @display_name
   end
 
   def id
