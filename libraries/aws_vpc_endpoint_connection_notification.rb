@@ -43,7 +43,7 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @vpcen ? @vpcen[:connection_notification_id] : @display_name
   end
 
   def to_s

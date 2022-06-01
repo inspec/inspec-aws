@@ -24,6 +24,7 @@ class AwsAmi < AwsResourceBase
         empty_response_warn
       else
         ami = resp.images.first.to_h
+        @image_id = resp.images[0].image_id
         create_resource_methods(ami)
       end
     end
@@ -39,7 +40,7 @@ class AwsAmi < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @image_id
   end
 
   def to_s

@@ -35,7 +35,7 @@ class AWSEC2NetworkInterface < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:network_interface_id] : @display_name
   end
 
   def to_s

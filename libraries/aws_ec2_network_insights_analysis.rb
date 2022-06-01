@@ -35,7 +35,7 @@ class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:network_insights_analysis_id] : @display_name
   end
 
   def to_s

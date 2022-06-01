@@ -39,7 +39,7 @@ class AwsDhcpOptions < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @dhcp_options ? @dhcp_options[:dhcp_options_id]: @display_name
   end
 
   def to_s

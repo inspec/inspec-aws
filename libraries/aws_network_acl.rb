@@ -85,7 +85,7 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def resource_id
-    @response.network_acls.first.network_acl_id
+    @response ? @response.network_acls.first.network_acl_id : ''
   end
 
   def to_s

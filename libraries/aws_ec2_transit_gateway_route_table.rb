@@ -35,7 +35,7 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @transit_gateway_route_tables ? @transit_gateway_route_tables[:transit_gateway_route_table_id] : @display_name
   end
 
   def to_s

@@ -35,7 +35,7 @@ class AWSEC2ClientVPNEndpoint < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:client_vpn_endpoint_id] : ''
   end
 
   def to_s

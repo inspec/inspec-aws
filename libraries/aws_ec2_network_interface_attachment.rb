@@ -25,17 +25,12 @@ class AWSEC2NetworkInterfaceAttachment < AwsResourceBase
     end
   end
 
-  def network_interface_id
-    return nil unless exists?
-    @res[:network_interface_id]
-  end
-
   def exists?
     !@res.nil? && !@res.empty?
   end
 
   def resource_id
-    @display_name
+    @res ? @display_name : ''
   end
 
   def to_s

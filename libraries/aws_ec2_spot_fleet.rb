@@ -35,7 +35,7 @@ class AWSEC2SpotFleet < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:spot_fleet_request_id] : @display_name
   end
 
   def to_s

@@ -39,7 +39,7 @@ class AWSTransitGatewayMulticastGroupSource < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @multicast_groups ? @multicast_groups[:transit_gateway_multicast_domain_id] : @display_name
   end
 
   def to_s

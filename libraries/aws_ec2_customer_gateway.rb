@@ -35,7 +35,7 @@ class AWSEC2CustomerGateway < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @resp ? @resp[:customer_gateway_id] : @display_name
   end
 
   def to_s

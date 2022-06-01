@@ -35,7 +35,7 @@ class AWSEC2VPCPeeringConnection < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:vpc_peering_connection_id] : @display_name
   end
 
   def to_s

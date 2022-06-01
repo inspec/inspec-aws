@@ -40,7 +40,7 @@ class AwsEc2Eip < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @addresses ? @addresses[:public_ip] : @display_name
   end
 
   def to_s

@@ -63,7 +63,7 @@ class AwsVpc < AwsResourceBase
   end
 
   def resource_id
-    @display_name ? @display_name[:vpc_id] : ''
+    @response ? @display_name : ''
   end
 
   def has_cidr_block_associated?(cidr_block)

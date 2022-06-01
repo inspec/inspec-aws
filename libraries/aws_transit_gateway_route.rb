@@ -51,7 +51,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @response ? @display_name : ''
   end
 
   def to_s

@@ -54,7 +54,7 @@ class AwsVpce < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @vpce ? @vpce[:vpc_endpoint_id] : @display_name
   end
 
   def to_s

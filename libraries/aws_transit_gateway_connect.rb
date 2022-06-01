@@ -35,7 +35,7 @@ class AWSTransitGatewayConnect < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @transit_gateway_connects ? @transit_gateway_connects[:transit_gateway_attachment_id] : @display_name
   end
 
   def to_s

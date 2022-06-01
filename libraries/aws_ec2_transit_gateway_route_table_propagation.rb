@@ -35,6 +35,10 @@ class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @resp ? @resp[:resource_id] : @display_name
+  end
+
   def transit_gateway_attachment_id
     return nil unless exists?
     @resp[:transit_gateway_attachment_id]

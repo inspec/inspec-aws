@@ -35,7 +35,7 @@ class AWSEC2VolumeAttachment < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:volume_id] : @display_name
   end
 
   def to_s

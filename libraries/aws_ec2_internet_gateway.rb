@@ -39,7 +39,7 @@ class AWSEC2InternetGateway < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:internet_gateway_id] : @display_name
   end
 
   def exists?

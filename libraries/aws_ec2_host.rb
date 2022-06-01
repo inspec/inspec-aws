@@ -35,7 +35,7 @@ class AWSEC2Host < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @resp ? @resp[:host_id] : @display_name
   end
 
   def to_s

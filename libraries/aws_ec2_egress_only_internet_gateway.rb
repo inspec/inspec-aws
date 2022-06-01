@@ -35,7 +35,7 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @resp ? @resp[:egress_only_internet_gateway_id] : @display_name
   end
 
   def to_s

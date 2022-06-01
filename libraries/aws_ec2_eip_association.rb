@@ -41,7 +41,7 @@ class AWSEC2EIPAssociation < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @resp ? @resp[:association_id] : @display_name
   end
 
   def to_s

@@ -39,7 +39,7 @@ class AwsTransitGateway < AwsResourceBase
   end
 
   def resource_id
-    @transit_gateway_id
+    @transit_gateway_arn
   end
 
   def to_s

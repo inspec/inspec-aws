@@ -35,7 +35,7 @@ class AWSEC2PrefixList < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:prefix_list_id] : @display_name
   end
 
   def to_s

@@ -62,7 +62,7 @@ class AwsVPCEndpointService < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @response ? service_detail.service_name : @display_name
   end
 
   def to_s

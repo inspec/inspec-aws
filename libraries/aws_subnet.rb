@@ -52,7 +52,7 @@ class AwsSubnet < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @subnet ? @subnet[:subnet_id] : @display_name
   end
 
   def to_s

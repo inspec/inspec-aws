@@ -37,7 +37,7 @@ class AwsTransitGatewayHappyPathTest < Minitest::Test
 
   def test_resource_id
     refute_nil(@transit_gateway.resource_id)
-    assert_equal(@transit_gateway.resource_id, @transit_gateway.transit_gateway_id)
+    assert_equal(@transit_gateway.resource_id, @transit_gateway.transit_gateway_arn)
   end
 
   def test_transit_gateway_exists

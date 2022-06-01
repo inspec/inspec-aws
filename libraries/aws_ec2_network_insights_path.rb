@@ -35,7 +35,7 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    @res ? @res[:network_insights_path_id] : @display_name
   end
 
   def to_s

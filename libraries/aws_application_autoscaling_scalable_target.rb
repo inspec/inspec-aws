@@ -31,7 +31,7 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   end
 
   def resource_id
-    @scalable_targets? @scalable_targets[:resource_id]: @display_name
+    @scalable_targets? @scalable_targets[:resource_id]: ''
   end
 
   def exists?

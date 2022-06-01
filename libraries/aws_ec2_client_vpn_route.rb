@@ -38,7 +38,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
   end
 
   def resource_id
-    "#{@display_name}_#{@res ? @res[:target_subnet] : ''}"
+    "#{@res ? @res[:client_vpn_endpoint_id] : ''}_#{@res ? @res[:target_subnet] : ''}"
   end
 
   def to_s
