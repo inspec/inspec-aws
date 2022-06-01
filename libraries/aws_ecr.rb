@@ -47,6 +47,10 @@ class AwsEcr < AwsResourceBase
     resp
   end
 
+  def resource_id
+    @repository_name
+  end
+
   def exists?
     !@repository_name.nil?
   end

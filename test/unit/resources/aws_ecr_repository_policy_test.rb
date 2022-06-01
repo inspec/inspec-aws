@@ -31,6 +31,11 @@ class AwsEcrPolicyTest < Minitest::Test
                                  stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@policy.resource_id)
+    assert_equal(@policy.resource_id, "#{@mock_ecr_policy[:repository_name]}_#{@mock_ecr_policy[:registry_id]}")
+  end
+
   def test_exists
     assert @policy.exists?
   end

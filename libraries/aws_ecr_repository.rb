@@ -54,6 +54,10 @@ class AwsEcrRepository < AwsResourceBase
     "ECR Repository #{@display_name}"
   end
 
+  def resource_id
+    @display_name
+  end
+
   def tags
     return unless exists?
     catch_aws_errors do

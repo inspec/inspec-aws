@@ -31,6 +31,11 @@ class AWSECSTaskDefinitionSuccessPathTest < Minitest::Test
     @task_definition = AWSECSTaskDefinition.new(task_definition: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@task_definition.resource_id)
+    assert_equal(@task_definition.resource_id, 'test1')
+  end
+
   def test_parameter_group_exists
     assert @task_definition.exists?
   end
