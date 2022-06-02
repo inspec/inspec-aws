@@ -26,4 +26,5 @@ group :development do
   gem 'rake'
   gem 'minitest'
   gem 'pry-byebug'
+  gem 'license_scout', '~> 2.6', '>= 2.6.2'
 end
