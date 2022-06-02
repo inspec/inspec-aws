@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSApiGatewayUsagePlan < AwsResourceBase
   name 'aws_api_gateway_usage_plan'
   desc 'Gets a usage plan of a given plan identifier.'
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)
@@ -19,12 +19,13 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
     catch_aws_errors do
       resp = @aws.apigateway_client.get_usage_plan({ usage_plan_id: opts[:usage_plan_id] })
       @res = resp.to_h
+      @usage_plan_id = @res[:id]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    @res[:id]
+    @res? @usage_plan_id: @display_name
   end
 
   def exists?
@@ -33,7 +34,7 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
 
   def usage_plan_id
     return nil unless exists?
-    @res[:usage_plan_id]
+    @res[:id]
   end
 
   def api_stages_api_ids
