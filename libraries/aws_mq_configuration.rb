@@ -12,29 +12,32 @@ class AWSMQConfiguration < AwsResourceBase
   EXAMPLE
 
   def initialize(opts = {})
+    opts = { configuration_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(configuration_id))
     raise ArgumentError, "#{@__resource_name__}: configuration_id must be provided" if opts[:configuration_id].blank?
     @display_name = opts[:configuration_id]
     catch_aws_errors do
       resp = @aws.mq_client.describe_configuration({ configuration_id: opts[:configuration_id] })
-      @res = resp.to_h
-      @arn = @res[:arn]
-      create_resource_methods(@res)
+      @configurations = resp.to_h
+      @arn = @configurations[:arn]
+      create_resource_methods(@configurations)
     end
   end
 
   def resource_id
-    @res? @arn: @display_name
+    return unless exists?
+
+    @arn || @display_name
   end
 
   def exists?
-    !@res.blank?
+    !@configurations.blank?
   end
 
   def configuration_id
     return nil unless exists?
-    @res[:id]
+    @configurations[:id]
   end
 
   def to_s
