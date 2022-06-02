@@ -29,26 +29,26 @@ class AWSEc2TransitGatewayRouteTablePropagationSuccessPathTest < Minitest::Test
     mock_data[:state] = 'test1'
     data[:data] = { transit_gateway_route_table_propagations: [mock_data] }
     data[:client] = Aws::EC2::Client
-    @transit_gateway_route_table_propagations = AWSEc2TransitGatewayRouteTablePropagation.new(transit_gateway_route_table_id: 'test1', transit_gateway_attachment_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEc2TransitGatewayRouteTablePropagation.new(transit_gateway_route_table_id: 'test1', transit_gateway_attachment_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_transit_gateway_route_table_propagations_exists
-    assert @transit_gateway_route_table_propagations.exists?
+    assert @resp.exists?
   end
 
   def test_transit_gateway_attachment_id
-    assert_equal(@transit_gateway_route_table_propagations.transit_gateway_attachment_id, 'test1')
+    assert_equal(@resp.transit_gateway_attachment_id, 'test1')
   end
 
   def test_resource_id
-    assert_equal(@transit_gateway_route_table_propagations.resource_id, 'test1')
+    assert_equal(@resp.resource_id, 'test1')
   end
 
   def test_resource_type
-    assert_equal(@transit_gateway_route_table_propagations.resource_type, 'test1')
+    assert_equal(@resp.resource_type, 'test1')
   end
 
   def test_state
-    assert_equal(@transit_gateway_route_table_propagations.state, 'test1')
+    assert_equal(@resp.state, 'test1')
   end
 end

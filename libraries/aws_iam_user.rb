@@ -27,6 +27,10 @@ class AwsIamUser < AwsResourceBase
     @username = opts[:user_name]
   end
 
+  def resource_id
+    @user_arn
+  end
+
   def access_keys
     @access_keys ||= (@aws.iam_client.list_access_keys(user_params).access_key_metadata || [])
   end

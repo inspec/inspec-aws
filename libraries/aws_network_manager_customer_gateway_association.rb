@@ -32,6 +32,10 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
     @res[:customer_gateway_arn]
   end
 
+  def resource_id
+    @res? @res[:customer_gateway_arn]: @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

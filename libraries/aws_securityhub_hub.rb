@@ -21,13 +21,18 @@ class AWSSecurityHubHub < AwsResourceBase
     catch_aws_errors do
       resp = @aws.securityhub_client.describe_hub({ hub_arn: opts[:hub_arn] })
       @res = resp.to_h
+      @hub_arn = @res[:hub_arn]
       create_resource_methods(@res)
     end
   end
 
+  def resource_id
+    @hub_arn
+  end
+
   def hub_arn
     return nil unless exists?
-    @res[:hub_arn]
+    @hub_arn
   end
 
   def exists?

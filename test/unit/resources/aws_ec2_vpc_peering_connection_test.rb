@@ -48,4 +48,9 @@ class AWSEC2VPCPeeringConnectionSuccessPathTest < Minitest::Test
   def test_status_message
     assert_equal(@resp.status.message, "test1")
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.vpc_peering_connection_id)
+  end
 end

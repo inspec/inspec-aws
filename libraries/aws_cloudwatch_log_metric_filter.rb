@@ -54,6 +54,10 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
     !@metric_name.nil?
   end
 
+  def resource_id
+    "#{@filter_name}_#{@log_group_name}"
+  end
+
   def to_s
     "AWS Cloudwatch Log Metric Filter #{@metric_name}"
   end

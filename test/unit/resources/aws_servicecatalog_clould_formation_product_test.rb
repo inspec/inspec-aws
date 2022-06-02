@@ -23,7 +23,11 @@ class AWSServiceCatalogCloudFormationProductSuccessPathTest < Minitest::Test
     data = {}
     data[:method] = :describe_product_as_admin
     mock_data = {}
-    mock_data[:product_view_detail] = {}
+    mock_data[:product_view_detail] = {
+      product_view_summary: {
+        id: 'test1'
+      }
+    }
     mock_data[:provisioning_artifact_summaries] = []
     mock_data[:tags] = []
     mock_data[:tag_options] = []
@@ -33,12 +37,17 @@ class AWSServiceCatalogCloudFormationProductSuccessPathTest < Minitest::Test
     @resp = AWSServiceCatalogCloudFormationProduct.new(name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.product_view_detail.product_view_summary.id)
+  end
+
   def test_product_exists
     assert @resp.exists?
   end
 
-  def test_product_view_detail
-    assert_equal(@resp.product_view_detail, {})
+  def test_product_view_detail_product_view_summary_id
+    assert(@resp.product_view_detail.product_view_summary.id, 'test1')
   end
 
   def test_provisioning_artifact_summaries

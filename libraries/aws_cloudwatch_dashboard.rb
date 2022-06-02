@@ -21,13 +21,18 @@ class AWSCloudwatchDashboard < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatch_client.get_dashboard({ dashboard_name: opts[:dashboard_name] })
       @dashboard = resp.to_h
+      @dashboard_arn = @dashboard[:dashboard_arn]
       create_resource_methods(@dashboard)
     end
   end
 
+  def resource_id
+    @dashboard_arn
+  end
+
   def dashboard_name
     return nil unless exists?
-    @res[:dashboard_name]
+    @dashboard[:dashboard_name]
   end
 
   def exists?

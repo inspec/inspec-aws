@@ -6,7 +6,7 @@ class AwsCloudWatchLogGroup < AwsResourceBase
   name 'aws_cloudwatch_log_group'
   desc 'Verifies settings for an AWS CloudWatch Log Group.'
 
-  attr_reader :log_group_name, :retention_in_days, :metric_filter_count, :kms_key_id, :tags
+  attr_reader :log_group_name, :retention_in_days, :metric_filter_count, :kms_key_id, :tags, :arn
 
   def initialize(opts = {})
     opts = { log_group_name: opts } if opts.is_a?(String)
@@ -26,16 +26,21 @@ class AwsCloudWatchLogGroup < AwsResourceBase
 
     return false if @log_groups.empty?
 
-    raise "Found multiple CloudWatch Log Groups. The following matched: #{@log_groups.join(', ')}.  Try to restrict your resource criteria." if @log_groups.count > 1
+    raise "Found multiple CloudWatch Log Groups. The following matched: #{@log_groups.join(', ')}. Try to restrict your resource criteria." if @log_groups.count > 1
 
     @retention_in_days = @log_groups.first.retention_in_days
     @metric_filter_count = @log_groups.first.metric_filter_count
     @kms_key_id = @log_groups.first.kms_key_id
+    @arn = @log_groups.first.arn
 
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.list_tags_log_group({ log_group_name: @log_group_name })
       @tags = resp.tags
     end
+  end
+
+  def resource_id
+    @arn
   end
 
   def exists?

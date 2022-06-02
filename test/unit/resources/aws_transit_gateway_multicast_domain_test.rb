@@ -33,6 +33,11 @@ class AWSTransitGatewayMulticastDomainSuccessPathTest < Minitest::Test
     @transit_gateway_multicast_domains = AWSTransitGatewayMulticastDomain.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@transit_gateway_multicast_domains.resource_id)
+    assert_equal(@transit_gateway_multicast_domains.resource_id, @transit_gateway_multicast_domains.transit_gateway_multicast_domain_id)
+  end
+
   def test_transit_gateway_multicast_domains_exists
     assert @transit_gateway_multicast_domains.exists?
   end

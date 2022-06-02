@@ -54,6 +54,11 @@ class AwsSubnetHappyPathTest < Minitest::Test
     @subnet = AwsSubnet.new(subnet_id: 'subnet-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@subnet.resource_id)
+    assert_equal(@subnet.resource_id, @subnet.subnet_id)
+  end
+
   def test_subnet_exists
     assert @subnet.exists?
   end

@@ -55,6 +55,11 @@ class AwsEc2TrafficMirrorTargetPathTest < Minitest::Test
   def test_network_load_balancer_arn
     assert_equal(@resp.network_load_balancer_arn, 'dummy_id')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.traffic_mirror_target_id)
+  end
 end
 
 

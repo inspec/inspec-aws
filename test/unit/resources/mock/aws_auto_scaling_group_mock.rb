@@ -5,6 +5,7 @@ class AwsAutoScalingGroupMock < AwsBaseResourceMock
   def initialize
     super
     @auto_scaling_groups = {auto_scaling_groups: [{auto_scaling_group_name: @aws.any_string,
+                                                   auto_scaling_group_arn: @aws.any_string,
                                                    min_size: @aws.any_int,
                                                    max_size: @aws.any_int,
                                                    desired_capacity: @aws.any_int,

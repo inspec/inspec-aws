@@ -33,6 +33,11 @@ class AWSCloudWatchLogsSubscriptionFilterSuccessPathTest < Minitest::Test
     @resp = AWSCloudWatchLogsSubscriptionFilter.new(log_group_name: 'test1', filter_name_prefix: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.filter_name + '_' + @resp.log_group_name + '_' + @resp.role_arn)
+  end
+
   def test_subscription_filters_exists
     assert @resp.exists?
   end

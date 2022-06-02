@@ -87,4 +87,9 @@ class AwsEIPPathTest < Minitest::Test
   def test_network_border_group
     assert_equal(@addr.network_border_group, 'us-east-2')
   end
+
+  def test_resource_id
+    refute_nil(@addr.resource_id)
+    assert_equal(@addr.resource_id, @addr.public_ip)
+  end
 end
