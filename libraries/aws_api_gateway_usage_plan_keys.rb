@@ -4,13 +4,12 @@ require 'aws_backend'
 
 class AWSApiGatewayUsagePlanKeys < AwsCollectionResourceBase
   name 'aws_api_gateway_usage_plan_keys'
-  desc 'Lists information about a collection of Resource resources.'
-
-  example "
+  desc 'Gets all the usage plan keys representing the API keys added to a specified usage plan.'
+  example <<-EXAMPLE
     describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)

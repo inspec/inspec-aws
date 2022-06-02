@@ -5,11 +5,11 @@ require 'aws_backend'
 class AWSApiGatewayUsagePlanKey < AwsResourceBase
   name 'aws_api_gateway_usage_plan_key'
   desc 'Gets a usage plan key of a given key identifier.'
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_usage_plan_key(usage_plan_id: 'USAGE_PLAN_ID', key_id: 'USAGE_PLAN_KEY_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)
@@ -21,12 +21,14 @@ class AWSApiGatewayUsagePlanKey < AwsResourceBase
     catch_aws_errors do
       resp = @aws.apigateway_client.get_usage_plan_key({ usage_plan_id: opts[:usage_plan_id], key_id: opts[:key_id] })
       @res = resp.to_h
+      @usage_plan_key_id = @res[:id]
+      @usage_plan_key_name = @res[:name]
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    "#{@usage_plan_id}_#{@display_name}"
+    "#{@res? @usage_plan_key_id: @display_name}_#{@res? @usage_plan_key_name: ''}"
   end
 
   def exists?

@@ -34,7 +34,7 @@ class AWSApiGatewayUsagePlanKeySuccessPathTest < Minitest::Test
   
   def test_resource_id
     refute_nil(@res.resource_id)
-    assert_equal(@res.resource_id, 'PLAN_KEY_ID'+'_'+@res.id)
+    assert_equal(@res.resource_id, @res.id+'_'+@res.name)
   end
 
   def test_usage_plan_key_exists
