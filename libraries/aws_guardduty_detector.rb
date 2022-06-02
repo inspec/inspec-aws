@@ -23,12 +23,14 @@ class AwsGuardDutyDetector < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.guardduty_client.get_detector({ detector_id: opts[:detector_id] })
-      if resp.first.nil?
-        empty_response_warn
-      else
-        create_resource_methods(resp.first.to_h)
-      end
+      @res = resp.to_h
+      @created_at = @res[:created_at]
+      create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    "#{@res? @display_name: ''}_#{@res? @created_at: ''}"
   end
 
   def exists?
@@ -37,5 +39,9 @@ class AwsGuardDutyDetector < AwsResourceBase
 
   def enabled?
     status.upcase == 'ENABLED'
+  end
+
+  def to_s
+    "Detector ID: #{@display_name}"
   end
 end

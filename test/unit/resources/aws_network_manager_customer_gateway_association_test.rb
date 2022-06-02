@@ -33,6 +33,11 @@ class AWSNetworkManagerCustomerGatewayAssociationSuccessPathTest < Minitest::Tes
     @resp = AWSNetworkManagerCustomerGatewayAssociation.new(global_network_id: 'test1', customer_gateway_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.global_network_id)
+  end
+
   def test_customer_gateway_associations_configs_exists
     assert @resp.exists?
   end

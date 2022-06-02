@@ -12,6 +12,15 @@ class AwsStsCallerIdentityTest < Minitest::Test
 
   end
 
+  def test_resource_id
+    # When
+    @identity = AwsStsCallerIdentity.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data(false))
+
+    # Then
+    refute_nil(@identity.resource_id)
+    assert_equal(@identity.resource_id, @identity.arn)
+  end
+
   def test_params_not_ok
     assert_raises(ArgumentError) { AwsStsCallerIdentity.new(this_param: 'not-ok') }
   end

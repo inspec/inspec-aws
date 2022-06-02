@@ -34,6 +34,11 @@ class AWSRDSDBClusterSnapShotHappyPathTest < Minitest::Test
     @resp = AWSRDSDBClusterSnapShot.new(db_cluster_snapshot_id: 'default:aurora-5-6', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.db_cluster_snapshot_arn)
+  end
+
   def test_db_cluster_snapshot_ids
     assert_equal(@resp.db_cluster_snapshot_identifier, 'default:aurora-5-6')
   end

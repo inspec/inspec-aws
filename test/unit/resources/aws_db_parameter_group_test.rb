@@ -36,6 +36,11 @@ class AwsDbParameterGroupSuccessPathTest < Minitest::Test
     @parameter_group = AwsDbParameterGroup.new(db_parameter_group_name: 'default', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@parameter_group.resource_id)
+    assert_equal(@parameter_group.resource_id, @parameter_group.db_parameter_group_arn)
+  end
+
   def test_parameter_group_exists
     assert @parameter_group.exists?
   end

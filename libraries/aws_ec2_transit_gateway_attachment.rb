@@ -25,6 +25,10 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
     end
   end
 
+  def resource_id
+    @transit_gateway_attachments ? @transit_gateway_attachments[:transit_gateway_attachment_id] : @display_name
+  end
+
   def transit_gateway_attachment_id
     return nil unless exists?
     @transit_gateway_attachments[:transit_gateway_attachment_id]

@@ -83,4 +83,8 @@ class AwsSqsQueueTest < Minitest::Test
     assert_equal(@queue.kms_data_key_reuse_period_seconds, @mock_queue[:attributes]['KmsDataKeyReusePeriodSeconds'])
   end
 
+  def test_resource_id
+    refute_nil(@queue.resource_id)
+    assert_equal(@queue.resource_id, 'https://sqs.mock.com/mock-queue')
+  end
 end

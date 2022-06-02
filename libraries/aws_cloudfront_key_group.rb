@@ -25,6 +25,10 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
     end
   end
 
+  def resource_id
+    @resp? @resp[:id]: @display_name
+  end
+
   def id
     return nil unless exists?
     @resp[:id]
@@ -32,10 +36,6 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
 
   def exists?
     !@resp.nil? && !@resp.empty?
-  end
-
-  def resource_id
-    @display_name
   end
 
   def to_s

@@ -33,6 +33,11 @@ class AWSCloudWatchLogsDestinationSuccessPathTest < Minitest::Test
     @resp = AWSCloudWatchLogsDestination.new(destination_name_prefix: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.destination_name + '_' + @resp.arn)
+  end
+
   def test_destination_exists
     assert @resp.exists?
   end

@@ -30,6 +30,11 @@ class AWSCloudFormationStackSetHappyPathTest < Minitest::Test
     @resp = AWSCloudFormationStackSet.new(stack_set_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.stack_set_id)
+  end
+
   def stack_set_exists
     assert @resp.exists?
   end

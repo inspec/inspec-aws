@@ -90,4 +90,10 @@ class AwsEcrRepositoryTest < Minitest::Test
   def test_repository_uri
     assert_equal(@ecr_repo.repository_uri, @m_r[:repository_uri])
   end
+
+  def test_resource_id
+    refute_nil(@ecr_repo.resource_id)
+    assert_equal(@ecr_repo.resource_id, @m_r[:repository_name])
+  end
+
 end

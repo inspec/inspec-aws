@@ -21,7 +21,7 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
   end
 
   def initialize(opts)
-    super
+    super(opts)
     validate_parameters(required: %i(service_id principal))
     filters = {
       filters: [
@@ -36,6 +36,10 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
 
   def exists?
     !failed_resource? && !!allowed_principal && !allowed_principal.empty?
+  end
+
+  def resource_id
+    "#{@opts ? @opts[:service_id] : ''}_#{@opts ? @opts[:principal] : ''}"
   end
 
   def to_s

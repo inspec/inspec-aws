@@ -46,9 +46,15 @@ class AwsRdsClusterTest < Minitest::Test
                                           db_cluster_parameter_group_status: "pending-reboot",
                                           promotion_tier: 1}]
     mock_cluster[:status] = 'available'
+    mock_cluster[:db_cluster_arn] = 'test-arn'
     data[:data] = { db_clusters: [mock_cluster] }
     data[:client] = Aws::RDS::Client
     @cluster = AwsRdsCluster.new(db_cluster_identifier: 'cluster-12345678', client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_resource_id
+    refute_nil(@cluster.resource_id)
+    assert_equal(@cluster.resource_id, @cluster.db_cluster_arn)
   end
 
   def test_cluster_exists

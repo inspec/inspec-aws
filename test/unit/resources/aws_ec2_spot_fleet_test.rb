@@ -47,4 +47,9 @@ class AWSEC2SpotFleetSuccessPathTest < Minitest::Test
   def test_spot_fleet_request_state
     assert_equal(@resp.spot_fleet_request_state,  'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.spot_fleet_request_id)
+  end
 end

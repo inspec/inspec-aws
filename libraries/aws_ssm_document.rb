@@ -26,9 +26,14 @@ class AwsSsmDocument < AwsResourceBase
       else
         @document = resp.document.to_h
         @document[:document_hash] = @document.delete(:hash)
+        @document[:hash] = @document.hash
         create_resource_methods(@document)
       end
     end
+  end
+
+  def resource_id
+    @document[:hash]
   end
 
   def exists?

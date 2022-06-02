@@ -32,6 +32,11 @@ class AWSTransitGatewayMulticastDomainAssociationSuccessPathTest < Minitest::Tes
     @multicast_domain_associations = AWSTransitGatewayMulticastDomainAssociation.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@multicast_domain_associations.resource_id)
+    assert_equal(@multicast_domain_associations.resource_id, @multicast_domain_associations.transit_gateway_multicast_domain_id)
+  end
+
   def test_multicast_domain_associations_exists
     assert @multicast_domain_associations.exists?
   end
