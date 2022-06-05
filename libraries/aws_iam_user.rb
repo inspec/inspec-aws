@@ -6,7 +6,7 @@ class AwsIamUser < AwsResourceBase
   name 'aws_iam_user'
   desc 'Verifies settings for an AWS IAM User.'
   example "
-    describe aws_iam_user(user_name: 'test_user_name') do
+    describe aws_iam_user(user_name: 'TEST_USER_NAME') do
       it { should exist }
     end
   "
