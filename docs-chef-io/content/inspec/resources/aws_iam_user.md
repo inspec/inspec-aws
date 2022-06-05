@@ -67,11 +67,8 @@ This can be passed either as a string or as a `user_name: 'value'` key-value ent
 `user_password_last_used`
 : The date and time, in ISO 8601 date-time format , when the user's password was last used to sign in to an Amazon Web Services website.
 
-`permissions_boundary_type`
-: The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity. This data type can only have a value of Policy.
-
-`permissions_boundary_arn`
-: The ARN of the policy used to set the permissions boundary for the user or role.
+`permissions_boundary`
+: The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity.
 
 `user_tags`
 : A list of tags that are associated with the user.

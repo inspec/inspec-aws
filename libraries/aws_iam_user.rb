@@ -12,7 +12,7 @@ class AwsIamUser < AwsResourceBase
   "
 
   attr_reader :username, :user_arn, :user_id, :user_path, :user_create_date,
-              :user_password_last_used, :user_permissions_boundary, :user_tags
+              :user_password_last_used, :permissions_boundary, :user_tags
 
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
@@ -28,8 +28,7 @@ class AwsIamUser < AwsResourceBase
     @user_path = user.path
     @user_create_date = user.create_date
     @user_password_last_used = user.password_last_used
-    @permissions_boundary_type = user.permissions_boundary.permissions_boundary_type
-    @permissions_boundary_arn = user.permissions_boundary.permissions_boundary_arn
+    @permissions_boundary = user.permissions_boundary
     @user_tags = user.tags
   end
 
