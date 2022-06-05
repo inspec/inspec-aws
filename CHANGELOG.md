@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.21 -->
+<!-- latest_release 1.83.22 -->
+## [v1.83.22](https://github.com/inspec/inspec-aws/tree/v1.83.22) (2022-06-03)
+
+#### Merged Pull Requests
+- fixing failed resources in buildkite [#920](https://github.com/inspec/inspec-aws/pull/920) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.21](https://github.com/inspec/inspec-aws/tree/v1.83.21) (2022-06-01)
 
 #### Merged Pull Requests
 - RESOURCE-373-aws-resource-ids-messaging [#912](https://github.com/inspec/inspec-aws/pull/912) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.20](https://github.com/inspec/inspec-aws/tree/v1.83.20) (2022-06-01)
 
