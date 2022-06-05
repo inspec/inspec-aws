@@ -65,7 +65,7 @@ class AwsIamUser < AwsResourceBase
   end
 
   def to_s
-    "IAM User Name: #{username}"
+    "IAM User Name: #{@username}"
   end
 
   private
