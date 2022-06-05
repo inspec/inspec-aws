@@ -101,4 +101,9 @@ class AwsElastiCacheClusterNodeTest < Minitest::Test
   def test_customer_availability_zone
     assert_equal(@cache_cluster_node.customer_availability_zone, @mock_node[:customer_availability_zone])
   end
+
+  def test_resource_id
+    refute_nil(@cache_cluster_node.resource_id)
+    assert_equal(@cache_cluster_node.resource_id, @mock_node[:cache_node_id])
+  end
 end

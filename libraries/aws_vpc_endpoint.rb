@@ -53,6 +53,10 @@ class AwsVpce < AwsResourceBase
     @vpce[:vpc_endpoint_type] == 'Gateway'
   end
 
+  def resource_id
+    @vpce ? @vpce[:vpc_endpoint_id] : @display_name
+  end
+
   def to_s
     "VPC Endpoint: #{@display_name}"
   end

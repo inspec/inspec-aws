@@ -99,9 +99,17 @@ class AwsS3BucketObjecPublicTest < Minitest::Test
     end
     refute_empty(public_grants)
   end
+
+  def test_resource_id
+    assert_equal(@bucket_object.resource_id, 'public_bucket_public.file')
+  end
+
+  def test_resource_id_not_nil_check
+    assert !@bucket_object.resource_id.nil?
+  end
 end
 
-class AwsS3BucketObjecPrivateTest < Minitest::Test
+class AwsS3BucketObjectPrivateTest < Minitest::Test
 
   def setup
     # an empty response from get_object is sufficient in this case for the resource to exist
@@ -143,5 +151,13 @@ class AwsS3BucketObjecPrivateTest < Minitest::Test
       g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/
     end
     assert_empty(auth_users_grants)
+  end
+
+  def test_resource_id
+    assert_equal(@bucket_object.resource_id, 'private_bucket_private.file')
+  end
+
+  def test_resource_id_not_nil_check
+    assert !@bucket_object.resource_id.nil?
   end
 end

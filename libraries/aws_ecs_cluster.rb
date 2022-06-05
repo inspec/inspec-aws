@@ -39,6 +39,10 @@ class AwsEcsCluster < AwsResourceBase
     end
   end
 
+  def resource_id
+    @cluster_arn
+  end
+
   def exists?
     !@cluster_arn.nil?
   end

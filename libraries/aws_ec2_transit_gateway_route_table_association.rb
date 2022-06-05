@@ -27,6 +27,10 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     end
   end
 
+  def resource_id
+    @association ? @association[:resource_id] : @display_name
+  end
+
   def transit_gateway_route_table_id
     return nil unless exists?
     @association[:transit_gateway_route_table_id]

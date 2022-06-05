@@ -3,6 +3,7 @@ require 'aws_ec2_traffic_mirror_session'
 require 'aws-sdk-core'
 
 class AwsEc2TrafficMirrorSessionTest < Minitest::Test
+  
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AWSEc2TrafficMirrorSession.new(rubbish: 9, client_args: { stub_responses: true }) }
   end
@@ -33,7 +34,6 @@ class AwsEc2TrafficMirrorSessionPathTest < Minitest::Test
     mock_lt[:owner_id] = 'dummy_id'
     data[:data] = { :traffic_mirror_sessions => [mock_lt] }
     data[:client] = Aws::EC2::Client
-
     @resp = AWSEc2TrafficMirrorSession.new(traffic_mirror_session_id: 'tms-01a6e9ac9f962f154',client_args: { stub_responses: true }, stub_data: [data])
   end
 
@@ -42,7 +42,6 @@ class AwsEc2TrafficMirrorSessionPathTest < Minitest::Test
   end
 
   def test_traffic_mirror_session_id
-
     assert_equal(@resp.traffic_mirror_session_id, "tms-01a6e9ac9f962f154")
   end
 
@@ -56,6 +55,11 @@ class AwsEc2TrafficMirrorSessionPathTest < Minitest::Test
 
   def test_network_interface_id
     assert_equal(@resp.network_interface_id, 'dummy_id')
+  end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.traffic_mirror_session_id)
   end
 end
 

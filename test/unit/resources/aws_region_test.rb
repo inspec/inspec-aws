@@ -34,6 +34,11 @@ class AwsRegionTest < Minitest::Test
     @region = AwsRegion.new(region_name: 'eu-west-2', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@region.resource_id)
+    assert_equal(@region.resource_id, @region.region_name+'_'+@region.endpoint)
+  end
+
   def test_region_exists
     assert @region.exists?
   end

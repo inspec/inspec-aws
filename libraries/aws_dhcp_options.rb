@@ -38,6 +38,10 @@ class AwsDhcpOptions < AwsResourceBase
     _dhcp_config('ntp-servers')
   end
 
+  def resource_id
+    @dhcp_options ? @dhcp_options[:dhcp_options_id]: @display_name
+  end
+
   def to_s
     opts.key?(:aws_region) ? "DHCP Options #{@display_name} in #{opts[:aws_region]}" : "DHCP Options #{@display_name}"
   end

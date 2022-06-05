@@ -71,4 +71,9 @@ class AWSEC2NetworkInsightsPathSuccessPathTest < Minitest::Test
   def test_destination_port
     assert_equal(@resp.destination_port, 22)
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.network_insights_path_id)
+  end
 end

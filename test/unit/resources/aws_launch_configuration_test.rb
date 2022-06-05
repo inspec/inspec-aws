@@ -35,6 +35,11 @@ class AwsLaunchConfigurationTest < Minitest::Test
                             stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@config.resource_id)
+    assert_equal(@config.resource_id, @config.arn)
+  end
+
   def test_exists
     assert @config.exists?
   end

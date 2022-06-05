@@ -122,4 +122,9 @@ class AwsEbsVolumeHappyPathTest < Minitest::Test
   def test_volume_type
     assert_equal(@volume.volume_type, 'standard')
   end
+
+  def test_resource_id
+    refute_nil(@volume.resource_id)
+    assert_equal(@volume.resource_id, @volume.volume_id)
+  end
 end

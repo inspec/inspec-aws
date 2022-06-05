@@ -45,6 +45,11 @@ class AwsRdsSnapshotTest < Minitest::Test
     @rds = AwsRdsSnapshot.new(db_snapshot_identifier: 'rds-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@rds.resource_id)
+    assert_equal(@rds.resource_id, @rds.db_snapshot_identifier)
+  end
+
   def test_rds_exists
     assert @rds.exists?
   end

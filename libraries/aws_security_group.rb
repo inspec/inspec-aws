@@ -94,6 +94,10 @@ class AwsSecurityGroup < AwsResourceBase
     !@security_group.nil?
   end
 
+  def resource_id
+    @group_id
+  end
+
   def to_s
     sg = ''
     sg += "ID: #{@group_id} " if @group_id

@@ -34,6 +34,10 @@ class AWSEC2NetworkInterface < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @res ? @res[:network_interface_id] : @display_name
+  end
+
   def to_s
     "Network Interface ID: #{@display_name}"
   end

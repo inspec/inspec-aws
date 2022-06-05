@@ -37,6 +37,11 @@ class AWSCloudWatchAnomalyDetectorSuccessPathTest < Minitest::Test
     @resp = AwsCloudwatchAnomalyDetector.new(metric_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.metric_name + '_' + @resp.namespace)
+  end
+
   def test_anomaly_detectors_exists
     assert @resp.exists?
   end

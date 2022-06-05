@@ -21,6 +21,7 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_realtime_log_config({ name: opts[:name] })
       @res = resp.realtime_log_config.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
   end
@@ -34,10 +35,6 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
-  def to_s
-    "Config Name: #{@display_name}"
-  end
-
   def end_points_stream_types
     end_points.map(&:stream_type)
   end
@@ -48,5 +45,14 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
 
   def end_points_kinesis_stream_config_stream_arns
     (end_points.map(&:kinesis_stream_config)).map(&:stream_arn)
+  end
+
+  # Here we have used the arn as it is more unique than the name.
+  def resource_id
+    @arn
+  end
+
+  def to_s
+    "Config Name: #{@display_name}"
   end
 end

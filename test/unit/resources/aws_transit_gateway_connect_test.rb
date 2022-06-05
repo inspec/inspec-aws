@@ -34,6 +34,11 @@ class AWSTransitGatewayConnectHappyPathTest < Minitest::Test
     @resp = AWSTransitGatewayConnect.new(transit_gateway_attachment_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.transit_gateway_attachment_id)
+  end
+
   def test_transit_gateway_connects_exists
     assert @resp.exists?
   end

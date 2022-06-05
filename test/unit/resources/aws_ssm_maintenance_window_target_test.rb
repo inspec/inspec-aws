@@ -34,6 +34,11 @@ class AWSSESMaintenanceWindowTargetSuccessPathTest < Minitest::Test
     @resp = AWSSESMaintenanceWindowTarget.new(window_id: 'test1', window_target_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.window_id + '_' + @resp.window_target_id)
+  end
+
   def test_targets_exist
     assert @resp.exists?
   end

@@ -81,6 +81,10 @@ class AwsElastiCacheClusterNode < AwsResourceBase
     @cluster_node[:endpoint][:port] unless @cluster_node.nil?
   end
 
+  def resource_id
+    @cluster_node? @cluster_node[:cache_node_id]:@display_name
+  end
+
   def exists?
     !id.nil?
   end
