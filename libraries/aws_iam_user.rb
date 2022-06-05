@@ -24,7 +24,7 @@ class AwsIamUser < AwsResourceBase
     end
     @user_arn = user.arn
     @user_id  = user.user_id
-    @username = opts[:user_name]
+    @username = user.user_name
     @user_path = user.path
     @user_create_date = user.create_date
     @user_password_last_used = user.password_last_used
