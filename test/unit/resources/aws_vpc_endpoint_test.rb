@@ -87,4 +87,8 @@ class AwsVpcEndpointHappyPathTest < Minitest::Test
     assert_equal(@vpce.private_dns_enabled, true)
   end
 
+  def test_resource_id
+    refute_nil(@vpce.resource_id)
+    assert_equal(@vpce.resource_id, @vpce.vpc_endpoint_id)
+  end
 end

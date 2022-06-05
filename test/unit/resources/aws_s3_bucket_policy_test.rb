@@ -32,5 +32,13 @@ class AWSS3BucketPolicySuccessPathTest < Minitest::Test
   def test_s3_policy_exist
     assert @resp.exists?
   end
+
+  def test_resource_id
+    assert_equal(@resp.resource_id, 'test1')
+  end
+
+  def test_resource_id_not_nil_check
+    assert !@resp.resource_id.nil?
+  end
 end
 

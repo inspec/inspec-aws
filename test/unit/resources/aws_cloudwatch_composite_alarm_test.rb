@@ -40,6 +40,11 @@ class AWSCloudWatchCompositeAlarmSuccessPathTest < Minitest::Test
     @resp = AwsCloudwatchCompositeAlarm.new(alarm_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.alarm_arn)
+  end
+
   def test_event_invoke_config_exists
     assert @resp.exists?
   end

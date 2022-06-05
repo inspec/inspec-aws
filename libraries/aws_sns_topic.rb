@@ -44,6 +44,10 @@ class AwsSnsTopic < AwsResourceBase
     !@confirmed_subscription_count.nil?
   end
 
+  def resource_id
+    @arn
+  end
+
   def to_s
     "SNS Topic ARN: #{@arn}"
   end

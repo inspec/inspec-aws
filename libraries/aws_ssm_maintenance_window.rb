@@ -24,6 +24,10 @@ class AWSSESMaintenanceWindow < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res? @res[:window_id]: @display_name
+  end
+
   def window_id
     return nil unless exists?
     @res[:window_id]

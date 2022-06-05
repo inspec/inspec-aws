@@ -56,4 +56,9 @@ class AWSEFSMountTargetSuccessPathTest < Minitest::Test
   def test_life_cycle_state
     assert_equal(@mount_targets.life_cycle_state, 'test1')
   end
+
+  def test_resource_id
+    assert !@mount_targets.resource_id.nil?
+    assert_equal(@mount_targets.resource_id, @mount_targets.file_system_id)
+  end
 end

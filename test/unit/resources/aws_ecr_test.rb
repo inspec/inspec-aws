@@ -35,6 +35,11 @@ class AwsEcrTest < Minitest::Test
                                  stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@ecr.resource_id)
+    assert_equal(@ecr.resource_id, @mock_ecr[:repository_name])
+  end
+
   def test_repository_name
     assert_equal(@ecr.repository_name, @mock_ecr[:repository_name])
   end

@@ -31,6 +31,11 @@ class AWSECSServiceSuccessPathTest < Minitest::Test
     @work_group = AWSECSService.new(cluster: 'test1', service: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@work_group.resource_id)
+    assert_equal(@work_group.resource_id, 'test1')
+  end
+
   def test_parameter_group_exists
     assert @work_group.exists?
   end

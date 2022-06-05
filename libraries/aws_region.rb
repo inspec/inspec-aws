@@ -27,6 +27,10 @@ class AwsRegion < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@region_name}_#{@endpoint}"
+  end
+
   def exists?
     !@endpoint.nil?
   end

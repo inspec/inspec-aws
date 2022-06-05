@@ -43,6 +43,10 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
     !@route_tables.nil? && !@route_tables.empty?
   end
 
+  def resource_id
+    @route_tables ? @route_tables[:route_table_id] : @display_name
+  end
+
   def to_s
     "Route Table ID: #{@display_name}"
   end

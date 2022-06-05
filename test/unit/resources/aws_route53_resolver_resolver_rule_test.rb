@@ -42,6 +42,11 @@ class AWSRoute53ResolverResolverRuleSuccessPathTest < Minitest::Test
     @resolver_rule = AWSRoute53ResolverResolverRule.new(resolver_rule_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resolver_rule.resource_id)
+    assert_equal(@resolver_rule.resource_id, @resolver_rule.id)
+  end
+
   def test_resolver_rule_exists
     assert @resolver_rule.exists?
   end

@@ -34,6 +34,11 @@ class AWSServiceCatalogPortfolioProductAssociationSuccessPathTest < Minitest::Te
     @portfolio_details = AWSServiceCatalogPortfolioProductAssociation.new(product_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@portfolio_details.resource_id)
+    assert_equal(@portfolio_details.resource_id, @portfolio_details.arn)
+  end
+
   def test_portfolio_details_exists
     assert @portfolio_details.exists?
   end

@@ -65,6 +65,10 @@ class AwsEbsSnapshot < AwsResourceBase
     @snapshot[:encrypted]
   end
 
+  def resource_id
+    @snapshot ? @snapshot[:snapshot_id] : @display_name
+  end
+
   def to_s
     "EBS Snapshot #{@display_name}"
   end

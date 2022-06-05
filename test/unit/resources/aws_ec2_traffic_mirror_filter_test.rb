@@ -45,5 +45,10 @@ class AWSEc2TrafficMirrorFilterPathTest < Minitest::Test
   def test_traffic_mirrior_filter_description
     assert_equal(@resp.description, "test-description")
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.traffic_mirror_filter_id)
+  end
 end
 

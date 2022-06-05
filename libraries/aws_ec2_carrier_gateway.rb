@@ -21,6 +21,7 @@ class AWSEC2CarrierGateway < AwsResourceBase
     catch_aws_errors do
       resp = @aws.compute_client.describe_carrier_gateways({ carrier_gateway_ids: [opts[:carrier_gateway_id]] })
       @resp = resp.carrier_gateways[0].to_h
+      @carrier_gateway_id = resp.carrier_gateways[0].carrier_gateway_id
       create_resource_methods(@resp)
     end
   end
@@ -32,6 +33,10 @@ class AWSEC2CarrierGateway < AwsResourceBase
 
   def exists?
     !@resp.nil? && !@resp.empty?
+  end
+
+  def resource_id
+    @carrier_gateway_id
   end
 
   def to_s

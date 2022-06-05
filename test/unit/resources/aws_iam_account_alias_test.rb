@@ -14,6 +14,11 @@ class AwsIamAccountAliasTest < Minitest::Test
     @alias = AwsIamAccountAlias.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@alias.resource_id)
+    assert_equal(@alias.resource_id, @mock_alias[:account_aliases][0])
+  end
+
   def test_exists
     assert(@alias.exists?)
   end
@@ -21,5 +26,4 @@ class AwsIamAccountAliasTest < Minitest::Test
   def test_alias_name
     assert_equal(@alias.alias, @mock_alias[:account_aliases][0])
   end
-
 end

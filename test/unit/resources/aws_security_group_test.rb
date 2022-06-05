@@ -70,6 +70,11 @@ class AwsSecurityGroupNoRulesTest < Minitest::Test
     @security_group = AwsSecurityGroup.new(id: 'sg-1234abcd', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@security_group.resource_id)
+    assert_equal(@security_group.resource_id, @security_group.group_id)
+  end
+
   def test_security_group_exists
     assert @security_group.exists?
   end

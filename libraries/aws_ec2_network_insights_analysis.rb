@@ -34,6 +34,10 @@ class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @res ? @res[:network_insights_analysis_id] : @display_name
+  end
+
   def to_s
     "Network Insights Analysis ID: #{@display_name}"
   end

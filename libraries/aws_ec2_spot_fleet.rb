@@ -34,6 +34,10 @@ class AWSEC2SpotFleet < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @res ? @res[:spot_fleet_request_id] : @display_name
+  end
+
   def to_s
     "Spot Fleet Request ID: #{@display_name}"
   end

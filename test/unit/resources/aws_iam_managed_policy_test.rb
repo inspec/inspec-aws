@@ -28,6 +28,11 @@ class AwsIamManagedPolicyHappyPathTest < Minitest::Test
     @resp = AwsIamManagedPolicy.new(policy_arn: 'test1' ,client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.arn)
+  end
+
   def test_iam_client_exists
     assert @resp.exist?
   end

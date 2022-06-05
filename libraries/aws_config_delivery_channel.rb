@@ -45,6 +45,10 @@ class AwsConfigDeliveryChannel < AwsResourceBase
     end
   end
 
+  def resource_id
+    "#{@sns_topic_arn}_#{@channel_name}"
+  end
+
   def exists?
     !@s3_bucket_name.nil?
   end

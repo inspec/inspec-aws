@@ -7,15 +7,15 @@ class AwsIamInlinePolicy < AwsResourceBase
   desc 'Verifies settings for an Iam Inline Policy, attached to a user, role or group.'
 
   example "
-    describe aws_iam_inline_policy(role_name:'rolename-a', policy_name:'policy-1') do
+    describe aws_iam_inline_policy(role_name: 'rolename-a', policy_name: 'policy-1') do
       it { should exist }
     end
 
-    describe aws_iam_inline_policy(user_name:'username-a', policy_name:'policy-1') do
+    describe aws_iam_inline_policy(user_name: 'username-a', policy_name: 'policy-1') do
       it { should exist }
     end
 
-    describe aws_iam_inline_policy(group_name:'rolename-a', policy_name:'policy-1') do
+    describe aws_iam_inline_policy(group_name: 'rolename-a', policy_name: 'policy-1') do
       it { should exist }
     end
   "
@@ -43,6 +43,10 @@ class AwsIamInlinePolicy < AwsResourceBase
     end
 
     @policy_document = @resp
+  end
+
+  def resource_id
+    @policy_name
   end
 
   def get_role_policy_by_name(rolename, policyname)
