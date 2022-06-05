@@ -32,6 +32,11 @@ class AWSLogsMetricFilterSuccessPathTest < Minitest::Test
     @metric_filters = AWSLogsMetricFilter.new(filter_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@metric_filters.resource_id)
+    assert_equal(@metric_filters.resource_id, @metric_filters.filter_name + '_' + @metric_filters.log_group_name)
+  end
+
   def test_metric_filter_exists
     assert @metric_filters.exists?
   end

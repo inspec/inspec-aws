@@ -7,7 +7,7 @@ class AWSSecretsManagerSecret < AwsResourceBase
   desc 'Retrieves the details of a secret.'
 
   example "
-    describe aws_secretsmanager_secret(secret_id: 'value') do
+    describe aws_secretsmanager_secret(secret_id: 'Secret-Id') do
       it { should exist }
     end
   "
@@ -23,6 +23,10 @@ class AWSSecretsManagerSecret < AwsResourceBase
       @res = resp.to_h
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @res[:arn]
   end
 
   def secret_id

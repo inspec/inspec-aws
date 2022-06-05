@@ -42,6 +42,10 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
     @vpcen[:connection_notification_state]=='Enabled'
   end
 
+  def resource_id
+    @vpcen ? @vpcen[:connection_notification_id] : @display_name
+  end
+
   def to_s
     "VPC Endpoint Connection Notification: #{@display_name}"
   end

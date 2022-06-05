@@ -48,6 +48,10 @@ class AwsIamRole < AwsResourceBase
     end
   end
 
+  def resource_id
+    @arn
+  end
+
   def exists?
     !@arn.nil?
   end

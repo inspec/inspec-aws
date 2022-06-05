@@ -41,4 +41,9 @@ class AWSEC2InternetGatewaySuccessPathTest < Minitest::Test
   def test_owner_id
     assert_equal(@resp.owner_id, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.internet_gateway_id)
+  end
 end

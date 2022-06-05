@@ -39,6 +39,10 @@ class AWSEc2TrafficMirrorFilter < AwsResourceBase
     !@traffic_mirror_filters.nil? && !@traffic_mirror_filters.empty?
   end
 
+  def resource_id
+    @traffic_mirror_filters ? @traffic_mirror_filters[:traffic_mirror_filter_id] : @display_name
+  end
+
   def to_s
     "EC2 Traffic Mirror Filter ID: #{@display_name}"
   end

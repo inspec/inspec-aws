@@ -32,6 +32,11 @@ class AWSSESPatchBaselineSuccessPathTest < Minitest::Test
     @resp = AWSSESPatchBaseline.new(baseline_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.baseline_id+'_'+ @resp.name)
+  end
+
   def test_baseline_exist
     assert @resp.exists?
   end

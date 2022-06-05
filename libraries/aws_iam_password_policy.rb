@@ -96,6 +96,10 @@ class AwsIamPasswordPolicy < AwsResourceBase
     !@policy.nil?
   end
 
+  def resource_id
+    @policy
+  end
+
   def to_s
     'AWS IAM Password Policy'
   end

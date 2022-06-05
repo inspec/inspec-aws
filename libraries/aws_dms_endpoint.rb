@@ -31,6 +31,10 @@ class AWSDMSEndpoint < AwsResourceBase
     end
   end
 
+  def resource_id
+    @display_name
+  end
+
   def endpoint_arn
     return nil unless exists?
     @endpoints[:endpoint_arn]

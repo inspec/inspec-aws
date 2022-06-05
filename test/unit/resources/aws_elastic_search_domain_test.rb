@@ -33,6 +33,11 @@ class AWSElasticSearchServiceDomainSuccessPathTest < Minitest::Test
     @domain_status = AWSElasticSearchServiceDomain.new(domain_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@domain_status.resource_id)
+    assert_equal(@domain_status.resource_id, @domain_status.domain_id)
+  end
+
   def test_domain_status_exists
     assert @domain_status.exists?
   end

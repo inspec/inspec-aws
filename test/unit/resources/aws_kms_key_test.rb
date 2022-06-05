@@ -39,6 +39,11 @@ class AwsKmsKeyHappyPathTest < Minitest::Test
                             stub_data: @mock.stub_data_enabled)
   end
 
+  def test_resource_id
+    refute_nil(@kms_key.resource_id)
+    assert_equal(@kms_key.resource_id, @kms_key.arn)
+  end
+
   def test_key_exists
     assert @kms_key.exists?
   end

@@ -74,4 +74,9 @@ class AwsElastiCacheReplicationGroupTest < Minitest::Test
   def test_encrypted_at_transit
     assert_equal(@replication_group.encrypted_at_transit?, @m_c[:transit_encryption_enabled])
   end
+
+  def test_resource_id
+    refute_nil(@replication_group.resource_id)
+    assert_equal(@replication_group.resource_id, @m_c[:replication_group_id])
+  end
 end

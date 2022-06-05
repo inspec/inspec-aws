@@ -34,6 +34,10 @@ class AWSTransitGatewayConnect < AwsResourceBase
     !@transit_gateway_connects.nil? && !@transit_gateway_connects.empty?
   end
 
+  def resource_id
+    @transit_gateway_connects ? @transit_gateway_connects[:transit_gateway_attachment_id] : @display_name
+  end
+
   def to_s
     "Transit Gateway Attachment ID: #{@display_name}"
   end

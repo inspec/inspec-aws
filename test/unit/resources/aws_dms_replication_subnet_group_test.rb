@@ -42,6 +42,11 @@ class AWSDMSReplicationSubnetGroupHappyPathTest < Minitest::Test
     @replication_subnet_groups = AWSDMSReplicationSubnetGroup.new(replication_subnet_group_identifier: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@replication_subnet_groups.resource_id)
+    assert_equal(@replication_subnet_groups.resource_id, @replication_subnet_groups.replication_subnet_group_identifier)
+  end
+
   def test_replication_subnet_groups_exists
     assert @replication_subnet_groups.exists?
   end
