@@ -85,6 +85,6 @@ class AwsSqsQueueTest < Minitest::Test
 
   def test_resource_id
     refute_nil(@queue.resource_id)
-    assert_equal(@queue.resource_id, 'https://sqs.mock.com/mock-queue')
+    assert_equal(@queue.resource_id, @queue.arn)
   end
 end

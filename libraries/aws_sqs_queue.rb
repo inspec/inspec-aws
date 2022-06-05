@@ -5,7 +5,6 @@ require 'aws_backend'
 class AwsSqsQueue < AwsResourceBase
   name 'aws_sqs_queue'
   desc 'Verifies settings for an SQS Queue.'
-
   example "
     describe aws_sqs_queue('queue-name') do
       it { should exist }
@@ -20,7 +19,6 @@ class AwsSqsQueue < AwsResourceBase
     opts = { queue_url: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:queue_url])
-
     catch_aws_errors do
       resp = @aws.sqs_client.get_queue_attributes(queue_url: opts[:queue_url], attribute_names: ['All']).attributes
       @arn                                  = resp['QueueArn']
@@ -42,7 +40,7 @@ class AwsSqsQueue < AwsResourceBase
   end
 
   def exists?
-    !@arn.nil?
+    !@arn.blank?
   end
 
   def to_s
