@@ -59,6 +59,11 @@ class AwsEcrPublicRepositoryTest < Minitest::Test
     )
   end
 
+  def test_resource_id
+    refute_nil(@ecr_repo.resource_id)
+    assert_equal(@ecr_repo.resource_id, @m_r[:repository_arn])
+  end
+
   def test_repo_exists
     assert @ecr_repo.exists?
   end

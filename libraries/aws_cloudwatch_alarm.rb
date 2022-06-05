@@ -48,6 +48,10 @@ class AwsCloudwatchAlarm < AwsResourceBase
     @alarm_name    = @metric_alarms.first.alarm_name
   end
 
+  def resource_id
+    "#{@metric_alarms? @metric_name: ''}_#{@metric_alarms? @metric_namespace: ''}"
+  end
+
   def exists?
     !@metric_alarms.empty?
   end

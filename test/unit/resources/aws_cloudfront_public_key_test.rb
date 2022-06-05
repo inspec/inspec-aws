@@ -63,4 +63,9 @@ class AWSCloudFrontPublicKeyHappyPathTest < Minitest::Test
   def test_comment
     assert_equal(@resp.public_key_config.comment, 'test1')
   end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
+  end
 end

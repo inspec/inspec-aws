@@ -28,6 +28,10 @@ class AWSS3BucketPolicy < AwsResourceBase
     !@parsed_json.nil? && !@parsed_json.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "S3 Bucket Name: #{@display_name}"
   end

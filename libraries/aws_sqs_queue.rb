@@ -47,8 +47,12 @@ class AwsSqsQueue < AwsResourceBase
     end
   end
 
+  def resource_id
+    @arn
+  end
+
   def exists?
-    !@arn.nil?
+    !@arn.blank?
   end
 
   def to_s

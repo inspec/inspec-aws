@@ -48,6 +48,10 @@ class AwsConfigurationRecorder < AwsResourceBase
     end
   end
 
+  def resource_id
+    @role_arn
+  end
+
   def exists?
     !@role_arn.nil?
   end

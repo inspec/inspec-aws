@@ -27,4 +27,9 @@ class AWSEC2EIPAssociationHappyPathTest < Minitest::Test
   def test_association_id
     assert_equal(@resp.association_id, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.association_id)
+  end
 end

@@ -39,6 +39,11 @@ class AWSTransitGatewayMulticastGroupSourceSuccessPathTest < Minitest::Test
     @multicast_groups = AWSTransitGatewayMulticastGroupSource.new(transit_gateway_multicast_domain_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@multicast_groups.resource_id)
+    assert_equal(@multicast_groups.resource_id, @multicast_groups.transit_gateway_multicast_domain_id)
+  end
+
   def test_multicast_groups_exists
     assert @multicast_groups.exists?
   end

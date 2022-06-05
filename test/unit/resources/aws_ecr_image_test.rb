@@ -83,4 +83,9 @@ class AwsEcrImageTest < Minitest::Test
   def test_repository_name
     assert_equal(@ecr_image.repository_name, @m_i[:repository_name])
   end
+
+  def test_resource_id
+    refute_nil(@ecr_image.resource_id)
+    assert_equal(@ecr_image.resource_id, "#{@m_i[:repository_name]}_#{@m_i[:image_digest]}")
+  end
 end

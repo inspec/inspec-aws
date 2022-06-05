@@ -4,7 +4,6 @@ require 'aws_alb'
 require_relative 'mock/aws_alb_mock'
 
 class AwsAlbConstructorTest < Minitest::Test
-
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsAlb.new(client_args: { stub_responses: true }) }
   end
@@ -23,7 +22,6 @@ class AwsAlbConstructorTest < Minitest::Test
 end
 
 class AwsAlbTest < Minitest::Test
-
   def setup
     # Given
     @mock = AwsAlbMock.new
@@ -33,9 +31,8 @@ class AwsAlbTest < Minitest::Test
 
     # When
     @alb = AwsAlb.new(load_balancer_arn: @mock_alb[:load_balancer_arn],
-                                 client_args: { stub_responses: true },
-                                 stub_data: @mock.stub_data)
-
+                      client_args: { stub_responses: true },
+                      stub_data: @mock.stub_data)
   end
 
   def test_lb_name

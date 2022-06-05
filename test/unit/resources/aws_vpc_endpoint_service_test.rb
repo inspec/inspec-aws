@@ -88,5 +88,10 @@ class AwsVPCEndpointServiceConstructorIdTest < Minitest::Test
   def test_gateway_load_balancer
     refute(@vpc_end_point_service.gateway_load_balancer?)
   end
+
+  def test_resource_id
+    refute_nil(@vpc_end_point_service.resource_id)
+    assert_equal(@vpc_end_point_service.resource_id, @vpc_end_point_service.service_name)
+  end
 end
 

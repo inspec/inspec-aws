@@ -46,6 +46,11 @@ class AwsRdsInstanceTest < Minitest::Test
     data[:client] = Aws::RDS::Client
     @rds = AwsRdsInstance.new(db_instance_identifier: 'rds-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
+  
+  def test_resource_id
+    refute_nil(@rds.resource_id)
+    assert_equal(@rds.resource_id, @rds.db_instance_identifier + '_' + @rds.db_name + '_' + @rds.master_username)
+  end
 
   def test_rds_exists
     assert @rds.exists?

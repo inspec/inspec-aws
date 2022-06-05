@@ -47,6 +47,11 @@ class AwsSsmResourceComplianceSummarySuccessPathTest < Minitest::Test
     @ssm_resource_compliance_items = AwsSsmResourceComplianceSummary.new(resource_id: 'mi-0432097523634', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@ssm_resource_compliance_items.resource_id)
+    assert_equal(@ssm_resource_compliance_items.resource_id, "mi-0432097523634")
+  end
+
   def test_ssm_compliance_summary
     assert @ssm_resource_compliance_items.exists?
   end

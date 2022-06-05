@@ -80,6 +80,10 @@ class AwsNatGateway < AwsResourceBase
     !failed_resource?
   end
 
+  def resource_id
+    @nat_gateway ? @nat_gateway[:nat_gateway_id]: @display_name
+  end
+
   def to_s
     "NAT Gateway #{@display_name}"
   end

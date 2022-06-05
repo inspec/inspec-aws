@@ -22,8 +22,15 @@ class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatchlogs_client.describe_subscription_filters({ log_group_name: opts[:log_group_name], filter_name_prefix: opts[:filter_name_prefix] })
       @filter = resp.subscription_filters[0].to_h
+      @filter_name = @filter[:filter_name]
+      @filter_log_group_name = @filter[:log_group_name]
+      @filter_role_arn = @filter[:role_arn]
       create_resource_methods(@filter)
     end
+  end
+
+  def resource_id
+    "#{@filter_name}_#{@filter_log_group_name}_#{@filter_role_arn}"
   end
 
   def filter_name_prefix

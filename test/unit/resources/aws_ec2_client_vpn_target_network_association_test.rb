@@ -63,4 +63,9 @@ class AWSEC2ClientVPNTargetNetworkAssociationPathTest < Minitest::Test
   def test_security_groups
     assert_equal(@resp.security_groups, ["sg-1"])
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.client_vpn_endpoint_id+"_"+@resp.association_id)
+  end
 end 

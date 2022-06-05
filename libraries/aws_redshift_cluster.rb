@@ -16,9 +16,7 @@ class AwsRedshiftCluster < AwsResourceBase
     super(opts)
     validate_parameters(required: [:cluster_identifier])
     @display_name = opts[:cluster_identifier]
-
     raise ArgumentError, "#{@__resource_name__}: cluster_identifier must start with a letter followed by up to 62 letters/numbers/hyphens." if opts[:cluster_identifier] !~ /^[a-z]{1}[0-9a-z\-]{0,62}$/
-
     catch_aws_errors do
       resp = @aws.redshift_client.describe_clusters(cluster_identifier: opts[:cluster_identifier])
       return if resp.clusters.empty?
@@ -29,6 +27,10 @@ class AwsRedshiftCluster < AwsResourceBase
 
   def be_encrypted?
     @rds_cluster[:encrypted]
+  end
+
+  def resource_id
+    @display_name
   end
 
   alias encrypted? be_encrypted?

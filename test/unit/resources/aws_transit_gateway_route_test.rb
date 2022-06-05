@@ -37,6 +37,10 @@ class AwsTransitGatewayRouteConstructorTest < Minitest::Test
                                                           stub_data: [@mock.stub_data])
     end
 
+    def test_resource_id
+      refute_nil(@transit_gateway_route.resource_id)
+    end
+
     def test_gw_route_cidr_block
       assert_equal(@transit_gateway_route.cidr_block, @mock.cidr_block)
     end

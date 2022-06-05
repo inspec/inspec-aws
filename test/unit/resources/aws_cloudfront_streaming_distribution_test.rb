@@ -62,6 +62,11 @@ class AWSCloudFrontStreamingDistributionSuccessPathTest < Minitest::Test
     @resp = AWSCloudFrontStreamingDistribution.new(id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.arn)
+  end
+
   def test_streaming_distribution_exists
     assert @resp.exists?
   end

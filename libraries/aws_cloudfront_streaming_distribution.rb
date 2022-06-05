@@ -21,8 +21,13 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_streaming_distribution({ id: opts[:id] })
       @res = resp.streaming_distribution.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @arn
   end
 
   def id
@@ -32,10 +37,6 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
-  end
-
-  def to_s
-    "ID: #{@display_name}"
   end
 
   def active_aws_account_numbers
@@ -48,5 +49,9 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
 
   def active_key_pair_id_items
     ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:items)
+  end
+
+  def to_s
+    "ID: #{@display_name}"
   end
 end
