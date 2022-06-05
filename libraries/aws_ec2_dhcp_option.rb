@@ -39,6 +39,10 @@ class AwsEc2DHCPOption < AwsResourceBase
     !failed_resource?
   end
 
+  def resource_id
+    @dhcp_option ? @dhcp_option[:dhcp_options_id] : display_name
+  end
+
   def to_s
     "EC2 DHCP Option Set: #{display_name}"
   end

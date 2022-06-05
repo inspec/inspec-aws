@@ -93,8 +93,12 @@ class AwsConfigurationRecorderNegativeTest < Minitest::Test
     status[:method] = :describe_configuration_recorder_status
     status[:data] = { :configuration_recorders_status => [{ :recording => false }] }
     status[:client] = Aws::ConfigService::Client
-
     @config_recorder = AwsConfigurationRecorder.new(recorder_name: 'recorder', client_args: { stub_responses: true }, stub_data: [data, status])
+  end
+
+  def test_resource_id
+    refute_nil(@config_recorder.resource_id)
+    assert_equal(@config_recorder.resource_id, @config_recorder.role_arn)
   end
 
   def test_config_recorder_exists

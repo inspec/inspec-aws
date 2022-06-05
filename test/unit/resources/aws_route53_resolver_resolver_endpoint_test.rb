@@ -40,6 +40,11 @@ class AWSRoute53ResolverResolverEndpointSuccessPathTest < Minitest::Test
     @resolver_endpoint = AWSRoute53ResolverResolverEndpoint.new(resolver_endpoint_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resolver_endpoint.resource_id)
+    assert_equal(@resolver_endpoint.resource_id, @resolver_endpoint.id)
+  end
+
   def test_endpoint_exists
     assert @resolver_endpoint.exists?
   end

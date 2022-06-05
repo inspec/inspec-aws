@@ -34,6 +34,10 @@ class AWSEC2PrefixList < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @res ? @res[:prefix_list_id] : @display_name
+  end
+
   def to_s
     "Prefix List ID: #{@display_name}"
   end

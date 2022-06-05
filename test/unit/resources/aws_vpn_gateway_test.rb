@@ -51,4 +51,9 @@ class AwsVPNGatewayTest < Minitest::Test
   def test_detached
     refute @gateway.detached?
   end
+
+  def test_resource_id
+    refute_nil(@gateway.resource_id)
+    assert_equal(@gateway.resource_id, @gateway.vpn_gateway_id)
+  end
 end

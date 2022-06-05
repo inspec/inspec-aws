@@ -63,4 +63,9 @@ class AWSEC2ClientVPNAuthorizationRulePathTest < Minitest::Test
   def test_access_all
     assert_equal(@resp.access_all, false)
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.client_vpn_endpoint_id+"_"+@resp.group_id)
+  end
 end 

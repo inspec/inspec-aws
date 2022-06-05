@@ -37,6 +37,11 @@ class AwsConfigDeliveryChannelHappyPathTest < Minitest::Test
     @config_delivery_channel = AwsConfigDeliveryChannel.new(channel_name: 'channel', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@config_delivery_channel.resource_id)
+    assert_equal(@config_delivery_channel.resource_id, @config_delivery_channel.sns_topic_arn+'_'+'channel')
+  end
+
   def test_config_delivery_channel_exists
     assert @config_delivery_channel.exists?
   end

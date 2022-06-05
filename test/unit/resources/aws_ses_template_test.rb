@@ -51,4 +51,9 @@ class AWSSESTemplateSuccessPathTest < Minitest::Test
   def test_html_part
     assert_equal(@resp.html_part, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

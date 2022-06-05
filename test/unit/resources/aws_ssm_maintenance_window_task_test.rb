@@ -37,6 +37,11 @@ class AWSSESMaintenanceWindowTaskSuccessPathTest < Minitest::Test
     @resp = AWSSESMaintenanceWindowTask.new(window_id: 'test1', window_task_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.window_id + '_' + @resp.window_task_id)
+  end
+
   def test_tasks_exist
     assert @resp.exists?
   end

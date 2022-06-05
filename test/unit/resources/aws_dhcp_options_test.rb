@@ -91,4 +91,9 @@ class AwsDhcpOptionsConstructorIdTest < Minitest::Test
   def test_dhcp_ntp_servers
     assert_equal(@dopt.ntp_servers, ['169.254.169.123'])
   end
+
+  def test_resource_id
+    refute_nil(@dopt.resource_id)
+    assert_equal(@dopt.resource_id, @dopt.dhcp_options_id)
+  end
 end

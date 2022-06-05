@@ -51,6 +51,10 @@ class AwsCloudformationStack < AwsResourceBase
     end
   end
 
+  def resource_id
+    @stack_id
+  end
+
   def exists?
     !@stack_name.nil?
   end

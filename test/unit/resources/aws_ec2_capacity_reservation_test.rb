@@ -122,4 +122,9 @@ class AWSEC2CapacityReservationSuccessPathTest < Minitest::Test
   def test_outpost_arn
     assert_equal(@resp.outpost_arn, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.capacity_reservation_id)
+  end
 end

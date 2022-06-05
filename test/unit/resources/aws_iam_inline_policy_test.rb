@@ -45,6 +45,11 @@ class AwsIamInlinePolicyTest < Minitest::Test
                            stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@policy.resource_id)
+    assert_equal(@policy.resource_id, @policy.policy_name)
+  end
+
   def test_policy_name
     assert_equal(@policy.policy_name, @mock_policy[:policy_name])
   end

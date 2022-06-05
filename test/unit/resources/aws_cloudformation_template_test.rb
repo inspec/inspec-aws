@@ -54,6 +54,11 @@ class AWSCloudFormationTemplateWithParameterStackNameSuccessPathTest < Minitest:
     @resp = AWSCloudFormationTemplate.new(stack_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, '_test1')
+  end
+
   def test_template_exists
     assert @resp.exists?
   end

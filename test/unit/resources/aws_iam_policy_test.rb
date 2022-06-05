@@ -32,6 +32,11 @@ class AwsIamPolicyTest < Minitest::Test
                            stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@policy.resource_id)
+    assert_equal(@policy.resource_id, @policy.arn)
+  end
+
   def test_arn
     assert_equal(@policy.arn, @mock_policy[:arn])
   end

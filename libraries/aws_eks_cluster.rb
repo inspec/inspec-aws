@@ -40,6 +40,11 @@ class AwsEksCluster < AwsResourceBase
     @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
   end
 
+  def resource_id
+    return @name unless exists?
+    @resp[:arn]
+  end
+
   def exists?
     arn.start_with?('arn:')
   end

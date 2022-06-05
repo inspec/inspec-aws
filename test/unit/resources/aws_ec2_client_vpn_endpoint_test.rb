@@ -67,4 +67,9 @@ class AWSEC2ClientVPNEndpointPathTest < Minitest::Test
   def test_split_tunnel
     assert_equal(@resp.split_tunnel, true)
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.client_vpn_endpoint_id)
+  end
 end

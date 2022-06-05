@@ -45,6 +45,11 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
     @cloudtrail_trail = AwsCloudTrailTrail.new(trail_name: 'aws-cloud-trail', client_args: { stub_responses: true }, stub_data: [data, status, es_status])
   end
 
+  def test_resource_id
+    refute_nil(@cloudtrail_trail.resource_id)
+    assert_equal(@cloudtrail_trail.resource_id, @cloudtrail_trail.trail_arn)
+  end
+
   def test_cloudtrail_trail_name
     assert_equal(@cloudtrail_trail.trail_name, 'aws-cloud-trail')
   end
