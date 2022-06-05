@@ -30,6 +30,11 @@ class AWSServiceCatalogPortfolioPrincipalAssociationSuccessPathTest < Minitest::
     @principals = AWSServiceCatalogPortfolioPrincipalAssociation.new(portfolio_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@principals.resource_id)
+    assert_equal(@principals.resource_id, @principals.principal_arn)
+  end
+
   def test_principals_exists
     assert @principals.exists?
   end

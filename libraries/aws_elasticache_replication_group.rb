@@ -48,6 +48,10 @@ class AwsElastiCacheReplicationGroup < AwsResourceBase
     @replication_group[:replication_group_id]
   end
 
+  def resource_id
+    @replication_group? @replication_group[:replication_group_id] : @display_name
+  end
+
   def status
     @replication_group[:status]
   end

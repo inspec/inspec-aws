@@ -113,6 +113,10 @@ class AWSSESReceiptRuleSet < AwsResourceBase
     (actions.map(&:sns_action)).map(&:encoding)
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Rule Set Name: #{@display_name}"
   end

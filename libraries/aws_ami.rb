@@ -24,6 +24,7 @@ class AwsAmi < AwsResourceBase
         empty_response_warn
       else
         ami = resp.images.first.to_h
+        @image_id = resp.images[0].image_id
         create_resource_methods(ami)
       end
     end
@@ -36,6 +37,10 @@ class AwsAmi < AwsResourceBase
   # RSpec will alias this to be_public
   def public?
     public
+  end
+
+  def resource_id
+    @image_id
   end
 
   def to_s

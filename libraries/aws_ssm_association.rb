@@ -22,9 +22,14 @@ class AwsSsmAssociation < AwsResourceBase
         empty_response_warn
       else
         @association = resp.association_description.to_h
+        @association_id = resp.association_description.association_id
         create_resource_methods(@association)
       end
     end
+  end
+
+  def resource_id
+    @res? @association_id : @display_name
   end
 
   def request_params

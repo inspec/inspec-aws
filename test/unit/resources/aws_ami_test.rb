@@ -85,4 +85,9 @@ class AwsAmiSuccessPathTest < Minitest::Test
   def test_image_name
     assert_equal(@ami.name, 'default_name.gz')
   end
+
+  def test_resource_id
+    refute_nil(@ami.resource_id)
+    assert_equal(@ami.resource_id, @ami.image_id)
+  end
 end

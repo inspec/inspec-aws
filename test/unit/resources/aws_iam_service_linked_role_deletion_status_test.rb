@@ -29,6 +29,11 @@ class AWSIAMServiceLinkedRoleDeletionStatusSuccessPathTest < Minitest::Test
     @response = AWSIAMServiceLinkedRoleDeletionStatus.new(deletion_task_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@response.resource_id)
+    assert_equal(@response.resource_id, 'test1')
+  end
+
   def test_service_linked_role_deletion_status_exists
     assert @response.exists?
   end

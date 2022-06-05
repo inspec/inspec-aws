@@ -34,6 +34,11 @@ class AwsSsmParameterSuccessPathTest < Minitest::Test
     @ssm_parameter = AwsSsmParameter.new(name: 'ssm-name', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@ssm_parameter.resource_id)
+    assert_equal(@ssm_parameter.resource_id, @ssm_parameter.arn)
+  end
+
   def test_ssm_parameter_exists
     assert @ssm_parameter.exists?
   end

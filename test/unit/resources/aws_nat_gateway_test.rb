@@ -85,4 +85,9 @@ class AwsNatGatewayTest < Minitest::Test
   def test_nat_gateway_address_set
     assert_equal(@gateway.nat_gateway_address_set, @m_g[:nat_gateway_addresses].first)
   end
+
+  def test_resource_id
+    refute_nil(@gateway.resource_id)
+    assert_equal(@gateway.resource_id, @m_g[:nat_gateway_id])
+  end
 end

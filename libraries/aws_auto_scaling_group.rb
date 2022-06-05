@@ -32,6 +32,7 @@ class AwsAutoScalingGroup < AwsResourceBase
       @launch_configuration_name = auto_scaling_group[:launch_configuration_name]
       @health_check_type         = auto_scaling_group[:health_check_type]
       @tags = []
+      @arn = auto_scaling_group[:auto_scaling_group_arn]
 
       auto_scaling_group[:tags].map { |tag|
         @tags.push(
@@ -49,6 +50,10 @@ class AwsAutoScalingGroup < AwsResourceBase
 
   def exists?
     !@name.nil?
+  end
+
+  def resource_id
+    @arn
   end
 
   def to_s

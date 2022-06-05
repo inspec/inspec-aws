@@ -38,6 +38,11 @@ class AWSRoute53ResolverResolverRuleAssociationSuccessPathTest < Minitest::Test
     assert @resolver_rule_association.exists?
   end
 
+  def test_resource_id
+    refute_nil(@resolver_rule_association.resource_id)
+    assert_equal(@resolver_rule_association.resource_id, @resolver_rule_association.id)
+  end
+
   def test_id
     assert_equal(@resolver_rule_association.id, 'test1')
   end

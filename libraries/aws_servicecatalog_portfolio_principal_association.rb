@@ -21,8 +21,13 @@ class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
     catch_aws_errors do
       resp = @aws.servicecatalog_client.list_principals_for_portfolio({ portfolio_id: opts[:portfolio_id] })
       @res = resp.principals[0].to_h
+      @principal_arn = @res[:principal_arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @principal_arn
   end
 
   def portfolio_id

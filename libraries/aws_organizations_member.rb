@@ -51,6 +51,10 @@ class AwsOrganizationsMember < AwsResourceBase
     end
   end
 
+  def resource_id
+    @account_arn
+  end
+
   def exists?
     !@master_account_arn.nil?
   end

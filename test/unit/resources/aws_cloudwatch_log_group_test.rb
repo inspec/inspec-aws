@@ -47,6 +47,11 @@ class AwsCloudWatchLogGroupConstructorSingleMatchTest < Minitest::Test
     @log_group = AwsCloudWatchLogGroup.new(log_group_name: 'my_log_group', client_args: { stub_responses: true }, stub_data: [data, tags_data])
   end
 
+  def test_resource_id
+    refute_nil(@log_group.resource_id)
+    assert_equal(@log_group.resource_id, @log_group.arn)
+  end
+
   def test_log_group_exists
     assert @log_group.exists?
   end

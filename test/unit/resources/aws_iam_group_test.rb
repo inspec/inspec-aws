@@ -35,6 +35,11 @@ class AwsIamGroupTest < Minitest::Test
                                  stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@iam_group.resource_id)
+    assert_equal(@iam_group.resource_id, @iam_group.arn)
+  end
+
   def test_iam_group_name
     assert_equal(@iam_group.group_name, @mock_iam_group[:group][:group_name])
   end

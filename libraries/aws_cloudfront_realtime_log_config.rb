@@ -21,6 +21,7 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_realtime_log_config({ name: opts[:name] })
       @res = resp.realtime_log_config.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
   end
@@ -48,7 +49,7 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
 
   # Here we have used the arn as it is more unique than the name.
   def resource_id
-    @res[:arn]
+    @arn
   end
 
   def to_s

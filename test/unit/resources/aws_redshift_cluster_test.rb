@@ -45,6 +45,11 @@ class AwsRedshiftClusterTest < Minitest::Test
     @cluster = AwsRedshiftCluster.new(cluster_identifier: 'cluster-12345678', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@cluster.resource_id)
+    assert_equal(@cluster.resource_id, @cluster.cluster_identifier)
+  end
+
   def test_cluster_exists
     assert @cluster.exists?
   end

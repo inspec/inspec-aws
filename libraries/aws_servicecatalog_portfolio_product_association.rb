@@ -21,8 +21,13 @@ class AWSServiceCatalogPortfolioProductAssociation < AwsResourceBase
     catch_aws_errors do
       resp = @aws.servicecatalog_client.list_portfolios_for_product({ product_id: opts[:product_id] })
       @res = resp.portfolio_details[0].to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @arn
   end
 
   def product_id

@@ -33,6 +33,11 @@ class AWSIAMServerCertificateHappyPathTest < Minitest::Test
     @resp = AWSIAMServerCertificate.new(server_certificate_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.arn)
+  end
+
   def test_iam_server_certificate_exists
     assert @resp.exist?
   end

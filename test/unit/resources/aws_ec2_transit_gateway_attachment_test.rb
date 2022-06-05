@@ -38,6 +38,11 @@ class AwsEc2TransitGatewayAttachmentPathTest < Minitest::Test
     @transit_gateway_attachments = AwsEc2TransitGatewayAttachment.new(transit_gateway_attachment_id: 'tgw-attach-006f2fd0a03d51323',client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@transit_gateway_attachments.resource_id)
+    assert_equal(@transit_gateway_attachments.resource_id, @transit_gateway_attachments.transit_gateway_attachment_id)
+  end
+
   def test_transit_gateway_attachment_transit_gateway_attachment_id_exists
     assert @transit_gateway_attachments.exists?
   end

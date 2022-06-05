@@ -33,6 +33,11 @@ class AwsCloudFrontRealtimeLogConfigSuccessPathTest < Minitest::Test
     @resp = AwsCloudFrontRealtimeLogConfig.new(name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.arn)
+  end
+
   def test_realtime_log_config_exists
     assert @resp.exists?
   end
@@ -55,10 +60,5 @@ class AwsCloudFrontRealtimeLogConfigSuccessPathTest < Minitest::Test
 
   def test_fields
     assert_equal(@resp.fields, [])
-  end
-
-  def test_resource_id
-    assert !@resp.resource_id.nil?
-    assert_equal(@resp.resource_id, @resp.arn)
   end
 end
