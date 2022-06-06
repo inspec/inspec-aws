@@ -8,6 +8,7 @@ class AwsEcrPolicyMock < AwsBaseResourceMock
 
     @policy = Hash[@policy_required]
     @policy[:repository_name] =  "testrepopolicy"  # string
+    @policy[:registry_id] =  "testreporegistry_id"
     @policy[:policy_text] = '{
       "policyText": "{\n  \"Version\" : \"2012-10-17\",\n  \"Statement\" : [{\n    \"Sid\" : \"AllowPull\",\n    \"Effect\" : \"Allow\",\n    \"Principal\" : \"*\",\n    \"Action\" : [ \"ecr:BatchGetImage\", \"ecr:GetDownloadUrlForLayer\" ]\n  }\n ]\n}",
       "registryId": "012345678910",
@@ -21,11 +22,12 @@ class AwsEcrPolicyMock < AwsBaseResourceMock
     policy = { :client => Aws::ECR::Client,
                :method => :get_repository_policy,
                :data => { :policy_text =>  @policy[:policy_text],
-                :repository_name  =>  @policy[:repository_name]}}
+                :repository_name  =>  @policy[:repository_name],
+                          :registry_id  =>  @policy[:registry_id]}}
 
     
     stub_data += [policy]
-
+    stub_data
   end
 
   def policy

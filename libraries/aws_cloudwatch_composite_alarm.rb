@@ -7,7 +7,7 @@ class AwsCloudwatchCompositeAlarm < AwsResourceBase
   desc 'Gets a composite alarm.'
 
   example "
-    describe aws_cloudwatch_composite_alarm(alarm_name: 'CompositeAlarmName') do
+    describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
       it { should exist }
     end
   "
@@ -21,8 +21,13 @@ class AwsCloudwatchCompositeAlarm < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatch_client.describe_alarms({ alarm_names: [opts[:alarm_name]], alarm_types: ['CompositeAlarm'] })
       @res = resp.composite_alarms[0].to_h
+      @alarm_arn = @res[:alarm_arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @alarm_arn
   end
 
   def alarm_name

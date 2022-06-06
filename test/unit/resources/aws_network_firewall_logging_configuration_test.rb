@@ -29,6 +29,11 @@ class AWSNetworkFirewallLoggingConfigurationSuccessPathTest < Minitest::Test
     @resp = AWSNetworkFirewallLoggingConfiguration.new(firewall_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.firewall_arn)
+  end
+
   def test_configs_exists
     assert @resp.exists?
   end

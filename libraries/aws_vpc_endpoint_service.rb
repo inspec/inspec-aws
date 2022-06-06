@@ -61,6 +61,10 @@ class AwsVPCEndpointService < AwsResourceBase
     service_detail.base_endpoint_dns_names.include?(dns)
   end
 
+  def resource_id
+    @response ? service_detail.service_name : @display_name
+  end
+
   def to_s
     "AWS Service Name #{@display_name}"
   end

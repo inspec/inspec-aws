@@ -5,7 +5,6 @@ require 'aws_backend'
 class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
   name 'aws_ec2_transit_gateway_route_table_propagation'
   desc 'Describes information about the route table propagations for the specified transit gateway route table.'
-
   example "
     describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
       it { should exist }
@@ -34,6 +33,10 @@ class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
       @resp = resp.transit_gateway_route_table_propagations[0].to_h
       create_resource_methods(@resp)
     end
+  end
+
+  def resource_id
+    @resp ? @resp[:resource_id] : @display_name
   end
 
   def transit_gateway_attachment_id

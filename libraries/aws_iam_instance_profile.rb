@@ -21,8 +21,13 @@ class AWSIAMInstanceProfile < AwsResourceBase
     catch_aws_errors do
       resp = @aws.iam_client.get_instance_profile({ instance_profile_name: opts[:instance_profile_name] })
       @res = resp.instance_profile.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @arn
   end
 
   def instance_profile_name

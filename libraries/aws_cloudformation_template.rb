@@ -27,7 +27,8 @@ class AWSCloudFormationTemplate < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(require_any_of: %i(stack_name stack_set_name template_url template_body))
-    @display_name = opts[:stack_name]
+    @stack_name = opts[:stack_name]
+    @template_url = opts[:template_url]
     @query_params = opts.slice(:stack_name, :stack_set_name, :template_url, :template_body)
     @query_stack_name = opts.slice(:stack_name)
     catch_aws_errors do
@@ -35,6 +36,10 @@ class AWSCloudFormationTemplate < AwsResourceBase
       @res = resp.to_h
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    "#{@template_url}_#{@stack_name}"
   end
 
   def template_body

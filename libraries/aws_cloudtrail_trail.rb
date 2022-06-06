@@ -38,6 +38,10 @@ class AwsCloudTrailTrail < AwsResourceBase
     end
   end
 
+  def resource_id
+    @trail_arn
+  end
+
   def delivered_logs_days_ago
     return nil unless exists?
     catch_aws_errors do

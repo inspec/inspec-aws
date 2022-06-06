@@ -19,8 +19,13 @@ class AWSCloudFormationStackSet < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: stack_set_name must be provided" unless opts[:stack_set_name] && !opts[:stack_set_name].empty?
     @display_name = opts[:stack_set_name]
     resp = @aws.cloudformation_client.describe_stack_set({ stack_set_name: opts[:stack_set_name] })
-    @resp= resp.stack_set.to_h
+    @resp = resp.stack_set.to_h
+    @stack_set_id = @resp[:stack_set_id]
     create_resource_methods(@resp)
+  end
+
+  def resource_id
+    @stack_set_id
   end
 
   def stack_set_name

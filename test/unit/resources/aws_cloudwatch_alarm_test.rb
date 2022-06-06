@@ -40,6 +40,11 @@ class AwsCloudwatchAlarmTest < Minitest::Test
     @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@alarm.resource_id)
+    assert_equal(@alarm.resource_id, @alarm.metric_name + '_' + @alarm.metric_namespace)
+  end
+
   def test_alarm_exists
     assert @alarm.exists?
   end

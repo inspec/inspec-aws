@@ -21,17 +21,22 @@ class AWSEC2PlacementGroup < AwsResourceBase
     catch_aws_errors do
       resp = @aws.compute_client.describe_placement_groups({ group_names: [opts[:placement_group_name]] })
       @resp = resp.placement_groups[0].to_h
+      @placement_group_name = resp.placement_groups[0].group_name
       create_resource_methods(@resp)
     end
   end
 
   def placement_group_name
     return nil unless exists?
-    @resp[:placement_group_name]
+    @resp[:group_name]
   end
 
   def exists?
     !@resp.nil? && !@resp.empty?
+  end
+
+  def resource_id
+    @placement_group_name
   end
 
   def to_s

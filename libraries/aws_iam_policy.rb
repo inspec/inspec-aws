@@ -38,6 +38,10 @@ class AwsIamPolicy < AwsResourceBase
     @default_version_id = @resp.default_version_id
   end
 
+  def resource_id
+    @arn
+  end
+
   # Required to maintain compatibility with previous implementation
   def get_policy_by_name(policy_name)
     policy = nil

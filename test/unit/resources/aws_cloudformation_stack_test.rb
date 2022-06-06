@@ -35,6 +35,11 @@ class AwsCloudFormationStackTest < Minitest::Test
                                  stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@cf.resource_id)
+    assert_equal(@cf.resource_id, @cf.stack_id)
+  end
+
   def test_stack_name
     assert_equal(@cf.stack_name, @mock_cf[:stack_name])
   end

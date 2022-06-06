@@ -43,6 +43,11 @@ class AWSSecretsManagerSecretSuccessPathTest < Minitest::Test
         @resp = AWSSecretsManagerSecret.new(secret_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
     end
 
+    def test_resource_id
+        refute_nil(@resp.resource_id)
+        assert_equal(@resp.resource_id, @resp.arn)
+    end
+
     def test_secret_list_exists
         assert @resp.exists?
     end

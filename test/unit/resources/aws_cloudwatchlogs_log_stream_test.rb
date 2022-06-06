@@ -33,6 +33,11 @@ class AWSCloudWatchLogsLogStreamSuccessPathTest < Minitest::Test
     @resp = AWSCloudWatchLogsLogStream.new(log_group_name: 'test1', log_stream_name_prefix: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.log_stream_name + '_' + @resp.arn)
+  end
+
   def test_log_streams_exists
     assert @resp.exists?
   end

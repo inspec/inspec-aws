@@ -53,4 +53,9 @@ class AWSEC2EgressOnlyInternetGatewaySuccessPathTest < Minitest::Test
   def test_tags
     assert_equal(@resp.tags, {})
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.egress_only_internet_gateway_id)
+  end
 end

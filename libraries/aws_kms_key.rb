@@ -21,22 +21,17 @@ class AwsKmsKey < AwsResourceBase
       opts[:key_id] = fetch_key_id
     end
     @display_name = opts[:key_id]
+    @arn = key_metadata[:arn]
 
-    catch_aws_errors do
-      begin
-        resp = @aws.kms_client.describe_key({ key_id: opts[:key_id] })
-        @key = resp.key_metadata.to_h
-        create_resource_methods(@key)
-        @key_rotation_response = @aws.kms_client.get_key_rotation_status({ key_id: opts[:key_id] }) unless @key[:key_manager] == 'AWS'
-      rescue Aws::KMS::Errors::NotFoundException
-        @key = {}
-        return
-      end
-    end
+    create_resource_methods(key_metadata)
+  end
+
+  def resource_id
+    @arn
   end
 
   def exists?
-    !@key.empty?
+    !key_metadata.blank?
   end
 
   def kms_tags(tag_list)
@@ -49,42 +44,44 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def tags
-    catch_aws_errors do
-      tag_list = @aws.kms_client.list_resource_tags(key_id: @display_name).tags
-      kms_tags(tag_list)
+    tag_list = catch_aws_errors do
+      kms_client.list_resource_tags(key_id: opts[:key_id]).tags
     end
+    kms_tags(tag_list)
   end
 
   def created_days_ago
-    ((Time.now - @key[:creation_date]) / (24 * 60 * 60)).to_i unless @key[:creation_date].nil?
+    return unless key_metadata[:creation_date]
+
+    ((Time.now - key_metadata[:creation_date]) / (24 * 60 * 60)).to_i
   end
 
   def deletion_time
-    @key[:deletion_date]
+    key_metadata[:deletion_date]
   end
 
   def invalidation_time
-    @key[:valid_to]
+    key_metadata[:valid_to]
   end
 
   def external?
-    @key[:origin] == 'EXTERNAL'
+    key_metadata[:origin] == 'EXTERNAL'
   end
 
   def enabled?
-    @key[:enabled]
+    key_metadata[:enabled]
   end
 
   def managed_by_aws?
-    @key[:key_manager] == 'AWS'
+    key_metadata[:key_manager] == 'AWS'
   end
 
   def has_key_expiration?
-    @key[:expiration_model] == 'KEY_MATERIAL_EXPIRES'
+    key_metadata[:expiration_model] == 'KEY_MATERIAL_EXPIRES'
   end
 
   def has_rotation_enabled?
-    @key_rotation_response.key_rotation_enabled unless @key_rotation_response.nil? || @key_rotation_response.empty?
+    key_rotation_response.key_rotation_enabled unless key_rotation_response.blank?
   end
 
   def to_s
@@ -92,16 +89,37 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def fetch_key_id
-    catch_aws_errors do
-      response = @aws.kms_client.list_aliases
-      if response || !response.empty?
-        response.aliases.each do |alias_entry|
-          if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
-            return alias_entry['target_key_id']
-          end
+    response = catch_aws_errors do
+      kms_client.list_aliases
+    end
+    if response.present?
+      response.aliases.each do |alias_entry|
+        if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
+          return alias_entry['target_key_id']
         end
       end
-      fail_resource("Unable to find KMS Key using provided alias: #{@alias}")
     end
+    fail_resource("Unable to find KMS Key using provided alias: #{@alias}")
+  end
+
+  private
+
+  def key_metadata
+    @key_metadata ||= catch_aws_errors do
+      kms_client.describe_key({ key_id: opts[:key_id] }).key_metadata.to_h
+    rescue Aws::KMS::Errors::NotFoundException
+      {}
+    end
+  end
+
+  def key_rotation_response
+    return if key_metadata[:key_manager] == 'AWS'
+    @key_rotation_response ||= catch_aws_errors do
+      kms_client.get_key_rotation_status({ key_id: opts[:key_id] })
+    end
+  end
+
+  def kms_client
+    @aws.kms_client
   end
 end

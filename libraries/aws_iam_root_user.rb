@@ -28,6 +28,7 @@ class AwsIamRootUser < AwsResourceBase
     catch_aws_errors do
       @summary_account = @aws.iam_client.get_account_summary.summary_map
       @virtual_devices = @aws.iam_client.list_virtual_mfa_devices.virtual_mfa_devices
+      @serial_number = @virtual_devices.first.serial_number
     end
     @total_access_key_per_user_quota = @summary_account['AccessKeysPerUserQuota']
     @total_access_keys_present = @summary_account['AccountAccessKeysPresent']
@@ -55,6 +56,10 @@ class AwsIamRootUser < AwsResourceBase
     @total_users = @summary_account['Users']
     @total_users_quota = @summary_account['UsersQuota']
     @total_versions_per_policy_quota = @summary_account['VersionsPerPolicyQuota']
+  end
+
+  def resource_id
+    @serial_number
   end
 
   def has_access_key?
