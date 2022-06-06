@@ -35,7 +35,7 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   end
 
   def resource_id
-    @res[:id]
+    @res? @res[:id] : @display_name
   end
 
   def to_s

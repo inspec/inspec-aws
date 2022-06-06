@@ -33,7 +33,7 @@ class AWSApiGatewayMethod < AwsResourceBase
   end
 
   def resource_id
-    "#{@res[:operation_name]}_#{@res[:authorizer_id]}"
+    @res ? "#{@res[:operation_name]}_#{@res[:authorizer_id]}" : @rest_api_id
   end
 
   def exists?

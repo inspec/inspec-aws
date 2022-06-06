@@ -23,7 +23,7 @@ class AWSApiGatewayAccount < AwsResourceBase
   end
 
   def resource_id
-    @res[:cloudwatch_role_arn]
+    @res? @res[:cloudwatch_role_arn] : ''
   end
 
   def exists?

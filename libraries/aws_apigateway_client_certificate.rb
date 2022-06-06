@@ -31,7 +31,7 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
   end
 
   def resource_id
-    @res[:client_certificate_id]
+    @res? @res[:client_certificate_id] : @display_name
   end
 
   def exists?

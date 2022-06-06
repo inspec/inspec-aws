@@ -31,7 +31,7 @@ class AWSApiGatewayStage < AwsResourceBase
   end
 
   def resource_id
-    @res[:stage_name]
+    @res? @res[:stage_name] : @display_name
   end
 
   def exists?
