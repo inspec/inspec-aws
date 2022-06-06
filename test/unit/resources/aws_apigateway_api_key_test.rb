@@ -38,6 +38,11 @@ class AWSApiGatewayAPIKeySuccessPathTest < Minitest::Test
     @resp = AWSApiGatewayAPIKey.new(api_key: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
+
   def test_api_key_exists
     assert @resp.exists?
   end

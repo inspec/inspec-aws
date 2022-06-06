@@ -24,13 +24,18 @@ class AWSApiGatewayStageSuccessPathTest < Minitest::Test
 		data[:method] = :get_stage
 		mock_data = {}
 		mock_data[:deployment_id]         = 'test1'
-        mock_data[:stage_name]            = 'stage1'
+		mock_data[:stage_name]            = 'stage1'
 		mock_data[:description]           = 'test1'
-        mock_data[:client_certificate_id] = 'cert1'
+		mock_data[:client_certificate_id] = 'cert1'
 		mock_data[:created_date]  = Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00")
 		data[:data] = [mock_data]
 		data[:client] = Aws::APIGateway::Client
 		@res = AWSApiGatewayStage.new(rest_api_id: 'test1', stage_name: 'stage1', client_args: { stub_responses: true }, stub_data: [data])
+	end
+
+	def test_resource_id
+		refute_nil(@res.resource_id)
+		assert_equal(@res.resource_id, 'stage1')
 	end
 
 	def test_stage_exists

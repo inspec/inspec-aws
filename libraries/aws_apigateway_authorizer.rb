@@ -32,6 +32,10 @@ class AWSApiGatewayAuthorizer < AwsResourceBase
     @res[:authorizer_id]
   end
 
+  def resource_id
+    @res? @res[:id] : @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

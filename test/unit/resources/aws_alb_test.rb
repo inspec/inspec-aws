@@ -35,6 +35,11 @@ class AwsAlbTest < Minitest::Test
                       stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@alb.resource_id)
+    assert_equal(@alb.resource_id, @mock_alb[:load_balancer_arn])
+  end
+
   def test_lb_name
     assert_equal(@alb.load_balancer_name, @mock_alb[:load_balancer_name])
   end
