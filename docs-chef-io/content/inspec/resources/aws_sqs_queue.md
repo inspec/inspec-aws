@@ -74,24 +74,6 @@ end
 `policy`
 : Returns the policy of the queue.
 
-`policy_statement`
-: Returns the policy statement of the queue.
-
-`policy_statement_sid`
-: Returns the policy statement sid of the queue.
-
-`policy_statement_effect`
-: Returns the policy statement effect of the queue.
-
-`policy_statement_principal`
-: Returns the policy statement principal of the queue.
-
-`policy_statement_action`
-: Returns the policy statement action of the queue.
-
-`policy_statement_resource`
-: Returns the policy statement resource of the queue.
-
 ## Examples
 
 **Ensure that a queue exists and has a visibility timeout of 300 seconds.**

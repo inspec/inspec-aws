@@ -37,12 +37,6 @@ class AwsSqsQueue < AwsResourceBase
       @sqs_managed_enabled                  = resp['SqsManagedSseEnabled']
       @sqs_managed                          = resp['SqsManagedSseEnabled'].nil? ? false: true
       @policy                               = resp['Policy']
-      @policy_statement                     = JSON.parse(resp['Policy'])['Statement']
-      @policy_statement_sid                 = JSON.parse(resp['Policy'])['Statement'][0]['Sid'].to_s
-      @policy_statement_effect              = JSON.parse(resp['Policy'])['Statement'][0]['Effect'].to_s
-      @policy_statement_principal           = JSON.parse(resp['Policy'])['Statement'][0]['Principal'].to_s
-      @policy_statement_action              = JSON.parse(resp['Policy'])['Statement'][0]['Action'].to_s
-      @policy_statement_resource            = JSON.parse(resp['Policy'])['Statement'][0]['Resource'].to_s
       create_resource_methods(resp.to_h)
     end
   end
