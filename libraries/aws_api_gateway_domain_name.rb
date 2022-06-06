@@ -12,9 +12,10 @@ class AWSApiGatewayDomainName < AwsResourceBase
   EXAMPLE
 
   def initialize(opts = {})
+    opts = { domain_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(domain_name))
-    raise ArgumentError, "#{@__resource_name__}: domain_name must be provided" if opts[:domain_name].blank?
+    raise ArgumentError, "#{@__resource_name__}: domain_name must be provided!" if opts[:domain_name].blank?
     @display_name = opts[:domain_name]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_domain_name({ domain_name: opts[:domain_name] })
@@ -24,7 +25,7 @@ class AWSApiGatewayDomainName < AwsResourceBase
   end
 
   def resource_id
-    @res? "#{@res[:domain_name]}_#{@res[:certificate_arn]}" : @display_name
+    @res? "#{@res[:domain_name]}_#{@res[:certificate_arn]}" : ''
   end
 
   def exists?
