@@ -21,8 +21,13 @@ class AWSRDSProxyEndpoint < AwsResourceBase
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_proxy_endpoints({ db_proxy_name: opts[:db_proxy_name], db_proxy_endpoint_name: opts[:db_proxy_endpoint_name] })
       @res = resp.db_proxy_endpoints[0].to_h
+      @db_proxy_endpoint_arn = @res[:db_proxy_endpoint_arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @db_proxy_endpoint_arn
   end
 
   def db_proxy_endpoint_name

@@ -24,6 +24,10 @@ class AwsIamAccountAlias < AwsResourceBase
     end
   end
 
+  def resource_id
+    @alias
+  end
+
   def exists?
     !@alias.nil?
   end

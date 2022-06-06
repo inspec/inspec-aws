@@ -51,6 +51,10 @@ class AwsSubnet < AwsResourceBase
     @subnet[:assign_ipv_6_address_on_creation]
   end
 
+  def resource_id
+    @subnet ? @subnet[:subnet_id] : @display_name
+  end
+
   def to_s
     "VPC Subnet: #{@display_name}"
   end

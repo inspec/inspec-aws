@@ -29,6 +29,10 @@ class AWSSESTemplate < AwsResourceBase
     @res[:template_name]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

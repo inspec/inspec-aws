@@ -39,6 +39,11 @@ class AWSNetworkManagerDeviceSuccessPathTest < Minitest::Test
     @resp = AWSNetworkManagerDevice.new(global_network_id: 'test1', device_id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.device_id)
+  end
+
   def test_devices_exists
     assert @resp.exists?
   end

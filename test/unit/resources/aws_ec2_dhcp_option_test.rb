@@ -72,4 +72,9 @@ class AwsEc2DHCPOptionConstructorIdTest < Minitest::Test
   def test_domain_name
     assert_equal(@dhcp.domain_name, @dhcp_mock.domain_name)
   end
+
+  def test_resource_id
+    refute_nil(@dhcp.resource_id)
+    assert_equal(@dhcp.resource_id, @dhcp.dhcp_options_id)
+  end
 end

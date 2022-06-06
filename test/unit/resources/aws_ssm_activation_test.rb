@@ -37,6 +37,11 @@ class AwsSsmActivationSuccessPathTest < Minitest::Test
     @ssm_activation = AwsSsmActivation.new(activation_id: 'activation-id-123465434', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@ssm_activation.resource_id)
+    assert_equal(@ssm_activation.resource_id, @ssm_activation.activation_id)
+  end
+
   def test_ssm_activation_exists
     assert @ssm_activation.exists?
   end

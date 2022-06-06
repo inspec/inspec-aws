@@ -21,8 +21,14 @@ class AWSCloudwatchMetricStream < AwsResourceBase
     catch_aws_errors do
       resp = @aws.cloudwatch_client.get_metric_stream({ name: opts[:metric_stream_name] })
       @stream = resp.to_h
+      @stream_name = @stream[:name]
+      @stream_arn = @stream[:arn]
       create_resource_methods(@stream)
     end
+  end
+
+  def resource_id
+    "#{@stream_name}_#{@stream_arn}"
   end
 
   def metric_stream_name

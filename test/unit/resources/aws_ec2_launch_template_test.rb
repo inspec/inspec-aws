@@ -33,26 +33,31 @@ class AwsLaunchTemplatePathTest < Minitest::Test
     mock_lt[:default_version_number] = 1
     data[:data] = { :launch_templates => [mock_lt] }
     data[:client] = Aws::EC2::Client
-    @addr = AWSEc2LaunchTemplate.new(launch_template_name: 'test',client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEc2LaunchTemplate.new(launch_template_name: 'test',client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_launch_template_exists
-    assert @addr.exists?
+    assert @resp.exists?
   end
 
   def test_launch_template_name
-    assert_equal(@addr.launch_template_name, "test")
+    assert_equal(@resp.launch_template_name, "test")
   end
 
   def test_launch_template_id
-    assert_equal(@addr.launch_template_id, "lt-01a6e9ac9f962f154")
+    assert_equal(@resp.launch_template_id, "lt-01a6e9ac9f962f154")
   end
 
   def test_latest_version_number
-    assert_equal(@addr.latest_version_number, 1)
+    assert_equal(@resp.latest_version_number, 1)
   end
 
   def test_default_version_number
-    assert_equal(@addr.default_version_number, 1)
+    assert_equal(@resp.default_version_number, 1)
+  end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.launch_template_id)
   end
 end

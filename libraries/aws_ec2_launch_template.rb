@@ -41,6 +41,10 @@ class AWSEc2LaunchTemplate < AwsResourceBase
     !@launch_templates.nil? && !@launch_templates.empty?
   end
 
+  def resource_id
+    @launch_templates ? @launch_templates[:launch_template_id] : @display_name
+  end
+
   def to_s
     "Launch Template: #{@display_name}"
   end

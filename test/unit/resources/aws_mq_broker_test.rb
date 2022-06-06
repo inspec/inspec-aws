@@ -43,4 +43,9 @@ class AWSMQBrokerSuccessPathTest < Minitest::Test
   def test_mq_broker_name
     assert_equal(@mq_broker.broker_name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@mq_broker.resource_id)
+    assert_equal(@mq_broker.resource_id, 'test1')
+  end
 end

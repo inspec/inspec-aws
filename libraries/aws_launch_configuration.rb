@@ -43,6 +43,10 @@ class AwsLaunchConfiguration < AwsResourceBase
     !@name.nil?
   end
 
+  def resource_id
+    @arn
+  end
+
   def to_s
     "AWS Launch Configuration Name: #{@name}"
   end

@@ -55,4 +55,8 @@ class AwsVPCEndpointServicePermissionTest < Minitest::Test
   def test_principal_type_service
     refute(@service_permission.principal_type_service?)
   end
+
+  def test_resource_id
+    refute_nil(@service_permission.resource_id)
+  end
 end

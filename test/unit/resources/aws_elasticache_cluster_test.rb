@@ -86,4 +86,9 @@ class AwsElastiCacheClusterTest < Minitest::Test
   def test_engine
     assert_equal(@cache_cluster.engine, @m_c[:engine])
   end
+
+  def test_resource_id
+    refute_nil(@cache_cluster.resource_id)
+    assert_equal(@cache_cluster.resource_id, @m_c[:cache_cluster_id])
+  end
 end

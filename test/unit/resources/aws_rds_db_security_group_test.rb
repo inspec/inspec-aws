@@ -37,6 +37,11 @@ class AWSRDSDBSecurityGroupSuccessPathTest < Minitest::Test
     @resp = AWSRDSDBSecurityGroup.new(db_security_group_name: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.db_security_group_arn)
+  end
+
   def test_db_security_group_exist
     assert @resp.exists?
   end

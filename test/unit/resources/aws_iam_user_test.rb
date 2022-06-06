@@ -16,6 +16,11 @@ class AwsIamUserTest < Minitest::Test
                            stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@user.resource_id)
+    assert_equal(@user.resource_id, @user.user_arn)
+  end
+
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsIamUser.new(client_args: { stub_responses: true }) }
   end

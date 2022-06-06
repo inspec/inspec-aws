@@ -13,8 +13,8 @@ class AwsAlb < AwsResourceBase
 
    describe aws_alb('arn:aws:elasticloadbalancing') do
     its('access_log_enabled') { should eq true }
-  end
-"
+    end
+  "
 
   attr_reader :availability_zones, :canonical_hosted_zone_id, :created_time, :dns_name, :load_balancer_arn,
               :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id,
@@ -42,6 +42,10 @@ class AwsAlb < AwsResourceBase
     @zone_names = availability_zones.map(&:zone_name)
   end
 
+  def resource_id
+    @load_balancer_arn
+  end
+
   def access_log_enabled
     return unless alb_attributes
     s3_enabled_attr = alb_attributes.find { |attr| attr.key.eql?('access_logs.s3.enabled') }
@@ -54,9 +58,9 @@ class AwsAlb < AwsResourceBase
     end
   end
 
-  # def ssl_policies
-  #   @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == 'HTTPS' }.uniq
-  # end
+  def ssl_policies
+    @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == 'HTTPS' }.uniq
+  end
 
   def external_ports
     @external_ports ||= listeners.map(&:port)
@@ -64,10 +68,6 @@ class AwsAlb < AwsResourceBase
 
   def protocols
     @protocols ||= listeners.map(&:protocol).uniq
-  end
-
-  def resource_id
-    @load_balancer_arn
   end
 
   def exists?

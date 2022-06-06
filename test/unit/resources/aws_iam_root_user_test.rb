@@ -15,6 +15,11 @@ class AwsIamRootUserTest < Minitest::Test
     @root_user = AwsIamRootUser.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@root_user.resource_id)
+    assert_equal(@root_user.resource_id, 'arn:aws:iam::123456789012:mfa/root-account-mfa-device')
+  end
+
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsIamRootUser.new(failure_option: true) }
   end
@@ -36,6 +41,4 @@ class AwsIamRootUserTest < Minitest::Test
   def test_exists
     assert(@root_user.exists?)
   end
-
-
 end

@@ -34,6 +34,11 @@ class AWSIAMSSHPublicKeySuccessPathTest < Minitest::Test
     @resp = AWSIAMSSHPublicKey.new(user_name: 'test1', ssh_public_key_id: 'test1', encoding: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.user_name+'_'+@resp.ssh_public_key_id)
+  end
+
   def test_ssh_public_keys_exists
     assert @resp.exists?
   end

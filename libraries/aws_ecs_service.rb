@@ -30,6 +30,11 @@ class AWSECSService < AwsResourceBase
     @services[:services]
   end
 
+  def resource_id
+    return @display_name unless exists?
+    @services[:service_arn]
+  end
+
   def exists?
     !@services.nil? && !@services.empty?
   end

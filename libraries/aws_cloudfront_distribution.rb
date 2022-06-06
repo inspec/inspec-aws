@@ -90,6 +90,10 @@ class AwsCloudFrontDistribution < AwsResourceBase
     end
   end
 
+  def resource_id
+    @resp? @resp[:distribution][:id]: @distribution_id
+  end
+
   def exists?
     !@distribution_arn.nil? && @distribution_arn.start_with?('arn')
   end

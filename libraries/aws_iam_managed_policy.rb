@@ -21,8 +21,13 @@ class AwsIamManagedPolicy < AwsResourceBase
     catch_aws_errors do
       resp = @aws.iam_client.get_policy({ policy_arn: opts[:policy_arn] })
       @res = resp.policy.to_h
+      @arn = @res[:arn]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @arn
   end
 
   def is_attachable?
