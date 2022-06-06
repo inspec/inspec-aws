@@ -30,7 +30,7 @@ class AWSLambdaVersion < AwsResourceBase
   end
 
   def resource_id
-    @res[:layer_arn]
+    @res ? @res[:layer_arn] : @display_name
   end
 
   def exists?
