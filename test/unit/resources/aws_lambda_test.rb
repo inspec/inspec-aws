@@ -67,6 +67,6 @@ class AwsLambdaTests < Minitest::Test
 
   def test_resource_id
     refute_nil(@lambda.resource_id)
-    assert_equal(@lambda.resource_id, 'function_not')
+    assert_equal(@lambda.resource_id, 'function_one')
   end
 end
