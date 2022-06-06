@@ -30,9 +30,7 @@ end
 
 ## Parameters
 
-`domain_name` _(required)_
-
-: The custom domain name as an API host name, for example, my-api.example.com .
+This resource does not require any parameters.
 
 ## Properties
 
