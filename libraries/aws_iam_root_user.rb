@@ -55,7 +55,6 @@ class AwsIamRootUser < AwsResourceBase
     @total_users = @summary_account['Users']
     @total_users_quota = @summary_account['UsersQuota']
     @total_versions_per_policy_quota = @summary_account['VersionsPerPolicyQuota']
-
   end
 
   def has_access_key?
