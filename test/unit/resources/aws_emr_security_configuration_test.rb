@@ -5,9 +5,10 @@ require_relative 'mock/aws_emr_security_configuration_mock'
 
 class AwsEmrClusterSecurityConfigurationAtRestEncryptionEnabledPathTest < Minitest::Test
   def setup
+    stub_data = AwsEmrClusterSecurityConfigurationMock.new.stub_data(StubDataType::AT_REST_ENCRYPTION_ENABLED)
     @cluster = AwsEmrClusterSecurityConfiguration.new(security_configuration_name: 'sample-security-config',
                                  client_args: { stub_responses: true },
-                                 stub_data: AwsEmrClusterSecurityConfigurationMock.new.stub_data(StubDataType::AT_REST_ENCRYPTION_ENABLED))
+                                 stub_data: stub_data)
   end
 
   def test_encryption_at_rest_enabled
@@ -64,6 +65,6 @@ class AwsEmrClusterSecurityConfigurationLocalDiskEncryptionEnabledPathTest < Min
 
   def test_resource_id
     refute_nil(@cluster.resource_id)
-    assert_equal(@cluster.resource_id, @cluster[:security_configuration_name])
+    assert_equal(@cluster.resource_id, 'j-27SM4YJB3YVPL')
   end
 end
