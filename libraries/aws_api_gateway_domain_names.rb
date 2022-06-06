@@ -5,12 +5,11 @@ require 'aws_backend'
 class AWSApiGatewayDomainNames < AwsCollectionResourceBase
   name 'aws_api_gateway_domain_names'
   desc 'Represents a collection of DomainName resources.'
-
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_domain_names do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)
