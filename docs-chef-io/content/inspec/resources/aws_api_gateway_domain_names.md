@@ -129,7 +129,7 @@ describe aws_api_gateway_domain_names do
 end
 ```
 
-**Ensure an regional_hosted_zone_id is available.**
+**Ensure an regional hosted zone id is available.**
 
 ```ruby
 describe aws_api_gateway_domain_names do
@@ -137,7 +137,7 @@ describe aws_api_gateway_domain_names do
 end
 ```
 
-**Ensure that the domain name status is `AVAILABLE`.**
+**Ensure that the domain name status include `AVAILABLE`.**
 
 ```ruby
 describe aws_api_gateway_domain_names do

@@ -146,7 +146,7 @@ describe aws_api_gateway_domain_name(domain_name: 'DOMAIN_NAME') do
 end
 ```
 
-**Ensure an regional_hosted_zone_id is available.**
+**Ensure an regional hosted zone id is available.**
 
 ```ruby
 describe aws_api_gateway_domain_name(domain_name: 'DOMAIN_NAME') do
