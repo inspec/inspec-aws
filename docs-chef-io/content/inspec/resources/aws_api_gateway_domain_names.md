@@ -1,16 +1,16 @@
 +++
-title = "aws_api_gateway_domain_name resource"
+title = "aws_api_gateway_domain_names resource"
 platform = "aws"
 draft = false
 gh_repo = "inspec-aws"
 
 [menu.inspec]
-title = "aws_api_gateway_domain_name"
-identifier = "inspec/resources/aws/aws_api_gateway_domain_name resource"
+title = "aws_api_gateway_domain_names"
+identifier = "inspec/resources/aws/aws_api_gateway_domain_names resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_domain_name` InSpec audit resource to test the properties of a single specific AWS APIGateway DomainName.
+Use the `aws_api_gateway_domain_names` InSpec audit resource to test the properties of a single specific AWS APIGateway DomainName.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-domainname.html).
 
