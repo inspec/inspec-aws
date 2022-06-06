@@ -11,6 +11,7 @@ class AwsRdsCluster < AwsResourceBase
       it { should exist }
     end
   "
+
   def initialize(opts = {})
     opts = { db_cluster_identifier: opts } if opts.is_a?(String)
     super(opts)
@@ -25,6 +26,7 @@ class AwsRdsCluster < AwsResourceBase
         resp = @aws.rds_client.describe_db_clusters(db_cluster_identifier: opts[:db_cluster_identifier])
         return if resp.db_clusters.empty?
         @rds_cluster = resp.db_clusters[0].to_h
+        @db_cluster_arn = @rds_cluster[:db_cluster_arn]
       rescue Aws::RDS::Errors::DBClusterNotFound
         return
       end
@@ -34,6 +36,10 @@ class AwsRdsCluster < AwsResourceBase
       end
       create_resource_methods(@rds_cluster)
     end
+  end
+
+  def resource_id
+    @db_cluster_arn
   end
 
   def has_encrypted_storage?

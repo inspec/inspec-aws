@@ -74,6 +74,10 @@ class AwsEfsFileSystem < AwsResourceBase
     @file_system[:encrypted]
   end
 
+  def resource_id
+    @file_system[:file_system_id]
+  end
+
   def to_s
     "EFS File System #{@display_name}"
   end

@@ -10,6 +10,10 @@ pipelines:
  - verify:
     description: Pull Request validation tests
     public: true
+ - coverage:
+    description: Unit Test Coverage tests
+    # private due to need for tokens
+    trigger: pull_request
 
 github:
  delete_branch_on_merge: true
@@ -40,12 +44,3 @@ subscriptions:
           ignore_labels:
            - "Changelog: Skip Update"
            - "Expeditor: Skip All"
-  # These actions are taken when `/expeditor promote` is run from Slack
-  # Creates a release by announcing changes since the last announcement
-  # THE SLACK COMMAND IS `expeditor promote inspec-aws`
-  - workload: project_promoted:{{agent_id}}:*
-    actions:
-    - bash:.expeditor/publish-release-notes.sh:
-        post_commit: true
-    - bash:.expeditor/announce-release.sh:
-        post_commit: true

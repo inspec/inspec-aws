@@ -1,36 +1,39 @@
-require 'aws-sdk-core'
+require 'helper'
 require 'aws_hosted_zones'
+require 'aws-sdk-core'
 
-class AwsHostedZonesTests < Minitest::Test
+class AWSHostedZonesConstructorTest < Minitest::Test
 
-  def test_fail_constructor_values
-    assert_raises(ArgumentError) { AwsHostedZones.new('not needed') }
+  def test_rejects_unrecognized_params
+    assert_raises(ArgumentError) { AWSHostedZones.new(unexpected: 9) }
   end
-  
+end
+
+class AWSHostedZonesSuccessPathTest < Minitest::Test
+
   def setup
-    zones_call = {}
-    zones_call[:method] = :list_hosted_zones
-    zones_call[:data]   = { hosted_zones: 
-                    [{name: "carry-on.films.com", id: "some_random_id", caller_reference: "reference"}], 
-                    marker: "nil", is_truncated: false, next_marker: "nil", max_items: 100}
-    zones_call[:client] = Aws::Route53::Client
-
-    @zones = AwsHostedZones.new(client_args: { stub_responses: true }, stub_data: [zones_call])
+    mock_data = {}
+    mock_data[:method] = :list_hosted_zones
+    mock_data[:data]   = { hosted_zones:
+                              [{name: "test1", id: "test1", caller_reference: "test1"}],
+                            marker: "nil", is_truncated: false, next_marker: "nil", max_items: 100}
+    mock_data[:client] = Aws::Route53::Client
+    @resp = AWSHostedZones.new(client_args: { stub_responses: true }, stub_data: [mock_data])
   end
 
-  def test_exists_works
-    assert @zones.exist?
+  def test_hosted_zones_exists
+    assert @resp.exist?
   end
 
-  def test_includes_finds
-    assert @zones.name.include?("carry-on.films.com")
+  def ids
+    assert_equal(@resp.ids, ['test1'])
   end
 
-  def test_count_correct
-    assert_equal(@zones.name.count, 1)
+  def names
+    assert_equal(@resp.names, ['test1'])
   end
 
-  def test_not_included
-    refute @zones.name.include?("fast.films.com")
+  def caller_references
+    assert_equal(@resp.caller_references, ['test1'])
   end
 end

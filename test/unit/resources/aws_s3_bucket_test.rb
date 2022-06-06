@@ -159,6 +159,14 @@ EOP
   def test_bucket_lifecycle_rules
     assert_equal([], @bucket.bucket_lifecycle_rules)
   end
+
+  def test_resource_id
+    assert_equal(@bucket.resource_id, 'bucket-12345')
+  end
+
+  def test_resource_id_not_nil_check
+    assert !@bucket.resource_id.nil?
+  end
 end
 
 class AwsS3BucketPrivateTest < Minitest::Test
@@ -288,6 +296,14 @@ EOP
   def test_bucket_lifecycle_rules
     assert_equal(365, @bucket.bucket_lifecycle_rules.first.expiration.days)
   end
+
+  def test_resource_id
+    assert_equal(@bucket.resource_id, 'private')
+  end
+
+  def test_resource_id_not_nil_check
+    assert !@bucket.resource_id.nil?
+  end
 end
 
 class AwsS3BucketAuthUsersTest < Minitest::Test
@@ -341,5 +357,4 @@ class AwsS3BucketAuthUsersTest < Minitest::Test
   def test_property_bucket_policy_auth
     assert_empty(@bucket.bucket_policy)
   end
-
 end

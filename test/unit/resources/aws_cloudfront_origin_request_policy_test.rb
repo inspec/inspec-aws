@@ -44,6 +44,11 @@ class AWSCloudFrontOriginRequestPolicyHappyPathTest < Minitest::Test
     @resp = AWSCloudFrontOriginRequestPolicy.new(id: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.id)
+  end
+
   def origin_request_policy_exists
     assert @resp.exists?
   end
@@ -78,5 +83,10 @@ class AWSCloudFrontOriginRequestPolicyHappyPathTest < Minitest::Test
 
   def test_origin_request_policy_config_query_strings_config_query_string_behavior
     assert_equal(@resp.origin_request_policy_config.query_strings_config.query_string_behavior , 'test1')
+  end
+
+  def test_resource_id
+    assert !@resp.resource_id.nil?
+    assert_equal(@resp.resource_id, @resp.id)
   end
 end

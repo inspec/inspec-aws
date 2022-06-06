@@ -44,6 +44,11 @@ class AwsCloudwatchLogMetricFilterHappyPathTest < Minitest::Test
     @log_metric_filter = AwsCloudwatchLogMetricFilter.new(filter_name: 'lmf-test', log_group_name: 'log-group', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    assert !@log_metric_filter.resource_id.nil?
+    assert_equal(@log_metric_filter.resource_id, @log_metric_filter.filter_name+'_'+@log_metric_filter.log_group_name)
+  end
+
   def test_log_metric_filter_exists
     assert @log_metric_filter.exists?
   end

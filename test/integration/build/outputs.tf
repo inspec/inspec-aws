@@ -38,6 +38,22 @@ output "aws_ebs_volume_id" {
   value = aws_ebs_volume.inspec_ebs_volume.0.id
 }
 
+output "aws_ebs_volume_encrypted" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.encrypted
+}
+
+output "aws_ebs_volume_iops" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.iops
+}
+
+output "aws_ebs_volume_size" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.size
+}
+
+output "aws_ebs_volume_type" {
+  value = aws_ebs_volume.inspec_encrypted_ebs_volume.0.type
+}
+
 output "aws_ebs_snapshot_id" {
   value = aws_ebs_snapshot.inspec_ebs_snapshot.0.id
 }
@@ -1444,4 +1460,418 @@ output "db_proxy_name" {
 
 output "target_group_name" {
   value = aws_db_proxy_default_target_group.for_proxy.name
+}
+
+output "bucket_name" {
+  value = aws_s3_bucket.my_test_bucket.id
+}
+
+output "aws_ssm_maintenance_window_id" {
+  value = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.id
+}
+
+output "aws_ssm_maintenance_window_target_name" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.name
+}
+
+output "aws_ssm_maintenance_window_target_description" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.description
+}
+
+output "aws_ssm_maintenance_window_target_window_id" {
+  value = aws_ssm_maintenance_window_target.aws_ssm_maintenance_window_target_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.id
+}
+
+output "aws_ssm_maintenance_window_task_window_id" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.window_id
+}
+
+output "aws_ssm_maintenance_window_task_task_arn" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_arn
+}
+
+output "aws_ssm_maintenance_window_task_task_type" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.task_type
+}
+
+output "aws_ssm_maintenance_window_task_max_concurrency" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.max_concurrency
+}
+
+output "aws_ssm_maintenance_window_task_priority" {
+  value = aws_ssm_maintenance_window_task.aws_ssm_maintenance_window_task_test1.priority
+}
+
+output "aws_ssm_patch_baseline_id" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.id
+}
+
+output "aws_ssm_patch_baseline_arn" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.arn
+}
+
+output "aws_ssm_patch_baseline_name" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.name
+}
+
+output "aws_ssm_patch_baseline_approved_patches" {
+  value = aws_ssm_patch_baseline.aws_ssm_patch_baseline_test1.approved_patches
+}
+
+output "aws_ssm_resource_data_sync_name" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.name
+}
+
+output "aws_ssm_resource_data_sync_id" {
+  value = aws_ssm_resource_data_sync.aws_ssm_resource_data_sync_test1.id
+}
+
+output "aws_route53_zone_id" {
+  value = aws_route53_zone.test_zone.id
+}
+
+output "aws_route53_zone_name" {
+  value = aws_route53_zone.test_zone.name
+}
+
+output "aws_waf_byte_match_set_id" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.id
+}
+
+output "aws_waf_byte_match_set_name" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.name
+}
+
+output "aws_waf_byte_match_set_byte_match_tuples" {
+  value = aws_waf_byte_match_set.aws_waf_byte_match_set_test1.byte_match_tuples
+}
+
+output "aws_waf_ipset_id" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.id
+}
+
+output "aws_waf_ipset_arn" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.arn
+}
+
+output "aws_waf_ipset_name" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.name
+}
+
+output "aws_waf_ipset_ip_set_descriptors" {
+  value = aws_waf_ipset.aws_waf_ipset_test1.ip_set_descriptors
+}
+
+output "aws_waf_rule_id" {
+  value = aws_waf_rule.aws_waf_rule_test1.id
+}
+
+output "aws_waf_rule_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.name
+}
+
+output "aws_waf_rule_arn" {
+  value = aws_waf_rule.aws_waf_rule_test1.arn
+}
+
+output "aws_waf_rule_metric_name" {
+  value = aws_waf_rule.aws_waf_rule_test1.metric_name
+}
+
+output "aws_waf_size_constraint_set_id" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.id
+}
+
+output "aws_waf_size_constraint_set_name" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.name
+}
+
+output "aws_waf_size_constraint_set_arn" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.arn
+}
+
+output "aws_waf_size_constraint_set_size_constraints" {
+  value = aws_waf_size_constraint_set.aws_waf_size_constraint_set_test1.size_constraints
+}
+
+output "aws_waf_sql_injection_match_set_id" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.id
+}
+
+output "aws_waf_sql_injection_match_set_name" {
+  value = aws_waf_sql_injection_match_set.sql_injection_match_set.name
+}
+
+output "aws_waf_web_acl_id" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.id
+}
+
+output "aws_waf_web_acl_arn" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.arn
+}
+
+output "aws_waf_web_acl_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.name
+}
+
+output "aws_waf_web_acl_metric_name" {
+  value = aws_waf_web_acl.aws_waf_web_acl_test1.metric_name
+}
+
+output "aws_api_gateway_rest_api_id_1" {
+  value = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+}
+
+output "aws_api_gateway_documentation_part_id" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.id
+}
+
+output "aws_api_gateway_documentation_part_location_type" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].type
+}
+
+output "aws_api_gateway_documentation_part_location_path" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].path
+}
+
+output "aws_api_gateway_documentation_part_location_method" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].method
+}
+
+output "aws_api_gateway_documentation_part_location_status_code" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].status_code
+}
+
+output "aws_api_gateway_documentation_part_location_name" {
+  value = aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test.location[0].name
+}
+
+output "aws_api_gateway_documentation_version_id" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.id
+}
+
+output "aws_api_gateway_documentation_version_description" {
+  value = aws_api_gateway_documentation_version.aws_api_gateway_documentation_version_test.description
+}
+
+output "aws_synthetics_canary_name" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.name
+}
+
+output "aws_synthetics_canary_id" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.id
+}
+
+output "aws_synthetics_canary_execution_role_arn" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.execution_role_arn
+}
+
+output "aws_synthetics_canary_artifact_s3_location" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.artifact_s3_location
+}
+
+output "aws_synthetics_canary_source_location_arn" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.source_location_arn
+}
+
+output "aws_synthetics_canary_engine_arn" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.engine_arn
+}
+
+output "aws_synthetics_canary_timeline" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.timeline
+}
+
+output "aws_synthetics_canary_status" {
+  value = aws_synthetics_canary.aws_synthetics_canary_test1.status
+}
+
+output "aws_sfn_activity_id" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.id
+}
+
+output "aws_sfn_activity_name" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.name
+}
+
+output "aws_sfn_activity_creation_date" {
+  value = aws_sfn_activity.aws_sfn_activity_test1.creation_date
+}
+
+output "aws_api_gateway_model_id" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.id
+}
+
+output "aws_api_gateway_model_name" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.name
+}
+
+output "aws_api_gateway_model_content_type" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.content_type
+}
+
+output "aws_api_gateway_model_description" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.description
+}
+
+output "aws_api_gateway_model_rest_api_id" {
+  value = aws_api_gateway_model.aws_api_gateway_model_test.rest_api_id
+}
+
+output "aws_api_gateway_gateway_response_id" {
+  value = aws_api_gateway_gateway_response.test.id
+}
+
+output "aws_api_gateway_gateway_response_response_type" {
+  value = aws_api_gateway_gateway_response.test.response_type
+}
+
+output "aws_api_gateway_resource_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.id
+}
+
+output "aws_api_gateway_resource_rest_api_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.rest_api_id
+}
+
+output "aws_api_gateway_resource_parent_id" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.parent_id
+}
+
+output "aws_api_gateway_resource_path_part" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.path_part
+}
+
+output "aws_api_gateway_resource_path" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.path
+}
+
+output "aws_api_gateway_resource_status" {
+  value = aws_api_gateway_resource.aws_api_gateway_resource_test.status
+}
+
+output "aws_api_gateway_request_validator_id" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.id
+}
+
+output "aws_api_gateway_request_validator_name" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.name
+}
+
+output "aws_api_gateway_request_validator_rest_api_id" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.rest_api_id
+}
+
+output "aws_api_gateway_request_validator_validate_request_body" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.validate_request_body
+}
+
+output "aws_api_gateway_request_validator_validate_request_parameters" {
+  value = aws_api_gateway_request_validator.aws_api_gateway_request_validator_test.validate_request_parameters
+}
+
+// API Gateway VPC Link
+
+resource "aws_default_subnet" "aws_default_subnet_rest_api_test" {
+  availability_zone = "us-east-2a"
+
+  tags = {
+    Name = "DefaultSubnet"
+  }
+}
+
+resource "aws_lb" "aws_lb_rest_api_test" {
+  name               = "example"
+  internal           = true
+  load_balancer_type = "network"
+
+  subnet_mapping {
+    subnet_id = aws_default_subnet.aws_default_subnet_rest_api_test.id
+  }
+}
+
+resource "aws_api_gateway_vpc_link" "aws_api_gateway_vpc_link_test" {
+  name        = "example"
+  description = "example description"
+  target_arns = [aws_lb.aws_lb_rest_api_test.arn]
+}
+
+output "aws_api_gateway_vpc_link_id" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.id
+}
+
+output "aws_api_gateway_vpc_link_name" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.name
+}
+
+output "aws_api_gateway_vpc_link_description" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.description
+}
+
+output "aws_api_gateway_vpc_link_target_arns" {
+  value = aws_api_gateway_vpc_link.aws_api_gateway_vpc_link_test.target_arns
+}
+
+output "aws_api_gateway_usage_plan_id" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.id
+}
+
+output "aws_api_gateway_usage_plan_name" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.name
+}
+
+output "aws_api_gateway_usage_plan_description" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.description
+}
+
+output "aws_api_gateway_usage_plan_product_code" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.product_code
+}
+
+output "aws_api_gateway_usage_plan_api_stages" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.api_stages
+}
+
+output "aws_api_gateway_usage_plan_quota_settings" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.quota_settings
+}
+
+output "aws_api_gateway_usage_plan_throttle_settings" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.throttle_settings
+}
+
+output "aws_api_gateway_usage_plan_arn" {
+  value = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.arn
+}
+
+output "aws_api_gateway_api_key_name" {
+  value = aws_api_gateway_api_key.aws_api_gateway_api_key_test.name
+}
+
+output "aws_api_gateway_usage_plan_key_id" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.id
+}
+
+output "aws_api_gateway_usage_plan_key_key_type" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.key_type
+}
+
+output "aws_api_gateway_usage_plan_key_usage_plan_id" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.usage_plan_id
+}
+
+output "aws_api_gateway_usage_plan_key_name" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.name
+}
+
+output "aws_api_gateway_usage_plan_key_value" {
+  value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.value
 }

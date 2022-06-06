@@ -87,4 +87,9 @@ class AwsEbsSnapshotPrivatePathTest < Minitest::Test
   def test_snapshot_group
     assert_nil(@group)
   end
+
+  def test_resource_id
+    refute_nil(@snapshot.resource_id)
+    assert_equal(@snapshot.resource_id, @snapshot.snapshot_id)
+  end
 end

@@ -21,8 +21,13 @@ class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
     catch_aws_errors do
       resp = @aws.servicecatalog_client.describe_product_as_admin({ name: opts[:name] })
       @res = resp.to_h
+      @product_view_detail_product_view_summary_id = @res[:product_view_detail][:product_view_summary][:id]
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @product_view_detail_product_view_summary_id
   end
 
   def name

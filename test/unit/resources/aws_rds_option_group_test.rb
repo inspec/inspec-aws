@@ -34,6 +34,11 @@ class AwsRdsOptionGroupHappyPathTest < Minitest::Test
     @option_group = AwsRdsOptionGroup.new(option_group_name: 'default:aurora-5-6',client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@option_group.resource_id)
+    assert_equal(@option_group.resource_id, @option_group.option_group_arn)
+  end
+
   def test_option_group_names
     assert_equal(@option_group.option_group_name, 'default:aurora-5-6')
   end

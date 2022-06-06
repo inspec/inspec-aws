@@ -1,0 +1,16 @@
+---
+expeditor:
+  defaults:
+    buildkite:
+      timeout_in_minutes: 20
+
+steps:
+
+- label: coverage-ruby-2.7
+  command:
+    - CI_ENABLE_COVERAGE=1 /workdir/.expeditor/buildkite/verify.sh
+  expeditor:
+    secrets: true
+    executor:
+      docker:
+        image: ruby:2.7-buster

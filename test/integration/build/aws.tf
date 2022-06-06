@@ -5695,3 +5695,461 @@ resource "aws_lambda_layer_version" "aws_lambda_layer_version_test1" {
 
   compatible_runtimes = ["nodejs12.x"]
 }
+
+//AWS::SSM::MaintenanceWindow
+resource "aws_ssm_maintenance_window" "aws_ssm_maintenance_window_test1" {
+  name     = "maintenance-window-application"
+  schedule = "cron(0 16 ? * TUE *)"
+  duration = 3
+  cutoff   = 1
+}
+
+//AWS::SSM::MaintenanceWindowTarget
+resource "aws_ssm_maintenance_window_target" "aws_ssm_maintenance_window_target_test1" {
+  window_id     = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+  name          = "maintenance-window-target"
+  description   = "This is a maintenance window target"
+  resource_type = "INSTANCE"
+
+  targets {
+    key    = "tag:Name"
+    values = ["acceptance_test"]
+  }
+}
+
+//AWS::SSM::MaintenanceWindowTask
+resource "aws_ssm_maintenance_window_task" "aws_ssm_maintenance_window_task_test1" {
+  max_concurrency = 2
+  max_errors      = 1
+  priority        = 1
+  task_arn        = "AWS-RestartEC2Instance"
+  task_type       = "AUTOMATION"
+  window_id       = aws_ssm_maintenance_window.aws_ssm_maintenance_window_test1.id
+
+  targets {
+    key    = "InstanceIds"
+    values = [aws_instance.aws_instance_smw_test1.id]
+  }
+
+  task_invocation_parameters {
+    automation_parameters {
+      document_version = "$LATEST"
+
+      parameter {
+        name   = "InstanceId"
+        values = [aws_instance.aws_instance_smw_test1.id]
+      }
+    }
+  }
+}
+
+data "aws_ami" "aws_ami_smw_test1" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "aws_instance_smw_test1" {
+  ami           = data.aws_ami.aws_ami_smw_test1.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+//AWS::SSM::PatchBaseline
+resource "aws_ssm_patch_baseline" "aws_ssm_patch_baseline_test1" {
+  name             = "patch-baseline"
+  approved_patches = ["KB123456"]
+}
+
+//AWS::SSM::ResourceDataSync
+resource "aws_s3_bucket" "aws_s3_bucket_ssm_rds_test1" {
+  bucket = "tf-test-bucket-12345-test1"
+}
+
+resource "aws_s3_bucket_policy" "aws_s3_bucket_policy_ssm_rds_test1" {
+  bucket = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.bucket
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SSMBucketPermissionsCheck",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ssm.amazonaws.com"
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::tf-test-bucket-12345-test1"
+        },
+        {
+            "Sid": " SSMBucketDelivery",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ssm.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": ["arn:aws:s3:::tf-test-bucket-12345-test1/*"],
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_ssm_resource_data_sync" "aws_ssm_resource_data_sync_test1" {
+  name = "foo"
+
+  s3_destination {
+    bucket_name = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.bucket
+    region      = aws_s3_bucket.aws_s3_bucket_ssm_rds_test1.region
+  }
+}
+
+#AWS::Bucket::Policy
+resource "aws_s3_bucket" "my_test_bucket" {
+  bucket = "my-tf-test-bucket-221123"
+}
+
+resource "aws_s3_bucket_policy" "my_test_bucket_policy" {
+  bucket = aws_s3_bucket.my_test_bucket.id
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression's result to valid JSON syntax.
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Id      = "MYBUCKETPOLICY"
+    Statement = [
+      {
+        Sid       = "IPAllow"
+        Effect    = "Deny"
+        Principal = "*"
+        Action    = "s3:*"
+        Resource = [
+          aws_s3_bucket.my_test_bucket.arn,
+          "${aws_s3_bucket.my_test_bucket.arn}/*",
+        ]
+        Condition = {
+          NotIpAddress = {
+            "aws:SourceIp" = "8.8.8.8/32"
+          }
+        }
+      },
+    ]
+  })
+}
+
+
+# AWS::WAF::ByteMatchSet
+
+resource "aws_waf_byte_match_set" "aws_waf_byte_match_set_test1" {
+  name = "tf_waf_byte_match_set"
+
+  byte_match_tuples {
+    text_transformation   = "NONE"
+    target_string         = "badrefer1"
+    positional_constraint = "CONTAINS"
+
+    field_to_match {
+      type = "HEADER"
+      data = "referer"
+    }
+  }
+}
+
+#AWS::WAF::IPSet
+resource "aws_waf_ipset" "aws_waf_ipset_test1" {
+  name = "tfIPSet"
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "192.0.7.0/24"
+  }
+
+  ip_set_descriptors {
+    type  = "IPV4"
+    value = "10.0.0.0/16"
+  }
+}
+
+#AWS::WAF::Rule
+resource "aws_waf_rule" "aws_waf_rule_test1" {
+  depends_on  = [aws_waf_ipset.aws_waf_ipset_test1]
+  name        = "tfWAFRule"
+  metric_name = "tfWAFRule"
+
+  predicates {
+    data_id = aws_waf_ipset.aws_waf_ipset_test1.id
+    negated = false
+    type    = "IPMatch"
+  }
+}
+
+#AWS::WAF::SizeConstraintSet
+resource "aws_waf_size_constraint_set" "aws_waf_size_constraint_set_test1" {
+  name = "tfsize_constraints"
+
+  size_constraints {
+    text_transformation = "NONE"
+    comparison_operator = "EQ"
+    size                = "4096"
+
+    field_to_match {
+      type = "BODY"
+    }
+  }
+}
+
+#AWS::WAF::SqlInjectionMatchSet
+resource "aws_waf_sql_injection_match_set" "sql_injection_match_set" {
+  name = "tf-sql_injection_match_set"
+
+  sql_injection_match_tuples {
+    text_transformation = "URL_DECODE"
+
+    field_to_match {
+      type = "QUERY_STRING"
+    }
+  }
+}
+
+//AWS::WAF::WebACL
+resource "aws_waf_web_acl" "aws_waf_web_acl_test1" {
+  depends_on = [
+    aws_waf_ipset.aws_waf_ipset_test1,
+    aws_waf_rule.aws_waf_rule_test1,
+  ]
+  name        = "tfWebACL"
+  metric_name = "tfWebACL"
+
+  default_action {
+    type = "ALLOW"
+  }
+
+  rules {
+    action {
+      type = "BLOCK"
+    }
+
+    priority = 1
+    rule_id  = aws_waf_rule.aws_waf_rule_test1.id
+    type     = "REGULAR"
+  }
+}
+
+// AWS::APIGateway:Documentation
+
+resource "aws_api_gateway_documentation_version" "aws_api_gateway_documentation_version_test" {
+  version = "example_version"
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  description = "Example description"
+  depends_on = [aws_api_gateway_documentation_part.aws_api_gateway_documentation_part_test]
+}
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  name = "example_api"
+}
+
+resource "aws_api_gateway_documentation_part" "aws_api_gateway_documentation_part_test" {
+  location {
+    type = "API"
+  }
+  properties = "{\"description\":\"Example\"}"
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+}
+
+resource "aws_api_gateway_rest_api" "main" {
+  name = "MyDemoAPI"
+}
+
+//API Gateway Gateway Response
+
+resource "aws_api_gateway_gateway_response" "test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  status_code = "401"
+  response_type = "UNAUTHORIZED"
+
+  response_templates = {
+    "application/json" = "{\"message\":$context.error.messageString}"
+  }
+
+  response_parameters = {
+    "gatewayresponse.header.Authorization" = "'Basic'"
+  }
+}
+
+//API Gateway Gateway Model
+
+resource "aws_api_gateway_model" "aws_api_gateway_model_test" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  name = "user"
+  description = "a JSON schema"
+  content_type = "application/json"
+  schema = <<EOF
+  {
+    "type": "object"
+  }
+  EOF
+}
+
+//AWS::Synthetics::Canary
+
+resource "aws_synthetics_canary" "aws_synthetics_canary_test1" {
+  name = "test-canary"
+  artifact_s3_location = "s3://a2-bucket/"
+  execution_role_arn = "arn:aws:iam::112758395563:role/aws-iam-role-bsqfbelcujbbpeahrnunhngxp"
+  runtime_version = "syn-nodejs-puppeteer-3.1"
+  handler = "signIn.handler"
+  zip_file = "${path.module}/lambda.zip"
+  start_canary = true
+  success_retention_period = 2
+  failure_retention_period = 14
+  schedule {
+    expression = "rate(1 hour)"
+    duration_in_seconds = 0
+  }
+  tags = {
+    Name = "sxctf-sign-in"
+    Environment = "TEST"
+    Application = "saints-xctf"
+  }
+}
+
+//AWS::StepFunctions::Activity
+resource "aws_sfn_activity" "aws_sfn_activity_test1" {
+  name = "my-activity"
+}
+
+// API Gateway REST API
+
+resource "aws_api_gateway_rest_api" "aws_api_gateway_rest_api_test" {
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "example"
+      version = "1.0"
+    }
+    paths = {
+      "/path1" = {
+        get = {
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+          }
+        }
+      }
+    }
+  })
+
+  name = "example"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+}
+
+// API Gateway Resource
+
+resource "aws_api_gateway_resource" "aws_api_gateway_resource_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  parent_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.root_resource_id
+  path_part   = "messages"
+}
+
+// API Gateway Request Validator
+
+resource "aws_api_gateway_request_validator" "aws_api_gateway_request_validator_test" {
+  name                  = "apigw-validate-request"
+  rest_api_id           = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  validate_request_body = true
+}
+
+// API Gateway Deployment
+
+resource "aws_api_gateway_deployment" "aws_api_gateway_deployment_test" {
+  rest_api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+// API Gateway Stage
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test_development" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "development"
+}
+
+resource "aws_api_gateway_stage" "aws_api_gateway_stage_test_production" {
+  deployment_id = aws_api_gateway_deployment.aws_api_gateway_deployment_test.id
+  rest_api_id   = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+  stage_name    = "production"
+}
+
+// API Gateway Usage Plan
+
+resource "aws_api_gateway_usage_plan" "aws_api_gateway_usage_plan_test" {
+  name         = "my-usage-plan"
+  description  = "my description"
+  product_code = "MYCODE"
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+    stage  = aws_api_gateway_stage.aws_api_gateway_stage_test_development.stage_name
+  }
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.aws_api_gateway_rest_api_test.id
+    stage  = aws_api_gateway_stage.aws_api_gateway_stage_test_production.stage_name
+  }
+
+  quota_settings {
+    limit  = 20
+    offset = 2
+    period = "WEEK"
+  }
+
+  throttle_settings {
+    burst_limit = 5
+    rate_limit  = 10
+  }
+}
+
+// API Gateway API Key
+
+resource "aws_api_gateway_api_key" "aws_api_gateway_api_key_test" {
+  name = "my_key"
+}
+
+// API Gateway Usage Plan Key
+
+resource "aws_api_gateway_usage_plan_key" "aws_api_gateway_usage_plan_key_test" {
+  key_id        = aws_api_gateway_api_key.aws_api_gateway_api_key_test.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.id
+}

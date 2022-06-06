@@ -109,4 +109,9 @@ class AwsEfsFileSystemTest < Minitest::Test
   def test_encrypted
     assert_equal(@file_system.encrypted, @m_f_s[:encrypted])
   end
+
+  def test_resource_id
+    assert !@file_system.resource_id.nil?
+    assert_equal(@file_system.resource_id, @file_system.file_system_id)
+  end
 end

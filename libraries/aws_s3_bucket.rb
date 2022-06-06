@@ -23,6 +23,9 @@ class AwsS3Bucket < AwsResourceBase
     catch_aws_errors do
       begin
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
+        # LocationConstraint "EU" correlates to the region "eu-west-1", but region "EU" does not exist as a "region", only a LocationConstraint
+        # this currently is the only Location constraint that can have either of 2 values "EU" or "eu-west-1".  But only "eu-west-1" is a region
+        @region = 'eu-west-1' if @region == 'EU'
         # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
         # redirects and signing attempts.
         opts[:aws_region] = @region.empty? ? 'us-east-1' : @region
@@ -41,6 +44,13 @@ class AwsS3Bucket < AwsResourceBase
     return [] unless exists? # exists? would throw the same NoSuchBucket error if the bucket name was not valid
     catch_aws_errors do
       @bucket_acl ||= @aws.storage_client.get_bucket_acl(bucket: @bucket_name).grants
+    end
+  end
+
+  def bucket_ownership_controls
+    return [] unless exists? # exists? would throw the same NoSuchBucket error if the bucket name was not valid
+    catch_aws_errors do
+      @bucket_ownership_controls ||= @aws.storage_client.get_bucket_ownership_controls(bucket: @bucket_name).ownership_controls.rules[0].object_ownership
     end
   end
 
@@ -65,6 +75,14 @@ class AwsS3Bucket < AwsResourceBase
     end
   end
 
+  def prevent_public_access?
+    return false unless exists?
+    @prevent_public_access ||= catch_aws_errors do
+      public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
+      public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+    end
+  end
+
   def has_default_encryption_enabled?
     return false unless exists?
     @has_default_encryption_enabled ||= catch_aws_errors do
@@ -86,7 +104,7 @@ class AwsS3Bucket < AwsResourceBase
   end
 
   def has_secure_transport_enabled?
-    bucket_policy.any? { |s| s.effect == 'Deny' && s.condition == { 'Bool' => { 'aws:SecureTransport'=>'false' } } }
+    bucket_policy.any? { |s| s.effect == 'Deny' && s.condition && s.condition['Bool'] && s.condition['Bool']['aws:SecureTransport'] && s.condition['Bool']['aws:SecureTransport'] == 'false' }
   end
 
   # below is to preserve the original 'unsupported' function but isn't used in the above
@@ -132,6 +150,10 @@ class AwsS3Bucket < AwsResourceBase
       return {}
     end
     map_tags(tag_list)
+  end
+
+  def resource_id
+    @bucket_name
   end
 
   def to_s

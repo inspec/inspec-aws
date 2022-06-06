@@ -60,4 +60,9 @@ class AWSEC2ClientVPNRoutePathTest < Minitest::Test
   def test_code
     assert_equal(@resp.status.code, 'test')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.client_vpn_endpoint_id + "_" + @resp.target_subnet)
+  end
 end

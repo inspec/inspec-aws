@@ -23,9 +23,14 @@ class AwsDbSubnetGroup < AwsResourceBase
         empty_response_warn
       else
         @subnet_group = resp.db_subnet_groups[0].to_h
+        @db_subnet_group_arn = @subnet_group[:db_subnet_group_arn]
         create_resource_methods(@subnet_group)
       end
     end
+  end
+
+  def resource_id
+    @db_subnet_group_arn
   end
 
   def exists?

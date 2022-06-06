@@ -44,7 +44,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def prevent_password_reuse?
-    return false if !exists?
+    return false if !exists? || @policy.password_reuse_prevention.nil?
     @policy.password_reuse_prevention.positive?
   end
 
@@ -94,6 +94,10 @@ class AwsIamPasswordPolicy < AwsResourceBase
 
   def exists?
     !@policy.nil?
+  end
+
+  def resource_id
+    @policy
   end
 
   def to_s

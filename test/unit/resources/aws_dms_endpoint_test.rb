@@ -44,7 +44,7 @@ class AWSDMSEndpointConstructorNameIdTest < Minitest::Test
     assert_equal(@endpoints.endpoint_arn, 'test1')
   end
 
-  def test_vol_exists
+  def test_endpoint_exists
     assert @endpoints.exists?
   end
 end
@@ -61,6 +61,11 @@ class AWSDMSEndpointHappyPathTest < Minitest::Test
     data[:data] = { :endpoints => [mock_data] }
     data[:client] = Aws::DatabaseMigrationService::Client
     @endpoints = AWSDMSEndpoint.new(endpoint_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_resource_id
+    refute_nil(@endpoints.resource_id)
+    assert_equal(@endpoints.resource_id, @endpoints.endpoint_identifier)
   end
 
   def test_endpoints_exists

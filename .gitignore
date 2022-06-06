@@ -21,4 +21,7 @@ local
 inspec-aws.tfvars.*
 vendor
 .bundle
-.rakeTasks
+.rakeTaskscoverage/*
+coverage
+
+.DS_Store
