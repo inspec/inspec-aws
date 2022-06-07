@@ -1,18 +1,18 @@
 +++
-title = "aws_api_gateway_usage_plan resource"
+title = "aws_api_gateway_vpc_link resource"
 platform = "aws"
 draft = false
 gh_repo = "inspec-aws"
 
 [menu.inspec]
-title = "aws_api_gateway_usage_plan"
-identifier = "inspec/resources/aws/aws_api_gateway_usage_plan resource"
+title = "aws_api_gateway_vpc_link"
+identifier = "inspec/resources/aws/aws_api_gateway_vpc_link resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_usage_plan` InSpec audit resource to test the properties of a single specific AWS APIGateway UsagePlan.
+Use the `aws_api_gateway_vpc_link` InSpec audit resource to test the properties of a single specific AWS APIGateway VPCLink.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlan](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html).
+For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway VPCLink](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-vpclink.html).
 
 ## Installation
 
@@ -20,125 +20,66 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-Ensure that an usage plan exists.
+Ensure that an VPC link exists.
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
   it { should exist }
 end
 ```
 
 ## Parameters
 
-`usage_plan_id` _(required)_
+`vpc_link_id` _(required)_
 
-: The identifier of a UsagePlan resource.
+: The identifier of the VpcLink.
 
 ## Properties
 
 `id`
-: The identifier of a UsagePlan resource.
-
-: **Field**: `id`
+: The identifier of the VpcLink. It is used in an Integration to reference this VpcLink.
 
 `name`
-: The name of a usage plan.
-
-: **Field**: `name`
+: The name used to label and identify the VPC link.
 
 `description`
-: The description of a usage plan.
+: The description of the VPC link.
 
-: **Field**: `description`
+`target_arns`
+: The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same AWS account of the API owner.
 
-`api_stages`
-: The associated API stages of a usage plan.
+`status`
+: The status of the VPC link. The valid values are AVAILABLE , PENDING , DELETING , or FAILED . Deploying an API will wait if the status is PENDING and will fail if the status is DELETING .
 
-: **Field**: `api_stages`
-
-`api_stages_api_ids`
-: API Id of the associated API stage in a usage plan.
-
-: **Field**: `api_stages[0].api_id`
-
-`api_stages_stages`
-: API stage name of the associated API stage in a usage plan.
-
-: **Field**: `api_stages[0].stage`
-
-`api_stages_throttles`
-: Map containing method level throttling information for API stage in a usage plan.
-
-: **Field**: `api_stages[0].throttle`
-
-`throttle`
-: A map containing method level throttling information for API stage in a usage plan.
-
-: **Field**: `throttle`
-
-`throttle.burst_limit`
-: The API target request burst rate limit. This allows more requests through for a period of time than the target rate limit.
-
-: **Field**: `throttle.burst_limit`
-
-`throttle.rate_limit`
-: The API target request rate limit.
-
-: **Field**: `throttle.rate_limit`
-
-`quota`
-: The target maximum number of permitted requests per a given unit time interval.
-
-: **Field**: `quota`
-
-`quota.limit`
-: The target maximum number of requests that can be made in a given time period.
-
-: **Field**: `quota.limit`
-
-`quota.offset`
-: The number of requests subtracted from the given limit in the initial time period.
-
-: **Field**: `quota.offset`
-
-`quota.period`
-: The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-
-: **Field**: `quota.period`
-
-`product_code`
-: The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-
-: **Field**: `product_code`
+`status_message`
+: A description about the VPC link status.
 
 `tags`
 : The collection of tags. Each tag element is associated with a given resource.
 
-: **Field**: `tags`
-
 ## Examples
 
-**Ensure an usage plan id is available.**
+**Ensure an VPC link id is available.**
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
-  its('id') { should eq 'USAGE_PLAN_ID' }
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
+  its('id') { should eq 'VPC_LINK_ID' }
 end
 ```
 
-**Ensure an usage plan name is available.**
+**Ensure an VPC Link name is available.**
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
-  its('name') { should eq 'USAGE_PLAN_NAME' }
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
+  its('name') { should eq 'VPC_LINK_NAME' }
 end
 ```
 
-**Verify the quota limit is set to `2` in the usage plan api gateway.**
+**Verify the status is `AVAILABLE`.**
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
-  its('quota.limit') { should eq 2 }
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
+  its('status') { should eq 'AVAILABLE' }
 end
 ```
 
@@ -153,7 +94,7 @@ The controls will pass if the `get` method returns at least one result.
 Use `should` to test that the entity exists.
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
   it { should exist }
 end
 ```
@@ -161,11 +102,11 @@ end
 Use `should_not` to test the entity does not exist.
 
 ```ruby
-describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
+describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
   it { should_not exist }
 end
 ```
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:UsagePlan" %}}
+{{% aws_permissions_principal action="APIGateway:Client:VpcLink" %}}

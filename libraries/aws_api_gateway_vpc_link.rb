@@ -24,13 +24,17 @@ class AWSApiGatewayVPCLink < AwsResourceBase
     end
   end
 
+  def resource_id
+    @res? @res[:id] : @display_name
+  end
+
   def exists?
     !@res.blank?
   end
 
   def vpc_link_id
     return nil unless exists?
-    @res[:vpc_link_id]
+    @res[:id]
   end
 
   def to_s
