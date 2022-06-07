@@ -57,4 +57,8 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   def size_constraints_sizes
     size_constraints.map(&:size)
   end
+
+  def resource_id
+    @display_name
+  end
 end

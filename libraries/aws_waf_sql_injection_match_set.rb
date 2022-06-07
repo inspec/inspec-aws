@@ -49,4 +49,8 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   def sql_injection_match_tuples_text_transformations
     sql_injection_match_tuples.map(&:text_transformation)
   end
+
+  def resource_id
+    @display_name
+  end
 end

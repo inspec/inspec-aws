@@ -49,4 +49,8 @@ class AWSWAFXSSMatchSet < AwsResourceBase
   def xss_match_tuples_text_transformations
     xss_match_tuples.map(&:text_transformation)
   end
+
+  def resource_id
+    @display_name
+  end
 end

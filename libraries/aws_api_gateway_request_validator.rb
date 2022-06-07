@@ -25,6 +25,10 @@ class AWSApiGatewayRequestValidator < AwsResourceBase
     end
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.blank?
   end
