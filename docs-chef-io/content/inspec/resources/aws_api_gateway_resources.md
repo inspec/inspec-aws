@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_resources Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_resources` Chef InSpec audit resource to the test properties of multiple AWS API Gateway Resource.
+Use the `aws_api_gateway_resources` Chef InSpec audit resource to the test properties of multiple AWS API Gateway Resources.
 
 The AWS::ApiGateway::Resource resource creates a resource in an API.
 
@@ -66,6 +66,14 @@ end
 ```ruby
 describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
   its('ids') { should include 'RESOURCE_ID' }
+end
+```
+
+### Test to ensure the parent id is present
+
+```ruby
+describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
+  its('parent_ids') { should include 'PARENT_ID' }
 end
 ```
 

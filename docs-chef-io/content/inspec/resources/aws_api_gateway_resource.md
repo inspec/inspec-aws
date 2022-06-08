@@ -41,9 +41,29 @@ end
 ## Properties
 
 `id`
-: rest_api_idrest_api_idrest_api_idrest_api_idrest_api_idrest_api_idrest_api_idrest_api_id
+: The resource's identifier.
 
 : **Field**: `id`
+
+`parent_id`
+: The parent resource's identifier.
+
+: **Field**: `parent_id`
+
+`path_part`
+: The last path segment for this resource.
+
+: **Field**: `path_part`
+
+`path`
+: The full path for this resource.
+
+: **Field**: `path`
+
+`resource_methods`
+: Gets an API resource's method of a given HTTP verb.
+
+: **Field**: `resource_methods`
 
 ## Examples
 

@@ -12,20 +12,20 @@ class AWSApiGatewayResource < AwsResourceBase
   EXAMPLE
 
   def initialize(opts = {})
+    opts = { rest_api_id: opts } if opts.is_a?(String)
+    opts = { resource_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: %i(rest_api_id resource_id))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" if opts[:rest_api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: resource_id must be provided" if opts[:resource_id].blank?
+    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided!" if opts[:rest_api_id].blank?
+    raise ArgumentError, "#{@__resource_name__}: resource_id must be provided!" if opts[:resource_id].blank?
     @display_name = opts[:resource_id]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_resource({ rest_api_id: opts[:rest_api_id], resource_id: opts[:resource_id] })
-      @res = resp.to_h
-      @id = @res[:id]
-      @parent_id = @res[:parent_id]
-      @path_part = @res[:path_part]
-      @path = @res[:path]
+      @id = resp[:id]
+      @parent_id = resp[:parent_id]
+      @path_part = resp[:path_part]
+      @path = resp[:path]
       @resource_methods_res = resp.resource_methods.to_h
-      require 'pry'; binding.pry
       create_resource_methods(@resource_methods_res)
     end
   end
