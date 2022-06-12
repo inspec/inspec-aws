@@ -4,7 +4,7 @@ require 'aws_backend'
 
 class AWSApiGatewayResource < AwsResourceBase
   name 'aws_api_gateway_resource'
-  desc 'Gets information about a resource.'
+  desc 'Gets information about a Resource.'
   example <<-EXAMPLE
     describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
       it { should exist }
@@ -12,13 +12,11 @@ class AWSApiGatewayResource < AwsResourceBase
   EXAMPLE
 
   def initialize(opts = {})
-    opts = { rest_api_id: opts } if opts.is_a?(String)
-    opts = { resource_id: opts } if opts.is_a?(String)
-    opts = { type: opts } if opts.is_a?(String)
+    opts = { rest_api_id: opts, resource_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(rest_api_id resource_id), allow: %i(type))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided!" if opts[:rest_api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: resource_id must be provided!" if opts[:resource_id].blank?
+    validate_parameters(required: %i(rest_api_id resource_id))
+    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided !" if opts[:rest_api_id].blank?
+    raise ArgumentError, "#{@__resource_name__}: resource_id must be provided !" if opts[:resource_id].blank?
     @display_name = opts[:resource_id]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_resource({ rest_api_id: opts[:rest_api_id], resource_id: opts[:resource_id] })
@@ -27,12 +25,8 @@ class AWSApiGatewayResource < AwsResourceBase
     end
   end
 
-  def resource_method
-    @res[:resource_methods][opts[:type]]
-  end
-
   def resource_id
-    @res? "#{@id}_#{@parent_id}": @display_name
+    @res? "#{@res[:id]}_#{@res[:parent_id]}": @display_name
   end
 
   def exists?
