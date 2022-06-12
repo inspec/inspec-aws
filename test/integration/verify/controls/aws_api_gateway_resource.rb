@@ -22,4 +22,8 @@ control 'aws-api-gateway-resource-1.0' do
   describe aws_api_gateway_resource(rest_api_id: aws_api_gateway_rest_api_id, resource_id: aws_api_gateway_resource_id) do
     its ('resource_methods') { should be_empty }
   end
+
+  describe aws_api_gateway_resource(rest_api_id: 'dummy', resource_id: 'dummy') do
+    it { should_not exist }
+  end
 end

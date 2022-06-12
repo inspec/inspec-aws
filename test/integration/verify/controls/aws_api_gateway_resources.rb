@@ -19,4 +19,8 @@ control 'aws-api-gateway-resources-1.0' do
     its ('paths') { should include aws_api_gateway_resource_path }
     its ('resource_methods') { should be_empty }
   end
+
+  describe aws_api_gateway_resources(rest_api_id: 'dummy') do
+    it { should_not exist }
+  end
 end
