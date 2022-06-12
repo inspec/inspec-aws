@@ -14,7 +14,9 @@ class AWSApiGatewayDomainNames < AwsCollectionResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    @table = fetch(client: :apigateway_client, operation: :get_domain_names).items.map(&:to_h)
-    populate_filter_table_from_response
+    catch_aws_errors do
+      @table = fetch(client: :apigateway_client, operation: :get_domain_names).items.map(&:to_h)
+      populate_filter_table_from_response
+    end
   end
 end
