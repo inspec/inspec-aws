@@ -67,27 +67,27 @@ end
 
 ## Examples
 
-**Ensure an usage plan id is available.**
+**Ensure a resource id is available.**
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
-  its('id') { should eq 'USAGE_PLAN_ID' }
+  its('id') { should eq 'RESOURCE_ID' }
 end
 ```
 
-**Ensure an usage plan name is available.**
+**Ensure a resource path is available.**
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
-  its('name') { should eq 'USAGE_PLAN_NAME' }
+  its('path') { should eq '/' }
 end
 ```
 
-**Verify the quota limit is set to `2` in the usage plan api gateway.**
+**Ensure a resource parent id is available.**
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
-  its('quota.limit') { should eq 2 }
+  its('parent_id') { should eq 'PARENT_ID' }
 end
 ```
 

@@ -12,8 +12,6 @@ parent = "inspec/resources/aws"
 
 Use the `aws_api_gateway_resources` Chef InSpec audit resource to the test properties of multiple AWS API Gateway Resources.
 
-The AWS::ApiGateway::Resource resource creates a resource in an API.
-
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
 
 ## Syntax
