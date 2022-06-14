@@ -38,6 +38,10 @@ class AwsLambda < AwsResourceBase
     @display_name
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Lambda #{name}"
   end

@@ -29,6 +29,10 @@ class AWSLambdaVersion < AwsResourceBase
     @res[:version_number]
   end
 
+  def resource_id
+    @res ? @res[:layer_arn] : @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

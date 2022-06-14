@@ -67,4 +67,9 @@ class AWSStepFunctionsStateMachineSuccessPathTest < Minitest::Test
   def test_creation_date
     assert_equal(@state_machine.creation_date, Time.parse("2013-06-12T23:52:02Z"))
   end
+
+  def test_resource_id
+    refute_nil(@state_machine.resource_id)
+    assert_equal(@state_machine.resource_id, 'test1')
+  end
 end
