@@ -73,4 +73,8 @@ class AWSWAFWebACL < AwsResourceBase
   def rules_excluded_rules_rule_ids
     (rules.map(&:excluded_rules)).map(&:rule_id)
   end
+
+  def resource_id
+    @display_name
+  end
 end

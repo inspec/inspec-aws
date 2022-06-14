@@ -29,6 +29,10 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
     @listeners[:listener_arns]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@listeners.nil? && !@listeners.empty?
   end
