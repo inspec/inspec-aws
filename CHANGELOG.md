@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.23 -->
+<!-- latest_release 1.83.24 -->
+## [v1.83.24](https://github.com/inspec/inspec-aws/tree/v1.83.24) (2022-06-14)
+
+#### Merged Pull Requests
+- RESOURCE-374-aws-resource-ids-misc [#914](https://github.com/inspec/inspec-aws/pull/914) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.83.23](https://github.com/inspec/inspec-aws/tree/v1.83.23) (2022-06-06)
 
 #### Merged Pull Requests
 - RESOURCE-371-aws-resource-ids-lbs [#911](https://github.com/inspec/inspec-aws/pull/911) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.22](https://github.com/inspec/inspec-aws/tree/v1.83.22) (2022-06-03)
 
