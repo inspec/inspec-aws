@@ -28,6 +28,10 @@ class AWSMQBroker < AwsResourceBase
     @brokers[:broker_id]
   end
 
+  def resource_id
+    @brokers? @brokers[:broker_id] : @display_name
+  end
+
   def exists?
     !@brokers.nil? && !@brokers.empty?
   end

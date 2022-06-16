@@ -28,7 +28,12 @@ class AWSCloudwatchDashboardHappyPathTest < Minitest::Test
     mock_cloudwatch_dashboards[:dashboard_body] = "test-body"
     data[:data] = mock_cloudwatch_dashboards
     data[:client] = Aws::CloudWatch::Client
-    @resp = AWSCloudwatchDashboard.new(dashboard_name: 'test1' , client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSCloudwatchDashboard.new(dashboard_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+  end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.dashboard_arn)
   end
 
   def test_dashboard_exists

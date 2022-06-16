@@ -108,4 +108,9 @@ class AWSEC2HostSuccessPathTest < Minitest::Test
   def test_member_of_service_linked_resource_group
     assert_equal(@resp.member_of_service_linked_resource_group, true)
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.host_id)
+  end
 end

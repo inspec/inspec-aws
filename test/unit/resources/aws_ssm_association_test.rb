@@ -53,6 +53,11 @@ class AwsSsmAssociationSuccessPathTest < Minitest::Test
     @ssm_association = AwsSsmAssociation.new(association_id: "association-id-14325423", client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@ssm_association.resource_id)
+    assert_equal(@ssm_association.resource_id, @ssm_association.association_id)
+  end
+
   def test_ssm_association_exists
     assert @ssm_association.exists?
   end

@@ -32,6 +32,10 @@ class AWSApiGatewayBasePathMapping < AwsResourceBase
     @res[:base_path]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

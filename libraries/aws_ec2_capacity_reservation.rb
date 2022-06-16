@@ -21,6 +21,7 @@ class AWSEC2CapacityReservation < AwsResourceBase
     catch_aws_errors do
       resp = @aws.compute_client.describe_capacity_reservations({ capacity_reservation_ids: [opts[:capacity_reservation_id]] })
       @resp = resp.capacity_reservations[0].to_h
+      @capacity_reservation_id = resp.capacity_reservations[0].capacity_reservation_id
       create_resource_methods(@resp)
     end
   end
@@ -32,6 +33,10 @@ class AWSEC2CapacityReservation < AwsResourceBase
 
   def exists?
     !@resp.nil? && !@resp.empty?
+  end
+
+  def resource_id
+    @capacity_reservation_id
   end
 
   def to_s

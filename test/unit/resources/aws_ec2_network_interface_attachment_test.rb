@@ -68,4 +68,9 @@ class AWSEC2NetworkInterfaceAttachmentSuccessPathTest < Minitest::Test
   def test_status
     assert_equal(@resp.status,  'attached')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

@@ -14,6 +14,11 @@ class AwsIamPasswordPolicyTest < Minitest::Test
     @policy = AwsIamPasswordPolicy.new(client_args: { stub_responses: true }, stub_data: @mock.stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@policy.resource_id)
+    assert_equal(@policy.resource_id, @policy.resource_id)
+  end
+
   def test_minimum_password_length
     assert_equal(@policy.minimum_password_length, @mock_policy[:minimum_password_length])
   end

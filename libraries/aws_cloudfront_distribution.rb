@@ -90,6 +90,10 @@ class AwsCloudFrontDistribution < AwsResourceBase
     end
   end
 
+  def resource_id
+    @resp? @resp[:distribution][:id]: @distribution_id
+  end
+
   def exists?
     !@distribution_arn.nil? && @distribution_arn.start_with?('arn')
   end
@@ -112,10 +116,6 @@ class AwsCloudFrontDistribution < AwsResourceBase
 
   def has_disallowed_custom_origin_ssl_protocols?
     disallowed?(@custom_origin_ssl_protocols)
-  end
-
-  def resource_id
-    @distribution_id
   end
 
   def to_s

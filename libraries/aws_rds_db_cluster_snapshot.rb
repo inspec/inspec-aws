@@ -27,6 +27,7 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_cluster_snapshots({ filters: filter })
       @res = resp.db_cluster_snapshots[0].to_h
+      @db_cluster_snapshot_arn = @res[:db_cluster_snapshot_arn]
       create_resource_methods(@res)
     end
   end
@@ -34,6 +35,10 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
   def db_cluster_snapshot_id
     return nil unless exists?
     @res[:db_cluster_snapshot_id]
+  end
+
+  def resource_id
+    @db_cluster_snapshot_arn
   end
 
   def exists?

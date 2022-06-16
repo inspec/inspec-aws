@@ -33,6 +33,10 @@ class AwsIamGroup < AwsResourceBase
     end
   end
 
+  def resource_id
+    @arn
+  end
+
   def exists?
     @arn.start_with?('arn:')
   end

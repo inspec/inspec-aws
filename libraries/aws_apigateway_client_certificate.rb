@@ -30,6 +30,10 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
     @res[:client_certificate_id]
   end
 
+  def resource_id
+    @res? @res[:client_certificate_id] : @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

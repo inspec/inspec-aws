@@ -72,6 +72,11 @@ class AwsRouteTableHappyPathTest < Minitest::Test
     @route_table = AwsRouteTable.new(route_table_id: 'rtb-ad212345', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@route_table.resource_id)
+    assert_equal(@route_table.resource_id, @route_table.route_table_id)
+  end
+
   def test_route_table_exists
     assert @route_table.exists?
   end

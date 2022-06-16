@@ -31,6 +31,10 @@ class AWSBatchComputeEnvironment < AwsResourceBase
     @compute_environments[:compute_environment_name]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@compute_environments.nil? && !@compute_environments.empty?
   end

@@ -31,6 +31,11 @@ class AWSCloudwatchMetricStreamHappyPathTest < Minitest::Test
     @resp = AWSCloudwatchMetricStream.new(metric_stream_name: 'test-name', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.name + '_' + @resp.arn)
+  end
+
   def test_metric_stream_exists
     assert @resp.exist?
   end

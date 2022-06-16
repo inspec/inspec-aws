@@ -1,9 +1,59 @@
-<!-- latest_release 1.83.14 -->
+<!-- latest_release 1.83.24 -->
+## [v1.83.24](https://github.com/inspec/inspec-aws/tree/v1.83.24) (2022-06-14)
+
+#### Merged Pull Requests
+- RESOURCE-374-aws-resource-ids-misc [#914](https://github.com/inspec/inspec-aws/pull/914) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.83.23](https://github.com/inspec/inspec-aws/tree/v1.83.23) (2022-06-06)
+
+#### Merged Pull Requests
+- RESOURCE-371-aws-resource-ids-lbs [#911](https://github.com/inspec/inspec-aws/pull/911) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.22](https://github.com/inspec/inspec-aws/tree/v1.83.22) (2022-06-03)
+
+#### Merged Pull Requests
+- fixing failed resources in buildkite [#920](https://github.com/inspec/inspec-aws/pull/920) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.21](https://github.com/inspec/inspec-aws/tree/v1.83.21) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-373-aws-resource-ids-messaging [#912](https://github.com/inspec/inspec-aws/pull/912) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.20](https://github.com/inspec/inspec-aws/tree/v1.83.20) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-368 aws resource ids containers [#908](https://github.com/inspec/inspec-aws/pull/908) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.19](https://github.com/inspec/inspec-aws/tree/v1.83.19) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-375 AWS resource_ids - Network [#909](https://github.com/inspec/inspec-aws/pull/909) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.18](https://github.com/inspec/inspec-aws/tree/v1.83.18) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-369 AWS resource_ids - DB [#910](https://github.com/inspec/inspec-aws/pull/910) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.17](https://github.com/inspec/inspec-aws/tree/v1.83.17) (2022-06-01)
+
+#### Merged Pull Requests
+-  RESOURCE-372 AWS resource_ids - Management [#913](https://github.com/inspec/inspec-aws/pull/913) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.16](https://github.com/inspec/inspec-aws/tree/v1.83.16) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-370 AWS resource_ids - EC2 [#907](https://github.com/inspec/inspec-aws/pull/907) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.15](https://github.com/inspec/inspec-aws/tree/v1.83.15) (2022-06-01)
+
+#### Merged Pull Requests
+- RESOURCE-385 Increase the Timeout Limit of build [#918](https://github.com/inspec/inspec-aws/pull/918) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.83.14](https://github.com/inspec/inspec-aws/tree/v1.83.14) (2022-05-23)
 
 #### Merged Pull Requests
 - Remove hugo version and go version from Netlify config [#915](https://github.com/inspec/inspec-aws/pull/915) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.83.13](https://github.com/inspec/inspec-aws/tree/v1.83.13) (2022-05-23)
 

@@ -63,4 +63,9 @@ class AWSEC2VolumeAttachmentSuccessPathTest < Minitest::Test
   def test_delete_on_termination
     assert_equal(@resp.delete_on_termination,  true)
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.volume_id)
+  end
 end
