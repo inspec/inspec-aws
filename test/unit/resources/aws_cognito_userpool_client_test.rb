@@ -121,4 +121,9 @@ class AWSCognitoUserPoolClientSuccessPathTest < Minitest::Test
   def test_prevent_user_existence_errors
     assert_equal(@user_pool_client.prevent_user_existence_errors, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@user_pool_client.resource_id)
+    assert_equal(@user_pool_client.resource_id, 'test1')
+  end
 end
