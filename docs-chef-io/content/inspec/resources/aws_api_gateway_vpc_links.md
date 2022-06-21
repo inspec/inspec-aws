@@ -71,7 +71,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-To ensure a VPC link ID is available:
+Ensures a VPC link ID is available.
 
 ```ruby
 describe aws_api_gateway_vpc_links do
@@ -79,7 +79,7 @@ describe aws_api_gateway_vpc_links do
 end
 ```
 
-To ensure a VPC link name is available:
+Ensures a VPC link name is available.
 
 ```ruby
 describe aws_api_gateway_vpc_links do
@@ -87,7 +87,7 @@ describe aws_api_gateway_vpc_links do
 end
 ```
 
-To verify the status is `AVAILABLE`:
+Verifies the status as `AVAILABLE`.
 
 ```ruby
 describe aws_api_gateway_vpc_links do

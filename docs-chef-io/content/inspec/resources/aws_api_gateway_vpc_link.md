@@ -59,7 +59,7 @@ end
 
 ## Examples
 
-To ensure a VPC link ID is available:
+Ensures a VPC link ID is available.
 
 ```ruby
 describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
@@ -67,7 +67,7 @@ describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
 end
 ```
 
-To ensure a VPC link name is available:
+Ensures a VPC link name is available.
 
 ```ruby
 describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
@@ -75,7 +75,7 @@ describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
 end
 ```
 
-To verify the status is `AVAILABLE`:
+Verifies the status as `AVAILABLE`.
 
 ```ruby
 describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
