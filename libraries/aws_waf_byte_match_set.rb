@@ -61,4 +61,8 @@ class AWSWAFByteMatchSet < AwsResourceBase
   def byte_match_tuples_positional_constraints
     byte_match_tuples.map(&:positional_constraint)
   end
+
+  def resource_id
+    @display_name
+  end
 end

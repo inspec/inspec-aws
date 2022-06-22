@@ -29,6 +29,10 @@ class AWSLambdaCodeSigningConfig < AwsResourceBase
     @res[:code_signing_config_arn]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

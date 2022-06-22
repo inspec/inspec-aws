@@ -31,6 +31,10 @@ class AWSAthenaWorkGroup < AwsResourceBase
     @work_group[:work_group]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@work_group.nil? && !@work_group.empty?
   end

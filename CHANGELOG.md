@@ -1,9 +1,34 @@
-<!-- latest_release 1.83.22 -->
+<!-- latest_release 1.83.27 -->
+## [v1.83.27](https://github.com/inspec/inspec-aws/tree/v1.83.27) (2022-06-22)
+
+#### Merged Pull Requests
+- RESOURCE-235 AWS::ApiGateway::Resource  [#923](https://github.com/inspec/inspec-aws/pull/923) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.83.26](https://github.com/inspec/inspec-aws/tree/v1.83.26) (2022-06-22)
+
+#### Merged Pull Requests
+- RESOURCE-238 AWS::ApiGateway::VpcLink [#922](https://github.com/inspec/inspec-aws/pull/922) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.25](https://github.com/inspec/inspec-aws/tree/v1.83.25) (2022-06-19)
+
+#### Merged Pull Requests
+- RESOURCE-446 Add APIGatewayV2 sdk in the library [#925](https://github.com/inspec/inspec-aws/pull/925) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.24](https://github.com/inspec/inspec-aws/tree/v1.83.24) (2022-06-14)
+
+#### Merged Pull Requests
+- RESOURCE-374-aws-resource-ids-misc [#914](https://github.com/inspec/inspec-aws/pull/914) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.23](https://github.com/inspec/inspec-aws/tree/v1.83.23) (2022-06-06)
+
+#### Merged Pull Requests
+- RESOURCE-371-aws-resource-ids-lbs [#911](https://github.com/inspec/inspec-aws/pull/911) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.83.22](https://github.com/inspec/inspec-aws/tree/v1.83.22) (2022-06-03)
 
 #### Merged Pull Requests
 - fixing failed resources in buildkite [#920](https://github.com/inspec/inspec-aws/pull/920) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.21](https://github.com/inspec/inspec-aws/tree/v1.83.21) (2022-06-01)
 
