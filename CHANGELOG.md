@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.25 -->
+<!-- latest_release 1.83.26 -->
+## [v1.83.26](https://github.com/inspec/inspec-aws/tree/v1.83.26) (2022-06-22)
+
+#### Merged Pull Requests
+- RESOURCE-238 AWS::ApiGateway::VpcLink [#922](https://github.com/inspec/inspec-aws/pull/922) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.25](https://github.com/inspec/inspec-aws/tree/v1.83.25) (2022-06-19)
 
 #### Merged Pull Requests
 - RESOURCE-446 Add APIGatewayV2 sdk in the library [#925](https://github.com/inspec/inspec-aws/pull/925) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.24](https://github.com/inspec/inspec-aws/tree/v1.83.24) (2022-06-14)
 
