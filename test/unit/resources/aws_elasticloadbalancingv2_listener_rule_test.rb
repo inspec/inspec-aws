@@ -46,4 +46,10 @@ class AWSElasticLoadBalancingV2ListenerRuleSuccessPathTest < Minitest::Test
   def test_is_default
     assert_equal(@rules.is_default, false)
   end
+
+  def test_resource_id
+    refute_nil(@rules.resource_id)
+    assert_equal(@rules.resource_id, 'test1')
+  end
+
 end

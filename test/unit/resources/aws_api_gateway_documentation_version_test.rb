@@ -27,6 +27,11 @@ class AWSApiGatewayDocumentationVersionHappyPathTest < Minitest::Test
     @resp = AWSApiGatewayDocumentationVersion.new(rest_api_id: 'test', documentation_version: 'test' , client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test')
+  end
+
   def test_documentation_exists
     assert @resp.exist?
   end

@@ -33,6 +33,10 @@ class AWSBatchJobDefinition < AwsResourceBase
     !@job_definitions.nil? && !@job_definitions.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def encrypted?
     @job_definitions[:encrypted]
   end

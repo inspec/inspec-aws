@@ -46,4 +46,9 @@ class AWSGlueCrawlerSuccessPathTest < Minitest::Test
   def test_description
     assert_equal(@crawler.description, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@crawler.resource_id)
+    assert_equal(@crawler.resource_id, 'test1')
+  end
 end

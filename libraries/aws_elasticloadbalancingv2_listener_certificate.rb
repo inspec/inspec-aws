@@ -29,6 +29,10 @@ class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
     @listeners[:listener_arn]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@listeners.nil? && !@listeners.empty?
   end

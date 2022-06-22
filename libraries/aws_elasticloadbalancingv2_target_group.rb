@@ -29,6 +29,10 @@ class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
     @target_groups[:target_group_arn]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@target_groups.nil? && !@target_groups.empty?
   end

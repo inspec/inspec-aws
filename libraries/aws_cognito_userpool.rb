@@ -35,6 +35,10 @@ class AWSCognitoUserPool < AwsResourceBase
     !@user_pool.nil? && !@user_pool.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Job Queue Name: #{@display_name}"
   end

@@ -31,6 +31,11 @@ class AWSApiGatewayBasePathMappingSuccessPathTest < Minitest::Test
     @resp = AWSApiGatewayBasePathMapping.new(domain_name: 'test1', base_path: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
+
   def test_base_path_mapping_exists
     assert @resp.exists?
   end

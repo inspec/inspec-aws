@@ -34,6 +34,10 @@ class AWSApiGatewayAPIKey < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @res? @res[:id] : @display_name
+  end
+
   def to_s
     "API Key: #{@display_name}"
   end
