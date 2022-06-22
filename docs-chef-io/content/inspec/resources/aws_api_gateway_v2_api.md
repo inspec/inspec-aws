@@ -31,6 +31,7 @@ end
 ## Parameters
 
 `api_id` _(required)_
+: The API ID.
 
 ## Properties
 
@@ -98,7 +99,7 @@ end
 : A version identifier for the API.
 
 `warnings`
-: The warning messages reported when failonwarnings is turned on during API import.
+: The warning messages reported when `failonwarnings` is turned on during API import.
 
 ## Examples
 
