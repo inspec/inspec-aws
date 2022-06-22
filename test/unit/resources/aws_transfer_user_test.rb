@@ -66,4 +66,9 @@ class AWSTransferUserSuccessPathTest < Minitest::Test
   def test_user_name
     assert_equal(@user.user_name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@user.resource_id)
+    assert_equal(@user.resource_id, 'test1')
+  end
 end
