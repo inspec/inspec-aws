@@ -71,7 +71,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-Ensures a VPC link ID is available.
+### Test to ensure a VPC link ID is available
 
 ```ruby
 describe aws_api_gateway_vpc_links do
@@ -79,7 +79,7 @@ describe aws_api_gateway_vpc_links do
 end
 ```
 
-Ensures a VPC link name is available.
+### Test to ensure a VPC link name is available
 
 ```ruby
 describe aws_api_gateway_vpc_links do
@@ -87,7 +87,7 @@ describe aws_api_gateway_vpc_links do
 end
 ```
 
-Verifies the status as `AVAILABLE`.
+### Test to verify the status as `AVAILABLE`
 
 ```ruby
 describe aws_api_gateway_vpc_links do
@@ -111,7 +111,7 @@ describe aws_api_gateway_vpc_links do
 end
 ```
 
-Use `should_not` to test if the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_vpc_links do
