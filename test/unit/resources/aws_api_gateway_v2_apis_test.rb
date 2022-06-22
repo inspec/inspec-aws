@@ -52,10 +52,6 @@ class AwsApiGatewayV2ApisSuccessPathTest < Minitest::Test
     assert_equal(@res.api_endpoints, ['test_endpoint'])
   end
 
-  def test_api_gateway_managed
-    assert_equal(@res.api_gateway_managed, [true])
-  end
-
   def test_api_ids
     assert_equal(@res.api_ids, ['test_app_id'])
   end
@@ -85,7 +81,7 @@ class AwsApiGatewayV2ApisSuccessPathTest < Minitest::Test
   end
 
   def test_import_infos
-    assert_equal(@res.import_infos, [['test_import_info']])
+    assert_equal(@res.import_infos, ['test_import_info'])
   end
 
   def test_names
@@ -109,6 +105,6 @@ class AwsApiGatewayV2ApisSuccessPathTest < Minitest::Test
   end
 
   def test_warnings
-    assert_equal(@res.warnings, [['test_warnings']])
+    assert_equal(@res.warnings, ['test_warnings'])
   end
 end
