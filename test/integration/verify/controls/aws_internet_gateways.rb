@@ -1,9 +1,8 @@
-aws_internet_gateway_name_tag = attribute(:aws_internet_gateway_name_tag, value: "", description: "The value of the
-name tag of the internet gateway.")
+aws_internet_gateway_name_tag = input(:aws_internet_gateway_name_tag, value: "", description: "The value of the name tag of the internet gateway.")
 
 title "Test multiple AWS Internet Gateways"
-control "aws-internet-gateways-1.0" do
 
+control "aws-internet-gateways-1.0" do
   impact 1.0
   title "Check AWS internet gateways have the correct properties."
 

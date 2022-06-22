@@ -1,8 +1,7 @@
-aws_iam_instance_profile_name = attribute(:aws_iam_instance_profile_name1, value: '', description: '')
-aws_iam_instance_profile_arn = attribute(:aws_iam_instance_profile_arn, value: '', description: '')
+aws_iam_instance_profile_name = input(:aws_iam_instance_profile_name1, value: '', description: '')
+aws_iam_instance_profile_arn = input(:aws_iam_instance_profile_arn, value: '', description: '')
 
 control 'aws-iam-instance-profiles-1.0' do
-
   impact 1.0
   title 'Ensure AWS IAM Instance Profiles has the correct properties.'
 

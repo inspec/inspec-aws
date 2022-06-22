@@ -1,9 +1,9 @@
-# frozen_string_literal: true
-subscription_name = attribute(:subscription_name, value: '', description: 'The AWS Auto Scaling Group name.')
+subscription_name = input(:subscription_name, value: '', description: '')
 
 control 'aws_rds_event_subscription-1.0' do
   impact 1.0
   title 'Test the properties of Event Subscription.'
+  
   describe aws_rds_event_subscription(subscription_name: subscription_name) do
     it { should exist }
     its('customer_aws_id') { should_not eq '11384673629' }

@@ -1,9 +1,9 @@
-aws_lambda_layer_arn = attribute(:aws_lambda_layer_arn, value: '')
-aws_lambda_layer_version_layer_arn = attribute(:aws_lambda_layer_version_layer_arn, value: '')
-aws_lambda_code_signing_config_description = attribute(:aws_lambda_code_signing_config_description, value: '')
-aws_lambda_layer_version_created_date = attribute(:aws_lambda_layer_version_created_date, value: '')
-aws_lambda_layer_version_source_code_size = attribute(:aws_lambda_layer_version_source_code_size, value: '')
-aws_lambda_layer_version = attribute(:aws_lambda_layer_version, value: '')
+aws_lambda_layer_arn = input(:aws_lambda_layer_arn, value: '', description: '')
+aws_lambda_layer_version_layer_arn = input(:aws_lambda_layer_version_layer_arn, value: '', description: '')
+aws_lambda_code_signing_config_description = input(:aws_lambda_code_signing_config_description, value: '', description: '')
+aws_lambda_layer_version_created_date = input(:aws_lambda_layer_version_created_date, value: '', description: '')
+aws_lambda_layer_version_source_code_size = input(:aws_lambda_layer_version_source_code_size, value: '', description: '')
+aws_lambda_layer_version = input(:aws_lambda_layer_version, value: '', description: '')
 
 control 'aws-lambda-version-1.0' do
   impact 1.0

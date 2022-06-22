@@ -1,6 +1,6 @@
-aws_lambda_layer_version_layer_arn = attribute(:aws_lambda_layer_version_layer_arn, value: '')
-aws_lambda_layer_version_created_date = attribute(:aws_lambda_layer_version_created_date, value: '')
-aws_lambda_layer_version = attribute(:aws_lambda_layer_version, value: '')
+aws_lambda_layer_version_layer_arn = input(:aws_lambda_layer_version_layer_arn, value: '', description: '')
+aws_lambda_layer_version_created_date = input(:aws_lambda_layer_version_created_date, value: '', description: '')
+aws_lambda_layer_version = input(:aws_lambda_layer_version, value: '', description: '')
 
 control 'aws-lambda-versions-1.0' do
   impact 1.0

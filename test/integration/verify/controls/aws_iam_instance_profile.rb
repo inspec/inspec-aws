@@ -1,12 +1,11 @@
-aws_iam_instance_profile_name = attribute(:aws_iam_instance_profile_name1, value: '', description: '')
-aws_iam_instance_profile_arn = attribute(:aws_iam_instance_profile_arn, value: '', description: '')
-aws_iam_instance_profile_id = attribute(:aws_iam_instance_profile_id, value: '', description: '')
-aws_iam_role_name = attribute(:aws_iam_role_name1, value: '', description: '')
-aws_iam_role_id = attribute(:aws_iam_role_id, value: '', description: '')
-aws_iam_role_arn = attribute(:aws_iam_role_arn, value: '', description: '')
+aws_iam_instance_profile_name = input(:aws_iam_instance_profile_name1, value: '', description: '')
+aws_iam_instance_profile_arn = input(:aws_iam_instance_profile_arn, value: '', description: '')
+aws_iam_instance_profile_id = input(:aws_iam_instance_profile_id, value: '', description: '')
+aws_iam_role_name = input(:aws_iam_role_name1, value: '', description: '')
+aws_iam_role_id = input(:aws_iam_role_id, value: '', description: '')
+aws_iam_role_arn = input(:aws_iam_role_arn, value: '', description: '')
 
 control 'aws-iam-instance-profile-1.0' do
-
   impact 1.0
   title 'Ensure AWS IAM Instance Profile has the correct properties.'
 
@@ -32,6 +31,6 @@ control 'aws-iam-instance-profile-1.0' do
   end
 
   describe aws_iam_instance_profile(instance_profile_name: 'dummy') do
-      it { should exist }
+    it { should exist }
   end
 end

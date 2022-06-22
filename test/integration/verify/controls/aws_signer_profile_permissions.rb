@@ -1,7 +1,7 @@
-aws_signer_signing_profile_permission_action = attribute("aws_signer_signing_profile_permission_action", value: "", description: "")
-aws_signer_signing_profile_permission_profile_name = attribute("aws_signer_signing_profile_permission_profile_name", value: "", description: "")
-aws_signer_signing_profile_permission_principal = attribute("aws_signer_signing_profile_permission_principal", value: "", description: "")
-aws_signer_signing_profile_permission_statement_id = attribute("aws_signer_signing_profile_permission_statement_id", value: "", description: "")
+aws_signer_signing_profile_permission_action = input(:aws_signer_signing_profile_permission_action, value: "", description: "")
+aws_signer_signing_profile_permission_profile_name = input(:aws_signer_signing_profile_permission_profile_name, value: "", description: "")
+aws_signer_signing_profile_permission_principal = input(:aws_signer_signing_profile_permission_principal, value: "", description: "")
+aws_signer_signing_profile_permission_statement_id = input(:aws_signer_signing_profile_permission_statement_id, value: "", description: "")
 
 control 'aws_signer_profile_permissions-1.0' do
   impact 1.0
