@@ -1,5 +1,5 @@
-listener_arn = attribute(:listener_arn, value: '', description: '')
-load_balancer_arn = attribute(:load_balancer_arn, value: '', description: '')
+listener_arn = input(:listener_arn, value: '', description: '')
+load_balancer_arn = input(:load_balancer_arn, value: '', description: '')
 
   describe aws_elasticloadbalancingv2_listeners(load_balancer_arn: load_balancer_arn) do
     it { should exist }

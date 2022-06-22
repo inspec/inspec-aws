@@ -1,5 +1,5 @@
-aws_networkfirewall_firewall_name = attribute("aws_networkfirewall_firewall_name", value: "", description: "")
-aws_networkfirewall_firewall_arn = attribute("aws_networkfirewall_firewall_arn", value: "", description: "")
+aws_networkfirewall_firewall_name = input(:aws_networkfirewall_firewall_name, value: "", description: "")
+aws_networkfirewall_firewall_arn = input(:aws_networkfirewall_firewall_arn, value: "", description: "")
 
 control 'aws-network-firewall-logging-configuration-1.0' do
   impact 1.0

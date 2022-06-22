@@ -1,5 +1,5 @@
-aws_proxy_name = attribute(:aws_proxy_name, value: '')
-proxy_endpoint_name = attribute(:proxy_endpoint_name, value: '')
+aws_proxy_name = attribute(:aws_proxy_name, value: '', description: '')
+proxy_endpoint_name = attribute(:proxy_endpoint_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-endpoint-1.0' do
   impact 1.0

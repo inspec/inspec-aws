@@ -1,7 +1,7 @@
 title 'Test single AWS Queue'
 
-arn = attribute(:aws_sqs_queue_arn, value: '', description: 'The AWS SQS Queue arn.')
-kms_master_key_id = attribute(:aws_sqs_queue_kms_master_key_id, value: '', description: 'The AWS SQS Queue kms master key id.')
+arn = input(:aws_sqs_queue_arn, value: '', description: 'The AWS SQS Queue arn.')
+kms_master_key_id = input(:aws_sqs_queue_kms_master_key_id, value: '', description: 'The AWS SQS Queue kms master key id.')
 
 if arn.empty?
   aws_sqs_queue_url = ""

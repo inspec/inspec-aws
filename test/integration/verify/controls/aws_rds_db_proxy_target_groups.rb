@@ -1,4 +1,4 @@
-db_proxy_name = attribute(:aws_proxy_name, value: '')
+db_proxy_name = input(:aws_proxy_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-target-groups-1.0' do
   impact 1.0

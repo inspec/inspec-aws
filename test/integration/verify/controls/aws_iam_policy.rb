@@ -1,13 +1,12 @@
 title 'Test single AWS Iam Policy'
 
-aws_iam_policy_arn = attribute(:aws_iam_policy_arn, value: '', description: 'The AWS Iam Policy arn.')
-aws_iam_policy_name = attribute(:aws_iam_policy_name, value: '', description: 'The AWS Iam Policy name.')
-aws_iam_attached_policy_name = attribute(:aws_iam_attached_policy_name, value: '', description: 'The AWS Iam Attached Policy name.')
-aws_iam_user_name = attribute(:aws_iam_user_name, value: '', description: 'The Attached AWS Iam Username.')
-aws_iam_role_generic_name = attribute(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
+aws_iam_policy_arn = input(:aws_iam_policy_arn, value: '', description: 'The AWS Iam Policy arn.')
+aws_iam_policy_name = input(:aws_iam_policy_name, value: '', description: 'The AWS Iam Policy name.')
+aws_iam_attached_policy_name = input(:aws_iam_attached_policy_name, value: '', description: 'The AWS Iam Attached Policy name.')
+aws_iam_user_name = input(:aws_iam_user_name, value: '', description: 'The Attached AWS Iam Username.')
+aws_iam_role_generic_name = input(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
 
 control 'aws-iam-policy-1.0' do
-
   impact 1.0
   title 'Ensure AWS Iam Policy has the correct properties.'
 
@@ -38,5 +37,4 @@ control 'aws-iam-policy-1.0' do
     # Test Action in an array
     it { should have_statement(Action: ["ec2:Describe*"]) }
   end
-
 end
