@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_resource resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_resource` InSpec audit resource to test the properties of a single specific AWS APIGateway Resource.
+Use the `aws_api_gateway_resource` InSpec audit resource to test the properties of a single specific AWS API Gateway Resource.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
+For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
 
 ## Installation
 
@@ -67,7 +67,7 @@ end
 
 ## Examples
 
-**Ensure a resource id is available.**
+### Test to ensure a resource ID is available
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
@@ -75,7 +75,7 @@ describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESO
 end
 ```
 
-**Ensure a resource path is available.**
+### Test to ensure a resource path is available
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
@@ -83,7 +83,7 @@ describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESO
 end
 ```
 
-**Ensure a resource parent id is available.**
+### Test to ensure a resource parent ID is available
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
@@ -95,7 +95,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -107,7 +107,7 @@ describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESO
 end
 ```
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do

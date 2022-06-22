@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_resources Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_resources` Chef InSpec audit resource to the test properties of multiple AWS API Gateway Resources.
+Use the `aws_api_gateway_resources` Chef InSpec audit resource to test the properties of multiple AWS API Gateway Resources.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
+For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
 
 ## Syntax
 
@@ -67,7 +67,7 @@ describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
 end
 ```
 
-### Test to ensure the parent id is present
+### Test to ensure the parent ID is present
 
 ```ruby
 describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
@@ -99,7 +99,7 @@ describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
 end
 ```
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_resources(rest_api_id: 'REST_API_ID') do
