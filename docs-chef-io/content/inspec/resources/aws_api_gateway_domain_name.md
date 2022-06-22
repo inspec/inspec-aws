@@ -96,12 +96,12 @@ end
 : **Field**: `endpoint_configuration.vpc_endpoint_ids`
 
 `domain_name_status`
-: The status of the DomainName migration. The valid values are `AVAILABLE` and `UPDATING`. If the status is `UPDATING`, the domain cannot be modified further until the existing operation is complete. If it is `AVAILABLE`, the domain can be updated.
+: The status of the domain name migration. The valid values are `AVAILABLE` and `UPDATING`. If the status is `UPDATING`, the domain cannot be modified further until the existing operation is complete. If it is `AVAILABLE`, the domain can be updated.
 
 : **Field**: `domain_name_status`
 
 `domain_name_status_message`
-: An optional text message containing detailed information about the status of the DomainName migration.
+: An optional text message containing detailed information about the status of the domain name migration.
 
 : **Field**: `domain_name_status_message`
 
@@ -131,7 +131,7 @@ end
 : **Field**: `mutual_tls_authentication.truststore_warnings`
 
 `ownership_verification_certificate_arn`
-: The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateARN.
+: The ARN of the public certificate issued by ACM to validate ownership of your custom domain.
 
 : **Field**: `ownership_verification_certificate_arn`
 

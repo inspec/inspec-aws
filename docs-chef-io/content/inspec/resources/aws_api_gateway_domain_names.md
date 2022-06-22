@@ -85,17 +85,17 @@ This resource does not require any parameters.
 : **Field**: `distribution_hosted_zone_id`
 
 `endpoint_configurations`
-: The endpoint configuration of this DomainName showing the endpoint types of the domain name.
+: The endpoint configuration of the domain name showing the endpoint types of the domain name.
 
 : **Field**: `endpoint_configuration`
 
 `domain_name_statuses`
-: The status of the DomainName migration. The valid values are `AVAILABLE` and `UPDATING`. If the status is `UPDATING`, the domain cannot be modified further until the existing operation is complete. If it is `AVAILABLE`, the domain can be updated.
+: The status of the domain name migration. The valid values are `AVAILABLE` and `UPDATING`. If the status is `UPDATING`, the domain cannot be modified further until the existing operation is complete. If it is `AVAILABLE`, the domain can be updated.
 
 : **Field**: `domain_name_status`
 
 `domain_name_status_messages`
-: An optional text message containing detailed information about the status of the DomainName migration.
+: An optional text message containing detailed information about the status of the domain name migration.
 
 : **Field**: `domain_name_status_message`
 
@@ -115,7 +115,7 @@ This resource does not require any parameters.
 : **Field**: `mutual_tls_authentication`
 
 `ownership_verification_certificate_arns`
-: The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.
+: The ARN of the public certificate issued by ACM to validate ownership of your custom domain.
 
 : **Field**: `ownership_verification_certificate_arn`
 
