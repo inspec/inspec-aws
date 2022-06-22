@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_usage_plan resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_usage_plan` InSpec audit resource to test the properties of a single specific AWS APIGateway UsagePlan.
+Use the `aws_api_gateway_usage_plan` InSpec audit resource to test the properties of a single specific AWS API Gateway usage plan. A usage plan sets a target for the throttling and quota limits on individual client API keys.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlan](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html).
+For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlan](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html).
 
 ## Installation
 
@@ -20,7 +20,7 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-Ensure that an usage plan exists.
+Ensure that a usage plan exists.
 
 ```ruby
 describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -31,13 +31,12 @@ end
 ## Parameters
 
 `usage_plan_id` _(required)_
-
-: The identifier of a UsagePlan resource.
+: The identifier of a usage plan resource.
 
 ## Properties
 
 `id`
-: The identifier of a UsagePlan resource.
+: The identifier of a usage plan resource.
 
 : **Field**: `id`
 
@@ -57,7 +56,7 @@ end
 : **Field**: `api_stages`
 
 `api_stages_api_ids`
-: API Id of the associated API stage in a usage plan.
+: API ID of the associated API stage in a usage plan.
 
 : **Field**: `api_stages[0].api_id`
 
@@ -72,12 +71,12 @@ end
 : **Field**: `api_stages[0].throttle`
 
 `throttle`
-: A map containing method level throttling information for API stage in a usage plan.
+: A map containing method level throttling information for the API stage in a usage plan.
 
 : **Field**: `throttle`
 
 `throttle.burst_limit`
-: The API target request burst rate limit. This allows more requests through for a period of time than the target rate limit.
+: The API target request burst rate limit. This allows more requests for a period of time than the target rate limit.
 
 : **Field**: `throttle.burst_limit`
 
@@ -87,7 +86,7 @@ end
 : **Field**: `throttle.rate_limit`
 
 `quota`
-: The target maximum number of permitted requests per a given unit time interval.
+: The maximum target number of permitted requests that the user can make within a given time interval.
 
 : **Field**: `quota`
 
@@ -102,7 +101,7 @@ end
 : **Field**: `quota.offset`
 
 `quota.period`
-: The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+: The time period in which the limit applies. Valid values are `DAY`, `WEEK`, or `MONTH`.
 
 : **Field**: `quota.period`
 
@@ -118,7 +117,7 @@ end
 
 ## Examples
 
-**Ensure an usage plan id is available.**
+### Test to ensure a usage plan ID is available
 
 ```ruby
 describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -126,7 +125,7 @@ describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
 end
 ```
 
-**Ensure an usage plan name is available.**
+### Test to ensure a usage plan name is available
 
 ```ruby
 describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -134,7 +133,7 @@ describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
 end
 ```
 
-**Verify the quota limit is set to `2` in the usage plan api gateway.**
+### Test to verify the quota limit is set to `2` in the usage plan API gateway
 
 ```ruby
 describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -146,7 +145,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -158,7 +157,7 @@ describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
 end
 ```
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do

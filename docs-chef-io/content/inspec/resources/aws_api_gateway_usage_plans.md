@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_usage_plans resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_usage_plans` InSpec audit resource to test the properties of multiple AWS APIGateway UsagePlan.
+Use the `aws_api_gateway_usage_plans` InSpec audit resource to test the properties of multiple AWS API Gateway usage plans. A usage plan sets a target for the throttling and quota limits on individual client API keys.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlan](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html).
+For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlan](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html).
 
 ## Installation
 
@@ -35,7 +35,7 @@ This resource does not require any parameters.
 ## Properties
 
 `ids`
-: The identifier of a UsagePlan resource.
+: The identifier of a usage plan resource.
 
 : **Field**: `id`
 
@@ -55,17 +55,17 @@ This resource does not require any parameters.
 : **Field**: `api_stages`
 
 `throttles`
-: A map containing method level throttling information for API stage in a usage plan.
+: A map containing method level throttling information for the API stage in a usage plan.
 
 : **Field**: `throttle`
 
 `quotas`
-: The target maximum number of permitted requests per a given unit time interval.
+: The maximum target number of permitted requests that the user can make within a given time interval
 
 : **Field**: `quota`
 
 `product_codes`
-: The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
+: The AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
 
 : **Field**: `product_code`
 
@@ -76,7 +76,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an usage plan id is available.**
+### Test to ensure a usage plan ID is available
 
 ```ruby
 describe aws_api_gateway_usage_plans do
@@ -84,7 +84,7 @@ describe aws_api_gateway_usage_plans do
 end
 ```
 
-**Ensure an usage plan name is available.**
+### Test to ensure a usage plan name is available
 
 ```ruby
 describe aws_api_gateway_usage_plans do
@@ -96,7 +96,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -108,7 +108,7 @@ describe aws_api_gateway_usage_plans do
 end
 ```
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_usage_plans do
