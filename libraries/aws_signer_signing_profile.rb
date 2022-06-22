@@ -34,6 +34,10 @@ class AWSSignerSigningProfile < AwsResourceBase
     !@res.nil? && !@res.empty?
   end
 
+  def resource_id
+    @display_name
+  end
+
   def to_s
     "Profile Name: #{@display_name}"
   end

@@ -29,6 +29,10 @@ class AWSAmplifyApp < AwsResourceBase
     @apps[:app_id]
   end
 
+  def resource_id
+    @apps? @apps[:app_id] : @display_name
+  end
+
   def exists?
     !@apps.nil? && !@apps.empty?
   end
