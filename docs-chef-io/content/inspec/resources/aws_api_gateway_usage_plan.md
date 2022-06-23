@@ -71,7 +71,7 @@ end
 : **Field**: `api_stages[0].throttle`
 
 `throttle`
-: A map containing method level throttling information for the API stage in a usage plan.
+: The overall request rate (average requests per second) and burst capacity. A map containing method level throttling information for the API stage in a usage plan.
 
 : **Field**: `throttle`
 
