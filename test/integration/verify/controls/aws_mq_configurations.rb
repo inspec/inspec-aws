@@ -16,7 +16,7 @@ control 'aws-mq-configuration-1.0' do
     its('arn') { should include configuration_arn }
     its('description') { should include 'test_configuration'  }
     its('configuration_id') { should include configuration_id }
-    its('engine_type') { should include "ActiveMQ"  }
+    its('engine_type') { should include 'ActiveMQ'  }
   end
 end
 

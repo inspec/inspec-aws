@@ -1,9 +1,8 @@
-secure_distribution_id = attribute(:aws_secure_cloudfront_distribution_id, value: '', description: 'The secure AWS Cloudfront distribution ID.')
+secure_distribution_id = input(:aws_secure_cloudfront_distribution_id, value: '', description: 'The secure AWS Cloudfront distribution ID.')
 
 title 'Test plural Cloudfront distributions.'
 
 control 'aws-cloudfront-distributions-1.0' do
-
   impact 1.0
   title 'Ensure AWS Cloudfront distributions resource has the correct properties.'
 

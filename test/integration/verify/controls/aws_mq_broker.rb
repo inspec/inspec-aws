@@ -11,8 +11,8 @@ control 'aws_mq_broker-1.0' do
     it { should exist }
     its('broker_arn') { should include broker_arn }
     its('broker_name') { should include 'test_broker'  }
-    its('broker_state') { should include "Running" }
-    its('engine_type') { should include "ActiveMQ"  }
+    its('broker_state') { should include 'Running' }
+    its('engine_type') { should include 'ActiveMQ'  }
   end
 end
 

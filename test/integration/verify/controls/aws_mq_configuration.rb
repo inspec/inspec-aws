@@ -12,6 +12,6 @@ control 'aws_mq_configuration-1.0' do
     its('arns') { should eq configuration_arn }
     its('description') { should eq 'test_configuration'  }
     its('ids') { should eq configuration_id }
-    its('engine_types') { should eq "ActiveMQ"  }
+    its('engine_types') { should eq 'ActiveMQ'  }
   end
 end

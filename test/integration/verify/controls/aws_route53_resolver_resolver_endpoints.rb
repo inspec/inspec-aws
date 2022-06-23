@@ -1,7 +1,7 @@
-resolver_endpoint_id = input(:aws_resolver_endpoint_id, value: "", description: "")
-aws_resolver_endpoint_vpc_id = input(:aws_resolver_endpoint_vpc_id, value: "", description: "")
-aws_resolver_endpoint_name = input(:aws_resolver_endpoint_name, value: "", description: "")
-aws_resolver_endpoint_arn = input(:aws_resolver_endpoint_arn, value: "", description: "")
+resolver_endpoint_id = input(:aws_resolver_endpoint_id, value: '', description: '')
+aws_resolver_endpoint_vpc_id = input(:aws_resolver_endpoint_vpc_id, value: '', description: '')
+aws_resolver_endpoint_name = input(:aws_resolver_endpoint_name, value: '', description: '')
+aws_resolver_endpoint_arn = input(:aws_resolver_endpoint_arn, value: '', description: '')
 
 control 'aws-route53-resolver-resolver-endpoints-1.0' do
   impact 1.0

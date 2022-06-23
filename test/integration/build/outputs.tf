@@ -907,7 +907,7 @@ output "domain-names-sdb" {
   value = aws_simpledb_domain.users.name
 }
 
-output "aws_api_gateway_deployement_id_test" {
+output "aws_api_gateway_deployement_id" {
   value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
 }
 

@@ -1,13 +1,13 @@
 title 'Test Single AWS VPC Endpoint Service'
 
-aws_vpc_service_name = attribute(:aws_vpc_endpoint_service_name, value: '', description: 'The VPC Endpoint service name')
-aws_vpc_endpoint_service_id = attribute(:aws_vpc_endpoint_service_id, value: '', description: 'The VPC Endpoint service ID')
-aws_vpc_base_endpoint_dns_names = attribute(:aws_vpc_base_endpoint_dns_names, value: '', description: 'The VPC base endpoint DNS names')
+aws_vpc_service_name = input(:aws_vpc_endpoint_service_name, value: '', description: 'The VPC Endpoint service name')
+aws_vpc_endpoint_service_id = input(:aws_vpc_endpoint_service_id, value: '', description: 'The VPC Endpoint service ID')
+aws_vpc_base_endpoint_dns_names = input(:aws_vpc_base_endpoint_dns_names, value: '', description: 'The VPC base endpoint DNS names')
 
 control 'aws-vpc-endpoint-service-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPC Endpoint Service single resource has the correct properties.'
+  
   describe aws_vpc_endpoint_service(service_name: aws_vpc_service_name) do
     it { should exist }
     its('service_name') { should eq aws_vpc_service_name }

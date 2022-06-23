@@ -1,4 +1,4 @@
-open_id_connect_provider_arn = input("oidc_arn", value: "", description: "")
+open_id_connect_provider_arn = input(:oidc_arn, value: '', description: '')
 
 title 'Test an IAM OIDC Provider'
 

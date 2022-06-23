@@ -12,6 +12,9 @@ control 'aws-vpcendpoint-1.0' do
 
   describe aws_vpc_endpoint(vpc_endpoint_id: aws_vpce_id) do
     it { should exist }
+  end
+
+  describe aws_vpc_endpoint(vpc_endpoint_id: aws_vpce_id) do
     its('vpc_endpoint_id')       { should cmp aws_vpce_id }
     its('vpc_endpoint_type')     { should be_in ["Interface", "Gateway"] }
     its('vpc_id')               { should cmp aws_vpc_id }

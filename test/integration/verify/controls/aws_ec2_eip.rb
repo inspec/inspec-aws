@@ -1,11 +1,11 @@
-aws_public_ip = attribute('aws_public_ip', value: '', description: 'The Elastic IP address, or the carrier IP address.')
-aws_instance_id1 = attribute('aws_instance_id1', value: '', description: 'The ID of the instance the address is associated with, if any.')
-aws_allocation_id = attribute('aws_allocation_id', value: '', description: 'The allocation ID for the address.')
-aws_association_id = attribute('aws_association_id', value: '', description: 'The association ID for the address.')
-aws_domain = attribute('aws_domain', value: 'vpc', description: 'Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).')
-aws_network_interface_id = attribute('aws_network_interface_id', value: '', description: 'The ID of the network interface that the address is associated with, if any.')
-aws_network_interface_owner_id = attribute('aws_network_interface_owner_id', value: '', description: 'The AWS account ID of the owner.')
-aws_private_ip_address = attribute('aws_private_ip_address', value: '', description: 'The private IP address associated with the Elastic IP address.')
+aws_public_ip = input(:aws_public_ip, value: '', description: 'The Elastic IP address, or the carrier IP address.')
+aws_instance_id1 = input(:aws_instance_id1, value: '', description: 'The ID of the instance the address is associated with, if any.')
+aws_allocation_id = input(:aws_allocation_id, value: '', description: 'The allocation ID for the address.')
+aws_association_id = input(:aws_association_id, value: '', description: 'The association ID for the address.')
+aws_domain = input(:aws_domain, value: 'vpc', description: 'Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).')
+aws_network_interface_id = input(:aws_network_interface_id, value: '', description: 'The ID of the network interface that the address is associated with, if any.')
+aws_network_interface_owner_id = input(:aws_network_interface_owner_id, value: '', description: 'The AWS account ID of the owner.')
+aws_private_ip_address = input(:aws_private_ip_address, value: '', description: 'The private IP address associated with the Elastic IP address.')
 
 control 'aws-ec2-elastic-ip-1.0' do
 

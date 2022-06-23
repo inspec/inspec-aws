@@ -32,13 +32,6 @@ control 'aws-vpc-1.0' do
     it { should_not has_cidr_block_disassociated(aws_vpc_cidr_block) }
   end
 
-  describe aws_vpc do
-    it { should exist }
-    it { should be_default }
-    it { should be_available }
-    its ('vpc_id') { should eq aws_default_vpc_id }
-  end
-
   describe aws_vpc(aws_vpc_id) do
     it { should exist }
     it { should_not be_default }
