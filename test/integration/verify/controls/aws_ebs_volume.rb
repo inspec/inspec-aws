@@ -1,10 +1,9 @@
-aws_ebs_volume_name = attribute(:aws_ebs_volume_name, value: '', description: 'The AWS EBS Volume name.')
-aws_ebs_volume_id = attribute(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
+aws_ebs_volume_name = input(:aws_ebs_volume_name, value: '', description: 'The AWS EBS Volume name.')
+aws_ebs_volume_id = input(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
 
 title 'Test single AWS EBS Volume'
 
 control 'aws-ebs-volume-1.0' do
-
   impact 1.0
   title 'Ensure AWS EBS Volume has the correct properties.'
 

@@ -1,6 +1,6 @@
-resolver_rule_id= input(:resolver_rule_id, value: "", description: "")
-resolver_rule_arn = input(:resolver_rule_arn, value: "", description: "")
-resolver_rule_type = input(:resolver_rule_type, value: "", description: "")
+resolver_rule_id= input(:resolver_rule_id, value: '', description: '')
+resolver_rule_arn = input(:resolver_rule_arn, value: '', description: '')
+resolver_rule_type = input(:resolver_rule_type, value: '', description: '')
 
 control 'aws-route53-resolver-resolver-rule-1.0' do
   impact 1.0

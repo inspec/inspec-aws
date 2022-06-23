@@ -10,7 +10,7 @@ control 'aws-iam-instance-profiles-1.0' do
   end
   
   describe aws_iam_instance_profiles do
-    its('paths') { should include "/" }
+    its('paths') { should include '/' }
     its('instance_profile_names') { should include aws_iam_instance_profile_name }
     its('arns') { should include aws_iam_instance_profile_arn }
     its('create_dates') { should_not be_empty }

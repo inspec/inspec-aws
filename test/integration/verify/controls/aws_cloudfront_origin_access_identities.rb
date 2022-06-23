@@ -1,8 +1,7 @@
-aws_cloudfront_origin_access_identity_id = attribute(:aws_cloudfront_origin_access_identity_id, value: '', description: '')
-aws_cloudfront_origin_access_identity_s3_canonical_user_id = attribute(:aws_cloudfront_origin_access_identity_s3_canonical_user_id, value: '', description: '')
+aws_cloudfront_origin_access_identity_id = input(:aws_cloudfront_origin_access_identity_id, value: '', description: '')
+aws_cloudfront_origin_access_identity_s3_canonical_user_id = input(:aws_cloudfront_origin_access_identity_s3_canonical_user_id, value: '', description: '')
 
 control 'aws-cloudfront-origin-access-identities' do
-
   impact 1.0
   title 'Ensure Cloud Front Origin Access Identities resource has the correct properties.'
 

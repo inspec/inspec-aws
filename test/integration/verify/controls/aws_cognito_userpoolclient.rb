@@ -1,8 +1,8 @@
-aws_user_pool_id = attribute("aws_user_pool_id", value: "", description: "")
-aws_client_id = attribute("aws_client_id", value: "", description: "")
-aws_client_name = attribute("aws_client_name", value: "", description: "")
-aws_client_secret = attribute("aws_client_secret", value: "", description: "")
-aws_allowed_o_auth_flows_user_pool_client = attribute("aws_allowed_o_auth_flows_user_pool_client", value: false, description: "")
+aws_user_pool_id = input(:aws_user_pool_id, value: '', description: '')
+aws_client_id = input(:aws_client_id, value: '', description: '')
+aws_client_name = input(:aws_client_name, value: '', description: '')
+aws_client_secret = input(:aws_client_secret, value: '', description: '')
+aws_allowed_o_auth_flows_user_pool_client = input(:aws_allowed_o_auth_flows_user_pool_client, value: false, description: '')
 
 control 'aws-auto-user-pool-client-1.0' do
 

@@ -1,5 +1,5 @@
-aws_secretsmanager_secret_sm_id = input(:aws_secretsmanager_secret_sm_id, value: "", description: "")
-aws_secretsmanager_secret_sm_arn = input(:aws_secretsmanager_secret_sm_arn, value: "", description: "")
+aws_secretsmanager_secret_sm_id = input(:aws_secretsmanager_secret_sm_id, value: '', description: '')
+aws_secretsmanager_secret_sm_arn = input(:aws_secretsmanager_secret_sm_arn, value: '', description: '')
 
 control 'aws-secretsmanager-secret-1.0' do
   impact 1.0

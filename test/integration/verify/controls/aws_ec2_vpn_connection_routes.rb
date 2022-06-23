@@ -1,4 +1,4 @@
-aws_vpn_connection_id = attribute("aws_vpn_connection_id", value: "", description: "")
+aws_vpn_connection_id = input(:aws_vpn_connection_id, value: '', description: '')
 
 control 'aws-ec2_vpn-connection-routes-1.0' do
 

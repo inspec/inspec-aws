@@ -21,4 +21,8 @@ control 'aws-rds-db-proxy-target-group-1.0' do
     its('connection_pool_config.session_pinning_filters') { should_not be_empty }
     its('connection_pool_config.init_query') { should_not include 'automate-pg-proxy' }
   end
+
+  describe aws_rds_db_proxy_target_group(db_proxy_name: 'dummy', target_group_name: 'dummy') do
+    it { should_not exist }
+  end
 end

@@ -1,9 +1,8 @@
-aws_elasticache_replication_group_id = attribute(:aws_elasticache_replication_group_id, value: '', description: 'The AWS ElastiCache Replication Group ID.')
+aws_elasticache_replication_group_id = input(:aws_elasticache_replication_group_id, value: '', description: 'The AWS ElastiCache Replication Group ID.')
 
 title 'Test multiple AWS ElastiCache Replication Group'
 
 control 'aws-elasticache-replication-groups-1.0' do
-
   impact 1.0
   title 'Ensure AWS ElastiCache Replication Groups has the correct properties.'
 

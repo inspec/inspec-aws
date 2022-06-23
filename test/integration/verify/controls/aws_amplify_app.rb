@@ -1,4 +1,4 @@
-app_id = input(app_id, value: "", description: "")
+app_id = input(:app_id, value: "", description: "")
 
 title 'Audits Amplify App.'
 

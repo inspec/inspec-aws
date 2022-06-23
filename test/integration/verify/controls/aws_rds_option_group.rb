@@ -14,7 +14,7 @@ control 'aws-rds-option-groups-1.0' do
     its('engine_name')                                 { should eq aws_db_option_group_engine_name }
     its('option_group_description')                    { should eq aws_db_option_group_description }
     its('major_engine_version')                        { should eq '11.00' }
-    its('option_group_arn')                            { should eq "arn:aws:rds:us-east-2:112758395563:og:option-group-test-terraform2" }
+    its('option_group_arn')                            { should eq 'arn:aws:rds:us-east-2:112758395563:og:option-group-test-terraform2' }
     its('allows_vpc_and_non_vpc_instance_memberships') { should eq false }
   end
 end

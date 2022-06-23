@@ -1,6 +1,6 @@
-aws_cloudfront_realtime_log_config_name = attribute('aws_cloudfront_realtime_log_config_name', value: '', description: '')
-aws_cloudfront_realtime_log_config_arn = attribute('aws_cloudfront_realtime_log_config_arn', value: '', description: '')
-aws_cloudfront_realtime_log_config_sampling_rate = attribute('aws_cloudfront_realtime_log_config_sampling_rate', value: '', description: '')
+aws_cloudfront_realtime_log_config_name = input(:aws_cloudfront_realtime_log_config_name, value: '', description: '')
+aws_cloudfront_realtime_log_config_arn = input(:aws_cloudfront_realtime_log_config_arn, value: '', description: '')
+aws_cloudfront_realtime_log_config_sampling_rate = input(:aws_cloudfront_realtime_log_config_sampling_rate, value: '', description: '')
 
 control 'aws-cloudfront-realtime-log-config-1.0' do
   impact 1.0

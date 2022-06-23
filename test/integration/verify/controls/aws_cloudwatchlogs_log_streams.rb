@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-aws_cloudwatch_log_stream_name = attribute('aws_cloudwatch_log_stream_name', value: '', description: '')
-aws_cloudwatch_log_group_name = attribute('aws_cloudwatch_log_group_name', value: '', description: '')
-aws_cloudwatch_log_stream_arn = attribute('aws_cloudwatch_log_stream_arn', value: '', description: '')
+aws_cloudwatch_log_stream_name = input(:aws_cloudwatch_log_stream_name, value: '', description: '')
+aws_cloudwatch_log_group_name = input(:aws_cloudwatch_log_group_name, value: '', description: '')
+aws_cloudwatch_log_stream_arn = input(:aws_cloudwatch_log_stream_arn, value: '', description: '')
 
 control 'aws_cloudwatch_logs_log_streams-1.0' do
   impact 1.0

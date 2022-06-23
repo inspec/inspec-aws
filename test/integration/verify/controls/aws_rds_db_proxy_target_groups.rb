@@ -16,4 +16,8 @@ control 'aws-rds-db-proxy-target-groups-1.0' do
     its('statuses') { should include 'available' }
     its('connection_pool_configs') { should_not be_empty }
   end
+
+  describe aws_rds_db_proxy_target_groups(db_proxy_name: 'dummy') do
+    it { should_not exist }
+  end
 end

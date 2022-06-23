@@ -1,6 +1,6 @@
 title 'Test a single AWS EKS Cluster'
 
-cluster_name = attribute(:aws_eks_cluster_name, value: '', description: 'The AWS EKS Cluster name.')
+cluster_name = input(:aws_eks_cluster_name, value: '', description: 'The AWS EKS Cluster name.')
 
 control 'aws-eks-cluster-1.0' do
   impact 1.0

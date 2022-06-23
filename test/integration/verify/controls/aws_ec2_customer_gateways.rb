@@ -1,4 +1,4 @@
-aws_customer_gateway_id = attribute("aws_customer_gateway_id", value: "", description: "")
+aws_customer_gateway_id = input(:aws_customer_gateway_id, value: '', description: '')
 
 control 'aws-ec2-capacity-gateways-1.0' do
   impact 1.0

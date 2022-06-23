@@ -14,11 +14,11 @@ control 'aws-iam-instance-profile-1.0' do
   end
 
   describe aws_iam_instance_profile(instance_profile_name: aws_iam_instance_profile_name) do
-    its('path') { should eq "/" }
+    its('path') { should eq '/' }
     its('instance_profile_name') { should eq aws_iam_instance_profile_name }
     its('instance_profile_id') { should eq aws_iam_instance_profile_id }
     its('arn') { should eq aws_iam_instance_profile_arn }
-    its('roles.first.path') { should eq "/" }
+    its('roles.first.path') { should eq '/' }
     its('roles.first.role_name') { should eq aws_iam_role_name }
     its('roles.first.role_id') { should eq aws_iam_role_id }
     its('roles.first.arn') { should eq aws_iam_role_arn }

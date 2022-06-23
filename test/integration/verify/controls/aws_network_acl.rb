@@ -11,6 +11,9 @@ control 'aws-network-acl-1.0' do
 
   describe aws_network_acl(network_acl_id: network_acl_id) do
     it { should exist }
+  end
+
+  describe aws_network_acl(network_acl_id: network_acl_id) do
     it { should_not be_default }
     it { should be_associated }
     it { should have_associations(subnet_id: subnet_id) }

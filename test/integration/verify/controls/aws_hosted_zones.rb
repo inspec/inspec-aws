@@ -1,5 +1,5 @@
-aws_route53_zone_id = input(aws_route53_zone_id, value: '', description: '')
-aws_route53_zone_name = input(aws_route53_zone_name, value: '', description: '')
+aws_route53_zone_id = input(:aws_route53_zone_id, value: '', description: '')
+aws_route53_zone_name = input(:aws_route53_zone_name, value: '', description: '')
 
 title 'Ensure the hosted zone have the correct properties.'
 
