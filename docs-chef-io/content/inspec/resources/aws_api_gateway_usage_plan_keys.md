@@ -10,9 +10,9 @@ identifier = "inspec/resources/aws/aws_api_gateway_usage_plan_keys resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_usage_plan_keys` InSpec audit resource to test the properties of multiple AWS APIGateway UsagePlanKey.
+Use the `aws_api_gateway_usage_plan_keys` InSpec audit resource to test the properties of multiple AWS API Gateway usage plan keys.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlanKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplankey.html).
+For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlanKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplankey.html).
 
 ## Installation
 
@@ -32,33 +32,33 @@ end
 
 `usage_plan_id` _(required)_
 
-: The Id of the UsagePlan resource representing the usage plan containing the to-be-retrieved UsagePlanKey resource representing a plan customer.
+: The usage plan resource ID represents the usage plan containing the to-be-retrieved usage plan's key resource and a plan customer.
 
 ## Properties
 
 `ids`
-: The Id of a usage plan key.
+: The usage plan key ID.
 
 : **Field**: `id`
 
 `types`
-: The type of a usage plan key. Currently, the valid key type is API_KEY.
+: The usage plan key type. Currently, the valid key type is `API_KEY`.
 
 : **Field**: `type`
 
 `values`
-: The value of a usage plan key.
+: The usage plan key value.
 
 : **Field**: `value`
 
 `names`
-: The name of a usage plan key.
+: The usage plan key name.
 
 : **Field**: `name`
 
 ## Examples
 
-**Ensure an usage plan key id is available.**
+### Test to ensure a usage plan key ID is available
 
 ```ruby
 describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -66,7 +66,7 @@ describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
 end
 ```
 
-**Ensure an usage plan key name is available.**
+### Test to ensure a usage plan key name is available
 
 ```ruby
 describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
@@ -78,7 +78,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -90,7 +90,7 @@ describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
 end
 ```
 
-Use `should_not` to test the entity does not exist.
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
 describe aws_api_gateway_usage_plan_keys(usage_plan_id: 'USAGE_PLAN_ID') do
