@@ -84,6 +84,10 @@ class AwsEmrCluster < AwsResourceBase
     !@status_state.nil? && @status_state == 'WAITING'
   end
 
+  def resource_id
+    @cluster_id
+  end
+
   def to_s
     "AWS EMR Cluster Name: #{@cluster_name}"
   end

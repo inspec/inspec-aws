@@ -32,6 +32,10 @@ class AWSApiGatewayMethod < AwsResourceBase
     @res[:rest_api_id]
   end
 
+  def resource_id
+    @res ? "#{@res[:operation_name]}_#{@res[:authorizer_id]}" : @rest_api_id
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

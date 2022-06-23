@@ -71,4 +71,9 @@ class AWSBatchComputeEnvironmentSuccessPathTest < Minitest::Test
   def test_service_role
     assert_equal(@compute_environments.service_role, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@compute_environments.resource_id)
+    assert_equal(@compute_environments.resource_id, 'test1')
+  end
 end

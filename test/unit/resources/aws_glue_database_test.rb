@@ -46,4 +46,9 @@ class AWSGlueDatabaseSuccessPathTest < Minitest::Test
   def test_location_uri
     assert_equal(@database.location_uri, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@database.resource_id)
+    assert_equal(@database.resource_id, 'test1')
+  end
 end
