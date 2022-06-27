@@ -1,6 +1,6 @@
-aws_athena_workgroup= attribute("aws_athena_workgroup", value: "", description: "")
-aws_state = attribute("aws_athena_workgroup_state", value: "", description: "")
-aws_description = attribute("aws_athena_workgroup_description", value: "", description: "")
+aws_athena_workgroup= attribute('aws_athena_workgroup', value: '', description: '')
+aws_state = attribute('aws_athena_workgroup_state', value: '', description: '')
+aws_description = attribute('aws_athena_workgroup_description', value: '', description: '')
 
 describe aws_athena_work_groups do
   it { should exist }

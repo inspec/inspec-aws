@@ -1,10 +1,9 @@
-aws_api_gateway_client_certificate_id = attribute(:aws_api_gateway_client_certificate_id, value: '', description: '')
-aws_api_gateway_client_certificate_created_date = attribute(:aws_api_gateway_client_certificate_created_date, value: '', description: '')
-aws_api_gateway_client_certificate_expiration_date = attribute(:aws_api_gateway_client_certificate_expiration_date, value: '', description: '')
-aws_api_gateway_client_certificate_pem_encoded_certificate = attribute(:aws_api_gateway_client_certificate_pem_encoded_certificate, value: '', description: '')
+aws_api_gateway_client_certificate_id = input(:aws_api_gateway_client_certificate_id, value: '', description: '')
+aws_api_gateway_client_certificate_created_date = input(:aws_api_gateway_client_certificate_created_date, value: '', description: '')
+aws_api_gateway_client_certificate_expiration_date = input(:aws_api_gateway_client_certificate_expiration_date, value: '', description: '')
+aws_api_gateway_client_certificate_pem_encoded_certificate = input(:aws_api_gateway_client_certificate_pem_encoded_certificate, value: '', description: '')
 
 control 'aws-apigateway-client-certificate' do
-
   impact 1.0
   title 'Ensure API Gateway Client Certificate resource has the correct properties.'
 
