@@ -1,9 +1,9 @@
-aws_api_gateway_vpc_link_id = attribute(:aws_api_gateway_vpc_link_id, value: '', description: 'The identifier of the VpcLink.')
-aws_api_gateway_vpc_link_name = attribute(:aws_api_gateway_vpc_link_name, value: '', description: 'The name used to label and identify the VPC link.')
-aws_api_gateway_vpc_link_description = attribute(:aws_api_gateway_vpc_link_description, value: '', description: 'The description of the VPC link.')
-aws_api_gateway_vpc_link_target_arns = attribute(:aws_api_gateway_vpc_link_target_arns, value: '', description: 'The ARN of the network load balancer of the VPC targeted by the VPC link.')
-aws_api_gateway_status = attribute(:aws_api_gateway_status, value: '', description: 'The status of the VPC link.')
-aws_api_gateway_status_message = attribute(:aws_api_gateway_status_message, value: '', description: 'A description about the VPC link status.')
+aws_api_gateway_vpc_link_id = input(:aws_api_gateway_vpc_link_id, value: '', description: 'The identifier of the VpcLink.')
+aws_api_gateway_vpc_link_name = input(:aws_api_gateway_vpc_link_name, value: '', description: 'The name used to label and identify the VPC link.')
+aws_api_gateway_vpc_link_description = input(:aws_api_gateway_vpc_link_description, value: '', description: 'The description of the VPC link.')
+aws_api_gateway_vpc_link_target_arns = input(:aws_api_gateway_vpc_link_target_arns, value: '', description: 'The ARN of the network load balancer of the VPC targeted by the VPC link.')
+aws_api_gateway_status = input(:aws_api_gateway_status, value: '', description: 'The status of the VPC link.')
+aws_api_gateway_status_message = input(:aws_api_gateway_status_message, value: '', description: 'A description about the VPC link status.')
 
 control 'aws-api-gateway-vpc-links-1.0' do
   impact 1.0

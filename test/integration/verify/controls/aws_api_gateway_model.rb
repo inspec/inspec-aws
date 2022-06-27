@@ -1,8 +1,8 @@
-aws_api_gateway_model_id = attribute("aws_api_gateway_model_id", value: "", description: "")
-aws_api_gateway_model_name = attribute("aws_api_gateway_model_name", value: "", description: "")
-aws_api_gateway_model_content_type = attribute("aws_api_gateway_model_content_type", value: "", description: "")
-aws_api_gateway_model_description = attribute("aws_api_gateway_model_description", value: "", description: "")
-aws_api_gateway_model_rest_api_id = attribute("aws_api_gateway_model_rest_api_id", value: "", description: "")
+aws_api_gateway_model_id = input(:aws_api_gateway_model_id, value: '', description: '')
+aws_api_gateway_model_name = input(:aws_api_gateway_model_name, value: '', description: '')
+aws_api_gateway_model_content_type = input(:aws_api_gateway_model_content_type, value: '', description: '')
+aws_api_gateway_model_description = input(:aws_api_gateway_model_description, value: '', description: '')
+aws_api_gateway_model_rest_api_id = input(:aws_api_gateway_model_rest_api_id, value: '', description: '')
 
 control 'aws-api-gateway-model-1.0' do
   impact 1.0
