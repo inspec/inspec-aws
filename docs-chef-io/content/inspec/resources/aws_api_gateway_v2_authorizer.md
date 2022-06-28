@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_authorizer resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_api` InSpec audit resource to test the properties of a single specific AWS APIGatewayV2 Authorizer.
+Use the `aws_api_gateway_v2_authorizer` InSpec audit resource to test the properties of a single specific AWS APIGatewayV2 Authorizer.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Authorizer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-authorizer.html).
 
@@ -79,7 +79,7 @@ end
 
 ## Examples
 
-### Test to ensure an authorizer ID is available
+### Test to ensure an Authorizer ID is available
 
 ```ruby
 describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORIZER_ID') do
@@ -87,7 +87,7 @@ describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORI
 end
 ```
 
-### Verify the authorizer result
+### Verify the Authorizer result
 
 ```ruby
 describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORIZER_ID') do
@@ -95,7 +95,7 @@ describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORI
 end
 ```
 
-### Verify the authorizer type
+### Verify the Authorizer type
 
 ```ruby
 describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORIZER_ID') do
