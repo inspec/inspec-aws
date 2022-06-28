@@ -1,4 +1,4 @@
-aws_api_gateway_domain_name = input(:aws_api_gateway_domain_name, value: 'test.eng.chefdemo.net', description: '')
+aws_api_gateway_domain_name = input(:aws_api_gateway_domain_name, value: '', description: '')
 aws_api_gateway_certificate_name = input(:aws_api_gateway_certificate_name, value: '', description: '')
 aws_api_gateway_certificate_arn = input(:aws_api_gateway_certificate_arn, value: '', description: '')
 aws_api_gateway_certificate_upload_date = input(:aws_api_gateway_certificate_upload_date, value: '', description: '')

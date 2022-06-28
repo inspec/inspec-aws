@@ -20,7 +20,7 @@ skip_control 'aws-api-gateway-method-1.0' do
     its('authorization_scopes') { should_not be_empty }
   end
 
-  describe aws_api_gateway_methods(rest_api_id: 'dummy', resource_id: 'dummy', http_method: 'dummy') do
+  describe aws_api_gateway_methods(rest_api_id: 'dummy', resource_id: 'dummy', http_method: 'GET') do
     it { should_not exist }
   end
 end

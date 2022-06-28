@@ -3,8 +3,7 @@ aws_traffic_filter_desc = input(:aws_traffic_filter_desc, value: '', description
 
 title 'Test AWS Traffic Filters in bulk'
 
-control 'aws_traffic_filters-1.0' do
-
+control 'aws-traffic-filters-1.0' do
   impact 1.0
   title 'Ensure AWS Traffic Filters resource has the correct properties.'
 

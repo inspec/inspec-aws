@@ -1,4 +1,4 @@
-skip_control 'aws-ec2-network-insights-analyses-1.0' do
+skip_control 'aws-ec2-network-insights-analysis-1.0' do
   impact 1.0
   title 'Test a singular resource of the aws ec2 network insight analysis.'
 

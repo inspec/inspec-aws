@@ -9,7 +9,7 @@ control 'aws-cloudformation-stacks-1.0' do
   aws_cloudformation_stacks.names.each do |stack|
     describe aws_cloudformation_stack(stack_name: stack) do
       it                   { should exist }
-      its ('notification_arns')   { should_not be_empty}
+      its ('notification_arn')   { should_not be_empty}
       its ('stack_status') { should eq 'CREATE_COMPLETE' }
     end
   end

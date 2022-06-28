@@ -1,7 +1,7 @@
 client_vpn_endpoint_id = input(:client_vpn_endpoint_id, value: '', description: '')
 association_id = input(:association_id, value: '', description: '')
 
-control 'aws_ec2_client_vpn_target_network_associations-1.0' do
+control 'aws-ec2-client-vpn-target-network-associations-1.0' do
   impact 1.0
   title 'Test the properties of the vpn target network associations.'
 

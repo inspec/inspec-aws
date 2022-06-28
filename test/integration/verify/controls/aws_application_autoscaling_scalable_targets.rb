@@ -12,7 +12,7 @@ control 'aws-application-autoscaling-scalable-targets' do
     its('scalable_dimensions') { should include 'dynamodb:table:ReadCapacityUnits' }
     its('min_capacities') { should include 5 }
     its('max_capacities') { should include 100 }
-    its('role_arns') { should include 'arn:aws:iam::112758395563:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable' }
+    its('role_arns') { should_not be_empty }
     its('suspended_states') { should_not be_empty }
   end
 end

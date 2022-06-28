@@ -1,4 +1,4 @@
-skip_control 'aws_ec2_carrier_gateways-1.0' do
+skip_control 'aws-ec2-carrier-gateways-1.0' do
   impact 1.0
   title 'Describes one or more of ec2 carrier gateway.'
 

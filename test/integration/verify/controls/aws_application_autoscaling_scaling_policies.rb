@@ -19,14 +19,3 @@ control 'aws-application-autoscaling-scalable-policies' do
     its('creation_times') { should_not be_empty }
   end
 end
-
-
-
-
-
-
-
-
-
-
-
