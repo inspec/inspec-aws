@@ -2,7 +2,7 @@ aws_identity_pool_id = input(:aws_identity_pool_id, value: '', description: '')
 aws_identity_pool_name = input(:aws_identity_pool_name, value: '', description: '')
 aws_allow_unauthenticated_identities = input(:aws_allow_unauthenticated_identities, value: false, description: '')
 
-control 'aws-auto-identity-pool-1.0' do
+control 'aws-cognito-identity-pool-1.0' do
   impact 1.0
   title 'Ensure AWS Identity Pool has the correct properties.'
 

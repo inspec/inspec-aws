@@ -3,7 +3,7 @@ aws_traffic_filter_desc = input(:aws_traffic_filter_desc, value: '', description
 
 title 'Test single AWS Traffic Filter'
 
-control 'aws_traffic_filter-1.0' do
+control 'aws-traffic-filter-1.0' do
   impact 1.0
   title 'Ensure AWS Traffic Filter resource has the correct properties.'
 

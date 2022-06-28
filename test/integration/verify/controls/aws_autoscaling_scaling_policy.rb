@@ -6,7 +6,7 @@ aws_auto_scaling_cooldown = input(:aws_auto_scaling_cooldown, value: '', descrip
 
 control 'aws-autoscaling-scalable-policy-1.0' do
   impact 1.0
-  title 'Describes the policies for the specified Auto Scaling group.'
+  title 'Describes the policy for the specified Auto Scaling group.'
   
   describe aws_autoscaling_scaling_policy(auto_scaling_group_name: aws_auto_scaling_group_name) do
     it { should exist }

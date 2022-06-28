@@ -10,7 +10,7 @@ control 'aws-alb-1.0' do
   describe aws_alb(load_balancer_arn: aws_alb_arn) do
     it                         { should exist }
     its ('load_balancer_arn')  { should eq aws_alb_arn }
-    its ('zone_names')         { should include "#{region}a" }
+    its ('zone_names')         { should include '#{region}a' }
   end
   
   describe aws_alb(load_balancer_arn: aws_alb_arn) do
@@ -21,6 +21,6 @@ control 'aws-alb-1.0' do
   describe aws_alb(aws_alb_arn) do
     it                         { should exist }
     its ('load_balancer_arn')  { should eq aws_alb_arn }
-    its ('zone_names')         { should include "#{region}a" }
+    its ('zone_names')         { should include '#{region}a' }
   end
 end

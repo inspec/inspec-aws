@@ -1,4 +1,4 @@
-skip_control 'aws_cloudwatchlogs_subscription_filters-1.0' do
+skip_control 'aws-cloudwatchlogs-subscription-filters-1.0' do
   impact 1.0
   title 'Describes the AWS cloudwatch filters.'
   

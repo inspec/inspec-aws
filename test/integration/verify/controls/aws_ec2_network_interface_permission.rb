@@ -1,6 +1,6 @@
 title 'Test  a AWS Network Interface permission'
 
-skip_control 'aws_ec2_network_interface_permission-1.0' do
+skip_control 'aws-ec2-network-interface-permission-1.0' do
   impact 1.0
   title 'Ensure AWS Network Interface permission has the correct properties.'
 
