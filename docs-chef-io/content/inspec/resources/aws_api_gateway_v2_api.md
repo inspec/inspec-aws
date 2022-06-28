@@ -87,7 +87,7 @@ end
 : The name of the API.
 
 `protocol_type`
-: The API protocol. 
+: The API protocol. Valid values are WEBSOCKET or HTTP.
 
 `route_selection_expression`
 : The route selection expression for the API. For HTTP APIs, the `routeSelectionExpression` must be `${request.method} ${request.path}`. If not provided, this defaults for HTTP APIs. This property is required for WebSocket APIs.
@@ -97,6 +97,11 @@ end
 
 `version`
 : A version identifier for the API.
+
+`failonwarnings`
+: Specifies to rollback the API creation when a warning is encountered. By default, API creation continues if a warning is encountered.
+
+: **Field**: `failonwarnings`
 
 `warnings`
 : The warning messages are reported when `failonwarnings` is turned on during API import.

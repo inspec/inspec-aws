@@ -90,7 +90,7 @@ This resource does not require any parameters.
 : **Field**: `name`
 
 `protocol_types`
-: The API protocol.
+: The API protocol. Valid values are WEBSOCKET or HTTP.
 
 : **Field**: `protocol_type`
 
@@ -108,6 +108,11 @@ This resource does not require any parameters.
 : A version identifier for the API.
 
 : **Field**: `version`
+
+`failonwarnings`
+: Specifies to rollback the API creation when a warning is encountered. By default, API creation continues if a warning is encountered.
+
+: **Field**: `failonwarnings`
 
 `warnings`
 : The warning messages are reported when `failonwarnings` is turned on during API import.
