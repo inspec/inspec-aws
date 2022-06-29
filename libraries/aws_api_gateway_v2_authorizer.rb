@@ -8,6 +8,8 @@ class AwsApiGatewayV2Authorizer < AwsResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_authorizer(api_id: 'API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should exist }
+      its('id') { should eq 'AUTHORIZER_ID' }
+      its('name') { should eq 'AUTHORIZER_NAME' }
     end
   EXAMPLE
 
