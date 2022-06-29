@@ -92,6 +92,14 @@ end
 
 ## Examples
 
+### Check the number of authorizers in an API
+
+```ruby
+describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
+  its('count') { should eq 4 }
+end
+```
+
 ### Test to ensure an authorizer ID is available
 
 ```ruby
