@@ -8,6 +8,8 @@ class AwsApiGatewayV2Authorizers < AwsCollectionResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_authorizers(api_id: 'APP_ID') do
       it { should exist }
+      its('count') { should >= 1 }
+      its('names') { should include 'AUTHORIZER_NAME' }
     end
   EXAMPLE
 
