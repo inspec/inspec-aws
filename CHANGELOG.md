@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.31 -->
+<!-- latest_release 1.83.32 -->
+## [v1.83.32](https://github.com/inspec/inspec-aws/tree/v1.83.32) (2022-06-30)
+
+#### Merged Pull Requests
+- Adding all the API Gateway resources in the readme.md file [#932](https://github.com/inspec/inspec-aws/pull/932) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.31](https://github.com/inspec/inspec-aws/tree/v1.83.31) (2022-06-30)
 
 #### Merged Pull Requests
 - RESOURCE-382 unit-test-cases-for-aws-lambda-event-invoke-config [#917](https://github.com/inspec/inspec-aws/pull/917) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.30](https://github.com/inspec/inspec-aws/tree/v1.83.30) (2022-06-30)
 
