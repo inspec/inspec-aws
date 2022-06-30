@@ -8,6 +8,7 @@ class AWSApiGatewayUsagePlanKey < AwsResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_usage_plan_key(usage_plan_id: 'USAGE_PLAN_ID', key_id: 'USAGE_PLAN_KEY_ID') do
       it { should exist }
+      its('id') { should eq 'USAGE_PLAN_KEY_ID' }
     end
   EXAMPLE
 
