@@ -1,9 +1,14 @@
 <!-- latest_release 1.83.29 -->
+## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-237 AWS::ApiGateway::UsagePlanKey [#919](https://github.com/inspec/inspec-aws/pull/919) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-23)
 
 #### Merged Pull Requests
 - RESOURCE-236 AWS::ApiGateway::UsagePlan [#916](https://github.com/inspec/inspec-aws/pull/916) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.28](https://github.com/inspec/inspec-aws/tree/v1.83.28) (2022-06-23)
 
