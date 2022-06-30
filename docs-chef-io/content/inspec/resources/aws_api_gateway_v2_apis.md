@@ -109,13 +109,8 @@ This resource does not require any parameters.
 
 : **Field**: `version`
 
-`failonwarnings`
-: Specifies to rollback the API creation when a warning is encountered. By default, API creation continues if a warning is encountered.
-
-: **Field**: `failonwarnings`
-
 `warnings`
-: The warning messages are reported when `failonwarnings` is turned on during API import.
+: The warning messages are reported when `failonwarnings` is turned on during API import. The `failonwarnings` specifies to roll back the API creation when a warning is encountered. By default, API creation continues if a warning is encountered.
 
 : **Field**: `warnings`
 
