@@ -1,9 +1,34 @@
-<!-- latest_release 1.83.29 -->
+<!-- latest_release 1.83.33 -->
+## [v1.83.33](https://github.com/inspec/inspec-aws/tree/v1.83.33) (2022-07-01)
+
+#### Merged Pull Requests
+- RESOURCE-420 AWS::ApiGatewayV2::ApiMapping [#929](https://github.com/inspec/inspec-aws/pull/929) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.83.32](https://github.com/inspec/inspec-aws/tree/v1.83.32) (2022-06-30)
+
+#### Merged Pull Requests
+- Adding all the API Gateway resources in the readme.md file [#932](https://github.com/inspec/inspec-aws/pull/932) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.31](https://github.com/inspec/inspec-aws/tree/v1.83.31) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-382 unit-test-cases-for-aws-lambda-event-invoke-config [#917](https://github.com/inspec/inspec-aws/pull/917) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.30](https://github.com/inspec/inspec-aws/tree/v1.83.30) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-418 AWS::ApiGatewayV2::Api [#926](https://github.com/inspec/inspec-aws/pull/926) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-237 AWS::ApiGateway::UsagePlanKey [#919](https://github.com/inspec/inspec-aws/pull/919) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-23)
 
 #### Merged Pull Requests
 - RESOURCE-236 AWS::ApiGateway::UsagePlan [#916](https://github.com/inspec/inspec-aws/pull/916) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.28](https://github.com/inspec/inspec-aws/tree/v1.83.28) (2022-06-23)
 
