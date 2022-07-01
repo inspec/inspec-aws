@@ -117,7 +117,7 @@ end
 
 ## Examples
 
-### Test to ensure a domain name is available
+### Test to ensure the domain name is available
 
 ```ruby
 describe aws_api_gateway_v2_domain_name(domain_name: 'DOMAIN_NAME') do
