@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_api_mappings Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_api_mappings` InSpec audit resource to test properties of multiple AWS APIGatewayV2 ApiMappings.
+Use the `aws_api_gateway_v2_api_mappings` InSpec audit resource to test the properties of multiple AWS API Gateway V2 API mappings.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 ApiMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-apimapping.html).
 
@@ -20,7 +20,7 @@ For additional information, including parameters and properties, see the [AWS do
 
 ## Syntax
 
-Ensure the API mappings exists.
+Ensure the API mappings exist.
 
 ```ruby
 describe aws_api_gateway_v2_api_mappings(domain_name: 'DOMAIN_NAME') do
@@ -93,7 +93,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 

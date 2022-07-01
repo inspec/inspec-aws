@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_api_mapping resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_api_mapping` InSpec audit resource to test the properties of a single specific AWS APIGatewayV2 ApiMapping.
+Use the `aws_api_gateway_v2_api_mapping` InSpec audit resource to test the properties of a specific AWS API Gateway V2 API mapping.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 ApiMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-apimapping.html).
 
@@ -20,7 +20,7 @@ For additional information, including parameters and properties, see the [AWS do
 
 ## Syntax
 
-Ensure that the API mapping exists.
+Ensure that an API mapping exists.
 
 ```ruby
 describe aws_api_gateway_v2_api_mapping(api_mapping_id: 'API_MAPPING_ID', domain_name: 'DOMAIN_NAME') do
