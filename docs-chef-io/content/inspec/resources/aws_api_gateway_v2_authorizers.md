@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_authorizers Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_authorizers` InSpec audit resource to test properties of multiple AWS APIGatewayV2 Authorizers.
+Use the `aws_api_gateway_v2_authorizers` InSpec audit resource to test the properties of multiple AWS API Gateway V2 authorizers.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Authorizer](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-authorizer.html).
 
@@ -20,7 +20,7 @@ For additional information, including parameters and properties, see the [AWS do
 
 ## Syntax
 
-Ensure the authorizers exists.
+Ensure the authorizers exist.
 
 ```ruby
 describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
@@ -46,12 +46,12 @@ end
 : **Field**: `authorizer_id`
 
 `authorizer_result_ttl_in_seconds`
-: The time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Supported only for HTTP API Lambda authorizers.
+: The time to live (TTL) for cached authorizer results in seconds. If it equals 0, authorization caching is disabled. If it is greater than 0, API Gateway caches authorizer responses. The maximum value is **3600**, or **1 hour**. Supported only for HTTP API Lambda authorizers.
 
 : **Field**: `authorizer_result_ttl_in_seconds`
 
 `authorizer_types`
-: The authorizer type. Specify REQUEST for a Lambda function using incoming request parameters. Specify JWT to use JSON Web Tokens (supported only for HTTP APIs).
+: The authorizer type. Specify `REQUEST` for a Lambda function using incoming request parameters. Specify `JWT` to use JSON Web Tokens (supported only for HTTP APIs).
 
 : **Field**: `authorizer_type`
 
@@ -71,7 +71,7 @@ end
 : **Field**: `identity_validation_expression`
 
 `jwt_configurations`
-: Represents the configuration of a JWT authorizer. Required for the JWT authorizer type. Supported only for HTTP APIs.
+: Represents the configuration of a JWT authorizer. Required for the `JWT` authorizer type. Supported only for HTTP APIs.
 
 : **Field**: `jwt_configuration`
 
@@ -81,7 +81,7 @@ end
 : **Field**: `name`
 
 `authorizer_payload_format_versions`
-: Specifies the format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are 1.0 and 2.0.
+: Specifies the payload format sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers. Supported values are **1.0** and **2.0**.
 
 : **Field**: `authorizer_payload_format_version`
 
@@ -124,7 +124,7 @@ describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
 end
 ```
 
-### Verify the authorizer name
+### Verify the authorizer's name
 
 ```ruby
 describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
@@ -132,7 +132,7 @@ describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
 end
 ```
 
-### Verify the simple responses are enabled or not
+### Verify the simple responses enabling status
 
 ```ruby
 describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
@@ -144,7 +144,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -155,6 +155,8 @@ describe aws_api_gateway_v2_authorizers(api_id: 'API_ID') do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 
