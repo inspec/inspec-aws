@@ -46,27 +46,27 @@ class AwsApiGatewayV2DeploymentSuccessPathTest < Minitest::Test
   def test_deployment_exists
     assert @res.exists?
   end
-
+  
   def test_auto_deployed
     assert_equal(@res.auto_deployed, true)
   end
-
+  
   def test_created_date
     assert_equal(@res.created_date, Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
-
+  
   def test_deployment_id
     assert_equal(@res.deployment_id, 'test_deployment_id')
   end
-
+  
   def test_deployment_status
     assert_equal(@res.deployment_status, 'DEPLOYED')
   end
-
+  
   def test_deployment_status_message
     assert_equal(@res.deployment_status_message, 'test_deployment_status_message')
   end
-
+  
   def test_description
     assert_equal(@res.description, 'test_description')
   end
