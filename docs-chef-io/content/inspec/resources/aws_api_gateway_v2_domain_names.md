@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_domain_names Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_domain_names` InSpec audit resource to test properties of multiple AWS APIGatewayV2 DomainNames.
+Use the `aws_api_gateway_v2_domain_names` InSpec audit resource to test properties of multiple AWS API Gateway V2 domain names.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-domainname.html).
 
@@ -30,7 +30,7 @@ end
 
 ## Parameters
 
-This resource doesn't require any parameters.
+This resource does not require any parameters.
 
 ## Properties
 
@@ -38,8 +38,6 @@ This resource doesn't require any parameters.
 : Specifies the required credentials as an IAM role for API Gateway to invoke the authorizer.
 
 : **Field**: `authorizer_credentials_arn`
-
-## Examples
 
 `api_mapping_selection_expressions`
 : The API mapping selection expression.
@@ -76,7 +74,7 @@ describe aws_api_gateway_v2_domain_names do
 end
 ```
 
-### Verify the whether the domain configurations are there or not
+### Test to verify if domain configurations are set
 
 ```ruby
 describe aws_api_gateway_v2_domain_names do
@@ -88,7 +86,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -99,6 +97,8 @@ describe aws_api_gateway_v2_domain_names do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 

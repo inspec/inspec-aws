@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_domain_name resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_domain_name` InSpec audit resource to test the properties of a specific AWS APIGatewayV2 DomainName.
+Use the `aws_api_gateway_v2_domain_name` InSpec audit resource to test the properties of a specific AWS API Gateway V2 domain name.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-domainname.html).
 
@@ -51,27 +51,27 @@ end
 : **Field**: `domain_name_status_messages[0].api_gateway_domain_name`
 
 `certificate_arns`
-: An AWS-managed certificate that will be used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
+: An AWS-managed certificate is used by the edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
 
 : **Field**: `domain_name_status_messages[0].certificate_arn`
 
 `certificate_names`
-: The user-friendly name of the certificate that will be used by the edge-optimized endpoint for this domain name.
+: The user-friendly name of the certificate used by the edge-optimized endpoint for this domain name.
 
 : **Field**: `domain_name_status_messages[0].certificate_name`
 
 `certificate_upload_dates`
-: The timestamp when the certificate that was used by edge-optimized endpoint for this domain name was uploaded.
+: The timestamp when the certificate has been used by the edge-optimized endpoint for this domain name when uploaded.
 
 : **Field**: `domain_name_status_messages[0].certificate_upload_date`
 
 `domain_name_statuses`
-: The status of the domain name migration. The valid values are AVAILABLE, UPDATING, PENDING_CERTIFICATE_REIMPORT, and PENDING_OWNERSHIP_VERIFICATION.
+: The status of the domain name migration. The valid values are `AVAILABLE`, `UPDATING`, `PENDING_CERTIFICATE_REIMPORT`, and `PENDING_OWNERSHIP_VERIFICATION`.
 
 : **Field**: `domain_name_status_messages[0].domain_name_status`
 
 `domain_name_status_messages`
-: An optional text message containing detailed information about status of the domain name migration.
+: An optional text message containing detailed information about the domain name migration status.
 
 : **Field**: `domain_name_status_messages[0].domain_name_status_message`
 
@@ -86,12 +86,12 @@ end
 : **Field**: `domain_name_status_messages[0].hosted_zone_id`
 
 `security_policies`
-: The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are TLS_1_0 and TLS_1_2.
+: The Transport Layer Security (TLS) version of the security policy for this domain name. The valid values are `TLS_1_0` and `TLS_1_2`.
 
 : **Field**: `domain_name_status_messages[0].security_policy`
 
 `ownership_verification_certificate_arns`
-: The ARN of the public certificate issued by ACM to validate ownership of your custom domain.
+: The ARN of the public certificate issued by ACM to validate ownership of the custom domain.
 
 : **Field**: `domain_name_status_messages[0].ownership_verification_certificate_arn`
 
@@ -101,7 +101,7 @@ end
 : **Field**: `mutual_tls_authentication.truststore_uri`
 
 `truststore_version`
-: The version of the S3 object that contains your truststore.
+: The version of the S3 object that contains the truststore.
 
 : **Field**: `mutual_tls_authentication.truststore_version`
 
@@ -125,7 +125,7 @@ describe aws_api_gateway_v2_domain_name(domain_name: 'DOMAIN_NAME') do
 end
 ```
 
-### Verify the domain status
+### Test to verify the domain status
 
 ```ruby
 describe aws_api_gateway_v2_domain_name(domain_name: 'DOMAIN_NAME') do
@@ -148,6 +148,8 @@ describe aws_api_gateway_v2_domain_name(domain_name: 'DOMAIN_NAME') do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 
