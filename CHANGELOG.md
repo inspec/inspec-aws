@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.34 -->
+<!-- latest_release 1.83.35 -->
+## [v1.83.35](https://github.com/inspec/inspec-aws/tree/v1.83.35) (2022-07-06)
+
+#### Merged Pull Requests
+- RESOURCE-423 AWS::ApiGatewayV2::DomainName [#933](https://github.com/inspec/inspec-aws/pull/933) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.34](https://github.com/inspec/inspec-aws/tree/v1.83.34) (2022-07-01)
 
 #### Merged Pull Requests
 - RESOURCE-421 AWS::ApiGatewayV2::Authorizer [#931](https://github.com/inspec/inspec-aws/pull/931) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.33](https://github.com/inspec/inspec-aws/tree/v1.83.33) (2022-07-01)
 
