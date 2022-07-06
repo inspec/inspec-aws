@@ -15,6 +15,10 @@ class AwsApiGatewayV2DeploymentConstructorTest < Minitest::Test
   def test_rejects_unrecognized_params
     assert_raises(ArgumentError) { AwsApiGatewayV2Deployment.new(unexpected: 9) }
   end
+
+  def test_unrecognized_identifiers
+    assert_raises(ArgumentError) { AwsApiGatewayV2Deployment.new(random_id: 'random_id') }
+  end
 end
 
 class AwsApiGatewayV2DeploymentSuccessPathTest < Minitest::Test
