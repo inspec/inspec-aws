@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_deployment resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_deployment` InSpec audit resource to test the properties of a specific AWS APIGatewayV2 Deployment.
+Use the `aws_api_gateway_v2_deployment` InSpec audit resource to test the properties of a specific AWS API Gateway V2 deployment.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Deployment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-deployment.html).
 
@@ -48,7 +48,7 @@ end
 : The identifier for the deployment.
 
 `deployment_status`
-: The status of the deployment: PENDING, FAILED, or SUCCEEDED.
+: The status of the deployment. The valid values are `PENDING`, `FAILED`, or `SUCCEEDED`.
 
 `deployment_status_message`
 : May contain additional feedback on the status of an API deployment.
@@ -74,7 +74,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Verify the authorizer type
+### Test to ensure a deployment ID is `JWT`
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -82,7 +82,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Verify the description
+### Test to ensure a description is available
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -90,7 +90,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Verify the auto deployment status
+### Test to ensure a auto deployment is enabled
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
