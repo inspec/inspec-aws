@@ -17,7 +17,7 @@ class AwsApiGatewayV2Deployment < AwsResourceBase
     validate_parameters(required: %i(api_id deployment_id))
     raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
     raise ArgumentError, "#{@__resource_name__}: deployment_id must be provided!" if opts[:deployment_id].blank?
-    @display_name = opts[:api_id]
+    @display_name = opts[:deployment_id]
     catch_aws_errors do
       resp = @aws.apigatewayv2_client.get_deployment({ api_id: opts[:api_id], deployment_id: opts[:deployment_id] })
       @res = resp.to_h
