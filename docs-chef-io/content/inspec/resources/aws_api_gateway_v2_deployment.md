@@ -74,7 +74,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Test to ensure a deployment ID is `JWT`
+### Test to ensure an authorizer type is `JWT` for a deployment
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -90,7 +90,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Test to ensure a auto deployment is enabled
+### Test to ensure a auto deployment is enabled for a deployment
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
