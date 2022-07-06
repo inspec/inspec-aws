@@ -8,6 +8,9 @@ class AwsApiGatewayV2Deployment < AwsResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
       it { should exist }
+      its('deployment_id') { should eq 'DEPLOYMENT_ID' }
+      its('deployment_status') { should eq 'DEPLOYED' }
+      its('authorizer_type') { should eq 'JWT' }
     end
   EXAMPLE
 
