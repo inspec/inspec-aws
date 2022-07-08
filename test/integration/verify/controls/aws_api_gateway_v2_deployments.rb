@@ -1,3 +1,5 @@
+title 'Ensure API Gateway API Deployments resource has the correct properties.'
+
 aws_apigatewayv2_deployment_api_id = input(:aws_apigatewayv2_deployment_api_id, value: '', description: '')
 aws_apigatewayv2_deployment_auto_deployed = input(:aws_apigatewayv2_deployment_auto_deployed, value: false, description: '')
 aws_apigatewayv2_deployment_description = input(:aws_apigatewayv2_deployment_description, value: '', description: '')
@@ -6,6 +8,7 @@ aws_apigatewayv2_deployment_id = input(:aws_apigatewayv2_deployment_id, value: '
 control 'aws-api-gateway-v2-deployments-v1.0.0' do
   impact 1.0
   title 'Ensure API Gateway API Deployments resource has the correct properties.'
+  desc 'Ensure API Gateway API Deployments resource has the correct properties.'
   
   describe aws_api_gateway_v2_deployments(api_id: aws_apigatewayv2_deployment_api_id) do
     it { should exist }
