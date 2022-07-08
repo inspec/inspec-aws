@@ -37,7 +37,7 @@ end
 ## Properties
 
 `auto_deployeds`
-: Specifies whether a deployment was automatically released.
+: Specifies whether the deployment was automatically released.
 
 : **Field**: `auto_deployed`
 
@@ -76,7 +76,7 @@ describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the deployment status
+### Test to verify the deployment status
 
 ```ruby
 describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
@@ -100,7 +100,7 @@ describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
 end
 ```
 
-### Test to ensure a auto deployment is enabled for a deployment
+### Test to ensure an auto-deployment is enabled for a deployment
 
 ```ruby
 describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
@@ -112,7 +112,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -123,6 +123,8 @@ describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
   it { should exist }
 end
 ```
+
+### not exists
 
 Use `should_not` to test that the entity does not exist.
 

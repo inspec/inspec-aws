@@ -39,10 +39,10 @@ end
 ## Properties
 
 `auto_deployed`
-: Specifies whether a deployment was automatically released.
+: Specifies whether the deployment was automatically released.
 
 `created_date`
-: The date and time when the Deployment resource was created.
+: The date and time when the deployment resource was created.
 
 `deployment_id`
 : The identifier for the deployment.
@@ -66,7 +66,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Verify the deployment status
+### Test to verify the deployment status
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -90,7 +90,7 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
 end
 ```
 
-### Test to ensure a auto deployment is enabled for a deployment
+### Test to ensure an auto-deployment is enabled for a deployment
 
 ```ruby
 describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -113,6 +113,8 @@ describe aws_api_gateway_v2_deployment(api_id: 'APP_ID', deployment_id: 'DEPLOYM
   it { should exist }
 end
 ```
+
+### not exists
 
 Use `should_not` to test that the entity does not exist.
 
