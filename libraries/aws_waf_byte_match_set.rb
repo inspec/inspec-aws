@@ -43,11 +43,11 @@ class AWSWAFByteMatchSet < AwsResourceBase
   end
 
   def byte_match_tuples_field_to_match_types
-    (byte_match_tuples.map(&:field_to_match)).map(&:type)
+    byte_match_tuples.map(&:field_to_match).map(&:type)
   end
 
   def byte_match_tuples_field_to_match_data
-    (byte_match_tuples.map(&:field_to_match)).map(&:data)
+    byte_match_tuples.map(&:field_to_match).map(&:data)
   end
 
   def byte_match_tuples_target_strings

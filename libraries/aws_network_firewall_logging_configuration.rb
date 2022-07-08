@@ -43,14 +43,14 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   end
 
   def logging_configuration_log_destination_configs_log_type
-    (logging_configuration.map(&:log_destination_configs)).map(&:log_type)
+    logging_configuration.map(&:log_destination_configs).map(&:log_type)
   end
 
   def logging_configuration_log_destination_configs_log_destination_type
-    (logging_configuration.map(&:log_destination_configs)).map(&:log_destination_type)
+    logging_configuration.map(&:log_destination_configs).map(&:log_destination_type)
   end
 
   def logging_configuration_log_destination_configs_log_destination
-    (logging_configuration.map(&:log_destination_configs)).map(&:log_destination)
+    logging_configuration.map(&:log_destination_configs).map(&:log_destination)
   end
 end
