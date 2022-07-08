@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.35 -->
+<!-- latest_release 1.83.36 -->
+## [v1.83.36](https://github.com/inspec/inspec-aws/tree/v1.83.36) (2022-07-08)
+
+#### Merged Pull Requests
+- RESOURCE-472 Removing the lint errors in the rubocop v-1.31 [#935](https://github.com/inspec/inspec-aws/pull/935) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.35](https://github.com/inspec/inspec-aws/tree/v1.83.35) (2022-07-06)
 
 #### Merged Pull Requests
 - RESOURCE-423 AWS::ApiGatewayV2::DomainName [#933](https://github.com/inspec/inspec-aws/pull/933) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.34](https://github.com/inspec/inspec-aws/tree/v1.83.34) (2022-07-01)
 

@@ -40,11 +40,11 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
   end
 
   def end_points_kinesis_stream_config_role_arns
-    (end_points.map(&:kinesis_stream_config)).map(&:role_arn)
+    end_points.map(&:kinesis_stream_config).map(&:role_arn)
   end
 
   def end_points_kinesis_stream_config_stream_arns
-    (end_points.map(&:kinesis_stream_config)).map(&:stream_arn)
+    end_points.map(&:kinesis_stream_config).map(&:stream_arn)
   end
 
   # Here we have used the arn as it is more unique than the name.

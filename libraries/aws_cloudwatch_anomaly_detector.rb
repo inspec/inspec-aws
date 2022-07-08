@@ -51,10 +51,10 @@ class AwsCloudwatchAnomalyDetector < AwsResourceBase
   end
 
   def configuration_start_time
-    (configuration.map(&:excluded_time_ranges)).map(&:start_time)
+    configuration.map(&:excluded_time_ranges).map(&:start_time)
   end
 
   def configuration_end_time
-    (configuration.map(&:excluded_time_ranges)).map(&:end_time)
+    configuration.map(&:excluded_time_ranges).map(&:end_time)
   end
 end

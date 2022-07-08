@@ -79,7 +79,7 @@ class AWSCloudFormationTemplate < AwsResourceBase
   end
 
   def parameter_constraints_allowed_values
-    (parameters.map(&:parameter_constraints)).map(&:allowed_values)
+    parameters.map(&:parameter_constraints).map(&:allowed_values)
   end
 
   def resource_types
