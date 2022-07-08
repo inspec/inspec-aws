@@ -40,15 +40,15 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
   end
 
   def active_aws_account_numbers
-    (active_trusted_signers.map(&:items)).map(&:aws_account_number)
+    active_trusted_signers.map(&:items).map(&:aws_account_number)
   end
 
   def active_key_pair_id_quantities
-    ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:quantity)
+    active_trusted_signers.map(&:items).map(&:key_pair_ids).map(&:quantity)
   end
 
   def active_key_pair_id_items
-    ((active_trusted_signers.map(&:items)).map(&:key_pair_ids)).map(&:items)
+    active_trusted_signers.map(&:items).map(&:key_pair_ids).map(&:items)
   end
 
   def to_s

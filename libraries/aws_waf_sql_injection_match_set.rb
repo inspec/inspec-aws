@@ -39,11 +39,11 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   end
 
   def sql_injection_match_tuples_field_to_match_types
-    (sql_injection_match_tuples.map(&:field_to_match)).map(&:type)
+    sql_injection_match_tuples.map(&:field_to_match).map(&:type)
   end
 
   def sql_injection_match_tuples_field_to_match_data
-    (sql_injection_match_tuples.map(&:field_to_match)).map(&:data)
+    sql_injection_match_tuples.map(&:field_to_match).map(&:data)
   end
 
   def sql_injection_match_tuples_text_transformations
