@@ -17,7 +17,7 @@ class AwsApiGatewayV2Integration < AwsResourceBase
     validate_parameters(required: %i(api_id integration_id))
     raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
     raise ArgumentError, "#{@__resource_name__}: integration_id must be provided!" if opts[:integration_id].blank?
-    @display_name = opts[:api_id]
+    @display_name = opts[:integration_id]
     catch_aws_errors do
       resp = @aws.apigatewayv2_client.get_integration({ api_id: opts[:api_id], integration_id: opts[:integration_id] })
       @res = resp.to_h
