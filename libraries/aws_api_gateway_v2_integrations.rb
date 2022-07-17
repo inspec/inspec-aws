@@ -8,6 +8,9 @@ class AwsApiGatewayV2Integrations < AwsCollectionResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_integrations(api_id: 'APP_ID') do
       it { should exist }
+      its('integration_ids') { should include 'INTEGRATION_ID' }
+      its('connection_ids') { should include 'CONNECTION_ID' }
+      its('connection_types') { should include 'INTERNET' }
     end
   EXAMPLE
 
