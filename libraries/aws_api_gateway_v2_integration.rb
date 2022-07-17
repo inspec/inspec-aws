@@ -8,6 +8,9 @@ class AwsApiGatewayV2Integration < AwsResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_integration(api_id: 'APP_ID', integration_id: 'INTEGRATION_ID') do
       it { should exist }
+      its('integration_id') { should eq 'INTEGRATION_ID' }
+      its('connection_id') { should eq 'CONNECTION_ID' }
+      its('connection_type') { should eq 'INTERNET' }
     end
   EXAMPLE
 
