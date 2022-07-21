@@ -38,6 +38,6 @@ class AwsVPNConnectionTest < Minitest::Test
 
   def test_resource_id
     refute_nil(@connection.resource_id)
-    assert_equal(@connection.resource_id, @connection.vpn_connection_id)
+    assert_equal(@connection.resource_id, @vpn_connection.vpn_connection_id)
   end
 end

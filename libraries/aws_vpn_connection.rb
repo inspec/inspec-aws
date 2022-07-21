@@ -7,39 +7,40 @@ class AwsVPNConnection < AwsResourceBase
   desc 'Verifies settings for a single AWS VPN Connection.'
 
   example "
-   describe aws_vpn_connection(vpn_connection_id: 'vc-014aef8a0689b8f43') do
+   describe aws_vpn_connection(vpn_connection_id: 'vpn-1234567890') do
      it { should exist }
    end
 
-   describe aws_vpn_connection('vc-014aef8a0689b8f43') do
+   describe aws_vpn_connection('vpn-1234567890') do
      it { should exist }
    end
   "
 
   def initialize(opts = {})
     opts = { vpn_connection_id: opts } if opts.is_a?(String)
-    super
+    super(opts)
     validate_parameters(required: [:vpn_connection_id])
     validate_identifier
+    @display_name = @opts[:vpn_connection_id]
     fetch
   end
 
   def exists?
-    !failed_resource? && !!@response || !@response.empty?
+    !@response.blank?
   end
 
   def to_s
-    "VPN connection ID: #{@opts[:vpn_connection_id]}"
+    "VPN Connection ID: #{@display_name}"
   end
 
   def resource_id
-    @opts ? @opts[:vpn_connection_id] : ''
+    @response ? @response.vpn_connections.first.vpn_connection_id : @display_name
   end
 
   private
 
   def fetch
-    params = { vpn_connection_ids: [@opts[:vpn_connection_id]] }
+    params = { vpn_connection_ids: [@display_name] }
     @response = query_with(params)
     return empty_response_warn unless @response
 
@@ -53,6 +54,6 @@ class AwsVPNConnection < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, 'parameter `vpn_connection_id` cannot be blank' if @opts[:vpn_connection_id].nil? || @opts[:vpn_connection_id].empty?
+    raise ArgumentError, 'parameter `vpn_connection_id` cannot be blank' if @opts[:vpn_connection_id].blank?
   end
 end
