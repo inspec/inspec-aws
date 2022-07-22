@@ -1,5 +1,5 @@
-aws_cloudwatch_anomaly_detector_namespace = attribute(:aws_cloudwatch_anomaly_detector_namespace, value: '', description: '')
-aws_cloudwatch_anomaly_detector_metric_name = attribute(:aws_cloudwatch_anomaly_detector_metric_name, value: '', description: '')
+aws_cloudwatch_anomaly_detector_namespace = input(:aws_cloudwatch_anomaly_detector_namespace, value: '', description: '')
+aws_cloudwatch_anomaly_detector_metric_name = input(:aws_cloudwatch_anomaly_detector_metric_name, value: '', description: '')
 
 control 'aws-cloudwatch-anomaly-detector-1.0' do
   impact 1.0

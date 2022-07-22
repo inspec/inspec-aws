@@ -1,12 +1,11 @@
 title 'Test a single AWS RDS Parameter Group'
 
-aws_db_parameter_group_name = attribute(:aws_db_parameter_group_name, value: '', description: 'The name of the DB parameter group.')
-aws_db_parameter_group_family_name  = attribute(:aws_db_parameter_group_family_name, value: '', description: 'The name of the DB parameter group family that this DB parameter group is compatible with.')
-aws_db_parameter_group_description  = attribute(:aws_db_parameter_group_description, value: '', description: 'Provides the customer-specified description for this DB parameter group.')
-aws_db_parameter_group_arn = attribute(:aws_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
+aws_db_parameter_group_name = input(:aws_db_parameter_group_name, value: '', description: 'The name of the DB parameter group.')
+aws_db_parameter_group_family_name  = input(:aws_db_parameter_group_family_name, value: '', description: 'The name of the DB parameter group family that this DB parameter group is compatible with.')
+aws_db_parameter_group_description  = input(:aws_db_parameter_group_description, value: '', description: 'Provides the customer-specified description for this DB parameter group.')
+aws_db_parameter_group_arn = input(:aws_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
 
 control 'aws-db-parameter-group-1.0' do
-
   impact 1.0
   title 'Ensure AWS RDS Parameter Group has current properties'
 

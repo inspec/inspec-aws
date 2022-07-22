@@ -1,4 +1,4 @@
-db_proxy_name = attribute(:aws_proxy_name, value: '')
+db_proxy_name = input(:aws_proxy_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-target-groups-1.0' do
   impact 1.0
@@ -15,5 +15,9 @@ control 'aws-rds-db-proxy-target-groups-1.0' do
     its('is_default') { should include true }
     its('statuses') { should include 'available' }
     its('connection_pool_configs') { should_not be_empty }
+  end
+
+  describe aws_rds_db_proxy_target_groups(db_proxy_name: 'dummy') do
+    it { should_not exist }
   end
 end

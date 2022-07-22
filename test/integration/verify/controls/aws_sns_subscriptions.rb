@@ -1,10 +1,9 @@
-aws_sns_subscription_arn = attribute(:aws_sns_subscription_arn, value: '', description: 'The AWS SNS subscription ARN.')
-aws_account_id = attribute(:aws_account_id, value: '', description: 'The AWS account identifier.')
-sns_sqs_queue_arn = attribute(:sns_sqs_queue_arn, value: '', description: 'The SNS SQS Queue ARN.')
-aws_sns_topic_with_subscription_arn = attribute(:aws_sns_topic_with_subscription_arn, value: '', description: 'The AWS SNS topic ARN.')
+aws_sns_subscription_arn = input(:aws_sns_subscription_arn, value: '', description: 'The AWS SNS subscription ARN.')
+aws_account_id = input(:aws_account_id, value: '', description: 'The AWS account identifier.')
+sns_sqs_queue_arn = input(:sns_sqs_queue_arn, value: '', description: 'The SNS SQS Queue ARN.')
+aws_sns_topic_with_subscription_arn = input(:aws_sns_topic_with_subscription_arn, value: '', description: 'The AWS SNS topic ARN.')
 
 control 'aws-sns-subscriptions-1.0' do
-
   impact 1.0
   title 'Ensure AWS SNS Subscriptions has the correct properties.'
 

@@ -1,4 +1,4 @@
-aws_synthetics_canary_name = attribute("aws_synthetics_canary_name", value: "", description: "")
+aws_synthetics_canary_name = input(:aws_synthetics_canary_name, value: "", description: "")
 
 control 'aws_synthetics_canaries-1.0' do
   impact 1.0

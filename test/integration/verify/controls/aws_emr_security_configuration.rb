@@ -1,8 +1,8 @@
 require 'json'
 
-aws_emr_security_configuration_name = attribute(:aws_emr_security_configuration_name, value: '', description: 'The Name of the EMR Security Configuration.')
+aws_emr_security_configuration_name = input(:aws_emr_security_configuration_name, value: '', description: 'The Name of the EMR Security Configuration.')
 aws_emr_security_configuration_name.gsub!('"', '')
-aws_emr_security_configuration_json = attribute(:aws_emr_security_configuration_json, value: '', description: 'The JSON formatted Security Configuration.')
+aws_emr_security_configuration_json = input(:aws_emr_security_configuration_json, value: '', description: 'The JSON formatted Security Configuration.')
 aws_emr_security_configuration_json.gsub!('EOT', '')
 aws_emr_security_configuration_json.gsub!('<<', '')
 

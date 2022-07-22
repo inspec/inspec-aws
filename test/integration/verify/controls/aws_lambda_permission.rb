@@ -1,4 +1,4 @@
-aws_lambda_function_arn = attribute("lambda_function_arn", value: "", description: "")
+aws_lambda_function_arn = input(:lambda_function_arn, value: '', description: '')
 
 control 'aws-lambda-function-permission-1.0' do
   impact 1.0

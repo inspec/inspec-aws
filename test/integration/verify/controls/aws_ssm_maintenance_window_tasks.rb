@@ -1,7 +1,7 @@
-aws_ssm_maintenance_window_id = attribute("aws_ssm_maintenance_window_id", value: "", description: "")
-aws_ssm_maintenance_window_task_id = attribute("aws_ssm_maintenance_window_task_id", value: "", description: "")
-aws_ssm_maintenance_window_task_task_arn = attribute("aws_ssm_maintenance_window_task_task_arn", value: "", description: "")
-aws_ssm_maintenance_window_task_task_type = attribute("aws_ssm_maintenance_window_task_task_type", value: "", description: "")
+aws_ssm_maintenance_window_id = input(:aws_ssm_maintenance_window_id, value: '', description: '')
+aws_ssm_maintenance_window_task_id = input(:aws_ssm_maintenance_window_task_id, value: '', description: '')
+aws_ssm_maintenance_window_task_task_arn = input(:aws_ssm_maintenance_window_task_task_arn, value: '', description: '')
+aws_ssm_maintenance_window_task_task_type = input(:aws_ssm_maintenance_window_task_task_type, value: '', description: '')
 
 control 'aws-ssm-maintenance-window-tasks-1.0' do
   impact 1.0
@@ -30,5 +30,9 @@ control 'aws-ssm-maintenance-window-tasks-1.0' do
     its('names') { should include nil }
     its('descriptions') { should_not be_empty }
     its('cutoff_behaviors') { should_not be_empty }
+  end
+
+  describe aws_ssm_maintenance_window_tasks(window_id: 'dummy') do
+    it { should_not exist }
   end
 end

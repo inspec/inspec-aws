@@ -1,14 +1,13 @@
-aws_auto_scaling_group_name = attribute("aws_auto_scaling_group_name", value: "", description: "")
-aws_auto_scaling_policy_name = attribute("aws_auto_scaling_policy_name", value: "", description: "")
-aws_auto_scaling_adjustment = attribute("aws_auto_scaling_adjustment", value: "", description: "")
-aws_auto_scaling_adjustment_type = attribute("aws_auto_scaling_adjustment_type", value: "", description: "")
-aws_auto_scaling_cooldown = attribute("aws_auto_scaling_cooldown", value: "", description: "")
+aws_auto_scaling_group_name = input(:aws_auto_scaling_group_name, value: '', description: '')
+aws_auto_scaling_policy_name = input(:aws_auto_scaling_policy_name, value: '', description: '')
+aws_auto_scaling_adjustment = input(:aws_auto_scaling_adjustment, value: '', description: '')
+aws_auto_scaling_adjustment_type = input(:aws_auto_scaling_adjustment_type, value: '', description: '')
+aws_auto_scaling_cooldown = input(:aws_auto_scaling_cooldown, value: '', description: '')
 
-
-
-control 'aws-autoscaling-scalable-policies-2.0' do
+control 'aws-autoscaling-scalable-policies-1.0' do
   impact 1.0
   title 'Describes the policies for the specified Auto Scaling group.'
+  
   describe aws_autoscaling_scaling_policies do
     it { should exist }
     its('auto_scaling_group_names') { should include aws_auto_scaling_group_name }

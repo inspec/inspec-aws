@@ -1,19 +1,18 @@
 title 'Test single AWS S3 Bucket'
 
-aws_bucket_public_name = attribute(:aws_bucket_public_name, value: '', description: 'The AWS bucket name.')
-aws_bucket_public_region = attribute(:aws_s3_bucket_public_region, value: '', description: 'The AWS bucket region.')
-aws_bucket_private_name = attribute(:aws_bucket_private_name, value: '', description: 'The AWS bucket private name.')
-aws_bucket_auth_name = attribute(:aws_bucket_auth_name, value: '', description: 'The AWS bucket auth name.')
-aws_bucket_acl_policy_name = attribute(:aws_bucket_acl_policy_name, value: '', description: 'The AWS bucket policy name.')
-aws_bucket_logging_disabled = attribute(:aws_bucket_logging_disabled, value: '', description: 'The AWS bucket logging value.')
-aws_bucket_log_sender_name = attribute(:aws_bucket_log_sender_name, value: '', description: 'The AWS bucket log sender name.')
-aws_bucket_encryption_enabled = attribute(:aws_bucket_encryption_enabled, value: '', description: 'The AWS bucket encryption enabled value.')
-aws_bucket_encryption_disabled = attribute(:aws_bucket_encryption_disabled, value: '', description: 'The AWS bucket decryption enabled value.')
-aws_bucket_versioning_enabled = attribute(:aws_bucket_versioning_enabled, value: '', description: 'The AWS bucket versioning enabled value.')
-aws_bucket_versioning_disabled = attribute(:aws_bucket_versioning_disabled, value: '', description: 'The AWS bucket versioning enabled value.')
+aws_bucket_public_name = input(:aws_bucket_public_name, value: '', description: 'The AWS bucket name.')
+aws_bucket_public_region = input(:aws_s3_bucket_public_region, value: '', description: 'The AWS bucket region.')
+aws_bucket_private_name = input(:aws_bucket_private_name, value: '', description: 'The AWS bucket private name.')
+aws_bucket_auth_name = input(:aws_bucket_auth_name, value: '', description: 'The AWS bucket auth name.')
+aws_bucket_acl_policy_name = input(:aws_bucket_acl_policy_name, value: '', description: 'The AWS bucket policy name.')
+aws_bucket_logging_disabled = input(:aws_bucket_logging_disabled, value: '', description: 'The AWS bucket logging value.')
+aws_bucket_log_sender_name = input(:aws_bucket_log_sender_name, value: '', description: 'The AWS bucket log sender name.')
+aws_bucket_encryption_enabled = input(:aws_bucket_encryption_enabled, value: '', description: 'The AWS bucket encryption enabled value.')
+aws_bucket_encryption_disabled = input(:aws_bucket_encryption_disabled, value: '', description: 'The AWS bucket decryption enabled value.')
+aws_bucket_versioning_enabled = input(:aws_bucket_versioning_enabled, value: '', description: 'The AWS bucket versioning enabled value.')
+aws_bucket_versioning_disabled = input(:aws_bucket_versioning_disabled, value: '', description: 'The AWS bucket versioning enabled value.')
 
 control 'aws-s3-bucket-1.0' do
-
   impact 1.0
   title 'Ensure AWS S3 bucket has the correct properties.'
 
@@ -82,8 +81,7 @@ control 'aws-s3-bucket-1.0' do
     it { should exist }
     it { should_not have_versioning_enabled }
   end
-
-
+  
   describe aws_s3_bucket(bucket_name: aws_bucket_log_sender_name) do
     it { should exist }
     it { should have_access_logging_enabled }
@@ -93,7 +91,6 @@ control 'aws-s3-bucket-1.0' do
     it { should exist }
     it { should_not have_access_logging_enabled }
   end
-
 end
 
 control 'aws-s3-bucket-acl-policy-1.0' do

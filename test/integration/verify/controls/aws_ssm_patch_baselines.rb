@@ -1,5 +1,5 @@
-aws_ssm_patch_baseline_id = attribute("aws_ssm_patch_baseline_id", value: "", description: "")
-aws_ssm_patch_baseline_name = attribute("aws_ssm_patch_baseline_name", value: "", description: "")
+aws_ssm_patch_baseline_id = input(:aws_ssm_patch_baseline_id, value: '', description: '')
+aws_ssm_patch_baseline_name = input(:aws_ssm_patch_baseline_name, value: '', description: '')
 
 control 'aws-ssm-patch-baselines-1.0' do
   impact 1.0

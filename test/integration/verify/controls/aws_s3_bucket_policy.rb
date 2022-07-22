@@ -1,7 +1,6 @@
-bucket_name = attribute(:bucket_name, value: '')
+bucket_name = input(:bucket_name, value: '', description: '')
 
 control 'aws-s3-bucket-policy-1.0' do
-
   impact 1.0
   title 'Test the properties of an S3 Bucket Policy.'
   

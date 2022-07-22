@@ -1,8 +1,8 @@
-aws_signer_signing_profile_name = attribute("aws_signer_signing_profile_name", value: "", description: "")
-aws_signer_signing_profile_platform_id = attribute("aws_signer_signing_profile_platform_id", value: "", description: "")
-aws_signer_signing_profile_status = attribute("aws_signer_signing_profile_status", value: "", description: "")
-aws_signer_signing_profile_version_arn = attribute("aws_signer_signing_profile_version_arn", value: "", description: "")
-aws_signer_signing_profile_version = attribute("aws_signer_signing_profile_version", value: "", description: "")
+aws_signer_signing_profile_name = input(:aws_signer_signing_profile_name, value: '', description: '')
+aws_signer_signing_profile_platform_id = input(:aws_signer_signing_profile_platform_id, value: '', description: '')
+aws_signer_signing_profile_status = input(:aws_signer_signing_profile_status, value: '', description: '')
+aws_signer_signing_profile_version_arn = input(:aws_signer_signing_profile_version_arn, value: '', description: '')
+aws_signer_signing_profile_version = input(:aws_signer_signing_profile_version, value: '', description: '')
 
 control 'aws-signer-signing-profile-1.0' do
   impact 1.0
@@ -31,5 +31,9 @@ control 'aws-signer-signing-profile-1.0' do
     its('status') { should eq aws_signer_signing_profile_status }
     its('status_reason') { should be_empty }
     its('arn') { should_not be_empty }
+  end
+
+  describe aws_signer_signing_profile(profile_name: 'dummy') do
+    it { should_not exist }
   end
 end

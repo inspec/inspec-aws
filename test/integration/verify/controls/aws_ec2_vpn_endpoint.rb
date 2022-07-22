@@ -1,14 +1,13 @@
-# frozen_string_literal: true
-client_vpn_endpoint_id = attribute('client_vpn_endpoint_id', value: '', description: '')
+client_vpn_endpoint_id = input(:client_vpn_endpoint_id, value: '', description: '')
 
-skip_control 'aws_ec2_client_vpn_endpoint-1.0' do
+skip_control 'aws-ec2-client-vpn-endpoint-1.0' do
   impact 1.0
   title 'Test the properties of the vpn endpoint.'
 
   describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: client_vpn_endpoint_id) do
     it { should exist }
     its('client_vpn_endpoint_id') { should eq client_vpn_endpoint_id }
-    its('description') { should eq "Example Client VPN endpoint" }
+    its('description') { should eq 'Example Client VPN endpoint' }
     its('dns_name') { should_not eq '*.cvpn-endpoint-1234567890.prod.clientvpn.us-east-2.amazonaws.com' }
     its('split_tunnel') { should eq false }
     its('vpn_protocol') { should eq 'openvpn' }

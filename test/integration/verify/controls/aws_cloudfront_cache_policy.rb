@@ -1,9 +1,8 @@
-aws_cloudfront_cache_policy_id = attribute(:aws_cloudfront_cache_policy_id, value: '', description: '')
+aws_cloudfront_cache_policy_id = input(:aws_cloudfront_cache_policy_id, value: '', description: '')
 
 control 'aws-cloudfront-cache-policy' do
-
   impact 1.0
-  title 'Ensure Cloud Front Cache Policy resource has the correct properties.'
+  title 'Ensure Cloudfront Cache Policy resource has the correct properties.'
 
   describe aws_cloudfront_cache_policy(id: aws_cloudfront_cache_policy_id) do
     it { should exist }

@@ -1,6 +1,9 @@
-aws_iam_role_name = attribute(:aws_iam_role_generic_name, value: '', description: 'The AWS IAM Role name.')
+aws_iam_role_name = input(:aws_iam_role_generic_name, value: '', description: 'The AWS IAM Role name.')
 
 control 'AWS IAM Role search for default AWS role' do
+  impact 1.0
+  title 'Test the AWS IAM Roles'
+  
   describe aws_iam_roles do
     its('role_names') { should include aws_iam_role_name }
   end

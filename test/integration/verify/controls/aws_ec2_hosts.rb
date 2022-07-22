@@ -1,4 +1,4 @@
-aws_ec2_fleet_id = attribute('aws_ec2_fleet_id', value: '', description: '')
+aws_ec2_fleet_id = input(:aws_ec2_fleet_id, value: '', description: '')
 
 control 'aws-ec2-hosts-1.0' do
   impact 1.0

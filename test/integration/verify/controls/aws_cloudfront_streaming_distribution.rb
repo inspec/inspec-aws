@@ -1,6 +1,6 @@
-aws_cloudfront_distribution_id = attribute('aws_cloudfront_distribution_id', value: '', description: '')
-aws_cloudfront_distribution_arn = attribute('aws_cloudfront_distribution_arn', value: '', description: '')
-aws_cloudfront_distribution_status = attribute('aws_cloudfront_distribution_status', value: '', description: '')
+aws_cloudfront_distribution_id = input(:aws_cloudfront_distribution_id, value: '', description: '')
+aws_cloudfront_distribution_arn = input(:aws_cloudfront_distribution_arn, value: '', description: '')
+aws_cloudfront_distribution_status = input(:aws_cloudfront_distribution_status, value: '', description: '')
 
 control 'aws-cloudfront-streaming-distribution-1.0' do
   impact 1.0
