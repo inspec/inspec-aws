@@ -1,8 +1,8 @@
-aws_identity_pool_id = attribute("aws_identity_pool_id", value: "", description: "")
-aws_identity_pool_name = attribute("aws_identity_pool_name", value: "", description: "")
-aws_allow_unauthenticated_identities = attribute("aws_allow_unauthenticated_identities", value: false, description: "")
+aws_identity_pool_id = input(:aws_identity_pool_id, value: '', description: '')
+aws_identity_pool_name = input(:aws_identity_pool_name, value: '', description: '')
+aws_allow_unauthenticated_identities = input(:aws_allow_unauthenticated_identities, value: false, description: '')
 
-control 'aws-auto-identity-pool-1.0' do
+control 'aws-cognito-identity-pool-1.0' do
   impact 1.0
   title 'Ensure AWS Identity Pool has the correct properties.'
 
@@ -20,7 +20,7 @@ control 'aws-auto-identity-pool-1.0' do
     its('identity_pool_tags') { should be_empty }
   end
 
-  describe aws_cognito_identity_pool(identity_pool_id: "dummy") do
+  describe aws_cognito_identity_pool(identity_pool_id: 'dummy') do
     it { should_not exist }
   end
 end

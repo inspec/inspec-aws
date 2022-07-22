@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-skip_control 'aws_ec2_carrier_gateways-1.0' do
+skip_control 'aws-ec2-carrier-gateway-1.0' do
   impact 1.0
   title 'Describes one or more of ec2 carrier gateway.'
 
@@ -11,7 +10,7 @@ skip_control 'aws_ec2_carrier_gateways-1.0' do
     its('carrier_gateway_ids') { should include 'cagw-0e0bcd57d5dfee6a1' }
     its('vpc_ids') { should_not be_empty }
     its('states') { should_not be_empty }
-    its('owner_ids') { should include "112758395563" }
+    its('owner_ids') { should include '112758395563' }
     its('tags') { should_not be_empty }
   end
 end

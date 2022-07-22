@@ -1,4 +1,4 @@
-aws_api_gateway_account_cloudwatch_role_arn = attribute(:aws_api_gateway_account_cloudwatch_role_arn, value: '', description: '')
+aws_api_gateway_account_cloudwatch_role_arn = input(:aws_api_gateway_account_cloudwatch_role_arn, value: '', description: '')
 
 control 'aws-apigateway-account' do
 

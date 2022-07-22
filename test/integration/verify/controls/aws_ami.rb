@@ -1,7 +1,6 @@
 title 'Test a single AWS AMI'
 
 control 'aws-ami-1.0' do
-
   impact 1.0
   title 'Ensure AWS AMI has current properties'
 

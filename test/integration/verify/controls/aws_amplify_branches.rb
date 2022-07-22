@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
-app_id = attribute(app_id, value: '', description: '')
-branch_name = attribute(branch_name, value: '', description: '')
+app_id = input(:app_id, value: '', description: '')
+branch_name = input(:branch_name, value: '', description: '')
 
 title 'Ensure all Amplify App have the correct properties.'
 

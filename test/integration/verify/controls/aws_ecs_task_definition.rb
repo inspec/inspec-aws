@@ -1,16 +1,15 @@
-aws_ecs_task_definition_arn = attribute(:aws_ecs_task_definition_arn, value: '', description: '')
-aws_ecs_task_definition_revision = attribute(:aws_ecs_task_definition_revision, value: '', description: '')
+aws_ecs_task_definition_arn = input(:aws_ecs_task_definition_arn, value: '', description: '')
+aws_ecs_task_definition_revision = input(:aws_ecs_task_definition_revision, value: '', description: '')
 
 control 'aws-ec2-task-definition-1.0' do
-
   impact 1.0
   title 'Ensure EC2 Task Definition has the correct properties.'
 
-  describe aws_ecs_task_definition(task_definition: "service:"+aws_ecs_task_definition_revision) do
+  describe aws_ecs_task_definition(task_definition: 'service:'+aws_ecs_task_definition_revision) do
     it { should exist }
   end
 
-  describe aws_ecs_task_definition(task_definition: "service:"+aws_ecs_task_definition_revision) do
+  describe aws_ecs_task_definition(task_definition: 'service:'+aws_ecs_task_definition_revision) do
     its('task_definition_arn') { should eq aws_ecs_task_definition_arn }
 
     # Container_Definitions
@@ -132,7 +131,7 @@ control 'aws-ec2-task-definition-1.0' do
     its('requires_attributes_target') { should be_empty }
 
     its('placement_constraints') { should_not be_empty }
-    its('compatibilities') { should include "EC2" }
+    its('compatibilities') { should include 'EC2' }
 
     its('cpu') { should be_empty }
     its('memory') { should be_empty }
@@ -155,7 +154,7 @@ control 'aws-ec2-task-definition-1.0' do
     its('tags') { should be_empty }
   end
 
-  describe aws_ecs_task_definition(task_definition: "dummy") do
+  describe aws_ecs_task_definition(task_definition: 'dummy') do
     it { should_not exist }
   end
 end

@@ -1,17 +1,14 @@
 title 'Test AWS GuardDuty Detectors in bulk'
 
-aws_guardduty_detector_id = attribute(:aws_guardduty_detector_id, value: '', description: 'The AWS GuardDuty Detector ID.')
-aws_guardduty_detector_publishing_frequency = attribute(:aws_guardduty_detector_publishing_frequency,
-                                                        value: '',
-                                                        description: 'The AWS GuardDuty Detector ID.')
+aws_guardduty_detector_id = input(:aws_guardduty_detector_id, value: '', description: 'The AWS GuardDuty Detector ID.')
+aws_guardduty_detector_publishing_frequency = input(:aws_guardduty_detector_publishing_frequency, value: '', description: '')
 
 control 'aws-guardduty-detectors-1.0' do
-
   impact 1.0
   title 'Ensure AWS GuardDuty Detector has current properties'
 
   describe aws_guardduty_detectors do
-    it                  { should exist }
+    it { should exist }
     its('detector_ids') { should include [aws_guardduty_detector_id] }
   end
 

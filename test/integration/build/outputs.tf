@@ -907,7 +907,7 @@ output "domain-names-sdb" {
   value = aws_simpledb_domain.users.name
 }
 
-output "aws_api_gateway_deployement_id_test" {
+output "aws_api_gateway_deployement_id" {
   value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
 }
 
@@ -2363,4 +2363,5 @@ output "aws_apigatewayv2_vpc_link_security_group_ids" {
 output "aws_apigatewayv2_vpc_link_subnet_ids" {
   value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.subnet_ids
 }
+
 

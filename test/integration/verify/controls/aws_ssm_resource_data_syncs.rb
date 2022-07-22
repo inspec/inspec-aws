@@ -1,4 +1,4 @@
-aws_ssm_resource_data_sync_name = attribute("aws_ssm_resource_data_sync_name", value: "", description: "")
+aws_ssm_resource_data_sync_name = input(:aws_ssm_resource_data_sync_name, value: '', description: '')
 
 control 'aws_ssm_resource_data_syncs-1.0' do
   impact 1.0

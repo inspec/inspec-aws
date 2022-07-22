@@ -1,11 +1,10 @@
 title 'Test AWS VPC Subnets in bulk'
 
-aws_subnet_id = attribute(:aws_subnet_id, value: '', description: 'The AWS VPC Subnet ID.')
-aws_subnet_cidr_block = attribute(:aws_subnet_cidr_block, value: '', description: 'The AWS VPC Subnet CIDR block.')
-aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_subnet_id = input(:aws_subnet_id, value: '', description: 'The AWS VPC Subnet ID.')
+aws_subnet_cidr_block = input(:aws_subnet_cidr_block, value: '', description: 'The AWS VPC Subnet CIDR block.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 
 control 'aws-subnets-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPC Subnets plural resource has the correct properties.'
 
@@ -17,5 +16,4 @@ control 'aws-subnets-1.0' do
     its('subnet_ids')   { should include aws_subnet_id }
     its('states')       { should include 'available' }
   end
-
 end

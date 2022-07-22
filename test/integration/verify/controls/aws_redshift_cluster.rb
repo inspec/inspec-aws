@@ -1,11 +1,10 @@
-aws_redshift_db_identifier = attribute(:aws_redshift_cluster_identifier, value: '', description: 'The AWS Reddhift DB identifier.')
-control 'aws_redshift_cluster-1.0' do
+aws_redshift_db_identifier = input(:aws_redshift_cluster_identifier, value: '', description: 'The AWS Reddhift DB identifier.')
 
+control 'aws_redshift_cluster-1.0' do
   impact 1.0
   title 'Ensure AWS redshift cluster has the correct properties.'
 
   describe aws_redshift_cluster(cluster_identifier: aws_redshift_db_identifier) do
-
     it { should exist }
     its ('node_type') { should eq 'dc2.large' }
     its ('cluster_status') { should eq 'available'  }

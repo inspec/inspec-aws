@@ -1,5 +1,5 @@
-aws_s3_bucket_object_public = value(:aws_s3_bucket_object_public, value: '', description: 'The AWS bucket object key.')
-aws_bucket_public_objects_name = value(:aws_bucket_public_objects_name, value: '', description: 'The AWS bucket.')
+aws_s3_bucket_object_public = input(:aws_s3_bucket_object_public, value: '', description: 'The AWS bucket object key.')
+aws_bucket_public_objects_name = input(:aws_bucket_public_objects_name, value: '', description: 'The AWS bucket.')
 
 control 'aws-s3-bucket-objects-1.0' do
   impact 1.0

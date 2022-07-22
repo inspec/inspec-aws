@@ -1,4 +1,4 @@
-skip_control 'aws_rds_db_security_group-1.0' do
+skip_control 'aws-rds-db-security-group-1.0' do
   impact 1.0
   title 'Test the properties of Security Group.'
 

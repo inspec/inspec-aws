@@ -1,12 +1,11 @@
-aws_ebs_snapshot_id = attribute(:aws_ebs_snapshot_id, value: '', description: 'The AWS EBS Snapshot ID.')
-aws_ebs_snapshot_name = attribute(:aws_ebs_snapshot_name, value: '', description: 'The AWS EBS Snapshot Name.')
-aws_ebs_snapshot_owner_id = attribute(:aws_ebs_snapshot_owner_id, value: '', description: 'The AWS EBS Snapshot Owner ID.')
-aws_ebs_encrypted_snapshot_id = attribute(:aws_ebs_encrypted_snapshot_id, value: '', description: 'The encrypted AWS EBS Snapshot ID.')
+aws_ebs_snapshot_id = input(:aws_ebs_snapshot_id, value: '', description: 'The AWS EBS Snapshot ID.')
+aws_ebs_snapshot_name = input(:aws_ebs_snapshot_name, value: '', description: 'The AWS EBS Snapshot Name.')
+aws_ebs_snapshot_owner_id = input(:aws_ebs_snapshot_owner_id, value: '', description: 'The AWS EBS Snapshot Owner ID.')
+aws_ebs_encrypted_snapshot_id = input(:aws_ebs_encrypted_snapshot_id, value: '', description: 'The encrypted AWS EBS Snapshot ID.')
 
 title 'Test single AWS EBS Snapshot'
 
 control 'aws-ebs-snapshot-1.0' do
-
   impact 1.0
   title 'Ensure AWS EBS Snapshot has the correct properties.'
 

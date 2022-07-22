@@ -1,5 +1,5 @@
-aws_egress_only_internet_gateway_id = attribute("aws_egress_only_internet_gateway_id", value: "", description: "")
-aws_vpc_eoig_test1_id = attribute("aws_vpc_eoig_test1_id", value: "", description: "")
+aws_egress_only_internet_gateway_id = input(:aws_egress_only_internet_gateway_id, value: '', description: '')
+aws_vpc_eoig_test1_id = input(:aws_vpc_eoig_test1_id, value: '', description: '')
 
 control 'aws-ec2-egress-only-internet-gateway-1.0' do
   impact 1.0

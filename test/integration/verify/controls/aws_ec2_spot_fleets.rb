@@ -1,4 +1,4 @@
-aws_spot_fleet_request_id = attribute("aws_spot_fleet_request_id", value: "", description: "")
+aws_spot_fleet_request_id = input(:aws_spot_fleet_request_id, value: '', description: '')
 
 control 'aws-ec2-spot-fleets-1.0' do
   impact 1.0

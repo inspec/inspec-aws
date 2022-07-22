@@ -1,7 +1,7 @@
 title 'Test single AWS DynamoDB Table.'
 
-aws_dynamodb_table_name = attribute(:aws_dynamodb_table_name, value: '', description: 'The AWS Dynamodb Table name.')
-aws_dynamodb_table_arn = attribute(:aws_dynamodb_table_arn, value: '', description: 'The AWS Dynamodb Table arn.')
+aws_dynamodb_table_name = input(:aws_dynamodb_table_name, value: '', description: 'The AWS Dynamodb Table name.')
+aws_dynamodb_table_arn = input(:aws_dynamodb_table_arn, value: '', description: 'The AWS Dynamodb Table arn.')
 
 control 'aws-dynamodb-table-1.0' do
 

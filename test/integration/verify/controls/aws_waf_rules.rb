@@ -1,5 +1,5 @@
-aws_waf_rule_name = attribute(:aws_waf_rule_name, value: '')
-aws_waf_rule_id = attribute(:aws_waf_rule_id, value: '')
+aws_waf_rule_name = input(:aws_waf_rule_name, value: '', description: '')
+aws_waf_rule_id = input(:aws_waf_rule_id, value: '', description: '')
 
 control 'aws_waf_rules-1.0' do
   impact 1.0

@@ -1,5 +1,5 @@
-aws_proxy_name = attribute(:aws_proxy_name, value: '')
-proxy_endpoint_name = attribute(:proxy_endpoint_name, value: '')
+aws_proxy_name = input(:aws_proxy_name, value: '', description: '')
+proxy_endpoint_name = input(:proxy_endpoint_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-endpoint-1.0' do
   impact 1.0
@@ -20,5 +20,9 @@ control 'aws-rds-db-proxy-endpoint-1.0' do
     its('endpoint') { should_not eq 'test-endpoint.endpoint.proxy-cvjb1wur4wqf.us-east-2.rds.amazonaws.com' }
     its('target_role') { should_not eq 'READ_WRITE' }
     its('is_default') { should eq false }
+  end
+
+  describe aws_rds_db_proxy_endpoint(db_proxy_name: 'dummy', db_proxy_endpoint_name: 'dummy') do
+    it { should_not exist }
   end
 end
