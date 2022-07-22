@@ -130,7 +130,7 @@ For an HTTP API private integration, specify the ARN of an Application Load Bala
 : **Field**: `request_parameters`
 
 `response_parameters`
-: Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend integration before returning the response to clients. Specify a key-value map from a selection key to response parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key must match pattern <action>:<header>.<location> or overwrite.statuscode. The action can be append, overwrite or remove. The value can be a static value, or map to response data, stage variables, or context variables that are evaluated at runtime.
+: Supported only for HTTP APIs. You use response parameters to transform the HTTP response from a backend integration before returning the response to clients. Specify a key-value map from a selection key to response parameters. The selection key must be a valid HTTP status code within the range of 200-599. Response parameters are a key-value map. The key must match pattern `<action>:<header>.<location>` or `overwrite.statuscode`. The action can be `append`, `overwrite` or `remove`. The value can be a static value, or map to response data, stage variables, or context variables that are evaluated at runtime.
 
 : **Field**: `response_parameters`
 
