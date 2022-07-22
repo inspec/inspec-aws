@@ -1,13 +1,12 @@
-aws_ebs_volume_id = attribute(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
-aws_ebs_volume_encrypted = attribute(:aws_ebs_volume_encrypted, value: '', description: 'Whether the AWS EBS Volume is encrypted.')
-aws_ebs_volume_iops = attribute(:aws_ebs_volume_iops, value: '', description: 'The iops settings of the volumes')
-aws_ebs_volume_size = attribute(:aws_ebs_volume_size, value: '', description: 'The size of the ebs volume.')
-aws_ebs_volume_type = attribute(:aws_ebs_volume_type, value: '', description: 'The type of ebs volume.')
+aws_ebs_volume_id = input(:aws_ebs_volume_id, value: '', description: 'The AWS EBS Volume ID.')
+aws_ebs_volume_encrypted = input(:aws_ebs_volume_encrypted, value: '', description: 'Whether the AWS EBS Volume is encrypted.')
+aws_ebs_volume_iops = input(:aws_ebs_volume_iops, value: '', description: 'The iops settings of the volumes')
+aws_ebs_volume_size = input(:aws_ebs_volume_size, value: '', description: 'The size of the ebs volume.')
+aws_ebs_volume_type = input(:aws_ebs_volume_type, value: '', description: 'The type of ebs volume.')
 
 title 'Test AWS EBS Volumes in bulk'
 
 control 'aws-ebs-volumes-1.0' do
-
   impact 1.0
   title 'Ensure AWS EBS Volumes plural resource has the correct properties.'
 

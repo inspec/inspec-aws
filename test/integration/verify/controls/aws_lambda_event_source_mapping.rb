@@ -1,12 +1,12 @@
-aws_lambda_event_source_mapping_uuid = attribute(:aws_lambda_event_source_mapping_uuid, value: '', description: '')
-aws_lambda_event_source_mapping_function_arn = attribute(:aws_lambda_event_source_mapping_function_arn, value: '', description: '')
-aws_lambda_event_source_mapping_last_processing_result = attribute(:aws_lambda_event_source_mapping_last_processing_result, value: '', description: '')
-aws_lambda_event_source_mapping_state = attribute(:aws_lambda_event_source_mapping_state, value: '', description: '')
-aws_lambda_event_source_mapping_state_transition_reason = attribute(:aws_lambda_event_source_mapping_state_transition_reason, value: '', description: '')
+aws_lambda_event_source_mapping_uuid = input(:aws_lambda_event_source_mapping_uuid, value: '', description: '')
+aws_lambda_event_source_mapping_function_arn = input(:aws_lambda_event_source_mapping_function_arn, value: '', description: '')
+aws_lambda_event_source_mapping_last_processing_result = input(:aws_lambda_event_source_mapping_last_processing_result, value: '', description: '')
+aws_lambda_event_source_mapping_state = input(:aws_lambda_event_source_mapping_state, value: '', description: '')
+aws_lambda_event_source_mapping_state_transition_reason = input(:aws_lambda_event_source_mapping_state_transition_reason, value: '', description: '')
 
 title 'Test single AWS Lambda Source Mapping'
-control 'aws-lambda-source-mapping-1.0' do
 
+control 'aws-lambda-source-mapping-1.0' do
   impact 1.0
   title 'Ensure AWS Lambda Source Mapping has the correct properties.'
 

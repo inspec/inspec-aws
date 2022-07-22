@@ -1,10 +1,10 @@
-aws_user_pool_id = attribute("aws_user_pool_id", value: "", description: "")
-aws_identity_pool_name = attribute("aws_identity_pool_name", value: "", description: "")
+aws_user_pool_id = input(:aws_user_pool_id, value: '', description: '')
+aws_identity_pool_name = input(:aws_identity_pool_name, value: '', description: '')
 
-control 'aws-auto-user-pool-1.0' do
+control 'aws-cognito-user-pool-1.0' do
 
   impact 1.0
-  title 'Ensure AWS User Pool has the correct properties.'
+  title 'Ensure AWS Cognito User Pool has the correct properties.'
 
   describe aws_cognito_userpool(user_pool_id: aws_user_pool_id) do
     it { should exist }
@@ -36,10 +36,10 @@ control 'aws-auto-user-pool-1.0' do
     its('verification_message_template.email_subject') { should be_empty }
     its('verification_message_template.email_message_by_link') { should be_empty }
     its('verification_message_template.email_subject_by_link') { should be_empty }
-    its('verification_message_template.default_email_option') { should eq "CONFIRM_WITH_CODE" }
+    its('verification_message_template.default_email_option') { should eq 'CONFIRM_WITH_CODE' }
 
     its('sms_authentication_message') { should be_empty }
-    its('mfa_configuration') { should eq "OFF" }
+    its('mfa_configuration') { should eq 'OFF' }
     its('device_configuration') { should be_empty }
     its('estimated_number_of_users') { should eq 0 }
 

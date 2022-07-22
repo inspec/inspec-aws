@@ -1,5 +1,5 @@
-aws_volume_attachment_instance_device_name = attribute("aws_volume_attachment_instance_device_name", value: "", description: "")
-aws_volume_attachment_instance_volume_id = attribute("aws_volume_attachment_instance_volume_id", value: "", description: "")
+aws_volume_attachment_instance_device_name = input(:aws_volume_attachment_instance_device_name, value: '', description: '')
+aws_volume_attachment_instance_volume_id = input(:aws_volume_attachment_instance_volume_id, value: '', description: '')
 
 control 'aws-ec2-volume-attachment-1.0' do
   impact 1.0

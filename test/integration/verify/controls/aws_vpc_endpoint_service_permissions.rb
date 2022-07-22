@@ -1,10 +1,9 @@
 title 'Test all AWS VPN Endpoint Service Permissions'
 
-aws_vpc_endpoint_service_id = attribute(:aws_vpc_endpoint_service_id, value: '', description: 'The unique identifier for VPC endpoint Service')
-aws_vpc_endpoint_service_allowed_principal_arn = attribute(:aws_vpc_endpoint_service_allowed_principal_arn, value: '', description: 'AWS ARN of the user/account to allow permissions')
+aws_vpc_endpoint_service_id = input(:aws_vpc_endpoint_service_id, value: '', description: 'The unique identifier for VPC endpoint Service')
+aws_vpc_endpoint_service_allowed_principal_arn = input(:aws_vpc_endpoint_service_allowed_principal_arn, value: '', description: 'AWS ARN of the user/account to allow permissions')
 
 control 'aws-vpc-endpoint-service-permissions-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPN Endpoint Service Permissions has the correct properties.'
 

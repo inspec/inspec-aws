@@ -1,9 +1,8 @@
-aws_transfer_user_name = attribute(:aws_transfer_user_name, value: '', description: '')
-aws_transfer_server_id = attribute(:aws_transfer_server_id, value: '', description: '')
-aws_transfer_user_arn = attribute(:aws_transfer_user_arn, value: '', description: '')
+aws_transfer_user_name = input(:aws_transfer_user_name, value: '', description: '')
+aws_transfer_server_id = input(:aws_transfer_server_id, value: '', description: '')
+aws_transfer_user_arn = input(:aws_transfer_user_arn, value: '', description: '')
 
 control 'aws-transfer-user-1.0' do
-
     impact 1.0
     title 'Ensure AWS CloudFormation Transfer User has the correct properties.'
 

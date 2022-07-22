@@ -1,9 +1,8 @@
-aws_api_gateway_api_key_id = attribute(:aws_api_gateway_api_key_id, value: '', description: '')
-aws_api_gateway_api_key_created_date = attribute(:aws_api_gateway_api_key_created_date, value: '', description: '')
-aws_api_gateway_api_key_last_updated_date = attribute(:aws_api_gateway_api_key_last_updated_date, value: '', description: '')
+aws_api_gateway_api_key_id = input(:aws_api_gateway_api_key_id, value: '', description: '')
+aws_api_gateway_api_key_created_date = input(:aws_api_gateway_api_key_created_date, value: '', description: '')
+aws_api_gateway_api_key_last_updated_date = input(:aws_api_gateway_api_key_last_updated_date, value: '', description: '')
 
 control 'aws-apigateway-api-key' do
-
   impact 1.0
   title 'Ensure API Gateway API Key resource has the correct properties.'
 

@@ -1,6 +1,6 @@
-aws_servicecatalog_product_sm_id = attribute("aws_servicecatalog_product_sm_id", value: "", description: "")
-aws_servicecatalog_portfolio_sm_id = attribute("aws_servicecatalog_portfolio_sm_id", value: "", description: "")
-aws_servicecatalog_portfolio_sm_arn = attribute("aws_servicecatalog_portfolio_sm_id", value: "", description: "")
+aws_servicecatalog_product_sm_id = input(:aws_servicecatalog_product_sm_id, value: '', description: '')
+aws_servicecatalog_portfolio_sm_id = input(:aws_servicecatalog_portfolio_sm_id, value: '', description: '')
+aws_servicecatalog_portfolio_sm_arn = input(:aws_servicecatalog_portfolio_sm_id, value: '', description: '')
 
 control 'aws-service-catalog-product-portfolio-association-1.0' do
   impact 1.0

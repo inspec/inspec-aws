@@ -1,5 +1,4 @@
-skip_control 'aws-ec2-network-insights-analyses-1.0' do
-
+skip_control 'aws-ec2-network-insights-analysis-1.0' do
   impact 1.0
   title 'Test a singular resource of the aws ec2 network insight analysis.'
 
@@ -9,7 +8,7 @@ skip_control 'aws-ec2-network-insights-analyses-1.0' do
 
   describe aws_ec2_network_insights_analysis(network_insights_analysis_id: 'nia-1234567890') do
     its('network_insights_analysis_id') { should eq 'nia-1234567890' }
-    its('network_insights_analysis_arn') { should eq "arn:aws:ec2:us-east-2:1234567890:network-insights-analysis/nia-1234567890" }
+    its('network_insights_analysis_arn') { should eq 'arn:aws:ec2:us-east-2:1234567890:network-insights-analysis/nia-1234567890' }
     its('network_insights_path_id') { should eq 'nip-1234567890' }
     its('filter_in_arns') { should be_empty }
     its('status') { should eq 'succeeded' }

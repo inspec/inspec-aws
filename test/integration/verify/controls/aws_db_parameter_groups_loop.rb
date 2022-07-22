@@ -1,10 +1,9 @@
 title 'Test AWS RDS Parameter Groups in bulk'
 
-aws_rds_db_parameter_group_family   = attribute(:aws_rds_db_parameter_group_family, value: '', description: 'The name of the DB parameter group family that this DB parameter group is compatible with.')
-aws_rds_db_parameter_group_arn      = attribute(:aws_rds_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
+aws_rds_db_parameter_group_family   = input(:aws_rds_db_parameter_group_family, value: '', description: 'The name of the DB parameter group family that this DB parameter group is compatible with.')
+aws_rds_db_parameter_group_arn      = input(:aws_rds_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
 
 control 'aws-db-parameter-groups-loop-1.0' do
-
   impact 1.0
   title 'Loop across AWS RDS Parameter Group resource using singular resource for detail.'
 

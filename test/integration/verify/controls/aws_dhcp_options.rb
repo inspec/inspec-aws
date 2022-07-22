@@ -1,11 +1,10 @@
 title 'Test single AWS DHCP Options'
 
-aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS DHCP Options ID.')
-aws_vpc_dhcp_options_name = attribute(:aws_vpc_dhcp_options_name, value: '', description: 'The AWS DHCP Options Name.')
-aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS DHCP Options ID.')
+aws_vpc_dhcp_options_name = input(:aws_vpc_dhcp_options_name, value: '', description: 'The AWS DHCP Options Name.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 
 control 'aws-dhcp-options-1.0' do
-
   impact 1.0
   title 'Ensure AWS DHCP Options has the correct properties.'
 

@@ -10,4 +10,8 @@ skip_control 'aws-lambda-event-invoke-config-1.0' do
     its('policy') { should eq 'Policy' }
     its('revision_id') { should eq 'RevisionId' }
   end
+
+  describe aws_lambda_layer_version_permission(layer_name: 'dummy', version_number: 1) do
+    it { should_not exist }
+  end
 end

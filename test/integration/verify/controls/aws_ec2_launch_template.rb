@@ -1,9 +1,8 @@
-aws_launch_template_name = attribute(:launch_template_name, value: '', description: 'The AWS  Launch Template Name.')
+aws_launch_template_name = input(:launch_template_name, value: '', description: 'The AWS  Launch Template Name.')
 
 title 'Test aws launch template'
 
-control 'aws-launch_template' do
-
+control 'aws-launch-template-1.0' do
   impact 1.0
   title 'Ensure AWS launch templates has the correct properties.'
 

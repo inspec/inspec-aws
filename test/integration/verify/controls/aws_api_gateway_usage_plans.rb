@@ -1,7 +1,7 @@
-aws_api_gateway_usage_plan_id = attribute(:aws_api_gateway_usage_plan_id, value: '', description: '')
-aws_api_gateway_usage_plan_name = attribute(:aws_api_gateway_usage_plan_name, value: '', description: '')
-aws_api_gateway_usage_plan_description = attribute(:aws_api_gateway_usage_plan_description, value: '', description: '')
-aws_api_gateway_usage_plan_product_code = attribute(:aws_api_gateway_usage_plan_product_code, value: '', description: '')
+aws_api_gateway_usage_plan_id = input(:aws_api_gateway_usage_plan_id, value: '', description: '')
+aws_api_gateway_usage_plan_name = input(:aws_api_gateway_usage_plan_name, value: '', description: '')
+aws_api_gateway_usage_plan_description = input(:aws_api_gateway_usage_plan_description, value: '', description: '')
+aws_api_gateway_usage_plan_product_code = input(:aws_api_gateway_usage_plan_product_code, value: '', description: '')
 
 control 'aws-api-gateway-usage-plans-1.0' do
   impact 1.0

@@ -1,8 +1,8 @@
-aws_customer_gateway_id = attribute("aws_customer_gateway_id", value: "", description: "")
+aws_customer_gateway_id = input(:aws_customer_gateway_id, value: '', description: '')
 
-control 'aws-ec2-capacity-gateways-1.0' do
+control 'aws-ec2-customer-gateways-1.0' do
   impact 1.0
-  title 'Describes one or more of your VPN customer gateways.'
+  title 'Test the properties of the EC2 Customer Gateways.'
 
   describe aws_ec2_customer_gateways do
     it { should exist }

@@ -1,7 +1,6 @@
-aws_cloudwatch_event_rule_arn = attribute(:aws_cloudwatch_event_rule_arn, value: '', description: '')
+aws_cloudwatch_event_rule_arn = input(:aws_cloudwatch_event_rule_arn, value: '', description: '')
 
 control 'aws-event-rule-1.0' do
-
   impact 1.0
   title 'Ensure AWS Event Rule has the correct properties.'
 

@@ -1,7 +1,6 @@
 title 'Test AWS AMIs in bulk'
 
 control 'aws-amis-1.0' do
-
   impact 1.0
   title 'Ensure AWS AMI has current properties'
 

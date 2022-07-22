@@ -1,4 +1,4 @@
-control 'aws-managed-policy-1.0' do
+skip_control 'aws-managed-policy-1.0' do
   impact 1.0
   title 'Ensure AWS IAM Managed Policy Singular resource has the correct properties.'
 

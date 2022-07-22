@@ -1,4 +1,5 @@
-aws_proxy_name = attribute(:aws_proxy_name, value: '')
+aws_proxy_name = input(:aws_proxy_name, value: '', description: '')
+
 control 'aws-rds-db-proxy-1.0' do
   impact 1.0
   title 'Test the properties of the rds db proxy.'
@@ -25,5 +26,9 @@ control 'aws-rds-db-proxy-1.0' do
     its('require_tls') { should eq false }
     its('idle_client_timeout') { should eq 1800 }
     its('debug_logging') { should eq false }
+  end
+
+  describe aws_rds_db_proxy(db_proxy_name: 'dummy') do
+    it { should_not exist }
   end
 end

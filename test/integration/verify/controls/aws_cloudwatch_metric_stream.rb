@@ -1,10 +1,9 @@
-stream_arns = attribute(:stream_arns, value: '', description: '')
-stream_names = attribute(:stream_names, value: '', description: '')
+stream_arns = input(:dashboard_arn, value: '', description: '')
+stream_names = input(:dashboard_name, value: '', description: '')
 
 title 'Test Multiple Metric Stream'
 
 control 'aws-cloudwatch-metric-stream-1.0' do
-
   impact 1.0
   title 'Ensure AWS cloudwatch metric streams has the correct properties.'
 
