@@ -1,22 +1,25 @@
-aws_apigatewayv2_integration_response_api_id = input(:aws_apigatewayv2_integration_response_api_id, value: '', description: '')
-aws_apigatewayv2_integration_response_id = input(:aws_apigatewayv2_integration_response_id, value: '', description: '')
-aws_apigatewayv2_integration_response_integration_id = input(:aws_apigatewayv2_integration_response_integration_id, value: '', description: '')
-aws_apigatewayv2_integration_response_integration_response_key = input(:aws_apigatewayv2_integration_response_integration_response_key, value: '', description: '')
+# frozen_string_literal: true
 
-control 'aws-api-gateway-v2-integration-responses-v-1.0.0' do
-  impact 1.0
-  title 'Ensure API Gateway API Integration Responses resource has the correct properties.'
+require 'aws_backend'
 
-  describe aws_api_gateway_v2_integration_responses(api_id: aws_apigatewayv2_integration_response_api_id, integration_id: aws_apigatewayv2_integration_response_integration_id) do
-    it { should exist }
-  end
+class AwsApiGatewayV2IntegrationResponses < AwsCollectionResourceBase
+  name 'aws_api_gateway_v2_integration_responses'
+  desc 'Gets the IntegrationResponses for an Integration.'
+  example <<-EXAMPLE
+    describe aws_api_gateway_v2_integration_responses(api_id: 'APP_ID', integration_id: 'INTEGRATION_ID') do
+      it { should exist }
+    end
+  EXAMPLE
 
-  describe aws_api_gateway_v2_integration_responses(api_id: aws_apigatewayv2_integration_response_api_id, integration_id: aws_apigatewayv2_integration_response_integration_id) do
-    its('content_handling_strategies') { should be_empty }
-    its('integration_response_ids') { should include aws_apigatewayv2_integration_response_id }
-    its('integration_response_keys') { should include aws_apigatewayv2_integration_response_integration_response_key }
-    its('response_parameters') { should be_empty }
-    its('response_templates') { should be_empty }
-    its('template_selection_expressions') { should should be_empty }
+  def initialize(opts = {})
+    opts = { api_id: opts, integration_id: opts } if opts.is_a?(String)
+    super(opts)
+    validate_parameters(required: %i(api_id integration_id))
+    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
+    raise ArgumentError, "#{@__resource_name__}: integration_id must be provided!" if opts[:integration_id].blank?
+    catch_aws_errors do
+      @table = fetch(client: :apigatewayv2_client, operation: :get_integration_responses, kwargs: { api_id: opts[:api_id], integration_id: opts[:integration_id] }).items.map(&:to_h)
+      populate_filter_table_from_response
+    end
   end
 end
