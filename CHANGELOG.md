@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.37 -->
+<!-- latest_release 1.83.38 -->
+## [v1.83.38](https://github.com/inspec/inspec-aws/tree/v1.83.38) (2022-07-25)
+
+#### Merged Pull Requests
+- RESOURCE-424 AWS::ApiGatewayV2::Integration [#936](https://github.com/inspec/inspec-aws/pull/936) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.37](https://github.com/inspec/inspec-aws/tree/v1.83.37) (2022-07-22)
 
 #### Merged Pull Requests
 - RESOURCE-453 Convert attribute calls to input() in AWS integration tests [#927](https://github.com/inspec/inspec-aws/pull/927) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.37](https://github.com/inspec/inspec-aws/tree/v1.83.37) (2022-07-13)
 
