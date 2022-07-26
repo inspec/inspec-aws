@@ -111,6 +111,22 @@ describe aws_api_gateway_v2_route(api_id: 'APP_ID', route_id: 'ROUTE_ID') do
 end
 ```
 
+### Test to ensure a route key is available
+
+```ruby
+describe aws_api_gateway_v2_route(api_id: 'APP_ID', route_id: 'ROUTE_ID') do
+  its('route_key') { should eq 'ROUTE_KEY' }
+end
+```
+
+### Verify the target
+
+```ruby
+describe aws_api_gateway_v2_route(api_id: 'APP_ID', route_id: 'ROUTE_ID') do
+  its('target') { should eq 'ROUTE_TARGET' }
+end
+```
+
 ## Matchers
 
 {{% inspec_matchers_link %}}
