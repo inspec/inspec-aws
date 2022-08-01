@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_routes Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_routes` InSpec audit resource to test properties of multiple AWS API Gateway V2 Routes.
+Use the `aws_api_gateway_v2_routes` InSpec audit resource to test the properties of multiple AWS API Gateway V2 Routes.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Route](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-route.html).
 
@@ -36,7 +36,7 @@ end
 ## Properties
 
 `api_gateway_manageds`
-: Specifies whether a route is managed by API Gateway. If you created an API using quick create, the $default route is managed by API Gateway. You can't modify the $default route key.
+: Specifies whether a route is managed by API Gateway. If you created an API using quick create, the `$default` route is managed by API Gateway. You cannot modify the `$default` route key.
 
 : **Field**: `api_gateway_managed`
 
@@ -51,7 +51,7 @@ end
 : **Field**: `authorization_scopes`
 
 `authorization_types`
-: The authorization type for the route. For WebSocket APIs, valid values are NONE for open access, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
+: The authorization type for the route. For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer. For HTTP APIs, valid values are `NONE` for open access, `JWT` for using JSON Web Tokens, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
 
 : **Field**: `authorization_type`
 
@@ -110,7 +110,7 @@ describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the requirement of the api key
+### Test to verify the requirement of the API key
 
 ```ruby
 describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
@@ -118,7 +118,7 @@ describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the authorization type
+### Test to verify the authorization type
 
 ```ruby
 describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
@@ -126,7 +126,7 @@ describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the operation name
+### Test to verify the operation name
 
 ```ruby
 describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
@@ -138,7 +138,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -149,6 +149,8 @@ describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 
