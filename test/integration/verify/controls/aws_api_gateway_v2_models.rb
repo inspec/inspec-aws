@@ -1,23 +1,9 @@
 aws_apigatewayv2_model_api_id = input(:aws_apigatewayv2_model_api_id, value: '', description: '')
 aws_apigatewayv2_model_content_type = input(:aws_apigatewayv2_model_content_type, value: 'application/json', description: '')
-aws_apigatewayv2_model_description = input(:aws_apigatewayv2_model_description, value: '', description: '')
 aws_apigatewayv2_model_id = input(:aws_apigatewayv2_model_id, value: '', description: '')
 aws_apigatewayv2_model_name = input(:aws_apigatewayv2_model_name, value: 'example', description: '')
-aws_apigatewayv2_model_schema = input(:aws_apigatewayv2_domain_name_domain_name, value: '<<EOT
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "ExampleModel",
-  "type": "object",
-  "properties": {
-    "id": { "type": "string" }
-  }
-}
 
-EOT
-
-', description: '')
-
-control 'aws-api-gateway-v2-models' do
+control 'aws-api-gateway-v2-models-v-1-0-0' do
   impact 1.0
   title 'Ensure API Gateway API Models resource has the correct properties.'
   
