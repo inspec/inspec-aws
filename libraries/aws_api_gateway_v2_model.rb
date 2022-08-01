@@ -8,6 +8,8 @@ class AwsApiGatewayV2Model < AwsResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
       it { should exist }
+      its('model_id') { should eq 'MODEL_ID' }
+      its('name') { should eq 'MODEL_NAME' }
     end
   EXAMPLE
 

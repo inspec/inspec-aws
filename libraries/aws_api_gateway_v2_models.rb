@@ -8,6 +8,10 @@ class AwsApiGatewayV2Models < AwsCollectionResourceBase
   example <<-EXAMPLE
     describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
       it { should exist }
+      its('model_ids') { should eq ['MODEL_ID'] }
+      its('names') { should eq ['MODEL_NAME'] }
+      its('model_id') { should include 'MODEL_ID' }
+      its('name') { should include 'MODEL_NAME' }
     end
   EXAMPLE
 
