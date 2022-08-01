@@ -25,7 +25,7 @@ class AwsApiGatewayV2ModelsHappyPathTest < Minitest::Test
     @res = AwsApiGatewayV2Models.new(api_id: 'test_api_id', client_args: { stub_responses: true }, stub_data: [data])
   end
   
-  def test_model_exists
+  def test_models_exists
     assert @res.exists?
   end
 
