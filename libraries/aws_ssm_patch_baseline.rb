@@ -48,39 +48,39 @@ class AWSSESPatchBaseline < AwsResourceBase
   end
 
   def patch_filter_keys
-    (global_filters.map(&:patch_filters)).map(&:key)
+    global_filters.map(&:patch_filters).map(&:key)
   end
 
   def patch_filter_values
-    (global_filters.map(&:patch_filters)).map(&:values)
+    global_filters.map(&:patch_filters).map(&:values)
   end
 
   def patch_filter_groups
-    ((approval_rules.map(&:patch_rules)).map(&:patch_filter_group)).map(&:patch_filters)
+    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters)
   end
 
   def patch_filter_group_keys
-    (((approval_rules.map(&:patch_rules)).map(&:patch_filter_group)).map(&:patch_filters)).map(&:key)
+    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters).map(&:key)
   end
 
   def patch_filter_group_values
-    (((approval_rules.map(&:patch_rules)).map(&:patch_filter_group)).map(&:patch_filters)).map(&:values)
+    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters).map(&:values)
   end
 
   def compliance_levels
-    (approval_rules.map(&:patch_rules)).map(&:compliance_level)
+    approval_rules.map(&:patch_rules).map(&:compliance_level)
   end
 
   def approve_after_days
-    (approval_rules.map(&:patch_rules)).map(&:approve_after_days)
+    approval_rules.map(&:patch_rules).map(&:approve_after_days)
   end
 
   def approve_until_dates
-    (approval_rules.map(&:patch_rules)).map(&:approve_until_date)
+    approval_rules.map(&:patch_rules).map(&:approve_until_date)
   end
 
   def enable_non_securities
-    (approval_rules.map(&:patch_rules)).map(&:enable_non_security)
+    approval_rules.map(&:patch_rules).map(&:enable_non_security)
   end
 
   def source_names

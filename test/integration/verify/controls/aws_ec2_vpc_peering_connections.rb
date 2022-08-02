@@ -1,7 +1,6 @@
-aws_vpc_peering_connection_id = attribute("aws_vpc_peering_connection_id", value: "", description: "")
+aws_vpc_peering_connection_id = input(:aws_vpc_peering_connection_id, value: '', description: '')
 
 control 'aws-ec2-vpc-peering-connections-1.0' do
-
   impact 1.0
   title 'Test the properties of the aws ec2 vpc peer connections.'
 

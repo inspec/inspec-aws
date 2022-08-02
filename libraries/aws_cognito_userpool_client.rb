@@ -28,6 +28,11 @@ class AWSCognitoUserPoolClient < AwsResourceBase
     @user_pool_client[:user_pool_id, :client_id]
   end
 
+  def resource_id
+    return @display_name unless exists?
+    @user_pool_client[:client_id]
+  end
+
   def exists?
     !@user_pool_client.nil? && !@user_pool_client.empty?
   end

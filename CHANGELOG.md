@@ -1,9 +1,104 @@
-<!-- latest_release 1.83.23 -->
+<!-- latest_release 1.83.40 -->
+## [v1.83.40](https://github.com/inspec/inspec-aws/tree/v1.83.40) (2022-08-01)
+
+#### Merged Pull Requests
+- RESOURCE-427 AWS::ApiGatewayV2::Route [#938](https://github.com/inspec/inspec-aws/pull/938) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.83.39](https://github.com/inspec/inspec-aws/tree/v1.83.39) (2022-07-29)
+
+#### Merged Pull Requests
+- RESOURCE-425 AWS::ApiGatewayV2::IntegrationResponse [#937](https://github.com/inspec/inspec-aws/pull/937) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.38](https://github.com/inspec/inspec-aws/tree/v1.83.38) (2022-07-25)
+
+#### Merged Pull Requests
+- RESOURCE-424 AWS::ApiGatewayV2::Integration [#936](https://github.com/inspec/inspec-aws/pull/936) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.37](https://github.com/inspec/inspec-aws/tree/v1.83.37) (2022-07-22)
+
+#### Merged Pull Requests
+- RESOURCE-453 Convert attribute calls to input() in AWS integration tests [#927](https://github.com/inspec/inspec-aws/pull/927) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.37](https://github.com/inspec/inspec-aws/tree/v1.83.37) (2022-07-13)
+
+#### Merged Pull Requests
+- RESOURCE-422 AWS::ApiGatewayV2::Deployment [#934](https://github.com/inspec/inspec-aws/pull/934) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.36](https://github.com/inspec/inspec-aws/tree/v1.83.36) (2022-07-08)
+
+#### Merged Pull Requests
+- RESOURCE-472 Removing the lint errors in the rubocop v-1.31 [#935](https://github.com/inspec/inspec-aws/pull/935) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.35](https://github.com/inspec/inspec-aws/tree/v1.83.35) (2022-07-06)
+
+#### Merged Pull Requests
+- RESOURCE-423 AWS::ApiGatewayV2::DomainName [#933](https://github.com/inspec/inspec-aws/pull/933) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.34](https://github.com/inspec/inspec-aws/tree/v1.83.34) (2022-07-01)
+
+#### Merged Pull Requests
+- RESOURCE-421 AWS::ApiGatewayV2::Authorizer [#931](https://github.com/inspec/inspec-aws/pull/931) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.33](https://github.com/inspec/inspec-aws/tree/v1.83.33) (2022-07-01)
+
+#### Merged Pull Requests
+- RESOURCE-420 AWS::ApiGatewayV2::ApiMapping [#929](https://github.com/inspec/inspec-aws/pull/929) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.32](https://github.com/inspec/inspec-aws/tree/v1.83.32) (2022-06-30)
+
+#### Merged Pull Requests
+- Adding all the API Gateway resources in the readme.md file [#932](https://github.com/inspec/inspec-aws/pull/932) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.31](https://github.com/inspec/inspec-aws/tree/v1.83.31) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-382 unit-test-cases-for-aws-lambda-event-invoke-config [#917](https://github.com/inspec/inspec-aws/pull/917) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.83.30](https://github.com/inspec/inspec-aws/tree/v1.83.30) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-418 AWS::ApiGatewayV2::Api [#926](https://github.com/inspec/inspec-aws/pull/926) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-30)
+
+#### Merged Pull Requests
+- RESOURCE-237 AWS::ApiGateway::UsagePlanKey [#919](https://github.com/inspec/inspec-aws/pull/919) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.29](https://github.com/inspec/inspec-aws/tree/v1.83.29) (2022-06-23)
+
+#### Merged Pull Requests
+- RESOURCE-236 AWS::ApiGateway::UsagePlan [#916](https://github.com/inspec/inspec-aws/pull/916) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.28](https://github.com/inspec/inspec-aws/tree/v1.83.28) (2022-06-23)
+
+#### Merged Pull Requests
+- RESOURCE-233 AWS::ApiGateway::DomainName [#924](https://github.com/inspec/inspec-aws/pull/924) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.27](https://github.com/inspec/inspec-aws/tree/v1.83.27) (2022-06-22)
+
+#### Merged Pull Requests
+- RESOURCE-235 AWS::ApiGateway::Resource  [#923](https://github.com/inspec/inspec-aws/pull/923) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.26](https://github.com/inspec/inspec-aws/tree/v1.83.26) (2022-06-22)
+
+#### Merged Pull Requests
+- RESOURCE-238 AWS::ApiGateway::VpcLink [#922](https://github.com/inspec/inspec-aws/pull/922) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.25](https://github.com/inspec/inspec-aws/tree/v1.83.25) (2022-06-19)
+
+#### Merged Pull Requests
+- RESOURCE-446 Add APIGatewayV2 sdk in the library [#925](https://github.com/inspec/inspec-aws/pull/925) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.24](https://github.com/inspec/inspec-aws/tree/v1.83.24) (2022-06-14)
+
+#### Merged Pull Requests
+- RESOURCE-374-aws-resource-ids-misc [#914](https://github.com/inspec/inspec-aws/pull/914) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.83.23](https://github.com/inspec/inspec-aws/tree/v1.83.23) (2022-06-06)
 
 #### Merged Pull Requests
 - RESOURCE-371-aws-resource-ids-lbs [#911](https://github.com/inspec/inspec-aws/pull/911) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.22](https://github.com/inspec/inspec-aws/tree/v1.83.22) (2022-06-03)
 

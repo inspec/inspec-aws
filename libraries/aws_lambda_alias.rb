@@ -30,6 +30,10 @@ class AWSLambdaAlias < AwsResourceBase
     @res[:function_alias_name]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

@@ -1,5 +1,4 @@
 class AwsEmrClusterSecurityConfigurationMock < AwsBaseResourceMock
-  attr_accessor :cluster_id, :cluster_state, :cluster_arn
 
   def initialize
     super

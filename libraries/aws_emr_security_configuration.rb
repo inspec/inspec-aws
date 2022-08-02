@@ -42,6 +42,10 @@ class AwsEmrClusterSecurityConfiguration < AwsResourceBase
     !@security_configuration_name.nil? && !@security_configuration_name.empty?
   end
 
+  def resource_id
+    @security_configuration_name
+  end
+
   def to_s
     "AWS EMR Cluster Security Configuration Name: #{@security_configuration_name}"
   end

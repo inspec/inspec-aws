@@ -125,4 +125,9 @@ class AWSLambdaEventSourceMappingSuccessPathTest < Minitest::Test
   def test_maximum_retry_attempts
     assert_equal(@res.maximum_retry_attempts, 1 )
   end
+
+  def test_resource_id
+    refute_nil(@res.resource_id)
+    assert_equal(@res.resource_id, 'test1')
+  end
 end

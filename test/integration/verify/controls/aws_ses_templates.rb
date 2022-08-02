@@ -1,4 +1,4 @@
-aws_ses_template_name = attribute("aws_ses_template_name", value: "", description: "")
+aws_ses_template_name = input(:aws_ses_template_name, value: '', description: '')
 
 control 'aws-ses-templates-1.0' do
   impact 1.0

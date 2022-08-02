@@ -36,6 +36,10 @@ class AWSLambdaPermission < AwsResourceBase
     end
   end
 
+  def resource_id
+    @statement_id
+  end
+
   def to_s
     "Statement ID: #{@statement_id}"
   end

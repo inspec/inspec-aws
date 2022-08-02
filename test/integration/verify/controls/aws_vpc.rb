@@ -1,11 +1,11 @@
 title 'Test single AWS VPC'
 
-aws_default_vpc_id = attribute(:aws_default_vpc_id, value: '', description: 'The AWS region default VPC ID.')
-aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
-aws_vpc_cidr_block = attribute(:aws_vpc_cidr_block, value: '', description: 'The AWS VPC CIDR block.')
-aws_vpc_instance_tenancy = attribute(:aws_vpc_instance_tenancy, value: '', description: 'The AWS VPC instance tenancy option.')
-aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
-aws_vpc_name = attribute(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
+aws_default_vpc_id = input(:aws_default_vpc_id, value: '', description: 'The AWS region default VPC ID.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_vpc_cidr_block = input(:aws_vpc_cidr_block, value: '', description: 'The AWS VPC CIDR block.')
+aws_vpc_instance_tenancy = input(:aws_vpc_instance_tenancy, value: '', description: 'The AWS VPC instance tenancy option.')
+aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
+aws_vpc_name = input(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
 
 control 'aws-vpc-1.0' do
   impact 1.0
@@ -30,13 +30,6 @@ control 'aws-vpc-1.0' do
     it { should have_cidr_block_associated(aws_vpc_cidr_block) }
     it { should_not have_cidr_block_association_failed(aws_vpc_cidr_block) }
     it { should_not has_cidr_block_disassociated(aws_vpc_cidr_block) }
-  end
-
-  describe aws_vpc do
-    it { should exist }
-    it { should be_default }
-    it { should be_available }
-    its ('vpc_id') { should eq aws_default_vpc_id }
   end
 
   describe aws_vpc(aws_vpc_id) do

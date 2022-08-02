@@ -51,4 +51,9 @@ class AWSAmplifyAppSuccessPathTest < Minitest::Test
   def test_amplify_app_name
     assert_equal(@mq_app.name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@mq_app.resource_id)
+    assert_equal(@mq_app.resource_id, 'test1')
+  end
 end

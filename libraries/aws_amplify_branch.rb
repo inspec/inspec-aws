@@ -29,6 +29,10 @@ class AWSAmplifyBranch < AwsResourceBase
     @apps[:branch_name]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@apps.nil? && !@apps.empty?
   end

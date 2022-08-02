@@ -1,4 +1,4 @@
-aws_crawler_name = attribute(:aws_crawler_name, value: '', description: '')
+aws_crawler_name = input(:aws_crawler_name, value: '', description: '')
 
 control 'aws-glue-crawlers-1.0' do
   impact 1.0

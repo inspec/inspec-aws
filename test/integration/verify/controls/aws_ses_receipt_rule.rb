@@ -1,5 +1,5 @@
-aws_ses_receipt_rule_name = attribute("aws_ses_receipt_rule_name", value: "", description: "")
-aws_ses_receipt_rule_rule_set_name = attribute("aws_ses_receipt_rule_rule_set_name", value: "", description: "")
+aws_ses_receipt_rule_name = input(:aws_ses_receipt_rule_name, value: '', description: '')
+aws_ses_receipt_rule_rule_set_name = input(:aws_ses_receipt_rule_rule_set_name, value: '', description: '')
 
 control 'aws-ses-receipt-rule-1.0' do
   impact 1.0
@@ -40,5 +40,9 @@ control 'aws-ses-receipt-rule-1.0' do
     its('sns_action_encodings') { should_not be_empty }
 
     its('scan_enabled') { should eq true }
+  end
+
+  describe aws_ses_receipt_rule(rule_set_name: 'dummy', rule_name: 'dummy') do
+    it { should_not exist }
   end
 end

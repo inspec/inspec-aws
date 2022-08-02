@@ -1,7 +1,6 @@
 title 'Test an IAM Password Policy'
 
 control 'aws-iam-password-policy-1.0' do
-
   impact 1.0
   title 'Ensure AWS IAM Password Policy has the correct properties.'
 
@@ -13,7 +12,6 @@ control 'aws-iam-password-policy-1.0' do
     it { should require_lowercase_characters }
     it { should require_uppercase_characters}
     it { should allow_users_to_change_password }
-
     its('minimum_password_length')         { should be > 6 }
     its('number_of_passwords_to_remember') { should be > 3 }
   end

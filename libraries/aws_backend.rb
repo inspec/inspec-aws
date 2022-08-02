@@ -62,6 +62,7 @@ require 'aws-sdk-securityhub'
 require 'aws-sdk-ses'
 require 'aws-sdk-waf'
 require 'aws-sdk-synthetics'
+require 'aws-sdk-apigatewayv2'
 
 # AWS Inspec Backend Classes
 #
@@ -333,6 +334,10 @@ class AwsConnection
 
   def synthetics_client
     aws_client(Aws::Synthetics::Client)
+  end
+
+  def apigatewayv2_client
+    aws_client(Aws::ApiGatewayV2::Client)
   end
 end
 

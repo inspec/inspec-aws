@@ -63,4 +63,9 @@ class AWSBatchJobDefinitionSuccessPathTest < Minitest::Test
   def test_platform_capabilities
     assert_equal(@job_definitions.platform_capabilities, ['test1'])
   end
+
+  def test_resource_id
+    refute_nil(@job_definitions.resource_id)
+    assert_equal(@job_definitions.resource_id, 'test1')
+  end
 end

@@ -83,4 +83,9 @@ class AWSLambdaVersionSuccessPathTest < Minitest::Test
   def test_license_info
     assert_equal(@resp.license_info, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

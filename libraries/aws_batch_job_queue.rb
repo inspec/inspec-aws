@@ -31,6 +31,10 @@ class AWSBatchJobQueue < AwsResourceBase
     @job_queues[:job_queue_name]
   end
 
+  def resource_id
+    @display_name
+  end
+
   def exists?
     !@job_queues.nil? && !@job_queues.empty?
   end

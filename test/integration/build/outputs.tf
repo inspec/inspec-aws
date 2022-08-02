@@ -907,7 +907,7 @@ output "domain-names-sdb" {
   value = aws_simpledb_domain.users.name
 }
 
-output "aws_api_gateway_deployement_id_test" {
+output "aws_api_gateway_deployement_id" {
   value = aws_api_gateway_stage.aws_api_gateway_stage_test.deployment_id
 }
 
@@ -1875,3 +1875,493 @@ output "aws_api_gateway_usage_plan_key_name" {
 output "aws_api_gateway_usage_plan_key_value" {
   value = aws_api_gateway_usage_plan_key.aws_api_gateway_usage_plan_key_test.value
 }
+
+########################################################################################################################################################
+##################################################################  AWS::ApiGatewayV2 ##################################################################
+########################################################################################################################################################
+
+########################################################################################################################################################
+################################################################  AWS::ApiGatewayV2::Api ###############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_api_id" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.id
+}
+
+output "aws_apigatewayv2_api_api_endpoint" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.api_endpoint
+}
+
+output "aws_apigatewayv2_api_api_key_selection_expression" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.api_key_selection_expression
+}
+
+output "aws_apigatewayv2_api_description" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.description
+}
+
+output "aws_apigatewayv2_api_disable_execute_api_endpoint" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.disable_execute_api_endpoint
+}
+
+output "aws_apigatewayv2_api_name" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.name
+}
+
+output "aws_apigatewayv2_api_protocol_type" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.protocol_type
+}
+
+output "aws_apigatewayv2_api_route_selection_expression" {
+  value = aws_apigatewayv2_api.aws_apigatewayv2_api_test.route_selection_expression
+}
+
+########################################################################################################################################################
+############################################################  AWS::ApiGatewayV2::ApiMapping ############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_api_mapping_id" {
+  value = aws_apigatewayv2_api_mapping.aws_apigatewayv2_api_mapping_test.id
+}
+
+output "aws_apigatewayv2_api_mapping_api_id" {
+  value = aws_apigatewayv2_api_mapping.aws_apigatewayv2_api_mapping_test.api_id
+}
+
+output "aws_apigatewayv2_api_mapping_api_mapping_key" {
+  value = aws_apigatewayv2_api_mapping.aws_apigatewayv2_api_mapping_test.api_mapping_key
+}
+
+output "aws_apigatewayv2_api_mapping_domain_name" {
+  value = aws_apigatewayv2_api_mapping.aws_apigatewayv2_api_mapping_test.domain_name
+}
+
+output "aws_apigatewayv2_api_mapping_stage" {
+  value = aws_apigatewayv2_api_mapping.aws_apigatewayv2_api_mapping_test.stage
+}
+
+########################################################################################################################################################
+############################################################  AWS::ApiGatewayV2::Authorizer ############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_authorizer_id" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.id
+}
+
+output "aws_apigatewayv2_authorizer_api_id" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.api_id
+}
+
+output "aws_apigatewayv2_authorizer_authorizer_credentials_arn" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.authorizer_credentials_arn
+}
+
+output "aws_apigatewayv2_authorizer_authorizer_payload_format_version" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.authorizer_payload_format_version
+}
+
+output "aws_apigatewayv2_authorizer_authorizer_result_ttl_in_seconds" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.authorizer_result_ttl_in_seconds
+}
+
+output "aws_apigatewayv2_authorizer_authorizer_type" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.authorizer_type
+}
+
+output "aws_apigatewayv2_authorizer_authorizer_uri" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.authorizer_uri
+}
+
+output "aws_apigatewayv2_authorizer_enable_simple_responses" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.enable_simple_responses
+}
+
+output "aws_apigatewayv2_authorizer_identity_sources" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.identity_sources
+}
+
+output "aws_apigatewayv2_authorizer_jwt_configuration" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.jwt_configuration
+}
+
+output "aws_apigatewayv2_authorizer_name" {
+  value = aws_apigatewayv2_authorizer.aws_apigatewayv2_authorizer_test.name
+}
+
+########################################################################################################################################################
+############################################################  AWS::ApiGatewayV2::Deployment ############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_deployment_api_id" {
+  value = aws_apigatewayv2_deployment.aws_apigatewayv2_deployment_test.api_id
+}
+
+output "aws_apigatewayv2_deployment_id" {
+  value = aws_apigatewayv2_deployment.aws_apigatewayv2_deployment_test.id
+}
+
+output "aws_apigatewayv2_deployment_description" {
+  value = aws_apigatewayv2_deployment.aws_apigatewayv2_deployment_test.description
+}
+
+output "aws_apigatewayv2_deployment_auto_deployed" {
+  value = aws_apigatewayv2_deployment.aws_apigatewayv2_deployment_test.auto_deployed
+}
+
+output "aws_apigatewayv2_deployment_triggers" {
+  value = aws_apigatewayv2_deployment.aws_apigatewayv2_deployment_test.triggers
+}
+
+########################################################################################################################################################
+############################################################  AWS::ApiGatewayV2::DomainName ############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_domain_name_id" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.id
+}
+
+output "aws_apigatewayv2_domain_name_domain_name" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.domain_name
+}
+
+output "aws_apigatewayv2_domain_name_arn" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.arn
+}
+
+output "aws_apigatewayv2_domain_name_api_mapping_selection_expression" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.api_mapping_selection_expression
+}
+
+output "aws_apigatewayv2_domain_name_domain_name_configuration" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.domain_name_configuration
+}
+
+output "aws_apigatewayv2_domain_name_mutual_tls_authentication" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.mutual_tls_authentication
+}
+
+output "aws_apigatewayv2_domain_name_timeouts" {
+  value = aws_apigatewayv2_domain_name.aws_apigatewayv2_domain_name_test.timeouts
+}
+
+########################################################################################################################################################
+##############################################################  AWS::ApiGatewayV2::Stage ###############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_stage_id" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.id
+}
+
+output "aws_apigatewayv2_stage_arn" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.arn
+}
+
+output "aws_apigatewayv2_stage_api_id" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.api_id
+}
+
+output "aws_apigatewayv2_stage_description" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.description
+}
+
+output "aws_apigatewayv2_stage_name" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.name
+}
+
+output "aws_apigatewayv2_stage_execution_arn" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.execution_arn
+}
+
+output "aws_apigatewayv2_stage_access_log_settings" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.access_log_settings
+}
+
+output "aws_apigatewayv2_stage_auto_deploy" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.auto_deploy
+}
+
+output "aws_apigatewayv2_stage_client_certificate_id" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.client_certificate_id
+}
+
+output "aws_apigatewayv2_stage_tags" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.tags
+}
+
+output "aws_apigatewayv2_stage_stage_variables" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.stage_variables
+}
+
+output "aws_apigatewayv2_stage_route_settings" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.route_settings
+}
+
+output "aws_apigatewayv2_stage_deployment_id" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.deployment_id
+}
+
+output "aws_apigatewayv2_stage_default_route_settings" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.default_route_settings
+}
+
+output "aws_apigatewayv2_stage_invoke_url" {
+  value = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.invoke_url
+}
+
+########################################################################################################################################################
+##############################################################  AWS::ApiGatewayV2::Integration #########################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_integration_description" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.description
+}
+
+output "aws_apigatewayv2_integration_api_id" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.api_id
+}
+
+output "aws_apigatewayv2_integration_id" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.id
+}
+
+output "aws_apigatewayv2_integration_credentials_arn" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.credentials_arn
+}
+
+output "aws_apigatewayv2_integration_connection_id" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.connection_id
+}
+
+output "aws_apigatewayv2_integration_integration_method" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.integration_method
+}
+
+output "aws_apigatewayv2_integration_integration_type" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.integration_type
+}
+
+output "aws_apigatewayv2_integration_integration_response_selection_expression" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.integration_response_selection_expression
+}
+
+output "aws_apigatewayv2_integration_integration_uri" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.integration_uri
+}
+
+output "aws_apigatewayv2_integration_integration_subtype" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.integration_subtype
+}
+
+output "aws_apigatewayv2_integration_request_parameters" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.request_parameters
+}
+
+output "aws_apigatewayv2_integration_request_templates" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.request_templates
+}
+
+output "aws_apigatewayv2_integration_response_parameters" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.response_parameters
+}
+
+output "aws_apigatewayv2_integration_tls_config" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.tls_config
+}
+
+output "aws_apigatewayv2_integration_timeout_milliseconds" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.timeout_milliseconds
+}
+
+output "aws_apigatewayv2_integration_template_selection_expression" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.template_selection_expression
+}
+
+output "aws_apigatewayv2_integration_payload_format_version" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.payload_format_version
+}
+
+output "aws_apigatewayv2_integration_passthrough_behavior" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.passthrough_behavior
+}
+
+output "aws_apigatewayv2_integration_content_handling_strategy" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.content_handling_strategy
+}
+
+output "aws_apigatewayv2_integration_connection_type" {
+  value = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.connection_type
+}
+
+########################################################################################################################################################
+########################################################  AWS::ApiGatewayV2::IntegrationResponse #######################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_integration_response_content_handling_strategy" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.content_handling_strategy
+}
+
+output "aws_apigatewayv2_integration_response_template_selection_expression" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.template_selection_expression
+}
+
+output "aws_apigatewayv2_integration_response_id" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.id
+}
+
+output "aws_apigatewayv2_integration_response_api_id" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.api_id
+}
+
+output "aws_apigatewayv2_integration_response_integration_id" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.integration_id
+}
+
+output "aws_apigatewayv2_integration_response_response_templates" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.response_templates
+}
+
+output "aws_apigatewayv2_integration_response_integration_response_key" {
+  value = aws_apigatewayv2_integration_response.aws_apigatewayv2_integration_response_test.integration_response_key
+}
+
+########################################################################################################################################################
+###############################################################  AWS::ApiGatewayV2::Model ##############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_model_api_id" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.api_id
+}
+
+output "aws_apigatewayv2_model_id" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.id
+}
+
+output "aws_apigatewayv2_model_description" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.description
+}
+
+output "aws_apigatewayv2_model_name" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.name
+}
+
+output "aws_apigatewayv2_model_content_type" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.content_type
+}
+
+output "aws_apigatewayv2_model_schema" {
+  value = aws_apigatewayv2_model.aws_apigatewayv2_model_test.schema
+}
+
+########################################################################################################################################################
+###############################################################  AWS::ApiGatewayV2::Route ##############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_route_id" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.id
+}
+
+output "aws_apigatewayv2_route_api_id" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.api_id
+}
+
+output "aws_apigatewayv2_route_api_key_required" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.api_key_required
+}
+
+output "aws_apigatewayv2_route_authorization_scopes" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.authorization_scopes
+}
+
+output "aws_apigatewayv2_route_authorization_type" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.authorization_type
+}
+
+output "aws_apigatewayv2_route_authorizer_id" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.authorizer_id
+}
+
+output "aws_apigatewayv2_route_model_selection_expression" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.model_selection_expression
+}
+
+output "aws_apigatewayv2_route_operation_name" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.operation_name
+}
+
+output "aws_apigatewayv2_route_target" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.target
+}
+
+output "aws_apigatewayv2_route_route_response_selection_expression" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.route_response_selection_expression
+}
+
+output "aws_apigatewayv2_route_route_key" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.route_key
+}
+
+output "aws_apigatewayv2_route_request_parameter" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.request_parameter
+}
+
+output "aws_apigatewayv2_route_request_models" {
+  value = aws_apigatewayv2_route.aws_apigatewayv2_route_test.request_models
+}
+
+########################################################################################################################################################
+########################################################### AWS::ApiGatewayV2::RouteResponse ###########################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_route_response_id" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.id
+}
+
+output "aws_apigatewayv2_route_response_api_id" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.api_id
+}
+
+output "aws_apigatewayv2_route_response_model_selection_expression" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.model_selection_expression
+}
+
+output "aws_apigatewayv2_route_response_route_response_key" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.route_response_key
+}
+
+output "aws_apigatewayv2_route_response_route_id" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.route_id
+}
+
+output "aws_apigatewayv2_route_response_response_models" {
+  value = aws_apigatewayv2_route_response.aws_apigatewayv2_route_response_test.response_models
+}
+
+########################################################################################################################################################
+############################################################## AWS::ApiGatewayV2::VpcLink ##############################################################
+########################################################################################################################################################
+
+output "aws_apigatewayv2_vpc_link_id" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.id
+}
+
+output "aws_apigatewayv2_vpc_link_name" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.name
+}
+
+output "aws_apigatewayv2_vpc_link_tags" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.tags
+}
+
+output "aws_apigatewayv2_vpc_link_arn" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.arn
+}
+
+output "aws_apigatewayv2_vpc_link_security_group_ids" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.security_group_ids
+}
+
+output "aws_apigatewayv2_vpc_link_subnet_ids" {
+  value = aws_apigatewayv2_vpc_link.aws_apigatewayv2_vpc_link_test.subnet_ids
+}
+
+

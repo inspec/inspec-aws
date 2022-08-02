@@ -30,6 +30,10 @@ class AWSTransferUser < AwsResourceBase
     @res[:user_name]
   end
 
+  def resource_id
+    @user_name
+  end
+
   def exists?
     !@res.nil? && !@res.empty?
   end

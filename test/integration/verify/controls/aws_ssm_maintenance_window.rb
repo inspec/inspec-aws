@@ -1,4 +1,4 @@
-aws_ssm_maintenance_window_id = attribute("aws_ssm_maintenance_window_id", value: "", description: "")
+aws_ssm_maintenance_window_id = input(:aws_ssm_maintenance_window_id, value: '', description: '')
 
 control 'aws-ssm-maintenance-window-1.0' do
   impact 1.0
@@ -20,5 +20,9 @@ control 'aws-ssm-maintenance-window-1.0' do
     its('duration') { should eq 3 }
     its('cutoff') { should eq 1 }
     its('enabled') { should eq true }
+  end
+
+  describe aws_ssm_maintenance_window(window_id: 'dummy') do
+    it { should_not exist }
   end
 end

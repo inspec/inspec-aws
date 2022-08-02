@@ -1,5 +1,5 @@
-aws_networkfirewall_firewall_name = attribute("aws_networkfirewall_firewall_name", value: "", description: "")
-aws_networkfirewall_firewall_arn = attribute("aws_networkfirewall_firewall_arn", value: "", description: "")
+aws_networkfirewall_firewall_name = input(:aws_networkfirewall_firewall_name, value: '', description: '')
+aws_networkfirewall_firewall_arn = input(:aws_networkfirewall_firewall_arn, value: '', description: '')
 
 control 'aws-network-firewall-logging-configuration-1.0' do
   impact 1.0
@@ -15,5 +15,9 @@ control 'aws-network-firewall-logging-configuration-1.0' do
     its('logging_configuration_log_destination_configs_log_type') { should be_empty }
     its('logging_configuration_log_destination_configs_log_destination_type') { should be_empty }
     its('logging_configuration_log_destination_configs_log_destination') { should be_empty }
+  end
+
+  describe aws_network_firewall_logging_configuration(firewall_name: 'dummy') do
+    it { should_not exist }
   end
 end

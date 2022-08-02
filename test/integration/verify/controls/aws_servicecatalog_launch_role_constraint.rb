@@ -1,5 +1,5 @@
-aws_servicecatalog_portfolio_sm_id = attribute("aws_servicecatalog_portfolio_sm_id", value: "", description: "")
-aws_servicecatalog_portfolio_sm_arn = attribute("aws_servicecatalog_portfolio_sm_arn", value: "", description: "")
+aws_servicecatalog_portfolio_sm_id = input(:aws_servicecatalog_portfolio_sm_id, value: '', description: '')
+aws_servicecatalog_portfolio_sm_arn = input(:aws_servicecatalog_portfolio_sm_arn, value: '', description: '')
 
 control 'aws-service-catalog-launch-role-constraint-1.0' do
   impact 1.0
@@ -23,7 +23,7 @@ control 'aws-service-catalog-launch-role-constraint-1.0' do
     its('budgets') { should be_empty }
   end
 
-  describe aws_servicecatalog_launch_role_constraint(id: "dummy") do
+  describe aws_servicecatalog_launch_role_constraint(id: 'dummy') do
     it { should_not exist }
   end
 end
