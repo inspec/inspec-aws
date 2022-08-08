@@ -27,10 +27,18 @@ class AwsRegions < AwsResourceBase
 
   def fetch_data
     region_rows = []
+    @query_params = {}
+    @query_params[:region_names] = if opts[:region_names].is_a?(Array) || opts[:region_names].nil?
+                                     if opts[:region_names].nil?
+                                       @query_params[:all_regions] = true
+                                     end
+                                     opts[:region_names]
+                                   else [opts[:region_names]]
+                                   end
     catch_aws_errors do
-      @regions = @aws.compute_client.describe_regions.to_h[:regions]
+      @regions = @aws.compute_client.describe_regions((@query_params)).to_h[:regions]
     end
-    return [] if !@regions || @regions.empty?
+    return region_rows if !@regions || @regions.empty?
     @regions.each do |region|
       region_rows += [{ region_name: region[:region_name],
                         endpoint: region[:endpoint] }]
