@@ -401,8 +401,9 @@ class AwsResourceBase < Inspec.resource(1)
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data region_names)
+    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
     raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
+    require 'byebug'; byebug
     raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
     raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
       return true if a.instance_of?(Integer)
