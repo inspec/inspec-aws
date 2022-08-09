@@ -20,21 +20,40 @@ class AwsRegions < AwsResourceBase
              .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
+    opts = update_regions(opts)
     super(opts)
-    validate_parameters
+    validate_parameters(allow: %i(region_names, all_regions))
     @table = fetch_data
   end
 
   def fetch_data
     region_rows = []
+    @query_params = {}
+    @query_params[:region_names] = if opts[:region_names].is_a?(Array)
+                                     opts[:region_names]
+                                   else [opts[:region_names]]
+                                   end
     catch_aws_errors do
-      @regions = @aws.compute_client.describe_regions.to_h[:regions]
+      @regions = @aws.compute_client.describe_regions((@query_params)).to_h[:regions]
     end
-    return [] if !@regions || @regions.empty?
+    return region_rows if !@regions || @regions.empty?
     @regions.each do |region|
       region_rows += [{ region_name: region[:region_name],
                         endpoint: region[:endpoint] }]
     end
     @table = region_rows
+  end
+
+  private
+
+  def update_regions(opts)
+    opts = { region_names: opts } if opts.is_a?(String) || opts.is_a?(Array)
+    if !opts[:region_names].is_a?(Array) && !opts[:region_names].is_a?(String)
+      opts[:all_regions] = true
+      opts.delete(:region_names)
+    else
+      opts[:all_regions] = false
+    end
+    opts
   end
 end
