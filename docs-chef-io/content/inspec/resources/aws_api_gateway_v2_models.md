@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_models Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_models` InSpec audit resource to test properties of multiple AWS API Gateway V2 Models.
+Use the `aws_api_gateway_v2_models` InSpec audit resource to test the properties of multiple AWS API Gateway V2 models.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Model](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-model.html).
 
@@ -36,7 +36,7 @@ end
 ## Properties
 
 `content_types`
-: The content-type for the model, for example, "application/json".
+: The content-type for the model, for example, **application/json**.
 
 : **Field**: `content_type`
 
@@ -56,7 +56,7 @@ end
 : **Field**: `name`
 
 `schemas`
-: The schema for the model.
+: The schema for the model. For application/json models, this should be JSON schema draft 4 model.
 
 : **Field**: `schema`
 
@@ -70,7 +70,7 @@ describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the model name
+### Test to verify the model name
 
 ```ruby
 describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
@@ -78,7 +78,7 @@ describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the model description
+### Test to verify the model description
 
 ```ruby
 describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
@@ -86,7 +86,7 @@ describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
 end
 ```
 
-### Verify the model content type is `application/json`
+### Test to verify the model content type is 'application/json'
 
 ```ruby
 describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
@@ -98,7 +98,7 @@ end
 
 {{% inspec_matchers_link %}}
 
-The controls will pass if the `get` method returns at least one result.
+The control passes if the `get` method returns at least one result.
 
 ### exist
 
@@ -109,6 +109,8 @@ describe aws_api_gateway_v2_models(api_id: 'APP_ID') do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 

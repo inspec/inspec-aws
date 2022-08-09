@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_api_gateway_v2_model resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_api_gateway_v2_model` InSpec audit resource to test the properties of a specific AWS API Gateway V2 Model.
+Use the `aws_api_gateway_v2_model` InSpec audit resource to test the properties of a specific AWS API Gateway V2 model.
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Model](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-model.html).
 
@@ -39,7 +39,7 @@ end
 ## Properties
 
 `content_type`
-: The content-type for the model, for example, "application/json".
+: The content-type for the model, for example, **application/json**.
 
 `description`
 : The description of the model.
@@ -51,7 +51,7 @@ end
 : The name of the model. Must be alphanumeric.
 
 `schema`
-: The schema for the model.
+: The schema for the model. For application/json models, this should be JSON schema draft 4 model.
 
 ## Examples
 
@@ -63,7 +63,7 @@ describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
 end
 ```
 
-### Verify the model name
+### Test to verify the model name
 
 ```ruby
 describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
@@ -71,7 +71,7 @@ describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
 end
 ```
 
-### Verify the model description
+### Test to verify the model description
 
 ```ruby
 describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
@@ -79,7 +79,7 @@ describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
 end
 ```
 
-### Verify the model content type
+### Test to verify the model content type
 
 ```ruby
 describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
@@ -102,6 +102,8 @@ describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
   it { should exist }
 end
 ```
+
+### not exist
 
 Use `should_not` to test that the entity does not exist.
 
