@@ -30,6 +30,7 @@ class AwsRegions < AwsResourceBase
     region_rows = []
     query_param
     catch_aws_errors do
+      # require 'byebug';byebug
       @regions = @aws.compute_client.describe_regions((@query_params)).to_h[:regions]
     end
     return region_rows if !@regions || @regions.empty?
@@ -44,9 +45,8 @@ class AwsRegions < AwsResourceBase
 
   def query_param
     @query_params = {}
-    @query_params[:all_regions] = opts[:all_regions]
-
     if !opts[:all_regions]
+      @query_params[:all_regions] = opts[:all_regions]
       @query_params[:region_names] = if opts[:region_names].is_a?(Array)
                                        opts[:region_names]
                                      else
