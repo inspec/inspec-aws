@@ -394,7 +394,6 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
       allow += required
     end
-
     if require_any_of
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require_any_of}" unless require_any_of.is_a?(Array) && require_any_of.all? { |r| r.is_a?(Symbol) }
       raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
