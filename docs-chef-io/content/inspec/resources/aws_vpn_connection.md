@@ -48,7 +48,7 @@ The AWS VPN connection ID is required.
 : The identifier of the AWS VPN connection.
 
 `state`
-: The current state of the VPN connection. Possible values are: `pending`, `available`, `deleting`, `deleted`.
+: The current state of the VPN connection. Possible values are: `pending`, `available`, `deleting`, and `deleted`.
 
 `type`
 : The type of VPN connection that the VPN connection supports.
@@ -57,13 +57,13 @@ The AWS VPN connection ID is required.
 : The ID of the associated VPN.
 
 `tags`
-: All tags that are associated to the VPN connection.
+: All tags that are associated with the VPN connection.
 
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/EC2/Types/VpnConnection.html).
 
 ## Examples
 
-**Test that a VPN Connection is available.**
+### Test that a VPN Connection is available
 
 ```ruby
 describe aws_vpn_connection('vpn-01234567') do
@@ -74,7 +74,6 @@ end
 ## Matchers
 
 {{% inspec_matchers_link %}}
-
 
 ### exist
 
