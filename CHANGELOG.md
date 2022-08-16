@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.42 -->
+<!-- latest_release 1.83.43 -->
+## [v1.83.43](https://github.com/inspec/inspec-aws/tree/v1.83.43) (2022-08-16)
+
+#### Merged Pull Requests
+- VPN connection - Doc Review [#943](https://github.com/inspec/inspec-aws/pull/943) ([dkumaras](https://github.com/dkumaras))
+<!-- latest_release -->
+
 ## [v1.83.42](https://github.com/inspec/inspec-aws/tree/v1.83.42) (2022-08-16)
 
 #### Merged Pull Requests
 - Adding vpn connection resource [#930](https://github.com/inspec/inspec-aws/pull/930) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.83.41](https://github.com/inspec/inspec-aws/tree/v1.83.41) (2022-08-09)
 
