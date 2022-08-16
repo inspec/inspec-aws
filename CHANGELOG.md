@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.41 -->
+<!-- latest_release 1.83.42 -->
+## [v1.83.42](https://github.com/inspec/inspec-aws/tree/v1.83.42) (2022-08-16)
+
+#### Merged Pull Requests
+- Adding vpn connection resource [#930](https://github.com/inspec/inspec-aws/pull/930) ([Rohit1509](https://github.com/Rohit1509))
+<!-- latest_release -->
+
 ## [v1.83.41](https://github.com/inspec/inspec-aws/tree/v1.83.41) (2022-08-09)
 
 #### Merged Pull Requests
 - RESOURCE-426 AWS::ApiGatewayV2::Model [#939](https://github.com/inspec/inspec-aws/pull/939) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.40](https://github.com/inspec/inspec-aws/tree/v1.83.40) (2022-08-01)
 
