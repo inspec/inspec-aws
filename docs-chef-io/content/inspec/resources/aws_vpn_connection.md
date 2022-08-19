@@ -35,7 +35,7 @@ end
 ## Parameters
 
 `vpn_connection_id` _(required)_
-: The identifier of the AWS VPN connection. It can be passed either as a string or as a `vpn_connection_id: 'value'` key-value entry in a hash.
+: The identifier of the AWS VPN connection. It can be passed either as a string or as a `vpn_connection_id: 'value'` hash key-value entry.
 
 ## Properties
 
@@ -58,7 +58,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-### Test that a VPN Connection is available
+### Test that a VPN connection is available
 
 ```ruby
 describe aws_vpn_connection('vpn-1234567890') do
@@ -66,7 +66,7 @@ describe aws_vpn_connection('vpn-1234567890') do
 end
 ```
 
-### Test that a VPN Connection status is `available`
+### Test that a VPN connection status is available
 
 ```ruby
 describe aws_vpn_connection('vpn-1234567890') do
