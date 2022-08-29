@@ -85,9 +85,17 @@ class AwsIamInlinePolicy < AwsResourceBase
       effect     = s[:Effect]
       resource   = s[:Resource].is_a?(Array) ? s[:Resource].sort : s[:Resource]
 
-      action_match = criteria[:Action].nil? ? true : actions.include?(criteria[:Action])
+      action_match = if criteria[:Action].nil?
+                       true
+                     else
+                       s[:Action].is_a?(Array) ? actions.include?(criteria[:Action]) : actions.eql?(criteria[:Action])
+                     end
 
-      no_action_match = criteria[:NotAction].nil? ? true : notactions.include?(criteria[:NotAction])
+      no_action_match = if criteria[:NotAction].nil?
+                          true
+                        else
+                          s[:NotAction].is_a?(Array) ? notactions.include?(criteria[:NotAction]) : notactions.eql?(criteria[:NotAction])
+                        end
 
       effect_match = criteria[:Effect].nil? ? true : effect.eql?(criteria[:Effect])
 
