@@ -51,11 +51,7 @@ class AwsIamRole < AwsResourceBase
   def tags
     tag_list = []
     catch_aws_errors do
-      begin
-        tag_list = @aws.iam_client.get_role(role_name: opts[:role_name]).role.tags
-      rescue
-        return {}
-      end
+      tag_list = @aws.iam_client.get_role(role_name: opts[:role_name]).role.tags
     end
     map_tags(tag_list)
   end
