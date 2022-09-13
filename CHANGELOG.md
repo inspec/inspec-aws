@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.44 -->
+<!-- latest_release 1.83.45 -->
+## [v1.83.45](https://github.com/inspec/inspec-aws/tree/v1.83.45) (2022-09-13)
+
+#### Merged Pull Requests
+- RESOURCE-491 Modify the sample profile inspec-yml in the inspec-aws [#945](https://github.com/inspec/inspec-aws/pull/945) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.44](https://github.com/inspec/inspec-aws/tree/v1.83.44) (2022-09-11)
 
 #### Merged Pull Requests
 - adding tags definition for IAM Role [#947](https://github.com/inspec/inspec-aws/pull/947) ([Rohit1509](https://github.com/Rohit1509))
-<!-- latest_release -->
 
 ## [v1.83.43](https://github.com/inspec/inspec-aws/tree/v1.83.43) (2022-08-16)
 
