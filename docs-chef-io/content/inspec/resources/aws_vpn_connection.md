@@ -21,26 +21,21 @@ Use the `aws_vpn_connection` InSpec audit resource to test the properties of a s
 An `aws_vpn_connection` resource block declares the tests for a single AWS VPN connection by `vpn_connection_id`.
 
 ```ruby
-describe aws_vpn_connection(vpn_connection_id: 'vpn-01234567') do
+describe aws_vpn_connection(vpn_connection_id: 'vpn-1234567890') do
   it { should exist }
 end
 ```
 
-The value of the `vpn_connection_id` can be provided as a string.
-
 ```ruby
-describe aws_vpn_connection('vpn-01234567') do
+describe aws_vpn_connection('vpn-1234567890') do
   it { should exist }
 end
 ```
 
 ## Parameters
 
-The AWS VPN connection ID is required.
-
 `vpn_connection_id` _(required)_
-
-: It can be passed either as a string or as a `vpn_connection_id: 'value'` key-value entry in a hash.
+: The identifier of the AWS VPN connection. It can be passed either as a string or as a `vpn_connection_id: 'value'` hash key-value entry.
 
 ## Properties
 
@@ -63,10 +58,18 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-### Test that a VPN Connection is available
+### Test that a VPN connection is available
 
 ```ruby
-describe aws_vpn_connection('vpn-01234567') do
+describe aws_vpn_connection('vpn-1234567890') do
+    its('vpn_connection_id') { should eq 'vpn-1234567890' }
+end
+```
+
+### Test that a VPN connection status is available
+
+```ruby
+describe aws_vpn_connection('vpn-1234567890') do
     its('status') { should eq 'available' }
 end
 ```
@@ -75,24 +78,28 @@ end
 
 {{% inspec_matchers_link %}}
 
+The control passes if the `get` method returns at least one result.
+
 ### exist
 
+Use `should` to test that the entity exists.
+
 ```ruby
-describe aws_vpn_connection('vpn-01234567') do
-    it { should exist }
+describe aws_vpn_connection('vpn-1234567890') do
+  it { should exist }
 end
 ```
 
-### VPN Gateway
+### not exist
+
+Use `should_not` to test that the entity does not exist.
 
 ```ruby
-describe aws_vpn_connection('vpn-01234567') do
-    its('vpn_gateway_id') { should eq 'vpc-0a510beed76210f2f'}
+describe aws_vpn_connection('vpn-1234567890') do
+  it { should_not exist }
 end
 ```
 
 ## AWS Permissions
 
 {{% aws_permissions_principal action="EC2:Client:DescribeVpnConnectionsResult" %}}
-
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.amazonaws.cn/en_us/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

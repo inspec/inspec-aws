@@ -5,16 +5,14 @@ require 'aws_backend'
 class AwsVPNConnection < AwsResourceBase
   name 'aws_vpn_connection'
   desc 'Verifies settings for a single AWS VPN Connection.'
-
-  example "
-   describe aws_vpn_connection(vpn_connection_id: 'vpn-1234567890') do
-     it { should exist }
-   end
-
-   describe aws_vpn_connection('vpn-1234567890') do
-     it { should exist }
-   end
-  "
+  example <<-EXAMPLE
+     describe aws_vpn_connection(vpn_connection_id: 'vpn-1234567890') do
+       it { should exist }
+     end
+     describe aws_vpn_connection('vpn-1234567890') do
+       it { should exist }
+     end
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { vpn_connection_id: opts } if opts.is_a?(String)

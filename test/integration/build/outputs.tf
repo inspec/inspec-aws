@@ -806,10 +806,13 @@ output "aws_vpn_connection_id" {
   value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.id
 }
 
+output "aws_vpn_customer_gateway_id" {
+  value = aws_vpn_connection.aws_vpn_connection_vpn_connection_route_test.customer_gateway_id
+}
+
 output "aws_ec2_fleet_id" {
   value = aws_ec2_fleet.aws_ec2_fleet_test1.id
 }
-
 
 output "aws_customer_gateway_id" {
   value = aws_customer_gateway.aws_customer_gateway_test1.id
