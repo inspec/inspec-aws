@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.47 -->
+<!-- latest_release 1.83.48 -->
+## [v1.83.48](https://github.com/inspec/inspec-aws/tree/v1.83.48) (2022-09-14)
+
+#### Merged Pull Requests
+- Added a default `limit = 1` value to `aws_cloudwatch_log_group.rb` [#928](https://github.com/inspec/inspec-aws/pull/928) ([so1omon563](https://github.com/so1omon563))
+<!-- latest_release -->
+
 ## [v1.83.47](https://github.com/inspec/inspec-aws/tree/v1.83.47) (2022-09-13)
 
 #### Merged Pull Requests
 - updated inline policy criteria [#948](https://github.com/inspec/inspec-aws/pull/948) ([Jiaming1826](https://github.com/Jiaming1826))
-<!-- latest_release -->
 
 ## [v1.83.46](https://github.com/inspec/inspec-aws/tree/v1.83.46) (2022-09-13)
 
