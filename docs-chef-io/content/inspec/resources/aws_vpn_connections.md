@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_vpn_connections Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_vpn_connections` InSpec audit resource to test properties of all AWS VPN Connections.
+Use the `aws_vpn_connections` InSpec audit resource to test the properties of all AWS VPN connections.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html).
 
@@ -20,7 +20,7 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-Ensure that one or more VPN Connections exist.
+Ensure that one or more VPN connections exist.
 
 ```ruby
 describe aws_vpn_connections do
@@ -35,29 +35,29 @@ This resource does not require any parameters.
 ## Properties
 
 `vpn_connection_ids`
-: This property provides all the IDs of the VPN Connections.
+: This property provides all the IDs of the VPN connections.
 
 `vpn_gateway_ids`
-: This property provides all the IDs of the virtual private gateways associated with the VPN Connections.
+: This property provides all the IDs of the virtual private gateways associated with the VPN connections.
 
 `outside_ip_addresses`
-: This property provides the outside IP addresses of the VPN Connections.
+: This property provides the outside IP addresses of the VPN connections.
 
 `tunnel_inside_cidrs`
-: This property provides the tunnel inside cidrs of the VPN Connections.
+: This property provides the tunnel inside CIDRs of the VPN connections.
 
 `states`
-: This property provides the current state of the VPN Connections.
+: This property provides the current state of the VPN connections.
 
 `types`
-: This property provides the current types of the VPN Connections.
+: This property provides the current types of VPN connections.
 
 `tags`
-: This property provids the current tags of the VPN Connections.
+: This property provides the current tags of the VPN connections.
 
 ## Examples
 
-**Ensure that VPN connections are available.**
+### Ensure that VPN connections are available
 
 ```ruby
 describe aws_vpn_connections do
@@ -65,7 +65,7 @@ describe aws_vpn_connections do
 end
 ```
 
-**Check tags    .**
+### To check tags
 
 ```ruby
 describe aws_vpn_connections.where { tags["Name"] == "vpn-connection-example-123" } do
@@ -80,15 +80,17 @@ end
 
 ### exist
 
-The control will pass if the describe returns at least one result.
-
-Use `should_not` to test the entity should not exist.
+The control passes if the describe returns at least one result.
 
 ```ruby
 describe aws_vpn_connections do
   it { should exist }
 end
 ```
+
+### not exists
+
+Use `should_not` to test whether the entity should not exist.
 
 ```ruby
 describe aws_vpn_connections do

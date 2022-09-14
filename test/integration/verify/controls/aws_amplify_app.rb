@@ -1,8 +1,11 @@
-app_id= attribute(app_id, default: "", description: "")
+app_id = input(:app_id, value: "", description: "")
+
 title 'Audits Amplify App.'
+
 control 'aws_amplify_app-1.0' do
   impact 1.0
   title 'Ensure Amplify App have the correct properties.'
+  
   describe aws_amplify_app(app_id: app_id) do
     it { should exist }
     its('count') { should >= 1 }

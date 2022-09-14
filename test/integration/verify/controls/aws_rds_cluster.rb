@@ -1,16 +1,14 @@
 title 'Test single AWS Aurora Cluster'
 
-aws_rds_cluster_identifier = attribute(:aws_rds_cluster_identifier, value: '', description: 'The AWS RDS Cluster identifier.')
-aws_rds_cluster_instance_1_identifier = attribute(:aws_rds_cluster_instance_1_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
-aws_rds_cluster_instance_2_identifier = attribute(:aws_rds_cluster_instance_2_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
-aws_rds_cluster_database_name = attribute(:aws_rds_cluster_database_name, value: '', description: 'The AWS RDS Cluster name.')
-aws_rds_cluster_engine = attribute(:aws_rds_cluster_engine, value: '', description: 'The AWS RDS Cluster engine.')
-aws_rds_cluster_engine_version = attribute(:aws_rds_cluster_engine_version, value: '', description: 'The AWS RDS Cluster engine version.')
-aws_rds_cluster_master_user = attribute(:aws_rds_cluster_master_user, value: '', description: 'The AWS RDS Cluster username.')
-
+aws_rds_cluster_identifier = input(:aws_rds_cluster_identifier, value: '', description: 'The AWS RDS Cluster identifier.')
+aws_rds_cluster_instance_1_identifier = input(:aws_rds_cluster_instance_1_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
+aws_rds_cluster_instance_2_identifier = input(:aws_rds_cluster_instance_2_identifier, value: '', description: 'The AWS RDS Cluster instance identifier.')
+aws_rds_cluster_database_name = input(:aws_rds_cluster_database_name, value: '', description: 'The AWS RDS Cluster name.')
+aws_rds_cluster_engine = input(:aws_rds_cluster_engine, value: '', description: 'The AWS RDS Cluster engine.')
+aws_rds_cluster_engine_version = input(:aws_rds_cluster_engine_version, value: '', description: 'The AWS RDS Cluster engine version.')
+aws_rds_cluster_master_user = input(:aws_rds_cluster_master_user, value: '', description: 'The AWS RDS Cluster username.')
 
 control 'aws-rds-cluster-1.0' do
-
   impact 1.0
   title 'Ensure AWS RDS Cluster has the correct properties.'
 

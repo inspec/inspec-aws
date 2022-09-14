@@ -1,11 +1,10 @@
-aws_ebs_snapshot_id = attribute(:aws_ebs_snapshot_id, value: '', description: 'The AWS EBS Snapshot ID.')
-aws_ebs_snapshot_name = attribute(:aws_ebs_snapshot_name, value: '', description: 'The AWS EBS Snapshot name.')
-aws_ebs_snapshot_owner_id = attribute(:aws_ebs_snapshot_owner_id, value: '', description: 'The AWS EBS Owner ID.')
+aws_ebs_snapshot_id = input(:aws_ebs_snapshot_id, value: '', description: 'The AWS EBS Snapshot ID.')
+aws_ebs_snapshot_name = input(:aws_ebs_snapshot_name, value: '', description: 'The AWS EBS Snapshot name.')
+aws_ebs_snapshot_owner_id = input(:aws_ebs_snapshot_owner_id, value: '', description: 'The AWS EBS Owner ID.')
 
 title 'Test AWS EBS Snapshots in bulk using plural and singular resources'
 
 control 'aws-ebs-snapshots-loop-1.0' do
-
   impact 1.0
   title 'Ensure AWS EBS Snapshots plural resource using singular resource for detail.'
 

@@ -1,10 +1,9 @@
 title 'Test AWS RDS Subnet Groups in bulk'
 
-aws_rds_db_subnet_group_vpc_id = attribute(:aws_rds_db_subnet_group_vpc_id, value: '', description: 'The VPC id for DB Subnet Group.')
-aws_rds_db_subnet_group_arn = attribute(:aws_rds_db_subnet_group_arn, value: '', description: 'The ARN for DB Subnet Group.')
+aws_rds_db_subnet_group_vpc_id = input(:aws_rds_db_subnet_group_vpc_id, value: '', description: 'The VPC id for DB Subnet Group.')
+aws_rds_db_subnet_group_arn = input(:aws_rds_db_subnet_group_arn, value: '', description: 'The ARN for DB Subnet Group.')
 
 control 'aws-db-subnet-groups-loop-1.0' do
-
   impact 1.0
   title 'Loop across AWS RDS Subnet Group resource using singular resource for detail.'
 

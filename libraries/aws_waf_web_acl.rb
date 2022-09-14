@@ -51,7 +51,7 @@ class AWSWAFWebACL < AwsResourceBase
   end
 
   def rules_action_types
-    (rules.map(&:action)).map(&:type)
+    rules.map(&:action).map(&:type)
   end
 
   def rules_override_actions
@@ -59,7 +59,7 @@ class AWSWAFWebACL < AwsResourceBase
   end
 
   def rules_override_action_types
-    (rules.map(&:override_action)).map(&:type)
+    rules.map(&:override_action).map(&:type)
   end
 
   def rules_types
@@ -71,7 +71,7 @@ class AWSWAFWebACL < AwsResourceBase
   end
 
   def rules_excluded_rules_rule_ids
-    (rules.map(&:excluded_rules)).map(&:rule_id)
+    rules.map(&:excluded_rules).map(&:rule_id)
   end
 
   def resource_id

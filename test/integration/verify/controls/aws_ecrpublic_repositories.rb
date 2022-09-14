@@ -1,11 +1,10 @@
-aws_ecrpublic_repository_name = attribute(:aws_ecrpublic_repository_name, value: "", description: "The ECR public repository identifier.")
+aws_ecrpublic_repository_name = input(:aws_ecrpublic_repository_name, value: '', description: 'The ECR public repository identifier.')
 
-title "Test multiple AWS ECR public Repositories"
+title 'Test multiple AWS ECR public Repositories'
 
-control "aws-ecrpublic-repositories-1.0" do
-
+control 'aws-ecrpublic-repositories-1.0' do
   impact 1.0
-  title "Check AWS ECR public repositories has the correct properties."
+  title 'Check AWS ECR public repositories has the correct properties.'
 
   describe aws_ecrpublic_repositories do
     it { should exist }

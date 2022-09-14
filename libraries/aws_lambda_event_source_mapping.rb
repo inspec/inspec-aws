@@ -31,7 +31,8 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
   end
 
   def resource_id
-    @display_name
+    return '' unless exists?
+    @res[:uuid]
   end
 
   def exists?

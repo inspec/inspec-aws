@@ -1,9 +1,8 @@
-request_origin_id = attribute(:request_origin_id, value: '', description: '')
+request_origin_id = input(:request_origin_id, value: '', description: '')
 
 title 'Test Single origin request policy.'
 
 control 'aws-cloudfront-origin-request-policy-1.0' do
-
   impact 1.0
   title 'Ensure AWS CloudFront origin request policy has the correct properties.'
 

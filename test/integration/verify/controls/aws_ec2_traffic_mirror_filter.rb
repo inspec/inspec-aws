@@ -1,10 +1,9 @@
-aws_traffic_filter_id = attribute(:aws_traffic_filter_id, value: '', description: 'aws traffic filter id.')
-aws_traffic_filter_desc = attribute(:aws_traffic_filter_desc, value: '', description: 'description aws traffic filter .')
+aws_traffic_filter_id = input(:aws_traffic_filter_id, value: '', description: 'aws traffic filter id.')
+aws_traffic_filter_desc = input(:aws_traffic_filter_desc, value: '', description: 'description aws traffic filter .')
 
 title 'Test single AWS Traffic Filter'
 
-control 'aws_traffic_filter-1.0' do
-
+control 'aws-traffic-filter-1.0' do
   impact 1.0
   title 'Ensure AWS Traffic Filter resource has the correct properties.'
 

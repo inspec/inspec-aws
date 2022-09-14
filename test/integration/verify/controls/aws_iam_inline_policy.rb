@@ -1,20 +1,18 @@
 title 'Test single AWS Iam Inline Policy'
 
 # IAM User inline policy 
-aws_iam_user_name = attribute(:aws_iam_user_name, value: '', description: 'The Attached AWS Iam Username.')
-aws_iam_user_policy_name = attribute(:aws_iam_user_policy_name, value: '', description: 'The AWS Iam User Inline Policy.')
+aws_iam_user_name = input(:aws_iam_user_name, value: '', description: 'The Attached AWS Iam Username.')
+aws_iam_user_policy_name = input(:aws_iam_user_policy_name, value: '', description: 'The AWS Iam User Inline Policy.')
 
 # IAM Role inline policy 
-aws_iam_role_generic_name = attribute(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
-aws_iam_role_generic_policy_name = attribute(:aws_iam_role_generic_policy_name, value: '', description: 'The AWS Iam Role Inline Policy.')
+aws_iam_role_generic_name = input(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
+aws_iam_role_generic_policy_name = input(:aws_iam_role_generic_policy_name, value: '', description: 'The AWS Iam Role Inline Policy.')
 
 # IAM Group inline policy 
-aws_iam_group_name = attribute(:aws_iam_group_name, value: '', description: 'The AWS Iam Group.')
-aws_iam_group_policy_name = attribute(:aws_iam_group_policy_name, value: '', description: 'The AWS Iam Group Inline Policy.')
-
+aws_iam_group_name = input(:aws_iam_group_name, value: '', description: 'The AWS Iam Group.')
+aws_iam_group_policy_name = input(:aws_iam_group_policy_name, value: '', description: 'The AWS Iam Group Inline Policy.')
 
 control 'aws-iam-inline-policy-1.0' do
-
   impact 1.0
   title 'Ensure AWS Iam Inline Policy has the correct properties.'
 
@@ -53,5 +51,4 @@ control 'aws-iam-inline-policy-1.0' do
     it { should have_statement('Effect' => 'Allow', 'Resource' => '*', 'Action' => 'ec2:Describe*') }
     its('statement_count') { should > 0 }
   end
-
 end

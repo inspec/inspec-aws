@@ -38,15 +38,16 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
     "Function Name: #{@display_name}"
   end
 
-  def resource_id
-    @display_name
-  end
-
   def on_success_destinations
     destination_config.on_success
   end
 
   def on_faliure_destinations
     destination_config.on_faliure
+  end
+
+  def resource_id
+    return @display_name unless exists?
+    @res[:function_arn]
   end
 end

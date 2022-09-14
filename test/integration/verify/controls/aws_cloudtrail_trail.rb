@@ -1,17 +1,16 @@
 title 'Test single AWS CloudTrail'
 
-aws_cloud_trail_name = attribute(:aws_cloud_trail_name, value: '', description: 'Cloud trail with encryption, key and logs.')
-aws_cloud_trail_open_name = attribute(:aws_cloud_trail_open_name, value: '', description: 'Cloud trail only with bucket.')
-aws_cloud_trail_bucket_id = attribute(:aws_cloud_trail_bucket_id, value: '', description: 'Cloud trail bucket.')
-aws_cloud_trail_open_s3_bucket_id = attribute(:aws_cloud_trail_open_s3_bucket_id, value: '', description: 'Cloud trail bucket.')
-aws_cloud_trail_arn = attribute(:aws_cloud_trail_arn, value: '', description: 'Cloud trail ARN.')
-aws_cloud_trail_open_arn = attribute(:aws_cloud_trail_open_arn, value: '', description: 'Cloud trail ARN.')
-aws_cloud_trail_key_arn = attribute(:aws_cloud_trail_key_arn, value: '', description: 'Cloud trail key ARN.')
-aws_cloud_trail_cloud_watch_logs_group_arn = attribute(:aws_cloud_trail_cloud_watch_logs_group_arn, value: '', description: 'Cloud log group ARN.')
-aws_cloud_trail_cloud_watch_logs_role_arn = attribute(:aws_cloud_trail_cloud_watch_logs_role_arn, value: '', description: 'Cloud log role ARN.')
+aws_cloud_trail_name = input(:aws_cloud_trail_name, value: '', description: 'Cloud trail with encryption, key and logs.')
+aws_cloud_trail_open_name = input(:aws_cloud_trail_open_name, value: '', description: 'Cloud trail only with bucket.')
+aws_cloud_trail_bucket_id = input(:aws_cloud_trail_bucket_id, value: '', description: 'Cloud trail bucket.')
+aws_cloud_trail_open_s3_bucket_id = input(:aws_cloud_trail_open_s3_bucket_id, value: '', description: 'Cloud trail bucket.')
+aws_cloud_trail_arn = input(:aws_cloud_trail_arn, value: '', description: 'Cloud trail ARN.')
+aws_cloud_trail_open_arn = input(:aws_cloud_trail_open_arn, value: '', description: 'Cloud trail ARN.')
+aws_cloud_trail_key_arn = input(:aws_cloud_trail_key_arn, value: '', description: 'Cloud trail key ARN.')
+aws_cloud_trail_cloud_watch_logs_group_arn = input(:aws_cloud_trail_cloud_watch_logs_group_arn, value: '', description: 'Cloud log group ARN.')
+aws_cloud_trail_cloud_watch_logs_role_arn = input(:aws_cloud_trail_cloud_watch_logs_role_arn, value: '', description: 'Cloud log role ARN.')
 
 control 'aws-cloudtrail-1.0' do
-
   impact 1.0
   title 'Ensure AWS Cloud Trail has the correct properties.'
 

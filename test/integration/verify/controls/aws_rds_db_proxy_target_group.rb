@@ -1,5 +1,5 @@
-db_proxy_name = attribute(:aws_proxy_name, value: '')
-target_group_name = attribute(:aws_proxy_name, value: '')
+db_proxy_name = input(:aws_proxy_name, value: '', description: '')
+target_group_name = input(:aws_proxy_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-target-group-1.0' do
   impact 1.0
@@ -20,5 +20,9 @@ control 'aws-rds-db-proxy-target-group-1.0' do
     its('connection_pool_config.connection_borrow_timeout') { should eq 120 }
     its('connection_pool_config.session_pinning_filters') { should_not be_empty }
     its('connection_pool_config.init_query') { should_not include 'automate-pg-proxy' }
+  end
+
+  describe aws_rds_db_proxy_target_group(db_proxy_name: 'dummy', target_group_name: 'dummy') do
+    it { should_not exist }
   end
 end

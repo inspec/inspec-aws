@@ -1,5 +1,5 @@
-aws_networkfirewall_rule_group_arn = attribute("aws_networkfirewall_rule_group_arn", value: "", description: "")
-aws_networkfirewall_rule_group_name = attribute("aws_networkfirewall_rule_group_name", value: "", description: "")
+aws_networkfirewall_rule_group_arn = input(:aws_networkfirewall_rule_group_arn, value: '', description: '')
+aws_networkfirewall_rule_group_name = input(:aws_networkfirewall_rule_group_name, value: '', description: '')
 
 control 'aws-ec2-network-firewall-rule-groups-1.0' do
   impact 1.0

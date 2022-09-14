@@ -1,8 +1,8 @@
-aws_rds_snapshot_identifier = attribute(:aws_rds_snapshot_identifier, value: '', description: 'The AWS RDS snapshot identifier.')
+aws_rds_snapshot_identifier = input(:aws_rds_snapshot_identifier, value: '', description: 'The AWS RDS snapshot identifier.')
 
 title 'Test multiple AWS RDS snapshots'
-control 'aws-rds-snapshots-1.0' do
 
+control 'aws-rds-snapshots-1.0' do
   impact 1.0
   title 'Ensure AWS RDS Snapshots has the correct properties.'
 

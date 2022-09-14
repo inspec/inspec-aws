@@ -47,7 +47,7 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_repository_credentials_credentials_parameters
-    (container_definitions.map(&:repository_credentials)).map(&:credentials_parameter)
+    container_definitions.map(&:repository_credentials).map(&:credentials_parameter)
   end
 
   def container_definitions_cpus
@@ -71,15 +71,15 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_port_mappings_container_ports
-    (container_definitions.map(&:port_mappings)).map(&:container_port)
+    container_definitions.map(&:port_mappings).map(&:container_port)
   end
 
   def container_definitions_port_mappings_host_ports
-    (container_definitions.map(&:port_mappings)).map(&:host_port)
+    container_definitions.map(&:port_mappings).map(&:host_port)
   end
 
   def container_definitions_port_mappings_protocols
-    (container_definitions.map(&:port_mappings)).map(&:protocol)
+    container_definitions.map(&:port_mappings).map(&:protocol)
   end
 
   def container_definitions_essentials
@@ -99,11 +99,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_environments_names
-    (container_definitions.map(&:environment)).map(&:name)
+    container_definitions.map(&:environment).map(&:name)
   end
 
   def container_definitions_environments_values
-    (container_definitions.map(&:environment)).map(&:value)
+    container_definitions.map(&:environment).map(&:value)
   end
 
   def container_definitions_environment_files
@@ -111,11 +111,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_environment_files_values
-    (container_definitions.map(&:environment_files)).map(&:value)
+    container_definitions.map(&:environment_files).map(&:value)
   end
 
   def container_definitions_environment_files_types
-    (container_definitions.map(&:environment_files)).map(&:type)
+    container_definitions.map(&:environment_files).map(&:type)
   end
 
   def container_definitions_mount_points
@@ -123,15 +123,15 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_mount_points_source_volumes
-    (container_definitions.map(&:mount_points)).map(&:source_volume)
+    container_definitions.map(&:mount_points).map(&:source_volume)
   end
 
   def container_definitions_mount_points_container_paths
-    (container_definitions.map(&:mount_points)).map(&:container_path)
+    container_definitions.map(&:mount_points).map(&:container_path)
   end
 
   def container_definitions_mount_points_read_only
-    (container_definitions.map(&:mount_points)).map(&:read_only)
+    container_definitions.map(&:mount_points).map(&:read_only)
   end
 
   def container_definitions_volumes_froms
@@ -139,11 +139,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_volumes_froms_source_containers
-    (container_definitions.map(&:volumes_from)).map(&:source_container)
+    container_definitions.map(&:volumes_from).map(&:source_container)
   end
 
   def container_definitions_volumes_froms_read_only
-    (container_definitions.map(&:volumes_from)).map(&:read_only)
+    container_definitions.map(&:volumes_from).map(&:read_only)
   end
 
   def container_definitions_linux_parameters
@@ -151,59 +151,59 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_linux_parameters_capabilities_adds
-    (container_definitions.map(&:linux_parameters)).map(&:add)
+    container_definitions.map(&:linux_parameters).map(&:add)
   end
 
   def container_definitions_linux_parameters_capabilities_drops
-    (container_definitions.map(&:linux_parameters)).map(&:drop)
+    container_definitions.map(&:linux_parameters).map(&:drop)
   end
 
   def container_definitions_linux_parameters_capabilities_devices
-    (container_definitions.map(&:linux_parameters)).map(&:devices)
+    container_definitions.map(&:linux_parameters).map(&:devices)
   end
 
   def container_definitions_linux_parameters_capabilities_devices_host_paths
-    ((container_definitions.map(&:linux_parameters)).map(&:devices)).map(&:host_path)
+    container_definitions.map(&:linux_parameters).map(&:devices).map(&:host_path)
   end
 
   def container_definitions_linux_parameters_capabilities_devices_container_paths
-    ((container_definitions.map(&:linux_parameters)).map(&:devices)).map(&:container_path)
+    container_definitions.map(&:linux_parameters).map(&:devices).map(&:container_path)
   end
 
   def container_definitions_linux_parameters_capabilities_devices_permissions
-    ((container_definitions.map(&:linux_parameters)).map(&:devices)).map(&:permissions)
+    container_definitions.map(&:linux_parameters).map(&:devices).map(&:permissions)
   end
 
   def container_definitions_linux_parameters_init_process_enabled
-    (container_definitions.map(&:linux_parameters)).map(&:init_process_enabled)
+    container_definitions.map(&:linux_parameters).map(&:init_process_enabled)
   end
 
   def container_definitions_linux_parameters_shared_memory_sizes
-    (container_definitions.map(&:linux_parameters)).map(&:shared_memory_size)
+    container_definitions.map(&:linux_parameters).map(&:shared_memory_size)
   end
 
   def container_definitions_linux_parameters_tmpfs
-    (container_definitions.map(&:linux_parameters)).map(&:tmpfs)
+    container_definitions.map(&:linux_parameters).map(&:tmpfs)
   end
 
   def container_definitions_linux_parameters_tmpfs_container_paths
-    ((container_definitions.map(&:linux_parameters)).map(&:tmpfs)).map(&:container_path)
+    container_definitions.map(&:linux_parameters).map(&:tmpfs).map(&:container_path)
   end
 
   def container_definitions_linux_parameters_tmpfs_sizes
-    ((container_definitions.map(&:linux_parameters)).map(&:tmpfs)).map(&:size)
+    container_definitions.map(&:linux_parameters).map(&:tmpfs).map(&:size)
   end
 
   def container_definitions_linux_parameters_tmpfs_mount_options
-    ((container_definitions.map(&:linux_parameters)).map(&:tmpfs)).map(&:mount_options)
+    container_definitions.map(&:linux_parameters).map(&:tmpfs).map(&:mount_options)
   end
 
   def container_definitions_linux_parameters_max_swaps
-    (container_definitions.map(&:linux_parameters)).map(&:max_swap)
+    container_definitions.map(&:linux_parameters).map(&:max_swap)
   end
 
   def container_definitions_linux_parameters_swappiness
-    (container_definitions.map(&:linux_parameters)).map(&:swappiness)
+    container_definitions.map(&:linux_parameters).map(&:swappiness)
   end
 
   def container_definitions_secrets
@@ -211,11 +211,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_secrets_names
-    (container_definitions.map(&:secrets)).map(&:name)
+    container_definitions.map(&:secrets).map(&:name)
   end
 
   def container_definitions_secrets_value_froms
-    (container_definitions.map(&:secrets)).map(&:value_from)
+    container_definitions.map(&:secrets).map(&:value_from)
   end
 
   def container_definitions_depends_on
@@ -223,11 +223,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_depends_on_container_names
-    (container_definitions.map(&:depends_on)).map(&:container_name)
+    container_definitions.map(&:depends_on).map(&:container_name)
   end
 
   def container_definitions_depends_on_conditions
-    (container_definitions.map(&:depends_on)).map(&:condition)
+    container_definitions.map(&:depends_on).map(&:condition)
   end
 
   def container_definitions_start_timeouts
@@ -275,11 +275,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_extra_hosts_hostnames
-    (container_definitions.map(&:extra_hosts)).map(&:hostname)
+    container_definitions.map(&:extra_hosts).map(&:hostname)
   end
 
   def container_definitions_extra_hosts_ip_addresses
-    (container_definitions.map(&:extra_hosts)).map(&:ip_address)
+    container_definitions.map(&:extra_hosts).map(&:ip_address)
   end
 
   def container_definitions_docker_security_options
@@ -303,15 +303,15 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_ulimits_names
-    (container_definitions.map(&:ulimits)).map(&:name)
+    container_definitions.map(&:ulimits).map(&:name)
   end
 
   def container_definitions_ulimits_soft_limits
-    (container_definitions.map(&:ulimits)).map(&:soft_limit)
+    container_definitions.map(&:ulimits).map(&:soft_limit)
   end
 
   def container_definitions_ulimits_hard_limits
-    (container_definitions.map(&:ulimits)).map(&:hard_limit)
+    container_definitions.map(&:ulimits).map(&:hard_limit)
   end
 
   def container_definitions_log_configurations
@@ -319,23 +319,23 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_log_configurations_log_drivers
-    (container_definitions.map(&:log_configuration)).map(&:log_driver)
+    container_definitions.map(&:log_configuration).map(&:log_driver)
   end
 
   def container_definitions_log_configurations_options
-    (container_definitions.map(&:log_configuration)).map(&:options)
+    container_definitions.map(&:log_configuration).map(&:options)
   end
 
   def container_definitions_log_configurations_secret_options
-    (container_definitions.map(&:log_configuration)).map(&:secret_options)
+    container_definitions.map(&:log_configuration).map(&:secret_options)
   end
 
   def container_definitions_log_configurations_secret_options_names
-    ((container_definitions.map(&:log_configuration)).map(&:secret_options)).map(&:name)
+    container_definitions.map(&:log_configuration).map(&:secret_options).map(&:name)
   end
 
   def container_definitions_log_configurations_secret_value_froms
-    ((container_definitions.map(&:log_configuration)).map(&:secret_options)).map(&:value_from)
+    container_definitions.map(&:log_configuration).map(&:secret_options).map(&:value_from)
   end
 
   def container_definitions_health_checks
@@ -343,23 +343,23 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_health_checks_commands
-    (container_definitions.map(&:health_check)).map(&:command)
+    container_definitions.map(&:health_check).map(&:command)
   end
 
   def container_definitions_health_checks_intervals
-    (container_definitions.map(&:health_check)).map(&:interval)
+    container_definitions.map(&:health_check).map(&:interval)
   end
 
   def container_definitions_health_checks_timeouts
-    (container_definitions.map(&:health_check)).map(&:timeout)
+    container_definitions.map(&:health_check).map(&:timeout)
   end
 
   def container_definitions_health_checks_retries
-    (container_definitions.map(&:health_check)).map(&:retries)
+    container_definitions.map(&:health_check).map(&:retries)
   end
 
   def container_definitions_health_checks_start_periods
-    (container_definitions.map(&:health_check)).map(&:start_period)
+    container_definitions.map(&:health_check).map(&:start_period)
   end
 
   def container_definitions_system_controls
@@ -367,11 +367,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_system_controls_namespaces
-    (container_definitions.map(&:system_controls)).map(&:namespace)
+    container_definitions.map(&:system_controls).map(&:namespace)
   end
 
   def container_definitions_system_controls_values
-    (container_definitions.map(&:system_controls)).map(&:value)
+    container_definitions.map(&:system_controls).map(&:value)
   end
 
   def container_definitions_resource_requirements
@@ -379,11 +379,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_resource_requirements_values
-    (container_definitions.map(&:resource_requirements)).map(&:value)
+    container_definitions.map(&:resource_requirements).map(&:value)
   end
 
   def container_definitions_resource_requirements_types
-    (container_definitions.map(&:resource_requirements)).map(&:type)
+    container_definitions.map(&:resource_requirements).map(&:type)
   end
 
   def container_definitions_firelens_configurations
@@ -391,11 +391,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_firelens_configurations_types
-    (container_definitions.map(&:firelens_configuration)).map(&:type)
+    container_definitions.map(&:firelens_configuration).map(&:type)
   end
 
   def container_definitions_firelens_configurations_options
-    (container_definitions.map(&:firelens_configuration)).map(&:options)
+    container_definitions.map(&:firelens_configuration).map(&:options)
   end
 
   def volumes_names
@@ -415,23 +415,23 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def volumes_docker_volume_configuration_scopes
-    (volumes.map(&:docker_volume_configuration)).map(&:scope)
+    volumes.map(&:docker_volume_configuration).map(&:scope)
   end
 
   def volumes_docker_volume_configuration_autoprovisions
-    (volumes.map(&:docker_volume_configuration)).map(&:autoprovision)
+    volumes.map(&:docker_volume_configuration).map(&:autoprovision)
   end
 
   def volumes_docker_volume_configuration_drivers
-    (volumes.map(&:docker_volume_configuration)).map(&:driver)
+    volumes.map(&:docker_volume_configuration).map(&:driver)
   end
 
   def volumes_docker_volume_configuration_driver_opts
-    (volumes.map(&:docker_volume_configuration)).map(&:driver_opts)
+    volumes.map(&:docker_volume_configuration).map(&:driver_opts)
   end
 
   def volumes_docker_volume_configuration_labels
-    (volumes.map(&:docker_volume_configuration)).map(&:labels)
+    volumes.map(&:docker_volume_configuration).map(&:labels)
   end
 
   def volumes_efs_volume_configurations
@@ -439,31 +439,31 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def volumes_efs_volume_configuration_file_system_ids
-    (volumes.map(&:efs_volume_configurations)).map(&:file_system_id)
+    volumes.map(&:efs_volume_configurations).map(&:file_system_id)
   end
 
   def volumes_efs_volume_configuration_root_directories
-    (volumes.map(&:efs_volume_configurations)).map(&:root_directory)
+    volumes.map(&:efs_volume_configurations).map(&:root_directory)
   end
 
   def volumes_efs_volume_configuration_transit_encryptions
-    (volumes.map(&:efs_volume_configurations)).map(&:transit_encryption)
+    volumes.map(&:efs_volume_configurations).map(&:transit_encryption)
   end
 
   def volumes_efs_volume_configuration_transit_encryption_ports
-    (volumes.map(&:efs_volume_configurations)).map(&:transit_encryption_port)
+    volumes.map(&:efs_volume_configurations).map(&:transit_encryption_port)
   end
 
   def volumes_efs_volume_configuration_authorization_configs
-    (volumes.map(&:efs_volume_configurations)).map(&:authorization_config)
+    volumes.map(&:efs_volume_configurations).map(&:authorization_config)
   end
 
   def volumes_efs_volume_configuration_authorization_config_access_point_ids
-    ((volumes.map(&:efs_volume_configurations)).map(&:authorization_config)).map(&:access_point_id)
+    volumes.map(&:efs_volume_configurations).map(&:authorization_config).map(&:access_point_id)
   end
 
   def volumes_efs_volume_configuration_authorization_config_iams
-    ((volumes.map(&:efs_volume_configurations)).map(&:authorization_config)).map(&:iam)
+    volumes.map(&:efs_volume_configurations).map(&:authorization_config).map(&:iam)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations
@@ -471,23 +471,23 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_file_system_ids
-    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:file_system_id)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:file_system_id)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_root_directories
-    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:root_directory)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:root_directory)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs
-    (volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_credentials_parameters
-    ((volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)).map(&:credentials_parameter)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config).map(&:credentials_parameter)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_domains
-    ((volumes.map(&:fsx_windows_file_server_volume_configuration)).map(&:authorization_config)).map(&:domain)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config).map(&:domain)
   end
 
   def requires_attributes_names
@@ -535,11 +535,11 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def proxy_configuration_properties_names
-    (proxy_configuration.map(&:properties)).map(&:name)
+    proxy_configuration.map(&:properties).map(&:name)
   end
 
   def proxy_configuration_properties_values
-    (proxy_configuration.map(&:properties)).map(&:value)
+    proxy_configuration.map(&:properties).map(&:value)
   end
 
   def resource_id

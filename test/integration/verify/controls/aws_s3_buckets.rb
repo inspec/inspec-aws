@@ -1,10 +1,9 @@
 title 'Test AWS S3 Buckets in bulk'
 
-aws_bucket_public_name = attribute(:aws_bucket_public_name, value: '', description: 'The AWS bucket name.')
-aws_bucket_private_name = attribute(:aws_bucket_private_name, value: '', description: 'The AWS bucket name.')
+aws_bucket_public_name = input(:aws_bucket_public_name, value: '', description: 'The AWS bucket name.')
+aws_bucket_private_name = input(:aws_bucket_private_name, value: '', description: 'The AWS bucket name.')
 
 control 'aws-s3-buckets-1.0' do
-
   impact 1.0
   title 'Ensure AWS S3 Buckets plural resource has the correct properties.'
 

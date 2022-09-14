@@ -1,7 +1,7 @@
-aws_ssm_maintenance_window_id = attribute("aws_ssm_maintenance_window_id", value: "", description: "")
-aws_ssm_maintenance_window_target_description = attribute("aws_ssm_maintenance_window_target_description", value: "", description: "")
-aws_ssm_maintenance_window_target_id = attribute("aws_ssm_maintenance_window_target_id", value: "", description: "")
-aws_ssm_maintenance_window_target_name = attribute("aws_ssm_maintenance_window_target_id", value: "", description: "")
+aws_ssm_maintenance_window_id = input(:aws_ssm_maintenance_window_id, value: '', description: '')
+aws_ssm_maintenance_window_target_description = input(:aws_ssm_maintenance_window_target_description, value: '', description: '')
+aws_ssm_maintenance_window_target_id = input(:aws_ssm_maintenance_window_target_id, value: '', description: '')
+aws_ssm_maintenance_window_target_name = input(:aws_ssm_maintenance_window_target_id, value: '', description: '')
 
 control 'aws-ssm-maintenance-window-target-1.0' do
   impact 1.0
@@ -22,5 +22,9 @@ control 'aws-ssm-maintenance-window-target-1.0' do
     its('owner_information') { should be_empty }
     its('name') { should eq aws_ssm_maintenance_window_target_name }
     its('description') { should eq aws_ssm_maintenance_window_target_description }
+  end
+
+  describe aws_ssm_maintenance_window_target(window_id: 'dummy', window_target_id: 'dummy') do
+    it { should_not exist }
   end
 end

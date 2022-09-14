@@ -1,7 +1,6 @@
 title 'Test AWS Regions in bulk'
 
 control 'aws-regions-1.0' do
-
   impact 1.0
   title 'Ensure AWS regions plural resource has the correct properties.'
 
@@ -11,5 +10,4 @@ control 'aws-regions-1.0' do
     its('region_names') { should include 'eu-west-2' }
     its('endpoints') { should include 'ec2.eu-west-2.amazonaws.com' }
   end
-
 end

@@ -1,10 +1,9 @@
 title 'Test a AWS ElastiCache Cluster Node'
 
-aws_elasticache_cluster_id = attribute(:aws_elasticache_cluster_id, value: '', description: 'The AWS ElastiCache Cluster ID.')
-aws_elasticache_cluster_port = attribute(:aws_elasticache_cluster_port, value: '', description: 'The AWS ElastiCache Cluster port number.')
+aws_elasticache_cluster_id = input(:aws_elasticache_cluster_id, value: '', description: 'The AWS ElastiCache Cluster ID.')
+aws_elasticache_cluster_port = input(:aws_elasticache_cluster_port, value: '', description: 'The AWS ElastiCache Cluster port number.')
 
 control 'aws-elasticache-cluster-node-1.0' do
-
   impact 1.0
   title 'Ensure AWS ElastiCache Cluster node has the correct properties.'
 

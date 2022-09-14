@@ -1,12 +1,12 @@
-aws_db_cluster_snapshot_id = attribute("aws_db_cluster_snapshot_id", value: "", description: "")
-aws_db_cluster_snapshot_status = attribute("aws_db_cluster_snapshot_status", value: "", description: "")
-aws_db_cluster_snapshot_engine = attribute("aws_db_cluster_snapshot_engine", value: "", description: "")
-aws_db_cluster_snapshot_engine_version = attribute("aws_db_cluster_snapshot_engine_version", value: "", description: "")
-aws_db_cluster_snapshot_db_cluster_identifier = attribute("aws_db_cluster_snapshot_db_cluster_identifier", value: "", description: "")
-aws_db_cluster_snapshot_db_cluster_snapshot_arn = attribute("aws_db_cluster_snapshot_db_cluster_snapshot_arn", value: "", description: "")
-aws_db_cluster_snapshot_vpc_id = attribute("aws_db_cluster_snapshot_vpc_id", value: "", description: "")
-aws_db_cluster_snapshot_source_db_cluster_snapshot_arn = attribute("aws_db_cluster_snapshot_source_db_cluster_snapshot_arn", value: "", description: "")
-aws_db_cluster_snapshot_storage_encrypted = attribute("aws_db_cluster_snapshot_storage_encrypted", value: "", description: "")
+aws_db_cluster_snapshot_id = input(:aws_db_cluster_snapshot_id, value: '', description: '')
+aws_db_cluster_snapshot_status = input(:aws_db_cluster_snapshot_status, value: '', description: '')
+aws_db_cluster_snapshot_engine = input(:aws_db_cluster_snapshot_engine, value: '', description: '')
+aws_db_cluster_snapshot_engine_version = input(:aws_db_cluster_snapshot_engine_version, value: '', description: '')
+aws_db_cluster_snapshot_db_cluster_identifier = input(:aws_db_cluster_snapshot_db_cluster_identifier, value: '', description: '')
+aws_db_cluster_snapshot_db_cluster_snapshot_arn = input(:aws_db_cluster_snapshot_db_cluster_snapshot_arn, value: '', description: '')
+aws_db_cluster_snapshot_vpc_id = input(:aws_db_cluster_snapshot_vpc_id, value: '', description: '')
+aws_db_cluster_snapshot_storage_encrypted = input(:aws_db_cluster_snapshot_storage_encrypted, value: '', description: '')
+aws_db_cluster_snapshot_source_db_cluster_snapshot_arn = input(:aws_db_cluster_snapshot_source_db_cluster_snapshot_arn, value: '', description: '')
 
 control 'aws-rds-db-cluster-snapshot-1.0' do
   impact 1.0
@@ -35,5 +35,9 @@ control 'aws-rds-db-cluster-snapshot-1.0' do
     its('aws_db_cluster_snapshot_source_db_cluster_snapshot_arn') { should aws_db_cluster_snapshot_source_db_cluster_snapshot_arn }
     its('aws_db_cluster_snapshot_storage_encrypted') { should eq aws_db_cluster_snapshot_storage_encrypted }
     its('tag_list') { should_not be_empty }
+  end
+
+  describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: 'dummy' ) do
+    it { should_not exist }
   end
 end
