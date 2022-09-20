@@ -33,6 +33,6 @@ class AWSS3BucketPolicy < AwsResourceBase
   end
 
   def to_s
-    "S3 Bucket Policy #{@display_name}"
+    "S3 Bucket Policy of #{@display_name}"
   end
 end
