@@ -1,9 +1,34 @@
-<!-- latest_release 1.83.43 -->
+<!-- latest_release 1.83.48 -->
+## [v1.83.48](https://github.com/inspec/inspec-aws/tree/v1.83.48) (2022-09-14)
+
+#### Merged Pull Requests
+- Added a default `limit = 1` value to `aws_cloudwatch_log_group.rb` [#928](https://github.com/inspec/inspec-aws/pull/928) ([so1omon563](https://github.com/so1omon563))
+<!-- latest_release -->
+
+## [v1.83.47](https://github.com/inspec/inspec-aws/tree/v1.83.47) (2022-09-13)
+
+#### Merged Pull Requests
+- updated inline policy criteria [#948](https://github.com/inspec/inspec-aws/pull/948) ([Jiaming1826](https://github.com/Jiaming1826))
+
+## [v1.83.46](https://github.com/inspec/inspec-aws/tree/v1.83.46) (2022-09-13)
+
+#### Merged Pull Requests
+- RESOURCE-490 modification of the vpn connection both singular and plural resource [#944](https://github.com/inspec/inspec-aws/pull/944) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.45](https://github.com/inspec/inspec-aws/tree/v1.83.45) (2022-09-13)
+
+#### Merged Pull Requests
+- RESOURCE-491 Modify the sample profile inspec-yml in the inspec-aws [#945](https://github.com/inspec/inspec-aws/pull/945) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.44](https://github.com/inspec/inspec-aws/tree/v1.83.44) (2022-09-11)
+
+#### Merged Pull Requests
+- adding tags definition for IAM Role [#947](https://github.com/inspec/inspec-aws/pull/947) ([Rohit1509](https://github.com/Rohit1509))
+
 ## [v1.83.43](https://github.com/inspec/inspec-aws/tree/v1.83.43) (2022-08-16)
 
 #### Merged Pull Requests
 - VPN connection - Doc Review [#943](https://github.com/inspec/inspec-aws/pull/943) ([dkumaras](https://github.com/dkumaras))
-<!-- latest_release -->
 
 ## [v1.83.42](https://github.com/inspec/inspec-aws/tree/v1.83.42) (2022-08-16)
 
