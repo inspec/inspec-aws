@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.48 -->
+<!-- latest_release 1.83.49 -->
+## [v1.83.49](https://github.com/inspec/inspec-aws/tree/v1.83.49) (2022-09-23)
+
+#### Merged Pull Requests
+- Fix aws_s3_ bucket_policy #to_s method to reflect object [#946](https://github.com/inspec/inspec-aws/pull/946) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
+<!-- latest_release -->
+
 ## [v1.83.48](https://github.com/inspec/inspec-aws/tree/v1.83.48) (2022-09-14)
 
 #### Merged Pull Requests
 - Added a default `limit = 1` value to `aws_cloudwatch_log_group.rb` [#928](https://github.com/inspec/inspec-aws/pull/928) ([so1omon563](https://github.com/so1omon563))
-<!-- latest_release -->
 
 ## [v1.83.47](https://github.com/inspec/inspec-aws/tree/v1.83.47) (2022-09-13)
 
