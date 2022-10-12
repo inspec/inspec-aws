@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.49 -->
+<!-- latest_release 1.83.50 -->
+## [v1.83.50](https://github.com/inspec/inspec-aws/tree/v1.83.50) (2022-10-12)
+
+#### Merged Pull Requests
+- RESOURCE-489 additional check added [#951](https://github.com/inspec/inspec-aws/pull/951) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.83.49](https://github.com/inspec/inspec-aws/tree/v1.83.49) (2022-09-23)
 
 #### Merged Pull Requests
 - Fix aws_s3_ bucket_policy #to_s method to reflect object [#946](https://github.com/inspec/inspec-aws/pull/946) ([vsuzdaltsev](https://github.com/vsuzdaltsev))
-<!-- latest_release -->
 
 ## [v1.83.48](https://github.com/inspec/inspec-aws/tree/v1.83.48) (2022-09-14)
 
