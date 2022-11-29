@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 aws_apigatewayv2_integration_response_api_id = input(:aws_apigatewayv2_integration_response_api_id, value: '', description: '')
 aws_apigatewayv2_integration_response_id = input(:aws_apigatewayv2_integration_response_id, value: '', description: '')
 aws_apigatewayv2_integration_response_integration_id = input(:aws_apigatewayv2_integration_response_integration_id, value: '', description: '')
