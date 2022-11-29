@@ -1,16 +1,13 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayStage < AwsResourceBase
   name 'aws_api_gateway_stage'
   desc 'Gets information about a Stage resource.'
-
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)

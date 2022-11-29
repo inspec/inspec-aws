@@ -1,16 +1,13 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayRestApis < AwsResourceBase
   name 'aws_api_gateway_restapis'
   desc 'Lists the RestApis resources for your collection.'
-
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_restapis do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

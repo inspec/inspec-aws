@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'aws_backend'
 
 class AwsIamRole < AwsResourceBase
   name 'aws_iam_role'
