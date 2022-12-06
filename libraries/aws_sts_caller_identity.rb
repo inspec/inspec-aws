@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AwsStsCallerIdentity < AwsResourceBase
   name 'aws_sts_caller_identity'
   desc 'Verifies settings for an AWS STS Caller Identity.'
