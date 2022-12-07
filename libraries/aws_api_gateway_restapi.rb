@@ -1,16 +1,13 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayRestApi < AwsResourceBase
   name 'aws_api_gateway_restapi'
   desc 'Lists the RestApi resource in the collection.'
-
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_restapi(rest_api_id: 'rest_api_id') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { rest_api_id: opts } if opts.is_a?(String)

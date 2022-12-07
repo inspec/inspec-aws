@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AwsNetworkACL < AwsResourceBase
-  EGRESS = 'egress'
-  INGRESS = 'ingress'
+  EGRESS = 'egress'.freeze
+  INGRESS = 'ingress'.freeze
   name 'aws_network_acl'
   desc 'Verifies settings for a single AWS Network ACL'
   example "

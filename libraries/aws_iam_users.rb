@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AwsIamUsers < AwsCollectionResourceBase
@@ -95,6 +93,6 @@ class AwsIamUsers < AwsCollectionResourceBase
 
   def lazy_load_has_mfa_enabled(row, _condition, _table)
     row[:mfa_devices] ||= mfa_devices(row[:username])
-    row[:has_mfa_enabled] = row[:mfa_devices].present?
+    row[:has_mfa_enabled] = !row[:mfa_devices].nil? && !row[:mfa_devices].empty? && !row[:mfa_devices][0].empty?
   end
 end
