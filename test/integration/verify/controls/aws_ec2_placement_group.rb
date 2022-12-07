@@ -1,5 +1,5 @@
-aws_placement_group_name = attribute('aws_placement_group_name', value: '', description: '')
-aws_placement_group_placement_group_id = attribute('aws_placement_group_placement_group_id', value: '', description: '')
+aws_placement_group_name = input(:aws_placement_group_name, value: '', description: '')
+aws_placement_group_placement_group_id = input(:aws_placement_group_placement_group_id, value: '', description: '')
 
 control 'aws-ec2-placement-group-1.0' do
   impact 1.0
@@ -16,5 +16,9 @@ control 'aws-ec2-placement-group-1.0' do
     its('partition_count') { should be_empty }
     its('group_id') { should eq aws_placement_group_placement_group_id }
     its('tags') { should be_empty }
+  end
+
+  describe aws_ec2_placement_group(placement_group_name: 'dummy') do
+    it { should exist }
   end
 end

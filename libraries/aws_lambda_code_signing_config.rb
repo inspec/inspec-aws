@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaCodeSigningConfig < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSLambdaCodeSigningConfig < AwsResourceBase
   def code_signing_config_arn
     return nil unless exists?
     @res[:code_signing_config_arn]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

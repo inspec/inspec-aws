@@ -1,6 +1,6 @@
-aws_internet_gateway_id = attribute("aws_internet_gateway_id", value: "", description: "")
-aws_internet_gateway_owner_id = attribute("aws_internet_gateway_owner_id", value: "", description: "")
-aws_internet_gateway_vpc_id = attribute("aws_internet_gateway_vpc_id", value: "", description: "")
+aws_internet_gateway_id = input(:aws_internet_gateway_id, value: '', description: '')
+aws_internet_gateway_owner_id = input(:aws_internet_gateway_owner_id, value: '', description: '')
+aws_internet_gateway_vpc_id = input(:aws_internet_gateway_vpc_id, value: '', description: '')
 
 control 'aws-ec2-internet-gateway-1.0' do
 
@@ -13,7 +13,7 @@ control 'aws-ec2-internet-gateway-1.0' do
 
   describe aws_ec2_internet_gateway(internet_gateway_id: aws_internet_gateway_id) do
     its('attachments') { should_not be_empty }
-    its('attachments_states') { should include "available" }
+    its('attachments_states') { should include 'available' }
     its('attachments_vpc_ids') { should include aws_internet_gateway_vpc_id }
   end
 
@@ -23,7 +23,7 @@ control 'aws-ec2-internet-gateway-1.0' do
     its('tags') { should_not be_empty }
   end
 
-  describe aws_ec2_internet_gateway(internet_gateway_id: "dummy") do
+  describe aws_ec2_internet_gateway(internet_gateway_id: 'dummy') do
     it { should_not exist }
   end
 end

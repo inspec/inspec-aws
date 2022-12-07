@@ -1,5 +1,5 @@
 require 'helper'
-require 'aws_batch_job_definitions'
+require 'aws_batch_job_queues'
 require 'aws-sdk-core'
 
 class AWSBatchJobQueuesConstructorTest < Minitest::Test
@@ -29,9 +29,8 @@ class AWSBatchJobQueuesHappyPathTest < Minitest::Test
     mock_parameter[:status] = 'test1'
     mock_parameter[:status_reason] = 'test1'
     mock_parameter[:priority] = 1
-    # mock_parameter[:compute_environment_order] = 'test1'
-    # mock_parameter[:tags] = 'test1'
-    data[:data] = { job_definitions: [mock_parameter] }
+    mock_parameter[:compute_environment_order] = [{'order':1, 'compute_environment': 'test1'}]
+    data[:data] = { job_queues: [mock_parameter] }
     data[:client] = Aws::Batch::Client
     @job_definitions = AWSBatchJobQueues.new(client_args: { stub_responses: true }, stub_data: [data])
   end
@@ -60,15 +59,7 @@ class AWSBatchJobQueuesHappyPathTest < Minitest::Test
     assert_equal(@job_definitions.status_reasons, ['test1'])
   end
 
-  def test_container_properties
-    assert_equal(@job_definitions.container_properties, 'test1')
-  end
-
   def test_priorities
     assert_equal(@job_definitions.priorities, [1])
   end
-
-  # def tags
-  #   assert_equal(@job_definitions.tags, 'test1')
-  # end
 end

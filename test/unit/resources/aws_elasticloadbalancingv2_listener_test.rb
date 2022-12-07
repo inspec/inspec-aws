@@ -34,4 +34,9 @@ class AWSElasticLoadBalancingV2ListenerSuccessPathTest < Minitest::Test
   def test_listeners_exists
     assert @listeners.exists?
   end
+
+  def test_resource_id
+    refute_nil(@listeners.resource_id)
+    assert_equal(@listeners.resource_id, 'test1')
+  end
 end

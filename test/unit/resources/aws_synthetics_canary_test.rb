@@ -56,4 +56,9 @@ class AWSSyntheticsCanarySuccessPathTest < Minitest::Test
   def test_runtime_version
     assert_equal(@resp.runtime_version, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

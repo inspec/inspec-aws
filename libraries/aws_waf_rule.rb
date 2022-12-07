@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSWAFRule < AwsResourceBase
@@ -48,5 +46,9 @@ class AWSWAFRule < AwsResourceBase
 
   def predicates_data_id
     predicates.map(&:data_id)
+  end
+
+  def resource_id
+    @display_name
   end
 end

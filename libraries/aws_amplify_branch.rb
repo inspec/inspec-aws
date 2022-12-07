@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSAmplifyBranch < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSAmplifyBranch < AwsResourceBase
   def branch_name
     return nil unless exists?
     @apps[:branch_name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayMethod < AwsResourceBase
@@ -30,6 +28,10 @@ class AWSApiGatewayMethod < AwsResourceBase
   def rest_api_id
     return nil unless exists?
     @res[:rest_api_id]
+  end
+
+  def resource_id
+    @res ? "#{@res[:operation_name]}_#{@res[:authorizer_id]}" : @rest_api_id
   end
 
   def exists?

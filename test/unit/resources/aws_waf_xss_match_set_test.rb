@@ -42,4 +42,9 @@ class AWSWAFXSSMatchSetHappyPathTest < Minitest::Test
   def test_sql_injection_match_set_name
     assert_equal(@resp.name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

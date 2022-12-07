@@ -1,13 +1,12 @@
 title 'Test AWS VPCs in bulk'
 
-aws_vpc_id = attribute(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
-aws_vpc_cidr_block = attribute(:aws_vpc_cidr_block, value: '', description: 'The AWS VPC CIDR block.')
-aws_vpc_instance_tenancy = attribute(:aws_vpc_instance_tenancy, value: '', description: 'The AWS VPC instance tenancy option.')
-aws_vpc_dhcp_options_id = attribute(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
-aws_vpc_name = attribute(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
+aws_vpc_cidr_block = input(:aws_vpc_cidr_block, value: '', description: 'The AWS VPC CIDR block.')
+aws_vpc_instance_tenancy = input(:aws_vpc_instance_tenancy, value: '', description: 'The AWS VPC instance tenancy option.')
+aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
+aws_vpc_name = input(:aws_vpc_name, value: '', description: 'The AWS VPC name.')
 
 control 'aws-vpcs-1.0' do
-
   impact 1.0
   title 'Ensure AWS VPC plural resource has the correct properties.'
 

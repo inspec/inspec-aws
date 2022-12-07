@@ -1,9 +1,9 @@
-aws_synthetics_canary_name = attribute("aws_synthetics_canary_name", value: "", description: "")
-aws_synthetics_canary_status = attribute("aws_synthetics_canary_status", value: "", description: "")
-aws_synthetics_canary_source_location_arn = attribute("aws_synthetics_canary_source_location_arn", value: "", description: "")
-aws_synthetics_canary_execution_role_arn = attribute("aws_synthetics_canary_execution_role_arn", value: "", description: "")
-aws_synthetics_canary_engine_arn = attribute("aws_synthetics_canary_engine_arn", value: "", description: "")
-aws_synthetics_canary_artifact_s3_location = attribute("aws_synthetics_canary_artifact_s3_location", value: "", description: "")
+aws_synthetics_canary_name = input(:aws_synthetics_canary_name, value: "", description: "")
+aws_synthetics_canary_status = input(:aws_synthetics_canary_status, value: "", description: "")
+aws_synthetics_canary_source_location_arn = input(:aws_synthetics_canary_source_location_arn, value: "", description: "")
+aws_synthetics_canary_execution_role_arn = input(:aws_synthetics_canary_execution_role_arn, value: "", description: "")
+aws_synthetics_canary_engine_arn = input(:aws_synthetics_canary_engine_arn, value: "", description: "")
+aws_synthetics_canary_artifact_s3_location = input(:aws_synthetics_canary_artifact_s3_location, value: "", description: "")
 
 control 'aws_synthetics_canary-1.0' do
   impact 1.0

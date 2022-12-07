@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AwsAlb < AwsResourceBase
@@ -13,8 +11,8 @@ class AwsAlb < AwsResourceBase
 
    describe aws_alb('arn:aws:elasticloadbalancing') do
     its('access_log_enabled') { should eq true }
-  end
-"
+    end
+  "
 
   attr_reader :availability_zones, :canonical_hosted_zone_id, :created_time, :dns_name, :load_balancer_arn,
               :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id,
@@ -40,6 +38,10 @@ class AwsAlb < AwsResourceBase
     @type = alb.type
     @vpc_id = alb.vpc_id
     @zone_names = availability_zones.map(&:zone_name)
+  end
+
+  def resource_id
+    @load_balancer_arn
   end
 
   def access_log_enabled

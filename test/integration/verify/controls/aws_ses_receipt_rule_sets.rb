@@ -1,4 +1,4 @@
-aws_ses_receipt_rule_set_name = attribute("aws_ses_receipt_rule_set_name", value: "", description: "")
+aws_ses_receipt_rule_set_name = input(:aws_ses_receipt_rule_set_name, value: '', description: '')
 
 control 'aws-ses-receipt-rule-sets-1.0' do
   impact 1.0

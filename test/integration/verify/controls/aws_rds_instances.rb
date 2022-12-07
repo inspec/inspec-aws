@@ -1,8 +1,8 @@
-aws_rds_db_identifier = attribute(:aws_rds_db_identifier, value: '', description: 'The AWS RDS DB identifier.')
+aws_rds_db_identifier = input(:aws_rds_db_identifier, value: '', description: 'The AWS RDS DB identifier.')
 
 title 'Test multiple AWS RDS instances'
-control 'aws-rds-instances-1.0' do
 
+control 'aws-rds-instances-1.0' do
   impact 1.0
   title 'Ensure AWS RDS Instances has the correct properties.'
 

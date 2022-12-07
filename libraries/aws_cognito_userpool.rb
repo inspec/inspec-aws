@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSCognitoUserPool < AwsResourceBase
@@ -33,6 +31,10 @@ class AWSCognitoUserPool < AwsResourceBase
 
   def exists?
     !@user_pool.nil? && !@user_pool.empty?
+  end
+
+  def resource_id
+    @display_name
   end
 
   def to_s

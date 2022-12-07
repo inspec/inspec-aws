@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaLayerVersionPermission < AwsResourceBase
@@ -29,6 +27,10 @@ class AWSLambdaLayerVersionPermission < AwsResourceBase
   def layer_name
     return nil unless exists?
     @res[:layer_name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

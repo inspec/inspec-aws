@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayBasePathMapping < AwsResourceBase
@@ -30,6 +28,10 @@ class AWSApiGatewayBasePathMapping < AwsResourceBase
   def base_path
     return nil unless exists?
     @res[:base_path]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

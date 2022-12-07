@@ -64,4 +64,9 @@ class AwsLambdaTests < Minitest::Test
   def test_role_validation_works_unknown()
     refute_equal("arn:aws:iam::123456789012:role/service-role/function-two-role", @lambda.role)
   end
+
+  def test_resource_id
+    refute_nil(@lambda.resource_id)
+    assert_equal(@lambda.resource_id, 'function_one')
+  end
 end

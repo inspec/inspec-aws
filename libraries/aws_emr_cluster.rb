@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 require 'json'
 
@@ -82,6 +80,10 @@ class AwsEmrCluster < AwsResourceBase
 
   def waiting?
     !@status_state.nil? && @status_state == 'WAITING'
+  end
+
+  def resource_id
+    @cluster_id
   end
 
   def to_s

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSS3BucketPolicy < AwsResourceBase
@@ -33,6 +31,6 @@ class AWSS3BucketPolicy < AwsResourceBase
   end
 
   def to_s
-    "S3 Bucket Name: #{@display_name}"
+    "S3 Bucket Policy of #{@display_name}"
   end
 end

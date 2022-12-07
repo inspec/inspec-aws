@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayAccount < AwsResourceBase
@@ -20,6 +18,10 @@ class AWSApiGatewayAccount < AwsResourceBase
       @res = resp.to_h
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @res? @res[:cloudwatch_role_arn] : ''
   end
 
   def exists?

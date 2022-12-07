@@ -1,14 +1,13 @@
 title 'Test single AWS CloudWatch Alarm'
 
-aws_cloud_watch_alarm_name_with_dimensions = attribute(:aws_cloud_watch_alarm_name_with_dimensions, value: '', description: 'The AWS CloudWatch Alarm.')
-aws_cloud_watch_alarm_metric_name_with_dimensions = attribute(:aws_cloud_watch_alarm_metric_name_with_dimensions, value: '', description: 'The AWS CloudWatch Alarm metric.')
-aws_cloud_watch_log_metric_filter_namespace_with_dimensions = attribute(:aws_cloud_watch_log_metric_filter_namespace_with_dimensions, value: '', description: 'The AWS CloudWatch namespace.')
-aws_cloud_watch_alarm_name = attribute(:aws_cloud_watch_alarm_name, value: '', description: 'The AWS CloudWatch Alarm.')
-aws_cloud_watch_alarm_metric_name = attribute(:aws_cloud_watch_alarm_metric_name, value: '', description: 'The AWS CloudWatch Alarm metric.')
-aws_cloud_watch_log_metric_filter_namespace = attribute(:aws_cloud_watch_log_metric_filter_namespace, value: '', description: 'The AWS CloudWatch namespace.')
+aws_cloud_watch_alarm_name_with_dimensions = input(:aws_cloud_watch_alarm_name_with_dimensions, value: '', description: 'The AWS CloudWatch Alarm.')
+aws_cloud_watch_alarm_metric_name_with_dimensions = input(:aws_cloud_watch_alarm_metric_name_with_dimensions, value: '', description: 'The AWS CloudWatch Alarm metric.')
+aws_cloud_watch_log_metric_filter_namespace_with_dimensions = input(:aws_cloud_watch_log_metric_filter_namespace_with_dimensions, value: '', description: 'The AWS CloudWatch namespace.')
+aws_cloud_watch_alarm_name = input(:aws_cloud_watch_alarm_name, value: '', description: 'The AWS CloudWatch Alarm.')
+aws_cloud_watch_alarm_metric_name = input(:aws_cloud_watch_alarm_metric_name, value: '', description: 'The AWS CloudWatch Alarm metric.')
+aws_cloud_watch_log_metric_filter_namespace = input(:aws_cloud_watch_log_metric_filter_namespace, value: '', description: 'The AWS CloudWatch namespace.')
 
 control 'aws-cloudwatch-alarm-1.0' do
-
   impact 1.0
   title 'Ensure AWS CloudWatch Alarm has the correct properties.'
 
@@ -25,5 +24,4 @@ control 'aws-cloudwatch-alarm-1.0' do
   describe aws_cloudwatch_alarm(metric_name: 'NotThere', metric_namespace: 'NotThere') do
     it { should_not exist }
   end
-
 end

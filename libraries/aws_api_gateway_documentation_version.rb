@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayDocumentationVersion < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
+  end
+
+  def resource_id
+    @display_name
   end
 
   def documentation_version

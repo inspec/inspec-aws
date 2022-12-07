@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
   def target_group_arn
     return nil unless exists?
     @target_groups[:target_group_arn]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

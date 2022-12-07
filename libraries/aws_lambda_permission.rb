@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaPermission < AwsResourceBase
@@ -34,6 +32,10 @@ class AWSLambdaPermission < AwsResourceBase
       end
       create_resource_methods(row.to_h)
     end
+  end
+
+  def resource_id
+    @statement_id
   end
 
   def to_s

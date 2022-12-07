@@ -1,10 +1,9 @@
-aws_iam_user_name  = attribute(:aws_iam_user_name, value: '', description: 'The AWS IAM Username.')
-aws_iam_access_key = attribute(:aws_iam_access_key_id, value: '', description: 'The AWS IAM Access Key ID.')
-invalid_username   = 'i-do-not-exist'
-invalid_key_id     = 'AKIA1111111111111111'
+aws_iam_user_name = input(:aws_iam_user_name, value: '', description: 'The AWS IAM Username.')
+aws_iam_access_key = input(:aws_iam_access_key_id, value: '', description: 'The AWS IAM Access Key ID.')
+invalid_username = 'i-do-not-exist'
+invalid_key_id = 'AKIA1111111111111111'
 
 control 'aws-iam-access-key-1.0' do
-
   impact 1.0
   title 'Ensure AWS IAM Access Key has the correct properties.'
 

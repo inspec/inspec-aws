@@ -46,4 +46,9 @@ class AwsEmrClusterConstructorTest < Minitest::Test
   def test_exists
     assert @cluster.exists?
   end
+
+  def test_resource_id
+    refute_nil(@cluster.resource_id)
+    assert_equal(@cluster.resource_id, @stub_data[0][:data][:cluster][:id])
+  end
 end

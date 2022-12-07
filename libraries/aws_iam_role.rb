@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'aws_backend'
 
 class AwsIamRole < AwsResourceBase
   name 'aws_iam_role'
@@ -46,6 +46,14 @@ class AwsIamRole < AwsResourceBase
       resp = @aws.iam_client.list_role_policies({ role_name: @role_name })
       @inline_policies = resp.policy_names
     end
+  end
+
+  def tags
+    tag_list = []
+    catch_aws_errors do
+      tag_list = @aws.iam_client.get_role(role_name: opts[:role_name]).role.tags
+    end
+    map_tags(tag_list)
   end
 
   def resource_id

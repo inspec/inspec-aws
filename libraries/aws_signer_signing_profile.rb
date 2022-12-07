@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSSignerSigningProfile < AwsResourceBase
@@ -32,6 +30,10 @@ class AWSSignerSigningProfile < AwsResourceBase
 
   def exists?
     !@res.nil? && !@res.empty?
+  end
+
+  def resource_id
+    @display_name
   end
 
   def to_s

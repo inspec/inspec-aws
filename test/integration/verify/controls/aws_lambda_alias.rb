@@ -1,7 +1,7 @@
-aws_lambda_alias_name = attribute(:aws_lambda_alias_name, value: '')
-aws_lambda_alias_function_name = attribute(:aws_lambda_alias_function_name, value: '')
-aws_lambda_alias_arn = attribute(:aws_lambda_alias_arn, value: '')
-aws_lambda_alias_description = attribute(:aws_lambda_alias_description, value: '')
+aws_lambda_alias_name = input(:aws_lambda_alias_name, value: '', description: '')
+aws_lambda_alias_function_name = input(:aws_lambda_alias_function_name, value: '', description: '')
+aws_lambda_alias_arn = input(:aws_lambda_alias_arn, value: '', description: '')
+aws_lambda_alias_description = input(:aws_lambda_alias_description, value: '', description: '')
 
 control 'aws-lambda-alias-1.0' do
   impact 1.0

@@ -1,10 +1,9 @@
-aws_elasticache_replication_group_id = attribute(:aws_elasticache_replication_group_id, value: '', description: 'The AWS ElastiCache Replication Group ID.')
-aws_elasticache_replication_group_node_type = attribute(:aws_elasticache_replication_group_node_type, value: '', description: 'The AWS ElastiCache replication group node type.')
+aws_elasticache_replication_group_id = input(:aws_elasticache_replication_group_id, value: '', description: 'The AWS ElastiCache Replication Group ID.')
+aws_elasticache_replication_group_node_type = input(:aws_elasticache_replication_group_node_type, value: '', description: 'The AWS ElastiCache replication group node type.')
 
 title 'Test single AWS ElastiCache Replication Group'
 
 control 'aws-elasticache-replication-group-1.0' do
-
   impact 1.0
   title 'Ensure AWS ElastiCache Replication Group has the correct properties.'
 

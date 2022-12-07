@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSAmplifyApp < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSAmplifyApp < AwsResourceBase
   def app_id
     return nil unless exists?
     @apps[:app_id]
+  end
+
+  def resource_id
+    @apps? @apps[:app_id] : @display_name
   end
 
   def exists?

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AwsLambda < AwsResourceBase
@@ -35,6 +33,10 @@ class AwsLambda < AwsResourceBase
   end
 
   def name
+    @display_name
+  end
+
+  def resource_id
     @display_name
   end
 

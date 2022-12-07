@@ -1,7 +1,7 @@
-aws_api_gateway_base_path_mapping_domain_name = attribute("aws_api_gateway_base_path_mapping_domain_name", value: "", description: "")
-aws_apigateway_base_path_mapping_base_path = attribute("aws_apigateway_base_path_mapping_base_path", value: "(none)", description: "")
-aws_api_gateway_rest_api_id1 = attribute("aws_api_gateway_rest_api_id1", value: "", description: "")
-aws_api_gateway_stage_name = attribute("aws_api_gateway_stage_name", value: "", description: "")
+aws_api_gateway_base_path_mapping_domain_name = input(:aws_api_gateway_base_path_mapping_domain_name, value: '', description: '')
+aws_apigateway_base_path_mapping_base_path = input(:aws_apigateway_base_path_mapping_base_path, value: '(none)', description: '')
+aws_api_gateway_rest_api_id1 = input(:aws_api_gateway_rest_api_id1, value: '', description: '')
+aws_api_gateway_stage_name = input(:aws_api_gateway_stage_name, value: '', description: '')
 
 control 'aws_apigateway_base_path_mappings-1.0' do
   impact 1.0

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSWAFXSSMatchSet < AwsResourceBase
@@ -39,14 +37,18 @@ class AWSWAFXSSMatchSet < AwsResourceBase
   end
 
   def xss_match_tuples_field_to_match_types
-    (xss_match_tuples.map(&:field_to_match)).map(&:type)
+    xss_match_tuples.map(&:field_to_match).map(&:type)
   end
 
   def xss_match_tuples_field_to_match_data
-    (xss_match_tuples.map(&:field_to_match)).map(&:data)
+    xss_match_tuples.map(&:field_to_match).map(&:data)
   end
 
   def xss_match_tuples_text_transformations
     xss_match_tuples.map(&:text_transformation)
+  end
+
+  def resource_id
+    @display_name
   end
 end

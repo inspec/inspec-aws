@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaAlias < AwsResourceBase
@@ -28,6 +26,10 @@ class AWSLambdaAlias < AwsResourceBase
   def function_alias_name
     return nil unless exists?
     @res[:function_alias_name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

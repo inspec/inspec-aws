@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSTransferUser < AwsResourceBase
@@ -28,6 +26,10 @@ class AWSTransferUser < AwsResourceBase
   def user_name
     return nil unless exists?
     @res[:user_name]
+  end
+
+  def resource_id
+    @user_name
   end
 
   def exists?

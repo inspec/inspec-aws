@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSBatchJobDefinition < AwsResourceBase
@@ -31,6 +29,10 @@ class AWSBatchJobDefinition < AwsResourceBase
 
   def exists?
     !@job_definitions.nil? && !@job_definitions.empty?
+  end
+
+  def resource_id
+    @display_name
   end
 
   def encrypted?

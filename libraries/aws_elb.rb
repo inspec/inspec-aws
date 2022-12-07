@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AwsElb < AwsResourceBase
@@ -55,6 +53,10 @@ class AwsElb < AwsResourceBase
       elb_client.describe_load_balancer_policies(load_balancer_name: opts[:load_balancer_name])
                 .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
     end
+  end
+
+  def resource_id
+    @load_balancer_description? "#{@load_balancer_name}_#{@load_balancer_description[:availability_zones]}" : ''
   end
 
   private

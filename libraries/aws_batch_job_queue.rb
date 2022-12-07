@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSBatchJobQueue < AwsResourceBase
@@ -29,6 +27,10 @@ class AWSBatchJobQueue < AwsResourceBase
   def job_queue_name
     return nil unless exists?
     @job_queues[:job_queue_name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

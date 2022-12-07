@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaEventSourceMapping < AwsResourceBase
@@ -27,6 +25,11 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
 
   def uuid
     return nil unless exists?
+    @res[:uuid]
+  end
+
+  def resource_id
+    return '' unless exists?
     @res[:uuid]
   end
 

@@ -1,16 +1,16 @@
 title 'Test AWS Security Groups in bulk'
 
-aws_default_vpc_id = attribute(:aws_default_vpc_id, value: '', description: 'The AWS region default Security Group ID.')
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS Security Group ID.')
-aws_security_group_default_id = attribute(:aws_security_group_default_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha_id = attribute(:aws_security_group_alpha_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha = attribute(:aws_security_group_alpha, value: '', description: 'AWS Security Group name.')
-aws_security_group_beta_id = attribute(:aws_security_group_beta_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_beta = attribute(:aws_security_group_beta, value: '', description: 'AWS Security Group name.')
-aws_security_group_gamma_id = attribute(:aws_security_group_gamma_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_gamma = attribute(:aws_security_group_gamma, value: '', description: 'AWS Security Group name.')
-aws_security_group_omega_id = attribute(:aws_security_group_omega_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_omega = attribute(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
+aws_default_vpc_id = input(:aws_default_vpc_id, value: '', description: 'The AWS region default Security Group ID.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS Security Group ID.')
+aws_security_group_default_id = input(:aws_security_group_default_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha_id = input(:aws_security_group_alpha_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha = input(:aws_security_group_alpha, value: '', description: 'AWS Security Group name.')
+aws_security_group_beta_id = input(:aws_security_group_beta_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_beta = input(:aws_security_group_beta, value: '', description: 'AWS Security Group name.')
+aws_security_group_gamma_id = input(:aws_security_group_gamma_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_gamma = input(:aws_security_group_gamma, value: '', description: 'AWS Security Group name.')
+aws_security_group_omega_id = input(:aws_security_group_omega_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_omega = input(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
 
 control 'aws-security-groups-1.0' do
 

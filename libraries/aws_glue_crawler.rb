@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSGlueCrawler < AwsResourceBase
@@ -28,6 +26,10 @@ class AWSGlueCrawler < AwsResourceBase
   def name
     return nil unless exists?
     @res[:name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

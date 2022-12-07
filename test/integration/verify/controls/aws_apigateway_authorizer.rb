@@ -1,11 +1,10 @@
-aws_api_gateway_authorizer_id = attribute(:aws_api_gateway_authorizer_id, value: '', description: '')
-aws_api_gateway_rest_api_id = attribute(:aws_api_gateway_rest_api_id, value: '', description: '')
-aws_api_gateway_authorizer_authorizer_credentials = attribute(:aws_api_gateway_authorizer_authorizer_credentials, value: '', description: '')
-aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds = attribute(:aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds, value: '', description: '')
-aws_api_gateway_authorizer_authorizer_uri = attribute(:aws_api_gateway_authorizer_authorizer_uri, value: '', description: '')
+aws_api_gateway_authorizer_id = input(:aws_api_gateway_authorizer_id, value: '', description: '')
+aws_api_gateway_rest_api_id = input(:aws_api_gateway_rest_api_id, value: '', description: '')
+aws_api_gateway_authorizer_authorizer_credentials = input(:aws_api_gateway_authorizer_authorizer_credentials, value: '', description: '')
+aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds = input(:aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds, value: '', description: '')
+aws_api_gateway_authorizer_authorizer_uri = input(:aws_api_gateway_authorizer_authorizer_uri, value: '', description: '')
 
 control 'aws-apigateway-authorizer' do
-
   impact 1.0
   title 'Ensure API Gateway Authorizer resource has the correct properties.'
 

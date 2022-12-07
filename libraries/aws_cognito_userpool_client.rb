@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSCognitoUserPoolClient < AwsResourceBase
@@ -26,6 +24,11 @@ class AWSCognitoUserPoolClient < AwsResourceBase
   def id
     return nil unless exists?
     @user_pool_client[:user_pool_id, :client_id]
+  end
+
+  def resource_id
+    return @display_name unless exists?
+    @user_pool_client[:client_id]
   end
 
   def exists?

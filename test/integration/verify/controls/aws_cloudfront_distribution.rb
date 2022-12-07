@@ -1,11 +1,10 @@
 title 'Test single Cloudfront distribution'
 
-secure_distribution_id = attribute(:aws_secure_cloudfront_distribution_id, value: '', description: 'The secure AWS Cloudfront distribution ID.')
-insecure_distribution_id = attribute(:aws_insecure_cloudfront_distribution_id, value: '', description: 'The insecure AWS Cloudfront distribution ID.')
-default_distribution_id = attribute(:aws_default_cloudfront_distribution_id, value: '', description: 'The defaultinsecure AWS Cloudfront distribution ID.')
+secure_distribution_id = input(:aws_secure_cloudfront_distribution_id, value: '', description: 'The secure AWS Cloudfront distribution ID.')
+insecure_distribution_id = input(:aws_insecure_cloudfront_distribution_id, value: '', description: 'The insecure AWS Cloudfront distribution ID.')
+default_distribution_id = input(:aws_default_cloudfront_distribution_id, value: '', description: 'The defaultinsecure AWS Cloudfront distribution ID.')
 
 control 'aws-cloudfront-distribution-1.0' do
-
   impact 1.0
   title 'Ensure AWS Cloudfront distribution has the correct properties.'
 

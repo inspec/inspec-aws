@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSWAFSizeConstraintSet < AwsResourceBase
@@ -39,11 +37,11 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   end
 
   def size_constraints_field_to_match_types
-    (size_constraints.map(&:field_to_match)).map(&:type)
+    size_constraints.map(&:field_to_match).map(&:type)
   end
 
   def size_constraints_field_to_match_data
-    (size_constraints.map(&:field_to_match)).map(&:data)
+    size_constraints.map(&:field_to_match).map(&:data)
   end
 
   def size_constraints_text_transformations
@@ -56,5 +54,9 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
 
   def size_constraints_sizes
     size_constraints.map(&:size)
+  end
+
+  def resource_id
+    @display_name
   end
 end

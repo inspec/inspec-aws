@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
 gem 'bundle'
@@ -15,7 +13,7 @@ gem 'bundle'
 # Use Latest Inspec
 gem 'inspec-bin'
 
-gem 'rubocop', '~> 1.3'
+gem 'rubocop', '~> 1.31', require: false
 
 group :test do
   gem "simplecov", "~> 0.21"
