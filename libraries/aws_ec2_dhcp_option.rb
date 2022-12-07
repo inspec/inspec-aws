@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 class AwsEc2DHCPOption < AwsResourceBase
   SERVER_TYPES = %w{domain-name-servers netbios-name-servers ntp-servers}.freeze

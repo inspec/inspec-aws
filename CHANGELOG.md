@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.50 -->
+<!-- latest_release 1.83.51 -->
+## [v1.83.51](https://github.com/inspec/inspec-aws/tree/v1.83.51) (2022-12-06)
+
+#### Merged Pull Requests
+- RESOURCE-541 Remove frozen string literal from inspec aws [#954](https://github.com/inspec/inspec-aws/pull/954) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.50](https://github.com/inspec/inspec-aws/tree/v1.83.50) (2022-10-12)
 
 #### Merged Pull Requests
 - RESOURCE-489 additional check added [#951](https://github.com/inspec/inspec-aws/pull/951) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.83.49](https://github.com/inspec/inspec-aws/tree/v1.83.49) (2022-09-23)
 
