@@ -1,8 +1,8 @@
-aws_api_gateway_request_validator_rest_api_id = attribute(:aws_api_gateway_request_validator_rest_api_id, value: '', description: '')
-aws_api_gateway_request_validator_id = attribute(:aws_api_gateway_request_validator_id, value: '', description: '')
-aws_api_gateway_request_validator_name = attribute(:aws_api_gateway_request_validator_name, value: '', description: '')
-aws_api_gateway_request_validator_validate_request_body = attribute(:aws_api_gateway_request_validator_validate_request_body, value: true, description: '')
-aws_api_gateway_request_validator_validate_request_parameters = attribute(:aws_api_gateway_request_validator_validate_request_body, value: false, description: '')
+aws_api_gateway_request_validator_rest_api_id = input(:aws_api_gateway_request_validator_rest_api_id, value: '', description: '')
+aws_api_gateway_request_validator_id = input(:aws_api_gateway_request_validator_id, value: '', description: '')
+aws_api_gateway_request_validator_name = input(:aws_api_gateway_request_validator_name, value: '', description: '')
+aws_api_gateway_request_validator_validate_request_body = input(:aws_api_gateway_request_validator_validate_request_body, value: true, description: '')
+aws_api_gateway_request_validator_validate_request_parameters = input(:aws_api_gateway_request_validator_validate_request_body, value: false, description: '')
 
 control 'aws-api-gateway-request-validator-1.0' do
   impact 1.0

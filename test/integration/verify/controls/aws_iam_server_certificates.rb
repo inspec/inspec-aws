@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-server_certificate_name = attribute(:server_certificate_name, value: '')
-server_certificate_id = attribute(:server_certificate_id, value: '')
-control 'aws_iam_server_certificates-1.0' do
+server_certificate_name = input(:server_certificate_name, value: '', description: '')
+server_certificate_id = input(:server_certificate_id, value: '', description: '')
 
+control 'aws_iam_server_certificates-1.0' do
   impact 1.0
   title 'Ensure the server certificates have the correct properties.'
 

@@ -41,6 +41,11 @@ end
 : This resource accepts a single parameter, the log group name which uniquely identifies the CloudWatch Log Group.
   This can be passed either as a string or as a `log_group_name: 'value'` key-value entry in a hash.
 
+`limit` _(optional)_
+
+: This resource accepts a single parameter, an integer representing the number of results allowed to return. If not passed, in, this defaults to `1`, which will only return the first match to the `log_group_name`.
+  This can be passed as a `limit: 'value'` key-value entry in a hash.
+
 ## Properties
 
 `retention_in_days`

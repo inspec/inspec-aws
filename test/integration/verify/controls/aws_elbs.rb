@@ -1,9 +1,8 @@
 title 'Test a collection of AWS ELBs'
 
-aws_elb_name = attribute(:aws_elb_name, value: '', description: 'The AWS ELB name.')
+aws_elb_name = input(:aws_elb_name, value: '', description: 'The AWS ELB name.')
 
 control 'aws-elbs-1.0' do
-
   impact 1.0
   title 'Ensure AWS ELBs have the correct properties.'
 

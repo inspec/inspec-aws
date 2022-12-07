@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSSyntheticsCanary < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSSyntheticsCanary < AwsResourceBase
   def name
     return nil unless exists?
     @res[:name]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

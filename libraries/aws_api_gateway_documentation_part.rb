@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayDocumentationPart < AwsResourceBase
@@ -32,6 +30,10 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
   def documentation_part_id
     return nil unless exists?
     @res[:documentation_part_id]
+  end
+
+  def resource_id
+    @res[:id]
   end
 
   def to_s

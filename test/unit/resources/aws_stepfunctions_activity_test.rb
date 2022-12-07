@@ -46,4 +46,9 @@ class AWSStepFunctionsActivitySuccessPathTest < Minitest::Test
   def test_creation_date
     assert_equal(@resp.creation_date, Time.parse('2021-09-20 13:10:26.000000000 +0000'))
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

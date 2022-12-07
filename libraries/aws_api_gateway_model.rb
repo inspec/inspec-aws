@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayModel < AwsResourceBase
@@ -32,6 +30,10 @@ class AWSApiGatewayModel < AwsResourceBase
   def model_name
     return nil unless exists?
     @res[:model_name]
+  end
+
+  def resource_id
+    @res? @res[:id] : @display_name
   end
 
   def to_s

@@ -46,4 +46,9 @@ class AWSEventBridgeRuleSuccessPathTest < Minitest::Test
   def test_state
     assert_equal(@res.state, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@res.resource_id)
+    assert_equal(@res.resource_id, 'test1')
+  end
 end

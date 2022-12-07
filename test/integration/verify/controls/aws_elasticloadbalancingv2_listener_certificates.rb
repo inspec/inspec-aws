@@ -1,8 +1,7 @@
-aws_elb2_listener_arn = attribute(:aws_elb2_listener_arn, value: '', description: '')
-aws_elb2_certificate_arn = attribute(:aws_elb2_certificate_arn, value: '', description: '')
+aws_elb2_listener_arn = input(:aws_elb2_listener_arn, value: '', description: '')
+aws_elb2_certificate_arn = input(:aws_elb2_certificate_arn, value: '', description: '')
 
-control 'aws-_elb2_listener_certificates-1.0' do
-
+control 'aws-elb2-listener-certificates-1.0' do
   impact 1.0
   title 'Ensure AWS ELBV2 Listener Certificates has the correct properties.'
 

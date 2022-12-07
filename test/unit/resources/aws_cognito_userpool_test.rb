@@ -41,4 +41,9 @@ class AWSCognitoUserPoolSuccessPathTest < Minitest::Test
   def test_name
     assert_equal(@res.name, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@res.resource_id)
+    assert_equal(@res.resource_id, 'test1')
+  end
 end

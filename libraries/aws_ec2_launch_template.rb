@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSEc2LaunchTemplate < AwsResourceBase
   name 'aws_ec2_launch_template'
   desc 'Audits Launch Template.'
-  example "describe aws_ec2_launch_template(launch_template_name: 'test-launch-temlate' do
+  example "describe aws_ec2_launch_template(launch_template_name: 'test-launch-temlate') do
              it { should exist }
            end
 "

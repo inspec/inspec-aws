@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayRequestValidator < AwsResourceBase
@@ -23,6 +21,10 @@ class AWSApiGatewayRequestValidator < AwsResourceBase
       @res = resp.to_h
       create_resource_methods(@res)
     end
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

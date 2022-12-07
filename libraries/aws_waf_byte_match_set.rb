@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSWAFByteMatchSet < AwsResourceBase
@@ -43,11 +41,11 @@ class AWSWAFByteMatchSet < AwsResourceBase
   end
 
   def byte_match_tuples_field_to_match_types
-    (byte_match_tuples.map(&:field_to_match)).map(&:type)
+    byte_match_tuples.map(&:field_to_match).map(&:type)
   end
 
   def byte_match_tuples_field_to_match_data
-    (byte_match_tuples.map(&:field_to_match)).map(&:data)
+    byte_match_tuples.map(&:field_to_match).map(&:data)
   end
 
   def byte_match_tuples_target_strings
@@ -60,5 +58,9 @@ class AWSWAFByteMatchSet < AwsResourceBase
 
   def byte_match_tuples_positional_constraints
     byte_match_tuples.map(&:positional_constraint)
+  end
+
+  def resource_id
+    @display_name
   end
 end

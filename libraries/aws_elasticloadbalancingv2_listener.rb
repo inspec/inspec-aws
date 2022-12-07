@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSElasticLoadBalancingV2Listener < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
   def listener_arn
     return nil unless exists?
     @listeners[:listener_arns]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

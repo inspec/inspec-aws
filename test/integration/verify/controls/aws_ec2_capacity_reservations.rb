@@ -1,8 +1,8 @@
-aws_ec2_capacity_reservation_id = attribute("aws_ec2_capacity_reservation_id", value: "", description: "")
-aws_ec2_capacity_reservation_instance_type = attribute("aws_ec2_capacity_reservation_instance_type", value: "", description: "")
-aws_ec2_capacity_reservation_instance_platform = attribute("aws_ec2_capacity_reservation_instance_platform", value: "=", description: "")
-aws_ec2_capacity_reservation_availability_zone = attribute("aws_ec2_capacity_reservation_availability_zone", value: "", description: "")
-aws_ec2_capacity_reservation_instance_arn = attribute("aws_ec2_capacity_reservation_instance_arn", value: "", description: "")
+aws_ec2_capacity_reservation_id = input(:aws_ec2_capacity_reservation_id, value: '', description: '')
+aws_ec2_capacity_reservation_instance_type = input(:aws_ec2_capacity_reservation_instance_type, value: '', description: '')
+aws_ec2_capacity_reservation_instance_platform = input(:aws_ec2_capacity_reservation_instance_platform, value: '=', description: '')
+aws_ec2_capacity_reservation_availability_zone = input(:aws_ec2_capacity_reservation_availability_zone, value: '', description: '')
+aws_ec2_capacity_reservation_instance_arn = input(:aws_ec2_capacity_reservation_instance_arn, value: '', description: '')
 
 control 'aws-ec2-capacity-reservations-1.0' do
   impact 1.0

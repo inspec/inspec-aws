@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSAthenaWorkGroup < AwsResourceBase
@@ -29,6 +27,10 @@ class AWSAthenaWorkGroup < AwsResourceBase
   def work_group
     return nil unless exists?
     @work_group[:work_group]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

@@ -1,10 +1,9 @@
 title 'Test single AWS region'
 
-aws_region_exists = attribute(:aws_region_exists, value: 'eu-west-2', description: 'An AWS region.')
-aws_region_endpoint_exists = attribute(:aws_region_endpoint_exists, value: 'ec2.eu-west-2.amazonaws.com', description: 'An AWS region.')
+aws_region_exists = input(:aws_region_exists, value: 'eu-west-2', description: 'An AWS region.')
+aws_region_endpoint_exists = input(:aws_region_endpoint_exists, value: 'ec2.eu-west-2.amazonaws.com', description: 'An AWS region.')
 
 control 'aws-region-1.0' do
-
   impact 1.0
   title 'Ensure AWS region has the correct properties.'
 
@@ -23,5 +22,4 @@ control 'aws-region-1.0' do
   describe aws_region('not-a-real-region-1') do
     it { should_not exist }
   end
-
 end

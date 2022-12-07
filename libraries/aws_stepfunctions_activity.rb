@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSStepFunctionsActivity < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSStepFunctionsActivity < AwsResourceBase
   def activity_arn
     return nil unless exists?
     @res[:activity_arn]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

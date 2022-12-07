@@ -1,10 +1,9 @@
-aws_api_gateway_deployement_id = attribute(:aws_api_gateway_deployement_id_test, value: '', description: '')
-aws_api_gateway_stage_name = attribute(:aws_api_gateway_stage_name_test, value: '', description: '')
-aws_api_gateway_client_certificate_id = attribute(:aws_api_gateway_client_certificate_id_test, value: '', description: '')
-aws_api_gateway_rest_api_id = attribute(:aws_api_gateway_rest_api_id_test, value: '', description: '')
+aws_api_gateway_deployement_id = input(:aws_api_gateway_deployement_id_test, value: '', description: '')
+aws_api_gateway_stage_name = input(:aws_api_gateway_stage_name_test, value: '', description: '')
+aws_api_gateway_client_certificate_id = input(:aws_api_gateway_client_certificate_id_test, value: '', description: '')
+aws_api_gateway_rest_api_id = input(:aws_api_gateway_rest_api_id_test, value: '', description: '')
 
 control 'aws-apigateway-stages' do
-
   impact 1.0
   title 'Ensure API Gateway Stages resource has the correct properties.'
 
@@ -21,3 +20,4 @@ control 'aws-apigateway-stages' do
   describe aws_api_gateway_stages(rest_api_id: 'dummy') do
     it { should_not exist }
   end
+end

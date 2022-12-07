@@ -1,4 +1,4 @@
-aws_ssm_maintenance_window_id = attribute("aws_ssm_maintenance_window_id", value: "", description: "")
+aws_ssm_maintenance_window_id = input(:aws_ssm_maintenance_window_id, value: '', description: '')
 
 control 'aws-ssm-maintenance-windows-1.0' do
   impact 1.0

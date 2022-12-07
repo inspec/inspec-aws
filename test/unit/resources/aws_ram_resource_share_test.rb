@@ -72,4 +72,9 @@ class AWSRAMResourceShareSuccessPathTest < Minitest::Test
     def test_last_updated_time
         assert_equal(@resource_shares.last_updated_time, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
     end
+
+    def test_resource_id
+        refute_nil(@resource_shares.resource_id)
+        assert_equal(@resource_shares.resource_id, 'test1')
+    end
 end

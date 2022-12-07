@@ -1,5 +1,5 @@
-aws_api_gateway_gateway_response_response_type = attribute("aws_api_gateway_gateway_response_response_type", value: "", description: "")
-aws_api_gateway_gateway_response_rest_api_id = attribute("aws_api_gateway_gateway_response_rest_api_id", value: "", description: "")
+aws_api_gateway_gateway_response_response_type = input(:aws_api_gateway_gateway_response_response_type, value: '', description: '')
+aws_api_gateway_gateway_response_rest_api_id = input(:aws_api_gateway_gateway_response_rest_api_id, value: '', description: '')
 
 control 'aws-api-gateway-response-1.0' do
   impact 1.0
@@ -11,7 +11,7 @@ control 'aws-api-gateway-response-1.0' do
 
   describe aws_api_gateway_response(rest_api_id: aws_api_gateway_gateway_response_rest_api_id, response_type: aws_api_gateway_gateway_response_response_type) do
     its('response_type') { should eq aws_api_gateway_gateway_response_response_type }
-    its('status_code') { should eq "401" }
+    its('status_code') { should eq '401' }
     its('default_response') { should eq false }
   end
 end

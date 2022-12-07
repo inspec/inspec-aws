@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 require 'json'
 
@@ -40,6 +38,10 @@ class AwsEmrClusterSecurityConfiguration < AwsResourceBase
 
   def exists?
     !@security_configuration_name.nil? && !@security_configuration_name.empty?
+  end
+
+  def resource_id
+    @security_configuration_name
   end
 
   def to_s

@@ -37,6 +37,11 @@ class AWSApiGatewayMethodSuccessPathTest < Minitest::Test
 		@res = AWSApiGatewayMethod.new(rest_api_id: 'test1', resource_id: 'test1', http_method: 'test1', client_args: { stub_responses: true }, stub_data: [data])
 	end
 
+  def test_resource_id
+    refute_nil(@res.resource_id)
+    assert_equal(@res.resource_id, 'test1_test1')
+  end
+
 	def test_api_gateway_method_exists
 		assert @res.exists?
 	end

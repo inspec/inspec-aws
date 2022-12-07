@@ -1,5 +1,4 @@
 skip_control 'aws_transit_gateway_connects' do
-
   impact 1.0
   title 'Describes one or more Connect attachments.'
 

@@ -46,4 +46,10 @@ class AWSElasticLoadBalancingV2TargetGroupSuccessPathTest < Minitest::Test
   def test_protocol
     assert_equal(@target_groups.protocol, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@target_groups.resource_id)
+    assert_equal(@target_groups.resource_id, 'test1')
+  end
+
 end

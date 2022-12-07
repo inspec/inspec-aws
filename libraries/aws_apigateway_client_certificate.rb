@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSApiGatewayClientCertificate < AwsResourceBase
@@ -28,6 +26,10 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
   def client_certificate_id
     return nil unless exists?
     @res[:client_certificate_id]
+  end
+
+  def resource_id
+    @res? @res[:client_certificate_id] : @display_name
   end
 
   def exists?

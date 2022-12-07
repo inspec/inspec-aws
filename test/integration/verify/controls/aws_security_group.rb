@@ -1,21 +1,20 @@
 title 'Test single AWS Security Group'
 
-aws_default_vpc_id = attribute(:aws_default_vpc_id, value: '', description: 'The AWS region default VPC ID.')
-aws_vpc_id = attribute(:aws_vpc_id, default: '', description: 'The AWS VPC ID.')
-aws_security_group_default_id = attribute(:aws_security_group_default_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha_id = attribute(:aws_security_group_alpha_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_alpha = attribute(:aws_security_group_alpha, value: '', description: 'AWS Security Group name.')
-aws_security_group_beta_id = attribute(:aws_security_group_beta_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_beta = attribute(:aws_security_group_beta, value: '', description: 'AWS Security Group name.')
-aws_security_group_gamma_id = attribute(:aws_security_group_gamma_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_gamma = attribute(:aws_security_group_gamma, value: '', description: 'AWS Security Group name.')
-aws_security_group_zeta_id = attribute(:aws_security_group_zeta_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_zeta = attribute(:aws_security_group_zeta, value: '', description: 'AWS Security Group name.')
-aws_security_group_omega_id = attribute(:aws_security_group_omega_id, value: '', description: 'AWS Security Group ID.')
-aws_security_group_omega = attribute(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
+aws_security_group_zeta_id = input(:aws_security_group_zeta_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_zeta = input(:aws_security_group_zeta, value: '', description: 'AWS Security Group name.')
+aws_default_vpc_id = input(:aws_default_vpc_id, value: '', description: 'The AWS region default Security Group ID.')
+aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS Security Group ID.')
+aws_security_group_default_id = input(:aws_security_group_default_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha_id = input(:aws_security_group_alpha_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_alpha = input(:aws_security_group_alpha, value: '', description: 'AWS Security Group name.')
+aws_security_group_beta_id = input(:aws_security_group_beta_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_beta = input(:aws_security_group_beta, value: '', description: 'AWS Security Group name.')
+aws_security_group_gamma_id = input(:aws_security_group_gamma_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_gamma = input(:aws_security_group_gamma, value: '', description: 'AWS Security Group name.')
+aws_security_group_omega_id = input(:aws_security_group_omega_id, value: '', description: 'AWS Security Group ID.')
+aws_security_group_omega = input(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
 
 control 'aws-security-group-1.0' do
-
   impact 1.0
   title 'Ensure AWS Security Group has the correct properties.'
 
@@ -66,24 +65,24 @@ control 'aws-security-group-1.0' do
     its('tags') { should include('Environment' => 'Dev',
                                  'Name' => aws_security_group_alpha)}
     it { should allow_in(port: 22) }
-    it { should_not allow_in(port: 631, ipv4_range: "0.0.0.0/0") }
-    it { should allow_in(ipv4_range: "0.0.0.0/0", port: 80) }
-    it { should_not allow_in(ipv4_range: "0.0.0.0/0", port: 22) }
-    it { should allow_in(ipv4_range: "10.1.2.0/24", port: 22) }
-    it { should allow_in(ipv4_range: ["10.1.2.0/24"], port: 22) }
-    it { should allow_in(ipv6_range: ["2001:db8::/122"], port: 22) }
-    it { should allow_in({ ipv4_range: "10.1.2.32/32", position: 2 }) }
-    it { should_not allow_in_only({ ipv4_range: "10.1.2.32/32", position: 2 }) }
-    it { should allow_in_only({ ipv4_range: "10.1.2.0/24", position: 2 }) }
+    it { should_not allow_in(port: 631, ipv4_range: '0.0.0.0/0') }
+    it { should allow_in(ipv4_range: '0.0.0.0/0', port: 80) }
+    it { should_not allow_in(ipv4_range: '0.0.0.0/0', port: 22) }
+    it { should allow_in(ipv4_range: '10.1.2.0/24', port: 22) }
+    it { should allow_in(ipv4_range: ['10.1.2.0/24'], port: 22) }
+    it { should allow_in(ipv6_range: ['2001:db8::/122'], port: 22) }
+    it { should allow_in({ ipv4_range: '10.1.2.32/32', position: 2 }) }
+    it { should_not allow_in_only({ ipv4_range: '10.1.2.32/32', position: 2 }) }
+    it { should allow_in_only({ ipv4_range: '10.1.2.0/24', position: 2 }) }
     # Fixture allows out 6000-6007, with one rule
     it { should allow_out(port: 6003) }
     it { should_not allow_out_only(port: 6003) }
     it { should allow_out_only(from_port: 6000, to_port: 6007) }
-    it { should allow_out(ipv4_range: ["10.1.2.0/24", "10.3.2.0/24"]) }
-    it { should allow_out(ipv4_range: ["10.1.2.0/24", "10.3.2.0/24"], from_port: 6000, to_port: 6007) }
-    it { should allow_out(ipv4_range: ["10.1.2.0/24", "10.3.2.0/24"], from_port: 6000, to_port: 6007, position: 1) }
-    it { should allow_out(ipv6_range: ["2001:db8::/122"]) }
-    it { should allow_out(ipv6_range: ["2001:db8::/122"], from_port: 6000, to_port: 6007) }
+    it { should allow_out(ipv4_range: ['10.1.2.0/24', '10.3.2.0/24']) }
+    it { should allow_out(ipv4_range: ['10.1.2.0/24', '10.3.2.0/24'], from_port: 6000, to_port: 6007) }
+    it { should allow_out(ipv4_range: ['10.1.2.0/24', '10.3.2.0/24'], from_port: 6000, to_port: 6007, position: 1) }
+    it { should allow_out(ipv6_range: ['2001:db8::/122']) }
+    it { should allow_out(ipv6_range: ['2001:db8::/122'], from_port: 6000, to_port: 6007) }
   end
 
   describe aws_security_group(aws_security_group_beta_id) do
@@ -99,10 +98,9 @@ control 'aws-security-group-1.0' do
 
   describe aws_security_group(aws_security_group_zeta_id) do
     its('group_name') { should eq aws_security_group_zeta }
-    it { should allow_in(ipv4_range: "0.0.0.0/0", protocol: 'any') }
-    it { should allow_in(ipv4_range: "0.0.0.0/0", protocol: 'all') }
-    it { should allow_out(ipv4_range: "0.0.0.0/0", protocol: 'any') }
-    it { should allow_out(ipv4_range: "0.0.0.0/0", protocol: 'all') }
+    it { should allow_in(ipv4_range: '0.0.0.0/0', protocol: 'any') }
+    it { should allow_in(ipv4_range: '0.0.0.0/0', protocol: 'all') }
+    it { should allow_out(ipv4_range: '0.0.0.0/0', protocol: 'any') }
+    it { should allow_out(ipv4_range: '0.0.0.0/0', protocol: 'all') }
   end
-
 end

@@ -1,5 +1,5 @@
-aws_networkfirewall_firewall_policy_arn = attribute("aws_networkfirewall_firewall_policy_arn", value: "", description: "")
-aws_networkfirewall_firewall_name = attribute("aws_networkfirewall_firewall_name", value: "", description: "")
+aws_networkfirewall_firewall_policy_arn = input(:aws_networkfirewall_firewall_policy_arn, value: '', description: '')
+aws_networkfirewall_firewall_name = input(:aws_networkfirewall_firewall_name, value: '', description: '')
 
 control 'aws-network-firewall-firewalls-1.0' do
   impact 1.0

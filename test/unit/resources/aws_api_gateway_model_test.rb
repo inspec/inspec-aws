@@ -33,6 +33,11 @@ class AWSApiGatewayModelHappyPathTest < Minitest::Test
     @resp = AWSApiGatewayModel.new(rest_api_id: 'test', model_name: 'test', client_args: { stub_responses: true }, stub_data: [data])
   end
 
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test')
+  end
+
   def test_model_exists
     assert @resp.exist?
   end

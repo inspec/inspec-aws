@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSLambdaVersion < AwsResourceBase
@@ -27,6 +25,10 @@ class AWSLambdaVersion < AwsResourceBase
   def version_number
     return nil unless exists?
     @res[:version_number]
+  end
+
+  def resource_id
+    @res ? @res[:layer_arn] : @display_name
   end
 
   def exists?

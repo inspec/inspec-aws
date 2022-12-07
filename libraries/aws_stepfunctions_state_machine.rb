@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'aws_backend'
 
 class AWSStepFunctionsStateMachine < AwsResourceBase
@@ -28,6 +26,10 @@ class AWSStepFunctionsStateMachine < AwsResourceBase
   def state_machine_arn
     return nil unless exists?
     @res[:state_machine_arn]
+  end
+
+  def resource_id
+    @display_name
   end
 
   def exists?

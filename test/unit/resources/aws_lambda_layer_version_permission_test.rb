@@ -41,4 +41,9 @@ class AWSLambdaLayerVersionPermissionSuccessPathTest < Minitest::Test
   def test_revision_id
     assert_equal(@resp.revision_id, 'test1')
   end
+
+  def test_resource_id
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
+  end
 end

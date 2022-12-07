@@ -6153,3 +6153,167 @@ resource "aws_api_gateway_usage_plan_key" "aws_api_gateway_usage_plan_key_test" 
   key_type      = "API_KEY"
   usage_plan_id = aws_api_gateway_usage_plan.aws_api_gateway_usage_plan_test.id
 }
+
+#  AWS::ApiGatewayV2::Api
+
+resource "aws_apigatewayv2_api" "aws_apigatewayv2_api_test" {
+  name          = "example-http-api"
+  protocol_type = "HTTP"
+  description   = "Created by Terraform"
+}
+
+resource "aws_apigatewayv2_api" "aws_apigatewayv2_api_test2" {
+  name                       = "example-websocket-api"
+  protocol_type              = "WEBSOCKET"
+  route_selection_expression = "$request.body.action"
+  description                = "Created by Terraform"
+}
+
+####  AWS::ApiGatewayV2 -> All Terraform Resources
+
+####  AWS::ApiGatewayV2::ApiMapping
+
+resource "aws_apigatewayv2_api_mapping" "aws_apigatewayv2_api_mapping_test" {
+  api_id      = aws_apigatewayv2_api.aws_apigatewayv2_api_test.id
+  domain_name = "soumyo2.eng.chefdemo.net"
+  stage       = aws_apigatewayv2_stage.aws_apigatewayv2_stage_test.id
+}
+
+####  AWS::ApiGatewayV2::Authorizer
+
+resource "aws_cognito_user_pool" "aws_cognito_user_pool_apigatewayv2_auth_test" {
+  name = "mypooltest"
+}
+
+resource "aws_apigatewayv2_authorizer" "aws_apigatewayv2_authorizer_test" {
+  api_id           = aws_apigatewayv2_api.aws_apigatewayv2_api_test.id
+  authorizer_type  = "JWT"
+  identity_sources = ["$request.header.Authorization"]
+  name             = "example-authorizer"
+
+  jwt_configuration {
+    audience = ["example"]
+    issuer   = "https://${aws_cognito_user_pool.aws_cognito_user_pool_apigatewayv2_auth_test.endpoint}"
+  }
+}
+
+####  AWS::ApiGatewayV2::Deployment
+
+resource "aws_apigatewayv2_deployment" "aws_apigatewayv2_deployment_test" {
+  api_id      = aws_apigatewayv2_route.aws_apigatewayv2_route_test.api_id
+  description = "Example deployment"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+####  AWS::ApiGatewayV2::DomainName
+
+resource "aws_apigatewayv2_domain_name" "aws_apigatewayv2_domain_name_test" {
+  domain_name = "soumyo2.eng.chefdemo.net"
+
+  domain_name_configuration {
+    certificate_arn = "arn:aws:acm:us-east-1:112758395563:certificate/f3ef5702-c193-44d0-9a1f-a925dd3cd51b"
+    endpoint_type   = "REGIONAL"
+    security_policy = "TLS_1_2"
+  }
+}
+
+####  AWS::ApiGatewayV2::Stage
+
+resource "aws_apigatewayv2_stage" "aws_apigatewayv2_stage_test" {
+  api_id = aws_apigatewayv2_api.aws_apigatewayv2_api_test.id
+  name   = "example-stage"
+}
+
+####  AWS::ApiGatewayV2::Integration
+
+resource "aws_apigatewayv2_integration" "aws_apigatewayv2_integration_test" {
+  api_id           = aws_apigatewayv2_api.aws_apigatewayv2_api_test2.id
+  integration_type = "HTTP_PROXY"
+  integration_method = "ANY"
+  integration_uri    = "https://example.com/{proxy}"
+}
+
+####  AWS::ApiGatewayV2::IntegrationResponse
+
+resource "aws_apigatewayv2_integration_response" "aws_apigatewayv2_integration_response_test" {
+  api_id                   = aws_apigatewayv2_api.aws_apigatewayv2_api_test2.id
+  integration_id           = aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.id
+  integration_response_key = "/200/"
+}
+
+####  AWS::ApiGatewayV2::Model
+
+resource "aws_apigatewayv2_model" "aws_apigatewayv2_model_test" {
+  api_id       = aws_apigatewayv2_api.aws_apigatewayv2_api_test2.id
+  content_type = "application/json"
+  name         = "example"
+
+  schema = <<EOF
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ExampleModel",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" }
+  }
+}
+EOF
+}
+
+####  AWS::ApiGatewayV2::Route
+
+resource "aws_apigatewayv2_route" "aws_apigatewayv2_route_test" {
+  api_id    = aws_apigatewayv2_api.aws_apigatewayv2_api_test2.id
+  route_key = "$default"
+
+  target = "integrations/${aws_apigatewayv2_integration.aws_apigatewayv2_integration_test.id}"
+}
+
+####  AWS::ApiGatewayV2::RouteResponse
+
+resource "aws_apigatewayv2_route_response" "aws_apigatewayv2_route_response_test" {
+  api_id             = aws_apigatewayv2_api.aws_apigatewayv2_api_test2.id
+  route_id           = aws_apigatewayv2_route.aws_apigatewayv2_route_test.id
+  route_response_key = "$default"
+}
+
+####  AWS::ApiGatewayV2::VpcLink
+
+resource "aws_vpc" "aws_vpc_apigatewayv2_vpc_link_test" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_security_group" "aws_security_group_apigatewayv2_vpc_link_test" {
+  name        = "testsgapigatewayv2"
+  description = "Created by TF."
+  vpc_id      = aws_vpc.aws_vpc_apigatewayv2_vpc_link_test.id
+
+  tags = {
+    Name        = "terraform"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_subnet" "aws_subnet_apigatewayv2_vpc_link_test" {
+  vpc_id     = aws_vpc.aws_vpc_apigatewayv2_vpc_link_test.id
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+#### AWS::ApiGatewayV2::VpcLink
+
+resource "aws_apigatewayv2_vpc_link" "aws_apigatewayv2_vpc_link_test" {
+  name               = "example-vpc-link"
+  security_group_ids = [aws_security_group.aws_security_group_apigatewayv2_vpc_link_test.id]
+  subnet_ids         = [aws_subnet.aws_subnet_apigatewayv2_vpc_link_test.id]
+
+  tags = {
+    Usage = "example"
+  }
+}

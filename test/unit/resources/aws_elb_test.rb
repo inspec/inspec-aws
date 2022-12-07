@@ -47,6 +47,11 @@ class AwsElbConstructorTest < Minitest::Test
                                  stub_data: stub_data)
   end
 
+  def test_resource_id
+    refute_nil(@elb.resource_id)
+    assert_equal(@elb.resource_id, "#{@mock_elb[:load_balancer_name]}_#{@mock_elb[:availability_zones]}")
+  end
+
   def test_empty_params_not_ok
     assert_raises(ArgumentError) { AwsElb.new(client_args: { stub_responses: true }) }
   end

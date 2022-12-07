@@ -1,7 +1,7 @@
-aws_ses_template_name = attribute("aws_ses_template_name", value: "", description: "")
-aws_ses_template_subject = attribute("aws_ses_template_subject", value: "", description: "")
-aws_ses_template_text = attribute("aws_ses_template_text", value: "", description: "")
-aws_ses_template_html = attribute("aws_ses_template_html", value: "", description: "")
+aws_ses_template_name = input(:aws_ses_template_name, value: '', description: '')
+aws_ses_template_subject = input(:aws_ses_template_subject, value: '', description: '')
+aws_ses_template_text = input(:aws_ses_template_text, value: '', description: '')
+aws_ses_template_html = input(:aws_ses_template_html, value: '', description: '')
 
 control 'aws-ses-template-1.0' do
   impact 1.0

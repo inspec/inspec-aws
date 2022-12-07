@@ -1,6 +1,6 @@
-aws_api_gateway_api_key_id = attribute(:aws_api_gateway_api_key_id, value: '', description: '')
-aws_api_gateway_api_key_created_date = attribute(:aws_api_gateway_api_key_created_date, value: '', description: '')
-aws_api_gateway_api_key_last_updated_date = attribute(:aws_api_gateway_api_key_last_updated_date, value: '', description: '')
+aws_api_gateway_api_key_id = input(:aws_api_gateway_api_key_id, value: '', description: '')
+aws_api_gateway_api_key_created_date = input(:aws_api_gateway_api_key_created_date, value: '', description: '')
+aws_api_gateway_api_key_last_updated_date = input(:aws_api_gateway_api_key_last_updated_date, value: '', description: '')
 
 control 'aws-apigateway-api-keys' do
 

@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-client_vpn_endpoint_id = attribute('client_vpn_endpoint_id', value: '', description: '')
+client_vpn_endpoint_id = input(:client_vpn_endpoint_id, value: '', description: '')
 
-skip_control 'aws_ec2_client_vpn_endpoints-1.0' do
+skip_control 'aws-ec2-client-vpn-endpoints-1.0' do
   impact 1.0
   title 'Test the properties of the vpn endpoints.'
 

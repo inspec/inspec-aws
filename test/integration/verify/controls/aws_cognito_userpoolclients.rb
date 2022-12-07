@@ -1,11 +1,10 @@
-aws_user_pool_id = attribute("aws_user_pool_id", value: "", description: "")
-aws_client_id = attribute("aws_client_id", value: "", description: "")
-aws_client_name = attribute("aws_client_name", value: "", description: "")
+aws_user_pool_id = input(:aws_user_pool_id, value: '', description: '')
+aws_client_id = input(:aws_client_id, value: '', description: '')
+aws_client_name = input(:aws_client_name, value: '', description: '')
 
-control 'aws-auto-identity-pool-clients-1.0' do
-
+control 'aws-cognito-identity-pool-clients-1.0' do
   impact 1.0
-  title 'Ensure AWS Identity Pool Clients has the correct properties.'
+  title 'Ensure AWS Cognito Identity Pool Clients has the correct properties.'
 
   describe aws_cognito_userpool_clients(user_pool_id: aws_user_pool_id) do
     it { should exist }

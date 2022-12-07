@@ -1,9 +1,10 @@
-# frozen_string_literal: true
-client_vpn_endpoint_id = attribute('client_vpn_endpoint_id', value: '', description: '')
-target_subnet = attribute('target_subnet', value: '', description: '')
-control 'aws_ec2_client_vpn_route-1.0' do
+client_vpn_endpoint_id = input(:client_vpn_endpoint_id, value: '', description: '')
+target_subnet = input(:target_subnet, value: '', description: '')
+
+control 'aws-ec2-client-vpn-route-1.0' do
   impact 1.0
   title 'Test the properties of the vpn routes.'
+
   describe aws_ec2_client_vpn_route(client_vpn_endpoint_id:  client_vpn_endpoint_id, target_subnet: target_subnet) do
     it { should exist }
     its('origin') { should eq 'associate' }

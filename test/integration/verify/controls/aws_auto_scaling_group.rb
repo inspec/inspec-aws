@@ -1,6 +1,6 @@
 title 'Test single AWS Auto Scaling Group'
 
-group_name = attribute(:aws_auto_scaling_group, value: '', description: 'The AWS Auto Scaling Group name.')
+group_name = input(:aws_auto_scaling_group, value: '', description: 'The AWS Auto Scaling Group name.')
 
 control 'aws-auto-scaling-group-1.0' do
   impact 1.0
