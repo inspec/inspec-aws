@@ -13,10 +13,10 @@ TF_PLAN_FILE = 'inspec-aws.plan'
 PROFILE_ATTRIBUTES = 'aws-inspec-attributes.yaml'
 
 # Rubocop
-desc 'Run Rubocop lint checks'
-task :rubocop do
-  RuboCop::RakeTask.new
-end
+# desc 'Run Rubocop lint checks'
+# task :rubocop do
+#   RuboCop::RakeTask.new
+# end
 
 # Minitest
 Rake::TestTask.new do |t|
@@ -27,13 +27,25 @@ Rake::TestTask.new do |t|
   t.pattern = File.join('test', 'unit', '**', '*_test.rb')
 end
 
+# desc 'Run rubocop linter'
+# task lint: [:rubocop]
+
 # lint the project
-desc 'Run robocop linter'
-task lint: [:rubocop]
+# chefstyle
+
+begin
+  require "chefstyle"
+  require "rubocop/rake_task"
+  RuboCop::RakeTask.new(:lint) do |task|
+    task.options += ["--display-cop-names", "--no-color", "--parallel"]
+  end
+rescue LoadError
+  puts "rubocop is not available. Install the rubocop gem to run the lint tests."
+end
 
 # run tests
-#  Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571 - 'test:check'
-desc 'Run robocop linter + unit tests'
+# Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571 - 'test:check'
+desc 'Run rubocop chefstyle linter + unit tests'
 task default: [:lint, :test ]
 
 
@@ -115,5 +127,4 @@ namespace :tf do
     cmd = format(cmd, TF_VAR_FILE_NAME)
     sh(cmd)
   end
-
 end
