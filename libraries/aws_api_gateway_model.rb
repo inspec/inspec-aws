@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayModel < AwsResourceBase
-  name 'aws_api_gateway_model'
-  desc 'Retrieves API Gateway Model.'
+  name "aws_api_gateway_model"
+  desc "Retrieves API Gateway Model."
 
   example "
     describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamGroup < AwsResourceBase
-  name 'aws_iam_group'
-  desc 'Verifies settings for an AWS IAM Group.'
+  name "aws_iam_group"
+  desc "Verifies settings for an AWS IAM Group."
 
   example "
     describe aws_iam_group('group-1') do
@@ -36,7 +36,7 @@ class AwsIamGroup < AwsResourceBase
   end
 
   def exists?
-    @arn.start_with?('arn:')
+    @arn.start_with?("arn:")
   end
 
   def to_s

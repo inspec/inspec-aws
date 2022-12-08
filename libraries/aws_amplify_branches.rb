@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAmplifyBranches < AwsResourceBase
-  name 'aws_amplify_branches'
-  desc 'Lists the branches of an Amplify app.'
+  name "aws_amplify_branches"
+  desc "Lists the branches of an Amplify app."
 
   example "
     describe aws_amplify_branches(app_id: 'AppId') do
@@ -13,16 +13,16 @@ class AWSAmplifyBranches < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:branch_arns, field: :branch_arn)
-             .register_column(:branch_names, field: :branch_name)
-             .register_column(:stages, field: :stage)
-             .register_column(:tags, field: :tags)
-             .register_column(:descriptions, field: :description)
-             .register_column(:display_names, field: :display_name)
-             .register_column(:enable_notifications, field: :enable_notification)
-             .register_column(:create_time, field: :create_time)
-             .register_column(:update_time, field: :update_time)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:branch_arns, field: :branch_arn)
+    .register_column(:branch_names, field: :branch_name)
+    .register_column(:stages, field: :stage)
+    .register_column(:tags, field: :tags)
+    .register_column(:descriptions, field: :description)
+    .register_column(:display_names, field: :display_name)
+    .register_column(:enable_notifications, field: :enable_notification)
+    .register_column(:create_time, field: :create_time)
+    .register_column(:update_time, field: :update_time)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

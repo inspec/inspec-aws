@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsAmis < AwsResourceBase
-  name 'aws_amis'
-  desc 'Verifies settings for a collection of AWS AMIs.'
+  name "aws_amis"
+  desc "Verifies settings for a collection of AWS AMIs."
   example "
     describe aws_amis(all_amis: 'true') do
       it { should exist }
@@ -12,33 +12,33 @@ class AwsAmis < AwsResourceBase
   attr_reader :table, :api_response
 
   FilterTable.create
-             .register_column(:architectures,         field: :architecture)
-             .register_column(:creation_dates,        field: :creation_date)
-             .register_column(:image_ids,             field: :image_id)
-             .register_column(:image_locations,       field: :image_location)
-             .register_column(:image_types,           field: :image_type)
-             .register_column(:public,                field: :public)
-             .register_column(:kernel_ids,            field: :kernel_id)
-             .register_column(:owner_ids,             field: :owner_id)
-             .register_column(:platforms,             field: :platform)
-             .register_column(:platform_details,      field: :platform_details)
-             .register_column(:usage_operations,      field: :usage_operation)
-             .register_column(:product_codes,         field: :product_codes)
-             .register_column(:ramdisk_ids,           field: :ramdisk_id)
-             .register_column(:states,                field: :state)
-             .register_column(:block_device_mappings, field: :block_device_mappings)
-             .register_column(:descriptions,          field: :description)
-             .register_column(:ena_support,           field: :ena_support)
-             .register_column(:hypervisors,           field: :hypervisor)
-             .register_column(:image_owner_alias,     field: :image_owner_alias)
-             .register_column(:names,                 field: :name)
-             .register_column(:root_device_names,     field: :root_device_name)
-             .register_column(:root_device_types,     field: :root_device_type)
-             .register_column(:sriov_net_support,     field: :sriov_net_support)
-             .register_column(:state_reasons,         field: :state_reason)
-             .register_column(:tags,                  field: :tags)
-             .register_column(:virtualization_types,  field: :virtualization_type)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:architectures,         field: :architecture)
+    .register_column(:creation_dates,        field: :creation_date)
+    .register_column(:image_ids,             field: :image_id)
+    .register_column(:image_locations,       field: :image_location)
+    .register_column(:image_types,           field: :image_type)
+    .register_column(:public,                field: :public)
+    .register_column(:kernel_ids,            field: :kernel_id)
+    .register_column(:owner_ids,             field: :owner_id)
+    .register_column(:platforms,             field: :platform)
+    .register_column(:platform_details,      field: :platform_details)
+    .register_column(:usage_operations,      field: :usage_operation)
+    .register_column(:product_codes,         field: :product_codes)
+    .register_column(:ramdisk_ids,           field: :ramdisk_id)
+    .register_column(:states,                field: :state)
+    .register_column(:block_device_mappings, field: :block_device_mappings)
+    .register_column(:descriptions,          field: :description)
+    .register_column(:ena_support,           field: :ena_support)
+    .register_column(:hypervisors,           field: :hypervisor)
+    .register_column(:image_owner_alias,     field: :image_owner_alias)
+    .register_column(:names,                 field: :name)
+    .register_column(:root_device_names,     field: :root_device_name)
+    .register_column(:root_device_types,     field: :root_device_type)
+    .register_column(:sriov_net_support,     field: :sriov_net_support)
+    .register_column(:state_reasons,         field: :state_reason)
+    .register_column(:tags,                  field: :tags)
+    .register_column(:virtualization_types,  field: :virtualization_type)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -50,7 +50,7 @@ class AwsAmis < AwsResourceBase
     query_params = {}
     filter = []
     owners = []
-    if @opts[:all_amis] == 'true'
+    if @opts[:all_amis] == "true"
       filter = []
     elsif @opts
       @opts.each do |k, v|
@@ -67,11 +67,11 @@ class AwsAmis < AwsResourceBase
             raise ArgumentError, "The owners parameter should be a String or an Array of String. Found: #{v.class}"
           end
         else
-          filter << { name: k.to_s.tr('_', '-'), values: [v] }
+          filter << { name: k.to_s.tr("_", "-"), values: [v] }
         end
       end
     else
-      raise ArgumentError, 'Either all_amis or filter option must be provided.'
+      raise ArgumentError, "Either all_amis or filter option must be provided."
     end
 
     query_params = { filters: filter } unless filter.empty?

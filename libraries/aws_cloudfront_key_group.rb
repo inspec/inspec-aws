@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontKeyGroup < AwsResourceBase
-  name 'aws_cloudfront_key_group'
-  desc 'Describes one Key Group.'
+  name "aws_cloudfront_key_group"
+  desc "Describes one Key Group."
 
   example "
     describe aws_cloudfront_key_group(id: 'KEY_GROUP_ID') do

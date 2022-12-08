@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudWatchLogsDestinations < AwsResourceBase
-  name 'aws_cloudwatchlogs_destinations'
-  desc 'Lists all destinations.'
+  name "aws_cloudwatchlogs_destinations"
+  desc "Lists all destinations."
 
   example "
     describe aws_cloudwatchlogs_destinations do
@@ -13,13 +13,13 @@ class AWSCloudWatchLogsDestinations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:destination_names, field: :destination_name)
-             .register_column(:target_arns, field: :target_arn)
-             .register_column(:role_arns, field: :role_arn)
-             .register_column(:access_policies, field: :access_policy)
-             .register_column(:arns, field: :arn)
-             .register_column(:creation_time, field: :creation_time)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:destination_names, field: :destination_name)
+    .register_column(:target_arns, field: :target_arn)
+    .register_column(:role_arns, field: :role_arn)
+    .register_column(:access_policies, field: :access_policy)
+    .register_column(:arns, field: :arn)
+    .register_column(:creation_time, field: :creation_time)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

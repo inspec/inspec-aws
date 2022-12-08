@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayMethod < AwsResourceBase
-  name 'aws_api_gateway_method'
-  desc 'Describe an existing Method resource.'
+  name "aws_api_gateway_method"
+  desc "Describe an existing Method resource."
 
   example "
     describe aws_api_gateway_method(rest_api_id: 'rest_api_id_test', resource_id: 'resource_id_test', http_method: 'GET') do

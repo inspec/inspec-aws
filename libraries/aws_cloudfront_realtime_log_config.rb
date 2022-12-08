@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
-  name 'aws_cloudfront_realtime_log_config'
-  desc 'Gets a real-time log configuration.'
+  name "aws_cloudfront_realtime_log_config"
+  desc "Gets a real-time log configuration."
 
   example "
     describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do

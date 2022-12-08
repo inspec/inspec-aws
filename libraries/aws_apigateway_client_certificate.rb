@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayClientCertificate < AwsResourceBase
-  name 'aws_apigateway_client_certificate'
-  desc 'Gets information about the current ClientCertificate resource.'
+  name "aws_apigateway_client_certificate"
+  desc "Gets information about the current ClientCertificate resource."
 
   example "
     describe aws_apigateway_client_certificate(client_certificate_id: 'ClientCertificateID') do

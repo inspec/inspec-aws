@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSBatchJobDefinition < AwsResourceBase
-  name 'aws_batch_job_definition'
-  desc 'Describes a list of job definitions.'
+  name "aws_batch_job_definition"
+  desc "Describes a list of job definitions."
 
   example "
     describe aws_batch_job_definition(job_definition_name: 'test1') do

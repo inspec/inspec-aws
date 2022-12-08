@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFWebACL < AwsResourceBase
-  name 'aws_waf_web_acl'
-  desc 'Describes one WAF Web ACL.'
+  name "aws_waf_web_acl"
+  desc "Describes one WAF Web ACL."
 
   example "
     describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do

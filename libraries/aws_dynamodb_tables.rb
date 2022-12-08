@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsDynamoDbTables < AwsResourceBase
-  name 'aws_dynamodb_tables'
-  desc 'Verifies settings for a DynamoDB table in bulk.'
+  name "aws_dynamodb_tables"
+  desc "Verifies settings for a DynamoDB table in bulk."
 
   example "
     describe aws_dynamodb_tables do
@@ -20,8 +20,8 @@ class AwsDynamoDbTables < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:table_names, field: :table_names)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:table_names, field: :table_names)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

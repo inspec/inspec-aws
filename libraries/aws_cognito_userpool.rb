@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoUserPool < AwsResourceBase
-  name 'aws_cognito_userpool'
-  desc 'Returns the configuration information and metadata of the specified user pool.'
+  name "aws_cognito_userpool"
+  desc "Returns the configuration information and metadata of the specified user pool."
 
   example "
     describe aws_cognito_userpool(user_pool_id: 'test1') do

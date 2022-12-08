@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAmplifyBranch < AwsResourceBase
-  name 'aws_amplify_branch'
-  desc 'Describes a branch for an Amplify app.'
+  name "aws_amplify_branch"
+  desc "Describes a branch for an Amplify app."
 
   example "
     describe aws_amplify_branch(app_id: 'AppId', branch_name: 'BranchName') do

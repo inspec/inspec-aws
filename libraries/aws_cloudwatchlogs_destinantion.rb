@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudWatchLogsDestination < AwsResourceBase
-  name 'aws_cloudwatchlogs_destination'
-  desc 'Describes a log destination.'
+  name "aws_cloudwatchlogs_destination"
+  desc "Describes a log destination."
 
   example "
     describe aws_cloudwatchlogs_destination(destination_name_prefix: 'DESTINATION_NAME') do

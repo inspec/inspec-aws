@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmParameter < AwsResourceBase
-  name 'aws_ssm_parameter'
-  desc 'Verifies settings for a SSM Parameter.'
+  name "aws_ssm_parameter"
+  desc "Verifies settings for a SSM Parameter."
 
   example "
     describe aws_ssm_parameter(name: 'parameter-name') do

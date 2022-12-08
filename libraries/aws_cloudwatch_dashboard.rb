@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudwatchDashboard < AwsResourceBase
-  name 'aws_cloudwatch_dashboard '
-  desc 'Returns the configuration information and metadata of the specified cloudwatch dashboard.'
+  name "aws_cloudwatch_dashboard "
+  desc "Returns the configuration information and metadata of the specified cloudwatch dashboard."
 
   example "
     describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do

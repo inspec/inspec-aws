@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontPublicKeys < AwsResourceBase
-  name 'aws_cloudfront_public_keys'
-  desc 'Lists all Public Keys.'
+  name "aws_cloudfront_public_keys"
+  desc "Lists all Public Keys."
 
   example "
     describe aws_cloudfront_public_keys do
@@ -13,12 +13,12 @@ class AWSCloudFrontPublicKeys < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:created_time, field: :created_time)
-             .register_column(:encoded_keys, field: :encoded_key)
-             .register_column(:comments, field: :comment)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:created_time, field: :created_time)
+    .register_column(:encoded_keys, field: :encoded_key)
+    .register_column(:comments, field: :comment)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

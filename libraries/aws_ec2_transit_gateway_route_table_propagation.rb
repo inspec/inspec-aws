@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
-  name 'aws_ec2_transit_gateway_route_table_propagation'
-  desc 'Describes information about the route table propagations for the specified transit gateway route table.'
+  name "aws_ec2_transit_gateway_route_table_propagation"
+  desc "Describes information about the route table propagations for the specified transit gateway route table."
   example "
     describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'test1') do
       it { should exist }
@@ -21,7 +21,7 @@ class AWSEc2TransitGatewayRouteTablePropagation < AwsResourceBase
     @display_name = opts[:transit_gateway_attachment_id]
     filter = [
       {
-        name: 'transit-gateway-attachment-id',
+        name: "transit-gateway-attachment-id",
         values: [opts[:transit_gateway_attachment_id]],
       },
     ]

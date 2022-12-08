@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudwatchLogMetricFilter < AwsResourceBase
-  name 'aws_cloudwatch_log_metric_filter'
-  desc 'Verifies individual Cloudwatch Log Metric Filters.'
+  name "aws_cloudwatch_log_metric_filter"
+  desc "Verifies individual Cloudwatch Log Metric Filters."
 
   example "
   # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
@@ -37,7 +37,7 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
     return false if @metric_filters.empty?
 
     if @metric_filters.count > 1
-      raise 'More than one result was returned. Consider passing more parameters or a more specific pattern to narrow down results.'
+      raise "More than one result was returned. Consider passing more parameters or a more specific pattern to narrow down results."
     end
 
     @filter_name    = @metric_filters.first.filter_name

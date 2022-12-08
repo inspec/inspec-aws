@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2CustomerGateway < AwsResourceBase
-  name 'aws_ec2_customer_gateway'
-  desc 'Describes one VPN customer gateways.'
+  name "aws_ec2_customer_gateway"
+  desc "Describes one VPN customer gateways."
 
   example "
     describe aws_ec2_customer_gateway(customer_gateway_id: 'CUSTOMER_GATEWAY_ID') do

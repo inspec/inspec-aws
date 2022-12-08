@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFRules < AwsResourceBase
-  name 'aws_waf_rules'
-  desc 'Verifies settings for all the WAF rules.'
+  name "aws_waf_rules"
+  desc "Verifies settings for all the WAF rules."
 
   example "
     describe aws_waf_rules do
@@ -19,9 +19,9 @@ class AWSWAFRules < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:rule_ids, field: :rule_id)
-             .register_column(:names, field: :name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:rule_ids, field: :rule_id)
+    .register_column(:names, field: :name)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontOriginAccessIdentities < AwsResourceBase
-  name 'aws_cloudfront_origin_access_identities'
-  desc 'Lists origin access identities.'
+  name "aws_cloudfront_origin_access_identities"
+  desc "Lists origin access identities."
 
   example "
     describe aws_cloudfront_origin_access_identities do
@@ -13,10 +13,10 @@ class AWSCloudFrontOriginAccessIdentities < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:s3_canonical_user_ids, field: :s3_canonical_user_id)
-             .register_column(:comments, field: :comment)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:s3_canonical_user_ids, field: :s3_canonical_user_id)
+    .register_column(:comments, field: :comment)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

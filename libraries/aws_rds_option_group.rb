@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsOptionGroup < AwsResourceBase
-  name 'aws_rds_option_group'
-  desc 'Verifies settings for an RDS Option Group.'
+  name "aws_rds_option_group"
+  desc "Verifies settings for an RDS Option Group."
 
   example "
     describe aws_rds_option_group(option_group_name: 'test-option_group_name') do
@@ -32,7 +32,7 @@ class AwsRdsOptionGroup < AwsResourceBase
   end
 
   def resource_id
-    @rds_cluster? @rds_cluster[:option_group_arn]: ''
+    @rds_cluster? @rds_cluster[:option_group_arn]: ""
   end
 
   def exists?

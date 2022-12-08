@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFormationStackSet < AwsResourceBase
-  name 'aws_cloud_formation_stack_set'
-  desc 'Describes the specified stack set.'
+  name "aws_cloud_formation_stack_set"
+  desc "Describes the specified stack set."
 
   example "
     describe aws_cloud_formation_stack_set(stack_set_name: 'StackSetName') do

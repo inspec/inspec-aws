@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudwatchMetricStream < AwsResourceBase
-  name 'aws_cloudwatch_metric_stream'
-  desc 'Returns the configuration information and metadata of the specified cloudwatch stream.'
+  name "aws_cloudwatch_metric_stream"
+  desc "Returns the configuration information and metadata of the specified cloudwatch stream."
 
   example "
     describe aws_cloudwatch_metric_stream (metric_stream_name: 'MetricStreamName') do

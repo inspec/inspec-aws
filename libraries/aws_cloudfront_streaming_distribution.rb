@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontStreamingDistribution < AwsResourceBase
-  name 'aws_cloudfront_streaming_distribution'
-  desc 'Get the information about a distribution.'
+  name "aws_cloudfront_streaming_distribution"
+  desc "Get the information about a distribution."
 
   example "
     describe aws_cloudfront_streaming_distribution(id: 'ID') do

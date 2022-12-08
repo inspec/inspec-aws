@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEbsVolume < AwsResourceBase
-  name 'aws_ebs_volume'
-  desc 'Verifies settings for an EBS volume.'
+  name "aws_ebs_volume"
+  desc "Verifies settings for an EBS volume."
 
   example "
     describe aws_ebs_volume('vol-12345678') do
@@ -27,7 +27,7 @@ class AwsEbsVolume < AwsResourceBase
       volume_arguments = { volume_ids: [opts[:volume_id]] }
     elsif opts[:name] && !opts[:name].empty?
       @display_name = opts[:name]
-      filter = { name: 'tag:Name', values: [opts[:name]] }
+      filter = { name: "tag:Name", values: [opts[:name]] }
       volume_arguments = { filters: [filter] }
     else
       raise ArgumentError, "#{@__resource_name__}:  `volume_id` or `name` must be provided"

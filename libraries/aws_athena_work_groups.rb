@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAthenaWorkGroups < AwsResourceBase
-  name 'aws_athena_work_groups'
-  desc 'Lists available workgroups for the account.'
+  name "aws_athena_work_groups"
+  desc "Lists available workgroups for the account."
 
   example "
     describe aws_athena_work_groups do
@@ -13,11 +13,11 @@ class AWSAthenaWorkGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:names,                         field: :name)
-             .register_column(:states,                        field: :state)
-             .register_column(:descriptions,                  field: :description)
-             .register_column(:creation_times,                field: :creation_time)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names,                         field: :name)
+    .register_column(:states,                        field: :state)
+    .register_column(:descriptions,                  field: :description)
+    .register_column(:creation_times,                field: :creation_time)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

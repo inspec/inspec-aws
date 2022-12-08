@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsClusters < AwsResourceBase
-  name 'aws_rds_clusters'
-  desc 'Verifies settings for a collection AWS RDS Clusters.'
+  name "aws_rds_clusters"
+  desc "Verifies settings for a collection AWS RDS Clusters."
   example "
     describe aws_rds_clusters do
       it { should exist }
@@ -12,18 +12,18 @@ class AwsRdsClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:cluster_identifier,       field: :cluster_identifier)
-             .register_column(:database_name,            field: :database_name)
-             .register_column(:cluster_members,          field: :cluster_members)
-             .register_column(:engine,                   field: :engine)
-             .register_column(:engine_version,           field: :engine_version)
-             .register_column(:status,                   field: :status)
-             .register_column(:allocated_storage,        field: :allocated_storage)
-             .register_column(:storage_encrypted,        field: :storage_encrypted)
-             .register_column(:availability_zones,       field: :availability_zones)
-             .register_column(:multi_az,                 field: :multi_az)
-             .register_column(:arn,                      field: :arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:cluster_identifier,       field: :cluster_identifier)
+    .register_column(:database_name,            field: :database_name)
+    .register_column(:cluster_members,          field: :cluster_members)
+    .register_column(:engine,                   field: :engine)
+    .register_column(:engine_version,           field: :engine_version)
+    .register_column(:status,                   field: :status)
+    .register_column(:allocated_storage,        field: :allocated_storage)
+    .register_column(:storage_encrypted,        field: :storage_encrypted)
+    .register_column(:availability_zones,       field: :availability_zones)
+    .register_column(:multi_az,                 field: :multi_az)
+    .register_column(:arn,                      field: :arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

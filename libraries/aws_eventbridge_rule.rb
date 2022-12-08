@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEventBridgeRule < AwsResourceBase
-  name 'aws_eventbridge_rule'
-  desc 'Describes the specified rule.'
+  name "aws_eventbridge_rule"
+  desc "Describes the specified rule."
 
   example "
     describe aws_eventbridge_rule(name: 'test_rule') do

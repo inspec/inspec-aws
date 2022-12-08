@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudwatchAnomalyDetectors < AwsResourceBase
-  name 'aws_cloudwatch_anomaly_detectors'
-  desc 'Lists the anomaly detection models that you have created in your account.'
+  name "aws_cloudwatch_anomaly_detectors"
+  desc "Lists the anomaly detection models that you have created in your account."
 
   example "
     describe aws_cloudwatch_anomaly_detectors do
@@ -13,13 +13,13 @@ class AwsCloudwatchAnomalyDetectors < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:namespaces, field: :namespace)
-             .register_column(:metric_names, field: :metric_name)
-             .register_column(:dimensions, field: :dimensions)
-             .register_column(:stats, field: :stat)
-             .register_column(:configurations, field: :configuration)
-             .register_column(:state_values, field: :state_value)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:namespaces, field: :namespace)
+    .register_column(:metric_names, field: :metric_name)
+    .register_column(:dimensions, field: :dimensions)
+    .register_column(:stats, field: :stat)
+    .register_column(:configurations, field: :configuration)
+    .register_column(:state_values, field: :state_value)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

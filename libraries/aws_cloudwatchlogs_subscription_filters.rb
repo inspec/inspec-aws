@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
-  name 'aws_cloudwatchlogs_subscription_filters'
-  desc 'Describes multiple subscription filter.'
+  name "aws_cloudwatchlogs_subscription_filters"
+  desc "Describes multiple subscription filter."
 
   example "
    describe aws_cloudwatchlogs_subscription_filters(log_group_name: 'LOG_GROUP_NAME') do
@@ -13,14 +13,14 @@ class AWSCloudWatchLogsSubscriptionFilters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:filter_names, field: :filter_name)
-             .register_column(:log_group_names, field: :log_group_name)
-             .register_column(:filter_patterns, field: :filter_pattern)
-             .register_column(:destination_arns, field: :destination_arn)
-             .register_column(:role_arns, field: :role_arn)
-             .register_column(:distributions, field: :distribution)
-             .register_column(:creation_time, field: :creation_time)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:filter_names, field: :filter_name)
+    .register_column(:log_group_names, field: :log_group_name)
+    .register_column(:filter_patterns, field: :filter_pattern)
+    .register_column(:destination_arns, field: :destination_arn)
+    .register_column(:role_arns, field: :role_arn)
+    .register_column(:distributions, field: :distribution)
+    .register_column(:creation_time, field: :creation_time)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

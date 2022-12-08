@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontRealtimeLogConfigs < AwsResourceBase
-  name 'aws_cloudfront_realtime_log_configs'
-  desc 'Gets a list of real-time log configurations.'
+  name "aws_cloudfront_realtime_log_configs"
+  desc "Gets a list of real-time log configurations."
 
   example "
     describe aws_cloudfront_realtime_log_configs do
@@ -13,12 +13,12 @@ class AwsCloudFrontRealtimeLogConfigs < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns, field: :arn)
-             .register_column(:names, field: :name)
-             .register_column(:sampling_rates, field: :sampling_rate)
-             .register_column(:end_points, field: :end_points)
-             .register_column(:fields, field: :fields)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:arns, field: :arn)
+    .register_column(:names, field: :name)
+    .register_column(:sampling_rates, field: :sampling_rate)
+    .register_column(:end_points, field: :end_points)
+    .register_column(:fields, field: :fields)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

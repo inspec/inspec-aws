@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRouteTable < AwsResourceBase
-  name 'aws_route_table'
-  desc 'Verifies settings for an AWS Route Table.'
+  name "aws_route_table"
+  desc "Verifies settings for an AWS Route Table."
   example "
     describe aws_route_table(route_table_id: 'rtb-05462d2278326a79c') do
       its('route_table_id') { should cmp 'rtb-05462d2278326a79c' }
@@ -14,9 +14,9 @@ class AwsRouteTable < AwsResourceBase
   "
 
   ASSOCIATION_STATES = {
-    associated: 'associated',
-    failed: 'failed',
-    disassociated: 'disassociated',
+    associated: "associated",
+    failed: "failed",
+    disassociated: "disassociated",
   }.freeze
 
   def initialize(opts = {})
@@ -27,7 +27,7 @@ class AwsRouteTable < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: ID must be in the format 'rtb-' followed by 8 or 17 hexadecimal characters." if opts[:route_table_id] !~ /^rtb\-([0-9a-f]{8})|(^rtb\-[0-9a-f]{17})$/
 
     @display_name = opts[:route_table_id]
-    filter = { name: 'route-table-id', values: [opts[:route_table_id]] }
+    filter = { name: "route-table-id", values: [opts[:route_table_id]] }
     catch_aws_errors do
       resp = @aws.compute_client.describe_route_tables({ filters: [filter] })
       @route_table = resp.route_tables.first

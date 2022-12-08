@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayDeployment < AwsResourceBase
-  name 'aws_api_gateway_deployment'
-  desc 'Gets information about a Deployment resource.'
+  name "aws_api_gateway_deployment"
+  desc "Gets information about a Deployment resource."
 
   example "
     describe aws_api_gateway_deployment(rest_api_id: 'rest_api_id', deployment_id: 'deployment_id') do

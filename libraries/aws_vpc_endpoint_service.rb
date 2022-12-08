@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVPCEndpointService < AwsResourceBase
-  name 'aws_vpc_endpoint_service'
-  desc 'Verifies settings for an AWS VPC End Point Service.'
+  name "aws_vpc_endpoint_service"
+  desc "Verifies settings for an AWS VPC End Point Service."
 
   example "
     describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
@@ -90,7 +90,7 @@ class AwsVPCEndpointService < AwsResourceBase
   end
 
   def service_detail
-    raise StandardError, 'More than One Route is available' if @response.next_token
+    raise StandardError, "More than One Route is available" if @response.next_token
 
     @response.service_details.first
   end

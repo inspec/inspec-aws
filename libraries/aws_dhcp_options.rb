@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsDhcpOptions < AwsResourceBase
-  name 'aws_dhcp_options'
-  desc 'Verifies settings for an AWS DHCP Options.'
+  name "aws_dhcp_options"
+  desc "Verifies settings for an AWS DHCP Options."
 
   def initialize(opts = {})
     Inspec::Log.warn deprecation_notice
@@ -15,7 +15,7 @@ class AwsDhcpOptions < AwsResourceBase
     end
 
     @display_name = opts[:dhcp_options_id]
-    filter = { name: 'dhcp-options-id', values: [opts[:dhcp_options_id]] }
+    filter = { name: "dhcp-options-id", values: [opts[:dhcp_options_id]] }
 
     catch_aws_errors do
       resp = @aws.compute_client.describe_dhcp_options({ filters: [filter] })
@@ -29,11 +29,11 @@ class AwsDhcpOptions < AwsResourceBase
   end
 
   def domain_name_servers
-    _dhcp_config('domain-name-servers')
+    _dhcp_config("domain-name-servers")
   end
 
   def ntp_servers
-    _dhcp_config('ntp-servers')
+    _dhcp_config("ntp-servers")
   end
 
   def resource_id
@@ -53,7 +53,7 @@ class AwsDhcpOptions < AwsResourceBase
   end
 
   def deprecation_notice
-    'DEPRECATION: `aws_dhcp_options` will be deprecated soon and it is advised to switch to the new resource `aws_ec2_dhcp_option`. '\
-    'Please see the documentation for the additional features available.'
+    "DEPRECATION: `aws_dhcp_options` will be deprecated soon and it is advised to switch to the new resource `aws_ec2_dhcp_option`. "\
+    "Please see the documentation for the additional features available."
   end
 end

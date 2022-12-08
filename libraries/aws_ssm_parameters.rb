@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmParameters < AwsResourceBase
-  name 'aws_ssm_parameters'
-  desc 'Verifies settings for a SSM Parameter in bulk.'
+  name "aws_ssm_parameters"
+  desc "Verifies settings for a SSM Parameter in bulk."
   example "
     describe aws_ssm_parameters do
       it { should exist }
@@ -12,15 +12,15 @@ class AwsSsmParameters < AwsResourceBase
   attr_reader :table, :api_response
 
   FilterTable.create
-             .register_column(:names,                field: :name)
-             .register_column(:types,                field: :type)
-             .register_column(:key_ids,              field: :key_id)
-             .register_column(:last_modified_dates,  field: :last_modified_date)
-             .register_column(:last_modified_users,  field: :last_modified_user)
-             .register_column(:descriptions,         field: :description)
-             .register_column(:versions,             field: :version)
-             .register_column(:tiers,                field: :tier)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names,                field: :name)
+    .register_column(:types,                field: :type)
+    .register_column(:key_ids,              field: :key_id)
+    .register_column(:last_modified_dates,  field: :last_modified_date)
+    .register_column(:last_modified_users,  field: :last_modified_user)
+    .register_column(:descriptions,         field: :description)
+    .register_column(:versions,             field: :version)
+    .register_column(:tiers,                field: :tier)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

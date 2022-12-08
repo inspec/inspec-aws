@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayClientCertificates < AwsResourceBase
-  name 'aws_apigateway_client_certificates'
-  desc 'Gets a collection of ClientCertificate resources.'
+  name "aws_apigateway_client_certificates"
+  desc "Gets a collection of ClientCertificate resources."
 
   example "
     describe aws_apigateway_client_certificates do
@@ -13,13 +13,13 @@ class AWSApiGatewayClientCertificates < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_certificate_ids, field: :client_certificate_id)
-             .register_column(:descriptions, field: :description)
-             .register_column(:pem_encoded_certificates, field: :pem_encoded_certificate)
-             .register_column(:created_dates, field: :created_date)
-             .register_column(:expiration_dates, field: :expiration_date)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:client_certificate_ids, field: :client_certificate_id)
+    .register_column(:descriptions, field: :description)
+    .register_column(:pem_encoded_certificates, field: :pem_encoded_certificate)
+    .register_column(:created_dates, field: :created_date)
+    .register_column(:expiration_dates, field: :expiration_date)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

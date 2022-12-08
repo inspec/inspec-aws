@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoIdentityPools < AwsResourceBase
-  name 'aws_cognito_identity_pools'
-  desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
+  name "aws_cognito_identity_pools"
+  desc "Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users."
 
   example "
     describe aws_cognito_identity_pools do
@@ -13,9 +13,9 @@ class AWSCognitoIdentityPools < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:identity_pool_ids,       field: :identity_pool_id)
-             .register_column(:identity_pool_names,     field: :identity_pool_name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:identity_pool_ids,       field: :identity_pool_id)
+    .register_column(:identity_pool_names,     field: :identity_pool_name)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

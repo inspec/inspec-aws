@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudWatchLogsLogStream < AwsResourceBase
-  name 'aws_cloudwatchlogs_log_stream'
-  desc 'Describes one or more of your logs Stream.'
+  name "aws_cloudwatchlogs_log_stream"
+  desc "Describes one or more of your logs Stream."
 
   example "
     describe aws_cloudwatch_logs_log_stream(log_stream_name_prefix: 'LOG_STREAM_NAME', log_group_name: 'LOG_GROUP_NAME') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsKmsKey < AwsResourceBase
-  name 'aws_kms_key'
-  desc 'Verifies settings for an individual AWS KMS Key.'
+  name "aws_kms_key"
+  desc "Verifies settings for an individual AWS KMS Key."
   example "
     describe aws_kms_key(key_id: 'arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
       it { should exist }
@@ -63,7 +63,7 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def external?
-    key_metadata[:origin] == 'EXTERNAL'
+    key_metadata[:origin] == "EXTERNAL"
   end
 
   def enabled?
@@ -71,11 +71,11 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def managed_by_aws?
-    key_metadata[:key_manager] == 'AWS'
+    key_metadata[:key_manager] == "AWS"
   end
 
   def has_key_expiration?
-    key_metadata[:expiration_model] == 'KEY_MATERIAL_EXPIRES'
+    key_metadata[:expiration_model] == "KEY_MATERIAL_EXPIRES"
   end
 
   def has_rotation_enabled?
@@ -92,8 +92,8 @@ class AwsKmsKey < AwsResourceBase
     end
     if response.present?
       response.aliases.each do |alias_entry|
-        if alias_entry['alias_name'] == @alias && alias_entry['target_key_id']
-          return alias_entry['target_key_id']
+        if alias_entry["alias_name"] == @alias && alias_entry["target_key_id"]
+          return alias_entry["target_key_id"]
         end
       end
     end
@@ -111,7 +111,7 @@ class AwsKmsKey < AwsResourceBase
   end
 
   def key_rotation_response
-    return if key_metadata[:key_manager] == 'AWS'
+    return if key_metadata[:key_manager] == "AWS"
     @key_rotation_response ||= catch_aws_errors do
       kms_client.get_key_rotation_status({ key_id: opts[:key_id] })
     end

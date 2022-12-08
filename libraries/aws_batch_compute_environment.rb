@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSBatchComputeEnvironment < AwsResourceBase
-  name 'aws_batch_compute_environment'
-  desc 'Describes one or more of your compute environments.'
+  name "aws_batch_compute_environment"
+  desc "Describes one or more of your compute environments."
 
   example "
     describe aws_batch_compute_environment(compute_environment_name: 'test1') do

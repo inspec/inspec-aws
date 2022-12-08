@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsGuardDutyDetector < AwsResourceBase
-  name 'aws_guardduty_detector'
-  desc 'Verifies settings for a Detector.'
+  name "aws_guardduty_detector"
+  desc "Verifies settings for a Detector."
   example "
     describe aws_guardduty_detector(detector_id: 'detector-id') do
       it { should exist }
@@ -28,7 +28,7 @@ class AwsGuardDutyDetector < AwsResourceBase
   end
 
   def resource_id
-    "#{@res? @display_name: ''}_#{@res? @created_at: ''}"
+    "#{@res? @display_name: ""}_#{@res? @created_at: ""}"
   end
 
   def exists?
@@ -36,7 +36,7 @@ class AwsGuardDutyDetector < AwsResourceBase
   end
 
   def enabled?
-    status.upcase == 'ENABLED'
+    status.upcase == "ENABLED"
   end
 
   def to_s

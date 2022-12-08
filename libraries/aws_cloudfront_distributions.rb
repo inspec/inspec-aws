@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontDistributions < AwsResourceBase
-  name 'aws_cloudfront_distributions'
-  desc 'Verifies settings for a collection AWS CloudFront Distributions.'
+  name "aws_cloudfront_distributions"
+  desc "Verifies settings for a collection AWS CloudFront Distributions."
   example '
     describe aws_cloudfront_distributions do
       it { should exist }
@@ -12,21 +12,21 @@ class AwsCloudFrontDistributions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:distribution_ids,                         field: :distribution_ids)
-             .register_column(:distribution_arns,                        field: :distribution_arns)
-             .register_column(:statuses,                                 field: :statuses)
-             .register_column(:domain_names,                             field: :domain_names)
-             .register_column(:origin_domain_names,                      field: :origin_domain_names)
-             .register_column(:default_cache_viewer_protocol_policies,   field: :default_cache_viewer_protocol_policies)
-             .register_column(:cache_viewer_protocol_policies,           field: :cache_viewer_protocol_policies)
-             .register_column(:custom_origin_ssl_protocols,              field: :custom_origin_ssl_protocols)
-             .register_column(:price_classes,                            field: :price_classes)
-             .register_column(:enabled,                                  field: :enabled)
-             .register_column(:viewer_certificate_ssl_support_methods,   field: :viewer_certificate_ssl_support_methods)
-             .register_column(:viewer_certificate_minimum_ssl_protocols, field: :viewer_certificate_minimum_ssl_protocols)
-             .register_column(:http_versions,                            field: :http_version)
-             .register_column(:ipv6_enabled,                             field: :ipv6_enabled)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:distribution_ids,                         field: :distribution_ids)
+    .register_column(:distribution_arns,                        field: :distribution_arns)
+    .register_column(:statuses,                                 field: :statuses)
+    .register_column(:domain_names,                             field: :domain_names)
+    .register_column(:origin_domain_names,                      field: :origin_domain_names)
+    .register_column(:default_cache_viewer_protocol_policies,   field: :default_cache_viewer_protocol_policies)
+    .register_column(:cache_viewer_protocol_policies,           field: :cache_viewer_protocol_policies)
+    .register_column(:custom_origin_ssl_protocols,              field: :custom_origin_ssl_protocols)
+    .register_column(:price_classes,                            field: :price_classes)
+    .register_column(:enabled,                                  field: :enabled)
+    .register_column(:viewer_certificate_ssl_support_methods,   field: :viewer_certificate_ssl_support_methods)
+    .register_column(:viewer_certificate_minimum_ssl_protocols, field: :viewer_certificate_minimum_ssl_protocols)
+    .register_column(:http_versions,                            field: :http_version)
+    .register_column(:ipv6_enabled,                             field: :ipv6_enabled)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

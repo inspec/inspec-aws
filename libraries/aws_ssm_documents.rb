@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmDocuments < AwsResourceBase
-  name 'aws_ssm_documents'
-  desc 'Verifies settings for a SSM Document in bulk.'
+  name "aws_ssm_documents"
+  desc "Verifies settings for a SSM Document in bulk."
   example "
     describe aws_ssm_documents do
       it { should exist }
@@ -12,16 +12,16 @@ class AwsSsmDocuments < AwsResourceBase
   attr_reader :table, :api_response
 
   FilterTable.create
-             .register_column(:names,             field: :name)
-             .register_column(:owners,            field: :owner)
-             .register_column(:platform_types,    field: :platform_types)
-             .register_column(:document_versions, field: :document_version)
-             .register_column(:document_types,    field: :document_type)
-             .register_column(:schema_versions,   field: :schema_version)
-             .register_column(:document_formats,  field: :document_format)
-             .register_column(:target_types,      field: :target_type)
-             .register_column(:tags,              field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names,             field: :name)
+    .register_column(:owners,            field: :owner)
+    .register_column(:platform_types,    field: :platform_types)
+    .register_column(:document_versions, field: :document_version)
+    .register_column(:document_types,    field: :document_type)
+    .register_column(:schema_versions,   field: :schema_version)
+    .register_column(:document_formats,  field: :document_format)
+    .register_column(:target_types,      field: :target_type)
+    .register_column(:tags,              field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

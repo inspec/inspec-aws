@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontCachePolicy < AwsResourceBase
-  name 'aws_cloudfront_cache_policy'
-  desc 'Gets a cache policy.'
+  name "aws_cloudfront_cache_policy"
+  desc "Gets a cache policy."
 
   example "
     describe aws_cloudfront_cache_policy(id: 'ID') do
