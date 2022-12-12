@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSHostedZones < AwsResourceBase
-  name 'aws_hosted_zones'
-  desc 'Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account.'
+  name "aws_hosted_zones"
+  desc "Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account."
 
   example "
     describe aws_hosted_zones do
@@ -19,13 +19,13 @@ class AWSHostedZones < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:caller_references, field: :caller_reference)
-             .register_column(:configs, field: :config)
-             .register_column(:resource_record_set_counts, field: :resource_record_set_count)
-             .register_column(:linked_services, field: :linked_service)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:caller_references, field: :caller_reference)
+    .register_column(:configs, field: :config)
+    .register_column(:resource_record_set_counts, field: :resource_record_set_count)
+    .register_column(:linked_services, field: :linked_service)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

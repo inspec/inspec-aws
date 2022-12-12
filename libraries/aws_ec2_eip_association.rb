@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2EIPAssociation < AwsResourceBase
-  name 'aws_ec2_eip_association'
-  desc 'Describes the specified Elastic IP addresses or all of your Elastic IP addresses.'
+  name "aws_ec2_eip_association"
+  desc "Describes the specified Elastic IP addresses or all of your Elastic IP addresses."
 
   example "
     describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do
@@ -17,7 +17,7 @@ class AWSEC2EIPAssociation < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: association_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
     filter = [
       {
-        name: 'association-id',
+        name: "association-id",
         values: [opts[:association_id]],
       },
     ]

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsApiGatewayV2IntegrationResponse < AwsResourceBase
-  name 'aws_api_gateway_v2_integration_response'
-  desc 'Gets an IntegrationResponse for an Integration.'
+  name "aws_api_gateway_v2_integration_response"
+  desc "Gets an IntegrationResponse for an Integration."
   example <<-EXAMPLE
     describe aws_api_gateway_v2_integration_response(api_id: 'APP_ID', integration_id: 'INTEGRATION_ID', integration_response_id: 'INTEGRATION_RESPONSE_ID') do
       it { should exist }

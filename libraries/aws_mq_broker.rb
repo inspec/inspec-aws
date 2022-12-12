@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSMQBroker < AwsResourceBase
-  name 'aws_mq_broker'
-  desc 'Describes a Amazon MQ broker.'
+  name "aws_mq_broker"
+  desc "Describes a Amazon MQ broker."
 
   example "
     describe aws_mq_broker(broker_id: 'test1') do

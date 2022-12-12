@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSnsTopics < AwsResourceBase
-  name 'aws_sns_topics'
-  desc 'Verifies settings for SNS Topics in bulk.'
+  name "aws_sns_topics"
+  desc "Verifies settings for SNS Topics in bulk."
   example "
     describe aws_sns_topics do
       its('topic_arns') { should include 'arn:aws:sns:us-west-2:012345678901:aws-sns-topic-auzoitotenajpdiftuiorkmrf' }
@@ -11,8 +11,8 @@ class AwsSnsTopics < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:topic_arns, field: :topic_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:topic_arns, field: :topic_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

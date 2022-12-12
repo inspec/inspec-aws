@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
-  name 'aws_transit_gateway_multicast_group_member'
-  desc 'Searches one or more transit gateway multicast groups and returns the group membership information.'
+  name "aws_transit_gateway_multicast_group_member"
+  desc "Searches one or more transit gateway multicast groups and returns the group membership information."
 
   example "
     describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: 'test') do

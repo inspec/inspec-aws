@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsKmsKeys < AwsResourceBase
-  name 'aws_kms_keys'
-  desc 'Verifies settings for AWS KMS Keys in bulk.'
+  name "aws_kms_keys"
+  desc "Verifies settings for AWS KMS Keys in bulk."
   example "
     describe aws_kms_keys do
       it { should exist }
@@ -12,9 +12,9 @@ class AwsKmsKeys < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:key_ids,  field: :key_id)
-             .register_column(:key_arns, field: :key_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:key_ids,  field: :key_id)
+    .register_column(:key_arns, field: :key_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

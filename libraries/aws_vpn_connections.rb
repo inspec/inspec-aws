@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVpnConnections < AwsResourceBase
-  name 'aws_vpn_connections'
-  desc 'Verifies settings for an AWS VPN connections in bulk'
+  name "aws_vpn_connections"
+  desc "Verifies settings for an AWS VPN connections in bulk"
 
   example "
     describe aws_vpn_connections do
@@ -13,14 +13,14 @@ class AwsVpnConnections < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-             .register_column(:vpn_connection_ids, field: :vpn_connection_id)
-             .register_column(:vpn_gateway_ids, field: :vpn_gateway_id)
-             .register_column(:outside_ip_addresses, field: :outside_ip_address)
-             .register_column(:tunnel_inside_cidrs, field: :tunnel_inside_cidr)
-             .register_column(:states, field: :state)
-             .register_column(:types, field: :type)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:vpn_connection_ids, field: :vpn_connection_id)
+    .register_column(:vpn_gateway_ids, field: :vpn_gateway_id)
+    .register_column(:outside_ip_addresses, field: :outside_ip_address)
+    .register_column(:tunnel_inside_cidrs, field: :tunnel_inside_cidr)
+    .register_column(:states, field: :state)
+    .register_column(:types, field: :type)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

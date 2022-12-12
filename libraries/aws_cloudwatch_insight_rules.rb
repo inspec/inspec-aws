@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudwatchInsightRules < AwsResourceBase
-  name 'aws_cloudwatch_insight_rules'
-  desc 'Verifies settings for Cloudwatch insight rules in bulk.'
-
-  example "
+  name "aws_cloudwatch_insight_rules"
+  desc "Verifies settings for Cloudwatch insight rules in bulk."
+  example <<-EXAMPLE
     describe aws_cloudwatch_insight_rules do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
@@ -19,11 +18,11 @@ class AWSCloudwatchInsightRules < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:names, field: :name)
-             .register_column(:states, field: :state)
-             .register_column(:schemas, field: :schema)
-             .register_column(:definitions, field: :definition)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names, field: :name)
+    .register_column(:states, field: :state)
+    .register_column(:schemas, field: :schema)
+    .register_column(:definitions, field: :definition)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

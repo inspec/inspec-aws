@@ -1,15 +1,16 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsConfigDeliveryChannel < AwsResourceBase
-  name 'aws_config_delivery_channel'
-  desc 'Verifies settings for AWS Config Delivery Channel.'
-  example "
+  name "aws_config_delivery_channel"
+  desc "Verifies settings for AWS Config Delivery Channel."
+  example <<-EXAMPLE
     describe aws_config_delivery_channel do
-      it                    { should exist }
-      its('s3_bucket_name') { should eq 'my_bucket' }
-      its('sns_topic_arn')  { should eq arn:aws:sns:us-east-1:721741954427:sns_topic' }
+      it { should exist }
+      its('s3_bucket_name') { should eq 'S#_BUCKET_NAME' }
+      its('sns_topic_arn') { should eq arn:aws:sns:us-east-1:721741954427:sns_topic' }
     end
-  "
+  EXAMPLE
+
   attr_reader :channel_name, :s3_bucket_name, :s3_key_prefix, :sns_topic_arn, :delivery_frequency_in_hours
 
   def initialize(opts = {})
@@ -33,11 +34,11 @@ class AwsConfigDeliveryChannel < AwsResourceBase
       @sns_topic_arn  = channel[:sns_topic_arn]
       @delivery_frequency_in_hours = channel.dig(:config_snapshot_delivery_properties, :delivery_frequency)
       frequencies = {
-        'One_Hour' => 1,
-        'TwentyFour_Hours' => 24,
-        'Three_Hours' => 3,
-        'Six_Hours' => 6,
-        'Twelve_Hours' => 12,
+        "One_Hour" => 1,
+        "TwentyFour_Hours" => 24,
+        "Three_Hours" => 3,
+        "Six_Hours" => 6,
+        "Twelve_Hours" => 12,
       }
       @delivery_frequency_in_hours = frequencies[@delivery_frequency_in_hours]
     end

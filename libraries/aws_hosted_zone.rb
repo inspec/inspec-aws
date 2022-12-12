@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsHostedZone < AwsResourceBase
-  name 'aws_hosted_zone'
-  desc 'Verifies hosted zone settings are correct.'
+  name "aws_hosted_zone"
+  desc "Verifies hosted zone settings are correct."
 
   example "
     describe aws_hosted_zone('zone-name') do
@@ -16,13 +16,13 @@ class AwsHostedZone < AwsResourceBase
   attr_reader :records
 
   FilterTable.create
-             .register_column(:record_names,      field: :record_name)
-             .register_column(:ids,               field: :id)
-             .register_column(:private,           field: :private)
-             .register_column(:ttls,              field: :ttl)
-             .register_column(:types,             field: :type)
-             .register_column(:values,            field: :value)
-             .install_filter_methods_on_resource(self, :records)
+    .register_column(:record_names,      field: :record_name)
+    .register_column(:ids,               field: :id)
+    .register_column(:private,           field: :private)
+    .register_column(:ttls,              field: :ttl)
+    .register_column(:types,             field: :type)
+    .register_column(:values,            field: :value)
+    .install_filter_methods_on_resource(self, :records)
 
   def initialize(opts = {})
     opts = { zone_name: opts } if opts.is_a?(String)

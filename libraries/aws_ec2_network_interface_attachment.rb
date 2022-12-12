@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2NetworkInterfaceAttachment < AwsResourceBase
-  name 'aws_ec2_network_interface_attachment'
-  desc 'Describes one or more of your network interface attachment.'
+  name "aws_ec2_network_interface_attachment"
+  desc "Describes one or more of your network interface attachment."
 
   example "
     describe aws_ec2_network_interface_attachment(network_interface_id: 'NetworkInterfaceId') do
@@ -28,7 +28,7 @@ class AWSEC2NetworkInterfaceAttachment < AwsResourceBase
   end
 
   def resource_id
-    @res ? @display_name : ''
+    @res ? @display_name : ""
   end
 
   def to_s

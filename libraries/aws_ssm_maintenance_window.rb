@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSESMaintenanceWindow < AwsResourceBase
-  name 'aws_ssm_maintenance_window'
-  desc 'Retrieves a maintenance window.'
+  name "aws_ssm_maintenance_window"
+  desc "Retrieves a maintenance window."
 
   example "
     describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do

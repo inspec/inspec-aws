@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
-  name 'aws_elasticloadbalancingv2_listener_certificate'
-  desc 'Describes the default certificate and the certificate list for the specified HTTPS or TLS listener'
+  name "aws_elasticloadbalancingv2_listener_certificate"
+  desc "Describes the default certificate and the certificate list for the specified HTTPS or TLS listener"
 
   example "
     describe aws_elasticloadbalancingv2_listener_certificate(listener_arn: 'test') do

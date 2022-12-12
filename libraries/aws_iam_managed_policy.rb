@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamManagedPolicy < AwsResourceBase
-  name 'aws_iam_managed_policy'
-  desc 'Verifies settings for an Iam Policy.'
+  name "aws_iam_managed_policy"
+  desc "Verifies settings for an Iam Policy."
 
   example "
     describe aws_iam_managed_policy(policy_arn: 'PolicyARN') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRedshiftClusters < AwsResourceBase
-  name 'aws_redshift_clusters'
-  desc 'Verifies settings for a collection AWS RDS Clusters.'
+  name "aws_redshift_clusters"
+  desc "Verifies settings for a collection AWS RDS Clusters."
   example "
     describe aws_redshift_clusters do
       it { should exist }
@@ -12,21 +12,21 @@ class AwsRedshiftClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:cluster_identifiers, field: :cluster_identifier)
-             .register_column(:node_types, field: :node_type)
-             .register_column(:cluster_status, field: :cluster_status)
-             .register_column(:cluster_availability_status, field: :cluster_availability_status)
-             .register_column(:db_names, field: :db_name)
-             .register_column(:modify_status, field: :modify_status)
-             .register_column(:master_usernames, field: :master_username)
-             .register_column(:cluster_create_time, field: :cluster_create_time)
-             .register_column(:cluster_subnet_group_names, field: :cluster_subnet_group_name)
-             .register_column(:availability_zones, field: :availability_zones)
-             .register_column(:allow_version_upgrade, field: :allow_version_upgrade)
-             .register_column(:encrypted, field: :encrypted)
-             .register_column(:iam_roles, field: :iam_roles)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:cluster_identifiers, field: :cluster_identifier)
+    .register_column(:node_types, field: :node_type)
+    .register_column(:cluster_status, field: :cluster_status)
+    .register_column(:cluster_availability_status, field: :cluster_availability_status)
+    .register_column(:db_names, field: :db_name)
+    .register_column(:modify_status, field: :modify_status)
+    .register_column(:master_usernames, field: :master_username)
+    .register_column(:cluster_create_time, field: :cluster_create_time)
+    .register_column(:cluster_subnet_group_names, field: :cluster_subnet_group_name)
+    .register_column(:availability_zones, field: :availability_zones)
+    .register_column(:allow_version_upgrade, field: :allow_version_upgrade)
+    .register_column(:encrypted, field: :encrypted)
+    .register_column(:iam_roles, field: :iam_roles)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsNetworkACLs < AwsResourceBase
-  name 'aws_network_acls'
-  desc 'Verifies settings for a collection of AWS internet gateways.'
+  name "aws_network_acls"
+  desc "Verifies settings for a collection of AWS internet gateways."
 
   example "
     describe aws_network_acls do
@@ -17,17 +17,17 @@ class AwsNetworkACLs < AwsResourceBase
   attr_reader :table
 
   filter_table_config = FilterTable.create
-                                   .register_column(:network_acl_ids, field: :network_acl_id)
-                                   .register_column(:default, field: :default)
-                                   .register_column(:vpc_ids, field: :vpc_id)
-                                   .register_column(:owner_ids, field: :owner_id)
-                                   .register_column(:tags, field: :tags)
+    .register_column(:network_acl_ids, field: :network_acl_id)
+    .register_column(:default, field: :default)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:tags, field: :tags)
   # fields that needs to be customized as flattened Arrays
   %i(default_network_acl_ids associated_subnet_ids network_acl_association_ids entries_cidr_blocks entries_cidr_egress entries_icmp_type_codes
      entries_icmp_type_code_types entries_ipv_6_cidr_blocks entries_port_ranges entries_protocols entries_rule_actions
      entries_rule_numbers egress_rule_numbers ingress_rule_numbers).each do |column|
-    filter_table_config.send(:register_column, column, field: column, style: :simple)
-  end
+       filter_table_config.send(:register_column, column, field: column, style: :simple)
+     end
 
   filter_table_config.install_filter_methods_on_resource(self, :table)
 
@@ -68,20 +68,20 @@ class AwsNetworkACLs < AwsResourceBase
     network_acl_hash[:default] = network_acl_hash[:is_default]
     network_acl_hash[:default_network_acl_ids] = network_acl_hash.delete(:is_default) ? network_acl.network_acl_id : nil
     # Associations
-    network_acl_hash[:associated_subnet_ids] = mappable_attribute_from(network_acl.associations, 'subnet_id')
-    network_acl_hash[:network_acl_association_ids] = mappable_attribute_from(network_acl.associations, 'network_acl_association_id')
+    network_acl_hash[:associated_subnet_ids] = mappable_attribute_from(network_acl.associations, "subnet_id")
+    network_acl_hash[:network_acl_association_ids] = mappable_attribute_from(network_acl.associations, "network_acl_association_id")
     # Entries
-    network_acl_hash[:entries_cidr_blocks] = mappable_attribute_from(network_acl.entries, 'cidr_block')
-    network_acl_hash[:entries_cidr_egress] = mappable_attribute_from(network_acl.entries, 'egress')
-    network_acl_hash[:entries_icmp_type_codes] = mappable_attribute_from(network_acl.entries, 'icmp_type_code&.code')
-    network_acl_hash[:entries_icmp_type_code_types] = mappable_attribute_from(network_acl.entries, 'icmp_type_code&.type')
-    network_acl_hash[:entries_ipv_6_cidr_blocks] = mappable_attribute_from(network_acl.entries, 'ipv_6_cidr_block')
+    network_acl_hash[:entries_cidr_blocks] = mappable_attribute_from(network_acl.entries, "cidr_block")
+    network_acl_hash[:entries_cidr_egress] = mappable_attribute_from(network_acl.entries, "egress")
+    network_acl_hash[:entries_icmp_type_codes] = mappable_attribute_from(network_acl.entries, "icmp_type_code&.code")
+    network_acl_hash[:entries_icmp_type_code_types] = mappable_attribute_from(network_acl.entries, "icmp_type_code&.type")
+    network_acl_hash[:entries_ipv_6_cidr_blocks] = mappable_attribute_from(network_acl.entries, "ipv_6_cidr_block")
     network_acl_hash[:entries_port_ranges] = mapped_port_ranges_for(network_acl.entries)
-    network_acl_hash[:entries_protocols] = mappable_attribute_from(network_acl.entries, 'protocol')
-    network_acl_hash[:entries_rule_actions] = mappable_attribute_from(network_acl.entries, 'rule_action')
-    network_acl_hash[:entries_rule_numbers] = mappable_attribute_from(network_acl.entries, 'rule_number')
-    network_acl_hash[:egress_rule_numbers] = mappable_attribute_from(network_acl.entries.select(&:egress), 'rule_number')
-    network_acl_hash[:ingress_rule_numbers] = mappable_attribute_from(network_acl.entries.reject(&:egress), 'rule_number')
+    network_acl_hash[:entries_protocols] = mappable_attribute_from(network_acl.entries, "protocol")
+    network_acl_hash[:entries_rule_actions] = mappable_attribute_from(network_acl.entries, "rule_action")
+    network_acl_hash[:entries_rule_numbers] = mappable_attribute_from(network_acl.entries, "rule_number")
+    network_acl_hash[:egress_rule_numbers] = mappable_attribute_from(network_acl.entries.select(&:egress), "rule_number")
+    network_acl_hash[:ingress_rule_numbers] = mappable_attribute_from(network_acl.entries.reject(&:egress), "rule_number")
     # Tags
     network_acl_hash[:tags] = network_acl.tags.empty? ? nil : map_tags(network_acl.tags)
     network_acl_hash.delete(:associations)

@@ -1,5 +1,5 @@
 name: inspec-aws
-title: Amazon Web Services  Resource Pack
+title: Amazon Web Services Resource Pack
 maintainer: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 summary: This resource pack provides compliance resources for AWS.
 copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk

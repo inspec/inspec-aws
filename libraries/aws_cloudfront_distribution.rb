@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontDistribution < AwsResourceBase
-  name 'aws_cloudfront_distribution'
-  desc 'Verifies settings for a CloudFront Distribution.'
-
-  example "
-    describe aws_cloudfront_distribution('cloudfront-1') do
+  name "aws_cloudfront_distribution"
+  desc "Verifies settings for a CloudFront Distribution."
+  example <<-EXAMPLE
+    describe aws_cloudfront_distribution('CLOUDFRONT_DISTRIBUTION_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
               :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path, :s3_origin_access, :ssl_certificate,
@@ -54,7 +53,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
     @viewer_protocol_policies = [config.default_cache_behavior.viewer_protocol_policy]
 
     # If there are additional cache behaviors, add them to the list
-    if config.cache_behaviors.quantity.positive?
+    if config.cache_behaviors.quantity > 0
       config.cache_behaviors.items.each do |behavior|
         @viewer_protocol_policies << behavior[:viewer_protocol_policy]
       end
@@ -93,7 +92,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def exists?
-    !@distribution_arn.nil? && @distribution_arn.start_with?('arn')
+    !@distribution_arn.nil? && @distribution_arn.start_with?("arn")
   end
 
   def has_access_logging_enabled?
@@ -101,7 +100,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def has_viewer_protocol_policies_allowing_http?
-    @viewer_protocol_policies.include? 'allow-all'
+    @viewer_protocol_policies.include? "allow-all"
   end
 
   def has_disallowed_viewer_certificate_minimum_ssl_protocol?

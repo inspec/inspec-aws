@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsS3Buckets < AwsResourceBase
-  name 'aws_s3_buckets'
-  desc 'Verifies settings for AWS S3 Buckets in bulk.'
+  name "aws_s3_buckets"
+  desc "Verifies settings for AWS S3 Buckets in bulk."
   example "
     describe aws_s3_bucket do
       its('bucket_names') { should eq ['my_bucket'] }
@@ -12,9 +12,9 @@ class AwsS3Buckets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:bucket_names, field: :bucket_name)
-             .register_column(:tags, field: :tags, lazy: ->(r, c, t) { r[:tags] = fetch_tags_from(r, c, t) })
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:bucket_names, field: :bucket_name)
+    .register_column(:tags, field: :tags, lazy: ->(r, c, t) { r[:tags] = fetch_tags_from(r, c, t) })
+    .install_filter_methods_on_resource(self, :table)
 
   # helps to lazy load tags
   def self.fetch_tags_from(row, _condition, table)

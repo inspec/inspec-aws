@@ -1,9 +1,9 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEc2DHCPOptions< AwsResourceBase
   SERVER_TYPES = %w{domain-name-servers netbios-name-servers ntp-servers}.freeze
-  name 'aws_ec2_dhcp_options'
-  desc 'Verifies settings for AWS EC2 DHCP Options.'
+  name "aws_ec2_dhcp_options"
+  desc "Verifies settings for AWS EC2 DHCP Options."
 
   example "
     describe aws_ec2_dhcp_options do
@@ -14,15 +14,15 @@ class AwsEc2DHCPOptions< AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:dhcp_options_ids,      field: :dhcp_options_id)
-             .register_column(:owner_ids,             field: :owner_id)
-             .register_column(:tags,                  field: :tags)
-             .register_column(:domain_names,          field: :domain_name)
-             .register_column(:domain_name_servers,   field: :domain_name_servers, style: :simple)
-             .register_column(:netbios_name_servers,  field: :netbios_name_servers, style: :simple)
-             .register_column(:netbios_node_types,    field: :netbios_node_type)
-             .register_column(:ntp_servers,           field: :ntp_servers, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:dhcp_options_ids,      field: :dhcp_options_id)
+    .register_column(:owner_ids,             field: :owner_id)
+    .register_column(:tags,                  field: :tags)
+    .register_column(:domain_names,          field: :domain_name)
+    .register_column(:domain_name_servers,   field: :domain_name_servers, style: :simple)
+    .register_column(:netbios_name_servers,  field: :netbios_name_servers, style: :simple)
+    .register_column(:netbios_node_types,    field: :netbios_node_type)
+    .register_column(:ntp_servers,           field: :ntp_servers, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -63,13 +63,13 @@ class AwsEc2DHCPOptions< AwsResourceBase
       hash[:domain_name] = domain_name_for(dhcp_configs)
       hash[:netbios_node_type] = netbios_node_type_for(dhcp_configs)
       SERVER_TYPES.each do |server_type|
-        hash[server_type.gsub('-', '_').to_sym] = servers_for(dhcp_configs, type: server_type)
+        hash[server_type.gsub("-", "_").to_sym] = servers_for(dhcp_configs, type: server_type)
       end
     end
   end
 
   def domain_name_for(dhcp_configurations)
-    domain_name = find_config_for(dhcp_configurations, type: 'domain-name')
+    domain_name = find_config_for(dhcp_configurations, type: "domain-name")
     return NullResponse unless domain_name # this is not possible though!
 
     domain_name[:values].first[:value]
@@ -83,7 +83,7 @@ class AwsEc2DHCPOptions< AwsResourceBase
   end
 
   def netbios_node_type_for(dhcp_configurations)
-    netbios_node_type = find_config_for(dhcp_configurations, type: 'netbios-node-type')
+    netbios_node_type = find_config_for(dhcp_configurations, type: "netbios-node-type")
     return NullResponse unless netbios_node_type
 
     netbios_node_type[:values].first[:value].to_i

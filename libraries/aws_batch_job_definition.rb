@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSBatchJobDefinition < AwsResourceBase
-  name 'aws_batch_job_definition'
-  desc 'Describes a list of job definitions.'
-
-  example "
-    describe aws_batch_job_definition(job_definition_name: 'test1') do
+  name "aws_batch_job_definition"
+  desc "Describes a list of job definitions."
+  example <<-EXAMPLE
+    describe aws_batch_job_definition(job_definition_name: 'JOB_DEFINITION_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { job_definition_name: opts } if opts.is_a?(String)
