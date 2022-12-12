@@ -2,6 +2,7 @@
 
 require 'rake/testtask'
 require 'rubocop/rake_task'
+require "chefstyle"
 require_relative 'test/integration/configuration/aws_inspec_config'
 
 INTEGRATION_DIR = File.join('test', 'integration')
@@ -32,10 +33,7 @@ end
 
 # lint the project
 # chefstyle
-
 begin
-  require "chefstyle"
-  require "rubocop/rake_task"
   RuboCop::RakeTask.new(:lint) do |task|
     task.options += ["--display-cop-names", "--no-color", "--parallel"]
   end
@@ -47,7 +45,6 @@ end
 # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571 - 'test:check'
 desc 'Run rubocop chefstyle linter + unit tests'
 task default: [:lint, :test ]
-
 
 namespace :test do
 
