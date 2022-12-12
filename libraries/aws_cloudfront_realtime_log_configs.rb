@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudFrontRealtimeLogConfigs < AwsResourceBase
   name "aws_cloudfront_realtime_log_configs"
   desc "Gets a list of real-time log configurations."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_realtime_log_configs do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

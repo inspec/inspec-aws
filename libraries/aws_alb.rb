@@ -3,8 +3,7 @@ require "aws_backend"
 class AwsAlb < AwsResourceBase
   name "aws_alb"
   desc "Verifies settings for an Application Load Balancer."
-
-  example "
+  example <<-EXAMPLE
     describe aws_alb('arn:aws:elasticloadbalancing') do
       it { should exist }
     end
@@ -12,7 +11,7 @@ class AwsAlb < AwsResourceBase
    describe aws_alb('arn:aws:elasticloadbalancing') do
     its('access_log_enabled') { should eq true }
     end
-  "
+  EXAMPLE
 
   attr_reader :availability_zones, :canonical_hosted_zone_id, :created_time, :dns_name, :load_balancer_arn,
               :load_balancer_name, :load_balancer_addresses, :scheme, :security_groups, :state, :subnets, :type, :vpc_id,

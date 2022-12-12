@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   name "aws_application_autoscaling_scaling_policy"
   desc "Describes the Application AutoScaling scaling policies for the specified service namespace."
-
-  example "
+  example <<-EXAMPLE
     describe aws_application_autoscaling_scaling_policy(service_namespace: 'ec2') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { service_namespace: opts } if opts.is_a?(String)

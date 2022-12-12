@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSAthenaWorkGroups < AwsResourceBase
   name "aws_athena_work_groups"
   desc "Lists available workgroups for the account."
-
-  example "
+  example <<-EXAMPLE
     describe aws_athena_work_groups do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCognitoUserPools < AwsResourceBase
   name "aws_cognito_userpools"
   desc "Lists the user pools associated with an AWS account."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cognito_userpools do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

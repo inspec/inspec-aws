@@ -3,8 +3,7 @@ require "aws_backend"
 class AWSCloudFormationTemplate < AwsResourceBase
   name "aws_cloudformation_template"
   desc "Returns information about a new or existing template."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
       it { should exist }
     end
@@ -20,7 +19,7 @@ class AWSCloudFormationTemplate < AwsResourceBase
     describe aws_cloudformation_template(template_body: 'TEMPLATE_BODY') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)

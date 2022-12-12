@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsDynamoDbTable < AwsResourceBase
   name "aws_dynamodb_table"
   desc "Verifies the settings for a DynamoDB table."
-
-  example "
-    describe aws_dynamodb_table(table_name: 'table-name') do
+  example <<-EXAMPLE
+    describe aws_dynamodb_table(table_name: 'DYNAMODB_TABLE_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table_name, :table_status, :creation_date, :number_of_decreases_today,
               :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema, :global_secondary_indexes,

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayClientCertificate < AwsResourceBase
   name "aws_apigateway_client_certificate"
   desc "Gets information about the current ClientCertificate resource."
-
-  example "
-    describe aws_apigateway_client_certificate(client_certificate_id: 'ClientCertificateID') do
+  example <<-EXAMPLE
+    describe aws_apigateway_client_certificate(client_certificate_id: 'CLIENT_CERTIFICATE_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { client_certificate_id: opts } if opts.is_a?(String)

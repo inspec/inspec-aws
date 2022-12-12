@@ -3,6 +3,11 @@ require "aws_backend"
 class AwsCloudWatchLogGroup < AwsResourceBase
   name "aws_cloudwatch_log_group"
   desc "Verifies settings for an AWS CloudWatch Log Group."
+  example <<-EXAMPLE
+    describe aws_cloudwatch_log_group(log_group_name: 'LOG_GROUP_NAME') do
+      it { should exist }
+    end
+  EXAMPLE
 
   attr_reader :log_group_name, :limit, :retention_in_days, :metric_filter_count, :kms_key_id, :tags, :arn
 

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFormationStackSets < AwsResourceBase
   name "aws_cloud_formation_stack_sets"
   desc "Describes all the specified stack set."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloud_formation_stack_sets do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

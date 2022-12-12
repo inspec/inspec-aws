@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSAmplifyApp < AwsResourceBase
   name "aws_amplify_app"
   desc "Describes a Amplify App."
-
-  example "
-    describe aws_amplify_app(app_id: 'test1') do
+  example <<-EXAMPLE
+    describe aws_amplify_app(app_id: 'APP_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { app_id: opts } if opts.is_a?(String)

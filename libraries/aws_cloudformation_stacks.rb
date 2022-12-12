@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudformationStacks < AwsResourceBase
   name "aws_cloudformation_stacks"
   desc "Verifies settings for aws CloudFormation Stacks."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudformation_stacks do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

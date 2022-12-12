@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2CapacityReservation < AwsResourceBase
   name "aws_ec2_capacity_reservation"
   desc "Describes one Capacity Reservations."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_capacity_reservation(capacity_reservation_id: 'CAPACITY_RESERVATION_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { capacity_reservation_id: opts } if opts.is_a?(String)

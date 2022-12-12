@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2ClientVPNAuthorizationRules < AwsResourceBase
   name "aws_ec2_client_vpn_authorization_rules"
   desc "Describes all the VPN rules."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_authorization_rules(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

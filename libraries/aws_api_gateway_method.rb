@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayMethod < AwsResourceBase
   name "aws_api_gateway_method"
   desc "Describe an existing Method resource."
-
-  example "
-    describe aws_api_gateway_method(rest_api_id: 'rest_api_id_test', resource_id: 'resource_id_test', http_method: 'GET') do
+  example <<-EXAMPLE
+    describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'GET') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { rest_api_id: opts, resource_id: opts, http_method: opts } if opts.is_a?(String)
@@ -39,6 +38,6 @@ class AWSApiGatewayMethod < AwsResourceBase
   end
 
   def to_s
-    "rest_api_id: #{@rest_api_id}"
+    "Rest API ID: #{@rest_api_id}"
   end
 end

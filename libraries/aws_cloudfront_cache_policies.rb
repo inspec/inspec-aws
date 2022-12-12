@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontCachePolicies < AwsResourceBase
   name "aws_cloudfront_cache_policies"
   desc "Gets a list of cache policies."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_cache_policies do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

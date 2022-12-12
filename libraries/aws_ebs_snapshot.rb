@@ -3,19 +3,18 @@ require "aws_backend"
 class AwsEbsSnapshot < AwsResourceBase
   name "aws_ebs_snapshot"
   desc "Verifies settings for an EBS snapshot."
-
-  example "
-    describe aws_ebs_snapshot('snap-12345678') do
-      it  { should_not be_public }
-      it  { should be_private }
-      it  { should exist }
+  example <<-EXAMPLE
+    describe aws_ebs_snapshot('SNAPSHOT_ID') do
+      it { should_not be_public }
+      it { should be_private }
+      it { should exist }
       its('encrypted') { should eq true }
     end
 
-    describe aws_ebs_snapshot(name: 'my-volume') do
+    describe aws_ebs_snapshot(name: 'EBS_SNAPSHOT_NAME') do
       its('encrypted') { should eq true }
     end
-  "
+  EXAMPLE
 
   attr_reader :group, :user_ids
 

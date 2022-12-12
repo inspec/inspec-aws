@@ -3,16 +3,11 @@ require "aws_backend"
 class AWSDMSReplicationSubnetGroup < AwsResourceBase
   name "aws_dms_replication_subnet_group"
   desc "Returns information about the replication subnet groups."
-
-  example "
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
-      it { should eq 'test' }
-    end
-
-    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'test') do
+  example <<-EXAMPLE
+    describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'REPLICATION_SUBNET_GROUP_IDENTIFIER') do
       it { should exits }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { replication_subnet_group_identifier: opts } if opts.is_a?(String)

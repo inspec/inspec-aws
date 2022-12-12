@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCognitoIdentityPool < AwsResourceBase
   name "aws_cognito_identity_pool"
   desc "Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users."
-
-  example "
-    describe aws_cognito_identity_pool(identity_pool_id: 'test1') do
+  example <<-EXAMPLE
+    describe aws_cognito_identity_pool(identity_pool_id: 'IDENTIRY_POOL_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { identity_pool_id: opts } if opts.is_a?(String)

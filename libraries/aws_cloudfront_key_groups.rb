@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudFrontKeyGroups < AwsResourceBase
   name "aws_cloudfront_key_groups"
   desc "Describes one or more of Key Group."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_key_groups do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

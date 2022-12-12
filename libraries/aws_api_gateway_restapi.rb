@@ -4,7 +4,7 @@ class AWSApiGatewayRestApi < AwsResourceBase
   name "aws_api_gateway_restapi"
   desc "Lists the RestApi resource in the collection."
   example <<-EXAMPLE
-    describe aws_api_gateway_restapi(rest_api_id: 'rest_api_id') do
+    describe aws_api_gateway_restapi(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
   EXAMPLE

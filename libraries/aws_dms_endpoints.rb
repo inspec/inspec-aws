@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSDMSEndpoints < AwsResourceBase
   name "aws_dms_endpoints"
   desc "Returns information about the endpoints for your account in the current region."
-
-  example "
+  example <<-EXAMPLE
     describe aws_dms_endpoints do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

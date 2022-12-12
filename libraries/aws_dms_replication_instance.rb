@@ -3,11 +3,11 @@ require "aws_backend"
 class AWSDMSReplicationInstance < AwsResourceBase
   name "aws_dms_replication_instance"
   desc "Returns information about the replication instance types that can be created in the specified region."
-  example "
+  example <<-EXAMPLE
     describe aws_dms_replication_instance do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)

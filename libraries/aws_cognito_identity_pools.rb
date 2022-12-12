@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCognitoIdentityPools < AwsResourceBase
   name "aws_cognito_identity_pools"
   desc "Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cognito_identity_pools do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

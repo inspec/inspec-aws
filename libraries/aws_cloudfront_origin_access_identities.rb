@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontOriginAccessIdentities < AwsResourceBase
   name "aws_cloudfront_origin_access_identities"
   desc "Lists origin access identities."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_origin_access_identities do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

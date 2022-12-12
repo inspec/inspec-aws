@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayAPIKeys < AwsResourceBase
   name "aws_apigateway_api_keys"
   desc "Gets information about the current ApiKeys resource."
-
-  example "
+  example <<-EXAMPLE
     describe aws_apigateway_api_keys do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

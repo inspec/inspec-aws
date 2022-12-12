@@ -3,16 +3,12 @@ require "aws_backend"
 class AWSDMSEndpoint < AwsResourceBase
   name "aws_dms_endpoint"
   desc "Returns information about the endpoints for your account in the current region."
-
-  example "
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
+  example <<-EXAMPLE
+    describe aws_dms_endpoint(endpoint_arn: 'DMS_ENDPOINT_ARN') do
       it { should exist }
+      its('endpoint_arn') { should eq 'DMS_ENDPOINT_ARN' }
     end
-
-    describe aws_dms_endpoint(endpoint_arn: 'test-arn') do
-      its('endpoint_arn') { should eq 'test-arn' }
-    end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { endpoint_arn: opts } if opts.is_a?(String)

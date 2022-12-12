@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCognitoUserPool < AwsResourceBase
   name "aws_cognito_userpool"
   desc "Returns the configuration information and metadata of the specified user pool."
-
-  example "
-    describe aws_cognito_userpool(user_pool_id: 'test1') do
+  example <<-EXAMPLE
+    describe aws_cognito_userpool(user_pool_id: 'USER_POOL_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { user_pool_id: opts } if opts.is_a?(String)

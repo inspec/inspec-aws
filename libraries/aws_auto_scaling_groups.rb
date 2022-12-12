@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsAutoScalingGroups < AwsResourceBase
   name "aws_auto_scaling_groups"
   desc "Verifies settings for a collection AWS Auto Scaling Groups."
-
-  example "
+  example <<-EXAMPLE
     describe aws_auto_scaling_groups do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

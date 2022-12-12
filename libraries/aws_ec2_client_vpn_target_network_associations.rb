@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2ClientVPNTargetNetworkAssociations < AwsResourceBase
   name "aws_ec2_client_vpn_target_network_associations"
   desc "Describes all the AWS EC2 Client Vpn Target Network Association."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

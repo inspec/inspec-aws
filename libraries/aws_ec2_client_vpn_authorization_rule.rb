@@ -2,13 +2,12 @@ require "aws_backend"
 
 class AWSEC2ClientVPNAuthorizationRule < AwsResourceBase
   name "aws_ec2_client_vpn_authorization_rule"
-  desc "Describes a VPN rule."
-
-  example "
+  desc "Describes a VPN authorization rule."
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_authorization_rule(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', group_id: 'GROUP_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { client_vpn_endpoint_id: opts } if opts.is_a?(String)

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontStreamingDistribution < AwsResourceBase
   name "aws_cloudfront_streaming_distribution"
   desc "Get the information about a distribution."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_streaming_distribution(id: 'ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

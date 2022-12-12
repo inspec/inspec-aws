@@ -3,11 +3,11 @@ require "aws_backend"
 class AWSDMSReplicationInstances < AwsResourceBase
   name "aws_dms_replication_instances"
   desc "Returns information about the replication instance types that can be created in the specified region."
-  example "
+  example <<-EXAMPLE
     describe aws_dms_replication_instances do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

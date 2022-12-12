@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudWatchLogsLogStreams < AwsResourceBase
   name "aws_cloudwatchlogs_log_streams"
   desc "Lists all Log Streams."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudwatch_logs_log_streams(log_group_name: 'LOG_GROUP_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

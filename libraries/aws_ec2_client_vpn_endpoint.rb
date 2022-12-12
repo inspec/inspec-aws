@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2ClientVPNEndpoint < AwsResourceBase
   name "aws_ec2_client_vpn_endpoint"
   desc "Describes a VPN endpoint."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { client_vpn_endpoint_id: opts } if opts.is_a?(String)

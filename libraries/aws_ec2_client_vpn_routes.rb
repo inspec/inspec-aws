@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2ClientVPNRoutes < AwsResourceBase
   name "aws_ec2_client_vpn_routes"
   desc "Describes all the VPN routes."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

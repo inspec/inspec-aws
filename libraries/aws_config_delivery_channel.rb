@@ -3,13 +3,14 @@ require "aws_backend"
 class AwsConfigDeliveryChannel < AwsResourceBase
   name "aws_config_delivery_channel"
   desc "Verifies settings for AWS Config Delivery Channel."
-  example "
+  example <<-EXAMPLE
     describe aws_config_delivery_channel do
-      it                    { should exist }
-      its('s3_bucket_name') { should eq 'my_bucket' }
-      its('sns_topic_arn')  { should eq arn:aws:sns:us-east-1:721741954427:sns_topic' }
+      it { should exist }
+      its('s3_bucket_name') { should eq 'S#_BUCKET_NAME' }
+      its('sns_topic_arn') { should eq arn:aws:sns:us-east-1:721741954427:sns_topic' }
     end
-  "
+  EXAMPLE
+
   attr_reader :channel_name, :s3_bucket_name, :s3_key_prefix, :sns_topic_arn, :delivery_frequency_in_hours
 
   def initialize(opts = {})

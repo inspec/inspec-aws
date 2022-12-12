@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSBatchJobDefinitions < AwsResourceBase
   name "aws_batch_job_definitions"
   desc "Describes a list of job definitions."
-
-  example "
+  example <<-EXAMPLE
     describe aws_batch_job_definitions do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

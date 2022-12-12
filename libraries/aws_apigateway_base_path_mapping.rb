@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayBasePathMapping < AwsResourceBase
   name "aws_apigateway_base_path_mapping"
   desc "Describe a BasePathMapping resource."
-
-  example "
-    describe aws_apigateway_base_path_mapping(domain_name: 'DomainName', base_path: 'BasePath') do
+  example <<-EXAMPLE
+    describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { domain_name: opts } if opts.is_a?(String)

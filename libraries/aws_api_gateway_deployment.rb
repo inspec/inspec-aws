@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayDeployment < AwsResourceBase
   name "aws_api_gateway_deployment"
   desc "Gets information about a Deployment resource."
-
-  example "
-    describe aws_api_gateway_deployment(rest_api_id: 'rest_api_id', deployment_id: 'deployment_id') do
+  example <<-EXAMPLE
+    describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: 'DEPLOYMENT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)
@@ -33,6 +32,6 @@ class AWSApiGatewayDeployment < AwsResourceBase
   end
 
   def to_s
-    "rest_api_id: #{@display_name}"
+    "REST API ID: #{@display_name}"
   end
 end

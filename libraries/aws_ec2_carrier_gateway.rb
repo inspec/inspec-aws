@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2CarrierGateway < AwsResourceBase
   name "aws_ec2_carrier_gateway"
   desc "Describes single carrier gateway."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_carrier_gateway(carrier_gateway_id: 'CARRIER_GATEWAY_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { carrier_gateway_id: opts } if opts.is_a?(String)

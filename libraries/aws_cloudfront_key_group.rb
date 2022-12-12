@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudFrontKeyGroup < AwsResourceBase
   name "aws_cloudfront_key_group"
   desc "Describes one Key Group."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_key_group(id: 'KEY_GROUP_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

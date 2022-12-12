@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSAthenaWorkGroup < AwsResourceBase
   name "aws_athena_work_group"
   desc "Returns information about the workgroup with the specified name."
-
-  example "
-    describe aws_athena_work_group(work_group: 'test1') do
+  example <<-EXAMPLE
+    describe aws_athena_work_group(work_group: 'ATHENA_WORK_GROUP') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { work_group: opts } if opts.is_a?(String)

@@ -3,11 +3,11 @@ require "aws_backend"
 class AwsDbParameterGroups < AwsResourceBase
   name "aws_db_parameter_groups"
   desc "Verifies settings for a Parameter Group in bulk."
-  example '
+  example <<-EXAMPLE
     describe aws_db_parameter_groups do
       it { should exist }
     end
-  '
+  EXAMPLE
 
   attr_reader :table, :api_response
 

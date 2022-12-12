@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontPublicKeys < AwsResourceBase
   name "aws_cloudfront_public_keys"
   desc "Lists all Public Keys."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_public_keys do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

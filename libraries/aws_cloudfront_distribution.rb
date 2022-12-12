@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudFrontDistribution < AwsResourceBase
   name "aws_cloudfront_distribution"
   desc "Verifies settings for a CloudFront Distribution."
-
-  example "
-    describe aws_cloudfront_distribution('cloudfront-1') do
+  example <<-EXAMPLE
+    describe aws_cloudfront_distribution('CLOUDFRONT_DISTRIBUTION_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :distribution_id, :viewer_certificate_minimum_ssl_protocol, :viewer_protocol_policies,
               :custom_origin_ssl_protocols, :s3_origin_configs, :custom_origin_protocol_policies, :s3_origin_path, :s3_origin_access, :ssl_certificate,

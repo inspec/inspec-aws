@@ -2,13 +2,12 @@ require "aws_backend"
 
 class AWSApiGatewayClientCertificates < AwsResourceBase
   name "aws_apigateway_client_certificates"
-  desc "Gets a collection of ClientCertificate resources."
-
-  example "
+  desc "Gets a collection of Client Certificate resources."
+  example <<-EXAMPLE
     describe aws_apigateway_client_certificates do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudwatchCompositeAlarm < AwsResourceBase
   name "aws_cloudwatch_composite_alarm"
   desc "Gets a composite alarm."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { alarm_name: opts } if opts.is_a?(String)

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
   name "aws_ec2_client_vpn_target_network_association"
   desc "Describes a single AWS EC2 Client Vpn Target Network Association."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_client_vpn_target_network_association(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', association_id: 'ASSOCIATION_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { client_vpn_endpoint_id: opts } if opts.is_a?(String)

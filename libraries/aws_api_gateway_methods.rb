@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayMethods < AwsResourceBase
   name "aws_api_gateway_methods"
   desc "Describe an existing Method resource."
-
-  example "
-    describe aws_api_gateway_methods(rest_api_id: 'test', resource_id: 'test', http_method: 'GET') do
+  example <<-EXAMPLE
+    describe aws_api_gateway_methods(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'GET') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

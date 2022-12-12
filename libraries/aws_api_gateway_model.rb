@@ -2,13 +2,12 @@ require "aws_backend"
 
 class AWSApiGatewayModel < AwsResourceBase
   name "aws_api_gateway_model"
-  desc "Retrieves API Gateway Model."
-
-  example "
+  desc "Retrieves an API Gateway Model."
+  example <<-EXAMPLE
     describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)

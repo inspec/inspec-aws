@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudWatchLogsDestination < AwsResourceBase
   name "aws_cloudwatchlogs_destination"
   desc "Describes a log destination."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudwatchlogs_destination(destination_name_prefix: 'DESTINATION_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { destination_name_prefix: opts } if opts.is_a?(String)

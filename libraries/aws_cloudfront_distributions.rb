@@ -3,11 +3,11 @@ require "aws_backend"
 class AwsCloudFrontDistributions < AwsResourceBase
   name "aws_cloudfront_distributions"
   desc "Verifies settings for a collection AWS CloudFront Distributions."
-  example '
+  example <<-EXAMPLE
     describe aws_cloudfront_distributions do
       it { should exist }
     end
-  '
+  EXAMPLE
 
   attr_reader :table
 

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontCachePolicy < AwsResourceBase
   name "aws_cloudfront_cache_policy"
   desc "Gets a cache policy."
-
-  example "
-    describe aws_cloudfront_cache_policy(id: 'ID') do
+  example <<-EXAMPLE
+    describe aws_cloudfront_cache_policy(id: 'CLOUDFRONT_CACHE_POLICY_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

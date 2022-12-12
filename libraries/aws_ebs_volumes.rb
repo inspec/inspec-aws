@@ -3,11 +3,11 @@ require "aws_backend"
 class AwsEbsVolumes < AwsResourceBase
   name "aws_ebs_volumes"
   desc "Verifies settings for a collection of AWS EBS Volumes."
-  example "
+  example <<-EXAMPLE
     describe aws_ebs_volumes do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

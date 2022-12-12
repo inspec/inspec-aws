@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontPublicKey < AwsResourceBase
   name "aws_cloudfront_public_key"
   desc "Get the information about a Public Key."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_public_key(id: 'ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

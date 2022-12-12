@@ -2,13 +2,12 @@ require "aws_backend"
 
 class AWSCloudWatchLogsDestinations < AwsResourceBase
   name "aws_cloudwatchlogs_destinations"
-  desc "Lists all destinations."
-
-  example "
+  desc "Lists all cloudwatchlogs destinations."
+  example <<-EXAMPLE
     describe aws_cloudwatchlogs_destinations do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

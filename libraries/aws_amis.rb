@@ -3,11 +3,11 @@ require "aws_backend"
 class AwsAmis < AwsResourceBase
   name "aws_amis"
   desc "Verifies settings for a collection of AWS AMIs."
-  example "
+  example <<-EXAMPLE
     describe aws_amis(all_amis: 'true') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table, :api_response
 

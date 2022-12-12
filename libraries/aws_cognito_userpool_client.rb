@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCognitoUserPoolClient < AwsResourceBase
   name "aws_cognito_userpool_client"
   desc "Client method for returning the configuration information and metadata of the specified user pool app client."
-
-  example "
-    describe aws_cognito_userpool_client(user_pool_id: 'test1', client_id: 'test1') do
+  example <<-EXAMPLE
+    describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { user_pool_id: opts, client_id: opts } if opts.is_a?(String)

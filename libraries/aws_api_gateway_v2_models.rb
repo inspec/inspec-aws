@@ -8,8 +8,8 @@ class AwsApiGatewayV2Models < AwsCollectionResourceBase
       it { should exist }
       its('model_ids') { should eq ['MODEL_ID'] }
       its('names') { should eq ['MODEL_NAME'] }
-      its('model_id') { should include 'MODEL_ID' }
-      its('name') { should include 'MODEL_NAME' }
+      its('model_ids') { should include 'MODEL_ID' }
+      its('names') { should include 'MODEL_NAME' }
     end
   EXAMPLE
 

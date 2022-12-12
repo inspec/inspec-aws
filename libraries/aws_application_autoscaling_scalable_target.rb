@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   name "aws_application_autoscaling_scalable_target"
   desc "Gets information about the scalable targets in the specified namespace."
-
-  example "
-    describe aws_application_autoscaling_scalable_target( service_namespace: 'ec2' ) do
+  example <<-EXAMPLE
+    describe aws_application_autoscaling_scalable_target(service_namespace: 'ec2') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { service_namespace: opts } if opts.is_a?(String)

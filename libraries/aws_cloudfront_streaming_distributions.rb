@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSCloudFrontStreamingDistributions < AwsResourceBase
   name "aws_cloudfront_streaming_distributions"
   desc "List streaming distributions."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudfront_streaming_distributions do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

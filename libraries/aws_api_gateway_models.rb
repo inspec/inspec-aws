@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApiGatewayModels < AwsResourceBase
   name "aws_api_gateway_models"
   desc "Lists all the API Gateway models."
-
-  example "
+  example <<-EXAMPLE
     describe aws_api_gateway_models(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

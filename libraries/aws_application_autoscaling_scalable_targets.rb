@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSApplicationAutoScalingScalableTargets < AwsResourceBase
   name "aws_application_autoscaling_scalable_targets"
   desc "Gets information about the scalable targets in the specified namespace."
-
-  example "
-    describe aws_application_autoscaling_scalable_targets(service_namespace: 'service_namespace') do
+  example <<-EXAMPLE
+    describe aws_application_autoscaling_scalable_targets(service_namespace: 'ec2') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

@@ -3,12 +3,11 @@ require "aws_backend"
 class AWSEC2CustomerGateways < AwsResourceBase
   name "aws_ec2_customer_gateways"
   desc "Describes one or more of your VPN customer gateways."
-
-  example "
+  example <<-EXAMPLE
     describe aws_ec2_customer_gateways do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 

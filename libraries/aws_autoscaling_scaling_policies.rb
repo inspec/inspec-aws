@@ -3,11 +3,12 @@ require "aws_backend"
 class AWSAutoScalingScalingPolicies < AwsResourceBase
   name "aws_autoscaling_scaling_policies"
   desc "Describes the policies for the specified Auto Scaling group."
-  example "
+  example <<-EXAMPLE
     describe aws_autoscaling_scaling_policies do
       it { should exist }
     end
-  "
+  EXAMPLE
+
   attr_reader :table
 
   FilterTable.create

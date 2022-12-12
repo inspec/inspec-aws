@@ -3,12 +3,11 @@ require "aws_backend"
 class AwsCloudwatchCompositeAlarms < AwsResourceBase
   name "aws_cloudwatch_composite_alarms"
   desc "Lists all composite alarms."
-
-  example "
+  example <<-EXAMPLE
     describe aws_cloudwatch_composite_alarms do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
