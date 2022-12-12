@@ -1,5 +1,4 @@
 skip_control 'aws-cloudformation-template-1.0' do
-  impact 1.0
   title 'Ensure AWS CloudFormation Template has the correct properties using the parameter stack name.'
 
   describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
@@ -32,7 +31,6 @@ skip_control 'aws-cloudformation-template-1.0' do
 end
 
 skip_control 'aws-cloudformation-template-2.0' do
-  impact 1.0
   title 'Ensure AWS CloudFormation Template has the correct properties using the parameter template url.'
 
   describe aws_cloudformation_template(template_url: 'TEMPLATE_URL') do

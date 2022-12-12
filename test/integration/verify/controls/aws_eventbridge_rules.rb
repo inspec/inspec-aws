@@ -1,7 +1,6 @@
 aws_cloudwatch_event_rule_arn = input(:aws_cloudwatch_event_rule_arn, value: '', description: '')
 
 control 'aws-event-rules-1.0' do
-  impact 1.0
   title 'Ensure AWS Event Rules has the correct properties.'
 
   describe aws_eventbridge_rules do

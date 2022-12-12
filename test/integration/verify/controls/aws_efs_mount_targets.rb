@@ -4,7 +4,6 @@ aws_subnet_mt_id = input(:aws_subnet_mt_id, value: '', description: '')
 aws_vpc_mt_id = input(:aws_vpc_mt_id, value: '', description: '')
 
 control 'aws-efs-mount-targets-1.0' do
-  impact 1.0
   title 'Ensure AWS EFS Mount Targets has the correct properties.'
   
   describe aws_efs_mount_targets(file_system_id: aws_file_system_mt_id) do

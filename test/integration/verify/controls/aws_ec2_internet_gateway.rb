@@ -4,7 +4,6 @@ aws_internet_gateway_vpc_id = input(:aws_internet_gateway_vpc_id, value: '', des
 
 control 'aws-ec2-internet-gateway-1.0' do
 
-  impact 1.0
   title 'Test a singular resource of the internet gateway.'
 
   describe aws_ec2_internet_gateway(internet_gateway_id: aws_internet_gateway_id) do

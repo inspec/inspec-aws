@@ -1,5 +1,4 @@
 control 'aws-cloudwatch-composite-alarms-1.0' do
-  impact 1.0
   title 'List Composite Alarms.'
 
   describe aws_cloudwatch_composite_alarms do

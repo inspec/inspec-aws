@@ -4,7 +4,6 @@ aws_resolver_endpoint_name = input(:aws_resolver_endpoint_name, value: '', descr
 aws_resolver_endpoint_arn = input(:aws_resolver_endpoint_arn, value: '', description: '')
 
 control 'aws-route53-resolver-resolver-endpoints-1.0' do
-  impact 1.0
   title 'Describes the endpoints of the route53 resolver.'
   
   describe aws_route53resolver_resolver_endpoints do

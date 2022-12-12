@@ -4,7 +4,6 @@ branch_name = input(:branch_name, value: '', description: '')
 title 'Ensure Amplify App have the correct properties.'
 
 control 'aws_amplify_branch-1.0' do
-  impact 1.0
   title 'Ensure Amplify App have the correct properties.'
 
   describe aws_amplify_branch(app_id: app_id, branch_name: branch_name) do

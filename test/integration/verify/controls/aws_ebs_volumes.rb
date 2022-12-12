@@ -7,7 +7,6 @@ aws_ebs_volume_type = input(:aws_ebs_volume_type, value: '', description: 'The t
 title 'Test AWS EBS Volumes in bulk'
 
 control 'aws-ebs-volumes-1.0' do
-  impact 1.0
   title 'Ensure AWS EBS Volumes plural resource has the correct properties.'
 
   describe aws_ebs_volumes do

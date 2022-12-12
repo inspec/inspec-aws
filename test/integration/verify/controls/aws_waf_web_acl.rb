@@ -4,7 +4,6 @@ aws_waf_web_acl_name = input(aws_waf_web_acl_name, value: '', description: '')
 title 'Ensure the web acl have the correct properties.'
 
 control 'aws-waf-web-acl-1.0' do
-  impact 1.0
   title 'Test the properties of the WAF ACL.'
 
   describe aws_waf_web_acl(web_acl_id: aws_waf_web_acl_id) do

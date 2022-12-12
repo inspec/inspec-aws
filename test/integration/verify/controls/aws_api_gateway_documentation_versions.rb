@@ -5,7 +5,6 @@ start_index = documentation_version_id.index("/")
 aws_api_gateway_documentation_version_id = documentation_version_id[start_index..]
 
 control 'aws-api-gateway-documentation-versions-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway documentation versions.'
 
   describe aws_api_gateway_documentation_versions(rest_api_id: aws_api_gateway_rest_api_id) do

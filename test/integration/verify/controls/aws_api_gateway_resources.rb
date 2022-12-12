@@ -5,7 +5,6 @@ aws_api_gateway_resource_path = input(:aws_api_gateway_resource_path, value: '',
 aws_api_gateway_resource_path_part = input(:aws_api_gateway_resource_path_part, value: '', description: 'The last path segment for this resource.')
 
 control 'aws-api-gateway-resources-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway resources.'
 
   describe aws_api_gateway_resources(rest_api_id: aws_api_gateway_rest_api_id) do

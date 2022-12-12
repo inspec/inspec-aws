@@ -2,7 +2,6 @@ aws_servicecatalog_portfolio_sm_id = input(:aws_servicecatalog_portfolio_sm_id, 
 aws_servicecatalog_portfolio_sm_arn = input(:aws_servicecatalog_portfolio_sm_arn, value: '', description: '')
 
 control 'aws-service-catalog-launch-role-constraint-1.0' do
-  impact 1.0
   title 'Describes the launch role constraint of the service catalog.'
 
   describe aws_servicecatalog_launch_role_constraint(id: aws_servicecatalog_portfolio_sm_id) do

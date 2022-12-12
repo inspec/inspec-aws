@@ -6,7 +6,6 @@ aws_allowed_o_auth_flows_user_pool_client = input(:aws_allowed_o_auth_flows_user
 
 control 'aws-cognito-user-pool-client-1.0' do
 
-  impact 1.0
   title 'Ensure AWS Cognito User Pool Client has the correct properties.'
 
   describe aws_cognito_userpool_client(user_pool_id: aws_user_pool_id, client_id: aws_client_id) do

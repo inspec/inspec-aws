@@ -1,7 +1,6 @@
 global_cluster_identifier = input(:global_cluster_identifier, value: '', description: '')
 
 control 'aws_rds_global_cluster-1.0' do
-  impact 1.0
   title 'Test the properties of a Global cluster.'
   
   describe aws_rds_global_cluster(global_cluster_identifier: global_cluster_identifier) do

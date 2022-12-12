@@ -1,7 +1,6 @@
 listener_arn = input(:listener_arn, value: '', description: '')
 
 control 'aws-elbv2-listener-rules-1.0' do
-  impact 1.0
   title 'Ensure AWS ELBv2 Listener Rules has the correct properties.'
 
   describe aws_elasticloadbalancingv2_listener_rules(listener_arn: listener_arn) do

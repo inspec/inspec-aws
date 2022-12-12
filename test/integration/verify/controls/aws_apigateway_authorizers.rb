@@ -5,7 +5,6 @@ aws_api_gateway_authorizer_authorizer_result_ttl_in_seconds = input(:aws_api_gat
 aws_api_gateway_authorizer_authorizer_uri = input(:aws_api_gateway_authorizer_authorizer_uri, value: '', description: '')
 
 control 'aws-apigateway-authorizers' do
-  impact 1.0
   title 'Ensure API Gateway Authorizer resource has the correct properties.'
 
   describe aws_apigateway_authorizers(rest_api_id: aws_api_gateway_rest_api_id) do

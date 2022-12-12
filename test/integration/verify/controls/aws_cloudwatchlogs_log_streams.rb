@@ -3,7 +3,6 @@ aws_cloudwatch_log_group_name = input(:aws_cloudwatch_log_group_name, value: '',
 aws_cloudwatch_log_stream_arn = input(:aws_cloudwatch_log_stream_arn, value: '', description: '')
 
 control 'aws-cloudwatch-logs-log-streams-1.0' do
-  impact 1.0
   title 'Describes the AWS cloudwatch logs log-streams.'
   
   describe aws_cloudwatchlogs_log_streams(log_group_name: aws_cloudwatch_log_group_name) do

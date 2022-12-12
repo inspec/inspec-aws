@@ -5,7 +5,6 @@ aws_vpn_gateway_id = input(:aws_vpn_gateway_id, value: '', description: 'The AWS
 aws_vpn_customer_gateway_id = input(:aws_vpn_customer_gateway_id, value: '', description: 'The AWS VPN Customer Gateway ID.')
 
 control 'aws-vpn-connection-1.0' do
-  impact 1.0
   title 'Ensure AWS VPN Connection has the correct properties.'
   
   describe aws_vpn_connection(aws_vpn_connection_id) do

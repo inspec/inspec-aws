@@ -6,7 +6,6 @@ aws_iam_role_id = input(:aws_iam_role_id, value: '', description: '')
 aws_iam_role_arn = input(:aws_iam_role_arn, value: '', description: '')
 
 control 'aws-iam-instance-profile-1.0' do
-  impact 1.0
   title 'Ensure AWS IAM Instance Profile has the correct properties.'
 
   describe aws_iam_instance_profile(instance_profile_name: aws_iam_instance_profile_name) do

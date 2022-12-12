@@ -1,7 +1,6 @@
 subscription_name = input(:subscription_name, value: '', description: '')
 
 control 'aws_rds_event_subscription-1.0' do
-  impact 1.0
   title 'Test the properties of Event Subscription.'
   
   describe aws_rds_event_subscription(subscription_name: subscription_name) do

@@ -3,7 +3,6 @@ resolver_rule_id = input(:resolver_rule_id, value: '', description: '')
 re_vpc_id = input(:re_vpc_id, value: '', description: '')
 
 control 'aws-route53-resolver-resolver-rule-associations-1.0' do
-  impact 1.0
   title 'List all the endpoint of the route53 resolver rule associations.'
   
   describe aws_route53resolver_resolver_rule_associations do

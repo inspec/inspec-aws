@@ -1,7 +1,6 @@
 hosted_zone_name = input(:aws_route_53_zone, value: '', description: '')
 
 control 'Hosted zone validation' do
-  impact 1.0
   title 'Hosted zone validation'
   desc 'Confirm hosted zone tests are correct'
 

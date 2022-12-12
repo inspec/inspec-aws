@@ -4,7 +4,6 @@ aws_iam_role_attached_policy_name = input(:aws_iam_attached_policy_name, value: 
 aws_iam_role_attached_policy_arn = input(:aws_iam_attached_policy_arn, value: '', description: 'The AWS IAM Role attached policy name.')
 
 control 'AWS IAM Role search for default AWS role' do
-  impact 1.0
   title 'Test the AWS IAM Role'
   
   describe aws_iam_role(role_name: aws_iam_role_name) do

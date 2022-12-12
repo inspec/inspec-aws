@@ -12,7 +12,6 @@ else
 end
 
 control 'aws-sqs-queues-1.0' do
-  impact 1.0
   title 'Ensure AWS SQS Queues plural resource has the correct properties.'
 
   describe aws_sqs_queues do

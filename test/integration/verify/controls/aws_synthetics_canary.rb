@@ -6,7 +6,6 @@ aws_synthetics_canary_engine_arn = input(:aws_synthetics_canary_engine_arn, valu
 aws_synthetics_canary_artifact_s3_location = input(:aws_synthetics_canary_artifact_s3_location, value: "", description: "")
 
 control 'aws_synthetics_canary-1.0' do
-  impact 1.0
   title 'Test the properties of the synthetics canary.'
 
   describe aws_synthetics_canary(name: aws_synthetics_canary_name) do

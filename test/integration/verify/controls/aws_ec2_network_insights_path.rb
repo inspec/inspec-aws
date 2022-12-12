@@ -1,5 +1,4 @@
 skip_control 'aws-ec2-network-insights-path-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws ec2 network insight path.'
 
   describe aws_ec2_network_insights_path(network_insights_path_id: 'nip-1234567890') do

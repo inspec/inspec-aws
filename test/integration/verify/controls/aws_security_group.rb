@@ -15,7 +15,6 @@ aws_security_group_omega_id = input(:aws_security_group_omega_id, value: '', des
 aws_security_group_omega = input(:aws_security_group_omega, value: '', description: 'AWS Security Group name.')
 
 control 'aws-security-group-1.0' do
-  impact 1.0
   title 'Ensure AWS Security Group has the correct properties.'
 
   describe aws_security_group(aws_security_group_default_id) do

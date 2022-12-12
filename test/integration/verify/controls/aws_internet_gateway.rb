@@ -3,7 +3,6 @@ aws_internet_gateway_name_tag = input(:aws_internet_gateway_name_tag, value: '',
 title 'Test single AWS Internet Gateway'
 
 control 'aws-internet-gateway-1.0' do
-  impact 1.0
   title 'Check AWS internet gateway has the correct properties.'
 
   describe aws_internet_gateway(name: aws_internet_gateway_name_tag) do

@@ -11,7 +11,6 @@ aws_emr_cluster_release_label = input(:aws_emr_cluster_release_label, value: '',
 aws_emr_cluster_release_label.gsub!('"', '')
 
 control 'aws-emr-clusters-1.0' do
-  impact 1.0
   title 'Test AWS EMR Cluster in bulk'
 
   describe aws_emr_clusters do

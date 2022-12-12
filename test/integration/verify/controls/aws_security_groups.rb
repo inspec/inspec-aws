@@ -14,7 +14,6 @@ aws_security_group_omega = input(:aws_security_group_omega, value: '', descripti
 
 control 'aws-security-groups-1.0' do
 
-  impact 1.0
   title 'Ensure AWS Security Groups plural resource has the correct properties.'
 
   describe aws_security_groups do

@@ -2,7 +2,6 @@ listener_arn = input(:listener_arn, value: '', description: '')
 load_balancer_arn = input(:load_balancer_arn, value: '', description: '')
 
 control 'aws-elbv2-listeners-1.0' do
-  impact 1.0
   title 'Ensure AWS ELBv2 listeners has the correct properties.'
   
   describe aws_elasticloadbalancingv2_listeners(load_balancer_arn: load_balancer_arn) do

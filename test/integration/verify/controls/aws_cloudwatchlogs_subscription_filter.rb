@@ -1,5 +1,4 @@
 skip_control 'aws-cloudwatchlogs-subscription-filter-1.0' do
-  impact 1.0
   title 'Describes the AWS cloudwatch filter.'
   
   describe aws_cloudwatchlogs_subscription_filter(log_group_name: 'LOG_GROUP_NAME', filter_name_prefix: 'FILTER_NAME') do

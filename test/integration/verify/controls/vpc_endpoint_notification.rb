@@ -4,7 +4,6 @@ aws_notification_arn = input(:aws_vpc_notifications_arn, value: '', description:
 title "Test single AWS VPC Notification"
 
 control "aws-vpc-endpoint-connection-notification-1.0" do
-  impact 1.0
   title "Check AWS vpc-endpoint-connection-notification has the correct properties."
 
   describe aws_vpc_endpoint_connection_notification(connection_notification_id: aws_notification_id) do

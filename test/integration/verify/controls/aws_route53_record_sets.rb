@@ -3,7 +3,6 @@ title 'Test Plural AWS Route53 record set'
 hosted_zone_id = input(:aws_route53_hosted_zone_id, value: '', description: '')
 
 control 'aws-route53-record-sets-1.0' do
-  impact 1.0
   title 'Ensure AWS Route53 record sets has the correct properties.'
   
   describe aws_route53_record_sets(hosted_zone_id: hosted_zone_id) do

@@ -6,7 +6,6 @@ aws_apigatewayv2_deployment_description = input(:aws_apigatewayv2_deployment_des
 aws_apigatewayv2_deployment_id = input(:aws_apigatewayv2_deployment_id, value: '', description: '')
 
 control 'aws-api-gateway-v2-deployment-v1.0.0' do
-  impact 1.0
   title 'Ensure API Gateway API Deployment resource has the correct properties.'
   desc 'Ensure API Gateway API Deployment resource has the correct properties.'
 

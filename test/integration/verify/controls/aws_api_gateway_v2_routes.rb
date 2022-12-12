@@ -12,7 +12,6 @@ aws_apigatewayv2_route_request_models = input(:aws_apigatewayv2_model_api_id, va
 aws_apigatewayv2_route_request_parameter = input(:aws_apigatewayv2_route_request_parameter, value: '', description: '')
 
 control 'aws-api-gateway-v2-routes' do
-  impact 1.0
   title 'Ensure API Gateway API Routes resource has the correct properties.'
   
   describe aws_api_gateway_v2_routes(api_id: aws_apigatewayv2_route_api_id) do

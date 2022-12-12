@@ -4,7 +4,6 @@ aws_waf_size_constraint_set_name = input(aws_waf_size_constraint_set_name, value
 title 'Ensure the size constraint sets have the correct properties.'
 
 control 'aws-waf-size-constraint-sets-1.0' do
-  impact 1.0
   title 'Test all the properties of the WAF size constraint set.'
 
   describe aws_waf_size_constraint_sets do

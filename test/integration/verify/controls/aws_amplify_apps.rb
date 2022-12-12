@@ -3,7 +3,6 @@ app_id = input(:app_id, value: '', description: '')
 title 'Audits Amplify Apps.'
 
 control 'aws_amplify_apps-1.0' do
-  impact 1.0
   title 'Ensure all Amplify App have the correct properties.'
   
   describe aws_amplify_apps do

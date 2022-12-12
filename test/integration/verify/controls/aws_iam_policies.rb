@@ -4,7 +4,6 @@ aws_iam_policy_arn = input(:aws_iam_policy_arn, value: '', description: 'The AWS
 aws_iam_attached_policy_arn = input(:aws_iam_attached_policy_arn, value: '', description: 'The AWS Iam Policy arn.')
 
 control 'aws-iam-policies-1.0' do
-  impact 1.0
   title 'Ensure AWS Iam Policies have the correct properties.'
 
   describe aws_iam_policies do

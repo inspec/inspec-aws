@@ -5,7 +5,6 @@ aws_ec2_capacity_reservation_availability_zone = input(:aws_ec2_capacity_reserva
 aws_ec2_capacity_reservation_instance_arn = input(:aws_ec2_capacity_reservation_instance_arn, value: '', description: '')
 
 control 'aws-ec2-capacity-reservation-1.0' do
-  impact 1.0
   title 'Describes one or more of your Capacity Reservations.'
 
   describe aws_ec2_capacity_reservation(capacity_reservation_id: aws_ec2_capacity_reservation_id) do

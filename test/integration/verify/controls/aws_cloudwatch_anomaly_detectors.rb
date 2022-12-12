@@ -2,7 +2,6 @@ aws_cloudwatch_anomaly_detector_namespace = input(:aws_cloudwatch_anomaly_detect
 aws_cloudwatch_anomaly_detector_metric_name = input(:aws_cloudwatch_anomaly_detector_metric_name, value: '', description: '')
 
 control 'aws-cloudwatch-anomaly-detectors-1.0' do
-  impact 1.0
   title 'List Anomaly Detector.'
 
   describe aws_cloudwatch_anomaly_detectors do

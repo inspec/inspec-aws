@@ -5,7 +5,6 @@ aws_signer_signing_profile_version_arn = input(:aws_signer_signing_profile_versi
 aws_signer_signing_profile_version = input(:aws_signer_signing_profile_version, value: '', description: '')
 
 control 'aws-signer-signing-profiles-1.0' do
-  impact 1.0
   title 'Test the plural resource of the Signing Profile.'
 
   describe aws_signer_signing_profiles do

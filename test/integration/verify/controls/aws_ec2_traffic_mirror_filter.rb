@@ -4,7 +4,6 @@ aws_traffic_filter_desc = input(:aws_traffic_filter_desc, value: '', description
 title 'Test single AWS Traffic Filter'
 
 control 'aws-traffic-filter-1.0' do
-  impact 1.0
   title 'Ensure AWS Traffic Filter resource has the correct properties.'
 
   describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: aws_traffic_filter_id ) do

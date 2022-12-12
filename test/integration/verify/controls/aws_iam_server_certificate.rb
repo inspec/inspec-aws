@@ -2,7 +2,6 @@ server_certificate_name = input(:server_certificate_name, value: '', description
 server_certificate_id = input(:server_certificate_id, value: '', description: '')
 
 control 'aws_iam_server_certificate-1.0' do
-  impact 1.0
   title 'Ensure the server certificate have the correct properties.'
 
   describe aws_iam_server_certificate(server_certificate_name: server_certificate_name) do

@@ -2,7 +2,6 @@ aws_ssm_patch_baseline_id = input(:aws_ssm_patch_baseline_id, value: '', descrip
 aws_ssm_patch_baseline_name = input(:aws_ssm_patch_baseline_name, value: '', description: '')
 
 control 'aws-ssm-patch-baseline-1.0' do
-  impact 1.0
   title 'Test the properties of the ssm patch baseline.'
 
   describe aws_ssm_patch_baseline(baseline_id: aws_ssm_patch_baseline_id) do

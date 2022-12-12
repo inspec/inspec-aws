@@ -1,7 +1,6 @@
 aws_lambda_function_arn = input(:lambda_function_arn, value: '', description: '')
 
 control 'aws-lambda-function-permissions-1.0' do
-  impact 1.0
   title 'List all the permissions of a lambda function.'
 
   describe aws_lambda_permissions(function_name: 'test_Lambda') do

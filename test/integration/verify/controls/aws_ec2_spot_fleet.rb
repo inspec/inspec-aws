@@ -2,7 +2,6 @@ aws_spot_fleet_request_id = input(:aws_spot_fleet_request_id, value: '', descrip
 aws_spot_fleet_request_iam_fleet_role = input(:aws_spot_fleet_request_iam_fleet_role, value: '', description: '')
 
 control 'aws-ec2-spot-fleet-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws ec2 spot fleet.'
 
   describe aws_ec2_spot_fleet(spot_fleet_request_id: aws_spot_fleet_request_id) do

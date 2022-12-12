@@ -7,7 +7,6 @@ aws_lambda_event_source_mapping_state_transition_reason = input(:aws_lambda_even
 title 'Test single AWS Lambda Source Mapping'
 
 control 'aws-lambda-source-mapping-1.0' do
-  impact 1.0
   title 'Ensure AWS Lambda Source Mapping has the correct properties.'
 
   describe aws_lambda_event_source_mapping(uuid: aws_lambda_event_source_mapping_uuid) do

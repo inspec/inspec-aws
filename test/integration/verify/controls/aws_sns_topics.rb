@@ -6,7 +6,6 @@ aws_sns_topic_with_subscription_arn = input(:aws_sns_topic_with_subscription_arn
 aws_sns_topic_no_subscription_arn = input(:aws_sns_topic_no_subscription_arn, value: '', description: 'The SNS topic ARN.')
 
 control 'aws-sns-topics-1.0' do
-  impact 1.0
   title 'Ensure AWS SNS Topic plural resource has the correct properties.'
 
   describe aws_sns_topics do

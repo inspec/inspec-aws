@@ -3,7 +3,6 @@ aws_launch_template_name = input(:launch_template_name, value: '', description: 
 title 'Test AWS launch templates in bulk'
 
 control 'aws-launch-templates-1.0' do
-  impact 1.0
   title 'Ensure AWS launch templates resource has the correct properties.'
 
   describe aws_ec2_launch_templates do
