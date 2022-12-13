@@ -1,7 +1,6 @@
 title 'Test AWS Regions in bulk'
 
 control 'aws-regions-1.0' do
-  impact 1.0
   title 'Ensure AWS regions plural resource has the correct properties.'
 
   describe aws_regions do

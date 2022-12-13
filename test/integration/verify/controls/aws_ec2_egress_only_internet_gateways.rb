@@ -1,7 +1,6 @@
 aws_egress_only_internet_gateway_id = input(:aws_egress_only_internet_gateway_id, value: '', description: '')
 
 control 'aws-ec2-egress-only-internet-gateways-1.0' do
-  impact 1.0
   title 'Describes one or more of your egress-only internet gateways.'
 
   describe aws_ec2_egress_only_internet_gateways do

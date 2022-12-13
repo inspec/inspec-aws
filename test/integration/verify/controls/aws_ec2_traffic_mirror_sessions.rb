@@ -4,7 +4,6 @@ traffic_mirror_filter_id = input(:traffic_mirror_filter_id, value: '', descripti
 network_interface_id = input(:network_interface_id, value: '', description: '')
 
 control 'aws-ec2-traffic-mirror-session-1.0' do
-  impact 1.0
   title 'Describes single Traffic Mirror Session.'
 
   describe aws_ec2_traffic_mirror_sessions do

@@ -7,7 +7,6 @@ aws_efs_company_name = input(:aws_efs_company_name, value: '', description: 'The
 aws_efs_count = input(:aws_efs_count, value: '', description: 'The number of EFS File Systems.')
 
 control 'aws-efs-file-systems-1.0' do
-  impact 1.0
   title 'Ensure AWS EFS File System plural resource has the correct properties.'
 
   describe aws_efs_file_systems do

@@ -4,7 +4,6 @@ sns_sqs_queue_arn = input(:sns_sqs_queue_arn, value: '', description: 'The SNS S
 aws_sns_topic_with_subscription_arn = input(:aws_sns_topic_with_subscription_arn, value: '', description: 'The AWS SNS topic ARN.')
 
 control 'aws-sns-subscriptions-1.0' do
-  impact 1.0
   title 'Ensure AWS SNS Subscriptions has the correct properties.'
 
   describe aws_sns_subscriptions do

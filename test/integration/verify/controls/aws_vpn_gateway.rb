@@ -5,7 +5,6 @@ aws_amazon_side_asn = input(:aws_amazon_side_asn, value: '', description: 'The A
 aws_vpn_gw_name = input(:aws_vpn_gw_name, value: '', description: 'The AWS VPN Gateway Name')
 
 control 'aws-vpn-gateway-1.0' do
-  impact 1.0
   title 'Ensure AWS VPN Gateway has the correct properties.'
 
   describe aws_vpn_gateway(vpn_gateway_id: aws_vpn_gateway_id) do

@@ -7,7 +7,6 @@ aws_vpce_service_name = input(:aws_vpce_service_name, value: '', description: 'T
 aws_route_table_first_id = input(:aws_route_table_first_id, value: '', description: 'The VPC Endpoint Route Table ID')
 
 control 'aws-vpcendpoint-1.0' do
-  impact 1.0
   title 'Ensure AWS VPC Endpoint single resource has the correct properties.'
 
   describe aws_vpc_endpoint(vpc_endpoint_id: aws_vpce_id) do

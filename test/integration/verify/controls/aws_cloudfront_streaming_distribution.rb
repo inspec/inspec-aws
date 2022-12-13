@@ -3,7 +3,6 @@ aws_cloudfront_distribution_arn = input(:aws_cloudfront_distribution_arn, value:
 aws_cloudfront_distribution_status = input(:aws_cloudfront_distribution_status, value: '', description: '')
 
 control 'aws-cloudfront-streaming-distribution-1.0' do
-  impact 1.0
   title 'Get the information about a distribution.'
 
   describe aws_cloudfront_streaming_distribution(id: aws_cloudfront_distribution_id) do

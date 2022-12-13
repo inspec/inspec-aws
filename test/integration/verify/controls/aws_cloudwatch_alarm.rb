@@ -8,7 +8,6 @@ aws_cloud_watch_alarm_metric_name = input(:aws_cloud_watch_alarm_metric_name, va
 aws_cloud_watch_log_metric_filter_namespace = input(:aws_cloud_watch_log_metric_filter_namespace, value: '', description: 'The AWS CloudWatch namespace.')
 
 control 'aws-cloudwatch-alarm-1.0' do
-  impact 1.0
   title 'Ensure AWS CloudWatch Alarm has the correct properties.'
 
   describe aws_cloudwatch_alarm(metric_name: aws_cloud_watch_alarm_metric_name, metric_namespace: aws_cloud_watch_log_metric_filter_namespace) do

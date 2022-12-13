@@ -2,7 +2,6 @@ aws_networkfirewall_firewall_name = input(:aws_networkfirewall_firewall_name, va
 aws_networkfirewall_firewall_arn = input(:aws_networkfirewall_firewall_arn, value: '', description: '')
 
 control 'aws-network-firewall-logging-configuration-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws network firewall logging configuration.'
 
   describe aws_network_firewall_logging_configuration(firewall_name: aws_networkfirewall_firewall_name) do

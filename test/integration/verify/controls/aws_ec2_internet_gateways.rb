@@ -3,7 +3,6 @@ aws_internet_gateway_owner_id = input(:aws_internet_gateway_owner_id, value: '',
 aws_internet_gateway_vpc_id = input(:aws_internet_gateway_vpc_id, value: '', description: '')
 
 control 'aws-ec2-internet-gateways-1.0' do
-  impact 1.0
   title 'Test a plural resource of the internet gateways.'
 
   describe aws_ec2_internet_gateways do

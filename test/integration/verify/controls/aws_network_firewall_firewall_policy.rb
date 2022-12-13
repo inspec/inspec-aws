@@ -4,7 +4,6 @@ aws_networkfirewall_firewall_arn = input(:aws_networkfirewall_firewall_arn, valu
 aws_networkfirewall_firewall_policy_id = input(:aws_networkfirewall_firewall_policy_id, value: '', description: '')
 
 control 'aws-network-firewall-policy-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws network firewall policy.'
 
   describe aws_network_firewall_policy(firewall_policy_name: aws_networkfirewall_firewall_name) do

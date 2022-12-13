@@ -3,7 +3,6 @@ aws_internet_gateway_name_tag = input(:aws_internet_gateway_name_tag, value: '',
 title 'Test multiple AWS Internet Gateways'
 
 control 'aws-internet-gateways-1.0' do
-  impact 1.0
   title 'Check AWS internet gateways have the correct properties.'
 
   describe aws_internet_gateways do

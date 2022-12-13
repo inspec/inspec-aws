@@ -6,7 +6,6 @@ aws_ssm_parameter_value = input(:aws_ssm_parameter_value, value: '', description
 aws_ssm_parameter_arn = input(:aws_ssm_parameter_arn, value: '', description: 'The AWS SSM Parameter ARN.')
 
 control 'aws-ssm-parameter-1.0' do
-  impact 1.0
   title 'Ensure AWS SSM Parameter has current properties'
 
   describe aws_ssm_parameter(name: aws_ssm_parameter_name) do

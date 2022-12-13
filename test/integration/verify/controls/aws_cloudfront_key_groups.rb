@@ -2,7 +2,6 @@ aws_cloudfront_group_id = input(:aws_cloudfront_group_id, value: '', description
 aws_cloudfront_group_name = input(:aws_cloudfront_group_name, value: '(none)', description: '')
 
 control 'aws-cloudfront-key-groups-1.0' do
-  impact 1.0
   title 'Describes the AWS cloudfront keys group.'
   
   describe aws_cloudfront_key_groups do

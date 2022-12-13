@@ -4,7 +4,6 @@ aws_api_gateway_usage_plan_description = input(:aws_api_gateway_usage_plan_descr
 aws_api_gateway_usage_plan_product_code = input(:aws_api_gateway_usage_plan_product_code, value: '', description: '')
 
 control 'aws-api-gateway-usage-plans-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway usage plans.'
 
   describe aws_api_gateway_usage_plans do

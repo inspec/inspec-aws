@@ -3,7 +3,6 @@ open_id_connect_provider_arn = input(:oidc_arn, value: '', description: '')
 title 'Test an IAM OIDC Provider'
 
 control 'aws-iam-oidc-provider-1.0' do
-  impact 1.0
   title 'Ensure AWS IAM OIDC Provider has the correct properties.'
 
   describe aws_iam_oidc_provider(open_id_connect_provider_arn: open_id_connect_provider_arn) do

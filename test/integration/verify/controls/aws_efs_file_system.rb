@@ -7,7 +7,6 @@ aws_efs_throughput_mode = input(:aws_efs_throughput_mode, value: '', description
 aws_efs_name = input(:aws_efs_name, value: '', description: 'The EFS File System name.')
 
 control 'aws-efs-file-system-1.0' do
-  impact 1.0
   title 'Check AWS EFS File System has the correct properties.'
 
   describe aws_efs_file_system(creation_token: aws_efs_creation_token) do

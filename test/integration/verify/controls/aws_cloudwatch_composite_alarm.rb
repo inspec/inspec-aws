@@ -1,5 +1,4 @@
 control 'aws-cloudwatch-composite-alarm-1.0' do
-  impact 1.0
   title 'Get the information about a composite alarm.'
 
   describe aws_cloudwatch_composite_alarm(alarm_name: 'test1') do

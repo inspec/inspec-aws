@@ -1,7 +1,6 @@
 aws_ec2_fleet_id = input(:aws_ec2_fleet_id, value: '', description: '')
 
 control 'aws-ec2-host-1.0' do
-  impact 1.0
   title 'Describes the specified Dedicated Hosts or all your Dedicated Hosts.'
 
   describe aws_ec2_host(host_id: aws_ec2_fleet_id) do

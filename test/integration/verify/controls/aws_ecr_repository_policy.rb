@@ -4,7 +4,6 @@ aws_ecr_repo_name = input(:aws_ecr_repo_name, value: '', description: 'The ECR r
 aws_iam_user_policy_name = input(:aws_iam_user_policy_name, value: '', description: 'The AWS Iam User Inline Policy.')
 
 control 'aws-ecr-repo-policy-1.0' do
-  impact 1.0
   title 'Ensure ECR repo Policy has the correct properties.'
  
   describe aws_ecr_repository_policy(aws_ecr_repo_name) do

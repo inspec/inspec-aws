@@ -5,7 +5,6 @@ start_index = documentation_part_id.index("/")
 aws_api_gateway_documentation_part_id = documentation_part_id[start_index..]
 
 control 'aws-api-gateway-documentation-part-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway documentation part.'
 
   describe aws_api_gateway_documentation_part(rest_api_id: aws_api_gateway_rest_api_id, documentation_part_id: aws_api_gateway_documentation_part_id) do

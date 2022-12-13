@@ -1,7 +1,6 @@
 title 'Test multiple AWS RDS Clusters'
 
 control 'aws-rds-clusters-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Clusters has the correct properties.'
 
   describe aws_rds_clusters do

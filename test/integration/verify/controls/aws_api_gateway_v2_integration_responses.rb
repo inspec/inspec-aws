@@ -4,7 +4,6 @@ aws_apigatewayv2_integration_response_integration_id = input(:aws_apigatewayv2_i
 aws_apigatewayv2_integration_response_integration_response_key = input(:aws_apigatewayv2_integration_response_integration_response_key, value: '', description: '')
 
 control 'aws-api-gateway-v2-integration-responses-v-1.0.0' do
-  impact 1.0
   title 'Ensure API Gateway API Integration Responses resource has the correct properties.'
 
   describe aws_api_gateway_v2_integration_responses(api_id: aws_apigatewayv2_integration_response_api_id, integration_id: aws_apigatewayv2_integration_response_integration_id) do

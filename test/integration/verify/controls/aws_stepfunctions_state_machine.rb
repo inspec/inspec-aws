@@ -3,7 +3,6 @@ aws_sfn_state_machine_arn = input(:aws_sfn_state_machine_arn, value: '', descrip
 aws_sfn_state_machine_role_arn = input(:aws_sfn_state_machine_role_arn, value: '', description: '')
 
 control 'aws-state-resource-state-machine-1.0' do
-  impact 1.0
   title 'Ensure AWS State Resource State Machine has current properties'
 
   describe aws_stepfunctions_state_machine(state_machine_arn: aws_sfn_state_machine_arn) do

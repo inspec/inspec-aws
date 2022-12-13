@@ -8,7 +8,6 @@ aws_apigatewayv2_api_protocol_type = attribute(:aws_apigatewayv2_api_protocol_ty
 aws_apigatewayv2_api_route_selection_expression = attribute(:aws_apigatewayv2_api_route_selection_expression, value: '', description: '')
 
 control 'aws-api-gateway-v2-apis' do
-  impact 1.0
   title 'Ensure API Gateway APIs resource has the correct properties.'
   
   describe aws_api_gateway_v2_apis do

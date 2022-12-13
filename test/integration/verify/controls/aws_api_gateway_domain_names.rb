@@ -13,7 +13,6 @@ aws_api_gateway_domain_name_status_message = input(:aws_api_gateway_domain_name_
 aws_api_gateway_security_policy = input(:aws_api_gateway_security_policy, value: 'TLS_1_2', description: '')
 
 control 'aws-api-gateway-domain-names-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway domain names.'
   
   describe aws_api_gateway_domain_names do

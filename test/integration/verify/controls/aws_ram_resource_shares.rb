@@ -1,7 +1,6 @@
 aws_ram_resource_share_arn = input(:aws_ram_resource_share_arn, value: '', description: '')
 
 control 'aws-ram-resource-shares-1.0' do
-  impact 1.0
   title 'Lists the resources that you added to a resource shares or the resources that are shared with you.'
 
   describe aws_ram_resource_shares(resource_owner: 'SELF') do

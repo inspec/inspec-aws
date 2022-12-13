@@ -1,7 +1,6 @@
 aws_ram_resource_share_arn = input(:aws_ram_resource_share_arn, value: '', description: '')
 
 control 'aws-ram-resource-share-1.0' do
-  impact 1.0
   title 'Describes the resource share of the ram.'
 
   describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: aws_ram_resource_share_arn) do

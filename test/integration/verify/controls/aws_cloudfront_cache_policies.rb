@@ -1,7 +1,6 @@
 aws_cloudfront_cache_policy_id = input(:aws_cloudfront_cache_policy_id, value: '', description: '')
 
 control 'aws-cloudfront-cache-policies' do
-  impact 1.0
   title 'Ensure Cloudfront Cache Policies resource has the correct properties.'
 
   describe aws_cloudfront_cache_policies do

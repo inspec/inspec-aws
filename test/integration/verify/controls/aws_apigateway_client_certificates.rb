@@ -4,7 +4,6 @@ aws_api_gateway_client_certificate_expiration_date = input(:aws_api_gateway_clie
 aws_api_gateway_client_certificate_pem_encoded_certificate = input(:aws_api_gateway_client_certificate_pem_encoded_certificate, value: '', description: '')
 
 control 'aws-apigateway-client-certificates' do
-  impact 1.0
   title 'Ensure API Gateway Client Certificate resource has the correct properties.'
 
   describe aws_apigateway_client_certificates do

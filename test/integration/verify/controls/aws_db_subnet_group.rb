@@ -7,7 +7,6 @@ aws_rds_db_subnet_group_arn         = input(:aws_rds_db_subnet_group_arn, value:
 
 control 'aws-db-subnet-group-1.0' do
 
-  impact 1.0
   title 'Ensure AWS RDS Subnet Group has current properties'
 
   describe aws_db_subnet_group(db_subnet_group_name: aws_rds_db_subnet_group_name) do

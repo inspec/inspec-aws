@@ -4,7 +4,6 @@ aws_vpc_flow_log_id = input(:aws_vpc_flow_log_id, value: '', description: 'The A
 aws_flow_log_id = input(:aws_flow_log_id, value: '', description: 'The AWS flow log ID.')
 
 control 'aws-flow-log-1.0' do
-  impact 1.0
   title 'Ensure AWS Flow Log has the correct properties.'
 
   describe aws_flow_log(vpc_id: aws_vpc_flow_log_id) do

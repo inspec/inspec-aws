@@ -4,7 +4,6 @@ aws_api_gateway_client_certificate_id = input(:aws_api_gateway_client_certificat
 aws_api_gateway_rest_api_id = input(:aws_api_gateway_rest_api_id_test, value: '', description: '')
 
 control 'aws-apigateway-stages' do
-  impact 1.0
   title 'Ensure API Gateway Stages resource has the correct properties.'
 
   describe aws_api_gateway_stages(rest_api_id: aws_api_gateway_rest_api_id) do

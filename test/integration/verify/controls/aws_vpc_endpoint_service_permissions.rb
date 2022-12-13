@@ -4,7 +4,6 @@ aws_vpc_endpoint_service_id = input(:aws_vpc_endpoint_service_id, value: '', des
 aws_vpc_endpoint_service_allowed_principal_arn = input(:aws_vpc_endpoint_service_allowed_principal_arn, value: '', description: 'AWS ARN of the user/account to allow permissions')
 
 control 'aws-vpc-endpoint-service-permissions-1.0' do
-  impact 1.0
   title 'Ensure AWS VPN Endpoint Service Permissions has the correct properties.'
 
   describe aws_vpc_endpoint_service_permissions(service_id: aws_vpc_endpoint_service_id) do

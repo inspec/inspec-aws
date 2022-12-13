@@ -6,7 +6,6 @@ aws_ebs_encrypted_snapshot_id = input(:aws_ebs_encrypted_snapshot_id, value: '',
 title 'Test single AWS EBS Snapshot'
 
 control 'aws-ebs-snapshot-1.0' do
-  impact 1.0
   title 'Ensure AWS EBS Snapshot has the correct properties.'
 
   describe aws_ebs_snapshot(snapshot_id: aws_ebs_snapshot_id) do

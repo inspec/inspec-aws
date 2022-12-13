@@ -3,7 +3,6 @@ aws_cloudfront_realtime_log_config_arn = input(:aws_cloudfront_realtime_log_conf
 aws_cloudfront_realtime_log_config_sampling_rate = input(:aws_cloudfront_realtime_log_config_sampling_rate, value: '', description: '')
 
 control 'aws-cloudfront-realtime-log-config-1.0' do
-  impact 1.0
   title 'Gets a real-time log configuration.'
 
   describe aws_cloudfront_realtime_log_config(name: aws_cloudfront_realtime_log_config_name) do

@@ -8,7 +8,6 @@ aws_rds_db_master_user = input(:aws_rds_db_master_user, value: '', description: 
 title 'Test single AWS RDS Instance'
 
 control 'aws-rds-instance-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Instance has the correct properties.'
 
   describe aws_rds_instance(aws_rds_db_identifier) do

@@ -1,5 +1,4 @@
 skip_control 'aws-api-gateway-method-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway method.'
   
   describe aws_api_gateway_methods(rest_api_id: '', resource_id: '', http_method: 'GET') do

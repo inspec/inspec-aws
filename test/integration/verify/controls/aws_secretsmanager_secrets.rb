@@ -1,7 +1,6 @@
 aws_secretsmanager_secret_sm_arn = input(:aws_secretsmanager_secret_sm_arn, value: '', description: '')
 
 control 'aws-secretsmanager-secrets-1.0' do
-  impact 1.0
   title 'Lists all of the secrets that are stored by Secrets Manager in the AWS account.'
 
   describe aws_secretsmanager_secrets do

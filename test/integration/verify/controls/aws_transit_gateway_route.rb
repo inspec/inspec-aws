@@ -4,7 +4,6 @@ transit_gateway_route_table_id = input(:aws_transit_gateway_route_table_id, valu
 cidr_block = input(:tgw_route_cidr_block, value: '', description: 'CIDR Block for the route')
 
 control 'aws-transit-gateway-route-1.0' do
-  impact 1.0
   title 'Ensure AWS Transit Gateway Route is configured correctly.'
 
   describe aws_transit_gateway_route(transit_gateway_route_table_id: transit_gateway_route_table_id, cidr_block: cidr_block) do

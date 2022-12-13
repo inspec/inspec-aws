@@ -4,7 +4,6 @@ aws_waf_ipset_name = input(:aws_waf_ipset_name, value: '', description: '')
 title 'Ensure the ip sets have the correct properties.'
 
 control 'aws-waf-ip-sets-1.0' do
-  impact 1.0
   title 'Test the properties of a WAF IP Sets.'
 
   describe aws_waf_ip_sets do

@@ -2,7 +2,6 @@ aws_networkfirewall_rule_group_arn = input(:aws_networkfirewall_rule_group_arn, 
 aws_networkfirewall_rule_group_name = input(:aws_networkfirewall_rule_group_name, value: '', description: '')
 
 control 'aws-ec2-network-firewall-rule-groups-1.0' do
-  impact 1.0
   title 'Test a plural resource of the aws network firewall rule group.'
 
   describe aws_network_firewall_rule_groups do

@@ -4,7 +4,6 @@ dashboard_names = input(:dashboard_name, value: '', description: '')
 title 'Test single AWS CloudWatch Dashboard'
 
 control 'aws-cloudwatch-dashboard-1.0' do
-  impact 1.0
   title 'Ensure AWS cloudwatch dashboards has the correct properties.'
 
   describe aws_cloudwatch_dashboard(dashboard_name: dashboard_names) do

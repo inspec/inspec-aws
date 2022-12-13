@@ -1,5 +1,4 @@
 control 'aws-iam-root-user-1.0' do
-  impact 1.0
   title 'Test the AWS IAM Root User'
 
   describe aws_iam_root_user do

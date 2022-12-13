@@ -1,8 +1,7 @@
 aws_ec2_fleet_id = input(:aws_ec2_fleet_id, value: '', description: '')
 
 control 'aws-ec2-fleets-1.0' do
-    impact 1.0
-    title 'Describes the specified EC2 Fleets or all of your EC2 Fleets.'
+      title 'Describes the specified EC2 Fleets or all of your EC2 Fleets.'
 
     describe aws_ec2_fleets do
       it { should exist }

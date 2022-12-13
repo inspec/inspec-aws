@@ -8,7 +8,6 @@ ingress_rule_number = input(:acl_ingress_rule_number, value: '', description: 'T
 title 'Test multiple AWS Network ACLs'
 
 control 'aws-network-ACLs-1.0' do
-  impact 1.0
   title 'Check AWS Network ACLs have the correct properties.'
 
   describe aws_network_acls.where { entries_cidr_blocks.include?(acl_cidr_block) } do

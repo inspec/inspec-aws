@@ -1,7 +1,6 @@
 aws_synthetics_canary_name = input(:aws_synthetics_canary_name, value: "", description: "")
 
 control 'aws_synthetics_canaries-1.0' do
-  impact 1.0
   title 'Test the properties of the synthetics canaries.'
 
   describe aws_synthetics_canaries do

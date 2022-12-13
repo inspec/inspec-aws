@@ -8,7 +8,6 @@ aws_sns_topic_with_encryption_arn = input(:aws_sns_topic_with_encryption_arn, va
 kms_master_key_id = input(:aws_sns_topic_kms_master_key_id, value: '', description: 'The AWS SNS topic kms master key id.')
 
 control 'aws-sns-topic-1.0' do
-  impact 1.0
   title 'Ensure AWS SNS Topic has the correct properties.'
 
   describe aws_sns_topic(arn: aws_sns_topic_with_subscription_arn) do

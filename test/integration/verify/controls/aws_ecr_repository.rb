@@ -7,7 +7,6 @@ aws_ecr_repository_scan_on_push_enabled = input(:aws_ecr_repository_scan_on_push
 title 'Test single AWS ECR Repository'
 
 control 'aws-ecr-repository-1.0' do
-  impact 1.0
   title 'Check AWS ECR repository has the correct properties.'
 
   describe aws_ecr_repository(repository_name: aws_ecr_repository_name) do

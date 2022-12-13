@@ -3,7 +3,6 @@ aws_state = input(:aws_athena_workgroup_state, value: '', description: '')
 aws_description = input(:aws_athena_workgroup_description, value: '', description: '')
 
 control 'aws-athena-work-groups-1.0' do
-  impact 1.0
   title 'Test the properties of Athena Work Groups.'
 
   describe aws_athena_work_groups do
