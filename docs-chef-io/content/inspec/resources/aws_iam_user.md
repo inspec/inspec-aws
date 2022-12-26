@@ -121,7 +121,7 @@ it { should have_mfa_enabled }
 This will ensure the User has a console password set.
 
 ```ruby
-it { should have_console_password }
+it { should has_console_password }
 ```
 
 ## AWS Permissions
