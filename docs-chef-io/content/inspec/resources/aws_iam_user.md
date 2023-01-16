@@ -12,7 +12,7 @@ parent = "inspec/resources/aws"
 
 Use the `aws_iam_user` InSpec audit resource to test properties of a single AWS IAM User.
 
-For additional information, including details on parameters and properties, see the [AWS documentation on IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html).
+For additional information, including details on parameters and properties, see the [AWS documentation on IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html).
 
 ## Installation
 
