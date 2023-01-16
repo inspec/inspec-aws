@@ -62,7 +62,7 @@ This can be passed either as a string or as a `user_name: 'value'` key-value ent
 : The path to the user.
 
 `user_create_date`
-: The date and time, in ISO 8601 date-time format , when the user was created.
+: The date and time, in ISO 8601 date-time format, when the user was created.
 
 `user_password_last_used`
 : The date and time, in ISO 8601 date-time format , when the user's password was last used to sign in to an Amazon Web Services website.
