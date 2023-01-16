@@ -145,9 +145,9 @@ end
 
 ### policy_statement_principal_all_permissions_enabled
 
-The control will pass if the describe returns at least one result.
+The control will pass if at least one Principal has all permissions enabled.
 
-Use `should` to test the entity should exist.
+Use `should` to test when a Principal with all permissions should exist.
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
