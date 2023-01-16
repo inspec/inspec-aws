@@ -69,7 +69,7 @@ end
 : Returns the length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again.
 
 `sqs_managed_enabled`
-: Returns information about whether the queue is using SSE-SQS encryption using SQS owned encryption keys.
+: Returns information about whether the queue is using SSE-SQS encryption using SQS-owned encryption keys.
 
 `policy`
 : Returns the policy of the queue.
