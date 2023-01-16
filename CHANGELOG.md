@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.53 -->
+<!-- latest_release 1.83.54 -->
+## [v1.83.54](https://github.com/inspec/inspec-aws/tree/v1.83.54) (2023-01-16)
+
+#### Merged Pull Requests
+- Update AWS SNS topic subscription properties documentation [#957](https://github.com/inspec/inspec-aws/pull/957) ([tonyfruzza](https://github.com/tonyfruzza))
+<!-- latest_release -->
+
 ## [v1.83.53](https://github.com/inspec/inspec-aws/tree/v1.83.53) (2022-12-13)
 
 #### Merged Pull Requests
 - RESOURCE-558 Remove the impact from the controls in inspec-aws [#959](https://github.com/inspec/inspec-aws/pull/959) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.52](https://github.com/inspec/inspec-aws/tree/v1.83.52) (2022-12-12)
 
