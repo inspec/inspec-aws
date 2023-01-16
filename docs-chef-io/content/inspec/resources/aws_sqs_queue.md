@@ -165,18 +165,14 @@ end
 
 ### policy_statement_action_all_permissions_enabled
 
-The control will pass if the describe returns at least one result.
+The control will pass if at least one action has all permissions enabled.
 
-Use `should` to test the entity should exist.
+Use `should` to test that at least one action has all permissions enabled should exist.
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
   it { should be_policy_statement_action_all_permissions_enabled }
 end
-```
-
-Use `should_not` to test the entity should not exist.
-
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueueWhichDoesntExist') do
   it { should_not be_policy_statement_action_all_permissions_enabled }
