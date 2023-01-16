@@ -155,7 +155,7 @@ describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue
 end
 ```
 
-Use `should_not` to test the entity should not exist.
+Use `should_not` to test that a Principal with all permissions should not exist.
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueueWhichDoesntExist') do
