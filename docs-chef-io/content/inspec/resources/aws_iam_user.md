@@ -65,7 +65,7 @@ This can be passed either as a string or as a `user_name: 'value'` key-value ent
 : The date and time, in ISO 8601 date-time format, when the user was created.
 
 `user_password_last_used`
-: The date and time, in ISO 8601 date-time format , when the user's password was last used to sign in to an Amazon Web Services website.
+: The date and time, in ISO 8601 date-time format, when the user's password was last used to sign in to an Amazon Web Services website.
 
 `permissions_boundary`
 : The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity.
