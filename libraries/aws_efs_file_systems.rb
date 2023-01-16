@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEfsFileSystems < AwsResourceBase
-  name 'aws_efs_file_systems'
-  desc 'Verifies settings for a collection of AWS EFS File Systems.'
+  name "aws_efs_file_systems"
+  desc "Verifies settings for a collection of AWS EFS File Systems."
   example "
     describe aws_efs_file_systems do
       its('count') { should eq 3 }
@@ -21,19 +21,19 @@ class AwsEfsFileSystems < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:tags, field: :tags)
-             .register_column(:file_system_ids, field: :file_system_id)
-             .register_column(:creation_tokens, field: :creation_token)
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:creation_times, field: :creation_time)
-             .register_column(:performance_modes, field: :performance_mode)
-             .register_column(:encryption_status, field: :encrypted)
-             .register_column(:throughput_modes, field: :throughput_mode)
-             .register_column(:kms_key_ids, field: :kms_key_id)
-             .register_column(:size_in_bytes, field: :size_in_bytes)
-             .register_column(:life_cycle_states, field: :life_cycle_state)
-             .register_column(:names, field: :name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:tags, field: :tags)
+    .register_column(:file_system_ids, field: :file_system_id)
+    .register_column(:creation_tokens, field: :creation_token)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:creation_times, field: :creation_time)
+    .register_column(:performance_modes, field: :performance_mode)
+    .register_column(:encryption_status, field: :encrypted)
+    .register_column(:throughput_modes, field: :throughput_mode)
+    .register_column(:kms_key_ids, field: :kms_key_id)
+    .register_column(:size_in_bytes, field: :size_in_bytes)
+    .register_column(:life_cycle_states, field: :life_cycle_state)
+    .register_column(:names, field: :name)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

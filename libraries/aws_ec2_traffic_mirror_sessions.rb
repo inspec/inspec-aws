@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEc2TrafficMirrorSessions < AwsResourceBase
-  name 'aws_ec2_traffic_mirror_sessions'
-  desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror Sessions.'
+  name "aws_ec2_traffic_mirror_sessions"
+  desc "Verifies settings for a collection of AWS EC2 Traffic Mirror Sessions."
 
   example "
     describe aws_ec2_traffic_mirror_sessions do
@@ -13,17 +13,17 @@ class AWSEc2TrafficMirrorSessions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:traffic_mirror_session_ids, field: :traffic_mirror_session_id)
-             .register_column(:traffic_mirror_target_ids, field: :traffic_mirror_target_id)
-             .register_column(:descriptions, field: :description)
-             .register_column(:traffic_mirror_filter_ids, field: :traffic_mirror_filter_id)
-             .register_column(:network_interface_ids, field: :network_interface_id)
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:packet_lengths, field: :packet_length)
-             .register_column(:session_numbers, field: :session_number)
-             .register_column(:virtual_network_ids, field: :virtual_network_id)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:traffic_mirror_session_ids, field: :traffic_mirror_session_id)
+    .register_column(:traffic_mirror_target_ids, field: :traffic_mirror_target_id)
+    .register_column(:descriptions, field: :description)
+    .register_column(:traffic_mirror_filter_ids, field: :traffic_mirror_filter_id)
+    .register_column(:network_interface_ids, field: :network_interface_id)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:packet_lengths, field: :packet_length)
+    .register_column(:session_numbers, field: :session_number)
+    .register_column(:virtual_network_ids, field: :virtual_network_id)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

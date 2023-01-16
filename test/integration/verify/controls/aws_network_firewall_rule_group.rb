@@ -4,7 +4,6 @@ aws_networkfirewall_rule_group_capacity = input(:aws_networkfirewall_rule_group_
 aws_networkfirewall_rule_group_type = input(:aws_networkfirewall_rule_group_type, value: '', description: '')
 
 control 'aws-network-firewall-rule-group-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws network firewall rule group.'
 
   describe aws_network_firewall_rule_group(rule_group_arn: aws_networkfirewall_rule_group_arn) do

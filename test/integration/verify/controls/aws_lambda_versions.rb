@@ -3,7 +3,6 @@ aws_lambda_layer_version_created_date = input(:aws_lambda_layer_version_created_
 aws_lambda_layer_version = input(:aws_lambda_layer_version, value: '', description: '')
 
 control 'aws-lambda-versions-1.0' do
-  impact 1.0
   title 'Test the properties of the lambda versions.'
 
   describe aws_lambda_versions(layer_name: 'lambda_layer_name') do

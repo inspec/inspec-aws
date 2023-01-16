@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2Hosts < AwsResourceBase
-  name 'aws_ec2_hosts'
-  desc 'Describes the specified Dedicated Hosts or all your Dedicated Hosts.'
+  name "aws_ec2_hosts"
+  desc "Describes the specified Dedicated Hosts or all your Dedicated Hosts."
 
   example "
     describe aws_ec2_hosts do
@@ -13,22 +13,22 @@ class AWSEC2Hosts < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:auto_placements, field: :auto_placement)
-             .register_column(:availability_zones, field: :availability_zone)
-             .register_column(:available_capacities, field: :available_capacity)
-             .register_column(:client_tokens, field: :client_token)
-             .register_column(:host_ids, field: :host_id)
-             .register_column(:host_properties, field: :host_properties)
-             .register_column(:instances, field: :instances)
-             .register_column(:states, field: :state)
-             .register_column(:allocation_times, field: :allocation_time)
-             .register_column(:tags, field: :tags)
-             .register_column(:host_recoveries, field: :host_recovery)
-             .register_column(:allows_multiple_instance_types, field: :allows_multiple_instance_types)
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:availability_zone_ids, field: :availability_zone_id)
-             .register_column(:member_of_service_linked_resource_groups, field: :member_of_service_linked_resource_group)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:auto_placements, field: :auto_placement)
+    .register_column(:availability_zones, field: :availability_zone)
+    .register_column(:available_capacities, field: :available_capacity)
+    .register_column(:client_tokens, field: :client_token)
+    .register_column(:host_ids, field: :host_id)
+    .register_column(:host_properties, field: :host_properties)
+    .register_column(:instances, field: :instances)
+    .register_column(:states, field: :state)
+    .register_column(:allocation_times, field: :allocation_time)
+    .register_column(:tags, field: :tags)
+    .register_column(:host_recoveries, field: :host_recovery)
+    .register_column(:allows_multiple_instance_types, field: :allows_multiple_instance_types)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:availability_zone_ids, field: :availability_zone_id)
+    .register_column(:member_of_service_linked_resource_groups, field: :member_of_service_linked_resource_group)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

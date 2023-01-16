@@ -6,7 +6,6 @@ aws_cloud_trail_name = input(:aws_cloud_trail_name, value: '', description: 'Clo
 aws_cloud_trail_open_name = input(:aws_cloud_trail_open_name, value: '', description: 'Cloud trail only with bucket.')
 
 control 'aws-cloudtrails-1.0' do
-  impact 1.0
   title 'Ensure AWS Cloud Trail plural resource has the correct properties.'
 
   describe aws_cloudtrail_trails do

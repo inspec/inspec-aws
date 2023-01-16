@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEfsFileSystem < AwsResourceBase
-  name 'aws_efs_file_system'
-  desc 'Verifies settings for an EFS File System.'
+  name "aws_efs_file_system"
+  desc "Verifies settings for an EFS File System."
 
   example "
     describe aws_efs_file_system('fs-12345678') do

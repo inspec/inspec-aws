@@ -14,7 +14,6 @@ local_disk_encryption = !parsed_json['EncryptionConfiguration']['AtRestEncryptio
                           !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration']['LocalDiskEncryptionConfiguration'].empty?
 
 control 'aws-emr-security-configuration-1.0' do
-  impact 1.0
   title 'Test single AWS EMR Security Configuration'
 
   describe aws_emr_security_configuration(security_configuration_name: aws_emr_security_configuration_name) do

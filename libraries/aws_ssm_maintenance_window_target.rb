@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSESMaintenanceWindowTarget < AwsResourceBase
-  name 'aws_ssm_maintenance_window_target'
-  desc 'Retrieves a target in the maintenance window.'
+  name "aws_ssm_maintenance_window_target"
+  desc "Retrieves a target in the maintenance window."
 
   example "
     describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
@@ -17,7 +17,7 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: window_target_id must be provided" unless opts[:window_target_id] && !opts[:window_target_id].empty?
     filter = [
       {
-        key: 'WindowTargetId',
+        key: "WindowTargetId",
         values: [opts[:window_target_id]],
       },
     ]

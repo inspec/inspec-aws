@@ -14,7 +14,6 @@ else
 end
 
 control 'aws-sqs-queue-1.0' do
-  impact 1.0
   title 'Ensure AWS SQS Queue has the correct properties.'
 
   describe aws_sqs_queue(queue_url: aws_sqs_queue_url) do

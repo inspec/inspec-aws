@@ -4,7 +4,6 @@ aws_api_gateway_api_key_last_updated_date = input(:aws_api_gateway_api_key_last_
 
 control 'aws-apigateway-api-keys' do
 
-  impact 1.0
   title 'Ensure API Gateway API Key resource has the correct properties.'
 
   describe aws_apigateway_api_keys do

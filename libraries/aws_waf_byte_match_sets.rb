@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFByteMatchSets < AwsResourceBase
-  name 'aws_waf_byte_match_sets'
-  desc 'Verifies settings for all the WAF rules.'
+  name "aws_waf_byte_match_sets"
+  desc "Verifies settings for all the WAF rules."
 
   example "
     describe aws_waf_byte_match_sets do
@@ -19,9 +19,9 @@ class AWSWAFByteMatchSets < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:byte_match_set_ids, field: :byte_match_set_id, style: :simple)
-             .register_column(:names, field: :name, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:byte_match_set_ids, field: :byte_match_set_id, style: :simple)
+    .register_column(:names, field: :name, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsS3BucketObjects < AwsResourceBase
-  name 'aws_s3_bucket_objects'
-  desc 'List all the objects for a particular bucket.'
+  name "aws_s3_bucket_objects"
+  desc "List all the objects for a particular bucket."
 
   example "
     describe aws_s3_bucket_objects(bucket_name: 'test_bucket_name') do
@@ -13,22 +13,22 @@ class AwsS3BucketObjects < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:contents, field: :contents)
-             .register_column(:contents_keys, field: :contents_keys, style: :simple)
-             .register_column(:contents_last_modified, field: :contents_last_modified, style: :simple)
-             .register_column(:contents_etags, field: :contents_etags, style: :simple)
-             .register_column(:contents_sizes, field: :contents_sizes, style: :simple)
-             .register_column(:contents_storage_classes, field: :contents_storage_classes, style: :simple)
-             .register_column(:contents_owners, field: :contents_owners, style: :simple)
-             .register_column(:names, field: :name)
-             .register_column(:prefixes, field: :prefix)
-             .register_column(:delimiters, field: :delimiter)
-             .register_column(:max_keys, field: :max_keys)
-             .register_column(:common_prefixes, field: :common_prefixes, style: :simple)
-             .register_column(:encoding_types, field: :encoding_type)
-             .register_column(:key_counts, field: :key_count)
-             .register_column(:continuation_tokens, field: :continuation_token)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:contents, field: :contents)
+    .register_column(:contents_keys, field: :contents_keys, style: :simple)
+    .register_column(:contents_last_modified, field: :contents_last_modified, style: :simple)
+    .register_column(:contents_etags, field: :contents_etags, style: :simple)
+    .register_column(:contents_sizes, field: :contents_sizes, style: :simple)
+    .register_column(:contents_storage_classes, field: :contents_storage_classes, style: :simple)
+    .register_column(:contents_owners, field: :contents_owners, style: :simple)
+    .register_column(:names, field: :name)
+    .register_column(:prefixes, field: :prefix)
+    .register_column(:delimiters, field: :delimiter)
+    .register_column(:max_keys, field: :max_keys)
+    .register_column(:common_prefixes, field: :common_prefixes, style: :simple)
+    .register_column(:encoding_types, field: :encoding_type)
+    .register_column(:key_counts, field: :key_count)
+    .register_column(:continuation_tokens, field: :continuation_token)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

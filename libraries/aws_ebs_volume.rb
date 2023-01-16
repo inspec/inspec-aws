@@ -1,20 +1,19 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEbsVolume < AwsResourceBase
-  name 'aws_ebs_volume'
-  desc 'Verifies settings for an EBS volume.'
-
-  example "
-    describe aws_ebs_volume('vol-12345678') do
-      it          { should be_encrypted }
+  name "aws_ebs_volume"
+  desc "Verifies settings for an EBS volume."
+  example <<-EXAMPLE
+    describe aws_ebs_volume('EBS_VOLUME_ID') do
+      it { should be_encrypted }
       its('size') { should cmp 8 }
     end
 
-    describe aws_ebs_volume(name: 'my-volume') do
+    describe aws_ebs_volume(name: 'EBS_VOLUME_NAME') do
       its('encrypted') { should eq true }
-      its('iops')      { should cmp 100 }
+      its('iops') { should cmp 100 }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { volume_id: opts } if opts.is_a?(String)
@@ -27,7 +26,7 @@ class AwsEbsVolume < AwsResourceBase
       volume_arguments = { volume_ids: [opts[:volume_id]] }
     elsif opts[:name] && !opts[:name].empty?
       @display_name = opts[:name]
-      filter = { name: 'tag:Name', values: [opts[:name]] }
+      filter = { name: "tag:Name", values: [opts[:name]] }
       volume_arguments = { filters: [filter] }
     else
       raise ArgumentError, "#{@__resource_name__}:  `volume_id` or `name` must be provided"

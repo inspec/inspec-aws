@@ -3,7 +3,6 @@ aws_vpc_peering_test1_id = input(:aws_vpc_peering_test1_id, value: '', descripti
 aws_vpc_peering_test2_id = input(:aws_vpc_peering_test2_id, value: '', description: '')
 
 control 'aws-ec2-vpc-peering-connection-1.0' do
-  impact 1.0
   title 'Test the properties of the aws ec2 vpc peer connection.'
 
   describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: aws_vpc_peering_connection_id) do

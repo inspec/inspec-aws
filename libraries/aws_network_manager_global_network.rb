@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSNetworkManagerGlobalNetwork < AwsResourceBase
-  name 'aws_network_manager_global_network'
-  desc 'Describes one or more global networks.'
+  name "aws_network_manager_global_network"
+  desc "Describes one or more global networks."
 
   example "
     describe aws_network_manager_global_network(global_network_id: 'test1') do

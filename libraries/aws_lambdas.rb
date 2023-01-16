@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsLambdas < AwsResourceBase
-  name 'aws_lambdas'
-  desc 'Verifies generic settings for a set of lambdas.'
+  name "aws_lambdas"
+  desc "Verifies generic settings for a set of lambdas."
   example "
     describe aws_lambdas() do
       its ('count') { should eq 6}
@@ -11,10 +11,10 @@ class AwsLambdas < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:names, field: :name)
-             .register_column(:arns, field: :arn)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names, field: :name)
+    .register_column(:arns, field: :arn)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

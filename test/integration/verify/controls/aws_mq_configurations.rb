@@ -4,7 +4,6 @@ configuration_arn = input(:configuration_arn, value: '', description: 'configura
 title 'Test a AWS MQ Configuration.'
 
 control 'aws-mq-configuration-1.0' do
-  impact 1.0
   title 'Ensure AWS MQ configuration has the correct properties.'
 
   describe aws_mq_configuration(configuration_id: configuration_id) do

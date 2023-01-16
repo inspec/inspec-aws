@@ -1,13 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudTrailTrails < AwsResourceBase
-  name 'aws_cloudtrail_trails'
-  desc 'Verifies settings for AWS CloudTrail Trails in bulk.'
-  example "
+  name "aws_cloudtrail_trails"
+  desc "Verifies settings for AWS CloudTrail Trails in bulk."
+  example <<-EXAMPLE
     describe aws_cloudtrail_trails do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
@@ -19,9 +19,9 @@ class AwsCloudTrailTrails < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:trail_arns, field: :trail_arn)
-             .register_column(:names,      field: :name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:trail_arns, field: :trail_arn)
+    .register_column(:names,      field: :name)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     cloudtrail_rows = []

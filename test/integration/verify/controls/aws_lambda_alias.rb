@@ -4,7 +4,6 @@ aws_lambda_alias_arn = input(:aws_lambda_alias_arn, value: '', description: '')
 aws_lambda_alias_description = input(:aws_lambda_alias_description, value: '', description: '')
 
 control 'aws-lambda-alias-1.0' do
-  impact 1.0
   title 'Test the properties of the lambda alias.'
 
   describe aws_lambda_alias(function_name: aws_lambda_alias_function_name, function_alias_name: aws_lambda_alias_name) do

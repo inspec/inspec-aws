@@ -4,7 +4,6 @@ aws_ssm_maintenance_window_target_id = input(:aws_ssm_maintenance_window_target_
 aws_ssm_maintenance_window_target_name = input(:aws_ssm_maintenance_window_target_id, value: '', description: '')
 
 control 'aws-ssm-maintenance-window-targets-1.0' do
-  impact 1.0
   title 'Test the properties of the ssm maintenance window targets.'
 
   describe aws_ssm_maintenance_window_targets(window_id: aws_ssm_maintenance_window_id) do

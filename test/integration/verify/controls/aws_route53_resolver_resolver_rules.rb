@@ -3,7 +3,6 @@ resolver_rule_arn = input(:resolver_rule_arn, value: '', description: '')
 resolver_rule_type = input(:resolver_rule_type, value: '', description: '')
 
 control 'aws-route53-resolver-resolver-resolver-rules-1.0' do
-  impact 1.0
   title 'List all resolver rules of the route53 resolver.'
   
   describe aws_route53resolver_resolver_rules do

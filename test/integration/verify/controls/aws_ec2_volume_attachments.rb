@@ -2,7 +2,6 @@ aws_volume_attachment_instance_device_name = input(:aws_volume_attachment_instan
 aws_volume_attachment_instance_volume_id = input(:aws_volume_attachment_instance_volume_id, value: '', description: '')
 
 control 'aws-ec2-volume-attachments-1.0' do
-  impact 1.0
   title 'Test the properties of the aws ec2 volume attachments.'
 
   describe aws_ec2_volume_attachments do

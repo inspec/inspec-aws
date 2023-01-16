@@ -1,6 +1,3 @@
-
-
-
 # Contributing to the InSpec AWS Resource Pack
 
 We are glad you want to contribute to InSpec AWS! This document will help answer common questions you may have during your first contribution.
@@ -95,7 +92,7 @@ For more information on the change see the Chef Blog post [Introducing Developer
 
 The DCO requires a sign-off message in the following format appear on each commit in the pull request:
 
-```
+```bash
 Signed-off-by: Julia Child <juliachild@chef.io>
 ```
 
@@ -117,8 +114,7 @@ As a rule of thumb, changes are obvious fixes if they do not introduce any new f
 
 **Whenever you invoke the "obvious fix" rule, please say so in your commit message:**
 
-```
-------------------------------------------------------------------------
+```bash
 commit 370adb3f82d55d912b0cf9c1d1e99b132a8ed3b5
 Author: Julia Child <juliachild@chef.io>
 Date:   Wed Sep 18 11:44:40 2015 -0700
@@ -126,8 +122,6 @@ Date:   Wed Sep 18 11:44:40 2015 -0700
   Fix typo in the README.
 
   Obvious fix.
-
-------------------------------------------------------------------------
 ```
 
 ## InSpec Community

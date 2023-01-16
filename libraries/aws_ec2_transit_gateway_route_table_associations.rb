@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
-  name 'aws_ec2_transit_gateway_route_table_associations'
-  desc 'Gets information about the associations for the specified transit gateway route table.'
+  name "aws_ec2_transit_gateway_route_table_associations"
+  desc "Gets information about the associations for the specified transit gateway route table."
   example "
     describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'tgw-attach-0123456789') do
       it { should exist }
@@ -12,11 +12,11 @@ class AwsEc2TransitGatewayRouteTableAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_attachment_ids,                   field: :transit_gateway_attachment_id)
-             .register_column(:resource_ids,                                     field: :resource_id)
-             .register_column(:resource_types,                                   field: :resource_type)
-             .register_column(:states,                                           field: :state)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:transit_gateway_attachment_ids,                   field: :transit_gateway_attachment_id)
+    .register_column(:resource_ids,                                     field: :resource_id)
+    .register_column(:resource_types,                                   field: :resource_type)
+    .register_column(:states,                                           field: :state)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,5 +1,4 @@
 control 'aws-application-autoscaling-scalable-policies' do
-  impact 1.0
   title 'Ensure Application AutoScaling Policies resource has the correct properties.'
   
   describe aws_application_autoscaling_scaling_policies(service_namespace: 'dynamodb') do

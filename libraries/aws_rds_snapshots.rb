@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsSnapshots < AwsCollectionResourceBase
-  name 'aws_rds_snapshots'
-  desc 'Verifies settings for AWS RDS snapshots in bulk.'
+  name "aws_rds_snapshots"
+  desc "Verifies settings for AWS RDS snapshots in bulk."
   example "
     describe aws_rds_snapshots do
       it { should exist }

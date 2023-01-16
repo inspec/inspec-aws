@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFSizeConstraintSets < AwsResourceBase
-  name 'aws_waf_size_constraint_sets'
-  desc 'Describes all the WAF size constraint sets.'
+  name "aws_waf_size_constraint_sets"
+  desc "Describes all the WAF size constraint sets."
 
   example "
     describe aws_waf_size_constraint_set do
@@ -19,9 +19,9 @@ class AWSWAFSizeConstraintSets < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:size_constraint_set_ids, field: :size_constraint_set_id, style: :simple)
-             .register_column(:names, field: :name, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:size_constraint_set_ids, field: :size_constraint_set_id, style: :simple)
+    .register_column(:names, field: :name, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

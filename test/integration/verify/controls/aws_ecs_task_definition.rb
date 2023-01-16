@@ -2,7 +2,6 @@ aws_ecs_task_definition_arn = input(:aws_ecs_task_definition_arn, value: '', des
 aws_ecs_task_definition_revision = input(:aws_ecs_task_definition_revision, value: '', description: '')
 
 control 'aws-ec2-task-definition-1.0' do
-  impact 1.0
   title 'Ensure EC2 Task Definition has the correct properties.'
 
   describe aws_ecs_task_definition(task_definition: 'service:'+aws_ecs_task_definition_revision) do

@@ -3,7 +3,6 @@ aws_rds_snapshot_identifier = input(:aws_rds_snapshot_identifier, value: '', des
 title 'Test multiple AWS RDS snapshots'
 
 control 'aws-rds-snapshots-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Snapshots has the correct properties.'
 
   describe aws_rds_snapshots do

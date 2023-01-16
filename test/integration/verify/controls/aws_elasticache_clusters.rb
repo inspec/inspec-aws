@@ -4,7 +4,6 @@ aws_elasticache_cluster_engine = input(:aws_elasticache_cluster_engine, value: '
 title 'Test multiple AWS ElastiCache Clusters'
 
 control 'aws-elasticache-clusters-1.0' do
-  impact 1.0
   title 'Ensure AWS ElastiCache Clusters have the correct properties.'
 
   describe aws_elasticache_clusters do

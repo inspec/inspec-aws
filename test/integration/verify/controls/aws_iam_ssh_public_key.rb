@@ -1,5 +1,4 @@
 skip_control 'aws-iam-ssh-public-key-1.0' do
-  impact 1.0
   title 'Test the properties of the iam ssh public key.'
 
   describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do

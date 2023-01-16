@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEFSMountTargets < AwsResourceBase
-  name 'aws_efs_mount_targets'
-  desc 'Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.'
+  name "aws_efs_mount_targets"
+  desc "Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified."
 
   example "
     describe aws_efs_mount_targets(file_system_id: 'fs-01234567') do
@@ -13,17 +13,17 @@ class AWSEFSMountTargets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:owner_ids,                               field: :owner_id)
-             .register_column(:mount_target_ids,                        field: :mount_target_id)
-             .register_column(:file_system_ids,                         field: :file_system_id)
-             .register_column(:subnet_ids,                              field: :subnet_id)
-             .register_column(:life_cycle_states,                       field: :life_cycle_state)
-             .register_column(:ip_addresses,                            field: :ip_address)
-             .register_column(:network_interface_ids,                   field: :network_interface_id)
-             .register_column(:availability_zone_ids,                   field: :availability_zone_id)
-             .register_column(:availability_zone_names,                 field: :availability_zone_name)
-             .register_column(:vpc_ids,                                 field: :vpc_id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:owner_ids,                               field: :owner_id)
+    .register_column(:mount_target_ids,                        field: :mount_target_id)
+    .register_column(:file_system_ids,                         field: :file_system_id)
+    .register_column(:subnet_ids,                              field: :subnet_id)
+    .register_column(:life_cycle_states,                       field: :life_cycle_state)
+    .register_column(:ip_addresses,                            field: :ip_address)
+    .register_column(:network_interface_ids,                   field: :network_interface_id)
+    .register_column(:availability_zone_ids,                   field: :availability_zone_id)
+    .register_column(:availability_zone_names,                 field: :availability_zone_name)
+    .register_column(:vpc_ids,                                 field: :vpc_id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

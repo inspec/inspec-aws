@@ -8,7 +8,6 @@ aws_key_description_enabled = input(:aws_key_description_enabled, value: '', des
 aws_key_description_disabled = input(:aws_key_description_disabled, value: '', description: 'The AWS KMS key description.')
 
 control 'aws-kms-key-1.0' do
-  impact 1.0
   title 'Ensure AWS KMS Key has the correct properties.'
 
   describe aws_kms_key(aws_kms_key_enabled_id) do

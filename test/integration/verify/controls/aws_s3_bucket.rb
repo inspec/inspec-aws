@@ -13,7 +13,6 @@ aws_bucket_versioning_enabled = input(:aws_bucket_versioning_enabled, value: '',
 aws_bucket_versioning_disabled = input(:aws_bucket_versioning_disabled, value: '', description: 'The AWS bucket versioning enabled value.')
 
 control 'aws-s3-bucket-1.0' do
-  impact 1.0
   title 'Ensure AWS S3 bucket has the correct properties.'
 
   describe aws_s3_bucket(bucket_name: aws_bucket_public_name) do

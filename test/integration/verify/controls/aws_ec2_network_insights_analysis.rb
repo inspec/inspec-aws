@@ -1,5 +1,4 @@
 skip_control 'aws-ec2-network-insights-analysis-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws ec2 network insight analysis.'
 
   describe aws_ec2_network_insights_analysis(network_insights_analysis_id: 'nia-1234567890') do

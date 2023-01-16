@@ -3,7 +3,6 @@ title 'Test single AWS CloudWatch Log Group'
 aws_cloud_watch_log_group_name = input(:aws_cloud_watch_log_group_name, value: '', description: 'The AWS DHCP Options ID.')
 
 control 'aws-cloudwatch-log-group-1.0' do
-  impact 1.0
   title 'Ensure AWS Cloudwatch Log Group has the correct properties.'
 
   describe aws_cloudwatch_log_group(log_group_name:  aws_cloud_watch_log_group_name) do

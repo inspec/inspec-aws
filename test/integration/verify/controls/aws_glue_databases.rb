@@ -1,5 +1,4 @@
 control 'aws-glue-databases-1.0' do
-  impact 1.0
   title 'Ensure AWS Glue Databases plural resource have the correct properties.'
 
   describe aws_glue_databases do
@@ -17,5 +16,4 @@ control 'aws-glue-databases-1.0' do
     its('catalog_ids') { should_not include '112758395563' }
   end
 end
-  
   

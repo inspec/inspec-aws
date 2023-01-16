@@ -6,7 +6,6 @@ aws_vpc_instance_tenancy = input(:aws_vpc_instance_tenancy, value: '', descripti
 aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description: 'The AWS VPC DHCP options ID.')
 
 control 'aws-vpcs-loop-1.0' do
-  impact 1.0
   title 'Loop across AWS VPCs plural resource using singular resource for detail.'
 
   aws_vpcs.vpc_ids.each do |vpc|

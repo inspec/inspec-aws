@@ -5,7 +5,6 @@ aws_s3_bucket_object_private = input(:aws_s3_bucket_object_private, value: '', d
 aws_bucket_public_objects_name = input(:aws_bucket_public_objects_name, value: '', description: 'The AWS bucket.')
 
 control 'aws-s3-bucket-object-1.0' do
-  impact 1.0
   title 'Ensure AWS S3 Bucket Object has the correct properties.'
 
   describe aws_s3_bucket_object(bucket_name: aws_bucket_public_objects_name, key: aws_s3_bucket_object_public) do

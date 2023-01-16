@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudformationStack < AwsResourceBase
-  name 'aws_cloudformation_stack'
-  desc 'Verifies settings for an aws CloudFormation Stack.'
-
-  example "
-    describe aws_cloudformation_stack('stack_name') do
+  name "aws_cloudformation_stack"
+  desc "Verifies settings for an aws CloudFormation Stack."
+  example <<-EXAMPLE
+    describe aws_cloudformation_stack('STACK_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :stack_id, :stack_name, :change_set_id, :description, :parameters, :creation_time, :deletion_time, :last_updated_time,
               :rollback_configuration, :stack_status, :stack_status_reason, :drift_information, :disable_rollback,

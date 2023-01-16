@@ -5,7 +5,6 @@ aws_status = input(:aws_status, value: '', description: '')
 aws_type = input(:aws_batch_job_id, value: '', description: '')
 
 control 'aws-batch-job-definition-1.0' do
-  impact 1.0
   title 'Test the properties of Batch Job Definition.'
 
   describe aws_batch_job_definition(job_definition_name: aws_job_definition_name) do

@@ -1,8 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudWatchLogGroup < AwsResourceBase
-  name 'aws_cloudwatch_log_group'
-  desc 'Verifies settings for an AWS CloudWatch Log Group.'
+  name "aws_cloudwatch_log_group"
+  desc "Verifies settings for an AWS CloudWatch Log Group."
+  example <<-EXAMPLE
+    describe aws_cloudwatch_log_group(log_group_name: 'LOG_GROUP_NAME') do
+      it { should exist }
+    end
+  EXAMPLE
 
   attr_reader :log_group_name, :limit, :retention_in_days, :metric_filter_count, :kms_key_id, :tags, :arn
 
@@ -25,7 +30,7 @@ class AwsCloudWatchLogGroup < AwsResourceBase
 
     return false if @log_groups.empty?
 
-    raise "Found multiple CloudWatch Log Groups. The following matched: #{@log_groups.join(', ')}. Try to restrict your resource criteria." if @log_groups.count > 1
+    raise "Found multiple CloudWatch Log Groups. The following matched: #{@log_groups.join(", ")}. Try to restrict your resource criteria." if @log_groups.count > 1
 
     @retention_in_days = @log_groups.first.retention_in_days
     @metric_filter_count = @log_groups.first.metric_filter_count

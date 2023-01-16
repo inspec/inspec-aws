@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSTransitGatewayMulticastDomains < AwsResourceBase
-  name 'aws_transit_gateway_multicast_domains'
-  desc 'Describes one or more transit gateway multicast domains.'
+  name "aws_transit_gateway_multicast_domains"
+  desc "Describes one or more transit gateway multicast domains."
 
   example "
     describe aws_transit_gateway_multicast_domains do
@@ -17,15 +17,15 @@ class AWSTransitGatewayMulticastDomains < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_multicast_domain_ids,            field: :transit_gateway_multicast_domain_id)
-             .register_column(:transit_gateway_ids,                             field: :transit_gateway_id)
-             .register_column(:transit_gateway_multicast_domain_arns,           field: :transit_gateway_multicast_domain_arn)
-             .register_column(:owner_ids,                                       field: :owner_id)
-             .register_column(:options,                                         field: :options)
-             .register_column(:states,                                          field: :state)
-             .register_column(:creation_time,                                   field: :creation_time)
-             .register_column(:tags,                                            field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:transit_gateway_multicast_domain_ids,            field: :transit_gateway_multicast_domain_id)
+    .register_column(:transit_gateway_ids,                             field: :transit_gateway_id)
+    .register_column(:transit_gateway_multicast_domain_arns,           field: :transit_gateway_multicast_domain_arn)
+    .register_column(:owner_ids,                                       field: :owner_id)
+    .register_column(:options,                                         field: :options)
+    .register_column(:states,                                          field: :state)
+    .register_column(:creation_time,                                   field: :creation_time)
+    .register_column(:tags,                                            field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

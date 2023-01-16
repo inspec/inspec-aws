@@ -8,7 +8,6 @@ aws_network_interface_owner_id = input(:aws_network_interface_owner_id, value: '
 aws_private_ip_address = input(:aws_private_ip_address, value: '', description: 'The private IP address associated with the Elastic IP address.')
 
 control 'aws-ec2-elastic-ips-1.0' do
-  impact 1.0
   title 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
 
   describe aws_ec2_eips do

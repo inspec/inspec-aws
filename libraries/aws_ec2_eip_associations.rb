@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2EIPAssociations < AwsResourceBase
-  name 'aws_ec2_eip_associations'
-  desc 'Describes the specified Elastic IP addresses or all of your Elastic IP addresses.'
+  name "aws_ec2_eip_associations"
+  desc "Describes the specified Elastic IP addresses or all of your Elastic IP addresses."
 
   example "
     describe aws_ec2_eip_associations do
@@ -13,8 +13,8 @@ class AWSEC2EIPAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:association_ids, field: :association_id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:association_ids, field: :association_id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

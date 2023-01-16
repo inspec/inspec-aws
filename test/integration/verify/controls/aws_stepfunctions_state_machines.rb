@@ -2,7 +2,6 @@ aws_sfn_state_machine_name = input(:aws_sfn_state_machine_name, value: '', descr
 aws_sfn_state_machine_arn = input(:aws_sfn_state_machine_arn, value: '', description: '')
 
 control 'aws-state-resource-state-machines-1.0' do
-  impact 1.0
   title 'Ensure AWS State Resource State Machines has current properties'
 
   describe aws_stepfunctions_state_machines do

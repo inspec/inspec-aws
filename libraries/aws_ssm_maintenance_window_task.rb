@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSESMaintenanceWindowTask < AwsResourceBase
-  name 'aws_ssm_maintenance_window_task'
-  desc 'Retrieves a task in the maintenance window.'
+  name "aws_ssm_maintenance_window_task"
+  desc "Retrieves a task in the maintenance window."
 
   example "
     describe aws_ssm_maintenance_window_task(window_id: 'WINDOW_ID', window_task_id: 'WINDOW_TASK_ID') do
@@ -17,7 +17,7 @@ class AWSSESMaintenanceWindowTask < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: window_task_id must be provided" unless opts[:window_task_id] && !opts[:window_task_id].empty?
     filter = [
       {
-        key: 'WindowTaskId',
+        key: "WindowTaskId",
         values: [opts[:window_task_id]],
       },
     ]

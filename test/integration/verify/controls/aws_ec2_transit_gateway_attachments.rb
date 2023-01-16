@@ -3,7 +3,6 @@ aws_transit_gateway_id = input(:aws_transit_gateway_id, value: '', description: 
 aws_transit_gateway_owner_id = input(:aws_transit_gateway_owner_id, value: '', description: 'The ID of the AWS account that owns the transit gateway.')
 
 control 'aws-transit-gateway-attachments-1.0' do
-  impact 1.0
   title 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
 
   describe aws_ec2_transit_gateway_attachments do

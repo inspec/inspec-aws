@@ -5,7 +5,6 @@ aws_elasticsearch_version = input(:aws_elasticsearch_version, value: '', descrip
 aws_elasticsearch_instance_type = input(:aws_elasticsearch_instance_type, value: '', description: '')
 
 control 'aws-elasticsearch-domain-1.0' do
-  impact 1.0
   title 'Ensure AWS Elastic Search Domain has the correct properties.'
 
   describe aws_elasticsearchservice_domain(domain_name: aws_elasticsearch_domain_name) do

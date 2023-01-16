@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2Fleets < AwsResourceBase
-  name 'aws_ec2_fleets'
-  desc 'Describes the specified EC2 Fleets or all of your EC2 Fleets.'
+  name "aws_ec2_fleets"
+  desc "Describes the specified EC2 Fleets or all of your EC2 Fleets."
 
   example "
     describe aws_ec2_fleets do
@@ -13,28 +13,28 @@ class AWSEC2Fleets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:activity_statuses, field: :activity_status)
-             .register_column(:create_times, field: :create_time)
-             .register_column(:fleet_ids, field: :fleet_id)
-             .register_column(:fleet_states, field: :fleet_state)
-             .register_column(:client_tokens, field: :client_token)
-             .register_column(:excess_capacity_termination_policies, field: :excess_capacity_termination_policy)
-             .register_column(:fulfilled_capacities, field: :fulfilled_capacity)
-             .register_column(:fulfilled_on_demand_capacities, field: :fulfilled_on_demand_capacity)
-             .register_column(:launch_template_configs, field: :launch_template_configs)
-             .register_column(:target_capacity_specifications, field: :target_capacity_specification)
-             .register_column(:terminate_instances_with_expiration, field: :terminate_instances_with_expiration)
-             .register_column(:types, field: :type)
-             .register_column(:valid_from, field: :valid_from)
-             .register_column(:valid_until, field: :valid_until)
-             .register_column(:replace_unhealthy_instances, field: :replace_unhealthy_instances)
-             .register_column(:spot_options, field: :spot_options)
-             .register_column(:on_demand_options, field: :on_demand_options)
-             .register_column(:tags, field: :tags)
-             .register_column(:errors, field: :errors)
-             .register_column(:instances, field: :instances)
-             .register_column(:contexts, field: :context)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:activity_statuses, field: :activity_status)
+    .register_column(:create_times, field: :create_time)
+    .register_column(:fleet_ids, field: :fleet_id)
+    .register_column(:fleet_states, field: :fleet_state)
+    .register_column(:client_tokens, field: :client_token)
+    .register_column(:excess_capacity_termination_policies, field: :excess_capacity_termination_policy)
+    .register_column(:fulfilled_capacities, field: :fulfilled_capacity)
+    .register_column(:fulfilled_on_demand_capacities, field: :fulfilled_on_demand_capacity)
+    .register_column(:launch_template_configs, field: :launch_template_configs)
+    .register_column(:target_capacity_specifications, field: :target_capacity_specification)
+    .register_column(:terminate_instances_with_expiration, field: :terminate_instances_with_expiration)
+    .register_column(:types, field: :type)
+    .register_column(:valid_from, field: :valid_from)
+    .register_column(:valid_until, field: :valid_until)
+    .register_column(:replace_unhealthy_instances, field: :replace_unhealthy_instances)
+    .register_column(:spot_options, field: :spot_options)
+    .register_column(:on_demand_options, field: :on_demand_options)
+    .register_column(:tags, field: :tags)
+    .register_column(:errors, field: :errors)
+    .register_column(:instances, field: :instances)
+    .register_column(:contexts, field: :context)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

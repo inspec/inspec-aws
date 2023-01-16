@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcrRepository < AwsResourceBase
-  name 'aws_ecr_repository'
-  desc 'Verifies settings for an AWS ECR Repository.'
+  name "aws_ecr_repository"
+  desc "Verifies settings for an AWS ECR Repository."
 
   example "
     describe aws_ecr_repository('my-repository') do
@@ -24,8 +24,8 @@ class AwsEcrRepository < AwsResourceBase
     matched_str = opts[:repository_name].match(pattern)
     unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
       raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
-                           'Please check the docs for more info '\
-                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+                           "Please check the docs for more info "\
+                           "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html" \
     end
     @display_name = opts[:repository_name]
 

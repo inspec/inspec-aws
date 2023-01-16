@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEc2TrafficMirrorTarget < AwsResourceBase
-  name 'aws_ec2_traffic_mirror_target'
-  desc 'Information about one or more Traffic Mirror targets.'
+  name "aws_ec2_traffic_mirror_target"
+  desc "Information about one or more Traffic Mirror targets."
 
   example "
     describe aws_ec2_traffic_mirror_target(traffic_mirror_target_id: 'TrafficMirrorTargetId') do

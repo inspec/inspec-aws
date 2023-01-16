@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamRootUser < AwsResourceBase
-  name 'aws_iam_root_user'
-  desc 'Verifies settings for AWS Root Account.'
+  name "aws_iam_root_user"
+  desc "Verifies settings for AWS Root Account."
   example "
     describe aws_iam_root_user do
       it { should have_access_key }
@@ -27,11 +27,11 @@ class AwsIamRootUser < AwsResourceBase
   end
 
   def has_access_key?
-    @summary_account['AccountAccessKeysPresent'] == 1
+    @summary_account["AccountAccessKeysPresent"] == 1
   end
 
   def has_mfa_enabled?
-    @summary_account['AccountMFAEnabled'] == 1
+    @summary_account["AccountMFAEnabled"] == 1
   end
 
   def has_hardware_mfa_enabled?
@@ -40,7 +40,7 @@ class AwsIamRootUser < AwsResourceBase
 
   # Virtual MFA devices have suffix 'root-account-mfa-device'
   def has_virtual_mfa_enabled?
-    virtual_mfa_suffix = 'root-account-mfa-device'
+    virtual_mfa_suffix = "root-account-mfa-device"
     @virtual_devices.any? { |device| device[:serial_number].end_with?(virtual_mfa_suffix) }
   end
 
@@ -49,6 +49,6 @@ class AwsIamRootUser < AwsResourceBase
   end
 
   def to_s
-    'AWS Root-User'
+    "AWS Root-User"
   end
 end

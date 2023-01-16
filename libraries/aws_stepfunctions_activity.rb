@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSStepFunctionsActivity < AwsResourceBase
-  name 'aws_stepfunctions_activity'
-  desc 'Describes an activity.'
+  name "aws_stepfunctions_activity"
+  desc "Describes an activity."
 
   example "
     describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do

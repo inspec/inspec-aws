@@ -1,5 +1,4 @@
 skip_control 'aws-cloudwatch-logs-destinations-1.0' do
-  impact 1.0
   title 'Describes the AWS cloudwatch destinations.'
 
   describe aws_cloudwatchlogs_destinantions do

@@ -1,24 +1,23 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayModels < AwsResourceBase
-  name 'aws_api_gateway_models'
-  desc 'Lists all the API Gateway models.'
-
-  example "
+  name "aws_api_gateway_models"
+  desc "Lists all the API Gateway models."
+  example <<-EXAMPLE
     describe aws_api_gateway_models(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:content_types, field: :content_type)
-             .register_column(:descriptions, field: :description)
-             .register_column(:names, field: :name)
-             .register_column(:schemas, field: :schema)
-             .register_column(:ids, field: :id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:content_types, field: :content_type)
+    .register_column(:descriptions, field: :description)
+    .register_column(:names, field: :name)
+    .register_column(:schemas, field: :schema)
+    .register_column(:ids, field: :id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

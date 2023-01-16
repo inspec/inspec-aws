@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSLogsMetricFilter < AwsResourceBase
-  name 'aws_logs_metric_filter'
-  desc 'Lists the specified metric filters.'
+  name "aws_logs_metric_filter"
+  desc "Lists the specified metric filters."
 
   example "
     describe aws_logs_metric_filter(filter_name: 'FilterName') do

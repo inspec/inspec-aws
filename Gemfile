@@ -13,9 +13,10 @@ gem 'bundle'
 # Use Latest Inspec
 gem 'inspec-bin'
 
-gem 'rubocop', '~> 1.31', require: false
+gem 'rubocop', '~> 1.25.1', require: false
 
 group :test do
+  gem "chefstyle", "~> 2.2.2"
   gem "simplecov", "~> 0.21"
   gem "simplecov_json_formatter"
 end

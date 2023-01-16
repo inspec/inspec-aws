@@ -4,7 +4,6 @@ aws_ebs_volume_name = input(:aws_ebs_volume_name, value: '', description: 'The A
 title 'Test AWS EBS Volumes in bulk using plural and singular resources'
 
 control 'aws-ebs-volumes-loop-1.0' do
-  impact 1.0
   title 'Ensure AWS EBS Volumes plural resource using singular resource for detail.'
 
   aws_ebs_volumes.where { volume_id == aws_ebs_volume_id }.volume_ids.each do |volume|

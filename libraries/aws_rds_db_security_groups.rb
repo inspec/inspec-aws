@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRDSDBSecurityGroups < AwsResourceBase
-  name 'aws_rds_db_security_groups'
-  desc 'Returns information about all the db security group.'
+  name "aws_rds_db_security_groups"
+  desc "Returns information about all the db security group."
 
   example "
     describe aws_rds_db_security_groups do
@@ -13,14 +13,14 @@ class AWSRDSDBSecurityGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:db_security_group_names, field: :db_security_group_name)
-             .register_column(:db_security_group_descriptions, field: :db_security_group_description)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:ec2_security_groups, field: :ec2_security_groups, style: :simple)
-             .register_column(:ip_ranges, field: :ip_ranges,  style: :simple)
-             .register_column(:db_security_group_arns, field: :db_security_group_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:db_security_group_names, field: :db_security_group_name)
+    .register_column(:db_security_group_descriptions, field: :db_security_group_description)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:ec2_security_groups, field: :ec2_security_groups, style: :simple)
+    .register_column(:ip_ranges, field: :ip_ranges,  style: :simple)
+    .register_column(:db_security_group_arns, field: :db_security_group_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

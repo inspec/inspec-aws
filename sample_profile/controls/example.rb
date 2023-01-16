@@ -1,9 +1,9 @@
 # Copyright: 2018, The Authors
 
-title 'Sample Section'
+title "Sample Section"
 
 # Plural resources can be inspected to check for specific resource details
-control 'aws-vpcs-multi-region-status-check' do                             # A unique ID for this control.
+control "aws-vpcs-multi-region-status-check" do                             # A unique ID for this control.
   impact 1.0                                                                # The criticality, if this control fails.
   title 'Check AWS VPCs in all regions have status "available"'             # A human-readable title.
   aws_regions.region_names.each do |region|                                 # Loop over all available AWS regions

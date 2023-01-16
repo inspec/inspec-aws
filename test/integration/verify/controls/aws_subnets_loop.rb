@@ -7,7 +7,6 @@ aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 aws_availability_zone = input(:aws_availability_zone, value: '', description: 'The AWS AZ.')
 
 control 'aws-subnets-loop-1.0' do
-  impact 1.0
   title 'Loop across AWS VPC Subnets plural resource using singular resource for detail.'
 
   aws_subnets.subnet_ids.each do |subnet|

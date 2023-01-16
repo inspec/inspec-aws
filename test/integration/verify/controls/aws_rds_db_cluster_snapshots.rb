@@ -8,7 +8,6 @@ aws_db_cluster_snapshot_vpc_id = input(:aws_db_cluster_snapshot_vpc_id, value: '
 aws_db_cluster_snapshot_storage_encrypted = input(:aws_db_cluster_snapshot_storage_encrypted, value: '', description: '')
 
 control 'aws-rds-db-cluster-snapshots-1.0' do
-  impact 1.0
   title 'Test the properties of the rds db cluster snapshots.'
 
   describe aws_rds_db_cluster_snapshots do

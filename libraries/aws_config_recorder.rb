@@ -1,17 +1,18 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsConfigurationRecorder < AwsResourceBase
-  name 'aws_config_recorder'
-  desc 'Verifies settings for AWS Configuration Recorder.'
-  example "
-    describe aws_config_recorder('My_Recorder') do
+  name "aws_config_recorder"
+  desc "Verifies settings for AWS Configuration Recorder."
+  example <<-EXAMPLE
+    describe aws_config_recorder('CONFIG_RECORDER_NAME') do
       it { should exist }
       it { should be_recording }
       it { should be_all_supported }
       it { should have_include_global_resource_types }
       its('last_status') { should eq 'Pending' }
     end
-  "
+  EXAMPLE
+
   attr_reader :role_arn, :resource_types, :recorder_name, :recording_all_resource_types, :recording_all_global_types, :last_status, :recording
 
   alias recording_all_resource_types? recording_all_resource_types

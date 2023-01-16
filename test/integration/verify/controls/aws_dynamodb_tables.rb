@@ -3,7 +3,6 @@ title 'Test AWS DynamoDB Tables in bulk.'
 aws_dynamodb_table_name = input(:aws_dynamodb_table_name, value: '', description: 'The AWS Dynamodb Table name.')
 
 control 'aws-dynamodb-tables-1.0' do
-  impact 1.0
   title 'Ensure AWS DynamoDB Table has current properties.'
 
   describe aws_dynamodb_tables do

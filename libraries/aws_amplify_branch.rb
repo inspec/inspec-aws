@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAmplifyBranch < AwsResourceBase
-  name 'aws_amplify_branch'
-  desc 'Describes a branch for an Amplify app.'
-
-  example "
-    describe aws_amplify_branch(app_id: 'AppId', branch_name: 'BranchName') do
+  name "aws_amplify_branch"
+  desc "Describes a branch for an Amplify app."
+  example <<-EXAMPLE
+    describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { app_id: opts } if opts.is_a?(String)

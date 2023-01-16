@@ -7,7 +7,6 @@ aws_apigatewayv2_domain_name_security_policy = input(:aws_apigatewayv2_domain_na
 aws_apigatewayv2_domain_name_target_domain_name = input(:aws_apigatewayv2_domain_name_target_domain_name, value: '', description: '')
 
 control 'aws-api-gateway-v2-domain-name' do
-  impact 1.0
   title 'Ensure API Gateway API Domain Name resource has the correct properties.'
 
   describe aws_api_gateway_v2_domain_name(domain_name: aws_apigatewayv2_domain_name_domain_name) do

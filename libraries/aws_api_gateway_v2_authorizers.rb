@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsApiGatewayV2Authorizers < AwsCollectionResourceBase
-  name 'aws_api_gateway_v2_authorizers'
-  desc 'Gets the Authorizers for an API.'
+  name "aws_api_gateway_v2_authorizers"
+  desc "Gets the Authorizers for an API."
   example <<-EXAMPLE
     describe aws_api_gateway_v2_authorizers(api_id: 'APP_ID') do
       it { should exist }

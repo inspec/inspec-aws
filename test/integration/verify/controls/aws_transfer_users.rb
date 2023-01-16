@@ -3,8 +3,7 @@ aws_transfer_server_id = input(:aws_transfer_server_id, value: '', description: 
 aws_transfer_user_arn = input(:aws_transfer_user_arn, value: '', description: '')
 
 control 'aws-transfer-users-1.0' do
-    impact 1.0
-    title 'Ensure AWS CloudFormation Transfer Users has the correct properties.'
+      title 'Ensure AWS CloudFormation Transfer Users has the correct properties.'
 
     describe aws_transfer_users(server_id: aws_transfer_server_id) do
         it { should exist }

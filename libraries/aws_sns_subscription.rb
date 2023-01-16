@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSnsSubscription < AwsResourceBase
-  name 'aws_sns_subscription'
-  desc 'Verifies settings for a SNS Subscription.'
+  name "aws_sns_subscription"
+  desc "Verifies settings for a SNS Subscription."
   example "
     describe aws_sns_subscription('arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6') do
       it               { should_not have_raw_message_delivery }
@@ -30,12 +30,12 @@ class AwsSnsSubscription < AwsResourceBase
     catch_aws_errors do
       begin
         aws_response = @aws.sns_client.get_subscription_attributes(subscription_arn: opts[:subscription_arn]).attributes.to_h
-        @owner      = aws_response['Owner']
-        @topic_arn  = aws_response['TopicArn']
-        @endpoint   = aws_response['Endpoint']
-        @protocol   = aws_response['Protocol']
-        @raw_message_delivery = aws_response['RawMessageDelivery'].eql?('true')
-        @confirmation_was_authenticated = aws_response['ConfirmationWasAuthenticated'].eql?('true')
+        @owner      = aws_response["Owner"]
+        @topic_arn  = aws_response["TopicArn"]
+        @endpoint   = aws_response["Endpoint"]
+        @protocol   = aws_response["Protocol"]
+        @raw_message_delivery = aws_response["RawMessageDelivery"].eql?("true")
+        @confirmation_was_authenticated = aws_response["ConfirmationWasAuthenticated"].eql?("true")
       rescue Aws::SNS::Errors::NotFound
         return
       end

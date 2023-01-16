@@ -4,7 +4,6 @@ aws_apigatewayv2_model_id = input(:aws_apigatewayv2_model_id, value: '', descrip
 aws_apigatewayv2_model_name = input(:aws_apigatewayv2_model_name, value: 'example', description: '')
 
 control 'aws-api-gateway-v2-model-v-1.0.0' do
-  impact 1.0
   title 'Ensure API Gateway API Model resource has the correct properties.'
   
   describe aws_api_gateway_v2_model(api_id: aws_apigatewayv2_model_api_id, model_id: aws_apigatewayv2_model_id) do

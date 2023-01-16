@@ -5,7 +5,6 @@ aws_configuration_enforce_work_group_configuration = input(:aws_enforce_workgrou
 aws_configuration_publish_cloud_watch_metrics_enabled = input(:aws_publish_cloudwatch_metrics_enabled, value: '', description: '')
 
 control 'aws-athena-work-group-1.0' do
-  impact 1.0
   title 'Test the properties of Athena Work Group.'
 
   describe aws_athena_work_group(work_group: aws_athena_workgroup) do

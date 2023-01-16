@@ -1,6 +1,5 @@
 skip_control 'aws-ec2-network-insights-analysis-plural-1.0' do
 
-  impact 1.0
   title 'Test a plural resource of the aws ec2 network insight analysis.'
 
   describe aws_ec2_network_insights_analysis_plural do

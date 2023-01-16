@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSServiceCatalogPortfolioProductAssociation < AwsResourceBase
-  name 'aws_servicecatalog_portfolio_product_association'
-  desc 'Describe a portfolio that the specified product is associated with.'
+  name "aws_servicecatalog_portfolio_product_association"
+  desc "Describe a portfolio that the specified product is associated with."
 
   example "
     describe aws_servicecatalog_portfolio_product_association(product_id: 'test1') do
