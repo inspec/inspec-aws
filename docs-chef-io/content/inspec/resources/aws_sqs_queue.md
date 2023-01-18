@@ -26,7 +26,6 @@ describe aws_sqs_queue(queue_url: 'https://sqs.ap-southeast-2.amazonaws.com/1212
 end
 ```
 
-
 ## Parameters
 
 `queue_url` _(required)_
@@ -68,6 +67,12 @@ end
 
 `kms_data_key_reuse_period_seconds`
 : Returns the length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again.
+
+`sqs_managed_enabled`
+: Returns information about whether the queue is using SSE-SQS encryption using SQS-owned encryption keys.
+
+`policy`
+: Returns the policy of the queue.
 
 ## Examples
 
@@ -122,7 +127,7 @@ end
 
 The control will pass if the describe returns at least one result.
 
-Use `should_not` to test the entity should not exist.
+Use `should` to test the entity should exist.
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
@@ -130,9 +135,47 @@ describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue
 end
 ```
 
+Use `should_not` to test the entity should not exist.
+
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueueWhichDoesntExist') do
   it { should_not exist }
+end
+```
+
+### policy_statement_principal_all_permissions_enabled
+
+The control will pass if at least one Principal has all permissions enabled.
+
+Use `should` to test when a Principal with all permissions should exist.
+
+```ruby
+describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
+  it { should be_policy_statement_principal_all_permissions_enabled }
+end
+```
+
+Use `should_not` to test that a Principal with all permissions should not exist.
+
+```ruby
+describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueueWhichDoesntExist') do
+  it { should_not be_policy_statement_principal_all_permissions_enabled }
+end
+```
+
+### policy_statement_action_all_permissions_enabled
+
+The control will pass if at least one action has all permissions enabled.
+
+Use `should` to test that at least one action has all permissions enabled should exist.
+
+```ruby
+describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
+  it { should be_policy_statement_action_all_permissions_enabled }
+end
+```ruby
+describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueueWhichDoesntExist') do
+  it { should_not be_policy_statement_action_all_permissions_enabled }
 end
 ```
 
