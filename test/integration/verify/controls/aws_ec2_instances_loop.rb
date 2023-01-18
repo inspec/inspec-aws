@@ -6,7 +6,6 @@ aws_vm_size = input(:aws_vm_size, value: '', description: 'The AWS EC2 Instance 
 aws_ec2_ami_id = input(:aws_ec2_ami_id, value: '', description: 'The AWS EC2 image id.')
 
 control 'aws-ec2-instances-loop-1.0' do
-  impact 1.0
   title 'Loop across AWS EC2 Instances plural resource using singular resource for detail.'
 
   aws_ec2_instances.instance_ids.each do |instance|

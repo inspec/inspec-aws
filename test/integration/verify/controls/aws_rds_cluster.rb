@@ -9,7 +9,6 @@ aws_rds_cluster_engine_version = input(:aws_rds_cluster_engine_version, value: '
 aws_rds_cluster_master_user = input(:aws_rds_cluster_master_user, value: '', description: 'The AWS RDS Cluster username.')
 
 control 'aws-rds-cluster-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Cluster has the correct properties.'
 
   describe aws_rds_cluster(db_cluster_identifier: aws_rds_cluster_identifier) do

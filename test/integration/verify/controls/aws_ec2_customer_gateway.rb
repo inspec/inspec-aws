@@ -1,7 +1,6 @@
 aws_customer_gateway_id = input(:aws_customer_gateway_id, value: '', description: '')
 
 control 'aws-ec2-customer-gateway-1.0' do
-  impact 1.0
   title 'Test the properties of the EC2 Customer Gateway.'
 
   describe aws_ec2_customer_gateway(customer_gateway_id: aws_customer_gateway_id) do

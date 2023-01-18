@@ -5,7 +5,6 @@ aws_compute_resources_minv_cpus = input(:aws_min_vcpus, value: '', description: 
 aws_compute_resources_maxv_cpus = input(:aws_max_vcpus, value: '', description: '')
 
 control 'aws-batch-compute-environment-1.0' do
-  impact 1.0
   title 'Test the properties of Batch Compute Environment.'
 
   describe aws_batch_compute_environment(compute_environment_name: aws_compute_environment_name) do

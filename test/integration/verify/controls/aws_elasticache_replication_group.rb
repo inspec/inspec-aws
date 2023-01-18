@@ -4,7 +4,6 @@ aws_elasticache_replication_group_node_type = input(:aws_elasticache_replication
 title 'Test single AWS ElastiCache Replication Group'
 
 control 'aws-elasticache-replication-group-1.0' do
-  impact 1.0
   title 'Ensure AWS ElastiCache Replication Group has the correct properties.'
 
   describe aws_elasticache_replication_group(replication_group_id: aws_elasticache_replication_group_id) do

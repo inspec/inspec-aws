@@ -1,29 +1,28 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayAuthorizers < AwsResourceBase
-  name 'aws_apigateway_authorizers'
-  desc 'Describe an existing Authorizers resource.'
-
-  example "
-    describe aws_apigateway_authorizers(rest_api_id: 'RestAPIID') do
+  name "aws_apigateway_authorizers"
+  desc "Describes the list of Authorizers resource."
+  example <<-EXAMPLE
+    describe aws_apigateway_authorizers(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:types, field: :type)
-             .register_column(:provider_arns, field: :provider_arns)
-             .register_column(:auth_types, field: :auth_type)
-             .register_column(:authorizer_uris, field: :authorizer_uri)
-             .register_column(:authorizer_credentials, field: :authorizer_credentials)
-             .register_column(:identity_sources, field: :identity_source)
-             .register_column(:identity_validation_expressions, field: :identity_validation_expression)
-             .register_column(:authorizer_result_ttl_in_seconds, field: :authorizer_result_ttl_in_seconds)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:types, field: :type)
+    .register_column(:provider_arns, field: :provider_arns)
+    .register_column(:auth_types, field: :auth_type)
+    .register_column(:authorizer_uris, field: :authorizer_uri)
+    .register_column(:authorizer_credentials, field: :authorizer_credentials)
+    .register_column(:identity_sources, field: :identity_source)
+    .register_column(:identity_validation_expressions, field: :identity_validation_expression)
+    .register_column(:authorizer_result_ttl_in_seconds, field: :authorizer_result_ttl_in_seconds)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

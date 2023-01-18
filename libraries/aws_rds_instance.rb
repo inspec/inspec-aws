@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsInstance < AwsResourceBase
-  name 'aws_rds_instance'
-  desc 'Verifies settings for an RDS instance.'
+  name "aws_rds_instance"
+  desc "Verifies settings for an RDS instance."
 
   example "
     describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do
@@ -23,7 +23,7 @@ class AwsRdsInstance < AwsResourceBase
   end
 
   def resource_id
-    "#{@rds_instance? @rds_instance[:db_instance_identifier]: ''}_#{@rds_instance? @rds_instance[:db_name]: ''}_#{@rds_instance? @rds_instance[:master_username]: ''}"
+    "#{@rds_instance? @rds_instance[:db_instance_identifier]: ""}_#{@rds_instance? @rds_instance[:db_name]: ""}_#{@rds_instance? @rds_instance[:master_username]: ""}"
   end
 
   def has_encrypted_storage?

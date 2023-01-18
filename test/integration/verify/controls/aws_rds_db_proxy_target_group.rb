@@ -2,7 +2,6 @@ db_proxy_name = input(:aws_proxy_name, value: '', description: '')
 target_group_name = input(:aws_proxy_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-target-group-1.0' do
-  impact 1.0
   title 'Test the properties of the RDS DB Proxy Target Group.'
 
   describe aws_rds_db_proxy_target_group(db_proxy_name: db_proxy_name, target_group_name: target_group_name) do

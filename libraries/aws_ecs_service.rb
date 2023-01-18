@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSECSService < AwsResourceBase
-  name 'aws_ecs_service'
-  desc 'Describes the specified services running in your cluster.'
+  name "aws_ecs_service"
+  desc "Describes the specified services running in your cluster."
 
   example "
     describe aws_ecs_service(cluster: 'test-cluster', services: 'test1') do

@@ -6,7 +6,6 @@ aws_api_gateway_status = input(:aws_api_gateway_status, value: '', description: 
 aws_api_gateway_status_message = input(:aws_api_gateway_status_message, value: '', description: 'A description about the VPC link status.')
 
 control 'aws-api-gateway-vpc-links-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway VPC links.'
 
   describe aws_api_gateway_vpc_links do

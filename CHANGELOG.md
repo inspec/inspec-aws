@@ -1,9 +1,29 @@
-<!-- latest_release 1.83.51 -->
+<!-- latest_release 1.83.55 -->
+## [v1.83.55](https://github.com/inspec/inspec-aws/tree/v1.83.55) (2023-01-18)
+
+#### Merged Pull Requests
+- RESOURCE-557 Soumyo/adding the missing attributes in sqs queue [#882](https://github.com/inspec/inspec-aws/pull/882) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
+## [v1.83.54](https://github.com/inspec/inspec-aws/tree/v1.83.54) (2023-01-16)
+
+#### Merged Pull Requests
+- Update AWS SNS topic subscription properties documentation [#957](https://github.com/inspec/inspec-aws/pull/957) ([tonyfruzza](https://github.com/tonyfruzza))
+
+## [v1.83.53](https://github.com/inspec/inspec-aws/tree/v1.83.53) (2022-12-13)
+
+#### Merged Pull Requests
+- RESOURCE-558 Remove the impact from the controls in inspec-aws [#959](https://github.com/inspec/inspec-aws/pull/959) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.83.52](https://github.com/inspec/inspec-aws/tree/v1.83.52) (2022-12-12)
+
+#### Merged Pull Requests
+- RESOURCE-546 Switch inspec-aws to chefstyle [#958](https://github.com/inspec/inspec-aws/pull/958) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.83.51](https://github.com/inspec/inspec-aws/tree/v1.83.51) (2022-12-06)
 
 #### Merged Pull Requests
 - RESOURCE-541 Remove frozen string literal from inspec aws [#954](https://github.com/inspec/inspec-aws/pull/954) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.50](https://github.com/inspec/inspec-aws/tree/v1.83.50) (2022-10-12)
 

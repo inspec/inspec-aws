@@ -4,7 +4,6 @@ aws_route53_zone_name = input(:aws_route53_zone_name, value: '', description: ''
 title 'Ensure the hosted zone have the correct properties.'
 
 control 'aws-hosted-zones-1.0' do
-  impact 1.0
   title 'Ensure the hosted zone have the correct properties.'
 
   describe aws_hosted_zones do

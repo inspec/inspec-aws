@@ -9,7 +9,6 @@ aws_db_cluster_snapshot_storage_encrypted = input(:aws_db_cluster_snapshot_stora
 aws_db_cluster_snapshot_source_db_cluster_snapshot_arn = input(:aws_db_cluster_snapshot_source_db_cluster_snapshot_arn, value: '', description: '')
 
 control 'aws-rds-db-cluster-snapshot-1.0' do
-  impact 1.0
   title 'Test the properties of the rds db cluster snapshot.'
 
   describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: aws_db_cluster_snapshot_id ) do

@@ -1,7 +1,6 @@
 aws_apigatewayv2_domain_name_domain_name = input(:aws_apigatewayv2_domain_name_domain_name, value: '', description: '')
 
 control 'aws-api-gateway-v2-domain-names' do
-  impact 1.0
   title 'Ensure API Gateway API Domain Names resource has the correct properties.'
 
   describe aws_api_gateway_v2_domain_names do

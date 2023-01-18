@@ -1,5 +1,4 @@
 control 'aws-dms-replication-instance-1.0' do
-  impact 1.0
   title 'Ensure AWS DMS Replication Instance has the correct properties.'
 
   describe aws_dms_replication_instance do

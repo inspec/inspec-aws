@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2VolumeAttachments < AwsResourceBase
-  name 'aws_ec2_volume_attachments'
-  desc 'Describes the specified EBS volumes attachments or all of your EBS volumes attachments.'
+  name "aws_ec2_volume_attachments"
+  desc "Describes the specified EBS volumes attachments or all of your EBS volumes attachments."
 
   example "
     describe aws_ec2_volume_attachments do
@@ -13,13 +13,13 @@ class AWSEC2VolumeAttachments < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:attach_times, field: :attach_time)
-             .register_column(:devices, field: :device)
-             .register_column(:instance_ids, field: :instance_id)
-             .register_column(:states, field: :state)
-             .register_column(:volume_ids, field: :volume_id)
-             .register_column(:delete_on_terminations, field: :delete_on_termination)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:attach_times, field: :attach_time)
+    .register_column(:devices, field: :device)
+    .register_column(:instance_ids, field: :instance_id)
+    .register_column(:states, field: :state)
+    .register_column(:volume_ids, field: :volume_id)
+    .register_column(:delete_on_terminations, field: :delete_on_termination)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

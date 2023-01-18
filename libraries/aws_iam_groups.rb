@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamGroups < AwsResourceBase
-  name 'aws_iam_groups'
-  desc 'Verifies settings for a collection AWS IAM Groups.'
+  name "aws_iam_groups"
+  desc "Verifies settings for a collection AWS IAM Groups."
   example "
     describe aws_iam_groups do
       it { should exist }
@@ -12,13 +12,13 @@ class AwsIamGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:group_names,  field: :group_name)
-             .register_column(:group_ids,    field: :group_id)
-             .register_column(:arns,         field: :arn)
-             .register_column(:users,        field: :users)
-             .register_column(:has_inline_policies,   field: :has_inline_policies)
-             .register_column(:inline_policy_names,   field: :inline_policy_names)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:group_names,  field: :group_name)
+    .register_column(:group_ids,    field: :group_id)
+    .register_column(:arns,         field: :arn)
+    .register_column(:users,        field: :users)
+    .register_column(:has_inline_policies,   field: :has_inline_policies)
+    .register_column(:inline_policy_names,   field: :inline_policy_names)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

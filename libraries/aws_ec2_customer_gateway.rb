@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2CustomerGateway < AwsResourceBase
-  name 'aws_ec2_customer_gateway'
-  desc 'Describes one VPN customer gateways.'
-
-  example "
+  name "aws_ec2_customer_gateway"
+  desc "Describes one VPN customer gateways."
+  example <<-EXAMPLE
     describe aws_ec2_customer_gateway(customer_gateway_id: 'CUSTOMER_GATEWAY_ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { customer_gateway_id: opts } if opts.is_a?(String)

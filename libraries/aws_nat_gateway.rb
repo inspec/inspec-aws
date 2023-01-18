@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsNatGateway < AwsResourceBase
-  name 'aws_nat_gateway'
-  desc 'Verifies settings for an AWS NAT Gateway.'
+  name "aws_nat_gateway"
+  desc "Verifies settings for an AWS NAT Gateway."
 
   example "
     describe aws_nat_gateway(id: 'nat-11aa578bffadf6ba6') do
@@ -31,24 +31,24 @@ class AwsNatGateway < AwsResourceBase
     if opts.key?(:id)
       id = opts[:id].to_s
       raise ArgumentError, "#{@__resource_name__}: `id` must be a string in the format of 'nat-' followed by 8 or 17 hexadecimal characters." unless /^nat-[0-9a-f]{8,17}$/.match?(id)
-      filter << { name: 'nat-gateway-id', values: [id] }
+      filter << { name: "nat-gateway-id", values: [id] }
     end
     if opts.key?(:name)
       name = opts[:name].to_s
       raise ArgumentError, "#{@__resource_name__}: `name` must be maximum 255 characters long." unless name.length < 256
-      filter << { name: 'tag:Name', values: [name] }
+      filter << { name: "tag:Name", values: [name] }
     end
     if opts.key?(:vpc_id)
       vpc_id = opts[:vpc_id].to_s
       raise ArgumentError, "#{@__resource_name__}: `vpc_id` must be a string in the format of 'vpc-' followed by 8 or 17 hexadecimal characters." unless /^vpc-[0-9a-f]{8,17}$/.match?(vpc_id)
-      filter << { name: 'vpc-id', values: [vpc_id] }
+      filter << { name: "vpc-id", values: [vpc_id] }
     end
     if opts.key?(:subnet_id)
       subnet_id = opts[:subnet_id].to_s
       raise ArgumentError, "#{@__resource_name__}: `subnet_id` must be a string in the format of 'subnet-' followed by 8 or 17 hexadecimal characters." unless /^subnet-[0-9a-f]{8,17}$/.match?(subnet_id)
-      filter << { name: 'subnet-id', values: [subnet_id] }
+      filter << { name: "subnet-id", values: [subnet_id] }
     end
-    @display_name = opts.slice(:id, :subnet_id, :name, :vpc_id).values.join(' ')
+    @display_name = opts.slice(:id, :subnet_id, :name, :vpc_id).values.join(" ")
 
     query_params = { filter: filter }
     catch_aws_errors do

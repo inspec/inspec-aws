@@ -1,5 +1,4 @@
 skip_control 'aws-managed-policy-1.0' do
-  impact 1.0
   title 'Ensure AWS IAM Managed Policy Singular resource has the correct properties.'
 
   describe aws_iam_managed_policy(policy_arn: 'arn:aws:iam::aws:policy/aws-service-role/ClientVPNServiceRolePolicy') do

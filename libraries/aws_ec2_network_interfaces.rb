@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2NetworkInterfaces < AwsResourceBase
-  name 'aws_ec2_network_interfaces'
-  desc 'List all the network interfaces.'
+  name "aws_ec2_network_interfaces"
+  desc "List all the network interfaces."
 
   example "
     describe aws_ec2_network_interfaces do
@@ -13,27 +13,27 @@ class AWSEC2NetworkInterfaces < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:associations, field: :association)
-             .register_column(:attachments, field: :attachment)
-             .register_column(:availability_zones, field: :availability_zone)
-             .register_column(:descriptions, field: :description)
-             .register_column(:groups, field: :groups)
-             .register_column(:interface_types, field: :interface_type)
-             .register_column(:ipv_6_addresses, field: :ipv_6_addresses)
-             .register_column(:mac_addresses, field: :mac_address)
-             .register_column(:network_interface_ids, field: :network_interface_id)
-             .register_column(:outpost_arns, field: :outpost_arn)
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:private_dns_names, field: :private_dns_name)
-             .register_column(:private_ip_addresses, field: :private_ip_address)
-             .register_column(:requester_ids, field: :requester_id)
-             .register_column(:requester_managed, field: :requester_managed)
-             .register_column(:source_dest_checks, field: :source_dest_check)
-             .register_column(:statuses, field: :status)
-             .register_column(:subnet_ids, field: :subnet_id)
-             .register_column(:tag_sets, field: :tag_set)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:associations, field: :association)
+    .register_column(:attachments, field: :attachment)
+    .register_column(:availability_zones, field: :availability_zone)
+    .register_column(:descriptions, field: :description)
+    .register_column(:groups, field: :groups)
+    .register_column(:interface_types, field: :interface_type)
+    .register_column(:ipv_6_addresses, field: :ipv_6_addresses)
+    .register_column(:mac_addresses, field: :mac_address)
+    .register_column(:network_interface_ids, field: :network_interface_id)
+    .register_column(:outpost_arns, field: :outpost_arn)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:private_dns_names, field: :private_dns_name)
+    .register_column(:private_ip_addresses, field: :private_ip_address)
+    .register_column(:requester_ids, field: :requester_id)
+    .register_column(:requester_managed, field: :requester_managed)
+    .register_column(:source_dest_checks, field: :source_dest_check)
+    .register_column(:statuses, field: :status)
+    .register_column(:subnet_ids, field: :subnet_id)
+    .register_column(:tag_sets, field: :tag_set)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

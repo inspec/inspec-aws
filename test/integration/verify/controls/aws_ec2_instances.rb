@@ -7,7 +7,6 @@ aws_vm_name = input(:aws_vm_name, value: '', description: 'The AWS EC2 Instance 
 title 'Test AWS EC2 Instances in bulk'
 
 control 'aws-ec2-instances-1.0' do
-  impact 1.0
   title 'Ensure AWS EC2 plural resource has the correct properties.'
 
   describe aws_ec2_instances do

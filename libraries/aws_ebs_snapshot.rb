@@ -1,21 +1,20 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEbsSnapshot < AwsResourceBase
-  name 'aws_ebs_snapshot'
-  desc 'Verifies settings for an EBS snapshot.'
-
-  example "
-    describe aws_ebs_snapshot('snap-12345678') do
-      it  { should_not be_public }
-      it  { should be_private }
-      it  { should exist }
+  name "aws_ebs_snapshot"
+  desc "Verifies settings for an EBS snapshot."
+  example <<-EXAMPLE
+    describe aws_ebs_snapshot('SNAPSHOT_ID') do
+      it { should_not be_public }
+      it { should be_private }
+      it { should exist }
       its('encrypted') { should eq true }
     end
 
-    describe aws_ebs_snapshot(name: 'my-volume') do
+    describe aws_ebs_snapshot(name: 'EBS_SNAPSHOT_NAME') do
       its('encrypted') { should eq true }
     end
-  "
+  EXAMPLE
 
   attr_reader :group, :user_ids
 
@@ -52,7 +51,7 @@ class AwsEbsSnapshot < AwsResourceBase
   end
 
   def public?
-    (@group == 'all')
+    (@group == "all")
   end
 
   def private?
@@ -77,7 +76,7 @@ class AwsEbsSnapshot < AwsResourceBase
     if opts[:snapshot_id] && !opts[:snapshot_id].empty?
       snapshot_arguments = { snapshot_ids: [opts[:snapshot_id]] }
     elsif opts[:name] && !opts[:name].empty?
-      snapshot_arguments = { filters: [{ name: 'tag:Name', values: [opts[:name]] }] }
+      snapshot_arguments = { filters: [{ name: "tag:Name", values: [opts[:name]] }] }
     end
 
     catch_aws_errors do
@@ -91,7 +90,7 @@ class AwsEbsSnapshot < AwsResourceBase
     # Getting snapshot's attribute required for checking its accessiblility (using createVolumePermission) - public/private
     catch_aws_errors do
       @resp_snapshot_attributes = @aws.compute_client.describe_snapshot_attribute(
-        attribute: 'createVolumePermission',
+        attribute: "createVolumePermission",
         snapshot_id: @snapshot_id,
       )
       @snapshot_attributes_hash = @resp_snapshot_attributes.to_h
@@ -100,7 +99,7 @@ class AwsEbsSnapshot < AwsResourceBase
       @group = nil
       @user_ids = []
       @create_volume_permissions.each do |perms|
-        @group = 'all' if perms[:group] == 'all'
+        @group = "all" if perms[:group] == "all"
         @user_ids << perms[:user_id] unless perms[:user_id].nil?
       end
     end

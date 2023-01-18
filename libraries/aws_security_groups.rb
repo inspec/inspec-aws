@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSecurityGroups < AwsCollectionResourceBase
-  name 'aws_security_groups'
-  desc 'Verifies settings for AWS Security Groups in bulk.'
+  name "aws_security_groups"
+  desc "Verifies settings for AWS Security Groups in bulk."
   example "
     # Verify that you have security groups defined
     describe aws_security_groups do

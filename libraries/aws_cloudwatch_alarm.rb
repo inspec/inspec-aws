@@ -1,15 +1,14 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudwatchAlarm < AwsResourceBase
-  name 'aws_cloudwatch_alarm'
-  desc 'Verifies settings for an AWS CloudWatch Alarm.'
-
-  example "
-  # Look for a specific alarm
-  aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
-    it { should exist }
-  end
-  "
+  name "aws_cloudwatch_alarm"
+  desc "Verifies settings for an AWS CloudWatch Alarm."
+  example <<-EXAMPLE
+    # Look for a specific alarm
+    describe aws_cloudwatch_alarm(metric_name: 'METRIC_NAME', metric_namespace: 'METRIV_NAMESPACE') do
+      it { should exist }
+    end
+  EXAMPLE
 
   attr_reader :alarm_actions, :alarm_name, :metric_name, :metric_namespace, :dimensions
 
@@ -40,14 +39,14 @@ class AwsCloudwatchAlarm < AwsResourceBase
 
     return false if @metric_alarms.empty?
 
-    raise "Found multiple CloudWatch Alarms. The following matched: #{@metric_alarms.join(', ')}.  Try to restrict your resource criteria." if @metric_alarms.count > 1
+    raise "Found multiple CloudWatch Alarms. The following matched: #{@metric_alarms.join(", ")}.  Try to restrict your resource criteria." if @metric_alarms.count > 1
 
     @alarm_actions = @metric_alarms.first.alarm_actions
     @alarm_name    = @metric_alarms.first.alarm_name
   end
 
   def resource_id
-    "#{@metric_alarms? @metric_name: ''}_#{@metric_alarms? @metric_namespace: ''}"
+    "#{@metric_alarms? @metric_name: ""}_#{@metric_alarms? @metric_namespace: ""}"
   end
 
   def exists?

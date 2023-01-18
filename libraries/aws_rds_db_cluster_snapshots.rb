@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRDSDBClusterSnapShots < AwsResourceBase
-  name 'aws_rds_db_cluster_snapshots'
-  desc 'Returns information about DB cluster snapshots.'
+  name "aws_rds_db_cluster_snapshots"
+  desc "Returns information about DB cluster snapshots."
 
   example "
     describe aws_rds_db_cluster_snapshots do
@@ -13,29 +13,29 @@ class AWSRDSDBClusterSnapShots < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:availability_zones, field: :availability_zones)
-             .register_column(:db_cluster_snapshot_identifiers, field: :db_cluster_snapshot_identifier)
-             .register_column(:db_cluster_identifiers, field: :db_cluster_identifier)
-             .register_column(:snapshot_create_times, field: :snapshot_create_time)
-             .register_column(:engines, field: :engine)
-             .register_column(:engine_modes, field: :engine_mode)
-             .register_column(:allocated_storages, field: :allocated_storage)
-             .register_column(:statuses, field: :status)
-             .register_column(:ports, field: :port)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:cluster_create_times, field: :cluster_create_time)
-             .register_column(:master_usernames, field: :master_username)
-             .register_column(:engine_versions, field: :engine_version)
-             .register_column(:license_models, field: :license_model)
-             .register_column(:snapshot_types, field: :snapshot_type)
-             .register_column(:percent_progresses, field: :percent_progress)
-             .register_column(:storage_encrypted, field: :storage_encrypted)
-             .register_column(:kms_key_ids, field: :kms_key_id)
-             .register_column(:db_cluster_snapshot_arns, field: :db_cluster_snapshot_arn)
-             .register_column(:source_db_cluster_snapshot_arns, field: :source_db_cluster_snapshot_arn)
-             .register_column(:iam_database_authentication_enabled, field: :iam_database_authentication_enabled)
-             .register_column(:tag_lists, field: :tag_list)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:availability_zones, field: :availability_zones)
+    .register_column(:db_cluster_snapshot_identifiers, field: :db_cluster_snapshot_identifier)
+    .register_column(:db_cluster_identifiers, field: :db_cluster_identifier)
+    .register_column(:snapshot_create_times, field: :snapshot_create_time)
+    .register_column(:engines, field: :engine)
+    .register_column(:engine_modes, field: :engine_mode)
+    .register_column(:allocated_storages, field: :allocated_storage)
+    .register_column(:statuses, field: :status)
+    .register_column(:ports, field: :port)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:cluster_create_times, field: :cluster_create_time)
+    .register_column(:master_usernames, field: :master_username)
+    .register_column(:engine_versions, field: :engine_version)
+    .register_column(:license_models, field: :license_model)
+    .register_column(:snapshot_types, field: :snapshot_type)
+    .register_column(:percent_progresses, field: :percent_progress)
+    .register_column(:storage_encrypted, field: :storage_encrypted)
+    .register_column(:kms_key_ids, field: :kms_key_id)
+    .register_column(:db_cluster_snapshot_arns, field: :db_cluster_snapshot_arn)
+    .register_column(:source_db_cluster_snapshot_arns, field: :source_db_cluster_snapshot_arn)
+    .register_column(:iam_database_authentication_enabled, field: :iam_database_authentication_enabled)
+    .register_column(:tag_lists, field: :tag_list)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

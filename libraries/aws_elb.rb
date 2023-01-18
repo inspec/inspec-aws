@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsElb < AwsResourceBase
-  name 'aws_elb'
-  desc 'Verifies settings for an Elastic Load Balancer.'
+  name "aws_elb"
+  desc "Verifies settings for an Elastic Load Balancer."
 
   example "
     describe aws_elb('load-balancer-1') do
@@ -51,12 +51,12 @@ class AwsElb < AwsResourceBase
   def ssl_policies
     @ssl_policies ||= catch_aws_errors do
       elb_client.describe_load_balancer_policies(load_balancer_name: opts[:load_balancer_name])
-                .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
+        .policy_descriptions.select { |p| policies_in_use.include?(p.policy_name) }
     end
   end
 
   def resource_id
-    @load_balancer_description? "#{@load_balancer_name}_#{@load_balancer_description[:availability_zones]}" : ''
+    @load_balancer_description? "#{@load_balancer_name}_#{@load_balancer_description[:availability_zones]}" : ""
   end
 
   private

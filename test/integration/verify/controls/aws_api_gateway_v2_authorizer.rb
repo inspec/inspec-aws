@@ -7,7 +7,6 @@ aws_apigatewayv2_authorizer_jwt_configuration_issuer = input(:aws_apigatewayv2_a
 aws_apigatewayv2_authorizer_name = input(:aws_apigatewayv2_authorizer_name, value: '', description: 'The authorizer name.')
 
 control 'aws-api-gateway-v2-api-authorizer' do
-  impact 1.0
   title 'Ensure API Gateway API Authorizer resource has the correct properties.'
   
   describe aws_api_gateway_v2_authorizer(api_id: aws_apigatewayv2_authorizer_api_id, authorizer_id: aws_apigatewayv2_authorizer_id) do

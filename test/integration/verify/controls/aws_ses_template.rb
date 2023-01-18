@@ -4,7 +4,6 @@ aws_ses_template_text = input(:aws_ses_template_text, value: '', description: ''
 aws_ses_template_html = input(:aws_ses_template_html, value: '', description: '')
 
 control 'aws-ses-template-1.0' do
-  impact 1.0
   title 'Test the properties of the ses receipt rules.'
 
   describe aws_ses_template(template_name: aws_ses_template_name) do

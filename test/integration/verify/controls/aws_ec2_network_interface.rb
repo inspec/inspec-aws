@@ -1,7 +1,6 @@
 aws_network_interface_id = input(:aws_network_interface_id, value: '', description: '')
 
 control 'aws-ec2-network-interface-1.0' do
-  impact 1.0
   title 'Test a singular resource of the aws ec2 network interfaces.'
 
   describe aws_ec2_network_interface(network_interface_id: aws_network_interface_id) do

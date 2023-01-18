@@ -5,7 +5,6 @@ insecure_distribution_id = input(:aws_insecure_cloudfront_distribution_id, value
 default_distribution_id = input(:aws_default_cloudfront_distribution_id, value: '', description: 'The defaultinsecure AWS Cloudfront distribution ID.')
 
 control 'aws-cloudfront-distribution-1.0' do
-  impact 1.0
   title 'Ensure AWS Cloudfront distribution has the correct properties.'
 
   describe aws_cloudfront_distribution(distribution_id: secure_distribution_id) do

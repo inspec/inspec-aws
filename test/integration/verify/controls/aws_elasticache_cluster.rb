@@ -8,7 +8,6 @@ aws_elasticache_cluster_parameter_group_name = input(:aws_elasticache_cluster_pa
 title 'Test single AWS ElastiCache Cluster'
 
 control 'aws-elasticache-cluster-1.0' do
-  impact 1.0
   title 'Ensure AWS ElastiCache Cluster has the correct properties.'
 
   describe aws_elasticache_cluster(cache_cluster_id: aws_elasticache_cluster_id) do

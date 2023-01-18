@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayDomainName < AwsResourceBase
-  name 'aws_api_gateway_domain_name'
-  desc 'Represents a domain name that is contained in a simpler, more intuitive URL that can be called.'
+  name "aws_api_gateway_domain_name"
+  desc "Represents a domain name that is contained in a simpler, more intuitive URL that can be called."
   example <<-EXAMPLE
     describe aws_api_gateway_domain_name(domain_name: 'DOMAIN_NAME') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSApiGatewayDomainName < AwsResourceBase
   end
 
   def resource_id
-    @res? "#{@res[:domain_name]}_#{@res[:certificate_arn]}" : ''
+    @res? "#{@res[:domain_name]}_#{@res[:certificate_arn]}" : ""
   end
 
   def exists?

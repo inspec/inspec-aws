@@ -7,7 +7,6 @@ aws_iam_user_name = input(:aws_iam_user_name, value: '', description: 'The Attac
 aws_iam_role_generic_name = input(:aws_iam_role_generic_name, value: '', description: 'The AWS Iam Role.')
 
 control 'aws-iam-policy-1.0' do
-  impact 1.0
   title 'Ensure AWS Iam Policy has the correct properties.'
 
   describe aws_iam_policy(policy_arn: aws_iam_policy_arn) do

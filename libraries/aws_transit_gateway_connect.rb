@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSTransitGatewayConnect < AwsResourceBase
-  name 'aws_transit_gateway_connect'
-  desc 'Describes one or more Connect attachments.'
+  name "aws_transit_gateway_connect"
+  desc "Describes one or more Connect attachments."
 
   example "
     describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GATEWAY_CONNECT_ATTACHMENT_ID') do

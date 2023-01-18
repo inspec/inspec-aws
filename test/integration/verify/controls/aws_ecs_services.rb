@@ -4,7 +4,6 @@ aws_service_name = input(:aws_ecs_service_name, value: '', description: '')
 aws_cluster_arn = input(:aws_cluster_arn, value: '', description: '')
 
 control 'aws-ecs-services-1.0' do
-  impact 1.0
   title 'Ensure AWS ECS Services has the correct properties.'
 
   describe aws_ecs_services(cluster: aws_cluster_names) do

@@ -6,7 +6,6 @@ aws_db_parameter_group_description  = input(:aws_db_parameter_group_description,
 aws_db_parameter_group_arn = input(:aws_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
 
 control 'aws-db-parameter-group-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Parameter Group has current properties'
 
   describe aws_db_parameter_group(db_parameter_group_name: aws_rds_db_parameter_group_name) do

@@ -6,7 +6,6 @@ aws_rds_snapshot_storage_type = input(:aws_rds_snapshot_storage_type, value: '',
 title 'Test single AWS RDS Snapshot'
 
 control 'aws-rds-snapshot-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Snapshot has the correct properties.'
 
   describe aws_rds_snapshot(db_snapshot_identifier: aws_rds_snapshot_identifier) do

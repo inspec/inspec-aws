@@ -1,6 +1,5 @@
 control 'aws_transit_gateway_multicast_group_member' do
 
-  impact 1.0
   title 'Gets information about the associations for the transit gateway multicast domain.'
 
   describe aws_transit_gateway_multicast_group_member(transit_gateway_multicast_domain_id: '') do

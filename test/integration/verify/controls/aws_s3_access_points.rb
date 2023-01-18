@@ -1,7 +1,6 @@
 title 'Test the properties of S3 Access Point'
 
 skip_control 'aws-s3-access-points-1.0' do
-  impact 1.0
   title 'Test the properties of S3 Access Point'
 
   describe aws_s3_access_points(bucket_name: 'BucketName') do

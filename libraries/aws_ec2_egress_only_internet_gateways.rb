@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2EgressOnlyInternetGateways < AwsResourceBase
-  name 'aws_ec2_egress_only_internet_gateways'
-  desc 'Describes one or more of your egress-only internet gateways.'
+  name "aws_ec2_egress_only_internet_gateways"
+  desc "Describes one or more of your egress-only internet gateways."
 
   example "
     describe aws_ec2_egress_only_internet_gateways do
@@ -13,10 +13,10 @@ class AWSEC2EgressOnlyInternetGateways < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:attachments, field: :attachments)
-             .register_column(:egress_only_internet_gateway_ids, field: :egress_only_internet_gateway_id)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:attachments, field: :attachments)
+    .register_column(:egress_only_internet_gateway_ids, field: :egress_only_internet_gateway_id)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

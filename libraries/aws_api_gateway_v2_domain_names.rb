@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsApiGatewayV2DomainNames < AwsCollectionResourceBase
-  name 'aws_api_gateway_v2_domain_names'
-  desc 'Gets the domain names for an AWS account.'
+  name "aws_api_gateway_v2_domain_names"
+  desc "Gets the domain names for an AWS account."
   example <<-EXAMPLE
     describe aws_api_gateway_v2_domain_names do
       it { should exist }

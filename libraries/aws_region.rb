@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRegion < AwsResourceBase
-  name 'aws_region'
-  desc 'Verifies settings for an AWS region.'
+  name "aws_region"
+  desc "Verifies settings for an AWS region."
 
   example "
     describe aws_region('eu-west-2') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSyntheticsCanaries < AwsResourceBase
-  name 'aws_synthetics_canaries'
-  desc 'Lists the canaries.'
+  name "aws_synthetics_canaries"
+  desc "Lists the canaries."
 
   example "
     describe aws_synthetics_canaries do
@@ -13,24 +13,24 @@ class AWSSyntheticsCanaries < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:codes, field: :code)
-             .register_column(:execution_role_arns, field: :execution_role_arn)
-             .register_column(:schedules, field: :schedule)
-             .register_column(:run_configs, field: :run_config)
-             .register_column(:success_retention_period_in_days, field: :success_retention_period_in_days)
-             .register_column(:failure_retention_period_in_days, field: :failure_retention_period_in_days)
-             .register_column(:statuses, field: :status)
-             .register_column(:timelines, field: :timeline)
-             .register_column(:artifact_s3_locations, field: :artifact_s3_location)
-             .register_column(:engine_arns, field: :engine_arn)
-             .register_column(:runtime_versions, field: :runtime_version)
-             .register_column(:vpc_configs, field: :vpc_config)
-             .register_column(:visual_references, field: :visual_reference)
-             .register_column(:tags, field: :tags)
-             .register_column(:artifact_configs, field: :artifact_config)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:codes, field: :code)
+    .register_column(:execution_role_arns, field: :execution_role_arn)
+    .register_column(:schedules, field: :schedule)
+    .register_column(:run_configs, field: :run_config)
+    .register_column(:success_retention_period_in_days, field: :success_retention_period_in_days)
+    .register_column(:failure_retention_period_in_days, field: :failure_retention_period_in_days)
+    .register_column(:statuses, field: :status)
+    .register_column(:timelines, field: :timeline)
+    .register_column(:artifact_s3_locations, field: :artifact_s3_location)
+    .register_column(:engine_arns, field: :engine_arn)
+    .register_column(:runtime_versions, field: :runtime_version)
+    .register_column(:vpc_configs, field: :vpc_config)
+    .register_column(:visual_references, field: :visual_reference)
+    .register_column(:tags, field: :tags)
+    .register_column(:artifact_configs, field: :artifact_config)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

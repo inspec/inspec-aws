@@ -1,7 +1,6 @@
 title 'Test AWS Security Groups Across All Regions'
 
 control 'aws-multi-region-security-group-1.0' do
-  impact 1.0
   title 'Ensure AWS Security Groups across all regions have the correct properties.'
 
   aws_regions.region_names.each do |region|

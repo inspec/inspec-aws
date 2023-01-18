@@ -2,7 +2,6 @@ aws_api_gateway_account_cloudwatch_role_arn = input(:aws_api_gateway_account_clo
 
 control 'aws-apigateway-account' do
 
-  impact 1.0
   title 'Ensure API Gateway Account resource has the correct properties.'
 
   describe aws_apigateway_account do

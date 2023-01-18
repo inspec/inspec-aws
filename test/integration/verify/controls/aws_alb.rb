@@ -4,7 +4,6 @@ aws_alb_arn = input(:aws_alb_arn, value: '', description: 'The AWS ALB arn.')
 region = input(:aws_region, value: '', description: 'The AWS region.')
 
 control 'aws-alb-1.0' do
-  impact 1.0
   title 'Ensure AWS ALB has the correct properties.'
 
   describe aws_alb(load_balancer_arn: aws_alb_arn) do

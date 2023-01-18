@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEc2Instances < AwsResourceBase
-  name 'aws_ec2_instances'
-  desc 'Verifies settings for a collection of AWS EC2 Instances.'
+  name "aws_ec2_instances"
+  desc "Verifies settings for a collection of AWS EC2 Instances."
   example "
     describe aws_ec2_instances do
       it { should exist }
@@ -12,14 +12,14 @@ class AwsEc2Instances < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:instance_ids,   field: :instance_id)
-             .register_column(:names,          field: :name)
-             .register_column(:vpc_ids,        field: :vpc_id)
-             .register_column(:subnet_ids,     field: :subnet_id)
-             .register_column(:instance_types, field: :instance_type)
-             .register_column(:tags,           field: :tags)
-             .register_column(:iam_profiles,   field: :iam_profile)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:instance_ids,   field: :instance_id)
+    .register_column(:names,          field: :name)
+    .register_column(:vpc_ids,        field: :vpc_id)
+    .register_column(:subnet_ids,     field: :subnet_id)
+    .register_column(:instance_types, field: :instance_type)
+    .register_column(:tags,           field: :tags)
+    .register_column(:iam_profiles,   field: :iam_profile)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -44,8 +44,8 @@ class AwsEc2Instances < AwsResourceBase
             subnet_id: instance.subnet_id,
             instance_type: instance.instance_type,
             tags: instance_tags,
-            name: instance_tags['Name'],
-            iam_profile: instance.iam_instance_profile&.arn&.split('/')&.last,
+            name: instance_tags["Name"],
+            iam_profile: instance.iam_instance_profile&.arn&.split("/")&.last,
           }]
         end
       end

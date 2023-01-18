@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsNatGateways < AwsResourceBase
-  name 'aws_nat_gateways'
-  desc 'Verifies settings for a collection of AWS NAT gateways.'
+  name "aws_nat_gateways"
+  desc "Verifies settings for a collection of AWS NAT gateways."
 
   example "
     describe aws_nat_gateways do
@@ -17,14 +17,14 @@ class AwsNatGateways < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:tags, field: :tags)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:subnet_ids, field: :subnet_id)
-             .register_column(:states, field: :state)
-             .register_column(:nat_gateways, field: :nat_gateway)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:tags, field: :tags)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:subnet_ids, field: :subnet_id)
+    .register_column(:states, field: :state)
+    .register_column(:nat_gateways, field: :nat_gateway)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -50,7 +50,7 @@ class AwsNatGateways < AwsResourceBase
         ngw_rows += [{
           id: ngw.nat_gateway_id,
           tags: ngw_tags,
-          name: ngw_tags['Name'],
+          name: ngw_tags["Name"],
           subnet_id: ngw.subnet_id,
           vpc_id: ngw.vpc_id,
           state: ngw.state,

@@ -9,7 +9,6 @@ aws_nat_gateway_public_ip = input(:aws_nat_gateway_public_ip, value: '', descrip
 title 'Test single AWS Nat Gateway'
 
 control 'aws-nat-gateway-1.0' do
-  impact 1.0
   title 'Check AWS nat gateway has the correct properties.'
 
   describe aws_nat_gateway(name: aws_nat_gateway_name) do

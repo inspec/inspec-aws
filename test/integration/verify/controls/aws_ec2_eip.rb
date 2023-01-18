@@ -9,7 +9,6 @@ aws_private_ip_address = input(:aws_private_ip_address, value: '', description: 
 
 control 'aws-ec2-elastic-ip-1.0' do
 
-  impact 1.0
   title 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
 
   describe aws_ec2_eip(public_ip: aws_public_ip) do

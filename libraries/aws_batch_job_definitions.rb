@@ -1,28 +1,27 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSBatchJobDefinitions < AwsResourceBase
-  name 'aws_batch_job_definitions'
-  desc 'Describes a list of job definitions.'
-
-  example "
+  name "aws_batch_job_definitions"
+  desc "Describes a list of job definitions."
+  example <<-EXAMPLE
     describe aws_batch_job_definitions do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:job_definition_names,                    field: :job_definition_name)
-             .register_column(:job_definition_arns,                     field: :job_definition_arn)
-             .register_column(:revisions,                               field: :revision)
-             .register_column(:statuses,                                field: :status)
-             .register_column(:types,                                   field: :type)
-             .register_column(:parameters,                              field: :parameters)
-             .register_column(:tags,                                    field: :tags)
-             .register_column(:propagate_tags,                          field: :propagate_tags)
-             .register_column(:platform_capabilities,                   field: :platform_capabilities)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:job_definition_names,                    field: :job_definition_name)
+    .register_column(:job_definition_arns,                     field: :job_definition_arn)
+    .register_column(:revisions,                               field: :revision)
+    .register_column(:statuses,                                field: :status)
+    .register_column(:types,                                   field: :type)
+    .register_column(:parameters,                              field: :parameters)
+    .register_column(:tags,                                    field: :tags)
+    .register_column(:propagate_tags,                          field: :propagate_tags)
+    .register_column(:platform_capabilities,                   field: :platform_capabilities)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

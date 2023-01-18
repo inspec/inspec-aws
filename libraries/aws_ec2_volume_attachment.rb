@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2VolumeAttachment < AwsResourceBase
-  name 'aws_ec2_volume_attachment'
-  desc 'Describes the specified EBS volumes attachments or all of your EBS volumes attachments.'
+  name "aws_ec2_volume_attachment"
+  desc "Describes the specified EBS volumes attachments or all of your EBS volumes attachments."
 
   example "
     describe aws_ec2_volume_attachment(volume_id: 'VolumeID') do

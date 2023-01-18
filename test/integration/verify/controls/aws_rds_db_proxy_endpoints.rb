@@ -2,7 +2,6 @@ aws_proxy_name = input(:aws_proxy_name, value: '', description: '')
 proxy_endpoint_name = input(:proxy_endpoint_name, value: '', description: '')
 
 control 'aws-rds-db-proxy-endpoints-1.0' do
-  impact 1.0
   title 'Test the properties of the rds db proxy endpoints.'
 
   describe aws_rds_db_proxy_endpoints(db_proxy_name: aws_proxy_name) do

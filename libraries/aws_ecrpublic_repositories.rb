@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcrPublicRepositories < AwsResourceBase
-  name 'aws_ecrpublic_repositories'
-  desc 'Verifies settings for a collection of AWS ECR Public Repositories.'
+  name "aws_ecrpublic_repositories"
+  desc "Verifies settings for a collection of AWS ECR Public Repositories."
 
   example "
     describe aws_ecrpublic_repositories do
@@ -17,11 +17,11 @@ class AwsEcrPublicRepositories < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns, field: :arn)
-             .register_column(:names, field: :name)
-             .register_column(:uris, field: :uri)
-             .register_column(:created_at_dates, field: :created_at)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:arns, field: :arn)
+    .register_column(:names, field: :name)
+    .register_column(:uris, field: :uri)
+    .register_column(:created_at_dates, field: :created_at)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

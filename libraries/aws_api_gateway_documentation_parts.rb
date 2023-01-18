@@ -1,30 +1,26 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayDocumentationParts < AwsResourceBase
-  name 'aws_api_gateway_documentation_parts'
-  desc 'Lists all the API Gateway documentation parts.'
-
-  example "
-    describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
+  name "aws_api_gateway_documentation_parts"
+  desc "Lists all the API Gateway documentation parts."
+  example <<-EXAMPLE
+    describe aws_api_gateway_documentation_parts(rest_api_id: 'REST_API_ID') do
       it { should exist }
+      its('ids') { should include 'DOCUMENTATION_PART_ID' }
     end
-
-    describe aws_api_gateway_documentation_parts(rest_api_id: REST_API_ID) do
-      its('ids') { should include DOCUMENTATION_PART_ID' }
-    end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:types, field: :type)
-             .register_column(:paths, field: :path)
-             .register_column(:methods, field: :method)
-             .register_column(:status_codes, field: :status_code)
-             .register_column(:names, field: :name)
-             .register_column(:properties, field: :properties)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:types, field: :type)
+    .register_column(:paths, field: :path)
+    .register_column(:methods, field: :method)
+    .register_column(:status_codes, field: :status_code)
+    .register_column(:names, field: :name)
+    .register_column(:properties, field: :properties)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

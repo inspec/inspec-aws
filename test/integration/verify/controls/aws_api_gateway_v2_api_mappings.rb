@@ -5,7 +5,6 @@ aws_apigatewayv2_api_mapping_api_mapping_key = input(:aws_apigatewayv2_api_mappi
 aws_apigatewayv2_api_mapping_stage = input(:aws_apigatewayv2_api_mapping_stage, value: '', description: '')
 
 control 'aws-api-gateway-v2-api-mappings' do
-  impact 1.0
   title 'Ensure API Gateway API Mappings resource has the correct properties.'
   
   describe aws_api_gateway_v2_api_mappings(domain_name: aws_apigatewayv2_api_mapping_domain_name) do

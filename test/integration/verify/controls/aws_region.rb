@@ -4,7 +4,6 @@ aws_region_exists = input(:aws_region_exists, value: 'eu-west-2', description: '
 aws_region_endpoint_exists = input(:aws_region_endpoint_exists, value: 'ec2.eu-west-2.amazonaws.com', description: 'An AWS region.')
 
 control 'aws-region-1.0' do
-  impact 1.0
   title 'Ensure AWS region has the correct properties.'
 
   describe aws_region(region_name: aws_region_exists) do

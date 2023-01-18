@@ -1,7 +1,6 @@
 client_vpn_endpoint_id = input(:client_vpn_endpoint_id, value: '', description: '')
 
 skip_control 'aws-ec2-client-vpn-endpoint-1.0' do
-  impact 1.0
   title 'Test the properties of the vpn endpoint.'
 
   describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: client_vpn_endpoint_id) do

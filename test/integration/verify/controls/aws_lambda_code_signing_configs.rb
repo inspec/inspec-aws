@@ -4,7 +4,6 @@ aws_lambda_code_signing_config_description = input(:aws_lambda_code_signing_conf
 aws_lambda_code_signing_config_last_modified = input(:aws_lambda_code_signing_config_last_modified, value: '', description: '')
 
 control 'aws-lambda-code-signing-configs-1.0' do
-  impact 1.0
   title 'Test the properties of the lambda code signing configs.'
 
   describe aws_lambda_code_signing_configs do

@@ -3,7 +3,6 @@ aws_iam_access_key = input(:aws_iam_access_key_id, value: '', description: 'The 
 invalid_username = 'i-do-not-exist'
 
 control 'aws-iam-access-keys-1.0' do
-  impact 1.0
   title 'Ensure AWS IAM Access Key has the correct properties.'
 
   describe aws_iam_access_keys do

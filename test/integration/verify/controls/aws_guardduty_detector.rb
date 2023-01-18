@@ -4,7 +4,6 @@ aws_guardduty_detector_id = input(:aws_guardduty_detector_id, value: '', descrip
 aws_guardduty_detector_publishing_frequency = input(:aws_guardduty_detector_publishing_frequency, value: '', description: '')
 
 control 'aws-guardduty-detector-1.0' do
-  impact 1.0
   title 'Ensure AWS GuardDuty Detector has current properties'
 
   describe aws_guardduty_detector(detector_id: aws_guardduty_detector_id) do

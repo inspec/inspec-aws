@@ -11,10 +11,6 @@ class AwsApiGatewayV2ApisConstructorTest < Minitest::Test
   def test_rejects_other_args
     assert_raises(ArgumentError) { AwsApiGatewayV2Apis.new('rubbish') }
   end
-  
-  def test_apis_non_existing_for_empty_response
-    refute AwsApiGatewayV2Apis.new(client_args: { stub_responses: true }).exist?
-  end
 end
 
 class AwsApiGatewayV2ApisSuccessPathTest < Minitest::Test

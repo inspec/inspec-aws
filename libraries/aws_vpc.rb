@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVpc < AwsResourceBase
-  name 'aws_vpc'
-  desc 'Verifies settings for an AWS VPC.'
+  name "aws_vpc"
+  desc "Verifies settings for an AWS VPC."
 
   example "
     describe aws_vpc(vpc_id: 'vpc-12345678') do
@@ -20,12 +20,12 @@ class AwsVpc < AwsResourceBase
     validate_parameters(allow: [:vpc_id])
 
     if opts[:vpc_id].nil?
-      @display_name = 'default'
-      filter = { name: 'isDefault', values: ['true'] }
+      @display_name = "default"
+      filter = { name: "isDefault", values: ["true"] }
     else
       @display_name = opts[:vpc_id]
       raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-([0-9a-f]{8})|(^vpc\-[0-9a-f]{17})$/
-      filter = { name: 'vpc-id', values: [opts[:vpc_id]] }
+      filter = { name: "vpc-id", values: [opts[:vpc_id]] }
     end
 
     catch_aws_errors do
@@ -61,7 +61,7 @@ class AwsVpc < AwsResourceBase
   end
 
   def resource_id
-    @response ? @display_name : ''
+    @response ? @display_name : ""
   end
 
   def has_cidr_block_associated?(cidr_block)
@@ -105,13 +105,13 @@ class AwsVpc < AwsResourceBase
   end
 
   def has_network_border_group_value?(ipv6_cidr_block:, network_border_group:)
-    raise ArgumentError, 'parameters `ipv6_cidr_block` and `network_border_group` should be present' unless ipv6_cidr_block && network_border_group
+    raise ArgumentError, "parameters `ipv6_cidr_block` and `network_border_group` should be present" unless ipv6_cidr_block && network_border_group
 
     ipv6_cidr_block_associations.any? { |assoc| assoc.ipv_6_cidr_block == ipv6_cidr_block && assoc.network_border_group == network_border_group }
   end
 
   def has_ipv6_pool_value?(ipv6_cidr_block:, ipv6_pool:)
-    raise ArgumentError, 'parameters `ipv6_cidr_block` and `ipv6_pool` should be present' unless ipv6_cidr_block && ipv6_pool
+    raise ArgumentError, "parameters `ipv6_cidr_block` and `ipv6_pool` should be present" unless ipv6_cidr_block && ipv6_pool
 
     ipv6_cidr_block_associations.any? { |assoc| assoc.ipv_6_cidr_block == ipv6_cidr_block && assoc.ipv_6_pool == ipv6_pool }
   end

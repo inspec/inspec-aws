@@ -5,7 +5,6 @@ aws_dynamodb_table_arn = input(:aws_dynamodb_table_arn, value: '', description: 
 
 control 'aws-dynamodb-table-1.0' do
 
-  impact 1.0
   title 'Ensure AWS Dynamodb Table has the correct properties.'
 
   describe aws_dynamodb_table(table_name: aws_dynamodb_table_name) do

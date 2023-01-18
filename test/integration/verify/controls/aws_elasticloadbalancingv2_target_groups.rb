@@ -1,7 +1,6 @@
 aws_target_group_arn = input(:aws_target_group_arn, value: '', description: '')
 
 control 'aws-elbv2-target-groups-1.0' do
-  impact 1.0
   title 'Ensure AWS ELBv2 Target Groups has the correct properties.'
 
   describe aws_elasticloadbalancingv2_target_groups do

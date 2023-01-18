@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmAssociations < AwsResourceBase
-  name 'aws_ssm_associations'
-  desc 'Verifies settings for a SSM Association in bulk.'
+  name "aws_ssm_associations"
+  desc "Verifies settings for a SSM Association in bulk."
   example "
     describe aws_ssm_associations do
       it { should exist }
@@ -12,17 +12,17 @@ class AwsSsmAssociations < AwsResourceBase
   attr_reader :table, :api_response
 
   FilterTable.create
-             .register_column(:names,                field: :name)
-             .register_column(:instance_ids,         field: :instance_id)
-             .register_column(:association_ids,      field: :association_id)
-             .register_column(:association_versions, field: :association_version)
-             .register_column(:document_versions,    field: :document_version)
-             .register_column(:targets,              field: :targets)
-             .register_column(:last_execution_dates, field: :last_execution_date)
-             .register_column(:overviews,            field: :overview)
-             .register_column(:schedule_expressions, field: :schedule_expression)
-             .register_column(:association_names,    field: :association_name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names,                field: :name)
+    .register_column(:instance_ids,         field: :instance_id)
+    .register_column(:association_ids,      field: :association_id)
+    .register_column(:association_versions, field: :association_version)
+    .register_column(:document_versions,    field: :document_version)
+    .register_column(:targets,              field: :targets)
+    .register_column(:last_execution_dates, field: :last_execution_date)
+    .register_column(:overviews,            field: :overview)
+    .register_column(:schedule_expressions, field: :schedule_expression)
+    .register_column(:association_names,    field: :association_name)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
