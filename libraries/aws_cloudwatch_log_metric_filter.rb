@@ -1,16 +1,15 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudwatchLogMetricFilter < AwsResourceBase
-  name 'aws_cloudwatch_log_metric_filter'
-  desc 'Verifies individual Cloudwatch Log Metric Filters.'
-
-  example "
-  # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
-  # If more than one Filter is returned, an error will be raised.
-  describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
-    it { should exist }
-  end
-  "
+  name "aws_cloudwatch_log_metric_filter"
+  desc "Verifies individual Cloudwatch Log Metric Filters."
+  example <<-EXAMPLE
+    # Look for a Log Metric Filter. Results may be narrowed by a combination of filter name, log group name, or pattern.
+    # If more than one Filter is returned, an error will be raised.
+    describe aws_cloudwatch_log_metric_filter(filter_name: 'FILTER_NAME', log_group_name: 'LOG_GROUP_NAME') do
+      it { should exist }
+    end
+  EXAMPLE
 
   attr_reader :filter_name, :log_group_name, :metric_name, :metric_namespace, :pattern
 
@@ -37,7 +36,7 @@ class AwsCloudwatchLogMetricFilter < AwsResourceBase
     return false if @metric_filters.empty?
 
     if @metric_filters.count > 1
-      raise 'More than one result was returned. Consider passing more parameters or a more specific pattern to narrow down results.'
+      raise "More than one result was returned. Consider passing more parameters or a more specific pattern to narrow down results."
     end
 
     @filter_name    = @metric_filters.first.filter_name

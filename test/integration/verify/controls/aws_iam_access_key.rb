@@ -4,7 +4,6 @@ invalid_username = 'i-do-not-exist'
 invalid_key_id = 'AKIA1111111111111111'
 
 control 'aws-iam-access-key-1.0' do
-  impact 1.0
   title 'Ensure AWS IAM Access Key has the correct properties.'
 
   # Neither user nor access key ID exist

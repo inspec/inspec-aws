@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSStepFunctionsActivities < AwsResourceBase
-  name 'aws_stepfunctions_activities'
-  desc 'Retrieves a task in the maintenance window.'
+  name "aws_stepfunctions_activities"
+  desc "Retrieves a task in the maintenance window."
 
   example "
     describe aws_stepfunctions_activities do
@@ -13,10 +13,10 @@ class AWSStepFunctionsActivities < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:activity_arns, field: :activity_arn)
-             .register_column(:names, field: :name)
-             .register_column(:creation_dates, field: :creation_date)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:activity_arns, field: :activity_arn)
+    .register_column(:names, field: :name)
+    .register_column(:creation_dates, field: :creation_date)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

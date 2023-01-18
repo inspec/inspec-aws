@@ -3,7 +3,6 @@ broker_arn = input(:broker_arn, value: '', description: '')
 title 'Test AWS MQ Broker in bulk.'
 
 control 'aws_mq_brokers-1.0' do
-  impact 1.0
   title 'Ensure AWS MQ Brokers has the correct properties.'
   
   describe aws_mq_brokers do

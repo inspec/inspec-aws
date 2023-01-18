@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRegions < AwsResourceBase
-  name 'aws_regions'
-  desc 'Verifies settings for AWS Regions in bulk.'
+  name "aws_regions"
+  desc "Verifies settings for AWS Regions in bulk."
 
   example "
     describe aws_regions do
@@ -13,9 +13,9 @@ class AwsRegions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:region_names, field: :region_name)
-             .register_column(:endpoints,    field: :endpoint)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:region_names, field: :region_name)
+    .register_column(:endpoints,    field: :endpoint)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

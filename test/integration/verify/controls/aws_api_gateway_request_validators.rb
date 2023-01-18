@@ -5,7 +5,6 @@ aws_api_gateway_request_validator_validate_request_body = input(:aws_api_gateway
 aws_api_gateway_request_validator_validate_request_parameters = input(:aws_api_gateway_request_validator_validate_request_body, value: false, description: '')
 
 control 'aws-api-gateway-request-validators-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway request validators.'
 
   describe aws_api_gateway_request_validators(rest_api_id: aws_api_gateway_request_validator_rest_api_id) do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVpces < AwsResourceBase
-  name 'aws_vpc_endpoints'
-  desc 'Verifies settings for an AWS VPC Endpoints in bulk.'
+  name "aws_vpc_endpoints"
+  desc "Verifies settings for an AWS VPC Endpoints in bulk."
 
   example "
     describe aws_vpc_endpoints do
@@ -13,16 +13,16 @@ class AwsVpces < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-             .register_column(:vpc_endpoint_ids,     field: :vpc_endpoint_id)
-             .register_column(:vpc_endpoint_types,   field: :vpc_endpoint_type)
-             .register_column(:vpc_ids,              field: :vpc_id)
-             .register_column(:service_names,        field: :service_name)
-             .register_column(:states,               field: :state)
-             .register_column(:route_table_ids,      field: :route_table_ids)
-             .register_column(:subnet_ids,           field: :subnet_ids)
-             .register_column(:private_dns_enabled,  field: :private_dns_enabled)
-             .register_column(:tags,                 field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:vpc_endpoint_ids,     field: :vpc_endpoint_id)
+    .register_column(:vpc_endpoint_types,   field: :vpc_endpoint_type)
+    .register_column(:vpc_ids,              field: :vpc_id)
+    .register_column(:service_names,        field: :service_name)
+    .register_column(:states,               field: :state)
+    .register_column(:route_table_ids,      field: :route_table_ids)
+    .register_column(:subnet_ids,           field: :subnet_ids)
+    .register_column(:private_dns_enabled,  field: :private_dns_enabled)
+    .register_column(:tags,                 field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

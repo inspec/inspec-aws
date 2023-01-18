@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEc2TransitGatewayRouteTables < AwsResourceBase
-  name 'aws_ec2_transit_gateway_route_tables'
-  desc 'Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.'
+  name "aws_ec2_transit_gateway_route_tables"
+  desc "Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results."
 
   example "
     describe aws_ec2_transit_gateway_route_tables do
@@ -13,14 +13,14 @@ class AwsEc2TransitGatewayRouteTables < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_route_table_ids,                  field: :transit_gateway_route_table_id)
-             .register_column(:transit_gateway_ids,                              field: :transit_gateway_id)
-             .register_column(:states,                                           field: :state)
-             .register_column(:default_association_route_tables,                 field: :default_association_route_table)
-             .register_column(:default_propagation_route_tables,                 field: :default_propagation_route_table)
-             .register_column(:creation_times,                                   field: :creation_time)
-             .register_column(:tags,                                             field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:transit_gateway_route_table_ids,                  field: :transit_gateway_route_table_id)
+    .register_column(:transit_gateway_ids,                              field: :transit_gateway_id)
+    .register_column(:states,                                           field: :state)
+    .register_column(:default_association_route_tables,                 field: :default_association_route_table)
+    .register_column(:default_propagation_route_tables,                 field: :default_propagation_route_table)
+    .register_column(:creation_times,                                   field: :creation_time)
+    .register_column(:tags,                                             field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

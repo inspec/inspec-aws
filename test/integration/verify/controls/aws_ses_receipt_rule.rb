@@ -2,7 +2,6 @@ aws_ses_receipt_rule_name = input(:aws_ses_receipt_rule_name, value: '', descrip
 aws_ses_receipt_rule_rule_set_name = input(:aws_ses_receipt_rule_rule_set_name, value: '', description: '')
 
 control 'aws-ses-receipt-rule-1.0' do
-  impact 1.0
   title 'Test the properties of the ses receipt rule.'
 
   describe aws_ses_receipt_rule(rule_set_name: aws_ses_receipt_rule_rule_set_name, rule_name: aws_ses_receipt_rule_name) do

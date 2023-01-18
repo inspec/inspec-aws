@@ -1,5 +1,4 @@
 control 'aws-ec2-task-definitions-1.0' do
-  impact 1.0
   title 'Ensure EC2 Task Definitions has the correct properties.'
   
   describe aws_ecs_task_definitions do

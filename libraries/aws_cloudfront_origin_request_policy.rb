@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
-  name 'aws_cloudfront_origin_request_policy'
-  desc 'Describes an origin request policy.'
-
-  example "
+  name "aws_cloudfront_origin_request_policy"
+  desc "Describes an origin request policy."
+  example <<-EXAMPLE
     describe aws_cloudfront_origin_request_policy(id: 'ID') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)

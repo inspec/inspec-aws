@@ -1,25 +1,24 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoUserPools < AwsResourceBase
-  name 'aws_cognito_userpools'
-  desc 'Lists the user pools associated with an AWS account.'
-
-  example "
+  name "aws_cognito_userpools"
+  desc "Lists the user pools associated with an AWS account."
+  example <<-EXAMPLE
     describe aws_cognito_userpools do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids,                                 field: :id)
-             .register_column(:names,                               field: :name)
-             .register_column(:lambda_configs,                      field: :lambda_config)
-             .register_column(:statuses,                            field: :status)
-             .register_column(:last_modified_dates,                 field: :last_modified_date)
-             .register_column(:creation_dates,                      field: :creation_date)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids,                                 field: :id)
+    .register_column(:names,                               field: :name)
+    .register_column(:lambda_configs,                      field: :lambda_config)
+    .register_column(:statuses,                            field: :status)
+    .register_column(:last_modified_dates,                 field: :last_modified_date)
+    .register_column(:creation_dates,                      field: :creation_date)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,25 +1,25 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayDocumentationVersions < AwsResourceBase
-  name 'aws_api_gateway_documentation_versions'
-  desc 'Lists all the API Gateway documentation Version.'
-
-  example "
+  name "aws_api_gateway_documentation_versions"
+  desc "Lists all the API Gateway documentation Version."
+  example <<-EXAMPLE
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       it { should exist }
     end
+
     describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do
       its('versions') { should include 'VERSION' }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:versions, field: :version)
-             .register_column(:created_dates, field: :created_date)
-             .register_column(:descriptions, field: :description)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:versions, field: :version)
+    .register_column(:created_dates, field: :created_date)
+    .register_column(:descriptions, field: :description)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

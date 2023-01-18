@@ -19,7 +19,6 @@ aws_apigatewayv2_integration_timeout_milliseconds = input(:aws_apigatewayv2_inte
 aws_apigatewayv2_integration_tls_config = input(:aws_apigatewayv2_integration_tls_config, value: '', description: '')
 
 control 'aws-api-gateway-v2-integration-v1.0.0' do
-  impact 1.0
   title 'Ensure API Gateway API Integration resource has the correct properties.'
 
   describe aws_api_gateway_v2_integration(api_id: aws_apigatewayv2_integration_api_id, integration_id: aws_apigatewayv2_integration_id) do

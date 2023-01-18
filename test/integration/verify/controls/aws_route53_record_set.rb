@@ -4,7 +4,6 @@ hosted_zone_id = input(:aws_route53_hosted_zone_id, value: '', description: '')
 start_record_name = input(:aws_route52_record_set_name, value: '', description: 'The AWS Route53 record set identifier.')
 
 control 'aws-route53-record-set-1.0' do
-  impact 1.0
   title 'Ensure AWS Route53 record set has the correct properties.'
 
   describe aws_route53_record_set(hosted_zone_id: hosted_zone_id, start_record_name: start_record_name) do

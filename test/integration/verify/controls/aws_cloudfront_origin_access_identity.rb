@@ -3,7 +3,6 @@ aws_cloudfront_origin_access_identity_s3_canonical_user_id = input(:aws_cloudfro
 aws_cloudfront_origin_access_identity_caller_reference = input(:aws_cloudfront_origin_access_identity_caller_reference, value: '', description: '')
 
 control 'aws-cloudfront-origin-access-identity' do
-  impact 1.0
   title 'Ensure Cloud Front Origin Access Identity resource has the correct properties.'
 
   describe aws_cloudfront_origin_access_identity(id: aws_cloudfront_origin_access_identity_id) do

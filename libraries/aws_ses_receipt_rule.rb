@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSESReceiptRule < AwsResourceBase
-  name 'aws_ses_receipt_rule'
-  desc 'Returns the details of the specified receipt rule.'
+  name "aws_ses_receipt_rule"
+  desc "Returns the details of the specified receipt rule."
 
   example "
     describe aws_ses_receipt_rule(rule_set_name: 'RULE_SET_NAME', rule_name: 'RULE_NAME') do

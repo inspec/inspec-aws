@@ -1,7 +1,6 @@
 aws_ssm_resource_data_sync_name = input(:aws_ssm_resource_data_sync_name, value: '', description: '')
 
 control 'aws_ssm_resource_data_syncs-1.0' do
-  impact 1.0
   title 'Test the properties of the ssm resource data syncs.'
 
   describe aws_ssm_resource_data_syncs do

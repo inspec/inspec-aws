@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSLambdaCodeSigningConfig < AwsResourceBase
-  name 'aws_lambda_code_signing_config'
-  desc 'Returns information about the specified code signing configuration.'
+  name "aws_lambda_code_signing_config"
+  desc "Returns information about the specified code signing configuration."
 
   example "
     describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do

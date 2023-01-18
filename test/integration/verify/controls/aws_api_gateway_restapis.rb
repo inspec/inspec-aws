@@ -1,7 +1,6 @@
 aws_api_gateway_rest_api_id = input(:aws_api_gateway_rest_api_id, value: '', description: '')
 
 control 'aws-api-gateway-restapis-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway restapis.'
 
   describe aws_api_gateway_restapis do

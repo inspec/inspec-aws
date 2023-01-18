@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRoute53RecordSets < AwsResourceBase
-  name 'aws_route53_record_sets'
-  desc 'Lists the resource record sets in a specified hosted zone.'
+  name "aws_route53_record_sets"
+  desc "Lists the resource record sets in a specified hosted zone."
 
   example "
     describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
@@ -13,20 +13,20 @@ class AWSRoute53RecordSets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:names,                                       field: :name)
-             .register_column(:types,                                       field: :type)
-             .register_column(:set_identifiers,                             field: :set_identifier)
-             .register_column(:weights,                                     field: :weight)
-             .register_column(:regions,                                     field: :region)
-             .register_column(:geo_locations,                               field: :geo_location)
-             .register_column(:failovers,                                   field: :failover)
-             .register_column(:multi_value_answers,                         field: :multi_value_answer)
-             .register_column(:ttls,                                        field: :ttl)
-             .register_column(:resource_records,                            field: :resource_records, style: :simple)
-             .register_column(:alias_targets,                               field: :alias_target)
-             .register_column(:health_check_ids,                            field: :health_check_id)
-             .register_column(:traffic_policy_instance_ids,                 field: :traffic_policy_instance_id)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:names,                                       field: :name)
+    .register_column(:types,                                       field: :type)
+    .register_column(:set_identifiers,                             field: :set_identifier)
+    .register_column(:weights,                                     field: :weight)
+    .register_column(:regions,                                     field: :region)
+    .register_column(:geo_locations,                               field: :geo_location)
+    .register_column(:failovers,                                   field: :failover)
+    .register_column(:multi_value_answers,                         field: :multi_value_answer)
+    .register_column(:ttls,                                        field: :ttl)
+    .register_column(:resource_records,                            field: :resource_records, style: :simple)
+    .register_column(:alias_targets,                               field: :alias_target)
+    .register_column(:health_check_ids,                            field: :health_check_id)
+    .register_column(:traffic_policy_instance_ids,                 field: :traffic_policy_instance_id)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

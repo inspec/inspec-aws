@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVPCEndpointServicePermission < AwsResourceBase
-  name 'aws_vpc_endpoint_service_permission'
-  desc 'Describes the principal (service consumers) that are permitted to discover your VPC endpoint service.'
+  name "aws_vpc_endpoint_service_permission"
+  desc "Describes the principal (service consumers) that are permitted to discover your VPC endpoint service."
   example "
     describe aws_vpc_endpoint_service_permission(service_id: 'vpce-svc-04deb776dc2b8e67f', principal: 'arn:aws:iam::112758395563:user/chef-server') do
       it { should exist }
@@ -23,7 +23,7 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
     validate_parameters(required: %i(service_id principal))
     filters = {
       filters: [
-        name: 'principal',
+        name: "principal",
         values: [opts[:principal]],
       ],
     }
@@ -37,7 +37,7 @@ class AwsVPCEndpointServicePermission < AwsResourceBase
   end
 
   def resource_id
-    "#{@opts ? @opts[:service_id] : ''}_#{@opts ? @opts[:principal] : ''}"
+    "#{@opts ? @opts[:service_id] : ""}_#{@opts ? @opts[:principal] : ""}"
   end
 
   def to_s

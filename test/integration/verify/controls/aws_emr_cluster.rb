@@ -10,7 +10,6 @@ aws_emr_cluster_visible_to_all_users = (aws_emr_cluster_visible_to_all_users.dow
 aws_emr_cluster_release_label = input(:aws_emr_cluster_release_label, value: '', description: 'Release label for the Amazon EMR release.')
 
 control 'aws-emr-cluster-1.0' do
-  impact 1.0
   title 'Test single AWS EMR Cluster'
 
   describe aws_emr_cluster(cluster_id: aws_emr_cluster_id) do

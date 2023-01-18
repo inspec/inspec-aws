@@ -1,5 +1,4 @@
 control 'aws-logs-metric-filters-1.0' do
-  impact 1.0
   title 'Describes the metric filters of the logs.'
 
   describe aws_logs_metric_filters do

@@ -4,7 +4,6 @@ aws_vpc_dhcp_options_id = input(:aws_vpc_dhcp_options_id, value: '', description
 aws_vpc_dhcp_options_name = input(:aws_vpc_dhcp_options_name, value: '', description: 'The AWS EC2 DHCP Option Name.')
 
 control 'aws-ec2-dhcp-option-1.0' do
-  impact 1.0
   title 'Ensure AWS EC2 DHCP Option has the correct properties.'
 
   describe aws_ec2_dhcp_option(dhcp_options_id: aws_vpc_dhcp_options_id) do

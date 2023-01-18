@@ -7,7 +7,6 @@ aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 aws_availability_zone = input(:aws_availability_zone, value: '', description: 'The AWS AZ.')
 
 control 'aws-subnet-1.0' do
-  impact 1.0
   title 'Ensure AWS VPC Subnet has the correct properties.'
 
   describe aws_subnet(subnet_id: aws_subnet_id) do

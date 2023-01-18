@@ -1,11 +1,11 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsTransitGatewayRoute < AwsResourceBase
   STATES = %w{active blackhole}.freeze
   TYPES = %w{static propagated}.freeze
   ATTACHMENT_RESOURCE_TYPES = %w{vpc vpn direct-connect-gateway connect peering tgw-peering}.freeze
-  name 'aws_transit_gateway_route'
-  desc 'Verifies settings for an AWS Transit Gateway.'
+  name "aws_transit_gateway_route"
+  desc "Verifies settings for an AWS Transit Gateway."
 
   example "
     describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -28,7 +28,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
   end
 
   ATTACHMENT_RESOURCE_TYPES.each do |resource_type|
-    resource_type_name = resource_type.gsub('-', '_')
+    resource_type_name = resource_type.gsub("-", "_")
     method_name = "#{resource_type_name}_attachment?"
     define_method method_name do
       attachment_resource_type == resource_type
@@ -49,7 +49,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
   end
 
   def resource_id
-    @response ? @display_name : ''
+    @response ? @display_name : ""
   end
 
   def to_s
@@ -73,7 +73,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
       transit_gateway_route_table_id: @opts[:transit_gateway_route_table_id],
       filters: [
         {
-          name: 'route-search.exact-match',
+          name: "route-search.exact-match",
           values: [@opts[:cidr_block]],
         },
       ],
@@ -84,7 +84,7 @@ class AwsTransitGatewayRoute < AwsResourceBase
   end
 
   def route
-    raise StandardError, 'More than One Route is available' if @response.additional_routes_available
+    raise StandardError, "More than One Route is available" if @response.additional_routes_available
 
     @response.routes.first
   end

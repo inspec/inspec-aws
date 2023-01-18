@@ -5,7 +5,6 @@ aws_api_gateway_model_description = input(:aws_api_gateway_model_description, va
 aws_api_gateway_model_rest_api_id = input(:aws_api_gateway_model_rest_api_id, value: '', description: '')
 
 control 'aws-api-gateway-model-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway model.'
 
   describe aws_api_gateway_model(rest_api_id: aws_api_gateway_model_rest_api_id, model_name: aws_api_gateway_model_name) do

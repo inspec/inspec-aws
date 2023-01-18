@@ -1,5 +1,4 @@
 control 'aws_redshift_clusters-1.0' do
-  impact 1.0
   title 'Ensure AWS redshift clusters has the correct properties.'
 
   describe aws_redshift_clusters do

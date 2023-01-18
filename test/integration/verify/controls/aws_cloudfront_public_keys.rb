@@ -3,7 +3,6 @@ aws_cloudfront_public_key_id = input(:aws_cloudfront_public_key_id, value: '', d
 aws_cloudfront_public_key = input(:aws_cloudfront_public_key, value: '', description: '')
 
 control 'aws_cloudfront_public_keys-1.0' do
-  impact 1.0
   title 'Describes the AWS cloudfront public keys.'
 
   describe aws_cloudfront_public_keys do

@@ -7,8 +7,7 @@ creation_time = input(:creation_time, value: '', description: 'The creation time
 tags = input(:tags, value: '', description: 'The tags of the transit gateway route table.')
 
 control 'aws-transit-gateway-route-tables-1.0' do
-    impact 1.0
-    title 'Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.'
+      title 'Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.'
     
     describe aws_ec2_transit_gateway_route_tables do
         it { should exist }

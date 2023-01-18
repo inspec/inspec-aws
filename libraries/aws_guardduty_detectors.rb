@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsGuardDutyDetectors < AwsResourceBase
-  name 'aws_guardduty_detectors'
-  desc 'Verifies settings for a Detector in bulk.'
+  name "aws_guardduty_detectors"
+  desc "Verifies settings for a Detector in bulk."
   example "
     describe aws_guardduty_detectors do
       it { should exist }
@@ -12,8 +12,8 @@ class AwsGuardDutyDetectors < AwsResourceBase
   attr_reader :table, :detector_rows, :api_response
 
   FilterTable.create
-             .register_column(:detector_ids, field: :detector_ids)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:detector_ids, field: :detector_ids)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

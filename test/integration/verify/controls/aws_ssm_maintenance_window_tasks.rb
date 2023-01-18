@@ -4,7 +4,6 @@ aws_ssm_maintenance_window_task_task_arn = input(:aws_ssm_maintenance_window_tas
 aws_ssm_maintenance_window_task_task_type = input(:aws_ssm_maintenance_window_task_task_type, value: '', description: '')
 
 control 'aws-ssm-maintenance-window-tasks-1.0' do
-  impact 1.0
   title 'Test the properties of the ssm maintenance window tasks.'
 
   describe aws_ssm_maintenance_window_tasks(window_id: aws_ssm_maintenance_window_id) do

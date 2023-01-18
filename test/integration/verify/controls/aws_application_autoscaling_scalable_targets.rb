@@ -1,5 +1,4 @@
 control 'aws-application-autoscaling-scalable-targets' do
-  impact 1.0
   title 'Ensure Application AutoScaling Targets resource has the correct properties.'
   
   describe aws_application_autoscaling_scalable_targets( service_namespace: 'dynamodb' ) do

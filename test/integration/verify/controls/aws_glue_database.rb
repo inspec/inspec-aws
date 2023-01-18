@@ -1,5 +1,4 @@
 control 'aws-glue-database-1.0' do
-  impact 1.0
   title 'Ensure AWS Glue Database singular resource have the correct properties.'
 
   describe aws_glue_database(name: 'sampledb') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSLambdaEventInvokeConfigs < AwsResourceBase
-  name 'aws_lambda_event_invoke_configs'
-  desc 'Gets information about the scalable targets in the specified namespace.'
+  name "aws_lambda_event_invoke_configs"
+  desc "Gets information about the scalable targets in the specified namespace."
 
   example "
     describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do
@@ -13,12 +13,12 @@ class AWSLambdaEventInvokeConfigs < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:last_modified, field: :last_modified)
-             .register_column(:function_arns, field: :function_arn)
-             .register_column(:maximum_retry_attempts, field: :maximum_retry_attempts)
-             .register_column(:maximum_event_age_in_seconds, field: :maximum_event_age_in_seconds)
-             .register_column(:destination_configs, field: :destination_config)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:last_modified, field: :last_modified)
+    .register_column(:function_arns, field: :function_arn)
+    .register_column(:maximum_retry_attempts, field: :maximum_retry_attempts)
+    .register_column(:maximum_event_age_in_seconds, field: :maximum_event_age_in_seconds)
+    .register_column(:destination_configs, field: :destination_config)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

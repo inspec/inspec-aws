@@ -1,7 +1,6 @@
 title 'Test AWS AMIs in bulk'
 
 control 'aws-amis-1.0' do
-  impact 1.0
   title 'Ensure AWS AMI has current properties'
 
   aws_amis(architecture: 'i386', platform_details: 'Linux/UNIX', is_public: true, hypervisor: 'ovm').where { state == 'available' }.image_ids.each do |image|

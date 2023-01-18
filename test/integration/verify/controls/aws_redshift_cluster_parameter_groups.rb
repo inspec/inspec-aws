@@ -2,7 +2,6 @@ aws_parameter_group_name = input(:aws_redshift_parameter_group_name, value: '', 
 aws_parameter_group_family = input(:aws_redshift_parameter_group_family, value: '', description: 'The family of the parameter group.')
 
 control 'aws-redshift-parameter-groups-1.0' do
-  impact 1.0
   title 'Ensure AWS Redshift Parameter Group plural resource has the correct properties.'
   
   describe aws_redshift_cluster_parameter_groups do

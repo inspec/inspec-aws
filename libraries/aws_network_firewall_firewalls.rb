@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSNetworkFirewallFirewalls < AwsResourceBase
-  name 'aws_network_firewall_firewalls'
-  desc 'Retrieves the metadata for the firewalls that you have defined.'
+  name "aws_network_firewall_firewalls"
+  desc "Retrieves the metadata for the firewalls that you have defined."
 
   example "
     describe aws_network_firewall_firewalls do
@@ -13,9 +13,9 @@ class AWSNetworkFirewallFirewalls < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:firewall_names, field: :firewall_name)
-             .register_column(:firewall_arns, field: :firewall_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:firewall_names, field: :firewall_name)
+    .register_column(:firewall_arns, field: :firewall_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

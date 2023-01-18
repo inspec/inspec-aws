@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSS3AccessPoints < AwsResourceBase
-  name 'aws_s3_access_points'
-  desc 'List one or more S3 Access Points.'
+  name "aws_s3_access_points"
+  desc "List one or more S3 Access Points."
 
   example "
     describe aws_s3_access_points(bucket_name: 'BucketName') do
@@ -13,10 +13,10 @@ class AWSS3AccessPoints < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:filter_access_point_arns, field: :filter_access_point_arn)
-             .register_column(:filter_and_access_point_arns, field: :filter_and_access_point_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:filter_access_point_arns, field: :filter_access_point_arn)
+    .register_column(:filter_and_access_point_arns, field: :filter_and_access_point_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

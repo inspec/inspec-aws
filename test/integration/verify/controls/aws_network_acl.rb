@@ -6,7 +6,6 @@ vpc_id = input(:input, value: '', description: 'The ID of the VPC for the networ
 title 'Test single AWS Network ACL'
 
 control 'aws-network-acl-1.0' do
-  impact 1.0
   title 'Check AWS Network ACL has the correct properties.'
 
   describe aws_network_acl(network_acl_id: network_acl_id) do

@@ -5,7 +5,6 @@ aws_db_option_group_engine_name= input(:aws_db_option_group_engine_name, value: 
 aws_db_option_group_description= input(:aws_db_option_group_description, value: '', description: '')
 
 control 'aws-rds-option-groups-1.0' do
-  impact 1.0
   title 'Ensure AWS RDS Option Groups has the correct properties.'
   
   describe aws_rds_option_groups do

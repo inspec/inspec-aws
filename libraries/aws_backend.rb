@@ -1,66 +1,66 @@
-require 'active_support'
-require 'active_support/core_ext/string'
+require "active_support"
+require "active_support/core_ext/string"
 
-require 'aws-sdk-autoscaling'
-require 'aws-sdk-batch'
-require 'aws-sdk-cloudformation'
-require 'aws-sdk-cloudfront'
-require 'aws-sdk-cloudtrail'
-require 'aws-sdk-cloudwatch'
-require 'aws-sdk-cloudwatchlogs'
-require 'aws-sdk-configservice'
-require 'aws-sdk-core'
-require 'aws-sdk-dynamodb'
-require 'aws-sdk-ec2'
-require 'aws-sdk-ecr'
-require 'aws-sdk-ecrpublic'
-require 'aws-sdk-ecs'
-require 'aws-sdk-eks'
-require 'aws-sdk-elasticache'
-require 'aws-sdk-elasticloadbalancing'
-require 'aws-sdk-elasticloadbalancingv2'
-require 'aws-sdk-guardduty'
-require 'aws-sdk-iam'
-require 'aws-sdk-kms'
-require 'aws-sdk-lambda'
-require 'aws-sdk-organizations'
-require 'aws-sdk-rds'
-require 'aws-sdk-route53'
-require 'aws-sdk-s3'
-require 'aws-sdk-shield'
-require 'aws-sdk-sns'
-require 'aws-sdk-sqs'
-require 'aws-sdk-efs'
-require 'aws-sdk-ssm'
-require 'rspec/expectations'
-require 'aws-sdk-transfer'
-require 'aws-sdk-elasticsearchservice'
-require 'aws-sdk-cognitoidentity'
-require 'aws-sdk-redshift'
-require 'aws-sdk-athena'
-require 'aws-sdk-applicationautoscaling'
-require 'aws-sdk-cognitoidentityprovider'
-require 'aws-sdk-apigateway'
-require 'aws-sdk-databasemigrationservice'
-require 'aws-sdk-route53resolver'
-require 'aws-sdk-servicecatalog'
-require 'aws-sdk-glue'
-require 'aws-sdk-eventbridge'
-require 'aws-sdk-states'
-require 'aws-sdk-ram'
-require 'aws-sdk-secretsmanager'
-require 'aws-sdk-networkfirewall'
-require 'aws-sdk-mq'
-require 'aws-sdk-networkmanager'
-require 'aws-sdk-signer'
-require 'aws-sdk-amplify'
-require 'aws-sdk-simpledb'
-require 'aws-sdk-emr'
-require 'aws-sdk-securityhub'
-require 'aws-sdk-ses'
-require 'aws-sdk-waf'
-require 'aws-sdk-synthetics'
-require 'aws-sdk-apigatewayv2'
+require "aws-sdk-autoscaling"
+require "aws-sdk-batch"
+require "aws-sdk-cloudformation"
+require "aws-sdk-cloudfront"
+require "aws-sdk-cloudtrail"
+require "aws-sdk-cloudwatch"
+require "aws-sdk-cloudwatchlogs"
+require "aws-sdk-configservice"
+require "aws-sdk-core"
+require "aws-sdk-dynamodb"
+require "aws-sdk-ec2"
+require "aws-sdk-ecr"
+require "aws-sdk-ecrpublic"
+require "aws-sdk-ecs"
+require "aws-sdk-eks"
+require "aws-sdk-elasticache"
+require "aws-sdk-elasticloadbalancing"
+require "aws-sdk-elasticloadbalancingv2"
+require "aws-sdk-guardduty"
+require "aws-sdk-iam"
+require "aws-sdk-kms"
+require "aws-sdk-lambda"
+require "aws-sdk-organizations"
+require "aws-sdk-rds"
+require "aws-sdk-route53"
+require "aws-sdk-s3"
+require "aws-sdk-shield"
+require "aws-sdk-sns"
+require "aws-sdk-sqs"
+require "aws-sdk-efs"
+require "aws-sdk-ssm"
+require "rspec/expectations"
+require "aws-sdk-transfer"
+require "aws-sdk-elasticsearchservice"
+require "aws-sdk-cognitoidentity"
+require "aws-sdk-redshift"
+require "aws-sdk-athena"
+require "aws-sdk-applicationautoscaling"
+require "aws-sdk-cognitoidentityprovider"
+require "aws-sdk-apigateway"
+require "aws-sdk-databasemigrationservice"
+require "aws-sdk-route53resolver"
+require "aws-sdk-servicecatalog"
+require "aws-sdk-glue"
+require "aws-sdk-eventbridge"
+require "aws-sdk-states"
+require "aws-sdk-ram"
+require "aws-sdk-secretsmanager"
+require "aws-sdk-networkfirewall"
+require "aws-sdk-mq"
+require "aws-sdk-networkmanager"
+require "aws-sdk-signer"
+require "aws-sdk-amplify"
+require "aws-sdk-simpledb"
+require "aws-sdk-emr"
+require "aws-sdk-securityhub"
+require "aws-sdk-ses"
+require "aws-sdk-waf"
+require "aws-sdk-synthetics"
+require "aws-sdk-apigatewayv2"
 
 # AWS Inspec Backend Classes
 #
@@ -357,8 +357,8 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
       # below allows each resource to optionally and conveniently set max_retries and retry_backoff
       env_hash = ENV.map { |k, v| [k.downcase, v] }.to_h
-      opts[:aws_retry_limit]=   env_hash['aws_retry_limit'].to_i if !opts[:aws_retry_limit] && env_hash['aws_retry_limit']
-      opts[:aws_retry_backoff]= env_hash['aws_retry_backoff'].to_i if !opts[:aws_retry_backoff] && env_hash['aws_retry_backoff']
+      opts[:aws_retry_limit]=   env_hash["aws_retry_limit"].to_i if !opts[:aws_retry_limit] && env_hash["aws_retry_limit"]
+      opts[:aws_retry_backoff]= env_hash["aws_retry_backoff"].to_i if !opts[:aws_retry_backoff] && env_hash["aws_retry_backoff"]
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
@@ -374,9 +374,9 @@ class AwsResourceBase < Inspec.resource(1)
 
     # here we might want to inject stub data for testing, let's use an option for that
     return if !defined?(@opts.keys) || !@opts.include?(:stub_data)
-    raise ArgumentError, 'Expected stub data to be an array' if !opts[:stub_data].is_a?(Array)
+    raise ArgumentError, "Expected stub data to be an array" if !opts[:stub_data].is_a?(Array)
     opts[:stub_data].each do |stub|
-      raise ArgumentError, 'Expect each stub_data hash to have :client, :method and :data keys' if !stub.keys.all? { |a| %i(method data client).include?(a) }
+      raise ArgumentError, "Expect each stub_data hash to have :client, :method and :data keys" if !stub.keys.all? { |a| %i(method data client).include?(a) }
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
   end
@@ -389,20 +389,20 @@ class AwsResourceBase < Inspec.resource(1)
   def validate_parameters(allow: [], required: nil, require_any_of: nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     if required
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != "" }
       allow += required
     end
 
     if require_any_of
       raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require_any_of}" unless require_any_of.is_a?(Array) && require_any_of.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != '' }
+      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != "" }
       allow += require_any_of
     end
 
     allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
-    raise ArgumentError, 'Scalar arguments not supported' unless defined?(@opts.keys)
-    raise ArgumentError, 'Unexpected arguments found' unless @opts.keys.all? { |a| allow.include?(a) }
-    raise ArgumentError, 'Provided parameter should not be empty' unless @opts.values.all? do |a|
+    raise ArgumentError, "Scalar arguments not supported" unless defined?(@opts.keys)
+    raise ArgumentError, "Unexpected arguments found" unless @opts.keys.all? { |a| allow.include?(a) }
+    raise ArgumentError, "Provided parameter should not be empty" unless @opts.values.all? do |a|
       return true if a.instance_of?(Integer)
       return true if [TrueClass, FalseClass].include?(a.class)
       !a.empty?
@@ -423,34 +423,34 @@ class AwsResourceBase < Inspec.resource(1)
 
   def name
     return unless tags
-    return tags['Name'] if tags.is_a?(Hash)
+    return tags["Name"] if tags.is_a?(Hash)
     # tags might be in the original format: [{:key=>"Name", :value=>"aws-linux-ubuntu-vm"}], e.g in EC2
-    tags.select { |tag| tag[:key] == 'Name' }.first&.dig(:value)
+    tags.select { |tag| tag[:key] == "Name" }.first&.dig(:value)
   end
 
   # Intercept AWS exceptions
   def catch_aws_errors
     yield # Catch and create custom messages as needed
   rescue Aws::Errors::MissingCredentialsError
-    Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
-    fail_resource('No AWS credentials available')
+    Inspec::Log.error "It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details."
+    fail_resource("No AWS credentials available")
     nil
   rescue Aws::Errors::NoSuchEndpointError
-    Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'
-    fail_resource('Invalid Endpoint error')
+    Inspec::Log.error "The endpoint that is trying to be accessed does not exist."
+    fail_resource("Invalid Endpoint error")
     nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
-      advice = ''
-      error_type = e.class.to_s.split('::').last
+      advice = ""
+      error_type = e.class.to_s.split("::").last
       case error_type
-      when 'InvalidAccessKeyId'
-        advice = 'Please ensure your AWS Access Key ID is set correctly.'
-      when 'InvalidClientTokenId'
-        advice = 'Please ensure that the aws access key, aws secret access key, and the aws session token are correct.'
-      when 'AccessDenied'
-        advice = 'Please check the IAM permissions required for this Resource in the documentation, ' \
-                 'and ensure your Service Principal has these permissions set.'
+      when "InvalidAccessKeyId"
+        advice = "Please ensure your AWS Access Key ID is set correctly."
+      when "InvalidClientTokenId"
+        advice = "Please ensure that the aws access key, aws secret access key, and the aws session token are correct."
+      when "AccessDenied"
+        advice = "Please check the IAM permissions required for this Resource in the documentation, " \
+                 "and ensure your Service Principal has these permissions set."
       end
       error_message = "#{e.message}: #{advice}"
 
@@ -458,7 +458,7 @@ class AwsResourceBase < Inspec.resource(1)
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
                        "Error message: #{e.message}. You should address this error to ensure your controls are " \
-                       'behaving as expected.'
+                       "behaving as expected."
       @failed_resource = true
     end
     nil
@@ -509,8 +509,8 @@ class AwsResourceBase < Inspec.resource(1)
   # This method should be used when AWS API returns multiple resources for the provided criteria.
   def resource_fail(message = nil)
     message ||= "#{@__resource_name__}: #{@display_name}. Multiple AWS resources were returned for the provided criteria. "\
-    'If you wish to test multiple entities, please use the plural resource. '\
-    'Otherwise, please provide more specific criteria to lookup the resource.'
+    "If you wish to test multiple entities, please use the plural resource. "\
+    "Otherwise, please provide more specific criteria to lookup the resource."
     # Fail resource in resource pack. `exists?` method will return `false`.
     @failed_resource = true
     # Fail resource in InSpec core. Tests in InSpec profile will return the message.
@@ -545,7 +545,7 @@ class AwsCollectionResourceBase < AwsResourceBase
   end
 
   def fetch(client:, operation:, kwargs: {})
-    raise ArgumentError, 'Valid Client not found!' unless @aws.respond_to?(client)
+    raise ArgumentError, "Valid Client not found!" unless @aws.respond_to?(client)
 
     client_obj = @aws.send(client)
     raise ArgumentError, "#{client} does not support #{operation}" unless client_obj.respond_to?(operation)
@@ -582,11 +582,11 @@ class AwsResourceDynamicMethods
     when /Aws::.*/
       # iterate around the instance variables
       data.instance_variables.each do |var|
-        create_method(object, var.to_s.delete('@'), data.instance_variable_get(var))
+        create_method(object, var.to_s.delete("@"), data.instance_variable_get(var))
       end
       # When the data is a Hash object iterate around each of the key value pairs and
       # create a method for each one.
-    when 'Hash'
+    when "Hash"
       data.each do |key, value|
         create_method(object, key, value)
       end
@@ -604,12 +604,12 @@ class AwsResourceDynamicMethods
     # Create the necessary method based on the var that has been passed
     # Test the value for its type so that the method can be setup correctly
     case value.class.to_s
-    when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum', 'Time'
+    when "String", "Integer", "TrueClass", "FalseClass", "Fixnum", "Time"
       object.define_singleton_method name do
         value
       end
-    when 'Hash'
-      value.count.zero? ? return_value = value : return_value = AwsResourceProbe.new(value)
+    when "Hash"
+      value.count == 0 ? return_value = value : return_value = AwsResourceProbe.new(value)
       object.define_singleton_method name do
         return_value
       end
@@ -619,7 +619,7 @@ class AwsResourceDynamicMethods
         value = value.to_h if value.respond_to? :to_h
         AwsResourceProbe.new(value)
       end
-    when 'Array'
+    when "Array"
       # Some things are just string or integer arrays
       # Check this by seeing if the first element is a string / integer / boolean or
       # a hashtable
@@ -627,7 +627,7 @@ class AwsResourceDynamicMethods
       # the quickest test
       # p value[0].class.to_s
       case value[0].class.to_s
-      when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum', 'Time'
+      when "String", "Integer", "TrueClass", "FalseClass", "Fixnum", "Time"
         probes = value
       else
         if name.eql?(:tags)
@@ -690,10 +690,10 @@ class AwsResourceProbe
   #   Hash: Key=>Value pair to look for in the @item property
   def include?(opt)
     unless opt.is_a?(Symbol) || opt.is_a?(Hash) || opt.is_a?(String)
-      raise ArgumentError, 'Key or Key:Value pair should be provided.'
+      raise ArgumentError, "Key or Key:Value pair should be provided."
     end
     if opt.is_a?(Hash)
-      raise ArgumentError, 'Only one item can be provided' if opt.keys.size > 1
+      raise ArgumentError, "Only one item can be provided" if opt.keys.size > 1
       return @item[opt.keys.first] == opt.values.first
     end
     @item.key?(opt.to_sym)

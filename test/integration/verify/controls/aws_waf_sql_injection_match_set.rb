@@ -4,7 +4,6 @@ aws_waf_sql_injection_match_set_name = input(aws_waf_sql_injection_match_set_nam
 title 'Ensure the waf sql injection match set have the correct properties.'
 
 control 'aws-waf-sql-injection-match-set-1.0' do
-  impact 1.0
   title 'Test the properties of the WAF SQL injection match sets.'
 
   describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: aws_waf_sql_injection_match_set_id) do

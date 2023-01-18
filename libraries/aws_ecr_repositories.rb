@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcrRepositories < AwsResourceBase
-  name 'aws_ecr_repositories'
-  desc 'Verifies settings for a collection of AWS ECR Repositories.'
+  name "aws_ecr_repositories"
+  desc "Verifies settings for a collection of AWS ECR Repositories."
 
   example "
     describe aws_ecr_repositories do
@@ -17,13 +17,13 @@ class AwsEcrRepositories < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns, field: :arn)
-             .register_column(:names, field: :name)
-             .register_column(:uris, field: :uri)
-             .register_column(:created_at_dates, field: :created_at)
-             .register_column(:image_tag_mutability_status, field: :image_tag_mutability)
-             .register_column(:image_scanning_on_push_status, field: :image_scanning_on_push_status)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:arns, field: :arn)
+    .register_column(:names, field: :name)
+    .register_column(:uris, field: :uri)
+    .register_column(:created_at_dates, field: :created_at)
+    .register_column(:image_tag_mutability_status, field: :image_tag_mutability)
+    .register_column(:image_scanning_on_push_status, field: :image_scanning_on_push_status)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

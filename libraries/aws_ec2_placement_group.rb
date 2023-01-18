@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2PlacementGroup < AwsResourceBase
-  name 'aws_ec2_placement_group'
-  desc 'Describes the specified placement groups or all of your placement groups.'
+  name "aws_ec2_placement_group"
+  desc "Describes the specified placement groups or all of your placement groups."
 
   example "
     describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do

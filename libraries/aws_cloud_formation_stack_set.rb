@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFormationStackSet < AwsResourceBase
-  name 'aws_cloud_formation_stack_set'
-  desc 'Describes the specified stack set.'
-
-  example "
-    describe aws_cloud_formation_stack_set(stack_set_name: 'StackSetName') do
+  name "aws_cloud_formation_stack_set"
+  desc "Describes the specified stack set."
+  example <<-EXAMPLE
+    describe aws_cloud_formation_stack_set(stack_set_name: 'STACK_SET_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { stack_set_name: opts } if opts.is_a?(String)

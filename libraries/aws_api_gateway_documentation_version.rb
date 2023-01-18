@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayDocumentationVersion < AwsResourceBase
-  name 'aws_api_gateway_documentation_version'
-  desc 'Retrieves API Gateway Documentation Version.'
-
-  example "
+  name "aws_api_gateway_documentation_version"
+  desc "Retrieves API Gateway Documentation Version."
+  example <<-EXAMPLE
     describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_VERSION') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     super(opts)
@@ -37,6 +36,6 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
   end
 
   def to_s
-    "Documentation Version: #{@display_name}"
+    "Rest API Documentation Version: #{@display_name}"
   end
 end

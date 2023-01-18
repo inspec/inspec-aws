@@ -1,5 +1,4 @@
 control 'aws-ec2-network-interface-attachments-1.0' do
-  impact 1.0
   title 'Test a plural resource of the aws ec2 network interface attachments.'
 
   describe aws_ec2_network_interface_attachments do

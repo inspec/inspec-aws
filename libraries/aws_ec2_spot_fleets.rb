@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2SpotFleets < AwsResourceBase
-  name 'aws_ec2_spot_fleets'
-  desc 'Describes your Spot Fleet requests.'
+  name "aws_ec2_spot_fleets"
+  desc "Describes your Spot Fleet requests."
 
   example "
     describe aws_ec2_spot_fleets do
@@ -13,13 +13,13 @@ class AWSEC2SpotFleets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:activity_statuses, field: :activity_status)
-             .register_column(:create_times, field: :create_time)
-             .register_column(:spot_fleet_request_configs, field: :spot_fleet_request_config)
-             .register_column(:spot_fleet_request_ids, field: :spot_fleet_request_id)
-             .register_column(:spot_fleet_request_states, field: :spot_fleet_request_state)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:activity_statuses, field: :activity_status)
+    .register_column(:create_times, field: :create_time)
+    .register_column(:spot_fleet_request_configs, field: :spot_fleet_request_config)
+    .register_column(:spot_fleet_request_ids, field: :spot_fleet_request_id)
+    .register_column(:spot_fleet_request_states, field: :spot_fleet_request_state)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

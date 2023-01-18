@@ -6,7 +6,6 @@ aws_lambda_layer_version_source_code_size = input(:aws_lambda_layer_version_sour
 aws_lambda_layer_version = input(:aws_lambda_layer_version, value: '', description: '')
 
 control 'aws-lambda-version-1.0' do
-  impact 1.0
   title 'Test the properties of the lambda version.'
 
   describe aws_lambda_version(layer_name: 'lambda_layer_name', version_number: 4) do

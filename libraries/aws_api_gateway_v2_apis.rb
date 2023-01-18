@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsApiGatewayV2Apis < AwsCollectionResourceBase
-  name 'aws_api_gateway_v2_apis'
-  desc 'Gets information about the current ApiKeys resource.'
+  name "aws_api_gateway_v2_apis"
+  desc "Gets information about the current ApiKeys resource."
   example <<-EXAMPLE
     describe aws_api_gateway_v2_apis do
       it { should exist }

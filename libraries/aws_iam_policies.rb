@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamPolicies < AwsResourceBase
-  name 'aws_iam_policies'
-  desc 'Verifies settings for a collection AWS IAM Policies.'
+  name "aws_iam_policies"
+  desc "Verifies settings for a collection AWS IAM Policies."
   example "
     describe aws_iam_policies do
       it { should exist }
@@ -12,15 +12,15 @@ class AwsIamPolicies < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:arns,                field: :arn)
-             .register_column(:attachment_counts,   field: :attachment_count)
-             .register_column(:default_version_ids, field: :default_version_id)
-             .register_column(:policy_names,        field: :policy_name)
-             .register_column(:policy_ids,          field: :policy_id)
-             .register_column(:attached_groups,     field: :attached_groups)
-             .register_column(:attached_roles,      field: :attached_roles)
-             .register_column(:attached_users,      field: :attached_users)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:arns,                field: :arn)
+    .register_column(:attachment_counts,   field: :attachment_count)
+    .register_column(:default_version_ids, field: :default_version_id)
+    .register_column(:policy_names,        field: :policy_name)
+    .register_column(:policy_ids,          field: :policy_id)
+    .register_column(:attached_groups,     field: :attached_groups)
+    .register_column(:attached_roles,      field: :attached_roles)
+    .register_column(:attached_users,      field: :attached_users)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

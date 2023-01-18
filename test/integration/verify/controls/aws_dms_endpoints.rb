@@ -1,5 +1,4 @@
 control 'aws-endpoints-1.0' do
-  impact 1.0
   title 'Ensure AWS DMS Endpoints has the correct properties.'
 
   describe aws_dms_endpoints do

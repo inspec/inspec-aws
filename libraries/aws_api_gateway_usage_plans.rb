@@ -1,7 +1,7 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayUsagePlans < AwsCollectionResourceBase
-  name 'aws_api_gateway_usage_plans'
+  name "aws_api_gateway_usage_plans"
   desc "Gets all the usage plans of the caller's account."
   example <<-EXAMPLE
     describe aws_api_gateway_usage_plans do

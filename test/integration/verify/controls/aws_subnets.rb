@@ -5,7 +5,6 @@ aws_subnet_cidr_block = input(:aws_subnet_cidr_block, value: '', description: 'T
 aws_vpc_id = input(:aws_vpc_id, value: '', description: 'The AWS VPC ID.')
 
 control 'aws-subnets-1.0' do
-  impact 1.0
   title 'Ensure AWS VPC Subnets plural resource has the correct properties.'
 
   describe aws_subnets do

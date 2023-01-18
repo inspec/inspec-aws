@@ -2,7 +2,6 @@ aws_api_gateway_gateway_response_response_type = input(:aws_api_gateway_gateway_
 aws_api_gateway_gateway_response_rest_api_id = input(:aws_api_gateway_gateway_response_rest_api_id, value: '', description: '')
 
 control 'aws-api-gateway-response-1.0' do
-  impact 1.0
   title 'Test the properties of the api gateway response.'
 
   describe aws_api_gateway_response(rest_api_id: aws_api_gateway_gateway_response_rest_api_id, response_type: aws_api_gateway_gateway_response_response_type) do

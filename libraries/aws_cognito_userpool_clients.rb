@@ -1,22 +1,21 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoUserPoolClients < AwsResourceBase
-  name 'aws_cognito_userpool_clients'
-  desc 'Lists the clients that have been created for the specified user pool.'
-
-  example "
-    describe aws_cognito_userpool_clients(user_pool_id: 'test1') do
+  name "aws_cognito_userpool_clients"
+  desc "Lists the clients that have been created for the specified user pool."
+  example <<-EXAMPLE
+    describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do
       its('count') { should eq 3 }
     end
-  "
+  EXAMPLE
 
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_ids,                      field: :client_id)
-             .register_column(:user_pool_ids,                   field: :user_pool_id)
-             .register_column(:client_names,                    field: :client_name)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:client_ids,                      field: :client_id)
+    .register_column(:user_pool_ids,                   field: :user_pool_id)
+    .register_column(:client_names,                    field: :client_name)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

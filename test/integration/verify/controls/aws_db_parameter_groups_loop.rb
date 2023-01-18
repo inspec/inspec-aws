@@ -4,7 +4,6 @@ aws_rds_db_parameter_group_family   = input(:aws_rds_db_parameter_group_family, 
 aws_rds_db_parameter_group_arn      = input(:aws_rds_db_parameter_group_arn, value: '', description: 'The Amazon Resource Name (ARN) for the DB parameter group.')
 
 control 'aws-db-parameter-groups-loop-1.0' do
-  impact 1.0
   title 'Loop across AWS RDS Parameter Group resource using singular resource for detail.'
 
   aws_db_parameter_groups.db_parameter_group_names.each do |parameter_group|

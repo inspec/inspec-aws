@@ -6,7 +6,6 @@ aws_create_configuration_recorder = input(:aws_create_configuration_recorder, va
 
 control 'aws-config-recorder-1.0' do
   only_if { aws_create_configuration_recorder.to_i == 1 }
-  impact 1.0
   title 'Ensure AWS Config Recorder has the correct properties.'
 
   describe aws_config_recorder do

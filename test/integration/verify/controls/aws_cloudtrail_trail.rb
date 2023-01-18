@@ -11,7 +11,6 @@ aws_cloud_trail_cloud_watch_logs_group_arn = input(:aws_cloud_trail_cloud_watch_
 aws_cloud_trail_cloud_watch_logs_role_arn = input(:aws_cloud_trail_cloud_watch_logs_role_arn, value: '', description: 'Cloud log role ARN.')
 
 control 'aws-cloudtrail-1.0' do
-  impact 1.0
   title 'Ensure AWS Cloud Trail has the correct properties.'
 
   describe aws_cloudtrail_trail(aws_cloud_trail_name) do

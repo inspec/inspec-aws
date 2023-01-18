@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsVpce < AwsResourceBase
-  name 'aws_vpc_endpoint'
-  desc 'Verifies settings for an AWS VPC Endpoint.'
+  name "aws_vpc_endpoint"
+  desc "Verifies settings for an AWS VPC Endpoint."
 
   example "
     describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678123456789') do
@@ -20,7 +20,7 @@ class AwsVpce < AwsResourceBase
     end
 
     @display_name = opts[:vpc_endpoint_id]
-    filter = { name: 'vpc-endpoint-id', values: [opts[:vpc_endpoint_id]] }
+    filter = { name: "vpc-endpoint-id", values: [opts[:vpc_endpoint_id]] }
     catch_aws_errors do
       resp = @aws.compute_client.describe_vpc_endpoints({ filters: [filter] })
       @vpce = resp.vpc_endpoints[0].to_h
@@ -34,7 +34,7 @@ class AwsVpce < AwsResourceBase
 
   def available?
     return false unless exists?
-    @vpce[:state] == 'available'
+    @vpce[:state] == "available"
   end
 
   def private_dns_enabled?
@@ -43,12 +43,12 @@ class AwsVpce < AwsResourceBase
 
   def interface?
     return false unless exists?
-    @vpce[:vpc_endpoint_type] == 'Interface'
+    @vpce[:vpc_endpoint_type] == "Interface"
   end
 
   def gateway?
     return false unless exists?
-    @vpce[:vpc_endpoint_type] == 'Gateway'
+    @vpce[:vpc_endpoint_type] == "Gateway"
   end
 
   def resource_id

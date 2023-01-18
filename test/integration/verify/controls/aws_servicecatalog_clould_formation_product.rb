@@ -1,7 +1,6 @@
 aws_servicecatalog_product_sm_id = input(:aws_servicecatalog_product_sm_id, value: '', description: '')
 
 control 'aws-service-catalog-product-1.0' do
-  impact 1.0
   title 'Describes the product of the service catalog.'
 
   describe aws_servicecatalog_cloud_formation_product(name: 'ProductTest') do

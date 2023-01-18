@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2NetworkInterface < AwsResourceBase
-  name 'aws_ec2_network_interface'
-  desc 'Describes one or more of your network interfaces.'
+  name "aws_ec2_network_interface"
+  desc "Describes one or more of your network interfaces."
 
   example "
     describe aws_ec2_network_interface(network_interface_id: 'NetworkInterfaceId') do

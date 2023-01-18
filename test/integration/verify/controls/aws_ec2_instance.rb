@@ -7,7 +7,6 @@ aws_iam_role_name_for_ec2 = input(:aws_iam_role_name_for_ec2, value: '', descrip
 title 'Test single AWS EC2 Instance.'
 
 control 'aws-ec2-instance-1.0' do
-  impact 1.0
   title 'Ensure AWS EC2 Instance has the correct properties.'
 
   describe aws_ec2_instance(instance_id: aws_instance_id) do

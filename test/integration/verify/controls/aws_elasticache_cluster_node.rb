@@ -4,7 +4,6 @@ aws_elasticache_cluster_id = input(:aws_elasticache_cluster_id, value: '', descr
 aws_elasticache_cluster_port = input(:aws_elasticache_cluster_port, value: '', description: 'The AWS ElastiCache Cluster port number.')
 
 control 'aws-elasticache-cluster-node-1.0' do
-  impact 1.0
   title 'Ensure AWS ElastiCache Cluster node has the correct properties.'
 
   aws_elasticache_cluster(cache_cluster_id: aws_elasticache_cluster_id).node_ids.each do |node_id|

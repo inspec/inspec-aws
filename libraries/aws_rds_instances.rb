@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsInstances < AwsCollectionResourceBase
-  name 'aws_rds_instances'
-  desc 'Verifies settings for AWS RDS instances in bulk.'
+  name "aws_rds_instances"
+  desc "Verifies settings for AWS RDS instances in bulk."
   example "
     describe aws_rds_instances do
       it { should exist }

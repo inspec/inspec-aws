@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFIPSets < AwsResourceBase
-  name 'aws_waf_ip_sets'
-  desc 'Verifies settings for all the IP sets.'
+  name "aws_waf_ip_sets"
+  desc "Verifies settings for all the IP sets."
 
   example "
     describe aws_waf_ip_sets do
@@ -19,9 +19,9 @@ class AWSWAFIPSets < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:ip_set_ids, field: :ip_set_id, style: :simple)
-             .register_column(:names, field: :name, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ip_set_ids, field: :ip_set_id, style: :simple)
+    .register_column(:names, field: :name, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

@@ -1,14 +1,13 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudwatchDashboard < AwsResourceBase
-  name 'aws_cloudwatch_dashboard '
-  desc 'Returns the configuration information and metadata of the specified cloudwatch dashboard.'
-
-  example "
-    describe aws_cloudwatch_dashboard(dashboard_name: 'DashboardName') do
+  name "aws_cloudwatch_dashboard "
+  desc "Returns the configuration information and metadata of the specified cloudwatch dashboard."
+  example <<-EXAMPLE
+    describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
       it { should exist }
     end
-  "
+  EXAMPLE
 
   def initialize(opts = {})
     opts = { dashboard_name: opts } if opts.is_a?(String)

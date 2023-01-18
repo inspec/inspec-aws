@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSIAMVirtualMFADevices < AwsResourceBase
-  name 'aws_iam_virtual_mfa_devices'
-  desc 'Lists all virtual MFA devices.'
+  name "aws_iam_virtual_mfa_devices"
+  desc "Lists all virtual MFA devices."
 
   example "
     describe aws_iam_virtual_mfa_devices do
@@ -13,15 +13,15 @@ class AWSIAMVirtualMFADevices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:serial_numbers, field: :serial_number)
-             .register_column(:paths,          field: :path)
-             .register_column(:user_names,     field: :user_name)
-             .register_column(:user_ids,       field: :user_id)
-             .register_column(:arns,           field: :arn)
-             .register_column(:tags,           field: :tags)
-             .register_column(:enable_dates,   field: :enable_date)
-             .register_column(:create_dates,   field: :create_date)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:serial_numbers, field: :serial_number)
+    .register_column(:paths,          field: :path)
+    .register_column(:user_names,     field: :user_name)
+    .register_column(:user_ids,       field: :user_id)
+    .register_column(:arns,           field: :arn)
+    .register_column(:tags,           field: :tags)
+    .register_column(:enable_dates,   field: :enable_date)
+    .register_column(:create_dates,   field: :create_date)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
