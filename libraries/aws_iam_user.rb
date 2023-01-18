@@ -3,14 +3,14 @@ require "aws_backend"
 class AwsIamUser < AwsResourceBase
   name "aws_iam_user"
   desc "Verifies settings for an AWS IAM User."
-
   example "
-    describe aws_iam_user(user_name: 'psmith') do
+    describe aws_iam_user(user_name: 'TEST_USER_NAME') do
       it { should exist }
     end
   "
 
-  attr_reader :username, :user_arn, :user_id
+  attr_reader :username, :user_arn, :user_id, :user_path, :user_create_date,
+              :user_password_last_used, :permissions_boundary, :user_tags
 
   def initialize(opts = {})
     opts = { user_name: opts } if opts.is_a?(String)
@@ -22,7 +22,12 @@ class AwsIamUser < AwsResourceBase
     end
     @user_arn = user.arn
     @user_id  = user.user_id
-    @username = opts[:user_name]
+    @username = user.user_name
+    @user_path = user.path
+    @user_create_date = user.create_date
+    @user_password_last_used = user.password_last_used
+    @permissions_boundary = user.permissions_boundary
+    @user_tags = user.tags
   end
 
   def resource_id
@@ -62,7 +67,7 @@ class AwsIamUser < AwsResourceBase
   end
 
   def to_s
-    "AWS IAM User #{username}"
+    "IAM User Name: #{@username}"
   end
 
   private

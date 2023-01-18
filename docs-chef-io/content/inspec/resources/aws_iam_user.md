@@ -32,19 +32,19 @@ end
 
 `user_name` _(required)_
 
-: This resource accepts a single parameter, the User's username which uniquely identifies the User. 
-  This can be passed either as a string or as a `user_name: 'value'` key-value entry in a hash.
+: This resource accepts a single parameter, the User's username which uniquely identifies the User.
+This can be passed either as a string or as a `user_name: 'value'` key-value entry in a hash.
 
 ## Properties
 
 `username`
-: The user's username.
+: The friendly name identifying the user.
 
 `user_id`
-: The user's ID.
+: The stable and unique string identifying the user.
 
 `user_arn`
-: The Amazon Resource Name of the user.
+: The Amazon Resource Name (ARN) that identifies the user.
 
 `access_keys`
 : An array of hashes each containing metadata about the user's Access Keys.
@@ -56,8 +56,22 @@ end
 : The name of standalone IAM policies which are attached to the user.
 
 `attached_policy_arns`
-: The arns of the standalone IAM policies which are attached to the user.
+: The Amazon Resource Name (ARN) that identifies the user.
 
+`user_path`
+: The path to the user.
+
+`user_create_date`
+: The date and time, in ISO 8601 date-time format, when the user was created.
+
+`user_password_last_used`
+: The date and time, in ISO 8601 date-time format, when the user's password was last used to sign in to an Amazon Web Services website.
+
+`permissions_boundary`
+: The permissions boundary usage type that indicates what type of IAM resource is used as the permissions boundary for an entity.
+
+`user_tags`
+: A list of tags that are associated with the user.
 
 * has_mfa_enabled
 * has_console_password
@@ -126,11 +140,10 @@ it { should have_console_password }
 
 ## AWS Permissions
 
-Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions action set to allow: 
-`IAM:Client:GetUserResponse` 
-`IAM:Client:GetLoginProfileResponse` 
-`IAM:Client:ListMFADevicesResponse` 
-`IAM:Client:ListAccessKeysResponse` 
-`IAM:Client:ListUserPoliciesResponse` 
-`IAM:Client:ListAttachedUserPoliciesResponse` 
-
+Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the following permissions action set to allow:
+`IAM:Client:GetUserResponse`
+`IAM:Client:GetLoginProfileResponse`
+`IAM:Client:ListMFADevicesResponse`
+`IAM:Client:ListAccessKeysResponse`
+`IAM:Client:ListUserPoliciesResponse`
+`IAM:Client:ListAttachedUserPoliciesResponse`
