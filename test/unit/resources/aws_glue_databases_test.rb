@@ -12,7 +12,7 @@ class AWSGlueDatabasesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSGlueDatabases.new('rubbish') }
   end
 
-  def test_database_list_non_existing_for_empty_response
+  def test_databases_list_non_existing_for_empty_response
     refute AWSGlueDatabases.new(client_args: { stub_responses: true }).exist?
   end
 end

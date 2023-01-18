@@ -12,7 +12,7 @@ class AWSIAMManagedPoliciesTest < Minitest::Test
     assert_raises(ArgumentError) { AwsIamManagedPolicies.new('rubbish') }
   end
 
-  def test_iam_client_non_existing_for_empty_response
+  def test_policies_non_existing_for_empty_response
     refute AwsIamManagedPolicies.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -29,22 +29,22 @@ class AwsIamManagedPoliciesHappyPathTest < Minitest::Test
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :policies => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @iam_client = AwsIamManagedPolicies.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AwsIamManagedPolicies.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_iam_client_exists
-    assert @iam_client.exist?
+    assert @resp.exist?
   end
 
   def test_policy_names
-    assert_equal(@iam_client.policy_names, ['test1'])
+    assert_equal(@resp.policy_names, ['test1'])
   end
 
   def test_instance_profile_ids
-    assert_equal(@iam_client.policy_ids, ['test1'])
+    assert_equal(@resp.policy_ids, ['test1'])
   end
 
   def test_arns
-    assert_equal(@iam_client.arns, ['test1'])
+    assert_equal(@resp.arns, ['test1'])
   end
 end

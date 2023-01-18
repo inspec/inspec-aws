@@ -37,32 +37,32 @@ class AwsCloudwatchAlarmTest < Minitest::Test
     mock_alarm[:alarm_actions] = []
     data[:data] = { :metric_alarms => [mock_alarm] }
     data[:client] = Aws::CloudWatch::Client
-    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [data])
+    @metric_alarms = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_resource_id
-    refute_nil(@alarm.resource_id)
-    assert_equal(@alarm.resource_id, @alarm.metric_name + '_' + @alarm.metric_namespace)
+    refute_nil(@metric_alarms.resource_id)
+    assert_equal(@metric_alarms.resource_id, @metric_alarms.metric_name + '_' + @metric_alarms.metric_namespace)
   end
 
   def test_alarm_exists
-    assert @alarm.exists?
+    assert @metric_alarms.exists?
   end
 
   def test_alarm_name
-    assert_equal(@alarm.alarm_name, 'alarm-12345678')
+    assert_equal(@metric_alarms.alarm_name, 'alarm-12345678')
   end
 
   def test_alarm_metric_name
-    assert_equal(@alarm.metric_name, 'metric')
+    assert_equal(@metric_alarms.metric_name, 'metric')
   end
 
   def test_alarm_metric_namespace
-    assert_equal(@alarm.metric_namespace, 'space')
+    assert_equal(@metric_alarms.metric_namespace, 'space')
   end
 
   def test_alarm_actions
-    assert_equal(@alarm.alarm_actions, [])
+    assert_equal(@metric_alarms.alarm_actions, [])
   end
 end
 
@@ -77,27 +77,27 @@ class AwsCloudwatchAlarmWithActionTest < Minitest::Test
     mock_alarm[:alarm_actions] = ['arn:aws:sns:us-west-2:0123456789012:aws-sns-arn']
     data[:data] = { :metric_alarms => [mock_alarm] }
     data[:client] = Aws::CloudWatch::Client
-    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [data])
+    @metric_alarms = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_alarm_exists
-    assert @alarm.exists?
+    assert @metric_alarms.exists?
   end
 
   def test_alarm_name
-    assert_equal(@alarm.alarm_name, 'alarm-12345678')
+    assert_equal(@metric_alarms.alarm_name, 'alarm-12345678')
   end
 
   def test_alarm_metric_name
-    assert_equal(@alarm.metric_name, 'metric')
+    assert_equal(@metric_alarms.metric_name, 'metric')
   end
 
   def test_alarm_metric_namespace
-    assert_equal(@alarm.metric_namespace, 'space')
+    assert_equal(@metric_alarms.metric_namespace, 'space')
   end
 
   def test_alarm_actions
-    assert_equal(@alarm.alarm_actions, ['arn:aws:sns:us-west-2:0123456789012:aws-sns-arn'])
+    assert_equal(@metric_alarms.alarm_actions, ['arn:aws:sns:us-west-2:0123456789012:aws-sns-arn'])
   end
 end
 
@@ -137,30 +137,30 @@ class AwsCloudwatchAlarmWithDimensionsTest < Minitest::Test
     mock_alarm[:alarm_actions] = []
     data[:data] = { :metric_alarms => [mock_alarm] }
     data[:client] = Aws::CloudWatch::Client
-    @alarm = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', dimensions: [{:name=>'Server', :value=>'Prod'},{:name=>'Domain', :value=>'Frankfurt'}], client_args: { stub_responses: true }, stub_data: [data])
+    @metric_alarms = AwsCloudwatchAlarm.new(metric_name: 'metric', metric_namespace: 'space', dimensions: [{:name=>'Server', :value=>'Prod'},{:name=>'Domain', :value=>'Frankfurt'}], client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_alarm_exists
-    assert @alarm.exists?
+    assert @metric_alarms.exists?
   end
 
   def test_alarm_name
-    assert_equal(@alarm.alarm_name, 'alarm-12345678')
+    assert_equal(@metric_alarms.alarm_name, 'alarm-12345678')
   end
 
   def test_alarm_metric_name
-    assert_equal(@alarm.metric_name, 'metric')
+    assert_equal(@metric_alarms.metric_name, 'metric')
   end
 
   def test_alarm_metric_namespace
-    assert_equal(@alarm.metric_namespace, 'space')
+    assert_equal(@metric_alarms.metric_namespace, 'space')
   end
 
   def test_alarm_dimensions
-    assert_equal(@alarm.dimensions, [{name:'Server', value:'Prod'},{name:'Domain', value:'Frankfurt'}])
+    assert_equal(@metric_alarms.dimensions, [{name:'Server', value:'Prod'},{name:'Domain', value:'Frankfurt'}])
   end
 
   def test_alarm_actions
-    assert_equal(@alarm.alarm_actions, [])
+    assert_equal(@metric_alarms.alarm_actions, [])
   end
 end

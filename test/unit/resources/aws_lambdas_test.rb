@@ -3,7 +3,6 @@ require 'aws_lambdas'
 
 class AwsLambdasTests < Minitest::Test
 
-
   def setup
     def get_list_data
       list_data = {}

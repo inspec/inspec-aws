@@ -22,14 +22,14 @@ class AWSECSTaskDefinitionsHappyPathTest < Minitest::Test
     mock_data[:task_definition_arns] = ['test1']
     data[:data] = [mock_data] 
     data[:client] = Aws::ECS::Client
-    @work_group = AWSECSTaskDefinitions.new(client_args: { stub_responses: true }, stub_data: [data])
+    @task_definitions = AWSECSTaskDefinitions.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_work_groups_exists
-    assert @work_group.exist?
+  def test_task_definitions_exists
+    assert @task_definitions.exist?
   end
 
   def test_task_definition_arns
-    assert_equal(@work_group.task_definition_arns, [['test1']])
+    assert_equal(@task_definitions.task_definition_arns, [['test1']])
   end
 end

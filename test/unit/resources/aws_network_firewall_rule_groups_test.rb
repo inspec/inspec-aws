@@ -12,7 +12,7 @@ class AWSNetworkFirewallRuleGroupsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSNetworkFirewallRuleGroups.new('rubbish') }
   end
 
-  def test_configs_non_existing_for_empty_response
+  def test_rule_groups_non_existing_for_empty_response
     refute AWSNetworkFirewallRuleGroups.new(client_args: { stub_responses: true }).exist?
   end
 end

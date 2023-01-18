@@ -34,8 +34,6 @@ class AwsRdsOptionGroupsHappyPathTest < Minitest::Test
     @option_group = AwsRdsOptionGroups.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-
-
   def test_instances_exists
     assert @option_group.exist?
   end

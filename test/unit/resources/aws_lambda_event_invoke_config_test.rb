@@ -30,23 +30,23 @@ class AWSLambdaEventInvokeConfigSuccessPathTest < Minitest::Test
     mock_data[:destination_config] = {}
     data[:data] = mock_data
     data[:client] = Aws::Lambda::Client
-    @res = AWSLambdaEventInvokeConfig.new(function_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSLambdaEventInvokeConfig.new(function_name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_function_arn
-    assert_equal(@res.function_arn, 'test1')
+    assert_equal(@resp.function_arn, 'test1')
   end
 
   def test_last_modified
-    assert_equal(@res.last_modified, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
+    assert_equal(@resp.last_modified, Time.parse("2013-06-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 
   def test_maximum_retry_attempts
-    assert_equal(@res.maximum_retry_attempts, 1 )
+    assert_equal(@resp.maximum_retry_attempts, 1 )
   end
 
   def test_resource_id
-    refute_nil(@res.resource_id)
-    assert_equal(@res.resource_id, 'test1')
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
   end
 end

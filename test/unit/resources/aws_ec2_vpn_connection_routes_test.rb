@@ -12,7 +12,7 @@ class AWSEC2VPNConnectionRoutesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2VPNConnectionRoutes.new('rubbish') }
   end
 
-  def test_vpn_connections_configs_non_existing_for_empty_response
+  def test_vpn_connection_routes_non_existing_for_empty_response
     refute AWSEC2VPNConnectionRoutes.new(vpn_connection_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end

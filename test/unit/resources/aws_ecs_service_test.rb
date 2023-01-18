@@ -28,27 +28,27 @@ class AWSECSServiceSuccessPathTest < Minitest::Test
     mock_parameter[:cluster_arn] = 'test1'
     data[:data] = { services: [mock_parameter] }
     data[:client] = Aws::ECS::Client
-    @work_group = AWSECSService.new(cluster: 'test1', service: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @services = AWSECSService.new(cluster: 'test1', service: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_resource_id
-    refute_nil(@work_group.resource_id)
-    assert_equal(@work_group.resource_id, 'test1')
+    refute_nil(@services.resource_id)
+    assert_equal(@services.resource_id, 'test1')
   end
 
   def test_parameter_group_exists
-    assert @work_group.exists?
+    assert @services.exists?
   end
 
   def test_service_arn
-    assert_equal(@work_group.service_arn, 'test1')
+    assert_equal(@services.service_arn, 'test1')
   end
 
   def test_service_name
-    assert_equal(@work_group.service_name, 'test1')
+    assert_equal(@services.service_name, 'test1')
   end
 
   def test_cluster_arn
-    assert_equal(@work_group.cluster_arn, 'test1')
+    assert_equal(@services.cluster_arn, 'test1')
   end
 end

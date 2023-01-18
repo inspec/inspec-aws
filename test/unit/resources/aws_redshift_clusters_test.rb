@@ -12,7 +12,7 @@ class AwsRedshiftClustersConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsRedshiftClusters.new('rubbish') }
   end
 
-  def test_clusters_non_existing_for_empty_response
+  def test_redshift_clusters_non_existing_for_empty_response
     refute AwsRedshiftClusters.new(client_args: { stub_responses: true }).exist?
   end
 end

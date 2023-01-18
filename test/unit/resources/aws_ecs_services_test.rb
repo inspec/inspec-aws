@@ -22,15 +22,15 @@ class AWSECSServicesHappyPathTest < Minitest::Test
     mock_data[:service_arn] = 'test1'
     data[:data] = {services: [ mock_data] }
     data[:client] = Aws::ECS::Client
-    @res = AWSECSServices.new(cluster: "test1", client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSECSServices.new(cluster: "test1", client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_service_exists
-    assert @res.exist?
+    assert @resp.exist?
   end
 
   def test_names
 
-    assert_equal(@res.service_arns, ['test1'])
+    assert_equal(@resp.service_arns, ['test1'])
   end
 end

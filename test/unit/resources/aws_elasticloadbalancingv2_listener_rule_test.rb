@@ -28,28 +28,28 @@ class AWSElasticLoadBalancingV2ListenerRuleSuccessPathTest < Minitest::Test
     mock_parameter[:is_default] = false
     data[:data] = { rules: [mock_parameter] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @rules = AWSElasticLoadBalancingV2ListenerRule.new(rule_arns: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @listener_rule = AWSElasticLoadBalancingV2ListenerRule.new(rule_arns: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_rules_exists
-    assert @rules.exists?
+    assert @listener_rule.exists?
   end
 
   def test_rule_arn
-    assert_equal(@rules.rule_arn, 'test1')
+    assert_equal(@listener_rule.rule_arn, 'test1')
   end
 
   def test_priority
-    assert_equal(@rules.priority, 'test1')
+    assert_equal(@listener_rule.priority, 'test1')
   end
 
   def test_is_default
-    assert_equal(@rules.is_default, false)
+    assert_equal(@listener_rule.is_default, false)
   end
 
   def test_resource_id
-    refute_nil(@rules.resource_id)
-    assert_equal(@rules.resource_id, 'test1')
+    refute_nil(@listener_rule.resource_id)
+    assert_equal(@listener_rule.resource_id, 'test1')
   end
 
 end

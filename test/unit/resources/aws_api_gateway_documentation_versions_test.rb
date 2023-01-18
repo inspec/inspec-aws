@@ -12,7 +12,7 @@ class AWSApiGatewayDocumentationVersionsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayDocumentationVersions.new('rubbish') }
   end
 
-  def test_documentation_versions_non_existing_for_empty_response
+  def test_api_gateway_documentation_versions_non_existing_for_empty_response
     refute AWSApiGatewayDocumentationVersions.new(rest_api_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end

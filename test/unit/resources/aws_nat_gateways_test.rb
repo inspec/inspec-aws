@@ -16,7 +16,6 @@ class AwsNatGatewaysConstructorTest < Minitest::Test
   def test_non_existing_ngws
     refute AwsNatGateways.new(client_args: { stub_responses: true }).exist?
   end
-
 end
 
 class AwsNatGatewaysTest < Minitest::Test

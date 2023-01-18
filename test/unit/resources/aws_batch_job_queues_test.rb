@@ -12,7 +12,7 @@ class AWSBatchJobQueuesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSBatchJobQueues.new('rubbish') }
   end
 
-  def test_job_definitions_non_existing_for_empty_response
+  def test_job_queues_non_existing_for_empty_response
     refute AWSBatchJobQueues.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -32,34 +32,34 @@ class AWSBatchJobQueuesHappyPathTest < Minitest::Test
     mock_parameter[:compute_environment_order] = [{'order':1, 'compute_environment': 'test1'}]
     data[:data] = { job_queues: [mock_parameter] }
     data[:client] = Aws::Batch::Client
-    @job_definitions = AWSBatchJobQueues.new(client_args: { stub_responses: true }, stub_data: [data])
+    @job_queues = AWSBatchJobQueues.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_job_definitions_exists
-    assert @job_definitions.exists?
+    assert @job_queues.exists?
   end
 
   def test_job_queue_names
-    assert_equal(@job_definitions.job_queue_names, ['test1'])
+    assert_equal(@job_queues.job_queue_names, ['test1'])
   end
 
   def test_job_queue_arns
-    assert_equal(@job_definitions.job_queue_arns, ['test1'])
+    assert_equal(@job_queues.job_queue_arns, ['test1'])
   end
 
   def test_states
-    assert_equal(@job_definitions.states, ["test1"])
+    assert_equal(@job_queues.states, ["test1"])
   end
 
   def test_statuses
-    assert_equal(@job_definitions.statuses, ['test1'])
+    assert_equal(@job_queues.statuses, ['test1'])
   end
 
   def test_status_reasons
-    assert_equal(@job_definitions.status_reasons, ['test1'])
+    assert_equal(@job_queues.status_reasons, ['test1'])
   end
 
   def test_priorities
-    assert_equal(@job_definitions.priorities, [1])
+    assert_equal(@job_queues.priorities, [1])
   end
 end

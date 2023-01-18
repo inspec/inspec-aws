@@ -17,7 +17,7 @@ class AwsEcrConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEcr .new(rubbish: 9) }
   end
 
-  def test_group_not_existing
+  def test_ecr_not_existing
     refute AwsEcr.new(repository_name: 'repo-not-there', client_args: { stub_responses: true }).exists?
   end
 end

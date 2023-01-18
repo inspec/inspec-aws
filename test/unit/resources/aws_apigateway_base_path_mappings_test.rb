@@ -12,7 +12,7 @@ class AWSApiGatewayBasePathMappingsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayBasePathMappings.new('rubbish') }
   end
 
-  def test_api_mapping_non_existing_for_empty_response
+  def test_api_mapping_base_path_mappings_non_existing_for_empty_response
     refute AWSApiGatewayBasePathMappings.new(domain_name: 'test1', client_args: { stub_responses: true }).exist?
   end
 end

@@ -12,7 +12,7 @@ class AwsNetworkACLsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsNetworkACLs.new('random') }
   end
 
-  def test_instances_non_existing_for_empty_response
+  def test_network_acls_non_existing_for_empty_response
     refute AwsNetworkACLs.new(client_args: { stub_responses: true }).exist?
   end
 end

@@ -12,7 +12,7 @@ class AWSIAMInstanceProfilesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSIAMInstanceProfiles.new('rubbish') }
   end
 
-  def test_iam_client_non_existing_for_empty_response
+  def test_instance_profiles_non_existing_for_empty_response
     refute AWSIAMInstanceProfiles.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -31,26 +31,26 @@ class AWSIAMInstanceProfilesHappyPathTest < Minitest::Test
     mock_data[:create_date] = Time.parse("2013-06-11T23:52:02Z2020-06-05T11:30:39.730000+01:00")
     data[:data] = { :instance_profiles => [mock_data] }
     data[:client] = Aws::IAM::Client
-    @iam_client = AWSIAMInstanceProfiles.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSIAMInstanceProfiles.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_iam_client_exists
-    assert @iam_client.exist?
+  def test_instance_profiles_exists
+    assert @resp.exist?
   end
 
   def test_paths
-    assert_equal(@iam_client.paths, ['test1'])
+    assert_equal(@resp.paths, ['test1'])
   end
 
   def test_instance_profile_names
-    assert_equal(@iam_client.instance_profile_names, ['test1'])
+    assert_equal(@resp.instance_profile_names, ['test1'])
   end
 
   def test_instance_profile_ids
-    assert_equal(@iam_client.instance_profile_ids, ['test1'])
+    assert_equal(@resp.instance_profile_ids, ['test1'])
   end
 
   def test_arns
-    assert_equal(@iam_client.arns, ['test1'])
+    assert_equal(@resp.arns, ['test1'])
   end
 end

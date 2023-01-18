@@ -12,7 +12,7 @@ class AWSElasticSearchServiceDomainsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSElasticSearchServiceDomains.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
+  def test_domain_names_non_existing_for_empty_response
     refute AWSElasticSearchServiceDomains.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -26,14 +26,14 @@ class AWSElasticSearchServiceDomainsHappyPathTest < Minitest::Test
     mock_data[:domain_name] = 'test1'
     data[:data] = { :domain_names => [mock_data] }
     data[:client] = Aws::ElasticsearchService::Client
-    @domain_names = AWSElasticSearchServiceDomains.new(client_args: { stub_responses: true }, stub_data: [data])
+    @domains = AWSElasticSearchServiceDomains.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_domain_names_exists
-    assert @domain_names.exist?
+    assert @domains.exist?
   end
 
   def test_domain_name
-    assert_equal(@domain_names.domain_names, ['test1'])
+    assert_equal(@domains.domain_names, ['test1'])
   end
 end

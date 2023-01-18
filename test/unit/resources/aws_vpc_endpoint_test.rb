@@ -27,7 +27,7 @@ class AwsVPCEndpointConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsVpce.new(vpc_endpoint_id: 'vpce-rubbish') }
   end
 
-  def test_vpc_non_existing
+  def test_vpc_endpoints_non_existing
     refute AwsVpce.new(vpc_endpoint_id: 'vpce-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end

@@ -12,7 +12,7 @@ class AWSApiGatewayClientCertificatesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayClientCertificates.new('rubbish') }
   end
 
-  def test_api_mapping_non_existing_for_empty_response
+  def test_api_mapping_client_certificates_non_existing_for_empty_response
     refute AWSApiGatewayClientCertificates.new(client_args: { stub_responses: true }).exist?
   end
 end

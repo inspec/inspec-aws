@@ -12,7 +12,7 @@ class AwsEc2TransitGatewayRouteTableAssociationsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2TransitGatewayRouteTableAssociations.new('rubbish') }
   end
 
-  def test_associations_non_existing_for_empty_response
+  def test_transit_gateway_route_table_associations_non_existing_for_empty_response
     refute AwsEc2TransitGatewayRouteTableAssociations.new(transit_gateway_route_table_id: "test", client_args: { stub_responses: true }).exist?
   end
 end

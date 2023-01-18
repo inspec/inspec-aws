@@ -12,7 +12,7 @@ class AWSAutoScalingScalingPoliciesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSAutoScalingScalingPolicies.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
+  def test_autoscaling_scaling_policies_non_existing_for_empty_response
     refute AWSAutoScalingScalingPolicies.new(client_args: { stub_responses: true }).exist?
   end
 end
