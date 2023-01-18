@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.54 -->
+<!-- latest_release 1.83.55 -->
+## [v1.83.55](https://github.com/inspec/inspec-aws/tree/v1.83.55) (2023-01-18)
+
+#### Merged Pull Requests
+- RESOURCE-557 Soumyo/adding the missing attributes in sqs queue [#882](https://github.com/inspec/inspec-aws/pull/882) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.54](https://github.com/inspec/inspec-aws/tree/v1.83.54) (2023-01-16)
 
 #### Merged Pull Requests
 - Update AWS SNS topic subscription properties documentation [#957](https://github.com/inspec/inspec-aws/pull/957) ([tonyfruzza](https://github.com/tonyfruzza))
-<!-- latest_release -->
 
 ## [v1.83.53](https://github.com/inspec/inspec-aws/tree/v1.83.53) (2022-12-13)
 
