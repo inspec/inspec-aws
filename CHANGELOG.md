@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.57 -->
+<!-- latest_release 1.83.58 -->
+## [v1.83.58](https://github.com/inspec/inspec-aws/tree/v1.83.58) (2023-01-23)
+
+#### Merged Pull Requests
+- removing second file and using already existing one to make things ea… [#966](https://github.com/inspec/inspec-aws/pull/966) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
+<!-- latest_release -->
+
 ## [v1.83.57](https://github.com/inspec/inspec-aws/tree/v1.83.57) (2023-01-23)
 
 #### Merged Pull Requests
 - it seems the main verify in chef isnt there [#965](https://github.com/inspec/inspec-aws/pull/965) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
-<!-- latest_release -->
 
 ## [v1.83.56](https://github.com/inspec/inspec-aws/tree/v1.83.56) (2023-01-18)
 
