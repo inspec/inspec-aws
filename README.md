@@ -26,7 +26,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
 ```
 
-##### 2) Configuration File
+#### 2) Configuration File
 
 Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See example [aws configure credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))
 
