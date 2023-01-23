@@ -16,7 +16,7 @@ pipelines:
     trigger: pull_request
  - verify/private:
     description: Pull Request validation tests
-    definition: .expeditor/verify_private.pipeline.yml
+    definition: .expeditor/verify.pipeline.yml
 
 github:
  delete_branch_on_merge: true
