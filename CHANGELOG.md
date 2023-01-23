@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.56 -->
+<!-- latest_release 1.83.57 -->
+## [v1.83.57](https://github.com/inspec/inspec-aws/tree/v1.83.57) (2023-01-23)
+
+#### Merged Pull Requests
+- it seems the main verify in chef isnt there [#965](https://github.com/inspec/inspec-aws/pull/965) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
+<!-- latest_release -->
+
 ## [v1.83.56](https://github.com/inspec/inspec-aws/tree/v1.83.56) (2023-01-18)
 
 #### Merged Pull Requests
 - RESOURCE-556 Soumyo/adding missing attributes in iam user [#883](https://github.com/inspec/inspec-aws/pull/883) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.55](https://github.com/inspec/inspec-aws/tree/v1.83.55) (2023-01-18)
 
