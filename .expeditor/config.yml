@@ -14,8 +14,9 @@ pipelines:
     description: Unit Test Coverage tests
     # private due to need for tokens
     trigger: pull_request
- - verify:
+ - verify/private:
     description: Pull Request validation tests
+    definition: .expeditor/verify_private.pipeline.yml
 
 github:
  delete_branch_on_merge: true
