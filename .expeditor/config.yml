@@ -8,13 +8,14 @@ slack:
 
 pipelines:
  - verify:
-    trigger: pull_request    
     description: Pull Request validation tests
     public: true
  - coverage:
     description: Unit Test Coverage tests
     # private due to need for tokens
     trigger: pull_request
+ - verify:
+    description: Pull Request validation tests
 
 github:
  delete_branch_on_merge: true
