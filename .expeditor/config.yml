@@ -8,6 +8,7 @@ slack:
 
 pipelines:
  - verify:
+    trigger: pull_request    
     description: Pull Request validation tests
     public: true
  - coverage:
