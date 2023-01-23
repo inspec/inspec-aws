@@ -12,7 +12,7 @@ class AWSEC2FleetsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2Fleets.new('rubbish') }
   end
 
-  def test_egress_only_internet_gateways_non_existing_for_empty_response
+  def test_fleets_non_existing_for_empty_response
     refute AWSEC2Fleets.new(client_args: { stub_responses: true }).exist?
   end
 end

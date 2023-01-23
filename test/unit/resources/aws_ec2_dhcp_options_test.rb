@@ -12,7 +12,7 @@ class AwsEc2DHCPOptionsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2DHCPOptions.new('random') }
   end
 
-  def test_instances_non_existing_for_empty_response
+  def test_dhcp_options_non_existing_for_empty_response
     refute AwsEc2DHCPOptions.new(client_args: { stub_responses: true }).exist?
   end
 end

@@ -24,7 +24,7 @@ class AwsRdsInstanceConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsRdsInstance.new(db_instance_identifier: 'rds_rubbish') }
   end
 
-  def test_rds_non_existing
+  def test_db_instances_non_existing
     refute AwsRdsInstance.new(db_instance_identifier: 'rds-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end

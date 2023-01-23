@@ -12,7 +12,7 @@ class AWSEc2VPNGatewayRoutePropagationsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEc2VPNGatewayRoutePropagations.new('rubbish') }
   end
 
-  def test_functions_non_existing_for_empty_response
+  def test_route_tables_non_existing_for_empty_response
     refute AWSEc2VPNGatewayRoutePropagations.new(client_args: { stub_responses: true }).exist?
   end
 end

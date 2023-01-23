@@ -39,63 +39,63 @@ class AWSMQConfigurationSuccessPathTest < Minitest::Test
     mock_data[:tags] = {}
     data[:data] = [mock_data]
     data[:client] = Aws::MQ::Client
-    @res = AWSMQConfiguration.new(configuration_id: 'config_id', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSMQConfiguration.new(configuration_id: 'config_id', client_args: { stub_responses: true }, stub_data: [data])
   end
   
   def test_resource_id
-    refute_nil(@res.resource_id)
-    assert_equal(@res.resource_id, @res.arn)
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, @resp.arn)
   end
   
   def test_mq_exists
-    assert @res.exists?
+    assert @resp.exists?
   end
   
   def test_arn
-    assert_equal(@res.arn, 'test_arn')
+    assert_equal(@resp.arn, 'test_arn')
   end
   
   def test_authentication_strategy
-    assert_equal(@res.authentication_strategy, 'SIMPLE')
+    assert_equal(@resp.authentication_strategy, 'SIMPLE')
   end
   
   def test_created_date
-    assert_equal(@res.created, Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
+    assert_equal(@resp.created, Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 
   def test_description
-    assert_equal(@res.description, 'test_description')
+    assert_equal(@resp.description, 'test_description')
   end
 
   def test_engine_type
-    assert_equal(@res.engine_type, 'ACTIVEMQ')
+    assert_equal(@resp.engine_type, 'ACTIVEMQ')
   end
 
   def test_engine_version
-    assert_equal(@res.engine_version, 'test_engine_version')
+    assert_equal(@resp.engine_version, 'test_engine_version')
   end
   
   def test_id
-    assert_equal(@res.id, 'test_id')
+    assert_equal(@resp.id, 'test_id')
   end
 
   def test_latest_revision_created_date
-    assert_equal(@res.latest_revision.created, Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
+    assert_equal(@resp.latest_revision.created, Time.parse("2013-08-12T23:52:02Z2020-06-05T11:30:39.730000+01:00"))
   end
 
   def test_latest_revision_description
-    assert_equal(@res.latest_revision.description, 'test_revision_description')
+    assert_equal(@resp.latest_revision.description, 'test_revision_description')
   end
 
   def test_latest_revision_revision
-    assert_equal(@res.latest_revision.revision, 1)
+    assert_equal(@resp.latest_revision.revision, 1)
   end
   
   def test_name
-    assert_equal(@res.name, 'test_name')
+    assert_equal(@resp.name, 'test_name')
   end
   
   def test_tags
-    assert_equal(@res.tags, {})
+    assert_equal(@resp.tags, {})
   end
 end

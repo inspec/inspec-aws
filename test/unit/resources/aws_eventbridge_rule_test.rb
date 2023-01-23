@@ -28,27 +28,27 @@ class AWSEventBridgeRuleSuccessPathTest < Minitest::Test
     mock_parameter[:state] = 'test1'
     data[:data] = mock_parameter
     data[:client] = Aws::EventBridge::Client
-    @res = AWSEventBridgeRule.new(name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEventBridgeRule.new(name: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_event_rule_exists
-    assert @res.exists?
+    assert @resp.exists?
   end
 
   def test_name
-    assert_equal(@res.name, 'test1')
+    assert_equal(@resp.name, 'test1')
   end
 
   def test_arn
-    assert_equal(@res.arn, 'test1')
+    assert_equal(@resp.arn, 'test1')
   end
 
   def test_state
-    assert_equal(@res.state, 'test1')
+    assert_equal(@resp.state, 'test1')
   end
 
   def test_resource_id
-    refute_nil(@res.resource_id)
-    assert_equal(@res.resource_id, 'test1')
+    refute_nil(@resp.resource_id)
+    assert_equal(@resp.resource_id, 'test1')
   end
 end

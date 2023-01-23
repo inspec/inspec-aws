@@ -36,7 +36,7 @@ class AWSIAMVirtualMFADevicesHappyPathTest < Minitest::Test
     @resp = AWSIAMVirtualMFADevices.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_iam_client_exists
+  def test_virtual_mfa_devices_exists
     assert @resp.exist?
   end
 

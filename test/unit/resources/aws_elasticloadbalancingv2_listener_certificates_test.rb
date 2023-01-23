@@ -12,7 +12,7 @@ class AWSElasticLoadBalancingV2ListenerCertificatesConstructorTest < Minitest::T
     assert_raises(ArgumentError) { AWSElasticLoadBalancingV2ListenerCertificates.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
+  def test_listener_certificates_non_existing_for_empty_response
     refute AWSElasticLoadBalancingV2ListenerCertificates.new(listener_arn: 'test1', client_args: { stub_responses: true }).exist?
   end
 end
@@ -27,18 +27,18 @@ class AWSElasticLoadBalancingV2ListenerCertificatesHappyPathTest < Minitest::Tes
     mock_data[:is_default] = true
     data[:data] = { :certificates => [mock_data] }
     data[:client] = Aws::ElasticLoadBalancingV2::Client
-    @certificates = AWSElasticLoadBalancingV2ListenerCertificates.new(listener_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
+    @listener_certificates = AWSElasticLoadBalancingV2ListenerCertificates.new(listener_arn: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_certificates_exists
-    assert @certificates.exist?
+    assert @listener_certificates.exist?
   end
 
   def test_certificate_arns
-    assert_equal(@certificates.certificate_arns, ['test1'])
+    assert_equal(@listener_certificates.certificate_arns, ['test1'])
   end
 
   def test_is_defaults
-    assert_equal(@certificates.is_defaults, [true])
+    assert_equal(@listener_certificates.is_defaults, [true])
   end
 end

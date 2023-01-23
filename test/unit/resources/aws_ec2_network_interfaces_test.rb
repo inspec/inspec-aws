@@ -12,7 +12,7 @@ class AWSEC2NetworkInterfacesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2NetworkInterfaces.new('rubbish') }
   end
 
-  def test_internet_gateway_non_existing_for_empty_response
+  def test_network_interfaces_non_existing_for_empty_response
     refute AWSEC2NetworkInterfaces.new(client_args: { stub_responses: true }).exist?
   end
 end

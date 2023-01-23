@@ -12,7 +12,7 @@ class AWSBatchComputeEnvironmentsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSBatchComputeEnvironments.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
+  def test_compute_environments_non_existing_for_empty_response
     refute AWSBatchComputeEnvironments.new(client_args: { stub_responses: true }).exist?
   end
 end
@@ -36,7 +36,7 @@ class AWSBatchComputeEnvironmentsHappyPathTest < Minitest::Test
     @compute_environments = AWSBatchComputeEnvironments.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_work_groups_exists
+  def test_compute_environments_exists
     assert @compute_environments.exist?
   end
 

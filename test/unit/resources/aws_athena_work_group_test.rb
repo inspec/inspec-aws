@@ -31,7 +31,7 @@ class AWSAthenaWorkGroupSuccessPathTest < Minitest::Test
     @work_group = AWSAthenaWorkGroup.new(work_group: 'test1', client_args: { stub_responses: true }, stub_data: [data])
   end
 
-  def test_parameter_group_exists
+  def test_work_group_exists
     assert @work_group.exists?
   end
 

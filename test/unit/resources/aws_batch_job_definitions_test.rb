@@ -28,11 +28,6 @@ class AWSBatchJobDefinitionsHappyPathTest < Minitest::Test
     mock_parameter[:revision] = 1
     mock_parameter[:status] = 'test1'
     mock_parameter[:type] = 'test1'
-    # mock_parameter[:parameters] = 1
-    # mock_parameter[:container_properties] = 'test1'
-    # mock_parameter[:timeout] = 'test1'
-    # mock_parameter[:node_properties] = 'test1'
-    # mock_parameter[:tags] = 'test1'
     mock_parameter[:propagate_tags] = true
     mock_parameter[:platform_capabilities] = ['test1']
     data[:data] = { job_definitions: [mock_parameter] }

@@ -24,22 +24,22 @@ class AWSEventBridgeRulesHappyPathTest < Minitest::Test
     mock_data[:event_pattern] = 'test1'
     data[:data] = { :rules => [mock_data] }
     data[:client] = Aws::EventBridge::Client
-    @rules = AWSEventBridgeRules.new(client_args: { stub_responses: true }, stub_data: [data])
+    @resp = AWSEventBridgeRules.new(client_args: { stub_responses: true }, stub_data: [data])
   end
 
   def test_rules_exists
-    assert @rules.exist?
+    assert @resp.exist?
   end
 
   def test_names
-    assert_equal(@rules.names, ['test1'])
+    assert_equal(@resp.names, ['test1'])
   end
 
   def test_states
-    assert_equal(@rules.arns, ['test1'])
+    assert_equal(@resp.arns, ['test1'])
   end
 
   def test_event_patterns
-    assert_equal(@rules.event_patterns, ['test1'])
+    assert_equal(@resp.event_patterns, ['test1'])
   end
 end

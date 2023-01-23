@@ -12,7 +12,7 @@ class AWSCloudFrontPublicKeysConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSCloudFrontPublicKeys.new('rubbish') }
   end
 
-  def test_realtime_log_configs_non_existing_for_empty_response
+  def test_cloudfront_public_keys_non_existing_for_empty_response
     refute AWSCloudFrontPublicKeys.new(client_args: { stub_responses: true }).exist?
   end
 end

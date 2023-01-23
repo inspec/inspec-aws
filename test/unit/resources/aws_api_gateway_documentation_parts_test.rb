@@ -12,7 +12,7 @@ class AWSApiGatewayDocumentationPartsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayDocumentationParts.new('rubbish') }
   end
 
-  def test_documentation_parts_non_existing_for_empty_response
+  def test_api_gateway_documentation_parts_non_existing_for_empty_response
     refute AWSApiGatewayDocumentationParts.new(rest_api_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end

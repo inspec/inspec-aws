@@ -12,7 +12,7 @@ class AWSServiceCatalogLaunchRoleConstraintsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSServiceCatalogLaunchRoleConstraints.new('rubbish') }
   end
 
-  def test_functions_non_existing_for_empty_response
+  def test_constraint_details_non_existing_for_empty_response
     refute AWSServiceCatalogLaunchRoleConstraints.new(portfolio_id: 'test1', client_args: { stub_responses: true }).exist?
   end
 end

@@ -12,7 +12,7 @@ class AwsEc2TransitGatewayRouteTablesConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2TransitGatewayRouteTables.new('rubbish') }
   end
 
-  def test_Ec2TransitGatewayRouteTables_non_existing_for_empty_response
+  def test_transit_gateway_route_tables_non_existing_for_empty_response
     refute AwsEc2TransitGatewayRouteTables.new(client_args: { stub_responses: true }).exist?
   end
 end

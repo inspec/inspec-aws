@@ -7,11 +7,7 @@ class AwsEc2TransitGatewayRouteTableAssociationConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsEc2TransitGatewayRouteTableAssociation.new(client_args: { stub_responses: true }) }
   end
 
-  def test_accepts_transit_gateway_attachment_id_as_hash_eight_sign
-    AwsEc2TransitGatewayRouteTableAssociation.new(transit_gateway_route_table_id: 'test', client_args: { stub_responses: true })
-  end
-
-  def test_accepts_transit_gateway_attachment_id_as_hash
+  def test_accepts_transit_gateway_route_table_id_as_hash_eight_sign
     AwsEc2TransitGatewayRouteTableAssociation.new(transit_gateway_route_table_id: 'test', client_args: { stub_responses: true })
   end
 

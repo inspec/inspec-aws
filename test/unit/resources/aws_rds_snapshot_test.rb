@@ -24,7 +24,7 @@ class AwsRdsSnapshotConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AwsRdsSnapshot.new(db_snapshot_identifier: 'rds_rubbish') }
   end
 
-  def test_rds_non_existing
+  def test_db_snapshots_non_existing
     refute AwsRdsSnapshot.new(db_snapshot_identifier: 'rds-1234abcd', client_args: { stub_responses: true }).exists?
   end
 end

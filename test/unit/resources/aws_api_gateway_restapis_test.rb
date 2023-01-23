@@ -12,7 +12,7 @@ class AWSApiGatewayRestApisConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSApiGatewayRestApis.new('rubbish') }
   end
 
-  def test_work_groups_non_existing_for_empty_response
+  def test_api_gateway_restapis_non_existing_for_empty_response
     refute AWSApiGatewayRestApis.new(client_args: { stub_responses: true }).exist?
   end
 end

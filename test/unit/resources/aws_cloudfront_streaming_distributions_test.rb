@@ -12,7 +12,7 @@ class AWSCloudFrontStreamingDistributionsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSCloudFrontStreamingDistributions.new('rubbish') }
   end
 
-  def test_cache_policy_non_existing_for_empty_response
+  def test_streaming_distribution_list_non_existing_for_empty_response
     refute AWSCloudFrontStreamingDistributions.new(client_args: { stub_responses: true }).exist?
   end
 end

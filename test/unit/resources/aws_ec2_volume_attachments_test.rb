@@ -12,7 +12,7 @@ class AWSEC2VolumeAttachmentsConstructorTest < Minitest::Test
     assert_raises(ArgumentError) { AWSEC2VolumeAttachments.new('rubbish') }
   end
 
-  def test_volumes_configs_non_existing_for_empty_response
+  def test_volume_attachments_configs_non_existing_for_empty_response
     refute AWSEC2VolumeAttachments.new(client_args: { stub_responses: true }).exist?
   end
 end

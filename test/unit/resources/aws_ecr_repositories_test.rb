@@ -16,7 +16,6 @@ class AwsEcrRepositoriesConstructorTest < Minitest::Test
   def test_non_existing_repositories
     refute AwsEcrRepositories.new(client_args: { stub_responses: true }).exist?
   end
-
 end
 
 class AwsEcrRepositoriesTest < Minitest::Test
