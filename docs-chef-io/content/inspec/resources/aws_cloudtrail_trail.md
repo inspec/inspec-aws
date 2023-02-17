@@ -110,7 +110,7 @@ end
 
 ```ruby
 describe aws_cloudtrail_trail('my-cloudtrail') do
-  it { should organization_trail }
+  it { should be_organization_trail }
 end
 ```
 
