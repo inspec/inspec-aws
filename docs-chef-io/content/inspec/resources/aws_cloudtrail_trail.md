@@ -116,6 +116,7 @@ end
 ```ruby
 describe aws_cloudtrail_trail('TRIAL_NAME') do
   its("is_organization_trail") { should eq true }
+  it { should be_organization_trail }
 end
 ```
 
