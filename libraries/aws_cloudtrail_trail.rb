@@ -10,11 +10,13 @@ class AwsCloudTrailTrail < AwsResourceBase
   EXAMPLE
 
   attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :trail_name,
-              :kms_key_id, :s3_bucket_name, :trail_arn, :is_multi_region_trail, :log_file_validation_enabled
+              :kms_key_id, :s3_bucket_name, :s3_key_prefix, :trail_arn, :is_multi_region_trail,
+              :log_file_validation_enabled, :is_organization_trail
 
   alias multi_region_trail? is_multi_region_trail
   alias log_file_validation_enabled? log_file_validation_enabled
   alias has_log_file_validation_enabled? log_file_validation_enabled
+  alias organization_trail? is_organization_trail
 
   def initialize(opts = {})
     opts = { trail_name: opts } if opts.is_a?(String)
@@ -29,6 +31,8 @@ class AwsCloudTrailTrail < AwsResourceBase
       @kms_key_id = @trail[:kms_key_id]
       @home_region = @trail[:home_region]
       @s3_bucket_name = @trail[:s3_bucket_name]
+      @s3_key_prefix = @trail[:s3_key_prefix]
+      @is_organization_trail = @trail[:is_organization_trail]
       @is_multi_region_trail = @trail[:is_multi_region_trail]
       @cloud_watch_logs_role_arn = @trail[:cloud_watch_logs_role_arn]
       @log_file_validation_enabled = @trail[:log_file_validation_enabled]

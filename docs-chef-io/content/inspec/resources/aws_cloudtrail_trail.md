@@ -29,7 +29,7 @@ end
 
 # Hash syntax for trail name
 ```ruby
-describe aws_cloudtrail_trail(TRIAL_NAME: 'TRIAL_NAME') do
+describe aws_cloudtrail_trail(trail_name: 'TRIAL_NAME') do
   it { should exist }
 end
 ```
@@ -178,6 +178,16 @@ The test will pass if the identified trail has log file integrity validation is 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should be_log_file_validation_enabled }
+end
+```
+
+#### be_organization_trail
+
+The test will pass if the identified trail has organization trail is enabled.
+
+```ruby
+describe aws_cloudtrail_trail('TRIAL_NAME') do
+  it { should be_organization_trail }
 end
 ```
 
