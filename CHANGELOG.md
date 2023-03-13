@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.58 -->
+<!-- latest_release 1.83.59 -->
+## [v1.83.59](https://github.com/inspec/inspec-aws/tree/v1.83.59) (2023-03-13)
+
+#### Merged Pull Requests
+- Add attributes s3_key_prefix &amp; organization_trail to aws_cloudtrail_trail resource [#967](https://github.com/inspec/inspec-aws/pull/967) ([rezen](https://github.com/rezen))
+<!-- latest_release -->
+
 ## [v1.83.58](https://github.com/inspec/inspec-aws/tree/v1.83.58) (2023-01-23)
 
 #### Merged Pull Requests
 - removing second file and using already existing one to make things ea… [#966](https://github.com/inspec/inspec-aws/pull/966) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
-<!-- latest_release -->
 
 ## [v1.83.57](https://github.com/inspec/inspec-aws/tree/v1.83.57) (2023-01-23)
 
