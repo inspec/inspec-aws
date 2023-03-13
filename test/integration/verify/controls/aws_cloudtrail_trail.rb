@@ -53,5 +53,6 @@ control 'aws-cloudtrail-1.0' do
   describe aws_cloudtrail_trail(aws_cloud_trail_name) do
     its('s3_key_prefix') { should_not eq nil }
     its('is_organization_trail') { should eq false }
+    it { should be_organization_trail }
   end
 end
