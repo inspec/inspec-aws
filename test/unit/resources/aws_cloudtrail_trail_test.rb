@@ -25,6 +25,8 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
     mock_cloudtrail_trail = {}
     mock_cloudtrail_trail[:name] = 'aws-cloud-trail'
     mock_cloudtrail_trail[:s3_bucket_name] = 'aws-cloud-trail-bucket'
+    mock_cloudtrail_trail[:s3_key_prefix] = 'example/org/structure'
+    mock_cloudtrail_trail[:is_organization_trail] = false
     mock_cloudtrail_trail[:is_multi_region_trail] = true
     mock_cloudtrail_trail[:home_region] = 'eu-west-2'
     mock_cloudtrail_trail[:trail_arn] = 'arn:aws:cloudtrail:eu-west-2::trail/aws-cloud-trail'
@@ -58,8 +60,16 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
     assert_equal(@cloudtrail_trail.s3_bucket_name, 'aws-cloud-trail-bucket')
   end
 
+  def test_cloudtrail_trail_s3_key_prefix
+    assert_equal(@cloudtrail_trail.s3_key_prefix, 'example/org/structure')
+  end
+
   def test_cloudtrail_trail_is_multi_region_trail
     assert_equal(@cloudtrail_trail.is_multi_region_trail, true)
+  end
+
+  def test_cloudtrail_trail_is_organization_trail
+    assert_equal(@cloudtrail_trail.is_organization_trail, false)
   end
 
   def test_cloudtrail_trail_home_region
@@ -92,6 +102,10 @@ class AwsCloudTrailTrailPositiveTest < Minitest::Test
 
   def test_multi_region_trail_positive
     assert @cloudtrail_trail.multi_region_trail?
+  end
+
+  def test_organization_trail_negative
+    assert ! @cloudtrail_trail.organization_trail?
   end
 
   def test_log_file_validation_enabled_positive
