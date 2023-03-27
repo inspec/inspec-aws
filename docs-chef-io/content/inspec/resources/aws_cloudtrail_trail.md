@@ -18,27 +18,27 @@ Use the `aws_cloudtrail_trail` InSpec audit resource to test properties of a sin
 
 ## Syntax
 
-An `aws_cloudtrail_trail` resource block identifies a trail by `TRIAL_NAME`.
+An `aws_cloudtrail_trail` resource block identifies a trail by `TRAIL_NAME`.
 
 # Find a trail by name
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should exist }
 end
 ```
 
 # Hash syntax for trail name
 ```ruby
-describe aws_cloudtrail_trail(trail_name: 'TRIAL_NAME') do
+describe aws_cloudtrail_trail(trail_name: 'TRAIL_NAME') do
   it { should exist }
 end
 ```
 
 ## Parameters
 
-`trial_name` _(required)_
+`trail_name` _(required)_
 : This resource expects a single parameter, the CloudTrail Name which uniquely identifies it. 
-  This can be passed either as a string or as a `trial_name: 'value'` key-value entry in a hash.
+  This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail/index.html#lang/en_us).
 
@@ -47,7 +47,7 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 `trail_arn`
 : Specifies the ARN of the trail.
 
-`trial_name`
+`TRAIL_NAME`
 : Name of the trail.
 
 `home_region`
@@ -76,13 +76,13 @@ See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloud
 **Test that the specified trail does exist.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should exist }
 end
 ```
 
 ```ruby
-describe aws_cloudtrail_trail(TRIAL_NAME: 'TRIAL_NAME') do
+describe aws_cloudtrail_trail(trail_name: 'TRAIL_NAME') do
   it { should exist }
 end
 ```
@@ -90,7 +90,7 @@ end
 **Check the KMS key used to encrypt.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   its('kms_key_id') { should eq "KMS_KEY_ID" }
 end
 ```
@@ -98,7 +98,7 @@ end
 **Check the home region is correct.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   its('home_region') { should eq 'us-east-1' }
 end
 ```
@@ -106,7 +106,7 @@ end
 **Test that the specified trail is a multi-region trail.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should be_multi_region_trail }
 end
 ```
@@ -114,7 +114,7 @@ end
 **Test that the specified trail is a organization trail.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   its("is_organization_trail") { should eq true }
   it { should be_organization_trail }
 end
@@ -123,7 +123,7 @@ end
 **Test that the specified trail has a S3 Key Prefix.**
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   its("s3_key_prefix") { should eq 'S3_KEY_PREFIX_NAME' }
 end
 ```
@@ -186,7 +186,7 @@ end
 The test will pass if the identified trail has organization trail is enabled.
 
 ```ruby
-describe aws_cloudtrail_trail('TRIAL_NAME') do
+describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should be_organization_trail }
 end
 ```
