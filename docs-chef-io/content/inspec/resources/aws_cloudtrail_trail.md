@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_cloudtrail_trail Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_cloudtrail_trail` InSpec audit resource to test properties of a single AWS CloudTrail.
+Use the `aws_cloudtrail_trail` Chef InSpec audit resource to test properties of a single AWS CloudTrail trail.
 
 ## Installation
 
@@ -20,14 +20,16 @@ Use the `aws_cloudtrail_trail` InSpec audit resource to test properties of a sin
 
 An `aws_cloudtrail_trail` resource block identifies a trail by `TRAIL_NAME`.
 
-# Find a trail by name
+**Find a trail by name:**
+
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should exist }
 end
 ```
 
-# Hash syntax for trail name
+**Use hash syntax to find a trail by trail name:**
+
 ```ruby
 describe aws_cloudtrail_trail(trail_name: 'TRAIL_NAME') do
   it { should exist }
@@ -37,7 +39,7 @@ end
 ## Parameters
 
 `trail_name` _(required)_
-: This resource expects a single parameter, the CloudTrail Name which uniquely identifies it. 
+: This resource expects a single parameter, the CloudTrail name which uniquely identifies it.
   This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
 See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail/index.html#lang/en_us).
@@ -111,7 +113,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Test that the specified trail is a organization trail.**
+**Test that the specified trail is an organization trail.**
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -134,25 +136,24 @@ end
 
 ### exist
 
-The control will pass if the describe returns at least one result.
+Use `should` with the `exist` matcher to verify that the CloudTrail trail exists.
 
-# Verify that at least one CloudTrail Trail exists.
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should exist }
 end
 ```
 
-### not exist
+Use `should_not` to verify that a CloudTrail trail does not exists.
 
-# Verify that CloudTrail Trail does not exists.
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should_not exist }
 end
 ```
 
-#### be_multi_region_trail
+### be_multi_region_trail
+
 The test will pass if the identified trail is a multi-region trail.
 
 ```ruby
@@ -161,7 +162,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-#### be_encrypted
+### be_encrypted
 
 The test will pass if the logs delivered by the identified trail are encrypted.
 
@@ -171,9 +172,9 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-#### be_log_file_validation_enabled
+### be_log_file_validation_enabled
 
-The test will pass if the identified trail has log file integrity validation is enabled.
+The test will pass if the identified trail has log file integrity validation enabled.
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -181,7 +182,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-#### be_organization_trail
+### be_organization_trail
 
 The test will pass if the identified trail has organization trail is enabled.
 
