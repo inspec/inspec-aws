@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.59 -->
+<!-- latest_release 1.83.60 -->
+## [v1.83.60](https://github.com/inspec/inspec-aws/tree/v1.83.60) (2023-03-30)
+
+#### Merged Pull Requests
+- Chef 1095 Add the missing contents in the files of aws cloudtrail trail resource [#969](https://github.com/inspec/inspec-aws/pull/969) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.83.59](https://github.com/inspec/inspec-aws/tree/v1.83.59) (2023-03-13)
 
 #### Merged Pull Requests
 - Add attributes s3_key_prefix &amp; organization_trail to aws_cloudtrail_trail resource [#967](https://github.com/inspec/inspec-aws/pull/967) ([rezen](https://github.com/rezen))
-<!-- latest_release -->
 
 ## [v1.83.58](https://github.com/inspec/inspec-aws/tree/v1.83.58) (2023-01-23)
 
