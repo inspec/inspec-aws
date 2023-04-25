@@ -67,6 +67,8 @@ require "aws-sdk-apigatewayv2"
 # Class to manage the AWS connection, instantiates all required clients for inspec resources
 #
 class AwsConnection
+  attr_reader :refresh_token_thread
+
   def initialize(params)
     params = {} if params.nil?
     # Special case for AWS, let's allow all resources to specify parameters that propagate to the client init
@@ -81,9 +83,34 @@ class AwsConnection
 
   def aws_client(klass)
     # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different args per client in cases such as EC2 instance that use multiple different clients
-    return @cache[klass.to_s.to_sym] ||= klass.new(@client_args) if @client_args
-    @cache[klass.to_s.to_sym] ||= klass.new
+    if !ENV['AWS_ROLE_ARN'].nil? && !ENV['AWS_ROLE_SESSION_NAME'].nil?
+      assume_role_options = {
+        client: Aws::STS::Client.new,
+        role_arn: ENV['AWS_ROLE_ARN'],
+        role_session_name: ENV['AWS_ROLE_SESSION_NAME'],
+      }
+      if !ENV['AWS_TOKEN_EXPIRATION_DURATION'].nil?
+        assume_role_options[:duration_seconds] = ENV['AWS_TOKEN_EXPIRATION_DURATION'].to_i
+      end
+
+
+      assume_role_credentials = Aws::AssumeRoleCredentials.new(assume_role_options)
+      if @client_args
+        args = {
+          credentials: assume_role_credentials,
+        }
+        final_args = args.merge(@client_args)
+      end
+      return @cache[klass.to_s.to_sym] ||= klass.new(final_args) if @client_args
+      @cache[klass.to_s.to_sym] ||= klass.new(credentials: assume_role_credentials)
+
+    else
+      return @cache[klass.to_s.to_sym] ||= klass.new(@client_args) if @client_args
+      @cache[klass.to_s.to_sym] ||= klass.new
+    end
   end
+
+
 
   def aws_resource(klass, args)
     return klass.new(args, @client_args) if @client_args
@@ -366,6 +393,7 @@ class AwsResourceBase < Inspec.resource(1)
 
       @resource_data = opts[:resource_data].presence&.to_h
     end
+
     @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
     # inspec.backend.aws_client(Aws::EC2::Resource,opts)
@@ -379,6 +407,10 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, "Expect each stub_data hash to have :client, :method and :data keys" if !stub.keys.all? { |a| %i(method data client).include?(a) }
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
+  end
+
+  def stop_refresh_token_thread
+    @aws.stop_refresh_token_thread
   end
   # rubocop:enable Lint/MissingSuper
 
@@ -498,11 +530,9 @@ class AwsResourceBase < Inspec.resource(1)
 
   # This is to make RuboCop happy.
   # Disabling Useless method definition detection as there is an issue with rubocop
-  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
-  # rubocop:enable Lint/UselessMethodDefinition
 
   private
 
@@ -713,11 +743,9 @@ class AwsResourceProbe
 
   # This is to make RuboCop happy.
   # Disabling Useless method definition detection as there is an issue with rubocop
-  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
-  # rubocop:enable Lint/UselessMethodDefinition
 
   def to_s
     "Property is missing! The following are available: #{item.keys.map(&:to_s)}"
@@ -753,11 +781,9 @@ class NullResponse
 
   # This is to make RuboCop happy.
   # Disabling Useless method definition detection as there is an issue with rubocop
-  # rubocop:disable Lint/UselessMethodDefinition
   def respond_to_missing?(*several_variants)
     super
   end
-  # rubocop:enable Lint/UselessMethodDefinition
 
   def to_s
     nil
