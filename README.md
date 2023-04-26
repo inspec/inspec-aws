@@ -49,7 +49,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
 ```
     For enabling auto refresh we need to create Assume role credential i.e
     An auto-refreshing credential provider that assumes a role via {Aws::STS::Client#assume_role}.  
-```bash
+```ruby
     role_credentials = Aws::AssumeRoleCredentials.new(    
                         client: Aws::STS::Client.new(...),    
                         role_arn: "linked::account::arn",    
