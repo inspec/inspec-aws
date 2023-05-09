@@ -10,6 +10,14 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 ### AWS Credentials
 
+#### auto-refreshing credentials -
+    The AWS API call session will be terminated if an api(control) takes more than 12 hours
+    or whatever expiration duration is provided,disrupting the entire testing process.
+    However, if auto-refresh is enabled, the token will be automatically refreshed 5 minutes prior to its expiration,
+    preventing the session from being terminated.```
+
+```Note - If Execution time is not more than 12 hours No need to proceed with auto refreshing credentials```
+
 Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)
 
 There are multiple ways to set the AWS credentials, as shown below:
@@ -28,12 +36,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
 ```
 
 
-#### 1.2) Environment Variables with auto refresh
-
-auto-refresh:   ```With auto-refresh enabled, the AWS API call session will be terminated if it takes more than 12 hours
-                or whatever expiration duration is provided,disrupting the entire testing process. 
-                However, if auto-refresh is enabled, the token will be automatically
-                refreshed 5 minutes prior to its expiration, preventing the session from being terminated.```
+#### 1.2) Environment Variables with auto refreshing credentials
 
 Set your AWS credentials in a `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
 
@@ -49,6 +52,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
 ```
     For enabling auto refresh we need to create Assume role credential i.e
     An auto-refreshing credential provider that assumes a role via {Aws::STS::Client#assume_role}.  
+    eg - 
 ```ruby
     role_credentials = Aws::AssumeRoleCredentials.new(    
                         client: Aws::STS::Client.new(...),    
@@ -68,7 +72,7 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
     Use the DurationSeconds parameter to specify the duration of the role session from 900 seconds (15 minutes) up to 
     the maximum session duration setting for the role. If you do not pass this parameter, the temporary credentials expire in one hour.
 
-#### AWS_ROLE_SESSION_NAME -
+#### AWS_ROLE_SESSION_NAME (Required)-
     Use this string value to identify the session when a role is used by different principals. 
     For security purposes, administrators can view this field in AWS CloudTrail logs to help identify who performed an 
     action in AWS. Your administrator might require that you specify your IAM user name as the session name when you assume the role.
