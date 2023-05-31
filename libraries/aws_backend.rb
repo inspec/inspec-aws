@@ -83,16 +83,15 @@ class AwsConnection
 
   def aws_client(klass)
     # TODO: make this a dict with keys of klass.to_s.to_sym such that we can send different args per client in cases such as EC2 instance that use multiple different clients
-    if !ENV['AWS_ROLE_ARN'].nil? && !ENV['AWS_ROLE_SESSION_NAME'].nil?
+    if !ENV["AWS_ROLE_ARN"].nil? && !ENV["AWS_ROLE_SESSION_NAME"].nil?
       assume_role_options = {
         client: Aws::STS::Client.new,
-        role_arn: ENV['AWS_ROLE_ARN'],
-        role_session_name: ENV['AWS_ROLE_SESSION_NAME'],
+        role_arn: ENV["AWS_ROLE_ARN"],
+        role_session_name: ENV["AWS_ROLE_SESSION_NAME"],
       }
-      if !ENV['AWS_TOKEN_EXPIRATION_DURATION'].nil?
-        assume_role_options[:duration_seconds] = ENV['AWS_TOKEN_EXPIRATION_DURATION'].to_i
+      if !ENV["AWS_TOKEN_EXPIRATION_DURATION"].nil?
+        assume_role_options[:duration_seconds] = ENV["AWS_TOKEN_EXPIRATION_DURATION"].to_i
       end
-
 
       assume_role_credentials = Aws::AssumeRoleCredentials.new(assume_role_options)
       if @client_args
@@ -109,8 +108,6 @@ class AwsConnection
       @cache[klass.to_s.to_sym] ||= klass.new
     end
   end
-
-
 
   def aws_resource(klass, args)
     return klass.new(args, @client_args) if @client_args
