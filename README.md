@@ -12,9 +12,9 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 #### auto-refreshing credentials -
     The AWS API call session will be terminated if an api(control) takes more than 12 hours
-    or whatever expiration duration is provided,disrupting the entire testing process.
+    or whatever expiration duration is provided,disrupting the entire scanning process.
     However, if auto-refresh is enabled, the token will be automatically refreshed 5 minutes prior to its expiration,
-    preventing the session from being terminated.```
+    preventing the session from being terminated.
 
 ```Note - If Execution time is not more than 12 hours No need to proceed with auto refreshing credentials```
 
@@ -49,23 +49,12 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
     export AWS_ROLE_ARN="arn:aws:iam::112758395563:role/DUMMYRole"
     export AWS_TOKEN_EXPIRATION_DURATION="901"
     export AWS_ROLE_SESSION_NAME="DUMMY_aws_role_for_session" 
-```
-    For enabling auto refresh we need to create Assume role credential i.e
-    An auto-refreshing credential provider that assumes a role via {Aws::STS::Client#assume_role}.  
-    eg - 
-```ruby
-    role_credentials = Aws::AssumeRoleCredentials.new(    
-                        client: Aws::STS::Client.new(...),    
-                        role_arn: "linked::account::arn",    
-                        role_session_name: "session-name"  )  
-    ec2 = Aws::EC2::Client.new(credentials: role_credentials)
-```
 
 #### AWS_ROLE_ARN (Required)- 
     The Amazon Resource Name (ARN) of the role that the app should assume.
     To create the AWS_ROLE_ARN, which is in the format of "arn:aws:iam::account:role/role-name-with-path,"
     you must use IAM policies in the AWS Console. You can create a role with limited access for specific purposes,
-    such as testing only S3Access. 
+    such as scanning only S3Access. 
     For example, a role can be created with the following format: "arn:aws:iam::123456789012:role/S3Access."
 #### AWS_TOKEN_EXPIRATION_DURATION (Optional)- 
     Duration, which specifies the duration of the temporary security credentials. 
