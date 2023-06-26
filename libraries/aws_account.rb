@@ -30,19 +30,19 @@ class AwsAccount < AwsResourceBase
 
   def billing_contact_information
     @billing_contact_information ||= catch_aws_errors do
-      @aws.account_client.get_alternate_contact("BILLING").alternate_contact.to_h.transform_keys(&:to_s)
+      @aws.account_client.get_alternate_contact({alternate_contact_type: "BILLING"}).alternate_contact.to_h.transform_keys(&:to_s)
     end
   end
 
   def operations_contact_information
     @operations_contact_information ||= catch_aws_errors do
-      @aws.account_client.get_alternate_contact("OPERATIONS").alternate_contact.to_h.transform_keys(&:to_s)
+      @aws.account_client.get_alternate_contact({alternate_contact_type: "OPERATIONS"}).alternate_contact.to_h.transform_keys(&:to_s)
     end
   end
 
   def security_contact_information
     @security_contact_information ||= catch_aws_errors do
-      @aws.account_client.get_alternate_contact("SECURITY").alternate_contact.to_h.transform_keys(&:to_s)
+      @aws.account_client.get_alternate_contact({alternate_contact_type: "SECURITY"}).alternate_contact.to_h.transform_keys(&:to_s)
     end
   end
 end
