@@ -83,7 +83,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def fetch_keys(username)
     access_keys = catch_aws_errors do
-      iam_client.list_access_keys(user_name: username)
+      iam_client.list_access_keys({user_name: username})
     rescue Aws::IAM::Errors::NoSuchEntity
       # Swallow - a miss on search results should return an empty table
     end
