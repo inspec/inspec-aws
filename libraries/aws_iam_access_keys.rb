@@ -96,7 +96,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
         access_key_hash[:inactive] = access_key_hash[:status] != "Active"
         access_key_hash[:created_hours_ago]  = ((Time.now - access_key_hash[:create_date]) / (60*60)).to_i
         access_key_hash[:created_days_ago]   = (access_key_hash[:created_hours_ago] / 24).to_i
-        access_key_hash[:user_created_date]  = access_key_hash[:create_date]
+        access_key_hash[:user_created_date]  = @_users.find {|user| user.user_name == access_key_hash[:username]}.create_date
         access_key_hash[:created_with_user]  = (access_key_hash[:create_date] - access_key_hash[:user_created_date]).abs < 1.0/24.0
         access_key_hash
       end
