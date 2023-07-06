@@ -44,10 +44,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def fetch_data(username)
     @_users = get_users(username)
-    pp 'users', @_users
     @table = get_keys
-    pp 'table', @table
-    @table
   end
 
   # Get details of a single user, if provided.
@@ -107,50 +104,35 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   end
 
   def last_used(row, _condition, _table)
-    pp 'row', row
-    a = catch_aws_errors do
+    catch_aws_errors do
       iam_client.get_access_key_last_used({access_key_id: row[:access_key_id]})
         .access_key_last_used
     end
-    pp 'last used', a
-    a
   end
 
   def lazy_load_last_used_date(row, condition, table)
     row[:last_used_date] ||= last_used(row, condition, table).last_used_date
-    pp 'row post last_used_date', row
-    row[:last_used_date]
   end
 
   def lazy_load_never_used_time(row, condition, table)
     row[:never_used] ||= lazy_load_last_used_date(row, condition, table).nil?
-    pp 'row post never_used', row
-    row[:never_used]
   end
 
   def lazy_load_ever_used(row, condition, table)
     row[:ever_used] ||= !lazy_load_never_used_time(row, condition, table)
-    pp 'row post ever_used', row
-    row[:ever_used]
   end
 
   def lazy_load_last_used_hours_ago(row, condition, table)
-    return if lazy_load_never_used_time(row, condition, table)
-
-    pp 'math', Time.now, row[:last_used_date], Time.now - row[:last_used_date], ((Time.now - row[:last_used_date]) / (60*60)), ((Time.now - row[:last_used_date]) / (60*60)).to_i
-    row[:last_used_hours_ago] = ((Time.now - row[:last_used_date]) / (60*60)) #.to_i
-    pp 'row post last_used_hours_ago', row
-    row[:last_used_hours_ago]
+    return row[:last_used_hours_ago] = nil if lazy_load_never_used_time(row, condition, table)
+    row[:last_used_hours_ago] = ((Time.now - row[:last_used_date]) / (60*60)).to_i
   end
 
   def lazy_load_last_used_days_ago(row, condition, table)
-    return if lazy_load_never_used_time(row, condition, table)
+    return row[:last_used_days_ago] = nil if lazy_load_never_used_time(row, condition, table)
     if row[:last_used_hours_ago].nil?
       lazy_load_last_used_hours_ago(row, condition, table)
     end
-    row[:last_used_days_ago] = (row[:last_used_hours_ago]/24) #.to_i
-    pp 'row post last_used_days_ago', row
-    row[:last_used_days_ago]
+    row[:last_used_days_ago] = (row[:last_used_hours_ago]/24).to_i
   end
 
   def iam_client

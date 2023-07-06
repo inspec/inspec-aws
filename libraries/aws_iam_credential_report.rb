@@ -42,7 +42,6 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
     super(opts)
     validate_parameters
     @table = fetch_data
-    pp ["table", @table]
   end
 
   def to_s
