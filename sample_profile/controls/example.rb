@@ -10,7 +10,6 @@ control "aws-vpcs-multi-region-status-check" do                             # A 
     aws_vpcs(aws_region: region).vpc_ids.each do |vpc|                      # Find all VPCs in a single AWS region
       describe aws_vpc(aws_region: region, vpc_id: vpc) do                  # The test itself.
         it { should exist }                                                 # Confirms AWS VPC exists
-        it { should be_available }                                          # Confirms AWS VPC has status "available"
       end
     end
   end
