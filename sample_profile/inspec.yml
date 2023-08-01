@@ -9,6 +9,6 @@ version: 0.1.0
 inspec_version: '~> 5'
 depends:
   - name: inspec-aws
-    url: https://github.com/inspec/inspec-aws/archive/main.tar.gz
+    git: https://github.com/inspec/inspec-aws.git
 supports:
   - platform: aws
