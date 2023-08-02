@@ -10,7 +10,7 @@ control 'aws-ec2-instances-1.0' do
 
   aws_ec2_instances.where(tags: /"Name"=>/).instance_ids.each do |id|
     describe aws_ec2_instance(id) do
-      it { should exist }
+      it { should_not exist }
     end
   end
 end

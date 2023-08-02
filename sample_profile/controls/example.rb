@@ -7,7 +7,7 @@ control 'aws-ec2-capacity-reservations-1.0' do
   end
 
   describe aws_ec2_capacity_reservations do
-    its('tenancies') { should include 'default' }
+    its('tenancies') { should_not include 'default' }
     its('total_instance_counts') { should include 1 }
     its('ebs_optimized') { should include false }
     its('ephemeral_storages') { should include false }
