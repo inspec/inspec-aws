@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSIAMSSHPublicKey < AwsResourceBase
-  name 'aws_iam_ssh_public_key'
-  desc 'Retrieves the specified SSH public key, including metadata about the key.'
+  name "aws_iam_ssh_public_key"
+  desc "Retrieves the specified SSH public key, including metadata about the key."
 
   example "
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do

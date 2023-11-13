@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRDSGlobalCluster < AwsResourceBase
-  name 'aws_rds_global_cluster'
-  desc 'Returns information about Aurora global database clusters.'
+  name "aws_rds_global_cluster"
+  desc "Returns information about Aurora global database clusters."
 
   example "
     describe aws_rds_global_cluster(global_cluster_identifier: 'GLOBAL_CLUSTER_IDENTIFIER') do

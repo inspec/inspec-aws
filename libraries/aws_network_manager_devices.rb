@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSNetworkManagerDevices < AwsResourceBase
-  name 'aws_network_manager_devices'
-  desc 'List all the devices.'
+  name "aws_network_manager_devices"
+  desc "List all the devices."
 
   example "
     describe aws_network_manager_devices(global_network_id: 'GlobalNetworkID') do
@@ -13,24 +13,24 @@ class AWSNetworkManagerDevices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:device_ids, field: :device_id)
-             .register_column(:device_arns, field: :device_arn)
-             .register_column(:global_network_ids, field: :global_network_id)
-             .register_column(:location_zones, field: :location_zones, style: :simple)
-             .register_column(:location_subnet_arns, field: :location_subnet_arn, style: :simple)
-             .register_column(:descriptions, field: :description)
-             .register_column(:types, field: :type)
-             .register_column(:vendors, field: :vendor)
-             .register_column(:models, field: :model)
-             .register_column(:serial_numbers, field: :serial_number)
-             .register_column(:addresses, field: :address, style: :simple)
-             .register_column(:latitudes, field: :latitude, style: :simple)
-             .register_column(:longitudes, field: :longitude, style: :simple)
-             .register_column(:site_ids, field: :site_id)
-             .register_column(:created_at, field: :created_at)
-             .register_column(:states, field: :state)
-             .register_column(:tags, field: :tags)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:device_ids, field: :device_id)
+    .register_column(:device_arns, field: :device_arn)
+    .register_column(:global_network_ids, field: :global_network_id)
+    .register_column(:location_zones, field: :location_zones, style: :simple)
+    .register_column(:location_subnet_arns, field: :location_subnet_arn, style: :simple)
+    .register_column(:descriptions, field: :description)
+    .register_column(:types, field: :type)
+    .register_column(:vendors, field: :vendor)
+    .register_column(:models, field: :model)
+    .register_column(:serial_numbers, field: :serial_number)
+    .register_column(:addresses, field: :address, style: :simple)
+    .register_column(:latitudes, field: :latitude, style: :simple)
+    .register_column(:longitudes, field: :longitude, style: :simple)
+    .register_column(:site_ids, field: :site_id)
+    .register_column(:created_at, field: :created_at)
+    .register_column(:states, field: :state)
+    .register_column(:tags, field: :tags)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

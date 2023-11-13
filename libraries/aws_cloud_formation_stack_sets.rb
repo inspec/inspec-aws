@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFormationStackSets < AwsResourceBase
-  name 'aws_cloud_formation_stack_sets'
-  desc 'Describes all the specified stack set.'
+  name "aws_cloud_formation_stack_sets"
+  desc "Describes all the specified stack set."
   example <<-EXAMPLE
     describe aws_cloud_formation_stack_sets do
       it { should exist }
@@ -18,15 +18,15 @@ class AWSCloudFormationStackSets < AwsResourceBase
   end
 
   FilterTable.create
-             .register_column(:stack_set_names, field: :stack_set_name)
-             .register_column(:stack_set_ids, field: :stack_set_id)
-             .register_column(:descriptions, field: :description)
-             .register_column(:statuses, field: :status)
-             .register_column(:auto_deployments, field: :auto_deployment)
-             .register_column(:permission_models, field: :permission_model)
-             .register_column(:drift_statuses, field: :drift_status)
-             .register_column(:last_drift_check_timestamps, field: :last_drift_check_timestamp)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:stack_set_names, field: :stack_set_name)
+    .register_column(:stack_set_ids, field: :stack_set_id)
+    .register_column(:descriptions, field: :description)
+    .register_column(:statuses, field: :status)
+    .register_column(:auto_deployments, field: :auto_deployment)
+    .register_column(:permission_models, field: :permission_model)
+    .register_column(:drift_statuses, field: :drift_status)
+    .register_column(:last_drift_check_timestamps, field: :last_drift_check_timestamp)
+    .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

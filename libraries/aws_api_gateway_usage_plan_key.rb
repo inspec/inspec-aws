@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayUsagePlanKey < AwsResourceBase
-  name 'aws_api_gateway_usage_plan_key'
-  desc 'Gets a usage plan key of a given key identifier.'
+  name "aws_api_gateway_usage_plan_key"
+  desc "Gets a usage plan key of a given key identifier."
   example <<-EXAMPLE
     describe aws_api_gateway_usage_plan_key(usage_plan_id: 'USAGE_PLAN_ID', key_id: 'USAGE_PLAN_KEY_ID') do
       it { should exist }
@@ -27,7 +27,7 @@ class AWSApiGatewayUsagePlanKey < AwsResourceBase
   end
 
   def resource_id
-    "#{@res? @usage_plan_key_id: @display_name}_#{@res? @usage_plan_key_name: ''}"
+    "#{@res? @usage_plan_key_id: @display_name}_#{@res? @usage_plan_key_name: ""}"
   end
 
   def exists?

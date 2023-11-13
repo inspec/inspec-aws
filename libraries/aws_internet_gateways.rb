@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsInternetGateways < AwsResourceBase
-  name 'aws_internet_gateways'
-  desc 'Verifies settings for a collection of AWS internet gateways.'
+  name "aws_internet_gateways"
+  desc "Verifies settings for a collection of AWS internet gateways."
 
   example "
     describe aws_internet_gateways do
@@ -17,13 +17,13 @@ class AwsInternetGateways < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:names, field: :name)
-             .register_column(:tags, field: :tags)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:owner_ids, field: :owner_id)
-             .register_column(:attachment_states, field: :attachment_state)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:names, field: :name)
+    .register_column(:tags, field: :tags)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:owner_ids, field: :owner_id)
+    .register_column(:attachment_states, field: :attachment_state)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -43,11 +43,11 @@ class AwsInternetGateways < AwsResourceBase
       @api_response.internet_gateways.each do |igw|
         igw_rows += [{
           id: igw.internet_gateway_id,
-          name: igw[:tags].select { |tag| tag[:key] == 'Name' }.first&.dig(:value),
+          name: igw[:tags].select { |tag| tag[:key] == "Name" }.first&.dig(:value),
           tags: igw.tags,
           owner_id: igw.owner_id,
           vpc_id: igw.attachments.empty? ? nil : igw.attachments.first[:vpc_id],
-          attachment_state: igw.attachments.empty? ? 'detached' : 'attached',
+          attachment_state: igw.attachments.empty? ? "detached" : "attached",
         }]
       end
       break unless @api_response.next_token

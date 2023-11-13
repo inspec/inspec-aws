@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSNetworkFirewallFirewall < AwsResourceBase
-  name 'aws_network_firewall_firewall'
-  desc 'Returns the data objects for the specified firewall.'
+  name "aws_network_firewall_firewall"
+  desc "Returns the data objects for the specified firewall."
 
   example "
     describe aws_network_firewall_firewall(firewall_name: 'FirewallName') do

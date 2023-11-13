@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamAccessKey < AwsResourceBase
-  name 'aws_iam_access_key'
-  desc 'Verifies settings for an AWS IAM Access Key.'
+  name "aws_iam_access_key"
+  desc "Verifies settings for an AWS IAM Access Key."
   example "
     describe aws_iam_access_key(username: 'username', access_key_id: 'access-key id') do
       it                    { should exist }
@@ -19,7 +19,7 @@ class AwsIamAccessKey < AwsResourceBase
   def initialize(opts = {})
     if opts.is_a?(String)
       # If String passed, determine if username or ID.
-      if opts.start_with?('AKIA')
+      if opts.start_with?("AKIA")
         opts = { access_key_id: opts }
       else
         opts = { username: opts }
@@ -74,7 +74,7 @@ class AwsIamAccessKey < AwsResourceBase
 
   def active?
     return unless exists?
-    status == 'Active'
+    status == "Active"
   end
 
   def exists?
@@ -90,8 +90,8 @@ class AwsIamAccessKey < AwsResourceBase
     return @last_used_date if defined? @last_used_date
     catch_aws_errors do
       @last_used_date = @aws.iam_client.get_access_key_last_used({ access_key_id: @access_key_id })
-                            .access_key_last_used
-                            .last_used_date
+        .access_key_last_used
+        .last_used_date
     end
   end
 end

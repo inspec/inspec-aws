@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRDSDBClusterSnapShot < AwsResourceBase
-  name 'aws_rds_db_cluster_snapshot'
-  desc 'Returns information about DB cluster snapshots.'
+  name "aws_rds_db_cluster_snapshot"
+  desc "Returns information about DB cluster snapshots."
 
   example "
     describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: 'DBSnapshotID') do
@@ -18,7 +18,7 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
     @display_name = opts[:db_cluster_snapshot_id]
     filter = [
       {
-        name: 'db-cluster-snapshot-id',
+        name: "db-cluster-snapshot-id",
         values: [opts[:db_cluster_snapshot_id]],
       },
     ]

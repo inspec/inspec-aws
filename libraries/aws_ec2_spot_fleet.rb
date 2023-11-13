@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2SpotFleet < AwsResourceBase
-  name 'aws_ec2_spot_fleet'
-  desc 'Describes your Spot Fleet requests.'
+  name "aws_ec2_spot_fleet"
+  desc "Describes your Spot Fleet requests."
 
   example "
     describe aws_ec2_spot_fleet(spot_fleet_request_id: 'SpotFleetRequestID') do

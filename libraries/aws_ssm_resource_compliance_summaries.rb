@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmResourceComplianceSummaries < AwsResourceBase
-  name 'aws_ssm_resource_compliance_summaries'
-  desc 'Verifies settings for a SSM Resource Compliance Summary in bulk.'
+  name "aws_ssm_resource_compliance_summaries"
+  desc "Verifies settings for a SSM Resource Compliance Summary in bulk."
   example "
     describe aws_ssm_resource_compliance_summaries do
       it { should exist }
@@ -12,15 +12,15 @@ class AwsSsmResourceComplianceSummaries < AwsResourceBase
   attr_reader :table, :api_response
 
   FilterTable.create
-             .register_column(:compliance_types,        field: :compliance_type)
-             .register_column(:resource_types,          field: :resource_type)
-             .register_column(:resource_ids,            field: :resource_id)
-             .register_column(:status,                  field: :status)
-             .register_column(:overall_severity,        field: :overall_severity)
-             .register_column(:execution_summaries,     field: :execution_summary)
-             .register_column(:compliant_summaries,     field: :compliant_summary)
-             .register_column(:non_compliant_summaries, field: :non_compliant_summary)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:compliance_types,        field: :compliance_type)
+    .register_column(:resource_types,          field: :resource_type)
+    .register_column(:resource_ids,            field: :resource_id)
+    .register_column(:status,                  field: :status)
+    .register_column(:overall_severity,        field: :overall_severity)
+    .register_column(:execution_summaries,     field: :execution_summary)
+    .register_column(:compliant_summaries,     field: :compliant_summary)
+    .register_column(:non_compliant_summaries, field: :non_compliant_summary)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -34,8 +34,8 @@ class AwsSsmResourceComplianceSummaries < AwsResourceBase
 
     if opts[:compliance_type] || opts[:overall_severity]
       filter_array = []
-      filter_array << { key: 'ComplianceType', values: [opts[:compliance_type]] } if opts[:compliance_type]
-      filter_array << { key: 'OverallSeverity', values: [opts[:overall_severity]] } if opts[:overall_severity]
+      filter_array << { key: "ComplianceType", values: [opts[:compliance_type]] } if opts[:compliance_type]
+      filter_array << { key: "OverallSeverity", values: [opts[:overall_severity]] } if opts[:overall_severity]
       filter_options = { filters: filter_array }
     end
 

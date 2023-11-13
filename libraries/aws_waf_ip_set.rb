@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSWAFIPSet < AwsResourceBase
-  name 'aws_waf_ip_set'
-  desc 'Describes one WAF IP set.'
+  name "aws_waf_ip_set"
+  desc "Describes one WAF IP set."
 
   example "
     describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do

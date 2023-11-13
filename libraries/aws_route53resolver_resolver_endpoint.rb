@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
-  name 'aws_route53resolver_resolver_endpoint'
-  desc 'Gets information about a specified Resolver endpoint, such as whether its an inbound or an outbound Resolver endpoint, and the current status of the endpoint.'
+  name "aws_route53resolver_resolver_endpoint"
+  desc "Gets information about a specified Resolver endpoint, such as whether its an inbound or an outbound Resolver endpoint, and the current status of the endpoint."
 
   example "
     describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'ResourceId') do

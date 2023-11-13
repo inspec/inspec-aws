@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApplicationAutoScalingScalingPolicies < AwsResourceBase
-  name 'aws_application_autoscaling_scaling_policies'
-  desc 'Describes the Application AutoScaling scaling policies for the specified service namespace.'
+  name "aws_application_autoscaling_scaling_policies"
+  desc "Describes the Application AutoScaling scaling policies for the specified service namespace."
   example <<-EXAMPLE
     describe aws_application_autoscaling_scaling_policies(service_namespace: 'ec2') do
       it { should exist }
@@ -12,17 +12,17 @@ class AWSApplicationAutoScalingScalingPolicies < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:policy_arns,                                                 field: :policy_arn)
-             .register_column(:policy_names,                                                field: :policy_name)
-             .register_column(:service_namespaces,                                          field: :service_namespace)
-             .register_column(:resource_ids,                                                field: :resource_id)
-             .register_column(:scalable_dimensions,                                         field: :scalable_dimension)
-             .register_column(:policy_types,                                                field: :policy_type)
-             .register_column(:step_scaling_policy_configurations,                          field: :step_scaling_policy_configuration)
-             .register_column(:target_tracking_scaling_policy_configurations,               field: :target_tracking_scaling_policy_configuration)
-             .register_column(:alarms,                                                      field: :alarms)
-             .register_column(:creation_times,                                              field: :creation_time)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:policy_arns,                                                 field: :policy_arn)
+    .register_column(:policy_names,                                                field: :policy_name)
+    .register_column(:service_namespaces,                                          field: :service_namespace)
+    .register_column(:resource_ids,                                                field: :resource_id)
+    .register_column(:scalable_dimensions,                                         field: :scalable_dimension)
+    .register_column(:policy_types,                                                field: :policy_type)
+    .register_column(:step_scaling_policy_configurations,                          field: :step_scaling_policy_configuration)
+    .register_column(:target_tracking_scaling_policy_configurations,               field: :target_tracking_scaling_policy_configuration)
+    .register_column(:alarms,                                                      field: :alarms)
+    .register_column(:creation_times,                                              field: :creation_time)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

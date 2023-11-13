@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayAPIKey < AwsResourceBase
-  name 'aws_apigateway_api_key'
-  desc 'Gets information about the current ApiKey resource.'
+  name "aws_apigateway_api_key"
+  desc "Gets information about the current ApiKey resource."
   example <<-EXAMPLE
     describe aws_apigateway_api_key(api_key: 'API_ID') do
       it { should exist }

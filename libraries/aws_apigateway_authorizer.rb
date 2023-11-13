@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayAuthorizer < AwsResourceBase
-  name 'aws_apigateway_authorizer'
-  desc 'Describe an existing Authorizer resource.'
+  name "aws_apigateway_authorizer"
+  desc "Describe an existing Authorizer resource."
   example <<-EXAMPLE
     describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
       it { should exist }

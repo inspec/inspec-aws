@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2Host < AwsResourceBase
-  name 'aws_ec2_host'
-  desc 'Describes the specified Dedicated Host.'
+  name "aws_ec2_host"
+  desc "Describes the specified Dedicated Host."
 
   example "
     describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do

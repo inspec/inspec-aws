@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2ClientVPNTargetNetworkAssociations < AwsResourceBase
-  name 'aws_ec2_client_vpn_target_network_associations'
-  desc 'Describes all the AWS EC2 Client Vpn Target Network Association.'
+  name "aws_ec2_client_vpn_target_network_associations"
+  desc "Describes all the AWS EC2 Client Vpn Target Network Association."
   example <<-EXAMPLE
     describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
@@ -12,14 +12,14 @@ class AWSEC2ClientVPNTargetNetworkAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:association_ids, field: :association_id)
-             .register_column(:vpc_ids, field: :vpc_id)
-             .register_column(:target_network_ids, field: :target_network_id)
-             .register_column(:client_vpn_endpoint_ids, field: :client_vpn_endpoint_id)
-             .register_column(:status_codes, field: :status_code)
-             .register_column(:status_messages, field: :status_message)
-             .register_column(:security_groups, field: :security_groups, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:association_ids, field: :association_id)
+    .register_column(:vpc_ids, field: :vpc_id)
+    .register_column(:target_network_ids, field: :target_network_id)
+    .register_column(:client_vpn_endpoint_ids, field: :client_vpn_endpoint_id)
+    .register_column(:status_codes, field: :status_code)
+    .register_column(:status_messages, field: :status_message)
+    .register_column(:security_groups, field: :security_groups, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

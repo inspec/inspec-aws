@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsApiGatewayV2Routes < AwsCollectionResourceBase
-  name 'aws_api_gateway_v2_routes'
-  desc 'Gets the Routes for an API.'
+  name "aws_api_gateway_v2_routes"
+  desc "Gets the Routes for an API."
   example <<-EXAMPLE
     describe aws_api_gateway_v2_routes(api_id: 'APP_ID') do
       it { should exist }

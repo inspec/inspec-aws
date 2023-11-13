@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2CarrierGateway < AwsResourceBase
-  name 'aws_ec2_carrier_gateway'
-  desc 'Describes single carrier gateway.'
+  name "aws_ec2_carrier_gateway"
+  desc "Describes single carrier gateway."
   example <<-EXAMPLE
     describe aws_ec2_carrier_gateway(carrier_gateway_id: 'CARRIER_GATEWAY_ID') do
       it { should exist }

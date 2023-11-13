@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSBatchJobQueue < AwsResourceBase
-  name 'aws_batch_job_queue'
-  desc 'Describes one or more of your job queues.'
+  name "aws_batch_job_queue"
+  desc "Describes one or more of your job queues."
   example <<-EXAMPLE
     describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
       it { should exist }

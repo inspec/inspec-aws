@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
-  name 'aws_application_autoscaling_scalable_target'
-  desc 'Gets information about the scalable targets in the specified namespace.'
+  name "aws_application_autoscaling_scalable_target"
+  desc "Gets information about the scalable targets in the specified namespace."
   example <<-EXAMPLE
     describe aws_application_autoscaling_scalable_target(service_namespace: 'ec2') do
       it { should exist }
@@ -28,7 +28,7 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   end
 
   def resource_id
-    @scalable_targets? @scalable_targets[:resource_id]: ''
+    @scalable_targets? @scalable_targets[:resource_id]: ""
   end
 
   def exists?

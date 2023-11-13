@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2ClientVPNRoute < AwsResourceBase
-  name 'aws_ec2_client_vpn_route'
-  desc 'Describes a VPN route.'
+  name "aws_ec2_client_vpn_route"
+  desc "Describes a VPN route."
   example <<-EXAMPLE
     describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID', target_subnet: 'TARGET_SUBNET') do
       it { should exist }
@@ -16,7 +16,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
     raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:client_vpn_endpoint_id] && !opts[:client_vpn_endpoint_id].empty?
     raise ArgumentError, "#{@__resource_name__}: target_subnet must be provided" unless opts[:target_subnet] && !opts[:target_subnet].empty?
     @display_name = opts[:client_vpn_endpoint_id]
-    filter = [{ name: 'target-subnet',
+    filter = [{ name: "target-subnet",
                 values: [opts[:target_subnet]] }]
     catch_aws_errors do
       resp = @aws.compute_client.describe_client_vpn_routes({ client_vpn_endpoint_id: opts[:client_vpn_endpoint_id], filters: filter })
@@ -35,7 +35,7 @@ class AWSEC2ClientVPNRoute < AwsResourceBase
   end
 
   def resource_id
-    "#{@res ? @res[:client_vpn_endpoint_id] : ''}_#{@res ? @res[:target_subnet] : ''}"
+    "#{@res ? @res[:client_vpn_endpoint_id] : ""}_#{@res ? @res[:target_subnet] : ""}"
   end
 
   def to_s

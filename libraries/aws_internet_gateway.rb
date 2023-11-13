@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsInternetGateway < AwsResourceBase
-  name 'aws_internet_gateway'
-  desc 'Verifies settings for an AWS Internet Gateway.'
+  name "aws_internet_gateway"
+  desc "Verifies settings for an AWS Internet Gateway."
 
   example "
     describe aws_internet_gateway(id: 'igw-abc12450edc87a8bd') do
@@ -29,16 +29,16 @@ class AwsInternetGateway < AwsResourceBase
     elsif opts.key?(:name) && !opts.key?(:id)
       name = opts[:name]
       tag_error = "#{@__resource_name__}: `name` should be maximum 255 characters long and contain "\
-        'letters, numbers, spaces and the following characters only: + - = . _ : / @'
+        "letters, numbers, spaces and the following characters only: + - = . _ : / @"
       raise ArgumentError, tag_error unless name.match?(%r{^[\w+\- =._:/@]{1,256}$}) && name.length.between?(1, 255)
       query_params = { filters: [
-        name: 'tag:Name',
+        name: "tag:Name",
         values: [name],
       ] }
     else
       raise ArgumentError, "#{@__resource_name__}: either `id` or `name` must be provided."
     end
-    @display_name = opts.values.join(' ')
+    @display_name = opts.values.join(" ")
 
     catch_aws_errors do
       resp = @aws.compute_client.describe_internet_gateways(query_params)
@@ -54,7 +54,7 @@ class AwsInternetGateway < AwsResourceBase
       if gateways.length > 1
         fail_resource("#{@__resource_name__}: Multiple internet gateways were returned for the provided parameter:"\
                       " `#{@display_name}`. If you wish to test multiple internet gateways, "\
-                      'please use the aws_internet_gateways resource.')
+                      "please use the aws_internet_gateways resource.")
         @failed_resource = true
         return
       end
@@ -74,7 +74,7 @@ class AwsInternetGateway < AwsResourceBase
 
   def name
     return unless exists?
-    tags['Name'] if tags.key?('Name')
+    tags["Name"] if tags.key?("Name")
   end
 
   def tags
@@ -99,7 +99,7 @@ class AwsInternetGateway < AwsResourceBase
     return false if attachments.empty?
     # available means it is attached to a VPC.
     # https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InternetGatewayAttachment.html
-    attachments.first.state == 'available'
+    attachments.first.state == "available"
   end
 
   def detached?

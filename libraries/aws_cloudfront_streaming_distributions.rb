@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontStreamingDistributions < AwsResourceBase
-  name 'aws_cloudfront_streaming_distributions'
-  desc 'List streaming distributions.'
+  name "aws_cloudfront_streaming_distributions"
+  desc "List streaming distributions."
   example <<-EXAMPLE
     describe aws_cloudfront_streaming_distributions do
       it { should exist }
@@ -12,18 +12,18 @@ class AWSCloudFrontStreamingDistributions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:ids, field: :id)
-             .register_column(:arns, field: :arn)
-             .register_column(:statuses, field: :status)
-             .register_column(:last_modified_time, field: :last_modified_time)
-             .register_column(:domain_names, field: :domain_name)
-             .register_column(:s3_origins, field: :s3_origin)
-             .register_column(:aliases, field: :aliases)
-             .register_column(:trusted_signers, field: :trusted_signers)
-             .register_column(:comments, field: :comment)
-             .register_column(:price_classes, field: :price_class)
-             .register_column(:enabled, field: :enabled)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:ids, field: :id)
+    .register_column(:arns, field: :arn)
+    .register_column(:statuses, field: :status)
+    .register_column(:last_modified_time, field: :last_modified_time)
+    .register_column(:domain_names, field: :domain_name)
+    .register_column(:s3_origins, field: :s3_origin)
+    .register_column(:aliases, field: :aliases)
+    .register_column(:trusted_signers, field: :trusted_signers)
+    .register_column(:comments, field: :comment)
+    .register_column(:price_classes, field: :price_class)
+    .register_column(:enabled, field: :enabled)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

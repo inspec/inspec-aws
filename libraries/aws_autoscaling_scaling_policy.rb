@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAutoScalingScalingPolicy < AwsResourceBase
-  name 'aws_autoscaling_scaling_policy'
-  desc 'Describes the policies for the specified Auto Scaling group.'
+  name "aws_autoscaling_scaling_policy"
+  desc "Describes the policies for the specified Auto Scaling group."
   example <<-EXAMPLE
     describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_GROUP_NAME') do
       it { should exist }

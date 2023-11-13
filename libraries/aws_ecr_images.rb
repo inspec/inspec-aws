@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcrImages < AwsResourceBase
-  name 'aws_ecr_images'
-  desc 'Verifies settings for a collection of AWS ECR Images in a repository.'
+  name "aws_ecr_images"
+  desc "Verifies settings for a collection of AWS ECR Images in a repository."
 
   example "
     describe aws_ecr_images(repository_name: 'my-repo') do
@@ -13,13 +13,13 @@ class AwsEcrImages < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:digests, field: :digest)
-             .register_column(:tags, field: :tags)
-             .register_column(:size_in_bytes, field: :size_in_bytes)
-             .register_column(:pushed_at_dates, field: :pushed_at_date)
-             .register_column(:vulnerability_scan_status, field: :vulnerability_scan_status)
-             .register_column(:vulnerability_severity_counts, field: :vulnerability_severity_counts)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:digests, field: :digest)
+    .register_column(:tags, field: :tags)
+    .register_column(:size_in_bytes, field: :size_in_bytes)
+    .register_column(:pushed_at_dates, field: :pushed_at_date)
+    .register_column(:vulnerability_scan_status, field: :vulnerability_scan_status)
+    .register_column(:vulnerability_severity_counts, field: :vulnerability_severity_counts)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -30,8 +30,8 @@ class AwsEcrImages < AwsResourceBase
     matched_str = opts[:repository_name].match(pattern)
     unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
       raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
-                           'Please check the docs for more info '\
-                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+                           "Please check the docs for more info "\
+                           "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html" \
     end
     @query_params[:repository_name] = opts[:repository_name]
     # Validate registry_id. (Optional. If not provided, AWS account ID will be used by the AWS API.)

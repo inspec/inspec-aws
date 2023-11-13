@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsAutoScalingGroup < AwsResourceBase
-  name 'aws_auto_scaling_group'
-  desc 'Verifies settings for an AWS Auto Scaling Group.'
+  name "aws_auto_scaling_group"
+  desc "Verifies settings for an AWS Auto Scaling Group."
   example <<-EXAMPLE
     describe aws_auto_scaling_group('AUTO_SCALING_GROUP_NAME') do
       it { should exist }
@@ -25,7 +25,7 @@ class AwsAutoScalingGroup < AwsResourceBase
       @min_size                  = auto_scaling_group[:min_size].to_i
       @max_size                  = auto_scaling_group[:max_size].to_i
       @desired_capacity          = auto_scaling_group[:desired_capacity].to_i
-      @vpc_zone_identifier       = auto_scaling_group[:vpc_zone_identifier].split(',')
+      @vpc_zone_identifier       = auto_scaling_group[:vpc_zone_identifier].split(",")
       @launch_configuration_name = auto_scaling_group[:launch_configuration_name]
       @health_check_type         = auto_scaling_group[:health_check_type]
       @tags = []

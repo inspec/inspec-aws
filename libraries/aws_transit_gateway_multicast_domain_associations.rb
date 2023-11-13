@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
-  name 'aws_transit_gateway_multicast_domain_associations'
-  desc 'Gets information about the associations for the transit gateway multicast domain.'
+  name "aws_transit_gateway_multicast_domain_associations"
+  desc "Gets information about the associations for the transit gateway multicast domain."
 
   example "
     describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'id') do
@@ -17,12 +17,12 @@ class AWSTransitGatewayMulticastDomainAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:transit_gateway_attachment_ids,                  field: :transit_gateway_attachment_id)
-             .register_column(:resource_ids,                                    field: :resource_id)
-             .register_column(:resource_types,                                  field: :resource_type)
-             .register_column(:resource_owner_ids,                              field: :resource_owner_id)
-             .register_column(:subnets,                                         field: :subnet)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:transit_gateway_attachment_ids,                  field: :transit_gateway_attachment_id)
+    .register_column(:resource_ids,                                    field: :resource_id)
+    .register_column(:resource_types,                                  field: :resource_type)
+    .register_column(:resource_owner_ids,                              field: :resource_owner_id)
+    .register_column(:subnets,                                         field: :subnet)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

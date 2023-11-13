@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAmplifyApps < AwsResourceBase
-  name 'aws_amplify_apps'
-  desc 'Describes a list of Amplify App.'
+  name "aws_amplify_apps"
+  desc "Describes a list of Amplify App."
   example <<-EXAMPLE
     describe aws_amplify_apps do
       it { should exist }
@@ -12,18 +12,18 @@ class AWSAmplifyApps < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:app_ids, field: :app_id)
-             .register_column(:app_arns, field: :app_arn)
-             .register_column(:names, field: :name)
-             .register_column(:tags, field: :tags)
-             .register_column(:description, field: :description)
-             .register_column(:repositories, field: :repository)
-             .register_column(:platforms, field: :platform)
-             .register_column(:create_time, field: :create_time)
-             .register_column(:host_instance_types, field: :host_instance_type)
-             .register_column(:update_time, field: :update_time)
-             .register_column(:iam_service_role_arns, field: :iam_service_role_arn)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:app_ids, field: :app_id)
+    .register_column(:app_arns, field: :app_arn)
+    .register_column(:names, field: :name)
+    .register_column(:tags, field: :tags)
+    .register_column(:description, field: :description)
+    .register_column(:repositories, field: :repository)
+    .register_column(:platforms, field: :platform)
+    .register_column(:create_time, field: :create_time)
+    .register_column(:host_instance_types, field: :host_instance_type)
+    .register_column(:update_time, field: :update_time)
+    .register_column(:iam_service_role_arns, field: :iam_service_role_arn)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

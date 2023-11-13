@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2ClientVPNEndpoint < AwsResourceBase
-  name 'aws_ec2_client_vpn_endpoint'
-  desc 'Describes a VPN endpoint.'
+  name "aws_ec2_client_vpn_endpoint"
+  desc "Describes a VPN endpoint."
   example <<-EXAMPLE
     describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
@@ -32,7 +32,7 @@ class AWSEC2ClientVPNEndpoint < AwsResourceBase
   end
 
   def resource_id
-    @res ? @res[:client_vpn_endpoint_id] : ''
+    @res ? @res[:client_vpn_endpoint_id] : ""
   end
 
   def to_s

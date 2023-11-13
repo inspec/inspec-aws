@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSAthenaWorkGroup < AwsResourceBase
-  name 'aws_athena_work_group'
-  desc 'Returns information about the workgroup with the specified name.'
+  name "aws_athena_work_group"
+  desc "Returns information about the workgroup with the specified name."
   example <<-EXAMPLE
     describe aws_athena_work_group(work_group: 'ATHENA_WORK_GROUP') do
       it { should exist }

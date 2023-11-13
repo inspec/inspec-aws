@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
-  name 'aws_application_autoscaling_scaling_policy'
-  desc 'Describes the Application AutoScaling scaling policies for the specified service namespace.'
+  name "aws_application_autoscaling_scaling_policy"
+  desc "Describes the Application AutoScaling scaling policies for the specified service namespace."
   example <<-EXAMPLE
     describe aws_application_autoscaling_scaling_policy(service_namespace: 'ec2') do
       it { should exist }
@@ -29,7 +29,7 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
   end
 
   def resource_id
-    @scaling_policies ? @scaling_policies[:resource_id]: ''
+    @scaling_policies ? @scaling_policies[:resource_id]: ""
   end
 
   def exists?

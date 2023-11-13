@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSyntheticsCanary < AwsResourceBase
-  name 'aws_synthetics_canary'
-  desc 'Retrieves complete information about one canary.'
+  name "aws_synthetics_canary"
+  desc "Retrieves complete information about one canary."
 
   example "
     describe aws_synthetics_canary(name: 'CANARY_NAME') do

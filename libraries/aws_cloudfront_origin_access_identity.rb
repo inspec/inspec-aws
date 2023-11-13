@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontOriginAccessIdentity < AwsResourceBase
-  name 'aws_cloudfront_origin_access_identity'
-  desc 'Get the information about an origin access identity.'
+  name "aws_cloudfront_origin_access_identity"
+  desc "Get the information about an origin access identity."
   example <<-EXAMPLE
     describe aws_cloudfront_origin_access_identity(id: 'ID') do
       it { should exist }

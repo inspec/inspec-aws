@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSNetworkManagerDevice < AwsResourceBase
-  name 'aws_network_manager_device'
-  desc 'Gets information about one or more of your devices in a global network.'
+  name "aws_network_manager_device"
+  desc "Gets information about one or more of your devices in a global network."
 
   example "
     describe aws_network_manager_device(device_id: 'test1', global_network_id: 'test1') do

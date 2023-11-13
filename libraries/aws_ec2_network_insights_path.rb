@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2NetworkInsightsPath < AwsResourceBase
-  name 'aws_ec2_network_insights_path'
-  desc 'Returns'
+  name "aws_ec2_network_insights_path"
+  desc "Returns"
 
   example "
     describe aws_ec2_network_insights_path(network_insights_path_id: 'NetworkInsightsPathId') do

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayBasePathMappings < AwsResourceBase
-  name 'aws_apigateway_base_path_mappings'
-  desc 'Represents a collection of BasePathMapping resources.'
+  name "aws_apigateway_base_path_mappings"
+  desc "Represents a collection of BasePathMapping resources."
   example <<-EXAMPLE
     describe aws_apigateway_base_path_mappings(domain_name: 'DOMAIN_NAME') do
       it { should exist }
@@ -12,10 +12,10 @@ class AWSApiGatewayBasePathMappings < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:base_paths, field: :base_path)
-             .register_column(:rest_api_ids, field: :rest_api_id)
-             .register_column(:stages, field: :stage)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:base_paths, field: :base_path)
+    .register_column(:rest_api_ids, field: :rest_api_id)
+    .register_column(:stages, field: :stage)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

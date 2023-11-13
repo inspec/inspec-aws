@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSESPatchBaselines < AwsResourceBase
-  name 'aws_ssm_patch_baselines'
-  desc 'Lists the patch baselines in your Amazon Web Services account.'
+  name "aws_ssm_patch_baselines"
+  desc "Lists the patch baselines in your Amazon Web Services account."
 
   example "
     describe aws_ssm_patch_baselines do
@@ -17,12 +17,12 @@ class AWSSESPatchBaselines < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:baseline_ids, field: :baseline_id)
-             .register_column(:baseline_names, field: :baseline_name)
-             .register_column(:operating_systems, field: :operating_system)
-             .register_column(:baseline_descriptions, field: :baseline_description)
-             .register_column(:default_baselines, field: :default_baseline)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:baseline_ids, field: :baseline_id)
+    .register_column(:baseline_names, field: :baseline_name)
+    .register_column(:operating_systems, field: :operating_system)
+    .register_column(:baseline_descriptions, field: :baseline_description)
+    .register_column(:default_baselines, field: :default_baseline)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSEC2ClientVPNRoutes < AwsResourceBase
-  name 'aws_ec2_client_vpn_routes'
-  desc 'Describes all the VPN routes.'
+  name "aws_ec2_client_vpn_routes"
+  desc "Describes all the VPN routes."
   example <<-EXAMPLE
     describe aws_ec2_client_vpn_routes(client_vpn_endpoint_id: 'CLIENT_VPN_ENDPOINT_ID') do
       it { should exist }
@@ -12,15 +12,15 @@ class AWSEC2ClientVPNRoutes < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:client_vpn_endpoint_ids, field: :client_vpn_endpoint_id)
-             .register_column(:destination_cidr, field: :destination_cidr)
-             .register_column(:target_subnets, field: :target_subnet)
-             .register_column(:types, field: :type)
-             .register_column(:origins, field: :origin)
-             .register_column(:status_codes, field: :status_code)
-             .register_column(:status_messages, field: :status_message)
-             .register_column(:descriptions, field: :description)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:client_vpn_endpoint_ids, field: :client_vpn_endpoint_id)
+    .register_column(:destination_cidr, field: :destination_cidr)
+    .register_column(:target_subnets, field: :target_subnet)
+    .register_column(:types, field: :type)
+    .register_column(:origins, field: :origin)
+    .register_column(:status_codes, field: :status_code)
+    .register_column(:status_messages, field: :status_message)
+    .register_column(:descriptions, field: :description)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

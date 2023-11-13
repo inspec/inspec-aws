@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcr < AwsResourceBase
-  name 'aws_ecr'
-  desc 'Verifies settings for an Elastic Container Registry.'
+  name "aws_ecr"
+  desc "Verifies settings for an Elastic Container Registry."
 
   example "
     describe aws_ecr('container-registry') do

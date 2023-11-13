@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEbsVolumes < AwsResourceBase
-  name 'aws_ebs_volumes'
-  desc 'Verifies settings for a collection of AWS EBS Volumes.'
+  name "aws_ebs_volumes"
+  desc "Verifies settings for a collection of AWS EBS Volumes."
   example <<-EXAMPLE
     describe aws_ebs_volumes do
       it { should exist }
@@ -12,22 +12,22 @@ class AwsEbsVolumes < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:attachments, field: :attachments)
-             .register_column(:availability_zones, field: :availability_zone)
-             .register_column(:create_times, field: :create_time)
-             .register_column(:encrypted, field: :encrypted)
-             .register_column(:kms_key_ids, field: :kms_key_id)
-             .register_column(:outpost_arns, field: :outpost_arn)
-             .register_column(:sizes, field: :size)
-             .register_column(:snapshot_ids, field: :snapshot_id)
-             .register_column(:states, field: :state)
-             .register_column(:volume_ids, field: :volume_id)
-             .register_column(:iops, field: :iops)
-             .register_column(:tags, field: :tags)
-             .register_column(:volume_types, field: :volume_type)
-             .register_column(:fast_restored, field: :fast_restored)
-             .register_column(:multi_attach_enabled, field: :multi_attach_enabled)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:attachments, field: :attachments)
+    .register_column(:availability_zones, field: :availability_zone)
+    .register_column(:create_times, field: :create_time)
+    .register_column(:encrypted, field: :encrypted)
+    .register_column(:kms_key_ids, field: :kms_key_id)
+    .register_column(:outpost_arns, field: :outpost_arn)
+    .register_column(:sizes, field: :size)
+    .register_column(:snapshot_ids, field: :snapshot_id)
+    .register_column(:states, field: :state)
+    .register_column(:volume_ids, field: :volume_id)
+    .register_column(:iops, field: :iops)
+    .register_column(:tags, field: :tags)
+    .register_column(:volume_types, field: :volume_type)
+    .register_column(:fast_restored, field: :fast_restored)
+    .register_column(:multi_attach_enabled, field: :multi_attach_enabled)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

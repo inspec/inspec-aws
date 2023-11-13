@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFrontCachePolicies < AwsResourceBase
-  name 'aws_cloudfront_cache_policies'
-  desc 'Gets a list of cache policies.'
+  name "aws_cloudfront_cache_policies"
+  desc "Gets a list of cache policies."
   example <<-EXAMPLE
     describe aws_cloudfront_cache_policies do
       it { should exist }
@@ -12,20 +12,20 @@ class AWSCloudFrontCachePolicies < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:types, field: :type)
-             .register_column(:ids, field: :id)
-             .register_column(:last_modified_times, field: :last_modified_time)
-             .register_column(:comments, field: :comment)
-             .register_column(:names, field: :name)
-             .register_column(:default_ttls, field: :default_ttl)
-             .register_column(:max_ttls, field: :max_ttl)
-             .register_column(:min_ttls, field: :min_ttl)
-             .register_column(:enable_accept_encoding_gzips, field: :enable_accept_encoding_gzip)
-             .register_column(:enable_accept_encoding_brotlis, field: :enable_accept_encoding_brotli)
-             .register_column(:header_behaviors, field: :header_behavior)
-             .register_column(:cookie_behaviors, field: :cookie_behavior)
-             .register_column(:query_string_behaviors, field: :query_string_behavior)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:types, field: :type)
+    .register_column(:ids, field: :id)
+    .register_column(:last_modified_times, field: :last_modified_time)
+    .register_column(:comments, field: :comment)
+    .register_column(:names, field: :name)
+    .register_column(:default_ttls, field: :default_ttl)
+    .register_column(:max_ttls, field: :max_ttl)
+    .register_column(:min_ttls, field: :min_ttl)
+    .register_column(:enable_accept_encoding_gzips, field: :enable_accept_encoding_gzip)
+    .register_column(:enable_accept_encoding_brotlis, field: :enable_accept_encoding_brotli)
+    .register_column(:header_behaviors, field: :header_behavior)
+    .register_column(:cookie_behaviors, field: :cookie_behavior)
+    .register_column(:query_string_behaviors, field: :query_string_behavior)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

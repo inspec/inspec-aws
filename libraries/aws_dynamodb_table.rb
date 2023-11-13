@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsDynamoDbTable < AwsResourceBase
-  name 'aws_dynamodb_table'
-  desc 'Verifies the settings for a DynamoDB table.'
+  name "aws_dynamodb_table"
+  desc "Verifies the settings for a DynamoDB table."
   example <<-EXAMPLE
     describe aws_dynamodb_table(table_name: 'DYNAMODB_TABLE_NAME') do
       it { should exist }
@@ -29,7 +29,7 @@ class AwsDynamoDbTable < AwsResourceBase
       @table_name                = @dynamodb_table[:table_name]
       @table_status              = @dynamodb_table[:table_status]
       @table_arn                 = @dynamodb_table[:table_arn]
-      @creation_date             = @dynamodb_table[:creation_date_time].strftime('%m/%d/%Y')
+      @creation_date             = @dynamodb_table[:creation_date_time].strftime("%m/%d/%Y")
       @number_of_decreases_today = @dynamodb_table[:provisioned_throughput][:number_of_decreases_today]
       @write_capacity_units      = @dynamodb_table[:provisioned_throughput][:write_capacity_units]
       @read_capacity_units       = @dynamodb_table[:provisioned_throughput][:read_capacity_units]
@@ -68,7 +68,7 @@ class AwsDynamoDbTable < AwsResourceBase
   end
 
   def encrypted?
-    @dynamodb_table.dig(:sse_description, :status)&.upcase == 'ENABLED' || false
+    @dynamodb_table.dig(:sse_description, :status)&.upcase == "ENABLED" || false
   end
 
   def exists?

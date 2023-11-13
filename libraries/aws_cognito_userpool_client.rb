@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoUserPoolClient < AwsResourceBase
-  name 'aws_cognito_userpool_client'
-  desc 'Client method for returning the configuration information and metadata of the specified user pool app client.'
+  name "aws_cognito_userpool_client"
+  desc "Client method for returning the configuration information and metadata of the specified user pool app client."
   example <<-EXAMPLE
     describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
       it { should exist }

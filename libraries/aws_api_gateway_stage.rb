@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayStage < AwsResourceBase
-  name 'aws_api_gateway_stage'
-  desc 'Gets information about a Stage resource.'
+  name "aws_api_gateway_stage"
+  desc "Gets information about a Stage resource."
   example <<-EXAMPLE
     describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
       it { should exist }

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsEcrImage < AwsResourceBase
-  name 'aws_ecr_image'
-  desc 'Verifies settings for an AWS ECR Image.'
+  name "aws_ecr_image"
+  desc "Verifies settings for an AWS ECR Image."
 
   example "
     describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
@@ -17,15 +17,15 @@ class AwsEcrImage < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: %i(repository_name), require_any_of: %i(image_tag image_digest), allow: %i(registry_id))
-    @display_name = opts.values.join(' ')
+    @display_name = opts.values.join(" ")
 
     # Validate repository_name.
     pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
     matched_str = opts[:repository_name].match(pattern)
     unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
       raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
-                           'Please check the docs for more info '\
-                           'https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html' \
+                           "Please check the docs for more info "\
+                           "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html" \
     end
 
     # Validate image identifiers:
@@ -37,7 +37,7 @@ class AwsEcrImage < AwsResourceBase
     query_params = {
       repository_name: opts[:repository_name],
       image_ids: [
-        opts.select { |k, _v| k.to_s.start_with?('image') },
+        opts.select { |k, _v| k.to_s.start_with?("image") },
       ],
     }
 
@@ -67,7 +67,7 @@ class AwsEcrImage < AwsResourceBase
     # https://docs.aws.amazon.com/cli/latest/reference/ecr/describe-image-scan-findings.html
     query_params = {
       repository_name: @opts[:repository_name],
-      image_id: @opts.select { |k, _v| k.to_s.start_with?('image') },
+      image_id: @opts.select { |k, _v| k.to_s.start_with?("image") },
       max_results: 1000,
     }
     @scan_findings = []

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayResource < AwsResourceBase
-  name 'aws_api_gateway_resource'
-  desc 'Gets information about a Resource.'
+  name "aws_api_gateway_resource"
+  desc "Gets information about a Resource."
   example <<-EXAMPLE
     describe aws_api_gateway_resource(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID') do
       it { should exist }

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsSsmActivation < AwsResourceBase
-  name 'aws_ssm_activation'
-  desc 'Verifies settings for a SSM Activation.'
+  name "aws_ssm_activation"
+  desc "Verifies settings for a SSM Activation."
 
   example "
     describe aws_ssm_activation(activation_id: 'activation-id') do
@@ -17,7 +17,7 @@ class AwsSsmActivation < AwsResourceBase
     @display_name = opts[:activation_id]
 
     catch_aws_errors do
-      filter = { filter_key: 'ActivationIds', filter_values: [opts[:activation_id]] }
+      filter = { filter_key: "ActivationIds", filter_values: [opts[:activation_id]] }
       resp = @aws.ssm_client.describe_activations({ filters: [filter] })
       if resp.activation_list.first.nil?
         empty_response_warn

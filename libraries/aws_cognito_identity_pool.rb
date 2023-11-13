@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCognitoIdentityPool < AwsResourceBase
-  name 'aws_cognito_identity_pool'
-  desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
+  name "aws_cognito_identity_pool"
+  desc "Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users."
   example <<-EXAMPLE
     describe aws_cognito_identity_pool(identity_pool_id: 'IDENTIRY_POOL_ID') do
       it { should exist }

@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSIAMInstanceProfile < AwsResourceBase
-  name 'aws_iam_instance_profile'
-  desc 'Retrieves information about the specified instance profile, including the instance profiles path, GUID, ARN, and role.'
+  name "aws_iam_instance_profile"
+  desc "Retrieves information about the specified instance profile, including the instance profiles path, GUID, ARN, and role."
 
   example "
     describe aws_iam_instance_profile(instance_profile_name: 'test1') do

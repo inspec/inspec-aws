@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSSecurityHubHub < AwsResourceBase
-  name 'aws_securityhub_hub'
-  desc 'Gets information about the Security Hub.'
+  name "aws_securityhub_hub"
+  desc "Gets information about the Security Hub."
 
   example "
     describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do

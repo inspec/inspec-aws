@@ -1,10 +1,10 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsTransitGatewayRoutes < AwsResourceBase
   TYPES = %w{static propagated}.freeze
   SUPPORTED_FILTER_PARAMS = %i(exact_match longest_prefix_match subnet_of_match supernet_of_match).freeze
-  name 'aws_transit_gateway_routes'
-  desc 'Verifies settings for list of AWS Transit Gateways.'
+  name "aws_transit_gateway_routes"
+  desc "Verifies settings for list of AWS Transit Gateways."
 
   example "
     describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589') do
@@ -19,19 +19,19 @@ class AwsTransitGatewayRoutes < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:cidr_blocks, field: :cidr_block)
-             .register_column(:prefix_list_ids, field: :prefix_list_id)
-             .register_column(:types, field: :type, style: :simple)
-             .register_column(:states, field: :state, style: :simple)
-             .register_column(:static, field: :static, style: :simple)
-             .register_column(:propagated, field: :propagated, style: :simple)
-             .register_column(:active, field: :active, style: :simple)
-             .register_column(:blackhole, field: :blackhole, style: :simple)
-             .register_column(:attachment_ids, field: :attachment_id, style: :simple)
-             .register_column(:attachment_resource_ids, field: :attachment_resource_id, style: :simple)
-             .register_column(:attachment_resource_types, field: :attachment_resource_type, style: :simple)
-             .register_column(:attached_vpc_ids, field: :attached_vpc_id, style: :simple)
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:cidr_blocks, field: :cidr_block)
+    .register_column(:prefix_list_ids, field: :prefix_list_id)
+    .register_column(:types, field: :type, style: :simple)
+    .register_column(:states, field: :state, style: :simple)
+    .register_column(:static, field: :static, style: :simple)
+    .register_column(:propagated, field: :propagated, style: :simple)
+    .register_column(:active, field: :active, style: :simple)
+    .register_column(:blackhole, field: :blackhole, style: :simple)
+    .register_column(:attachment_ids, field: :attachment_id, style: :simple)
+    .register_column(:attachment_resource_ids, field: :attachment_resource_id, style: :simple)
+    .register_column(:attachment_resource_types, field: :attachment_resource_type, style: :simple)
+    .register_column(:attached_vpc_ids, field: :attached_vpc_id, style: :simple)
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts)
     super
@@ -78,15 +78,15 @@ class AwsTransitGatewayRoutes < AwsResourceBase
     @table = routes.map do |route|
       row = route.to_h
       row[:cidr_block] = row.delete(:destination_cidr_block)
-      row[:static] = (row[:type] == 'static')
-      row[:propagated] = (row[:type] == 'propagated')
-      row[:active] = (row[:state] == 'active')
-      row[:blackhole] = (row[:state] == 'blackhole')
+      row[:static] = (row[:type] == "static")
+      row[:propagated] = (row[:type] == "propagated")
+      row[:active] = (row[:state] == "active")
+      row[:blackhole] = (row[:state] == "blackhole")
       tgw = transit_gw_attachment_for(route)
       row[:attachment_id] = tgw&.transit_gateway_attachment_id
       row[:attachment_resource_type] = tgw&.resource_type
       row[:attachment_resource_id] = tgw&.resource_id
-      row[:attached_vpc_id] = (row[:attachment_resource_type] == 'vpc' && row[:attachment_resource_id])
+      row[:attached_vpc_id] = (row[:attachment_resource_type] == "vpc" && row[:attachment_resource_id])
       row.delete(:transit_gateway_attachments)
       row
     end
@@ -99,7 +99,7 @@ class AwsTransitGatewayRoutes < AwsResourceBase
   end
 
   def format_route_search_for(param)
-    format('route-search.%s', param.to_s.gsub('_', '-'))
+    format("route-search.%s", param.to_s.gsub("_", "-"))
   end
 
   def build_filters_from_params
@@ -111,7 +111,7 @@ class AwsTransitGatewayRoutes < AwsResourceBase
 
   def default_filters
     [
-      name: 'type',
+      name: "type",
       values: TYPES,
     ]
   end

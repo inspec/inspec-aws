@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsRdsCluster < AwsResourceBase
-  name 'aws_rds_cluster'
-  desc 'Verifies settings for an RDS Cluster.'
+  name "aws_rds_cluster"
+  desc "Verifies settings for an RDS Cluster."
 
   example "
     describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do

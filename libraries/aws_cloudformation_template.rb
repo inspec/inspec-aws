@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSCloudFormationTemplate < AwsResourceBase
-  name 'aws_cloudformation_template'
-  desc 'Returns information about a new or existing template.'
+  name "aws_cloudformation_template"
+  desc "Returns information about a new or existing template."
   example <<-EXAMPLE
     describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
       it { should exist }

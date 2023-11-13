@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSApiGatewayVPCLink < AwsResourceBase
-  name 'aws_api_gateway_vpc_link'
-  desc 'Gets a specified VPC link under the callers account in a region.'
+  name "aws_api_gateway_vpc_link"
+  desc "Gets a specified VPC link under the callers account in a region."
   example <<-EXAMPLE
     describe aws_api_gateway_vpc_link(vpc_link_id: 'VPC_LINK_ID') do
       it { should exist }

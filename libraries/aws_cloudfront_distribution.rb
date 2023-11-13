@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudFrontDistribution < AwsResourceBase
-  name 'aws_cloudfront_distribution'
-  desc 'Verifies settings for a CloudFront Distribution.'
+  name "aws_cloudfront_distribution"
+  desc "Verifies settings for a CloudFront Distribution."
   example <<-EXAMPLE
     describe aws_cloudfront_distribution('CLOUDFRONT_DISTRIBUTION_ID') do
       it { should exist }
@@ -92,7 +92,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def exists?
-    !@distribution_arn.nil? && @distribution_arn.start_with?('arn')
+    !@distribution_arn.nil? && @distribution_arn.start_with?("arn")
   end
 
   def has_access_logging_enabled?
@@ -100,7 +100,7 @@ class AwsCloudFrontDistribution < AwsResourceBase
   end
 
   def has_viewer_protocol_policies_allowing_http?
-    @viewer_protocol_policies.include? 'allow-all'
+    @viewer_protocol_policies.include? "allow-all"
   end
 
   def has_disallowed_viewer_certificate_minimum_ssl_protocol?

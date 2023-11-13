@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsIamAccessKeys < AwsCollectionResourceBase
-  name 'aws_iam_access_keys'
-  desc 'Verifies settings for a collection of AWS IAM Access Keys.'
+  name "aws_iam_access_keys"
+  desc "Verifies settings for a collection of AWS IAM Access Keys."
   example "
     describe aws_iam_access_keys do
       it { should_not exist }
@@ -12,22 +12,22 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   attr_reader :table
 
   FilterTable.create
-             .register_column(:usernames,           field: :username)
-             .register_column(:access_key_ids,      field: :access_key_id)
-             .register_column(:created_date,        field: :create_date)
-             .register_column(:created_days_ago,    field: :created_days_ago)
-             .register_column(:created_with_user,   field: :created_with_user)
-             .register_column(:created_hours_ago,   field: :created_hours_ago)
-             .register_column(:active,              field: :active)
-             .register_column(:inactive,            field: :inactive)
-             .register_column(:last_used_date,      field: :last_used_date, lazy_instance: :lazy_load_last_used_date)
-             .register_column(:last_used_hours_ago, field: :last_used_hours_ago, lazy_instance: :lazy_load_last_used_hours_ago)
-             .register_column(:last_used_days_ago,  field: :last_used_days_ago, lazy_instance: :lazy_load_last_used_days_ago)
-             .register_column(:ever_used,           field: :ever_used, lazy_instance: :lazy_load_ever_used)
-             .register_column(:never_used,          field: :never_used, lazy_instance: :lazy_load_never_used_time)
-             .register_column(:user_created_date,   field: :user_created_date)
-             .register_custom_matcher(:exists?) { |x| !x.entries.empty? }
-             .install_filter_methods_on_resource(self, :table)
+    .register_column(:usernames,           field: :username)
+    .register_column(:access_key_ids,      field: :access_key_id)
+    .register_column(:created_date,        field: :create_date)
+    .register_column(:created_days_ago,    field: :created_days_ago)
+    .register_column(:created_with_user,   field: :created_with_user)
+    .register_column(:created_hours_ago,   field: :created_hours_ago)
+    .register_column(:active,              field: :active)
+    .register_column(:inactive,            field: :inactive)
+    .register_column(:last_used_date,      field: :last_used_date, lazy_instance: :lazy_load_last_used_date)
+    .register_column(:last_used_hours_ago, field: :last_used_hours_ago, lazy_instance: :lazy_load_last_used_hours_ago)
+    .register_column(:last_used_days_ago,  field: :last_used_days_ago, lazy_instance: :lazy_load_last_used_days_ago)
+    .register_column(:ever_used,           field: :ever_used, lazy_instance: :lazy_load_ever_used)
+    .register_column(:never_used,          field: :never_used, lazy_instance: :lazy_load_never_used_time)
+    .register_column(:user_created_date,   field: :user_created_date)
+    .register_custom_matcher(:exists?) { |x| !x.entries.empty? }
+    .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     opts = { username: opts } if opts.is_a?(String)
@@ -37,7 +37,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   end
 
   def to_s
-    'IAM Access Keys'
+    "IAM Access Keys"
   end
 
   private
@@ -92,8 +92,8 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
         access_key_hash = access_key.to_h
         access_key_hash[:username] = access_key_hash[:user_name]
         access_key_hash[:id] = access_key_hash[:access_key_id]
-        access_key_hash[:active] = access_key_hash[:status] == 'Active'
-        access_key_hash[:inactive] = access_key_hash[:status] != 'Active'
+        access_key_hash[:active] = access_key_hash[:status] == "Active"
+        access_key_hash[:inactive] = access_key_hash[:status] != "Active"
         access_key_hash[:created_hours_ago]  = ((Time.now - access_key_hash[:create_date]) / (60*60)).to_i
         access_key_hash[:created_days_ago]   = (access_key_hash[:created_hours_ago] / 24).to_i
         access_key_hash[:user_created_date]  = @_users.find { |user| user.user_name == access_key_hash[:username] }.create_date
@@ -106,7 +106,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   def last_used(row, _condition, _table)
     catch_aws_errors do
       iam_client.get_access_key_last_used({ access_key_id: row[:access_key_id] })
-                .access_key_last_used
+        .access_key_last_used
     end
   end
 

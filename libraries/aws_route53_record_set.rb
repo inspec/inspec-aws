@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSRoute53RecordSet < AwsResourceBase
-  name 'aws_route53_record_set'
-  desc 'Describe a resource record sets in a specified hosted zone.'
+  name "aws_route53_record_set"
+  desc "Describe a resource record sets in a specified hosted zone."
 
   example "
     describe aws_route53_record_set(hosted_zone_id: 'ResourceId', start_record_name: 'DNSName') do
@@ -30,7 +30,7 @@ class AWSRoute53RecordSet < AwsResourceBase
   end
 
   def resource_id
-    "#{@res? @hosted_zone_id: ''}_#{@res? @start_record_name: ''}"
+    "#{@res? @hosted_zone_id: ""}_#{@res? @start_record_name: ""}"
   end
 
   def exists?
