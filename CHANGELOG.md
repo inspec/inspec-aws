@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.60 -->
+<!-- latest_release 1.83.61 -->
+## [v1.83.61](https://github.com/inspec/inspec-aws/tree/v1.83.61) (2023-11-13)
+
+#### Merged Pull Requests
+- CHEF-8423 : load ActiveSupport core_ext methods [#980](https://github.com/inspec/inspec-aws/pull/980) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.83.60](https://github.com/inspec/inspec-aws/tree/v1.83.60) (2023-03-30)
 
 #### Merged Pull Requests
 - Chef 1095 Add the missing contents in the files of aws cloudtrail trail resource [#969](https://github.com/inspec/inspec-aws/pull/969) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.83.59](https://github.com/inspec/inspec-aws/tree/v1.83.59) (2023-03-13)
 
