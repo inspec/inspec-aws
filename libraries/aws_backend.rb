@@ -440,8 +440,7 @@ class AwsResourceBase < Inspec.resource(1)
     fail_resource('No AWS credentials available')
     nil
   rescue Aws::Account::Errors::ResourceNotFoundException => e
-    # require 'pry';binding.pry
-    Inspec::Log.error "#{e.message}"
+    Inspec::Log.warn "#{e.message}"
     fail_resource("#{e.message}")
     nil
   rescue Aws::Errors::NoSuchEndpointError

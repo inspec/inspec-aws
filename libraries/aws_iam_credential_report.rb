@@ -1,9 +1,9 @@
-require 'csv'
-require 'aws_backend'
+require "csv"
+require "aws_backend"
 
 class AwsIamCredentialReport < AwsCollectionResourceBase
-  name 'aws_iam_credential_report'
-  desc 'Lists all users in the AWS account and the status of their credentials.'
+  name "aws_iam_credential_report"
+  desc "Lists all users in the AWS account and the status of their credentials."
 
   example "
     describe aws_iam_credential_report.where(mfa_active: false) do
@@ -45,7 +45,7 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
   end
 
   def to_s
-    'IAM Credential Report'
+    "IAM Credential Report"
   end
 
   private
@@ -62,16 +62,17 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
           sleep 5
           retry
         else
-          Inspec::Log.warn 'AWS IAM Credential Report was not generated quickly enough.'
+          Inspec::Log.warn "AWS IAM Credential Report was not generated quickly enough."
           raise e
         end
       end
-      report = CSV.parse(response.content, headers: true, header_converters: :symbol, converters: [:date_time, lambda { |field| if field == 'true'
-                                                                                                                                  true
-                                                                                                                                else
-                                                                                                                                  field == 'false' ? false : field
-                                                                                                                                end
-                                                                                                               } ])
+      report = CSV.parse(response.content, headers: true, header_converters: :symbol, converters: [:date_time, lambda { |field|
+                                             if field == "true"
+                                               true
+                                             else
+                                               field == "false" ? false : field
+                                             end
+                                           }])
       report.map(&:to_h)
     end
   end
