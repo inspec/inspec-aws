@@ -369,7 +369,7 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
-      @resource_data = opts[:resource_data].presence&.to_h if opts[:resource_data]
+      @resource_data = opts[:resource_data].presence&.to_h
     end
     @aws = AwsConnection.new(client_args)
     # N.B. if/when we migrate AwsConnection to train, can update above and inject args via:
