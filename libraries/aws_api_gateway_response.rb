@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayResponse < AwsResourceBase
-  name "aws_api_gateway_response"
-  desc "Retrieves API Gateway Response."
+  name 'aws_api_gateway_response'
+  desc 'Retrieves API Gateway Response.'
   example <<-EXAMPLE
     describe aws_api_gateway_response(rest_api_id: 'REST_API_ID', response_type: 'RESPONSE_TYPE') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSApiGatewayResponse < AwsResourceBase
   end
 
   def response_type
-    return nil unless exists?
+    return unless exists?
     @res[:response_type]
   end
 

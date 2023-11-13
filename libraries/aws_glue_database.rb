@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSGlueDatabase < AwsResourceBase
-  name "aws_glue_database"
-  desc "Retrieves the definition of a specified database."
+  name 'aws_glue_database'
+  desc 'Retrieves the definition of a specified database.'
 
   example "
     describe aws_glue_database(name: 'db_name') do
@@ -24,7 +24,7 @@ class AWSGlueDatabase < AwsResourceBase
   end
 
   def name
-    return nil unless exists?
+    return unless exists?
     @res[:name]
   end
 

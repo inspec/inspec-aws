@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerCertificates < AwsResourceBase
-  name "aws_elasticloadbalancingv2_listener_certificates"
-  desc "Describes the default certificate and the certificate list for the specified HTTPS or TLS listener"
+  name 'aws_elasticloadbalancingv2_listener_certificates'
+  desc 'Describes the default certificate and the certificate list for the specified HTTPS or TLS listener'
 
   example "
     describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'test1') do
@@ -16,9 +16,9 @@ class AWSElasticLoadBalancingV2ListenerCertificates < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:certificate_arns,                      field: :certificate_arn)
-    .register_column(:is_defaults,                           field: :is_default)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:certificate_arns,                      field: :certificate_arn)
+             .register_column(:is_defaults,                           field: :is_default)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

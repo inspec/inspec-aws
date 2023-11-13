@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2Fleet < AwsResourceBase
-  name "aws_ec2_fleet"
-  desc "Describes the specified EC2 Fleets or all of your EC2 Fleets."
+  name 'aws_ec2_fleet'
+  desc 'Describes the specified EC2 Fleets or all of your EC2 Fleets.'
 
   example "
     describe aws_ec2_fleet(fleet_id: 'FLEET_ID') do
@@ -24,7 +24,7 @@ class AWSEC2Fleet < AwsResourceBase
   end
 
   def fleet_id
-    return nil unless exists?
+    return unless exists?
     @resp[:fleet_id]
   end
 

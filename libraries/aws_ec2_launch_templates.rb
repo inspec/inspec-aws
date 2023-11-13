@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEc2LaunchTemplates < AwsResourceBase
-  name "aws_ec2_launch_templates"
-  desc "Verifies settings for a collection of launch templates."
+  name 'aws_ec2_launch_templates'
+  desc 'Verifies settings for a collection of launch templates.'
 
   example "
     describe aws_ec2_launch_templates do
@@ -13,14 +13,14 @@ class AWSEc2LaunchTemplates < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:launch_template_ids,           field: :launch_template_id)
-    .register_column(:launch_template_names,         field: :launch_template_name)
-    .register_column(:create_time,                   field: :create_time)
-    .register_column(:created_by,                    field: :created_by)
-    .register_column(:default_version_number,        field: :default_version_number)
-    .register_column(:tags,                          field: :tags)
-    .register_column(:latest_version_number,         field: :launch_template_number)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:launch_template_ids,           field: :launch_template_id)
+             .register_column(:launch_template_names,         field: :launch_template_name)
+             .register_column(:create_time,                   field: :create_time)
+             .register_column(:created_by,                    field: :created_by)
+             .register_column(:default_version_number,        field: :default_version_number)
+             .register_column(:tags,                          field: :tags)
+             .register_column(:latest_version_number,         field: :launch_template_number)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -44,7 +44,7 @@ class AWSEc2LaunchTemplates < AwsResourceBase
           create_time: launch_template.create_time,
           created_by: launch_template.created_by,
           tags: launch_template_tags,
-          launch_template_tags_name: launch_template_tags["Name"],
+          launch_template_tags_name: launch_template_tags['Name'],
           default_version_number: launch_template.default_version_number,
           latest_version_number: launch_template.latest_version_number,
         }]

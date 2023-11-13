@@ -1,9 +1,9 @@
-require "aws_backend"
-require "json"
+require 'aws_backend'
+require 'json'
 
 class AwsEmrClusterSecurityConfiguration < AwsResourceBase
-  name "aws_emr_security_configuration"
-  desc "Verifies security configuration for an EMR cluster."
+  name 'aws_emr_security_configuration'
+  desc 'Verifies security configuration for an EMR cluster.'
 
   example "
     describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
@@ -28,11 +28,11 @@ class AwsEmrClusterSecurityConfiguration < AwsResourceBase
       json_security_configuration = resp.security_configuration
       return if json_security_configuration.nil? || json_security_configuration.empty?
       parsed_json = JSON.parse(json_security_configuration)
-      @encryption_at_rest = !parsed_json["EncryptionConfiguration"]["EnableAtRestEncryption"].nil? && parsed_json["EncryptionConfiguration"]["EnableAtRestEncryption"]
-      @encryption_in_transit = !parsed_json["EncryptionConfiguration"]["EnableInTransitEncryption"].nil? && parsed_json["EncryptionConfiguration"]["EnableInTransitEncryption"]
-      @local_disk_encryption = !parsed_json["EncryptionConfiguration"]["AtRestEncryptionConfiguration"].nil? &&
-        !parsed_json["EncryptionConfiguration"]["AtRestEncryptionConfiguration"]["LocalDiskEncryptionConfiguration"].nil? &&
-        !parsed_json["EncryptionConfiguration"]["AtRestEncryptionConfiguration"]["LocalDiskEncryptionConfiguration"].empty?
+      @encryption_at_rest = !parsed_json['EncryptionConfiguration']['EnableAtRestEncryption'].nil? && parsed_json['EncryptionConfiguration']['EnableAtRestEncryption']
+      @encryption_in_transit = !parsed_json['EncryptionConfiguration']['EnableInTransitEncryption'].nil? && parsed_json['EncryptionConfiguration']['EnableInTransitEncryption']
+      @local_disk_encryption = !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration'].nil? &&
+                               !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration']['LocalDiskEncryptionConfiguration'].nil? &&
+                               !parsed_json['EncryptionConfiguration']['AtRestEncryptionConfiguration']['LocalDiskEncryptionConfiguration'].empty?
     end
   end
 

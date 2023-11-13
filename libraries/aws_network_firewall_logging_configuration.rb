@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
-  name "aws_network_firewall_logging_configuration"
-  desc "Returns the logging configuration for the specified firewall."
+  name 'aws_network_firewall_logging_configuration'
+  desc 'Returns the logging configuration for the specified firewall.'
 
   example "
     describe aws_network_firewall_logging_configuration(firewall_name: 'FirewallName') do
@@ -24,12 +24,12 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   end
 
   def firewall_name
-    return nil unless exists?
+    return unless exists?
     @res[:firewall_name]
   end
 
   def resource_id
-    @res? @res[:firewall_arn]: ""
+    @res? @res[:firewall_arn]: ''
   end
 
   def exists?

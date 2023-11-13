@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
-  name "aws_network_manager_customer_gateway_association"
-  desc "Gets the association information for customer gateways that are associated with devices and links in your global network."
+  name 'aws_network_manager_customer_gateway_association'
+  desc 'Gets the association information for customer gateways that are associated with devices and links in your global network.'
 
   example "
     describe aws_network_manager_customer_gateway_association(global_network_id: 'GlobalNetworkID', customer_gateway_arn: 'CustomerGatewayARN') do
@@ -26,7 +26,7 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
   end
 
   def customer_gateway_arn
-    return nil unless exists?
+    return unless exists?
     @res[:customer_gateway_arn]
   end
 

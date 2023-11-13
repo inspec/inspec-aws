@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSignerProfilePermissions < AwsResourceBase
-  name "aws_signer_profile_permissions"
-  desc "Lists the cross-account permissions associated with a signing profile."
+  name 'aws_signer_profile_permissions'
+  desc 'Lists the cross-account permissions associated with a signing profile.'
 
   example "
     describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
@@ -13,11 +13,11 @@ class AWSSignerProfilePermissions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:actions, field: :action)
-    .register_column(:principals, field: :principal)
-    .register_column(:statement_ids, field: :statement_id)
-    .register_column(:profile_versions, field: :profile_version)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:actions, field: :action)
+             .register_column(:principals, field: :principal)
+             .register_column(:statement_ids, field: :statement_id)
+             .register_column(:profile_versions, field: :profile_version)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

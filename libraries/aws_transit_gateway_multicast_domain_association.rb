@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSTransitGatewayMulticastDomainAssociation < AwsResourceBase
-  name "aws_transit_gateway_multicast_domain_association"
-  desc "Gets information about the associations for the transit gateway multicast domain."
+  name 'aws_transit_gateway_multicast_domain_association'
+  desc 'Gets information about the associations for the transit gateway multicast domain.'
 
   example "
     describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'Domain ID') do
@@ -27,7 +27,7 @@ class AWSTransitGatewayMulticastDomainAssociation < AwsResourceBase
   end
 
   def transit_gateway_multicast_domain_id
-    return nil unless exists?
+    return unless exists?
     @multicast_domain_associations[:transit_gateway_multicast_domain_id]
   end
 

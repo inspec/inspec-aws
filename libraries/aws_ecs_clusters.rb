@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEcsClusters < AwsResourceBase
-  name "aws_ecs_clusters"
-  desc "Verifies settings for a collection AWS ECS Clusters."
+  name 'aws_ecs_clusters'
+  desc 'Verifies settings for a collection AWS ECS Clusters.'
   example "
     describe aws_ecs_clusters do
       it { should exist }
@@ -12,15 +12,15 @@ class AwsEcsClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:cluster_arns,           field: :cluster_arn)
-    .register_column(:cluster_names,          field: :cluster_name)
-    .register_column(:statuses,               field: :status)
-    .register_column(:running_tasks_counts,   field: :running_tasks_count)
-    .register_column(:pending_tasks_counts,   field: :pending_tasks_count)
-    .register_column(:active_services_counts, field: :active_services_count)
-    .register_column(:statistics,             field: :statistics)
-    .register_column(:registered_container_instances_counts, field: :registered_container_instances_count)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:cluster_arns,           field: :cluster_arn)
+             .register_column(:cluster_names,          field: :cluster_name)
+             .register_column(:statuses,               field: :status)
+             .register_column(:running_tasks_counts,   field: :running_tasks_count)
+             .register_column(:pending_tasks_counts,   field: :pending_tasks_count)
+             .register_column(:active_services_counts, field: :active_services_count)
+             .register_column(:statistics,             field: :statistics)
+             .register_column(:registered_container_instances_counts, field: :registered_container_instances_count)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

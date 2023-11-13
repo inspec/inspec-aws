@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2VPCPeeringConnections < AwsResourceBase
-  name "aws_ec2_vpc_peering_connections"
-  desc "Describes a vpc peering connection."
+  name 'aws_ec2_vpc_peering_connections'
+  desc 'Describes a vpc peering connection.'
 
   example "
     describe aws_ec2_vpc_peering_connections do
@@ -13,13 +13,13 @@ class AWSEC2VPCPeeringConnections < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:accepter_vpc_infos, field: :accepter_vpc_info)
-    .register_column(:expiration_times, field: :expiration_time)
-    .register_column(:requester_vpc_infos, field: :requester_vpc_info)
-    .register_column(:statuses, field: :status)
-    .register_column(:tags, field: :tags)
-    .register_column(:vpc_peering_connection_ids, field: :vpc_peering_connection_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:accepter_vpc_infos, field: :accepter_vpc_info)
+             .register_column(:expiration_times, field: :expiration_time)
+             .register_column(:requester_vpc_infos, field: :requester_vpc_info)
+             .register_column(:statuses, field: :status)
+             .register_column(:tags, field: :tags)
+             .register_column(:vpc_peering_connection_ids, field: :vpc_peering_connection_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

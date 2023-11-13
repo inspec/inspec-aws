@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEc2TransitGatewayAttachments < AwsResourceBase
-  name "aws_ec2_transit_gateway_attachments"
-  desc "Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner."
+  name 'aws_ec2_transit_gateway_attachments'
+  desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
   example "
     describe aws_ec2_transit_gateway_attachements do
       it { should exist }
@@ -12,17 +12,17 @@ class AwsEc2TransitGatewayAttachments < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:transit_gateway_attachment_ids,                   field: :transit_gateway_attachment_id)
-    .register_column(:transit_gateway_ids,                              field: :transit_gateway_id)
-    .register_column(:transit_gateway_owner_ids,                        field: :transit_gateway_owner_id)
-    .register_column(:resource_owner_ids,                               field: :resource_owner_id)
-    .register_column(:resource_types,                                   field: :resource_type)
-    .register_column(:resource_ids,                                     field: :resource_id)
-    .register_column(:states,                                           field: :state)
-    .register_column(:associations,                                     field: :association)
-    .register_column(:creation_times,                                   field: :creation_time)
-    .register_column(:tags,                                             field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:transit_gateway_attachment_ids,                   field: :transit_gateway_attachment_id)
+             .register_column(:transit_gateway_ids,                              field: :transit_gateway_id)
+             .register_column(:transit_gateway_owner_ids,                        field: :transit_gateway_owner_id)
+             .register_column(:resource_owner_ids,                               field: :resource_owner_id)
+             .register_column(:resource_types,                                   field: :resource_type)
+             .register_column(:resource_ids,                                     field: :resource_id)
+             .register_column(:states,                                           field: :state)
+             .register_column(:associations,                                     field: :association)
+             .register_column(:creation_times,                                   field: :creation_time)
+             .register_column(:tags,                                             field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

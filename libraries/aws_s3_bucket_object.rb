@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsS3BucketObject < AwsResourceBase
-  name "aws_s3_bucket_object"
-  desc "Verifies settings for a s3 bucket object."
+  name 'aws_s3_bucket_object'
+  desc 'Verifies settings for a s3 bucket object.'
   example "
     describe aws_s3_bucket_object(bucket_name: 'bucket_name', key: 'file_name') do
       it { should exist }
@@ -40,8 +40,8 @@ class AwsS3BucketObject < AwsResourceBase
   def public?
     # first line just for formatting
     false || \
-      object_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AllUsers/ } || \
-      object_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AuthenticatedUsers/ }
+      object_acl.any? { |g| g.grantee.type == 'Group' && g.grantee.uri =~ /AllUsers/ } || \
+      object_acl.any? { |g| g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/ }
   end
 
   def exists?

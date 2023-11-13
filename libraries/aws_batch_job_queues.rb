@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSBatchJobQueues < AwsResourceBase
-  name "aws_batch_job_queues"
-  desc "Describes one or more of your job queues."
+  name 'aws_batch_job_queues'
+  desc 'Describes one or more of your job queues.'
   example <<-EXAMPLE
     describe aws_batch_job_queues do
       it { should exist }
@@ -12,14 +12,14 @@ class AWSBatchJobQueues < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:job_queue_names,                             field: :job_queue_name)
-    .register_column(:job_queue_arns,                              field: :job_queue_arn)
-    .register_column(:states,                                      field: :state)
-    .register_column(:statuses,                                    field: :status)
-    .register_column(:status_reasons,                              field: :status_reason)
-    .register_column(:priorities,                                  field: :priority)
-    .register_column(:tags,                                        field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:job_queue_names,                             field: :job_queue_name)
+             .register_column(:job_queue_arns,                              field: :job_queue_arn)
+             .register_column(:states,                                      field: :state)
+             .register_column(:statuses,                                    field: :status)
+             .register_column(:status_reasons,                              field: :status_reason)
+             .register_column(:priorities,                                  field: :priority)
+             .register_column(:tags,                                        field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

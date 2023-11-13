@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
-  name "aws_ec2_network_interface_attachments"
-  desc "List all the network interface attachments."
+  name 'aws_ec2_network_interface_attachments'
+  desc 'List all the network interface attachments.'
 
   example "
     describe aws_ec2_network_interface_attachments do
@@ -13,15 +13,15 @@ class AWSEC2NetworkInterfaceAttachments < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:attach_times, field: :attach_time)
-    .register_column(:attachment_ids, field: :attachment_id)
-    .register_column(:delete_on_terminations, field: :delete_on_termination)
-    .register_column(:device_indexes, field: :device_index)
-    .register_column(:network_card_indexes, field: :network_card_index)
-    .register_column(:instance_ids, field: :instance_id)
-    .register_column(:instance_owner_ids, field: :instance_owner_id)
-    .register_column(:statuses, field: :status)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:attach_times, field: :attach_time)
+             .register_column(:attachment_ids, field: :attachment_id)
+             .register_column(:delete_on_terminations, field: :delete_on_termination)
+             .register_column(:device_indexes, field: :device_index)
+             .register_column(:network_card_indexes, field: :network_card_index)
+             .register_column(:instance_ids, field: :instance_id)
+             .register_column(:instance_owner_ids, field: :instance_owner_id)
+             .register_column(:statuses, field: :status)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEmrClusters < AwsResourceBase
-  name "aws_emr_clusters"
-  desc "Verifies settings for a collection of AWS EMR Clusters."
+  name 'aws_emr_clusters'
+  desc 'Verifies settings for a collection of AWS EMR Clusters.'
   example "
     describe aws_emr_clusters do
       it { should exist }
@@ -11,25 +11,25 @@ class AwsEmrClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:cluster_ids, field: :cluster_id)
-    .register_column(:cluster_names, field: :cluster_name)
-    .register_column(:cluster_arns, field: :cluster_arn)
-    .register_column(:application_names, field: :application_names, style: :simple) # TODO: to be tested
-    .register_column(:status_states, field: :status_state)
-    .register_column(:auto_scaling_roles, field: :auto_scaling_role)
-    .register_column(:custom_ami_ids, field: :custom_ami_id)
-    .register_column(:ebs_root_volume_sizes, field: :ebs_root_volume_size)
-    .register_column(:kerberos_attributes_realms, field: :kerberos_attributes_realm)
-    .register_column(:kerberos_attributes_realm_ad_domain_join_users, field: :kerberos_attributes_realm_ad_domain_join_user)
-    .register_column(:log_encryption_kms_key_ids, field: :log_encryption_kms_key_id)
-    .register_column(:log_uris, field: :log_uri)
-    .register_column(:release_labels, field: :release_label)
-    .register_column(:scale_down_behaviors, field: :scale_down_behavior)
-    .register_column(:service_roles, field: :service_role)
-    .register_column(:step_concurrency_levels, field: :step_concurrency_level)
-    .register_column(:visible_to_all_users, field: :visible_to_all_users)
-    .register_column(:security_configuration_names, field: :security_configuration_name)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:cluster_ids, field: :cluster_id)
+             .register_column(:cluster_names, field: :cluster_name)
+             .register_column(:cluster_arns, field: :cluster_arn)
+             .register_column(:application_names, field: :application_names, style: :simple) # TODO: to be tested
+             .register_column(:status_states, field: :status_state)
+             .register_column(:auto_scaling_roles, field: :auto_scaling_role)
+             .register_column(:custom_ami_ids, field: :custom_ami_id)
+             .register_column(:ebs_root_volume_sizes, field: :ebs_root_volume_size)
+             .register_column(:kerberos_attributes_realms, field: :kerberos_attributes_realm)
+             .register_column(:kerberos_attributes_realm_ad_domain_join_users, field: :kerberos_attributes_realm_ad_domain_join_user)
+             .register_column(:log_encryption_kms_key_ids, field: :log_encryption_kms_key_id)
+             .register_column(:log_uris, field: :log_uri)
+             .register_column(:release_labels, field: :release_label)
+             .register_column(:scale_down_behaviors, field: :scale_down_behavior)
+             .register_column(:service_roles, field: :service_role)
+             .register_column(:step_concurrency_levels, field: :step_concurrency_level)
+             .register_column(:visible_to_all_users, field: :visible_to_all_users)
+             .register_column(:security_configuration_names, field: :security_configuration_name)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

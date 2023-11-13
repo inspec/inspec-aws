@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaAliases < AwsResourceBase
-  name "aws_lambda_aliases"
-  desc "Returns a list of aliases for a Lambda function."
+  name 'aws_lambda_aliases'
+  desc 'Returns a list of aliases for a Lambda function.'
 
   example "
     describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
@@ -13,13 +13,13 @@ class AWSLambdaAliases < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:alias_arns, field: :alias_arn)
-    .register_column(:names, field: :name)
-    .register_column(:function_versions, field: :function_version)
-    .register_column(:descriptions, field: :description)
-    .register_column(:routing_configs, field: :routing_config)
-    .register_column(:revision_ids, field: :revision_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:alias_arns, field: :alias_arn)
+             .register_column(:names, field: :name)
+             .register_column(:function_versions, field: :function_version)
+             .register_column(:descriptions, field: :description)
+             .register_column(:routing_configs, field: :routing_config)
+             .register_column(:revision_ids, field: :revision_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

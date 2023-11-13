@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayAccount < AwsResourceBase
-  name "aws_apigateway_account"
-  desc "Gets information about the current Account resource."
+  name 'aws_apigateway_account'
+  desc 'Gets information about the current Account resource.'
   example <<-EXAMPLE
     describe aws_apigateway_account do
       it { should exist }
@@ -20,7 +20,7 @@ class AWSApiGatewayAccount < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:cloudwatch_role_arn] : ""
+    @res? @res[:cloudwatch_role_arn] : ''
   end
 
   def exists?

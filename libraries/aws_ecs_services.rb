@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSECSServices < AwsResourceBase
-  name "aws_ecs_services"
-  desc "Lists the services that are running in a specified cluster."
+  name 'aws_ecs_services'
+  desc 'Lists the services that are running in a specified cluster.'
 
   example "
     describe aws_ecs_services(cluster: 'cluster_name') do
@@ -13,17 +13,17 @@ class AWSECSServices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:service_arns,      field: :service_arn)
-    .register_column(:service_names,     field: :service_name)
-    .register_column(:cluster_arns,      field: :cluster_arn)
-    .register_column(:status,            field: :status)
-    .register_column(:desired_count,     field: :desired_count)
-    .register_column(:running_count,     field: :running_count)
-    .register_column(:pending_count,     field: :pending_count)
-    .register_column(:launch_types,      field: :launch_type)
-    .register_column(:task_definitions,  field: :task_definition)
-    .register_column(:platform_versions, field: :platform_version)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:service_arns,      field: :service_arn)
+             .register_column(:service_names,     field: :service_name)
+             .register_column(:cluster_arns,      field: :cluster_arn)
+             .register_column(:status,            field: :status)
+             .register_column(:desired_count,     field: :desired_count)
+             .register_column(:running_count,     field: :running_count)
+             .register_column(:pending_count,     field: :pending_count)
+             .register_column(:launch_types,      field: :launch_type)
+             .register_column(:task_definitions,  field: :task_definition)
+             .register_column(:platform_versions, field: :platform_version)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSAutoScalingScalingPolicy < AwsResourceBase
-  name "aws_autoscaling_scaling_policy"
-  desc "Describes the policies for the specified Auto Scaling group."
+  name 'aws_autoscaling_scaling_policy'
+  desc 'Describes the policies for the specified Auto Scaling group.'
   example <<-EXAMPLE
     describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_GROUP_NAME') do
       it { should exist }
@@ -25,7 +25,7 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
   end
 
   def auto_scaling_group_name
-    return nil unless exists?
+    return unless exists?
     @scaling_policies[:auto_scaling_group_name]
   end
 

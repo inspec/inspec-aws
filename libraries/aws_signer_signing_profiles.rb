@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSignerSigningProfiles < AwsResourceBase
-  name "aws_signer_signing_profiles"
-  desc "Returns information on a specific signing profile."
+  name 'aws_signer_signing_profiles'
+  desc 'Returns information on a specific signing profile.'
 
   example "
     describe aws_signer_signing_profiles do
@@ -13,18 +13,18 @@ class AWSSignerSigningProfiles < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:profile_names, field: :profile_name)
-    .register_column(:profile_versions, field: :profile_version)
-    .register_column(:profile_version_arns, field: :profile_version_arn)
-    .register_column(:signing_materials, field: :signing_material)
-    .register_column(:signature_validity_periods, field: :signature_validity_period)
-    .register_column(:platform_ids, field: :platform_id)
-    .register_column(:platform_display_names, field: :platform_display_name)
-    .register_column(:signing_parameters, field: :signing_parameters)
-    .register_column(:statuses, field: :status)
-    .register_column(:arns, field: :arn)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:profile_names, field: :profile_name)
+             .register_column(:profile_versions, field: :profile_version)
+             .register_column(:profile_version_arns, field: :profile_version_arn)
+             .register_column(:signing_materials, field: :signing_material)
+             .register_column(:signature_validity_periods, field: :signature_validity_period)
+             .register_column(:platform_ids, field: :platform_id)
+             .register_column(:platform_display_names, field: :platform_display_name)
+             .register_column(:signing_parameters, field: :signing_parameters)
+             .register_column(:statuses, field: :status)
+             .register_column(:arns, field: :arn)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

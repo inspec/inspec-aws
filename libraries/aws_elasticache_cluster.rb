@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsElastiCacheCluster < AwsResourceBase
-  name "aws_elasticache_cluster"
-  desc "Verifies settings for an AWS Elasticache Cluster."
+  name 'aws_elasticache_cluster'
+  desc 'Verifies settings for an AWS Elasticache Cluster.'
 
   example "
     describe aws_elasticache_cluster('my-cluster-001') do
@@ -62,7 +62,7 @@ class AwsElastiCacheCluster < AwsResourceBase
   end
 
   def ports
-    return unless status == "available"
+    return unless status == 'available'
     # This will return a hash with `node_id : port` pairs.
     @cache_cluster[:cache_nodes].map { |node| [node[:cache_node_id], node[:endpoint][:port]] }.to_h
   end

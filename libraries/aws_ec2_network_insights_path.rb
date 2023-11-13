@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2NetworkInsightsPath < AwsResourceBase
-  name "aws_ec2_network_insights_path"
-  desc "Returns"
+  name 'aws_ec2_network_insights_path'
+  desc 'Returns'
 
   example "
     describe aws_ec2_network_insights_path(network_insights_path_id: 'NetworkInsightsPathId') do
@@ -24,7 +24,7 @@ class AWSEC2NetworkInsightsPath < AwsResourceBase
   end
 
   def network_insights_path_id
-    return nil unless exists?
+    return unless exists?
     @res[:network_insights_path_id]
   end
 

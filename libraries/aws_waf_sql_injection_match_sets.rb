@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFSQLInjectionMatchSets < AwsResourceBase
-  name "aws_waf_sql_injection_match_sets"
-  desc "Verifies settings for all the WAF SQL Injection match set."
+  name 'aws_waf_sql_injection_match_sets'
+  desc 'Verifies settings for all the WAF SQL Injection match set.'
 
   example "
     describe aws_waf_sql_injection_match_sets do
@@ -19,9 +19,9 @@ class AWSWAFSQLInjectionMatchSets < AwsResourceBase
   end
 
   FilterTable.create
-    .register_column(:sql_injection_match_set_ids, field: :sql_injection_match_set_id, style: :simple)
-    .register_column(:names, field: :name, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:sql_injection_match_set_ids, field: :sql_injection_match_set_id, style: :simple)
+             .register_column(:names, field: :name, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

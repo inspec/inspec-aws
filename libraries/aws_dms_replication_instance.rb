@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSDMSReplicationInstance < AwsResourceBase
-  name "aws_dms_replication_instance"
-  desc "Returns information about the replication instance types that can be created in the specified region."
+  name 'aws_dms_replication_instance'
+  desc 'Returns information about the replication instance types that can be created in the specified region.'
   example <<-EXAMPLE
     describe aws_dms_replication_instance do
       it { should exist }
@@ -20,11 +20,11 @@ class AWSDMSReplicationInstance < AwsResourceBase
   end
 
   def resource_id
-    "#{@orderable_replication_instances? @orderable_replication_instances[:replication_instance_class]: ""}_#{@orderable_replication_instances? @orderable_replication_instances[:engine_version]: ""}"
+    "#{@orderable_replication_instances? @orderable_replication_instances[:replication_instance_class]: ''}_#{@orderable_replication_instances? @orderable_replication_instances[:engine_version]: ''}"
   end
 
   def replication_instance_class
-    return nil unless exists?
+    return unless exists?
     @orderable_replication_instances[:replication_instance_class]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkFirewallRuleGroups < AwsResourceBase
-  name "aws_network_firewall_rule_groups"
-  desc "Retrieves the metadata for the rule groups that you have defined."
+  name 'aws_network_firewall_rule_groups'
+  desc 'Retrieves the metadata for the rule groups that you have defined.'
 
   example "
     describe aws_network_firewall_rule_groups do
@@ -13,9 +13,9 @@ class AWSNetworkFirewallRuleGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names, field: :name)
-    .register_column(:arns, field: :arn)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names, field: :name)
+             .register_column(:arns, field: :arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

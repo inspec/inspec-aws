@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRDSGlobalClusters < AwsResourceBase
-  name "aws_rds_global_clusters"
-  desc "Returns information about DB Global Cluster."
+  name 'aws_rds_global_clusters'
+  desc 'Returns information about DB Global Cluster.'
 
   example "
     describe aws_rds_global_clusters do
@@ -13,17 +13,17 @@ class AWSRDSGlobalClusters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:global_cluster_identifiers, field: :global_cluster_identifier)
-    .register_column(:global_cluster_resource_ids, field: :global_cluster_resource_id)
-    .register_column(:global_cluster_arns, field: :global_cluster_arn)
-    .register_column(:statuses, field: :status)
-    .register_column(:engines, field: :engine)
-    .register_column(:vpc_security_group_ids, field: :vpc_security_group_ids)
-    .register_column(:engine_versions, field: :engine_version)
-    .register_column(:database_names, field: :database_name)
-    .register_column(:storage_encrypted, field: :role_arn)
-    .register_column(:deletion_protection, field: :deletion_protection)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:global_cluster_identifiers, field: :global_cluster_identifier)
+             .register_column(:global_cluster_resource_ids, field: :global_cluster_resource_id)
+             .register_column(:global_cluster_arns, field: :global_cluster_arn)
+             .register_column(:statuses, field: :status)
+             .register_column(:engines, field: :engine)
+             .register_column(:vpc_security_group_ids, field: :vpc_security_group_ids)
+             .register_column(:engine_versions, field: :engine_version)
+             .register_column(:database_names, field: :database_name)
+             .register_column(:storage_encrypted, field: :role_arn)
+             .register_column(:deletion_protection, field: :deletion_protection)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRDSProxy < AwsResourceBase
-  name "aws_rds_db_proxy"
-  desc "Returns information about DB proxies."
+  name 'aws_rds_db_proxy'
+  desc 'Returns information about DB proxies.'
 
   example "
     describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
@@ -24,7 +24,7 @@ class AWSRDSProxy < AwsResourceBase
   end
 
   def db_proxy_name
-    return nil unless exists?
+    return unless exists?
     @res[:db_proxy_name]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2InternetGateways < AwsResourceBase
-  name "aws_ec2_internet_gateways"
-  desc "List all the internet gateways."
+  name 'aws_ec2_internet_gateways'
+  desc 'List all the internet gateways.'
 
   example "
     describe aws_ec2_internet_gateways do
@@ -13,13 +13,13 @@ class AWSEC2InternetGateways < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:attachments, field: :attachments)
-    .register_column(:attachments_states, field: :attachments_states, style: :simple)
-    .register_column(:attachments_vpc_ids, field: :attachments_vpc_ids)
-    .register_column(:internet_gateway_ids, field: :internet_gateway_id)
-    .register_column(:owner_ids, field: :owner_id)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:attachments, field: :attachments)
+             .register_column(:attachments_states, field: :attachments_states, style: :simple)
+             .register_column(:attachments_vpc_ids, field: :attachments_vpc_ids)
+             .register_column(:internet_gateway_ids, field: :internet_gateway_id)
+             .register_column(:owner_ids, field: :owner_id)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSBatchComputeEnvironments < AwsResourceBase
-  name "aws_batch_compute_environments"
-  desc "Describes one or more of your compute environments."
+  name 'aws_batch_compute_environments'
+  desc 'Describes one or more of your compute environments.'
   example <<-EXAMPLE
     describe aws_batch_compute_environments do
       it { should exist }
@@ -12,16 +12,16 @@ class AWSBatchComputeEnvironments < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:compute_environment_names,                       field: :compute_environment_name)
-    .register_column(:compute_environment_arns,                        field: :compute_environment_arn)
-    .register_column(:ecs_cluster_arns,                                field: :ecs_cluster_arn)
-    .register_column(:tags,                                            field: :tags)
-    .register_column(:types,                                           field: :type)
-    .register_column(:states,                                          field: :state)
-    .register_column(:statuses,                                        field: :status)
-    .register_column(:status_reasons,                                  field: :status_reason)
-    .register_column(:service_roles,                                   field: :service_role)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:compute_environment_names,                       field: :compute_environment_name)
+             .register_column(:compute_environment_arns,                        field: :compute_environment_arn)
+             .register_column(:ecs_cluster_arns,                                field: :ecs_cluster_arn)
+             .register_column(:tags,                                            field: :tags)
+             .register_column(:types,                                           field: :type)
+             .register_column(:states,                                          field: :state)
+             .register_column(:statuses,                                        field: :status)
+             .register_column(:status_reasons,                                  field: :status_reason)
+             .register_column(:service_roles,                                   field: :service_role)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

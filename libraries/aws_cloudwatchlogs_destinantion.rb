@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCloudWatchLogsDestination < AwsResourceBase
-  name "aws_cloudwatchlogs_destination"
-  desc "Describes a log destination."
+  name 'aws_cloudwatchlogs_destination'
+  desc 'Describes a log destination.'
   example <<-EXAMPLE
     describe aws_cloudwatchlogs_destination(destination_name_prefix: 'DESTINATION_NAME') do
       it { should exist }
@@ -29,7 +29,7 @@ class AWSCloudWatchLogsDestination < AwsResourceBase
   end
 
   def destination_name_prefix
-    return nil unless exists?
+    return unless exists?
     @destinations[:destination_name_prefix]
   end
 

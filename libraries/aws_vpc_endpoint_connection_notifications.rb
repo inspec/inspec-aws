@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVpcEndpointConnectionNotifications < AwsResourceBase
-  name "aws_vpc_endpoint_connection_notifications"
-  desc "Verifies settings for all the AWS VPC Endpoint Notifications."
+  name 'aws_vpc_endpoint_connection_notifications'
+  desc 'Verifies settings for all the AWS VPC Endpoint Notifications.'
 
   example "
     describe aws_vpc_endpoint_connection_notifications do
@@ -14,14 +14,14 @@ class AwsVpcEndpointConnectionNotifications < AwsResourceBase
 
   # FilterTable setup
   FilterTable.create
-    .register_column(:connection_notification_ids,        field: :connection_notification_id)
-    .register_column(:service_ids,                        field: :service_id)
-    .register_column(:connection_notification_types,      field: :connection_notification_type)
-    .register_column(:connection_notification_arns,       field: :connection_notification_arn)
-    .register_column(:connection_events,                  field: :connection_events)
-    .register_column(:connection_notification_state,      field: :connection_notification_state)
-    .register_column(:vpc_endpoint_id,                    field: :vpc_endpoint_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:connection_notification_ids,        field: :connection_notification_id)
+             .register_column(:service_ids,                        field: :service_id)
+             .register_column(:connection_notification_types,      field: :connection_notification_type)
+             .register_column(:connection_notification_arns,       field: :connection_notification_arn)
+             .register_column(:connection_events,                  field: :connection_events)
+             .register_column(:connection_notification_state,      field: :connection_notification_state)
+             .register_column(:vpc_endpoint_id,                    field: :vpc_endpoint_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

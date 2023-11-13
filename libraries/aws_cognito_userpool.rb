@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCognitoUserPool < AwsResourceBase
-  name "aws_cognito_userpool"
-  desc "Returns the configuration information and metadata of the specified user pool."
+  name 'aws_cognito_userpool'
+  desc 'Returns the configuration information and metadata of the specified user pool.'
   example <<-EXAMPLE
     describe aws_cognito_userpool(user_pool_id: 'USER_POOL_ID') do
       it { should exist }
@@ -24,7 +24,7 @@ class AWSCognitoUserPool < AwsResourceBase
   end
 
   def job_queue_name
-    return nil unless exists?
+    return unless exists?
     @user_pool[:job_queue_name]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVPCEndpointServicePermissions < AwsResourceBase
-  name "aws_vpc_endpoint_service_permissions"
-  desc "Describes the principals (service consumers) that are permitted to discover your VPC endpoint service."
+  name 'aws_vpc_endpoint_service_permissions'
+  desc 'Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.'
   example "
     describe aws_vpc_endpoint_service_permissions(service_id: 'vpce-svc-04deb776dc2b8e67f') do
       it { should exist }
@@ -12,9 +12,9 @@ class AwsVPCEndpointServicePermissions < AwsResourceBase
   attr_reader :table, :params
 
   FilterTable.create
-    .register_column(:principal_types, field: :principal_type, style: :simple)
-    .register_column(:principals, field: :principal)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:principal_types, field: :principal_type, style: :simple)
+             .register_column(:principals, field: :principal)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts)
     super

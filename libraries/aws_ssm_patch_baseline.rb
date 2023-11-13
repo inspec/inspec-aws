@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESPatchBaseline < AwsResourceBase
-  name "aws_ssm_patch_baseline"
-  desc "Retrieves information about a patch baseline."
+  name 'aws_ssm_patch_baseline'
+  desc 'Retrieves information about a patch baseline.'
 
   example "
     describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
@@ -37,7 +37,7 @@ class AWSSESPatchBaseline < AwsResourceBase
   end
 
   def baseline_id
-    return nil unless exists?
+    return unless exists?
     @res[:baseline_id]
   end
 

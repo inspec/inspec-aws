@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSignerSigningProfile < AwsResourceBase
-  name "aws_signer_signing_profile"
-  desc "Returns information on a specific signing profile."
+  name 'aws_signer_signing_profile'
+  desc 'Returns information on a specific signing profile.'
 
   example "
     describe aws_signer_signing_profile(profile_name: 'PROFILE_NAME') do
@@ -24,7 +24,7 @@ class AWSSignerSigningProfile < AwsResourceBase
   end
 
   def profile_name
-    return nil unless exists?
+    return unless exists?
     @res[:profile_name]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFSQLInjectionMatchSet < AwsResourceBase
-  name "aws_waf_sql_injection_match_set"
-  desc "Describes one WAF SQL Injection match set."
+  name 'aws_waf_sql_injection_match_set'
+  desc 'Describes one WAF SQL Injection match set.'
 
   example "
     describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do
@@ -24,7 +24,7 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   end
 
   def sql_injection_match_set_id
-    return nil unless exists?
+    return unless exists?
     @resp[:sql_injection_match_set_id]
   end
 

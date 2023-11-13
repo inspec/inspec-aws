@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESTemplate < AwsResourceBase
-  name "aws_ses_template"
-  desc "Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify."
+  name 'aws_ses_template'
+  desc 'Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.'
 
   example "
     describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
@@ -23,7 +23,7 @@ class AWSSESTemplate < AwsResourceBase
   end
 
   def template_name
-    return nil unless exists?
+    return unless exists?
     @res[:template_name]
   end
 

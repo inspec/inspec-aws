@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsIamPasswordPolicy < AwsResourceBase
-  name "aws_iam_password_policy"
-  desc "Verifies settings for an IAM Password Policy."
+  name 'aws_iam_password_policy'
+  desc 'Verifies settings for an IAM Password Policy.'
 
   example "
     describe aws_iam_password_policy do
@@ -24,19 +24,19 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def minimum_password_length
-    return nil if !exists?
+    return if !exists?
     @policy.minimum_password_length
   end
 
   def max_password_age_in_days
-    return nil if !exists?
-    raise "this policy does not expire passwords" unless expire_passwords?
+    return if !exists?
+    raise 'this policy does not expire passwords' unless expire_passwords?
     @policy.max_password_age
   end
 
   def number_of_passwords_to_remember
-    return nil if !exists?
-    raise "this policy does not prevent password reuse" \
+    return if !exists?
+    raise 'this policy does not prevent password reuse' \
       unless prevent_password_reuse?
     @policy.password_reuse_prevention
   end
@@ -99,6 +99,6 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def to_s
-    "AWS IAM Password Policy"
+    'AWS IAM Password Policy'
   end
 end

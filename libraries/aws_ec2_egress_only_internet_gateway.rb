@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
-  name "aws_ec2_egress_only_internet_gateway"
-  desc "Describes one egress-only internet gateways."
+  name 'aws_ec2_egress_only_internet_gateway'
+  desc 'Describes one egress-only internet gateways.'
 
   example "
     describe aws_ec2_egress_only_internet_gateway(egress_only_internet_gateway_id: 'EGRESS_ONLY_INTERNET_GATEWAY_ID') do
@@ -24,7 +24,7 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
   end
 
   def egress_only_internet_gateway_id
-    return nil unless exists?
+    return unless exists?
     @resp[:egress_only_internet_gateway_id]
   end
 

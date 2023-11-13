@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsCloudformationStacks < AwsResourceBase
-  name "aws_cloudformation_stacks"
-  desc "Verifies settings for aws CloudFormation Stacks."
+  name 'aws_cloudformation_stacks'
+  desc 'Verifies settings for aws CloudFormation Stacks.'
   example <<-EXAMPLE
     describe aws_cloudformation_stacks do
       it { should exist }
@@ -12,14 +12,14 @@ class AwsCloudformationStacks < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names, field: :name)
-    .register_column(:creation_times, field: :creation_time)
-    .register_column(:stack_ids, field: :stack_id)
-    .register_column(:notification_arns, field: :notification_arn)
-    .register_column(:role_arns, field: :role_arn)
-    .register_column(:parent_ids, field: :parent_id)
-    .register_column(:root_ids, field: :root_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names, field: :name)
+             .register_column(:creation_times, field: :creation_time)
+             .register_column(:stack_ids, field: :stack_id)
+             .register_column(:notification_arns, field: :notification_arn)
+             .register_column(:role_arns, field: :role_arn)
+             .register_column(:parent_ids, field: :parent_id)
+             .register_column(:root_ids, field: :root_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCloudwatchDashboard < AwsResourceBase
-  name "aws_cloudwatch_dashboard "
-  desc "Returns the configuration information and metadata of the specified cloudwatch dashboard."
+  name 'aws_cloudwatch_dashboard '
+  desc 'Returns the configuration information and metadata of the specified cloudwatch dashboard.'
   example <<-EXAMPLE
     describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
       it { should exist }
@@ -28,7 +28,7 @@ class AWSCloudwatchDashboard < AwsResourceBase
   end
 
   def dashboard_name
-    return nil unless exists?
+    return unless exists?
     @dashboard[:dashboard_name]
   end
 

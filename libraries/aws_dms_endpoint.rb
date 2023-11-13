@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSDMSEndpoint < AwsResourceBase
-  name "aws_dms_endpoint"
-  desc "Returns information about the endpoints for your account in the current region."
+  name 'aws_dms_endpoint'
+  desc 'Returns information about the endpoints for your account in the current region.'
   example <<-EXAMPLE
     describe aws_dms_endpoint(endpoint_arn: 'DMS_ENDPOINT_ARN') do
       it { should exist }
@@ -17,7 +17,7 @@ class AWSDMSEndpoint < AwsResourceBase
 
     raise ArgumentError, "#{@__resource_name__}: endpoint_arn must be provided" unless opts[:endpoint_arn] && !opts[:endpoint_arn].empty?
     @display_name = opts[:endpoint_arn]
-    filter = { name: "endpoint-arn", values: [opts[:endpoint_arn]] }
+    filter = { name: 'endpoint-arn', values: [opts[:endpoint_arn]] }
     catch_aws_errors do
       resp = @aws.dmsmigrationservice_client.describe_endpoints({ filters: [filter] })
       @endpoints = resp.endpoints[0].to_h
@@ -30,7 +30,7 @@ class AWSDMSEndpoint < AwsResourceBase
   end
 
   def endpoint_arn
-    return nil unless exists?
+    return unless exists?
     @endpoints[:endpoint_arn]
   end
 

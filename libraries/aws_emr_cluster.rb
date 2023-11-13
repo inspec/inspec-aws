@@ -1,9 +1,9 @@
-require "aws_backend"
-require "json"
+require 'aws_backend'
+require 'json'
 
 class AwsEmrCluster < AwsResourceBase
-  name "aws_emr_cluster"
-  desc "Verifies settings for an EMR cluster."
+  name 'aws_emr_cluster'
+  desc 'Verifies settings for an EMR cluster.'
 
   example "
     describe aws_emr_cluster('CLUSTER_ID') do
@@ -75,11 +75,11 @@ class AwsEmrCluster < AwsResourceBase
   end
 
   def running?
-    !@status_state.nil? && @status_state == "RUNNING"
+    !@status_state.nil? && @status_state == 'RUNNING'
   end
 
   def waiting?
-    !@status_state.nil? && @status_state == "WAITING"
+    !@status_state.nil? && @status_state == 'WAITING'
   end
 
   def resource_id

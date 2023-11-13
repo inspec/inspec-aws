@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
-  name "aws_elasticloadbalancingv2_listener_rules"
-  desc "Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules."
+  name 'aws_elasticloadbalancingv2_listener_rules'
+  desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
 
   example "
     describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'test1') do
@@ -12,12 +12,12 @@ class AWSElasticLoadBalancingV2ListenerRules < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:rule_arns,                               field: :rule_arn)
-    .register_column(:priorities,                              field: :priority)
-    .register_column(:conditions,                              field: :conditions)
-    .register_column(:actions,                                 field: :actions)
-    .register_column(:is_defaults,                             field: :is_default)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:rule_arns,                               field: :rule_arn)
+             .register_column(:priorities,                              field: :priority)
+             .register_column(:conditions,                              field: :conditions)
+             .register_column(:actions,                                 field: :actions)
+             .register_column(:is_defaults,                             field: :is_default)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

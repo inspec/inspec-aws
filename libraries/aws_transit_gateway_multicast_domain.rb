@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSTransitGatewayMulticastDomain < AwsResourceBase
-  name "aws_transit_gateway_multicast_domain"
-  desc "Describes one or more transit gateway multicast domains."
+  name 'aws_transit_gateway_multicast_domain'
+  desc 'Describes one or more transit gateway multicast domains.'
 
   example "
     describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'Domain ID') do
@@ -28,7 +28,7 @@ class AWSTransitGatewayMulticastDomain < AwsResourceBase
   end
 
   def transit_gateway_multicast_domain_id
-    return nil unless exists?
+    return unless exists?
     @transit_gateway_multicast_domains[:transit_gateway_multicast_domain_id]
   end
 

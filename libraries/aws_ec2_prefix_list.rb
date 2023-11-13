@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2PrefixList < AwsResourceBase
-  name "aws_ec2_prefix_list"
-  desc "Describes your managed prefix lists and any Amazon Web Services-managed prefix lists."
+  name 'aws_ec2_prefix_list'
+  desc 'Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.'
 
   example "
     describe aws_ec2_prefix_list(prefix_list_id: 'test1') do
@@ -24,7 +24,7 @@ class AWSEC2PrefixList < AwsResourceBase
   end
 
   def prefix_list_id
-    return nil unless exists?
+    return unless exists?
     @res[:prefix_list_id]
   end
 

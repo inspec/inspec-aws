@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsConfigurationRecorder < AwsResourceBase
-  name "aws_config_recorder"
-  desc "Verifies settings for AWS Configuration Recorder."
+  name 'aws_config_recorder'
+  desc 'Verifies settings for AWS Configuration Recorder.'
   example <<-EXAMPLE
     describe aws_config_recorder('CONFIG_RECORDER_NAME') do
       it { should exist }

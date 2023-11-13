@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFXSSMatchSet < AwsResourceBase
-  name "aws_waf_xss_match_set"
-  desc "Describes one WAF XSS match set."
+  name 'aws_waf_xss_match_set'
+  desc 'Describes one WAF XSS match set.'
 
   example "
     describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
@@ -24,7 +24,7 @@ class AWSWAFXSSMatchSet < AwsResourceBase
   end
 
   def xss_match_set_id
-    return nil unless exists?
+    return unless exists?
     @resp[:xss_match_set_id]
   end
 

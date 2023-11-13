@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2Api < AwsResourceBase
-  name "aws_api_gateway_v2_api"
-  desc "Gets information about the current ApiKey resource."
+  name 'aws_api_gateway_v2_api'
+  desc 'Gets information about the current ApiKey resource.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_api(api_id: 'REST_API_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ class AwsApiGatewayV2Api < AwsResourceBase
   end
 
   def api_id
-    return nil unless exists?
+    return unless exists?
     @res[:api_id]
   end
 

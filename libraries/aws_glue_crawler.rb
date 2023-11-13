@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSGlueCrawler < AwsResourceBase
-  name "aws_glue_crawler"
-  desc "Retrieves metadata for a crawler defined in the customer account."
+  name 'aws_glue_crawler'
+  desc 'Retrieves metadata for a crawler defined in the customer account.'
 
   example "
     describe aws_glue_crawler(name: 'crawler_name') do
@@ -24,7 +24,7 @@ class AWSGlueCrawler < AwsResourceBase
   end
 
   def name
-    return nil unless exists?
+    return unless exists?
     @res[:name]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSMQBrokers < AwsResourceBase
-  name "aws_mq_brokers"
-  desc "Describes a list of aws mq broker."
+  name 'aws_mq_brokers'
+  desc 'Describes a list of aws mq broker.'
 
   example "
     describe aws_mq_brokers do
@@ -13,16 +13,16 @@ class AWSMQBrokers < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:broker_arns,                    field: :broker_arn)
-    .register_column(:broker_ids,                     field: :broker_id)
-    .register_column(:broker_names,                   field: :broker_name)
-    .register_column(:broker_states,                  field: :broker_state)
-    .register_column(:created, field: :created)
-    .register_column(:deployment_modes,               field: :deployment_mode)
-    .register_column(:engine_types,                   field: :engine_type)
-    .register_column(:propagate_tags, field: :propagate_tags)
-    .register_column(:host_instance_types, field: :host_instance_type)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:broker_arns,                    field: :broker_arn)
+             .register_column(:broker_ids,                     field: :broker_id)
+             .register_column(:broker_names,                   field: :broker_name)
+             .register_column(:broker_states,                  field: :broker_state)
+             .register_column(:created, field: :created)
+             .register_column(:deployment_modes,               field: :deployment_mode)
+             .register_column(:engine_types,                   field: :engine_type)
+             .register_column(:propagate_tags, field: :propagate_tags)
+             .register_column(:host_instance_types, field: :host_instance_type)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSNSSubscriptions < AwsResourceBase
-  name "aws_sns_subscriptions"
-  desc "Verifies setting for a SNS Subscriptions."
+  name 'aws_sns_subscriptions'
+  desc 'Verifies setting for a SNS Subscriptions.'
 
   example "
     describe aws_sns_subscriptions do
@@ -13,12 +13,12 @@ class AWSSNSSubscriptions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:subscription_arns, field: :subscription_arn)
-    .register_column(:owners, field: :owner)
-    .register_column(:protocols, field: :protocol)
-    .register_column(:endpoints, field: :endpoint)
-    .register_column(:topic_arns, field: :topic_arn)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:subscription_arns, field: :subscription_arn)
+             .register_column(:owners, field: :owner)
+             .register_column(:protocols, field: :protocol)
+             .register_column(:endpoints, field: :endpoint)
+             .register_column(:topic_arns, field: :topic_arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

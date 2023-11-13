@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsCloudwatchCompositeAlarms < AwsResourceBase
-  name "aws_cloudwatch_composite_alarms"
-  desc "Lists all composite alarms."
+  name 'aws_cloudwatch_composite_alarms'
+  desc 'Lists all composite alarms.'
   example <<-EXAMPLE
     describe aws_cloudwatch_composite_alarms do
       it { should exist }
@@ -12,20 +12,20 @@ class AwsCloudwatchCompositeAlarms < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:actions_enabled, field: :actions_enabled)
-    .register_column(:alarm_actions, field: :alarm_actions)
-    .register_column(:alarm_arns, field: :alarm_arn)
-    .register_column(:alarm_configuration_updated_timestamp, field: :alarm_configuration_updated_timestamp)
-    .register_column(:alarm_descriptions, field: :alarm_description)
-    .register_column(:alarm_names, field: :alarm_name)
-    .register_column(:alarm_rules, field: :alarm_rule)
-    .register_column(:insufficient_data_actions, field: :insufficient_data_actions)
-    .register_column(:ok_actions, field: :ok_actions)
-    .register_column(:state_reasons, field: :state_reason)
-    .register_column(:state_reason_data, field: :state_reason_data)
-    .register_column(:state_updated_timestamp, field: :state_updated_timestamp)
-    .register_column(:state_values, field: :state_value)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:actions_enabled, field: :actions_enabled)
+             .register_column(:alarm_actions, field: :alarm_actions)
+             .register_column(:alarm_arns, field: :alarm_arn)
+             .register_column(:alarm_configuration_updated_timestamp, field: :alarm_configuration_updated_timestamp)
+             .register_column(:alarm_descriptions, field: :alarm_description)
+             .register_column(:alarm_names, field: :alarm_name)
+             .register_column(:alarm_rules, field: :alarm_rule)
+             .register_column(:insufficient_data_actions, field: :insufficient_data_actions)
+             .register_column(:ok_actions, field: :ok_actions)
+             .register_column(:state_reasons, field: :state_reason)
+             .register_column(:state_reason_data, field: :state_reason_data)
+             .register_column(:state_updated_timestamp, field: :state_updated_timestamp)
+             .register_column(:state_values, field: :state_value)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -35,7 +35,7 @@ class AwsCloudwatchCompositeAlarms < AwsResourceBase
 
   def fetch_data
     catch_aws_errors do
-      @table = @aws.cloudwatch_client.describe_alarms(alarm_types: ["CompositeAlarm"]).map do |table|
+      @table = @aws.cloudwatch_client.describe_alarms(alarm_types: ['CompositeAlarm']).map do |table|
         table.composite_alarms.map { |table_name| {
           actions_enabled: table_name.actions_enabled,
           alarm_actions: table_name.alarm_actions,

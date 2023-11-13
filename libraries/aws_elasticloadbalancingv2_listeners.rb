@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
-  name "aws_elasticloadbalancingv2_listeners"
-  desc "Lists the clients that have been created for the specified user pool."
+  name 'aws_elasticloadbalancingv2_listeners'
+  desc 'Lists the clients that have been created for the specified user pool.'
 
   example "
     describe aws_elasticloadbalancingv2_listeners(load_balancer_arn: 'test1') do
@@ -12,15 +12,15 @@ class AWSElasticLoadBalancingV2Listeners < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:listener_arns,                         field: :listener_arn)
-    .register_column(:load_balancer_arns,                    field: :load_balancer_arn)
-    .register_column(:ports,                                 field: :port)
-    .register_column(:protocols,                             field: :protocol)
-    .register_column(:certificates,                          field: :certificates)
-    .register_column(:ssl_policies,                          field: :ssl_policy)
-    .register_column(:default_actions,                       field: :default_actions)
-    .register_column(:alpn_policies,                         field: :alpn_policy)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:listener_arns,                         field: :listener_arn)
+             .register_column(:load_balancer_arns,                    field: :load_balancer_arn)
+             .register_column(:ports,                                 field: :port)
+             .register_column(:protocols,                             field: :protocol)
+             .register_column(:certificates,                          field: :certificates)
+             .register_column(:ssl_policies,                          field: :ssl_policy)
+             .register_column(:default_actions,                       field: :default_actions)
+             .register_column(:alpn_policies,                         field: :alpn_policy)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

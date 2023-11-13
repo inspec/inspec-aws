@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCloudFrontStreamingDistribution < AwsResourceBase
-  name "aws_cloudfront_streaming_distribution"
-  desc "Get the information about a distribution."
+  name 'aws_cloudfront_streaming_distribution'
+  desc 'Get the information about a distribution.'
   example <<-EXAMPLE
     describe aws_cloudfront_streaming_distribution(id: 'ID') do
       it { should exist }
@@ -28,7 +28,7 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
   end
 
   def id
-    return nil unless exists?
+    return unless exists?
     @res[:id]
   end
 

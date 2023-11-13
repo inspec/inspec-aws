@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVPCEndpointServices < AwsResourceBase
-  name "aws_vpc_endpoint_services"
-  desc "Verifies settings for a collection of AWS VPC End Point Services."
+  name 'aws_vpc_endpoint_services'
+  desc 'Verifies settings for a collection of AWS VPC End Point Services.'
 
   example "
     describe aws_vpc_endpoint_services do
@@ -13,19 +13,19 @@ class AwsVPCEndpointServices < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:service_names, field: :service_name)
-    .register_column(:service_ids, field: :service_id)
-    .register_column(:service_types, field: :service_type)
-    .register_column(:availability_zones, field: :availability_zones, style: :simple)
-    .register_column(:owners, field: :owner)
-    .register_column(:base_endpoint_dns_names, field: :base_endpoint_dns_names, style: :simple)
-    .register_column(:private_dns_names, field: :private_dns_name)
-    .register_column(:vpc_endpoint_policy_supported, field: :vpc_endpoint_policy_supported)
-    .register_column(:acceptance_required, field: :acceptance_required)
-    .register_column(:manages_vpc_endpoints, field: :manages_vpc_endpoints)
-    .register_column(:tags, field: :tags)
-    .register_column(:private_dns_name_verification_states, field: :private_dns_name_verification_state)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:service_names, field: :service_name)
+             .register_column(:service_ids, field: :service_id)
+             .register_column(:service_types, field: :service_type)
+             .register_column(:availability_zones, field: :availability_zones, style: :simple)
+             .register_column(:owners, field: :owner)
+             .register_column(:base_endpoint_dns_names, field: :base_endpoint_dns_names, style: :simple)
+             .register_column(:private_dns_names, field: :private_dns_name)
+             .register_column(:vpc_endpoint_policy_supported, field: :vpc_endpoint_policy_supported)
+             .register_column(:acceptance_required, field: :acceptance_required)
+             .register_column(:manages_vpc_endpoints, field: :manages_vpc_endpoints)
+             .register_column(:tags, field: :tags)
+             .register_column(:private_dns_name_verification_states, field: :private_dns_name_verification_state)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

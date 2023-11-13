@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayDocumentationPart < AwsResourceBase
-  name "aws_api_gateway_documentation_part"
-  desc "Retrieves API Gateway Documentation part."
+  name 'aws_api_gateway_documentation_part'
+  desc 'Retrieves API Gateway Documentation part.'
   example <<-EXAMPLE
     describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'DOCUMENTATION_PART_ID') do
       it { should exist }
@@ -27,7 +27,7 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
   end
 
   def documentation_part_id
-    return nil unless exists?
+    return unless exists?
     @res[:documentation_part_id]
   end
 

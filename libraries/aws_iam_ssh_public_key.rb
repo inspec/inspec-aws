@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMSSHPublicKey < AwsResourceBase
-  name "aws_iam_ssh_public_key"
-  desc "Retrieves the specified SSH public key, including metadata about the key."
+  name 'aws_iam_ssh_public_key'
+  desc 'Retrieves the specified SSH public key, including metadata about the key.'
 
   example "
     describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'SSH_PUBLIC_KEY_ID', encoding: 'SSH') do
@@ -35,12 +35,12 @@ class AWSIAMSSHPublicKey < AwsResourceBase
   end
 
   def ssh_public_key_id
-    return nil unless exists?
+    return unless exists?
     @res[:ssh_public_key_id]
   end
 
   def ssh_key_age_valid
-    return nil unless exists?
+    return unless exists?
     result = (Time.now - @res[:upload_date]).to_i / (24 * 60 * 60)
     return false if result > 730
     true

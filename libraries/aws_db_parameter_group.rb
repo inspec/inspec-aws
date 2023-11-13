@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsDbParameterGroup < AwsResourceBase
-  name "aws_db_parameter_group"
-  desc "Verifies settings for a Parameter Group."
+  name 'aws_db_parameter_group'
+  desc 'Verifies settings for a Parameter Group.'
   example <<-EXAMPLE
     describe aws_db_parameter_group(db_parameter_group_name: 'DB_PARAMETER_GROUP_NAME') do
       it { should exist }

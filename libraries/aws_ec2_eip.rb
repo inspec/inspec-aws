@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEc2Eip < AwsResourceBase
-  name "aws_ec2_eip"
-  desc "Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance."
+  name 'aws_ec2_eip'
+  desc 'Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon EC2 instance.'
 
   example "
     describe aws_ec2_eip(public_ip: '192.0.2.0') do
@@ -29,7 +29,7 @@ class AwsEc2Eip < AwsResourceBase
   end
 
   def public_ip
-    return nil unless exists?
+    return unless exists?
     @addresses[:public_ip]
   end
 

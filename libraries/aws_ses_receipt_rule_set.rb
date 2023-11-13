@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESReceiptRuleSet < AwsResourceBase
-  name "aws_ses_receipt_rule_set"
-  desc "Returns the details of the specified receipt rule set."
+  name 'aws_ses_receipt_rule_set'
+  desc 'Returns the details of the specified receipt rule set.'
 
   example "
     describe aws_ses_receipt_rule_set(rule_set_name: 'RULE_SET_NAME') do
@@ -23,7 +23,7 @@ class AWSSESReceiptRuleSet < AwsResourceBase
   end
 
   def rule_set_name
-    return nil unless exists?
+    return unless exists?
     @res[:rule_set_name]
   end
 

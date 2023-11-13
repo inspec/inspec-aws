@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkManagerGlobalNetwork < AwsResourceBase
-  name "aws_network_manager_global_network"
-  desc "Describes one or more global networks."
+  name 'aws_network_manager_global_network'
+  desc 'Describes one or more global networks.'
 
   example "
     describe aws_network_manager_global_network(global_network_id: 'test1') do
@@ -24,7 +24,7 @@ class AWSNetworkManagerGlobalNetwork < AwsResourceBase
   end
 
   def global_network_id
-    return nil unless exists?
+    return unless exists?
     @res[:global_network_id]
   end
 

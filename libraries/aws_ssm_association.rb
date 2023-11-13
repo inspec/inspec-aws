@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsSsmAssociation < AwsResourceBase
-  name "aws_ssm_association"
-  desc "Verifies settings for a SSM Association."
+  name 'aws_ssm_association'
+  desc 'Verifies settings for a SSM Association.'
 
   example "
     describe aws_ssm_association(association_id: 'association-id') do

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2PrefixLists < AwsResourceBase
-  name "aws_ec2_prefix_lists"
-  desc "List all the prefix list."
+  name 'aws_ec2_prefix_lists'
+  desc 'List all the prefix list.'
 
   example "
     describe aws_ec2_prefix_lists do
@@ -13,17 +13,17 @@ class AWSEC2PrefixLists < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:prefix_list_ids, field: :prefix_list_id)
-    .register_column(:address_families, field: :address_family)
-    .register_column(:states, field: :state)
-    .register_column(:state_messages, field: :state_message)
-    .register_column(:prefix_list_arns, field: :prefix_list_arn)
-    .register_column(:prefix_list_names, field: :prefix_list_name)
-    .register_column(:max_entries, field: :max_entries)
-    .register_column(:versions, field: :version)
-    .register_column(:tags, field: :tags)
-    .register_column(:owner_ids, field: :owner_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:prefix_list_ids, field: :prefix_list_id)
+             .register_column(:address_families, field: :address_family)
+             .register_column(:states, field: :state)
+             .register_column(:state_messages, field: :state_message)
+             .register_column(:prefix_list_arns, field: :prefix_list_arn)
+             .register_column(:prefix_list_names, field: :prefix_list_name)
+             .register_column(:max_entries, field: :max_entries)
+             .register_column(:versions, field: :version)
+             .register_column(:tags, field: :tags)
+             .register_column(:owner_ids, field: :owner_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

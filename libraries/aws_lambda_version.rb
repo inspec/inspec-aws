@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaVersion < AwsResourceBase
-  name "aws_lambda_version"
-  desc "Returns information about a version of an Lambda layer."
+  name 'aws_lambda_version'
+  desc 'Returns information about a version of an Lambda layer.'
 
   example "
     describe aws_lambda_version(layer_name: 'LAYER_NAME', version_number: 1) do
@@ -23,7 +23,7 @@ class AWSLambdaVersion < AwsResourceBase
   end
 
   def version_number
-    return nil unless exists?
+    return unless exists?
     @res[:version_number]
   end
 

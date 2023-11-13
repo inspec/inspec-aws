@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsRedshiftClusterParameterGroup < AwsResourceBase
-  name "aws_redshift_cluster_parameter_group"
-  desc "Describes a parameter group."
+  name 'aws_redshift_cluster_parameter_group'
+  desc 'Describes a parameter group.'
   example "
     describe aws_redshift_cluster_parameter_group(parameter_group_name: aws_parameter_group_name) do
       it { should exist }
@@ -24,7 +24,7 @@ class AwsRedshiftClusterParameterGroup < AwsResourceBase
   end
 
   def parameter_group_name
-    return nil unless exists?
+    return unless exists?
     @parameter_groups[:parameter_group_name]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkManagerCustomerGatewayAssociations < AwsResourceBase
-  name "aws_network_manager_customer_gateway_associations"
-  desc "Gets the association information for customer gateways that are associated with devices and links in your global network."
+  name 'aws_network_manager_customer_gateway_associations'
+  desc 'Gets the association information for customer gateways that are associated with devices and links in your global network.'
 
   example "
     describe aws_network_manager_customer_gateway_associations(global_network_id: 'GlobalNetworkID') do
@@ -13,13 +13,13 @@ class AWSNetworkManagerCustomerGatewayAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:customer_gateway_arns, field: :customer_gateway_arn)
-    .register_column(:global_network_ids, field: :global_network_id)
-    .register_column(:device_ids, field: :device_id)
-    .register_column(:link_ids, field: :link_id)
-    .register_column(:states, field: :state)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:customer_gateway_arns, field: :customer_gateway_arn)
+             .register_column(:global_network_ids, field: :global_network_id)
+             .register_column(:device_ids, field: :device_id)
+             .register_column(:link_ids, field: :link_id)
+             .register_column(:states, field: :state)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

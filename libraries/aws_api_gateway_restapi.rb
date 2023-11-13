@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayRestApi < AwsResourceBase
-  name "aws_api_gateway_restapi"
-  desc "Lists the RestApi resource in the collection."
+  name 'aws_api_gateway_restapi'
+  desc 'Lists the RestApi resource in the collection.'
   example <<-EXAMPLE
     describe aws_api_gateway_restapi(rest_api_id: 'REST_API_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSApiGatewayRestApi < AwsResourceBase
   end
 
   def rest_api_id
-    return nil unless exists?
+    return unless exists?
     @res[:rest_api_id]
   end
 

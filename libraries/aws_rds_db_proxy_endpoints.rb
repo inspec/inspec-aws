@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRDSProxyEndpoints < AwsResourceBase
-  name "aws_rds_db_proxy_endpoints"
-  desc "Returns information about DB proxy endpoints."
+  name 'aws_rds_db_proxy_endpoints'
+  desc 'Returns information about DB proxy endpoints.'
 
   example "
     describe aws_rds_db_proxy_endpoints(db_proxy_name: 'DB_PROXY_NAME') do
@@ -13,18 +13,18 @@ class AWSRDSProxyEndpoints < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:db_proxy_endpoint_names, field: :db_proxy_endpoint_name)
-    .register_column(:db_proxy_endpoint_arns, field: :db_proxy_endpoint_arn)
-    .register_column(:db_proxy_names, field: :db_proxy_name)
-    .register_column(:statuses, field: :status)
-    .register_column(:vpc_ids, field: :vpc_id)
-    .register_column(:vpc_security_group_ids, field: :vpc_security_group_ids)
-    .register_column(:vpc_subnet_ids, field: :vpc_subnet_ids)
-    .register_column(:endpoints, field: :endpoint)
-    .register_column(:created_dates, field: :created_date)
-    .register_column(:target_roles, field: :target_role)
-    .register_column(:is_default, field: :is_default)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:db_proxy_endpoint_names, field: :db_proxy_endpoint_name)
+             .register_column(:db_proxy_endpoint_arns, field: :db_proxy_endpoint_arn)
+             .register_column(:db_proxy_names, field: :db_proxy_name)
+             .register_column(:statuses, field: :status)
+             .register_column(:vpc_ids, field: :vpc_id)
+             .register_column(:vpc_security_group_ids, field: :vpc_security_group_ids)
+             .register_column(:vpc_subnet_ids, field: :vpc_subnet_ids)
+             .register_column(:endpoints, field: :endpoint)
+             .register_column(:created_dates, field: :created_date)
+             .register_column(:target_roles, field: :target_role)
+             .register_column(:is_default, field: :is_default)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

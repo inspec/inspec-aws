@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESMaintenanceWindowTasks < AwsResourceBase
-  name "aws_ssm_maintenance_window_tasks"
-  desc "Retrieves a task in the maintenance window."
+  name 'aws_ssm_maintenance_window_tasks'
+  desc 'Retrieves a task in the maintenance window.'
 
   example "
     describe aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID') do
@@ -13,21 +13,21 @@ class AWSSESMaintenanceWindowTasks < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:window_ids, field: :window_id)
-    .register_column(:window_task_ids, field: :window_task_id)
-    .register_column(:task_arns, field: :task_arn)
-    .register_column(:types, field: :type)
-    .register_column(:targets, field: :targets)
-    .register_column(:task_parameters, field: :task_parameters)
-    .register_column(:priorities, field: :priority)
-    .register_column(:logging_infos, field: :logging_info)
-    .register_column(:service_role_arns, field: :service_role_arn)
-    .register_column(:max_concurrencies, field: :max_concurrency)
-    .register_column(:max_errors, field: :max_errors)
-    .register_column(:names, field: :name)
-    .register_column(:descriptions, field: :description)
-    .register_column(:cutoff_behaviors, field: :cutoff_behavior)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:window_ids, field: :window_id)
+             .register_column(:window_task_ids, field: :window_task_id)
+             .register_column(:task_arns, field: :task_arn)
+             .register_column(:types, field: :type)
+             .register_column(:targets, field: :targets)
+             .register_column(:task_parameters, field: :task_parameters)
+             .register_column(:priorities, field: :priority)
+             .register_column(:logging_infos, field: :logging_info)
+             .register_column(:service_role_arns, field: :service_role_arn)
+             .register_column(:max_concurrencies, field: :max_concurrency)
+             .register_column(:max_errors, field: :max_errors)
+             .register_column(:names, field: :name)
+             .register_column(:descriptions, field: :description)
+             .register_column(:cutoff_behaviors, field: :cutoff_behavior)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

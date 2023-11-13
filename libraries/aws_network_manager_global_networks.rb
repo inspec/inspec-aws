@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkManagerGlobalNetworks < AwsResourceBase
-  name "aws_network_manager_global_networks"
-  desc "List all the global networks."
+  name 'aws_network_manager_global_networks'
+  desc 'List all the global networks.'
 
   example "
     describe aws_network_manager_global_networks do
@@ -13,13 +13,13 @@ class AWSNetworkManagerGlobalNetworks < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:global_network_ids, field: :global_network_id)
-    .register_column(:global_network_arns, field: :global_network_arn)
-    .register_column(:descriptions, field: :description)
-    .register_column(:created_at, field: :created_at)
-    .register_column(:states, field: :state)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:global_network_ids, field: :global_network_id)
+             .register_column(:global_network_arns, field: :global_network_arn)
+             .register_column(:descriptions, field: :description)
+             .register_column(:created_at, field: :created_at)
+             .register_column(:states, field: :state)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

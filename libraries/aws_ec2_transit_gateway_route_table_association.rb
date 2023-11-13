@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
-  name "aws_ec2_transit_gateway_route_table_association"
-  desc "Gets information about the associations for the specified transit gateway route table."
+  name 'aws_ec2_transit_gateway_route_table_association'
+  desc 'Gets information about the associations for the specified transit gateway route table.'
 
   example "
     describe aws_ec2_transit_gateway_route_table_association(transit_gateway_route_table_id: 'tgw-attach-0123456789') do
@@ -30,7 +30,7 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
   end
 
   def transit_gateway_route_table_id
-    return nil unless exists?
+    return unless exists?
     @association[:transit_gateway_route_table_id]
   end
 

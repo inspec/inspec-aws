@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsS3Bucket < AwsResourceBase
-  name "aws_s3_bucket"
-  desc "Verifies settings for a s3 bucket."
+  name 'aws_s3_bucket'
+  desc 'Verifies settings for a s3 bucket.'
   example "
     describe aws_s3_bucket(bucket_name: 'test_bucket') do
       it { should exist }
@@ -23,10 +23,10 @@ class AwsS3Bucket < AwsResourceBase
         @region = @aws.storage_client.get_bucket_location(bucket: @bucket_name).location_constraint
         # LocationConstraint "EU" correlates to the region "eu-west-1", but region "EU" does not exist as a "region", only a LocationConstraint
         # this currently is the only Location constraint that can have either of 2 values "EU" or "eu-west-1".  But only "eu-west-1" is a region
-        @region = "eu-west-1" if @region == "EU"
+        @region = 'eu-west-1' if @region == 'EU'
         # Forcing bucket region for future bucket calls to avoid warnings about multiple unnecessary
         # redirects and signing attempts.
-        opts[:aws_region] = @region.empty? ? "us-east-1" : @region
+        opts[:aws_region] = @region.empty? ? 'us-east-1' : @region
         super(opts)
       rescue Aws::S3::Errors::NoSuchBucket
         @region = nil
@@ -61,8 +61,8 @@ class AwsS3Bucket < AwsResourceBase
         @bucket_policy_status_public = false # preserves the original behaviour
       end
       @bucket_policy_status_public || \
-        bucket_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AllUsers/ } || \
-        bucket_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AuthenticatedUsers/ }
+        bucket_acl.any? { |g| g.grantee.type == 'Group' && g.grantee.uri =~ /AllUsers/ } || \
+        bucket_acl.any? { |g| g.grantee.type == 'Group' && g.grantee.uri =~ /AuthenticatedUsers/ }
     end
   end
 
@@ -97,12 +97,12 @@ class AwsS3Bucket < AwsResourceBase
   def has_versioning_enabled?
     return false unless exists?
     catch_aws_errors do
-      @has_versioning_enabled = @aws.storage_client.get_bucket_versioning(bucket: @bucket_name).status == "Enabled"
+      @has_versioning_enabled = @aws.storage_client.get_bucket_versioning(bucket: @bucket_name).status == 'Enabled'
     end
   end
 
   def has_secure_transport_enabled?
-    bucket_policy.any? { |s| s.effect == "Deny" && s.condition && s.condition["Bool"] && s.condition["Bool"]["aws:SecureTransport"] && s.condition["Bool"]["aws:SecureTransport"] == "false" }
+    bucket_policy.any? { |s| s.effect == 'Deny' && s.condition && s.condition['Bool'] && s.condition['Bool']['aws:SecureTransport'] && s.condition['Bool']['aws:SecureTransport'] == 'false' }
   end
 
   # below is to preserve the original 'unsupported' function but isn't used in the above
@@ -117,7 +117,7 @@ class AwsS3Bucket < AwsResourceBase
         # AWS SDK returns a StringIO, we have to read()
         raw_policy = @aws.storage_client.get_bucket_policy(bucket: @bucket_name).to_h
         return [] if !raw_policy.key?(:policy)
-        JSON.parse(raw_policy[:policy].read)["Statement"].map do |statement|
+        JSON.parse(raw_policy[:policy].read)['Statement'].map do |statement|
           lowercase_hash = {}
           statement.each_key { |k| lowercase_hash[k.downcase] = statement[k] }
           policy_list += [OpenStruct.new(lowercase_hash)]

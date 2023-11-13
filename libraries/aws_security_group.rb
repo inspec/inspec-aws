@@ -1,10 +1,10 @@
-require "set"
-require "ipaddr"
-require "aws_backend"
+require 'set'
+require 'ipaddr'
+require 'aws_backend'
 
 class AwsSecurityGroup < AwsResourceBase
-  name "aws_security_group"
-  desc "Verifies settings for an individual AWS Security Group."
+  name 'aws_security_group'
+  desc 'Verifies settings for an individual AWS Security Group.'
   example "
   describe aws_security_group('sg-12345678') do
     it { should exist }
@@ -24,14 +24,14 @@ class AwsSecurityGroup < AwsResourceBase
       filter = []
       if opts.key?(:vpc_id)
         raise ArgumentError, "#{@__resource_name__}: VPC ID must be in the format 'vpc-' followed by 8 or 17 hexadecimal characters." if opts[:vpc_id] !~ /^vpc\-[0-9a-f]{8}|(^vpc\-[0-9a-f]{17})$/
-        filter += [{ name: "vpc-id", values: [opts[:vpc_id]] }]
+        filter += [{ name: 'vpc-id', values: [opts[:vpc_id]] }]
       end
 
       if opts.key?(:group_id)
         raise ArgumentError, "#{@__resource_name__}: security group ID must be in the format 'sg-' followed by 8 or 17 hexadecimal characters." if opts[:group_id] !~ /^sg\-[0-9a-f]{8}|(^sg\-[0-9a-f]{17})$/
-        filter += [{ name: "group-id", values: [opts[:group_id]] }]
+        filter += [{ name: 'group-id', values: [opts[:group_id]] }]
       end
-      filter += [{ name: "group-name", values: [opts[:group_name]] }] if opts.key?(:group_name)
+      filter += [{ name: 'group-name', values: [opts[:group_name]] }] if opts.key?(:group_name)
     end
 
     if opts.key?(:resource_data)
@@ -47,7 +47,7 @@ class AwsSecurityGroup < AwsResourceBase
         if resp.security_groups.empty?
           @inbound_rules = []
           @outbound_rules = []
-          @group_id = "empty response"
+          @group_id = 'empty response'
           return
         end
         @security_group = resp.security_groups[0]
@@ -97,7 +97,7 @@ class AwsSecurityGroup < AwsResourceBase
   end
 
   def to_s
-    sg = ""
+    sg = ''
     sg += "ID: #{@group_id} " if @group_id
     sg += "Name: #{@group_name} " if @group_name
     sg += "VPC ID: #{@vpc_id} " if @vpc_id
@@ -159,7 +159,7 @@ class AwsSecurityGroup < AwsResourceBase
 
     # Any leftovers are unwelcome
     unless raw_criteria.empty?
-      raise ArgumentError, "Unrecognized security group rule 'allow' criteria '#{raw_criteria.keys.join(",")}'. Expected criteria: #{allowed_criteria.join(", ")}"
+      raise ArgumentError, "Unrecognized security group rule 'allow' criteria '#{raw_criteria.keys.join(',')}'. Expected criteria: #{allowed_criteria.join(', ')}"
     end
 
     recognized_criteria
@@ -223,7 +223,7 @@ class AwsSecurityGroup < AwsResourceBase
     return true unless criteria.key?(:protocol)
     prot = criteria[:protocol]
     # We provide a "fluency alias" for -1 (any).
-    prot = "-1" if prot == "any" or prot.casecmp?("all")
+    prot = '-1' if prot == 'any' or prot.casecmp?('all')
 
     rule[:ip_protocol] == prot
   end
@@ -231,11 +231,11 @@ class AwsSecurityGroup < AwsResourceBase
   def match_ipv4_or_6_range(rule, criteria)
     if criteria.key?(:ipv4_range)
       query = criteria[:ipv4_range]
-      query = [query] unless query.is_a?(Array)
+      query = Array(query)
       ranges = rule[:ip_ranges].map { |rng| rng[:cidr_ip] }
     else # IPv6
       query = criteria[:ipv6_range]
-      query = [query] unless query.is_a?(Array)
+      query = Array(query)
       ranges = rule[:ipv_6_ranges].map { |rng| rng[:cidr_ipv_6] }
     end
 

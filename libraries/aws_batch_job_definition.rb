@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSBatchJobDefinition < AwsResourceBase
-  name "aws_batch_job_definition"
-  desc "Describes a list of job definitions."
+  name 'aws_batch_job_definition'
+  desc 'Describes a list of job definitions.'
   example <<-EXAMPLE
     describe aws_batch_job_definition(job_definition_name: 'JOB_DEFINITION_NAME') do
       it { should exist }
@@ -22,7 +22,7 @@ class AWSBatchJobDefinition < AwsResourceBase
   end
 
   def job_definition_name
-    return nil unless exists?
+    return unless exists?
     @job_definitions[:job_definition_name]
   end
 

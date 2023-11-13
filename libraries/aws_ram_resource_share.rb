@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRAMResourceShare < AwsResourceBase
-  name "aws_ram_resource_share"
-  desc "Describes the resource shares of the ram."
+  name 'aws_ram_resource_share'
+  desc 'Describes the resource shares of the ram.'
 
   example "
     describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'resource_share_arn_test') do
@@ -25,7 +25,7 @@ class AWSRAMResourceShare < AwsResourceBase
   end
 
   def resource_share_arn
-    return nil unless exists?
+    return unless exists?
     @res[:resource_share_arn]
   end
 

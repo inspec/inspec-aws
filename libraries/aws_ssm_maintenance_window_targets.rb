@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESMaintenanceWindowTargets < AwsResourceBase
-  name "aws_ssm_maintenance_window_targets"
-  desc "Lists the targets registered with the maintenance window."
+  name 'aws_ssm_maintenance_window_targets'
+  desc 'Lists the targets registered with the maintenance window.'
 
   example "
     describe aws_ssm_maintenance_window_targets(window_id: 'WINDOW_ID') do
@@ -13,14 +13,14 @@ class AWSSESMaintenanceWindowTargets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:window_ids, field: :window_id)
-    .register_column(:window_target_ids, field: :window_target_id)
-    .register_column(:resource_types, field: :resource_type)
-    .register_column(:targets, field: :targets)
-    .register_column(:owner_informations, field: :owner_information)
-    .register_column(:names, field: :name)
-    .register_column(:descriptions, field: :description)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:window_ids, field: :window_id)
+             .register_column(:window_target_ids, field: :window_target_id)
+             .register_column(:resource_types, field: :resource_type)
+             .register_column(:targets, field: :targets)
+             .register_column(:owner_informations, field: :owner_information)
+             .register_column(:names, field: :name)
+             .register_column(:descriptions, field: :description)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

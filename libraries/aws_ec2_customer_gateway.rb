@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2CustomerGateway < AwsResourceBase
-  name "aws_ec2_customer_gateway"
-  desc "Describes one VPN customer gateways."
+  name 'aws_ec2_customer_gateway'
+  desc 'Describes one VPN customer gateways.'
   example <<-EXAMPLE
     describe aws_ec2_customer_gateway(customer_gateway_id: 'CUSTOMER_GATEWAY_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSEC2CustomerGateway < AwsResourceBase
   end
 
   def customer_gateway_id
-    return nil unless exists?
+    return unless exists?
     @resp[:customer_gateway_id]
   end
 

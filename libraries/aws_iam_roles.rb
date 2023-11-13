@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsIamRoles < AwsResourceBase
-  name "aws_iam_roles"
-  desc "Verifies settings for a collection AWS IAM Roles."
+  name 'aws_iam_roles'
+  desc 'Verifies settings for a collection AWS IAM Roles.'
   example "
     describe aws_iam_roles do
       it { should exist }
@@ -12,17 +12,17 @@ class AwsIamRoles < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:role_names,  field: :role_name)
-    .register_column(:role_ids,    field: :role_id)
-    .register_column(:paths,       field: :path)
-    .register_column(:arns,        field: :arn)
-    .register_column(:create_date, field: :create_date)
-    .register_column(:description, field: :description)
-    .register_column(:assume_role_policy_document, field: :assume_role_policy_document)
-    .register_column(:max_session_duration,        field: :max_session_duration)
-    .register_column(:permissions_boundary_type,   field: :permissions_boundary_type)
-    .register_column(:permissions_boundary_arn,    field: :permissions_boundary_arn)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:role_names,  field: :role_name)
+             .register_column(:role_ids,    field: :role_id)
+             .register_column(:paths,       field: :path)
+             .register_column(:arns,        field: :arn)
+             .register_column(:create_date, field: :create_date)
+             .register_column(:description, field: :description)
+             .register_column(:assume_role_policy_document, field: :assume_role_policy_document)
+             .register_column(:max_session_duration,        field: :max_session_duration)
+             .register_column(:permissions_boundary_type,   field: :permissions_boundary_type)
+             .register_column(:permissions_boundary_arn,    field: :permissions_boundary_arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

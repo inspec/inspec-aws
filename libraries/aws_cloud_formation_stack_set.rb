@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCloudFormationStackSet < AwsResourceBase
-  name "aws_cloud_formation_stack_set"
-  desc "Describes the specified stack set."
+  name 'aws_cloud_formation_stack_set'
+  desc 'Describes the specified stack set.'
   example <<-EXAMPLE
     describe aws_cloud_formation_stack_set(stack_set_name: 'STACK_SET_NAME') do
       it { should exist }
@@ -26,7 +26,7 @@ class AWSCloudFormationStackSet < AwsResourceBase
   end
 
   def stack_set_name
-    return nil unless exists?
+    return unless exists?
     @resp[:stack_set_name]
   end
 

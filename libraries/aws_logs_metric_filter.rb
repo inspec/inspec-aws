@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLogsMetricFilter < AwsResourceBase
-  name "aws_logs_metric_filter"
-  desc "Lists the specified metric filters."
+  name 'aws_logs_metric_filter'
+  desc 'Lists the specified metric filters.'
 
   example "
     describe aws_logs_metric_filter(filter_name: 'FilterName') do
@@ -30,7 +30,7 @@ class AWSLogsMetricFilter < AwsResourceBase
   end
 
   def filter_name
-    return nil unless exists?
+    return unless exists?
     @metric_filters[:filter_name_prefix]
   end
 

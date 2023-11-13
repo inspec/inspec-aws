@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsOrganizationsMember < AwsResourceBase
-  name "aws_organizations_member"
-  desc "Verifies status of the current AWWS Account within Organizations service."
+  name 'aws_organizations_member'
+  desc 'Verifies status of the current AWWS Account within Organizations service.'
   example "
     describe aws_organizations_member do
       it                       { should_not be_master }
@@ -15,11 +15,11 @@ class AwsOrganizationsMember < AwsResourceBase
   alias master? master
 
   def initialize(opts = {})
-    raise "Expected parameter opts to be a Hash." if !opts.nil? && !opts.is_a?(Hash)
+    raise 'Expected parameter opts to be a Hash.' if !opts.nil? && !opts.is_a?(Hash)
 
     # Operations on Organizations must target us-east-1, see
     # https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
-    opts[:aws_region] = "us-east-1"
+    opts[:aws_region] = 'us-east-1'
     super(opts)
     validate_parameters
 
@@ -58,7 +58,7 @@ class AwsOrganizationsMember < AwsResourceBase
   end
 
   def to_s
-    "Organizations Member Status"
+    'Organizations Member Status'
   end
 
   private
@@ -66,6 +66,6 @@ class AwsOrganizationsMember < AwsResourceBase
   # Fetch AWS Account Number
   def fetch_id
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 end

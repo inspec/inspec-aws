@@ -1,9 +1,9 @@
-require "aws_backend"
+require 'aws_backend'
 class AwsEc2DHCPOption < AwsResourceBase
   SERVER_TYPES = %w{domain-name-servers netbios-name-servers ntp-servers}.freeze
 
-  name "aws_ec2_dhcp_option"
-  desc "Verifies settings for an AWS EC2 DHCP Option."
+  name 'aws_ec2_dhcp_option'
+  desc 'Verifies settings for an AWS EC2 DHCP Option.'
 
   example "
     describe aws_ec2_dhcp_option('dotp-12345678') do
@@ -46,14 +46,14 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def netbios_node_type
-    netbios_node_type = config_for("netbios-node-type")
+    netbios_node_type = config_for('netbios-node-type')
     return NullResponse unless netbios_node_type
 
     netbios_node_type[:values].first[:value].to_i
   end
 
   def domain_name
-    domain_name = config_for("domain-name")
+    domain_name = config_for('domain-name')
     return NullResponse unless domain_name
 
     domain_name[:values].first[:value]
@@ -65,7 +65,7 @@ class AwsEc2DHCPOption < AwsResourceBase
 
   def define_server_types
     SERVER_TYPES.each do |server|
-      method_name = server.gsub("-", "_")
+      method_name = server.gsub('-', '_')
       define_singleton_method(method_name) do
         server_configuration = config_for(server)
         return [] unless server_configuration
@@ -96,7 +96,7 @@ class AwsEc2DHCPOption < AwsResourceBase
   end
 
   def build_filters_from(value)
-    { filters: [{ name: "tag:Name", values: [value] }] }
+    { filters: [{ name: 'tag:Name', values: [value] }] }
   end
 
   def validate_and_assign_from(opts)

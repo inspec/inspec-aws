@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMSSHPublicKeys < AwsResourceBase
-  name "aws_iam_ssh_public_keys"
-  desc "Returns information about the SSH public keys associated with the specified IAM user. If none exists, the operation returns an empty list."
+  name 'aws_iam_ssh_public_keys'
+  desc 'Returns information about the SSH public keys associated with the specified IAM user. If none exists, the operation returns an empty list.'
 
   example "
     describe aws_iam_ssh_public_keys(user_name: 'USER_NAME') do
@@ -16,11 +16,11 @@ class AWSIAMSSHPublicKeys < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:user_names, field: :user_name)
-    .register_column(:ssh_public_key_ids, field: :ssh_public_key_id)
-    .register_column(:statuses, field: :status)
-    .register_column(:upload_dates, field: :upload_date)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:user_names, field: :user_name)
+             .register_column(:ssh_public_key_ids, field: :ssh_public_key_id)
+             .register_column(:statuses, field: :status)
+             .register_column(:upload_dates, field: :upload_date)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

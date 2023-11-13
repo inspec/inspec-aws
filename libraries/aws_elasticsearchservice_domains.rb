@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticSearchServiceDomains < AwsResourceBase
-  name "aws_elasticsearchservice_domains"
-  desc "Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users."
+  name 'aws_elasticsearchservice_domains'
+  desc 'Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.'
 
   example "
     describe aws_elasticsearchservice_domains do
@@ -13,8 +13,8 @@ class AWSElasticSearchServiceDomains < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:domain_names,        field: :domain_name)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:domain_names,        field: :domain_name)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

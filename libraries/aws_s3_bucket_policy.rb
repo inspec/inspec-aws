@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSS3BucketPolicy < AwsResourceBase
-  name "aws_s3_bucket_policy"
-  desc "Retrieves the policy of a specified S3 Bucket."
+  name 'aws_s3_bucket_policy'
+  desc 'Retrieves the policy of a specified S3 Bucket.'
 
   example "
     describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do
@@ -17,7 +17,7 @@ class AWSS3BucketPolicy < AwsResourceBase
     @display_name = opts[:bucket]
     catch_aws_errors do
       resp = @aws.storage_client.get_bucket_policy({ bucket: opts[:bucket] })
-      @parsed_json = JSON.parse(resp.policy.read)["Statement"]
+      @parsed_json = JSON.parse(resp.policy.read)['Statement']
       create_resource_methods(@parsed_json[0])
     end
   end

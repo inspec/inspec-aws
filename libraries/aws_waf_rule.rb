@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFRule < AwsResourceBase
-  name "aws_waf_rule"
-  desc "Describes one WAF rule."
+  name 'aws_waf_rule'
+  desc 'Describes one WAF rule.'
 
   example "
     describe aws_waf_rule(rule_id: 'RULE_ID') do
@@ -24,7 +24,7 @@ class AWSWAFRule < AwsResourceBase
   end
 
   def rule_id
-    return nil unless exists?
+    return unless exists?
     @resp[:rule_id]
   end
 

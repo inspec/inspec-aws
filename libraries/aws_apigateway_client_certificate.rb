@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayClientCertificate < AwsResourceBase
-  name "aws_apigateway_client_certificate"
-  desc "Gets information about the current ClientCertificate resource."
+  name 'aws_apigateway_client_certificate'
+  desc 'Gets information about the current ClientCertificate resource.'
   example <<-EXAMPLE
     describe aws_apigateway_client_certificate(client_certificate_id: 'CLIENT_CERTIFICATE_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSApiGatewayClientCertificate < AwsResourceBase
   end
 
   def client_certificate_id
-    return nil unless exists?
+    return unless exists?
     @res[:client_certificate_id]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSDMSReplicationSubnetGroup < AwsResourceBase
-  name "aws_dms_replication_subnet_group"
-  desc "Returns information about the replication subnet groups."
+  name 'aws_dms_replication_subnet_group'
+  desc 'Returns information about the replication subnet groups.'
   example <<-EXAMPLE
     describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'REPLICATION_SUBNET_GROUP_IDENTIFIER') do
       it { should exits }
@@ -20,7 +20,7 @@ class AWSDMSReplicationSubnetGroup < AwsResourceBase
         {
           filters: [
             {
-              name: "replication-subnet-group-id",
+              name: 'replication-subnet-group-id',
               values: [opts[:replication_subnet_group_identifier]],
             },
           ],
@@ -36,7 +36,7 @@ class AWSDMSReplicationSubnetGroup < AwsResourceBase
   end
 
   def replication_subnet_group_identifier
-    return nil unless exists?
+    return unless exists?
     @replication_subnet_groups[:replication_subnet_group_identifier]
   end
 

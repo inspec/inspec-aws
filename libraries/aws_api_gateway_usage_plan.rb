@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayUsagePlan < AwsResourceBase
-  name "aws_api_gateway_usage_plan"
-  desc "Gets a usage plan of a given plan identifier."
+  name 'aws_api_gateway_usage_plan'
+  desc 'Gets a usage plan of a given plan identifier.'
   example <<-EXAMPLE
     describe aws_api_gateway_usage_plan(usage_plan_id: 'USAGE_PLAN_ID') do
       it { should exist }
@@ -31,7 +31,7 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
   end
 
   def usage_plan_id
-    return nil unless exists?
+    return unless exists?
     @res[:id]
   end
 

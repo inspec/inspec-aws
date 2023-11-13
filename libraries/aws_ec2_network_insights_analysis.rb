@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
-  name "aws_ec2_network_insights_analysis"
-  desc "Describes one or more of your network insights analyses."
+  name 'aws_ec2_network_insights_analysis'
+  desc 'Describes one or more of your network insights analyses.'
 
   example "
     describe aws_ec2_network_insights_analysis(network_insights_analysis_id: 'NetworkInsightsAnalysisId') do
@@ -24,7 +24,7 @@ class AWSEC2NetworkInsightsAnalysis < AwsResourceBase
   end
 
   def network_insights_analysis_id
-    return nil unless exists?
+    return unless exists?
     @res[:network_insights_analysis_id]
   end
 

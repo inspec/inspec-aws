@@ -1,10 +1,10 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsNetworkACL < AwsResourceBase
-  EGRESS = "egress".freeze
-  INGRESS = "ingress".freeze
-  name "aws_network_acl"
-  desc "Verifies settings for a single AWS Network ACL"
+  EGRESS = 'egress'.freeze
+  INGRESS = 'ingress'.freeze
+  name 'aws_network_acl'
+  desc 'Verifies settings for a single AWS Network ACL'
   example "
    describe aws_network_acl(network_acl_id: '014aef8a0689b8f43') do
      it { should exist }
@@ -54,7 +54,7 @@ class AwsNetworkACL < AwsResourceBase
 
   def has_acl_entry_value?(cidr_block:, egress:, rule_action:)
     invalid_args = method(__method__).parameters.select { |param| param.nil? || param.empty? }
-    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(",")} cannot be blank" if cidr_block.nil? || cidr_block.empty?
+    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(',')} cannot be blank" if cidr_block.nil? || cidr_block.empty?
     return false unless acl_entries
 
     acl_entries.any? { |entry| entry.egress == egress && entry.cidr_block == cidr_block && entry.rule_action == rule_action }
@@ -83,7 +83,7 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def resource_id
-    @response ? @response.network_acls.first.network_acl_id : ""
+    @response ? @response.network_acls.first.network_acl_id : ''
   end
 
   def to_s
@@ -141,8 +141,8 @@ class AwsNetworkACL < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, "parameter `network_acl_id` cannot be blank" if @opts[:network_acl_id].nil? || @opts[:network_acl_id].empty?
-    raise ArgumentError, "parameter `network_acl_id` should start with `acl-` followed by alpha numeric characters" if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
+    raise ArgumentError, 'parameter `network_acl_id` cannot be blank' if @opts[:network_acl_id].nil? || @opts[:network_acl_id].empty?
+    raise ArgumentError, 'parameter `network_acl_id` should start with `acl-` followed by alpha numeric characters' if @opts[:network_acl_id] !~ /^acl-[a-z0-9]+$/
   end
 
   def cidr_block_and_rule_action_exists_for?(collection, cidr_block, rule_action)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsLaunchConfiguration < AwsResourceBase
-  name "aws_launch_configuration"
-  desc "Verifies settings for an AWS Launch Configuration."
+  name 'aws_launch_configuration'
+  desc 'Verifies settings for an AWS Launch Configuration.'
 
   example "
     describe aws_launch_configuration('config-name') do
@@ -20,7 +20,7 @@ class AwsLaunchConfiguration < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.service_client.describe_launch_configurations(launch_configuration_names: [opts[:launch_configuration_name]])
-      return nil if resp.launch_configurations.nil? || resp.launch_configurations.empty?
+      return if resp.launch_configurations.nil? || resp.launch_configurations.empty?
       configuration = resp.launch_configurations[0]
       @name                        = configuration[:launch_configuration_name]
       @arn                         = configuration[:launch_configuration_arn]
@@ -32,7 +32,7 @@ class AwsLaunchConfiguration < AwsResourceBase
       @associate_public_ip_address = configuration[:associate_public_ip_address].nil? ? false : true
       @ebs_optimized               = configuration[:ebs_optimized]
       @spot_price                  = configuration[:spot_price].to_f
-      @instance_monitoring         = configuration[:instance_monitoring][:enabled] ? "detailed": "basic"
+      @instance_monitoring         = configuration[:instance_monitoring][:enabled] ? 'detailed': 'basic'
       @user_data                   = configuration[:user_data] ? Base64.decode64(configuration[:user_data]) : nil
     end
   end

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayRequestValidators < AwsCollectionResourceBase
-  name "aws_api_gateway_request_validators"
-  desc "Gets the Request Validators collection of a given RestAPI."
+  name 'aws_api_gateway_request_validators'
+  desc 'Gets the Request Validators collection of a given RestAPI.'
   example <<-EXAMPLE
     describe aws_api_gateway_request_validators(rest_api_id: 'REST_API_ID') do
       it { should exist }

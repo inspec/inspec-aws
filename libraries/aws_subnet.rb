@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsSubnet < AwsResourceBase
-  name "aws_subnet"
-  desc "Verifies settings for an AWS VPC Subnet."
+  name 'aws_subnet'
+  desc 'Verifies settings for an AWS VPC Subnet.'
 
   example "
     describe aws_subnet(subnet_id: 'subnet-12345678') do
@@ -21,7 +21,7 @@ class AwsSubnet < AwsResourceBase
     end
 
     @display_name = opts[:subnet_id]
-    filter = { name: "subnet-id", values: [opts[:subnet_id]] }
+    filter = { name: 'subnet-id', values: [opts[:subnet_id]] }
     catch_aws_errors do
       resp    = @aws.compute_client.describe_subnets({ filters: [filter] })
       @subnet = resp.subnets[0].to_h
@@ -30,7 +30,7 @@ class AwsSubnet < AwsResourceBase
   end
 
   def available?
-    @subnet[:state]=="available"
+    @subnet[:state]=='available'
   end
 
   def exists?

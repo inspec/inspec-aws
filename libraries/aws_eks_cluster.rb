@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEksCluster < AwsResourceBase
-  name "aws_eks_cluster"
-  desc "Verifies settings for an EKS cluster."
+  name 'aws_eks_cluster'
+  desc 'Verifies settings for an EKS cluster.'
 
   example "
     describe aws_eks_cluster('cluster-name') do
@@ -29,10 +29,10 @@ class AwsEksCluster < AwsResourceBase
     @security_group_ids    = @resp[:resources_vpc_config][:security_group_ids]
     @security_groups_count = @resp[:resources_vpc_config][:security_group_ids].length
     @vpc_id                = @resp[:resources_vpc_config][:vpc_id]
-    @active                = @resp[:status] == "ACTIVE"
-    @failed                = @resp[:status] == "FAILED"
-    @creating              = @resp[:status] == "CREATING"
-    @deleting              = @resp[:status] == "DELETING"
+    @active                = @resp[:status] == 'ACTIVE'
+    @failed                = @resp[:status] == 'FAILED'
+    @creating              = @resp[:status] == 'CREATING'
+    @deleting              = @resp[:status] == 'DELETING'
 
     @enabled_logging_types = @resp.dig(:logging, :cluster_logging)&.select { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
     @disabled_logging_types= @resp.dig(:logging, :cluster_logging)&.reject { |log| log[:enabled] }&.map { |type| type[:types] }&.flatten
@@ -44,7 +44,7 @@ class AwsEksCluster < AwsResourceBase
   end
 
   def exists?
-    arn.start_with?("arn:")
+    arn.start_with?('arn:')
   end
 
   def to_s

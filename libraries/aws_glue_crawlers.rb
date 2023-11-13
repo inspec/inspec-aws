@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSGlueCrawlers < AwsResourceBase
-  name "aws_glue_crawlers"
-  desc "Retrieves metadata for all crawlers defined in the customer account."
+  name 'aws_glue_crawlers'
+  desc 'Retrieves metadata for all crawlers defined in the customer account.'
 
   example "
     describe aws_glue_crawlers do
@@ -13,25 +13,25 @@ class AWSGlueCrawlers < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names,                                       field: :name)
-    .register_column(:roles,                                       field: :role)
-    .register_column(:targets,                                     field: :targets)
-    .register_column(:database_names,                              field: :database_name)
-    .register_column(:descriptions,                                field: :description)
-    .register_column(:classifiers,                                 field: :classifiers)
-    .register_column(:recrawl_policies,                            field: :recrawl_policy)
-    .register_column(:schema_change_policies,                      field: :schema_change_policy)
-    .register_column(:states,                                      field: :state)
-    .register_column(:table_prefixes,                              field: :table_prefix)
-    .register_column(:schedules,                                   field: :schedule)
-    .register_column(:crawl_elapsed_times,                         field: :crawl_elapsed_time)
-    .register_column(:creation_times,                              field: :creation_time)
-    .register_column(:last_updated,                                field: :last_updated)
-    .register_column(:last_crawls,                                 field: :last_crawl)
-    .register_column(:versions,                                    field: :version)
-    .register_column(:configurations,                              field: :configuration)
-    .register_column(:crawler_security_configuration,              field: :crawler_security_configuration)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names,                                       field: :name)
+             .register_column(:roles,                                       field: :role)
+             .register_column(:targets,                                     field: :targets)
+             .register_column(:database_names,                              field: :database_name)
+             .register_column(:descriptions,                                field: :description)
+             .register_column(:classifiers,                                 field: :classifiers)
+             .register_column(:recrawl_policies,                            field: :recrawl_policy)
+             .register_column(:schema_change_policies,                      field: :schema_change_policy)
+             .register_column(:states,                                      field: :state)
+             .register_column(:table_prefixes,                              field: :table_prefix)
+             .register_column(:schedules,                                   field: :schedule)
+             .register_column(:crawl_elapsed_times,                         field: :crawl_elapsed_time)
+             .register_column(:creation_times,                              field: :creation_time)
+             .register_column(:last_updated,                                field: :last_updated)
+             .register_column(:last_crawls,                                 field: :last_crawl)
+             .register_column(:versions,                                    field: :version)
+             .register_column(:configurations,                              field: :configuration)
+             .register_column(:crawler_security_configuration,              field: :crawler_security_configuration)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

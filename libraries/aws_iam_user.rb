@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsIamUser < AwsResourceBase
-  name "aws_iam_user"
-  desc "Verifies settings for an AWS IAM User."
+  name 'aws_iam_user'
+  desc 'Verifies settings for an AWS IAM User.'
   example "
     describe aws_iam_user(user_name: 'TEST_USER_NAME') do
       it { should exist }

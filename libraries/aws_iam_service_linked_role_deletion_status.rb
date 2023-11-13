@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
-  name "aws_iam_service_linked_role_deletion_status"
-  desc "Retrieves the status of your service-linked role deletion."
+  name 'aws_iam_service_linked_role_deletion_status'
+  desc 'Retrieves the status of your service-linked role deletion.'
 
   example "
     describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'test1') do
@@ -24,12 +24,12 @@ class AWSIAMServiceLinkedRoleDeletionStatus < AwsResourceBase
   end
 
   def status
-    return nil unless exists?
+    return unless exists?
     @res[:status]
   end
 
   def resource_id
-    @res? @display_name: ""
+    @res? @display_name: ''
   end
 
   def exists?

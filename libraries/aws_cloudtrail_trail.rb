@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsCloudTrailTrail < AwsResourceBase
-  name "aws_cloudtrail_trail"
-  desc "Verifies settings for an individual AWS CloudTrail Trail."
+  name 'aws_cloudtrail_trail'
+  desc 'Verifies settings for an individual AWS CloudTrail Trail.'
   example <<-EXAMPLE
     describe aws_cloudtrail_trail('TRIAL_NAME') do
       it { should exist }
@@ -45,7 +45,7 @@ class AwsCloudTrailTrail < AwsResourceBase
   end
 
   def delivered_logs_days_ago
-    return nil unless exists?
+    return unless exists?
     catch_aws_errors do
       begin
         trail_status = @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h
@@ -71,19 +71,19 @@ class AwsCloudTrailTrail < AwsResourceBase
   end
 
   def get_log_group_for_multi_region_active_mgmt_rw_all
-    return nil unless exists?
-    return nil unless @cloud_watch_logs_log_group_arn
-    return nil if @cloud_watch_logs_log_group_arn.split(":").count < 6
-    return @cloud_watch_logs_log_group_arn.split(":")[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
+    return unless exists?
+    return unless @cloud_watch_logs_log_group_arn
+    return if @cloud_watch_logs_log_group_arn.split(':').count < 6
+    return @cloud_watch_logs_log_group_arn.split(':')[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
   end
 
   def has_event_selector_mgmt_events_rw_type_all?
-    return nil unless exists?
+    return unless exists?
     event_selector_found = false
     begin
       event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
       event_selectors.event_selectors.each do |es|
-        event_selector_found = true if es.read_write_type == "All" && es.include_management_events == true
+        event_selector_found = true if es.read_write_type == 'All' && es.include_management_events == true
       end
     rescue Aws::CloudTrail::Errors::TrailNotFoundException
       event_selector_found

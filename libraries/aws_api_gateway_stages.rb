@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayStages < AwsResourceBase
-  name "aws_api_gateway_stages"
-  desc "Gets information about a Stages collection."
+  name 'aws_api_gateway_stages'
+  desc 'Gets information about a Stages collection.'
   example <<-EXAMPLE
     describe aws_api_gateway_stages(rest_api_id: 'REST_API_ID') do
       it { should exist }
@@ -12,11 +12,11 @@ class AWSApiGatewayStages < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:stage_names,                     field: :stage_name)
-    .register_column(:deployment_ids,                  field: :deployment_id)
-    .register_column(:created_dates,                   field: :created_date)
-    .register_column(:descriptions,                    field: :description)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:stage_names,                     field: :stage_name)
+             .register_column(:deployment_ids,                  field: :deployment_id)
+             .register_column(:created_dates,                   field: :created_date)
+             .register_column(:descriptions,                    field: :description)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

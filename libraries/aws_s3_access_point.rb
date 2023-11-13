@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSS3AccessPoint < AwsResourceBase
-  name "aws_s3_access_point"
-  desc "Describes one S3 Access Points."
+  name 'aws_s3_access_point'
+  desc 'Describes one S3 Access Points.'
 
   example "
     describe aws_s3_access_point(bucket_name: 'BucketName', metrics_id: 'MetricsId') do
@@ -26,7 +26,7 @@ class AWSS3AccessPoint < AwsResourceBase
   end
 
   def metrics_id
-    return nil unless exists?
+    return unless exists?
     @resp[:id]
   end
 

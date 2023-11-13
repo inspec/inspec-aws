@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESResourceDataSyncs < AwsResourceBase
-  name "aws_ssm_resource_data_syncs"
-  desc "Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed."
+  name 'aws_ssm_resource_data_syncs'
+  desc 'Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.'
 
   example "
     describe aws_ssm_resource_data_syncs do
@@ -13,17 +13,17 @@ class AWSSESResourceDataSyncs < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:sync_names, field: :sync_name)
-    .register_column(:sync_types, field: :sync_type)
-    .register_column(:sync_sources, field: :sync_source)
-    .register_column(:s3_destinations, field: :s3_destination)
-    .register_column(:last_sync_times, field: :last_sync_time)
-    .register_column(:last_successful_sync_times, field: :last_successful_sync_time)
-    .register_column(:sync_last_modified_times, field: :sync_last_modified_time)
-    .register_column(:last_statuses, field: :last_status)
-    .register_column(:sync_created_times, field: :sync_created_time)
-    .register_column(:last_sync_status_messages, field: :last_sync_status_message)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:sync_names, field: :sync_name)
+             .register_column(:sync_types, field: :sync_type)
+             .register_column(:sync_sources, field: :sync_source)
+             .register_column(:s3_destinations, field: :s3_destination)
+             .register_column(:last_sync_times, field: :last_sync_time)
+             .register_column(:last_successful_sync_times, field: :last_successful_sync_time)
+             .register_column(:sync_last_modified_times, field: :sync_last_modified_time)
+             .register_column(:last_statuses, field: :last_status)
+             .register_column(:sync_created_times, field: :sync_created_time)
+             .register_column(:last_sync_status_messages, field: :last_sync_status_message)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

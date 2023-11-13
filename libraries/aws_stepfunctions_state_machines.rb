@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSStepFunctionsStateMachines < AwsResourceBase
-  name "aws_stepfunctions_state_machines"
-  desc "Lists the existing state machines."
+  name 'aws_stepfunctions_state_machines'
+  desc 'Lists the existing state machines.'
 
   example "
     describe aws_stepfnctions_state_machines do
@@ -13,11 +13,11 @@ class AWSStepFunctionsStateMachines < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:state_machine_arns,                      field: :state_machine_arn)
-    .register_column(:names,                                   field: :name)
-    .register_column(:types,                                   field: :type)
-    .register_column(:creation_dates,                          field: :creation_date)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:state_machine_arns,                      field: :state_machine_arn)
+             .register_column(:names,                                   field: :name)
+             .register_column(:types,                                   field: :type)
+             .register_column(:creation_dates,                          field: :creation_date)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

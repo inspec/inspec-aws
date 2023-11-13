@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
-  name "aws_cloudwatchlogs_subscription_filter"
-  desc "Describes single subscription filter."
+  name 'aws_cloudwatchlogs_subscription_filter'
+  desc 'Describes single subscription filter.'
   example <<-EXAMPLE
     describe aws_cloudwatchlogs_subscription_filter(log_group_name: 'LOG_GROUP_NAME', filter_name_prefix: 'FILTER_NAME') do
       it { should exist }
@@ -31,7 +31,7 @@ class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
   end
 
   def filter_name_prefix
-    return nil unless exists?
+    return unless exists?
     @filter[:filter_name_prefix]
   end
 

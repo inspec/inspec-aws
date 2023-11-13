@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2DomainName < AwsResourceBase
-  name "aws_api_gateway_v2_domain_name"
-  desc "Gets a domain name."
+  name 'aws_api_gateway_v2_domain_name'
+  desc 'Gets a domain name.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_domain_name(domain_name: 'DOMAIN_NAME') do
       it { should exist }
@@ -23,7 +23,7 @@ class AwsApiGatewayV2DomainName < AwsResourceBase
   end
 
   def domain_name
-    return nil unless exists?
+    return unless exists?
     @res[:domain_name]
   end
 

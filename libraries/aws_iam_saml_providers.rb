@@ -1,21 +1,21 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsIamSamlProviders < AwsResourceBase
-  name "aws_iam_saml_providers"
-  desc "Verifies settings for a collection of SAML Providers."
+  name 'aws_iam_saml_providers'
+  desc 'Verifies settings for a collection of SAML Providers.'
   example "
     describe aws_iam_saml_providers do
       it { should exist }
     end
   "
-  supports platform: "aws"
+  supports platform: 'aws'
 
   attr_reader :table
 
   FilterTable.create
-    .register_column(:provider_arns, field: :arn)
-    .register_column(:valid_untils, field: :valid_until)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:provider_arns, field: :arn)
+             .register_column(:valid_untils, field: :valid_until)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -40,6 +40,6 @@ class AwsIamSamlProviders < AwsResourceBase
   end
 
   def to_s
-    "AWS IAM SAML Providers"
+    'AWS IAM SAML Providers'
   end
 end

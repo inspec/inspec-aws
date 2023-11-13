@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
-  name "aws_ec2_vpn_gateway_route_propagations"
-  desc "List the properties."
+  name 'aws_ec2_vpn_gateway_route_propagations'
+  desc 'List the properties.'
 
   example "
     describe aws_ec2_vpn_gateway_route_propagations do
@@ -16,9 +16,9 @@ class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:route_table_ids,                           field: :route_table_id)
-    .register_column(:propagating_vgws_gateway_ids,              field: :propagating_vgws_gateway_ids, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:route_table_ids,                           field: :route_table_id)
+             .register_column(:propagating_vgws_gateway_ids,              field: :propagating_vgws_gateway_ids, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)
@@ -55,7 +55,7 @@ class AWSEc2VPNGatewayRoutePropagations < AwsResourceBase
     propagating_vgws = route_table.propagating_vgws
     {
       route_table_id: route_table.route_table_id,
-      propagating_vgws_gateway_ids: map(propagating_vgws, "gateway_id"),
+      propagating_vgws_gateway_ids: map(propagating_vgws, 'gateway_id'),
     }
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEc2TransitGatewayAttachment < AwsResourceBase
-  name "aws_ec2_transit_gateway_attachment"
-  desc "Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner."
+  name 'aws_ec2_transit_gateway_attachment'
+  desc 'Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.'
 
   example "
     describe aws_ec2_transit_gateway_attachment(transit_gateway_attachment_id: 'tgw-attach-0123456789') do
@@ -28,7 +28,7 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
   end
 
   def transit_gateway_attachment_id
-    return nil unless exists?
+    return unless exists?
     @transit_gateway_attachments[:transit_gateway_attachment_id]
   end
 

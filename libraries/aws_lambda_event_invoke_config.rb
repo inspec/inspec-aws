@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaEventInvokeConfig < AwsResourceBase
-  name "aws_lambda_event_invoke_config"
-  desc "Retrieves the configuration for asynchronous invocation for a function, version, or alias."
+  name 'aws_lambda_event_invoke_config'
+  desc 'Retrieves the configuration for asynchronous invocation for a function, version, or alias.'
 
   example "
     describe aws_lambda_event_invoke_config(function_name: 'FUNCTION_NAME') do
@@ -24,7 +24,7 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   end
 
   def function_name
-    return nil unless exists?
+    return unless exists?
     @res[:function_name]
   end
 

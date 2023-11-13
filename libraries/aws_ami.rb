@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsAmi < AwsResourceBase
-  name "aws_ami"
-  desc "Verifies settings for an AWS AMI."
+  name 'aws_ami'
+  desc 'Verifies settings for an AWS AMI.'
   example <<-EXAMPLE
     describe aws_ami(image_id: 'ami-12345678') do
       it { should exist }

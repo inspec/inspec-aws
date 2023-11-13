@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
-  name "aws_route53resolver_resolver_rule_association"
-  desc "Gets information about an association between a specified Resolver rule and a VPC."
+  name 'aws_route53resolver_resolver_rule_association'
+  desc 'Gets information about an association between a specified Resolver rule and a VPC.'
 
   example "
     describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'ResourceId') do
@@ -24,7 +24,7 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   end
 
   def resolver_rule_association_id
-    return nil unless exists?
+    return unless exists?
     @res[:id]
   end
 

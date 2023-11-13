@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEventBridgeRules < AwsResourceBase
-  name "aws_eventbridge_rules"
-  desc "Lists your Amazon EventBridge rules."
+  name 'aws_eventbridge_rules'
+  desc 'Lists your Amazon EventBridge rules.'
 
   example "
     describe aws_eventbridge_rules do
@@ -13,16 +13,16 @@ class AWSEventBridgeRules < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names,                           field: :name)
-    .register_column(:arns,                            field: :arn)
-    .register_column(:event_patterns,                  field: :event_pattern)
-    .register_column(:states,                          field: :state)
-    .register_column(:descriptions,                    field: :description)
-    .register_column(:schedule_expressions,            field: :schedule_expression)
-    .register_column(:role_arns,                       field: :role_arn)
-    .register_column(:managed_bys,                     field: :managed_by)
-    .register_column(:event_bus_names,                 field: :event_bus_name)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names,                           field: :name)
+             .register_column(:arns,                            field: :arn)
+             .register_column(:event_patterns,                  field: :event_pattern)
+             .register_column(:states,                          field: :state)
+             .register_column(:descriptions,                    field: :description)
+             .register_column(:schedule_expressions,            field: :schedule_expression)
+             .register_column(:role_arns,                       field: :role_arn)
+             .register_column(:managed_bys,                     field: :managed_by)
+             .register_column(:event_bus_names,                 field: :event_bus_name)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

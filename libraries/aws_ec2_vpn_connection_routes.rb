@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2VPNConnectionRoutes < AwsResourceBase
-  name "aws_ec2_vpn_connection_routes"
-  desc "Describes one or more of your VPN connections route."
+  name 'aws_ec2_vpn_connection_routes'
+  desc 'Describes one or more of your VPN connections route.'
 
   example "
     describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPNConnectionID') do
@@ -13,10 +13,10 @@ class AWSEC2VPNConnectionRoutes < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:destination_cidr_blocks, field: :destination_cidr_block)
-    .register_column(:sources, field: :source)
-    .register_column(:states, field: :state)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:destination_cidr_blocks, field: :destination_cidr_block)
+             .register_column(:sources, field: :source)
+             .register_column(:states, field: :state)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

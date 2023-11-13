@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFXSSMatchSets < AwsResourceBase
-  name "aws_waf_xss_match_sets"
-  desc "Verifies settings for all the WAF XSS Match Set."
+  name 'aws_waf_xss_match_sets'
+  desc 'Verifies settings for all the WAF XSS Match Set.'
 
   example "
     describe aws_waf_xss_match_sets do
@@ -19,9 +19,9 @@ class AWSWAFXSSMatchSets < AwsResourceBase
   end
 
   FilterTable.create
-    .register_column(:xss_match_set_ids, field: :xss_match_set_id, style: :simple)
-    .register_column(:names, field: :name, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:xss_match_set_ids, field: :xss_match_set_id, style: :simple)
+             .register_column(:names, field: :name, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

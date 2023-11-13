@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRoute53ResolverResolverRule < AwsResourceBase
-  name "aws_route53resolver_resolver_rule"
-  desc "Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with."
+  name 'aws_route53resolver_resolver_rule'
+  desc 'Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with.'
 
   example "
     describe aws_route53resolver_resolver_rule(resolver_rule_id: 'resolver_rule_id_test') do
@@ -24,7 +24,7 @@ class AWSRoute53ResolverResolverRule < AwsResourceBase
   end
 
   def resolver_rule_id
-    return nil unless exists?
+    return unless exists?
     @res[:id]
   end
 

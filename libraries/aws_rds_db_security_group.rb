@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRDSDBSecurityGroup < AwsResourceBase
-  name "aws_rds_db_security_group"
-  desc "Returns information about a db security group."
+  name 'aws_rds_db_security_group'
+  desc 'Returns information about a db security group.'
 
   example "
     describe aws_rds_db_security_group(db_security_group_name: 'SECURITY_GROUP_NAME') do
@@ -28,7 +28,7 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
   end
 
   def db_security_group_name
-    return nil unless exists?
+    return unless exists?
     @res[:db_security_group_name]
   end
 

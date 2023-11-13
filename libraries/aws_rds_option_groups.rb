@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsRdsOptionGroups < AwsResourceBase
-  name "aws_rds_option_groups"
-  desc "Verifies settings for a collection AWS RDS Clusters."
+  name 'aws_rds_option_groups'
+  desc 'Verifies settings for a collection AWS RDS Clusters.'
   example "
     describe aws_rds_group_options do
       it { should exist }
@@ -12,14 +12,14 @@ class AwsRdsOptionGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:option_group_names, field: :option_group_name)
-    .register_column(:option_group_description, field: :option_group_description)
-    .register_column(:engine_names, field: :engine_name)
-    .register_column(:major_engine_versions, field: :major_engine_version)
-    .register_column(:option_group_arns, field: :option_group_arn)
-    .register_column(:vpc_ids, field: :vpc_id)
-    .register_column(:allows_vpc_and_non_vpc_instance_memberships, field: :allows_vpc_and_non_vpc_instance_memberships)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:option_group_names, field: :option_group_name)
+             .register_column(:option_group_description, field: :option_group_description)
+             .register_column(:engine_names, field: :engine_name)
+             .register_column(:major_engine_versions, field: :major_engine_version)
+             .register_column(:option_group_arns, field: :option_group_arn)
+             .register_column(:vpc_ids, field: :vpc_id)
+             .register_column(:allows_vpc_and_non_vpc_instance_memberships, field: :allows_vpc_and_non_vpc_instance_memberships)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

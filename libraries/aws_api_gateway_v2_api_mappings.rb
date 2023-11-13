@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2ApiMappings < AwsCollectionResourceBase
-  name "aws_api_gateway_v2_api_mappings"
-  desc "Gets API mappings."
+  name 'aws_api_gateway_v2_api_mappings'
+  desc 'Gets API mappings.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_api_mappings(domain_name: 'DOMAIN_NAME') do
       it { should exist }

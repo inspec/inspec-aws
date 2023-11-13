@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsSnsTopic < AwsResourceBase
-  name "aws_sns_topic"
-  desc "Verifies settings for an SNS Topic."
+  name 'aws_sns_topic'
+  desc 'Verifies settings for an SNS Topic.'
   example "
     describe aws_sns_topic('arn:aws:sns:us-east-1:123456789012:some-topic') do
       it { should exist }
@@ -22,8 +22,8 @@ class AwsSnsTopic < AwsResourceBase
     catch_aws_errors do
       begin
         resp = @aws.sns_client.get_topic_attributes(topic_arn: @arn).attributes.to_h
-        @confirmed_subscription_count = resp["SubscriptionsConfirmed"].to_i
-        @kms_master_key_id = resp["KmsMasterKeyId"]
+        @confirmed_subscription_count = resp['SubscriptionsConfirmed'].to_i
+        @kms_master_key_id = resp['KmsMasterKeyId']
         create_resource_methods(resp)
       rescue Aws::SNS::Errors::NotFound
         return

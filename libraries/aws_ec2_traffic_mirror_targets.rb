@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEc2TrafficMirrorTargets < AwsResourceBase
-  name "aws_ec2_traffic_mirror_targets"
-  desc "Verifies settings for a collection of AWS EC2 Traffic Mirror targets"
+  name 'aws_ec2_traffic_mirror_targets'
+  desc 'Verifies settings for a collection of AWS EC2 Traffic Mirror targets'
 
   example "
     describe aws_ec2_traffic_mirror_targets do
@@ -13,14 +13,14 @@ class AWSEc2TrafficMirrorTargets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:traffic_mirror_target_ids, field: :traffic_mirror_target_id)
-    .register_column(:network_interface_ids, field: :network_interface_id)
-    .register_column(:network_load_balancer_arns, field: :network_load_balancer_arn)
-    .register_column(:types, field: :type)
-    .register_column(:descriptions, field: :description)
-    .register_column(:owner_ids, field: :owner_id)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:traffic_mirror_target_ids, field: :traffic_mirror_target_id)
+             .register_column(:network_interface_ids, field: :network_interface_id)
+             .register_column(:network_load_balancer_arns, field: :network_load_balancer_arn)
+             .register_column(:types, field: :type)
+             .register_column(:descriptions, field: :description)
+             .register_column(:owner_ids, field: :owner_id)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

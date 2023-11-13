@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMServerCertificates < AwsResourceBase
-  name "aws_iam_server_certificates"
-  desc "Verifies the server certificates stored in IAM."
+  name 'aws_iam_server_certificates'
+  desc 'Verifies the server certificates stored in IAM.'
 
   example "
     describe aws_iam_server_certificates do
@@ -13,13 +13,13 @@ class AWSIAMServerCertificates < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:paths, field: :path)
-    .register_column(:server_certificate_names, field: :server_certificate_name)
-    .register_column(:server_certificate_ids, field: :server_certificate_id)
-    .register_column(:arns, field: :arn)
-    .register_column(:upload_date, field: :upload_date)
-    .register_column(:expiration_date, field: :expiration_date)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:paths, field: :path)
+             .register_column(:server_certificate_names, field: :server_certificate_name)
+             .register_column(:server_certificate_ids, field: :server_certificate_id)
+             .register_column(:arns, field: :arn)
+             .register_column(:upload_date, field: :upload_date)
+             .register_column(:expiration_date, field: :expiration_date)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

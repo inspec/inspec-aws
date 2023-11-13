@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticLoadBalancingV2Listener < AwsResourceBase
-  name "aws_elasticloadbalancingv2_listener"
-  desc "Returns information about the endpoints for your account in the current region."
+  name 'aws_elasticloadbalancingv2_listener'
+  desc 'Returns information about the endpoints for your account in the current region.'
 
   example "
     describe aws_elasticloadbalancingv2_listener(listener_arn: 'test') do
@@ -23,7 +23,7 @@ class AWSElasticLoadBalancingV2Listener < AwsResourceBase
   end
 
   def listener_arn
-    return nil unless exists?
+    return unless exists?
     @listeners[:listener_arns]
   end
 

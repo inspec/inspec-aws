@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2Integration < AwsResourceBase
-  name "aws_api_gateway_v2_integration"
-  desc "Gets an Integration."
+  name 'aws_api_gateway_v2_integration'
+  desc 'Gets an Integration.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_integration(api_id: 'APP_ID', integration_id: 'INTEGRATION_ID') do
       it { should exist }
@@ -27,7 +27,7 @@ class AwsApiGatewayV2Integration < AwsResourceBase
   end
 
   def integration_id
-    return nil unless exists?
+    return unless exists?
     @res[:integration_id]
   end
 

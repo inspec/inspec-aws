@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSECSTaskDefinition < AwsResourceBase
-  name "aws_ecs_task_definition"
-  desc "Describes a task definition."
+  name 'aws_ecs_task_definition'
+  desc 'Describes a task definition.'
 
   example "
     describe aws_ecs_task_definition(task_definition: 'hello_world:8') do
@@ -24,7 +24,7 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def task_definition
-    return nil unless exists?
+    return unless exists?
     @task_definition[:task_definition]
   end
 

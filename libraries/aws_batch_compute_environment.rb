@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSBatchComputeEnvironment < AwsResourceBase
-  name "aws_batch_compute_environment"
-  desc "Describes one or more of your compute environments."
+  name 'aws_batch_compute_environment'
+  desc 'Describes one or more of your compute environments.'
   example <<-EXAMPLE
     describe aws_batch_compute_environment(compute_environment_name: 'BATCH_COMPUTE_ENVIRONMENT_NAME') do
       it { should exist }
@@ -24,7 +24,7 @@ class AWSBatchComputeEnvironment < AwsResourceBase
   end
 
   def compute_environment_name
-    return nil unless exists?
+    return unless exists?
     @compute_environments[:compute_environment_name]
   end
 

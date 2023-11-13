@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSServiceCatalogPortfolioProductAssociations < AwsResourceBase
-  name "aws_servicecatalog_portfolio_product_associations"
-  desc "Lists all portfolios that the specified product is associated with."
+  name 'aws_servicecatalog_portfolio_product_associations'
+  desc 'Lists all portfolios that the specified product is associated with.'
 
   example "
     describe aws_servicecatalog_portfolio_product_associations(product_id: 'test1') do
@@ -13,13 +13,13 @@ class AWSServiceCatalogPortfolioProductAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids,                                field: :id)
-    .register_column(:arns,                               field: :arn)
-    .register_column(:display_names,                      field: :display_name)
-    .register_column(:descriptions,                       field: :description)
-    .register_column(:created_times,                      field: :created_time)
-    .register_column(:provider_names,                     field: :provider_name)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids,                                field: :id)
+             .register_column(:arns,                               field: :arn)
+             .register_column(:display_names,                      field: :display_name)
+             .register_column(:descriptions,                       field: :description)
+             .register_column(:created_times,                      field: :created_time)
+             .register_column(:provider_names,                     field: :provider_name)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

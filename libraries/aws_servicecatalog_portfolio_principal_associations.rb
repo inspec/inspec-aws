@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSServiceCatalogPortfolioPrincipalAssociations < AwsResourceBase
-  name "aws_servicecatalog_portfolio_principal_associations"
-  desc "Lists all principal ARNs associated with the specified portfolio."
+  name 'aws_servicecatalog_portfolio_principal_associations'
+  desc 'Lists all principal ARNs associated with the specified portfolio.'
 
   example "
     describe aws_servicecatalog_portfolio_principal_associations(portfolio_id: 'test1') do
@@ -13,9 +13,9 @@ class AWSServiceCatalogPortfolioPrincipalAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:principal_arns,                                field: :principal_arn)
-    .register_column(:principal_types,                               field: :principal_type)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:principal_arns,                                field: :principal_arn)
+             .register_column(:principal_types,                               field: :principal_type)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

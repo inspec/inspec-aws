@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsElastiCacheClusterNode < AwsResourceBase
-  name "aws_elasticache_cluster_node"
-  desc "Verifies settings for an AWS Elasticache Cluster Node."
+  name 'aws_elasticache_cluster_node'
+  desc 'Verifies settings for an AWS Elasticache Cluster Node.'
 
   example "
     describe aws_elasticache_cluster_node(cache_cluster_id: 'my-elasticache-cluster', node_id: '0001') do
@@ -22,7 +22,7 @@ class AwsElastiCacheClusterNode < AwsResourceBase
       raise ArgumentError, "#{@__resource_name__}: cache_cluster_id must contain between 1 and 50 alphanumeric characters or hyphens, should start with a letter, and cannot end with a hyphen or contain two consecutive hyphens."
     end
     # node_id constraints: https://docs.aws.amazon.com/cli/latest/reference/elasticache/describe-cache-clusters.html
-    error_message = "node_id must be a string containing 4 digits."
+    error_message = 'node_id must be a string containing 4 digits.'
     raise ArgumentError, "#{@__resource_name__}: #{error_message}" unless opts[:node_id].is_a?(String)
     unless /^[\d]{4}$/.match?(opts[:node_id])
       raise ArgumentError, "#{@__resource_name__}: #{error_message}"

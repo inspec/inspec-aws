@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsSubnets < AwsResourceBase
-  name "aws_subnets"
-  desc "Verifies settings for an AWS VPC Subnets in bulk."
+  name 'aws_subnets'
+  desc 'Verifies settings for an AWS VPC Subnets in bulk.'
 
   example "
     describe aws_subnets do
@@ -19,14 +19,14 @@ class AwsSubnets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:availability_zone,       field: :availability_zone)
-    .register_column(:cidr_blocks,             field: :cidr_block)
-    .register_column(:map_public_ip_on_launch, field: :map_public_ip_on_launch)
-    .register_column(:states,                  field: :state)
-    .register_column(:subnet_ids,              field: :subnet_id)
-    .register_column(:vpc_ids,                 field: :vpc_id)
-    .register_column(:tags,                    field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:availability_zone,       field: :availability_zone)
+             .register_column(:cidr_blocks,             field: :cidr_block)
+             .register_column(:map_public_ip_on_launch, field: :map_public_ip_on_launch)
+             .register_column(:states,                  field: :state)
+             .register_column(:subnet_ids,              field: :subnet_id)
+             .register_column(:vpc_ids,                 field: :vpc_id)
+             .register_column(:tags,                    field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

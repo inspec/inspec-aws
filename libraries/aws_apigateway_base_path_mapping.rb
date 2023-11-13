@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayBasePathMapping < AwsResourceBase
-  name "aws_apigateway_base_path_mapping"
-  desc "Describe a BasePathMapping resource."
+  name 'aws_apigateway_base_path_mapping'
+  desc 'Describe a BasePathMapping resource.'
   example <<-EXAMPLE
     describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
       it { should exist }
@@ -25,7 +25,7 @@ class AWSApiGatewayBasePathMapping < AwsResourceBase
   end
 
   def base_path
-    return nil unless exists?
+    return unless exists?
     @res[:base_path]
   end
 

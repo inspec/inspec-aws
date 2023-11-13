@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaVersions < AwsResourceBase
-  name "aws_lambda_versions"
-  desc "Lists the versions of an Lambda layer."
+  name 'aws_lambda_versions'
+  desc 'Lists the versions of an Lambda layer.'
 
   example "
     describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
@@ -13,14 +13,14 @@ class AWSLambdaVersions < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:layer_version_arns, field: :layer_version_arn)
-    .register_column(:versions, field: :version)
-    .register_column(:descriptions, field: :description)
-    .register_column(:created_dates, field: :created_date)
-    .register_column(:compatible_runtimes, field: :compatible_runtimes)
-    .register_column(:license_infos, field: :license_info)
-    .register_column(:compatible_architectures, field: :compatible_architectures)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:layer_version_arns, field: :layer_version_arn)
+             .register_column(:versions, field: :version)
+             .register_column(:descriptions, field: :description)
+             .register_column(:created_dates, field: :created_date)
+             .register_column(:compatible_runtimes, field: :compatible_runtimes)
+             .register_column(:license_infos, field: :license_info)
+             .register_column(:compatible_architectures, field: :compatible_architectures)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

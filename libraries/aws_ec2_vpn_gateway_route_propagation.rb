@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
-  name "aws_ec2_vpn_gateway_route_propagation"
-  desc "Describes virtual private gateway (VGW) to propagate routes to the specified route table of a VPC."
+  name 'aws_ec2_vpn_gateway_route_propagation'
+  desc 'Describes virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.'
 
   example "
     describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'rtb-1234567890') do
@@ -29,7 +29,7 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
   end
 
   def id
-    return nil unless exists?
+    return unless exists?
     @route_tables[:route_table_id]
   end
 

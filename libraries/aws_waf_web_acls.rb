@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFWebACLS < AwsResourceBase
-  name "aws_waf_web_acls"
-  desc "Verifies settings for all the Web ACLs."
+  name 'aws_waf_web_acls'
+  desc 'Verifies settings for all the Web ACLs.'
 
   example "
     describe aws_waf_web_acls do
@@ -19,9 +19,9 @@ class AWSWAFWebACLS < AwsResourceBase
   end
 
   FilterTable.create
-    .register_column(:web_acl_ids, field: :web_acl_id, style: :simple)
-    .register_column(:names, field: :name, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:web_acl_ids, field: :web_acl_id, style: :simple)
+             .register_column(:names, field: :name, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

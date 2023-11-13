@@ -1,6 +1,6 @@
 class AwsStsCallerIdentity < AwsResourceBase
-  name "aws_sts_caller_identity"
-  desc "Verifies settings for an AWS STS Caller Identity."
+  name 'aws_sts_caller_identity'
+  desc 'Verifies settings for an AWS STS Caller Identity.'
   example "
     describe aws_sts_caller_identity do
       its('arn') { should match 'arn:aws:iam::.*:user/service-account-inspec' }
@@ -27,7 +27,7 @@ class AwsStsCallerIdentity < AwsResourceBase
   end
 
   def govcloud?
-    fetch_arn_components[:partition] == "aws-us-gov"
+    fetch_arn_components[:partition] == 'aws-us-gov'
   end
 
   def exists?
@@ -35,12 +35,12 @@ class AwsStsCallerIdentity < AwsResourceBase
   end
 
   def to_s
-    "AWS Security Token Service Caller Identity"
+    'AWS Security Token Service Caller Identity'
   end
 
   private
 
   def fetch_arn_components
-    Hash[%i(arn partition service region account_id resource).zip(arn.split(":"))]
+    Hash[%i(arn partition service region account_id resource).zip(arn.split(':'))]
   end
 end

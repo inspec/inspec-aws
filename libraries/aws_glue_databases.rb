@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSGlueDatabases < AwsResourceBase
-  name "aws_glue_databases"
-  desc "Retrieves all databases defined in a given Data Catalog."
+  name 'aws_glue_databases'
+  desc 'Retrieves all databases defined in a given Data Catalog.'
 
   example "
     describe aws_glue_databases do
@@ -13,15 +13,15 @@ class AWSGlueDatabases < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names,                                       field: :name)
-    .register_column(:descriptions,                                field: :description)
-    .register_column(:location_uris,                               field: :location_uri)
-    .register_column(:parameters,                                  field: :parameters)
-    .register_column(:create_times,                                field: :create_time)
-    .register_column(:create_table_default_permissions,            field: :create_table_default_permissions)
-    .register_column(:target_databases,                            field: :target_database)
-    .register_column(:catalog_ids,                                 field: :catalog_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names,                                       field: :name)
+             .register_column(:descriptions,                                field: :description)
+             .register_column(:location_uris,                               field: :location_uri)
+             .register_column(:parameters,                                  field: :parameters)
+             .register_column(:create_times,                                field: :create_time)
+             .register_column(:create_table_default_permissions,            field: :create_table_default_permissions)
+             .register_column(:target_databases,                            field: :target_database)
+             .register_column(:catalog_ids,                                 field: :catalog_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

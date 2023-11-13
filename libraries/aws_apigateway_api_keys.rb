@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayAPIKeys < AwsResourceBase
-  name "aws_apigateway_api_keys"
-  desc "Gets information about the current ApiKeys resource."
+  name 'aws_apigateway_api_keys'
+  desc 'Gets information about the current ApiKeys resource.'
   example <<-EXAMPLE
     describe aws_apigateway_api_keys do
       it { should exist }
@@ -12,17 +12,17 @@ class AWSApiGatewayAPIKeys < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids, field: :id)
-    .register_column(:values, field: :value)
-    .register_column(:names, field: :name)
-    .register_column(:customer_ids, field: :customer_id)
-    .register_column(:descriptions, field: :description)
-    .register_column(:enabled, field: :enabled)
-    .register_column(:created_dates, field: :created_date)
-    .register_column(:last_updated_dates, field: :last_updated_date)
-    .register_column(:stage_keys, field: :stage_keys)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids, field: :id)
+             .register_column(:values, field: :value)
+             .register_column(:names, field: :name)
+             .register_column(:customer_ids, field: :customer_id)
+             .register_column(:descriptions, field: :description)
+             .register_column(:enabled, field: :enabled)
+             .register_column(:created_dates, field: :created_date)
+             .register_column(:last_updated_dates, field: :last_updated_date)
+             .register_column(:stage_keys, field: :stage_keys)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

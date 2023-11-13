@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMOIDCProviders < AwsResourceBase
-  name "aws_iam_oidc_providers"
-  desc "Lists all OIDC Providers."
+  name 'aws_iam_oidc_providers'
+  desc 'Lists all OIDC Providers.'
 
   example "
     describe aws_iam_oidc_providers do
@@ -13,8 +13,8 @@ class AWSIAMOIDCProviders < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:arns, field: :arn)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:arns, field: :arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

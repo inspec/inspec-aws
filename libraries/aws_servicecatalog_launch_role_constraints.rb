@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSServiceCatalogLaunchRoleConstraints < AwsResourceBase
-  name "aws_servicecatalog_launch_role_constraints"
-  desc "Lists the constraints for the specified portfolio and product."
+  name 'aws_servicecatalog_launch_role_constraints'
+  desc 'Lists the constraints for the specified portfolio and product.'
 
   example "
     describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'portfolio_id') do
@@ -13,13 +13,13 @@ class AWSServiceCatalogLaunchRoleConstraints < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:constraint_ids,                                 field: :constraint_id)
-    .register_column(:types,                                          field: :type)
-    .register_column(:descriptions,                                   field: :description)
-    .register_column(:owners,                                         field: :owner)
-    .register_column(:product_ids,                                    field: :product_id)
-    .register_column(:portfolio_ids,                                  field: :portfolio_id)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:constraint_ids,                                 field: :constraint_id)
+             .register_column(:types,                                          field: :type)
+             .register_column(:descriptions,                                   field: :description)
+             .register_column(:owners,                                         field: :owner)
+             .register_column(:product_ids,                                    field: :product_id)
+             .register_column(:portfolio_ids,                                  field: :portfolio_id)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

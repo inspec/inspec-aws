@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRoute53ResolverResolverRuleAssociations < AwsResourceBase
-  name "aws_route53resolver_resolver_rule_associations"
-  desc "Lists the associations that were created between Resolver rules and VPCs using the current AWS account."
+  name 'aws_route53resolver_resolver_rule_associations'
+  desc 'Lists the associations that were created between Resolver rules and VPCs using the current AWS account.'
 
   example "
     describe aws_route53resolver_resolver_rule_associations do
@@ -13,13 +13,13 @@ class AWSRoute53ResolverResolverRuleAssociations < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids,                                 field: :id)
-    .register_column(:resolver_rule_ids,                   field: :resolver_rule_id)
-    .register_column(:names,                               field: :name)
-    .register_column(:vpc_ids,                             field: :vpc_id)
-    .register_column(:statuses,                            field: :status)
-    .register_column(:status_messages,                     field: :status_message)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids,                                 field: :id)
+             .register_column(:resolver_rule_ids,                   field: :resolver_rule_id)
+             .register_column(:names,                               field: :name)
+             .register_column(:vpc_ids,                             field: :vpc_id)
+             .register_column(:statuses,                            field: :status)
+             .register_column(:status_messages,                     field: :status_message)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

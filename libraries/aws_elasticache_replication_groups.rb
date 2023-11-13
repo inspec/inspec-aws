@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsElastiCacheReplicationGroups < AwsResourceBase
-  name "aws_elasticache_replication_groups"
-  desc "Verifies settings for a collection of AWS Replication Groups"
+  name 'aws_elasticache_replication_groups'
+  desc 'Verifies settings for a collection of AWS Replication Groups'
   example "
     describe aws_elasticache_replication_groups do
       its('count') { should eq 3 }
@@ -20,12 +20,12 @@ class AwsElastiCacheReplicationGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids, field: :id)
-    .register_column(:node_types, field: :node_type)
-    .register_column(:status, field: :status)
-    .register_column(:encrypted_at_rest, field: :encrypted_at_rest)
-    .register_column(:encrypted_at_transit, field: :encrypted_at_transit)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids, field: :id)
+             .register_column(:node_types, field: :node_type)
+             .register_column(:status, field: :status)
+             .register_column(:encrypted_at_rest, field: :encrypted_at_rest)
+             .register_column(:encrypted_at_transit, field: :encrypted_at_transit)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

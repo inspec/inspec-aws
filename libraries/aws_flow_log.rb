@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsFlowLog < AwsResourceBase
-  name "aws_flow_log"
-  desc "Verifies settings for an AWS VPC flow logs."
+  name 'aws_flow_log'
+  desc 'Verifies settings for an AWS VPC flow logs.'
 
   example "
     describe aws_flow_log('fl-9c718cf5') do
@@ -16,9 +16,9 @@ class AwsFlowLog < AwsResourceBase
     super(opts)
     validate_parameters(require_any_of: %i(flow_log_id subnet_id vpc_id))
 
-    query = { filter: [{ name: "flow-log-id", values: [opts[:flow_log_id]] }] } if opts[:flow_log_id]
-    query = { filter: [{ name: "resource-id", values: [opts[:subnet_id]] }] } if opts[:subnet_id]
-    query = { filter: [{ name: "resource-id", values: [opts[:vpc_id]] }] } if opts[:vpc_id]
+    query = { filter: [{ name: 'flow-log-id', values: [opts[:flow_log_id]] }] } if opts[:flow_log_id]
+    query = { filter: [{ name: 'resource-id', values: [opts[:subnet_id]] }] } if opts[:subnet_id]
+    query = { filter: [{ name: 'resource-id', values: [opts[:vpc_id]] }] } if opts[:vpc_id]
 
     catch_aws_errors do
       resp = @aws.compute_client.describe_flow_logs(query)
@@ -35,24 +35,24 @@ class AwsFlowLog < AwsResourceBase
   def resource_type
     case @resource_id
     when /^eni/
-      @resource_type = "eni"
+      @resource_type = 'eni'
     when /^subnet/
-      @resource_type = "subnet"
+      @resource_type = 'subnet'
     when /^vpc/
-      @resource_type = "vpc"
+      @resource_type = 'vpc'
     end
   end
 
   def attached_to_eni?
-    resource_type.eql?("eni")
+    resource_type.eql?('eni')
   end
 
   def attached_to_subnet?
-    resource_type.eql?("subnet")
+    resource_type.eql?('subnet')
   end
 
   def attached_to_vpc?
-    resource_type.eql?("vpc")
+    resource_type.eql?('vpc')
   end
 
   def exists?

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2SpotFleet < AwsResourceBase
-  name "aws_ec2_spot_fleet"
-  desc "Describes your Spot Fleet requests."
+  name 'aws_ec2_spot_fleet'
+  desc 'Describes your Spot Fleet requests.'
 
   example "
     describe aws_ec2_spot_fleet(spot_fleet_request_id: 'SpotFleetRequestID') do
@@ -24,7 +24,7 @@ class AWSEC2SpotFleet < AwsResourceBase
   end
 
   def spot_fleet_request_id
-    return nil unless exists?
+    return unless exists?
     @res[:spot_fleet_request_id]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRAMResourceShares < AwsResourceBase
-  name "aws_ram_resource_shares"
-  desc "Lists the resources that you added to a resource shares or the resources that are shared with you."
+  name 'aws_ram_resource_shares'
+  desc 'Lists the resources that you added to a resource shares or the resources that are shared with you.'
 
   example "
     describe aws_ram_resource_shares(resource_owner: 'SELF') do
@@ -13,17 +13,17 @@ class AWSRAMResourceShares < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:resource_share_arns,                         field: :resource_share_arn)
-    .register_column(:names,                                       field: :name)
-    .register_column(:owning_account_ids,                          field: :owning_account_id)
-    .register_column(:allow_external_principals,                   field: :allow_external_principals)
-    .register_column(:statuses,                                    field: :status)
-    .register_column(:status_messages,                             field: :status_message)
-    .register_column(:tags,                                        field: :tags)
-    .register_column(:creation_times,                              field: :creation_time)
-    .register_column(:last_updated_times,                          field: :last_updated_time)
-    .register_column(:feature_sets,                                field: :feature_set)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:resource_share_arns,                         field: :resource_share_arn)
+             .register_column(:names,                                       field: :name)
+             .register_column(:owning_account_ids,                          field: :owning_account_id)
+             .register_column(:allow_external_principals,                   field: :allow_external_principals)
+             .register_column(:statuses,                                    field: :status)
+             .register_column(:status_messages,                             field: :status_message)
+             .register_column(:tags,                                        field: :tags)
+             .register_column(:creation_times,                              field: :creation_time)
+             .register_column(:last_updated_times,                          field: :last_updated_time)
+             .register_column(:feature_sets,                                field: :feature_set)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

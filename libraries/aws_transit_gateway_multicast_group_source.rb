@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSTransitGatewayMulticastGroupSource < AwsResourceBase
-  name "aws_transit_gateway_multicast_group_source"
-  desc "Searches one or more transit gateway multicast groups and returns the group membership information."
+  name 'aws_transit_gateway_multicast_group_source'
+  desc 'Searches one or more transit gateway multicast groups and returns the group membership information.'
 
   example "
     describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_domain_id: 'test') do
@@ -28,7 +28,7 @@ class AWSTransitGatewayMulticastGroupSource < AwsResourceBase
   end
 
   def transit_gateway_multicast_domain_id
-    return nil unless exists?
+    return unless exists?
     @multicast_groups[:transit_gateway_multicast_domain_id]
   end
 

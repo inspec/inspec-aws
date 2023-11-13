@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSecretsManagerSecret < AwsResourceBase
-  name "aws_secretsmanager_secret"
-  desc "Retrieves the details of a secret."
+  name 'aws_secretsmanager_secret'
+  desc 'Retrieves the details of a secret.'
 
   example "
     describe aws_secretsmanager_secret(secret_id: 'Secret-Id') do
@@ -28,7 +28,7 @@ class AWSSecretsManagerSecret < AwsResourceBase
   end
 
   def secret_id
-    return nil unless exists?
+    return unless exists?
     @res[:secret_id]
   end
 

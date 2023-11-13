@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2Model < AwsResourceBase
-  name "aws_api_gateway_v2_model"
-  desc "Gets a Model."
+  name 'aws_api_gateway_v2_model'
+  desc 'Gets a Model.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_model(api_id: 'APP_ID', model_id: 'MODEL_ID') do
       it { should exist }
@@ -26,7 +26,7 @@ class AwsApiGatewayV2Model < AwsResourceBase
   end
 
   def model_id
-    return nil unless exists?
+    return unless exists?
     @res[:model_id]
   end
 

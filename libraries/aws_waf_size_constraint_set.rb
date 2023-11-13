@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSWAFSizeConstraintSet < AwsResourceBase
-  name "aws_waf_size_constraint_set"
-  desc "Describes one WAF size constraint set."
+  name 'aws_waf_size_constraint_set'
+  desc 'Describes one WAF size constraint set.'
 
   example "
     describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do
@@ -24,7 +24,7 @@ class AWSWAFSizeConstraintSet < AwsResourceBase
   end
 
   def size_constraint_set_id
-    return nil unless exists?
+    return unless exists?
     @resp[:size_constraint_set_id]
   end
 

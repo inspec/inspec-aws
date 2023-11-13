@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2Route < AwsResourceBase
-  name "aws_api_gateway_v2_route"
-  desc "Gets a Route."
+  name 'aws_api_gateway_v2_route'
+  desc 'Gets a Route.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_route(api_id: 'APP_ID', route_id: 'ROUTE_ID') do
       it { should exist }
@@ -24,7 +24,7 @@ class AwsApiGatewayV2Route < AwsResourceBase
   end
 
   def route_id
-    return nil unless exists?
+    return unless exists?
     @res[:route_id]
   end
 

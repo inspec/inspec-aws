@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSDBDomains < AwsResourceBase
-  name "aws_sdb_domains"
-  desc "Verifies settings for SDB Domain in bulk."
+  name 'aws_sdb_domains'
+  desc 'Verifies settings for SDB Domain in bulk.'
 
   example "
     describe aws_sdb_domains do
@@ -19,8 +19,8 @@ class AWSSDBDomains < AwsResourceBase
   end
 
   FilterTable.create
-    .register_column(:domain_names, field: :domain_names, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:domain_names, field: :domain_names, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def fetch_data
     catch_aws_errors do

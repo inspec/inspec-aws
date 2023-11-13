@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSSESReceiptRuleSets < AwsResourceBase
-  name "aws_ses_receipt_rule_sets"
-  desc "Lists the receipt rule sets that exist under your AWS account in the current AWS Region."
+  name 'aws_ses_receipt_rule_sets'
+  desc 'Lists the receipt rule sets that exist under your AWS account in the current AWS Region.'
 
   example "
     describe aws_ses_receipt_rule_sets do
@@ -13,9 +13,9 @@ class AWSSESReceiptRuleSets < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:names, field: :name)
-    .register_column(:created_timestamps, field: :created_timestamp)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:names, field: :name)
+             .register_column(:created_timestamps, field: :created_timestamp)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

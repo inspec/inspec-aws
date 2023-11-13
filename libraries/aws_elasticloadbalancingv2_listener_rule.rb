@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
-  name "aws_elasticloadbalancingv2_listener_rule"
-  desc "Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules."
+  name 'aws_elasticloadbalancingv2_listener_rule'
+  desc 'Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.'
 
   example "
     describe aws_elasticloadbalancingv2_listener_rule(rule_arn: 'test') do
@@ -23,7 +23,7 @@ class AWSElasticLoadBalancingV2ListenerRule < AwsResourceBase
   end
 
   def listener_arns
-    return nil unless exists?
+    return unless exists?
     @listeners[:listener_arns]
   end
 

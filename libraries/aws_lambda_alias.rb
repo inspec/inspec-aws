@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaAlias < AwsResourceBase
-  name "aws_lambda_alias"
-  desc "Retrieves information about a patch baseline."
+  name 'aws_lambda_alias'
+  desc 'Retrieves information about a patch baseline.'
 
   example "
     describe aws_lambda_alias(function_name: 'FUNCTION_NAME', function_alias_name: 'FUNCTION_ALIAS_NAME') do
@@ -24,7 +24,7 @@ class AWSLambdaAlias < AwsResourceBase
   end
 
   def function_alias_name
-    return nil unless exists?
+    return unless exists?
     @res[:function_alias_name]
   end
 

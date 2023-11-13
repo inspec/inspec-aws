@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayDeployment < AwsResourceBase
-  name "aws_api_gateway_deployment"
-  desc "Gets information about a Deployment resource."
+  name 'aws_api_gateway_deployment'
+  desc 'Gets information about a Deployment resource.'
   example <<-EXAMPLE
     describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: 'DEPLOYMENT_ID') do
       it { should exist }
@@ -23,7 +23,7 @@ class AWSApiGatewayDeployment < AwsResourceBase
   end
 
   def rest_api_id
-    return nil unless exists?
+    return unless exists?
     @res[:rest_api_id]
   end
 

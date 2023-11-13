@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSAmplifyBranch < AwsResourceBase
-  name "aws_amplify_branch"
-  desc "Describes a branch for an Amplify app."
+  name 'aws_amplify_branch'
+  desc 'Describes a branch for an Amplify app.'
   example <<-EXAMPLE
     describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do
       it { should exist }
@@ -22,7 +22,7 @@ class AWSAmplifyBranch < AwsResourceBase
   end
 
   def branch_name
-    return nil unless exists?
+    return unless exists?
     @apps[:branch_name]
   end
 

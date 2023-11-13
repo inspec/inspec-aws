@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSApiGatewayMethod < AwsResourceBase
-  name "aws_api_gateway_method"
-  desc "Describe an existing Method resource."
+  name 'aws_api_gateway_method'
+  desc 'Describe an existing Method resource.'
   example <<-EXAMPLE
     describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'GET') do
       it { should exist }
@@ -25,7 +25,7 @@ class AWSApiGatewayMethod < AwsResourceBase
   end
 
   def rest_api_id
-    return nil unless exists?
+    return unless exists?
     @res[:rest_api_id]
   end
 

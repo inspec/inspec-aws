@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsCloudformationStack < AwsResourceBase
-  name "aws_cloudformation_stack"
-  desc "Verifies settings for an aws CloudFormation Stack."
+  name 'aws_cloudformation_stack'
+  desc 'Verifies settings for an aws CloudFormation Stack.'
   example <<-EXAMPLE
     describe aws_cloudformation_stack('STACK_NAME') do
       it { should exist }
@@ -21,7 +21,7 @@ class AwsCloudformationStack < AwsResourceBase
     catch_aws_errors do
       name = { stack_name: opts[:stack_name] }
       resp = @aws.cloudformation_client.describe_stacks(name)
-      return nil if resp.stacks.nil? || resp.stacks.empty?
+      return if resp.stacks.nil? || resp.stacks.empty?
       stack = resp.stacks.first
       @stack_id = stack.stack_id
       @stack_name = stack.stack_name

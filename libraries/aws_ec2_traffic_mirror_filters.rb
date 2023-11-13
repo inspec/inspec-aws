@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEc2TrafficMirrorFilters < AwsResourceBase
-  name "aws_ec2_traffic_mirror_filters"
-  desc "Describes one or more Traffic Mirror filters."
+  name 'aws_ec2_traffic_mirror_filters'
+  desc 'Describes one or more Traffic Mirror filters.'
 
   example "
     describe aws_ec2_traffic_mirror_filters do
@@ -13,10 +13,10 @@ class AWSEc2TrafficMirrorFilters < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:traffic_mirror_filter_ids,      field: :traffic_mirror_filter_id)
-    .register_column(:descriptions,                   field: :description)
-    .register_column(:tags,                           field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:traffic_mirror_filter_ids,      field: :traffic_mirror_filter_id)
+             .register_column(:descriptions,                   field: :description)
+             .register_column(:tags,                           field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsApiGatewayV2Deployments < AwsCollectionResourceBase
-  name "aws_api_gateway_v2_deployments"
-  desc "Gets the Deployments for an API."
+  name 'aws_api_gateway_v2_deployments'
+  desc 'Gets the Deployments for an API.'
   example <<-EXAMPLE
     describe aws_api_gateway_v2_deployments(api_id: 'APP_ID') do
       it { should exist }

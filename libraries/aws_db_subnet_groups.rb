@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsDbSubnetGroups < AwsResourceBase
-  name "aws_db_subnet_groups"
-  desc "Verifies settings for a Subnet Group in bulk."
+  name 'aws_db_subnet_groups'
+  desc 'Verifies settings for a Subnet Group in bulk.'
   example <<-EXAMPLE
     describe aws_db_subnet_groups do
       it { should exist }
@@ -12,13 +12,13 @@ class AwsDbSubnetGroups < AwsResourceBase
   attr_reader :table, :subnet_rows, :api_response
 
   FilterTable.create
-    .register_column(:db_subnet_group_names,                field: :db_subnet_group_name)
-    .register_column(:db_subnet_group_descriptions,         field: :db_subnet_group_description)
-    .register_column(:vpc_ids,                              field: :vpc_id)
-    .register_column(:subnet_group_status,                  field: :subnet_group_status)
-    .register_column(:subnets,                              field: :subnets)
-    .register_column(:db_subnet_group_arns,                 field: :db_subnet_group_arn)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:db_subnet_group_names,                field: :db_subnet_group_name)
+             .register_column(:db_subnet_group_descriptions,         field: :db_subnet_group_description)
+             .register_column(:vpc_ids,                              field: :vpc_id)
+             .register_column(:subnet_group_status,                  field: :subnet_group_status)
+             .register_column(:subnets,                              field: :subnets)
+             .register_column(:db_subnet_group_arns,                 field: :db_subnet_group_arn)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

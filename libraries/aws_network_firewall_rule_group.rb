@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSNetworkFirewallRuleGroup < AwsResourceBase
-  name "aws_network_firewall_rule_group"
-  desc "Returns the data objects for the specified rule group."
+  name 'aws_network_firewall_rule_group'
+  desc 'Returns the data objects for the specified rule group.'
 
   example "
     describe aws_network_firewall_rule_group(rule_group_arn: 'RuleGroupName') do
@@ -24,7 +24,7 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
   end
 
   def rule_group_arn
-    return nil unless exists?
+    return unless exists?
     @res[:rule_group_arn]
   end
 

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSElasticSearchServiceDomain < AwsResourceBase
-  name "aws_elasticsearchservice_domain"
-  desc "Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN."
+  name 'aws_elasticsearchservice_domain'
+  desc 'Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.'
 
   example "
     describe aws_elasticsearchservice_domain(domain_name: 'DomainName') do
@@ -24,12 +24,12 @@ class AWSElasticSearchServiceDomain < AwsResourceBase
   end
 
   def domain_name
-    return nil unless exists?
+    return unless exists?
     @domain_status[:domain_name]
   end
 
   def resource_id
-    @domain_status? @domain_status[:domain_id]: ""
+    @domain_status? @domain_status[:domain_id]: ''
   end
 
   def exists?

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVpcEndpointConnectionNotification < AwsResourceBase
-  name "aws_vpc_endpoint_connection_notification"
-  desc "Verifies settings for an AWS VPC Endpoint Notification."
+  name 'aws_vpc_endpoint_connection_notification'
+  desc 'Verifies settings for an AWS VPC Endpoint Notification.'
 
   example "
     describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'vpce-12345678123456789') do
@@ -37,7 +37,7 @@ class AwsVpcEndpointConnectionNotification < AwsResourceBase
   end
 
   def connection_notification_state_enabled?
-    @vpcen[:connection_notification_state]=="Enabled"
+    @vpcen[:connection_notification_state]=='Enabled'
   end
 
   def resource_id

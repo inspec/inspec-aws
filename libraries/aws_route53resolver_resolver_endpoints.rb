@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSRoute53ResolverResolverEndpoints < AwsResourceBase
-  name "aws_route53resolver_resolver_endpoints"
-  desc "Lists all the Resolver endpoints that were created using the current AWS account."
+  name 'aws_route53resolver_resolver_endpoints'
+  desc 'Lists all the Resolver endpoints that were created using the current AWS account.'
 
   example "
     describe aws_route53resolver_resolver_endpoints do
@@ -13,19 +13,19 @@ class AWSRoute53ResolverResolverEndpoints < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids,                                                   field: :id)
-    .register_column(:creator_request_ids,                                   field: :creator_request_id)
-    .register_column(:arns,                                                  field: :arn)
-    .register_column(:names,                                                 field: :name)
-    .register_column(:security_group_ids,                                    field: :security_group_ids)
-    .register_column(:directions,                                            field: :direction)
-    .register_column(:ip_address_counts,                                     field: :ip_address_count)
-    .register_column(:host_vpc_ids,                                          field: :host_vpc_id)
-    .register_column(:statuses,                                              field: :status)
-    .register_column(:status_messages,                                       field: :status_message)
-    .register_column(:creation_times,                                        field: :creation_time)
-    .register_column(:modification_times,                                    field: :modification_time)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids,                                                   field: :id)
+             .register_column(:creator_request_ids,                                   field: :creator_request_id)
+             .register_column(:arns,                                                  field: :arn)
+             .register_column(:names,                                                 field: :name)
+             .register_column(:security_group_ids,                                    field: :security_group_ids)
+             .register_column(:directions,                                            field: :direction)
+             .register_column(:ip_address_counts,                                     field: :ip_address_count)
+             .register_column(:host_vpc_ids,                                          field: :host_vpc_id)
+             .register_column(:statuses,                                              field: :status)
+             .register_column(:status_messages,                                       field: :status_message)
+             .register_column(:creation_times,                                        field: :creation_time)
+             .register_column(:modification_times,                                    field: :modification_time)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

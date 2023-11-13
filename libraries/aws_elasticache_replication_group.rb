@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsElastiCacheReplicationGroup < AwsResourceBase
-  name "aws_elasticache_replication_group"
-  desc "Verifies settings for an AWS Elasticache Replication Group"
+  name 'aws_elasticache_replication_group'
+  desc 'Verifies settings for an AWS Elasticache Replication Group'
 
   example "
     describe aws_elasticache_replication_group('my-replication_group-001') do

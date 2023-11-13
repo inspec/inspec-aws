@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsIamUsers < AwsCollectionResourceBase
-  name "aws_iam_users"
-  desc "Verifies settings for a collection of AWS IAM Users."
+  name 'aws_iam_users'
+  desc 'Verifies settings for a collection of AWS IAM Users.'
 
   example "
     describe aws_iam_users(user_name: 'psmith') do
@@ -13,20 +13,20 @@ class AwsIamUsers < AwsCollectionResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:usernames,   field: :username)
-    .register_column(:user_arns,   field: :user_arn)
-    .register_column(:user_ids,    field: :user_id)
-    .register_column(:access_keys, field: :access_keys, lazy_instance: :lazy_load_access_keys)
-    .register_column(:has_attached_policies, field: :has_attached_policies, lazy_instance: :lazy_load_attached_policies)
-    .register_column(:attached_policy_names, field: :attached_policy_names, lazy_instance: :lazy_load_attached_policy_names)
-    .register_column(:attached_policy_arns,  field: :attached_policy_arns, lazy_instance: :lazy_load_attached_policy_arns)
-    .register_column(:has_console_password,  field: :has_console_password, lazy_instance: :lazy_load_has_console_password)
-    .register_column(:has_inline_policies, field: :has_inline_policies, lazy_instance: :lazy_load_has_inline_policies)
-    .register_column(:inline_policy_names,   field: :inline_policy_names, lazy_instance: :lazy_load_inline_policies)
-    .register_column(:has_mfa_enabled,       field: :has_mfa_enabled, lazy_instance: :lazy_load_has_mfa_enabled)
-    .register_column(:password_ever_used?,   field: :password_ever_used?)
-    .register_column(:password_last_used_days_ago, field: :password_last_used_days_ago)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:usernames,   field: :username)
+             .register_column(:user_arns,   field: :user_arn)
+             .register_column(:user_ids,    field: :user_id)
+             .register_column(:access_keys, field: :access_keys, lazy_instance: :lazy_load_access_keys)
+             .register_column(:has_attached_policies, field: :has_attached_policies, lazy_instance: :lazy_load_attached_policies)
+             .register_column(:attached_policy_names, field: :attached_policy_names, lazy_instance: :lazy_load_attached_policy_names)
+             .register_column(:attached_policy_arns,  field: :attached_policy_arns, lazy_instance: :lazy_load_attached_policy_arns)
+             .register_column(:has_console_password,  field: :has_console_password, lazy_instance: :lazy_load_has_console_password)
+             .register_column(:has_inline_policies, field: :has_inline_policies, lazy_instance: :lazy_load_has_inline_policies)
+             .register_column(:inline_policy_names,   field: :inline_policy_names, lazy_instance: :lazy_load_inline_policies)
+             .register_column(:has_mfa_enabled,       field: :has_mfa_enabled, lazy_instance: :lazy_load_has_mfa_enabled)
+             .register_column(:password_ever_used?,   field: :password_ever_used?)
+             .register_column(:password_last_used_days_ago, field: :password_last_used_days_ago)
+             .install_filter_methods_on_resource(self, :table)
 
   alias has_mfa_enabled? has_mfa_enabled
   alias has_console_password? has_console_password
@@ -44,7 +44,7 @@ class AwsIamUsers < AwsCollectionResourceBase
       @aws.iam_client.list_users.flat_map do |response|
         response.users.map do |user|
           {
-            username: user.arn.split("/").last,
+            username: user.arn.split('/').last,
             user_arn: user.arn,
             user_id: user.user_id,
             password_ever_used?: user.password_last_used.present?,
@@ -57,17 +57,17 @@ class AwsIamUsers < AwsCollectionResourceBase
 
   def lazy_load_has_console_password(row, _condition, _table)
     row[:has_console_password] = fetch(client: :iam_client, operation: :get_login_profile, kwargs: { user_name: row[:username] })
-      .present?
+                                 .present?
   end
 
   def lazy_load_access_keys(row, _condition, _table)
     row[:access_keys] = fetch(client: :iam_client, operation: :list_access_keys, kwargs: { user_name: row[:username] })
-      .flat_map(&:access_key_metadata) || []
+                        .flat_map(&:access_key_metadata) || []
   end
 
   def lazy_load_attached_policies(row, _condition, _table)
     row[:has_attached_policies] ||= fetch(client: :iam_client, operation: :list_attached_user_policies, kwargs: { user_name: row[:username] })
-      .flat_map(&:attached_policies)
+                                    .flat_map(&:attached_policies)
   end
 
   def lazy_load_attached_policy_names(row, condition, table)
@@ -80,7 +80,7 @@ class AwsIamUsers < AwsCollectionResourceBase
 
   def lazy_load_inline_policies(row, _condition, _table)
     row[:inline_policy_names] ||= fetch(client: :iam_client, operation: :list_user_policies, kwargs: { user_name: row[:username] })
-      .flat_map(&:policy_names)
+                                  .flat_map(&:policy_names)
   end
 
   def lazy_load_has_inline_policies(row, condition, table)

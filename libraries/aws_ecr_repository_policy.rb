@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEcrPolicy < AwsResourceBase
-  name "aws_ecr_repository_policy"
-  desc "Verifies policy settings for an AWS ECR Repository."
+  name 'aws_ecr_repository_policy'
+  desc 'Verifies policy settings for an AWS ECR Repository.'
 
   example "
     describe aws_ecr_repository_policy(repository_name: 'my-repository') do

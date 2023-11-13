@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsCloudFrontKeyGroups < AwsResourceBase
-  name "aws_cloudfront_key_groups"
-  desc "Describes one or more of Key Group."
+  name 'aws_cloudfront_key_groups'
+  desc 'Describes one or more of Key Group.'
   example <<-EXAMPLE
     describe aws_cloudfront_key_groups do
       it { should exist }
@@ -12,12 +12,12 @@ class AwsCloudFrontKeyGroups < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:ids, field: :id)
-    .register_column(:last_modified_time, field: :last_modified_time)
-    .register_column(:key_group_config_names, field: :key_group_config_name)
-    .register_column(:key_group_config_items, field: :key_group_config_items, style: :simple)
-    .register_column(:key_group_config_comments, field: :key_group_config_comment, style: :simple)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:ids, field: :id)
+             .register_column(:last_modified_time, field: :last_modified_time)
+             .register_column(:key_group_config_names, field: :key_group_config_name)
+             .register_column(:key_group_config_items, field: :key_group_config_items, style: :simple)
+             .register_column(:key_group_config_comments, field: :key_group_config_comment, style: :simple)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

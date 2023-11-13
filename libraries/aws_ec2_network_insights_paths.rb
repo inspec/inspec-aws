@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSEC2NetworkInsightsPaths < AwsResourceBase
-  name "aws_ec2_network_insights_paths"
-  desc "List all the network insights paths."
+  name 'aws_ec2_network_insights_paths'
+  desc 'List all the network insights paths.'
 
   example "
     describe aws_ec2_network_insights_paths do
@@ -13,17 +13,17 @@ class AWSEC2NetworkInsightsPaths < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:network_insights_path_ids, field: :network_insights_path_id)
-    .register_column(:network_insights_path_arns, field: :network_insights_path_arn)
-    .register_column(:created_dates, field: :created_date)
-    .register_column(:sources, field: :source)
-    .register_column(:destinations, field: :destination)
-    .register_column(:source_ips, field: :source_ip)
-    .register_column(:destination_ips, field: :destination_ip)
-    .register_column(:protocols, field: :protocol)
-    .register_column(:destination_ports, field: :destination_port)
-    .register_column(:tags, field: :tags)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:network_insights_path_ids, field: :network_insights_path_id)
+             .register_column(:network_insights_path_arns, field: :network_insights_path_arn)
+             .register_column(:created_dates, field: :created_date)
+             .register_column(:sources, field: :source)
+             .register_column(:destinations, field: :destination)
+             .register_column(:source_ips, field: :source_ip)
+             .register_column(:destination_ips, field: :destination_ip)
+             .register_column(:protocols, field: :protocol)
+             .register_column(:destination_ports, field: :destination_port)
+             .register_column(:tags, field: :tags)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

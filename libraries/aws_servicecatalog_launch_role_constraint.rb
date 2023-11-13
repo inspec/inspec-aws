@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
-  name "aws_servicecatalog_launch_role_constraint"
-  desc "Gets information about the specified constraint."
+  name 'aws_servicecatalog_launch_role_constraint'
+  desc 'Gets information about the specified constraint.'
 
   example "
     describe aws_servicecatalog_launch_role_constraint(id: 'Id') do
@@ -24,7 +24,7 @@ class AWSServiceCatalogLaunchRoleConstraint < AwsResourceBase
   end
 
   def resource_id
-    @res? @display_name : ""
+    @res? @display_name : ''
   end
 
   def exists?

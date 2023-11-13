@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEcsCluster < AwsResourceBase
-  name "aws_ecs_cluster"
-  desc "Verifies settings for an ECS cluster."
+  name 'aws_ecs_cluster'
+  desc 'Verifies settings for an ECS cluster.'
 
   example "
     describe aws_ecs_cluster('backup-cluster') do

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
-  name "aws_network_firewall_firewall_policy"
-  desc "Returns the data objects for the specified firewall policy."
+  name 'aws_network_firewall_firewall_policy'
+  desc 'Returns the data objects for the specified firewall policy.'
 
   example "
     describe aws_network_firewall_firewall_policy(firewall_policy_name: 'FirewallPolicyName') do
@@ -25,7 +25,7 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
   end
 
   def firewall_policy_name
-    return nil unless exists?
+    return unless exists?
     @res[:firewall_policy_name]
   end
 

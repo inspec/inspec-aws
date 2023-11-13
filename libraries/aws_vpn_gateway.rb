@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVPNGateway < AwsResourceBase
-  name "aws_vpn_gateway"
-  desc "Verifies settings for a single AWS VPN Gateway."
+  name 'aws_vpn_gateway'
+  desc 'Verifies settings for a single AWS VPN Gateway.'
 
   example "
    describe aws_vpn_gateway(vpn_gateway_id: 'vgw-014aef8a0689b8f43') do
@@ -39,7 +39,7 @@ class AwsVPNGateway < AwsResourceBase
   def attached?
     return false if attachments.nil? || attachments.empty?
 
-    attachments.first.state == "attached"
+    attachments.first.state == 'attached'
   end
 
   def detached?
@@ -47,7 +47,7 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def resource_id
-    @opts ? @opts[:vpn_gateway_id] : ""
+    @opts ? @opts[:vpn_gateway_id] : ''
   end
 
   private
@@ -73,7 +73,7 @@ class AwsVPNGateway < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, "parameter `vpn_gateway_id` cannot be blank" if @opts[:vpn_gateway_id].nil? || @opts[:vpn_gateway_id].empty?
-    raise ArgumentError, "parameter `vpn_gateway_id` should start with `vgw-` followed by alpha numeric characters" if @opts[:vpn_gateway_id] !~ /^vgw-[a-z0-9]+$/
+    raise ArgumentError, 'parameter `vpn_gateway_id` cannot be blank' if @opts[:vpn_gateway_id].nil? || @opts[:vpn_gateway_id].empty?
+    raise ArgumentError, 'parameter `vpn_gateway_id` should start with `vgw-` followed by alpha numeric characters' if @opts[:vpn_gateway_id] !~ /^vgw-[a-z0-9]+$/
   end
 end

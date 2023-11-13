@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSLambdaCodeSigningConfigs < AwsResourceBase
-  name "aws_lambda_code_signing_configs"
-  desc "Returns a list of code signing configurations."
+  name 'aws_lambda_code_signing_configs'
+  desc 'Returns a list of code signing configurations.'
 
   example "
     describe aws_lambda_code_signing_configs do
@@ -13,13 +13,13 @@ class AWSLambdaCodeSigningConfigs < AwsResourceBase
   attr_reader :table
 
   FilterTable.create
-    .register_column(:code_signing_config_ids, field: :code_signing_config_id)
-    .register_column(:code_signing_config_arns, field: :code_signing_config_arn)
-    .register_column(:descriptions, field: :description)
-    .register_column(:allowed_publishers, field: :allowed_publishers)
-    .register_column(:code_signing_policies, field: :code_signing_policies)
-    .register_column(:last_modified, field: :last_modified)
-    .install_filter_methods_on_resource(self, :table)
+             .register_column(:code_signing_config_ids, field: :code_signing_config_id)
+             .register_column(:code_signing_config_arns, field: :code_signing_config_arn)
+             .register_column(:descriptions, field: :description)
+             .register_column(:allowed_publishers, field: :allowed_publishers)
+             .register_column(:code_signing_policies, field: :code_signing_policies)
+             .register_column(:last_modified, field: :last_modified)
+             .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
     super(opts)

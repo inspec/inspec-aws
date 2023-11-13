@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSMQConfiguration < AwsResourceBase
-  name "aws_mq_configuration"
-  desc "Returns information about the specified configuration."
+  name 'aws_mq_configuration'
+  desc 'Returns information about the specified configuration.'
   example <<-EXAMPLE
     describe aws_mq_configuration(configuration_id: 'CONFIGURATION_ID') do
       it { should exist }
@@ -34,7 +34,7 @@ class AWSMQConfiguration < AwsResourceBase
   end
 
   def configuration_id
-    return nil unless exists?
+    return unless exists?
     @configurations[:id]
   end
 

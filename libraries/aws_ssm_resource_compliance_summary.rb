@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsSsmResourceComplianceSummary < AwsResourceBase
-  name "aws_ssm_resource_compliance_summary"
-  desc "Verifies settings for a SSM Resource Compliance Summary."
+  name 'aws_ssm_resource_compliance_summary'
+  desc 'Verifies settings for a SSM Resource Compliance Summary.'
 
   example "
     describe aws_ssm_resource_compliance_summary(resource_id: 'resource-id') do
@@ -16,10 +16,10 @@ class AwsSsmResourceComplianceSummary < AwsResourceBase
     validate_parameters(required: [:resource_id], allow: %i(compliance_type overall_severity status))
     @display_name = opts[:resource_id]
 
-    filter_params = [{ key: "InstanceId", values: [opts[:resource_id]] }]
-    filter_params << { key: "ComplianceType", values: [opts[:compliance_type]] } if opts[:compliance_type]
-    filter_params << { key: "OverallSeverity", values: [opts[:overall_severity]] } if opts[:overall_severity]
-    filter_params << { key: "Status", values: [opts[:status]] } if opts[:status]
+    filter_params = [{ key: 'InstanceId', values: [opts[:resource_id]] }]
+    filter_params << { key: 'ComplianceType', values: [opts[:compliance_type]] } if opts[:compliance_type]
+    filter_params << { key: 'OverallSeverity', values: [opts[:overall_severity]] } if opts[:overall_severity]
+    filter_params << { key: 'Status', values: [opts[:status]] } if opts[:status]
 
     filter = { filters: filter_params }
 

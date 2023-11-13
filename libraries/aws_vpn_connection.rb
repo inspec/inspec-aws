@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsVPNConnection < AwsResourceBase
-  name "aws_vpn_connection"
-  desc "Verifies settings for a single AWS VPN Connection."
+  name 'aws_vpn_connection'
+  desc 'Verifies settings for a single AWS VPN Connection.'
   example <<-EXAMPLE
      describe aws_vpn_connection(vpn_connection_id: 'vpn-1234567890') do
        it { should exist }
@@ -50,6 +50,6 @@ class AwsVPNConnection < AwsResourceBase
   end
 
   def validate_identifier
-    raise ArgumentError, "parameter `vpn_connection_id` cannot be blank" if @opts[:vpn_connection_id].blank?
+    raise ArgumentError, 'parameter `vpn_connection_id` cannot be blank' if @opts[:vpn_connection_id].blank?
   end
 end

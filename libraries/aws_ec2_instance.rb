@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsEc2Instance < AwsResourceBase
-  name "aws_ec2_instance"
-  desc "Verifies settings for an AWS EC2 instance."
+  name 'aws_ec2_instance'
+  desc 'Verifies settings for an AWS EC2 instance.'
 
   example "
     describe aws_ec2_instance('i-12345678') do
@@ -29,7 +29,7 @@ class AwsEc2Instance < AwsResourceBase
       instance_arguments = { instance_ids: [opts[:instance_id]] }
     elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
       @display_name = opts[:name]
-      instance_arguments = { filters: [{ name: "tag:Name", values: [opts[:name]] }] }
+      instance_arguments = { filters: [{ name: 'tag:Name', values: [opts[:name]] }] }
     else
       raise ArgumentError, "#{@__resource_name__}: either instance_id or name must be provided."
     end
@@ -52,7 +52,7 @@ class AwsEc2Instance < AwsResourceBase
       # Methods required to ensure backwards compatibility
       class << self
         def state
-          return nil unless @instance[:state]
+          return unless @instance[:state]
           @instance[:state][:name]
         end
 
@@ -73,31 +73,31 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   def security_group_ids
-    return nil unless @instance[:security_groups]
+    return unless @instance[:security_groups]
     @instance[:security_groups].map { |sg| sg[:group_id] }
   end
 
   def availability_zone
-    return nil unless @instance[:placement]
-    return nil unless @instance[:placement].include?(:availability_zone)
+    return unless @instance[:placement]
+    return unless @instance[:placement].include?(:availability_zone)
     @instance[:placement][:availability_zone]
   end
 
   def ebs_volumes
-    return nil unless @instance[:block_device_mappings]
-    return nil if @instance[:block_device_mappings].count == 0
+    return unless @instance[:block_device_mappings]
+    return if @instance[:block_device_mappings].count == 0
     @instance[:block_device_mappings].map { |vol| { id: vol[:ebs][:volume_id], name: vol[:device_name] } }
   end
 
   def network_interface_ids
-    return nil unless @instance[:network_interfaces]
-    return nil if @instance[:network_interfaces].count == 0
+    return unless @instance[:network_interfaces]
+    return if @instance[:network_interfaces].count == 0
     @instance[:network_interfaces].map { |nic| nic[:network_interface_id] }
   end
 
   def has_roles?
     return false unless @instance[:iam_instance_profile] && @instance[:iam_instance_profile][:arn]
-    instance_profile = @instance[:iam_instance_profile][:arn].split("/").last
+    instance_profile = @instance[:iam_instance_profile][:arn].split('/').last
     @returned_roles = nil
     # Check if there is a role created at the attached profile
     catch_aws_errors do
@@ -118,7 +118,7 @@ class AwsEc2Instance < AwsResourceBase
 
   # Generate a matcher for each state
   %w{pending running shutting-down terminated stopping stopped unknown}.each do |state_name|
-    define_method "#{state_name.tr("-", "_")}?" do
+    define_method "#{state_name.tr('-', '_')}?" do
       state == state_name
     end
   end

@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AWSIAMOIDCProvider < AwsResourceBase
-  name "aws_iam_oidc_provider"
-  desc "Retrieves information about the specified  specified OpenID Connect (OIDC) provider resource."
+  name 'aws_iam_oidc_provider'
+  desc 'Retrieves information about the specified  specified OpenID Connect (OIDC) provider resource.'
 
   example "
     describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'test1') do
@@ -24,7 +24,7 @@ class AWSIAMOIDCProvider < AwsResourceBase
   end
 
   def resource_id
-    @res? @display_name: ""
+    @res? @display_name: ''
   end
 
   def exists?
