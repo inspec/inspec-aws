@@ -74,9 +74,7 @@ class AwsConnection
     # This can be useful for e.g.
     #  https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/stubbing.html
     #  https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/setup-config.html#aws-ruby-sdk-setting-non-standard-endpoint
-    if params.is_a?(Hash)
-      @client_args = params.fetch(:client_args, nil)
-    end
+    @client_args = params.fetch(:client_args, nil) if params.is_a?(Hash)
     @cache = {}
   end
 
@@ -338,6 +336,10 @@ class AwsConnection
   def apigatewayv2_client
     aws_client(Aws::ApiGatewayV2::Client)
   end
+
+  def account_client
+    aws_client(Aws::Account::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -353,15 +355,31 @@ class AwsResourceBase < Inspec.resource(1)
     client_args = { client_args: {} }
     if opts.is_a?(Hash)
       # below allows each resource to optionally and conveniently set a region
-      client_args[:client_args][:region] = opts[:aws_region] if opts[:aws_region]
+      client_args[:client_args][:region] = opts[:aws_region] if opts[
+        :aws_region
+      ]
       # below allows each resource to optionally and conveniently set an endpoint
-      client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[:aws_endpoint]
+      client_args[:client_args][:endpoint] = opts[:aws_endpoint] if opts[
+        :aws_endpoint
+      ]
       # below allows each resource to optionally and conveniently set max_retries and retry_backoff
       env_hash = ENV.map { |k, v| [k.downcase, v] }.to_h
-      opts[:aws_retry_limit]=   env_hash["aws_retry_limit"].to_i if !opts[:aws_retry_limit] && env_hash["aws_retry_limit"]
-      opts[:aws_retry_backoff]= env_hash["aws_retry_backoff"].to_i if !opts[:aws_retry_backoff] && env_hash["aws_retry_backoff"]
-      client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[:aws_retry_limit]
-      client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
+      opts[:aws_retry_limit] = env_hash["aws_retry_limit"].to_i if !opts[
+        :aws_retry_limit
+      ] && env_hash["aws_retry_limit"]
+      opts[:aws_retry_backoff] = env_hash["aws_retry_backoff"].to_i if !opts[
+        :aws_retry_backoff
+      ] && env_hash["aws_retry_backoff"]
+      client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[
+        :aws_retry_limit
+      ]
+      if opts[
+        :aws_retry_backoff
+      ]
+        client_args[:client_args][
+          :retry_backoff
+        ] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }"
+      end
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
 
@@ -375,9 +393,14 @@ class AwsResourceBase < Inspec.resource(1)
 
     # here we might want to inject stub data for testing, let's use an option for that
     return if !defined?(@opts.keys) || !@opts.include?(:stub_data)
-    raise ArgumentError, "Expected stub data to be an array" if !opts[:stub_data].is_a?(Array)
+    if !opts[:stub_data].is_a?(Array)
+      raise ArgumentError, "Expected stub data to be an array"
+    end
     opts[:stub_data].each do |stub|
-      raise ArgumentError, "Expect each stub_data hash to have :client, :method and :data keys" if !stub.keys.all? { |a| %i(method data client).include?(a) }
+      if !stub.keys.all? { |a| %i(method data client).include?(a) }
+        raise ArgumentError,
+              "Expect each stub_data hash to have :client, :method and :data keys"
+      end
       @aws.aws_client(stub[:client]).stub_responses(stub[:method], stub[:data])
     end
   end
@@ -389,24 +412,57 @@ class AwsResourceBase < Inspec.resource(1)
   # If a parameter is entirely optional, use `allow`
   def validate_parameters(allow: [], required: nil, require_any_of: nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     if required
-      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{required}" unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: `#{required}` must be provided" unless @opts.is_a?(Hash) && required.all? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != "" }
+      unless required.is_a?(Array) && required.all? { |r| r.is_a?(Symbol) }
+        raise ArgumentError,
+              "Expected required parameters as Array of Symbols, got #{required}"
+      end
+      unless @opts.is_a?(Hash) &&
+          required.all? { |req|
+            @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
+          }
+        raise ArgumentError,
+              "#{@__resource_name__}: `#{required}` must be provided"
+      end
       allow += required
     end
 
     if require_any_of
-      raise ArgumentError, "Expected required parameters as Array of Symbols, got #{require_any_of}" unless require_any_of.is_a?(Array) && require_any_of.all? { |r| r.is_a?(Symbol) }
-      raise ArgumentError, "#{@__resource_name__}: One of `#{require_any_of}` must be provided." unless @opts.is_a?(Hash) && require_any_of.any? { |req| @opts.key?(req) && !@opts[req].nil? && @opts[req] != "" }
+      unless require_any_of.is_a?(Array) &&
+          require_any_of.all? { |r| r.is_a?(Symbol) }
+        raise ArgumentError,
+              "Expected required parameters as Array of Symbols, got #{require_any_of}"
+      end
+      unless @opts.is_a?(Hash) &&
+          require_any_of.any? { |req|
+            @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
+          }
+        raise ArgumentError,
+              "#{@__resource_name__}: One of `#{require_any_of}` must be provided."
+      end
       allow += require_any_of
     end
 
-    allow += %i(client_args stub_data aws_region aws_endpoint aws_retry_limit aws_retry_backoff resource_data)
-    raise ArgumentError, "Scalar arguments not supported" unless defined?(@opts.keys)
-    raise ArgumentError, "Unexpected arguments found" unless @opts.keys.all? { |a| allow.include?(a) }
-    raise ArgumentError, "Provided parameter should not be empty" unless @opts.values.all? do |a|
+    allow += %i(
+      client_args
+      stub_data
+      aws_region
+      aws_endpoint
+      aws_retry_limit
+      aws_retry_backoff
+      resource_data
+    )
+    unless defined?(@opts.keys)
+      raise ArgumentError, "Scalar arguments not supported"
+    end
+    unless @opts.keys.all? { |a| allow.include?(a) }
+      raise ArgumentError, "Unexpected arguments found"
+    end
+    unless @opts.values.all? { |a|
       return true if a.instance_of?(Integer)
       return true if [TrueClass, FalseClass].include?(a.class)
       !a.empty?
+    }
+      raise ArgumentError, "Provided parameter should not be empty"
     end
     true
   end
@@ -436,6 +492,10 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error "It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details."
     fail_resource("No AWS credentials available")
     nil
+  rescue Aws::Account::Errors::ResourceNotFoundException => e
+    Inspec::Log.warn "#{e.message}"
+    skip_resource("#{e.message}")
+    nil
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error "The endpoint that is trying to be accessed does not exist."
     fail_resource("Invalid Endpoint error")
@@ -448,18 +508,20 @@ class AwsResourceBase < Inspec.resource(1)
       when "InvalidAccessKeyId"
         advice = "Please ensure your AWS Access Key ID is set correctly."
       when "InvalidClientTokenId"
-        advice = "Please ensure that the aws access key, aws secret access key, and the aws session token are correct."
+        advice =
+          "Please ensure that the aws access key, aws secret access key, and the aws session token are correct."
       when "AccessDenied"
-        advice = "Please check the IAM permissions required for this Resource in the documentation, " \
-                 "and ensure your Service Principal has these permissions set."
+        advice =
+          "Please check the IAM permissions required for this Resource in the documentation, " \
+            "and ensure your Service Principal has these permissions set."
       end
       error_message = "#{e.message}: #{advice}"
 
       raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
-                       "Error message: #{e.message}. You should address this error to ensure your controls are " \
-                       "behaving as expected."
+                         "Error message: #{e.message}. You should address this error to ensure your controls are " \
+                         "behaving as expected."
       @failed_resource = true
     end
     nil
@@ -479,9 +541,7 @@ class AwsResourceBase < Inspec.resource(1)
   def map_tags(tag_list)
     return {} if tag_list.nil? || tag_list.empty?
     tags = {}
-    tag_list.each do |tag|
-      tags[tag[:key]] = tag[:value]
-    end
+    tag_list.each { |tag| tags[tag[:key]] = tag[:value] }
     tags
   end
 
@@ -509,9 +569,10 @@ class AwsResourceBase < Inspec.resource(1)
 
   # This method should be used when AWS API returns multiple resources for the provided criteria.
   def resource_fail(message = nil)
-    message ||= "#{@__resource_name__}: #{@display_name}. Multiple AWS resources were returned for the provided criteria. "\
-    "If you wish to test multiple entities, please use the plural resource. "\
-    "Otherwise, please provide more specific criteria to lookup the resource."
+    message ||=
+      "#{@__resource_name__}: #{@display_name}. Multiple AWS resources were returned for the provided criteria. " \
+        "If you wish to test multiple entities, please use the plural resource. " \
+        "Otherwise, please provide more specific criteria to lookup the resource."
     # Fail resource in resource pack. `exists?` method will return `false`.
     @failed_resource = true
     # Fail resource in InSpec core. Tests in InSpec profile will return the message.
@@ -546,14 +607,16 @@ class AwsCollectionResourceBase < AwsResourceBase
   end
 
   def fetch(client:, operation:, kwargs: {})
-    raise ArgumentError, "Valid Client not found!" unless @aws.respond_to?(client)
+    unless @aws.respond_to?(client)
+      raise ArgumentError, "Valid Client not found!"
+    end
 
     client_obj = @aws.send(client)
-    raise ArgumentError, "#{client} does not support #{operation}" unless client_obj.respond_to?(operation)
-
-    catch_aws_errors do
-      client_obj.send(operation, **kwargs)
+    unless client_obj.respond_to?(operation)
+      raise ArgumentError, "#{client} does not support #{operation}"
     end
+
+    catch_aws_errors { client_obj.send(operation, **kwargs) }
   end
 
   private
@@ -561,7 +624,10 @@ class AwsCollectionResourceBase < AwsResourceBase
   def populate_filter_table_from_response
     return unless @table.present?
 
-    table_schema = @table.first.keys.map { |key| { column: key.to_s.pluralize.to_sym, field: key, style: :simple } }
+    table_schema =
+      @table.first.keys.map do |key|
+        { column: key.to_s.pluralize.to_sym, field: key, style: :simple }
+      end
     AwsCollectionResourceBase.populate_filter_table(:table, table_schema)
   end
 end
@@ -583,14 +649,16 @@ class AwsResourceDynamicMethods
     when /Aws::.*/
       # iterate around the instance variables
       data.instance_variables.each do |var|
-        create_method(object, var.to_s.delete("@"), data.instance_variable_get(var))
+        create_method(
+          object,
+          var.to_s.delete("@"),
+          data.instance_variable_get(var),
+        )
       end
       # When the data is a Hash object iterate around each of the key value pairs and
       # create a method for each one.
     when "Hash"
-      data.each do |key, value|
-        create_method(object, key, value)
-      end
+      data.each { |key, value| create_method(object, key, value) }
     end
   end
 
@@ -610,7 +678,11 @@ class AwsResourceDynamicMethods
         value
       end
     when "Hash"
-      value.count == 0 ? return_value = value : return_value = AwsResourceProbe.new(value)
+      if value.count == 0
+        return_value = value
+      else
+        return_value = AwsResourceProbe.new(value)
+      end
       object.define_singleton_method name do
         return_value
       end
@@ -633,9 +705,7 @@ class AwsResourceDynamicMethods
       else
         if name.eql?(:tags)
           probes = {}
-          value.each do |tag|
-            probes[tag[:key]] = tag[:value]
-          end
+          value.each { |tag| probes[tag[:key]] = tag[:value] }
         else
           probes = []
           value.each do |value_item|
