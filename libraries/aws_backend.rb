@@ -62,6 +62,7 @@ require "aws-sdk-ses"
 require "aws-sdk-waf"
 require "aws-sdk-synthetics"
 require "aws-sdk-apigatewayv2"
+require "aws-sdk-account"
 
 # AWS Inspec Backend Classes
 #
@@ -373,9 +374,7 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_limit] = opts[:aws_retry_limit] if opts[
         :aws_retry_limit
       ]
-      if opts[
-        :aws_retry_backoff
-      ]
+      if opts[:aws_retry_backoff]
         client_args[:client_args][
           :retry_backoff
         ] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }"
@@ -397,7 +396,7 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, "Expected stub data to be an array"
     end
     opts[:stub_data].each do |stub|
-      if !stub.keys.all? { |a| %i(method data client).include?(a) }
+      if !stub.keys.all? { |a| %i[method data client].include?(a) }
         raise ArgumentError,
               "Expect each stub_data hash to have :client, :method and :data keys"
       end
@@ -417,9 +416,9 @@ class AwsResourceBase < Inspec.resource(1)
               "Expected required parameters as Array of Symbols, got #{required}"
       end
       unless @opts.is_a?(Hash) &&
-          required.all? { |req|
-            @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
-          }
+               required.all? { |req|
+                 @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
+               }
         raise ArgumentError,
               "#{@__resource_name__}: `#{required}` must be provided"
       end
@@ -428,21 +427,21 @@ class AwsResourceBase < Inspec.resource(1)
 
     if require_any_of
       unless require_any_of.is_a?(Array) &&
-          require_any_of.all? { |r| r.is_a?(Symbol) }
+               require_any_of.all? { |r| r.is_a?(Symbol) }
         raise ArgumentError,
               "Expected required parameters as Array of Symbols, got #{require_any_of}"
       end
       unless @opts.is_a?(Hash) &&
-          require_any_of.any? { |req|
-            @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
-          }
+               require_any_of.any? { |req|
+                 @opts.key?(req) && !@opts[req].nil? && @opts[req] != ""
+               }
         raise ArgumentError,
               "#{@__resource_name__}: One of `#{require_any_of}` must be provided."
       end
       allow += require_any_of
     end
 
-    allow += %i(
+    allow += %i[
       client_args
       stub_data
       aws_region
@@ -450,7 +449,7 @@ class AwsResourceBase < Inspec.resource(1)
       aws_retry_limit
       aws_retry_backoff
       resource_data
-    )
+    ]
     unless defined?(@opts.keys)
       raise ArgumentError, "Scalar arguments not supported"
     end
@@ -458,10 +457,10 @@ class AwsResourceBase < Inspec.resource(1)
       raise ArgumentError, "Unexpected arguments found"
     end
     unless @opts.values.all? { |a|
-      return true if a.instance_of?(Integer)
-      return true if [TrueClass, FalseClass].include?(a.class)
-      !a.empty?
-    }
+             return true if a.instance_of?(Integer)
+             return true if [TrueClass, FalseClass].include?(a.class)
+             !a.empty?
+           }
       raise ArgumentError, "Provided parameter should not be empty"
     end
     true
@@ -652,7 +651,7 @@ class AwsResourceDynamicMethods
         create_method(
           object,
           var.to_s.delete("@"),
-          data.instance_variable_get(var),
+          data.instance_variable_get(var)
         )
       end
       # When the data is a Hash object iterate around each of the key value pairs and
