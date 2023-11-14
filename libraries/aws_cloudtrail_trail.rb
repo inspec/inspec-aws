@@ -9,9 +9,17 @@ class AwsCloudTrailTrail < AwsResourceBase
     end
   EXAMPLE
 
-  attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :trail_name,
-              :kms_key_id, :s3_bucket_name, :s3_key_prefix, :trail_arn, :is_multi_region_trail,
-              :log_file_validation_enabled, :is_organization_trail
+  attr_reader :cloud_watch_logs_log_group_arn,
+              :cloud_watch_logs_role_arn,
+              :home_region,
+              :trail_name,
+              :kms_key_id,
+              :s3_bucket_name,
+              :s3_key_prefix,
+              :trail_arn,
+              :is_multi_region_trail,
+              :log_file_validation_enabled,
+              :is_organization_trail
 
   alias multi_region_trail? is_multi_region_trail
   alias log_file_validation_enabled? log_file_validation_enabled
@@ -25,7 +33,10 @@ class AwsCloudTrailTrail < AwsResourceBase
 
     @trail_name = opts[:trail_name]
     catch_aws_errors do
-      resp = @aws.cloudtrail_client.describe_trails({ trail_name_list: [@trail_name] })
+      resp =
+        @aws.cloudtrail_client.describe_trails(
+          { trail_name_list: [@trail_name] }
+        )
       @trail = resp.trail_list[0].to_h
       @trail_arn = @trail[:trail_arn]
       @kms_key_id = @trail[:kms_key_id]
@@ -48,8 +59,14 @@ class AwsCloudTrailTrail < AwsResourceBase
     return unless exists?
     catch_aws_errors do
       begin
-        trail_status = @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h
-        ((Time.now - trail_status[:latest_cloud_watch_logs_delivery_time]) / (24 * 60 * 60)).to_i unless trail_status[:latest_cloud_watch_logs_delivery_time].nil?
+        trail_status =
+          @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h
+        unless trail_status[:latest_cloud_watch_logs_delivery_time].nil?
+          (
+            (Time.now - trail_status[:latest_cloud_watch_logs_delivery_time]) /
+              (24 * 60 * 60)
+          ).to_i
+        end
       rescue Aws::CloudTrail::Errors::TrailNotFoundException
         nil
       end
@@ -59,7 +76,9 @@ class AwsCloudTrailTrail < AwsResourceBase
   def logging?
     catch_aws_errors do
       begin
-        @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h[:is_logging]
+        @aws.cloudtrail_client.get_trail_status({ name: @trail_name }).to_h[
+          :is_logging
+        ]
       rescue Aws::CloudTrail::Errors::TrailNotFoundException
         nil
       end
@@ -74,16 +93,20 @@ class AwsCloudTrailTrail < AwsResourceBase
     return unless exists?
     return unless @cloud_watch_logs_log_group_arn
     return if @cloud_watch_logs_log_group_arn.split(":").count < 6
-    return @cloud_watch_logs_log_group_arn.split(":")[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
+    if has_event_selector_mgmt_events_rw_type_all? && logging?
+      return @cloud_watch_logs_log_group_arn.split(":")[6]
+    end
   end
 
   def has_event_selector_mgmt_events_rw_type_all?
     return unless exists?
     event_selector_found = false
     begin
-      event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
+      event_selectors =
+        @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
       event_selectors.event_selectors.each do |es|
-        event_selector_found = true if es.read_write_type == "All" && es.include_management_events == true
+        event_selector_found = true if es.read_write_type == "All" &&
+          es.include_management_events == true
       end
     rescue Aws::CloudTrail::Errors::TrailNotFoundException
       event_selector_found

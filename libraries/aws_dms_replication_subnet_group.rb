@@ -13,19 +13,24 @@ class AWSDMSReplicationSubnetGroup < AwsResourceBase
     opts = { replication_subnet_group_identifier: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:replication_subnet_group_identifier])
-    raise ArgumentError, "#{@__resource_name__}: replication_subnet_group_identifier must be provided" unless opts[:replication_subnet_group_identifier] && !opts[:replication_subnet_group_identifier].empty?
+    unless opts[:replication_subnet_group_identifier] &&
+             !opts[:replication_subnet_group_identifier].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: replication_subnet_group_identifier must be provided"
+    end
     @display_name = opts[:replication_subnet_group_identifier]
     catch_aws_errors do
-      resp = @aws.dmsmigrationservice_client.describe_replication_subnet_groups(
-        {
-          filters: [
-            {
-              name: "replication-subnet-group-id",
-              values: [opts[:replication_subnet_group_identifier]],
-            },
-          ],
-        },
-      )
+      resp =
+        @aws.dmsmigrationservice_client.describe_replication_subnet_groups(
+          {
+            filters: [
+              {
+                name: "replication-subnet-group-id",
+                values: [opts[:replication_subnet_group_identifier]]
+              }
+            ]
+          }
+        )
       @replication_subnet_groups = resp.replication_subnet_groups[0].to_h
       create_resource_methods(@replication_subnet_groups)
     end
@@ -36,7 +41,7 @@ class AWSDMSReplicationSubnetGroup < AwsResourceBase
   end
 
   def replication_subnet_group_identifier
-    return unless exists?
+    return nil unless exists?
     @replication_subnet_groups[:replication_subnet_group_identifier]
   end
 

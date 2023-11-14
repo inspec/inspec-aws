@@ -11,12 +11,23 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rest_api_id documentation_part_id))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: documentation_part_id must be provided" unless opts[:documentation_part_id] && !opts[:documentation_part_id].empty?
+    validate_parameters(required: %i[rest_api_id documentation_part_id])
+    unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided"
+    end
+    unless opts[:documentation_part_id] && !opts[:documentation_part_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: documentation_part_id must be provided"
+    end
     @display_name = opts[:documentation_part_id]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_documentation_part({ rest_api_id: opts[:rest_api_id], documentation_part_id: opts[:documentation_part_id] })
+      resp =
+        @aws.apigateway_client.get_documentation_part(
+          {
+            rest_api_id: opts[:rest_api_id],
+            documentation_part_id: opts[:documentation_part_id]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -27,7 +38,7 @@ class AWSApiGatewayDocumentationPart < AwsResourceBase
   end
 
   def documentation_part_id
-    return unless exists?
+    return nil unless exists?
     @res[:documentation_part_id]
   end
 

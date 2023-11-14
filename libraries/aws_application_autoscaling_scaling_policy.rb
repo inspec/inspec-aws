@@ -14,22 +14,28 @@ class AWSApplicationAutoScalingScalingPolicy < AwsResourceBase
     super(opts)
     validate_parameters(required: [:service_namespace])
 
-    raise ArgumentError, "#{@__resource_name__}: service_namespace must be provided" unless opts[:service_namespace] && !opts[:service_namespace].empty?
+    unless opts[:service_namespace] && !opts[:service_namespace].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: service_namespace must be provided"
+    end
     @display_name = opts[:service_namespace]
     catch_aws_errors do
-      resp = @aws.applicationautoscaling_client.describe_scaling_policies({ service_namespace: opts[:service_namespace] })
+      resp =
+        @aws.applicationautoscaling_client.describe_scaling_policies(
+          { service_namespace: opts[:service_namespace] }
+        )
       @scaling_policies = resp.scaling_policies[0].to_h
       create_resource_methods(@scaling_policies)
     end
   end
 
   def service_namespace
-    return unless exists?
+    return nil unless exists?
     @scaling_policies[:service_namespace]
   end
 
   def resource_id
-    @scaling_policies ? @scaling_policies[:resource_id]: ""
+    @scaling_policies ? @scaling_policies[:resource_id] : ""
   end
 
   def exists?

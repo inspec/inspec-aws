@@ -13,14 +13,12 @@ class AWSEC2EIPAssociation < AwsResourceBase
   def initialize(opts = {})
     opts = { association_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(association_id))
-    raise ArgumentError, "#{@__resource_name__}: association_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
-    filter = [
-      {
-        name: "association-id",
-        values: [opts[:association_id]],
-      },
-    ]
+    validate_parameters(required: %i[association_id])
+    unless opts[:association_id] && !opts[:association_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: association_id must be provided"
+    end
+    filter = [{ name: "association-id", values: [opts[:association_id]] }]
     @display_name = opts[:association_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_addresses({ filters: filter })
@@ -30,7 +28,7 @@ class AWSEC2EIPAssociation < AwsResourceBase
   end
 
   def association_id
-    return unless exists?
+    return nil unless exists?
     @resp[:association_id]
   end
 

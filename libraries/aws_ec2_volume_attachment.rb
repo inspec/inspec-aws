@@ -14,17 +14,20 @@ class AWSEC2VolumeAttachment < AwsResourceBase
     opts = { volume_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:volume_id])
-    raise ArgumentError, "#{@__resource_name__}: volume_id must be provided" unless opts[:volume_id] && !opts[:volume_id].empty?
+    unless opts[:volume_id] && !opts[:volume_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: volume_id must be provided"
+    end
     @display_name = opts[:volume_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_volumes({ volume_ids: [opts[:volume_id]] })
+      resp =
+        @aws.compute_client.describe_volumes({ volume_ids: [opts[:volume_id]] })
       @res = resp.volumes[0].attachments[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def volume_id
-    return unless exists?
+    return nil unless exists?
     @res[:volume_id]
   end
 

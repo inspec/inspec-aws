@@ -12,25 +12,33 @@ class AWSEC2ClientVPNTargetNetworkAssociation < AwsResourceBase
   def initialize(opts = {})
     opts = { client_vpn_endpoint_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(client_vpn_endpoint_id association_id))
-    raise ArgumentError, "#{@__resource_name__}: client_vpn_endpoint_id must be provided" unless opts[:client_vpn_endpoint_id] && !opts[:client_vpn_endpoint_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: association_id must be provided" unless opts[:association_id] && !opts[:association_id].empty?
+    validate_parameters(required: %i[client_vpn_endpoint_id association_id])
+    unless opts[:client_vpn_endpoint_id] &&
+             !opts[:client_vpn_endpoint_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: client_vpn_endpoint_id must be provided"
+    end
+    unless opts[:association_id] && !opts[:association_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: association_id must be provided"
+    end
     @display_name = opts[:client_vpn_endpoint_id]
-    filter = [
-      {
-        name: "association-id",
-        values: [opts[:association_id]],
-      },
-    ]
+    filter = [{ name: "association-id", values: [opts[:association_id]] }]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_client_vpn_target_networks({ client_vpn_endpoint_id: opts[:client_vpn_endpoint_id], filters: filter })
+      resp =
+        @aws.compute_client.describe_client_vpn_target_networks(
+          {
+            client_vpn_endpoint_id: opts[:client_vpn_endpoint_id],
+            filters: filter
+          }
+        )
       @res = resp.client_vpn_target_networks[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def association_id
-    return unless exists?
+    return nil unless exists?
     @res[:association_id]
   end
 

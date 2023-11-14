@@ -15,17 +15,24 @@ class AWSAutoScalingScalingPolicy < AwsResourceBase
     super(opts)
     validate_parameters(required: [:auto_scaling_group_name])
 
-    raise ArgumentError, "#{@__resource_name__}: auto_scaling_group_name must be provided" unless opts[:auto_scaling_group_name] && !opts[:auto_scaling_group_name].empty?
+    unless opts[:auto_scaling_group_name] &&
+             !opts[:auto_scaling_group_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: auto_scaling_group_name must be provided"
+    end
     @display_name = opts[:auto_scaling_group_name]
     catch_aws_errors do
-      resp = @aws.autoscaling_client.describe_policies({ auto_scaling_group_name: opts[:auto_scaling_group_name] })
+      resp =
+        @aws.autoscaling_client.describe_policies(
+          { auto_scaling_group_name: opts[:auto_scaling_group_name] }
+        )
       @scaling_policies = resp.scaling_policies[0].to_h
       create_resource_methods(@scaling_policies)
     end
   end
 
   def auto_scaling_group_name
-    return unless exists?
+    return nil unless exists?
     @scaling_policies[:auto_scaling_group_name]
   end
 

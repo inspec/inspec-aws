@@ -12,8 +12,10 @@ class AwsApiGatewayV2Api < AwsResourceBase
   def initialize(opts = {})
     opts = { api_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
+    validate_parameters(required: %i[api_id])
+    if opts[:api_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: api_id must be provided!"
+    end
     @display_name = opts[:api_id]
     catch_aws_errors do
       resp = @aws.apigatewayv2_client.get_api({ api_id: opts[:api_id] })
@@ -23,7 +25,7 @@ class AwsApiGatewayV2Api < AwsResourceBase
   end
 
   def api_id
-    return unless exists?
+    return nil unless exists?
     @res[:api_id]
   end
 
@@ -32,7 +34,7 @@ class AwsApiGatewayV2Api < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:api_endpoint] : @display_name
+    @res ? @res[:api_endpoint] : @display_name
   end
 
   def to_s

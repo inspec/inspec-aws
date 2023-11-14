@@ -14,24 +14,36 @@ class AWSNetworkManagerCustomerGatewayAssociation < AwsResourceBase
     opts = { global_network_id: opts } if opts.is_a?(String)
     opts = { customer_gateway_arn: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(global_network_id customer_gateway_arn))
-    raise ArgumentError, "#{@__resource_name__}: global_network_id must be provided" unless opts[:global_network_id] && !opts[:global_network_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: customer_gateway_arn must be provided" unless opts[:customer_gateway_arn] && !opts[:customer_gateway_arn].empty?
+    validate_parameters(required: %i[global_network_id customer_gateway_arn])
+    unless opts[:global_network_id] && !opts[:global_network_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: global_network_id must be provided"
+    end
+    unless opts[:customer_gateway_arn] && !opts[:customer_gateway_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: customer_gateway_arn must be provided"
+    end
     @display_name = opts[:customer_gateway_arn]
     catch_aws_errors do
-      resp = @aws.network_manager_client.get_customer_gateway_associations({ global_network_id: opts[:global_network_id], customer_gateway_arns: [opts[:customer_gateway_arn]] })
+      resp =
+        @aws.network_manager_client.get_customer_gateway_associations(
+          {
+            global_network_id: opts[:global_network_id],
+            customer_gateway_arns: [opts[:customer_gateway_arn]]
+          }
+        )
       @res = resp.customer_gateway_associations[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def customer_gateway_arn
-    return unless exists?
+    return nil unless exists?
     @res[:customer_gateway_arn]
   end
 
   def resource_id
-    @res? @res[:customer_gateway_arn]: @display_name
+    @res ? @res[:customer_gateway_arn] : @display_name
   end
 
   def exists?

@@ -14,10 +14,16 @@ class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
     opts = { portfolio_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:portfolio_id])
-    raise ArgumentError, "#{@__resource_name__}: portfolio_id must be provided" unless opts[:portfolio_id] && !opts[:portfolio_id].empty?
+    unless opts[:portfolio_id] && !opts[:portfolio_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: portfolio_id must be provided"
+    end
     @display_name = opts[:portfolio_id]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.list_principals_for_portfolio({ portfolio_id: opts[:portfolio_id] })
+      resp =
+        @aws.servicecatalog_client.list_principals_for_portfolio(
+          { portfolio_id: opts[:portfolio_id] }
+        )
       @res = resp.principals[0].to_h
       @principal_arn = @res[:principal_arn]
       create_resource_methods(@res)
@@ -29,7 +35,7 @@ class AWSServiceCatalogPortfolioPrincipalAssociation < AwsResourceBase
   end
 
   def portfolio_id
-    return unless exists?
+    return nil unless exists?
     @res[:portfolio_id]
   end
 

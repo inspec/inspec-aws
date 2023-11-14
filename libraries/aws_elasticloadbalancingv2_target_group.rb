@@ -13,17 +13,23 @@ class AWSElasticLoadBalancingV2TargetGroup < AwsResourceBase
     opts = { target_group_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:target_group_arn])
-    raise ArgumentError, "#{@__resource_name__}: target_group_arns must be provided" unless opts[:target_group_arn] && !opts[:target_group_arn].empty?
+    unless opts[:target_group_arn] && !opts[:target_group_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: target_group_arns must be provided"
+    end
     @display_name = opts[:target_group_arn]
     catch_aws_errors do
-      resp = @aws.elb_client_v2.describe_target_groups({ target_group_arns: [opts[:target_group_arn]] })
+      resp =
+        @aws.elb_client_v2.describe_target_groups(
+          { target_group_arns: [opts[:target_group_arn]] }
+        )
       @target_groups = resp.target_groups[0].to_h
       create_resource_methods(@target_groups)
     end
   end
 
   def target_group_arn
-    return unless exists?
+    return nil unless exists?
     @target_groups[:target_group_arn]
   end
 

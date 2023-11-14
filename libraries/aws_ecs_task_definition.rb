@@ -14,10 +14,16 @@ class AWSECSTaskDefinition < AwsResourceBase
     opts = { task_definition: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:task_definition])
-    raise ArgumentError, "#{@__resource_name__}: task_definition must be provided" unless opts[:task_definition] && !opts[:task_definition].empty?
+    unless opts[:task_definition] && !opts[:task_definition].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: task_definition must be provided"
+    end
     @display_name = opts[:task_definition]
     catch_aws_errors do
-      resp = @aws.ecs_client.describe_task_definition({ task_definition: opts[:task_definition] })
+      resp =
+        @aws.ecs_client.describe_task_definition(
+          { task_definition: opts[:task_definition] }
+        )
       @task_definition = resp.task_definition.to_h
       create_resource_methods(@task_definition)
     end
@@ -45,7 +51,9 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_repository_credentials_credentials_parameters
-    container_definitions.map(&:repository_credentials).map(&:credentials_parameter)
+    container_definitions.map(&:repository_credentials).map(
+      &:credentials_parameter
+    )
   end
 
   def container_definitions_cpus
@@ -161,15 +169,24 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_linux_parameters_capabilities_devices_host_paths
-    container_definitions.map(&:linux_parameters).map(&:devices).map(&:host_path)
+    container_definitions
+      .map(&:linux_parameters)
+      .map(&:devices)
+      .map(&:host_path)
   end
 
   def container_definitions_linux_parameters_capabilities_devices_container_paths
-    container_definitions.map(&:linux_parameters).map(&:devices).map(&:container_path)
+    container_definitions
+      .map(&:linux_parameters)
+      .map(&:devices)
+      .map(&:container_path)
   end
 
   def container_definitions_linux_parameters_capabilities_devices_permissions
-    container_definitions.map(&:linux_parameters).map(&:devices).map(&:permissions)
+    container_definitions
+      .map(&:linux_parameters)
+      .map(&:devices)
+      .map(&:permissions)
   end
 
   def container_definitions_linux_parameters_init_process_enabled
@@ -185,7 +202,10 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_linux_parameters_tmpfs_container_paths
-    container_definitions.map(&:linux_parameters).map(&:tmpfs).map(&:container_path)
+    container_definitions
+      .map(&:linux_parameters)
+      .map(&:tmpfs)
+      .map(&:container_path)
   end
 
   def container_definitions_linux_parameters_tmpfs_sizes
@@ -193,7 +213,10 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_linux_parameters_tmpfs_mount_options
-    container_definitions.map(&:linux_parameters).map(&:tmpfs).map(&:mount_options)
+    container_definitions
+      .map(&:linux_parameters)
+      .map(&:tmpfs)
+      .map(&:mount_options)
   end
 
   def container_definitions_linux_parameters_max_swaps
@@ -329,11 +352,17 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def container_definitions_log_configurations_secret_options_names
-    container_definitions.map(&:log_configuration).map(&:secret_options).map(&:name)
+    container_definitions
+      .map(&:log_configuration)
+      .map(&:secret_options)
+      .map(&:name)
   end
 
   def container_definitions_log_configurations_secret_value_froms
-    container_definitions.map(&:log_configuration).map(&:secret_options).map(&:value_from)
+    container_definitions
+      .map(&:log_configuration)
+      .map(&:secret_options)
+      .map(&:value_from)
   end
 
   def container_definitions_health_checks
@@ -457,11 +486,17 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def volumes_efs_volume_configuration_authorization_config_access_point_ids
-    volumes.map(&:efs_volume_configurations).map(&:authorization_config).map(&:access_point_id)
+    volumes
+      .map(&:efs_volume_configurations)
+      .map(&:authorization_config)
+      .map(&:access_point_id)
   end
 
   def volumes_efs_volume_configuration_authorization_config_iams
-    volumes.map(&:efs_volume_configurations).map(&:authorization_config).map(&:iam)
+    volumes
+      .map(&:efs_volume_configurations)
+      .map(&:authorization_config)
+      .map(&:iam)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations
@@ -469,23 +504,35 @@ class AWSECSTaskDefinition < AwsResourceBase
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_file_system_ids
-    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:file_system_id)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(
+      &:file_system_id
+    )
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_root_directories
-    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:root_directory)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(
+      &:root_directory
+    )
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs
-    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config)
+    volumes.map(&:fsx_windows_file_server_volume_configuration).map(
+      &:authorization_config
+    )
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_credentials_parameters
-    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config).map(&:credentials_parameter)
+    volumes
+      .map(&:fsx_windows_file_server_volume_configuration)
+      .map(&:authorization_config)
+      .map(&:credentials_parameter)
   end
 
   def volumes_fsx_windows_file_server_volume_configurations_authorization_configs_domains
-    volumes.map(&:fsx_windows_file_server_volume_configuration).map(&:authorization_config).map(&:domain)
+    volumes
+      .map(&:fsx_windows_file_server_volume_configuration)
+      .map(&:authorization_config)
+      .map(&:domain)
   end
 
   def requires_attributes_names

@@ -14,17 +14,23 @@ class AWSCognitoUserPool < AwsResourceBase
     super(opts)
     validate_parameters(required: [:user_pool_id])
 
-    raise ArgumentError, "#{@__resource_name__}: user_pool_id must be provided" unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
+    unless opts[:user_pool_id] && !opts[:user_pool_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: user_pool_id must be provided"
+    end
     @display_name = opts[:user_pool_id]
     catch_aws_errors do
-      resp = @aws.cognitoidentityprovider_client.describe_user_pool({ user_pool_id: opts[:user_pool_id] })
+      resp =
+        @aws.cognitoidentityprovider_client.describe_user_pool(
+          { user_pool_id: opts[:user_pool_id] }
+        )
       @user_pool = resp.user_pool.to_h
       create_resource_methods(@user_pool)
     end
   end
 
   def job_queue_name
-    return unless exists?
+    return nil unless exists?
     @user_pool[:job_queue_name]
   end
 

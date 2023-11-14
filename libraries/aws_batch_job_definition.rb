@@ -14,9 +14,15 @@ class AWSBatchJobDefinition < AwsResourceBase
     super(opts)
     validate_parameters(required: [:job_definition_name])
 
-    raise ArgumentError, "#{@__resource_name__}: job_definition_name must be provided" unless opts[:job_definition_name] && !opts[:job_definition_name].empty?
+    unless opts[:job_definition_name] && !opts[:job_definition_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: job_definition_name must be provided"
+    end
     @display_name = opts[:job_definition_name]
-    resp = @aws.batch_client.describe_job_definitions({ job_definition_name: opts[:job_definition_name] })
+    resp =
+      @aws.batch_client.describe_job_definitions(
+        { job_definition_name: opts[:job_definition_name] }
+      )
     @job_definitions = resp.job_definitions[0].to_h
     create_resource_methods(@job_definitions)
   end

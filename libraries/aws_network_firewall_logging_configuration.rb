@@ -14,22 +14,28 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
     opts = { firewall_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:firewall_name])
-    raise ArgumentError, "#{@__resource_name__}: firewall_name must be provided" unless opts[:firewall_name] && !opts[:firewall_name].empty?
+    unless opts[:firewall_name] && !opts[:firewall_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: firewall_name must be provided"
+    end
     @display_name = opts[:firewall_name]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_logging_configuration({ firewall_name: opts[:firewall_name] })
+      resp =
+        @aws.network_firewall_client.describe_logging_configuration(
+          { firewall_name: opts[:firewall_name] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def firewall_name
-    return unless exists?
+    return nil unless exists?
     @res[:firewall_name]
   end
 
   def resource_id
-    @res? @res[:firewall_arn]: ""
+    @res ? @res[:firewall_arn] : ""
   end
 
   def exists?
@@ -45,7 +51,9 @@ class AWSNetworkFirewallLoggingConfiguration < AwsResourceBase
   end
 
   def logging_configuration_log_destination_configs_log_destination_type
-    logging_configuration.map(&:log_destination_configs).map(&:log_destination_type)
+    logging_configuration.map(&:log_destination_configs).map(
+      &:log_destination_type
+    )
   end
 
   def logging_configuration_log_destination_configs_log_destination

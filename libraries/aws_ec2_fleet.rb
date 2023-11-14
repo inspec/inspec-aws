@@ -14,17 +14,20 @@ class AWSEC2Fleet < AwsResourceBase
     opts = { fleet_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:fleet_id])
-    raise ArgumentError, "#{@__resource_name__}: fleet_id must be provided" unless opts[:fleet_id] && !opts[:fleet_id].empty?
+    unless opts[:fleet_id] && !opts[:fleet_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: fleet_id must be provided"
+    end
     @display_name = opts[:fleet_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_fleets({ fleet_ids: [opts[:fleet_id]] })
+      resp =
+        @aws.compute_client.describe_fleets({ fleet_ids: [opts[:fleet_id]] })
       @resp = resp.fleets[0].to_h
       create_resource_methods(@resp)
     end
   end
 
   def fleet_id
-    return unless exists?
+    return nil unless exists?
     @resp[:fleet_id]
   end
 

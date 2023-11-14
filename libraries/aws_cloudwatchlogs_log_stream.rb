@@ -12,12 +12,25 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
   def initialize(opts = {})
     opts = { log_stream_name_prefix: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(log_stream_name_prefix log_group_name))
-    raise ArgumentError, "#{@__resource_name__}: log_stream_name_prefix must be provided." unless opts[:log_stream_name_prefix] && !opts[:log_stream_name_prefix].empty?
-    raise ArgumentError, "#{@__resource_name__}: log_group_name must be provided." unless opts[:log_group_name] && !opts[:log_group_name].empty?
+    validate_parameters(required: %i[log_stream_name_prefix log_group_name])
+    unless opts[:log_stream_name_prefix] &&
+             !opts[:log_stream_name_prefix].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: log_stream_name_prefix must be provided."
+    end
+    unless opts[:log_group_name] && !opts[:log_group_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: log_group_name must be provided."
+    end
     @display_name = opts[:log_stream_name_prefix]
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.describe_log_streams({ log_stream_name_prefix: opts[:log_stream_name_prefix], log_group_name: opts[:log_group_name] })
+      resp =
+        @aws.cloudwatchlogs_client.describe_log_streams(
+          {
+            log_stream_name_prefix: opts[:log_stream_name_prefix],
+            log_group_name: opts[:log_group_name]
+          }
+        )
       @log_streams = resp.log_streams[0].to_h
       @log_stream_name = @log_streams[:log_stream_name]
       @log_stream_arn = @log_streams[:arn]
@@ -30,7 +43,7 @@ class AWSCloudWatchLogsLogStream < AwsResourceBase
   end
 
   def log_stream_name_prefix
-    return unless exists?
+    return nil unless exists?
     @log_streams[:log_stream_name_prefix]
   end
 

@@ -14,17 +14,23 @@ class AWSEC2InternetGateway < AwsResourceBase
     opts = { internet_gateway_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:internet_gateway_id])
-    raise ArgumentError, "#{@__resource_name__}: internet_gateway_id must be provided" unless opts[:internet_gateway_id] && !opts[:internet_gateway_id].empty?
+    unless opts[:internet_gateway_id] && !opts[:internet_gateway_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: internet_gateway_id must be provided"
+    end
     @display_name = opts[:internet_gateway_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_internet_gateways({ internet_gateway_ids: [opts[:internet_gateway_id]] })
+      resp =
+        @aws.compute_client.describe_internet_gateways(
+          { internet_gateway_ids: [opts[:internet_gateway_id]] }
+        )
       @res = resp.internet_gateways[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def internet_gateway_id
-    return unless exists?
+    return nil unless exists?
     @res[:internet_gateway_id]
   end
 

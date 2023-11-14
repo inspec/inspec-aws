@@ -11,21 +11,35 @@ class AWSRAMResourceShare < AwsResourceBase
   "
 
   def initialize(opts = {})
-    opts = { resource_owner: opts, resource_share_arn: opts } if opts.is_a?(String)
+    opts = { resource_owner: opts, resource_share_arn: opts } if opts.is_a?(
+      String
+    )
     super(opts)
-    validate_parameters(required: %i(resource_owner resource_share_arn))
-    raise ArgumentError, "#{@__resource_name__}: resource_owner must be provided" unless opts[:resource_owner] && !opts[:resource_owner].empty?
-    raise ArgumentError, "#{@__resource_name__}: resource_share_arn must be provided" unless opts[:resource_share_arn] && !opts[:resource_share_arn].empty?
+    validate_parameters(required: %i[resource_owner resource_share_arn])
+    unless opts[:resource_owner] && !opts[:resource_owner].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: resource_owner must be provided"
+    end
+    unless opts[:resource_share_arn] && !opts[:resource_share_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: resource_share_arn must be provided"
+    end
     @display_name = opts[:resource_share_arn]
     catch_aws_errors do
-      resp = @aws.ram_client.get_resource_shares({ resource_owner: opts[:resource_owner], resource_share_arns: [opts[:resource_share_arn]] })
+      resp =
+        @aws.ram_client.get_resource_shares(
+          {
+            resource_owner: opts[:resource_owner],
+            resource_share_arns: [opts[:resource_share_arn]]
+          }
+        )
       @res = resp.resource_shares[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def resource_share_arn
-    return unless exists?
+    return nil unless exists?
     @res[:resource_share_arn]
   end
 

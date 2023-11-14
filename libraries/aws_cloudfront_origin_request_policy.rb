@@ -13,7 +13,9 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
     opts = { id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:id])
-    raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
+    unless opts[:id] && !opts[:id].empty?
+      raise ArgumentError, "#{@__resource_name__}: id must be provided"
+    end
     @display_name = opts[:id]
     resp = @aws.cloudfront_client.get_origin_request_policy({ id: opts[:id] })
     @origin_request_policy = resp.origin_request_policy.to_h
@@ -26,7 +28,7 @@ class AWSCloudFrontOriginRequestPolicy < AwsResourceBase
   end
 
   def id
-    return unless exists?
+    return nil unless exists?
     @origin_request_policy_id
   end
 

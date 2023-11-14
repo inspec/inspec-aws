@@ -18,10 +18,13 @@ class AwsEbsVolume < AwsResourceBase
   def initialize(opts = {})
     opts = { volume_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require_any_of: %i(volume_id name))
+    validate_parameters(require_any_of: %i[volume_id name])
 
     if opts[:volume_id] && !opts[:volume_id].empty?
-      raise ArgumentError, "#{@__resource_name__}:  must be in the format 'vol- followed by 8 or 17 hexadecimal characters." if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/
+      if opts[:volume_id] !~ /^vol\-([0-9a-f]{8})|(^vol\-[0-9a-f]{17})$/
+        raise ArgumentError,
+              "#{@__resource_name__}:  must be in the format 'vol- followed by 8 or 17 hexadecimal characters."
+      end
       @display_name = opts[:volume_id]
       volume_arguments = { volume_ids: [opts[:volume_id]] }
     elsif opts[:name] && !opts[:name].empty?
@@ -29,7 +32,8 @@ class AwsEbsVolume < AwsResourceBase
       filter = { name: "tag:Name", values: [opts[:name]] }
       volume_arguments = { filters: [filter] }
     else
-      raise ArgumentError, "#{@__resource_name__}:  `volume_id` or `name` must be provided"
+      raise ArgumentError,
+            "#{@__resource_name__}:  `volume_id` or `name` must be provided"
     end
 
     catch_aws_errors do
@@ -48,7 +52,7 @@ class AwsEbsVolume < AwsResourceBase
   end
 
   def id
-    return unless exists?
+    return nil unless exists?
     @volume[:volume_id]
   end
 

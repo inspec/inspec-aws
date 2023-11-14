@@ -13,17 +13,23 @@ class AWSCognitoIdentityPool < AwsResourceBase
     opts = { identity_pool_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:identity_pool_id])
-    raise ArgumentError, "#{@__resource_name__}: identity_pool_id must be provided" unless opts[:identity_pool_id] && !opts[:identity_pool_id].empty?
+    unless opts[:identity_pool_id] && !opts[:identity_pool_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: identity_pool_id must be provided"
+    end
     @display_name = opts[:identity_pool_id]
     catch_aws_errors do
-      resp = @aws.cognitoidentity_client.describe_identity_pool({ identity_pool_id: opts[:identity_pool_id] })
+      resp =
+        @aws.cognitoidentity_client.describe_identity_pool(
+          { identity_pool_id: opts[:identity_pool_id] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def identity_pool_id
-    return unless exists?
+    return nil unless exists?
     @res[:identity_pool_id]
   end
 

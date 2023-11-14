@@ -12,18 +12,21 @@ class AWSApiGatewayVPCLink < AwsResourceBase
   def initialize(opts = {})
     opts = { vpc_link_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(vpc_link_id))
-    raise ArgumentError, "#{@__resource_name__}: vpc_link_id must be provided" if opts[:vpc_link_id].blank?
+    validate_parameters(required: %i[vpc_link_id])
+    if opts[:vpc_link_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: vpc_link_id must be provided"
+    end
     @display_name = opts[:vpc_link_id]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_vpc_link({ vpc_link_id: opts[:vpc_link_id] })
+      resp =
+        @aws.apigateway_client.get_vpc_link({ vpc_link_id: opts[:vpc_link_id] })
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    @res? "#{@res[:id]}_#{@res[:name]}" : @display_name
+    @res ? "#{@res[:id]}_#{@res[:name]}" : @display_name
   end
 
   def exists?
@@ -31,7 +34,7 @@ class AWSApiGatewayVPCLink < AwsResourceBase
   end
 
   def vpc_link_id
-    return unless exists?
+    return nil unless exists?
     @res[:id]
   end
 

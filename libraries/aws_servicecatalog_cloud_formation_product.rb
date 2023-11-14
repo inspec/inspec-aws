@@ -14,12 +14,18 @@ class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
     opts = { name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:name])
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    unless opts[:name] && !opts[:name].empty?
+      raise ArgumentError, "#{@__resource_name__}: name must be provided"
+    end
     @display_name = opts[:name]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.describe_product_as_admin({ name: opts[:name] })
+      resp =
+        @aws.servicecatalog_client.describe_product_as_admin(
+          { name: opts[:name] }
+        )
       @res = resp.to_h
-      @product_view_detail_product_view_summary_id = @res[:product_view_detail][:product_view_summary][:id]
+      @product_view_detail_product_view_summary_id =
+        @res[:product_view_detail][:product_view_summary][:id]
       create_resource_methods(@res)
     end
   end
@@ -29,7 +35,7 @@ class AWSServiceCatalogCloudFormationProduct < AwsResourceBase
   end
 
   def name
-    return unless exists?
+    return nil unless exists?
     @res[:name]
   end
 

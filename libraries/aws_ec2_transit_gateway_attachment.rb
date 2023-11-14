@@ -14,17 +14,32 @@ class AwsEc2TransitGatewayAttachment < AwsResourceBase
     opts = { transit_gateway_attachment_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_attachment_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_attachment_id must be provided" unless opts[:transit_gateway_attachment_id] && !opts[:transit_gateway_attachment_id].empty?
+    unless opts[:transit_gateway_attachment_id] &&
+             !opts[:transit_gateway_attachment_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: transit_gateway_attachment_id must be provided"
+    end
     @display_name = opts[:transit_gateway_attachment_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_transit_gateway_attachments({ transit_gateway_attachment_ids: [opts[:transit_gateway_attachment_id]] })
+      resp =
+        @aws.compute_client.describe_transit_gateway_attachments(
+          {
+            transit_gateway_attachment_ids: [
+              opts[:transit_gateway_attachment_id]
+            ]
+          }
+        )
       @transit_gateway_attachments = resp.transit_gateway_attachments[0].to_h
       create_resource_methods(@transit_gateway_attachments)
     end
   end
 
   def resource_id
-    @transit_gateway_attachments ? @transit_gateway_attachments[:transit_gateway_attachment_id] : @display_name
+    if @transit_gateway_attachments
+      @transit_gateway_attachments[:transit_gateway_attachment_id]
+    else
+      @display_name
+    end
   end
 
   def transit_gateway_attachment_id

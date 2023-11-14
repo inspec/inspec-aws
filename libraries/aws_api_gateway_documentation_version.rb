@@ -11,12 +11,23 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rest_api_id documentation_version))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: documentation_version must be provided" unless opts[:documentation_version] && !opts[:documentation_version].empty?
+    validate_parameters(required: %i[rest_api_id documentation_version])
+    unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided"
+    end
+    unless opts[:documentation_version] && !opts[:documentation_version].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: documentation_version must be provided"
+    end
     @display_name = opts[:documentation_version]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_documentation_version({ rest_api_id: opts[:rest_api_id], documentation_version: opts[:documentation_version] })
+      resp =
+        @aws.apigateway_client.get_documentation_version(
+          {
+            rest_api_id: opts[:rest_api_id],
+            documentation_version: opts[:documentation_version]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -31,7 +42,7 @@ class AWSApiGatewayDocumentationVersion < AwsResourceBase
   end
 
   def documentation_version
-    return unless exists?
+    return nil unless exists?
     @res[:documentation_version]
   end
 

@@ -14,19 +14,27 @@ class AwsApiGatewayV2Authorizer < AwsResourceBase
   def initialize(opts = {})
     opts = { api_id: opts, authorizer_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id authorizer_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: authorizer_id must be provided!" if opts[:authorizer_id].blank?
+    validate_parameters(required: %i[api_id authorizer_id])
+    if opts[:api_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: api_id must be provided!"
+    end
+    if opts[:authorizer_id].blank?
+      raise ArgumentError,
+            "#{@__resource_name__}: authorizer_id must be provided!"
+    end
     @display_name = opts[:authorizer_id]
     catch_aws_errors do
-      resp = @aws.apigatewayv2_client.get_authorizer({ api_id: opts[:api_id], authorizer_id: opts[:authorizer_id] })
+      resp =
+        @aws.apigatewayv2_client.get_authorizer(
+          { api_id: opts[:api_id], authorizer_id: opts[:authorizer_id] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def authorizer_id
-    return unless exists?
+    return nil unless exists?
     @res[:authorizer_id]
   end
 
@@ -35,7 +43,7 @@ class AwsApiGatewayV2Authorizer < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:authorizer_id] : @display_name
+    @res ? @res[:authorizer_id] : @display_name
   end
 
   def to_s

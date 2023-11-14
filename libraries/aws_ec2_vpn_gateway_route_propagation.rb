@@ -18,7 +18,10 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
     opts = { route_table_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:route_table_id])
-    raise ArgumentError, "#{@__resource_name__}: route_table_id must be provided" unless opts[:route_table_id] && !opts[:route_table_id].empty?
+    unless opts[:route_table_id] && !opts[:route_table_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: route_table_id must be provided"
+    end
     @display_name = opts[:route_table_id]
     @route_arguments = { route_table_ids: [opts[:route_table_id]] }
     catch_aws_errors do
@@ -29,7 +32,7 @@ class AWSEc2VPNGatewayRoutePropagation < AwsResourceBase
   end
 
   def id
-    return unless exists?
+    return nil unless exists?
     @route_tables[:route_table_id]
   end
 

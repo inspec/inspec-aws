@@ -11,11 +11,17 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(usage_plan_id))
-    raise ArgumentError, "#{@__resource_name__}: usage_plan_id must be provided" if opts[:usage_plan_id].blank?
+    validate_parameters(required: %i[usage_plan_id])
+    if opts[:usage_plan_id].blank?
+      raise ArgumentError,
+            "#{@__resource_name__}: usage_plan_id must be provided"
+    end
     @display_name = opts[:usage_plan_id]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_usage_plan({ usage_plan_id: opts[:usage_plan_id] })
+      resp =
+        @aws.apigateway_client.get_usage_plan(
+          { usage_plan_id: opts[:usage_plan_id] }
+        )
       @res = resp.to_h
       @usage_plan_id = @res[:id]
       create_resource_methods(@res)
@@ -23,7 +29,7 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
   end
 
   def resource_id
-    @res? @usage_plan_id: @display_name
+    @res ? @usage_plan_id : @display_name
   end
 
   def exists?
@@ -31,7 +37,7 @@ class AWSApiGatewayUsagePlan < AwsResourceBase
   end
 
   def usage_plan_id
-    return unless exists?
+    return nil unless exists?
     @res[:id]
   end
 

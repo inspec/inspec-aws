@@ -13,10 +13,16 @@ class AWSCloudwatchMetricStream < AwsResourceBase
     opts = { metric_stream_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:metric_stream_name])
-    raise ArgumentError, "#{@__resource_name__}: metric_stream_name must be provided" unless opts[:metric_stream_name] && !opts[:metric_stream_name].empty?
+    unless opts[:metric_stream_name] && !opts[:metric_stream_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: metric_stream_name must be provided"
+    end
     @display_name = opts[:metric_stream_name]
     catch_aws_errors do
-      resp = @aws.cloudwatch_client.get_metric_stream({ name: opts[:metric_stream_name] })
+      resp =
+        @aws.cloudwatch_client.get_metric_stream(
+          { name: opts[:metric_stream_name] }
+        )
       @stream = resp.to_h
       @stream_name = @stream[:name]
       @stream_arn = @stream[:arn]
@@ -29,7 +35,7 @@ class AWSCloudwatchMetricStream < AwsResourceBase
   end
 
   def metric_stream_name
-    return unless exists?
+    return nil unless exists?
     @stream[:name]
   end
 

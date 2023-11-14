@@ -12,19 +12,31 @@ class AWSLambdaAlias < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(function_name function_alias_name))
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: function_alias_name must be provided" unless opts[:function_alias_name] && !opts[:function_alias_name].empty?
+    validate_parameters(required: %i[function_name function_alias_name])
+    unless opts[:function_name] && !opts[:function_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: function_name must be provided"
+    end
+    unless opts[:function_alias_name] && !opts[:function_alias_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: function_alias_name must be provided"
+    end
     @display_name = opts[:function_alias_name]
     catch_aws_errors do
-      resp = @aws.lambda_client.get_alias({ function_name: opts[:function_name], name: opts[:function_alias_name] })
+      resp =
+        @aws.lambda_client.get_alias(
+          {
+            function_name: opts[:function_name],
+            name: opts[:function_alias_name]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def function_alias_name
-    return unless exists?
+    return nil unless exists?
     @res[:function_alias_name]
   end
 

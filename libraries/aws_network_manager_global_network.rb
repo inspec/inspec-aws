@@ -14,22 +14,28 @@ class AWSNetworkManagerGlobalNetwork < AwsResourceBase
     opts = { global_network_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:global_network_id])
-    raise ArgumentError, "#{@__resource_name__}: global_network_id must be provided" unless opts[:global_network_id] && !opts[:global_network_id].empty?
+    unless opts[:global_network_id] && !opts[:global_network_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: global_network_id must be provided"
+    end
     @display_name = opts[:global_network_id]
     catch_aws_errors do
-      resp = @aws.network_manager_client.describe_global_networks({ global_network_ids: [opts[:global_network_id]] })
+      resp =
+        @aws.network_manager_client.describe_global_networks(
+          { global_network_ids: [opts[:global_network_id]] }
+        )
       @res = resp.global_networks[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def global_network_id
-    return unless exists?
+    return nil unless exists?
     @res[:global_network_id]
   end
 
   def resource_id
-    @res? @res[:global_network_id]: @display_name
+    @res ? @res[:global_network_id] : @display_name
   end
 
   def exists?

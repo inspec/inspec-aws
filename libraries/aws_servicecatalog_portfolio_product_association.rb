@@ -14,10 +14,15 @@ class AWSServiceCatalogPortfolioProductAssociation < AwsResourceBase
     opts = { product_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:product_id])
-    raise ArgumentError, "#{@__resource_name__}: product_id must be provided" unless opts[:product_id] && !opts[:product_id].empty?
+    unless opts[:product_id] && !opts[:product_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: product_id must be provided"
+    end
     @display_name = opts[:product_id]
     catch_aws_errors do
-      resp = @aws.servicecatalog_client.list_portfolios_for_product({ product_id: opts[:product_id] })
+      resp =
+        @aws.servicecatalog_client.list_portfolios_for_product(
+          { product_id: opts[:product_id] }
+        )
       @res = resp.portfolio_details[0].to_h
       @arn = @res[:arn]
       create_resource_methods(@res)

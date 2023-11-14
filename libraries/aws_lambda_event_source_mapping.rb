@@ -14,7 +14,9 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
     opts = { uuid: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:uuid])
-    raise ArgumentError, "#{@__resource_name__}: uuid must be provided" unless opts[:uuid] && !opts[:uuid].empty?
+    unless opts[:uuid] && !opts[:uuid].empty?
+      raise ArgumentError, "#{@__resource_name__}: uuid must be provided"
+    end
     @display_name = opts[:uuid]
     catch_aws_errors do
       resp = @aws.lambda_client.get_event_source_mapping({ uuid: opts[:uuid] })
@@ -24,7 +26,7 @@ class AWSLambdaEventSourceMapping < AwsResourceBase
   end
 
   def uuid
-    return unless exists?
+    return nil unless exists?
     @res[:uuid]
   end
 

@@ -15,19 +15,27 @@ class AwsApiGatewayV2Deployment < AwsResourceBase
   def initialize(opts = {})
     opts = { api_id: opts, deployment_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id deployment_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: deployment_id must be provided!" if opts[:deployment_id].blank?
+    validate_parameters(required: %i[api_id deployment_id])
+    if opts[:api_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: api_id must be provided!"
+    end
+    if opts[:deployment_id].blank?
+      raise ArgumentError,
+            "#{@__resource_name__}: deployment_id must be provided!"
+    end
     @display_name = opts[:deployment_id]
     catch_aws_errors do
-      resp = @aws.apigatewayv2_client.get_deployment({ api_id: opts[:api_id], deployment_id: opts[:deployment_id] })
+      resp =
+        @aws.apigatewayv2_client.get_deployment(
+          { api_id: opts[:api_id], deployment_id: opts[:deployment_id] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def deployment_id
-    return unless exists?
+    return nil unless exists?
     @res[:deployment_id]
   end
 
@@ -36,7 +44,7 @@ class AwsApiGatewayV2Deployment < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:deployment_id]: @display_name
+    @res ? @res[:deployment_id] : @display_name
   end
 
   def to_s

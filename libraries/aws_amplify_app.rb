@@ -14,7 +14,9 @@ class AWSAmplifyApp < AwsResourceBase
     super(opts)
     validate_parameters(required: [:app_id])
 
-    raise ArgumentError, "#{@__resource_name__}: app_id must be provided" unless opts[:app_id] && !opts[:app_id].empty?
+    unless opts[:app_id] && !opts[:app_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: app_id must be provided"
+    end
     @display_name = opts[:app_id]
     resp = @aws.amplify_client.get_app({ app_id: opts[:app_id] })
     @apps = resp.app.to_h
@@ -22,12 +24,12 @@ class AWSAmplifyApp < AwsResourceBase
   end
 
   def app_id
-    return unless exists?
+    return nil unless exists?
     @apps[:app_id]
   end
 
   def resource_id
-    @apps? @apps[:app_id] : @display_name
+    @apps ? @apps[:app_id] : @display_name
   end
 
   def exists?

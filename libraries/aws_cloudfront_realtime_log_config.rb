@@ -12,11 +12,14 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
   def initialize(opts = {})
     opts = { name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(name))
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    validate_parameters(required: %i[name])
+    unless opts[:name] && !opts[:name].empty?
+      raise ArgumentError, "#{@__resource_name__}: name must be provided"
+    end
     @display_name = opts[:name]
     catch_aws_errors do
-      resp = @aws.cloudfront_client.get_realtime_log_config({ name: opts[:name] })
+      resp =
+        @aws.cloudfront_client.get_realtime_log_config({ name: opts[:name] })
       @res = resp.realtime_log_config.to_h
       @arn = @res[:arn]
       create_resource_methods(@res)
@@ -24,7 +27,7 @@ class AwsCloudFrontRealtimeLogConfig < AwsResourceBase
   end
 
   def name
-    return unless exists?
+    return nil unless exists?
     @res[:name]
   end
 

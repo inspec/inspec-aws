@@ -12,8 +12,10 @@ class AWSSyntheticsCanary < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(name))
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    validate_parameters(required: %i[name])
+    unless opts[:name] && !opts[:name].empty?
+      raise ArgumentError, "#{@__resource_name__}: name must be provided"
+    end
     @display_name = opts[:name]
     catch_aws_errors do
       resp = @aws.synthetics_client.get_canary({ name: opts[:name] })

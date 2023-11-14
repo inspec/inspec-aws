@@ -13,8 +13,10 @@ class AWSWAFRule < AwsResourceBase
   def initialize(opts = {})
     opts = { rule_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(rule_id))
-    raise ArgumentError, "#{@__resource_name__}: rule_id must be provided" unless opts[:rule_id] && !opts[:rule_id].empty?
+    validate_parameters(required: %i[rule_id])
+    unless opts[:rule_id] && !opts[:rule_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rule_id must be provided"
+    end
     @display_name = opts[:rule_id]
     catch_aws_errors do
       resp = @aws.waf_client.get_rule({ rule_id: opts[:rule_id] })
@@ -24,7 +26,7 @@ class AWSWAFRule < AwsResourceBase
   end
 
   def rule_id
-    return unless exists?
+    return nil unless exists?
     @resp[:rule_id]
   end
 

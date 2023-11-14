@@ -14,7 +14,9 @@ class AWSEC2Host < AwsResourceBase
     opts = { host_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:host_id])
-    raise ArgumentError, "#{@__resource_name__}: host_id must be provided" unless opts[:host_id] && !opts[:host_id].empty?
+    unless opts[:host_id] && !opts[:host_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: host_id must be provided"
+    end
     @display_name = opts[:host_id]
     catch_aws_errors do
       resp = @aws.compute_client.describe_hosts({ host_ids: [opts[:host_id]] })

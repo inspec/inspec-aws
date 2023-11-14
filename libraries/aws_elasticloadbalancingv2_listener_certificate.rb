@@ -13,17 +13,23 @@ class AWSElasticLoadBalancingV2ListenerCertificate < AwsResourceBase
     opts = { listener_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:listener_arn])
-    raise ArgumentError, "#{@__resource_name__}: listener_arn must be provided" unless opts[:listener_arn] && !opts[:listener_arn].empty?
+    unless opts[:listener_arn] && !opts[:listener_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: listener_arn must be provided"
+    end
     @display_name = opts[:listener_arn]
     catch_aws_errors do
-      resp = @aws.elb_client_v2.describe_listener_certificates({ listener_arn: opts[:listener_arn] })
+      resp =
+        @aws.elb_client_v2.describe_listener_certificates(
+          { listener_arn: opts[:listener_arn] }
+        )
       @listeners = resp.certificates[0].to_h
       create_resource_methods(@listeners)
     end
   end
 
   def listener_arn
-    return unless exists?
+    return nil unless exists?
     @listeners[:listener_arn]
   end
 

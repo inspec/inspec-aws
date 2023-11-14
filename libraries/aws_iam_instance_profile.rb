@@ -14,10 +14,16 @@ class AWSIAMInstanceProfile < AwsResourceBase
     opts = { instance_profile_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:instance_profile_name])
-    raise ArgumentError, "#{@__resource_name__}: instance_profile_name must be provided" unless opts[:instance_profile_name] && !opts[:instance_profile_name].empty?
+    unless opts[:instance_profile_name] && !opts[:instance_profile_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: instance_profile_name must be provided"
+    end
     @display_name = opts[:instance_profile_name]
     catch_aws_errors do
-      resp = @aws.iam_client.get_instance_profile({ instance_profile_name: opts[:instance_profile_name] })
+      resp =
+        @aws.iam_client.get_instance_profile(
+          { instance_profile_name: opts[:instance_profile_name] }
+        )
       @res = resp.instance_profile.to_h
       @arn = @res[:arn]
       create_resource_methods(@res)
@@ -29,7 +35,7 @@ class AWSIAMInstanceProfile < AwsResourceBase
   end
 
   def instance_profile_name
-    return unless exists?
+    return nil unless exists?
     @res[:instance_profile_name]
   end
 

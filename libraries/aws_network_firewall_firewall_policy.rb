@@ -14,10 +14,16 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
     opts = { firewall_policy_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:firewall_policy_name])
-    raise ArgumentError, "#{@__resource_name__}: firewall_policy_name must be provided" unless opts[:firewall_policy_name] && !opts[:firewall_policy_name].empty?
+    unless opts[:firewall_policy_name] && !opts[:firewall_policy_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: firewall_policy_name must be provided"
+    end
     @display_name = opts[:firewall_policy_name]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_firewall_policy({ firewall_policy_name: opts[:firewall_policy_name] })
+      resp =
+        @aws.network_firewall_client.describe_firewall_policy(
+          { firewall_policy_name: opts[:firewall_policy_name] }
+        )
       @res = resp.to_h
       @firewall_policy_arn = @res[:firewall_policy_arn]
       create_resource_methods(@res)
@@ -25,7 +31,7 @@ class AwsNetworkFirewallFirewallPolicy < AwsResourceBase
   end
 
   def firewall_policy_name
-    return unless exists?
+    return nil unless exists?
     @res[:firewall_policy_name]
   end
 

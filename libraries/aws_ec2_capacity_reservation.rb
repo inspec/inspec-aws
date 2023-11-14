@@ -13,18 +13,26 @@ class AWSEC2CapacityReservation < AwsResourceBase
     opts = { capacity_reservation_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:capacity_reservation_id])
-    raise ArgumentError, "#{@__resource_name__}: capacity_reservation_id must be provided" unless opts[:capacity_reservation_id] && !opts[:capacity_reservation_id].empty?
+    unless opts[:capacity_reservation_id] &&
+             !opts[:capacity_reservation_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: capacity_reservation_id must be provided"
+    end
     @display_name = opts[:capacity_reservation_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_capacity_reservations({ capacity_reservation_ids: [opts[:capacity_reservation_id]] })
+      resp =
+        @aws.compute_client.describe_capacity_reservations(
+          { capacity_reservation_ids: [opts[:capacity_reservation_id]] }
+        )
       @resp = resp.capacity_reservations[0].to_h
-      @capacity_reservation_id = resp.capacity_reservations[0].capacity_reservation_id
+      @capacity_reservation_id =
+        resp.capacity_reservations[0].capacity_reservation_id
       create_resource_methods(@resp)
     end
   end
 
   def capacity_reservation_id
-    return unless exists?
+    return nil unless exists?
     @resp[:capacity_reservation_id]
   end
 

@@ -11,12 +11,19 @@ class AWSTransferUser < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(server_id user_name))
-    raise ArgumentError, "#{@__resource_name__}: server_id must be provided" unless opts[:server_id] && !opts[:server_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: user_name must be provided" unless opts[:user_name] && !opts[:user_name].empty?
+    validate_parameters(required: %i[server_id user_name])
+    unless opts[:server_id] && !opts[:server_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: server_id must be provided"
+    end
+    unless opts[:user_name] && !opts[:user_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: user_name must be provided"
+    end
     @user_name = opts[:user_name]
     catch_aws_errors do
-      resp = @aws.transfer_client.describe_user({ server_id: opts[:server_id], user_name: opts[:user_name] })
+      resp =
+        @aws.transfer_client.describe_user(
+          { server_id: opts[:server_id], user_name: opts[:user_name] }
+        )
       @res = resp.user.to_h
       @res[:server_id] = resp.server_id
       create_resource_methods(@res)
@@ -24,7 +31,7 @@ class AWSTransferUser < AwsResourceBase
   end
 
   def user_name
-    return unless exists?
+    return nil unless exists?
     @res[:user_name]
   end
 

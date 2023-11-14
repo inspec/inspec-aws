@@ -14,7 +14,9 @@ class AWSSecurityHubHub < AwsResourceBase
     opts = { hub_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:hub_arn])
-    raise ArgumentError, "#{@__resource_hub_arn__}: hub_arn must be provided" unless opts[:hub_arn] && !opts[:hub_arn].empty?
+    unless opts[:hub_arn] && !opts[:hub_arn].empty?
+      raise ArgumentError, "#{@__resource_hub_arn__}: hub_arn must be provided"
+    end
     @display_name = opts[:hub_arn]
     catch_aws_errors do
       resp = @aws.securityhub_client.describe_hub({ hub_arn: opts[:hub_arn] })
@@ -29,7 +31,7 @@ class AWSSecurityHubHub < AwsResourceBase
   end
 
   def hub_arn
-    return unless exists?
+    return nil unless exists?
     @hub_arn
   end
 

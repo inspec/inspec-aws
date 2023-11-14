@@ -12,11 +12,14 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
   def initialize(opts = {})
     opts = { id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(id))
-    raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
+    validate_parameters(required: %i[id])
+    unless opts[:id] && !opts[:id].empty?
+      raise ArgumentError, "#{@__resource_name__}: id must be provided"
+    end
     @display_name = opts[:id]
     catch_aws_errors do
-      resp = @aws.cloudfront_client.get_streaming_distribution({ id: opts[:id] })
+      resp =
+        @aws.cloudfront_client.get_streaming_distribution({ id: opts[:id] })
       @res = resp.streaming_distribution.to_h
       @arn = @res[:arn]
       create_resource_methods(@res)
@@ -28,7 +31,7 @@ class AWSCloudFrontStreamingDistribution < AwsResourceBase
   end
 
   def id
-    return unless exists?
+    return nil unless exists?
     @res[:id]
   end
 

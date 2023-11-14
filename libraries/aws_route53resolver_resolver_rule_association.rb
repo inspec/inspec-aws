@@ -13,11 +13,18 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   def initialize(opts = {})
     opts = { resolver_rule_association_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(resolver_rule_association_id))
-    raise ArgumentError, "#{@__resource_name__}: resource_share_arn must be provided" unless opts[:resolver_rule_association_id] && !opts[:resolver_rule_association_id].empty?
+    validate_parameters(required: %i[resolver_rule_association_id])
+    unless opts[:resolver_rule_association_id] &&
+             !opts[:resolver_rule_association_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: resource_share_arn must be provided"
+    end
     @display_name = opts[:resolver_rule_association_id]
     catch_aws_errors do
-      resp = @aws.route53resolver_client.get_resolver_rule_association({ resolver_rule_association_id: opts[:resolver_rule_association_id] })
+      resp =
+        @aws.route53resolver_client.get_resolver_rule_association(
+          { resolver_rule_association_id: opts[:resolver_rule_association_id] }
+        )
       @res = resp.resolver_rule_association.to_h
       create_resource_methods(@res)
     end
@@ -29,7 +36,7 @@ class AWSRoute53ResolverResolverRuleAssociation < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:id]: @display_name
+    @res ? @res[:id] : @display_name
   end
 
   def exists?

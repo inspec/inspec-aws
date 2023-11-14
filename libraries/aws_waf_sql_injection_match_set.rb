@@ -13,18 +13,25 @@ class AWSWAFSQLInjectionMatchSet < AwsResourceBase
   def initialize(opts = {})
     opts = { sql_injection_match_set_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(sql_injection_match_set_id))
-    raise ArgumentError, "#{@__resource_name__}: sql_injection_match_set_id must be provided" unless opts[:sql_injection_match_set_id] && !opts[:sql_injection_match_set_id].empty?
+    validate_parameters(required: %i[sql_injection_match_set_id])
+    unless opts[:sql_injection_match_set_id] &&
+             !opts[:sql_injection_match_set_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: sql_injection_match_set_id must be provided"
+    end
     @display_name = opts[:sql_injection_match_set_id]
     catch_aws_errors do
-      resp = @aws.waf_client.get_sql_injection_match_set({ sql_injection_match_set_id: opts[:sql_injection_match_set_id] })
+      resp =
+        @aws.waf_client.get_sql_injection_match_set(
+          { sql_injection_match_set_id: opts[:sql_injection_match_set_id] }
+        )
       @resp = resp.sql_injection_match_set.to_h
       create_resource_methods(@resp)
     end
   end
 
   def sql_injection_match_set_id
-    return unless exists?
+    return nil unless exists?
     @resp[:sql_injection_match_set_id]
   end
 

@@ -14,10 +14,15 @@ class AWSLogsMetricFilter < AwsResourceBase
     opts = { filter_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:filter_name])
-    raise ArgumentError, "#{@__resource_name__}: filter_name must be provided" unless opts[:filter_name] && !opts[:filter_name].empty?
+    unless opts[:filter_name] && !opts[:filter_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: filter_name must be provided"
+    end
     @display_name = opts[:filter_name]
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.describe_metric_filters({ filter_name_prefix: opts[:filter_name] })
+      resp =
+        @aws.cloudwatchlogs_client.describe_metric_filters(
+          { filter_name_prefix: opts[:filter_name] }
+        )
       @metric_filters = resp.metric_filters[0].to_h
       @filter_name = @metric_filters[:filter_name]
       @log_group_name = @metric_filters[:log_group_name]
@@ -30,7 +35,7 @@ class AWSLogsMetricFilter < AwsResourceBase
   end
 
   def filter_name
-    return unless exists?
+    return nil unless exists?
     @metric_filters[:filter_name_prefix]
   end
 

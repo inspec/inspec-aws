@@ -13,18 +13,24 @@ class AWSSignerSigningProfile < AwsResourceBase
   def initialize(opts = {})
     opts = { profile_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(profile_name))
-    raise ArgumentError, "#{@__resource_name__}: profile_name must be provided" unless opts[:profile_name] && !opts[:profile_name].empty?
+    validate_parameters(required: %i[profile_name])
+    unless opts[:profile_name] && !opts[:profile_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: profile_name must be provided"
+    end
     @display_name = opts[:profile_name]
     catch_aws_errors do
-      resp = @aws.signer_client.get_signing_profile({ profile_name: opts[:profile_name] })
+      resp =
+        @aws.signer_client.get_signing_profile(
+          { profile_name: opts[:profile_name] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
   end
 
   def profile_name
-    return unless exists?
+    return nil unless exists?
     @res[:profile_name]
   end
 

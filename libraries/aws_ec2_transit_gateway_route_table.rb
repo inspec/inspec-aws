@@ -14,17 +14,28 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
     opts = { transit_gateway_route_table_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_route_table_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
+    unless opts[:transit_gateway_route_table_id] &&
+             !opts[:transit_gateway_route_table_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: transit_gateway_route_table_id must be provided"
+    end
     @display_name = opts[:transit_gateway_route_table_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_transit_gateway_route_tables({ transit_gateway_route_table_ids: [opts[:transit_gateway_route_table_id]] })
+      resp =
+        @aws.compute_client.describe_transit_gateway_route_tables(
+          {
+            transit_gateway_route_table_ids: [
+              opts[:transit_gateway_route_table_id]
+            ]
+          }
+        )
       @transit_gateway_route_tables = resp.transit_gateway_route_tables[0].to_h
       create_resource_methods(@transit_gateway_route_tables)
     end
   end
 
   def transit_gateway_route_table_id
-    return unless exists?
+    return nil unless exists?
     @transit_gateway_route_tables[:transit_gateway_route_table_id]
   end
 
@@ -33,7 +44,11 @@ class AwsEc2TransitGatewayRouteTable < AwsResourceBase
   end
 
   def resource_id
-    @transit_gateway_route_tables ? @transit_gateway_route_tables[:transit_gateway_route_table_id] : @display_name
+    if @transit_gateway_route_tables
+      @transit_gateway_route_tables[:transit_gateway_route_table_id]
+    else
+      @display_name
+    end
   end
 
   def to_s

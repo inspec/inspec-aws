@@ -12,22 +12,27 @@ class AwsCloudwatchAnomalyDetector < AwsResourceBase
   def initialize(opts = {})
     opts = { metric_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(metric_name))
-    raise ArgumentError, "#{@__resource_name__}: metric_name must be provided" unless opts[:metric_name] && !opts[:metric_name].empty?
+    validate_parameters(required: %i[metric_name])
+    unless opts[:metric_name] && !opts[:metric_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: metric_name must be provided"
+    end
     @display_name = opts[:metric_name]
     catch_aws_errors do
-      resp = @aws.cloudwatch_client.describe_anomaly_detectors({ metric_name: opts[:metric_name] })
+      resp =
+        @aws.cloudwatch_client.describe_anomaly_detectors(
+          { metric_name: opts[:metric_name] }
+        )
       @res = resp.anomaly_detectors[0].to_h
       create_resource_methods(@res)
     end
   end
 
   def resource_id
-    "#{@res? @res[:metric_name]: ""}_#{@res? @res[:namespace]: ""}"
+    "#{@res ? @res[:metric_name] : ""}_#{@res ? @res[:namespace] : ""}"
   end
 
   def metric_name
-    return unless exists?
+    return nil unless exists?
     @res[:metric_name]
   end
 

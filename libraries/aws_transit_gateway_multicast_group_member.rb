@@ -18,17 +18,27 @@ class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
     opts = { transit_gateway_multicast_domain_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_multicast_domain_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
+    unless opts[:transit_gateway_multicast_domain_id] &&
+             !opts[:transit_gateway_multicast_domain_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided"
+    end
     @display_name = opts[:transit_gateway_multicast_domain_id]
     catch_aws_errors do
-      resp = @aws.compute_client.search_transit_gateway_multicast_groups({ transit_gateway_multicast_domain_id: opts[:transit_gateway_multicast_domain_id] })
+      resp =
+        @aws.compute_client.search_transit_gateway_multicast_groups(
+          {
+            transit_gateway_multicast_domain_id:
+              opts[:transit_gateway_multicast_domain_id]
+          }
+        )
       @multicast_groups = resp.multicast_groups[0].to_h
       create_resource_methods(@multicast_groups)
     end
   end
 
   def transit_gateway_multicast_domain_id
-    return unless exists?
+    return nil unless exists?
     @multicast_groups[:transit_gateway_multicast_domain_id]
   end
 
@@ -37,7 +47,11 @@ class AWSTransitGatewayMulticastGroupMember < AwsResourceBase
   end
 
   def resource_id
-    @multicast_groups ? @multicast_groups[:transit_gateway_multicast_domain_id] : @display_name
+    if @multicast_groups
+      @multicast_groups[:transit_gateway_multicast_domain_id]
+    else
+      @display_name
+    end
   end
 
   def to_s
