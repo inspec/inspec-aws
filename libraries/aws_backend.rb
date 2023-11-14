@@ -519,7 +519,7 @@ class AwsResourceBase < Inspec.resource(1)
       raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
-                         "Error message: #{e.message}. You should address this error to ensure your controls are " \
+                         "Error message: #{e.message} You should address this error to ensure your controls are " \
                          "behaving as expected."
       @failed_resource = true
     end
