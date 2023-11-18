@@ -52,6 +52,8 @@ class AwsBillingAccount < AwsResourceBase
     !@api_response.nil? || !@raw_data
   end
 
+  alias exist? configured?
+
   def resource_id
     if @aws_account_id
       "AWS Billing Contact for account: #{@aws_account_id}"

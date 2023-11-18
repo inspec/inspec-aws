@@ -5,7 +5,7 @@ class AwsPrimaryAccount < AwsResourceBase
   name "aws_primary_contact"
   desc "Verifies the primary contact information for an AWS Account."
   example <<~EXAMPLE
-    describe aws_primary_account do
+    describe aws_primary_contact do
       it { should be_configured }
       its('full_name') { should cmp 'John Smith' }
       its('address_line_1') { should cmp '42 Wallaby Way' }
@@ -71,6 +71,8 @@ class AwsPrimaryAccount < AwsResourceBase
   def configured?
     !@api_response.nil? || !@raw_data
   end
+
+  alias exist? configured?
 
   def resource_id
     if @aws_account_id
