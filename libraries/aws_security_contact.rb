@@ -1,5 +1,4 @@
 require "aws_backend"
-# require "pry"
 
 class AwsAccountSecurityContact < AwsResourceBase
   name "aws_security_contact"

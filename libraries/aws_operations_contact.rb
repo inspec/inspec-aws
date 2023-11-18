@@ -1,5 +1,4 @@
 require "aws_backend"
-# require "pry"
 
 class AwsAccountOperationsContact < AwsResourceBase
   name "aws_operations_contact"

@@ -1,5 +1,4 @@
 require "aws_backend"
-# require "pry"
 
 class AwsBillingAccount < AwsResourceBase
   name "aws_billing_contact"

@@ -1,5 +1,4 @@
 require "aws_backend"
-# require "pry"
 
 class AwsPrimaryAccount < AwsResourceBase
   name "aws_primary_contact"
