@@ -67,6 +67,18 @@ end
 `global_secondary_indexes`
 : A list of global secondary indexes if there is any referenced on the selected table.
 
+`replicas`
+: A list of replicas if there is any referenced on the selected table.
+
+`billing_mode`
+: Specifices how you are charged for read and write throughput and how you manage capacity. Valid values are `PROVISIONED` and `PAY_PER_REQUEST`.
+
+`stream_view_type`
+: When an item in the table is modified, `stream_view_type` determines what information is written to the stream for this table.
+
+`ttl_attribute`
+: The name of the TTL attribute for items in the table.
+
 ## Examples
 
 **Ensure DynamoDb Table status is active.**
@@ -110,11 +122,32 @@ aws_dynamodb_table(table_name: 'table-name').global_secondary_indexes.each do |g
 end
 ```
 
+**Ensure DynamoDb Table has the correct replicas set.**
+
+```ruby
+aws_dynamodb_table(table_name: 'table-name').replicas.each do |replica_idx|
+  describe replica_idx do
+    its('region_name') { should eq 'eu-west-2' }
+    its('replica_status') { should eq 'ACTIVE' }
+  end
+end
+```
+
+**Other DynamoDb properties.**
+
+```ruby
+describe aws_dynamodb_table(table_name: 'table-name') do
+  its('billing_mode') { should eq 'PAY_PER_REQUEST' }
+  its('stream_view_type') { should eq 'PAY_PER_REQUEST' }
+  its('ttl_attribute') { should eq 'ttl' }
+end
+```
+
 **Ensure DynamoDb Table is encrypted.**
 
 ```ruby
 describe aws_dynamodb_table(table_name: 'table-name') do
-   it { should be_encrypted}
+  it { should be_encrypted }
 end
 ```
 
@@ -128,6 +161,30 @@ The `be_encrypted` matcher tests if the DynamoDB Table is encrypted.
 
 ```ruby
 it { should be_encrypted }
+```
+
+#### have_replicas
+
+The `have_replicas` matcher tests if DynamoDB Table has one or more replicas.
+
+```ruby
+it { should have_replicas }
+```
+
+#### have_stream_enabled
+
+The `have_stream_enabled` matcher tests if DynamoDB Streams is enabled on the table.
+
+```ruby
+it { should have_stream_enabled }
+```
+
+#### have_ttl_enabled
+
+The `have_ttl_enabled` matcher tests if DynamoDB TTL is enabled on the table.
+
+```ruby
+it { should have_ttl_enabled }
 ```
 
 ### exist

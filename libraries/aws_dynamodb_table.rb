@@ -11,7 +11,7 @@ class AwsDynamoDbTable < AwsResourceBase
 
   attr_reader :table_name, :table_status, :creation_date, :number_of_decreases_today,
               :write_capacity_units, :read_capacity_units, :item_count, :table_arn, :attributes, :key_schema, :global_secondary_indexes,
-              :sse_description
+              :sse_description, :billing_mode, :stream_view_type, :ttl_attribute, :replicas
 
   def initialize(opts = {})
     opts = { table_name: opts } if opts.is_a?(String)
@@ -35,6 +35,9 @@ class AwsDynamoDbTable < AwsResourceBase
       @read_capacity_units       = @dynamodb_table[:provisioned_throughput][:read_capacity_units]
       @item_count                = @dynamodb_table[:item_count]
       @sse_description           = @dynamodb_table[:sse_description]
+      @billing_mode              = @dynamodb_table[:billing_mode_summary]? @dynamodb_table[:billing_mode_summary][:billing_mode] : "PROVISIONED"
+      @stream_view_type          = @dynamodb_table[:stream_specification]? @dynamodb_table[:stream_specification][:stream_view_type] : ""
+      @replicas                  = @dynamodb_table[:replicas] || []
       @attributes                = []
       @key_schema                = []
       @global_secondary_indexes  = []
@@ -61,6 +64,15 @@ class AwsDynamoDbTable < AwsResourceBase
         end
       end
     end
+
+    begin
+      resp_ttl = @aws.dynamodb_client.describe_time_to_live(table_name: opts[:table_name])
+      return nil if resp_ttl[0].nil? || resp_ttl[0].empty?
+    rescue Aws::DynamoDB::Errors::ResourceNotFoundException
+      return
+    end
+    @dynamodb_ttl  = resp_ttl
+    @ttl_attribute = @dynamodb_ttl[:time_to_live_description][:attribute_name]
   end
 
   def resource_id
@@ -69,6 +81,18 @@ class AwsDynamoDbTable < AwsResourceBase
 
   def encrypted?
     @dynamodb_table.dig(:sse_description, :status)&.upcase == "ENABLED" || false
+  end
+
+  def has_stream_enabled?
+    @dynamodb_table.dig(:stream_specification, :stream_enabled)
+  end
+
+  def has_replicas?
+    !@replicas.empty?
+  end
+
+  def has_ttl_enabled?
+    @dynamodb_ttl.dig(:time_to_live_description, :time_to_live_status)&.upcase == "ENABLED" || false
   end
 
   def exists?

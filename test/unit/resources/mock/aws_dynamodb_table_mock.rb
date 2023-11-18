@@ -19,7 +19,12 @@ class AwsDynamoDbTableMock < AwsBaseResourceMock
                                             {attribute_name:@aws.any_string, :key_type =>'RANGE'}],
                    sse_description: { status: 'ENABLED',
                                       sse_type: 'KMS',
-                                      kms_master_key_arn: "arn:kms:us-west-2:243254392u3-32r324" }
+                                      kms_master_key_arn: "arn:kms:us-west-2:243254392u3-32r324" },
+                   billing_mode_summary:   {'billing_mode': 'PAY_PER_REQUEST'},
+                   stream_specification:   {'stream_enabled': true,
+                                            'stream_view_type': 'NEW_AND_OLD_IMAGES'},
+                   replicas: [{'region_name': 'eu-west-2',
+                               'replica_status': 'ACTIVE'}]
     }
   end
 
@@ -36,5 +41,30 @@ class AwsDynamoDbTableMock < AwsBaseResourceMock
 
   def configuration
     @mock_table
+  end
+end
+
+
+class AwsDynamoDbTableTTLMock < AwsBaseResourceMock
+
+  def initialize
+    super
+    @mock_ttl = {'attribute_name': 'ttl',
+                 'time_to_live_status': 'ENABLED'}
+  end
+
+  def stub_data
+    stub_data = []
+
+    config = {:client => Aws::DynamoDB::Client,
+              :method => :describe_time_to_live,
+              :data => {time_to_live_description: @mock_ttl}
+    }
+
+    stub_data += [config]
+  end
+
+  def configuration
+    @mock_ttl
   end
 end

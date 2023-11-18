@@ -96,7 +96,52 @@ class AwsDynamodbTableTest < Minitest::Test
     assert_equal(@config.key_schema, @mock_config[:key_schema])
   end
 
+  def test_table_billing_mode
+    assert_equal(@config.billing_mode, @mock_config[:billing_mode_summary][:billing_mode])
+  end
+
+  def test_table_replicas
+    assert_equal(@config.replicas[0].region_name, @mock_config[:replicas][0][:region_name])
+    assert_equal(@config.replicas[0].replica_status, @mock_config[:replicas][0][:replica_status])
+  end
+
+  def test_table_stream_view_type
+    assert_equal(@config.stream_view_type, @mock_config[:stream_specification][:stream_view_type])
+  end
+
   def test_table_encryption
     assert_equal(@config.encrypted?, true)
+  end
+
+  def test_table_has_replicas
+    assert_equal(@config.has_replicas?, true)
+  end
+
+  def test_table_has_stream_enabled
+    assert_equal(@config.has_stream_enabled?, true)
+  end
+
+end
+
+
+class AwsDynamodbTableTTLTest < Minitest::Test
+
+  def setup
+    # Given
+    @mock = AwsDynamoDbTableTTLMock.new
+    @mock_config = @mock.configuration
+
+    # When
+    @config = AwsDynamoDbTable.new(table_name: 'SomeTable',
+                                   client_args: { stub_responses: true },
+                                   stub_data: @mock.stub_data)
+  end
+  
+  def test_table_ttl_attribute
+    assert_equal(@config.ttl_attribute, @mock_config[:attribute_name])
+  end
+
+  def test_table_has_ttl_enabled
+    assert_equal(@config.has_ttl_enabled?, true)
   end
 end
