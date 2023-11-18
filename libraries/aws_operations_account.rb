@@ -54,7 +54,7 @@ class AwsAccountOperationsContact < AwsResourceBase
 
   def resource_id
     if @aws_account_id
-      "AWS Operations Contact for #{@aws_account_id}"
+      "AWS Operations Contact for account: #{@aws_account_id}"
     else
       "AWS Operations Contact Information"
     end
@@ -62,7 +62,7 @@ class AwsAccountOperationsContact < AwsResourceBase
 
   def to_s
     if @aws_account_id
-      "AWS Account Operations Contact for #{@aws_account_id}"
+      "AWS Operations Contact for account: #{@aws_account_id}"
     else
       "AWS Account Operations Contact"
     end
