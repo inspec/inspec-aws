@@ -1,16 +1,16 @@
 +++
-title = " Resource"
+title = "aws_iam_access_key Resource"
 platform = "aws"
 draft = false
 gh_repo = "inspec-aws"
 
 [menu.inspec]
-title = ""
-identifier = "inspec/resources/aws/ Resource"
+title = "aws_iam_access_key"
+identifier = "inspec/resources/aws/aws_iam_access_key Resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `` InSpec audit resource to test properties of a single AWS IAM Access Key.
+Use the `aws_iam_access_key` InSpec audit resource to test properties of a single AWS IAM Access Key.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
@@ -20,10 +20,10 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-An `` resource allows the testing of a single AWS IAM Access Key.
+An `aws_iam_access_key` resource allows the testing of a single AWS IAM Access Key.
 
 ```ruby
-describe (access_key_id: 'AKIA1111111111111111') do
+describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
   it { should exist }
 end
 ```
@@ -63,7 +63,7 @@ The following examples show how to use this InSpec audit resource.
 **Test that an IAM Access Key has been used in the last 90 days.**
 
 ```ruby
-describe (access_key_id: 'AKIA1111111111111111') do
+describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
   it                    { should exist }
   its('last_used_date') { should be > Time.now - 90 * 86400 }
 end
@@ -72,7 +72,7 @@ end
 **Test that an IAM Access Key for a specific user exists.**
 
 ```ruby
-describe (username: 'psmith', id: 'AKIA1111111111111111') do
+describe aws_iam_access_key(username: 'psmith', id: 'AKIA1111111111111111') do
   it { should exist }
 end
 ```
