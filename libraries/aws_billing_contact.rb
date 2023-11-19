@@ -23,28 +23,27 @@ class AwsBillingAccount < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     @raw_data = {}
+    @title, @name, @email_address, @phone_number = String.new
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact(@aws, "billing")
+      @api_response = fetch_aws_alternate_contact("billing")
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
-        "The BILLING contact has not been configured for this AWS Account."
+        "The Billing contact has not been configured for this AWS Account."
       )
       return [] if !@api_response || @api_response.empty?
     end
 
-    unless @api_response.nil?
+    if @api_response
       @api_response
         .members
         .map(&:to_s)
         .each do |key|
           instance_variable_set("@#{key}", @api_response.send(key))
         end
-      @raw_data = @api_response.to_h.transform_keys(&:to_s)
-    else
-      @name, @email_address, @phone_number, @title = nil
     end
+    @raw_data = @api_response.to_h.transform_keys(&:to_s)
   end
 
   def configured?
@@ -76,10 +75,10 @@ class AwsBillingAccount < AwsResourceBase
     arn.split(":")[4]
   end
 
-  def fetch_aws_alternate_contact(aws_client, type)
-    aws_client
+  def fetch_aws_alternate_contact(type)
+    @aws
       .account_client
-      .get_alternate_contact({ alternate_contact_type: "#{type.uppercase}" })
+      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
       .alternate_contact
   end
 end

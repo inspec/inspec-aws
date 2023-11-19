@@ -1,5 +1,5 @@
 require "aws_backend"
-
+# require "pry-byebug"
 class AwsAccountSecurityContact < AwsResourceBase
   name "aws_security_contact"
   desc "Verifies the security contact information for an AWS Account."
@@ -26,7 +26,8 @@ class AwsAccountSecurityContact < AwsResourceBase
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact(@aws, "security")
+      type = "security"
+      @api_response = fetch_aws_alternate_contact(type)
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
         "The Security contact has not been configured for this AWS Account."
@@ -43,7 +44,7 @@ class AwsAccountSecurityContact < AwsResourceBase
         end
       @raw_data = @api_response.to_h.transform_keys(&:to_s)
     else
-      @name, @email_address, @phone_number, @title = nil
+      @name, @email_address, @phone_number, @title = ""
     end
   end
 
@@ -69,17 +70,17 @@ class AwsAccountSecurityContact < AwsResourceBase
     end
   end
 
-  private
+  # private
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
     arn.split(":")[4]
   end
-end
 
-def fetch_aws_alternate_contact(aws_client, type)
-  aws_client
-    .account_client
-    .get_alternate_contact({ alternate_contact_type: "#{type.uppercase}" })
-    .alternate_contact
+  def fetch_aws_alternate_contact(type)
+    @aws
+      .account_client
+      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
+      .alternate_contact
+  end
 end
