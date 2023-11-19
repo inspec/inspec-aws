@@ -1,6 +1,6 @@
 require "aws_backend"
-# require "pry-byebug"
-class AwsAccountSecurityContact < AwsResourceBase
+
+class AwsSecurityAccount < AwsResourceBase
   name "aws_security_contact"
   desc "Verifies the security contact information for an AWS Account."
   example <<~EXAMPLE
@@ -23,11 +23,11 @@ class AwsAccountSecurityContact < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     @raw_data = {}
+    @title, @name, @email_address, @phone_number = String.new
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      type = "security"
-      @api_response = fetch_aws_alternate_contact(type)
+      @api_response = fetch_aws_alternate_contact("security")
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
         "The Security contact has not been configured for this AWS Account."
@@ -35,17 +35,15 @@ class AwsAccountSecurityContact < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
     end
 
-    unless @api_response.nil?
+    if @api_response
       @api_response
         .members
         .map(&:to_s)
         .each do |key|
           instance_variable_set("@#{key}", @api_response.send(key))
         end
-      @raw_data = @api_response.to_h.transform_keys(&:to_s)
-    else
-      @name, @email_address, @phone_number, @title = ""
     end
+    @raw_data = @api_response.to_h.transform_keys(&:to_s)
   end
 
   def configured?
@@ -66,11 +64,11 @@ class AwsAccountSecurityContact < AwsResourceBase
     if @aws_account_id
       "AWS Security Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Security Contact"
+      "AWS Account Primary Contact"
     end
   end
 
-  # private
+  private
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn

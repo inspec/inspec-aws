@@ -1,6 +1,6 @@
 require "aws_backend"
 
-class AwsAccountOperationsContact < AwsResourceBase
+class AwsOperationsAccount < AwsResourceBase
   name "aws_operations_contact"
   desc "Verifies the operations contact information for an AWS Account."
   example <<~EXAMPLE
@@ -23,10 +23,11 @@ class AwsAccountOperationsContact < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     @raw_data = {}
+    @title, @name, @email_address, @phone_number = String.new
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact(@aws, "operations")
+      @api_response = fetch_aws_alternate_contact("operations")
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
         "The Operations contact has not been configured for this AWS Account."
@@ -34,17 +35,15 @@ class AwsAccountOperationsContact < AwsResourceBase
       return [] if !@api_response || @api_response.empty?
     end
 
-    unless @api_response.nil?
+    if @api_response
       @api_response
         .members
         .map(&:to_s)
         .each do |key|
           instance_variable_set("@#{key}", @api_response.send(key))
         end
-      @raw_data = @api_response.to_h.transform_keys(&:to_s)
-    else
-      @name, @email_address, @phone_number, @title = nil
     end
+    @raw_data = @api_response.to_h.transform_keys(&:to_s)
   end
 
   def configured?
@@ -65,7 +64,7 @@ class AwsAccountOperationsContact < AwsResourceBase
     if @aws_account_id
       "AWS Operations Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Operations Contact"
+      "AWS Account Primary Contact"
     end
   end
 
@@ -76,10 +75,10 @@ class AwsAccountOperationsContact < AwsResourceBase
     arn.split(":")[4]
   end
 
-  def fetch_aws_alternate_contact(aws_client, type)
-    aws_client
+  def fetch_aws_alternate_contact(type)
+    @aws
       .account_client
-      .get_alternate_contact({ alternate_contact_type: "#{type.uppercase}" })
+      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
       .alternate_contact
   end
 end
