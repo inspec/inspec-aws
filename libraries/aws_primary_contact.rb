@@ -1,5 +1,4 @@
 require "aws_backend"
-require "pry-byebug"
 
 class AwsPrimaryAccount < AwsResourceBase
   name "aws_primary_contact"

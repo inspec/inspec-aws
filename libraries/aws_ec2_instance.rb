@@ -1,5 +1,4 @@
 require "aws_backend"
-require "pry"
 
 class AwsEc2Instance < AwsResourceBase
   name "aws_ec2_instance"

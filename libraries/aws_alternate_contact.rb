@@ -1,5 +1,4 @@
 require "aws_backend"
-require "pry"
 
 class AwsAlternateAccount < AwsResourceBase
   name "aws_alternate_contact"
