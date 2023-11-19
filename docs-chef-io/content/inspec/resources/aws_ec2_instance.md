@@ -81,7 +81,7 @@ One of either the EC2 instance's ID or name must be be provided.
 There are also additional properties available. For a comprehensive list, see [the API reference documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html)
 
 `instance`
-: A hash containing all the data collected about the EC2
+: A hash containing all the data collected about the EC2.
 
 ## Examples
 
