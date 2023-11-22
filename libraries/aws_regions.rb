@@ -10,11 +10,12 @@ class AwsRegions < AwsResourceBase
     end
   "
 
-  attr_reader :table
+  attr_reader :table, :regions
 
-  FilterTable.create
+  FilterTable
+    .create
     .register_column(:region_names, field: :region_name)
-    .register_column(:endpoints,    field: :endpoint)
+    .register_column(:endpoints, field: :endpoint)
     .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -30,8 +31,9 @@ class AwsRegions < AwsResourceBase
     end
     return [] if !@regions || @regions.empty?
     @regions.each do |region|
-      region_rows += [{ region_name: region[:region_name],
-                        endpoint: region[:endpoint] }]
+      region_rows += [
+        { region_name: region[:region_name], endpoint: region[:endpoint] }
+      ]
     end
     @table = region_rows
   end

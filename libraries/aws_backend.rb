@@ -63,6 +63,7 @@ require "aws-sdk-waf"
 require "aws-sdk-synthetics"
 require "aws-sdk-apigatewayv2"
 require "aws-sdk-account"
+require "aws-sdk-accessanalyzer"
 
 # AWS Inspec Backend Classes
 #
@@ -341,6 +342,14 @@ class AwsConnection
   def account_client
     aws_client(Aws::Account::Client)
   end
+
+  def access_analyzer_client
+    aws_client(Aws::AccessAnalyzer::Client)
+  end
+
+  def partitions_region_client
+    aws_client(Aws::Partitions::Region::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -492,6 +501,10 @@ class AwsResourceBase < Inspec.resource(1)
     fail_resource("No AWS credentials available")
     nil
   rescue Aws::Account::Errors::ResourceNotFoundException => e
+    Inspec::Log.warn "#{e.message}"
+    skip_resource("#{e.message}")
+    nil
+  rescue Aws::AccessAnalyzer::Errors => e
     Inspec::Log.warn "#{e.message}"
     skip_resource("#{e.message}")
     nil
