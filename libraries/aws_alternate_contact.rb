@@ -4,20 +4,20 @@ class AwsAlternateAccount < AwsResourceBase
   name "aws_alternate_contact"
   desc "Verifies the billing contact information for an AWS Account."
   example <<~EXAMPLE1
-      describe aws_alternate_account(type: 'billing') do
+    describe aws_alternate_account(type: 'billing') do
         it { should be_configured }
         its('name') { should cmp 'John Smith' }
         its('email_address') { should cmp 'jsmith@acme.com' }
       end
-    EXAMPLE1
+  EXAMPLE1
 
   example <<~EXAMPLE2
-      describe aws_alternate_account('security') do
-        it { should be_configured }
-        its('name') { should cmp 'Jane Smith' }
-        its('email_address') { should cmp 'janesmith@acme.com' }
-      end
-    EXAMPLE2
+    describe aws_alternate_account('security') do
+      it { should be_configured }
+      its('name') { should cmp 'Jane Smith' }
+      its('email_address') { should cmp 'janesmith@acme.com' }
+    end
+  EXAMPLE2
 
   attr_reader :raw_data,
               :api,
