@@ -1,15 +1,15 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsBillingAccount < AwsResourceBase
-  name "aws_billing_contact"
-  desc "Verifies the billing contact information for an AWS Account."
+  name 'aws_billing_contact'
+  desc 'Verifies the billing contact information for an AWS Account.'
   example <<~EXAMPLE
-      describe aws_billing_account do
-        it { should be_configured }
-        its('name') { should cmp 'John Smith' }
-        its('email_address') { should cmp 'jsmith@acme.com' }
-      end
-    EXAMPLE
+    describe aws_billing_account do
+      it { should be_configured }
+      its('name') { should cmp 'John Smith' }
+      its('email_address') { should cmp 'jsmith@acme.com' }
+    end
+  EXAMPLE
 
   attr_reader :raw_data,
               :api,
@@ -27,10 +27,10 @@ class AwsBillingAccount < AwsResourceBase
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact("billing")
+      @api_response = fetch_aws_alternate_contact('billing')
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
-        "The Billing contact has not been configured for this AWS Account."
+        'The Billing contact has not been configured for this AWS Account.',
       )
       return [] if !@api_response || @api_response.empty?
     end
@@ -56,7 +56,7 @@ class AwsBillingAccount < AwsResourceBase
     if @aws_account_id
       "AWS Billing Contact for account: #{@aws_account_id}"
     else
-      "AWS Billing Contact Information"
+      'AWS Billing Contact Information'
     end
   end
 
@@ -64,7 +64,7 @@ class AwsBillingAccount < AwsResourceBase
     if @aws_account_id
       "AWS Billing Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Primary Contact"
+      'AWS Account Primary Contact'
     end
   end
 
@@ -72,13 +72,13 @@ class AwsBillingAccount < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 
   def fetch_aws_alternate_contact(type)
     @aws
       .account_client
-      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
+      .get_alternate_contact({ alternate_contact_type: type.upcase.to_s })
       .alternate_contact
   end
 end

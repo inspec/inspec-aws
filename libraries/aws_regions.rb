@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsRegions < AwsResourceBase
-  name "aws_regions"
-  desc "Verifies settings for AWS Regions in bulk."
+  name 'aws_regions'
+  desc 'Verifies settings for AWS Regions in bulk.'
 
   example "
     describe aws_regions do
@@ -32,7 +32,7 @@ class AwsRegions < AwsResourceBase
       @regions = @aws.compute_client.describe_regions.to_h[:regions]
     end
     return [] if !@regions || @regions.empty?
-    region_opt_status = ""
+    region_opt_status = ''
     @regions.each do |region|
       catch_aws_errors do
         region_opt_status = fetch_region_opt_status(region[:region_name])
@@ -42,8 +42,8 @@ class AwsRegions < AwsResourceBase
           region_name: region[:region_name],
           endpoint: region[:endpoint],
           opt_in_status: region[:opt_in_status],
-          region_opt_status: region_opt_status
-        }
+          region_opt_status: region_opt_status,
+        },
       ]
     end
     @table = region_rows

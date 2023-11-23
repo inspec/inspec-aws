@@ -1,15 +1,15 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsOperationsAccount < AwsResourceBase
-  name "aws_operations_contact"
-  desc "Verifies the operations contact information for an AWS Account."
+  name 'aws_operations_contact'
+  desc 'Verifies the operations contact information for an AWS Account.'
   example <<~EXAMPLE
-      describe aws_operations_account do
-        it { should be_configured }
-        its('name') { should cmp 'John Smith' }
-        its('email_address') { should cmp 'jsmith@acme.com' }
-      end
-    EXAMPLE
+    describe aws_operations_account do
+      it { should be_configured }
+      its('name') { should cmp 'John Smith' }
+      its('email_address') { should cmp 'jsmith@acme.com' }
+    end
+  EXAMPLE
 
   attr_reader :raw_data,
               :api,
@@ -27,10 +27,10 @@ class AwsOperationsAccount < AwsResourceBase
     validate_parameters
     begin
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact("operations")
+      @api_response = fetch_aws_alternate_contact('operations')
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
-        "The Operations contact has not been configured for this AWS Account."
+        'The Operations contact has not been configured for this AWS Account.',
       )
       return [] if !@api_response || @api_response.empty?
     end
@@ -56,7 +56,7 @@ class AwsOperationsAccount < AwsResourceBase
     if @aws_account_id
       "AWS Operations Contact for account: #{@aws_account_id}"
     else
-      "AWS Operations Contact Information"
+      'AWS Operations Contact Information'
     end
   end
 
@@ -64,7 +64,7 @@ class AwsOperationsAccount < AwsResourceBase
     if @aws_account_id
       "AWS Operations Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Primary Contact"
+      'AWS Account Primary Contact'
     end
   end
 
@@ -72,13 +72,13 @@ class AwsOperationsAccount < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 
   def fetch_aws_alternate_contact(type)
     @aws
       .account_client
-      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
+      .get_alternate_contact({ alternate_contact_type: type.upcase.to_s })
       .alternate_contact
   end
 end

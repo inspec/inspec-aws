@@ -1,9 +1,9 @@
-require "aws_backend"
-require "pry"
+require 'aws_backend'
+require 'pry'
 
 class AwsIamAccessAnalyzer < AwsResourceBase
-  name "aws_iam_access_analyzers"
-  desc "Verifies settings for a collection AWS IAM Access Analyzers."
+  name 'aws_iam_access_analyzers'
+  desc 'Verifies settings for a collection AWS IAM Access Analyzers.'
   example <<~EXAMPLE1
     # retrieve both 'account' and 'organization' analyzers
     describe aws_iam_access_analyzers do
@@ -43,7 +43,7 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   def initialize(opts = {})
     @raw_data = []
     @api_response = nil
-    @supported_opts_values = %w[account organization all]
+    @supported_opts_values = %w{account organization all}
 
     opts = { type: opts } if opts.is_a?(String)
     unless (opts.values - @supported_opts_values).empty? || opts.nil?
@@ -51,7 +51,7 @@ class AwsIamAccessAnalyzer < AwsResourceBase
             "Unsupported options '#{opts.values - @supported_opts_values}'. Supported key(s): #{@supported_opts_values}"
     end
     super(opts)
-    validate_parameters(allow: %i[type aws_region])
+    validate_parameters(allow: %i(type aws_region))
     parameters = {}
     parameters[:type] = opts[:type].upcase if opts[:type]
     @aws.access_analyzer_client.config.region = opts[:aws_region] if opts[
@@ -64,10 +64,10 @@ class AwsIamAccessAnalyzer < AwsResourceBase
     analyzer_rows = []
     catch_aws_errors do
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      if parameters.empty? || parameters[:type] == "ALL"
+      if parameters.empty? || parameters[:type] == 'ALL'
         @api_response = @aws.access_analyzer_client.list_analyzers
-      elsif parameters[:type] == "ACCOUNT" ||
-            parameters[:type] == "ORGANIZATION"
+      elsif parameters[:type] == 'ACCOUNT' ||
+            parameters[:type] == 'ORGANIZATION'
         @api_response = @aws.access_analyzer_client.list_analyzers(parameters)
       end
 
@@ -80,11 +80,11 @@ class AwsIamAccessAnalyzer < AwsResourceBase
             created_at: aa.created_at,
             last_resource_analyzed: aa.last_resource_analyzed,
             last_resource_analyzed_at: aa.last_resource_analyzed_at,
-            #TODO: Flatten the hash of tags?
+            # TODO: Flatten the hash of tags?
             tags: aa.tags,
             status: aa.status,
-            status_reason: aa.status_reason
-          }
+            status_reason: aa.status_reason,
+          },
         ]
       end
       @raw_data =
@@ -94,8 +94,8 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   end
 
   def resource_id
-    response = "AWS IAM "
-    opts[:type] ? response += "#{opts[:type].capitalize} " : ""
+    response = 'AWS IAM '
+    opts[:type] ? response += "#{opts[:type].capitalize} " : ''
     if @aws_account_id
       response +=
         "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
@@ -106,8 +106,8 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   end
 
   def to_s
-    response = "AWS IAM "
-    opts[:type] ? response += "#{opts[:type].capitalize} " : ""
+    response = 'AWS IAM '
+    opts[:type] ? response += "#{opts[:type].capitalize} " : ''
     if @aws_account_id
       response +=
         "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
@@ -121,7 +121,7 @@ class AwsIamAccessAnalyzer < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 
   def get_current_region

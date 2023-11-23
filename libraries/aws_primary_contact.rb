@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsPrimaryAccount < AwsResourceBase
-  name "aws_primary_contact"
-  desc "Verifies the primary contact information for an AWS Account."
+  name 'aws_primary_contact'
+  desc 'Verifies the primary contact information for an AWS Account.'
   example <<~EXAMPLE
     describe aws_primary_contact do
       it { should be_configured }
@@ -50,7 +50,7 @@ class AwsPrimaryAccount < AwsResourceBase
         @aws.account_client.get_contact_information.contact_information
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
-        "The Primary contact has not been configured for this AWS Account."
+        'The Primary contact has not been configured for this AWS Account.',
       )
       return [] if !@api_response || @api_response.empty?
     end
@@ -76,7 +76,7 @@ class AwsPrimaryAccount < AwsResourceBase
     if @aws_account_id
       "AWS Primary Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Primary Contact Information"
+      'AWS Account Primary Contact Information'
     end
   end
 
@@ -84,7 +84,7 @@ class AwsPrimaryAccount < AwsResourceBase
     if @aws_account_id
       "AWS Primary Contact for account: #{@aws_account_id}"
     else
-      "AWS Account Primary Contact"
+      'AWS Account Primary Contact'
     end
   end
 
@@ -92,6 +92,6 @@ class AwsPrimaryAccount < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 end
