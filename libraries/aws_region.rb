@@ -1,4 +1,5 @@
 require "aws_backend"
+require "pry"
 
 class AwsRegion < AwsResourceBase
   name "aws_region"
@@ -9,7 +10,7 @@ class AwsRegion < AwsResourceBase
       it { should exist }
     end
   "
-  attr_reader :region_name, :endpoint
+  attr_reader :region_name, :endpoint, :resp, :opt_in_status
 
   def initialize(opts = {})
     opts = { region_name: opts } if opts.is_a?(String)
@@ -19,9 +20,10 @@ class AwsRegion < AwsResourceBase
 
     @region_name = opts[:region_name]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_regions(region_names: [@region_name])
-      return if resp.regions.empty?
-      @endpoint = resp.regions[0].endpoint
+      @resp = @aws.compute_client.describe_regions(region_names: [@region_name])
+      return if @resp.regions.empty?
+      @opt_in_status = @resp.regions[0].opt_in_status
+      @endpoint = @resp.regions[0].endpoint
     end
   end
 

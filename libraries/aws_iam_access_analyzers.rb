@@ -51,12 +51,13 @@ class AwsIamAccessAnalyzer < AwsResourceBase
             "Unsupported options '#{opts.values - @supported_opts_values}'. Supported key(s): #{@supported_opts_values}"
     end
     super(opts)
-    validate_parameters(allow: %i[type])
+    validate_parameters(allow: %i[type aws_region])
     parameters = {}
     parameters[:type] = opts[:type].upcase if opts[:type]
-    puts parameters
+    @aws.access_analyzer_client.config.region = opts[:aws_region] if opts[
+      :aws_region
+    ]
     @table = fetch_data(parameters)
-    puts @table.empty?
   end
 
   def fetch_data(parameters)
@@ -96,20 +97,24 @@ class AwsIamAccessAnalyzer < AwsResourceBase
     response = "AWS IAM "
     opts[:type] ? response += "#{opts[:type].capitalize} " : ""
     if @aws_account_id
-      response += "Account Analyzer for #{@aws_account_id}"
+      response +=
+        "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
     else
-      response += "Account Analyzer Information"
+      response += "Account Analyzer Information in #{get_current_region}"
     end
+    response
   end
 
   def to_s
     response = "AWS IAM "
     opts[:type] ? response += "#{opts[:type].capitalize} " : ""
     if @aws_account_id
-      response += "Account Analyzer for #{@aws_account_id}"
+      response +=
+        "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
     else
-      response += "Account Analyzer Information"
+      response += "Account Analyzer Information in #{get_current_region}"
     end
+    response
   end
 
   private
@@ -117,5 +122,9 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
     arn.split(":")[4]
+  end
+
+  def get_current_region
+    @aws.access_analyzer_client.config.region
   end
 end

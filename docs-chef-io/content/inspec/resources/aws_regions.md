@@ -44,6 +44,12 @@ end
 `endpoints`
 : The resolved endpoints of the regions.
 
+`opt_in_status`
+: The opt-in status of the Region. Possible values are: `opt-in-not-required`, `opted-in` and `not-opted-in`.
+
+`region_opt_status`
+: One of the potential statuses a Region can undergo. Possible values are: `Enabled`, `Enabling`, `Disabled`, `Disabling` and `Enabled_By_Default`.
+
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
