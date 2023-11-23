@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsAlternateAccount < AwsResourceBase
-  name "aws_alternate_contact"
-  desc "Verifies the billing contact information for an AWS Account."
+  name 'aws_alternate_contact'
+  desc 'Verifies the billing contact information for an AWS Account.'
   example <<~EXAMPLE1
     describe aws_alternate_account(type: 'billing') do
         it { should be_configured }
@@ -28,10 +28,10 @@ class AwsAlternateAccount < AwsResourceBase
               :title,
               :aws_account_id
 
-  def initialize(opts = {}) # rubocop:disable Metrics/MethodLength
+  def initialize(opts = {})
     @raw_data = {}
-    supported_opt_keys = %i[type]
-    supported_opts_values = %w[billing operations security]
+    supported_opt_keys = %i(type)
+    supported_opts_values = %w{billing operations security}
     opts = { type: opts } if opts.is_a?(String)
 
     unless opts.respond_to?(:keys)
@@ -44,7 +44,7 @@ class AwsAlternateAccount < AwsResourceBase
     end
     unless opts.keys && (opts.keys & supported_opt_keys).length == 1
       raise ArgumentError,
-            "Specifying more than one of :type for aws_alternate_account is not supported"
+            'Specifying more than one of :type for aws_alternate_account is not supported'
     end
     unless supported_opts_values.any? { |val| opts.values.include?(val) }
       raise ArgumentError,
@@ -58,7 +58,7 @@ class AwsAlternateAccount < AwsResourceBase
       @api_response = fetch_aws_alternate_contact(opts[:type])
     rescue Aws::Account::Errors::ResourceNotFoundException
       skip_resource(
-        "The #{opts[:type].uppercase} contact has not been configured for this AWS Account."
+        "The #{opts[:type].uppercase} contact has not been configured for this AWS Account.",
       )
       return [] if !@api_response || @api_response.empty?
     end
@@ -72,7 +72,7 @@ class AwsAlternateAccount < AwsResourceBase
         end
       @raw_data = @api_response.to_h.transform_keys(&:to_s)
     else
-      @name, @email_address, @phone_number, @title = ""
+      @name, @email_address, @phone_number, @title = ''
     end
   end
 
@@ -102,13 +102,13 @@ class AwsAlternateAccount < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(":")[4]
+    arn.split(':')[4]
   end
 
   def fetch_aws_alternate_contact(type)
     @aws
       .account_client
-      .get_alternate_contact({ alternate_contact_type: "#{type.upcase}" })
+      .get_alternate_contact({ alternate_contact_type: type.upcase.to_s })
       .alternate_contact
   end
 end
