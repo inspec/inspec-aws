@@ -76,7 +76,6 @@ class AwsIamAccessAnalyzer < AwsResourceBase
             created_at: aa.created_at,
             last_resource_analyzed: aa.last_resource_analyzed,
             last_resource_analyzed_at: aa.last_resource_analyzed_at,
-            # TODO: Flatten the hash of tags?
             tags: aa.tags,
             status: aa.status,
             status_reason: aa.status_reason,
