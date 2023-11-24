@@ -42,26 +42,22 @@ class AwsIamAccessAnalyzer < AwsResourceBase
 
   def initialize(opts = {})
     @raw_data = []
+    parameters = {}
     @api_response = nil
     @supported_opts_values = %w{account organization all}
-
     opts = { type: opts } if opts.is_a?(String)
-    unless (opts.values - @supported_opts_values).empty? || opts.nil?
-      raise ArgumentError,
-            "Unsupported options '#{opts.values - @supported_opts_values}'. Supported key(s): #{@supported_opts_values}"
-    end
     super(opts)
     validate_parameters(allow: %i(type aws_region))
-    parameters = {}
     parameters[:type] = opts[:type].upcase if opts[:type]
-    @aws.access_analyzer_client.config.region = opts[:aws_region] if opts[
-      :aws_region
-    ]
+    unless @supported_opts_values.map(&:upcase).include?(parameters[:type]) || parameters[:type].nil?
+      raise ArgumentError, "Unsupported Account Type: '#{parameters[:type].downcase}'.  Supported account types: #{@supported_opts_values}"
+    end
     @table = fetch_data(parameters)
   end
 
   def fetch_data(parameters)
     analyzer_rows = []
+
     catch_aws_errors do
       catch_aws_errors { @aws_account_id = fetch_aws_account }
       if parameters.empty? || parameters[:type] == 'ALL'
