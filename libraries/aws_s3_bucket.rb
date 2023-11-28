@@ -101,6 +101,13 @@ class AwsS3Bucket < AwsResourceBase
     end
   end
 
+  def versioning
+    return [] unless exists? # exists? would throw the same NoSuchBucket error if the bucket name was not valid
+    catch_aws_errors do
+      @versioning ||= Hashie::Mash.new(@aws.storage_client.get_bucket_versioning(bucket: @bucket_name))
+    end
+  end
+
   def has_secure_transport_enabled?
     bucket_policy.any? { |s| s.effect == "Deny" && s.condition && s.condition["Bool"] && s.condition["Bool"]["aws:SecureTransport"] && s.condition["Bool"]["aws:SecureTransport"] == "false" }
   end
