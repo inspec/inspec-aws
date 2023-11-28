@@ -1,4 +1,5 @@
 require "aws_backend"
+require "hashie/mash"
 
 class AwsS3Bucket < AwsResourceBase
   name "aws_s3_bucket"
