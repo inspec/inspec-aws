@@ -10,7 +10,7 @@ class AwsS3Bucket < AwsResourceBase
     end
   "
 
-  attr_reader :region, :bucket_name
+  attr_reader :region, :bucket_name, :versioning
 
   def initialize(opts = {})
     opts = { bucket_name: opts } if opts.is_a?(String)
