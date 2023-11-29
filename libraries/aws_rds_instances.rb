@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsRdsInstances < AwsCollectionResourceBase
-  name "aws_rds_instances"
-  desc "Verifies settings for AWS RDS instances in bulk."
+  name 'aws_rds_instances'
+  desc 'Verifies settings for AWS RDS instances in bulk.'
   example "
     describe aws_rds_instances do
       it { should exist }
@@ -24,8 +24,11 @@ class AwsRdsInstances < AwsCollectionResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters
-    @table = fetch(client: :rds_client, operation: :describe_db_instances).db_instances.map(&:to_h)
-
+    catch_aws_errors do
+      @table = fetch(client: :rds_client, operation: :describe_db_instances).db_instances.map(&:to_h)
+    end
+    return [] unless @table.present?
+    
     populate_filter_table_from_response
   end
 end
