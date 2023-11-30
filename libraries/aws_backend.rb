@@ -634,9 +634,7 @@ class AwsCollectionResourceBase < AwsResourceBase
   private
 
   def populate_filter_table_from_response
-    require 'pry-byebug'
-    # return unless @table.present?
-    return [] if @table.empty?
+    return unless @table.present?
 
     table_schema =
       @table.first.keys.map do |key|
