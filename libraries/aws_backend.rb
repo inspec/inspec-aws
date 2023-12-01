@@ -508,6 +508,10 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.warn e.message.to_s
     skip_resource(e.message.to_s)
     nil
+  rescue Aws::SecurityHub::Errors::InvalidAccessException => e
+    Inspec::Log.warn("#{e.message} in region: #{opts[:aws_region]}")
+    #skip_resource(e.message.to_s)
+    nil
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'
     fail_resource('Invalid Endpoint error')
