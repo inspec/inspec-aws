@@ -11,7 +11,7 @@ class AwsCloudTrailTrail < AwsResourceBase
 
   attr_reader :cloud_watch_logs_log_group_arn, :cloud_watch_logs_role_arn, :home_region, :trail_name,
               :kms_key_id, :s3_bucket_name, :s3_key_prefix, :trail_arn, :is_multi_region_trail,
-              :log_file_validation_enabled, :is_organization_trail
+              :log_file_validation_enabled, :is_organization_trail, :event_selectors
 
   alias multi_region_trail? is_multi_region_trail
   alias log_file_validation_enabled? log_file_validation_enabled
@@ -77,12 +77,18 @@ class AwsCloudTrailTrail < AwsResourceBase
     return @cloud_watch_logs_log_group_arn.split(":")[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
   end
 
+  # TODO: see what happens when running against nil event selectors
+  def event_selectors
+    catch_aws_errors do
+      @event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
+    end
+  end
+
   def has_event_selector_mgmt_events_rw_type_all?
     return nil unless exists?
     event_selector_found = false
     begin
-      event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
-      event_selectors.event_selectors.each do |es|
+      @event_selectors.event_selectors.each do |es|
         event_selector_found = true if es.read_write_type == "All" && es.include_management_events == true
       end
     rescue Aws::CloudTrail::Errors::TrailNotFoundException
