@@ -30,6 +30,7 @@ class AWSSecurityHub < AwsResourceBase
   end
 
   alias exists? subscribed?
+  alias exist? subscribed?
 
   def resource_id
     @res[:hub_arn].presence || ''
