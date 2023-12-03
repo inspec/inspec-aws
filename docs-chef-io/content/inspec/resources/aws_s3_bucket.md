@@ -192,6 +192,30 @@ The `have_secure_transport_enabled` matcher tests if a bucket policy that explic
 
    it { should have_secure_transport_enabled }
 
+#### prevent_public_access
+
+The `prevent_public_access` matcher tests if the buckets public access is restricted via the bucket access block of the given bucket via the AWS S3 API.
+
+   it { should be_prevent_public_access }
+
+#### preventing_public_access_via_bucket
+
+Alias of `prevent_public_access`.
+
+   it { should be_preventing_public_public_access_via_bucket }
+
+#### prevent_public_access_by_account
+
+The `prevent_public_access_by_account` matcher tests if the buckets public access is restricted via current aws account via the AWS S3 Control API.
+
+   it { should be_prevent_public_access_by_account }
+
+#### preventing_public_access_by_account
+
+Alias of `prevent_public_access_by_account`.
+
+   it { should be_preventing_public_access_by_account }
+
 ## AWS Permissions
 
 Your [Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal) will need the `S3:Client:GetBucketAclOutput`, `S3:Client:GetBucketLocationOutput`, `S3:Client:GetBucketLoggingOutput`, `S3:Client:GetBucketPolicyOutput`, and `S3:Client:GetBucketEncryptionOutput` actions set to allow.
