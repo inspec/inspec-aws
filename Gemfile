@@ -15,7 +15,6 @@ gem "inspec-bin"
 gem "aws-sdk-accessanalyzer"
 gem "aws-sdk-s3control"
 gem "aws-partitions"
-gem "train-kubernetes"
 
 gem "rubocop", "~> 1.25.1", require: false
 

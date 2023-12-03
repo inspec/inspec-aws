@@ -92,7 +92,6 @@ class AwsS3Bucket < AwsResourceBase
     @prevent_public_access_by_account ||= catch_aws_errors do
       begin
         @account_id = fetch_aws_account
-        require 'pry' ; binding.pry
         @public_access_account_config = @aws.storage_control_client.get_public_access_block(account_id: @account_id).public_access_block_configuration
       rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
         return @public_access_account_config = false
