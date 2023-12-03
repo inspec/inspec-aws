@@ -216,7 +216,7 @@ class AwsConnection
     aws_client(Aws::S3::Client)
   end
 
-  def storage_control_clientexit
+  def storage_control_client
     aws_client(Aws::S3Control::Client)
   end
 

@@ -12,9 +12,7 @@ gem "bundle"
 
 # Use Latest Inspec
 gem "inspec-bin"
-gem "aws-sdk-accessanalyzer"
-gem "aws-sdk-s3control"
-gem "aws-partitions"
+gem "train-aws", git: 'https://github.com/mitre/train-aws.git', branch: 'al/dep-updates'
 
 gem "rubocop", "~> 1.25.1", require: false
 

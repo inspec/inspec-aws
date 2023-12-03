@@ -10,7 +10,7 @@ class AwsS3Bucket < AwsResourceBase
     end
   "
 
-  attr_reader :region, :bucket_name, :versioning
+  attr_reader :region, :bucket_name, :versioning, :public_access_account_config, :public_access_config
 
   def initialize(opts = {})
     opts = { bucket_name: opts } if opts.is_a?(String)
@@ -83,7 +83,7 @@ class AwsS3Bucket < AwsResourceBase
       rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
         return @public_access_config = false
       end
-      @public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+      @public_access_config.all?
     end
   end
 
@@ -95,13 +95,8 @@ class AwsS3Bucket < AwsResourceBase
         @public_access_account_config = @aws.storage_control_client.get_public_access_block(account_id: @account_id).public_access_block_configuration
       rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
         return @public_access_account_config = false
-      # not sure if this is standard behavior, expect above error for no config found
-      # rescue Aws::S3Control::Errors::InvalidURI => e
-      # TODO: Caused by outdated gem in train-aws https://github.com/inspec/train-aws/pull/519
-      #   raise "#{e.message}"
-      #   return @public_access_account_config = false
       end
-    @public_access_account_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+    @public_access_account_config.all?
     end
   end
 
