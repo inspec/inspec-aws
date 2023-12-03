@@ -25,4 +25,5 @@ shell_tester:
 	docker-compose run --rm --entrypoint bash tester
 
 logout:
-		docker-compose run --rm aws rm -rf /app/.aws
+	docker-compose run --rm aws rm -rf /app/.aws
+		

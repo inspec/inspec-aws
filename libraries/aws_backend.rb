@@ -28,6 +28,7 @@ require 'aws-sdk-organizations'
 require 'aws-sdk-rds'
 require 'aws-sdk-route53'
 require 'aws-sdk-s3'
+require 'aws-sdk-s3control'
 require 'aws-sdk-shield'
 require 'aws-sdk-sns'
 require 'aws-sdk-sqs'
@@ -213,6 +214,10 @@ class AwsConnection
 
   def storage_client
     aws_client(Aws::S3::Client)
+  end
+
+  def storage_control_clientexit
+    aws_client(Aws::S3Control::Client)
   end
 
   def sts_client
@@ -510,7 +515,6 @@ class AwsResourceBase < Inspec.resource(1)
     nil
   rescue Aws::SecurityHub::Errors::InvalidAccessException => e
     Inspec::Log.warn("#{e.message} in region: #{opts[:aws_region]}")
-    #skip_resource(e.message.to_s)
     nil
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'

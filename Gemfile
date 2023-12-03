@@ -13,6 +13,7 @@ gem "bundle"
 # Use Latest Inspec
 gem "inspec-bin"
 gem "aws-sdk-accessanalyzer"
+gem "aws-sdk-s3control"
 gem "aws-partitions"
 gem "train-kubernetes"
 

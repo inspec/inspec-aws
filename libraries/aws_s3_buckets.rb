@@ -4,8 +4,8 @@ class AwsS3Buckets < AwsResourceBase
   name "aws_s3_buckets"
   desc "Verifies settings for AWS S3 Buckets in bulk."
   example "
-    describe aws_s3_bucket do
-      its('bucket_names') { should eq ['my_bucket'] }
+    describe aws_s3_buckets do
+      its('bucket_names') { should include 'my_bucket' }
     end
   "
 
@@ -38,7 +38,7 @@ class AwsS3Buckets < AwsResourceBase
     end
     @api_response.each do |resp|
       resp.buckets.each do |bucket|
-        bucket_rows += [{ bucket_name: bucket[:name] }]
+        bucket_rows += [{ bucket_name: bucket[:name]}]
       end
     end
     @table = bucket_rows

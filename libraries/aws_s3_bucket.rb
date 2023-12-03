@@ -59,7 +59,7 @@ class AwsS3Bucket < AwsResourceBase
       begin
         @bucket_policy_status_public = @aws.storage_client.get_bucket_policy_status(bucket: @bucket_name).policy_status.is_public
       rescue Aws::S3::Errors::NoSuchBucketPolicy
-        @bucket_policy_status_public = false # preserves the original behaviour
+        @bucket_policy_status_public = false # preserves the original behavior
       end
       @bucket_policy_status_public || \
         bucket_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AllUsers/ } || \
@@ -77,8 +77,32 @@ class AwsS3Bucket < AwsResourceBase
   def prevent_public_access?
     return false unless exists?
     @prevent_public_access ||= catch_aws_errors do
-      public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
-      public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+      begin
+        @public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
+      # API throws an error if no public block access is configured
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
+        return @public_access_config = false
+      end
+      @public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
+    end
+  end
+
+  def prevent_public_access_by_account?
+    return false unless exists?
+    @prevent_public_access_by_account ||= catch_aws_errors do
+      begin
+        @account_id = fetch_aws_account
+        require 'pry' ; binding.pry
+        @public_access_account_config = @aws.storage_control_client.get_public_access_block(account_id: @account_id).public_access_block_configuration
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
+        return @public_access_account_config = false
+      # not sure if this is standard behavior, expect above error for no config found
+      # rescue Aws::S3Control::Errors::InvalidURI => e
+      # TODO: Caused by outdated gem in train-aws https://github.com/inspec/train-aws/pull/519
+      #   raise "#{e.message}"
+      #   return @public_access_account_config = false
+      end
+    @public_access_account_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
     end
   end
 
@@ -164,5 +188,12 @@ class AwsS3Bucket < AwsResourceBase
 
   def to_s
     "S3 Bucket #{@bucket_name}"
+  end
+  
+  private
+
+  def fetch_aws_account
+    arn = @aws.sts_client.get_caller_identity({}).arn
+    arn.split(':')[4]
   end
 end
