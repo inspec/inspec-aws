@@ -505,10 +505,6 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.warn(e.message.to_s)
     skip_resource(e.message.to_s)
     nil
-  rescue Aws::AccessAnalyzer::Errors => e
-    Inspec::Log.warn(e.message.to_s)
-    skip_resource(e.message.to_s)
-    nil
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error("It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.")
     fail_resource("No AWS credentials available")
@@ -519,6 +515,10 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error("The endpoint that is trying to be accessed does not exist.")
     fail_resource("Invalid Endpoint error")
+    nil
+  rescue Aws::AccessAnalyzer::Errors::ServiceError => e
+    Inspec::Log.warn(e.message)
+    skip_resource(e.message)
     nil
   rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
     Inspec::Log.error("No public access block configuration was found")
