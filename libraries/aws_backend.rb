@@ -501,7 +501,7 @@ class AwsResourceBase < Inspec.resource(1)
   # Intercept AWS exceptions
   def catch_aws_errors
     yield # Catch and create custom messages as needed
-  rescue Aws::Errors::MissingCredentialsError
+  rescue Aws::Errors::MissingCredentialsError => e
     Inspec::Log.error 'It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.'
     fail_resource('No AWS credentials available')
     nil
@@ -516,9 +516,13 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::SecurityHub::Errors::InvalidAccessException => e
     Inspec::Log.warn("#{e.message} in region: #{opts[:aws_region]}")
     nil
-  rescue Aws::Errors::NoSuchEndpointError
+  rescue Aws::Errors::NoSuchEndpointError => e
     Inspec::Log.error 'The endpoint that is trying to be accessed does not exist.'
     fail_resource('Invalid Endpoint error')
+    nil
+  rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration => e
+    Inspec::Log.error 'No public access block configuration was found'
+    skip_resource('No public access block configuration was found')
     nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)

@@ -10,7 +10,7 @@ class AwsS3Bucket < AwsResourceBase
     end
   "
 
-  attr_reader :region, :bucket_name, :versioning, :public_access_account_config, :public_access_config
+  attr_reader :region, :bucket_name, :versioning
 
   def initialize(opts = {})
     opts = { bucket_name: opts } if opts.is_a?(String)
@@ -76,28 +76,32 @@ class AwsS3Bucket < AwsResourceBase
 
   def prevent_public_access?
     return false unless exists?
-    @prevent_public_access ||= catch_aws_errors do
+    @prevent_public_access =
       begin
         public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
-      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
-        return false
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration => e
+        @prevent_public_access = false
       end
-      public_access_config.values.all?
-    end
+    return false unless @prevent_public_access
+    public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
   end
+
+  alias preventing_public_access_via_bucket? prevent_public_access?
 
   def prevent_public_access_by_account?
     return false unless exists?
     @account_id = fetch_aws_account
-    @prevent_public_access_by_account ||= catch_aws_errors do
+    @prevent_public_access_by_account =
       begin
         public_access_account_config = @aws.storage_control_client.get_public_access_block(account_id: @account_id).public_access_block_configuration
-      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
-        return false
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration => e
+        @prevent_public_access_by_account = false
       end
-      public_access_account_config.values.all?
-    end
+    return false unless @prevent_public_access_by_account
+    public_access_account_config.block_public_acls == true && public_access_account_config.ignore_public_acls == true && public_access_account_config.block_public_policy == true && public_access_account_config.restrict_public_buckets == true
   end
+
+  alias preventing_public_access_via_account? prevent_public_access_by_account?
 
   def has_default_encryption_enabled?
     return false unless exists?
