@@ -38,7 +38,7 @@ class AwsS3Buckets < AwsResourceBase
     end
     @api_response.each do |resp|
       resp.buckets.each do |bucket|
-        bucket_rows += [{ bucket_name: bucket[:name]}]
+        bucket_rows += [{ bucket_name: bucket[:name] }]
       end
     end
     @table = bucket_rows

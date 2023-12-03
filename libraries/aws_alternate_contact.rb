@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsAlternateAccount < AwsResourceBase
-  name 'aws_alternate_contact'
-  desc 'Verifies the billing contact information for an AWS Account.'
+  name "aws_alternate_contact"
+  desc "Verifies the billing contact information for an AWS Account."
   example <<~EXAMPLE1
     describe aws_alternate_account(type: 'billing') do
         it { should be_configured }
@@ -44,7 +44,7 @@ class AwsAlternateAccount < AwsResourceBase
     end
     unless opts.keys && (opts.keys & supported_opt_keys).length == 1
       raise ArgumentError,
-            'Specifying more than one of :type for aws_alternate_account is not supported'
+            "Specifying more than one of :type for aws_alternate_account is not supported"
     end
     unless supported_opts_values.any? { |val| opts.values.include?(val) }
       raise ArgumentError,
@@ -72,7 +72,7 @@ class AwsAlternateAccount < AwsResourceBase
         end
       @raw_data = @api_response.to_h.transform_keys(&:to_s)
     else
-      @name, @email_address, @phone_number, @title = ''
+      @name, @email_address, @phone_number, @title = ""
     end
   end
 
@@ -102,7 +102,7 @@ class AwsAlternateAccount < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(':')[4]
+    arn.split(":")[4]
   end
 
   def fetch_aws_alternate_contact(type)

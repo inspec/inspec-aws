@@ -17,7 +17,7 @@ class AWSSecurityHub < AwsResourceBase
     @res = {}
     @describe_hub = []
     super(opts)
-    validate_parameters()
+    validate_parameters
     catch_aws_errors do
       @describe_hub = @aws.securityhub_client.describe_hub
       @res = @describe_hub.to_h.presence || {}
@@ -33,7 +33,7 @@ class AWSSecurityHub < AwsResourceBase
   alias exist? subscribed?
 
   def resource_id
-    @res[:hub_arn].presence || ''
+    @res[:hub_arn].presence || ""
   end
 
   def to_s

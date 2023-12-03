@@ -1,9 +1,9 @@
-require 'aws_backend'
-require 'pry'
+require "aws_backend"
+require "pry"
 
 class AwsIamAccessAnalyzer < AwsResourceBase
-  name 'aws_iam_access_analyzers'
-  desc 'Verifies settings for a collection AWS IAM Access Analyzers.'
+  name "aws_iam_access_analyzers"
+  desc "Verifies settings for a collection AWS IAM Access Analyzers."
   example <<~EXAMPLE1
     # retrieve both 'account' and 'organization' analyzers
     describe aws_iam_access_analyzers do
@@ -60,10 +60,10 @@ class AwsIamAccessAnalyzer < AwsResourceBase
 
     catch_aws_errors do
       catch_aws_errors { @aws_account_id = fetch_aws_account }
-      if parameters.empty? || parameters[:type] == 'ALL'
+      if parameters.empty? || parameters[:type] == "ALL"
         @api_response = @aws.access_analyzer_client.list_analyzers
-      elsif parameters[:type] == 'ACCOUNT' ||
-            parameters[:type] == 'ORGANIZATION'
+      elsif parameters[:type] == "ACCOUNT" ||
+          parameters[:type] == "ORGANIZATION"
         @api_response = @aws.access_analyzer_client.list_analyzers(parameters)
       end
 
@@ -89,8 +89,8 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   end
 
   def resource_id
-    response = 'AWS IAM '
-    opts[:type] ? response += "#{opts[:type].capitalize} " : ''
+    response = "AWS IAM "
+    opts[:type] ? response += "#{opts[:type].capitalize} " : ""
     if @aws_account_id
       response +=
         "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
@@ -101,8 +101,8 @@ class AwsIamAccessAnalyzer < AwsResourceBase
   end
 
   def to_s
-    response = 'AWS IAM '
-    opts[:type] ? response += "#{opts[:type].capitalize} " : ''
+    response = "AWS IAM "
+    opts[:type] ? response += "#{opts[:type].capitalize} " : ""
     if @aws_account_id
       response +=
         "Account Analyzer for #{@aws_account_id} in #{get_current_region}"
@@ -116,7 +116,7 @@ class AwsIamAccessAnalyzer < AwsResourceBase
 
   def fetch_aws_account
     arn = @aws.sts_client.get_caller_identity({}).arn
-    arn.split(':')[4]
+    arn.split(":")[4]
   end
 
   def get_current_region

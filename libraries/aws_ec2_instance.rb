@@ -21,11 +21,11 @@ class AwsEc2Instance < AwsResourceBase
   def initialize(opts = {})
     opts = { instance_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(require_any_of: %i[instance_id name])
+    validate_parameters(require_any_of: %i(instance_id name))
 
     if opts[:instance_id] && !opts[:instance_id].empty? # Use instance_id, if provided
       if !opts[:instance_id].is_a?(String) ||
-           opts[:instance_id] !~ /(^i-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
+          opts[:instance_id] !~ /(^i-[0-9a-f]{8})|(^i-[0-9a-f]{17})$/
         raise ArgumentError,
               "#{@__resource_name__}: `instance_id` must be a string in the format of 'i-' followed by 8 or 17 hexadecimal characters."
       end
@@ -34,7 +34,7 @@ class AwsEc2Instance < AwsResourceBase
     elsif opts[:name] && !opts[:name].empty? # Otherwise use name, if provided
       @display_name = opts[:name]
       instance_arguments = {
-        filters: [{ name: "tag:Name", values: [opts[:name]] }]
+        filters: [{ name: "tag:Name", values: [opts[:name]] }],
       }
     else
       raise ArgumentError,
@@ -44,12 +44,12 @@ class AwsEc2Instance < AwsResourceBase
     catch_aws_errors do
       resp = @aws.compute_client.describe_instances(instance_arguments)
       if resp.reservations.first.nil? ||
-           resp.reservations.first.instances.first.nil?
+          resp.reservations.first.instances.first.nil?
         empty_response_warn
         return
       end
       if resp.reservations.count > 1 ||
-           resp.reservations.first.instances.count > 1
+          resp.reservations.first.instances.count > 1
         resource_fail
         return
       else
@@ -110,7 +110,7 @@ class AwsEc2Instance < AwsResourceBase
 
   def has_roles?
     unless @instance[:iam_instance_profile] &&
-             @instance[:iam_instance_profile][:arn]
+        @instance[:iam_instance_profile][:arn]
       return false
     end
     instance_profile = @instance[:iam_instance_profile][:arn].split("/").last
@@ -119,7 +119,7 @@ class AwsEc2Instance < AwsResourceBase
     catch_aws_errors do
       resp =
         @aws.iam_client.get_instance_profile(
-          { instance_profile_name: instance_profile }
+          { instance_profile_name: instance_profile },
         )
       @returned_roles = resp.instance_profile.roles
     end
@@ -136,7 +136,7 @@ class AwsEc2Instance < AwsResourceBase
   end
 
   # Generate a matcher for each state
-  %w[
+  %w{
     pending
     running
     shutting-down
@@ -144,7 +144,7 @@ class AwsEc2Instance < AwsResourceBase
     stopping
     stopped
     unknown
-  ].each do |state_name|
+  }.each do |state_name|
     define_method "#{state_name.tr("-", "_")}?" do
       state == state_name
     end
