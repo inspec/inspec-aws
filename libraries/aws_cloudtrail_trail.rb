@@ -38,6 +38,7 @@ class AwsCloudTrailTrail < AwsResourceBase
       @cloud_watch_logs_role_arn = @trail[:cloud_watch_logs_role_arn]
       @log_file_validation_enabled = @trail[:log_file_validation_enabled]
       @cloud_watch_logs_log_group_arn = @trail[:cloud_watch_logs_log_group_arn]
+      @event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
     end
   end
 
@@ -83,7 +84,6 @@ class AwsCloudTrailTrail < AwsResourceBase
     return nil unless exists?
     event_selector_found = false
     begin
-      @event_selectors = @aws.cloudtrail_client.get_event_selectors(trail_name: @trail_name)
       @event_selectors.event_selectors.each do |es|
         event_selector_found = true if es.read_write_type == "All" && es.include_management_events == true
       end
@@ -91,6 +91,31 @@ class AwsCloudTrailTrail < AwsResourceBase
       event_selector_found
     end
     event_selector_found
+  end
+
+
+  # describe aws_cloudtrail_trail(x) do
+  #   it { should be_monitoring_read("arn::whatever::s3") }
+  #   it { should be_monitoring_write("arn::whatever::s3") }
+  #   it { should be_using_advanced_event_selectors }
+  #   it { should be_using_basic_event_selectors }
+  #   it { should be_multi_region_trail }
+  # end
+
+  def monitoring_read?(aws_object)
+    # TODO
+  end
+
+  def monitoring_write?(aws_object)
+    # TODO
+  end
+
+  def using_advanced_event_selectors?
+    @event_selectors.advanced_event_selectors.present?
+  end
+
+  def using_basic_event_selectors?
+    @event_selectors.event_selectors.present?
   end
 
   def exists?
