@@ -93,7 +93,6 @@ class AwsCloudTrailTrail < AwsResourceBase
     event_selector_found
   end
 
-
   # describe aws_cloudtrail_trail(x) do
   #   it { should be_monitoring_read("arn::whatever::s3") }
   #   it { should be_monitoring_write("arn::whatever::s3") }
@@ -102,12 +101,31 @@ class AwsCloudTrailTrail < AwsResourceBase
   #   it { should be_multi_region_trail }
   # end
 
-  def monitoring_read?(aws_object)
-    # TODO
+  def monitoring?(aws_resource_type, mode)
+    if using_basic_event_selectors?
+      basic_mode = mode == 'r' ? "ReadOnly" : "WriteOnly"
+      @event_selectors.event_selectors.any? { |es|
+        es.read_write_type.match?(/All|#{basic_mode}/) &&
+        es.data_resources.any? { |dr|
+          dr.values.include?(aws_resource_type)
+        }
+      }
+    else
+      advanced_mode = mode == 'r'
+      @event_selectors.advanced_event_selectors.any? { |es|
+        es.field_selectors.any? { |fs|
+
+        }
+      }
+    end
   end
 
-  def monitoring_write?(aws_object)
-    # TODO
+  def monitoring_read?(aws_resource_type)
+    monitoring?(aws_resource_type, 'r')
+  end
+
+  def monitoring_write?(aws_resource_type)
+    monitoring?(aws_resource_type, 'w')
   end
 
   def using_advanced_event_selectors?
