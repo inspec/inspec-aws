@@ -99,45 +99,45 @@ class AwsCloudTrailTrail < AwsResourceBase
   def monitoring?(aws_resource_type, mode)
     # basic event selectors have a simpler structure than the advanced ones - check basic first
     if using_basic_event_selectors?
-      basic_mode = mode == 'r' ? "ReadOnly" : "WriteOnly"
+      basic_mode = mode == "r" ? "ReadOnly" : "WriteOnly"
       @event_selectors.event_selectors.any? { |es|
         es.read_write_type.match?(/All|#{basic_mode}/) &&
-        es.data_resources.any? { |dr|
-          dr.type.include?(aws_resource_type) &&
-          dr.values.all? { |val|            # make sure the values do not indicate individual resources
-            val.split(/[:\/]/).count <= 3   # can be of the form 'arn:aws:s3' but not
-                                            # 'arn:aws:s3:<region>:<account>:<field>/<a_specific_resource>'
-          } 
-        }
+          es.data_resources.any? { |dr|
+            dr.type.include?(aws_resource_type) &&
+              dr.values.all? { |val| # make sure the values do not indicate individual resources
+                val.split(%r{[:/]}).count <= 3 # can be of the form 'arn:aws:s3' but not
+                # 'arn:aws:s3:<region>:<account>:<field>/<a_specific_resource>'
+              }
+          }
       }
-    else 
-      readOnly = mode == 'r'
+    else
+      read_only = mode == "r"
       @event_selectors.advanced_event_selectors.any? { |es|
         (es.field_selectors.any? { |fs| # check if readOnly is explicitly set to true
-          fs.field == "readOnly" && fs.equals == [readOnly.to_s]  # note that AdvancedFieldSelector has a field named "equals"
-                                                                  # also note that designating an AFS as writeOnly means setting
-                                                                  # the readOnly field to 'false'
+          fs.field == "readOnly" && fs.equals == [read_only.to_s] # note that AdvancedFieldSelector has a field named "equals"
+          # also note that designating an AFS as writeOnly means setting
+          # the readOnly field to 'false'
         } ||
         es.field_selectors.none? { |fs| # or check if readOnly is unset entirely (means both read and write are logged)
           fs.field == "readOnly"
         }) &&
-        es.field_selectors.any? { |fs| # check if some other field selector is set to the right resource type
-          fs.field == "resources.type" && fs.equals == [aws_resource_type] 
-        } &&
-        es.field_selectors.none? { |fs| # check that no other event selector is tracking an individual arn
-                                        # if no arn field is set, cloudtrail is tracking the whole type
-          fs.field.downcase == "resources.arn"
-        }
+          es.field_selectors.any? { |fs| # check if some other field selector is set to the right resource type
+            fs.field == "resources.type" && fs.equals == [aws_resource_type]
+          } &&
+          es.field_selectors.none? { |fs| # check that no other event selector is tracking an individual arn
+            # if no arn field is set, cloudtrail is tracking the whole type
+            fs.field.downcase == "resources.arn"
+          }
       }
     end
   end
 
   def monitoring_read?(aws_resource_type)
-    monitoring?(aws_resource_type, 'r')
+    monitoring?(aws_resource_type, "r")
   end
 
   def monitoring_write?(aws_resource_type)
-    monitoring?(aws_resource_type, 'w')
+    monitoring?(aws_resource_type, "w")
   end
 
   def using_advanced_event_selectors?

@@ -65,6 +65,8 @@ require "aws-sdk-synthetics"
 require "aws-sdk-apigatewayv2"
 require "aws-sdk-account"
 require "aws-sdk-accessanalyzer"
+require "aws-sdk-macie2"
+require "aws-sdk-wafv2"
 
 # AWS Inspec Backend Classes
 #
@@ -355,6 +357,10 @@ class AwsConnection
   def partitions_region_client
     aws_client(Aws::Partitions::Region::Client)
   end
+
+  def macie_client
+    aws_client(Aws::Macie2::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -501,7 +507,14 @@ class AwsResourceBase < Inspec.resource(1)
   # Intercept AWS exceptions
   def catch_aws_errors
     yield # Catch and create custom messages as needed
-  rescue Aws::Account::Errors::ResourceNotFoundException => e
+
+    basic_exceptions = [
+      Aws::Account::Errors::ResourceNotFoundException,
+      Aws::AccessAnalyzer::Errors::ServiceError,
+      Aws::Macie2::Errors::ServiceError,
+    ]
+
+  rescue *basic_exceptions => e
     Inspec::Log.warn(e.message.to_s)
     skip_resource(e.message.to_s)
     nil
@@ -515,10 +528,6 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error("The endpoint that is trying to be accessed does not exist.")
     fail_resource("Invalid Endpoint error")
-    nil
-  rescue Aws::AccessAnalyzer::Errors::ServiceError => e
-    Inspec::Log.warn(e.message)
-    skip_resource(e.message)
     nil
   rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
     Inspec::Log.error("No public access block configuration was found")
@@ -544,8 +553,8 @@ class AwsResourceBase < Inspec.resource(1)
       raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
-                         "Error message: #{e.message} You should address this error to ensure your controls are " \
-                         "behaving as expected."
+                        "Error message: #{e.message} You should address this error to ensure your controls are " \
+                        "behaving as expected."
       @failed_resource = true
     end
     nil
