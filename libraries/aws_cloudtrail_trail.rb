@@ -99,8 +99,6 @@ class AwsCloudTrailTrail < AwsResourceBase
   def monitoring?(aws_resource_type, mode)
     # basic event selectors have a simpler structure than the advanced ones - check basic first
     if using_basic_event_selectors?
-      puts "BASIC"
-      puts aws_resource_type
       basic_mode = mode == 'r' ? "ReadOnly" : "WriteOnly"
       @event_selectors.event_selectors.any? { |es|
         es.read_write_type.match?(/All|#{basic_mode}/) &&
