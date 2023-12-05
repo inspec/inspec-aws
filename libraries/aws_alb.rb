@@ -1,8 +1,8 @@
-require "aws_backend"
+require 'aws_backend'
 
 class AwsAlb < AwsResourceBase
-  name "aws_alb"
-  desc "Verifies settings for an Application Load Balancer."
+  name 'aws_alb'
+  desc 'Verifies settings for an Application Load Balancer.'
   example <<-EXAMPLE
     describe aws_alb('arn:aws:elasticloadbalancing') do
       it { should exist }
@@ -45,8 +45,8 @@ class AwsAlb < AwsResourceBase
 
   def access_log_enabled
     return unless alb_attributes
-    s3_enabled_attr = alb_attributes.find { |attr| attr.key.eql?("access_logs.s3.enabled") }
-    @access_log_enabled = s3_enabled_attr&.value == "true"
+    s3_enabled_attr = alb_attributes.find { |attr| attr.key.eql?('access_logs.s3.enabled') }
+    @access_log_enabled = s3_enabled_attr&.value == 'true'
   end
 
   def listeners
@@ -56,7 +56,7 @@ class AwsAlb < AwsResourceBase
   end
 
   def ssl_policies
-    @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == "HTTPS" }.uniq
+    @ssl_policies ||= listeners.filter_map { |listener| listener.ssl_policy if listener.protocol == 'HTTPS' }.uniq
   end
 
   def external_ports
