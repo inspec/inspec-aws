@@ -80,13 +80,7 @@ class AwsPrimaryAccount < AwsResourceBase
     end
   end
 
-  def to_s
-    if @aws_account_id
-      "AWS Primary Contact for account: #{@aws_account_id}"
-    else
-      "AWS Account Primary Contact"
-    end
-  end
+  alias to_s
 
   private
 
