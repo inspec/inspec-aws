@@ -507,15 +507,7 @@ class AwsResourceBase < Inspec.resource(1)
   # Intercept AWS exceptions
   def catch_aws_errors
     yield # Catch and create custom messages as needed
-
-    basic_exceptions = [
-      Aws::Account::Errors::ResourceNotFoundException,
-      Aws::AccessAnalyzer::Errors::ServiceError,
-      Aws::Macie2::Errors::ServiceError,
-      Aws::Macie2::Errors::ResourceNotFoundException
-    ]
-
-  rescue *basic_exceptions => e
+  rescue Aws::Account::Errors::ResourceNotFoundException => e
     Inspec::Log.warn(e.message.to_s)
     skip_resource(e.message.to_s)
     nil
@@ -530,9 +522,21 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error("The endpoint that is trying to be accessed does not exist.")
     fail_resource("Invalid Endpoint error")
     nil
+  rescue Aws::AccessAnalyzer::Errors::ServiceError => e
+    Inspec::Log.warn(e.message)
+    skip_resource(e.message)
+    nil
   rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
     Inspec::Log.error("No public access block configuration was found")
     skip_resource("No public access block configuration was found")
+    nil
+  rescue Aws::Macie2::Errors::ServiceError => e
+    Inspec::Log.error("Macie Service Error: #{e.message}")
+    skip_resource("Macie Service Error: #{e.message}")
+    nil
+  rescue Aws::Macie2::Errors::ResourceNotFoundException => e
+    Inspec::Log.error("Macie Resource: #{e.message}")
+    skip_resource("Macie Resource Error: #{e.message}")
     nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
@@ -554,8 +558,8 @@ class AwsResourceBase < Inspec.resource(1)
       raise Inspec::Exceptions::ResourceFailed, error_message
     else
       Inspec::Log.warn "AWS Service Error encountered running a control with Resource #{@__resource_name__}. " \
-                        "Error message: #{e.message} You should address this error to ensure your controls are " \
-                        "behaving as expected."
+                         "Error message: #{e.message} You should address this error to ensure your controls are " \
+                         "behaving as expected."
       @failed_resource = true
     end
     nil
