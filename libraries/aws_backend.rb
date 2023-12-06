@@ -511,6 +511,10 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.warn(e.message.to_s)
     skip_resource(e.message.to_s)
     nil
+  rescue Aws::IAM::Errors::NoSuchEntity => e
+    Inspec::Log.error("IAM Service Error: #{e.message}")
+    skip_resource("IAM Service Error: #{e.message}")
+    nil
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error("It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details.")
     fail_resource("No AWS credentials available")
