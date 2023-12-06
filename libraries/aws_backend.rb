@@ -512,6 +512,7 @@ class AwsResourceBase < Inspec.resource(1)
       Aws::Account::Errors::ResourceNotFoundException,
       Aws::AccessAnalyzer::Errors::ServiceError,
       Aws::Macie2::Errors::ServiceError,
+      Aws::Macie2::Errors::ResourceNotFoundException
     ]
 
   rescue *basic_exceptions => e
