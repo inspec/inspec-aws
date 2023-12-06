@@ -80,7 +80,7 @@ class AwsPrimaryAccount < AwsResourceBase
     end
   end
 
-  alias to_s
+  alias to_s resource_id
 
   private
 

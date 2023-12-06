@@ -20,6 +20,7 @@ class AwsIamPasswordPolicy < AwsResourceBase
 
     catch_aws_errors do
       @policy = @aws.iam_client.get_account_password_policy.password_policy
+      @aws_account_id = fetch_aws_account
     end
   end
 
@@ -95,10 +96,19 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def resource_id
-    @policy
+    if @aws_account_id
+      "AWS Password Policy for account: #{@aws_account_id}"
+    else
+      "AWS Account Password Policy"
+    end
   end
 
-  def to_s
-    "AWS IAM Password Policy"
+  alias to_s resource_id
+
+  private
+
+  def fetch_aws_account
+    arn = @aws.sts_client.get_caller_identity({}).arn
+    arn.split(":")[4]
   end
 end
