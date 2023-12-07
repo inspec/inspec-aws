@@ -25,13 +25,25 @@ class AwsBillingAccount < AwsResourceBase
     @raw_data = {}
     @title, @name, @email_address, @phone_number = ""
     validate_parameters
-    begin
-      catch_aws_errors { @aws_account_id = fetch_aws_account }
-      @api_response = fetch_aws_alternate_contact("billing")
-    rescue Aws::Account::Errors::ResourceNotFoundException
-      skip_resource(
-        "The Billing contact has not been configured for this AWS Account.",
-      )
+    catch_aws_errors do
+      # require "pry"
+      # binding.pry
+      begin
+        catch_aws_errors do
+          @aws_account_id = fetch_aws_account
+          @api_response = fetch_aws_alternate_contact("billing")
+        rescue Aws::Account::Errors::ResourceNotFoundException
+          @api_response = nil
+          skip_resource(
+            "The Billing contact has not been configured for this AWS Account.",
+          )
+        rescue Aws::Errors::NoSuchEndpointError
+          @api_response = nil
+          skip_resource(
+            "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
+          )
+        end
+      end
       return [] if !@api_response || @api_response.empty?
     end
 

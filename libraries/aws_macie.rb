@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AWSMacie < AwsResourceBase
-  name 'aws_macie'
-  desc 'Gets information about Macie status and configuration.'
+  name "aws_macie"
+  desc "Gets information about Macie status and configuration."
 
   example "
     describe aws_macie do
@@ -55,7 +55,7 @@ class AWSMacie < AwsResourceBase
   #   - get_finding_statistics(finding_id)
 
   def enabled?
-    @session.status == 'ENABLED'
+    @session.status == "ENABLED"
   end
 
   # def monitoring?(bucket_list)
@@ -65,6 +65,6 @@ class AWSMacie < AwsResourceBase
   # end
 
   def to_s
-    'AWS Macie'
+    "AWS Macie"
   end
 end

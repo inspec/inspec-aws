@@ -1,8 +1,8 @@
-require 'aws_backend'
+require "aws_backend"
 
 class AwsCloudTrailTrail < AwsResourceBase
-  name 'aws_cloudtrail_trail'
-  desc 'Verifies settings for an individual AWS CloudTrail Trail.'
+  name "aws_cloudtrail_trail"
+  desc "Verifies settings for an individual AWS CloudTrail Trail."
   example <<-EXAMPLE
     describe aws_cloudtrail_trail('TRIAL_NAME') do
       it { should exist }
@@ -78,8 +78,8 @@ class AwsCloudTrailTrail < AwsResourceBase
   def get_log_group_for_multi_region_active_mgmt_rw_all
     return nil unless exists?
     return nil unless @cloud_watch_logs_log_group_arn
-    return nil if @cloud_watch_logs_log_group_arn.split(':').count < 6
-    return @cloud_watch_logs_log_group_arn.split(':')[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
+    return nil if @cloud_watch_logs_log_group_arn.split(":").count < 6
+    return @cloud_watch_logs_log_group_arn.split(":")[6] if has_event_selector_mgmt_events_rw_type_all? && logging?
   end
 
   # TODO: see what happens when running against nil event selectors
@@ -88,7 +88,7 @@ class AwsCloudTrailTrail < AwsResourceBase
     event_selector_found = false
     begin
       @event_selectors.event_selectors.each do |es|
-        event_selector_found = true if es.read_write_type == 'All' && es.include_management_events == true
+        event_selector_found = true if es.read_write_type == "All" && es.include_management_events == true
       end
     rescue Aws::CloudTrail::Errors::TrailNotFoundException
       event_selector_found
@@ -99,7 +99,7 @@ class AwsCloudTrailTrail < AwsResourceBase
   def monitoring?(aws_resource_type, mode)
     # basic event selectors have a simpler structure than the advanced ones - check basic first
     if using_basic_event_selectors?
-      basic_mode = mode == 'r' ? 'ReadOnly' : 'WriteOnly'
+      basic_mode = mode == "r" ? "ReadOnly" : "WriteOnly"
       @event_selectors.event_selectors.any? { |es|
         es.read_write_type.match?(/All|#{basic_mode}/) &&
           es.data_resources.any? { |dr|
@@ -111,33 +111,33 @@ class AwsCloudTrailTrail < AwsResourceBase
           }
       }
     else
-      read_only = mode == 'r'
+      read_only = mode == "r"
       @event_selectors.advanced_event_selectors.any? { |es|
         (es.field_selectors.any? { |fs| # check if readOnly is explicitly set to true
-          fs.field == 'readOnly' && fs.equals == [read_only.to_s] # NOTE: that AdvancedFieldSelector has a field named "equals"
+          fs.field == "readOnly" && fs.equals == [read_only.to_s] # NOTE: that AdvancedFieldSelector has a field named "equals"
           # also note that designating an AFS as writeOnly means setting
           # the readOnly field to 'false'
         } ||
         es.field_selectors.none? { |fs| # or check if readOnly is unset entirely (means both read and write are logged)
-          fs.field == 'readOnly'
+          fs.field == "readOnly"
         }) &&
           es.field_selectors.any? { |fs| # check if some other field selector is set to the right resource type
-            fs.field == 'resources.type' && fs.equals == [aws_resource_type]
+            fs.field == "resources.type" && fs.equals == [aws_resource_type]
           } &&
           es.field_selectors.none? { |fs| # check that no other event selector is tracking an individual arn
             # if no arn field is set, cloudtrail is tracking the whole type
-            fs.field.downcase == 'resources.arn'
+            fs.field.downcase == "resources.arn"
           }
       }
     end
   end
 
   def monitoring_read?(aws_resource_type)
-    monitoring?(aws_resource_type, 'r')
+    monitoring?(aws_resource_type, "r")
   end
 
   def monitoring_write?(aws_resource_type)
-    monitoring?(aws_resource_type, 'w')
+    monitoring?(aws_resource_type, "w")
   end
 
   def using_advanced_event_selectors?
