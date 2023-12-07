@@ -19,15 +19,21 @@ class AWSMacie < AwsResourceBase
     @describe_hub = []
     super(opts)
     validate_parameters
-
     fetch_data
   end
 
   def fetch_data
     catch_aws_errors do
-      @session = @aws.macie_client.get_macie_session
-      @jobs = @aws.macie_client.list_classification_jobs
-      @buckets = @aws.macie_client.describe_buckets
+      begin
+        @session = @aws.macie_client.get_macie_session
+        @jobs = @aws.macie_client.list_classification_jobs
+        @buckets = @aws.macie_client.describe_buckets
+      rescue Aws::Errors::NoSuchEndpointError
+        skip_resource(
+          "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
+        )
+      end
+      return [] if (!@session or @session.empty?) || (!@jobs or @jobs.empty?) || (!@bucket or @bucket.empty?)
       # Can't do this until we setup the user to be a Macie Admin?
       # @organization_configuration = @aws.macie_client.describe_organization_configuration
     end
