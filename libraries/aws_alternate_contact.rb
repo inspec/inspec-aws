@@ -30,8 +30,8 @@ class AwsAlternateAccount < AwsResourceBase
 
   def initialize(opts = {})
     @raw_data = {}
-    supported_opt_keys = %i[type]
-    supported_opts_values = %w[billing operations security]
+    supported_opt_keys = %i(type)
+    supported_opts_values = %w{billing operations security}
     opts = { type: opts } if opts.is_a?(String)
 
     unless opts.respond_to?(:keys)
@@ -59,13 +59,13 @@ class AwsAlternateAccount < AwsResourceBase
       rescue Aws::Account::Errors::ResourceNotFoundException
         @api_response = nil
         skip_resource(
-          "The #{opts[:type].uppercase} contact has not been configured for this AWS Account."
+          "The #{opts[:type].uppercase} contact has not been configured for this AWS Account.",
         )
         return
       rescue Aws::Errors::NoSuchEndpointError
         @api_response = nil
         skip_resource(
-          "The account contact endpoint is not available in this segment, please review this via the AWS Management Console."
+          "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
         )
       end
       return [] if !@api_response || @api_response.empty?
