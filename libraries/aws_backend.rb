@@ -542,6 +542,10 @@ class AwsResourceBase < Inspec.resource(1)
     Inspec::Log.error("Macie Resource: #{e.message}")
     skip_resource("Macie Resource Error: #{e.message}")
     nil
+  rescue Seahorse::Client::NetworkingError => e
+    Inspec::Log.error("Seahorse Error: #{e.message}")
+    skip_resource("Seahorse Error: #{e.message}")
+    nil
   rescue Aws::Errors::ServiceError => e
     if is_permissions_error(e)
       advice = ""

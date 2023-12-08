@@ -50,12 +50,10 @@ class AwsPrimaryAccount < AwsResourceBase
         @api_response =
           @aws.account_client.get_contact_information.contact_information
       rescue Aws::Account::Errors::ResourceNotFoundException
-        @api_response = nil
         skip_resource(
           "The Primary contact has not been configured for this AWS Account.",
         )
-      rescue Aws::Errors::NoSuchEndpointError
-        @api_response = nil
+      rescue Aws::Errors::NoSuchEndpointError, Seahorse::Client::NetworkingError
         skip_resource(
           "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
         )

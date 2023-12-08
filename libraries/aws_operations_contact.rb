@@ -30,12 +30,10 @@ class AwsOperationsAccount < AwsResourceBase
         @aws_account_id = fetch_aws_account
         @api_response = fetch_aws_alternate_contact("operations")
       rescue Aws::Account::Errors::ResourceNotFoundException
-        @api_response = nil
         skip_resource(
           "The Operations contact has not been configured for this AWS Account.",
         )
-      rescue Aws::Errors::NoSuchEndpointError
-        @api_response = nil
+      rescue Aws::Errors::NoSuchEndpointError, Seahorse::Client::NetworkingError
         skip_resource(
           "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
         )
