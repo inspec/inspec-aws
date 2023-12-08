@@ -505,7 +505,7 @@ class AwsResourceBase < Inspec.resource(1)
   end
 
   # Intercept AWS exceptions
-  def catch_aws_errors
+  def catch_aws_errors # rubocop:disable Metrics/MethodLength
     yield # Catch and create custom messages as needed
   rescue Aws::Account::Errors::ResourceNotFoundException => e
     Inspec::Log.warn(e.message.to_s)
