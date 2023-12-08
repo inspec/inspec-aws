@@ -8,6 +8,7 @@ class AwsRegion < AwsResourceBase
   example "
     describe aws_region('eu-west-2') do
       it { should exist }
+      it { should have_ebs_encryption_enabled }
     end
   "
   attr_reader :region_name, :endpoint, :resp, :opt_in_status
@@ -21,6 +22,7 @@ class AwsRegion < AwsResourceBase
     @region_name = opts[:region_name]
     catch_aws_errors do
       @resp = @aws.compute_client.describe_regions(region_names: [@region_name])
+      @ebs_encryption_enabled = @aws.compute_client.get_ebs_encryption_by_default(region_names: [@region_name])
       return if @resp.regions.empty?
       @opt_in_status = @resp.regions[0].opt_in_status
       @endpoint = @resp.regions[0].endpoint
@@ -33,6 +35,10 @@ class AwsRegion < AwsResourceBase
 
   def exists?
     !@endpoint.nil?
+  end
+
+  def ebs_encryption_enabled?
+    @ebs_encryption_enabled
   end
 
   def to_s

@@ -83,6 +83,14 @@ The control will pass if the describe returns at least one result.
 it { should exist }
 ```
 
+### ebs_encryption_enabled
+
+The control will pass if the region has EBS volume encryption enabled by default.
+
+```ruby
+it { should have_ebs_encryption_enabled }
+```
+
 ## AWS Permissions
 
 {{% aws_permissions_principal action="EC2:Client:DescribeRegionsResult" %}}
