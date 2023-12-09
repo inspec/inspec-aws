@@ -17,7 +17,6 @@ class AwsRegions < AwsResourceBase
     .register_column(:region_names, field: :region_name)
     .register_column(:endpoints, field: :endpoint)
     .register_column(:opt_in_status, field: :opt_in_status)
-    .register_column(:region_opt_status, field: :region_opt_status)
     .install_filter_methods_on_resource(self, :table)
 
   def initialize(opts = {})
@@ -42,19 +41,9 @@ class AwsRegions < AwsResourceBase
           region_name: region[:region_name],
           endpoint: region[:endpoint],
           opt_in_status: region[:opt_in_status],
-          region_opt_status: region_opt_status,
         },
       ]
     end
     @table = region_rows
-  end
-
-  private
-
-  def fetch_region_opt_status(region)
-    @aws
-      .account_client
-      .get_region_opt_status({ region_name: region })
-      .region_opt_status
   end
 end
