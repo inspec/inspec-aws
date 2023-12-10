@@ -1,5 +1,5 @@
-require "csv"
 require "aws_backend"
+require "csv"
 
 class AwsIamCredentialReport < AwsCollectionResourceBase
   name "aws_iam_credential_report"
@@ -11,7 +11,7 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
     end
   "
 
-  attr_reader :table
+  attr_reader :table, :response, :test
 
   FilterTable.create
     .register_column(:user, field: :user)
@@ -55,7 +55,7 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
       @aws.iam_client.generate_credential_report
       begin
         attempts ||= 0
-        response = @aws.iam_client.get_credential_report
+        @response = @aws.iam_client.get_credential_report
       rescue Aws::IAM::Errors::ReportInProgress => e
         if (attempts += 1) <= 5
           Inspec::Log.warn "AWS IAM Credential Report still being generated - attempt #{attempts}/5."
@@ -66,13 +66,20 @@ class AwsIamCredentialReport < AwsCollectionResourceBase
           raise e
         end
       end
-      report = CSV.parse(response.content, headers: true, header_converters: :symbol, converters: [:date_time, lambda { |field|
-        if field == "true"
+
+      bool_converter = proc do |field|
+        case field.downcase
+        when "true"
           true
+        when "false"
+          false
         else
-          field == "false" ? false : field
+          field
         end
-      }])
+      end
+
+      no_info = proc { |field| field == "no_information" ? "N/A" : field }
+      report = CSV.parse(response.content, headers: true, header_converters: :symbol, converters: [:date_time, bool_converter, no_info])
       report.map(&:to_h)
     end
   end
