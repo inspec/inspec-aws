@@ -1,5 +1,4 @@
 require "aws_backend"
-require "pry"
 
 class AwsNetworkACL < AwsResourceBase
   EGRESS = "egress".freeze
@@ -116,7 +115,6 @@ class AwsNetworkACL < AwsResourceBase
     end
     create_resource_methods(network_acl_hash)
     create_rule_number_methods
-    pry
   end
 
   def network_acl
