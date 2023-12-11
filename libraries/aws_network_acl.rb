@@ -1,4 +1,5 @@
 require "aws_backend"
+require "pry"
 
 class AwsNetworkACL < AwsResourceBase
   EGRESS = "egress".freeze
@@ -52,12 +53,24 @@ class AwsNetworkACL < AwsResourceBase
     associated_subnet_ids.any? { |associated_subnet_id| associated_subnet_id == subnet_id }
   end
 
-  def has_acl_entry_value?(cidr_block:, egress:, rule_action:)
-    invalid_args = method(__method__).parameters.select { |param| param.nil? || param.empty? }
-    raise ArgumentError, "params #{invalid_args.map { |i| "`#{i}`" }.join(",")} cannot be blank" if cidr_block.nil? || cidr_block.empty?
+  def has_acl_entry_value?(cidr_block: nil, egress: nil, icmp_type_code: nil, ipv_6_cidr_block: nil, port_range: nil, protocol: nil, rule_action: nil, rule_number: nil)
     return false unless acl_entries
+    
+    # rules for all protocols are recorded as rules with protocol == -1
+    protocol = "-1" if protocol.to_s.downcase == "all"
 
-    acl_entries.any? { |entry| entry.egress == egress && entry.cidr_block == cidr_block && entry.rule_action == rule_action }
+    # check for acl entries matching any combination of fields
+    # iff a field was passed to the matcher, then it is included as part of the test
+    acl_entries.any? { |entry| 
+      entry.cidr_block == cidr_block &&
+      egress.to_s.present? ? entry.egress == egress : true &&
+      icmp_type_code.present? ? entry.icmp_type_code == icmp_type_code : true &&
+      ipv_6_cidr_block.present? ? entry.ipv_6_cidr_block == ipv_6_cidr_block : true &&
+      port_range.present? ? port_within_range?(entry.port_range, port_range) : true &&
+      protocol.present? ? entry.protocol == protocol.to_s : true &&
+      rule_action ? entry.rule_action == rule_action : true &&
+      rule_number ? entry.rule_number == rule_number : true
+    }
   end
 
   def has_egress?(cidr_block: nil, rule_action: nil)
@@ -103,6 +116,7 @@ class AwsNetworkACL < AwsResourceBase
     end
     create_resource_methods(network_acl_hash)
     create_rule_number_methods
+    pry
   end
 
   def network_acl
@@ -153,5 +167,11 @@ class AwsNetworkACL < AwsResourceBase
     end
 
     collection.any? { |entry| entry.cidr_block == cidr_block || entry.rule_action == rule_action }
+  end
+
+  def port_within_range?(acl_port_range, expected_port)
+    return false if acl_port_range.nil? || expected_port.nil?
+    # compare an Aws::EC2::Types::PortRange to a standard Range
+    (acl_port_range.from..acl_port_range.to).include?(expected_port)
   end
 end
