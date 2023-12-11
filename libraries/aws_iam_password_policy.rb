@@ -23,6 +23,10 @@ class AwsIamPasswordPolicy < AwsResourceBase
     catch_aws_errors do
       @policy = @aws.iam_client.get_account_password_policy.password_policy
       @aws_account_id = fetch_aws_account
+    rescue Aws::IAM::Errors::NoSuchEntity 
+      skip_resource(
+          "The account password policy either does not exist or is set to default settings; please review via the AWS Management Console.",
+        )
     end
   end
 
