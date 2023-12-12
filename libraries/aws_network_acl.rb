@@ -1,5 +1,25 @@
 require "aws_backend"
 
+class AwsNetworkACLTable
+
+    FilterTable.create
+    .register_column(:cidr_block,         field: :cidr_block)
+    .register_column(:egress,             field: :egress)
+    .register_column(:icmp_type_code,     field: :icmp_type_code)
+    .register_column(:ipv_6_cidr_block,   field: :ipv_6_cidr_block)
+    .register_column(:port_range,         field: :port_range)
+    .register_column(:protocol,           field: :protocol)
+    .register_column(:rule_action,        field: :rule_action)
+    .register_column(:rule_number,        field: :rule_number)
+    .install_filter_methods_on_resource(self, :acl_table)
+
+    attr_reader :acl_table
+
+    def initialize(acl_table)
+        @acl_table = acl_table
+    end
+end
+
 class AwsNetworkACL < AwsResourceBase
   EGRESS = "egress".freeze
   INGRESS = "ingress".freeze
@@ -13,20 +33,12 @@ class AwsNetworkACL < AwsResourceBase
    describe aws_network_acl('014aef8a0689b8f43') do
      it { should exist }
    end
+
+   describe aws_network_acl('014aef8a0689b8f43').acls.where(cidr_block: '0.0.0.0/0', rule_action: 'allow', protocol: '-1') do
+     it { should_not exist }
+   end
+
   "
-
-  attr_reader :acl_table
-
-  FilterTable.create
-    .register_column(:cidr_block,         field: :cidr_block)
-    .register_column(:egress,             field: :egress)
-    .register_column(:icmp_type_code,     field: :icmp_type_code)
-    .register_column(:ipv_6_cidr_block,   field: :ipv_6_cidr_block)
-    .register_column(:port_range,         field: :port_range)
-    .register_column(:protocol,           field: :protocol)
-    .register_column(:rule_action,        field: :rule_action)
-    .register_column(:rule_number,        field: :rule_number)
-    .install_filter_methods_on_resource(self, :acl_table)
 
   def initialize(opts = {})
     opts = { network_acl_id: opts } if opts.is_a?(String)
@@ -103,6 +115,11 @@ class AwsNetworkACL < AwsResourceBase
     "Network ACL ID: #{@opts[:network_acl_id]}"
   end
 
+  def acls
+    return [] unless network_acl
+    AwsNetworkACLTable.new(network_acl.entries.map { |e| e.to_h })
+  end
+
   private
 
   def fetch
@@ -116,7 +133,6 @@ class AwsNetworkACL < AwsResourceBase
     end
     create_resource_methods(network_acl_hash)
     create_rule_number_methods
-    @acl_table = network_acl.entries.map { |e| e.to_h }
   end
 
   def network_acl
