@@ -25,7 +25,7 @@ class AwsNetworkACL < AwsResourceBase
   INGRESS = "ingress".freeze
   name "aws_network_acl"
   desc "Verifies settings for a single AWS Network ACL"
-  example "
+  example <<~EXAMPLE1
    describe aws_network_acl(network_acl_id: '014aef8a0689b8f43') do
      it { should exist }
    end
@@ -33,12 +33,12 @@ class AwsNetworkACL < AwsResourceBase
    describe aws_network_acl('014aef8a0689b8f43') do
      it { should exist }
    end
-
+   EXAMPLE1
+  example <<~EXAMPLE2
    describe aws_network_acl('014aef8a0689b8f43').acls.where(cidr_block: '0.0.0.0/0', rule_action: 'allow', protocol: '-1') do
      it { should_not exist }
    end
-
-  "
+  EXAMPLE2
 
   def initialize(opts = {})
     opts = { network_acl_id: opts } if opts.is_a?(String)
