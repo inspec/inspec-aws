@@ -13,10 +13,15 @@ class AwsNetworkACLTable
     .register_column(:rule_number,        field: :rule_number)
     .install_filter_methods_on_resource(self, :acl_table)
 
-  attr_reader :acl_table
+  attr_reader :acl_table, :acl_name
 
-  def initialize(acl_table)
+  def initialize(acl_table, acl_name = nil)
     @acl_table = acl_table
+    @acl_name = acl_name
+  end
+
+  def to_s
+    @acl_name.present? ? "ACL #{acl_name}" : "ACL: "
   end
 end
 
@@ -117,7 +122,7 @@ class AwsNetworkACL < AwsResourceBase
 
   def acls
     return [] unless network_acl
-    AwsNetworkACLTable.new(network_acl.entries.map(&:to_h))
+    AwsNetworkACLTable.new(network_acl.entries.map(&:to_h), @opts[:network_acl_id])
   end
 
   private
