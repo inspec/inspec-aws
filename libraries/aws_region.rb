@@ -1,5 +1,4 @@
 require "aws_backend"
-require "pry"
 
 class AwsRegion < AwsResourceBase
   name "aws_region"

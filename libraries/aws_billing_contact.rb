@@ -26,8 +26,6 @@ class AwsBillingAccount < AwsResourceBase
     @title, @name, @email_address, @phone_number = ""
     validate_parameters
     catch_aws_errors do
-      # require "pry"
-      # binding.pry
       begin
         catch_aws_errors do
           @aws_account_id = fetch_aws_account

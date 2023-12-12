@@ -18,8 +18,6 @@ class AwsIamPasswordPolicy < AwsResourceBase
     super(opts)
     validate_parameters
     @policy = nil
-    require "pry"
-    pry
     catch_aws_errors do
       @policy = @aws.iam_client.get_account_password_policy.password_policy
       @aws_account_id = fetch_aws_account
