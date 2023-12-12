@@ -2,7 +2,7 @@ require "aws_backend"
 
 class AwsNetworkACLTable
 
-    FilterTable.create
+  FilterTable.create
     .register_column(:cidr_block,         field: :cidr_block)
     .register_column(:egress,             field: :egress)
     .register_column(:icmp_type_code,     field: :icmp_type_code)
@@ -13,11 +13,11 @@ class AwsNetworkACLTable
     .register_column(:rule_number,        field: :rule_number)
     .install_filter_methods_on_resource(self, :acl_table)
 
-    attr_reader :acl_table
+  attr_reader :acl_table
 
-    def initialize(acl_table)
-        @acl_table = acl_table
-    end
+  def initialize(acl_table)
+    @acl_table = acl_table
+  end
 end
 
 class AwsNetworkACL < AwsResourceBase
@@ -33,7 +33,7 @@ class AwsNetworkACL < AwsResourceBase
    describe aws_network_acl('014aef8a0689b8f43') do
      it { should exist }
    end
-   EXAMPLE1
+  EXAMPLE1
   example <<~EXAMPLE2
    describe aws_network_acl('014aef8a0689b8f43').acls.where(cidr_block: '0.0.0.0/0', rule_action: 'allow', protocol: '-1') do
      it { should_not exist }
@@ -117,7 +117,7 @@ class AwsNetworkACL < AwsResourceBase
 
   def acls
     return [] unless network_acl
-    AwsNetworkACLTable.new(network_acl.entries.map { |e| e.to_h })
+    AwsNetworkACLTable.new(network_acl.entries.map(&:to_h))
   end
 
   private
