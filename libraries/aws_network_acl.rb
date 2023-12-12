@@ -54,21 +54,49 @@ class AwsNetworkACL < AwsResourceBase
 
   def has_acl_entry_value?(cidr_block: nil, egress: nil, icmp_type_code: nil, ipv_6_cidr_block: nil, port_range: nil, protocol: nil, rule_action: nil, rule_number: nil)
     return false unless acl_entries
-    
+
     # rules for all protocols are recorded as rules with protocol == -1
     protocol = "-1" if protocol.to_s.downcase == "all"
 
     # check for acl entries matching any combination of fields
     # iff a field was passed to the matcher, then it is included as part of the test
-    acl_entries.any? { |entry| 
-      entry.cidr_block == cidr_block &&
-      egress.to_s.present? ? entry.egress == egress : true &&
-      icmp_type_code.present? ? entry.icmp_type_code == icmp_type_code : true &&
-      ipv_6_cidr_block.present? ? entry.ipv_6_cidr_block == ipv_6_cidr_block : true &&
-      port_range.present? ? port_within_range?(entry.port_range, port_range) : true &&
-      protocol.present? ? entry.protocol == protocol.to_s : true &&
-      rule_action ? entry.rule_action == rule_action : true &&
-      rule_number ? entry.rule_number == rule_number : true
+    acl_entries.any? { |entry|
+      if entry.cidr_block == cidr_block &&
+          egress.to_s.present?
+        entry.egress == egress
+      else
+        if true &&
+            icmp_type_code.present?
+          entry.icmp_type_code == icmp_type_code
+        else
+          if true &&
+              ipv_6_cidr_block.present?
+            entry.ipv_6_cidr_block == ipv_6_cidr_block
+          else
+            if true &&
+                port_range.present?
+              port_within_range?(entry.port_range, port_range)
+            else
+              if true &&
+                  protocol.present?
+                entry.protocol == protocol.to_s
+              else
+                if true &&
+                    rule_action
+                  entry.rule_action == rule_action
+                else
+                  if true &&
+                      rule_number
+                    entry.rule_number == rule_number
+                  else
+                    true
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
     }
   end
 
