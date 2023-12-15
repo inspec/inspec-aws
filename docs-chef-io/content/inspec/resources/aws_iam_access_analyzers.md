@@ -101,4 +101,6 @@ end
 
 ## AWS Permissions
 
-TODO
+{{% aws_permissions_principal action="access-analyzer:ListAnalyzers" %}}
+
+You can find detailed documentation on this action in the [AWS API documentation](https://docs.aws.amazon.com/access-analyzer/latest/APIReference/API_ListAnalyzers.html).
