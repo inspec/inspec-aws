@@ -91,6 +91,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:GetGroupResponse" %}}
+{{% aws_permissions_principal action="iam:GetGroup" %}}
 
-You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).
+You can find detailed documentation on this action in the [AWS API documentation](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetGroup.html).
