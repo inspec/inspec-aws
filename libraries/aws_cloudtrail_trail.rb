@@ -4,7 +4,7 @@ class AwsCloudTrailTrail < AwsResourceBase
   name "aws_cloudtrail_trail"
   desc "Verifies settings for an individual AWS CloudTrail Trail."
   example <<-EXAMPLE
-    describe aws_cloudtrail_trail('TRIAL_NAME') do
+    describe aws_cloudtrail_trail('TRAIL_NAME') do
       it { should exist }
       it { should be_monitoring_read("AWS::S3::Object") }
       it { should be_monitoring_write("AWS::S3::Object") }
