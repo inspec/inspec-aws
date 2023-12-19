@@ -108,13 +108,31 @@ class AwsCloudTrailTrail < AwsResourceBase
   def has_event_selector_mgmt_events_rw_type_all?
     return nil unless exists?
     event_selector_found = false
-    begin
-      @event_selectors.event_selectors.each do |es|
-        event_selector_found = true if es.read_write_type == "All" &&
-          es.include_management_events == true
+    require pry
+    pry
+    if using_basic_event_selectors?
+      begin
+        @event_selectors.event_selectors.each do |es|
+          event_selector_found = true if es.read_write_type == "All" &&
+            es.include_management_events == true
+        end
+      rescue Aws::CloudTrail::Errors::TrailNotFoundException
+        event_selector_found
       end
-    rescue Aws::CloudTrail::Errors::TrailNotFoundException
-      event_selector_found
+    else
+      event_selector_found = @event_selectors.advanced_event_selectors.any? { |es|
+        (
+          # check if readOnly is unset entirely (means both read and write are logged)
+          es.field_selectors.none? do |fs|
+            fs.field == "readOnly"
+          end
+        ) && (
+          # check if a field selector is set to track management events
+          es.field_selectors.any? do |fs|
+            fs.field == "eventCategory" && fs.equals == ["Management"]
+          end
+        )
+      }
     end
     event_selector_found
   end
@@ -127,9 +145,10 @@ class AwsCloudTrailTrail < AwsResourceBase
         es.read_write_type.match?(/All|#{basic_mode}/) &&
           es.data_resources.any? do |dr|
             dr.type.include?(aws_resource_type) &&
-              dr.values.all? do |val| # make sure the values do not indicate individual resources
-                val.split(%r{[:/]}).count <= 3 # can be of the form 'arn:aws:s3' but not
-                # 'arn:aws:s3:<region>:<account>:<field>/<a_specific_resource>'
+              # make sure the values do not indicate individual resources
+              dr.values.all? do |val|
+                # val can be of the form 'arn:aws:s3' but not 'arn:aws:s3:<region>:<account>:<field>/<a_specific_resource>'
+                val.split(%r{[:/]}).count <= 3
               end
           end
       end
