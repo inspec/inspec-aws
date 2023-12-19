@@ -108,8 +108,6 @@ class AwsCloudTrailTrail < AwsResourceBase
   def has_event_selector_mgmt_events_rw_type_all?
     return nil unless exists?
     event_selector_found = false
-    require pry
-    pry
     if using_basic_event_selectors?
       begin
         @event_selectors.event_selectors.each do |es|
@@ -121,17 +119,10 @@ class AwsCloudTrailTrail < AwsResourceBase
       end
     else
       event_selector_found = @event_selectors.advanced_event_selectors.any? { |es|
-        (
-          # check if readOnly is unset entirely (means both read and write are logged)
-          es.field_selectors.none? do |fs|
-            fs.field == "readOnly"
-          end
-        ) && (
-          # check if a field selector is set to track management events
-          es.field_selectors.any? do |fs|
-            fs.field == "eventCategory" && fs.equals == ["Management"]
-          end
-        )
+        # check if readOnly is unset entirely (means both read and write are logged)
+        es.field_selectors.none? { |fs| fs.field == "readOnly" } && \
+        # check if a field selector is set to track management events
+        es.field_selectors.any? { |fs| fs.field == "eventCategory" && fs.equals == ["foobar"] }
       }
     end
     event_selector_found
