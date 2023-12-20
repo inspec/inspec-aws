@@ -16,9 +16,9 @@ The AWS::Events::Rule resource creates a rule that matches incoming events and r
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Events Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-rule.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -83,7 +83,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -117,4 +117,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EventBridge:Client:ListRulesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="EventBridge:Client:ListRulesResponse" %}}

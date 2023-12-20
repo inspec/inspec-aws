@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_cloudtrail_trail` Chef InSpec audit resource to test properties of a single AWS CloudTrail trail.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -42,7 +42,7 @@ end
 : This resource expects a single parameter, the CloudTrail name which uniquely identifies it.
   This can be passed either as a string or as a `trail_name: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail/index.html#lang/en_us).
+See the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail/index.html#lang/en_us).
 
 ## Properties
 
@@ -132,7 +132,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -194,6 +194,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudTrail:Client:DescribeTrailsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudTrail:Client:DescribeTrailsResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awscloudtrail.html).

@@ -16,9 +16,9 @@ The `AWS::ApiGateway::GatewayResponse` resource creates a gateway response for y
 
 For additional information, including details on parameters and properties, see the [AWS documentation on the `AWS::APIGateway::GatewayResponse` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-gatewayresponse.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -77,7 +77,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `get` method returns at least one result.
 
@@ -101,4 +101,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:GatewayResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client:GatewayResponse" %}}

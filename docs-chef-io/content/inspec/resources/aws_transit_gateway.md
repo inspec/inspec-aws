@@ -14,9 +14,9 @@ Use the `aws_transit_gateway` InSpec audit resource to test properties of a tran
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Transit Gateways](https://docs.aws.amazon.com/vpc/latest/tgw/).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -70,7 +70,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -84,6 +84,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeTransitGatewaysResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeTransitGatewaysResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

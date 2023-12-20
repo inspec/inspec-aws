@@ -14,9 +14,9 @@ Use the `aws_iam_role` InSpec audit resource to test properties of an AWS IAM Ro
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -89,7 +89,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 
 ### exist
@@ -112,7 +112,7 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:GetRoleResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:GetRoleResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).
 

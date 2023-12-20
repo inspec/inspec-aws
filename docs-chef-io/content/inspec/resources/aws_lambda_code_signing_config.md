@@ -16,9 +16,9 @@ The `AWS::Lambda::CodeSigningConfig` resource specifies the details about a code
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS SSM CodeSigningConfig](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-codesigningconfig.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -76,7 +76,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `get` method returns at least one result.
 
@@ -110,4 +110,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Lambda:Client:GetCodeSigningConfigResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Lambda:Client:GetCodeSigningConfigResponse" %}}

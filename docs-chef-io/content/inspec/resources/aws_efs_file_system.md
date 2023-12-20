@@ -13,9 +13,9 @@ parent = "inspec/resources/aws"
 Use the `aws_efs_file_system` InSpec audit resource to test the properties of a single AWS EFS file system.
 This resource is added to InSpec AWS resource pack in version **[1.10.0](https://github.com/inspec/inspec-aws/releases/tag/v1.10.0)** and it is available with InSpec **[4.18.108](https://github.com/inspec/inspec/releases/tag/v4.18.108)** and later versions. 
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -115,7 +115,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 
 ### exist
@@ -136,6 +136,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EFS:Client:DescribeFileSystemsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="EFS:Client:DescribeFileSystemsResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EFS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonelasticfilesystem.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

@@ -16,9 +16,9 @@ The AWS::Glue::Database resource specifies a logical grouping of tables in AWS G
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Glue Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -88,7 +88,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `get` method returns at least one result.
 
@@ -122,4 +122,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:GetDatabaseResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:GetDatabaseResponse" %}}

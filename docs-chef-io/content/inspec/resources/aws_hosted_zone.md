@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_hosted_zone` resource to test a specific hosted zone configuration.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -65,7 +65,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -104,6 +104,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Route53:Client:GetHostedZoneResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Route53:Client:GetHostedZoneResponse" %}}
 
 You can find detailed documentation at [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/r53-api-permissions-ref.html)

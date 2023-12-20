@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_organizations_member` InSpec audit resource to test the current AWS Account being used within an organization.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -75,7 +75,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### be_master
 

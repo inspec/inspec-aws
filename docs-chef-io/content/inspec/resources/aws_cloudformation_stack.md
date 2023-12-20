@@ -14,9 +14,9 @@ Use the `aws_cloudformation_stack ` InSpec audit resource to test properties of 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -123,7 +123,7 @@ end
 
 This InSpec audit resource has no special matchers.
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -145,6 +145,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudFormation:Client:DescribeStacksOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudFormation:Client:DescribeStacksOutput" %}}
 
 You can find detailed documentation at [Authentication and Access Control for CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)

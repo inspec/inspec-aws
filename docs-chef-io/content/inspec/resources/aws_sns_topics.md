@@ -16,9 +16,9 @@ User the 'aws_sns_topic' InSpec audit resource to test a single SNS Topic in an 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -75,6 +75,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SNS:Client:ListTopicsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="SNS:Client:ListTopicsResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon SNS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsns.html).

@@ -14,9 +14,9 @@ Use the `aws_auto_scaling_group` InSpec audit resource to test properties of a s
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -88,7 +88,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -110,6 +110,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="AutoScaling:Client:AutoScalingGroupsType" %}}
+{{% inspec-aws/aws_permissions_principal action="AutoScaling:Client:AutoScalingGroupsType" %}}
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).
 

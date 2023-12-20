@@ -16,6 +16,10 @@ The AWS::ApiGateway::RequestValidator resource sets up basic validation rules fo
 
 For additional information, including details on parameters and properties, see the [AWS APIGateway RequestValidator documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-requestvalidator.html).
 
+## Install
+
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
+
 ## Syntax
 
 Ensure that an API Gateway request validator exists.
@@ -108,4 +112,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:RequestValidators" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client:RequestValidators" %}}

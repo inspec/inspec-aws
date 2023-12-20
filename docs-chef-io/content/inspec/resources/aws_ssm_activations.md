@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ssm_activations` InSpec audit resource to test properties of a collection of AWS SSM Activations.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -76,7 +76,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -98,6 +98,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SSM:Client:DescribeActivationsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="SSM:Client:DescribeActivationsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Systems Manager](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awssystemsmanager.html).

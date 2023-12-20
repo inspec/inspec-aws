@@ -16,9 +16,9 @@ Note that this resource lists all AWS regions that are currently available to th
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -77,7 +77,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -91,6 +91,6 @@ it { should exist }
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeRegionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeRegionsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

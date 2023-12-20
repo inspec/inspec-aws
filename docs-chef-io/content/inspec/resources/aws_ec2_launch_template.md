@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ec2_launch_template` InSpec audit resource to test properties of a single AWS Launch Template.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 

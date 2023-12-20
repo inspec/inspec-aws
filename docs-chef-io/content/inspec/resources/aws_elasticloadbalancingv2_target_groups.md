@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_elasticloadbalancingv2_target_groups` InSpec audit resource to test properties of multiple Elastic Load Balancing V2 target groups.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -100,7 +100,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -134,4 +134,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeTargetGroupsOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeTargetGroupsOutput" %}}

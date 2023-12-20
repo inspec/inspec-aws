@@ -14,9 +14,9 @@ Use the `aws_cloud_formation_stack_sets` InSpec audit resource to test propertie
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS CloudFormation Stack Set.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -94,7 +94,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -118,4 +118,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudFormation:Client:ListStackSetsOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudFormation:Client:ListStackSetsOutput" %}}

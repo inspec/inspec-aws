@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_elasticache_replication_groups` InSpec audit resource to test the properties of all Amazon ElastiCache replication groups. To audit a single ElastiCache replication group, use `aws_elasticache_replication_group` (singular).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -69,7 +69,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -91,6 +91,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElastiCache:Client:ReplicationGroupMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="ElastiCache:Client:ReplicationGroupMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonelasticache.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

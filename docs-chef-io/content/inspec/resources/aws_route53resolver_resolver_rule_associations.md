@@ -16,9 +16,9 @@ The Resolver rule association determines which DNS queries that originate in the
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Route53Resolver Resolver Rule Association](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverruleassociation.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -74,7 +74,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -108,4 +108,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Route53Resolver:Client:ListResolverRuleAssociationsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Route53Resolver:Client:ListResolverRuleAssociationsResponse" %}}

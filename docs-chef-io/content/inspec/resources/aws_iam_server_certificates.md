@@ -14,9 +14,9 @@ Use the `aws_iam_server_certificates` InSpec audit resource to test the properti
 
 This resource retrieves information about the server certificate, including the server certificate's path, GUID, ARN, and role.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -70,7 +70,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -104,4 +104,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:ListServerCertificateResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:ListServerCertificateResponse" %}}

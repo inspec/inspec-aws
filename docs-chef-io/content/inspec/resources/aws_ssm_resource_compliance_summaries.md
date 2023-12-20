@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ssm_resource_compliance_summaries` InSpec audit resource to test properties of a collection of AWS SSM compliance summaries.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -36,7 +36,7 @@ end
 
 : This optional parameter allows you to filter based on overall severity. This must be passed as a string `overall_severity: 'value'`.
 
-See also the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
+See the [AWS documentation on SSM](https://docs.aws.amazon.com/systems-manager/?id=docs_gateway).
 
 ## Properties
 
@@ -78,7 +78,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -100,6 +100,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SSM:Client:ListResourceComplianceSummariesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="SSM:Client:ListResourceComplianceSummariesResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Systems Manager](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awssystemsmanager.html).

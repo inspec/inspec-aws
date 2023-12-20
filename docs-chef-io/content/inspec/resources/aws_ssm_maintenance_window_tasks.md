@@ -16,9 +16,9 @@ The `AWS::SSM::MaintenanceWindowTask` resource defines information about a task 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS SSM MaintenanceWindowTask](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindowtask.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -144,7 +144,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -168,4 +168,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SSM:Client:DescribeMaintenanceWindowTasksResult" %}}
+{{% inspec-aws/aws_permissions_principal action="SSM:Client:DescribeMaintenanceWindowTasksResult" %}}

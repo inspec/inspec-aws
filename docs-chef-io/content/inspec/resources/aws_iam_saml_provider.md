@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_iam_saml_provider` InSpec audit resource to test properties of an AWS IAM SAML Provider.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -72,7 +72,7 @@ describe aws_iam_saml_provider("arn:aws:iam::123456789012:saml-provider/FANCY") 
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -87,4 +87,4 @@ You may also use `it { should_not exist }`.
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:GetSAMLProviderResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:GetSAMLProviderResponse" %}}

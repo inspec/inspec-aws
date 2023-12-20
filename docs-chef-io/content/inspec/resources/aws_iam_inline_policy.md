@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_iam_inline_policy` InSpec audit resource to test properties of a single inline AWS IAM Policy embedded with IAM User, IAM Group or IAM Role. For managed policies, use the `aws_iam_policy` resource.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -94,7 +94,7 @@ it { should_not have_statement(NotAction: 'iam:*') }
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 

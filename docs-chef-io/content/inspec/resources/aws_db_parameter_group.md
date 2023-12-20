@@ -18,9 +18,9 @@ This resource accepts a single parameter, the DB parameter group name. This can 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on DB parameter groups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbparametergroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -66,7 +66,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -88,6 +88,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DBParameterGroupsMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DBParameterGroupsMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

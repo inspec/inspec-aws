@@ -14,9 +14,9 @@ Use the `aws_emr_clusters` resource to test the configuration of a collection of
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS EMR clusters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -161,7 +161,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://docs.chef.io/inspec/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://docs.chef.io/inspec/matchers/).
 
 ### exist
 

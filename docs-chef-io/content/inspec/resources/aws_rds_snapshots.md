@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_rds_snapshots` InSpec audit resource to test the properties of a collection of AWS RDS snapshots.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -84,7 +84,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -106,6 +106,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DBSnapshotMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DBSnapshotMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

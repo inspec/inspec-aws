@@ -16,9 +16,9 @@ RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Micros
 
 For additional information, including details on parameters and properties, see the [AWS documentation on RDS Option Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -91,7 +91,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -113,6 +113,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:OptionGroups" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:OptionGroups" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

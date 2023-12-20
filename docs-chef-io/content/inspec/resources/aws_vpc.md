@@ -18,9 +18,9 @@ Every AWS account has at least one VPC, the "default" VPC, in every region.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -299,6 +299,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeVpcsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeVpcsResult" %}}
 
 You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

@@ -14,9 +14,9 @@ Use the `aws_cloudwatch_log_metric_filter` InSpec audit resource to search for a
 
 For additional information, including details on parameters and properties, see the [AWS documentation on CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -110,7 +110,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -132,6 +132,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudWatchLogs:Client:DescribeMetricFiltersResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudWatchLogs:Client:DescribeMetricFiltersResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html).

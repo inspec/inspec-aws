@@ -14,9 +14,9 @@ Use the `aws_ssm_association` InSpec audit resource to test properties of a ssm 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on SSM Associations](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-assoc.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -123,7 +123,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -145,6 +145,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SSM:Client:DescribeAssociationResult" %}}
+{{% inspec-aws/aws_permissions_principal action="SSM:Client:DescribeAssociationResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Systems Manager](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awssystemsmanager.html).

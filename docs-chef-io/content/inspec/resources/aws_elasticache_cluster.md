@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_elasticache_cluster` InSpec audit resource to test the properties of a single AWS ElastiCache cluster.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -101,7 +101,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 
 ### exist
@@ -122,6 +122,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElastiCache:Client:CacheClusterMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="ElastiCache:Client:CacheClusterMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonelasticache.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

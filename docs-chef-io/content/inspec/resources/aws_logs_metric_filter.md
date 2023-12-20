@@ -14,9 +14,9 @@ Use the `aws_logs_metric_filter` InSpec audit resource to test properties of a s
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Logs MetricFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -80,7 +80,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -114,4 +114,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudWatchLogs:Client:DescribeMetricFiltersResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudWatchLogs:Client:DescribeMetricFiltersResponse" %}}

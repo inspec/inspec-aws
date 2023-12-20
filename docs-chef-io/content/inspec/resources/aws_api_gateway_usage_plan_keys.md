@@ -14,9 +14,9 @@ Use the `aws_api_gateway_usage_plan_keys` InSpec audit resource to test the prop
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway UsagePlanKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplankey.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -76,7 +76,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The control passes if the `get` method returns at least one result.
 
@@ -100,4 +100,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:UsagePlanKeys" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client:UsagePlanKeys" %}}

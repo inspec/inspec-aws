@@ -14,9 +14,9 @@ Use the `aws_route_tables` InSpec audit resource to test the properties of all r
 
 For additional information, including details on parameters and properties, see the [AWS documentation on route tables](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -223,6 +223,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeRouteTablesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeRouteTablesResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

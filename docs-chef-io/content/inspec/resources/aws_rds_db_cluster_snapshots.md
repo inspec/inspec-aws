@@ -14,9 +14,9 @@ Use the `aws_rds_db_cluster_snapshots` InSpec audit resource to test the propert
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS RDS Cluster Snapshot.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_RDS.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -159,7 +159,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The control passes if the `describe` method returns at least one result.
 
@@ -193,4 +193,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DBClusterSnapshotMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DBClusterSnapshotMessage" %}}

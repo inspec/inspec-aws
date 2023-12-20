@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_nat_gateway` InSpec audit resource to test the properties of a single AWS NAT gateway.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -132,11 +132,11 @@ describe aws_nat_gateway(vpc_id: 'vpc-abc01234', subnet_id: 'subnet-12345678') d
 end
 ```
 
-For more examples, please check the [integration tests](../../test/integration/verify/controls/aws_nat_gateway.rb).
+For more examples, see the [integration tests](https://github.com/inspec/inspec-aws/blob/main/test/integration/verify/controls/aws_nat_gateway.rb).
 
 ## Matchers
 
-This InSpec audit resource has the following special matcher. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matcher. For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 
 ### exist
@@ -149,6 +149,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeNatGatewaysResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeNatGatewaysResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

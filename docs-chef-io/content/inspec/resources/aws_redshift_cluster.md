@@ -13,9 +13,9 @@ parent = "inspec/resources/aws"
 Use the `aws_redshift_cluster` InSpec audit resource to test detailed properties of an individual AWS Redshift cluster.
 
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -124,7 +124,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -146,6 +146,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Redshift:Client:ClustersMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="Redshift:Client:ClustersMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Redshift](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonRedshift.html).

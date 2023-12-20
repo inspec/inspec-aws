@@ -14,9 +14,9 @@ Use the `aws_servicecatalog_cloud_formation_product` InSpec audit resource to te
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Service Catalog CloudFormation product](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationproduct.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -89,7 +89,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -123,4 +123,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ServiceCatalog:Client:DescribeProductAsAdminOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="ServiceCatalog:Client:DescribeProductAsAdminOutput" %}}

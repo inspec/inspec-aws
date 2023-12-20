@@ -19,9 +19,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ecr` InSpec audit resource to test properties of a single AWS Elastic Container Registry.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -89,7 +89,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 
 ### exist

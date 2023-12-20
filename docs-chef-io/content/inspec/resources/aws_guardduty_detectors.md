@@ -22,9 +22,9 @@ For additional information, including details on parameters and properties, see 
 
 Train AWS version 0.1.18 or newer is required for this resource.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -68,7 +68,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
@@ -90,4 +90,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="GuardDuty:Client:GetDetectorResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="GuardDuty:Client:GetDetectorResponse" %}}

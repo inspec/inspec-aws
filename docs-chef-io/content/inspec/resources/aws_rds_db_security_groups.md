@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_rds_db_security_groups` InSpec audit resource to test properties of multiple Amazon Relational Database Service (RDS) database security groups.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -75,7 +75,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -109,4 +109,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DescribeDBSecurityGroup" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DescribeDBSecurityGroup" %}}

@@ -14,9 +14,9 @@ Use the `aws_ecr_repository_policy` InSpec audit resource to test the policy con
 
 New in InSpec AWS resource pack [1.11.0](https://github.com/inspec/inspec-aws/releases/tag/v1.11.0).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -102,6 +102,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ECR:Client:GetRepositoryPolicyResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="ECR:Client:GetRepositoryPolicyResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Operations.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

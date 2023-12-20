@@ -14,9 +14,9 @@ Use the `aws_s3_access_points` InSpec audit resource to test properties of a Mul
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS S3 Access Points.](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -71,7 +71,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -105,4 +105,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="S3:Client:listBucketMetricsConfigurationOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="S3:Client:listBucketMetricsConfigurationOutput" %}}
