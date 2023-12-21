@@ -90,6 +90,8 @@ end
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 #### assigning_ipv_6_address_on_creation
 
 Detects if the network interface on the subnet accepts IPv6 addresses.

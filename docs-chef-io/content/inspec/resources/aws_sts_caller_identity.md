@@ -82,6 +82,8 @@ end
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 ### be_govcloud
 
 The `be_govcloud` matcher tests if the account is a 'GovCloud' AWS Account.

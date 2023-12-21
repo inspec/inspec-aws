@@ -104,6 +104,8 @@ end
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 ### have_viewer_protocol_policies_allowing_http
 
 The `have_viewer_protocol_policies_allowing_http` matcher tests if any of the caches for origins, including the default cache, has its viewer_protocol_policy set to 'allow-all'.

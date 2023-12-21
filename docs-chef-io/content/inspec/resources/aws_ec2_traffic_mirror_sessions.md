@@ -108,6 +108,8 @@ For additional information, see [the API reference documentation](https://docs.a
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 ### be_available
 
 Check if the Traffic mirror session is available.

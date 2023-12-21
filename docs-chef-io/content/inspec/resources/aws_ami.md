@@ -131,6 +131,8 @@ end
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 ### be_public
 
 The `be_public` matcher tests if the AMI has public launch permissons.

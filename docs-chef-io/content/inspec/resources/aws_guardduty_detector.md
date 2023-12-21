@@ -80,6 +80,8 @@ end
 
 {{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
+
 ### be_enabled
 
 The `be_enabled` matcher tests if the status of the detector is enabled.
