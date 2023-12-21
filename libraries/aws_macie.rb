@@ -145,7 +145,10 @@ class AWSMacie < AwsResourceBase
         @jobs.present? ? @jobs_table = AwsMacieJobTable.new(@jobs.items.map(&:to_h)) : @jobs_table = []
         @buckets = @aws.macie_client.describe_buckets
         @buckets.present? ? @buckets_table = AwsMacieBucketTable.new(@buckets.buckets.map(&:to_h)) : @buckets_table = []
-        @findings = []
+        @findings = @aws.macie_client.list_findings.finding_ids
+        @findings.present? ? @findings_table = AwsMacieFindingTable.new(
+          @aws.macie_client.get_findings(finding_ids: @findings).findings.map(&:to_h)
+        ) : @findings_table = []
       rescue Aws::Errors::NoSuchEndpointError
         skip_resource(
           "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
@@ -168,20 +171,8 @@ class AWSMacie < AwsResourceBase
     @buckets_table
   end
 
-  def findings(finding_ids=[], sort_criteria: nil)
-    catch_aws_errors do
-      begin
-        if finding_ids.blank?
-          # if the user didn't pass a parameter for specific finding ids, or a single id, then fetch them all
-          finding_ids = @aws.macie_client.list_findings.finding_ids
-        end
-        # catch if the user passed in a single ID
-        finding_ids = [finding_ids] unless finding_ids.is_a?(Array)
-
-        findings = @aws.macie_client.get_findings(finding_ids: finding_ids, sort_criteria: sort_criteria)
-        findings.present? ? AwsMacieFindingTable.new(findings.findings.map(&:to_h)) : []
-      end
-    end
+  def findings
+    @findings_table
   end
 
   def monitoring_buckets?(buckets)
