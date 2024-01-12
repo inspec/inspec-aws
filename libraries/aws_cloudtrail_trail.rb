@@ -121,8 +121,8 @@ class AwsCloudTrailTrail < AwsResourceBase
       event_selector_found = @event_selectors.advanced_event_selectors.any? { |es|
         # check if readOnly is unset entirely (means both read and write are logged)
         es.field_selectors.none? { |fs| fs.field == "readOnly" } && \
-        # check if a field selector is set to track management events
-        es.field_selectors.any? { |fs| fs.field == "eventCategory" && fs.equals == ["Management"] }
+          # check if a field selector is set to track management events
+          es.field_selectors.any? { |fs| fs.field == "eventCategory" && fs.equals == ["Management"] }
       }
     end
     event_selector_found

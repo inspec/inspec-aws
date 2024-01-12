@@ -181,9 +181,13 @@ class AWSMacie < AwsResourceBase
         @buckets = @aws.macie_client.describe_buckets
         @buckets.present? ? @buckets_table = AwsMacieBucketTable.new(@buckets.buckets.map(&:to_h)) : @buckets_table = []
         @findings = @aws.macie_client.list_findings.finding_ids
-        @findings.present? ? @findings_table = AwsMacieFindingTable.new(
-          @aws.macie_client.get_findings(finding_ids: @findings).findings.map(&:to_h)
-        ) : @findings_table = []
+        if @findings.present?
+          @findings_table = AwsMacieFindingTable.new(
+                  @aws.macie_client.get_findings(finding_ids: @findings).findings.map(&:to_h),
+                )
+        else
+          @findings_table = []
+        end
       rescue Aws::Errors::NoSuchEndpointError
         skip_resource(
           "The account contact endpoint is not available in this segment, please review this via the AWS Management Console.",
