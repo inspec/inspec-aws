@@ -9,6 +9,8 @@ class AwsKmsKey < AwsResourceBase
     end
   "
 
+  attr_reader :display_name, :arn, :alias
+
   def initialize(opts = {})
     # SDK permits key_id to hold either an ID or an ARN
     opts = { key_id: opts } if opts.is_a?(String)
@@ -18,7 +20,7 @@ class AwsKmsKey < AwsResourceBase
       @alias = opts[:alias]
       opts[:key_id] = fetch_key_id
     end
-    @display_name = opts[:key_id]
+    @display_name = key_metadata[:key_id]
     @arn = key_metadata[:arn]
 
     create_resource_methods(key_metadata)

@@ -5,6 +5,7 @@
 Gemfile.lock
 inspec.lock
 .kitchen
+*.code-workspace
 *.plan
 *.tfstate*
 local

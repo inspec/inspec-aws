@@ -31,6 +31,7 @@ end
 ```ruby
 describe aws_region(region_name: 'us-east-1') do
   it { should exist }
+  its('opt_in_status') { should cmp 'opt-in-not-required' }
 end
 ```
 
@@ -48,6 +49,9 @@ end
 
 `endpoint`
 : The resolved endpoint of the region.
+
+`opt_in_status`
+: The opt-in status of the Region (opt-in-not-required | opted-in | not-opted-in).
 
 ## Examples
 
@@ -77,6 +81,14 @@ The control will pass if the describe returns at least one result.
 
 ```ruby
 it { should exist }
+```
+
+### ebs_encryption_enabled
+
+The control will pass if the region has EBS volume encryption enabled by default.
+
+```ruby
+it { should have_ebs_encryption_enabled }
 ```
 
 ## AWS Permissions

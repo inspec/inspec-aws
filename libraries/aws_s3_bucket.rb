@@ -1,4 +1,5 @@
 require "aws_backend"
+require "hashie/mash"
 
 class AwsS3Bucket < AwsResourceBase
   name "aws_s3_bucket"
@@ -58,7 +59,7 @@ class AwsS3Bucket < AwsResourceBase
       begin
         @bucket_policy_status_public = @aws.storage_client.get_bucket_policy_status(bucket: @bucket_name).policy_status.is_public
       rescue Aws::S3::Errors::NoSuchBucketPolicy
-        @bucket_policy_status_public = false # preserves the original behaviour
+        @bucket_policy_status_public = false # preserves the original behavior
       end
       @bucket_policy_status_public || \
         bucket_acl.any? { |g| g.grantee.type == "Group" && g.grantee.uri =~ /AllUsers/ } || \
@@ -75,11 +76,32 @@ class AwsS3Bucket < AwsResourceBase
 
   def prevent_public_access?
     return false unless exists?
-    @prevent_public_access ||= catch_aws_errors do
-      public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
-      public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
-    end
+    @prevent_public_access =
+      begin
+        public_access_config = @aws.storage_client.get_public_access_block(bucket: @bucket_name).public_access_block_configuration
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
+        @prevent_public_access = false
+      end
+    return false unless @prevent_public_access
+    public_access_config.block_public_acls == true && public_access_config.ignore_public_acls == true && public_access_config.block_public_policy == true && public_access_config.restrict_public_buckets == true
   end
+
+  alias preventing_public_access_via_bucket? prevent_public_access?
+
+  def prevent_public_access_by_account?
+    return false unless exists?
+    @account_id = fetch_aws_account
+    @prevent_public_access_by_account =
+      begin
+        public_access_account_config = @aws.storage_control_client.get_public_access_block(account_id: @account_id).public_access_block_configuration
+      rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
+        @prevent_public_access_by_account = false
+      end
+    return false unless @prevent_public_access_by_account
+    public_access_account_config.block_public_acls == true && public_access_account_config.ignore_public_acls == true && public_access_account_config.block_public_policy == true && public_access_account_config.restrict_public_buckets == true
+  end
+
+  alias preventing_public_access_via_account? prevent_public_access_by_account?
 
   def has_default_encryption_enabled?
     return false unless exists?
@@ -98,6 +120,13 @@ class AwsS3Bucket < AwsResourceBase
     return false unless exists?
     catch_aws_errors do
       @has_versioning_enabled = @aws.storage_client.get_bucket_versioning(bucket: @bucket_name).status == "Enabled"
+    end
+  end
+
+  def versioning
+    return [] unless exists? # exists? would throw the same NoSuchBucket error if the bucket name was not valid
+    catch_aws_errors do
+      @versioning ||= Hashie::Mash.new(@aws.storage_client.get_bucket_versioning(bucket: @bucket_name))
     end
   end
 
@@ -156,5 +185,12 @@ class AwsS3Bucket < AwsResourceBase
 
   def to_s
     "S3 Bucket #{@bucket_name}"
+  end
+
+  private
+
+  def fetch_aws_account
+    arn = @aws.sts_client.get_caller_identity({}).arn
+    arn.split(":")[4]
   end
 end

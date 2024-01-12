@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'bundle'
+gem "bundle"
 # Note that 'aws-sdk' pulls in a large number of libraries, choose explicitly those to include instead
 # gem 'aws-sdk', '~> 3'
 #
@@ -11,9 +11,10 @@ gem 'bundle'
 # In the mean time the gem can be added here for local development
 
 # Use Latest Inspec
-gem 'inspec-bin'
+gem "inspec-bin"
+gem "train-aws", git: 'https://github.com/mitre/train-aws.git', branch: 'al/dep-updates'
 
-gem 'rubocop', '~> 1.25.1', require: false
+gem "rubocop", "~> 1.25.1", require: false
 
 group :test do
   gem "chefstyle", "~> 2.2.2"
@@ -22,7 +23,7 @@ group :test do
 end
 
 group :development do
-  gem 'rake'
-  gem 'minitest'
-  gem 'pry-byebug'
+  gem "rake"
+  gem "minitest"
+  gem "pry-byebug"
 end

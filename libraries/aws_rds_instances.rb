@@ -21,11 +21,17 @@ class AwsRdsInstances < AwsCollectionResourceBase
     end
   "
 
+  attr_reader :table
+
   def initialize(opts = {})
     super(opts)
     validate_parameters
     @table = fetch(client: :rds_client, operation: :describe_db_instances).db_instances.map(&:to_h)
 
     populate_filter_table_from_response
+  end
+
+  def exist?
+    !@table.empty?
   end
 end

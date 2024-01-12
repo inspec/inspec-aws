@@ -130,6 +130,15 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
+**Test if a trail is monitoring an AWS object type:**
+
+```ruby
+describe aws_cloudtrail_trail('TRAIL_NAME') do
+  it { should be_monitoring_read("AWS::S3::Object") }
+  it { should be_monitoring_write("AWS::S3::Object") }
+end
+```
+
 ## Matchers
 
 {{% inspec_matchers_link %}}
@@ -189,6 +198,26 @@ The test will pass if the identified trail has organization trail is enabled.
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
   it { should be_organization_trail }
+end
+```
+
+### be_monitoring_read
+
+The test will pass if the identified trail is monitoring read events on the given AWS object type (if the trail is only monitoring one ARN of that object type, the test will fail).
+
+```ruby
+describe aws_cloudtrail_trail('TRAIL_NAME') do
+  it { should be_monitoring_read("AWS::S3::Object") }
+end
+```
+
+### be_monitoring_write
+
+The test will pass if the identified trail is monitoring write events on the given AWS object type (if the trail is only monitoring one ARN of that object type, the test will fail).
+
+```ruby
+describe aws_cloudtrail_trail('TRAIL_NAME') do
+  it { should be_monitoring_write("AWS::S3::Object") }
 end
 ```
 

@@ -1,11 +1,36 @@
 require "aws_backend"
 
+class AwsNetworkACLTable
+
+  FilterTable.create
+    .register_column(:cidr_block,         field: :cidr_block)
+    .register_column(:egress,             field: :egress)
+    .register_column(:icmp_type_code,     field: :icmp_type_code)
+    .register_column(:ipv_6_cidr_block,   field: :ipv_6_cidr_block)
+    .register_column(:port_range,         field: :port_range)
+    .register_column(:protocol,           field: :protocol)
+    .register_column(:rule_action,        field: :rule_action)
+    .register_column(:rule_number,        field: :rule_number)
+    .install_filter_methods_on_resource(self, :acl_table)
+
+  attr_reader :acl_table, :acl_name
+
+  def initialize(acl_table, acl_name = nil)
+    @acl_table = acl_table
+    @acl_name = acl_name
+  end
+
+  def to_s
+    @acl_name.present? ? "ACL #{acl_name}" : "ACL: "
+  end
+end
+
 class AwsNetworkACL < AwsResourceBase
   EGRESS = "egress".freeze
   INGRESS = "ingress".freeze
   name "aws_network_acl"
   desc "Verifies settings for a single AWS Network ACL"
-  example "
+  example <<~EXAMPLE1
    describe aws_network_acl(network_acl_id: '014aef8a0689b8f43') do
      it { should exist }
    end
@@ -13,7 +38,12 @@ class AwsNetworkACL < AwsResourceBase
    describe aws_network_acl('014aef8a0689b8f43') do
      it { should exist }
    end
-  "
+  EXAMPLE1
+  example <<~EXAMPLE2
+   describe aws_network_acl('014aef8a0689b8f43').acls.where(cidr_block: '0.0.0.0/0', rule_action: 'allow', protocol: '-1') do
+     it { should_not exist }
+   end
+  EXAMPLE2
 
   def initialize(opts = {})
     opts = { network_acl_id: opts } if opts.is_a?(String)
@@ -88,6 +118,11 @@ class AwsNetworkACL < AwsResourceBase
 
   def to_s
     "Network ACL ID: #{@opts[:network_acl_id]}"
+  end
+
+  def acls
+    return [] unless network_acl
+    AwsNetworkACLTable.new(network_acl.entries.map(&:to_h), @opts[:network_acl_id])
   end
 
   private
