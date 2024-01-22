@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_db_subnet_group` InSpec audit resource to test properties of a db subnet group.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -34,7 +34,7 @@ end
 : This resource accepts a single parameter, the DB Subnet Group Name.
   This can be passed either as a string or as a `aws_db_subnet_group: 'value'` key-value entry in a hash.
 
-See also the [AWS documentation on DB Subnet Groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Subnets).
+See the [AWS documentation on DB Subnet Groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Subnets).
 
 
 ## Properties
@@ -71,7 +71,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -93,6 +95,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DBSubnetGroupMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DBSubnetGroupMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

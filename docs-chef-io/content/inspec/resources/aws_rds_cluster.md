@@ -16,9 +16,9 @@ RDS gives you access to the capabilities of a MySQL, MariaDB, PostgreSQL, Micros
 
 For additional information, including details on parameters and properties, see the [AWS documentation on RDS cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -88,7 +88,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -110,6 +112,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DBClusterMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DBClusterMessage" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ec2_instance` InSpec audit resource to test properties of a single AWS EC2 instance.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -126,8 +126,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
 
 ### exist
 
@@ -214,6 +215,6 @@ it { should be_unknown }
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeInstancesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeInstancesResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

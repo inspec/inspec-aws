@@ -16,9 +16,9 @@ The `AWS::EC2::SpotFleet` resource specifies the configuration information to la
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS EC2 Fleet.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -156,7 +156,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -190,4 +190,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeFleetsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeFleetsResult" %}}

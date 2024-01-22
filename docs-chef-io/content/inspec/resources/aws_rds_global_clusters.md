@@ -14,9 +14,9 @@ Use the `aws_rds_global_clusters` InSpec audit resource to test properties of mu
 
 The AWS::RDS::GlobalCluster resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -105,7 +105,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -139,4 +139,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DescribeGlobalClustersMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DescribeGlobalClustersMessage" %}}

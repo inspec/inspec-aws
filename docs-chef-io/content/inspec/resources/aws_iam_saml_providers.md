@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_iam_saml_providers` InSpec audit resource to test properties of some or all AWS IAM SAML Providers.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -79,7 +79,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 

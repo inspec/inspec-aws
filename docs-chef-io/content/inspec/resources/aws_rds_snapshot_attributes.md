@@ -14,9 +14,9 @@ Use the `aws_rds_snapshotattributes` InSpec audit resource to test the detailed 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -76,7 +76,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -98,6 +100,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="RDS:Client:DescribeDBSnapshotAttributesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="RDS:Client:DescribeDBSnapshotAttributesResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon RDS](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonrds.html).

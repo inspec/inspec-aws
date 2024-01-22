@@ -14,9 +14,9 @@ Use the `aws_cognito_userpool` InSpec audit resource to test properties of a sin
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Cognito user pool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -140,7 +140,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -174,4 +174,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CognitoIdentityProvider:Client:DescribeUserPoolResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="CognitoIdentityProvider:Client:DescribeUserPoolResponse" %}}

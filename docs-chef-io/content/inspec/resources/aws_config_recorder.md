@@ -18,9 +18,9 @@ As of April 2018, you are only permitted one configuration recorder per region.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on the `AWS::Config::ConfigurationRecorder` resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -134,6 +134,6 @@ it { should be_recording_all_global_types }
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ConfigService:Client:DescribeConfigurationRecordersResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="ConfigService:Client:DescribeConfigurationRecordersResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS Config](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsconfig.html).

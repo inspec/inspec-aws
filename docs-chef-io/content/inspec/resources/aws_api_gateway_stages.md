@@ -16,9 +16,9 @@ The 'AWS::ApiGateway::Stage' resource deploys an API Gateway REST API resource t
 
 For additional information, including details on parameters and properties, see the [AWS API Gateway stage Stage documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -62,9 +62,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-The controls will pass if the `get` method returns at least one result.
+This resource has the following special matchers.
 
 ### exist
 
@@ -96,4 +96,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client::Stages" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client::Stages" %}}

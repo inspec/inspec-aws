@@ -19,11 +19,11 @@ Every AWS account has at least one VPC, the "default" VPC, in every region.
 This resource also have the functionality to test the CIDR block. The VPCCidrBlock associates a CIDR block with your VPC. You can only associate a single IPv6 CIDR block with your VPC. The IPv6 CIDR block size is fixed at /56.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-See also the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpccidrblock.html).
+See the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpccidrblock.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -255,6 +255,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeVpcsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeVpcsResult" %}}
 
 You can find detailed documentation at the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

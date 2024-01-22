@@ -14,9 +14,9 @@ Use the `aws_iam_account_alias` InSpec audit resource to test properties of the 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Account Aliases](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -72,5 +72,5 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:ListAccountAliasesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:ListAccountAliasesResponse" %}}
     

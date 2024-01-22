@@ -14,9 +14,9 @@ Use the `aws_elasticloadbalancingv2_target_group` InSpec audit resource to test 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on ElasticLoadBalancingV2 TargetGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -109,7 +109,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -143,4 +143,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeTargetGroupsOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeTargetGroupsOutput" %}}

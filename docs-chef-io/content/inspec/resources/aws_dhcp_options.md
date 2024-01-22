@@ -17,9 +17,9 @@ Use the `aws_dhcp_options` InSpec audit resource to test properties of a single 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on EC2](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -71,6 +71,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeDhcpOptionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeDhcpOptionsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

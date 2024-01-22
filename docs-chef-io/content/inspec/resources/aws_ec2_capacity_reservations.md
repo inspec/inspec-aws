@@ -16,9 +16,9 @@ The `AWS::EC2::CapacityReservation` resource type creates a new Capacity Reserva
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS EC2 Capacity Reservation.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -156,7 +156,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -180,4 +180,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeCapacityReservationsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeCapacityReservationsResult" %}}

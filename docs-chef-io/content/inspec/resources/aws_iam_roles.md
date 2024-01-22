@@ -14,9 +14,9 @@ Use the `aws_iam_roles` InSpec audit resource to test properties of a collection
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -87,7 +87,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -103,6 +103,6 @@ You may also use `it { should_not exist }`.
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:ListRolesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:ListRolesResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

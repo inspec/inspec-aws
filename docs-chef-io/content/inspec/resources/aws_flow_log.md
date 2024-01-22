@@ -14,9 +14,9 @@ Use the `aws_flow_log` InSpec audit resource to test properties of a single Flow
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -93,7 +93,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -146,4 +146,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeFlowLogsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeFlowLogsResult" %}}

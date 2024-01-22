@@ -13,9 +13,9 @@ parent = "inspec/resources/aws"
 Use the `aws_ecr_image` InSpec audit resource to test the properties of a single image in an AWS Elastic Container Registry (ECR) repository.
 This resource is available in InSpec AWS resource pack version **[1.11.0](https://github.com/inspec/inspec-aws/releases/tag/v1.11.0)** onwards.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -111,8 +111,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
+This resource has the following special matchers.
 
 ### exist
 

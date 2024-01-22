@@ -19,9 +19,9 @@ One delivery channel is allowed per region per AWS account, and the delivery cha
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Delivery Channels](https://docs.aws.amazon.com/config/latest/developerguide/manage-delivery-channel.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -110,6 +110,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ConfigService:Client:DescribeDeliveryChannelsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="ConfigService:Client:DescribeDeliveryChannelsResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS Config](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsconfig.html).

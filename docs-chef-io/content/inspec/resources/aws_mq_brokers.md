@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_mq_brokers` InSpec audit resource to test the properties of multiple AWS MQ Broker.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -94,7 +94,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The control pass if the `list` method returns at least one result.
 
@@ -128,4 +128,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="MQ:Client:ListBrokersResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="MQ:Client:ListBrokersResponse" %}}

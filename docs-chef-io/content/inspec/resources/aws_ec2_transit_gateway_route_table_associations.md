@@ -14,9 +14,9 @@ Use the `aws_ec2_transit_gateway_route_table_associations` InSpec audit resource
 
 An AWS transit gateway route table association associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -100,6 +100,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:GetTransitGatewayRouteTableAssociationsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:GetTransitGatewayRouteTableAssociationsResult" %}}
 
 For addition information, check out the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation.

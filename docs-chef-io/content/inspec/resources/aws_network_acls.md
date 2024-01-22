@@ -13,9 +13,9 @@ parent = "inspec/resources/aws"
 Use the `aws_network_acls` InSpec audit resource to test the properties of all Amazon network ACLs.
 To audit a single network ACL, use the `aws_network_acl` (singular) resource.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -189,7 +189,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -211,6 +213,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeNetworkAclsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeNetworkAclsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon ElastiCache](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

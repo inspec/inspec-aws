@@ -16,9 +16,9 @@ The `AWS::EC2::NetworkInsightsAnalysis` resource specifies a network insights an
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS EC2 Network Insights Analysis](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightsanalysis.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -121,7 +121,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -145,4 +145,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeNetworkInsightsAnalysesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeNetworkInsightsAnalysesResult" %}}

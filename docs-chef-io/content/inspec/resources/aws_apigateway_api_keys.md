@@ -16,9 +16,9 @@ The `AWS::ApiGateway::ApiKey` resource creates a unique key that you can distrib
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS API Gateway API Key.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -106,9 +106,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-The controls will pass if the `get` method returns at least one result.
+This resource has the following special matchers.
 
 ### exist
 
@@ -130,4 +130,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:ApiKeys" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client:ApiKeys" %}}

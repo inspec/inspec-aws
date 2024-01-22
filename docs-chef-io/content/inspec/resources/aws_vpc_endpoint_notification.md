@@ -14,9 +14,9 @@ Use the `aws_vpc_endpoint_connection_notification` Inspec audit resource to test
 
 For additional information, including details on parameters and properties, see the [AWS VPC endpoint connection notification documentation](https://docs.AWS.amazon.com/AWSCloudFormation/latest/UserGuide/AWS-resource-ec2-vpcendpointconnectionnotification.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -118,6 +118,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeVpcEndpointConnectionNotificationsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeVpcEndpointConnectionNotificationsResult" %}}
 
 You can find the detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.AWS.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

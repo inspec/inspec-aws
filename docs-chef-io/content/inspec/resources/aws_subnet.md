@@ -14,9 +14,9 @@ Use the `aws_subnet` InSpec audit resource to test properties of a vpc subnet.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -88,7 +88,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 #### assigning_ipv_6_address_on_creation
 
@@ -142,6 +144,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeSubnetsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeSubnetsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

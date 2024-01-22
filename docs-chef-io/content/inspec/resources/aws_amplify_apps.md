@@ -14,9 +14,9 @@ Use the `aws_amplify_apps` InSpec audit resource to test the properties of Multi
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Amplify App](https://docs.aws.amazon.com/amplify/latest/APIReference/API_App.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -125,7 +125,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `List` method returns at least one result.
 
@@ -159,4 +159,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Amplify:Client:ListAppsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="Amplify:Client:ListAppsResult" %}}

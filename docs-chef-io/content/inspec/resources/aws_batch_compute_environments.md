@@ -14,9 +14,9 @@ Use the `aws_batch_compute_environments` InSpec audit resource to test propertie
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Batch compute environment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -115,4 +115,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Batch:Client:DescribeComputeEnvironmentsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Batch:Client:DescribeComputeEnvironmentsResponse" %}}

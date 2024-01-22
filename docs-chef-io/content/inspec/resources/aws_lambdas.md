@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_lambdas` resource to test the collection of lambdas deployed into an account.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -64,11 +64,11 @@ end
 
 ## Matchers
 
-This InSpec audit resource uses the standard matchers.  For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource uses the standard matchers.  For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Lambda:Client:ListFunctionsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Lambda:Client:ListFunctionsResponse" %}}
 
 You can find detailed documentation at [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-api-permissions-ref.html)

@@ -14,9 +14,9 @@ Use the `aws_eks_clusters` resource to test the configuration of a collection of
 
 For additional information, including details on parameters and properties, see the [AWS documentation on EKS Clusters](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -114,7 +114,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -137,7 +139,7 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EKS:Client:DescribeClusterResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="EKS:Client:DescribeClusterResponse" %}}
 
 You can find detailed documentation at [Amazon EKS IAM Policies, Roles, and Permissions](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html)
 The documentation for EKS actions is at [Policy Structure](https://docs.aws.amazon.com/eks/latest/userguide/iam-policy-structure.html#UsingWithEKS_Actions)

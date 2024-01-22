@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_nat_gateways` InSpec audit resource to test the properties of all AWS NAT gateways owned by the AWS account.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -82,12 +82,11 @@ aws_nat_gateways.ids.each do |id|
 end
 ```
 
-For more examples, please check the [integration tests](../../test/integration/verify/controls/aws_nat_gateways.rb).
-
+For more examples, see the [integration tests](https://github.com/inspec/inspec-aws/blob/main/test/integration/verify/controls/aws_nat_gateways.rb).
 
 ## Matchers
 
-{{% inspec_matchers_link %}} 
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}} 
 
 ### exist
 
@@ -112,6 +111,6 @@ Please see [here](https://github.com/inspec/inspec/blob/master/docs/dev/filterta
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeNatGatewaysResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeNatGatewaysResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

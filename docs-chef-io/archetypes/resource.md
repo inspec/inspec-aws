@@ -16,9 +16,9 @@ Use the `{{ .Name }}` Chef InSpec audit resource to test the configuration of...
 
 For additional information, including details on parameters and properties, see the [AWS documentation on the `AWS::RESOURCE::NAME` resource]().
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -46,7 +46,7 @@ end
 
 ## Examples
 
-**EXAMPLE DESCRIPTION**
+Example description.
 
 ```ruby
 describe {{ .Name }} do
@@ -54,7 +54,7 @@ describe {{ .Name }} do
 end
 ```
 
-**EXAMPLE DESCRIPTION**
+Example description.
 
 ```ruby
 describe {{ .Name }} do
@@ -64,7 +64,19 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
+
+### <MATCHER_NAME>
+
+Matcher description.
+
+```ruby
+describe {{ .Name }} do
+  # matcher example
+end
+```
 
 ## AWS Permissions
 

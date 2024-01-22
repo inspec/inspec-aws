@@ -14,9 +14,9 @@ Use the `aws_cloudfront_distributions` InSpec audit resource to test the propert
 
 For additional information, including details on parameters and properties, see the [AWS API reference for CloudFront distributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_distribution.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -93,9 +93,9 @@ end
 
 ## Matchers
 
-This InSpec audit resource has no special matchers.
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-{{% inspec_matchers_link %}}
+This resource has the following special matchers.
 
 ### exist
 
@@ -111,6 +111,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudFront:Client:ListDistributionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudFront:Client:ListDistributionsResult" %}}
 
 You can find detailed documentation at [Identity and Access Management (IAM) in CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/auth-and-access-control.html).

@@ -14,9 +14,9 @@ Use the `aws_elbs` InSpec audit resource to test the configuration of a collecti
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -85,7 +85,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -107,6 +107,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElasticLoadBalancing:Client:DescribeAccessPointsOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="ElasticLoadBalancing:Client:DescribeAccessPointsOutput" %}}
 
 You can find detailed documentation at [Authentication and Access Control for Your Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-authentication-access-control.html)

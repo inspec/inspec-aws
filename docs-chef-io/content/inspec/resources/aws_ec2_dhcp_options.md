@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ec2_dhcp_options` InSpec audit resource to test properties of multiple AWS DHCP options sets.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -59,6 +59,6 @@ This resource does not have any examples.
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeDhcpOptionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeDhcpOptionsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

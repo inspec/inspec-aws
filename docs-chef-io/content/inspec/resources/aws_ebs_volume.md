@@ -14,9 +14,9 @@ Use the `aws_ebs_volume` InSpec audit resource to test the properties of a singl
 
 For additional information, including details on parameters and properties, see the [AWS documentation on EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -102,7 +102,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -132,6 +134,6 @@ it { should be_encrypted }
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeVolumesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeVolumesResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

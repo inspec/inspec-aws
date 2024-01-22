@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_ec2_traffic_mirror_sessions` InSpec audit resource to test properties of all AWS Traffic Mirror sessions.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -106,7 +106,9 @@ For additional information, see [the API reference documentation](https://docs.a
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### be_available
 
@@ -124,4 +126,4 @@ Use `should_not` to test a Traffic mirror session that should not exist.
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeTrafficMirrorSessionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeTrafficMirrorSessionsResult" %}}

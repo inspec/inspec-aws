@@ -14,9 +14,9 @@ Use the `aws_waf_size_constraint_set` Chef InSpec audit resource to test the pro
 
 For additional information, including details on parameters and properties, see the [AWS documentation on `AWS::WAF::SizeConstraintSet` resource type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-sizeconstraintset.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -98,9 +98,9 @@ end
 
 This Chef InSpec audit resource has the following special matchers.
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-The controls will pass if the `get` method returns at least one result.
+This resource has the following special matchers.
 
 ### exist
 
@@ -132,4 +132,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="WAF:Client:GetSizeConstraintSetResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="WAF:Client:GetSizeConstraintSetResponse" %}}

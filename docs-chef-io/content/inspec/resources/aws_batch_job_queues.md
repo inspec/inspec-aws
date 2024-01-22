@@ -14,9 +14,9 @@ Use the `aws_batch_job_queues` InSpec audit resource to test the properties of m
 
 For additional information, including details on parameters and properties, see the [AWS Batch job queues documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -75,7 +75,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -109,4 +109,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Batch:Client:DescribeJobQueuesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Batch:Client:DescribeJobQueuesResponse" %}}

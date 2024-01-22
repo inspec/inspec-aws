@@ -16,9 +16,9 @@ This resource does not require any parameters.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM virtual MFA Devices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-virtualmfadevice.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -130,4 +130,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:ListVirtualMFADevicesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:ListVirtualMFADevicesResponse" %}}
