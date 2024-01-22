@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.61 -->
+<!-- latest_release 1.83.62 -->
+## [v1.83.62](https://github.com/inspec/inspec-aws/tree/v1.83.62) (2024-01-22)
+
+#### Merged Pull Requests
+- Reorganize reusable text files [#985](https://github.com/inspec/inspec-aws/pull/985) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.83.61](https://github.com/inspec/inspec-aws/tree/v1.83.61) (2023-11-13)
 
 #### Merged Pull Requests
 - CHEF-8423 : load ActiveSupport core_ext methods [#980](https://github.com/inspec/inspec-aws/pull/980) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.83.60](https://github.com/inspec/inspec-aws/tree/v1.83.60) (2023-03-30)
 
