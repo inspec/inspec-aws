@@ -13,11 +13,17 @@ class AWSLambdaEventInvokeConfig < AwsResourceBase
   def initialize(opts = {})
     opts = { function_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(function_name))
-    raise ArgumentError, "#{@__resource_name__}: function_name must be provided" unless opts[:function_name] && !opts[:function_name].empty?
+    validate_parameters(required: %i[function_name])
+    unless opts[:function_name] && !opts[:function_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: function_name must be provided"
+    end
     @display_name = opts[:function_name]
     catch_aws_errors do
-      resp = @aws.lambda_client.get_function_event_invoke_config({ function_name: opts[:function_name] })
+      resp =
+        @aws.lambda_client.get_function_event_invoke_config(
+          { function_name: opts[:function_name] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end

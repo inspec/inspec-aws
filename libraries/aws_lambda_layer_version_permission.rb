@@ -13,12 +13,23 @@ class AWSLambdaLayerVersionPermission < AwsResourceBase
   def initialize(opts = {})
     opts = { layer_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(layer_name version_number))
-    raise ArgumentError, "#{@__resource_name__}: layer_name must be provided" unless opts[:layer_name] && !opts[:layer_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: version_number must be provided" unless opts[:version_number]
+    validate_parameters(required: %i[layer_name version_number])
+    unless opts[:layer_name] && !opts[:layer_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: layer_name must be provided"
+    end
+    unless opts[:version_number]
+      raise ArgumentError,
+            "#{@__resource_name__}: version_number must be provided"
+    end
     @display_name = opts[:layer_name]
     catch_aws_errors do
-      resp = @aws.lambda_client.get_layer_version_policy({ layer_name: opts[:layer_name], version_number: opts[:version_number] })
+      resp =
+        @aws.lambda_client.get_layer_version_policy(
+          {
+            layer_name: opts[:layer_name],
+            version_number: opts[:version_number]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end

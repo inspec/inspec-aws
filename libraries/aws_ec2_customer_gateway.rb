@@ -13,10 +13,16 @@ class AWSEC2CustomerGateway < AwsResourceBase
     opts = { customer_gateway_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:customer_gateway_id])
-    raise ArgumentError, "#{@__resource_name__}: customer_gateway_id must be provided" unless opts[:customer_gateway_id] && !opts[:customer_gateway_id].empty?
+    unless opts[:customer_gateway_id] && !opts[:customer_gateway_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: customer_gateway_id must be provided"
+    end
     @display_name = opts[:customer_gateway_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_customer_gateways({ customer_gateway_ids: [opts[:customer_gateway_id]] })
+      resp =
+        @aws.compute_client.describe_customer_gateways(
+          { customer_gateway_ids: [opts[:customer_gateway_id]] }
+        )
       @resp = resp.customer_gateways[0].to_h
       create_resource_methods(@resp)
     end

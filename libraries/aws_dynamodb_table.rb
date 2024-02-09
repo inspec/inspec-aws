@@ -21,7 +21,7 @@ class AwsDynamoDbTable < AwsResourceBase
     catch_aws_errors do
       begin
         resp = @aws.dynamodb_client.describe_table(table_name: opts[:table_name])
-        return nil if resp[0].nil? || resp[0].empty?
+        return if resp[0].nil? || resp[0].empty?
       rescue Aws::DynamoDB::Errors::ResourceNotFoundException
         return
       end

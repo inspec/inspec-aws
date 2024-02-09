@@ -12,11 +12,17 @@ class AWSStepFunctionsActivity < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(activity_arn))
-    raise ArgumentError, "#{@__resource_name__}: activity_arn must be provided" unless opts[:activity_arn] && !opts[:activity_arn].empty?
+    validate_parameters(required: %i[activity_arn])
+    unless opts[:activity_arn] && !opts[:activity_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: activity_arn must be provided"
+    end
     @display_name = opts[:activity_arn]
     catch_aws_errors do
-      resp = @aws.states_client.describe_activity({ activity_arn: opts[:activity_arn] })
+      resp =
+        @aws.states_client.describe_activity(
+          { activity_arn: opts[:activity_arn] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end

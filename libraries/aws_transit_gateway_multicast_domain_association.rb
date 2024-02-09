@@ -17,11 +17,22 @@ class AWSTransitGatewayMulticastDomainAssociation < AwsResourceBase
   def initialize(opts = {})
     super(opts)
     validate_parameters(required: [:transit_gateway_multicast_domain_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided" unless opts[:transit_gateway_multicast_domain_id] && !opts[:transit_gateway_multicast_domain_id].empty?
+    unless opts[:transit_gateway_multicast_domain_id] &&
+             !opts[:transit_gateway_multicast_domain_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: transit_gateway_multicast_domain_id must be provided"
+    end
     @display_name = opts[:transit_gateway_multicast_domain_id]
     catch_aws_errors do
-      resp = @aws.compute_client.get_transit_gateway_multicast_domain_associations({ transit_gateway_multicast_domain_id: opts[:transit_gateway_multicast_domain_id] })
-      @multicast_domain_associations = resp.multicast_domain_associations[0].to_h
+      resp =
+        @aws.compute_client.get_transit_gateway_multicast_domain_associations(
+          {
+            transit_gateway_multicast_domain_id:
+              opts[:transit_gateway_multicast_domain_id]
+          }
+        )
+      @multicast_domain_associations =
+        resp.multicast_domain_associations[0].to_h
       create_resource_methods(@multicast_domain_associations)
     end
   end
@@ -32,11 +43,16 @@ class AWSTransitGatewayMulticastDomainAssociation < AwsResourceBase
   end
 
   def exists?
-    !@multicast_domain_associations.nil? && !@multicast_domain_associations.empty?
+    !@multicast_domain_associations.nil? &&
+      !@multicast_domain_associations.empty?
   end
 
   def resource_id
-    @multicast_domain_associations ? @multicast_domain_associations[:transit_gateway_multicast_domain_id] : @display_name
+    if @multicast_domain_associations
+      @multicast_domain_associations[:transit_gateway_multicast_domain_id]
+    else
+      @display_name
+    end
   end
 
   def to_s

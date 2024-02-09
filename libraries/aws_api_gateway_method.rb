@@ -10,15 +10,32 @@ class AWSApiGatewayMethod < AwsResourceBase
   EXAMPLE
 
   def initialize(opts = {})
-    opts = { rest_api_id: opts, resource_id: opts, http_method: opts } if opts.is_a?(String)
+    opts = {
+      rest_api_id: opts,
+      resource_id: opts,
+      http_method: opts
+    } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(rest_api_id resource_id http_method))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: resource_id must be provided" unless opts[:resource_id] && !opts[:resource_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: http_method must be provided" unless opts[:http_method] && !opts[:http_method].empty?
+    validate_parameters(required: %i[rest_api_id resource_id http_method])
+    unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided"
+    end
+    unless opts[:resource_id] && !opts[:resource_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: resource_id must be provided"
+    end
+    unless opts[:http_method] && !opts[:http_method].empty?
+      raise ArgumentError, "#{@__resource_name__}: http_method must be provided"
+    end
     @rest_api_id = opts[:rest_api_id]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_method({ rest_api_id: opts[:rest_api_id], resource_id: opts[:resource_id], http_method: opts[:http_method] })
+      resp =
+        @aws.apigateway_client.get_method(
+          {
+            rest_api_id: opts[:rest_api_id],
+            resource_id: opts[:resource_id],
+            http_method: opts[:http_method]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end

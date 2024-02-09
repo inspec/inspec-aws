@@ -19,7 +19,7 @@ class AwsAutoScalingGroup < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.service_client.describe_auto_scaling_groups(auto_scaling_group_names: [opts[:auto_scaling_group_name]])
-      return nil if resp.auto_scaling_groups.nil? || resp.auto_scaling_groups.empty?
+      return if resp.auto_scaling_groups.nil? || resp.auto_scaling_groups.empty?
       auto_scaling_group = resp.auto_scaling_groups[0]
       @name                      = auto_scaling_group[:auto_scaling_group_name]
       @min_size                  = auto_scaling_group[:min_size].to_i

@@ -11,12 +11,23 @@ class AWSApiGatewayResponse < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rest_api_id response_type))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: response_type must be provided" unless opts[:response_type] && !opts[:response_type].empty?
+    validate_parameters(required: %i[rest_api_id response_type])
+    unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided"
+    end
+    unless opts[:response_type] && !opts[:response_type].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: response_type must be provided"
+    end
     @display_name = opts[:response_type]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_gateway_response({ rest_api_id: opts[:rest_api_id], response_type: opts[:response_type] })
+      resp =
+        @aws.apigateway_client.get_gateway_response(
+          {
+            rest_api_id: opts[:rest_api_id],
+            response_type: opts[:response_type]
+          }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end

@@ -16,27 +16,32 @@ class AwsInternetGateway < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(require_any_of: %i(id name))
+    validate_parameters(require_any_of: %i[id name])
 
     # Either id or name should be provided.
     if opts.key?(:id) && !opts.key?(:name)
       id = opts[:id]
-      format_error = "#{@__resource_name__}: `id` must be a string in the format of "\
-      "'igw-' followed by 8 or 17 hexadecimal characters."
+      format_error =
+        "#{@__resource_name__}: `id` must be a string in the format of " \
+          "'igw-' followed by 8 or 17 hexadecimal characters."
       pattern = /^igw-[0-9a-f]{8,17}$/
-      raise ArgumentError, format_error unless id.match?(pattern) || id.length.between?(12, 21)
+      unless id.match?(pattern) || id.length.between?(12, 21)
+        raise ArgumentError, format_error
+      end
       query_params = { internet_gateway_ids: [id] }
     elsif opts.key?(:name) && !opts.key?(:id)
       name = opts[:name]
-      tag_error = "#{@__resource_name__}: `name` should be maximum 255 characters long and contain "\
-        "letters, numbers, spaces and the following characters only: + - = . _ : / @"
-      raise ArgumentError, tag_error unless name.match?(%r{^[\w+\- =._:/@]{1,256}$}) && name.length.between?(1, 255)
-      query_params = { filters: [
-        name: "tag:Name",
-        values: [name],
-      ] }
+      tag_error =
+        "#{@__resource_name__}: `name` should be maximum 255 characters long and contain " \
+          "letters, numbers, spaces and the following characters only: + - = . _ : / @"
+      unless name.match?(%r{^[\w+\- =._:/@]{1,256}$}) &&
+               name.length.between?(1, 255)
+        raise ArgumentError, tag_error
+      end
+      query_params = { filters: [name: "tag:Name", values: [name]] }
     else
-      raise ArgumentError, "#{@__resource_name__}: either `id` or `name` must be provided."
+      raise ArgumentError,
+            "#{@__resource_name__}: either `id` or `name` must be provided."
     end
     @display_name = opts.values.join(" ")
 
@@ -52,9 +57,11 @@ class AwsInternetGateway < AwsResourceBase
       end
       # Fail resource, redirect users to plural resource if there are multiple resources with the same name tag.
       if gateways.length > 1
-        fail_resource("#{@__resource_name__}: Multiple internet gateways were returned for the provided parameter:"\
-                      " `#{@display_name}`. If you wish to test multiple internet gateways, "\
-                      "please use the aws_internet_gateways resource.")
+        fail_resource(
+          "#{@__resource_name__}: Multiple internet gateways were returned for the provided parameter:" \
+            " `#{@display_name}`. If you wish to test multiple internet gateways, " \
+            "please use the aws_internet_gateways resource."
+        )
         @failed_resource = true
         return
       end

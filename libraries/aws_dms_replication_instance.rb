@@ -13,14 +13,16 @@ class AWSDMSReplicationInstance < AwsResourceBase
     super(opts)
     validate_parameters
     catch_aws_errors do
-      resp = @aws.dmsmigrationservice_client.describe_orderable_replication_instances
-      @orderable_replication_instances = resp.orderable_replication_instances[0].to_h
+      resp =
+        @aws.dmsmigrationservice_client.describe_orderable_replication_instances
+      @orderable_replication_instances =
+        resp.orderable_replication_instances[0].to_h
       create_resource_methods(@orderable_replication_instances)
     end
   end
 
   def resource_id
-    "#{@orderable_replication_instances? @orderable_replication_instances[:replication_instance_class]: ""}_#{@orderable_replication_instances? @orderable_replication_instances[:engine_version]: ""}"
+    "#{@orderable_replication_instances ? @orderable_replication_instances[:replication_instance_class] : ""}_#{@orderable_replication_instances ? @orderable_replication_instances[:engine_version] : ""}"
   end
 
   def replication_instance_class
@@ -29,6 +31,7 @@ class AWSDMSReplicationInstance < AwsResourceBase
   end
 
   def exists?
-    !@orderable_replication_instances.nil? && !@orderable_replication_instances.empty?
+    !@orderable_replication_instances.nil? &&
+      !@orderable_replication_instances.empty?
   end
 end

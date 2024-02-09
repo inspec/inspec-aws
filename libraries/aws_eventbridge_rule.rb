@@ -14,7 +14,9 @@ class AWSEventBridgeRule < AwsResourceBase
     opts = { name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:name])
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    unless opts[:name] && !opts[:name].empty?
+      raise ArgumentError, "#{@__resource_name__}: name must be provided"
+    end
     @display_name = opts[:name]
     catch_aws_errors do
       resp = @aws.eventbridge_client.describe_rule({ name: opts[:name] })

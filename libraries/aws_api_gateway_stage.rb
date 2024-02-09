@@ -11,12 +11,19 @@ class AWSApiGatewayStage < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rest_api_id stage_name))
-    raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided" unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: stage_name must be provided" unless opts[:stage_name] && !opts[:stage_name].empty?
+    validate_parameters(required: %i[rest_api_id stage_name])
+    unless opts[:rest_api_id] && !opts[:rest_api_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: rest_api_id must be provided"
+    end
+    unless opts[:stage_name] && !opts[:stage_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: stage_name must be provided"
+    end
     @display_name = opts[:stage_name]
     catch_aws_errors do
-      resp = @aws.apigateway_client.get_stage({ rest_api_id: opts[:rest_api_id], stage_name: opts[:stage_name] })
+      resp =
+        @aws.apigateway_client.get_stage(
+          { rest_api_id: opts[:rest_api_id], stage_name: opts[:stage_name] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -28,7 +35,7 @@ class AWSApiGatewayStage < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:stage_name] : @display_name
+    @res ? @res[:stage_name] : @display_name
   end
 
   def exists?

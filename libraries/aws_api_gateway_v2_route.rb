@@ -12,12 +12,19 @@ class AwsApiGatewayV2Route < AwsResourceBase
   def initialize(opts = {})
     opts = { api_id: opts, route_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id route_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: route_id must be provided!" if opts[:route_id].blank?
+    validate_parameters(required: %i[api_id route_id])
+    if opts[:api_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: api_id must be provided!"
+    end
+    if opts[:route_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: route_id must be provided!"
+    end
     @display_name = opts[:route_id]
     catch_aws_errors do
-      resp = @aws.apigatewayv2_client.get_route({ api_id: opts[:api_id], route_id: opts[:route_id] })
+      resp =
+        @aws.apigatewayv2_client.get_route(
+          { api_id: opts[:api_id], route_id: opts[:route_id] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -33,7 +40,7 @@ class AwsApiGatewayV2Route < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:route_id]: @display_name
+    @res ? @res[:route_id] : @display_name
   end
 
   def to_s
