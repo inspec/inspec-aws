@@ -48,9 +48,9 @@ This must be passed as a key-value entry in a hash. For example, `resource_data:
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -327,6 +327,6 @@ it { should_not exist }
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeSecurityGroupsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeSecurityGroupsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html).

@@ -14,9 +14,9 @@ Use the `aws_iam_group` InSpec audit resource to test properties of a single IAM
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -91,6 +91,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:GetGroupResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:GetGroupResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

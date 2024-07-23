@@ -14,9 +14,9 @@ Use the `aws_api_gateway_v2_deployments` InSpec audit resource to test propertie
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGatewayV2 Deployment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-deployment.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -110,7 +110,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The control passes if the `get` method returns at least one result.
 
@@ -136,4 +136,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGatewayv2:Client:GetDeploymentsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGatewayv2:Client:GetDeploymentsResponse" %}}

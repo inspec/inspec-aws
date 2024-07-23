@@ -14,6 +14,10 @@ Use the `aws_api_gateway_resources` Chef InSpec audit resource to test the prope
 
 For additional information, including parameters and properties, see the [AWS documentation on AWS APIGateway Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-resource.html).
 
+## Install
+
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
+
 ## Syntax
 
 Ensure that the resource exists.
@@ -109,4 +113,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="APIGateway:Client:Resources" %}}
+{{% inspec-aws/aws_permissions_principal action="APIGateway:Client:Resources" %}}

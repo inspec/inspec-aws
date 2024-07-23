@@ -14,9 +14,9 @@ Use the `aws_cloudfront_cache_policy` InSpec audit resource to test properties o
 
 The `AWS::CloudFront::CachePolicy` resource describes the CloudFront cache policy.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -112,9 +112,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-The controls will pass if the `get` method returns at least one result.
+This resource has the following special matchers.
 
 ### exist
 
@@ -146,4 +146,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudFront:Client:GetCachePolicyResult" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudFront:Client:GetCachePolicyResult" %}}

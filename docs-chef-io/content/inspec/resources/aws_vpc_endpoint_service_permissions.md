@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_vpc_endpoint_service_permissions` InSpec audit resource to test the properties of all Amazon VPC endpoint service permissions. To audit a single AWS VPC Endpoint service, use the `aws_vpc_endpoint_service_permission` (singular) resource.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -77,7 +77,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -99,6 +101,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeVpcEndpointServicePermissionsResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeVpcEndpointServicePermissionsResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon VPC endpoint service permissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServicePermissions.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

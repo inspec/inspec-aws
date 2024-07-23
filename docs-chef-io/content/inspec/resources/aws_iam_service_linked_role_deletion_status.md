@@ -18,9 +18,9 @@ The deletion task identifier.
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Service linked role deletion status](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-servicelinkedrole.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -57,7 +57,7 @@ end
 
 This InSpec audit resource has the following special matchers. For a complete list of available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
 
-The controls will pass if the `get` method returns at least one result.
+
 
 ### exist
 
@@ -89,4 +89,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:GetServiceLinkedRoleDeletionStatusResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:GetServiceLinkedRoleDeletionStatusResponse" %}}

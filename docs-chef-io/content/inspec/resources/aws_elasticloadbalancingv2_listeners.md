@@ -14,9 +14,9 @@ Use the `aws_elasticloadbalancingv2_listeners` InSpec audit resource to test the
 
 For additional information, including details on parameters and properties, see the [AWS documentation on ElasticLoadBalancingV2 Listener](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -72,7 +72,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -88,6 +88,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeListenersOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="ElasticLoadBalancingV2:Client:DescribeListenersOutput" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).

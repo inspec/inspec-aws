@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_iam_managed_policy` InSpec audit resource to test the properties of an AWS IAM managed policy.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -75,7 +75,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -99,6 +99,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="iam:ListPolicies" %}}
+{{% inspec-aws/aws_permissions_principal action="iam:ListPolicies" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

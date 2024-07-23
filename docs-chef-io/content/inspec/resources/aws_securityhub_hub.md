@@ -14,9 +14,9 @@ Use the `aws_securityhub_hub` InSpec audit resource to test properties of a sing
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Security Hub](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_DescribeHub.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -65,7 +65,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -99,4 +99,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SecurityHub:Client:DescribeHubResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="SecurityHub:Client:DescribeHubResponse" %}}

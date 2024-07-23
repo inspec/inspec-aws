@@ -16,9 +16,9 @@ A Redshift cluster parameter group is uniquely identified by the parameter group
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Redshift cluster parameter group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-clusterparametergroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -68,7 +68,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `describe` method returns at least one result.
 
@@ -110,6 +110,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Redshift:Client:ClusterParameterGroupsMessage" %}}
+{{% inspec-aws/aws_permissions_principal action="Redshift:Client:ClusterParameterGroupsMessage" %}}
 
 See the [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) documentation for additional information.

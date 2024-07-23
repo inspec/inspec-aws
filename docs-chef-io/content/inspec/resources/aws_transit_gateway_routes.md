@@ -13,9 +13,9 @@ parent = "inspec/resources/aws"
 Use the `aws_transit_gateway_routes` InSpec audit resource to test the properties of all Route for a AWS transit gateway route table.
 To audit a single gateway route, use the `aws_transit_gateway_route` (singular) resource.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -210,6 +210,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeTransitGatewayRouteTablesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeTransitGatewayRouteTablesResult" %}}
 
 Get the detailed document at [Actions, Resources, and Condition Keys for transit gateway route](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

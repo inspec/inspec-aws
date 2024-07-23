@@ -14,9 +14,9 @@ Use the `aws_launch_configuration` InSpec audit resource to test properties of a
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Launch Configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -121,7 +121,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -143,5 +145,5 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="AutoScaling:Client:LaunchConfigurationsType" %}}
+{{% inspec-aws/aws_permissions_principal action="AutoScaling:Client:LaunchConfigurationsType" %}}
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon Auto Scaling Groups and launch configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/control-access-using-iam.html).

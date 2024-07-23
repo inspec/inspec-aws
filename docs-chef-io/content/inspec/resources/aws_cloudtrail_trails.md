@@ -14,9 +14,9 @@ Use the `aws_cloudtrail_trails` InSpec audit resource to test properties of a co
 
 For additional information, including details on parameters and properties, see the [AWS documentation on Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -63,7 +63,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -85,6 +87,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="CloudTrail:Client:DescribeTrailsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="CloudTrail:Client:DescribeTrailsResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for AWS CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awscloudtrail.html).

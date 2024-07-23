@@ -14,9 +14,9 @@ Use the `aws_sqs_queue` InSpec audit resource to test properties of a single AWS
 
 For additional information, including details on parameters and properties, see the [AWS documentation on SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -121,7 +121,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -181,5 +183,5 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="SQS:Client:GetQueueAttributesResult" %}}
+{{% inspec-aws/aws_permissions_principal action="SQS:Client:GetQueueAttributesResult" %}}
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-using-identity-based-policies.html).

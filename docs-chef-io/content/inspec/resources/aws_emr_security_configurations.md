@@ -14,9 +14,9 @@ Use the `aws_emr_security_configurations` resource to test the properties of col
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS EMR security configuration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-securityconfiguration.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -67,7 +67,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://docs.chef.io/inspec/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://docs.chef.io/inspec/matchers/).
 
 ### exist
 
@@ -89,4 +89,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EMR:Client:DescribeSecurityConfigurationOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="EMR:Client:DescribeSecurityConfigurationOutput" %}}

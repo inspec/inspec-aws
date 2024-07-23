@@ -16,9 +16,9 @@ The `AWS::Lambda::Alias` resource creates an alias for a Lambda function version
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Lambda alias](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -88,7 +88,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -122,4 +122,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Lambda:Client:ListAliasesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Lambda:Client:ListAliasesResponse" %}}

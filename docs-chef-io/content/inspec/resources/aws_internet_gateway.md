@@ -12,9 +12,9 @@ parent = "inspec/resources/aws"
 
 Use the `aws_internet_gateway` InSpec audit resource to test the properties of a single AWS internet gateway.
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -102,7 +102,7 @@ end
 
 ## Matchers
 
-This InSpec audit resource has the following special matcher. For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+This InSpec audit resource has the following special matcher. For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 
 ### exist
@@ -115,6 +115,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="EC2:Client:DescribeInternetGatewaysResult" %}}
+{{% inspec-aws/aws_permissions_principal action="EC2:Client:DescribeInternetGatewaysResult" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html), and [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

@@ -14,9 +14,9 @@ Use the `aws_iam_policies` InSpec audit resource to test properties of a collect
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -90,7 +90,7 @@ end
 
 ## Matchers
 
-For a full list of available matchers, please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
+For a full list of available matchers, visit the [InSpec matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -112,6 +112,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="IAM:Client:ListPoliciesResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="IAM:Client:ListPoliciesResponse" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Identity And Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_identityandaccessmanagement.html).

@@ -16,9 +16,9 @@ The `AWS::Lambda::LayerVersionPermission` resource adds permissions to the resou
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Lambda layer version permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-layerversionpermission.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -68,9 +68,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
-The controls will pass if the `get` method returns at least one result.
+This resource has the following special matchers.
 
 ### exist
 
@@ -102,4 +102,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Lambda:Client:GetLayerVersionPolicyResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Lambda:Client:GetLayerVersionPolicyResponse" %}}

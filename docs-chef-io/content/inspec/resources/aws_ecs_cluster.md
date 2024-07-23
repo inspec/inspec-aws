@@ -14,9 +14,9 @@ Use the `aws_ecs_cluster` InSpec audit resource to test properties of a single A
 
 For additional information, including details on parameters and properties, see the [AWS documentation on ECS Clusters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_clusters.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -84,7 +84,9 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 
@@ -106,5 +108,5 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="ECS:Client:DescribeClustersResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="ECS:Client:DescribeClustersResponse" %}}
 

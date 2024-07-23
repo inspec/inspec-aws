@@ -14,9 +14,9 @@ Use the `aws_iam_policy` InSpec audit resource to test properties of a single ma
 
 For additional information, including details on parameters and properties, see the [AWS documentation on IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -119,7 +119,9 @@ it { should_not have_statement(NotAction: 'iam:*') }
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+
+This resource has the following special matchers.
 
 ### exist
 

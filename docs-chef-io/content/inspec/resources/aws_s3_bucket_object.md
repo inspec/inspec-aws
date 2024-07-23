@@ -16,9 +16,9 @@ Each S3 Object has a 'key' which can be thought of as the name of the S3 Object 
 
 For additional information, including details on parameters and properties, see the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 

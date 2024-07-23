@@ -14,9 +14,9 @@ Use the `aws_s3_buckets` InSpec audit resource to list all buckets in a single a
 
 For additional information, including details on parameters and properties, see the [AWS documentation on S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -80,6 +80,6 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="S3:Client:ListBucketsOutput" %}}
+{{% inspec-aws/aws_permissions_principal action="S3:Client:ListBucketsOutput" %}}
 
 You can find detailed documentation at [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazons3.html).

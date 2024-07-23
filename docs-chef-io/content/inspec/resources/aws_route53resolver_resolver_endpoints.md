@@ -16,9 +16,9 @@ There are two types of Resolver endpoints, inbound and outbound. An inbound Reso
 
 For additional information, including details on parameters and properties, see the [AWS documentation on AWS Route53Resolver Resolver Endpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverendpoint.html).
 
-## Installation
+## Install
 
-{{% inspec_aws_install %}}
+{{< readfile file="content/inspec/resources/reusable/md/inspec_aws_install.md" >}}
 
 ## Syntax
 
@@ -92,7 +92,7 @@ end
 
 ## Matchers
 
-{{% inspec_matchers_link %}}
+{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
 
 The controls will pass if the `list` method returns at least one result.
 
@@ -126,4 +126,4 @@ end
 
 ## AWS Permissions
 
-{{% aws_permissions_principal action="Route53Resolver:Client:ListResolverEndpointsResponse" %}}
+{{% inspec-aws/aws_permissions_principal action="Route53Resolver:Client:ListResolverEndpointsResponse" %}}
