@@ -20,7 +20,7 @@ For additional information, including details on parameters and properties, see 
 
 Ensure that a VPC Endpoint exists.
 
-    # Find a VPC Endpoint by ID
+Find a VPC Endpoint by ID:
 
 ```ruby
 describe aws_vpc_endpoint('vpce-12345678987654321') do
@@ -28,7 +28,7 @@ describe aws_vpc_endpoint('vpce-12345678987654321') do
 end
 ```
 
-    # Hash syntax for ID
+Hash syntax for ID:
 
 ```ruby
 describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
@@ -44,7 +44,7 @@ describe aws_vpc_endpoint('vpce-12345678987654321') do
 end
 ```
 
-    # Alternative using a matcher
+Alternative using a matcher:
 
 ```ruby
 describe aws_vpc_endpoint('vpce-12345678987654321') do
@@ -68,7 +68,7 @@ describe aws_vpc_endpoint('vpce-12345678987654321') do
 end
 ```
 
-    # Alternative using a matcher
+Alternative using a matcher:
 
 ```ruby
 describe aws_vpc_endpoint('vpce-12345678987654321') do

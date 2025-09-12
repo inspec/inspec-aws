@@ -120,7 +120,7 @@ end
 
 This resource has the following special matchers.
 
-#### be_encrypted
+### be_encrypted
 
 The `be_encrypted` matcher tests if the DynamoDB Table is encrypted.
 

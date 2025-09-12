@@ -21,7 +21,7 @@ describe aws_rds_group_option(engine_name: 'mysql') do
 it { should exist }
 end
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_group_options do

@@ -22,7 +22,7 @@ describe aws_redshift_cluster('test-cluster-id') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_redshift_cluster(cluster_identifier: 'test-cluster-id') do

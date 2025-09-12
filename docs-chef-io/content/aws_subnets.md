@@ -22,7 +22,7 @@ For additional information, including details on parameters and properties, see 
 
 An `aws_subnets` resource block uses an optional filter to select a group of subnets and then tests that group.
 
-    # Test all subnets within a single vpc
+Test all subnets within a single vpc:
 
 ```ruby
 describe aws_subnets.where(vpc_id: 'vpc-12345678') do

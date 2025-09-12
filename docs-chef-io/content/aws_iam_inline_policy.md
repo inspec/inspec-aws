@@ -16,7 +16,7 @@ Use the `aws_iam_inline_policy` InSpec audit resource to test properties of a si
 
 An `aws_iam_inline_policy` resource block identifies an inline policy by policy name and user/group/role by name
 
-    # Find an inline policy by name and role name
+Find an inline policy by name and role name:
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
@@ -24,7 +24,7 @@ describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
 end
 ```
 
-    # Find an inline policy by name and group name
+Find an inline policy by name and group name:
 
 ```ruby
 describe aws_iam_inline_policy(group_name: 'group-x', policy_name: 'policy-1') do
@@ -32,7 +32,7 @@ describe aws_iam_inline_policy(group_name: 'group-x', policy_name: 'policy-1') d
 end
 ```
 
-    # Find an inline policy by name and user name
+Find an inline policy by name and user name:
 
 ```ruby
 describe aws_iam_inline_policy(user_name: 'user-a', policy_name: 'policy-1') do
@@ -132,7 +132,7 @@ Please note the following about the behavior of `have_statement`:
 
 Examples:
 
-    # Verify there is no full-admin statement
+Verify there is no full:-admin statement
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
@@ -140,7 +140,7 @@ describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
 end
 ```
 
-    # Symbols and lowercase also allowed as criteria
+Symbols and lowercase also allowed as criteria:
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
@@ -152,7 +152,7 @@ describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
 end
 ```
 
-    # Verify bob is allowed to manage things on S3 buckets that start with bobs-stuff
+Verify bob is allowed to manage things on S3 buckets that start with bobs:-stuff
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
@@ -177,7 +177,7 @@ its('statement_count') { should cmp 1 }
     end
 ```
 
-    # Use regular expressions to examine the policy
+Use regular expressions to examine the policy:
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do

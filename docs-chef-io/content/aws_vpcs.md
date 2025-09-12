@@ -25,7 +25,7 @@ See the [AWS documentation on VPCCidrBlock](https://docs.aws.amazon.com/AWSCloud
 
 An `aws_vpcs` resource block uses an optional filter to select a group of VPCs and then tests that group.
 
-    # Since you always have at least one VPC, this will always pass.
+Since you always have at least one VPC:, this will always pass.
 
 ```ruby
 describe aws_vpcs do

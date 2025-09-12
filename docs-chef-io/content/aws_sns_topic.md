@@ -22,7 +22,7 @@ describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do
 end
 ```
 
-    # You may also use has syntax to pass the ARN
+You may also use has syntax to pass the ARN:
 
 ```ruby
 describe aws_sns_topic(arn: 'arn:aws:sns:*::my-topic-name') do

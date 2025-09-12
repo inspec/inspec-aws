@@ -18,7 +18,7 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-    # Get all SNS Topic arns
+Get all SNS Topic arns:
 
 ```ruby
 describe aws_sns_topics do

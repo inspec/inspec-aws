@@ -67,7 +67,7 @@ end
 
 The control will pass if the resource contains at least one bucket.
 
-    # Test if there are any buckets
+Test if there are any buckets:
 
 ```ruby
 describe aws_s3_buckets

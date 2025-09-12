@@ -18,7 +18,7 @@ For additional information, including details on parameters and properties, see 
 
 Ensure that an AWS VPC endpoint connection notification exists.
 
-    # Find a AWS VPC endpoint connection notification by ID
+Find a AWS VPC endpoint connection notification by ID:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notification('VPCE-NFN-12345678987654321') do
@@ -26,7 +26,7 @@ describe aws_vpc_endpoint_connection_notification('VPCE-NFN-12345678987654321') 
 end
 ```
 
-    # Hash syntax for ID
+Hash syntax for ID:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notification(connection-notification-id: 'VPCE-NFN-12345678987654321') do

@@ -19,7 +19,7 @@ An `aws_ec2_instances` resource block collects a group of EC2 Instances and then
 ```ruby
 describe aws_ec2_instances do
   it { should exist }
-end   
+end
 ```
 
 ## Parameters
@@ -86,11 +86,11 @@ aws_ec2_instances.instance_ids.each do |instance_id|
     it              { should_not have_roles }
     its('key_name') { should cmp 'admin-ssh-key' }
     its('image_id') { should eq 'ami-27a58d5c' }
-  end 
+  end
 end
 ```
 
-Filter EC2 instances with their `Environment` tags<superscript>*</superscript> equal to `Dev`, then test in-depth using `aws_ec2_instance`:
+Filter EC2 instances with their `Environment` tags equal to `Dev`, then test in-depth using `aws_ec2_instance`:
 
 ```ruby
 aws_ec2_instances.where(tags: {"Environment" => "Dev"}).instance_ids.each do |id|
@@ -98,8 +98,9 @@ aws_ec2_instances.where(tags: {"Environment" => "Dev"}).instance_ids.each do |id
     it { should be_stopped }
   end
 end
-<superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/"Environment"=>"Dev"/`    
 ```
+
+The filter doesn't return the EC2 instances with multiple tags. In this case use regex: `/"Environment"=>"Dev"/`
 
 Filter EC2 instances with multiple tags like `Environment` equal to `Dev` and `Component` equal to `API` , then test in-depth using `aws_ec2_instance`:
 
@@ -118,7 +119,7 @@ aws_ec2_instances.where(tags: /"stop-at-10-pm"=>/).instance_ids.each do |id|
   describe aws_ec2_instance(id) do
     it { should be_stopped }
   end
-end   
+end
 ```
 
 Filter EC2 instances with their `name` equal to `Test Box`, then check their role using `aws_ec2_instance`.  :
@@ -128,7 +129,7 @@ aws_ec2_instances.where(name: "Test Box").instance_ids.each do |id|
   describe aws_ec2_instance(id) do
     its('role) { should eq "test-role" }
   end
-end   
+end
 ```
 
 ## Matchers

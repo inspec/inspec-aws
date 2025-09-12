@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_security_group resource"
 parent = "inspec/resources/aws"
 +++
 
-Use the `aws_security_group` InSpec audit resource to test detailed properties of an individual Security Group (SG).
+Use the `aws_security_group` InSpec audit resource to test detailed properties of an individual security group (SG).
 
 SGs are a networking construct which contain ingress and egress rules for network communications. SGs may be attached to EC2 instances, as well as certain other AWS resources. Along with Network Access Control Lists, SGs are one of the two main mechanisms of enforcing network-level security.
 
@@ -21,6 +21,7 @@ While this resource provides facilities for searching inbound and outbound rules
 * References to VPC peers or other AWS services (that is, no support for searches based on 'prefix lists').
 
 This resource requires one of the following parameters:
+
 * `group_id`
 * `group_name`
 * `vpc_id`
@@ -28,12 +29,12 @@ This resource requires one of the following parameters:
 
 ##### group_id _(required if no other parameter provided)_
 
-The Security Group ID which uniquely identifies the SG.
+The security group ID which uniquely identifies the SG.
 This can be passed either as a string or as a `group_id: 'value'` key-value entry in a hash.
 
 ##### group_name _(required if no other parameter provided)_
 
-The Security Group name.
+The security group name.
 This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
 
 ##### vpc_id _(required if no other parameter provided)_
@@ -46,7 +47,7 @@ This can be passed either as a string or as a `vpc_id: 'value'` key-value entry 
 The cached resource data object of a security group.
 This must be passed as a key-value entry in a hash. For example, `resource_data: AWS_SECURITY_GROUP_OBJECT` .
 
-For additional information, including details on parameters and properties, see the [AWS documentation on Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
+For additional information, including details on parameters and properties, see the [AWS documentation on security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 
 ## Syntax
 
@@ -56,7 +57,7 @@ describe aws_security_group('sg-12345678') do
 end
 ```
 
-    # May also use hash syntax
+May also use hash syntax:
 
 ```ruby
 describe aws_security_group(group_id: 'sg-12345678') do
@@ -64,9 +65,9 @@ describe aws_security_group(group_id: 'sg-12345678') do
 end
 ```
 
-    # Ensure you have a Security Group with a specific name. Names are
-    # unique within a VPC but not across VPCs.
-    # Using only Group returns an error if multiple SGs match.
+Ensure you have a security group with a specific name.
+Names are unique within a VPC but not across VPCs.
+Using only group returns an error if multiple security groups match.
 
 ```ruby
 describe aws_security_group(group_name: 'my-group') do
@@ -74,7 +75,7 @@ describe aws_security_group(group_name: 'my-group') do
 end
 ```
 
-    # Add vpc_id to ensure uniqueness.
+Add vpc_id to ensure uniqueness:.
 
 ```ruby
 describe aws_security_group(group_name: 'my-group', vpc_id: 'vpc-12345678') do
@@ -82,7 +83,7 @@ describe aws_security_group(group_name: 'my-group', vpc_id: 'vpc-12345678') do
 end
 ```
 
-    # Using only resource data for a cached AWS security group.
+Using only resource data for a cached AWS security group:.
 
 ```ruby
 describe aws_security_group(resource_data: 'AWS_SECURITY_GROUP_OBJECT') do
@@ -93,6 +94,7 @@ end
 ## Parameters
 
 This resource requires one of the following parameters:
+
 * `group_id`
 * `group_name`
 * `vpc_id`
@@ -100,12 +102,12 @@ This resource requires one of the following parameters:
 
 `group_id` _(required if no other parameter provided)_
 
-: The Security Group ID which uniquely identifies the SG.
+: The security group ID which uniquely identifies the SG.
   This can be passed either as a string or as a `group_id: 'value'` key-value entry in a hash.
 
 `group_name` _(required if no other parameter provided)_
 
-: The Security Group name.
+: The security group name.
   This can be passed either as a string or as a `group_name: 'value'` key-value entry in a hash.
 
 `vpc_id` _(required if no other parameter provided)_
@@ -124,25 +126,25 @@ This resource requires one of the following parameters:
 : A String reflecting the human-meaningful description that was given to the SG at creation time.
 
 `group_id`
-: Provides the Security Group ID.
+: Provides the security group ID.
 
 `group_name`
 : A String reflecting the name that was given to the SG at creation time.
 
 `inbound_rules`
-: A list of the rules that the Security Group applies to incoming network traffic.
+: A list of the rules that the security group applies to incoming network traffic.
 
 `inbound_rules_count`
 : A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules.
 
 `outbound_rules`
-: A list of the rules that the Security Group applies to outgoing network traffic initiated by the AWS resource in the Security Group.
+: A list of the rules that the security group applies to outgoing network traffic initiated by the AWS resource in the security group.
 
 `outbound_rules_count`
 : A Number totalling the number of individual rules defined - It is a sum of the combinations of port, protocol, IPv4 rules, IPv6 rules and security group rules.
 
 `vpc_id`
-: A String in the format `vpc-` followed by 8 hexadecimal characters reflecting VPC that contains the Security Group.
+: A String in the format `vpc-` followed by 8 hexadecimal characters reflecting VPC that contains the security group.
 
 `tags`
 : The tags of the security group.
@@ -174,7 +176,7 @@ describe aws_security_group(group_name: linux_servers) do
 end
 ```
 
-Ensure that the careful_updates Security Group may only initiate contact with specific IPs:
+Ensure that the careful_updates security group may only initiate contact with specific IPs:
 
 ```ruby
 describe aws_security_group(group_name: 'careful_updates') do
@@ -203,7 +205,7 @@ its('outbound_rules.count') { should cmp 3 }
     end
 ```
 
-Ensure that the canary_deployments Security Group only allows access from one specific security group id on port 443:
+Ensure that the canary_deployments security group only allows access from one specific security group id on port 443:
 
 ```ruby
 describe aws_security_group(group_name: 'canary_deployments') do
@@ -223,7 +225,7 @@ This InSpec audit resource has the following special matchers. For a full list o
 
 #### allow_out_only
 
-The `allow` series of matchers enable you to perform queries about what network traffic would be permitted through the Security Group rule set.
+The `allow` series of matchers enable you to perform queries about what network traffic would be permitted through the security group rule set.
 
 `allow_in` and `allow_in_exactly` examine inbound rules, and `allow_out` and `allow_out_exactly` examine outbound rules.
 
@@ -236,13 +238,13 @@ The `allow` series of matchers enable you to perform queries about what network 
 The matchers accept a key-value list of search criteria. For a rule to match, it must match all provided criteria.
 
 * `from_port` - Determines if a rule exists whose port range begins at the specified number. The word `from_` does _not_ relate to inbound/outbound directionality; it relates to the port range ("counting _from_"). `from_port` is an exact criterion; so if the rule allows 1000-2000 and you specify a `from_port` of 1001, it does not match.
-* `ipv4_range` - Specifies an IPv4 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS Security Group rule may have multiple allowed source IP ranges.
-* ipv6_range - Specifies an IPv6 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS Security Group rule may have multiple allowed source IP ranges.
+* `ipv4_range` - Specifies an IPv4 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS security group rule may have multiple allowed source IP ranges.
+* ipv6_range - Specifies an IPv6 address or subnet as a CIDR, or a list of them, to be checked as a permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS security group rule may have multiple allowed source IP ranges.
 * `port` - Determines if a particular TCP/IP port is reachable. `allow_in` and `allow_out` examine whether the specified port is included in the port range of a rule, while `allow_in`. You may specify the port as a string (`'22'`) or as a number.
-* `position` - A one-based index into the list of rules. If provided, this restricts the evaluation to the rule at that position. You may also use the special values `:first` and `:last`. `position` may also be used to enable `allow_in_only` and `allow_out_only` to work with multi-rule Security Groups.
+* `position` - A one-based index into the list of rules. If provided, this restricts the evaluation to the rule at that position. You may also use the special values `:first` and `:last`. `position` may also be used to enable `allow_in_only` and `allow_out_only` to work with multi-rule security groups.
 * `protocol` - Specifies the IP protocol. `tcp`, `udp`, and `icmp` are some typical values. The string `"-1"` or `any` is used to indicate any protocol.
 * `to_port` - Determines if a rule exists whose port range ends at the specified number. The word `to_` does _not_ relate to inbound/outbound directionality; it relates to the port range ("counting _to_"). `to_port` is an exact criterion; so if the rule allows 1000-2000 and you specify a `to_port` of 1999, it does not match.
-* `security_group` - Specifies a security-group id, to be checked as permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS Security Group rule may have multiple allowed source or destination security groups.
+* `security_group` - Specifies a security-group id, to be checked as permissible origin (for `allow_in`) or destination (for `allow_out`) for traffic. Each AWS security group rule may have multiple allowed source or destination security groups.
 
 ```ruby
 describe aws_security_group(group_name: 'mixed-functionality-group') do

@@ -22,7 +22,7 @@ For additional information, including details on parameters and properties, see 
 
 An aws_kms_key resource block identifies a key by key_arn or the key id.
 
-    # Find a kms key by arn
+Find a kms key by arn:
 
 ```ruby
 describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
@@ -30,7 +30,7 @@ describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab09876
 end
 ```
 
-    # Find a kms key by just the id
+Find a kms key by just the id:
 
 ```ruby
 describe aws_kms_key('4321dcba-21io-23de-85he-ab0987654321') do
@@ -38,7 +38,7 @@ describe aws_kms_key('4321dcba-21io-23de-85he-ab0987654321') do
 end
 ```
 
-    # Hash syntax for key arn
+Hash syntax for key arn:
 
 ```ruby
 describe aws_kms_key(key_id: 'arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do

@@ -26,14 +26,6 @@ describe aws_ec2_transit_gateway_attachment(transit_gateway_attachment_id:'tgw-a
 end
 ```
 
-### Ensure that a Transit Gateway attachment ID exists
-
-```ruby
-describe aws_ec2_transit_gateway_attachment(transit_gateway_attachment_id: 'dummy') do
-  it { should exist }
-end
-```
-
 ## Parameters
 
 `transit_gateway_attachment_id` _(required)_

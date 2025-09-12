@@ -22,7 +22,7 @@ For additional information, including details on parameters and properties, see 
 
 An `aws_kms_keys` resource block uses an optional filter to select a group of KMS Keys and then tests that group.
 
-    # Verify the number of KMS keys in the AWS account
+Verify the number of KMS keys in the AWS account:
 
 ```ruby
 describe aws_kms_keys do

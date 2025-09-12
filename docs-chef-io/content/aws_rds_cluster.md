@@ -26,7 +26,7 @@ describe aws_rds_cluster('test-cluster-id') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_cluster(db_cluster_identifier: 'test-cluster-id') do

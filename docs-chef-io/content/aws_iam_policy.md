@@ -18,7 +18,7 @@ For additional information, including details on parameters and properties, see 
 
 An `aws_iam_policy` resource block identifies a policy by policy name or arn
 
-    # Find a policy by name
+Find a policy by name:
 
 ```ruby
 describe aws_iam_policy('AWSSupportAccess') do
@@ -26,7 +26,7 @@ describe aws_iam_policy('AWSSupportAccess') do
 end
 ```
 
-    # Hash syntax for policy name
+Hash syntax for policy name:
 
 ```ruby
 describe aws_iam_policy(policy_name: 'AWSSupportAccess') do
@@ -196,7 +196,7 @@ Please note the following about the behavior of `have_statement`:
 
 Examples:
 
-    # Verify there is no full-admin statement
+Verify there is no full:-admin statement
 
 ```ruby
 describe aws_iam_policy('kryptonite') do
@@ -204,7 +204,7 @@ describe aws_iam_policy('kryptonite') do
 end
 ```
 
-    # Symbols and lowercase also allowed as criteria
+Symbols and lowercase also allowed as criteria:
 
 ```ruby
 describe aws_iam_policy('kryptonite') do
@@ -216,7 +216,7 @@ describe aws_iam_policy('kryptonite') do
 end
 ```
 
-    # Verify bob is allowed to manage things on S3 buckets that start with bobs-stuff
+Verify bob is allowed to manage things on S3 buckets that start with bobs:-stuff
 
 ```ruby
 describe aws_iam_policy('bob-is-a-packrat') do
@@ -241,7 +241,7 @@ its('statement_count') { should cmp 1 }
     end
 ```
 
-    # Use regular expressions to examine the policy
+Use regular expressions to examine the policy:
 
 ```ruby
 describe aws_iam_policy('regex-demo') do

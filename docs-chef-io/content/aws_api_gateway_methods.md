@@ -61,7 +61,13 @@ end
 : A human-friendly operation identifier for the method.
 
 `request_parameters`
-: A key-value map defining required or optional method request parameters that can be accepted by API Gateway. <br>A key is a method request parameter name matching the pattern of `method.request.{location}.{name}`, where the `location` is querystring, path, or header, and `name` is a valid and unique parameter name. <br>The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`). <br>The method request parameter names defined here are available in `Integration` to be mapped to integration request parameters or templates.
+: A key-value map defining required or optional method request parameters that can be accepted by API Gateway.
+
+  A key is a method request parameter name matching the pattern of `method.request.{location}.{name}`, where the `location` is querystring, path, or header, and `name` is a valid and unique parameter name.
+
+  The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`).
+
+  The method request parameter names defined here are available in `Integration` to be mapped to integration request parameters or templates.
 
 `request_models`
 : A key-value map specifying data schemas, represented by `Model` resources, (as the mapped value) of the request payloads of given content types (as the mapping key).

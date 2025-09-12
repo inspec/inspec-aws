@@ -61,7 +61,13 @@ end
 : A human-friendly operation identifier for the method.
 
 `request_parameters`
-: A key-value map defining required or optional method request parameters that can be accepted by API Gateway. <br>A key is a method request parameter name matching the pattern of `method.request.{location}.{name}`, where the `location` is querystring, path, or header, and `name` is a valid and unique parameter name. <br>The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`). <br>The method request parameter names defined here are available in `Integration` to be mapped to integration request parameters or templates.
+: A key-value map defining required or optional method request parameters that can be accepted by API Gateway.
+
+  A key is a method request parameter name matching the pattern of `method.request.{location}.{name}`, where the `location` is querystring, path, or header, and `name` is a valid and unique parameter name.
+
+  The value associated with the key is a Boolean flag indicating whether the parameter is required (`true`) or optional (`false`).
+
+  The method request parameter names defined here are available in `Integration` to be mapped to integration request parameters or templates.
 
 `request_models`
 : A key-value map specifying data schemas, represented by `Model` resources, (as the mapped value) of the request payloads of given content types (as the mapping key).
@@ -121,7 +127,9 @@ end
 : Specifies the regular expression pattern used to choose an integration response based on the response from the back end.
 
 `method_integration (integration_responses (response_parameters))`
-: A key-value map specifying response parameters that are passed to the method response from the back end. <br>The key is a method response header parameter name, and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name. The mapped non-static value must match the pattern of `integration.response.header.{name}` or `integration.response.body.{JSON-expression}`, where `name` is a valid and unique response header name and `JSON-expression` is a valid JSON expression without the `$` prefix.
+: A key-value map specifying response parameters that are passed to the method response from the back end.
+
+  The key is a method response header parameter name, and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name. The mapped non-static value must match the pattern of `integration.response.header.{name}` or `integration.response.body.{JSON-expression}`, where `name` is a valid and unique response header name and `JSON-expression` is a valid JSON expression without the `$` prefix.
 
 `method_integration (integration_responses (response_templates))`
 : Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.

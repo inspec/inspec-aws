@@ -84,21 +84,27 @@ For additional information, see [the API reference documentation](https://docs.a
 
 Test that an AWS Traffic Mirror session exists:
 
-    describe aws_ec2_traffic_mirror_sessions do
-      it { should exist }
-    end
+```ruby
+describe aws_ec2_traffic_mirror_sessions do
+  it { should exist }
+end
+```
 
 Test that Traffic Mirror target includes a value:
 
-    describe aws_ec2_traffic_mirror_sessions do
-      its('traffic_mirror_target_ids') { should include 'TRAFFIC_MIRROR_TARGET_ID' }
-    end
+```ruby
+describe aws_ec2_traffic_mirror_sessions do
+  its('traffic_mirror_target_ids') { should include 'TRAFFIC_MIRROR_TARGET_ID' }
+end
+```
 
 Test the a Traffic Mirror session has a description:
 
-    describe aws_ec2_traffic_mirror_sessions do
-      its('description') { should include 'DESCRIPTION_TEXT' }
-    end
+```ruby
+describe aws_ec2_traffic_mirror_sessions do
+  its('description') { should include 'DESCRIPTION_TEXT' }
+end
+```
 
 ## Matchers
 
@@ -110,15 +116,19 @@ This resource has the following special matchers.
 
 Check if the Traffic mirror session is available.
 
-    describe aws_ec2_traffic_mirror_sessions do
-      it { should be_available }
-    end
+```ruby
+describe aws_ec2_traffic_mirror_sessions do
+  it { should be_available }
+end
+```
 
 Use `should_not` to test a Traffic mirror session that should not exist.
 
-    describe aws_ec2_traffic_mirror_sessions do
-      it { should_not be_available }
-    end
+```ruby
+describe aws_ec2_traffic_mirror_sessions do
+  it { should_not be_available }
+end
+```
 
 ## AWS Permissions
 

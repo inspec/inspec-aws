@@ -16,7 +16,7 @@ For additional information, including details on parameters and properties, see 
 
 ## Syntax
 
-    # Ensure that a launch configuration exists and has the correct key name
+Ensure that a launch configuration exists and has the correct key name:
 
 ```ruby
 describe aws_launch_configuration('my-config') do
@@ -25,7 +25,7 @@ describe aws_launch_configuration('my-config') do
 end
 ```
 
-    # You may also use hash syntax to pass the launch configuration name
+You may also use hash syntax to pass the launch configuration name:
 
 ```ruby
 describe aws_launch_configuration(launch_configuration_name: 'my-config') do

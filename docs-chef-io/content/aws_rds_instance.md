@@ -26,7 +26,7 @@ describe aws_rds_instance('test-instance-id') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_instance(db_instance_identifier: 'test-instance-id') do

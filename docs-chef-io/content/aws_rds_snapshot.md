@@ -28,7 +28,7 @@ describe aws_rds_snapshot('TEST-SNAPSHOT-ID') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_snapshot(db_snapshot_identifier: 'TEST-SNAPSHOT-ID') do
@@ -36,7 +36,7 @@ describe aws_rds_snapshot(db_snapshot_identifier: 'TEST-SNAPSHOT-ID') do
 end
 ```
 
-    # Passing in
+Passing in:
 
 ```ruby
 describe aws_rds_snapshot(resource_data: 'RESOURCE_DATA_OBJECT') do

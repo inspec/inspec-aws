@@ -24,7 +24,7 @@ describe aws_iam_groups('mygroup') do
 end
 ```
 
-    # Hash syntax for group name
+Hash syntax for group name:
 
 ```ruby
 describe aws_iam_groups(group_name: 'mygroup') do

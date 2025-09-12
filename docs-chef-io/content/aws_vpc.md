@@ -22,7 +22,7 @@ For additional information, including details on parameters and properties, see 
 
 An `aws_vpc` resource block identifies a VPC by ID. If no VPC ID is provided, the default VPC is used.
 
-    # Find the default VPC
+Find the default VPC:
 
 ```ruby
 describe aws_vpc do
@@ -30,7 +30,7 @@ describe aws_vpc do
 end
 ```
 
-    # Find a VPC by ID
+Find a VPC by ID:
 
 ```ruby
 describe aws_vpc('VPC-12345678987654321') do
@@ -38,7 +38,7 @@ describe aws_vpc('VPC-12345678987654321') do
 end
 ```
 
-    # Hash syntax for ID
+Hash syntax for ID:
 
 ```ruby
 describe aws_vpc(vpc_id: 'VPC-12345678') do

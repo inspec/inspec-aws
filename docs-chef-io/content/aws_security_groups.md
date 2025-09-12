@@ -110,7 +110,7 @@ The control will pass if the filter returns at least one result.
 
 Use `should_not` if you expect zero matches.
 
-    # You will always have at least one SG, the VPC default SG
+You will always have at least one SG:, the VPC default SG
 
 ```ruby
 describe aws_security_groups

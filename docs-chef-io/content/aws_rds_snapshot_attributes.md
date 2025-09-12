@@ -28,7 +28,7 @@ describe aws_rds_snapshot_attributes('TEST-SNAPSHOT-ID') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_snapshot_attributes(db_snapshot_identifier: 'TEST-SNAPSHOT-ID') do

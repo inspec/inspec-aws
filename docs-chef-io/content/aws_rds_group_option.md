@@ -26,7 +26,7 @@ describe aws_rds_group_option('default:aurora-5-6') do
 end
 ```
 
-    # Can also use hash syntax
+Can also use hash syntax:
 
 ```ruby
 describe aws_rds_group_option(option_group_name: 'default:aurora-5-6') do

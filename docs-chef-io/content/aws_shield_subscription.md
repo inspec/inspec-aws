@@ -38,7 +38,13 @@ This resource does not require any parameters.
 : Specifies how many protections of a given type you can create. This is an array containing the Type of protection and the maximum number of protections that can be created for the specified Type.
 
 `proactive_engagement_status`
-: Valid values: `ENABLED`, `DISABLED`, `PENDING`. <br> If ENABLED, the DDoS Response Team (DRT) will use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support. <br/> If `PENDING`, you have requested proactive engagement and the request is pending. The status changes to `ENABLED` when your request is fully processed. <br/> If `DISABLED`, the DRT will not proactively notify contacts about escalations or to initiate proactive customer support.
+: Valid values: `ENABLED`, `DISABLED`, `PENDING`.
+
+  If `ENABLED`, the DDoS Response Team (DRT) will use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support.
+
+  If `PENDING`, you have requested proactive engagement and the request is pending. The status changes to `ENABLED` when your request is fully processed.
+
+  If `DISABLED`, the DRT will not proactively notify contacts about escalations or to initiate proactive customer support.
 
 `start_time`
 : The start time of the subscription, in Unix time in seconds.
