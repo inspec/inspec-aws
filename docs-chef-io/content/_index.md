@@ -12,46 +12,46 @@ identifier = "inspec/resources/aws/About"
 parent = "inspec/resources/aws"
 +++
 
-Chef InSpec has resources for auditing Amazon Web Services (AWS).
+Chef InSpec provides resources for auditing Amazon Web Services (AWS) infrastructure, helping you check security, compliance, and configuration across your cloud environment.
 
+## Create a Chef InSpec profile for AWS auditing
 
-## Initialize an InSpec profile for auditing AWS
-
-With Chef InSpec 4 or greater, you can create a profile for testing AWS resources with `inspec init profile`:
+To audit AWS resources, use Chef InSpec 4 or later to create a new profile with `inspec init profile`:
 
 ```bash
-$ inspec init profile --platform aws <PROFILE_NAME>
-Create new profile at /Users/me/<PROFILE_NAME>
- * Creating directory libraries
- * Creating file README.md
- * Creating directory controls
- * Creating file controls/example.rb
- * Creating file inspec.yml
- * Creating file inputs.yml
- * Creating file libraries/.gitkeep
+inspec init profile --platform aws <PROFILE_NAME>
 ```
 
-Assuming the `inputs.yml` file contains your AWS project ID, you can execute this sample profile using the following command:
+After adding your AWS project ID to the `inputs.yml` file, run this sample profile:
 
 ```bash
-inspec exec <PROFILE_NAME> --input-file=<PROFILE_NAME>/inputs.yml -t gcp://
+inspec exec <PROFILE_NAME> --input-file=<PROFILE_NAME>/inputs.yml -t aws://
 ```
 
 ## Set AWS credentials
 
-Chef InSpec uses the standard AWS authentication mechanisms. Typically, you will create an IAM user specifically for auditing activities.
+Chef InSpec uses standard AWS authentication mechanisms.
+Follow these steps to create an IAM user specifically for auditing activities:
 
-1. Create an IAM user in the AWS console, with your choice of username. Check the box marked "Programmatic Access."
+1. In the AWS console, create an IAM user with your choice of username and select **Programmatic Access**.
 
-1. On the Permissions screen, choose Direct Attach. Select the AWS-managed IAM profile named "ReadOnlyAccess." If you wish to restrict the user further, you may do so; see individual Chef InSpec resources to identify which permissions are required.
+1. On the **Permissions** screen, select **Attach policies directly** and choose the AWS-managed **ReadOnlyAccess** policy. To restrict the user further, review individual Chef InSpec resources to identify which permissions each resource requires.
 
 1. After generating the key, record the access key ID and secret key.
 
-### Provide credentials with environment variables
+### Provide credentials using environment variables
 
-You may provide the credentials to Chef InSpec by setting the following environment variables: `AWS_REGION`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`. You may also use `AWS_PROFILE`, or if you are using MFA, `AWS_SESSION_TOKEN`. See the [AWS Command Line Interface Docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) for details.
+Set the following environment variables to provide credentials to Chef InSpec:
 
-Once you have your environment variables set, you can verify your credentials by running:
+- `AWS_REGION`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`.
+
+You can also use `AWS_PROFILE`, or `AWS_SESSION_TOKEN` if you use  multi-factor authentication.
+
+For more details, see the [AWS Command Line Interface Docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+
+After setting your environment variables, verify your credentials:
 
 ```bash
 $ inspec detect -t aws://
@@ -62,17 +62,19 @@ Families:  cloud, api
 Release:   aws-sdk-v2.10.125
 ```
 
-### Provide credentials using Chef InSpec target option
+### Provide credentials using the Chef InSpec target option
 
-Look for a file in your home directory named `~/.aws/credentials`. If it does not exist, create it. Choose a name for your profile; here, we're using the name 'auditing'. Add your credentials as a new profile, in INI format:
+In the `~/.aws/credentials` file in your home directory, add your credentials as a new profile in INI format:
 
-```bash
-[auditing]
+```ini
+[<PROFILE_NAME>]
 aws_access_key_id = AKIA....
 aws_secret_access_key = 1234....abcd
 ```
 
-You may now run Chef InSpec using the `--target` / `-t` option, using the format `-t aws://region/profile`.  For example, to connect to the Ohio region using a profile named 'auditing', use `-t aws://us-east-2/auditing`.
+Replace `<PROFILE_NAME>` with name defined in your profile's `inspec.yml` file.
+
+### Verify AWS credentials
 
 To verify your credentials, run:
 
@@ -85,10 +87,20 @@ Families:  cloud, api
 Release:   aws-sdk-v2.10.125
 ```
 
-## AWS resources
+## Run the profile
+
+Run Chef InSpec using the `--target` / `-t` option in the following format:
+
+```sh
+inspec exec <PROFILE_NAME> --input-file=<PROFILE_NAME>/inputs.yml -t aws://<AWS_REGION>/<PROFILE_NAME>
+```
+
+For example, to connect to the Ohio region using a profile named 'auditing', use `-t aws://us-east-2/auditing`.
+
+## Chef InSpec AWS resources
 
 {{< inspec_resources_filter >}}
 
-The following Chef InSpec AWS resources are available in this resource pack.
+This resource pack includes the following Chef InSpec AWS resources:
 
 {{< inspec_resources section="aws" platform="aws" >}}
