@@ -93,7 +93,7 @@ end
 
 ## Examples
 
-**Ensure a db proxy name is available.**
+Ensure a db proxy name is available:
 
 ```ruby
 describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
@@ -101,7 +101,7 @@ describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
 end
 ```
 
-**Ensure a db proxy arn is available.**
+Ensure a db proxy arn is available:
 
 ```ruby
 describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
@@ -109,7 +109,7 @@ describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do
 end
 ```
 
-**Ensure a status is `available`.**
+Ensure a status is `available`:
 
 ```ruby
 describe aws_rds_db_proxy(db_proxy_name: 'DB_PROXY_NAME') do

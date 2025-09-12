@@ -42,7 +42,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an injection match set is available.**
+Ensure an injection match set is available:
 
 ```ruby
 describe aws_waf_sql_injection_match_sets do
@@ -50,7 +50,7 @@ describe aws_waf_sql_injection_match_sets do
 end
 ```
 
-**Ensure an injection match set is available.**
+Ensure an injection match set is available:
 
 ```ruby
 describe aws_waf_sql_injection_match_sets do

@@ -74,7 +74,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a customer gateway ID is available.**
+Ensure a customer gateway ID is available:
 
 ```ruby
 describe aws_ec2_customer_gateways do
@@ -82,7 +82,7 @@ describe aws_ec2_customer_gateways do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_customer_gateways do

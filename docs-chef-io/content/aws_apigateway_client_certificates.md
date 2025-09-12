@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a client certificate ID is available.**
+Ensure a client certificate ID is available:
 
 ```ruby
 describe aws_apigateway_client_certificates do
@@ -72,7 +72,7 @@ describe aws_apigateway_client_certificates do
 end
 ```
 
-**Ensure a PEM encoded certificate is available.**
+Ensure a PEM encoded certificate is available:
 
 ```ruby
 describe aws_apigateway_client_certificates do

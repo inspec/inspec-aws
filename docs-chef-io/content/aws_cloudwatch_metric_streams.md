@@ -67,7 +67,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ARN is available.**
+Ensure an ARN is available:
 
 ```ruby
 describe aws_cloudwatch_metric_streams do
@@ -75,7 +75,7 @@ describe aws_cloudwatch_metric_streams do
 end
 ```
 
-**Ensure a Firehose ARN is available.**
+Ensure a Firehose ARN is available:
 
 ```ruby
 describe aws_cloudwatch_metric_streams do

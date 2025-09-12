@@ -80,7 +80,7 @@ end
 
 ## Examples
 
-**Ensure a branch arn is available.**
+Ensure a branch arn is available:
 
 ```ruby
 describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do
@@ -88,7 +88,7 @@ describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do
 end
 ```
 
-**Ensure a branch name is available..**
+Ensure a branch name is available.:
 
 ```ruby
 describe aws_amplify_branch(app_id: 'APP_ID', branch_name: 'BRANCH_NAME') do

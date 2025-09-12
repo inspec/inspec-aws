@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Check the owner id zone of the Transit Gateway.**
+Check the owner id zone of the Transit Gateway:
 
 ```ruby
 describe aws_transit_gateway(transit_gateway_id: 'tgw-0e231ae7f5e5e7bd5') do

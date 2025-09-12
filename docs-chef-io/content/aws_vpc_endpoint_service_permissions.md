@@ -53,7 +53,7 @@ The AWS VPC endpoint service ID is required.
 
 ## Examples
 
-**Ensure that exactly three AWS VPC endpoint service permissions exist.**
+Ensure that exactly three AWS VPC endpoint service permissions exist:
 
 ```ruby
 describe aws_vpc_endpoint_service_permissions(service_id: 'VPC_SERVICE_ID') do
@@ -61,7 +61,7 @@ describe aws_vpc_endpoint_service_permissions(service_id: 'VPC_SERVICE_ID') do
 end
 ```
 
-**Request the principals of all AWS VPC endpoint service permissions, then test in-depth using `aws_vpc_endpoint_service_permission`.**
+Request the principals of all AWS VPC endpoint service permissions, then test in-depth using `aws_vpc_endpoint_service_permission`:
 
 ```ruby
 aws_vpc_endpoint_service_permissions(service_id: 'VPC_SERVICE_ID').principals.each do |principal|

@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a global network ID is available.**
+Ensure a global network ID is available:
 
 ```ruby
 describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do
@@ -62,7 +62,7 @@ describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_I
 end
 ```
 
-**Ensure that the state is `AVAILABLE`.**
+Ensure that the state is `AVAILABLE`:
 
 ```ruby
 describe aws_network_manager_global_network(global_network_id: 'GLOBAL_NETWORK_ID') do

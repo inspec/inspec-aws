@@ -75,7 +75,7 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 
 ## Examples
 
-**Test the engine used with an aws_rds_group_option.**
+Test the engine used with an aws_rds_group_option:
 
 ```ruby
 describe aws_rds_group_options do
@@ -84,7 +84,7 @@ describe aws_rds_group_options do
 end
 ```
 
-**Ensure a specific cluster exists.**
+Ensure a specific cluster exists:
 
 ```ruby
 describe aws_rds_group_options do
@@ -92,7 +92,7 @@ describe aws_rds_group_options do
 end
 ```
 
-**Use the InSpec resource to request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size.**
+Use the InSpec resource to request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size:
 
 ```ruby
 aws_rds_group_options.option_group_name.each do |option_group_name|

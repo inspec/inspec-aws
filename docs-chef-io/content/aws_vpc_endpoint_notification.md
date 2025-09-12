@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure an AWS VPC endpoint connection notification's ARN is available.**
+Ensure an AWS VPC endpoint connection notification's ARN is available:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'VPCE-NFN-12345678987654321') do
@@ -74,7 +74,7 @@ describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'V
 end
 ```
 
-**Ensure that the VPC endpoint connection notification has a type using a key-value hash.**
+Ensure that the VPC endpoint connection notification has a type using a key-value hash:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'VPCE-NFN-12345678987654321') do
@@ -82,7 +82,7 @@ describe aws_vpc_endpoint_connection_notification(connection_notification_id: 'V
 end
 ```
 
-**Verify the ARN of a VPC endpoint connection notification.**
+Verify the ARN of a VPC endpoint connection notification:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notification('VPCE-NFN-12345678987654321') do

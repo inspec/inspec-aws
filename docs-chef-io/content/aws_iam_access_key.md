@@ -56,7 +56,7 @@ This resources requires either an `access_key_id` or the IAM `username` associat
 
 The following examples show how to use this InSpec audit resource.
 
-**Test that an IAM Access Key has been used in the last 90 days.**
+Test that an IAM Access Key has been used in the last 90 days:
 
 ```ruby
 describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
@@ -65,7 +65,7 @@ describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
 end
 ```
 
-**Test that an IAM Access Key for a specific user exists.**
+Test that an IAM Access Key for a specific user exists:
 
 ```ruby
 describe aws_iam_access_key(username: 'psmith', id: 'AKIA1111111111111111') do

@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway multicast domain ID is available.**
+Ensure a transit gateway multicast domain ID is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
@@ -74,7 +74,7 @@ describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_i
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do

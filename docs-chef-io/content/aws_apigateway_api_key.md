@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_apigateway_api_key(api_key: 'API_KEY_ID') do
@@ -74,7 +74,7 @@ describe aws_apigateway_api_key(api_key: 'API_KEY_ID') do
 end
 ```
 
-**Ensure that the name is available.**
+Ensure that the name is available:
 
 ```ruby
 describe aws_apigateway_api_key(api_key: 'API_KEY_ID') do

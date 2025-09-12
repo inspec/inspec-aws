@@ -91,7 +91,7 @@ end
 
 ## Examples
 
-**Ensure a instance profile name is available.**
+Ensure a instance profile name is available:
 
 ```ruby
 describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do
@@ -99,7 +99,7 @@ describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME'
 end
 ```
 
-**Ensure that an arn is available.**
+Ensure that an arn is available:
 
 ```ruby
 describe aws_iam_instance_profile(instance_profile_name: 'INSTANCE_PROFILE_NAME') do

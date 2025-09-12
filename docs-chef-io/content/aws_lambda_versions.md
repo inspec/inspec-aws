@@ -71,7 +71,7 @@ end
 
 ## Examples
 
-**Ensure a layer version ARN is available.**
+Ensure a layer version ARN is available:
 
 ```ruby
 describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
@@ -79,7 +79,7 @@ describe aws_lambda_versions(layer_name: 'LAYER_NAME') do
 end
 ```
 
-**Ensure a version is available.**
+Ensure a version is available:
 
 ```ruby
 describe aws_lambda_versions(layer_name: 'LAYER_NAME') do

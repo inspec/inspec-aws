@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure an IP set is available.**
+Ensure an IP set is available:
 
 ```ruby
 describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
@@ -57,7 +57,7 @@ describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
 end
 ```
 
-**Ensure an IP set name is available.**
+Ensure an IP set name is available:
 
 ```ruby
 describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
@@ -65,7 +65,7 @@ describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do
 end
 ```
 
-**Ensure an IP set descriptors type is `IPV4`.**
+Ensure an IP set descriptors type is `IPV4`:
 
 ```ruby
 describe aws_waf_ip_set(ip_set_id: 'IP_SET_ID') do

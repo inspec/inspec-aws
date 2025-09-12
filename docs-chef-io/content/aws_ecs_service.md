@@ -72,7 +72,7 @@ For additional information, see the [AWS documentation on ECS describe services 
 
 ## Examples
 
-**Ensure a work group name is available.**
+Ensure a work group name is available:
 
 ```ruby
 describe aws_ecs_service(cluster: "default", service: "SERVICE_ARN") do
@@ -80,7 +80,7 @@ describe aws_ecs_service(cluster: "default", service: "SERVICE_ARN") do
 end
 ```
 
-**Ensure that the status is `ACTIVE` or not.**
+Ensure that the status is `ACTIVE` or not:
 
 ```ruby
 describe aws_ecs_service(cluster: "default", service: "SERVICE_ARN") do

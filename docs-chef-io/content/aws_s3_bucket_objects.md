@@ -110,7 +110,7 @@ end
 
 ## Examples
 
-**Ensure whether the bucket is truncated.**
+Ensure whether the bucket is truncated:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
@@ -118,7 +118,7 @@ describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Verify the bucket name.**
+Verify the bucket name:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
@@ -126,7 +126,7 @@ describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Ensure an object name exists.**
+Ensure an object name exists:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
@@ -134,7 +134,7 @@ describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Ensure an object has a last modified date.**
+Ensure an object has a last modified date:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
@@ -142,7 +142,7 @@ describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Ensure a storage class of an object exists.**
+Ensure a storage class of an object exists:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
@@ -150,7 +150,7 @@ describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Verify the key counts of a bucket.**
+Verify the key counts of a bucket:
 
 ```ruby
 describe aws_s3_bucket_objects(bucket_name: 'BUCKET_NAME') do

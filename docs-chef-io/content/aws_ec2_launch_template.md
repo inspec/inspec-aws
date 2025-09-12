@@ -64,7 +64,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an launch template should exist.**
+Test that an launch template should exist:
 
 ```ruby
 describe aws_ec2_launch_template(launch_template_id: 'lt-01a2349e94458a507') do
@@ -72,7 +72,7 @@ describe aws_ec2_launch_template(launch_template_id: 'lt-01a2349e94458a507') do
 end
 ```
 
-**Test that an EC2 instance is using the correct AMI.**
+Test that an EC2 instance is using the correct AMI:
 
 ```ruby
 describe aws_ec2_launch_template(launch_template_id: 'lt-01a2349e94458a507') do
@@ -80,7 +80,7 @@ describe aws_ec2_launch_template(launch_template_id: 'lt-01a2349e94458a507') do
 end
 ```
 
-**Test that an EC2 instance has the correct tag.**
+Test that an EC2 instance has the correct tag:
 
 ```ruby
 describe aws_ec2_launch_template(launch_template_id: 'lt-01a2349e94458a507') do

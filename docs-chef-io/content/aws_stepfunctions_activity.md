@@ -43,7 +43,7 @@ end
 
 ## Examples
 
-**Ensure a activity ARN is available.**
+Ensure a activity ARN is available:
 
 ```ruby
 describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
@@ -51,7 +51,7 @@ describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do
 end
 ```
 
-**Ensure an activity name is available.**
+Ensure an activity name is available:
 
 ```ruby
 describe aws_stepfunctions_activity(activity_arn: 'ACTIVITY_ARN') do

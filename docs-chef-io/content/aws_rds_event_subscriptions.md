@@ -82,7 +82,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an event subscription name is available.**
+Ensure an event subscription name is available:
 
 ```ruby
 describe aws_rds_event_subscriptions do
@@ -90,7 +90,7 @@ describe aws_rds_event_subscriptions do
 end
 ```
 
-**Ensure an event subscription SNS Topic ARN is available.**
+Ensure an event subscription SNS Topic ARN is available:
 
 ```ruby
 describe aws_rds_event_subscriptions do
@@ -98,7 +98,7 @@ describe aws_rds_event_subscriptions do
 end
 ```
 
-**Ensure a customer AWS ID is available.**
+Ensure a customer AWS ID is available:
 
 ```ruby
 describe aws_rds_event_subscriptions do

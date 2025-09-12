@@ -71,7 +71,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure you have exactly 3 file systems.**
+Ensure you have exactly 3 file systems:
 
 ```ruby
 describe aws_efs_file_systems do
@@ -79,7 +79,7 @@ describe aws_efs_file_systems do
 end
 ```
 
-**Use this InSpec resource to request the IDs of all EFS file systems, then test in-depth using `aws_efs_file_system`.**
+Use this InSpec resource to request the IDs of all EFS file systems, then test in-depth using `aws_efs_file_system`:
 
 ```ruby
 aws_efs_file_systems.file_system_ids.each do |file_system_id|

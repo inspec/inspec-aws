@@ -51,7 +51,7 @@ end
 
 ## Examples
 
-**Ensure a destination CIDR block is available.**
+Ensure a destination CIDR block is available:
 
 ```ruby
 describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do
@@ -59,7 +59,7 @@ describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') d
 end
 ```
 
-**Ensure that a VPN connection route is `available`.**
+Ensure that a VPN connection route is `available`:
 
 ```ruby
 describe aws_ec2_vpn_connection_routes(vpn_connection_id: 'VPN_CONNECTION_ID') do

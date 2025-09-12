@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an activity status is there.**
+Ensure an activity status is there:
 
 ```ruby
 describe aws_ec2_spot_fleets do
@@ -72,7 +72,7 @@ describe aws_ec2_spot_fleets do
 end
 ```
 
-**Ensure that the state is `active`.**
+Ensure that the state is `active`:
 
 ```ruby
 describe aws_ec2_spot_fleets do

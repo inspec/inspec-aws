@@ -61,7 +61,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure group contains a certain user.**
+Ensure group contains a certain user:
 
 ```ruby
 describe aws_iam_groups do
@@ -70,7 +70,7 @@ describe aws_iam_groups do
 end
 ```
 
-**Ensure there are no groups with inline policies.**
+Ensure there are no groups with inline policies:
 
 ```ruby
 describe aws_iam_groups.where(has_inline_policies: true) do

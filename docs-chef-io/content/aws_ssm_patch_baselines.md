@@ -59,7 +59,7 @@ This resource does not expect any required parameters.
 
 ## Examples
 
-**Ensure a baseline ID is available.**
+Ensure a baseline ID is available:
 
 ```ruby
 describe aws_ssm_patch_baselines do
@@ -67,7 +67,7 @@ describe aws_ssm_patch_baselines do
 end
 ```
 
-**Ensure a baseline name is present.**
+Ensure a baseline name is present:
 
 ```ruby
 describe aws_ssm_patch_baselines do
@@ -75,7 +75,7 @@ describe aws_ssm_patch_baselines do
 end
 ```
 
-**Ensure a patch baseline has the `WINDOWS` operating system.**
+Ensure a patch baseline has the `WINDOWS` operating system:
 
 ```ruby
 describe aws_ssm_patch_baselines do
@@ -83,7 +83,7 @@ describe aws_ssm_patch_baselines do
 end
 ```
 
-**Ensure a baseline description is present.**
+Ensure a baseline description is present:
 
 ```ruby
 describe aws_ssm_patch_baselines do

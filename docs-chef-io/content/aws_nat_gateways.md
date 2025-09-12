@@ -60,7 +60,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that there are exactly 3 NAT gateways.**
+Test that there are exactly 3 NAT gateways:
 
 ```ruby
 describe aws_nat_gateways do
@@ -68,7 +68,7 @@ describe aws_nat_gateways do
 end
 ```
 
-**Use this InSpec resource to request the ids of all NAT gateways, then test in-depth using `aws_nat_gateway` InSpec singular AWS resource.**
+Use this InSpec resource to request the ids of all NAT gateways, then test in-depth using `aws_nat_gateway` InSpec singular AWS resource:
 
 ```ruby
 aws_nat_gateways.ids.each do |id|
@@ -87,7 +87,7 @@ For more examples, see the [integration tests](https://github.com/inspec/inspec-
 ### exist
 
 The control will pass if the describe returns at least one result.
-The field names described in the [properties table](##-properties) should be used for the `<property>` in the `where` clause.
+The field names described in the [properties](#properties) should be used for the `<property>` in the `where` clause.
 
 Use `should_not` to test the entity should not exist.
 

@@ -67,7 +67,7 @@ For additional information, see the [AWS documentation on ECS describe services 
 
 ## Examples
 
-**Ensure a specific service is available on a cluster.**
+Ensure a specific service is available on a cluster:
 
 ```ruby
 describe aws_ecs_services(cluster: "CLUSTER_NAME") do

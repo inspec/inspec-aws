@@ -73,7 +73,7 @@ end
 
 ## Examples
 
-**Test that an ID is available.**
+Test that an ID is available:
 
 ```ruby
 describe aws_cloudfront_origin_request_policy(id: 'ID') do
@@ -81,7 +81,7 @@ describe aws_cloudfront_origin_request_policy(id: 'ID') do
 end
 ```
 
-**Verify the number of cookies.**
+Verify the number of cookies:
 
 ```ruby
 describe aws_cloudfront_origin_request_policy(id: 'ID') do

@@ -50,7 +50,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the automatic renewal status of a Shield Subscription.**
+Check the automatic renewal status of a Shield Subscription:
 
 ```ruby
 describe aws_shield_subscription do

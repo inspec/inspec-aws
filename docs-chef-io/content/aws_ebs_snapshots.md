@@ -47,7 +47,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a specific EBS Snapshot exists.**
+Ensure a specific EBS Snapshot exists:
 
 ```ruby
 describe aws_ebs_snapshots do
@@ -55,7 +55,7 @@ describe aws_ebs_snapshots do
 end
 ```
 
-**Use the InSpec resource to request the IDs of all EBS Snapshots, then test in-depth using `aws_ebs_snapshot` to ensure all EBS Snapshots are encrypted and not public.**
+Use the InSpec resource to request the IDs of all EBS Snapshots, then test in-depth using `aws_ebs_snapshot` to ensure all EBS Snapshots are encrypted and not public:
 
 ```ruby
 aws_ebs_snapshots.snapshot_ids.each do |snapshot_id|

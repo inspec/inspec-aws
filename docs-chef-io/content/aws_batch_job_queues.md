@@ -53,7 +53,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a job queue name is available.**
+Ensure a job queue name is available:
 
 ```ruby
 describe aws_batch_job_queues do
@@ -61,7 +61,7 @@ describe aws_batch_job_queues do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_batch_job_queues do

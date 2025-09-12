@@ -61,7 +61,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an ElastiCache cluster node is available.**
+Test that an ElastiCache cluster node is available:
 
 ```ruby
 describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
@@ -69,7 +69,7 @@ describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_i
 end
 ```
 
-**Test that an Elasticache cluster engine is listening on port `11211`.**
+Test that an Elasticache cluster engine is listening on port `11211`:
 
 ```ruby
 describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do
@@ -77,7 +77,7 @@ describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_i
 end
 ```
 
-**Test that an Elasticache cluster node's customer availability zone is `us-east-2b`.**
+Test that an Elasticache cluster node's customer availability zone is `us-east-2b`:
 
 ```ruby
 describe aws_elasticache_cluster_node(cache_cluster_id: "my-cluster-123", node_id: "0001") do

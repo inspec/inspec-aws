@@ -97,7 +97,7 @@ end
 
 ## Examples
 
-**Ensure a cluster snapshot ID is `available`.**
+Ensure a cluster snapshot ID is `available`:
 
 ```ruby
 describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
@@ -105,7 +105,7 @@ describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do
 end
 ```
 
-**Ensure that the status is `available`.**
+Ensure that the status is `available`:
 
 ```ruby
 describe aws_rds_db_cluster_snapshot(db_cluster_snapshot_id: "CLUSTER_ID") do

@@ -78,7 +78,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an EC2 instance is running.**
+Test that an EC2 instance is running:
 
 ```ruby
 describe aws_ec2_instance(name: 'prod-database') do
@@ -86,7 +86,7 @@ describe aws_ec2_instance(name: 'prod-database') do
 end
 ```
 
-**Test that an EC2 instance is using the correct AMI.**
+Test that an EC2 instance is using the correct AMI:
 
 ```ruby
 describe aws_ec2_instance(name: 'my-instance') do
@@ -94,7 +94,7 @@ describe aws_ec2_instance(name: 'my-instance') do
 end
 ```
 
-**Test that an EC2 instance has the correct tag.**
+Test that an EC2 instance has the correct tag:
 
 ```ruby
 describe aws_ec2_instance('i-090c29e4f4c165b74') do
@@ -102,17 +102,17 @@ describe aws_ec2_instance('i-090c29e4f4c165b74') do
 end
 ```
 
-**Test that an EC2 instance has the correct tag (using the `tags_hash` property).**
+Test that an EC2 instance has the correct tag (using the `tags_hash` property):
 
 ```ruby
 describe aws_ec2_instance('i-090c29e4f4c165b74') do
   its('tags_hash') { should include('Contact' => 'Gilfoyle') }
-**Regardless of the value.**
+Regardless of the value:
 
 end    
 ```
 
-**Test that an EC2 instance has no roles.**
+Test that an EC2 instance has no roles:
 
 ```ruby
 describe aws_ec2_instance('i-090c29e4f4c165b74') do

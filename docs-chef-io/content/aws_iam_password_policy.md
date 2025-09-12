@@ -41,7 +41,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that a Password Policy meets your company's requirements.**
+Test that a Password Policy meets your company's requirements:
 
 ```ruby
 describe aws_iam_password_policy do
@@ -52,7 +52,7 @@ describe aws_iam_password_policy do
 end
 ```
 
-**Test that users can change their own passwords .**
+Test that users can change their own passwords :
 
 ```ruby
 describe aws_iam_password_policy do

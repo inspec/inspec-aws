@@ -60,7 +60,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test an object's object-level ACL.**
+Test an object's object-level ACL:
 
 ```ruby
 describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
@@ -68,7 +68,7 @@ describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
 end
 ```
 
-**Test an object's size in bytes is less than `100000`.**
+Test an object's size in bytes is less than `100000`:
 
 ```ruby
 describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
@@ -76,7 +76,7 @@ describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
 end
 ```
 
-**Test an object's type is "image/jpeg".**
+Test an object's type is "image/jpeg":
 
 ```ruby
 describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
@@ -84,7 +84,7 @@ describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do
 end
 ```
 
-**Check to see if a object appears to be exposed to the public.**
+Check to see if a object appears to be exposed to the public:
 
 ```ruby
 describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_key') do

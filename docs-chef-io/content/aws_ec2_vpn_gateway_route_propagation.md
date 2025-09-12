@@ -42,7 +42,7 @@ end
 
 ## Examples
 
-**Ensure a VPN gateway ID is available.**
+Ensure a VPN gateway ID is available:
 
 ```ruby
 describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'ROUTE_TABLE_ID') do
@@ -50,7 +50,7 @@ describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'ROUTE_TABLE_ID')
 end
 ```
 
-**Ensure a route table ID is available.**
+Ensure a route table ID is available:
 
 ```ruby
 describe aws_ec2_vpn_gateway_route_propagation(route_table_id: 'ROUTE_TABLE_ID') do

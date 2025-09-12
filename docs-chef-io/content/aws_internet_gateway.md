@@ -70,7 +70,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that the internet gateway is attached.**
+Test that the internet gateway is attached:
 
 ```ruby
 describe aws_internet_gateway(name: 'my-igw') do
@@ -78,7 +78,7 @@ describe aws_internet_gateway(name: 'my-igw') do
 end
 ```
 
-**Test that the ID of the attached VPC is `vpc-1234567890abcdef1`.**
+Test that the ID of the attached VPC is `vpc-1234567890abcdef1`:
 
 ```ruby
 describe aws_internet_gateway(id: 'igw-abc0123456789deff') do
@@ -86,12 +86,12 @@ describe aws_internet_gateway(id: 'igw-abc0123456789deff') do
 end
 ```
 
-**Test that the internet gateway has a certain tag.**
+Test that the internet gateway has a certain tag:
 
 ```ruby
 describe aws_internet_gateway(name: 'my-igw') do
   its('tags') { should include('environment' => 'dev') }
-**Regardless of the value.**
+Regardless of the value:
 
 end
 ```

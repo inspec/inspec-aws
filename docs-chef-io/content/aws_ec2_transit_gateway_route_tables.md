@@ -57,7 +57,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Transit Gateway route table has route table ID.**
+Ensure a Transit Gateway route table has route table ID:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_tables do
@@ -65,7 +65,7 @@ describe aws_ec2_transit_gateway_route_tables do
 end
 ```
 
-**Match count of Transit Gateway route table.**
+Match count of Transit Gateway route table:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_tables do
@@ -73,7 +73,7 @@ describe aws_ec2_transit_gateway_route_tables do
 end
 ```
 
-**Check State whether it is available or not.**
+Check State whether it is available or not:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_tables do

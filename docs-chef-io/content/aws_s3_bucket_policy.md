@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a policy is available.**
+Ensure a policy is available:
 
 ```ruby
 describe aws_s3_bucket_policy(bucket: 'BUCKET_NAME') do

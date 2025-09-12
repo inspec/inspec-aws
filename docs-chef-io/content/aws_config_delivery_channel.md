@@ -67,7 +67,7 @@ end
 
 ## Examples
 
-**Test how frequently the channel writes configuration changes to the s3 bucket.**
+Test how frequently the channel writes configuration changes to the s3 bucket:
 
 ```ruby
 describe aws_config_delivery_channel(channel_name: 'my-recorder') do
@@ -75,7 +75,7 @@ describe aws_config_delivery_channel(channel_name: 'my-recorder') do
 end
 ```
 
-**Ensure configuration change notifications are being delivered to the correct bucket and key.**
+Ensure configuration change notifications are being delivered to the correct bucket and key:
 
 ```ruby
 describe aws_config_delivery_channel(channel_name: 'my_channel')

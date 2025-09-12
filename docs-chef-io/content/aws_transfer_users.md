@@ -50,7 +50,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ARN is available.**
+Ensure an ARN is available:
 
 ```ruby
 describe aws_transfer_users do
@@ -58,7 +58,7 @@ describe aws_transfer_users do
 end
 ```
 
-**Ensure that the roles is available.**
+Ensure that the roles is available:
 
 ```ruby
 describe aws_transfer_users do

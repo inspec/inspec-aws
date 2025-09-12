@@ -124,7 +124,7 @@ end
 
 ## Examples
 
-**Ensure a canary name is available.**
+Ensure a canary name is available:
 
 ```ruby
 describe aws_synthetics_canary(name: 'CANARY_NAME') do
@@ -132,7 +132,7 @@ describe aws_synthetics_canary(name: 'CANARY_NAME') do
 end
 ```
 
-**Ensure a state is `READY`.**
+Ensure a state is `READY`:
 
 ```ruby
 describe aws_synthetics_canary(name: 'CANARY_NAME') do

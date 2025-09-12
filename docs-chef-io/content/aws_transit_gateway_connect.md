@@ -57,7 +57,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway attachment ID is available.**
+Ensure a transit gateway attachment ID is available:
 
 ```ruby
 describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GATEWAY_CONNECT_ATTACHMENT_ID') do
@@ -65,7 +65,7 @@ describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GAT
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_transit_gateway_connect(transit_gateway_attachment_id: 'TRANSIT_GATEWAY_CONNECT_ATTACHMENT_ID') do

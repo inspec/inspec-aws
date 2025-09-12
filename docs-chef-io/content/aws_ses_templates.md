@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a template name is available.**
+Ensure a template name is available:
 
 ```ruby
 describe aws_ses_templates do

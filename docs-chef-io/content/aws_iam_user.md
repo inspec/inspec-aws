@@ -76,7 +76,7 @@ This can be passed either as a string or as a `user_name: 'value'` key-value ent
 
 The following examples show how to use this InSpec audit resource.
 
-**Test that an IAM user does not exist.**
+Test that an IAM user does not exist:
 
 ```ruby
 describe aws_iam_user(user_name: 'invalid-user') do
@@ -84,7 +84,7 @@ describe aws_iam_user(user_name: 'invalid-user') do
 end
 ```
 
-**Test that an IAM user has MFA enabled.**
+Test that an IAM user has MFA enabled:
 
 ```ruby
 describe aws_iam_user('psmith') do
@@ -93,7 +93,7 @@ describe aws_iam_user('psmith') do
 end
 ```
 
-**Ensure a User has no Access Keys or Inline Policies.**
+Ensure a User has no Access Keys or Inline Policies:
 
 ```ruby
 describe aws_iam_user('psmith') do

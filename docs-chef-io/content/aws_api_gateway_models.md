@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do
@@ -69,7 +69,7 @@ describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NA
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do
@@ -77,7 +77,7 @@ describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NA
 end
 ```
 
-**Ensure a description is available.**
+Ensure a description is available:
 
 ```ruby
 describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do
@@ -85,7 +85,7 @@ describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NA
 end
 ```
 
-**Ensure a content type is available.**
+Ensure a content type is available:
 
 ```ruby
 describe aws_api_gateway_model(rest_api_id: 'REST_API_ID', model_name: 'MODEL_NAME') do

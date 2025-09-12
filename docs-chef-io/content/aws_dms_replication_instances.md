@@ -61,7 +61,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an engine version is available.**
+Ensure an engine version is available:
 
 ```ruby
 describe aws_dms_replication_instances do
@@ -69,7 +69,7 @@ describe aws_dms_replication_instances do
 end
 ```
 
-**Ensure that the classes are available.**
+Ensure that the classes are available:
 
 ```ruby
 describe aws_dms_replication_instances do

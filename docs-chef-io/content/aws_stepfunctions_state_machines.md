@@ -46,7 +46,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an state machine ARN is available.**
+Ensure an state machine ARN is available:
 
 ```ruby
 describe aws_stepfunctions_state_machines do
@@ -54,7 +54,7 @@ describe aws_stepfunctions_state_machines do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_stepfunctions_state_machines do

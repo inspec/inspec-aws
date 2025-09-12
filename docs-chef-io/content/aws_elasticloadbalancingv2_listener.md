@@ -180,7 +180,7 @@ end
 
 ## Examples
 
-**Ensure that a listener arn exists.**
+Ensure that a listener arn exists:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener(listener_arn: "LISTENER_ARN") do
@@ -188,7 +188,7 @@ describe aws_elasticloadbalancingv2_listener(listener_arn: "LISTENER_ARN") do
 end
 ```
 
-**Ensure that listener listens to a specific port.**
+Ensure that listener listens to a specific port:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener(listener_arn: "LISTENER_ARN") do

@@ -59,7 +59,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a subscription ARN is available.**
+Ensure a subscription ARN is available:
 
 ```ruby
 describe aws_sns_subscriptions do
@@ -67,7 +67,7 @@ describe aws_sns_subscriptions do
 end
 ```
 
-**Ensure a topic ARN is available.**
+Ensure a topic ARN is available:
 
 ```ruby
 describe aws_sns_subscriptions do

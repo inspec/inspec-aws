@@ -114,7 +114,7 @@ end
 
 ## Examples
 
-**Ensure a rule set is available.**
+Ensure a rule set is available:
 
 ```ruby
 describe aws_ses_receipt_rule_set(rule_set_name: 'RULE_SET_NAME') do
@@ -122,7 +122,7 @@ describe aws_ses_receipt_rule_set(rule_set_name: 'RULE_SET_NAME') do
 end
 ```
 
-**Ensure that `scan_enabled` is `true` so that messages that this receipt rule is applied to are scanned for spam and viruses.**
+Ensure that `scan_enabled` is `true` so that messages that this receipt rule is applied to are scanned for spam and viruses:
 
 ```ruby
 describe aws_ses_receipt_rule_set(rule_set_name: 'RULE_SET_NAME') do

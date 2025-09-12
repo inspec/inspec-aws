@@ -57,7 +57,7 @@ end
 
 ## Examples
 
-**Test the bucket-level ACL.**
+Test the bucket-level ACL:
 
 ```ruby
 describe aws_s3_bucket('test_bucket') do
@@ -65,7 +65,7 @@ describe aws_s3_bucket('test_bucket') do
 end
 ```
 
-**Check if a bucket has a bucket policy.**
+Check if a bucket has a bucket policy:
 
 ```ruby
 describe aws_s3_bucket('test_bucket') do
@@ -73,7 +73,7 @@ describe aws_s3_bucket('test_bucket') do
 end
 ```
 
-**Check if a bucket appears to be exposed to the public.**
+Check if a bucket appears to be exposed to the public:
 
 ```ruby
 describe aws_s3_bucket('test_bucket') do
@@ -81,7 +81,7 @@ describe aws_s3_bucket('test_bucket') do
 end
 ```
 
-**Check if the correct region is set.**
+Check if the correct region is set:
 
 ```ruby
 describe aws_s3_bucket('test_bucket') do
@@ -89,13 +89,13 @@ describe aws_s3_bucket('test_bucket') do
 end
 ```
 
-**Check bucket's ACL for correct grants.**
+Check bucket's ACL for correct grants:
 
 ```ruby
 bucket_acl = aws_s3_bucket('my-bucket').bucket_acl
 ```
 
-**Look for grants to "AllUsers" (that is, the public).**
+Look for grants to "AllUsers" (that is, the public):
 
 ```ruby
 all_users_grants = bucket_acl.select do |g|
@@ -103,7 +103,7 @@ all_users_grants = bucket_acl.select do |g|
 end
 ```
 
-**Look for grants to "AuthenticatedUsers" (that is, any authenticated AWS user - nearly public).**
+Look for grants to "AuthenticatedUsers" (that is, any authenticated AWS user - nearly public):
 
 ```ruby
 auth_grants = bucket_acl.select do |g|
@@ -111,7 +111,7 @@ auth_grants = bucket_acl.select do |g|
 end
 ```
 
-**Test all buckets    .**
+Test all buckets    :
 
 ```ruby
 aws_s3_buckets.bucket_names.each do |bucket_name|
@@ -121,7 +121,7 @@ aws_s3_buckets.bucket_names.each do |bucket_name|
   end
 ```
 
-**Test buckets in a specific region    .**
+Test buckets in a specific region    :
 
 ```ruby
 aws_s3_buckets.bucket_names.each do |bucket_name|
@@ -133,7 +133,7 @@ aws_s3_buckets.bucket_names.each do |bucket_name|
   end
 ```
 
-**Check if a bucket has a bucket policy that requires requests to use HTTPS.**
+Check if a bucket has a bucket policy that requires requests to use HTTPS:
 
 ```ruby
 describe aws_s3_bucket('test_bucket') do

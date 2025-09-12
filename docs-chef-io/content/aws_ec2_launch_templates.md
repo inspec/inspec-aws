@@ -54,19 +54,19 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an launch templates should exist.**
+Test that an launch templates should exist:
 
  describe aws_ec2_launch_templates do
    it { should exist }
  end
 
-**Test that an EC2 instance is using the correct AMI.**
+Test that an EC2 instance is using the correct AMI:
 
  describe aws_ec2_launch_templates do
    its('launch_template_ids.count') { should cmp 3 }
  end
 
-**Test that an EC2 instance has the correct tag.**
+Test that an EC2 instance has the correct tag:
 
  describe aws_ec2_launch_templates do
    its('launch_templates_names') { should include 'test-lt' }

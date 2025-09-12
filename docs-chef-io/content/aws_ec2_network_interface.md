@@ -141,7 +141,7 @@ end
 
 ## Examples
 
-**Ensure a network interface ID is available.**
+Ensure a network interface ID is available:
 
 ```ruby
 describe aws_ec2_network_interface(network_interface_id: 'NETWORK_INTERFACE_ID') do
@@ -149,7 +149,7 @@ describe aws_ec2_network_interface(network_interface_id: 'NETWORK_INTERFACE_ID')
 end
 ```
 
-**Ensure that the interface type is 'vpc'.**
+Ensure that the interface type is 'vpc':
 
 ```ruby
 describe aws_ec2_network_interface(network_interface_id: 'NETWORK_INTERFACE_ID') do

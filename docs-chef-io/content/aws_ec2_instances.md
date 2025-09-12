@@ -70,7 +70,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure you have exactly 3 instances.**
+Ensure you have exactly 3 instances:
 
 ```ruby
 describe aws_ec2_instances do
@@ -78,7 +78,7 @@ describe aws_ec2_instances do
 end
 ```
 
-**Use this InSpec resource to request the IDs of all EC2 instances, then test in-depth using `aws_ec2_instance`.**
+Use this InSpec resource to request the IDs of all EC2 instances, then test in-depth using `aws_ec2_instance`:
 
 ```ruby
 aws_ec2_instances.instance_ids.each do |instance_id|
@@ -90,7 +90,7 @@ aws_ec2_instances.instance_ids.each do |instance_id|
 end
 ```
 
-**Filter EC2 instances with their `Environment` tags<superscript>*</superscript> equal to `Dev`, then test in-depth using `aws_ec2_instance`.**
+Filter EC2 instances with their `Environment` tags<superscript>*</superscript> equal to `Dev`, then test in-depth using `aws_ec2_instance`:
 
 ```ruby
 aws_ec2_instances.where(tags: {"Environment" => "Dev"}).instance_ids.each do |id|
@@ -101,7 +101,7 @@ end
 <superscript>*</superscript>Note that the filter won't return the EC2 instances with multiple tags. In this case use regex: `/"Environment"=>"Dev"/`    
 ```
 
-**Filter EC2 instances with multiple tags like `Environment` equal to `Dev` and `Component` equal to `API` , then test in-depth using `aws_ec2_instance`.**
+Filter EC2 instances with multiple tags like `Environment` equal to `Dev` and `Component` equal to `API` , then test in-depth using `aws_ec2_instance`:
 
 ```ruby
 aws_ec2_instances.where(tags: /"Environment"=>"Dev"/).where(tags: /"Component"=>"API"/).instance_ids.each do |id|
@@ -111,7 +111,7 @@ aws_ec2_instances.where(tags: /"Environment"=>"Dev"/).where(tags: /"Component"=>
 end
 ```
 
-**Filter EC2 instances with a `stop-at-10-pm` tag regardless of its value, then test in-depth using `aws_ec2_instance`.  .**
+Filter EC2 instances with a `stop-at-10-pm` tag regardless of its value, then test in-depth using `aws_ec2_instance`.  :
 
 ```ruby
 aws_ec2_instances.where(tags: /"stop-at-10-pm"=>/).instance_ids.each do |id|
@@ -121,7 +121,7 @@ aws_ec2_instances.where(tags: /"stop-at-10-pm"=>/).instance_ids.each do |id|
 end   
 ```
 
-**Filter EC2 instances with their `name` equal to `Test Box`, then check their role using `aws_ec2_instance`.  .**
+Filter EC2 instances with their `name` equal to `Test Box`, then check their role using `aws_ec2_instance`.  :
 
 ```ruby
 aws_ec2_instances.where(name: "Test Box").instance_ids.each do |id|
@@ -138,7 +138,7 @@ end
 ### exist
 
 The control will pass if the describe returns at least one result.
-The field names described in the [properties table](##-properties) should be used for the `<property>` in the `where` clause.
+The field names described in the [properties](#properties) should be used for the `<property>` in the `where` clause.
 
 Use `should_not` to test the entity should not exist.
 

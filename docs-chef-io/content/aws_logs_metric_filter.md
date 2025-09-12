@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure a filter name is available.**
+Ensure a filter name is available:
 
 ```ruby
 describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
@@ -66,7 +66,7 @@ describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do
 end
 ```
 
-**Ensure a log group name is available.**
+Ensure a log group name is available:
 
 ```ruby
 describe aws_logs_metric_filter(filter_name: 'FILTER_NAME') do

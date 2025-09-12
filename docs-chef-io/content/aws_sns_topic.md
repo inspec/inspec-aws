@@ -47,7 +47,7 @@ end
 
 ## Examples
 
-**Make sure something is subscribed to the topic.**
+Make sure something is subscribed to the topic:
 
 ```ruby
 describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do

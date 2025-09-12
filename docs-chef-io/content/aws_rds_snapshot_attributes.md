@@ -55,7 +55,7 @@ end
 
 ## Examples
 
-**Tests the attribute name of RDS snapshot.**
+Tests the attribute name of RDS snapshot:
 
 ```ruby
 describe aws_rds_snapshot-attributes(db_snapshot_identifier: 'AWSRDS123') do
@@ -63,7 +63,7 @@ describe aws_rds_snapshot-attributes(db_snapshot_identifier: 'AWSRDS123') do
 end
 ```
 
-**Tests the attribute value of attribute name for a RDS snapshot.**
+Tests the attribute value of attribute name for a RDS snapshot:
 
 ```ruby
 describe aws_rds_snapshot_attributes(db_snapshot_identifier: 'AWSRDS123').where('attribute_name' == 'restore') do

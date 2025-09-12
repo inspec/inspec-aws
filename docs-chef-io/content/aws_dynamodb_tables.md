@@ -35,7 +35,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure DynamoDB Tables are encrypted.**
+Ensure DynamoDB Tables are encrypted:
 
 ```ruby
 aws_dynamodb_tables.table_names.each do |table|
@@ -46,7 +46,7 @@ aws_dynamodb_tables.table_names.each do |table|
 end
 ```
 
-**Ensure the DynamoDB Tables exists and encrypted.**
+Ensure the DynamoDB Tables exists and encrypted:
 
 ```ruby
 aws_dynamodb_tables.where(table_names: 'table_name').table_names.each do |table|
@@ -57,7 +57,7 @@ aws_dynamodb_tables.where(table_names: 'table_name').table_names.each do |table|
 end
 ```
 
-**Ensure the DynamoDB table exist.**
+Ensure the DynamoDB table exist:
 
 ```ruby
 describe aws_dynamodb_tables do

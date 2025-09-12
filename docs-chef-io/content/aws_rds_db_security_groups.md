@@ -53,7 +53,7 @@ For additional information, see the [AWS documentation on the `AWS::RDS::DBSecur
 
 ## Examples
 
-**Ensure a DB security group name is available.**
+Ensure a DB security group name is available:
 
 ```ruby
 describe aws_rds_db_security_groups do
@@ -61,7 +61,7 @@ describe aws_rds_db_security_groups do
 end
 ```
 
-**Ensure a DB security group ARN is available.**
+Ensure a DB security group ARN is available:
 
 ```ruby
 describe aws_rds_db_security_groups do

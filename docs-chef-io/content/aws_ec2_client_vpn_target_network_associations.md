@@ -71,7 +71,7 @@ end
 
 ## Examples
 
-**Ensure an association exists.**
+Ensure an association exists:
 
 ```ruby
 describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
@@ -79,7 +79,7 @@ describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: 
 end
 ```
 
-**Ensure that the status code is `active`.**
+Ensure that the status code is `active`:
 
 ```ruby
 describe aws_ec2_client_vpn_target_network_associations(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do

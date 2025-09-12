@@ -54,7 +54,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Redshift cluster parameter group has parameter groups.**
+Ensure a Redshift cluster parameter group has parameter groups:
 
 ```ruby
 describe aws_redshift_cluster_parameter_groups do
@@ -62,7 +62,7 @@ describe aws_redshift_cluster_parameter_groups do
 end
 ```
 
-**Verify the number of Redshift cluster parameter groups.**
+Verify the number of Redshift cluster parameter groups:
 
 ```ruby
 describe aws_redshift_cluster_parameter_groups do
@@ -70,7 +70,7 @@ describe aws_redshift_cluster_parameter_groups do
 end
 ```
 
-**Verify the family name exists for at least one of the cluster parameter groups.**
+Verify the family name exists for at least one of the cluster parameter groups:
 
 ```ruby
 describe aws_redshift_cluster_parameter_groups do

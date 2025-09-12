@@ -48,7 +48,7 @@ For additional information, see the [AWS documentation on IAM Instance Profile](
 
 ## Examples
 
-**Ensure a server certificate name is available.**
+Ensure a server certificate name is available:
 
 ```ruby
 describe aws_iam_server_certificates do
@@ -56,7 +56,7 @@ describe aws_iam_server_certificates do
 end
 ```
 
-**Ensure that an arn is available.**
+Ensure that an arn is available:
 
 ```ruby
 describe aws_iam_server_certificates do

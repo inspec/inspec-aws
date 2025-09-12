@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a rule set name is available.**
+Ensure a rule set name is available:
 
 ```ruby
 describe aws_ses_receipt_rule_sets do

@@ -161,7 +161,7 @@ This resource must be provided with the parameter 'all_amis' (returns ALL AMIs a
 
 ## Examples
 
-**Ensure ID of an AMI exists.**
+Ensure ID of an AMI exists:
 
 ```ruby
 describe aws_amis(all_amis: 'true') do
@@ -169,7 +169,7 @@ describe aws_amis(all_amis: 'true') do
 end
 ```
 
-**Interrogate AMIs Belong to the Current User Only.**
+Interrogate AMIs Belong to the Current User Only:
 
 ```ruby
 describe aws_amis(owners: 'self') do
@@ -178,7 +178,7 @@ describe aws_amis(owners: 'self') do
 end
 ```
 
-**Interrogate AMIs Belong to the Current User and the Amazon.**
+Interrogate AMIs Belong to the Current User and the Amazon:
 
 ```ruby
 describe aws_amis(owners: ['self', 'amazon']) do

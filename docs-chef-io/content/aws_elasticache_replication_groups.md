@@ -45,7 +45,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that exactly three ElastiCache replication groups exist.**
+Ensure that exactly three ElastiCache replication groups exist:
 
 ```ruby
 describe aws_elasticache_replication_groups do
@@ -53,7 +53,7 @@ describe aws_elasticache_replication_groups do
 end
 ```
 
-**Request the IDs of all ElastiCache replication groups, then test in-depth using `aws_elasticache_replication_group`.**
+Request the IDs of all ElastiCache replication groups, then test in-depth using `aws_elasticache_replication_group`:
 
 ```ruby
 aws_elasticache_replication_groups.ids.each do |replication_group_id|

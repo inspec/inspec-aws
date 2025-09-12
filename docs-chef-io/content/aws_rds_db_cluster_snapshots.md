@@ -137,7 +137,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a cluster snapshot id is available.**
+Ensure a cluster snapshot id is available:
 
 ```ruby
 describe aws_rds_db_cluster_snapshots do
@@ -145,7 +145,7 @@ describe aws_rds_db_cluster_snapshots do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_rds_db_cluster_snapshots do

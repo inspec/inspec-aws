@@ -103,7 +103,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the Name of a SSM Document.**
+Check the Name of a SSM Document:
 
 ```ruby
 describe aws_ssm_document(name: 'document-name-1234') do

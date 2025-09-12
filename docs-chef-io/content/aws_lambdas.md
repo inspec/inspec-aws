@@ -34,7 +34,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Tests that all lambdas with a particular tag is correctly deployed.**
+Tests that all lambdas with a particular tag is correctly deployed:
 
 ````
 lambdas = aws_lambdas()

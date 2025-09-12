@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a code signing config ID is available.**
+Ensure a code signing config ID is available:
 
 ```ruby
 describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do
@@ -62,7 +62,7 @@ describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_C
 end
 ```
 
-**Ensure a code signing config ARN is available.**
+Ensure a code signing config ARN is available:
 
 ```ruby
 describe aws_lambda_code_signing_config(code_signing_config_arn: 'CODE_SIGNING_CONFIG_ARN') do

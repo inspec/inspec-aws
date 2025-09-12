@@ -104,7 +104,7 @@ end
 
 ## Examples
 
-**Ensure a branch ID is available.**
+Ensure a branch ID is available:
 
 ```ruby
 describe aws_amplify_branches(app_id: 'APP_ID') do
@@ -112,7 +112,7 @@ describe aws_amplify_branches(app_id: 'APP_ID') do
 end
 ```
 
-**Ensure a branch name is available.**
+Ensure a branch name is available:
 
 ```ruby
 describe aws_amplify_branches(app_id: 'APP_ID') do

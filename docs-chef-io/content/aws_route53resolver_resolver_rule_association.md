@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a resolver rule name is available.**
+Ensure a resolver rule name is available:
 
 ```ruby
 describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do
@@ -62,7 +62,7 @@ describe aws_route53resolver_resolver_rule_association(resolver_rule_association
 end
 ```
 
-**Ensure that the status is `COMPLETE` or `FAILED`.**
+Ensure that the status is `COMPLETE` or `FAILED`:
 
 ```ruby
 describe aws_route53resolver_resolver_rule_association(resolver_rule_association_id: 'RESOLVER_RULE_ASSOCIATION_ID') do

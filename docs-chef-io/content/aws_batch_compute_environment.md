@@ -115,7 +115,7 @@ end
 
 ## Examples
 
-**Ensure a compute environment name is available.**
+Ensure a compute environment name is available:
 
 ```ruby
 describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRONMENT_NAME') do
@@ -123,7 +123,7 @@ describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRO
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_batch_compute_environment(compute_environment_name: 'COMPUTE_ENVIRONMENT_NAME') do

@@ -59,7 +59,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ARN is available.**
+Ensure an ARN is available:
 
 ```ruby
 describe aws_cloudfront_realtime_log_configs do
@@ -67,7 +67,7 @@ describe aws_cloudfront_realtime_log_configs do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_cloudfront_realtime_log_configs do

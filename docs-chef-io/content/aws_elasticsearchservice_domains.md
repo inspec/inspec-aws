@@ -37,7 +37,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a domain name is available.**
+Ensure a domain name is available:
 
 ```ruby
 describe aws_elasticsearchservice_domains do

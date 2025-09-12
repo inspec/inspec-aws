@@ -84,7 +84,7 @@ If not provided, all Access Keys for all Users will be retrieved.
 
 ## Examples
 
-**Test all Active keys.**
+Test all Active keys:
 
 ```ruby
 describe aws_iam_access_keys.where(active: true) do
@@ -92,7 +92,7 @@ describe aws_iam_access_keys.where(active: true) do
 end
 ```
 
-**Ensure a User has no Access Keys.**
+Ensure a User has no Access Keys:
 
 ```ruby
 describe aws_iam_access_keys.where(username: 'untrusted-account') do

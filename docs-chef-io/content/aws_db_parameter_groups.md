@@ -48,7 +48,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure the group name of a DB parameter group exists.**
+Ensure the group name of a DB parameter group exists:
 
 ```ruby
 describe aws_db_parameter_groups do

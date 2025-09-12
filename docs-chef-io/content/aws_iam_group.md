@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure group contains a certain user.**
+Ensure group contains a certain user:
 
 ```ruby
 describe aws_iam_group('admin-group') do

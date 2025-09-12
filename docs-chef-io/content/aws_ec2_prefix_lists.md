@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a prefix list ID is available.**
+Ensure a prefix list ID is available:
 
 ```ruby
 describe aws_ec2_prefix_lists do
@@ -72,7 +72,7 @@ describe aws_ec2_prefix_lists do
 end
 ```
 
-**Ensure an address family is available.**
+Ensure an address family is available:
 
 ```ruby
 describe aws_ec2_prefix_lists do
@@ -80,7 +80,7 @@ describe aws_ec2_prefix_lists do
 end
 ```
 
-**Ensure that the state is `AVAILABLE`.**
+Ensure that the state is `AVAILABLE`:
 
 ```ruby
 describe aws_ec2_prefix_lists do

@@ -76,7 +76,7 @@ end
 
 ## Examples
 
-**Ensure a Launch Config is using the correct AMI .**
+Ensure a Launch Config is using the correct AMI :
 
 ```ruby
 describe aws_launch_configuration('my-config') do
@@ -84,7 +84,7 @@ describe aws_launch_configuration('my-config') do
 end
 ```
 
-**Test the instance type used in a Launch Config.**
+Test the instance type used in a Launch Config:
 
 ```ruby
 describe aws_launch_configuration('my-config') do
@@ -92,7 +92,7 @@ describe aws_launch_configuration('my-config') do
 end
 ```
 
-**Ensure a Launch Config is associated with the right IAM Profile.**
+Ensure a Launch Config is associated with the right IAM Profile:
 
 ```ruby
 describe aws_launch_configuration('my-config') do
@@ -100,7 +100,7 @@ describe aws_launch_configuration('my-config') do
 end
 ```
 
-**Ensure the Launch Config does not set a public IP.**
+Ensure the Launch Config does not set a public IP:
 
 ```ruby
 describe aws_launch_configuration('my-config') do
@@ -108,7 +108,7 @@ describe aws_launch_configuration('my-config') do
 end
 ```
 
-**Ensure the correct UserData is set on launched instances.**
+Ensure the correct UserData is set on launched instances:
 
 ```ruby
 describe aws_launch_configuration('my-config') do

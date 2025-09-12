@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway attachment ID is available.**
+Ensure a transit gateway attachment ID is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
@@ -62,7 +62,7 @@ describe aws_transit_gateway_multicast_domain_association(transit_gateway_multic
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain_association(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do

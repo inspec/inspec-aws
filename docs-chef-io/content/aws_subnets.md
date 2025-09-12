@@ -63,7 +63,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Look for all subnets within a vpc.**
+Look for all subnets within a vpc:
 
 ```ruby
 describe aws_subnets.where(vpc_id: 'vpc-12345678') do
@@ -72,7 +72,7 @@ describe aws_subnets.where(vpc_id: 'vpc-12345678') do
 end
 ```
 
-**Examine a specific subnet.**
+Examine a specific subnet:
 
 ```ruby
 describe aws_subnets.where(subnet_id: 'subnet-12345678') do
@@ -80,7 +80,7 @@ describe aws_subnets.where(subnet_id: 'subnet-12345678') do
 end
 ```
 
-**Examine a specific vpcs Subnet IDs.**
+Examine a specific vpcs Subnet IDs:
 
 ```ruby
 describe aws_subnets.where(vpc_id: 'vpc-12345678') do
@@ -88,7 +88,7 @@ describe aws_subnets.where(vpc_id: 'vpc-12345678') do
 end
 ```
 
-**Examine a specific subnets VPC IDS.**
+Examine a specific subnets VPC IDS:
 
 ```ruby
 describe aws_subnets.where(subnet_id: 'subnet-12345678') do
@@ -96,7 +96,7 @@ describe aws_subnets.where(subnet_id: 'subnet-12345678') do
 end
 ```
 
-**Check existing tags.**
+Check existing tags:
 
 ```ruby
 describe aws_subnets.where(vpc_id: vpc_id) do

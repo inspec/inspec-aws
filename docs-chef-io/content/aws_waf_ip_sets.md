@@ -44,7 +44,7 @@ end
 
 ## Examples
 
-**Ensure an IP set is available.**
+Ensure an IP set is available:
 
 ```ruby
 describe aws_waf_ip_sets do
@@ -52,7 +52,7 @@ describe aws_waf_ip_sets do
 end
 ```
 
-**Ensure an IP set name is available.**
+Ensure an IP set name is available:
 
 ```ruby
 describe aws_waf_ip_sets do

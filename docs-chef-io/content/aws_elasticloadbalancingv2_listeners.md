@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure there are ports attached to the listener.**
+Ensure there are ports attached to the listener:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener(load_balancer_arn: "LOAD_BALANCER_ARN") do

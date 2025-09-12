@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a public key ID is available.**
+Ensure a public key ID is available:
 
 ```ruby
 describe aws_cloudfront_public_key(id: "PUBLIC_KEY_ID") do
@@ -62,7 +62,7 @@ describe aws_cloudfront_public_key(id: "PUBLIC_KEY_ID") do
 end
 ```
 
-**Ensure a public key name is available.**
+Ensure a public key name is available:
 
 ```ruby
 describe aws_cloudfront_public_key(id: "PUBLIC_KEY_ID") do

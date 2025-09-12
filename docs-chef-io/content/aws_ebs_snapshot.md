@@ -102,7 +102,7 @@ This resource accepts a single parameter, either the EBS Snapshot ID or name (fr
 
 ## Examples
 
-**Test that an EBS Snapshot is encrypted.**
+Test that an EBS Snapshot is encrypted:
 
 ```ruby
 describe aws_ebs_snapshot(id: 'SNAPSHOT_ID')do
@@ -110,7 +110,7 @@ describe aws_ebs_snapshot(id: 'SNAPSHOT_ID')do
 end
 ```
 
-**Test that an EBS Snapshot has the expected Name tag.**
+Test that an EBS Snapshot has the expected Name tag:
 
 ```ruby
 describe aws_ebs_snapshot(id: 'SNAPSHOT_ID') do
@@ -118,7 +118,7 @@ describe aws_ebs_snapshot(id: 'SNAPSHOT_ID') do
 end
 ```
 
-**Tests that no specified accounts have been given access to create volumes from this EBS Snapshot.**
+Tests that no specified accounts have been given access to create volumes from this EBS Snapshot:
 
 ```ruby
 describe aws_ebs_snapshot(id: 'SNAPSHOT_ID') do

@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a VPN gateway ID is available.**
+Ensure a VPN gateway ID is available:
 
 ```ruby
 describe aws_ec2_vpn_gateway_route_propagations do
@@ -52,7 +52,7 @@ describe aws_ec2_vpn_gateway_route_propagations do
 end
 ```
 
-**Ensure a route table ID is available.**
+Ensure a route table ID is available:
 
 ```ruby
 describe aws_ec2_vpn_gateway_route_propagations do

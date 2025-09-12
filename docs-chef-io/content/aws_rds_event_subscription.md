@@ -64,7 +64,7 @@ end
 
 ## Examples
 
-**Ensure an event subscription name is available.**
+Ensure an event subscription name is available:
 
 ```ruby
 describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
@@ -72,7 +72,7 @@ describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME'
 end
 ```
 
-**Ensure an event subscription SNS topic ARN is available.**
+Ensure an event subscription SNS topic ARN is available:
 
 ```ruby
 describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do
@@ -80,7 +80,7 @@ describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME'
 end
 ```
 
-**Ensure a customer AWS ID is available.**
+Ensure a customer AWS ID is available:
 
 ```ruby
 describe aws_rds_event_subscription(subscription_name: 'EVENT_SUBSCRIPTION_NAME') do

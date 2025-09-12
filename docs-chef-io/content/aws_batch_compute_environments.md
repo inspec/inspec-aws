@@ -59,7 +59,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a work group name is available.**
+Ensure a work group name is available:
 
 ```ruby
 describe aws_batch_compute_environments do
@@ -67,7 +67,7 @@ describe aws_batch_compute_environments do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_batch_compute_environments do

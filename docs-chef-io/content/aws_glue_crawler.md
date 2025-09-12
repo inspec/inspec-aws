@@ -93,7 +93,7 @@ end
 
 ## Examples
 
-**Ensure a crawler name is available.**
+Ensure a crawler name is available:
 
 ```ruby
 describe aws_glue_crawler(name: 'CRAWLER_NAME') do
@@ -101,7 +101,7 @@ describe aws_glue_crawler(name: 'CRAWLER_NAME') do
 end
 ```
 
-**Verify the database name in the crawler.**
+Verify the database name in the crawler:
 
 ```ruby
 describe aws_glue_crawler(name: 'CRAWLER_NAME') do

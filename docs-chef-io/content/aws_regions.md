@@ -44,7 +44,7 @@ end
 
 The following examples show how to use this InSpec audit resource.
 
-**Check for a Particular Region.**
+Check for a Particular Region:
 
 ```ruby
 describe aws_regions do
@@ -52,7 +52,7 @@ describe aws_regions do
 end
 ```
 
-**Check an endpoint exists.**
+Check an endpoint exists:
 
 ```ruby
 describe aws_regions do
@@ -60,7 +60,7 @@ describe aws_regions do
 end
 ```
 
-**Use the regions resource to check single regions in more detail.**
+Use the regions resource to check single regions in more detail:
 
 ```ruby
 aws_regions.region_names.each do |aws_region_name|

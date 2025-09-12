@@ -145,7 +145,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure there are no EMR clusters in an undesired state.**
+Ensure there are no EMR clusters in an undesired state:
 
 ```ruby
 describe aws_emr_clusters do

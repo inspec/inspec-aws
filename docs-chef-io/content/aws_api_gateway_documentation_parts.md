@@ -57,7 +57,7 @@ end
 
 ## Examples
 
-**Ensure that the documentation part ID exists.**
+Ensure that the documentation part ID exists:
 
 ```ruby
 describe aws_api_gateway_documentation_parts(rest_api_id: 'REST_API_ID') do

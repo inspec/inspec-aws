@@ -84,7 +84,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a network insights path ID is available.**
+Ensure a network insights path ID is available:
 
 ```ruby
 describe aws_ec2_network_insights_paths do
@@ -92,7 +92,7 @@ describe aws_ec2_network_insights_paths do
 end
 ```
 
-**Ensure a network insights path ARN is available.**
+Ensure a network insights path ARN is available:
 
 ```ruby
 describe aws_ec2_network_insights_paths do

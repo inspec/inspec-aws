@@ -79,7 +79,7 @@ For additional information, see the [AWS documentation on ElasticLoadBalancingV2
 
 ## Examples
 
-**Ensure a target group ARN is available.**
+Ensure a target group ARN is available:
 
 ```ruby
 describe aws_elasticloadbalancingv2_target_groups  do
@@ -87,7 +87,7 @@ describe aws_elasticloadbalancingv2_target_groups  do
 end
 ```
 
-**Ensure that the target group name exists.**
+Ensure that the target group name exists:
 
 ```ruby
 describe aws_elasticloadbalancingv2_target_groups  do

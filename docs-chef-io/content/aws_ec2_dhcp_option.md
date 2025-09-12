@@ -72,7 +72,7 @@ This resource requires either the `dhcp_options_id` or `name` parameter.
 
 ## Examples
 
-**Test tags on the DHCP options.**
+Test tags on the DHCP options:
 
 ```ruby
 describe aws_ec2_dhcp_option('dopt-0123456789abcdefg') do

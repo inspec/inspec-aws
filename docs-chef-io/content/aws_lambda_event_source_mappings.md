@@ -91,7 +91,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an UUID is available.**
+Ensure an UUID is available:
 
 ```ruby
 describe aws_lambda_event_source_mappings do
@@ -99,7 +99,7 @@ describe aws_lambda_event_source_mappings do
 end
 ```
 
-**Ensure that a mapping has the `Creating` state or not.**
+Ensure that a mapping has the `Creating` state or not:
 
 ```ruby
 describe aws_lambda_event_source_mappings do

@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure that an ID is available.**
+Ensure that an ID is available:
 
 ```ruby
 describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
@@ -57,7 +57,7 @@ describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do
 end
 ```
 
-**Ensure that stage name is available.**
+Ensure that stage name is available:
 
 ```ruby
 describe aws_s3_access_points(bucket_name: 'BUCKET_NAME') do

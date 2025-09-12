@@ -43,7 +43,7 @@ end
 
 ## Examples
 
-**Ensure a dashboard ARN is available.**
+Ensure a dashboard ARN is available:
 
 ```ruby
 describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
@@ -51,7 +51,7 @@ describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do
 end
 ```
 
-**Ensure a dashboard body is available.**
+Ensure a dashboard body is available:
 
 ```ruby
 describe aws_cloudwatch_dashboard(dashboard_name: 'DASHBOARD_NAME') do

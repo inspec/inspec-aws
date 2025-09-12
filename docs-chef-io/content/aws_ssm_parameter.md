@@ -68,7 +68,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the Name of a SSM Parameter.**
+Check the Name of a SSM Parameter:
 
 ```ruby
 describe aws_ssm_parameter(name: 'ssm_parameter-name-1234') do

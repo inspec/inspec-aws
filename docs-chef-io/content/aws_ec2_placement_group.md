@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a placement group name is available.**
+Ensure a placement group name is available:
 
 ```ruby
 describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do
@@ -62,7 +62,7 @@ describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') d
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_placement_group(placement_group_name: 'PLACEMENT_GROUP_NAME') do

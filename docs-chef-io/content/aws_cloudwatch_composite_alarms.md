@@ -99,7 +99,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an actions is enabled.**
+Ensure an actions is enabled:
 
 ```ruby
 describe aws_cloudwatch_composite_alarms do
@@ -107,7 +107,7 @@ describe aws_cloudwatch_composite_alarms do
 end
 ```
 
-**Ensure an alarm arn is available.**
+Ensure an alarm arn is available:
 
 ```ruby
 describe aws_cloudwatch_composite_alarms do
@@ -115,7 +115,7 @@ describe aws_cloudwatch_composite_alarms do
 end
 ```
 
-**Ensure an alarm name is available.**
+Ensure an alarm name is available:
 
 ```ruby
 describe aws_cloudwatch_composite_alarms do

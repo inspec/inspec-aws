@@ -42,7 +42,7 @@ No required parameters.
 
 ## Examples
 
-**Ensure a rule is available by rule ID.**
+Ensure a rule is available by rule ID:
 
 ```ruby
 describe aws_waf_rules do
@@ -50,7 +50,7 @@ describe aws_waf_rules do
 end
 ```
 
-**Ensure a rule is available by name.**
+Ensure a rule is available by name:
 
 ```ruby
 describe aws_waf_rules do

@@ -52,7 +52,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a rule name is available.**
+Ensure a rule name is available:
 
 ```ruby
 describe aws_cloudwatch_insight_rules do
@@ -60,7 +60,7 @@ describe aws_cloudwatch_insight_rules do
 end
 ```
 
-**Ensure a state is available.**
+Ensure a state is available:
 
 ```ruby
 describe aws_cloudwatch_insight_rules do

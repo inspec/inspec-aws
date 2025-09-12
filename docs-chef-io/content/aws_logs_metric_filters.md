@@ -47,7 +47,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a filter name is available.**
+Ensure a filter name is available:
 
 ```ruby
 describe aws_logs_metric_filters do
@@ -55,7 +55,7 @@ describe aws_logs_metric_filters do
 end
 ```
 
-**Ensure a log group name is available.**
+Ensure a log group name is available:
 
 ```ruby
 describe aws_logs_metric_filters do

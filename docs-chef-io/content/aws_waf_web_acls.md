@@ -44,7 +44,7 @@ No required parameters.
 
 ## Examples
 
-**Ensure a web ACL is available.**
+Ensure a web ACL is available:
 
 ```ruby
 describe aws_waf_web_acls do
@@ -52,7 +52,7 @@ describe aws_waf_web_acls do
 end
 ```
 
-**Ensure a web ACL name is available..**
+Ensure a web ACL name is available.:
 
 ```ruby
 describe aws_waf_web_acls do

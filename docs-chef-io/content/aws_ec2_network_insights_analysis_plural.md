@@ -99,7 +99,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a network insights analysis ID is available.**
+Ensure a network insights analysis ID is available:
 
 ```ruby
 describe aws_ec2_network_insights_analysis_plural do
@@ -107,7 +107,7 @@ describe aws_ec2_network_insights_analysis_plural do
 end
 ```
 
-**Ensure that the network insights path ID is available.**
+Ensure that the network insights path ID is available:
 
 ```ruby
 describe aws_ec2_network_insights_analysis_plural do

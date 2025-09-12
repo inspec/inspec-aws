@@ -79,7 +79,7 @@ end
 
 ## Examples
 
-**Ensure an auto scaling group name is available.**
+Ensure an auto scaling group name is available:
 
 ```ruby
 describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_GROUP_NAME') do
@@ -87,7 +87,7 @@ describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_G
 end
 ```
 
-**Ensure that the policy type is available.**
+Ensure that the policy type is available:
 
 ```ruby
 describe aws_autoscaling_scaling_policy(auto_scaling_group_name: 'AUTO_SCALING_GROUP_NAME') do

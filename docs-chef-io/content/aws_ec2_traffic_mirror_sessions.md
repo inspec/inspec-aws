@@ -82,19 +82,19 @@ For additional information, see [the API reference documentation](https://docs.a
 
 ## Examples
 
-**Test that an AWS Traffic Mirror session exists.**
+Test that an AWS Traffic Mirror session exists:
 
     describe aws_ec2_traffic_mirror_sessions do
       it { should exist }
     end
 
-**Test that Traffic Mirror target includes a value.**
+Test that Traffic Mirror target includes a value:
 
     describe aws_ec2_traffic_mirror_sessions do
       its('traffic_mirror_target_ids') { should include 'TRAFFIC_MIRROR_TARGET_ID' }
     end
 
-**Test the a Traffic Mirror session has a description.**
+Test the a Traffic Mirror session has a description:
 
     describe aws_ec2_traffic_mirror_sessions do
       its('description') { should include 'DESCRIPTION_TEXT' }

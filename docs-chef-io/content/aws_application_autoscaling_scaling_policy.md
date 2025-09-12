@@ -121,7 +121,7 @@ end
 
 ## Examples
 
-**Ensure a policy name is available.**
+Ensure a policy name is available:
 
 ```ruby
 describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do
@@ -129,7 +129,7 @@ describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE
 end
 ```
 
-**Ensure a policy type is available.**
+Ensure a policy type is available:
 
 ```ruby
 describe aws_application_autoscaling_scaling_policy( service_namespace: 'SERVICE_NAMESPACE' ) do

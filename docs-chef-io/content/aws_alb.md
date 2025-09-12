@@ -92,7 +92,7 @@ end
 
 ## Examples
 
-**Test that an ALB has its availability zones configured correctly.**
+Test that an ALB has its availability zones configured correctly:
 
 ```ruby
 describe aws_alb('arn::alb') do
@@ -102,7 +102,7 @@ describe aws_alb('arn::alb') do
 end
 ```
 
-**Test whether the access log is enabled for the Application Load Balancer.**
+Test whether the access log is enabled for the Application Load Balancer:
 
 ```ruby
 describe aws_alb('load_balancer_arn::alb') do

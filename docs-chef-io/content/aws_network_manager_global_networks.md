@@ -52,7 +52,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Global Network ID is available.**
+Ensure a Global Network ID is available:
 
 ```ruby
 describe aws_network_manager_global_networks do
@@ -60,7 +60,7 @@ describe aws_network_manager_global_networks do
 end
 ```
 
-**Ensure that the state is `AVAILABLE`.**
+Ensure that the state is `AVAILABLE`:
 
 ```ruby
 describe aws_network_manager_global_networks do

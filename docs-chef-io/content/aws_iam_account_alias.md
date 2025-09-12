@@ -35,7 +35,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Check that the account alias has not be set.**
+Check that the account alias has not be set:
 
 ```ruby
 describe aws_iam_account_alias do
@@ -43,7 +43,7 @@ describe aws_iam_account_alias do
 end
 ```
 
-**Test if the account alias starts with expected prefix.**
+Test if the account alias starts with expected prefix:
 
 ```ruby
 describe aws_iam_account_alias do

@@ -64,7 +64,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Check the publishing frequency of a Detector.**
+Check the publishing frequency of a Detector:
 
 ```ruby
 describe aws_guardduty_detector(detector_id: '12abc34d567e8fa901bc2d34e56789f0') do

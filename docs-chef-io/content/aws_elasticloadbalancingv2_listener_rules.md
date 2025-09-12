@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a listener ARN is available.**
+Ensure a listener ARN is available:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do
@@ -69,7 +69,7 @@ describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN')
 end
 ```
 
-**Verify the priority of the desired rule ARN.**
+Verify the priority of the desired rule ARN:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener_rules(listener_arn: 'LISTENER_ARN') do

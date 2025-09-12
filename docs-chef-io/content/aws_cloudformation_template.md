@@ -126,7 +126,7 @@ end
 
 ## Examples
 
-**Ensure that the parameter keys exists by passing the required parameter `stack_name`.**
+Ensure that the parameter keys exists by passing the required parameter `stack_name`:
 
 ```ruby
 describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
@@ -134,7 +134,7 @@ describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
     end
 ```
 
-**Ensure that the parameter keys exists by passing the required parameter `template_url`.**
+Ensure that the parameter keys exists by passing the required parameter `template_url`:
 
 ```ruby
 describe aws_cloudformation_template(template_url: 'TEMPLATE_URL') do
@@ -142,7 +142,7 @@ describe aws_cloudformation_template(template_url: 'TEMPLATE_URL') do
 end
 ```
 
-**Ensure that the resource_types exists by passing the required parameter `stack_name`.**
+Ensure that the resource_types exists by passing the required parameter `stack_name`:
 
 ```ruby
 describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
@@ -150,7 +150,7 @@ describe aws_cloudformation_template(stack_name: 'STACK_NAME') do
     end
 ```
 
-**Ensure that the resource_types exists by passing the required parameter `template_url`.**
+Ensure that the resource_types exists by passing the required parameter `template_url`:
 
 ```ruby
 describe aws_cloudformation_template(template_url: 'TEMPLATE_URL') do

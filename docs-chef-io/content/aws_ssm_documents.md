@@ -59,7 +59,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure a Name of a SSM Document exists.**
+Ensure a Name of a SSM Document exists:
 
 ```ruby
 describe aws_ssm_documents do

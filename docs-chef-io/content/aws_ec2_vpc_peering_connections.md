@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a VPC Peering Connection ID is available.**
+Ensure a VPC Peering Connection ID is available:
 
 ```ruby
 describe aws_ec2_vpc_peering_connections do
@@ -72,7 +72,7 @@ describe aws_ec2_vpc_peering_connections do
 end
 ```
 
-**Ensure that the status is `available`.**
+Ensure that the status is `available`:
 
 ```ruby
 describe aws_ec2_vpc_peering_connections do

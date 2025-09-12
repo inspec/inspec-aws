@@ -51,7 +51,7 @@ For a comprehensive list of properties available to test on an RDS Instance see 
 
 ## Examples
 
-**Test the engine used with an RDS instance.**
+Test the engine used with an RDS instance:
 
 ```ruby
 describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
@@ -60,7 +60,7 @@ describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
 end
 ```
 
-**Test the storage allocated to an RDS instance.**
+Test the storage allocated to an RDS instance:
 
 ```ruby
 describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
@@ -69,7 +69,7 @@ describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
 end
 ```
 
-**Test the instance type and master username.**
+Test the instance type and master username:
 
 ```ruby
 describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
@@ -78,7 +78,7 @@ describe aws_rds_instance(db_instance_identifier: 'awsrds123') do
 end
 ```
 
-**Test the instance type and master username from cached resources.**
+Test the instance type and master username from cached resources:
 
 ```ruby
 resource = aws_rds_instances.where(db_instance_identifier: 'awsrds123')

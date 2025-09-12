@@ -97,7 +97,7 @@ If no parameter is provided, the subscription's default VPC will be returned.
 
 The following examples show how to use this InSpec audit resource.
 
-**Test the CIDR Block of a named VPC.**
+Test the CIDR Block of a named VPC:
 
 ```ruby
 describe aws_vpc('VPC-87654321') do
@@ -105,18 +105,18 @@ describe aws_vpc('VPC-87654321') do
 end
 ```
 
-**Test the state of the VPC.**
+Test the state of the VPC:
 
 ```ruby
 describe aws_vpc do
   its ('STATE') { should eq 'AVAILABLE' }
-**or equivalently.**
+or equivalently:
 
   it { should be_available }
 end
 ```
 
-**Test the allowed tenancy of instances launched into the VPC.**
+Test the allowed tenancy of instances launched into the VPC:
 
 ```ruby
 describe aws_vpc do
@@ -127,7 +127,7 @@ describe aws_vpc do
 end
 ```
 
-**Test tags on the VPC.**
+Test tags on the VPC:
 
 ```ruby
 describe aws_vpc do
@@ -136,7 +136,7 @@ describe aws_vpc do
 end
 ```
 
-**Test if the IPV6 CIDR Block is associated to a named VPC.**
+Test if the IPV6 CIDR Block is associated to a named VPC:
 
 ```ruby
 describe aws_vpc do
@@ -144,7 +144,7 @@ describe aws_vpc do
 end
 ```
 
-**Test if the CIDR Block is associated to a named VPC.**
+Test if the CIDR Block is associated to a named VPC:
 
 ```ruby
 describe aws_vpc do

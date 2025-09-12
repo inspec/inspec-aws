@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure a product name is available.**
+Ensure a product name is available:
 
 ```ruby
 describe aws_servicecatalog_portfolio_product_association(product_id: 'PRODUCT_ID') do
@@ -60,7 +60,7 @@ describe aws_servicecatalog_portfolio_product_association(product_id: 'PRODUCT_I
 end
 ```
 
-**Ensure a status is available.**
+Ensure a status is available:
 
 ```ruby
 describe aws_servicecatalog_portfolio_product_association(product_id: 'PRODUCT_ID') do

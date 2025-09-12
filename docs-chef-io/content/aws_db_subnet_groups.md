@@ -52,7 +52,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure DB Subnet Group Name of a subnet group exists.**
+Ensure DB Subnet Group Name of a subnet group exists:
 
 ```ruby
 describe aws_db_subnet_groups do

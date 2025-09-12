@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a database name is available.**
+Ensure a database name is available:
 
 ```ruby
 describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
@@ -74,7 +74,7 @@ describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do
 end
 ```
 
-**Ensure a target database name is available.**
+Ensure a target database name is available:
 
 ```ruby
 describe aws_glue_database(name: 'GLUE_DATABASE_NAME') do

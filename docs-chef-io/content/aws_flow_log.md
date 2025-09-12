@@ -54,7 +54,7 @@ This resource requires at least one of the following parameters to be provided: 
 
 ## Examples
 
-**Search for a flow log by the associated subnet id.**
+Search for a flow log by the associated subnet id:
 
 ```ruby
 describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
@@ -62,7 +62,7 @@ describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
 end
 ```
 
-**Search for a flow log by the associated VPC id.**
+Search for a flow log by the associated VPC id:
 
 ```ruby
 describe aws_flow_log(vpc_id: 'vpc-96cabaef') do
@@ -70,7 +70,7 @@ describe aws_flow_log(vpc_id: 'vpc-96cabaef') do
 end
 ```
 
-**Ensure the correct Flow Log is associated with a Subnet.**
+Ensure the correct Flow Log is associated with a Subnet:
 
 ```ruby
 describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
@@ -78,7 +78,7 @@ describe aws_flow_log(subnet_id: 'subnet-c6a4319c') do
 end
 ```
 
-**Ensure the Flow Log is associated with the correct resource type.**
+Ensure the Flow Log is associated with the correct resource type:
 
 ```ruby
 describe aws_flow_log('fl-9c718cf5') do

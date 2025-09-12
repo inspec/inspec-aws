@@ -72,7 +72,7 @@ The repository name must be provided. The ID of the registry is optional.
 
 ## Examples
 
-**Ensure that there are exactly 3 images.**
+Ensure that there are exactly 3 images:
 
 ```ruby
 describe aws_ecr_images(repository_name: 'my-repo') do
@@ -80,7 +80,7 @@ describe aws_ecr_images(repository_name: 'my-repo') do
 end
 ```
 
-**Use this InSpec resource to request the digests of all images, then test in-depth using `aws_ecr_image`.**
+Use this InSpec resource to request the digests of all images, then test in-depth using `aws_ecr_image`:
 
 ```ruby
 aws_ecr_images(repository_name: 'my-repo').digests.each do |image_digest|

@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure that the documentation versions ID exists.**
+Ensure that the documentation versions ID exists:
 
 ```ruby
 describe aws_api_gateway_documentation_versions(rest_api_id: 'REST_API_ID') do

@@ -101,7 +101,7 @@ end
 
 ## Examples
 
-**Ensure a record name is available.**
+Ensure a record name is available:
 
 ```ruby
 describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
@@ -109,7 +109,7 @@ describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do
 end
 ```
 
-**Ensure that the failover of a record set is configured to `PRIMARY`.**
+Ensure that the failover of a record set is configured to `PRIMARY`:
 
 ```ruby
 describe aws_route53_record_sets(hosted_zone_id: 'HOSTED_ZONE_ID') do

@@ -68,7 +68,7 @@ For a comprehensive list of properties available to test on an RDS option group 
 
 ## Examples
 
-**Test the engine used with an aws_rds_group_option.**
+Test the engine used with an aws_rds_group_option:
 
 ```ruby
 describe aws_rds_group_option(option_group_name: 'mysql') do
@@ -77,7 +77,7 @@ describe aws_rds_group_option(option_group_name: 'mysql') do
 end
 ```
 
-**Test the options to allocated to an aws_rds_group_option.**
+Test the options to allocated to an aws_rds_group_option:
 
 ```ruby
 describe aws_rds_group_option(option_group_name: 'mysql') do

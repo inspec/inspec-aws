@@ -62,7 +62,7 @@ end
 
 ## Examples
 
-**Ensure a service namespace is available.**
+Ensure a service namespace is available:
 
 ```ruby
 describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do
@@ -70,7 +70,7 @@ describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVIC
 end
 ```
 
-**Verify the min scale capacity.**
+Verify the min scale capacity:
 
 ```ruby
 describe aws_application_autoscaling_scalable_target( service_namespace: 'SERVICE_NAMESPACE' ) do

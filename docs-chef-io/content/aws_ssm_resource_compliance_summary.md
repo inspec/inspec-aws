@@ -73,7 +73,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the Status of a SSM Resource Compliance Summary.**
+Check the Status of a SSM Resource Compliance Summary:
 
 ```ruby
 describe aws_ssm_resource_compliance_summary(resource_id: 'resource-id-1234', status: 'status-1234') do
@@ -83,7 +83,7 @@ describe aws_ssm_resource_compliance_summary(resource_id: 'resource-id-1234', st
 end
 ```
 
-**Return specific Compliance type for a SSM Resource Compliance Summary.**
+Return specific Compliance type for a SSM Resource Compliance Summary:
 
 ```ruby
 describe aws_ssm_resource_compliance_summary(resource_id: 'resource-id-1234', compliance_type: 'compliance-type-1234') do

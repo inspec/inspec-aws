@@ -98,7 +98,7 @@ You can find detailed documentation at [NetworkAclEntry](https://docs.aws.amazon
 
 ## Examples
 
-**Test that if a network ACL is default for the VPC.**
+Test that if a network ACL is default for the VPC:
 
 ```ruby
 describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
@@ -106,7 +106,7 @@ describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
 end
 ```
 
-**Test that the ID of the VPC is `vpc-00727fc4213acee4a`.**
+Test that the ID of the VPC is `vpc-00727fc4213acee4a`:
 
 ```ruby
 describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
@@ -114,7 +114,7 @@ describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
 end
 ```
 
-**Test that the Associated subnet IDs include `subnet-07a323891825bc312`.**
+Test that the Associated subnet IDs include `subnet-07a323891825bc312`:
 
 ```ruby
 describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
@@ -122,7 +122,7 @@ describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
 end
 ```
 
-**Test that CIDR Block of ACL egress entry for rule number `100` is `10.3.0.0/18`.**
+Test that CIDR Block of ACL egress entry for rule number `100` is `10.3.0.0/18`:
 
 ```ruby
 describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
@@ -130,7 +130,7 @@ describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do
 end
 ```
 
-**Test that Port Ranges of ACL ingress entry for rule number `100` is `443`.**
+Test that Port Ranges of ACL ingress entry for rule number `100` is `443`:
 
 ```ruby
 describe aws_network_acl(network_acl_id: 'acl-001db867a1898981b') do

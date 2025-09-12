@@ -71,7 +71,7 @@ end
 
 ## Examples
 
-**Ensure a filter name is available.**
+Ensure a filter name is available:
 
 ```ruby
 describe aws_cloudwatchlogs_subscription_filters(log_group_name: "LOG_GROUP_NAME") do
@@ -79,7 +79,7 @@ describe aws_cloudwatchlogs_subscription_filters(log_group_name: "LOG_GROUP_NAME
 end
 ```
 
-**Ensure a filter log group name is available.**
+Ensure a filter log group name is available:
 
 ```ruby
 describe aws_cloudwatchlogs_subscription_filters(log_group_name: "LOG_GROUP_NAME") do

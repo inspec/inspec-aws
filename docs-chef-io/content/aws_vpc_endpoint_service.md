@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Test whether VPC endpoint service exists.**
+Test whether VPC endpoint service exists:
 
 ```ruby
 describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
@@ -64,7 +64,7 @@ describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.noteboo
 end
 ```
 
-**Test whether the ID of the attached VPC is `vpce-svc-04deb776dc2b8e67f`.**
+Test whether the ID of the attached VPC is `vpce-svc-04deb776dc2b8e67f`:
 
 ```ruby
 describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
@@ -72,7 +72,7 @@ describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.noteboo
 end
 ```
 
-**Test whether the service_type of the endpoint service is .**
+Test whether the service_type of the endpoint service is :
 
 ```ruby
 describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
@@ -80,7 +80,7 @@ describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.noteboo
 end
 ```
 
-**Test whether the availability_zones include a zone of interest.**
+Test whether the availability_zones include a zone of interest:
 
 ```ruby
 describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do
@@ -88,7 +88,7 @@ describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.noteboo
 end
 ```
 
-**Test whether the base endpoint dns_names include a dns of interest.**
+Test whether the base endpoint dns_names include a dns of interest:
 
 ```ruby
 describe aws_vpc_endpoint_service(service_name: 'aws.sagemaker.us-east-2.notebook') do

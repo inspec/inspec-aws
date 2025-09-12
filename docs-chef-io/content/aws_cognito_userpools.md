@@ -50,7 +50,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_cognito_userpools do
@@ -58,7 +58,7 @@ describe aws_cognito_userpools do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_cognito_userpools do

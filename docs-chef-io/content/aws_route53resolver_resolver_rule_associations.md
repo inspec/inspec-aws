@@ -52,7 +52,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a resolver name is available.**
+Ensure a resolver name is available:
 
 ```ruby
 describe aws_route53resolver_resolver_rule_associations do
@@ -60,7 +60,7 @@ describe aws_route53resolver_resolver_rule_associations do
 end
 ```
 
-**Ensure that the status is `COMPLETE` or `FAILED`.**
+Ensure that the status is `COMPLETE` or `FAILED`:
 
 ```ruby
 describe aws_route53resolver_resolver_rule_associations do

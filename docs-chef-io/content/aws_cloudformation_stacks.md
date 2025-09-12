@@ -53,7 +53,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Request the names of all CloudFormation stacks, then test in-depth using the aws_cloudformation_stack resource.**
+Request the names of all CloudFormation stacks, then test in-depth using the aws_cloudformation_stack resource:
 
 ```ruby
 aws_cloudformation_stacks.names.each do |stack|
@@ -65,7 +65,7 @@ aws_cloudformation_stacks.names.each do |stack|
 end
 ```
 
-**Request the names of all CloudFormation stacks created at a certain time, then test in-depth using the aws_cloudformation_stack resource.**
+Request the names of all CloudFormation stacks created at a certain time, then test in-depth using the aws_cloudformation_stack resource:
 
 ```ruby
 aws_cloudformation_stacks.where(creation_time: 'creation time') do |stack|

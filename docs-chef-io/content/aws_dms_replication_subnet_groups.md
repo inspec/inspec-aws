@@ -47,7 +47,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an identifier is available.**
+Ensure an identifier is available:
 
 ```ruby
 describe aws_dms_replication_subnet_groups do
@@ -55,7 +55,7 @@ describe aws_dms_replication_subnet_groups do
 end
 ```
 
-**Ensure that the VPC is available.**
+Ensure that the VPC is available:
 
 ```ruby
 describe aws_dms_replication_subnet_groups do

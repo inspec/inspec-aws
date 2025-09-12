@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a prefix list ID is available.**
+Ensure a prefix list ID is available:
 
 ```ruby
 describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
@@ -74,7 +74,7 @@ describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
 end
 ```
 
-**Ensure an address family is available.**
+Ensure an address family is available:
 
 ```ruby
 describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
@@ -82,7 +82,7 @@ describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do
 end
 ```
 
-**Ensure that the state is `AVAILABLE`.**
+Ensure that the state is `AVAILABLE`:
 
 ```ruby
 describe aws_ec2_prefix_list(prefix_list_id: 'PREFIX_LIST_ID') do

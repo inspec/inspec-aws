@@ -133,7 +133,7 @@ end
 
 ## Examples
 
-**Ensure an engine name is available.**
+Ensure an engine name is available:
 
 ```ruby
 describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
@@ -141,7 +141,7 @@ describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do
 end
 ```
 
-**Ensure that the endpoint listens to a specific port.**
+Ensure that the endpoint listens to a specific port:
 
 ```ruby
 describe aws_dms_endpoint(endpoint_arn: 'ENDPOINT_ARN') do

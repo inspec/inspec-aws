@@ -74,7 +74,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure there are no Users who do not have MFA enabled.**
+Ensure there are no Users who do not have MFA enabled:
 
 ```ruby
 describe aws_iam_users.where( has_mfa_enabled: false) do
@@ -82,7 +82,7 @@ describe aws_iam_users.where( has_mfa_enabled: false) do
 end
 ```
 
-**Ensure there are no Users with inline policies.**
+Ensure there are no Users with inline policies:
 
 ```ruby
 describe aws_iam_users.where(has_inline_policies: true) do
@@ -90,7 +90,7 @@ describe aws_iam_users.where(has_inline_policies: true) do
 end
 ```
 
-**Ensure there are no Users with attached policies.**
+Ensure there are no Users with attached policies:
 
 ```ruby
 describe aws_iam_users.where(has_attached_policies: true) do

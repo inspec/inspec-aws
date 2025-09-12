@@ -82,7 +82,7 @@ end
 
 ## Examples
 
-**Ensure the ARN is available.**
+Ensure the ARN is available:
 
 ```ruby
 describe aws_secretsmanager_secret(secret_id: 'SECRET_ID') do
@@ -90,7 +90,7 @@ describe aws_secretsmanager_secret(secret_id: 'SECRET_ID') do
 end
 ```
 
-**Ensure the name is available.**
+Ensure the name is available:
 
 ```ruby
 describe aws_secretsmanager_secret(secret_id: 'SECRET_ID') do

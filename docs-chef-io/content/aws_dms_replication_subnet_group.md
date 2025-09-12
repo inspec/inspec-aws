@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure a identifier is available.**
+Ensure a identifier is available:
 
 ```ruby
 describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do
@@ -57,7 +57,7 @@ describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: '
 end
 ```
 
-**Ensure that the vpc is available.**
+Ensure that the vpc is available:
 
 ```ruby
 describe aws_dms_replication_subnet_group(replication_subnet_group_identifier: 'SUBNET_GROUP_IDENTIFIER') do

@@ -171,7 +171,7 @@ end
 
 ## Examples
 
-**Ensure a VPC Peering Connection ID is available.**
+Ensure a VPC Peering Connection ID is available:
 
 ```ruby
 describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPCPeeringConnectionID') do
@@ -179,7 +179,7 @@ describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPCPeeringCo
 end
 ```
 
-**Ensure that the status is `available`.**
+Ensure that the status is `available`:
 
 ```ruby
 describe aws_ec2_vpc_peering_connection(vpc_peering_connection_id: 'VPCPeeringConnectionID') do

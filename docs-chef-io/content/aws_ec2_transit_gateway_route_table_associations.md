@@ -46,7 +46,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway route table exists.**
+Ensure a transit gateway route table exists:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
@@ -54,7 +54,7 @@ describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_
 end
 ```
 
-**Match count of transit gateway route table.**
+Match count of transit gateway route table:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do
@@ -62,7 +62,7 @@ describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_
 end
 ```
 
-**Check the state of the route table.**
+Check the state of the route table:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table_associations(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID') do

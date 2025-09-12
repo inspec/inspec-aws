@@ -66,7 +66,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Elastic IP(EIP) has Public IP.**
+Ensure a Elastic IP(EIP) has Public IP:
 
 ```ruby
 describe aws_ec2_eips do
@@ -74,7 +74,7 @@ describe aws_ec2_eips do
 end
 ```
 
-**Match count of Elastic IP(EIP).**
+Match count of Elastic IP(EIP):
 
 ```ruby
 describe aws_ec2_eips do
@@ -82,7 +82,7 @@ describe aws_ec2_eips do
 end
 ```
 
-**Check Allocation ID whether it is correct or not.**
+Check Allocation ID whether it is correct or not:
 
 ```ruby
 describe aws_ec2_eips do

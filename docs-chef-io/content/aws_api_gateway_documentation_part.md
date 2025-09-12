@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure that the documentation part ID exists.**
+Ensure that the documentation part ID exists:
 
 ```ruby
 describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'DOCUMENTATION_PART_ID') do
@@ -69,7 +69,7 @@ describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', document
 end
 ```
 
-**Check whether the API path exists for a documentation part.**
+Check whether the API path exists for a documentation part:
 
 ```ruby
 describe aws_api_gateway_documentation_part(rest_api_id: 'REST_API_ID', documentation_part_id: 'DOCUMENTATION_PART_ID') do

@@ -46,7 +46,7 @@ end
 
 ## Examples
 
-**Ensure a policy is available.**
+Ensure a policy is available:
 
 ```ruby
 describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do
@@ -54,7 +54,7 @@ describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_n
 end
 ```
 
-**Ensure a revision ID is available.**
+Ensure a revision ID is available:
 
 ```ruby
 describe aws_lambda_layer_version_permission(layer_name: 'LAYER_NAME', version_number: 'VERSION_NUMBER') do

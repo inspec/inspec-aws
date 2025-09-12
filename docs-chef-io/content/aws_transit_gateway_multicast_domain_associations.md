@@ -51,7 +51,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway attachment ID is available.**
+Ensure a transit gateway attachment ID is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do
@@ -59,7 +59,7 @@ describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multi
 end
 ```
 
-**Ensure that the resource type is `vpc`.**
+Ensure that the resource type is `vpc`:
 
 ```ruby
 describe aws_transit_gateway_multicast_domain_associations(transit_gateway_multicast_domain_id: 'TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID') do

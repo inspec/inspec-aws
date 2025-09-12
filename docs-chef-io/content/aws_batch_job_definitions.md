@@ -61,7 +61,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a job definition name is available.**
+Ensure a job definition name is available:
 
 ```ruby
 describe aws_batch_job_definitions do
@@ -69,7 +69,7 @@ describe aws_batch_job_definitions do
 end
 ```
 
-**Ensure that the status is `ACTIVE`.**
+Ensure that the status is `ACTIVE`:
 
 ```ruby
 describe aws_batch_job_definitions do

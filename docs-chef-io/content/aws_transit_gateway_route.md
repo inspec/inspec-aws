@@ -66,7 +66,7 @@ To set the parameters of the AWS transit gateway route table, **ID** and **CIDR*
 
 ## Examples
 
-**Test if a transit gateway route exists for a transit gateway route table and CIDR block range.**
+Test if a transit gateway route exists for a transit gateway route table and CIDR block range:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -74,7 +74,7 @@ describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08ac
 end
 ```
 
-**Test that the ID of the attached VPC is `vpc-00727fc4213acee4a`.**
+Test that the ID of the attached VPC is `vpc-00727fc4213acee4a`:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -82,7 +82,7 @@ describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08ac
 end
 ```
 
-**Test that the ID of the Transit Gateway Attachment is `tgw-attach-0aab89f748131532e`.**
+Test that the ID of the Transit Gateway Attachment is `tgw-attach-0aab89f748131532e`:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -90,7 +90,7 @@ describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08ac
 end
 ```
 
-**Test that the attachment resource type is `vpc`.**
+Test that the attachment resource type is `vpc`:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do
@@ -98,7 +98,7 @@ describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08ac
 end
 ```
 
-**Test that the prefix list ID is `pl-4ca54025`.**
+Test that the prefix list ID is `pl-4ca54025`:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', cidr_block: '0.0.0.0/16') do

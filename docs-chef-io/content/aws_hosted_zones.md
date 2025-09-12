@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that there are more than one hosted zone.**
+Ensure that there are more than one hosted zone:
 
 ```ruby
 describe aws_hosted_zones do
@@ -72,7 +72,7 @@ describe aws_hosted_zones do
 end
 ```
 
-**Ensure a hosted zone is available.**
+Ensure a hosted zone is available:
 
 ```ruby
 describe aws_hosted_zones do
@@ -80,7 +80,7 @@ describe aws_hosted_zones do
 end
 ```
 
-**Ensure a hosted zone name is available.**
+Ensure a hosted zone name is available:
 
 ```ruby
 describe aws_hosted_zones do

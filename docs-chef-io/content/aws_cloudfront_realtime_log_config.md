@@ -60,7 +60,7 @@ end
 
 ## Examples
 
-**Ensure an ARN is available.**
+Ensure an ARN is available:
 
 ```ruby
 describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
@@ -68,7 +68,7 @@ describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
@@ -76,7 +76,7 @@ describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
 end
 ```
 
-**Ensure a stream type is `Kinesis`.**
+Ensure a stream type is `Kinesis`:
 
 ```ruby
 describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
@@ -84,7 +84,7 @@ describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do
 end
 ```
 
-**Ensure a stream ARN is available.**
+Ensure a stream ARN is available:
 
 ```ruby
 describe aws_cloudfront_realtime_log_config(name: 'CONFIG_NAME') do

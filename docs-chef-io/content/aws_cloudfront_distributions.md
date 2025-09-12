@@ -77,7 +77,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that a particular CloudFront distribution exists, and that no cache viewer protocol policies allow HTTP.**
+Test that a particular CloudFront distribution exists, and that no cache viewer protocol policies allow HTTP:
 
 ```ruby
 describe aws_cloudfront_distributions do

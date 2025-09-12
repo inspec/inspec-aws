@@ -75,7 +75,7 @@ For additional information, see the [AWS documentation on the `AWS::RDS::GlobalC
 
 ## Examples
 
-**Ensure global cluster resource ID is available.**
+Ensure global cluster resource ID is available:
 
 ```ruby
 describe aws_rds_global_clusters do
@@ -83,7 +83,7 @@ describe aws_rds_global_clusters do
 end
 ```
 
-**Ensure global cluster resource ID is available.**
+Ensure global cluster resource ID is available:
 
 ```ruby
 describe aws_rds_global_clusters do
@@ -91,7 +91,7 @@ describe aws_rds_global_clusters do
 end
 ```
 
-**Ensure a status is `available`.**
+Ensure a status is `available`:
 
 ```ruby
 describe aws_rds_global_clusters do

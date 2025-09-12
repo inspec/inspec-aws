@@ -43,7 +43,7 @@ end
 
 ## Examples
 
-**Check association ID whether it is correct or not.**
+Check association ID whether it is correct or not:
 
 ```ruby
 describe aws_ec2_eip_association(association_id: 'ASSOCIATION_ID') do

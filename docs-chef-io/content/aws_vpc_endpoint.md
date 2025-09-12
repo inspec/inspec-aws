@@ -120,7 +120,7 @@ end
 
 ## Examples
 
-**Ensure a VPC Endpoint is available.**
+Ensure a VPC Endpoint is available:
 
 ```ruby
 describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
@@ -128,7 +128,7 @@ describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
 end
 ```
 
-**Ensure that the endpoint is of Gateway type.**
+Ensure that the endpoint is of Gateway type:
 
 ```ruby
 describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
@@ -136,7 +136,7 @@ describe aws_vpc_endpoint(vpc_endpoint_id: 'vpce-12345678987654321') do
 end
 ```
 
-**Check tags    .**
+Check tags    :
 
 ```ruby
 describe aws_vpc_endpoint do

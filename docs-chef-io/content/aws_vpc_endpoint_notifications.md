@@ -53,7 +53,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Verify an AWS VPC endpoint connection notification exists using the VPC endpoint ID.**
+Verify an AWS VPC endpoint connection notification exists using the VPC endpoint ID:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notifications.where( vpc_endpoint_id: vpc-12345678 )
@@ -61,7 +61,7 @@ describe aws_vpc_endpoint_connection_notifications.where( vpc_endpoint_id: vpc-1
 end
 ```
 
-**Ensure a AWS VPC endpoint connection notification exists.**
+Ensure a AWS VPC endpoint connection notification exists:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notifications.where( connection_notification_id: 'VPCE-NFN-03AD3532A5C71F8AF' ) do
@@ -69,7 +69,7 @@ describe aws_vpc_endpoint_connection_notifications.where( connection_notificatio
 end
 ```
 
-**Confirm that the AWS VPC endpoint connection notification ARN is as expected.**
+Confirm that the AWS VPC endpoint connection notification ARN is as expected:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notifications do
@@ -77,7 +77,7 @@ describe aws_vpc_endpoint_connection_notifications do
 end
 ```
 
-**Confirm that the type of AWS VPC endpoint connection notification is as expected.**
+Confirm that the type of AWS VPC endpoint connection notification is as expected:
 
 ```ruby
 describe aws_vpc_endpoint_connection_notifications do

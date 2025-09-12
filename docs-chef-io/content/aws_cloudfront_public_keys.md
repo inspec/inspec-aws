@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a public key ID is available.**
+Ensure a public key ID is available:
 
 ```ruby
 describe aws_cloudfront_public_keys do
@@ -72,7 +72,7 @@ describe aws_cloudfront_public_keys do
 end
 ```
 
-**Ensure a public key name is available.**
+Ensure a public key name is available:
 
 ```ruby
 describe aws_cloudfront_public_keys do

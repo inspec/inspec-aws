@@ -72,7 +72,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a broker is available.**
+Ensure a broker is available:
 
 ```ruby
 describe aws_mq_brokers do
@@ -80,7 +80,7 @@ describe aws_mq_brokers do
 end
 ```
 
-**Ensure that the status is correct.**
+Ensure that the status is correct:
 
 ```ruby
 describe aws_mq_brokers do

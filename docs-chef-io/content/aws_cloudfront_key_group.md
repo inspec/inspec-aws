@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_cloudfront_key_group(id: "ID") do
@@ -57,7 +57,7 @@ describe aws_cloudfront_key_group(id: "ID") do
 end
 ```
 
-**Ensure that the key group name is available.**
+Ensure that the key group name is available:
 
 ```ruby
 describe aws_cloudfront_key_group(id: "ID") do

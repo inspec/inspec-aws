@@ -41,18 +41,18 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Examine what buckets have been created.**
+Examine what buckets have been created:
 
 ```ruby
 describe aws_s3_buckets do
   its('bucket_names') { should eq ['my_bucket'] }
-**OR.**
+OR:
 
   its('bucket_names') { should include 'my_bucket' }
 end
 ```
 
-**Check the tags on buckets                .**
+Check the tags on buckets                :
 
 ```ruby
 describe aws_s3_buckets.where( bucket_names: 'my-bucket' ) do

@@ -56,7 +56,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure there are no groups with incorrect vpc_zone_identifiers.**
+Ensure there are no groups with incorrect vpc_zone_identifiers:
 
 ```ruby
 describe aws_auto_scaling_groups do

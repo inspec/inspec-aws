@@ -102,7 +102,7 @@ end
 
 ## Examples
 
-**Ensure a host is available.**
+Ensure a host is available:
 
 ```ruby
 describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do
@@ -110,7 +110,7 @@ describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_host(host_id: 'DEDICATED_HOST_ID') do

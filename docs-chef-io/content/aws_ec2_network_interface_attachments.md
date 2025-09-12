@@ -74,7 +74,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an attachment ID is available.**
+Ensure an attachment ID is available:
 
 ```ruby
 describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
@@ -82,7 +82,7 @@ describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INT
 end
 ```
 
-**Ensure that a network interface status is `available`.**
+Ensure that a network interface status is `available`:
 
 ```ruby
 describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do

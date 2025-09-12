@@ -43,7 +43,7 @@ end
 
 ## Examples
 
-**Ensure an auto enable controls is true.**
+Ensure an auto enable controls is true:
 
 ```ruby
 describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
@@ -51,7 +51,7 @@ describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do
 end
 ```
 
-**Ensure a hub ARN is available.**
+Ensure a hub ARN is available:
 
 ```ruby
 describe aws_securityhub_hub(hub_arn: 'HUB_ARN') do

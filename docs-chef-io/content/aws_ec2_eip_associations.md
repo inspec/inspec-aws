@@ -39,7 +39,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Check association ID is available.**
+Check association ID is available:
 
 ```ruby
 describe aws_ec2_eip_associations do

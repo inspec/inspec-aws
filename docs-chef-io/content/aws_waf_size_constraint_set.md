@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure a size constraint set is available.**
+Ensure a size constraint set is available:
 
 ```ruby
 describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do
@@ -66,7 +66,7 @@ describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SE
 end
 ```
 
-**Ensure a size constraint set name is available.**
+Ensure a size constraint set name is available:
 
 ```ruby
 describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do
@@ -74,7 +74,7 @@ describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SE
 end
 ```
 
-**Ensure an a size constraint set type is `HEADER`.**
+Ensure an a size constraint set type is `HEADER`:
 
 ```ruby
 describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do
@@ -82,7 +82,7 @@ describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SE
 end
 ```
 
-**Verify the size of the constraint set.**
+Verify the size of the constraint set:
 
 ```ruby
 describe aws_waf_size_constraint_set(size_constraint_set_id: 'SIZE_CONSTRAINT_SET_ID') do

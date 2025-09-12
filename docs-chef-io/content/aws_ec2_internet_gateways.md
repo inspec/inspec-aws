@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an attachment is available.**
+Ensure an attachment is available:
 
 ```ruby
 describe aws_ec2_internet_gateways do
@@ -72,7 +72,7 @@ describe aws_ec2_internet_gateways do
 end
 ```
 
-**Ensure that an attachment state is `available`.**
+Ensure that an attachment state is `available`:
 
 ```ruby
 describe aws_ec2_internet_gateways do
@@ -80,7 +80,7 @@ describe aws_ec2_internet_gateways do
 end
 ```
 
-**Ensure an internet gateway ID is available.**
+Ensure an internet gateway ID is available:
 
 ```ruby
 describe aws_ec2_internet_gateways do
@@ -88,7 +88,7 @@ describe aws_ec2_internet_gateways do
 end
 ```
 
-**Ensure an owner ID is available.**
+Ensure an owner ID is available:
 
 ```ruby
 describe aws_ec2_internet_gateways do

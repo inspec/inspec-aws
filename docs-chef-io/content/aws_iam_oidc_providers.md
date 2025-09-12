@@ -37,7 +37,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a OIDC Provider is available.**
+Ensure a OIDC Provider is available:
 
 ```ruby
 describe aws_iam_oidc_providers do

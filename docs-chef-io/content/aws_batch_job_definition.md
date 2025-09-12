@@ -141,7 +141,7 @@ end
 
 ## Examples
 
-**Ensure a job definition name is available.**
+Ensure a job definition name is available:
 
 ```ruby
 describe aws_batch_job_definition(job_definition_name: 'JOB_DEFINITION_NAME') do
@@ -149,7 +149,7 @@ describe aws_batch_job_definition(job_definition_name: 'JOB_DEFINITION_NAME') do
 end
 ```
 
-**Ensure that the status is `ACTIVE`.**
+Ensure that the status is `ACTIVE`:
 
 ```ruby
 describe aws_batch_job_definition(job_definition_name: 'JOB_DEFINITION_NAME') do

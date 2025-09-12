@@ -76,7 +76,7 @@ end
 
 ## Examples
 
-**Ensure a app ID is available.**
+Ensure a app ID is available:
 
 ```ruby
 describe aws_amplify_app(app_id: 'APP_ID') do
@@ -84,7 +84,7 @@ describe aws_amplify_app(app_id: 'APP_ID') do
 end
 ```
 
-**Ensure a app name is available.**
+Ensure a app name is available:
 
 ```ruby
 describe aws_amplify_app(app_id: 'APP_ID') do

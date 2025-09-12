@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure that the deployment ID exists.**
+Ensure that the deployment ID exists:
 
 ```ruby
 describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: 'DEPLOYMENT_ID') do
@@ -66,7 +66,7 @@ describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: '
 end
 ```
 
-**Check whether the API key is required for a particular deployment.**
+Check whether the API key is required for a particular deployment:
 
 ```ruby
 describe aws_api_gateway_deployment(rest_api_id: 'REST_API_ID', deployment_id: 'DEPLOYMENT_ID') do

@@ -96,7 +96,7 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 ## Examples
 
-**Ensure a specific policy exists.**
+Ensure a specific policy exists:
 
 ```ruby
 describe aws_iam_managed_policies do
@@ -104,7 +104,7 @@ describe aws_iam_managed_policies do
 end
 ```
 
-**Allow at most 100 IAM Policies on the account.**
+Allow at most 100 IAM Policies on the account:
 
 ```ruby
 describe aws_iam_managed_policies do

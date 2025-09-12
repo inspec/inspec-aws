@@ -113,7 +113,7 @@ end
 
 ## Examples
 
-**Test that an EMR cluster state is `WAITING`.**
+Test that an EMR cluster state is `WAITING`:
 
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do
@@ -121,7 +121,7 @@ describe aws_emr_cluster('CLUSTER_ID') do
 end
 ```
 
-**Test that an EMR cluster state is `RUNNING`.**
+Test that an EMR cluster state is `RUNNING`:
 
 ```ruby
 describe aws_emr_cluster('CLUSTER_ID') do

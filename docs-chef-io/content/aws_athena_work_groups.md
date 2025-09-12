@@ -42,7 +42,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a work_group name is available.**
+Ensure a work_group name is available:
 
 ```ruby
 describe aws_athena_work_groups do
@@ -50,7 +50,7 @@ describe aws_athena_work_groups do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_athena_work_groups do

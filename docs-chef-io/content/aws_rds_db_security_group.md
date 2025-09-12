@@ -94,7 +94,7 @@ end
 
 ## Examples
 
-**Ensure a security group name is available.**
+Ensure a security group name is available:
 
 ```ruby
 describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do
@@ -102,7 +102,7 @@ describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NA
 end
 ```
 
-**Ensure a security group description is available.**
+Ensure a security group description is available:
 
 ```ruby
 describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do
@@ -110,7 +110,7 @@ describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NA
 end
 ```
 
-**Ensure a status is `authorized`.**
+Ensure a status is `authorized`:
 
 ```ruby
 describe aws_rds_db_security_group(db_security_group_name: 'DB_SECURITY_GROUP_NAME') do

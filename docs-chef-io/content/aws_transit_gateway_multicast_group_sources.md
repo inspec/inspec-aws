@@ -91,7 +91,7 @@ end
 
 ## Examples
 
-**Ensure a transit gateway attachment ID is available.**
+Ensure a transit gateway attachment ID is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_domain_id: "TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID") do
@@ -99,7 +99,7 @@ describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_d
 end
 ```
 
-**Ensure that a group source is available.**
+Ensure that a group source is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_group_sources(transit_gateway_multicast_domain_id: "TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID") do

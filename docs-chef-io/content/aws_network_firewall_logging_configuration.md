@@ -48,7 +48,7 @@ end
 
 ## Examples
 
-**Ensure a firewall ARN is available.**
+Ensure a firewall ARN is available:
 
 ```ruby
 describe aws_network_firewall_logging_configuration(firewall_name: 'FIREWALL_NAME') do
@@ -56,7 +56,7 @@ describe aws_network_firewall_logging_configuration(firewall_name: 'FIREWALL_NAM
 end
 ```
 
-**Ensure that the log type is available.**
+Ensure that the log type is available:
 
 ```ruby
 describe aws_network_firewall_logging_configuration(firewall_name: 'FIREWALL_NAME') do

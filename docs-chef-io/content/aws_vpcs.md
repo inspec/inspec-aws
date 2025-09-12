@@ -126,7 +126,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure all VPCs use the same DHCP option set.**
+Ensure all VPCs use the same DHCP option set:
 
 ```ruby
 describe aws_vpcs.where { dhcp_options_id != 'DOPT-12345678' } do
@@ -134,7 +134,7 @@ describe aws_vpcs.where { dhcp_options_id != 'DOPT-12345678' } do
 end
 ```
 
-**Check for a Particular VPC ID.**
+Check for a Particular VPC ID:
 
 ```ruby
 describe aws_vpcs do
@@ -142,7 +142,7 @@ describe aws_vpcs do
 end
 ```
 
-**Use the VPC IDs to get a list of Default Security Groups.**
+Use the VPC IDs to get a list of Default Security Groups:
 
 ```ruby
 aws_vpcs.vpc_ids.each do |vpc_id|
@@ -152,7 +152,7 @@ aws_vpcs.vpc_ids.each do |vpc_id|
 end
 ```
 
-**We shun the `10.0.0.0/8` space.**
+We shun the `10.0.0.0/8` space:
 
 ```ruby
 describe aws_vpcs.where { cidr_block.start_with?('10') } do
@@ -160,7 +160,7 @@ describe aws_vpcs.where { cidr_block.start_with?('10') } do
 end
 ```
 
-**Check tags.**
+Check tags:
 
 ```ruby
 describe aws_vpc do
@@ -169,7 +169,7 @@ describe aws_vpc do
 end
 ```
 
-**Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties.**
+Ensure AWS VPC IPV6 CIDR Block plural resource has the correct properties:
 
 ```ruby
 describe aws_vpcs.where { ipv6_cidr_blocks.include?('2600:1F16:409:6700::/56') } do
@@ -177,7 +177,7 @@ describe aws_vpcs.where { ipv6_cidr_blocks.include?('2600:1F16:409:6700::/56') }
 end
 ```
 
-**Ensure AWS VPC CIDR BLOCK failed associations are not fetched.**
+Ensure AWS VPC CIDR BLOCK failed associations are not fetched:
 
 ```ruby
 describe aws_vpcs.where { cidr_block_states.reject?('FAILED') } do
@@ -185,7 +185,7 @@ describe aws_vpcs.where { cidr_block_states.reject?('FAILED') } do
 end
 ```
 
-**Ensure AWS VPC CIDR Block plural resource has the associated id.**
+Ensure AWS VPC CIDR Block plural resource has the associated id:
 
 ```ruby
 describe aws_vpcs do
@@ -193,7 +193,7 @@ describe aws_vpcs do
 end
 ```
 
-**Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id.**
+Ensure AWS VPC IPv6 CIDR Block plural resource has the associated id:
 
 ```ruby
 describe aws_vpcs do
@@ -201,7 +201,7 @@ describe aws_vpcs do
 end
 ```
 
-**Ensure AWS VPC CIDR BLOCK disassociated associations are fetched.**
+Ensure AWS VPC CIDR BLOCK disassociated associations are fetched:
 
 ```ruby
 describe aws_vpcs.where { ipv6_cidr_block_states.select?('DISASSOCIATED') } do

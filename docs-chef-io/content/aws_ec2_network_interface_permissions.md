@@ -57,7 +57,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a network interface permission ID is available.**
+Ensure a network interface permission ID is available:
 
 ```ruby
 describe aws_ec2_network_interface_permissions do
@@ -65,7 +65,7 @@ describe aws_ec2_network_interface_permissions do
 end
 ```
 
-**Ensure that the interface permission state is 'pending'.**
+Ensure that the interface permission state is 'pending':
 
 ```ruby
 describe aws_ec2_network_interface_permissions do

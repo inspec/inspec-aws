@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a device is available.**
+Ensure a device is available:
 
 ```ruby
 describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
@@ -62,7 +62,7 @@ describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_volume_attachment(volume_id: 'VOLUME_ID') do

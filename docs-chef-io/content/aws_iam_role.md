@@ -74,7 +74,7 @@ end
 
 ## Examples
 
-**Test that an IAM Role exists.**
+Test that an IAM Role exists:
 
 ```ruby
 describe aws_iam_role(role_name: aws_iam_role_name) do

@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a customer gateway arn is available.**
+Ensure a customer gateway arn is available:
 
 ```ruby
 describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID') do
@@ -69,7 +69,7 @@ describe aws_network_manager_customer_gateway_association(global_network_id: 'GL
 end
 ```
 
-**Ensure that the state is `active`.**
+Ensure that the state is `active`:
 
 ```ruby
 describe aws_network_manager_customer_gateway_association(global_network_id: 'GLOBAL_NETWORK_ID') do

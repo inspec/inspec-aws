@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a destination name is available.**
+Ensure a destination name is available:
 
 ```ruby
 describe aws_cloudwatchlogs_destinations do
@@ -72,7 +72,7 @@ describe aws_cloudwatchlogs_destinations do
 end
 ```
 
-**Ensure a destination role ARN is available.**
+Ensure a destination role ARN is available:
 
 ```ruby
 describe aws_cloudwatchlogs_destinations do

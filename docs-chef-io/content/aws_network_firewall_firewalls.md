@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a firewall name is available.**
+Ensure a firewall name is available:
 
 ```ruby
 describe aws_network_firewall_firewalls do
@@ -52,7 +52,7 @@ describe aws_network_firewall_firewalls do
 end
 ```
 
-**Ensure that the firewall ARN is `FIREWALL_ARN`.**
+Ensure that the firewall ARN is `FIREWALL_ARN`:
 
 ```ruby
 describe aws_network_firewall_firewalls do

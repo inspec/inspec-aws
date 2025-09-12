@@ -77,7 +77,7 @@ end
 
 ## Examples
 
-**Ensure an user is available.**
+Ensure an user is available:
 
 ```ruby
 describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
@@ -85,7 +85,7 @@ describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do
 end
 ```
 
-**Ensure that the server ID is available.**
+Ensure that the server ID is available:
 
 ```ruby
 describe aws_transfer_user(server_id: "SERVER_ID", user_name: 'USER_NAME') do

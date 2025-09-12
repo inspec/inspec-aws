@@ -67,7 +67,7 @@ end
 
 ## Examples
 
-**Test if the recorder is active and recording.**
+Test if the recorder is active and recording:
 
 ```ruby
 describe aws_config_recorder do
@@ -75,7 +75,7 @@ describe aws_config_recorder do
 end
 ```
 
-**Ensure the role_arn is correct for the recorder.**
+Ensure the role_arn is correct for the recorder:
 
 The role is used to grant permissions to S3 Buckets, SNS topics and to get configuration details for supported AWS resources.
 
@@ -85,7 +85,7 @@ describe aws_config_recorder do
 end
 ```
 
-**Test the recorder is monitoring changes to the correct resources.**
+Test the recorder is monitoring changes to the correct resources:
 
 ```ruby
 describe aws_config_recorder do
@@ -94,7 +94,7 @@ describe aws_config_recorder do
 end
 ```
 
-**Test the recorder's last status.**
+Test the recorder's last status:
 
 ```ruby
 describe aws_config_recorder do

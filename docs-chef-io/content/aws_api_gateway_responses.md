@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a response type is `DEFAULT_4XX`.**
+Ensure a response type is `DEFAULT_4XX`:
 
 ```ruby
 describe aws_api_gateway_responses(rest_api_id: 'REST_API_ID') do
@@ -69,7 +69,7 @@ describe aws_api_gateway_responses(rest_api_id: 'REST_API_ID') do
 end
 ```
 
-**Ensure a status code is `200`.**
+Ensure a status code is `200`:
 
 ```ruby
 describe aws_api_gateway_responses(rest_api_id: 'REST_API_ID') do

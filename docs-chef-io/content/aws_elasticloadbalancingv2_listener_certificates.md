@@ -40,7 +40,7 @@ end
 
 ## Examples
 
-**Ensure a listener ARN is available.**
+Ensure a listener ARN is available:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do
@@ -48,7 +48,7 @@ describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENE
 end
 ```
 
-**Ensure that listener has a desired certificate ARN attached.**
+Ensure that listener has a desired certificate ARN attached:
 
 ```ruby
 describe aws_elasticloadbalancingv2_listener_certificates(listener_arn: 'LISTENER_ARN') do

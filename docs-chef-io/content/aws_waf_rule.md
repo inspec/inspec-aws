@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a rule is available.**
+Ensure a rule is available:
 
 ```ruby
 describe aws_waf_rule(rule_id: 'RULE_ID') do
@@ -62,7 +62,7 @@ describe aws_waf_rule(rule_id: 'RULE_ID') do
 end
 ```
 
-**Ensure a rule name is available.**
+Ensure a rule name is available:
 
 ```ruby
 describe aws_waf_rule(rule_id: 'RULE_ID') do
@@ -70,7 +70,7 @@ describe aws_waf_rule(rule_id: 'RULE_ID') do
 end
 ```
 
-**Ensure a metric name type is `METRIC_NAME`.**
+Ensure a metric name type is `METRIC_NAME`:
 
 ```ruby
 describe aws_waf_rule(rule_id: 'RULE_ID') do
@@ -78,7 +78,7 @@ describe aws_waf_rule(rule_id: 'RULE_ID') do
 end
 ```
 
-**Verify the type of data ID should be 'DATA_ID'.**
+Verify the type of data ID should be 'DATA_ID':
 
 ```ruby
 describe aws_waf_rule(rule_id: 'RULE_ID') do

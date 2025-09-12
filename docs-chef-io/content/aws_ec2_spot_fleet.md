@@ -191,7 +191,7 @@ end
 
 ## Examples
 
-**Ensure a iam fleet role is available.**
+Ensure a iam fleet role is available:
 
 ```ruby
 describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do
@@ -199,7 +199,7 @@ describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do
 end
 ```
 
-**Ensure that the state is `active`.**
+Ensure that the state is `active`:
 
 ```ruby
 describe aws_ec2_spot_fleet(spot_fleet_request_id: "SpotFleetID") do

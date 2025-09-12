@@ -50,7 +50,7 @@ end
 
 ## Examples
 
-**Test that an EMR security configuration has at-rest encryption enabled.**
+Test that an EMR security configuration has at-rest encryption enabled:
 
 ```ruby
 describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
@@ -58,7 +58,7 @@ describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
 end
 ```
 
-**Test that an EMR security configuration has in-transit encryption enabled.**
+Test that an EMR security configuration has in-transit encryption enabled:
 
 ```ruby
 describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
@@ -66,7 +66,7 @@ describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do
 end
 ```
 
-**Test that an EMR security configuration has local-disk encryption enabled.**
+Test that an EMR security configuration has local-disk encryption enabled:
 
 ```ruby
 describe aws_emr_security_configuration('SECURITY_CONFIGURATION_NAME') do

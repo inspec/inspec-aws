@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a network insights path ID is available.**
+Ensure a network insights path ID is available:
 
 ```ruby
 describe aws_ec2_network_insights_path(network_insights_path_id: 'NETWORK_INSIGHTS_PATH_ID') do
@@ -74,7 +74,7 @@ describe aws_ec2_network_insights_path(network_insights_path_id: 'NETWORK_INSIGH
 end
 ```
 
-**Ensure a network insights path ARN is available.**
+Ensure a network insights path ARN is available:
 
 ```ruby
 describe aws_ec2_network_insights_path(network_insights_path_id: 'NETWORK_INSIGHTS_PATH_ID') do

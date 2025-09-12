@@ -70,7 +70,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an endpoint name is available.**
+Ensure an endpoint name is available:
 
 ```ruby
 describe aws_route53resolver_resolver_endpoints do
@@ -78,7 +78,7 @@ describe aws_route53resolver_resolver_endpoints do
 end
 ```
 
-**Ensure that an endpoint has the `CREATING` status.**
+Ensure that an endpoint has the `CREATING` status:
 
 ```ruby
 describe aws_route53resolver_resolver_endpoints do

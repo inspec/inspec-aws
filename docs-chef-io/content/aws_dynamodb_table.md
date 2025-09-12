@@ -65,7 +65,7 @@ end
 
 ## Examples
 
-**Ensure DynamoDb Table status is active.**
+Ensure DynamoDb Table status is active:
 
 ```ruby
 describe aws_dynamodb_table(table_name: 'table-name') do
@@ -73,7 +73,7 @@ describe aws_dynamodb_table(table_name: 'table-name') do
 end
 ```
 
-**Ensure DynamoDb Table has an attribute.**
+Ensure DynamoDb Table has an attribute:
 
 ```ruby
 describe aws_dynamodb_table(table_name: 'table-name') do
@@ -82,7 +82,7 @@ describe aws_dynamodb_table(table_name: 'table-name') do
 end
 ```
 
-**Ensure DynamoDb Table has a key_schema.**
+Ensure DynamoDb Table has a key_schema:
 
 ```ruby
 describe aws_dynamodb_table(table_name: 'table-name') do
@@ -91,7 +91,7 @@ describe aws_dynamodb_table(table_name: 'table-name') do
 end
 ```
 
-**Ensure DynamoDb Table has the correct global secondary indexes set.**
+Ensure DynamoDb Table has the correct global secondary indexes set:
 
 ```ruby
 aws_dynamodb_table(table_name: 'table-name').global_secondary_indexes.each do |global_sec_idx|
@@ -106,7 +106,7 @@ aws_dynamodb_table(table_name: 'table-name').global_secondary_indexes.each do |g
 end
 ```
 
-**Ensure DynamoDb Table is encrypted.**
+Ensure DynamoDb Table is encrypted:
 
 ```ruby
 describe aws_dynamodb_table(table_name: 'table-name') do

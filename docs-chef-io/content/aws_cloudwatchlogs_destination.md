@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure destination name is available.**
+Ensure destination name is available:
 
 ```ruby
 describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do
@@ -62,7 +62,7 @@ describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NA
 end
 ```
 
-**Ensure that the IAM role ARN is available.**
+Ensure that the IAM role ARN is available:
 
 ```ruby
 describe aws_cloudwatchlogs_destination(destination_name_prefix: "DESTINATION_NAME") do

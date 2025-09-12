@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure an injection match set is available.**
+Ensure an injection match set is available:
 
 ```ruby
 describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do
@@ -60,7 +60,7 @@ describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECT
 end
 ```
 
-**Ensure an injection match set is available..**
+Ensure an injection match set is available.:
 
 ```ruby
 describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do
@@ -68,7 +68,7 @@ describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECT
 end
 ```
 
-**Ensure an injection match set type is `HEADER`.**
+Ensure an injection match set type is `HEADER`:
 
 ```ruby
 describe aws_waf_sql_injection_match_set(sql_injection_match_set_id: 'SQL_INJECTION_MATCH_SET_ID') do

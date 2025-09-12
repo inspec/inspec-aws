@@ -36,7 +36,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a specific snapshot exists.**
+Ensure a specific snapshot exists:
 
 ```ruby
 describe aws_rds_snapshots do
@@ -44,7 +44,7 @@ describe aws_rds_snapshots do
 end
 ```
 
-**Requests the IDs of RDS snapshots and ensures the snapshots are encrypted with sensible size.**
+Requests the IDs of RDS snapshots and ensures the snapshots are encrypted with sensible size:
 
 ```ruby
 aws_rds_snapshots.db_snapshot_identifiers.each do |db_snapshot_identifier|
@@ -54,7 +54,7 @@ aws_rds_snapshots.db_snapshot_identifiers.each do |db_snapshot_identifier|
 end
 ```
 
-**Tests the snapshot using cached resource_data.**
+Tests the snapshot using cached resource_data:
 
 ```ruby
 aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
@@ -65,7 +65,7 @@ aws_rds_snapshots.entries.each do |AWS_RDS_SNAPSHOT|
 end
 ```
 
-**Loop through all RDS snapshots and test each snapshot with singular resource.**
+Loop through all RDS snapshots and test each snapshot with singular resource:
 
 This method uses local in-memory caching to test each snapshot for quicker execution of large sets of test cases.
 

@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Ensure an arn is available.**
+Ensure an arn is available:
 
 ```ruby
 describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do
@@ -64,7 +64,7 @@ describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do
 end
 ```
 
-**Ensure a maximum retry attempts is available.**
+Ensure a maximum retry attempts is available:
 
 ```ruby
 describe aws_lambda_event_invoke_configs(function_name: 'FUNCTION_NAME') do

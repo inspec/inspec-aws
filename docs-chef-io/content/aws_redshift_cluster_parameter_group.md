@@ -46,7 +46,7 @@ end
 
 ## Examples
 
-**Ensure a parameter group name is available.**
+Ensure a parameter group name is available:
 
 ```ruby
 describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
@@ -54,7 +54,7 @@ describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do
 end
 ```
 
-**Check the family name in the cluster parameter group.**
+Check the family name in the cluster parameter group:
 
 ```ruby
 describe aws_redshift_cluster_parameter_group(parameter_group_name: 'test') do

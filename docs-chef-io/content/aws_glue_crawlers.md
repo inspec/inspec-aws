@@ -91,7 +91,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a crawler name is available.**
+Ensure a crawler name is available:
 
 ```ruby
 describe aws_glue_crawlers do
@@ -99,7 +99,7 @@ describe aws_glue_crawlers do
 end
 ```
 
-**Ensure a database name is available.**
+Ensure a database name is available:
 
 ```ruby
 describe aws_glue_crawlers do

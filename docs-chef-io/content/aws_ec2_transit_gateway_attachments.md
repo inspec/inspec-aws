@@ -69,7 +69,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Transit Gateway attachment has transit_gateway_attachment_ids.**
+Ensure a Transit Gateway attachment has transit_gateway_attachment_ids:
 
 ```ruby
 describe aws_ec2_transit_gateway_attachments do
@@ -77,7 +77,7 @@ describe aws_ec2_transit_gateway_attachments do
 end
 ```
 
-**Match count of Transit Gateway attachment.**
+Match count of Transit Gateway attachment:
 
 ```ruby
 describe aws_ec2_transit_gateway_attachments do
@@ -85,7 +85,7 @@ describe aws_ec2_transit_gateway_attachments do
 end
 ```
 
-**Check State whether it is correct or not.**
+Check State whether it is correct or not:
 
 ```ruby
 describe aws_ec2_transit_gateway_attachments do

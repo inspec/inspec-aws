@@ -113,7 +113,7 @@ end
 
 ## Examples
 
-**Confirm that the route table has expected VPC identifier.**
+Confirm that the route table has expected VPC identifier:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -121,7 +121,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Confirm that the route table has expected owner identifier.**
+Confirm that the route table has expected owner identifier:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -129,7 +129,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Ensure the expected number of routes is present.**
+Ensure the expected number of routes is present:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -137,7 +137,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Ensure the expected number of associations is present.**
+Ensure the expected number of associations is present:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -145,7 +145,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Ensure the subnet ID of interest is associated.**
+Ensure the subnet ID of interest is associated:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -153,7 +153,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Ensure no gateways are associated.**
+Ensure no gateways are associated:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -161,7 +161,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Ensure there are no virtual private gateway (VGW) propagating routes.**
+Ensure there are no virtual private gateway (VGW) propagating routes:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
@@ -169,7 +169,7 @@ describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do
 end
 ```
 
-**Confirm that the route table has the expected destination IPv4 CIDR block of the route.**
+Confirm that the route table has the expected destination IPv4 CIDR block of the route:
 
 ```ruby
 describe aws_route_table(route_table_id: 'ROUTE_TABLE_ID') do

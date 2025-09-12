@@ -84,7 +84,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an EFS file system is available.**
+Test that an EFS file system is available:
 
 ```ruby
 describe aws_efs_file_system("fs-12345678") do
@@ -92,7 +92,7 @@ describe aws_efs_file_system("fs-12345678") do
 end
 ```
 
-**Test that an EFS file system is in 'maxIO' performance mode.**
+Test that an EFS file system is in 'maxIO' performance mode:
 
 ```ruby
 describe aws_efs_file_system(creation_token: "My Token") do
@@ -100,7 +100,7 @@ describe aws_efs_file_system(creation_token: "My Token") do
 end
 ```
 
-**Test that an EFS file system has a certain tag.**
+Test that an EFS file system has a certain tag:
 
 ```ruby
 describe aws_efs_file_system(creation_token: "My Token") do

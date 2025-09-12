@@ -133,7 +133,7 @@ end
 
 ## Examples
 
-**Ensure that the stage name exists.**
+Ensure that the stage name exists:
 
 ```ruby
 describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do
@@ -141,7 +141,7 @@ describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NA
 end
 ```
 
-**Ensure that the client certificate ID exists.**
+Ensure that the client certificate ID exists:
 
 ```ruby
 describe aws_api_gateway_stage(rest_api_id: 'REST_API_ID', stage_name: 'STAGE_NAME') do

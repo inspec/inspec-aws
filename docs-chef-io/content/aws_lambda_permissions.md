@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure a statement ID is available.**
+Ensure a statement ID is available:
 
 ```ruby
 describe aws_lambda_permission(function_name: 'LAMBDA_FUNCTION_NAME') do
@@ -57,7 +57,7 @@ describe aws_lambda_permission(function_name: 'LAMBDA_FUNCTION_NAME') do
 end
 ```
 
-**Ensure an effect is available.**
+Ensure an effect is available:
 
 ```ruby
 describe aws_lambda_permission(function_name: 'LAMBDA_FUNCTION_NAME') do

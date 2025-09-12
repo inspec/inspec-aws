@@ -73,7 +73,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a specific REST API exists.**
+Ensure a specific REST API exists:
 
 ```ruby
 describe aws_api_gateway_restapis do
@@ -81,7 +81,7 @@ describe aws_api_gateway_restapis do
 end
 ```
 
-**Ensure that `HEADER` is a source for a REST API key.**
+Ensure that `HEADER` is a source for a REST API key:
 
 ```ruby
 describe aws_api_gateway_restapis do

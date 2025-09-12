@@ -9,7 +9,7 @@ title = "aws_dhcp_options"
 identifier = "inspec/resources/aws/aws_dhcp_options resource"
 parent = "inspec/resources/aws"
 +++
-**DEPRECATION NOTICE**
+DEPRECATION NOTICE**
 
 The **aws_dhcp_options** InSpec audit resource is deprecated and replaced by the `aws_ec2_dhcp_option` and `aws_ec2_dhcp_options` resources.
 
@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Test tags on the DHCP options.**
+Test tags on the DHCP options:
 
 ```ruby
 describe aws_dhcp_options('dopt-0123456789abcdefg') do

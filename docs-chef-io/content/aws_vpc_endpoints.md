@@ -65,7 +65,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a VPC has VPC Endpoints.**
+Ensure a VPC has VPC Endpoints:
 
 ```ruby
 describe aws_vpc_endpoints.where( vpc_id: vpc-12345678 )
@@ -73,7 +73,7 @@ describe aws_vpc_endpoints.where( vpc_id: vpc-12345678 )
 end
 ```
 
-**Match count of VPC Endpoints of Gateway type in a particular VPC.**
+Match count of VPC Endpoints of Gateway type in a particular VPC:
 
 ```ruby
 describe aws_vpc_endpoints.where( vpc_id: vpc-12345678 ).where(vpc_endpoint_type: "Gateway") do
@@ -81,7 +81,7 @@ describe aws_vpc_endpoints.where( vpc_id: vpc-12345678 ).where(vpc_endpoint_type
 end
 ```
 
-**Check tags    .**
+Check tags    :
 
 ```ruby
 describe aws_vpc_endpoints do

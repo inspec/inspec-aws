@@ -55,7 +55,7 @@ end
 
 ## Examples
 
-**Ensure a carrier gateway ID is available.**
+Ensure a carrier gateway ID is available:
 
 ```ruby
 describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
@@ -63,7 +63,7 @@ describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_carrier_gateway(carrier_gateway_id: "GATEWAY_ID") do

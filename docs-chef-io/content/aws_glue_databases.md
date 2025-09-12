@@ -58,7 +58,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a database name is available.**
+Ensure a database name is available:
 
 ```ruby
 describe aws_glue_databases

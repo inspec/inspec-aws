@@ -61,7 +61,7 @@ The registry id is optional.
 
 ## Examples
 
-**Ensure that there are exactly 3 repositories in the default registry.**
+Ensure that there are exactly 3 repositories in the default registry:
 
 ```ruby
 describe aws_ecr_repositories do
@@ -69,7 +69,7 @@ describe aws_ecr_repositories do
 end
 ```
 
-**Use this InSpec resource to request the names of all repositories, then test in-depth using `aws_ecr_repository`.**
+Use this InSpec resource to request the names of all repositories, then test in-depth using `aws_ecr_repository`:
 
 ```ruby
 aws_ecr_repositories.names.each do |repository_name|

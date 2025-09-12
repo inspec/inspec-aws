@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Ensure we have at least one provider currently valid.**
+Ensure we have at least one provider currently valid:
 
 ```ruby
 describe aws_iam_saml_provider("arn:aws:iam::123456789012:saml-provider/FANCY") do

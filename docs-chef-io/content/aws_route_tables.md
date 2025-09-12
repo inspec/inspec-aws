@@ -155,7 +155,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Confirm that a route table exists.**
+Confirm that a route table exists:
 
 ```ruby
 describe aws_route_tables do
@@ -163,7 +163,7 @@ describe aws_route_tables do
 end
 ```
 
-**Confirm a route table exists.**
+Confirm a route table exists:
 
 ```ruby
 describe aws_route_tables do
@@ -171,7 +171,7 @@ describe aws_route_tables do
 end
 ```
 
-**Confirm a destination_cidr_blocks is there in the routes.**
+Confirm a destination_cidr_blocks is there in the routes:
 
 ```ruby
 describe aws_route_tables do
@@ -179,7 +179,7 @@ describe aws_route_tables do
 end
 ```
 
-**Ensure subnet ID of interest is associated .**
+Ensure subnet ID of interest is associated :
 
 ```ruby
 describe aws_route_tables do
@@ -187,7 +187,7 @@ describe aws_route_tables do
 end
 ```
 
-**Filter only main route tables.**
+Filter only main route tables:
 
 ```ruby
 describe aws_route_tables.where(main: true) do
@@ -195,7 +195,7 @@ describe aws_route_tables.where(main: true) do
 end
 ```
 
-**Filter all failed associations.**
+Filter all failed associations:
 
 ```ruby
 describe aws_route_tables.where{ association_states.include?('associated') } do

@@ -50,7 +50,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure AWS EMR security configurations exists.**
+Ensure AWS EMR security configurations exists:
 
 ```ruby
 describe aws_emr_security_configurations do

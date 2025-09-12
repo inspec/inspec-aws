@@ -48,7 +48,7 @@ end
 
 ## Examples
 
-**Ensure a template name is available.**
+Ensure a template name is available:
 
 ```ruby
 describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
@@ -56,7 +56,7 @@ describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
 end
 ```
 
-**Ensure a subject is available in the template.**
+Ensure a subject is available in the template:
 
 ```ruby
 describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
@@ -64,7 +64,7 @@ describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
 end
 ```
 
-**Ensure a text part is available in the template.**
+Ensure a text part is available in the template:
 
 ```ruby
 describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
@@ -72,7 +72,7 @@ describe aws_ses_template(template_name: 'TEMPLATE_NAME') do
 end
 ```
 
-**Ensure an HTML body is available in the template.**
+Ensure an HTML body is available in the template:
 
 ```ruby
 describe aws_ses_template(template_name: 'TEMPLATE_NAME') do

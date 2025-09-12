@@ -53,7 +53,7 @@ end
 
 ## Examples
 
-**Ensure that the id is available.**
+Ensure that the id is available:
 
 ```ruby
 describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_ID') do
@@ -61,7 +61,7 @@ describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_I
 end
 ```
 
-**Ensure that access point arn is available.**
+Ensure that access point arn is available:
 
 ```ruby
 describe aws_s3_access_point(bucket_name:  'BUCKET_NAME', metrics_id: 'METRICS_ID') do

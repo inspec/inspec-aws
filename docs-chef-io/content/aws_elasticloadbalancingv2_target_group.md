@@ -88,7 +88,7 @@ end
 
 ## Examples
 
-**Ensure a target group ARN is available.**
+Ensure a target group ARN is available:
 
 ```ruby
 describe aws_elasticloadbalancingv2_target_group(target_group_arn: 'arn:aws:elasticloadbalancing:REGION:ACCOUNT_ID:RESOURCE_ID') do
@@ -96,7 +96,7 @@ describe aws_elasticloadbalancingv2_target_group(target_group_arn: 'arn:aws:elas
 end
 ```
 
-**Ensure that the target group name exists.**
+Ensure that the target group name exists:
 
 ```ruby
 describe aws_elasticloadbalancingv2_target_group(target_group_arn: 'arn:aws:elasticloadbalancing:REGION:ACCOUNT_ID:RESOURCE_ID') do

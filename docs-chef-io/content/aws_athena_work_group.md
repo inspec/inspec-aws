@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a workgroup name is available.**
+Ensure a workgroup name is available:
 
 ```ruby
 describe aws_athena_work_group(work_group: 'WORK_GROUP') do
@@ -74,7 +74,7 @@ describe aws_athena_work_group(work_group: 'WORK_GROUP') do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_athena_work_group(work_group: 'WORK_GROUP') do

@@ -35,7 +35,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a task definition ARN is available.**
+Ensure a task definition ARN is available:
 
 ```ruby
 describe aws_ecs_task_definitions do

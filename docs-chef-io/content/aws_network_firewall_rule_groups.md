@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_network_firewall_rule_groups do
@@ -52,7 +52,7 @@ describe aws_network_firewall_rule_groups do
 end
 ```
 
-**Ensure that the arn is available.**
+Ensure that the arn is available:
 
 ```ruby
 describe aws_network_firewall_rule_groups do

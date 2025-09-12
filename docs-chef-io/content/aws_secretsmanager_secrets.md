@@ -82,7 +82,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ARN is available.**
+Ensure an ARN is available:
 
 ```ruby
 describe aws_secretsmanager_secrets do
@@ -90,7 +90,7 @@ describe aws_secretsmanager_secrets do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_secretsmanager_secrets do

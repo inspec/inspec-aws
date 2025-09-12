@@ -57,7 +57,7 @@ end
 
 ## Examples
 
-**Ensure a Transit Gateway route table ID is available.**
+Ensure a Transit Gateway route table ID is available:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do
@@ -65,7 +65,7 @@ describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tg
 end
 ```
 
-**Ensure that the state is `available` or `deleted`.**
+Ensure that the state is `available` or `deleted`:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table(transit_gateway_route_table_id: 'tgw-rtb-052d947d91b6bb69f') do

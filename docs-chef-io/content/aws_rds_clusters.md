@@ -65,7 +65,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a specific cluster exists.**
+Ensure a specific cluster exists:
 
 ```ruby
 describe aws_rds_clusters do
@@ -73,7 +73,7 @@ describe aws_rds_clusters do
 end
 ```
 
-**Request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size.**
+Request the IDs of all RDS clusters, then test in-depth using `aws_rds_cluster` to ensure all clusters are encrypted and have a sensible size:
 
 ```ruby
 aws_rds_clusters.cluster_identifier.each do |cluster_identifier|

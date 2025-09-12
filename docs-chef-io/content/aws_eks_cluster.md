@@ -105,7 +105,7 @@ end
 
 ## Examples
 
-**Test that an EKS Cluster has at least 2 subnets.**
+Test that an EKS Cluster has at least 2 subnets:
 
 ```ruby
 describe aws_eks_cluster('my-cluster') do
@@ -113,7 +113,7 @@ describe aws_eks_cluster('my-cluster') do
 end
 ```
 
-**Ensure a Cluster has the correct status.**
+Ensure a Cluster has the correct status:
 
 ```ruby
 describe aws_eks_cluster(cluster_name: 'my-eks') do
@@ -121,7 +121,7 @@ describe aws_eks_cluster(cluster_name: 'my-eks') do
 end
 ```
 
-**Ensure that the EKS Cluster is on the correct VPC.**
+Ensure that the EKS Cluster is on the correct VPC:
 
 ```ruby
 describe aws_eks_cluster('my-cluster') do
@@ -129,7 +129,7 @@ describe aws_eks_cluster('my-cluster') do
 end
 ```
 
-**Ensure the EKS Cluster is using the correct IAM Role.**
+Ensure the EKS Cluster is using the correct IAM Role:
 
 ```ruby
 describe aws_eks_cluster('my-cluster') do
@@ -137,7 +137,7 @@ describe aws_eks_cluster('my-cluster') do
 end
 ```
 
-**Ensure that the EKS Cluster is on the correct VPC from cached resources.**
+Ensure that the EKS Cluster is on the correct VPC from cached resources:
 
 ```ruby
 resource = aws_eks_clusters.where(cluster_name: 'my-eks')
@@ -146,18 +146,18 @@ describe aws_eks_cluster(resource_data: resource) do
 end
 ```
 
-**Integrate with other resources.**
+Integrate with other resources:
 
 Use a combination of InSpec AWS resources to ensure your EKS Cluster does not use the Default VPC.
 
-**Find the default Security Group for our VPC.**
+Find the default Security Group for our VPC:
 
 ```ruby
 cluster_vpc = aws_eks_cluster(cluster_name: 'my-cluster').vpc_id
 default_sg  = aws_security_group(group_name: 'default', vpc_id: cluster_vpc)
 ```
 
-**Ensure we are not using the default Security Group.**
+Ensure we are not using the default Security Group:
 
 ```ruby
 describe aws_eks_cluster(cluster_name: 'my-cluster') do

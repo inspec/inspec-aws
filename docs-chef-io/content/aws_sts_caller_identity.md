@@ -43,7 +43,7 @@ For more info, see [the API reference documentation](https://docs.aws.amazon.com
 
 ## Examples
 
-**Check that the credentials used to run the scan is correct.**
+Check that the credentials used to run the scan is correct:
 
 ```ruby
 describe aws_sts_caller_identity do
@@ -51,7 +51,7 @@ describe aws_sts_caller_identity do
 end
 ```
 
-**Test if the account belongs to GovCloud.**
+Test if the account belongs to GovCloud:
 
 ```ruby
 describe aws_sts_caller_identity do
@@ -59,7 +59,7 @@ describe aws_sts_caller_identity do
 end
 ```
 
-**Skip a test if we are using GovCloud.**
+Skip a test if we are using GovCloud:
 
 ```ruby
 if aws_sts_caller_identity.govcloud?

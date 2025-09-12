@@ -131,7 +131,7 @@ There are no required parameters.
 
 ## Examples
 
-**Ensure an engine name is available.**
+Ensure an engine name is available:
 
 ```ruby
 describe aws_dms_endpoints do
@@ -139,7 +139,7 @@ describe aws_dms_endpoints do
 end
 ```
 
-**Ensure that an endpoint listens to a specific port.**
+Ensure that an endpoint listens to a specific port:
 
 ```ruby
 describe aws_dms_endpoints do

@@ -57,7 +57,7 @@ For additional information, see the [AWS documentation on AWS EC2 egress-only in
 
 ## Examples
 
-**Ensure an egress-only internet gateway ID is available.**
+Ensure an egress-only internet gateway ID is available:
 
 ```ruby
 describe aws_ec2_egress_only_internet_gateways do
@@ -65,7 +65,7 @@ describe aws_ec2_egress_only_internet_gateways do
 end
 ```
 
-**Ensure that the attachments states is `attached`.**
+Ensure that the attachments states is `attached`:
 
 ```ruby
 describe aws_ec2_egress_only_internet_gateways do

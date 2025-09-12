@@ -144,7 +144,7 @@ end
 
 ## Examples
 
-**Ensure a fleet ID is available.**
+Ensure a fleet ID is available:
 
 ```ruby
 describe aws_ec2_fleet(fleet_id: "FLEET_ID") do
@@ -152,7 +152,7 @@ describe aws_ec2_fleet(fleet_id: "FLEET_ID") do
 end
 ```
 
-**Ensure that the type is `instant`.**
+Ensure that the type is `instant`:
 
 ```ruby
 describe aws_ec2_fleet(fleet_id: "FLEET_ID") do

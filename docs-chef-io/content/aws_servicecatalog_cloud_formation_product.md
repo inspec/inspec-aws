@@ -67,7 +67,7 @@ end
 
 ## Examples
 
-**Ensure a product name is available.**
+Ensure a product name is available:
 
 ```ruby
 describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
@@ -75,7 +75,7 @@ describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do
 end
 ```
 
-**Ensure a owner is available.**
+Ensure a owner is available:
 
 ```ruby
 describe aws_servicecatalog_cloud_formation_product(name: 'PRODUCT_NAME') do

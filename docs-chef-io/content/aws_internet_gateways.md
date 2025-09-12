@@ -60,7 +60,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that there are exactly 3 internet gateways.**
+Test that there are exactly 3 internet gateways:
 
 ```ruby
 describe aws_internet_gateway do
@@ -68,7 +68,7 @@ describe aws_internet_gateway do
 end
 ```
 
-**Use this InSpec resource to request the ids of all internet gateways, then test in-depth using `aws_internet_gateway`.**
+Use this InSpec resource to request the ids of all internet gateways, then test in-depth using `aws_internet_gateway`:
 
 ```ruby
 aws_internet_gateways.ids.each do |id|
@@ -85,7 +85,7 @@ end
 ### exist
 
 The control will pass if the describe returns at least one result.
-The field names described in the [properties table](##-properties) should be used for the `<property>` in the `where` clause.
+The field names described in the [properties](#properties) should be used for the `<property>` in the `where` clause.
 
 Use `should_not` to test the entity should not exist.
 

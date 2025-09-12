@@ -72,7 +72,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that a VPN Gateway is available and attached.**
+Test that a VPN Gateway is available and attached:
 
 ```ruby
 describe aws_vpn_gateway('vgw-014aef8a0689b8f43') do

@@ -220,7 +220,7 @@ end
 
 ## Examples
 
-**Ensure a domain name is available.**
+Ensure a domain name is available:
 
 ```ruby
 describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
@@ -228,7 +228,7 @@ describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do
 end
 ```
 
-**Verify the ARN of a desired domain.**
+Verify the ARN of a desired domain:
 
 ```ruby
 describe aws_elasticsearchservice_domain(domain_name: 'DOMAIN_NAME') do

@@ -65,7 +65,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure the Role 'RDS-RW' exists.**
+Ensure the Role 'RDS-RW' exists:
 
 ```ruby
 describe aws_iam_roles do
@@ -73,7 +73,7 @@ describe aws_iam_roles do
 end
 ```
 
-**Ensure no Roles have `max_session_duration` greater or equal to 2hrs.**
+Ensure no Roles have `max_session_duration` greater or equal to 2hrs:
 
 ```ruby
 describe aws_iam_roles.where{ max_session_duration >= (60*120) } do

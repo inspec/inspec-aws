@@ -106,7 +106,7 @@ end
 
 ## Examples
 
-**Ensure a window task ID is available.**
+Ensure a window task ID is available:
 
 ```ruby
 aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
@@ -114,7 +114,7 @@ aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
 end
 ```
 
-**Verify the priority of the maintenance window.**
+Verify the priority of the maintenance window:
 
 ```ruby
 aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
@@ -122,7 +122,7 @@ aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
 end
 ```
 
-**Verify the type of the maintenance window.**
+Verify the type of the maintenance window:
 
 ```ruby
 aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
@@ -130,7 +130,7 @@ aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')
 end
 ```
 
-**Verify the name of the maintenance window.**
+Verify the name of the maintenance window:
 
 ```ruby
 aws_ssm_maintenance_window_tasks(window_id: 'WINDOW_ID')

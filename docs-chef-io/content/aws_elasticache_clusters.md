@@ -54,7 +54,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that exactly 3 ElastiCache clusters exist.**
+Ensure that exactly 3 ElastiCache clusters exist:
 
 ```ruby
 describe aws_elasticache_clusters do
@@ -62,7 +62,7 @@ describe aws_elasticache_clusters do
 end
 ```
 
-**Use this InSpec resource to request the IDs of all ElastiCache clusters, then test in-depth using `aws_elasticache_cluster` and `aws_elasticache_cluster_node`.**
+Use this InSpec resource to request the IDs of all ElastiCache clusters, then test in-depth using `aws_elasticache_cluster` and `aws_elasticache_cluster_node`:
 
 ```ruby
 aws_elasticache_clusters.ids.each do |id|

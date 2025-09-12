@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure that the documentation version ID exists.**
+Ensure that the documentation version ID exists:
 
 ```ruby
 describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_VERSION') do
@@ -57,7 +57,7 @@ describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', docum
 end
 ```
 
-**Check whether the API path exist for a documentation version.**
+Check whether the API path exist for a documentation version:
 
 ```ruby
 describe aws_api_gateway_documentation_version(rest_api_id: 'REST_API_ID', documentation_version: 'DOCUMENTATION_VERSION') do

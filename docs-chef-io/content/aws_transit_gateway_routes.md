@@ -126,7 +126,7 @@ The following additional parameters are optional:
 
 ## Examples
 
-**Ensure that exactly three transit gateway routes exist.**
+Ensure that exactly three transit gateway routes exist:
 
 ```ruby
 describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589') do
@@ -134,7 +134,7 @@ describe aws_transit_gateway_route(transit_gateway_route_table_id: 'tgw-rtb-08ac
 end
 ```
 
-**Filter all transit gateway routes whose CIDR block matches `0.0.0.0/16`.**
+Filter all transit gateway routes whose CIDR block matches `0.0.0.0/16`:
 
 ```ruby
 describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', exact_match: '0.0.0.0/16') do
@@ -148,7 +148,7 @@ describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08a
 end
 ```
 
-**Filter all static transit gateway routes.**
+Filter all static transit gateway routes:
 
 ```ruby
 describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589').where(static: true) do
@@ -156,7 +156,7 @@ describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08a
 end
 ```
 
-**Filter all static transit gateway blackhole routes.**
+Filter all static transit gateway blackhole routes:
 
 ```ruby
 describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589').where(static: true, blackhole: true) do
@@ -164,7 +164,7 @@ describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08a
 end
 ```
 
-**Filter all transit gateway routes with destination CIDR blocks matching `10.3.0.0/18`.**
+Filter all transit gateway routes with destination CIDR blocks matching `10.3.0.0/18`:
 
 ```ruby
 describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589', supernet_of_match: 10.3.0.0/19) do
@@ -173,7 +173,7 @@ describe aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08a
 end
 ```
 
-**Request the CIDR blocks of all transit gateway routes, then test in-depth using `aws_transit_gateway_route`.**
+Request the CIDR blocks of all transit gateway routes, then test in-depth using `aws_transit_gateway_route`:
 
 ```ruby
 aws_transit_gateway_routes(transit_gateway_route_table_id: 'tgw-rtb-08acd74550c99e589').cidr_blocks.each do |cidr_block|

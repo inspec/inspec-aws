@@ -64,7 +64,7 @@ end
 
 ## Examples
 
-**Ensure a Public IP is available.**
+Ensure a Public IP is available:
 
 ```ruby
 describe aws_ec2_eip(public_ip: '192.0.2.0') do
@@ -72,7 +72,7 @@ describe aws_ec2_eip(public_ip: '192.0.2.0') do
 end
 ```
 
-**Ensure that the domain is `vpc` or `standard`.**
+Ensure that the domain is `vpc` or `standard`:
 
 ```ruby
 describe aws_ec2_eip(public_ip: '192.0.2.0') do

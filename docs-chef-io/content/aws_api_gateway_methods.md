@@ -77,7 +77,7 @@ end
 
 ## Examples
 
-**Ensure an HTTP method is a GET request.**
+Ensure an HTTP method is a GET request:
 
 ```ruby
 describe aws_api_gateway_methods(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do

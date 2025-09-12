@@ -102,7 +102,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a app ID is available.**
+Ensure a app ID is available:
 
 ```ruby
 describe aws_amplify_apps  do
@@ -110,7 +110,7 @@ describe aws_amplify_apps  do
 end
 ```
 
-**Ensure a app name is available.**
+Ensure a app name is available:
 
 ```ruby
 describe aws_amplify_apps  do

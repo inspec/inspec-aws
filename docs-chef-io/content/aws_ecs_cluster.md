@@ -61,7 +61,7 @@ If no parameters are passed, the resource will attempt to retrieve the `default`
 
 ## Examples
 
-**Test that an ECS Cluster does not exist.**
+Test that an ECS Cluster does not exist:
 
 ```ruby
 describe aws_ecs_cluster(cluster_name: 'invalid-cluster') do
@@ -69,7 +69,7 @@ describe aws_ecs_cluster(cluster_name: 'invalid-cluster') do
 end
 ```
 
-**Test that an ECS Cluster is active.**
+Test that an ECS Cluster is active:
 
 ```ruby
 describe aws_ecs_cluster('cluster-8') do

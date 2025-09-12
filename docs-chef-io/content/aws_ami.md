@@ -115,7 +115,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Check if an AMI is public.**
+Check if an AMI is public:
 
 ```ruby
 describe aws_ami(image_id: 'aki-25348fd4323') do

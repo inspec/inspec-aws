@@ -33,7 +33,7 @@ This resource can test all properties defined by the [Aws::lambda::Types::GetFun
 
 ## Examples
 
-**Test that all lambda functions with a particular tag is correctly deployed.**
+Test that all lambda functions with a particular tag is correctly deployed:
 
 ```ruby
 describe aws_lambda('LAMBDA_FUNCTION') do

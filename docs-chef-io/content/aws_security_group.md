@@ -149,7 +149,7 @@ This resource requires one of the following parameters:
 
 ## Examples
 
-**Test outbound rules.**
+Test outbound rules:
 
 ```ruby
 describe aws_security_group(group_name: isolated_servers) do
@@ -157,7 +157,7 @@ describe aws_security_group(group_name: isolated_servers) do
 end
 ```
 
-**Test a rule that allows All Traffic.**
+Test a rule that allows All Traffic:
 
 ```ruby
 describe aws_security_group(group_name: my_group) do
@@ -165,7 +165,7 @@ describe aws_security_group(group_name: my_group) do
 end
 ```
 
-**Ensure a SG only allows SSH from a specific range.**
+Ensure a SG only allows SSH from a specific range:
 
 ```ruby
 describe aws_security_group(group_name: linux_servers) do
@@ -174,36 +174,36 @@ describe aws_security_group(group_name: linux_servers) do
 end
 ```
 
-**Ensure that the careful_updates Security Group may only initiate contact with specific IPs.**
+Ensure that the careful_updates Security Group may only initiate contact with specific IPs:
 
 ```ruby
 describe aws_security_group(group_name: 'careful_updates') do
 ```
 
 ```ruby
-**If you have two rules, with one CIDR each:.**
+If you have two rules, with one CIDR each::
 
 [ '10.7.23.12/32', '10.8.23.12/32' ].each do |allowed_destination|
-**This doesn't care about which ports are enabled.**
+This doesn't care about which ports are enabled:
 
   it { should allow_out(ipv4_range: allowed_destination) }
 end
 ```
 
 ```ruby
-**If you have one rule with two CIDRs:.**
+If you have one rule with two CIDRs::
 
 it { should allow_out(ipv4_range: [ '10.7.23.12/32', '10.8.23.12/32' ]) }
 ```
 
 ```ruby
-**Expect exactly three rules.**
+Expect exactly three rules:
 
 its('outbound_rules.count') { should cmp 3 }
     end
 ```
 
-**Ensure that the canary_deployments Security Group only allows access from one specific security group id on port 443.**
+Ensure that the canary_deployments Security Group only allows access from one specific security group id on port 443:
 
 ```ruby
 describe aws_security_group(group_name: 'canary_deployments') do

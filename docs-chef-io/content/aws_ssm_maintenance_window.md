@@ -81,7 +81,7 @@ end
 
 ## Examples
 
-**Ensure a window ID is available.**
+Ensure a window ID is available:
 
 ```ruby
 describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
@@ -89,7 +89,7 @@ describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
 end
 ```
 
-**Ensure a name is available.**
+Ensure a name is available:
 
 ```ruby
 describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
@@ -97,7 +97,7 @@ describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
 end
 ```
 
-**Ensure a duration is `1`.**
+Ensure a duration is `1`:
 
 ```ruby
 describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
@@ -105,7 +105,7 @@ describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do
 end
 ```
 
-**Ensure a maintenance window is enabled.**
+Ensure a maintenance window is enabled:
 
 ```ruby
 describe aws_ssm_maintenance_window(window_id: 'WINDOW_ID') do

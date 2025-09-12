@@ -90,7 +90,7 @@ end
 
 ## Examples
 
-**Ensure a ID is available.**
+Ensure a ID is available:
 
 ```ruby
 describe aws_cloudfront_cache_policy(id: 'ID') do
@@ -98,7 +98,7 @@ describe aws_cloudfront_cache_policy(id: 'ID') do
 end
 ```
 
-**Verify the max TTL of the policy.**
+Verify the max TTL of the policy:
 
 ```ruby
 describe aws_cloudfront_cache_policy(id: 'ID') do

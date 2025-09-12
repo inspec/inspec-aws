@@ -94,7 +94,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a profile name is available.**
+Ensure a profile name is available:
 
 ```ruby
 describe aws_signer_signing_profiles do
@@ -102,7 +102,7 @@ describe aws_signer_signing_profiles do
 end
 ```
 
-**Ensure a profile version is available.**
+Ensure a profile version is available:
 
 ```ruby
 describe aws_signer_signing_profiles do
@@ -110,7 +110,7 @@ describe aws_signer_signing_profiles do
 end
 ```
 
-**Ensure a status is `Active`.**
+Ensure a status is `Active`:
 
 ```ruby
 describe aws_signer_signing_profiles do

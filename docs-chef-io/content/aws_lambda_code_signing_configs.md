@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a code signing config id is available.**
+Ensure a code signing config id is available:
 
 ```ruby
 describe aws_lambda_code_signing_configs do
@@ -72,7 +72,7 @@ describe aws_lambda_code_signing_configs do
 end
 ```
 
-**Ensure a code signing config arn is available.**
+Ensure a code signing config arn is available:
 
 ```ruby
 describe aws_lambda_code_signing_configs do

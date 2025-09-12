@@ -51,7 +51,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that exactly three AWS VPN gateways exist.**
+Ensure that exactly three AWS VPN gateways exist:
 
 ```ruby
 describe aws_vpn_gateways do
@@ -59,7 +59,7 @@ describe aws_vpn_gateways do
 end
 ```
 
-**Request the IDs of all AWS VPN gateways, then test in-depth using `aws_vpn_gateway`.**
+Request the IDs of all AWS VPN gateways, then test in-depth using `aws_vpn_gateway`:
 
 ```ruby
 aws_vpn_gateways.vpn_gateway_ids.each do |vpn_gateway_id|

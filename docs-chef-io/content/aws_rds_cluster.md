@@ -47,7 +47,7 @@ For a comprehensive list of properties available to test on an RDS cluster see t
 
 ## Examples
 
-**Test the engine used with an RDS cluster.**
+Test the engine used with an RDS cluster:
 
 ```ruby
 describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
@@ -56,7 +56,7 @@ describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
 end
 ```
 
-**Test the storage allocated to an RDS cluster.**
+Test the storage allocated to an RDS cluster:
 
 ```ruby
 describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
@@ -65,7 +65,7 @@ describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
 end
 ```
 
-**Test the cluster status and master username.**
+Test the cluster status and master username:
 
 ```ruby
 describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
@@ -74,7 +74,7 @@ describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do
 end
 ```
 
-**Test the maximum and minimum capacity of a serverless RDS cluster.**
+Test the maximum and minimum capacity of a serverless RDS cluster:
 
 ```ruby
 describe aws_rds_cluster(db_cluster_identifier: 'awsrds123') do

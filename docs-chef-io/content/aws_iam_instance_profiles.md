@@ -52,7 +52,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an instance profile name is available.**
+Ensure an instance profile name is available:
 
 ```ruby
 describe aws_iam_instance_profiles do
@@ -60,7 +60,7 @@ describe aws_iam_instance_profiles do
 end
 ```
 
-**Ensure that an arn is available.**
+Ensure that an arn is available:
 
 ```ruby
 describe aws_iam_instance_profiles do

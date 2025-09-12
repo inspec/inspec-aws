@@ -84,7 +84,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a ID is available.**
+Ensure a ID is available:
 
 ```ruby
 describe aws_apigateway_api_keys do
@@ -92,7 +92,7 @@ describe aws_apigateway_api_keys do
 end
 ```
 
-**Ensure that the name is available.**
+Ensure that the name is available:
 
 ```ruby
 describe aws_apigateway_api_keys do

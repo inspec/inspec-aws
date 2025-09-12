@@ -42,7 +42,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a size constraint set is available.**
+Ensure a size constraint set is available:
 
 ```ruby
 describe aws_waf_size_constraint_sets do
@@ -50,7 +50,7 @@ describe aws_waf_size_constraint_sets do
 end
 ```
 
-**Ensure a size constraint set name is available.**
+Ensure a size constraint set name is available:
 
 ```ruby
 describe aws_waf_size_constraint_sets do

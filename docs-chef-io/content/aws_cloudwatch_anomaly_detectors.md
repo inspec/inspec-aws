@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a namespace is available.**
+Ensure a namespace is available:
 
 ```ruby
 describe aws_cloudwatch_anomaly_detectors do
@@ -72,7 +72,7 @@ describe aws_cloudwatch_anomaly_detectors do
 end
 ```
 
-**Ensure a metric name is available.**
+Ensure a metric name is available:
 
 ```ruby
 describe aws_cloudwatch_anomaly_detectors do

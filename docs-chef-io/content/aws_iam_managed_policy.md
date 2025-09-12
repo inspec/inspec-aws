@@ -52,7 +52,7 @@ See the [AWS documentation on IAM Managed Policy](https://docs.aws.amazon.com/AW
 
 ## Examples
 
-**Test that a specific policy name exists.**
+Test that a specific policy name exists:
 
 ```ruby
 describe aws_iam_managed_policy(policy_arn: 'POLICY_ARN') do
@@ -60,7 +60,7 @@ describe aws_iam_managed_policy(policy_arn: 'POLICY_ARN') do
 end
 ```
 
-**Test that a specific policy ID exists.**
+Test that a specific policy ID exists:
 
 ```ruby
 describe aws_iam_managed_policy(policy_arn: 'POLICY_ARN') do

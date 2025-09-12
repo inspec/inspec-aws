@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure a client certificate id is available.**
+Ensure a client certificate id is available:
 
 ```ruby
 describe aws_apigateway_client_certificate(client_certificate_id: 'CLIENT_CERTIFICATE_ID') do
@@ -62,7 +62,7 @@ describe aws_apigateway_client_certificate(client_certificate_id: 'CLIENT_CERTIF
 end
 ```
 
-**Ensure a pem encoded certificate is available.**
+Ensure a pem encoded certificate is available:
 
 ```ruby
 describe aws_apigateway_client_certificate(client_certificate_id: 'CLIENT_CERTIFICATE_ID') do

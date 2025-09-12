@@ -56,7 +56,7 @@ end
 
 ## Examples
 
-**Ensure a principal is available.**
+Ensure a principal is available:
 
 ```ruby
 describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
@@ -64,7 +64,7 @@ describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
 end
 ```
 
-**Ensure a statement ID is available.**
+Ensure a statement ID is available:
 
 ```ruby
 describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
@@ -72,7 +72,7 @@ describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do
 end
 ```
 
-**Ensure a profile version is available.**
+Ensure a profile version is available:
 
 ```ruby
 describe aws_signer_profile_permissions(profile_name: 'PROFILE_NAME') do

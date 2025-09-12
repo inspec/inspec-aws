@@ -99,7 +99,7 @@ end
 
 ## Examples
 
-**Ensure an UUID is available.**
+Ensure an UUID is available:
 
 ```ruby
 describe aws_lambda_event_source_mapping(uuid: 'EVENT_SOURCE_MAPPING_UUID') do
@@ -107,7 +107,7 @@ describe aws_lambda_event_source_mapping(uuid: 'EVENT_SOURCE_MAPPING_UUID') do
 end
 ```
 
-**Ensure that the state is `Creating` or not.**
+Ensure that the state is `Creating` or not:
 
 ```ruby
 describe aws_lambda_event_source_mapping(uuid: 'EVENT_SOURCE_MAPPING_UUID') do

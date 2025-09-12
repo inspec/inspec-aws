@@ -52,7 +52,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Verify the group name of a DB parameter group.**
+Verify the group name of a DB parameter group:
 
 ```ruby
 describe aws_db_parameter_group(db_parameter_group_name: 'parameter-group-name-12345') do

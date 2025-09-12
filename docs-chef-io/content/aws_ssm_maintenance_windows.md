@@ -94,7 +94,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a maintenance window ID is available.**
+Ensure a maintenance window ID is available:
 
 ```ruby
 describe aws_ssm_maintenance_windows do
@@ -102,7 +102,7 @@ describe aws_ssm_maintenance_windows do
 end
 ```
 
-**Ensure a maintenance window name is available.**
+Ensure a maintenance window name is available:
 
 ```ruby
 describe aws_ssm_maintenance_windows do
@@ -110,7 +110,7 @@ describe aws_ssm_maintenance_windows do
 end
 ```
 
-**Verify a maintenance window is enabled.**
+Verify a maintenance window is enabled:
 
 ```ruby
 describe aws_ssm_maintenance_windows do

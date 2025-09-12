@@ -57,7 +57,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure there are no Load Balancers with an undesired zone.**
+Ensure there are no Load Balancers with an undesired zone:
 
 ```ruby
 describe aws_elbs do
@@ -66,7 +66,7 @@ describe aws_elbs do
 end
 ```
 
-**Ensure all ELBs expose only port 80.**
+Ensure all ELBs expose only port 80:
 
 ```ruby
 aws_elbs.each do |elb|

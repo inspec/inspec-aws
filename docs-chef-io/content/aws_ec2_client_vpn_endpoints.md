@@ -204,7 +204,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a client VPN endpoint ID is available.**
+Ensure a client VPN endpoint ID is available:
 
 ```ruby
 describe aws_ec2_client_vpn_endpoints do
@@ -212,7 +212,7 @@ describe aws_ec2_client_vpn_endpoints do
 end
 ```
 
-**Ensure that the status code is `available`.**
+Ensure that the status code is `available`:
 
 ```ruby
 describe aws_ec2_client_vpn_endpoints do

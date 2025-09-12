@@ -54,7 +54,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that a queue exists and has a visibility timeout of 300 seconds.**
+Ensure that a queue exists and has a visibility timeout of 300 seconds:
 
 ```ruby
 describe aws_sqs_queues.where(queue_url: 'https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do

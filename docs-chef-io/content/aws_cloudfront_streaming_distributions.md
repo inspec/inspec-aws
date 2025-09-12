@@ -87,7 +87,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_cloudfront_streaming_distributions do
@@ -95,7 +95,7 @@ describe aws_cloudfront_streaming_distributions do
 end
 ```
 
-**Ensure a status is `Deployed`.**
+Ensure a status is `Deployed`:
 
 ```ruby
 describe aws_cloudfront_streaming_distributions do

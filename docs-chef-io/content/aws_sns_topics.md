@@ -42,7 +42,7 @@ This resource does not require any parameters.
 
 The following examples show how to use this InSpec audit resource.
 
-**Ensure a Topic exists.**
+Ensure a Topic exists:
 
 ```ruby
 describe aws_sns_topics do

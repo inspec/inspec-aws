@@ -72,7 +72,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Verify that a stack set ID is available.**
+Verify that a stack set ID is available:
 
 ```ruby
 describe aws_cloud_formation_stack_sets do
@@ -80,7 +80,7 @@ describe aws_cloud_formation_stack_sets do
 end
 ```
 
-**Verify the descriptions of the stack set.**
+Verify the descriptions of the stack set:
 
 ```ruby
 describe aws_cloud_formation_stack_sets do

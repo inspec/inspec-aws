@@ -55,7 +55,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check DB Subnet Group Name of a subnet group.**
+Check DB Subnet Group Name of a subnet group:
 
 ```ruby
 describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do

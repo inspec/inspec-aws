@@ -84,7 +84,7 @@ This resource does not expect any required parameters.
 
 ## Examples
 
-**Ensure a sync name is available.**
+Ensure a sync name is available:
 
 ```ruby
 describe aws_ssm_resource_data_syncs do
@@ -92,7 +92,7 @@ describe aws_ssm_resource_data_syncs do
 end
 ```
 
-**Ensure a sync type is available.**
+Ensure a sync type is available:
 
 ```ruby
 describe aws_ssm_resource_data_syncs do
@@ -100,7 +100,7 @@ describe aws_ssm_resource_data_syncs do
 end
 ```
 
-**Ensure a status is `Successful`.**
+Ensure a status is `Successful`:
 
 ```ruby
 describe aws_ssm_resource_data_syncs do

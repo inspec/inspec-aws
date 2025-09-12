@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure a server certificate name is available.**
+Ensure a server certificate name is available:
 
 ```ruby
 describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do
@@ -60,7 +60,7 @@ describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME')
 end
 ```
 
-**Ensure that an arn is available.**
+Ensure that an arn is available:
 
 ```ruby
 describe aws_iam_server_certificate(server_certificate_name: 'CERTIFICATE_NAME') do

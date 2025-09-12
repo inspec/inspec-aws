@@ -91,7 +91,7 @@ end
 
 ## Examples
 
-**Ensure a device ID is available.**
+Ensure a device ID is available:
 
 ```ruby
 describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
@@ -99,7 +99,7 @@ describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: '
 end
 ```
 
-**Ensure a global network ID is available.**
+Ensure a global network ID is available:
 
 ```ruby
 describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
@@ -107,7 +107,7 @@ describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: '
 end
 ```
 
-**Ensure a zone is available.**
+Ensure a zone is available:
 
 ```ruby
 describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do
@@ -115,7 +115,7 @@ describe aws_network_manager_device(device_id: 'DEVICE_ID', global_network_id: '
 end
 ```
 
-**Ensure that the state is `AVAILABLE`.**
+Ensure that the state is `AVAILABLE`:
 
 ```ruby
 describe aws_network_manager_global_network(device_id: 'DEVICE_ID', global_network_id: 'GLOBAL_NETWORK_ID') do

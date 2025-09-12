@@ -171,7 +171,7 @@ end
 
 ## Examples
 
-**Ensure a baseline ID is available.**
+Ensure a baseline ID is available:
 
 ```ruby
 describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
@@ -179,7 +179,7 @@ describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
 end
 ```
 
-**Ensure an operating system is `WINDOWS`.**
+Ensure an operating system is `WINDOWS`:
 
 ```ruby
 describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
@@ -187,7 +187,7 @@ describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
 end
 ```
 
-**Ensure a source name is empty.**
+Ensure a source name is empty:
 
 ```ruby
 describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
@@ -195,7 +195,7 @@ describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do
 end
 ```
 
-**Ensure an approved patches compliance level is `UNSPECIFIED`.**
+Ensure an approved patches compliance level is `UNSPECIFIED`:
 
 ```ruby
 describe aws_ssm_patch_baseline(baseline_id: 'BASELINE_ID') do

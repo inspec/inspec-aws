@@ -64,7 +64,7 @@ For additional information, see [the API reference documentation](https://docs.a
 
 ## Examples
 
-**Test that a Traffic Mirror session should exist.**
+Test that a Traffic Mirror session should exist:
 
 ```ruby
 describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
@@ -72,7 +72,7 @@ describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRR
 end
 ```
 
-**Test the packet length of a Traffic Mirror session.**
+Test the packet length of a Traffic Mirror session:
 
 ```ruby
 describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do
@@ -80,7 +80,7 @@ describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRR
 end
 ```
 
-**Test that a Traffic Mirror session has the correct ID.**
+Test that a Traffic Mirror session has the correct ID:
 
 ```ruby
 describe aws_ec2_traffic_mirror_session(traffic_mirror_session_id: 'TRAFFIC_MIRROR_SESSION_ID') do

@@ -50,7 +50,7 @@ end
 
 ## Examples
 
-**Check availability zone of a subnet.**
+Check availability zone of a subnet:
 
 ```ruby
 describe aws_subnet(subnet_id: 'subnet-12345678') do
@@ -58,7 +58,7 @@ describe aws_subnet(subnet_id: 'subnet-12345678') do
 end
 ```
 
-**Check the number of available IP addresses.**
+Check the number of available IP addresses:
 
 ```ruby
 describe aws_subnet(subnet_id: 'subnet-12345678') do
@@ -66,7 +66,7 @@ describe aws_subnet(subnet_id: 'subnet-12345678') do
 end
 ```
 
-**Test the block of ip addresses specified to the subnet.**
+Test the block of ip addresses specified to the subnet:
 
 ```ruby
 describe aws_subnet(subnet_id: 'subnet-12345678') do
@@ -74,7 +74,7 @@ describe aws_subnet(subnet_id: 'subnet-12345678') do
 end
 ```
 
-**Ensure the subnet is in the right VPC.**
+Ensure the subnet is in the right VPC:
 
 ```ruby
 describe aws_subnet(subnet_id: 'subnet-12345678') do

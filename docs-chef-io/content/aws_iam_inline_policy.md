@@ -60,7 +60,7 @@ See AWS Documentation on inline policies for more details
 
 ## Examples
 
-**Test that a policy does exist.**
+Test that a policy does exist:
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
@@ -68,24 +68,24 @@ describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
 end
 ```
 
-**Examine the policy statements.**
+Examine the policy statements:
 
 ```ruby
 describe aws_iam_inline_policy(role_name: 'role-x', policy_name: 'policy-1') do
-**Verify that there is at least one statement allowing access to S3.**
+Verify that there is at least one statement allowing access to S3:
 
   it { should have_statement(Action: 's3:PutObject', Effect: 'allow') }
 ```
 
 ```ruby
-**have_statement does not expand wildcards. If you want to verify.**
-**they are absent, an explicit check is required.**
+have_statement does not expand wildcards. If you want to verify:
+they are absent, an explicit check is required:
 
 it { should_not have_statement(Action: 's3:*') }
 ```
 
 ```ruby
-**You can also check NotAction.**
+You can also check NotAction:
 
 it { should_not have_statement(NotAction: 'iam:*') }
     end

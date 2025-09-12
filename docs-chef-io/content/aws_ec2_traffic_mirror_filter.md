@@ -50,7 +50,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an EC2 traffic mirror should exist.**
+Test that an EC2 traffic mirror should exist:
 
 ```ruby
 describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do
@@ -58,7 +58,7 @@ describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFI
 end
 ```
 
-**Test that an EC2 traffic mirror description is correct.**
+Test that an EC2 traffic mirror description is correct:
 
 ```ruby
 describe aws_ec2_traffic_mirror_filter(aws_ec2_traffic_mirror_filter_id: 'TRAFFIC_MIRROR_FILTER_ID') do

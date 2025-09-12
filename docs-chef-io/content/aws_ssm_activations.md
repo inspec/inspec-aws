@@ -62,7 +62,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure an Activation ID of a SSM Activation exists.**
+Ensure an Activation ID of a SSM Activation exists:
 
 ```ruby
 describe aws_ssm_activations do

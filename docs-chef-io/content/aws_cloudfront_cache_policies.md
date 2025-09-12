@@ -72,7 +72,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that an ID is available.**
+Test that an ID is available:
 
 ```ruby
 describe aws_cloudfront_cache_policies do
@@ -80,7 +80,7 @@ describe aws_cloudfront_cache_policies do
 end
 ```
 
-**Verify the maximum TTL of the policy.**
+Verify the maximum TTL of the policy:
 
 ```ruby
 describe aws_cloudfront_cache_policies do

@@ -51,7 +51,7 @@ See the [AWS RDS DBInstance API documentation](https://docs.aws.amazon.com/Amazo
 
 ## Examples
 
-**Ensure a specific instance exists.**
+Ensure a specific instance exists:
 
 ```ruby
 describe aws_rds_instances do
@@ -59,7 +59,7 @@ describe aws_rds_instances do
 end
 ```
 
-**Use the InSpec resource to request the IDs of all RDS instances, then test in-depth using `aws_rds_instance` to ensure all instances are encrypted and have a sensible size.**
+Use the InSpec resource to request the IDs of all RDS instances, then test in-depth using `aws_rds_instance` to ensure all instances are encrypted and have a sensible size:
 
 ```ruby
 aws_rds_instances.db_instance_identifiers.each do |db_instance_identifier|

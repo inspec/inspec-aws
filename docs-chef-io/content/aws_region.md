@@ -47,7 +47,7 @@ end
 
 ## Examples
 
-**Test whether a region exists.**
+Test whether a region exists:
 
 ```ruby
 describe aws_region('region-not-real') do
@@ -55,7 +55,7 @@ describe aws_region('region-not-real') do
 end
 ```
 
-**Test the Region Endpoint.**
+Test the Region Endpoint:
 
 ```ruby
 describe aws_region(region_name: 'eu-west-2') do

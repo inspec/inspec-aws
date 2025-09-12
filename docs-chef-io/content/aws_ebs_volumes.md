@@ -82,7 +82,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a specific volume exists.**
+Ensure a specific volume exists:
 
 ```ruby
 describe aws_ebs_volumes do
@@ -90,7 +90,7 @@ describe aws_ebs_volumes do
 end
 ```
 
-**Request the EBS volumes IDs.**
+Request the EBS volumes IDs:
 
 Test in-depth using `aws_ebs_volume` to ensure all volumes are encrypted and have a sensible size.
 

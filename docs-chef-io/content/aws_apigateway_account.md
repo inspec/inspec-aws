@@ -49,7 +49,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Cloudwatch role ARN is available.**
+Ensure a Cloudwatch role ARN is available:
 
 ```ruby
 describe aws_apigateway_account do
@@ -57,7 +57,7 @@ describe aws_apigateway_account do
 end
 ```
 
-**Ensure that the burst limit is `1`.**
+Ensure that the burst limit is `1`:
 
 ```ruby
 describe aws_apigateway_account do

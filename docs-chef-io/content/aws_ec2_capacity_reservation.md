@@ -96,7 +96,7 @@ end
 
 ## Examples
 
-**Ensure a Capacity Reservation ID is available.**
+Ensure a Capacity Reservation ID is available:
 
 ```ruby
 describe aws_ec2_capacity_reservation(capacity_reservation_id: 'CAPACITY_RESERVATION_ID') do
@@ -104,7 +104,7 @@ describe aws_ec2_capacity_reservation(capacity_reservation_id: 'CAPACITY_RESERVA
 end
 ```
 
-**Ensure that the state is `active`.**
+Ensure that the state is `active`:
 
 ```ruby
 describe aws_ec2_capacity_reservation(capacity_reservation_id: 'CAPACITY_RESERVATION_ID') do

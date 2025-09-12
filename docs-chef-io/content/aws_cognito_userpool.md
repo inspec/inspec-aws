@@ -118,7 +118,7 @@ end
 
 ## Examples
 
-**Ensure a user pool ID is available.**
+Ensure a user pool ID is available:
 
 ```ruby
 describe aws_cognito_userpool(user_pool_id: 'USER_POOL_ID') do
@@ -126,7 +126,7 @@ describe aws_cognito_userpool(user_pool_id: 'USER_POOL_ID') do
 end
 ```
 
-**Ensure a client name is available.**
+Ensure a client name is available:
 
 ```ruby
 describe aws_cognito_userpool(user_pool_id: 'USER_POOL_ID') do

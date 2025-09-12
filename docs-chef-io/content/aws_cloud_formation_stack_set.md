@@ -113,7 +113,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a stack set ID is available.**
+Ensure a stack set ID is available:
 
 ```ruby
 describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
@@ -121,7 +121,7 @@ describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
 end
 ```
 
-**Verify the description of the stack set.**
+Verify the description of the stack set:
 
 ```ruby
 describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
@@ -129,7 +129,7 @@ describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
 end
 ```
 
-**Verify the parameter keys of the stack set.**
+Verify the parameter keys of the stack set:
 
 ```ruby
 describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
@@ -137,7 +137,7 @@ describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do
 end
 ```
 
-**Verify the in-progress stack instances count of the stack set.**
+Verify the in-progress stack instances count of the stack set:
 
 ```ruby
 describe aws_cloud_formation_stack_set(stack_set_name: "STACK_SET_NAME") do

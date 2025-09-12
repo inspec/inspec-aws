@@ -87,7 +87,7 @@ end
 
 ## Examples
 
-**Ensure a update token is available.**
+Ensure a update token is available:
 
 ```ruby
 describe aws_network_firewall_firewall_policy(firewall_policy_name: 'FIREWALL_POLICY_NAME') do
@@ -95,7 +95,7 @@ describe aws_network_firewall_firewall_policy(firewall_policy_name: 'FIREWALL_PO
 end
 ```
 
-**Ensure a policy name is available.**
+Ensure a policy name is available:
 
 ```ruby
 describe aws_network_firewall_firewall_policy(firewall_policy_name: 'FIREWALL_POLICY_NAME') do

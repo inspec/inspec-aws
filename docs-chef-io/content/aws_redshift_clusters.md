@@ -104,7 +104,7 @@ For a comprehensive list of properties available to test on an Redshift cluster 
 
 ## Examples
 
-**Ensure a specific cluster exists.**
+Ensure a specific cluster exists:
 
 ```ruby
 describe aws_redshift_clusters do
@@ -112,7 +112,7 @@ describe aws_redshift_clusters do
 end
 ```
 
-**Request the IDs of all Redshift clusters, then test in-depth using `aws_redshift_cluster` to ensure all clusters are encrypted.**
+Request the IDs of all Redshift clusters, then test in-depth using `aws_redshift_cluster` to ensure all clusters are encrypted:
 
 ```ruby
 aws_redshift_clusters.cluster_identifier.each do |cluster_identifier|

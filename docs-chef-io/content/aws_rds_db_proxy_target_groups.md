@@ -76,7 +76,7 @@ end
 
 ## Examples
 
-**Ensure a DB proxy name is available.**
+Ensure a DB proxy name is available:
 
 ```ruby
 describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
@@ -84,7 +84,7 @@ describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
 end
 ```
 
-**Ensure a target group name is available.**
+Ensure a target group name is available:
 
 ```ruby
 describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
@@ -92,7 +92,7 @@ describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do
 end
 ```
 
-**Ensure a status is `available`.**
+Ensure a status is `available`:
 
 ```ruby
 describe aws_rds_db_proxy_target_groups(db_proxy_name: 'DB_PROXY_NAME') do

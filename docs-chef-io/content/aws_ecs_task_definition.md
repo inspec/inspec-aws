@@ -775,7 +775,7 @@ end
 
 ## Examples
 
-**Ensure a task definition ARN is available.**
+Ensure a task definition ARN is available:
 
 ```ruby
 describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
@@ -783,7 +783,7 @@ describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
 end
 ```
 
-**Verify the amount of memory for a task definition.**
+Verify the amount of memory for a task definition:
 
 ```ruby
 describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
@@ -791,7 +791,7 @@ describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
 end
 ```
 
-**Verify the name of a task definition.**
+Verify the name of a task definition:
 
 ```ruby
 describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
@@ -799,7 +799,7 @@ describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do
 end
 ```
 
-**Verify the cpu of a task definition.**
+Verify the cpu of a task definition:
 
 ```ruby
 describe aws_ecs_task_definition(task_definition: 'TASK_DEFINITION') do

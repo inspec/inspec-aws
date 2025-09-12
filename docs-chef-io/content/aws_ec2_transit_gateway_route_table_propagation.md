@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure a Transit Gateway attachment ID is available.**
+Ensure a Transit Gateway attachment ID is available:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID', transit_gateway_attachment_id: "TRANSIT_GATEWAY_ATTACHMENT_ID") do
@@ -60,7 +60,7 @@ describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_t
 end
 ```
 
-**Ensure that the state is `enabled`.**
+Ensure that the state is `enabled`:
 
 ```ruby
 describe aws_ec2_transit_gateway_route_table_propagation(transit_gateway_route_table_id: 'TRANSIT_GATEWAY_ROUTE_TABLE_ID', transit_gateway_attachment_id: "TRANSIT_GATEWAY_ATTACHMENT_ID") do

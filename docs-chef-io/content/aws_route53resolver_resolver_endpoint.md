@@ -72,7 +72,7 @@ end
 
 ## Examples
 
-**Ensure an endpoint name is available.**
+Ensure an endpoint name is available:
 
 ```ruby
 describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'RESOLVER_ENDPOINT_ID') do
@@ -80,7 +80,7 @@ describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'RESOLVER_E
 end
 ```
 
-**Ensure that the endpoint status is `CREATING`.**
+Ensure that the endpoint status is `CREATING`:
 
 ```ruby
 describe aws_route53resolver_resolver_endpoint(resolver_endpoint_id: 'RESOLVER_ENDPOINT_ID') do

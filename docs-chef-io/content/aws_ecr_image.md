@@ -73,7 +73,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test the scan status of an image.**
+Test the scan status of an image:
 
 ```ruby
 describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
@@ -81,7 +81,7 @@ describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
 end
 ```
 
-**Test that an image has a certain tag.**
+Test that an image has a certain tag:
 
 ```ruby
 describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:687fba9b76554c8dea4c40fed4144011f29b8e1d5db5f2fc976c64ed31894967') do
@@ -89,7 +89,7 @@ describe aws_ecr_image(repository_name: 'my-repo', image_digest: 'sha256:687fba9
 end
 ```
 
-**Test that an image does not contain the [Heartbleed](https://heartbleed.com/) vulnerability.**
+Test that an image does not contain the [Heartbleed](https://heartbleed.com/) vulnerability:
 
 ```ruby
 describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
@@ -97,7 +97,7 @@ describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
 end
 ```
 
-**Test that an image does not contain a vulnerability more severe than CVSS v2 score 8.**
+Test that an image does not contain a vulnerability more severe than CVSS v2 score 8:
 
 ```ruby
 describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do

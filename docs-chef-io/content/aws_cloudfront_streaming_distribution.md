@@ -109,7 +109,7 @@ end
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_cloudfront_streaming_distribution(id: 'ID') do
@@ -117,7 +117,7 @@ describe aws_cloudfront_streaming_distribution(id: 'ID') do
 end
 ```
 
-**Ensure a status is `Deployed`.**
+Ensure a status is `Deployed`:
 
 ```ruby
 describe aws_cloudfront_streaming_distribution(id: 'ID') do

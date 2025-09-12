@@ -76,7 +76,7 @@ end
 
 ## Examples
 
-**Ensure the REST API exists.**
+Ensure the REST API exists:
 
 ```ruby
 describe aws_api_gateway_restapi(rest_api_id: "REST_API_ID") do
@@ -84,7 +84,7 @@ describe aws_api_gateway_restapi(rest_api_id: "REST_API_ID") do
 end
 ```
 
-**Ensure that the source of the API key is `HEADER`.**
+Ensure that the source of the API key is `HEADER`:
 
 ```ruby
 describe aws_api_gateway_restapi(rest_api_id: "REST_API_ID") do

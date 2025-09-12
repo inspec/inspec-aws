@@ -41,7 +41,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a CloudTrail with a specific name exists.**
+Ensure a CloudTrail with a specific name exists:
 
 ```ruby
 describe aws_cloudtrail_trails do
@@ -49,7 +49,7 @@ describe aws_cloudtrail_trails do
 end
 ```
 
-**Ensure a CloudTrail with a specific arn exists.**
+Ensure a CloudTrail with a specific arn exists:
 
 ```ruby
 describe aws_cloudtrail_trails do

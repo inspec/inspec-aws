@@ -41,7 +41,7 @@ end
 
 ## Examples
 
-**Ensure a service-linked role is deleted.**
+Ensure a service-linked role is deleted:
 
 ```ruby
 describe aws_iam_service_linked_role_deletion_status(deletion_task_id: 'DELETION_TASK_ID') do

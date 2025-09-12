@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a owner ID is available.**
+Ensure a owner ID is available:
 
 ```ruby
 describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
@@ -69,7 +69,7 @@ describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do
 end
 ```
 
-**Ensure that the IP address is available.**
+Ensure that the IP address is available:
 
 ```ruby
 describe aws_efs_mount_targets(file_system_id: "FILE_SYSTEM_ID") do

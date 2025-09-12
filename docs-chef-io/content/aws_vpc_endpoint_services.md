@@ -87,7 +87,7 @@ end
 
 ## Examples
 
-**Ensure that exactly three VPC endpoint services exist.**
+Ensure that exactly three VPC endpoint services exist:
 
 ```ruby
 describe aws_vpc_endpoint_services do
@@ -95,7 +95,7 @@ describe aws_vpc_endpoint_services do
 end
 ```
 
-**Filter all services in `us-east-2a` availability_zones.**
+Filter all services in `us-east-2a` availability_zones:
 
 ```ruby
 describe aws_vpc_endpoint_services.where{ availability_zones.include?('us-east-2a') } do
@@ -103,7 +103,7 @@ describe aws_vpc_endpoint_services.where{ availability_zones.include?('us-east-2
 end
 ```
 
-**Filter all service where acceptance is required from the service owner.**
+Filter all service where acceptance is required from the service owner:
 
 ```ruby
 describe aws_vpc_endpoint_services.where(acceptance_required: true) do
@@ -111,7 +111,7 @@ describe aws_vpc_endpoint_services.where(acceptance_required: true) do
 end
 ```
 
-**Filter all static if it manages its vpc endpoints.**
+Filter all static if it manages its vpc endpoints:
 
 ```ruby
 describe aws_vpc_endpoint_services.where(manages_vpc_endpoints: true) do
@@ -119,7 +119,7 @@ describe aws_vpc_endpoint_services.where(manages_vpc_endpoints: true) do
 end
 ```
 
-**Filter all private dns name verification states.**
+Filter all private dns name verification states:
 
 ```ruby
 describe aws_vpc_endpoint_services.where(private_dns_name_verification_states: 'verified') do
@@ -127,7 +127,7 @@ describe aws_vpc_endpoint_services.where(private_dns_name_verification_states: '
 end
 ```
 
-**Request all the service names and check if endpoint policies are supported.**
+Request all the service names and check if endpoint policies are supported:
 
 ```ruby
 aws_vpc_endpoint_services.service_names.each do |service_name|

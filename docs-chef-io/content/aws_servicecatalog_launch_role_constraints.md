@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure a constraint is available.**
+Ensure a constraint is available:
 
 ```ruby
 describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do
@@ -60,7 +60,7 @@ describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID'
 end
 ```
 
-**Ensure that the type is 'LAUNCH'.**
+Ensure that the type is 'LAUNCH':
 
 ```ruby
 describe aws_servicecatalog_launch_role_constraints(portfolio_id: 'PORTFOLIO_ID') do

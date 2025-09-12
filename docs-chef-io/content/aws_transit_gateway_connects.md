@@ -55,7 +55,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a transit gateway attachment ID is available.**
+Ensure a transit gateway attachment ID is available:
 
 ```ruby
 describe aws_transit_gateway_connects do
@@ -63,7 +63,7 @@ describe aws_transit_gateway_connects do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_transit_gateway_connects do

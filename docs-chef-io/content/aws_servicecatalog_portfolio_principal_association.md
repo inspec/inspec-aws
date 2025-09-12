@@ -40,7 +40,7 @@ end
 
 ## Examples
 
-**Ensure a principal ARN is available.**
+Ensure a principal ARN is available:
 
 ```ruby
 describe aws_servicecatalog_portfolio_principal_association(portfolio_id: 'PORTFOLIO_ID') do
@@ -48,7 +48,7 @@ describe aws_servicecatalog_portfolio_principal_association(portfolio_id: 'PORTF
 end
 ```
 
-**Ensure a principal type is 'IAM'.**
+Ensure a principal type is 'IAM':
 
 ```ruby
 describe aws_servicecatalog_portfolio_principal_association(portfolio_id: 'PORTFOLIO_ID') do

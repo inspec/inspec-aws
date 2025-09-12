@@ -139,7 +139,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a network interface ID is available.**
+Ensure a network interface ID is available:
 
 ```ruby
 describe aws_ec2_network_interfaces do
@@ -147,7 +147,7 @@ describe aws_ec2_network_interfaces do
 end
 ```
 
-**Ensure that an availability zone is available.**
+Ensure that an availability zone is available:
 
 ```ruby
 describe aws_ec2_network_interfaces do

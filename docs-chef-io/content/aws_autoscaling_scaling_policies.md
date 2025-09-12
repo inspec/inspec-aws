@@ -71,7 +71,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an auto scaling group name is available.**
+Ensure an auto scaling group name is available:
 
 ```ruby
 describe aws_autoscaling_scaling_policies do
@@ -79,7 +79,7 @@ describe aws_autoscaling_scaling_policies do
 end
 ```
 
-**Ensure that the policy types are available.**
+Ensure that the policy types are available:
 
 ```ruby
 describe aws_autoscaling_scaling_policies do

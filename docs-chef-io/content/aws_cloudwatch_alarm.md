@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure an Alarm has at least one alarm action.**
+Ensure an Alarm has at least one alarm action:
 
 ```ruby
 describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
@@ -62,7 +62,7 @@ describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: '
 end
 ```
 
-**Ensure an Alarm with Dimensions exists.**
+Ensure an Alarm with Dimensions exists:
 
 ```ruby
 describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace', dimensions: [{key: 'value'}]) do

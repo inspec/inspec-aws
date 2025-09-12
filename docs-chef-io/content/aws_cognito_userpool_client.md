@@ -122,7 +122,7 @@ end
 
 ## Examples
 
-**Ensure an client name is available.**
+Ensure an client name is available:
 
 ```ruby
 describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do
@@ -130,7 +130,7 @@ describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'C
 end
 ```
 
-**Ensure an client secret is available.**
+Ensure an client secret is available:
 
 ```ruby
 describe aws_cognito_userpool_client(user_pool_id: 'USER_POOL_ID', client_id: 'CLIENT_ID') do

@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Test that a base path is available.**
+Test that a base path is available:
 
 ```ruby
 describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do
@@ -57,7 +57,7 @@ describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path:
 end
 ```
 
-**Test that a stage name is available.**
+Test that a stage name is available:
 
 ```ruby
 describe aws_apigateway_base_path_mapping(domain_name: 'DOMAIN_NAME', base_path: 'BASE_PATH') do

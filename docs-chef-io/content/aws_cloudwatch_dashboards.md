@@ -52,7 +52,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a dashboard ARN is available.**
+Ensure a dashboard ARN is available:
 
 ```ruby
 describe aws_cloudwatch_dashboards do
@@ -60,7 +60,7 @@ describe aws_cloudwatch_dashboards do
 end
 ```
 
-**Ensure a dashboard name is available.**
+Ensure a dashboard name is available:
 
 ```ruby
 describe aws_cloudwatch_dashboards do

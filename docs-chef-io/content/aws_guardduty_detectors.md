@@ -43,7 +43,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure GuardDuty Detector ID exists.**
+Ensure GuardDuty Detector ID exists:
 
 ```ruby
 describe aws_guardduty_detectors do
@@ -51,7 +51,7 @@ describe aws_guardduty_detectors do
 end
 ```
 
-**Use the InSpec resource to request the IDs of all Detectors, then test in-depth using `aws_guardduty_detector` to ensure all detectors have a six hour publishing frequency.**
+Use the InSpec resource to request the IDs of all Detectors, then test in-depth using `aws_guardduty_detector` to ensure all detectors have a six hour publishing frequency:
 
 ```ruby
 aws_guardduty_detectors.detector_ids.first.each do |detector_id|

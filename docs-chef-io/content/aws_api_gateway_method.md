@@ -137,7 +137,7 @@ end
 
 ## Examples
 
-**Ensure a HTTP method is a GET request.**
+Ensure a HTTP method is a GET request:
 
 ```ruby
 describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'GET') do
@@ -145,7 +145,7 @@ describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOUR
 end
 ```
 
-**Ensure that the connection type is 'INTERNET'.**
+Ensure that the connection type is 'INTERNET':
 
 ```ruby
 describe aws_api_gateway_method(rest_api_id: 'REST_API_ID', resource_id: 'RESOURCE_ID', http_method: 'HTTP_METHOD') do

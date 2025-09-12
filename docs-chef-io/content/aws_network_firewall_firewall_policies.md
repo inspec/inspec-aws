@@ -44,7 +44,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a policy name is available.**
+Ensure a policy name is available:
 
 ```ruby
 describe aws_network_firewall_firewall_policies do
@@ -52,7 +52,7 @@ describe aws_network_firewall_firewall_policies do
 end
 ```
 
-**Ensure that the policy arn is available.**
+Ensure that the policy arn is available:
 
 ```ruby
 describe aws_network_firewall_firewall_policies do

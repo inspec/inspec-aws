@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a owner ID is available.**
+Ensure a owner ID is available:
 
 ```ruby
 describe aws_efs_mount_target(mount_target_id: 'MOUNT_TARGET_ID') do
@@ -69,7 +69,7 @@ describe aws_efs_mount_target(mount_target_id: 'MOUNT_TARGET_ID') do
 end
 ```
 
-**Ensure that the life cycle state is available.**
+Ensure that the life cycle state is available:
 
 ```ruby
 describe aws_efs_mount_target(mount_target_id: 'MOUNT_TARGET_ID') do

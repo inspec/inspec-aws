@@ -64,7 +64,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure Compliance Type of a SSM Resource Compliance Summary exists.**
+Ensure Compliance Type of a SSM Resource Compliance Summary exists:
 
 ```ruby
 describe aws_ssm_resource_compliance_summaries do

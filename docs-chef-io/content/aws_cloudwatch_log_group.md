@@ -55,7 +55,7 @@ end
 
 ## Examples
 
-**Test tags on the CloudWatch Log Group.**
+Test tags on the CloudWatch Log Group:
 
 ```ruby
 describe aws_cloudwatch_log_group('my_log_group') do

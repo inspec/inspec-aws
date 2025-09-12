@@ -78,7 +78,7 @@ end
 
 ## Examples
 
-**Ensure a web ACL is available.**
+Ensure a web ACL is available:
 
 ```ruby
 describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do
@@ -86,7 +86,7 @@ describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do
 end
 ```
 
-**Ensure a web ACL name is available.**
+Ensure a web ACL name is available:
 
 ```ruby
 describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do
@@ -94,7 +94,7 @@ describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do
 end
 ```
 
-**Ensure a web ACL rule type is `REGULAR`.**
+Ensure a web ACL rule type is `REGULAR`:
 
 ```ruby
 describe aws_waf_web_acl(web_acl_id: 'WEB_ACL_ID') do

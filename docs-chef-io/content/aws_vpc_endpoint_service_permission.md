@@ -54,7 +54,7 @@ The AWS VPC endpoint service ID is required.
 
 ## Examples
 
-**Test that a VPC endpoint service permission is available.**
+Test that a VPC endpoint service permission is available:
 
 ```ruby
 describe aws_vpc_endpoint_service_permission(service_id: 'VPC_SERVICE_ID', principal: 'arn:aws:iam::AWS_ACCOUNT_ID:user/USER_NAME') do

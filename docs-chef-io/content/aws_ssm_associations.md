@@ -62,7 +62,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure an Association ID of a SSM Association exists.**
+Ensure an Association ID of a SSM Association exists:
 
 ```ruby
 describe aws_ssm_associations do

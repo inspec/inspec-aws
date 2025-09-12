@@ -59,7 +59,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a carrier gateway ID is available.**
+Ensure a carrier gateway ID is available:
 
 ```ruby
 describe aws_ec2_carrier_gateways do
@@ -67,7 +67,7 @@ describe aws_ec2_carrier_gateways do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_carrier_gateways do

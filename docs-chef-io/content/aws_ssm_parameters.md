@@ -56,7 +56,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Ensure Name of a SSM Parameter exists.**
+Ensure Name of a SSM Parameter exists:
 
 ```ruby
 describe aws_ssm_parameters do

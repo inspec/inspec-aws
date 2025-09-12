@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a byte match set is available.**
+Ensure a byte match set is available:
 
 ```ruby
 describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do
@@ -69,7 +69,7 @@ describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do
 end
 ```
 
-**Ensure a byte match set name is available.**
+Ensure a byte match set name is available:
 
 ```ruby
 describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do
@@ -77,7 +77,7 @@ describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do
 end
 ```
 
-**Ensure a byte match set type is `REGULAR`.**
+Ensure a byte match set type is `REGULAR`:
 
 ```ruby
 describe aws_waf_byte_match_set(byte_match_set_id: 'BYTE_MATCH_SET_ID') do

@@ -85,7 +85,7 @@ end
 
 ## Examples
 
-**Test that a CloudFront distribution has secure protocols configured.**
+Test that a CloudFront distribution has secure protocols configured:
 
 ```ruby
 describe aws_cloudfront_distribution('DISTRIBUTION_ID') do

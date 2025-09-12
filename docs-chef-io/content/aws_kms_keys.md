@@ -49,7 +49,7 @@ This resource does not require any parameters.
 
 The following examples show how to use this InSpec audit resource.
 
-**Ensure a Key exists.**
+Ensure a Key exists:
 
 ```ruby
 describe aws_kms_keys do
@@ -57,7 +57,7 @@ describe aws_kms_keys do
 end
 ```
 
-**Allow at most 100 KMS Keys on the account.**
+Allow at most 100 KMS Keys on the account:
 
 ```ruby
 describe aws_kms_keys do

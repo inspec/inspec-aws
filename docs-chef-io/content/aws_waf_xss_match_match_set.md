@@ -52,7 +52,7 @@ end
 
 ## Examples
 
-**Ensure an `XssMatchSet` object is available.**
+Ensure an `XssMatchSet` object is available:
 
 ```ruby
 describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
@@ -60,7 +60,7 @@ describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
 end
 ```
 
-**Verify the name of an `XssMatchSet` object.**
+Verify the name of an `XssMatchSet` object:
 
 ```ruby
 describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
@@ -68,7 +68,7 @@ describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do
 end
 ```
 
-**Verify an `XssMatchSet` object has a type of `URI`.**
+Verify an `XssMatchSet` object has a type of `URI`:
 
 ```ruby
 describe aws_waf_xss_match_set(xss_match_set_id: 'XSS_MATCH_SET_ID') do

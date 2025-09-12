@@ -48,7 +48,7 @@ end
 
 ## Examples
 
-**Ensure that the stage name exists.**
+Ensure that the stage name exists:
 
 ```ruby
 describe aws_api_gateway_stages(rest_api_id: 'REST_API_ID') do

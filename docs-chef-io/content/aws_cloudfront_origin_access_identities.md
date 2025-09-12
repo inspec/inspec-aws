@@ -54,7 +54,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that an ID is available.**
+Test that an ID is available:
 
 ```ruby
 describe aws_cloudfront_origin_access_identities do
@@ -62,7 +62,7 @@ describe aws_cloudfront_origin_access_identities do
 end
 ```
 
-**Test that an s3 canonical user ID is available.**
+Test that an s3 canonical user ID is available:
 
 ```ruby
 describe aws_cloudfront_origin_access_identities do

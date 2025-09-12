@@ -60,7 +60,7 @@ end
 
 ## Examples
 
-**Ensure aN attachment ID is available.**
+Ensure aN attachment ID is available:
 
 ```ruby
 describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do
@@ -68,7 +68,7 @@ describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INT
 end
 ```
 
-**Ensure that the status is `available`.**
+Ensure that the status is `available`:
 
 ```ruby
 describe aws_ec2_network_interface_attachment(network_interface_id: 'NETWORK_INTERFACE_ID') do

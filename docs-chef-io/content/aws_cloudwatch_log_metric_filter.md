@@ -30,7 +30,7 @@ end
 
 ## Parameters
 
-**Note**: _While all parameters are optional, at least one must be provided. In practice, the more parameters you provide the narrower a result you will return._
+Note**: _While all parameters are optional, at least one must be provided. In practice, the more parameters you provide the narrower a result you will return._
 
 `filter_name` _(optional)_
 
@@ -63,7 +63,7 @@ end
 
 ## Examples
 
-**Ensure a Filter exists.**
+Ensure a Filter exists:
 
 ```ruby
 describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
@@ -71,7 +71,7 @@ describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_na
 end
 ```
 
-**Ensure a Filter exists for a specific pattern.**
+Ensure a Filter exists for a specific pattern:
 
 ```ruby
 describe aws_cloudwatch_log_metric_filter(pattern: '"ERROR" - "Exiting"') do
@@ -79,7 +79,7 @@ describe aws_cloudwatch_log_metric_filter(pattern: '"ERROR" - "Exiting"') do
 end
 ```
 
-**Check the name of a Filter.**
+Check the name of a Filter:
 
 ```ruby
 describe aws_cloudwatch_log_metric_filter(log_group_name: 'app-log-group', pattern: 'KERBLEWIE') do
@@ -87,7 +87,7 @@ describe aws_cloudwatch_log_metric_filter(log_group_name: 'app-log-group', patte
 end
 ```
 
-**Check the Log Group name of a Filter.**
+Check the Log Group name of a Filter:
 
 ```ruby
 describe aws_cloudwatch_log_metric_filter(filter_name: 'error-watcher') do
@@ -95,7 +95,7 @@ describe aws_cloudwatch_log_metric_filter(filter_name: 'error-watcher') do
 end
 ```
 
-**Check a filter has the correct pattern.**
+Check a filter has the correct pattern:
 
 ```ruby
 describe aws_cloudwatch_log_metric_filter(filter_name: 'error-watcher', log_group_name: 'app-log-group') do

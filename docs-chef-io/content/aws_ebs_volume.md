@@ -72,7 +72,7 @@ This resource accepts a single parameter, either the EBS volume name or ID. _man
 
 ## Examples
 
-**Test that an EBS Volume does not exist.**
+Test that an EBS Volume does not exist:
 
 ```ruby
 describe aws_ebs_volume(name: 'DATA-VOLUME') do
@@ -80,7 +80,7 @@ describe aws_ebs_volume(name: 'DATA-VOLUME') do
 end
 ```
 
-**Test that an EBS Volume is encrypted.**
+Test that an EBS Volume is encrypted:
 
 ```ruby
 describe aws_ebs_volume(name: 'SECURE_DATA-VOLUME') do
@@ -88,7 +88,7 @@ describe aws_ebs_volume(name: 'SECURE_DATA-VOLUME') do
 end
 ```
 
-**Test that an EBS Volume has the correct size.**
+Test that an EBS Volume has the correct size:
 
 ```ruby
 describe aws_ebs_volume(name: 'DATA-VOLUME') do

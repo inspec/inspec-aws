@@ -63,7 +63,7 @@ end
 
 ## Examples
 
-**Ensure a user name is available.**
+Ensure a user name is available:
 
 ```ruby
 describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'KEY_ID', encoding: 'SSH') do
@@ -71,7 +71,7 @@ describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'KEY_
 end
 ```
 
-**Ensure an SSH public key ID is available.**
+Ensure an SSH public key ID is available:
 
 ```ruby
 describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'KEY_ID', encoding: 'SSH') do
@@ -79,7 +79,7 @@ describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'KEY_
 end
 ```
 
-**Ensure SSH key is expired or not.**
+Ensure SSH key is expired or not:
 
 ```ruby
 describe aws_iam_ssh_public_key(user_name: 'USER_NAME', ssh_public_key_id: 'KEY_ID', encoding: 'SSH') do

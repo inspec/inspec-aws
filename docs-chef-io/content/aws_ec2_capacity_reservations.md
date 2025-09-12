@@ -134,7 +134,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a Capacity Reservation ID is available.**
+Ensure a Capacity Reservation ID is available:
 
 ```ruby
 describe aws_ec2_capacity_reservations do
@@ -142,7 +142,7 @@ describe aws_ec2_capacity_reservations do
 end
 ```
 
-**Ensure that the state is `active`.**
+Ensure that the state is `active`:
 
 ```ruby
 describe aws_ec2_capacity_reservations do

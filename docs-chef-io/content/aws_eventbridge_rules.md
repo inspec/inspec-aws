@@ -61,7 +61,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a rule name is available.**
+Ensure a rule name is available:
 
 ```ruby
 describe aws_eventbridge_rules do
@@ -69,7 +69,7 @@ describe aws_eventbridge_rules do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_eventbridge_rules do

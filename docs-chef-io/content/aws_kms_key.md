@@ -89,7 +89,7 @@ end
 
 ## Examples
 
-**Test that the specified key does exist.**
+Test that the specified key does exist:
 
 ```ruby
 describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
@@ -97,7 +97,7 @@ describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab09876
 end
 ```
 
-**Test that the specified key is enabled.**
+Test that the specified key is enabled:
 
 ```ruby
 describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
@@ -105,7 +105,7 @@ describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab09876
 end
 ```
 
-**Test that the specified key is rotation enabled.**
+Test that the specified key is rotation enabled:
 
 ```ruby
 describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
@@ -113,7 +113,7 @@ describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab09876
 end
 ```
 
-**Makes sure that the key was created at least 10 days ago.**
+Makes sure that the key was created at least 10 days ago:
 
 ```ruby
 describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do

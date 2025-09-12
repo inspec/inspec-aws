@@ -66,7 +66,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that image tags are `IMMUTABLE` in an ECR repository.**
+Test that image tags are `IMMUTABLE` in an ECR repository:
 
 ```ruby
 describe aws_ecr_repository('my-repo') do
@@ -74,7 +74,7 @@ describe aws_ecr_repository('my-repo') do
 end
 ```
 
-**Test that images are scanned for vulnerabilities at a push to repository.**
+Test that images are scanned for vulnerabilities at a push to repository:
 
 ```ruby
 describe aws_ecr_repository(repository_name: 'my-repo') do
@@ -82,7 +82,7 @@ describe aws_ecr_repository(repository_name: 'my-repo') do
 end
 ```
 
-**Test that an ECR repository has a certain tag.**
+Test that an ECR repository has a certain tag:
 
 ```ruby
 describe aws_ecr_repository('my-repo') do

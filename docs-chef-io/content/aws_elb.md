@@ -86,7 +86,7 @@ end
 
 ## Examples
 
-**Test that cross-zone load balancing for ELB is enabled.**
+Test that cross-zone load balancing for ELB is enabled:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -94,7 +94,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Test that access logs for ELB are enabled.**
+Test that access logs for ELB are enabled:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -102,7 +102,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Test that an ELB has its availability zones configured correctly.**
+Test that an ELB has its availability zones configured correctly:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -112,7 +112,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Ensure an ELB has the correct number of EC2 Instances associated with it.**
+Ensure an ELB has the correct number of EC2 Instances associated with it:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -120,7 +120,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Ensure the correct DNS is set .**
+Ensure the correct DNS is set :
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -128,7 +128,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Ensure we only expose port 80, both to the public and internal.**
+Ensure we only expose port 80, both to the public and internal:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do
@@ -139,7 +139,7 @@ describe aws_elb('prod_web_app_elb') do
 end
 ```
 
-**Ensure the correct EC2 Instances are associated.**
+Ensure the correct EC2 Instances are associated:
 
 ```ruby
 describe aws_elb('prod_web_app_elb') do

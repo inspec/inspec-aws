@@ -117,7 +117,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a canary ID is available.**
+Ensure a canary ID is available:
 
 ```ruby
 describe aws_synthetics_canaries do
@@ -125,7 +125,7 @@ describe aws_synthetics_canaries do
 end
 ```
 
-**Ensure a canary name is available.**
+Ensure a canary name is available:
 
 ```ruby
 describe aws_synthetics_canaries do

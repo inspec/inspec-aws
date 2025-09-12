@@ -68,7 +68,7 @@ end
 
 ## Examples
 
-**Ensure a resource share ARN is available.**
+Ensure a resource share ARN is available:
 
 ```ruby
 describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do
@@ -76,7 +76,7 @@ describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RES
 end
 ```
 
-**Ensure a resource name is available.**
+Ensure a resource name is available:
 
 ```ruby
 describe aws_ram_resource_share(resource_owner: 'SELF', resource_share_arn: 'RESOURCE_SHARE_ARN') do

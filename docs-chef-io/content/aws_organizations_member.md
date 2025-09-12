@@ -50,7 +50,7 @@ _**If the current Account is the Master Account, the following properties are al
 
 ## Examples
 
-**Ensure you are a child account with a certain ID for the top level account.**
+Ensure you are a child account with a certain ID for the top level account:
 
 ```ruby
 describe aws_organizations_member do
@@ -59,7 +59,7 @@ describe aws_organizations_member do
 end
 ```
 
-**Ensure you are the top level account, with the right name and email associated.**
+Ensure you are the top level account, with the right name and email associated:
 
 ```ruby
 describe aws_organizations_member do

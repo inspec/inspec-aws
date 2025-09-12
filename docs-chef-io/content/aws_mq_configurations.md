@@ -77,7 +77,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a configuration ID is available.**
+Ensure a configuration ID is available:
 
 ```ruby
 describe aws_mq_configurations do
@@ -85,7 +85,7 @@ describe aws_mq_configurations do
 end
 ```
 
-**Ensure a configuration name is available.**
+Ensure a configuration name is available:
 
 ```ruby
 describe aws_mq_configurations do

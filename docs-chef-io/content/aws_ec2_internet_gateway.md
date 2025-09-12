@@ -54,7 +54,7 @@ end
 
 ## Examples
 
-**Ensure an attachments is available.**
+Ensure an attachments is available:
 
 ```ruby
 describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
@@ -62,7 +62,7 @@ describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
 end
 ```
 
-**Ensure that the attachment state is `available`.**
+Ensure that the attachment state is `available`:
 
 ```ruby
 describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
@@ -70,7 +70,7 @@ describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
 end
 ```
 
-**Ensure an internet gateway ID is available.**
+Ensure an internet gateway ID is available:
 
 ```ruby
 describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
@@ -78,7 +78,7 @@ describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do
 end
 ```
 
-**Ensure an owner ID is available.**
+Ensure an owner ID is available:
 
 ```ruby
 describe aws_ec2_internet_gateway(internet_gateway_id: 'INTERNET_GATEWAY_ID') do

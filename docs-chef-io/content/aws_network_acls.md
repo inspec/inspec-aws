@@ -121,7 +121,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure that exactly three network ACLs exist.**
+Ensure that exactly three network ACLs exist:
 
 ```ruby
 describe aws_network_acls do
@@ -129,7 +129,7 @@ describe aws_network_acls do
 end
 ```
 
-**Filter all network ACLs whose entries have rule number equal to 100.**
+Filter all network ACLs whose entries have rule number equal to 100:
 
 ```ruby
 describe aws_network_acls.where { entries_rule_numbers.include?(100) } do
@@ -137,7 +137,7 @@ describe aws_network_acls.where { entries_rule_numbers.include?(100) } do
 end
 ```
 
-**Filter all default network ACLs.**
+Filter all default network ACLs:
 
 ```ruby
 describe aws_network_acls.where(default: true) do
@@ -145,7 +145,7 @@ describe aws_network_acls.where(default: true) do
 end
 ```
 
-**Filter all network ACLs with associated subnet IDs matching `subnet-07a323891825bc312`.**
+Filter all network ACLs with associated subnet IDs matching `subnet-07a323891825bc312`:
 
 ```ruby
 describe aws_network_acls.where { associated_subnet_ids.include?('subnet-07a323891825bc312') } do
@@ -153,7 +153,7 @@ describe aws_network_acls.where { associated_subnet_ids.include?('subnet-07a3238
 end
 ```
 
-**Filter all network ACLs with entries CIDR blocks matching `10.3.0.0/18`.**
+Filter all network ACLs with entries CIDR blocks matching `10.3.0.0/18`:
 
 ```ruby
 describe aws_network_acls.where { entries_cidr_blocks.include?('10.3.0.0/18') } do
@@ -161,7 +161,7 @@ describe aws_network_acls.where { entries_cidr_blocks.include?('10.3.0.0/18') } 
 end
 ```
 
-**Request the IDs of all network ACLs, then test in-depth using `aws_network_acl`.**
+Request the IDs of all network ACLs, then test in-depth using `aws_network_acl`:
 
 ```ruby
 aws_network_acls.network_acl_ids.each do |network_acl_id|
@@ -171,7 +171,7 @@ aws_network_acls.network_acl_ids.each do |network_acl_id|
 end
 ```
 
-**Request the IDs of all network ACLs for rule number `100`, then test in-depth using `aws_network_acl`.**
+Request the IDs of all network ACLs for rule number `100`, then test in-depth using `aws_network_acl`:
 
 ```ruby
 aws_network_acls.where{ ingress_rule_numbers.include?(100) }.network_acl_ids.each do |network_acl_id|

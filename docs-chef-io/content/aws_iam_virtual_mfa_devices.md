@@ -74,7 +74,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a username is available.**
+Ensure a username is available:
 
 ```ruby
 describe aws_iam_virtual_mfa_devices do
@@ -82,7 +82,7 @@ describe aws_iam_virtual_mfa_devices do
 end
 ```
 
-**Ensure that an ARN is available.**
+Ensure that an ARN is available:
 
 ```ruby
 describe aws_iam_virtual_mfa_devices do

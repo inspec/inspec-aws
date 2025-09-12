@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure an alias ARN is available.**
+Ensure an alias ARN is available:
 
 ```ruby
 describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
@@ -74,7 +74,7 @@ describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do
 end
 ```
 
-**Ensure an alias name is available.**
+Ensure an alias name is available:
 
 ```ruby
 describe aws_lambda_aliases(function_name: 'FUNCTION_NAME') do

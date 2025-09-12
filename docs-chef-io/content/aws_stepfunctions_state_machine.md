@@ -69,7 +69,7 @@ end
 
 ## Examples
 
-**Ensure a state machine ARN is available.**
+Ensure a state machine ARN is available:
 
 ```ruby
 describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do
@@ -77,7 +77,7 @@ describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN')
 end
 ```
 
-**Ensure that the status is available.**
+Ensure that the status is available:
 
 ```ruby
 describe aws_stepfunctions_state_machine(state_machine_arn: 'STATE_MACHINE_ARN') do

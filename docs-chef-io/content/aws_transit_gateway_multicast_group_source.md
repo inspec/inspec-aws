@@ -69,7 +69,7 @@ end
 
 ## Examples
 
-**Ensure a group IP address is available.**
+Ensure a group IP address is available:
 
 ```ruby
 describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_domain_id: "TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID") do
@@ -77,7 +77,7 @@ describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_do
 end
 ```
 
-**Ensure that the resource type is `vpc`.**
+Ensure that the resource type is `vpc`:
 
 ```ruby
 describe aws_transit_gateway_multicast_group_source(transit_gateway_multicast_domain_id: "TRANSIT_GATEWAY_MULTICAST_DOMAIN_ID") do

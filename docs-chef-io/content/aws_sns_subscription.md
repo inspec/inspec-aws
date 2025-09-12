@@ -53,26 +53,26 @@ end
 
 ## Examples
 
-**Inspect the endpoint.**
+Inspect the endpoint:
 
 ```ruby
 describe aws_sns_subscription(subscription_arn: 'arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6' ) do
-**If protocol is 'sms', this should be a phone number:.**
+If protocol is 'sms', this should be a phone number::
 
   its('endpoint') { should cmp '+16105551234' }
-**If protocol is 'email' or 'email-json', endpoint should be an email address.**
+If protocol is 'email' or 'email-json', endpoint should be an email address:
 
   its('endpoint') { should cmp 'myemail@example.com' }
-**If protocal is 'http', endpoint should be a URL beginning with 'https://'.**
+If protocal is 'http', endpoint should be a URL beginning with 'https://':
 
   its('endpoint') { should cmp 'https://www.exampleurl.com' }
-**If the protocol is 'lambda', its endpoint should be the ARN of a AWS Lambda function.**
+If the protocol is 'lambda', its endpoint should be the ARN of a AWS Lambda function:
 
   its('endpoint') { should cmp 'rn:aws:lambda:us-east-1:account-id:function:myfunction' }
 end
 ```
 
-**Inspect the owners ID.**
+Inspect the owners ID:
 
 ```ruby
 describe aws_sns_subscription(subscription_arn: 'arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6' ) do
@@ -80,7 +80,7 @@ describe aws_sns_subscription(subscription_arn: 'arn:aws:sns:us-east-1::test-top
 end
 ```
 
-**Inspect the endpoint.**
+Inspect the endpoint:
 
 ```ruby
 describe aws_sns_subscription(subscription_arn: 'arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6' ) do

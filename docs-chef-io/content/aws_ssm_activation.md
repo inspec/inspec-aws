@@ -67,7 +67,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the Activation ID of a SSM Activation.**
+Check the Activation ID of a SSM Activation:
 
 ```ruby
 describe aws_ssm_activation(activation_id: 'ssm-activation-id-1234') do

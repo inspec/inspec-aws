@@ -16,7 +16,7 @@ Use the `aws_cloudtrail_trail` Chef InSpec audit resource to test properties of 
 
 An `aws_cloudtrail_trail` resource block identifies a trail by `TRAIL_NAME`.
 
-**Find a trail by name:**
+Find a trail by name:**
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -24,7 +24,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Use hash syntax to find a trail by trail name:**
+Use hash syntax to find a trail by trail name:**
 
 ```ruby
 describe aws_cloudtrail_trail(trail_name: 'TRAIL_NAME') do
@@ -71,7 +71,7 @@ See the [AWS documentation on CloudTrail](https://docs.aws.amazon.com/cloudtrail
 
 ## Examples
 
-**Test that the specified trail does exist.**
+Test that the specified trail does exist:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -85,7 +85,7 @@ describe aws_cloudtrail_trail(trail_name: 'TRAIL_NAME') do
 end
 ```
 
-**Check the KMS key used to encrypt.**
+Check the KMS key used to encrypt:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -93,7 +93,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Check the home region is correct.**
+Check the home region is correct:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -101,7 +101,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Test that the specified trail is a multi-region trail.**
+Test that the specified trail is a multi-region trail:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -109,7 +109,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Test that the specified trail is an organization trail.**
+Test that the specified trail is an organization trail:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do
@@ -118,7 +118,7 @@ describe aws_cloudtrail_trail('TRAIL_NAME') do
 end
 ```
 
-**Test that the specified trail has a S3 Key Prefix.**
+Test that the specified trail has a S3 Key Prefix:
 
 ```ruby
 describe aws_cloudtrail_trail('TRAIL_NAME') do

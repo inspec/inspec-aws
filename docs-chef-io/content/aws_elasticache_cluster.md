@@ -71,7 +71,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an ElastiCache cluster is available.**
+Test that an ElastiCache cluster is available:
 
 ```ruby
 describe aws_elasticache_cluster("my-cluster-123") do
@@ -79,7 +79,7 @@ describe aws_elasticache_cluster("my-cluster-123") do
 end
 ```
 
-**Test that an Elasticache cluster engine is listening on port `11211`.**
+Test that an Elasticache cluster engine is listening on port `11211`:
 
 ```ruby
 describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
@@ -87,7 +87,7 @@ describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do
 end
 ```
 
-**Test that an Elasticache cluster's engine version is `1.5.16`.**
+Test that an Elasticache cluster's engine version is `1.5.16`:
 
 ```ruby
 describe aws_elasticache_cluster(cache_cluster_id: "my-cluster-123") do

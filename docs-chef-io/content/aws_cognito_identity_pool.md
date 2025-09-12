@@ -65,7 +65,7 @@ end
 
 ## Examples
 
-**Ensure an identity pool ID is available.**
+Ensure an identity pool ID is available:
 
 ```ruby
 describe aws_cognito_identity_pool(identity_pool_id: 'IDENTITY_POOL_ID') do
@@ -73,7 +73,7 @@ describe aws_cognito_identity_pool(identity_pool_id: 'IDENTITY_POOL_ID') do
 end
 ```
 
-**Ensure that the identity pool name is available.**
+Ensure that the identity pool name is available:
 
 ```ruby
 describe aws_cognito_identity_pool(identity_pool_id: 'IDENTITY_POOL_ID') do

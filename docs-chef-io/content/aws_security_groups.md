@@ -60,7 +60,7 @@ This resource does not require any parameters.
 
 The following examples show how to use this InSpec audit resource.
 
-**Look for a particular security group in just one VPC.**
+Look for a particular security group in just one VPC:
 
 ```ruby
 describe aws_security_groups.where( vpc_id: 'vpc-12345678') do
@@ -68,7 +68,7 @@ describe aws_security_groups.where( vpc_id: 'vpc-12345678') do
 end
 ```
 
-**Examine the default security group in all VPCs.**
+Examine the default security group in all VPCs:
 
 ```ruby
 describe aws_security_groups.where( group_name: 'default') do
@@ -76,7 +76,7 @@ describe aws_security_groups.where( group_name: 'default') do
 end
 ```
 
-**Allow at most 100 security groups on the account.**
+Allow at most 100 security groups on the account:
 
 ```ruby
 describe aws_security_groups do
@@ -84,7 +84,7 @@ describe aws_security_groups do
 end
 ```
 
-**Pass entry resource data from security groups to the singular resource for testing.**
+Pass entry resource data from security groups to the singular resource for testing:
 
 Use the `security_group_objects` resource to pass resource data to the singular resource for testing.
 This method uses local in-memory caching for quicker execution of large sets of test cases.

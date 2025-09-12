@@ -109,7 +109,7 @@ For a comprehensive list of properties available, see [the API reference documen
 
 ## Examples
 
-**Check the Name of a SSM Association.**
+Check the Name of a SSM Association:
 
 ```ruby
 describe aws_ssm_association(association_id: 'association-id-1234') do

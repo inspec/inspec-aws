@@ -80,7 +80,7 @@ end
 
 ## Examples
 
-**Ensure a configuration id is available.**
+Ensure a configuration id is available:
 
 ```ruby
 describe aws_mq_configuration(configuration_id: 'configuration_id') do
@@ -88,7 +88,7 @@ describe aws_mq_configuration(configuration_id: 'configuration_id') do
 end
 ```
 
-**Ensure a configuration name is available.**
+Ensure a configuration name is available:
 
 ```ruby
 describe aws_mq_configuration(configuration_id: 'configuration_id') do

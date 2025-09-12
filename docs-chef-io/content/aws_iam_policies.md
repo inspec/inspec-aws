@@ -67,7 +67,7 @@ end
 
 ## Examples
 
-**Ensure a policy exists.**
+Ensure a policy exists:
 
 ```ruby
 describe aws_iam_policies do
@@ -75,7 +75,7 @@ describe aws_iam_policies do
 end
 ```
 
-**Allow at most 100 IAM Policies on the account.**
+Allow at most 100 IAM Policies on the account:
 
 ```ruby
 describe aws_iam_policies do

@@ -70,7 +70,7 @@ end
 
 ## Examples
 
-**Test that an ID is available.**
+Test that an ID is available:
 
 ```ruby
 describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do
@@ -78,7 +78,7 @@ describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'A
 end
 ```
 
-**Test that a name is available.**
+Test that a name is available:
 
 ```ruby
 describe aws_apigateway_authorizer(rest_api_id: 'REST_API_ID', authorizer_id: 'AUTHORIZER_ID') do

@@ -72,7 +72,7 @@ end
 
 ## Examples
 
-**Ensure that a queue exists and has a visibility timeout of 300 seconds.**
+Ensure that a queue exists and has a visibility timeout of 300 seconds:
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
@@ -81,16 +81,16 @@ describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue
 end
 ```
 
-**Ensure maximum message size is set.**
+Ensure maximum message size is set:
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
-**256 KB      .**
+256 KB      :
 
 end
 ```
 
-**Test the delay time .**
+Test the delay time :
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
@@ -98,16 +98,16 @@ describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue
 end
 ```
 
-**Ensure messages are retained for 4 days.**
+Ensure messages are retained for 4 days:
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
-**4 days.**
+4 days:
 
 end
 ```
 
-**Check if queue is fifo.**
+Check if queue is fifo:
 
 ```ruby
 describe aws_sqs_queue('https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do

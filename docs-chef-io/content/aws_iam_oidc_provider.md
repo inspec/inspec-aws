@@ -45,7 +45,7 @@ end
 
 ## Examples
 
-**Ensure an URL is available.**
+Ensure an URL is available:
 
 ```ruby
 describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do
@@ -53,7 +53,7 @@ describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN'
 end
 ```
 
-**Ensure that tags are available.**
+Ensure that tags are available:
 
 ```ruby
 describe aws_iam_oidc_provider(open_id_connect_provider_arn: 'OIDC_PROVIDER_ARN') do

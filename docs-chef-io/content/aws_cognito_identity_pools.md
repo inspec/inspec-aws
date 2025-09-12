@@ -38,7 +38,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an identity pool is available.**
+Ensure an identity pool is available:
 
 ```ruby
 describe aws_cognito_identity_pools do
@@ -46,7 +46,7 @@ describe aws_cognito_identity_pools do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_cognito_identity_pools do

@@ -59,7 +59,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure there are no Clusters in an undesired state.**
+Ensure there are no Clusters in an undesired state:
 
 ```ruby
 describe aws_ecs_clusters do

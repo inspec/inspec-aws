@@ -58,7 +58,7 @@ end
 
 ## Examples
 
-**Ensure a product name is available.**
+Ensure a product name is available:
 
 ```ruby
 describe aws_servicecatalog_launch_role_constraint(id: 'CONSTRAINT_ID') do
@@ -66,7 +66,7 @@ describe aws_servicecatalog_launch_role_constraint(id: 'CONSTRAINT_ID') do
 end
 ```
 
-**Ensure a status is available.**
+Ensure a status is available:
 
 ```ruby
 describe aws_servicecatalog_launch_role_constraint(id: 'CONSTRAINT_ID') do

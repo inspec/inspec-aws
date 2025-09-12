@@ -41,7 +41,7 @@ end
 
 ## Examples
 
-**Ensure that the specific client ID is available.**
+Ensure that the specific client ID is available:
 
 ```ruby
 describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do
@@ -49,7 +49,7 @@ describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do
 end
 ```
 
-**Ensure that the specific client name is available.**
+Ensure that the specific client name is available:
 
 ```ruby
 describe aws_cognito_userpool_clients(user_pool_id: 'USER_POOL_ID') do

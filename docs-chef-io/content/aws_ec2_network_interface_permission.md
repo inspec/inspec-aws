@@ -49,7 +49,7 @@ end
 
 ## Examples
 
-**Ensure a network interface permission ID is available.**
+Ensure a network interface permission ID is available:
 
 ```ruby
 describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do
@@ -57,7 +57,7 @@ describe aws_ec2_network_interface_permission(network_interface_permission_id: '
 end
 ```
 
-**Ensure that the interface permission state is 'pending'.**
+Ensure that the interface permission state is 'pending':
 
 ```ruby
 describe aws_ec2_network_interface_permission(network_interface_permission_id: 'NETWORK_INTERFACE_PERMISSION_ID') do

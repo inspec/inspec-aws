@@ -84,7 +84,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Allow at most 100 EKS Clusters on the account.**
+Allow at most 100 EKS Clusters on the account:
 
 ```ruby
 describe aws_eks_clusters do
@@ -92,7 +92,7 @@ describe aws_eks_clusters do
 end
 ```
 
-**Ensure a specific Cluster exists, by name.**
+Ensure a specific Cluster exists, by name:
 
 ```ruby
 describe aws_eks_clusters do
@@ -100,7 +100,7 @@ describe aws_eks_clusters do
 end
 ```
 
-**Ensure no Clusters are in a failed state.**
+Ensure no Clusters are in a failed state:
 
 ```ruby
 describe aws_eks_clusters.where( failed: true ) do

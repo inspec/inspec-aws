@@ -62,7 +62,7 @@ For a comprehensive list of properties available to test on an RDS snapshot see 
 
 ## Examples
 
-**Tests the engine used is with an RDS snapshot.**
+Tests the engine used is with an RDS snapshot:
 
 ```ruby
 describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
@@ -71,7 +71,7 @@ describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
 end
 ```
 
-**Tests the storage allocated to an RDS snapshot.**
+Tests the storage allocated to an RDS snapshot:
 
 ```ruby
 describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
@@ -79,7 +79,7 @@ describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
 end
 ```
 
-**Tests the snapshot type and master username.**
+Tests the snapshot type and master username:
 
 ```ruby
 describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
@@ -87,7 +87,7 @@ describe aws_rds_snapshot(db_snapshot_identifier: 'AWSRDS123') do
 end
 ```
 
-**Tests the snapshot using cached resource data.**
+Tests the snapshot using cached resource data:
 
 ```ruby
 describe aws_rds_snapshot(resource_data: 'AWS_RDS_SNAPSHOT') do

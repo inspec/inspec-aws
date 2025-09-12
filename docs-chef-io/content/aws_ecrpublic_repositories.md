@@ -54,7 +54,7 @@ The registry id is optional.
 
 ## Examples
 
-**Ensure that there are exactly four public repositories in the default registry.**
+Ensure that there are exactly four public repositories in the default registry:
 
 ```ruby
 describe aws_ecrpublic_repositories do

@@ -60,7 +60,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that ecr public repository 'public-repo' exists.**
+Test that ecr public repository 'public-repo' exists:
 
 ```ruby
 describe aws_ecrpublic_repository('public-repo') do

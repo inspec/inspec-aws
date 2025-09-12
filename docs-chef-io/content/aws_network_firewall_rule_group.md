@@ -177,7 +177,7 @@ end
 
 ## Examples
 
-**Ensure an update token is available.**
+Ensure an update token is available:
 
 ```ruby
 describe aws_network_firewall_rule_group(rule_group_name: "RULE_GROUP_NAME") do
@@ -185,7 +185,7 @@ describe aws_network_firewall_rule_group(rule_group_name: "RULE_GROUP_NAME") do
 end
 ```
 
-**Ensure that the rule group arn is `RuleGroupARN`.**
+Ensure that the rule group arn is `RuleGroupARN`:
 
 ```ruby
 describe aws_network_firewall_rule_group(rule_group_name: "RULE_GROUP_NAME") do

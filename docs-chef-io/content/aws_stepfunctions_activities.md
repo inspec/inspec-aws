@@ -47,7 +47,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an activity ARN is available.**
+Ensure an activity ARN is available:
 
 ```ruby
 describe aws_stepfunctions_activities do
@@ -55,7 +55,7 @@ describe aws_stepfunctions_activities do
 end
 ```
 
-**Ensure an activity name is available.**
+Ensure an activity name is available:
 
 ```ruby
 describe aws_stepfunctions_activities do

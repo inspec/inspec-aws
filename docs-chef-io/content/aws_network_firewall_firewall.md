@@ -99,7 +99,7 @@ end
 
 ## Examples
 
-**Ensure a firewall name is available.**
+Ensure a firewall name is available:
 
 ```ruby
 describe aws_network_firewall_firewall(firewall_name: "FIREWALL_NAME") do
@@ -107,7 +107,7 @@ describe aws_network_firewall_firewall(firewall_name: "FIREWALL_NAME") do
 end
 ```
 
-**Ensure that the status is `READY`.**
+Ensure that the status is `READY`:
 
 ```ruby
 describe aws_network_firewall_firewall(firewall_name: "FIREWALL_NAME") do

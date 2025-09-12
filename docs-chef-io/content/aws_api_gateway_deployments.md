@@ -46,7 +46,7 @@ end
 
 ## Examples
 
-**Ensure that the deployment ID exists.**
+Ensure that the deployment ID exists:
 
 ```ruby
 describe aws_api_gateway_deployments(rest_api_id: 'REST_API_ID') do

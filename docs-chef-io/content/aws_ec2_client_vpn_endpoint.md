@@ -138,7 +138,7 @@ end
 
 ## Examples
 
-**Ensure a client VPN endpoint ID is available.**
+Ensure a client VPN endpoint ID is available:
 
 ```ruby
 describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do
@@ -146,7 +146,7 @@ describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOIN
 end
 ```
 
-**Ensure that the status code is `available`.**
+Ensure that the status code is `available`:
 
 ```ruby
 describe aws_ec2_client_vpn_endpoint(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID") do

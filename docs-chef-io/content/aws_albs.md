@@ -68,7 +68,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that an ALB has its availability zones configured correctly.**
+Test that an ALB has its availability zones configured correctly:
 
 ```ruby
 describe aws_alb('arn::alb') do

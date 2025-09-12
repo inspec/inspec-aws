@@ -63,7 +63,7 @@ end
 
 ## Examples
 
-**Ensure that an auto scaling group has the correct desired capacity.**
+Ensure that an auto scaling group has the correct desired capacity:
 
 ```ruby
 describe aws_auto_scaling_group('MyAutoScalingGroup') do
@@ -72,7 +72,7 @@ describe aws_auto_scaling_group('MyAutoScalingGroup') do
 end  
 ```
 
-**Ensure that an auto scaling group has the correct Launch Configuration name and VPC identifier.**
+Ensure that an auto scaling group has the correct Launch Configuration name and VPC identifier:
 
 ```ruby
 describe aws_auto_scaling_group('MyAutoScalingGroup') do

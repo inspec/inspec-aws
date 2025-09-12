@@ -42,7 +42,7 @@ end
 
 ## Examples
 
-**Ensure we have at least one provider currently valid.**
+Ensure we have at least one provider currently valid:
 
 ```ruby
 describe.one do
@@ -56,7 +56,7 @@ describe.one do
 end
 ```
 
-**Ensure we have one and only one SAML provider.**
+Ensure we have one and only one SAML provider:
 
 ```ruby
 describe aws_iam_saml_providers do
@@ -64,7 +64,7 @@ describe aws_iam_saml_providers do
 end
 ```
 
-**Ensure we have at least one provider that matches.**
+Ensure we have at least one provider that matches:
 
 ```ruby
 describe aws_iam_saml_providers.where{ arn =~ /arn:aws:iam::.*:saml-provider\/FANCY/ } do

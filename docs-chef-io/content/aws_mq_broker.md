@@ -114,7 +114,7 @@ end
 
 ## Examples
 
-**Ensure a broker ID is available.**
+Ensure a broker ID is available:
 
 ```ruby
 describe aws_mq_broker(broker_id: 'BROKER_ID') do
@@ -122,7 +122,7 @@ describe aws_mq_broker(broker_id: 'BROKER_ID') do
 end
 ```
 
-**Ensure a broker name is available.**
+Ensure a broker name is available:
 
 ```ruby
 describe aws_mq_broker(broker_id: 'BROKER_ID') do

@@ -76,7 +76,7 @@ end
 
 ## Examples
 
-**Ensure a log stream name is available.**
+Ensure a log stream name is available:
 
 ```ruby
 describe aws_cloudwatchlogs_log_streams(log_group_name: "LOG_GROUP_NAME") do
@@ -84,7 +84,7 @@ describe aws_cloudwatchlogs_log_streams(log_group_name: "LOG_GROUP_NAME") do
 end
 ```
 
-**Ensure a log stream arn is available.**
+Ensure a log stream arn is available:
 
 ```ruby
 describe aws_cloudwatchlogs_log_streams(log_group_name: "LOG_GROUP_NAME") do

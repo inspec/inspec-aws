@@ -63,7 +63,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that an ElastiCache replication group is available.**
+Test that an ElastiCache replication group is available:
 
 ```ruby
 describe aws_elasticache_replication_group('my-replication-group-123') do

@@ -75,7 +75,7 @@ end
 
 ## Examples
 
-**Ensure an actions is enabled.**
+Ensure an actions is enabled:
 
 ```ruby
 describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
@@ -83,7 +83,7 @@ describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
 end
 ```
 
-**Ensure an alarm ARN is available.**
+Ensure an alarm ARN is available:
 
 ```ruby
 describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
@@ -91,7 +91,7 @@ describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do
 end
 ```
 
-**Ensure an alarm name is available.**
+Ensure an alarm name is available:
 
 ```ruby
 describe aws_cloudwatch_composite_alarm(alarm_name: 'COMPOSITE_ALARM_NAME') do

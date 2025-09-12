@@ -51,7 +51,7 @@ end
 
 ## Examples
 
-**Ensure a specific hosted zone exists.**
+Ensure a specific hosted zone exists:
 
 ```ruby
 describe aws_hosted_zone('zone-name') do

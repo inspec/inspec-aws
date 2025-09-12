@@ -65,7 +65,7 @@ end
 
 ## Examples
 
-**Verify the description of a maintenance window target.**
+Verify the description of a maintenance window target:
 
 ```ruby
 describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
@@ -73,7 +73,7 @@ describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target
 end
 ```
 
-**Ensure a maintenance window target id is available.**
+Ensure a maintenance window target id is available:
 
 ```ruby
 describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do
@@ -81,7 +81,7 @@ describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target
 end
 ```
 
-**Verify a maintenance resource type is `INSTANCE`.**
+Verify a maintenance resource type is `INSTANCE`:
 
 ```ruby
 describe aws_ssm_maintenance_window_target(window_id: 'WINDOW_ID', window_target_id: 'WINDOW_TARGET_ID') do

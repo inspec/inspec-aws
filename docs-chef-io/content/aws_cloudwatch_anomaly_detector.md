@@ -66,7 +66,7 @@ end
 
 ## Examples
 
-**Ensure a namespace is available.**
+Ensure a namespace is available:
 
 ```ruby
 describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
@@ -74,7 +74,7 @@ describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
 end
 ```
 
-**Ensure a config name is available.**
+Ensure a config name is available:
 
 ```ruby
 describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
@@ -82,7 +82,7 @@ describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do
 end
 ```
 
-**Ensure a dimension name is available.**
+Ensure a dimension name is available:
 
 ```ruby
 describe aws_cloudwatch_anomaly_detector(metric_name: 'METRIC_NAME') do

@@ -134,7 +134,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a fleet id is available.**
+Ensure a fleet id is available:
 
 ```ruby
 describe aws_ec2_fleets do
@@ -142,7 +142,7 @@ describe aws_ec2_fleets do
 end
 ```
 
-**Ensure that the type is `instant`.**
+Ensure that the type is `instant`:
 
 ```ruby
 describe aws_ec2_fleets do

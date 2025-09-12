@@ -80,7 +80,7 @@ end
 
 ## Examples
 
-**Ensure a client VPN endpoint ID is available.**
+Ensure a client VPN endpoint ID is available:
 
 ```ruby
 describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", target_subnet: "TARGET_SUBNET") do
@@ -88,7 +88,7 @@ describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_I
 end
 ```
 
-**Ensure that the status code is `active`.**
+Ensure that the status code is `active`:
 
 ```ruby
 describe aws_ec2_client_vpn_route(client_vpn_endpoint_id: "CLIENT_VPN_ENDPOINT_ID", target_subnet: "TARGET_SUBNET") do

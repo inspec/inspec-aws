@@ -93,7 +93,7 @@ There are also additional properties available. For a comprehensive list, see [t
 
 ## Examples
 
-**Test that the NAT gateway is in `available` state.**
+Test that the NAT gateway is in `available` state:
 
 ```ruby
 describe aws_nat_gateway(name: 'my-nat-gateway') do
@@ -101,7 +101,7 @@ describe aws_nat_gateway(name: 'my-nat-gateway') do
 end
 ```
 
-**Test that the ID of the VPC is `vpc-1234567890abcdef1`.**
+Test that the ID of the VPC is `vpc-1234567890abcdef1`:
 
 ```ruby
 describe aws_nat_gateway(id: 'nat-abc0123456789deff') do
@@ -109,17 +109,17 @@ describe aws_nat_gateway(id: 'nat-abc0123456789deff') do
 end
 ```
 
-**Test that the NAT gateway has a certain tag.**
+Test that the NAT gateway has a certain tag:
 
 ```ruby
 describe aws_nat_gateway(name: 'my-nat-gateway') do
   its('tags') { should include('environment' => 'dev') }
-**Regardless of the value.**
+Regardless of the value:
 
 end
 ```
 
-**Test that the private IP address is `10.0.1.68`.**
+Test that the private IP address is `10.0.1.68`:
 
 ```ruby
 describe aws_nat_gateway(vpc_id: 'vpc-abc01234', subnet_id: 'subnet-12345678') do

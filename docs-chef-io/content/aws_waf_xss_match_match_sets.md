@@ -42,7 +42,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Verify an `XssMatchSet` object is available by ID.**
+Verify an `XssMatchSet` object is available by ID:
 
 ```ruby
 describe aws_waf_xss_match_sets do
@@ -50,7 +50,7 @@ describe aws_waf_xss_match_sets do
 end
 ```
 
-**Verify an `XssMatchSet` object name is available.**
+Verify an `XssMatchSet` object name is available:
 
 ```ruby
 describe aws_waf_xss_match_sets do

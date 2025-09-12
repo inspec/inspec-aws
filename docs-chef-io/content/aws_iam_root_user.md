@@ -38,7 +38,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Test that an IAM Root User has MFA enabled.**
+Test that an IAM Root User has MFA enabled:
 
 ```ruby
 describe aws_iam_root_user do
@@ -46,7 +46,7 @@ describe aws_iam_root_user do
 end
 ```
 
-**Test that an IAM Root User does not have an access key.**
+Test that an IAM Root User does not have an access key:
 
 ```ruby
 describe aws_iam_root_user do
@@ -54,7 +54,7 @@ describe aws_iam_root_user do
 end
 ```
 
-**Test the IAM Root User has virtual MFA enabled.**
+Test the IAM Root User has virtual MFA enabled:
 
 ```ruby
 describe aws_iam_root_user do

@@ -81,7 +81,7 @@ end
 
 ## Examples
 
-**Ensure a Resolver rule name is available.**
+Ensure a Resolver rule name is available:
 
 ```ruby
 describe aws_route53resolver_resolver_rule(resolver_rule_id: 'RULE_ID') do
@@ -89,7 +89,7 @@ describe aws_route53resolver_resolver_rule(resolver_rule_id: 'RULE_ID') do
 end
 ```
 
-**Ensure that the status is `COMPLETE` or `FAILED`.**
+Ensure that the status is `COMPLETE` or `FAILED`:
 
 ```ruby
 describe aws_route53resolver_resolver_rule(resolver_rule_id: 'RULE_ID') do

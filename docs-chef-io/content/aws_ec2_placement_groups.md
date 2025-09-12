@@ -64,7 +64,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure a placement group name is available.**
+Ensure a placement group name is available:
 
 ```ruby
 describe aws_ec2_placement_groups do
@@ -72,7 +72,7 @@ describe aws_ec2_placement_groups do
 end
 ```
 
-**Ensure that the state is `available`.**
+Ensure that the state is `available`:
 
 ```ruby
 describe aws_ec2_placement_groups do

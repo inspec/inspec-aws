@@ -57,7 +57,7 @@ This resource does not require any parameters.
 
 ## Examples
 
-**Ensure an ID is available.**
+Ensure an ID is available:
 
 ```ruby
 describe aws_cloudfront_key_groups do
@@ -65,7 +65,7 @@ describe aws_cloudfront_key_groups do
 end
 ```
 
-**Ensure that the key group name is available.**
+Ensure that the key group name is available:
 
 ```ruby
 describe aws_cloudfront_key_groups do

@@ -10,7 +10,7 @@ identifier = "inspec/resources/aws/aws_ecr resource"
 parent = "inspec/resources/aws"
 +++
 
-> WARNING: **This resource is deprecated. Please use one of the following resources instead.**
+> WARNING: **This resource is deprecated. Please use one of the following resources instead:
 
 - `aws_ecr_image`
 - `aws_ecr_images`
@@ -70,7 +70,7 @@ The ECR repository_name must be provided.
 
 ## Examples
 
-**Test that an ECR has the correct image properties.**
+Test that an ECR has the correct image properties:
 
 ```ruby
 describe aws_ecr(repository_name: aws_ecr_name).images do

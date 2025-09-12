@@ -61,7 +61,7 @@ end
 
 ## Examples
 
-**Ensure a job queue name is available.**
+Ensure a job queue name is available:
 
 ```ruby
 describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
@@ -69,7 +69,7 @@ describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do
 end
 ```
 
-**Ensure that the state is `ENABLED` or `DISABLED`.**
+Ensure that the state is `ENABLED` or `DISABLED`:
 
 ```ruby
 describe aws_batch_job_queue(job_queue_name: 'JOB_QUEUE_NAME') do

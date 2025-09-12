@@ -107,7 +107,7 @@ end
 
 ## Examples
 
-**Test that a CloudFormation Stack has its stack_status configured correctly.**
+Test that a CloudFormation Stack has its stack_status configured correctly:
 
 ```ruby
 describe aws_cloudformation_stack('stack_name') do
