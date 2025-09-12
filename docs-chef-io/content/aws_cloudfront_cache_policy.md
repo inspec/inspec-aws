@@ -30,7 +30,7 @@ end
 
 : The unique identifier for the cache policy.
 
-: For additional information, see the [AWS documentation on AWS CloudFormation cache policy.](<https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cache> policy.html).
+  For additional information, see the [AWS CloudFormation cache policy documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-cloudfront-cachepolicy.html).
 
 ## Properties
 
