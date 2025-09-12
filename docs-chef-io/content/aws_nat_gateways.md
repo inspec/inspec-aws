@@ -82,7 +82,7 @@ For more examples, see the [integration tests](https://github.com/inspec/inspec-
 
 ## Matchers
 
-{{< readfile file="content/inspec/reusable/md/inspec_matchers_link.md" >}}
+{{< readfile file="content/reusable/md/inspec_matchers_link.md" >}}
 
 ### exist
 
