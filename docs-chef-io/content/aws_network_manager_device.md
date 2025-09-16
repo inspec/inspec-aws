@@ -1,8 +1,8 @@
 +++
 title = "aws_network_manager_device resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_network_manager_device"

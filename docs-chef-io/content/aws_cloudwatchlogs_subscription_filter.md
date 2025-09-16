@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudwatchlogs_subscription_filter resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudwatchlogs_subscription_filter"

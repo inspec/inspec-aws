@@ -1,8 +1,8 @@
 +++
 title = "aws_ec2_transit_gateway_attachments resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ec2_transit_gateway_attachments"

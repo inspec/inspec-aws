@@ -1,8 +1,8 @@
 +++
 title = "aws_ecrpublic_repository resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ecrpublic_repository"

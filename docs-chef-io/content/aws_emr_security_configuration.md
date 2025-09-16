@@ -1,8 +1,8 @@
 +++
 title = "aws_emr_security_configuration resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_emr_security_configuration"

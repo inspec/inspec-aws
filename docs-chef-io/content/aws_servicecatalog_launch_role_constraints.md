@@ -1,8 +1,8 @@
 +++
 title = "aws_servicecatalog_launch_role_constraints resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_servicecatalog_launch_role_constraints"

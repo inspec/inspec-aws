@@ -1,8 +1,8 @@
 +++
 title = "aws_ssm_resource_compliance_summary resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ssm_resource_compliance_summary"

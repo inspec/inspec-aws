@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudwatch_metric_streams resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudwatch_metric_streams"

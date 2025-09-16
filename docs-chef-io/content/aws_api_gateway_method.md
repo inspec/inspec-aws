@@ -1,8 +1,8 @@
 +++
 title = "aws_api_gateway_method resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_api_gateway_method"

@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudtrail_trails resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudtrail_trails"

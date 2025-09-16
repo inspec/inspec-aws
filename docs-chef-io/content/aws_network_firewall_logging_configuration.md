@@ -1,8 +1,8 @@
 +++
 title = "aws_network_firewall_logging_configuration resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_network_firewall_logging_configuration"

@@ -1,8 +1,8 @@
 +++
 title = "aws_amplify_app resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_amplify_app"

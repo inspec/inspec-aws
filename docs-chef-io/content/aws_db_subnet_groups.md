@@ -1,8 +1,8 @@
 +++
 title = "aws_db_subnet_groups resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_db_subnet_groups"

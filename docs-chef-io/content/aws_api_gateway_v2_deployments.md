@@ -1,8 +1,8 @@
 +++
 title = "aws_api_gateway_v2_deployments resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_api_gateway_v2_deployments"

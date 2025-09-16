@@ -1,8 +1,8 @@
 +++
 title = "aws_transit_gateway_multicast_domain_associations resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_transit_gateway_multicast_domain_associations"

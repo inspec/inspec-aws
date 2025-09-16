@@ -1,8 +1,8 @@
 +++
 title = "aws_apigateway_client_certificates resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_apigateway_client_certificates"

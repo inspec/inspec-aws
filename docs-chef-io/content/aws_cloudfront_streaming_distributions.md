@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudfront_streaming_distributions resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudfront_streaming_distributions"

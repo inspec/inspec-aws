@@ -1,8 +1,8 @@
 +++
 title = "aws_network_manager_customer_gateway_association resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_network_manager_customer_gateway_association"

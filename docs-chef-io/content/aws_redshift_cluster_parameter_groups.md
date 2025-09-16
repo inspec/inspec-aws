@@ -1,8 +1,8 @@
 +++
 title = "aws_redshift_cluster_parameter_groups resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_redshift_cluster_parameter_groups"

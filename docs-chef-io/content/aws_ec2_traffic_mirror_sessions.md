@@ -1,8 +1,8 @@
 +++
 title = "aws_ec2_traffic_mirror_sessions resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ec2_traffic_mirror_sessions"

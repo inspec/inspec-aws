@@ -1,8 +1,8 @@
 +++
 title = "aws_signer_profile_permissions resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_signer_profile_permissions"

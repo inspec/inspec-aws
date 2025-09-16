@@ -1,8 +1,8 @@
 +++
 title = "aws_route53_record_sets resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_route53_record_sets"

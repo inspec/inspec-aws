@@ -1,8 +1,8 @@
 +++
 title = "aws_transit_gateway_multicast_group_source resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_transit_gateway_multicast_group_source"

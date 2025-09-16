@@ -1,8 +1,8 @@
 +++
 title = "aws_rds_db_cluster_snapshot resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_rds_db_cluster_snapshot"

@@ -1,8 +1,8 @@
 +++
 title = "aws_ses_receipt_rule_sets resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ses_receipt_rule_sets"

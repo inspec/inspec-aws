@@ -1,8 +1,8 @@
 +++
 title = "aws_stepfunctions_activity resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_stepfunctions_activity"

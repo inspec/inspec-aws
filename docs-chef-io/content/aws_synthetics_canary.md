@@ -1,8 +1,8 @@
 +++
 title = "aws_synthetics_canary resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_synthetics_canary"

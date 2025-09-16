@@ -1,8 +1,8 @@
 +++
 title = "aws_iam_ssh_public_keys resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_iam_ssh_public_keys"

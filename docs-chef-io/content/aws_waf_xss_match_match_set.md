@@ -1,8 +1,8 @@
 +++
 title = "aws_waf_xss_match_set resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_waf_xss_match_set"

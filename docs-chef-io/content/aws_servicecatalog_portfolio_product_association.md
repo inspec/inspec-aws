@@ -1,8 +1,8 @@
 +++
 title = "aws_servicecatalog_portfolio_product_association resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_servicecatalog_portfolio_product_association"

@@ -1,8 +1,8 @@
 +++
 title = "aws_config_recorder resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_config_recorder"

@@ -1,8 +1,8 @@
 +++
 title = "aws_application_autoscaling_scaling_policies resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_application_autoscaling_scaling_policies"

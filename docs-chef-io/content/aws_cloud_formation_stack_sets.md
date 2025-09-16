@@ -1,8 +1,8 @@
 +++
 title = "aws_cloud_formation_stack_sets resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloud_formation_stack_sets"

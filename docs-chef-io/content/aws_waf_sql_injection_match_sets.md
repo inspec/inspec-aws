@@ -1,8 +1,8 @@
 +++
 title = "aws_waf_sql_injection_match_sets resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_waf_sql_injection_match_sets"

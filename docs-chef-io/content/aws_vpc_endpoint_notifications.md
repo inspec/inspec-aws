@@ -1,8 +1,8 @@
 +++
 title = "aws_vpc_endpoint_connection_notifications resource"
-platform = "AWS"
+
 draft = false
-gh_repo = "inspec-AWS"
+
 
 [menu.aws]
 title = "aws_vpc_endpoint_connection_notifications"

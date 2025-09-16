@@ -1,8 +1,8 @@
 +++
 title = "aws_s3_access_point resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_s3_access_point"

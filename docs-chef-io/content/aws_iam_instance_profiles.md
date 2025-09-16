@@ -1,8 +1,8 @@
 +++
 title = "aws_iam_instance_profiles resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_iam_instance_profiles"

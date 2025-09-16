@@ -1,8 +1,8 @@
 +++
 title = "aws_vpcs resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_vpcs"

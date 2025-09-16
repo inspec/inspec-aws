@@ -1,8 +1,8 @@
 +++
 title = "aws_athena_work_groups resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_athena_work_groups"

@@ -1,8 +1,8 @@
 +++
 title = "aws_emr_cluster resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_emr_cluster"

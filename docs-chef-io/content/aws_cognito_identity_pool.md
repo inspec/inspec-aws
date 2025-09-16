@@ -1,8 +1,8 @@
 +++
 title = "aws_cognito_identity_pool resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cognito_identity_pool"

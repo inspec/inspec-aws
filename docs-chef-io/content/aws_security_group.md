@@ -1,8 +1,8 @@
 +++
 title = "aws_security_group resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_security_group"
@@ -215,7 +215,7 @@ end
 
 ## Matchers
 
-This InSpec audit resource has the following special matchers. For a full list of additional available matchers, please visit our [Universal Matchers page](https://www.inspec.io/docs/reference/matchers/).
+{{< readfile file="content/reusable/md/inspec_matchers_link.md" >}}
 
 #### allow_in
 

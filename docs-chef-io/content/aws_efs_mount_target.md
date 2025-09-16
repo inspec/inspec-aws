@@ -1,8 +1,8 @@
 +++
 title = "aws_efs_mount_target resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_efs_mount_target"

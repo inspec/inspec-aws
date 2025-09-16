@@ -1,8 +1,8 @@
 +++
 title = "aws_eventbridge_rules resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_eventbridge_rules"

@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudwatch_anomaly_detector resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudwatch_anomaly_detector"

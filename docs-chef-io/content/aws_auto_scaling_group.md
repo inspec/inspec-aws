@@ -1,8 +1,8 @@
 +++
 title = "aws_auto_scaling_group resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_auto_scaling_group"

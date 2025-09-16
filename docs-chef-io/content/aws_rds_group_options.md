@@ -1,8 +1,8 @@
 +++
 title = "aws_rds_group_options resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_rds_group_options"

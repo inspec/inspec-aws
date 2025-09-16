@@ -1,8 +1,8 @@
 +++
 title = "aws_config_delivery_channel resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_config_delivery_channel"

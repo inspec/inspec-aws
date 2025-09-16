@@ -1,8 +1,8 @@
 +++
 title = "aws_lambda_layer_version_permission resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_lambda_layer_version_permission"

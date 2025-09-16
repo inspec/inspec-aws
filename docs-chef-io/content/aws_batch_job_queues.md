@@ -1,8 +1,8 @@
 +++
 title = "aws_batch_job_queues resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_batch_job_queues"

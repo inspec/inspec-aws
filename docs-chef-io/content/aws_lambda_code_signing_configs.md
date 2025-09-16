@@ -1,8 +1,8 @@
 +++
 title = "aws_lambda_code_signing_configs resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_lambda_code_signing_configs"

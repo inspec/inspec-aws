@@ -1,8 +1,8 @@
 +++
 title = "aws_ec2_vpn_gateway_route_propagations resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_ec2_vpn_gateway_route_propagations"

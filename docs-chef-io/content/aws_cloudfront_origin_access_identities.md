@@ -1,8 +1,8 @@
 +++
 title = "aws_cloudfront_origin_access_identities resource"
-platform = "aws"
+
 draft = false
-gh_repo = "inspec-aws"
+
 
 [menu.aws]
 title = "aws_cloudfront_origin_access_identities"

@@ -1,15 +1,19 @@
 +++
-title = "About Chef InSpec Amazon Web Services (AWS) resources"
-platform = "aws"
+title = "About the Chef InSpec Amazon Web Services (AWS) resource pack"
 draft = false
-gh_repo = "inspec-aws"
-linkTitle = "AWS resources"
-summary = "Chef InSpec resources for auditing AWS"
+
+linkTitle = "AWS resource pack"
+summary = "Chef InSpec resources for auditing AWS infrastructure."
+
+[cascade]
+  [cascade.params]
+    platform = "aws"
 
 [menu.aws]
-title = "About"
-identifier = "inspec/resources/aws/About"
-parent = "inspec/resources/aws"
+  title = "About AWS resources"
+  identifier = "inspec/resources/aws/About"
+  parent = "inspec/resources/aws"
+  weight = 10
 +++
 
 Chef InSpec provides resources for auditing Amazon Web Services (AWS) infrastructure, helping you check security, compliance, and configuration across your cloud environment.
