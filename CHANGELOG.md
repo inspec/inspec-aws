@@ -1,9 +1,14 @@
-<!-- latest_release 1.83.62 -->
+<!-- latest_release 1.83.63 -->
+## [v1.83.63](https://github.com/inspec/inspec-aws/tree/v1.83.63) (2025-10-07)
+
+#### Merged Pull Requests
+- Im/update resources docs [#990](https://github.com/inspec/inspec-aws/pull/990) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.83.62](https://github.com/inspec/inspec-aws/tree/v1.83.62) (2024-01-22)
 
 #### Merged Pull Requests
 - Reorganize reusable text files [#985](https://github.com/inspec/inspec-aws/pull/985) ([IanMadd](https://github.com/IanMadd))
-<!-- latest_release -->
 
 ## [v1.83.61](https://github.com/inspec/inspec-aws/tree/v1.83.61) (2023-11-13)
 
