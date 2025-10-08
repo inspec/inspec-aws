@@ -12,11 +12,18 @@ class AWSRDSGlobalCluster < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(global_cluster_identifier))
-    raise ArgumentError, "#{@__resource_name__}: global_cluster_identifier must be provided" unless opts[:global_cluster_identifier] && !opts[:global_cluster_identifier].empty?
+    validate_parameters(required: %i[global_cluster_identifier])
+    unless opts[:global_cluster_identifier] &&
+             !opts[:global_cluster_identifier].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: global_cluster_identifier must be provided"
+    end
     @display_name = opts[:global_cluster_identifier]
     catch_aws_errors do
-      resp = @aws.rds_client.describe_global_clusters({ global_cluster_identifier: opts[:global_cluster_identifier] })
+      resp =
+        @aws.rds_client.describe_global_clusters(
+          { global_cluster_identifier: opts[:global_cluster_identifier] }
+        )
       @res = resp.global_clusters[0].to_h
       @global_cluster_resource_id = @res[:global_cluster_resource_id]
       create_resource_methods(@res)

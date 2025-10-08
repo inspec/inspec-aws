@@ -62,6 +62,7 @@ require "aws-sdk-ses"
 require "aws-sdk-waf"
 require "aws-sdk-synthetics"
 require "aws-sdk-apigatewayv2"
+require "aws-sdk-account"
 
 # AWS Inspec Backend Classes
 #
@@ -338,6 +339,10 @@ class AwsConnection
   def apigatewayv2_client
     aws_client(Aws::ApiGatewayV2::Client)
   end
+
+  def account_client
+    aws_client(Aws::Account::Client)
+  end
 end
 
 # Base class for AWS resources
@@ -364,7 +369,6 @@ class AwsResourceBase < Inspec.resource(1)
       client_args[:client_args][:retry_backoff] = "lambda { |c| sleep(#{opts[:aws_retry_backoff]}) }" if opts[:aws_retry_backoff]
       # this catches the stub_data true option for unit testing - and others that could be useful for consumers
       client_args[:client_args].update(opts[:client_args]) if opts[:client_args]
-
       @resource_data = opts[:resource_data].presence&.to_h
     end
     @aws = AwsConnection.new(client_args)
@@ -435,6 +439,10 @@ class AwsResourceBase < Inspec.resource(1)
   rescue Aws::Errors::MissingCredentialsError
     Inspec::Log.error "It appears that you have not set your AWS credentials. See https://www.inspec.io/docs/reference/platforms for details."
     fail_resource("No AWS credentials available")
+    nil
+  rescue Aws::Account::Errors::ResourceNotFoundException => e
+    Inspec::Log.warn "#{e.message}"
+    fail_resource("#{e.message}")
     nil
   rescue Aws::Errors::NoSuchEndpointError
     Inspec::Log.error "The endpoint that is trying to be accessed does not exist."

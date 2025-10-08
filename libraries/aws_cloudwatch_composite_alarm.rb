@@ -12,11 +12,16 @@ class AwsCloudwatchCompositeAlarm < AwsResourceBase
   def initialize(opts = {})
     opts = { alarm_name: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(alarm_name))
-    raise ArgumentError, "#{@__resource_name__}: alarm_name must be provided" unless opts[:alarm_name] && !opts[:alarm_name].empty?
+    validate_parameters(required: %i[alarm_name])
+    unless opts[:alarm_name] && !opts[:alarm_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: alarm_name must be provided"
+    end
     @display_name = opts[:alarm_name]
     catch_aws_errors do
-      resp = @aws.cloudwatch_client.describe_alarms({ alarm_names: [opts[:alarm_name]], alarm_types: ["CompositeAlarm"] })
+      resp =
+        @aws.cloudwatch_client.describe_alarms(
+          { alarm_names: [opts[:alarm_name]], alarm_types: ["CompositeAlarm"] }
+        )
       @res = resp.composite_alarms[0].to_h
       @alarm_arn = @res[:alarm_arn]
       create_resource_methods(@res)

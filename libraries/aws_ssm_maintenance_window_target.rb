@@ -12,18 +12,21 @@ class AWSSESMaintenanceWindowTarget < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(window_id window_target_id))
-    raise ArgumentError, "#{@__resource_name__}: window_id must be provided" unless opts[:window_id] && !opts[:window_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: window_target_id must be provided" unless opts[:window_target_id] && !opts[:window_target_id].empty?
-    filter = [
-      {
-        key: "WindowTargetId",
-        values: [opts[:window_target_id]],
-      },
-    ]
+    validate_parameters(required: %i[window_id window_target_id])
+    unless opts[:window_id] && !opts[:window_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: window_id must be provided"
+    end
+    unless opts[:window_target_id] && !opts[:window_target_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: window_target_id must be provided"
+    end
+    filter = [{ key: "WindowTargetId", values: [opts[:window_target_id]] }]
     @display_name = opts[:window_target_id]
     catch_aws_errors do
-      resp = @aws.ssm_client.describe_maintenance_window_targets({ window_id: opts[:window_id], filters: filter })
+      resp =
+        @aws.ssm_client.describe_maintenance_window_targets(
+          { window_id: opts[:window_id], filters: filter }
+        )
       @res = resp.targets[0].to_h
       @window_id = @res[:window_id]
       @window_target_id = @res[:window_target_id]

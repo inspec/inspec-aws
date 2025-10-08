@@ -13,14 +13,18 @@ class AWSRDSDBClusterSnapShot < AwsResourceBase
   def initialize(opts = {})
     opts = { db_cluster_snapshot_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(db_cluster_snapshot_id))
-    raise ArgumentError, "#{@__resource_name__}: db_cluster_snapshot_id must be provided" unless opts[:db_cluster_snapshot_id] && !opts[:db_cluster_snapshot_id].empty?
+    validate_parameters(required: %i[db_cluster_snapshot_id])
+    unless opts[:db_cluster_snapshot_id] &&
+             !opts[:db_cluster_snapshot_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: db_cluster_snapshot_id must be provided"
+    end
     @display_name = opts[:db_cluster_snapshot_id]
     filter = [
       {
         name: "db-cluster-snapshot-id",
-        values: [opts[:db_cluster_snapshot_id]],
-      },
+        values: [opts[:db_cluster_snapshot_id]]
+      }
     ]
     catch_aws_errors do
       resp = @aws.rds_client.describe_db_cluster_snapshots({ filters: filter })

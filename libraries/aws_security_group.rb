@@ -231,11 +231,11 @@ class AwsSecurityGroup < AwsResourceBase
   def match_ipv4_or_6_range(rule, criteria)
     if criteria.key?(:ipv4_range)
       query = criteria[:ipv4_range]
-      query = [query] unless query.is_a?(Array)
+      query = Array(query)
       ranges = rule[:ip_ranges].map { |rng| rng[:cidr_ip] }
     else # IPv6
       query = criteria[:ipv6_range]
-      query = [query] unless query.is_a?(Array)
+      query = Array(query)
       ranges = rule[:ipv_6_ranges].map { |rng| rng[:cidr_ipv_6] }
     end
 

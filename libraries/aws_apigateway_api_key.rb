@@ -12,8 +12,10 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   def initialize(opts = {})
     opts = { api_key: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_key))
-    raise ArgumentError, "#{@__resource_name__}: api_key must be provided" unless opts[:api_key] && !opts[:api_key].empty?
+    validate_parameters(required: %i[api_key])
+    unless opts[:api_key] && !opts[:api_key].empty?
+      raise ArgumentError, "#{@__resource_name__}: api_key must be provided"
+    end
     @display_name = opts[:api_key]
     catch_aws_errors do
       resp = @aws.apigateway_client.get_api_key({ api_key: opts[:api_key] })
@@ -32,7 +34,7 @@ class AWSApiGatewayAPIKey < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:id] : @display_name
+    @res ? @res[:id] : @display_name
   end
 
   def to_s

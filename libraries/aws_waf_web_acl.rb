@@ -13,8 +13,10 @@ class AWSWAFWebACL < AwsResourceBase
   def initialize(opts = {})
     opts = { web_acl_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(web_acl_id))
-    raise ArgumentError, "#{@__resource_name__}: web_acl_id must be provided" unless opts[:web_acl_id] && !opts[:web_acl_id].empty?
+    validate_parameters(required: %i[web_acl_id])
+    unless opts[:web_acl_id] && !opts[:web_acl_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: web_acl_id must be provided"
+    end
     @display_name = opts[:web_acl_id]
     catch_aws_errors do
       resp = @aws.waf_client.get_web_acl({ web_acl_id: opts[:web_acl_id] })

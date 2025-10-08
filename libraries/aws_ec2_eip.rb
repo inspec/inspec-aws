@@ -19,10 +19,15 @@ class AwsEc2Eip < AwsResourceBase
     super(opts)
     validate_parameters(required: [:public_ip])
 
-    raise ArgumentError, "#{@__resource_name__}: public_ip must be provided" unless opts[:public_ip] && !opts[:public_ip].empty?
+    unless opts[:public_ip] && !opts[:public_ip].empty?
+      raise ArgumentError, "#{@__resource_name__}: public_ip must be provided"
+    end
     @display_name = opts[:public_ip]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_addresses({ public_ips: [opts[:public_ip]] })
+      resp =
+        @aws.compute_client.describe_addresses(
+          { public_ips: [opts[:public_ip]] }
+        )
       @addresses = resp.addresses[0].to_h
       create_resource_methods(@addresses)
     end

@@ -12,19 +12,26 @@ class AWSECSService < AwsResourceBase
   def initialize(opts = {})
     opts = { services: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(service), require_any_of: %i(cluster))
-    raise ArgumentError, "#{@__resource_name__}: services must be provided" unless opts[:service] && !opts[:service].empty?
-    raise ArgumentError, "#{@__resource_name__}: cluster must be provided" unless opts[:cluster] && !opts[:cluster].empty?
+    validate_parameters(required: %i[service], require_any_of: %i[cluster])
+    unless opts[:service] && !opts[:service].empty?
+      raise ArgumentError, "#{@__resource_name__}: services must be provided"
+    end
+    unless opts[:cluster] && !opts[:cluster].empty?
+      raise ArgumentError, "#{@__resource_name__}: cluster must be provided"
+    end
     @display_name = opts[:service]
     catch_aws_errors do
-      resp = @aws.ecs_client.describe_services({ cluster: opts[:cluster], services: [opts[:service]] })
+      resp =
+        @aws.ecs_client.describe_services(
+          { cluster: opts[:cluster], services: [opts[:service]] }
+        )
       @services = resp.services[0].to_h
       create_resource_methods(@services)
     end
   end
 
   def services
-    return nil unless exists?
+    return unless exists?
     @services[:services]
   end
 

@@ -12,11 +12,15 @@ class AWSSESTemplate < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(template_name))
-    raise ArgumentError, "#{@__resource_name__}: template_name must be provided" unless opts[:template_name] && !opts[:template_name].empty?
+    validate_parameters(required: %i[template_name])
+    unless opts[:template_name] && !opts[:template_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: template_name must be provided"
+    end
     @display_name = opts[:template_name]
     catch_aws_errors do
-      resp = @aws.ses_client.get_template({ template_name: opts[:template_name] })
+      resp =
+        @aws.ses_client.get_template({ template_name: opts[:template_name] })
       @res = resp.template.to_h
       create_resource_methods(@res)
     end

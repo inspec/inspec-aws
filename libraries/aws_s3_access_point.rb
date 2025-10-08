@@ -14,12 +14,19 @@ class AWSS3AccessPoint < AwsResourceBase
     opts = { bucket_name: opts } if opts.is_a?(String)
     opts = { metrics_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(bucket_name metrics_id))
-    raise ArgumentError, "#{@__resource_name__}: bucket_name must be provided" unless opts[:bucket_name] && !opts[:bucket_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: metrics_id must be provided" unless opts[:metrics_id] && !opts[:metrics_id].empty?
+    validate_parameters(required: %i[bucket_name metrics_id])
+    unless opts[:bucket_name] && !opts[:bucket_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: bucket_name must be provided"
+    end
+    unless opts[:metrics_id] && !opts[:metrics_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: metrics_id must be provided"
+    end
     @display_name = opts[:metrics_id]
     catch_aws_errors do
-      resp = @aws.storage_client.get_bucket_metrics_configuration({ bucket: opts[:bucket_name], id: opts[:metrics_id] })
+      resp =
+        @aws.storage_client.get_bucket_metrics_configuration(
+          { bucket: opts[:bucket_name], id: opts[:metrics_id] }
+        )
       @resp = resp.metrics_configuration.to_h
       create_resource_methods(@resp)
     end

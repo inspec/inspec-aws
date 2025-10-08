@@ -14,7 +14,9 @@ class AWSGlueCrawler < AwsResourceBase
     opts = { name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:name])
-    raise ArgumentError, "#{@__resource_name__}: name must be provided" unless opts[:name] && !opts[:name].empty?
+    unless opts[:name] && !opts[:name].empty?
+      raise ArgumentError, "#{@__resource_name__}: name must be provided"
+    end
     @display_name = opts[:name]
     catch_aws_errors do
       resp = @aws.glue_client.get_crawler({ name: opts[:name] })
@@ -24,7 +26,7 @@ class AWSGlueCrawler < AwsResourceBase
   end
 
   def name
-    return nil unless exists?
+    return unless exists?
     @res[:name]
   end
 

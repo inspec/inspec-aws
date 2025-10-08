@@ -20,7 +20,7 @@ class AwsLaunchConfiguration < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.service_client.describe_launch_configurations(launch_configuration_names: [opts[:launch_configuration_name]])
-      return nil if resp.launch_configurations.nil? || resp.launch_configurations.empty?
+      return if resp.launch_configurations.nil? || resp.launch_configurations.empty?
       configuration = resp.launch_configurations[0]
       @name                        = configuration[:launch_configuration_name]
       @arn                         = configuration[:launch_configuration_arn]

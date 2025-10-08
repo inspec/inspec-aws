@@ -12,11 +12,18 @@ class AWSRDSDBSecurityGroup < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(db_security_group_name))
-    raise ArgumentError, "#{@__resource_name__}: db_security_group_name must be provided" unless opts[:db_security_group_name] && !opts[:db_security_group_name].empty?
+    validate_parameters(required: %i[db_security_group_name])
+    unless opts[:db_security_group_name] &&
+             !opts[:db_security_group_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: db_security_group_name must be provided"
+    end
     @display_name = opts[:db_security_group_name]
     catch_aws_errors do
-      resp = @aws.rds_client.describe_db_security_groups({ db_security_group_name: opts[:db_security_group_name] })
+      resp =
+        @aws.rds_client.describe_db_security_groups(
+          { db_security_group_name: opts[:db_security_group_name] }
+        )
       @res = resp.db_security_groups[0].to_h
       @db_security_group_arn = @res[:db_security_group_arn]
       create_resource_methods(@res)

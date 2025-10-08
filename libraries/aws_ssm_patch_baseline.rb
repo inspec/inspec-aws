@@ -20,11 +20,14 @@ class AWSSESPatchBaseline < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(baseline_id))
-    raise ArgumentError, "#{@__resource_name__}: baseline_id must be provided" unless opts[:baseline_id] && !opts[:baseline_id].empty?
+    validate_parameters(required: %i[baseline_id])
+    unless opts[:baseline_id] && !opts[:baseline_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: baseline_id must be provided"
+    end
     @display_name = opts[:baseline_id]
     catch_aws_errors do
-      resp = @aws.ssm_client.get_patch_baseline({ baseline_id: opts[:baseline_id] })
+      resp =
+        @aws.ssm_client.get_patch_baseline({ baseline_id: opts[:baseline_id] })
       @res = resp.to_h
       @baseline_id = @res[:baseline_id]
       @name = @res[:name]
@@ -54,15 +57,26 @@ class AWSSESPatchBaseline < AwsResourceBase
   end
 
   def patch_filter_groups
-    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters)
+    approval_rules
+      .map(&:patch_rules)
+      .map(&:patch_filter_group)
+      .map(&:patch_filters)
   end
 
   def patch_filter_group_keys
-    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters).map(&:key)
+    approval_rules
+      .map(&:patch_rules)
+      .map(&:patch_filter_group)
+      .map(&:patch_filters)
+      .map(&:key)
   end
 
   def patch_filter_group_values
-    approval_rules.map(&:patch_rules).map(&:patch_filter_group).map(&:patch_filters).map(&:values)
+    approval_rules
+      .map(&:patch_rules)
+      .map(&:patch_filter_group)
+      .map(&:patch_filters)
+      .map(&:values)
   end
 
   def compliance_levels

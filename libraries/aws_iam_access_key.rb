@@ -29,12 +29,14 @@ class AwsIamAccessKey < AwsResourceBase
       opts[:access_key_id] = opts.delete(:id)
     end
 
-    if opts[:access_key_id] && !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
-      raise ArgumentError, "#{@__resource_name__}: Incorrect format for provided Access Key ID"
+    if opts[:access_key_id] &&
+         !/^AKIA[0-9A-Z]{16}$/.match?(opts[:access_key_id])
+      raise ArgumentError,
+            "#{@__resource_name__}: Incorrect format for provided Access Key ID"
     end
 
     super(opts)
-    validate_parameters(require_any_of: %i(access_key_id username))
+    validate_parameters(require_any_of: %i[access_key_id username])
 
     @username = opts[:username]
     @access_key_id = opts[:access_key_id]
@@ -47,13 +49,10 @@ class AwsIamAccessKey < AwsResourceBase
 
       # Get all keys for the provided user. If no user provided, use current principal.
       # If an `access_key_id` has been provided, get only that key.
-      access_keys = resp.access_key_metadata.select do |key|
-        if access_key_id
-          key.access_key_id == access_key_id
-        else
-          true
+      access_keys =
+        resp.access_key_metadata.select do |key|
+          access_key_id ? key.access_key_id == access_key_id : true
         end
-      end
 
       return if access_keys.empty?
       if access_keys.count > 1
@@ -62,9 +61,9 @@ class AwsIamAccessKey < AwsResourceBase
       end
 
       @access_key_id = access_keys[0].access_key_id
-      @username      = access_keys[0].user_name
-      @create_date   = access_keys[0].create_date
-      @status        = access_keys[0].status
+      @username = access_keys[0].user_name
+      @create_date = access_keys[0].create_date
+      @status = access_keys[0].status
     end
   end
 
@@ -87,11 +86,14 @@ class AwsIamAccessKey < AwsResourceBase
 
   def last_used_date
     return nil unless exists?
-    return @last_used_date if defined? @last_used_date
+    return @last_used_date if defined?(@last_used_date)
     catch_aws_errors do
-      @last_used_date = @aws.iam_client.get_access_key_last_used({ access_key_id: @access_key_id })
-        .access_key_last_used
-        .last_used_date
+      @last_used_date =
+        @aws
+          .iam_client
+          .get_access_key_last_used({ access_key_id: @access_key_id })
+          .access_key_last_used
+          .last_used_date
     end
   end
 end

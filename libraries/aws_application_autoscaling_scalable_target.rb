@@ -13,10 +13,16 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
     opts = { service_namespace: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:service_namespace])
-    raise ArgumentError, "#{@__resource_name__}: service_namespace must be provided" unless opts[:service_namespace] && !opts[:service_namespace].empty?
+    unless opts[:service_namespace] && !opts[:service_namespace].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: service_namespace must be provided"
+    end
     @display_name = opts[:service_namespace]
     catch_aws_errors do
-      resp = @aws.applicationautoscaling_client.describe_scalable_targets({ service_namespace: opts[:service_namespace] })
+      resp =
+        @aws.applicationautoscaling_client.describe_scalable_targets(
+          { service_namespace: opts[:service_namespace] }
+        )
       @scalable_targets = resp.scalable_targets[0].to_h
       create_resource_methods(@scalable_targets)
     end
@@ -28,7 +34,7 @@ class AWSApplicationAutoScalingScalableTarget < AwsResourceBase
   end
 
   def resource_id
-    @scalable_targets? @scalable_targets[:resource_id]: ""
+    @scalable_targets ? @scalable_targets[:resource_id] : ""
   end
 
   def exists?

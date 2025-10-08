@@ -13,10 +13,16 @@ class AWSEFSMountTarget < AwsResourceBase
     opts = { mount_target_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:mount_target_id])
-    raise ArgumentError, "#{@__resource_name__}: mount_target_id must be provided" unless opts[:mount_target_id] && !opts[:mount_target_id].empty?
+    unless opts[:mount_target_id] && !opts[:mount_target_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: mount_target_id must be provided"
+    end
     @display_name = opts[:mount_target_id]
     catch_aws_errors do
-      resp = @aws.efs_client.describe_mount_targets({ mount_target_id: opts[:mount_target_id] })
+      resp =
+        @aws.efs_client.describe_mount_targets(
+          { mount_target_id: opts[:mount_target_id] }
+        )
       @mount_targets = resp.mount_targets[0].to_h
       create_resource_methods(@mount_targets)
     end

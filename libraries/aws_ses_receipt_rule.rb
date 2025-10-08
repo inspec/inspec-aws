@@ -12,12 +12,20 @@ class AWSSESReceiptRule < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(rule_set_name rule_name))
-    raise ArgumentError, "#{@__resource_name__}: rule_set_name must be provided" unless opts[:rule_set_name] && !opts[:rule_set_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: rule_name must be provided" unless opts[:rule_name] && !opts[:rule_name].empty?
+    validate_parameters(required: %i[rule_set_name rule_name])
+    unless opts[:rule_set_name] && !opts[:rule_set_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: rule_set_name must be provided"
+    end
+    unless opts[:rule_name] && !opts[:rule_name].empty?
+      raise ArgumentError, "#{@__resource_name__}: rule_name must be provided"
+    end
     @display_name = opts[:rule_name]
     catch_aws_errors do
-      resp = @aws.ses_client.describe_receipt_rule({ rule_set_name: opts[:rule_set_name], rule_name: opts[:rule_name] })
+      resp =
+        @aws.ses_client.describe_receipt_rule(
+          { rule_set_name: opts[:rule_set_name], rule_name: opts[:rule_name] }
+        )
       @res = resp.rule.to_h
       create_resource_methods(@res)
     end

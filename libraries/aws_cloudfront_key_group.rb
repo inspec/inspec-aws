@@ -13,7 +13,9 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
     opts = { id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:id])
-    raise ArgumentError, "#{@__resource_name__}: id must be provided" unless opts[:id] && !opts[:id].empty?
+    unless opts[:id] && !opts[:id].empty?
+      raise ArgumentError, "#{@__resource_name__}: id must be provided"
+    end
     @display_name = opts[:id]
     catch_aws_errors do
       resp = @aws.cloudfront_client.get_key_group({ id: opts[:id] })
@@ -23,11 +25,11 @@ class AwsCloudFrontKeyGroup < AwsResourceBase
   end
 
   def resource_id
-    @resp? @resp[:id]: @display_name
+    @resp ? @resp[:id] : @display_name
   end
 
   def id
-    return nil unless exists?
+    return unless exists?
     @resp[:id]
   end
 

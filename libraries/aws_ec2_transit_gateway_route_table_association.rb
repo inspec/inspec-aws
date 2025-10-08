@@ -16,10 +16,17 @@ class AwsEc2TransitGatewayRouteTableAssociation < AwsResourceBase
     opts = { transit_gateway_route_table_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:transit_gateway_route_table_id])
-    raise ArgumentError, "#{@__resource_name__}: transit_gateway_route_table_id must be provided" unless opts[:transit_gateway_route_table_id] && !opts[:transit_gateway_route_table_id].empty?
+    unless opts[:transit_gateway_route_table_id] &&
+             !opts[:transit_gateway_route_table_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: transit_gateway_route_table_id must be provided"
+    end
     @display_name = opts[:transit_gateway_route_table_id]
     catch_aws_errors do
-      resp = aws.compute_client.get_transit_gateway_route_table_associations({ transit_gateway_route_table_id: @display_name })
+      resp =
+        aws.compute_client.get_transit_gateway_route_table_associations(
+          { transit_gateway_route_table_id: @display_name }
+        )
       @association = resp.associations[0].to_h
       create_resource_methods(@association)
     end

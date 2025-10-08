@@ -13,11 +13,19 @@ class AWSNetworkManagerDevice < AwsResourceBase
   def initialize(opts = {})
     opts = { global_network_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(device_id global_network_id))
-    raise ArgumentError, "#{@__resource_name__}: device_id must be provided" unless opts[:device_id] && !opts[:device_id].empty?
+    validate_parameters(required: %i[device_id global_network_id])
+    unless opts[:device_id] && !opts[:device_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: device_id must be provided"
+    end
     @display_name = opts[:device_id]
     catch_aws_errors do
-      resp = @aws.network_manager_client.get_devices({ device_ids: [opts[:device_id]], global_network_id: opts[:global_network_id] })
+      resp =
+        @aws.network_manager_client.get_devices(
+          {
+            device_ids: [opts[:device_id]],
+            global_network_id: opts[:global_network_id]
+          }
+        )
       @res = resp.devices[0].to_h
       create_resource_methods(@res)
     end
@@ -29,7 +37,7 @@ class AWSNetworkManagerDevice < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:device_id]: @display_name
+    @res ? @res[:device_id] : @display_name
   end
 
   def exists?

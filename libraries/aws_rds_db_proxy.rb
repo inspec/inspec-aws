@@ -12,11 +12,17 @@ class AWSRDSProxy < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(db_proxy_name))
-    raise ArgumentError, "#{@__resource_name__}: db_proxy_name must be provided" unless opts[:db_proxy_name] && !opts[:db_proxy_name].empty?
+    validate_parameters(required: %i[db_proxy_name])
+    unless opts[:db_proxy_name] && !opts[:db_proxy_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: db_proxy_name must be provided"
+    end
     @display_name = opts[:db_proxy_name]
     catch_aws_errors do
-      resp = @aws.rds_client.describe_db_proxies({ db_proxy_name: opts[:db_proxy_name] })
+      resp =
+        @aws.rds_client.describe_db_proxies(
+          { db_proxy_name: opts[:db_proxy_name] }
+        )
       @res = resp.db_proxies[0].to_h
       @db_proxy_arn = @res[:db_proxy_arn]
       create_resource_methods(@res)

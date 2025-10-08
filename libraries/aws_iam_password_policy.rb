@@ -24,18 +24,18 @@ class AwsIamPasswordPolicy < AwsResourceBase
   end
 
   def minimum_password_length
-    return nil if !exists?
+    return if !exists?
     @policy.minimum_password_length
   end
 
   def max_password_age_in_days
-    return nil if !exists?
+    return if !exists?
     raise "this policy does not expire passwords" unless expire_passwords?
     @policy.max_password_age
   end
 
   def number_of_passwords_to_remember
-    return nil if !exists?
+    return if !exists?
     raise "this policy does not prevent password reuse" \
       unless prevent_password_reuse?
     @policy.password_reuse_prevention

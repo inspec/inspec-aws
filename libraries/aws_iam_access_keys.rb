@@ -83,7 +83,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
 
   def fetch_keys(username)
     access_keys = catch_aws_errors do
-      iam_client.list_access_keys(user_name: username)
+      iam_client.list_access_keys({ user_name: username })
     rescue Aws::IAM::Errors::NoSuchEntity
       # Swallow - a miss on search results should return an empty table
     end
@@ -96,7 +96,7 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
         access_key_hash[:inactive] = access_key_hash[:status] != "Active"
         access_key_hash[:created_hours_ago]  = ((Time.now - access_key_hash[:create_date]) / (60*60)).to_i
         access_key_hash[:created_days_ago]   = (access_key_hash[:created_hours_ago] / 24).to_i
-        access_key_hash[:user_created_date]  = access_key_hash[:create_date]
+        access_key_hash[:user_created_date]  = @_users.find { |user| user.user_name == access_key_hash[:username] }.create_date
         access_key_hash[:created_with_user]  = (access_key_hash[:create_date] - access_key_hash[:user_created_date]).abs < 1.0/24.0
         access_key_hash
       end
@@ -104,8 +104,8 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
   end
 
   def last_used(row, _condition, _table)
-    @last_used ||= catch_aws_errors do
-      iam_client.get_access_key_last_used(access_key_id: row[:access_key_id])
+    catch_aws_errors do
+      iam_client.get_access_key_last_used({ access_key_id: row[:access_key_id] })
         .access_key_last_used
     end
   end
@@ -114,22 +114,21 @@ class AwsIamAccessKeys < AwsCollectionResourceBase
     row[:last_used_date] ||= last_used(row, condition, table).last_used_date
   end
 
-  def lazy_load_ever_used(row, condition, table)
-    row[:ever_used] = !lazy_load_never_used_time(row, condition, table)
+  def lazy_load_never_used_time(row, condition, table)
+    row[:never_used] ||= lazy_load_last_used_date(row, condition, table).nil?
   end
 
-  def lazy_load_never_used_time(row, condition, table)
-    row[:never_used] = lazy_load_last_used_date(row, condition, table).nil?
+  def lazy_load_ever_used(row, condition, table)
+    row[:ever_used] ||= !lazy_load_never_used_time(row, condition, table)
   end
 
   def lazy_load_last_used_hours_ago(row, condition, table)
-    return if lazy_load_never_used_time(row, condition, table)
-
+    return row[:last_used_hours_ago] = nil if lazy_load_never_used_time(row, condition, table)
     row[:last_used_hours_ago] = ((Time.now - row[:last_used_date]) / (60*60)).to_i
   end
 
   def lazy_load_last_used_days_ago(row, condition, table)
-    return if lazy_load_never_used_time(row, condition, table)
+    return row[:last_used_days_ago] = nil if lazy_load_never_used_time(row, condition, table)
     if row[:last_used_hours_ago].nil?
       lazy_load_last_used_hours_ago(row, condition, table)
     end

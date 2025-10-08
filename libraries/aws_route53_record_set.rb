@@ -12,13 +12,25 @@ class AWSRoute53RecordSet < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(hosted_zone_id start_record_name))
-    raise ArgumentError, "#{@__resource_name__}: hosted_zone_id must be provided" unless opts[:hosted_zone_id] && !opts[:hosted_zone_id].empty?
-    raise ArgumentError, "#{@__resource_name__}: start_record_name must be provided" unless opts[:start_record_name] && !opts[:start_record_name].empty?
+    validate_parameters(required: %i[hosted_zone_id start_record_name])
+    unless opts[:hosted_zone_id] && !opts[:hosted_zone_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: hosted_zone_id must be provided"
+    end
+    unless opts[:start_record_name] && !opts[:start_record_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: start_record_name must be provided"
+    end
     @hosted_zone_id = opts[:hosted_zone_id]
     @start_record_name = opts[:start_record_name]
     catch_aws_errors do
-      resp = @aws.route53_client.list_resource_record_sets({ hosted_zone_id: opts[:hosted_zone_id], start_record_name: opts[:name] })
+      resp =
+        @aws.route53_client.list_resource_record_sets(
+          {
+            hosted_zone_id: opts[:hosted_zone_id],
+            start_record_name: opts[:name]
+          }
+        )
       @res = resp.resource_record_sets[0].to_h
       create_resource_methods(@res)
     end
@@ -30,7 +42,7 @@ class AWSRoute53RecordSet < AwsResourceBase
   end
 
   def resource_id
-    "#{@res? @hosted_zone_id: ""}_#{@res? @start_record_name: ""}"
+    "#{@res ? @hosted_zone_id : ""}_#{@res ? @start_record_name : ""}"
   end
 
   def exists?

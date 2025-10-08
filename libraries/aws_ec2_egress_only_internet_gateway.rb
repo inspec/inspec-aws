@@ -14,10 +14,21 @@ class AWSEC2EgressOnlyInternetGateway < AwsResourceBase
     opts = { egress_only_internet_gateway_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:egress_only_internet_gateway_id])
-    raise ArgumentError, "#{@__resource_name__}: egress_only_internet_gateway_id must be provided" unless opts[:egress_only_internet_gateway_id] && !opts[:egress_only_internet_gateway_id].empty?
+    unless opts[:egress_only_internet_gateway_id] &&
+             !opts[:egress_only_internet_gateway_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: egress_only_internet_gateway_id must be provided"
+    end
     @display_name = opts[:egress_only_internet_gateway_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_egress_only_internet_gateways({ egress_only_internet_gateway_ids: [opts[:egress_only_internet_gateway_id]] })
+      resp =
+        @aws.compute_client.describe_egress_only_internet_gateways(
+          {
+            egress_only_internet_gateway_ids: [
+              opts[:egress_only_internet_gateway_id]
+            ]
+          }
+        )
       @resp = resp.egress_only_internet_gateways[0].to_h
       create_resource_methods(@resp)
     end

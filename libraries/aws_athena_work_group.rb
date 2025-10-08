@@ -14,10 +14,13 @@ class AWSAthenaWorkGroup < AwsResourceBase
     super(opts)
     validate_parameters(required: [:work_group])
 
-    raise ArgumentError, "#{@__resource_name__}: work_group must be provided" unless opts[:work_group] && !opts[:work_group].empty?
+    unless opts[:work_group] && !opts[:work_group].empty?
+      raise ArgumentError, "#{@__resource_name__}: work_group must be provided"
+    end
     @display_name = opts[:work_group]
     catch_aws_errors do
-      resp = @aws.athena_client.get_work_group({ work_group: opts[:work_group] })
+      resp =
+        @aws.athena_client.get_work_group({ work_group: opts[:work_group] })
       @work_group = resp.work_group.to_h
       create_resource_methods(@work_group)
     end

@@ -15,12 +15,20 @@ class AwsApiGatewayV2Integration < AwsResourceBase
   def initialize(opts = {})
     opts = { api_id: opts, integration_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(api_id integration_id))
-    raise ArgumentError, "#{@__resource_name__}: api_id must be provided!" if opts[:api_id].blank?
-    raise ArgumentError, "#{@__resource_name__}: integration_id must be provided!" if opts[:integration_id].blank?
+    validate_parameters(required: %i[api_id integration_id])
+    if opts[:api_id].blank?
+      raise ArgumentError, "#{@__resource_name__}: api_id must be provided!"
+    end
+    if opts[:integration_id].blank?
+      raise ArgumentError,
+            "#{@__resource_name__}: integration_id must be provided!"
+    end
     @display_name = opts[:integration_id]
     catch_aws_errors do
-      resp = @aws.apigatewayv2_client.get_integration({ api_id: opts[:api_id], integration_id: opts[:integration_id] })
+      resp =
+        @aws.apigatewayv2_client.get_integration(
+          { api_id: opts[:api_id], integration_id: opts[:integration_id] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -36,7 +44,7 @@ class AwsApiGatewayV2Integration < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:integration_id]: @display_name
+    @res ? @res[:integration_id] : @display_name
   end
 
   def to_s

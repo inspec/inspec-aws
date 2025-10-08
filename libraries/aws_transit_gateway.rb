@@ -20,7 +20,7 @@ class AwsTransitGateway < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.compute_client.describe_transit_gateways(transit_gateway_ids: [opts[:transit_gateway_id]])
-      return nil if resp.transit_gateways.nil? || resp.transit_gateways.empty?
+      return if resp.transit_gateways.nil? || resp.transit_gateways.empty?
       transit_gateway = resp.transit_gateways.first
       @transit_gateway_arn                                      = transit_gateway.transit_gateway_arn
       @transit_gateway_id                                       = transit_gateway.transit_gateway_id

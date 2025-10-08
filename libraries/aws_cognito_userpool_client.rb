@@ -12,9 +12,12 @@ class AWSCognitoUserPoolClient < AwsResourceBase
   def initialize(opts = {})
     opts = { user_pool_id: opts, client_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(user_pool_id client_id))
+    validate_parameters(required: %i[user_pool_id client_id])
     catch_aws_errors do
-      resp = @aws.cognitoidentityprovider_client.describe_user_pool_client({ user_pool_id: opts[:user_pool_id], client_id: opts[:client_id] })
+      resp =
+        @aws.cognitoidentityprovider_client.describe_user_pool_client(
+          { user_pool_id: opts[:user_pool_id], client_id: opts[:client_id] }
+        )
       @user_pool_client = resp.user_pool_client.to_h
       create_resource_methods(@user_pool_client)
     end

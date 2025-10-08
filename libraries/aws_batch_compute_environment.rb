@@ -14,10 +14,17 @@ class AWSBatchComputeEnvironment < AwsResourceBase
     super(opts)
     validate_parameters(required: [:compute_environment_name])
 
-    raise ArgumentError, "#{@__resource_name__}: compute_environment_name must be provided" unless opts[:compute_environment_name] && !opts[:compute_environment_name].empty?
+    unless opts[:compute_environment_name] &&
+             !opts[:compute_environment_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: compute_environment_name must be provided"
+    end
     @display_name = opts[:compute_environment_name]
     catch_aws_errors do
-      resp = @aws.batch_client.describe_compute_environments({ compute_environments: [opts[:compute_environment_name]] })
+      resp =
+        @aws.batch_client.describe_compute_environments(
+          { compute_environments: [opts[:compute_environment_name]] }
+        )
       @compute_environments = resp.compute_environments[0].to_h
       create_resource_methods(@compute_environments)
     end

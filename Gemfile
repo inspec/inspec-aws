@@ -10,6 +10,9 @@ gem 'bundle'
 # Note if the gem required is commented out, please raise a PR against the train-aws repo first
 # In the mean time the gem can be added here for local development
 
+# TODO: remove when https://github.com/inspec/train-aws/pull/457 is merged
+gem 'aws-sdk-account', '~> 1.14'
+
 # Use Latest Inspec
 gem 'inspec-bin'
 
