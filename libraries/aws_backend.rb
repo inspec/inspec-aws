@@ -60,6 +60,7 @@ require "aws-sdk-emr"
 require "aws-sdk-securityhub"
 require "aws-sdk-ses"
 require "aws-sdk-waf"
+require "aws-sdk-wafv2"
 require "aws-sdk-synthetics"
 require "aws-sdk-apigatewayv2"
 
@@ -329,6 +330,10 @@ class AwsConnection
 
   def waf_client
     aws_client(Aws::WAF::Client)
+  end
+
+  def waf_client_v2
+    aws_client(Aws::WAFWAFV2::Client)
   end
 
   def synthetics_client
