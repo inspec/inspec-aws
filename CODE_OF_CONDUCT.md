@@ -1,3 +1,3 @@
-# InSpec AWS Code of Conduct
+# Chef Code of Conduct
 
-All participants are expected to follow the [InSpec Code of Conduct](https://github.com/inspec/inspec/blob/master/CODE_OF_CONDUCT.md).
+Participants in this project must adhere to the [Chef Code of Conduct](https://chef.github.io/chef-oss-practices/policies/code-of-conduct/).
