@@ -3,23 +3,16 @@
 SHELL=bash
 
 preview_netlify: chef_web_docs
-	rm -rf chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/content/inspec/resources/*
-	rm -rf chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/layouts/*
-	cp -R ./content/inspec/resources/* ./chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/content/inspec/resources/
-	cp -R ./layouts/* ./chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/layouts/
-	cp -R config.toml chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/
-	cp -R assets/release-notes/inspec-aws/release-dates.json chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io/assets/release-notes/inspec-aws
-	pushd chef-web-docs && make bundle; hugo --gc --minify --buildFuture --environment preview && popd
-
-
-replace = "replacements = \'github.com/inspec/inspec-aws/docs-chef-io -\> ../../\'\\n\\n"
+	rm -rf chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io
+	cp -R content ./chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io
+	cp -R layouts ./chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io
+	cp -R config.toml chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io
+	cp -R assets chef-web-docs/_vendor/github.com/inspec/inspec-aws/docs-chef-io
+	pushd chef-web-docs && bash ./scripts/netlify-deploy-preview.sh && popd
 
 serve: chef_web_docs
-	@echo -e "$(replace)" > temp.txt
-	@cat chef-web-docs/config/_default/module.toml >> temp.txt
-	@cat temp.txt > chef-web-docs/config/_default/module.toml
-	rm temp.txt
-	pushd chef-web-docs && make bundle; hugo server --buildDrafts --buildFuture --noHTTPCache && popd
+	printf "go 1.22\n\nuse .\nuse ../" > chef-web-docs/hugo.work
+	pushd chef-web-docs && make bundle && HUGO_MODULE_WORKSPACE=hugo.work hugo server --buildDrafts --buildFuture --noHTTPCache --ignoreVendorPaths "github.com/inspec/inspec-aws/docs-chef-io" && popd
 
 chef_web_docs:
 	if [ -d "chef-web-docs/" ]; then \
