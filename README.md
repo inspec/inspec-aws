@@ -10,11 +10,20 @@ This InSpec resource pack uses the AWS Ruby SDK v3 and provides the required res
 
 ### AWS Credentials
 
+#### auto-refreshing credentials -
+    The AWS API call session will be terminated if an api(control) takes more than 12 hours
+    or whatever expiration duration is provided,disrupting the entire scanning process.
+    However, if auto-refresh is enabled, the token will be automatically refreshed 5 minutes prior to its expiration,
+    preventing the session from being terminated.
+
+```Note - If Execution time is not more than 12 hours No need to proceed with auto refreshing credentials```
+
 Valid AWS credentials are required, see [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html#intro-structure-principal)
 
 There are multiple ways to set the AWS credentials, as shown below:
 
 #### 1) Environment Variables
+#### 1.1) Environment Variables without auto refresh
 
 Set your AWS credentials in a `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
 
@@ -26,7 +35,52 @@ Set your AWS credentials in a `.envrc` file or export them in your shell. (See e
     export AWS_AVAILABILITY_ZONE="eu-west-3a"  
 ```
 
-##### 2) Configuration File
+
+#### 1.2) Environment Variables with auto refreshing credentials
+
+Set your AWS credentials in a `.envrc` file or export them in your shell. (See example [.envrc file](.envrc_example))
+
+```bash
+    # Example configuration
+    export AWS_ACCESS_KEY_ID="AKIAJUMP347SLS66IGCQ"
+    export AWS_SECRET_ACCESS_KEY="vD2lfoNvPdwsofqyuO9jRuWUkZIMqisdfeFmkHTy7ON+w"
+    export AWS_REGION="eu-west-3"
+    export AWS_AVAILABILITY_ZONE="eu-west-3a" 
+    export AWS_ROLE_ARN="arn:aws:iam::112758395563:role/DUMMYRole"
+    export AWS_TOKEN_EXPIRATION_DURATION="901"
+    export AWS_ROLE_SESSION_NAME="DUMMY_aws_role_for_session" 
+
+#### AWS_ROLE_ARN (Required)- 
+    The Amazon Resource Name (ARN) of the role that the app should assume.
+    To create the AWS_ROLE_ARN, which is in the format of "arn:aws:iam::account:role/role-name-with-path,"
+    you must use IAM policies in the AWS Console. You can create a role with limited access for specific purposes,
+    such as scanning only S3Access. 
+    For example, a role can be created with the following format: "arn:aws:iam::123456789012:role/S3Access."
+#### AWS_TOKEN_EXPIRATION_DURATION (Optional)- 
+    Duration, which specifies the duration of the temporary security credentials. 
+    Use the DurationSeconds parameter to specify the duration of the role session from 900 seconds (15 minutes) up to 
+    the maximum session duration setting for the role. If you do not pass this parameter, the temporary credentials expire in one hour.
+
+#### AWS_ROLE_SESSION_NAME (Required)-
+    Use this string value to identify the session when a role is used by different principals. 
+    For security purposes, administrators can view this field in AWS CloudTrail logs to help identify who performed an 
+    action in AWS. Your administrator might require that you specify your IAM user name as the session name when you assume the role.
+
+
+#### 1.2.1 Create an AWS IAM Role ARN (Amazon Resource Name), you need to follow these steps:
+   1. Open the AWS Management Console and sign in to your AWS account.
+   2. Open the Identity and Access Management (IAM) console.
+   3. In the left-hand navigation pane, click on "Roles".
+   4. Click on the "Create Role" button.
+   5. Select the type of trusted entity that will assume this role. You can choose between "AWS service", "Another AWS account", or "Web identity".
+   6. Select the specific permissions that you want to grant to this role by attaching policies.
+   7. Give your role a name and click on "Create Role".
+   8. Once the role is created, you will be able to see its ARN in the IAM console. The ARN will look something like this: arn:aws:iam::account-id:role/role-name.
+   9. You can use this ARN to reference the role in other AWS services and grant it permissions to perform actions on your behalf.
+
+    
+
+#### 2) Configuration File
 
 Set your AWS credentials in `~/.aws/config` and `~/.aws/credentials` file. (See example [aws configure credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))
 
