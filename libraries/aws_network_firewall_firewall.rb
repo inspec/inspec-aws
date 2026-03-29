@@ -14,10 +14,16 @@ class AWSNetworkFirewallFirewall < AwsResourceBase
     opts = { firewall_name: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:firewall_name])
-    raise ArgumentError, "#{@__resource_name__}: firewall_name must be provided" unless opts[:firewall_name] && !opts[:firewall_name].empty?
+    unless opts[:firewall_name] && !opts[:firewall_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: firewall_name must be provided"
+    end
     @display_name = opts[:firewall_name]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_firewall({ firewall_name: opts[:firewall_name] })
+      resp =
+        @aws.network_firewall_client.describe_firewall(
+          { firewall_name: opts[:firewall_name] }
+        )
       @res = resp.to_h
       @firewall_arn = @res[:firewall][:firewall_arn]
       create_resource_methods(@res)

@@ -12,18 +12,25 @@ class AWSLambdaCodeSigningConfig < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(code_signing_config_arn))
-    raise ArgumentError, "#{@__resource_name__}: code_signing_config_arn must be provided" unless opts[:code_signing_config_arn] && !opts[:code_signing_config_arn].empty?
+    validate_parameters(required: %i[code_signing_config_arn])
+    unless opts[:code_signing_config_arn] &&
+             !opts[:code_signing_config_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: code_signing_config_arn must be provided"
+    end
     @display_name = opts[:code_signing_config_arn]
     catch_aws_errors do
-      resp = @aws.lambda_client.get_code_signing_config({ code_signing_config_arn: opts[:code_signing_config_arn] })
+      resp =
+        @aws.lambda_client.get_code_signing_config(
+          { code_signing_config_arn: opts[:code_signing_config_arn] }
+        )
       @res = resp.code_signing_config.to_h
       create_resource_methods(@res)
     end
   end
 
   def code_signing_config_arn
-    return nil unless exists?
+    return unless exists?
     @res[:code_signing_config_arn]
   end
 

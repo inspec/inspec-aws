@@ -20,7 +20,7 @@ class AwsEcr < AwsResourceBase
 
     catch_aws_errors do
       resp = @aws.ecr_client.describe_repositories(repository_names: [opts[:repository_name]])
-      return nil if resp.repositories.nil? || resp.repositories.empty?
+      return if resp.repositories.nil? || resp.repositories.empty?
       repository = resp.repositories.first
       @repository_name = repository.repository_name
       @repository_arn  = repository.repository_arn
@@ -31,7 +31,7 @@ class AwsEcr < AwsResourceBase
   end
 
   def images
-    return nil if !exists?
+    return if !exists?
     resp = nil
     catch_aws_errors do
       resp = @aws.ecr_client.describe_images(repository_name: @repository_name).image_details.first

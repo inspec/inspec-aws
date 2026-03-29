@@ -13,11 +13,17 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
   def initialize(opts = {})
     opts = { resolver_endpoint_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(resolver_endpoint_id))
-    raise ArgumentError, "#{@__resource_name__}: resolver_endpoint_id must be provided" unless opts[:resolver_endpoint_id] && !opts[:resolver_endpoint_id].empty?
+    validate_parameters(required: %i[resolver_endpoint_id])
+    unless opts[:resolver_endpoint_id] && !opts[:resolver_endpoint_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: resolver_endpoint_id must be provided"
+    end
     @display_name = opts[:resolver_endpoint_id]
     catch_aws_errors do
-      resp = @aws.route53resolver_client.get_resolver_endpoint({ resolver_endpoint_id: opts[:resolver_endpoint_id] })
+      resp =
+        @aws.route53resolver_client.get_resolver_endpoint(
+          { resolver_endpoint_id: opts[:resolver_endpoint_id] }
+        )
       @res = resp.resolver_endpoint.to_h
       create_resource_methods(@res)
     end
@@ -29,7 +35,7 @@ class AWSRoute53ResolverResolverEndpoint < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:id]: @display_name
+    @res ? @res[:id] : @display_name
   end
 
   def exists?

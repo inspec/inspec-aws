@@ -14,10 +14,17 @@ class AWSEC2VPCPeeringConnection < AwsResourceBase
     opts = { vpc_peering_connection_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:vpc_peering_connection_id])
-    raise ArgumentError, "#{@__resource_name__}: vpc_peering_connection_id must be provided" unless opts[:vpc_peering_connection_id] && !opts[:vpc_peering_connection_id].empty?
+    unless opts[:vpc_peering_connection_id] &&
+             !opts[:vpc_peering_connection_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: vpc_peering_connection_id must be provided"
+    end
     @display_name = opts[:vpc_peering_connection_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_vpc_peering_connections({ vpc_peering_connection_ids: [opts[:vpc_peering_connection_id]] })
+      resp =
+        @aws.compute_client.describe_vpc_peering_connections(
+          { vpc_peering_connection_ids: [opts[:vpc_peering_connection_id]] }
+        )
       @res = resp.vpc_peering_connections[0].to_h
       create_resource_methods(@res)
     end

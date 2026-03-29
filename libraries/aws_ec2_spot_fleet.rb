@@ -14,10 +14,16 @@ class AWSEC2SpotFleet < AwsResourceBase
     opts = { spot_fleet_request_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:spot_fleet_request_id])
-    raise ArgumentError, "#{@__resource_name__}: spot_fleet_request_id must be provided" unless opts[:spot_fleet_request_id] && !opts[:spot_fleet_request_id].empty?
+    unless opts[:spot_fleet_request_id] && !opts[:spot_fleet_request_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: spot_fleet_request_id must be provided"
+    end
     @display_name = opts[:spot_fleet_request_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_spot_fleet_requests({ spot_fleet_request_ids: [opts[:spot_fleet_request_id]] })
+      resp =
+        @aws.compute_client.describe_spot_fleet_requests(
+          { spot_fleet_request_ids: [opts[:spot_fleet_request_id]] }
+        )
       @res = resp.spot_fleet_request_configs[0].to_h
       create_resource_methods(@res)
     end

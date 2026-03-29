@@ -12,12 +12,24 @@ class AWSCloudWatchLogsSubscriptionFilter < AwsResourceBase
   def initialize(opts = {})
     opts = { filter_name_prefix: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(log_group_name filter_name_prefix))
-    raise ArgumentError, "#{@__resource_name__}: log_group_name must be provided" unless opts[:log_group_name] && !opts[:log_group_name].empty?
-    raise ArgumentError, "#{@__resource_name__}: filter_name_prefix must be provided" unless opts[:filter_name_prefix] && !opts[:filter_name_prefix].empty?
+    validate_parameters(required: %i[log_group_name filter_name_prefix])
+    unless opts[:log_group_name] && !opts[:log_group_name].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: log_group_name must be provided"
+    end
+    unless opts[:filter_name_prefix] && !opts[:filter_name_prefix].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: filter_name_prefix must be provided"
+    end
     @display_name = opts[:filter_name_prefix]
     catch_aws_errors do
-      resp = @aws.cloudwatchlogs_client.describe_subscription_filters({ log_group_name: opts[:log_group_name], filter_name_prefix: opts[:filter_name_prefix] })
+      resp =
+        @aws.cloudwatchlogs_client.describe_subscription_filters(
+          {
+            log_group_name: opts[:log_group_name],
+            filter_name_prefix: opts[:filter_name_prefix]
+          }
+        )
       @filter = resp.subscription_filters[0].to_h
       @filter_name = @filter[:filter_name]
       @filter_log_group_name = @filter[:log_group_name]

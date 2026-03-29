@@ -14,10 +14,16 @@ class AWSEC2PrefixList < AwsResourceBase
     opts = { prefix_list_id: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:prefix_list_id])
-    raise ArgumentError, "#{@__resource_name__}: prefix_list_id must be provided" unless opts[:prefix_list_id] && !opts[:prefix_list_id].empty?
+    unless opts[:prefix_list_id] && !opts[:prefix_list_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: prefix_list_id must be provided"
+    end
     @display_name = opts[:prefix_list_id]
     catch_aws_errors do
-      resp = @aws.compute_client.describe_managed_prefix_lists({ prefix_list_ids: [opts[:prefix_list_id]] })
+      resp =
+        @aws.compute_client.describe_managed_prefix_lists(
+          { prefix_list_ids: [opts[:prefix_list_id]] }
+        )
       @res = resp.prefix_lists[0].to_h
       create_resource_methods(@res)
     end

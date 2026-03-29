@@ -13,11 +13,17 @@ class AWSWAFByteMatchSet < AwsResourceBase
   def initialize(opts = {})
     opts = { byte_match_set_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(byte_match_set_id))
-    raise ArgumentError, "#{@__resource_name__}: byte_match_set_id must be provided" unless opts[:byte_match_set_id] && !opts[:byte_match_set_id].empty?
+    validate_parameters(required: %i[byte_match_set_id])
+    unless opts[:byte_match_set_id] && !opts[:byte_match_set_id].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: byte_match_set_id must be provided"
+    end
     @display_name = opts[:byte_match_set_id]
     catch_aws_errors do
-      resp = @aws.waf_client.get_byte_match_set({ byte_match_set_id: opts[:byte_match_set_id] })
+      resp =
+        @aws.waf_client.get_byte_match_set(
+          { byte_match_set_id: opts[:byte_match_set_id] }
+        )
       @resp = resp.byte_match_set.to_h
       create_resource_methods(@resp)
     end
