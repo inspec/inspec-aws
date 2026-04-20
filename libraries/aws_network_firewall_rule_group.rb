@@ -14,10 +14,16 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
     opts = { rule_group_arn: opts } if opts.is_a?(String)
     super(opts)
     validate_parameters(required: [:rule_group_arn])
-    raise ArgumentError, "#{@__resource_name__}: rule_group_arn must be provided" unless opts[:rule_group_arn] && !opts[:rule_group_arn].empty?
+    unless opts[:rule_group_arn] && !opts[:rule_group_arn].empty?
+      raise ArgumentError,
+            "#{@__resource_name__}: rule_group_arn must be provided"
+    end
     @display_name = opts[:rule_group_arn]
     catch_aws_errors do
-      resp = @aws.network_firewall_client.describe_rule_group({ rule_group_arn: opts[:rule_group_arn] })
+      resp =
+        @aws.network_firewall_client.describe_rule_group(
+          { rule_group_arn: opts[:rule_group_arn] }
+        )
       @res = resp.to_h
       create_resource_methods(@res)
     end
@@ -29,7 +35,7 @@ class AWSNetworkFirewallRuleGroup < AwsResourceBase
   end
 
   def resource_id
-    @res? @res[:rule_group_response][:rule_group_arn]: @display_name
+    @res ? @res[:rule_group_response][:rule_group_arn] : @display_name
   end
 
   def exists?

@@ -21,7 +21,7 @@ class AwsCloudformationStack < AwsResourceBase
     catch_aws_errors do
       name = { stack_name: opts[:stack_name] }
       resp = @aws.cloudformation_client.describe_stacks(name)
-      return nil if resp.stacks.nil? || resp.stacks.empty?
+      return if resp.stacks.nil? || resp.stacks.empty?
       stack = resp.stacks.first
       @stack_id = stack.stack_id
       @stack_name = stack.stack_name

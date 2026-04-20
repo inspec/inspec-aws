@@ -13,8 +13,10 @@ class AWSWAFIPSet < AwsResourceBase
   def initialize(opts = {})
     opts = { ip_set_id: opts } if opts.is_a?(String)
     super(opts)
-    validate_parameters(required: %i(ip_set_id))
-    raise ArgumentError, "#{@__resource_name__}: ip_set_id must be provided" unless opts[:ip_set_id] && !opts[:ip_set_id].empty?
+    validate_parameters(required: %i[ip_set_id])
+    unless opts[:ip_set_id] && !opts[:ip_set_id].empty?
+      raise ArgumentError, "#{@__resource_name__}: ip_set_id must be provided"
+    end
     @display_name = opts[:ip_set_id]
     catch_aws_errors do
       resp = @aws.waf_client.get_ip_set({ ip_set_id: opts[:ip_set_id] })

@@ -16,34 +16,50 @@ class AwsEcrImage < AwsResourceBase
 
   def initialize(opts = {})
     super(opts)
-    validate_parameters(required: %i(repository_name), require_any_of: %i(image_tag image_digest), allow: %i(registry_id))
+    validate_parameters(
+      required: %i[repository_name],
+      require_any_of: %i[image_tag image_digest],
+      allow: %i[registry_id]
+    )
     @display_name = opts.values.join(" ")
 
     # Validate repository_name.
-    pattern = %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
+    pattern =
+      %r{(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._\-][a-z0-9]+)*}
     matched_str = opts[:repository_name].match(pattern)
-    unless (opts[:repository_name] == matched_str[0]) && (matched_str.length == 1) && opts[:repository_name].length.between?(2, 256)
-      raise ArgumentError, "#{@__resource_name__}: `repository_name` is not in a valid format. " \
-                           "Please check the docs for more info "\
-                           "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html" \
+    unless (opts[:repository_name] == matched_str[0]) &&
+             (matched_str.length == 1) &&
+             opts[:repository_name].length.between?(2, 256)
+      raise ArgumentError,
+            "#{@__resource_name__}: `repository_name` is not in a valid format. " \
+              "Please check the docs for more info " \
+              "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_DescribeRepositories.html"
     end
 
     # Validate image identifiers:
     # https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ImageIdentifier.html
-    raise ArgumentError, "#{@__resource_name__}: `image_tag` must be maximum 300 characters long." if opts[:image_tag] && !opts[:image_tag].length.between?(1, 300)
+    if opts[:image_tag] && !opts[:image_tag].length.between?(1, 300)
+      raise ArgumentError,
+            "#{@__resource_name__}: `image_tag` must be maximum 300 characters long."
+    end
 
-    raise ArgumentError, "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'" if opts[:image_digest] && !/[a-zA-Z0-9\-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
+    if opts[:image_digest] &&
+         !/[a-zA-Z0-9\-_+.]+:[a-fA-F0-9]+/.match?(opts[:image_digest])
+      raise ArgumentError,
+            "#{@__resource_name__}: `image_digest` must be a sha256 digest, e.g. 'sha256:aa..00'"
+    end
 
     query_params = {
       repository_name: opts[:repository_name],
-      image_ids: [
-        opts.select { |k, _v| k.to_s.start_with?("image") },
-      ],
+      image_ids: [opts.select { |k, _v| k.to_s.start_with?("image") }]
     }
 
     # Validate registry_id. (Optional. If not provided, AWS account ID will be used by the AWS API.)
     if opts.key?(:registry_id)
-      raise ArgumentError, "#{@__resource_name__}: `registry_id` should be a string of 12 digits." unless /^[0-9]{12}$/.match?(opts[:registry_id])
+      unless /^[0-9]{12}$/.match?(opts[:registry_id])
+        raise ArgumentError,
+              "#{@__resource_name__}: `registry_id` should be a string of 12 digits."
+      end
       query_params[:registry_id] = opts[:registry_id]
     end
 
@@ -60,7 +76,7 @@ class AwsEcrImage < AwsResourceBase
 
   def vulnerabilities
     # Create an array of vulnerabilities identified in the image after a scan - @vulns.
-    return unless exists?
+    return nil unless exists?
     # Do not try to create if vulnerability data exists.
     return @vulns unless @vulns.nil?
     # Use describe_image_scan_findings method:
@@ -68,7 +84,7 @@ class AwsEcrImage < AwsResourceBase
     query_params = {
       repository_name: @opts[:repository_name],
       image_id: @opts.select { |k, _v| k.to_s.start_with?("image") },
-      max_results: 1000,
+      max_results: 1000
     }
     @scan_findings = []
     loop do
@@ -83,9 +99,7 @@ class AwsEcrImage < AwsResourceBase
     end
     # Convert AWS struct format to hash.
     @vulns = []
-    @scan_findings.each do |vuln|
-      @vulns << vuln.to_h
-    end
+    @scan_findings.each { |vuln| @vulns << vuln.to_h }
     # Extract :attributes returned in scan_findings:
     # :attributes=>[{:key=>"package_version", :value=>"1.1.18-r3"},
     # {:key=>"package_name", :value=>"musl"},
@@ -98,9 +112,7 @@ class AwsEcrImage < AwsResourceBase
     # :CVSS2_VECTOR=>"AV:N/AC:L/Au:N/C:P/I:P/A:P"
     # :CVSS2_SCORE=>"7.5"
     @vulns.each do |vuln|
-      vuln[:attributes].each do |attr|
-        vuln[attr[:key].to_sym] = attr[:value]
-      end
+      vuln[:attributes].each { |attr| vuln[attr[:key].to_sym] = attr[:value] }
       # Delete original :attributes item.
       vuln.delete(:attributes)
     end
