@@ -120,37 +120,7 @@ Run `make clean_all` to delete the cloned copy of chef/chef-web-docs.
 
 ## Publish Release Notes
 
-The process for publishing and announcing release notes for inspec-aws is mostly manual.
-
-### Edit Pending Release Notes
-
-Edit the Pending Release Notes file in the [inspec-aws wiki](https://github.com/inspec/inspec-aws/wiki/Pending-Release-Notes).
-
-We recommend editing this page as new resources are added or changes are made to the inspec-aws resources.
-
-Have a member of the documentation team review the Pending Release Notes file before they're released.
-
-### Release the Release Notes
-
-1. Log in to the chef-cd S3 account using saml2aws.
-
-2. Run the `publish-release-notes.sh` script in `tools/release-notes`. You can run this from the Makefile with `make publish_release_notes`
-
-   This will push the pending release notes to the S3 chef-cd bucket, reset the Pending Release Notes file, and update the `release-dates.json` file in `assets/release-notes/inspec-aws`.
-
-3. Push up and merge a branch to `inspec/inspec-aws` with the changes made to the `release-dates.json` file.
-
-### chef-web-docs
-
-chef-web-docs is configured to open a PR that will update the inspec-aws content on <doc.chef.io> when a change is committed to the `release-dates.json` file in the inspec-aws repository. This will update the InSpec AWS resource documentation and update release notes for InSpec AWS resources.
-
-A member fo the documentation team can merge that PR for you as soon as it's made.
-
-### Chef Discourse
-
-Copy the release notes to a new announcement in [Chef Release Announcements](https://discourse.chef.io/c/chef-release/9) on Discourse.
-
-You can find the proper release notes in the Pending Release Notes file history or on <https://packages.chef.io/release-notes/inspec-aws/RELEASE_DATE.md>
+InSpec AWS release notes are published from the [chef-web-docs repository](https://github.com/chef/chef-web-docs/).
 
 ## Documentation Feedback
 
