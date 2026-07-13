@@ -17,7 +17,7 @@ gem 'rubocop', '~> 1.25.1', require: false
 
 group :test do
   gem "chefstyle", "~> 2.2.2"
-  gem "simplecov", "~> 0.21"
+  gem "simplecov", "~> 1.0"
   gem "simplecov_json_formatter"
 end
 
